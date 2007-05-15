@@ -1,0 +1,40 @@
+                     pgRouting Library Version 1.0.0a
+		                 2007-02-09
+		               
+			       Release  Notes
+		
+		
+===============================
+CHANGES SINCE PREVIOUS RELEASE:
+===============================
++ Shooting* shortest path algorithm for real road networks
+
+===============================
+CHANGES SINCE RELEASE 0.9.9:
+===============================
+* Several SQL bugs were fixed
+
+===============================
+CHANGES SINCE RELEASE 0.9.8:
+===============================
++ PostgreSQL 8.2 support
+* Shortest path functions return empty result if they couldn't find any path
+
+============================
+CHANGES SINCE RELEASE 0.9.7:
+============================
++ Renumbering scheme was added to shortest path functions
++ Directed shortest path functions were added
+* routing_postgis.sql was modified to use dijkstra in TSP search
+
+=============================
+KNOWN ISSUES IN THIS RELEASE:
+=============================
+None so far :)
+
+======
+NOTES:
+======
++ - Newly added feature
+* - Changed feature
+- - Removed feature
