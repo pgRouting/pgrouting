@@ -109,40 +109,60 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --  with a distance less than tolerance, are assigned the same id
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION assign_vertex_id(geom_table varchar, 
-       tolerance double precision)
-       RETURNS VOID AS
+       tolerance double precision,
+       geo_cname varchar,
+       gid_cname varchar)
+       RETURNS VARCHAR AS
 $$
 DECLARE
-	points record;
-	source_id int;
-	target_id int;
-BEGIN
+      points record;
+      i record;
+      source_id int;
+      target_id int;
+      pre varchar;
+      post varchar;
+                    			
+      BEGIN
+                    			
+	    BEGIN
+	        DROP TABLE vertices_tmp;
+        	EXCEPTION 
+			WHEN UNDEFINED_TABLE THEN
+                END;
+                    						    
+		CREATE TABLE vertices_tmp ( id serial );	
+                							
+		EXECUTE $q$ SELECT addGeometryColumn('vertices_tmp', 'the_geom', 
+            		(SELECT srid FROM geometry_columns WHERE f_table_name='$q$ || quote_ident(geom_table) || $q$') , 'POINT', 2) $q$;
+                    							                                                 
+                CREATE INDEX vertices_tmp_idx ON vertices_tmp USING GIST (the_geom);
+                    							                                                    
+                pre = '';
+                post = '';
+                
+                FOR i in EXECUTE 'SELECT count(*) as t from ' || quote_ident(geom_table) || ' WHERE NumGeometries(' || quote_ident(geo_cname) || ') is not null'  loop
+            	        IF (i.t > 0) THEN
+			    pre = 'geometryN(';
+		    	    post = ' , 1)';
+                    	END IF;
+		END LOOP;
+                    							                                                        							    
+		FOR points IN EXECUTE 'SELECT ' || quote_ident(gid_cname) || ' AS id,'
+			|| ' startPoint(' || pre || quote_ident(geo_cname) || post || ') AS source,'
+			|| ' endPoint(' || pre || quote_ident(geo_cname) || post || ') as target'
+			|| ' FROM ' || quote_ident(geom_table) loop
 
-	BEGIN
-		DROP TABLE vertices_tmp;
-	EXCEPTION 
-		WHEN UNDEFINED_TABLE THEN
-	END;
+				source_id := point_to_id(points.source, tolerance);
+				target_id := point_to_id(points.target, tolerance);
+                    							                                                        													
+				EXECUTE 'update ' || quote_ident(geom_table) || 
+				    ' SET source_id = ' || source_id || 
+                        	    ', target_id = ' || target_id || 
+                                    ' WHERE ' || quote_ident(gid_cname) || ' =  ' || points.id;
+                END LOOP;
+                    							                                                        														                                                            
+RETURN 'OK';
 
-	CREATE TABLE vertices_tmp ( id serial );
-
-	EXECUTE $q$ SELECT addGeometryColumn('vertices_tmp', 'the_geom', 
-                                             -1, 'POINT', 2) $q$;
-
-	CREATE INDEX vertices_tmp_idx ON vertices_tmp USING GIST (the_geom);
-
-	FOR points IN EXECUTE 'SELECT gid AS id, startPoint(geometryN(the_geom , 1)) AS source, endPoint(geometryN(the_geom, 1)) as target FROM ' 
-		|| quote_ident(geom_table) loop
-
-		source_id := point_to_id(points.source, tolerance);
-		target_id := point_to_id(points.target, tolerance);
-
-		EXECUTE 'update ' || quote_ident(geom_table) || 
-                   ' SET source_id = ' || source_id || 
-                   ', target_id = ' || target_id || 
-                   ' WHERE gid =  ' || points.id;
-	END LOOP;
-	RETURN;
 END;
 $$
 LANGUAGE 'plpgsql' VOLATILE STRICT; 
