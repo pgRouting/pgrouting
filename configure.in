@@ -20,16 +20,14 @@ elif test -n "$with_boost" -a "$with_boost" != "yes" ; then
   dnl
   BOOST_DIR=$with_boost
 else
-  BOOST_DIR='/usr'
+  BOOST_DIR='/usr/include/boost'
 fi
 
-if ! test -d $BOOST_DIR/include/boost/graph ; then
- AC_MSG_ERROR(** $BOOST_DIR/include/boost/graph can not be found **)
+if ! test -d $BOOST_DIR/graph ; then
+ AC_MSG_ERROR(** $BOOST_DIR/graph can not be found **)
 else
- BOOST_LIB=$BOOST_DIR/lib
- BOOST_DIR=$BOOST_DIR/include/boost/graph
+ BOOST_DIR=$BOOST_DIR/graph
  AC_SUBST(BOOST_DIR, $BOOST_DIR)
- AC_SUBST(BOOST_LIB, $BOOST_LIB)
 fi
 
 dnl
@@ -68,7 +66,7 @@ else
     AC_MSG_ERROR(** $CGAL_DIR/include/CGAL can not be found **)
   else
 
-    CGAL_MKF=`find /usr/share/CGAL -name makefile_* -print`
+    CGAL_MKF=`find $CGAL_DIR/share/CGAL -name makefile_* -print`
     if test -z $CGAL_MKF; then
       CGAL_MKF=`find $CGAL_DIR/make -name makefile_* -print`
     fi
