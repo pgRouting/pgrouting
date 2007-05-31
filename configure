@@ -272,7 +272,7 @@ PACKAGE_STRING=
 PACKAGE_BUGREPORT=
 
 ac_unique_file="Makefile.in"
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT CXX CXXFLAGS ac_ct_CXX CPP EGREP BOOST_DIR BOOST_LIB CGAL_MKF CGAL_DIR CGAL_LIB GAUL_DIR GAUL_LIB LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT CXX CXXFLAGS ac_ct_CXX CPP EGREP BOOST_DIR CGAL_MKF CGAL_DIR CGAL_LIB GAUL_DIR GAUL_LIB LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -2983,19 +2983,16 @@ echo "$as_me: error: ** BOOST cannot be disabled **" >&2;}
 elif test -n "$with_boost" -a "$with_boost" != "yes" ; then
         BOOST_DIR=$with_boost
 else
-  BOOST_DIR='/usr'
+  BOOST_DIR='/usr/include/boost'
 fi
 
-if ! test -d $BOOST_DIR/include/boost/graph ; then
- { { echo "$as_me:$LINENO: error: ** $BOOST_DIR/include/boost/graph can not be found **" >&5
-echo "$as_me: error: ** $BOOST_DIR/include/boost/graph can not be found **" >&2;}
+if ! test -d $BOOST_DIR/graph ; then
+ { { echo "$as_me:$LINENO: error: ** $BOOST_DIR/graph can not be found **" >&5
+echo "$as_me: error: ** $BOOST_DIR/graph can not be found **" >&2;}
    { (exit 1); exit 1; }; }
 else
- BOOST_LIB=$BOOST_DIR/lib
- BOOST_DIR=$BOOST_DIR/include/boost/graph
+ BOOST_DIR=$BOOST_DIR/graph
  BOOST_DIR=$BOOST_DIR
-
- BOOST_LIB=$BOOST_LIB
 
 fi
 
@@ -3033,7 +3030,7 @@ echo "$as_me: error: ** $CGAL_DIR/include/CGAL can not be found **" >&2;}
    { (exit 1); exit 1; }; }
   else
 
-    CGAL_MKF=`find /usr/share/CGAL -name makefile_* -print`
+    CGAL_MKF=`find $CGAL_DIR/share/CGAL -name makefile_* -print`
     if test -z $CGAL_MKF; then
       CGAL_MKF=`find $CGAL_DIR/make -name makefile_* -print`
     fi
@@ -3744,7 +3741,6 @@ s,@ac_ct_CXX@,$ac_ct_CXX,;t t
 s,@CPP@,$CPP,;t t
 s,@EGREP@,$EGREP,;t t
 s,@BOOST_DIR@,$BOOST_DIR,;t t
-s,@BOOST_LIB@,$BOOST_LIB,;t t
 s,@CGAL_MKF@,$CGAL_MKF,;t t
 s,@CGAL_DIR@,$CGAL_DIR,;t t
 s,@CGAL_LIB@,$CGAL_LIB,;t t
