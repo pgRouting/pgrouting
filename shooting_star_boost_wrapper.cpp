@@ -334,6 +334,9 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
   
 	target_edge = predecessors[graph[target_edge].id];
 
+        if(target_edge == predecessors[graph[target_edge].id] )
+          continue;
+
         path_vect.push_back(target_edge);
 
         if (!max--) 
