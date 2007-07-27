@@ -66,10 +66,19 @@ else
     AC_MSG_ERROR(** $CGAL_DIR/include/CGAL can not be found **)
   else
 
-    CGAL_MKF=`find $CGAL_DIR/share/CGAL -name makefile_* -print`
-    if test -z $CGAL_MKF; then
-      CGAL_MKF=`find $CGAL_DIR/make -name makefile_* -print`
-    fi
+    CGAL_PATH="${CGAL_DIR}/share/CGAL ${CGAL_DIR}/share/cgal $CGAL_DIR/make" 
+    CGAL_MKF_NAME="cgal.mk makefile" 
+    for i in ${CGAL_MKF_NAME}; do 
+      for j in ${CGAL_PATH}; do 
+        CGAL_MKF=$(find ${j} -name ${i}* -print 2> /dev/null) 
+        if test -n "$CGAL_MKF"; then 
+          break 
+        fi 
+      done 
+      if test -n "$CGAL_MKF"; then 
+        break 
+      fi 
+    done 
 
     AC_SUBST(CGAL_MKF,  $CGAL_MKF)
 
