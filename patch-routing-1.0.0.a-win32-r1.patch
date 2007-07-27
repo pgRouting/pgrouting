@@ -1,0 +1,156 @@
+Only in routing/: .svn
+diff -cr routing/Makefile routing-win32/Makefile
+*** routing/Makefile	Sun May 27 03:13:00 2007
+--- routing-win32/Makefile	Fri May 25 23:20:44 2007
+***************
+*** 1,9 ****
+! CGAL_MAKEFILE = /usr/make/makefile_x86-64_Linux-2.6_g++-3.4.4
+! BOOST_PATH=/usr/include/boost/graph
+  GAUL_PATH =/usr/local/include/gaul
+! GAUL_LIB  =/usr/local/lib64
+! CGAL_PATH =/usr/include
+! CGAL_LIB  =/usr/lib64
+  
+  CXXFLAGS = \
+         -I../../include \
+--- 1,9 ----
+! CGAL_MAKEFILE = /usr/local/cgal/make/makefile_i686_MINGW32NT-5.1_g++-3.4.2
+! BOOST_PATH=/usr/local/include/boost/graph
+  GAUL_PATH =/usr/local/include/gaul
+! GAUL_LIB  =/usr/local/lib
+! CGAL_PATH =/usr/local/cgal/include
+! CGAL_LIB  =/usr/local/cgal/lib
+  
+  CXXFLAGS = \
+         -I../../include \
+***************
+*** 11,17 ****
+  $(LONG_NAME_PROBLEM_CXXFLAGS)
+  
+  EXTRA_FLAGS = -O2 -g -fpic
+!  
+  #---------------------------------------------------------------------#
+  #                    linker flags
+  #---------------------------------------------------------------------#
+--- 11,30 ----
+  $(LONG_NAME_PROBLEM_CXXFLAGS)
+  
+  EXTRA_FLAGS = -O2 -g -fpic
+! 
+! 
+! #---------------------------------------------------------------------#
+! #                    MinGW Win32 Specific
+! #---------------------------------------------------------------------#
+!  ifeq ($(findstring MINGW,$(MSYSTEM)),MINGW)
+!  	TSP_LIBS_ARGS=-lgaul -lgaul_util -lm
+!  	TSP_SOLVER_ARGS=-DBUILDING_DLL
+!  	ALPHADRIVELIST_ARGS=-I$(BOOST_PATH)
+!  else
+!  	TSP_LIBS_ARGS=-lgaul_util -lgaul 
+!  	TSP_SOLVER_ARGS=
+!  	ALPHADRIVELIST_ARGS=
+!  endif
+  #---------------------------------------------------------------------#
+  #                    linker flags
+  #---------------------------------------------------------------------#
+***************
+*** 30,36 ****
+   TSP_LIBS=
+  else
+   TSP_OBJS= tsp.o tsp_solver.o 
+!  TSP_LIBS= -L$(GAUL_LIB) -lgaul_util -lgaul
+  endif
+  
+  ifeq ($(CGAL_MAKEFILE),)
+--- 43,49 ----
+   TSP_LIBS=
+  else
+   TSP_OBJS= tsp.o tsp_solver.o 
+!  TSP_LIBS= -L$(GAUL_LIB) $(TSP_LIBS_ARGS)
+  endif
+  
+  ifeq ($(CGAL_MAKEFILE),)
+***************
+*** 71,77 ****
+  	$(CXX) $(CPPFLAGS) $(EXTRA_FLAGS) -I$(BOOST_PATH) -c boost_drivedist.cpp
+  
+  tsp_solver.o: tsp_solver.cpp
+! 	$(CXX) $(CPPFLAGS) $(EXTRA_FLAGS) -I$(GAUL_PATH) -c tsp_solver.cpp
+  
+  alpha_drivedist.o: alpha_drivedist.cpp
+! 	$(CXX) $(CPPFLAGS) $(EXTRA_FLAGS) -I$(CGAL_PATH) -I$(CGAL_INCL_CONF_DIR) -c alpha_drivedist.cpp
+--- 84,90 ----
+  	$(CXX) $(CPPFLAGS) $(EXTRA_FLAGS) -I$(BOOST_PATH) -c boost_drivedist.cpp
+  
+  tsp_solver.o: tsp_solver.cpp
+! 	$(CXX) $(CPPFLAGS) $(EXTRA_FLAGS) -I$(GAUL_PATH) $(TSP_SOLVER_ARGS) -c tsp_solver.cpp
+  
+  alpha_drivedist.o: alpha_drivedist.cpp
+! 	$(CXX) $(CPPFLAGS) $(EXTRA_FLAGS) $(ALPHADRIVELIST_ARGS) -I$(CGAL_PATH) -I$(CGAL_INCL_CONF_DIR) -c alpha_drivedist.cpp
+diff -cr routing/Makefile.in routing-win32/Makefile.in
+*** routing/Makefile.in	Sun May 27 03:12:58 2007
+--- routing-win32/Makefile.in	Fri May 25 23:19:48 2007
+***************
+*** 11,17 ****
+  $(LONG_NAME_PROBLEM_CXXFLAGS)
+  
+  EXTRA_FLAGS = -O2 -g -fpic
+!  
+  #---------------------------------------------------------------------#
+  #                    linker flags
+  #---------------------------------------------------------------------#
+--- 11,30 ----
+  $(LONG_NAME_PROBLEM_CXXFLAGS)
+  
+  EXTRA_FLAGS = -O2 -g -fpic
+! 
+! 
+! #---------------------------------------------------------------------#
+! #                    MinGW Win32 Specific
+! #---------------------------------------------------------------------#
+!  ifeq ($(findstring MINGW,$(MSYSTEM)),MINGW)
+!  	TSP_LIBS_ARGS=-lgaul -lgaul_util -lm
+!  	TSP_SOLVER_ARGS=-DBUILDING_DLL
+!  	ALPHADRIVELIST_ARGS=-I$(BOOST_PATH)
+!  else
+!  	TSP_LIBS_ARGS=-lgaul_util -lgaul 
+!  	TSP_SOLVER_ARGS=
+!  	ALPHADRIVELIST_ARGS=
+!  endif
+  #---------------------------------------------------------------------#
+  #                    linker flags
+  #---------------------------------------------------------------------#
+***************
+*** 30,36 ****
+   TSP_LIBS=
+  else
+   TSP_OBJS= tsp.o tsp_solver.o 
+!  TSP_LIBS= -L$(GAUL_LIB) -lgaul_util -lgaul
+  endif
+  
+  ifeq ($(CGAL_MAKEFILE),)
+--- 43,49 ----
+   TSP_LIBS=
+  else
+   TSP_OBJS= tsp.o tsp_solver.o 
+!  TSP_LIBS= -L$(GAUL_LIB) $(TSP_LIBS_ARGS)
+  endif
+  
+  ifeq ($(CGAL_MAKEFILE),)
+***************
+*** 71,77 ****
+  	$(CXX) $(CPPFLAGS) $(EXTRA_FLAGS) -I$(BOOST_PATH) -c boost_drivedist.cpp
+  
+  tsp_solver.o: tsp_solver.cpp
+! 	$(CXX) $(CPPFLAGS) $(EXTRA_FLAGS) -I$(GAUL_PATH) -c tsp_solver.cpp
+  
+  alpha_drivedist.o: alpha_drivedist.cpp
+! 	$(CXX) $(CPPFLAGS) $(EXTRA_FLAGS) -I$(CGAL_PATH) -I$(CGAL_INCL_CONF_DIR) -c alpha_drivedist.cpp
+--- 84,90 ----
+  	$(CXX) $(CPPFLAGS) $(EXTRA_FLAGS) -I$(BOOST_PATH) -c boost_drivedist.cpp
+  
+  tsp_solver.o: tsp_solver.cpp
+! 	$(CXX) $(CPPFLAGS) $(EXTRA_FLAGS) -I$(GAUL_PATH) $(TSP_SOLVER_ARGS) -c tsp_solver.cpp
+  
+  alpha_drivedist.o: alpha_drivedist.cpp
+! 	$(CXX) $(CPPFLAGS) $(EXTRA_FLAGS) $(ALPHADRIVELIST_ARGS) -I$(CGAL_PATH) -I$(CGAL_INCL_CONF_DIR) -c alpha_drivedist.cpp
