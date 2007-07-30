@@ -51,7 +51,7 @@ struct Edge
   std::vector< int > history;
 
   default_color_type color;
-  edge_index_t index;
+
   adjacency_list_traits<vecS, vecS, directedS>::edge_descriptor predecessor;
 };
 	
@@ -125,7 +125,7 @@ graph_add_edge(G &graph, int id, int source, int target,
     return;
 
   tie(e, inserted) = add_edge(source, target, graph);
-
+  
   graph[e].cost = cost;
   graph[e].id = id;
   
@@ -196,7 +196,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
     //if (vertices.find(edges_array[j].target) == vertices.end())    
     {
       offset++;
-      
+  
       vertices[trg]=j+offset;
       edges_array[j].target=j+offset;
     }
@@ -295,7 +295,8 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 
   property_map<graph_t, std::vector< int > Edge::*>::type history = get(&Edge::history, graph);
 
-  property_map<graph_t, edge_index_t Edge::*>::type edge_index = get(&Edge::index, graph);
+  property_map<graph_t, int Edge::*>::type edge_index = get(&Edge::id, graph);
+
   property_map<graph_t, float8 Edge::*>::type rank = get(&Edge::rank, graph);
   property_map<graph_t, float8 Edge::*>::type distance = get(&Edge::distance, graph);
 

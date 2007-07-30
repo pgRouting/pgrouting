@@ -278,9 +278,9 @@ static int compute_shortest_path_shooting_star(char* sql, int source_edge_id,
   edge_shooting_star_t *edges = NULL;
   int total_tuples = 0;
   
-  int v_max_id=0;
+//  int v_max_id=0;
+//  int v_min_id=INT_MAX;  
   int e_max_id=0;
-  int v_min_id=INT_MAX;  
   int e_min_id=INT_MAX;  
     
   edge_shooting_star_columns_t edge_columns = {id: -1, source: -1, target: -1, 
@@ -328,7 +328,7 @@ static int compute_shortest_path_shooting_star(char* sql, int source_edge_id,
 	    return finish(SPIcode, ret);
         }
 	
-	DBG("***%i***", ret);
+	//DBG("***%i***", ret);
 
       ntuples = SPI_processed;
       total_tuples += ntuples;
@@ -377,23 +377,7 @@ static int compute_shortest_path_shooting_star(char* sql, int source_edge_id,
     if(edges[z].id>e_max_id)
       e_max_id=edges[z].id;
 
-    
-    if(edges[z].source<v_min_id)
-      v_min_id=edges[z].source;
-  
-    if(edges[z].source>v_max_id)
-      v_max_id=edges[z].source;
-			            
-    if(edges[z].target<v_min_id)
-      v_min_id=edges[z].target;
-
-    if(edges[z].target>v_max_id)
-      v_max_id=edges[z].target;      
-								        
-								
   }
-
-    DBG("V : %i - %i", v_min_id, v_max_id);
 
     DBG("E : %i <-> %i", e_min_id, e_max_id);
 
@@ -409,8 +393,8 @@ static int compute_shortest_path_shooting_star(char* sql, int source_edge_id,
       ++t_count;
 
 
-    edges[z].source-=v_min_id;
-    edges[z].target-=v_min_id;
+    //edges[z].source-=v_min_id;
+    //edges[z].target-=v_min_id;
     
   }
     
@@ -432,16 +416,16 @@ static int compute_shortest_path_shooting_star(char* sql, int source_edge_id,
 
   DBG("Calling boost_shooting_star <%i>\n", total_tuples);
 
-  time_t stime = time(NULL);    
+  //time_t stime = time(NULL);    
 
   ret = boost_shooting_star(edges, total_tuples, source_edge_id, 
 		    target_edge_id,
 		    directed, has_reverse_cost,
 		    path, path_count, &err_msg, e_max_id);
 
-  time_t etime = time(NULL);    
+  //time_t etime = time(NULL);    
 
-  DBG("Path was calculated in %f seconds. \n", difftime(etime, stime));
+  //DBG("Path was calculated in %f seconds. \n", difftime(etime, stime));
 
   DBG("SIZE %i\n",*path_count);
 
@@ -516,7 +500,6 @@ shortest_path_shooting_star(PG_FUNCTION_ARGS)
     }
 
   /* stuff done on every call of the function */
-  //DBG("Strange stuff doing\n");
 
   funcctx = SRF_PERCALL_SETUP();
   
@@ -525,7 +508,7 @@ shortest_path_shooting_star(PG_FUNCTION_ARGS)
   tuple_desc = funcctx->tuple_desc;
   path = (path_element_t*) funcctx->user_fctx;
   
-  //DBG("Trying to allocate some memory\n");
+  DBG("Trying to allocate some memory\n");
 
   if (call_cntr < max_calls)    /* do when there is more left to send */
     {
@@ -536,7 +519,7 @@ shortest_path_shooting_star(PG_FUNCTION_ARGS)
       
       values = palloc(3 * sizeof(Datum));
       nulls = palloc(3 * sizeof(char));
-      
+ 
       values[0] = Int32GetDatum(path[call_cntr].vertex_id);
       nulls[0] = ' ';
       values[1] = Int32GetDatum(path[call_cntr].edge_id);
