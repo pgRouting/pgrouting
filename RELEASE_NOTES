@@ -1,17 +1,19 @@
-                     pgRouting Library Version 1.0.0a
-		                 2007-02-09
+                     pgRouting Library Version 1.0.0b
+		                 2007-08-03
 		               
 			       Release  Notes
 		
 		
 ===============================
-CHANGES SINCE PREVIOUS RELEASE:
+CHANGES SINCE RELEASE 1.0.0a:
 ===============================
-+ Shooting* shortest path algorithm for real road networks
++ Additional SQL file with more simple names for wrapper functions
+* Bugfixes
 
 ===============================
 CHANGES SINCE RELEASE 0.9.9:
 ===============================
++ Shooting* shortest path algorithm for real road networks
 * Several SQL bugs were fixed
 
 ===============================
