@@ -46,7 +46,8 @@ OBJS = dijkstra.o boost_wrapper.o astar.o astar_boost_wrapper.o \
        drivedist.o boost_drivedist.o shooting_star.o shooting_star_boost_wrapper.o \
        $(TSP_OBJS) $(ALPHA_OBJS)
 
-DATA = routing_postgis.sql
+#DATA = routing_postgis.sql
+DATA = routing_wrappers.sql routing_postgis.sql
 DATA_built = routing.sql
 DOCS = README.routing
 
