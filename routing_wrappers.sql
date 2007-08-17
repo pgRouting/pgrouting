@@ -25,8 +25,8 @@
 
 -- Geometry schema description:
 -- gid
--- source_id
--- target_id
+-- source
+-- target
 -- edge_id
 
 -- BEGIN;
@@ -56,12 +56,12 @@ BEGIN
 	EXECUTE 'UPDATE ' || quote_ident(vertices_table) || 
                 ' SET the_geom = startPoint(geometryn(m.the_geom, 1)) FROM ' ||
                  quote_ident(geom_table) || 
-                ' m where geom_id = m.source_id';
+                ' m where geom_id = m.source';
 
 	EXECUTE 'UPDATE ' || quote_ident(vertices_table) || 
                 ' set the_geom = endPoint(geometryn(m.the_geom, 1)) FROM ' || 
                 quote_ident(geom_table) || 
-                ' m where geom_id = m.target_id AND ' || 
+                ' m where geom_id = m.target AND ' || 
                 quote_ident(vertices_table) || 
                 '.the_geom IS NULL';
 
@@ -105,7 +105,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 
 
 -----------------------------------------------------------------------
--- Fill the source_id and target_id column for all lines. All line ends
+-- Fill the source and target column for all lines. All line ends
 --  with a distance less than tolerance, are assigned the same id
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION assign_vertex_id(geom_table varchar, 
@@ -163,8 +163,8 @@ DECLARE
 				target_id := point_to_id(setsrid(points.target, srid), tolerance);
                     							                                                        													
 				EXECUTE 'update ' || quote_ident(geom_table) || 
-				    ' SET source_id = ' || source_id || 
-                        	    ', target_id = ' || target_id || 
+				    ' SET source = ' || source_id || 
+                        	    ', target = ' || target_id || 
                                     ' WHERE ' || quote_ident(gid_cname) || ' =  ' || points.id;
                 END LOOP;
                     							                                                        														                                                            
