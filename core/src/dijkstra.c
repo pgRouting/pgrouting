@@ -23,6 +23,8 @@
 #include "executor/spi.h"
 #include "funcapi.h"
 
+#include "fmgr.h"
+
 #include "dijkstra.h"
 
 Datum shortest_path(PG_FUNCTION_ARGS);
@@ -40,7 +42,7 @@ Datum shortest_path(PG_FUNCTION_ARGS);
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
-#ifndef PG_MODULE_MAGIC
+#ifdef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif
 
