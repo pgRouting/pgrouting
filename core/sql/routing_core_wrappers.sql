@@ -130,11 +130,11 @@ DECLARE
                     			
       BEGIN
                     			
---	    BEGIN
---	        DROP TABLE vertices_tmp;
---        	EXCEPTION 
---			WHEN UNDEFINED_TABLE THEN
---                END;
+	    BEGIN
+	        DROP TABLE vertices_tmp;
+        	EXCEPTION 
+			WHEN UNDEFINED_TABLE THEN
+                END;
                     						    
 		EXECUTE 'CREATE TABLE vertices_tmp (id serial)';	
                 							
