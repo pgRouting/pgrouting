@@ -20,6 +20,7 @@ This library contains following features:
 REQUIREMENT
 
 * C and C++ compilers
+* CMake >= 2.3
 * Postgresql 8.x
 * PostGIS 1.x
 * Proj 4.x
@@ -39,14 +40,17 @@ INSTALLATION
  boost library (if you are on Debian, just type 
         "apt-get install libboost-graph-dev" and you don't need to modify anything)
 
-* Type "make install" 
+* Enter pgrouting directory
+
+* Type "cmake .", then "make" 
+  To include extra packages use "cmake -DWITH_TSP=ON -DWITH_DD=ON ."
 
 * If you have BGL installed but the version is less than 1.33.0, 
   just download the astar.hpp file from 
   http://www.boost.org/boost/graph/astar_search.hpp and copy it to 
   BOOST_PATH/graph directory.
 
-* If you have PostGIS installed, you can launch dijkstra_postgis.sql
+* If you have PostGIS installed, you can launch routing_wrapper.sql
   which will create PostGIS import and manipulation functions.
 
 * GAUL library should be compilled with --no-slang option. 

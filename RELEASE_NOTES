@@ -1,9 +1,16 @@
-                     pgRouting Library Version 1.0.0b
-		                 2007-08-03
+                     pgRouting Library Version 1.0
+		                 2007-10-04
 		               
 			       Release  Notes
 		
 		
+===============================
+CHANGES SINCE RELEASE 1.0.0b:
+===============================
++ Core and extra functions are separated
++ Cmake build process
+* Bugfixes
+
 ===============================
 CHANGES SINCE RELEASE 1.0.0a:
 ===============================
