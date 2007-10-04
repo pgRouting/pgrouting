@@ -28,6 +28,13 @@
 
 -- BEGIN;
 
+CREATE OR REPLACE FUNCTION text(boolean)
+       RETURNS text AS
+$$
+SELECT CASE WHEN $1 THEN 'true' ELSE 'false' END
+$$
+LANGUAGE 'sql';
+
 -----------------------------------------------------------------------
 -- For each vertex in the vertices table, set a point geometry which is
 --  the corresponding line start or line end point
@@ -123,15 +130,14 @@ DECLARE
                     			
       BEGIN
                     			
-	    BEGIN
-	        DROP TABLE vertices_tmp;
-        	EXCEPTION 
-			WHEN UNDEFINED_TABLE THEN
-                END;
+--	    BEGIN
+--	        DROP TABLE vertices_tmp;
+--        	EXCEPTION 
+--			WHEN UNDEFINED_TABLE THEN
+--                END;
                     						    
-		CREATE TABLE vertices_tmp ( id serial );	
+		EXECUTE 'CREATE TABLE vertices_tmp (id serial)';	
                 							
-		
 		FOR i IN EXECUTE 'SELECT srid FROM geometry_columns WHERE f_table_name='''|| quote_ident(geom_table)||'''' LOOP
 		END LOOP;
 		
@@ -140,7 +146,7 @@ DECLARE
 		EXECUTE 'SELECT addGeometryColumn(''vertices_tmp'', ''the_geom'', '||srid||', ''POINT'', 2)';
                     							                                                 
                 CREATE INDEX vertices_tmp_idx ON vertices_tmp USING GIST (the_geom);
-                    							                                                    
+		
                 pre = '';
                 post = '';
                 
@@ -151,14 +157,20 @@ DECLARE
                     	END IF;
 		END LOOP;
                     							                                                        							    
+--		FOR points IN EXECUTE 'SELECT ' || quote_ident(gid_cname) || ' AS id,'
+--			|| ' startPoint(' || pre || quote_ident(geo_cname) || post || ') AS source,'
+--			|| ' endPoint(' || pre || quote_ident(geo_cname) || post || ') as target'
+--			|| ' FROM ' || quote_ident(geom_table) loop
+--
 		FOR points IN EXECUTE 'SELECT ' || quote_ident(gid_cname) || ' AS id,'
-			|| ' startPoint(' || pre || quote_ident(geo_cname) || post || ') AS source,'
-			|| ' endPoint(' || pre || quote_ident(geo_cname) || post || ') as target'
+			|| ' PointN('|| quote_ident(geo_cname) ||', 1) AS source,'
+			|| ' PointN('|| quote_ident(geo_cname) ||', NumPoints('|| quote_ident(geo_cname) ||')) as target'
 			|| ' FROM ' || quote_ident(geom_table) loop
 
 				source_id := point_to_id(setsrid(points.source, srid), tolerance);
 				target_id := point_to_id(setsrid(points.target, srid), tolerance);
                     							                                                        													
+
 				EXECUTE 'update ' || quote_ident(geom_table) || 
 				    ' SET source = ' || source_id || 
                         	    ', target = ' || target_id || 
@@ -273,7 +285,7 @@ BEGIN
 	END IF;
 	
 	query := query || 'FROM ' ||  quote_ident(geom_table) || ''', ' || quote_literal(source) || 
-          ' , ' || quote_literal(target) || ' , '''||dir||''', '''||rc||'''), ' || 
+          ' , ' || quote_literal(target) || ' , '''||text(dir)||''', '''||text(rc)||'''), ' || 
           quote_ident(geom_table) || ' where edge_id = gid ';
 
 	FOR path_result IN EXECUTE query
@@ -462,7 +474,7 @@ BEGIN
           ll_x-delta||' '||ll_y-delta||','||ur_x+delta||' '||
           ur_y+delta||')''''::BOX3D, ' || srid || ') && the_geom'', ' || 
           quote_literal(sourceid) || ' , ' || 
-          quote_literal(targetid) || ' , '''||dir||''', '''||rc||''' ),' || 
+          quote_literal(targetid) || ' , '''||text(dir)||''', '''||text(rc)||''' ),' || 
           quote_ident(geom_table) || ' where edge_id = gid ';
 	  
 	FOR path_result IN EXECUTE query
@@ -648,7 +660,7 @@ BEGIN
           ll_x-delta||' '||ll_y-delta||','||ur_x+delta||' '||
           ur_y+delta||')''''::BOX3D, ' || srid || ') && the_geom'', ' || 
           quote_literal(sourceid) || ' , ' || 
-          quote_literal(targetid) || ' , '''||dir||''', '''||rc||''' ),' || 
+          quote_literal(targetid) || ' , '''||text(dir)||''', '''||text(rc)||''' ),' || 
           quote_ident(geom_table) || ' where edge_id = gid ';
 	
 	FOR path_result IN EXECUTE query
@@ -817,7 +829,7 @@ BEGIN
           ll_x-delta||' '||ll_y-delta||','||ur_x+delta||' '||
           ur_y+delta||')''''::BOX3D, ' || srid || ') && the_geom'', ' || 
           quote_literal(sourceid) || ' , ' || 
-          quote_literal(targetid) || ' , '''||dir||''', '''||rc||''' ), ' ||
+          quote_literal(targetid) || ' , '''||text(dir)||''', '''||text(rc)||''' ), ' ||
           quote_ident(geom_table) || ' where edge_id = gid ';
 	  
 	FOR path_result IN EXECUTE query
@@ -932,7 +944,7 @@ BEGIN
            quote_ident(geom_table) || ' where setSRID(''''BOX3D('||ll_x||' '||
            ll_y||','||ur_x||' '||ur_y||')''''::BOX3D, ' || srid || 
 	   ') && the_geom'', ' || quote_literal(sourceid) || ' , ' || 
-           quote_literal(targetid) || ' , '''||dir||''', '''||rc||''' ),'  ||
+           quote_literal(targetid) || ' , '''||text(dir)||''', '''||text(rc)||''' ),'  ||
            quote_ident(geom_table) || ' where edge_id = gid ';
 	
 	FOR path_result IN EXECUTE query
@@ -1013,7 +1025,7 @@ BEGIN
 
 	query := query || 'FROM ' || quote_ident(geom_table) || ' '', ' || 
            quote_literal(source) || ' , ' || 
-           quote_literal(target) || ' , '''||dir||''', '''||rc||'''), ' ||
+           quote_literal(target) || ' , '''||text(dir)||''', '''||text(rc)||'''), ' ||
            quote_ident(geom_table) || ' where edge_id = gid ';
 	   
 	FOR path_result IN EXECUTE query
@@ -1142,7 +1154,7 @@ BEGIN
           ll_x-delta||' '||ll_y-delta||','||ur_x+delta||' '||
           ur_y+delta||')''''::BOX3D, ' || srid || ') && the_geom'', ' || 
           quote_literal(sourceid) || ' , ' || 
-          quote_literal(targetid) || ' , '''||dir||''', '''||rc||''' ),' || 
+          quote_literal(targetid) || ' , '''||text(dir)||''', '''||text(rc)||''' ),' || 
           quote_ident(geom_table) || ' where edge_id = gid ';
 	  
 	FOR path_result IN EXECUTE query
