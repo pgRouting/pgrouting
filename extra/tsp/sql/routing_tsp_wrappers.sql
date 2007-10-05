@@ -118,7 +118,7 @@ BEGIN
 		
                 FOR r IN EXECUTE 'SELECT gid, the_geom FROM astar_sp_delta_directed( ''' || 
                   quote_ident(geom_table)  ||''', '|| v_id ||', '|| 
-                  prev ||','||delta||', '''||dir||''', '''||rc||''')' LOOP
+                  prev ||','||delta||', '''||text(dir)||''', '''||text(rc)||''')' LOOP
                     geom.gid := r.gid;
 	            geom.the_geom := r.the_geom;
                     id := id+1;
@@ -210,7 +210,7 @@ BEGIN
 
                 FOR r IN EXECUTE 'SELECT gid, the_geom FROM dijkstra_sp_delta_directed( ''' || 
                   quote_ident(geom_table)  ||''', '|| v_id ||', '|| 
-                  prev ||','||delta||', '''||dir||''', '''||rc||''')' LOOP
+                  prev ||','||delta||', '''||text(dir)||''', '''||text(rc)||''')' LOOP
                     geom.gid := r.gid;
 	            geom.the_geom := r.the_geom;
                     id := id+1;
