@@ -127,6 +127,8 @@ DECLARE
       post varchar;
       
       srid integer;
+      
+      countids integer;
                     			
       BEGIN
                     			
@@ -142,6 +144,11 @@ DECLARE
 		END LOOP;
 		
 		srid := i.srid;
+
+		FOR i IN EXECUTE 'SELECT count(*) as countids FROM '|| quote_ident(geom_table) LOOP
+		END LOOP;
+		
+		countids := i.countids;
 		
 		EXECUTE 'SELECT addGeometryColumn(''vertices_tmp'', ''the_geom'', '||srid||', ''POINT'', 2)';
                     							                                                 
@@ -166,6 +173,10 @@ DECLARE
 			|| ' PointN('|| quote_ident(geo_cname) ||', 1) AS source,'
 			|| ' PointN('|| quote_ident(geo_cname) ||', NumPoints('|| quote_ident(geo_cname) ||')) as target'
 			|| ' FROM ' || quote_ident(geom_table) loop
+			
+			IF points.id%10=0 THEN
+			  RAISE NOTICE '% out of % edges processed', points.id, countids;
+			END IF;
 
 				source_id := point_to_id(setsrid(points.source, srid), tolerance);
 				target_id := point_to_id(setsrid(points.target, srid), tolerance);
