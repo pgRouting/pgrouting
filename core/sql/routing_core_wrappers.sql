@@ -172,7 +172,7 @@ DECLARE
 		FOR points IN EXECUTE 'SELECT ' || quote_ident(gid_cname) || ' AS id,'
 			|| ' PointN('|| quote_ident(geo_cname) ||', 1) AS source,'
 			|| ' PointN('|| quote_ident(geo_cname) ||', NumPoints('|| quote_ident(geo_cname) ||')) as target'
-			|| ' FROM ' || quote_ident(geom_table) loop
+			|| ' FROM ' || quote_ident(geom_table) || ' ORDER BY ' || quote_ident(gid_cname) loop
 			
 			IF points.id%10=0 THEN
 			  RAISE NOTICE '% out of % edges processed', points.id, countids;
