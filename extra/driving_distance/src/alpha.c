@@ -26,6 +26,8 @@
 
 #include "alpha.h"
 
+#include "fmgr.h"
+
 /*
  * Define this to have profiling enabled
  */
