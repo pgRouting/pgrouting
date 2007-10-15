@@ -28,6 +28,10 @@
 
 #include "fmgr.h"
 
+#ifdef PG_MODULE_MAGIC
+PG_MODULE_MAGIC;
+#endif
+
 /*
  * Define this to have profiling enabled
  */
@@ -40,10 +44,6 @@
   \brief Maximal number of nodes in the path (to avoid infinite loops)
 */
 #define MAX_NODES 1000000
-
-#ifdef PG_MODULE_MAGIC
-PG_MODULE_MAGIC;
-#endif
 
 struct timeval prof_alpha, prof_store, prof_extract, prof_total;
 long proftime[5];
