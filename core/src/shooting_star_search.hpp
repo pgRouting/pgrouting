@@ -27,36 +27,36 @@
 #include <queue>
 #include "edge_visitors.hpp"
 
-#include <iostream>
-#include <fstream>
-
-  template <class Edge>
-  struct EdgeRankCompare {
-    bool operator()(const Edge& LHS, const Edge& RHS) {
-      return (LHS.rank < RHS.rank);
-    }
-		
-  };
-
-  template <class Edge, class Container, class Cmp>
-      class edge_queue : public std::priority_queue<Edge, Container, Cmp>
+template <class Edge>
+struct EdgeRankCompare 
+{
+  bool operator()(const Edge& LHS, const Edge& RHS) 
   {
-  protected:
-    using std::priority_queue< Edge, Container, Cmp >::c;
-    using std::priority_queue< Edge, Container, Cmp >::comp;
+    return (LHS.rank < RHS.rank);
+  }
+		
+};
+
+template <class Edge, class Container, class Cmp>
+class edge_queue : public std::priority_queue<Edge, Container, Cmp>
+{
+protected:
+  using std::priority_queue< Edge, Container, Cmp >::c;
+  using std::priority_queue< Edge, Container, Cmp >::comp;
     
-  public:
-      void sort()
-      {
-        sort_heap(c.begin(), c.end(), comp);
-      }   
-  };
+public:
+  void sort()
+  {
+    sort_heap(c.begin(), c.end(), comp);
+  }   
+};
 
-namespace boost {
-
+namespace boost 
+{
   
   template <class Heuristic, class Graph>
-  struct AStarHeuristicConcept {
+  struct AStarHeuristicConcept 
+  {
     void constraints()
     {
       function_requires< CopyConstructibleConcept<Heuristic> >();
@@ -69,7 +69,7 @@ namespace boost {
     
 
   template <class Graph, class CostType>
-      class astar_heuristic : public std::unary_function<
+  class astar_heuristic : public std::unary_function<
     typename graph_traits<Graph>::vertex_descriptor, CostType>
   {
   public:
@@ -109,18 +109,17 @@ namespace boost {
   
 
   template <class IncidenceGraph, class Buffer, class BFSVisitor,
-            class ColorMap, class EdgeColorMap, class HistoryMap>
+            class ColorMap, class EdgeColorMap/*, class HistoryMap*/>
   void shooting_star_edges_visit (const IncidenceGraph& g,
 		            typename graph_traits<IncidenceGraph>::edge_descriptor s,
 			    Buffer& Q, BFSVisitor vis, ColorMap color, EdgeColorMap edge_color, 
-			    HistoryMap history, int e_max_id)
+			    int e_max_id)
   {
     function_requires< IncidenceGraphConcept<IncidenceGraph> >();
     typedef graph_traits<IncidenceGraph> GTraits;
     typedef typename GTraits::vertex_descriptor Vertex;
     typedef typename GTraits::edge_descriptor Edge;
     function_requires< ShootingStarVisitorConcept<BFSVisitor, IncidenceGraph> >();
-    function_requires< ReadWritePropertyMapConcept<ColorMap, Vertex> >();
     function_requires< ReadWritePropertyMapConcept<EdgeColorMap, Edge> >();
     
     typedef typename property_traits<ColorMap>::value_type ColorValue;
@@ -130,68 +129,89 @@ namespace boost {
     typedef color_traits<EdgeColorValue> EdgeColor;
 
     typename GTraits::out_edge_iterator ei, ei_end;
-								    
-    put(edge_color, s, EdgeColor::gray());         vis.discover_edge(s, g);
+
+    put(edge_color, s, EdgeColor::gray());
+    vis.discover_edge(s, g);
+    
     Q.push(s);
     
-    while (! Q.empty()) {
-      Edge e = Q.top();  Q.pop();            vis.examine_edge(e, g);
+    while (! Q.empty()) 
+    {
+      Edge e = Q.top();  Q.pop();            
       
-      for (tie(ei, ei_end) = out_edges(target(e, g), g); ei != ei_end; ++ei) {
+      vis.examine_edge(e, g);
       
-	EdgeColorValue e_color = get(edge_color, *ei);
+      for (tie(ei, ei_end) = out_edges(target(e, g), g); ei != ei_end; ++ei) 
+      {
+        EdgeColorValue e_color = get(edge_color, *ei);
 
-        if (e_color == EdgeColor::white()) {         vis.tree_edge(*ei, e, g, e_max_id);
-	  put(edge_color, *ei, EdgeColor::gray());   vis.discover_edge(*ei, g);
+        if (e_color == EdgeColor::white()) 
+	{         
+	  vis.tree_edge(*ei, e, g, e_max_id);
+	  put(edge_color, *ei, EdgeColor::gray());   
+	  vis.discover_edge(*ei, g);
           Q.push(*ei);
-	  
-        } else {                                     vis.non_tree_edge(*ei, g);
-          if (e_color == EdgeColor::gray()){         vis.gray_target(*ei, e, g, e_max_id);
+        } 
+	else 
+	{                                     
+	  vis.non_tree_edge(*ei, g);
+          if (e_color == EdgeColor::gray())
+	  {         
+	    vis.gray_target(*ei, e, g, e_max_id);
           }
-	  else{                                      vis.black_target(*ei, e, g, e_max_id);
+	  else
+	  {                                      
+	    vis.black_target(*ei, e, g, e_max_id);
 	  }
         }
 	
       } // end for
 
-      put(edge_color, e, EdgeColor::black());        vis.finish_edge(e, g);
+      put(edge_color, e, EdgeColor::black());        
+      vis.finish_edge(e, g);
       
     } // end while
-    
   }
 																							      
   
   template <class Visitors = null_visitor>
-  class shooting_star_visitor : public bfs_visitor<Visitors> {
-  public:
-    shooting_star_visitor() {}
-    shooting_star_visitor(Visitors vis)
-      : bfs_visitor<Visitors>(vis) {}
+  class shooting_star_visitor : public bfs_visitor<Visitors> 
+  {
+    public:
+      shooting_star_visitor() {}
+      shooting_star_visitor(Visitors vis)
+        : bfs_visitor<Visitors>(vis) {}
   
-    template <class Edge, class Graph>
-    void edge_relaxed(Edge e, Graph& g) {
-      invoke_visitors(this->m_vis, e, g, on_edge_relaxed());
-    }
-    template <class Edge, class Graph>
-    void edge_not_relaxed(Edge e, Graph& g) {
-      invoke_visitors(this->m_vis, e, g, on_edge_not_relaxed());      
-    }
-    template <class Edge, class Graph>
-    void initialize_edge(Edge e, Graph& g) {
-      invoke_visitors(this->m_vis, e, g, on_initialize_edge());      
-    }
+      template <class Edge, class Graph>
+      void edge_relaxed(Edge e, Graph& g) 
+      {
+        invoke_visitors(this->m_vis, e, g, on_edge_relaxed());
+      }
+      template <class Edge, class Graph>
+      void edge_not_relaxed(Edge e, Graph& g) 
+      {
+        invoke_visitors(this->m_vis, e, g, on_edge_not_relaxed());      
+      }
+      template <class Edge, class Graph>
+      void initialize_edge(Edge e, Graph& g) 
+      {
+        invoke_visitors(this->m_vis, e, g, on_initialize_edge());      
+      }
     
-  private:
-    template <class Edge, class Graph>
-    void tree_edge(Edge e, Edge pe, Graph& g) {}
-    template <class Edge, class Graph>
-    void non_tree_edge(Edge e, Graph& g) {}
+    private:
+      template <class Edge, class Graph>
+      void tree_edge(Edge e, Edge pe, Graph& g) {}
+      template <class Edge, class Graph>
+      void non_tree_edge(Edge e, Graph& g) {}
   };
+
   template <class Visitors>
   shooting_star_visitor<Visitors>
-  make_shooting_star_visitor(Visitors vis) {
+  make_shooting_star_visitor(Visitors vis) 
+  {
     return shooting_star_visitor<Visitors>(vis);
   }
+  
   typedef shooting_star_visitor<> default_shooting_star_visitor;
   
 
@@ -199,9 +219,10 @@ namespace boost {
     
     template <class AStarHeuristic, class UniformCostVisitor,
               class UpdatableQueue, class PredecessorMap,
-              class CostMap, class DistanceMap, class WeightMap,
+              class CostMap, 
+	      class DistanceMap, class WeightMap,
 	      class EdgeMap,
-              class ColorMap, class EdgeColorMap, class HistoryMap, 
+              class ColorMap, class EdgeColorMap,
 	      class BinaryFunction,
               class BinaryPredicate>
     struct shooting_star_bfs_visitor
@@ -219,41 +240,55 @@ namespace boost {
       shooting_star_bfs_visitor(AStarHeuristic h, UniformCostVisitor vis,
                         UpdatableQueue& Q, PredecessorMap& p,
                         CostMap c, DistanceMap d, WeightMap w, EdgeMap em,
-                        ColorMap col, EdgeColorMap ecol, HistoryMap his, 
+                        ColorMap col, EdgeColorMap ecol, //HistoryMap his, 
 			BinaryFunction combine,
                         BinaryPredicate compare, C zero)
         : m_h(h), m_vis(vis), m_Q(Q), m_predecessor(p), m_cost(c),
           m_distance(d), m_weight(w), m_edge(em), m_color(col), 
-	  m_ecolor(ecol), m_history(his),
+	  m_ecolor(ecol), //m_history(his),
           m_combine(combine), m_compare(compare), m_zero(zero) {}
-      
+
+      shooting_star_bfs_visitor(const shooting_star_bfs_visitor &v)
+        : m_h(v.m_h), m_vis(v.m_vis), m_Q(v.m_Q), m_predecessor(v.m_predecessor), m_cost(v.m_cost),
+          m_distance(v.m_distance), m_weight(v.m_weight), m_edge(v.m_edge), m_color(v.m_color), 
+	  m_ecolor(v.m_ecolor), //m_history(his),
+          m_combine(v.m_combine), m_compare(v.m_compare), m_zero(v.m_zero) {}
+	  
+      ~shooting_star_bfs_visitor() {}
       
       template <class Vertex, class Graph>
-      void initialize_vertex(Vertex u, Graph& g) {
+      void initialize_vertex(Vertex u, Graph& g) 
+      {
         m_vis.initialize_vertex(u, g);
       }
       template <class Edge, class Graph>
-      void initialize_edge(Edge e, Graph& g) {
+      void initialize_edge(Edge e, Graph& g) 
+      {
         m_vis.initialize_edge(e, g);
       }
       template <class Vertex, class Graph>
-      void discover_vertex(Vertex u, Graph& g) {
+      void discover_vertex(Vertex u, Graph& g) 
+      {
         m_vis.discover_vertex(u, g);
       }
       template <class Edge, class Graph>
-      void discover_edge(Edge e, Graph& g) {
+      void discover_edge(Edge e, Graph& g) 
+      {
         m_vis.discover_vertex(e, g);
       }
       template <class Vertex, class Graph>
-      void examine_vertex(Vertex u, Graph& g) {
+      void examine_vertex(Vertex u, Graph& g) 
+      {
         m_vis.examine_vertex(u, g);
       }
       template <class Vertex, class Graph>
-      void finish_vertex(Vertex u, Graph& g) {
+      void finish_vertex(Vertex u, Graph& g) 
+      {
         m_vis.finish_vertex(u, g);
       }
       template <class Edge, class Graph>
-      void examine_edge(Edge e, Graph& g) { 
+      void examine_edge(Edge e, Graph& g) 
+      { 
         if (m_compare(get(m_weight, e), m_zero))
           throw negative_edge();
         m_vis.examine_edge(e, g);
@@ -262,36 +297,40 @@ namespace boost {
       void non_tree_edge(Edge, Graph&) {}
       
       template <class Edge, class Graph>
-      void finish_edge(Edge e, Graph& g) {
+      void finish_edge(Edge e, Graph& g) 
+      {
         m_vis.finish_edge(e, g);
       }
       
       
       template <class Edge, class Graph>
-      void tree_edge(Edge e, Edge pe, Graph& g, int e_max_id) {
-
+      void tree_edge(Edge e, Edge pe, Graph& g, int e_max_id) 
+      {
         m_decreased = relax(e, pe, g, m_weight, m_edge, m_predecessor, m_distance,
-                            m_cost, m_history, m_combine, m_compare, e_max_id);
+                            m_cost, m_combine, m_compare, e_max_id);
     
-        if(m_decreased) {
+        if(m_decreased) 
+	{
           m_vis.edge_relaxed(e, g);
           
 	  put(m_cost, e,
               m_combine(get(m_distance, e),
                         m_h(e)));
 
-        } else
+        } 
+	else
           m_vis.edge_not_relaxed(e, g);
       }
       
       
       template <class Edge, class Graph>
-      void gray_target(Edge e, Edge pe, Graph& g, int e_max_id) {
-        
+      void gray_target(Edge e, Edge pe, Graph& g, int e_max_id) 
+      {
         m_decreased = relax(e, pe, g, m_weight, m_edge, m_predecessor, m_distance,
-                            m_cost, m_history, m_combine, m_compare, e_max_id);
+                            m_cost, m_combine, m_compare, e_max_id);
 
-        if(m_decreased) {
+        if(m_decreased) 
+	{
 	  put(m_cost, e,
               m_combine(get(m_distance, e),
                         m_h(e)));
@@ -299,27 +338,29 @@ namespace boost {
           m_Q.update(e);
 	  	  
           m_vis.edge_relaxed(e, g);
-        } else
+        } 
+	else
           m_vis.edge_not_relaxed(e, g);
       }
       
             
       template <class Edge, class Graph>
-      void black_target(Edge e, Edge pe, Graph& g, int e_max_id) {
+      void black_target(Edge e, Edge pe, Graph& g, int e_max_id) 
+      {
 
         m_decreased = relax(e, pe, g, m_weight, m_edge, m_predecessor, m_distance,
-                            m_cost, m_history, m_combine, m_compare, e_max_id);
+                            m_cost, m_combine, m_compare, e_max_id);
 
-        if(m_decreased) {
+        if(m_decreased) 
+	{
           m_vis.edge_relaxed(e, g);
-	  put(m_cost, e,
-              m_combine(get(m_distance, e),
-                        m_h(e)));
+	  put(m_cost, e, m_combine(get(m_distance, e), m_h(e)));
           
           m_Q.push(e);
           put(m_ecolor, e, EdgeColor::gray());
           m_vis.black_target(e, g);
-        } else
+        } 
+	else
           m_vis.edge_not_relaxed(e, g);
       }  
 
@@ -333,23 +374,21 @@ namespace boost {
       WeightMap m_weight;
       ColorMap m_color;
       EdgeColorMap m_ecolor;
-      HistoryMap m_history;
       BinaryFunction m_combine;
       BinaryPredicate m_compare;
       bool m_decreased;
-      C m_zero;
-      
+      C m_zero;      
     };
     
   } // namespace detail
 
   template <typename VertexAndEdgeListGraph, typename AStarHeuristic,
             typename ShootingStarVisitor, typename PredecessorMap,
-            typename CostMap, typename DistanceMap,
+            typename CostMap, 
+	    typename DistanceMap,
             typename WeightMap, 
 	    typename EdgeMap,
 	    typename ColorMap, typename EdgeColorMap,
-            typename HistoryMap,
 	    typename IndexMap,
             typename CompareFunction, typename CombineFunction,
             typename CostInf, typename CostZero>
@@ -360,7 +399,7 @@ namespace boost {
      AStarHeuristic h, ShootingStarVisitor vis,
      PredecessorMap &predecessor, CostMap cost,
      DistanceMap distance, WeightMap weight, EdgeMap edge_map,
-     ColorMap color, EdgeColorMap edge_color, HistoryMap history,
+     ColorMap color, EdgeColorMap edge_color,
      IndexMap index_map, CompareFunction compare, CombineFunction combine,
      CostInf inf, CostZero zero, int e_max_id)
   {
@@ -376,11 +415,11 @@ namespace boost {
 
     detail::shooting_star_bfs_visitor<AStarHeuristic, ShootingStarVisitor,
         MutableQueue, PredecessorMap, CostMap, DistanceMap,
-	WeightMap, EdgeMap, ColorMap, EdgeColorMap, HistoryMap, CombineFunction, CompareFunction>
+	WeightMap, EdgeMap, ColorMap, EdgeColorMap, /*HistoryMap,*/ CombineFunction, CompareFunction>
       bfs_vis(h, vis, Q, predecessor, cost, distance, weight,
-              edge_map, color, edge_color, history, combine, compare, zero);
+              edge_map, color, edge_color, combine, compare, zero);
   
-    shooting_star_edges_visit(g, s, Q, bfs_vis, color, edge_color, history, e_max_id);
+    shooting_star_edges_visit(g, s, Q, bfs_vis, color, edge_color, e_max_id);
   }
   
   // Non-named parameter interface
@@ -390,7 +429,7 @@ namespace boost {
             typename WeightMap, typename EdgeMap, 
 	    typename IndexMap,
             typename ColorMap, typename EdgeColorMap,
-	    typename HistoryMap,
+	    //typename HistoryMap,
             typename CompareFunction, typename CombineFunction,
             typename CostInf, typename CostZero>
   inline void
@@ -401,7 +440,7 @@ namespace boost {
      PredecessorMap &predecessor, CostMap cost,
      DistanceMap distance, WeightMap weight,
      EdgeMap edge_map, IndexMap index_map, ColorMap color, EdgeColorMap edge_color,
-     HistoryMap history, CompareFunction compare, CombineFunction combine,
+     CompareFunction compare, CombineFunction combine,
      CostInf inf, CostZero zero, int e_max_id)
   {
     
@@ -414,11 +453,13 @@ namespace boost {
     typename graph_traits<VertexAndEdgeListGraph>::vertex_iterator ui, ui_end;
     typename graph_traits<VertexAndEdgeListGraph>::edge_iterator ei, ei_end;
 
-    for (tie(ui, ui_end) = vertices(g); ui != ui_end; ++ui) {
+    for (tie(ui, ui_end) = vertices(g); ui != ui_end; ++ui) 
+    {
       vis.initialize_vertex(*ui, g);
     }
 
-    for (tie(ei, ei_end) = edges(g); ei != ei_end; ++ei) {
+    for (tie(ei, ei_end) = edges(g); ei != ei_end; ++ei) 
+    {
       put(distance, *ei, inf);
       put(edge_color, *ei, EdgeColor::white());
       predecessor[g[*ei].id] = *ei;
@@ -431,17 +472,18 @@ namespace boost {
 
     shooting_star_search_no_init
       (g, s, h, vis, predecessor, cost, distance, weight, edge_map,
-       color, edge_color, history, index_map, compare, combine, inf, zero, e_max_id);
+       color, edge_color, index_map, compare, combine, inf, zero, e_max_id);
     
   }
   
-  namespace detail {
+  namespace detail 
+  {
     template <class VertexAndEdgeListGraph, class AStarHeuristic,
               class CostMap, class DistanceMap, class WeightMap, class EdgeMap,
               class IndexMap, 
 	      class PredecessorMap,
 	      class ColorMap, class EdgeColorMap, 
-	      class HistoryMap, class Params>
+	      class Params>
     inline void
     shooting_star_dispatch2
       (VertexAndEdgeListGraph& g,
@@ -449,7 +491,7 @@ namespace boost {
        AStarHeuristic h, CostMap cost, DistanceMap distance,
        WeightMap weight, EdgeMap edge_map, IndexMap index_map, 
        PredecessorMap& predecessor, ColorMap color,
-       EdgeColorMap edge_color, HistoryMap history, const Params& params,
+       EdgeColorMap edge_color, const Params& params,
        int e_max_id)
     {
       dummy_property_map p_map;
@@ -459,7 +501,7 @@ namespace boost {
          choose_param(get_param(params, graph_visitor),
                       make_shooting_star_visitor(null_visitor())),
 	 predecessor,
-         cost, distance, weight, edge_map, index_map, color, edge_color, history,
+         cost, distance, weight, edge_map, index_map, color, edge_color, //history,
          choose_param(get_param(params, distance_compare_t()),
                       std::less<C>()),
          choose_param(get_param(params, distance_combine_t()),
@@ -477,14 +519,14 @@ namespace boost {
               class EdgeMap, class IndexMap, 
 	      class PredecessorMap,
 	      class ColorMap, class EdgeColorMap,
-	      class HistoryMap, class Params>
+	      class Params>
     inline void
     shooting_star_dispatch1
       (VertexAndEdgeListGraph& g,
        typename graph_traits<VertexAndEdgeListGraph>::edge_descriptor s,
        AStarHeuristic h, CostMap cost, DistanceMap distance,
        WeightMap weight, EdgeMap edge_map, IndexMap index_map, PredecessorMap& predecessor, 
-       ColorMap color, EdgeColorMap edge_color, HistoryMap history, const Params& params,
+       ColorMap color, EdgeColorMap edge_color, const Params& params,
        int e_max_id)
     {
       typedef typename property_traits<WeightMap>::value_type D;
@@ -495,7 +537,6 @@ namespace boost {
       std::vector<D> cost_map(n);
 
       std::vector<default_color_type> color_map(num_vertices(g));
-      std::vector<default_color_type> edge_color_map(num_edges(g));
       default_color_type c = white_color;
       
       detail::shooting_star_dispatch2
@@ -511,7 +552,6 @@ namespace boost {
 	 choose_param(color, make_iterator_property_map
                       (color_map.begin(), index_map, c)),
 	 edge_color, 
-	 history,
          params,
 	 e_max_id);
     }
@@ -524,7 +564,6 @@ namespace boost {
 	    typename IndexMap,
 	    typename DistanceMap,
 	    typename CostMap,
-	    typename HistoryMap,
 	    typename PredecessorMap>
   void
   shooting_star_search
@@ -534,7 +573,6 @@ namespace boost {
      IndexMap edge_index,
      DistanceMap distance, 
      CostMap cost,
-     HistoryMap history, 
      PredecessorMap &pre_map,
      int e_max_id)
   {
@@ -550,7 +588,6 @@ namespace boost {
        pre_map, //predecessors
        get_param(params, vertex_color), //vertex color (deprecated)
        get_param(params, edge_color), //edge color
-       history,
        params,
        e_max_id
        );    

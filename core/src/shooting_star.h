@@ -22,6 +22,9 @@
 #define _SHOOTING_STAR_H
 #define MAX_RULE_LENGTH 5
 
+#define MAX_NODES 1000000
+#define MAX_COST  100000
+
 #include "postgres.h"
 
 typedef struct edge_shooting_star 

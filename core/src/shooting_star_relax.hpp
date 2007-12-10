@@ -17,9 +17,9 @@
 #include <boost/graph/graph_traits.hpp>
 #include <boost/property_map.hpp>
 
-#include <iostream>
-#include <fstream>
 #include <postgres.h>
+
+#define U_TURN_COST 100000
 
 bool is_equal ( int a[], int b[], int size )
 {
@@ -55,12 +55,11 @@ namespace boost {
     
     template <class Edge, class Graph, class WeightMap, class EdgeMap,
             class PredecessorMap, class DistanceMap, class CostMap,
-            class HistoryMap, class BinaryFunction, class BinaryPredicate>
+            class BinaryFunction, class BinaryPredicate>
     bool relax(Edge e, 
                Edge pe, 
                const Graph& g, const WeightMap& w, const EdgeMap& em,
                PredecessorMap& p, DistanceMap& d, CostMap& c,
-	       HistoryMap& his,
                const BinaryFunction& combine, const BinaryPredicate& compare,
 	       int e_max_id)
     {
@@ -80,77 +79,64 @@ namespace boost {
       D d_pe = get(d, pe);
       
       W w_e = get(w, e);
-      
-      //myfile<<"w(e) = "<<w_e<<"\n"<<std::flush;
-
-      //myfile<<"cost("<<g[e].id<<") = "<<get(c, e)<<"\n"<<std::flush;
-
-      //myfile<<"d("<<g[e].id<<") = "<<get(d, e)<<"\n"<<std::flush;
-
-      //myfile<<g[u].id<<" - "<<g[v].id<<" : d_e="<<d_e<<"\n"<<std::flush;
-
 
       //edge where we came from
       bool edge_exists;
-      //Edge pe;
-      
-      //pe = get(p, g[e].id);
       
       W w_pe_e;
 
-      //E w_pe = get(em, pe);
       E w_pe = get(em, e);
       
-      bool contains = false;
+      int contains = -1;
 	
-
-      //myfile<<"w(pe, e) = "<<w_pe_e<<"\n"<<std::flush;
-
-      //myfile<<"id = "<<g[e].id<<", size = "<<w_pe[g[e].id].second.size()<<"\n"<<std::flush;
-
       Edge ce = pe;
       int e_id;
 
       std::vector<Edge> edge_h;
       typedef typename std::vector<Edge>::iterator It;
 
-      //for(int i=w_pe[g[e].id].second.size()-1; i>=0; --i)
+      for(int i=0; i< w_pe[g[e].id].size(); ++i)
       
-      if(w_pe[g[e].id].second.size() < 1 || w_pe[g[e].id].second.back() > 0)
-      for(int i=0; i<w_pe[g[e].id].second.size(); ++i)
+      if(w_pe[g[e].id].at(i).second.size() < 1 || w_pe[g[e].id].at(i).second.back() > 0)
+      {
+      
+      for(int j=0; j<w_pe[g[e].id].at(i).second.size(); ++j)
       {
 	e_id = g[ce].id;
-	//myfile<<"e_id="<<e_id<<", second["<<g[e].id<<"]="<<w_pe[g[e].id].second.at(i)<<"\n"<<std::flush;
 	
-        if(w_pe[g[e].id].second.at(i) == -1)
+        if(w_pe[g[e].id].at(i).second.at(j) == -1)
 	  continue;
-	  
-	if(w_pe[g[e].id].second.at(i) == e_id || w_pe[g[e].id].second.at(i)+e_max_id == e_id)
+	
+	if(w_pe[g[e].id].at(i).second.at(j) == e_id || w_pe[g[e].id].at(i).second.at(j)+e_max_id == e_id||
+	   w_pe[g[e].id].at(i).second.at(j) == e_id+e_max_id || w_pe[g[e].id].at(i).second.at(j)+e_max_id == e_id+e_max_id)
 	{
-	 contains = true;
+	 contains = i;
 	 edge_h.push_back(ce);
 	}
-	else
+	else if(i == contains)
 	{
-	 contains = false;
+	 contains = -1;
 	}
 	
 	ce = p[g[ce].id];
       }
       
+      }
+      
       //calculate w_pe_e
-      if(contains)
+      if(contains >= 0)
       {
-
-        w_pe_e = w_pe[g[e].id].first;
-
-
+        w_pe_e = w_pe[g[e].id].at(contains).first;
+      }
+      else if(abs(g[e].id-g[pe].id) == e_max_id)
+      {
+	w_pe_e = U_TURN_COST;
       }
       else
       {
         w_pe_e = 0;
       }
-	
+
       //Ugly combination with w_e_pe.
 
       if ( compare(combine(combine(d_pe, get(w, pe)), w_pe_e), d_e)) 

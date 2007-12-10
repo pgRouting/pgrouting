@@ -20,8 +20,6 @@
  */
 
 #include <boost/config.hpp>
-#include <iostream>
-#include <fstream>
 
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
@@ -35,26 +33,16 @@
 using namespace std;
 using namespace boost;
 
-// Maximal number of nodes in the path (to avoid infinite loops)
-#define MAX_NODES 1000000
-
 struct Edge
 {
   int id;
   int source;
   int target;
   float8 cost;
-  float8 distance;
-  float8 rank;
-  std::map< int, std::pair<float8, std::vector<int> >, std::less<int> > adjacent_edges;
-
-  std::vector< int > history;
-
+  float distance;
+  float rank;
+  std::map< int, vector< std::pair<float, std::vector<int> > >, std::less<int> > adjacent_edges;
   default_color_type color;
-  
-  std::size_t index;
-
-  adjacency_list_traits<vecS, vecS, directedS>::edge_descriptor predecessor;
 };
 	
 struct Vertex
@@ -62,50 +50,59 @@ struct Vertex
   int id;
   float8 x;
   float8 y;
-
-  default_color_type color;
-  
-  float8 cost;
-  
 };
 
-
-struct found_goal {}; // exception for termination
+// exception for termination
+struct found_goal 
+{
+  public:
+    found_goal() {}
+    found_goal(const found_goal &fg) {}
+    ~found_goal() {}
+}; 
 
 // visitor that terminates when we find the goal
 template <class Edge>
 class shooting_star_goal_visitor : public boost::default_shooting_star_visitor
 {
 public:
-  shooting_star_goal_visitor(Edge goal) : m_goal(goal) {}
+  shooting_star_goal_visitor(Edge goal, int max_id) : m_goal(goal){}
+  shooting_star_goal_visitor(const shooting_star_goal_visitor &gv) : m_goal(gv.m_goal){}
+  ~shooting_star_goal_visitor(){}
 
   template <class Graph>
-  void examine_edge(Edge e, Graph& g) {
-    if(g[e].id == g[m_goal].id)
+  void examine_edge(Edge e, Graph& g) 
+  {
+    if( g[e].id == g[m_goal].id)
+    {
       throw found_goal();
+    }
   }
   template <class Graph>
   void finish_edge(Edge e, Graph& g) {}
 private:
   Edge m_goal;
+  int  e_max_id;
 };
 
 
 template <class Graph, class CostType>
-class distance_heuristic : public astar_heuristic<Graph, CostType>
+class distance_heuristic
 {
 public:
   typedef typename graph_traits<Graph>::edge_descriptor Edge;
   distance_heuristic(Graph& g, Edge goal):m_g(g), m_goal(goal){}
   CostType operator()(Edge e)
   {
-    CostType dx = m_g[target(m_goal, m_g)].x - m_g[target(e, m_g)].x;
-    CostType dy = m_g[target(m_goal, m_g)].y - m_g[target(e, m_g)].y;
+    CostType dx = m_g[source(m_goal, m_g)].x - m_g[source(e, m_g)].x;
+    CostType dxt = m_g[target(m_goal, m_g)].x - m_g[target(e, m_g)].x;
+    CostType dy = m_g[source(m_goal, m_g)].y - m_g[source(e, m_g)].y;
+    CostType dyt = m_g[target(m_goal, m_g)].y - m_g[target(e, m_g)].y;
     //You can choose any heuristical function from below
     //return ::max(dx, dy);
     //return ::sqrt(dx * dx + dy * dy)/2;
     //return 0;
-    return (::fabs(dx)+::fabs(dy))/2;
+    return (min(::fabs(dx),::fabs(dxt))+min(::fabs(dy),::fabs(dyt)))/2;
   } 
 private:
   Graph& m_g;
@@ -117,26 +114,28 @@ template <class G, class E>
 static void
 graph_add_edge(G &graph, int id, int source, int target, 
 	       float8 cost, float8 s_x, float8 s_y, float8 t_x, float8 t_y, 
-	       std::map< int, std::pair<float8, vector<int> >, std::less<int> > adjacent_edges)
+	       std::map< int, vector< std::pair<float, vector<int> > >, std::less<int> > adjacent_edges)
 {
 
   E e;
   bool inserted;
 
-  if (cost < 0) // edges are not inserted in the graph if cost is negative
-    return;
+  if (cost < 0) // edges are inserted as unpassable if cost is negative
+    cost = MAX_COST;
 
   tie(e, inserted) = add_edge(source, target, graph);
 
   graph[e].cost = cost;
   graph[e].id = id;
-
-//  put(edge_index, graph, graph[e], id);
   
   graph[e].source = source;
   graph[e].target = target;
   
   graph[e].adjacent_edges = adjacent_edges;
+
+  graph[e].rank = 0;
+  graph[e].distance = 0;
+
   
   typedef typename graph_traits<G>::vertex_descriptor Vertex;
   Vertex s = vertex(source, graph);
@@ -160,63 +159,57 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 {
 
   typedef adjacency_list<vecS, vecS, directedS, Vertex, Edge> graph_t;
-  
+
   typedef graph_traits < graph_t >::vertex_descriptor vertex_descriptor;
   typedef graph_traits < graph_t >::edge_descriptor edge_descriptor;
 
-  const unsigned int num_nodes = /*1*/count*2;
+  const unsigned int num_nodes = count*2;
   
   int z;
-  int src, trg, offset;
+  int src, trg, offset, rule_num;
   
   graph_t graph(num_nodes);
 
-  std::map< int, std::pair<float8, vector<int> >, std::less<int> > adjacent_edges;
+  std::map< int, vector< std::pair<float, vector<int> > >, std::less<int> > adjacent_edges;
 
   std::map< int, int, std::less<int> > vertices;
-
-  offset = 0;
   
+  vector<int> rule;
+
+  offset = 1;
+  rule_num = 0;
+
   for (std::size_t j = 0; j < count; ++j)
   {
     //Vertex ids renumbering moved here
-    
     src = edges_array[j].source;
     trg = edges_array[j].target;
-
-    if(vertices[src]==NULL)
-    //if (vertices.find(edges_array[j].source) == vertices.end())
+    
+    if(vertices[src]==0)
     {
       vertices[src]=j+offset;
-      edges_array[j].source=j+offset;
-      
     }
-    else
-    {
-      edges_array[j].source=vertices[src];
-    }
-
-    if(vertices[trg]==NULL)
-    //if (vertices.find(edges_array[j].target) == vertices.end())    
-    {
-      offset++;
-  
-      vertices[trg]=j+offset;
-      edges_array[j].target=j+offset;
-    }
-    else
-    {
-      edges_array[j].target=vertices[trg];
-    }
+    edges_array[j].source=vertices[src];
     
-    adjacent_edges[edges_array[j].id].first = edges_array[j].to_cost;
-
+    if(vertices[trg]==0)
+    {
+      offset++;      
+      vertices[trg]=j+offset;
+    }
+    edges_array[j].target=vertices[trg];
+    
     for(z=0; z<MAX_RULE_LENGTH;++z)
     {
       if(edges_array[j].rule[z] > 0)
       {
-        adjacent_edges[edges_array[j].id].second.push_back(edges_array[j].rule[z]);
+        rule.push_back(edges_array[j].rule[z]);
       }
+    }
+
+    if(edges_array[j].to_cost > 0)
+    {
+      adjacent_edges[edges_array[j].id].push_back(std::pair<float8, vector<int> > (edges_array[j].to_cost, rule) );
+      rule.clear();
     }
 
     if((j < count-1 && edges_array[j].id != edges_array[j+1].id)||(j==count-1))
@@ -226,7 +219,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 					       edges_array[j].target, edges_array[j].cost, 
 					       edges_array[j].s_x, edges_array[j].s_y, 
 					       edges_array[j].t_x, edges_array[j].t_y, adjacent_edges);
-
+    
       if (!directed || (directed && has_reverse_cost))
       {
         float8 cost;
@@ -240,6 +233,14 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
           cost = edges_array[j].cost;
         }
 
+
+      if(adjacent_edges[edges_array[j].id].size() > 0)
+      {
+	adjacent_edges[edges_array[j].id+e_max_id].assign( adjacent_edges[edges_array[j].id].begin(), adjacent_edges[edges_array[j].id].end() );
+	adjacent_edges.erase(edges_array[j].id);
+      }
+
+
         graph_add_edge<graph_t, edge_descriptor>(graph,
 	                                       edges_array[j].id+e_max_id, edges_array[j].target, 
 					       edges_array[j].source, cost, 
@@ -248,11 +249,14 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
       }
 
     adjacent_edges.clear();
-    
+    rule_num = 0;
+    }
+    else
+    {
+      rule_num++;
     }
   }
-    
-  std::map< int, edge_descriptor, std::less<int> > predecessors;
+  
   
   edge_descriptor source_edge;
   edge_descriptor target_edge;
@@ -260,13 +264,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
   bool source_found = false, target_found = false;
   
   graph_traits<graph_t>::edge_iterator ei, ei_end;
-  int index;    
 
-  index = 1;
-  
-  for(tie(ei, ei_end) = edges(graph); ei != ei_end; ++ei, ++index)
-    graph[*ei].index = index;    
-    
   for(tie(ei, ei_end) = edges(graph); ei != ei_end; ++ei) 
   {
     if(graph[*ei].id == source_edge_id)
@@ -275,6 +273,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
       source_found = true;
       break;
     }
+
   }
 
   if (!source_found) 
@@ -282,6 +281,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
     *err_msg = "Source edge not found";
     return -1;
   }
+
 
   for(tie(ei, ei_end) = edges(graph); ei != ei_end; ++ei) 
   {
@@ -293,22 +293,19 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
     }
   }
 
+
   if (!target_found)
   {
     *err_msg = "Target edge not found";
     return -1;
   }
 
-  std::vector<float8> distances(num_edges(graph));
+  property_map<graph_t, int Edge::*>::type edge_index = get(&Edge::id, graph);
+
+  std::map< int, edge_descriptor, std::less<int> > predecessors;
   
-  std::vector<default_color_type> edge_colors(num_edges(graph), color_traits<default_color_type>::white());
-
-  property_map<graph_t, std::vector< int > Edge::*>::type history = get(&Edge::history, graph);
-
-  property_map<graph_t, std::size_t Edge::*>::type edge_index = get(&Edge::index, graph);
-
-  property_map<graph_t, float8 Edge::*>::type rank = get(&Edge::rank, graph);
-  property_map<graph_t, float8 Edge::*>::type distance = get(&Edge::distance, graph);
+  property_map<graph_t, float Edge::*>::type rank = get(&Edge::rank, graph);
+  property_map<graph_t, float Edge::*>::type distance = get(&Edge::distance, graph);
 
   try 
   {
@@ -317,17 +314,16 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
        distance_heuristic<graph_t, float>(graph, target_edge),
        weight_map(get(&Edge::cost, graph)).
        weight_map2(get(&Edge::adjacent_edges, graph)).
-       vertex_color_map(get(&Vertex::color, graph)).
        edge_color_map(get(&Edge::color, graph)).
-       visitor(shooting_star_goal_visitor<edge_descriptor>(target_edge)),
+       visitor(shooting_star_goal_visitor<edge_descriptor>(target_edge, e_max_id)),
        edge_index,
        distance, rank,
-       history, 
        predecessors, e_max_id
        );
 
   } 
-  catch(found_goal fg) {
+  catch(found_goal &fg) 
+  {
   
     vector<edge_descriptor> path_vect;
     int max = MAX_NODES;
@@ -336,6 +332,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
     
     while (target_edge != source_edge) 
       {
+        
         if ((target_edge == predecessors[graph[target_edge].id]) && (predecessors[graph[target_edge].id] != source_edge))
 	{
           *err_msg = "No path found";
@@ -344,9 +341,6 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 	}
   
 	target_edge = predecessors[graph[target_edge].id];
-
-        if(target_edge == predecessors[graph[target_edge].id] )
-          continue;
 
         path_vect.push_back(target_edge);
 
