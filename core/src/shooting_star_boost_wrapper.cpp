@@ -82,7 +82,6 @@ public:
   void finish_edge(Edge e, Graph& g) {}
 private:
   Edge m_goal;
-  int  e_max_id;
 };
 
 
@@ -362,8 +361,10 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
       e = path_vect.at(i);
 
       if(graph[e].id > e_max_id)
-        graph[e].id -= e_max_id;
-
+      {
+        graph[e].id -= e_max_id;	
+      }
+      
       (*path)[j].edge_id = graph[e].id;
       (*path)[j].cost = graph[e].cost;
       (*path)[j].vertex_id = source(e, graph);
