@@ -5,9 +5,9 @@ PROJECT(PGROUTING)
 # PGROUTING version number.
 SET(PGROUTING_VERSION_MAJOR "1")
 SET(PGROUTING_VERSION_MINOR "0")
-SET(PGROUTING_VERSION_PATCH "0")
+SET(PGROUTING_VERSION_PATCH "1")
 
-SET(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}-RC1")
+SET(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
 
 add_subdirectory(cmake)
 SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
@@ -15,10 +15,15 @@ SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 include (MacroLibrary)
 
 macro_optional_find_package(PostgreSQL)
+IF(NOT POSTGRESQL_FOUND)
+  MESSAGE(FATAL ERROR " Please check your Boost installation.") 
+ENDIF(NOT POSTGRESQL_FOUND)
 
 FIND_PACKAGE(Boost)
 IF(Boost_INCLUDE_DIRS)
   MESSAGE("Boost headers were found here: ${Boost_INCLUDE_DIR}")
+ELSE(Boost_INCLUDE_DIRS)
+  MESSAGE(FATAL ERROR " Please check your Boost installation ") 
 ENDIF(Boost_INCLUDE_DIRS)
 
 EXEC_PROGRAM(pg_config
@@ -57,48 +62,56 @@ endif(PGROUTING_CORE_INCLUDE_DIR)
 OPTION(WITH_TSP "Build TSP library" OFF)
 OPTION(WITH_DD "Build Driving distance library" OFF)
 
-# Recurse into the subdirectories.  This does not actually
-# cause another cmake executable to run.  The same process will walk through
-# the project's entire directory structure.
-SUBDIRS(core/src)
-
-IF(WITH_TSP)
-ADD_SUBDIRECTORY(extra/tsp/src)
-macro_optional_find_package(GAUL)
-ENDIF(WITH_TSP)
-
-IF(WITH_DD)
-ADD_SUBDIRECTORY(extra/driving_distance/src)
-macro_optional_find_package(CGAL)
-ENDIF(WITH_DD)
-
-#SET(LIBRARY_OUTPUT_PATH ${PGROUTING_BINARY_DIR}/lib)
-
 IF(UNIX)
-  SET(LIBRARY_OUTPUT_PATH ${LIB_DIR})
+  SET(LIBRARY_INSTALL_PATH ${LIB_DIR})
   SET(SQL_INSTALL_PATH /usr/share/postlbs)
 ELSE(UNIX)
-  SET(LIBRARY_OUTPUT_PATH ${PGROUTING_BINARY_DIR}/lib)
+  SET(LIBRARY_INSTALL_PATH ${PGROUTING_BINARY_DIR}/lib)
   SET(SQL_INSTALL_PATH ${PGROUTING_BINARY_DIR}/lib)
 ENDIF(UNIX)
 
 SET(PGROUTING_INCLUDE_DIRECTORIES ${PGROUTING_SOURCE_DIR}/core ${PGROUTING_SOURCE_DIR}/core/src ${PGROUTING_SOURCE_DIR}/extra ${PGROUTING_SOURCE_DIR}/extra/tsp ${PGROUTING_SOURCE_DIR}/extra/tsp/src ${PGROUTING_SOURCE_DIR}/extra/driving_distance ${PGROUTING_SOURCE_DIR}/extra/driving_distance/src
 )
 
-INCLUDE_DIRECTORIES(. ${PGROUTING_INCLUDE_DIRECTORIES} ${Boost_INCLUDE_DIRS}/boost)
+INCLUDE_DIRECTORIES(. ${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
+IF(WIN32)
+  INCLUDE_DIRECTORIES(${INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR}/port/win32)
+ENDIF(WIN32)
+
+# we need link libpostgres.a on win32 env
+IF(WIN32)
+  LINK_DIRECTORIES(${LIB_DIR})
+  LINK_LIBRARIES(postgres)
+ENDIF(WIN32)
 
 SET(CMAKE_C_FLAGS "-O2 -g")
 SET(CMAKE_CXX_FLAGS "-O2 -g")
 
-CONFIGURE_FILE(core/sql/routing_core.sql ${SQL_INSTALL_PATH}/routing_core.sql COPYONLY)
-CONFIGURE_FILE(core/sql/routing_core_wrappers.sql ${SQL_INSTALL_PATH}/routing_core_wrappers.sql COPYONLY)
+# Recurse into the subdirectories.  This does not actually
+# cause another cmake executable to run.  The same process will walk through
+# the project's entire directory structure.
+SUBDIRS(core)
 
 IF(WITH_TSP)
-CONFIGURE_FILE(extra/tsp/sql/routing_tsp.sql ${SQL_INSTALL_PATH}/routing_tsp.sql COPYONLY)
-CONFIGURE_FILE(extra/tsp/sql/routing_tsp_wrappers.sql ${SQL_INSTALL_PATH}/routing_tsp_wrappers.sql COPYONLY)
+  macro_optional_find_package(GAUL)
+  IF(NOT GAUL_FOUND)
+    message(FATAL ERROR " Please check your gaul installation, or set correct path to GAUL_INCLUDE_DIR and GAUL_LIBRARIES.")
+  ENDIF(NOT GAUL_FOUND)
+  INCLUDE_DIRECTORIES(${INCLUDE_DIRECTORIES} ${GAUL_INCLUDE_DIR})
+  LINK_LIBRARIES(${GAUL_LIBRARIES})
+  ADD_SUBDIRECTORY(extra/tsp)
 ENDIF(WITH_TSP)
 
 IF(WITH_DD)
-CONFIGURE_FILE(extra/driving_distance/sql/routing_dd.sql ${SQL_INSTALL_PATH}/routing_dd.sql COPYONLY)
-CONFIGURE_FILE(extra/driving_distance/sql/routing_dd_wrappers.sql ${SQL_INSTALL_PATH}/routing_dd_wrappers.sql COPYONLY)
+  macro_optional_find_package(CGAL)
+  IF(NOT CGAL_FOUND)
+    message(FATAL ERROR " Please check your CGAL installation, or set correct path to CGAL_INCLUDE_DIR and CGAL_LIBRARIES.")
+  ENDIF(NOT CGAL_FOUND)
+  INCLUDE_DIRECTORIES(${INCLUDE_DIRECTORIES} ${CGAL_INCLUDE_DIR})
+  LINK_LIBRARIES(${CGAL_LIBRARIES})
+  ADD_SUBDIRECTORY(extra/driving_distance)
 ENDIF(WITH_DD)
+
+
+
+

@@ -10,11 +10,11 @@ if(CGAL_INCLUDE_DIR AND CGAL_LIBRARIES)
 
 else(CGAL_INCLUDE_DIR AND CGAL_LIBRARIES)
 
- FIND_PATH(CGAL_INCLUDE_DIR basic.h
-      /usr/include/CGAL
-      /usr/local/include/CGAL
-      $ENV{ProgramFiles}/CGAL/*/include/CGAL
-      $ENV{SystemDrive}/CGAL/*/include/CGAL
+ FIND_PATH(CGAL_INCLUDE_DIR CGAL/basic.h
+      /usr/include
+      /usr/local/include
+      $ENV{ProgramFiles}/CGAL/*/include
+      $ENV{SystemDrive}/CGAL/*/include
       )
 
   find_library(CGAL_LIBRARIES NAMES CGAL libCGAL
@@ -25,8 +25,8 @@ else(CGAL_INCLUDE_DIR AND CGAL_LIBRARIES)
      /usr/lib64
      /usr/local/lib64
      /usr/lib64/CGAL
-     $ENV{ProgramFiles}/CGAL/*/lib/ms
-     $ENV{SystemDrive}/CGAL/*/lib/ms
+     $ENV{ProgramFiles}/CGAL/*/lib
+     $ENV{SystemDrive}/CGAL/*/lib
      )
       
   if(CGAL_INCLUDE_DIR AND CGAL_LIBRARIES)

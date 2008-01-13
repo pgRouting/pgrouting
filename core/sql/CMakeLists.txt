@@ -1,0 +1,3 @@
+INSTALL(FILES routing_core.sql DESTINATION ${SQL_INSTALL_PATH} )
+INSTALL(FILES routing_core_wrappers.sql DESTINATION ${SQL_INSTALL_PATH} )
+

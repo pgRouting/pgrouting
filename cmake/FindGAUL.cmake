@@ -5,10 +5,17 @@
 #  GAUL_FOUND, If false, do not try to use GAUL.
 #
 
-if(GAUL_LIBRARIES)
+if(GAUL_INCLUDE_DIR AND GAUL_LIBRARIES)
    set(GAUL_FOUND TRUE)
 
-else(GAUL_LIBRARIES)
+else(GAUL_INCLUDE_DIR AND GAUL_LIBRARIES)
+
+  FIND_PATH(GAUL_INCLUDE_DIR gaul.h
+      /usr/include
+      /usr/local/include
+      $ENV{ProgramFiles}/gaul/*/include
+      $ENV{SystemDrive}/gaul/*/include
+      )
 
   find_library(GAUL_LIBRARIES NAMES gaul gaul_util libgaul libgaul_util
      PATHS
@@ -18,18 +25,18 @@ else(GAUL_LIBRARIES)
      /usr/lib64
      /usr/local/lib64
      /usr/lib64/gaul
-     $ENV{ProgramFiles}/GAUL/*/lib/ms
-     $ENV{SystemDrive}/GAUL/*/lib/ms
+     $ENV{ProgramFiles}/GAUL/*/lib/
+     $ENV{SystemDrive}/GAUL/*/lib/
      )
       
-  if(GAUL_LIBRARIES)
+  if(GAUL_INCLUDE_DIR AND GAUL_LIBRARIES)
     set(GAUL_FOUND TRUE)
     message(STATUS "Found GAUL: ${GAUL_LIBRARIES}")
-  else(GAUL_LIBRARIES)
+  else(GAUL_INCLUDE_DIR AND GAUL_LIBRARIES)
     set(GAUL_FOUND FALSE)
     message(STATUS "GAUL not found.")
-  endif(GAUL_LIBRARIES)
+  endif(GAUL_INCLUDE_DIR AND GAUL_LIBRARIES)
 
-  mark_as_advanced(GAUL_LIBRARIES)
+  mark_as_advanced(GAUL_INCLUDE_DIR GAUL_LIBRARIES)
 
-endif(GAUL_LIBRARIES)
+endif(GAUL_INCLUDE_DIR AND GAUL_LIBRARIES)
