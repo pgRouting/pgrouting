@@ -21,7 +21,7 @@
 CREATE OR REPLACE FUNCTION driving_distance(sql text, source_id integer, 
         distance float8,directed boolean, has_reverse_cost boolean)
         RETURNS SETOF path_result
-        AS '$libdir/routing_dd'
+        AS '$libdir/librouting_dd'
         LANGUAGE 'C' IMMUTABLE STRICT;
                         
 -----------------------------------------------------------------------
@@ -32,5 +32,5 @@ CREATE OR REPLACE FUNCTION driving_distance(sql text, source_id integer,
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION alphashape(sql text)
         RETURNS SETOF vertex_result
-        AS '$libdir/routing_dd'
+        AS '$libdir/librouting_dd'
         LANGUAGE 'C' IMMUTABLE STRICT;
