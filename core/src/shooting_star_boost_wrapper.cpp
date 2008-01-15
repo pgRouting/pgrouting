@@ -43,6 +43,8 @@ struct Edge
   float rank;
   std::map< int, vector< std::pair<float, std::vector<int> > >, std::less<int> > adjacent_edges;
   default_color_type color;
+  
+  std::size_t index;
 };
 	
 struct Vertex
@@ -134,6 +136,8 @@ graph_add_edge(G &graph, int id, int source, int target,
 
   graph[e].rank = 0;
   graph[e].distance = 0;
+  
+  graph[e].index = boost::num_edges(graph);
 
   
   typedef typename graph_traits<G>::vertex_descriptor Vertex;
@@ -299,7 +303,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
     return -1;
   }
 
-  property_map<graph_t, int Edge::*>::type edge_index = get(&Edge::id, graph);
+  property_map<graph_t, std::size_t Edge::*>::type edge_index = get(&Edge::index, graph);
 
   std::map< int, edge_descriptor, std::less<int> > predecessors;
   
