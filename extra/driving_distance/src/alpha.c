@@ -243,6 +243,13 @@ static int compute_alpha_shape(char* sql, vertex_t **res, int *res_count)
         }
     }
 
+
+  if (total_tuples < 2) 
+  {
+    elog(ERROR, "Distance is too short");
+    return finish(SPIcode, ret);
+  }
+
   DBG("Calling CGAL alpha-shape\n");
         
   profstop("extract", prof_extract);
