@@ -46,7 +46,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 
 
 CREATE OR REPLACE FUNCTION tsp_astar(
-       geom_table varchar,ids varchar, source integer) 
+       geom_table varchar,ids varchar, source integer, delta double precision) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -69,7 +69,7 @@ BEGIN
 		
                 FOR r IN EXECUTE 'SELECT gid, the_geom FROM astar_sp_delta( ''' || 
                   quote_ident(geom_table)  ||''', '|| v_id ||', '|| 
-                  prev ||',0.03)' LOOP
+                  prev ||','||delta||')' LOOP
                     geom.gid := r.gid;
 	            geom.the_geom := r.the_geom;
                     id := id+1;
@@ -103,7 +103,7 @@ BEGIN
 	id :=0;
 	prev := source;
 	query := 'SELECT vertex_id FROM tsp(''select distinct source::integer '||
-		'as source_id, x1::double precision as x, y1::double precision as y';
+		'as source_id, x1::double precision as x, y1::double precision as y ';
 		
 	IF rc THEN query := query || ' , reverse_cost ';
 	END IF;
@@ -199,7 +199,7 @@ BEGIN
 	IF rc THEN query := query || ' , reverse_cost ';
 	END IF;
 
-	query := 'from ' || quote_ident(geom_table) || ' where source in (' || 
+	query := ' from ' || quote_ident(geom_table) || ' where source in (' || 
            ids || ')'', '''|| ids  ||''', '|| source  ||')';
 	   
 	FOR path_result IN EXECUTE query
