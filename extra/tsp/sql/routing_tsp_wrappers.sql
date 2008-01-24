@@ -199,7 +199,7 @@ BEGIN
 	IF rc THEN query := query || ' , reverse_cost ';
 	END IF;
 
-	query := ' from ' || quote_ident(geom_table) || ' where source in (' || 
+	query := query || ' from ' || quote_ident(geom_table) || ' where source in (' || 
            ids || ')'', '''|| ids  ||''', '|| source  ||')';
 	   
 	FOR path_result IN EXECUTE query
