@@ -28,8 +28,8 @@
 typedef struct point
 {
   int id;
-  float8 x;
-  float8 y;
+  double x;
+  double y;
 } point_t;
 
 #ifdef __cplusplus
