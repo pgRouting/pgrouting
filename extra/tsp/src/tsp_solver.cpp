@@ -19,9 +19,6 @@
  *
  */
                    
-#include <iostream>
-#include <fstream>
-
 extern "C"
 {
 #include <gaul.h>
@@ -246,9 +243,6 @@ find_tsp_solution(int num, float dist[MAX_TOWNS][MAX_TOWNS],
   population    *pop=NULL;              /* Population of solutions. */
   float         score = 0.0;            /* Best score */
 
-      std::fstream myfile;
-      myfile.open("/tmp/tsp_solver.log", std::ios::out|std::ios::app);
-
   source_id = source;
   cnum=num;
   
@@ -301,10 +295,6 @@ find_tsp_solution(int num, float dist[MAX_TOWNS][MAX_TOWNS],
               num*4             /* const int   max_generations */
               );
 
-      
-      myfile<<"score = "<<score<<"\n"<<std::flush;
-      myfile<<"fitness = "<<ga_get_entity_from_rank(pop,0)->fitness<<"\n"<<std::flush;      
-      myfile.close();
       
       if(score < ga_get_entity_from_rank(pop,0)->fitness)
         {
