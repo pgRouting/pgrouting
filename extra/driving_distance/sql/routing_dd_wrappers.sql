@@ -18,7 +18,9 @@
 
 
 -- BEGIN;
-
+----------------------------------------------------------
+-- Draws an alpha shape around given set of points.
+----------------------------------------------------------
 CREATE OR REPLACE FUNCTION points_as_polygon(query varchar)
        RETURNS SETOF GEOMS AS
 $$

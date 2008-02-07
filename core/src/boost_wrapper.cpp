@@ -119,6 +119,7 @@ boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vert
     }
 
     std::vector<float8> distances(num_vertices(graph));
+    // calling Boost function
     dijkstra_shortest_paths(graph, _source,
 			    predecessor_map(&predecessors[0]).
 			    weight_map(get(&Vertex::cost, graph))
@@ -127,6 +128,7 @@ boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vert
     vector<int> path_vect;
     int max = MAX_NODES;
     path_vect.push_back(_target);
+
     while (_target != _source) 
     {
 	if (_target == predecessors[_target]) 

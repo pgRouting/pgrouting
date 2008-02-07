@@ -78,7 +78,6 @@ namespace boost
     CostType operator()(Vertex u) { return static_cast<CostType>(0); }
   };
   
-
   
   template <class Visitor, class Graph>
   struct ShootingStarVisitorConcept {
@@ -107,7 +106,10 @@ namespace boost
     int e_max_id;
   };
   
-
+  
+  // Main visitor function.
+  // It decides what to do with an edge of certain color
+  
   template <class IncidenceGraph, class Buffer, class BFSVisitor,
             class ColorMap, class EdgeColorMap/*, class HistoryMap*/>
   void shooting_star_edges_visit (const IncidenceGraph& g,
@@ -130,28 +132,39 @@ namespace boost
 
     typename GTraits::out_edge_iterator ei, ei_end;
 
+    // Paint source edge gray
     put(edge_color, s, EdgeColor::gray());
     vis.discover_edge(s, g);
     
+    // Enqueue the source edge
     Q.push(s);
     
+    // While the queue is not empty
     while (! Q.empty()) 
     {
+      // Get an edge from the top
       Edge e = Q.top();  Q.pop();            
       
+      // Examine the edge
       vis.examine_edge(e, g);
       
+      // For all adjacent edges for the current one
       for (tie(ei, ei_end) = out_edges(target(e, g), g); ei != ei_end; ++ei) 
       {
+        // Get a color
         EdgeColorValue e_color = get(edge_color, *ei);
 
-        if (e_color == EdgeColor::white()) 
+	// Discover the edge and paint it grey 
+	// and enqueue it if it was white
+	if (e_color == EdgeColor::white()) 
 	{         
 	  vis.tree_edge(*ei, e, g, e_max_id);
 	  put(edge_color, *ei, EdgeColor::gray());   
 	  vis.discover_edge(*ei, g);
           Q.push(*ei);
         } 
+	// or execute appropriate function 
+	// if it was grey or black
 	else 
 	{                                     
 	  vis.non_tree_edge(*ei, g);
@@ -167,6 +180,7 @@ namespace boost
 	
       } // end for
 
+      // Finally paint the parent edge black
       put(edge_color, e, EdgeColor::black());        
       vis.finish_edge(e, g);
       

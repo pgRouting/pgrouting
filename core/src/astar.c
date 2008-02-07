@@ -116,6 +116,7 @@ typedef struct edge_astar_columns
   int t_y;
 } edge_astar_columns_t;
 
+
 static int
 fetch_edge_astar_columns(SPITupleTable *tuptable, 
 			 edge_astar_columns_t *edge_columns, 
@@ -416,7 +417,8 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
   profstart(prof_astar);
   
   DBG("Calling boost_astar <%i>\n", total_tuples);
-    
+
+  // calling C++ A* function    
   ret = boost_astar(edges, total_tuples, source_vertex_id-v_min_id, 
 		    target_vertex_id-v_min_id,
 		    directed, has_reverse_cost,

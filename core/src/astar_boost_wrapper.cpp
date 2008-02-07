@@ -69,7 +69,10 @@ private:
   Vertex m_goal;
 };
 
-
+// Heuristic function which tells us how far the current node is
+// from the target node.
+//
+// (|dx|+|dy|)/2 is used currently.
 template <class Graph, class CostType>
 class distance_heuristic : public astar_heuristic<Graph, CostType>
 {
@@ -92,6 +95,8 @@ private:
 };
 
 
+// Adds an edge to the graph.
+// Edge id, cost, source and target ids and coordinates are copied also
 template <class G, class E>
 static void
 graph_add_edge(G &graph, int id, int source, int target, 
@@ -193,7 +198,7 @@ boost_astar(edge_astar_t *edges, unsigned int count,
   std::vector<float8> distances(num_vertices(graph));
 
   try {
-    // call astar named parameter interface
+    // Call A* named parameter interface
     astar_search
       (graph, source_vertex,
        distance_heuristic<graph_t, float>(graph, target_vertex),
@@ -204,6 +209,7 @@ boost_astar(edge_astar_t *edges, unsigned int count,
 
   } 
   catch(found_goal fg) {
+    // Target vertex found
     vector<int> path_vect;
     int max = MAX_NODES;
     path_vect.push_back(target_vertex);

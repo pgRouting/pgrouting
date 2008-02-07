@@ -20,7 +20,6 @@
 
 -----------------------------------------------------------------------
 -- Core function for TSP
--- See README for description
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION tsp(sql text, ids varchar, source integer)
         RETURNS SETOF path_result

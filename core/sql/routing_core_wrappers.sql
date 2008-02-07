@@ -232,9 +232,9 @@ CREATE TYPE geoms AS
 );
 
 -----------------------------------------------------------------------
--- Compute the shortest path using edges and vertices table, and return
---  the result as a set of (gid integer, the_geom gemoetry) records.
--- This function uses the internal vertices identifiers.
+-- A* function for undirected graphs.
+-- Compute the shortest path using edges table, and return
+--  the result as a set of (gid integer, the_geom geometry) records.
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION dijkstra_sp(
        geom_table varchar, source int4, target int4) 
@@ -272,6 +272,11 @@ END;
 $$
 LANGUAGE 'plpgsql' VOLATILE STRICT; 
 
+-----------------------------------------------------------------------
+-- Dijkstra wrapper function for directed graphs.
+-- Compute the shortest path using edges table, and return
+--  the result as a set of (gid integer, the_geom geometry) records.
+-----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION dijkstra_sp_directed(
        geom_table varchar, source int4, target int4, dir boolean, rc boolean) 
        RETURNS SETOF GEOMS AS
@@ -316,9 +321,9 @@ $$
 LANGUAGE 'plpgsql' VOLATILE STRICT; 
 
 -----------------------------------------------------------------------
--- Compute the shortest path using edges and vertices table, and return
---  the result as a set of (gid integer, the_geom gemoetry) records.
--- This function uses the internal vertices identifiers.
+-- A* function for undirected graphs.
+-- Compute the shortest path using edges table, and return
+--  the result as a set of (gid integer, the_geom geometry) records.
 -- Also data clipping added to improve function performance.
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION astar_sp_delta(
@@ -355,17 +360,6 @@ BEGIN
 		 geom.id       := id;
                  
                  RETURN NEXT geom;
---
---                v_id = path_result.vertex_id;
---                e_id = path_result.edge_id;
-
---                FOR r IN EXECUTE 'SELECT gid, the_geom FROM ' || 
---                      quote_ident(geom_table) || '  WHERE gid = ' || 
---                      quote_literal(e_id) LOOP
---                        geom.gid := r.gid;
---                        geom.the_geom := r.the_geom;
---                        RETURN NEXT geom;
---                END LOOP;
 
         END LOOP;
         RETURN;
@@ -373,6 +367,12 @@ END;
 $$
 LANGUAGE 'plpgsql' VOLATILE STRICT; 
 
+-----------------------------------------------------------------------
+-- A* function for directed graphs.
+-- Compute the shortest path using edges table, and return
+--  the result as a set of (gid integer, the_geom geometry) records.
+-- Also data clipping added to improve function performance.
+-----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION astar_sp_delta_directed(
        varchar,int4, int4, float8, boolean, boolean) 
        RETURNS SETOF GEOMS AS
@@ -515,6 +515,13 @@ $$
 LANGUAGE 'plpgsql' VOLATILE STRICT; 
 
 
+-----------------------------------------------------------------------
+-- A* function for undirected graphs.
+-- Compute the shortest path using edges table, and return
+--  the result as a set of (gid integer, the_geom geometry) records.
+-- Also data clipping added to improve function performance.
+-- Cost column name can be specified (last parameter)
+-----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION astar_sp_delta_cc(
        varchar,int4, int4, float8, varchar) 
        RETURNS SETOF GEOMS AS
@@ -557,6 +564,13 @@ END;
 $$
 LANGUAGE 'plpgsql' VOLATILE STRICT; 
 
+-----------------------------------------------------------------------
+-- A* function for directed graphs.
+-- Compute the shortest path using edges table, and return
+--  the result as a set of (gid integer, the_geom geometry) records.
+-- Also data clipping added to improve function performance.
+-- Cost column name can be specified (last parameter)
+-----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION astar_sp_delta_cc_directed(
        varchar,int4, int4, float8, varchar, boolean, boolean) 
        RETURNS SETOF GEOMS AS
@@ -691,6 +705,12 @@ $$
 LANGUAGE 'plpgsql' VOLATILE STRICT; 
 
 
+-----------------------------------------------------------------------
+-- Dijkstra function for undirected graphs.
+-- Compute the shortest path using edges table, and return
+--  the result as a set of (gid integer, the_geom geometry) records.
+-- Also data clipping added to improve function performance.
+-----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION dijkstra_sp_delta(
        varchar,int4, int4, float8) 
        RETURNS SETOF GEOMS AS
@@ -730,6 +750,12 @@ END;
 $$
 LANGUAGE 'plpgsql' VOLATILE STRICT; 
 
+-----------------------------------------------------------------------
+-- Dijkstra function for directed graphs.
+-- Compute the shortest path using edges table, and return
+--  the result as a set of (gid integer, the_geom geometry) records.
+-- Also data clipping added to improve function performance.
+-----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION dijkstra_sp_delta_directed(
        varchar,int4, int4, float8, boolean, boolean) 
        RETURNS SETOF GEOMS AS
@@ -859,6 +885,13 @@ $$
 LANGUAGE 'plpgsql' VOLATILE STRICT; 
 
 
+-----------------------------------------------------------------------
+-- A* function for undirected graphs.
+-- Compute the shortest path using edges table, and return
+--  the result as a set of (gid integer, the_geom geometry) records.
+-- Also data clipping added to improve function performance
+--  (specified by lower left and upper right box corners).
+-----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION astar_sp_bbox(
        varchar,int4, int4, float8, float8, float8, float8) 
        RETURNS SETOF GEOMS AS
@@ -905,6 +938,13 @@ END;
 $$
 LANGUAGE 'plpgsql' VOLATILE STRICT; 
 
+-----------------------------------------------------------------------
+-- A* function for directed graphs.
+-- Compute the shortest path using edges table, and return
+--  the result as a set of (gid integer, the_geom geometry) records.
+-- Also data clipping added to improve function performance
+--  (specified by lower left and upper right box corners).
+-----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION astar_sp_bbox_directed(
        varchar,int4, int4, float8, float8, float8, float8, boolean, boolean) 
        RETURNS SETOF GEOMS AS
@@ -1008,6 +1048,12 @@ END;
 $$
 LANGUAGE 'plpgsql' VOLATILE STRICT; 
 
+-----------------------------------------------------------------------
+-- A* function for directed graphs.
+-- Compute the shortest path using edges table, and return
+--  the result as a set of (gid integer, the_geom geometry) records.
+-- Also data clipping added to improve function performance.
+-----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION astar_sp_directed(
        geom_table varchar, source int4, target int4, dir boolean, rc boolean) 
        RETURNS SETOF GEOMS AS
@@ -1055,6 +1101,11 @@ END;
 $$
 LANGUAGE 'plpgsql' VOLATILE STRICT; 
 
+-----------------------------------------------------------------------
+-- Shooting* function for directed graphs.
+-- Compute the shortest path using edges table, and return
+--  the result as a set of (gid integer, the_geom geometry) records.
+-----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION shootingstar_sp(
        varchar,int4, int4, float8, varchar, boolean, boolean) 
        RETURNS SETOF GEOMS AS

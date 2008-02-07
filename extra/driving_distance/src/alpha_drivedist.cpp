@@ -112,25 +112,7 @@ alpha_edges( const Alpha_shape_2&  A,
   }
 }
 
-template <class OutputIterator>
-bool
-file_input(OutputIterator out)
-{
-  std::ifstream is("./data/set", std::ios::in);
 
-  if(is.fail()){
-    std::cerr << "unable to open file for input" << std::endl;
-    return false;
-  }
-
-  int n;
-  is >> n;
-
-  CGAL::copy_n(std::istream_iterator<Point>(is), n, out);
-
-  return true;
-}
-    
 int alpha_shape(vertex_t *vertices, unsigned int count, 
                 vertex_t **res, int *res_count, char **err_msg)
 {

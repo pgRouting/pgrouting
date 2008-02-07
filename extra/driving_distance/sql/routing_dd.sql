@@ -17,7 +17,10 @@
 -- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 --
 
-
+-----------------------------------------------------------------------
+-- Core function for driving distance.
+-- The sql should return edge and vertex ids.
+-----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION driving_distance(sql text, source_id integer, 
         distance float8,directed boolean, has_reverse_cost boolean)
         RETURNS SETOF path_result
@@ -27,8 +30,7 @@ CREATE OR REPLACE FUNCTION driving_distance(sql text, source_id integer,
 -----------------------------------------------------------------------
 -- Core function for alpha shape computation.
 -- The sql should return vertex ids and x,y values. Return ordered
--- vertex ids. Used in points_as_polygon function found in 
--- routing_postgis.sql
+-- vertex ids. 
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION alphashape(sql text)
         RETURNS SETOF vertex_result
