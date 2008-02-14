@@ -21,6 +21,8 @@
 
 -----------------------------------------------------
 -- Returns TSP solution as a set of vertex ids
+--
+-- Last changes: 14.02.2008
 -----------------------------------------------------
 CREATE OR REPLACE FUNCTION tsp_ids(geom_table varchar, 
        ids varchar, source integer) 
@@ -51,6 +53,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 ------------------------------------------------------
 -- Returns TSP solution as a set of vertices connected
 -- with A* paths
+--
+-- Last changes: 14.02.2008
 ------------------------------------------------------
 CREATE OR REPLACE FUNCTION tsp_astar(
        geom_table varchar,ids varchar, source integer, delta double precision) 
@@ -95,6 +99,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- Returns TSP solution as a set of vertices connected
 -- with A* paths.
 -- For directed graphs.
+--
+-- Last changes: 14.02.2008
 ------------------------------------------------------
 CREATE OR REPLACE FUNCTION tsp_astar_directed(
        geom_table varchar,ids varchar, source integer, delta float8, dir boolean, rc boolean) 
@@ -194,6 +200,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- Returns TSP solution as a set of vertices connected
 -- with Dijkstra paths.
 -- For directed graphs.
+--
+-- Last changes: 14.02.2008
 ------------------------------------------------------
 CREATE OR REPLACE FUNCTION tsp_dijkstra_directed(
        geom_table varchar,ids varchar, source integer, delta float8, dir boolean, rc boolean) 

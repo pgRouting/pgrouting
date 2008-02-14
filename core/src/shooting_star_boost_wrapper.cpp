@@ -86,7 +86,7 @@ private:
   Edge m_goal;
 };
 
-
+// Heuristic function
 template <class Graph, class CostType>
 class distance_heuristic
 {
@@ -111,6 +111,8 @@ private:
 };
 
 
+// Adds an edge to the graph
+// Also copies all attributes and adjacent edges
 template <class G, class E>
 static void
 graph_add_edge(G &graph, int id, int source, int target, 
@@ -154,6 +156,9 @@ graph_add_edge(G &graph, int id, int source, int target,
 
 }
 
+// Main Shooting* function.
+// It renumbers vertices, fills the graph with edges,
+// calculates a route and return a result.
 int 
 boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count, 
 	    int source_edge_id, int target_edge_id,
@@ -223,6 +228,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 					       edges_array[j].s_x, edges_array[j].s_y, 
 					       edges_array[j].t_x, edges_array[j].t_y, adjacent_edges);
     
+      // if the edge is not directed or if it is directed and has reverse cost
       if (!directed || (directed && has_reverse_cost))
       {
         float8 cost;
@@ -312,6 +318,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 
   try 
   {
+    //calling Shooting* search
     shooting_star_search
       (graph, source_edge,
        distance_heuristic<graph_t, float>(graph, target_edge),

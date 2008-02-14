@@ -230,7 +230,9 @@ namespace boost
   
 
   namespace detail {
-    
+
+    // Shooting* visitor
+    // based on BFS visitor concept from BGL    
     template <class AStarHeuristic, class UniformCostVisitor,
               class UpdatableQueue, class PredecessorMap,
               class CostMap, 
@@ -422,7 +424,9 @@ namespace boost
   
     typedef typename graph_traits<VertexAndEdgeListGraph>::edge_descriptor
       Edge;
-
+    
+    // Queue to store the list of edges to examine.
+    // I really hate this queue for what it does with the memory sometimes.
     typedef mutable_queue<Edge, std::vector<Edge>, IndirectCmp, IndexMap>
       MutableQueue;
     MutableQueue Q(num_edges(g), icmp, index_map);

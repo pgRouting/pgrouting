@@ -17,15 +17,6 @@
 -- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 
--- TODO: use spatial index when possible
--- TODO: make variable names more consistent
-
--- Geometry schema description:
--- gid
--- source
--- target
--- edge_id
-
 -- BEGIN;
 
 CREATE OR REPLACE FUNCTION text(boolean)
@@ -38,6 +29,8 @@ LANGUAGE 'sql';
 -----------------------------------------------------------------------
 -- For each vertex in the vertices table, set a point geometry which is
 --  the corresponding line start or line end point
+--
+-- Last changes: 14.02.2008
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION add_vertices_geometry(geom_table varchar) 
        RETURNS VOID AS
@@ -80,6 +73,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- Inserts a point into a temporary vertices table, and return an id
 --  of a new point or an existing point. Tolerance is the minimal distance
 --  between existing points and the new point to create a new point.
+--
+-- Last changes: 14.02.2008
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION point_to_id(point geometry, 
        tolerance double precision) 
@@ -197,8 +192,9 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -----------------------------------------------------------------------
 -- Update the cost column from the edges table, from the length of
 --  all lines which belong to an edge.
+--
+-- Last changes: 14.02.2008
 -----------------------------------------------------------------------
--- FIXME: directed or not ?
 CREATE OR REPLACE FUNCTION update_cost_from_distance(geom_table varchar) 
        RETURNS VOID AS
 $$
@@ -235,6 +231,8 @@ CREATE TYPE geoms AS
 -- A* function for undirected graphs.
 -- Compute the shortest path using edges table, and return
 --  the result as a set of (gid integer, the_geom geometry) records.
+--
+-- Last changes: 14.02.2008
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION dijkstra_sp(
        geom_table varchar, source int4, target int4) 
@@ -276,6 +274,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- Dijkstra wrapper function for directed graphs.
 -- Compute the shortest path using edges table, and return
 --  the result as a set of (gid integer, the_geom geometry) records.
+--
+-- Last changes: 14.02.2008
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION dijkstra_sp_directed(
        geom_table varchar, source int4, target int4, dir boolean, rc boolean) 
@@ -325,6 +325,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- Compute the shortest path using edges table, and return
 --  the result as a set of (gid integer, the_geom geometry) records.
 -- Also data clipping added to improve function performance.
+--
+-- Last changes: 14.02.2008
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION astar_sp_delta(
        varchar,int4, int4, float8) 
@@ -372,6 +374,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- Compute the shortest path using edges table, and return
 --  the result as a set of (gid integer, the_geom geometry) records.
 -- Also data clipping added to improve function performance.
+--
+-- Last changes: 14.02.2008
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION astar_sp_delta_directed(
        varchar,int4, int4, float8, boolean, boolean) 
@@ -521,6 +525,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --  the result as a set of (gid integer, the_geom geometry) records.
 -- Also data clipping added to improve function performance.
 -- Cost column name can be specified (last parameter)
+--
+-- Last changes: 14.02.2008
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION astar_sp_delta_cc(
        varchar,int4, int4, float8, varchar) 
@@ -570,6 +576,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --  the result as a set of (gid integer, the_geom geometry) records.
 -- Also data clipping added to improve function performance.
 -- Cost column name can be specified (last parameter)
+--
+-- Last changes: 14.02.2008
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION astar_sp_delta_cc_directed(
        varchar,int4, int4, float8, varchar, boolean, boolean) 
@@ -710,6 +718,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- Compute the shortest path using edges table, and return
 --  the result as a set of (gid integer, the_geom geometry) records.
 -- Also data clipping added to improve function performance.
+--
+-- Last changes: 14.02.2008
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION dijkstra_sp_delta(
        varchar,int4, int4, float8) 
@@ -755,6 +765,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- Compute the shortest path using edges table, and return
 --  the result as a set of (gid integer, the_geom geometry) records.
 -- Also data clipping added to improve function performance.
+--
+-- Last changes: 14.02.2008
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION dijkstra_sp_delta_directed(
        varchar,int4, int4, float8, boolean, boolean) 
@@ -891,6 +903,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --  the result as a set of (gid integer, the_geom geometry) records.
 -- Also data clipping added to improve function performance
 --  (specified by lower left and upper right box corners).
+--
+-- Last changes: 14.02.2008
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION astar_sp_bbox(
        varchar,int4, int4, float8, float8, float8, float8) 
@@ -944,6 +958,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --  the result as a set of (gid integer, the_geom geometry) records.
 -- Also data clipping added to improve function performance
 --  (specified by lower left and upper right box corners).
+--
+-- Last changes: 14.02.2008
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION astar_sp_bbox_directed(
        varchar,int4, int4, float8, float8, float8, float8, boolean, boolean) 
@@ -1053,6 +1069,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- Compute the shortest path using edges table, and return
 --  the result as a set of (gid integer, the_geom geometry) records.
 -- Also data clipping added to improve function performance.
+--
+-- Last changes: 14.02.2008
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION astar_sp_directed(
        geom_table varchar, source int4, target int4, dir boolean, rc boolean) 
@@ -1105,6 +1123,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- Shooting* function for directed graphs.
 -- Compute the shortest path using edges table, and return
 --  the result as a set of (gid integer, the_geom geometry) records.
+--
+-- Last changes: 14.02.2008
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION shootingstar_sp(
        varchar,int4, int4, float8, varchar, boolean, boolean) 
