@@ -332,16 +332,19 @@ Datum alphashape(PG_FUNCTION_ARGS)
 
       DBG("Before allocation\n");
 
-      values = palloc(2 * sizeof(Datum));
-      nulls = palloc(2 * sizeof(char));
+      values = palloc(3 * sizeof(Datum));
+      nulls = palloc(3 * sizeof(char));
 
       DBG("After allocation\n");
 
-      values[0] = Float8GetDatum(res[call_cntr].x);
+      values[0] = call_cntr;
       nulls[0] = ' ';
 
-      values[1] = Float8GetDatum(res[call_cntr].y);
+      values[1] = Float8GetDatum(res[call_cntr].x);
       nulls[1] = ' ';
+
+      values[2] = Float8GetDatum(res[call_cntr].y);
+      nulls[2] = ' ';
 
       DBG("Heap making\n");
 
