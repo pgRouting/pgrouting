@@ -427,6 +427,11 @@ namespace boost
     
     // Queue to store the list of edges to examine.
     // I really hate this queue for what it does with the memory sometimes.
+    //
+    //And by the way...
+    //
+    //This place is for rent :)
+    //
     typedef mutable_queue<Edge, std::vector<Edge>, IndirectCmp, IndexMap>
       MutableQueue;
     MutableQueue Q(num_edges(g), icmp, index_map);
