@@ -435,18 +435,21 @@ tsp(PG_FUNCTION_ARGS)
 
       DBG("Before allocation\n");
 
-      values = (Datum*)palloc(3*sizeof(Datum));
-      nulls = (char*)palloc(3*sizeof(char));
+      values = (Datum*)palloc(4*sizeof(Datum));
+      nulls = (char*)palloc(4*sizeof(char));
 
       DBG("After allocation\n");
 
-      values[0] = Int32GetDatum(path[call_cntr].vertex_id);
-      nulls[0] = ' ';
-      values[1] = Int32GetDatum(path[call_cntr].edge_id);
-      nulls[1] = ' ';
-      values[2] = Float8GetDatum(path[call_cntr].cost);
-      nulls[2] = ' ';
 
+      values[0] = call_cntr;
+      nulls[0] = ' ';
+      values[1] = Int32GetDatum(path[call_cntr].vertex_id);
+      nulls[1] = ' ';
+      values[2] = Int32GetDatum(path[call_cntr].edge_id);
+      nulls[2] = ' ';
+      values[3] = Float8GetDatum(path[call_cntr].cost);
+      nulls[3] = ' ';
+      
       DBG("Heap making\n");
 
       tuple = heap_formtuple(tuple_desc, values, nulls);
