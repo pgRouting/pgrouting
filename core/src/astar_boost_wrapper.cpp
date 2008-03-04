@@ -29,7 +29,7 @@
 
 #include "astar.h"
 
-#include <math.h>    // for sqrt
+//#include <math.h>    // for sqrt
 
 using namespace std;
 using namespace boost;
