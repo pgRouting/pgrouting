@@ -28,7 +28,7 @@
 
 #include "shooting_star.h"
 
-#include <math.h>    // for sqrt
+#include <cmath>    // for sqrt
 
 using namespace std;
 using namespace boost;
