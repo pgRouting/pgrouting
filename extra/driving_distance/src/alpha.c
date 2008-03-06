@@ -332,28 +332,24 @@ Datum alphashape(PG_FUNCTION_ARGS)
 
       /* This will work for some compilers. If it crashes with segfault, try to change the following block with this one    
 
-      values = palloc(4 * sizeof(Datum));
-      nulls = palloc(4 * sizeof(char));
-
-      values[0] = call_cntr;
-      nulls[0] = ' ';
-      values[1] = Int32GetDatum(res[call_cntr].vertex_id);
-      nulls[1] = ' ';
-      values[2] = Int32GetDatum(res[call_cntr].edge_id);
-      nulls[2] = ' ';
-      values[3] = Float8GetDatum(res[call_cntr].cost);
-      nulls[3] = ' ';
-      */
-    
       values = palloc(3 * sizeof(Datum));
       nulls = palloc(3 * sizeof(char));
 
-      values[0] = Int32GetDatum(res[call_cntr].vertex_id);
+      values[0] = call_cntr;
       nulls[0] = ' ';
-      values[1] = Int32GetDatum(res[call_cntr].edge_id);
+      values[1] = Int32GetDatum(res[call_cntr].x);
       nulls[1] = ' ';
-      values[2] = Float8GetDatum(res[call_cntr].cost);
+      values[2] = Int32GetDatum(res[call_cntr].y);
       nulls[2] = ' ';
+      */
+    
+      values = palloc(2 * sizeof(Datum));
+      nulls = palloc(2 * sizeof(char));
+
+      values[0] = Int32GetDatum(res[call_cntr].x);
+      nulls[0] = ' ';
+      values[1] = Int32GetDatum(res[call_cntr].y);
+      nulls[1] = ' ';
 	
       DBG("Heap making\n");
 
