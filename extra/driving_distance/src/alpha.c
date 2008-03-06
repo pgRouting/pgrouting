@@ -337,22 +337,22 @@ Datum alphashape(PG_FUNCTION_ARGS)
 
       values[0] = call_cntr;
       nulls[0] = ' ';
-      values[1] = Int32GetDatum(path[call_cntr].vertex_id);
+      values[1] = Int32GetDatum(res[call_cntr].vertex_id);
       nulls[1] = ' ';
-      values[2] = Int32GetDatum(path[call_cntr].edge_id);
+      values[2] = Int32GetDatum(res[call_cntr].edge_id);
       nulls[2] = ' ';
-      values[3] = Float8GetDatum(path[call_cntr].cost);
+      values[3] = Float8GetDatum(res[call_cntr].cost);
       nulls[3] = ' ';
       */
     
       values = palloc(3 * sizeof(Datum));
       nulls = palloc(3 * sizeof(char));
 
-      values[0] = Int32GetDatum(path[call_cntr].vertex_id);
+      values[0] = Int32GetDatum(res[call_cntr].vertex_id);
       nulls[0] = ' ';
-      values[1] = Int32GetDatum(path[call_cntr].edge_id);
+      values[1] = Int32GetDatum(res[call_cntr].edge_id);
       nulls[1] = ' ';
-      values[2] = Float8GetDatum(path[call_cntr].cost);
+      values[2] = Float8GetDatum(res[call_cntr].cost);
       nulls[2] = ' ';
 	
       DBG("Heap making\n");
