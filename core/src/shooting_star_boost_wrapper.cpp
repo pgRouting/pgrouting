@@ -115,7 +115,8 @@ private:
 // Also copies all attributes and adjacent edges
 template <class G, class E>
 static void
-graph_add_edge(G &graph, int id, int source, int target, 
+graph_add_edge(G &graph, int index,
+               int id, int source, int target, 
 	       float8 cost, float8 s_x, float8 s_y, float8 t_x, float8 t_y, 
 	       std::map< int, vector< std::pair<float, vector<int> > >, std::less<int> > adjacent_edges)
 {
@@ -139,7 +140,7 @@ graph_add_edge(G &graph, int id, int source, int target,
   graph[e].rank = 0;
   graph[e].distance = 0;
   
-  graph[e].index = boost::num_edges(graph);
+  graph[e].index = index;
 
   
   typedef typename graph_traits<G>::vertex_descriptor Vertex;
@@ -222,7 +223,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 
     if((j < count-1 && edges_array[j].id != edges_array[j+1].id)||(j==count-1))
     {
-      graph_add_edge<graph_t, edge_descriptor>(graph, 
+      graph_add_edge<graph_t, edge_descriptor>(graph, j,
 					       edges_array[j].id, edges_array[j].source, 
 					       edges_array[j].target, edges_array[j].cost, 
 					       edges_array[j].s_x, edges_array[j].s_y, 
@@ -250,7 +251,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
       }
 
 
-        graph_add_edge<graph_t, edge_descriptor>(graph,
+        graph_add_edge<graph_t, edge_descriptor>(graph, j,
 	                                       edges_array[j].id+e_max_id, edges_array[j].target, 
 					       edges_array[j].source, cost, 
 					       edges_array[j].s_x, edges_array[j].s_y, 
