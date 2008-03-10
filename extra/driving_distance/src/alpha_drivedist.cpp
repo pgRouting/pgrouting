@@ -34,8 +34,7 @@ corresponding to the Alpha shape.
 #include <CGAL/Simple_cartesian.h>
 #include <CGAL/Filtered_kernel.h>
 #include <CGAL/algorithm.h>
-#include <iostream>
-#include <fstream>
+
 #include <vector>
 #include <list>
 

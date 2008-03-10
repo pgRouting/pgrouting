@@ -20,8 +20,6 @@
  */
 
 #include <boost/config.hpp>
-#include <iostream>
-#include <fstream>
 
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
