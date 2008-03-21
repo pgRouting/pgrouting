@@ -33,7 +33,7 @@ using namespace std;
 using namespace boost;
 
 // Maximal number of nodes in the path (to avoid infinite loops)
-#define MAX_NODES 1000000
+#define MAX_NODES 100000000
 
 struct Edge
 {
