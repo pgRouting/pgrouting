@@ -289,7 +289,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
   if (!source_found) 
   {
     *err_msg = "Source edge not found";
-    return -1;
+    return -2;
   }
 
 
@@ -307,7 +307,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
   if (!target_found)
   {
     *err_msg = "Target edge not found";
-    return -1;
+    return -3;
   }
 
   property_map<graph_t, std::size_t Edge::*>::type edge_index = get(&Edge::index, graph);
@@ -358,7 +358,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
         if (!max--) 
 	  {
             *err_msg = "Overflow";
-            return -1;
+            return -4;
 	  }
       }
 
@@ -384,6 +384,9 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 
     return EXIT_SUCCESS;
   }
+
+  *err_msg = "Target was not reached";
+  return -1;
 
 }
 

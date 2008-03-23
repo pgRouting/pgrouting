@@ -188,28 +188,36 @@ fetch_edge_shooting_star(HeapTuple *tuple, TupleDesc *tupdesc,
   bool isnull;
   int t;
 
+  DBG("fetching\n");
+
   for(t=0; t<MAX_RULE_LENGTH;++t)
     target_edge->rule[t] = -1;
     
+  DBG("rule reset\n");
+
   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->id, &isnull);
   if (isnull)
     elog(ERROR, "id contains a null value");
   target_edge->id = DatumGetInt32(binval);
+  DBG("id: %i\n", target_edge->id);
   
   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->source, &isnull);
   if (isnull)
     elog(ERROR, "source contains a null value");
   target_edge->source = DatumGetInt32(binval);
+  DBG("source: %i\n", target_edge->source);
 
   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->target, &isnull);
   if (isnull)
     elog(ERROR, "target contains a null value");
   target_edge->target = DatumGetInt32(binval);
+  DBG("target: %i\n", target_edge->target);
 
   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->cost, &isnull);
   if (isnull)
     elog(ERROR, "cost contains a null value");
   target_edge->cost = DatumGetFloat8(binval);
+  DBG("cost: %f\n", target_edge->cost);
 
   if (edge_columns->reverse_cost != -1) 
     {
@@ -218,49 +226,70 @@ fetch_edge_shooting_star(HeapTuple *tuple, TupleDesc *tupdesc,
       if (isnull)
 	elog(ERROR, "reverse_cost contains a null value");
       target_edge->reverse_cost =  DatumGetFloat8(binval);
+      DBG("r_cost: %f\n", target_edge->reverse_cost);
+
     }
 
   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->s_x, &isnull);
   if (isnull)
     elog(ERROR, "source x contains a null value");
   target_edge->s_x = DatumGetFloat8(binval);
+  DBG("s_x: %f\n", target_edge->s_x);
 
   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->s_y, &isnull);
   if (isnull)
     elog(ERROR, "source y contains a null value");
   target_edge->s_y = DatumGetFloat8(binval);
+  DBG("s_y: %f\n", target_edge->s_y);
   
   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->t_x, &isnull);
   if (isnull)
     elog(ERROR, "target x contains a null value");
   target_edge->t_x = DatumGetFloat8(binval);
+  DBG("t_x: %f\n", target_edge->t_x);
   
   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->t_y, &isnull);
   if (isnull)
     elog(ERROR, "target y contains a null value");
   target_edge->t_y = DatumGetFloat8(binval);
+  DBG("t_y: %f\n", target_edge->t_y);
 
   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->to_cost, &isnull);
   if (isnull)
-    target_edge->to_cost = 0;
-    
+    target_edge->to_cost = 0;    
   else
     target_edge->to_cost = DatumGetFloat8(binval);
+  DBG("to_cost: %f\n", target_edge->to_cost);
 
   char *str = DatumGetCString(SPI_getvalue(*tuple, *tupdesc, edge_columns->rule));
+  
+  if(str != NULL)
+  {
+  char *str2 = " rule loaded\n";
+  char *str3;
+  
+  str3 = (char *)calloc(strlen(str) + strlen(str2) + 1, sizeof(char));
+  strcat(str3, str);
+  strcat(str3, str2);  
+  
+  DBG(str3);
+  
+  free(str3);
 
-  char* pch;
+  char* pch = NULL;
   int ci = MAX_RULE_LENGTH;
 
-  pch = (char *)strtok (str," ,");
+  pch = strtok (str," ,");
   
+  DBG("parsing rule\n");
   while (pch != NULL)
   {
     --ci;
     target_edge->rule[ci] = atoi(pch);
     pch = (char *)strtok (NULL, " ,");
   }
-
+  DBG("rule: %i\n", target_edge->rule[0]);
+  }
 }
 
 
@@ -328,15 +357,21 @@ static int compute_shortest_path_shooting_star(char* sql, int source_edge_id,
 	    return finish(SPIcode, ret);
         }
 	
-	//DBG("***%i***", ret);
+//	DBG("***%i***", ret);
 
       ntuples = SPI_processed;
-      total_tuples += ntuples;
+      DBG("ntuples = %i", ntuples);
 
-      if (!edges)
+      total_tuples += ntuples;
+      DBG("<%i> tuples", total_tuples);
+
+//      if (!edges)
+      if (total_tuples <= TUPLIMIT)
 	edges = palloc(total_tuples * sizeof(edge_shooting_star_t));
       else
 	edges = repalloc(edges, total_tuples * sizeof(edge_shooting_star_t));
+
+      DBG("memory for more %i ntuples allocated", ntuples);
 
       if (edges == NULL) 
         {
@@ -348,15 +383,21 @@ static int compute_shortest_path_shooting_star(char* sql, int source_edge_id,
         {
 	  int t;
 	  SPITupleTable *tuptable = SPI_tuptable;
+      DBG("tuptable", ntuples);
 	  TupleDesc tupdesc = SPI_tuptable->tupdesc;
+
+      DBG("tupdesc", ntuples);
 	  
 	  for (t = 0; t < ntuples; t++) 
             {
 	      HeapTuple tuple = tuptable->vals[t];
+      DBG("tuple", ntuples);
 	      fetch_edge_shooting_star(&tuple, &tupdesc, &edge_columns, 
 			       &edges[total_tuples - ntuples + t]);
+      DBG("fetch", ntuples);
             }
 	  SPI_freetuptable(tuptable);
+      DBG("freetuptable", ntuples);
         } 
       else 
         {
@@ -365,7 +406,7 @@ static int compute_shortest_path_shooting_star(char* sql, int source_edge_id,
     }
     
       
-  DBG("Total %i tuples", total_tuples);
+  DBG("Total <%i> tuples", total_tuples);
 
     
 
@@ -418,6 +459,8 @@ static int compute_shortest_path_shooting_star(char* sql, int source_edge_id,
 
   //time_t stime = time(NULL);    
 
+  DBG("ret =  %i\n",ret);
+
   ret = boost_shooting_star(edges, total_tuples, source_edge_id, 
 		    target_edge_id,
 		    directed, has_reverse_cost,
@@ -436,6 +479,7 @@ static int compute_shortest_path_shooting_star(char* sql, int source_edge_id,
     {
       ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED), 
         errmsg("Error computing path: %s", err_msg)));
+//        errmsg("Error computing path: %i", ret)));
     } 
   return finish(SPIcode, ret);
 }
