@@ -73,9 +73,9 @@ public:
   ~shooting_star_goal_visitor(){}
 
   template <class Graph>
-  void examine_edge(Edge e, Graph& g) 
+  void examine_edge(Edge e, Graph& g, int e_max_id) 
   {
-    if( g[e].id == g[m_goal].id)
+    if( g[e].id == g[m_goal].id || g[e].id == g[m_goal].id + e_max_id )
     {
       throw found_goal();
     }
@@ -84,6 +84,7 @@ public:
   void finish_edge(Edge e, Graph& g) {}
 private:
   Edge m_goal;
+  int e_max_id;
 };
 
 // Heuristic function

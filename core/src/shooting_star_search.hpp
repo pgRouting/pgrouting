@@ -87,7 +87,7 @@ namespace boost
       vis.initialize_vertex(u, g);
       vis.discover_vertex(u, g);
       vis.examine_vertex(u, g);
-      vis.examine_edge(e, g);
+      vis.examine_edge(e, g, e_max_id);
       vis.black_target(e, pe, g, e_max_id);
       vis.gray_target(e, pe, g, e_max_id);
       vis.finish_vertex(u, g);
@@ -146,7 +146,7 @@ namespace boost
       Edge e = Q.top();  Q.pop();            
       
       // Examine the edge
-      vis.examine_edge(e, g);
+      vis.examine_edge(e, g, e_max_id);
       
       // For all adjacent edges for the current one
       for (tie(ei, ei_end) = out_edges(target(e, g), g); ei != ei_end; ++ei) 
@@ -303,11 +303,11 @@ namespace boost
         m_vis.finish_vertex(u, g);
       }
       template <class Edge, class Graph>
-      void examine_edge(Edge e, Graph& g) 
+      void examine_edge(Edge e, Graph& g, int e_max_id) 
       { 
         if (m_compare(get(m_weight, e), m_zero))
           throw negative_edge();
-        m_vis.examine_edge(e, g);
+        m_vis.examine_edge(e, g, e_max_id);
       }
       template <class Edge, class Graph>
       void non_tree_edge(Edge, Graph&) {}
