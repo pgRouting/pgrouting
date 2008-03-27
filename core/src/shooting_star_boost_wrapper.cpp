@@ -55,13 +55,22 @@ struct Vertex
 };
 
 // exception for termination
-struct found_goal 
+template <class Edge>
+class found_goal 
 {
   public:
     found_goal() {}
+    found_goal(Edge target) : target_edge(target) {}
     found_goal(const found_goal &fg) {}
     ~found_goal() {}
-}; 
+    Edge get_target()
+    {
+      return target_edge;
+    }
+  private:
+    Edge target_edge;
+};
+
 
 // visitor that terminates when we find the goal
 template <class Edge>
@@ -77,7 +86,7 @@ public:
   {
     if( g[e].id == g[m_goal].id || g[e].id == g[m_goal].id + e_max_id )
     {
-      throw found_goal();
+      throw found_goal<Edge>(e);
     }
   }
   template <class Graph>
@@ -334,11 +343,13 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
        );
 
   } 
-  catch(found_goal &fg) 
+  catch(found_goal<edge_descriptor> &fg) 
   {
   
     vector<edge_descriptor> path_vect;
     int max = MAX_NODES;
+    
+    target_edge = fg.get_target();
 
     path_vect.push_back(target_edge);
     
