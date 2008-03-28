@@ -399,7 +399,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
   }
 
   *err_msg = "Target was not reached";
-  return -1;
+  return 0;
 
 }
 
