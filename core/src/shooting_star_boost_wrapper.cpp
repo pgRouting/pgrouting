@@ -113,7 +113,8 @@ public:
     //return ::max(dx, dy);
     //return ::sqrt(dx * dx + dy * dy)/2;
     //return 0;
-    return (min(::fabs(dx),::fabs(dxt))+min(::fabs(dy),::fabs(dyt)))/2;
+    //return (min(::fabs(dx),::fabs(dxt))+min(::fabs(dy),::fabs(dyt)))/2;
+    return sqrt(pow(min(::fabs(dx),::fabs(dxt)),2)+pow(min(::fabs(dy),::fabs(dyt)),2))/2;
   } 
 private:
   Graph& m_g;
