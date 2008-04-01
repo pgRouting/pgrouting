@@ -371,45 +371,52 @@ static int compute_shortest_path_shooting_star(char* sql, int source_edge_id,
       else
 	edges = repalloc(edges, total_tuples * sizeof(edge_shooting_star_t));
 
-      DBG("memory for more %i ntuples allocated", ntuples);
-
       if (edges == NULL) 
-        {
-	  elog(ERROR, "Out of memory");
-	  return finish(SPIcode, ret);
-        }
+      {
+	elog(ERROR, "Out of memory");
+	return finish(SPIcode, ret);
+      }
 
       if (ntuples > 0) 
-        {
+      {
 	  int t;
 	  SPITupleTable *tuptable = SPI_tuptable;
-      DBG("tuptable", ntuples);
 	  TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
-      DBG("tupdesc", ntuples);
-	  
 	  for (t = 0; t < ntuples; t++) 
-            {
-	      HeapTuple tuple = tuptable->vals[t];
-      DBG("tuple", ntuples);
-	      fetch_edge_shooting_star(&tuple, &tupdesc, &edge_columns, 
+          {
+	    HeapTuple tuple = tuptable->vals[t];
+	    fetch_edge_shooting_star(&tuple, &tupdesc, &edge_columns, 
 			       &edges[total_tuples - ntuples + t]);
-      DBG("fetch", ntuples);
-            }
+			       
+            DBG("edges[%i].id = %i", total_tuples - ntuples + t, edges[total_tuples - ntuples + t].id);
+
+    if(edges[total_tuples - ntuples + t].id<e_min_id)
+      e_min_id=edges[total_tuples - ntuples + t].id;
+
+    if(edges[total_tuples - ntuples + t].id>e_max_id)
+      e_max_id=edges[total_tuples - ntuples + t].id;
+            
+
+    if(edges[total_tuples - ntuples + t].id == source_edge_id)
+      ++s_count;
+    if(edges[total_tuples - ntuples + t].id == target_edge_id)
+      ++t_count;
+
+          }
 	  SPI_freetuptable(tuptable);
-      DBG("freetuptable", ntuples);
-        } 
+      } 
       else 
-        {
+      {
 	  moredata = FALSE;
-        }
+      }
     }
     
       
   DBG("Total <%i> tuples", total_tuples);
 
     
-
+/*
   for(z=0; z<total_tuples; z++)
   {
     if(edges[z].id<e_min_id)
@@ -419,27 +426,29 @@ static int compute_shortest_path_shooting_star(char* sql, int source_edge_id,
       e_max_id=edges[z].id;
 
   }
-
+*/
     DBG("E : %i <-> %i", e_min_id, e_max_id);
 
-  for(z=0; z<total_tuples; ++z)
-  {
+  //for(z=0; z<total_tuples; ++z)
+  //{
 
     //check if edges[] contains source and target
-    if(edges[z].id == source_edge_id || 
-       edges[z].id == source_edge_id)
-      ++s_count;
-    if(edges[z].id == target_edge_id || 
-       edges[z].id == target_edge_id)
-      ++t_count;
+    
+  //DBG("edges[%i].id (%i) == %i", z, edges[z].id, source_edge_id);
 
+/*    
+    if(edges[z].id == source_edge_id)
+      ++s_count;
+    if(edges[z].id == target_edge_id)
+      ++t_count;
+*/
 
     //edges[z].source-=v_min_id;
     //edges[z].target-=v_min_id;
     
-  }
+  //}
     
-  DBG("Total %i tuples", total_tuples);
+  //DBG("Total %i tuples", total_tuples);
 
   if(s_count == 0)
   {
