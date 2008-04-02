@@ -371,15 +371,14 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 	// This check was made to be sure that we can
 	// restore the path from the target edge within
 	// MAX_NODE iterations.
-	// Somehow it doesn't work properly and search exits here
+	// Sometimes it doesn't work properly and search exits here
 	// even if the target edge was reached.
-/*
+
         if (!max--) 
 	  {
             *err_msg = "No path found";
             return -1;
-	  }
-*/	  
+	  }	  
       }
 
     *path = (path_element_t *) malloc(sizeof(path_element_t) * 
