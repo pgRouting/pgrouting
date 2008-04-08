@@ -337,18 +337,18 @@ Datum alphashape(PG_FUNCTION_ARGS)
 
       values[0] = call_cntr;
       nulls[0] = ' ';
-      values[1] = Int32GetDatum(res[call_cntr].x);
+      values[1] = Float8GetDatum(res[call_cntr].x);
       nulls[1] = ' ';
-      values[2] = Int32GetDatum(res[call_cntr].y);
+      values[2] = Float8GetDatum(res[call_cntr].y);
       nulls[2] = ' ';
       */
     
       values = palloc(2 * sizeof(Datum));
       nulls = palloc(2 * sizeof(char));
 
-      values[0] = Int32GetDatum(res[call_cntr].x);
+      values[0] = Float8GetDatum(res[call_cntr].x);
       nulls[0] = ' ';
-      values[1] = Int32GetDatum(res[call_cntr].y);
+      values[1] = Float8GetDatum(res[call_cntr].y);
       nulls[1] = ' ';
 	
       DBG("Heap making\n");
