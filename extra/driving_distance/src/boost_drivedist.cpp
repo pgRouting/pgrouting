@@ -76,7 +76,7 @@ boost_dijkstra_dist(edge_t *edges, unsigned int count, int source_vertex_id,
                     double rdistance, bool directed, bool has_reverse_cost,
                     path_element_t **path, int *path_count, char **err_msg) 
 {
-  typedef adjacency_list < listS, vecS, undirectedS, Vertex, Edge > graph_t;
+  typedef adjacency_list < listS, vecS, directedS, Vertex, Edge > graph_t;
   typedef graph_traits < graph_t >::vertex_descriptor vertex_descriptor;
   typedef graph_traits < graph_t >::edge_descriptor edge_descriptor;
 
