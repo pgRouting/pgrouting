@@ -24,7 +24,7 @@ BEGIN
 
     SELECT
 
-        ST_Distance(the_geom,ST_GeomFromText( AsText?(p), _srid)) AS d, id, the_geom AS
+        ST_Distance(the_geom,ST_GeomFromText( AsText?(p), _srid)) AS d, id, the_geom
 
     INTO _r FROM vertices_tmp WHERE
 
