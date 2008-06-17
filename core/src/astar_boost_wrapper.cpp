@@ -182,14 +182,14 @@ boost_astar(edge_astar_t *edges, unsigned int count,
 
   if (source_vertex < 0) 
     {
-      *err_msg = "Source vertex not found";
+      *err_msg = (char *) "Source vertex not found";
       return -1;
     }
 
   vertex_descriptor target_vertex = vertex(target_vertex_id, graph);
   if (target_vertex < 0)
     {
-      *err_msg = "Target vertex not found";
+      *err_msg = (char *) "Target vertex not found";
       return -1;
     }
 
@@ -216,7 +216,7 @@ boost_astar(edge_astar_t *edges, unsigned int count,
       {
         if (target_vertex == predecessors[target_vertex]) 
 	  {
-            *err_msg = "No path found";
+            *err_msg = (char *) "No path found";
             return 0;
 	    
 	  }
@@ -225,7 +225,7 @@ boost_astar(edge_astar_t *edges, unsigned int count,
         path_vect.push_back(target_vertex);
         if (!max--) 
 	  {
-            *err_msg = "Overflow";
+            *err_msg = (char *) "Overflow";
             return -1;
 	  }
       }

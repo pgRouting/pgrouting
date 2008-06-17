@@ -299,7 +299,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 
   if (!source_found) 
   {
-    *err_msg = "Source edge not found";
+    *err_msg = (char *) "Source edge not found";
     return -2;
   }
 
@@ -317,7 +317,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 
   if (!target_found)
   {
-    *err_msg = "Target edge not found";
+    *err_msg = (char *) "Target edge not found";
     return -3;
   }
 
@@ -359,7 +359,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
         
         if ((target_edge == predecessors[graph[target_edge].id]) && (predecessors[graph[target_edge].id] != source_edge))
 	{
-          *err_msg = "No path found";
+          *err_msg = (char *) "No path found";
           return -1;
 	    
 	}
@@ -376,7 +376,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 
         if (!max--) 
 	  {
-            *err_msg = "No path found";
+            *err_msg = (char *) "No path found";
             return -1;
 	  }	  
       }
@@ -404,7 +404,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
     return EXIT_SUCCESS;
   }
 
-  *err_msg = "Target was not reached";
+  *err_msg = (char *) "Target was not reached";
   return 0;
 
 }

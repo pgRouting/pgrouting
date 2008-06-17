@@ -105,14 +105,14 @@ boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vert
 
     if (_source < 0 /*|| _source >= num_nodes*/) 
     {
-	*err_msg = "Starting vertex not found";
+	*err_msg = (char *) "Starting vertex not found";
 	return -1;
     }
 
     vertex_descriptor _target = vertex(end_vertex, graph);
     if (_target < 0 /*|| _target >= num_nodes*/)
     {
-	*err_msg = "Ending vertex not found";
+	*err_msg = (char *) "Ending vertex not found";
 	return -1;
     }
 
@@ -131,7 +131,7 @@ boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vert
     {
 	if (_target == predecessors[_target]) 
 	{
-	    *err_msg = "No path found";
+	    *err_msg = (char *) "No path found";
 	    return 0;
 	}
 	_target = predecessors[_target];
@@ -139,7 +139,7 @@ boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vert
 	path_vect.push_back(_target);
 	if (!max--) 
 	{
-	    *err_msg = "Overflow";
+	    *err_msg = (char *) "Overflow";
 	    return -1;
 	}
     }
