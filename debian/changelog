@@ -1,3 +1,9 @@
+pgrouting (1.02-1) intrepid; urgency=low
+
+  * Update to Postgresql 8.3 based package
+
+ -- takubo <takubo@saruga-tondara.net>  Mon, 28 Jul 2008 11:36:55 +0900
+
 pgrouting (1.01svn20080113-1) unstable; urgency=low
 
   * Initial release
