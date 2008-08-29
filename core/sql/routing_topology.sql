@@ -24,11 +24,11 @@ BEGIN
 
     SELECT
 
-        ST_Distance(the_geom,ST_GeomFromText( AsText?(p), _srid)) AS d, id, the_geom
+        Distance(the_geom,GeometryFromText( AsText(p), _srid)) AS d, id, the_geom
 
     INTO _r FROM vertices_tmp WHERE
 
-        the_geom && ST_Expand(ST_GeomFromText(AsText?(p), _srid), tolerance ) AND ST_Distance(the_geom, ST_GeomFromText(AsText?(p), _srid)) < tolerance
+        the_geom && Expand(GeometryFromText(AsText(p), _srid), tolerance ) AND Distance(the_geom, GeometryFromText(AsText(p), _srid)) < tolerance
 
     ORDER BY d LIMIT 1; IF FOUND THEN
 
@@ -36,7 +36,7 @@ BEGIN
 
     ELSE
 
-        INSERT INTO vertices_tmp(the_geom) VALUES (ST_SetSRID(p,_srid)); _id:=lastval();
+        INSERT INTO vertices_tmp(the_geom) VALUES (SetSRID(p,_srid)); _id:=lastval();
 
     END IF;
 
@@ -71,7 +71,7 @@ BEGIN
 
     EXECUTE 'CREATE TABLE vertices_tmp (id serial)';
 
-    FOR _r IN EXECUTE 'SELECT srid FROM geometry_columns WHERE f_table_name='|| quote_ident(geom_table)||';' LOOP
+    FOR _r IN EXECUTE 'SELECT srid FROM geometry_columns WHERE f_table_name='''|| quote_ident(geom_table)||''';' LOOP
 	srid := _r.srid;
     END LOOP;
 
@@ -79,8 +79,8 @@ BEGIN
     CREATE INDEX vertices_tmp_idx ON vertices_tmp USING GIST (the_geom);
 			
     FOR _r IN EXECUTE 'SELECT ' || quote_ident(gid_cname) || ' AS id,'
-	    || ' ST_StartPoint('|| quote_ident(geo_cname) ||') AS source,'
-            || ' ST_EndPoint('|| quote_ident(geo_cname) ||') as target'
+	    || ' StartPoint('|| quote_ident(geo_cname) ||') AS source,'
+            || ' EndPoint('|| quote_ident(geo_cname) ||') as target'
 	    || ' FROM ' || quote_ident(geom_table) 
     LOOP
         
