@@ -144,7 +144,7 @@ boost_dijkstra_dist(edge_t *edges, unsigned int count, int source_vertex_id,
   }
   
   if( path_vector.size() == 0 ) {
-    *err_msg = "No path found";
+    *err_msg = (char *)"No path found";
     return 0;          
   }
   
