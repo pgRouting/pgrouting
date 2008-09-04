@@ -1,9 +1,29 @@
-                     pgRouting Library Version 1.0
-		                 2007-10-04
+                     pgRouting Library Version 1.03
+		                 2008-09-04
 		               
 			       Release  Notes
 		
 		
+
+===============================
+CHANGES SINCE RELEASE 1.02:
+===============================
+* Much faster topology creation
+- bugs #127, #126, #119, #118, #114
+
+===============================
+CHANGES SINCE RELEASE 1.01:
+===============================
+* Shooting* bugfixes
+- bugs #101, #102
+* Compilation problems solved
+- bugs #93, #100
+    
+===============================
+CHANGES SINCE RELEASE 1.0:
+===============================
+* Shooting* bugfixes
+    
 ===============================
 CHANGES SINCE RELEASE 1.0.0b:
 ===============================
