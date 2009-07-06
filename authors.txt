@@ -11,6 +11,5 @@ Akio Takubo
 David Techer
 Florian Thurkow
 
-
 pgRouting is developed and maintaned by Orkney, Inc.
 <http://www.orkney.co.jp>
