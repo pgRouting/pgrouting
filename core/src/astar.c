@@ -22,6 +22,7 @@
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
+#include "catalog/pg_type.h"
 
 #include <stdio.h>
 #include <stdlib.h>
