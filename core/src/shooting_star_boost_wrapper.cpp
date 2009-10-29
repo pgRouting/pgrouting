@@ -243,11 +243,24 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
       // if the edge is not directed or if it is directed and has reverse cost
       if (!directed || (directed && has_reverse_cost))
       {
-        float8 cost;
+        float8 cost, reverse_cost;
 		
         if (has_reverse_cost)
         {
-          cost = edges_array[j].reverse_cost;
+          cost = edges_array[j].cost;
+          reverse_cost = edges_array[j].reverse_cost;
+          //Check if we start or end with one way streets
+          if(cost>reverse_cost)
+          {
+            if(edges_array[j].id=source_edge_id)
+            {
+              source_edge_id += e_max_id;
+            }
+            if(edges_array[j].id=target_edge_id)
+            {
+              target_edge_id += e_max_id;
+            }
+          }
         }
         else
         {
@@ -255,11 +268,11 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
         }
 
 
-      if(adjacent_edges[edges_array[j].id].size() > 0)
-      {
-	adjacent_edges[edges_array[j].id+e_max_id].assign( adjacent_edges[edges_array[j].id].begin(), adjacent_edges[edges_array[j].id].end() );
-	adjacent_edges.erase(edges_array[j].id);
-      }
+        if(adjacent_edges[edges_array[j].id].size() > 0)
+        {
+	  adjacent_edges[edges_array[j].id+e_max_id].assign( adjacent_edges[edges_array[j].id].begin(), adjacent_edges[edges_array[j].id].end() );
+	  adjacent_edges.erase(edges_array[j].id);
+        }
 
 
         graph_add_edge<graph_t, edge_descriptor>(graph, j,
