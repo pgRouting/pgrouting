@@ -243,11 +243,21 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
       // if the edge is not directed or if it is directed and has reverse cost
       if (!directed || (directed && has_reverse_cost))
       {
-        float8 cost;
+        float8 cost, reverse_cost;
 		
         if (has_reverse_cost)
         {
-          cost = edges_array[j].reverse_cost;
+          cost = edges_array[j].cost;
+		  reverse_cost = edges_array[j].reverse_cost;
+		  
+		  //If chosen source/target edge's cost is high, take the edge for opposite direction
+		  if(cost > reverse_cost)
+		  {
+			  if(edges_array[j].id == source_edge_id)
+				source_edge_id += e_max_id;
+			  else if(edges_array[j].id == target_edge_id)
+				target_edge_id += e_max_id;
+		  }
         }
         else
         {
@@ -257,8 +267,8 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 
       if(adjacent_edges[edges_array[j].id].size() > 0)
       {
-	adjacent_edges[edges_array[j].id+e_max_id].assign( adjacent_edges[edges_array[j].id].begin(), adjacent_edges[edges_array[j].id].end() );
-	adjacent_edges.erase(edges_array[j].id);
+	    adjacent_edges[edges_array[j].id+e_max_id].assign( adjacent_edges[edges_array[j].id].begin(), adjacent_edges[edges_array[j].id].end() );
+	    adjacent_edges.erase(edges_array[j].id);
       }
 
 
@@ -288,7 +298,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 
   for(tie(ei, ei_end) = edges(graph); ei != ei_end; ++ei) 
   {
-    if(graph[*ei].id == source_edge_id)
+    if(graph[*ei].id == source_edge_id || graph[*ei].id == source_edge_id - e_max_id)
     {
       source_edge = *ei;
       source_found = true;
@@ -306,7 +316,7 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 
   for(tie(ei, ei_end) = edges(graph); ei != ei_end; ++ei) 
   {
-    if(graph[*ei].id == target_edge_id)
+    if(graph[*ei].id == target_edge_id || graph[*ei].id == target_edge_id - e_max_id)
     {
       target_edge = *ei;
       target_found = true;
@@ -387,13 +397,14 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 
     for(int i = path_vect.size() - 1, j = 0; i >= 0; i--, j++)
     {
-      graph_traits < graph_t >::edge_descriptor e;
+      float cost;
+	  graph_traits < graph_t >::edge_descriptor e;
 
       e = path_vect.at(i);
 
       if(graph[e].id > e_max_id)
       {
-        graph[e].id -= e_max_id;	
+        graph[e].id -= e_max_id;
       }
       
       (*path)[j].edge_id = graph[e].id;
