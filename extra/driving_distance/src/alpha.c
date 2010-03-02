@@ -29,6 +29,7 @@
 
 #include "fmgr.h"
 
+
 #ifdef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif
@@ -245,9 +246,22 @@ static int compute_alpha_shape(char* sql, vertex_t **res, int *res_count)
     }
 
 
-  if (total_tuples < 2) 
+  // if (total_tuples < 2) //this was the buggy code of the pgrouting project.
+  // TODO: report this as a bug to the pgrouting project
+  // the CGAL alpha-shape function crashes if called with less than three points!!!
+
+  if (total_tuples == 0) {
+  	  elog(ERROR, "Distance is too short. no vertex for alpha shape calculation. alpha shape calculation needs at least 3 vertices.");
+  }
+  if (total_tuples == 1) {
+	  elog(ERROR, "Distance is too short. only 1 vertex for alpha shape calculation. alpha shape calculation needs at least 3 vertices.");
+  }
+  if (total_tuples == 2) {
+	  elog(ERROR, "Distance is too short. only 2 vertices for alpha shape calculation. alpha shape calculation needs at least 3 vertices.");
+  }
+  if (total_tuples < 3)
   {
-    elog(ERROR, "Distance is too short");
+    // elog(ERROR, "Distance is too short ....");
     return finish(SPIcode, ret);
   }
 
