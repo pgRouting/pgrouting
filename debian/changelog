@@ -1,9 +1,3 @@
-pgrouting (1.04-ppa11) lucid; urgency=low
-
-  * updated to latest revision r358 to fix Driving Distance bug
-
- -- Daniel Kastl <daniel@georepublic.de>  Sat, 18 Sep 2010 10:54:13 +0200
-
 pgrouting (1.04-ppa10) lucid; urgency=low
 
   * Removed libcgal-dev from package dependency and added libcgal4 instead
