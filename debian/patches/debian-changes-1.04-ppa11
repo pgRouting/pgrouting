@@ -1,0 +1,37 @@
+Description: Upstream changes introduced in version 1.04-ppa11
+ This patch has been created by dpkg-source during the package build.
+ Here's the last changelog entry, hopefully it gives details on why
+ those changes were made:
+ .
+ pgrouting (1.04-ppa11) lucid; urgency=low
+ .
+   * updated to latest revision r358 to fix Driving Distance bug
+ .
+ The person named in the Author field signed this changelog entry.
+Author: Daniel Kastl <daniel@georepublic.de>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- pgrouting-1.04.orig/CMakeLists.txt
++++ pgrouting-1.04/CMakeLists.txt
+@@ -85,8 +85,8 @@ IF(WIN32)
+   LINK_LIBRARIES(postgres)
+ ENDIF(WIN32)
+ 
+-SET(CMAKE_C_FLAGS "-O2 -g")
+-SET(CMAKE_CXX_FLAGS "-O2 -g")
++SET(CMAKE_C_FLAGS "-O2 -g -frounding-math")
++SET(CMAKE_CXX_FLAGS "-O2 -g -frounding-math")
+ 
+ # Recurse into the subdirectories.  This does not actually
+ # cause another cmake executable to run.  The same process will walk through

@@ -1,0 +1,93 @@
+pgrouting (1.04-ppa11) lucid; urgency=low
+
+  * updated to latest revision r358 to fix Driving Distance bug
+
+ -- Daniel Kastl <daniel@georepublic.de>  Sat, 18 Sep 2010 10:54:13 +0200
+
+pgrouting (1.04-ppa10) lucid; urgency=low
+
+  * Removed libcgal-dev from package dependency and added libcgal4 instead
+
+ -- Daniel Kastl <daniel@georepublic.de>  Fri, 02 Jul 2010 16:49:27 +0900
+
+pgrouting (1.04-ppa9) lucid; urgency=low
+
+  * Added recommended packages to control file
+
+ -- Daniel Kastl <daniel@georepublic.de>  Wed, 28 Apr 2010 14:16:12 +0900
+
+pgrouting (1.04-ppa8) lucid; urgency=low
+
+  * Split packages into core package and extras
+
+ -- Daniel Kastl <daniel@georepublic.de>  Wed, 28 Apr 2010 12:27:24 +0900
+
+pgrouting (1.04-ppa7) lucid; urgency=low
+
+  * Added support for Driving Distance
+  * Added cgal dependency
+  * Added shlibs.local
+
+ -- Daniel Kastl <daniel@georepublic.de>  Sat, 10 Apr 2010 13:41:52 +0900
+
+pgrouting (1.04-ppa6) lucid; urgency=low
+
+  * Added support for TSP
+  * Added gaul-devel dependency
+  * Removed "dirs" file for PostgreSQL 8.3
+
+ -- Daniel Kastl <daniel@georepublic.de>  Sat, 10 Apr 2010 12:39:02 +0900
+
+pgrouting (1.04-ppa5) lucid; urgency=low
+
+  * Added gaul-devel package build dependency
+  * Removed PostgreSQL 8.3 support
+  * Changed "section" to "misc" in "debian/control" to be same as postgresql-8.x-postgis
+
+ -- Daniel Kastl <daniel@georepublic.de>  Fri, 09 Apr 2010 11:11:33 +0900
+
+pgrouting (1.04-ppa4) lucid; urgency=low
+
+  * Included debhelper.mk to debian/rules 
+
+ -- Daniel Kastl <daniel@georepublic.de>  Thu, 08 Apr 2010 17:18:45 +0900
+
+pgrouting (1.04-ppa3) lucid; urgency=low
+
+  * Switched to CDBS packaging and added CMAKE build support
+  * Added empty debian/files file to avoid error with pdebuild (but not so good idea probably)
+
+ -- Daniel Kastl <daniel@georepublic.de>  Thu, 08 Apr 2010 12:31:10 +0900
+
+pgrouting (1.04-ppa2) lucid; urgency=low
+
+  * Update to pgRouting 1.04 (or what might be 1.04 soon)
+  * Create multiple binary package to add TSP and DD
+  * Updated debian/control to latest Standards-Version: 3.8.3
+  * Update to Postgresql 8.4 based package
+  * Switch to dpkg-source 3.0 (quilt) format
+
+ -- Daniel Kastl <daniel@georepublic.de>  Wed, 07 Apr 2010 17:52:47 +0900
+
+pgrouting (1.03-ppa1) jaunty; urgency=low
+
+  * Update to pgRouting 1.03
+  * Create Launchpad PPA package
+  * Updated debian/control to latest Standards-Version: 3.8.3
+  * Updated debian/control Maintainer(s) according Ubuntu template
+  * Updated debian/control Build-Depends: debhelper (>= 7) 
+
+ -- Daniel Kastl <daniel@georepublic.de>  Wed, 31 Mar 2010 17:44:56 +0900
+
+pgrouting (1.02-1) intrepid; urgency=low
+
+  * Update to Postgresql 8.3 based package
+
+ -- takubo <takubo@saruga-tondara.net>  Mon, 28 Jul 2008 11:36:55 +0900
+
+pgrouting (1.01svn20080113-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Akio Takubo <takubo@saruga-tondara.net>  Sun, 13 Jan 2008 18:14:48 +0900
+
