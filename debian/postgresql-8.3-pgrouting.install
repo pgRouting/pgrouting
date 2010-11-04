@@ -1,4 +1,0 @@
-debian/tmp/usr/lib/postgresql/8.3/lib/librouting.so
-debian/tmp/usr/share/postlbs/routing_core.sql
-debian/tmp/usr/share/postlbs/routing_core_wrappers.sql
-
