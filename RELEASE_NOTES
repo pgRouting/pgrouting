@@ -1,69 +1,68 @@
-                     pgRouting Library Version 1.03
-		                 2008-09-04
-		               
-			       Release  Notes
-		
-		
+===============================================
+ Release Notes
+===============================================
 
-===============================
-CHANGES SINCE RELEASE 1.02:
-===============================
+pgRouting Library Version 1.05
+(see online: http://www.pgrouting.org/docs/release_notes.html)
+
+Changes for release 1.05
+-----------------------------------------------
+
+* Bugfixes
+
+
+Changes for release 1.03
+-----------------------------------------------
+
 * Much faster topology creation
-- bugs #127, #126, #119, #118, #114
+* Bugfixes
 
-===============================
-CHANGES SINCE RELEASE 1.01:
-===============================
+
+Changes for release 1.02
+-----------------------------------------------
+
 * Shooting* bugfixes
-- bugs #101, #102
 * Compilation problems solved
-- bugs #93, #100
-    
-===============================
-CHANGES SINCE RELEASE 1.0:
-===============================
+
+
+Changes for release 1.01
+-----------------------------------------------
+
 * Shooting* bugfixes
-    
-===============================
-CHANGES SINCE RELEASE 1.0.0b:
-===============================
-+ Core and extra functions are separated
-+ Cmake build process
+
+
+Changes for release 1.0
+-----------------------------------------------
+
+* Core and extra functions are separated
+* Cmake build process
 * Bugfixes
 
-===============================
-CHANGES SINCE RELEASE 1.0.0a:
-===============================
-+ Additional SQL file with more simple names for wrapper functions
+
+Changes for release 1.0.0b
+-----------------------------------------------
+
+* Additional SQL file with more simple names for wrapper functions
 * Bugfixes
 
-===============================
-CHANGES SINCE RELEASE 0.9.9:
-===============================
-+ Shooting* shortest path algorithm for real road networks
+
+Changes for release 1.0.0a
+-----------------------------------------------
+
+* Shooting* shortest path algorithm for real road networks
 * Several SQL bugs were fixed
 
-===============================
-CHANGES SINCE RELEASE 0.9.8:
-===============================
-+ PostgreSQL 8.2 support
-* Shortest path functions return empty result if they couldn't find any path
 
-============================
-CHANGES SINCE RELEASE 0.9.7:
-============================
-+ Renumbering scheme was added to shortest path functions
-+ Directed shortest path functions were added
+Changes for release 0.9.9
+-----------------------------------------------
+
+* PostgreSQL 8.2 support
+* Shortest path functions return empty result if they couldn’t find any path
+
+
+Changes for release 0.9.8
+-----------------------------------------------
+
+* Renumbering scheme was added to shortest path functions
+* Directed shortest path functions were added
 * routing_postgis.sql was modified to use dijkstra in TSP search
-
-=============================
-KNOWN ISSUES IN THIS RELEASE:
-=============================
-None so far :)
-
-======
-NOTES:
-======
-+ - Newly added feature
-* - Changed feature
-- - Removed feature
