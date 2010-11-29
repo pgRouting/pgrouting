@@ -64,7 +64,7 @@ OPTION(WITH_DD "Build Driving distance library" OFF)
 
 IF(UNIX)
   SET(LIBRARY_INSTALL_PATH ${LIB_DIR})
-  SET(SQL_INSTALL_PATH /usr/share/postlbs)
+  SET(SQL_INSTALL_PATH /usr/share/pgrouting)
   MESSAGE("Installation directory for libraries is set to ${LIBRARY_INSTALL_PATH} and for SQL files is set to ${SQL_INSTALL_PATH}")
 ELSE(UNIX)
   SET(LIBRARY_INSTALL_PATH ${PGROUTING_BINARY_DIR}/lib)
