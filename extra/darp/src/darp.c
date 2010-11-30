@@ -1,7 +1,7 @@
 /*
  * Dial-a-Ride Problem solution algorithm for PostgreSQL
  *
- * Copyright (c) 2006 Anton A. Patrushev, Orkney, Inc.
+ * Copyright (c) 2010 Anton A. Patrushev, Georepublic
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
