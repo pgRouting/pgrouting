@@ -376,9 +376,11 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
   
 	target_edge = predecessors[graph[target_edge].id];
 	
-	//Check if we have u-turns within same edge
-	if( abs(graph[predecessors[graph[target_edge].id]].id - graph[target_edge].id) != e_max_id )
+	//Check if we have u-turns within same edge at the beginning
+	if( !(abs(graph[predecessors[graph[target_edge].id]].id - graph[target_edge].id) == e_max_id && (target_edge != source_edge || predecessors[graph[target_edge].id] != source_edge)) )
+    {   
         path_vect.push_back(target_edge);
+	}
 	
 	// This check was made to be sure that we can
 	// restore the path from the target edge within
