@@ -88,11 +88,11 @@ namespace boost
       vis.discover_vertex(u, g);
       vis.examine_vertex(u, g);
       vis.examine_edge(e, g, e_max_id);
-      vis.black_target(e, pe, g, e_max_id);
-      vis.gray_target(e, pe, g, e_max_id);
+      vis.black_target(e, pe, s, g, e_max_id);
+      vis.gray_target(e, pe, s, g, e_max_id);
       vis.finish_vertex(u, g);
       
-      vis.tree_edge(e, pe, g, e_max_id);
+      vis.tree_edge(e, pe, s, g, e_max_id);
 
       vis.initialize_edge(e, g);
       vis.discover_edge(e, g);
@@ -102,7 +102,7 @@ namespace boost
     Visitor vis;
     Graph g;
     typename graph_traits<Graph>::vertex_descriptor u;
-    typename graph_traits<Graph>::edge_descriptor e, pe;
+    typename graph_traits<Graph>::edge_descriptor e, pe, s;
     int e_max_id;
   };
   
@@ -158,7 +158,7 @@ namespace boost
 	// and enqueue it if it was white
 	if (e_color == EdgeColor::white()) 
 	{         
-	  vis.tree_edge(*ei, e, g, e_max_id);
+	  vis.tree_edge(*ei, e, s, g, e_max_id);
 	  put(edge_color, *ei, EdgeColor::gray());   
 	  vis.discover_edge(*ei, g);
           Q.push(*ei);
@@ -170,11 +170,11 @@ namespace boost
 	  vis.non_tree_edge(*ei, g);
           if (e_color == EdgeColor::gray())
 	  {         
-	    vis.gray_target(*ei, e, g, e_max_id);
+	    vis.gray_target(*ei, e, s, g, e_max_id);
           }
 	  else
 	  {                                      
-	    vis.black_target(*ei, e, g, e_max_id);
+	    vis.black_target(*ei, e, s, g, e_max_id);
 	  }
         }
 	
@@ -214,7 +214,7 @@ namespace boost
     
     private:
       template <class Edge, class Graph>
-      void tree_edge(Edge e, Edge pe, Graph& g) {}
+      void tree_edge(Edge e, Edge pe, Edge s, Graph& g) {}
       template <class Edge, class Graph>
       void non_tree_edge(Edge e, Graph& g) {}
   };
@@ -320,9 +320,9 @@ namespace boost
       
       
       template <class Edge, class Graph>
-      void tree_edge(Edge e, Edge pe, Graph& g, int e_max_id) 
+      void tree_edge(Edge e, Edge pe, Edge s, Graph& g, int e_max_id) 
       {
-        m_decreased = relax(e, pe, g, m_weight, m_edge, m_predecessor, m_distance,
+        m_decreased = relax(e, pe, s, g, m_weight, m_edge, m_predecessor, m_distance,
                             m_cost, m_combine, m_compare, e_max_id);
     
         if(m_decreased) 
@@ -340,9 +340,9 @@ namespace boost
       
       
       template <class Edge, class Graph>
-      void gray_target(Edge e, Edge pe, Graph& g, int e_max_id) 
+      void gray_target(Edge e, Edge pe, Edge s, Graph& g, int e_max_id) 
       {
-        m_decreased = relax(e, pe, g, m_weight, m_edge, m_predecessor, m_distance,
+        m_decreased = relax(e, pe, s, g, m_weight, m_edge, m_predecessor, m_distance,
                             m_cost, m_combine, m_compare, e_max_id);
 
         if(m_decreased) 
@@ -361,10 +361,10 @@ namespace boost
       
             
       template <class Edge, class Graph>
-      void black_target(Edge e, Edge pe, Graph& g, int e_max_id) 
+      void black_target(Edge e, Edge pe, Edge s, Graph& g, int e_max_id) 
       {
 
-        m_decreased = relax(e, pe, g, m_weight, m_edge, m_predecessor, m_distance,
+        m_decreased = relax(e, pe, s, g, m_weight, m_edge, m_predecessor, m_distance,
                             m_cost, m_combine, m_compare, e_max_id);
 
         if(m_decreased) 
