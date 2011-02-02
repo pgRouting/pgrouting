@@ -23,7 +23,7 @@
 #define MAX_RULE_LENGTH 5
 
 #define MAX_NODES 1000000
-#define MAX_COST  100000
+#define MAX_COST  10000000
 
 #include "postgres.h"
 

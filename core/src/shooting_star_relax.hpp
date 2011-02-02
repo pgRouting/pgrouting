@@ -57,7 +57,8 @@ namespace boost {
             class PredecessorMap, class DistanceMap, class CostMap,
             class BinaryFunction, class BinaryPredicate>
     bool relax(Edge e, 
-               Edge pe, 
+               Edge pe,
+               Edge s, 
                const Graph& g, const WeightMap& w, const EdgeMap& em,
                PredecessorMap& p, DistanceMap& d, CostMap& c,
                const BinaryFunction& combine, const BinaryPredicate& compare,
@@ -128,9 +129,10 @@ namespace boost {
       {
         w_pe_e = w_pe[g[e].id].at(contains).first;
       }
-      else if(abs(g[e].id-g[pe].id) == e_max_id)
+      //Check if it is a u-turn not in the beginning of route 
+      else if( abs(g[e].id-g[pe].id) == e_max_id && g[e].id != g[s].id && g[pe].id != g[s].id )
       {
-	w_pe_e = U_TURN_COST;
+		w_pe_e = U_TURN_COST;
       }
       else
       {
