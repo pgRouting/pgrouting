@@ -128,10 +128,10 @@ namespace boost {
       {
         w_pe_e = w_pe[g[e].id].at(contains).first;
       }
-      else if(abs(g[e].id-g[pe].id) == e_max_id)
-      {
-	w_pe_e = U_TURN_COST;
-      }
+      //else if(abs(g[e].id-g[pe].id) == e_max_id)
+      //{
+		//w_pe_e = U_TURN_COST;
+      //}
       else
       {
         w_pe_e = 0;

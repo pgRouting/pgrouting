@@ -375,7 +375,9 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
 	}
   
 	target_edge = predecessors[graph[target_edge].id];
-
+	
+	//Check if we have u-turns within same edge
+	if( abs(graph[predecessors[graph[target_edge].id]].id - graph[target_edge].id) != e_max_id )
         path_vect.push_back(target_edge);
 	
 	// This check was made to be sure that we can
@@ -394,14 +396,16 @@ boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count,
     *path = (path_element_t *) malloc(sizeof(path_element_t) * 
 				      (path_vect.size() + 1));
     *path_count = path_vect.size();
-
-    for(int i = path_vect.size() - 1, j = 0; i >= 0; i--, j++)
+    
+    int start_from = path_vect.size() - 1;
+    
+    for(int i = start_from, j = 0; i >= 0; i--, j++)
     {
       float cost;
 	  graph_traits < graph_t >::edge_descriptor e;
 
       e = path_vect.at(i);
-
+      
       if(graph[e].id > e_max_id)
       {
         graph[e].id -= e_max_id;
