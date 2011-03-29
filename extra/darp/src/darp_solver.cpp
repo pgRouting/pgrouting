@@ -533,7 +533,7 @@ class Router
 				wtime[i]=ctime[i]-(ctime[i-1]+ttime+nnodeST);				
 			}
 			//if ends
-			if(i>1 && wtime[i]>0 && load[i-1]>load[i-2])
+			if(i>1 && wtime[i]>0 && (load1[i-1]>load1[i-2] || load2[i-1]>load2[i-2] ||load3[i-1]>load3[i-2] ))
 				waiting(i);
 			//if(diff&gt;-1) totcost = diff;
 			
@@ -633,7 +633,7 @@ class Router
 			}
 			//if
 			//waiting time calculated * persons in the vehicle
-			wt = wt+load[i-1]*(ctime[i]-serv-(ctime[i-1]+ttime));
+			wt = wt+(load1[i-1]+load2[i-1]+load3[i-1])*(ctime[i]-serv-(ctime[i-1]+ttime));
 			
 		}
 		
@@ -759,7 +759,7 @@ class Router
 			diff=ut-ctime[i-1]+st;
 			
 			//arrival time within tw
-			if(load[i-2]>load[i-1]|| wtime[i]<0.01 || diff<=0)
+			if(load1[i-2]>load1[i-1]||load2[i-2]>load2[i-1]||load3[i-2]>load3[i-1]|| wtime[i]<0.01 || diff<=0)
 				break;
 			else
 			{				
@@ -859,15 +859,23 @@ class Router
 			cs.push_back(-1);
 			cv.push_back(-1);
 			//ord.push_back(-1);
-			load.push_back(-1);
+			load1.push_back(-1);
+			load2.push_back(-1);
+			load3.push_back(-1);
 		}
 		
 		//cv.at(no) = first.id; //first customer added to vehcile
 		//cn.at(no) = -1;       //first customer deleted from cn
 		ord.push_back(0);         //start in depot
 		ord.push_back(first.id); //then to first customer
-		load[0] = 0;
-		load[1] = first.size;	
+		load1[0] = 0;
+		load1[1] = first.size1;	
+		
+		load2[0] = 0;
+		load2[1] = first.size2;
+		
+		load3[0] = 0;
+		load3[1] = first.size3;
 		
 		//current node depot, next node first customer,
 		cnode = 0;
