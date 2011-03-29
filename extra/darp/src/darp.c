@@ -90,7 +90,9 @@ typedef struct vehicle_columns
 {
   int id;
   int vehicle_id;
-  int capacity;
+  int capacity1;
+  int capacity2;
+  int capacity3;
 } vehicle_columns_t;
 
 typedef struct order_columns
@@ -103,7 +105,9 @@ typedef struct order_columns
   int doTime;
   int doUT;
   int doLT;
-  int size;
+  int size1;
+  int size2;
+  int size3;
   int from;
   int to;
 } order_columns_t;
@@ -405,7 +409,9 @@ fetch_order_columns(SPITupleTable *tuptable, order_columns_t *order_columns)
   order_columns->doUT = SPI_fnumber(SPI_tuptable->tupdesc, "do_ut");  
   order_columns->from = SPI_fnumber(SPI_tuptable->tupdesc, "from_point");
   order_columns->to = SPI_fnumber(SPI_tuptable->tupdesc, "to_point");
-  order_columns->size = SPI_fnumber(SPI_tuptable->tupdesc, "size");
+  order_columns->size1 = SPI_fnumber(SPI_tuptable->tupdesc, "size1");
+  order_columns->size2 = SPI_fnumber(SPI_tuptable->tupdesc, "size2");
+  order_columns->size3 = SPI_fnumber(SPI_tuptable->tupdesc, "size3");
   if (//order_columns->id == SPI_ERROR_NOATTRIBUTE ||
       order_columns->order_id == SPI_ERROR_NOATTRIBUTE ||
 	  order_columns->puTime == SPI_ERROR_NOATTRIBUTE ||
@@ -416,14 +422,16 @@ fetch_order_columns(SPITupleTable *tuptable, order_columns_t *order_columns)
 	  order_columns->doUT == SPI_ERROR_NOATTRIBUTE ||
 	  order_columns->from == SPI_ERROR_NOATTRIBUTE ||
 	  order_columns->to == SPI_ERROR_NOATTRIBUTE ||
-	  order_columns->size == SPI_ERROR_NOATTRIBUTE
+	  order_columns->size1 == SPI_ERROR_NOATTRIBUTE ||
+	  order_columns->size2 == SPI_ERROR_NOATTRIBUTE ||
+	  order_columns->size3 == SPI_ERROR_NOATTRIBUTE
   )
     {
 //      elog(ERROR, "Error, query must return columns "
 //           "'id', 'order_id', 'pu_time', 'do_time', 'pu_time_window', 'do_time_window', 'from_x', 'to_x', 'from_y', 'to_y' and 'size'");
       elog(ERROR, "Error, query must return columns "
            //"'id', 
-           "'order_id', 'pu_lt', 'do_lt', 'pu_ut', 'do_ut', 'from_point', 'to_point', and 'size'");
+           "'order_id', 'pu_lt', 'do_lt', 'pu_ut', 'do_ut', 'from_point', 'to_point', 'size1', 'size2' and 'size3'");
        return -1;
     }
 
@@ -525,14 +533,32 @@ fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
   DBG("to = %i\n", order->to);
 
 
-  binval = SPI_getbinval(*tuple, *tupdesc, order_columns->size, &isnull);
+  binval = SPI_getbinval(*tuple, *tupdesc, order_columns->size1, &isnull);
 
   if (isnull)
-    elog(ERROR, "size contains a null value");
+    elog(ERROR, "size1 contains a null value");
 
-  order->size = DatumGetFloat8(binval);
+  order->size1 = DatumGetFloat8(binval);
 
-  DBG("size = %f\n", order->size);
+  DBG("size1 = %f\n", order->size1);
+  
+  binval = SPI_getbinval(*tuple, *tupdesc, order_columns->size2, &isnull);
+
+  if (isnull)
+    elog(ERROR, "size2 contains a null value");
+
+  order->size2 = DatumGetFloat8(binval);
+
+  DBG("size2 = %f\n", order->size2);
+  
+  binval = SPI_getbinval(*tuple, *tupdesc, order_columns->size3, &isnull);
+
+  if (isnull)
+    elog(ERROR, "size3 contains a null value");
+
+  order->size3 = DatumGetFloat8(binval);
+
+  DBG("size3 = %f\n", order->size3);
 }
 
 static int
@@ -542,13 +568,17 @@ fetch_vehicle_columns(SPITupleTable *tuptable, vehicle_columns_t *vehicle_column
 
   vehicle_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
   vehicle_columns->vehicle_id = SPI_fnumber(SPI_tuptable->tupdesc, "vehicle_id");
-  vehicle_columns->capacity = SPI_fnumber(SPI_tuptable->tupdesc, "capacity");
+  vehicle_columns->capacity1 = SPI_fnumber(SPI_tuptable->tupdesc, "capacity1");
+  vehicle_columns->capacity2 = SPI_fnumber(SPI_tuptable->tupdesc, "capacity2");
+  vehicle_columns->capacity3 = SPI_fnumber(SPI_tuptable->tupdesc, "capacity3");
   if (vehicle_columns->id == SPI_ERROR_NOATTRIBUTE ||
-		  vehicle_columns->capacity == SPI_ERROR_NOATTRIBUTE
+		  vehicle_columns->capacity1 == SPI_ERROR_NOATTRIBUTE ||
+		  vehicle_columns->capacity2 == SPI_ERROR_NOATTRIBUTE ||
+		  vehicle_columns->capacity3 == SPI_ERROR_NOATTRIBUTE
   )
     {
       elog(ERROR, "Error, query must return columns "
-           "'id' and 'capacity'");
+           "'id', 'capacity1', 'capacity2' and 'capacity3'");
       return -1;
     }
 
@@ -586,14 +616,29 @@ fetch_vehicle(HeapTuple *tuple, TupleDesc *tupdesc,
 
   DBG("vehicle_id = %i\n", vehicle->vehicle_id);
 
-  binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->capacity, &isnull);
+  binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->capacity1, &isnull);
   if (isnull)
-    elog(ERROR, "capacity contains a null value");
+    elog(ERROR, "capacity1 contains a null value");
 
-  vehicle->capacity = DatumGetFloat8(binval);
+  vehicle->capacity1 = DatumGetFloat8(binval);
 
-  DBG("capacity = %f\n", vehicle->capacity);
+  DBG("capacity1 = %f\n", vehicle->capacity1);
 
+  binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->capacity2, &isnull);
+  if (isnull)
+    elog(ERROR, "capacity2 contains a null value");
+
+  vehicle->capacity2 = DatumGetFloat8(binval);
+
+  DBG("capacity2 = %f\n", vehicle->capacity2);
+  
+  binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->capacity3, &isnull);
+  if (isnull)
+    elog(ERROR, "capacity3 contains a null value");
+
+  vehicle->capacity3 = DatumGetFloat8(binval);
+
+  DBG("capacity3 = %f\n", vehicle->capacity3);  
 }
 
 static int conn(int *SPIcode)
@@ -650,11 +695,11 @@ static int solve_darp(char* orders_sql, char* vehicles_sql,
   int ntuples;
 
   vehicle_t *vehicles=NULL;
-  vehicle_columns_t vehicle_columns = {id: -1, capacity: -1};
+  vehicle_columns_t vehicle_columns = {id: -1, capacity1: -1, capacity2: -1, capacity3: -1};
 
   order_t *orders=NULL;
   order_columns_t order_columns = {
-		  order_id: -1, puLT: -1, doLT:-1,  puUT: -1, doUT:-1, size:-1, from:-1, to:-1};
+		  order_id: -1, puLT: -1, doLT:-1,  puUT: -1, doUT:-1, size1:-1, size2:-1, size3:-1, from:-1, to:-1};
 		  
   distance_columns_t distance_columns = {from_order: -1, from_point: -1, to_order: -1, to_point: -1, value: -1};
   

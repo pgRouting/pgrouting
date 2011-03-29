@@ -70,9 +70,12 @@ class Router
 	//w[5], w[6] - weight of ex riding and waiting time
 	//w[7]       - weight on distance
 	
-	vector<double> load;   //vector with a load in a vehicle after
+	vector<double> load1;   //vector with a load in a vehicle after
 	                       //a node has been served
 	              
+	vector<double> load2;
+	vector<double> load3;
+	
 	vector<double> ctime;
 	vector<double> wtime;
 	
@@ -478,7 +481,10 @@ class Router
 			cn[i]=v[i].id;
 		}
 		*/
-		load[0]=0;
+		load1[0]=0;
+		load2[0]=0;
+		load3[0]=0;
+		
 		cnode = ord[0];
 		ctime[0]=retime();
 		
@@ -500,7 +506,9 @@ class Router
 				nnodeST = order.doTime;
 				nnodeLT = nnodeST - order.doLT->time/1000000;
 				
-				load[i]=load[i-1]-order.size;
+				load1[i]=load1[i-1]-order.size1;
+				load2[i]=load2[i-1]-order.size2;
+				load3[i]=load3[i-1]-order.size3;
 			}
 			else
 			{
@@ -508,7 +516,9 @@ class Router
 				nnodeST = order.puTime;
 				nnodeLT = nnodeST - order.puLT->time/1000000;
 				
-				load[i]=load[i-1]+order.size;
+				load1[i]=load1[i-1]+order.size1;
+				load2[i]=load2[i-1]+order.size2;
+				load3[i]=load3[i-1]+order.size3;
 			}
 			
 			//load[i]=load[i-1]+order.size;
@@ -533,14 +543,25 @@ class Router
 			//	visit(cnode);
 			
 			
-			DBG("calculate capacity violation for load %f and capacity %f", load[i], car.capacity);
+			DBG("calculate capacity violation for loads %f,%f,%f and capacities %f,%f,%f", load1[i], load2[i], load3[i], car.capacity1,car.capacity2,car.capacity3);
 			
 			
-			if(load[i] > car.capacity)
+			if(load1[i] > car.capacity1)
 			{
 				//raise capacity violation constraint
-				capacityviol+=load[i] - car.capacity;
+				capacityviol+=load1[i] - car.capacity1;
 			}
+			if(load2[i] > car.capacity2)
+			{
+				//raise capacity violation constraint
+				capacityviol+=load2[i] - car.capacity2;
+			}
+			if(load3[i] > car.capacity3)
+			{
+				//raise capacity violation constraint
+				capacityviol+=load3[i] - car.capacity3;
+			}
+			
 			DBG("capacity violation = %f", capacityviol);			
 			
 		}

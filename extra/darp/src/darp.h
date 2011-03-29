@@ -32,7 +32,9 @@ typedef struct vehicle
 {
   int id;
   int vehicle_id;
-  float8 capacity;
+  float8 capacity1;
+  float8 capacity2;
+  float8 capacity3;
 } vehicle_t;
 
 typedef struct order
@@ -45,7 +47,9 @@ typedef struct order
   int doTime;
   Interval* doLT;
   Interval* doUT;
-  float8 size;
+  float8 size1;
+  float8 size2;
+  float8 size3;
   //float8 fromX;
   //float8 fromY;
   //float8 toX;
