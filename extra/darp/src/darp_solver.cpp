@@ -1097,6 +1097,8 @@ find_darp_solution(int order_num, int vehicle_num,
   int i,j;
   population    *pop=NULL;              /* Population of solutions. */
   float          score = 0.0;           /* Best score */
+  
+  DBG("Hi there!");
 
   onum=order_num;
   vnum = vehicle_num;

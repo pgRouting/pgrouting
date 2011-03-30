@@ -73,8 +73,8 @@ long profipts1, profipts2, profopts;
 
 Datum darp(PG_FUNCTION_ARGS);
 
-//#undef DEBUG
-#define DEBUG 1
+#undef DEBUG
+//#define DEBUG 1
 
 #ifdef DEBUG
 #define DBG(format, arg...)                     \
@@ -364,24 +364,24 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
   
   //DBG("dist[%i][%i] = %f\n", from_point, to_point, value);
     
-  int from = find_order(from_order, orders, order_num);
+  int from = find_order(from_order, orders, order_num+1);
   
-  //DBG("found ford %i for %i", from, from_order);
+  DBG("found ford %i for %i", from, from_order);
   
   order_t ford = orders[from];
   
-  if(from_point == ford.to)
+  if(from_order!= 0 && from_point == ford.to)
   {
 	  from += order_num;
   }
   
-  int to = find_order(to_order, orders, order_num);
+  int to = find_order(to_order, orders, order_num+1);
   
-  //DBG("found tord %i for %i", to, to_order);
+  DBG("found tord %i for %i", to, to_order);
   
   order_t tord = orders[to];
 
-  if(to_point == tord.to)
+  if(to_order!= 0 && to_point == tord.to)
   {
 	  to += order_num;
   }
@@ -390,7 +390,7 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
   if(from > 0 && to > 0)
 	*(dist + (num_rows * from) + to) = value;
   
-  //DBG("dist[%i(%i:%i)][%i(%i:%i)] = %f\n", from, from_order, from_point, to, to_order, to_point, *(dist + (num_rows * from) + to));
+  DBG("dist[%i(%i:%i)][%i(%i:%i)] = %f\n", from, from_order, from_point, to, to_order, to_point, *(dist + (num_rows * from) + to));
 
 }
 
@@ -592,7 +592,7 @@ fetch_vehicle(HeapTuple *tuple, TupleDesc *tupdesc,
   Datum binval;
   bool isnull;
 
-  DBG("inside fetch_vehicle\n");
+  //DBG("inside fetch_vehicle\n");
 
   //binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->id, &isnull);
   //DBG("Got id\n");
@@ -604,17 +604,17 @@ fetch_vehicle(HeapTuple *tuple, TupleDesc *tupdesc,
   
   vehicle->id = t;
 
-  DBG("id = %i\n", vehicle->id);
+  //DBG("id = %i\n", vehicle->id);
   
   binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->vehicle_id, &isnull);
-  DBG("Got vehicle_id\n");
+  //DBG("Got vehicle_id\n");
 
   if (isnull)
     elog(ERROR, "vehicle_id contains a null value");
 
   vehicle->vehicle_id = DatumGetInt32(binval);
 
-  DBG("vehicle_id = %i\n", vehicle->vehicle_id);
+  //DBG("vehicle_id = %i\n", vehicle->vehicle_id);
 
   binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->capacity1, &isnull);
   if (isnull)
@@ -622,7 +622,7 @@ fetch_vehicle(HeapTuple *tuple, TupleDesc *tupdesc,
 
   vehicle->capacity1 = DatumGetFloat8(binval);
 
-  DBG("capacity1 = %f\n", vehicle->capacity1);
+  //DBG("capacity1 = %f\n", vehicle->capacity1);
 
   binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->capacity2, &isnull);
   if (isnull)
@@ -630,7 +630,7 @@ fetch_vehicle(HeapTuple *tuple, TupleDesc *tupdesc,
 
   vehicle->capacity2 = DatumGetFloat8(binval);
 
-  DBG("capacity2 = %f\n", vehicle->capacity2);
+  //DBG("capacity2 = %f\n", vehicle->capacity2);
   
   binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->capacity3, &isnull);
   if (isnull)
@@ -638,7 +638,7 @@ fetch_vehicle(HeapTuple *tuple, TupleDesc *tupdesc,
 
   vehicle->capacity3 = DatumGetFloat8(binval);
 
-  DBG("capacity3 = %f\n", vehicle->capacity3);  
+  //DBG("capacity3 = %f\n", vehicle->capacity3);  
 }
 
 static int conn(int *SPIcode)
@@ -808,6 +808,11 @@ static int solve_darp(char* orders_sql, char* vehicles_sql,
     
   qsort (orders, order_num+1, sizeof (order_t), order_cmp);
 
+  int o;
+  for(o=0; o<order_num+1;++o)
+  {
+	  DBG("ORDERS[%i] = {id=%i,order_id=%i,from=%i,to=%i}",o,orders[o].id,orders[o].order_id,orders[o].from,orders[o].to);
+  }
     
   // Fetching vehicles
   
@@ -860,10 +865,10 @@ static int solve_darp(char* orders_sql, char* vehicles_sql,
           for (t = 0; t < ntuples; t++)
             {
               HeapTuple tuple = tuptable->vals[t];
-              DBG("Before vehicle fetched\n");
+              //DBG("Before vehicle fetched\n");
               fetch_vehicle(&tuple, &tupdesc, &vehicle_columns,
                           &vehicles[vehicle_num - ntuples + t], t);
-              DBG("Vehicle fetched\n");
+              //DBG("Vehicle fetched\n");
             }
 
           SPI_freetuptable(tuptable);
@@ -963,10 +968,10 @@ static int solve_darp(char* orders_sql, char* vehicles_sql,
           for (t = 0; t < ntuples; t++)
             {
               HeapTuple tuple = tuptable->vals[t];
-              DBG("Before penalties fetched\n");
+              //DBG("Before penalties fetched\n");
               fetch_penalties(&tuple, &tupdesc, &penalty_columns,
                           penalties);
-              DBG("Penalties fetched\n");
+              //DBG("Penalties fetched\n");
             }
 
           SPI_freetuptable(tuptable);
@@ -988,14 +993,15 @@ static int solve_darp(char* orders_sql, char* vehicles_sql,
   DBG("Total vehicles: %i\n", vehicle_num);
 
   
-  qsort (orders, order_num+1, sizeof (order_t), order_cmp_asc);
+  //qsort (orders, order_num+1, sizeof (order_t), order_cmp_asc);
 
 
-  int o;
-  for(o=0; o<order_num+1;++o)
-  {
-	  DBG("ORDERS[%i] = {id=%i,order_id=%i,from=%i,to=%i}",o,orders[o].id,orders[o].order_id,orders[o].from,orders[o].to);
-  }
+  //int o;
+  //for(o=0; o<order_num+1;++o)
+  //{
+//	  DBG("ORDERS[%i] = {id=%i,order_id=%i,from=%i,to=%i}",o,orders[o].id,orders[o].order_id,orders[o].from,orders[o].to);
+  //}
+  
   //return 0;
 
   
