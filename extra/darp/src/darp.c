@@ -73,8 +73,8 @@ long profipts1, profipts2, profopts;
 
 Datum darp(PG_FUNCTION_ARGS);
 
-//#undef DEBUG
-#define DEBUG 1
+#undef DEBUG
+//#define DEBUG 1
 
 #ifdef DEBUG
 #define DBG(format, arg...)                     \
