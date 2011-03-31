@@ -897,6 +897,7 @@ class Router
 		
 		//ctime.at(0) = L-ttime+v.at(0).puTime; //ctime[0]
 		
+		DBG(" ===================== ttime=%f",ttime);	
 		//assume that service time is most desirable
 		ctime.at(0) = first.puTime - ttime;
 				
@@ -907,6 +908,8 @@ class Router
 			
 		//ctime.at(1) = ctime.at(0) + ttime + ORDERS.at(nnode).puTime ; //ctime[1]
 		ctime.at(1) = first.puTime;
+
+		DBG(" ===================== ctime[1]=%f",ctime[1]);	
 		
 		//time after first cust
 		//if ctime is lower than lower time window, then wait
@@ -936,7 +939,10 @@ class Router
 			
 			ttime = DISTANCES.at(cnode).at(nnode);
 			
-			//ctime calculation
+			//ctime calculation		
+			//ctime[k] = ctime[k-1] + ttime;
+
+			DBG("================ ctime.at(%i) = %f",k,ctime.at(k));
 			
 			cnode = nnode;
 			++k;
@@ -1067,8 +1073,8 @@ boolean darp_score(population *pop, entity *entity)
 		{			
 			DBG("router.ord[%i]=%i",i, router.ord.at(i));
 			ORD.at(c).push_back(pair<int,double>( router.ord.at(i), ( i == 0 ? 
-																		(router.ctime.at(1) - router.ctime.at(0)) - DISTANCES.at(0).at(router.ord.at(1))
-																		//router.ctime.at(0) 
+																		//(router.ctime.at(1) - router.ctime.at(0)) - DISTANCES.at(0).at(router.ord.at(1))
+																		router.ctime.at(0) 
 																		: router.ctime.at(i) - router.ctime.at(i-1) 
 																	)*1000000 ));
 		}
@@ -1128,9 +1134,10 @@ find_darp_solution(int order_num, int vehicle_num,
 	  //ugly
 	  for(int dd = 0; dd < (order_num*2-1); ++dd)
 	  {
-	    *(dist + (order_num * d) + dd);
-	    //DBG("dist[%i][%i]=%f",d,dd,*(dist + ((order_num * 2 - 1) * d) + dd));
+	    DBG("dist[%i][%i]=%f",d,dd,*(dist + ((order_num * 2 - 1) * d) + dd));
+	    //DBG("dist[%i][%i]=%f",d,dd,dist[d*(order_num*2-1)+dd]);
 	    row.push_back(*(dist + ((order_num * 2 - 1) * d) + dd));
+	    //row.push_back(dist[d*(order_num*2-1)+dd]);
 	  }
 	  
 	  DISTANCES.push_back(row);
