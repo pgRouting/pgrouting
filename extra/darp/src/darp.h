@@ -84,7 +84,7 @@ extern "C"
 			// arrays only.
 			// Depot is also included.
 			// Ugly but simple solution.
-			double *dist,
+			double **dist,
 			int depot,
 			int *penalties,
 			float* fit, char** err_msg);

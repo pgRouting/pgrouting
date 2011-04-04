@@ -1093,7 +1093,7 @@ find_darp_solution(int order_num, int vehicle_num,
 			vehicle_t *vehicles,
 			order_t *orders,
 			itinerary_t *path,
-			double *dist,
+			double **dist,
 			//point_t depot,
 			int depot_id,
 			int *penalties,
@@ -1128,16 +1128,19 @@ find_darp_solution(int order_num, int vehicle_num,
   copy ( orders, orders + order_num, back_inserter ( ORDERS ) );
   copy ( vehicles, vehicles + vehicle_num, back_inserter ( VEHICLES ) );
   
-  for(int d = 0; d < order_num*2 - 1; ++d)
+  double *dst;
+  for(int d = 0; d < (order_num*2-1); d++)
   {
 	  vector<double> row;
+	  dst = (double *)dist[d];
+
 	  //ugly
-	  for(int dd = 0; dd < (order_num*2-1); ++dd)
+	  for(int dd = 0; dd < (order_num*2-1); dd++)
 	  {
-	    DBG("dist[%i][%i]=%f",d,dd,*(dist + ((order_num * 2 - 1) * d) + dd));
-	    //DBG("dist[%i][%i]=%f",d,dd,dist[d*(order_num*2-1)+dd]);
-	    row.push_back(*(dist + ((order_num * 2 - 1) * d) + dd));
-	    //row.push_back(dist[d*(order_num*2-1)+dd]);
+	    //DBG("dist[%i][%i]=%f",d,dd,*(dist + ((order_num * 2 - 1) * d) + dd));
+	    DBG("dist[%i][%i]=%f",d,dd,dst[dd]);
+	    //row.push_back(*(dist + ((order_num * 2 - 1) * d) + dd));
+	    row.push_back(dst[dd]);
 	  }
 	  
 	  DISTANCES.push_back(row);

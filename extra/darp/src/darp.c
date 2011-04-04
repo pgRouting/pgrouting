@@ -362,11 +362,11 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
   
   //DBG("value=%f",value);
   
-  DBG("dist[%i][%i] = %f\n", from_point, to_point, value);
+  //DBG("dist[%i][%i] = %f\n", from_point, to_point, value);
     
   int from = find_order(from_order, orders, order_num+1);
   
-  //DBG("found ford %i for %i", from, from_order);
+  DBG("found ford %i for %i", from, from_order);
   
   order_t ford = orders[from];
   
@@ -387,10 +387,11 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
   }
     
   dist[from][to] = value;
+  DBG("DIST[%i][%i] = %f\n", from, to, dist[from][to]);
   //if(from > 0 && to > 0)
 //	*(dist + (num_rows * from) + to) = value;
   
-  //DBG("dist[%i(%i:%i)][%i(%i:%i)] = %f\n", from, from_order, from_point, to, to_order, to_point, *(dist + (num_rows * from) + to));
+  //DBG("dist[%i(%i:%i)][%i(%i:%i)] = %f\n", from, from_order, from_point, to, to_order, to_point, dist[from][to]);
 
 }
 
@@ -997,6 +998,19 @@ static int solve_darp(char* orders_sql, char* vehicles_sql,
 
   DBG("Total orders: %i\n", order_num);
   DBG("Total vehicles: %i\n", vehicle_num);
+  
+  double *dst;
+  int d,dd;
+  for(d = 0; d < (order_num+1)*2 - 1; ++d)
+  {
+      dst = (double *)dist[d];
+	  //ugly
+	  for(dd = 0; dd < (order_num+1)*2-1; ++dd)
+	  {
+	    DBG(">>>>>>>>>>>>> dist[%i][%i]=%f",d,dd,dist[d][dd]);
+	    DBG("============= dist[%i][%i]=%f",d,dd,dst[dd]);
+	  }
+  }
 
   
   //qsort (orders, order_num+1, sizeof (order_t), order_cmp_asc);
@@ -1019,7 +1033,8 @@ static int solve_darp(char* orders_sql, char* vehicles_sql,
 			    vehicles,
 			    orders,
 			    path,
-			    &dist[0][0], //2D array containing pre-calculated distances
+			    //&dist[0][0], //2D array containing pre-calculated distances
+			    dist,
 			    depot,
 			    penalties,
 			    &fit, &err_msg);
