@@ -147,6 +147,14 @@ order_cmp (const void *c1, const void *c2)
 }
 
 int 
+order_id_cmp (const void *c1, const void *c2)
+{
+  order_t *o1 = (order_t*)c1;
+  order_t *o2 = (order_t*)c2;
+  return o1->id - o2->id;
+}
+
+int 
 order_cmp_asc (const void *c1, const void *c2)
 {
   order_t *o1 = (order_t*)c1;
@@ -165,6 +173,19 @@ int find_order(int order_id, order_t *orders, int count)
     if (result)
       id = result->id;
       
+    return id;
+}
+
+int find_order_dumb(int order_id, order_t *orders, int count)
+{
+	int id = -1, i;
+
+	for(i = 0; i < count; ++i)
+	{
+		if(orders[i].order_id == order_id)
+			id = i;
+    }
+     
     return id;
 }
 
@@ -364,22 +385,24 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
   
   //DBG("dist[%i][%i] = %f\n", from_point, to_point, value);
     
-  int from = find_order(from_order, orders, order_num+1);
+  int from = find_order_dumb(from_order, orders, order_num+1);
   
-  DBG("found ford %i for %i", from, from_order);
+  //DBG("found ford %i for %i", from, from_order);
   
   order_t ford = orders[from];
-  
+  //DBG("Testing %i for order %i [%i -> %i]", from_point, ford.order_id, ford.from, ford.to);
+ 
   if(from_order!= 0 && from_point == ford.to)
   {
 	  from += order_num;
   }
   
-  int to = find_order(to_order, orders, order_num+1);
+  int to = find_order_dumb(to_order, orders, order_num+1);
   
   //DBG("found tord %i for %i", to, to_order);
   
   order_t tord = orders[to];
+  //DBG("Testing %i for order %i [%i -> %i]", to_point, tord.order_id, tord.from, tord.to);
 
   if(to_order!= 0 && to_point == tord.to)
   {
@@ -387,7 +410,7 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
   }
     
   dist[from][to] = value;
-  DBG("DIST[%i][%i] = %f\n", from, to, dist[from][to]);
+  //DBG("DIST[%i][%i] = %f\n", from, to, dist[from][to]);
   //if(from > 0 && to > 0)
 //	*(dist + (num_rows * from) + to) = value;
   
@@ -1004,10 +1027,9 @@ static int solve_darp(char* orders_sql, char* vehicles_sql,
   for(d = 0; d < (order_num+1)*2 - 1; ++d)
   {
       dst = (double *)dist[d];
-	  //ugly
 	  for(dd = 0; dd < (order_num+1)*2-1; ++dd)
 	  {
-	    DBG(">>>>>>>>>>>>> dist[%i][%i]=%f",d,dd,dist[d][dd]);
+	    //DBG(">>>>>>>>>>>>> dist[%i][%i]=%f",d,dd,dist[d][dd]);
 	    DBG("============= dist[%i][%i]=%f",d,dd,dst[dd]);
 	  }
   }
