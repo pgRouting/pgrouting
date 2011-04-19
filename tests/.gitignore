@@ -1,0 +1,4 @@
+*.pyo
+*.pyc
+*~
+settings.py

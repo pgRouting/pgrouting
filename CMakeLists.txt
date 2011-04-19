@@ -113,6 +113,8 @@ IF(WITH_DD)
   ADD_SUBDIRECTORY(extra/driving_distance)
 ENDIF(WITH_DD)
 
+ENABLE_TESTING()
 
+ADD_TEST(TestDijkstra ${PGROUTING_SOURCE_DIR}/tests/test_dijkstra.py)
 
 
