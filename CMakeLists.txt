@@ -115,6 +115,6 @@ ENDIF(WITH_DD)
 
 ENABLE_TESTING()
 
-ADD_TEST(TestDijkstra ${PGROUTING_SOURCE_DIR}/tests/test_dijkstra.py)
+ADD_TEST(TestAll ${PGROUTING_SOURCE_DIR}/tests/test_all.py)
 
 

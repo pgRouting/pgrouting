@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 
+import sys
 import unittest
-from __init__ import ConnectToDBMixin, TEST_DIR
+from __init__ import setUpDB, connectToDB, tearDownDB, TEST_DIR
 
-class TestDijkstra(unittest.TestCase, ConnectToDBMixin):
+class TestDijkstra(unittest.TestCase):
   def setUp(self):
-    self.connect_to_db()
-
+    self.cur = connectToDB()
     self.cur.execute("DROP TABLE IF EXISTS dijkstra_ways")
     self.cur.execute("""CREATE TABLE dijkstra_ways (
                         gid     serial PRIMARY KEY,
@@ -18,7 +18,7 @@ class TestDijkstra(unittest.TestCase, ConnectToDBMixin):
 
   def tearDown(self):
     self.cur.execute("DROP TABLE dijkstra_ways")
-    self.conn.close()
+    self.cur.connection.close()
 
   def test_shortest_path(self):
     self.cur.execute("""SELECT * from shortest_path(
@@ -27,4 +27,8 @@ class TestDijkstra(unittest.TestCase, ConnectToDBMixin):
     self.assertEqual(self.cur.fetchall(), [(1000, 2, 0.11), (1002, 3, 0.32), (1003, -1, 0.0)])
 
 if __name__ == "__main__":
-  unittest.main()
+  setUpDB()
+  testResults = unittest.TextTestRunner(verbosity=2).run(unittest.TestLoader().loadTestsFromTestCase(TestDijkstra))
+  tearDownDB()
+  if testResults.wasSuccessful() == False:
+    sys.exit(1)
