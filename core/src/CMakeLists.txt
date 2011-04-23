@@ -1,6 +1,11 @@
-
 SET(LIBRARY_OUTPUT_PATH ../../lib/)
-ADD_LIBRARY(routing SHARED dijkstra.c astar.c shooting_star.c boost_wrapper.cpp astar_boost_wrapper.cpp shooting_star_boost_wrapper.cpp)
+IF(APPLE)
+    SET(LIBRARY_MODE_TARGET "MODULE")
+ELSE(APPLE)
+    SET(LIBRARY_MODE_TARGET "SHARED")
+ENDIF(APPLE)
+ADD_LIBRARY(routing ${LIBRARY_MODE_TARGET} dijkstra.c astar.c shooting_star.c boost_wrapper.cpp astar_boost_wrapper.cpp shooting_star_boost_wrapper.cpp)
 INSTALL(TARGETS routing DESTINATION ${LIBRARY_INSTALL_PATH})
-
-
+IF(APPLE)
+    SET_TARGET_PROPERTIES(routing PROPERTIES LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
+ENDIF(APPLE)
