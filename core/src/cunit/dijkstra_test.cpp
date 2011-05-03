@@ -129,10 +129,13 @@ int main()
   CU_pTest pTest = CU_add_test(pSuite, "test_dijkstra", test_dijkstra);
   CU_basic_set_mode(CU_BRM_VERBOSE);
   CU_basic_run_tests();
+  //FIXME: cunit documentation uses `return CU_get_error();` but CU_get_error() always
+  // returns 0 even if a test fails.
   if(CU_get_number_of_failures() != 0)
   {
     CU_cleanup_registry();
     return 1;
   }
+  CU_cleanup_registry();
   return 0;
 }
