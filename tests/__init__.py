@@ -55,3 +55,6 @@ def tearDownDB():
   cur.execute("DROP DATABASE IF EXISTS " + settings.dbname)
   cur.connection.close()
   print "Finished Cleanup."
+
+def runLoader(sqlfile):
+  os.system("psql -d " + settings.dbname + " -f " + os.path.join(os.path.join(TEST_DIR, 'loaders'),sqlfile))
