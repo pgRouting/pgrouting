@@ -56,5 +56,13 @@ def tearDownDB():
   cur.connection.close()
   print "Finished Cleanup."
 
-def runLoader(sqlfile):
-  os.system("psql -d " + settings.dbname + " -f " + os.path.join(os.path.join(TEST_DIR, 'loaders'),sqlfile))
+def loadTable(cur, tablename):
+  """
+  Utility function to load a single table from 'tests/loaders' directory
+  The following points are assumed:
+  * Table schema is placed in tests/loaders/<tablename>.sql
+  * Table data is placed in tests/loaders/<tablename>.csv with csv header
+  """
+  LOADERS_DIR = os.path.join(TEST_DIR, 'loaders')
+  cur.execute(open(os.path.join(LOADERS_DIR, tablename + ".sql"), "r").read())
+  cur.copy_expert("COPY %s FROM STDIN WITH CSV HEADER" % tablename, open(os.path.join(LOADERS_DIR, tablename + ".csv"), "r")) 

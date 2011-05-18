@@ -2,12 +2,12 @@
 
 import sys
 import unittest
-from __init__ import setUpDB, connectToDB, tearDownDB, runLoader
+from __init__ import setUpDB, connectToDB, tearDownDB, loadTable
 
 class TestDijkstra(unittest.TestCase):
   def setUp(self):
-    runLoader("simplegraph.sql")
     self.cur = connectToDB()
+    loadTable(self.cur, "simplegraph")
 
   def tearDown(self):
     self.cur.execute("DROP TABLE simplegraph")
