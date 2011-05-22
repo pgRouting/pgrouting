@@ -56,7 +56,7 @@ def tearDownDB():
   cur.connection.close()
   print "Finished Cleanup."
 
-def loadTable(cur, tablename):
+def loadTable(cur, tablename, with_schema = True, with_data = True):
   """
   Utility function to load a single table from 'tests/loaders' directory
   The following points are assumed:
@@ -64,5 +64,7 @@ def loadTable(cur, tablename):
   * Table data is placed in tests/loaders/<tablename>.csv with csv header
   """
   LOADERS_DIR = os.path.join(TEST_DIR, 'loaders')
-  cur.execute(open(os.path.join(LOADERS_DIR, tablename + ".sql"), "r").read())
-  cur.copy_expert("COPY %s FROM STDIN WITH CSV HEADER" % tablename, open(os.path.join(LOADERS_DIR, tablename + ".csv"), "r")) 
+  if with_schema:
+    cur.execute(open(os.path.join(LOADERS_DIR, tablename + ".sql"), "r").read())
+  if with_data:
+    cur.copy_expert("COPY %s FROM STDIN WITH CSV HEADER" % tablename, open(os.path.join(LOADERS_DIR, tablename + ".csv"), "r")) 
