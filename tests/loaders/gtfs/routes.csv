@@ -1,0 +1,13 @@
+route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_url,route_color,route_text_color
+MSB-VLCY,MRTS,MSB-VLCY,Chennai Beach – Velachery,,0,,,
+MSB-TBM,CSR,MSB-TBM,Chennai Beach – Tambaram,,0,,,
+TBM-CGL,CSR,TBM-CGL,Tambaram – Chengalpattu,,0,,,
+CGL-TMLP,CSR,CGL-TMLP,Chengalpattu – Thirumalpur,,0,,,
+MASMSB-TRT,CSR,MASMSB-TRT,Chennai Beach/Chennai Central – Tiruttani,,0,,,
+MAS-SPE,CSR,MAS-SPE,Chennai Beach/Chennai Central – Sullurupetta,,0,,,
+MAS-STM,CMR,MAS-STM,Chennai Central – St. Thomas Mount,Under construction(Line 2),1,,,
+WAS-CIA,CMR,WAS-CIA,Washermanpet – Chennai International Airport,Under construction(Line 1),1,,,
+WMC-WAS,CMR,WMC-WAS,Wimco Nagar – Washermanpet,Under construction(Line 1 Extn),1,,,
+MOO-VLCY,CMR,MOO-VLCY,Moolakadai – Velachery,Planned(Line 3),1,,,
+MOO-TMG,CMR,MOO-TMG,Moolakadai – Thirumangalam,Planned(Line 4),1,,,
+MYL-PME,CMR,MYL-PME,Mylapore – Poonamallee,Planned(Line 5),1,,,
