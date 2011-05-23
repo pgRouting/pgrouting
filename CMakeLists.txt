@@ -14,6 +14,9 @@ add_subdirectory(cmake)
 SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 include (MacroLibrary)
+include (TargetDistclean)
+
+ENABLE_TESTING()
 
 macro_optional_find_package(PostgreSQL)
 IF(NOT POSTGRESQL_FOUND)
@@ -112,6 +115,5 @@ IF(WITH_DD)
   ADD_SUBDIRECTORY(extra/driving_distance)
 ENDIF(WITH_DD)
 
-
-
+SUBDIRS(tests)
 

@@ -1,0 +1,2 @@
+ENABLE_TESTING()
+ADD_TEST(TestAll ${PGROUTING_SOURCE_DIR}/tests/test_all.py)
