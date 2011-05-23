@@ -48,7 +48,6 @@ corresponding to the Alpha shape.
 #include <CGAL/Triangulation_euclidean_traits_2.h>
 #include <CGAL/Alpha_shape_2.h>
 #include <CGAL/Alpha_shape_face_base_2.h>
-#include <CGAL/Alpha_shape_2.h>
 #include <CGAL/Alpha_shape_vertex_base_2.h>
 
 typedef double coord_type;

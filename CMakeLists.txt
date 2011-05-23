@@ -87,8 +87,8 @@ IF(WIN32)
   LINK_LIBRARIES(postgres)
 ENDIF(WIN32)
 
-SET(CMAKE_C_FLAGS "-O2 -g -frounding-math")
-SET(CMAKE_CXX_FLAGS "-O2 -g -frounding-math")
+SET(CMAKE_C_FLAGS   "-O2 -g -lgmp -frounding-math")
+SET(CMAKE_CXX_FLAGS "-O2 -g -lgmp -frounding-math")
 
 # Recurse into the subdirectories.  This does not actually
 # cause another cmake executable to run.  The same process will walk through
