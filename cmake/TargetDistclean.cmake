@@ -9,7 +9,7 @@ IF (UNIX)
   ADD_CUSTOM_COMMAND(
     COMMENT "distribution clean"
     COMMAND $(MAKE_COMMAND) clean &&
-      rm -rf `find . -name "CMakeFiles" -o -name "Makefile" -o -name "CMakeCache.txt" -o -name "Testing" -o -name "*.cmake"` install_manifest.txt
+      find . \\! -path "./cmake/\\*" -path "\\*.cmake" -o -name CMakeFiles -o -name Makefile -o -name CMakeCache.txt -o -name Testing -o -name cmake_install.cmake -o -name install_manifest.txt | xargs rm -rf
     TARGET  distclean
   )
 ENDIF(UNIX)
