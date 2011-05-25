@@ -21,7 +21,7 @@ void assert_cyclic_equal(int *tuple1, int *tuple2, int count)
   }
   for(i = 0; i < count; i++)
   {
-    if(tuple1[i] != tuple2[count - i - 1])
+    if(tuple1[i] != tuple2[(count - i) % count])
     {
       flag2 = true;
       break;
