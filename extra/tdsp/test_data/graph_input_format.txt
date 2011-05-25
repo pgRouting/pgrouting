@@ -1,0 +1,11 @@
+Graph Input convension:
+Line1 contains 3 integers: V E R    -V is no of vertices, E - edges and R - the discrete range of values.
+Next V lines have following format:
+Start with integer e denoting number of edges going out from that vertex. And next e values in same 
+line tell the target vertex of edge.
+
+Next we have E*R lines each conaining 3 integers eid , start_time, travel_time. These are used to generate
+weight map.
+
+Last line contains source id.
+The distance_map and predecessor_map are printed.
