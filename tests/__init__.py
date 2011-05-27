@@ -28,8 +28,8 @@ def connectToDB(dbname=None):
   conn.set_isolation_level(0)
   return conn.cursor()
 
-def read_sql(filename):
-  return open(os.path.join(PGROUTING_DIR, 'core/sql/' + filename), 'r').read().replace('$libdir', os.path.join(PGROUTING_DIR, 'lib'))
+def read_sql(sqlfile):
+  return open(os.path.join(PGROUTING_DIR, sqlfile), 'r').read().replace('$libdir', os.path.join(PGROUTING_DIR, 'lib'))
 
 def setUpDB():
   print "Setting up Test database..."
@@ -43,9 +43,9 @@ def setUpDB():
   cur = connectToDB(settings.dbname)
   #Run sql commands
   print "Executing pgrouting sql commands..."
-  cur.execute(read_sql('routing_core.sql'))
-  cur.execute(read_sql('routing_core_wrappers.sql'))
-  cur.execute(read_sql('routing_topology.sql'))
+  cur.execute(read_sql('core/sql/routing_core.sql'))
+  cur.execute(read_sql('core/sql/routing_core_wrappers.sql'))
+  cur.execute(read_sql('core/sql/routing_topology.sql'))
   cur.connection.close()
   print "Finished setting up Test database."
 
