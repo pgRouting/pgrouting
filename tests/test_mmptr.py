@@ -16,6 +16,7 @@ class TestMMPTR(unittest.TestCase):
     loadTable(self.cur, "gtfs/trips")
     loadTable(self.cur, "gtfs/stop_times")
     loadTable(self.cur, "gtfs/frequencies", with_data = False)
+    loadTable(self.cur, "forged_output")
 
   def tearDown(self):
     self.cur.execute("DROP SCHEMA gtfs CASCADE")
@@ -23,8 +24,7 @@ class TestMMPTR(unittest.TestCase):
 
   def test_sm_public_transit_route(self):
     self.cur.execute("SELECT "
-        "departure_stop_id,"
-        "arrival_stop_id,"
+        "stop_id,"
         "route_id"
     " from sm_public_transit_route("
         "'gtfs'," # Schema name
@@ -35,8 +35,9 @@ class TestMMPTR(unittest.TestCase):
     " )")
     self.assertEqual(self.cur.fetchall(), [
         #departure stop id, arrival stop id, route id
-        ('37', '4', 'MSB-VLCY'),
-        ('4', '2', 'MSB-TBM')
+        ('37', 'MSB-VLCY'),
+        ('4', 'MSB-TBM'),
+        ('2', None)
     ])
 
 if __name__ == "__main__":

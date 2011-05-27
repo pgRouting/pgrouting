@@ -46,6 +46,7 @@ def setUpDB():
   cur.execute(read_sql('core/sql/routing_core.sql'))
   cur.execute(read_sql('core/sql/routing_core_wrappers.sql'))
   cur.execute(read_sql('core/sql/routing_topology.sql'))
+  cur.execute(read_sql('extra/transit/sql/routing_transit.sql'))
   cur.connection.close()
   print "Finished setting up Test database."
 
