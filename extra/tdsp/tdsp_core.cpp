@@ -13,8 +13,9 @@
 
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/dijkstra_shortest_paths.hpp>
 
-#define DEBUG 1
+#define DEBUG 0
 
 using namespace std;
 using namespace boost;
@@ -27,8 +28,8 @@ typedef boost::graph_traits < graph_t >::vertex_descriptor vertex_desc_t;
 typedef boost::graph_traits < graph_t >::edge_descriptor edge_desc_t;
 
 //To map the vertex ids to their current distances and predecessors
-typedef map<int , double> distance_map;
-typedef map<int , int>   predecessor_map;
+typedef map<int , double> distance_map_t;
+typedef map<int , int>   predecessor_map_t;
 
 
 
@@ -40,21 +41,25 @@ typedef map<int , int>   predecessor_map;
  * w_m - Initialized with the time dependent edge weights.
  * e_w - The edge wrapper initialized with edge ids and corresponding source-vertex ids.
  */
-void tdsp(graph_t g, vertex_desc_t s, distance_map d_m, predecessor_map p_m, weight_map w_m, edge_wrapper e_w)
+void tdsp(graph_t g, vertex_desc_t s, distance_map_t &d_m, predecessor_map_t &p_m, weight_map_t w_m, edge_wrapper e_w)
 {
-	cout<<"Source: "<<s<<endl;
 	
 	//The visited array to keep track of the visited vertices
-	//Initialize all visited to false
-	vector<bool> visited( d_m.size() ); 
+	//0 - Not visited
+	//1 - visited but in heap
+	//2 - finished
+	//Initialize all visited 0
+	vector<int> visited( d_m.size() ); 
 	for(int i = 0; i < visited.size() ; i++)
-		visited[i] = false;
+		visited[i] = 0;
+		
 	
 	//Initialize all distance map entries to Inf
 	for( int i = 0; i < d_m.size() ; i++)
+	{
 		d_m[i] = numeric_limits<double>::max();
-		
-	cout<< d_m.size();
+		p_m[i] = i;
+	}
 	
 	
 	//Priority queue which will act as the min heap
@@ -66,8 +71,7 @@ void tdsp(graph_t g, vertex_desc_t s, distance_map d_m, predecessor_map p_m, wei
 	v.reach_time = 0;  
 	bin_heap.insert(v);
 	d_m[s] = 0;
-	visited[s] = true;
-	
+	visited[s] = 1;
 	
 	
 	//Take out vertices from priority queue until it is not empty
@@ -76,6 +80,13 @@ void tdsp(graph_t g, vertex_desc_t s, distance_map d_m, predecessor_map p_m, wei
 		Vertex u = bin_heap.delete_min();
 		
 		vertex_desc_t u_t = vertex(u.vertex_id, g);
+		
+		//Mark u as finished
+		visited[u_t] = 2;
+		
+		//Update final distance map
+		if(p_m[u_t] != -1)
+			d_m[u_t] = d_m[u_t];
 		
 		//Visit all the adjecent vertices of v using out edge iterator
 		graph_traits<graph_t>::out_edge_iterator ei, edge_end;
@@ -93,7 +104,7 @@ void tdsp(graph_t g, vertex_desc_t s, distance_map d_m, predecessor_map p_m, wei
 			#endif
 			
 			//Now check if this vertex was already visited
-			if(visited[v_t] == false)
+			if(visited[v_t] == 0)
 			{
 				//This means that vertex is seen for first time.
 				//We will put it in priority queue
@@ -103,14 +114,14 @@ void tdsp(graph_t g, vertex_desc_t s, distance_map d_m, predecessor_map p_m, wei
 				v.reach_time = u.reach_time + travel_time;
 				bin_heap.insert(v);
 				
-				//Also mark it as visited and update distance_map and predecessor_map
-				visited[v_t] = true;
+				//Also mark it as visited and update current distance and predecessor_map
+				visited[v_t] = 1;
 				d_m[v_t] = v.reach_time;
 				p_m[v_t] = u_t;
 			}
-			else
+			else if(visited[v_t] == 1)
 			{
-				//Since visited is true, the vertex was already seen
+				//Since visited is 1, the vertex was already seen
 				//It is in priority queue.
 				
 				//Find out new reach time using current edge
@@ -120,7 +131,7 @@ void tdsp(graph_t g, vertex_desc_t s, distance_map d_m, predecessor_map p_m, wei
 				//Check if new reach time is smaller than the current reach time for v
 				if(d_m[v_t] > new_reach_time)  
 				{
-					//If so, do decrease key in heap, and update the reach time in distance map
+					//If so, do decrease key in heap, and update the reach time in current distance map
 					//and predecessor map
 					bin_heap.decrease_key(v_t , d_m[v_t] - new_reach_time);
 					d_m[v_t] = new_reach_time;
@@ -129,25 +140,25 @@ void tdsp(graph_t g, vertex_desc_t s, distance_map d_m, predecessor_map p_m, wei
 				//else do nothing, this edge does not belong to shortest path tree
 				
 			}
-			
+			#if DEBUG
+			else
+			{
+				cout << endl << "This vertex is already finished!";
+			}
+			#endif
 		}
 		
 	}
 	
-	cout<<endl<<"Distances: "<<endl;
-	for(int i = 0; i < d_m.size() ; i++)
-		cout << i << ": " << d_m[i] << endl;
-	cout<<"Predecessors: "<<endl;
-	for(int i = 0; i < p_m.size() ; i++)
-		cout << i << ": " << p_m[i] << endl;
-	
 }
 
-
+predecessor_map_t p_m;
+distance_map_t d_m;
 
 
 void tdsp_test()
 {
+	
 	//Setup the graph
 	int V , E , range;
 	cin >> V;
@@ -171,14 +182,14 @@ void tdsp_test()
 			cin >> t;
 			//cout<<"Adding edge : "<<edge_id_count<<"("<<i<<","<<t<<")"<<endl;
 			add_edge(vertex(i,g),vertex(t,g),g);
-			edge_t e;
+			edge_columns_t e;
 			e.id = edge_id_count++; e.source = i; e.target = t; e_w.insert(e);
 		}
 	}
 	
 	
 	//Setup weight map
-	weight_map w_m;
+	weight_map_t w_m;
 	weight_map_element wme;
 	for(int i = 0; i < edge_id_count ; i++)
 	{
@@ -193,13 +204,13 @@ void tdsp_test()
 		}
 	}
 	
-	predecessor_map p_m;
-	distance_map d_m;
+	//predecessor_map_t p_m;
+	//distance_map_t d_m;
 	
 	for( int i = 0; i < V ; i++)
 	{
 		d_m[i] = numeric_limits<double>::max();
-		p_m[i] = -1;
+		p_m[i] = i;
 	}
 	
 	int src;
@@ -207,10 +218,160 @@ void tdsp_test()
 	vertex_desc_t s = src;
 	tdsp(g,s,d_m,p_m,w_m,e_w);
 	
+	cout<<endl<<"---------------------------------------------------------------------------------------"<<endl;
+	cout<<"Number of vertices in graph: "<<V<<endl;
+	cout<<"Number of edges in graph: "<<E<<endl;
+	cout<<"Source vertex: "<<src<<endl;
+	
+	cout<<endl<<"---------------------------------------------------------------------------------------"<<endl;
+	cout<<"Output for time dependent djkstra:"<<endl<<endl;
+	cout<<endl<<"Distances: "<<endl;
+	for(int i = 0; i < d_m.size() ; i++)
+		cout << i << ": " << d_m[i] << "\t\t";
+	cout<<endl<<"Predecessors: "<<endl;
+	for(int i = 0; i < p_m.size() ; i++)
+		cout << i << ": " << p_m[i] << "\t\t";
+	cout<<endl;
+}
+
+
+void boost_dijkstra_test()
+{
+	//Setup the graph
+	int V , E , range;
+	cin >> V;
+	cin >> E;
+	cin >> range;
+	
+	graph_t graph(E);
+	//Setup the edge_wrapper
+	edge_wrapper e_w;
+	int edge_id_count = 0;
+	
+	for(int i = 0;i<V;i++)
+	{
+		int n;
+		cin >> n;
+		for(int j = 0;j<n;j++)
+		{
+			int t;
+			cin >> t;
+
+			//add_edge(vertex(i,g),vertex(t,g),g);
+			edge_columns_t e;
+			e.id = edge_id_count++; e.source = i; e.target = t; e_w.insert(e);
+		}
+	}
+	
+	
+	//Setup weight map
+	weight_map_t w_m;
+	weight_map_element wme;
+	for(int i = 0; i < edge_id_count ; i++)
+	{
+		for(int j = 0 ; j < range; j++)
+		{
+			int id,start_time,travel_time;
+			cin >> id;
+			cin >> start_time;
+			cin >> travel_time;
+			wme.edge_id = id; wme.start_time = start_time; wme.travel_time = travel_time;
+			w_m.insert(wme);
+		}
+	}
+	
+	int src;
+	cin >> src;
+	vertex_desc_t s = src;
+
+    property_map<graph_t, edge_weight_t>::type weightmap = get(edge_weight, graph);
+
+    for (std::size_t j = 0; j < E; ++j)
+    {
+		edge_desc_t e; bool inserted;
+		edge_columns_t e_c = e_w.get_edge(j);
+		tie(e, inserted) = add_edge(e_c.source, e_c.target, graph);
+
+		graph[e].reach_time = w_m.get_travel_time(e_c.id, 0 );
+		if(graph[e].reach_time < 0)
+		{
+			cout<< "Edge ID: "<< e_c.id <<"("<<e_c.source<<","<<e_c.target<<") Returned negative weight!"<<endl;
+		}
+		graph[e].vertex_id = e_c.id;
+				
+	/*if (!directed || (directed && has_reverse_cost))
+	{
+	    tie(e, inserted) = add_edge(edges[j].target, edges[j].source, graph);
+	    graph[e].id = edges[j].id;
+
+	    if (has_reverse_cost)
+	    {
+		graph[e].cost = edges[j].reverse_cost;
+	    }
+	    else 
+	    {
+		graph[e].cost = edges[j].cost;
+	    }
+	}*/
+    }
+
+    std::vector<vertex_desc_t> predecessors(num_vertices(graph));
+
+    //vertex_descriptor _source = vertex(start_vertex, graph);
+/*
+    if (_source < 0 ) 
+    {
+	*err_msg = (char *) "Starting vertex not found";
+	return -1;
+    }
+
+    vertex_descriptor _target = vertex(end_vertex, graph);
+    if (_target < 0)
+    {
+	*err_msg = (char *) "Ending vertex not found";
+	return -1;
+    }
+*/
+    std::vector<double> distances(num_vertices(graph));
+    // calling Boost function
+    dijkstra_shortest_paths(graph, src,
+			    predecessor_map(&predecessors[0]).
+			    weight_map(get(&Vertex::reach_time, graph))
+			    .distance_map(&distances[0]));
+	
+	cout<<endl<<"---------------------------------------------------------------------------------------"<<endl;
+	
+	cout << "Printing output of boost dijkstra: "<<endl;
+	
+	int success = 1;
+	
+	cout<<endl<<"Distances: "<<endl;
+	for(int i = 0; i < V ; i++)
+	{
+		cout << i << ": " << distances[i] << "\t\t";
+		if(distances[i] != d_m[i])
+			success = 0;
+	}
+	cout<<endl<<"Predecessors: "<<endl;
+	for(int i = 0; i < V ; i++)
+	{
+		cout << i << ": " << predecessors[i] << "\t\t";
+		if(predecessors[i] != p_m[i])
+			success = 0;
+	}
+	
+	cout<<endl<<"---------------------------------------------------------------------------------------"<<endl;
+	if(success == 1)
+		cout<< endl << "Both time-dependent dijkstra and boost dijkstra gave same output \n TEST SUCCESSFULL!"<<endl<<endl<<endl;
+	else
+		cout<< endl << "Output mismatch. Test unsucessfull"<<endl<<endl;
+		
 }
 
 int main()
 {
+	
     tdsp_test();
+    boost_dijkstra_test();
 }
 

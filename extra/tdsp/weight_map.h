@@ -1,5 +1,7 @@
 #include <vector>
 
+#define DEBUG 0
+
 using namespace std;
 
 //-------------------------------------------------------------------------
@@ -14,7 +16,7 @@ typedef struct weight_map_element
 } 
 weight_map_element_t;
 
-class weight_map
+class weight_map_t
 {
 	
 	vector<weight_map_element_t> weight_map_set;
@@ -25,15 +27,15 @@ class weight_map
 
 };
 
-void weight_map::insert(weight_map_element_t element)
+void weight_map_t::insert(weight_map_element_t element)
 {
 	weight_map_set.push_back(element);
 }
 
-double weight_map::get_travel_time(int edge_id, double start_time)
+double weight_map_t::get_travel_time(int edge_id, double start_time)
 {
 	#if DEBUG
-	cout<<endl<<"Query for travel-time for edge "<<edge_id<<" and start-time: "<<start_time;
+	cout<<endl<<"Query for travel-time for edge "<<edge_id<<endl;//" and start-time: "<<start_time;
 	#endif
 	
 	vector<weight_map_element_t>::iterator it, it_next;
@@ -42,8 +44,23 @@ double weight_map::get_travel_time(int edge_id, double start_time)
 	it_next++;
 	
 	for (it=weight_map_set.begin(); it!=weight_map_set.end(); it++,it_next++)
+	{
 		if(it_next != weight_map_set.end())
-			if(it->edge_id == edge_id && it->start_time <= start_time && it_next->start_time >start_time)
+		{
+			if(it_next->edge_id == edge_id)
+			{
+				if(it->edge_id == edge_id && it->start_time <= start_time && it_next->start_time >start_time)
+				{
+					#if DEBUG
+					cout<<"Arrival Time: "<<start_time<<endl;
+					cout<<"edge_id: "<<it->edge_id<<endl;
+					cout<<"start_time: "<<it->start_time<<endl;
+					cout<<"travel_time: "<<it->travel_time<<endl;
+					#endif
+					return it->travel_time;
+				}
+			}	
+			else
 			{
 				#if DEBUG
 				cout<<"Arrival Time: "<<start_time<<endl;
@@ -52,8 +69,8 @@ double weight_map::get_travel_time(int edge_id, double start_time)
 				cout<<"travel_time: "<<it->travel_time<<endl;
 				#endif
 				return it->travel_time;
-			
-			}
+			}	
+		}
 		else
 		{
 			if(it->edge_id == edge_id && it->start_time <= start_time )
@@ -68,7 +85,7 @@ double weight_map::get_travel_time(int edge_id, double start_time)
 			
 			}
 		}	
-		
+	}	
 	return -1;
 	
 }
