@@ -2,6 +2,7 @@ route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_
 MSB-VLCY,MRTS,MSB-VLCY,Chennai Beach – Velachery,,0,,,
 MSB-TBM,CSR,MSB-TBM,Chennai Beach – Tambaram,,0,,,
 TBM-CGL,CSR,TBM-CGL,Tambaram – Chengalpattu,,0,,,
+MSB-CGL,CSR,MSB-CGL,Chennai Beach – Chengalpattu,,0,,,
 CGL-TMLP,CSR,CGL-TMLP,Chengalpattu – Thirumalpur,,0,,,
 MASMSB-TRT,CSR,MASMSB-TRT,Chennai Beach/Chennai Central – Tiruttani,,0,,,
 MAS-SPE,CSR,MAS-SPE,Chennai Beach/Chennai Central – Sullurupetta,,0,,,

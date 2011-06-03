@@ -1,3 +1,4 @@
 service_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday,start_date,end_date
 WDS,1,1,1,1,1,1,0,20110101,20200101
 SUN,0,0,0,0,0,0,1,20110101,20200101
+ALL,1,1,1,1,1,1,1,20110101,20200101
