@@ -1,2 +1,6 @@
 ENABLE_TESTING()
-ADD_TEST(TestAll ${PGROUTING_SOURCE_DIR}/tests/test_all.py)
+ADD_TEST(TestCoreSQL ${PGROUTING_SOURCE_DIR}/tests/test_core.py)
+
+#IF(WITH_TSP)
+#ADD_TEST(TestTSP ${PGROUTING_SOURCE_DIR}/tests/test_tsp.py)
+#ENDIF(WITH_TSP)

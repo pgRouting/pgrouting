@@ -115,5 +115,5 @@ IF(WITH_DD)
   ADD_SUBDIRECTORY(extra/driving_distance)
 ENDIF(WITH_DD)
 
-SUBDIRS(tests)
+ADD_SUBDIRECTORY(tests)
 
