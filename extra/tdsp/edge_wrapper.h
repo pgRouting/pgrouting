@@ -7,7 +7,7 @@ using namespace std;
 //-------------------------------------------------------------------------
 //A Edge structure, mainly to map edge_id with source and target
 
-typedef struct edge_columns
+typedef struct edge_columns_str
 {
     int id;
     int source;

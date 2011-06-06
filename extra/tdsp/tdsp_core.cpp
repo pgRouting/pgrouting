@@ -8,6 +8,7 @@
 #include <binary_heap.h>
 #include <weight_map.h>
 #include <edge_wrapper.h>
+#include <tdsp.h>
 
 #include <boost/config.hpp>
 
@@ -156,6 +157,142 @@ predecessor_map_t p_m;
 distance_map_t d_m;
 
 
+
+int tdsp_wrapper(
+
+			edge_columns_t *edges, 
+			unsigned int edge_count, 
+			weight_map_element_t *weight_map_elements, 
+			int weight_map_element_count,
+			int start_vertex, 
+			int end_vertex,
+		    bool directed, 
+		    bool has_reverse_cost,
+            path_element_t **path, 
+            int *path_count, 
+            char **err_msg
+
+            )
+{
+	cout << "edge count: "<<edge_count << endl;
+	
+	set<int> vertices;
+	
+	//Form edge wrapper
+	edge_wrapper e_w;
+	for(int i = 0 ; i < edge_count ; i++)
+	{
+		e_w.insert(edges[i]);
+		if(edges[i].source < 0 || edges[i].source > 99)
+		{
+			cout << i << "\t";
+			//cout << "OOps Source: " << edges[i].source << "\t";
+		}
+		if(edges[i].target < 0 || edges[i].target > 99)
+		{
+			cout << i << "\t";
+			//cout << "OOps target"<< edges[i].target << "\t";
+		}
+		vertices.insert(edges[i].source);
+		vertices.insert(edges[i].target);
+	}
+
+	cout << endl << vertices.size() << endl;
+	const int num_nodes = vertices.size();
+	graph_t g(num_nodes);
+		
+	for(int i = 0 ; i < edge_count ; i++)
+	{	
+		add_edge(vertex(edges[i].source,g) , vertex(edges[i].target,g) , g);
+	}
+	
+	//Form weight map
+	weight_map_t w_m;
+	for(int i = 0 ; i < weight_map_element_count ; i++)
+		w_m.insert(weight_map_elements[i]);
+	
+	predecessor_map_t p_m;
+	distance_map_t d_m;
+	for( int i = 0; i < num_nodes ; i++)
+	{
+		d_m[i] = numeric_limits<double>::max();
+		p_m[i] = i;
+	}
+
+	vertex_desc_t s = start_vertex;
+	
+	cout << "calling tdsp" << endl;
+	//Call the time dependent shortest path function
+	tdsp(g,s,d_m,p_m,w_m,e_w);
+	
+	#if DEBUG
+	cout << "Number of vertices: " << num_nodes<<endl;
+	cout << "Number of edges: " << edge_count << endl;
+	cout<<"Source vertex: "<<s<<endl;
+	cout<<endl<<"---------------------------------------------------------------------------------------"<<endl;
+	cout<<"Output for time dependent djkstra:"<<endl<<endl;
+	cout<<endl<<"Distances: "<<endl;
+	for(int i = 0; i < d_m.size() ; i++)
+		cout << i << ": " << d_m[i] << "\t\t";
+	cout<<endl<<"Predecessors: "<<endl;
+	for(int i = 0; i < p_m.size() ; i++)
+		cout << i << ": " << p_m[i] << "\t\t";
+	cout<<endl;
+	#endif
+	
+	
+	//Now ectract the path
+	vector<int> path_vect;
+    int max = num_nodes;
+    int _target = end_vertex;
+    path_vect.push_back(_target);
+
+    while (_target != start_vertex) 
+    {
+		if (_target == p_m[_target]) 
+		{
+			*err_msg = (char *) "No path found";
+			return 0;
+		}
+		_target = p_m[_target];
+
+		path_vect.push_back(_target);
+		if (!max--) 
+		{
+			*err_msg = (char *) "Overflow";
+			return -1;
+		}
+    }
+
+    *path = (path_element_t *) malloc(sizeof(path_element_t) * (path_vect.size() + 1));
+    *path_count = path_vect.size();
+	
+	double time = 0;
+	for(int i = path_vect.size() - 1, j = 0; i >= 0; i--, j++)
+    {
+		(*path)[j].vertex_id = path_vect[i];
+
+		(*path)[j].edge_id = -1;
+		(*path)[j].cost = d_m[_target];
+	
+		if (i == 0) 
+		{
+			time = d_m[_target];
+			continue;
+		}
+		
+		(*path)[j].edge_id = e_w.get_edge_id(path_vect[i] , path_vect[i-1]);
+		
+		(*path)[j].cost = w_m.get_travel_time((*path)[j].edge_id, time);
+		
+		time+= (*path)[j].cost;
+		
+	}
+	return 1;
+}
+
+
+
 void tdsp_test()
 {
 	
@@ -299,39 +436,10 @@ void boost_dijkstra_test()
 		}
 		graph[e].vertex_id = e_c.id;
 				
-	/*if (!directed || (directed && has_reverse_cost))
-	{
-	    tie(e, inserted) = add_edge(edges[j].target, edges[j].source, graph);
-	    graph[e].id = edges[j].id;
-
-	    if (has_reverse_cost)
-	    {
-		graph[e].cost = edges[j].reverse_cost;
-	    }
-	    else 
-	    {
-		graph[e].cost = edges[j].cost;
-	    }
-	}*/
     }
 
     std::vector<vertex_desc_t> predecessors(num_vertices(graph));
 
-    //vertex_descriptor _source = vertex(start_vertex, graph);
-/*
-    if (_source < 0 ) 
-    {
-	*err_msg = (char *) "Starting vertex not found";
-	return -1;
-    }
-
-    vertex_descriptor _target = vertex(end_vertex, graph);
-    if (_target < 0)
-    {
-	*err_msg = (char *) "Ending vertex not found";
-	return -1;
-    }
-*/
     std::vector<double> distances(num_vertices(graph));
     // calling Boost function
     dijkstra_shortest_paths(graph, src,
@@ -368,10 +476,103 @@ void boost_dijkstra_test()
 		
 }
 
+
+
+
+void tdsp_wrapper_test()
+{
+	//Setup the graph
+	int V , E , range;
+	cin >> V;
+	cin >> E;
+	cin >> range;
+	
+	cout << "V: " << V << " E: " << E << " range: " << range << endl;
+	
+	edge_columns_t * edges = (edge_columns_t*) malloc(E * sizeof(edge_columns_t));
+	int edge_id_count = 0;
+	
+	for(int i = 0;i<V;i++)
+	{
+		int n;
+		cin >> n;
+		for(int j = 0;j<n;j++)
+		{
+			int t;
+			cin >> t;
+
+			//add_edge(vertex(i,g),vertex(t,g),g);
+			//edge_columns_t e;
+			edges[edge_id_count].id = edge_id_count; 
+			edges[edge_id_count].source = i; 
+			edges[edge_id_count].target = t; 
+			edge_id_count++;
+			
+		}
+	}
+	
+	cout << "Edge id count while reading : "<<edge_id_count << endl;
+	//Setup weight map
+	weight_map_element * weight_map_elements = (weight_map_element *) malloc(sizeof(weight_map_element) * E * range);
+	for(int i = 0; i < edge_id_count ; i++)
+	{
+		for(int j = 0 ; j < range; j++)
+		{
+			int id,start_time,travel_time;
+			cin >> id;
+			cin >> start_time;
+			cin >> travel_time;
+			weight_map_elements[(i*range)+ j].edge_id = id; 
+			weight_map_elements[(i*range)+ j].start_time = start_time;
+			weight_map_elements[(i*range)+ j].travel_time = travel_time;
+			
+		}
+	}
+	
+	int src;
+	cin >> src;
+	
+	int path_count = 0;
+	path_element_t * path_elements;
+	char ** err_msg;
+	
+	
+	int end_vertex = 46;
+	
+	cout << "Calling tdsp_wrapper" <<endl;
+	int success = tdsp_wrapper(edges , E , weight_map_elements , E*range , src , end_vertex , false , false ,
+				&path_elements , &path_count , err_msg);
+	
+	if(success == -1)
+	{
+		cout << "Overflow" << endl;
+		return;
+	}
+	if(success == 0)
+	{
+		cout << "Not reachable" << endl;
+		return;
+	}
+	
+	cout << "Output for source - target query: " << endl;
+	int total_time = 0;
+	for(int i = 0 ; i < path_count ; i++)
+	{
+		cout << path_elements[i].vertex_id << " " << path_elements[i].edge_id << " " <<path_elements[i].cost << endl;
+		total_time += path_elements[i].cost;
+		
+	}
+	cout << endl;
+	cout << "Total time: " << total_time << endl;
+}
+
+
 int main()
 {
 	
-    tdsp_test();
+    //tdsp_test();
+    cout << "Now calling tdsp caller test" << endl;
+    tdsp_wrapper_test();
     boost_dijkstra_test();
 }
 

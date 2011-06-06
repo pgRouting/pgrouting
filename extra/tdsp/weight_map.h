@@ -52,21 +52,24 @@ double weight_map_t::get_travel_time(int edge_id, double start_time)
 				if(it->edge_id == edge_id && it->start_time <= start_time && it_next->start_time >start_time)
 				{
 					#if DEBUG
+					cout<<"Edge ID passed: "<<edge_id<<endl;
 					cout<<"Arrival Time: "<<start_time<<endl;
-					cout<<"edge_id: "<<it->edge_id<<endl;
+					cout<<"it->edge_id: "<<it->edge_id<<endl;
 					cout<<"start_time: "<<it->start_time<<endl;
 					cout<<"travel_time: "<<it->travel_time<<endl;
 					#endif
 					return it->travel_time;
 				}
 			}	
-			else
+			else if(it->edge_id == edge_id && it->start_time <= start_time)
 			{
 				#if DEBUG
-				cout<<"Arrival Time: "<<start_time<<endl;
-				cout<<"edge_id: "<<it->edge_id<<endl;
-				cout<<"start_time: "<<it->start_time<<endl;
-				cout<<"travel_time: "<<it->travel_time<<endl;
+				cout << 2 << endl;
+				cout<<"Edge ID passed: "<<edge_id<<endl;
+					cout<<"Arrival Time: "<<start_time<<endl;
+					cout<<"it->edge_id: "<<it->edge_id<<endl;
+					cout<<"start_time: "<<it->start_time<<endl;
+					cout<<"travel_time: "<<it->travel_time<<endl;
 				#endif
 				return it->travel_time;
 			}	
@@ -76,10 +79,12 @@ double weight_map_t::get_travel_time(int edge_id, double start_time)
 			if(it->edge_id == edge_id && it->start_time <= start_time )
 			{
 				#if DEBUG
-				cout<<"Arrival Time: "<<start_time<<endl;
-				cout<<"edge_id: "<<it->edge_id<<endl;
-				cout<<"start_time: "<<it->start_time<<endl;
-				cout<<"travel_time: "<<it->travel_time<<endl;
+					cout << 3 << endl;
+					cout<<"Edge ID passed: "<<edge_id<<endl;
+					cout<<"Arrival Time: "<<start_time<<endl;
+					cout<<"it->edge_id: "<<it->edge_id<<endl;
+					cout<<"start_time: "<<it->start_time<<endl;
+					cout<<"travel_time: "<<it->travel_time<<endl;
 				#endif
 				return it->travel_time;
 			
