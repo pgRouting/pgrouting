@@ -183,12 +183,12 @@ int tdsp_wrapper(
 	for(int i = 0 ; i < edge_count ; i++)
 	{
 		e_w.insert(edges[i]);
-		if(edges[i].source < 0 || edges[i].source > 99)
+		if(edges[i].source < 0 || edges[i].source > edge_count)
 		{
 			cout << i << "\t";
 			//cout << "OOps Source: " << edges[i].source << "\t";
 		}
-		if(edges[i].target < 0 || edges[i].target > 99)
+		if(edges[i].target < 0 || edges[i].target > edge_count)
 		{
 			cout << i << "\t";
 			//cout << "OOps target"<< edges[i].target << "\t";
@@ -225,6 +225,8 @@ int tdsp_wrapper(
 	//Call the time dependent shortest path function
 	tdsp(g,s,d_m,p_m,w_m,e_w);
 	
+	cout << "Tdsp call successfull!" << endl;
+	
 	#if DEBUG
 	cout << "Number of vertices: " << num_nodes<<endl;
 	cout << "Number of edges: " << edge_count << endl;
@@ -241,17 +243,20 @@ int tdsp_wrapper(
 	#endif
 	
 	
-	//Now ectract the path
+	//Now extract the path
 	vector<int> path_vect;
     int max = num_nodes;
     int _target = end_vertex;
     path_vect.push_back(_target);
 
+	cout << "Now well backtrack to trace the path" << endl;
     while (_target != start_vertex) 
     {
+		cout << "_target: " << _target << " Parent: " << p_m[_target] << endl;
 		if (_target == p_m[_target]) 
 		{
 			*err_msg = (char *) "No path found";
+			cout << "No path found" << endl;
 			return 0;
 		}
 		_target = p_m[_target];
@@ -260,10 +265,12 @@ int tdsp_wrapper(
 		if (!max--) 
 		{
 			*err_msg = (char *) "Overflow";
+			cout << "Overflow" << endl;
 			return -1;
 		}
     }
 
+	cout << "Path vector size: " << path_vect.size() << endl;
     *path = (path_element_t *) malloc(sizeof(path_element_t) * (path_vect.size() + 1));
     *path_count = path_vect.size();
 	
@@ -534,14 +541,16 @@ void tdsp_wrapper_test()
 	
 	int path_count = 0;
 	path_element_t * path_elements;
-	char ** err_msg;
+	char * err_msg;
 	
 	
-	int end_vertex = 46;
+	int end_vertex = 800;
 	
 	cout << "Calling tdsp_wrapper" <<endl;
 	int success = tdsp_wrapper(edges , E , weight_map_elements , E*range , src , end_vertex , false , false ,
-				&path_elements , &path_count , err_msg);
+				&path_elements , &path_count , &err_msg);
+	
+	cout << "TDSP wrapper call successfull!" << endl;
 	
 	if(success == -1)
 	{
@@ -567,7 +576,7 @@ void tdsp_wrapper_test()
 }
 
 
-int main()
+int main(int argc , char * argv[])
 {
 	
     //tdsp_test();

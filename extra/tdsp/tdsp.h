@@ -19,8 +19,8 @@
  *
  */
  
-#ifndef _DIJKSTRA_H
-#define _DIJKSTRA_H
+#ifndef _TDSP_H
+#define _TDSP_H
 
 #include "postgres.h"
 //#include "edge_wrapper.h"
