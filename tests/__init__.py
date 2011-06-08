@@ -31,7 +31,7 @@ def connectToDB(dbname=None):
 def read_sql(sqlfile):
   return open(os.path.join(PGROUTING_DIR, sqlfile), 'r').read().replace('$libdir', os.path.join(PGROUTING_DIR, 'lib'))
 
-def setUpDB():
+def setUpDB(with_transit=False):
   print "Setting up Test database..."
   cur = connectToDB(settings.postgis_template_name)
   print "Deleting Test database if present..."
@@ -46,7 +46,8 @@ def setUpDB():
   cur.execute(read_sql('core/sql/routing_core.sql'))
   cur.execute(read_sql('core/sql/routing_core_wrappers.sql'))
   cur.execute(read_sql('core/sql/routing_topology.sql'))
-  cur.execute(read_sql('extra/transit/sql/routing_transit.sql'))
+  if with_transit:
+    cur.execute(read_sql('extra/transit/sql/routing_transit.sql'))
   cur.connection.close()
   print "Finished setting up Test database."
 

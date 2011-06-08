@@ -4,3 +4,7 @@ ADD_TEST(TestCoreSQL ${PGROUTING_SOURCE_DIR}/tests/test_core.py)
 #IF(WITH_TSP)
 #ADD_TEST(TestTSP ${PGROUTING_SOURCE_DIR}/tests/test_tsp.py)
 #ENDIF(WITH_TSP)
+
+IF(WITH_TRANSIT)
+ADD_TEST(TestTransit ${PGROUTING_SOURCE_DIR}/tests/test_transit.py)
+ENDIF(WITH_TRANSIT)

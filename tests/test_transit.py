@@ -61,7 +61,7 @@ class TestTransit(unittest.TestCase):
 
 
 if __name__ == "__main__":
-  setUpDB()
+  setUpDB(with_transit=True)
   testResults = unittest.TextTestRunner(verbosity=2).run(unittest.TestLoader().loadTestsFromTestCase(TestTransit))
   tearDownDB()
   if testResults.wasSuccessful() == False:

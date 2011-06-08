@@ -3,14 +3,12 @@
 import sys
 import unittest
 import test_dijkstra
-import test_transit
 from __init__ import setUpDB, tearDownDB
 
 if __name__ == "__main__":
   setUpDB()
   testSuite = []
   testSuite += unittest.TestLoader().loadTestsFromModule(test_dijkstra)
-  testSuite += unittest.TestLoader().loadTestsFromModule(test_transit)
   #Other testcases will be appended to testSuite here
   testResults = unittest.TextTestRunner(verbosity=2).run(unittest.TestSuite(testSuite))
   tearDownDB()
