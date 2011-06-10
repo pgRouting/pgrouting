@@ -17,30 +17,41 @@ class TestTransit(unittest.TestCase):
     loadTable(self.cur, "gtfs/trips")
     loadTable(self.cur, "gtfs/stop_times")
     loadTable(self.cur, "gtfs/frequencies", with_data = False)
+    loadTable(self.cur, "nonsc/schema", with_data = False)
+    loadTable(self.cur, "nonsc/trip")
+    loadTable(self.cur, "nonsc/stoptime")
 
   def tearDown(self):
     self.cur.execute("DROP SCHEMA gtfs CASCADE")
     self.cur.connection.close()
 
-  def test_sm_public_transit_route(self):
+  def test_non_scheduled_route(self):
+    self.cur.execute("SELECT update_stop_time_graph('nonsc')")
     self.cur.execute("SELECT "
-        "stop_id,"
-        "route_id"
-    " from sm_public_transit_route("
-        "'gtfs'," # Schema name
-        "'Thiruvanmiyur',"    # Start stop id
-        "'Chennai Egmore',"     # Finish stop id
-        "0,"     # Maximum changeovers allowed. 0 => Unlimited
-        "0"      # Route Type as defined in GTFS
+        "vertex_id,"
+        "cost"
+    " FROM non_scheduled_route("
+        "2,"
+        "3"
     " )")
     self.assertEqual(self.cur.fetchall(), [
-        # stop_id, route id
-        ('Thiruvanmiyur', 'MSB-VLCY'),
-        ('Chennai Fort', 'MSB-TBM'),
-        ('Chennai Egmore', None)
+        (2, 2400),
+        (4, 2700),
+        (3, 0)
+    ])
+    self.cur.execute("SELECT "
+        "vertex_id,"
+        "cost"
+    " FROM non_scheduled_route("
+        "1,"
+        "6"
+    " )")
+    self.assertEqual(self.cur.fetchall(), [
+        (1, 4500),
+        (6, 0)
     ])
 
-  def test_sm_public_transit_scheduled_route(self):
+  def no_test_sm_public_transit_scheduled_route(self):
     self.cur.execute("SELECT "
         "stop_id,"
         "route_id,"

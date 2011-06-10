@@ -48,6 +48,7 @@ def setUpDB(with_transit=False):
   cur.execute(read_sql('core/sql/routing_topology.sql'))
   if with_transit:
     cur.execute(read_sql('extra/transit/sql/routing_transit.sql'))
+    cur.execute(read_sql('extra/transit/sql/nonscheduled.sql'))
   cur.connection.close()
   print "Finished setting up Test database."
 
