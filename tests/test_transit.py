@@ -8,7 +8,7 @@ from datetime import datetime
 class TestTransit(unittest.TestCase):
   def setUp(self):
     self.cur = connectToDB()
-    loadTable(self.cur, "gtfs/gtfs_primitives", with_data = False)
+    self.cur.execute("CREATE SCHEMA gtfs")
     loadTable(self.cur, "gtfs/agency")
     loadTable(self.cur, "gtfs/stops")
     loadTable(self.cur, "gtfs/routes")
@@ -17,9 +17,10 @@ class TestTransit(unittest.TestCase):
     loadTable(self.cur, "gtfs/trips")
     loadTable(self.cur, "gtfs/stop_times")
     loadTable(self.cur, "gtfs/frequencies", with_data = False)
-    loadTable(self.cur, "nonsc/schema", with_data = False)
-    loadTable(self.cur, "nonsc/trip")
-    loadTable(self.cur, "nonsc/stoptime")
+    self.cur.execute("CREATE SCHEMA nonsc")
+    loadTable(self.cur, "nonsc/stops")
+    loadTable(self.cur, "nonsc/frequencies")
+    loadTable(self.cur, "nonsc/stop_times")
 
   def tearDown(self):
     self.cur.execute("DROP SCHEMA gtfs CASCADE")
@@ -28,27 +29,29 @@ class TestTransit(unittest.TestCase):
   def test_non_scheduled_route(self):
     self.cur.execute("SELECT update_stop_time_graph('nonsc')")
     self.cur.execute("SELECT "
-        "vertex_id,"
+        "changeover_id,"
         "cost"
     " FROM non_scheduled_route("
-        "2,"
-        "3"
+        "'nonsc',"
+        "'2',"
+        "'3'"
     " )")
     self.assertEqual(self.cur.fetchall(), [
-        (2, 2400),
-        (4, 2700),
-        (3, 0)
+        ('2', 2400),
+        ('4', 2700),
+        ('3', 0)
     ])
     self.cur.execute("SELECT "
-        "vertex_id,"
+        "changeover_id,"
         "cost"
     " FROM non_scheduled_route("
-        "1,"
-        "6"
+        "'nonsc',"
+        "'1',"
+        "'6'"
     " )")
     self.assertEqual(self.cur.fetchall(), [
-        (1, 4500),
-        (6, 0)
+        ('1', 4500),
+        ('6', 0)
     ])
 
   def no_test_sm_public_transit_scheduled_route(self):
