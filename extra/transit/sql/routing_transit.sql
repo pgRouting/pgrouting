@@ -4,17 +4,46 @@ CREATE DOMAIN wgs84_lon AS double precision CHECK(VALUE >= -90 AND VALUE <= 90);
 
 CREATE DOMAIN gtfstime AS text CHECK(VALUE ~ '^[0-9]?[0-9]:[0-5][0-9]:[0-5][0-9]$');
 
-CREATE FUNCTION gtfstime_to_secs(arg0 gtfstime) RETURNS INTEGER AS
+CREATE FUNCTION gtfstime_to_secs(hms gtfstime) RETURNS INTEGER AS
 $$
 DECLARE
 h INTEGER;
 m INTEGER;
 s INTEGER;
 BEGIN
-h := split_part(arg0, ':', 1)::INTEGER;
-m := split_part(arg0, ':', 2)::INTEGER;
-s := split_part(arg0, ':', 3)::INTEGER;
+h = split_part(hms, ':', 1)::INTEGER;
+m = split_part(hms, ':', 2)::INTEGER;
+s = split_part(hms, ':', 3)::INTEGER;
 RETURN 3600 * h + 60 * m + s;
+END
+$$
+LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+
+CREATE FUNCTION secs_to_gtfstime(secs integer) RETURNS gtfstime AS
+$$
+DECLARE
+h INTEGER;
+m INTEGER;
+s INTEGER;
+hms TEXT;
+BEGIN
+h = secs / 3600;
+m = (secs - h * 3600) / 60;
+s = secs - h * 3600 - m * 60;
+hms = '';
+if h < 10 then
+    hms = hms || '0';
+end if;
+hms = hms || h || ':';
+if m < 10 then
+    hms = hms ||'0';
+end if;
+hms = hms || m || ':';
+if s < 10 then
+    hms = hms || '0';
+end if;
+hms = hms || s;
+RETURN hms;
 END
 $$
 LANGUAGE 'plpgsql' IMMUTABLE STRICT;

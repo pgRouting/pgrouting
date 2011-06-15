@@ -24,7 +24,14 @@ class TestTransit(unittest.TestCase):
 
   def tearDown(self):
     self.cur.execute("DROP SCHEMA gtfs CASCADE")
+    self.cur.execute("DROP SCHEMA nonsc CASCADE")
     self.cur.connection.close()
+
+  def test_gtfstime(self):
+    self.cur.execute("SELECT gtfstime_to_secs('01:02:03')")
+    self.assertEqual(self.cur.fetchall(), [(3723,)])
+    self.cur.execute("SELECT secs_to_gtfstime('3719')")
+    self.assertEqual(self.cur.fetchall(), [('01:01:59',)])
 
   def test_non_scheduled_route(self):
     self.cur.execute("SELECT update_stop_time_graph('nonsc')")
