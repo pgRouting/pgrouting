@@ -63,7 +63,7 @@ END LOOP;
 END
 $$ LANGUAGE 'plpgsql';
 
-CREATE OR REPLACE FUNCTION non_scheduled_route(gtfs_schema TEXT, source INTEGER, target INTEGER)
+CREATE OR REPLACE FUNCTION non_scheduled_route(gtfs_schema TEXT, source TEXT, target TEXT)
 RETURNS SETOF nonsc_path_result
 AS
 $$
@@ -77,8 +77,8 @@ RETURN QUERY EXECUTE
             target::int4,
             (waiting_time + travel_time)::float8 AS cost
           FROM ' || gtfs_schema || '.stop_time_graph'',
-        ''' || source || ''',
-        ''' || target || ''',
+        (select stop_id_int4 from ' || gtfs_schema || '.stop_id_map where stop_id_text = ''' || source || '''),
+        (select stop_id_int4 from ' || gtfs_schema || '.stop_id_map where stop_id_text = ''' || target || '''),
         true,
         false
      ) JOIN ' || gtfs_schema || '.stop_id_map ON vertex_id = stop_id_int4';
