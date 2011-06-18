@@ -1,0 +1,3 @@
+INSTALL(FILES routing_tdsp.sql DESTINATION ${SQL_INSTALL_PATH})
+
+
