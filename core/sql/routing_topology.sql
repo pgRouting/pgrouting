@@ -84,7 +84,7 @@ BEGIN
     FOR _r IN EXECUTE 'SELECT ' || quote_ident(gid_cname) || ' AS id,'
 	    || ' StartPoint('|| quote_ident(geo_cname) ||') AS source,'
             || ' EndPoint('|| quote_ident(geo_cname) ||') as target'
-	    || ' FROM ' || quote_ident(geom_table) 
+	    || ' FROM ' || quote_ident(geom_table) || ' WHERE ' || quote_ident(geo_cname) || ' IS NOT NULL '
     LOOP
         
         source_id := point_to_id(setsrid(_r.source, srid), tolerance);
