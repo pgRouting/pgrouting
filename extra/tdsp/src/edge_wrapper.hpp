@@ -1,20 +1,14 @@
 #include <vector>
+#include <postgres.h>
+#include <tdsp.h>
 
-#define DEBUG 0
+#define DEBUG_CONSOLE 0
 
 using namespace std;
 
 //-------------------------------------------------------------------------
 //A Edge structure, mainly to map edge_id with source and target
 
-typedef struct edge_columns_str
-{
-    int id;
-    int source;
-    int target;
-    double cost;
-    double reverse_cost;
-} edge_columns_t;
 
 class edge_wrapper
 {

@@ -1,1 +1,1 @@
-SUBDIRS(tsp driving_distance)
+SUBDIRS(tsp driving_distance tdsp)

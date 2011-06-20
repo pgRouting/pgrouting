@@ -1,21 +1,21 @@
 #include <vector>
-
-#define DEBUG 0
+#include <tdsp.h>
+#define DEBUG_CONSOLE 0
 
 using namespace std;
 
 //-------------------------------------------------------------------------
 //Weight Map Data Structure
 
-
+/*
 typedef struct weight_map_element
 {
 		int edge_id;
-		double start_time;
-		double travel_time;
+		float8 start_time;
+		float8 travel_time;
 } 
 weight_map_element_t;
-
+*/
 class weight_map_t
 {
 	
@@ -23,7 +23,7 @@ class weight_map_t
 		
 	public:
 	void insert(weight_map_element_t element);
-	double get_travel_time(int edge_id, double start_time);
+	float8 get_travel_time(int edge_id, float8 start_time);
 
 };
 
@@ -32,9 +32,9 @@ void weight_map_t::insert(weight_map_element_t element)
 	weight_map_set.push_back(element);
 }
 
-double weight_map_t::get_travel_time(int edge_id, double start_time)
+float8 weight_map_t::get_travel_time(int edge_id, float8 start_time)
 {
-	#if DEBUG
+	#if DEBUG_CONSOLE
 	cout<<endl<<"Query for travel-time for edge "<<edge_id<<endl;//" and start-time: "<<start_time;
 	#endif
 	
@@ -51,7 +51,7 @@ double weight_map_t::get_travel_time(int edge_id, double start_time)
 			{
 				if(it->edge_id == edge_id && it->start_time <= start_time && it_next->start_time >start_time)
 				{
-					#if DEBUG
+					#if DEBUG_CONSOLE
 					cout<<"Edge ID passed: "<<edge_id<<endl;
 					cout<<"Arrival Time: "<<start_time<<endl;
 					cout<<"it->edge_id: "<<it->edge_id<<endl;
@@ -63,7 +63,7 @@ double weight_map_t::get_travel_time(int edge_id, double start_time)
 			}	
 			else if(it->edge_id == edge_id && it->start_time <= start_time)
 			{
-				#if DEBUG
+				#if DEBUG_CONSOLE
 				cout << 2 << endl;
 				cout<<"Edge ID passed: "<<edge_id<<endl;
 					cout<<"Arrival Time: "<<start_time<<endl;
@@ -78,7 +78,7 @@ double weight_map_t::get_travel_time(int edge_id, double start_time)
 		{
 			if(it->edge_id == edge_id && it->start_time <= start_time )
 			{
-				#if DEBUG
+				#if DEBUG_CONSOLE
 					cout << 3 << endl;
 					cout<<"Edge ID passed: "<<edge_id<<endl;
 					cout<<"Arrival Time: "<<start_time<<endl;

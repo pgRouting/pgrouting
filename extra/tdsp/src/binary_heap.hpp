@@ -1,8 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include <tdsp.h>
 
-#define DEBUG 0
+#define DEBUG_CONSOLE 0
 
 using namespace std;
 
@@ -12,7 +13,7 @@ using namespace std;
 struct Vertex
 {
 	int vertex_id;
-	double reach_time;
+	float8 reach_time;
 };
 
 
@@ -27,14 +28,15 @@ struct Vertex
 
 class binary_heap
 {
+	public:
 	vector<Vertex> heap;
 	
 	void heapify(int index);
 	
-	public:
+	
 	
 	void insert(Vertex v);
-	double decrease_key(int index, double delta);
+	float8 decrease_key(int index, float8 delta);
 	Vertex delete_min();
 	bool is_empty()
 	{
@@ -44,7 +46,15 @@ class binary_heap
 			return true;
 	}
 	
-	#if DEBUG
+	int parent(int i)
+	{
+		if(i%2 == 0)
+			return ((i/2) - 1);
+		else 
+			return ((i-1)/2);
+	}
+	
+	#if DEBUG_CONSOLE
 	void print_heap()
 	{
 		cout<<endl;
@@ -68,9 +78,10 @@ void binary_heap::heapify(int index)
 					Vertex temp = heap[i];
 					heap[i] = heap[2*i+2];
 					heap[2*i+2] = temp;
-					
+					i = 2*i+2;
 				}
-				i = 2*i+2;
+				else
+				return;
 			}
 			else
 			{
@@ -79,9 +90,10 @@ void binary_heap::heapify(int index)
 					Vertex temp = heap[i];
 					heap[i] = heap[2*i+1];
 					heap[2*i+1] = temp;
-					
+					i = 2*i+1;
 				}
-				i = 2*i+1;
+				else
+				return;
 			}
 		}
 		else
@@ -91,9 +103,11 @@ void binary_heap::heapify(int index)
 				Vertex temp = heap[i];
 				heap[i] = heap[2*i+1];
 				heap[2*i+1] = temp;
-				
+				i = 2*i+1;
 			}
-			i = 2*i+1;
+			else
+			return;
+			
 		}
 
 	}
@@ -101,19 +115,22 @@ void binary_heap::heapify(int index)
 
 void binary_heap::insert(Vertex v)
 {
-	#if DEBUG
+	#if DEBUG_CONSOLE
 	cout<<endl<<"Inserting "<<v.vertex_id<<" into heap, with reach time: "<<v.reach_time;
 	#endif
 	
 	heap.push_back(v);
 	
-	for(int i = heap.size() - 1 ; i > 0 ; i/=2)
+	for(int i = heap.size() - 1 ; i > 0 ;)
 	{
-		if(heap[i].reach_time < heap[i/2].reach_time)
+		int p = parent(i);
+		
+		if(heap[i].reach_time < heap[p].reach_time)
 		{
 			Vertex temp = heap[i];
-			heap[i] = heap[i/2];
-			heap[i/2] = temp;
+			heap[i] = heap[p];
+			heap[p] = temp;
+			i = p;
 		}
 		else
 			break;
@@ -129,9 +146,9 @@ void binary_heap::insert(Vertex v)
  * TODO: Any alternate implementation, so that O(log n) bound is achieved?
  * 
  */
-double binary_heap::decrease_key(int vertex_id, double delta)
+float8 binary_heap::decrease_key(int vertex_id, float8 delta)
 {
-	#if DEBUG
+	#if DEBUG_CONSOLE
 	cout<<endl<<"Decreasing key of "<<vertex_id<<" by "<<delta;
 	#endif
 	
@@ -141,22 +158,24 @@ double binary_heap::decrease_key(int vertex_id, double delta)
 		if(heap[index].vertex_id == vertex_id)
 			break;
 	
-	if(index > heap.size())  //Vertex not found
+	if(index == heap.size())  //Vertex not found
 		return -1; 
 	
-	int new_key = heap[index].reach_time - delta;
+	float8 new_key = heap[index].reach_time - delta;
 	if( new_key >= 0)
 		heap[index].reach_time = new_key;
-	else 
-		return -1;       //Decrease not possible, will go negative
+	//else                  //This case will never be called anyways
+		//return -1;       //Decrease not possible, will go negative
 		
-	for(int i = index ; i > 0 ; i/=2)
+	for(int i = index ; i > 0 ; )
 	{
-		if(heap[i].reach_time < heap[i/2].reach_time)
+		int p = parent(i);
+		if(heap[i].reach_time < heap[p].reach_time)
 		{
 			Vertex temp = heap[i];
-			heap[i] = heap[i/2];
-			heap[i/2] = temp;
+			heap[i] = heap[p];
+			heap[p] = temp;
+			i = p;
 		}
 		else
 			break;
@@ -168,7 +187,7 @@ double binary_heap::decrease_key(int vertex_id, double delta)
 
 Vertex binary_heap::delete_min()
 {
-	#if DEBUG
+	#if DEBUG_CONSOLE
 	cout<<endl<<"Deleting min element "<<heap[0].vertex_id;
 	#endif
 	

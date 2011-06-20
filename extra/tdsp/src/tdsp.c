@@ -4,14 +4,12 @@
 #include "catalog/pg_type.h"
 
 #include "fmgr.h"
-#include "edge_wrapper.h"
-
-#include "dijkstra.h"
+#include "tdsp.h"
 
 Datum shortest_path(PG_FUNCTION_ARGS);
 
-#undef DEBUG
-//#define DEBUG 1
+//#undef DEBUG
+#define DEBUG 1
 
 #ifdef DEBUG
 #define DBG(format, arg...)                     \
@@ -26,6 +24,8 @@ Datum shortest_path(PG_FUNCTION_ARGS);
 #ifdef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif
+
+
 
 static char *
 text2char(text *in)
@@ -54,12 +54,13 @@ finish(int code, int ret)
  * and get the time dependent edge costs.
  * 
  */  
-static int fetch_weight_map(weight_map_element_t *weight_map_elements,int *weight_map_element_count)
+ /*
+static int fetch_weight_map(weight_map_element_t *weight_map_elements,int * weight_map_element_count)
 {
 		//Dummy value for now.
 		return -1;
 }
-			  
+	*/		  
 			  
 /*
  * This function fetches the edge columns from the SPITupleTable.
@@ -273,10 +274,10 @@ static int compute_tdsp(char* sql, int start_vertex,
     if(edges[z].target>v_max_id)
       v_max_id=edges[z].target;      
 								        
-    DBG("%i <-> %i", v_min_id, v_max_id);
+    //DBG("%i <-> %i", v_min_id, v_max_id);
 							
   }
-
+	
   //::::::::::::::::::::::::::::::::::::  
   //:: reducing vertex id (renumbering)
   //::::::::::::::::::::::::::::::::::::
@@ -290,9 +291,12 @@ static int compute_tdsp(char* sql, int start_vertex,
 
     edges[z].source-=v_min_id;
     edges[z].target-=v_min_id;
-    DBG("%i - %i", edges[z].source, edges[z].target);      
+    edges[z].cost = edges[z].cost;
+    //DBG("edgeID: %i SRc:%i - %i, cost: %f", edges[z].id,edges[z].source, edges[z].target,edges[z].cost);      
+    
   }
-
+	
+  DBG("Min vertex id: %i , Max vid: %i",v_min_id,v_max_id);
   DBG("Total %i tuples", total_tuples);
 
   if(s_count == 0)
@@ -307,7 +311,7 @@ static int compute_tdsp(char* sql, int start_vertex,
     return -1;
   }
   
-  DBG("Calling boost_dijkstra\n");
+  DBG("Calling tdsp_wrapper\n");
         
   start_vertex -= v_min_id;
   end_vertex   -= v_min_id;
@@ -316,7 +320,7 @@ static int compute_tdsp(char* sql, int start_vertex,
   //TODO - Add logic to fetch weight map
   weight_map_element_t *weight_map_elements;
   int weight_map_element_count = 0;
-  fetch_weight_map(weight_map_elements , weight_map_element_count); 
+  //fetch_weight_map(weight_map_elements , weight_map_element_count); 
   
   
   ret = tdsp_wrapper(edges, total_tuples, 
@@ -325,6 +329,9 @@ static int compute_tdsp(char* sql, int start_vertex,
 						start_vertex, end_vertex,
                        directed, has_reverse_cost,
                        path, path_count, &err_msg);
+
+  DBG("Message received from inside:");
+  DBG("%s",err_msg);
 
   DBG("SIZE %i\n",*path_count);
 
@@ -354,29 +361,31 @@ static int compute_tdsp(char* sql, int start_vertex,
 }
 
 
-PG_FUNCTION_INFO_V1(shortest_path);
+PG_FUNCTION_INFO_V1(time_dependent_shortest_path);
 Datum
 time_dependent_shortest_path(PG_FUNCTION_ARGS)
 {
+	
   FuncCallContext     *funcctx;
   int                  call_cntr;
   int                  max_calls;
   TupleDesc            tuple_desc;
   path_element_t      *path;
 
-  /* stuff done only on the first call of the function */
+  // stuff done only on the first call of the function 
   if (SRF_IS_FIRSTCALL())
     {
       MemoryContext   oldcontext;
       int path_count = 0;
-      int ret;
+      int ret = -1;
 
-      /* create a function context for cross-call persistence */
+      // create a function context for cross-call persistence
       funcctx = SRF_FIRSTCALL_INIT();
 
-      /* switch to memory context appropriate for multiple function calls */
+      // switch to memory context appropriate for multiple function calls
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
+	DBG("Calling compute_tdsp");
 
       ret = compute_tdsp(text2char(PG_GETARG_TEXT_P(0)),
                                   PG_GETARG_INT32(1),
@@ -384,20 +393,23 @@ time_dependent_shortest_path(PG_FUNCTION_ARGS)
                                   PG_GETARG_BOOL(3),
                                   PG_GETARG_BOOL(4), &path, &path_count);
 #ifdef DEBUG
+	double total_cost = 0;
       DBG("Ret is %i", ret);
       if (ret >= 0) 
         {
           int i;
           for (i = 0; i < path_count; i++) 
             {
-              DBG("Step %i vertex_id  %i ", i, path[i].vertex_id);
-              DBG("        edge_id    %i ", path[i].edge_id);
-              DBG("        cost       %f ", path[i].cost);
+         //     DBG("Step %i vertex_id  %i ", i, path[i].vertex_id);
+           //   DBG("        edge_id    %i ", path[i].edge_id);
+             // DBG("        cost       %f ", path[i].cost);
+              total_cost+=path[i].cost;
             }
         }
+        DBG("Total cost is: %f",total_cost);
 #endif
 
-      /* total number of tuples to be returned */
+      // total number of tuples to be returned 
       funcctx->max_calls = path_count;
       funcctx->user_fctx = path;
 
@@ -407,7 +419,7 @@ time_dependent_shortest_path(PG_FUNCTION_ARGS)
       MemoryContextSwitchTo(oldcontext);
     }
 
-  /* stuff done on every call of the function */
+  // stuff done on every call of the function 
   funcctx = SRF_PERCALL_SETUP();
 
   call_cntr = funcctx->call_cntr;
@@ -415,28 +427,13 @@ time_dependent_shortest_path(PG_FUNCTION_ARGS)
   tuple_desc = funcctx->tuple_desc;
   path = (path_element_t*) funcctx->user_fctx;
 
-  if (call_cntr < max_calls)    /* do when there is more left to send */
+  if (call_cntr < max_calls)    // do when there is more left to send 
     {
       HeapTuple    tuple;
       Datum        result;
       Datum *values;
       char* nulls;
 
-      /* This will work for some compilers. If it crashes with segfault, try to change the following block with this one    
- 
-      values = palloc(4 * sizeof(Datum));
-      nulls = palloc(4 * sizeof(char));
-  
-      values[0] = call_cntr;
-      nulls[0] = ' ';
-      values[1] = Int32GetDatum(path[call_cntr].vertex_id);
-      nulls[1] = ' ';
-      values[2] = Int32GetDatum(path[call_cntr].edge_id);
-      nulls[2] = ' ';
-      values[3] = Float8GetDatum(path[call_cntr].cost);
-      nulls[3] = ' ';
-      */
-    
       values = palloc(3 * sizeof(Datum));
       nulls = palloc(3 * sizeof(char));
 
@@ -449,16 +446,16 @@ time_dependent_shortest_path(PG_FUNCTION_ARGS)
 		      
       tuple = heap_formtuple(tuple_desc, values, nulls);
 
-      /* make the tuple into a datum */
+      // make the tuple into a datum 
       result = HeapTupleGetDatum(tuple);
 
-      /* clean up (this is not really necessary) */
+      // clean up (this is not really necessary) 
       pfree(values);
       pfree(nulls);
 
       SRF_RETURN_NEXT(funcctx, result);
     }
-  else    /* do when there is no more left */
+  else    // do when there is no more left 
     {
       SRF_RETURN_DONE(funcctx);
     }
