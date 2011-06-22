@@ -37,22 +37,6 @@ scheduled_route(PG_FUNCTION_ARGS)
               &path_count
           );
 
-    #ifdef DEBUG
-        DBG("Ret is %i", ret);
-        if (ret >= 0) {
-          int i;
-          for (i = 0; i < path_count; i++) {
-            DBG("Step %i stop_id  %s ", i, text2char(path[i].stop_id));
-            if(path[i].route_id == NULL)
-            {
-                DBG("       route_id    <NULL> ");
-                continue;
-            }
-            DBG("        route_id    %s ", text2char(path[i].route_id));
-          }
-        }
-    #endif
-
     /* total number of tuples to be returned */
     funcctx->max_calls = path_count;
     funcctx->user_fctx = path;
