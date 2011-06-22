@@ -5,6 +5,9 @@
 #include "fmgr.h"
 #include "funcapi.h"
 #include "executor/spi.h"
+#include "utils/timestamp.h"
+
+#include "utility.h"
 
 #define TUPLIMIT 1000
 
@@ -29,7 +32,7 @@ PG_MODULE_MAGIC;
 typedef struct
 {
     text *stop_id;
-    text *route_id;
+    text *trip_id;
 }gtfs_path_element_t;
 
 static void fetch_path(HeapTuple *tuple, TupleDesc *tupdesc, gtfs_path_element_t *path_element);
