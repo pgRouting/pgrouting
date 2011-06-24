@@ -16,6 +16,8 @@ SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 include (MacroLibrary)
 include (TargetDistclean)
 
+ENABLE_TESTING()
+
 macro_optional_find_package(PostgreSQL)
 IF(NOT POSTGRESQL_FOUND)
   MESSAGE(FATAL ERROR " Please check your PostgreSQL installation.") 
@@ -113,6 +115,5 @@ IF(WITH_DD)
   ADD_SUBDIRECTORY(extra/driving_distance)
 ENDIF(WITH_DD)
 
-
-
+ADD_SUBDIRECTORY(tests)
 
