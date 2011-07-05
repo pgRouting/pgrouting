@@ -71,3 +71,8 @@ BEGIN
 	RETURN 1;
 END;
 $$ language plpgsql;
+
+
+
+update time_dep_costs set travel_time = 100000 where edge_id in (select gid from ways where class_id = 106) and start_time = 19; 
+update time_dep_costs set travel_time = 100000 where edge_id in (select gid from ways where class_id = 106) and start_time = 9; 

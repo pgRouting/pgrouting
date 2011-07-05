@@ -44,6 +44,15 @@ typedef struct weight_map_element
 } 
 weight_map_element_t;
 
+typedef struct weight_map_columns_str
+{
+		int edge_id;
+		int start_time;
+		int travel_time;
+} 
+weight_map_columns_t;
+
+
 typedef struct path_element 
 {
     int vertex_id;

@@ -40,6 +40,7 @@ text2char(text *in)
 static int
 finish(int code, int ret)
 {
+  DBG("In finish, trying to disconnect from spi %d",ret);
   code = SPI_finish();
   if (code  != SPI_OK_FINISH )
   {
@@ -49,18 +50,6 @@ finish(int code, int ret)
   return ret;
 }
 	
-/* This is a dummy function for now, which will be coded later.
- * Basically it should query the table storing time dependent edge weights
- * and get the time dependent edge costs.
- * 
- */  
- /*
-static int fetch_weight_map(weight_map_element_t *weight_map_elements,int * weight_map_element_count)
-{
-		//Dummy value for now.
-		return -1;
-}
-	*/		  
 			  
 /*
  * This function fetches the edge columns from the SPITupleTable.
@@ -165,9 +154,206 @@ fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
 }
 
 
+
+/*
+ * This function fetches the weight map columns from the SPITupleTable.
+ * 
+ * 
+ */ 
+static int
+fetch_weight_map_columns(SPITupleTable *tuptable, weight_map_columns_t *weight_map_columns)
+{
+	
+  weight_map_columns->edge_id = SPI_fnumber(SPI_tuptable->tupdesc, "edge_id");
+  weight_map_columns->start_time = SPI_fnumber(SPI_tuptable->tupdesc, "start_time");
+  weight_map_columns->travel_time = SPI_fnumber(SPI_tuptable->tupdesc, "travel_time");
+  
+  if (weight_map_columns->edge_id == SPI_ERROR_NOATTRIBUTE ||
+      weight_map_columns->start_time == SPI_ERROR_NOATTRIBUTE ||
+      weight_map_columns->travel_time == SPI_ERROR_NOATTRIBUTE) 
+    {
+      elog(ERROR, "Error, query must return columns "
+           "'edge_id', 'start_time', 'travel_time'");
+      return -1;
+    }
+
+  if (
+	  //TODO start_time is now integer, should be float in database
+      //SPI_gettypeid(SPI_tuptable->tupdesc, weight_map_columns->start_time) != FLOAT8OID ||
+      SPI_gettypeid(SPI_tuptable->tupdesc, weight_map_columns->travel_time) != FLOAT8OID) 
+    {
+      elog(ERROR, "Error, columns 'start_time', 'travel_time' must be of type float8");
+      return -1;
+    }
+
+	
+	
+  DBG("columns: edge_id %i start_time %i travel_time %i", 
+      weight_map_columns->edge_id, weight_map_columns->start_time, 
+      weight_map_columns->travel_time);
+
+      
+  return 0;
+}
+
+/*
+ * To fetch a weight map element from Tuple.
+ * 
+ */
+ 
+static void
+fetch_weight_map_element(HeapTuple *tuple, TupleDesc *tupdesc, 
+           weight_map_columns_t *weight_map_columns, weight_map_element_t *target_wme)
+{
+  Datum binval;
+  bool isnull;
+  //DBG("initializing wme");
+  binval = SPI_getbinval(*tuple, *tupdesc, weight_map_columns->edge_id, &isnull);
+  if (isnull)
+  {
+	  DBG("id isnull");
+    elog(ERROR, "id contains a null value");
+  }
+  target_wme->edge_id = DatumGetInt32(binval);
+  //DBG("edge_id %d",target_wme->edge_id);
+
+  binval = SPI_getbinval(*tuple, *tupdesc, weight_map_columns->start_time, &isnull);
+  //TODO make this float later when start_time is float
+  if (isnull)
+    elog(ERROR, "start_time contains a null value");
+  target_wme->start_time = DatumGetInt32(binval);
+	//DBG("start_time %d",target_wme->start_time);
+
+  binval = SPI_getbinval(*tuple, *tupdesc, weight_map_columns->travel_time, &isnull);
+  if (isnull)
+    elog(ERROR, "travel_time contains a null value");
+  target_wme->travel_time = DatumGetFloat8(binval);
+  //DBG("travel_time %lf",target_wme->travel_time);
+
+}
+
+
+static 
+int get_weight_map_elements(char* sql,weight_map_element_t **weight_map_elements, int *weight_map_element_count)
+{
+  int SPIcode;
+  void *SPIplan;
+  Portal SPIportal;
+  bool moredata = TRUE;
+  int ntuples;
+  //weight_map_element_t *weight_map_elements = NULL;
+  int total_tuples = 0;
+  *weight_map_element_count = total_tuples;
+  weight_map_columns_t weight_map_columns = {edge_id: -1, start_time: -1, travel_time: -1};
+  
+  char *err_msg;
+  int ret = -1;
+  register int z;
+
+  DBG("start get weight map elements\n");
+  DBG("Query is: %s",sql);
+        
+  //SPIcode = SPI_connect();
+  /*if (SPIcode  != SPI_OK_CONNECT)
+    {
+      elog(ERROR, "time_dep_sql: couldn't open a connection to SPI");
+      return -1;
+    }
+*/
+  SPIplan = SPI_prepare(sql, 0, NULL);
+  if (SPIplan  == NULL)
+    {
+      //elog(ERROR, "shortest_path: couldn't create query plan via SPI");
+      DBG("wme: couldn't create query plan via SPI");
+      return -1;
+    }
+	DBG("wme: SPI_Prepare worked");
+  if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) 
+    {
+      elog(ERROR, "shortest_path: SPI_cursor_open('%s') returns NULL", sql);
+      return -1;
+    }
+	DBG("wme: SPI_cursor_open worked");
+  while (moredata == TRUE)
+    {
+      SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
+
+      if (weight_map_columns.edge_id == -1) 
+      {
+          if (fetch_weight_map_columns(SPI_tuptable, &weight_map_columns) == -1)
+			return finish(SPIcode, ret);
+			DBG("Fetched columns ");
+      }
+
+      ntuples = SPI_processed;
+      total_tuples += ntuples;
+      *weight_map_element_count = total_tuples;
+//      DBG("Total tuples: %d, now trying to allocate memory",total_tuples);
+      
+      
+      if (!(*weight_map_elements))
+      {
+	//	  DBG("came in palloc");
+        *weight_map_elements = palloc(total_tuples * sizeof(weight_map_element_t));
+	  }
+      else
+      {
+		//  DBG("came in repalloc");
+        *weight_map_elements = repalloc(*weight_map_elements, total_tuples * sizeof(weight_map_element_t));
+	  }
+
+      if (*weight_map_elements == NULL) 
+        {
+          elog(ERROR, "Out of memory");
+	    return finish(SPIcode, ret);	  
+        }
+
+     int t;
+	/*for(t = 0 ; t < total_tuples; t++)
+      {
+		  (*weight_map_elements)[t].travel_time = 20;
+		  DBG("%f ",(*weight_map_elements)[t].travel_time);
+	  }*/
+      
+
+	//DBG("Allocated memory for %d tuples",total_tuples);
+
+      if (ntuples > 0) 
+        {
+          int t;
+          SPITupleTable *tuptable = SPI_tuptable;
+          TupleDesc tupdesc = SPI_tuptable->tupdesc;
+                
+          for (t = 0; t < ntuples; t++) 
+            {
+              HeapTuple tuple = tuptable->vals[t];
+              //DBG("Trying to fetch %i tuple",t);
+              fetch_weight_map_element(&tuple, &tupdesc, &weight_map_columns, 
+                         &((*weight_map_elements)[total_tuples - ntuples + t]));
+              //DBG("Fetched WME. edge_id %d, start_time %f, travel_time %f",(*weight_map_elements)[total_tuples - ntuples + t].edge_id,(*weight_map_elements)[total_tuples - ntuples + t].start_time,
+              //(*weight_map_elements)[total_tuples - ntuples + t].travel_time);
+            }
+          SPI_freetuptable(tuptable);
+        } 
+      else 
+        {
+          moredata = FALSE;
+        }
+    }
+	
+	DBG("Quitting get_weight_map_elements");
+	//ret = 20;
+	//finish(SPIcode, ret);
+}
+
+
+
+
+
 static int compute_tdsp(char* sql, int start_vertex, 
                                  int end_vertex, bool directed, 
-                                 bool has_reverse_cost, 
+                                 bool has_reverse_cost, char* time_dep_sql,
+                                 int query_start_time,
                                  path_element_t **path, int *path_count) 
 {
 
@@ -316,13 +502,30 @@ static int compute_tdsp(char* sql, int start_vertex,
   start_vertex -= v_min_id;
   end_vertex   -= v_min_id;
   
-  
+  ret = 10;
+  //finish(SPIcode, ret);
   //TODO - Add logic to fetch weight map
-  weight_map_element_t *weight_map_elements;
+  weight_map_element_t *weight_map_elements = NULL;
   int weight_map_element_count = 0;
-  //fetch_weight_map(weight_map_elements , weight_map_element_count); 
+  get_weight_map_elements(time_dep_sql, &weight_map_elements , &weight_map_element_count); 
   
+  int i;
+  /*for(i = 0 ; i < weight_map_element_count; i++)
+	DBG("%d, %f",weight_map_elements[i].edge_id,weight_map_elements[i].travel_time);
   
+  for(i = 0 ; i < total_tuples; i++)
+	DBG("%d, %f",edges[i].id,edges[i].cost);
+  DBG("Fetched %d edges elements successfully!",total_tuples);*/
+  
+  DBG("WME count: %i",weight_map_element_count);
+  
+  for(i = 0 ; i < weight_map_element_count; i++)
+  {
+	weight_map_elements[i].start_time -= query_start_time;
+	weight_map_elements[i].start_time *= 60;
+	weight_map_elements[i].travel_time *= 1000;
+  }
+	
   ret = tdsp_wrapper(edges, total_tuples, 
 						weight_map_elements,
 						weight_map_element_count,
@@ -361,6 +564,7 @@ static int compute_tdsp(char* sql, int start_vertex,
 }
 
 
+
 PG_FUNCTION_INFO_V1(time_dependent_shortest_path);
 Datum
 time_dependent_shortest_path(PG_FUNCTION_ARGS)
@@ -391,7 +595,10 @@ time_dependent_shortest_path(PG_FUNCTION_ARGS)
                                   PG_GETARG_INT32(1),
                                   PG_GETARG_INT32(2),
                                   PG_GETARG_BOOL(3),
-                                  PG_GETARG_BOOL(4), &path, &path_count);
+                                  PG_GETARG_BOOL(4), 
+                         text2char(PG_GETARG_TEXT_P(5)), 
+                                  PG_GETARG_INT32(6),
+                                  &path, &path_count);
 #ifdef DEBUG
 	double total_cost = 0;
       DBG("Ret is %i", ret);
@@ -460,4 +667,3 @@ time_dependent_shortest_path(PG_FUNCTION_ARGS)
       SRF_RETURN_DONE(funcctx);
     }
 }
-

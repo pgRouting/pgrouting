@@ -271,10 +271,9 @@ int tdsp_wrapper(
 {
 	//cout << "edge count: "<<edge_count << endl;
 	
+	string msg;
 	
-	
-	
-	
+	msg.append(boost::lexical_cast<std::string>(weight_map_element_count));
 	set<int> vertices;
 	
 	//Form edge wrapper
@@ -282,20 +281,10 @@ int tdsp_wrapper(
 	for(int i = 0 ; i < edge_count ; i++)
 	{
 		e_w.insert(edges[i]);
-		if(edges[i].source < 0 || edges[i].source > edge_count)
-		{
-			//cout << i << "\t";
-			//cout << "OOps Source: " << edges[i].source << "\t";
-		}
-		if(edges[i].target < 0 || edges[i].target > edge_count)
-		{
-			//cout << i << "\t";
-			//cout << "OOps target"<< edges[i].target << "\t";
-		}
 		vertices.insert(edges[i].source);
 		vertices.insert(edges[i].target);
 	}
-
+	
 	//cout << endl << vertices.size() << endl;
 	const int num_nodes = vertices.size();
 	graph_t g(num_nodes);
@@ -309,10 +298,13 @@ int tdsp_wrapper(
 	//Form weight map
 	
 	weight_map_t w_m;
+	
 	if(weight_map_element_count > 0)
 	{
 		for(int i = 0 ; i < weight_map_element_count ; i++)
+		{
 			w_m.insert(weight_map_elements[i]);
+		}
 	}
 	else   //Use static data
 	{
@@ -337,16 +329,16 @@ int tdsp_wrapper(
 
 	vertex_desc_t s = start_vertex;
 	
-	string msg;
+	
 	
 	//cout << "calling tdsp" << endl;
 	//Call the time dependent shortest path function
-	msg.append(tdsp(g,s,d_m,p_m,w_m,e_w));
-	
+	//msg.append(tdsp(g,s,d_m,p_m,w_m,e_w));
+	tdsp(g,s,d_m,p_m,w_m,e_w);
 	//cout << "Tdsp call successfull!" << endl;
 	
-	int num = ((directed && has_reverse_cost ? 2 : 1) * edge_count) + 100;
-	std::vector<vertex_desc_t> predecessors(num);
+	/*int num = ((directed && has_reverse_cost ? 2 : 1) * edge_count) + 100;
+	&std::vector<vertex_desc_t> predecessors(num);
 	boost_dijkstra(edges,edge_count,start_vertex,end_vertex,directed,has_reverse_cost, path,path_count,predecessors);
 	
 	#if DEBUG_CONSOLE
@@ -363,7 +355,7 @@ int tdsp_wrapper(
 		cout << i << ": " << p_m[i] << "\t\t";
 	cout<<endl;
 	#endif
-	
+	*/
 	
 	//Now extract the path
 	vector<int> path_vect;
@@ -393,11 +385,11 @@ int tdsp_wrapper(
     }
 
 	
-	int count = 0;
+	/*int count = 0;
 	for(int i  = 0 ; i < d_m.size() ; i++)
 	{
 		if(predecessors[i] != p_m[i])
-		{
+		{*/
 		/*msg.append(boost::lexical_cast<std::string>(i));
 		msg.append(": ");
 		msg.append(boost::lexical_cast<std::string>(p_m[i]));
@@ -406,16 +398,16 @@ int tdsp_wrapper(
 		//msg.append(" , ");
 		//msg.append(boost::lexical_cast<std::string>(d_m[i]));
 		msg.append("\t");*/
-		count++;
+		/*count++;
 		}
 		
 	}
 	msg.append("\nNumber of mismatches is: ");
 	msg.append(boost::lexical_cast<std::string>(count));
-	*err_msg = (char*)msg.c_str();
+	*/
 
 	//cout << "Path vector size: " << path_vect.size() << endl;
-    *path = (path_element_t *) malloc(sizeof(path_element_t) * (path_vect.size() + 1));
+     *path = (path_element_t *) malloc(sizeof(path_element_t) * (path_vect.size() + 1));
     *path_count = path_vect.size();
 	
 	double time = 0;
@@ -439,6 +431,8 @@ int tdsp_wrapper(
 		time+= (*path)[j].cost;
 		
 	}
+	
+	*err_msg = (char*)msg.c_str();
 	return 1;
 }
 
