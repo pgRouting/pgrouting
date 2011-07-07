@@ -522,8 +522,8 @@ static int compute_tdsp(char* sql, int start_vertex,
   for(i = 0 ; i < weight_map_element_count; i++)
   {
 	weight_map_elements[i].start_time -= query_start_time;
-	weight_map_elements[i].start_time *= 60;
-	weight_map_elements[i].travel_time *= 1000;
+	//weight_map_elements[i].start_time *= 60;
+	//weight_map_elements[i].travel_time *= 1000;
   }
 	
   ret = tdsp_wrapper(edges, total_tuples, 
