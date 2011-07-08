@@ -1,13 +1,13 @@
-#ifndef _TRANSIT_H
-#define _TRANSIT_H
+#pragma once
 
-#include "postgres.h"
-#include "fmgr.h"
-#include "funcapi.h"
-#include "executor/spi.h"
-#include "utils/timestamp.h"
+#include <postgres.h>
+#include <fmgr.h>
+#include <funcapi.h>
+#include <executor/spi.h>
+#include <utils/timestamp.h>
 
 #include "utility.h"
+#include "transit_data.h"
 
 #define TUPLIMIT 1000
 
@@ -29,12 +29,10 @@ extern "C"
 PG_MODULE_MAGIC;
 #endif
 
-typedef struct
-{
-    text *stop_id;
-    text *trip_id;
-}gtfs_path_element_t;
+typedef struct {
+  text *stop_id;
+  text *trip_id;
+} gtfs_path_element_t;
 
-static void fetch_path(HeapTuple *tuple, TupleDesc *tupdesc, gtfs_path_element_t *path_element);
-
-#endif
+void fetch_path(HeapTuple *tuple, TupleDesc *tupdesc,
+    gtfs_path_element_t *path_element);
