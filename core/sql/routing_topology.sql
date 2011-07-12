@@ -79,7 +79,7 @@ BEGIN
 			
     FOR _r IN EXECUTE 'SELECT ' || quote_ident(gid_cname) || ' AS id,'
 	    || ' ST_StartPoint('|| quote_ident(geo_cname) ||') AS source,'
-            || ' ST_EndtPoint('|| quote_ident(geo_cname) ||') as target'
+            || ' ST_EndPoint('|| quote_ident(geo_cname) ||') as target'
 	    || ' FROM ' || quote_ident(geom_table) || ' WHERE ' || quote_ident(geo_cname) || ' IS NOT NULL '
     LOOP
         
