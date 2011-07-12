@@ -1,5 +1,6 @@
-#include "transit_graph.hpp"
+#include "scheduled_route.h"
 
+#include "transit_graph.hpp"
 #include "nonconst_astar_search.hpp"
 
 void populate_next_links(vertex_descriptor u, transit_graph_t &g) {
@@ -7,7 +8,8 @@ void populate_next_links(vertex_descriptor u, transit_graph_t &g) {
   edge_descriptor e;
   trip *t;
 
-  int count = fetch_next_links(u, g[u].arrival_time, &t);
+  int count = fetch_next_links(g[graph_bundle].schema, u, g[u].arrival_time,
+      &t);
   if (count == 0) {
     cout << u << " is an absorbing node at time " << g[u].arrival_time << endl;
   }
@@ -21,18 +23,24 @@ void populate_next_links(vertex_descriptor u, transit_graph_t &g) {
 struct found_goal {
 };
 
-class shortest_time_heuristic: public astar_heuristic<transit_graph_t, double> {
+class shortest_time_heuristic: public astar_heuristic<transit_graph_t, int> {
 public:
-  shortest_time_heuristic(transit_graph_t &g, vertex_descriptor goal) :
-      m_g(g), m_goal(goal) {
-
+  shortest_time_heuristic(transit_graph_t &g, vertex_descriptor goal) {
+    m_st = (unsigned int *) malloc(sizeof(double) * num_vertices(g));
+    for(unsigned int i = 0; i < num_vertices(g); i++)
+    {
+      m_st[i] = 0;
+    }
+    fetch_shortest_time(g[graph_bundle].schema, goal, m_st);
   }
-  double operator ()(vertex_descriptor u) {
-    return m_g[u].heuristic_cost;
+  int operator ()(vertex_descriptor u) {
+    return m_st[u];
+  }
+  virtual ~shortest_time_heuristic() {
+    free(m_st);
   }
 private:
-  transit_graph_t m_g;
-  vertex_descriptor m_goal;
+  time_seconds_t *m_st;
 };
 
 class transit_graph_visitor: public default_astar_visitor {
@@ -56,8 +64,20 @@ private:
   vertex_descriptor m_goal;
 };
 
-void scheduled_route(transit_graph_t &g, vertex_descriptor source,
-    vertex_descriptor destination, time_t query_time) {
+int compute_scheduled_route(char *gtfs_schema, int source, int destination,
+    time_t query_time, gtfs_path_element_t **path, int *path_count) {
+  const unsigned int NUM_NODES = get_max_stop_id(gtfs_schema);
+  const time_t MAX_TIME = numeric_limits<time_t>::max();
+
+  transit_graph_t g(NUM_NODES);
+  g[graph_bundle].schema = gtfs_schema;
+
+  for (unsigned int i = 0; i < NUM_NODES; i++) {
+    g[vertex(i, g)].arrival_time = MAX_TIME;
+  }
+
+  g[vertex(source, g)].arrival_time = query_time;
+
   try {
     astar_search(
         g,
@@ -95,33 +115,9 @@ void scheduled_route(transit_graph_t &g, vertex_descriptor source,
         ci++) {
       cout << *ci << endl;
     }
-    return;
+    return 0;
   }
   cout << "Goal not found" << endl;
-}
 
-#ifdef WANT_MAIN
-int main() {
-  const unsigned int NUM_NODES = 4;
-  const unsigned int START = 1;
-  const unsigned int GOAL = 3;
-  const time_t START_TIME = 0;
-  const time_t MAX_TIME = numeric_limits<time_t>::max();
-
-  transit_graph_t g(NUM_NODES);
-
-  for (unsigned int i = 0; i < NUM_NODES; i++) {
-    g[vertex(i, g)].arrival_time = MAX_TIME;
-  }
-
-  g[vertex(START, g)].arrival_time = 0;
-
-  // Following heuristic cost is valid for GOAL = 3;
-  g[vertex(1, g)].heuristic_cost = 25;
-  g[vertex(2, g)].heuristic_cost = 15;
-  g[vertex(3, g)].heuristic_cost = 0;
-
-  scheduled_route(g, START, GOAL, START_TIME);
   return 0;
 }
-#endif

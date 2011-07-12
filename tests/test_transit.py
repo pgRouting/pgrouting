@@ -21,7 +21,6 @@ class TestTransit(unittest.TestCase):
     loadTable(self.cur, "nonsc/stops")
     loadTable(self.cur, "nonsc/frequencies")
     loadTable(self.cur, "nonsc/stop_times")
-    loadTable(self.cur, "forged_output")
 
   def tearDown(self):
     self.cur.execute("DROP SCHEMA gtfs CASCADE")
@@ -63,20 +62,21 @@ class TestTransit(unittest.TestCase):
     ])
 
   def test_scheduled_route(self):
+    self.cur.execute("SELECT prepare_scheduled('gtfs')")
     self.cur.execute("SELECT "
         "stop_id,"
         "trip_id"
-    " from scheduled_route("
+    " FROM scheduled_route("
         "'gtfs',"
-        "'Thiruvanmiyur',"
-        "'Chennai Egmore',"
-        "'3-Jun-2011 08:00:00 IST'::timestamp with time zone"
+        "(select stop_id_int4 from gtfs.stop_id_map where stop_id_text = 'Thiruvanmiyur'),"
+        "(select stop_id_int4 from gtfs.stop_id_map where stop_id_text = 'Chennai Egmore'),"
+        "extract(epoch from timestamp with time zone '3-Jun-2011 08:00:00 Asia/Kolkata')::integer"
     " )")
     self.assertEqual(self.cur.fetchall(), [
         # stop_id, trip_id
-        ('Thiruvanmiyur', 'VLB24WDS'),
-        ('Chennai Fort', 'T27WDS'),
-        ('Chennai Egmore', None)
+        (1, 'VLB24WDS'),
+        (2, 'T27WDS'),
+        (3, None)
     ])
 
 
