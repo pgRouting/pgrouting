@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS gtfs.trips;
 
 CREATE TABLE gtfs.trips
 (
-		route_id	text NOT NULL REFERENCES gtfs.routes,
+		route_id	text NOT NULL REFERENCES gtfs.routes ON DELETE CASCADE,
 		service_id	text NOT NULL REFERENCES gtfs.calendar,
 		trip_id	text NOT NULL PRIMARY KEY,
 		trip_headsign	text NULL,
