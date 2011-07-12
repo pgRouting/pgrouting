@@ -71,11 +71,7 @@ BEGIN
 
     EXECUTE 'CREATE TABLE vertices_tmp (id serial)';
 
---    FOR _r IN EXECUTE 'SELECT srid FROM geometry_columns WHERE f_table_name='''|| quote_ident(geom_table)||''';' LOOP
---	srid := _r.srid;
---    END LOOP;
-
-    srid := Find_SRID('public',quote_ident(geom_table),quote_ident(geo_cname));
+    srid := Find_SRID('public', quote_ident(geom_table), quote_ident(geo_cname));
 
 
     EXECUTE 'SELECT addGeometryColumn(''vertices_tmp'', ''the_geom'', '||srid||', ''POINT'', 2)';
