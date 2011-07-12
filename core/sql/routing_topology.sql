@@ -36,7 +36,7 @@ BEGIN
 
     ELSE
 
-        INSERT INTO vertices_tmp(the_geom) VALUES (SetSRID(p,_srid)); _id:=lastval();
+        INSERT INTO vertices_tmp(the_geom) VALUES (p); _id:=lastval();
 
     END IF;
 
