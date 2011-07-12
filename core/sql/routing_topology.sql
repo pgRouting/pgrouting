@@ -20,15 +20,15 @@ DECLARE
 
 BEGIN
 
-    _srid := Find_SRID('public','vertices_tmp','the_geom');
+    _srid := Find_SRID('public', 'vertices_tmp', 'the_geom');
 
     SELECT
 
-        Distance(the_geom,GeometryFromText( AsText(p), _srid)) AS d, id, the_geom
+        ST_Distance(the_geom, p) AS d, id, the_geom
 
     INTO _r FROM vertices_tmp WHERE
 
-        the_geom && Expand(GeometryFromText(AsText(p), _srid), tolerance ) AND Distance(the_geom, GeometryFromText(AsText(p), _srid)) < tolerance
+        ST_DWithin(the_geom, p, tolerance)
 
     ORDER BY d LIMIT 1; IF FOUND THEN
 
@@ -82,13 +82,13 @@ BEGIN
     CREATE INDEX vertices_tmp_idx ON vertices_tmp USING GIST (the_geom);
 			
     FOR _r IN EXECUTE 'SELECT ' || quote_ident(gid_cname) || ' AS id,'
-	    || ' StartPoint('|| quote_ident(geo_cname) ||') AS source,'
-            || ' EndPoint('|| quote_ident(geo_cname) ||') as target'
+	    || ' ST_StartPoint('|| quote_ident(geo_cname) ||') AS source,'
+            || ' ST_EndtPoint('|| quote_ident(geo_cname) ||') as target'
 	    || ' FROM ' || quote_ident(geom_table) || ' WHERE ' || quote_ident(geo_cname) || ' IS NOT NULL '
     LOOP
         
-        source_id := point_to_id(setsrid(_r.source, srid), tolerance);
-	target_id := point_to_id(setsrid(_r.target, srid), tolerance);
+        source_id := point_to_id(_r.source, tolerance);
+	target_id := point_to_id(_r.target, tolerance);
 								
 	EXECUTE 'update ' || quote_ident(geom_table) || 
 		' SET source = ' || source_id || 
