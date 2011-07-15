@@ -35,38 +35,30 @@ int get_max_stop_id(const char *schema) {
   return max_stop_id;
 }
 
-int fetch_next_links(const char *schema, int u, time_t arrival_time,
+int fetch_next_links(const char *schema, int u, int arrival_time,
     trip **trips_ref) {
   int i;
   trip *trips;
   int total_processed;
   const char *MAX_WAIT_TIME = "1 hour";
+  const int MAX_LINKS_RETURNED = 1000;
   char sql[1024];
-  DBG("Inside fetch_next_links with u = %d and arrival_time = %d", u, (int)arrival_time);
+  bool isNull;
+  HeapTuple heaptuple;
+  TupleDesc tupdesc;
+  DBG("Inside fetch_next_links with u = %d and arrival_time = %d",
+      u, (int)arrival_time);
   if (SPI_connect() != SPI_OK_CONNECT)
   {
     elog(ERROR, "Cannot connect to SPI");
   }
   sprintf(
       sql,
-      "SELECT st1.trip_id, dest.stop_id_int4,"
-          "gtfstime_to_secs(st2.arrival_time) - gtfstime_to_secs(st1.arrival_time)"
-          " FROM %1$s.stop_times st1, %1$s.stop_times st2, %1$s.stop_id_map src, %1$s.stop_id_map dest,"
-          " %1$s.trips t, %1$s.routes r, %1$s.agency a"
-          " WHERE src.stop_id_int4 = %2$d"
-          " AND st1.stop_id = src.stop_id_text"
-          " AND st2.trip_id = st1.trip_id"
-          " AND st2.stop_sequence > st1.stop_sequence"
-          " AND dest.stop_id_text = st2.stop_id"
-          " AND t.trip_id = st1.trip_id"
-          " AND t.route_id = r.route_id"
-          " AND r.agency_id = a.agency_id"
-          " AND check_service('%1$s', t.service_id, (timestamp with time zone 'epoch'"
-          " + %3$d * '1 second'::interval - st1.arrival_time::interval"
-          " + '%4$s'::interval) at time zone a.agency_timezone, '%4$s'::interval)",
+      "SELECT trip_id, destination_stop_id FROM fetch_next_links('%s', %d, %d, '%s')",
       schema, u, arrival_time, MAX_WAIT_TIME);
 
-  int ret = SPI_execute(sql, true, 1);
+  int ret = SPI_execute(sql, true, MAX_LINKS_RETURNED);
+  DBG("fetch_next_links query returned return value = %d", ret);
   if (ret != SPI_OK_SELECT)
   {
     elog(ERROR, "Select statement to fetch next links failed.");
@@ -77,16 +69,19 @@ int fetch_next_links(const char *schema, int u, time_t arrival_time,
     return 0;
   }
   total_processed = SPI_processed;
-  *trips_ref = trips = (trip *) palloc(sizeof(trip) * total_processed);
+  DBG("fetch_next_links query returned %d records", total_processed);
+  *trips_ref = (trip *) palloc(sizeof(trip) * total_processed);
+  trips = *trips_ref;
   for (i = 0; i < SPI_processed; i++) {
-
+    DBG(
+        "trip-id: %s",
+        text2char(DatumGetTextP(SPI_getbinval(heaptuple, tupdesc, 1, &isNull))));
+    heaptuple = SPI_tuptable->vals[i];
     trips[i].src = u;
-    trips[i].trip_id = SPI_getvalue(SPI_tuptable->vals[i],
-        SPI_tuptable->tupdesc, 1);
-    trips[i].dest =
-        DatumGetInt32(SPI_getbinval(SPI_tuptable->vals[i], SPI_tuptable->tupdesc, 2, NULL));
+    trips[i].trip_id = SPI_getvalue(heaptuple, tupdesc, 1);
+    trips[i].dest = DatumGetInt32(SPI_getbinval(heaptuple, tupdesc, 2, &isNull));
     trips[i].link_cost =
-        DatumGetInt32(SPI_getbinval(SPI_tuptable->vals[i], SPI_tuptable->tupdesc, 3, NULL));
+        DatumGetInt32(SPI_getbinval(heaptuple, tupdesc, 3, &isNull));
     DBG("trips[%d].src = %d", i, trips[i].src);
     DBG("trips[%d].trip_id = %s", i, trips[i].trip_id);
     DBG("trips[%d].dest = %d", i, trips[i].dest);
@@ -144,4 +139,14 @@ int fetch_shortest_time(const char *schema, int goal,
   SPI_finish();
   DBG("fetch_shortest_time returns %d records", total_processed);
   return total_processed;
+}
+
+void dbg(const char *fmt, ...)
+{
+  char buff[1024];
+  va_list arg;
+  va_start(arg, fmt);
+  vsprintf(buff, fmt, arg);
+  elog(NOTICE, "%s", buff);
+  va_end(arg);
 }

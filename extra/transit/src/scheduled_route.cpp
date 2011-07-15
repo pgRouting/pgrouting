@@ -3,11 +3,14 @@
 #include "transit_graph.hpp"
 #include "nonconst_astar_search.hpp"
 
+#include <stdio.h>
+
 void populate_next_links(vertex_descriptor u, transit_graph_t &g) {
   bool added;
   edge_descriptor e;
   trip *t;
 
+  dbg("arrival time in populate_next_links = %d", g[u].arrival_time);
   int count = fetch_next_links(g[graph_bundle].schema, u, g[u].arrival_time,
       &t);
   if (count == 0) {
@@ -27,8 +30,7 @@ class shortest_time_heuristic: public astar_heuristic<transit_graph_t, int> {
 public:
   shortest_time_heuristic(transit_graph_t &g, vertex_descriptor goal) {
     m_st = (unsigned int *) malloc(sizeof(double) * num_vertices(g));
-    for(unsigned int i = 0; i < num_vertices(g); i++)
-    {
+    for (unsigned int i = 0; i < num_vertices(g); i++) {
       m_st[i] = 0;
     }
     fetch_shortest_time(g[graph_bundle].schema, goal, m_st);
@@ -67,26 +69,39 @@ private:
 int compute_scheduled_route(char *gtfs_schema, int source, int destination,
     time_t query_time, gtfs_path_element_t **path, int *path_count) {
   const unsigned int NUM_NODES = get_max_stop_id(gtfs_schema);
-  const time_t MAX_TIME = numeric_limits<time_t>::max();
+  //const time_t MAX_TIME = numeric_limits<time_t>::max();
+  const int MAX_TIME = numeric_limits<int>::max();
+
+  dbg("sizeof c++ int = %d\n", sizeof(int));
+  dbg("query_time inside compute_scheduled_route = %d", query_time);
 
   transit_graph_t g(NUM_NODES);
   g[graph_bundle].schema = gtfs_schema;
 
   for (unsigned int i = 0; i < NUM_NODES; i++) {
-    g[vertex(i, g)].arrival_time = MAX_TIME;
+    stop_t si = g[vertex(i, g)];
+    si.arrival_time = MAX_TIME;
   }
 
   g[vertex(source, g)].arrival_time = query_time;
 
   try {
-    astar_search(
+    astar_search_no_init(
         g,
         source,
         shortest_time_heuristic(g, destination),
-        visitor(transit_graph_visitor(destination)).weight_map(
-            get(&link_t::transit_cost, g)).distance_map(
-            get(&stop_t::arrival_time, g)).predecessor_map(
-            get(&stop_t::predecessor, g)));
+        transit_graph_visitor(destination), // visitor
+        get(&stop_t::predecessor, g), // predecessor
+        get(&stop_t::cost, g), // cost
+        get(&stop_t::arrival_time, g), // distance
+        get(&link_t::transit_cost, g), // weight
+        get(&stop_t::color, g), // color
+        get(vertex_index, g), // index
+        std::less<time_t>(), // compare
+        closed_plus<time_t>(), // combine
+        numeric_limits<time_t>::max(), // inf
+        0 // zero
+        );
   } catch (found_goal &) {
     cout << "Found goal" << endl;
 
@@ -115,9 +130,10 @@ int compute_scheduled_route(char *gtfs_schema, int source, int destination,
         ci++) {
       cout << *ci << endl;
     }
+    *path_count = 0;
     return 0;
   }
   cout << "Goal not found" << endl;
-
+  *path_count = 0;
   return 0;
 }

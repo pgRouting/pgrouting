@@ -9,8 +9,10 @@ using namespace std;
 using namespace boost;
 
 struct stop_t {
-  time_t arrival_time;
+  int arrival_time;
   unsigned int predecessor; //FIXME: Type should be vertex_descriptor
+  default_color_type color;
+  time_t cost;
 };
 
 struct link_t {

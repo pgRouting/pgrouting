@@ -25,7 +25,7 @@ Datum scheduled_route(PG_FUNCTION_ARGS) {
     MemoryContext oldcontext;
     int path_count = 0;
     int ret;
-    time_t query_time;
+    int query_time;
 
     /* create a function context for cross-call persistence */
     funcctx = SRF_FIRSTCALL_INIT();
@@ -35,6 +35,8 @@ Datum scheduled_route(PG_FUNCTION_ARGS) {
 
     DBG("Before calling compute_scheduled_route\n");
     query_time = PG_GETARG_INT32(3);
+    DBG("sizeof c int = %d", sizeof(int));
+    DBG("query_time = %d\n", query_time);
     ret = compute_scheduled_route(text2char(PG_GETARG_TEXT_P(0)), // gtfs schema
     PG_GETARG_INT32(1), // source stop id
         PG_GETARG_INT32(2), // destination stop id

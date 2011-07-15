@@ -150,6 +150,54 @@ END
 $$
 LANGUAGE 'plpgsql' IMMUTABLE STRICT;
 
+DROP TYPE IF EXISTS next_link CASCADE;
+CREATE TYPE next_link AS (trip_id TEXT, destination_stop_id INTEGER, cost INTEGER);
+
+CREATE OR REPLACE FUNCTION fetch_next_links(
+        gtfs_schema TEXT,
+        source_stop_id INTEGER,
+        arrival_time INTEGER,
+        max_wait_time INTERVAL
+    )
+    RETURNS SETOF next_link
+    AS
+    $$
+    DECLARE
+    r next_link;
+    BEGIN
+    for r in EXECUTE '
+      SELECT st1.trip_id, dest.stop_id_int4,
+        gtfstime_to_secs(st2.arrival_time) - gtfstime_to_secs(st1.arrival_time)
+      FROM ' ||
+        gtfs_schema || '.stop_times st1, ' ||
+        gtfs_schema || '.stop_times st2, ' ||
+        gtfs_schema || '.stop_id_map src, ' ||
+        gtfs_schema || '.stop_id_map dest, ' ||
+        gtfs_schema || '.trips t, ' ||
+        gtfs_schema || '.routes r, ' ||
+        gtfs_schema || '.agency a
+      WHERE src.stop_id_int4 = ' || source_stop_id ||
+      ' AND st1.stop_id = src.stop_id_text
+        AND st2.trip_id = st1.trip_id
+        AND st2.stop_sequence > st1.stop_sequence
+        AND dest.stop_id_text = st2.stop_id
+        AND t.trip_id = st1.trip_id
+        AND t.route_id = r.route_id
+        AND r.agency_id = a.agency_id
+        AND check_service(' || quote_literal(gtfs_schema) ||
+          ', t.service_id, (' || quote_literal(
+          timestamp with time zone 'epoch' +
+          arrival_time * '1 second'::interval +
+          max_wait_time) ||
+          '::timestamp with time zone - st1.arrival_time::interval) at time zone a.agency_timezone, ' ||
+          quote_literal(max_wait_time) || ')'
+    LOOP
+      RETURN next r;
+    END LOOP;
+    END
+    $$
+    LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+
 CREATE TYPE gtfs_path_result AS (stop_id integer, trip_id TEXT);
 
 CREATE TYPE nonsc_path_result AS (changeover_id TEXT, cost DOUBLE PRECISION);
@@ -166,4 +214,5 @@ CREATE OR REPLACE FUNCTION scheduled_route(
     )
     RETURNS SETOF gtfs_path_result
     AS '$libdir/libscheduled_route'
-    LANGUAGE 'C' IMMUTABLE;
+    LANGUAGE 'C';
+
