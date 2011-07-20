@@ -79,7 +79,7 @@ Datum scheduled_route(PG_FUNCTION_ARGS) {
       nulls[1] = 'n';
       values[1] = '\0';
     } else {
-      values[1] = PointerGetDatum(path[call_cntr].trip_id);
+      values[1] = PointerGetDatum(char2text(path[call_cntr].trip_id));
       nulls[1] = ' ';
     }
     tuple = heap_formtuple(tuple_desc, values, nulls);

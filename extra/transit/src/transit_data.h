@@ -18,6 +18,7 @@ typedef struct {
 
 int get_max_stop_id(const char *schema);
 int fetch_next_links(const char *schema, int u, int arrival_time, trip **t);
-int fetch_shortest_time(const char *schema, int goal, time_seconds_t *shortest_time);
+int fetch_shortest_time(const char *schema, int goal,
+    time_seconds_t *shortest_time);
 
 void dbg(const char *format, ...);

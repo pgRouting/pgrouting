@@ -54,7 +54,7 @@ int fetch_next_links(const char *schema, int u, int arrival_time,
   }
   sprintf(
       sql,
-      "SELECT trip_id, destination_stop_id FROM fetch_next_links('%s', %d, %d, '%s')",
+      "SELECT trip_id, destination_stop_id, cost FROM fetch_next_links('%s', %d, %d, '%s')",
       schema, u, arrival_time, MAX_WAIT_TIME);
 
   int ret = SPI_execute(sql, true, MAX_LINKS_RETURNED);
@@ -69,23 +69,22 @@ int fetch_next_links(const char *schema, int u, int arrival_time,
     return 0;
   }
   total_processed = SPI_processed;
-  DBG("fetch_next_links query returned %d records", total_processed);
-  *trips_ref = (trip *) palloc(sizeof(trip) * total_processed);
+  if (total_processed == 0) {
+    SPI_finish();
+    return total_processed;
+  }
+
+  *trips_ref = (trip *) malloc(sizeof(trip) * total_processed); // FIXME: Using palloc hangs indefinitely
   trips = *trips_ref;
-  for (i = 0; i < SPI_processed; i++) {
-    DBG(
-        "trip-id: %s",
-        text2char(DatumGetTextP(SPI_getbinval(heaptuple, tupdesc, 1, &isNull))));
+  tupdesc = SPI_tuptable->tupdesc;
+  for (i = 0; i < total_processed; i++) {
     heaptuple = SPI_tuptable->vals[i];
     trips[i].src = u;
-    trips[i].trip_id = SPI_getvalue(heaptuple, tupdesc, 1);
+    trips[i].trip_id = text2char(
+        DatumGetTextP(SPI_getbinval(heaptuple, tupdesc, 1, &isNull)));
     trips[i].dest = DatumGetInt32(SPI_getbinval(heaptuple, tupdesc, 2, &isNull));
     trips[i].link_cost =
         DatumGetInt32(SPI_getbinval(heaptuple, tupdesc, 3, &isNull));
-    DBG("trips[%d].src = %d", i, trips[i].src);
-    DBG("trips[%d].trip_id = %s", i, trips[i].trip_id);
-    DBG("trips[%d].dest = %d", i, trips[i].dest);
-    DBG("trips[%d].link_cost = %d", i, trips[i].link_cost);
   }
   SPI_finish();
   DBG("fetch_next_links returns %d links", total_processed);
@@ -96,7 +95,6 @@ int fetch_shortest_time(const char *schema, int goal,
     time_seconds_t *shortest_time) {
   char sql[255];
   int total_processed;
-  DBG("Inside fetch_shortest_time");
   if (SPI_connect() != SPI_OK_CONNECT)
   {
     elog(ERROR, "Cannot connect to SPI");

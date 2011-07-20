@@ -143,7 +143,7 @@ struct astar_bfs_visitor {
   }
 
   template<class Edge, class Graph>
-  void tree_edge(Edge e, const Graph& g) {
+  void tree_edge(Edge e, Graph& g) {
     m_decreased = relax(e, g, m_weight, m_predecessor, m_distance, m_combine,
         m_compare);
 
@@ -156,7 +156,7 @@ struct astar_bfs_visitor {
   }
 
   template<class Edge, class Graph>
-  void gray_target(Edge e, const Graph& g) {
+  void gray_target(Edge e, Graph& g) {
     m_decreased = relax(e, g, m_weight, m_predecessor, m_distance, m_combine,
         m_compare);
 
@@ -170,7 +170,7 @@ struct astar_bfs_visitor {
   }
 
   template<class Edge, class Graph>
-  void black_target(Edge e, const Graph& g) {
+  void black_target(Edge e, Graph& g) {
     m_decreased = relax(e, g, m_weight, m_predecessor, m_distance, m_combine,
         m_compare);
 

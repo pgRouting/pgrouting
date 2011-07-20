@@ -14,12 +14,15 @@ void populate_next_links(vertex_descriptor u, transit_graph_t &g) {
   int count = fetch_next_links(g[graph_bundle].schema, u, g[u].arrival_time,
       &t);
   if (count == 0) {
-    cout << u << " is an absorbing node at time " << g[u].arrival_time << endl;
-  }
-  for (int i = 0; i < count; i++) {
-    tie(e, added) = add_edge(vertex(t[i].src, g), vertex(t[i].dest, g), g);
-    g[e].trip_id = t[i].trip_id;
-    g[e].transit_cost = t[i].link_cost;
+    dbg("%d is an absorbing node at time %d", u, g[u].arrival_time);
+  } else {
+    for (int i = 0; i < count; i++) {
+      tie(e, added) = add_edge(t[i].src, t[i].dest, g);
+      g[e].trip_id = t[i].trip_id;
+      g[e].transit_cost = t[i].link_cost;
+    }
+    free(t);
+    dbg("Successfully populated next links of %d", u);
   }
 }
 
@@ -29,7 +32,7 @@ struct found_goal {
 class shortest_time_heuristic: public astar_heuristic<transit_graph_t, int> {
 public:
   shortest_time_heuristic(transit_graph_t &g, vertex_descriptor goal) {
-    m_st = (unsigned int *) malloc(sizeof(double) * num_vertices(g));
+    m_st = (unsigned int *) malloc(sizeof(double) * num_vertices(g)); //FIXME: Use palloc if possible
     for (unsigned int i = 0; i < num_vertices(g); i++) {
       m_st[i] = 0;
     }
@@ -39,7 +42,7 @@ public:
     return m_st[u];
   }
   virtual ~shortest_time_heuristic() {
-    free(m_st);
+    //free(m_st); //FIXME: Adding this line hangs the server(futex_wait_queue_me if it helps) indefinitely
   }
 private:
   time_seconds_t *m_st;
@@ -51,26 +54,32 @@ public:
       m_goal(goal) {
   }
   void examine_vertex(vertex_descriptor u, transit_graph_t &g) {
-    cout << "Examining vertex " << u << endl;
-    if (u == m_goal)
+    dbg("Examining vertex %d", u);
+    if (u == m_goal) {
       throw found_goal();
+    }
     populate_next_links(u, g);
   }
-  void edge_relaxed(edge_descriptor e, const transit_graph_t &g) {
-    cout << "Edge " << g[e].trip_id << " relaxed" << endl;
+  void edge_relaxed(edge_descriptor e, transit_graph_t &g) {
+    dbg("Edge %s relaxed", g[e].trip_id);
+    vertex_descriptor v = target(e, g);
+    g[v].predecessor_trip_id = g[e].trip_id;
   }
   void edge_not_relaxed(edge_descriptor e, const transit_graph_t &g) {
-    cout << "Edge " << g[e].trip_id << " not relaxed" << endl;
+    //dbg("Edge %s not relaxed", g[e].trip_id);
   }
 private:
   vertex_descriptor m_goal;
 };
 
 int compute_scheduled_route(char *gtfs_schema, int source, int destination,
-    time_t query_time, gtfs_path_element_t **path, int *path_count) {
+    time_t query_time, gtfs_path_element_t **path_ref, int *path_count) {
+  gtfs_path_element_t *path;
+  int i;
   const unsigned int NUM_NODES = get_max_stop_id(gtfs_schema);
   //const time_t MAX_TIME = numeric_limits<time_t>::max();
   const int MAX_TIME = numeric_limits<int>::max();
+  dbg("MAX_TIME = %d", MAX_TIME);
 
   dbg("sizeof c++ int = %d\n", sizeof(int));
   dbg("query_time inside compute_scheduled_route = %d", query_time);
@@ -79,17 +88,14 @@ int compute_scheduled_route(char *gtfs_schema, int source, int destination,
   g[graph_bundle].schema = gtfs_schema;
 
   for (unsigned int i = 0; i < NUM_NODES; i++) {
-    stop_t si = g[vertex(i, g)];
-    si.arrival_time = MAX_TIME;
+    g[vertex(i, g)].predecessor = vertex(i, g);
+    g[vertex(i, g)].arrival_time = MAX_TIME;
   }
 
   g[vertex(source, g)].arrival_time = query_time;
 
   try {
-    astar_search_no_init(
-        g,
-        source,
-        shortest_time_heuristic(g, destination),
+    astar_search_no_init(g, source, shortest_time_heuristic(g, destination),
         transit_graph_visitor(destination), // visitor
         get(&stop_t::predecessor, g), // predecessor
         get(&stop_t::cost, g), // cost
@@ -98,22 +104,12 @@ int compute_scheduled_route(char *gtfs_schema, int source, int destination,
         get(&stop_t::color, g), // color
         get(vertex_index, g), // index
         std::less<time_t>(), // compare
-        closed_plus<time_t>(), // combine
+        closed_plus<int>(), // combine
         numeric_limits<time_t>::max(), // inf
         0 // zero
         );
   } catch (found_goal &) {
-    cout << "Found goal" << endl;
-
-    cout << "Predecessor map:" << endl;
-    for (unsigned int i = 0; i < num_vertices(g); i++) {
-      cout << i << " : " << g[vertex(i, g)].predecessor << endl;
-    }
-
-    cout << "Distance map:" << endl;
-    for (unsigned int i = 0; i < num_vertices(g); i++) {
-      cout << i << " : " << g[vertex(i, g)].arrival_time << endl;
-    }
+    dbg("Found goal");
 
     vertex_descriptor v = destination;
     list<vertex_descriptor> changeovers;
@@ -125,15 +121,27 @@ int compute_scheduled_route(char *gtfs_schema, int source, int destination,
       changeovers.push_front(v);
     } while (g[v].predecessor != v);
 
-    cout << "Changeovers:" << endl;
+    dbg("Changeovers:");
     for (ci = changeovers.begin(), ci_end = changeovers.end(); ci != ci_end;
         ci++) {
-      cout << *ci << endl;
+      dbg("%d", *ci);
     }
-    *path_count = 0;
+    *path_count = changeovers.size();
+    *path_ref = (gtfs_path_element_t *) malloc(
+        sizeof(gtfs_path_element_t) * *path_count); // FIXME: Try using palloc
+    path = *path_ref;
+    ci = changeovers.begin();
+    path[0].stop_id = *ci;
+    ci++;
+    for (i = 1; i < *path_count; i++, ci++) {
+      vertex_descriptor v = *ci;
+      path[i - 1].trip_id = g[v].predecessor_trip_id;
+      path[i].stop_id = v;
+    }
+    path[i - 1].trip_id = NULL;
     return 0;
   }
-  cout << "Goal not found" << endl;
+  dbg("Goal not found");
   *path_count = 0;
   return 0;
 }

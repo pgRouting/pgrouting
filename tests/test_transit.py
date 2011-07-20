@@ -74,8 +74,8 @@ class TestTransit(unittest.TestCase):
     " )")
     self.assertEqual(self.cur.fetchall(), [
         # stop_id, trip_id
-        (1, 'VLB24WDS'),
-        (2, 'T27WDS'),
+        (40, 'VLB24WDS'),
+        (4, 'T27WDS'),
         (3, None)
     ])
 

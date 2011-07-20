@@ -11,6 +11,7 @@ using namespace boost;
 struct stop_t {
   int arrival_time;
   unsigned int predecessor; //FIXME: Type should be vertex_descriptor
+  char *predecessor_trip_id;
   default_color_type color;
   time_t cost;
 };
