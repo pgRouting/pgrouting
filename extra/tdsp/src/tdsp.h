@@ -30,8 +30,6 @@ typedef struct edge_columns_str
     int id;
     int source;
     int target;
-    //double cost;
-    //double reverse_cost;
     float8 cost;
     float8 reverse_cost;
 } edge_columns_t;
@@ -40,6 +38,7 @@ typedef struct weight_map_element
 {
 		int edge_id;
 		float8 start_time;
+		float8 end_time;
 		float8 travel_time;
 } 
 weight_map_element_t;
@@ -48,6 +47,7 @@ typedef struct weight_map_columns_str
 {
 		int edge_id;
 		int start_time;
+		int end_time;
 		int travel_time;
 } 
 weight_map_columns_t;

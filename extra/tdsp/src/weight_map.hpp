@@ -32,6 +32,7 @@ void weight_map_t::insert(weight_map_element_t element)
 	weight_map_set.push_back(element);
 }
 
+/*
 float8 weight_map_t::get_travel_time(int edge_id, float8 start_time)
 {
 	#if DEBUG_CONSOLE
@@ -90,6 +91,25 @@ float8 weight_map_t::get_travel_time(int edge_id, float8 start_time)
 			
 			}
 		}	
+	}	
+	return -1;
+	
+}
+*/
+
+
+float8 weight_map_t::get_travel_time(int edge_id, float8 start_time)
+{
+	#if DEBUG_CONSOLE
+	cout<<endl<<"Query for travel-time for edge "<<edge_id<<endl;//" and start-time: "<<start_time;
+	#endif
+	
+	vector<weight_map_element_t>::iterator it;
+	
+	for (it=weight_map_set.begin(); it!=weight_map_set.end(); it++)
+	{
+		if(it->edge_id == edge_id && it->start_time <= start_time && it->end_time > start_time)
+			return it->travel_time;
 	}	
 	return -1;
 	

@@ -166,11 +166,15 @@ fetch_weight_map_columns(SPITupleTable *tuptable, weight_map_columns_t *weight_m
 	
   weight_map_columns->edge_id = SPI_fnumber(SPI_tuptable->tupdesc, "edge_id");
   weight_map_columns->start_time = SPI_fnumber(SPI_tuptable->tupdesc, "start_time");
+    weight_map_columns->end_time = SPI_fnumber(SPI_tuptable->tupdesc, "end_time");
+
   weight_map_columns->travel_time = SPI_fnumber(SPI_tuptable->tupdesc, "travel_time");
+  
   
   if (weight_map_columns->edge_id == SPI_ERROR_NOATTRIBUTE ||
       weight_map_columns->start_time == SPI_ERROR_NOATTRIBUTE ||
-      weight_map_columns->travel_time == SPI_ERROR_NOATTRIBUTE) 
+      weight_map_columns->travel_time == SPI_ERROR_NOATTRIBUTE ||
+      weight_map_columns->end_time == SPI_ERROR_NOATTRIBUTE) 
     {
       elog(ERROR, "Error, query must return columns "
            "'edge_id', 'start_time', 'travel_time'");
@@ -188,9 +192,9 @@ fetch_weight_map_columns(SPITupleTable *tuptable, weight_map_columns_t *weight_m
 
 	
 	
-  DBG("columns: edge_id %i start_time %i travel_time %i", 
+  DBG("columns: edge_id %i start_time %i travel_time %i end_time %i", 
       weight_map_columns->edge_id, weight_map_columns->start_time, 
-      weight_map_columns->travel_time);
+      weight_map_columns->travel_time, weight_map_columns->end_time);
 
       
   return 0;
@@ -224,6 +228,16 @@ fetch_weight_map_element(HeapTuple *tuple, TupleDesc *tupdesc,
   target_wme->start_time = DatumGetInt32(binval);
 	//DBG("start_time %d",target_wme->start_time);
 
+  binval = SPI_getbinval(*tuple, *tupdesc, weight_map_columns->end_time, &isnull);
+  //TODO make this float later when end_time is float
+  if (isnull)
+    elog(ERROR, "start_time contains a null value");
+  target_wme->end_time = DatumGetInt32(binval);
+  if(target_wme->edge_id == 76)
+	DBG("end_time %f",target_wme->end_time);
+  //target_wme->end_time = 100.00;
+	
+
   binval = SPI_getbinval(*tuple, *tupdesc, weight_map_columns->travel_time, &isnull);
   if (isnull)
     elog(ERROR, "travel_time contains a null value");
@@ -244,7 +258,7 @@ int get_weight_map_elements(char* sql,weight_map_element_t **weight_map_elements
   //weight_map_element_t *weight_map_elements = NULL;
   int total_tuples = 0;
   *weight_map_element_count = total_tuples;
-  weight_map_columns_t weight_map_columns = {edge_id: -1, start_time: -1, travel_time: -1};
+  weight_map_columns_t weight_map_columns = {edge_id: -1, start_time: -1, end_time: -1, travel_time: -1};
   
   char *err_msg;
   int ret = -1;
@@ -330,8 +344,10 @@ int get_weight_map_elements(char* sql,weight_map_element_t **weight_map_elements
               //DBG("Trying to fetch %i tuple",t);
               fetch_weight_map_element(&tuple, &tupdesc, &weight_map_columns, 
                          &((*weight_map_elements)[total_tuples - ntuples + t]));
-              //DBG("Fetched WME. edge_id %d, start_time %f, travel_time %f",(*weight_map_elements)[total_tuples - ntuples + t].edge_id,(*weight_map_elements)[total_tuples - ntuples + t].start_time,
-              //(*weight_map_elements)[total_tuples - ntuples + t].travel_time);
+                         
+              if((*weight_map_elements)[total_tuples - ntuples + t].edge_id == 76)           
+              DBG("Fetched WME. edge_id %d, start_time %f, travel_time %f, end_time %f",(*weight_map_elements)[total_tuples - ntuples + t].edge_id,(*weight_map_elements)[total_tuples - ntuples + t].start_time,
+              (*weight_map_elements)[total_tuples - ntuples + t].travel_time,(*weight_map_elements)[total_tuples - ntuples + t].end_time);
             }
           SPI_freetuptable(tuptable);
         } 
@@ -522,6 +538,7 @@ static int compute_tdsp(char* sql, int start_vertex,
   for(i = 0 ; i < weight_map_element_count; i++)
   {
 	weight_map_elements[i].start_time -= query_start_time;
+	weight_map_elements[i].end_time -= query_start_time;
 	//weight_map_elements[i].start_time *= 60;
 	//weight_map_elements[i].travel_time *= 1000;
   }
