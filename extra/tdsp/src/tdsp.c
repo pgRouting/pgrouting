@@ -225,14 +225,14 @@ fetch_weight_map_element(HeapTuple *tuple, TupleDesc *tupdesc,
   //TODO make this float later when start_time is float
   if (isnull)
     elog(ERROR, "start_time contains a null value");
-  target_wme->start_time = DatumGetInt32(binval);
+  target_wme->start_time = DatumGetFloat8(binval);
 	//DBG("start_time %d",target_wme->start_time);
 
   binval = SPI_getbinval(*tuple, *tupdesc, weight_map_columns->end_time, &isnull);
   //TODO make this float later when end_time is float
   if (isnull)
     elog(ERROR, "start_time contains a null value");
-  target_wme->end_time = DatumGetInt32(binval);
+  target_wme->end_time = DatumGetFloat8(binval);
   if(target_wme->edge_id == 76)
 	DBG("end_time %f",target_wme->end_time);
   //target_wme->end_time = 100.00;
