@@ -1,4 +1,4 @@
-DROP FUNCTION IF EXISTS text(boolean);
+--DROP FUNCTION IF EXISTS text(boolean);
 DROP FUNCTION IF EXISTS add_vertices_geometry(geom_table varchar);
 DROP FUNCTION IF EXISTS update_cost_from_distance(geom_table varchar);
 DROP TYPE IF EXISTS geoms;
