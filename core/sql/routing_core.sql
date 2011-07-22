@@ -25,7 +25,7 @@ CREATE TYPE vertex_result AS (x float8, y float8);
 -- Core function for shortest_path computation
 -- See README for description
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION shortest_path(sql text, source_id integer, 
+CREATE OR REPLACE FUNCTION shortest_path(sql text, source_id integer,
         target_id integer, directed boolean, has_reverse_cost boolean)
         RETURNS SETOF path_result
         AS '$libdir/librouting'
@@ -36,21 +36,21 @@ CREATE OR REPLACE FUNCTION shortest_path(sql text, source_id integer,
 -- Simillar to shortest_path in usage but uses the A* algorithm
 -- instead of Dijkstra's.
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION shortest_path_astar(sql text, source_id integer, 
+CREATE OR REPLACE FUNCTION shortest_path_astar(sql text, source_id integer,
         target_id integer,directed boolean, has_reverse_cost boolean)
          RETURNS SETOF path_result
          AS '$libdir/librouting'
-         LANGUAGE 'C' IMMUTABLE STRICT; 
+         LANGUAGE 'C' IMMUTABLE STRICT;
 
 -----------------------------------------------------------------------
 -- Core function for shortest_path_astar computation
 -- Simillar to shortest_path in usage but uses the Shooting* algorithm
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION shortest_path_shooting_star(sql text, source_id integer, 
+CREATE OR REPLACE FUNCTION shortest_path_shooting_star(sql text, source_id integer,
         target_id integer,directed boolean, has_reverse_cost boolean)
          RETURNS SETOF path_result
          AS '$libdir/librouting'
-         LANGUAGE 'C' IMMUTABLE STRICT; 
+         LANGUAGE 'C' IMMUTABLE STRICT;
 
 -----------------------------------------------------------------------
 -- This function should not be used directly. Use create_graph_tables instead
@@ -58,8 +58,8 @@ CREATE OR REPLACE FUNCTION shortest_path_shooting_star(sql text, source_id integ
 -- Insert a vertex into the vertices table if not already there, and
 --  return the id of the newly inserted or already existing element
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION insert_vertex(vertices_table varchar, 
-       geom_id anyelement) 
+CREATE OR REPLACE FUNCTION insert_vertex(vertices_table varchar,
+       geom_id anyelement)
        RETURNS int AS
 $$
 DECLARE
@@ -67,17 +67,17 @@ DECLARE
         myrec record;
 BEGIN
         LOOP
-          FOR myrec IN EXECUTE 'SELECT id FROM ' || 
-                     quote_ident(vertices_table) || 
+          FOR myrec IN EXECUTE 'SELECT id FROM ' ||
+                     quote_ident(vertices_table) ||
                      ' WHERE geom_id = ' || quote_literal(geom_id)  LOOP
 
                         IF myrec.id IS NOT NULL THEN
                                 RETURN myrec.id;
                         END IF;
-          END LOOP; 
-          EXECUTE 'INSERT INTO ' || quote_ident(vertices_table) || 
+          END LOOP;
+          EXECUTE 'INSERT INTO ' || quote_ident(vertices_table) ||
                   ' (geom_id) VALUES (' || quote_literal(geom_id) || ')';
         END LOOP;
 END;
 $$
-LANGUAGE 'plpgsql' VOLATILE STRICT; 
+LANGUAGE 'plpgsql' VOLATILE STRICT;

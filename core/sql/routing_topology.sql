@@ -1,6 +1,6 @@
 -----------------------------------------------------------------------
 -- This function should not be used directly. Use assign_vertex_id instead
--- 
+--
 -- Inserts a point into a temporary vertices table, and return an id
 --  of a new point or an existing point. Tolerance is the minimal distance
 --  between existing points and the new point to create a new point.
@@ -9,13 +9,13 @@
 -- Author: Christian Gonzalez
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION point_to_id(p geometry, tolerance double precision)
-RETURNS BIGINT 
-AS 
-$$ 
+RETURNS BIGINT
+AS
+$$
 
 DECLARE
-    _r record; 
-    _id bigint; 
+    _r record;
+    _id bigint;
     _srid integer;
 
 BEGIN
@@ -42,7 +42,7 @@ BEGIN
 
     RETURN _id;
 
-END; $$ LANGUAGE 'plpgsql' VOLATILE STRICT; 
+END; $$ LANGUAGE 'plpgsql' VOLATILE STRICT;
 
 
 -----------------------------------------------------------------------
@@ -65,7 +65,7 @@ BEGIN
 
     BEGIN
     DROP TABLE vertices_tmp;
-    EXCEPTION 
+    EXCEPTION
     WHEN UNDEFINED_TABLE THEN
     END;
 
@@ -80,19 +80,19 @@ BEGIN
 
     EXECUTE 'SELECT addGeometryColumn(''vertices_tmp'', ''the_geom'', '||srid||', ''POINT'', 2)';
     CREATE INDEX vertices_tmp_idx ON vertices_tmp USING GIST (the_geom);
-			
+
     FOR _r IN EXECUTE 'SELECT ' || quote_ident(gid_cname) || ' AS id,'
 	    || ' StartPoint('|| quote_ident(geo_cname) ||') AS source,'
             || ' EndPoint('|| quote_ident(geo_cname) ||') as target'
 	    || ' FROM ' || quote_ident(geom_table) || ' WHERE ' || quote_ident(geo_cname) || ' IS NOT NULL '
     LOOP
-        
+
         source_id := point_to_id(setsrid(_r.source, srid), tolerance);
 	target_id := point_to_id(setsrid(_r.target, srid), tolerance);
-								
-	EXECUTE 'update ' || quote_ident(geom_table) || 
-		' SET source = ' || source_id || 
-		', target = ' || target_id || 
+
+	EXECUTE 'update ' || quote_ident(geom_table) ||
+		' SET source = ' || source_id ||
+		', target = ' || target_id ||
 		' WHERE ' || quote_ident(gid_cname) || ' =  ' || _r.id;
     END LOOP;
 
@@ -100,5 +100,5 @@ BEGIN
 
 END;
 $$
-LANGUAGE 'plpgsql' VOLATILE STRICT; 
-																		
+LANGUAGE 'plpgsql' VOLATILE STRICT;
+
