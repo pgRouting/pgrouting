@@ -50,6 +50,23 @@ END
 $$
 LANGUAGE 'plpgsql' IMMUTABLE STRICT;
 
+CREATE OR REPLACE FUNCTION get_midnight_secs(magic_time TIMESTAMP WITH TIME ZONE)
+RETURNS INTEGER
+AS
+$$
+DECLARE
+h INTEGER;
+m INTEGER;
+s INTEGER;
+BEGIN
+h = extract(hour from magic_time);
+m = extract(minute from magic_time);
+s = extract(second from magic_time)::integer;
+RETURN h * 3600 + m * 60 + s;
+END
+$$
+LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+
 CREATE OR REPLACE FUNCTION prepare_scheduled(gtfs_schema TEXT)
 RETURNS VOID
 AS
@@ -167,7 +184,11 @@ CREATE OR REPLACE FUNCTION fetch_next_links(
     BEGIN
     for r in EXECUTE '
       SELECT st1.trip_id, dest.stop_id_int4,
-        gtfstime_to_secs(st2.arrival_time) - gtfstime_to_secs(st1.arrival_time)
+        gtfstime_to_secs(st2.arrival_time) - gtfstime_to_secs(st1.arrival_time) + ' || get_midnight_secs(timestamp 'epoch' + max_wait_time) || ' - get_midnight_secs((' || quote_literal(
+          timestamp with time zone 'epoch' +
+          arrival_time * '1 second'::interval +
+          max_wait_time) ||
+          '::timestamp with time zone - st1.arrival_time::interval) at time zone a.agency_timezone)
       FROM ' ||
         gtfs_schema || '.stop_times st1, ' ||
         gtfs_schema || '.stop_times st2, ' ||
