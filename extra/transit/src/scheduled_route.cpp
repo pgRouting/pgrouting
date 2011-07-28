@@ -61,7 +61,7 @@ public:
     populate_next_links(u, g);
   }
   void edge_relaxed(edge_descriptor e, transit_graph_t &g) {
-    dbg("Edge %s relaxed", g[e].trip_id);
+    dbg("Edge %s(%d -> %d) relaxed", g[e].trip_id, source(e,g), target(e,g));
     vertex_descriptor v = target(e, g);
     g[v].predecessor_trip_id = g[e].trip_id;
   }
