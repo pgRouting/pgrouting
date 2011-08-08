@@ -59,7 +59,7 @@ CREATE OR REPLACE FUNCTION shortest_path_shooting_star(sql text, source_id integ
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION apsp_johnson(sql text)
          RETURNS SETOF apsp_edge
-         AS '$libdir/librouting_apsp'
+         AS '$libdir/librouting'
          LANGUAGE 'C' IMMUTABLE STRICT;
 
 -----------------------------------------------------------------------
