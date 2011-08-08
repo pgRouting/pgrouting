@@ -20,6 +20,7 @@
 
 CREATE TYPE path_result AS (vertex_id integer, edge_id integer, cost float8);
 CREATE TYPE vertex_result AS (x float8, y float8);
+CREATE TYPE apsp_edge AS (source_id integer, target_id integer, cost float8);
 
 -----------------------------------------------------------------------
 -- Core function for shortest_path computation
@@ -51,6 +52,15 @@ CREATE OR REPLACE FUNCTION shortest_path_shooting_star(sql text, source_id integ
          RETURNS SETOF path_result
          AS '$libdir/librouting'
          LANGUAGE 'C' IMMUTABLE STRICT; 
+
+-----------------------------------------------------------------------
+-- Core function for all pair shortest path computation
+-- using Johnson's algorithm(Sparse Graph)
+-----------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION apsp_johnson(sql text)
+         RETURNS SETOF apsp_edge
+         AS '$libdir/librouting_apsp'
+         LANGUAGE 'C' IMMUTABLE STRICT;
 
 -----------------------------------------------------------------------
 -- This function should not be used directly. Use create_graph_tables instead

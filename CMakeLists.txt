@@ -93,6 +93,12 @@ ENDIF(WIN32)
 SET(CMAKE_C_FLAGS   "-O2 -g -lgmp -frounding-math")
 SET(CMAKE_CXX_FLAGS "-O2 -g -lgmp -frounding-math")
 
+# FIXME: The following patch is required by apsp_johnson_boost_wrapper.cpp.
+# With -fdelete-null-pointer-checks optimization, the assignments
+# to Edge bundled properties doesn't occur.
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-delete-null-pointer-checks")
+
+
 # Recurse into the subdirectories.  This does not actually
 # cause another cmake executable to run.  The same process will walk through
 # the project's entire directory structure.
