@@ -234,6 +234,6 @@ CREATE OR REPLACE FUNCTION scheduled_route(
         query_time INTEGER 
     )
     RETURNS SETOF gtfs_path_result
-    AS '$libdir/libscheduled_route'
+    AS '$libdir/libtransit_routing'
     LANGUAGE 'C';
 
