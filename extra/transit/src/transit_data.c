@@ -101,7 +101,7 @@ int fetch_shortest_time(const char *schema, int goal,
   }
   sprintf(
       sql,
-      "select source, travel_time from %s.shortest_time_graph where target = %d",
+      "select source, travel_time from %s.shortest_time_closure where target = %d",
       schema, goal);
   int ret = SPI_execute(sql, true, 0);
   if (ret != SPI_OK_SELECT)

@@ -146,6 +146,17 @@ LOOP
   END LOOP;
 END LOOP;
 
+EXECUTE 'DROP TABLE IF EXISTS ' || gtfs_schema || '.shortest_time_closure';
+
+EXECUTE 'CREATE TABLE ' || gtfs_schema || '.shortest_time_closure(
+    id              SERIAL PRIMARY KEY,
+    source          INTEGER REFERENCES ' || gtfs_schema || '.stop_id_map(stop_id_int4),
+    target          INTEGER REFERENCES ' || gtfs_schema || '.stop_id_map(stop_id_int4),
+    travel_time     INTEGER
+)';
+
+EXECUTE 'INSERT INTO ' || gtfs_schema || '.shortest_time_closure(source,target,travel_time) SELECT source_id, target_id, cost::integer from apsp_johnson(' || quote_literal('select source, target, travel_time::float as cost from ' || gtfs_schema || '.shortest_time_graph') || ') where source_id <> target_id';
+
 END
 $$
 LANGUAGE 'plpgsql' STRICT;
