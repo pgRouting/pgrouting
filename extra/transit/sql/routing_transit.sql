@@ -1,11 +1,11 @@
-CREATE DOMAIN wgs84_lat AS double precision CHECK(VALUE >= -180 AND VALUE <= 180);
+CREATE OR REPLACE DOMAIN wgs84_lat AS double precision CHECK(VALUE >= -180 AND VALUE <= 180);
 
-CREATE DOMAIN wgs84_lon AS double precision CHECK(VALUE >= -90 AND VALUE <= 90);
+CREATE OR REPLACE DOMAIN wgs84_lon AS double precision CHECK(VALUE >= -90 AND VALUE <= 90);
 
-CREATE DOMAIN gtfstime AS text CHECK(VALUE ~ '^[0-9]?[0-9]:[0-5][0-9]:[0-5][0-9]$');
+CREATE OR REPLACE DOMAIN gtfstime AS text CHECK(VALUE ~ '^[0-9]?[0-9]:[0-5][0-9]:[0-5][0-9]$');
 
 -- FIXME: Use builtin type Interval to manipulate gtfstime
-CREATE FUNCTION gtfstime_to_secs(hms gtfstime) RETURNS INTEGER AS
+CREATE OR REPLACE FUNCTION gtfstime_to_secs(hms gtfstime) RETURNS INTEGER AS
 $$
 DECLARE
 h INTEGER;
@@ -67,6 +67,31 @@ END
 $$
 LANGUAGE 'plpgsql' IMMUTABLE STRICT;
 
+-- check if a column exists
+CREATE OR REPLACE FUNCTION column_exists(schema_name text, table_name text, column_name text)
+RETURNS BOOLEAN AS
+$$
+DECLARE
+q text;
+onerow record;
+BEGIN
+q = 'SELECT attname FROM pg_attribute
+    WHERE attrelid = (
+      SELECT oid FROM pg_class
+      WHERE relnamespace = (
+        SELECT oid FROM pg_namespace
+        WHERE nspname = ' || quote_literal(schema_name) || '
+      ) AND relname = ' || quote_literal(table_name) ||'
+    )AND attname = ' || quote_literal(column_name);
+FOR onerow IN EXECUTE q
+LOOP
+  RETURN true;
+END LOOP;
+RETURN false;
+END
+$$
+LANGUAGE 'plpgsql' VOLATILE;
+
 CREATE OR REPLACE FUNCTION prepare_scheduled(gtfs_schema TEXT)
 RETURNS VOID
 AS
@@ -81,17 +106,19 @@ stg_id INTEGER;
 old_diff INTEGER;
 new_diff INTEGER;
 BEGIN
-EXECUTE '
-  ALTER TABLE ' || gtfs_schema || '.calendar
-    ADD COLUMN bitmap bit(7) NULL';
-EXECUTE '
-  UPDATE ' || gtfs_schema || '.calendar
-    SET bitmap = (((((((saturday << 1) + friday << 1) + thursday << 1) +
-        wednesday << 1) + tuesday << 1) + monday <<1) + sunday)::bit(7);
-  ALTER TABLE ' || gtfs_schema || '.calendar
-    ALTER COLUMN bitmap SET NOT NULL';
---TODO: Create a trigger to update calendar bitmap upon insert/update
+IF NOT column_exists(gtfs_schema, 'calendar', 'bitmap') THEN
+  EXECUTE 'ALTER TABLE ' || gtfs_schema || '.calendar
+      ADD COLUMN bitmap bit(7) NULL';
+  EXECUTE '
+    UPDATE ' || gtfs_schema || '.calendar
+      SET bitmap = (((((((saturday << 1) + friday << 1) + thursday << 1) +
+          wednesday << 1) + tuesday << 1) + monday <<1) + sunday)::bit(7);
+    ALTER TABLE ' || gtfs_schema || '.calendar
+      ALTER COLUMN bitmap SET NOT NULL';
+  --TODO: Create a trigger to update calendar bitmap upon insert/update
+END IF;
 
+EXECUTE 'DROP TABLE IF EXISTS ' || gtfs_schema || '.stop_id_map CASCADE';
 EXECUTE 'CREATE TABLE ' || gtfs_schema || '.stop_id_map(
     stop_id_int4    SERIAL PRIMARY KEY,
     stop_id_text    TEXT UNIQUE NOT NULL REFERENCES ' || gtfs_schema || '.stops(stop_id)
@@ -100,6 +127,7 @@ EXECUTE 'CREATE TABLE ' || gtfs_schema || '.stop_id_map(
 EXECUTE 'INSERT INTO ' || gtfs_schema || '.stop_id_map(stop_id_text)
     SELECT stop_id FROM ' || gtfs_schema || '.stops';
 
+EXECUTE 'DROP TABLE IF EXISTS ' || gtfs_schema || '.shortest_time_graph CASCADE';
 EXECUTE 'CREATE TABLE ' || gtfs_schema || '.shortest_time_graph(
     id              SERIAL PRIMARY KEY,
     source          INTEGER REFERENCES ' || gtfs_schema || '.stop_id_map(stop_id_int4),
@@ -147,7 +175,6 @@ LOOP
 END LOOP;
 
 EXECUTE 'DROP TABLE IF EXISTS ' || gtfs_schema || '.shortest_time_closure';
-
 EXECUTE 'CREATE TABLE ' || gtfs_schema || '.shortest_time_closure(
     id              SERIAL PRIMARY KEY,
     source          INTEGER REFERENCES ' || gtfs_schema || '.stop_id_map(stop_id_int4),
@@ -247,4 +274,3 @@ CREATE OR REPLACE FUNCTION scheduled_route(
     RETURNS SETOF gtfs_path_result
     AS '$libdir/libtransit_routing'
     LANGUAGE 'C';
-
