@@ -1,6 +1,7 @@
 --
 -- Copyright (c) 2005 Sylvain Pasche,
 --               2006-2007 Anton A. Patrushev, Orkney, Inc.
+--               2011 Jay Mahadeokar.
 --
 -- This program is free software; you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -19,6 +20,7 @@
 
 
 CREATE TYPE path_result AS (vertex_id integer, edge_id integer, cost float8);
+CREATE TYPE apsp_result AS (src_vertex_id integer, dest_vertex_id integer, cost float8);
 CREATE TYPE vertex_result AS (x float8, y float8);
 
 -----------------------------------------------------------------------
@@ -28,8 +30,18 @@ CREATE TYPE vertex_result AS (x float8, y float8);
 CREATE OR REPLACE FUNCTION shortest_path(sql text, source_id integer, 
         target_id integer, directed boolean, has_reverse_cost boolean)
         RETURNS SETOF path_result
+        AS '$libdir/librouting_tdsp'
+        LANGUAGE 'C' IMMUTABLE STRICT;
+
+-----------------------------------------------------------------------
+-- Core function for all_pairs_shortest_path computation
+-- See README for description
+-----------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION all_pairs_shortest_path(sql text, directed boolean, has_reverse_cost boolean)
+        RETURNS SETOF apsp_result
         AS '$libdir/librouting'
         LANGUAGE 'C' IMMUTABLE STRICT;
+
 
 -----------------------------------------------------------------------
 -- Core function for shortest_path_astar computation

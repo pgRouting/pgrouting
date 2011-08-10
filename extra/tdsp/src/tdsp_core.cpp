@@ -1,3 +1,20 @@
+/*--
+-- Copyright (c) 2011 Jay Mahadeokar
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+*/
 #include <iostream>
 #include <set>
 #include <vector>
@@ -104,11 +121,6 @@ string tdsp(graph_t g, vertex_desc_t s, distance_map_t &d_m, predecessor_map_t &
 			//return msg;
 		}
 				
-		
-		//Update final distance map
-		//if(p_m[u_t] != -1)
-			//d_m[u_t] = d_m[u_t];
-		
 		//Visit all the adjecent vertices of v using out edge iterator
 		graph_traits<graph_t>::out_edge_iterator ei, edge_end;
 		
@@ -122,7 +134,7 @@ string tdsp(graph_t g, vertex_desc_t s, distance_map_t &d_m, predecessor_map_t &
 			int ei_id = e_w.get_edge_id(u_t,v_t);
 			
 			
-			if(u_t == 1621 || u_t == 1620 || u_t == 1618)
+/*			if(u_t == 1621 || u_t == 1620 || u_t == 1618)
 				{
 					msg.append("Examining out edge from: ");
 					msg.append(boost::lexical_cast<std::string>(u_t));
@@ -132,7 +144,7 @@ string tdsp(graph_t g, vertex_desc_t s, distance_map_t &d_m, predecessor_map_t &
 					msg.append(boost::lexical_cast<std::string>(visited[1621]));
 					msg.append("\n");
 					
-				}
+				}*/
 			
 			#if DEBUG_CONSOLE
 			cout<<endl<<"Evaluating edge: "<<ei_id<<" ("<<u_t<<","<<v_t<<")";
@@ -155,7 +167,7 @@ string tdsp(graph_t g, vertex_desc_t s, distance_map_t &d_m, predecessor_map_t &
 				d_m[v_t] = u.reach_time + travel_time;
 				p_m[v_t] = u_t;
 				
-				if(v_t == 1621 || v_t == 1617 || v_t == 1618 || v_t == 1815 || v_t == 1832 || v_t == 1)
+				/*if(v_t == 1621 || v_t == 1617 || v_t == 1618 || v_t == 1815 || v_t == 1832 || v_t == 1)
 				{
 					msg.append("Discovered vertex ");
 					msg.append(boost::lexical_cast<std::string>(v_t));
@@ -170,7 +182,7 @@ string tdsp(graph_t g, vertex_desc_t s, distance_map_t &d_m, predecessor_map_t &
 					msg.append(" travel time for this edge was ");
 					msg.append(boost::lexical_cast<std::string>(travel_time));
 					msg.append("\n");
-				}
+				}*/
 				
 			}
 			else if(visited[v_t] == 1)
@@ -183,14 +195,14 @@ string tdsp(graph_t g, vertex_desc_t s, distance_map_t &d_m, predecessor_map_t &
 				float8 new_reach_time = u.reach_time + travel_time;
 				
 				
-				if(v_t == 1621 || v_t == 1618)
+				/*if(v_t == 1621 || v_t == 1618)
 				{
 					msg.append("Again new path to vertex first thru edge from ");
 					msg.append(boost::lexical_cast<std::string>(u_t));
 					msg.append(" new cost is ");
 					msg.append(boost::lexical_cast<std::string>(new_reach_time));
 					msg.append("\n");
-				}
+				}*/
 				
 				//Check if new reach time is smaller than the current reach time for v
 				if(d_m[v_t] > new_reach_time)  
@@ -202,14 +214,14 @@ string tdsp(graph_t g, vertex_desc_t s, distance_map_t &d_m, predecessor_map_t &
 					p_m[v_t] = u_t;
 					
 					
-					if(v_t == 1621 || v_t == 1618)
+					/*if(v_t == 1621 || v_t == 1618)
 					{
 						msg.append(" Doing decrease_key in heap. d_m is now: ");
 						msg.append(boost::lexical_cast<std::string>(d_m[v_t]));
 						msg.append(" and the decreased key in heap is: ");
 						msg.append(boost::lexical_cast<std::string>(decreased_key));
 						msg.append("\n");
-					}
+					}*/
 				}
 				//else do nothing, this edge does not belong to shortest path tree
 				
@@ -218,11 +230,11 @@ string tdsp(graph_t g, vertex_desc_t s, distance_map_t &d_m, predecessor_map_t &
 			else
 			{
 				
-				if(v_t == 1621)
+				/*if(v_t == 1621)
 				{
 					msg.append("OOps..  the vertex 1621 was already finished!");
 					
-				}
+				}*/
 				
 				//TODO - I think this is not needed!!!
 				//cout << endl << "This vertex is already finished!";
@@ -435,6 +447,8 @@ int tdsp_wrapper(
 	*err_msg = (char*)msg.c_str();
 	return 1;
 }
+
+
 
 
 

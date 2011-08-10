@@ -55,6 +55,11 @@ BEGIN
 	min_time := query_start_time;
 	max_time := query_start_time + max_time_duration;
 	
+	-- This is to avoid repetition of data due to cycles
+	IF left_time > limit_time THEN
+		left_time := limit_time;
+	END IF;
+	
 	IF max_time > limit_time  THEN
 		max_time := limit_time;
 	END IF;
@@ -68,8 +73,8 @@ BEGIN
 	
 		FOR temp IN EXECUTE 'SELECT edge_id, start_time, end_time, travel_time FROM ' || 
                      quote_ident(table_name) || ' where  (start_time >= ' || min_time ||
-                     ' AND end_time < ' || max_time || ' ) or (start_time < ' || min_time || ' and  end_time > ' ||
-                     min_time || ' ) or (start_time < ' || max_time || ' and  end_time > ' || max_time || ' )'
+                     ' AND end_time < ' || max_time || ' ) or (start_time <= ' || min_time || ' and  end_time > ' ||
+                     min_time || ' ) or (start_time < ' || max_time || ' and  end_time >= ' || max_time || ' )'
 		LOOP
 			out_rec.edge_id := temp.edge_id;
 			IF (temp.start_time < min_time AND temp.end_time > min_time) THEN

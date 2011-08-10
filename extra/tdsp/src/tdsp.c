@@ -1,3 +1,20 @@
+/*--
+-- Copyright (c) 2011 Jay Mahadeokar
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+*/
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -231,7 +248,7 @@ fetch_weight_map_element(HeapTuple *tuple, TupleDesc *tupdesc,
   binval = SPI_getbinval(*tuple, *tupdesc, weight_map_columns->end_time, &isnull);
   //TODO make this float later when end_time is float
   if (isnull)
-    elog(ERROR, "start_time contains a null value");
+    elog(ERROR, "end_time contains a null value");
   target_wme->end_time = DatumGetFloat8(binval);
   if(target_wme->edge_id == 76)
 	DBG("end_time %f",target_wme->end_time);
@@ -345,9 +362,9 @@ int get_weight_map_elements(char* sql,weight_map_element_t **weight_map_elements
               fetch_weight_map_element(&tuple, &tupdesc, &weight_map_columns, 
                          &((*weight_map_elements)[total_tuples - ntuples + t]));
                          
-              if((*weight_map_elements)[total_tuples - ntuples + t].edge_id == 76)           
-              DBG("Fetched WME. edge_id %d, start_time %f, travel_time %f, end_time %f",(*weight_map_elements)[total_tuples - ntuples + t].edge_id,(*weight_map_elements)[total_tuples - ntuples + t].start_time,
-              (*weight_map_elements)[total_tuples - ntuples + t].travel_time,(*weight_map_elements)[total_tuples - ntuples + t].end_time);
+    //          if((*weight_map_elements)[total_tuples - ntuples + t].edge_id == 76)           
+     //         DBG("Fetched WME. edge_id %d, start_time %f, travel_time %f, end_time %f",(*weight_map_elements)[total_tuples - ntuples + t].edge_id,(*weight_map_elements)[total_tuples - ntuples + t].start_time,
+      //        (*weight_map_elements)[total_tuples - ntuples + t].travel_time,(*weight_map_elements)[total_tuples - ntuples + t].end_time);
             }
           SPI_freetuptable(tuptable);
         } 
@@ -535,12 +552,13 @@ static int compute_tdsp(char* sql, int start_vertex,
   
   DBG("WME count: %i",weight_map_element_count);
   
+  //Todo - Is it really needed now, since query_start_time is always expected to be 0..
+  //Actually even query_start_time may not be needed now..
   for(i = 0 ; i < weight_map_element_count; i++)
   {
 	weight_map_elements[i].start_time -= query_start_time;
 	weight_map_elements[i].end_time -= query_start_time;
-	//weight_map_elements[i].start_time *= 60;
-	//weight_map_elements[i].travel_time *= 1000;
+	
   }
 	
   ret = tdsp_wrapper(edges, total_tuples, 
@@ -582,9 +600,9 @@ static int compute_tdsp(char* sql, int start_vertex,
 
 
 
-PG_FUNCTION_INFO_V1(time_dependent_shortest_path);
+PG_FUNCTION_INFO_V1(pgr_time_dependent_shortest_path);
 Datum
-time_dependent_shortest_path(PG_FUNCTION_ARGS)
+pgr_time_dependent_shortest_path(PG_FUNCTION_ARGS)
 {
 	
   FuncCallContext     *funcctx;
