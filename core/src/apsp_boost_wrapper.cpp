@@ -39,7 +39,7 @@ using namespace boost;
 
 
 
-typedef adjacency_list<vecS, vecS, directedS, no_property,property<edge_weight_t, int, property<edge_weight2_t, int> > > Graph;
+typedef adjacency_list<vecS, vecS, directedS, no_property,property<edge_weight_t, double, property<edge_weight2_t, double> > > Graph;
 
 int 
 boost_apsp(edge_t *edges, unsigned int edge_count, const int node_cnt,   //TODO deal with this later - node_count
@@ -59,15 +59,16 @@ boost_apsp(edge_t *edges, unsigned int edge_count, const int node_cnt,   //TODO 
 
 	//cout<<edge_count;
 	Edge *edge_array = (Edge *) malloc(sizeof(Edge) * (edge_count));   
-	int *weights = (int*) malloc(sizeof(int) * (edge_count));
-	//float8 *weights = (float8*) malloc(sizeof(float8) * (edge_count));
+	//int *weights = (int*) malloc(sizeof(int) * (edge_count));
+	double *weights = (double*) malloc(sizeof(double) * (edge_count));
 	
 	
 	for(int i=0;i<edge_count;i++)
 	{
 		//edge_array[i].first = edges[i].source;  
 		//edge_array[i].second = edges[i].target;
-		weights[i] = (int)(edges[i].cost * 10000);
+		//weights[i] = (int)(edges[i].cost * 10000);
+		weights[i] = (edges[i].cost);
 		vertices.insert(edges[i].source);
 		vertices.insert(edges[i].target);
 		
@@ -104,16 +105,16 @@ boost_apsp(edge_t *edges, unsigned int edge_count, const int node_cnt,   //TODO 
 	
 	Graph g(edge_array, edge_array + edge_count, weights, node_count);
 	
-	std::vector<int> d(node_count, std::numeric_limits<int>::max());
-	int ** D = (int**) malloc(sizeof(int*) * node_count);
+	std::vector<double> d(node_count, std::numeric_limits<double>::max());
+	double ** D = (double**) malloc(sizeof(double*) * node_count);
 	//std::vector<int> d(node_count, std::numeric_limits<int>::max());
 	//float8 ** D = (float8**) malloc(sizeof(float8*) * node_count);
 	
 	
 	for(int i = 0; i < node_count; i++)
 		{
-		D[i] = (int*)malloc(node_count * sizeof(int));
-		//D[i] = (double*)malloc(node_count * sizeof(double));
+		//D[i] = (int*)malloc(node_count * sizeof(int));
+		D[i] = (double*)malloc(node_count * sizeof(double));
 		if(D[i] == NULL)
 			{
 			//fprintf(stderr, "out of memory\n");
