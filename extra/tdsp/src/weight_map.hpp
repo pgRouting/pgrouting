@@ -21,7 +21,6 @@
 
 using namespace std;
 
-//-------------------------------------------------------------------------
 //Weight Map Data Structure
 
 class weight_map_t
@@ -75,13 +74,18 @@ void weight_map_t::insert(weight_map_element_t element)
 }
 
 
-
+/*
+ * Function that returns the travel time of the edge with given id corresponding 
+ * to the start time specified.
+ */
 float8 weight_map_t::get_travel_time(int edge_id, float8 start_time)
 {
 	#if DEBUG_CONSOLE
 	cout<<endl<<"Query for travel-time for edge "<<edge_id<<endl;//" and start-time: "<<start_time;
 	#endif
 	
+	//This logic needs to be refined when the cyclic behaviour is dealt with in future versions.
+	//It is just a dummy now since the is_cyclic flag is false by default in constructor.
 	if(cyclic)
 	{
 		

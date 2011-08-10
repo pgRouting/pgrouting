@@ -133,19 +133,7 @@ string tdsp(graph_t g, vertex_desc_t s, distance_map_t &d_m, predecessor_map_t &
 			//Get the edge id
 			int ei_id = e_w.get_edge_id(u_t,v_t);
 			
-			
-/*			if(u_t == 1621 || u_t == 1620 || u_t == 1618)
-				{
-					msg.append("Examining out edge from: ");
-					msg.append(boost::lexical_cast<std::string>(u_t));
-					msg.append(" to: ");
-					msg.append(boost::lexical_cast<std::string>(v_t));
-					msg.append(" Visited of 1621 is: ");
-					msg.append(boost::lexical_cast<std::string>(visited[1621]));
-					msg.append("\n");
-					
-				}*/
-			
+						
 			#if DEBUG_CONSOLE
 			cout<<endl<<"Evaluating edge: "<<ei_id<<" ("<<u_t<<","<<v_t<<")";
 			#endif
@@ -167,23 +155,6 @@ string tdsp(graph_t g, vertex_desc_t s, distance_map_t &d_m, predecessor_map_t &
 				d_m[v_t] = u.reach_time + travel_time;
 				p_m[v_t] = u_t;
 				
-				/*if(v_t == 1621 || v_t == 1617 || v_t == 1618 || v_t == 1815 || v_t == 1832 || v_t == 1)
-				{
-					msg.append("Discovered vertex ");
-					msg.append(boost::lexical_cast<std::string>(v_t));
-					msg.append("first thru edge from ");
-					msg.append(boost::lexical_cast<std::string>(u_t));
-					msg.append(" d_m is now: ");
-					msg.append(boost::lexical_cast<std::string>(d_m[v_t]));
-					msg.append(" d_m of u_t was ");
-					msg.append(boost::lexical_cast<std::string>(d_m[u_t]));
-					msg.append(" reach time of u was ");
-					msg.append(boost::lexical_cast<std::string>(u.reach_time));
-					msg.append(" travel time for this edge was ");
-					msg.append(boost::lexical_cast<std::string>(travel_time));
-					msg.append("\n");
-				}*/
-				
 			}
 			else if(visited[v_t] == 1)
 			{
@@ -195,14 +166,6 @@ string tdsp(graph_t g, vertex_desc_t s, distance_map_t &d_m, predecessor_map_t &
 				float8 new_reach_time = u.reach_time + travel_time;
 				
 				
-				/*if(v_t == 1621 || v_t == 1618)
-				{
-					msg.append("Again new path to vertex first thru edge from ");
-					msg.append(boost::lexical_cast<std::string>(u_t));
-					msg.append(" new cost is ");
-					msg.append(boost::lexical_cast<std::string>(new_reach_time));
-					msg.append("\n");
-				}*/
 				
 				//Check if new reach time is smaller than the current reach time for v
 				if(d_m[v_t] > new_reach_time)  
@@ -214,14 +177,6 @@ string tdsp(graph_t g, vertex_desc_t s, distance_map_t &d_m, predecessor_map_t &
 					p_m[v_t] = u_t;
 					
 					
-					/*if(v_t == 1621 || v_t == 1618)
-					{
-						msg.append(" Doing decrease_key in heap. d_m is now: ");
-						msg.append(boost::lexical_cast<std::string>(d_m[v_t]));
-						msg.append(" and the decreased key in heap is: ");
-						msg.append(boost::lexical_cast<std::string>(decreased_key));
-						msg.append("\n");
-					}*/
 				}
 				//else do nothing, this edge does not belong to shortest path tree
 				
@@ -236,20 +191,6 @@ string tdsp(graph_t g, vertex_desc_t s, distance_map_t &d_m, predecessor_map_t &
 					
 				}*/
 				
-				//TODO - I think this is not needed!!!
-				//cout << endl << "This vertex is already finished!";
-/*				float8 travel_time = w_m.get_travel_time(ei_id , u.reach_time);
-				float8 new_reach_time = u.reach_time + travel_time;
-				
-				//Check if new reach time is smaller than the current reach time for v
-				if(d_m[v_t] > new_reach_time)  
-				{
-					//If so, do decrease key in heap, and update the reach time in current distance map
-					//and predecessor map
-					//bin_heap.decrease_key(v_t , d_m[v_t] - new_reach_time);
-					d_m[v_t] = new_reach_time;
-					p_m[v_t] = u_t;
-				}*/
 			}
 			
 		}
