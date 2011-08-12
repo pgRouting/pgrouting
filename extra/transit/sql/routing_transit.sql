@@ -206,7 +206,7 @@ $$
 LANGUAGE 'plpgsql' IMMUTABLE STRICT;
 
 DROP TYPE IF EXISTS next_link CASCADE;
-CREATE TYPE next_link AS (trip_id TEXT, destination_stop_id INTEGER, cost INTEGER);
+CREATE TYPE next_link AS (trip_id TEXT, destination_stop_id INTEGER, waiting_cost INTEGER, travel_cost INTEGER);
 
 CREATE OR REPLACE FUNCTION fetch_next_links(
         gtfs_schema TEXT,
@@ -221,12 +221,11 @@ CREATE OR REPLACE FUNCTION fetch_next_links(
     r next_link;
     BEGIN
     for r in EXECUTE '
-      SELECT st1.trip_id, dest.stop_id_int4,
-        gtfstime_to_secs(st2.arrival_time) - gtfstime_to_secs(st1.arrival_time) + ' || get_midnight_secs(timestamp 'epoch' + max_wait_time) || ' - get_midnight_secs((' || quote_literal(
+      SELECT st1.trip_id, dest.stop_id_int4,' || get_midnight_secs(timestamp 'epoch' + max_wait_time) || ' - get_midnight_secs((' || quote_literal(
           timestamp with time zone 'epoch' +
           arrival_time * '1 second'::interval +
           max_wait_time) ||
-          '::timestamp with time zone - st1.arrival_time::interval) at time zone a.agency_timezone)
+          '::timestamp with time zone - st1.arrival_time::interval) at time zone a.agency_timezone), gtfstime_to_secs(st2.arrival_time) - gtfstime_to_secs(st1.arrival_time)
       FROM ' ||
         gtfs_schema || '.stop_times st1, ' ||
         gtfs_schema || '.stop_times st2, ' ||

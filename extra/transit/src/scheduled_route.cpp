@@ -8,7 +8,7 @@
 void populate_next_links(vertex_descriptor u, transit_graph_t &g) {
   bool added;
   edge_descriptor e;
-  trip *t;
+  next_link_t *t;
 
   dbg("arrival time in populate_next_links = %d", g[u].arrival_time);
   int count = fetch_next_links(g[graph_bundle].schema, u, g[u].arrival_time,
@@ -19,7 +19,9 @@ void populate_next_links(vertex_descriptor u, transit_graph_t &g) {
     for (int i = 0; i < count; i++) {
       tie(e, added) = add_edge(t[i].src, t[i].dest, g);
       g[e].trip_id = t[i].trip_id;
-      g[e].transit_cost = t[i].link_cost;
+      g[e].waiting_cost = t[i].waiting_cost;
+      g[e].travel_cost = t[i].travel_cost;
+      g[e].transit_cost = t[i].waiting_cost + t[i].travel_cost;
     }
     free(t);
     dbg("Successfully populated next links of %d", u);

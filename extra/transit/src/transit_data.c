@@ -36,9 +36,9 @@ int get_max_stop_id(const char *schema) {
 }
 
 int fetch_next_links(const char *schema, int u, int arrival_time,
-    trip **trips_ref) {
+    next_link_t **trips_ref) {
   int i;
-  trip *trips;
+  next_link_t *trips;
   int total_processed;
   const char *MAX_WAIT_TIME = "1 hour";
   const int MAX_LINKS_RETURNED = 1000;
@@ -54,7 +54,7 @@ int fetch_next_links(const char *schema, int u, int arrival_time,
   }
   sprintf(
       sql,
-      "SELECT trip_id, destination_stop_id, cost FROM fetch_next_links('%s', %d, %d, '%s')",
+      "SELECT trip_id, destination_stop_id, waiting_cost, travel_cost FROM fetch_next_links('%s', %d, %d, '%s')",
       schema, u, arrival_time, MAX_WAIT_TIME);
 
   int ret = SPI_execute(sql, true, MAX_LINKS_RETURNED);
@@ -74,7 +74,7 @@ int fetch_next_links(const char *schema, int u, int arrival_time,
     return total_processed;
   }
 
-  *trips_ref = (trip *) malloc(sizeof(trip) * total_processed); // FIXME: Using palloc hangs indefinitely
+  *trips_ref = (next_link_t *) malloc(sizeof(next_link_t) * total_processed); // FIXME: Using palloc hangs indefinitely
   trips = *trips_ref;
   tupdesc = SPI_tuptable->tupdesc;
   for (i = 0; i < total_processed; i++) {
@@ -83,8 +83,10 @@ int fetch_next_links(const char *schema, int u, int arrival_time,
     trips[i].trip_id = text2char(
         DatumGetTextP(SPI_getbinval(heaptuple, tupdesc, 1, &isNull)));
     trips[i].dest = DatumGetInt32(SPI_getbinval(heaptuple, tupdesc, 2, &isNull));
-    trips[i].link_cost =
+    trips[i].waiting_cost =
         DatumGetInt32(SPI_getbinval(heaptuple, tupdesc, 3, &isNull));
+    trips[i].travel_cost =
+            DatumGetInt32(SPI_getbinval(heaptuple, tupdesc, 4, &isNull));
   }
   SPI_finish();
   DBG("fetch_next_links returns %d links", total_processed);

@@ -18,6 +18,8 @@ struct stop_t {
 
 struct link_t {
   char *trip_id;
+  time_seconds_t waiting_cost;
+  time_seconds_t travel_cost;
   time_seconds_t transit_cost;
 };
 
