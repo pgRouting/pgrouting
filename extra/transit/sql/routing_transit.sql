@@ -1,8 +1,8 @@
-CREATE OR REPLACE DOMAIN wgs84_lat AS double precision CHECK(VALUE >= -180 AND VALUE <= 180);
+CREATE DOMAIN wgs84_lat AS double precision CHECK(VALUE >= -180 AND VALUE <= 180);
 
-CREATE OR REPLACE DOMAIN wgs84_lon AS double precision CHECK(VALUE >= -90 AND VALUE <= 90);
+CREATE DOMAIN wgs84_lon AS double precision CHECK(VALUE >= -90 AND VALUE <= 90);
 
-CREATE OR REPLACE DOMAIN gtfstime AS text CHECK(VALUE ~ '^[0-9]?[0-9]:[0-5][0-9]:[0-5][0-9]$');
+CREATE DOMAIN gtfstime AS text CHECK(VALUE ~ '^[0-9]?[0-9]:[0-5][0-9]:[0-5][0-9]$');
 
 -- FIXME: Use builtin type Interval to manipulate gtfstime
 CREATE OR REPLACE FUNCTION gtfstime_to_secs(hms gtfstime) RETURNS INTEGER AS
