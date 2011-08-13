@@ -15,6 +15,8 @@ typedef struct {
 typedef struct {
   int stop_id;
   char *trip_id;
+  int waiting_time;
+  int travel_time;
 } gtfs_path_element_t;
 
 int get_max_stop_id(const char *schema);

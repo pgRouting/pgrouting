@@ -256,7 +256,7 @@ CREATE OR REPLACE FUNCTION fetch_next_links(
     $$
     LANGUAGE 'plpgsql' IMMUTABLE STRICT;
 
-CREATE TYPE gtfs_path_result AS (stop_id integer, trip_id TEXT);
+CREATE TYPE gtfs_path_result AS (stop_id integer, trip_id TEXT, waiting_time INTEGER, travel_time INTEGER);
 
 CREATE TYPE nonsc_path_result AS (changeover_id TEXT, cost DOUBLE PRECISION);
 

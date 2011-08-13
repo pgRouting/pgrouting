@@ -32,4 +32,6 @@ PG_MODULE_MAGIC;
 typedef struct {
   text *stop_id;
   text *trip_id;
+  int waiting_time;
+  int travel_time;
 } gtfs_path_element_t;

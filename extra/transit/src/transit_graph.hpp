@@ -12,6 +12,8 @@ struct stop_t {
   int arrival_time;
   unsigned int predecessor; //FIXME: Type should be vertex_descriptor
   char *predecessor_trip_id;
+  int predecessor_waiting_time;
+  int predecessor_travel_time;
   default_color_type color;
   time_t cost;
 };

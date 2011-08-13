@@ -68,8 +68,8 @@ Datum scheduled_route(PG_FUNCTION_ARGS) {
     Datum *values;
     char* nulls;
 
-    values = palloc(3 * sizeof(Datum));
-    nulls = palloc(3 * sizeof(char));
+    values = palloc(4 * sizeof(Datum));
+    nulls = palloc(4 * sizeof(char));
     DBG("Before call to Int32GetDatum\n");
     values[0] = Int32GetDatum(path[call_cntr].stop_id);
     DBG("After call to Int32GetDatum\n");
@@ -81,6 +81,22 @@ Datum scheduled_route(PG_FUNCTION_ARGS) {
     } else {
       values[1] = PointerGetDatum(char2text(path[call_cntr].trip_id));
       nulls[1] = ' ';
+    }
+    if (path[call_cntr].waiting_time == -1)
+    {
+      nulls[2] = 'n';
+      values[2] = '\0';
+    } else {
+      values[2] = Int32GetDatum(path[call_cntr].waiting_time);
+      nulls[2] = ' ';
+    }
+    if (path[call_cntr].travel_time == -1)
+    {
+      nulls[3] = 'n';
+      values[3] = '\0';
+    } else {
+      values[3] = Int32GetDatum(path[call_cntr].travel_time);
+      nulls[3] = ' ';
     }
     tuple = heap_formtuple(tuple_desc, values, nulls);
 

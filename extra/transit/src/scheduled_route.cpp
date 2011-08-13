@@ -66,6 +66,8 @@ public:
     dbg("Edge %s(%d -> %d) relaxed", g[e].trip_id, source(e,g), target(e,g));
     vertex_descriptor v = target(e, g);
     g[v].predecessor_trip_id = g[e].trip_id;
+    g[v].predecessor_waiting_time = g[e].waiting_cost;
+    g[v].predecessor_travel_time = g[e].travel_cost;
   }
   void edge_not_relaxed(edge_descriptor e, const transit_graph_t &g) {
     //dbg("Edge %s not relaxed", g[e].trip_id);
@@ -138,9 +140,13 @@ int compute_scheduled_route(char *gtfs_schema, int source, int destination,
     for (i = 1; i < *path_count; i++, ci++) {
       vertex_descriptor v = *ci;
       path[i - 1].trip_id = g[v].predecessor_trip_id;
+      path[i - 1].waiting_time = g[v].predecessor_waiting_time;
+      path[i - 1].travel_time = g[v].predecessor_travel_time;
       path[i].stop_id = v;
     }
     path[i - 1].trip_id = NULL;
+    path[i - 1].waiting_time = -1;
+    path[i - 1].travel_time = -1;
     return 0;
   }
   dbg("Goal not found");

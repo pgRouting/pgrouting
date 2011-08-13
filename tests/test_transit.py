@@ -65,7 +65,9 @@ class TestTransit(unittest.TestCase):
     self.cur.execute("SELECT prepare_scheduled('gtfs')")
     self.cur.execute("SELECT "
         "stop_id,"
-        "trip_id"
+        "trip_id,"
+        "waiting_time,"
+        "travel_time"
     " FROM scheduled_route("
         "'gtfs',"
         "(select stop_id_int4 from gtfs.stop_id_map where stop_id_text = 'Thiruvanmiyur'),"
@@ -74,9 +76,9 @@ class TestTransit(unittest.TestCase):
     " )")
     self.assertEqual(self.cur.fetchall(), [
         # stop_id, trip_id
-        (40, 'VLB24WDS'),
-        (4, 'T27WDS'),
-        (3, None)
+        (40, 'VLB24WDS', 780, 1440),
+        (4, 'T27WDS', 240, 360),
+        (3, None, None, None)
     ])
 
 
