@@ -64,7 +64,7 @@ class TestTransit(unittest.TestCase):
   def test_scheduled_route(self):
     self.cur.execute("SELECT prepare_scheduled('gtfs')")
     self.cur.execute("SELECT "
-        "stop_id,"
+        "stop_id_text,"
         "trip_id,"
         "waiting_time,"
         "travel_time"
@@ -73,14 +73,14 @@ class TestTransit(unittest.TestCase):
         "(select stop_id_int4 from gtfs.stop_id_map where stop_id_text = 'Thiruvanmiyur'),"
         "(select stop_id_int4 from gtfs.stop_id_map where stop_id_text = 'Chennai Egmore'),"
         "extract(epoch from timestamp with time zone '3-Jun-2011 08:00:00 Asia/Kolkata')::integer"
-    " )")
+    " ) sr, gtfs.stop_id_map sm"
+    " WHERE sr.stop_id = sm.stop_id_int4")
     self.assertEqual(self.cur.fetchall(), [
         # stop_id, trip_id
-        (40, 'VLB24WDS', 780, 1440),
-        (4, 'T27WDS', 240, 360),
-        (3, None, None, None)
+        ('Thiruvanmiyur', 'VLB24WDS', 780, 1440),
+        ('Chennai Fort', 'T27WDS', 240, 360),
+        ('Chennai Egmore', None, None, None)
     ])
-
 
 if __name__ == "__main__":
   setUpDB(with_transit=True)
