@@ -1,6 +1,6 @@
-CREATE DOMAIN wgs84_lat AS double precision CHECK(VALUE >= -180 AND VALUE <= 180);
+CREATE DOMAIN wgs84_lat AS double precision CHECK(VALUE >= -90 AND VALUE <= 90);
 
-CREATE DOMAIN wgs84_lon AS double precision CHECK(VALUE >= -90 AND VALUE <= 90);
+CREATE DOMAIN wgs84_lon AS double precision CHECK(VALUE >= -180 AND VALUE <= 180);
 
 CREATE DOMAIN gtfstime AS text CHECK(VALUE ~ '^[0-9]?[0-9]:[0-5][0-9]:[0-5][0-9]$');
 
