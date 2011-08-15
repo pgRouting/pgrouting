@@ -8,23 +8,23 @@ from datetime import datetime
 class TestTransit(unittest.TestCase):
   def setUp(self):
     self.cur = connectToDB()
-    self.cur.execute("CREATE SCHEMA gtfs")
-    loadTable(self.cur, "gtfs/agency")
-    loadTable(self.cur, "gtfs/stops")
-    loadTable(self.cur, "gtfs/routes")
-    loadTable(self.cur, "gtfs/calendar")
-    loadTable(self.cur, "gtfs/shapes", with_data = False)
-    loadTable(self.cur, "gtfs/trips")
-    loadTable(self.cur, "gtfs/stop_times")
-    loadTable(self.cur, "gtfs/frequencies", with_data = False)
     self.cur.execute("CREATE SCHEMA nonsc")
     loadTable(self.cur, "nonsc/stops")
     loadTable(self.cur, "nonsc/frequencies")
     loadTable(self.cur, "nonsc/stop_times")
+    self.cur.execute("CREATE SCHEMA demo_transit")
+    loadTable(self.cur, "demo_transit/agency")
+    loadTable(self.cur, "demo_transit/stops")
+    loadTable(self.cur, "demo_transit/routes")
+    loadTable(self.cur, "demo_transit/calendar")
+    loadTable(self.cur, "demo_transit/shapes")
+    loadTable(self.cur, "demo_transit/trips")
+    loadTable(self.cur, "demo_transit/stop_times")
+    loadTable(self.cur, "demo_transit/frequencies")
 
   def tearDown(self):
-    self.cur.execute("DROP SCHEMA gtfs CASCADE")
     self.cur.execute("DROP SCHEMA nonsc CASCADE")
+    self.cur.execute("DROP SCHEMA demo_transit CASCADE")
     self.cur.connection.close()
 
   def test_gtfstime(self):
@@ -62,24 +62,22 @@ class TestTransit(unittest.TestCase):
     ])
 
   def test_scheduled_route(self):
-    self.cur.execute("SELECT prepare_scheduled('gtfs')")
+    self.cur.execute("SELECT prepare_scheduled('demo_transit')")
     self.cur.execute("SELECT "
         "stop_id_text,"
         "trip_id,"
         "waiting_time,"
         "travel_time"
     " FROM scheduled_route("
-        "'gtfs',"
-        "(select stop_id_int4 from gtfs.stop_id_map where stop_id_text = 'Thiruvanmiyur'),"
-        "(select stop_id_int4 from gtfs.stop_id_map where stop_id_text = 'Chennai Egmore'),"
-        "extract(epoch from timestamp with time zone '3-Jun-2011 08:00:00 Asia/Kolkata')::integer"
-    " ) sr, gtfs.stop_id_map sm"
+        "'demo_transit',"
+        "(select stop_id_int4 from demo_transit.stop_id_map where stop_id_text = 'NANAA'),"
+        "(select stop_id_int4 from demo_transit.stop_id_map where stop_id_text = 'EMSI'),"
+        "extract(epoch from timestamp with time zone '3-Jun-2011 18:00:00 Asia/Kolkata')::integer"
+    " ) sr, demo_transit.stop_id_map sm"
     " WHERE sr.stop_id = sm.stop_id_int4")
     self.assertEqual(self.cur.fetchall(), [
-        # stop_id, trip_id
-        ('Thiruvanmiyur', 'VLB24WDS', 780, 1440),
-        ('Chennai Fort', 'T27WDS', 240, 360),
-        ('Chennai Egmore', None, None, None)
+        ('NANAA', 'CITY1', 2100, 1260),
+        ('EMSI', None, None, None)
     ])
 
 if __name__ == "__main__":

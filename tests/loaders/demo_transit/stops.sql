@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS gtfs.stops CASCADE;
+DROP TABLE IF EXISTS demo_transit.stops CASCADE;
 
-CREATE TABLE gtfs.stops
+CREATE TABLE demo_transit.stops
 (
 		stop_id	text PRIMARY KEY,
 		stop_code	text	UNIQUE NULL,

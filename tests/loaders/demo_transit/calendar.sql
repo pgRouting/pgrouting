@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS gtfs.calendar;
+DROP TABLE IF EXISTS demo_transit.calendar;
 
-CREATE TABLE gtfs.calendar
+CREATE TABLE demo_transit.calendar
 (
 		service_id	text PRIMARY KEY,
 		monday	integer NOT NULL CHECK(monday IN (0,1)),

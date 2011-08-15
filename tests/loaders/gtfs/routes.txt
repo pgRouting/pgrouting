@@ -1,3 +1,0 @@
-route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_url,route_color,route_text_color
-MSB-VLCY,MRTS,MSB-VLCY,Chennai Beach – Velachery,,0,,,
-MSB-TBM,CSR,MSB-TBM,Chennai Beach – Tambaram,,0,,,

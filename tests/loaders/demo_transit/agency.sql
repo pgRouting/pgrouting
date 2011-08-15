@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS gtfs.agency CASCADE;
+DROP TABLE IF EXISTS demo_transit.agency CASCADE;
 
-CREATE TABLE gtfs.agency
+CREATE TABLE demo_transit.agency
 (
 		agency_id	text UNIQUE NULL,
 		agency_name	text NOT NULL,

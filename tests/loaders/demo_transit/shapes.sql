@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS gtfs.shapes;
+DROP TABLE IF EXISTS demo_transit.shapes;
 
-CREATE TABLE gtfs.shapes
+CREATE TABLE demo_transit.shapes
 (
 		shape_id	text PRIMARY KEY,
 		shape_pt_lat	wgs84_lat NOT NULL,
