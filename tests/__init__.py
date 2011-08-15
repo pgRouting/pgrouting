@@ -67,4 +67,6 @@ def loadTable(cur, tablename, with_schema = True, with_data = True):
   if with_schema:
     cur.execute(open(os.path.join(LOADERS_DIR, tablename + ".sql"), "r").read())
   if with_data:
-    cur.copy_expert("COPY %s FROM STDIN WITH CSV HEADER" % tablename, open(os.path.join(LOADERS_DIR, tablename + ".csv"), "r")) 
+    data_file = open(os.path.join(LOADERS_DIR, tablename + '.txt'), 'r')
+    header = data_file.readline()
+    cur.copy_expert("COPY %s(%s) FROM STDIN WITH CSV" % (tablename.replace("/","."), header), data_file)
