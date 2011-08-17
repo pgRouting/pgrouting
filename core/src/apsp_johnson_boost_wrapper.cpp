@@ -65,9 +65,9 @@ int boost_apsp_johnson(edge_apsp_johnson_t *edges, int count,
   // FIXME: use a template for the directedS parameters
   typedef adjacency_list<vecS, vecS, directedS, no_property, Edge> graph_t;
 
-  typedef typename graph_traits<graph_t>::vertex_descriptor vertex_descriptor;
-  typedef typename graph_traits<graph_t>::edge_descriptor edge_descriptor;
-  typedef typename graph_traits<graph_t>::edge_iterator edge_iterator;
+  typedef graph_traits<graph_t>::vertex_descriptor vertex_descriptor;
+  typedef graph_traits<graph_t>::edge_descriptor edge_descriptor;
+  typedef graph_traits<graph_t>::edge_iterator edge_iterator;
 
   graph_t graph;
 

@@ -31,5 +31,5 @@ struct transit_t {
 
 typedef adjacency_list<vecS, vecS, directedS, stop_t, link_t, transit_t> transit_graph_t;
 
-typedef typename graph_traits<transit_graph_t>::vertex_descriptor vertex_descriptor;
-typedef typename graph_traits<transit_graph_t>::edge_descriptor edge_descriptor;
+typedef graph_traits<transit_graph_t>::vertex_descriptor vertex_descriptor;
+typedef graph_traits<transit_graph_t>::edge_descriptor edge_descriptor;
