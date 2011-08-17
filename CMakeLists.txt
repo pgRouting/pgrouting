@@ -23,12 +23,12 @@ IF(NOT POSTGRESQL_FOUND)
   MESSAGE(FATAL ERROR " Please check your PostgreSQL installation.") 
 ENDIF(NOT POSTGRESQL_FOUND)
 
-FIND_PACKAGE(Boost)
-IF(Boost_INCLUDE_DIRS)
+FIND_PACKAGE(Boost 1.46)
+IF(Boost_FOUND)
   MESSAGE("Boost headers were found here: ${Boost_INCLUDE_DIR}")
-ELSE(Boost_INCLUDE_DIRS)
-  MESSAGE(FATAL ERROR " Please check your Boost installation ") 
-ENDIF(Boost_INCLUDE_DIRS)
+ELSE(Boost_FOUND)
+  MESSAGE(FATAL ERROR " Boost 1.46 is required.")
+ENDIF(Boost_FOUND)
 
 EXEC_PROGRAM(pg_config
  ARGS --pkglibdir
