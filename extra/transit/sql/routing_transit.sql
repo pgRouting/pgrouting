@@ -106,27 +106,43 @@ stg_id INTEGER;
 old_diff INTEGER;
 new_diff INTEGER;
 BEGIN
-IF NOT column_exists(gtfs_schema, 'calendar', 'bitmap') THEN
-  EXECUTE 'ALTER TABLE ' || gtfs_schema || '.calendar
-      ADD COLUMN bitmap bit(7) NULL';
-  EXECUTE '
-    UPDATE ' || gtfs_schema || '.calendar
-      SET bitmap = (((((((saturday << 1) + friday << 1) + thursday << 1) +
-          wednesday << 1) + tuesday << 1) + monday <<1) + sunday)::bit(7);
-    ALTER TABLE ' || gtfs_schema || '.calendar
-      ALTER COLUMN bitmap SET NOT NULL';
-  --TODO: Create a trigger to update calendar bitmap upon insert/update
-END IF;
 
+-- Adding stop_id_map table to assign integer ids to stops
 EXECUTE 'DROP TABLE IF EXISTS ' || gtfs_schema || '.stop_id_map CASCADE';
 EXECUTE 'CREATE TABLE ' || gtfs_schema || '.stop_id_map(
     stop_id_int4    SERIAL PRIMARY KEY,
     stop_id_text    TEXT UNIQUE NOT NULL REFERENCES ' || gtfs_schema || '.stops(stop_id)
 )';
-
 EXECUTE 'INSERT INTO ' || gtfs_schema || '.stop_id_map(stop_id_text)
     SELECT stop_id FROM ' || gtfs_schema || '.stops';
 
+-- Adding column stop_id_int4 to stop_times table to avoid joins
+IF NOT column_exists(gtfs_schema, 'stop_times', 'stop_id_int4') THEN
+  EXECUTE 'ALTER TABLE ' || gtfs_schema || '.stop_times
+    ADD COLUMN stop_id_int4 integer NULL REFERENCES ' || gtfs_schema || '.stop_id_map';
+END IF;
+EXECUTE '
+UPDATE ' || gtfs_schema || '.stop_times
+SET stop_id_int4 = (SELECT sm.stop_id_int4 FROM ' ||
+    gtfs_schema || '.stop_id_map sm
+    WHERE sm.stop_id_text = stop_id);
+ALTER TABLE ' || gtfs_schema || '.stop_times
+ALTER COLUMN stop_id_int4 SET NOT NULL';
+
+-- Adding calculated field 'bitmap' for calendar table
+IF NOT column_exists(gtfs_schema, 'calendar', 'bitmap') THEN
+  EXECUTE 'ALTER TABLE ' || gtfs_schema || '.calendar
+      ADD COLUMN bitmap bit(7) NULL';
+  --TODO: Create a trigger to update calendar bitmap upon insert/update
+END IF;
+EXECUTE '
+UPDATE ' || gtfs_schema || '.calendar
+SET bitmap = (((((((saturday << 1) + friday << 1) + thursday << 1) +
+  wednesday << 1) + tuesday << 1) + monday <<1) + sunday)::bit(7);
+ALTER TABLE ' || gtfs_schema || '.calendar
+ALTER COLUMN bitmap SET NOT NULL';
+
+-- Pre-computing shortest time between stops(directly reachable) for astar heuristic
 EXECUTE 'DROP TABLE IF EXISTS ' || gtfs_schema || '.shortest_time_graph CASCADE';
 EXECUTE 'CREATE TABLE ' || gtfs_schema || '.shortest_time_graph(
     id              SERIAL PRIMARY KEY,
@@ -134,22 +150,17 @@ EXECUTE 'CREATE TABLE ' || gtfs_schema || '.shortest_time_graph(
     target          INTEGER REFERENCES ' || gtfs_schema || '.stop_id_map(stop_id_int4),
     travel_time     INTEGER
 )';
-
 FOR t_id IN
 EXECUTE 'SELECT trip_id FROM ' || gtfs_schema || '.trips'
 LOOP
   FOR src_id, src_time IN
   EXECUTE 'SELECT stop_id_int4, departure_time FROM ' ||
-           gtfs_schema || '.stop_times JOIN ' ||
-           gtfs_schema || '.stop_id_map
-           ON stop_id = stop_id_text
+           gtfs_schema || '.stop_times
            WHERE trip_id = ' || quote_literal(t_id)
   LOOP
     FOR dest_id, dest_time IN
     EXECUTE 'SELECT stop_id_int4, arrival_time FROM ' ||
-           gtfs_schema || '.stop_times JOIN ' ||
-           gtfs_schema || '.stop_id_map
-           ON stop_id = stop_id_text
+           gtfs_schema || '.stop_times
            WHERE trip_id = ' || quote_literal(t_id) || ' AND
               arrival_time > ' || quote_literal(src_time)
     LOOP
@@ -174,6 +185,7 @@ LOOP
   END LOOP;
 END LOOP;
 
+-- Finding transitive closure of shortest time between stops(indirectly reachable also)
 EXECUTE 'DROP TABLE IF EXISTS ' || gtfs_schema || '.shortest_time_closure';
 EXECUTE 'CREATE TABLE ' || gtfs_schema || '.shortest_time_closure(
     id              SERIAL PRIMARY KEY,
@@ -181,7 +193,6 @@ EXECUTE 'CREATE TABLE ' || gtfs_schema || '.shortest_time_closure(
     target          INTEGER REFERENCES ' || gtfs_schema || '.stop_id_map(stop_id_int4),
     travel_time     INTEGER
 )';
-
 EXECUTE 'INSERT INTO ' || gtfs_schema || '.shortest_time_closure(source,target,travel_time) SELECT source_id, target_id, cost::integer from apsp_johnson(' || quote_literal('select source, target, travel_time::float as cost from ' || gtfs_schema || '.shortest_time_graph') || ') where source_id <> target_id';
 
 END
@@ -221,7 +232,7 @@ CREATE OR REPLACE FUNCTION fetch_next_links(
     r next_link;
     BEGIN
     for r in EXECUTE '
-      SELECT st1.trip_id, dest.stop_id_int4,' || get_midnight_secs(timestamp 'epoch' + max_wait_time) || ' - get_midnight_secs((' || quote_literal(
+      SELECT st1.trip_id, st2.stop_id_int4,' || get_midnight_secs(timestamp 'epoch' + max_wait_time) || ' - get_midnight_secs((' || quote_literal(
           timestamp with time zone 'epoch' +
           arrival_time * '1 second'::interval +
           max_wait_time) ||
@@ -229,16 +240,12 @@ CREATE OR REPLACE FUNCTION fetch_next_links(
       FROM ' ||
         gtfs_schema || '.stop_times st1, ' ||
         gtfs_schema || '.stop_times st2, ' ||
-        gtfs_schema || '.stop_id_map src, ' ||
-        gtfs_schema || '.stop_id_map dest, ' ||
         gtfs_schema || '.trips t, ' ||
         gtfs_schema || '.routes r, ' ||
         gtfs_schema || '.agency a
-      WHERE src.stop_id_int4 = ' || source_stop_id ||
-      ' AND st1.stop_id = src.stop_id_text
-        AND st2.trip_id = st1.trip_id
+      WHERE st1.stop_id_int4 = ' || source_stop_id ||
+      ' AND st2.trip_id = st1.trip_id
         AND st2.stop_sequence > st1.stop_sequence
-        AND dest.stop_id_text = st2.stop_id
         AND t.trip_id = st1.trip_id
         AND t.route_id = r.route_id
         AND r.agency_id = a.agency_id
@@ -268,7 +275,7 @@ CREATE OR REPLACE FUNCTION scheduled_route(
         gtfs_schema TEXT,
         source_stop_id INTEGER,
         target_stop_id INTEGER,
-        query_time INTEGER 
+        query_time INTEGER
     )
     RETURNS SETOF gtfs_path_result
     AS '$libdir/libtransit_routing'
