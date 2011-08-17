@@ -15,7 +15,7 @@ int get_max_stop_id(const char *schema) {
   {
     elog(ERROR, "Cannot connect to SPI");
   }
-  sprintf(sql, "select max(stop_id_int4) from %s.stop_id_map", schema);
+  sprintf(sql, "select max(stop_id_int4) from %s.stops", schema);
   int ret = SPI_execute(sql, true, 1);
   if (ret != SPI_OK_SELECT)
   {

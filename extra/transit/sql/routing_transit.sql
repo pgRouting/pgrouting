@@ -106,26 +106,21 @@ stg_id INTEGER;
 old_diff INTEGER;
 new_diff INTEGER;
 BEGIN
-
--- Adding stop_id_map table to assign integer ids to stops
-EXECUTE 'DROP TABLE IF EXISTS ' || gtfs_schema || '.stop_id_map CASCADE';
-EXECUTE 'CREATE TABLE ' || gtfs_schema || '.stop_id_map(
-    stop_id_int4    SERIAL PRIMARY KEY,
-    stop_id_text    TEXT UNIQUE NOT NULL REFERENCES ' || gtfs_schema || '.stops(stop_id)
-)';
-EXECUTE 'INSERT INTO ' || gtfs_schema || '.stop_id_map(stop_id_text)
-    SELECT stop_id FROM ' || gtfs_schema || '.stops';
-
+-- Generating unique integer id for stops
+IF NOT column_exists(gtfs_schema, 'stops', 'stop_id_int4') THEN
+  EXECUTE 'ALTER TABLE ' || gtfs_schema || '.stops
+    ADD COLUMN stop_id_int4 SERIAL UNIQUE NOT NULL';
+END IF;
 -- Adding column stop_id_int4 to stop_times table to avoid joins
 IF NOT column_exists(gtfs_schema, 'stop_times', 'stop_id_int4') THEN
   EXECUTE 'ALTER TABLE ' || gtfs_schema || '.stop_times
-    ADD COLUMN stop_id_int4 integer NULL REFERENCES ' || gtfs_schema || '.stop_id_map';
+    ADD COLUMN stop_id_int4 integer NULL REFERENCES ' || gtfs_schema || '.stops(stop_id_int4)';
 END IF;
 EXECUTE '
-UPDATE ' || gtfs_schema || '.stop_times
-SET stop_id_int4 = (SELECT sm.stop_id_int4 FROM ' ||
-    gtfs_schema || '.stop_id_map sm
-    WHERE sm.stop_id_text = stop_id);
+UPDATE ' || gtfs_schema || '.stop_times st
+SET stop_id_int4 = (SELECT s.stop_id_int4 FROM ' ||
+    gtfs_schema || '.stops s
+    WHERE s.stop_id = st.stop_id);
 ALTER TABLE ' || gtfs_schema || '.stop_times
 ALTER COLUMN stop_id_int4 SET NOT NULL';
 
@@ -146,8 +141,8 @@ ALTER COLUMN bitmap SET NOT NULL';
 EXECUTE 'DROP TABLE IF EXISTS ' || gtfs_schema || '.shortest_time_graph CASCADE';
 EXECUTE 'CREATE TABLE ' || gtfs_schema || '.shortest_time_graph(
     id              SERIAL PRIMARY KEY,
-    source          INTEGER REFERENCES ' || gtfs_schema || '.stop_id_map(stop_id_int4),
-    target          INTEGER REFERENCES ' || gtfs_schema || '.stop_id_map(stop_id_int4),
+    source          INTEGER REFERENCES ' || gtfs_schema || '.stops(stop_id_int4),
+    target          INTEGER REFERENCES ' || gtfs_schema || '.stops(stop_id_int4),
     travel_time     INTEGER
 )';
 FOR t_id IN
@@ -189,8 +184,8 @@ END LOOP;
 EXECUTE 'DROP TABLE IF EXISTS ' || gtfs_schema || '.shortest_time_closure';
 EXECUTE 'CREATE TABLE ' || gtfs_schema || '.shortest_time_closure(
     id              SERIAL PRIMARY KEY,
-    source          INTEGER REFERENCES ' || gtfs_schema || '.stop_id_map(stop_id_int4),
-    target          INTEGER REFERENCES ' || gtfs_schema || '.stop_id_map(stop_id_int4),
+    source          INTEGER REFERENCES ' || gtfs_schema || '.stops(stop_id_int4),
+    target          INTEGER REFERENCES ' || gtfs_schema || '.stops(stop_id_int4),
     travel_time     INTEGER
 )';
 EXECUTE 'INSERT INTO ' || gtfs_schema || '.shortest_time_closure(source,target,travel_time) SELECT source_id, target_id, cost::integer from apsp_johnson(' || quote_literal('select source, target, travel_time::float as cost from ' || gtfs_schema || '.shortest_time_graph') || ') where source_id <> target_id';

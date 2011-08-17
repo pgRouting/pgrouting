@@ -64,17 +64,17 @@ class TestTransit(unittest.TestCase):
   def test_scheduled_route(self):
     self.cur.execute("SELECT prepare_scheduled('demo_transit')")
     self.cur.execute("SELECT "
-        "stop_id_text,"
+        "s.stop_id,"
         "trip_id,"
         "waiting_time,"
         "travel_time"
     " FROM scheduled_route("
         "'demo_transit',"
-        "(select stop_id_int4 from demo_transit.stop_id_map where stop_id_text = 'NANAA'),"
-        "(select stop_id_int4 from demo_transit.stop_id_map where stop_id_text = 'EMSI'),"
+        "(select stop_id_int4 from demo_transit.stops where stop_id = 'NANAA'),"
+        "(select stop_id_int4 from demo_transit.stops where stop_id = 'EMSI'),"
         "extract(epoch from timestamp with time zone '3-Jun-2011 18:00:00 Asia/Kolkata')::integer"
-    " ) sr, demo_transit.stop_id_map sm"
-    " WHERE sr.stop_id = sm.stop_id_int4")
+    " ) sr, demo_transit.stops s"
+    " WHERE sr.stop_id = s.stop_id_int4")
     self.assertEqual(self.cur.fetchall(), [
         ('NANAA', 'CITY1', 2100, 1260),
         ('EMSI', None, None, None)
