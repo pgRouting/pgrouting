@@ -4,69 +4,6 @@ CREATE DOMAIN wgs84_lon AS double precision CHECK(VALUE >= -180 AND VALUE <= 180
 
 CREATE DOMAIN gtfstime AS text CHECK(VALUE ~ '^[0-9]?[0-9]:[0-5][0-9]:[0-5][0-9]$');
 
--- FIXME: Use builtin type Interval to manipulate gtfstime
-CREATE OR REPLACE FUNCTION gtfstime_to_secs(hms gtfstime) RETURNS INTEGER AS
-$$
-DECLARE
-h INTEGER;
-m INTEGER;
-s INTEGER;
-BEGIN
-h = split_part(hms, ':', 1)::INTEGER;
-m = split_part(hms, ':', 2)::INTEGER;
-s = split_part(hms, ':', 3)::INTEGER;
-RETURN 3600 * h + 60 * m + s;
-END
-$$
-LANGUAGE 'plpgsql' IMMUTABLE STRICT;
-
--- FIXME: Use builtin type Interval to manipulate gtfstime
-CREATE FUNCTION secs_to_gtfstime(secs integer) RETURNS gtfstime AS
-$$
-DECLARE
-h INTEGER;
-m INTEGER;
-s INTEGER;
-hms TEXT;
-BEGIN
-h = secs / 3600;
-m = (secs - h * 3600) / 60;
-s = secs - h * 3600 - m * 60;
-hms = '';
-if h < 10 then
-    hms = hms || '0';
-end if;
-hms = hms || h || ':';
-if m < 10 then
-    hms = hms ||'0';
-end if;
-hms = hms || m || ':';
-if s < 10 then
-    hms = hms || '0';
-end if;
-hms = hms || s;
-RETURN hms;
-END
-$$
-LANGUAGE 'plpgsql' IMMUTABLE STRICT;
-
-CREATE OR REPLACE FUNCTION get_midnight_secs(magic_time TIMESTAMP WITH TIME ZONE)
-RETURNS INTEGER
-AS
-$$
-DECLARE
-h INTEGER;
-m INTEGER;
-s INTEGER;
-BEGIN
-h = extract(hour from magic_time);
-m = extract(minute from magic_time);
-s = extract(second from magic_time)::integer;
-RETURN h * 3600 + m * 60 + s;
-END
-$$
-LANGUAGE 'plpgsql' IMMUTABLE STRICT;
-
 -- check if a column exists
 CREATE OR REPLACE FUNCTION column_exists(schema_name text, table_name text, column_name text)
 RETURNS BOOLEAN AS
@@ -124,6 +61,23 @@ SET stop_id_int4 = (SELECT s.stop_id_int4 FROM ' ||
 ALTER TABLE ' || gtfs_schema || '.stop_times
 ALTER COLUMN stop_id_int4 SET NOT NULL';
 
+-- Adding column agency_timezone to trips to avoid joins
+IF NOT column_exists(gtfs_schema, 'trips', 'agency_timezone') THEN
+  EXECUTE 'ALTER TABLE ' || gtfs_schema || '.trips
+    ADD COLUMN agency_timezone TEXT NULL';
+END IF;
+EXECUTE '
+UPDATE ' || gtfs_schema || '.trips t
+SET agency_timezone = (
+  SELECT a.agency_timezone
+  FROM ' ||
+    gtfs_schema || '.agency a, ' ||
+    gtfs_schema || '.routes r
+  WHERE r.route_id = t.route_id
+    AND r.agency_id = a.agency_id);
+ALTER TABLE ' || gtfs_schema || '.trips
+ALTER COLUMN agency_timezone SET NOT NULL';
+
 -- Adding calculated field 'bitmap' for calendar table
 IF NOT column_exists(gtfs_schema, 'calendar', 'bitmap') THEN
   EXECUTE 'ALTER TABLE ' || gtfs_schema || '.calendar
@@ -159,7 +113,7 @@ LOOP
            WHERE trip_id = ' || quote_literal(t_id) || ' AND
               arrival_time > ' || quote_literal(src_time)
     LOOP
-      new_diff := gtfstime_to_secs(dest_time) - gtfstime_to_secs(src_time);
+      new_diff := extract(epoch from (dest_time::interval - src_time::interval));
       EXECUTE 'SELECT id, travel_time from ' || gtfs_schema || '.shortest_time_graph
         WHERE source = ' || src_id || ' AND target = ' || dest_id
         INTO stg_id, old_diff;
@@ -214,6 +168,50 @@ LANGUAGE 'plpgsql' IMMUTABLE STRICT;
 DROP TYPE IF EXISTS next_link CASCADE;
 CREATE TYPE next_link AS (trip_id TEXT, destination_stop_id INTEGER, waiting_cost INTEGER, travel_cost INTEGER);
 
+CREATE OR REPLACE FUNCTION find_trip_waiting_time(
+  gtfs_schema TEXT,
+  t_id TEXT,
+  arrival_time TIMESTAMP WITH TIME ZONE,
+  trip_date TIMESTAMP WITH TIME ZONE,
+  src_dep_time INTERVAL)
+RETURNS INTERVAL
+AS
+$$
+DECLARE
+  is_scheduled BOOLEAN;
+  waiting_time INTERVAL;
+BEGIN
+  EXECUTE 'SELECT count(*) = 0
+    FROM ' ||
+      gtfs_schema || '.frequencies f
+    WHERE f.trip_id = ' || quote_literal(t_id)
+    INTO is_scheduled;
+
+  IF is_scheduled THEN
+    -- RAISE NOTICE 'trip % is scheduled.', t_id;
+    waiting_time := trip_date + src_dep_time - arrival_time;
+    -- RAISE NOTICE 'trip_date = %, src_dep_time = %, arrival_time = %', trip_date, src_dep_time, arrival_time;
+    IF waiting_time < '0'::interval THEN
+      RETURN NULL;
+    ELSE
+      RETURN waiting_time;
+    END IF;
+  END IF;
+  -- RAISE NOTICE 'trip % is frequency governed.', t_id;
+  EXECUTE 'SELECT f.headway_secs * ''1 second''::interval
+    FROM ' ||
+      gtfs_schema || '.frequencies f
+    WHERE f.trip_id = ' || quote_literal(t_id) || '
+      AND ' || quote_literal(src_dep_time) || '::interval BETWEEN f.start_time::interval AND f.end_time::interval
+    ORDER BY f.headway_secs
+    LIMIT 1'
+    INTO waiting_time;
+  -- RAISE NOTICE 'waiting_time = %', waiting_time;
+  RETURN waiting_time;
+END
+$$
+LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+
 CREATE OR REPLACE FUNCTION fetch_next_links(
         gtfs_schema TEXT,
         source_stop_id INTEGER,
@@ -224,43 +222,49 @@ CREATE OR REPLACE FUNCTION fetch_next_links(
     AS
     $$
     DECLARE
-    r next_link;
+    link next_link;
+    t_id TEXT;
+    t_wait INTERVAL;
+    arrival_timestamp TIMESTAMP WITH TIME ZONE;
+    t_date TIMESTAMP WITH TIME ZONE;
+    src_dep_time INTERVAL;
+    src_seq INTEGER;
     BEGIN
-    for r in EXECUTE '
-      SELECT st1.trip_id, st2.stop_id_int4,' || get_midnight_secs(timestamp 'epoch' + max_wait_time) || ' - get_midnight_secs((' || quote_literal(
-          timestamp with time zone 'epoch' +
-          arrival_time * '1 second'::interval +
-          max_wait_time) ||
-          '::timestamp with time zone - st1.arrival_time::interval) at time zone a.agency_timezone), gtfstime_to_secs(st2.arrival_time) - gtfstime_to_secs(st1.arrival_time)
+    arrival_timestamp := timestamp with time zone 'epoch' +
+                         arrival_time * '1 second'::interval;
+    FOR t_id, t_date, src_dep_time, src_seq in EXECUTE '
+      SELECT st.trip_id, date_trunc(''day'', (timestamp with time zone ' || quote_literal(arrival_timestamp + max_wait_time) || '
+      - st.departure_time::interval) at time zone t.agency_timezone), st.departure_time, st.stop_sequence
       FROM ' ||
-        gtfs_schema || '.stop_times st1, ' ||
-        gtfs_schema || '.stop_times st2, ' ||
+        gtfs_schema || '.stop_times st, ' ||
         gtfs_schema || '.trips t, ' ||
-        gtfs_schema || '.routes r, ' ||
-        gtfs_schema || '.agency a
-      WHERE st1.stop_id_int4 = ' || source_stop_id ||
-      ' AND st2.trip_id = st1.trip_id
-        AND st2.stop_sequence > st1.stop_sequence
-        AND t.trip_id = st1.trip_id
-        AND t.route_id = r.route_id
-        AND r.agency_id = a.agency_id
-        AND check_service(' || quote_literal(gtfs_schema) ||
-          ', t.service_id, (' || quote_literal(
-          timestamp with time zone 'epoch' +
-          arrival_time * '1 second'::interval +
-          max_wait_time) ||
-          '::timestamp with time zone - st1.arrival_time::interval) at time zone a.agency_timezone, ' ||
-          quote_literal(max_wait_time) || ')'
+        gtfs_schema || '.calendar c
+      WHERE st.trip_id = t.trip_id
+        AND c.service_id = t.service_id
+        AND (c.bitmap & (1<<extract(dow from (timestamp with time zone ' ||
+          quote_literal(arrival_timestamp) || '
+          - st.departure_time::interval) at time zone t.agency_timezone)::integer)::bit(7)) <> 0::bit(7)
+        AND st.stop_id_int4 = ' || source_stop_id
     LOOP
-      RETURN next r;
+      t_wait := find_trip_waiting_time(gtfs_schema, t_id, arrival_timestamp, t_date, src_dep_time);
+      IF t_wait IS NOT NULL AND t_wait < max_wait_time THEN
+        -- RAISE NOTICE 't_wait = %', t_wait;
+        FOR link in EXECUTE '
+          SELECT trip_id, stop_id_int4, ' || extract(epoch from t_wait)::integer || ',
+          extract(epoch from arrival_time::interval - ' || quote_literal(src_dep_time) || '::interval)::integer
+          FROM ' || gtfs_schema || '.stop_times
+          WHERE trip_id = ' || quote_literal(t_id) || '
+            AND stop_sequence > ' || src_seq
+        LOOP
+          RETURN NEXT link;
+        END LOOP;
+      END IF;
     END LOOP;
     END
     $$
     LANGUAGE 'plpgsql' IMMUTABLE STRICT;
 
 CREATE TYPE gtfs_path_result AS (stop_id integer, trip_id TEXT, waiting_time INTEGER, travel_time INTEGER);
-
-CREATE TYPE nonsc_path_result AS (changeover_id TEXT, cost DOUBLE PRECISION);
 
 -----------------------------------------------------------------------
 -- Core function for Single Mode Public Transit routing.

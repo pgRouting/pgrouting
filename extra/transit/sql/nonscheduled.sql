@@ -55,13 +55,15 @@ LOOP
                 src_id::INTEGER || ',' ||
                 dest_id::INTEGER || ',' ||
                 headway::INTEGER / 2 || ',' ||
-                gtfstime_to_secs(dest_time) - gtfstime_to_secs(src_time) ||
+                extract(epoch from (dest_time::INTERVAL - src_time::INTERVAL))::INTEGER ||
             ')';
         END LOOP;
     END LOOP;
 END LOOP;
 END
 $$ LANGUAGE 'plpgsql';
+
+CREATE TYPE nonsc_path_result AS (changeover_id TEXT, cost DOUBLE PRECISION);
 
 CREATE OR REPLACE FUNCTION non_scheduled_route(gtfs_schema TEXT, source TEXT, target TEXT)
 RETURNS SETOF nonsc_path_result

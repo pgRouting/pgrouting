@@ -27,12 +27,6 @@ class TestTransit(unittest.TestCase):
     self.cur.execute("DROP SCHEMA demo_transit CASCADE")
     self.cur.connection.close()
 
-  def test_gtfstime(self):
-    self.cur.execute("SELECT gtfstime_to_secs('01:02:03')")
-    self.assertEqual(self.cur.fetchall(), [(3723,)])
-    self.cur.execute("SELECT secs_to_gtfstime('3719')")
-    self.assertEqual(self.cur.fetchall(), [('01:01:59',)])
-
   def test_non_scheduled_route(self):
     self.cur.execute("SELECT update_stop_time_graph('nonsc')")
     self.cur.execute("SELECT "
@@ -76,7 +70,7 @@ class TestTransit(unittest.TestCase):
     " ) sr, demo_transit.stops s"
     " WHERE sr.stop_id = s.stop_id_int4")
     self.assertEqual(self.cur.fetchall(), [
-        ('NANAA', 'CITY1', 2100, 1260),
+        ('NANAA', 'CITY1', 1800, 1140),
         ('EMSI', None, None, None)
     ])
 
