@@ -44,106 +44,97 @@ old_diff INTEGER;
 new_diff INTEGER;
 BEGIN
 -- Generating unique integer id for stops
+EXECUTE 'SET LOCAL search_path to ' || quote_ident(gtfs_schema) || ', public';
 IF NOT column_exists(gtfs_schema, 'stops', 'stop_id_int4') THEN
-  EXECUTE 'ALTER TABLE ' || gtfs_schema || '.stops
-    ADD COLUMN stop_id_int4 SERIAL UNIQUE NOT NULL';
+  ALTER TABLE stops
+    ADD COLUMN stop_id_int4 SERIAL UNIQUE NOT NULL;
 END IF;
 -- Adding column stop_id_int4 to stop_times table to avoid joins
 IF NOT column_exists(gtfs_schema, 'stop_times', 'stop_id_int4') THEN
-  EXECUTE 'ALTER TABLE ' || gtfs_schema || '.stop_times
-    ADD COLUMN stop_id_int4 integer NULL REFERENCES ' || gtfs_schema || '.stops(stop_id_int4)';
+  ALTER TABLE stop_times
+    ADD COLUMN stop_id_int4 integer NULL REFERENCES stops(stop_id_int4);
 END IF;
-EXECUTE '
-UPDATE ' || gtfs_schema || '.stop_times st
-SET stop_id_int4 = (SELECT s.stop_id_int4 FROM ' ||
-    gtfs_schema || '.stops s
+UPDATE stop_times st
+  SET stop_id_int4 = (SELECT s.stop_id_int4 FROM stops s
     WHERE s.stop_id = st.stop_id);
-ALTER TABLE ' || gtfs_schema || '.stop_times
-ALTER COLUMN stop_id_int4 SET NOT NULL';
+ALTER TABLE stop_times
+  ALTER COLUMN stop_id_int4 SET NOT NULL;
 
 -- Adding column agency_timezone to trips to avoid joins
 IF NOT column_exists(gtfs_schema, 'trips', 'agency_timezone') THEN
-  EXECUTE 'ALTER TABLE ' || gtfs_schema || '.trips
-    ADD COLUMN agency_timezone TEXT NULL';
+  ALTER TABLE trips
+    ADD COLUMN agency_timezone TEXT NULL;
 END IF;
-EXECUTE '
-UPDATE ' || gtfs_schema || '.trips t
-SET agency_timezone = (
-  SELECT a.agency_timezone
-  FROM ' ||
-    gtfs_schema || '.agency a, ' ||
-    gtfs_schema || '.routes r
-  WHERE r.route_id = t.route_id
-    AND r.agency_id = a.agency_id);
-ALTER TABLE ' || gtfs_schema || '.trips
-ALTER COLUMN agency_timezone SET NOT NULL';
+UPDATE trips t
+  SET agency_timezone = (SELECT a.agency_timezone
+    FROM agency a, routes r
+    WHERE r.route_id = t.route_id
+      AND r.agency_id = a.agency_id);
+ALTER TABLE trips
+  ALTER COLUMN agency_timezone SET NOT NULL;
 
 -- Adding calculated field 'bitmap' for calendar table
 IF NOT column_exists(gtfs_schema, 'calendar', 'bitmap') THEN
-  EXECUTE 'ALTER TABLE ' || gtfs_schema || '.calendar
-      ADD COLUMN bitmap bit(7) NULL';
+  ALTER TABLE calendar
+    ADD COLUMN bitmap bit(7) NULL;
   --TODO: Create a trigger to update calendar bitmap upon insert/update
 END IF;
-EXECUTE '
-UPDATE ' || gtfs_schema || '.calendar
-SET bitmap = (((((((saturday << 1) + friday << 1) + thursday << 1) +
-  wednesday << 1) + tuesday << 1) + monday <<1) + sunday)::bit(7);
-ALTER TABLE ' || gtfs_schema || '.calendar
-ALTER COLUMN bitmap SET NOT NULL';
+UPDATE calendar
+  SET bitmap = (((((((saturday << 1) + friday << 1) + thursday << 1) +
+    wednesday << 1) + tuesday << 1) + monday <<1) + sunday)::bit(7);
+ALTER TABLE calendar
+  ALTER COLUMN bitmap SET NOT NULL;
 
 -- Pre-computing shortest time between stops(directly reachable) for astar heuristic
-EXECUTE 'DROP TABLE IF EXISTS ' || gtfs_schema || '.shortest_time_graph CASCADE';
-EXECUTE 'CREATE TABLE ' || gtfs_schema || '.shortest_time_graph(
+DROP TABLE IF EXISTS shortest_time_graph CASCADE;
+CREATE TABLE shortest_time_graph(
     id              SERIAL PRIMARY KEY,
-    source          INTEGER REFERENCES ' || gtfs_schema || '.stops(stop_id_int4),
-    target          INTEGER REFERENCES ' || gtfs_schema || '.stops(stop_id_int4),
+    source          INTEGER REFERENCES stops(stop_id_int4),
+    target          INTEGER REFERENCES stops(stop_id_int4),
     travel_time     INTEGER
-)';
+);
 FOR t_id IN
-EXECUTE 'SELECT trip_id FROM ' || gtfs_schema || '.trips'
+SELECT trip_id FROM trips
 LOOP
   FOR src_id, src_time IN
-  EXECUTE 'SELECT stop_id_int4, departure_time FROM ' ||
-           gtfs_schema || '.stop_times
-           WHERE trip_id = ' || quote_literal(t_id)
+  SELECT stop_id_int4, departure_time FROM stop_times
+    WHERE trip_id = t_id
   LOOP
     FOR dest_id, dest_time IN
-    EXECUTE 'SELECT stop_id_int4, arrival_time FROM ' ||
-           gtfs_schema || '.stop_times
-           WHERE trip_id = ' || quote_literal(t_id) || ' AND
-              arrival_time > ' || quote_literal(src_time)
+    SELECT stop_id_int4, arrival_time FROM stop_times
+      WHERE trip_id = t_id AND arrival_time > src_time
     LOOP
       new_diff := extract(epoch from (dest_time::interval - src_time::interval));
-      EXECUTE 'SELECT id, travel_time from ' || gtfs_schema || '.shortest_time_graph
-        WHERE source = ' || src_id || ' AND target = ' || dest_id
+      SELECT id, travel_time from shortest_time_graph
+        WHERE source = src_id AND target = dest_id
         INTO stg_id, old_diff;
       IF stg_id IS NULL THEN
-        EXECUTE 'INSERT INTO ' || gtfs_schema || '.shortest_time_graph(
-          source, target, travel_time) VALUES
-          (' ||
-            src_id || ',' ||
-            dest_id || ',' ||
-            new_diff ||
-          ')';
+        INSERT INTO shortest_time_graph(source, target, travel_time) VALUES (
+          src_id,
+          dest_id,
+          new_diff
+        );
       ELSIF old_diff > new_diff THEN
-        EXECUTE 'UPDATE ' || gtfs_schema || '.shortest_time_graph
-          SET travel_time = ' || new_diff ||
-          ' WHERE id = ' || stg_id;
+        UPDATE shortest_time_graph
+          SET travel_time = new_diff
+          WHERE id = stg_id;
       END IF;
     END LOOP;
   END LOOP;
 END LOOP;
 
 -- Finding transitive closure of shortest time between stops(indirectly reachable also)
-EXECUTE 'DROP TABLE IF EXISTS ' || gtfs_schema || '.shortest_time_closure';
-EXECUTE 'CREATE TABLE ' || gtfs_schema || '.shortest_time_closure(
+DROP TABLE IF EXISTS shortest_time_closure;
+CREATE TABLE shortest_time_closure(
     id              SERIAL PRIMARY KEY,
-    source          INTEGER REFERENCES ' || gtfs_schema || '.stops(stop_id_int4),
-    target          INTEGER REFERENCES ' || gtfs_schema || '.stops(stop_id_int4),
+    source          INTEGER REFERENCES stops(stop_id_int4),
+    target          INTEGER REFERENCES stops(stop_id_int4),
     travel_time     INTEGER
-)';
-EXECUTE 'INSERT INTO ' || gtfs_schema || '.shortest_time_closure(source,target,travel_time) SELECT source_id, target_id, cost::integer from apsp_johnson(' || quote_literal('select source, target, travel_time::float as cost from ' || gtfs_schema || '.shortest_time_graph') || ') where source_id <> target_id';
-
+);
+INSERT INTO shortest_time_closure(source,target,travel_time)
+  SELECT source_id, target_id, cost::integer from apsp_johnson(
+    'select source, target, travel_time::float as cost from ' || gtfs_schema || '.shortest_time_graph')
+    WHERE source_id <> target_id;
 END
 $$
 LANGUAGE 'plpgsql' STRICT;
@@ -181,12 +172,11 @@ DECLARE
   is_scheduled BOOLEAN;
   waiting_time INTERVAL;
 BEGIN
-  EXECUTE 'SELECT count(*) = 0
-    FROM ' ||
-      gtfs_schema || '.frequencies f
-    WHERE f.trip_id = ' || quote_literal(t_id)
+  EXECUTE 'SET LOCAL search_path to ' || quote_ident(gtfs_schema) || ', public';
+  SELECT count(*) = 0
+    FROM frequencies f
+    WHERE f.trip_id = t_id
     INTO is_scheduled;
-
   IF is_scheduled THEN
     -- RAISE NOTICE 'trip % is scheduled.', t_id;
     waiting_time := trip_date + src_dep_time - arrival_time;
@@ -198,19 +188,18 @@ BEGIN
     END IF;
   END IF;
   -- RAISE NOTICE 'trip % is frequency governed.', t_id;
-  EXECUTE 'SELECT f.headway_secs * ''1 second''::interval
-    FROM ' ||
-      gtfs_schema || '.frequencies f
-    WHERE f.trip_id = ' || quote_literal(t_id) || '
-      AND ' || quote_literal(src_dep_time) || '::interval BETWEEN f.start_time::interval AND f.end_time::interval
+  SELECT f.headway_secs * '1 second'::interval
+    FROM frequencies f
+    WHERE f.trip_id = t_id
+      AND src_dep_time BETWEEN f.start_time::interval AND f.end_time::interval
     ORDER BY f.headway_secs
-    LIMIT 1'
+    LIMIT 1
     INTO waiting_time;
   -- RAISE NOTICE 'waiting_time = %', waiting_time;
   RETURN waiting_time;
 END
 $$
-LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+LANGUAGE 'plpgsql' STRICT;
 
 CREATE OR REPLACE FUNCTION fetch_next_links(
         gtfs_schema TEXT,
@@ -230,31 +219,26 @@ CREATE OR REPLACE FUNCTION fetch_next_links(
     src_dep_time INTERVAL;
     src_seq INTEGER;
     BEGIN
+    EXECUTE 'SET LOCAL search_path to ' || quote_ident(gtfs_schema) || ',public';
     arrival_timestamp := timestamp with time zone 'epoch' +
                          arrival_time * '1 second'::interval;
-    FOR t_id, t_date, src_dep_time, src_seq in EXECUTE '
-      SELECT st.trip_id, date_trunc(''day'', (timestamp with time zone ' || quote_literal(arrival_timestamp + max_wait_time) || '
-      - st.departure_time::interval) at time zone t.agency_timezone), st.departure_time, st.stop_sequence
-      FROM ' ||
-        gtfs_schema || '.stop_times st, ' ||
-        gtfs_schema || '.trips t, ' ||
-        gtfs_schema || '.calendar c
-      WHERE st.trip_id = t.trip_id
-        AND c.service_id = t.service_id
-        AND (c.bitmap & (1<<extract(dow from (timestamp with time zone ' ||
-          quote_literal(arrival_timestamp) || '
-          - st.departure_time::interval) at time zone t.agency_timezone)::integer)::bit(7)) <> 0::bit(7)
-        AND st.stop_id_int4 = ' || source_stop_id
+    FOR t_id, t_date, src_dep_time, src_seq IN
+      SELECT st.trip_id, date_trunc('day', (arrival_timestamp + max_wait_time - st.departure_time::interval) at time zone t.agency_timezone), st.departure_time, st.stop_sequence
+        FROM stop_times st, trips t, calendar c
+        WHERE st.trip_id = t.trip_id
+          AND c.service_id = t.service_id
+          AND (c.bitmap & (1<<extract(dow from (arrival_timestamp + max_wait_time - st.departure_time::interval) at time zone t.agency_timezone)::integer)::bit(7)) <> 0::bit(7)
+          AND st.stop_id_int4 = source_stop_id
     LOOP
       t_wait := find_trip_waiting_time(gtfs_schema, t_id, arrival_timestamp, t_date, src_dep_time);
       IF t_wait IS NOT NULL AND t_wait < max_wait_time THEN
         -- RAISE NOTICE 't_wait = %', t_wait;
-        FOR link in EXECUTE '
-          SELECT trip_id, stop_id_int4, ' || extract(epoch from t_wait)::integer || ',
-          extract(epoch from arrival_time::interval - ' || quote_literal(src_dep_time) || '::interval)::integer
-          FROM ' || gtfs_schema || '.stop_times
-          WHERE trip_id = ' || quote_literal(t_id) || '
-            AND stop_sequence > ' || src_seq
+        FOR link IN
+          SELECT trip_id, stop_id_int4, extract(epoch from t_wait)::INTEGER,
+            extract(epoch from st.arrival_time::interval - src_dep_time)::INTEGER
+            FROM stop_times st
+            WHERE st.trip_id = t_id
+              AND st.stop_sequence > src_seq
         LOOP
           RETURN NEXT link;
         END LOOP;
@@ -262,7 +246,7 @@ CREATE OR REPLACE FUNCTION fetch_next_links(
     END LOOP;
     END
     $$
-    LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+    LANGUAGE 'plpgsql' STRICT;
 
 CREATE TYPE gtfs_path_result AS (stop_id integer, trip_id TEXT, waiting_time INTEGER, travel_time INTEGER);
 
