@@ -1,9 +1,3 @@
-CREATE DOMAIN wgs84_lat AS double precision CHECK(VALUE >= -90 AND VALUE <= 90);
-
-CREATE DOMAIN wgs84_lon AS double precision CHECK(VALUE >= -180 AND VALUE <= 180);
-
-CREATE DOMAIN gtfstime AS text CHECK(VALUE ~ '^[0-9]?[0-9]:[0-5][0-9]:[0-5][0-9]$');
-
 -- check if a column exists
 CREATE OR REPLACE FUNCTION column_exists(schema_name text, table_name text, column_name text)
 RETURNS BOOLEAN AS
@@ -36,9 +30,9 @@ $$
 DECLARE
 t_id TEXT;
 src_id INTEGER;
-src_time gtfstime;
+src_time INTERVAL;
 dest_id INTEGER;
-dest_time gtfstime;
+dest_time INTERVAL;
 stg_id INTEGER;
 old_diff INTEGER;
 new_diff INTEGER;
@@ -80,8 +74,10 @@ IF NOT column_exists(gtfs_schema, 'calendar', 'bitmap') THEN
   --TODO: Create a trigger to update calendar bitmap upon insert/update
 END IF;
 UPDATE calendar
-  SET bitmap = (((((((saturday << 1) + friday << 1) + thursday << 1) +
-    wednesday << 1) + tuesday << 1) + monday <<1) + sunday)::bit(7);
+  SET bitmap = (((((((saturday::integer << 1) + friday::integer << 1) +
+    thursday::integer << 1) + wednesday::integer << 1) +
+    tuesday::integer << 1) + monday::integer <<1) +
+    sunday::integer)::bit(7);
 ALTER TABLE calendar
   ALTER COLUMN bitmap SET NOT NULL;
 
@@ -104,7 +100,7 @@ LOOP
     SELECT stop_id_int4, arrival_time FROM stop_times
       WHERE trip_id = t_id AND arrival_time > src_time
     LOOP
-      new_diff := extract(epoch from (dest_time::interval - src_time::interval));
+      new_diff := extract(epoch from (dest_time - src_time));
       SELECT id, travel_time from shortest_time_graph
         WHERE source = src_id AND target = dest_id
         INTO stg_id, old_diff;
@@ -138,23 +134,6 @@ INSERT INTO shortest_time_closure(source,target,travel_time)
 END
 $$
 LANGUAGE 'plpgsql' STRICT;
-
-CREATE OR REPLACE FUNCTION check_service(gtfs_schema TEXT, service_id TEXT, service_timestamp TIMESTAMP, max_wait_time INTERVAL)
-RETURNS BOOLEAN
-AS
-$$
-DECLARE
-  service_available BOOLEAN;
-BEGIN
-EXECUTE 'SELECT bitmap & (1<<extract(dow from timestamp ' ||
-    quote_literal(service_timestamp) || ')::integer)::bit(7) <> 0::bit(7)
-    FROM ' || gtfs_schema || '.calendar
-    WHERE service_id = ' || quote_literal(service_id)
-  INTO service_available;
-RETURN service_timestamp::time < max_wait_time AND service_available;
-END
-$$
-LANGUAGE 'plpgsql' IMMUTABLE STRICT;
 
 DROP TYPE IF EXISTS next_link CASCADE;
 CREATE TYPE next_link AS (trip_id TEXT, destination_stop_id INTEGER, waiting_cost INTEGER, travel_cost INTEGER);
@@ -191,7 +170,7 @@ BEGIN
   SELECT f.headway_secs * '1 second'::interval
     FROM frequencies f
     WHERE f.trip_id = t_id
-      AND src_dep_time BETWEEN f.start_time::interval AND f.end_time::interval
+      AND src_dep_time BETWEEN f.start_time AND f.end_time
     ORDER BY f.headway_secs
     LIMIT 1
     INTO waiting_time;
@@ -223,11 +202,11 @@ CREATE OR REPLACE FUNCTION fetch_next_links(
     arrival_timestamp := timestamp with time zone 'epoch' +
                          arrival_time * '1 second'::interval;
     FOR t_id, t_date, src_dep_time, src_seq IN
-      SELECT st.trip_id, date_trunc('day', (arrival_timestamp + max_wait_time - st.departure_time::interval) at time zone t.agency_timezone), st.departure_time, st.stop_sequence
+      SELECT st.trip_id, date_trunc('day', (arrival_timestamp + max_wait_time - st.departure_time) at time zone t.agency_timezone), st.departure_time, st.stop_sequence
         FROM stop_times st, trips t, calendar c
         WHERE st.trip_id = t.trip_id
           AND c.service_id = t.service_id
-          AND (c.bitmap & (1<<extract(dow from (arrival_timestamp + max_wait_time - st.departure_time::interval) at time zone t.agency_timezone)::integer)::bit(7)) <> 0::bit(7)
+          AND (c.bitmap & (1<<extract(dow from (arrival_timestamp + max_wait_time - st.departure_time) at time zone t.agency_timezone)::integer)::bit(7)) <> 0::bit(7)
           AND st.stop_id_int4 = source_stop_id
     LOOP
       t_wait := find_trip_waiting_time(gtfs_schema, t_id, arrival_timestamp, t_date, src_dep_time);
@@ -235,7 +214,7 @@ CREATE OR REPLACE FUNCTION fetch_next_links(
         -- RAISE NOTICE 't_wait = %', t_wait;
         FOR link IN
           SELECT trip_id, stop_id_int4, extract(epoch from t_wait)::INTEGER,
-            extract(epoch from st.arrival_time::interval - src_dep_time)::INTEGER
+            extract(epoch from st.arrival_time - src_dep_time)::INTEGER
             FROM stop_times st
             WHERE st.trip_id = t_id
               AND st.stop_sequence > src_seq

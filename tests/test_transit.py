@@ -9,10 +9,12 @@ class TestTransit(unittest.TestCase):
   def setUp(self):
     self.cur = connectToDB()
     self.cur.execute("CREATE SCHEMA nonsc")
+    self.cur.execute("SET search_path to nonsc")
     loadTable(self.cur, "nonsc/stops")
     loadTable(self.cur, "nonsc/frequencies")
     loadTable(self.cur, "nonsc/stop_times")
     self.cur.execute("CREATE SCHEMA demo_transit")
+    self.cur.execute("SET search_path TO demo_transit")
     loadTable(self.cur, "demo_transit/agency")
     loadTable(self.cur, "demo_transit/stops")
     loadTable(self.cur, "demo_transit/routes")
@@ -21,6 +23,7 @@ class TestTransit(unittest.TestCase):
     loadTable(self.cur, "demo_transit/trips")
     loadTable(self.cur, "demo_transit/stop_times")
     loadTable(self.cur, "demo_transit/frequencies")
+    self.cur.execute("SET search_path TO public") 
 
   def tearDown(self):
     self.cur.execute("DROP SCHEMA nonsc CASCADE")

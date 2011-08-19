@@ -146,7 +146,9 @@ void dbg(const char *fmt, ...)
   char buff[1024];
   va_list arg;
   va_start(arg, fmt);
+#ifdef DEBUG
   vsprintf(buff, fmt, arg);
   elog(NOTICE, "%s", buff);
+#endif
   va_end(arg);
 }

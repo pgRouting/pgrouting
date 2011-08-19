@@ -1,6 +1,4 @@
-DROP TABLE IF EXISTS nonsc.stops CASCADE;
-
-CREATE TABLE nonsc.stops
+CREATE TABLE stops
 (
 		stop_id	text PRIMARY KEY
 );

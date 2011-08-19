@@ -2,7 +2,7 @@
 #include <fmgr.h>
 #include <funcapi.h>
 #include <utils/timestamp.h>
-#define DEBUG 1
+//#define DEBUG 1
 #include "utility.h"
 #include "scheduled_route.h"
 #define TUPLIMIT 1000
