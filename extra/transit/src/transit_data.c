@@ -1,5 +1,5 @@
 #include "transit_data.h"
-#define DEBUG 1
+//#define DEBUG 1
 #include "utility.h"
 
 // The following headers are incompatible with c++. So,
