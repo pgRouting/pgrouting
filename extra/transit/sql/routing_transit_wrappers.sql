@@ -1,42 +1,18 @@
---FIXME: Below is the driving_distance example wrapper. Write the actual wrappers
-CREATE OR REPLACE FUNCTION driving_distance(table_name varchar, x double precision, y double precision,
-        distance double precision, cost varchar, reverse_cost varchar, directed boolean, has_reverse_cost boolean)
-       RETURNS SETOF GEOMS AS
+CREATE TYPE gtfs_path_result2 AS (stop_id TEXT, trip_id TEXT, waiting_time INTERVAL, travel_time INTERVAL);
+
+SELECT prepare_scheduled('gtfs'); -- Wrapper functions are applicable only for 'gtfs' schema
+
+CREATE OR REPLACE FUNCTION gtfs_route(src_id TEXT, dest_id TEXT, query_time TIMESTAMP WITH TIME ZONE)
+       RETURNS SETOF GTFS_PATH_RESULT2 AS
 $$
-DECLARE
-     q text;
-     srid integer;
-     r record;
-     geom geoms;
-BEGIN
-     
-     FOR r IN EXECUTE 'SELECT srid FROM geometry_columns WHERE f_table_name = '''||table_name||'''' LOOP
-     END LOOP;
-     
-     srid := r.srid;
-     
-     RAISE NOTICE 'SRID: %', srid;
-
-     q := 'SELECT gid, the_geom FROM points_as_polygon(''SELECT a.vertex_id::integer AS id, b.x1::double precision AS x, b.y1::double precision AS y'||
-     ' FROM driving_distance(''''''''SELECT gid AS id,source::integer,target::integer, '||cost||'::double precision AS cost, '||
-     reverse_cost||'::double precision as reverse_cost FROM '||
-     table_name||' WHERE setsrid(''''''''''''''''BOX3D('||
-     x-distance||' '||y-distance||', '||x+distance||' '||y+distance||')''''''''''''''''::BOX3D, '||srid||') && the_geom  '''''''', (SELECT id FROM find_node_by_nearest_link_within_distance(''''''''POINT('||x||' '||y||')'''''''','||distance/10||','''''''''||table_name||''''''''')),'||
-     distance||',true,true) a, (SELECT * FROM '||table_name||' WHERE setsrid(''''''''BOX3D('||
-     x-distance||' '||y-distance||', '||x+distance||' '||y+distance||')''''''''::BOX3D, '||srid||')&&the_geom) b WHERE a.vertex_id = b.source'')';
-
-     RAISE NOTICE 'Query: %', q;
-     
-     FOR r IN EXECUTE q LOOP     
-        geom.gid := r.gid;
-        geom.the_geom := r.the_geom;
-        RETURN NEXT geom;
-     END LOOP;
-     
-     RETURN;
-
-END;
+SELECT s.stop_id, trip_id, waiting_time * '1 second'::INTERVAL, travel_time * '1 second'::INTERVAL
+FROM scheduled_route('gtfs',
+  (SELECT stop_id_int4 FROM gtfs.stops WHERE stop_id = $1),
+    (SELECT stop_id_int4 FROM gtfs.stops WHERE stop_id = $2),
+      extract(epoch from $3)::INTEGER
+      ) sr,
+      gtfs.stops s
+      WHERE sr.stop_id = s.stop_id_int4;
 $$
-
-LANGUAGE 'plpgsql' VOLATILE STRICT;
+LANGUAGE 'sql' IMMUTABLE STRICT;
 

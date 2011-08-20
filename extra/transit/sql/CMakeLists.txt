@@ -1,3 +1,3 @@
 INSTALL(FILES routing_transit.sql DESTINATION ${SQL_INSTALL_PATH})
-#INSTALL(FILES routing_transit_wrappers.sql DESTINATION ${SQL_INSTALL_PATH})
+INSTALL(FILES routing_transit_wrappers.sql DESTINATION ${SQL_INSTALL_PATH})
 
