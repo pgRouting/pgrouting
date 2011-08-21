@@ -37,12 +37,16 @@ stg_id INTEGER;
 old_diff INTEGER;
 new_diff INTEGER;
 BEGIN
--- Generating unique integer id for stops
 EXECUTE 'SET LOCAL search_path to ' || quote_ident(gtfs_schema) || ', public';
+-- Generating unique integer id for stops
 IF NOT column_exists(gtfs_schema, 'stops', 'stop_id_int4') THEN
   ALTER TABLE stops
     ADD COLUMN stop_id_int4 SERIAL UNIQUE NOT NULL;
 END IF;
+IF NOT column_exists(gtfs_schema, 'stops', 'the_geom') THEN
+  PERFORM AddGeometryColumn(gtfs_schema, 'stops', 'the_geom', 4326, 'POINT', 2);
+END IF;
+UPDATE stops SET the_geom = ST_GeomFromText('POINT(' || stop_lon || ' ' || stop_lat || ')', 4326);
 -- Adding column stop_id_int4 to stop_times table to avoid joins
 IF NOT column_exists(gtfs_schema, 'stop_times', 'stop_id_int4') THEN
   ALTER TABLE stop_times
