@@ -93,35 +93,14 @@ CREATE TABLE shortest_time_graph(
     target          INTEGER REFERENCES stops(stop_id_int4),
     travel_time     INTEGER
 );
-FOR t_id IN
-SELECT trip_id FROM trips
-LOOP
-  FOR src_id, src_time IN
-  SELECT stop_id_int4, departure_time FROM stop_times
-    WHERE trip_id = t_id
-  LOOP
-    FOR dest_id, dest_time IN
-    SELECT stop_id_int4, arrival_time FROM stop_times
-      WHERE trip_id = t_id AND arrival_time > src_time
-    LOOP
-      new_diff := extract(epoch from (dest_time - src_time));
-      SELECT id, travel_time from shortest_time_graph
-        WHERE source = src_id AND target = dest_id
-        INTO stg_id, old_diff;
-      IF stg_id IS NULL THEN
-        INSERT INTO shortest_time_graph(source, target, travel_time) VALUES (
-          src_id,
-          dest_id,
-          new_diff
-        );
-      ELSIF old_diff > new_diff THEN
-        UPDATE shortest_time_graph
-          SET travel_time = new_diff
-          WHERE id = stg_id;
-      END IF;
-    END LOOP;
-  END LOOP;
-END LOOP;
+
+INSERT INTO shortest_time_graph(source,target,travel_time)
+  SELECT src.stop_id_int4, dest.stop_id_int4,
+    extract(epoch from min(dest.arrival_time - src.departure_time))
+  FROM stop_times src, stop_times dest
+  WHERE src.trip_id = dest.trip_id
+    AND src.stop_sequence < dest.stop_sequence
+  GROUP BY src.stop_id_int4, dest.stop_id_int4;
 
 -- Finding transitive closure of shortest time between stops(indirectly reachable also)
 DROP TABLE IF EXISTS shortest_time_closure;
