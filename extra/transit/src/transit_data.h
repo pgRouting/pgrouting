@@ -20,7 +20,7 @@ typedef struct {
 } gtfs_path_element_t;
 
 int get_max_stop_id(const char *schema);
-int fetch_next_links(const char *schema, int u, int arrival_time, next_link_t **t);
+int fetch_next_links(const char *schema, int u, time_t arrival_time, next_link_t **t);
 int fetch_shortest_time(const char *schema, int goal,
     time_seconds_t *shortest_time);
 

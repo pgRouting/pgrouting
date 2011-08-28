@@ -81,8 +81,7 @@ int compute_scheduled_route(char *gtfs_schema, int source, int destination,
   gtfs_path_element_t *path;
   int i;
   const unsigned int NUM_NODES = get_max_stop_id(gtfs_schema);
-  //const time_t MAX_TIME = numeric_limits<time_t>::max();
-  const int MAX_TIME = numeric_limits<int>::max();
+  const time_t MAX_TIME = numeric_limits<time_t>::max();
   dbg("MAX_TIME = %d", MAX_TIME);
 
   dbg("sizeof c++ int = %d\n", sizeof(int));
@@ -108,7 +107,7 @@ int compute_scheduled_route(char *gtfs_schema, int source, int destination,
         get(&stop_t::color, g), // color
         get(vertex_index, g), // index
         std::less<time_t>(), // compare
-        closed_plus<int>(), // combine
+        closed_plus<time_t>(), // combine
         numeric_limits<time_t>::max(), // inf
         0 // zero
         );

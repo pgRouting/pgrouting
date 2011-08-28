@@ -35,7 +35,7 @@ int get_max_stop_id(const char *schema) {
   return max_stop_id;
 }
 
-int fetch_next_links(const char *schema, int u, int arrival_time,
+int fetch_next_links(const char *schema, int u, time_t arrival_time,
     next_link_t **trips_ref) {
   int i;
   next_link_t *trips;
@@ -55,7 +55,7 @@ int fetch_next_links(const char *schema, int u, int arrival_time,
   sprintf(
       sql,
       "SELECT trip_id, destination_stop_id, waiting_cost, travel_cost FROM fetch_next_links('%s', %d, %d, '%s')",
-      schema, u, arrival_time, MAX_WAIT_TIME);
+      schema, u, (int)arrival_time, MAX_WAIT_TIME);
 
   int ret = SPI_execute(sql, true, MAX_LINKS_RETURNED);
   DBG("fetch_next_links query returned return value = %d", ret);
