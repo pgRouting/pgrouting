@@ -149,6 +149,11 @@ int compute_scheduled_route(char *gtfs_schema, int source, int destination,
     path[i - 1].travel_time = -1;
     return 0;
   }
+  catch(negative_edge &) {
+    dbg("Negative edge exception");
+    *path_count = 0;
+    return 0;
+  }
   dbg("Goal not found");
   *path_count = 0;
   return 0;
