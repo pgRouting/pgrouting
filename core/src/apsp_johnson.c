@@ -348,6 +348,7 @@ Datum apsp_johnson(PG_FUNCTION_ARGS) {
   }
 }
 
+#ifdef DEBUG
 void dbg(const char *fmt, ...) //FIXME:Refactor to a common place
     {
       char buff[1024];
@@ -357,3 +358,9 @@ void dbg(const char *fmt, ...) //FIXME:Refactor to a common place
       elog(NOTICE, "%s", buff);
       va_end(arg);
     }
+#else
+void dbg(const char *fmt, ...)
+{
+  return;
+}
+#endif
