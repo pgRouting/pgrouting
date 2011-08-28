@@ -80,7 +80,7 @@ int compute_scheduled_route(char *gtfs_schema, int source, int destination,
     time_t query_time, gtfs_path_element_t **path_ref, int *path_count) {
   gtfs_path_element_t *path;
   int i;
-  const unsigned int NUM_NODES = get_max_stop_id(gtfs_schema);
+  const unsigned int NUM_NODES = get_max_stop_id(gtfs_schema) + 1;
   const time_t MAX_TIME = numeric_limits<time_t>::max();
   dbg("MAX_TIME = %d", MAX_TIME);
 
