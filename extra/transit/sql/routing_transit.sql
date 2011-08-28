@@ -224,4 +224,4 @@ CREATE OR REPLACE FUNCTION scheduled_route(
     )
     RETURNS SETOF gtfs_path_result
     AS '$libdir/libtransit_routing'
-    LANGUAGE 'C';
+    LANGUAGE 'C' STRICT;
