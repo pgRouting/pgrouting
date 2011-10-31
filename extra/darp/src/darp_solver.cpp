@@ -70,9 +70,12 @@ class Router
 	//w[5], w[6] - weight of ex riding and waiting time
 	//w[7]       - weight on distance
 	
-	vector<double> load;   //vector with a load in a vehicle after
+	vector<double> load1;   //vector with a load in a vehicle after
 	                       //a node has been served
 	              
+	vector<double> load2;
+	vector<double> load3;
+	
 	vector<double> ctime;
 	vector<double> wtime;
 	
@@ -94,8 +97,7 @@ class Router
 			{
 				if(gnode <= (n-1))
 				{			
-					//remove from non-served list
-					//cn[c] = -1;
+					//put do node to non-served list
 					cn[c] += n-1;
 					DBG("cn[%i] = %i",c,cn[c]);
 					//put to in-vehicle list
@@ -109,6 +111,7 @@ class Router
 					cs[c] = gnode;
 					//remove from in-vehicle list
 					cv[c] = -1;
+					//remove from non-served list
 					cn[c] = -1;
 					DBG("cn[%i] = %i",c,cn[c]);
 					break;				
@@ -116,28 +119,6 @@ class Router
 			}	
 		}//for ends
 		DBG("Finish visiting");
-	}
-	
-	//marks gnode as not visited by updating global data
-	void unvisit(int gnode)
-	{
-		for(int c=v.size()-1;c>=0;c--)
-		{		
-			if(gnode==v[c].id)
-			{		
-				cn[c] = v[c].id;
-				cv[c] = -1;
-				break;
-			}
-			
-			if(gnode==v[c].id+n-1)
-			{
-				cs[c] = -1;
-				cv[c] = v[c].id;
-				break;		
-			}
-		}
-		//for ends
 	}
 	
 	int unserved()
@@ -184,11 +165,14 @@ class Router
 	{		
 		//DBG("separation for %i, %i", cnode, nnode);
 		float ttime, timek1;
-		float routedur=0, twviol=0,ridetimeviol=0, exride=0, wt=0;
+		float routedur=0, twviol=0, ridetimeviol=0, exride=0, wt=0;
 		ttime = DISTANCES.at(cnode).at(nnode);
 		//DBG("ttime = %f", ttime);
 		timek1 = ctime[k] + ttime; //arrival time at nnode
 		//DBG("timek1 = %f", timek1);
+		
+		routedur = timek1 - ctime[0];
+		
 		//change in route duration, ctime[k+1]-ctime[k]
 		if(nnode>n-1)
 			routedur = timek1 + ORDERS.at(nnode-n+1).doTime-ctime[k];
@@ -207,53 +191,55 @@ class Router
 		}
 		else
 		{
-			nnodeUT = ORDERS.at(nnode).puTime + ORDERS.at(nnode).puUT->time;
+			nnodeUT = ORDERS.at(nnode).puTime + ORDERS.at(nnode).puUT->time/1000000;
 			nnodeLT = ORDERS.at(nnode).puTime - ORDERS.at(nnode).puLT->time/1000000;
 		}
 		
-		if(timek1>nnodeUT);//r.getUTimeWindow(nnode))
-			twviol=timek1-nnodeUT;
-		//tw viol - if early then increase cost - can wait(twviol&lt;0)
-		if(timek1<nnodeLT)
-			twviol=timek1-nnodeLT;
-		if(timek1 < nnodeLT) //if arrival is to early
+		//if too late
+		if(timek1 > nnodeUT)
+			twviol = timek1 - nnodeUT;
+			
+		//if too early
+		if(timek1 < nnodeLT)
+		{
+		  //uncomment for really strict model
+		  //now we don't want to make arrive too early to be
+		  //worse than too late
+		  //twviol = timek1 - nnodeLT;
+		  timek1 = nnodeLT; //wait until ok
+		}
 		
-		timek1 = nnodeLT; //wait until ok
 		//customers ride time violations caluclated,
 		//if customer has been in the car for longer than max
-		//ride time sais then ride time viol &gt; 0, service times of
+		//ride time then ride time viol > 0, service times of
 		//customer not included, i.e. nnode is a drop off location
 		// AND
 		//customers excess ride times calculated,
 		//ridetime - direct transport time
-		if(nnode>n)
-		{
-			
+		if(nnode > n)
+		{		
 			for(int i=1;i<ord.size()-2;i++)
 			{
 				
 				if(ord[i]==nnode-n-1)
-				{
-					
-					if(timek1-ctime[i]>MAX_RIDE_TIME)
-					ridetimeviol=timek1-ctime[i];
-					exride=	timek1- ctime[i] - DISTANCES.at(ord[i]).at(nnode);//d.getDistance(ord[i],nnode);
-					
+				{				
+					if(timek1 - ctime[i] > MAX_RIDE_TIME)
+					ridetimeviol = timek1 - ctime[i];
+					exride = timek1 - ctime[i] - DISTANCES.at(ord[i]).at(nnode);				
 				}
-				//if
+				//end if
 				
 			}
-			//for
+			//end for
 			
 		}
-		//if
+		//end if
 		//waiting time calculated * persons in the vehicle
 		int count = 0;
-		for (int c=0;c<cv.size();c++)
-		{
-			
-			if(cv[c]!= -1) count++;
-			
+		for (int c=0; c < cv.size(); c++)
+		{		
+			if(cv[c] != -1)
+				count++;			
 		}
 		
 		wt = count*(timek1-(ctime[k] + ttime));
@@ -269,191 +255,6 @@ class Router
 				);
 		
 	}	
-
-	//returns cost of move from current node to next node
-	float movecost(int cnode, int nnode, int k)
-	{
-		DBG("in movecost(%i,%i,%i)",cnode,nnode,k);
-		float ttime, timek1;
-		
-		float routedur=0, twviol=0,ridetimeviol=0, exride=0, wt=0;
-		ttime = DISTANCES.at(cnode).at(nnode);
-		DBG("ttime=%f",ttime);
-		timek1 = ctime[k] + ttime; //arrival time at nnode
-		DBG("timek1=%f",timek1);
-		
-		float nnodeST;
-		if(nnode>n-1)
-			nnodeST = ORDERS.at(nnode-n+1).doTime;
-		else
-			nnodeST = ORDERS.at(nnode).puTime;
-
-		DBG("wtime[%i]=%f",k+1,wtime[k+1]);
-		DBG("ctime[%i]=%f",k,ctime[k]);
-		DBG("nnodeST=%f",nnodeST);
-		
-		//change in route duration, ctime[k+1]-ctime[k]
-		routedur = timek1+/*wtime[k+1]*/+nnodeST-ctime[k];
-		DBG("routedur=%f",routedur);
-		
-		float nnodeUT, nnodeLT;
-		
-		if(nnode>n-1)
-		{
-			nnodeUT = ORDERS.at(nnode-n+1).doTime + ORDERS.at(nnode-n+1).doUT->time/1000000;
-			nnodeLT = ORDERS.at(nnode-n+1).doTime - ORDERS.at(nnode-n+1).doLT->time/1000000;
-		}
-		else
-		{
-			nnodeUT = ORDERS.at(nnode).puTime + ORDERS.at(nnode).puUT->time/1000000;
-			nnodeLT = ORDERS.at(nnode).puTime - ORDERS.at(nnode).puLT->time/1000000;
-		}		
-
-		//tw violations calculated,
-		if(timek1>nnodeUT)
-			twviol=timek1-nnodeUT;
-		if(ctime[k] + ttime < nnodeLT)
-			twviol=nnodeLT-(ctime[k] + ttime);
-		if(timek1 < nnodeLT) //if arrival is to early
-		timek1= nnodeLT; //wait until ok
-		//customers ride time violations caluclated,
-		//if customer has been in the car for longer than max
-		//ride time sais then ride time viol &gt; 0, service times of
-		//customer not included, i.e. nnode is a drop off location
-		// AND
-		//customers excess ride times calculated,
-		//ridetime - direct transport time
-		if(nnode>n-1)
-		{
-			
-			for(int i=1;i<ord.size()-2;i++)
-			{
-				
-				if(ord[i]==nnode-n+1)
-				{
-					
-					if(timek1-ctime[i]>MAX_RIDE_TIME)
-					ridetimeviol=timek1-ctime[i]-MAX_RIDE_TIME;
-					exride=
-					timek1- ctime[i] - DISTANCES.at(ord[i]).at(nnode);//d.getDistance(ord[i],nnode);
-					
-				}
-				//if
-				
-			}
-			//for
-			
-		}
-		//if
-		//waiting time calculated * persons in the vehicle
-		int count = 0;
-		for (int c=0;c<cv.size();c++)
-		{
-			
-			if(cv[c]!= -1) count++;
-			
-		}
-		
-		wt = count*(timek1-(ctime[k] + ttime));
-		
-		//return(w[1]*routedur + w[2]*twviol + w[3]*ridetimeviol
-		//+ w[5]*exride + w[6]*wt + w[7]*ttime);
-		
-		return (
-		w[1]*routedur - 
-		w[3]*exride +  				
-		w[4]*wt + 
-		w[5]*ridetimeviol -
-		w[6]*twviol -
-		w[7]*ttime
-		);
-		
-	}
-	
-	float cost(int nnode, int cnode, int k)
-	{
-		DBG("in cost(%i, %i, %i)",nnode,cnode,k);
-		int vn[4]; //next four nodes considered
-		
-		float totcost = 0;
-		float ttime; //travel time
-		
-		int cc = 0;
-		float ertime; //earliest arrival time to node
-		
-		for(int i=0;i<4;i++)
-		{
-			vn[i]=-1;
-			//N[i] = -1;
-		}
-
-		for(int i=0;i<4;i++)
-		{
-			
-			totcost = totcost + movecost(cnode, nnode, k);
-			DBG("**********************************totcost=%f", totcost);
-			if (nnode>0) 
-				visit(nnode);
-			vn[i]=nnode;
-			ttime = DISTANCES.at(cnode).at(nnode);//d.getDistance(cnode,nnode)/speed;
-			ertime = ctime[k] + ttime; //arrival time at nnode
-			
-			float nnodeLT;
-						
-			if(nnode>n-1)
-			{
-				nnodeLT = ORDERS.at(nnode-n+1).doTime - ORDERS.at(nnode-n+1).doLT->time/1000000;
-			}
-			else
-			{
-				nnodeLT = ORDERS.at(nnode).puTime - ORDERS.at(nnode).puLT->time/1000000;
-			}				
-			
-			//if(ertime<nnodeLT)
-			//	ertime=nnodeLT;
-			
-			if(ertime<nnodeLT)
-				ertime=nnodeLT;
-			
-			cnode = nnode;
-			k++;
-			float cnodeST;
-			if(cnode>n-1)
-				cnodeST = ORDERS.at(cnode-n+1).doTime;
-			else
-				cnodeST = ORDERS.at(cnode).puTime;
-			
-			ctime[k] = ertime + cnodeST;
-			
-			//service at nnode finished
-			nnode = closestNode(cnode,k);
-			DBG("nnode=%i",nnode);
-			DBG("**********************************totcost=%f",totcost);
-			if (nnode==-2)
-			{			
-				cc++;
-				if (cc==1)
-				{					
-					nnode = 0;
-					totcost = totcost + movecost(cnode, nnode, k);	
-				}
-				else break;
-			}
-			//end if
-		}
-		//end for
-		/*
-		for(int i=3;i>=0;i--)
-		{
-			
-			if(vn[i]> 0)
-			unvisit(vn[i]);			
-		}
-		//for ends
-		*/
-		DBG("**********************************totcost=%f",totcost);
-		return totcost;
-	}
 	
 	float getTotalCost()
 	{
@@ -470,15 +271,10 @@ class Router
 		
 		int cnode, nnode;
 		
-		/*
-		for(int i=0;i < cv.size(); i++)
-		{
-			cv[i]=-1;
-			cs[i]=-1;
-			cn[i]=v[i].id;
-		}
-		*/
-		load[0]=0;
+		load1[0]=0;
+		load2[0]=0;
+		load3[0]=0;
+		
 		cnode = ord[0];
 		ctime[0]=retime();
 		
@@ -499,54 +295,60 @@ class Router
 				order = ORDERS[nnode - (n-1)];
 				nnodeST = order.doTime;
 				nnodeLT = nnodeST - order.doLT->time/1000000;
-				
-				load[i]=load[i-1]-order.size;
 			}
 			else
 			{
 				order = ORDERS[nnode];
 				nnodeST = order.puTime;
 				nnodeLT = nnodeST - order.puLT->time/1000000;
-				
-				load[i]=load[i-1]+order.size;
 			}
 			
-			//load[i]=load[i-1]+order.size;
-			
-			
+			load1[i]=load1[i-1]-order.size1;
+			load2[i]=load2[i-1]-order.size2;
+			load3[i]=load3[i-1]-order.size3;
+				
 			ttime = DISTANCES.at(cnode).at(nnode);
-			ctime[i] = ctime[i-1]+ttime+nnodeST+wtime[i];
+
+			ctime[i] = ctime[i-1] + ttime;
+			
 			DBG(">>>>>>>>>>> ctime[%i]=%f",i,ctime[i]);
-			if(ctime[i] < nnodeLT+nnodeST)
+			
+			//if too early
+			if(ctime[i] < nnodeLT)
 			{				
-				ctime[i]=nnodeLT+nnodeST;
-				wtime[i]=ctime[i]-(ctime[i-1]+ttime+nnodeST);				
+				ctime[i] = nnodeLT;
+				wtime[i] = nnodeLT - ctime[i];				
 			}
 			//if ends
-			if(i>1 && wtime[i]>0 && load[i-1]>load[i-2])
+			
+			if(i>1 && wtime[i]>0 && (load1[i-1]>load1[i-2] || load2[i-1]>load2[i-2] ||load3[i-1]>load3[i-2] ))
 				waiting(i);
-			//if(diff&gt;-1) totcost = diff;
 			
-			//cnode = nnode;
-			
-			//if(cnode>0)
-			//	visit(cnode);
+			DBG("calculate capacity violation for loads %f,%f,%f and capacities %f,%f,%f", load1[i], load2[i], load3[i], car.capacity1,car.capacity2,car.capacity3);
 			
 			
-			DBG("calculate capacity violation for load %f and capacity %f", load[i], car.capacity);
-			
-			
-			if(load[i] > car.capacity)
+			if(load1[i] > car.capacity1)
 			{
 				//raise capacity violation constraint
-				capacityviol+=load[i] - car.capacity;
+				capacityviol+=load1[i] - car.capacity1;
 			}
+			if(load2[i] > car.capacity2)
+			{
+				//raise capacity violation constraint
+				capacityviol+=load2[i] - car.capacity2;
+			}
+			if(load3[i] > car.capacity3)
+			{
+				//raise capacity violation constraint
+				capacityviol+=load3[i] - car.capacity3;
+			}
+			
 			DBG("capacity violation = %f", capacityviol);			
 			
 		}
 		//for ends
 		
-		for(int i=1;i < ord.size();i++)
+		for(int i=1; i < ord.size(); i++)
 		{
 			
 			ttime = DISTANCES.at(ord[i-1]).at(ord[i]);
@@ -569,12 +371,12 @@ class Router
 				nnodeUT = serv + order.puUT->time/1000000;
 			}
 			
-			//tw violations calculated,
-			if(ctime[i]-serv > nnodeUT)
-				twviol=twviol+(ctime[i]-serv)-nnodeUT;
+			//tw violations calculated
+			if(ctime[i] > nnodeUT)
+				twviol += ctime[i]-nnodeUT;
 				
-			if(ctime[i-1]+ttime<nnodeLT)
-				twviol=twviol+nnodeLT-(ctime[i-1]+ttime);
+			if(ctime[i] < nnodeLT)
+				twviol += nnodeLT-ctime[i-1];
 				
 			//customers ride time violations caluclated,
 			//if customer has been in the car for longer than max
@@ -584,24 +386,18 @@ class Router
 			// AND
 			//customers excess ride times calculated,
 			//ridetime - direct transport time
-			if(ord[i]>n-1)
-			{
-				
-				for(int j=1;j<ord.size()-2;j++)
+			if(ord[i] > n-1)
+			{			
+				for(int j=1;j<ord.size();j++)
 				{				
 					if(ord[j]==ord[i]-(n-1))
 					{
-						
-						if(ctime[i]-serv-ctime[j]>MAX_RIDE_TIME)
-						{
-							
-							rideviol= rideviol+ ctime[i]-serv-
-							ctime[j]-MAX_RIDE_TIME;
-							
+						if(ctime[i]-ctime[j] > MAX_RIDE_TIME)
+						{							
+							rideviol += ctime[i]-ctime[j]-MAX_RIDE_TIME;							
 						}
 						
-						xride=xride+ctime[i]-serv-ctime[j]
-						-DISTANCES.at(ord[i]).at(ord[j]);
+						xride += ctime[i]-ctime[j]-DISTANCES.at(ord[i]).at(ord[j]);
 						
 					}
 					//if
@@ -612,7 +408,7 @@ class Router
 			}
 			//if
 			//waiting time calculated * persons in the vehicle
-			wt = wt+load[i-1]*(ctime[i]-serv-(ctime[i-1]+ttime));
+			wt = wt+(load1[i-1]+load2[i-1]+load3[i-1])*(ctime[i]-serv-(ctime[i-1]+ttime));
 			
 		}
 		
@@ -738,7 +534,7 @@ class Router
 			diff=ut-ctime[i-1]+st;
 			
 			//arrival time within tw
-			if(load[i-2]>load[i-1]|| wtime[i]<0.01 || diff<=0)
+			if(load1[i-2]>load1[i-1]||load2[i-2]>load2[i-1]||load3[i-2]>load3[i-1]|| wtime[i]<0.01 || diff<=0)
 				break;
 			else
 			{				
@@ -790,8 +586,6 @@ class Router
 		order_t first=ORDERS[0];
 		int no=-1;
 		double mini=3.3E38f;
-		//vector<double> ultw(v.size());		
-		//DBG("ultw.size() = %i", ultw.size());
 		
 		DBG("earliest latest time finding loop");
 		//we assume that the depot is always in a cluster and has id=0
@@ -820,33 +614,27 @@ class Router
 		//all customers number set into cn, customers not served
 		for(int i=0;i<cun*2-1;i++)
 		{
-			/*
-			if(i > (n-1))
-			{
-				cn.push_back(v[i-(n-1)].id + (n-1));
-				DBG("cn.push_back(%i)",v[i-(n-1)].id + (n-1));
-			}
-			else
-			{
-				cn.push_back(v[i].id);
-				DBG("cn.push_back(%i)",v[i].id);
-			}
-			*/
 			if(i <= (n-1))
 				cn.push_back(v[i].id);
 				
 			cs.push_back(-1);
 			cv.push_back(-1);
 			//ord.push_back(-1);
-			load.push_back(-1);
+			load1.push_back(-1);
+			load2.push_back(-1);
+			load3.push_back(-1);
 		}
 		
-		//cv.at(no) = first.id; //first customer added to vehcile
-		//cn.at(no) = -1;       //first customer deleted from cn
 		ord.push_back(0);         //start in depot
 		ord.push_back(first.id); //then to first customer
-		load[0] = 0;
-		load[1] = first.size;	
+		load1[0] = 0;
+		load1[1] = first.size1;	
+		
+		load2[0] = 0;
+		load2[1] = first.size2;
+		
+		load3[0] = 0;
+		load3[1] = first.size3;
 		
 		//current node depot, next node first customer,
 		cnode = 0;
@@ -861,31 +649,17 @@ class Router
 		
 		DBG("ttime = %f", ttime);
 		
-		//first cust has lowest upper pickup tw	
-		//float L = first.doLT->time/1000000-DISTANCES.at(first.id).at(first.id+n-1)-MAX_RIDE_TIME;
+		DBG(" ===================== ttime=%f",ttime);
 		
-		//DBG("L = %f", L);
-		
-		//ctime.at(0) = L-ttime+v.at(0).puTime; //ctime[0]
-		
-		//assume that service time is most desirable
-		ctime.at(0) = first.puTime - ttime;
-				
-		//if(ctime.at(0) < 0)
-		//	ctime.at(0)=v.at(0).puTime;
-			
-		DBG(" ===================== ctime[0]=%f",ctime[0]);	
-			
-		//ctime.at(1) = ctime.at(0) + ttime + ORDERS.at(nnode).puTime ; //ctime[1]
+		//calculate desirable time as a middle point
+		//of time window
+		//(will be puTime in case of symmetrical tw)
+		//ctime.at(1) = ((first.puTime - first.puLT->time/1000000) + (first.puTime + first.puUT->time/1000000))/2;
 		ctime.at(1) = first.puTime;
-		
-		//time after first cust
-		//if ctime is lower than lower time window, then wait
-		if(ctime.at(1) < ORDERS.at(nnode).puLT->time/1000000 + ORDERS.at(nnode).puTime)
-		{			
-			ctime.at(1) = ORDERS.at(nnode).puLT->time/1000000 + ORDERS.at(nnode).puTime;
-			wtime.at(1) = ctime.at(1) - ctime.at(0) - ttime - ORDERS.at(nnode).puTime;			
-		}
+		ctime.at(0) = first.puTime - ttime;
+						
+		DBG(" ===================== ctime[0]=%f",ctime[0]);	
+		DBG(" ===================== ctime[1]=%f",ctime[1]);	
 		
 		//cnode set to first customer
 		cnode = nnode;
@@ -904,10 +678,6 @@ class Router
 			visit(nnode);
 			ord.push_back(nnode);
 			DBG("================ ord.push_back(%i)",nnode);
-			
-			ttime = DISTANCES.at(cnode).at(nnode);
-			
-			//ctime calculation
 			
 			cnode = nnode;
 			++k;
@@ -944,18 +714,6 @@ Router::Router()
 		w.at(7) = onum; //passanger ride time violation
 		w.at(8) = onum*1000000; //route time violation
 	}
-	
-	/*
-	w.resize(9); //weights for:
-	w.at(1) = 8; //driving time violation
-	w.at(2) = 1000000000; //car capacity violation
-	w.at(3) = 3; //excess passanger ride time
-	w.at(4) = 1; //passanger waiting time violation
-	w.at(5) = 1; //route duration
-	w.at(6) = onum; //time window violation
-	w.at(7) = onum; //passanger ride time violation
-	w.at(8) = onum*1000000; //route time violation
-	 */
 }
 
 boolean darp_score(population *pop, entity *entity)
@@ -967,11 +725,15 @@ boolean darp_score(population *pop, entity *entity)
   entity->fitness = 0.0;
   dist = 0.0;
   
-  bool depot_check = TRUE;
+  int depot_check;
   int vehicle_check;
   
   char *chromo=NULL;
   size_t chromolen=0;
+  
+  DBG("DARP SCORE");
+  char* chr = ga_chromosome_boolean_to_string(pop, entity, chromo, &chromolen);
+  DBG("DARP SCORE %s", chr);
   
   //assign very low score to really wrong chromosomes
   for (c = 0; c < pop->num_chromosomes; c++)
@@ -990,7 +752,7 @@ boolean darp_score(population *pop, entity *entity)
 	}
 	//DBG("%i == %i", vehicle_check, 1);
 	if(vehicle_check != 1)
-      entity->fitness = -1;
+      entity->fitness -= 1;
       
     vehicle_check = 0;
   }
@@ -1007,6 +769,7 @@ boolean darp_score(population *pop, entity *entity)
 	ORD = vector<vector< pair<int, double> > > ( pop->num_chromosomes, vector< pair<int, double> > ( 0 ) );
 	
     // for each vehicle (cluster)
+    DBG(" ----------------------- For %i vehicles in %s",  pop->num_chromosomes, chromo);
 	for (c = 0; c < pop->num_chromosomes; c++)
 	{
 		DBG("vehicle # : %i", c);
@@ -1034,13 +797,16 @@ boolean darp_score(population *pop, entity *entity)
 		
 		entity->fitness += router.getTotalCost();
 		
+		DBG("ORD size = %i", router.ord.size());
+		
 		for(int i=0;i < router.ord.size(); ++i)
 		{			
 			DBG("router.ord[%i]=%i",i, router.ord.at(i));
 			ORD.at(c).push_back(pair<int,double>( router.ord.at(i), ( i == 0 ? 
-																		(router.ctime.at(1) - router.ctime.at(0)) - DISTANCES.at(0).at(router.ord.at(1))
-																		//router.ctime.at(0) 
-																		: router.ctime.at(i) - router.ctime.at(i-1) 
+																		//(router.ctime.at(1) - router.ctime.at(0)) - DISTANCES.at(0).at(router.ord.at(1))
+																		router.ctime.at(0) 
+																		//: router.ctime.at(i) - router.ctime.at(i-1) 
+																		: router.ctime.at(i)
 																	)*1000000 ));
 		}
 		
@@ -1058,7 +824,7 @@ find_darp_solution(int order_num, int vehicle_num,
 			vehicle_t *vehicles,
 			order_t *orders,
 			itinerary_t *path,
-			double *dist,
+			double **dist,
 			//point_t depot,
 			int depot_id,
 			int *penalties,
@@ -1068,6 +834,8 @@ find_darp_solution(int order_num, int vehicle_num,
   int i,j;
   population    *pop=NULL;              /* Population of solutions. */
   float          score = 0.0;           /* Best score */
+  
+  DBG("Hi there!");
 
   onum=order_num;
   vnum = vehicle_num;
@@ -1091,15 +859,17 @@ find_darp_solution(int order_num, int vehicle_num,
   copy ( orders, orders + order_num, back_inserter ( ORDERS ) );
   copy ( vehicles, vehicles + vehicle_num, back_inserter ( VEHICLES ) );
   
-  for(int d = 0; d < order_num*2 - 1; ++d)
+  double *dst;
+  for(int d = 0; d < (order_num*2-1); d++)
   {
 	  vector<double> row;
+	  dst = (double *)dist[d];
+
 	  //ugly
-	  for(int dd = 0; dd < (order_num*2-1); ++dd)
+	  for(int dd = 0; dd < (order_num*2-1); dd++)
 	  {
-	    *(dist + (order_num * d) + dd);
-	    //DBG("dist[%i][%i]=%f",d,dd,*(dist + ((order_num * 2 - 1) * d) + dd));
-	    row.push_back(*(dist + ((order_num * 2 - 1) * d) + dd));
+	    DBG("dist[%i][%i]=%f",d,dd,dst[dd]);
+	    row.push_back(dst[dd]);
 	  }
 	  
 	  DISTANCES.push_back(row);
@@ -1112,10 +882,14 @@ find_darp_solution(int order_num, int vehicle_num,
   
   random_init();
   
+  DBG("INIT GA");
+  
       if (pop) ga_extinction(pop);
       
       //random_seed(ss);
       random_seed(14635242);
+      
+      DBG("SEEDED");
       
       pop = ga_genesis_boolean(
                 30,  /* const int              population_size */
@@ -1135,6 +909,8 @@ find_darp_solution(int order_num, int vehicle_num,
                 NULL,          /* GAreplace       replace */
                 NULL           /* vpointer        User data */
                 );
+                
+      DBG("POP GENERATED");
 
       ga_population_set_parameters(
                pop,                     /* population      *pop */
@@ -1144,40 +920,35 @@ find_darp_solution(int order_num, int vehicle_num,
                0.05,                     /* optimal double  mutation */
                0.0                      /* unused  double  migration */
                );
+               
+      DBG("POP CONFIGURED");
 
       ga_evolution(
               pop,              /* population  *pop */
               MAX_GENERATIONS*order_num*vehicle_num   /* const int   max_generations */
               );
 
+      DBG("EVALUATED");
       
-      entity* winner;
-      if(ga_get_entity_from_rank(pop,0)->fitness > score)
+      entity* winner = ga_get_entity_from_rank(pop,0);
+      
+      if(winner->fitness > score)
         {
-          score = ga_get_entity_from_rank(pop,0)->fitness;
-          winner = ga_get_entity_from_rank(pop,0);
+          score = winner->fitness;
           *fit = score;
-      
-          /*
-          for(int l=0; l<cnum; l++)
-            { 
-              p_ids[l] = ids[
-                             ((int *)ga_get_entity_from_rank(pop,0)->
-                              chromosome[0])[l]];
-            }
-          */
         }
+        
+        DBG("Score = %f", score);
         
         size_t chromolen=0;
         char* chromo = NULL;
         char* chr = ga_chromosome_boolean_to_string(pop, winner, chromo, &chromolen);
         
         DBG("Winner is %s", chr);
-        DBG("Score = %f", score);
+              
+        //darp_score(pop, winner);
         
-        darp_score(pop, winner);
-        
-        //DBG("ORD size is %i x %i", ORD.size(), ORD.at(0).size());
+        DBG("ORD size is %i x %i", ORD.size(), ORD.at(0).size());
         
         vector<itinerary_t> res;
         
@@ -1218,5 +989,4 @@ find_darp_solution(int order_num, int vehicle_num,
     ga_extinction(pop); 
   
   return res.size();
-  //return EXIT_SUCCESS;
 }

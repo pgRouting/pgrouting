@@ -73,8 +73,8 @@ long profipts1, profipts2, profopts;
 
 Datum darp(PG_FUNCTION_ARGS);
 
-//#undef DEBUG
-#define DEBUG 1
+#undef DEBUG
+//#define DEBUG 1
 
 #ifdef DEBUG
 #define DBG(format, arg...)                     \
@@ -90,7 +90,9 @@ typedef struct vehicle_columns
 {
   int id;
   int vehicle_id;
-  int capacity;
+  int capacity1;
+  int capacity2;
+  int capacity3;
 } vehicle_columns_t;
 
 typedef struct order_columns
@@ -103,7 +105,9 @@ typedef struct order_columns
   int doTime;
   int doUT;
   int doLT;
-  int size;
+  int size1;
+  int size2;
+  int size3;
   int from;
   int to;
 } order_columns_t;
@@ -143,6 +147,14 @@ order_cmp (const void *c1, const void *c2)
 }
 
 int 
+order_id_cmp (const void *c1, const void *c2)
+{
+  order_t *o1 = (order_t*)c1;
+  order_t *o2 = (order_t*)c2;
+  return o1->id - o2->id;
+}
+
+int 
 order_cmp_asc (const void *c1, const void *c2)
 {
   order_t *o1 = (order_t*)c1;
@@ -161,6 +173,19 @@ int find_order(int order_id, order_t *orders, int count)
     if (result)
       id = result->id;
       
+    return id;
+}
+
+int find_order_dumb(int order_id, order_t *orders, int count)
+{
+	int id = -1, i;
+
+	for(i = 0; i < count; ++i)
+	{
+		if(orders[i].order_id == order_id)
+			id = i;
+    }
+     
     return id;
 }
 
@@ -304,7 +329,7 @@ fetch_distance_columns(SPITupleTable *tuptable, distance_columns_t *distance_col
 
 static void
 fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc, 
-            distance_columns_t *distance_columns, double *dist, int num_rows, order_t *orders)
+            distance_columns_t *distance_columns, double **dist, int num_rows, order_t *orders)
 {
   Datum binval;
   bool isnull;
@@ -360,33 +385,36 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
   
   //DBG("dist[%i][%i] = %f\n", from_point, to_point, value);
     
-  int from = find_order(from_order, orders, order_num);
+  int from = find_order_dumb(from_order, orders, order_num+1);
   
   //DBG("found ford %i for %i", from, from_order);
   
   order_t ford = orders[from];
-  
-  if(from_point == ford.to)
+  //DBG("Testing %i for order %i [%i -> %i]", from_point, ford.order_id, ford.from, ford.to);
+ 
+  if(from_order!= 0 && from_point == ford.to)
   {
 	  from += order_num;
   }
   
-  int to = find_order(to_order, orders, order_num);
+  int to = find_order_dumb(to_order, orders, order_num+1);
   
   //DBG("found tord %i for %i", to, to_order);
   
   order_t tord = orders[to];
+  //DBG("Testing %i for order %i [%i -> %i]", to_point, tord.order_id, tord.from, tord.to);
 
-  if(to_point == tord.to)
+  if(to_order!= 0 && to_point == tord.to)
   {
 	  to += order_num;
   }
     
-  //dist[from][to] = value;
-  if(from > 0 && to > 0)
-	*(dist + (num_rows * from) + to) = value;
+  dist[from][to] = value;
+  //DBG("DIST[%i][%i] = %f\n", from, to, dist[from][to]);
+  //if(from > 0 && to > 0)
+//	*(dist + (num_rows * from) + to) = value;
   
-  //DBG("dist[%i(%i:%i)][%i(%i:%i)] = %f\n", from, from_order, from_point, to, to_order, to_point, *(dist + (num_rows * from) + to));
+  //DBG("dist[%i(%i:%i)][%i(%i:%i)] = %f\n", from, from_order, from_point, to, to_order, to_point, dist[from][to]);
 
 }
 
@@ -405,7 +433,9 @@ fetch_order_columns(SPITupleTable *tuptable, order_columns_t *order_columns)
   order_columns->doUT = SPI_fnumber(SPI_tuptable->tupdesc, "do_ut");  
   order_columns->from = SPI_fnumber(SPI_tuptable->tupdesc, "from_point");
   order_columns->to = SPI_fnumber(SPI_tuptable->tupdesc, "to_point");
-  order_columns->size = SPI_fnumber(SPI_tuptable->tupdesc, "size");
+  order_columns->size1 = SPI_fnumber(SPI_tuptable->tupdesc, "size1");
+  order_columns->size2 = SPI_fnumber(SPI_tuptable->tupdesc, "size2");
+  order_columns->size3 = SPI_fnumber(SPI_tuptable->tupdesc, "size3");
   if (//order_columns->id == SPI_ERROR_NOATTRIBUTE ||
       order_columns->order_id == SPI_ERROR_NOATTRIBUTE ||
 	  order_columns->puTime == SPI_ERROR_NOATTRIBUTE ||
@@ -416,14 +446,16 @@ fetch_order_columns(SPITupleTable *tuptable, order_columns_t *order_columns)
 	  order_columns->doUT == SPI_ERROR_NOATTRIBUTE ||
 	  order_columns->from == SPI_ERROR_NOATTRIBUTE ||
 	  order_columns->to == SPI_ERROR_NOATTRIBUTE ||
-	  order_columns->size == SPI_ERROR_NOATTRIBUTE
+	  order_columns->size1 == SPI_ERROR_NOATTRIBUTE ||
+	  order_columns->size2 == SPI_ERROR_NOATTRIBUTE ||
+	  order_columns->size3 == SPI_ERROR_NOATTRIBUTE
   )
     {
 //      elog(ERROR, "Error, query must return columns "
 //           "'id', 'order_id', 'pu_time', 'do_time', 'pu_time_window', 'do_time_window', 'from_x', 'to_x', 'from_y', 'to_y' and 'size'");
       elog(ERROR, "Error, query must return columns "
            //"'id', 
-           "'order_id', 'pu_lt', 'do_lt', 'pu_ut', 'do_ut', 'from_point', 'to_point', and 'size'");
+           "'order_id', 'pu_lt', 'do_lt', 'pu_ut', 'do_ut', 'from_point', 'to_point', 'size1', 'size2' and 'size3'");
        return -1;
     }
 
@@ -525,14 +557,32 @@ fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
   DBG("to = %i\n", order->to);
 
 
-  binval = SPI_getbinval(*tuple, *tupdesc, order_columns->size, &isnull);
+  binval = SPI_getbinval(*tuple, *tupdesc, order_columns->size1, &isnull);
 
   if (isnull)
-    elog(ERROR, "size contains a null value");
+    elog(ERROR, "size1 contains a null value");
 
-  order->size = DatumGetFloat8(binval);
+  order->size1 = DatumGetFloat8(binval);
 
-  DBG("size = %f\n", order->size);
+  DBG("size1 = %f\n", order->size1);
+  
+  binval = SPI_getbinval(*tuple, *tupdesc, order_columns->size2, &isnull);
+
+  if (isnull)
+    elog(ERROR, "size2 contains a null value");
+
+  order->size2 = DatumGetFloat8(binval);
+
+  DBG("size2 = %f\n", order->size2);
+  
+  binval = SPI_getbinval(*tuple, *tupdesc, order_columns->size3, &isnull);
+
+  if (isnull)
+    elog(ERROR, "size3 contains a null value");
+
+  order->size3 = DatumGetFloat8(binval);
+
+  DBG("size3 = %f\n", order->size3);
 }
 
 static int
@@ -542,13 +592,17 @@ fetch_vehicle_columns(SPITupleTable *tuptable, vehicle_columns_t *vehicle_column
 
   vehicle_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
   vehicle_columns->vehicle_id = SPI_fnumber(SPI_tuptable->tupdesc, "vehicle_id");
-  vehicle_columns->capacity = SPI_fnumber(SPI_tuptable->tupdesc, "capacity");
+  vehicle_columns->capacity1 = SPI_fnumber(SPI_tuptable->tupdesc, "capacity1");
+  vehicle_columns->capacity2 = SPI_fnumber(SPI_tuptable->tupdesc, "capacity2");
+  vehicle_columns->capacity3 = SPI_fnumber(SPI_tuptable->tupdesc, "capacity3");
   if (vehicle_columns->id == SPI_ERROR_NOATTRIBUTE ||
-		  vehicle_columns->capacity == SPI_ERROR_NOATTRIBUTE
+		  vehicle_columns->capacity1 == SPI_ERROR_NOATTRIBUTE ||
+		  vehicle_columns->capacity2 == SPI_ERROR_NOATTRIBUTE ||
+		  vehicle_columns->capacity3 == SPI_ERROR_NOATTRIBUTE
   )
     {
       elog(ERROR, "Error, query must return columns "
-           "'id' and 'capacity'");
+           "'id', 'capacity1', 'capacity2' and 'capacity3'");
       return -1;
     }
 
@@ -562,7 +616,7 @@ fetch_vehicle(HeapTuple *tuple, TupleDesc *tupdesc,
   Datum binval;
   bool isnull;
 
-  DBG("inside fetch_vehicle\n");
+  //DBG("inside fetch_vehicle\n");
 
   //binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->id, &isnull);
   //DBG("Got id\n");
@@ -574,26 +628,41 @@ fetch_vehicle(HeapTuple *tuple, TupleDesc *tupdesc,
   
   vehicle->id = t;
 
-  DBG("id = %i\n", vehicle->id);
+  //DBG("id = %i\n", vehicle->id);
   
   binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->vehicle_id, &isnull);
-  DBG("Got vehicle_id\n");
+  //DBG("Got vehicle_id\n");
 
   if (isnull)
     elog(ERROR, "vehicle_id contains a null value");
 
   vehicle->vehicle_id = DatumGetInt32(binval);
 
-  DBG("vehicle_id = %i\n", vehicle->vehicle_id);
+  //DBG("vehicle_id = %i\n", vehicle->vehicle_id);
 
-  binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->capacity, &isnull);
+  binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->capacity1, &isnull);
   if (isnull)
-    elog(ERROR, "capacity contains a null value");
+    elog(ERROR, "capacity1 contains a null value");
 
-  vehicle->capacity = DatumGetFloat8(binval);
+  vehicle->capacity1 = DatumGetFloat8(binval);
 
-  DBG("capacity = %f\n", vehicle->capacity);
+  //DBG("capacity1 = %f\n", vehicle->capacity1);
 
+  binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->capacity2, &isnull);
+  if (isnull)
+    elog(ERROR, "capacity2 contains a null value");
+
+  vehicle->capacity2 = DatumGetFloat8(binval);
+
+  //DBG("capacity2 = %f\n", vehicle->capacity2);
+  
+  binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->capacity3, &isnull);
+  if (isnull)
+    elog(ERROR, "capacity3 contains a null value");
+
+  vehicle->capacity3 = DatumGetFloat8(binval);
+
+  //DBG("capacity3 = %f\n", vehicle->capacity3);  
 }
 
 static int conn(int *SPIcode)
@@ -650,11 +719,11 @@ static int solve_darp(char* orders_sql, char* vehicles_sql,
   int ntuples;
 
   vehicle_t *vehicles=NULL;
-  vehicle_columns_t vehicle_columns = {id: -1, capacity: -1};
+  vehicle_columns_t vehicle_columns = {id: -1, capacity1: -1, capacity2: -1, capacity3: -1};
 
   order_t *orders=NULL;
   order_columns_t order_columns = {
-		  order_id: -1, puLT: -1, doLT:-1,  puUT: -1, doUT:-1, size:-1, from:-1, to:-1};
+		  order_id: -1, puLT: -1, doLT:-1,  puUT: -1, doUT:-1, size1:-1, size2:-1, size3:-1, from:-1, to:-1};
 		  
   distance_columns_t distance_columns = {from_order: -1, from_point: -1, to_order: -1, to_point: -1, value: -1};
   
@@ -763,6 +832,11 @@ static int solve_darp(char* orders_sql, char* vehicles_sql,
     
   qsort (orders, order_num+1, sizeof (order_t), order_cmp);
 
+  int o;
+  for(o=0; o<order_num+1;++o)
+  {
+	  DBG("ORDERS[%i] = {id=%i,order_id=%i,from=%i,to=%i}",o,orders[o].id,orders[o].order_id,orders[o].from,orders[o].to);
+  }
     
   // Fetching vehicles
   
@@ -815,10 +889,10 @@ static int solve_darp(char* orders_sql, char* vehicles_sql,
           for (t = 0; t < ntuples; t++)
             {
               HeapTuple tuple = tuptable->vals[t];
-              DBG("Before vehicle fetched\n");
+              //DBG("Before vehicle fetched\n");
               fetch_vehicle(&tuple, &tupdesc, &vehicle_columns,
                           &vehicles[vehicle_num - ntuples + t], t);
-              DBG("Vehicle fetched\n");
+              //DBG("Vehicle fetched\n");
             }
 
           SPI_freetuptable(tuptable);
@@ -830,7 +904,13 @@ static int solve_darp(char* orders_sql, char* vehicles_sql,
     }// end of fetching vehicles
     //finish(&SPIcode_v);
     
-  double dist[order_num*2+1][order_num*2+1];
+  //double dist[order_num*2+1][order_num*2+1];
+  double** dist = palloc((order_num*2+1+1)*sizeof(double*));
+  int di;
+  for ( di = 0; di < (order_num*2+1+1); di++ )
+  {
+    dist[di] = palloc((order_num*2+1+1)*sizeof(double));
+  }
 
   // Fetching distances
   
@@ -868,7 +948,7 @@ static int solve_darp(char* orders_sql, char* vehicles_sql,
               HeapTuple tuple = tuptable->vals[t];
               //DBG("Before distance fetched\n");
               fetch_distance(&tuple, &tupdesc, &distance_columns,
-                          &dist[0][0], order_num *2-1, &orders[0]);
+                          dist, order_num *2-1, &orders[0]);
             }
 
           SPI_freetuptable(tuptable);
@@ -918,10 +998,10 @@ static int solve_darp(char* orders_sql, char* vehicles_sql,
           for (t = 0; t < ntuples; t++)
             {
               HeapTuple tuple = tuptable->vals[t];
-              DBG("Before penalties fetched\n");
+              //DBG("Before penalties fetched\n");
               fetch_penalties(&tuple, &tupdesc, &penalty_columns,
                           penalties);
-              DBG("Penalties fetched\n");
+              //DBG("Penalties fetched\n");
             }
 
           SPI_freetuptable(tuptable);
@@ -941,16 +1021,29 @@ static int solve_darp(char* orders_sql, char* vehicles_sql,
 
   DBG("Total orders: %i\n", order_num);
   DBG("Total vehicles: %i\n", vehicle_num);
+  
+  double *dst;
+  int d,dd;
+  for(d = 0; d < (order_num+1)*2 - 1; ++d)
+  {
+      dst = (double *)dist[d];
+	  for(dd = 0; dd < (order_num+1)*2-1; ++dd)
+	  {
+	    //DBG(">>>>>>>>>>>>> dist[%i][%i]=%f",d,dd,dist[d][dd]);
+	    DBG("============= dist[%i][%i]=%f",d,dd,dst[dd]);
+	  }
+  }
 
   
-  qsort (orders, order_num+1, sizeof (order_t), order_cmp_asc);
+  //qsort (orders, order_num+1, sizeof (order_t), order_cmp_asc);
 
 
-  int o;
-  for(o=0; o<order_num+1;++o)
-  {
-	  DBG("ORDERS[%i] = {id=%i,order_id=%i,from=%i,to=%i}",o,orders[o].id,orders[o].order_id,orders[o].from,orders[o].to);
-  }
+  //int o;
+  //for(o=0; o<order_num+1;++o)
+  //{
+//	  DBG("ORDERS[%i] = {id=%i,order_id=%i,from=%i,to=%i}",o,orders[o].id,orders[o].order_id,orders[o].from,orders[o].to);
+  //}
+  
   //return 0;
 
   
@@ -962,7 +1055,8 @@ static int solve_darp(char* orders_sql, char* vehicles_sql,
 			    vehicles,
 			    orders,
 			    path,
-			    &dist[0][0], //2D array containing pre-calculated distances
+			    //&dist[0][0], //2D array containing pre-calculated distances
+			    dist,
 			    depot,
 			    penalties,
 			    &fit, &err_msg);
