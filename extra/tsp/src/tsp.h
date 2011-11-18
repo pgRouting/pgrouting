@@ -39,6 +39,9 @@ extern "C"
   int find_tsp_solution(int num, float dist[MAX_TOWNS][MAX_TOWNS], 
 			int p_ids[MAX_TOWNS], int source, float* fit, 
 			char* err_msg);
+  int find_tspd_solution(int num, float dist[MAX_TOWNS][MAX_TOWNS], 
+			int p_ids[MAX_TOWNS], int source, int dest, float* fit, 
+			char* err_msg);				
 #ifdef __cplusplus
 }
 #endif

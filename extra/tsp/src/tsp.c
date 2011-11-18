@@ -187,7 +187,7 @@ fetch_point(HeapTuple *tuple, TupleDesc *tupdesc,
 
 
 static int solve_tsp(char* sql, char* p_ids, 
-                     int source, path_element_t* path) 
+                     int source, int dest, path_element_t* path) 
 {
   int SPIcode;
   void *SPIplan;
@@ -332,7 +332,11 @@ static int solve_tsp(char* sql, char* p_ids,
       for(cc=0;cc<total_tuples;++cc)
         {
           dx=x[tt]-x[cc]; dy=y[tt]-y[cc];
-          DISTANCE[tt][cc] = DISTANCE[cc][tt] = sqrt(dx*dx+dy*dy);
+          if(dest > 0 && ids[tt] == source && ids[cc] == dest){
+            DISTANCE[tt][cc] = 0; //artificially set destination distance = 0 (start/end won't be seperated)
+          }else{
+            DISTANCE[tt][cc] = DISTANCE[cc][tt] = sqrt(dx*dx+dy*dy);
+          }
         }
     }
 
@@ -342,8 +346,13 @@ static int solve_tsp(char* sql, char* p_ids,
   //ret = find_tsp_solution(total_tuples, DISTANCE, 
   //   path, source, &fit, &err_msg);
 
-  ret = find_tsp_solution(total_tuples, DISTANCE, ids, 
+  if(dest > 0){
+    ret = find_tspd_solution(total_tuples, DISTANCE, ids, 
+                          source,dest, &fit, err_msg);
+  }else{
+    ret = find_tsp_solution(total_tuples, DISTANCE, ids, 
                           source, &fit, err_msg);
+  }
 
   for(tt=0;tt<total_tuples;++tt)
     {
@@ -397,10 +406,12 @@ tsp(PG_FUNCTION_ARGS)
 
       path = (path_element_t *)palloc(sizeof(path_element_t)*MAX_TOWNS);
 
-
+      int destination = -1;
+      if(PG_NARGS() == 4) destination = PG_GETARG_INT32(3);
       ret = solve_tsp(text2char(PG_GETARG_TEXT_P(0)),
                       text2char(PG_GETARG_TEXT_P(1)),
                       PG_GETARG_INT32(2),
+                      destination,
                       path);
 
       /* total number of tuples to be returned */
