@@ -73,7 +73,7 @@ ELSE(UNIX)
   SET(SQL_INSTALL_PATH ${PGROUTING_BINARY_DIR}/lib)
 ENDIF(UNIX)
 
-SET(PGROUTING_INCLUDE_DIRECTORIES ${PGROUTING_SOURCE_DIR}/core ${PGROUTING_SOURCE_DIR}/core/src ${PGROUTING_SOURCE_DIR}/extra ${PGROUTING_SOURCE_DIR}/extra/tsp ${PGROUTING_SOURCE_DIR}/extra/tsp/src ${PGROUTING_SOURCE_DIR}/extra/driving_distance ${PGROUTING_SOURCE_DIR}/extra/driving_distance/src
+SET(PGROUTING_INCLUDE_DIRECTORIES ${PGROUTING_SOURCE_DIR}/core ${PGROUTING_SOURCE_DIR}/core/src ${PGROUTING_SOURCE_DIR}/extra ${PGROUTING_SOURCE_DIR}/extra/tsp ${PGROUTING_SOURCE_DIR}/extra/tsp/src ${PGROUTING_SOURCE_DIR}/extra/driving_distance ${PGROUTING_SOURCE_DIR}/extra/driving_distance/src ${PGROUTING_SOURCE_DIR}/extra/trsp/src
 )
 
 INCLUDE_DIRECTORIES(. ${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
@@ -88,7 +88,7 @@ IF(WIN32)
 ENDIF(WIN32)
 
 SET(CMAKE_C_FLAGS   "-O2 -g -lgmp -frounding-math")
-SET(CMAKE_CXX_FLAGS "-O2 -g -lgmp -frounding-math")
+SET(CMAKE_CXX_FLAGS "-O2 -g -lgmp -frounding-math -Wno-deprecated")
 
 # Recurse into the subdirectories.  This does not actually
 # cause another cmake executable to run.  The same process will walk through
@@ -113,6 +113,8 @@ IF(WITH_DD)
   ADD_SUBDIRECTORY(extra/driving_distance)
 ENDIF(WITH_DD)
 
+#ADD_SUBDIRECTORY(extra/trsp)
+SUBDIRS(extra/trsp)
 
 
 
