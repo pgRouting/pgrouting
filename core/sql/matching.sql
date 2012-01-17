@@ -25,18 +25,18 @@ BEGIN
     
     -- Getting x and y of the point
     
-    FOR row in EXECUTE 'select x(GeometryFromText('''||point||''', '||srid||')) as x' LOOP
+    FOR row in EXECUTE 'select ST_X(ST_GeometryFromText('''||point||''', '||srid||')) as x' LOOP
     END LOOP;
 	x:=row.x;
 
-    FOR row in EXECUTE 'select y(GeometryFromText('''||point||''', '||srid||')) as y' LOOP
+    FOR row in EXECUTE 'select ST_Y(ST_GeometryFromText('''||point||''', '||srid||')) as y' LOOP
     END LOOP;
 	y:=row.y;
 
     -- Searching for a link within the distance
 
-    FOR row in EXECUTE 'select gid, distance(the_geom, GeometryFromText('''||point||''', '||srid||')) as dist from '||tbl||
-			    ' where setsrid(''BOX3D('||x-distance||' '||y-distance||', '||x+distance||' '||y+distance||')''::BOX3D, '||srid||')&&the_geom order by dist asc limit 1'
+    FOR row in EXECUTE 'select gid, ST_Distance(the_geom, ST_GeometryFromText('''||point||''', '||srid||')) as dist from '||tbl||
+			    ' where ST_SetSRID(''BOX3D('||x-distance||' '||y-distance||', '||x+distance||' '||y+distance||')''::BOX3D, '||srid||')&&the_geom order by dist asc limit 1'
     LOOP
     END LOOP;
 
@@ -85,18 +85,18 @@ BEGIN
 
     -- Getting x and y of the point
 
-    FOR row in EXECUTE 'select x(GeometryFromText('''||point||''', '||srid||')) as x' LOOP
+    FOR row in EXECUTE 'select ST_X(ST_GeometryFromText('''||point||''', '||srid||')) as x' LOOP
     END LOOP;
 	x:=row.x;
 
-    FOR row in EXECUTE 'select y(GeometryFromText('''||point||''', '||srid||')) as y' LOOP
+    FOR row in EXECUTE 'select ST_Y(ST_GeometryFromText('''||point||''', '||srid||')) as y' LOOP
     END LOOP;
 	y:=row.y;
 
     -- Getting nearest source
 
-    FOR row in EXECUTE 'select source, distance(StartPoint(the_geom), GeometryFromText('''||point||''', '||srid||')) as dist from '||tbl||
-			    ' where setsrid(''BOX3D('||x-distance||' '||y-distance||', '||x+distance||' '||y+distance||')''::BOX3D, '||srid||')&&the_geom order by dist asc limit 1'
+    FOR row in EXECUTE 'select source, ST_Distance(ST_StartPoint(the_geom), ST_GeometryFromText('''||point||''', '||srid||')) as dist from '||tbl||
+			    ' where ST_SetSRID(''BOX3D('||x-distance||' '||y-distance||', '||x+distance||' '||y+distance||')''::BOX3D, '||srid||')&&the_geom order by dist asc limit 1'
     LOOP
     END LOOP;
     
@@ -105,8 +105,8 @@ BEGIN
 
     -- Getting nearest target
 
-    FOR row in EXECUTE 'select target, distance(EndPoint(the_geom), GeometryFromText('''||point||''', '||srid||')) as dist from '||tbl||
-			    ' where setsrid(''BOX3D('||x-distance||' '||y-distance||', '||x+distance||' '||y+distance||')''::BOX3D, '||srid||')&&the_geom order by dist asc limit 1'
+    FOR row in EXECUTE 'select target, ST_Distance(ST_EndPoint(the_geom), ST_GeometryFromText('''||point||''', '||srid||')) as dist from '||tbl||
+			    ' where ST_SetSRID(''BOX3D('||x-distance||' '||y-distance||', '||x+distance||' '||y+distance||')''::BOX3D, '||srid||')&&the_geom order by dist asc limit 1'
     LOOP
     END LOOP;
 
@@ -173,12 +173,12 @@ BEGIN
 
     -- Check what is nearer - source or target
     
-    FOR row in EXECUTE 'select distance((select StartPoint(the_geom) from '||tbl||' where gid='||link||'), GeometryFromText('''||point||''', '||srid||')) as dist'
+    FOR row in EXECUTE 'select ST_Distance((select ST_StartPoint(the_geom) from '||tbl||' where gid='||link||'), ST_GeometryFromText('''||point||''', '||srid||')) as dist'
     LOOP
     END LOOP;
     d1:=row.dist;
 
-    FOR row in EXECUTE 'select distance((select EndPoint(the_geom) from '||tbl||' where gid='||link||'), GeometryFromText('''||point||''', '||srid||')) as dist'
+    FOR row in EXECUTE 'select ST_Distance((select ST_EndPoint(the_geom) from '||tbl||' where gid='||link||'), ST_GeometryFromText('''||point||''', '||srid||')) as dist'
     LOOP
     END LOOP;
     d2:=row.dist;
@@ -236,7 +236,7 @@ BEGIN
 	srid:= row.srid;
 
 
-    FOR row IN EXECUTE 'select geometryType(GeometryFromText('''||astext(line)||''', '||srid||')) as type' LOOP
+    FOR row IN EXECUTE 'select geometryType(ST_GeometryFromText('''||astext(line)||''', '||srid||')) as type' LOOP
     END LOOP;
     
     IF row.type <> 'LINESTRING' THEN
@@ -254,7 +254,7 @@ BEGIN
         -- Getting nearest node to the current point
 	
 	FOR row in EXECUTE 'select * from find_nearest_node_within_distance(''POINT('
-			    ||x(PointN(line, i))||' '||y(PointN(line, i))||')'','||distance||', '''||tbl||''') as id'
+			    ||ST_X(ST_PointN(line, i))||' '||ST_Y(PointN(line, i))||')'','||distance||', '''||tbl||''') as id'
 	LOOP
 	END LOOP;
 	
@@ -266,7 +266,7 @@ BEGIN
 	    -- If there is no nearest node within given distance, let's try another algorithm
 	
             FOR row in EXECUTE 'select * from find_node_by_nearest_link_within_distance(''POINT('
-	    		        ||x(PointN(line, i))||' '||y(PointN(line, i))||')'','||distance2||', '''||tbl||''') as id'
+	    		        ||ST_X(ST_PointN(line, i))||' '||ST_Y(PointN(line, i))||')'','||distance2||', '''||tbl||''') as id'
 	    LOOP
 	    END LOOP;
 
@@ -284,9 +284,9 @@ BEGIN
 	    IF rc THEN query := query || ', reverse_cost'; 
 	    END IF;				
 				
-	    query := query || ' from '||quote_ident(tbl)||' where setsrid(''''BOX3D('||x(PointN(line, i-1))-distance2*2||' '
-				||y(PointN(line, i-1))-distance2*2||', '||x(PointN(line, i))+distance2*2||' '
-				||y(PointN(line, i))+distance2*2||')''''::BOX3D, '||srid||')&&the_geom'', '
+	    query := query || ' from '||quote_ident(tbl)||' where setsrid(''''BOX3D('||ST_X(ST_PointN(line, i-1))-distance2*2||' '
+				||ST_Y(ST_PointN(line, i-1))-distance2*2||', '||ST_X(ST_PointN(line, i))+distance2*2||' '
+				||ST_Y(ST_PointN(line, i))+distance2*2||')''''::BOX3D, '||srid||')&&the_geom'', '
 				|| points[i-1] ||', '||	points[i-2] ||', '''||dir||''', '''||rc||'''), '
 				||quote_ident(tbl)||' where edge_id=gid';
 	    FOR row IN EXECUTE query
@@ -357,14 +357,14 @@ BEGIN
     END LOOP;
 	srid:= row.srid;
 
-    FOR row IN EXECUTE 'select geometryType(GeometryFromText('''||astext(line)||''', '||srid||')) as type' LOOP
+    FOR row IN EXECUTE 'select geometryType(ST_GeometryFromText('''||astext(line)||''', '||srid||')) as type' LOOP
     END LOOP;
     
     IF row.type <> 'LINESTRING' THEN
 	RAISE EXCEPTION 'Geometry should be a linestring.';
     END IF;
 
-    num:=NumPoints(line);
+    num:=ST_NumPoints(line);
     i:= 0;
     z:= 0;
     prev := -1;
@@ -377,7 +377,7 @@ BEGIN
         -- Getting nearest node to the current point
 
         FOR row in EXECUTE 'select * from find_nearest_node_within_distance(''POINT('
-			    ||x(PointN(line, i))||' '||y(PointN(line, i))||')'','||distance||', '''||tbl||''') as id'
+			    ||ST_X(ST_PointN(line, i))||' '||ST_Y(ST_PointN(line, i))||')'','||distance||', '''||tbl||''') as id'
 	LOOP
 	END LOOP;
 	
@@ -390,7 +390,7 @@ BEGIN
 	    -- If there is no nearest node within given distance, let's try another algorithm
 
             FOR row in EXECUTE 'select * from find_node_by_nearest_link_within_distance(''POINT('
-	    		        ||x(PointN(line, i))||' '||y(PointN(line, i))||')'','||distance2||', '''||tbl||''') as id'
+	    		        ||ST_X(ST_PointN(line, i))||' '||ST_Y(ST_PointN(line, i))||')'','||distance2||', '''||tbl||''') as id'
 	    LOOP
 	    END LOOP;
 
@@ -411,9 +411,9 @@ BEGIN
 	    IF rc THEN query := query || ', reverse_cost'; 
 	    END IF;
 	    
-	    query := query || ' from '||quote_ident(tbl)||' where setsrid(''''BOX3D('||x(PointN(line, i-1))-distance2*2||' '
-				||y(PointN(line, i-1))-distance2*2||', '||x(PointN(line, i))+distance2*2||' '
-				||y(PointN(line, i))+distance2*2||')''''::BOX3D, '||srid||')&&the_geom'', '
+	    query := query || ' from '||quote_ident(tbl)||' where setsrid(''''BOX3D('||ST_X(ST_PointN(line, i-1))-distance2*2||' '
+				||ST_Y(ST_PointN(line, i-1))-distance2*2||', '||ST_X(ST_PointN(line, i))+distance2*2||' '
+				||ST_Y(ST_PointN(line, i))+distance2*2||')''''::BOX3D, '||srid||')&&the_geom'', '
 				|| points[i-1] ||', '||	points[i-2] ||', '''||dir||''', '''||rc||''')';
 
 	    
@@ -521,7 +521,7 @@ BEGIN
     END LOOP;
 	srid:= row.srid;
 
-    FOR row IN EXECUTE 'select geometryType(GeometryFromText('''||astext(line)||''', '||srid||')) as type' LOOP
+    FOR row IN EXECUTE 'select geometryType(ST_GeometryFromText('''||astext(line)||''', '||srid||')) as type' LOOP
     END LOOP;
     
     IF row.type <> 'LINESTRING' THEN
@@ -530,7 +530,7 @@ BEGIN
 
     i := 0;
     
-    FOR row IN EXECUTE 'select * from match_line('''||quote_ident(tbl)||''', GeometryFromText('''||astext(line)||''', '||srid||'), '
+    FOR row IN EXECUTE 'select * from match_line('''||quote_ident(tbl)||''', ST_GeometryFromText('''||astext(line)||''', '||srid||'), '
 			    ||distance||', '||distance2||', '''||dir||''', '''||rc||''')' LOOP
 	edges[i] := row.edge_id;
 	i := i + 1;
@@ -541,7 +541,7 @@ BEGIN
 
     -- Attempt to create a single linestring. It may return multilinestring as well.
 
-    FOR row IN EXECUTE 'select linemerge(geomunion(multi(the_geom))) as the_geom from '||tbl||' where gid in ('||array_to_string(edges, ', ')||') and gid > 0' LOOP
+    FOR row IN EXECUTE 'select ST_LineMerge(ST_Union(ST_Multi(the_geom))) as the_geom from '||tbl||' where gid in ('||array_to_string(edges, ', ')||') and gid > 0' LOOP
     END LOOP;
     
     IF isvalid(row.the_geom) THEN
