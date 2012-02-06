@@ -10,6 +10,7 @@
 #include "trsp.h"
 
 
+
 typedef std::vector<long> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
 typedef std::pair<int, bool> PIB;
@@ -31,7 +32,7 @@ typedef struct path_element
 	int vertex_id;
 	int edge_id;
 	double cost;
-} path_element_t;
+}path_element_t;
 */
 
 typedef struct{
@@ -90,7 +91,8 @@ public:
 		path_element_t **path, int *path_count, char **err_msg);
 	int my_dijkstra(edge_t *edges, unsigned int edge_count, int start_vertex, int end_vertex,
 		path_element_t **path, int *path_count, char **err_msg, std::vector<PDVI> &ruleList);
-		
+	int my_dijkstra(edge_t *edges, unsigned int edge_count, int start_edge, double start_part, int end_edge, double end_part,
+		path_element_t **path, int *path_count, char **err_msg, std::vector<PDVI> &ruleList);
 	
 
 private:
@@ -100,18 +102,25 @@ private:
 	double getRestrictionCost(int cur_node, GraphEdgeInfo new_edge, bool isStart);
 	bool addEdge(edge edgeIn);
 	bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
+	void init();
 
 private:
 	GraphEdgeVector m_vecEdgeVector;
 	Long2LongMap m_mapEdgeId2Index;
 	Long2LongVectorMap m_mapNodeId2Edge;
 	int max_node_id;
+	int max_edge_id;
+	int m_lStartEdgeId;
+	int m_lEndEdgeId;
+	bool isStartVirtual;
+	bool isEndVirtual;
 	
 	std::vector <path_element_t> m_vecPath;
 	PARENT_PATH *parent;
 	CostHolder *m_dCost;
 	RuleTable m_ruleTable;
 	bool m_bIsturnRestrictOn;
+	bool m_bIsGraphConstructed;
 };
 
 #endif

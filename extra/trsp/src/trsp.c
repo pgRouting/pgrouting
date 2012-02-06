@@ -6,7 +6,8 @@
 #include "fmgr.h"
 #include "trsp.h"
 
-Datum turn_restrict_shortest_path(PG_FUNCTION_ARGS);
+Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
+Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
@@ -252,8 +253,11 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
 
 static int compute_trsp(
     char* sql,
-    int start_vertex, 
-    int end_vertex,
+    int dovertex,
+    int start_id,
+    double start_pos,
+    int end_id,
+    double end_pos,
     bool directed, 
     bool has_reverse_cost,
     char* restrict_sql,
@@ -279,6 +283,7 @@ static int compute_trsp(
   int v_max_id=0;
   int v_min_id=INT_MAX;
 
+  /* track if start and end are both in edge tuples */
   int s_count = 0;
   int t_count = 0;
 
@@ -383,10 +388,18 @@ static int compute_trsp(
   //::::::::::::::::::::::::::::::::::::
   for(z=0; z<total_tuples; z++) {
     //check if edges[] contains source and target
-    if(edges[z].source == start_vertex || edges[z].target == start_vertex)
-      ++s_count;
-    if(edges[z].source == end_vertex || edges[z].target == end_vertex)
-      ++t_count;
+    if (dovertex) {
+        if(edges[z].source == start_id || edges[z].target == start_id)
+          ++s_count;
+        if(edges[z].source == end_id || edges[z].target == end_id)
+          ++t_count;
+    }
+    else {
+        if(edges[z].id == start_id)
+          ++s_count;
+        if(edges[z].id == end_id)
+          ++t_count;
+    }
 
     edges[z].source-=v_min_id;
     edges[z].target-=v_min_id;
@@ -399,17 +412,19 @@ static int compute_trsp(
   DBG("Total %i edge tuples", total_tuples);
 
   if(s_count == 0) {
-    elog(ERROR, "Start vertex was not found.");
+    elog(ERROR, "Start id was not found.");
     return -1;
   }
       
   if(t_count == 0) {
-    elog(ERROR, "Target vertex was not found.");
+    elog(ERROR, "Target id was not found.");
     return -1;
   }
   
-  start_vertex -= v_min_id;
-  end_vertex   -= v_min_id;
+  if (dovertex) {
+      start_id -= v_min_id;
+      end_id   -= v_min_id;
+  }
   
   DBG("Fetching restriction tuples\n");
         
@@ -483,13 +498,22 @@ static int compute_trsp(
 
   DBG("Total %i restriction tuples", total_restrict_tuples);
 
-  DBG("Calling trsp_wrapper\n");
-
-  ret = trsp_wrapper(edges, total_tuples, 
+  if (dovertex) {
+      DBG("Calling trsp_node_wrapper\n");
+      ret = trsp_node_wrapper(edges, total_tuples, 
                         restricts, total_restrict_tuples,
-                        start_vertex, end_vertex,
+                        start_id, end_id,
                         directed, has_reverse_cost,
                         path, path_count, &err_msg);
+  }
+  else {
+      DBG("Calling trsp_edge_wrapper\n");
+      ret = trsp_edge_wrapper(edges, total_tuples, 
+                        restricts, total_restrict_tuples,
+                        start_id, start_pos, end_id, end_pos,
+                        directed, has_reverse_cost,
+                        path, path_count, &err_msg);
+  }
 
   DBG("Message received from inside:");
   DBG("%s",err_msg);
@@ -499,10 +523,10 @@ static int compute_trsp(
   //::::::::::::::::::::::::::::::::
   //:: restoring original vertex id
   //::::::::::::::::::::::::::::::::
-  for(z=0;z<*path_count;z++)
-  {
+  for(z=0;z<*path_count;z++) {
     //DBG("vetex %i\n",(*path)[z].vertex_id);
-    (*path)[z].vertex_id+=v_min_id;
+    if (z || (*path)[z].vertex_id != -1)
+        (*path)[z].vertex_id+=v_min_id;
   }
 
   DBG("ret = %i\n", ret);
@@ -521,9 +545,9 @@ static int compute_trsp(
 
 
 
-PG_FUNCTION_INFO_V1(turn_restrict_shortest_path);
+PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
 Datum
-turn_restrict_shortest_path(PG_FUNCTION_ARGS)
+turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 {
 	
   FuncCallContext     *funcctx;
@@ -564,10 +588,156 @@ turn_restrict_shortest_path(PG_FUNCTION_ARGS)
 	  DBG("Calling compute_trsp");
 
       ret = compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
+                                   1, // do vertex
                                    PG_GETARG_INT32(1),
+                                   0.5,
                                    PG_GETARG_INT32(2),
+                                   0.5,
                                    PG_GETARG_BOOL(3),
                                    PG_GETARG_BOOL(4), 
+                                   sql,
+                                   &path, &path_count);
+#ifdef DEBUG
+	double total_cost = 0;
+      DBG("Ret is %i", ret);
+      if (ret >= 0) 
+        {
+          int i;
+          for (i = 0; i < path_count; i++) 
+            {
+         //     DBG("Step %i vertex_id  %i ", i, path[i].vertex_id);
+           //   DBG("        edge_id    %i ", path[i].edge_id);
+             // DBG("        cost       %f ", path[i].cost);
+              total_cost+=path[i].cost;
+            }
+        }
+        DBG("Total cost is: %f",total_cost);
+#endif
+
+      // total number of tuples to be returned 
+      funcctx->max_calls = path_count;
+      funcctx->user_fctx = path;
+
+      funcctx->tuple_desc = 
+        BlessTupleDesc(RelationNameGetTupleDesc("path_result"));
+
+      MemoryContextSwitchTo(oldcontext);
+    }
+
+  // stuff done on every call of the function 
+  funcctx = SRF_PERCALL_SETUP();
+
+  call_cntr = funcctx->call_cntr;
+  max_calls = funcctx->max_calls;
+  tuple_desc = funcctx->tuple_desc;
+  path = (path_element_t*) funcctx->user_fctx;
+
+  if (call_cntr < max_calls)    // do when there is more left to send 
+    {
+      HeapTuple    tuple;
+      Datum        result;
+      Datum *values;
+      char* nulls;
+
+      values = palloc(3 * sizeof(Datum));
+      nulls = palloc(3 * sizeof(char));
+
+      values[0] = Int32GetDatum(path[call_cntr].vertex_id);
+      nulls[0] = ' ';
+      values[1] = Int32GetDatum(path[call_cntr].edge_id);
+      nulls[1] = ' ';
+      values[2] = Float8GetDatum(path[call_cntr].cost);
+      nulls[2] = ' ';
+		      
+      tuple = heap_formtuple(tuple_desc, values, nulls);
+
+      // make the tuple into a datum 
+      result = HeapTupleGetDatum(tuple);
+
+      // clean up (this is not really necessary) 
+      pfree(values);
+      pfree(nulls);
+
+      SRF_RETURN_NEXT(funcctx, result);
+    }
+  else    // do when there is no more left 
+    {
+      DBG("Going to free path");
+      if (path) free(path);
+      SRF_RETURN_DONE(funcctx);
+    }
+}
+
+PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_edge);
+Datum
+turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
+{
+	
+  FuncCallContext     *funcctx;
+  int                  call_cntr;
+  int                  max_calls;
+  TupleDesc            tuple_desc;
+  path_element_t      *path;
+  char *               sql;
+  double               s_pos;
+  double               e_pos;
+
+
+  // stuff done only on the first call of the function 
+  if (SRF_IS_FIRSTCALL()) {
+      MemoryContext   oldcontext;
+      int path_count = 0;
+      int ret = -1;
+      int i;
+
+      // create a function context for cross-call persistence
+      funcctx = SRF_FIRSTCALL_INIT();
+
+      // switch to memory context appropriate for multiple function calls
+      oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
+
+      // verify that the first 5 args are not NULL
+      for (i=0; i<7; i++) {
+        if(i==2 || i==4) continue;
+        if(PG_ARGISNULL(i)) {
+            elog(ERROR, "turn_restrict_shortest_path(): Argument %i may not be NULL", i+1);
+        }
+      }
+
+      if (PG_ARGISNULL(2))
+        s_pos = 0.5;
+      else {
+        s_pos = PG_GETARG_FLOAT8(2);
+        if (s_pos < 0.0) s_pos = 0.5;
+        if (s_pos > 1.0) s_pos = 0.5;
+      }
+      
+      if (PG_ARGISNULL(4))
+        e_pos = 0.5;
+      else {
+        e_pos = PG_GETARG_FLOAT8(4);
+        if (e_pos < 0.0) e_pos = 0.5;
+        if (e_pos > 1.0) e_pos = 0.5;
+      }
+      
+      if (PG_ARGISNULL(5))
+        sql = NULL;
+      else {
+        sql = text2char(PG_GETARG_TEXT_P(5));
+        if (strlen(sql) == 0)
+            sql = NULL;
+      }
+
+	  DBG("Calling compute_trsp");
+
+      ret = compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
+                                   0,  //sdo edge
+                                   PG_GETARG_INT32(1),
+                                   s_pos,
+                                   PG_GETARG_INT32(3),
+                                   e_pos,
+                                   PG_GETARG_BOOL(5),
+                                   PG_GETARG_BOOL(6), 
                                    sql,
                                    &path, &path_count);
 #ifdef DEBUG

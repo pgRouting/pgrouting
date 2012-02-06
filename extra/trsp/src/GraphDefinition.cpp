@@ -3,10 +3,19 @@
 GraphDefinition::GraphDefinition(void)
 {
 	m_bIsturnRestrictOn = false;
+	m_bIsGraphConstructed = false;
 }
 
 GraphDefinition::~GraphDefinition(void)
 {
+}
+
+void GraphDefinition::init()
+{
+	max_edge_id = 0;
+	max_node_id = 0;
+	isStartVirtual = false;
+	isEndVirtual = false;
 }
 
 double GraphDefinition::construct_path(int ed_id, int v_pos)
@@ -148,6 +157,95 @@ void GraphDefinition::explore(int cur_node, GraphEdgeInfo cur_edge, bool isStart
 	}
 }
 
+int GraphDefinition::my_dijkstra(edge_t *edges, unsigned int edge_count, int start_edge_id, double start_part, int end_edge_id, double end_part,
+				path_element_t **path, int *path_count, char **err_msg, std::vector<PDVI> &ruleList)
+{
+	if(!m_bIsGraphConstructed)
+	{
+		init();
+		construct_graph(edges, edge_count);
+		m_bIsGraphConstructed = true;
+	}
+	GraphEdgeInfo start_edge_info = m_vecEdgeVector[m_mapEdgeId2Index[start_edge_id]];
+	edge_t start_edge;
+	int start_vertex, end_vertex;
+	if(start_part == 0.0)
+	{
+		start_vertex = start_edge_info.m_lStartNode;
+	}
+	else if(start_part == 1.0)
+	{
+		start_vertex = start_edge_info.m_lEndNode;
+	}
+	else
+	{
+		isStartVirtual = true;
+		m_lStartEdgeId = start_edge_id;
+		start_vertex = max_node_id + 1;
+		max_node_id++;
+		start_edge.id = max_edge_id + 1;
+		max_edge_id++;
+		start_edge.source = start_vertex;
+		start_edge.reverse_cost = -1.0;
+		if(start_edge_info.m_dCost >= 0.0)
+		{
+			start_edge.target = start_edge_info.m_lEndNode;
+			start_edge.cost = (1.0 - start_part) * start_edge_info.m_dCost;
+			addEdge(start_edge);
+			edge_count++;
+		}
+		if(start_edge_info.m_dReverseCost >= 0.0)
+		{
+			start_edge.id = max_edge_id + 1;
+			max_edge_id++;
+			start_edge.target = start_edge_info.m_lStartNode;
+			start_edge.cost = start_part * start_edge_info.m_dReverseCost;
+			addEdge(start_edge);
+			edge_count++;
+		}
+	}
+
+	GraphEdgeInfo end_edge_info = m_vecEdgeVector[m_mapEdgeId2Index[end_edge_id]];
+	edge_t end_edge;
+	
+	if(end_part == 0.0)
+	{
+		end_vertex = end_edge_info.m_lStartNode;
+	}
+	else if(end_part == 1.0)
+	{
+		end_vertex = end_edge_info.m_lEndNode;
+	}
+	else
+	{
+		isEndVirtual = true;
+		m_lEndEdgeId = end_edge_id;
+		end_vertex = max_node_id + 1;
+		max_node_id++;
+		end_edge.id = max_edge_id + 1;
+		max_edge_id++;
+		end_edge.target = end_vertex;
+		end_edge.reverse_cost = -1.0;
+		if(end_edge_info.m_dCost >= 0.0)
+		{
+			end_edge.source = end_edge_info.m_lStartNode;
+			end_edge.cost = end_part * end_edge_info.m_dCost;
+			addEdge(end_edge);
+			edge_count++;
+		}
+		if(end_edge_info.m_dReverseCost >= 0.0)
+		{
+			end_edge.source = end_edge_info.m_lEndNode;
+			end_edge.id = max_edge_id + 1;
+			end_edge.cost = (1.0 - end_part) * end_edge_info.m_dReverseCost;
+			addEdge(end_edge);
+			edge_count++;
+		}
+	}
+
+	return(my_dijkstra(edges, edge_count, start_vertex, end_vertex, path, path_count, err_msg, ruleList));
+}
+
 int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int start_vertex, int end_vertex,
 								  path_element_t **path, int *path_count, char **err_msg, std::vector<PDVI> &ruleList)
 {
@@ -184,8 +282,13 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
 int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int start_vertex, int end_vertex,
 				path_element_t **path, int *path_count, char **err_msg)
 {
-	max_node_id  = 0;
-	construct_graph(edges, edge_count);
+	if(!m_bIsGraphConstructed)
+	{
+		init();
+		construct_graph(edges, edge_count);
+		m_bIsGraphConstructed = true;
+	}
+	
 	std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > que;
 	parent = new PARENT_PATH[edge_count + 1];
 	m_dCost = new CostHolder[edge_count + 1];
@@ -303,6 +406,16 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
 			(*path)[i].edge_id = m_vecPath[i].edge_id;
 			(*path)[i].cost = m_vecPath[i].cost;
 		}
+		if(isStartVirtual)
+		{
+			(*path)[0].vertex_id = -1;
+			(*path)[0].edge_id = m_lStartEdgeId;
+		}
+		if(isEndVirtual)
+		{
+			*path_count = *path_count - 1;
+			(*path)[*path_count - 1].edge_id = m_lEndEdgeId;
+		}
 	}
 	delete [] parent;
 	delete [] m_dCost;
@@ -352,7 +465,6 @@ bool GraphDefinition::connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secon
 		}
 	}
 
-		
 	return true;
 }
 
@@ -363,6 +475,7 @@ bool GraphDefinition::addEdge(edge_t edgeIn)
 	if(itMap != m_mapEdgeId2Index.end())	
 		return false;
 
+	
 	GraphEdgeInfo newEdge;
 	newEdge.m_lEdgeID = edgeIn.id;
 	newEdge.m_lEdgeIndex = m_vecEdgeVector.size();	
@@ -370,6 +483,11 @@ bool GraphDefinition::addEdge(edge_t edgeIn)
 	newEdge.m_lEndNode = edgeIn.target;
 	newEdge.m_dCost = edgeIn.cost;
 	newEdge.m_dReverseCost = edgeIn.reverse_cost;
+
+	if(edgeIn.id > max_edge_id)
+	{
+		max_edge_id = edgeIn.id;
+	}
 
 	if(newEdge.m_lStartNode > max_node_id)
 	{
@@ -419,6 +537,7 @@ bool GraphDefinition::addEdge(edge_t edgeIn)
 
 
 	//Adding edge to the list
+	m_mapEdgeId2Index.insert(std::make_pair(newEdge.m_lEdgeID, m_vecEdgeVector.size()));
 	m_vecEdgeVector.push_back(newEdge);
 
 	//
