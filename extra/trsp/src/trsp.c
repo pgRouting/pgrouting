@@ -679,9 +679,6 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
   TupleDesc            tuple_desc;
   path_element_t      *path;
   char *               sql;
-  double               s_pos;
-  double               e_pos;
-
 
   // stuff done only on the first call of the function 
   if (SRF_IS_FIRSTCALL()) {
@@ -689,6 +686,8 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
       int path_count = 0;
       int ret = -1;
       int i;
+      double s_pos;
+      double e_pos;
 
       // create a function context for cross-call persistence
       funcctx = SRF_FIRSTCALL_INIT();
@@ -720,10 +719,10 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
         if (e_pos > 1.0) e_pos = 0.5;
       }
       
-      if (PG_ARGISNULL(5))
+      if (PG_ARGISNULL(7))
         sql = NULL;
       else {
-        sql = text2char(PG_GETARG_TEXT_P(5));
+        sql = text2char(PG_GETARG_TEXT_P(7));
         if (strlen(sql) == 0)
             sql = NULL;
       }
