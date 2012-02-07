@@ -169,6 +169,37 @@ int GraphDefinition::my_dijkstra(edge_t *edges, unsigned int edge_count, int sta
 	GraphEdgeInfo start_edge_info = m_vecEdgeVector[m_mapEdgeId2Index[start_edge_id]];
 	edge_t start_edge;
 	int start_vertex, end_vertex;
+
+	if(start_edge_id == end_edge_id)
+	{
+		if(end_part >= start_part)
+		{
+			if(start_edge_info.m_dCost >= 0.0)
+			{
+				*path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
+				*path_count = 1;
+				(*path)[0].vertex_id = -1;
+				(*path)[0].edge_id = start_edge_id;
+				(*path)[0].cost = start_edge_info.m_dCost * (end_part - start_part);
+
+				return 0;
+			}
+		}
+		else
+		{
+			if(start_edge_info.m_dReverseCost >= 0.0)
+			{
+				*path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
+				*path_count = 1;
+				(*path)[0].vertex_id = -1;
+				(*path)[0].edge_id = start_edge_id;
+				(*path)[0].cost = start_edge_info.m_dCost * (start_part - end_part);
+
+				return 0;
+			}
+		}
+	}
+
 	if(start_part == 0.0)
 	{
 		start_vertex = start_edge_info.m_lStartNode;
@@ -252,6 +283,8 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
 	m_ruleTable.clear();
 	int total_rule = ruleList.size();
 	int i;
+	LongVector vecsource;
+	int kk;
 	for(i = 0; i < total_rule; i++)
 	{
 		Rule rule;
@@ -273,6 +306,32 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
 			temprules.clear();
 			temprules.push_back(rule);
 			m_ruleTable.insert(std::make_pair(dest_edge_id, temprules));
+		}
+	
+		if(isStartVirtual)
+		{
+			if(seq_cnt == 2 && ruleList[i].second[1] == m_lStartEdgeId)
+			{
+				vecsource = m_mapNodeId2Edge[start_vertex];
+				for(kk = 0; kk < vecsource.size(); kk++)
+				{
+					rule.precedencelist.clear();
+					rule.precedencelist.push_back(m_vecEdgeVector[vecsource[kk]].m_lEdgeID);
+					m_ruleTable[dest_edge_id].push_back(rule);
+				}
+			}
+		}
+	}
+	if(isEndVirtual)
+	{
+		if(m_ruleTable.find(m_lEndEdgeId) != m_ruleTable.end())
+		{
+			std::vector<Rule> tmpRules = m_ruleTable[m_lEndEdgeId];
+			vecsource = m_mapNodeId2Edge[end_vertex];
+			for(kk = 0; kk < vecsource.size(); kk++)
+			{
+				m_ruleTable.insert(std::make_pair(m_vecEdgeVector[vecsource[kk]].m_lEdgeID, tmpRules));
+			}
 		}
 	}
 	m_bIsturnRestrictOn = true;
