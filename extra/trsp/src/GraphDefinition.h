@@ -9,8 +9,6 @@
 #include <iostream>
 #include "trsp.h"
 
-
-
 typedef std::vector<long> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
 typedef std::pair<int, bool> PIB;
@@ -102,6 +100,7 @@ private:
 	double getRestrictionCost(int cur_node, GraphEdgeInfo new_edge, bool isStart);
 	bool addEdge(edge edgeIn);
 	bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
+	bool get_single_cost(double total_cost, path_element_t **path, int *path_count);
 	void init();
 
 private:
@@ -112,6 +111,8 @@ private:
 	int max_edge_id;
 	int m_lStartEdgeId;
 	int m_lEndEdgeId;
+	double m_dStartpart;
+	double m_dEndPart;
 	bool isStartVirtual;
 	bool isEndVirtual;
 	

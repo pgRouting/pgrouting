@@ -169,36 +169,10 @@ int GraphDefinition::my_dijkstra(edge_t *edges, unsigned int edge_count, int sta
 	GraphEdgeInfo start_edge_info = m_vecEdgeVector[m_mapEdgeId2Index[start_edge_id]];
 	edge_t start_edge;
 	int start_vertex, end_vertex;
-
-	if(start_edge_id == end_edge_id)
-	{
-		if(end_part >= start_part)
-		{
-			if(start_edge_info.m_dCost >= 0.0)
-			{
-				*path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
-				*path_count = 1;
-				(*path)[0].vertex_id = -1;
-				(*path)[0].edge_id = start_edge_id;
-				(*path)[0].cost = start_edge_info.m_dCost * (end_part - start_part);
-
-				return 0;
-			}
-		}
-		else
-		{
-			if(start_edge_info.m_dReverseCost >= 0.0)
-			{
-				*path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
-				*path_count = 1;
-				(*path)[0].vertex_id = -1;
-				(*path)[0].edge_id = start_edge_id;
-				(*path)[0].cost = start_edge_info.m_dCost * (start_part - end_part);
-
-				return 0;
-			}
-		}
-	}
+	m_dStartpart = start_part;
+	m_dEndPart = end_part;
+	m_lStartEdgeId = start_edge_id;
+	m_lEndEdgeId = end_edge_id;
 
 	if(start_part == 0.0)
 	{
@@ -439,6 +413,13 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
 	}
 	if(cur_node != end_vertex)
 	{
+		if(m_lStartEdgeId == m_lEndEdgeId)
+		{
+			if(get_single_cost(1000.0, path, path_count))
+			{
+				return 0;
+			}
+		}
 		*err_msg = (char *)"Path Not Found";
 		delete [] parent;
 		delete [] m_dCost;
@@ -446,16 +427,31 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
 	}
 	else
 	{
+		double total_cost;
 		if(cur_node == cur_edge.m_lStartNode)
+		{
+			total_cost = m_dCost[cur_edge.m_lEdgeIndex].startCost;
 			construct_path(cur_edge.m_lEdgeIndex, 1);
+		}
 		else
+		{
+			total_cost = m_dCost[cur_edge.m_lEdgeIndex].endCost;
 			construct_path(cur_edge.m_lEdgeIndex, 0);
+		}
 		path_element_t pelement;
 		pelement.vertex_id = end_vertex;
 		pelement.edge_id = -1;
 		pelement.cost = 0.0;
 		m_vecPath.push_back(pelement);
 
+		if(m_lStartEdgeId == m_lEndEdgeId)
+		{
+			if(get_single_cost(total_cost, path, path_count))
+			{
+				return 0;
+			}
+		}
+		
 		*path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
 		*path_count = m_vecPath.size();
 
@@ -479,6 +475,39 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
 	delete [] parent;
 	delete [] m_dCost;
 	return 0;
+}
+
+bool GraphDefinition::get_single_cost(double total_cost, path_element_t **path, int *path_count)
+{
+	GraphEdgeInfo start_edge_info = m_vecEdgeVector[m_mapEdgeId2Index[m_lStartEdgeId]];
+	if(m_dEndPart >= m_dStartpart)
+	{
+		if(start_edge_info.m_dCost >= 0.0 && start_edge_info.m_dCost * (m_dEndPart - m_dStartpart) <= total_cost)
+		{
+			*path = (path_element_t *) malloc(sizeof(path_element_t) * (1));
+			*path_count = 1;
+			(*path)[0].vertex_id = -1;
+			(*path)[0].edge_id = m_lStartEdgeId;
+			(*path)[0].cost = start_edge_info.m_dCost * (m_dEndPart - m_dStartpart);
+
+			return true;
+		}
+	}
+	else
+	{
+		if(start_edge_info.m_dReverseCost >= 0.0 && start_edge_info.m_dReverseCost * (m_dStartpart - m_dEndPart) <= total_cost)
+		{
+			*path = (path_element_t *) malloc(sizeof(path_element_t) * (1));
+			*path_count = 1;
+			(*path)[0].vertex_id = -1;
+			(*path)[0].edge_id = m_lStartEdgeId;
+			(*path)[0].cost = start_edge_info.m_dReverseCost * (m_dStartpart - m_dEndPart);
+
+			return true;
+		}
+	}
+	return false;
+	
 }
 
 bool GraphDefinition::construct_graph(edge_t* edges, int edge_count)
