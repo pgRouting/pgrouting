@@ -1,0 +1,11 @@
+/usr/lib/postgresql/8.4/lib/librouting.so
+/usr/share/pgrouting/routing_core.sql
+/usr/share/pgrouting/routing_core_wrappers.sql
+/usr/share/pgrouting/routing_topology.sql
+/usr/share/pgrouting/matching.sql
+/usr/lib/postgresql/8.4/lib/librouting_tsp.so
+/usr/share/pgrouting/routing_tsp.sql
+/usr/share/pgrouting/routing_tsp_wrappers.sql
+/usr/lib/postgresql/8.4/lib/librouting_dd.so
+/usr/share/pgrouting/routing_dd.sql
+/usr/share/pgrouting/routing_dd_wrappers.sql
