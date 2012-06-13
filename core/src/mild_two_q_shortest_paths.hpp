@@ -424,20 +424,22 @@ namespace boost {
       D inf = choose_param(get_param(params, distance_inf_t()),
                            (std::numeric_limits<D>::max)());
 
-      //dijkstra_shortest_paths
-       // (g, s,
-         //choose_param(get_param(params, vertex_predecessor), p_map),
-         //distance, weight, index_map,
-         //choose_param(get_param(params, distance_compare_t()),
-          //            std::less<D>()),
-         //choose_param(get_param(params, distance_combine_t()),
-           //           closed_plus<D>(inf)),
-         //inf,
-         //choose_param(get_param(params, distance_zero_t()),
-           //           D()),
-         //choose_param(get_param(params, graph_visitor),
-           //           make_dijkstra_visitor(null_visitor())),
-         //params);
+      dijkstra_shortest_paths
+        (g, s,
+         choose_param(get_param(params, vertex_predecessor), p_map),
+         distance, weight, index_map,
+         choose_param(get_param(params, distance_compare_t()),
+                     std::less<D>()),
+         choose_param(get_param(params, distance_combine_t()),
+	// No matching function for the original one.
+        //           closed_plus<D>(inf)),
+			closed_plus<D>()),
+         inf,
+         choose_param(get_param(params, distance_zero_t()),
+                    D()),
+         choose_param(get_param(params, graph_visitor),
+                    make_dijkstra_visitor(null_visitor())),
+         params);
     }
 
     template <class VertexListGraph, class DistanceMap, class WeightMap,
@@ -484,6 +486,74 @@ namespace boost {
 } // namespace boost
 
 namespace boost{
+
+	namespace detail{
+		
+
+		template <class VertexListGraph, class DistanceMap, class WeightMap, class IndexMap, class Params>
+		inline void mild_two_q_dispatch1
+			(const VertexListGraph& g,
+			typename graph_traits<VertexListGraph>::vertex_descriptor s,
+			DistanceMap distance, WeightMap weight, IndexMap index_map,
+			const Params& params){
+		// Default for distance map
+		typedef typename property_traits<WeightMap>::value_type D;
+		typename std::vector<D>::size_type n = is_default_param(distance) ? num_vertices(g) : 1;
+		std::vector<D> distance_map(n);
+		detail::dijkstra_dispatch2
+				(g, s, choose_param(distance, make_iterator_property_map (distance_map.begin(), index_map, distance_map[0])),
+				weight, index_map, params);
+    		}
+
+
+
+		// Handle defaults for PredecessorMap and
+    		// Distance Compare, Combine, Inf and Zero
+		template <class VertexListGraph, class DistanceMap, class WeightMap, class IndexMap, class Params>
+		inline void mild_two_q_dispatch2 (const VertexListGraph& g, typename graph_traits<VertexListGraph>::vertex_descriptor s, DistanceMap distance, WeightMap weight, IndexMap index_map, const Params& params) {
+      		// Default for predecessor map
+		dummy_property_map p_map;
+
+		typedef typename property_traits<DistanceMap>::value_type D;
+      		D inf = choose_param(get_param(params, distance_inf_t()), (std::numeric_limits<D>::max)());
+
+      		dijkstra_shortest_paths
+        	(g, s, choose_param(get_param(params, vertex_predecessor), p_map),
+         	distance, weight, index_map,
+         	choose_param(get_param(params, distance_compare_t()),std::less<D>()),
+         	choose_param(get_param(params, distance_combine_t()),
+		// No matching function for the original one.
+        	//           closed_plus<D>(inf)),
+			closed_plus<D>()),
+         	inf,
+         	choose_param(get_param(params, distance_zero_t()), D()),
+         	choose_param(get_param(params, graph_visitor), make_dijkstra_visitor(null_visitor())), 
+		params);
+		}
+			
+	}
+
+
+
+  template <class VertexListGraph, class Param, class Tag, class Rest>
+  inline void
+  mild_two_q_shortest_paths
+    (const VertexListGraph& g,
+     typename graph_traits<VertexListGraph>::vertex_descriptor s,
+     typename graph_traits<VertexListGraph>::vertex_descriptor t,
+     const bgl_named_params<Param,Tag,Rest>& params)
+	{
+
+	// Default for edge weight and vertex index map is to ask for them
+    // from the graph.  Default for the visitor is null_visitor.
+    detail::mild_two_q_dispatch1
+      (g, s,
+       get_param(params, vertex_distance),
+       choose_const_pmap(get_param(params, edge_weight), g, edge_weight),
+       choose_const_pmap(get_param(params, vertex_index), g, vertex_index),
+       params);
+  }
+	
 } // namespace boost
 
 #ifdef BOOST_GRAPH_USE_MPI

@@ -117,7 +117,7 @@ boost_mild_two_q(edge_t *edges, unsigned int count, int start_vertex, int end_ve
 
     std::vector<float8> distances(num_vertices(graph));
     // calling Boost function
-    dijkstra_shortest_paths(graph, _source,
+    mild_two_q_shortest_paths(graph, _source, _target,
 			    predecessor_map(&predecessors[0]).
 			    weight_map(get(&Vertex::cost, graph))
 			    .distance_map(&distances[0]));
