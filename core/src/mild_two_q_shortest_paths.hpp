@@ -12,8 +12,8 @@
 //   04 April 2001: Added named parameter variant. (Jeremy Siek)
 //   01 April 2001: Modified to use new <boost/limits.hpp> header. (JMaddock)
 //
-#ifndef BOOST_GRAPH_DIJKSTRA_HPP
-#define BOOST_GRAPH_DIJKSTRA_HPP
+#ifndef PGROUTING_MILD_TWO_Q_HPP
+#define PGROUTING_MILD_TWO_Q_HPP
 
 #include <functional>
 #include <boost/limits.hpp>
@@ -54,7 +54,7 @@ namespace boost {
    */
   template<typename Buffer, typename Vertex, typename DistanceType>
   inline void 
-  dijkstra_queue_update(Buffer& Q, Vertex vertex, DistanceType old_distance)
+  mild_two_q_queue_update(Buffer& Q, Vertex vertex, DistanceType old_distance)
   {
     (void)old_distance;
     Q.update(vertex);
@@ -63,11 +63,11 @@ namespace boost {
 #ifdef BOOST_GRAPH_DIJKSTRA_TESTING
   // This is a misnomer now: it now just refers to the "default heap", which is
   // currently d-ary (d=4) but can be changed by a #define.
-  static bool dijkstra_relaxed_heap = true;
+  static bool mild_two_q_relaxed_heap = true;
 #endif
 
   template <class Visitor, class Graph>
-  struct DijkstraVisitorConcept {
+  struct Mild_two_q_VisitorConcept {
     void constraints() {
       BOOST_CONCEPT_ASSERT(( CopyConstructibleConcept<Visitor> ));
       vis.initialize_vertex(u, g);
@@ -85,10 +85,11 @@ namespace boost {
   };
 
   template <class Visitors = null_visitor>
-  class dijkstra_visitor : public bfs_visitor<Visitors> {
+//FIXME bfs_visitor
+  class mild_two_q_visitor : public bfs_visitor<Visitors> {
   public:
-    dijkstra_visitor() { }
-    dijkstra_visitor(Visitors vis)
+    mild_two_q_visitor() { }
+    mild_two_q_visitor(Visitors vis)
       : bfs_visitor<Visitors>(vis) { }
 
     template <class Edge, class Graph>
@@ -104,22 +105,22 @@ namespace boost {
     void tree_edge(Edge u, Graph& g) { }
   };
   template <class Visitors>
-  dijkstra_visitor<Visitors>
-  make_dijkstra_visitor(Visitors vis) {
-    return dijkstra_visitor<Visitors>(vis);
+  mild_two_q_visitor<Visitors>
+  make_mild_two_q_visitor(Visitors vis) {
+    return mild_two_q_visitor<Visitors>(vis);
   }
-  typedef dijkstra_visitor<> default_dijkstra_visitor;
+  typedef mild_two_q_visitor<> default_mild_two_q_visitor;
 
   namespace detail {
 
     template <class UniformCostVisitor, class UpdatableQueue,
       class WeightMap, class PredecessorMap, class DistanceMap,
       class BinaryFunction, class BinaryPredicate>
-    struct dijkstra_bfs_visitor
+    struct mild_two_q_bfs_visitor
     {
       typedef typename property_traits<DistanceMap>::value_type D;
 
-      dijkstra_bfs_visitor(UniformCostVisitor vis, UpdatableQueue& Q,
+      mild_two_q_bfs_visitor(UniformCostVisitor vis, UpdatableQueue& Q,
                            WeightMap w, PredecessorMap p, DistanceMap d,
                            BinaryFunction combine, BinaryPredicate compare,
                            D zero)
@@ -142,7 +143,7 @@ namespace boost {
         bool decreased = relax(e, g, m_weight, m_predecessor, m_distance,
                                m_combine, m_compare);
         if (decreased) {
-          dijkstra_queue_update(m_Q, target(e, g), old_distance);
+          mild_two_q_queue_update(m_Q, target(e, g), old_distance);
           m_vis.edge_relaxed(e, g);
         } else
           m_vis.edge_not_relaxed(e, g);
@@ -252,18 +253,18 @@ namespace boost {
   }
 
   // Call breadth first search with default color map.
-  template <class Graph, class DijkstraVisitor,
+  template <class Graph, class Mild_two_q_Visitor,
             class PredecessorMap, class DistanceMap,
             class WeightMap, class IndexMap, class Compare, class Combine,
             class DistZero>
   inline void
-  dijkstra_shortest_paths_no_init
+  mild_two_q_shortest_paths_no_init
     (const Graph& g,
      typename graph_traits<Graph>::vertex_descriptor s,
      PredecessorMap predecessor, DistanceMap distance, WeightMap weight,
      IndexMap index_map,
      Compare compare, Combine combine, DistZero zero,
-     DijkstraVisitor vis)
+     Mild_two_q_Visitor vis)
   {
     typedef
       detail::default_color_map_generator<Graph, IndexMap>
@@ -271,24 +272,24 @@ namespace boost {
     typedef typename ColorMapHelper::type ColorMap;
     ColorMap color =
       ColorMapHelper::build(g, index_map);
-    dijkstra_shortest_paths_no_init( g, s, predecessor, distance, weight,
+    mild_two_q_shortest_paths_no_init( g, s, predecessor, distance, weight,
       index_map, compare, combine, zero, vis,
         color);
   }
 
   // Call breadth first search
-  template <class Graph, class DijkstraVisitor,
+  template <class Graph, class Mild_two_q_Visitor,
             class PredecessorMap, class DistanceMap,
             class WeightMap, class IndexMap, class Compare, class Combine,
             class DistZero, class ColorMap>
   inline void
-  dijkstra_shortest_paths_no_init
+  mild_two_q_shortest_paths_no_init
     (const Graph& g,
      typename graph_traits<Graph>::vertex_descriptor s,
      PredecessorMap predecessor, DistanceMap distance, WeightMap weight,
      IndexMap index_map,
      Compare compare, Combine combine, DistZero zero,
-     DijkstraVisitor vis, ColorMap color)
+     Mild_two_q_Visitor vis, ColorMap color)
   {
     typedef indirect_cmp<DistanceMap, Compare> IndirectCmp;
     IndirectCmp icmp(distance, compare);
@@ -296,12 +297,12 @@ namespace boost {
     typedef typename graph_traits<Graph>::vertex_descriptor Vertex;
 
 #ifdef BOOST_GRAPH_DIJKSTRA_TESTING
-    if (!dijkstra_relaxed_heap) {
+    if (!mild_two_q_relaxed_heap) {
       typedef mutable_queue<Vertex, std::vector<Vertex>, IndirectCmp, IndexMap>
         MutableQueue;
 
       MutableQueue Q(num_vertices(g), icmp, index_map);
-      detail::dijkstra_bfs_visitor<DijkstraVisitor, MutableQueue, WeightMap,
+      detail::mild_two_q_bfs_visitor<Mild_two_q_Visitor, MutableQueue, WeightMap,
         PredecessorMap, DistanceMap, Combine, Compare>
       bfs_vis(vis, Q, weight, predecessor, distance, combine, compare, zero);
 
@@ -326,7 +327,7 @@ namespace boost {
       MutableQueue Q(distance, index_in_heap, compare);
 #endif // Relaxed heap
 
-    detail::dijkstra_bfs_visitor<DijkstraVisitor, MutableQueue, WeightMap,
+    detail::mild_two_q_bfs_visitor<Mild_two_q_Visitor, MutableQueue, WeightMap,
       PredecessorMap, DistanceMap, Combine, Compare>
         bfs_vis(vis, Q, weight, predecessor, distance, combine, compare, zero);
 
@@ -334,41 +335,41 @@ namespace boost {
   }
 
   // Initialize distances and call breadth first search with default color map
-  template <class VertexListGraph, class DijkstraVisitor,
+  template <class VertexListGraph, class Mild_two_q_Visitor,
             class PredecessorMap, class DistanceMap,
             class WeightMap, class IndexMap, class Compare, class Combine,
             class DistInf, class DistZero, typename T, typename Tag, 
             typename Base>
   inline void
-  dijkstra_shortest_paths
+  mild_two_q_shortest_paths
     (const VertexListGraph& g,
      typename graph_traits<VertexListGraph>::vertex_descriptor s,
      PredecessorMap predecessor, DistanceMap distance, WeightMap weight,
      IndexMap index_map,
      Compare compare, Combine combine, DistInf inf, DistZero zero,
-     DijkstraVisitor vis,
+     Mild_two_q_Visitor vis,
      const bgl_named_params<T, Tag, Base>&
      BOOST_GRAPH_ENABLE_IF_MODELS_PARM(VertexListGraph,vertex_list_graph_tag))
   {
     boost::two_bit_color_map<IndexMap> color(num_vertices(g), index_map);
-    dijkstra_shortest_paths(g, s, predecessor, distance, weight, index_map,
+    mild_two_q_shortest_paths(g, s, predecessor, distance, weight, index_map,
                             compare, combine, inf, zero, vis,
                             color);
   }
 
   // Initialize distances and call breadth first search
-  template <class VertexListGraph, class DijkstraVisitor,
+  template <class VertexListGraph, class Mild_two_q_Visitor,
             class PredecessorMap, class DistanceMap,
             class WeightMap, class IndexMap, class Compare, class Combine,
             class DistInf, class DistZero, class ColorMap>
   inline void
-  dijkstra_shortest_paths
+  mild_two_q_shortest_paths
     (const VertexListGraph& g,
      typename graph_traits<VertexListGraph>::vertex_descriptor s,
      PredecessorMap predecessor, DistanceMap distance, WeightMap weight,
      IndexMap index_map,
      Compare compare, Combine combine, DistInf inf, DistZero zero,
-     DijkstraVisitor vis, ColorMap color)
+     Mild_two_q_Visitor vis, ColorMap color)
   {
     typedef typename property_traits<ColorMap>::value_type ColorValue;
     typedef color_traits<ColorValue> Color;
@@ -381,25 +382,25 @@ namespace boost {
     }
     put(distance, s, zero);
 
-    dijkstra_shortest_paths_no_init(g, s, predecessor, distance, weight,
+    mild_two_q_shortest_paths_no_init(g, s, predecessor, distance, weight,
                             index_map, compare, combine, zero, vis, color);
   }
 
   // Initialize distances and call breadth first search
-  template <class VertexListGraph, class DijkstraVisitor,
+  template <class VertexListGraph, class Mild_two_q_Visitor,
             class PredecessorMap, class DistanceMap,
             class WeightMap, class IndexMap, class Compare, class Combine,
             class DistInf, class DistZero>
   inline void
-  dijkstra_shortest_paths
+  mild_two_q_shortest_paths
     (const VertexListGraph& g,
      typename graph_traits<VertexListGraph>::vertex_descriptor s,
      PredecessorMap predecessor, DistanceMap distance, WeightMap weight,
      IndexMap index_map,
      Compare compare, Combine combine, DistInf inf, DistZero zero,
-     DijkstraVisitor vis)
+     Mild_two_q_Visitor vis)
   {
-    dijkstra_shortest_paths(g, s, predecessor, distance, weight, index_map,
+    mild_two_q_shortest_paths(g, s, predecessor, distance, weight, index_map,
                             compare, combine, inf, zero, vis,
                             no_named_parameters());
   }
@@ -411,7 +412,7 @@ namespace boost {
     template <class VertexListGraph, class DistanceMap, class WeightMap,
               class IndexMap, class Params>
     inline void
-    dijkstra_dispatch2
+    mild_two_q_dispatch2
       (const VertexListGraph& g,
        typename graph_traits<VertexListGraph>::vertex_descriptor s,
        DistanceMap distance, WeightMap weight, IndexMap index_map,
@@ -424,28 +425,27 @@ namespace boost {
       D inf = choose_param(get_param(params, distance_inf_t()),
                            (std::numeric_limits<D>::max)());
 
-      dijkstra_shortest_paths
+      mild_two_q_shortest_paths
         (g, s,
          choose_param(get_param(params, vertex_predecessor), p_map),
          distance, weight, index_map,
          choose_param(get_param(params, distance_compare_t()),
-                     std::less<D>()),
+                      std::less<D>()),
          choose_param(get_param(params, distance_combine_t()),
-	// No matching function for the original one.
-        //           closed_plus<D>(inf)),
-			closed_plus<D>()),
+                      //closed_plus<D>(inf)), //FIXME no matched function, have to change it
+                      closed_plus<D>()),
          inf,
          choose_param(get_param(params, distance_zero_t()),
-                    D()),
+                      D()),
          choose_param(get_param(params, graph_visitor),
-                    make_dijkstra_visitor(null_visitor())),
+                      make_mild_two_q_visitor(null_visitor())),
          params);
     }
 
     template <class VertexListGraph, class DistanceMap, class WeightMap,
               class IndexMap, class Params>
     inline void
-    dijkstra_dispatch1
+    mild_two_q_dispatch1
       (const VertexListGraph& g,
        typename graph_traits<VertexListGraph>::vertex_descriptor s,
        DistanceMap distance, WeightMap weight, IndexMap index_map,
@@ -457,7 +457,7 @@ namespace boost {
         n = is_default_param(distance) ? num_vertices(g) : 1;
       std::vector<D> distance_map(n);
 
-      detail::dijkstra_dispatch2
+      detail::mild_two_q_dispatch2
         (g, s, choose_param(distance, make_iterator_property_map
                             (distance_map.begin(), index_map,
                              distance_map[0])),
@@ -468,83 +468,13 @@ namespace boost {
   // Named Parameter Variant
   template <class VertexListGraph, class Param, class Tag, class Rest>
   inline void
-  dijkstra_shortest_paths
-    (const VertexListGraph& g,
-     typename graph_traits<VertexListGraph>::vertex_descriptor s,
-     const bgl_named_params<Param,Tag,Rest>& params)
-  {
-    // Default for edge weight and vertex index map is to ask for them
-    // from the graph.  Default for the visitor is null_visitor.
-    detail::dijkstra_dispatch1
-      (g, s,
-       get_param(params, vertex_distance),
-       choose_const_pmap(get_param(params, edge_weight), g, edge_weight),
-       choose_const_pmap(get_param(params, vertex_index), g, vertex_index),
-       params);
-  }
-
-} // namespace boost
-
-namespace boost{
-
-	namespace detail{
-		
-
-		template <class VertexListGraph, class DistanceMap, class WeightMap, class IndexMap, class Params>
-		inline void mild_two_q_dispatch1
-			(const VertexListGraph& g,
-			typename graph_traits<VertexListGraph>::vertex_descriptor s,
-			DistanceMap distance, WeightMap weight, IndexMap index_map,
-			const Params& params){
-		// Default for distance map
-		typedef typename property_traits<WeightMap>::value_type D;
-		typename std::vector<D>::size_type n = is_default_param(distance) ? num_vertices(g) : 1;
-		std::vector<D> distance_map(n);
-		detail::dijkstra_dispatch2
-				(g, s, choose_param(distance, make_iterator_property_map (distance_map.begin(), index_map, distance_map[0])),
-				weight, index_map, params);
-    		}
-
-
-
-		// Handle defaults for PredecessorMap and
-    		// Distance Compare, Combine, Inf and Zero
-		template <class VertexListGraph, class DistanceMap, class WeightMap, class IndexMap, class Params>
-		inline void mild_two_q_dispatch2 (const VertexListGraph& g, typename graph_traits<VertexListGraph>::vertex_descriptor s, DistanceMap distance, WeightMap weight, IndexMap index_map, const Params& params) {
-      		// Default for predecessor map
-		dummy_property_map p_map;
-
-		typedef typename property_traits<DistanceMap>::value_type D;
-      		D inf = choose_param(get_param(params, distance_inf_t()), (std::numeric_limits<D>::max)());
-
-      		dijkstra_shortest_paths
-        	(g, s, choose_param(get_param(params, vertex_predecessor), p_map),
-         	distance, weight, index_map,
-         	choose_param(get_param(params, distance_compare_t()),std::less<D>()),
-         	choose_param(get_param(params, distance_combine_t()),
-		// No matching function for the original one.
-        	//           closed_plus<D>(inf)),
-			closed_plus<D>()),
-         	inf,
-         	choose_param(get_param(params, distance_zero_t()), D()),
-         	choose_param(get_param(params, graph_visitor), make_dijkstra_visitor(null_visitor())), 
-		params);
-		}
-			
-	}
-
-
-
-  template <class VertexListGraph, class Param, class Tag, class Rest>
-  inline void
   mild_two_q_shortest_paths
     (const VertexListGraph& g,
      typename graph_traits<VertexListGraph>::vertex_descriptor s,
      typename graph_traits<VertexListGraph>::vertex_descriptor t,
      const bgl_named_params<Param,Tag,Rest>& params)
-	{
-
-	// Default for edge weight and vertex index map is to ask for them
+  {
+    // Default for edge weight and vertex index map is to ask for them
     // from the graph.  Default for the visitor is null_visitor.
     detail::mild_two_q_dispatch1
       (g, s,
@@ -553,7 +483,7 @@ namespace boost{
        choose_const_pmap(get_param(params, vertex_index), g, vertex_index),
        params);
   }
-	
+
 } // namespace boost
 
 #ifdef BOOST_GRAPH_USE_MPI

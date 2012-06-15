@@ -43,7 +43,7 @@ CREATE OR REPLACE FUNCTION shortest_path_astar(sql text, source_id integer,
          LANGUAGE 'C' IMMUTABLE STRICT; 
 
 -----------------------------------------------------------------------
--- Core function for shortest_path_astar computation
+-- Core function for shortest_path_shooting_star computation
 -- Simillar to shortest_path in usage but uses the Shooting* algorithm
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION shortest_path_shooting_star(sql text, source_id integer, 
@@ -51,6 +51,16 @@ CREATE OR REPLACE FUNCTION shortest_path_shooting_star(sql text, source_id integ
          RETURNS SETOF path_result
          AS '$libdir/librouting'
          LANGUAGE 'C' IMMUTABLE STRICT; 
+
+-----------------------------------------------------------------------
+-- Core function for shortest_path_mild_two_q computation
+-- See README for description
+-----------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION shortest_path_mild_two_q(sql text, source_id integer, 
+        target_id integer, directed boolean, has_reverse_cost boolean)
+        RETURNS SETOF path_result
+        AS '$libdir/librouting'
+        LANGUAGE 'C' IMMUTABLE STRICT;
 
 -----------------------------------------------------------------------
 -- This function should not be used directly. Use create_graph_tables instead
