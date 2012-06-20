@@ -32,7 +32,7 @@
 #include <boost/type_traits.hpp>
 #include <boost/concept/assert.hpp>
 
-#include <boost/pending/queue.hpp>
+#include <two_queue.hpp>
 
 
 #ifdef BOOST_GRAPH_DIJKSTRA_TESTING
@@ -317,13 +317,13 @@ typedef typename property_traits<DistanceMap>::value_type D;
 typedef typename property_traits<WeightMap>::value_type W;
 
 
-queue<typename graph_traits<Graph>::vertex_descriptor> Q;
-Q.push(s);
-put(color, s, Color::gray());
+two_queue<typename graph_traits<Graph>::vertex_descriptor> Q;
+Q.push_b(s);
+put(color, s, Color::gray());//gray: is in queue
 while(!Q.empty())
 {
 Vertex u = Q.top(); Q.pop();
-put(color, u, Color::white());
+put(color, u, Color::black());//black: was in queue
 D d_u = get(distance, u);
 for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
         Vertex v = target(*ei, g);
@@ -333,10 +333,15 @@ for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
         	put(distance, v, combine(d_u, w_e));
         	put(predecessor, v, u);
 		ColorValue c_v = get(color, v);
-		if(c_v==Color::white())
+		if(c_v==Color::white())// white: not reached
 		{
-			Q.push(v);
+			Q.push_b(v);
 			put(color, v, Color::gray());			
+		}
+		else if(c_v==Color::black())
+		{
+			Q.push_a(v);
+			put(color, v, Color::gray());
 		}
 	}
 }
