@@ -282,7 +282,7 @@ namespace boost {
 //FIXME this should be the core function
 //FIXME
 //FIXME
-  // Call breadth first search
+  // compute the shortest path with the two_queue
   template <class Graph, class Mild_two_q_Visitor,
             class PredecessorMap, class DistanceMap,
             class WeightMap, class IndexMap, class Compare, class Combine,
@@ -296,42 +296,19 @@ namespace boost {
      Compare compare, Combine combine, DistZero zero,
      Mild_two_q_Visitor vis, ColorMap color)
   {
-    typedef typename graph_traits<Graph>::vertex_descriptor Vertex;
+    
     typedef indirect_cmp<DistanceMap, Compare> IndirectCmp;
     IndirectCmp icmp(distance, compare);
-
-#ifdef BOOST_GRAPH_DIJKSTRA_USE_RELAXED_HEAP
-    typedef relaxed_heap<Vertex, IndirectCmp, IndexMap> MutableQueue;
-    MutableQueue Q(num_vertices(g), icmp, index_map);
-#else // Now the default: use a d-ary heap
-      boost::scoped_array<std::size_t> index_in_heap_map_holder;
-      typedef
-        detail::vertex_property_map_generator<Graph, IndexMap, std::size_t>
-        IndexInHeapMapHelper;
-      typedef typename IndexInHeapMapHelper::type IndexInHeapMap;
-      IndexInHeapMap index_in_heap =
-        IndexInHeapMapHelper::build(g, index_map, index_in_heap_map_holder);
-      typedef d_ary_heap_indirect<Vertex, 4, IndexInHeapMap, DistanceMap, Compare>
-        MutableQueue;
-      MutableQueue Q(distance, index_in_heap, compare);
-#endif // Relaxed heap
-
-    detail::mild_two_q_bfs_visitor<Mild_two_q_Visitor, MutableQueue, WeightMap,
-      PredecessorMap, DistanceMap, Combine, Compare>
-        bfs_vis(vis, Q, weight, predecessor, distance, combine, compare, zero);
-
-    //breadth_first_visit(g, s, Q, bfs_vis, color);
-
 typedef Graph IncidenceGraph;
-typedef MutableQueue Buffer;
-typedef class detail::mild_two_q_bfs_visitor<Mild_two_q_Visitor, MutableQueue, WeightMap, PredecessorMap, DistanceMap, Combine, Compare> BFSVisitor;
+//typedef MutableQueue Buffer;
+//typedef class detail::mild_two_q_bfs_visitor<Mild_two_q_Visitor, MutableQueue, WeightMap, PredecessorMap, DistanceMap, Combine, Compare> BFSVisitor;
 
 
     BOOST_CONCEPT_ASSERT(( IncidenceGraphConcept<IncidenceGraph> ));
     typedef graph_traits<IncidenceGraph> GTraits;
     typedef typename GTraits::vertex_descriptor Vertex;
     typedef typename GTraits::edge_descriptor Edge;
-    BOOST_CONCEPT_ASSERT(( BFSVisitorConcept<BFSVisitor, IncidenceGraph> ));
+    //BOOST_CONCEPT_ASSERT(( BFSVisitorConcept<BFSVisitor, IncidenceGraph> ));
     BOOST_CONCEPT_ASSERT(( ReadWritePropertyMapConcept<ColorMap, Vertex> ));
     typedef typename property_traits<ColorMap>::value_type ColorValue;
     typedef color_traits<ColorValue> Color;
@@ -339,6 +316,8 @@ typedef class detail::mild_two_q_bfs_visitor<Mild_two_q_Visitor, MutableQueue, W
 typedef typename property_traits<DistanceMap>::value_type D;
 typedef typename property_traits<WeightMap>::value_type W;
 
+
+queue<typename graph_traits<Graph>::vertex_descriptor> Q;
 Q.push(s);
 put(color, s, Color::gray());
 while(!Q.empty())
