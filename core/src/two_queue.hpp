@@ -6,7 +6,7 @@
 #ifndef PGROUTING_TWO_QUEUE_HPP
 #define PGROUTING_TWO_QUEUE_HPP
 
-#include <queue>
+#include <deque>
 
 namespace boost {
 
@@ -14,24 +14,8 @@ template <class _Tp,
           class _Sequence = std::deque<_Tp> >
 class two_queue;
 
-template <class _Tp, class _Seq>
-inline bool operator==(const two_queue<_Tp, _Seq>&, const two_queue<_Tp, _Seq>&);
-
-template <class _Tp, class _Seq>
-inline bool operator<(const two_queue<_Tp, _Seq>&, const two_queue<_Tp, _Seq>&);
-
-
 template <class _Tp, class _Sequence>
 class two_queue {
-
-#ifndef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-  template <class _Tp1, class _Seq1>
-  friend bool operator== (const two_queue<_Tp1, _Seq1>&,
-                          const two_queue<_Tp1, _Seq1>&);
-  template <class _Tp1, class _Seq1>
-  friend bool operator< (const two_queue<_Tp1, _Seq1>&,
-                         const two_queue<_Tp1, _Seq1>&);
-#endif
 public:
   typedef typename _Sequence::value_type      value_type;
   typedef typename _Sequence::size_type       size_type;
@@ -39,14 +23,11 @@ public:
 
   typedef typename _Sequence::reference       reference;
   typedef typename _Sequence::const_reference const_reference;
-#ifndef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-protected:
-#endif
-  _Sequence c,a,b;
-public:
-  two_queue() : c() {}
-  //explicit two_queue(const _Sequence& __c) : c(__c) {}
 
+protected:
+  _Sequence a,b;
+public:
+  two_queue(){}
   bool empty() const { return a.empty()&&b.empty(); }
   size_type size() const { return a.size()+b.size(); }
   reference top() { 
@@ -57,7 +38,6 @@ public:
 	if(a.empty()) return b.front();
 	else return a.front();	
   }
-  //void push(const value_type& __x) { a.push_back(__x); }
   void push_a(const value_type& __x) { a.push_back(__x); }
   void push_b(const value_type& __x) { b.push_back(__x); }
   void pop() { 
@@ -65,61 +45,78 @@ public:
 	else a.pop_front(); 
   }
 
-  void swap(two_queue& other)
-  {
-    using std::swap;
-    swap(a, other.a);
-    swap(b, other.b);
-  }
 };
+} /* namespace boost */
 
-template <class _Tp, class _Sequence>
-bool 
-operator==(const two_queue<_Tp, _Sequence>& __x, const two_queue<_Tp, _Sequence>& __y)
-{
-  return __x.c == __y.c;
-}
 
-template <class _Tp, class _Sequence>
-bool
-operator<(const two_queue<_Tp, _Sequence>& __x, const two_queue<_Tp, _Sequence>& __y)
-{
-  return __x.c < __y.c;
-}
 
-template <class _Tp, class _Sequence>
-bool
-operator!=(const two_queue<_Tp, _Sequence>& __x, const two_queue<_Tp, _Sequence>& __y)
-{
-  return !(__x == __y);
-}
 
-template <class _Tp, class _Sequence>
-bool 
-operator>(const two_queue<_Tp, _Sequence>& __x, const two_queue<_Tp, _Sequence>& __y)
-{
-  return __y < __x;
-}
+namespace boost {
 
-template <class _Tp, class _Sequence>
-bool 
-operator<=(const two_queue<_Tp, _Sequence>& __x, const two_queue<_Tp, _Sequence>& __y)
-{
-  return !(__y < __x);
-}
+template <class _Tp, 
+          class _DistanceMap,
+          class _Compare,
+          class _DistZero>
+class two_queue_tm;
 
-template <class _Tp, class _Sequence>
-bool 
-operator>=(const two_queue<_Tp, _Sequence>& __x, const two_queue<_Tp, _Sequence>& __y)
-{
-  return !(__x < __y);
-}
+template <class _Tp, class _DistanceMap, class _Compare, class _DistZero>
+class two_queue_tm {
+public:
+  typedef std::deque<_Tp> _Sequence;
+  typedef typename _Sequence::value_type      value_type;
+  typedef typename _Sequence::size_type       size_type;
+  typedef          _Sequence                  container_type;
 
-template <class _Tp, class _Sequence>
-inline void
-swap(two_queue<_Tp, _Sequence>& __x, queue<_Tp, _Sequence>& __y)
-{ __x.swap(__y); }
+  typedef typename _Sequence::reference       reference;
+  typedef typename _Sequence::const_reference const_reference;
 
+  typedef typename property_traits<_DistanceMap>::value_type D;
+protected:
+  _Sequence a,b;
+  _DistanceMap* pDistance;
+  _Compare compare;
+  D minDist;
+public:
+  two_queue_tm(){}
+  void setDistance(_DistanceMap* distance){pDistance = distance;}
+  void setCompare(_Compare Compare){compare = Compare;}
+  void setZero(_DistZero Zero){minDist = Zero;}
+  D GetMinDist() {UpdateMinDist(); return minDist;}
+  void UpdateMinDist() {	
+	typename _Sequence::iterator it;
+	it = a.begin();
+	while (it != a.end()){
+		D d = get(*pDistance, *it);
+		if(compare(d,minDist)) minDist = d;
+		it++;
+	}
+
+	it = b.begin();
+	while (it != b.end()){
+		D d = get(*pDistance, *it);
+		if(compare(d,minDist)) minDist = d;
+		it++;
+	}
+
+  }
+  bool empty() const { return a.empty()&&b.empty(); }
+  size_type size() const { return a.size()+b.size(); }
+  reference top() { 
+	if(a.empty()) return b.front();
+	else return a.front();	
+  }
+  const_reference top() const {
+	if(a.empty()) return b.front();
+	else return a.front();	
+  }
+  void push_a(const value_type& __x) { a.push_back(__x); }
+  void push_b(const value_type& __x) { b.push_back(__x); }
+  void pop() { 
+	if(a.empty()) b.pop_front();
+	else a.pop_front(); 
+  }
+
+};
 } /* namespace boost */
 
 #endif

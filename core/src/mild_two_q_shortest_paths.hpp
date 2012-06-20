@@ -264,6 +264,7 @@ namespace boost {
   mild_two_q_shortest_paths_no_init
     (const Graph& g,
      typename graph_traits<Graph>::vertex_descriptor s,
+     typename graph_traits<Graph>::vertex_descriptor t,
      PredecessorMap predecessor, DistanceMap distance, WeightMap weight,
      IndexMap index_map,
      Compare compare, Combine combine, DistZero zero,
@@ -275,7 +276,7 @@ namespace boost {
     typedef typename ColorMapHelper::type ColorMap;
     ColorMap color =
       ColorMapHelper::build(g, index_map);
-    mild_two_q_shortest_paths_no_init( g, s, predecessor, distance, weight,
+    mild_two_q_shortest_paths_no_init( g, s, t, predecessor, distance, weight,
       index_map, compare, combine, zero, vis,
         color);
   }
@@ -291,6 +292,7 @@ namespace boost {
   mild_two_q_shortest_paths_no_init
     (const Graph& g,
      typename graph_traits<Graph>::vertex_descriptor s,
+     typename graph_traits<Graph>::vertex_descriptor t,
      PredecessorMap predecessor, DistanceMap distance, WeightMap weight,
      IndexMap index_map,
      Compare compare, Combine combine, DistZero zero,
@@ -300,9 +302,6 @@ namespace boost {
     typedef indirect_cmp<DistanceMap, Compare> IndirectCmp;
     IndirectCmp icmp(distance, compare);
 typedef Graph IncidenceGraph;
-//typedef MutableQueue Buffer;
-//typedef class detail::mild_two_q_bfs_visitor<Mild_two_q_Visitor, MutableQueue, WeightMap, PredecessorMap, DistanceMap, Combine, Compare> BFSVisitor;
-
 
     BOOST_CONCEPT_ASSERT(( IncidenceGraphConcept<IncidenceGraph> ));
     typedef graph_traits<IncidenceGraph> GTraits;
@@ -317,11 +316,15 @@ typedef typename property_traits<DistanceMap>::value_type D;
 typedef typename property_traits<WeightMap>::value_type W;
 
 
-two_queue<typename graph_traits<Graph>::vertex_descriptor> Q;
+two_queue_tm<typename graph_traits<Graph>::vertex_descriptor, DistanceMap, Compare, DistZero> Q;
+Q.setDistance(&distance);
+Q.setCompare(compare);
+Q.setZero(zero);
 Q.push_b(s);
 put(color, s, Color::gray());//gray: is in queue
 while(!Q.empty())
 {
+if(get(color,t)!=Color::white()&&get(distance,t)<=Q.GetMinDist()) break; // no better solution, can stop immediately
 Vertex u = Q.top(); Q.pop();
 put(color, u, Color::black());//black: was in queue
 D d_u = get(distance, u);
@@ -360,6 +363,7 @@ for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
   mild_two_q_shortest_paths
     (const VertexListGraph& g,
      typename graph_traits<VertexListGraph>::vertex_descriptor s,
+     typename graph_traits<VertexListGraph>::vertex_descriptor t,
      PredecessorMap predecessor, DistanceMap distance, WeightMap weight,
      IndexMap index_map,
      Compare compare, Combine combine, DistInf inf, DistZero zero,
@@ -368,7 +372,7 @@ for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
      BOOST_GRAPH_ENABLE_IF_MODELS_PARM(VertexListGraph,vertex_list_graph_tag))
   {
     boost::two_bit_color_map<IndexMap> color(num_vertices(g), index_map);
-    mild_two_q_shortest_paths(g, s, predecessor, distance, weight, index_map,
+    mild_two_q_shortest_paths(g, s, t, predecessor, distance, weight, index_map,
                             compare, combine, inf, zero, vis,
                             color);
   }
@@ -382,6 +386,7 @@ for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
   mild_two_q_shortest_paths
     (const VertexListGraph& g,
      typename graph_traits<VertexListGraph>::vertex_descriptor s,
+     typename graph_traits<VertexListGraph>::vertex_descriptor t,
      PredecessorMap predecessor, DistanceMap distance, WeightMap weight,
      IndexMap index_map,
      Compare compare, Combine combine, DistInf inf, DistZero zero,
@@ -398,7 +403,7 @@ for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
     }
     put(distance, s, zero);
 
-    mild_two_q_shortest_paths_no_init(g, s, predecessor, distance, weight,
+    mild_two_q_shortest_paths_no_init(g, s, t, predecessor, distance, weight,
                             index_map, compare, combine, zero, vis, color);
   }
 
@@ -411,12 +416,13 @@ for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
   mild_two_q_shortest_paths
     (const VertexListGraph& g,
      typename graph_traits<VertexListGraph>::vertex_descriptor s,
+     typename graph_traits<VertexListGraph>::vertex_descriptor t,
      PredecessorMap predecessor, DistanceMap distance, WeightMap weight,
      IndexMap index_map,
      Compare compare, Combine combine, DistInf inf, DistZero zero,
      Mild_two_q_Visitor vis)
   {
-    mild_two_q_shortest_paths(g, s, predecessor, distance, weight, index_map,
+    mild_two_q_shortest_paths(g, s, t, predecessor, distance, weight, index_map,
                             compare, combine, inf, zero, vis,
                             no_named_parameters());
   }
@@ -431,6 +437,7 @@ for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
     mild_two_q_dispatch2
       (const VertexListGraph& g,
        typename graph_traits<VertexListGraph>::vertex_descriptor s,
+       typename graph_traits<VertexListGraph>::vertex_descriptor t,
        DistanceMap distance, WeightMap weight, IndexMap index_map,
        const Params& params)
     {
@@ -442,7 +449,7 @@ for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
                            (std::numeric_limits<D>::max)());
 
       mild_two_q_shortest_paths
-        (g, s,
+        (g, s, t,
          choose_param(get_param(params, vertex_predecessor), p_map),
          distance, weight, index_map,
          choose_param(get_param(params, distance_compare_t()),
@@ -464,6 +471,7 @@ for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
     mild_two_q_dispatch1
       (const VertexListGraph& g,
        typename graph_traits<VertexListGraph>::vertex_descriptor s,
+       typename graph_traits<VertexListGraph>::vertex_descriptor t,
        DistanceMap distance, WeightMap weight, IndexMap index_map,
        const Params& params)
     {
@@ -474,7 +482,7 @@ for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
       std::vector<D> distance_map(n);
 
       detail::mild_two_q_dispatch2
-        (g, s, choose_param(distance, make_iterator_property_map
+        (g, s, t, choose_param(distance, make_iterator_property_map
                             (distance_map.begin(), index_map,
                              distance_map[0])),
          weight, index_map, params);
@@ -493,7 +501,7 @@ for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
     // Default for edge weight and vertex index map is to ask for them
     // from the graph.  Default for the visitor is null_visitor.
     detail::mild_two_q_dispatch1
-      (g, s,
+      (g, s, t,
        get_param(params, vertex_distance),
        choose_const_pmap(get_param(params, edge_weight), g, edge_weight),
        choose_const_pmap(get_param(params, vertex_index), g, vertex_index),
