@@ -1,12 +1,9 @@
-//  (C) Copyright Jeremy Siek 2004 
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
+//  (C) Copyright Jinfu Leng 2012 
 
 #ifndef PGROUTING_TWO_QUEUE_HPP
 #define PGROUTING_TWO_QUEUE_HPP
 
-#include <deque>
+#include <queue>
 
 namespace boost {
 
@@ -81,7 +78,7 @@ public:
   void setDistance(_DistanceMap* distance){pDistance = distance;}
   void setCompare(_Compare Compare){compare = Compare;}
   void setZero(_DistZero Zero){minDist = Zero;}
-  D GetMinDist() {UpdateMinDist(); return minDist;}
+  D GetMinDist() {/*UpdateMinDist();*/ return minDist;}
   void UpdateMinDist() {	
 	typename _Sequence::iterator it;
 	it = a.begin();
@@ -102,12 +99,20 @@ public:
   bool empty() const { return a.empty()&&b.empty(); }
   size_type size() const { return a.size()+b.size(); }
   reference top() { 
-	if(a.empty()) return b.front();
-	else return a.front();	
+	_Sequence *sequence;	
+	if(a.empty()) sequence = &b;
+	else sequence = &a;
+	D d = get(*pDistance, sequence->front());
+	if(!compare(d,minDist)&&!compare(minDist,d)) UpdateMinDist();
+	return sequence->front();
   }
   const_reference top() const {
-	if(a.empty()) return b.front();
-	else return a.front();	
+	_Sequence *sequence;	
+	if(a.empty()) sequence = &b;
+	else sequence = &a;
+	D d = get(*pDistance, sequence->front());
+	if(!compare(d,minDist)&&!compare(minDist,d)) UpdateMinDist();
+	return sequence->front();
   }
   void push_a(const value_type& __x) { a.push_back(__x); }
   void push_b(const value_type& __x) { b.push_back(__x); }
