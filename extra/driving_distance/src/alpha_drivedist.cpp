@@ -30,7 +30,12 @@
 Takes a list of points and returns a list of segments 
 corresponding to the Alpha shape.
 ************************************************************************/
-
+#ifdef __MINGW64__
+#include <windows.h>
+namespace boost {
+  void tss_cleanup_implemented() { }
+}
+#endif
 #include <CGAL/Simple_cartesian.h>
 #include <CGAL/Filtered_kernel.h>
 #include <CGAL/algorithm.h>

@@ -19,13 +19,14 @@
  *
  */
 
+// Include C header first for windows build issue
+#include "drivedist.h"
+
 #include <boost/config.hpp>
 
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
-
-#include "drivedist.h"
 
 using namespace std;
 using namespace boost;
