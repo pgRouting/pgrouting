@@ -23,27 +23,11 @@
 
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
-//#include <boost/graph/dijkstra_shortest_paths.hpp>
 #include "mild_two_q.h"
 #include "mild_two_q_shortest_paths.hpp"
 
 using namespace std;
 using namespace boost;
-
-/*
-//	FIXME: use this to avoid heap allocation ?
-
-void* operator new(size_t size)
-{
-return palloc(size);
-}
-
-void operator delete(void *p)
-{
-    pfree(p);
-}
-
-*/
 
 // Maximal number of nodes in the path (to avoid infinite loops)
 #define MAX_NODES 100000000
