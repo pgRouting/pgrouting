@@ -34,259 +34,12 @@
 
 #include <two_queue.hpp>
 
-
-#ifdef BOOST_GRAPH_DIJKSTRA_TESTING
-#  include <boost/pending/mutable_queue.hpp>
-#endif // BOOST_GRAPH_DIJKSTRA_TESTING
-
 namespace boost {
 
-  /**
-   * @brief Updates a particular value in a queue used by Dijkstra's
-   * algorithm.
-   *
-   * This routine is called by Dijkstra's algorithm after it has
-   * decreased the distance from the source vertex to the given @p
-   * vertex. By default, this routine will just call @c
-   * Q.update(vertex). However, other queues may provide more
-   * specialized versions of this routine.
-   *
-   * @param Q             the queue that will be updated.
-   * @param vertex        the vertex whose distance has been updated
-   * @param old_distance  the previous distance to @p vertex
-   */
-  template<typename Buffer, typename Vertex, typename DistanceType>
-  inline void 
-  mild_two_q_queue_update(Buffer& Q, Vertex vertex, DistanceType old_distance)
-  {
-    (void)old_distance;
-    Q.update(vertex);
-  }
-
-#ifdef BOOST_GRAPH_DIJKSTRA_TESTING
-  // This is a misnomer now: it now just refers to the "default heap", which is
-  // currently d-ary (d=4) but can be changed by a #define.
-  static bool mild_two_q_relaxed_heap = true;
-#endif
-
-  template <class Visitor, class Graph>
-  struct Mild_two_q_VisitorConcept {
-    void constraints() {
-      BOOST_CONCEPT_ASSERT(( CopyConstructibleConcept<Visitor> ));
-      vis.initialize_vertex(u, g);
-      vis.discover_vertex(u, g);
-      vis.examine_vertex(u, g);
-      vis.examine_edge(e, g);
-      vis.edge_relaxed(e, g);
-      vis.edge_not_relaxed(e, g);
-      vis.finish_vertex(u, g);
-    }
-    Visitor vis;
-    Graph g;
-    typename graph_traits<Graph>::vertex_descriptor u;
-    typename graph_traits<Graph>::edge_descriptor e;
-  };
-
-  template <class Visitors = null_visitor>
-//FIXME bfs_visitor
-  class mild_two_q_visitor : public bfs_visitor<Visitors> {
-  public:
-    mild_two_q_visitor() { }
-    mild_two_q_visitor(Visitors vis)
-      : bfs_visitor<Visitors>(vis) { }
-
-    template <class Edge, class Graph>
-    void edge_relaxed(Edge e, Graph& g) {
-      invoke_visitors(this->m_vis, e, g, on_edge_relaxed());
-    }
-    template <class Edge, class Graph>
-    void edge_not_relaxed(Edge e, Graph& g) {
-      invoke_visitors(this->m_vis, e, g, on_edge_not_relaxed());
-    }
-  private:
-    template <class Edge, class Graph>
-    void tree_edge(Edge u, Graph& g) { }
-  };
-  template <class Visitors>
-  mild_two_q_visitor<Visitors>
-  make_mild_two_q_visitor(Visitors vis) {
-    return mild_two_q_visitor<Visitors>(vis);
-  }
-  typedef mild_two_q_visitor<> default_mild_two_q_visitor;
-
-  namespace detail {
-
-    template <class UniformCostVisitor, class UpdatableQueue,
-      class WeightMap, class PredecessorMap, class DistanceMap,
-      class BinaryFunction, class BinaryPredicate>
-    struct mild_two_q_bfs_visitor
-    {
-      typedef typename property_traits<DistanceMap>::value_type D;
-
-      mild_two_q_bfs_visitor(UniformCostVisitor vis, UpdatableQueue& Q,
-                           WeightMap w, PredecessorMap p, DistanceMap d,
-                           BinaryFunction combine, BinaryPredicate compare,
-                           D zero)
-        : m_vis(vis), m_Q(Q), m_weight(w), m_predecessor(p), m_distance(d),
-          m_combine(combine), m_compare(compare), m_zero(zero)  { }
-
-      template <class Edge, class Graph>
-      void tree_edge(Edge e, Graph& g) {
-        bool decreased = relax(e, g, m_weight, m_predecessor, m_distance,
-                               m_combine, m_compare);
-        if (decreased)
-          m_vis.edge_relaxed(e, g);
-        else
-          m_vis.edge_not_relaxed(e, g);
-      }
-      template <class Edge, class Graph>
-      void gray_target(Edge e, Graph& g) {
-        D old_distance = get(m_distance, target(e, g));
-
-        bool decreased = relax(e, g, m_weight, m_predecessor, m_distance,
-                               m_combine, m_compare);
-        if (decreased) {
-          mild_two_q_queue_update(m_Q, target(e, g), old_distance);
-          m_vis.edge_relaxed(e, g);
-        } else
-          m_vis.edge_not_relaxed(e, g);
-      }
-
-      template <class Vertex, class Graph>
-      void initialize_vertex(Vertex u, Graph& g)
-        { m_vis.initialize_vertex(u, g); }
-      template <class Edge, class Graph>
-      void non_tree_edge(Edge, Graph&) { }
-      template <class Vertex, class Graph>
-      void discover_vertex(Vertex u, Graph& g) { m_vis.discover_vertex(u, g); }
-      template <class Vertex, class Graph>
-      void examine_vertex(Vertex u, Graph& g) { m_vis.examine_vertex(u, g); }
-      template <class Edge, class Graph>
-      void examine_edge(Edge e, Graph& g) {
-        if (m_compare(get(m_weight, e), m_zero))
-            boost::throw_exception(negative_edge());
-        m_vis.examine_edge(e, g);
-      }
-      template <class Edge, class Graph>
-      void black_target(Edge, Graph&) { }
-      template <class Vertex, class Graph>
-      void finish_vertex(Vertex u, Graph& g) { m_vis.finish_vertex(u, g); }
-
-      UniformCostVisitor m_vis;
-      UpdatableQueue& m_Q;
-      WeightMap m_weight;
-      PredecessorMap m_predecessor;
-      DistanceMap m_distance;
-      BinaryFunction m_combine;
-      BinaryPredicate m_compare;
-      D m_zero;
-    };
-
-  } // namespace detail
-
-  namespace detail {
-    template <class Graph, class IndexMap, class Value, bool KnownNumVertices>
-    struct vertex_property_map_generator_helper {};
-
-    template <class Graph, class IndexMap, class Value>
-    struct vertex_property_map_generator_helper<Graph, IndexMap, Value, true> {
-      typedef boost::iterator_property_map<Value*, IndexMap> type;
-      static type build(const Graph& g, const IndexMap& index, boost::scoped_array<Value>& array_holder) {
-        array_holder.reset(new Value[num_vertices(g)]);
-        std::fill(array_holder.get(), array_holder.get() + num_vertices(g), Value());
-        return make_iterator_property_map(array_holder.get(), index);
-      }
-    };
-
-    template <class Graph, class IndexMap, class Value>
-    struct vertex_property_map_generator_helper<Graph, IndexMap, Value, false> {
-      typedef boost::vector_property_map<Value, IndexMap> type;
-      static type build(const Graph& g, const IndexMap& index, boost::scoped_array<Value>& array_holder) {
-        return boost::make_vector_property_map<Value>(index);
-      }
-    };
-
-    template <class Graph, class IndexMap, class Value>
-    struct vertex_property_map_generator {
-      typedef boost::is_base_and_derived<
-                boost::vertex_list_graph_tag,
-                typename boost::graph_traits<Graph>::traversal_category>
-              known_num_vertices;
-      typedef vertex_property_map_generator_helper<Graph, IndexMap, Value, known_num_vertices::value> helper;
-      typedef typename helper::type type;
-      static type build(const Graph& g, const IndexMap& index, boost::scoped_array<Value>& array_holder) {
-        return helper::build(g, index, array_holder);
-      }
-    };
-  }
-
-  namespace detail {
-    template <class Graph, class IndexMap, bool KnownNumVertices>
-    struct default_color_map_generator_helper {};
-
-    template <class Graph, class IndexMap>
-    struct default_color_map_generator_helper<Graph, IndexMap, true> {
-      typedef boost::two_bit_color_map<IndexMap> type;
-      static type build(const Graph& g, const IndexMap& index) {
-        size_t nv = num_vertices(g);
-        return boost::two_bit_color_map<IndexMap>(nv, index);
-      }
-    };
-
-    template <class Graph, class IndexMap>
-    struct default_color_map_generator_helper<Graph, IndexMap, false> {
-      typedef boost::vector_property_map<boost::two_bit_color_type, IndexMap> type;
-      static type build(const Graph& g, const IndexMap& index) {
-        return boost::make_vector_property_map<boost::two_bit_color_type>(index);
-      }
-    };
-
-    template <class Graph, class IndexMap>
-    struct default_color_map_generator {
-      typedef boost::is_base_and_derived<
-                boost::vertex_list_graph_tag,
-                typename boost::graph_traits<Graph>::traversal_category>
-              known_num_vertices;
-      typedef default_color_map_generator_helper<Graph, IndexMap, known_num_vertices::value> helper;
-      typedef typename helper::type type;
-      static type build(const Graph& g, const IndexMap& index) {
-        return helper::build(g, index);
-      }
-    };
-  }
-
-  // Call breadth first search with default color map.
-  template <class Graph, class Mild_two_q_Visitor,
+  // Core function - compute the shortest path with the two_queue
+  template <class Graph,
             class PredecessorMap, class DistanceMap,
-            class WeightMap, class IndexMap, class Compare, class Combine,
-            class DistZero>
-  inline void
-  mild_two_q_shortest_paths_no_init
-    (const Graph& g,
-     typename graph_traits<Graph>::vertex_descriptor s,
-     typename graph_traits<Graph>::vertex_descriptor t,
-     PredecessorMap predecessor, DistanceMap distance, WeightMap weight,
-     IndexMap index_map,
-     Compare compare, Combine combine, DistZero zero,
-     Mild_two_q_Visitor vis)
-  {
-    typedef
-      detail::default_color_map_generator<Graph, IndexMap>
-      ColorMapHelper;
-    typedef typename ColorMapHelper::type ColorMap;
-    ColorMap color =
-      ColorMapHelper::build(g, index_map);
-    mild_two_q_shortest_paths_no_init( g, s, t, predecessor, distance, weight,
-      index_map, compare, combine, zero, vis,
-        color);
-  }
-//FIXME this should be the core function
-//FIXME
-//FIXME
-  // compute the shortest path with the two_queue
-  template <class Graph, class Mild_two_q_Visitor,
-            class PredecessorMap, class DistanceMap,
-            class WeightMap, class IndexMap, class Compare, class Combine,
+            class WeightMap, class Compare, class Combine,
             class DistZero, class ColorMap>
   inline void
   mild_two_q_shortest_paths_no_init
@@ -294,67 +47,60 @@ namespace boost {
      typename graph_traits<Graph>::vertex_descriptor s,
      typename graph_traits<Graph>::vertex_descriptor t,
      PredecessorMap predecessor, DistanceMap distance, WeightMap weight,
-     IndexMap index_map,
      Compare compare, Combine combine, DistZero zero,
-     Mild_two_q_Visitor vis, ColorMap color)
+     ColorMap color)
   {
-    
-    typedef indirect_cmp<DistanceMap, Compare> IndirectCmp;
-    IndirectCmp icmp(distance, compare);
-typedef Graph IncidenceGraph;
+   
+	typedef Graph IncidenceGraph;
+	BOOST_CONCEPT_ASSERT(( IncidenceGraphConcept<IncidenceGraph> ));
+	typedef graph_traits<IncidenceGraph> GTraits;
+	typedef typename GTraits::vertex_descriptor Vertex;
+	typedef typename GTraits::edge_descriptor Edge;
+	BOOST_CONCEPT_ASSERT(( ReadWritePropertyMapConcept<ColorMap, Vertex> ));
+	typedef typename property_traits<ColorMap>::value_type ColorValue;
+	typedef color_traits<ColorValue> Color;
+	typename GTraits::out_edge_iterator ei, ei_end;
+	typedef typename property_traits<DistanceMap>::value_type D;
+	typedef typename property_traits<WeightMap>::value_type W;
 
-    BOOST_CONCEPT_ASSERT(( IncidenceGraphConcept<IncidenceGraph> ));
-    typedef graph_traits<IncidenceGraph> GTraits;
-    typedef typename GTraits::vertex_descriptor Vertex;
-    typedef typename GTraits::edge_descriptor Edge;
-    //BOOST_CONCEPT_ASSERT(( BFSVisitorConcept<BFSVisitor, IncidenceGraph> ));
-    BOOST_CONCEPT_ASSERT(( ReadWritePropertyMapConcept<ColorMap, Vertex> ));
-    typedef typename property_traits<ColorMap>::value_type ColorValue;
-    typedef color_traits<ColorValue> Color;
-    typename GTraits::out_edge_iterator ei, ei_end;
-typedef typename property_traits<DistanceMap>::value_type D;
-typedef typename property_traits<WeightMap>::value_type W;
-
-
-two_queue_tm<typename graph_traits<Graph>::vertex_descriptor, DistanceMap, Compare, DistZero> Q;
-Q.setDistance(&distance);
-Q.setCompare(compare);
-Q.setZero(zero);
-Q.push_b(s);
-put(color, s, Color::gray());//gray: is in queue
-while(!Q.empty())
-{
-if(get(color,t)!=Color::white()&&get(distance,t)<=Q.GetMinDist()) break; // no better solution, can stop immediately
-Vertex u = Q.top(); Q.pop();
-put(color, u, Color::black());//black: was in queue
-D d_u = get(distance, u);
-for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
-        Vertex v = target(*ei, g);
-	D d_v = get(distance,v);
-	W w_e = get(weight, *ei);
-	if ( compare(combine(d_u, w_e), d_v) ) {
-        	put(distance, v, combine(d_u, w_e));
-        	put(predecessor, v, u);
-		ColorValue c_v = get(color, v);
-		if(c_v==Color::white())// white: not reached
-		{
-			Q.push_b(v);
-			put(color, v, Color::gray());			
-		}
-		else if(c_v==Color::black())
-		{
-			Q.push_a(v);
-			put(color, v, Color::gray());
+	two_queue_tm<typename graph_traits<Graph>::vertex_descriptor, DistanceMap, Compare, DistZero> Q;
+	Q.setDistance(&distance);
+	Q.setCompare(compare);
+	Q.setZero(zero);
+	Q.push_b(s);
+	put(color, s, Color::gray());//gray: is in queue
+	while(!Q.empty())
+	{
+		if(get(color,t)!=Color::white()&&get(distance,t)<=Q.GetMinDist()) break; // when there is no better solution, can stop immediately
+		Vertex u = Q.top(); Q.pop();
+		put(color, u, Color::black());//black: was in queue
+		D d_u = get(distance, u);
+		for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
+        		Vertex v = target(*ei, g);
+			D d_v = get(distance,v);
+			W w_e = get(weight, *ei);
+			if ( compare(combine(d_u, w_e), d_v) ) {
+        			put(distance, v, combine(d_u, w_e));
+        			put(predecessor, v, u);
+				ColorValue c_v = get(color, v);
+				if(c_v==Color::white())// white: not reached
+				{
+					Q.push_b(v);
+					put(color, v, Color::gray());			
+				}
+				else if(c_v==Color::black())
+				{
+					Q.push_a(v);
+					put(color, v, Color::gray());
+				}
+			}
 		}
 	}
-}
-
-}
 
   }
 
   // Initialize distances and call breadth first search with default color map
-  template <class VertexListGraph, class Mild_two_q_Visitor,
+  template <class VertexListGraph,
             class PredecessorMap, class DistanceMap,
             class WeightMap, class IndexMap, class Compare, class Combine,
             class DistInf, class DistZero, typename T, typename Tag, 
@@ -367,18 +113,17 @@ for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
      PredecessorMap predecessor, DistanceMap distance, WeightMap weight,
      IndexMap index_map,
      Compare compare, Combine combine, DistInf inf, DistZero zero,
-     Mild_two_q_Visitor vis,
      const bgl_named_params<T, Tag, Base>&
      BOOST_GRAPH_ENABLE_IF_MODELS_PARM(VertexListGraph,vertex_list_graph_tag))
   {
     boost::two_bit_color_map<IndexMap> color(num_vertices(g), index_map);
     mild_two_q_shortest_paths(g, s, t, predecessor, distance, weight, index_map,
-                            compare, combine, inf, zero, vis,
+                            compare, combine, inf, zero,
                             color);
   }
 
-  // Initialize distances and call breadth first search
-  template <class VertexListGraph, class Mild_two_q_Visitor,
+  // Initialize distances, predecessor, color
+  template <class VertexListGraph,
             class PredecessorMap, class DistanceMap,
             class WeightMap, class IndexMap, class Compare, class Combine,
             class DistInf, class DistZero, class ColorMap>
@@ -390,13 +135,13 @@ for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
      PredecessorMap predecessor, DistanceMap distance, WeightMap weight,
      IndexMap index_map,
      Compare compare, Combine combine, DistInf inf, DistZero zero,
-     Mild_two_q_Visitor vis, ColorMap color)
+     ColorMap color)
   {
     typedef typename property_traits<ColorMap>::value_type ColorValue;
     typedef color_traits<ColorValue> Color;
     typename graph_traits<VertexListGraph>::vertex_iterator ui, ui_end;
     for (boost::tie(ui, ui_end) = vertices(g); ui != ui_end; ++ui) {
-      vis.initialize_vertex(*ui, g);
+      //vis.initialize_vertex(*ui, g);
       put(distance, *ui, inf);
       put(predecessor, *ui, *ui);
       put(color, *ui, Color::white());
@@ -404,11 +149,11 @@ for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
     put(distance, s, zero);
 
     mild_two_q_shortest_paths_no_init(g, s, t, predecessor, distance, weight,
-                            index_map, compare, combine, zero, vis, color);
+                            compare, combine, zero, color);
   }
 
   // Initialize distances and call breadth first search
-  template <class VertexListGraph, class Mild_two_q_Visitor,
+  template <class VertexListGraph,
             class PredecessorMap, class DistanceMap,
             class WeightMap, class IndexMap, class Compare, class Combine,
             class DistInf, class DistZero>
@@ -419,11 +164,10 @@ for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
      typename graph_traits<VertexListGraph>::vertex_descriptor t,
      PredecessorMap predecessor, DistanceMap distance, WeightMap weight,
      IndexMap index_map,
-     Compare compare, Combine combine, DistInf inf, DistZero zero,
-     Mild_two_q_Visitor vis)
+     Compare compare, Combine combine, DistInf inf, DistZero zero)
   {
     mild_two_q_shortest_paths(g, s, t, predecessor, distance, weight, index_map,
-                            compare, combine, inf, zero, vis,
+                            compare, combine, inf, zero,
                             no_named_parameters());
   }
 
@@ -460,8 +204,6 @@ for (boost::tie(ei, ei_end) = out_edges(u, g); ei != ei_end; ++ei) {
          inf,
          choose_param(get_param(params, distance_zero_t()),
                       D()),
-         choose_param(get_param(params, graph_visitor),
-                      make_mild_two_q_visitor(null_visitor())),
          params);
     }
 
