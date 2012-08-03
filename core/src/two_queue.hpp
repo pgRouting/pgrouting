@@ -78,7 +78,7 @@ public:
   void setDistance(_DistanceMap* distance){pDistance = distance;}
   void setCompare(_Compare Compare){compare = Compare;}
   void setZero(_DistZero Zero){minDist = Zero;}
-  D GetMinDist() {/*UpdateMinDist();*/ return minDist;}
+  D GetMinDist() {return minDist;}
   void UpdateMinDist() {	
 	typename _Sequence::iterator it;
 	it = a.begin();

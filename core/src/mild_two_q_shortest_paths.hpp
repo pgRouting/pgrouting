@@ -1,36 +1,34 @@
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-//
-//
-// Revision History:
-//   04 April 2001: Added named parameter variant. (Jeremy Siek)
-//   01 April 2001: Modified to use new <boost/limits.hpp> header. (JMaddock)
-//
+/*
+ * Shortest path algorithm for PostgreSQL
+ *
+ * Copyright (c) 2012 Jinfu Leng
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ *
+ */
+
 #ifndef PGROUTING_MILD_TWO_Q_HPP
 #define PGROUTING_MILD_TWO_Q_HPP
 
-#include <functional>
-#include <boost/limits.hpp>
 #include <boost/graph/named_function_params.hpp>
-#include <boost/graph/breadth_first_search.hpp>
 #include <boost/graph/relax.hpp>
-#include <boost/pending/indirect_cmp.hpp>
-#include <boost/graph/exception.hpp>
-#include <boost/pending/relaxed_heap.hpp>
 #include <boost/graph/overloading.hpp>
-#include <boost/smart_ptr.hpp>
 #include <boost/graph/detail/d_ary_heap.hpp>
 #include <boost/graph/two_bit_color_map.hpp>
 #include <boost/property_map/property_map.hpp>
 #include <boost/property_map/vector_property_map.hpp>
-#include <boost/type_traits.hpp>
-#include <boost/concept/assert.hpp>
 
 #include <two_queue.hpp>
 
