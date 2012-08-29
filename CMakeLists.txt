@@ -63,6 +63,7 @@ endif(PGROUTING_CORE_INCLUDE_DIR)
 
 OPTION(WITH_TSP "Build TSP library" OFF)
 OPTION(WITH_DD "Build Driving distance library" OFF)
+OPTION(WITH_KDIJKSTRA "Build One_To_Many_ShortestPath (Dijkstra) function" OFF)
 
 IF(UNIX)
   SET(LIBRARY_INSTALL_PATH ${LIB_DIR})
@@ -73,7 +74,7 @@ ELSE(UNIX)
   SET(SQL_INSTALL_PATH ${PGROUTING_BINARY_DIR}/lib)
 ENDIF(UNIX)
 
-SET(PGROUTING_INCLUDE_DIRECTORIES ${PGROUTING_SOURCE_DIR}/core ${PGROUTING_SOURCE_DIR}/core/src ${PGROUTING_SOURCE_DIR}/extra ${PGROUTING_SOURCE_DIR}/extra/tsp ${PGROUTING_SOURCE_DIR}/extra/tsp/src ${PGROUTING_SOURCE_DIR}/extra/driving_distance ${PGROUTING_SOURCE_DIR}/extra/driving_distance/src
+SET(PGROUTING_INCLUDE_DIRECTORIES ${PGROUTING_SOURCE_DIR}/core ${PGROUTING_SOURCE_DIR}/core/src ${PGROUTING_SOURCE_DIR}/extra ${PGROUTING_SOURCE_DIR}/extra/tsp ${PGROUTING_SOURCE_DIR}/extra/tsp/src ${PGROUTING_SOURCE_DIR}/extra/driving_distance ${PGROUTING_SOURCE_DIR}/extra/driving_distance/src ${PGROUTING_SOURCE_DIR}/extra/KDijkstra ${PGROUTING_SOURCE_DIR}/extra/KDijkstra/src
 )
 
 INCLUDE_DIRECTORIES(. ${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
@@ -94,6 +95,11 @@ SET(CMAKE_CXX_FLAGS "-O2 -g -lgmp -frounding-math")
 # cause another cmake executable to run.  The same process will walk through
 # the project's entire directory structure.
 SUBDIRS(core)
+
+IF(WITH_KDIJKSTRA)
+  INCLUDE_DIRECTORIES(${INCLUDE_DIRECTORIES})
+  ADD_SUBDIRECTORY()
+ENDIF(WITH_KDIJKSTRA)
 
 IF(WITH_TSP)
   macro_optional_find_package(GAUL)
