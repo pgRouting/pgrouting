@@ -28,7 +28,7 @@ ELSE(Boost_INCLUDE_DIRS)
   MESSAGE(FATAL ERROR " Please check your Boost installation ") 
 ENDIF(Boost_INCLUDE_DIRS)
 
-EXEC_PROGRAM(pg_config
+EXEC_PROGRAM(${POSTGRESQL_EXECUTABLE}/pg_config
  ARGS --pkglibdir
  OUTPUT_VARIABLE LIB_DIR)
 
@@ -87,8 +87,8 @@ IF(WIN32)
   LINK_LIBRARIES(postgres)
 ENDIF(WIN32)
 
-SET(CMAKE_C_FLAGS   "-O2 -g -lgmp -frounding-math")
-SET(CMAKE_CXX_FLAGS "-O2 -g -lgmp -frounding-math")
+SET(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -frounding-math")
 
 # Recurse into the subdirectories.  This does not actually
 # cause another cmake executable to run.  The same process will walk through

@@ -21,6 +21,9 @@
  
 #define _ALPHA_H
 
+#ifdef __MINGW64__
+#define ELOG_H
+#endif
 #include "postgres.h"
 #include "dijkstra.h"
 
