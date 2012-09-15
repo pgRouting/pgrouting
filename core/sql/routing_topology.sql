@@ -52,8 +52,8 @@ END; $$ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- Last changes: 16.04.2008
 -- Author: Christian Gonzalez
 -----------------------------------------------------------------------
-
-CREATE OR REPLACE FUNCTION assign_vertex_id(geom_table varchar, tolerance double precision, geo_cname varchar, gid_cname varchar)
+CREATE OR REPLACE FUNCTION assign_vertex_id(schema_name varchar, geom_table varchar,
+    tolerance double precision, geo_cname varchar, gid_cname varchar)
 RETURNS VARCHAR AS
 $$
 DECLARE
@@ -71,7 +71,7 @@ BEGIN
 
     EXECUTE 'CREATE TABLE vertices_tmp (id serial)';
 
-    srid := Find_SRID('public', quote_ident(geom_table), quote_ident(geo_cname));
+    srid := Find_SRID(quote_ident(schema_name), quote_ident(geom_table), quote_ident(geo_cname));
 
 
     EXECUTE 'SELECT addGeometryColumn(''vertices_tmp'', ''the_geom'', '||srid||', ''POINT'', 2)';
@@ -80,13 +80,14 @@ BEGIN
     FOR _r IN EXECUTE 'SELECT ' || quote_ident(gid_cname) || ' AS id,'
 	    || ' ST_StartPoint('|| quote_ident(geo_cname) ||') AS source,'
             || ' ST_EndPoint('|| quote_ident(geo_cname) ||') as target'
-	    || ' FROM ' || quote_ident(geom_table) || ' WHERE ' || quote_ident(geo_cname) || ' IS NOT NULL '
+	    || ' FROM ' || quote_ident(schema_name) || '.' || quote_ident(geom_table)
+        || ' WHERE ' || quote_ident(geo_cname) || ' IS NOT NULL '
     LOOP
         
         source_id := point_to_id(_r.source, tolerance);
 	target_id := point_to_id(_r.target, tolerance);
 								
-	EXECUTE 'update ' || quote_ident(geom_table) || 
+	EXECUTE 'update ' || quote_ident(schema_name) || '.' || quote_ident(geom_table) || 
 		' SET source = ' || source_id || 
 		', target = ' || target_id || 
 		' WHERE ' || quote_ident(gid_cname) || ' =  ' || _r.id;
@@ -98,3 +99,11 @@ END;
 $$
 LANGUAGE 'plpgsql' VOLATILE STRICT; 
 																		
+
+-- Overloaded for backward compatibility
+CREATE OR REPLACE FUNCTION assign_vertex_id(geom_table varchar, tolerance double precision, geo_cname varchar, gid_cname varchar)
+RETURNS VARCHAR AS
+$$
+  SELECT assign_vertex_id('public', $1, $2, $3, $4);
+$$
+LANGUAGE 'SQL' VOLATILE STRICT;
