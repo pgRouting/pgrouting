@@ -22,6 +22,9 @@
 extern "C"
 {
 #include <gaul.h>
+#ifdef __MINGW64__
+#define ELOG_H
+#endif
 #include <postgres.h>
 }
 

@@ -19,13 +19,14 @@
  *
  */
 
+// Include C header first for windows build issue
+#include "astar.h"
+
 #include <boost/config.hpp>
 
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/astar_search.hpp>
-
-#include "astar.h"
 
 #include <cmath>    // for sqrt
 
