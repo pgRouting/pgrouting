@@ -1,0 +1,2 @@
+INSTALL(FILES routing_tomany.sql DESTINATION ${SQL_INSTALL_PATH})
+
