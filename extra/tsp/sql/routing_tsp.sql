@@ -24,4 +24,4 @@
 CREATE OR REPLACE FUNCTION tsp(sql text, ids varchar, source integer)
         RETURNS SETOF path_result
         AS '$libdir/librouting_tsp'
-        LANGUAGE 'C' IMMUTABLE STRICT;
+        LANGUAGE C IMMUTABLE STRICT;
