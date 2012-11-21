@@ -207,7 +207,7 @@ boost_astar(edge_astar_t *edges, unsigned int count,
        visitor(astar_goal_visitor<vertex_descriptor>(target_vertex)));
 
   } 
-  catch(found_goal fg) {
+  catch(found_goal& fg) {
     // Target vertex found
     vector<int> path_vect;
     int max = MAX_NODES;
