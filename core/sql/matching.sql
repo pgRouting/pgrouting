@@ -19,7 +19,7 @@ DECLARE
     
 BEGIN
 
-    FOR row IN EXECUTE 'select getsrid(the_geom) as srid from '||tbl||' where gid = (select min(gid) from '||tbl||')' LOOP
+    FOR row IN EXECUTE 'select ST_SRID(the_geom) as srid from '||tbl||' where gid = (select min(gid) from '||tbl||')' LOOP
     END LOOP;
 	srid:= row.srid;
     
@@ -79,7 +79,7 @@ DECLARE
     
 BEGIN
 
-    FOR row IN EXECUTE 'select getsrid(the_geom) as srid from '||tbl||' where gid = (select min(gid) from '||tbl||')' LOOP
+    FOR row IN EXECUTE 'select ST_SRID(the_geom) as srid from '||tbl||' where gid = (select min(gid) from '||tbl||')' LOOP
     END LOOP;
 	srid:= row.srid;
 
@@ -155,7 +155,7 @@ DECLARE
     srid integer;
 BEGIN
 
-    FOR row IN EXECUTE 'select getsrid(the_geom) as srid from '||tbl||' where gid = (select min(gid) from '||tbl||')' LOOP
+    FOR row IN EXECUTE 'select ST_SRID(the_geom) as srid from '||tbl||' where gid = (select min(gid) from '||tbl||')' LOOP
     END LOOP;
 	srid:= row.srid;
 
@@ -231,7 +231,7 @@ DECLARE
     
 BEGIN
 
-    FOR row IN EXECUTE 'select getsrid(the_geom) as srid from '||tbl||' where gid = (select min(gid) from '||tbl||')' LOOP
+    FOR row IN EXECUTE 'select ST_SRID(the_geom) as srid from '||tbl||' where gid = (select min(gid) from '||tbl||')' LOOP
     END LOOP;
 	srid:= row.srid;
 
@@ -353,7 +353,7 @@ DECLARE
 
 BEGIN
 
-    FOR row IN EXECUTE 'select getsrid(the_geom) as srid from '||tbl||' where gid = (select min(gid) from '||tbl||')' LOOP
+    FOR row IN EXECUTE 'select ST_SRID(the_geom) as srid from '||tbl||' where gid = (select min(gid) from '||tbl||')' LOOP
     END LOOP;
 	srid:= row.srid;
 
@@ -517,7 +517,7 @@ DECLARE
     
 BEGIN
 
-    FOR row IN EXECUTE 'select getsrid(the_geom) as srid from '||tbl||' where gid = (select min(gid) from '||tbl||')' LOOP
+    FOR row IN EXECUTE 'select ST_SRID(the_geom) as srid from '||tbl||' where gid = (select min(gid) from '||tbl||')' LOOP
     END LOOP;
 	srid:= row.srid;
 
