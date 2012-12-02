@@ -284,7 +284,7 @@ BEGIN
 	    IF rc THEN query := query || ', reverse_cost'; 
 	    END IF;				
 				
-	    query := query || ' from '||quote_ident(tbl)||' where setsrid(''''BOX3D('||ST_X(ST_PointN(line, i-1))-distance2*2||' '
+	    query := query || ' from '||quote_ident(tbl)||' where ST_SetSRID(''''BOX3D('||ST_X(ST_PointN(line, i-1))-distance2*2||' '
 				||ST_Y(ST_PointN(line, i-1))-distance2*2||', '||ST_X(ST_PointN(line, i))+distance2*2||' '
 				||ST_Y(ST_PointN(line, i))+distance2*2||')''''::BOX3D, '||srid||')&&the_geom'', '
 				|| points[i-1] ||', '||	points[i-2] ||', '''||dir||''', '''||rc||'''), '
@@ -411,7 +411,7 @@ BEGIN
 	    IF rc THEN query := query || ', reverse_cost'; 
 	    END IF;
 	    
-	    query := query || ' from '||quote_ident(tbl)||' where setsrid(''''BOX3D('||ST_X(ST_PointN(line, i-1))-distance2*2||' '
+	    query := query || ' from '||quote_ident(tbl)||' where ST_SetSRID(''''BOX3D('||ST_X(ST_PointN(line, i-1))-distance2*2||' '
 				||ST_Y(ST_PointN(line, i-1))-distance2*2||', '||ST_X(ST_PointN(line, i))+distance2*2||' '
 				||ST_Y(ST_PointN(line, i))+distance2*2||')''''::BOX3D, '||srid||')&&the_geom'', '
 				|| points[i-1] ||', '||	points[i-2] ||', '''||dir||''', '''||rc||''')';

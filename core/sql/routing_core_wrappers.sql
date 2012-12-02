@@ -363,7 +363,7 @@ BEGIN
 	IF rc THEN query := query || ' , reverse_cost ';  
 	END IF;
 	  
-	query := query || 'FROM ' || quote_ident(geom_table) || ' where setSRID(''''BOX3D('||
+	query := query || 'FROM ' || quote_ident(geom_table) || ' where ST_SetSRID(''''BOX3D('||
           ll_x-delta||' '||ll_y-delta||','||ur_x+delta||' '||
           ur_y+delta||')''''::BOX3D, ' || srid || ') && the_geom'', ' || 
           quote_literal(sourceid) || ' , ' || 
@@ -567,7 +567,7 @@ BEGIN
 	IF rc THEN query := query || ' , reverse_cost ';
 	END IF;
 	  
-	query := query || 'FROM ' || quote_ident(geom_table) || ' where setSRID(''''BOX3D('||
+	query := query || 'FROM ' || quote_ident(geom_table) || ' where ST_SetSRID(''''BOX3D('||
           ll_x-delta||' '||ll_y-delta||','||ur_x+delta||' '||
           ur_y+delta||')''''::BOX3D, ' || srid || ') && the_geom'', ' || 
           quote_literal(sourceid) || ' , ' || 
@@ -752,7 +752,7 @@ BEGIN
 	IF rc THEN query := query || ' , reverse_cost ';
 	END IF;
 
-	query := query || ' FROM ' || quote_ident(geom_table) || ' where setSRID(''''BOX3D('||
+	query := query || ' FROM ' || quote_ident(geom_table) || ' where ST_SetSRID(''''BOX3D('||
           ll_x-delta||' '||ll_y-delta||','||ur_x+delta||' '||
           ur_y+delta||')''''::BOX3D, ' || srid || ') && the_geom'', ' || 
           quote_literal(sourceid) || ' , ' || 
@@ -886,7 +886,7 @@ BEGIN
 	END IF;
 	   
 	query := query || 'FROM ' || 
-           quote_ident(geom_table) || ' where setSRID(''''BOX3D('||ll_x||' '||
+           quote_ident(geom_table) || ' where ST_SetSRID(''''BOX3D('||ll_x||' '||
            ll_y||','||ur_x||' '||ur_y||')''''::BOX3D, ' || srid || 
 	   ') && the_geom'', ' || quote_literal(sourceid) || ' , ' || 
            quote_literal(targetid) || ' , '''||text(dir)||''', '''||text(rc)||''' ),'  ||
@@ -1110,7 +1110,7 @@ BEGIN
 	IF rc THEN query := query || ' , reverse_cost ';  
 	END IF;
 	  
-	query := query || 'FROM ' || quote_ident(geom_table) || ' where setSRID(''''BOX3D('||
+	query := query || 'FROM ' || quote_ident(geom_table) || ' where ST_SetSRID(''''BOX3D('||
           ll_x-delta||' '||ll_y-delta||','||ur_x+delta||' '||
           ur_y+delta||')''''::BOX3D, ' || srid || ') && the_geom'', ' || 
           quote_literal(sourceid) || ' , ' || 
