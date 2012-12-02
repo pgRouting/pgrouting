@@ -36,9 +36,9 @@ DECLARE
 
 BEGIN
 	prev := -1;
-	FOR path_result IN EXECUTE 'SELECT vertex_id FROM tsp(''select distinct source::integer as source_id, x(startpoint(the_geom)), y(startpoint(the_geom)) from ' ||
+	FOR path_result IN EXECUTE 'SELECT vertex_id FROM tsp(''select distinct source::integer as source_id, ST_X(ST_StartPoint(the_geom)), ST_Y(ST_StartPoint(the_geom)) from ' ||
 		quote_ident(geom_table) || ' where source in (' || 
-                ids || ')  UNION select distinct target as source_id, x(endpoint(the_geom)), y(endpoint(the_geom)) from tsp_test where target in ('||ids||')'', '''|| ids  ||''', '|| source  ||')' LOOP
+                ids || ')  UNION select distinct target as source_id, ST_X(ST_EndPoint(the_geom)), ST_Y(ST_EndPoint(the_geom)) from tsp_test where target in ('||ids||')'', '''|| ids  ||''', '|| source  ||')' LOOP
 
                 v_id = path_result.vertex_id;
         RETURN NEXT v_id;
@@ -74,7 +74,7 @@ BEGIN
 	prev := source;
 	FOR path_result IN EXECUTE 'SELECT vertex_id FROM tsp(''select distinct source::integer as source_id, x1::double precision as x, y1::double precision as y from ' ||
 	  quote_ident(geom_table) || ' where source in (' || 
-          ids || ') UNION select distinct target as source_id, x(endpoint(the_geom)), y(endpoint(the_geom)) from tsp_test where target in ('||ids||')'', '''|| ids  ||''', '|| source  ||')' LOOP
+          ids || ') UNION select distinct target as source_id, ST_X(ST_EndPoint(the_geom)), ST_Y(ST_EndPoint(the_geom)) from tsp_test where target in ('||ids||')'', '''|| ids  ||''', '|| source  ||')' LOOP
 
                 v_id = path_result.vertex_id;
 		
@@ -177,9 +177,9 @@ BEGIN
 	
 	id :=0;
 	prev := source;
-	FOR path_result IN EXECUTE 'SELECT vertex_id FROM tsp(''select distinct source::integer as source_id, x(startpoint(the_geom)), y(startpoint(the_geom)) from ' ||
+	FOR path_result IN EXECUTE 'SELECT vertex_id FROM tsp(''select distinct source::integer as source_id, ST_X(ST_StartPoint(the_geom)), ST_Y(ST_StartPoint(the_geom)) from ' ||
 	   quote_ident(geom_table) || ' where source in (' || 
-           ids || ') UNION select distinct target as source_id, x(endpoint(the_geom)), y(endpoint(the_geom)) from tsp_test where target in ('||ids||')'', '''|| ids  ||''', '|| source  ||')' LOOP
+           ids || ') UNION select distinct target as source_id, ST_X(ST_EndPoint(the_geom)), ST_Y(ST_EndPoint(the_geom)) from tsp_test where target in ('||ids||')'', '''|| ids  ||''', '|| source  ||')' LOOP
 
                 v_id = path_result.vertex_id;
 		
@@ -228,13 +228,13 @@ BEGIN
 	prev := source;
 	
 	query := 'SELECT vertex_id FROM tsp(''select distinct source::integer as source_id, '||
-		    'x(startpoint(the_geom)), y(startpoint(the_geom))';
+		    'ST_X(ST_StartPoint(the_geom)), ST_Y(ST_StartPoint(the_geom))';
 		    
 	IF rc THEN query := query || ' , reverse_cost ';
 	END IF;
 
 	query := query || ' from ' || quote_ident(geom_table) || ' where source in (' || 
-           ids || ') UNION select distinct target as source_id, x(endpoint(the_geom)), y(endpoint(the_geom))';
+           ids || ') UNION select distinct target as source_id, ST_X(ST_EndPoint(the_geom)), ST_Y(ST_EndPoint(the_geom))';
         
         IF rc THEN query := query || ' , reverse_cost ';
 	END IF;
