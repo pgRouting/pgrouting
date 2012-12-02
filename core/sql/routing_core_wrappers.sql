@@ -293,7 +293,7 @@ BEGIN
 	
 	id :=0;
 	FOR rec IN EXECUTE
-	    'select srid(the_geom) from ' ||
+	    'select ST_SRID(the_geom) as srid from ' ||
 	    quote_ident(geom_table) || ' limit 1'
 	LOOP
 	END LOOP;
@@ -496,7 +496,7 @@ BEGIN
 	
 	id :=0;
 	FOR rec IN EXECUTE
-	    'select srid(the_geom) from ' ||
+	    'select ST_SRID(the_geom) as srid from ' ||
 	    quote_ident(geom_table) || ' limit 1'
 	LOOP
 	END LOOP;
@@ -683,7 +683,7 @@ BEGIN
 	
 	id :=0;
 	FOR rec IN EXECUTE
-	    'select srid(the_geom) from ' ||
+	    'select ST_SRID(the_geom) as srid from ' ||
 	    quote_ident(geom_table) || ' limit 1'
 	LOOP
 	END LOOP;
@@ -870,7 +870,7 @@ BEGIN
 	
 	id :=0;
 	FOR rec IN EXECUTE
-	    'select srid(the_geom) from ' ||
+	    'select ST_SRID(the_geom) as srid from ' ||
 	    quote_ident(geom_table) || ' limit 1'
 	LOOP
 	END LOOP;
@@ -1043,7 +1043,7 @@ BEGIN
 	
 	id :=0;
 	FOR rec IN EXECUTE
-	    'select srid(the_geom) from ' ||
+	    'select ST_SRID(the_geom) as srid from ' ||
 	    quote_ident(geom_table) || ' limit 1'
 	LOOP
 	END LOOP;
