@@ -131,14 +131,13 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- want to use this as the preferred way to get the driving distance.
 --
 -- table_name        the table name to work on
--- x                 x coordinate of the start
--- y                 y coordinate of the start
+-- source_id         start id
 -- distance          the max. cost
--- delta             delta for data clipping, 0.1 should be good to go
+-- delta             delta for data clipping
 -- directed          is graph directed
 -- has_reverse_cost  use reverse_cost column
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION driving_distance_delta(table_name varchar, x double precision, y double precision,
+CREATE OR REPLACE FUNCTION driving_distance_delta(table_name varchar, source_id integer,
 	distance double precision, delta float8, directed boolean, has_reverse_cost boolean)
        RETURNS SETOF GEOMS AS
 $$
@@ -147,6 +146,9 @@ DECLARE
      srid integer;
      r record;
      geom geoms;
+
+     source_x float8;
+     source_y float8;
 BEGIN
 
      FOR r IN EXECUTE 'SELECT srid FROM geometry_columns WHERE f_table_name = '''||table_name||'''' LOOP
@@ -155,12 +157,32 @@ BEGIN
      srid := r.srid;
 
 
+     FOR r IN EXECUTE
+            'select ST_X(ST_StartPoint(the_geom)) as source_x from ' ||
+            quote_ident(table_name) || ' where source = ' ||
+            source_id || ' limit 1'
+        LOOP
+     END LOOP;
+
+     source_x := r.source_x;
+
+
+     FOR r IN EXECUTE
+            'select ST_Y(ST_StartPoint(the_geom)) as source_y from ' ||
+            quote_ident(table_name) || ' where source = ' ||
+            source_id || ' limit 1'
+        LOOP
+     END LOOP;
+
+     source_y := r.source_y;
+
+
      q := 'SELECT gid, the_geom FROM points_as_polygon(''SELECT a.vertex_id::integer AS id, b.x1::double precision AS x, b.y1::double precision AS y'||
      ' FROM driving_distance(''''''''SELECT gid AS id,source::integer,target::integer, length::double precision AS cost, reverse_cost::double precision FROM '||
      table_name||' WHERE ST_SetSRID(''''''''''''''''BOX3D('||
-     x-delta||' '||y-delta||', '||x+delta||' '||y+delta||')''''''''''''''''::BOX3D, '||srid||') && the_geom  '''''''', (SELECT id FROM find_node_by_nearest_link_within_distance(''''''''POINT('||x||' '||y||')'''''''','||delta/10||','''''''''||table_name||''''''''')),'||
+     source_x-delta||' '||source_y-delta||', '||source_x+delta||' '||source_y+delta||')''''''''''''''''::BOX3D, '||srid||') && the_geom  '''''''', '||source_id||', '||
      distance||',true,true) a, (SELECT * FROM '||table_name||' WHERE ST_SetSRID(''''''''BOX3D('||
-     x-delta||' '||y-delta||', '||x+delta||' '||y+delta||')''''''''::BOX3D, '||srid||')&&the_geom) b WHERE a.vertex_id = b.source'')';
+     source_x-delta||' '||source_y-delta||', '||source_x+delta||' '||source_y+delta||')''''''''::BOX3D, '||srid||')&&the_geom) b WHERE a.vertex_id = b.source'')';
 
 
      FOR r IN EXECUTE q LOOP
