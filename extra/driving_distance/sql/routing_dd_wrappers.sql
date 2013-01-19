@@ -178,10 +178,14 @@ BEGIN
 
 
      q := 'SELECT gid, the_geom FROM points_as_polygon(''SELECT a.vertex_id::integer AS id, b.x1::double precision AS x, b.y1::double precision AS y'||
-     ' FROM driving_distance(''''''''SELECT gid AS id,source::integer,target::integer, length::double precision AS cost, reverse_cost::double precision FROM '||
-     table_name||' WHERE ST_SetSRID(''''''''''''''''BOX3D('||
+     ' FROM driving_distance(''''''''SELECT gid AS id,source::integer,target::integer, length::double precision AS cost ';
+
+     IF has_reverse_cost THEN q := q || ', reverse_cost::double precision ';
+     END IF;
+
+     q := q || ' FROM '||table_name||' WHERE ST_SetSRID(''''''''''''''''BOX3D('||
      source_x-delta||' '||source_y-delta||', '||source_x+delta||' '||source_y+delta||')''''''''''''''''::BOX3D, '||srid||') && the_geom  '''''''', '||source_id||', '||
-     distance||',true,true) a, (SELECT * FROM '||table_name||' WHERE ST_SetSRID(''''''''BOX3D('||
+     distance||','||directed||','||has_reverse_cost||') a, (SELECT * FROM '||table_name||' WHERE ST_SetSRID(''''''''BOX3D('||
      source_x-delta||' '||source_y-delta||', '||source_x+delta||' '||source_y+delta||')''''''''::BOX3D, '||srid||')&&the_geom) b WHERE a.vertex_id = b.source'')';
 
 
