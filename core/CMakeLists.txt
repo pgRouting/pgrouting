@@ -1,2 +1,2 @@
-SUBDIRS(astar common dijkstra shooting_star)
+SUBDIRS(astar common dijkstra shooting_star trsp)
 

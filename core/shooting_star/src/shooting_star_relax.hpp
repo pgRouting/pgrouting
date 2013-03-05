@@ -15,7 +15,8 @@
 #include <functional>
 #include <boost/limits.hpp> // for numeric limits
 #include <boost/graph/graph_traits.hpp>
-#include <boost/property_map/property_map.hpp>
+//#include <boost/property_map/property_map.hpp>
+#include <boost/property_map.hpp>
 
 #include <postgres.h>
 

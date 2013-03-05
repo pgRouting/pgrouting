@@ -26,7 +26,8 @@
 
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
-#include <boost/property_map/vector_property_map.hpp>
+//#include <boost/property_map/vector_property_map.hpp>
+#include <boost/vector_property_map.hpp>
 #include <shooting_star_search.hpp>
 
 #include <cmath>    // for sqrt
