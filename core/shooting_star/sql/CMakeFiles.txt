@@ -1,0 +1,1 @@
+INSTALL(FILES shooting_star.sql DESTINATION ${SQL_INSTALL_PATH} )

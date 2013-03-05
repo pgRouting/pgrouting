@@ -1,2 +1,2 @@
-SUBDIRS(src sql)
+SUBDIRS(astar common dijkstra shooting_star)
 

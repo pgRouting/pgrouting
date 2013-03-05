@@ -101,7 +101,7 @@ IF(WITH_TSP)
     message(FATAL ERROR " Please check your gaul installation, or set correct path to GAUL_INCLUDE_DIR and GAUL_LIBRARIES.")
   ENDIF(NOT GAUL_FOUND)
   INCLUDE_DIRECTORIES(${INCLUDE_DIRECTORIES} ${GAUL_INCLUDE_DIR})
-  ADD_SUBDIRECTORY(extra/tsp)
+  ADD_SUBDIRECTORY(core/tsp)
 ENDIF(WITH_TSP)
 
 IF(WITH_DD)
@@ -110,7 +110,7 @@ IF(WITH_DD)
     message(FATAL ERROR " Please check your CGAL installation, or set correct path to CGAL_INCLUDE_DIR and CGAL_LIBRARIES.")
   ENDIF(NOT CGAL_FOUND)
   INCLUDE_DIRECTORIES(${INCLUDE_DIRECTORIES} ${CGAL_INCLUDE_DIR})
-  ADD_SUBDIRECTORY(extra/driving_distance)
+  ADD_SUBDIRECTORY(core/driving_distance)
 ENDIF(WITH_DD)
 
 
