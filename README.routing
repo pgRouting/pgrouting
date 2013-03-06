@@ -33,6 +33,12 @@ See online documentation:
 http://www.pgrouting.org/docs/1.x/install.html
 
 
+COMPILATION
+----------------------------------------------------------
+cmake -G"MSYS Makefiles" -DWITH_TSP=ON -DWITH_DD=ON .
+make
+
+
 USAGE
 ----------------------------------------------------------
 

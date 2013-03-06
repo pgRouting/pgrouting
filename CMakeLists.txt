@@ -1,5 +1,5 @@
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.3)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 PROJECT(PGROUTING)
 
 #-----------------------------------------------------------------------------
@@ -28,7 +28,7 @@ ELSE(Boost_INCLUDE_DIRS)
   MESSAGE(FATAL ERROR " Please check your Boost installation ") 
 ENDIF(Boost_INCLUDE_DIRS)
 
-EXEC_PROGRAM(${POSTGRESQL_EXECUTABLE}/pg_config
+EXEC_PROGRAM(${POSTGRESQL_PG_CONFIG}
  ARGS --pkglibdir
  OUTPUT_VARIABLE LIB_DIR)
 
@@ -39,27 +39,27 @@ ELSE(LIB_DIR)
   MESSAGE("pg_config not found, output directory for libraries is set to ${PGROUTING_BINARY_DIR}/lib")
 ENDIF(LIB_DIR)
 
-if(PGROUTING_CORE_INCLUDE_DIR)
-   set(PGROUTING_CORE_FOUND TRUE)
-
-else(PGROUTING_CORE_INCLUDE_DIR)
- FIND_PATH(PGROUTING_CORE_INCLUDE_DIR dijkstra.h
-      PATHS
-      ${CMAKE_CURRENT_SOURCE_DIR}/core/src
-      )
-
-  if(PGROUTING_CORE_INCLUDE_DIR)
-    set(PGROUTING_CORE_FOUND TRUE)
-    message(STATUS "Found PGROUTING_CORE core: ${PGROUTING_CORE_INCLUDE_DIR}")
-    INCLUDE_DIRECTORIES(${PGROUTING_CORE_INCLUDE_DIR})
-  else(PGROUTING_CORE_INCLUDE_DIR)
-    set(PGROUTING_CORE_FOUND FALSE)
-    message(STATUS "PGROUTING_CORE core not found.")
-  endif(PGROUTING_CORE_INCLUDE_DIR)
-
-  mark_as_advanced(PGROUTING_CORE_INCLUDE_DIR)
-
-endif(PGROUTING_CORE_INCLUDE_DIR)
+#if(PGROUTING_CORE_INCLUDE_DIR)
+#   set(PGROUTING_CORE_FOUND TRUE)
+#
+#else(PGROUTING_CORE_INCLUDE_DIR)
+# FIND_PATH(PGROUTING_CORE_INCLUDE_DIR dijkstra.h
+#      PATHS
+#      ${CMAKE_CURRENT_SOURCE_DIR}/core/src
+#      )
+#
+#  if(PGROUTING_CORE_INCLUDE_DIR)
+#    set(PGROUTING_CORE_FOUND TRUE)
+#    message(STATUS "Found PGROUTING_CORE core: ${PGROUTING_CORE_INCLUDE_DIR}")
+#    INCLUDE_DIRECTORIES(${PGROUTING_CORE_INCLUDE_DIR})
+#  else(PGROUTING_CORE_INCLUDE_DIR)
+#    set(PGROUTING_CORE_FOUND FALSE)
+#    message(STATUS "PGROUTING_CORE core not found.")
+#  endif(PGROUTING_CORE_INCLUDE_DIR)
+#
+#  mark_as_advanced(PGROUTING_CORE_INCLUDE_DIR)
+#
+#endif(PGROUTING_CORE_INCLUDE_DIR)
 
 OPTION(WITH_TSP "Build TSP library" OFF)
 OPTION(WITH_DD "Build Driving distance library" OFF)
@@ -95,6 +95,20 @@ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -frounding-math -Wno-deprecated")
 # cause another cmake executable to run.  The same process will walk through
 # the project's entire directory structure.
 SUBDIRS(core)
+
+# assemble the object files from the core functions into
+# a single library librouting.so
+SET(LIBRARY_OUTPUT_PATH lib)
+IF(APPLE)
+    SET(LIBRARY_MODE_TARGET "MODULE")
+ELSE(APPLE)
+    SET(LIBRARY_MODE_TARGET "SHARED")
+ENDIF(APPLE)
+ADD_LIBRARY(routing $<TARGET_OBJECTS:astar> $<TARGET_OBJECTS:dijkstra> $<TARGET_OBJECTS:shooting_star>)
+INSTALL(TARGETS routing DESTINATION ${LIBRARY_INSTALL_PATH})
+IF(APPLE)
+    SET_TARGET_PROPERTIES(routing PROPERTIES LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
+ENDIF(APPLE)
 
 IF(WITH_TSP)
   macro_optional_find_package(GAUL)
