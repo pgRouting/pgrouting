@@ -10,6 +10,8 @@ SET(PGROUTING_VERSION_PATCH "6")
 
 SET(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
 
+SET(POSTGRESQL_MINIMUM_VERSION "8.3.0")
+
 add_subdirectory(cmake)
 SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
@@ -18,48 +20,63 @@ include (TargetDistclean)
 
 macro_optional_find_package(PostgreSQL)
 IF(NOT POSTGRESQL_FOUND)
-  MESSAGE(FATAL ERROR " Please check your PostgreSQL installation.") 
+  MESSAGE(FATAL_ERROR " Please check your PostgreSQL installation.") 
 ENDIF(NOT POSTGRESQL_FOUND)
 
 FIND_PACKAGE(Boost)
 IF(Boost_INCLUDE_DIRS)
   MESSAGE("Boost headers were found here: ${Boost_INCLUDE_DIR}")
 ELSE(Boost_INCLUDE_DIRS)
-  MESSAGE(FATAL ERROR " Please check your Boost installation ") 
+  MESSAGE(FATAL_ERROR " Please check your Boost installation ") 
 ENDIF(Boost_INCLUDE_DIRS)
+
+EXEC_PROGRAM(${POSTGRESQL_PG_CONFIG}
+ ARGS --version
+ OUTPUT_VARIABLE POSTGRESQL_VERSION)
+
+IF(NOT POSTGRESQL_VERSION)
+  MESSAGE(FATAL_ERROR "pg_config was not found. Please check your PostgreSQL installation!")
+ENDIF(NOT POSTGRESQL_VERSION)
+
+MESSAGE("POSTGRESQL_VERSION is ${POSTGRESQL_VERSION}")
+STRING(SUBSTRING "${POSTGRESQL_VERSION}" 11 -1 POSTGRESQL_VERSION)
+MESSAGE("POSTGRESQL_VERSION is ${POSTGRESQL_VERSION}")
+
+IF("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
+  MESSAGE(FATAL_ERROR " PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
+ENDIF("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
+
+IF("${POSTGRESQL_VERSION}" VERSION_LESS "9.1")
+  SET(USE_PG_EXTENSION FALSE)
+ELSE("${POSTGRESQL_VERSION}" VERSION_LESS "9.1")
+  SET(USE_PG_EXTENSION TRUE)
+ENDIF("${POSTGRESQL_VERSION}" VERSION_LESS "9.1")
 
 EXEC_PROGRAM(${POSTGRESQL_PG_CONFIG}
  ARGS --pkglibdir
  OUTPUT_VARIABLE LIB_DIR)
 
 IF(LIB_DIR)
-  MESSAGE("Output directory for libraries is set to ${LIB_DIR}")
+  MESSAGE("Install directory for libraries is set to ${LIB_DIR}")
 ELSE(LIB_DIR)
-  SET(LIB_DIR ${PGROUTING_BINARY_DIR}/lib)
-  MESSAGE("pg_config not found, output directory for libraries is set to ${PGROUTING_BINARY_DIR}/lib")
+  MESSAGE(FATAL_ERROR "pg_config --pkglibdir failed to return a value. Please check your PostgreSQL installation!")
 ENDIF(LIB_DIR)
 
-#if(PGROUTING_CORE_INCLUDE_DIR)
-#   set(PGROUTING_CORE_FOUND TRUE)
-#
-#else(PGROUTING_CORE_INCLUDE_DIR)
-# FIND_PATH(PGROUTING_CORE_INCLUDE_DIR dijkstra.h
-#      PATHS
-#      ${CMAKE_CURRENT_SOURCE_DIR}/core/src
-#      )
-#
-#  if(PGROUTING_CORE_INCLUDE_DIR)
-#    set(PGROUTING_CORE_FOUND TRUE)
-#    message(STATUS "Found PGROUTING_CORE core: ${PGROUTING_CORE_INCLUDE_DIR}")
-#    INCLUDE_DIRECTORIES(${PGROUTING_CORE_INCLUDE_DIR})
-#  else(PGROUTING_CORE_INCLUDE_DIR)
-#    set(PGROUTING_CORE_FOUND FALSE)
-#    message(STATUS "PGROUTING_CORE core not found.")
-#  endif(PGROUTING_CORE_INCLUDE_DIR)
-#
-#  mark_as_advanced(PGROUTING_CORE_INCLUDE_DIR)
-#
-#endif(PGROUTING_CORE_INCLUDE_DIR)
+EXEC_PROGRAM(${POSTGRESQL_PG_CONFIG}
+ ARGS --sharedir
+ OUTPUT_VARIABLE SHARE_DIR)
+
+IF(SHARE_DIR)
+  IF(USE_PG_EXTENSION)
+    SET(SHARE_DIR "${SHARE_DIR}/extension")
+  ELSE(USE_PG_EXTENSION)
+    SET(SHARE_DIR "/usr/share/pgrouting")
+  ENDIF(USE_PG_EXTENSION)
+  MESSAGE("Install directory for SQL files is set to ${SHARE_DIR}")
+ELSE(SHARE_DIR)
+  MESSAGE(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
+ENDIF(SHARE_DIR)
+
 
 OPTION(WITH_TSP "Build TSP library" OFF)
 OPTION(WITH_DD "Build Driving distance library" OFF)
@@ -88,13 +105,16 @@ ENDIF(WIN32)
 
 SET(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -frounding-math -Wno-deprecated")
-#SET(CMAKE_C_FLAGS   "-O2 -g -lgmp -frounding-math")
-#SET(CMAKE_CXX_FLAGS "-O2 -g -lgmp -frounding-math -Wno-deprecated")
+
+# List variable to collect module SQL file names
+SET(PACKAGE_SQL_FILES "")
+SET(L_PACKAGE_SQL_FILES "")
 
 # Recurse into the subdirectories.  This does not actually
 # cause another cmake executable to run.  The same process will walk through
 # the project's entire directory structure.
-SUBDIRS(core)
+ADD_SUBDIRECTORY(core)
+LIST(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 
 # assemble the object files from the core functions into
 # a single library librouting.so
@@ -117,6 +137,7 @@ IF(WITH_TSP)
   ENDIF(NOT GAUL_FOUND)
   INCLUDE_DIRECTORIES(${INCLUDE_DIRECTORIES} ${GAUL_INCLUDE_DIR})
   ADD_SUBDIRECTORY(core/tsp)
+  LIST(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 ENDIF(WITH_TSP)
 
 IF(WITH_DD)
@@ -126,6 +147,7 @@ IF(WITH_DD)
   ENDIF(NOT CGAL_FOUND)
   INCLUDE_DIRECTORIES(${INCLUDE_DIRECTORIES} ${CGAL_INCLUDE_DIR})
   ADD_SUBDIRECTORY(core/driving_distance)
+  LIST(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 ENDIF(WITH_DD)
 
-
+MESSAGE("PACKAGE_SQL_FILES are ${L_PACKAGE_SQL_FILES}")
