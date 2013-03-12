@@ -1,0 +1,119 @@
+Author: Stephen Woodbridge
+Date: 2013-03-09
+----------------------------------------------------------
+This file contains various notes related to building pgRouting in
+MinGW/MSYS 32/64 bit environments.
+
+Here are some reference links I have collected from various places:
+
+http://pgrouting.org/docs/howto/build_on_windows.html
+https://github.com/sanak/pgrouting4w
+http://stackoverflow.com/questions/5299468/unable-to-build-boost-libraries-with-gcc
+https://github.com/sanak/pgrouting4w/commit/6ec1672f79f7070c60fb6095342d7d0b55cf2659
+http://trac.osgeo.org/postgis/ticket/1820
+http://trac.osgeo.org/postgis/wiki/DevWikiWinMingW64
+
+http://www.bostongis.com/postgisstuff/ming32.zip
+http://www.bostongis.com/postgisstuff/ming64.zip
+
+http://sourceforge.net/apps/trac/mingw-w64/wiki/Compile%20pthreads
+
+-----------------------------------------------------------
+
+cd /c/ming64/projects
+
+wget ftp://sources.redhat.com/pub/pthreads-win32/pthreads-w32-2-9-1-release.tar.gz
+tar xzf pthreads-w32-2-9-1-release.tar.gz
+cd pthreads-w32-2-9-1-release
+
+
+wget http://prdownloads.sourceforge.net/gaul/gaul-devel-0.1849-0.tar.bz2?download
+tar xjf gaul-devel-0.1849-0.tar.bz2
+cd gaul-devel-0.1849-0
+./configure --enable-slang=no
+
+
+# -------------------------- boost libraries ----------------------------
+#### boost_1_51 does NOT work with pgrouting use 1_46_1 below
+cd /c/ming64/projects
+wget http://sourceforge.net/projects/boost/files/boost/1.51.0/boost_1_51_0.tar.bz2/download
+tar xjf boost_1_51_0.tar.bz2
+cd boost_1_51_0
+start cmd
+bootstrap.bat mingw
+b2.bat
+exit
+./bjam toolset=gcc address-model=64 define=BOOST_USE_WINDOWS_H link=static threading=multi --with-thread --prefix=/usr/local install
+
+cd /c/ming64/projects
+wget http://sourceforge.net/projects/boost/files/boost/1.46.1/boost_1_46_1.tar.bz2/download
+tar xjf boost_1_46_1.tar.bz2
+cd boost_1_46_1
+start cmd
+bootstrap.bat gcc
+b2.bat
+exit
+./bjam toolset=gcc address-model=64 define=BOOST_USE_WINDOWS_H link=static threading=multi --with-thread --prefix=/usr/local install
+
+# ------------------------- CGAL 3.9 ------------------------------------
+
+cd /c/ming64/projects
+wget --no-check-certificate https://gforge.inria.fr/frs/download.php/29126/CGAL-3.9.zip
+unzip CGAL-3.9.zip
+cd CGAL-3.9
+mkdir -p build/mingw
+cd build/mingw/
+cmake -G"MSYS Makefiles" -DCMAKE_INSTALL_PREFIX:PATH=/usr/local -DCMAKE_CXX_FLAGS:STRING="-DBOOST_THREAD_USE_LIB -DBoost_USE_STATIC_LIBS -DBOOST_USE_WINDOWS_H" -DBoost_INCLUDE_DIR:PATH=/usr/local/include/boost-1_51 -DBOOST_LIBRARYDIR:PATH=/usr/local/lib ../../
+
+# Add a "#include <windows.h>" at the top of the "src/CGAL/all_files.cpp"
+# and "src/ImageIO/all_files.cpp".
+
+make
+make install
+
+# ------------------------- GAUL ----------------------------------------
+
+cd /c/ming64/projects
+wget http://prdownloads.sourceforge.net/gaul/gaul-devel-0.1849-0.tar.bz2?download
+tar xfj gaul-devel-0.1849-0.tar.bz2
+cd gaul-devel-0.1849-0
+./configure --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --enable-slang=no --enable-pthread=no --enable-shared=yes
+
+# Edit "util/gaul/gaul_config.h" and "util/gaul/gaul_config_win.h"
+# define FUNCPROTO __declspec (dllimport)
+#        -> # define FUNCPROTO
+                    
+make
+#*** If "values.h: No such file or directory" error occurred, execute as follows.
+#*** $ touch /mingw/x86_64-w64-mingw32/include/values.h
+#*** $ make
+make install
+
+
+
+# -------------------------- pgrouting ----------------------------------
+cd /c/ming64/projects
+git clone git@github.com:pgRouting/pgrouting.git
+git checkout sew-devel-2_0
+
+cmake -G"MSYS Makefiles" -DCMAKE_SHARED_LINKER_FLAGS:STRING="-static-libgcc -static-libstdc++ -Wl,--enable-stdcall-fixup" -DBoost_INCLUDE_DIR:PATH=/usr/local/include/boost-1_51 -DBOOST_THREAD_LIBRARIES:FILEPATH=/usr/local/lib/libboost_thread-mgw45-mt-1_51.a -DGAUL_INCLUDE_DIR:PATH=/usr/local/include -DGAUL_LIBRARIES:FILEPATH=/usr/local/lib/libgaul.a -DGAUL_UTIL_LIBRARIES:FILEPATH=/usr/local/lib/libgaul_util.a -DCGAL_INCLUDE_DIR:PATH=/usr/local/include -DCGAL_LIBRARIES:FILEPATH=/usr/local/lib/libCGAL.a -DGMP_LIBRARIES:FILEPATH=/usr/local/lib/libCGAL.a -DWITH_TSP=ON -DWITH_DD=ON .
+
+cmake -G"MSYS Makefiles" -DCMAKE_SHARED_LINKER_FLAGS:STRING="-static-libgcc -static-libstdc++ -Wl,--enable-stdcall-fixup" -DBoost_INCLUDE_DIR:PATH=/usr/local/include/boost-1_46_1 -DBOOST_THREAD_LIBRARIES:FILEPATH=/usr/local/lib/libboost_thread-mgw45-mt-1_46_1.a -DGAUL_INCLUDE_DIR:PATH=/usr/local/include -DGAUL_LIBRARIES:FILEPATH=/usr/local/lib/libgaul.a -DGAUL_UTIL_LIBRARIES:FILEPATH=/usr/local/lib/libgaul_util.a -DCGAL_INCLUDE_DIR:PATH=/usr/local/include -DCGAL_LIBRARIES:FILEPATH=/usr/local/lib/libCGAL.a -DGMP_LIBRARIES:FILEPATH=/usr/local/lib/libCGAL.a -DWITH_TSP=ON -DWITH_DD=ON .
+
+make
+make install
+
+
+# ------------------------- pgrouting -------------------------------
+
+Some general notes regarding pgrouting code:
+
+I noticed that when I moved trsp into the core, that I double defined
+PG_MODULE_MAGIC. This macro is required once for each library extension
+and trsp was a separate library module before. This is just UGLY, we
+have to define it once, which means including it in one arbitrary
+source file in the library. It is currently defined in dijkstra.c as I
+commented out the definition in trsp. It would be nice to find a cleaner
+way to do this.
+
+
