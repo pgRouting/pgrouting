@@ -14,4 +14,5 @@ echo "" >> c:/path.txt
 echo $PATH >> c:/path.txt
 
 
+export PostgreSQL_ROOT=/c/ming64/projects/pgx64/pg92
 cmake -G "MSYS Makefiles" -DWITH_TSP=ON -DWITH_DD=ON .
