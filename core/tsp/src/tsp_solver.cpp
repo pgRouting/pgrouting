@@ -24,6 +24,7 @@ extern "C"
 #include <gaul.h>
 #ifdef __MINGW64__
 #define ELOG_H
+#include <winsock2.h>
 #endif
 #include <postgres.h>
 }
