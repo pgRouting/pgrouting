@@ -113,8 +113,13 @@ IF(WIN32)
   LINK_LIBRARIES(postgres)
 ENDIF(WIN32)
 
-SET(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -frounding-math -Wno-deprecated")
+IF(UNIX)
+  SET(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -frounding-math")
+  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -frounding-math -Wno-deprecated")
+ELSE(UNIX)
+  SET(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
+  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -frounding-math -Wno-deprecated")
+ENDIF(UNIX)
 
 # List variable to collect module SQL file names
 SET(PACKAGE_SQL_FILES "")
