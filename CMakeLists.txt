@@ -6,12 +6,13 @@ PROJECT(PGROUTING)
 # PGROUTING version number.
 SET(PGROUTING_VERSION_MAJOR "1")
 SET(PGROUTING_VERSION_MINOR "0")
-SET(PGROUTING_VERSION_PATCH "6")
+SET(PGROUTING_VERSION_PATCH "7")
 
 SET(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
 
 SET(POSTGRESQL_MINIMUM_VERSION "8.3.0")
 
+# This is for my mingw64 environment, it should go away
 SET(CMAKE_PREFIX_PATH /c/ming64/projects/pgx64/pg92)
 
 add_subdirectory(cmake)
@@ -179,4 +180,44 @@ IF(WITH_DD)
   LIST(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 ENDIF(WITH_DD)
 
-MESSAGE("PACKAGE_SQL_FILES are ${L_PACKAGE_SQL_FILES}")
+#MESSAGE("PACKAGE_SQL_FILES are ${L_PACKAGE_SQL_FILES}")
+
+FILE(WRITE "lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+"-- pgRouting version '${PGROUTING_VERSION_STRING}' extension for postgresql\n")
+FILE(APPEND "lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+"-- built WITH_TSP = ${WITH_TSP}, WITH_DD = ${WITH_DD}\n")
+IF(USE_PG_EXTENSION)
+    FILE(APPEND "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
+    FILE(APPEND "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
+ENDIF(USE_PG_EXTENSION)
+
+Cat("core/common/sql/pgrouting-types.sql"
+    "lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
+
+
+FOREACH(PACKAGE_SQL_FILE ${L_PACKAGE_SQL_FILES})
+    CAT(${PACKAGE_SQL_FILE} "lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
+ENDFOREACH()
+
+# copy our temporary file into a final file
+# this extra set will allow us to place variables in the sql file
+# that will get substituted in this step before they are installed
+CONFIGURE_FILE("lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+    "lib/pgrouting--${PGROUTING_VERSION_STRING}.sql" COPYONLY)
+
+CONFIGURE_FILE("core/common/sql/pgrouting.control.in"
+    "lib/pgrouting.control")
+
+# this will create the commands in the makefile under the install target
+IF(UNIX)
+    INSTALL(FILES "lib/*.so" DESTINATION ${LIB_DIR})
+ELSE(UNIX)
+    INSTALL(FILES "lib/*.dll" DESTINATION ${LIB_DIR})
+ENDIF(UNIX)
+
+INSTALL(FILES
+    "lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
+    "lib/pgrouting.control"
+    DESTINATION "${SHARE_DIR}")
+
+

@@ -16,12 +16,9 @@
 # Concatenate files
 #
 # Parameters :
-# IN - input files (list)
+# IN - input file)
 # OUT - output file
-MACRO (CAT IN OUT)
-FILE(WRITE ${OUT} "")
-FOREACH(FILENAME ${IN})
-FILE(READ ${FILENAME} CONTENTS)
-FILE(APPEND ${OUT} "${CONTENTS}")
-ENDFOREACH()
-ENDMACRO (CAT IN OUT)
+FUNCTION(CAT IN OUT)
+    FILE(READ ${IN} CONTENTS)
+    FILE(APPEND ${OUT} "${CONTENTS}")
+ENDFUNCTION(CAT IN OUT)
