@@ -187,8 +187,10 @@ FILE(WRITE "lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
 FILE(APPEND "lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
 "-- built WITH_TSP = ${WITH_TSP}, WITH_DD = ${WITH_DD}\n")
 IF(USE_PG_EXTENSION)
-    FILE(APPEND "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
-    FILE(APPEND "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
+    FILE(APPEND "lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+        "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
+    FILE(APPEND "lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+        "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
 ENDIF(USE_PG_EXTENSION)
 
 Cat("core/common/sql/pgrouting-types.sql"
