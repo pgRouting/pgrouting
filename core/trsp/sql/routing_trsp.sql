@@ -13,7 +13,7 @@ CREATE OR REPLACE FUNCTION turn_restrict_shortest_path(
         has_reverse_cost boolean, 
         turn_restrict_sql text)
         RETURNS SETOF path_result
-        AS '$libdir/librouting_trsp', 'turn_restrict_shortest_path_vertex'
+        AS '$libdir/librouting', 'turn_restrict_shortest_path_vertex'
         LANGUAGE 'C' IMMUTABLE;
 
 CREATE OR REPLACE FUNCTION turn_restrict_shortest_path(
@@ -26,6 +26,6 @@ CREATE OR REPLACE FUNCTION turn_restrict_shortest_path(
         has_reverse_cost boolean, 
         turn_restrict_sql text)
         RETURNS SETOF path_result
-        AS '$libdir/librouting_trsp', 'turn_restrict_shortest_path_edge'
+        AS '$libdir/librouting', 'turn_restrict_shortest_path_edge'
         LANGUAGE 'C' IMMUTABLE;
 

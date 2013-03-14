@@ -212,10 +212,12 @@ CONFIGURE_FILE("core/common/sql/pgrouting.control.in"
 
 # this will create the commands in the makefile under the install target
 IF(UNIX)
-    INSTALL(FILES "lib/*.so" DESTINATION ${LIB_DIR})
+    FILE(GLOB_RECURSE LIBS_TO_INSTALL lib/*.so)
 ELSE(UNIX)
-    INSTALL(FILES "lib/*.dll" DESTINATION ${LIB_DIR})
+    FILE(GLOB_RECURSE LIBS_TO_INSTALL lib/*.dll)
 ENDIF(UNIX)
+
+INSTALL(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
 
 INSTALL(FILES
     "lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
