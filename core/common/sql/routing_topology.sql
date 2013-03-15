@@ -106,7 +106,7 @@ RETURNS VARCHAR AS
 $$
   SELECT assign_vertex_id('public', $1, $2, $3, $4);
 $$
-LANGUAGE 'SQL' VOLATILE STRICT;
+LANGUAGE 'sql' VOLATILE STRICT;
 
 
 

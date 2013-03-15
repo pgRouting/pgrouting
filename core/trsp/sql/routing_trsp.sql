@@ -14,7 +14,7 @@ CREATE OR REPLACE FUNCTION turn_restrict_shortest_path(
         turn_restrict_sql text)
         RETURNS SETOF path_result
         AS '$libdir/librouting', 'turn_restrict_shortest_path_vertex'
-        LANGUAGE 'C' IMMUTABLE;
+        LANGUAGE 'c' IMMUTABLE;
 
 CREATE OR REPLACE FUNCTION turn_restrict_shortest_path(
 		sql text, 
@@ -27,5 +27,5 @@ CREATE OR REPLACE FUNCTION turn_restrict_shortest_path(
         turn_restrict_sql text)
         RETURNS SETOF path_result
         AS '$libdir/librouting', 'turn_restrict_shortest_path_edge'
-        LANGUAGE 'C' IMMUTABLE;
+        LANGUAGE 'c' IMMUTABLE;
 

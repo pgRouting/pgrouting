@@ -25,5 +25,5 @@ CREATE OR REPLACE FUNCTION shortest_path(sql text, source_id integer,
         target_id integer, directed boolean, has_reverse_cost boolean)
         RETURNS SETOF path_result
         AS '$libdir/librouting'
-        LANGUAGE C IMMUTABLE STRICT;
+        LANGUAGE c IMMUTABLE STRICT;
 
