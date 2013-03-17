@@ -116,4 +116,10 @@ source file in the library. It is currently defined in dijkstra.c as I
 commented out the definition in trsp. It would be nice to find a cleaner
 way to do this.
 
+# ------------------------- miscelaneous ----------------------------
+
+# you can regenerate trsp-test-image.png with the command
+shp2img -m trsp-test-image.map -o trsp-test-image.png -i agg_qn
+
+
 

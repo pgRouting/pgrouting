@@ -6,6 +6,7 @@ use strict;
 use File::Find ();
 use File::Basename;
 use Data::Dumper;
+$Data::Dumper::Sortkeys = 1;
 
 # for the convenience of &wanted calls, including -eval statements:
 use vars qw/*name *dir *prune/;
@@ -13,7 +14,7 @@ use vars qw/*name *dir *prune/;
 *dir    = *File::Find::dir;
 *prune  = *File::Find::prune;
 
-my $VERBOSE = 0;
+my $VERBOSE = 1;
 my $DRYRUN = 0;
 
 my $DBNAME = "pgr_test__db__test";
@@ -31,7 +32,7 @@ my $vpgis = shift @ARGV || '';
 
 %main::tests = ();
 my @cfgs = ();
-my %stats = (pass=>0, fail=>0);
+my %stats = (z_pass=>0, z_fail=>0, z_crash=>0);
 my $TMP = "/tmp/pgr-test-runner-$$";
 
 my $psql = findPsql() || die "ERROR: can not find psql, specify it on the command line.\n";
@@ -91,20 +92,27 @@ sub run_test {
 
     $res{comment} = $t->{comment} if $t->{comment};
     for my $x (@{$t->{data}}) {
-        mysystem("$psql -U $DBUSER -h $DBHOST -A -t -q -f '$dir/$x' $DBNAME");
+        mysystem("$psql -U $DBUSER -h $DBHOST -A -t -q -f '$dir/$x' $DBNAME ");
     }
 
     for my $x (@{$t->{tests}}) {
-        mysystem("$psql -U $DBUSER -h $DBHOST -A -t -q -f '$dir/$x.test' $DBNAME > $TMP");
+        mysystem("$psql -U $DBUSER -h $DBHOST -A -t -q -f '$dir/$x.test' $DBNAME > $TMP 2>\&1 ");
         my $r = `diff '$dir/$x.rest' $TMP`;
         $r =~ s/^\s*|\s*$//g;
-        if (length($r)) {
-            $res{'$dir/$x.test'} = "FAILED: $r";
-            $stats{fail}++;
+        if ($r =~ /connection to server was lost/) {
+            $res{"$dir/$x.test"} = "CRASHED SERVER: $r";
+            $stats{z_crash}++;
+            # allow the server some time to recover from the crash
+            warn "CRASHED SERVER: '$dir/$x.test', sleeping 5 ...\n";
+            sleep 5;
+        }
+        elsif (length($r)) {
+            $res{"$dir/$x.test"} = "FAILED: $r";
+            $stats{z_fail}++;
         }
         else {
             $res{"$dir/$x.test"} = "Passed";
-            $stats{pass}++;
+            $stats{z_pass}++;
         }
     }
 
