@@ -14,7 +14,7 @@ use vars qw/*name *dir *prune/;
 *dir    = *File::Find::dir;
 *prune  = *File::Find::prune;
 
-my $VERBOSE = 1;
+my $VERBOSE = 0;
 my $DRYRUN = 0;
 
 my $DBNAME = "pgr_test__db__test";
@@ -97,7 +97,8 @@ sub run_test {
 
     for my $x (@{$t->{tests}}) {
         mysystem("$psql -U $DBUSER -h $DBHOST -A -t -q -f '$dir/$x.test' $DBNAME > $TMP 2>\&1 ");
-        my $r = `diff '$dir/$x.rest' $TMP`;
+        # use diff -w to ignore white space differences like \r vs \r\n
+        my $r = `diff -w '$dir/$x.rest' $TMP`;
         $r =~ s/^\s*|\s*$//g;
         if ($r =~ /connection to server was lost/) {
             $res{"$dir/$x.test"} = "CRASHED SERVER: $r";
@@ -126,7 +127,7 @@ sub createTestDB {
     my $dbver = getServerVersion();
 
     if (version_greater_eq($dbver, '9.1')) {
-        mysystem("createdb -U $DBNAME -h $DBHOST $DBNAME");
+        mysystem("createdb -U $DBUSER -h $DBHOST $DBNAME");
         die "ERROR: Failed to create database '$DBNAME'!\n"
             unless dbExists($DBNAME);
         mysystem("$psql -U $DBUSER -h $DBHOST -c 'create extension plpgsql' $DBNAME");
