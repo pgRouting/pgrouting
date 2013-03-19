@@ -12,11 +12,15 @@
 #ifndef BOOST_GRAPH_SHOOTING_STAR_RELAX_HPP
 #define BOOST_GRAPH_SHOOTING_STAR_RELAX_HPP
 
+#include <boost/version.hpp>
 #include <functional>
 #include <boost/limits.hpp> // for numeric limits
 #include <boost/graph/graph_traits.hpp>
+#if BOOST_VERSION > 103900
 #include <boost/property_map/property_map.hpp>
-//#include <boost/property_map.hpp>
+#else
+#include <boost/property_map.hpp>
+#endif
 
 #include <postgres.h>
 

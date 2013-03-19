@@ -23,11 +23,15 @@
 #include "shooting_star.h"
 
 #include <boost/config.hpp>
+#include <boost/version.hpp>
 
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
+#if BOOST_VERSION > 103900
 #include <boost/property_map/vector_property_map.hpp>
-//#include <boost/vector_property_map.hpp>
+#else
+#include <boost/vector_property_map.hpp>
+#endif
 #include <shooting_star_search.hpp>
 
 #include <cmath>    // for sqrt
