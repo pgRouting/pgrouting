@@ -292,7 +292,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
   int                  call_cntr;
   int                  max_calls;
   TupleDesc            tuple_desc;
-  vertex_t     *res;
+  vertex_t     *res = 0;
                     
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL())
@@ -385,6 +385,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
     }
   else    /* do when there is no more left */
     {
+      if (res) free(res);
       profstop("store", prof_store);
       profstop("total", prof_total);
 #ifdef PROFILE
