@@ -388,11 +388,9 @@ static int compute_shortest_path_shooting_star(char* sql, int source_edge_id,
   {
 
     //check if edges[] contains source and target
-    if(edges[z].id == source_edge_id || 
-       edges[z].id == source_edge_id)
+    if(edges[z].id == source_edge_id)
       ++s_count;
-    if(edges[z].id == target_edge_id || 
-       edges[z].id == target_edge_id)
+    if(edges[z].id == target_edge_id)
       ++t_count;
 
 
