@@ -116,4 +116,90 @@ $$
 
 LANGUAGE 'plpgsql' VOLATILE STRICT;
 
+
+
+-----------------------------------------------------------------------
+-- Calculates the driving distance.
+--
+-- A delta-sized bounding box around the start is used for data clipping.
+--
+-- This function differs from the driving_distance in that the signature
+-- is now similar to the shortest path delta functions and the delta is
+-- passed as argument.
+--
+-- If you're accustomed to the shortest path delta functions, you probably
+-- want to use this as the preferred way to get the driving distance.
+--
+-- table_name        the table name to work on
+-- source_id         start id
+-- distance          the max. cost
+-- delta             delta for data clipping
+-- directed          is graph directed
+-- has_reverse_cost  use reverse_cost column
+-----------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION driving_distance_delta(table_name varchar, source_id integer,
+	distance double precision, delta float8, directed boolean, has_reverse_cost boolean)
+       RETURNS SETOF GEOMS AS
+$$
+DECLARE
+     q text;
+     srid integer;
+     r record;
+     geom geoms;
+
+     source_x float8;
+     source_y float8;
+BEGIN
+
+     FOR r IN EXECUTE 'SELECT srid FROM geometry_columns WHERE f_table_name = '''||table_name||'''' LOOP
+     END LOOP;
+
+     srid := r.srid;
+
+
+     FOR r IN EXECUTE
+            'select ST_X(ST_StartPoint(the_geom)) as source_x from ' ||
+            quote_ident(table_name) || ' where source = ' ||
+            source_id || ' limit 1'
+        LOOP
+     END LOOP;
+
+     source_x := r.source_x;
+
+
+     FOR r IN EXECUTE
+            'select ST_Y(ST_StartPoint(the_geom)) as source_y from ' ||
+            quote_ident(table_name) || ' where source = ' ||
+            source_id || ' limit 1'
+        LOOP
+     END LOOP;
+
+     source_y := r.source_y;
+
+
+     q := 'SELECT gid, the_geom FROM points_as_polygon(''SELECT a.vertex_id::integer AS id, b.x1::double precision AS x, b.y1::double precision AS y'||
+     ' FROM driving_distance(''''''''SELECT gid AS id,source::integer,target::integer, length::double precision AS cost ';
+
+     IF has_reverse_cost THEN q := q || ', reverse_cost::double precision ';
+     END IF;
+
+     q := q || ' FROM '||table_name||' WHERE ST_SetSRID(''''''''''''''''BOX3D('||
+     source_x-delta||' '||source_y-delta||', '||source_x+delta||' '||source_y+delta||')''''''''''''''''::BOX3D, '||srid||') && the_geom  '''''''', '||source_id||', '||
+     distance||','||directed||','||has_reverse_cost||') a, (SELECT * FROM '||table_name||' WHERE ST_SetSRID(''''''''BOX3D('||
+     source_x-delta||' '||source_y-delta||', '||source_x+delta||' '||source_y+delta||')''''''''::BOX3D, '||srid||')&&the_geom) b WHERE a.vertex_id = b.source'')';
+
+
+     FOR r IN EXECUTE q LOOP
+        geom.gid := r.gid;
+        geom.the_geom := r.the_geom;
+        RETURN NEXT geom;
+     END LOOP;
+
+     RETURN;
+
+END;
+$$
+
+LANGUAGE 'plpgsql' VOLATILE STRICT;
+
 -- COMMIT;
