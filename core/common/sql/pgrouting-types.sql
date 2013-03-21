@@ -18,6 +18,22 @@
 --
 
 
-CREATE TYPE path_result AS (vertex_id integer, edge_id integer, cost float8);
-CREATE TYPE vertex_result AS (x float8, y float8);
+CREATE TYPE path_result AS
+(
+    vertex_id integer,
+    edge_id integer,
+    cost float8
+);
 
+CREATE TYPE vertex_result AS
+(
+    x float8,
+    y float8
+);
+
+CREATE TYPE geoms AS
+(
+    id integer,
+    gid integer,
+    the_geom geometry
+);
