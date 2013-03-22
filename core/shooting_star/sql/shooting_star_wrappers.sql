@@ -135,7 +135,7 @@ BEGIN
           ll_x-delta||' '||ll_y-delta||','||ur_x+delta||' '||
           ur_y+delta||')''''::BOX3D, ' || srid || ') && the_geom'', ' || 
           quote_literal(sourceid) || ' , ' || 
-          quote_literal(targetid) || ' , '''||text(dir)||''', '''||text(rc)||''' ),' || 
+          quote_literal(targetid) || ' , '''||dir::text||''', '''||rc::text||''' ),' || 
           quote_ident(geom_table) || ' where edge_id = gid ';
 	  
 	FOR path_result IN EXECUTE query

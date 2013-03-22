@@ -92,7 +92,7 @@ BEGIN
 	END IF;
 	
 	query := query || 'FROM ' ||  quote_ident(geom_table) || ''', ' || quote_literal(source) || 
-          ' , ' || quote_literal(target) || ' , '''||text(dir)||''', '''||text(rc)||'''), ' || 
+          ' , ' || quote_literal(target) || ' , '''||dir::text||''', '''||rc::text||'''), ' || 
           quote_ident(geom_table) || ' where edge_id = gid ';
 
 	FOR path_result IN EXECUTE query
@@ -276,7 +276,7 @@ BEGIN
           ll_x-delta||' '||ll_y-delta||','||ur_x+delta||' '||
           ur_y+delta||')''''::BOX3D, ' || srid || ') && the_geom'', ' || 
           quote_literal(sourceid) || ' , ' || 
-          quote_literal(targetid) || ' , '''||text(dir)||''', '''||text(rc)||''' ), ' ||
+          quote_literal(targetid) || ' , '''||dir::text||''', '''||rc::text||''' ), ' ||
           quote_ident(geom_table) || ' where edge_id = gid ';
 	  
 	FOR path_result IN EXECUTE query
