@@ -1,7 +1,7 @@
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/routing_topology.sql
-    ${CMAKE_CURRENT_SOURCE_DIR}/matching.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_topology.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_matching.sql
 )
 
 # set in parent scope

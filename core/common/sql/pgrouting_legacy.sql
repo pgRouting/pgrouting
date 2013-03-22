@@ -96,3 +96,36 @@ BEGIN
 END;
 $$
 LANGUAGE 'plpgsql' VOLATILE STRICT; 
+
+
+
+
+-----------------------------------------------------------------------
+-- This function should not be used directly. Use create_graph_tables instead
+--
+-- Insert a vertex into the vertices table if not already there, and
+--  return the id of the newly inserted or already existing element
+-----------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION insert_vertex(vertices_table varchar, 
+       geom_id anyelement) 
+       RETURNS int AS
+$$
+DECLARE
+        vertex_id int;
+        myrec record;
+BEGIN
+        LOOP
+          FOR myrec IN EXECUTE 'SELECT id FROM ' || 
+                     quote_ident(vertices_table) || 
+                     ' WHERE geom_id = ' || quote_literal(geom_id)  LOOP
+
+                        IF myrec.id IS NOT NULL THEN
+                                RETURN myrec.id;
+                        END IF;
+          END LOOP; 
+          EXECUTE 'INSERT INTO ' || quote_ident(vertices_table) || 
+                  ' (geom_id) VALUES (' || quote_literal(geom_id) || ')';
+        END LOOP;
+END;
+$$
+LANGUAGE 'plpgsql' VOLATILE STRICT; 

@@ -6,7 +6,7 @@ CREATE TYPE link_point AS (id integer, name varchar);
 -- distance - function will search for a link within this distance
 -- tbl - table name
 -------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION find_nearest_link_within_distance(point varchar, 
+CREATE OR REPLACE FUNCTION pgr_find_nearest_link_within_distance(point varchar, 
 	distance double precision, tbl varchar)
 	RETURNS INT AS
 $$
@@ -58,7 +58,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- tbl - table name
 -------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION find_nearest_node_within_distance(point varchar, 
+CREATE OR REPLACE FUNCTION pgr_find_nearest_node_within_distance(point varchar, 
 	distance double precision, tbl varchar)
 	RETURNS INT AS
 $$
@@ -140,8 +140,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- tbl - table name
 -------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION find_node_by_nearest_link_within_distance(point varchar, 
-	distance double precision, tbl varchar)
+CREATE OR REPLACE FUNCTION pgr_find_node_by_nearest_link_within_distance(point varchar, distance double precision, tbl varchar)
 	RETURNS link_point AS
 $$
 DECLARE
@@ -162,7 +161,7 @@ BEGIN
 
     -- Searching for a nearest link
     
-    FOR row in EXECUTE 'select id from find_nearest_link_within_distance('''||point||''', '||distance||', '''||tbl||''') as id'
+    FOR row in EXECUTE 'select id from pgr_find_nearest_link_within_distance('''||point||''', '||distance||', '''||tbl||''') as id'
     LOOP
     END LOOP;
     IF row.id is null THEN
@@ -214,8 +213,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- rc - true if you have a reverse_cost column
 -------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION match_line_as_geometry(tbl varchar, line geometry, distance double precision, 
-						distance2 double precision, dir boolean, rc boolean)
+CREATE OR REPLACE FUNCTION pgr_match_line_as_geometry(tbl varchar, line geometry, distance double precision, distance2 double precision, dir boolean, rc boolean)
 	RETURNS SETOF GEOMS AS
 $$
 DECLARE
@@ -253,7 +251,7 @@ BEGIN
 
         -- Getting nearest node to the current point
 	
-	FOR row in EXECUTE 'select * from find_nearest_node_within_distance(''POINT('
+	FOR row in EXECUTE 'select * from pgr_find_nearest_node_within_distance(''POINT('
 			    ||ST_X(ST_PointN(line, i))||' '||ST_Y(PointN(line, i))||')'','||distance||', '''||tbl||''') as id'
 	LOOP
 	END LOOP;
@@ -265,7 +263,7 @@ BEGIN
 	
 	    -- If there is no nearest node within given distance, let's try another algorithm
 	
-            FOR row in EXECUTE 'select * from find_node_by_nearest_link_within_distance(''POINT('
+            FOR row in EXECUTE 'select * from pgr_find_node_by_nearest_link_within_distance(''POINT('
 	    		        ||ST_X(ST_PointN(line, i))||' '||ST_Y(PointN(line, i))||')'','||distance2||', '''||tbl||''') as id'
 	    LOOP
 	    END LOOP;
@@ -325,8 +323,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- rc - true if you have a reverse_cost column
 -------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION match_line(tbl varchar, line geometry, distance double precision, 
-						distance2 double precision, dir boolean, rc boolean)
+CREATE OR REPLACE FUNCTION pgr_match_line(tbl varchar, line geometry, distance double precision, distance2 double precision, dir boolean, rc boolean)
 	RETURNS SETOF PATH_RESULT AS
 $$
 DECLARE
@@ -376,7 +373,7 @@ BEGIN
 
         -- Getting nearest node to the current point
 
-        FOR row in EXECUTE 'select * from find_nearest_node_within_distance(''POINT('
+        FOR row in EXECUTE 'select * from pgr_find_nearest_node_within_distance(''POINT('
 			    ||ST_X(ST_PointN(line, i))||' '||ST_Y(ST_PointN(line, i))||')'','||distance||', '''||tbl||''') as id'
 	LOOP
 	END LOOP;
@@ -389,7 +386,7 @@ BEGIN
 
 	    -- If there is no nearest node within given distance, let's try another algorithm
 
-            FOR row in EXECUTE 'select * from find_node_by_nearest_link_within_distance(''POINT('
+            FOR row in EXECUTE 'select * from pgr_find_node_by_nearest_link_within_distance(''POINT('
 	    		        ||ST_X(ST_PointN(line, i))||' '||ST_Y(ST_PointN(line, i))||')'','||distance2||', '''||tbl||''') as id'
 	    LOOP
 	    END LOOP;
@@ -502,8 +499,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- rc - true if you have a reverse_cost column
 -------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION match_line_as_linestring(tbl varchar, line geometry, distance double precision, 
-						distance2 double precision, dir boolean, rc boolean)
+CREATE OR REPLACE FUNCTION pgr_match_line_as_linestring(tbl varchar, line geometry, distance double precision, distance2 double precision, dir boolean, rc boolean)
 	RETURNS GEOMETRY AS
 $$
 DECLARE
@@ -530,7 +526,7 @@ BEGIN
 
     i := 0;
     
-    FOR row IN EXECUTE 'select * from match_line('''||quote_ident(tbl)||''', ST_GeometryFromText('''||astext(line)||''', '||srid||'), '
+    FOR row IN EXECUTE 'select * from pgr_match_line('''||quote_ident(tbl)||''', ST_GeometryFromText('''||astext(line)||''', '||srid||'), '
 			    ||distance||', '||distance2||', '''||dir||''', '''||rc||''')' LOOP
 	edges[i] := row.edge_id;
 	i := i + 1;
