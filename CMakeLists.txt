@@ -84,6 +84,11 @@ ENDIF(SHARE_DIR)
 
 OPTION(WITH_TSP "Build TSP library" OFF)
 OPTION(WITH_DD "Build Driving distance library" OFF)
+OPTION(WITH_DOC "Build Documentation library tree" OFF)
+
+IF(WITH_DOC)
+  ADD_SUBDIRECTORY(doc)
+ENDIF(WITH_DOC)
 
 IF(UNIX)
   SET(LIBRARY_INSTALL_PATH ${LIB_DIR})
