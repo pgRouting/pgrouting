@@ -81,7 +81,7 @@ ELSE(SHARE_DIR)
   MESSAGE(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
 ENDIF(SHARE_DIR)
 
-
+OPTION(WITH_DOC "Build Documentation" OFF)
 OPTION(WITH_TSP "Build TSP library" OFF)
 OPTION(WITH_DD "Build Driving distance library" OFF)
 
@@ -157,6 +157,10 @@ IF(APPLE)
         PROPERTIES
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 ENDIF(APPLE)
+
+IF(WITH_DOC)
+  ADD_SUBDIRECTORY(doc)
+ENDIF(WITH_DOC)
 
 IF(WITH_TSP)
   macro_optional_find_package(GAUL)

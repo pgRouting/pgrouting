@@ -32,13 +32,17 @@ http://www.pgrouting.org/docs/1.x/install.html
 
 For MinGW on Windows
 
-	cmake -H. -Bmybuild -G"MSYS Makefiles" -DWITH_TSP=ON -DWITH_DD=ON .
+	cmake -H. -Bmybuild -G"MSYS Makefiles" -DWITH_TSP=ON -DWITH_DD=ON 
 
 For Linux
 	
-	cmake -H. -Bmybuild -DWITH_TSP=ON -DWITH_DD=ON .
+	cmake -H. -Bmybuild -DWITH_TSP=ON -DWITH_DD=ON 
 	cd mybuild && make
 	sudo make install
+
+Build with documentation (requires Sphinx)
+
+	cmake -H. -Bmybuild -DWITH_DOC=ON -DWITH_TSP=ON -DWITH_DD=ON
 
 Postgresql 9.1+
 
