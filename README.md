@@ -30,25 +30,25 @@ http://www.pgrouting.org/docs/1.x/install.html
 
 ## COMPILATION
 
-* For MinGW on Windows
+For MinGW on Windows
 
 	cmake -G"MSYS Makefiles" -DWITH_TSP=ON -DWITH_DD=ON .
 
-* For Linux
+For Linux
 	
 	cmake -DWITH_TSP=ON -DWITH_DD=ON .
 
 	make
 	sudo make install
 
-* postgresql 9.1+
+Postgresql 9.1+
 
 	createdb mydatabase
 	psql mydatabase -c "create extension plpgsql"
 	psql mydatabase -c "create extension postgis"
 	psql mydatabase -c "create extension pgrouting"
 
-* For older versions of postgresql
+For older versions of postgresql
 
 	createdb -T template1 template_postgis
 	psql template_postgis -c "create language plpgsql"
