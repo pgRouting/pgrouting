@@ -32,19 +32,17 @@ http://www.pgrouting.org/docs/1.x/install.html
 
 For MinGW on Windows
 
-	cmake -G"MSYS Makefiles" -DWITH_TSP=ON -DWITH_DD=ON .
+	cmake -H. -Bmybuild -G"MSYS Makefiles" -DWITH_TSP=ON -DWITH_DD=ON .
 
 For Linux
 	
-	cmake -DWITH_TSP=ON -DWITH_DD=ON .
-
-	make
+	cmake -H. -Bmybuild -DWITH_TSP=ON -DWITH_DD=ON .
+	cd mybuild && make
 	sudo make install
 
 Postgresql 9.1+
 
 	createdb mydatabase
-	psql mydatabase -c "create extension plpgsql"
 	psql mydatabase -c "create extension postgis"
 	psql mydatabase -c "create extension pgrouting"
 
