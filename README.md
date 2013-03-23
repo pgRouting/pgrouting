@@ -62,13 +62,13 @@ http://www.pgrouting.org/docs/1.x/install.html
 	createdb -T template_pgrouting mydatabase
 
 
-* USAGE
+## USAGE
 
 See online documentation:
 http://www.pgrouting.org/docs/1.x/index.html
 
 
-* LICENCE
+## LICENCE
 
 Most features are available under GPL.
 Some Boost extesions are available under Boost license (see LICENSE_1_0.txt)
