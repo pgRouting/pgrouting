@@ -89,11 +89,12 @@ ELSE(SHARE_DIR)
   MESSAGE(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
 ENDIF(SHARE_DIR)
 
+# Configure options
 OPTION(WITH_TSP "Build TSP library" OFF)
 OPTION(WITH_DD "Build Driving distance library" OFF)
 OPTION(WITH_DOC "Build Documentation library tree" OFF)
 
-# Handles documenta
+# Handles documentation
 ADD_SUBDIRECTORY(doc)
 
 IF(UNIX)

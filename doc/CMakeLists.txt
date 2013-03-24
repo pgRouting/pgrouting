@@ -6,7 +6,7 @@
 # Daniel Kastl 03/2013
 #
 
-option(WITH_DOC "Build Documentation" OFF)
+set(SPHINX_THEME "default")
 
 if(WITH_DOC)
 
