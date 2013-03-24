@@ -8,9 +8,6 @@
 
 set(SPHINX_THEME "default")
 
-message("${PGROUTING_VERSION_REVISION_HASH}")
-message("${PGROUTING_VERSION_REVISION_NAME}")
-
 if(WITH_DOC)
 
     find_package(Sphinx REQUIRED)
