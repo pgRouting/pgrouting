@@ -29,6 +29,17 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 include(MacroLibrary)
 include(TargetDistclean)
 
+# Find Git to collect version information
+find_package(Git)
+if(GIT_FOUND)
+  GIT_WC_INFO(${PGROUTING_SOURCE_DIR} PGROUTING)
+  set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_WC_REVISION_NAME}")
+  set(PGROUTING_VERSION_REVISION_HASH "${PGROUTING_WC_REVISION_HASH}")
+else()
+  set(PGROUTING_VERSION_REVISION_NAME "")
+  set(PGROUTING_VERSION_REVISION_HASH "")
+endif()
+
 #macro_optional_find_package(PostgreSQL)
 #  POSTGRESQL_INCLUDE_DIR, where to find POSTGRESQL.h
 #  POSTGRESQL_LIBRARIES, the libraries needed to use POSTGRESQL.
