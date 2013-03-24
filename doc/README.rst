@@ -105,7 +105,7 @@ probably get someone to setup travis-ci or jenkins testing frameworks.
 Currently all the tests work off a simple graph that was built for
 testing trsp functionality.
 
-.. image:: ../build/trsp-test-image.png
+.. image:: _static/images/trsp-test-image.png
 
 Tests are run via the script at the top level test-runner.pl and it runs
 all the test configured tests and at the moment just dumps the results

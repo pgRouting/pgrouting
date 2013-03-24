@@ -81,14 +81,12 @@ ELSE(SHARE_DIR)
   MESSAGE(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
 ENDIF(SHARE_DIR)
 
-OPTION(WITH_DOC "Build Documentation" OFF)
 OPTION(WITH_TSP "Build TSP library" OFF)
 OPTION(WITH_DD "Build Driving distance library" OFF)
 OPTION(WITH_DOC "Build Documentation library tree" OFF)
 
-IF(WITH_DOC)
-  ADD_SUBDIRECTORY(doc)
-ENDIF(WITH_DOC)
+# Handles documenta
+ADD_SUBDIRECTORY(doc)
 
 IF(UNIX)
   SET(LIBRARY_INSTALL_PATH ${LIB_DIR})
@@ -163,10 +161,6 @@ IF(APPLE)
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 ENDIF(APPLE)
 
-IF(WITH_DOC)
-  ADD_SUBDIRECTORY(doc)
-ENDIF(WITH_DOC)
-
 IF(WITH_TSP)
   macro_optional_find_package(GAUL)
   IF(NOT GAUL_FOUND)
@@ -191,33 +185,33 @@ ENDIF(WITH_DD)
 
 #MESSAGE("PACKAGE_SQL_FILES are ${L_PACKAGE_SQL_FILES}")
 
-FILE(WRITE "${PGROUTING_SOURCE_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+FILE(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
 "-- pgRouting version '${PGROUTING_VERSION_STRING}' extension for postgresql\n")
-FILE(APPEND "${PGROUTING_SOURCE_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+FILE(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
 "-- built WITH_TSP = ${WITH_TSP}, WITH_DD = ${WITH_DD}\n")
 IF(USE_PG_EXTENSION)
-    FILE(APPEND "${PGROUTING_SOURCE_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+    FILE(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
         "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
-    FILE(APPEND "${PGROUTING_SOURCE_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+    FILE(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
         "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
 ENDIF(USE_PG_EXTENSION)
 
 Cat("${PGROUTING_SOURCE_DIR}/core/common/sql/pgrouting-types.sql"
-    "${PGROUTING_SOURCE_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
+    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 
 
 FOREACH(PACKAGE_SQL_FILE ${L_PACKAGE_SQL_FILES})
-    CAT(${PACKAGE_SQL_FILE} "${PGROUTING_SOURCE_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
+    CAT(${PACKAGE_SQL_FILE} "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 ENDFOREACH()
 
 # copy our temporary file into a final file
 # this extra set will allow us to place variables in the sql file
 # that will get substituted in this step before they are installed
-CONFIGURE_FILE("${PGROUTING_SOURCE_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-    "${PGROUTING_SOURCE_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql" COPYONLY)
+CONFIGURE_FILE("${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql" COPYONLY)
 
 CONFIGURE_FILE("${PGROUTING_SOURCE_DIR}/core/common/sql/pgrouting.control.in"
-    "${PGROUTING_SOURCE_DIR}/lib/pgrouting.control")
+    "${CMAKE_BINARY_DIR}/lib/pgrouting.control")
 
 # this will create the commands in the makefile under the install target
 IF(UNIX)
@@ -229,8 +223,8 @@ ENDIF(UNIX)
 INSTALL(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
 
 INSTALL(FILES
-    "${PGROUTING_SOURCE_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
-    "${PGROUTING_SOURCE_DIR}/lib/pgrouting.control"
+    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
+    "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
     DESTINATION "${SHARE_DIR}")
 
 

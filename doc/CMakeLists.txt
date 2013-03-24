@@ -6,35 +6,41 @@
 # Daniel Kastl 03/2013
 #
 
-FIND_PACKAGE(Sphinx REQUIRED)
+OPTION(WITH_DOC "Build Documentation" OFF)
 
-if(NOT DEFINED SPHINX_THEME)
-    set(SPHINX_THEME default)
-endif()
+IF(WITH_DOC)
 
-if(NOT DEFINED SPHINX_THEME_DIR)
-    set(SPHINX_THEME_DIR)
-endif()
+    FIND_PACKAGE(Sphinx REQUIRED)
 
-# configured documentation tools and intermediate build results
-set(BINARY_BUILD_DIR "${CMAKE_BINARY_DIR}/doc/_build")
+    if(NOT DEFINED SPHINX_THEME)
+        SET(SPHINX_THEME default)
+    endif()
 
-# Sphinx cache with pickled ReST documents
-set(SPHINX_CACHE_DIR "${CMAKE_BINARY_DIR}/doc/_doctrees")
+    if(NOT DEFINED SPHINX_THEME_DIR)
+        SET(SPHINX_THEME_DIR)
+    endif()
 
-# HTML output directory
-set(SPHINX_HTML_DIR "${PGROUTING_SOURCE_DIR}/lib/html")
+    # configured documentation tools and intermediate build results
+    SET(BINARY_BUILD_DIR "${PGROUTING_BINARY_DIR}/doc/_build")
 
-configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
-    "${BINARY_BUILD_DIR}/conf.py"
-    @ONLY)
+    # Sphinx cache with pickled ReST documents
+    SET(SPHINX_CACHE_DIR "${PGROUTING_BINARY_DIR}/doc/_doctrees")
 
-add_custom_target(pgRoutingDocumentationdoc ALL
-    ${SPHINX_EXECUTABLE}
-    -q -b html
-    -c "${BINARY_BUILD_DIR}"
-    -d "${SPHINX_CACHE_DIR}"
-    "${CMAKE_CURRENT_SOURCE_DIR}"
-    "${SPHINX_HTML_DIR}"
-    COMMENT "Building HTML documentation with Sphinx")
+    # HTML output directory
+    SET(SPHINX_HTML_DIR "${PGROUTING_BINARY_DIR}/html")
+
+    CONFIGURE_FILE(
+        "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
+        "${BINARY_BUILD_DIR}/conf.py"
+        @ONLY)
+
+    ADD_CUSTOM_TARGET(pgRoutingDocumentationdoc ALL
+        ${SPHINX_EXECUTABLE}
+        -q -b html
+        -c "${BINARY_BUILD_DIR}"
+        -d "${SPHINX_CACHE_DIR}"
+        "${CMAKE_CURRENT_SOURCE_DIR}"
+        "${SPHINX_HTML_DIR}"
+        COMMENT "Building HTML documentation with Sphinx")
+
+ENDIF(WITH_DOC)
