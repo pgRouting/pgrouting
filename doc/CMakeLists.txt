@@ -6,7 +6,7 @@
 # Daniel Kastl 03/2013
 #
 
-set(SPHINX_THEME "default")
+set(SPHINX_THEME "pyramid")
 
 if(WITH_DOC)
 
