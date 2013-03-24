@@ -4,8 +4,7 @@ pgRouting Matching
 :Author: Stephen Woodbridge <woodbri@swoodbridge.com>
 :Date: $Date: 2013-03-22 20:14:00 -5000 (Fri, 22 Mar 2013) $
 :Revision: $Revision: 0000 $
-:Description: This is a collection of functions for matching points and
-vectors.
+:Description: This is a collection of functions for matching points and vectors.
 :Copyright: Stephen Woodbridge. This is released under the MIT-X license.
 
 

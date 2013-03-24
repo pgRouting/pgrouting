@@ -128,7 +128,7 @@ group they need to have unique names.
 core/trsp/test/test-any-00.test is a sql command to be run. It will get
 run as:
 
-    ::
+.. :: 
 
     psql ... -A -t -q -f file.test dbname > tmpfile
     diff -w file.rest tmpfile 

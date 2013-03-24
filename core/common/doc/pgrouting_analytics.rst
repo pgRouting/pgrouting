@@ -4,8 +4,7 @@ pgRouting Graph Analytics
 :Author: Stephen Woodbridge <woodbri@swoodbridge.com>
 :Date: $Date: 2013-03-22 20:14:00 -5000 (Fri, 22 Mar 2013) $
 :Revision: $Revision: 0000 $
-:Description: This is a collection of tools for analyzing graphs.
-It has been contributed to pgRouting by iMaptools.com.
+:Description: This is a collection of tools for analyzing graphs. It has been contributed to pgRouting by iMaptools.com.
 :Copyright: Stephen Woodbridge. This is released under the MIT-X license.
 
 It is common to find problems with graphs that have not been constructed
@@ -33,7 +32,7 @@ Analyze a Graph
        that might be disconnected because of gaps < tol or because of
        zlevel errors in the data. For example:
 
-       ::
+.. code-block:: sql
 
            select pgr_analyze_graph('mytab', 'the_geom', 0.000002);
 
@@ -41,7 +40,7 @@ Analyze a Graph
        in the "vertices_tmp" table and potential problems are identified
        with *chk=1*.
 
-       ::
+.. code-block:: sql
 
            select * from vertices_tmp where chk = 1;
 

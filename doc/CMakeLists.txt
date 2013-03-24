@@ -39,7 +39,7 @@ if(WITH_DOC)
         -q -b html
         -c "${BINARY_BUILD_DIR}"
         -d "${SPHINX_CACHE_DIR}"
-        "${CMAKE_CURRENT_SOURCE_DIR}"
+        "${PGROUTING_SOURCE_DIR}"
         "${SPHINX_HTML_DIR}"
         COMMENT "Building HTML documentation with Sphinx")
 

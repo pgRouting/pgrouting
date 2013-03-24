@@ -6,13 +6,38 @@
 Welcome to pgRouting Documentation's documentation!
 ===================================================
 
-Contents:
+Introduction:
+-------------
 
 .. toctree::
-   :maxdepth: 2
+	:maxdepth: 1
 
-   README
-   
+	README
+
+
+Installation:
+-------------
+
+.. toctree::
+	:maxdepth: 1
+
+	README
+	   
+
+Reference:
+----------
+
+.. toctree::
+	:maxdepth: 1
+
+	../core/common/doc/index
+	../core/dijkstra/doc/index
+	../core/astar/doc/index
+	../core/trsp/doc/index
+	../core/shooting_star/doc/index
+	../core/tsp/doc/index
+	../core/driving_distance/doc/index
+	   
 
 Indices and tables
 ==================

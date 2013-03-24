@@ -4,10 +4,8 @@ pgRouting Graph Analytics
 :Author: Stephen Woodbridge <woodbri@swoodbridge.com>
 :Date: $Date: 2013-03-22 20:14:00 -5000 (Fri, 22 Mar 2013) $
 :Revision: $Revision: 0000 $
-:Description: Description of the common postgreSQL types used by many
-of the pgRouting functions.
-:Copyright: Stephen Woodbridge. This documentation is released under the
-MIT-X license.
+:Description: Description of the common postgreSQL types used by manyof the pgRouting functions.
+:Copyright: Stephen Woodbridge. This documentation is released under the MIT-X license.
 
 The following are commonly used data types for some of the pgRouting
 functions. There are some additional types that are not documented here
@@ -17,7 +15,7 @@ are documented with those functions.
 pgRouting Data Types
 ====================
 
-    ::
+.. code-block:: sql
 
     CREATE TYPE path_result AS
     (

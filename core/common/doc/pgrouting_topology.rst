@@ -4,8 +4,7 @@ pgRouting Topology
 :Author: Stephen Woodbridge <woodbri@swoodbridge.com>
 :Date: $Date: 2013-03-22 20:14:00 -5000 (Fri, 22 Mar 2013) $
 :Revision: $Revision: 0000 $
-:Description: This is a collection of tools for building topology needed
-for graphs. This is primarily used when loading GIS data like shapefile.
+:Description: This is a collection of tools for building topology needed for graphs. This is primarily used when loading GIS data like shapefile.
 :Copyright: Stephen Woodbridge. This document is released under the MIT-X license.
 
 Topology Overview
@@ -17,7 +16,7 @@ those cases where topology needs to be added the following functions may
 be useful. One way to prep the data for pgRouting is to add the following
 columns to your table and then populate them as appropriate.
 
-    ::
+.. code-block:: sql
 
     alter table st
         add column source integer,
@@ -41,7 +40,7 @@ and populate the "source" and "target" columns. The following example
 populated the remaining columns. In this example, the "fcc" column contains
 feature class code and the CASE statements converts it to an average speed.
 
-    ::
+.. code-block:: sql
 
     update st set x1 = x(st_startpoint(the_geom)),
                   y1 = y(st_startpoint(the_geom)),
