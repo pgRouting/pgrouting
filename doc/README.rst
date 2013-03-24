@@ -14,9 +14,6 @@ pgRouting Developer's Documention Guide
 Source Tree Layout
 ==================
 
-build/
-    Miscellaneous scripts and tools.
-
 cmake/
     cmake scripts used as part of our build system.
 
@@ -63,6 +60,9 @@ core/tsp/
     This optional package provides the ability to compute traveling
     salesman problem solutions and compute the resulting route.
     This optional package requires GAUL libaries to be installed.
+
+tools/
+    Miscellaneous scripts and tools.
 
 lib/
     This is the output directory where compiled libraries and installation
@@ -126,7 +126,9 @@ in the image above. You can specify multiple files to load, but as a
 group they need to have unique names. 
 
 core/trsp/test/test-any-00.test is a sql command to be run. It will get
-run as: ::
+run as:
+
+    ::
 
     psql ... -A -t -q -f file.test dbname > tmpfile
     diff -w file.rest tmpfile 
