@@ -6,35 +6,35 @@
 # Daniel Kastl 03/2013
 #
 
-OPTION(WITH_DOC "Build Documentation" OFF)
+option(WITH_DOC "Build Documentation" OFF)
 
-IF(WITH_DOC)
+if(WITH_DOC)
 
-    FIND_PACKAGE(Sphinx REQUIRED)
+    find_package(Sphinx REQUIRED)
 
     if(NOT DEFINED SPHINX_THEME)
-        SET(SPHINX_THEME default)
+        set(SPHINX_THEME default)
     endif()
 
     if(NOT DEFINED SPHINX_THEME_DIR)
-        SET(SPHINX_THEME_DIR)
+        set(SPHINX_THEME_DIR)
     endif()
 
     # configured documentation tools and intermediate build results
-    SET(BINARY_BUILD_DIR "${PGROUTING_BINARY_DIR}/doc/_build")
+    set(BINARY_BUILD_DIR "${PGROUTING_BINARY_DIR}/doc/_build")
 
     # Sphinx cache with pickled ReST documents
-    SET(SPHINX_CACHE_DIR "${PGROUTING_BINARY_DIR}/doc/_doctrees")
+    set(SPHINX_CACHE_DIR "${PGROUTING_BINARY_DIR}/doc/_doctrees")
 
     # HTML output directory
-    SET(SPHINX_HTML_DIR "${PGROUTING_BINARY_DIR}/html")
+    set(SPHINX_HTML_DIR "${PGROUTING_BINARY_DIR}/html")
 
-    CONFIGURE_FILE(
+    configure_file(
         "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
         "${BINARY_BUILD_DIR}/conf.py"
         @ONLY)
 
-    ADD_CUSTOM_TARGET(pgRoutingDocumentationdoc ALL
+    add_custom_target(pgRoutingDocumentationdoc ALL
         ${SPHINX_EXECUTABLE}
         -q -b html
         -c "${BINARY_BUILD_DIR}"
@@ -43,4 +43,4 @@ IF(WITH_DOC)
         "${SPHINX_HTML_DIR}"
         COMMENT "Building HTML documentation with Sphinx")
 
-ENDIF(WITH_DOC)
+endif(WITH_DOC)

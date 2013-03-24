@@ -1,25 +1,33 @@
+#
+# Format convention
+# - command (lower case)
+# - VARIABLE (upper case)
+# (http://www.cmake.org/cmake/help/v2.8.10/cmake.html)
+#
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.10)
-PROJECT(PGROUTING)
+cmake_minimum_required(VERSION 2.8.10)
+project(PGROUTING)
 
 #-----------------------------------------------------------------------------
 # PGROUTING version number.
-SET(PGROUTING_VERSION_MAJOR "1")
-SET(PGROUTING_VERSION_MINOR "0")
-SET(PGROUTING_VERSION_PATCH "7")
+set(PGROUTING_VERSION_MAJOR "1")
+set(PGROUTING_VERSION_MINOR "0")
+set(PGROUTING_VERSION_PATCH "7")
 
-SET(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
+set(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
 
-SET(POSTGRESQL_MINIMUM_VERSION "8.3.0")
+set(POSTGRESQL_MINIMUM_VERSION "8.3.0")
 
+#-----------------------------------------------------------------------------
+# CMAKE configuration
 # This is for my mingw64 environment, it should go away
-SET(CMAKE_PREFIX_PATH /c/ming64/projects/pgx64/pg92)
+set(CMAKE_PREFIX_PATH /c/ming64/projects/pgx64/pg92)
 
 add_subdirectory(cmake)
-SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
-include (MacroLibrary)
-include (TargetDistclean)
+include(MacroLibrary)
+include(TargetDistclean)
 
 #macro_optional_find_package(PostgreSQL)
 #  POSTGRESQL_INCLUDE_DIR, where to find POSTGRESQL.h
