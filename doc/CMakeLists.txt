@@ -6,10 +6,7 @@
 # Daniel Kastl 03/2013
 #
 
-set(SPHINX_THEME "default")
-
-message("${PGROUTING_VERSION_REVISION_HASH}")
-message("${PGROUTING_VERSION_REVISION_NAME}")
+set(SPHINX_THEME "pyramid")
 
 if(WITH_DOC)
 
