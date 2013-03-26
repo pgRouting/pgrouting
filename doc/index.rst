@@ -30,13 +30,13 @@ Reference:
 .. toctree::
 	:maxdepth: 1
 
-	../core/common/doc/index
-	../core/dijkstra/doc/index
-	../core/astar/doc/index
-	../core/trsp/doc/index
-	../core/shooting_star/doc/index
-	../core/tsp/doc/index
-	../core/driving_distance/doc/index
+	../src/common/doc/index
+	../src/dijkstra/doc/index
+	../src/astar/doc/index
+	../src/trsp/doc/index
+	../src/shooting_star/doc/index
+	../src/tsp/doc/index
+	../src/driving_distance/doc/index
 	   
 
 Indices and tables

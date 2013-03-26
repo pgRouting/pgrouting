@@ -45,7 +45,7 @@ Analyze a Graph
 
 
 Analyze One Way Streets
-======================
+=======================
 
 .. function:: pgr_analyze_oneway(tab, col, s_in_rules, s_out_rules, t_in_rules, t_out_rules)
    :module: pgrouting_analytics.sql
