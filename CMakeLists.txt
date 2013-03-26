@@ -22,6 +22,8 @@ set(POSTGRESQL_MINIMUM_VERSION "8.3.0")
 # CMAKE configuration
 # This is for my mingw64 environment, it should go away
 set(CMAKE_PREFIX_PATH /c/ming64/projects/pgx64/pg92)
+set(CMAKE_INCLUDE_PATH /usr:/usr/local)
+set(CMAKE_LIBRARY_PATH /usr:/usr/local)
 
 add_subdirectory(cmake)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
@@ -127,12 +129,12 @@ ELSE(UNIX)
 ENDIF(UNIX)
 
 SET(PGROUTING_INCLUDE_DIRECTORIES
-    ${PGROUTING_SOURCE_DIR}/core/astar/src
-    ${PGROUTING_SOURCE_DIR}/core/dijkstra/src
-    ${PGROUTING_SOURCE_DIR}/core/shooting_star/src
-    ${PGROUTING_SOURCE_DIR}/core/tsp/src
-    ${PGROUTING_SOURCE_DIR}/core/driving_distance/src
-    ${PGROUTING_SOURCE_DIR}/core/trsp/src)
+    ${PGROUTING_SOURCE_DIR}/src/astar/src
+    ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
+    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
+    ${PGROUTING_SOURCE_DIR}/src/tsp/src
+    ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
+    ${PGROUTING_SOURCE_DIR}/src/trsp/src)
 
 INCLUDE_DIRECTORIES(. ${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
 IF(WIN32)
@@ -161,10 +163,10 @@ SET(L_PACKAGE_SQL_FILES "")
 # Recurse into the subdirectories.  This does not actually
 # cause another cmake executable to run.  The same process will walk through
 # the project's entire directory structure.
-ADD_SUBDIRECTORY(core)
+ADD_SUBDIRECTORY(src)
 LIST(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 
-# assemble the object files from the core functions into
+# assemble the object files from the src functions into
 # a single library librouting.so
 SET(LIBRARY_OUTPUT_PATH lib)
 
@@ -196,7 +198,7 @@ IF(WITH_TSP)
     message(FATAL ERROR " Please check your gaul installation, or set correct path to GAUL_INCLUDE_DIR and GAUL_LIBRARIES.")
   ENDIF(NOT GAUL_FOUND)
   INCLUDE_DIRECTORIES(${INCLUDE_DIRECTORIES} ${GAUL_INCLUDE_DIR})
-  ADD_SUBDIRECTORY(core/tsp)
+  ADD_SUBDIRECTORY(src/tsp)
   LIST(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 ENDIF(WITH_TSP)
 
@@ -208,7 +210,7 @@ IF(WITH_DD)
   #ADD_DEFINITIONS(-DBOOST_ALL_NO_LIB)
   #ADD_DEFINITIONS(-DBOOST_THREAD_USE_LIB)
   INCLUDE_DIRECTORIES(${INCLUDE_DIRECTORIES} ${CGAL_INCLUDE_DIR})
-  ADD_SUBDIRECTORY(core/driving_distance)
+  ADD_SUBDIRECTORY(src/driving_distance)
   LIST(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 ENDIF(WITH_DD)
 
@@ -225,7 +227,7 @@ IF(USE_PG_EXTENSION)
         "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
 ENDIF(USE_PG_EXTENSION)
 
-Cat("${PGROUTING_SOURCE_DIR}/core/common/sql/pgrouting-types.sql"
+Cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
     "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 
 
@@ -239,7 +241,7 @@ ENDFOREACH()
 CONFIGURE_FILE("${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
     "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql" COPYONLY)
 
-CONFIGURE_FILE("${PGROUTING_SOURCE_DIR}/core/common/sql/pgrouting.control.in"
+CONFIGURE_FILE("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control")
 
 # this will create the commands in the makefile under the install target
