@@ -32,17 +32,23 @@ http://www.pgrouting.org/docs/1.x/install.html
 
 For MinGW on Windows
 
-	cmake -H. -Bbuild -G"MSYS Makefiles" -DWITH_TSP=ON -DWITH_DD=ON 
+    mkdir build
+    cd build
+	cmake -G"MSYS Makefiles" -DWITH_TSP=ON -DWITH_DD=ON ..
+	make
+	make install
 
 For Linux
 	
-	cmake -H. -Bbuild -DWITH_TSP=ON -DWITH_DD=ON 
-	cd mybuild && make
+    mkdir build
+    cd build
+	cmake -DWITH_TSP=ON -DWITH_DD=ON ..
+	make
 	sudo make install
 
 Build with documentation (requires Sphinx)
 
-	cmake -H. -Bbuild -DWITH_DOC=ON -DWITH_TSP=ON -DWITH_DD=ON
+	cmake -DWITH_DOC=ON -DWITH_TSP=ON -DWITH_DD=ON ..
 
 Postgresql 9.1+
 
@@ -73,5 +79,5 @@ http://www.pgrouting.org/docs/1.x/index.html
 ## LICENCE
 
 Most features are available under GPL.
-Some Boost extesions are available under Boost license (see LICENSE_1_0.txt)
-
+Some Boost extensions are available under Boost license (see LICENSE_1_0.txt)
+Some code contributed by iMaptools.com is available under MIT-X license.
