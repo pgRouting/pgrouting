@@ -11,6 +11,7 @@ if(GAUL_INCLUDE_DIR AND GAUL_LIBRARIES AND GAUL_UTIL_LIBRARIES)
 else(GAUL_INCLUDE_DIR AND GAUL_LIBRARIES AND GAUL_UTIL_LIBRARIES)
 
   FIND_PATH(GAUL_INCLUDE_DIR gaul.h
+      ${GAUL_ROOT}/include
       /usr/include
       /usr/local/include
       $ENV{ProgramFiles}/gaul/*/include
@@ -21,6 +22,7 @@ message(STATUS "GAUL_INCLUDE_DIR=${GAUL_INCLUDE_DIR}")
 
   find_library(GAUL_LIBRARIES NAMES gaul libgaul
      PATHS
+      ${GAUL_ROOT}/lib
      /usr/lib
      /usr/local/lib
      /usr/lib/gaul
@@ -35,6 +37,7 @@ message(STATUS "GAUL_LIBRARIES=${GAUL_LIBRARIES}")
 
   find_library(GAUL_UTIL_LIBRARIES NAMES gaul_util libgaul_util
      PATHS
+      ${GAUL_ROOT}/lib
      /usr/lib
      /usr/local/lib
      /usr/lib/gaul
