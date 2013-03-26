@@ -6,8 +6,8 @@
 # Daniel Kastl 03/2013
 #
 
-# "pyramid" theme might not be available in every installation of Sphinx
-#set(SPHINX_THEME "pyramid")
+#set(SPHINX_THEME "pgrouting")
+#set(SPHINX_THEME_DIR "_themes")
 
 if(WITH_DOC)
 
@@ -34,6 +34,9 @@ if(WITH_DOC)
         "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
         "${BINARY_BUILD_DIR}/conf.py"
         @ONLY)
+
+    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/_static" DESTINATION "${BINARY_BUILD_DIR}")
+    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/_themes" DESTINATION "${BINARY_BUILD_DIR}")
 
     add_custom_target(pgRoutingDocumentationdoc ALL
         ${SPHINX_EXECUTABLE}
