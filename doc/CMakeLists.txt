@@ -6,7 +6,8 @@
 # Daniel Kastl 03/2013
 #
 
-set(SPHINX_THEME "pyramid")
+# "pyramid" theme might not be available in every installation of Sphinx
+#set(SPHINX_THEME "pyramid")
 
 if(WITH_DOC)
 
