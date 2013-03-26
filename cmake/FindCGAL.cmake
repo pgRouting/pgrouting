@@ -31,18 +31,23 @@ else(CGAL_INCLUDE_DIR AND CGAL_LIBRARIES AND BOOST_THREAD_LIBRARIES AND GMP_LIBR
      $ENV{SystemDrive}/CGAL/*/lib
      )
 
-  find_library(BOOST_THREAD_LIBRARIES NAMES boost_thread libboost_thread
-     PATHS
-      ${BOOST_ROOT}/lib
-     /usr/lib
-     /usr/local/lib
-     /usr/lib/boost
-     /usr/lib64
-     /usr/local/lib64
-     /usr/lib64/boost
-     $ENV{ProgramFiles}/boost/*/lib
-     $ENV{SystemDrive}/boost/*/lib
-     )
+  find_package(Boost COMPONENTS boost_thread)
+  if(Boost_FOUND)
+    set(BOOST_THREAD_LIBRARIES ${Boost_LIBRARIES})
+  endif(Boost_FOUND)
+
+#  find_library(BOOST_THREAD_LIBRARIES NAMES boost_thread libboost_thread
+#     PATHS
+#      ${BOOST_ROOT}/lib
+#     /usr/lib
+#     /usr/local/lib
+#     /usr/lib/boost
+#     /usr/lib64
+#     /usr/local/lib64
+#     /usr/lib64/boost
+#     $ENV{ProgramFiles}/boost/*/lib
+#     $ENV{SystemDrive}/boost/*/lib
+#     )
      
   find_library(GMP_LIBRARIES NAMES gmp libgmp
      PATHS
