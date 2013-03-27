@@ -23,18 +23,30 @@ cd CGAL-3.9
 mkdir -p build/mingw
 cd build/mingw
 cmake -G"MSYS Makefiles" -DCMAKE_INSTALL_PREFIX:PATH=/usr/local -DCMAKE_CXX_FLAGS:STRING="-DBOOST_THREAD_USE_LIB -DBoost_USE_STATIC_LIBS -DBOOST_USE_WINDOWS_H" -DBoost_INCLUDE_DIR:PATH=/usr/local/include/boost-1_46_1 -DBOOST_LIBRARYDIR:PATH=/usr/local/lib ../../
-make
-make install
+
+## Fixup generated files
+mv src/CGAL/all_files.cpp  aatmp
+echo "#include <windows.h>" > src/CGAL/all_files.cpp
+cat aatmp >> src/CGAL/all_files.cpp
+rm aatmp
+mv src/ImageIO/all_files.cpp  aatmp
+echo "#include <windows.h>" > src/ImageIO/all_files.cpp
+cat aatmp >> src/ImageIO/all_files.cpp
+rm aatmp
+
+make &&  make install
 
 
 cd ${PROJECTS}
 wget http://prdownloads.sourceforge.net/gaul/gaul-devel-0.1849-0.tar.bz2?download
 tar xj gaul-devel-0.1849-0.tar.bz2
 cd gaul-devel-0.1849-0
+# Reginia's cmake
+#./configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --enable-slang=no --enable-pthread=no --enable-shared=yes
 ./configure --enable-slang=no --enable-pthread=no --enable-shared=yes
 cat ../gaul.patch | patch -p1
-make
-make install
+touch /mingw/x86_64-w64-mingw32/include/values.h
+make && make install
 
 
 #cd ${PROJECTS}
@@ -51,7 +63,6 @@ wget http://ftp.postgresql.org/pub/source/v9.2.3/postgresql-9.2.3.tar.bz2
 tar xjf postgresql-9.2.3.tar.bz2
 cd postgresql-9.2.3
 ./configure --prefix=/c/ming64/projects/pgx64/pg923 --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-pgport=5441 --enable-cassert --enable-debug --enable-integer-datetimes --disable-float8-byval --without-zlib build_alias=x86_64-w64-mingw32 host_alias=x86_64-w64-mingw32 target_alias=x86_64-w64-mingw32
-make
-make install
+make && make install
 
 
