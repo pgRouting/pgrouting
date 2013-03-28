@@ -47,7 +47,7 @@ my $psql = findPsql() || die "ERROR: can not find psql, specify it on the comman
 #exit;
 
 # Traverse desired filesystems
-File::Find::find({wanted => \&want_tests}, 'core');
+File::Find::find({wanted => \&want_tests}, 'src');
 
 die "Error: no test files found. Run this command from the top level pgRouting directory!\n" unless @cfgs;
 

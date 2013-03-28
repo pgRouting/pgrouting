@@ -21,6 +21,7 @@
 
 // Include C header first for windows build issue
 #include "dijkstra.h"
+#include <cfloat>
 
 #include <boost/config.hpp>
 
@@ -30,21 +31,6 @@
 
 using namespace std;
 using namespace boost;
-
-/*
-//	FIXME: use this to avoid heap allocation ?
-
-void* operator new(size_t size)
-{
-return palloc(size);
-}
-
-void operator delete(void *p)
-{
-    pfree(p);
-}
-
-*/
 
 // Maximal number of nodes in the path (to avoid infinite loops)
 #define MAX_NODES 100000000
@@ -78,26 +64,31 @@ boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vert
 
     for (std::size_t j = 0; j < count; ++j)
     {
-	edge_descriptor e; bool inserted;
-	tie(e, inserted) = add_edge(edges[j].source, edges[j].target, graph);
+        double cost, rcost;
+        edge_descriptor e;
+        bool inserted;
 
-	graph[e].cost = edges[j].cost;
-	graph[e].id = edges[j].id;
+        tie(e, inserted) = add_edge(edges[j].source, edges[j].target, graph);
+
+        cost = (edges[j].cost < 0.0) ? DBL_MAX : edges[j].cost;
+        graph[e].cost = cost;
+        graph[e].id = edges[j].id;
 				
-	if (!directed || (directed && has_reverse_cost))
-	{
-	    tie(e, inserted) = add_edge(edges[j].target, edges[j].source, graph);
-	    graph[e].id = edges[j].id;
+        if (!directed || (directed && has_reverse_cost))
+        {
+            tie(e, inserted) = add_edge(edges[j].target, edges[j].source, graph);
+            graph[e].id = edges[j].id;
 
-	    if (has_reverse_cost)
-	    {
-		graph[e].cost = edges[j].reverse_cost;
-	    }
-	    else 
-	    {
-		graph[e].cost = edges[j].cost;
-	    }
-	}
+            if (has_reverse_cost)
+            {
+                rcost = (edges[j].reverse_cost < 0.0) ? DBL_MAX : edges[j].reverse_cost;
+                graph[e].cost = rcost;
+            }
+            else 
+            {
+                graph[e].cost = cost;
+            }
+        }
     }
 
     std::vector<vertex_descriptor> predecessors(num_vertices(graph));
@@ -106,23 +97,23 @@ boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vert
 
     if (_source < 0 /*|| _source >= num_nodes*/) 
     {
-	*err_msg = (char *) "Starting vertex not found";
-	return -1;
+        *err_msg = (char *) "Starting vertex not found";
+        return -1;
     }
 
     vertex_descriptor _target = vertex(end_vertex, graph);
     if (_target < 0 /*|| _target >= num_nodes*/)
     {
-	*err_msg = (char *) "Ending vertex not found";
-	return -1;
+        *err_msg = (char *) "Ending vertex not found";
+        return -1;
     }
 
     std::vector<float8> distances(num_vertices(graph));
     // calling Boost function
     dijkstra_shortest_paths(graph, _source,
-			    predecessor_map(&predecessors[0]).
-			    weight_map(get(&Vertex::cost, graph))
-			    .distance_map(&distances[0]));
+                predecessor_map(&predecessors[0]).
+                weight_map(get(&Vertex::cost, graph))
+                .distance_map(&distances[0]));
 
     vector<int> path_vect;
     int max = MAX_NODES;
@@ -130,19 +121,19 @@ boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vert
 
     while (_target != _source) 
     {
-	if (_target == predecessors[_target]) 
-	{
-	    *err_msg = (char *) "No path found";
-	    return 0;
-	}
-	_target = predecessors[_target];
+        if (_target == predecessors[_target]) 
+        {
+            *err_msg = (char *) "No path found";
+            return 0;
+        }
+        _target = predecessors[_target];
 
-	path_vect.push_back(_target);
-	if (!max--) 
-	{
-	    *err_msg = (char *) "Overflow";
-	    return -1;
-	}
+        path_vect.push_back(_target);
+        if (!max--) 
+        {
+            *err_msg = (char *) "Overflow";
+            return -1;
+        }
     }
 
     *path = (path_element_t *) malloc(sizeof(path_element_t) * (path_vect.size() + 1));
@@ -150,39 +141,39 @@ boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vert
 
     for(int i = path_vect.size() - 1, j = 0; i >= 0; i--, j++)
     {
-	graph_traits < graph_t >::vertex_descriptor v_src;
-	graph_traits < graph_t >::vertex_descriptor v_targ;
-	graph_traits < graph_t >::edge_descriptor e;
-	graph_traits < graph_t >::out_edge_iterator out_i, out_end;
+        graph_traits < graph_t >::vertex_descriptor v_src;
+        graph_traits < graph_t >::vertex_descriptor v_targ;
+        graph_traits < graph_t >::edge_descriptor e;
+        graph_traits < graph_t >::out_edge_iterator out_i, out_end;
 
-	(*path)[j].vertex_id = path_vect.at(i);
+        (*path)[j].vertex_id = path_vect.at(i);
 
-	(*path)[j].edge_id = -1;
-	(*path)[j].cost = distances[_target];
+        (*path)[j].edge_id = -1;
+        (*path)[j].cost = distances[_target];
 	
-	if (i == 0) 
-	{
-	    continue;
-	}
+        if (i == 0) 
+        {
+            continue;
+        }
 
-	v_src = path_vect.at(i);
-	v_targ = path_vect.at(i - 1);
+        v_src = path_vect.at(i);
+        v_targ = path_vect.at(i - 1);
 
-	for (tie(out_i, out_end) = out_edges(v_src, graph); 
-	     out_i != out_end; ++out_i)
-	{
-	    graph_traits < graph_t >::vertex_descriptor v, targ;
-	    e = *out_i;
-	    v = source(e, graph);
-	    targ = target(e, graph);
+        for (tie(out_i, out_end) = out_edges(v_src, graph); 
+             out_i != out_end; ++out_i)
+        {
+            graph_traits < graph_t >::vertex_descriptor v, targ;
+            e = *out_i;
+            v = source(e, graph);
+            targ = target(e, graph);
 								
-	    if (targ == v_targ)
-	    {
-		(*path)[j].edge_id = graph[*out_i].id;
-		(*path)[j].cost = graph[*out_i].cost;
-		break;
-	    }
-	}
+            if (targ == v_targ)
+            {
+                (*path)[j].edge_id = graph[*out_i].id;
+                (*path)[j].cost = graph[*out_i].cost;
+                break;
+            }
+        }
     }
 
     return EXIT_SUCCESS;
