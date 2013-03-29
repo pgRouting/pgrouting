@@ -26,7 +26,7 @@ set(CMAKE_INCLUDE_PATH /usr:/usr/local)
 set(CMAKE_LIBRARY_PATH /usr:/usr/local)
 
 add_subdirectory(cmake)
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+set(CMAKE_MODULE_PATH "${PGROUTING_SOURCE_DIR}/cmake")
 
 include(MacroLibrary)
 include(TargetDistclean)
@@ -224,33 +224,33 @@ ENDIF(WITH_DD)
 
 #MESSAGE("PACKAGE_SQL_FILES are ${L_PACKAGE_SQL_FILES}")
 
-FILE(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+FILE(WRITE "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
 "-- pgRouting version '${PGROUTING_VERSION_STRING}' extension for postgresql\n")
-FILE(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+FILE(APPEND "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
 "-- built WITH_TSP = ${WITH_TSP}, WITH_DD = ${WITH_DD}\n")
 IF(USE_PG_EXTENSION)
-    FILE(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+    FILE(APPEND "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
         "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
-    FILE(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+    FILE(APPEND "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
         "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
 ENDIF(USE_PG_EXTENSION)
 
 Cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
+    "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 
 
 FOREACH(PACKAGE_SQL_FILE ${L_PACKAGE_SQL_FILES})
-    CAT(${PACKAGE_SQL_FILE} "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
+    CAT(${PACKAGE_SQL_FILE} "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 ENDFOREACH()
 
 # copy our temporary file into a final file
 # this extra set will allow us to place variables in the sql file
 # that will get substituted in this step before they are installed
-CONFIGURE_FILE("${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql" COPYONLY)
+CONFIGURE_FILE("${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+    "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql" COPYONLY)
 
 CONFIGURE_FILE("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting.control")
+    "${PGROUTING_BINARY_DIR}/lib/pgrouting.control")
 
 # this will create the commands in the makefile under the install target
 IF(UNIX)
@@ -262,8 +262,8 @@ ENDIF(UNIX)
 INSTALL(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
 
 INSTALL(FILES
-    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
+    "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
+    "${PGROUTING_BINARY_DIR}/lib/pgrouting.control"
     DESTINATION "${SHARE_DIR}")
 
 
