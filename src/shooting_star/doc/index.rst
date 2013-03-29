@@ -1,7 +1,4 @@
-:Author: Daniel Kastl
-:License: Creative Commons
-
-.. _shootingstar:
+.. _shooting_star-index:
 
 ================================================================
  Shortest Path Shooting Star

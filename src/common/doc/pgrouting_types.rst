@@ -1,3 +1,5 @@
+.. _common-types:
+
 =========================
 pgRouting Graph Analytics
 =========================

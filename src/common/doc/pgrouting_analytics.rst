@@ -1,3 +1,5 @@
+.. _common-analytics:
+
 =========================
 pgRouting Graph Analytics
 =========================

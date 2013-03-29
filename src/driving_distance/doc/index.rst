@@ -1,7 +1,4 @@
-:Author: Daniel Kastl
-:License: Creative Commons
-
-.. _dd:
+.. _driving_distance-index:
 
 ================================================================
  Driving Distance calculation

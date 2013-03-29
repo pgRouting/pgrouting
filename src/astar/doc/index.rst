@@ -1,7 +1,4 @@
-:Author: Daniel Kastl
-:License: Creative Commons
-
-.. _astar:
+.. _astar-index:
 
 ================================================================
  Shortest Path A*

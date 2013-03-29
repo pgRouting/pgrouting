@@ -1,7 +1,4 @@
-:Author: Daniel Kastl
-:License: Creative Commons
-
-.. _tsp:
+.. _tsp-index:
 
 ================================================================
   Traveling Sales Person (TSP)

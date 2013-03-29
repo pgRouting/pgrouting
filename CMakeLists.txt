@@ -5,7 +5,7 @@
 # (http://www.cmake.org/cmake/help/v2.8.10/cmake.html)
 #
 
-cmake_minimum_required(VERSION 2.8.10 FATAL_ERROR)
+cmake_minimum_required(VERSION 2.8.9 FATAL_ERROR)
 project(PGROUTING)
 
 # Configure options
@@ -36,7 +36,7 @@ set(CMAKE_INCLUDE_PATH /usr:/usr/local)
 set(CMAKE_LIBRARY_PATH /usr:/usr/local)
 
 add_subdirectory(cmake)
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+set(CMAKE_MODULE_PATH "${PGROUTING_SOURCE_DIR}/cmake")
 
 include(MacroLibrary)
 include(TargetDistclean)
@@ -245,8 +245,8 @@ if(USE_PG_EXTENSION)
         "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
 endif(USE_PG_EXTENSION)
 
-Cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
+cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
+    "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 
 
 foreach(PACKAGE_SQL_FILE ${L_PACKAGE_SQL_FILES})
