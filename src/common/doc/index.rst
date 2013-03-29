@@ -1,4 +1,4 @@
-
+.. _common-index:
 
 Common Functions
 ================

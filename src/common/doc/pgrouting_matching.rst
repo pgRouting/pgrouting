@@ -1,3 +1,5 @@
+.. _common-matching:
+
 =========================
 pgRouting Matching
 =========================

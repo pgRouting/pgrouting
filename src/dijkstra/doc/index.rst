@@ -1,7 +1,4 @@
-:Author: Daniel Kastl
-:License: Creative Commons
-
-.. _dijkstra:
+.. _dijkstra-index:
 
 ================================================================
  Shortest Path Dijkstra
