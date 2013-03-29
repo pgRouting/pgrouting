@@ -37,6 +37,7 @@ if(WITH_DOC)
 
     file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/static" DESTINATION "${BINARY_BUILD_DIR}")
     file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/themes" DESTINATION "${BINARY_BUILD_DIR}")
+    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/index.html" DESTINATION "${SPHINX_HTML_DIR}")
 
     add_custom_target(pgRoutingDocumentationdoc ALL
         ${SPHINX_EXECUTABLE}
