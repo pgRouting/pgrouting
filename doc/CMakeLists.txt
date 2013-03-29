@@ -35,8 +35,8 @@ if(WITH_DOC)
         "${BINARY_BUILD_DIR}/conf.py"
         @ONLY)
 
-    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/_static" DESTINATION "${BINARY_BUILD_DIR}")
-    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/_themes" DESTINATION "${BINARY_BUILD_DIR}")
+    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/static" DESTINATION "${BINARY_BUILD_DIR}")
+    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/themes" DESTINATION "${BINARY_BUILD_DIR}")
 
     add_custom_target(pgRoutingDocumentationdoc ALL
         ${SPHINX_EXECUTABLE}
