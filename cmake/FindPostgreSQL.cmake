@@ -15,77 +15,65 @@
 # Add the postgresql and mysql include paths here
 
 if(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE AND POSTGRESQL_VERSION_STRING)
-   set(POSTGRESQL_FOUND TRUE)
+    set(POSTGRESQL_FOUND TRUE)
 else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
 
-#  find_path(POSTGRESQL_INCLUDE_DIR libpq-fe.h
 
- FIND_PROGRAM(POSTGRESQL_EXECUTABLE NAMES postgres
-    PATHS
-    /usr/lib/postgresql/*/bin/
-    )
- MESSAGE(STATUS "POSTGRESQL_EXECUTABLE is " ${POSTGRESQL_EXECUTABLE})
+    find_program(POSTGRESQL_EXECUTABLE NAMES postgres
+        PATHS
+        /usr/lib/postgresql/*/bin/
+        )
+    message(STATUS "POSTGRESQL_EXECUTABLE is " ${POSTGRESQL_EXECUTABLE})
 
- FIND_PROGRAM(POSTGRESQL_PG_CONFIG NAMES pg_config
-    PATHS
-    /usr/lib/postgresql/*/bin/
-    )
- MESSAGE(STATUS "POSTGRESQL_PG_CONFIG is " ${POSTGRESQL_PG_CONFIG})
+    find_program(POSTGRESQL_PG_CONFIG NAMES pg_config
+        PATHS
+        /usr/lib/postgresql/*/bin/
+        )
+    message(STATUS "POSTGRESQL_PG_CONFIG is " ${POSTGRESQL_PG_CONFIG})
 
- if(POSTGRESQL_PG_CONFIG)
-      EXECUTE_PROCESS(
-          COMMAND ${POSTGRESQL_PG_CONFIG} --version
-          OUTPUT_STRIP_TRAILING_WHITESPACE
-          OUTPUT_VARIABLE POSTGRESQL_VERSION_STRING)
- endif(POSTGRESQL_PG_CONFIG)
+    if(POSTGRESQL_PG_CONFIG)
+        execute_process(
+            COMMAND ${POSTGRESQL_PG_CONFIG} --version
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+            OUTPUT_VARIABLE POSTGRESQL_VERSION_STRING)
+    endif(POSTGRESQL_PG_CONFIG)
 
- if(POSTGRESQL_PG_CONFIG)
-      EXECUTE_PROCESS(
-          COMMAND ${POSTGRESQL_PG_CONFIG} --includedir-server
-          OUTPUT_STRIP_TRAILING_WHITESPACE
-          OUTPUT_VARIABLE T_POSTGRESQL_INCLUDE_DIR)
- endif(POSTGRESQL_PG_CONFIG)
- FIND_PATH(POSTGRESQL_INCLUDE_DIR postgres.h
-          ${T_POSTGRESQL_INCLUDE_DIR}
-          /usr/include/server
-          /usr/include/pgsql/server
-          /usr/local/include/pgsql/server
-          /usr/include/postgresql/server
-          /usr/include/postgresql/*/server
-          /usr/local/include/postgresql/server
-          /usr/local/include/postgresql/*/server
-          $ENV{ProgramFiles}/PostgreSQL/*/include/server
-          $ENV{SystemDrive}/PostgreSQL/*/include/server
-          )
+    if(POSTGRESQL_PG_CONFIG)
+        execute_process(
+            COMMAND ${POSTGRESQL_PG_CONFIG} --includedir-server
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+            OUTPUT_VARIABLE T_POSTGRESQL_INCLUDE_DIR)
+    endif(POSTGRESQL_PG_CONFIG)
 
- if(POSTGRESQL_PG_CONFIG)
-      EXECUTE_PROCESS(
-          COMMAND ${POSTGRESQL_PG_CONFIG} --libdir
-          OUTPUT_STRIP_TRAILING_WHITESPACE
-          OUTPUT_VARIABLE POSTGRESQL_LIBRARIES)
- endif(POSTGRESQL_PG_CONFIG)
-# find_library(POSTGRESQL_LIBRARIES NAMES pq libpq
-#          PATHS
-#          ${T_POSTGRESQL_LIBRARIES}
-#          /usr/lib
-#          /usr/local/lib
-#          /usr/lib/postgresql
-#          /usr/lib64
-#          /usr/local/lib64
-#          /usr/lib64/postgresql
-#          $ENV{ProgramFiles}/PostgreSQL/*/lib/ms
-#          $ENV{SystemDrive}/PostgreSQL/*/lib/ms
-#          )
-      
-  if(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES)
-    set(POSTGRESQL_FOUND TRUE)
-    message(STATUS "Found PostgreSQL: ${POSTGRESQL_INCLUDE_DIR}, ${POSTGRESQL_LIBRARIES}")
-    INCLUDE_DIRECTORIES(${POSTGRESQL_INCLUDE_DIR})
-  else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES)
-    set(POSTGRESQL_FOUND FALSE)
-    message(STATUS "PostgreSQL not found.")
-  endif(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES)
+    find_path(POSTGRESQL_INCLUDE_DIR postgres.h
+        ${T_POSTGRESQL_INCLUDE_DIR}
+        /usr/include/server
+        /usr/include/pgsql/server
+        /usr/local/include/pgsql/server
+        /usr/include/postgresql/server
+        /usr/include/postgresql/*/server
+        /usr/local/include/postgresql/server
+        /usr/local/include/postgresql/*/server
+        $ENV{ProgramFiles}/PostgreSQL/*/include/server
+        $ENV{SystemDrive}/PostgreSQL/*/include/server
+        )
 
-  mark_as_advanced(POSTGRESQL_INCLUDE_DIR POSTGRESQL_LIBRARIES)
+    if(POSTGRESQL_PG_CONFIG)
+        execute_process(
+            COMMAND ${POSTGRESQL_PG_CONFIG} --libdir
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+            OUTPUT_VARIABLE POSTGRESQL_LIBRARIES)
+    endif(POSTGRESQL_PG_CONFIG)
+
+    if(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES)
+        set(POSTGRESQL_FOUND TRUE)
+        message(STATUS "Found PostgreSQL: ${POSTGRESQL_INCLUDE_DIR}, ${POSTGRESQL_LIBRARIES}")
+        include_directories(${POSTGRESQL_INCLUDE_DIR})
+    else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES)
+        set(POSTGRESQL_FOUND FALSE)
+        message(STATUS "PostgreSQL not found.")
+    endif(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES)
+
+    mark_as_advanced(POSTGRESQL_INCLUDE_DIR POSTGRESQL_LIBRARIES)
 
 endif(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE AND POSTGRESQL_VERSION_STRING)
