@@ -117,6 +117,8 @@ else(LIB_DIR)
   message(FATAL_ERROR "pg_config --pkglibdir failed to return a value. Please check your PostgreSQL installation!")
 endif(LIB_DIR)
 
+set(LIBRARY_INSTALL_PATH ${LIB_DIR})
+
 execute_process(
   COMMAND ${POSTGRESQL_PG_CONFIG} --sharedir
   OUTPUT_STRIP_TRAILING_WHITESPACE
@@ -136,23 +138,14 @@ endif(SHARE_DIR)
 # Handles documentation
 add_subdirectory(doc)
 
-if(UNIX)
-  set(LIBRARY_INSTALL_PATH ${LIB_DIR})
-  set(SQL_INSTALL_PATH /usr/share/pgrouting)
-else(UNIX)
-  set(LIBRARY_INSTALL_PATH ${PGROUTING_BINARY_DIR}/lib)
-  set(SQL_INSTALL_PATH ${PGROUTING_BINARY_DIR}/lib)
-endif(UNIX)
-message(STATUS "Installation directory for libraries is set to ${LIBRARY_INSTALL_PATH}")
-message(STATUS "Installation directory for SQL files is set to ${SQL_INSTALL_PATH}")
-
 set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/astar/src
     ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
     ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
     ${PGROUTING_SOURCE_DIR}/src/tsp/src
     ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
-    ${PGROUTING_SOURCE_DIR}/src/trsp/src)
+    ${PGROUTING_SOURCE_DIR}/src/trsp/src
+    )
 
 include_directories(. ${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
 if(WIN32)
@@ -264,11 +257,12 @@ configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
 
 # this will create the commands in the makefile under the install target
 if(UNIX)
-    file(GLOB_RECURSE LIBS_TO_INSTALL lib/*.so)
+    file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.so")
 else(UNIX)
-    file(GLOB_RECURSE LIBS_TO_INSTALL lib/*.dll)
-    message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
+    file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.dll")
 endif(UNIX)
+
+message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
 
 install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
 
