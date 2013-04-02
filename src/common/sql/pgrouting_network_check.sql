@@ -1,5 +1,9 @@
 /*
 	Alternative to pgrouting_analytics.sql
+
+	Example:
+	SELECT * FROM data.PGR_analyze_graph('SELECT source, target, geom_way 
+		AS geom FROM data.dhaka_2po_4pgr', 0.000001) WHERE isolate;
  */
 CREATE OR REPLACE FUNCTION data.PGR_analyze_graph(sql text, tolerance float)
   RETURNS TABLE(
