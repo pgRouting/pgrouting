@@ -3,14 +3,14 @@
 
 	Example:
 	SELECT * FROM data.PGR_analyze_graph('SELECT source, target, geom_way 
-		AS geom FROM data.dhaka_2po_4pgr', 0.000001) WHERE isolate;
+		AS geom FROM data.dhaka_2po_4pgr', 0.000001) WHERE checkit;
  */
 CREATE OR REPLACE FUNCTION data.PGR_analyze_graph(sql text, tolerance float)
   RETURNS TABLE(
 	vertex bigint, 
 	source integer,
 	target integer,
-	isolate boolean,
+	checkit boolean,
 	geom geometry
 ) AS
 $BODY$
@@ -24,7 +24,7 @@ BEGIN
 		vertex bigint  PRIMARY KEY,
 		source integer DEFAULT 0,
 		target integer DEFAULT 0,
-		isolate boolean DEFAULT false,
+		checkit boolean DEFAULT false,
 		geom geometry
 	) ON COMMIT DROP;
 
@@ -62,7 +62,7 @@ BEGIN
 				USING pnt.geom, tolerance
 		LOOP
 			IF pnt.vertex NOT IN (seg.source, seg.target) THEN
-				EXECUTE 'UPDATE vertices_temp SET isolate = TRUE WHERE vertex = $1'
+				EXECUTE 'UPDATE vertices_temp SET checkit = TRUE WHERE vertex = $1'
 					USING pnt.vertex;
 			END IF;
 		END LOOP;
