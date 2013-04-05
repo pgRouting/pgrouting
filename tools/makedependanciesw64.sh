@@ -1,30 +1,33 @@
 #!/bin/sh
 
-if [ "${OS_BUILD}" == "" && "$1" == ""] ; then
+if [[ "${OS_BUILD}" == "" && "$1" == "" ]] ; then
     echo "Usage: makedependencies OS_BUILD"
     echo "       OS_BUILD = 32|64"
     echo "       or export OS_BUILD=xx"
     exit 1
 fi
 
-PROJECTS=/c/ming${OS_BUILD}/projects
-export PATH="/c/ming${OS_BUILD}/projects/gettext/rel-gettext-0.18.1/bin:/c/ming${OS_BUILD}/projects/xsltproc:/c/ming${OS_BUILD}/projects/gtk/bin:/c/ming${OS_BUILD}/projects/rel-libiconv-1.13.1w64/include:.:/bin:/include:/mingw/bin:/mingw/include:/c/Windows/system32:/c/Windows:/usr/local/bin:/c/ming64/Silksvn/bin::/c/ming${OS_BUILD}/projects/pgx${OS_BUILD}/pg${PG_VER}/bin:/c/ming${OS_BUILD}/projects/pgx${OS_BUILD}/pg${PG_VER}/lib"
-
-if [ "${OS_BUILD}" == "64" ] ; then
+if [[ "${OS_BUILD}" == "64" ]] ; then
 	export MINGHOST=x86_64-w64-mingw32
+    export PG_BITS=
 else
 	export MINGHOST=i686-w64-mingw32
-    alias cmake="/c/ming32/projects/cmake-2.8.10.2-win32-x86/bin/cmake"
-fi;
+    export PG_BITS=w32
+#    alias cmake="/c/ming32/projects/cmake-2.8.10.2-win32-x86/bin/cmake"
+fi
+
+PROJECTS=/c/ming${OS_BUILD}/projects
+export PATH="/c/ming${OS_BUILD}/projects/gettext/rel-gettext-0.18.1/bin:/c/ming${OS_BUILD}/projects/xsltproc:/c/ming${OS_BUILD}/projects/gtk/bin:/c/ming${OS_BUILD}/projects/rel-libiconv-1.13.1w64/include:.:/bin:/include:/mingw/bin:/mingw/include:/c/Windows/system32:/c/Windows:/usr/local/bin:/c/ming64/Silksvn/bin::/c/ming${OS_BUILD}/projects/pgx${OS_BUILD}/pg${PG_VER}${PG_BITS}/bin:/c/ming${OS_BUILD}/projects/pgx${OS_BUILD}/pg${PG_VER}${PG_BITS}/lib"
 
 if false ; then
 cd ${PROJECTS}
 #wget -N http://sourceforge.net/projects/boost/files/boost/1.46.1/boost_1_46_1.zip
 #unzip -oq boost_1_46_1.zip
-if [ "${OS_BUILD}" == "32" ] ; then
-cat boost-w32.patch | patch -p1 boost_1_46_1/libs/thread/src/win32/tss_pe.cpp
+if [[ "${OS_BUILD}" == "32" ]] ; then
+#cat boost-w32.patch | patch -p1 boost_1_46_1/libs/thread/src/win32/tss_pe.cpp
+echo
 fi
-cd boost/boost_1_46_1/tools/build/v2
+cd boost_1_46_1/tools/build/v2
 cmd //c bootstrap.bat gcc
 cp bjam.exe ../../..
 cd ../../..
@@ -35,8 +38,8 @@ fi
 # Download CGAL-3.9.zip from http://www.cgal.org/download.html
 # Put CGAL-3.9.zip in the PROJECTS directory
 
-if false ; then
-cd ${PROJECTS}/CGAL
+if true ; then
+cd ${PROJECTS}
 #  this site requires a login so you have to fetch the file interactively
 #wget -N --no-check-certificate https://gforge.inria.fr/frs/download.php/2912
 #unzip -oq CGAL-3.9.zip

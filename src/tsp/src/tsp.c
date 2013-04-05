@@ -85,12 +85,13 @@ Datum tsp(PG_FUNCTION_ARGS);
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
-// Apologies for using fixed-length arrays.  But this is an example, not 
-// production code ;)
-//#define MAX_TOWNS 40
+// macro to store distance values as DISTANCE[MAX_TOWNS][MAX_TOWNS]
+#define D(i,j) DISTANCE[(i)*MAX_TOWNS + j]
 
-float DISTANCE[MAX_TOWNS][MAX_TOWNS];
-float x[MAX_TOWNS],y[MAX_TOWNS];
+DTYPE *DISTANCE;
+float *x;
+float *y;
+int MAX_TOWNS;
 int total_tuples;
 
 
@@ -128,7 +129,7 @@ typedef struct point_columns
 static int
 fetch_point_columns(SPITupleTable *tuptable, point_columns_t *point_columns)
 {
-  DBG("Fetching point");
+  //DBG("Fetching point");
 
   point_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "source_id");
   point_columns->x = SPI_fnumber(SPI_tuptable->tupdesc, "x");
@@ -142,8 +143,7 @@ fetch_point_columns(SPITupleTable *tuptable, point_columns_t *point_columns)
       return -1;
     }
     
-  DBG("* Point %i [%f, %f]", point_columns->id, point_columns->x, 
-      point_columns->y);
+  //DBG("* Point %i [%f, %f]", point_columns->id, point_columns->x, point_columns->y);
 
   return 0;
 }
@@ -155,17 +155,17 @@ fetch_point(HeapTuple *tuple, TupleDesc *tupdesc,
   Datum binval;
   bool isnull;
 
-  DBG("inside fetch_point\n");
+  //DBG("inside fetch_point");
 
   binval = SPI_getbinval(*tuple, *tupdesc, point_columns->id, &isnull);
-  DBG("Got id\n");
+  //DBG("Got id");
 
   if (isnull)
     elog(ERROR, "id contains a null value");
 
   point->id = DatumGetInt32(binval);
 
-  DBG("id = %i\n", point->id);
+  //DBG("id = %i", point->id);
 
   binval = SPI_getbinval(*tuple, *tupdesc, point_columns->x, &isnull);
   if (isnull)
@@ -173,7 +173,7 @@ fetch_point(HeapTuple *tuple, TupleDesc *tupdesc,
 
   point->x = DatumGetFloat8(binval);
 
-  DBG("x = %f\n", point->x);
+  //DBG("x = %f", point->x);
 
   binval = SPI_getbinval(*tuple, *tupdesc, point_columns->y, &isnull);
 
@@ -182,12 +182,12 @@ fetch_point(HeapTuple *tuple, TupleDesc *tupdesc,
 
   point->y = DatumGetFloat8(binval);
 
-  DBG("y = %f\n", point->y);
+  //DBG("y = %f", point->y);
 }
 
 
 static int solve_tsp(char* sql, char* p_ids, 
-                     int source, path_element_t* path) 
+                     int source, path_element_t** path) 
 {
   int SPIcode;
   void *SPIplan;
@@ -196,7 +196,7 @@ static int solve_tsp(char* sql, char* p_ids,
   int ntuples;
 
   //todo replace path (vector of path_element_t) with this array
-  int ids[MAX_TOWNS];
+  int *ids;
 
   point_t *points=NULL;
   point_columns_t point_columns = {id: -1, x: -1, y:-1};
@@ -206,163 +206,178 @@ static int solve_tsp(char* sql, char* p_ids,
     
   char *p;
   int   z = 0;
+  int   i;
   
   int    tt, cc;
   double dx, dy;
   float  fit=0.0;
 
-  DBG("inside tsp\n");
+  DBG("inside tsp");
 
   //int total_tuples = 0;
   total_tuples = 0;
 
+  /* count the number of towns and allocate memory */
+  for (i=0, MAX_TOWNS=1; i<strlen(p_ids); i++)
+    if (p_ids[i] == ',') MAX_TOWNS++;
+
+  DBG("MAX_TOWNS=%d", MAX_TOWNS);
+
+  *path = (path_element_t *) palloc( MAX_TOWNS * sizeof(path_element_t) );
+  if (! *path) {
+    elog(ERROR, "Failed to alloc memory!");
+    return -1;
+  }
+
+  ids = (int *)palloc( MAX_TOWNS * sizeof(int) );
+  if (!ids) {
+    elog(ERROR, "Failed to alloc memory!");
+    return -1;
+  }
+
+  DISTANCE = (DTYPE *) palloc(MAX_TOWNS * MAX_TOWNS * sizeof(DTYPE));
+  if (!DISTANCE) {
+    elog(ERROR, "Failed to alloc memory!");
+    return -1;
+  }
+
+  x = (float *) palloc(MAX_TOWNS * sizeof(float));
+  y = (float *) palloc(MAX_TOWNS * sizeof(float));
+  if (!x || !y) {
+    elog(ERROR, "Failed to alloc memory!");
+    return -1;
+  }
+
   p = strtok(p_ids, ",");
-  while(p != NULL)
-    {
-      //      ((path_element_t*)path)[z].vertex_id = atoi(p);
+  while(p != NULL) {
       ids[z]=atoi(p);
       p = strtok(NULL, ",");
       z++;
-      if(z >= MAX_TOWNS)
+      if(z > MAX_TOWNS)
       {
         elog(ERROR, "Number of points exeeds max number.");
         break;
       }
-    }
+  }
     
-  DBG("ZZZ %i\n",z);
-  DBG("start tsp\n");
+  DBG("start tsp");
         
   SPIcode = SPI_connect();
 
-  if (SPIcode  != SPI_OK_CONNECT)
-    {
+  if (SPIcode  != SPI_OK_CONNECT) {
       elog(ERROR, "tsp: couldn't open a connection to SPI");
       return -1;
-    }
+  }
 
   SPIplan = SPI_prepare(sql, 0, NULL);
 
-  if (SPIplan  == NULL)
-    {
+  if (SPIplan  == NULL) {
       elog(ERROR, "tsp: couldn't create query plan via SPI");
-      return -1;
-    }
+      return finish(SPIcode, -1);
+  }
 
-  if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) 
-    {
+  if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
       elog(ERROR, "tsp: SPI_cursor_open('%s') returns NULL", sql);
-      return -1;
-    }
+      return finish(SPIcode, -1);
+  }
     
-  DBG("Query: %s\n",sql);
-  DBG("Query executed\n");
+  DBG("Query: %s",sql);
 
-  while (moredata == TRUE)
-    {
+  while (moredata == TRUE) {
       SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
 
-      if (point_columns.id == -1)
-        {
+      if (point_columns.id == -1) {
           if (fetch_point_columns(SPI_tuptable, &point_columns) == -1)
-	    return finish(SPIcode, ret);
-        }
+	      return finish(SPIcode, ret);
+      }
 
       ntuples = SPI_processed;
 
       total_tuples += ntuples;
 
-      DBG("Tuples: %i\n", total_tuples);
+      //DBG("Tuples: %i", total_tuples);
 
       if (!points)
         points = palloc(total_tuples * sizeof(point_t));
       else
         points = repalloc(points, total_tuples * sizeof(point_t));
                                         
-      if (points == NULL)
-        {
+      if (points == NULL) {
           elog(ERROR, "Out of memory");
-	  return finish(SPIcode, ret);
-        }
+	      return finish(SPIcode, ret);
+      }
 
-      if (ntuples > 0)
-        {
+      if (ntuples > 0) {
           int t;
           SPITupleTable *tuptable = SPI_tuptable;
           TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
-          DBG("Got tuple desc\n");
+          //DBG("Got tuple desc");
                 
-          for (t = 0; t < ntuples; t++) 
-            {
+          for (t = 0; t < ntuples; t++) {
               HeapTuple tuple = tuptable->vals[t];
-              DBG("Before point fetched\n");
               fetch_point(&tuple, &tupdesc, &point_columns, 
                           &points[total_tuples - ntuples + t]);
-              DBG("Point fetched\n");
-            }
+          }
 
           SPI_freetuptable(tuptable);
-        }
-      else
-        {
+      }
+      else {
           moredata = FALSE;
-        }                                       
-    }
+      }                                       
+  }
 
   
-  DBG("Calling TSP\n");
+  DBG("Calling TSP");
         
   profstop("extract", prof_extract);
   profstart(prof_tsp);
 
-  DBG("Total tuples: %i\n", total_tuples);
+  DBG("Total tuples: %i", total_tuples);
 
-  for(tt=0;tt<total_tuples;++tt)
-    {
-      //((path_element_t*)path)[tt].vertex_id = points[tt].id;
+  for(tt=0; tt < total_tuples; tt++) {
       ids[tt] = points[tt].id;
       x[tt] = points[tt].x;
       y[tt] = points[tt].y;
   
-      DBG("Point at %i: %i [%f, %f]\n",  tt, ids[tt], x[tt], y[tt]);
+      //DBG("Point at %i: %i [%f, %f]",  tt, ids[tt], x[tt], y[tt]);
             
-      // ((path_element_t*)path)[tt].vertex_id, x[tt], y[tt]);
+      for(cc=0; cc < total_tuples; cc++) {
+          dx = x[tt] - x[cc];
+          dy = y[tt] - y[cc];
+          D(tt, cc) = D(cc, tt) = sqrt(dx*dx + dy*dy);
+      }
+  }
 
-      for(cc=0;cc<total_tuples;++cc)
-        {
-          dx=x[tt]-x[cc]; dy=y[tt]-y[cc];
-          DISTANCE[tt][cc] = DISTANCE[cc][tt] = sqrt(dx*dx+dy*dy);
-        }
-    }
-
-  DBG("DISTANCE counted\n");
+  DBG("DISTANCE computed");
   pfree(points);
     
-  //ret = find_tsp_solution(total_tuples, DISTANCE, 
-  //   path, source, &fit, &err_msg);
-
   ret = find_tsp_solution(total_tuples, DISTANCE, ids, 
                           source, &fit, err_msg);
 
-  for(tt=0;tt<total_tuples;++tt)
-    {
-      ((path_element_t*)path)[tt].vertex_id = ids[tt];
-    }
+  if (ret < 0) {
+      elog(ERROR, "Error computing path: %s", err_msg);
+      return finish(SPIcode, ret);
+  }
+
+  for(tt=0; tt < total_tuples; tt++) {
+      ((path_element_t*)(*path))[tt].vertex_id = ids[tt];
+      ((path_element_t*)(*path))[tt].edge_id   = 0;
+      ((path_element_t*)(*path))[tt].cost      = 0;
+  }
     
-  DBG("TSP solved!\n");
-  DBG("Score: %f\n", fit);
+  DBG("TSP solved!");
+  DBG("Score: %f", fit);
 
   profstop("tsp", prof_tsp);
   profstart(prof_store);
 
   DBG("Profile changed and ret is %i", ret);
 
-  if (ret < 0)
-    {
+  if (ret < 0) {
       //elog(ERROR, "Error computing path: %s", err_msg);
       ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED), errmsg("Error computing path: %s", err_msg)));
-    } 
+  } 
 
   return finish(SPIcode, ret);    
 }
@@ -375,7 +390,7 @@ tsp(PG_FUNCTION_ARGS)
   int                  call_cntr;
   int                  max_calls;
   TupleDesc            tuple_desc;
-  path_element_t        *path;
+  path_element_t      *path;
     
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL())
@@ -395,16 +410,14 @@ tsp(PG_FUNCTION_ARGS)
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
         
 
-      path = (path_element_t *)palloc(sizeof(path_element_t)*MAX_TOWNS);
-
 
       ret = solve_tsp(text2char(PG_GETARG_TEXT_P(0)),
                       text2char(PG_GETARG_TEXT_P(1)),
                       PG_GETARG_INT32(2),
-                      path);
+                      &path);
 
       /* total number of tuples to be returned */
-      DBG("Counting tuples number\n");
+      DBG("Counting tuples number");
 
       funcctx->max_calls = total_tuples;
 
@@ -424,8 +437,8 @@ tsp(PG_FUNCTION_ARGS)
 
   path = (path_element_t *)funcctx->user_fctx;
 
-  DBG("Trying to allocate some memory\n");
-  DBG("call_cntr = %i, max_calls = %i\n", call_cntr, max_calls);
+  DBG("Trying to allocate some memory");
+  DBG("call_cntr = %i, max_calls = %i", call_cntr, max_calls);
 
   if (call_cntr < max_calls)    /* do when there is more left to send */
     {
@@ -434,8 +447,11 @@ tsp(PG_FUNCTION_ARGS)
       Datum *values;
       char* nulls;
 
-      /* This will work for some compilers. If it crashes with segfault, try to change the following block with this one    
+      /* This will work for some compilers. If it crashes with segfault,
+         try to change the following block with this _USE_4 defined */
 
+//#define _USE_4
+#ifdef _USE_4 
       values = palloc(4 * sizeof(Datum));
       nulls = palloc(4 * sizeof(char));
 
@@ -447,8 +463,7 @@ tsp(PG_FUNCTION_ARGS)
       nulls[2] = ' ';
       values[3] = Float8GetDatum(path[call_cntr].cost);
       nulls[3] = ' ';
-      */
-    
+#else
       values = palloc(3 * sizeof(Datum));
       nulls = palloc(3 * sizeof(char));
 
@@ -458,18 +473,19 @@ tsp(PG_FUNCTION_ARGS)
       nulls[1] = ' ';
       values[2] = Float8GetDatum(path[call_cntr].cost);
       nulls[2] = ' ';
-      
-      DBG("Heap making\n");
+#endif 
+
+      DBG("Heap making");
 
       tuple = heap_formtuple(tuple_desc, values, nulls);
 
-      DBG("Datum making\n");
+      DBG("Datum making");
 
       /* make the tuple into a datum */
       result = HeapTupleGetDatum(tuple);
 
-      DBG("VAL: %i\n, %i", values[0], result);
-      DBG("Trying to free some memory\n");
+      DBG("VAL: %i, %i", values[0], result);
+      DBG("Trying to free some memory");
     
       /* clean up (this is not really necessary) */
       pfree(values);
@@ -480,14 +496,10 @@ tsp(PG_FUNCTION_ARGS)
     }
   else    /* do when there is no more left */
     {
-      DBG("Ending function\n");
+      DBG("Ending function");
       profstop("store", prof_store);
       profstop("total", prof_total);
-      DBG("Profiles stopped\n");
-
-      pfree(path);
-
-      DBG("Path cleared\n");
+      DBG("Profiles stopped");
 
       SRF_RETURN_DONE(funcctx);
     }
