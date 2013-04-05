@@ -9,8 +9,8 @@ cmake_minimum_required(VERSION 2.8.8 FATAL_ERROR)
 project(PGROUTING)
 
 # Configure options
-option(WITH_TSP
-    "Set ON|OFF (default=OFF) to build TSP library" OFF)
+#option(WITH_TSP
+#    "Set ON|OFF (default=OFF) to build TSP library" OFF)
 
 option(WITH_DD
     "Set ON|OFF (default=OFF) to build Driving distance library" OFF)
@@ -203,15 +203,15 @@ if(APPLE)
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)
 
-IF(WITH_TSP)
-  find_package(GAUL)
-  if(NOT GAUL_FOUND)
-    message(FATAL_ERROR " Please check your gaul installation, or set correct path to GAUL_INCLUDE_DIR and GAUL_LIBRARIES.")
-  endif(NOT GAUL_FOUND)
-  include_directories(${INCLUDE_DIRECTORIES} ${GAUL_INCLUDE_DIR})
+#IF(WITH_TSP)
+#  find_package(GAUL)
+#  if(NOT GAUL_FOUND)
+#    message(FATAL_ERROR " Please check your gaul installation, or set correct path to GAUL_INCLUDE_DIR and GAUL_LIBRARIES.")
+#  endif(NOT GAUL_FOUND)
+#  include_directories(${INCLUDE_DIRECTORIES} ${GAUL_INCLUDE_DIR})
   add_subdirectory(src/tsp)
   list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
-endif(WITH_TSP)
+#endif(WITH_TSP)
 
 if(WITH_DD)
   find_package(CGAL)
@@ -230,7 +230,7 @@ endif(WITH_DD)
 file(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
 "-- pgRouting version '${PGROUTING_VERSION_STRING}' extension for postgresql\n")
 file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-"-- built WITH_TSP = ${WITH_TSP}, WITH_DD = ${WITH_DD}\n")
+"-- built WITH_DD = ${WITH_DD}\n")
 if(USE_PG_EXTENSION)
     file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
         "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")

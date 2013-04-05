@@ -4,7 +4,8 @@
 
 export PROJECTS=/c/ming${OS_BUILD}/projects
 export PG_VER=92
-alias cmake="/c/ming32/cmake-2.8.10.2-win32-x86/bin/cmake"
+#alias cmake="/c/ming32/cmake-2.8.10.2-win32-x86/bin/cmake"
+alias cmake='/c/ming32/projects/cmake-2.8.10.2-win32-x86/bin/cmake'
 
 export PATHOLD=$PATH
 echo $PATHOLD >c:/path.txt
@@ -29,6 +30,6 @@ cd pgrouting
 rm -rf build
 mkdir build
 cd build
-cmake -G "MSYS Makefiles" -DWITH_TSP=ON -DWITH_DD=ON ..
+cmake -G "MSYS Makefiles" -DWITH_DD=ON ..
 make && make install
 

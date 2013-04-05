@@ -29,6 +29,6 @@ cd pgrouting
 rm -rf build
 mkdir build
 cd build
-cmake -G "MSYS Makefiles" -DWITH_TSP=ON -DWITH_DD=ON ..
+cmake -G "MSYS Makefiles" -DWITH_DD=ON ..
 make && make install
 

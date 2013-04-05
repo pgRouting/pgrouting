@@ -2,6 +2,7 @@
  * Traveling Salesman Problem solution algorithm for PostgreSQL
  *
  * Copyright (c) 2006 Anton A. Patrushev, Orkney, Inc.
+ * Copyright (c) 2013 Stephen Woodbridge, iMaptools.com.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +21,9 @@
  */
  
 #define _TSP_H
-#define MAX_TOWNS 40
+
+// define the type of object for the distance matrix
+#define DTYPE float
 
 #include "postgres.h"
 #include "dijkstra.h" 
@@ -36,9 +39,7 @@ typedef struct point
 extern "C"
 {
 #endif
-  int find_tsp_solution(int num, float dist[MAX_TOWNS][MAX_TOWNS], 
-			int p_ids[MAX_TOWNS], int source, float* fit, 
-			char* err_msg);
+  int find_tsp_solution(int num, DTYPE *dist, int *p_ids, int source, DTYPE *fit, char* err_msg);
 #ifdef __cplusplus
 }
 #endif
