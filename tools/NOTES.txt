@@ -1,5 +1,19 @@
 Author: Stephen Woodbridge
-Date: 2013-03-09
+Date: 2013-03-30
+
+#--------------------------- TODO -----------------------------------
+
+[ ] Version the libraries so multiple versions can be installed
+    * apply a version number to the library files
+    * modify the sql to reference the versioned library
+
+[ ] rewrite driving distance to use postgis delaney triangles
+[ ] integrate my tsp solver
+[X] refactor tsp to use my solver
+[ ] add assign_vertex_id_3d
+[ ] refactor the sql api to be more consistent
+
+
 ----------------------------------------------------------
 This file contains various notes related to building pgRouting in
 MinGW/MSYS 32/64 bit environments.
@@ -121,5 +135,4 @@ way to do this.
 # you can regenerate trsp-test-image.png with the command
 shp2img -m trsp-test-image.map -o trsp-test-image.png -i agg_qn
 
-
-
+#--------------------------------------------------------------------
