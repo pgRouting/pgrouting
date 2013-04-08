@@ -30,9 +30,11 @@
 Takes a list of points and returns a list of segments 
 corresponding to the Alpha shape.
 ************************************************************************/
-#ifdef __MINGW64__
+#ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
+#endif
+#ifdef __MINGW64__
 namespace boost {
   void tss_cleanup_implemented() { }
 }
