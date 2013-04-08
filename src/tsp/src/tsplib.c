@@ -54,10 +54,10 @@
 * that was placed in the public domain.
 *************************************************************************/
 
-#ifdef __MINGW64__
-#define ELOG_H
-#include <winsock2.h>
-#endif
+//#ifdef __MINGW64__
+//#define ELOG_H
+//#include <winsock2.h>
+//#endif
 #include <postgres.h>
 #include <string.h>    /* memcpy */
 #include <math.h>      /* exp    */
