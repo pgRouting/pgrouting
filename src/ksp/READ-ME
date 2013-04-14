@@ -1,0 +1,100 @@
+Test machine ubuntoo 12-04
+install postgres 9.1
+install postgis 2.0
+install liboost-ranom 1.48
+
+built on box   CGAL-4.1
+gaul 0.1850
+
+
+Install
+ cmake -DWITH_TSP=ON -DWITH_DD=ON -DWITH_KSP=ON DebugFull . 
+ make install
+ psql -d data-base -f /usr/share/postlbs/routing_ksp.sql
+ psql -d data-base -f /usr/share/postlbs/routing_ksp_wrappers.sql
+
+Note the first time its used its will complain about a missing type, this error can be ignored
+(Text is off the form 
+
+psql:/usr/share/postlbs/routing_ksp_wrappers.sql:25: ERROR:  function ksp_sp(character varying, character varying, integer, integer, integer, boolean) does not exist
+psql:/usr/share/postlbs/routing_ksp_wrappers.sql:26: ERROR:  type "ksp_geoms" does not exist
+)
+
+Where data-base is a spatial database of your choice
+
+KSP code base taken from 
+http://code.google.com/p/k-shortest-paths/source
+
+Checkout is svn checkout http://k-shortest-paths.googlecode.com/svn/trunk/ k-shortest-paths-read-only
+
+Set directory test for an example of use
+
+
+Setup the code expects to find a table that defines a serries on vertexs and nodes
+
+The format is 
+
+create table network (
+        gid serial NOT NULL,
+        source integer NOT NULL,
+        target integer NOT NULL,
+        cost float,
+        reverse_cost float
+	the_geom
+);
+
+
+The table can be called anything, must includes the fields gid,source,target,cost and reverse_cost, an example is provided in the test 
+directory.
+
+Where 
+	gid  is a unquie value
+        source is source vertext
+	target is target vertext
+	cost is the 'cost' of getting from source to target
+	reverse_cost is the 'cost' of getting back from source to target
+	the_geom a MULTIlINESTRING geometry that describes the route between source and target, it may be null
+
+Is only used if asked for get generating the routes
+
+The code is invoked as 
+
+	 ksp_sp(sql string,name of table ',start,end,number of routes ,include the reverse cost)
+eg
+	 ksp_sp('select source,target,cost,reverse_cost,gid from network','network',4,5,15,'f')
+
+Where sql string              must provide the source,target,cost,reverse_cost and gid from the data table
+      name of table           the name of the table to be used.
+      start                   the starting node.
+      end                     the ending node.
+      number of routes        the number of routes to generate.
+      include reverse cost    include the reverse cost values when generating results.
+
+The returns values is a list of link segments  that describes the given route, in the format 
+
+      id, 
+      route_id
+      edge_id,
+      the_geom
+
+id         refers to the current result set
+edge_id    refers to the gid in the supply table
+route_id   refers to the current route
+the_geom   refers to the geometry in the supply table
+
+eg.
+
+ id | edge_id | route_id |                                                   the_geom                                                   
+----+---------+----------+--------------------------------------------------------------------------------------------------------------
+  0 |      15 |        0 | 0105000020110F0000010000000102000000020000000000000000001040000000000000104000000000000010400000000000001840
+  1 |      13 |        1 | 0105000020110F0000010000000102000000020000000000000000001040000000000000104000000000000008400000000000000840
+  2 |      10 |        1 | 0105000020110F0000010000000102000000020000000000000000000840000000000000084000000000000000000000000000000000
+  3 |       2 |        1 | 0105000020110F0000010000000102000000020000000000000000000000000000000000000000000000000000400000000000000040
+  4 |       9 |        1 | 0105000020110F0000010000000102000000020000000000000000000040000000000000004000000000000010400000000000001840
+  5 |      13 |        2 | 0105000020110F0000010000000102000000020000000000000000001040000000000000104000000000000008400000000000000840
+  6 |      10 |        2 | 0105000020110F0000010000000102000000020000000000000000000840000000000000084000000000000000000000000000000000
+  7 |       1 |        2 | 0105000020110F00000100000001020000000200000000000000000000000000000000000000000000000000F03F000000000000F03F
+  8 |       5 |        2 | 0105000020110F000001000000010200000002000000000000000000F03F000000000000F03F00000000000000400000000000000040
+  9 |       9 |        2 | 0105000020110F0000010000000102000000020000000000000000000040000000000000004000000000000010400000000000001840
+
+This set of results descrbes 3 results  0 of one hop, 1 of 4 hops, 2 of 5 hops
