@@ -141,7 +141,7 @@ add_subdirectory(doc)
 set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/astar/src
     ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
-    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
+#    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
     ${PGROUTING_SOURCE_DIR}/src/tsp/src
     ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
     ${PGROUTING_SOURCE_DIR}/src/trsp/src
@@ -171,9 +171,7 @@ endif(UNIX)
 set(PACKAGE_SQL_FILES "")
 set(L_PACKAGE_SQL_FILES "")
 
-# Recurse into the subdirectories.  This does not actually
-# cause another cmake executable to run.  The same process will walk through
-# the project's entire directory structure.
+# Recurse into the subdirectories.
 add_subdirectory(src)
 list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 
@@ -191,7 +189,7 @@ add_library(routing
     ${LIBRARY_MODE_TARGET}
     $<TARGET_OBJECTS:astar>
     $<TARGET_OBJECTS:dijkstra>
-    $<TARGET_OBJECTS:shooting_star>
+#    $<TARGET_OBJECTS:shooting_star>
     $<TARGET_OBJECTS:trsp>
     )
 
@@ -203,18 +201,12 @@ if(APPLE)
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)
 
-#IF(WITH_TSP)
-#  find_package(GAUL)
-#  if(NOT GAUL_FOUND)
-#    message(FATAL_ERROR " Please check your gaul installation, or set correct path to GAUL_INCLUDE_DIR and GAUL_LIBRARIES.")
-#  endif(NOT GAUL_FOUND)
-  include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
-  if(WIN32)
-    include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
-  endif(WIN32)
-  add_subdirectory(src/tsp)
-  list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
-#endif(WITH_TSP)
+#include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
+#if(WIN32)
+#    include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
+#endif(WIN32)
+#add_subdirectory(src/tsp)
+#list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 
 if(WITH_DD)
   find_package(CGAL)

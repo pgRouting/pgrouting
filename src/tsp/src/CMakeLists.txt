@@ -1,9 +1,16 @@
-SET(LIBRARY_OUTPUT_PATH ../../../lib/)
-# LINK_LIBRARIES(${GAUL_LIBRARIES} ${GAUL_UTIL_LIBRARIES})
-# ADD_LIBRARY(routing_tsp SHARED tsp.c tsp.h tsp_solver.cpp)
-message("PGROUTING_INCLUDE_DIRECTORIES: ${PGROUTING_INCLUDE_DIRECTORIES}")
-message("INCLUDE_DIRECTORIES: ${INCLUDE_DIRECTORIES}")
-ADD_LIBRARY(routing_tsp SHARED tsp.c tsp.h tsplib.c)
-MESSAGE("Installation directory for libraries is set to ${LIBRARY_INSTALL_PATH}")
-INSTALL(TARGETS routing_tsp DESTINATION ${LIBRARY_INSTALL_PATH})
+set(LIBRARY_OUTPUT_PATH ../../../lib/)
 
+include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR})
+if(WIN32)
+    include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
+endif(WIN32)
+
+add_library(routing_tsp SHARED tsp.c tsp.h tsplib.c)
+
+if(APPLE)
+    set_target_properties(routing
+        PROPERTIES
+        LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
+endif(APPLE)
+
+install(TARGETS routing_tsp DESTINATION ${LIBRARY_INSTALL_PATH})
