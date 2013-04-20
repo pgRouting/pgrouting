@@ -130,7 +130,7 @@ sub createTestDB {
         mysystem("createdb -U $DBUSER -h $DBHOST $DBNAME");
         die "ERROR: Failed to create database '$DBNAME'!\n"
             unless dbExists($DBNAME);
-        mysystem("$psql -U $DBUSER -h $DBHOST -c 'create extension plpgsql' $DBNAME");
+        #mysystem("$psql -U $DBUSER -h $DBHOST -c 'create extension plpgsql' $DBNAME");
         mysystem("$psql -U $DBUSER -h $DBHOST -c 'create extension postgis' $DBNAME");
         mysystem("$psql -U $DBUSER -h $DBHOST -c 'create extension pgrouting' $DBNAME");
     }

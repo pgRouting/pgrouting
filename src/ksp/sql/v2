@@ -1,2 +1,0 @@
-select *  from ksp_sp('select source,target,to_cost as cost,gid as id , reverse_cost from route_table ',10,12,3,'t');
-
