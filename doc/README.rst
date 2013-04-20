@@ -44,7 +44,7 @@ core/driving_distance/
     This optional package requires CGAL libraries to be installed.
 
 core/shooting_star/
-    *DEPRECATED and DOES NOT WORK*
+    *DEPRECATED and DOES NOT WORK and IS BEING REMOVED*
     This is an edge based shortest path algorithm that supports turn
     restrictions. It is based on Boost Graph.
     Do *NOT* use this algorithm as it is broken, instead use *trsp*

@@ -31,7 +31,7 @@ Reference:
 	../src/dijkstra/doc/index
 	../src/astar/doc/index
 	../src/trsp/doc/index
-	../src/shooting_star/doc/index
+	../src/ksp/doc/index
 	../src/tsp/doc/index
 	../src/driving_distance/doc/index
 	   

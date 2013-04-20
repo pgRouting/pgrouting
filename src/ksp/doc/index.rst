@@ -5,9 +5,9 @@
 ================================================================
 
 KSP code base taken from 
-http://code.google.com/p/k-shortest-paths/source
+`HERE <http://code.google.com/p/k-shortest-paths/source>`_.
 
-Checkout is svn checkout http://k-shortest-paths.googlecode.com/svn/trunk/ k-shortest-paths-read-only
+Checkout is `svn checkout http://k-shortest-paths.googlecode.com/svn/trunk/ k-shortest-paths-read-only`.
 
 Setup the code expects to find a table that defines a serries on vertexs
 and nodes with the following format:
@@ -71,7 +71,7 @@ for each computed route, in the following format:
 
 For example:
 
-.. code-block::
+.. code-block:: text
 
      id | edge_id | route_id |                                                   the_geom                                                   
     ----+---------+----------+--------------------------------------------------------------------------------------------------------------
