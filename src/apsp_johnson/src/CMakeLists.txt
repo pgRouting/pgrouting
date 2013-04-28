@@ -1,13 +1,6 @@
-#SET(LIBRARY_OUTPUT_PATH ../../../lib/)
-#IF(APPLE)
-#    SET(LIBRARY_MODE_TARGET "MODULE")
-#ELSE(APPLE)
-#    SET(LIBRARY_MODE_TARGET "SHARED")
-#ENDIF(APPLE)
-#ADD_LIBRARY(routing ${LIBRARY_MODE_TARGET} dijkstra.c boost_wrapper.cpp)
-#INSTALL(TARGETS routing DESTINATION ${LIBRARY_INSTALL_PATH})
-#IF(APPLE)
-#    SET_TARGET_PROPERTIES(routing PROPERTIES LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
-#ENDIF(APPLE)
+# FIXME: The following patch is required by apsp_johnson_boost_wrapper.cpp.
+# With -fdelete-null-pointer-checks optimization, the assignments
+# to Edge bundled properties doesn't occur.
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-delete-null-pointer-checks")
 
 ADD_LIBRARY(apsp_johnson OBJECT apsp_johnson.c apsp_johnson_boost_wrapper.cpp)
