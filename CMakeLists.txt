@@ -142,6 +142,7 @@ set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/astar/src
     ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
     ${PGROUTING_SOURCE_DIR}/src/apsp_johnson/src
+    ${PGROUTING_SOURCE_DIR}/src/apsp_warshall/src
 #    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
     ${PGROUTING_SOURCE_DIR}/src/tsp/src
     ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
@@ -191,6 +192,7 @@ add_library(routing
     $<TARGET_OBJECTS:astar>
     $<TARGET_OBJECTS:dijkstra>
     $<TARGET_OBJECTS:apsp_johnson>
+    $<TARGET_OBJECTS:apsp_warshall>
 #    $<TARGET_OBJECTS:shooting_star>
     $<TARGET_OBJECTS:trsp>
     )
