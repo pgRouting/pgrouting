@@ -1,21 +1,11 @@
 /*
- * Shortest path algorithm for PostgreSQL
+ * All pairs shortest path - Warshall's algorithm
  *
- * Copyright (c) 2005 Sylvain Pasche
+ * Copyright (c) 2011 Jay Mahadeokar
  *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * This code was integrated into the pgRoutimg tree 2012 by
+ * Stephen Woodbridge from:
+ * https://github.com/jay-mahadeokar/pgrouting
  *
  */
 
@@ -32,10 +22,10 @@
 
 //using namespace std;
 
-Datum all_pairs_shortest_path(PG_FUNCTION_ARGS);
+Datum apsp_warshall(PG_FUNCTION_ARGS);
 
-//#undef DEBUG
-#define DEBUG 1
+#undef DEBUG
+//#define DEBUG 1
 
 #ifdef DEBUG
 #define DBG(format, arg...)                     \
@@ -180,7 +170,7 @@ fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
 
 
 
-static int compute_all_pairs_shortest_path(char* sql, bool directed, 
+static int compute_apsp_warshall(char* sql, bool directed, 
                                  bool has_reverse_cost, 
                                  apsp_element_t **pair, int *pair_count) 
 {
@@ -206,25 +196,25 @@ static int compute_all_pairs_shortest_path(char* sql, bool directed,
 
 //  set<int> vertices;
   
-  DBG("start all_pairs_shortest_path\n");
+  DBG("start compute_apsp_warshall\n");
         
   SPIcode = SPI_connect();
   if (SPIcode  != SPI_OK_CONNECT)
     {
-      elog(ERROR, "all_pairs_shortest_path: couldn't open a connection to SPI");
+      elog(ERROR, "compute_apsp_warshall: couldn't open a connection to SPI");
       return -1;
     }
 
   SPIplan = SPI_prepare(sql, 0, NULL);
   if (SPIplan  == NULL)
     {
-      elog(ERROR, "all_pairs_shortest_path: couldn't create query plan via SPI");
+      elog(ERROR, "compute_apsp_warshall: couldn't create query plan via SPI");
       return -1;
     }
 
   if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) 
     {
-      elog(ERROR, "all_pairs_shortest_path: SPI_cursor_open('%s') returns NULL", sql);
+      elog(ERROR, "compute_apsp_warshall: SPI_cursor_open('%s') returns NULL", sql);
       return -1;
     }
 
@@ -327,9 +317,9 @@ static int compute_all_pairs_shortest_path(char* sql, bool directed,
 }
 
 
-PG_FUNCTION_INFO_V1(all_pairs_shortest_path);
+PG_FUNCTION_INFO_V1(apsp_warshall);
 Datum
-all_pairs_shortest_path(PG_FUNCTION_ARGS)
+apsp_warshall(PG_FUNCTION_ARGS)
 {
   FuncCallContext     *funcctx;
   int                  call_cntr;
@@ -351,7 +341,7 @@ all_pairs_shortest_path(PG_FUNCTION_ARGS)
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-      ret = compute_all_pairs_shortest_path(text2char(PG_GETARG_TEXT_P(0)),
+      ret = compute_apsp_warshall(text2char(PG_GETARG_TEXT_P(0)),
                                   PG_GETARG_BOOL(1),
                                   PG_GETARG_BOOL(2), &pair, &pair_count);                  
 #ifdef DEBUG
@@ -361,9 +351,7 @@ all_pairs_shortest_path(PG_FUNCTION_ARGS)
           int i;
           for (i = 0; i < pair_count; i++) 
             {
-              DBG("Step %i src_vertex_id  %i ", i, pair[i].src_vertex_id);
-              DBG("        dest_vertex_id    %i ", pair[i].dest_vertex_id);
-              DBG("        cost       %f ", pair[i].cost);
+              DBG("Step: %i, source_id: %i, target_id: %i, cost: %f ", i, pair[i].src_vertex_id, pair[i].dest_vertex_id, pair[i].cost);
             }
         }
 #endif
@@ -373,7 +361,7 @@ all_pairs_shortest_path(PG_FUNCTION_ARGS)
       funcctx->user_fctx = pair;
 
       funcctx->tuple_desc = 
-        BlessTupleDesc(RelationNameGetTupleDesc("apsp_result"));
+        BlessTupleDesc(RelationNameGetTupleDesc("apsp_edge"));
 
       MemoryContextSwitchTo(oldcontext);
     }

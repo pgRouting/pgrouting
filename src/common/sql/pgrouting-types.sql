@@ -18,6 +18,7 @@
 --
 
 
+DROP TYPE IF EXISTS path_result CASCADE;
 CREATE TYPE path_result AS
 (
     vertex_id integer,
@@ -25,15 +26,26 @@ CREATE TYPE path_result AS
     cost float8
 );
 
+DROP TYPE IF EXISTS vertex_result CASCADE;
 CREATE TYPE vertex_result AS
 (
     x float8,
     y float8
 );
 
+DROP TYPE IF EXISTS geoms CASCADE;
 CREATE TYPE geoms AS
 (
     id integer,
     gid integer,
     the_geom geometry
 );
+
+DROP TYPE IF EXISTS apsp_edge CASCADE;
+CREATE TYPE apsp_edge AS
+(
+    source_id integer,
+    target_id integer,
+    cost float8
+);
+
