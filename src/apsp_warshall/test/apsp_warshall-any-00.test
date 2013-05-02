@@ -1,0 +1,1 @@
+select source_id, target_id, round(cost::numeric, 2) as cost from apsp_warshall('select source, target, cost from apspw');
