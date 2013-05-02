@@ -35,6 +35,9 @@
 using namespace std;
 using namespace boost;
 
+// FIXME: this algorithm needs to be converted to work with
+//        float8 weights and not integers
+
 /*
 //	FIXME: use this to avoid heap allocation ?
 
@@ -181,10 +184,16 @@ boost_apsp(edge_t *edges, unsigned int edge_count, const int node_cnt,   //TODO 
 	    {
 		//(*pair)[*pair_count].src_vertex_id = *vi1;
 		//(*pair)[*pair_count].dest_vertex_id = *vi2;
+
+        // *SEW* added the follow if to skip over these values
+        if (D[i][j] == 2147483647) continue;
 		
 		(*pair)[*pair_count].src_vertex_id = echo_map.find(*vi1)->second;
 		(*pair)[*pair_count].dest_vertex_id = echo_map.find(*vi2)->second;
-		(*pair)[*pair_count].cost = D[i][j];
+
+        // *SEW* added the cast and division to offset scale up
+        //       done above.
+		(*pair)[*pair_count].cost = (float8) D[i][j] / 100000000.0;
 		(*pair_count)++;
 		//cout<<" "<<(*pair_count);
 	    }

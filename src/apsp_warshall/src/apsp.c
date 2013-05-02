@@ -69,8 +69,8 @@ typedef struct edge_columns
   int id;
   int source;
   int target;
-  int cost;
-  int reverse_cost;
+  float8 cost;
+  float8 reverse_cost;
 } edge_columns_t;
 
 
