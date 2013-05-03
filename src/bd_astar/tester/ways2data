@@ -1,0 +1,37 @@
+#!/usr/bin/perl -w
+use strict;
+
+sub Usage {
+    die "Usage: ways2data tab ways.txt\n";
+}
+
+my $tab   = shift @ARGV || Usage();
+my $wfile = shift @ARGV || Usage();
+
+open(IN, $wfile) || die "Failed to open '$wfile' for read : $!\n";
+
+print <<EOF;
+
+drop table if exists $tab cascade;
+create table $tab (
+    id integer not null primary key,
+    source integer,
+    target integer,
+    cost float8,
+    reverse_cost float8,
+    s_x float8,
+    s_y float8,
+    t_x float8,
+    t_y float8
+);
+
+copy table $tab (id, source, target, cost, reverse_cost, s_x, s_y, t_x, t_y) from stdin;
+EOF
+
+while (my $x = <IN>) {
+    $x =~ s/,/\t/g;
+    print $x;
+}
+print "\\.\n";
+
+close(IN);

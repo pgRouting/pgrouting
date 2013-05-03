@@ -191,6 +191,8 @@ add_library(routing
     ${LIBRARY_MODE_TARGET}
     $<TARGET_OBJECTS:astar>
     $<TARGET_OBJECTS:dijkstra>
+    $<TARGET_OBJECTS:bd_astar>
+    $<TARGET_OBJECTS:bd_dijkstra>
     $<TARGET_OBJECTS:apsp_johnson>
     $<TARGET_OBJECTS:apsp_warshall>
 #    $<TARGET_OBJECTS:shooting_star>
