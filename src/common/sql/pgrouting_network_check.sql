@@ -53,11 +53,19 @@ BEGIN
 		END;
 	END LOOP;
 
+	-- Create indices
+	RAISE NOTICE 'Create indices';
+	CREATE INDEX vertices_temp_source_idx ON vertices_temp USING btree (source);
+	CREATE INDEX vertices_temp_target_idx ON vertices_temp USING btree (target);
+	CREATE INDEX vertices_temp_geom_idx ON vertices_temp USING gist (geom);
+	CREATE INDEX vertices_temp_checkit_idx ON vertices_temp USING btree (checkit);
+
 	-- Analyze graph for gaps and zlev errors
 	RAISE NOTICE 'Analyze graph for gaps and zlev errors';
 	FOR pnt IN EXECUTE 'SELECT * FROM vertices_temp 
 				WHERE (source + target) = 1 ORDER BY vertex'
 	LOOP
+		-- TODO: Better to filter with tolerance BBOX?
 		FOR seg IN EXECUTE 'SELECT * FROM (' || sql || ') a WHERE ST_DWithin(a.geom,$1,$2)'
 				USING pnt.geom, tolerance
 		LOOP
