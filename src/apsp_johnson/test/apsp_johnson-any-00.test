@@ -1,0 +1,1 @@
+select source_id, target_id, round(cost::numeric, 2) as cost from pgr_apsp_johnson('select source, target, cost from apspj');

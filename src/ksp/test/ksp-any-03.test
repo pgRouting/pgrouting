@@ -1,0 +1,8 @@
+select *
+  from ksp_sp(
+    'select source, target, cost, gid, reverse_cost from network',
+    'network',
+    10,
+    12,
+    3,
+    't');
