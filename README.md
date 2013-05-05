@@ -34,7 +34,7 @@ For MinGW on Windows
 
     mkdir build
     cd build
-	cmake -G"MSYS Makefiles" -DWITH_TSP=ON -DWITH_DD=ON ..
+	cmake -G"MSYS Makefiles" -DWITH_DD=ON ..
 	make
 	make install
 
@@ -42,13 +42,16 @@ For Linux
 	
     mkdir build
     cd build
-	cmake -DWITH_TSP=ON -DWITH_DD=ON ..
+	cmake -DWITH_DD=ON ..
 	make
 	sudo make install
 
-Build with documentation (requires Sphinx)
+Build with documentation (requires Sphinx and Cloud Sphinx Theme)
 
-	cmake -DWITH_DOC=ON -DWITH_TSP=ON -DWITH_DD=ON ..
+* Sphinx: http://sphinx-doc.org/
+* Cloud Sphinx Theme: http://pythonhosted.org/cloud_sptheme/
+
+	cmake -DWITH_DOC=ON -DWITH_DD=ON ..
 
 Postgresql 9.1+
 
@@ -76,8 +79,8 @@ See online documentation:
 http://www.pgrouting.org/docs/1.x/index.html
 
 
-## LICENCE
+## LICENSE
 
-Most features are available under GPL.
+Most features are available under GPLv2.
 Some Boost extensions are available under Boost license (see LICENSE_1_0.txt)
 Some code contributed by iMaptools.com is available under MIT-X license.
