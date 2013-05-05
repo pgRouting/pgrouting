@@ -208,6 +208,9 @@ sub mysystem {
 }
 
 sub want_tests {
+    /^bd_.*\z/s &&
+    ($File::Find::prune = 1)
+    ||
     /^test\.conf\z/s &&
     push @cfgs, $name;
 }
