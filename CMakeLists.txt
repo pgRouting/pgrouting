@@ -187,6 +187,14 @@ else(APPLE)
     set(LIBRARY_MODE_TARGET "SHARED")
 endif(APPLE)
 
+add_library(routing_bd
+    ${LIBRARY_MODE_TARGET}
+    $<TARGET_OBJECTS:bd_astar>
+    $<TARGET_OBJECTS:bd_dijkstra>
+    )
+
+install(TARGETS routing_bd DESTINATION ${LIBRARY_INSTALL_PATH})
+
 add_library(routing
     ${LIBRARY_MODE_TARGET}
     $<TARGET_OBJECTS:astar>
@@ -201,6 +209,9 @@ install(TARGETS routing DESTINATION ${LIBRARY_INSTALL_PATH})
 
 if(APPLE)
     set_target_properties(routing
+        PROPERTIES
+        LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
+    set_target_properties(routing_bd
         PROPERTIES
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)

@@ -1,0 +1,2 @@
+all:
+	g++ BDATester.cpp BiDirAStar.cpp MinHeap.cpp -o BDATester
