@@ -34,17 +34,17 @@ Returns a set of :ref:`geoms <type_geoms>` (id, gid, the_geom) rows, that make u
 
 .. code-block:: sql
 
-	geoms[] PGR_Astar(varchar geom_column, integer source, integer target);
+	geoms[] PGR_Astar(varchar table_name, integer source, integer target);
 
-	geoms[] PGR_Astar(varchar geom_column, integer source, integer target, double precision delta);
+	geoms[] PGR_Astar(varchar table_name, integer source, integer target, double precision delta);
 
-	geoms[] PGR_Astar(varchar geom_column, integer source, integer target, double precision delta, boolean directed, boolean reverse_cost);
+	geoms[] PGR_Astar(varchar table_name, integer source, integer target, double precision delta, boolean directed, boolean reverse_cost);
 
-	geoms[] PGR_Astar(varchar geom_column, integer source, integer target, double precision delta, varchar cost_column);
+	geoms[] PGR_Astar(varchar table_name, integer source, integer target, double precision delta, varchar cost_column);
 
-	geoms[] PGR_Astar(varchar geom_column, integer source, integer target, double precision delta, varchar cost_column, boolean directed, boolean reverse_cost);
+	geoms[] PGR_Astar(varchar table_name, integer source, integer target, double precision delta, varchar cost_column, boolean directed, boolean reverse_cost);
 
-	geoms[] PGR_Astar(varchar geom_column, integer source, integer target, boolean directed, boolean reverse_cost);
+	geoms[] PGR_Astar(varchar table_name, integer source, integer target, boolean directed, boolean reverse_cost);
 
 
 Description

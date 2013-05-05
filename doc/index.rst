@@ -60,7 +60,12 @@ Reference
 	../src/trsp/doc/index
 	../src/ksp/doc/index
 	../src/tsp/doc/index
-	../src/driving_distance/doc/index
+
+.. toctree::
+	:maxdepth: 1
+
+	../src/driving_distance/doc/core
+	../src/driving_distance/doc/wrappers
 
 
 *******************************************************************************

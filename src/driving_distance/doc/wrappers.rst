@@ -7,22 +7,20 @@
     License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_dijkstra_wrappers:
+.. _pgr_driving_distance_wrappers:
 
-PGR_Dijkstra (Wrappers) — Shortest Path Dijkstra
+PGR_DrivingDistance (Wrappers) — Driving Distance
 ===============================================================================
 
 .. index:: 
-	single: PGR_Dijkstra(varchar,integer,integer)
-	single: PGR_Dijkstra(varchar,integer,integer,double precision)
-	single: PGR_Dijkstra(varchar,integer,integer,double precision,boolean,boolean)
-	single: PGR_Dijkstra(varchar,integer,integer,boolean,boolean)
-	module: dijkstra
+	single: PGR_DrivingDistance(varchar,integer,double precision,double precision,boolean,boolean)
+	single: PGR_DrivingDistance(varchar,double precision,double precision,double precision,varchar,varchar,boolean,boolean)
+	module: driving_distance
 
 Name
 -------------------------------------------------------------------------------
 
-``PGR_Dijkstra`` — Returns the shortest path using Dijkstra algorithm.
+``PGR_DrivingDistance`` — Returns the driving distance from a start node.
 
 
 Synopsis
@@ -32,13 +30,9 @@ Returns a set of :ref:`geoms <type_geoms>` (id, gid, the_geom) rows, that make u
 
 .. code-block:: sql
 
-	geoms[] PGR_Dijkstra(varchar table_name, integer source, integer target);
+	geoms[] PGR_DrivingDistance(varchar table_name, integer source, double precision distance, double precision delta, boolean directed, boolean reverse_cost);
 
-	geoms[] PGR_Dijkstra(varchar table_name, integer source, integer target, double precision delta);
-
-	geoms[] PGR_Dijkstra(varchar table_name, integer source, integer target, double precision delta, boolean directed, boolean reverse_cost);
-
-	geoms[] PGR_Dijkstra(varchar table_name, integer source, integer target, boolean directed, boolean reverse_cost);
+	geoms[] PGR_DrivingDistance(varchar table_name, double precision x, double precision y, double precision distance, varchar cost_column, varchar reverse_cost_column, boolean directed, boolean reverse_cost);
 
 
 Description
@@ -58,6 +52,6 @@ Examples
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_dijkstra_core`
+* :ref:`pgr_driving_distance_core`
 * :ref:`type_geoms`
 
