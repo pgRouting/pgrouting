@@ -6,7 +6,7 @@
 # Daniel Kastl 03/2013
 #
 
-#set(SPHINX_THEME "pgrouting")
+set(SPHINX_THEME "cloud")
 #set(SPHINX_THEME_DIR "_themes")
 
 if(WITH_DOC)

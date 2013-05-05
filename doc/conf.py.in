@@ -12,6 +12,7 @@
 # serve to show the default.
 
 import sys, os
+import cloud_sptheme as csp
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -78,7 +79,7 @@ exclude_patterns = ['doc/build']
 
 # If true, sectionauthor and moduleauthor directives will be shown in the
 # output. They are ignored by default.
-#show_authors = False
+show_authors = False
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -99,7 +100,7 @@ html_theme = '@SPHINX_THEME@'
 #html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = ['@SPHINX_THEME_DIR@']
+html_theme_path = [csp.get_theme_dir(),'@SPHINX_THEME_DIR@']
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
