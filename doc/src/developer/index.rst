@@ -1,18 +1,27 @@
-=======================================
-pgRouting Developer's Documention Guide
-=======================================
-:Author: Stephen Woodbridge <woodbri@swoodbridge.com>
-:Date: $Date: 2013-03-17 10:07:00 -0500 (Sun, 17 Mar 2013) $
-:Revision: $Revision: 0000 $
-:Description: A guide to documention for developers of pgRouting
+.. 
+   ****************************************************************************
+    pgRouting Manual
+    Copyright(c) pgRouting Contributors
 
-+-----------------------------------------------------------------------+
-| *NOTE* All documentation should be in reStructuredText format.        |
-| See: <http://docutils.sf.net/rst.html> for introductory docs.         |
-+-----------------------------------------------------------------------+
+    This work is licensed under a Creative Commons Attribution-Share Alike 3.0 
+    License: http://creativecommons.org/licenses/by-sa/3.0/
+   ****************************************************************************
+
+.. sectionauthor:: Stephen Woodbridge <woodbri@swoodbridge.com>
+.. sectionauthor:: Daniel Kastl <daniel@georepublic.de>
+
+.. _developer:
+
+*******************************************************************************
+Developer's Documention Guide
+*******************************************************************************
+
+.. NOTE:: 
+	All documentation should be in reStructuredText format.
+	See: <http://docutils.sf.net/rst.html> for introductory docs.
 
 Source Tree Layout
-==================
+===============================================================================
 
 cmake/
     cmake scripts used as part of our build system.
@@ -68,8 +77,9 @@ lib/
     This is the output directory where compiled libraries and installation
     targets are staged before installation.
 
+
 Documentation Layout
-====================
+===============================================================================
 
 *As noted above all documentation should be done using reStructuredText
 formated files.*
@@ -96,7 +106,7 @@ in that directory.
 
 
 Testing Infrastructure
-======================
+===============================================================================
 
 There is a very basic testing infrastructure put in place. Here are the
 basics of how it works. We need more test cases. Longer term we should
@@ -105,7 +115,7 @@ probably get someone to setup travis-ci or jenkins testing frameworks.
 Currently all the tests work off a simple graph that was built for
 testing trsp functionality.
 
-.. image:: static/images/trsp-test-image.png
+.. image:: images/trsp-test-image.png
 
 Tests are run via the script at the top level test-runner.pl and it runs
 all the test configured tests and at the moment just dumps the results
@@ -134,4 +144,8 @@ run as:
     diff -w file.rest tmpfile 
 
 Then if there is a difference then an test failure is reported.
+
+
+
+
 
