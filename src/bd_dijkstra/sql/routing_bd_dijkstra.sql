@@ -12,6 +12,6 @@ CREATE OR REPLACE FUNCTION pgr_bd_dijkstra(
         directed boolean, 
         has_reverse_cost boolean)
         RETURNS SETOF path_result
-        AS '$libdir/librouting_bdsp', 'bidir_dijkstra_shortest_path'
+        AS '$libdir/librouting_bd', 'bidir_dijkstra_shortest_path'
         LANGUAGE 'c' IMMUTABLE STRICT;
 

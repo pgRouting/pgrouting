@@ -1,0 +1,1 @@
+select (r).vertex_id, (r).edge_id, round((r).cost, 6) from ( select pgr_bd_astar('select * from bdaways'::text, 3606, 9426, true, true) as r ) as foo;

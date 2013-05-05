@@ -12,6 +12,6 @@ CREATE OR REPLACE FUNCTION pgr_bd_astar(
         directed boolean, 
         has_reverse_cost boolean)
         RETURNS SETOF path_result
-        AS '$libdir/librouting_bdastar', 'bidir_astar_shortest_path'
-        LANGUAGE 'C' IMMUTABLE STRICT;
+        AS '$libdir/librouting_bd', 'bidir_astar_shortest_path'
+        LANGUAGE 'c' IMMUTABLE STRICT;
 

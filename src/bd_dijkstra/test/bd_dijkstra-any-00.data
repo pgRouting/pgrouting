@@ -8,7 +8,7 @@ create table bdd_ways (
     reverse_cost float8
 );
 
-copy table bdd_ways (id, source, target, cost, reverse_cost) from stdin;
+copy bdd_ways (id, source, target, cost, reverse_cost) from stdin;
 18129	10271	10265	0.407629542119694	0.407629542119694
 14822	9426	3606	0.0603186413824967	0.0603186413824967
 16176	5812	7719	0.198519002375015	0.198519002375015
