@@ -7,21 +7,17 @@
     License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. sectionauthor:: Stephen Woodbridge <woodbri@swoodbridge.com>
-.. sectionauthor:: Daniel Kastl <daniel@georepublic.de>
-
 .. _developer:
 
-*******************************************************************************
 Developer's Documention Guide
-*******************************************************************************
+===============================================================================
 
-.. NOTE:: 
+.. note:: 
 	All documentation should be in reStructuredText format.
 	See: <http://docutils.sf.net/rst.html> for introductory docs.
 
 Source Tree Layout
-===============================================================================
+-------------------------------------------------------------------------------
 
 cmake/
     cmake scripts used as part of our build system.
@@ -79,7 +75,7 @@ lib/
 
 
 Documentation Layout
-===============================================================================
+-------------------------------------------------------------------------------
 
 *As noted above all documentation should be done using reStructuredText
 formated files.*
@@ -106,7 +102,7 @@ in that directory.
 
 
 Testing Infrastructure
-===============================================================================
+-------------------------------------------------------------------------------
 
 There is a very basic testing infrastructure put in place. Here are the
 basics of how it works. We need more test cases. Longer term we should
