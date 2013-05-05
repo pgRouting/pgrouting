@@ -27,7 +27,7 @@ General
 *******************************************************************************
 
 .. toctree::
-	:maxdepth: 1
+	:maxdepth: 2
 
 	src/introduction/index
 	src/installation/index
@@ -59,7 +59,12 @@ Reference
 
 	../src/trsp/doc/index
 	../src/ksp/doc/index
-	../src/tsp/doc/index
+
+.. toctree::
+	:maxdepth: 1
+
+	../src/tsp/doc/core
+	../src/tsp/doc/wrappers
 
 .. toctree::
 	:maxdepth: 1
@@ -73,7 +78,7 @@ Developer
 *******************************************************************************
 
 .. toctree::
-	:maxdepth: 1
+	:maxdepth: 2
 
 	src/developer/index
 
