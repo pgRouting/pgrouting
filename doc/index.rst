@@ -51,7 +51,12 @@ Reference
 .. toctree::
 	:maxdepth: 1
 
-	../src/astar/doc/index
+	../src/astar/doc/core
+	../src/astar/doc/wrappers
+
+.. toctree::
+	:maxdepth: 1
+
 	../src/trsp/doc/index
 	../src/ksp/doc/index
 	../src/tsp/doc/index
