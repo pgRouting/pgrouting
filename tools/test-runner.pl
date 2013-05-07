@@ -14,7 +14,7 @@ use vars qw/*name *dir *prune/;
 *dir    = *File::Find::dir;
 *prune  = *File::Find::prune;
 
-my $VERBOSE = 1;
+my $VERBOSE = 0;
 my $DRYRUN = 0;
 
 my $DBNAME = "pgr_test__db__test";
