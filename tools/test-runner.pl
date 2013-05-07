@@ -223,7 +223,8 @@ sub version_greater_eq {
 sub getServerVersion {
     my $v = `$psql -U $DBUSER -h $DBHOST -q -t -c "select version()" postgres`;
     print "$psql -U $DBUSER -h $DBHOST -q -t -c \"select version()\" postgres\n    # RETURNED: $v\n" if $VERBOSE;
-    if ($v =~ m/PostgreSQL (\d+\.\d+(\.\d+)?)\b/) {
+    if ($v =~ m/PostgreSQL (\d+(\.\d+)?(\.\d+)?)/) {
+        print "    # Got ($1)\n" if $VERBOSE;
         return $1;
     }
     return undef;
