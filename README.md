@@ -32,16 +32,16 @@ http://www.pgrouting.org/docs/1.x/install.html
 
 For MinGW on Windows
 
-    mkdir build
-    cd build
+	mkdir build
+	cd build
 	cmake -G"MSYS Makefiles" -DWITH_DD=ON ..
 	make
 	make install
 
 For Linux
 	
-    mkdir build
-    cd build
+	mkdir build
+	cd build
 	cmake -DWITH_DD=ON ..
 	make
 	sudo make install
@@ -50,6 +50,8 @@ Build with documentation (requires Sphinx and Cloud Sphinx Theme)
 
 * Sphinx: http://sphinx-doc.org/
 * Cloud Sphinx Theme: http://pythonhosted.org/cloud_sptheme/
+
+For Linux
 
 	cmake -DWITH_DOC=ON -DWITH_DD=ON ..
 
