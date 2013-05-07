@@ -22,20 +22,39 @@ my $DBUSER = 'postgres';
 my $DBHOST = 'localhost';
 
 sub Usage {
-    die "Usage: test-runner.pl vpg vpgis [/path/to/psql]\n" .
-        "       vpg   - postgresql version\n" .
-        "       vpgis - postgis version\n";
+    die "Usage: test-runner.pl -pgver vpg -pgisver vpgis -psql /path/to/psql\n" .
+        "       -pgver vpg          - postgresql version\n" .
+        "       -pgisver vpgis      - postgis version\n" .
+        "       -psql /path/to/psql - optional path to psql\n";
 }
 
-my $vpg   = shift @ARGV || '';
-my $vpgis = shift @ARGV || '';
+my ($vpg, $vpgis, $psql);
+
+while (my $a = shift @ARGV) {
+    if ( $a eq '-pgver') {
+        $vpg   = shift @ARGV || Usage();
+    }
+    elsif ($a eq '-pgisver') {
+        $vpgis = shift @ARGV || Usage();
+    }
+    elsif ($a eq '-psql') {
+        $psql = shift @ARGV || Usage();
+        die "'$psql' is not executable!\n"
+            unless -x $psql;
+    }
+    else {
+        die "Error: unknown option '$a'\n";
+    }
+}
 
 %main::tests = ();
 my @cfgs = ();
 my %stats = (z_pass=>0, z_fail=>0, z_crash=>0);
 my $TMP = "/tmp/pgr-test-runner-$$";
 
-my $psql = findPsql() || die "ERROR: can not find psql, specify it on the command line.\n";
+if (! $psql) {
+    $psql = findPsql() || die "ERROR: can not find psql, specify it on the command line.\n";
+}
 
 # some unit tests
 #my $server_ver = getServerVersion();
@@ -52,6 +71,9 @@ File::Find::find({wanted => \&want_tests}, 'src');
 die "Error: no test files found. Run this command from the top level pgRouting directory!\n" unless @cfgs;
 
 createTestDB();
+
+$vpg = '' if ! $vpg;
+$vpgis = '' if ! $vpgis;
 
 for my $c (@cfgs) {
     my $found = 0;
@@ -130,8 +152,11 @@ sub createTestDB {
         mysystem("createdb -U $DBUSER -h $DBHOST $DBNAME");
         die "ERROR: Failed to create database '$DBNAME'!\n"
             unless dbExists($DBNAME);
-        #mysystem("$psql -U $DBUSER -h $DBHOST -c 'create extension plpgsql' $DBNAME");
-        mysystem("$psql -U $DBUSER -h $DBHOST -c 'create extension postgis' $DBNAME");
+        my $myver = '';
+        if ($vpgis) {
+            $myver = " VERSION '$vpgis'";
+        }
+        mysystem("$psql -U $DBUSER -h $DBHOST -c 'create extension postgis $myver' $DBNAME");
         mysystem("$psql -U $DBUSER -h $DBHOST -c 'create extension pgrouting' $DBNAME");
     }
     else {
