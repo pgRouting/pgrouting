@@ -14,7 +14,7 @@ use vars qw/*name *dir *prune/;
 *dir    = *File::Find::dir;
 *prune  = *File::Find::prune;
 
-my $VERBOSE = 0;
+my $VERBOSE = 1;
 my $DRYRUN = 0;
 
 my $DBNAME = "pgr_test__db__test";
@@ -29,6 +29,8 @@ sub Usage {
         "       -psql /path/to/psql - optional path to psql\n" .
         "       -h                  - help\n";
 }
+
+print "RUNNING: test-runner.pl " . join(" ", @ARGV) . "\n";
 
 my ($vpg, $vpgis, $vpgr, $psql);
 
@@ -220,6 +222,7 @@ sub version_greater_eq {
 
 sub getServerVersion {
     my $v = `$psql -U $DBUSER -h $DBHOST -q -t -c "select version()" postgres`;
+    print "$psql -U $DBUSER -h $DBHOST -q -t -c \"select version()\" postgres\n    # RETURNED: $v\n" if $VERBOSE;
     if ($v =~ m/PostgreSQL (\d+\.\d+(\.\d+)?)\b/) {
         return $1;
     }
@@ -237,6 +240,7 @@ sub dbExists {
 sub findPsql {
     my $psql = `which psql`;
     $psql =~ s/^\s*|\s*$//g;
+    print "which psql = $psql\n" if $VERBOSE;
     return length($psql)?$psql:undef;
 }
 
