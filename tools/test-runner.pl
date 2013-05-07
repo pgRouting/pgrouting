@@ -25,11 +25,12 @@ sub Usage {
     die "Usage: test-runner.pl -pgver vpg -pgisver vpgis -psql /path/to/psql\n" .
         "       -pgver vpg          - postgresql version\n" .
         "       -pgisver vpgis      - postgis version\n" .
+        "       -pgrver vpgr        - pgrouting version\n" .
         "       -psql /path/to/psql - optional path to psql\n" .
         "       -h                  - help\n";
 }
 
-my ($vpg, $vpgis, $psql);
+my ($vpg, $vpgis, $vpgr, $psql);
 
 while (my $a = shift @ARGV) {
     if ( $a eq '-pgver') {
@@ -37,6 +38,9 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a eq '-pgisver') {
         $vpgis = shift @ARGV || Usage();
+    }
+    elsif ($a eq '-pgrver') {
+        $vpgr = shift @ARGV || Usage();
     }
     elsif ($a eq '-psql') {
         $psql = shift @ARGV || Usage();
@@ -164,8 +168,12 @@ sub createTestDB {
         if ($vpgis) {
             $myver = " VERSION '$vpgis'";
         }
-        mysystem("$psql -U $DBUSER -h $DBHOST -c 'create extension postgis $myver' $DBNAME");
-        mysystem("$psql -U $DBUSER -h $DBHOST -c 'create extension pgrouting' $DBNAME");
+        mysystem("$psql -U $DBUSER -h $DBHOST -c \"create extension postgis $myver\" $DBNAME");
+        $myver = '';
+        if ($vpgr) {
+            $myver = " VERSION '$vpgr'";
+        }
+        mysystem("$psql -U $DBUSER -h $DBHOST -c \"create extension pgrouting $myver\" $DBNAME");
     }
     else {
         my $template;
