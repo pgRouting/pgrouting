@@ -63,9 +63,12 @@ if (! $psql) {
 
 # some unit tests
 #my $server_ver = getServerVersion();
+#my $server_ver = '9.2';
 #print "PSQL=$psql\n";
 #print "SERVER_VERSION=$server_ver\n";
 #print "version_greater_eq('9.1')=" . version_greater_eq($server_ver, '9.1') . "\n";
+#print "version_greater_eq('9.2')=" . version_greater_eq($server_ver, '9.2') . "\n";
+#print "version_greater_eq('9.3')=" . version_greater_eq($server_ver, '9.3') . "\n";
 #print "version_greater_eq('8.3')=" . version_greater_eq($server_ver, '8.3') . "\n";
 #print "template_pgrouting=" . dbExists('template_pgrouting') . "\n";
 #exit;
@@ -192,19 +195,17 @@ sub version_greater_eq {
     my @a = split(/\./, $a);
     my @b = split(/\./, $b);
 
-    $a = shift @a;
-    $b = shift @b;
-    return 0 if $a && $b && $a < $b;
-    
-    $a = shift @a;
-    $b = shift @b;
-    return 1 if !$a || !$b;
-    return 0 if $a < $b;
+    my $va = 0;
+    my $vb = 0;
 
-    $a = shift @a;
-    $b = shift @b;
-    return 1 if !$a || !$b;
-    return 0 if $a < $b;
+    while (@a || @b) {
+        $a = shift @a || 0;
+        $b = shift @b || 0;
+        $va = $va*1000+$a;
+        $vb = $vb*1000+$b;
+    }
+
+    return 0 if $va < $vb;
     return 1;
 }
 
