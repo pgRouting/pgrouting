@@ -25,7 +25,8 @@ sub Usage {
     die "Usage: test-runner.pl -pgver vpg -pgisver vpgis -psql /path/to/psql\n" .
         "       -pgver vpg          - postgresql version\n" .
         "       -pgisver vpgis      - postgis version\n" .
-        "       -psql /path/to/psql - optional path to psql\n";
+        "       -psql /path/to/psql - optional path to psql\n" .
+        "       -h                  - help\n";
 }
 
 my ($vpg, $vpgis, $psql);
@@ -42,8 +43,12 @@ while (my $a = shift @ARGV) {
         die "'$psql' is not executable!\n"
             unless -x $psql;
     }
+    elsif ($a =~ /^-h/) {
+        Usage();
+    }
     else {
-        die "Error: unknown option '$a'\n";
+        warn "Error: unknown option '$a'\n";
+        Usage();
     }
 }
 
