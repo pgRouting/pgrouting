@@ -60,7 +60,8 @@ boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vert
 
     graph_t graph(num_nodes);
 
-    property_map<graph_t, edge_weight_t>::type weightmap = get(edge_weight, graph);
+    // commented out to fix APPLE build, is it needed?
+    //property_map<graph_t, edge_weight_t>::type weightmap = get(edge_weight, graph);
 
     for (std::size_t j = 0; j < count; ++j)
     {

@@ -140,8 +140,9 @@ boost_astar(edge_astar_t *edges, unsigned int count,
 
   graph_t graph(num_nodes);
 
-  property_map<graph_t, edge_weight_t>::type weightmap = get(edge_weight, 
-							     graph);
+  // interfers with APPLE build, can it just be commented out?
+  //property_map<graph_t, edge_weight_t>::type weightmap = get(edge_weight, 
+  //							     graph);
 
   for (std::size_t j = 0; j < count; ++j)
   {
