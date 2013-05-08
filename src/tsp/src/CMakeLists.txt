@@ -5,10 +5,10 @@ if(WIN32)
     include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
 endif(WIN32)
 
-add_library(routing_tsp SHARED tsp.c tsp.h tsplib.c)
+add_library(routing_tsp ${LIBRARY_MODE_TARGET} tsp.c tsp.h tsplib.c)
 
 if(APPLE)
-    set_target_properties(routing
+    set_target_properties(routing_tsp
         PROPERTIES
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)
