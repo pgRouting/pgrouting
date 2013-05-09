@@ -211,6 +211,7 @@ static int solve_tsp(char* sql, char* p_ids,
   int    tt, cc;
   double dx, dy;
   float  fit=0.0;
+  int got_source = 0;
 
   DBG("inside tsp");
 
@@ -251,6 +252,7 @@ static int solve_tsp(char* sql, char* p_ids,
   p = strtok(p_ids, ",");
   while(p != NULL) {
       ids[z]=atoi(p);
+      if (ids[z] == source) got_source = 1;
       p = strtok(NULL, ",");
       z++;
       if(z > MAX_TOWNS)
@@ -258,6 +260,11 @@ static int solve_tsp(char* sql, char* p_ids,
         elog(ERROR, "Number of points exeeds max number.");
         break;
       }
+  }
+
+  if (!got_source) {
+    elog(ERROR, "tsp: source id not included in list of ids!");
+    return -1;
   }
     
   DBG("start tsp");
