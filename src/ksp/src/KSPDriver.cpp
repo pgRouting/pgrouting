@@ -46,7 +46,7 @@ int  doKpaths(ksp_edge_t  * edges,int total_tuples,int  start_vertex,int  end_ve
 	// avoid a nasty bug, if no reverse paths are define and reverse mode
         // is set, an endless loop is entered.
 	if(no_reverse == false && has_reverse_cost){
-		*err_msg="No reverse paths defined and reverse cost selected";
+		*err_msg = (char *) "No reverse paths defined and reverse cost selected";
 		return -1;
 	}
 	theGraph.EndLoad();
