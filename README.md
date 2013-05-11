@@ -1,9 +1,11 @@
-==========================================================
-pgRouting - Routing Functionalities on PostgreSQL
-==========================================================
+pgRouting
+=========
+
+Routing Functionalities on PostgreSQL
+
 
 INTRODUCTION
-----------------------------------------------------------
+------------
 
 This library contains following features:
 
@@ -19,30 +21,30 @@ This library contains following features:
   real road networks with turn restrictions, traffic lights and one
   way streets. 
 
+
 REQUIREMENT
-----------------------------------------------------------
+-----------
 
 See online documentation:
 http://www.pgrouting.org/docs/1.x/install.html
 
 
 INSTALLATION
-----------------------------------------------------------
+------------
 
 See online documentation:
 http://www.pgrouting.org/docs/1.x/install.html
 
 
 USAGE
-----------------------------------------------------------
+-----
 
 See online documentation:
 http://www.pgrouting.org/docs/1.x/index.html
 
 
 LICENCE
-----------------------------------------------------------
+-------
 
 Most features are available under GPL.
 Some Boost extesions are available under Boost license (see LICENSE_1_0.txt)
-
