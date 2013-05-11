@@ -18,15 +18,16 @@ This library contains following features:
 
 ## REQUIREMENT
 
-See online documentation:
-http://www.pgrouting.org/docs/1.x/install.html
-
+* C and C++ compilers
+* Postgresql version >= [TBD]
+* PostGIS version >= [TBD]
+* The Boost Graph Library (BGL). Version >= [TBD]
+* CMake >= 2.8.8
+* (optional, for Driving Distance) CGAL >= [TBD] 
 
 ## INSTALLATION
 
-See online documentation:
-http://www.pgrouting.org/docs/1.x/install.html
-
+[TBD]
 
 ## COMPILATION
 
