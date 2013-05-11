@@ -18,9 +18,6 @@ This library contains following features:
 
 ## REQUIREMENT
 
-See online documentation:
-http://www.pgrouting.org/docs/1.x/install.html
-
 * C and C++ compilers
 * Postgresql version >= [TBD]
 * PostGIS version >= [TBD]
