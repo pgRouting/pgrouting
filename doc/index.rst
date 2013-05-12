@@ -45,14 +45,16 @@ Reference
 .. toctree::
 	:maxdepth: 1
 
-	../src/dijkstra/doc/index
 	../src/astar/doc/index
+	../src/dijkstra/doc/index
+
 	../src/bd_dijkstra/doc/index
 	../src/bd_astar/doc/index
 	../src/trsp/doc/index
 	../src/apsp_johnson/doc/index
 	../src/apsp_warshall/doc/index
 	../src/ksp/doc/index
+
 	../src/tsp/doc/index
 	../src/driving_distance/doc/index
 
