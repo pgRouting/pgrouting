@@ -1,1 +1,1 @@
-select source_id, target_id, round(cost::numeric, 2) as cost from pgr_apsp_warshall('select id, source, target, cost from apspw', false, false);
+select source_id, target_id, round(cost::numeric, 2) as cost from pgr_apspWarshall('select id, source, target, cost from apspw', false, false);

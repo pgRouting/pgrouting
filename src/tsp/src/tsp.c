@@ -186,20 +186,6 @@ fetch_point(HeapTuple *tuple, TupleDesc *tupdesc,
 }
 
 
-static int findid(point_t *points, int n, int id)
-{
-    int i;
-
-    if (!points || n==0) return 0;
-
-    for (i=0; i<n; i++) {
-        if (points[i].id == id) return i;
-    }
-
-    return 0;
-}
-
-
 static int solve_tsp(char* sql, char* p_ids, 
                      int source, path_element_t** path) 
 {
@@ -370,13 +356,11 @@ static int solve_tsp(char* sql, char* p_ids,
       }
   }
 
-  DBG("DISTANCE matrix computed");
+  DBG("DISTANCE computed");
+  pfree(points);
     
   ret = find_tsp_solution(total_tuples, DISTANCE, ids, 
                           source, &fit, err_msg);
-
-  DBG("TSP solved!");
-  DBG("Score: %f", fit);
 
   if (ret < 0) {
       elog(ERROR, "Error computing path: %s", err_msg);
@@ -385,14 +369,12 @@ static int solve_tsp(char* sql, char* p_ids,
 
   for(tt=0; tt < total_tuples; tt++) {
       ((path_element_t*)(*path))[tt].vertex_id = ids[tt];
-      ((path_element_t*)(*path))[tt].edge_id   = tt + 1;
-      if (tt == total_tuples-1)
-        ((path_element_t*)(*path))[tt].cost = D(findid(points, total_tuples, ids[tt]), findid(points, total_tuples, ids[0]));
-      else
-        ((path_element_t*)(*path))[tt].cost = D(findid(points, total_tuples, ids[tt]), findid(points, total_tuples, ids[tt+1]));
+      ((path_element_t*)(*path))[tt].edge_id   = 0;
+      ((path_element_t*)(*path))[tt].cost      = 0;
   }
     
-  pfree(points);
+  DBG("TSP solved!");
+  DBG("Score: %f", fit);
 
   profstop("tsp", prof_tsp);
   profstart(prof_store);
@@ -449,7 +431,7 @@ tsp(PG_FUNCTION_ARGS)
       funcctx->user_fctx = path;
 
       funcctx->tuple_desc = BlessTupleDesc(
-                              RelationNameGetTupleDesc("path_result"));
+                              RelationNameGetTupleDesc("pgr_pathResult"));
       MemoryContextSwitchTo(oldcontext);
     }
 

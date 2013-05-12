@@ -23,8 +23,8 @@
 --
 -- Last changes: 14.02.2008
 ----------------------------------------------------------
-CREATE OR REPLACE FUNCTION points_as_polygon(query varchar)
-       RETURNS SETOF GEOMS AS
+CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar)
+       RETURNS SETOF pgr_geoms AS
 $$
 DECLARE
      r record;
@@ -33,7 +33,7 @@ DECLARE
      q text;
      x float8[];
      y float8[];
-     geom geoms;
+     geom pgr_geoms;
      id integer;
 BEGIN
 	
@@ -75,15 +75,15 @@ $$
 LANGUAGE 'plpgsql' VOLATILE STRICT;
 
 
-CREATE OR REPLACE FUNCTION driving_distance(table_name varchar, x double precision, y double precision,
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(table_name varchar, x double precision, y double precision,
         distance double precision, cost varchar, reverse_cost varchar, directed boolean, has_reverse_cost boolean)
-       RETURNS SETOF GEOMS AS
+       RETURNS SETOF pgr_geoms AS
 $$
 DECLARE
      q text;
      srid integer;
      r record;
-     geom geoms;
+     geom pgr_geoms;
 BEGIN
      
      FOR r IN EXECUTE 'SELECT srid FROM geometry_columns WHERE f_table_name = '''||table_name||'''' LOOP
@@ -93,8 +93,8 @@ BEGIN
      
      RAISE NOTICE 'SRID: %', srid;
 
-     q := 'SELECT gid, the_geom FROM points_as_polygon(''SELECT a.vertex_id::integer AS id, b.x1::double precision AS x, b.y1::double precision AS y'||
-     ' FROM driving_distance(''''''''SELECT gid AS id,source::integer,target::integer, '||cost||'::double precision AS cost, '||
+     q := 'SELECT gid, the_geom FROM pgr_pointsAsPolygon(''SELECT a.vertex_id::integer AS id, b.x1::double precision AS x, b.y1::double precision AS y'||
+     ' FROM pgr_drivingDistance(''''''''SELECT gid AS id,source::integer,target::integer, '||cost||'::double precision AS cost, '||
      reverse_cost||'::double precision as reverse_cost FROM '||
      table_name||' WHERE ST_SetSRID(''''''''''''''''BOX3D('||
      x-distance||' '||y-distance||', '||x+distance||' '||y+distance||')''''''''''''''''::BOX3D, '||srid||') && the_geom  '''''''', (SELECT id FROM find_node_by_nearest_link_within_distance(''''''''POINT('||x||' '||y||')'''''''','||distance/10||','''''''''||table_name||''''''''')),'||
@@ -123,7 +123,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --
 -- A delta-sized bounding box around the start is used for data clipping.
 --
--- This function differs from the driving_distance in that the signature
+-- This function differs from the pgr_drivingDistance in that the signature
 -- is now similar to the shortest path delta functions and the delta is
 -- passed as argument.
 --
@@ -139,13 +139,13 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION driving_distance_delta(table_name varchar, source_id integer,
 	distance double precision, delta float8, directed boolean, has_reverse_cost boolean)
-       RETURNS SETOF GEOMS AS
+       RETURNS SETOF pgr_geoms AS
 $$
 DECLARE
      q text;
      srid integer;
      r record;
-     geom geoms;
+     geom pgr_geoms;
 
      source_x float8;
      source_y float8;
@@ -177,8 +177,8 @@ BEGIN
      source_y := r.source_y;
 
 
-     q := 'SELECT gid, the_geom FROM points_as_polygon(''SELECT a.vertex_id::integer AS id, b.x1::double precision AS x, b.y1::double precision AS y'||
-     ' FROM driving_distance(''''''''SELECT gid AS id,source::integer,target::integer, length::double precision AS cost ';
+     q := 'SELECT gid, the_geom FROM pgr_pointsAsPolygon(''SELECT a.vertex_id::integer AS id, b.x1::double precision AS x, b.y1::double precision AS y'||
+     ' FROM pgr_drivingDistance(''''''''SELECT gid AS id,source::integer,target::integer, length::double precision AS cost ';
 
      IF has_reverse_cost THEN q := q || ', reverse_cost::double precision ';
      END IF;

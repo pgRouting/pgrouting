@@ -1,24 +1,14 @@
-DROP TYPE IF EXISTS ksp_geoms;
-
-CREATE TYPE ksp_geoms AS
-(
-  id integer,
-  edge_id integer,
-  route_id integer,
-  the_geom geometry
-);
-
 -----------------------------------------------------------------------
 -- KSP function for undirected graphs.
 -- Return a geometry version of K shortest path list
 --  the result as a set of (segment count integer edge_id integer,route_count  the_geom geometry) records.
 -- For example something like
 --
--- select *  from ksp_sp( 'select source,target,to_cost as cost,gid as id , reverse_cost from route_table where (start_node=''''t'''' or parent_port_id=710)'
+-- select *  from pgr_ksp( 'select source,target,to_cost as cost,gid as id , reverse_cost from route_table where (start_node=''''t'''' or parent_port_id=710)'
 -- ,710,46,3,'f');
 -- 
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION ksp_sp(
+CREATE OR REPLACE FUNCTION pgr_ksp(
     sql_request text,
     route_tab text,
     source int4,
@@ -26,19 +16,19 @@ CREATE OR REPLACE FUNCTION ksp_sp(
     route_count int4,
     reverse_cost boolean
   ) 
-  RETURNS SETOF ksp_geoms AS
+  RETURNS SETOF pgr_kspGeoms AS
 $$
 DECLARE 
     r record;
-    result  ksp_path_result;
-    geom ksp_geoms;
+    result  pgr_kspResult;
+    geom pgr_kspGeoms;
     id integer;
     the_request text;
 
 BEGIN
     
     id :=0;
-    the_request := 'select route_id, vertex_id, edge_id from kshortest_path('''
+    the_request := 'select route_id, vertex_id, edge_id from pgr_ksp('''
         || sql_request || ''', '
         || source || ','
         || target || ','

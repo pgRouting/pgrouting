@@ -1,13 +1,10 @@
-CREATE TYPE link_point AS (id integer, name varchar);
-
 -------------------------------------------------------------------
 -- This function finds nearest link to a given node
 -- point - text representation of point
 -- distance - function will search for a link within this distance
 -- tbl - table name
 -------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION pgr_find_nearest_link_within_distance(point varchar, 
-	distance double precision, tbl varchar)
+CREATE OR REPLACE FUNCTION pgr_findNearestLinkDwithin(point varchar, distance double precision, tbl varchar)
 	RETURNS INT AS
 $$
 DECLARE
@@ -58,8 +55,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- tbl - table name
 -------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION pgr_find_nearest_node_within_distance(point varchar, 
-	distance double precision, tbl varchar)
+CREATE OR REPLACE FUNCTION pgr_findNearestNodeDwithin(point varchar, distance double precision, tbl varchar)
 	RETURNS INT AS
 $$
 DECLARE
@@ -140,8 +136,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- tbl - table name
 -------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION pgr_find_node_by_nearest_link_within_distance(point varchar, distance double precision, tbl varchar)
-	RETURNS link_point AS
+CREATE OR REPLACE FUNCTION pgr_findNodeByNearestLinkDwithin(point varchar, distance double precision, tbl varchar)
+	RETURNS pgr_linkPoint AS
 $$
 DECLARE
     row record;
@@ -149,7 +145,7 @@ DECLARE
     d1 double precision;
     d2 double precision;
     field varchar;
-    res link_point;
+    res pgr_linkPoint;
     
     srid integer;
 BEGIN
@@ -213,14 +209,14 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- rc - true if you have a reverse_cost column
 -------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION pgr_match_line_as_geometry(tbl varchar, line geometry, distance double precision, distance2 double precision, dir boolean, rc boolean)
-	RETURNS SETOF GEOMS AS
+CREATE OR REPLACE FUNCTION pgr_matchLineAsGeometry(tbl varchar, line geometry, distance double precision, distance2 double precision, dir boolean, rc boolean)
+	RETURNS SETOF pgr_geoms AS
 $$
 DECLARE
     row record;
     num integer;
     i integer;
-    geom geoms;
+    geom pgr_geoms;
     points integer[];
     
     srid integer;
@@ -323,8 +319,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- rc - true if you have a reverse_cost column
 -------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION pgr_match_line(tbl varchar, line geometry, distance double precision, distance2 double precision, dir boolean, rc boolean)
-	RETURNS SETOF PATH_RESULT AS
+CREATE OR REPLACE FUNCTION pgr_matchLine(tbl varchar, line geometry, distance double precision, distance2 double precision, dir boolean, rc boolean)
+	RETURNS SETOF pgr_pathResult AS
 $$
 DECLARE
     row record;
@@ -338,7 +334,7 @@ DECLARE
     
     query text;
     
-    path path_result;
+    path pgr_pathResult;
     
     edges integer[];
     vertices integer[];
@@ -499,7 +495,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- rc - true if you have a reverse_cost column
 -------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION pgr_match_line_as_linestring(tbl varchar, line geometry, distance double precision, distance2 double precision, dir boolean, rc boolean)
+CREATE OR REPLACE FUNCTION pgr_matchLineAsLinestring(tbl varchar, line geometry, distance double precision, distance2 double precision, dir boolean, rc boolean)
 	RETURNS GEOMETRY AS
 $$
 DECLARE

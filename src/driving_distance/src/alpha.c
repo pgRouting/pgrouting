@@ -322,7 +322,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
       DBG("Total count %i", res_count);
 
       funcctx->tuple_desc = BlessTupleDesc(
-                           RelationNameGetTupleDesc("vertex_result"));
+                           RelationNameGetTupleDesc("pgr_vertexResult"));
 
       MemoryContextSwitchTo(oldcontext);
     }
