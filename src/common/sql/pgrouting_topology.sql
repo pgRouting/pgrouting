@@ -9,7 +9,7 @@
 -- Author: Christian Gonzalez
 -- Author: Stephen Woodbridge
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION pgr_point_to_id(p geometry, tolerance double precision)
+CREATE OR REPLACE FUNCTION pgr_pointToId(p geometry, tolerance double precision)
     RETURNS BIGINT AS 
 $BODY$ 
 
@@ -48,7 +48,7 @@ $BODY$
 -- Author: Christian Gonzalez
 -- Author: Stephen Woodbridge
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION pgr_assign_vertex_id(geom_table varchar, tolerance double precision, geo_cname varchar, gid_cname varchar)
+CREATE OR REPLACE FUNCTION pgr_createTopology(geom_table varchar, tolerance double precision, geo_cname varchar, gid_cname varchar)
     RETURNS VARCHAR AS
 $BODY$
 
@@ -116,8 +116,8 @@ BEGIN
 
         rowcount := rowcount + 1;
 
-        source_id := pgr_point_to_id(points.source, tolerance);
-        target_id := pgr_point_to_id(points.target, tolerance);
+        source_id := pgr_pointToId(points.source, tolerance);
+        target_id := pgr_pointToId(points.target, tolerance);
                                 
         EXECUTE 'UPDATE ' || quote_ident(geom_table) || 
             ' SET source = ' || source_id || ', target = ' || target_id || 

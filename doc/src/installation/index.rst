@@ -71,12 +71,12 @@ Git protocol (read-only):
 
 .. code-block:: bash
 
-	git clone git://github.com/qgis/Quantum-GIS.git
+	git clone git://github.com/pgRouting/pgrouting.git
 
 
 HTTPS protocol (read-only):
 
 .. code-block:: bash
 
-	git clone https://github.com/qgis/Quantum-GIS.git
+	git clone https://github.com/pgRouting/pgrouting.git
 

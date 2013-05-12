@@ -9,17 +9,17 @@
 
 .. _type_geoms:
 
-Type: geoms[]
+Type: pgr_geoms[]
 ===============================================================================
 
 .. index:: 
-	single: geoms[]
+	single: pgr_geoms[]
 	module: types
 
 Name
 -------------------------------------------------------------------------------
 
-``geoms[]`` — A set of rows that consists of records with id, gid and the_geom attributes.
+``pgr_geoms[]`` — A set of rows that consists of records with id, gid and the_geom attributes.
 
 
 Description
@@ -30,7 +30,7 @@ Description
 
 .. code-block:: sql
 
-    CREATE TYPE geoms AS
+    CREATE TYPE pgr_geoms AS
     (
         id integer,
         gid integer,

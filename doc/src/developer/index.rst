@@ -108,12 +108,11 @@ There is a very basic testing infrastructure put in place. Here are the
 basics of how it works. We need more test cases. Longer term we should
 probably get someone to setup travis-ci or jenkins testing frameworks.
 
-Currently all the tests work off a simple graph that was built for
-testing trsp functionality.
+Here is the graph for the TRSP tests.
 
 .. image:: images/trsp-test-image.png
 
-Tests are run via the script at the top level test-runner.pl and it runs
+Tests are run via the script at the top level tools/test-runner.pl and it runs
 all the test configured tests and at the moment just dumps the results
 structure of the test. This can be prettied up later.
 
@@ -134,7 +133,7 @@ group they need to have unique names.
 core/trsp/test/test-any-00.test is a sql command to be run. It will get
 run as:
 
-.. :: 
+.. code-block:: bash
 
     psql ... -A -t -q -f file.test dbname > tmpfile
     diff -w file.rest tmpfile 
