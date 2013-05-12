@@ -1,5 +1,5 @@
 select * from turn_restrict_shortest_path(
-    'select eid as id, source::integer, target::integer,cost, reverse_cost from edges1',
+    'select eid as id, source::integer, target::integer, cost, reverse_cost from edges1',
     1,     -- node_id of start
     5,     -- node_id of end
     true,  -- directed graph?
