@@ -21,18 +21,17 @@
 -- Core function for driving distance.
 -- The sql should return edge and vertex ids.
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION driving_distance(sql text, source_id integer, 
-        distance float8,directed boolean, has_reverse_cost boolean)
-        RETURNS SETOF path_result
-        AS '$libdir/librouting_dd'
-        LANGUAGE c IMMUTABLE STRICT;
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id integer, distance float8, directed boolean, has_reverse_cost boolean)
+    RETURNS SETOF pgr_pathResult
+    AS '$libdir/librouting_dd', 'driving_distance'
+    LANGUAGE c IMMUTABLE STRICT;
                         
 -----------------------------------------------------------------------
 -- Core function for alpha shape computation.
 -- The sql should return vertex ids and x,y values. Return ordered
 -- vertex ids. 
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION alphashape(sql text)
-        RETURNS SETOF vertex_result
-        AS '$libdir/librouting_dd'
-        LANGUAGE c IMMUTABLE STRICT;
+CREATE OR REPLACE FUNCTION pgr_alphashape(sql text)
+    RETURNS SETOF pgr_vertexResult
+    AS '$libdir/librouting_dd', 'alphashape'
+    LANGUAGE c IMMUTABLE STRICT;

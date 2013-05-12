@@ -1,5 +1,5 @@
 select *
-  from ksp_sp(
+  from pgr_ksp(
     'select source, target, cost, gid, reverse_cost from network',
     'network',
     10,

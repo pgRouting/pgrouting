@@ -4,7 +4,7 @@
 -- List by links
 --
 select ksp.id, ksp.route_id, n.source, n.target, round(st_length(ksp.the_geom)::numeric, 2) as len
-  from ksp_sp(
+  from pgr_ksp(
     'select source, target, cost,reverse_cost, gid from network order by gid',
     'network',
     4,

@@ -13,7 +13,7 @@ pgr_astar — Shortest Path A*
 ===============================================================================
 
 .. index:: 
-	single: pgr_astar(text,integer,integer,boolean,boolean)
+	single: PGR_Astar(text, integer, integer, boolean, boolean)
 	module: astar
 
 Name
@@ -25,12 +25,11 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`path_result <type_path_result>` (vertex_id, edge_id, cost) rows, that make up a path.
+Returns a set of :ref:`pgr_pathResult <type_pgr_pathResult>` (vertex_id, edge_id, cost) rows, that make up a path.
 
 .. code-block:: sql
 
-	path_result[] pgr_astar(text sql, integer source, integer target, 
-	                        boolean directed, boolean reverse_cost);
+	path_result[] PGR_Astar(sql text, source integer, target integer, directed boolean, reverse_cost boolean);
 
 
 Description
@@ -82,4 +81,4 @@ Examples
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`type_path_result`
+* :ref:`type_pgr_pathResult`

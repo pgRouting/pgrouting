@@ -24,6 +24,6 @@
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION shortest_path_shooting_star(sql text, source_id integer, 
         target_id integer,directed boolean, has_reverse_cost boolean)
-         RETURNS SETOF path_result
+         RETURNS SETOF pgr_pathResult
          AS '$libdir/librouting'
          LANGUAGE c IMMUTABLE STRICT; 

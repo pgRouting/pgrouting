@@ -1,5 +1,5 @@
 
-CREATE OR REPLACE FUNCTION pgr_apsp_johnson(sql text)
-    RETURNS SETOF apsp_edge
+CREATE OR REPLACE FUNCTION pgr_apspJohnson(sql text)
+    RETURNS SETOF pgr_apspEdge
     AS '$libdir/librouting', 'apsp_johnson'
 LANGUAGE C IMMUTABLE STRICT;
