@@ -27,10 +27,23 @@ General
 *******************************************************************************
 
 .. toctree::
-	:maxdepth: 2
+	:maxdepth: 1
 
 	src/introduction/index
 	src/installation/index
+
+*******************************************************************************
+Tutorial
+*******************************************************************************
+
+.. toctree::
+	:maxdepth: 1
+
+	src/tutorial/index
+	src/tutorial/custom_query
+	src/tutorial/custom_wrapper
+	src/tutorial/recipes
+	src/tutorial/performance
 
 
 *******************************************************************************
@@ -38,7 +51,7 @@ Reference
 *******************************************************************************
 
 .. toctree::
-	:maxdepth: 2
+	:maxdepth: 1
 
 	../src/common/doc/index
 
@@ -64,7 +77,7 @@ Developer
 *******************************************************************************
 
 .. toctree::
-	:maxdepth: 2
+	:maxdepth: 1
 
 	src/installation/build
 	src/developer/index

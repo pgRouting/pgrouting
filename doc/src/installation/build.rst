@@ -25,6 +25,8 @@ To be able to compile pgRouting make sure that the following dependencies are me
 For MinGW on Windows
 ********************************************************************************
 
+.. code-block:: bash
+
 	mkdir build
 	cd build
 	cmake -G"MSYS Makefiles" -DWITH_DD=ON ..
@@ -35,6 +37,8 @@ For MinGW on Windows
 For Linux
 ********************************************************************************
 
+.. code-block:: bash
+
 	mkdir build
 	cd build
 	cmake -DWITH_DD=ON ..
@@ -42,6 +46,8 @@ For Linux
 	sudo make install
 
 Alternative syntax (undocumented CMake parameters):
+
+.. code-block:: bash
 
 	cmake -H. -Bbuild -DWITH_DOC=ON -DWITH_DD=ON 
 	cd build && make && cd ..
@@ -52,10 +58,14 @@ With Documentation
 
 Build with documentation (requires `Sphinx <http://sphinx-doc.org/>`_ and `Cloud Sphinx Theme <http://pythonhosted.org/cloud_sptheme/>`_):
 
+.. code-block:: bash
+
 	cmake -DWITH_DOC=ON -DWITH_DD=ON ..
 
 
 Rebuild modified documentation only:
+
+.. code-block:: bash
 
 	sphinx-build -b html -c build/doc/_build -d build/doc/_doctrees . build/html
 
