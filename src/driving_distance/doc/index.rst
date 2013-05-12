@@ -9,7 +9,7 @@
 
 .. _pgr_driving_distance:
 
-pgr_drivingDistance — Driving Distance
+pgr_drivingDistance - Driving Distance
 ===============================================================================
 
 .. index:: 
@@ -19,7 +19,7 @@ pgr_drivingDistance — Driving Distance
 Name
 -------------------------------------------------------------------------------
 
-``pgr_drivingDistance`` — Returns the driving distance from a start node.
+``pgr_drivingDistance`` - Returns the driving distance from a start node.
 
 
 Synopsis

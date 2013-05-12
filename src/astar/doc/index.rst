@@ -9,7 +9,7 @@
 
 .. _pgr_astar:
 
-pgr_astar — Shortest Path A*
+pgr_astar - Shortest Path A*
 ===============================================================================
 
 .. index:: 

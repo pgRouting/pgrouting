@@ -1,16 +1,16 @@
-..
+.. 
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This work is licensed under a Creative Commons Attribution-Share Alike 3.0
+    This work is licensed under a Creative Commons Attribution-Share Alike 3.0 
     License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _apsp-warshall-index:
+.. _pgr_apsp_warshall:
 
-All Pairs Shortest Path - Floyd-Warshall Algorithm
-==================================================
+pgr_apspWarshall - All Pairs Shortest Path, Floyd-Warshall Algorithm
+===============================================================================
 
 .. index::
     single: PGR_apspWarshall(text)

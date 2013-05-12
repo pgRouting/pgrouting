@@ -9,7 +9,7 @@
 
 .. _pgr_dijkstra:
 
-pgr_dijkstra — Shortest Path Dijkstra
+pgr_dijkstra - Shortest Path Dijkstra
 ===============================================================================
 
 .. index:: 

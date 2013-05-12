@@ -1,8 +1,16 @@
-.. _ksp-index:
+.. 
+   ****************************************************************************
+    pgRouting Manual
+    Copyright(c) pgRouting Contributors
 
-================================================================
-  K-Shortest Path
-================================================================
+    This work is licensed under a Creative Commons Attribution-Share Alike 3.0 
+    License: http://creativecommons.org/licenses/by-sa/3.0/
+   ****************************************************************************
+
+.. _ksp:
+
+pgr_ksp - K-Shortest Path
+===============================================================================
 
 KSP code base taken from 
 `HERE <http://code.google.com/p/k-shortest-paths/source>`_.

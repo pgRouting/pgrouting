@@ -9,7 +9,7 @@
 
 .. _pgr_tsp:
 
-pgr_tsp — Traveling Sales Person
+pgr_tsp - Traveling Sales Person
 ===============================================================================
 
 .. index:: 
@@ -19,7 +19,7 @@ pgr_tsp — Traveling Sales Person
 Name
 -------------------------------------------------------------------------------
 
-``pgr_tsp`` — Returns the best route from a start node via a list of nodes.
+``pgr_tsp`` - Returns the best route from a start node via a list of nodes.
 
 
 Synopsis
