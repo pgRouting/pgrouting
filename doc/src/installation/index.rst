@@ -27,6 +27,8 @@ Ubuntu
 
 Ubuntu packages are available in a `Launchpad repository <https://launchpad.net/~georepublic/+archive/pgrouting>`_:
 
+.. code-block:: bash
+
 	# Add pgRouting launchpad repository
 	sudo add-apt-repository ppa:georepublic/pgrouting
 	sudo apt-get update
@@ -57,9 +59,9 @@ See :ref:`build` for notes on compiling from source.
 Source Package
 ********************************************************************************
 
-* Git 2.0.0 release: `tar.gz <>`_ `zip <>`_
-* Git master branch: `tar.gz <>`_ `zip <>`_
-* Git develop branch: `tar.gz <>`_ `zip <>`_
+* Git 2.0.0 release: `tar.gz <http:/download.sample>`_ `zip <http:/download.sample>`_
+* Git master branch: `tar.gz <http:/download.sample>`_ `zip <http:/download.sample>`_
+* Git develop branch: `tar.gz <http:/download.sample>`_ `zip <http:/download.sample>`_
 
 
 Using Git
@@ -67,10 +69,14 @@ Using Git
 
 Git protocol (read-only):
 
+.. code-block:: bash
+
 	git clone git://github.com/qgis/Quantum-GIS.git
 
 
 HTTPS protocol (read-only):
+
+.. code-block:: bash
 
 	git clone https://github.com/qgis/Quantum-GIS.git
 
