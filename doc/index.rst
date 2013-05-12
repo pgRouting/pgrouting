@@ -45,36 +45,16 @@ Reference
 .. toctree::
 	:maxdepth: 1
 
-	../src/dijkstra/doc/core
-	../src/dijkstra/doc/wrappers
-
-.. toctree::
-	:maxdepth: 1
-
-	../src/astar/doc/core
-	../src/astar/doc/wrappers
-
-.. toctree::
-	:maxdepth: 1
-
+	../src/dijkstra/doc/index
+	../src/astar/doc/index
 	../src/bd_dijkstra/doc/index
 	../src/bd_astar/doc/index
 	../src/trsp/doc/index
 	../src/apsp_johnson/doc/index
 	../src/apsp_warshall/doc/index
 	../src/ksp/doc/index
-
-.. toctree::
-	:maxdepth: 1
-
-	../src/tsp/doc/core
-	../src/tsp/doc/wrappers
-
-.. toctree::
-	:maxdepth: 1
-
-	../src/driving_distance/doc/core
-	../src/driving_distance/doc/wrappers
+	../src/tsp/doc/index
+	../src/driving_distance/doc/index
 
 
 *******************************************************************************
@@ -84,6 +64,7 @@ Developer
 .. toctree::
 	:maxdepth: 2
 
+	src/installation/build
 	src/developer/index
 
 
