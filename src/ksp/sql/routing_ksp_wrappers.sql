@@ -1,13 +1,3 @@
-DROP TYPE IF EXISTS ksp_geoms;
-
-CREATE TYPE ksp_geoms AS
-(
-  id integer,
-  edge_id integer,
-  route_id integer,
-  the_geom geometry
-);
-
 -----------------------------------------------------------------------
 -- KSP function for undirected graphs.
 -- Return a geometry version of K shortest path list
@@ -18,7 +8,7 @@ CREATE TYPE ksp_geoms AS
 -- ,710,46,3,'f');
 -- 
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION ksp_sp(
+CREATE OR REPLACE FUNCTION pgr_ksp(
     sql_request text,
     route_tab text,
     source int4,
@@ -26,12 +16,12 @@ CREATE OR REPLACE FUNCTION ksp_sp(
     route_count int4,
     reverse_cost boolean
   ) 
-  RETURNS SETOF ksp_geoms AS
+  RETURNS SETOF pgr_kspGeoms AS
 $$
 DECLARE 
     r record;
-    result  ksp_path_result;
-    geom ksp_geoms;
+    result  pgr_kspResult;
+    geom pgr_kspGeoms;
     id integer;
     the_request text;
 

@@ -2,7 +2,7 @@
 -- Dump a 15 fastest routes between nodes 4 and 5 by total route length
 --
 select ksp.route_id, round(sum(st_length(ksp.the_geom))::numeric, 2) as len
-  from ksp_sp(
+  from pgr_ksp(
     'select source, target, cost, reverse_cost, gid from network',
     'network',
     4,

@@ -23,8 +23,7 @@
 -- Simillar to shortest_path in usage but uses the A* algorithm
 -- instead of Dijkstra's.
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION shortest_path_astar(sql text, source_id integer, 
-        target_id integer,directed boolean, has_reverse_cost boolean)
-         RETURNS SETOF path_result
-         AS '$libdir/librouting'
-         LANGUAGE c IMMUTABLE STRICT; 
+CREATE OR REPLACE FUNCTION pgr_astar(sql text, source_id integer, target_id integer, directed boolean, has_reverse_cost boolean)
+    RETURNS SETOF pgr_pathResult
+    AS '$libdir/librouting', 'shortest_path_astar'
+    LANGUAGE c IMMUTABLE STRICT; 

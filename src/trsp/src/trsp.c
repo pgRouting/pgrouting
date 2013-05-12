@@ -619,7 +619,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
       funcctx->user_fctx = path;
 
       funcctx->tuple_desc = 
-        BlessTupleDesc(RelationNameGetTupleDesc("path_result"));
+        BlessTupleDesc(RelationNameGetTupleDesc("pgr_pathResult"));
 
       MemoryContextSwitchTo(oldcontext);
     }
@@ -761,7 +761,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
       funcctx->user_fctx = path;
 
       funcctx->tuple_desc = 
-        BlessTupleDesc(RelationNameGetTupleDesc("path_result"));
+        BlessTupleDesc(RelationNameGetTupleDesc("pgr_pathResult"));
 
       MemoryContextSwitchTo(oldcontext);
     }

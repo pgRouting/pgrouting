@@ -512,7 +512,7 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS)
       DBG("Path count %i", path_count);
       
       funcctx->tuple_desc = 
-	BlessTupleDesc(RelationNameGetTupleDesc("path_result"));
+	BlessTupleDesc(RelationNameGetTupleDesc("pgr_pathResult"));
 
       MemoryContextSwitchTo(oldcontext);
     }
