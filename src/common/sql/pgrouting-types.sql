@@ -41,8 +41,8 @@ CREATE TYPE geoms AS
     the_geom geometry
 );
 
-DROP TYPE IF EXISTS apsp_edge CASCADE;
-CREATE TYPE apsp_edge AS
+DROP TYPE IF EXISTS pgr_apspEdge CASCADE;
+CREATE TYPE pgr_apspEdge AS
 (
     source_id integer,
     target_id integer,

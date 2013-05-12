@@ -292,7 +292,7 @@ Datum apsp_johnson(PG_FUNCTION_ARGS) {
 
     DBG("Output count %i", output_count);
 
-    funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("apsp_edge"));
+    funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("pgr_apspEdge"));
 
     MemoryContextSwitchTo(oldcontext);
   }

@@ -361,7 +361,7 @@ apsp_warshall(PG_FUNCTION_ARGS)
       funcctx->user_fctx = pair;
 
       funcctx->tuple_desc = 
-        BlessTupleDesc(RelationNameGetTupleDesc("apsp_edge"));
+        BlessTupleDesc(RelationNameGetTupleDesc("pgr_apspEdge"));
 
       MemoryContextSwitchTo(oldcontext);
     }
