@@ -56,7 +56,7 @@ Alternative syntax (undocumented CMake parameters):
 With Documentation
 ********************************************************************************
 
-Build with documentation (requires `Sphinx <http://sphinx-doc.org/>`_ and `Cloud Sphinx Theme <http://pythonhosted.org/cloud_sptheme/>`_):
+Build with documentation (requires `Sphinx <http://sphinx-doc.org/>`_):
 
 .. code-block:: bash
 

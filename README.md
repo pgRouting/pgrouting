@@ -47,10 +47,9 @@ For Linux
 	make
 	sudo make install
 
-Build with documentation (requires Sphinx and Cloud Sphinx Theme)
+Build with documentation (requires Sphinx)
 
 * Sphinx: http://sphinx-doc.org/
-* Cloud Sphinx Theme: http://pythonhosted.org/cloud_sptheme/
 
 For Linux
 

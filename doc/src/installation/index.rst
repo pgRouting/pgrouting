@@ -22,7 +22,7 @@ Winnie Bot Experimental Builds:
 * `PostgreSQL 9.2 32-bit, 64-bit <http://winnie.postgis.net/download/windows/pg92/buildbot/>`_
 
 
-Ubuntu
+Ubuntu/Debian
 ********************************************************************************
 
 Ubuntu packages are available in a `Launchpad repository <https://launchpad.net/~georepublic/+archive/pgrouting>`_:
@@ -34,14 +34,16 @@ Ubuntu packages are available in a `Launchpad repository <https://launchpad.net/
 	sudo apt-get update
 
 	# Install pgRouting packages
-	sudo apt-get install 
-	        postgresql-9.1-pgrouting \
-	        postgresql-9.1-pgrouting-dd 
+	sudo apt-get install postgresql-9.1-pgrouting postgresql-9.1-pgrouting-dd 
+
+.. note::
+	Use `UbuntuGIS-unstable PPA <https://launchpad.net/~ubuntugis/+archive/ubuntugis-unstable>`_ to install PostGIS 2.0.
 
 
-RHEL/CentOS
+RHEL/CentOS/Fedora
 ********************************************************************************
 
+* Fedora RPM's: https://admin.fedoraproject.org/pkgdb/acls/name/pgRouting
 
 
 OSX
