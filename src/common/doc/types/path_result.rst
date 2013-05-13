@@ -9,17 +9,17 @@
 
 .. _type_path_result:
 
-Type: path_result[]
+Type: pgr_pathResult[]
 ===============================================================================
 
 .. index:: 
-	single: path_result[]
+	single: pgr_pathResult[]
 	module: types
 
 Name
 -------------------------------------------------------------------------------
 
-``path_result[]`` — A set of rows that consists of records with vertex_id, edge_id and cost attributes.
+``pgr_pathResult[]`` — A set of rows that consists of records with vertex_id, edge_id and cost attributes.
 
 
 Description
@@ -29,7 +29,7 @@ The function returns a set of rows. There is one row for each crossed edge, and 
 
 .. code-block:: sql
 
-    CREATE TYPE path_result AS
+    CREATE TYPE pgr_pathResult AS
     (
         vertex_id integer,
         edge_id integer,

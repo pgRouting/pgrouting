@@ -9,17 +9,17 @@
 
 .. _type_vertex_result:
 
-Type: vertex_result[]
+Type: pgr_vertexResult[]
 ===============================================================================
 
 .. index:: 
-	single: vertex_result[]
+	single: pgr_vertexResult[]
 	module: types
 
 Name
 -------------------------------------------------------------------------------
 
-``vertex_result[]`` — A set of rows that consists of records with x and y attributes.
+``pgr_vertexResult[]`` — A set of rows that consists of records with x and y attributes.
 
 
 Description
@@ -30,7 +30,7 @@ Description
 
 .. code-block:: sql
 
-    CREATE TYPE vertex_result AS
+    CREATE TYPE pgr_vertexResult AS
     (
         x float8,
         y float8

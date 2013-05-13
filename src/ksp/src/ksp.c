@@ -233,7 +233,7 @@ kshortest_path(PG_FUNCTION_ARGS)
       funcctx->user_fctx = path;
 
       funcctx->tuple_desc = 
-        BlessTupleDesc(RelationNameGetTupleDesc("ksp_path_result"));
+        BlessTupleDesc(RelationNameGetTupleDesc("pgr_kspResult"));
 
       MemoryContextSwitchTo(oldcontext);
     }

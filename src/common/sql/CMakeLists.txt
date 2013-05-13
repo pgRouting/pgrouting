@@ -4,6 +4,7 @@ LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_matching.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_analytics.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_network_check.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_node_network.sql
 )
 
 # set in parent scope
