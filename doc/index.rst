@@ -55,6 +55,7 @@ Reference
 	:maxdepth: 1
 
 	../src/common/doc/index
+	../src/common/doc/types
 
 .. toctree::
 	:maxdepth: 1

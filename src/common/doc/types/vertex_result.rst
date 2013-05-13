@@ -9,7 +9,7 @@
 
 .. _type_vertex_result:
 
-Type: pgr_vertexResult[]
+pgr_vertexResult[] - Vertex Result set
 ===============================================================================
 
 .. index:: 
@@ -25,9 +25,6 @@ Name
 Description
 -------------------------------------------------------------------------------
 
-.. note:: 
-	Not completed.
-
 .. code-block:: sql
 
     CREATE TYPE pgr_vertexResult AS
@@ -40,5 +37,4 @@ Description
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`type_geoms`
-* :ref:`type_path_result`
+* :ref:`common_types`

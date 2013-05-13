@@ -20,6 +20,7 @@ To be able to compile pgRouting make sure that the following dependencies are me
 * The Boost Graph Library (BGL). Version >= [TBD]
 * CMake >= 2.8.8
 * (optional, for Driving Distance) CGAL >= [TBD]
+* (optional, for Documentation) Sphinx >= [TBD] 
 
 
 For MinGW on Windows

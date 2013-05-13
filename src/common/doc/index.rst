@@ -12,18 +12,10 @@
 Common Functions
 ===============================================================================
 
-The following are commonly used data types for some of the pgRouting functions. There are some additional types that are not documented here because they are specific to a single or small group of functions and are documented with those functions.
-
-.. toctree::
-	:maxdepth: 1
-
-	types/geoms
-	types/path_result
-	types/vertex_result
-
 .. toctree::
    :maxdepth: 2
 
+   types
    pgrouting_analytics
    pgrouting_matching
    pgrouting_topology

@@ -24,6 +24,7 @@ This library contains following features:
 * The Boost Graph Library (BGL). Version >= [TBD]
 * CMake >= 2.8.8
 * (optional, for Driving Distance) CGAL >= [TBD] 
+* (optional, for Documentation) Sphinx >= [TBD] 
 
 ## INSTALLATION
 

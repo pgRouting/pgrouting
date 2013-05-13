@@ -9,7 +9,7 @@
 
 .. _type_geoms:
 
-Type: pgr_geoms[]
+pgr_geoms[] - Geometry Result set
 ===============================================================================
 
 .. index:: 
@@ -25,9 +25,6 @@ Name
 Description
 -------------------------------------------------------------------------------
 
-.. note:: 
-	Not completed.
-
 .. code-block:: sql
 
     CREATE TYPE pgr_geoms AS
@@ -41,6 +38,5 @@ Description
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`type_path_result`
-* :ref:`type_vertex_result`
+* :ref:`common_types`
 
