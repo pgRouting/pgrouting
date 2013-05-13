@@ -1,4 +1,10 @@
-﻿CREATE OR REPLACE FUNCTION pgr_nodeNetwork(intab text, n_pkey text, n_geom text,  outtab text, tol double precision) RETURNS text AS
+
+/*****************************************************************************
+* Author: Nicolas Ribot, 2013
+******************************************************************************/
+
+
+CREATE OR REPLACE FUNCTION pgr_nodeNetwork(intab text, n_pkey text, n_geom text,  outtab text, tol double precision) RETURNS text AS
 $BODY$
 DECLARE
 	/*

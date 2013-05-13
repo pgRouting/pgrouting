@@ -27,6 +27,6 @@ The following are commonly used data types for some of the pgRouting functions. 
    pgrouting_analytics
    pgrouting_matching
    pgrouting_topology
-   pgrouting_node_table
+   pgrouting_node_network
 
 

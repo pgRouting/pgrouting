@@ -58,6 +58,7 @@ Synopsis
 -------------------------------------------------------------------------------
 
 .. code-block:: sql
+
     text pgr_nodeNetwork(intab text, n_pkey text, n_geom text,  outtab text, tol double precision)
 
 Description
