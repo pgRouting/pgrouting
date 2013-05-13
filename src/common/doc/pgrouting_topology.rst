@@ -13,8 +13,23 @@ Topology Overview
 =================
 
 Typically when GIS files are loaded into the data database for use with
-pgRouting they do not have topology information assocatired with. For 
-those cases where topology needs to be added the following functions may
+pgRouting they do not have topology information assocatired with. For data
+to create a useful topology it needs to be "noded". This means that where two
+or more roads form an intersection there ineeds to be a node at the 
+intersection and all the road segments need to be broken at the intersection.
+
+You can use the graph analysis functions to help you see where you might
+have problems in your data. If you need to node your data, we also have a
+function pgr_nodeNetwork that might work for you. This function splits
+ALL crossing segments and nodes them. There are some cases where this might
+NOT be the right thing to do.
+
+For example, when you have an overpass and underpass intersection, you do not
+want these noded, but pgr_nodeNetwork does not know that is the cases and
+will node them which is not good because then the router will be able to 
+turn off the overpass onto the underpass like it was a flat 2D intersection.
+
+For those cases where topology needs to be added the following functions may
 be useful. One way to prep the data for pgRouting is to add the following
 columns to your table and then populate them as appropriate.
 
@@ -35,9 +50,9 @@ columns to your table and then populate them as appropriate.
         add column rule text,
         add column isolated integer;
 
-    select pgr_assign_vertex_id('st', 0.000001, 'the_geom', 'gid');
+    select pgr_createTopology('st', 0.000001, 'the_geom', 'gid');
 
-The function pgr_assign_vertex_id() will create the "vertices_tmp" table
+The function pgr_createTopology() will create the "vertices_tmp" table
 and populate the "source" and "target" columns. The following example
 populated the remaining columns. In this example, the "fcc" column contains
 feature class code and the CASE statements converts it to an average speed.
@@ -107,7 +122,7 @@ Now your database should be ready to use any (most?) of the pgRouting
 Functions
 =========
 
-.. function:: pgr_assign_vertex_id(geom_table varchar, tolerance double precision, geo_cname varchar, gid_cname varchar)
+.. function:: pgr_createTopology(geom_table varchar, tolerance double precision, geo_cname varchar, gid_cname varchar)
 
    Fill the source and target_id column for all lines. All line ends
    with a distance less than tolerance, are assigned the same id.
@@ -120,9 +135,9 @@ Functions
 
 
 
-.. function:: pgr_point_to_id(p, tolerance)
+.. function:: pgr_pointToId(p, tolerance)
 
-   *This function should not be used directly. Use assign_vertex_id instead.*
+   *This function should not be used directly. Use pgr_createTopology instead.*
 
    Inserts a point into a temporary vertices table, and return an id
    of a new point or an existing point. Tolerance is the minimal distance

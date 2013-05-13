@@ -29,7 +29,7 @@ Returns a set of :ref:`pgr_pathResult <type_pgr_pathResult>` (vertex_id, edge_id
 
 .. code-block:: sql
 
-	path_result[] PGR_Astar(sql text, source integer, target integer, directed boolean, reverse_cost boolean);
+	pgr_pathResult[] PGR_Astar(sql text, source integer, target integer, directed boolean, reverse_cost boolean);
 
 
 Description
