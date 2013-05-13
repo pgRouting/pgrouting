@@ -46,6 +46,11 @@ Description
     :cost: ``float8`` a positive value for the cost to traverse this edge
 
 
+.. rubric:: History
+
+* New in version 2.0.0
+
+
 Examples
 -------------------------------------------------------------------------------
 

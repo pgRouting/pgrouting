@@ -9,7 +9,7 @@
 
 .. _trsp:
 
-pgr_trsp - Turn Restriction Shortest PAth (TRSP)
+pgr_trsp - Turn Restriction Shortest Path (TRSP)
 ===============================================================================
 
 

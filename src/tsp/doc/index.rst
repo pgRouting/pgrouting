@@ -52,28 +52,23 @@ The TSP solver is using a genetic algorithm. It is not an exact solution, but it
 	``edge_id`` and ``cost`` attribute of the result set are not used and always contain ``0``.
 
 
+.. rubric:: History
+
+* Renamed in version 2.0.0
+* GAUL dependency removed in version 2.0.0
+
+
 Examples
 -------------------------------------------------------------------------------
 
 .. code-block:: sql
 
-	SELECT * FROM pgr_tsp('SELECT distinct source AS source_id, 
+	SELECT * FROM pgr_tsp('SELECT distinct source, 
 		               x1::double precision AS x, 
-		               y1::double precision AS y FROM dourol 
-		     WHERE source IN (83593,66059,10549,18842,13)',
-		               '83593,66059,10549,18842,13', 10549);
+		               y1::double precision AS y FROM edge_table 
+		     WHERE source IN (<list of ids>)',
+		               '<list of ids>', <start id>);
 
-
-.. code-block:: sql
-
-	 vertex_id | edge_id | cost
-	-----------+---------+------
-		 10549 |       0 |    0
-		 83593 |       0 |    0
-		 66059 |       0 |    0
-		 18842 |       0 |    0
-		    13 |       0 |    0
-	(5 rows)
 	
 .. note::
 	Afterwards ``vertex_id`` column can be used for shortest path calculation.

@@ -57,6 +57,8 @@ Reference
 	../src/common/doc/index
 	../src/common/doc/types
 
+pgRouting functions alphabetical order:
+
 .. toctree::
 	:maxdepth: 1
 

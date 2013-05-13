@@ -55,6 +55,11 @@ Description
 :reverse_cost: if ``true``, the ``reverse_cost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.
 
 
+.. rubric:: History
+
+* Renamed in version 2.0.0
+
+
 Examples
 -------------------------------------------------------------------------------
 
@@ -62,17 +67,8 @@ Examples
 
 	SELECT * FROM pgr_dijkstra(
 		'SELECT id, source, target, cost FROM edge_table',
-		3, 7, false, false
+		<source id>, <target id>, false, false
 	);
-
-
-	 vertex_id | edge_id | cost 
-	-----------+---------+------------------------
-	         3 |       2 |    0.000763954363701041
-	         4 |      21 |    0.00150254971056274
-	         6 |       5 |    0.000417442425988342
-	         7 |      -1 |    0
-	(4 rows)
 
 
 See Also

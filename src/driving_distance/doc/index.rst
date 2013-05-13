@@ -55,6 +55,11 @@ Description
 :reverse_cost: if ``true``, the ``reverse_cost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.
 
 
+.. rubric:: History
+
+* Renamed in version 2.0.0
+
+
 Examples
 -------------------------------------------------------------------------------
 
@@ -62,20 +67,8 @@ Examples
 
 	SELECT * FROM pgr_drivingDistance(
 		'SELECT id, source, target, cost FROM edge_table',
-		100, 0.01, false, false
+		<source id>, <cost as distance>, false, false
 	);
-
-
-.. code-block:: sql
-
-	 vertex_id | edge_id |     cost
-	-----------+---------+---------------
-		  6190 |  120220 | 0.00967666852
-		  6205 |  118671 | 0.00961557335
-		  ...
-		 15417 |  120471 | 0.00942316736
-		 15483 |  121629 | 0.00972957546
-	(293 rows)
 
 
 See Also

@@ -25,7 +25,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`pgr_pathResult <type_pgr_pathResult>` (vertex_id, edge_id, cost) rows, that make up a path.
+Returns a set of :ref:`pgr_pathResult <type_path_result>` (vertex_id, edge_id, cost) rows, that make up a path.
 
 .. code-block:: sql
 
@@ -58,6 +58,11 @@ Description
 :reverse_cost: if ``true``, the ``reverse_cost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.
 
 
+.. rubric:: History
+
+* Renamed in version 2.0.0
+
+
 Examples
 -------------------------------------------------------------------------------
 
@@ -65,20 +70,11 @@ Examples
 
 	SELECT * FROM pgr_astar(
 		'SELECT id, source, target, cost, x1, y1, x2, y2 FROM edge_table',
-		3, 7, false, false
+		<source id>, <target id>, false, false
 	);
-
-
-	 vertex_id | edge_id | cost 
-	-----------+---------+------------------------
-	         3 |       2 |    0.000763954363701041
-	         4 |      21 |    0.00150254971056274
-	         6 |       5 |    0.000417442425988342
-	         7 |      -1 |    0
-	(4 rows)
 
 
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`type_pgr_pathResult`
+* :ref:`type_path_result`
