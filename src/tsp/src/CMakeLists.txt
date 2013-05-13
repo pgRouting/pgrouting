@@ -23,10 +23,10 @@ add_library(routing_tsp ${LIBRARY_MODE_TARGET} tsp.c tsp.h tsplib.c)
 
 if(WIN32)
   if(MSVC)
-    set_target_properties(routing_ksp PROPERTIES COMPILE_FLAGS "-DHAVE_GETHOSTNAME")
+    set_target_properties(routing_tsp PROPERTIES COMPILE_FLAGS "-DHAVE_GETHOSTNAME")
   else(MSVC)
-    set_target_properties(routing_ksp PROPERTIES COMPILE_FLAGS "-DBUILDING_DLL")
-    set_target_properties(routing_ksp PROPERTIES LINK_FLAGS -Wl,--export-all-symbols)
+    set_target_properties(routing_tsp PROPERTIES COMPILE_FLAGS "-DBUILDING_DLL")
+    set_target_properties(routing_tsp PROPERTIES LINK_FLAGS -Wl,--export-all-symbols)
   endif(MSVC)
 endif(WIN32)
 
