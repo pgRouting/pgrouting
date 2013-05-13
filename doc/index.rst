@@ -9,7 +9,7 @@
 
 .. _index:
 
-pgRouting Manual
+Table of Contents
 ===============================================================================
 
 pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgresql.org>`_ geospatial database to provide geospatial routing and other network analysis functionality.
@@ -45,6 +45,7 @@ Tutorial
 	src/tutorial/recipes
 	src/tutorial/performance
 
+For a more complete introduction how to build a routing application read the `pgRouting Workshop <http://workshop.pgrouting.org>`_ (current version written for pgRouting 1.x).
 
 *******************************************************************************
 Reference

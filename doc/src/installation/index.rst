@@ -59,9 +59,9 @@ See :ref:`build` for notes on compiling from source.
 Source Package
 ********************************************************************************
 
-* Git 2.0.0 release: `tar.gz <http:/download.sample>`_ `zip <http:/download.sample>`_
-* Git master branch: `tar.gz <http:/download.sample>`_ `zip <http:/download.sample>`_
-* Git develop branch: `tar.gz <http:/download.sample>`_ `zip <http:/download.sample>`_
+* Git 2.0.0 release: `v2.0.0.tar.gz <https://github.com/pgRouting/pgrouting/archive/v2.0.0.tar.gz>`_  | `v2.0.0.zip <https://github.com/pgRouting/pgrouting/archive/v2.0.0.zip>`_
+* Git master branch: `master.tar.gz <https://github.com/pgRouting/pgrouting/archive/master.tar.gz>`_  | `master.zip <https://github.com/pgRouting/pgrouting/archive/master.zip>`_
+* Git develop branch: `develop.tar.gz <https://github.com/pgRouting/pgrouting/archive/develop.tar.gz>`_  | `develop.zip <https://github.com/pgRouting/pgrouting/archive/develop.zip>`_
 
 
 Using Git
@@ -71,12 +71,12 @@ Git protocol (read-only):
 
 .. code-block:: bash
 
-	git clone git://github.com/qgis/Quantum-GIS.git
+	git clone git://github.com/pgRouting/pgrouting.git
 
 
 HTTPS protocol (read-only):
 
 .. code-block:: bash
 
-	git clone https://github.com/qgis/Quantum-GIS.git
+	git clone https://github.com/pgRouting/pgrouting.git
 
