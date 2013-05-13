@@ -13,23 +13,23 @@ pgr_apspWarshall - All Pairs Shortest Path, Floyd-Warshall Algorithm
 ===============================================================================
 
 .. index::
-    single: PGR_apspWarshall(text)
+    single: pgr_apspWarshall(text)
     module: apsp
 
 Name
 -------------------------------------------------------------------------------
 
-``PGR_apspWarshall`` - Returns all costs for each pair of nodes in the graph.
+``pgr_apspWarshall`` - Returns all costs for each pair of nodes in the graph.
 
 
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`pgr_apspEdge <type_pgr_apspEdge>` (source_id, target_id, cost) rows for every pair of nodes in the graph.
+Returns a set of :ref:`pgr_apspEdge <type_apsp_edge>` (source_id, target_id, cost) rows for every pair of nodes in the graph.
 
 .. code-block:: sql
 
-    pgr_apspEdge[] PGR_apspWarshall(sql text);
+    pgr_apspEdge[] pgr_apspWarshall(sql text);
 
 
 Description
@@ -56,4 +56,9 @@ Examples
             'SELECT source, target, cost FROM edge_table'
         );
 
+
+See Also
+-------------------------------------------------------------------------------
+
+* :ref:`type_apsp_edge`
 

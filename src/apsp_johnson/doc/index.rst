@@ -13,23 +13,23 @@ pgr_apspJohnson - All Pairs Shortest Path, Johnson's Algorithm
 ===============================================================================
 
 .. index::
-    single: PGR_apspJohnson(text)
+    single: pgr_apspJohnson(text)
     module: apsp
 
 Name
 -------------------------------------------------------------------------------
 
-``PGR_apspJohnson`` - Returns all costs for each pair of nodes in the graph.
+``pgr_apspJohnson`` - Returns all costs for each pair of nodes in the graph.
 
 
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`pgr_apspEdge <type_pgr_apspEdge>` (source_id, target_id, cost) rows for every pair of nodes in the graph.
+Returns a set of :ref:`pgr_apspEdge <type_apsp_edge>` (source_id, target_id, cost) rows for every pair of nodes in the graph.
 
 .. code-block:: sql
 
-    pgr_apspEdge[] PGR_apspJohnson(sql text);
+    pgr_apspEdge[] pgr_apspJohnson(sql text);
 
 
 Description
