@@ -35,7 +35,7 @@ Ubuntu packages are available in a `Launchpad repository <https://launchpad.net/
 
 	# Install pgRouting packages
 	sudo apt-get install 
-			postgresql-9.1-pgrouting \
+	        postgresql-9.1-pgrouting \
 	        postgresql-9.1-pgrouting-dd 
 
 
