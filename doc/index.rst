@@ -34,6 +34,7 @@ General
 	src/introduction/support
 	src/installation/index
 
+
 *******************************************************************************
 Tutorial
 *******************************************************************************
@@ -90,8 +91,8 @@ Developer
 .. toctree::
 	:maxdepth: 1
 
-	src/developer/index
 	src/installation/build
+	src/developer/index
 	src/developer/sampledata
 
 

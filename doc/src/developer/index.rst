@@ -9,7 +9,7 @@
 
 .. _developer:
 
-Developer's Documention Guide
+Developer's Guide
 ===============================================================================
 
 .. note:: 
