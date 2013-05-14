@@ -1,0 +1,150 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_tsp - Traveling Sales Person &mdash; pgRouting Manual</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0 (dd54f87 sew-devel-2_0)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual" href="../../../index.html" />
+    <link rel="next" title="pgr_trsp - Turn Restriction Shortest Path (TRSP)" href="../../trsp/doc/index.html" />
+    <link rel="prev" title="pgr_ksp - K-Shortest Path" href="../../ksp/doc/index.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual</span></a></h1>
+        <h2 class="heading"><span>pgr_tsp - Traveling Sales Person</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../ksp/doc/index.html">pgr_ksp - K-Shortest Path</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../trsp/doc/index.html">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-tsp-traveling-sales-person">
+<span id="pgr-tsp"></span><h1>pgr_tsp - Traveling Sales Person<a class="headerlink" href="#pgr-tsp-traveling-sales-person" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_tsp</span></tt> - Returns the best route from a start node via a list of nodes.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Returns a set of <a class="reference internal" href="../../common/doc/types/path_result.html#type-path-result"><em>path_result</em></a> (vertex_id, edge_id, cost) rows, that make up a path.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">path_result</span><span class="p">[]</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">,</span> <span class="nb">varchar</span> <span class="n">ids</span><span class="p">,</span> <span class="nb">integer</span> <span class="k">source</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>The tsp solution is based on ordering the points using straight line (euclidean) distance between nodes. There was some thought given to pre-calculating the driving distances between the nodes using Dijkstra, but then I read a paper (unfortunately I don&#8217;t remember who wrote it), where it was proved that the quality of TSP with euclidean distance is only slightly worse that one with real distance in case of normal city layout. In case of very sparse network or rivers and bridges it becomes more inaccurate, but still wholly satisfactory. Of course it is nice to have exact solution, but this is a compromise between quality and speed (and development time also).</p>
+<p>The TSP solver is using a genetic algorithm. It is not an exact solution, but it is guarantied that you get a solution after certain number of iterations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first">a SQL query, which should return a set of rows with the following columns:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">source_id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the vertex</td>
+</tr>
+<tr class="field-even field"><th class="field-name">x:</th><td class="field-body"><tt class="docutils literal"><span class="pre">x</span></tt> coordinate of the vertex</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">y:</th><td class="field-body"><tt class="docutils literal"><span class="pre">y</span></tt> coordinate of the vertex</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ids:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">text</span></tt> string containig <tt class="docutils literal"><span class="pre">int4</span></tt> ids of vertices separated by commas</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">int4</span></tt> id of the start point</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><tt class="docutils literal"><span class="pre">edge_id</span></tt> and <tt class="docutils literal"><span class="pre">cost</span></tt> attribute of the result set are not used and always contain <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
+</div>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>Renamed in version 2.0.0</li>
+<li>GAUL dependency removed in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;SELECT distinct source,</span>
+<span class="s1">                       x1::double precision AS x,</span>
+<span class="s1">                       y1::double precision AS y FROM edge_table</span>
+<span class="s1">             WHERE source IN (&lt;list of ids&gt;)&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;&lt;list of ids&gt;&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="k">start</span> <span class="n">id</span><span class="o">&gt;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Afterwards <tt class="docutils literal"><span class="pre">vertex_id</span></tt> column can be used for shortest path calculation.</p>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../common/doc/types/path_result.html#type-path-result"><em>pgr_pathResult[] - Path Result set</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../ksp/doc/index.html">pgr_ksp - K-Shortest Path</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../trsp/doc/index.html">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors.
+      Last updated on May 14, 2013.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

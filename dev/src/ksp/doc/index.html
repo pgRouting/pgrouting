@@ -1,0 +1,150 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_ksp - K-Shortest Path &mdash; pgRouting Manual</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0 (dd54f87 sew-devel-2_0)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual" href="../../../index.html" />
+    <link rel="next" title="pgr_tsp - Traveling Sales Person" href="../../tsp/doc/index.html" />
+    <link rel="prev" title="pgr_drivingDistance - Driving Distance" href="../../driving_distance/doc/index.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual</span></a></h1>
+        <h2 class="heading"><span>pgr_ksp - K-Shortest Path</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../driving_distance/doc/index.html">pgr_drivingDistance - Driving Distance</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../tsp/doc/index.html">pgr_tsp - Traveling Sales Person</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-ksp-k-shortest-path">
+<span id="ksp"></span><h1>pgr_ksp - K-Shortest Path<a class="headerlink" href="#pgr-ksp-k-shortest-path" title="Permalink to this headline">¶</a></h1>
+<p>KSP code base taken from
+<a class="reference external" href="http://code.google.com/p/k-shortest-paths/source">HERE</a>.</p>
+<p>Checkout is <cite>svn checkout http://k-shortest-paths.googlecode.com/svn/trunk/ k-shortest-paths-read-only</cite>.</p>
+<p>Setup the code expects to find a table that defines a serries on vertexs
+and nodes with the following format:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">create</span> <span class="k">table</span> <span class="n">network</span> <span class="p">(</span>
+    <span class="n">gid</span> <span class="nb">serial</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">source</span> <span class="nb">integer</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">target</span> <span class="nb">integer</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">cost</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">reverse_cost</span> <span class="nb">float</span>
+        <span class="n">the_geom</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>The table can be called anything, butit  must include the fields
+gid, source, target, cost and reverse_cost directory.</p>
+<p>Where:</p>
+<ul class="simple">
+<li><strong>gid</strong>:  is a unique integer value</li>
+<li><strong>source</strong>: is source vertex</li>
+<li><strong>target</strong>: is target vertex</li>
+<li><strong>cost</strong>: is the &#8216;cost&#8217; of getting from source to target</li>
+<li><strong>reverse_cost</strong>: is the &#8216;cost&#8217; of getting back from source to target</li>
+<li><strong>the_geom</strong>: a (MULTI)LINESTRING geometry that describes the route between source and target, it may be null, and is only used if asked for get generating the routes</li>
+</ul>
+<p>The code is invoked as:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">ksp_sp</span><span class="p">(</span>
+    <span class="k">sql</span> <span class="nb">text</span><span class="p">,</span>          <span class="c1">-- sql to select the edges</span>
+    <span class="n">tabname</span> <span class="nb">text</span><span class="p">,</span>      <span class="c1">-- name of edge table</span>
+    <span class="n">start_node</span><span class="p">,</span>        <span class="c1">-- start vertex id</span>
+    <span class="n">end_node</span><span class="p">,</span>          <span class="c1">-- end vertex id</span>
+    <span class="n">number_of_routes</span><span class="p">,</span>  <span class="c1">-- number of routes to compute</span>
+    <span class="n">use_reverse_cost</span>   <span class="c1">-- boolean</span>
+<span class="p">);</span>
+
+<span class="c1">-- For example:</span>
+
+    <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">ksp_sp</span><span class="p">(</span>
+    <span class="s1">&#39;select source, target, cost, reverse_cost, gid from network&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;network&#39;</span><span class="p">,</span>         <span class="c1">-- name of edge table</span>
+    <span class="mi">4</span><span class="p">,</span>                 <span class="c1">-- start node</span>
+    <span class="mi">5</span><span class="p">,</span>                 <span class="c1">-- end node</span>
+    <span class="mi">15</span><span class="p">,</span>                <span class="c1">-- number of routes</span>
+    <span class="s1">&#39;f&#39;</span>                <span class="c1">-- false so don&#39;t use reverse cost</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>The results are a list of link segments that describes the given route
+for each computed route, in the following format:</p>
+<ul class="simple">
+<li><strong>id</strong>: refers to the current result set</li>
+<li><strong>edge_id</strong>: refers to the gid in the supply table</li>
+<li><strong>route_id</strong>: refers to the current route</li>
+<li><strong>the_geom</strong>: refers to the geometry in the supply table</li>
+</ul>
+<p>For example:</p>
+<div class="highlight-text"><div class="highlight"><pre> id | edge_id | route_id |                                                   the_geom
+----+---------+----------+--------------------------------------------------------------------------------------------------------------
+  0 |      15 |        0 | 0105000020110F0000010000000102000000020000000000000000001040000000000000104000000000000010400000000000001840
+  1 |      13 |        1 | 0105000020110F0000010000000102000000020000000000000000001040000000000000104000000000000008400000000000000840
+  2 |      10 |        1 | 0105000020110F0000010000000102000000020000000000000000000840000000000000084000000000000000000000000000000000
+  3 |       2 |        1 | 0105000020110F0000010000000102000000020000000000000000000000000000000000000000000000000000400000000000000040
+  4 |       9 |        1 | 0105000020110F0000010000000102000000020000000000000000000040000000000000004000000000000010400000000000001840
+  5 |      13 |        2 | 0105000020110F0000010000000102000000020000000000000000001040000000000000104000000000000008400000000000000840
+  6 |      10 |        2 | 0105000020110F0000010000000102000000020000000000000000000840000000000000084000000000000000000000000000000000
+  7 |       1 |        2 | 0105000020110F00000100000001020000000200000000000000000000000000000000000000000000000000F03F000000000000F03F
+  8 |       5 |        2 | 0105000020110F000001000000010200000002000000000000000000F03F000000000000F03F00000000000000400000000000000040
+  9 |       9 |        2 | 0105000020110F0000010000000102000000020000000000000000000040000000000000004000000000000010400000000000001840
+</pre></div>
+</div>
+<p>This set of results describes 3 results: route_id 0 is one hop, 1 is 4 hops, and 2 is 5 hops.</p>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../driving_distance/doc/index.html">pgr_drivingDistance - Driving Distance</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../tsp/doc/index.html">pgr_tsp - Traveling Sales Person</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors.
+      Last updated on May 14, 2013.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
