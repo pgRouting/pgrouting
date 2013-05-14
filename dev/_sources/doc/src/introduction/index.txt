@@ -16,7 +16,29 @@ pgRouting is an extension of `PostGIS <http://postgis.net>`_ and `PostgreSQL <ht
 
 pgRouting is an `OSGeo Labs <http://wiki.osgeo.org/wiki/OSGeo_Labs>`_ project of the `OSGeo Foundation <http://osgeo.org>`_ and included on `OSGeo Live <http://live.osgeo.org/>`_. 
 
-pgRouting is available under `GNU General Public License, version 2 <http://www.gnu.org/licenses/gpl-2.0.html>`_.
+
+.. _license:
+
+License
+-------------------------------------------------------------------------------
+
+The following licenses can be found in pgRouting:
+
+.. list-table::
+   :widths: 250 500
+
+   * - **License**
+     - 
+   * - GNU General Public License, version 2
+     - Most features of pgRouting are available under `GNU General Public License, version 2 <http://www.gnu.org/licenses/gpl-2.0.html>`_.
+   * - Boost Software License - Version 1.0
+     - Some Boost extensions are available under `Boost Software License - Version 1.0 <http://www.boost.org/LICENSE_1_0.txt>`_.
+   * - MIT-X License
+     - Some code contributed by iMaptools.com is available under MIT-X license.
+   * - Creative Commons Attribution-Share Alike 3.0 License
+     - The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/>`_.
+
+In general license information should be included in the header of each source file.
 
 
 Contributors

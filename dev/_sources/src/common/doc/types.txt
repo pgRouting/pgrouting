@@ -9,16 +9,15 @@
 
 .. _common_types:
 
-pgRouting Custom Types
+Custom Types
 ===============================================================================
 
-The following are commonly used data types for some of the pgRouting functions. There are some additional types that are not documented here because they are specific to a single or small group of functions and are documented with those functions.
+The following are commonly used data types for some of the pgRouting functions. 
 
 .. toctree::
     :maxdepth: 1
 
-    types/apsp_edge
-    types/geoms
-    types/path_result
+    types/cost_result
+    types/geom_result
     types/vertex_result
 

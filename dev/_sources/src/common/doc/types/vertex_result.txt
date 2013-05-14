@@ -33,6 +33,14 @@ Description
         y float8
     );
 
+:x: x-coordinate
+:y: y-coordinate
+
+
+.. rubric:: History
+
+* Renamed in version 2.0.0
+
 
 See Also
 -------------------------------------------------------------------------------

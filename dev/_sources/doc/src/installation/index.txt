@@ -12,19 +12,19 @@
 Installation
 ===============================================================================
 
-Binary Distribution
---------------------------------------------------------------------------------
-
 Binary packages are provided for the current version on the following platforms:
 
-.. rubric:: Windows
+
+Windows
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Winnie Bot Experimental Builds: 
 
 * `PostgreSQL 9.2 32-bit, 64-bit <http://winnie.postgis.net/download/windows/pg92/buildbot/>`_
 
 
-.. rubric:: Ubuntu/Debian
+Ubuntu/Debian
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Ubuntu packages are available in a `Launchpad repository <https://launchpad.net/~georepublic/+archive/pgrouting>`_:
 
@@ -40,27 +40,31 @@ Ubuntu packages are available in a `Launchpad repository <https://launchpad.net/
 Use `UbuntuGIS-unstable PPA <https://launchpad.net/~ubuntugis/+archive/ubuntugis-unstable>`_ to install PostGIS 2.0.
 
 
-.. rubric:: RHEL/CentOS/Fedora
+RHEL/CentOS/Fedora
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Fedora RPM's: https://admin.fedoraproject.org/pkgdb/acls/name/pgRouting
 
 
-.. rubric:: OSX
+OSX
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 See `builds from KingChaos <http://www.kyngchaos.com/software/postgres>`_.
 
 
 Build from Source
---------------------------------------------------------------------------------
+===============================================================================
 
-.. rubric:: Source Package
+Source Package
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Git 2.0.0 release: `v2.0.0.tar.gz <https://github.com/pgRouting/pgrouting/archive/v2.0.0.tar.gz>`_  | `v2.0.0.zip <https://github.com/pgRouting/pgrouting/archive/v2.0.0.zip>`_
 * Git master branch: `master.tar.gz <https://github.com/pgRouting/pgrouting/archive/master.tar.gz>`_  | `master.zip <https://github.com/pgRouting/pgrouting/archive/master.zip>`_
 * Git develop branch: `develop.tar.gz <https://github.com/pgRouting/pgrouting/archive/develop.tar.gz>`_  | `develop.zip <https://github.com/pgRouting/pgrouting/archive/develop.zip>`_
 
 
-.. rubric:: Using Git
+Using Git
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Git protocol (read-only):
 

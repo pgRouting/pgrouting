@@ -25,7 +25,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`path_result <type_path_result>` (vertex_id, edge_id, cost) rows, that make up a path.
+Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a list of accessible points.
 
 .. code-block:: sql
 
@@ -74,4 +74,4 @@ Examples
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`type_path_result`
+* :ref:`type_cost_result`
