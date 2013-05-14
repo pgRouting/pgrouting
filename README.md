@@ -2,7 +2,7 @@
 
 ## Publish on GH-Pages
 
-pgRouting documentation is hosted on (GitHub Pages)[http://pages.github.com] with custom domain settings.
+pgRouting documentation is hosted on [GitHub Pages](http://pages.github.com) with custom domain settings.
 
 The following steps are needed to update the documentation:
 
