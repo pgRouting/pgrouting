@@ -28,7 +28,7 @@ if(WITH_DOC)
     set(SPHINX_CACHE_DIR "${PGROUTING_BINARY_DIR}/doc/_doctrees")
 
     # HTML output directory
-    set(SPHINX_HTML_DIR "${PGROUTING_BINARY_DIR}/dev")
+    set(SPHINX_HTML_DIR "${PGROUTING_BINARY_DIR}/html")
 
     configure_file(
         "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
