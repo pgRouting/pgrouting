@@ -90,8 +90,9 @@ Developer
 .. toctree::
 	:maxdepth: 1
 
-	src/installation/build
 	src/developer/index
+	src/installation/build
+	src/developer/sampledata
 
 
 .. rubric:: Indices and tables
