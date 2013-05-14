@@ -62,6 +62,7 @@ while (my $a = shift @ARGV) {
 my @cfgs = ();
 my %stats = (z_pass=>0, z_fail=>0, z_crash=>0);
 my $TMP = "/tmp/pgr-test-runner-$$";
+my $TMP2 = "/tmp/pgr-test-runner-$$-2";
 
 if (! $psql) {
     $psql = findPsql() || die "ERROR: can not find psql, specify it on the command line.\n";
@@ -116,8 +117,14 @@ dropTestDB();
 print Data::Dumper->Dump([\%stats], ['stats']);
 
 unlink $TMP;
+unlink $TMP2;
 
-exit;
+if ($stats{z_crash} || $stats{z_fail}) {
+    exit 1;  # signal we had failures
+}
+
+exit 0;      # signal we passed all the tests
+
 
 sub run_test {
     my $c = shift;
@@ -128,7 +135,7 @@ sub run_test {
 
     $res{comment} = $t->{comment} if $t->{comment};
     for my $x (@{$t->{data}}) {
-        mysystem("$psql -U $DBUSER -h $DBHOST -A -t -q -f '$dir/$x' $DBNAME ");
+        mysystem("$psql -U $DBUSER -h $DBHOST -A -t -q -f '$dir/$x' $DBNAME >> $TMP2 2>\&1 ");
     }
 
     for my $x (@{$t->{tests}}) {
