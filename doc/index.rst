@@ -31,6 +31,7 @@ General
 
 	src/introduction/index
 	src/introduction/license
+	src/introduction/support
 	src/installation/index
 
 *******************************************************************************
@@ -73,6 +74,13 @@ pgRouting functions in alphabetical order:
 	../src/ksp/doc/index
 	../src/tsp/doc/index
 	../src/trsp/doc/index
+
+Some functions from previous releases may have been removed. 
+
+.. toctree::
+	:maxdepth: 1
+
+	src/developer/discontinued
 
 
 *******************************************************************************
