@@ -35,13 +35,13 @@ if(WITH_DOC)
         "${BINARY_BUILD_DIR}/conf.py"
         @ONLY)
 
-    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/gh-pages.html" DESTINATION "${PGROUTING_BINARY_DIR}")
-    file(RENAME "${PGROUTING_BINARY_DIR}/gh-pages.html" "${PGROUTING_BINARY_DIR}/index.html")
-
     file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/static" DESTINATION "${BINARY_BUILD_DIR}")
     file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/themes" DESTINATION "${BINARY_BUILD_DIR}")
     file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/CNAME" DESTINATION "${PGROUTING_BINARY_DIR}")
-    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/index.html" DESTINATION "${SPHINX_HTML_DIR}")
+    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/index.html" DESTINATION "${PGROUTING_BINARY_DIR}")
+
+    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/forward.html" DESTINATION "${SPHINX_HTML_DIR}")
+    file(RENAME "${SPHINX_HTML_DIR}/forward.html" "${SPHINX_HTML_DIR}/index.html")
 
     add_custom_target(pgRoutingDocumentationdoc ALL
         ${SPHINX_EXECUTABLE}
