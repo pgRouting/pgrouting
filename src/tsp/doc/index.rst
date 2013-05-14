@@ -25,11 +25,11 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`path_result <type_path_result>` (vertex_id, edge_id, cost) rows, that make up a path.
+Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
 
 .. code-block:: sql
 
-	path_result[] pgr_tsp(text sql, varchar ids, integer source);
+	pgr_costResult[] pgr_tsp(text sql, varchar ids, integer source);
 
 
 Description
@@ -77,4 +77,4 @@ Examples
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`type_path_result`
+* :ref:`type_cost_result`

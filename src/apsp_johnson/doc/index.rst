@@ -25,11 +25,11 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`pgr_apspEdge <type_apsp_edge>` (source_id, target_id, cost) rows for every pair of nodes in the graph.
+Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) (source_id, target_id, cost) rows for every pair of nodes in the graph.
 
 .. code-block:: sql
 
-    pgr_apspEdge[] pgr_apspJohnson(sql text);
+    pgr_costResult[] pgr_apspJohnson(sql text);
 
 
 Description
@@ -65,4 +65,4 @@ Examples
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`type_apsp_edge`
+* :ref:`type_cost_result`
