@@ -28,7 +28,7 @@ if(WITH_DOC)
     set(SPHINX_CACHE_DIR "${PGROUTING_BINARY_DIR}/doc/_doctrees")
 
     # HTML output directory
-    set(SPHINX_HTML_DIR "${PGROUTING_BINARY_DIR}/html")
+    set(SPHINX_HTML_DIR "${PGROUTING_BINARY_DIR}/dev")
 
     configure_file(
         "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
@@ -37,7 +37,8 @@ if(WITH_DOC)
 
     file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/static" DESTINATION "${BINARY_BUILD_DIR}")
     file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/themes" DESTINATION "${BINARY_BUILD_DIR}")
-    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/index.html" DESTINATION "${SPHINX_HTML_DIR}")
+    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/CNAME" DESTINATION "${PGROUTING_BINARY_DIR}")
+    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/index.html" DESTINATION "${PGROUTING_BINARY_DIR}")
 
     add_custom_target(pgRoutingDocumentationdoc ALL
         ${SPHINX_EXECUTABLE}
