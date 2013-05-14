@@ -20,7 +20,7 @@ This is the manual for version |release|.
 	:align: left
 	:alt: Creative Commons Attribution-Share Alike 3.0 License
 
-This work is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/>`_. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to http://pgrouting.org.
+The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/>`_. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to http://pgrouting.org. For other licenses used in pgRouting see the :ref:`license` page.
 
 *******************************************************************************
 General
@@ -30,6 +30,7 @@ General
 	:maxdepth: 1
 
 	src/introduction/index
+	src/introduction/license
 	src/installation/index
 
 *******************************************************************************
