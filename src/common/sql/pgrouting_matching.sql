@@ -135,8 +135,8 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- tbl - table name
 -------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION pgr_findNodeByNearestLinkDwithin(point varchar, distance double precision, tbl varchar)
-    RETURNS pgr_linkPoint AS
+CREATE OR REPLACE FUNCTION pgr_findNodeByNearestLinkDwithin(point varchar, distance double precision, tbl varchar, OUT id integer, OUT name varchar)
+AS
 $$
 DECLARE
     row record;
@@ -144,7 +144,6 @@ DECLARE
     d1 double precision;
     d2 double precision;
     field varchar;
-    res pgr_linkPoint;
     
     srid integer;
 BEGIN
@@ -159,8 +158,8 @@ BEGIN
     EXECUTE 'select id from pgr_findNearestLinkDwithin(''' ||
         point || ''', ' || distance || ', ''' || tbl || ''') as id' INTO row;
     IF row.id is null THEN
-        res.id = -1;
-        RETURN res;
+        id := -1;
+        RETURN;
     END IF;
     link:=row.id;
 
@@ -185,10 +184,10 @@ BEGIN
     EXECUTE 'select ' || field || ' as id, ''' || field || ''' as f from ' ||
         tbl || ' where gid=' || link INTO row;
         
-    res.id:=row.id;
-    res.name:=row.f;
+    id := row.id;
+    name := row.f;
     
-    RETURN res;
+    RETURN;
 END;
 $$
 LANGUAGE 'plpgsql' VOLATILE STRICT;
@@ -205,13 +204,14 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION pgr_matchLineAsGeometry(tbl varchar, line geometry, distance double precision, distance2 double precision, dir boolean, rc boolean)
-    RETURNS SETOF pgr_geoms AS
+    RETURNS SETOF pgr_geomResult AS
 $$
 DECLARE
     row record;
     num integer;
     i integer;
-    geom pgr_geoms;
+    j integer;
+    geom pgr_geomResult;
     points integer[];
     
     srid integer;
@@ -261,8 +261,10 @@ BEGIN
     
             -- We could find existing edge, so let's construct the main query now
     
-            query := 'select gid, the_geom FROM shortest_path( ''select gid as id, source::integer,'||
-                ' target::integer, length::double precision as cost,x1,x2,y1,y2';
+            query := 'select id1, geom FROM pgr_dijkstra(' ||
+                ' ''select gid as id, source::integer,' ||
+                ' target::integer, length::double precision as cost,' ||
+                ' x1, x2, y1, y2';
                 
             IF rc THEN
                 query := query || ', reverse_cost'; 
@@ -272,12 +274,15 @@ BEGIN
                 ||ST_Y(ST_PointN(line, i-1))-distance2*2||', '||ST_X(ST_PointN(line, i))+distance2*2||' '
                 ||ST_Y(ST_PointN(line, i))+distance2*2||')''''::BOX3D, '||srid||')&&the_geom'', '
                 || points[i-1] ||', '||    points[i-2] ||', '''||dir||''', '''||rc||'''), '
-                ||quote_ident(tbl)||' where edge_id=gid';
+                ||quote_ident(tbl)||' where id2=gid';
 
+            j := 0;
             FOR row IN EXECUTE query LOOP
-
-                geom.gid := row.gid;
-                geom.the_geom := row.the_geom;
+                geom.seq := j;
+                geom.id1 := row.id1;
+                geom.id2 := row.id2;
+                geom.geom := row.geom;
+                j := j + 1;
         
                 RETURN NEXT geom;
         
@@ -307,13 +312,14 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION pgr_matchLine(tbl varchar, line geometry, distance double precision, distance2 double precision, dir boolean, rc boolean)
-    RETURNS SETOF pgr_pathResult AS
+    RETURNS SETOF pgr_costResult AS
 $$
 DECLARE
     row record;
     num integer;
     
     i integer;
+    j integer;
     z integer;
     t integer;
     
@@ -321,7 +327,7 @@ DECLARE
     
     query text;
     
-    path pgr_pathResult;
+    path pgr_costResult;
     
     edges integer[];
     vertices integer[];
@@ -379,8 +385,8 @@ BEGIN
         IF i>1 AND points[i-2] <> points[i-1] THEN
             -- We could find existing edge, so let's construct the
             -- main query now
-            query := 'select edge_id, vertex_id, cost FROM ' ||
-                'shortest_path( ''select gid as id, source::integer,' ||
+            query := 'select * FROM ' ||
+                'pgr_dijkstra( ''select gid as id, source::integer,' ||
                 ' target::integer, length::double precision as cost, ' ||
                 'x1, x2, y1, y2';
                 
@@ -407,25 +413,25 @@ BEGIN
                     RETURN;
                 END IF;
 
-                edges[z] := row.edge_id;
-                vertices[z] := row.vertex_id;
-                costs[z] := row.cost;
+                vertices[z] := row.id1;
+                edges[z]    := row.id2;
+                costs[z]    := row.cost;
 
                 IF edges[z] = -1 THEN
                     t := 0;
                     -- Ordering edges
                     FOR t IN (prev+1)..z-1 LOOP
-                        path.edge_id := edges[t];
-                        path.vertex_id := vertices[t];
-                        path.cost = costs[t];
+                        path.id1  := vertices[t];
+                        path.id2  := edges[t];
+                        path.cost := costs[t];
                         
-                        edges[t] := edges[z-t+prev+1];
                         vertices[t] := vertices[z-t+prev+1];
+                        edges[t] := edges[z-t+prev+1];
                         costs[t] := costs[z-t+prev+1];
 
-                        edges[z-t+prev+1] := path.edge_id;
-                        vertices[z-t+prev+1] := path.vertex_id;
-                        costs[z-t+prev+1] := path.cost;
+                        vertices[z-t+prev+1] := path.id1;
+                        edges[z-t+prev+1]    := path.id2;
+                        costs[z-t+prev+1]    := path.cost;
                     END LOOP;
             
                     prev := z;
@@ -449,9 +455,10 @@ BEGIN
             OR (edges[array_upper(edges, 1)-t] < 0
                 AND t = array_upper(edges, 1)) THEN
 
-            path.edge_id := edges[array_upper(edges, 1)-t];
-            path.vertex_id := vertices[array_upper(edges, 1)-t];
-            path.cost = costs[array_upper(edges, 1)-t];
+            path.seq  := t;
+            path.id1  := vertices[array_upper(edges, 1)-t];
+            path.id2  := edges[array_upper(edges, 1)-t];
+            path.cost := costs[array_upper(edges, 1)-t];
             RETURN NEXT path;    
         END IF;
     END LOOP;

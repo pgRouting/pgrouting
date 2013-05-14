@@ -361,7 +361,7 @@ apsp_warshall(PG_FUNCTION_ARGS)
       funcctx->user_fctx = pair;
 
       funcctx->tuple_desc = 
-        BlessTupleDesc(RelationNameGetTupleDesc("pgr_apspEdge"));
+        BlessTupleDesc(RelationNameGetTupleDesc("pgr_costResult"));
 
       MemoryContextSwitchTo(oldcontext);
     }
@@ -396,15 +396,17 @@ apsp_warshall(PG_FUNCTION_ARGS)
       nulls[3] = ' ';
       */
     
-      values = palloc(3 * sizeof(Datum));
-      nulls = palloc(3 * sizeof(char));
+      values = palloc(4 * sizeof(Datum));
+      nulls = palloc(4 * sizeof(char));
 
-      values[0] = Int32GetDatum(pair[call_cntr].src_vertex_id);
+      values[0] = Int32GetDatum(call_cntr);
       nulls[0] = ' ';
-      values[1] = Int32GetDatum(pair[call_cntr].dest_vertex_id);
+      values[1] = Int32GetDatum(pair[call_cntr].src_vertex_id);
       nulls[1] = ' ';
-      values[2] = Float8GetDatum(pair[call_cntr].cost);
+      values[2] = Int32GetDatum(pair[call_cntr].dest_vertex_id);
       nulls[2] = ' ';
+      values[3] = Float8GetDatum(pair[call_cntr].cost);
+      nulls[3] = ' ';
 		      
       tuple = heap_formtuple(tuple_desc, values, nulls);
 

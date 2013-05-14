@@ -16,35 +16,35 @@ CREATE OR REPLACE FUNCTION pgr_ksp(
     route_count int4,
     reverse_cost boolean
   ) 
-  RETURNS SETOF pgr_kspGeoms AS
+  RETURNS SETOF pgr_geomResult AS
 $$
 DECLARE 
     r record;
-    result  pgr_kspResult;
-    geom pgr_kspGeoms;
+    result  pgr_costResult;
+    geom pgr_geomResult;
     id integer;
     the_request text;
 
 BEGIN
     
     id :=0;
-    the_request := 'select route_id, vertex_id, edge_id from pgr_ksp('''
+    the_request := 'select seq, id1, id2 from pgr_ksp('''
         || sql_request || ''', '
         || source || ','
         || target || ','
         || route_count || ','''
-        || reverse_cost || ''') kt where kt.edge_id <> 0' ;
+        || reverse_cost || ''') kt where kt.id2 <> 0' ;
     
     FOR result IN EXECUTE the_request LOOP
 
-        geom.id       := id;
-        geom.edge_id  := result.edge_id;
-        geom.route_id := result.route_id;
+        geom.seq := id;
+        geom.id1 := result.id2;
+        geom.id2 := result.seq;
         id := id + 1;
     
-        EXECUTE 'select the_geom from ' || route_tab || ' where gid ='|| result.edge_id INTO r;
+        EXECUTE 'select the_geom from ' || route_tab || ' where gid ='|| result.id2 INTO r;
 
-        geom.the_geom := r.the_geom;
+        geom.geom := r.the_geom;
                  
         RETURN NEXT geom;
 

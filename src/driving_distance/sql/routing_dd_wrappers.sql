@@ -24,7 +24,7 @@
 -- Last changes: 14.02.2008
 ----------------------------------------------------------
 CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar)
-       RETURNS SETOF pgr_geoms AS
+       RETURNS SETOF pgr_geomResult AS
 $$
 DECLARE
      r record;
@@ -33,12 +33,9 @@ DECLARE
      q text;
      x float8[];
      y float8[];
-     geom pgr_geoms;
-     id integer;
+     geom pgr_geomResult;
 BEGIN
 	
-     id :=0;
-									     
      i := 1;								     
      q := 'select 1 as gid, ST_GeometryFromText(''POLYGON((';
      
@@ -60,13 +57,13 @@ BEGIN
     q := q || ', ' || x[1] || ' ' || y[1];
     q := q || '))'',-1) as the_geom';
 
-    FOR r in EXECUTE q LOOP
-         geom.gid:=r.gid;
-         geom.the_geom=r.the_geom;
-	 id := id+1;
-	 geom.id       := id;
-	 RETURN NEXT geom;
-    END LOOP;
+    EXECUTE q INTO r;
+
+	geom.seq  := 0;
+    geom.id1  := 0;
+    geom.id2  := 0;
+    geom.geom := r.the_geom;
+	RETURN NEXT geom;
 
     RETURN;
 END;
@@ -77,23 +74,21 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(table_name varchar, x double precision, y double precision,
         distance double precision, cost varchar, reverse_cost varchar, directed boolean, has_reverse_cost boolean)
-       RETURNS SETOF pgr_geoms AS
+       RETURNS SETOF pgr_geomResult AS
 $$
 DECLARE
      q text;
      srid integer;
      r record;
-     geom pgr_geoms;
+     geom pgr_geomResult;
 BEGIN
      
-     FOR r IN EXECUTE 'SELECT srid FROM geometry_columns WHERE f_table_name = '''||table_name||'''' LOOP
-     END LOOP;
-     
+     EXECUTE 'SELECT srid FROM geometry_columns WHERE f_table_name = '''||table_name||'''' INTO r;
      srid := r.srid;
      
      RAISE NOTICE 'SRID: %', srid;
 
-     q := 'SELECT gid, the_geom FROM pgr_pointsAsPolygon(''SELECT a.vertex_id::integer AS id, b.x1::double precision AS x, b.y1::double precision AS y'||
+     q := 'SELECT * FROM pgr_pointsAsPolygon(''SELECT a.vertex_id::integer AS id, b.x1::double precision AS x, b.y1::double precision AS y'||
      ' FROM pgr_drivingDistance(''''''''SELECT gid AS id,source::integer,target::integer, '||cost||'::double precision AS cost, '||
      reverse_cost||'::double precision as reverse_cost FROM '||
      table_name||' WHERE ST_SetSRID(''''''''''''''''BOX3D('||
@@ -103,11 +98,12 @@ BEGIN
 
      RAISE NOTICE 'Query: %', q;
      
-     FOR r IN EXECUTE q LOOP     
-        geom.gid := r.gid;
-        geom.the_geom := r.the_geom;
-        RETURN NEXT geom;
-     END LOOP;
+     EXECUTE q INTO r;
+     geom.seq  := r.seq;
+     geom.id1  := r.id1;
+     geom.id2  := r.id2;
+     geom.geom := r.geom;
+     RETURN NEXT geom;
      
      RETURN;
 
@@ -139,45 +135,35 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION driving_distance_delta(table_name varchar, source_id integer,
 	distance double precision, delta float8, directed boolean, has_reverse_cost boolean)
-       RETURNS SETOF pgr_geoms AS
+       RETURNS SETOF pgr_geomResult AS
 $$
 DECLARE
      q text;
      srid integer;
      r record;
-     geom pgr_geoms;
+     geom pgr_geomResult;
 
      source_x float8;
      source_y float8;
 BEGIN
 
-     FOR r IN EXECUTE 'SELECT srid FROM geometry_columns WHERE f_table_name = '''||table_name||'''' LOOP
-     END LOOP;
-
+     EXECUTE 'SELECT srid FROM geometry_columns WHERE f_table_name = '''||table_name||''''  INTO r;
      srid := r.srid;
 
 
-     FOR r IN EXECUTE
-            'select ST_X(ST_StartPoint(the_geom)) as source_x from ' ||
-            quote_ident(table_name) || ' where source = ' ||
-            source_id || ' limit 1'
-        LOOP
-     END LOOP;
-
+     EXECUTE 'select ST_X(ST_StartPoint(the_geom)) as source_x from ' ||
+             quote_ident(table_name) || ' where source = ' ||
+             source_id || ' limit 1' INTO r;
      source_x := r.source_x;
 
 
-     FOR r IN EXECUTE
-            'select ST_Y(ST_StartPoint(the_geom)) as source_y from ' ||
-            quote_ident(table_name) || ' where source = ' ||
-            source_id || ' limit 1'
-        LOOP
-     END LOOP;
-
+     EXECUTE 'select ST_Y(ST_StartPoint(the_geom)) as source_y from ' ||
+             quote_ident(table_name) || ' where source = ' ||
+             source_id || ' limit 1' INTO r;
      source_y := r.source_y;
 
 
-     q := 'SELECT gid, the_geom FROM pgr_pointsAsPolygon(''SELECT a.vertex_id::integer AS id, b.x1::double precision AS x, b.y1::double precision AS y'||
+     q := 'SELECT * FROM pgr_pointsAsPolygon(''SELECT a.vertex_id::integer AS id, b.x1::double precision AS x, b.y1::double precision AS y'||
      ' FROM pgr_drivingDistance(''''''''SELECT gid AS id,source::integer,target::integer, length::double precision AS cost ';
 
      IF has_reverse_cost THEN q := q || ', reverse_cost::double precision ';
@@ -189,11 +175,12 @@ BEGIN
      source_x-delta||' '||source_y-delta||', '||source_x+delta||' '||source_y+delta||')''''''''::BOX3D, '||srid||')&&the_geom) b WHERE a.vertex_id = b.source'')';
 
 
-     FOR r IN EXECUTE q LOOP
-        geom.gid := r.gid;
-        geom.the_geom := r.the_geom;
-        RETURN NEXT geom;
-     END LOOP;
+     EXECUTE q INTO r;
+     geom.seq  := r.seq;
+     geom.id1  := r.id1;
+     geom.id2  := r.id2;
+     geom.geom := r.geom;
+     RETURN NEXT geom;
 
      RETURN;
 

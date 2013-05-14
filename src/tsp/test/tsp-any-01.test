@@ -1,1 +1,1 @@
-select vertex_id, edge_id, round(cost::numeric, 2) as cost from pgr_tsp('select source_id,x,y from tsp_00 where source_id<12', '1,2,3,4,5,6,7,8,9,10,11', 6);
+select seq, id1, id2, round(cost::numeric, 2) as cost from pgr_tsp('select source_id,x,y from tsp_00 where source_id<12', '1,2,3,4,5,6,7,8,9,10,11', 6);
