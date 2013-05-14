@@ -2,19 +2,21 @@
 
 ## INTRODUCTION
 
+pgRouting extends the PostGIS/PostgreSQL geospatial database to provide geospatial routing and other network analysis functionality.
+
 This library contains following features:
 
-* Dijkstra algorithm - Shortest path algorithm, which named in honor
-  of Prof. Dr. Edsger Wybe Dijkstra who has invented it
-* A-star (A*) algorithm - Shortest path algorithm using heuristical 
-  function
-* Driving distance - area person can cover in certain time from start
-  point using road network
-* TSP - Travelling Salesman Problem solution with default mazimum of
-  40 points
-* Shooting star (Shooting*) algorithm - Shortest path algorithm for
-  real road networks with turn restrictions, traffic lights and one
-  way streets. 
+* All Pairs Shortest Path, Johnson’s Algorithm
+* All Pairs Shortest Path, Floyd-Warshall Algorithm
+* Shortest Path A*
+* Bi-directional Dijkstra Shortest Path
+* Bi-directional A* Shortest Path
+* Shortest Path Dijkstra
+* Driving Distance
+* K-Shortest Path
+* Traveling Sales Person
+* Turn Restriction Shortest Path (TRSP)
+
 
 ## REQUIREMENT
 
@@ -28,7 +30,7 @@ This library contains following features:
 
 ## INSTALLATION
 
-[TBD]
+See online documentation: http://docs.pgrouting.org/dev/doc/src/installation/index.html
 
 ## COMPILATION
 
@@ -48,11 +50,7 @@ For Linux
 	make
 	sudo make install
 
-Build with documentation (requires Sphinx)
-
-* Sphinx: http://sphinx-doc.org/
-
-For Linux
+Build with documentation (requires [Sphinx](http://sphinx-doc.org/))
 
 	cmake -DWITH_DOC=ON -DWITH_DD=ON ..
 
@@ -78,8 +76,7 @@ For older versions of postgresql
 
 ## USAGE
 
-See online documentation:
-http://www.pgrouting.org/docs/1.x/index.html
+See online documentation: http://docs.pgrouting.org/dev/doc/index.html
 
 
 ## LICENSE
