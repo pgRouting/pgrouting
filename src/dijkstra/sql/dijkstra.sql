@@ -23,7 +23,7 @@
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION shortest_path(sql text, source_id integer, 
         target_id integer, directed boolean, has_reverse_cost boolean)
-        RETURNS SETOF pgr_pathResult
+        RETURNS SETOF pgr_costResult
         AS '$libdir/librouting'
         LANGUAGE c IMMUTABLE STRICT;
 

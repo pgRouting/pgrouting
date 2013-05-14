@@ -3,7 +3,7 @@
 --
 -- List by links
 --
-select ksp.id, ksp.route_id, n.source, n.target, round(st_length(ksp.the_geom)::numeric, 2) as len
+select ksp.seq, ksp.id2, n.source, n.target, round(st_length(ksp.geom)::numeric, 2) as len
   from pgr_ksp(
     'select source, target, cost,reverse_cost, gid from network order by gid',
     'network',
@@ -12,5 +12,5 @@ select ksp.id, ksp.route_id, n.source, n.target, round(st_length(ksp.the_geom)::
     15,
     'f') ksp,
         network n
- where ksp.edge_id=n.gid
- order by ksp.id;
+ where ksp.id1=n.gid
+ order by ksp.seq;
