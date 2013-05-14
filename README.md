@@ -6,10 +6,10 @@ pgRouting documentation is hosted on [GitHub Pages](http://pages.github.com) wit
 
 The following steps are needed to update the documentation:
 
-1. Build documentation with CMake
+1. Build documentation with CMake for example in `develop` branch
 2. Checkout `gh-pages` branch
-3. Copy the documentation from the `build` directory into root
-4. Update `index.html` if required, ie. paths
+3. Copy the documentation from the `build` directory into a directory in root (ie. `dev`)
+4. Update `index.html` if required, ie. paths. 
 5. Commit and push the changes
 
 The `index.html` documentation landing page needs to be edited manually. 
