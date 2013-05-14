@@ -292,7 +292,7 @@ Datum apsp_johnson(PG_FUNCTION_ARGS) {
 
     DBG("Output count %i", output_count);
 
-    funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("pgr_apspEdge"));
+    funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("pgr_costResult"));
 
     MemoryContextSwitchTo(oldcontext);
   }
@@ -316,15 +316,17 @@ Datum apsp_johnson(PG_FUNCTION_ARGS) {
     Datum *values;
     char* nulls;
 
-    values = palloc(3 * sizeof(Datum));
-    nulls = palloc(3 * sizeof(char));
+    values = palloc(4 * sizeof(Datum));
+    nulls = palloc(4 * sizeof(char));
 
-    values[0] = Int32GetDatum(output_edges[call_cntr].source);
+    values[0] = Int32GetDatum(call_cntr);
     nulls[0] = ' ';
-    values[1] = Int32GetDatum(output_edges[call_cntr].target);
+    values[1] = Int32GetDatum(output_edges[call_cntr].source);
     nulls[1] = ' ';
-    values[2] = Float8GetDatum(output_edges[call_cntr].cost);
+    values[2] = Int32GetDatum(output_edges[call_cntr].target);
     nulls[2] = ' ';
+    values[3] = Float8GetDatum(output_edges[call_cntr].cost);
+    nulls[3] = ' ';
 
     DBG("Heap making\n");
 
