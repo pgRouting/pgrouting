@@ -3,8 +3,8 @@
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This work is licensed under a Creative Commons Attribution-Share Alike 3.0 
-    License: http://creativecommons.org/licenses/by-sa/3.0/
+    This documentation is licensed under a Creative Commons Attribution-Share  
+    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 .. _index:
@@ -31,7 +31,9 @@ General
 
 	src/introduction/index
 	src/introduction/license
+	src/introduction/support
 	src/installation/index
+
 
 *******************************************************************************
 Tutorial
@@ -74,6 +76,13 @@ pgRouting functions in alphabetical order:
 	../src/tsp/doc/index
 	../src/trsp/doc/index
 
+Some functions from previous releases may have been removed. 
+
+.. toctree::
+	:maxdepth: 1
+
+	src/developer/discontinued
+
 
 *******************************************************************************
 Developer
@@ -84,6 +93,7 @@ Developer
 
 	src/installation/build
 	src/developer/index
+	src/developer/sampledata
 
 
 .. rubric:: Indices and tables
