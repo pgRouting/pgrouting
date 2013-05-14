@@ -12,12 +12,11 @@
 Installation
 ===============================================================================
 
-Binary Distribution
--------------------------------------------------------------------------------
-
 Binary packages are provided for the current version on the following platforms:
 
-.. rubric:: Windows
+
+Windows
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Winnie Bot Experimental Builds: 
 
@@ -47,13 +46,14 @@ RHEL/CentOS/Fedora
 * Fedora RPM's: https://admin.fedoraproject.org/pkgdb/acls/name/pgRouting
 
 
-.. rubric:: OSX
+OSX
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 See `builds from KingChaos <http://www.kyngchaos.com/software/postgres>`_.
 
 
 Build from Source
--------------------------------------------------------------------------------
+===============================================================================
 
 Source Package
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

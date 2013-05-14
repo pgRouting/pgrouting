@@ -30,7 +30,6 @@ General
 	:maxdepth: 1
 
 	src/introduction/index
-	src/introduction/license
 	src/introduction/support
 	src/installation/index
 
