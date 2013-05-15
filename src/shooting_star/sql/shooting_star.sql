@@ -22,8 +22,8 @@
 -- Core function for shortest_path_astar computation
 -- Simillar to shortest_path in usage but uses the Shooting* algorithm
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION shortest_path_shooting_star(sql text, source_id integer, 
+CREATE OR REPLACE FUNCTION pgr_shootingStar(sql text, source_id integer, 
         target_id integer,directed boolean, has_reverse_cost boolean)
          RETURNS SETOF pgr_costResult
-         AS '$libdir/librouting'
+         AS '$libdir/librouting', 'shortest_path_shooting_star'
          LANGUAGE c IMMUTABLE STRICT; 

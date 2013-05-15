@@ -5,7 +5,7 @@
 --TODO - Do we need to add another sql text for the query on time-dependent-weights table?
 --     - For now just checking with static data, so the query is similar to shortest_paths.
 
-CREATE OR REPLACE FUNCTION turn_restrict_shortest_path(
+CREATE OR REPLACE FUNCTION pgr_trsp(
 		sql text, 
 		source_vid integer, 
         target_vid integer, 
@@ -16,7 +16,7 @@ CREATE OR REPLACE FUNCTION turn_restrict_shortest_path(
         AS '$libdir/librouting', 'turn_restrict_shortest_path_vertex'
         LANGUAGE 'c' IMMUTABLE;
 
-CREATE OR REPLACE FUNCTION turn_restrict_shortest_path(
+CREATE OR REPLACE FUNCTION pgr_trsp(
 		sql text, 
 		source_eid integer, 
         source_pos float8,

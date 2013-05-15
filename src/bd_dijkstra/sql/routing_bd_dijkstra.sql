@@ -5,7 +5,7 @@
 --
 --
 
-CREATE OR REPLACE FUNCTION pgr_bd_dijkstra(
+CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
 		sql text, 
 		source_vid integer, 
         target_vid integer, 
