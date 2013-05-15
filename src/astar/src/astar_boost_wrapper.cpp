@@ -42,7 +42,7 @@ struct Edge
   float8 cost;
   //float8 distance;
 };
-	
+  
 struct Vertex
 {
   int id;
@@ -57,15 +57,15 @@ struct found_goal {}; // exception for termination
 template <class Vertex>
 class astar_goal_visitor : public boost::default_astar_visitor
 {
-public:
-  astar_goal_visitor(Vertex goal) : m_goal(goal) {}
-  template <class Graph>
-  void examine_vertex(Vertex u, Graph& g) {
-    if(u == m_goal)
-      throw found_goal();
-  }
-private:
-  Vertex m_goal;
+    public:
+      astar_goal_visitor(Vertex goal) : m_goal(goal) {}
+      template <class Graph>
+      void examine_vertex(Vertex u, Graph& g) {
+        if(u == m_goal)
+          throw found_goal();
+      }
+    private:
+      Vertex m_goal;
 };
 
 // Heuristic function which tells us how far the current node is
@@ -75,22 +75,22 @@ private:
 template <class Graph, class CostType>
 class distance_heuristic : public astar_heuristic<Graph, CostType>
 {
-public:
-  typedef typename graph_traits<Graph>::vertex_descriptor Vertex;
-  distance_heuristic(Graph& g, Vertex goal):m_g(g), m_goal(goal){}
-  CostType operator()(Vertex u)
-  {
-    CostType dx = m_g[m_goal].x - m_g[u].x;
-    CostType dy = m_g[m_goal].y - m_g[u].y;
-    //You can choose any heuristical function from below
-    //return ::max(dx, dy);
-    //return ::sqrt(dx * dx + dy * dy)/4;
-    //return 0;
-    return (::fabs(dx)+::fabs(dy))/2;
-  } 
-private:
-  Graph& m_g;
-  Vertex m_goal;
+    public:
+      typedef typename graph_traits<Graph>::vertex_descriptor Vertex;
+      distance_heuristic(Graph& g, Vertex goal):m_g(g), m_goal(goal){}
+      CostType operator()(Vertex u)
+      {
+        CostType dx = m_g[m_goal].x - m_g[u].x;
+        CostType dy = m_g[m_goal].y - m_g[u].y;
+        //You can choose any heuristical function from below
+        //return ::max(dx, dy);
+        //return ::sqrt(dx * dx + dy * dy)/4;
+        //return 0;
+        return (::fabs(dx)+::fabs(dy))/2;
+      } 
+    private:
+      Graph& m_g;
+      Vertex m_goal;
 };
 
 
@@ -99,7 +99,7 @@ private:
 template <class G, class E>
 static void
 graph_add_edge(G &graph, int id, int source, int target, 
-	       float8 cost, float8 s_x, float8 s_y, float8 t_x, float8 t_y)
+         float8 cost, float8 s_x, float8 s_y, float8 t_x, float8 t_y)
 {
   E e;
   bool inserted;
@@ -123,9 +123,9 @@ graph_add_edge(G &graph, int id, int source, int target,
 
 int 
 boost_astar(edge_astar_t *edges, unsigned int count, 
-	    int source_vertex_id, int target_vertex_id,
-	    bool directed, bool has_reverse_cost,
-	    path_element_t **path, int *path_count, char **err_msg)
+      int source_vertex_id, int target_vertex_id,
+      bool directed, bool has_reverse_cost,
+      path_element_t **path, int *path_count, char **err_msg)
 {
 
   // FIXME: use a template for the directedS parameters
@@ -136,64 +136,64 @@ boost_astar(edge_astar_t *edges, unsigned int count,
 
   // FIXME: compute this value
   const unsigned int num_nodes = ((directed && has_reverse_cost ? 2 : 1) * 
-				  count) + 100;
+          count) + 100;
 
   graph_t graph(num_nodes);
 
   // interfers with APPLE build, can it just be commented out?
   //property_map<graph_t, edge_weight_t>::type weightmap = get(edge_weight, 
-  //							     graph);
+  //                   graph);
 
   for (std::size_t j = 0; j < count; ++j)
   {
 
       graph_add_edge<graph_t, edge_descriptor>(graph, 
-					       edges[j].id, edges[j].source, 
-					       edges[j].target, edges[j].cost, 
-					       edges[j].s_x, edges[j].s_y, 
-					       edges[j].t_x, edges[j].t_y);
+                 edges[j].id, edges[j].source, 
+                 edges[j].target, edges[j].cost, 
+                 edges[j].s_x, edges[j].s_y, 
+                 edges[j].t_x, edges[j].t_y);
 
       if (!directed || (directed && has_reverse_cost))
+      {
+        float8 cost;
+
+        if (has_reverse_cost)
         {
-	  float8 cost;
-
-	  if (has_reverse_cost)
-            {
-	      cost = edges[j].reverse_cost;
-            }
-	  else 
-            {
-	      cost = edges[j].cost;
-            }
-
-	  graph_add_edge<graph_t, edge_descriptor>(graph, 
-						   edges[j].id, 
-						   edges[j].target, 
-						   edges[j].source, 
-						   cost, 
-						   edges[j].s_x, 
-						   edges[j].s_y, 
-						   edges[j].t_x, 
-						   edges[j].t_y);
+            cost = edges[j].reverse_cost;
         }
-    }
+        else 
+        {
+            cost = edges[j].cost;
+        }
+
+        graph_add_edge<graph_t, edge_descriptor>(graph, 
+               edges[j].id, 
+               edges[j].target, 
+               edges[j].source, 
+               cost, 
+               edges[j].s_x, 
+               edges[j].s_y, 
+               edges[j].t_x, 
+               edges[j].t_y);
+        }
+  }
 
   std::vector<vertex_descriptor> predecessors(num_vertices(graph));
 
   vertex_descriptor source_vertex = vertex(source_vertex_id, graph);
 
   if (source_vertex < 0) 
-    {
+  {
       *err_msg = (char *) "Source vertex not found";
       return -1;
-    }
+  }
 
   vertex_descriptor target_vertex = vertex(target_vertex_id, graph);
   if (target_vertex < 0)
-    {
+  {
       *err_msg = (char *) "Target vertex not found";
       return -1;
-    }
+  }
 
   std::vector<float8> distances(num_vertices(graph));
 
@@ -215,29 +215,29 @@ boost_astar(edge_astar_t *edges, unsigned int count,
     path_vect.push_back(target_vertex);
   
     while (target_vertex != source_vertex) 
-      {
+    {
         if (target_vertex == predecessors[target_vertex]) 
-	  {
+        {
             *err_msg = (char *) "No path found";
             return 0;
-	    
-	  }
+      
+        }
         target_vertex = predecessors[target_vertex];
 
         path_vect.push_back(target_vertex);
         if (!max--) 
-	  {
+        {
             *err_msg = (char *) "Overflow";
             return -1;
-	  }
-      }
+        }
+    }
 
     *path = (path_element_t *) malloc(sizeof(path_element_t) * 
-				      (path_vect.size() + 1));
+              (path_vect.size() + 1));
     *path_count = path_vect.size();
 
     for(int i = path_vect.size() - 1, j = 0; i >= 0; i--, j++)
-      {
+    {
         graph_traits < graph_t >::vertex_descriptor v_src;
         graph_traits < graph_t >::vertex_descriptor v_targ;
         graph_traits < graph_t >::edge_descriptor e;
@@ -249,29 +249,35 @@ boost_astar(edge_astar_t *edges, unsigned int count,
         (*path)[j].cost = distances[target_vertex];
         
         if (i == 0) 
-	  {
+        {
             continue;
-	  }
+        }
 
         v_src = path_vect.at(i);
         v_targ = path_vect.at(i - 1);
+        double cost = 99999999.9;
+        int edge_id = 0;
 
         for (tie(out_i, out_end) = out_edges(v_src, graph); 
              out_i != out_end; ++out_i)
-	  {
+        {
             graph_traits < graph_t >::vertex_descriptor v, targ;
             e = *out_i;
             v = source(e, graph);
             targ = target(e, graph);
                                                                 
             if (targ == v_targ)
-	      {
-                (*path)[j].edge_id = graph[*out_i].id;
-                (*path)[j].cost = graph[*out_i].cost;
-                break;
-	      }
-	  }
-      }
+            {
+                if (graph[*out_i].cost < cost)
+                {
+                    edge_id = graph[*out_i].id;
+                    cost = graph[*out_i].cost;
+                }
+            }
+        }
+        (*path)[j].edge_id = edge_id;
+        (*path)[j].cost = cost;
+    }
 
     return EXIT_SUCCESS;
   }

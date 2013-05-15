@@ -159,6 +159,8 @@ boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vert
 
         v_src = path_vect.at(i);
         v_targ = path_vect.at(i - 1);
+        double cost = 99999999.9;
+        int edge_id = 0;
 
         for (tie(out_i, out_end) = out_edges(v_src, graph); 
              out_i != out_end; ++out_i)
@@ -170,11 +172,16 @@ boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vert
 								
             if (targ == v_targ)
             {
-                (*path)[j].edge_id = graph[*out_i].id;
-                (*path)[j].cost = graph[*out_i].cost;
-                break;
+                // if there are multiple parallel edges get the lowest cost
+                if (graph[*out_i].cost < cost)
+                {
+                    edge_id = graph[*out_i].id;
+                    cost = graph[*out_i].cost;
+                }
             }
         }
+        (*path)[j].edge_id = edge_id;
+        (*path)[j].cost = cost;
     }
 
     return EXIT_SUCCESS;

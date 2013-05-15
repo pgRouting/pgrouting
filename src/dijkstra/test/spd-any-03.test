@@ -1,0 +1,6 @@
+select * from pgr_dijkstra('
+    SELECT unnest(array[1,2]) as id,
+    unnest(array[10,10]) as source,
+    unnest(array[20,20]) as target,
+    unnest(array[2,1])::float8 as cost
+    '::text, 10, 20, false, false);

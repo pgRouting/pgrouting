@@ -21,9 +21,9 @@
 -----------------------------------------------------------------------
 -- Core function for Dijkstra shortest_path computation
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION shortest_path(sql text, source_id integer, 
+CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id integer, 
         target_id integer, directed boolean, has_reverse_cost boolean)
         RETURNS SETOF pgr_costResult
-        AS '$libdir/librouting'
+        AS '$libdir/librouting', 'shortest_path'
         LANGUAGE c IMMUTABLE STRICT;
 
