@@ -5,7 +5,7 @@
 --
 --
 
-CREATE OR REPLACE FUNCTION pgr_bd_astar(
+CREATE OR REPLACE FUNCTION pgr_bdAstar(
 		sql text, 
 		source_vid integer, 
         target_vid integer, 
