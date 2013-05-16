@@ -25,11 +25,11 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`pgr_geomResult <type_geom_result>` (seq, id1, id2, cost) rows, that make up a path.
+Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
 
 .. code-block:: sql
 
-  pgr_geomResult[] pgr_ksp(sql text, source integer, target integer, paths integer, has_rcost boolean);
+  pgr_costResult[] pgr_ksp(sql text, source integer, target integer, paths integer, has_rcost boolean);
 
 
 Description
@@ -53,12 +53,12 @@ Description
 :paths: ``int4`` number of alternative routes
 :has_rcost: if ``true``, the ``rcost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.
 
-Returns set of :ref:`type_geom_result`:
+Returns set of :ref:`type_cost_result`:
 
 :seq:   row sequence
 :id1:   edge ID
 :id2:   route ID
-:geom:  route segment geometry
+:cost:  cost to traverse ``id1``
 
 KSP code base taken from http://code.google.com/p/k-shortest-paths/source.
 
@@ -98,5 +98,5 @@ The queries use the :ref:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`type_geom_result`
+* :ref:`type_cost_result`
 
