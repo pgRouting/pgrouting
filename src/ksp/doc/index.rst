@@ -55,10 +55,10 @@ Description
 
 Returns set of :ref:`type_cost_result`:
 
-:seq:   row sequence
-:id1:   edge ID
-:id2:   route ID
-:cost:  cost to traverse ``id1``
+:seq:   route ID
+:id1:   node ID
+:id2:   edge ID (``0`` for the last row)
+:cost:  cost to traverse from ``id1`` using ``id2``
 
 KSP code base taken from http://code.google.com/p/k-shortest-paths/source.
 
@@ -75,22 +75,45 @@ Examples
 
 .. code-block:: sql
 
-  SELECT seq, id1 AS node, id2 AS edge, cost 
+  SELECT seq AS route, id1 AS node, id2 AS edge, cost 
     FROM pgr_ksp(
       'SELECT id, source, target, cost FROM edge_table',
       7, 12, 2, false
     );
 
+   route | node | edge | cost 
+  -------+------+------+------
+       0 |    7 |    8 |    1
+       0 |    8 |   11 |    1
+       0 |   11 |   13 |    1
+       0 |   12 |    0 |    0
+       1 |    7 |    8 |    1
+       1 |    8 |    9 |    1
+       1 |    9 |   15 |    1
+       1 |   12 |    0 |    0
+  (8 rows)
 
 * With ``reverse_cost``
 
 .. code-block:: sql
 
-  SELECT seq, id1 AS node, id2 AS edge, cost 
+  SELECT seq AS route, id1 AS node, id2 AS edge, cost 
     FROM pgr_ksp(
       'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       7, 12, 2, true
     );
+
+   route | node | edge | cost 
+  -------+------+------+------
+       0 |    7 |    8 |    1
+       0 |    8 |   11 |    1
+       0 |   11 |   13 |    1
+       0 |   12 |    0 |    0
+       1 |    7 |    8 |    1
+       1 |    8 |    9 |    1
+       1 |    9 |   15 |    1
+       1 |   12 |    0 |    0
+  (8 rows)
 
 The queries use the :ref:`sampledata` network.
 
