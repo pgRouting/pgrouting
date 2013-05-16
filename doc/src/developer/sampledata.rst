@@ -27,7 +27,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 	    source integer,
 	    target integer,
 	    cost double precision,
-	    reverse_cost double precision,
+	    rcost double precision,
 	    x1 double precision,
 	    y1 double precision,
 	    x2 double precision,

@@ -29,7 +29,7 @@ Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) 
 
 .. code-block:: sql
 
-	pgr_costResult[] PGR_Astar(sql text, source integer, target integer, directed boolean, reverse_cost boolean);
+	pgr_costResult[] PGR_Astar(sql text, source integer, target integer, directed boolean, has_rcost boolean);
 
 
 Description
@@ -39,7 +39,7 @@ Description
 
 	.. code-block:: sql
 
-		SELECT id, source, target, cost, x1, y1, x2, y2 [, reverse_cost] FROM edge_table
+		SELECT id, source, target, cost, x1, y1, x2, y2 [,rcost] FROM edge_table
 
 
 	:id: ``int4`` identifier of the edge
@@ -50,12 +50,12 @@ Description
 	:y1: ``y`` coordinate of the start point of the edge
 	:x2: ``x`` coordinate of the end point of the edge
 	:y2: ``y`` coordinate of the end point of the edge
-	:reverse_cost: (optional) the cost for the reverse traversal of the edge. This is only used when the directed and ``reverse_cost`` parameters are ``true`` (see the above remark about negative costs).
+	:rcost: (optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs).
 
 :source: ``int4`` id of the start point
-:target: ``int4`` id of the end point
+:distance: ``float8`` value in edge cost units (not in projection units - they might be different).
 :directed: ``true`` if the graph is directed
-:reverse_cost: if ``true``, the ``reverse_cost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.
+:has_rcost: if ``true``, the ``rcost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.
 
 Returns set of :ref:`type_cost_result`:
 
@@ -73,7 +73,7 @@ Returns set of :ref:`type_cost_result`:
 Examples
 -------------------------------------------------------------------------------
 
-* Without ``reverse_cost``
+* Without ``rcost``
 
 .. code-block:: sql
 
@@ -92,13 +92,13 @@ Examples
 	(4 rows)
 
 
-* With ``reverse_cost``
+* With ``rcost``
 
 .. code-block:: sql
 
 	SELECT seq, id1 AS node, id2 AS edge, cost 
 		FROM pgr_astar(
-			'SELECT id, source, target, cost, x1, y1, x2, y2, reverse_cost FROM edge_table',
+			'SELECT id, source, target, cost, x1, y1, x2, y2, rcost FROM edge_table',
 			7, 12, true, true
 		);
 
