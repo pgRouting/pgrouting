@@ -39,7 +39,7 @@ Description
 
 	.. code-block:: sql
 
-		SELECT id, source, target, cost, x1, y1, x2, y2 FROM edge_table
+		SELECT id, source, target, cost, x1, y1, x2, y2 [, reverse_cost] FROM edge_table
 
 
 	:id: ``int4`` identifier of the edge
@@ -73,6 +73,8 @@ Returns set of :ref:`type_cost_result`:
 Examples
 -------------------------------------------------------------------------------
 
+* Without ``reverse_cost``
+
 .. code-block:: sql
 
 	SELECT seq, id1 AS from, id2 AS to, cost 
@@ -89,7 +91,26 @@ Examples
 	   3 |   12 | -1 |    0
 	(4 rows)
 
-The query uses the :ref:`sampledata` network.
+
+* With ``reverse_cost``
+
+.. code-block:: sql
+
+	SELECT seq, id1 AS from, id2 AS to, cost 
+		FROM pgr_astar(
+			'SELECT id, source, target, cost, x1, y1, x2, y2, reverse_cost FROM edge_table',
+			7, 12, true, true
+		);
+
+	 seq | from | to | cost 
+	-----+------+----+------
+	   0 |    7 |  8 |    1
+	   1 |    8 |  9 |    1
+	   2 |    9 | 15 |    1
+	   3 |   12 | -1 |    0
+	(4 rows)
+
+The queries use the :ref:`sampledata` network.
 
 
 See Also
