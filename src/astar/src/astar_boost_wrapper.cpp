@@ -127,6 +127,7 @@ boost_astar(edge_astar_t *edges, unsigned int count,
       bool directed, bool has_reverse_cost,
       path_element_t **path, int *path_count, char **err_msg)
 {
+try {
 
   // FIXME: use a template for the directedS parameters
   typedef adjacency_list < listS, vecS, directedS, Vertex, Edge> graph_t;
@@ -281,5 +282,10 @@ boost_astar(edge_astar_t *edges, unsigned int count,
 
     return EXIT_SUCCESS;
   }
+ }
+ catch(...) {
+    *err_msg = (char *) "Unknown exception caught!";
+    return -1;
+ }
 }
 
