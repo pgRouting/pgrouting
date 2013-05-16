@@ -82,7 +82,8 @@ boost_dijkstra_dist(edge_t *edges, unsigned int count, int source_vertex_id,
   typedef graph_traits < graph_t >::edge_descriptor edge_descriptor;
 
   const unsigned int num_nodes = 1;
-  
+try {
+
   graph_t graph( num_nodes );
   
   //property_map<graph_t, edge_weight_t>::type weightmap = 
@@ -162,5 +163,10 @@ boost_dijkstra_dist(edge_t *edges, unsigned int count, int source_vertex_id,
   }
   
   return EXIT_SUCCESS;
+ }
+ catch(...) {
+     *err_msg = (char *) "Unknown exception caught!";
+     return -1;
+ }
 }
 

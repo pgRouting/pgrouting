@@ -47,7 +47,7 @@ boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vert
 	       bool directed, bool has_reverse_cost,
 	       path_element_t **path, int *path_count, char **err_msg)
 {
-
+try {
     // FIXME: use a template for the directedS parameters
     typedef adjacency_list < listS, vecS, directedS, no_property, Vertex> graph_t;
 
@@ -185,4 +185,9 @@ boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vert
     }
 
     return EXIT_SUCCESS;
+  }
+  catch(...) {
+      *err_msg = (char *) "Unknown exception caught!";
+      return -1;
+  }
 }

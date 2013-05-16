@@ -72,6 +72,7 @@ boost_apsp(edge_t *edges, unsigned int edge_count, const int node_cnt,   //TODO 
 	       bool directed, bool has_reverse_cost,
 	       apsp_element_t **pair, int *pair_count, char **err_msg)
 {
+try {
 	string msg;
 	msg.append("\nStarting with boost_apsp");
 	msg.append("\nEdge count is: ");
@@ -201,6 +202,11 @@ boost_apsp(edge_t *edges, unsigned int edge_count, const int node_cnt,   //TODO 
 	//cout<<"Number of pairs: "<<(*pair_count)<<endl;
 
     return EXIT_SUCCESS;
+  }
+  catch(...) {
+     *err_msg = (char *) "Unknown exception caught!";
+     return -1;
+  }
 }
 
 /*

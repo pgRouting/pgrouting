@@ -57,9 +57,11 @@ static void graph_add_edge(G &graph, int source, int target, float cost) {
 
 int boost_apsp_johnson(edge_apsp_johnson_t *edges, int count,
     edge_apsp_johnson_t **output_edges, int *output_count, char **err_msg) {
+try {
   int i, j;
   int V;
   bool ret;
+
   vector<edge_apsp_johnson_t>::iterator it;
 
   // FIXME: use a template for the directedS parameters
@@ -124,4 +126,9 @@ int boost_apsp_johnson(edge_apsp_johnson_t *edges, int count,
   }
   *output_count = i;
   return 0;
+ }
+ catch(...) {
+     *err_msg = (char *) "Unknown exception caught!";
+     return -1;
+ }
 }

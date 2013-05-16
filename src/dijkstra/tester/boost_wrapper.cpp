@@ -188,6 +188,7 @@ try {
     return EXIT_SUCCESS;
   }
   catch(...) {
-    return -1;
+      *err_msg = (char *) "Unknown exception caught!";
+      return -1;
   }
 }
