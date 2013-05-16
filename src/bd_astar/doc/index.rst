@@ -53,7 +53,7 @@ Description
   :rcost: (optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs).
 
 :source: ``int4`` id of the start point
-:distance: ``float8`` value in edge cost units (not in projection units - they might be different).
+:target: ``int4`` id of the end point
 :directed: ``true`` if the graph is directed
 :has_rcost: if ``true``, the ``rcost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.
 

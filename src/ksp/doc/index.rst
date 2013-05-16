@@ -12,89 +12,91 @@
 pgr_ksp - K-Shortest Path
 ===============================================================================
 
-KSP code base taken from 
-`HERE <http://code.google.com/p/k-shortest-paths/source>`_.
+.. index:: 
+  single: pgr_ksp(text,integer,integer,integer,boolean)
+  module: ksp
 
-Checkout is `svn checkout http://k-shortest-paths.googlecode.com/svn/trunk/ k-shortest-paths-read-only`.
+Name
+-------------------------------------------------------------------------------
 
-Setup the code expects to find a table that defines a serries on vertexs
-and nodes with the following format:
-
-.. code-block:: sql
-
-    create table network (
-        gid serial NOT NULL,
-        source integer NOT NULL,
-        target integer NOT NULL,
-        cost float,
-        reverse_cost float
-	    the_geom
-    );
+``pgr_ksp`` — Returns the "K" shortest paths.
 
 
-The table can be called anything, butit  must include the fields
-gid, source, target, cost and reverse_cost directory.
+Synopsis
+-------------------------------------------------------------------------------
 
-Where:
-
-* **gid**:  is a unique integer value
-* **source**: is source vertex
-* **target**: is target vertex
-* **cost**: is the 'cost' of getting from source to target
-* **reverse_cost**: is the 'cost' of getting back from source to target
-* **the_geom**: a (MULTI)LINESTRING geometry that describes the route between source and target, it may be null, and is only used if asked for get generating the routes
-
-The code is invoked as:
+Returns a set of :ref:`pgr_geomResult <type_geom_result>` (seq, id1, id2, cost) rows, that make up a path.
 
 .. code-block:: sql
 
-    select * from ksp_sp(
-        sql text,          -- sql to select the edges
-        tabname text,      -- name of edge table
-        start_node,        -- start vertex id
-        end_node,          -- end vertex id
-        number_of_routes,  -- number of routes to compute
-        use_reverse_cost   -- boolean
+  pgr_geomResult[] pgr_ksp(sql text, source integer, target integer, paths integer, has_rcost boolean);
+
+
+Description
+-------------------------------------------------------------------------------
+
+:sql: a SQL query, which should return a set of rows with the following columns:
+
+  .. code-block:: sql
+
+    SELECT id, source, target, cost, [,rcost] FROM edge_table
+
+
+  :id: ``int4`` identifier of the edge
+  :source: ``int4`` identifier of the source vertex
+  :target: ``int4`` identifier of the target vertex
+  :cost: ``float8`` value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph.
+  :rcost: (optional) the cost for the reverse traversal of the edge. This is only used when ``has_rcost`` the parameter is ``true`` (see the above remark about negative costs).
+
+:source: ``int4`` id of the start point
+:target: ``int4`` id of the end point
+:paths: ``int4`` number of alternative routes
+:has_rcost: if ``true``, the ``rcost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.
+
+Returns set of :ref:`type_geom_result`:
+
+:seq:   row sequence
+:id1:   edge ID
+:id2:   route ID
+:geom:  route segment geometry
+
+KSP code base taken from http://code.google.com/p/k-shortest-paths/source.
+
+
+.. rubric:: History
+
+* New in version 2.0.0
+
+
+Examples
+-------------------------------------------------------------------------------
+
+* Without ``rcost``
+
+.. code-block:: sql
+
+  SELECT seq, id1 AS node, id2 AS edge, cost 
+    FROM pgr_ksp(
+      'SELECT id, source, target, cost FROM edge_table',
+      7, 12, 2, false
     );
 
-    -- For example:
 
-	select * from ksp_sp(
-        'select source, target, cost, reverse_cost, gid from network',
-        'network',         -- name of edge table
-        4,                 -- start node
-        5,                 -- end node
-        15,                -- number of routes
-        'f'                -- false so don't use reverse cost
+* With ``rcost``
+
+.. code-block:: sql
+
+  SELECT seq, id1 AS node, id2 AS edge, cost 
+    FROM pgr_ksp(
+      'SELECT id, source, target, cost, rcost FROM edge_table',
+      7, 12, 2, true
     );
 
-
-The results are a list of link segments that describes the given route
-for each computed route, in the following format:
-
-* **id**: refers to the current result set
-* **edge_id**: refers to the gid in the supply table
-* **route_id**: refers to the current route
-* **the_geom**: refers to the geometry in the supply table
-
-For example:
-
-.. code-block:: text
-
-     id | edge_id | route_id |                                                   the_geom                                                   
-    ----+---------+----------+--------------------------------------------------------------------------------------------------------------
-      0 |      15 |        0 | 0105000020110F0000010000000102000000020000000000000000001040000000000000104000000000000010400000000000001840
-      1 |      13 |        1 | 0105000020110F0000010000000102000000020000000000000000001040000000000000104000000000000008400000000000000840
-      2 |      10 |        1 | 0105000020110F0000010000000102000000020000000000000000000840000000000000084000000000000000000000000000000000
-      3 |       2 |        1 | 0105000020110F0000010000000102000000020000000000000000000000000000000000000000000000000000400000000000000040
-      4 |       9 |        1 | 0105000020110F0000010000000102000000020000000000000000000040000000000000004000000000000010400000000000001840
-      5 |      13 |        2 | 0105000020110F0000010000000102000000020000000000000000001040000000000000104000000000000008400000000000000840
-      6 |      10 |        2 | 0105000020110F0000010000000102000000020000000000000000000840000000000000084000000000000000000000000000000000
-      7 |       1 |        2 | 0105000020110F00000100000001020000000200000000000000000000000000000000000000000000000000F03F000000000000F03F
-      8 |       5 |        2 | 0105000020110F000001000000010200000002000000000000000000F03F000000000000F03F00000000000000400000000000000040
-      9 |       9 |        2 | 0105000020110F0000010000000102000000020000000000000000000040000000000000004000000000000010400000000000001840
+The queries use the :ref:`sampledata` network.
 
 
-This set of results describes 3 results: route_id 0 is one hop, 1 is 4 hops, and 2 is 5 hops.
+See Also
+-------------------------------------------------------------------------------
 
+* :ref:`type_geom_result`
 

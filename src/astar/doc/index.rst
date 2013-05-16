@@ -13,7 +13,7 @@ pgr_astar - Shortest Path A*
 ===============================================================================
 
 .. index:: 
-	single: PGR_Astar(text, integer, integer, boolean, boolean)
+	single: pgr_astar(text,integer,integer,boolean,boolean)
 	module: astar
 
 Name
@@ -29,7 +29,7 @@ Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) 
 
 .. code-block:: sql
 
-	pgr_costResult[] PGR_Astar(sql text, source integer, target integer, directed boolean, has_rcost boolean);
+	pgr_costResult[] pgr_astar(sql text, source integer, target integer, directed boolean, has_rcost boolean);
 
 
 Description
@@ -53,7 +53,7 @@ Description
 	:rcost: (optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs).
 
 :source: ``int4`` id of the start point
-:distance: ``float8`` value in edge cost units (not in projection units - they might be different).
+:target: ``int4`` id of the end point
 :directed: ``true`` if the graph is directed
 :has_rcost: if ``true``, the ``rcost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.
 
