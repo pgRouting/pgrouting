@@ -1,5 +1,6 @@
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_utilities.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_topology.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_matching.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_analytics.sql
