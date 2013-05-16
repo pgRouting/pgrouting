@@ -56,13 +56,24 @@ Examples
 
 .. code-block:: sql
 
-    SELECT source_id, target_id, cost 
+    SELECT seq, id1 AS from, id2 AS to, cost 
         FROM pgr_apspJohnson(
             'SELECT source, target, cost FROM edge_table'
         );
+
+     seq | from | to | cost 
+    -----+------+----+------
+       0 |    1 |  1 |    0
+       1 |    1 |  2 |    1
+       2 |    1 |  7 |    2
+       3 |    1 |  8 |    3
+    [...]
+
+The query uses the :ref:`sampledata` network.
 
 
 See Also
 -------------------------------------------------------------------------------
 
 * :ref:`type_cost_result`
+* :ref:`pgr_apsp_warshall`
