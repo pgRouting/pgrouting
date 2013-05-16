@@ -25,7 +25,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) (source_id, target_id, cost) rows for every pair of nodes in the graph.
+Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows for every pair of nodes in the graph.
 
 .. code-block:: sql
 
@@ -45,6 +45,12 @@ Description
     :target: ``int4`` identifier of the target vertex for this edge
     :cost: ``float8`` a positive value for the cost to traverse this edge
 
+Returns set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost)
+
+:seq:   row sequence
+:id1:   source node ID
+:id2:   target node ID
+:cost:  cost to traverse from `id1` to `id2`
 
 .. rubric:: History
 
