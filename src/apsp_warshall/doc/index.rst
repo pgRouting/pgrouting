@@ -13,7 +13,7 @@ pgr_apspWarshall - All Pairs Shortest Path, Floyd-Warshall Algorithm
 ===============================================================================
 
 .. index::
-    single: pgr_apspWarshall(text)
+    single: pgr_apspWarshall(text, boolean, boolean)
     module: apsp
 
 Name
@@ -69,7 +69,7 @@ Examples
 
     SELECT seq, id1 AS from, id2 AS to, cost 
         FROM pgr_apspWarshall(
-            'SELECT eid AS id, source, target, cost FROM edge_table',
+            'SELECT id, source, target, cost FROM edge_table',
             false, false
         );
 

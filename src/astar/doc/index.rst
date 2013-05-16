@@ -57,6 +57,13 @@ Description
 :directed: ``true`` if the graph is directed
 :reverse_cost: if ``true``, the ``reverse_cost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.
 
+Returns set of :ref:`type_cost_result`:
+
+:seq:   row sequence
+:id1:   source node ID
+:id2:   target node ID
+:cost:  cost to traverse from ``id1`` to ``id2``
+
 
 .. rubric:: History
 
@@ -68,10 +75,21 @@ Examples
 
 .. code-block:: sql
 
-	SELECT * FROM pgr_astar(
-		'SELECT id, source, target, cost, x1, y1, x2, y2 FROM edge_table',
-		<source id>, <target id>, false, false
-	);
+	SELECT seq, id1 AS from, id2 AS to, cost 
+		FROM pgr_astar(
+			'SELECT id, source, target, cost, x1, y1, x2, y2 FROM edge_table',
+			7, 12, false, false
+		);
+
+	 seq | from | to | cost 
+	-----+------+----+------
+	   0 |    7 |  8 |    1
+	   1 |    8 | 11 |    1
+	   2 |   11 | 13 |    1
+	   3 |   12 | -1 |    0
+	(4 rows)
+
+The query uses the :ref:`sampledata` network.
 
 
 See Also

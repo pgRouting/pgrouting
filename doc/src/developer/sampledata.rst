@@ -22,7 +22,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 .. code-block:: sql
 
 	CREATE TABLE edge_table (
-	    eid integer NOT NULL,
+	    id integer NOT NULL,
 	    dir character varying,
 	    source integer,
 	    target integer,
