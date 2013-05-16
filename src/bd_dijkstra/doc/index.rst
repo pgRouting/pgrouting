@@ -40,19 +40,19 @@ Description
 
   .. code-block:: sql
 
-    SELECT id, source, target, cost [,rcost] FROM edge_table
+    SELECT id, source, target, cost [,reverse_cost] FROM edge_table
 
 
   :id: ``int4`` identifier of the edge
   :source: ``int4`` identifier of the source vertex
   :target: ``int4`` identifier of the target vertex
   :cost: ``float8`` value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph.
-  :rcost: (optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs).
+  :reverse_cost: (optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs).
 
 :source: ``int4`` id of the start point
 :target: ``int4`` id of the end point
 :directed: ``true`` if the graph is directed
-:has_rcost: if ``true``, the ``rcost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.
+:has_rcost: if ``true``, the ``reverse_cost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.
 
 Returns set of :ref:`type_cost_result`:
 
@@ -69,7 +69,7 @@ Returns set of :ref:`type_cost_result`:
 Examples
 -------------------------------------------------------------------------------
 
-* Without ``rcost``
+* Without ``reverse_cost``
 
 .. code-block:: sql
 
@@ -81,13 +81,13 @@ Examples
 
     [TBD]
 
-* With ``rcost``
+* With ``reverse_cost``
 
 .. code-block:: sql
 
     SELECT seq, id1 AS node, id2 AS edge, cost 
         FROM pgr_bdDijkstra(
-            'SELECT id, source, target, cost, rcost FROM edge_table',
+            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
             7, 12, true, true
         );
 
