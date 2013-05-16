@@ -60,9 +60,9 @@ Description
 Returns set of :ref:`type_cost_result`:
 
 :seq:   row sequence
-:id1:   source node ID
-:id2:   target node ID
-:cost:  cost to traverse from ``id1`` to ``id2``
+:id1:   node ID
+:id2:   edge ID (``-1`` for the last row)
+:cost:  cost to traverse from ``id1`` using ``id2``
 
 
 .. rubric:: History
@@ -77,18 +77,18 @@ Examples
 
 .. code-block:: sql
 
-	SELECT seq, id1 AS from, id2 AS to, cost 
+	SELECT seq, id1 AS node, id2 AS edge, cost 
 		FROM pgr_astar(
 			'SELECT id, source, target, cost, x1, y1, x2, y2 FROM edge_table',
 			7, 12, false, false
 		);
 
-	 seq | from | to | cost 
-	-----+------+----+------
-	   0 |    7 |  8 |    1
-	   1 |    8 | 11 |    1
-	   2 |   11 | 13 |    1
-	   3 |   12 | -1 |    0
+	 seq | node | edge | cost 
+	-----+------+------+------
+	   0 |    7 |    8 |    1
+	   1 |    8 |   11 |    1
+	   2 |   11 |   13 |    1
+	   3 |   12 |   -1 |    0
 	(4 rows)
 
 
@@ -96,18 +96,18 @@ Examples
 
 .. code-block:: sql
 
-	SELECT seq, id1 AS from, id2 AS to, cost 
+	SELECT seq, id1 AS node, id2 AS edge, cost 
 		FROM pgr_astar(
 			'SELECT id, source, target, cost, x1, y1, x2, y2, reverse_cost FROM edge_table',
 			7, 12, true, true
 		);
 
-	 seq | from | to | cost 
-	-----+------+----+------
-	   0 |    7 |  8 |    1
-	   1 |    8 |  9 |    1
-	   2 |    9 | 15 |    1
-	   3 |   12 | -1 |    0
+	 seq | node | edge | cost 
+	-----+------+------+------
+	   0 |    7 |    8 |    1
+	   1 |    8 |    9 |    1
+	   2 |    9 |   15 |    1
+	   3 |   12 |   -1 |    0
 	(4 rows)
 
 The queries use the :ref:`sampledata` network.

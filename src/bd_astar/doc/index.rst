@@ -60,9 +60,9 @@ Description
 Returns set of :ref:`type_cost_result`:
 
 :seq:   row sequence
-:id1:   source node ID
-:id2:   target node ID
-:cost:  cost to traverse from ``id1`` to ``id2``
+:id1:   node ID
+:id2:   edge ID (``-1`` for the last row)
+:cost:  cost to traverse from ``id1`` using ``id2``
 
 .. rubric:: History
 
@@ -76,7 +76,7 @@ Examples
 
 .. code-block:: sql
 
-    SELECT seq, id1 AS from, id2 AS to, cost 
+    SELECT seq, id1 AS node, id2 AS edge, cost 
         FROM pgr_bdAstar(
             'SELECT id, source, target, cost, x1, y1, x2, y2 FROM edge_table',
             7, 12, false, false
@@ -88,7 +88,7 @@ Examples
 
 .. code-block:: sql
 
-    SELECT seq, id1 AS from, id2 AS to, cost 
+    SELECT seq, id1 AS node, id2 AS edge, cost 
         FROM pgr_bdAstar(
             'SELECT id, source, target, cost, x1, y1, x2, y2, reverse_cost FROM edge_table',
             7, 12, true, true
