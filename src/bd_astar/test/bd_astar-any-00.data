@@ -6,13 +6,13 @@ create table bdaways (
     target integer,
     cost float8,
     reverse_cost float8,
-    s_x float8,
-    s_y float8,
-    t_x float8,
-    t_y float8
+    x1 float8,
+    y1 float8,
+    x2 float8,
+    y2 float8
 );
 
-copy bdaways (id, source, target, cost, reverse_cost, s_x, s_y, t_x, t_y) from stdin;
+copy bdaways (id, source, target, cost, reverse_cost, x1, y1, x2, y2) from stdin;
 18129	10271	10265	0.407629542119694	0.407629542119694	-105.0222175	39.7910979	-105.0222149	39.787432
 14822	9426	3606	0.0603186413824967	0.0603186413824967	-105.0236131	39.7548297	-105.0243187	39.7548283
 16176	5812	7719	0.198519002375015	0.198519002375015	-104.9868503	39.6911967	-104.9868624	39.6894114
