@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0 (26c7b0e sew-devel-2_0)',
+        VERSION:     '2.0.0 (b1270d7 sew-devel-2_0)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -55,7 +55,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <img alt="../../../_images/trsp-test-image.png" src="../../../_images/trsp-test-image.png" />
 <p class="rubric">Create table</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">edge_table</span> <span class="p">(</span>
-    <span class="n">id</span> <span class="nb">integer</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">id</span> <span class="nb">serial</span><span class="p">,</span>
     <span class="n">dir</span> <span class="nb">character</span> <span class="nb">varying</span><span class="p">,</span>
     <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span>
     <span class="n">target</span> <span class="nb">integer</span><span class="p">,</span>
