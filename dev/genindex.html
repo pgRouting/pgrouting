@@ -19,7 +19,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.0.0 (248ef83 sew-devel-2_0)',
+        VERSION:     '2.0.0 (26c7b0e sew-devel-2_0)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -54,6 +54,7 @@
  <a href="#A"><strong>A</strong></a>
  | <a href="#B"><strong>B</strong></a>
  | <a href="#D"><strong>D</strong></a>
+ | <a href="#K"><strong>K</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#T"><strong>T</strong></a>
@@ -94,12 +95,25 @@
   <td style="width: 33%" valign="top"><dl>
       
   <dt>
-    bidirectional
+    bidirectional, astar
   </dt>
 
       <dd><dl>
         
-  <dt><a href="src/bd_dijkstra/doc/index.html#index-0">module</a>, <a href="src/bd_astar/doc/index.html#index-0">[1]</a>
+  <dt><a href="src/bd_astar/doc/index.html#index-0">module</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt>
+    bidirectional, dijkstra
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="src/bd_dijkstra/doc/index.html#index-0">module</a>
   </dt>
 
       </dl></dd>
@@ -136,6 +150,23 @@
   </dl></td>
 </tr></table>
 
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt>
+    ksp
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="src/ksp/doc/index.html#index-0">module</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+</tr></table>
+
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
@@ -154,7 +185,11 @@
   </dt>
 
         
-  <dt><a href="src/bd_dijkstra/doc/index.html#index-0">bidirectional</a>, <a href="src/bd_astar/doc/index.html#index-0">[1]</a>
+  <dt><a href="src/bd_astar/doc/index.html#index-0">bidirectional, astar</a>
+  </dt>
+
+        
+  <dt><a href="src/bd_dijkstra/doc/index.html#index-0">bidirectional, dijkstra</a>
   </dt>
 
         
@@ -163,6 +198,10 @@
 
         
   <dt><a href="src/driving_distance/doc/index.html#index-0">driving_distance</a>, <a href="src/tsp/doc/index.html#index-0">[1]</a>
+  </dt>
+
+        
+  <dt><a href="src/ksp/doc/index.html#index-0">ksp</a>
   </dt>
 
         
@@ -189,19 +228,19 @@
   </dt>
 
       
-  <dt><a href="src/apsp_warshall/doc/index.html#index-0">pgr_apspWarshall(text)</a>
+  <dt><a href="src/apsp_warshall/doc/index.html#index-0">pgr_apspWarshall(text, boolean, boolean)</a>
   </dt>
 
       
-  <dt><a href="src/astar/doc/index.html#index-0">PGR_Astar(text, integer, integer, boolean, boolean)</a>
+  <dt><a href="src/astar/doc/index.html#index-0">pgr_astar(text,integer,integer,boolean,boolean)</a>
   </dt>
 
       
-  <dt><a href="src/bd_astar/doc/index.html#index-0">pgr_bdAstar()</a>
+  <dt><a href="src/bd_astar/doc/index.html#index-0">pgr_bdAstar(text, integer, integer, boolean, boolean)</a>
   </dt>
 
       
-  <dt><a href="src/bd_dijkstra/doc/index.html#index-0">pgr_bdDijkstra()</a>
+  <dt><a href="src/bd_dijkstra/doc/index.html#index-0">pgr_bdDijkstra(text, integer, integer, boolean, boolean)</a>
   </dt>
 
       
@@ -244,6 +283,10 @@
 
       
   <dt><a href="src/common/doc/pgrouting_analytics.html#pgr_isColumnInTable">pgr_isColumnInTable() (built-in function)</a>
+  </dt>
+
+      
+  <dt><a href="src/ksp/doc/index.html#index-0">pgr_ksp(text,integer,integer,integer,boolean)</a>
   </dt>
 
       
@@ -303,7 +346,7 @@
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors.
-      Last updated on May 15, 2013.
+      Last updated on May 17, 2013.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

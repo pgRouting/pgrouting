@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0 (248ef83 sew-devel-2_0)',
+        VERSION:     '2.0.0 (26c7b0e sew-devel-2_0)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -53,78 +53,134 @@
         
   <div class="section" id="pgr-ksp-k-shortest-path">
 <span id="ksp"></span><h1>pgr_ksp - K-Shortest Path<a class="headerlink" href="#pgr-ksp-k-shortest-path" title="Permalink to this headline">¶</a></h1>
-<p>KSP code base taken from
-<a class="reference external" href="http://code.google.com/p/k-shortest-paths/source">HERE</a>.</p>
-<p>Checkout is <cite>svn checkout http://k-shortest-paths.googlecode.com/svn/trunk/ k-shortest-paths-read-only</cite>.</p>
-<p>Setup the code expects to find a table that defines a serries on vertexs
-and nodes with the following format:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">create</span> <span class="k">table</span> <span class="n">network</span> <span class="p">(</span>
-    <span class="n">gid</span> <span class="nb">serial</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="k">source</span> <span class="nb">integer</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">target</span> <span class="nb">integer</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">cost</span> <span class="nb">float</span><span class="p">,</span>
-    <span class="n">reverse_cost</span> <span class="nb">float</span>
-        <span class="n">the_geom</span>
-<span class="p">);</span>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_ksp</span></tt> — Returns the &#8220;K&#8221; shortest paths.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Returns a set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a> (seq, id1, id2, cost) rows, that make up a path.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_ksp</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">target</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">paths</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="nb">boolean</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The table can be called anything, butit  must include the fields
-gid, source, target, cost and reverse_cost directory.</p>
-<p>Where:</p>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first">a SQL query, which should return a set of rows with the following columns:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="p">[,</span><span class="n">reverse_cost</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">edge_table</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the edge</td>
+</tr>
+<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the source vertex</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the target vertex</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">reverse_cost:</th><td class="field-body">(optional) the cost for the reverse traversal of the edge. This is only used when <tt class="docutils literal"><span class="pre">has_rcost</span></tt> the parameter is <tt class="docutils literal"><span class="pre">true</span></tt> (see the above remark about negative costs).</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int4</span></tt> id of the start point</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int4</span></tt> id of the end point</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">paths:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int4</span></tt> number of alternative routes</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">has_rcost:</th><td class="field-body"><p class="first last">if <tt class="docutils literal"><span class="pre">true</span></tt>, the <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Returns set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[] - Path Result with Cost</em></a>:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body">route ID</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id1:</th><td class="field-body">node ID</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">edge ID (<tt class="docutils literal"><span class="pre">0</span></tt> for the last row)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body">cost to traverse from <tt class="docutils literal"><span class="pre">id1</span></tt> using <tt class="docutils literal"><span class="pre">id2</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>KSP code base taken from <a class="reference external" href="http://code.google.com/p/k-shortest-paths/source">http://code.google.com/p/k-shortest-paths/source</a>.</p>
+<p class="rubric">History</p>
 <ul class="simple">
-<li><strong>gid</strong>:  is a unique integer value</li>
-<li><strong>source</strong>: is source vertex</li>
-<li><strong>target</strong>: is target vertex</li>
-<li><strong>cost</strong>: is the &#8216;cost&#8217; of getting from source to target</li>
-<li><strong>reverse_cost</strong>: is the &#8216;cost&#8217; of getting back from source to target</li>
-<li><strong>the_geom</strong>: a (MULTI)LINESTRING geometry that describes the route between source and target, it may be null, and is only used if asked for get generating the routes</li>
+<li>New in version 2.0.0</li>
 </ul>
-<p>The code is invoked as:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">ksp_sp</span><span class="p">(</span>
-    <span class="k">sql</span> <span class="nb">text</span><span class="p">,</span>          <span class="c1">-- sql to select the edges</span>
-    <span class="n">tabname</span> <span class="nb">text</span><span class="p">,</span>      <span class="c1">-- name of edge table</span>
-    <span class="n">start_node</span><span class="p">,</span>        <span class="c1">-- start vertex id</span>
-    <span class="n">end_node</span><span class="p">,</span>          <span class="c1">-- end vertex id</span>
-    <span class="n">number_of_routes</span><span class="p">,</span>  <span class="c1">-- number of routes to compute</span>
-    <span class="n">use_reverse_cost</span>   <span class="c1">-- boolean</span>
-<span class="p">);</span>
-
-<span class="c1">-- For example:</span>
-
-    <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">ksp_sp</span><span class="p">(</span>
-    <span class="s1">&#39;select source, target, cost, reverse_cost, gid from network&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;network&#39;</span><span class="p">,</span>         <span class="c1">-- name of edge table</span>
-    <span class="mi">4</span><span class="p">,</span>                 <span class="c1">-- start node</span>
-    <span class="mi">5</span><span class="p">,</span>                 <span class="c1">-- end node</span>
-    <span class="mi">15</span><span class="p">,</span>                <span class="c1">-- number of routes</span>
-    <span class="s1">&#39;f&#39;</span>                <span class="c1">-- false so don&#39;t use reverse cost</span>
-<span class="p">);</span>
-</pre></div>
 </div>
-<p>The results are a list of link segments that describes the given route
-for each computed route, in the following format:</p>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><strong>id</strong>: refers to the current result set</li>
-<li><strong>edge_id</strong>: refers to the gid in the supply table</li>
-<li><strong>route_id</strong>: refers to the current route</li>
-<li><strong>the_geom</strong>: refers to the geometry in the supply table</li>
+<li>Without <tt class="docutils literal"><span class="pre">reverse_cost</span></tt></li>
 </ul>
-<p>For example:</p>
-<div class="highlight-text"><div class="highlight"><pre> id | edge_id | route_id |                                                   the_geom
-----+---------+----------+--------------------------------------------------------------------------------------------------------------
-  0 |      15 |        0 | 0105000020110F0000010000000102000000020000000000000000001040000000000000104000000000000010400000000000001840
-  1 |      13 |        1 | 0105000020110F0000010000000102000000020000000000000000001040000000000000104000000000000008400000000000000840
-  2 |      10 |        1 | 0105000020110F0000010000000102000000020000000000000000000840000000000000084000000000000000000000000000000000
-  3 |       2 |        1 | 0105000020110F0000010000000102000000020000000000000000000000000000000000000000000000000000400000000000000040
-  4 |       9 |        1 | 0105000020110F0000010000000102000000020000000000000000000040000000000000004000000000000010400000000000001840
-  5 |      13 |        2 | 0105000020110F0000010000000102000000020000000000000000001040000000000000104000000000000008400000000000000840
-  6 |      10 |        2 | 0105000020110F0000010000000102000000020000000000000000000840000000000000084000000000000000000000000000000000
-  7 |       1 |        2 | 0105000020110F00000100000001020000000200000000000000000000000000000000000000000000000000F03F000000000000F03F
-  8 |       5 |        2 | 0105000020110F000001000000010200000002000000000000000000F03F000000000000F03F00000000000000400000000000000040
-  9 |       9 |        2 | 0105000020110F0000010000000102000000020000000000000000000040000000000000004000000000000010400000000000001840
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span> <span class="k">AS</span> <span class="n">route</span><span class="p">,</span> <span class="n">id1</span> <span class="k">AS</span> <span class="n">node</span><span class="p">,</span> <span class="n">id2</span> <span class="k">AS</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span>
+  <span class="k">FROM</span> <span class="n">pgr_ksp</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="k">false</span>
+  <span class="p">);</span>
+
+ <span class="n">route</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="c1">-------+------+------+------</span>
+     <span class="mi">0</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
+     <span class="mi">0</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+     <span class="mi">0</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
+     <span class="mi">0</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+     <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
+     <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span>
+     <span class="mi">1</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span>
+     <span class="mi">1</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+<span class="p">(</span><span class="mi">8</span> <span class="k">rows</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This set of results describes 3 results: route_id 0 is one hop, 1 is 4 hops, and 2 is 5 hops.</p>
+<ul class="simple">
+<li>With <tt class="docutils literal"><span class="pre">reverse_cost</span></tt></li>
+</ul>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span> <span class="k">AS</span> <span class="n">route</span><span class="p">,</span> <span class="n">id1</span> <span class="k">AS</span> <span class="n">node</span><span class="p">,</span> <span class="n">id2</span> <span class="k">AS</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span>
+  <span class="k">FROM</span> <span class="n">pgr_ksp</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="k">true</span>
+  <span class="p">);</span>
+
+ <span class="n">route</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="c1">-------+------+------+------</span>
+     <span class="mi">0</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
+     <span class="mi">0</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+     <span class="mi">0</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
+     <span class="mi">0</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+     <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
+     <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span>
+     <span class="mi">1</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span>
+     <span class="mi">1</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+<span class="p">(</span><span class="mi">8</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[] - Path Result with Cost</em></a></li>
+</ul>
+</div>
 </div>
 
 
@@ -143,7 +199,7 @@ for each computed route, in the following format:</p>
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors.
-      Last updated on May 15, 2013.
+      Last updated on May 17, 2013.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

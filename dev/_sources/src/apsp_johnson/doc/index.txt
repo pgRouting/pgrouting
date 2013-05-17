@@ -25,7 +25,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) (source_id, target_id, cost) rows for every pair of nodes in the graph.
+Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows for every pair of nodes in the graph.
 
 .. code-block:: sql
 
@@ -45,6 +45,12 @@ Description
     :target: ``int4`` identifier of the target vertex for this edge
     :cost: ``float8`` a positive value for the cost to traverse this edge
 
+Returns set of :ref:`type_cost_result`:
+
+:seq:   row sequence
+:id1:   source node ID
+:id2:   target node ID
+:cost:  cost to traverse from ``id1`` to ``id2``
 
 .. rubric:: History
 
@@ -56,13 +62,24 @@ Examples
 
 .. code-block:: sql
 
-    SELECT source_id, target_id, cost 
+    SELECT seq, id1 AS from, id2 AS to, cost 
         FROM pgr_apspJohnson(
             'SELECT source, target, cost FROM edge_table'
         );
+
+     seq | from | to | cost 
+    -----+------+----+------
+       0 |    1 |  1 |    0
+       1 |    1 |  2 |    1
+       2 |    1 |  7 |    2
+       3 |    1 |  8 |    3
+    [...]
+
+The query uses the :ref:`sampledata` network.
 
 
 See Also
 -------------------------------------------------------------------------------
 
 * :ref:`type_cost_result`
+* :ref:`pgr_apsp_warshall`

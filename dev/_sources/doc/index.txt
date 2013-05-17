@@ -67,8 +67,8 @@ pgRouting functions in alphabetical order:
 	../src/apsp_johnson/doc/index
 	../src/apsp_warshall/doc/index
 	../src/astar/doc/index
-	../src/bd_dijkstra/doc/index
 	../src/bd_astar/doc/index
+	../src/bd_dijkstra/doc/index
 	../src/dijkstra/doc/index
 	../src/driving_distance/doc/index
 	../src/ksp/doc/index
