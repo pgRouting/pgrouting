@@ -87,7 +87,7 @@ static int ksp_finish(int code, int ret)
 ksp_fetch_edge_columns(SPITupleTable *tuptable, ksp_edge_columns_t *edge_columns, 
                    bool has_reverse_cost)
 {
-  edge_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "gid");
+  edge_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
   edge_columns->source = SPI_fnumber(SPI_tuptable->tupdesc, "source");
   edge_columns->target = SPI_fnumber(SPI_tuptable->tupdesc, "target");
   edge_columns->cost = SPI_fnumber(SPI_tuptable->tupdesc, "cost");
@@ -97,7 +97,7 @@ ksp_fetch_edge_columns(SPITupleTable *tuptable, ksp_edge_columns_t *edge_columns
       edge_columns->cost == SPI_ERROR_NOATTRIBUTE) 
     {
       elog(ERROR, "Error, query must return columns "
-           "'gid', 'source', 'target' and 'cost'");
+           "'id', 'source', 'target' and 'cost'");
       return -1;
     }
 

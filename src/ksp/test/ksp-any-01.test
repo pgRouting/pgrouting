@@ -5,11 +5,11 @@
 --
 select ksp.seq, ksp.id2, n.source, n.target, round(st_length(n.the_geom)::numeric, 2) as len
   from pgr_ksp(
-    'select source, target, cost,reverse_cost, gid from network order by gid',
+    'select source, target, cost,reverse_cost, id from network order by id',
     4,
     5,
     15,
     'f') ksp,
         network n
- where ksp.id2=n.gid
+ where ksp.id2=n.id
  order by ksp.seq, ksp.id2;

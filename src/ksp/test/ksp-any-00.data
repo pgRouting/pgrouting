@@ -13,7 +13,7 @@ select addgeometrycolumn('','nodes','the_geom',3857,'POINT',2);
 
 drop table IF exists network ;
 create table network (
-	gid serial NOT NULL,
+	id serial NOT NULL,
 	source integer NOT NULL,
 	target integer NOT NULL,
 	cost float,
