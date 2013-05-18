@@ -1,0 +1,6 @@
+select pgr_analyzegraph('edges2','the_geom', 0.000001);
+select count(*) from vertices_tmp where chk=1;
+\echo '---------------------------------------'
+select cnt, count(*) from vertices_tmp group by cnt order by cnt;
+\echo '---------------------------------------'
+select * from vertices_tmp order by id;

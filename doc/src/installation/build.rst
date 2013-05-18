@@ -46,13 +46,6 @@ For Linux
 	make
 	sudo make install
 
-Alternative syntax (undocumented CMake parameters):
-
-.. code-block:: bash
-
-	cmake -H. -Bbuild -DWITH_DOC=ON -DWITH_DD=ON 
-	cd build && make && cd ..
-
 
 With Documentation
 ********************************************************************************

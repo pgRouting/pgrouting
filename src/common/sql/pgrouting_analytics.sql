@@ -56,12 +56,14 @@ BEGIN
 
     IF NOT pgr_isColumnIndexed(edge_tab, 'source') THEN
         RAISE NOTICE 'Adding index on "source" for "%".', edge_tab;
-        create index source_idx on st using btree(source);
+        EXECUTE 'create index ' || quote_ident(edge_tab) || '_source_idx on '
+            || quote_ident(edge_tab) || ' using btree(source)';
     END IF;
 
     IF NOT pgr_isColumnIndexed(edge_tab, 'target') THEN
         RAISE NOTICE 'Adding index on "target" for "%".', edge_tab;
-        create index target_idx on st using btree(target);
+        EXECUTE 'create index ' || quote_ident(edge_tab) || '_target_idx on '
+            || quote_ident(edge_tab) || ' using btree(target)';
     END IF;
 
     IF NOT pgr_isColumnIndexed(edge_tab, geom_col) THEN
@@ -79,8 +81,9 @@ BEGIN
 
     RAISE NOTICE 'Analyzing graph for gaps and zlev errors.';
     FOR points IN SELECT * FROM vertices_tmp WHERE cnt = 1 ORDER BY id  LOOP
-        FOR seg IN SELECT * FROM st a
-                WHERE ST_DWithin(a.the_geom, points.the_geom, tol)
+        FOR seg IN EXECUTE 'SELECT * FROM ' || quote_ident(edge_tab) || ' a
+                WHERE ST_DWithin(a.' || quote_ident(geom_col) || ', $1, $2)'
+                USING points.the_geom, tol
             LOOP
                 IF points.id NOT IN (seg.source, seg.target) THEN
                     UPDATE vertices_tmp SET chk=1 WHERE id=points.id;
@@ -183,10 +186,10 @@ BEGIN
         ALTER TABLE vertices_tmp
             ADD COLUMN ein integer,
             ADD COLUMN eout integer;
-    ELSE
-        RAISE NOTICE 'Zeroing columns "ein" and "eout" on "vertices_tmp".';
-        UPDATE vertices_tmp SET ein=0, eout=0;
     END IF;
+
+    RAISE NOTICE 'Zeroing columns "ein" and "eout" on "vertices_tmp".';
+    UPDATE vertices_tmp SET ein=0, eout=0;
 
     IF NOT pgr_isColumnIndexed('vertices_tmp', 'id') THEN
         RAISE NOTICE 'Adding unique index "vertices_tmp_id_idx".';
@@ -200,7 +203,7 @@ BEGIN
             ELSE '' END;
 
     instr := '''' || array_to_string(s_in_rules, ''',''') || '''';
-    EXECUTE 'update vertices_tmp a set ein=ein+b.cnt
+    EXECUTE 'update vertices_tmp a set ein=coalesce(ein,0)+b.cnt
       from (
          select source, count(*) as cnt 
            from '|| quote_ident(tab) ||' 
@@ -211,7 +214,7 @@ BEGIN
     RAISE NOTICE 'Analysis 25%% complete ...';
 
     instr := '''' || array_to_string(t_in_rules, ''',''') || '''';
-    EXECUTE 'update vertices_tmp a set ein=ein+b.cnt
+    EXECUTE 'update vertices_tmp a set ein=coalesce(ein,0)+b.cnt
       from (
          select target, count(*) as cnt 
            from '|| quote_ident(tab) ||' 
@@ -222,7 +225,7 @@ BEGIN
     RAISE NOTICE 'Analysis 50%% complete ...';
 
     instr := '''' || array_to_string(s_out_rules, ''',''') || '''';
-    EXECUTE 'update vertices_tmp a set eout=eout+b.cnt
+    EXECUTE 'update vertices_tmp a set eout=coalesce(eout,0)+b.cnt
       from (
          select source, count(*) as cnt 
            from '|| quote_ident(tab) ||' 
@@ -233,7 +236,7 @@ BEGIN
     RAISE NOTICE 'Analysis 75%% complete ...';
 
     instr := '''' || array_to_string(t_out_rules, ''',''') || '''';
-    EXECUTE 'update vertices_tmp a set eout=eout+b.cnt
+    EXECUTE 'update vertices_tmp a set eout=coalesce(eout,0)+b.cnt
       from (
          select target, count(*) as cnt 
            from '|| quote_ident(tab) ||' 
