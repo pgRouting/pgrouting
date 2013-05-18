@@ -16,6 +16,8 @@ Especially with new major releases functionality may change and functions may be
 Functionality that has been discontinued will be listed here.
 
 
+.. _shooting_star:
+
 Shooting Star algorithm
 ********************************************************************************
 
