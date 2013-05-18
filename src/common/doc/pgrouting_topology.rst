@@ -117,31 +117,33 @@ feature class code and the CASE statements converts it to an average speed.
     vacuum analyze verbose st;
 
 Now your database should be ready to use any (most?) of the pgRouting
- algorithms.
+algorithms.
 
 Functions
 =========
 
 .. function:: pgr_createTopology(geom_table varchar, tolerance double precision, geo_cname varchar, gid_cname varchar)
 
-   Fill the source and target_id column for all lines. All line ends
-   with a distance less than tolerance, are assigned the same id.
-   This function assumes the "source" and "target" columns exist on
-   table "geom_table" and are of type integer or bigint.
-   * geom_table - name of the edge table
-   * tolerance  - tolerance distance used to matching nodes
-   * geo_cname  - the geometry column name
-   * gid_cname  - the edge unique identifier (INTEGER or BIGINT)
+:geom_table: ``text`` name of the edge table
+:tolerance: ``float8`` tolerance distance used to matching nodes
+:geo_cname: ``text`` the geometry column name
+:gid_cname: ``text`` the edge unique identifier (INTEGER or BIGINT)
 
+
+Fill the source and target_id column for all lines. All line ends
+with a distance less than tolerance, are assigned the same id.
+This function assumes the "source" and "target" columns exist on
+table "geom_table" and are of type integer or bigint.
 
 
 .. function:: pgr_pointToId(p, tolerance)
 
    *This function should not be used directly. Use pgr_createTopology instead.*
+   *Returns BIGINT*
 
-   Inserts a point into a temporary vertices table, and return an id
-   of a new point or an existing point. Tolerance is the minimal distance
-   between existing points and the new point to create a new point.
-   * Returns BIGINT
+Inserts a point into a temporary vertices table, and return an id
+of a new point or an existing point. Tolerance is the minimal distance
+between existing points and the new point to create a new point.
+
 
 

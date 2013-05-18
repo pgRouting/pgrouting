@@ -27,22 +27,22 @@ BEGIN
 
     -- must handle the case where lines intersects at a linestring...
 
-    EXECUTE 'insert into intergeom (l1id, l2id, ' || quote_ident(n_geom) || ')
-        select l1id, l2id, st_startpoint(' || quote_ident(n_geom) || ')
-        from intergeom where geometryType(' || quote_ident(n_geom) || ') = ''LINESTRING'' ';
+    EXECUTE 'insert into intergeom (l1id, l2id, geom)
+        select l1id, l2id, st_startpoint(geom)
+        from intergeom where geometryType(geom) = ''LINESTRING'' ';
 
 	GET DIAGNOSTICS p_num = ROW_COUNT;
 	raise notice 'Num inserts: %', p_num;
 
-    EXECUTE 'insert into intergeom (l1id, l2id, ' || quote_ident(n_geom) || ')
-        select l1id, l2id, st_endpoint(' || quote_ident(n_geom) || ')
-        from intergeom where geometryType(' || quote_ident(n_geom) || ') = ''LINESTRING'' ';
+    EXECUTE 'insert into intergeom (l1id, l2id, geom)
+        select l1id, l2id, st_endpoint(geom)
+        from intergeom where geometryType(geom) = ''LINESTRING'' ';
 
 	GET DIAGNOSTICS p_num = ROW_COUNT;
 	raise notice 'Num inserts: %', p_num;
 	
     -- keeps only true intersection points
-    EXECUTE 'delete from intergeom where geometryType(' || quote_ident(n_geom) || ') <> ''POINT'' ';
+    EXECUTE 'delete from intergeom where geometryType(geom) <> ''POINT'' ';
 
 	GET DIAGNOSTICS p_num = ROW_COUNT;
 	raise notice 'Num deleted: %', p_num;
@@ -52,10 +52,10 @@ BEGIN
     -- we keep only intersection points occuring onto the line, not at one of its ends
     drop table if exists inter_loc;
     EXECUTE 'create temp table inter_loc as (
-        select l1id, l2id, st_line_locate_point(l.' || quote_ident(n_geom) || ', i.' || quote_ident(n_geom) || ') as locus
+        select l1id, l2id, st_line_locate_point(l.' || quote_ident(n_geom) || ', i.geom) as locus
         from intergeom i left join ' || quote_ident(intab) || ' l on (l.' || quote_ident(n_pkey) || ' = i.l1id)
-        where st_line_locate_point(l.' || quote_ident(n_geom) || ', i.' || quote_ident(n_geom) || ') <> 0 
-              and st_line_locate_point(l.' || quote_ident(n_geom) || ', i.' || quote_ident(n_geom) || ') <> 1
+        where st_line_locate_point(l.' || quote_ident(n_geom) || ', i.geom) <> 0 
+              and st_line_locate_point(l.' || quote_ident(n_geom) || ', i.geom) <> 1
         )';
 
     -- index on l1id
@@ -84,7 +84,7 @@ BEGIN
            from cut_locations
        ) 
        -- finally, each original line is cut with consecutive locations using linear referencing functions
-       select l.' || quote_ident(n_pkey) || ', loc1.idx as sub_id, st_line_substring(l.geom, loc1.locus, loc2.locus) as ' || quote_ident(n_geom) || ' 
+       select l.' || quote_ident(n_pkey) || ', loc1.idx as sub_id, st_line_substring(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus) as ' || quote_ident(n_geom) || ' 
        from loc_with_idx loc1 join loc_with_idx loc2 using (lid) join ' || quote_ident(intab) || ' l on (l.' || quote_ident(n_pkey) || ' = loc1.lid)
        where loc2.idx = loc1.idx+1
            -- keeps only linestring geometries
@@ -94,7 +94,7 @@ BEGIN
 	-- are already clean
 	-- inserts them in the final result: all lines which gid is not in the res table.
 	EXECUTE 'insert into ' || quote_ident(outtab) || ' (' || quote_ident(n_pkey) || ', sub_id, ' || quote_ident(n_geom) || ')
-		select ' || quote_ident(intab) || '.' || quote_ident(n_pkey) || ', 1 as sub_id, ' || quote_ident(intab) || '.geom
+		select ' || quote_ident(intab) || '.' || quote_ident(n_pkey) || ', 1 as sub_id, ' || quote_ident(intab) || '.' || quote_ident(n_geom) || '
 		from ' || quote_ident(intab) || '
 		where not exists (
 			select ' || quote_ident(outtab) || '.' || quote_ident(n_pkey) || ' from ' || quote_ident(outtab) || ' 
