@@ -1,0 +1,34 @@
+-- create 50x50 grid of overlapping lines horizontal and vertical
+
+create table ddunnoded (
+  id serial not null primary key
+);
+select addgeometrycolumn('ddunnoded', 'the_geom', 0, 'LINESTRING', 2);
+insert into ddunnoded (the_geom)
+select st_astext(st_makeline(st_makepoint(0,s1), st_makepoint(51,s1))) from (select generate_series(1,50) as s1) as foo
+union all
+select st_astext(st_makeline(st_makepoint(s1,0), st_makepoint(s1,51))) from (select generate_series(1,50) as s1) as foo;
+
+-- node the grid so we can use it
+select pgr_nodenetwork('ddunnoded', 'id', 'the_geom', 'ddnoded', 0.000001);
+
+-- copy the noded table into a table we can use for a graph
+-- and add the required columns
+create table ddnoded2 (
+  gid serial not null primary key,
+  id integer,
+  source integer,
+  target integer,
+  cost float8
+);
+select addgeometrycolumn('ddnoded2', 'the_geom', 0, 'LINESTRING', 2);
+
+insert into ddnoded2 (id, cost, the_geom)
+select a.id, 1.0::float8 as cost, a.the_geom
+  from ddnoded a order by id, sub_id;
+
+-- now create a topology
+select pgr_createtopology('ddnoded2', 0.000001, 'the_geom', 'gid');
+
+-- Total query runtime: 8080 ms.
+
