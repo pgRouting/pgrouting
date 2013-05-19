@@ -13,13 +13,14 @@ pgr_tsp - Traveling Sales Person
 ===============================================================================
 
 .. index:: 
-	single: pgr_tsp(text,integer,double precision,boolean,boolean)
-	module: driving_distance
+	single: pgr_tsp(text, integer, double precision, boolean, boolean)
+    single: pgr_tsp(matrix float[][], start integer)
 
 Name
 -------------------------------------------------------------------------------
 
 ``pgr_tsp`` - Returns the best route from a start node via a list of nodes.
+``pgr_tsp`` - Returns the best order when passed a disance matrix.
 
 
 Synopsis
@@ -29,8 +30,13 @@ Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) 
 
 .. code-block:: sql
 
-	pgr_costResult[] pgr_tsp(text sql, varchar ids, integer source);
+	pgr_costResult[] pgr_tsp(sql text, ids varchar, source integer);
 
+Resturns a set of (seq integer, id integer) that is the best order to visit the nodes in the matrix.
+
+.. code-block:: sql
+
+    record[] pgr_tsp(matrix float[][], start integer)
 
 Description
 -------------------------------------------------------------------------------
@@ -51,6 +57,14 @@ The TSP solver is using a genetic algorithm. It is not an exact solution, but it
 .. note::
 	``edge_id`` and ``cost`` attribute of the result set are not used and always contain ``0``.
 
+For users, that do not want to use Euclidean distances, we also provode the
+ability to pass a distance matrix that we will solve and return an ordered
+list of nodes for the best order to visit each. It is up to the user to
+fully populate the distance matrix. The distance matrix is a multidimensional
+postgresql array type that must be N x N in size. The result will be N records
+of ``[ seq, id ]`` where ``id`` is an index into the matrix. See the PostgreSQL
+documentation of ARRAY types, functions and array_agg.
+
 
 .. rubric:: History
 
@@ -69,7 +83,9 @@ Examples
 		     WHERE source IN (<list of ids>)',
 		               '<list of ids>', <start id>);
 
-	
+    SELECT seq, id from pgr_tsp('{{0,1,2,3},{1,0,3,2},{2,3,0,4},{3,2,4,0}}', 2);
+
+
 .. note::
 	Afterwards ``vertex_id`` column can be used for shortest path calculation.
 
