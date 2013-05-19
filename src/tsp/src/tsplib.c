@@ -429,7 +429,7 @@ void annealing(TSP *tsp)
 int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, DTYPE *total_len, char *err_msg)
 {
     int   i, j;
-    int   istart;
+    int   istart = 0;
     TSP   tsp;
     long  seed = -314159L;
 
@@ -475,12 +475,20 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, DTYPE *total_le
 
     // reorder ids[] with start as first
 
+#ifdef DEBUG
+    for (i=0; i<tsp.n; i++) {
+        DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d",
+            i, ids[i], tsp.iorder[i], tsp.jorder[i]);
+    }
+#endif
+
     // get index of start node in ids
     for (i=0; i < tsp.n; i++) 
         if (ids[i] == start) {
             istart = i;
             break;
         }
+    DBG("istart: %d", istart);
 
     // get the idex of start in iorder
     for (i=0; i < tsp.n; i++)
@@ -488,6 +496,7 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, DTYPE *total_le
             istart = i;
             break;
         }
+    DBG("istart: %d", istart);
 
     // copy ids to tsp.jorder so we can rewrite ids
     memcpy(tsp.jorder, ids, tsp.n * sizeof(int));
@@ -498,6 +507,13 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, DTYPE *total_le
 
     for (i=0; i < istart; i++, j++)
         ids[j] =tsp.jorder[tsp.iorder[i]];
+
+#ifdef DEBUG
+    for (i=0; i<tsp.n; i++) {
+        DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d",
+            i, ids[i], tsp.iorder[i], tsp.jorder[i]);
+    }
+#endif
 
     DBG("tsplib: istart=%d, n=%d, j=%d", istart, tsp.n, j);
 

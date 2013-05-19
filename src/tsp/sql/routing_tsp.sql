@@ -25,3 +25,12 @@ CREATE OR REPLACE FUNCTION pgr_tsp(sql text, ids varchar, source integer)
     RETURNS SETOF pgr_costResult
     AS '$libdir/librouting_tsp', 'tsp'
     LANGUAGE c IMMUTABLE STRICT;
+
+/*
+ * select seq, id from pgr_tsp(matrix float8[][], start int,
+ *                             OUT seq int, OUT id int);
+*/
+CREATE OR REPLACE FUNCTION pgr_tsp(matrix float8[][], start integer, OUT seq integer, OUT id integer)
+    RETURNS SETOF record
+    AS '$libdir/librouting_tsp', 'tsp_matrix'
+    LANGUAGE c IMMUTABLE STRICT;
