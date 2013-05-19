@@ -20,6 +20,7 @@
  */
 
 // Include C header first for windows build issue
+#include <exception>
 #include "drivedist.h"
 
 #include <boost/config.hpp>
@@ -163,6 +164,10 @@ try {
   }
   
   return EXIT_SUCCESS;
+ }
+ catch(std::exception& e) {
+    *err_msg = (char *) e.what();
+    return -1;
  }
  catch(...) {
      *err_msg = (char *) "Unknown exception caught!";
