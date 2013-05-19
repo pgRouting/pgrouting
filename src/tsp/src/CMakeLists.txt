@@ -19,7 +19,7 @@ else(APPLE)
     set(LIBRARY_MODE_TARGET "SHARED")
 endif(APPLE)
 
-add_library(routing_tsp ${LIBRARY_MODE_TARGET} tsp.c tsp.h tsplib.c)
+add_library(routing_tsp ${LIBRARY_MODE_TARGET} tsp.c tsp2.c tsp.h tsplib.c)
 
 if(WIN32)
   if(MSVC)
