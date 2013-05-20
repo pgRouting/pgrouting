@@ -16,8 +16,7 @@ The following are commonly used data types for some of the pgRouting functions.
 
 .. toctree::
     :maxdepth: 1
+    :glob:
 
-    types/cost_result
-    types/geom_result
-    types/vertex_result
+    types/*
 

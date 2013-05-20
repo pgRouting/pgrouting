@@ -54,7 +54,7 @@ Reference
 *******************************************************************************
 
 .. toctree::
-	:maxdepth: 1
+	:maxdepth: 2
 
 	../src/common/doc/index
 	../src/common/doc/types

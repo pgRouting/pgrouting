@@ -139,7 +139,7 @@ because the bridge ot ferry routes are missing.
 See Also
 ----------------------------------------------------------------------------
 
-* :ref:`_common-node_network`
+* :ref:`pgr_node_network`
 
 
 Utility functions

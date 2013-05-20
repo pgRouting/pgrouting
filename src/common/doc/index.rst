@@ -12,21 +12,14 @@
 Common Functions
 ===============================================================================
 
-pgRouting data types:
-
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
+   :glob:
 
-   types
-
-pgRouting functions:
-
-.. toctree::
-   :maxdepth: 2
+   functions/*
 
    pgrouting_analytics
    pgrouting_matching
    pgrouting_topology
-   pgrouting_node_network
 
 
