@@ -13,7 +13,7 @@ pgr_createTopology - Building a NetWork Topology
 ===============================================================================
 
 .. index:: 
-	single: pgr_createTopology(varchar,double precision,varchar,cvarchar)
+	single: pgr_createTopology(varchar,double precision,varchar,varchar)
 	module: common
 
 Name
@@ -35,18 +35,20 @@ The function returns ``OK`` after the network topology has been built.
 Description
 -------------------------------------------------------------------------------
 
-The function requires two (empty) table columns named ``source`` and ``target`` as in the following example
+This function assumes the ``source`` and ``target`` columns exist on table ``geom_table`` and are of type integer or bigint.
 
 .. code-block:: sql
 
-    CREATE TABLE geom_table     (
+    CREATE TABLE edge_table (
 		gid_cname integer,
-		source integer,
-		target integer,
+		source integer, -- or bigint
+		target integer, -- or bigint
 		geo_cname geometry
     );
 
-The topology creation function then accepts the following parameters:
+It fills the ``source`` and ``target`` id column for all edges. All line ends with a distance less than tolerance, are assigned the same id. 
+
+The topology creation function accepts the following parameters:
 
 :geom_table: ``varchar`` network table name (may contain the schema name as well)
 :tolerance: ``float8`` snapping tolerance of disconnected edges (in projection unit)
@@ -80,4 +82,6 @@ The queries use the :ref:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
+* :ref:`topology`
 * :ref:`pgr_node_network`
+* :ref:`pgr_point_to_id`

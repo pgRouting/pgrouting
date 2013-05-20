@@ -13,7 +13,7 @@ pgr_nodeNetwork - Nodes an network edge table.
 ===============================================================================
 
 .. index:: 
-	single: pgr_NodeNetwork(text)
+	single: pgr_NodeNetwork(text,text,text,text,double precision)
 	module: common
 
 Name
@@ -48,7 +48,7 @@ This function reads the ``table_in`` table, that has a primary key column ``gid_
 :gid_cname: ``text`` name of the primary key column for the input table
 :geo_cname: ``text`` name of the geometry column that should be noded
 :table_out: ``text`` name of the output table that will be created
-:tolerance: ``float8`` tolerance for coinicident points
+:tolerance: ``float8`` tolerance for coinicident points (in projection unit)
 
 The ``table_out`` table has a structure like:
 

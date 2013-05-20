@@ -42,6 +42,7 @@ Tutorial
 	:maxdepth: 1
 
 	src/tutorial/index
+	src/tutorial/topology
 	src/tutorial/custom_query
 	src/tutorial/custom_wrapper
 	src/tutorial/recipes
