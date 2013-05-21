@@ -183,18 +183,25 @@ int findEulerianPath(TSP *tsp)
         elog(ERROR, "Failed to allocate memory!");
         return -1;
     }
+    DBG("findEulerianPath: 1");
 
+    j = -1;
     d = maxd;
     dis[0] = -1;
     for (i = 1; i < n; i++)
     {
-        dis[i] = D(i,0); arc[i] = 0;
-            if (d > dis[i])
+        dis[i] = D(i,0);
+        arc[i] = 0;
+        if (d > dis[i])
         {
             d = dis[i];
             j = i;
         }
     }
+    DBG("findEulerianPath: j=%d", j);
+
+    if (j == -1)
+        elog(ERROR, "Error TSP fail to findEulerianPath, check your distance matrix is valid.");
 
     /*
      * O(n^2) Minimum Spanning Trees by Prim and Jarnick 
@@ -223,6 +230,7 @@ int findEulerianPath(TSP *tsp)
         }
         j = k;
     }
+    DBG("findEulerianPath: 3");
 
     /*
      * Preorder Tour of MST
@@ -247,6 +255,7 @@ int findEulerianPath(TSP *tsp)
             }    
         }
     }
+    DBG("findEulerianPath: 4");
 
     return 0;
 }

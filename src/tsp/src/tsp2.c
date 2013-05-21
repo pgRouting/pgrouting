@@ -36,9 +36,6 @@ PG_MODULE_MAGIC;
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
-// macro to store distance values as DISTANCE[MAX_TOWNS][MAX_TOWNS]
-#define D(i,j) matrix[(i)*n + j]
-
 static DTYPE *get_pgarray(int *num, ArrayType *input)
 {
     int         ndims, *dims, *lbs;
@@ -114,6 +111,14 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
                     data[i] = (DTYPE) DatumGetFloat8(i_data[i]);
                     break;
             }
+            /* we assume negative values are INFINTY */
+            /********************************************************
+               TODO: based on trying to add an endpt it is likely
+               that this will not work and you will get and error in
+               findEulerianPath
+            **********************************************************/
+            if (data[i] < 0)
+                data[i] = INFINITY;
         }
         DBG("    data[%d]=%.4f", i, data[i]);
     }
@@ -127,7 +132,10 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
 }
 
 
-static int solve_tsp(DTYPE *matrix, int num, int start, int **results)
+// macro to store distance values as matrix[num][num]
+#define D(i,j) matrix[(i)*num + j]
+
+static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
 {
     int ret;
     int i;
@@ -135,7 +143,25 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int **results)
     DTYPE fit;
     char *err_msg;
 
-    DBG("In solve_tsp");
+    DBG("In solve_tsp: num: %d, start: %d, end: %d", num, start, end);
+
+    if (start < 0 || start > num)
+        elog(ERROR, "Error start must be in the range of 0 >= start <= num. (%d)", start);
+
+    if (end >= 0 && end >= num)
+        elog(ERROR, "Error end must be in the range of 0 <= end <= num. (%d)", end);
+
+    /*
+       fix up matrix id we have an end point
+       basically set D(start,end)=INFINITY and D(end,start)=0.0
+    */
+    if (end >= 0) {
+        DBG("Updating start end costs");
+        D(start,end)=INFINITY - 1000.0;
+        D(end,start)=0.000001;
+    }
+
+    DBG("Alloc ids");
 
     ids = (int *) palloc(num * sizeof(int));
     if (!ids) {
@@ -145,6 +171,8 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int **results)
     for(i=0; i<num; i++) {
         ids[i] = i;
     }
+
+    DBG("Calling find_tsp_solution");
 
 // int find_tsp_solution(int num, DTYPE *dist, int *p_ids, int source, DTYPE *fit, char* err_msg);
     ret = find_tsp_solution(num, matrix, ids, start, &fit, err_msg);
@@ -193,7 +221,9 @@ tsp_matrix(PG_FUNCTION_ARGS)
 
         ret = solve_tsp(matrix, num,
                         PG_GETARG_INT32(1), // start index
+                        // endpt does not work yet, leave this is -1
                         //PG_GETARG_INT32(2), // end  index 
+                        -1,
                         &tsp_res);
 
         pfree(matrix);
