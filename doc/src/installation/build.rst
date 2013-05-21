@@ -15,12 +15,12 @@ Build Guide
 To be able to compile pgRouting make sure that the following dependencies are met:
 
 * C and C++ compilers
-* Postgresql version >= [TBD]
-* PostGIS version >= [TBD]
+* Postgresql version >= 8.4 (>= 9.1 recommended)
+* PostGIS version >= 1.5 (>= 2.0 recommended)
 * The Boost Graph Library (BGL). Version >= [TBD]
 * CMake >= 2.8.8
 * (optional, for Driving Distance) CGAL >= [TBD]
-* (optional, for Documentation) Sphinx >= [TBD] 
+* (optional, for Documentation) Sphinx >= 1.1 
 
 
 For MinGW on Windows

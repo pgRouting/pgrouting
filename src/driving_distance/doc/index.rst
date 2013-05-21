@@ -16,8 +16,6 @@ pgr_drivingDistance - Driving Distance
 	single: pgr_drivingDistance(text,integer,double precision,boolean,boolean)
 	module: driving_distance
 
-.. warning:: Driving Distance seems to be broken.
-
 Name
 -------------------------------------------------------------------------------
 
@@ -62,6 +60,10 @@ Returns set of :ref:`type_cost_result`:
 :id2:   [TBD]
 :cost:  [TBD]
 
+.. warning::
+
+	You must reconnect to the database after ``CREATE EXTENSION pgrouting``. Otherwise the function will return ``Error computing path: std::bad_alloc``.
+
 
 .. rubric:: History
 
@@ -75,25 +77,41 @@ Examples
 
 .. code-block:: sql
 
-	SELECT * 
+	SELECT seq, id1 AS node, cost 
 		FROM pgr_drivingDistance(
 			'SELECT id, source, target, cost FROM edge_table',
-			7, 2.5, false, false
+			7, 1.5, false, false
 		);
 
-	[TBD]
+	 seq | node | cost 
+	-----+------+------
+	   0 |    2 |    1
+	   1 |    6 |    1
+	   2 |    7 |    0
+	   3 |    8 |    1
+	   4 |   10 |    1
+	(5 rows)
+
 
 * With ``reverse_cost``
 
 .. code-block:: sql
 
-	SELECT * 
+	SELECT seq, id1 AS node, cost 
 		FROM pgr_drivingDistance(
 			'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-			7, 2.5, true, true
+			7, 1.5, true, true
 		);
 
-	[TBD]
+	 seq | node | cost 
+	-----+------+------
+	   0 |    2 |    1
+	   1 |    6 |    1
+	   2 |    7 |    0
+	   3 |    8 |    1
+	   4 |   10 |    1
+	(5 rows)
+
 
 The queries use the :ref:`sampledata` network.
 

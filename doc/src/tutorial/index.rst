@@ -86,7 +86,7 @@ used for routing with pgrouting. We provide a tools the will help with this:
 
     select pgr_createTopology('myroads', 0.000001, 'the_geom', 'gid');
 
-See :ref:`pgrouting_topology` for more information.
+See :ref:`pgr_create_topology` for more information.
 
 
 How to check your graph for errors
@@ -108,11 +108,11 @@ but we have some basic tools that might help.
     select pgr_analyzegraph('myroads', 'the_geom', 0.000001);
     select pgr_analyzeoneway('myroads', 'direction', s_in_rules, s_out_rules, t_in_rules, t_out_rules)
 
-See :ref:`pgrouting_analytics` for more information.
+See :ref:`common-analytics` for more information.
 
 If your data needs to be *NODED*, we have a tool that can help for that also.
 
-See :ref:`pgrouting_node_network` for more information.
+See :ref:`pgr_node_network` for more information.
 
 
 How to compute a route
@@ -134,7 +134,7 @@ node id along with the cost or geometry for the step in the path from *start*
 to *end*. Using the ids you can join these result back to your edge table
 to get more information about each step in the path.
 
- * See also :ref:`types/cost_result` and :ref:`types/geom_result`.
+ * See also :ref:`type_cost_result` and :ref:`type_geom_result`.
 
 How to use other tools to view your graph and route
 -------------------------------------------------------------------------------
