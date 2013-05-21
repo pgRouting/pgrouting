@@ -42,6 +42,7 @@ Tutorial
 	:maxdepth: 1
 
 	src/tutorial/index
+	src/tutorial/topology
 	src/tutorial/custom_query
 	src/tutorial/custom_wrapper
 	src/tutorial/recipes
@@ -54,7 +55,7 @@ Reference
 *******************************************************************************
 
 .. toctree::
-	:maxdepth: 1
+	:maxdepth: 2
 
 	../src/common/doc/index
 	../src/common/doc/types

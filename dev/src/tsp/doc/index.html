@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -17,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0 (b1270d7 sew-devel-2_0)',
+        VERSION:     '2.0.0 (e1649d0 sew-devel-2_0)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -55,12 +53,17 @@
 <span id="pgr-tsp"></span><h1>pgr_tsp - Traveling Sales Person<a class="headerlink" href="#pgr-tsp-traveling-sales-person" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_tsp</span></tt> - Returns the best route from a start node via a list of nodes.</p>
+<p><tt class="docutils literal"><span class="pre">pgr_tsp</span></tt> - Returns the best route from a start node via a list of nodes.
+<tt class="docutils literal"><span class="pre">pgr_tsp</span></tt> - Returns the best order when passed a disance matrix.</p>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>Returns a set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a> (seq, id1, id2, cost) rows, that make up a path.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">,</span> <span class="nb">varchar</span> <span class="n">ids</span><span class="p">,</span> <span class="nb">integer</span> <span class="k">source</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">ids</span> <span class="nb">varchar</span><span class="p">,</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Resturns a set of (seq integer, id integer) that is the best order to visit the nodes in the matrix.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">record</span><span class="p">[]</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="n">matrix</span> <span class="nb">float</span><span class="p">[][],</span> <span class="k">start</span> <span class="nb">integer</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -99,6 +102,13 @@
 <p class="first admonition-title">Note</p>
 <p class="last"><tt class="docutils literal"><span class="pre">edge_id</span></tt> and <tt class="docutils literal"><span class="pre">cost</span></tt> attribute of the result set are not used and always contain <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
 </div>
+<p>For users, that do not want to use Euclidean distances, we also provode the
+ability to pass a distance matrix that we will solve and return an ordered
+list of nodes for the best order to visit each. It is up to the user to
+fully populate the distance matrix. The distance matrix is a multidimensional
+postgresql array type that must be N x N in size. The result will be N records
+of <tt class="docutils literal"><span class="pre">[</span> <span class="pre">seq,</span> <span class="pre">id</span> <span class="pre">]</span></tt> where <tt class="docutils literal"><span class="pre">id</span></tt> is an index into the matrix. See the PostgreSQL
+documentation of ARRAY types, functions and array_agg.</p>
 <p class="rubric">History</p>
 <ul class="simple">
 <li>Renamed in version 2.0.0</li>
@@ -107,11 +117,13 @@
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;SELECT distinct source,</span>
-<span class="s1">                       x1::double precision AS x,</span>
-<span class="s1">                       y1::double precision AS y FROM edge_table</span>
-<span class="s1">             WHERE source IN (&lt;list of ids&gt;)&#39;</span><span class="p">,</span>
-                       <span class="s1">&#39;&lt;list of ids&gt;&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="k">start</span> <span class="n">id</span><span class="o">&gt;</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre>    <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;SELECT distinct source,</span>
+<span class="s1">                           x1::double precision AS x,</span>
+<span class="s1">                           y1::double precision AS y FROM edge_table</span>
+<span class="s1">                 WHERE source IN (&lt;list of ids&gt;)&#39;</span><span class="p">,</span>
+                           <span class="s1">&#39;&lt;list of ids&gt;&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="k">start</span> <span class="n">id</span><span class="o">&gt;</span><span class="p">);</span>
+
+<span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id</span> <span class="k">from</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;{{0,1,2,3},{1,0,3,2},{2,3,0,4},{3,2,4,0}}&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -143,8 +155,8 @@
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors.
-      Last updated on May 17, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Last updated on May 21, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>
 </html>
