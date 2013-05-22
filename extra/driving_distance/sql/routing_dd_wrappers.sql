@@ -40,7 +40,7 @@ BEGIN
      id :=0;
 									     
      i := 1;								     
-     q := 'select 1 as gid, GeometryFromText(''POLYGON((';
+     q := 'select 1 as gid, ST_GeometryFromText(''POLYGON((';
      
      FOR path_result IN EXECUTE 'select x, y from alphashape('''|| 
          query || ''')' LOOP
