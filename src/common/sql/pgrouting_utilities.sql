@@ -110,3 +110,38 @@ $body$
 language plpgsql immutable;
 
 
+/*
+ * function for comparing version strings.
+ * Ex: select pgr_version_less(postgis_lib_version(), '2.1');
+ *
+ * needed because postgis 2.1 deprecates some function names and
+ * we need to detect the version at runtime
+*/
+
+create or replace function pgr_versionless(v1 text, v2 text)
+returns boolean as
+$body$
+declare
+    v1a text[];
+    v2a text[];
+    nv1 integer;
+    nv2 integer;
+    
+begin
+    v1a := string_to_array(v1, '.');
+    v2a := string_to_array(v2, '.');
+
+    if array_length(v1a, 1) < 3 then v1a := array_append(v1a, '0'); end if;
+    if array_length(v1a, 1) < 3 then v1a := array_append(v1a, '0'); end if;
+
+    if array_length(v2a, 1) < 3 then v1a := array_append(v2a, '0'); end if;
+    if array_length(v2a, 1) < 3 then v1a := array_append(v2a, '0'); end if;
+
+    nv1 := v1a[1]::integer * 1000 + v1a[2]::integer * 100 + v1a[3]::integer;
+    nv2 := v2a[1]::integer * 1000 + v2a[2]::integer * 100 + v2a[3]::integer;
+
+    return v1<v2;
+end;
+$body$
+language plpgsql immutable strict;
+
