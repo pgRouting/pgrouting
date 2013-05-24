@@ -12,7 +12,19 @@ DECLARE
 	*/
 	p_num int := 0;
 	p_ret text := '';
+    pgis_ver_old boolean := pgr_versionless(postgis_lib_version(), '2.1');
+    vst_line_substring text;
+    vst_line_locate_point text;
+
 BEGIN
+
+    if pgis_ver_old then
+        vst_line_substring    := 'st_line_substring';
+        vst_line_locate_point := 'st_line_locate_point';
+    else
+        vst_line_substring    := 'st_linesubstring';
+        vst_line_locate_point := 'st_linelocatepoint';
+    end if;
 
     -- First creates temp table with intersection points
     drop table  if exists intergeom;
@@ -52,10 +64,10 @@ BEGIN
     -- we keep only intersection points occuring onto the line, not at one of its ends
     drop table if exists inter_loc;
     EXECUTE 'create temp table inter_loc as (
-        select l1id, l2id, st_line_locate_point(l.' || quote_ident(n_geom) || ', i.geom) as locus
+        select l1id, l2id, ' || vst_line_locate_point || '(l.' || quote_ident(n_geom) || ', i.geom) as locus
         from intergeom i left join ' || quote_ident(intab) || ' l on (l.' || quote_ident(n_pkey) || ' = i.l1id)
-        where st_line_locate_point(l.' || quote_ident(n_geom) || ', i.geom) <> 0 
-              and st_line_locate_point(l.' || quote_ident(n_geom) || ', i.geom) <> 1
+        where ' || vst_line_locate_point || '(l.' || quote_ident(n_geom) || ', i.geom) <> 0 
+              and ' || vst_line_locate_point || '(l.' || quote_ident(n_geom) || ', i.geom) <> 1
         )';
 
     -- index on l1id
@@ -84,11 +96,11 @@ BEGIN
            from cut_locations
        ) 
        -- finally, each original line is cut with consecutive locations using linear referencing functions
-       select l.' || quote_ident(n_pkey) || ', loc1.idx as sub_id, st_line_substring(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus) as ' || quote_ident(n_geom) || ' 
+       select l.' || quote_ident(n_pkey) || ', loc1.idx as sub_id, ' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus) as ' || quote_ident(n_geom) || ' 
        from loc_with_idx loc1 join loc_with_idx loc2 using (lid) join ' || quote_ident(intab) || ' l on (l.' || quote_ident(n_pkey) || ' = loc1.lid)
        where loc2.idx = loc1.idx+1
            -- keeps only linestring geometries
-           and geometryType(st_line_substring(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus)) = ''LINESTRING'' ';
+           and geometryType(' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus)) = ''LINESTRING'' ';
 
 	-- here, it misses all original line that did not need to be cut by intersection points: these lines
 	-- are already clean
