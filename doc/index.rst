@@ -43,6 +43,7 @@ Tutorial
 
 	src/tutorial/index
 	src/tutorial/topology
+	src/tutorial/analytics
 	src/tutorial/custom_query
 	src/tutorial/custom_wrapper
 	src/tutorial/recipes

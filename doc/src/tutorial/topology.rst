@@ -21,7 +21,7 @@ Overview
 
 Typically when GIS files are loaded into the data database for use with pgRouting they do not have topology information assocatired with. For data to create a useful topology it needs to be "noded". This means that where two or more roads form an intersection there it needs to be a node at the intersection and all the road segments need to be broken at the intersection.
 
-You can use the :ref:`graph analysis functions <common-analytics>` to help you see where you might have problems in your data. If you need to node your data, we also have a function :ref:`pgr_nodeNetwork() <pgr_node_network>` that might work for you. This function splits ALL crossing segments and nodes them. There are some cases where this might NOT be the right thing to do.
+You can use the :ref:`graph analysis functions <analytics>` to help you see where you might have problems in your data. If you need to node your data, we also have a function :ref:`pgr_nodeNetwork() <pgr_node_network>` that might work for you. This function splits ALL crossing segments and nodes them. There are some cases where this might NOT be the right thing to do.
 
 For example, when you have an overpass and underpass intersection, you do not want these noded, but pgr_nodeNetwork does not know that is the cases and will node them which is not good because then the router will be able to turn off the overpass onto the underpass like it was a flat 2D intersection.
 

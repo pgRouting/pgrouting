@@ -108,7 +108,7 @@ but we have some basic tools that might help.
     select pgr_analyzegraph('myroads', 'the_geom', 0.000001);
     select pgr_analyzeoneway('myroads', 'direction', s_in_rules, s_out_rules, t_in_rules, t_out_rules)
 
-See :ref:`common-analytics` for more information.
+See :ref:`analytics` for more information.
 
 If your data needs to be *NODED*, we have a tool that can help for that also.
 

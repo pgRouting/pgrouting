@@ -18,7 +18,6 @@ Common Functions
 
    functions/*
 
-   pgrouting_analytics
    pgrouting_matching
 
 
