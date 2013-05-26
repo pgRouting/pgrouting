@@ -26,7 +26,7 @@ set(PGROUTING_VERSION_PATCH "7")
 
 set(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
 
-set(POSTGRESQL_MINIMUM_VERSION "8.3.0")
+set(POSTGRESQL_MINIMUM_VERSION "8.4.0")
 
 #-----------------------------------------------------------------------------
 # CMAKE configuration
@@ -61,15 +61,22 @@ if(WIN32)
   message(STATUS "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}")
 endif(WIN32)
 
-# Find Git to collect version information
-find_package(Git QUIET)
-if(GIT_FOUND)
-  message(STATUS "Found Git: ${GIT_EXECUTABLE}")
-  GIT_WC_INFO(${PGROUTING_SOURCE_DIR} PGROUTING)
-  set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_WC_REVISION_NAME}")
-  set(PGROUTING_VERSION_REVISION_HASH "${PGROUTING_WC_REVISION_HASH}")
+# Check if source contains .git directory
+if(EXISTS "${PGROUTING_SOURCE_DIR}/.git")
+  # Find Git to collect version information
+  find_package(Git QUIET)
+  if(GIT_FOUND)
+    message(STATUS "Found Git: ${GIT_EXECUTABLE}")
+    GIT_WC_INFO(${PGROUTING_SOURCE_DIR} PGROUTING)
+    set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_WC_REVISION_NAME}")
+    set(PGROUTING_VERSION_REVISION_HASH "${PGROUTING_WC_REVISION_HASH}")
+  else()
+    message(STATUS "Could NOT find GIT (optional)")
+    set(PGROUTING_VERSION_REVISION_NAME "")
+    set(PGROUTING_VERSION_REVISION_HASH "")
+  endif()
 else()
-  message(STATUS "Could NOT find GIT (optional)")
+  message(STATUS "Source is not a GIT repository")
   set(PGROUTING_VERSION_REVISION_NAME "")
   set(PGROUTING_VERSION_REVISION_HASH "")
 endif()
