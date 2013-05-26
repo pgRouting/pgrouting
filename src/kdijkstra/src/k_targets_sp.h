@@ -42,6 +42,16 @@ typedef struct
     float8 cost;
 } path_element_t;
 
+#define PGR_MERGE
+#ifdef PGR_MERGE
+typedef struct
+{
+    int seq;
+    int id1;
+    int id2;
+    float8 cost;
+} pgr_cost_t;
+#endif
 
 typedef struct 
 {
@@ -67,18 +77,33 @@ typedef struct
 extern "C"
 #endif
 
-int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count, int start_vertex, int *end_vertices, int nb_targets,
-	       bool directed, bool has_reverse_cost,
-	       dist_fromto_t **dists, char **err_msg );
+int onetomany_dijkstra_boostdist(
+        edge_t *edges, unsigned int count, int start_vertex,
+        int *end_vertices, int nb_targets,
+	    bool directed, bool has_reverse_cost,
+#ifdef PGR_MERGE
+	    pgr_cost_t **dists,
+#else
+	    dist_fromto_t **dists,
+#endif
+        char **err_msg );
     
   
 #ifdef __cplusplus
 extern "C"
 #endif
 
-int onetomany_dijkstra_boostpath(edge_t *edges, unsigned int count, int start_vertex, int *end_vertices, int nb_targets,
-	       bool directed, bool has_reverse_cost,
-	       path_fromto_t **pathdists, char **err_msg );
+int onetomany_dijkstra_boostpath(
+        edge_t *edges, unsigned int count, int start_vertex,
+        int *end_vertices, int nb_targets,
+	    bool directed, bool has_reverse_cost,
+#ifdef PGR_MERGE
+	    pgr_cost_t **dists,
+        int *path_count,
+#else
+	    path_fromto_t **pathdists,
+#endif
+        char **err_msg );
 
 #endif
 
