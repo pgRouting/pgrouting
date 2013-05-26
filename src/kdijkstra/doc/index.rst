@@ -9,13 +9,13 @@
 
 .. _pgr_kdijkstra:
 
-pgr_kdijkstra - K-Shortest Path Dijkstra
+pgr_kDijkstra - K-Shortest Path Dijkstra
 ===============================================================================
 
 .. index::
-    single: pgr_kdijkstraCost(text,integer,integer[],boolean,boolean)
-    single: pgr_kdijkstrapath(text,integer,integer[],boolean,boolean)
-    module: kdijkstra
+    single: pgr_kDijkstraCost(text,integer,integer[],boolean,boolean)
+    single: pgr_kdijkstraPath(text,integer,integer[],boolean,boolean)
+    module: dijkstra
 
 Name
 -------------------------------------------------------------------------------

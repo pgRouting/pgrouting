@@ -20,6 +20,5 @@ Common Functions
 
    pgrouting_analytics
    pgrouting_matching
-   pgrouting_topology
 
 

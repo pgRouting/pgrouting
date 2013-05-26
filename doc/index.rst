@@ -72,6 +72,7 @@ pgRouting functions in alphabetical order:
 	../src/bd_dijkstra/doc/index
 	../src/dijkstra/doc/index
 	../src/driving_distance/doc/index
+	../src/kdijkstra/doc/index
 	../src/ksp/doc/index
 	../src/tsp/doc/index
 	../src/trsp/doc/index

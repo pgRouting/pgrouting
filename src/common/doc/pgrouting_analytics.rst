@@ -140,17 +140,6 @@ See Also
 ----------------------------------------------------------------------------
 
 * :ref:`pgr_node_network`
-
-
-Utility functions
-=================
-
-    .. function:: pgr_isColumnInTable(tab, col)
-
-       Return true or false if column "col" exists in table "tab"
-
-    .. function:: pgr_isColumnIndexed(tab, col)
-
-       Return true or false if column "col" in table "tab" is indexed.
-
+* :ref:`pgr_is_column_in_table`
+* :ref:`pgr_is_column_indexed`
 
