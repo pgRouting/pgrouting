@@ -3,4 +3,4 @@ rm -rf build
 mkdir build
 cd build
 cmake -DWITH_DOC=ON -DWITH_DD=ON ..
-make
+make && sudo make install && (cd ..; tools/test-runner.pl)
