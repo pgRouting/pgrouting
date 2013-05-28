@@ -133,7 +133,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
                 weight_map(get(&Vertex::cost, graph))
                 .distance_map(&distances[0]));
 
-    vector<int> path_vect[nb_targets];
+    std::vector<int> path_vect[nb_targets];
 
     int max;
 
@@ -338,7 +338,7 @@ try {
                 weight_map(get(&Vertex::cost, graph))
                 .distance_map(&distances[0]));
 
-    vector<int> path_vect[nb_targets];
+    std::vector<int> path_vect[nb_targets];
 
     int max = MAX_NODES;
     int index_of_last_path_vertex = 0;
