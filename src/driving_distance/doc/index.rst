@@ -57,8 +57,8 @@ Returns set of :ref:`type_cost_result`:
 
 :seq:   row sequence
 :id1:   node ID
-:id2:   [TBD]
-:cost:  [TBD]
+:id2:   edge ID (this is probably not a useful item)
+:cost:  cost to get to this node ID
 
 .. warning::
 

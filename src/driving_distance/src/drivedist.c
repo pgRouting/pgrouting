@@ -345,24 +345,22 @@ static int compute_driving_distance(char* sql, int source_vertex_id,
                             distance, directed, has_reverse_cost, 
                             path, path_count, &err_msg);
     
+  if (ret < 0) {
+    elog(ERROR, "Error computing path: %s", err_msg);
+  } 
+    
   profstop("dijkstra", prof_dijkstra);
   profstart(prof_store);
     
   //::::::::::::::::::::::::::::::::
   //:: restoring original vertex id
   //::::::::::::::::::::::::::::::::
-  for(z=0;z<*path_count;z++)
+  for(z=0; z<*path_count; z++)
   {
     //DBG("vetex %i\n",(*path)[z].vertex_id);
     (*path)[z].vertex_id+=v_min_id;
   }
 
-  if (ret < 0) {
-    //elog(ERROR, "Error computing path: %s", err_msg);
-    ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED), 
-                    errmsg("Error computing path: %s", err_msg)));
-  } 
-    
   return finish(SPIcode, ret);
 }
 
@@ -398,16 +396,18 @@ driving_distance(PG_FUNCTION_ARGS)
                                 PG_GETARG_FLOAT8(2),  // distance or time
                                 PG_GETARG_BOOL(3),
                                 PG_GETARG_BOOL(4), &path, &path_count);
+    if (ret < 0) {
+        elog(ERROR, "Error computing path: %s", err_msg);
+    } 
+    
 
 #ifdef DEBUG
     DBG("Ret is %i", ret);
-    if (ret >= 0) {
-      int i;
-      for (i = 0; i < path_count; i++) {
+    int i;
+    for (i = 0; i < path_count; i++) {
         DBG("Step %i vertex_id  %i ", i, path[i].vertex_id);
         DBG("        edge_id    %i ", path[i].edge_id);
         DBG("        cost       %f ", path[i].cost);
-      }
     }
 #endif
 
