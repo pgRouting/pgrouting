@@ -37,8 +37,8 @@ DECLARE
 BEGIN
 	prev := -1;
 	FOR path_result IN EXECUTE 'SELECT vertex_id FROM tsp(''select distinct source::integer as source_id, ST_X(ST_StartPoint(the_geom)), ST_Y(ST_StartPoint(the_geom)) from ' ||
-		quote_ident(geom_table) || ' where source in (' || 
-                ids || ')  UNION select distinct target as source_id, ST_X(ST_EndPoint(the_geom)), ST_Y(ST_EndPoint(the_geom)) from '|| quote_ident(geom_table) ||' where target in ('||ids||')'', '''|| ids  ||''', '|| source  ||')' LOOP
+		pgr_quote_ident(geom_table) || ' where source in (' || 
+                ids || ')  UNION select distinct target as source_id, ST_X(ST_EndPoint(the_geom)), ST_Y(ST_EndPoint(the_geom)) from '|| pgr_quote_ident(geom_table) ||' where target in ('||ids||')'', '''|| ids  ||''', '|| source  ||')' LOOP
 
                 v_id = path_result.vertex_id;
         RETURN NEXT v_id;

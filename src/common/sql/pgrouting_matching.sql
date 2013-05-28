@@ -270,11 +270,11 @@ BEGIN
                 query := query || ', reverse_cost'; 
             END IF;                
                 
-            query := query || ' from '||quote_ident(tbl)||' where ST_SetSRID(''''BOX3D('||ST_X(ST_PointN(line, i-1))-distance2*2||' '
+            query := query || ' from '||pgr_quote_ident(tbl)||' where ST_SetSRID(''''BOX3D('||ST_X(ST_PointN(line, i-1))-distance2*2||' '
                 ||ST_Y(ST_PointN(line, i-1))-distance2*2||', '||ST_X(ST_PointN(line, i))+distance2*2||' '
                 ||ST_Y(ST_PointN(line, i))+distance2*2||')''''::BOX3D, '||srid||')&&the_geom'', '
                 || points[i-1] ||', '||    points[i-2] ||', '''||dir||''', '''||rc||'''), '
-                ||quote_ident(tbl)||' where id2=gid';
+                ||pgr_quote_ident(tbl)||' where id2=gid';
 
             j := 0;
             FOR row IN EXECUTE query LOOP
@@ -394,7 +394,7 @@ BEGIN
                 query := query || ', reverse_cost'; 
             END IF;
         
-            query := query || ' from ' || quote_ident(tbl) ||
+            query := query || ' from ' || pgr_quote_ident(tbl) ||
                 ' where ST_SetSRID(''''BOX3D(' ||
                 ST_X(ST_PointN(line, i-1))-distance2*2 || ' ' ||
                 ST_Y(ST_PointN(line, i-1))-distance2*2 || ', ' ||
@@ -502,7 +502,7 @@ BEGIN
 
     i := 0;
     FOR row IN EXECUTE 'select * from pgr_match_line(''' ||
-        quote_ident(tbl) || ''', ST_GeometryFromText(''' ||
+        pgr_quote_ident(tbl) || ''', ST_GeometryFromText(''' ||
         astext(line) || ''', ' || srid || '), ' || distance ||
         ', ' || distance2 || ', ''' || dir || ''', ''' || rc || ''')' LOOP
 

@@ -151,13 +151,13 @@ DECLARE
 BEGIN
 
     EXECUTE 'select ST_X(ST_StartPoint(the_geom)) as source_x from ' ||
-            quote_ident(table_name) || ' where source = ' ||
+            pgr_quote_ident(table_name) || ' where source = ' ||
             source_id || ' limit 1' INTO r;
     source_x := r.source_x;
 
 
     EXECUTE 'select ST_Y(ST_StartPoint(the_geom)) as source_y from ' ||
-            quote_ident(table_name) || ' where source = ' ||
+            pgr_quote_ident(table_name) || ' where source = ' ||
             source_id || ' limit 1' INTO r;
     source_y := r.source_y;
 

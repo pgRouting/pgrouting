@@ -73,7 +73,7 @@ BEGIN
     EXECUTE 'SELECT ST_SRID(' || quote_ident(geo_cname) || ') as srid, '
         || 'CASE WHEN ST_GEOMETRYN(' || quote_ident(geo_cname)
         || ', 1) IS NULL THEN true ELSE false END AS ismulti FROM '
-        || quote_ident(geom_table) || ' WHERE ' || quote_ident(geo_cname)
+        || pgr_quote_ident(geom_table) || ' WHERE ' || quote_ident(geo_cname)
         || ' IS NOT NULL LIMIT 1'
         INTO tabinfo;
 
@@ -90,7 +90,7 @@ BEGIN
 
     -- get the approximate count of records for geom_table
     
-    EXECUTE 'SELECT reltuples::bigint AS totcount FROM pg_class WHERE relname='''|| quote_ident(geom_table) ||'''' INTO totcount;
+    EXECUTE 'SELECT reltuples::bigint AS totcount FROM pg_class WHERE relname='''|| pgr_quote_ident(geom_table) ||'''' INTO totcount;
     totcount := coalesce(totcount, 0);
 
     /*
@@ -106,7 +106,7 @@ BEGIN
     FOR points IN EXECUTE 'SELECT ' || quote_ident(gid_cname) || ' AS id,'
         || ' ST_StartPoint(' || cname || ') AS source,'
         || ' ST_EndPoint('   || cname || ') AS target'
-        || ' FROM '  || quote_ident(geom_table)
+        || ' FROM '  || pgr_quote_ident(geom_table)
         || ' WHERE ' || quote_ident(geo_cname) || ' IS NOT NULL '
     LOOP
 
@@ -119,7 +119,7 @@ BEGIN
         source_id := pgr_pointToId(points.source, tolerance);
         target_id := pgr_pointToId(points.target, tolerance);
                                 
-        EXECUTE 'UPDATE ' || quote_ident(geom_table) || 
+        EXECUTE 'UPDATE ' || pgr_quote_ident(geom_table) || 
             ' SET source = ' || source_id || ', target = ' || target_id || 
             ' WHERE ' || quote_ident(gid_cname) || ' =  ' || points.id;
     END LOOP;

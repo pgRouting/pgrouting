@@ -32,8 +32,8 @@ BEGIN
         select l1.' || quote_ident(n_pkey) || ' as l1id, 
                l2.' || quote_ident(n_pkey) || ' as l2id, 
                st_intersection(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ') as geom 
-        from ' || quote_ident(intab) || ' l1 
-             join ' || quote_ident(intab) || ' l2 
+        from ' || pgr_quote_ident(intab) || ' l1 
+             join ' || pgr_quote_ident(intab) || ' l2 
              on (st_dwithin(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ', ' || tol || '))
         where l1.' || quote_ident(n_pkey) || ' <> l2.' || quote_ident(n_pkey);
 
@@ -65,7 +65,7 @@ BEGIN
     drop table if exists inter_loc;
     EXECUTE 'create temp table inter_loc as (
         select l1id, l2id, ' || vst_line_locate_point || '(l.' || quote_ident(n_geom) || ', i.geom) as locus
-        from intergeom i left join ' || quote_ident(intab) || ' l on (l.' || quote_ident(n_pkey) || ' = i.l1id)
+        from intergeom i left join ' || pgr_quote_ident(intab) || ' l on (l.' || quote_ident(n_pkey) || ' = i.l1id)
         where ' || vst_line_locate_point || '(l.' || quote_ident(n_geom) || ', i.geom) <> 0 
               and ' || vst_line_locate_point || '(l.' || quote_ident(n_geom) || ', i.geom) <> 1
         )';
@@ -75,18 +75,18 @@ BEGIN
 
     -- Then computes the intersection on the lines subset, which is much smaller than full set 
     -- as there are very few intersection points
-   EXECUTE 'drop table if exists ' || quote_ident(outtab);
-   EXECUTE 'create table ' || quote_ident(outtab) || ' as 
+   EXECUTE 'drop table if exists ' || pgr_quote_ident(outtab);
+   EXECUTE 'create table ' || pgr_quote_ident(outtab) || ' as 
        with cut_locations as (
            select l1id as lid, locus 
            from inter_loc
            -- then generates start and end locus for each line that have to be cut buy a location point
            UNION ALL
            select i.l1id  as lid, 0 as locus
-           from inter_loc i left join ' || quote_ident(intab) || ' b on (i.l1id = b.' || quote_ident(n_pkey) || ')
+           from inter_loc i left join ' || pgr_quote_ident(intab) || ' b on (i.l1id = b.' || quote_ident(n_pkey) || ')
            UNION ALL
            select i.l1id  as lid, 1 as locus
-           from inter_loc i left join ' || quote_ident(intab) || ' b on (i.l1id = b.' || quote_ident(n_pkey) || ')
+           from inter_loc i left join ' || pgr_quote_ident(intab) || ' b on (i.l1id = b.' || quote_ident(n_pkey) || ')
            order by lid, locus
        ), 
        -- we generate a row_number index column for each input line 
@@ -97,7 +97,7 @@ BEGIN
        ) 
        -- finally, each original line is cut with consecutive locations using linear referencing functions
        select l.' || quote_ident(n_pkey) || ', loc1.idx as sub_id, ' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus) as ' || quote_ident(n_geom) || ' 
-       from loc_with_idx loc1 join loc_with_idx loc2 using (lid) join ' || quote_ident(intab) || ' l on (l.' || quote_ident(n_pkey) || ' = loc1.lid)
+       from loc_with_idx loc1 join loc_with_idx loc2 using (lid) join ' || pgr_quote_ident(intab) || ' l on (l.' || quote_ident(n_pkey) || ' = loc1.lid)
        where loc2.idx = loc1.idx+1
            -- keeps only linestring geometries
            and geometryType(' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus)) = ''LINESTRING'' ';
@@ -105,18 +105,18 @@ BEGIN
 	-- here, it misses all original line that did not need to be cut by intersection points: these lines
 	-- are already clean
 	-- inserts them in the final result: all lines which gid is not in the res table.
-	EXECUTE 'insert into ' || quote_ident(outtab) || ' (' || quote_ident(n_pkey) || ', sub_id, ' || quote_ident(n_geom) || ')
-		select ' || quote_ident(intab) || '.' || quote_ident(n_pkey) || ', 1 as sub_id, ' || quote_ident(intab) || '.' || quote_ident(n_geom) || '
-		from ' || quote_ident(intab) || '
+	EXECUTE 'insert into ' || pgr_quote_ident(outtab) || ' (' || quote_ident(n_pkey) || ', sub_id, ' || quote_ident(n_geom) || ')
+		select ' || pgr_quote_ident(intab) || '.' || quote_ident(n_pkey) || ', 1 as sub_id, ' || pgr_quote_ident(intab) || '.' || quote_ident(n_geom) || '
+		from ' || pgr_quote_ident(intab) || '
 		where not exists (
-			select ' || quote_ident(outtab) || '.' || quote_ident(n_pkey) || ' from ' || quote_ident(outtab) || ' 
-			where ' || quote_ident(outtab) || '.' || quote_ident(n_pkey) || ' = ' || quote_ident(intab) || '.' || quote_ident(n_pkey) || '
+			select ' || pgr_quote_ident(outtab) || '.' || quote_ident(n_pkey) || ' from ' || pgr_quote_ident(outtab) || ' 
+			where ' || pgr_quote_ident(outtab) || '.' || quote_ident(n_pkey) || ' = ' || pgr_quote_ident(intab) || '.' || quote_ident(n_pkey) || '
 		)';
 
 	GET DIAGNOSTICS p_num = ROW_COUNT;
 	raise notice 'Num inserted: %', p_num;
 
-	EXECUTE 'SELECT ' || quote_ident(n_pkey) || ' from ' || quote_ident(outtab) || '';
+	EXECUTE 'SELECT ' || quote_ident(n_pkey) || ' from ' || pgr_quote_ident(outtab) || '';
 	GET DIAGNOSTICS p_num = ROW_COUNT;
 	p_ret := '' || outtab || ' generated with: ' || p_num || ' segments';
 	--p_ret := '' || outtab || ' generated';
