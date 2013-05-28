@@ -1,0 +1,4 @@
+#!/bin/bash
+VERSION=`git describe --tags --long`
+BRANCH=`git branch | grep '*' | awk '{print $2}'`
+echo $VERSION $BRANCH > $GIT/../VERSION

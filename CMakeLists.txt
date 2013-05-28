@@ -20,13 +20,30 @@ option(WITH_DOC
 
 #-----------------------------------------------------------------------------
 # PGROUTING version number.
-set(PGROUTING_VERSION_MAJOR "1")
+set(PGROUTING_VERSION_MAJOR "2")
 set(PGROUTING_VERSION_MINOR "0")
-set(PGROUTING_VERSION_PATCH "7")
+set(PGROUTING_VERSION_PATCH "0-dev")
 
 set(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
 
 set(POSTGRESQL_MINIMUM_VERSION "8.4.0")
+
+file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
+
+string(REGEX REPLACE "^([^-]+)-.*" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
+string(REGEX REPLACE "^([^-]+)-([0-9]+)-.*" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
+string(REGEX REPLACE "^([^-]+)-([0-9]+)-g([0-9a-f]+) .*" "\\3" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
+string(REGEX REPLACE "^([^-]+)-([0-9]+)-g([0-9a-f]+) (.*)" "\\4" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
+
+set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_GIT_HASH} ${PGROUTING_GIT_BRANCH}")
+set(PGROUTING_VERSION_REVISION_HASH ${PGROUTING_GIT_HASH})
+
+message(STATUS "PGROUTING_GIT_TAG: ${PGROUTING_GIT_TAG}")
+message(STATUS "PGROUTING_GIT_BUILD: ${PGROUTING_GIT_BUILD}")
+message(STATUS "PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")
+message(STATUS "PGROUTING_GIT_BRANCH: ${PGROUTING_GIT_BRANCH}")
+message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
+message(STATUS "PGROUTING_VERSION_REVISION_HASH: ${PGROUTING_VERSION_REVISION_HASH}")
 
 #-----------------------------------------------------------------------------
 # CMAKE configuration
@@ -62,24 +79,23 @@ if(WIN32)
 endif(WIN32)
 
 # Check if source contains .git directory
-if(EXISTS "${PGROUTING_SOURCE_DIR}/.git")
-  # Find Git to collect version information
-  find_package(Git QUIET)
-  if(GIT_FOUND)
-    message(STATUS "Found Git: ${GIT_EXECUTABLE}")
-    GIT_WC_INFO(${PGROUTING_SOURCE_DIR} PGROUTING)
-    set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_WC_REVISION_NAME}")
-    set(PGROUTING_VERSION_REVISION_HASH "${PGROUTING_WC_REVISION_HASH}")
-  else()
-    message(STATUS "Could NOT find GIT (optional)")
-    set(PGROUTING_VERSION_REVISION_NAME "")
-    set(PGROUTING_VERSION_REVISION_HASH "")
-  endif()
-else()
-  message(STATUS "Source is not a GIT repository")
-  set(PGROUTING_VERSION_REVISION_NAME "")
-  set(PGROUTING_VERSION_REVISION_HASH "")
-endif()
+#if(EXISTS "${PGROUTING_SOURCE_DIR}/.git")
+#  # Find Git to collect version information
+#  find_package(Git QUIET)
+#  if(GIT_FOUND)
+#    GIT_WC_INFO(${PGROUTING_SOURCE_DIR} PGROUTING)
+#    set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_WC_REVISION_NAME}")
+#    set(PGROUTING_VERSION_REVISION_HASH "${PGROUTING_WC_REVISION_HASH}")
+#  else()
+#    message(STATUS "Could NOT find GIT (optional)")
+#    set(PGROUTING_VERSION_REVISION_NAME "")
+#    set(PGROUTING_VERSION_REVISION_HASH "")
+#  endif()
+#else()
+#  message(STATUS "Source is not a GIT repository")
+#  set(PGROUTING_VERSION_REVISION_NAME "")
+#  set(PGROUTING_VERSION_REVISION_HASH "")
+#endif()
 
 #macro_optional_find_package(PostgreSQL)
 #  POSTGRESQL_INCLUDE_DIR, where to find POSTGRESQL.h
@@ -271,7 +287,7 @@ endforeach()
 # this extra set will allow us to place variables in the sql file
 # that will get substituted in this step before they are installed
 configure_file("${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql" COPYONLY)
+    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql")
 
 configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control")
