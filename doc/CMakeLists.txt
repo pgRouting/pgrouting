@@ -38,10 +38,14 @@ if(WITH_DOC)
     file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/static" DESTINATION "${BINARY_BUILD_DIR}")
     file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/themes" DESTINATION "${BINARY_BUILD_DIR}")
     file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/CNAME" DESTINATION "${PGROUTING_BINARY_DIR}")
-    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/index.html" DESTINATION "${PGROUTING_BINARY_DIR}")
 
-    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/forward.html" DESTINATION "${SPHINX_HTML_DIR}")
-    file(RENAME "${SPHINX_HTML_DIR}/forward.html" "${SPHINX_HTML_DIR}/index.html")
+    configure_file(
+        "${CMAKE_CURRENT_SOURCE_DIR}/index.html.in"
+        "${PGROUTING_BINARY_DIR}/index.html")
+
+    configure_file(
+        "${CMAKE_CURRENT_SOURCE_DIR}/forward.html"
+        "${SPHINX_HTML_DIR}/index.html")
 
     add_custom_target(pgRoutingDocumentationdoc ALL
         ${SPHINX_EXECUTABLE}

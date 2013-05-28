@@ -14,7 +14,7 @@ Table of Contents
 
 pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgresql.org>`_ geospatial database to provide geospatial routing and other network analysis functionality.
 
-This is the manual for version |release|.
+This is the manual for pgRouting |release|.
 
 .. image:: static/images/ccbysa.png
 	:align: left
@@ -59,6 +59,12 @@ Reference
 	:maxdepth: 2
 
 	../src/common/doc/index
+
+pgRouting defines a few custom data types:
+
+.. toctree::
+	:maxdepth: 2
+
 	../src/common/doc/types
 
 pgRouting functions in alphabetical order:
