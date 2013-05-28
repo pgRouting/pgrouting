@@ -397,7 +397,7 @@ driving_distance(PG_FUNCTION_ARGS)
                                 PG_GETARG_BOOL(3),
                                 PG_GETARG_BOOL(4), &path, &path_count);
     if (ret < 0) {
-        elog(ERROR, "Error computing path: %s", err_msg);
+        elog(ERROR, "Error computing path");
     } 
     
 
