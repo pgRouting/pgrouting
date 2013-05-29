@@ -35,3 +35,58 @@ CREATE OR REPLACE FUNCTION pgr_alphashape(sql text, OUT x float8, OUT y float8)
     RETURNS SETOF record
     AS '$libdir/librouting_dd', 'alphashape'
     LANGUAGE c IMMUTABLE STRICT;
+
+----------------------------------------------------------
+-- Draws an alpha shape around given set of points.
+-- ** This should be rewritten as an aggregate. **
+--
+-- TODO: hard-coded attributes!!!
+----------------------------------------------------------
+CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar)
+	RETURNS SETOF pgr_geomResult AS
+	$$
+	DECLARE
+		r record;
+		path_result record;					     
+		i int;							     
+		q text;
+		x float8[];
+		y float8[];
+		geom pgr_geomResult;
+
+	BEGIN	
+		i := 1;								     
+		q := 'SELECT 1 AS gid, ST_GeometryFromText(''POLYGON((';
+
+		FOR path_result IN EXECUTE 'SELECT x, y FROM pgr_alphashape('''|| query || ''')' 
+		LOOP
+			x[i] = path_result.x;
+			y[i] = path_result.y;
+			i := i+1;
+		END LOOP;
+
+		q := q || x[1] || ' ' || y[1];
+		i := 2;
+
+		WHILE x[i] IS NOT NULL 
+		LOOP
+			q := q || ', ' || x[i] || ' ' || y[i];
+			i := i + 1;
+		END LOOP;
+
+		q := q || ', ' || x[1] || ' ' || y[1];
+		q := q || '))'',-1) as the_geom';
+
+		EXECUTE q INTO r;
+
+			geom.seq  := 0;
+			geom.id1  := 0;
+			geom.id2  := 0;
+			geom.geom := r.the_geom;
+			RETURN NEXT geom;
+
+		RETURN;
+	END;
+	$$
+	LANGUAGE 'plpgsql' VOLATILE STRICT;
+

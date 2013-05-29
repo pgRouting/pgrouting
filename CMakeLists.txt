@@ -315,4 +315,16 @@ install(FILES
     "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
     DESTINATION "${SHARE_DIR}")
 
+# TODO: The following probably should be done better
+if(WITH_DD)
+  # We will copy the routing_dd_legacy.sql, but not install it as part of 
+  # the extension. TODO: we might want to also include a 
+  # routing_dd_legacy_uninstall.sql file or add it to the extension
+  configure_file("${PGROUTING_SOURCE_DIR}/src/driving_distance/sql/routing_dd_legacy.sql"
+      "${CMAKE_BINARY_DIR}/lib/pgrouting_dd_legacy.sql" COPYONLY)
+
+  install(FILES
+      "${CMAKE_BINARY_DIR}/lib/pgrouting_dd_legacy.sql"
+      DESTINATION "${SHARE_DIR}")
+endif(WITH_DD)
 
