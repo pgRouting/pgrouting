@@ -7,41 +7,36 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_version:
+.. _pgr_versionless:
 
-pgr_version - Get version information
+pgr_versionless - Compare version numbers
 ===============================================================================
 
 .. index:: 
-	single: pgr_version()
+	single: pgr_versionless(text,text)
 	module: utilities
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_version`` — Query for pgRouting version information.
+``pgr_version`` — Compare two version numbers and return if smaller.
 
 
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a table with pgRouting version information.
+Returns ``true`` if the first version number is smaller than the second version number. Otherwise returns ``false``.
 
 .. code-block:: sql
 
-	table() pgr_version();
+	boolean pgr_versionless(text v1, text v2);
 
 
 Description
 -------------------------------------------------------------------------------
 
-Returns a table with:
-
-:version: ``varchar`` pgRouting version
-:tag: ``varchar`` Git tag of pgRouting build
-:hash: ``varchar`` Git hash of pgRouting build
-:branch: ``varchar`` Git branch of pgRouting build
-:boost: ``varchar`` Boost version
+:v1: ``text`` first version number
+:v2: ``text`` second version number
 
 
 .. rubric:: History
@@ -52,31 +47,17 @@ Returns a table with:
 Examples
 -------------------------------------------------------------------------------
 
-* Query for full version string
-
 .. code-block:: sql
 
-    SELECT pgr_version();
+    SELECT pgr_versionless('2.0.1', '2.1');
 
-                         pgr_version                      
-    ------------------------------------------------------
-     (2.0.0-dev,v2.0dev,290,c64bcb9,sew-devel-2_0,1.49.0)
-    (1 row)
-
-
-* Query for ``version`` and ``boost`` attribute
-
-.. code-block:: sql
-
-    SELECT version, boost FROM pgr_version();
-
-      version  | boost  
-    -----------+--------
-     2.0.0-dev | 1.49.0
+     pgr_versionless 
+    -----------------
+     t
     (1 row)
 
 
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_versionless`
+* :ref:`pgr_version`
