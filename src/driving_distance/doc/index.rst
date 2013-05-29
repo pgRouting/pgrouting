@@ -21,6 +21,10 @@ Name
 
 ``pgr_drivingDistance`` - Returns the driving distance from a start node.
 
+.. note::
+
+	Requires :ref:`to build pgRouting <build>` with support for Driving Distance.
+
 
 Synopsis
 -------------------------------------------------------------------------------

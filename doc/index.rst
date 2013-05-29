@@ -78,11 +78,19 @@ pgRouting functions in alphabetical order:
 	../src/bd_astar/doc/index
 	../src/bd_dijkstra/doc/index
 	../src/dijkstra/doc/index
-	../src/driving_distance/doc/index
 	../src/kdijkstra/doc/index
 	../src/ksp/doc/index
 	../src/tsp/doc/index
 	../src/trsp/doc/index
+
+If pgRouting is compiled with "Driving Distance" enabled:
+
+.. toctree::
+	:maxdepth: 1
+
+	../src/driving_distance/doc/dd_alphashape
+	../src/driving_distance/doc/index
+	../src/driving_distance/doc/dd_points_as_polygon
 
 Some functions from previous releases may have been removed. 
 

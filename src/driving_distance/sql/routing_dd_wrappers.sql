@@ -18,7 +18,7 @@ BEGIN
      i := 1;								     
      q := 'select 1 as gid, ST_GeometryFromText(''POLYGON((';
      
-     FOR path_result IN EXECUTE 'select x, y from alphashape('''|| 
+     FOR path_result IN EXECUTE 'select x, y from pgr_alphashape('''|| 
          query || ''')' LOOP
          x[i] = path_result.x;
          y[i] = path_result.y;
