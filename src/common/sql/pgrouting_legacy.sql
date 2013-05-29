@@ -20,8 +20,14 @@
 -- BEGIN;
 CREATE CAST (pgr_pathResult AS path_result) WITHOUT FUNCTION AS IMPLICIT;
 CREATE CAST (pgr_geoms AS geoms) WITHOUT FUNCTION AS IMPLICIT;
-CREATE CAST (pgr_vertexResult AS vertex_result) WITHOUT FUNCTION AS IMPLICIT;
 CREATE CAST (pgr_linkPoint AS link_point) WITHOUT FUNCTION AS IMPLICIT;
+
+-- Need to create this type as we do not have an equivalent one anymore in 2.0
+CREATE TYPE vertex_result AS
+(
+    x float8,
+    y float8
+):
 
 CREATE OR REPLACE FUNCTION text(boolean)
        RETURNS text AS
