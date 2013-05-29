@@ -31,7 +31,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id integer, dist
 -- The sql should return vertex ids and x,y values. Return ordered
 -- vertex ids. 
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION pgr_alphashape(sql text)
-    RETURNS SETOF pgr_vertexResult
+CREATE OR REPLACE FUNCTION pgr_alphashape(sql text, OUT x float8, OUT y float8)
+    RETURNS SETOF record
     AS '$libdir/librouting_dd', 'alphashape'
     LANGUAGE c IMMUTABLE STRICT;

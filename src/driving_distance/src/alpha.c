@@ -321,8 +321,13 @@ Datum alphashape(PG_FUNCTION_ARGS)
 
       DBG("Total count %i", res_count);
 
-      funcctx->tuple_desc = BlessTupleDesc(
-                           RelationNameGetTupleDesc("pgr_vertexResult"));
+      if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+        ereport(ERROR,
+            (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+            errmsg("function returning record called in context "
+                   "that cannot accept type record")));
+
+      funcctx->tuple_desc = BlessTupleDesc(tuple_desc);
 
       MemoryContextSwitchTo(oldcontext);
     }

@@ -18,9 +18,3 @@ CREATE TYPE pgr_geomResult AS
     geom geometry
 );
 
-CREATE TYPE pgr_vertexResult AS
-(
-    x float8,
-    y float8
-);
-
