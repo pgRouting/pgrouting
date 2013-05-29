@@ -13,8 +13,8 @@ pgr_pointsAsPolygon - Polygon around set of points
 ===============================================================================
 
 .. index:: 
-  single: pgr_pointsAsPolygon(text)
-  module: driving_distance
+    single: pgr_pointsAsPolygon(text)
+    module: driving_distance
 
 Name
 -------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ Returns a set of :ref:`pgr_geomResult <type_geom_result>` (x, y) rows.
 
 .. code-block:: sql
 
-  pgr_geomResult[] pgr_pointsAsPolygon(text sql);
+    pgr_geomResult[] pgr_pointsAsPolygon(text sql);
 
 
 Description
@@ -37,9 +37,9 @@ Description
 
 :sql: ``text`` a SQL query, which should return a set of rows with the following columns:
 
-  .. code-block:: sql
+    .. code-block:: sql
 
-    SELECT id, source, target, cost [,reverse_cost] FROM edge_table
+        SELECT id, source, target, cost [,reverse_cost] FROM edge_table
 
 
   :id: ``int4`` identifier of the edge
