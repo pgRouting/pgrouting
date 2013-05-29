@@ -14,7 +14,7 @@ pgr_kDijkstra - K-Shortest Path Dijkstra
 
 .. index::
     single: pgr_kDijkstraCost(text,integer,integer[],boolean,boolean)
-    single: pgr_kdijkstraPath(text,integer,integer[],boolean,boolean)
+    single: pgr_kDijkstraPath(text,integer,integer[],boolean,boolean)
     module: dijkstra
 
 Name
