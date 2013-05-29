@@ -4,7 +4,8 @@ RETURNS TABLE(
 		tag varchar,
 		build varchar,
 		hash varchar,
-		branch varchar
+		branch varchar,
+		boost varchar
 	) AS
 $BODY$
 DECLARE
@@ -14,7 +15,8 @@ BEGIN
     					'${PGROUTING_GIT_TAG}'::varchar AS tag, 
                         '${PGROUTING_GIT_BULD}'::varchar AS build, 
                         '${PGROUTING_GIT_HASH}'::varchar AS hash, 
-                        's${PGROUTING_GIT_BRANCH}'::varchar AS branch;
+                        '${PGROUTING_GIT_BRANCH}'::varchar AS branch, 
+                        '${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}'::varchar AS boost;
 END;
 $BODY$
 LANGUAGE plpgsql IMMUTABLE;
