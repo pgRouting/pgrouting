@@ -1,36 +1,21 @@
-create or replace function pgr_full_version()
-returns text as
-$body$
-declare
+CREATE OR REPLACE FUNCTION pgr_version()
+RETURNS TABLE(
+		"version" varchar, 
+		tag varchar,
+		build varchar,
+		hash varchar,
+		branch varchar
+	) AS
+$BODY$
+DECLARE
 
-begin
-    return '${PGROUTING_VERSION_STRING} ${PGROUTING_BUILD_STRING}';
-end;
-$body$
-language plpgsql immutable;
-
-
-create or replace function pgr_version()
-returns text as
-$body$
-declare
-
-begin
-    return '${PGROUTING_VERSION_STRING}';
-end;
-$body$
-language plpgsql immutable;
-
-
-create or replace function pgr_build_version()
-returns text as
-$body$
-declare
-
-begin
-    return '${PGROUTING_BUILD_STRING}';
-end;
-$body$
-language plpgsql immutable;
-
+BEGIN
+    RETURN QUERY SELECT '${PGROUTING_VERSION_STRING}'::varchar AS version, 
+    					'${PGROUTING_GIT_TAG}'::varchar AS tag, 
+                        '${PGROUTING_GIT_BULD}'::varchar AS build, 
+                        '${PGROUTING_GIT_HASH}'::varchar AS hash, 
+                        's${PGROUTING_GIT_BRANCH}'::varchar AS branch;
+END;
+$BODY$
+LANGUAGE plpgsql IMMUTABLE;
 
