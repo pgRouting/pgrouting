@@ -128,6 +128,15 @@ Developer
 	src/developer/sampledata
 
 
+.. rubric:: Release Notes
+
+.. toctree::
+	:maxdepth: 1
+
+	src/changelog/2.0
+	src/changelog/1.x
+	
+
 .. rubric:: Indices and tables
 
 * :ref:`genindex`

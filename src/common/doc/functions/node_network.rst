@@ -21,9 +21,9 @@ Name
 
 ``pgr_nodeNetwork`` - Nodes an network edge table.
 
-
 :Author: Nicolas Ribot
-:Copyright: Nicolas Ribot, Function is released under the MIT-X license.
+:Copyright: Nicolas Ribot, The source code is released under the MIT-X license.
+
 
 Synopsis
 -------------------------------------------------------------------------------

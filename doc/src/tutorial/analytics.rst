@@ -13,7 +13,7 @@ Graph Analytics
 ===============================================================================
 
 :Author: Stephen Woodbridge <woodbri@swoodbridge.com>
-:Copyright: Stephen Woodbridge. This document is released under the MIT-X license.
+:Copyright: Stephen Woodbridge. The source code is released under the MIT-X license.
 
 
 Overview
