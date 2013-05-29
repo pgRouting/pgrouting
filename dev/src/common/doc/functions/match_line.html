@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_matchLine - Match line with network &mdash; pgRouting Manual (2.0.0-dev)</title>
+    
+    <link rel="stylesheet" href="../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '2.0.0-dev (7f8a0a6 sew-devel-2_0)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0-dev)" href="../../../../index.html" />
+    <link rel="next" title="pgr_nodeNetwork - Nodes an network edge table." href="node_network.html" />
+    <link rel="prev" title="pgr_isColumnIndexed - Check if column is indexed" href="is_column_indexed.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+          <span>pgRouting Manual (2.0.0-dev)</span></a></h1>
+        <h2 class="heading"><span>pgr_matchLine - Match line with network</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="is_column_indexed.html">pgr_isColumnIndexed - Check if column is indexed</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="node_network.html">pgr_nodeNetwork - Nodes an network edge table.</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-matchline-match-line-with-network">
+<span id="pgr-match-line"></span><h1>pgr_matchLine - Match line with network<a class="headerlink" href="#pgr-matchline-match-line-with-network" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_matchLine</span></tt> — Matches a given line to an existing network.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Returns a set of <a class="reference internal" href="../types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a> (seq, id1, id2, cost) rows, that make up a path.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_matchLine</span><span class="p">(</span><span class="nb">varchar</span> <span class="n">geom_table</span><span class="p">,</span> <span class="n">geometry</span> <span class="n">line</span><span class="p">,</span> <span class="n">double</span> <span class="k">precision</span> <span class="n">dist1</span><span class="p">,</span> <span class="n">double</span> <span class="k">precision</span> <span class="n">dist2</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">directed</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">has_rcost</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">geom_table:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> network table name (may contain the schema name as well)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">line:</th><td class="field-body"><tt class="docutils literal"><span class="pre">geometry</span></tt> representation of the line</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">dist1:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> distance for nearest node search</td>
+</tr>
+<tr class="field-even field"><th class="field-name">dist2:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> distance for shortest path search</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">directed:</th><td class="field-body"><tt class="docutils literal"><span class="pre">true</span></tt> if the graph is directed</td>
+</tr>
+<tr class="field-even field"><th class="field-name">has_rcost:</th><td class="field-body">if <tt class="docutils literal"><span class="pre">true</span></tt>, the <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.</td>
+</tr>
+</tbody>
+</table>
+<p>Returns set of <a class="reference internal" href="../types/cost_result.html#type-cost-result"><em>pgr_costResult[] - Path Result with Cost</em></a>:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body">row sequence</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id1:</th><td class="field-body">node ID</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">edge ID (<tt class="docutils literal"><span class="pre">-1</span></tt> for the last row)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body">cost to traverse from <tt class="docutils literal"><span class="pre">id1</span></tt> using <tt class="docutils literal"><span class="pre">id2</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>New in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="p">[</span><span class="n">TBD</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../types/cost_result.html#type-cost-result"><em>pgr_costResult[] - Path Result with Cost</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="is_column_indexed.html">pgr_isColumnIndexed - Check if column is indexed</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="node_network.html">pgr_nodeNetwork - Nodes an network edge table.</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (7f8a0a6 sew-devel-2_0).
+      Last updated on May 30, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

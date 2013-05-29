@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Routing Topology &mdash; pgRouting Manual</title>
+    <title>Routing Topology &mdash; pgRouting Manual (2.0.0-dev)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0 (e1649d0 sew-devel-2_0)',
+        VERSION:     '2.0.0-dev (7f8a0a6 sew-devel-2_0)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,13 +26,13 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual" href="../../../index.html" />
-    <link rel="next" title="Custom QUery" href="custom_query.html" />
+    <link rel="top" title="pgRouting Manual (2.0.0-dev)" href="../../../index.html" />
+    <link rel="next" title="Graph Analytics" href="analytics.html" />
     <link rel="prev" title="Getting Started" href="index.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual</span></a></h1>
+          <span>pgRouting Manual (2.0.0-dev)</span></a></h1>
         <h2 class="heading"><span>Routing Topology</span></h2>
       </div>
       <div class="topnav">
@@ -42,7 +42,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="custom_query.html">Custom QUery</a>&#160;&#160;»
+        <a href="analytics.html">Graph Analytics</a>&#160;&#160;»
         </p>
 
       </div>
@@ -57,14 +57,14 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Stephen Woodbridge &lt;<a class="reference external" href="mailto:woodbri&#37;&#52;&#48;swoodbridge&#46;com">woodbri<span>&#64;</span>swoodbridge<span>&#46;</span>com</a>&gt;</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Copyright:</th><td class="field-body">Stephen Woodbridge. This document is released under the MIT-X license.</td>
+<tr class="field-even field"><th class="field-name">Copyright:</th><td class="field-body">Stephen Woodbridge. The source code is released under the MIT-X license.</td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>Typically when GIS files are loaded into the data database for use with pgRouting they do not have topology information assocatired with. For data to create a useful topology it needs to be &#8220;noded&#8221;. This means that where two or more roads form an intersection there it needs to be a node at the intersection and all the road segments need to be broken at the intersection.</p>
-<p>You can use the <a class="reference internal" href="../../../src/common/doc/pgrouting_analytics.html#common-analytics"><em>graph analysis functions</em></a> to help you see where you might have problems in your data. If you need to node your data, we also have a function <a class="reference internal" href="../../../src/common/doc/functions/node_network.html#pgr-node-network"><em>pgr_nodeNetwork()</em></a> that might work for you. This function splits ALL crossing segments and nodes them. There are some cases where this might NOT be the right thing to do.</p>
+<p>You can use the <a class="reference internal" href="analytics.html#analytics"><em>graph analysis functions</em></a> to help you see where you might have problems in your data. If you need to node your data, we also have a function <a class="reference internal" href="../../../src/common/doc/functions/node_network.html#pgr-node-network"><em>pgr_nodeNetwork()</em></a> that might work for you. This function splits ALL crossing segments and nodes them. There are some cases where this might NOT be the right thing to do.</p>
 <p>For example, when you have an overpass and underpass intersection, you do not want these noded, but pgr_nodeNetwork does not know that is the cases and will node them which is not good because then the router will be able to turn off the overpass onto the underpass like it was a flat 2D intersection.</p>
 <p>For those cases where topology needs to be added the following functions may be useful. One way to prep the data for pgRouting is to add the following columns to your table and then populate them as appropriate.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">edge_table</span>
@@ -165,14 +165,14 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="custom_query.html">Custom QUery</a>&#160;&#160;»
+        <a href="analytics.html">Graph Analytics</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors.
-      Last updated on May 21, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (7f8a0a6 sew-devel-2_0).
+      Last updated on May 30, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>

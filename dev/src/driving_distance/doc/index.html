@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_drivingDistance - Driving Distance &mdash; pgRouting Manual</title>
+    <title>pgr_drivingDistance - Driving Distance &mdash; pgRouting Manual (2.0.0-dev)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0 (e1649d0 sew-devel-2_0)',
+        VERSION:     '2.0.0-dev (7f8a0a6 sew-devel-2_0)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,23 +26,23 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual" href="../../../index.html" />
-    <link rel="next" title="pgr_ksp - K-Shortest Path" href="../../ksp/doc/index.html" />
-    <link rel="prev" title="pgr_dijkstra - Shortest Path Dijkstra" href="../../dijkstra/doc/index.html" /> 
+    <link rel="top" title="pgRouting Manual (2.0.0-dev)" href="../../../index.html" />
+    <link rel="next" title="pgr_pointsAsPolygon - Polygon around set of points" href="dd_points_as_polygon.html" />
+    <link rel="prev" title="pgr_alphashape - Alpha shape computation" href="dd_alphashape.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual</span></a></h1>
+          <span>pgRouting Manual (2.0.0-dev)</span></a></h1>
         <h2 class="heading"><span>pgr_drivingDistance - Driving Distance</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="../../dijkstra/doc/index.html">pgr_dijkstra - Shortest Path Dijkstra</a>
+        «&#160;&#160;<a href="dd_alphashape.html">pgr_alphashape - Alpha shape computation</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../ksp/doc/index.html">pgr_ksp - K-Shortest Path</a>&#160;&#160;»
+        <a href="dd_points_as_polygon.html">pgr_pointsAsPolygon - Polygon around set of points</a>&#160;&#160;»
         </p>
 
       </div>
@@ -54,6 +54,10 @@
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_drivingDistance</span></tt> - Returns the driving distance from a start node.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Requires <a class="reference internal" href="../../../doc/src/installation/build.html#build"><em>to build pgRouting</em></a> with support for Driving Distance.</p>
+</div>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
@@ -113,9 +117,9 @@
 </tr>
 <tr class="field-even field"><th class="field-name">id1:</th><td class="field-body">node ID</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">[TBD]</td>
+<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">edge ID (this is probably not a useful item)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body">[TBD]</td>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body">cost to get to this node ID</td>
 </tr>
 </tbody>
 </table>
@@ -183,18 +187,18 @@
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="../../dijkstra/doc/index.html">pgr_dijkstra - Shortest Path Dijkstra</a>
+        «&#160;&#160;<a href="dd_alphashape.html">pgr_alphashape - Alpha shape computation</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../ksp/doc/index.html">pgr_ksp - K-Shortest Path</a>&#160;&#160;»
+        <a href="dd_points_as_polygon.html">pgr_pointsAsPolygon - Polygon around set of points</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors.
-      Last updated on May 21, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (7f8a0a6 sew-devel-2_0).
+      Last updated on May 30, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>

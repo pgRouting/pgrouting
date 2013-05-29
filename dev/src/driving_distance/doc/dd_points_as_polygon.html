@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_pointsAsPolygon - Polygon around set of points &mdash; pgRouting Manual (2.0.0-dev)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0-dev (7f8a0a6 sew-devel-2_0)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0-dev)" href="../../../index.html" />
+    <link rel="next" title="Discontinued Functions" href="../../../doc/src/developer/discontinued.html" />
+    <link rel="prev" title="pgr_drivingDistance - Driving Distance" href="index.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.0.0-dev)</span></a></h1>
+        <h2 class="heading"><span>pgr_pointsAsPolygon - Polygon around set of points</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">pgr_drivingDistance - Driving Distance</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../../doc/src/developer/discontinued.html">Discontinued Functions</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-pointsaspolygon-polygon-around-set-of-points">
+<span id="pgr-points-as-polygon"></span><h1>pgr_pointsAsPolygon - Polygon around set of points<a class="headerlink" href="#pgr-pointsaspolygon-polygon-around-set-of-points" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_pointsAsPolygon</span></tt> — Draws an alpha shape around given set of points.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Returns a set of <a class="reference internal" href="../../common/doc/types/geom_result.html#type-geom-result"><em>pgr_geomResult</em></a> (x, y) rows.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_geomResult</span><span class="p">[]</span> <span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">text</span></tt> a SQL query, which should return a set of rows with the following columns:</p>
+<blockquote>
+<div><div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="p">[,</span><span class="n">reverse_cost</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">edge_table</span>
+</pre></div>
+</div>
+</div></blockquote>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the edge</td>
+</tr>
+<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the source vertex</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the target vertex</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">reverse_cost:</th><td class="field-body">(optional) the cost for the reverse traversal of the edge. This is only used when the <tt class="docutils literal"><span class="pre">directed</span></tt> and <tt class="docutils literal"><span class="pre">has_rcost</span></tt> parameters are <tt class="docutils literal"><span class="pre">true</span></tt> (see the above remark about negative costs).</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Returns set of <a class="reference internal" href="../../common/doc/types/geom_result.html#type-geom-result"><em>pgr_geomResult[] - Path Result with Geometry</em></a>:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body">&#8220;0&#8221; (not used)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id1:</th><td class="field-body">&#8220;0&#8221; (not used)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">&#8220;0&#8221; (not used)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">geom:</th><td class="field-body">polygon geometry</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>Renamed in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="index.html#pgr-driving-distance"><em>pgr_drivingDistance - Driving Distance</em></a></li>
+<li><a class="reference internal" href="../../common/doc/types/vertex_result.html#type-vertex-result"><em>pgr_vertexResult[] - Vertex Result set</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">pgr_drivingDistance - Driving Distance</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../../doc/src/developer/discontinued.html">Discontinued Functions</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (7f8a0a6 sew-devel-2_0).
+      Last updated on May 30, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

@@ -14,7 +14,7 @@ Table of Contents
 
 pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgresql.org>`_ geospatial database to provide geospatial routing and other network analysis functionality.
 
-This is the manual for version |release|.
+This is the manual for pgRouting |release|.
 
 .. image:: static/images/ccbysa.png
 	:align: left
@@ -43,6 +43,7 @@ Tutorial
 
 	src/tutorial/index
 	src/tutorial/topology
+	src/tutorial/analytics
 	src/tutorial/custom_query
 	src/tutorial/custom_wrapper
 	src/tutorial/recipes
@@ -54,11 +55,33 @@ For a more complete introduction how to build a routing application read the `pg
 Reference
 *******************************************************************************
 
+pgRouting provides several :ref:`common functions <common>`:
+
 .. toctree::
-	:maxdepth: 2
+	:maxdepth: 1
+	:hidden:
 
 	../src/common/doc/index
+
+.. toctree::
+	:maxdepth: 1
+	:glob: 
+
+	../src/common/doc/functions/*
+
+pgRouting defines a few :ref:`custom data types <common_types>`:
+
+.. toctree::
+	:maxdepth: 1
+	:hidden:
+
 	../src/common/doc/types
+
+.. toctree::
+	:maxdepth: 1
+	:glob: 
+
+	../src/common/doc/types/*
 
 pgRouting functions in alphabetical order:
 
@@ -71,10 +94,19 @@ pgRouting functions in alphabetical order:
 	../src/bd_astar/doc/index
 	../src/bd_dijkstra/doc/index
 	../src/dijkstra/doc/index
-	../src/driving_distance/doc/index
+	../src/kdijkstra/doc/index
 	../src/ksp/doc/index
 	../src/tsp/doc/index
 	../src/trsp/doc/index
+
+If pgRouting is compiled with "Driving Distance" enabled:
+
+.. toctree::
+	:maxdepth: 1
+
+	../src/driving_distance/doc/dd_alphashape
+	../src/driving_distance/doc/index
+	../src/driving_distance/doc/dd_points_as_polygon
 
 Some functions from previous releases may have been removed. 
 
@@ -95,6 +127,15 @@ Developer
 	src/developer/index
 	src/developer/sampledata
 
+
+.. rubric:: Release Notes
+
+.. toctree::
+	:maxdepth: 1
+
+	src/changelog/2.0
+	src/changelog/1.x
+	
 
 .. rubric:: Indices and tables
 

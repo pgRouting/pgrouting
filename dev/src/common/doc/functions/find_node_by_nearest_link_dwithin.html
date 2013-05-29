@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_findNodeByNearestLinkDWithin - Find node by nearest link &mdash; pgRouting Manual (2.0.0-dev)</title>
+    
+    <link rel="stylesheet" href="../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '2.0.0-dev (7f8a0a6 sew-devel-2_0)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0-dev)" href="../../../../index.html" />
+    <link rel="next" title="pgr_isColumnInTable - Check if column exists" href="is_column_in_table.html" />
+    <link rel="prev" title="pgr_findNearestNodeDWithin - Find nearest node within distance" href="find_nearest_node_dwithin.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+          <span>pgRouting Manual (2.0.0-dev)</span></a></h1>
+        <h2 class="heading"><span>pgr_findNodeByNearestLinkDWithin - Find node by nearest link</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="find_nearest_node_dwithin.html">pgr_findNearestNodeDWithin - Find nearest node within distance</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="is_column_in_table.html">pgr_isColumnInTable - Check if column exists</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-findnodebynearestlinkdwithin-find-node-by-nearest-link">
+<span id="pgr-find-node-by-nearest-link-dwithin"></span><h1>pgr_findNodeByNearestLinkDWithin - Find node by nearest link<a class="headerlink" href="#pgr-findnodebynearestlinkdwithin-find-node-by-nearest-link" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_findNodeByNearestLinkDWithin</span></tt> — Finds a node by nearest link within distance.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>The function finds and returns the node searched by the nearest link to a given node.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">record</span> <span class="n">pgr_findNodeByNearestLinkDWithin</span><span class="p">(</span><span class="nb">varchar</span> <span class="n">point</span><span class="p">,</span> <span class="n">double</span> <span class="k">precision</span> <span class="n">distance</span><span class="p">,</span> <span class="nb">varchar</span> <span class="n">geom_table</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">point:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> text representation of the point</td>
+</tr>
+<tr class="field-even field"><th class="field-name">distance:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> function will search for a node within this distance</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">geom_table:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> network table name (may contain the schema name as well)</td>
+</tr>
+</tbody>
+</table>
+<p>Returns a record with</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> node ID</td>
+</tr>
+<tr class="field-even field"><th class="field-name">name:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> indicates if the nearest node is &#8220;source&#8221; or &#8220;target&#8221;</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>New in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="p">[</span><span class="n">TBD</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>[TBD]</li>
+</ul>
+</div>
+</div>
+<div class="section" id="pgr-findnearestlinkwithindistance-find-nearest-link-within-ditance">
+<span id="find-node-by-nearest-link-within-distance"></span><h1>pgr_findNearestLinkWithinDistance - Find nearest link within ditance.<a class="headerlink" href="#pgr-findnearestlinkwithindistance-find-nearest-link-within-ditance" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="index-1">
+<span id="id1"></span><h2>Name<a class="headerlink" href="#index-1" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pgr_find_node_by_nearest_link_within_distance">
+<tt class="descname">pgr_find_node_by_nearest_link_within_distance</tt><big>(</big><em>point</em>, <em>distance</em>, <em>tbl</em><big>)</big><a class="headerlink" href="#pgr_find_node_by_nearest_link_within_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function finds nearest node as a source or target of the
+* nearest link
+* point - text representation of point
+* distance - function will search for a link within this distance
+* tbl - table name
+* returns link_point</p>
+</dd></dl>
+
+</div>
+<div class="section" id="id2">
+<h2>Synopsis<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Returns <tt class="docutils literal"><span class="pre">true</span></tt> or <tt class="docutils literal"><span class="pre">false</span></tt> if column “col” exists in table “tab”.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="nb">boolean</span> <span class="n">pgr_isColumnInTable</span><span class="p">(</span><span class="n">tab</span> <span class="nb">text</span><span class="p">,</span> <span class="n">col</span> <span class="nb">text</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Description<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">tab:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> table name with or without schema component</td>
+</tr>
+<tr class="field-even field"><th class="field-name">col:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> column name to be checked for</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>New in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>Examples<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="p">[</span><span class="n">TBD</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>See Also<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>[TBD]</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="find_nearest_node_dwithin.html">pgr_findNearestNodeDWithin - Find nearest node within distance</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="is_column_in_table.html">pgr_isColumnInTable - Check if column exists</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (7f8a0a6 sew-devel-2_0).
+      Last updated on May 30, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

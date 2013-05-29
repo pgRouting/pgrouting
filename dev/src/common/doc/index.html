@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Common Functions &mdash; pgRouting Manual</title>
+    <title>Common Functions &mdash; pgRouting Manual (2.0.0-dev)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0 (e1649d0 sew-devel-2_0)',
+        VERSION:     '2.0.0-dev (7f8a0a6 sew-devel-2_0)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,13 +26,13 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual" href="../../../index.html" />
-    <link rel="next" title="pgr_createTopology - Building a NetWork Topology" href="functions/create_topology.html" />
+    <link rel="top" title="pgRouting Manual (2.0.0-dev)" href="../../../index.html" />
+    <link rel="next" title="pgr_analyzeGraph - Analyze a Graph" href="functions/analyze_graph.html" />
     <link rel="prev" title="Performance Tips" href="../../../doc/src/tutorial/performance.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual</span></a></h1>
+          <span>pgRouting Manual (2.0.0-dev)</span></a></h1>
         <h2 class="heading"><span>Common Functions</span></h2>
       </div>
       <div class="topnav">
@@ -42,7 +42,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="functions/create_topology.html">pgr_createTopology - Building a NetWork Topology</a>&#160;&#160;»
+        <a href="functions/analyze_graph.html">pgr_analyzeGraph - Analyze a Graph</a>&#160;&#160;»
         </p>
 
       </div>
@@ -53,12 +53,21 @@
 <span id="common"></span><h1>Common Functions<a class="headerlink" href="#common-functions" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="functions/analyze_graph.html">pgr_analyzeGraph - Analyze a Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions/analyze_oneway.html">pgr_analyzeOneway - Analyze One Way Streets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions/create_topology.html">pgr_createTopology - Building a NetWork Topology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions/find_nearest_link_dwithin.html">pgr_findNearestLinkDWithin - Find nearest link within distance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions/find_nearest_node_dwithin.html">pgr_findNearestNodeDWithin - Find nearest node within distance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions/find_node_by_nearest_link_dwithin.html">pgr_findNodeByNearestLinkDWithin - Find node by nearest link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions/find_node_by_nearest_link_dwithin.html#pgr-findnearestlinkwithindistance-find-nearest-link-within-ditance">pgr_findNearestLinkWithinDistance - Find nearest link within ditance.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions/is_column_in_table.html">pgr_isColumnInTable - Check if column exists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions/is_column_indexed.html">pgr_isColumnIndexed - Check if column is indexed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions/match_line.html">pgr_matchLine - Match line with network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions/node_network.html">pgr_nodeNetwork - Nodes an network edge table.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions/point_to_id.html">pgr_pointToId - Inserts point into a vertices table</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions/quote_ident.html">pgr_quote_ident - Quote table name with Schema Component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgrouting_analytics.html">pgRouting Graph Analytics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgrouting_matching.html">pgRouting Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions/version.html">pgr_version - Get version information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions/versionless.html">pgr_versionless - Compare version numbers</a></li>
 </ul>
 </div>
 </div>
@@ -72,14 +81,14 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="functions/create_topology.html">pgr_createTopology - Building a NetWork Topology</a>&#160;&#160;»
+        <a href="functions/analyze_graph.html">pgr_analyzeGraph - Analyze a Graph</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors.
-      Last updated on May 21, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (7f8a0a6 sew-devel-2_0).
+      Last updated on May 30, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>

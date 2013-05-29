@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_analyzeOneway - Analyze One Way Streets &mdash; pgRouting Manual (2.0.0-dev)</title>
+    
+    <link rel="stylesheet" href="../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '2.0.0-dev (7f8a0a6 sew-devel-2_0)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0-dev)" href="../../../../index.html" />
+    <link rel="next" title="pgr_createTopology - Building a NetWork Topology" href="create_topology.html" />
+    <link rel="prev" title="pgr_analyzeGraph - Analyze a Graph" href="analyze_graph.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+          <span>pgRouting Manual (2.0.0-dev)</span></a></h1>
+        <h2 class="heading"><span>pgr_analyzeOneway - Analyze One Way Streets</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="analyze_graph.html">pgr_analyzeGraph - Analyze a Graph</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="create_topology.html">pgr_createTopology - Building a NetWork Topology</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-analyzeoneway-analyze-one-way-streets">
+<span id="pgr-analyze-oneway"></span><h1>pgr_analyzeOneway - Analyze One Way Streets<a class="headerlink" href="#pgr-analyzeoneway-analyze-one-way-streets" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_analyzeOneway</span></tt> — Analyzes oneway Sstreets and identifies flipped segments.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>This function analyzes oneway streets in a graph and identifies any flipped segments.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="nb">text</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="n">tab</span> <span class="nb">text</span><span class="p">,</span> <span class="n">col</span> <span class="nb">text</span><span class="p">,</span> <span class="n">s_in_rules</span> <span class="nb">text</span><span class="p">[],</span> <span class="n">s_out_rules</span> <span class="nb">text</span><span class="p">[],</span>
+                       <span class="n">t_in_rules</span> <span class="nb">text</span><span class="p">[],</span> <span class="n">t_out_rules</span> <span class="nb">text</span><span class="p">[],</span> <span class="mi">2</span><span class="n">way_if_null</span> <span class="nb">boolean</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">tab:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> edge table name</td>
+</tr>
+<tr class="field-even field"><th class="field-name">col:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> oneway column name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">s_in_rules:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text[]</span></tt> source node in rules</td>
+</tr>
+<tr class="field-even field"><th class="field-name">s_out_rules:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text[]</span></tt> source node out rules</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">t_in_tules:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text[]</span></tt> target node in rules</td>
+</tr>
+<tr class="field-even field"><th class="field-name">t_out_rules:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text[]</span></tt> target node out rules</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">2way_if_null:</th><td class="field-body"><tt class="docutils literal"><span class="pre">boolean</span></tt> flag to treat oneway nNULL values as by directional</td>
+</tr>
+</tbody>
+</table>
+<p>This query will add two columns to the vertices_tmp table <tt class="docutils literal"><span class="pre">ein</span> <span class="pre">int</span></tt> and <tt class="docutils literal"><span class="pre">eout</span> <span class="pre">int</span></tt> and populate it with the appropriate counts.</p>
+<p>The rules are defined as an array of text strings that if match the <tt class="docutils literal"><span class="pre">col</span></tt> value would be counted as <tt class="docutils literal"><span class="pre">true</span></tt> for the source or target in or out condition.</p>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>New in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="p">[</span><span class="n">TBD</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph - Analyze a Graph</em></a></li>
+<li><a class="reference internal" href="../../../../doc/src/tutorial/analytics.html#analytics"><em>Graph Analytics</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="analyze_graph.html">pgr_analyzeGraph - Analyze a Graph</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="create_topology.html">pgr_createTopology - Building a NetWork Topology</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (7f8a0a6 sew-devel-2_0).
+      Last updated on May 30, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

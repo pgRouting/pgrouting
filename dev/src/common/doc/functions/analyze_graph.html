@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_analyzeGraph - Analyze a Graph &mdash; pgRouting Manual (2.0.0-dev)</title>
+    
+    <link rel="stylesheet" href="../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '2.0.0-dev (7f8a0a6 sew-devel-2_0)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0-dev)" href="../../../../index.html" />
+    <link rel="next" title="pgr_analyzeOneway - Analyze One Way Streets" href="analyze_oneway.html" />
+    <link rel="prev" title="pgr_versionless - Compare version numbers" href="versionless.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+          <span>pgRouting Manual (2.0.0-dev)</span></a></h1>
+        <h2 class="heading"><span>pgr_analyzeGraph - Analyze a Graph</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="versionless.html">pgr_versionless - Compare version numbers</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="analyze_oneway.html">pgr_analyzeOneway - Analyze One Way Streets</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-analyzegraph-analyze-a-graph">
+<span id="pgr-analyze-graph"></span><h1>pgr_analyzeGraph - Analyze a Graph<a class="headerlink" href="#pgr-analyzegraph-analyze-a-graph" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_analyzeGraph</span></tt> — Analyzes the &#8220;network&#8221; and &#8220;vertices_tmp&#8221; tables.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Analyzes the &#8220;edge_tab&#8221; and &#8220;vertices_tmp&#8221; tables and flags if nodes are deadends, ie. <tt class="docutils literal"><span class="pre">vertices_tmp.cnt=1</span></tt> and identifies nodes that might be disconnected because of gaps &lt; <tt class="docutils literal"><span class="pre">tolerance</span></tt> or because of zlevel errors in the data.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="nb">character</span> <span class="nb">varying</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="n">tab</span> <span class="nb">text</span><span class="p">,</span> <span class="n">geom</span> <span class="nb">text</span><span class="p">,</span> <span class="n">tol</span> <span class="n">double</span> <span class="k">precision</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">geom_table:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> network table name (may contain the schema name as well)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">geo_cname:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> geometry column name of the network table</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">tolerance:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> snapping tolerance of disconnected edges (in projection unit)</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>New in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="p">[</span><span class="n">TBD</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway - Analyze One Way Streets</em></a></li>
+<li><a class="reference internal" href="../../../../doc/src/tutorial/analytics.html#analytics"><em>Graph Analytics</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="versionless.html">pgr_versionless - Compare version numbers</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="analyze_oneway.html">pgr_analyzeOneway - Analyze One Way Streets</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (7f8a0a6 sew-devel-2_0).
+      Last updated on May 30, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

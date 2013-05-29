@@ -1,0 +1,21 @@
+.. 
+   ****************************************************************************
+    pgRouting Manual
+    Copyright(c) pgRouting Contributors
+
+    This documentation is licensed under a Creative Commons Attribution-Share  
+    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+   ****************************************************************************
+
+.. _changelog_2_0:
+
+pgRouting 2.0 Release Notes
+===============================================================================
+
+With the release of pgRouting 2.0 the library has abandoned backwards compatibility to :ref:`pgRouting 1.x <changelog_1_x>` releases.
+For important changes see the following release notes. To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github.
+
+Changes for 2.0.0-alpha
+-------------------------------------------------------------------------------
+
+* [TBD]
