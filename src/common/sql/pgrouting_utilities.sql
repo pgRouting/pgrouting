@@ -118,30 +118,58 @@ language plpgsql immutable;
  * we need to detect the version at runtime
 */
 
-create or replace function pgr_versionless(v1 text, v2 text)
-returns boolean as
-$body$
+CREATE OR REPLACE FUNCTION pgr_versionless(v1 text, v2 text)
+  RETURNS boolean AS
+$BODY$
 declare
     v1a text[];
     v2a text[];
+    v1b text[];
+    v2b text[];
     nv1 integer;
     nv2 integer;
+    ne1 integer;
+    ne2 integer;
     
 begin
-    v1a := string_to_array(v1, '.');
-    v2a := string_to_array(v2, '.');
+    -- separate off any trailing modifiers like "-dev%', "-alpha%", "-beta%", or other "-%" items.
+    v1b := string_to_array(v1, '-');
+    v2b := string_to_array(v2, '-');
 
+    -- convert modifiers to numbers for comparison
+    ne1 := case when v1b[2] is null then 4
+                when v1b[2] ilike 'beta%' then 3
+                when v1b[2] ilike 'alpha%' then 2
+                when v1b[2] ilike 'dev%' then 1
+                else 0 end;
+
+    ne2 := case when v2b[2] is null then 4
+                when v2b[2] ilike 'beta%' then 3
+                when v2b[2] ilike 'alpha%' then 2
+                when v2b[2] ilike 'dev%' then 1
+                else 0 end;
+
+    -- split the dotted version number into parts
+    v1a := string_to_array(v1b[1], '.');
+    v2a := string_to_array(v2b[1], '.');
+
+    -- we compare major.minor.patch components, if the number of components
+    -- is less than 3 then we add '0' for the missing parts
     if array_length(v1a, 1) < 3 then v1a := array_append(v1a, '0'); end if;
     if array_length(v1a, 1) < 3 then v1a := array_append(v1a, '0'); end if;
 
     if array_length(v2a, 1) < 3 then v1a := array_append(v2a, '0'); end if;
     if array_length(v2a, 1) < 3 then v1a := array_append(v2a, '0'); end if;
 
-    nv1 := v1a[1]::integer * 1000 + v1a[2]::integer * 100 + v1a[3]::integer;
-    nv2 := v2a[1]::integer * 1000 + v2a[2]::integer * 100 + v2a[3]::integer;
+    
+    nv1 := v1a[1]::integer * 10000 + v1a[2]::integer * 1000 + v1a[3]::integer * 100 + ne1;
+    nv2 := v2a[1]::integer * 10000 + v2a[2]::integer * 1000 + v2a[3]::integer * 100 + ne2;
 
-    return v1<v2;
+    raise notice 'nv1: %, nv2: %, ne1: %, ne2: %', nv1, nv2, ne1, ne2;
+
+    return nv1 < nv2;
 end;
-$body$
-language plpgsql immutable strict;
+$BODY$
+  LANGUAGE plpgsql IMMUTABLE STRICT
+  COST 1;
 
