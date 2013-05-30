@@ -158,14 +158,14 @@ begin
     if array_length(v1a, 1) < 3 then v1a := array_append(v1a, '0'); end if;
     if array_length(v1a, 1) < 3 then v1a := array_append(v1a, '0'); end if;
 
-    if array_length(v2a, 1) < 3 then v1a := array_append(v2a, '0'); end if;
-    if array_length(v2a, 1) < 3 then v1a := array_append(v2a, '0'); end if;
+    if array_length(v2a, 1) < 3 then v2a := array_append(v2a, '0'); end if;
+    if array_length(v2a, 1) < 3 then v2a := array_append(v2a, '0'); end if;
 
     
     nv1 := v1a[1]::integer * 10000 + v1a[2]::integer * 1000 + v1a[3]::integer * 100 + ne1;
     nv2 := v2a[1]::integer * 10000 + v2a[2]::integer * 1000 + v2a[3]::integer * 100 + ne2;
 
-    raise notice 'nv1: %, nv2: %, ne1: %, ne2: %', nv1, nv2, ne1, ne2;
+    --raise notice 'nv1: %, nv2: %, ne1: %, ne2: %', nv1, nv2, ne1, ne2;
 
     return nv1 < nv2;
 end;
