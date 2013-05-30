@@ -23,11 +23,7 @@ CREATE CAST (pgr_geoms AS geoms) WITHOUT FUNCTION AS IMPLICIT;
 CREATE CAST (pgr_linkPoint AS link_point) WITHOUT FUNCTION AS IMPLICIT;
 
 -- Need to create this type as we do not have an equivalent one anymore in 2.0
-CREATE TYPE vertex_result AS
-(
-    x float8,
-    y float8
-):
+CREATE TYPE vertex_result AS ( x float8, y float8 ):
 
 CREATE OR REPLACE FUNCTION text(boolean)
        RETURNS text AS
@@ -116,8 +112,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- Insert a vertex into the vertices table if not already there, and
 --  return the id of the newly inserted or already existing element
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION insert_vertex(vertices_table varchar, 
-       geom_id anyelement) 
+CREATE OR REPLACE FUNCTION insert_vertex(vertices_table varchar, geom_id anyelement) 
        RETURNS int AS
 $$
 DECLARE
@@ -158,6 +153,14 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 --
 
+CREATE OR REPLACE FUNCTION pgr_shootingStar(sql text, source_id integer, target_id integer,directed boolean, has_reverse_cost boolean)
+         RETURNS SETOF pgr_costResult AS 
+$body$
+begin
+raise exception 'The shootingstar functions are not available in pgRouting 2+, You should convert your code to use pgr_trsp() function.';
+end;
+$body$
+LANGUAGE plpgsql IMMUTABLE STRICT;
 
 -----------------------------------------------------------------------
 -- Shooting* function for directed graphs.
@@ -166,8 +169,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --
 -- Last changes: 14.02.2008
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION shootingstar_sp(
-       varchar,int4, int4, float8, varchar, boolean, boolean) 
+CREATE OR REPLACE FUNCTION shootingstar_sp( varchar,int4, int4, float8, varchar, boolean, boolean) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -202,6 +204,8 @@ DECLARE
 
 	id integer;
 BEGIN
+
+    RAISE EXCEPTION 'The shootingstar functions are not available in pgRouting 2+, You should convert your code to use pgr_trsp() function.';
 	
 	id :=0;
 	FOR rec IN EXECUTE
@@ -323,8 +327,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --
 -- Last changes: 14.02.2008
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION astar_sp_delta(
-       varchar,int4, int4, float8) 
+CREATE OR REPLACE FUNCTION astar_sp_delta( varchar,int4, int4, float8) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -372,8 +375,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --
 -- Last changes: 14.02.2008
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION astar_sp_delta_directed(
-       varchar,int4, int4, float8, boolean, boolean) 
+CREATE OR REPLACE FUNCTION astar_sp_delta_directed( varchar,int4, int4, float8, boolean, boolean) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -472,7 +474,7 @@ BEGIN
 	ur_y := rec.ur_y;
 
 	query := 'SELECT gid,the_geom FROM ' || 
-          'shortest_path_astar(''SELECT gid as id, source::integer, ' || 
+          'pgr_astar(''SELECT gid as id, source::integer, ' || 
           'target::integer, length::double precision as cost, ' || 
           'x1::double precision, y1::double precision, x2::double ' ||
           'precision, y2::double precision ';
@@ -523,8 +525,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --
 -- Last changes: 14.02.2008
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION astar_sp_delta_cc(
-       varchar,int4, int4, float8, varchar) 
+CREATE OR REPLACE FUNCTION astar_sp_delta_cc( varchar,int4, int4, float8, varchar) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -574,8 +575,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --
 -- Last changes: 14.02.2008
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION astar_sp_delta_cc_directed(
-       varchar,int4, int4, float8, varchar, boolean, boolean) 
+CREATE OR REPLACE FUNCTION astar_sp_delta_cc_directed( varchar,int4, int4, float8, varchar, boolean, boolean) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -676,7 +676,7 @@ BEGIN
 	ur_y := rec.ur_y;
 
 	query := 'SELECT gid,the_geom FROM ' || 
-          'shortest_path_astar(''SELECT gid as id, source::integer, ' || 
+          'pgr_astar(''SELECT gid as id, source::integer, ' || 
           'target::integer, '||cost_column||'::double precision as cost, ' || 
           'x1::double precision, y1::double precision, x2::double ' ||
           'precision, y2::double precision ';
@@ -717,8 +717,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --
 -- Last changes: 14.02.2008
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION astar_sp_bbox(
-       varchar,int4, int4, float8, float8, float8, float8) 
+CREATE OR REPLACE FUNCTION astar_sp_bbox( varchar,int4, int4, float8, float8, float8, float8) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -772,8 +771,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --
 -- Last changes: 14.02.2008
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION astar_sp_bbox_directed(
-       varchar,int4, int4, float8, float8, float8, float8, boolean, boolean) 
+CREATE OR REPLACE FUNCTION astar_sp_bbox_directed( varchar,int4, int4, float8, float8, float8, float8, boolean, boolean) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -810,7 +808,7 @@ BEGIN
 	srid := rec.srid;
 	
 	query := 'SELECT gid,the_geom FROM ' || 
-           'shortest_path_astar(''SELECT gid as id, source::integer, ' || 
+           'pgr_astar(''SELECT gid as id, source::integer, ' || 
            'target::integer, length::double precision as cost, ' || 
            'x1::double precision, y1::double precision, ' || 
            'x2::double precision, y2::double precision ';
@@ -841,8 +839,7 @@ $$
 LANGUAGE 'plpgsql' VOLATILE STRICT; 
 
 
-CREATE OR REPLACE FUNCTION astar_sp(
-       geom_table varchar, source int4, target int4) 
+CREATE OR REPLACE FUNCTION astar_sp( geom_table varchar, source int4, target int4) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -883,8 +880,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --
 -- Last changes: 14.02.2008
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION astar_sp_directed(
-       geom_table varchar, source int4, target int4, dir boolean, rc boolean) 
+CREATE OR REPLACE FUNCTION astar_sp_directed( geom_table varchar, source int4, target int4, dir boolean, rc boolean) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -901,7 +897,7 @@ BEGIN
 	
 	id :=0;
 	query := 'SELECT gid,the_geom FROM ' || 
-           'shortest_path_astar(''SELECT gid as id, source::integer, ' || 
+           'pgr_astar(''SELECT gid as id, source::integer, ' || 
            'target::integer, length::double precision as cost, ' || 
            'x1::double precision, y1::double precision, ' || 
            'x2::double precision, y2::double precision ';
@@ -956,8 +952,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --
 -- Last changes: 14.02.2008
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION dijkstra_sp(
-       geom_table varchar, source int4, target int4) 
+CREATE OR REPLACE FUNCTION dijkstra_sp( geom_table varchar, source int4, target int4) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -972,7 +967,7 @@ BEGIN
 	id :=0;
 	
 	FOR path_result IN EXECUTE 'SELECT gid,the_geom FROM ' ||
-          'shortest_path(''SELECT gid as id, source::integer, target::integer, ' || 
+          'pgr_dijkstra(''SELECT gid as id, source::integer, target::integer, ' || 
           'length::double precision as cost FROM ' ||
 	  quote_ident(geom_table) || ''', ' || quote_literal(source) || 
           ' , ' || quote_literal(target) || ' , false, false), ' || 
@@ -999,8 +994,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --
 -- Last changes: 14.02.2008
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION dijkstra_sp_directed(
-       geom_table varchar, source int4, target int4, dir boolean, rc boolean) 
+CREATE OR REPLACE FUNCTION dijkstra_sp_directed( geom_table varchar, source int4, target int4, dir boolean, rc boolean) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -1016,7 +1010,7 @@ BEGIN
 	id :=0;
 	
 	query := 'SELECT gid,the_geom FROM ' ||
-          'shortest_path(''SELECT gid as id, source::integer, target::integer, ' || 
+          'pgr_dijkstra(''SELECT gid as id, source::integer, target::integer, ' || 
           'length::double precision as cost ';
 	  
 	IF rc THEN query := query || ', reverse_cost ';  
@@ -1050,8 +1044,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --
 -- Last changes: 14.02.2008
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION dijkstra_sp_delta(
-       varchar,int4, int4, float8) 
+CREATE OR REPLACE FUNCTION dijkstra_sp_delta( varchar,int4, int4, float8) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -1097,8 +1090,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --
 -- Last changes: 14.02.2008
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION dijkstra_sp_delta_directed(
-       varchar,int4, int4, float8, boolean, boolean) 
+CREATE OR REPLACE FUNCTION dijkstra_sp_delta_directed( varchar,int4, int4, float8, boolean, boolean) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -1197,7 +1189,7 @@ BEGIN
 	ur_y := rec.ur_y;
 
 	query := 'SELECT gid,the_geom FROM ' || 
-          'shortest_path(''SELECT gid as id, source::integer, target::integer, ' || 
+          'pgr_dijkstra(''SELECT gid as id, source::integer, target::integer, ' || 
           'length::double precision as cost ';
 	  
 	IF rc THEN query := query || ' , reverse_cost ';
@@ -1230,8 +1222,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --
 -- Last changes: 14.02.2008
 ------------------------------------------------------
-CREATE OR REPLACE FUNCTION tsp_astar(
-       geom_table varchar,ids varchar, source integer, delta double precision) 
+CREATE OR REPLACE FUNCTION tsp_astar( geom_table varchar,ids varchar, source integer, delta double precision) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -1276,8 +1267,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --
 -- Last changes: 14.02.2008
 ------------------------------------------------------
-CREATE OR REPLACE FUNCTION tsp_astar_directed(
-       geom_table varchar,ids varchar, source integer, delta float8, dir boolean, rc boolean) 
+CREATE OR REPLACE FUNCTION tsp_astar_directed( geom_table varchar,ids varchar, source integer, delta float8, dir boolean, rc boolean) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -1335,8 +1325,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 -- Returns TSP solution as a set of vertices connected
 -- with Dijkstra paths.
 ------------------------------------------------------
-CREATE OR REPLACE FUNCTION tsp_dijkstra(
-       geom_table varchar,ids varchar, source integer) 
+CREATE OR REPLACE FUNCTION tsp_dijkstra( geom_table varchar,ids varchar, source integer) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
@@ -1382,8 +1371,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 --
 -- Last changes: 14.02.2008
 ------------------------------------------------------
-CREATE OR REPLACE FUNCTION tsp_dijkstra_directed(
-       geom_table varchar,ids varchar, source integer, delta float8, dir boolean, rc boolean) 
+CREATE OR REPLACE FUNCTION tsp_dijkstra_directed( geom_table varchar,ids varchar, source integer, delta float8, dir boolean, rc boolean) 
        RETURNS SETOF GEOMS AS
 $$
 DECLARE 
