@@ -259,7 +259,7 @@ sub mysystem {
 }
 
 sub want_tests {
-    /^bd_.*\z/s &&
+    /^bd_d.*\z/s &&
     ($File::Find::prune = 1)
     ||
     /^test\.conf\z/s &&
