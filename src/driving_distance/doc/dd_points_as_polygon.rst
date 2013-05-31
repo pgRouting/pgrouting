@@ -64,4 +64,4 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`pgr_driving_distance`
-* :ref:`type_vertex_result`
+* :ref:`type_geom_result`
