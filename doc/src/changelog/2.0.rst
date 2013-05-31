@@ -12,30 +12,40 @@
 pgRouting 2.0 Release Notes
 ===============================================================================
 
-With the release of pgRouting 2.0 the library has abandoned backwards
-compatibility to :ref:`pgRouting 1.x <changelog_1_x>` releases. We did this so
-we could restructure the pgRouting, standardize the function naming, and
-prepare the project for future development. As a result of this effort, we
-have been able to simplify pgRouting, add significant new functionality,
-integrate documentation and testing into the source tree and make it easier
-for multiple developers to make contribution. In addition to the changes
-already mentioned, here are some of the changes to features:
-
- * Graph Analytics - tools for detecting and fixing connection some problems in a graph
- * A collection of useful utility functions
- * Two new All Pairs Short Path algorithms (pgr_apspjohnson, pgr_apspwarshall)
- * Bi-directional Dijkstra and A-star search algorithms (pgr_bdastar, pgr_bddijkstra)
- * One to many nodes search (pgr_kdijkstra)
- * K alternate paths shortest path (pgr_ksp)
- * New TSP solver that simplifies the code and the build process (pgr_tsp)
- * Turn Restricted shortest path (pgr_trsp) that replaces shooting star
- * Dropped support for Shooting Star
- * Built a test infrastructure that is run before major code changes are checked in
- * Tested and fixed most all of the outstanding bugs reported against 1.x that existing in the 2.0-dev code base.
+With the release of pgRouting 2.0 the library has abandoned backwards compatibility to :ref:`pgRouting 1.x <changelog_1_x>` releases. We did this so we could restructure pgRouting, standardize the function naming, and prepare the project for future development. As a result of this effort, we have been able to simplify pgRouting, add significant new functionality, integrate documentation and testing into the source tree and make it easier for multiple developers to make contribution.
 
 For important changes see the following release notes. To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github.
 
-Changes for 2.0.0-alpha
+
+..
+	Changes for 2.0.1
+	-------------------------------------------------------------------------------
+
+	* [TBD]
+
+
+Changes for 2.0.0
 -------------------------------------------------------------------------------
 
-* [TBD]
+* Graph Analytics - tools for detecting and fixing connection some problems in a graph
+* A collection of useful utility functions
+* Two new All Pairs Short Path algorithms (pgr_apspJohnson, pgr_apspWarshall)
+* Bi-directional Dijkstra and A-star search algorithms (pgr_bdAstar, pgr_bdDijkstra)
+* One to many nodes search (pgr_kDijkstra)
+* K alternate paths shortest path (pgr_ksp)
+* New TSP solver that simplifies the code and the build process (pgr_tsp), dropped "Gaul Library" dependency
+* Turn Restricted shortest path (pgr_trsp) that replaces Shooting Star
+* Dropped support for Shooting Star
+* Built a test infrastructure that is run before major code changes are checked in
+* Tested and fixed most all of the outstanding bugs reported against 1.x that existing in the 2.0-dev code base.
+* Improved build process for Windows
+* Modular library design
+* Compatibility with PostgreSQL 9.1 or newer 
+* Compatibility with PostGIS 2.0 or newer 
+* Installs as PostgreSQL EXTENSION
+* Return types refactored and unified
+* Support for table SCHEMA in function parameters
+* Support for ``st_`` PostGIS function prefix
+* Added ``pgr_`` prefix to functions and types
+* Better documentation: http://docs.pgrouting.org
+
