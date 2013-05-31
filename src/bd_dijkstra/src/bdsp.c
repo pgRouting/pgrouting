@@ -39,7 +39,7 @@ Datum bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS);
 
 
 #undef DEBUG
-//#define DEBUG 1
+#define DEBUG 1
 
 #ifdef DEBUG
 #define DBG(format, arg...)                     \
@@ -270,7 +270,7 @@ static int compute_bidirsp(char* sql, int start_vertex,
     if(edges[z].source>v_max_id) v_max_id=edges[z].source;
     if(edges[z].target<v_min_id) v_min_id=edges[z].target;
     if(edges[z].target>v_max_id) v_max_id=edges[z].target; 
-    DBG("%i <-> %i", v_min_id, v_max_id);
+    //DBG("%i <-> %i", v_min_id, v_max_id);
   }
 
   //::::::::::::::::::::::::::::::::::::  
@@ -283,9 +283,9 @@ static int compute_bidirsp(char* sql, int start_vertex,
     if(edges[z].source == end_vertex || edges[z].target == end_vertex)
       ++t_count;
 
-    edges[z].source-=v_min_id;
-    edges[z].target-=v_min_id;
-    DBG("%i - %i", edges[z].source, edges[z].target);      
+    edges[z].source -= v_min_id;
+    edges[z].target -= v_min_id;
+    //DBG("%i - %i", edges[z].source, edges[z].target);      
   }
 
   DBG("Total %i tuples", total_tuples);
@@ -300,14 +300,16 @@ static int compute_bidirsp(char* sql, int start_vertex,
     return -1;
   }
 
-  DBG("Calling Bi directional wrapper\n");
-
   start_vertex -= v_min_id;
   end_vertex   -= v_min_id;
 
-  v_max_id -= v_min_id;
+  //v_max_id -= v_min_id;
 
-  ret = bidirsp_wrapper(edges, total_tuples, v_max_id + 1, start_vertex, end_vertex,
+  DBG("Calling bidirsp_wrapper(edges, %d, %d, %d, %d, %d, %d, ...)\n",
+        total_tuples, v_max_id + 2, start_vertex, end_vertex,
+        directed, has_reverse_cost);
+
+  ret = bidirsp_wrapper(edges, total_tuples, v_max_id + 2, start_vertex, end_vertex,
                        directed, has_reverse_cost,
                        path, path_count, &err_msg);
 
@@ -360,7 +362,7 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
       // verify that the first 5 args are not NULL
       for (i=0; i<5; i++)
         if(PG_ARGISNULL(i)) {
-            elog(ERROR, "turn_restrict_shortest_path(): Argument %i may not be NULL", i+1);
+            elog(ERROR, "bidir_dijkstra_shortest_path(): Argument %i may not be NULL", i+1);
         }
 
       DBG("Calling compute_bidirsp");

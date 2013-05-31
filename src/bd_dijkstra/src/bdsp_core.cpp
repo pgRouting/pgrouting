@@ -27,6 +27,7 @@
 
 *****************************************************************************/
 
+#include <exception>
 #include "BiDirDijkstra.h"
 #include "bdsp.h"
 #include "utils.h"
@@ -46,10 +47,21 @@ int bidirsp_wrapper(
     char **err_msg
     )
 {
+    int res;
 
-    int i, j;
-	BiDirDijkstra bddijkstra;
-	int res = bddijkstra.bidir_dijkstra(edges, edge_count, maxNode, start_vertex, end_vertex, path, path_count, err_msg);
+    try {
+        int i, j;
+        BiDirDijkstra bddijkstra;
+        res = bddijkstra.bidir_dijkstra(edges, edge_count, maxNode, start_vertex, end_vertex, path, path_count, err_msg);
+    }
+    catch(std::exception& e) {
+        *err_msg = (char *) e.what();
+        return -1;
+    }
+    catch(...) {
+        *err_msg = (char *) "Caught unknown exception!";
+        return -1;
+    }
 
     if (res < 0)
         return res;
