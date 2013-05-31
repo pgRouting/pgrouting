@@ -29,11 +29,11 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`pgr_vertexResult <type_vertex_result>` (x, y) rows.
+Returns a table with (x, y) rows that describe a vertex result.
 
 .. code-block:: sql
 
-	pgr_vertexResult[] pgr_alphashape(text sql);
+	table() pgr_alphashape(text sql);
 
 
 Description
@@ -53,7 +53,7 @@ Description
   :reverse_cost: (optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs).
 
 
-Returns set of :ref:`type_vertex_result`:
+Returns a table with attributes:
 
 :x: x-coordinate
 :y: y-coordinate
@@ -68,4 +68,3 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`pgr_driving_distance`
-* :ref:`type_vertex_result`

@@ -23,4 +23,4 @@ Shooting Star algorithm
 
 :Version:	Removed with 2.0.0
 :Reasons:	Unresolved bugs, no maintainer, replaced with :ref:`trsp`
-:Comment:	Please :ref:`contact us <support>` if you're interested to sponsor or maintain this algorithm.
+:Comment:	Please :ref:`contact us <support>` if you're interested to sponsor or maintain this algorithm. The function is still available in :ref:`common_legacy` but currently not maintained.
