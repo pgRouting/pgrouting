@@ -1,10 +1,7 @@
-language: perl
+language: c
 
-perl:
-  - "5.16"
-  - "5.14"
-  - "5.12"
-  - "5.10"
+compiler:
+  - gcc
 
 notifications:
   email:
@@ -26,6 +23,9 @@ install:
   - if [[ "$POSTGIS_VERSION" != "1.5" ]]; then sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable; fi
   - if [[ "$POSTGIS_VERSION" != "1.5" ]]; then sudo apt-get update; fi
 
+  # Install dependecies
+  - sudo apt-get install libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-server-dev-all
+
   # Install PostGIS
   - sudo apt-get install postgresql-9.1-postgis -q
 
@@ -41,8 +41,10 @@ before_script:
   - if [[ "$POSTGIS_VERSION" == "1.5" ]]; then psql -d gis -U postgres -f /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql; fi
   - if [[ "$POSTGIS_VERSION" != "1.5" ]]; then psql -d gis -U postgres -c "CREATE EXTENSION postgis;"; fi
 
-script:
-  # Install pgRouting
+script: 
+  - cmake -DWITH_DD=ON
+  - make
+  - make install
 
 after_script:
   # Test pgRouting
