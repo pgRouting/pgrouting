@@ -29,7 +29,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a table with (x, y) rows that describe a vertex result.
+Returns a table with (x, y) rows that describe the vertices of an alpha shape.
 
 .. code-block:: sql
 
@@ -41,19 +41,16 @@ Description
 
 :sql: ``text`` a SQL query, which should return a set of rows with the following columns:
 
-  .. code-block:: sql
+    .. code-block:: sql
 
-    SELECT id, source, target, cost [,reverse_cost] FROM edge_table
+        SELECT id, x, y FROM vertex_table
 
-
-  :id: ``int4`` identifier of the edge
-  :source: ``int4`` identifier of the source vertex
-  :target: ``int4`` identifier of the target vertex
-  :cost: ``float8`` value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph.
-  :reverse_cost: (optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs).
+    :id: ``int4`` identifier of the edge
+    :x: ``float8`` x-coordinate
+    :y: ``float8`` y-coordinate
 
 
-Returns a table with attributes:
+Returns a vertex record for each row :
 
 :x: x-coordinate
 :y: y-coordinate
@@ -62,6 +59,24 @@ Returns a table with attributes:
 .. rubric:: History
 
 * Renamed in version 2.0.0
+
+
+Examples
+-------------------------------------------------------------------------------
+
+.. code-block:: sql
+
+    SELECT * FROM pgr_alphashape('SELECT id, x, y FROM vertex_table');
+
+     x | y 
+    ---+---
+     2 | 0
+     4 | 1
+     4 | 2
+     4 | 3
+     2 | 4
+     0 | 2
+    (6 rows)
 
 
 See Also
