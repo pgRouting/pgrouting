@@ -123,4 +123,5 @@ The queries use the :ref:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`type_cost_result`
+* :ref:`pgr_points_as_polygon`
+* :ref:`pgr_alphashape`

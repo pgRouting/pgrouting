@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0-dev (63d3359 develop)',
+        VERSION:     '2.0.0-dev (2c42aaf develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -57,8 +57,8 @@
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>Returns a set of <a class="reference internal" href="../../common/doc/types/geom_result.html#type-geom-result"><em>pgr_geomResult</em></a> (x, y) rows.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_geomResult</span><span class="p">[]</span> <span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">);</span>
+<p>Returns the alpha shape as polygon geometry.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">geometry</span> <span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -76,11 +76,11 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> vertex ID</td>
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the vertex</td>
 </tr>
-<tr class="field-even field"><th class="field-name">x:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> vertex x value</td>
+<tr class="field-even field"><th class="field-name">x:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> x-coordinate</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">y:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> vertex y value</td>
+<tr class="field-odd field"><th class="field-name">y:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> y-coordinate</td>
 </tr>
 </tbody>
 </table>
@@ -88,31 +88,28 @@
 </tr>
 </tbody>
 </table>
-<p>Returns set of <a class="reference internal" href="../../common/doc/types/geom_result.html#type-geom-result"><em>pgr_geomResult[] - Path Result with Geometry</em></a>:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body">&#8220;0&#8221; (not used)</td>
-</tr>
-<tr class="field-even field"><th class="field-name">id1:</th><td class="field-body">&#8220;0&#8221; (not used)</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">&#8220;0&#8221; (not used)</td>
-</tr>
-<tr class="field-even field"><th class="field-name">geom:</th><td class="field-body">polygon geometry</td>
-</tr>
-</tbody>
-</table>
+<p>Returns a polygon geometry.</p>
 <p class="rubric">History</p>
 <ul class="simple">
 <li>Renamed in version 2.0.0</li>
 </ul>
 </div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table&#39;</span><span class="p">));</span>
+
+               <span class="n">st_astext</span>
+<span class="c1">----------------------------------------</span>
+ <span class="n">POLYGON</span><span class="p">((</span><span class="mi">2</span> <span class="mi">0</span><span class="p">,</span><span class="mi">4</span> <span class="mi">1</span><span class="p">,</span><span class="mi">4</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">,</span><span class="mi">2</span> <span class="mi">4</span><span class="p">,</span><span class="mi">0</span> <span class="mi">2</span><span class="p">,</span><span class="mi">2</span> <span class="mi">0</span><span class="p">))</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference internal" href="index.html#pgr-driving-distance"><em>pgr_drivingDistance - Driving Distance</em></a></li>
-<li><a class="reference internal" href="../../common/doc/types/geom_result.html#type-geom-result"><em>pgr_geomResult[] - Path Result with Geometry</em></a></li>
+<li><a class="reference internal" href="dd_alphashape.html#pgr-alphashape"><em>pgr_alphashape - Alpha shape computation</em></a></li>
 </ul>
 </div>
 </div>
@@ -132,7 +129,7 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (63d3359 develop).
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (2c42aaf develop).
       Last updated on Jun 01, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>

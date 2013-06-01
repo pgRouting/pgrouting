@@ -45,7 +45,7 @@ Description
 
         SELECT id, x, y FROM vertex_table
 
-    :id: ``int4`` identifier of the edge
+    :id: ``int4`` identifier of the vertex
     :x: ``float8`` x-coordinate
     :y: ``float8`` y-coordinate
 
@@ -83,3 +83,4 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`pgr_driving_distance`
+* :ref:`pgr_points_as_polygon`
