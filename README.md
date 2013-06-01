@@ -2,7 +2,31 @@
 
 ## STATUS
 
-[![Build Status](https://travis-ci.org/pgRouting/pgrouting.png?branch=develop)](https://travis-ci.org/pgRouting/pgrouting)
+<table>
+	<tr>
+		<td>Branch</td>
+		<td>Status</td>
+		<td>Comment</td>
+	</tr>
+	<tr>
+		<td>master</td>
+		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=master" alt="Build Status"/></td>
+		<td>not enabled</td>
+	</tr>
+	<tr>
+		<td>develop</td>
+		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=develop" alt="Build Status"/></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>gh-pages</td>
+		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=gh-pages" alt="Build Status"/></td>
+		<td>not enabled</td>
+	</tr>
+</table>
+
+* ```master```: 
+* ```develop```
 
 ## INTRODUCTION
 
