@@ -25,9 +25,6 @@
 	</tr>
 </table>
 
-* ```master```: 
-* ```develop```
-
 ## INTRODUCTION
 
 pgRouting extends the PostGIS/PostgreSQL geospatial database to provide geospatial routing and other network analysis functionality.
