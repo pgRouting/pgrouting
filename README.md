@@ -1,4 +1,8 @@
-# pgRouting - Routing Functionalities on PostgreSQL
+# pgRouting - Routing on PostgreSQL
+
+## STATUS
+
+[![Build Status](https://travis-ci.org/pgRouting/pgrouting.png?branch=develop)](https://travis-ci.org/pgRouting/pgrouting)
 
 ## INTRODUCTION
 
