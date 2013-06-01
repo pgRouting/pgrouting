@@ -47,8 +47,9 @@ before_script:
 script: 
   - cmake -DWITH_DD=ON
   - make
-  - make install
+  - sudo make install
 
 after_script:
   # Test pgRouting
+  - psql -U postgres -d gis -c "CREATE EXTENSION pgrouting;"
 
