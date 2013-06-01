@@ -10,6 +10,10 @@ notifications:
   email:
     on_failure: project@pgrouting.org
 
+branches:
+  only:
+    - develop
+
 services:
   - postgresql
 
