@@ -37,6 +37,14 @@ To be able to execute the sample queries, run the following SQL commands to crea
 	    the_geom geometry(Linestring)
 	);
 
+.. code-block:: sql
+
+	CREATE TABLE vertex_table (
+	    id serial,
+	    x double precision,
+	    y double precision
+	);
+
 
 .. rubric:: Insert network data
 
@@ -59,3 +67,8 @@ To be able to execute the sample queries, run the following SQL commands to crea
 	INSERT INTO edge_table VALUES (15, 'B', 9, 12, 1, 1, 4, 2, 4, 3, NULL, NULL, '0102000000020000000000000000001040000000000000004000000000000010400000000000000840');
 	INSERT INTO edge_table VALUES (16, 'B', 4, 9, 1, 1, 4, 1, 4, 2, NULL, NULL, '0102000000020000000000000000001040000000000000F03F00000000000010400000000000000040');
 
+.. code-block:: sql
+
+	INSERT INTO vertex_table VALUES 
+		(1,2,0), (2,2,1), (3,3,1), (4,4,1), (5,0,2), (6,1,2), (7,2,2),
+		(8,3,2), (9,4,2), (10,2,3), (11,3,3), (12,4,3), (13,2,4);
