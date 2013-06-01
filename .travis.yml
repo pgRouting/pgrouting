@@ -52,4 +52,5 @@ script:
 after_script:
   # Test pgRouting
   - psql -U postgres -d gis -c "CREATE EXTENSION pgrouting;"
+  - tools/test-runner.pl
 
