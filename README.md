@@ -106,6 +106,6 @@ See online documentation: http://docs.pgrouting.org/dev/doc/index.html
 
 ## LICENSE
 
-Most features are available under GPLv2.
-Some Boost extensions are available under Boost license (see LICENSE_1_0.txt)
-Some code contributed by iMaptools.com is available under MIT-X license.
+* Most features are available under GPLv2.
+* Some Boost extensions are available under Boost license (see LICENSE_1_0.txt)
+* Some code contributed by iMaptools.com is available under MIT-X license.
