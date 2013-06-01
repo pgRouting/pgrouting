@@ -49,9 +49,13 @@ The TSP solver is based on ordering the points using straight line (euclidean) d
 
 :sql: a SQL query, which should return a set of rows with the following columns:
 
+	.. code-block:: sql
+
+		SELECT source_id, x, y FROM vertex_table
+
 	:source_id: ``int4`` identifier of the vertex
-	:x: ``x`` coordinate of the vertex
-	:y: ``y`` coordinate of the vertex
+	:x: ``float8`` x-coordinate
+	:y: ``float8`` y-coordinate
 
 :ids: ``text`` string containig ``int4`` ids of vertices separated by commas
 :source: ``int4`` id of the start point

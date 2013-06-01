@@ -78,15 +78,18 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first">a SQL query, which should return a set of rows with the following columns:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">source_id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">FROM</span> <span class="n">vertex_table</span>
+</pre></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">source_id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the vertex</td>
 </tr>
-<tr class="field-even field"><th class="field-name">x:</th><td class="field-body"><tt class="docutils literal"><span class="pre">x</span></tt> coordinate of the vertex</td>
+<tr class="field-even field"><th class="field-name">x:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> x-coordinate</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">y:</th><td class="field-body"><tt class="docutils literal"><span class="pre">y</span></tt> coordinate of the vertex</td>
+<tr class="field-odd field"><th class="field-name">y:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> y-coordinate</td>
 </tr>
 </tbody>
 </table>
