@@ -25,11 +25,11 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`pgr_geomResult <type_geom_result>` (x, y) rows.
+Returns the alpha shape as polygon geometry.
 
 .. code-block:: sql
 
-    pgr_geomResult[] pgr_pointsAsPolygon(text sql);
+    geometry pgr_pointsAsPolygon(text sql);
 
 
 Description
@@ -41,18 +41,12 @@ Description
 
         SELECT id, x, y FROM vertex_result;
 
+    :id: ``int4`` identifier of the vertex
+    :x: ``float8`` x-coordinate
+    :y: ``float8`` y-coordinate
 
-    :id: ``int4`` vertex ID
-    :x: ``int4`` vertex x value
-    :y: ``int4`` vertex y value
 
-
-Returns set of :ref:`type_geom_result`:
-
-:seq:   "0" (not used)
-:id1:   "0" (not used)
-:id2:   "0" (not used)
-:geom:  polygon geometry
+Returns a polygon geometry.
 
 
 .. rubric:: History
@@ -60,8 +54,22 @@ Returns set of :ref:`type_geom_result`:
 * Renamed in version 2.0.0
 
 
+Examples
+-------------------------------------------------------------------------------
+
+.. code-block:: sql
+
+    SELECT ST_AsText(pgr_pointsAsPolygon('SELECT id, x, y FROM vertex_table'));
+
+                   st_astext                
+    ----------------------------------------
+     POLYGON((2 0,4 1,4 2,4 3,2 4,0 2,2 0))
+    (1 row)
+
+
+
 See Also
 -------------------------------------------------------------------------------
 
 * :ref:`pgr_driving_distance`
-* :ref:`type_geom_result`
+* :ref:`pgr_alphashape`
