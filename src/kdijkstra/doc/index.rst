@@ -20,8 +20,8 @@ pgr_kDijkstra - K-Shortest Path Dijkstra
 Name
 -------------------------------------------------------------------------------
 
-``pgr_kdijkstraCost`` Returns the costs for K shortest paths using Dijkstra algorithm.
-``pgr_kdijkstraPath`` Returns the paths for K shortest paths using Dijkstra algorithm.
+* ``pgr_kdijkstraCost`` - Returns the costs for K shortest paths using Dijkstra algorithm.
+* ``pgr_kdijkstraPath`` - Returns the paths for K shortest paths using Dijkstra algorithm.
 
 
 Synopsis
@@ -75,6 +75,10 @@ Description
 :id2:   path edge id
 :cost:  cost to traverse this edge or -1.0 if there is no path to this target
 
+.. note::
+
+    The graph may not contain an edge with negative weight.
+
 
 .. rubric:: History
 
@@ -84,13 +88,41 @@ Description
 Examples
 -------------------------------------------------------------------------------
 
- TODO
+* Returning a ``cost`` result
 
+.. code-block:: sql
+
+    SELECT seq, id1 AS source, id2 AS target, cost FROM pgr_kdijkstraCost(
+        'SELECT id, source, target, cost FROM edge_table WHERE cost >= 0',
+        10, array[4,12], false, false
+    );
+
+     seq | source | target | cost 
+    -----+--------+--------+------
+       0 |     10 |      4 |    4
+       1 |     10 |     12 |    2
+
+
+.. code-block:: sql
+
+    SELECT seq, id1 AS path, id2 AS edge, cost FROM pgr_kdijkstraPath(
+        'SELECT id, source, target, cost FROM edge_table WHERE cost >= 0',
+        10, array[4,12], false, false
+    );
+
+     seq | path | edge | cost 
+    -----+------+------+------
+       0 |    4 |   12 |    1
+       1 |    4 |   13 |    1
+       2 |    4 |   15 |    1
+       3 |    4 |   16 |    1
+       4 |   12 |   12 |    1
+       5 |   12 |   13 |    1
+    (6 rows)
 
 
 See Also
 -------------------------------------------------------------------------------
 
 * :ref:`type_cost_result`
-
 
