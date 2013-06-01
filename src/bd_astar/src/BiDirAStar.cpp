@@ -67,6 +67,9 @@ void BiDirAStar::initall(int maxNode)
 	}
 	m_MinCost = INF;
 	m_MidNode = -1;
+
+    // reserve space for nodes
+    m_vecNodeVector.reserve(maxNode + 1);
 }
 
 /*
@@ -287,6 +290,9 @@ int BiDirAStar:: bidir_astar(edge_astar_t *edges, unsigned int edge_count, int m
 	max_node_id = maxNode;
 	max_edge_id = -1;
 	
+	// Allocate memory for local storage like cost and parent holder
+	initall(maxNode);
+
 	// construct the graph from the edge list, i.e. populate node and edge data structures
 	construct_graph(edges, edge_count, maxNode);
 	
@@ -302,10 +308,6 @@ int BiDirAStar:: bidir_astar(edge_astar_t *edges, unsigned int edge_count, int m
 	
 	m_vecPath.clear();
 
-	int i;
-	// Allocate memory for local storage like cost and parent holder
-	initall(maxNode);
-
 	// Initialize the forward search
 	m_pFParent[start_vertex].par_Node = -1;
 	m_pFParent[start_vertex].par_Edge = -1;
@@ -318,7 +320,7 @@ int BiDirAStar:: bidir_astar(edge_astar_t *edges, unsigned int edge_count, int m
 	m_pRCost[end_vertex] = 0.0;
 	rque.push(std::make_pair(0.0, end_vertex));
 
-
+	int i;
 	int new_node;
 	int cur_node;
 	int dir;

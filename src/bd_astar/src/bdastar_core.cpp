@@ -31,8 +31,6 @@
 #include "BiDirAStar.h"
 #include "bdastar.h"
 
-using namespace std;
-
 int bdastar_wrapper(edge_astar_t *edges, unsigned int edge_count, int maxnode,
                   int source_vertex_id, int target_vertex_id,
                   bool directed, bool has_reverse_cost,
@@ -44,7 +42,7 @@ int bdastar_wrapper(edge_astar_t *edges, unsigned int edge_count, int maxnode,
 	    BiDirAStar bdastar;
 	    res = bdastar.bidir_astar(edges, edge_count, maxnode, source_vertex_id, target_vertex_id, path, path_count, err_msg);
     }
-    catch(exception& e) {
+    catch(std::exception& e) {
         *err_msg = (char *) e.what();
         return -1;
     }

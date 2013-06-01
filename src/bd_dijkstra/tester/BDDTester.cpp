@@ -273,6 +273,8 @@ int main()
 
 		// Load edge information from graph file
 		loadGraph(graphFile);
+
+        fprintf(stderr, "edge_count: %d. maxNode: %d, startNode: %d, endNode: %d\n", edge_count, maxNode, startNode, endNode);
 		
 		// Use bidirectional dijkstra to get the route
 		BiDirDijkstra gdef;
