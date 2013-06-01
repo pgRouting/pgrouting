@@ -1,0 +1,45 @@
+language: perl
+
+perl:
+  - "5.16"
+  - "5.14"
+  - "5.12"
+  - "5.10"
+
+notifications:
+  email:
+    on_failure: project@pgrouting.org
+
+services:
+  - postgresql
+
+env:
+  - POSTGIS_VERSION=1.5
+  - POSTGIS_VERSION=2
+
+install:
+  # Add PPA for PostGIS 2.x
+  - if [[ "$POSTGIS_VERSION" != "1.5" ]]; then sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable; fi
+  - if [[ "$POSTGIS_VERSION" != "1.5" ]]; then sudo apt-get update; fi
+
+  # Install PostGIS
+  - sudo apt-get install postgresql-9.1-postgis -q
+
+before_script:
+  # Create database user "gis"
+  - psql -c "CREATE ROLE gis PASSWORD 'gis' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;" -U postgres
+
+  # Create database "gis"
+  - psql -c 'CREATE DATABASE gis;' -U postgres
+
+  # Add PostGIS extension to "gis" database
+  - if [[ "$POSTGIS_VERSION" == "1.5" ]]; then psql -d gis -U postgres -f /usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql; fi
+  - if [[ "$POSTGIS_VERSION" == "1.5" ]]; then psql -d gis -U postgres -f /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql; fi
+  - if [[ "$POSTGIS_VERSION" != "1.5" ]]; then psql -d gis -U postgres -c "CREATE EXTENSION postgis;"; fi
+
+script:
+  # Install pgRouting
+
+after_script:
+  # Test pgRouting
+
