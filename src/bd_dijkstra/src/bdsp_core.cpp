@@ -32,7 +32,19 @@
 #include "bdsp.h"
 #include "utils.h"
 
+#undef DEBUG
+//#define DEBUG
 
+#ifdef DEBUG
+#include <stdio.h>
+static FILE *dbg;
+#define DBG(format, arg...) \
+    dbg = fopen("/tmp/sew-debug", "a"); \
+    fprintf(dbg, format,  ## arg); \
+    fclose(dbg);
+#else
+#define DBG(format, arg...) do { ; } while (0)
+#endif
 
 int bidirsp_wrapper(
     edge_t *edges,
@@ -50,19 +62,23 @@ int bidirsp_wrapper(
     int res;
 
     try {
-        int i, j;
+        DBG("Calling BiDirDijkstra initializer.\n");
         BiDirDijkstra bddijkstra;
+        DBG("BiDirDijkstra initialized\n");
         res = bddijkstra.bidir_dijkstra(edges, edge_count, maxNode, start_vertex, end_vertex, path, path_count, err_msg);
     }
     catch(std::exception& e) {
+        DBG("catch(std::exception e.what: %s\n", e.what());
         *err_msg = (char *) e.what();
         return -1;
     }
     catch(...) {
+        DBG("catch(...\n");
         *err_msg = (char *) "Caught unknown exception!";
         return -1;
     }
 
+    DBG("Back from bddijkstra.bidir_dijkstra()\n");
     if (res < 0)
         return res;
     else

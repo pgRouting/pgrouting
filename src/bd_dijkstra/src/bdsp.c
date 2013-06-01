@@ -39,7 +39,7 @@ Datum bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS);
 
 
 #undef DEBUG
-#define DEBUG 1
+//#define DEBUG 1
 
 #ifdef DEBUG
 #define DBG(format, arg...)                     \
@@ -313,6 +313,7 @@ static int compute_bidirsp(char* sql, int start_vertex,
                        directed, has_reverse_cost,
                        path, path_count, &err_msg);
 
+  DBG("Back from bidirsp_wrapper() ret: %d", ret);
   if (ret < 0) {
       elog(ERROR, "Error computing path: %s", err_msg);
   } 

@@ -29,6 +29,21 @@
 
 #include "BiDirDijkstra.h"
 
+#undef DEBUG
+//#define DEBUG
+
+#ifdef DEBUG
+#include <stdio.h>
+static FILE *dbg;
+#define DBG(format, arg...) \
+    dbg = fopen("/tmp/sew-debug", "a"); \
+    fprintf(dbg, format,  ## arg); \
+    fclose(dbg);
+#else
+#define DBG(format, arg...) do { ; } while (0)
+#endif
+
+
 BiDirDijkstra::BiDirDijkstra(void)
 {
 }
@@ -51,11 +66,15 @@ void BiDirDijkstra::initall(int maxNode)
 {
 	int i;
 	m_vecPath.clear();
+    DBG("BiDirDijkstra::initall: allocating m_pFParent, m_pRParent maxNode: %d\n", maxNode+1);
 	m_pFParent = new PARENT_PATH[maxNode + 1];
 	m_pRParent = new PARENT_PATH[maxNode + 1];
+    DBG("BiDirDijkstra::initall: allocated m_pFParent, m_pRParent\n");
 
+    DBG("BiDirDijkstra::initall: allocating m_pFCost, m_pRCost maxNode: %d\n", maxNode+1);
 	m_pFCost = new double[maxNode + 1];
 	m_pRCost = new double[maxNode + 1];
+    DBG("BiDirDijkstra::initall: allocated m_pFCost, m_pRCost\n");
 
 	for(i = 0; i <= maxNode; i++)
 	{
@@ -67,6 +86,11 @@ void BiDirDijkstra::initall(int maxNode)
 	}
 	m_MinCost = INF;
 	m_MidNode = -1;
+
+    DBG("BiDirDijkstra::initall: m_vecNodeVector.reserve(%d)\n", maxNode + 1);
+    // reserve space for nodes
+    m_vecNodeVector.reserve(maxNode + 1);
+    DBG("           space reserved!\n");
 }
 
 /*
@@ -253,20 +277,22 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, unsigned int edge_count, int ma
 	max_node_id = maxNode;
 	max_edge_id = -1;
 	
+	// Allocate memory for local storage like cost and parent holder
+    DBG("calling initall(maxNode=%d)\n", maxNode);
+	initall(maxNode);
+
 	// construct the graph from the edge list, i.e. populate node and edge data structures
+    DBG("Calling construct_graph\n");
 	construct_graph(edges, edge_count, maxNode);
 	
 
 	//int nodeCount = m_vecNodeVector.size();
-		
+	DBG("Setting up std::priority_queue\n");
 	std::priority_queue<PDI, std::vector<PDI>, std::greater<PDI> > fque;
 	std::priority_queue<PDI, std::vector<PDI>, std::greater<PDI> > rque;
 	
+    DBG("calling m_vecPath.clear()\n");
 	m_vecPath.clear();
-
-	int i;
-	// Allocate memory for local storage like cost and parent holder
-	initall(maxNode);
 
 	// Initialize the forward search
 	m_pFParent[start_vertex].par_Node = -1;
@@ -280,7 +306,7 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, unsigned int edge_count, int ma
 	m_pRCost[end_vertex] = 0.0;
 	rque.push(std::make_pair(0.0, end_vertex));
 
-
+	int i;
 	int new_node;
 	int cur_node;
 	int dir;
@@ -341,8 +367,10 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, unsigned int edge_count, int ma
 
 		// Transfer data path to path_element_t format and allocate memory and populate the pointer
 
+        DBG("BiDirDijkstra::bidir_dijkstra: allocating path m_vecPath.size=%d\n", m_vecPath.size() + 1);
 		*path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
 		*path_count = m_vecPath.size();
+        DBG("BiDirDijkstra::bidir_dijkstra: allocated path\n");
 
 		for(i = 0; i < *path_count; i++)
 		{
@@ -352,7 +380,9 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, unsigned int edge_count, int ma
 		}
 		
 	}
+    DBG("calling deleteall\n");
 	deleteall();
+    DBG("back from deleteall\n");
 	return 0;
 }
 
@@ -366,12 +396,16 @@ bool BiDirDijkstra::construct_graph(edge_t* edges, int edge_count, int maxNode)
 	int i;
 
 	// Create a dummy node
+    DBG("Create a dummy node\n");
 	GraphNodeInfo nodeInfo;
+    DBG("calling nodeInfo.Connected_Edges_Index.clear\n");
 	nodeInfo.Connected_Edges_Index.clear();
+    DBG("calling nodeInfo.Connected_Nodes.clear\n");
 	nodeInfo.Connected_Nodes.clear();
 
 	// Insert the dummy node into the node list. This acts as place holder. Also change the nodeId so that nodeId and node index in the vector are same.
 	// There may be some nodes here that does not appear in the edge list. The size of the list is upto maxNode which is equal to maximum node id.
+    DBG("m_vecNodeVector.push_back for 0 - %d\n", maxNode);
 	for(i = 0; i <= maxNode; i++)
 	{
 		nodeInfo.NodeID = i;
@@ -379,6 +413,7 @@ bool BiDirDijkstra::construct_graph(edge_t* edges, int edge_count, int maxNode)
 	}
 
 	// Process each edge from the edge list and update the member data structures accordingly.
+    DBG("calling addEdge in a loop\n");
 	for(i = 0; i < edge_count; i++)
 	{
 		addEdge(edges[i]);
