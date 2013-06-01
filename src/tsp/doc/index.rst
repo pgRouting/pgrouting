@@ -119,6 +119,8 @@ Examples
 	   3 |  3
 	(4 rows)
 
+The queries use the :ref:`sampledata` network.
+
 
 See Also
 -------------------------------------------------------------------------------

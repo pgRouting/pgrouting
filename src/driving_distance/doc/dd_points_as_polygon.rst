@@ -66,6 +66,7 @@ Examples
      POLYGON((2 0,4 1,4 2,4 3,2 4,0 2,2 0))
     (1 row)
 
+The queries use the :ref:`sampledata` network.
 
 
 See Also

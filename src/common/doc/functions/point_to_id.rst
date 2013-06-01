@@ -54,3 +54,5 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`pgr_create_topology`
+* :ref:`topology`
+* :ref:`pgr_node_network`

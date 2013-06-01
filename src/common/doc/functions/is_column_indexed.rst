@@ -49,10 +49,17 @@ Examples
 
 .. code-block:: sql
 
-	[TBD]
+    SELECT pgr_isColumnIndexed('edge_table','the_geom');
+
+     pgr_iscolumnindexed 
+    ---------------------
+     f
+    (1 row)
+
+The queries use the :ref:`sampledata` network.
 
 
 See Also
 -------------------------------------------------------------------------------
 
-* [TBD]
+* :ref:`pgr_is_column_in_table`
