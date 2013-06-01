@@ -98,10 +98,7 @@ Examples
 
 .. code-block:: sql
 
-	SELECT seq, id1 AS  FROM pgr_tsp('SELECT DISTINCT source AS source_id, 
-		               x1::double precision AS x, 
-		               y1::double precision AS y FROM edge_table',
-		            '3,6,9,11', 6);
+	SELECT * FROM pgr_tsp('SELECT id AS source_id, x, y FROM vertex_table','2,7,11',7);
 
 
 * Using distance matrix

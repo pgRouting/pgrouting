@@ -163,10 +163,7 @@
 <ul class="simple">
 <li>Using SQL parameter</li>
 </ul>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span> <span class="k">AS</span>  <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;SELECT DISTINCT source AS source_id,</span>
-<span class="s1">                       x1::double precision AS x,</span>
-<span class="s1">                       y1::double precision AS y FROM edge_table&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;3,6,9,11&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;SELECT id AS source_id, x, y FROM vertex_table&#39;</span><span class="p">,</span><span class="s1">&#39;2,7,11&#39;</span><span class="p">,</span><span class="mi">7</span><span class="p">);</span>
 </pre></div>
 </div>
 <ul class="simple">
