@@ -64,6 +64,11 @@ Returns set of :ref:`type_cost_result`:
 :id2:   edge ID (``-1`` for the last row)
 :cost:  cost to traverse from ``id1`` using ``id2``
 
+.. warning::
+
+  You must reconnect to the database after ``CREATE EXTENSION pgrouting``. Otherwise the function will return ``Error computing path: std::bad_alloc``.
+
+
 .. rubric:: History
 
 * New in version 2.0.0
@@ -82,7 +87,14 @@ Examples
             7, 12, false, false
         );
 
-    [TBD]
+     seq | node | edge | cost 
+    -----+------+------+------
+       0 |    7 |    8 |    1
+       1 |    8 |    9 |    1
+       2 |    9 |   15 |    1
+       3 |   12 |   -1 |    0
+    (4 rows)
+
 
 * With ``reverse_cost``
 
@@ -94,7 +106,13 @@ Examples
             7, 12, true, true
         );
 
-    [TBD]
+     seq | node | edge | cost 
+    -----+------+------+------
+       0 |    7 |    8 |    1
+       1 |    8 |    9 |    1
+       2 |    9 |   15 |    1
+       3 |   12 |   -1 |    0
+    (4 rows)
 
 The queries use the :ref:`sampledata` network.
 
