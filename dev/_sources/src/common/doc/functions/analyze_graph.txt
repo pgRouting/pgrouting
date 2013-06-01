@@ -29,7 +29,7 @@ Analyzes the "edge_tab" and "vertices_tmp" tables and flags if nodes are deadend
 
 .. code-block:: sql
 
-  character varying pgr_analyzeGraph(tab text, geom text, tol double precision);
+  character varying pgr_analyzeGraph(geom_table text, geo_cname text, tolerance double precision);
 
 
 Description
@@ -50,7 +50,23 @@ Examples
 
 .. code-block:: sql
 
-	[TBD]
+    SELECT pgr_analyzeGraph('edge_table','the_geom',0.0001);
+
+    NOTICE:  Adding "cnt" and "chk" columns to vertices_tmp
+    NOTICE:  Adding unique index "vertices_tmp_id_idx".
+    NOTICE:  Adding index on "source" for "edge_table".
+    NOTICE:  Adding index on "target" for "edge_table".
+    NOTICE:  Adding index on "edge_table" for "the_geom".
+    NOTICE:  Populating vertices_tmp.cnt
+    NOTICE:  Analyzing graph for gaps and zlev errors.
+    NOTICE:  Found 1 potential problems at 'SELECT * FROM vertices_tmp WHERE chk=1'
+    
+     pgr_analyzegraph 
+    ------------------
+     OK
+    (1 row)
+
+The queries use the :ref:`sampledata` network.
 
 
 See Also

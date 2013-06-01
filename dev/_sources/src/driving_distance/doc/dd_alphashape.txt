@@ -78,6 +78,8 @@ Examples
      0 | 2
     (6 rows)
 
+The queries use the :ref:`sampledata` network.
+
 
 See Also
 -------------------------------------------------------------------------------

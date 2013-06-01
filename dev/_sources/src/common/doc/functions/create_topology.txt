@@ -9,7 +9,7 @@
 
 .. _pgr_create_topology:
 
-pgr_createTopology - Building a NetWork Topology
+pgr_createTopology - Building a Network Topology
 ===============================================================================
 
 .. index:: 

@@ -58,7 +58,7 @@
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>Analyzes the &#8220;edge_tab&#8221; and &#8220;vertices_tmp&#8221; tables and flags if nodes are deadends, ie. <tt class="docutils literal"><span class="pre">vertices_tmp.cnt=1</span></tt> and identifies nodes that might be disconnected because of gaps &lt; <tt class="docutils literal"><span class="pre">tolerance</span></tt> or because of zlevel errors in the data.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="nb">character</span> <span class="nb">varying</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="n">tab</span> <span class="nb">text</span><span class="p">,</span> <span class="n">geom</span> <span class="nb">text</span><span class="p">,</span> <span class="n">tol</span> <span class="n">double</span> <span class="k">precision</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="nb">character</span> <span class="nb">varying</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="n">geom_table</span> <span class="nb">text</span><span class="p">,</span> <span class="n">geo_cname</span> <span class="nb">text</span><span class="p">,</span> <span class="n">tolerance</span> <span class="n">double</span> <span class="k">precision</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -83,9 +83,24 @@
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql"><div class="highlight"><pre><span class="p">[</span><span class="n">TBD</span><span class="p">]</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">0001</span><span class="p">);</span>
+
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Adding</span> <span class="ss">&quot;cnt&quot;</span> <span class="k">and</span> <span class="ss">&quot;chk&quot;</span> <span class="n">columns</span> <span class="k">to</span> <span class="n">vertices_tmp</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Adding</span> <span class="k">unique</span> <span class="k">index</span> <span class="ss">&quot;vertices_tmp_id_idx&quot;</span><span class="p">.</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Adding</span> <span class="k">index</span> <span class="k">on</span> <span class="ss">&quot;source&quot;</span> <span class="k">for</span> <span class="ss">&quot;edge_table&quot;</span><span class="p">.</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Adding</span> <span class="k">index</span> <span class="k">on</span> <span class="ss">&quot;target&quot;</span> <span class="k">for</span> <span class="ss">&quot;edge_table&quot;</span><span class="p">.</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Adding</span> <span class="k">index</span> <span class="k">on</span> <span class="ss">&quot;edge_table&quot;</span> <span class="k">for</span> <span class="ss">&quot;the_geom&quot;</span><span class="p">.</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Populating</span> <span class="n">vertices_tmp</span><span class="p">.</span><span class="n">cnt</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="n">graph</span> <span class="k">for</span> <span class="n">gaps</span> <span class="k">and</span> <span class="n">zlev</span> <span class="n">errors</span><span class="p">.</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="k">Found</span> <span class="mi">1</span> <span class="n">potential</span> <span class="n">problems</span> <span class="k">at</span> <span class="s1">&#39;SELECT * FROM vertices_tmp WHERE chk=1&#39;</span>
+
+ <span class="n">pgr_analyzegraph</span>
+<span class="c1">------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>The queries use the <a class="reference internal" href="../../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>

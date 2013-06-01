@@ -49,10 +49,17 @@ Examples
 
 .. code-block:: sql
 
-	[TBD]
+    SELECT pgr_isColumnInTable('edge_table','the_geom');
+    
+     pgr_iscolumnintable 
+    ---------------------
+     t
+    (1 row)
+
+The queries use the :ref:`sampledata` network.
 
 
 See Also
 -------------------------------------------------------------------------------
 
-* [TBD]
+* :ref:`pgr_is_column_indexed`
