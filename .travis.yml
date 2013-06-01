@@ -28,7 +28,6 @@ install:
 
   # Install dependecies
   - sudo apt-get install -q cmake libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-server-dev-all
-  - sudo apt-get update -q cmake
 
   # Install PostGIS
   - sudo apt-get install -q postgresql-9.1-postgis
