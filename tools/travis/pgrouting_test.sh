@@ -10,7 +10,7 @@ DBUSER="postgres"
 DBNAME="pgrouting"
 
 # Create database 
-psql -U $DBUSER -c 'CREATE DATABASE $DBNAME;'
+psql -U $DBUSER -c "CREATE DATABASE $DBNAME;"
 
 # Add PostGIS extension to database
 if [[ "$POSTGIS_VERSION" == "1.5" ]]; then 
@@ -26,4 +26,4 @@ fi
 psql -U $DBUSER -d $DBNAME -c "CREATE EXTENSION pgrouting;"
 
 # Test runner
-../tools/test-runner.pl
+./tools/test-runner.pl
