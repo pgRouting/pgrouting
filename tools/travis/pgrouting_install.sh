@@ -13,11 +13,9 @@ sudo apt-add-repository -y ppa:georepublic/pgrouting-travis
 
 if [[ "$POSTGIS_VERSION" == "1.5" ]]; then 
 
-	sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable
+sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable
 
 fi
-# Add PPA for PostGIS 2.x
-if [[ "$POSTGIS_VERSION" != "1.5" ]]; then ; fi
 
 sudo apt-get -q update
 
