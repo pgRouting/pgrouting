@@ -124,46 +124,39 @@ $BODY$
 declare
     v1a text[];
     v2a text[];
-    v1b text[];
-    v2b text[];
     nv1 integer;
     nv2 integer;
     ne1 integer;
     ne2 integer;
     
 begin
-    -- separate off any trailing modifiers like "-dev%', "-alpha%", "-beta%", or other "-%" items.
-    v1b := string_to_array(v1, '-');
-    v2b := string_to_array(v2, '-');
+    -- separate components into an array, like:
+    -- '2.1.0-beta3dev'  =>  {2,1,0,beta3dev}
+    v1a := regexp_matches(v1, E'^(\\d+)(?:[\\.](\\d+))?(?:[\\.](\\d+))?[-+\\.]?(.*)$');
+    v2a := regexp_matches(v2, E'^(\\d+)(?:[\\.](\\d+))?(?:[\\.](\\d+))?[-+\\.]?(.*)$');
 
     -- convert modifiers to numbers for comparison
-    ne1 := case when v1b[2] is null then 4
-                when v1b[2] ilike 'beta%' then 3
-                when v1b[2] ilike 'alpha%' then 2
-                when v1b[2] ilike 'dev%' then 1
+    -- we do not delineate between alpha1, alpha2, alpha3, etc
+    ne1 := case when v1a[4] is null or v1a[4]='' then 5
+                when v1a[4] ilike 'rc%' then 4
+                when v1a[4] ilike 'beta%' then 3
+                when v1a[4] ilike 'alpha%' then 2
+                when v1a[4] ilike 'dev%' then 1
                 else 0 end;
 
-    ne2 := case when v2b[2] is null then 4
-                when v2b[2] ilike 'beta%' then 3
-                when v2b[2] ilike 'alpha%' then 2
-                when v2b[2] ilike 'dev%' then 1
+    ne2 := case when v2a[4] is null or v2a[4]='' then 5
+                when v2a[4] ilike 'rc%' then 4
+                when v2a[4] ilike 'beta%' then 3
+                when v2a[4] ilike 'alpha%' then 2
+                when v2a[4] ilike 'dev%' then 1
                 else 0 end;
 
-    -- split the dotted version number into parts
-    v1a := string_to_array(v1b[1], '.');
-    v2a := string_to_array(v2b[1], '.');
-
-    -- we compare major.minor.patch components, if the number of components
-    -- is less than 3 then we add '0' for the missing parts
-    if array_length(v1a, 1) < 3 then v1a := array_append(v1a, '0'); end if;
-    if array_length(v1a, 1) < 3 then v1a := array_append(v1a, '0'); end if;
-
-    if array_length(v2a, 1) < 3 then v2a := array_append(v2a, '0'); end if;
-    if array_length(v2a, 1) < 3 then v2a := array_append(v2a, '0'); end if;
-
-    
-    nv1 := v1a[1]::integer * 10000 + v1a[2]::integer * 1000 + v1a[3]::integer * 100 + ne1;
-    nv2 := v2a[1]::integer * 10000 + v2a[2]::integer * 1000 + v2a[3]::integer * 100 + ne2;
+    nv1 := v1a[1]::integer * 10000 +
+           coalesce(v1a[2], '0')::integer * 1000 +
+           coalesce(v1a[3], '0')::integer *  100 + ne1;
+    nv2 := v2a[1]::integer * 10000 + 
+           coalesce(v2a[2], '0')::integer * 1000 + 
+           coalesce(v2a[3], '0')::integer *  100 + ne2;
 
     --raise notice 'nv1: %, nv2: %, ne1: %, ne2: %', nv1, nv2, ne1, ne2;
 
