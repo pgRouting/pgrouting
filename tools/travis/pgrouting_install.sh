@@ -11,7 +11,7 @@ POSTGIS_VERSION="$1"
 # Add PPA for pgRouting Travis
 sudo apt-add-repository -y ppa:georepublic/pgrouting-travis
 
-if [[ "$POSTGIS_VERSION" == "1.5" ]]; then 
+if [[ "$POSTGIS_VERSION" == "2.0" ]]; then 
 
 sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable
 
