@@ -3,9 +3,11 @@
 # Travis CI scripts 
 # Copyright(c) pgRouting Contributors
 #
-# Build pgRouting
+# Test pgRouting
 # ------------------------------------------------------------------------------
 
-cmake -DWITH_DD=ON 
-make
-sudo make install
+DBUSER="gis"
+DATABASE="gis"
+
+psql -U $DBUSER -d $DATABASE -c "CREATE EXTENSION pgrouting;"
+../tools/test-runner.pl

@@ -41,7 +41,7 @@ install:
   - sudo apt-get install -q cmake libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-server-dev-all
 
   # Install PostGIS
-  - sudo apt-get install -q postgis
+  - sudo apt-get install -q postgresql-9.1-postgis
 
 before_script:
   # Create database user "gis"
@@ -55,12 +55,11 @@ before_script:
   - if [[ "$POSTGIS_VERSION" == "1.5" ]]; then psql -d gis -U postgres -f /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql; fi
   - if [[ "$POSTGIS_VERSION" != "1.5" ]]; then psql -d gis -U postgres -c "CREATE EXTENSION postgis;"; fi
 
-script: ./tools/travis/pgrouting_build.sh
+script: 
+  - ./tools/travis/pgrouting_build.sh
 
-after_script:
-  # Test pgRouting
-  - psql -U postgres -d gis -c "CREATE EXTENSION pgrouting;"
-  - tools/test-runner.pl
+after_script: 
+  - ./tools/travis/pgrouting_test.sh
 
 after_success:
   # Do this after success
