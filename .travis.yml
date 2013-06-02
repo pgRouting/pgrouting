@@ -17,7 +17,7 @@ services:
 env:
   - POSTGIS_VERSION=1.5
   - POSTGIS_VERSION=2.0
-  
+
   #matrix:
     #- POSTGRESQL_VERSION=8.4 POSTGIS_VERSION=1.5
     #- POSTGRESQL_VERSION=9.0 POSTGIS_VERSION=1.5
@@ -55,7 +55,7 @@ before_script:
   - if [[ "$POSTGIS_VERSION" == "1.5" ]]; then psql -d gis -U postgres -f /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql; fi
   - if [[ "$POSTGIS_VERSION" != "1.5" ]]; then psql -d gis -U postgres -c "CREATE EXTENSION postgis;"; fi
 
-script: tools/travis/pgrouting_build.sh
+script: ./tools/travis/pgrouting_build.sh
 
 after_script:
   # Test pgRouting
