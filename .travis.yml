@@ -44,16 +44,7 @@ install:
   - sudo apt-get install -q postgresql-9.1-postgis
 
 before_script:
-  # Create database user "gis"
-  - psql -c "CREATE ROLE gis PASSWORD 'gis' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;" -U postgres
-
-  # Create database "gis"
-  - psql -c 'CREATE DATABASE gis;' -U postgres
-
-  # Add PostGIS extension to "gis" database
-  - if [[ "$POSTGIS_VERSION" == "1.5" ]]; then psql -d gis -U postgres -f /usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql; fi
-  - if [[ "$POSTGIS_VERSION" == "1.5" ]]; then psql -d gis -U postgres -f /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql; fi
-  - if [[ "$POSTGIS_VERSION" != "1.5" ]]; then psql -d gis -U postgres -c "CREATE EXTENSION postgis;"; fi
+  #- run/before/build
 
 script: 
   - ./tools/travis/pgrouting_build.sh
