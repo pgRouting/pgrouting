@@ -14,6 +14,8 @@ POSTGIS_VERSION="$1"
 # CASE: PostGIS 1.5
 if [[ "$POSTGIS_VERSION" == "1.5" ]]; then 
 
+echo $POSTGIS_VERSION
+
 psql --quiet -U $DBUSER <<EOF 
     \set ON_ERROR_STOP TRUE 
     CREATE DATABASE $DBNAME;
@@ -27,7 +29,9 @@ if [ $? -ne 0 ]; then exit $?; fi
 fi
 
 # CASE: PostGIS 2.0
-if [[ "$POSTGIS_VERSION" != "1.5" ]]; then 
+if [[ "$POSTGIS_VERSION" == "2.0" ]]; then 
+
+echo $POSTGIS_VERSION
 
 psql --quiet -U $DBUSER <<EOF 
     \set ON_ERROR_STOP TRUE 
