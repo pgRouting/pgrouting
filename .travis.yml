@@ -30,21 +30,10 @@ env:
     #- POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
 
 install:
-  # Add PPA for PostGIS 2.x
-  - if [[ "$POSTGIS_VERSION" != "1.5" ]]; then sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable; fi
-
-  # Add PPA for pgRouting Travis
-  - sudo apt-add-repository -y ppa:georepublic/pgrouting-travis
-  - sudo apt-get -q update
-
-  # Install dependecies
-  - sudo apt-get install -q cmake libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-server-dev-all
-
-  # Install PostGIS
-  - sudo apt-get install -q postgresql-9.1-postgis
+  - ./tools/travis/pgrouting_install.sh $POSTGIS_VERSION
 
 before_script:
-  #- run/before/build
+  #- ./tools/travis/pgrouting_prepare.sh $POSTGIS_VERSION
 
 script: 
   - ./tools/travis/pgrouting_build.sh $POSTGIS_VERSION
@@ -53,5 +42,5 @@ after_script:
   - ./tools/travis/pgrouting_test.sh $POSTGIS_VERSION
 
 after_success:
-  # Do this after success
+  #- ./tools/travis/pgrouting_deploy.sh $POSTGIS_VERSION
 

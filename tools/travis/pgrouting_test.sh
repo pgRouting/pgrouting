@@ -16,15 +16,13 @@ POSTGIS_VERSION="$1"
 # ------------------------------------------------------------------------------
 if [[ "$POSTGIS_VERSION" == "1.5" ]]; then 
 
-PGROUTING_SQLFILE=$(find /usr/share/postgresql/ -name pgrouting--2.*)
-
 psql --quiet -U $DBUSER <<EOF 
     \set ON_ERROR_STOP TRUE 
     CREATE DATABASE $DBNAME;
     \c $DBNAME
     \i /usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql
     \i /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql
-    \i $PGROUTING_SQLFILE
+    CREATE EXTENSION pgrouting;
 EOF
 
 if [ $? -ne 0 ]; then exit $?; fi
