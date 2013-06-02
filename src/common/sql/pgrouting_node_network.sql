@@ -12,7 +12,7 @@ DECLARE
 	*/
 	p_num int := 0;
 	p_ret text := '';
-    pgis_ver_old boolean := pgr_versionless(postgis_lib_version(), '2.1');
+    pgis_ver_old boolean := pgr_versionless(postgis_lib_version(), '2.1.0.0');
     vst_line_substring text;
     vst_line_locate_point text;
 
