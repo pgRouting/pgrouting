@@ -47,10 +47,10 @@ before_script:
   #- run/before/build
 
 script: 
-  - ./tools/travis/pgrouting_build.sh
+  - ./tools/travis/pgrouting_build.sh $POSTGIS_VERSION
 
 after_script: 
-  - ./tools/travis/pgrouting_test.sh
+  - ./tools/travis/pgrouting_test.sh $POSTGIS_VERSION
 
 after_success:
   # Do this after success
