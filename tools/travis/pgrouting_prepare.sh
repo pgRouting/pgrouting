@@ -13,7 +13,7 @@ POSTGIS_VERSION="$2"
 # Set PostgreSQL users and permissions
 # ------------------------------------------------------------------------------
 sudo cp $TRAVIS_BUILD_DIR/tools/travis/pg_hba.conf `find /etc/postgresql/*/main/pg_hba.conf`
-sudo service postgresql restart	
+sudo /etc/init.d/postgresql restart	
 
 sudo cat `find /etc/postgresql/*/main/pg_hba.conf`
 

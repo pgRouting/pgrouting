@@ -83,4 +83,7 @@ if [[ "$POSTGIS_VERSION" != "1.5" ]]; then
 	cd extensions && make && sudo make install
 fi
 
-sudo service postgresql restart
+# ------------------------------------------------------------------------------
+# Restart once
+# ------------------------------------------------------------------------------
+sudo /etc/init.d/postgresql restart
