@@ -40,7 +40,7 @@ sudo rm -Rf /var/lib/postgresql
 sudo userdel -r postgres
 sudo groupdel postgres
 sudo ldconfig
-sudo apt-get install -y -qq postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION
+sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" install -y -qq postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION
 
 # ------------------------------------------------------------------------------
 # Install dependecies
