@@ -12,10 +12,12 @@ POSTGIS_VERSION="$2"
 # ------------------------------------------------------------------------------
 # Remove PostgreSQL and all its files
 # ------------------------------------------------------------------------------
-sudo service postgresql stop
-sudo apt-get -y --purge remove postgresql postgresql-9.1
-sudo rm -f /etc/init.d/postgresql
-sudo rm -Rf /etc/postgresql-common
+if [[ "$POSTGRESQL_VERSION" != "9.1" ]]; then
+	sudo service postgresql stop
+	sudo apt-get -y --purge remove postgresql postgresql-9.1
+	sudo rm -f /etc/init.d/postgresql
+	sudo rm -Rf /etc/postgresql-common
+fi
 
 # Add PPA's'
 # ------------------------------------------------------------------------------
@@ -27,9 +29,11 @@ fi
 
 # Add PostgreSQL Apt repository
 # ------------------------------------------------------------------------------
-echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > pgdg.list
-sudo mv pgdg.list /etc/apt/sources.list.d/
-wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+if [[ "$POSTGRESQL_VERSION" != "9.1" ]]; then
+	echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > pgdg.list
+	sudo mv pgdg.list /etc/apt/sources.list.d/
+	wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+fi
 
 # Reload package archive
 # ------------------------------------------------------------------------------
@@ -38,7 +42,9 @@ sudo apt-get update -qq
 # ------------------------------------------------------------------------------
 # Install PostgreSQL
 # ------------------------------------------------------------------------------
-sudo apt-get -q -y -o Dpkg::Options::=--force-confdef install postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION
+if [[ "$POSTGRESQL_VERSION" != "9.1" ]]; then
+	sudo apt-get -q -y -o Dpkg::Options::=--force-confdef install postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION
+fi
 
 # ------------------------------------------------------------------------------
 # Install dependecies
@@ -48,7 +54,7 @@ sudo apt-get install -y -qq cmake libcgal-dev libboost-graph-dev libboost-thread
 # ------------------------------------------------------------------------------
 # Install PostGIS
 # ------------------------------------------------------------------------------
-if [[ "$POSTGRESQL_VERSION" == "9.1" ]]; 
+if [[ "$POSTGRESQL_VERSION" == "9.1" ]] 
 then 
 	sudo apt-get install -y -qq postgresql-9.1-postgis
 else
