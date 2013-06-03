@@ -48,18 +48,30 @@ if [[ "$POSTGRESQL_VERSION" == "9.1" ]];
 then 
 	sudo apt-get install -y -qq postgresql-9.1-postgis
 else
-	sudo apt-get install -y -qq build-essential libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-de
+	sudo apt-get install -y -qq build-essential libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev
 
 	if [[ "$POSTGIS_VERSION" == "1.5" ]]; then 
-		wget http://download.osgeo.org/postgis/source/postgis-1.5.8.tar.gz
-		tar -xzf postgis-1.5.8.tar.gz && cd postgis-1.5.8
-		./configure && make && sudo make install && sudo ldconfig
+		wget -O postgis-$POSTGIS_VERSION.tar.gz --quiet http://download.osgeo.org/postgis/source/postgis-1.5.8.tar.gz
 	fi
 
 	if [[ "$POSTGIS_VERSION" == "2.0" ]]; then 
-		wget http://download.osgeo.org/postgis/source/postgis-2.0.3.tar.gz
-		tar -xzf postgis-2.0.3.tar.gz && cd postgis-2.0.3
-		./configure && make && sudo make install && sudo ldconfig
+		wget -O postgis-$POSTGIS_VERSION.tar.gz --quiet http://download.osgeo.org/postgis/source/postgis-2.0.3.tar.gz
+	fi
+
+	if [[ "$POSTGIS_VERSION" == "2.1" ]]; then 
+		wget -O postgis-$POSTGIS_VERSION.tar.gz --quiet http://postgis.net/stuff/postgis-2.1.0beta3dev.tar.gz
+	fi
+
+	# Build and compile
+	tar -xzf postgis-$POSTGIS_VERSION.tar.gz 
+	cd postgis-$POSTGIS_VERSION
+	./configure 
+	make
+	sudo make install
+	sudo ldconfig
+
+	# Build extension for PostGIS > 2.0
+	if [[ "$POSTGIS_VERSION" != "1.5" ]]; then 
 		cd extensions && make && sudo make install
 	fi
 
