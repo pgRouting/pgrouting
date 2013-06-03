@@ -9,7 +9,8 @@
 DBUSER="postgres"
 DBNAME="pgrouting"
 
-POSTGIS_VERSION="$1"
+POSTGRESQL_VERSION="$1"
+POSTGIS_VERSION="$2"
 
 # ------------------------------------------------------------------------------
 # CASE: PostGIS 1.5
