@@ -38,7 +38,8 @@ This library contains following features:
 * Bi-directional A* Shortest Path
 * Shortest Path Dijkstra
 * Driving Distance
-* K-Shortest Path
+* K-Shortest Path, Multiple Alternative Paths
+* K-Dijkstra, One to Many Shortest Path
 * Traveling Sales Person
 * Turn Restriction Shortest Path (TRSP)
 
