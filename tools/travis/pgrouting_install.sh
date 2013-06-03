@@ -10,6 +10,15 @@ POSTGRESQL_VERSION="$1"
 POSTGIS_VERSION="$2"
 
 # ------------------------------------------------------------------------------
+# Remove PostgreSQL and all its files
+# ------------------------------------------------------------------------------
+sudo service postgresql stop
+sudo apt-get -y --purge remove postgresql
+sudo rm -Rf /etc/postgresql 
+sudo rm -Rf /etc/init.d/postgresql
+sudo rm -Rf /etc/postgresql-common
+sudo rm -Rf /var/lib/postgresql
+
 # Add PPA's'
 # ------------------------------------------------------------------------------
 sudo apt-add-repository -y ppa:georepublic/pgrouting-travis
@@ -28,16 +37,9 @@ wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo ap
 # ------------------------------------------------------------------------------
 sudo apt-get update -qq
 
-
 # ------------------------------------------------------------------------------
 # Install PostgreSQL
 # ------------------------------------------------------------------------------
-sudo service postgresql stop
-sudo apt-get -y --purge remove postgresql postgresql-9.1
-sudo rm -Rf /etc/postgresql 
-sudo rm -Rf /etc/init.d/postgresql
-sudo rm -Rf /etc/postgresql-common
-sudo rm -Rf /var/lib/postgresql
 sudo apt-get -q -y -o Dpkg::Options::=--force-confdef install postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION
 
 # ------------------------------------------------------------------------------
