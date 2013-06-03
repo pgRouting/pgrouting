@@ -9,7 +9,8 @@
 DBUSER="postgres"
 DBNAME="pgrouting"
 
-POSTGIS_VERSION="$1"
+POSTGRESQL_VERSION="$1"
+POSTGIS_VERSION="$2"
 
 # ------------------------------------------------------------------------------
 # CASE: PostGIS 1.5
@@ -20,8 +21,8 @@ psql --quiet -U $DBUSER <<EOF
     \set ON_ERROR_STOP TRUE 
     CREATE DATABASE $DBNAME;
     \c $DBNAME
-    \i /usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql
-    \i /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql
+    \i /usr/share/postgresql/$POSTGRESQL_VERSION/contrib/postgis-1.5/postgis.sql
+    \i /usr/share/postgresql/$POSTGRESQL_VERSION/contrib/postgis-1.5/spatial_ref_sys.sql
     CREATE EXTENSION pgrouting;
 EOF
 

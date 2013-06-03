@@ -1,3 +1,10 @@
+# ------------------------------------------------------------------------------
+# Travis CI scripts 
+# Copyright(c) pgRouting Contributors
+#
+# Main configuration
+# ------------------------------------------------------------------------------
+
 language: c
 
 compiler:
@@ -9,38 +16,39 @@ notifications:
 
 branches:
   only:
-    - develop
+    #- develop
+    - feature-travis
 
 services:
-  - postgresql
+  #- postgresql
 
 env:
-  - POSTGIS_VERSION=1.5
-  - POSTGIS_VERSION=2.0
+  matrix:
+    - POSTGRESQL_VERSION=8.4 POSTGIS_VERSION=1.5
+    - POSTGRESQL_VERSION=9.0 POSTGIS_VERSION=1.5
+    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=1.5
 
-  #matrix:
-    #- POSTGRESQL_VERSION=8.4 POSTGIS_VERSION=1.5
-    #- POSTGRESQL_VERSION=9.0 POSTGIS_VERSION=1.5
-    #- POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=1.5
-    #- POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.0
-    #- POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.0
+    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.0
+    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.0
+    #- POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.0
 
     #- POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
     #- POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
     #- POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
 
 install:
-  - ./tools/travis/pgrouting_install.sh $POSTGIS_VERSION
+  - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 before_script:
-  #- ./tools/travis/pgrouting_prepare.sh $POSTGIS_VERSION
+  #-
 
 script: 
-  - ./tools/travis/pgrouting_build.sh $POSTGIS_VERSION
+  - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 after_script: 
-  - ./tools/travis/pgrouting_test.sh $POSTGIS_VERSION
+  - ./tools/travis/pgrouting_prepare.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+  #- ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 after_success:
-  #- ./tools/travis/pgrouting_deploy.sh $POSTGIS_VERSION
+  #- ./tools/travis/pgrouting_deploy.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
