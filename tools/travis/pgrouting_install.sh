@@ -14,9 +14,7 @@ POSTGIS_VERSION="$2"
 # ------------------------------------------------------------------------------
 if [[ "$POSTGRESQL_VERSION" != "9.1" ]]; then
 	sudo service postgresql stop
-	sudo apt-get -y --purge remove postgresql postgresql-9.1
-	sudo rm -f /etc/init.d/postgresql
-	sudo rm -Rf /etc/postgresql-common
+	sudo apt-get remove postgresql postgresql-9.1 -qq --purge
 fi
 
 # Add PPA's'
