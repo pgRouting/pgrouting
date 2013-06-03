@@ -13,11 +13,7 @@ POSTGIS_VERSION="$2"
 # Remove PostgreSQL and all its files
 # ------------------------------------------------------------------------------
 sudo service postgresql stop
-sudo apt-get -y --purge remove postgresql
-sudo rm -Rf /etc/postgresql 
-sudo rm -Rf /etc/init.d/postgresql
-sudo rm -Rf /etc/postgresql-common
-sudo rm -Rf /var/lib/postgresql
+sudo apt-get -y --purge remove postgresql postgresql-9.1
 
 # Add PPA's'
 # ------------------------------------------------------------------------------
