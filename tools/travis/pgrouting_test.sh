@@ -12,38 +12,42 @@ DBNAME="pgrouting"
 POSTGRESQL_VERSION="$1"
 POSTGIS_VERSION="$2"
 
-# ------------------------------------------------------------------------------
-# CASE: PostGIS 1.5
-# ------------------------------------------------------------------------------
-if [[ "$POSTGIS_VERSION" == "1.5" ]]; then 
+# Define alias for psql command
+alias run_psql='PGOPTIONS='--client-min-messages=warning' psql -X -q -a -1 -v ON_ERROR_STOP=1 --pset pager=off'
 
-psql --quiet -U $DBUSER <<EOF 
-    \set ON_ERROR_STOP TRUE 
-    CREATE DATABASE $DBNAME;
-    \c $DBNAME
-    \i /usr/share/postgresql/$POSTGRESQL_VERSION/contrib/postgis-1.5/postgis.sql
-    \i /usr/share/postgresql/$POSTGRESQL_VERSION/contrib/postgis-1.5/spatial_ref_sys.sql
-    CREATE EXTENSION pgrouting;
-EOF
+# ------------------------------------------------------------------------------
+# CREATE DATABASE
+# ------------------------------------------------------------------------------
+run_psql -U postgres -c "CREATE DATABASE $DBNAME;"
 
-if [ $? -ne 0 ]; then exit $?; fi
+# ------------------------------------------------------------------------------
+# CREATE EXTENSION
+# ------------------------------------------------------------------------------
+if [[ "$POSTGRESQL_VERSION" == "8.4" ] || [ "$POSTGRESQL_VERSION" == "9.0" ]]
+then
+    run_psql -U postgres -d $DBNAME -f /usr/share/postgresql/$POSTGRESQL_VERSION/contrib/postgis-$POSTGIS_VERSION/postgis.sql
+    run_psql -U postgres -d $DBNAME -f /usr/share/postgresql/$POSTGRESQL_VERSION/contrib/postgis-$POSTGIS_VERSION/spatial_ref_sys.sql
+    run_psql -U postgres -d $DBNAME -f `find /usr/share -name "pgrouting--*.sql"`
 fi
 
-# ------------------------------------------------------------------------------
-# CASE: PostGIS 2.0
-# ------------------------------------------------------------------------------
-if [[ "$POSTGIS_VERSION" == "2.0" ]]; then 
+if [[ "$POSTGRESQL_VERSION" == "9.1" ]]
+then
+    if [[ "$POSTGIS_VERSION" == "1.5" ]]
+    then 
+        run_psql -U postgres -d $DBNAME -f /usr/share/postgresql/$POSTGRESQL_VERSION/contrib/postgis-$POSTGIS_VERSION/postgis.sql
+        run_psql -U postgres -d $DBNAME -f /usr/share/postgresql/$POSTGRESQL_VERSION/contrib/postgis-$POSTGIS_VERSION/spatial_ref_sys.sql
+        run_psql -U postgres -d $DBNAME -f `find /usr/share -name "pgrouting--*.sql"`
+    else
+        run_psql -U postgres -d $DBNAME -c "CREATE EXTENSION postgis;"
+        run_psql -U postgres -d $DBNAME -c "CREATE EXTENSION pgrouting;"
+    fi
+fi
 
-psql --quiet -U $DBUSER <<EOF 
-    \set ON_ERROR_STOP TRUE 
-    CREATE DATABASE $DBNAME;
-    \c $DBNAME
-    CREATE EXTENSION postgis;
-    CREATE EXTENSION pgrouting;
-EOF
-
-if [ $? -ne 0 ]; then exit $?; fi
+if [[ "$POSTGRESQL_VERSION" == "9.2" ] || [ "$POSTGRESQL_VERSION" == "9.3" ]]
+then
+    run_psql -U postgres -d $DBNAME -c "CREATE EXTENSION postgis;"
+    run_psql -U postgres -d $DBNAME -c "CREATE EXTENSION pgrouting;"
 fi
 
 # Test runner
-./tools/test-runner.pl
+#./tools/test-runner.pl
