@@ -14,7 +14,7 @@ POSTGIS_VERSION="$2"
 
 # Define alias function for psql command
 run_psql () {
-    PGOPTIONS='--client-min-messages=warning' psql -X -q -a -1 -v ON_ERROR_STOP=1 --pset pager=off "$@"
+    PGOPTIONS='--client-min-messages=warning' psql -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
 }
 
 # ------------------------------------------------------------------------------
@@ -55,4 +55,4 @@ run_psql -U postgres -d $DBNAME -c "SELECT postgis_full_version();"
 run_psql -U postgres -d $DBNAME -c "SELECT pgr_version();"
 
 # Test runner
-#./tools/test-runner.pl
+./tools/test-runner.pl -pgver $POSTGRESQL_VERSION -pgisver $POSTGIS_VERSION 
