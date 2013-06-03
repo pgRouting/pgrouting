@@ -43,51 +43,44 @@ sudo apt-get update -qq
 # Install PostgreSQL
 # ------------------------------------------------------------------------------
 if [[ "$POSTGRESQL_VERSION" != "9.1" ]]; then
-	sudo apt-get -q -y -o Dpkg::Options::=--force-confdef install postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION
+	sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" install -y -qq postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION
 fi
 
 # ------------------------------------------------------------------------------
 # Install dependecies
 # ------------------------------------------------------------------------------
-sudo apt-get install -y -qq cmake libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-server-dev-$POSTGRESQL_VERSION
+sudo apt-get install cmake libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-server-dev-$POSTGRESQL_VERSION
 
 # ------------------------------------------------------------------------------
-# Install PostGIS
+# Install PostGIS (always build from source)
 # ------------------------------------------------------------------------------
-if [[ "$POSTGRESQL_VERSION" == "9.1" ]] 
-then 
-	sudo apt-get install -y -qq postgresql-9.1-postgis
-else
-	sudo apt-get install -y -qq build-essential libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev 
+sudo apt-get install -y -qq build-essential libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev 
 
-	if [[ "$POSTGIS_VERSION" == "1.5" ]]; then 
-		wget --quiet http://download.osgeo.org/postgis/source/postgis-1.5.8.tar.gz
-
-	fi
-
-	if [[ "$POSTGIS_VERSION" == "2.0" ]]; then 
-		wget --quiet http://download.osgeo.org/postgis/source/postgis-2.0.3.tar.gz
-	fi
-
-	if [[ "$POSTGIS_VERSION" == "2.1" ]]; then 
-		sudo apt-get install -y -qq libpoppler-dev libarmadillo-dev libepsilon-dev liblzma-dev
-		wget --quiet http://postgis.net/stuff/postgis-2.1.0beta3dev.tar.gz
-	fi
-
-	# Build and compile
-	POSTGIS_TARBALL=$(find postgis-${POSTGIS_VERSION}.*.tar.gz)
-	tar -xzf $POSTGIS_TARBALL 
-	cd `basename $POSTGIS_TARBALL .tar.gz`
-	./configure 
-	make
-	sudo make install
-	sudo ldconfig
-
-	# Build extension for PostGIS > 2.0
-	if [[ "$POSTGIS_VERSION" != "1.5" ]]; then 
-		cd extensions && make && sudo make install
-	fi
-
-	sudo service postgresql restart
+if [[ "$POSTGIS_VERSION" == "1.5" ]]; then 
+	wget --quiet http://download.osgeo.org/postgis/source/postgis-1.5.8.tar.gz
 fi
 
+if [[ "$POSTGIS_VERSION" == "2.0" ]]; then 
+	wget --quiet http://download.osgeo.org/postgis/source/postgis-2.0.3.tar.gz
+fi
+
+if [[ "$POSTGIS_VERSION" == "2.1" ]]; then 
+	sudo apt-get install -y -qq libpoppler-dev libarmadillo-dev libepsilon-dev liblzma-dev
+	wget --quiet http://postgis.net/stuff/postgis-2.1.0beta3dev.tar.gz
+fi
+
+# Build and compile
+POSTGIS_TARBALL=$(find postgis-${POSTGIS_VERSION}.*.tar.gz)
+tar -xzf $POSTGIS_TARBALL 
+cd `basename $POSTGIS_TARBALL .tar.gz`
+./configure 
+make
+sudo make install
+sudo ldconfig
+
+# Build extension for PostGIS > 2.0
+if [[ "$POSTGIS_VERSION" != "1.5" ]]; then 
+	cd extensions && make && sudo make install
+fi
+
+sudo service postgresql restart

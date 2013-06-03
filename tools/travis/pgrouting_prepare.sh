@@ -15,7 +15,7 @@ POSTGIS_VERSION="$2"
 sudo cp $TRAVIS_BUILD_DIR/tools/travis/pg_hba.conf `find /etc/postgresql/*/main/pg_hba.conf`
 sudo service postgresql restart	
 
-cat `find /etc/postgresql/*/main/pg_hba.conf`
+sudo cat `find /etc/postgresql/*/main/pg_hba.conf`
 
 # Disable password (better: create new user)
 sudo -u postgres psql -c "ALTER ROLE postgres WITH PASSWORD '';"
