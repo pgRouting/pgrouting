@@ -64,7 +64,7 @@ long profipts1, profipts2, profopts;
 Datum driving_distance(PG_FUNCTION_ARGS);
 
 #undef DEBUG
-//#define DEBUG 1
+#define DEBUG 1
 
 #ifdef DEBUG
 #define DBG(format, arg...)                     \
@@ -336,15 +336,17 @@ static int compute_driving_distance(char* sql, int source_vertex_id,
                           
   source_vertex_id -= v_min_id;
 
-  DBG("Calling boost_dijkstra\n");
-        
   profstop("extract", prof_extract);
   profstart(prof_dijkstra);
   
+  DBG("Calling boost_dijkstra\n");
+        
   ret = boost_dijkstra_dist(edges, total_tuples, source_vertex_id,
                             distance, directed, has_reverse_cost, 
                             path, path_count, &err_msg);
     
+  DBG("Back from  boost_dijkstra\n");
+        
   if (ret < 0) {
     elog(ERROR, "Error computing path: %s", err_msg);
   } 

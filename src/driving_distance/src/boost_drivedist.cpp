@@ -32,6 +32,20 @@
 using namespace std;
 using namespace boost;
 
+#undef DEBUG
+#define DEBUG
+
+#ifdef DEBUG
+#include <stdio.h>
+static FILE *dbg;
+#define DBG(format, arg...) \
+    dbg = fopen("/tmp/sew-debug", "a"); \
+    fprintf(dbg, format,  ## arg); \
+    fclose(dbg);
+#else
+#define DBG(format, arg...) do { ; } while (0)
+#endif
+
 
 // Maximal number of nodes in the path (to avoid infinite loops)
 #define MAX_NODES 1000000
@@ -58,14 +72,18 @@ graph_add_edge(G &graph, int id, int source, int target, float8 cost)
   if (cost < 0) // edges are not inserted in the graph if cost is negative
     return;
   
+  DBG("Calling add_edge id: %d\n", id);
   tie(e, inserted) = add_edge(source, target, graph);
   
   graph[e].cost = cost;
   graph[e].id = id;
 
+  DBG("creating sorce and target vertex\n");
   typedef typename graph_traits<G>::vertex_descriptor Vertex;
   Vertex s = vertex(source, graph);
   Vertex t = vertex(target, graph);
+
+  DBG("updating graph\n");
   graph[s].id = source;
   graph[t].id = target;
   graph[s].edge_id = id;
@@ -85,11 +103,13 @@ boost_dijkstra_dist(edge_t *edges, unsigned int count, int source_vertex_id,
   const unsigned int num_nodes = 1;
 try {
 
+  DBG("Creating graph\n");
   graph_t graph( num_nodes );
   
   //property_map<graph_t, edge_weight_t>::type weightmap = 
   //  get(edge_weight, graph);
   
+  DBG("Adding %d edges to graph.\n", count);
   for (std::size_t j = 0; j < count; ++j)
     {
       graph_add_edge<graph_t, edge_descriptor>
@@ -113,17 +133,20 @@ try {
         }
     }
 
+  DBG("Geting source_vertex from graph.\n");
   vertex_descriptor source_vertex = vertex( source_vertex_id, graph );
   
+  DBG("Allocating predecessors and distances vectors for %d vertices.\n", num_vertices(graph));
   std::vector<vertex_descriptor> predecessors(num_vertices(graph));
   std::vector<float8> distances(num_vertices(graph));
   
+  DBG("Calling dijkstra_shortest_paths()\n");
   dijkstra_shortest_paths(graph, source_vertex,
                           predecessor_map(&predecessors[0])
                           .weight_map(get(&Edge::cost, graph))
                           .distance_map(&distances[0]));
 
-  
+  DBG("Back from dijkstra_shortest_paths, creating path_vector.\n");
   graph_traits < graph_t >::vertex_iterator vi, vend;
   vector<path_element> path_vector;
   int j=0;
@@ -141,7 +164,8 @@ try {
       pe.vertex_id = graph[s].id;
       pe.edge_id   = graph[s].edge_id;
       pe.cost      = distances[*vi];
-        
+
+      DBG("adding to path_vector[%d]\n", j++);
       path_vector.push_back( pe );
     }   
   }
