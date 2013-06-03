@@ -33,7 +33,7 @@ sudo apt-get update -qq
 # Install PostgreSQL
 # ------------------------------------------------------------------------------
 sudo apt-get -qq --purge remove postgresql postgresql-9.1 
-sudo rm -Rf /etc/postgresql
+sudo rm -Rf /etc/postgresql /etc/init.d/postgresql
 sudo apt-get install -y -qq postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION
 
 # ------------------------------------------------------------------------------
