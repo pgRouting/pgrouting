@@ -51,8 +51,15 @@ then
     run_psql -U postgres -d $DBNAME -c "CREATE EXTENSION pgrouting;"
 fi
 
+# ------------------------------------------------------------------------------
+# Get version information
+# ------------------------------------------------------------------------------
 run_psql -U postgres -d $DBNAME -c "SELECT postgis_full_version();"
 run_psql -U postgres -d $DBNAME -c "SELECT pgr_version();"
 
+PGROUTING_VERSION=`run_psql -U postgres -A -t -d $DBNAME -c "SELECT version FROM pgr_version();"`
+
+# ------------------------------------------------------------------------------
 # Test runner
-./tools/test-runner.pl -pgver $POSTGRESQL_VERSION -pgisver $POSTGIS_VERSION 
+# ------------------------------------------------------------------------------
+./tools/test-runner.pl -pgver $POSTGRESQL_VERSION -pgisver $POSTGIS_VERSION -pgrver $PGROUTING_VERSION
