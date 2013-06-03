@@ -36,13 +36,9 @@ if [[ "$POSTGRESQL_VERSION" != "9.1" ]]; then
 	sudo service postgresql start	
 fi
 
-# For all version
-sudo apt-get install -y -qq postgresql-server-dev-all
-
-
 # Install dependecies
 # ------------------------------------------------------------------------------
-sudo apt-get install -y -qq cmake libcgal-dev libboost-graph-dev libboost-thread-dev 
+sudo apt-get install -y -qq cmake libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-server-dev-$POSTGRESQL_VERSION
 
 
 # Install PostGIS
@@ -53,7 +49,7 @@ then
 	sudo apt-get install -y -qq postgresql-9.1-postgis
 else
 	if [[ "$POSTGIS_VERSION" == "2.0" ]]; then 
-		sudo apt-get install build-essential libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev
+		sudo apt-get install -y -qq build-essential libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev
 		wget http://download.osgeo.org/postgis/source/postgis-2.0.3.tar.gz
 		tar -xzf postgis-2.0.3.tar.gz && cd postgis-2.0.3
 		./configure && make && sudo make install && sudo ldconfig
