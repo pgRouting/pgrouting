@@ -271,8 +271,8 @@ file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.
 if(USE_PG_EXTENSION)
     file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
         "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
-    file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-        "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
+    #file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+    #    "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
 endif(USE_PG_EXTENSION)
 
 cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
