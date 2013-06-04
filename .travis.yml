@@ -16,7 +16,7 @@ notifications:
 
 branches:
   only:
-    #- develop
+    - develop
     - feature-travis
 
 services:
