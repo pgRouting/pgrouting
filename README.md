@@ -16,7 +16,7 @@
 	<tr>
 		<td>develop</td>
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=develop" alt="Build Status"/></td>
-		<td>not enabled</td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>gh-pages</td>
