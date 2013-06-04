@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_quote_ident - Quote table name with Schema Component &mdash; pgRouting Manual (2.0.0-alpha)</title>
+    
+    <link rel="stylesheet" href="../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '2.0.0-alpha (v2.0.0-alpha-0-ga792201 develop v2.0.0-alpha-0-ga792201 develop)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0-alpha)" href="../../../../index.html" />
+    <link rel="next" title="pgr_version - Get version information" href="version.html" />
+    <link rel="prev" title="pgr_pointToId - Inserts point into a vertices table" href="point_to_id.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+          <span>pgRouting Manual (2.0.0-alpha)</span></a></h1>
+        <h2 class="heading"><span>pgr_quote_ident - Quote table name with Schema Component</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="point_to_id.html">pgr_pointToId - Inserts point into a vertices table</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="version.html">pgr_version - Get version information</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-quote-ident-quote-table-name-with-schema-component">
+<span id="pgr-quote-ident"></span><h1>pgr_quote_ident - Quote table name with Schema Component<a class="headerlink" href="#pgr-quote-ident-quote-table-name-with-schema-component" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_quote_ident</span></tt> — Quote table name with or without schema component.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Function to split a string on <tt class="docutils literal"><span class="pre">.</span></tt> characters and then quote the components as postgres identifiers and then join them back together with <tt class="docutils literal"><span class="pre">.</span></tt> characters.
+Multile <tt class="docutils literal"><span class="pre">.</span></tt> will get collapsed into a single <tt class="docutils literal"><span class="pre">.</span></tt>, so <tt class="docutils literal"><span class="pre">schema...table</span></tt> till get returned as <tt class="docutils literal"><span class="pre">schema.&quot;table&quot;</span></tt> and <tt class="docutils literal"><span class="pre">schema.table</span></tt> becomes <tt class="docutils literal"><span class="pre">&quot;Schema'.'table&quot;</span></tt>.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="nb">text</span> <span class="n">pgr_quote_ident</span><span class="p">(</span><span class="nb">text</span> <span class="n">tab</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">tab:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> table name with or without schema component</td>
+</tr>
+</tbody>
+</table>
+<p>Returns table name with or without schema as <tt class="docutils literal"><span class="pre">text</span></tt>.</p>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>New in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_quote_ident</span><span class="p">(</span><span class="s1">&#39;public.edge_table&#39;</span><span class="p">);</span>
+
+  <span class="n">pgr_quote_ident</span>
+<span class="c1">-------------------</span>
+ <span class="k">public</span><span class="p">.</span><span class="n">edge_table</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+
+<span class="k">SELECT</span> <span class="n">pgr_quote_ident</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">);</span>
+ <span class="n">pgr_quote_ident</span>
+<span class="c1">-----------------</span>
+ <span class="n">edge_table</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+
+<span class="k">SELECT</span> <span class="n">pgr_quote_ident</span><span class="p">(</span><span class="s1">&#39;Public...edge_table&#39;</span><span class="p">);</span>
+   <span class="n">pgr_quote_ident</span>
+<span class="c1">---------------------</span>
+ <span class="ss">&quot;Public&quot;</span><span class="p">.</span><span class="n">edge_table</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>[TBD]</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="point_to_id.html">pgr_pointToId - Inserts point into a vertices table</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="version.html">pgr_version - Get version information</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-alpha (v2.0.0-alpha-0-ga792201 develop v2.0.0-alpha-0-ga792201 develop).
+      Last updated on Jun 04, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
