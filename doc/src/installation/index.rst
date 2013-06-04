@@ -58,9 +58,20 @@ Build from Source
 Source Package
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Git 2.0.0 release: `v2.0.0.tar.gz <https://github.com/pgRouting/pgrouting/archive/v2.0.0.tar.gz>`_  | `v2.0.0.zip <https://github.com/pgRouting/pgrouting/archive/v2.0.0.zip>`_
-* Git master branch: `master.tar.gz <https://github.com/pgRouting/pgrouting/archive/master.tar.gz>`_  | `master.zip <https://github.com/pgRouting/pgrouting/archive/master.zip>`_
-* Git develop branch: `develop.tar.gz <https://github.com/pgRouting/pgrouting/archive/develop.tar.gz>`_  | `develop.zip <https://github.com/pgRouting/pgrouting/archive/develop.zip>`_
+======================== ======================= ====================
+Git 2.0.0-alpha release  `v2.0.0-alpha.tar.gz`_  `v2.0.0-alpha.zip`_
+Git master branch        `master.tar.gz`_        `master.zip`_
+Git develop branch       `develop.tar.gz`_       `develop.zip`_
+======================== ======================= ====================
+
+.. _v2.0.0-alpha.tar.gz: https://github.com/pgRouting/pgrouting/archive/v2.0.0-alpha.tar.gz
+.. _v2.0.0-alpha.zip: https://github.com/pgRouting/pgrouting/archive/v2.0.0-alpha.zip
+
+.. _master.tar.gz: https://github.com/pgRouting/pgrouting/archive/master.tar.gz
+.. _master.zip: https://github.com/pgRouting/pgrouting/archive/master.zip
+
+.. _develop.tar.gz: https://github.com/pgRouting/pgrouting/archive/develop.tar.gz
+.. _develop.zip: https://github.com/pgRouting/pgrouting/archive/develop.zip
 
 
 Using Git
