@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0-dev (ebb51fd develop)',
+        VERSION:     '2.0.0-dev (aac02ca develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -135,7 +135,13 @@
         <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">false</span>
     <span class="p">);</span>
 
-<span class="p">[</span><span class="n">TBD</span><span class="p">]</span>
+     <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span>
+    <span class="c1">-----+------+------+------</span>
+       <span class="mi">0</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
+       <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span>
+       <span class="mi">2</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span>
+       <span class="mi">3</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
+    <span class="p">(</span><span class="mi">4</span> <span class="k">rows</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -147,7 +153,13 @@
         <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="k">true</span>
     <span class="p">);</span>
 
-<span class="p">[</span><span class="n">TBD</span><span class="p">]</span>
+     <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span>
+    <span class="c1">-----+------+------+------</span>
+       <span class="mi">0</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
+       <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span>
+       <span class="mi">2</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span>
+       <span class="mi">3</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
+    <span class="p">(</span><span class="mi">4</span> <span class="k">rows</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
@@ -176,8 +188,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (ebb51fd develop).
-      Last updated on Jun 01, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (aac02ca develop).
+      Last updated on Jun 04, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>

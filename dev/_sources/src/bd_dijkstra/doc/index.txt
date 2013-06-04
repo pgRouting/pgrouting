@@ -79,7 +79,14 @@ Examples
             7, 12, false, false
         );
 
-    [TBD]
+	 seq | node | edge | cost 
+	-----+------+------+------
+	   0 |    7 |    8 |    1
+	   1 |    8 |    9 |    1
+	   2 |    9 |   15 |    1
+	   3 |   12 |   -1 |    0
+	(4 rows)
+
 
 * With ``reverse_cost``
 
@@ -91,7 +98,14 @@ Examples
             7, 12, true, true
         );
 
-    [TBD]
+	 seq | node | edge | cost 
+	-----+------+------+------
+	   0 |    7 |    8 |    1
+	   1 |    8 |    9 |    1
+	   2 |    9 |   15 |    1
+	   3 |   12 |   -1 |    0
+	(4 rows)
+
 
 The queries use the :ref:`sampledata` network.
 
