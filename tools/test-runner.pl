@@ -166,10 +166,15 @@ sub run_test {
 sub createTestDB {
     die "ERROR: test database '$DBNAME' exists, you must drop or rename it!\n"
         if dbExists($DBNAME);
+
+    my $template;
     
     my $dbver = getServerVersion();
+    my $dbshare = getSharePath($dbver);
 
-    if (version_greater_eq($dbver, '9.1')) {
+    # first create a database with postgis installed in it
+    if (version_greater_eq($dbver, '9.1') &&
+            -f "$dbshare/extension/postgis.control") {
         mysystem("createdb -U $DBUSER -h $DBHOST $DBNAME");
         die "ERROR: Failed to create database '$DBNAME'!\n"
             unless dbExists($DBNAME);
@@ -178,25 +183,40 @@ sub createTestDB {
             $myver = " VERSION '$vpgis'";
         }
         mysystem("$psql -U $DBUSER -h $DBHOST -c \"create extension postgis $myver\" $DBNAME");
-        $myver = '';
+    }
+    else {
+        if ($vpgis && dbExists("template_postgis_$vpgis")) {
+            $template = "template_postgis_$vpgis";
+        }
+        elsif (dbExists('template_postgis')) {
+            $template = "template_postgis";
+        }
+        else {
+            die "ERROR: Could not find an appropriate template_postgis database!\n";
+        }
+        mysystem("createdb -U $DBUSER -h $DBHOST -T $template $DBNAME");
+        die "ERROR: Failed to create database '$DBNAME'!\n"
+            if ! dbExists($DBNAME);
+    }
+
+    # next we install pgrouting into the new database
+    if (version_greater_eq($dbver, '9.1') &&
+            -f "$dbshare/extension/pgrouting.control") {
+        my $myver = '';
         if ($vpgr) {
             $myver = " VERSION '$vpgr'";
         }
         mysystem("$psql -U $DBUSER -h $DBHOST -c \"create extension pgrouting $myver\" $DBNAME");
     }
-    else {
-        my $template;
-        if (dbExists('template_pgrouting')) {
-            $template = 'template_pgrouting';
-        }
-        else {
-            die "ERROR: Could not find template_pgrouting database!\n";
-        }
-
-        mysystem("createdb -U $DBUSER -h $DBHOST -T $template $DBNAME");
-        die "ERROR: Failed to create database '$DBNAME'!\n"
-            if ! dbExists($DBNAME);
+    elsif ($vpgr && -f "$dbshare/extension/pgrouting--$vpgr.sql") {
+        mysystem("$psql -U $DBUSER -h $DBHOST -f '$dbshare/extension/pgrouting--$vpgr.sql'");
     }
+    else {
+        die "ERROR: failed to install pgrouting into the database!\n";
+    }
+    my $pgrv = `$psql -U $DBUSER -h $DBHOST -c \"select pgr_version()\" $DBNAME`;
+    die "ERROR: failed to install pgrouting into the database!\n"
+        unless $pgrv;
 
 }
 
@@ -250,6 +270,29 @@ sub findPsql {
     $psql =~ s/^\s*|\s*$//g;
     print "which psql = $psql\n" if $VERBOSE;
     return length($psql)?$psql:undef;
+}
+
+sub getSharePath {
+    my $pg = shift;
+
+    my $share;
+    my $pg_config = `which pg_config`;
+    $pg_config =~ s/^\s*|\s*$//g;
+    print "which pg_config = $pg_config\n" if $VERBOSE;
+    if (length($pg_config)) {
+        $share = `$pg_config --sharedir`;
+        $share  =~ s/^\s*|\s*$//g;
+        if (length($share) && -d $share) {
+            return $share;
+        }
+    }
+    die "Could not determine the postgresql version" unless $pg;
+    $pg =~ s/^(\d+(\.\d+)).*$/$1/;
+    $share = "/usr/share/postgresql/$pg";
+    return $share if -d $share;
+    $share = "/usr/local/share/postgresql/$pg";
+    return $share if -d $share;
+    die "Could not determine the postgresql share dir for ($pg)!\n";
 }
 
 sub mysystem {
