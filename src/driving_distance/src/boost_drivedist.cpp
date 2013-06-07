@@ -21,6 +21,7 @@
 
 // Include C header first for windows build issue
 #include <exception>
+#include <math.h>
 #include "drivedist.h"
 
 #include <boost/config.hpp>
@@ -82,7 +83,11 @@ boost_dijkstra_dist(edge_t *edges, unsigned int count, int source_vertex_id,
   typedef graph_traits < graph_t >::vertex_descriptor vertex_descriptor;
   typedef graph_traits < graph_t >::edge_descriptor edge_descriptor;
 
-  const unsigned int num_nodes = 1;
+  // the maximum number of edges given V nodes if
+  // E = (V**2 - V)/2  ===  V**2 - V -2E = 0
+  // solving the quadradic equation
+  // V = (2E + sqrt(8E + 1)) / 2
+  const unsigned int num_nodes = (2.0*count + sqrt(8.0*count + 1.0)) / 2.0;
 try {
 
   graph_t graph( num_nodes );
