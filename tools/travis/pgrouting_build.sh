@@ -62,12 +62,12 @@ run_psql -U $DBUSER -c "UPDATE pg_database SET datallowconn='false' WHERE datnam
 
 # pgRouting
 # ------------------------------------------------------------------------------
-run_psql -U $DBUSER -c "CREATE DATABASE template_routing ENCODING 'UTF8' TEMPLATE template_postgis;"
-run_psql -U $DBUSER -d template_routing -f `find /usr/share -name "pgrouting--*.sql"`
+run_psql -U $DBUSER -c "CREATE DATABASE template_pgrouting ENCODING 'UTF8' TEMPLATE template_postgis;"
+run_psql -U $DBUSER -d template_pgrouting -f `find /usr/share -name "pgrouting--*.sql"`
 
-run_psql -U $DBUSER -d template_routing -c "VACUUM FULL;"
-run_psql -U $DBUSER -d template_routing -c "VACUUM FREEZE;"
+run_psql -U $DBUSER -d template_pgrouting -c "VACUUM FULL;"
+run_psql -U $DBUSER -d template_pgrouting -c "VACUUM FREEZE;"
 
-run_psql -U $DBUSER -c "UPDATE pg_database SET datistemplate='true' WHERE datname='template_routing';"
-run_psql -U $DBUSER -c "UPDATE pg_database SET datallowconn='false' WHERE datname='template_routing';"
+run_psql -U $DBUSER -c "UPDATE pg_database SET datistemplate='true' WHERE datname='template_pgrouting';"
+run_psql -U $DBUSER -c "UPDATE pg_database SET datallowconn='false' WHERE datname='template_pgrouting';"
 
