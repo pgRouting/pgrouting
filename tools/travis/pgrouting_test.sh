@@ -67,4 +67,4 @@ ls $POSTGRESQL_DIRECTORY/extension
 # ------------------------------------------------------------------------------
 # Test runner
 # ------------------------------------------------------------------------------
-./tools/test-runner.pl -pgver $POSTGRESQL_VERSION -pgisver $POSTGIS_VERSION -pgrver $PGROUTING_VERSION
+./tools/test-runner.pl -pgver $POSTGRESQL_VERSION -pgrver $PGROUTING_VERSION

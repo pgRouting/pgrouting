@@ -63,12 +63,13 @@ if [ "$POSTGIS_VERSION" == "2.0" ]; then
 fi
 
 if [ "$POSTGIS_VERSION" == "2.1" ]; then 
-	sudo apt-get install -y -qq libpoppler-dev libarmadillo-dev libepsilon-dev liblzma-dev
+	sudo apt-get install -y -qq libpoppler-dev libarmadillo-dev libepsilon-dev liblzma-dev libxml2-dev
 	wget --quiet -O - https://github.com/postgis/postgis/archive/svn-trunk.tar.gz | tar xzf -
 fi
 
 # Build and compile
 cd postgis-*
+./autogen.sh
 ./configure 
 make
 sudo make install
