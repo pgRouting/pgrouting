@@ -58,7 +58,7 @@ run_psql -U $DBUSER -c "UPDATE pg_database SET datallowconn='false' WHERE datnam
 # pgRouting
 # ------------------------------------------------------------------------------
 run_psql -U $DBUSER -c "CREATE DATABASE template_pgrouting ENCODING 'UTF8' TEMPLATE template_postgis;"
-run_psql -U $DBUSER -d template_pgrouting -f `find $POSTGRESQL_DIRECTORY/contrib -name "pgrouting--*.sql"`
+run_psql -U $DBUSER -d template_pgrouting -f `find $POSTGRESQL_DIRECTORY/contrib -name "pgrouting.sql"`
 
 run_psql -U $DBUSER -d template_pgrouting -c "VACUUM FULL;"
 run_psql -U $DBUSER -d template_pgrouting -c "VACUUM FREEZE;"
