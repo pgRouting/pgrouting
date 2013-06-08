@@ -64,7 +64,8 @@ fi
 
 if [ "$POSTGIS_VERSION" == "2.1" ]; then 
 	sudo apt-get install -y -qq libpoppler-dev libarmadillo-dev libepsilon-dev liblzma-dev
-	wget --quiet http://postgis.net/stuff/postgis-2.1.0beta3dev.tar.gz
+	#wget --quiet http://postgis.net/stuff/postgis-2.1.0beta3dev.tar.gz
+	wget --quiet -O postgis-2.1.svn-trunk.tar.gz https://github.com/postgis/postgis/archive/svn-trunk.tar.gz
 fi
 
 # Build and compile
