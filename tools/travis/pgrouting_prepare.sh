@@ -12,9 +12,12 @@ DBNAME="pgrouting"
 POSTGRESQL_VERSION="$1"
 POSTGIS_VERSION="$2"
 
+POSTGRESQL_DIRECTORY="/usr/share/postgresql/$POSTGRESQL_VERSION"
+
 # Define alias function for psql command
 run_psql () {
-    PGOPTIONS='--client-min-messages=warning' psql -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
+    #PGOPTIONS='--client-min-messages=warning' psql -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
+    PGOPTIONS='--client-min-messages=warning' psql -X -v ON_ERROR_STOP=1 --pset pager=off "$@"
 }
 
 # ------------------------------------------------------------------------------
@@ -39,8 +42,8 @@ then
     run_psql -U $DBUSER -d template_postgis -c "CREATE LANGUAGE plpgsql;"
 fi
 
-run_psql -U $DBUSER -d template_postgis -f `find /usr/share -name "postgis.sql"`
-run_psql -U $DBUSER -d template_postgis -f `find /usr/share -name "spatial_ref_sys.sql"`
+run_psql -U $DBUSER -d template_postgis -f `find $POSTGRESQL_DIRECTORY/contrib -name "postgis.sql"`
+run_psql -U $DBUSER -d template_postgis -f `find $POSTGRESQL_DIRECTORY/contrib -name "spatial_ref_sys.sql"`
 
 run_psql -U $DBUSER -d template_postgis -c "GRANT ALL ON geometry_columns TO PUBLIC;"
 run_psql -U $DBUSER -d template_postgis -c "GRANT ALL ON geography_columns TO PUBLIC;"
@@ -54,12 +57,12 @@ run_psql -U $DBUSER -c "UPDATE pg_database SET datallowconn='false' WHERE datnam
 
 # pgRouting
 # ------------------------------------------------------------------------------
-run_psql -U $DBUSER -c "CREATE DATABASE template_routing ENCODING 'UTF8' TEMPLATE template_postgis;"
-run_psql -U $DBUSER -d template_routing -f `find /usr/share -name "pgrouting--*.sql"`
+run_psql -U $DBUSER -c "CREATE DATABASE template_pgrouting ENCODING 'UTF8' TEMPLATE template_postgis;"
+run_psql -U $DBUSER -d template_pgrouting -f `find $POSTGRESQL_DIRECTORY/contrib -name "pgrouting--*.sql"`
 
-run_psql -U $DBUSER -d template_routing -c "VACUUM FULL;"
-run_psql -U $DBUSER -d template_routing -c "VACUUM FREEZE;"
+run_psql -U $DBUSER -d template_pgrouting -c "VACUUM FULL;"
+run_psql -U $DBUSER -d template_pgrouting -c "VACUUM FREEZE;"
 
-run_psql -U $DBUSER -c "UPDATE pg_database SET datistemplate='true' WHERE datname='template_routing';"
-run_psql -U $DBUSER -c "UPDATE pg_database SET datallowconn='false' WHERE datname='template_routing';"
+run_psql -U $DBUSER -c "UPDATE pg_database SET datistemplate='true' WHERE datname='template_pgrouting';"
+run_psql -U $DBUSER -c "UPDATE pg_database SET datallowconn='false' WHERE datname='template_pgrouting';"
 

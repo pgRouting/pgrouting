@@ -150,12 +150,17 @@ execute_process(
   OUTPUT_VARIABLE SHARE_DIR)
 
 if(SHARE_DIR)
+  # Always install in "contrib" directory of PostgreSQL
+  set(CONTRIB_DIR "${SHARE_DIR}/contrib/pgrouting-${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
+  message(STATUS "Contrib directory for SQL files is set to ${CONTRIB_DIR}")
+
+  # Install as extension if supported by the version of PostgreSQL
   if(USE_PG_EXTENSION)
     set(SHARE_DIR "${SHARE_DIR}/extension")
-  else(USE_PG_EXTENSION)
-    set(SHARE_DIR "/usr/share/pgrouting")
+  #else(USE_PG_EXTENSION)
+  #  set(SHARE_DIR "/usr/share/pgrouting")
   endif(USE_PG_EXTENSION)
-  message(STATUS "Install directory for SQL files is set to ${SHARE_DIR}")
+  message(STATUS "Extension directory for SQL files is set to ${SHARE_DIR}")
 else(SHARE_DIR)
   message(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
 endif(SHARE_DIR)
@@ -315,6 +320,17 @@ install(FILES
     "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
     DESTINATION "${SHARE_DIR}")
 
+# The following probably could be done better
+# The idea is to also have a "pgrouting-x.x" directory in PostgreSQL contrib
+configure_file("${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
+    "${CMAKE_BINARY_DIR}/lib/pgrouting.sql" COPYONLY)
+
+install(FILES
+    "${CMAKE_BINARY_DIR}/lib/pgrouting.sql"
+    "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
+    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
+    DESTINATION "${CONTRIB_DIR}")
+
 # TODO: The following probably should be done better
 if(WITH_DD)
   # We will copy the routing_dd_legacy.sql, but not install it as part of 
@@ -326,5 +342,9 @@ if(WITH_DD)
   install(FILES
       "${CMAKE_BINARY_DIR}/lib/pgrouting_dd_legacy.sql"
       DESTINATION "${SHARE_DIR}")
+
+  install(FILES
+      "${CMAKE_BINARY_DIR}/lib/pgrouting_dd_legacy.sql"
+      DESTINATION "${CONTRIB_DIR}")
 endif(WITH_DD)
 

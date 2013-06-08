@@ -12,9 +12,12 @@ DBNAME="pgrouting"
 POSTGRESQL_VERSION="$1"
 POSTGIS_VERSION="$2"
 
+POSTGRESQL_DIRECTORY="/usr/share/postgresql/$POSTGRESQL_VERSION"
+
 # Define alias function for psql command
 run_psql () {
-    PGOPTIONS='--client-min-messages=warning' psql -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
+    #PGOPTIONS='--client-min-messages=warning' psql -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
+    PGOPTIONS='--client-min-messages=warning' psql -X -v ON_ERROR_STOP=1 --pset pager=off "$@"
 }
 
 # ------------------------------------------------------------------------------
@@ -27,18 +30,18 @@ run_psql -U $DBUSER -c "CREATE DATABASE $DBNAME;"
 # ------------------------------------------------------------------------------
 if [ "$POSTGRESQL_VERSION" == "8.4" ] || [ "$POSTGRESQL_VERSION" == "9.0" ]
 then
-    run_psql -U $DBUSER -d $DBNAME -f `find /usr/share -name "postgis.sql"`
-    run_psql -U $DBUSER -d $DBNAME -f `find /usr/share -name "spatial_ref_sys.sql"`
-    run_psql -U $DBUSER -d $DBNAME -f `find /usr/share -name "pgrouting--*.sql"`
+    run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "postgis.sql"`
+    run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "spatial_ref_sys.sql"`
+    run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "pgrouting.sql"`
 fi
 
 if [ "$POSTGRESQL_VERSION" == "9.1" ]
 then
     if [ "$POSTGIS_VERSION" == "1.5" ]
     then 
-        run_psql -U $DBUSER -d $DBNAME -f `find /usr/share -name "postgis.sql"`
-        run_psql -U $DBUSER -d $DBNAME -f `find /usr/share -name "spatial_ref_sys.sql"`
-        run_psql -U $DBUSER -d $DBNAME -f `find /usr/share -name "pgrouting--*.sql"`
+        run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "postgis.sql"`
+        run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "spatial_ref_sys.sql"`
+        run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "pgrouting.sql"`
     else
         run_psql -U $DBUSER -d $DBNAME -c "CREATE EXTENSION postgis;"
         run_psql -U $DBUSER -d $DBNAME -c "CREATE EXTENSION pgrouting;"
