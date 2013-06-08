@@ -22,6 +22,7 @@ run_psql () {
 # ------------------------------------------------------------------------------
 # CREATE DATABASE
 # ------------------------------------------------------------------------------
+psql -U $DBUSER -l
 run_psql -U $DBUSER -c "CREATE DATABASE $DBNAME;"
 
 # ------------------------------------------------------------------------------
@@ -60,6 +61,8 @@ run_psql -U $DBUSER -d $DBNAME -c "SELECT postgis_full_version();"
 run_psql -U $DBUSER -d $DBNAME -c "SELECT pgr_version();"
 
 PGROUTING_VERSION=`run_psql -U $DBUSER -A -t -d $DBNAME -c "SELECT version FROM pgr_version();"`
+
+ls -l $POSTGRESQL_DIRECTORY/extension
 
 # ------------------------------------------------------------------------------
 # Test runner
