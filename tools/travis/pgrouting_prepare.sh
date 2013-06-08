@@ -17,7 +17,11 @@ POSTGRESQL_DIRECTORY="/usr/share/postgresql/$POSTGRESQL_VERSION"
 # Define alias function for psql command
 run_psql () {
     PGOPTIONS='--client-min-messages=warning' psql -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
-    if [ "$?"-ne 0]; then echo "Test query failed: $@"; exit 1; fi 
+    if [ "$?" -ne 0 ]
+    then 
+    	echo "Test query failed: $@"
+    	exit 1
+    fi 
 }
 
 # ------------------------------------------------------------------------------
