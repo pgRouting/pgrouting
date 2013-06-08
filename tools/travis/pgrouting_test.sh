@@ -24,7 +24,7 @@ run_psql () {
     if [ "$?" -ne 0 ]
     then 
         echo "Test query failed: $@"
-        $ERROR=1
+        ERROR=1
     fi 
 }
 
