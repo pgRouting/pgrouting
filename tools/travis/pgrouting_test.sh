@@ -24,7 +24,7 @@ run_psql () {
     if [ "$?" -ne 0 ]
     then 
         echo "Test query failed: $@"
-        ERROR=1
+        $ERROR=1
     fi 
 }
 
@@ -78,4 +78,4 @@ PGROUTING_VERSION=`run_psql -U $DBUSER -A -t -d $DBNAME -c "SELECT version FROM 
 
 # Return success or failure
 # ------------------------------------------------------------------------------
-return ERROR
+exit $ERROR

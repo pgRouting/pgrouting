@@ -24,7 +24,7 @@ run_psql () {
     if [ "$?" -ne 0 ]
     then 
     	echo "Test query failed: $@"
-    	ERROR=1
+    	$ERROR=1
     fi 
 }
 
@@ -76,4 +76,4 @@ run_psql -U $DBUSER -c "UPDATE pg_database SET datallowconn='false' WHERE datnam
 
 # Return success or failure
 # ------------------------------------------------------------------------------
-return ERROR
+exit $ERROR

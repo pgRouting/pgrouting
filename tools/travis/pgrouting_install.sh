@@ -91,4 +91,4 @@ sudo /etc/init.d/postgresql restart
 
 # Return success or failure
 # ------------------------------------------------------------------------------
-return ERROR
+exit $ERROR
