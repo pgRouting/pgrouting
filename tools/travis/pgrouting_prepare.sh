@@ -63,5 +63,3 @@ run_psql -U $DBUSER -d template_routing -c "VACUUM FREEZE;"
 run_psql -U $DBUSER -c "UPDATE pg_database SET datistemplate='true' WHERE datname='template_routing';"
 run_psql -U $DBUSER -c "UPDATE pg_database SET datallowconn='false' WHERE datname='template_routing';"
 
-# Output
-psql -U $DBUSER -l
