@@ -9,6 +9,10 @@
 POSTGRESQL_VERSION="$1"
 POSTGIS_VERSION="$2"
 
+# exit script on error
+set -e 
+ERROR=0
+
 # ------------------------------------------------------------------------------
 # Remove PostgreSQL and all its files
 # ------------------------------------------------------------------------------
@@ -55,22 +59,21 @@ sudo apt-get install cmake libcgal-dev libboost-graph-dev libboost-thread-dev po
 sudo apt-get install -y -qq build-essential libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev 
 
 if [ "$POSTGIS_VERSION" == "1.5" ]; then 
-	wget --quiet http://download.osgeo.org/postgis/source/postgis-1.5.8.tar.gz
+	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-1.5.8.tar.gz | tar xzf -
 fi
 
 if [ "$POSTGIS_VERSION" == "2.0" ]; then 
-	wget --quiet http://download.osgeo.org/postgis/source/postgis-2.0.3.tar.gz
+	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-2.0.3.tar.gz | tar xzf -
 fi
 
 if [ "$POSTGIS_VERSION" == "2.1" ]; then 
-	sudo apt-get install -y -qq libpoppler-dev libarmadillo-dev libepsilon-dev liblzma-dev
-	wget --quiet http://postgis.net/stuff/postgis-2.1.0beta3dev.tar.gz
+	sudo apt-get install -y -qq libpoppler-dev libarmadillo-dev libepsilon-dev liblzma-dev libxml2-dev
+	wget --quiet -O - https://github.com/postgis/postgis/archive/svn-trunk.tar.gz | tar xzf -
 fi
 
 # Build and compile
-POSTGIS_TARBALL=$(find postgis-${POSTGIS_VERSION}.*.tar.gz)
-tar -xzf $POSTGIS_TARBALL 
-cd `basename $POSTGIS_TARBALL .tar.gz`
+cd postgis-*
+./autogen.sh
 ./configure 
 make
 sudo make install
@@ -85,3 +88,7 @@ fi
 # Restart once
 # ------------------------------------------------------------------------------
 sudo /etc/init.d/postgresql restart
+
+# Return success or failure
+# ------------------------------------------------------------------------------
+exit $ERROR
