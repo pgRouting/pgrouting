@@ -63,8 +63,6 @@ run_psql -U $DBUSER -d $DBNAME -c "SELECT pgr_version();"
 
 PGROUTING_VERSION=`run_psql -U $DBUSER -A -t -d $DBNAME -c "SELECT version FROM pgr_version();"`
 
-ls $POSTGRESQL_DIRECTORY/extension
-
 # ------------------------------------------------------------------------------
 # Test runner
 # ------------------------------------------------------------------------------
