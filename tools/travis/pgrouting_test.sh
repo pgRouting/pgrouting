@@ -17,6 +17,7 @@ POSTGRESQL_DIRECTORY="/usr/share/postgresql/$POSTGRESQL_VERSION"
 # Define alias function for psql command
 run_psql () {
     PGOPTIONS='--client-min-messages=warning' psql -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
+    if [ "$?"-ne 0]; then echo "Test query failed: $@"; exit 1; fi 
 }
 
 # ------------------------------------------------------------------------------
@@ -57,7 +58,7 @@ fi
 # ------------------------------------------------------------------------------
 # Get version information
 # ------------------------------------------------------------------------------
-run_psql -U $DBUSER -d $DBNAME -c "SELECT postgis_full_version();"
+run_psql -U $DBUSER -d $DBNAME -c "SELECT postgis_full_version();"    
 run_psql -U $DBUSER -d $DBNAME -c "SELECT pgr_version();"
 
 PGROUTING_VERSION=`run_psql -U $DBUSER -A -t -d $DBNAME -c "SELECT version FROM pgr_version();"`
@@ -67,4 +68,4 @@ ls $POSTGRESQL_DIRECTORY/extension
 # ------------------------------------------------------------------------------
 # Test runner
 # ------------------------------------------------------------------------------
-./tools/test-runner.pl -pgver $POSTGRESQL_VERSION -pgrver $PGROUTING_VERSION
+./tools/test-runner.pl -pgver $POSTGRESQL_VERSION
