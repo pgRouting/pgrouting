@@ -16,8 +16,7 @@ POSTGRESQL_DIRECTORY="/usr/share/postgresql/$POSTGRESQL_VERSION"
 
 # Define alias function for psql command
 run_psql () {
-    #PGOPTIONS='--client-min-messages=warning' psql -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
-    PGOPTIONS='--client-min-messages=warning' psql -X -v ON_ERROR_STOP=1 --pset pager=off "$@"
+    PGOPTIONS='--client-min-messages=warning' psql -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
 }
 
 # ------------------------------------------------------------------------------
