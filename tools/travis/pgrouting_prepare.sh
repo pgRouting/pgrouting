@@ -16,6 +16,7 @@ POSTGRESQL_DIRECTORY="/usr/share/postgresql/$POSTGRESQL_VERSION"
 
 # exit script on error
 set -e 
+ERROR=0
 
 # Define alias function for psql command
 run_psql () {
@@ -23,7 +24,7 @@ run_psql () {
     if [ "$?" -ne 0 ]
     then 
     	echo "Test query failed: $@"
-    	exit 1
+    	ERROR=1
     fi 
 }
 
@@ -73,3 +74,6 @@ run_psql -U $DBUSER -d template_pgrouting -c "VACUUM FREEZE;"
 run_psql -U $DBUSER -c "UPDATE pg_database SET datistemplate='true' WHERE datname='template_pgrouting';"
 run_psql -U $DBUSER -c "UPDATE pg_database SET datallowconn='false' WHERE datname='template_pgrouting';"
 
+# Return success or failure
+# ------------------------------------------------------------------------------
+return ERROR

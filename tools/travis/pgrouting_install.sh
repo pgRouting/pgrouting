@@ -11,6 +11,7 @@ POSTGIS_VERSION="$2"
 
 # exit script on error
 set -e 
+ERROR=0
 
 # ------------------------------------------------------------------------------
 # Remove PostgreSQL and all its files
@@ -87,3 +88,7 @@ fi
 # Restart once
 # ------------------------------------------------------------------------------
 sudo /etc/init.d/postgresql restart
+
+# Return success or failure
+# ------------------------------------------------------------------------------
+return ERROR

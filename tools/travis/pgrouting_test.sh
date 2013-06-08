@@ -16,11 +16,16 @@ POSTGRESQL_DIRECTORY="/usr/share/postgresql/$POSTGRESQL_VERSION"
 
 # exit script on error
 set -e 
+ERROR=0
 
 # Define alias function for psql command
 run_psql () {
     PGOPTIONS='--client-min-messages=warning' psql -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
-    if [ "$?" -ne 0 ]; then echo "Test query failed: $@"; exit 1; fi 
+    if [ "$?" -ne 0 ]
+    then 
+        echo "Test query failed: $@"
+        ERROR=1
+    fi 
 }
 
 # ------------------------------------------------------------------------------
@@ -70,3 +75,7 @@ PGROUTING_VERSION=`run_psql -U $DBUSER -A -t -d $DBNAME -c "SELECT version FROM 
 # Test runner
 # ------------------------------------------------------------------------------
 ./tools/test-runner.pl -pgver $POSTGRESQL_VERSION
+
+# Return success or failure
+# ------------------------------------------------------------------------------
+return ERROR
