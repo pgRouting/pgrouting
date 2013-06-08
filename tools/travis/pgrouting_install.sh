@@ -9,6 +9,9 @@
 POSTGRESQL_VERSION="$1"
 POSTGIS_VERSION="$2"
 
+# exit script on error
+set -e 
+
 # ------------------------------------------------------------------------------
 # Remove PostgreSQL and all its files
 # ------------------------------------------------------------------------------

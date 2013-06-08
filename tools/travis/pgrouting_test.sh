@@ -14,6 +14,9 @@ POSTGIS_VERSION="$2"
 
 POSTGRESQL_DIRECTORY="/usr/share/postgresql/$POSTGRESQL_VERSION"
 
+# exit script on error
+set -e 
+
 # Define alias function for psql command
 run_psql () {
     PGOPTIONS='--client-min-messages=warning' psql -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
