@@ -231,6 +231,7 @@ sub createTestDB {
         mysystem("$psql -U $DBUSER -h $DBHOST -f '$dbshare/contrib/pgrouting.sql'");
     }
     else {
+        mysystem("ls -alR $dbshare") if $DEBUG;
         die "ERROR: failed to install pgrouting into the database!\n";
     }
 
