@@ -224,15 +224,20 @@ sub createTestDB {
     }
     elsif ($vpgr && -f "$dbshare/extension/pgrouting--$vpgr.sql") {
         print "-- Trying to install pgrouting from '$dbshare/extension/pgrouting--$vpgr.sql'\n" if $DEBUG;
-        mysystem("$psql -U $DBUSER -h $DBHOST -f '$dbshare/extension/pgrouting--$vpgr.sql'");
-    }
-    elsif (-f  "$dbshare/contrib/pgrouting.sql") {
-        print "-- Trying to install pgrouting from '$dbshare/contrib/pgrouting.sql'\n" if $DEBUG;
-        mysystem("$psql -U $DBUSER -h $DBHOST -f '$dbshare/contrib/pgrouting.sql'");
+        mysystem("$psql -U $DBUSER -h $DBHOST -f '$dbshare/extension/pgrouting--$vpgr.sql' $DBNAME");
     }
     else {
-        mysystem("ls -alR $dbshare") if $DEBUG;
-        die "ERROR: failed to install pgrouting into the database!\n";
+        my $find = `find "$dbshare/contrib" -name pgrouting.sql | sort -r -n `;
+        my @found = split(/\n/, $find);
+        my $file = shift @found;
+        if (length($file)) {
+            print "-- Trying to install pgrouting from '$file'\n" if $DEBUG;
+            mysystem("$psql -U $DBUSER -h $DBHOST -f '$file' $DBNAME");
+        }
+        else {
+            mysystem("ls -alR $dbshare") if $DEBUG;
+            die "ERROR: failed to install pgrouting into the database!\n";
+        }
     }
 
     # now verify that we have pgrouting installed
