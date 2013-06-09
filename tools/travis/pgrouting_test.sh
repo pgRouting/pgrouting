@@ -74,7 +74,7 @@ PGROUTING_VERSION=`run_psql -U $DBUSER -A -t -d $DBNAME -c "SELECT version FROM 
 # ------------------------------------------------------------------------------
 # Test runner
 # ------------------------------------------------------------------------------
-./tools/test-runner.pl -pgver $POSTGRESQL_VERSION
+./tools/test-runner.pl -v -v -pgver $POSTGRESQL_VERSION
 if [ "$?" -ne 0 ]
 then
     ERROR=1
