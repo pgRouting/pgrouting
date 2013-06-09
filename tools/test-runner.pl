@@ -211,6 +211,9 @@ sub createTestDB {
     elsif ($vpgr && -f "$dbshare/extension/pgrouting--$vpgr.sql") {
         mysystem("$psql -U $DBUSER -h $DBHOST -f '$dbshare/extension/pgrouting--$vpgr.sql'");
     }
+    elsif (-f  "$dbshare/contrib/pgrouting.sql") {
+        mysystem("$psql -U $DBUSER -h $DBHOST -f '$dbshare/contrib/pgrouting.sql'");
+    }
     else {
         die "ERROR: failed to install pgrouting into the database!\n";
     }
