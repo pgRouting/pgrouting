@@ -16,6 +16,7 @@ use vars qw/*name *dir *prune/;
 
 my $VERBOSE = 0;
 my $DRYRUN = 0;
+my $DEBUG = 0;
 
 my $DBNAME = "pgr_test__db__test";
 my $DBUSER = 'postgres';
@@ -27,6 +28,7 @@ sub Usage {
         "       -pgisver vpgis      - postgis version\n" .
         "       -pgrver vpgr        - pgrouting version\n" .
         "       -psql /path/to/psql - optional path to psql\n" .
+        "       -v                  - verbose messages for debuging(enter twice for more)\n" .
         "       -h                  - help\n";
 }
 
@@ -51,6 +53,10 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a =~ /^-h/) {
         Usage();
+    }
+    elsif ($a =~ /^-v/i) {
+        $VERBOSE = 1 if $DEBUG;
+        $DEBUG = 1;
     }
     else {
         warn "Error: unknown option '$a'\n";
@@ -172,6 +178,11 @@ sub createTestDB {
     my $dbver = getServerVersion();
     my $dbshare = getSharePath($dbver);
 
+    if ($DEBUG) {
+        print "-- DBVERSION: $dbver\n";
+        print "-- DBSHARE: $dbshare\n";
+    }
+
     # first create a database with postgis installed in it
     if (version_greater_eq($dbver, '9.1') &&
             -f "$dbshare/extension/postgis.control") {
@@ -182,6 +193,7 @@ sub createTestDB {
         if ($vpgis) {
             $myver = " VERSION '$vpgis'";
         }
+        print "-- Trying to install postgis extension $myver\n" if $DEBUG;
         mysystem("$psql -U $DBUSER -h $DBHOST -c \"create extension postgis $myver\" $DBNAME");
     }
     else {
@@ -194,6 +206,7 @@ sub createTestDB {
         else {
             die "ERROR: Could not find an appropriate template_postgis database!\n";
         }
+        print "-- Trying to install postgis from $template\n" if $DEBUG;
         mysystem("createdb -U $DBUSER -h $DBHOST -T $template $DBNAME");
         die "ERROR: Failed to create database '$DBNAME'!\n"
             if ! dbExists($DBNAME);
@@ -206,18 +219,24 @@ sub createTestDB {
         if ($vpgr) {
             $myver = " VERSION '$vpgr'";
         }
+        print "-- Trying to install pgrouting extension $myver\n" if $DEBUG;
         mysystem("$psql -U $DBUSER -h $DBHOST -c \"create extension pgrouting $myver\" $DBNAME");
     }
     elsif ($vpgr && -f "$dbshare/extension/pgrouting--$vpgr.sql") {
+        print "-- Trying to install pgrouting from '$dbshare/extension/pgrouting--$vpgr.sql'\n" if $DEBUG;
         mysystem("$psql -U $DBUSER -h $DBHOST -f '$dbshare/extension/pgrouting--$vpgr.sql'");
     }
     elsif (-f  "$dbshare/contrib/pgrouting.sql") {
+        print "-- Trying to install pgrouting from '$dbshare/contrib/pgrouting.sql'\n" if $DEBUG;
         mysystem("$psql -U $DBUSER -h $DBHOST -f '$dbshare/contrib/pgrouting.sql'");
     }
     else {
         die "ERROR: failed to install pgrouting into the database!\n";
     }
-    my $pgrv = `$psql -U $DBUSER -h $DBHOST -c \"select pgr_version()\" $DBNAME`;
+
+    # now verify that we have pgrouting installed
+
+    my $pgrv = `$psql -U $DBUSER -h $DBHOST -c "select pgr_version()" $DBNAME`;
     die "ERROR: failed to install pgrouting into the database!\n"
         unless $pgrv;
 
