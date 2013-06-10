@@ -61,6 +61,7 @@ DECLARE
     rowcount bigint;
     srid integer;
     cname text;
+    sql text;
 
 BEGIN
     /*
