@@ -105,7 +105,13 @@ declare
     pgver text;
 
 begin
-    pgver := regexp_replace(version(), E'^PostgreSQL ([^ ]+) .*$', E'\1');
+    pgver := regexp_replace(version(), E'^PostgreSQL ([^ ]+)[ ,].*$', E'\\1');
+
+/*
+    RAISE NOTICE 'pgr_quote_ident(%), pgver: %, version: %, versionless %',
+        tab, pgver, version(), pgr_versionless(pgver, '9.2');
+*/
+
     if pgr_versionless(pgver, '9.2') then
         select into t array_agg(quote_ident(term)) from
             (select nullif(unnest, '') as term
