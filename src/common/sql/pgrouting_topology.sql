@@ -130,7 +130,7 @@ BEGIN
                 ', target = ' || coalesce(target_id, '<NULL>') ||
                 ' WHERE ' || quote_ident(gid_cname) || ' =  ' ||
                 coalesce(points.id, '<NULL>');
-            RAISE NOTICE 'ERROR: %", sql;
+            RAISE NOTICE 'ERROR: %', sql;
         ELSE
             EXECUTE sql;
         END IF;
