@@ -125,12 +125,7 @@ BEGIN
             ' WHERE ' || quote_ident(gid_cname) || ' =  ' || points.id;
 
         IF sql IS NULL THEN
-            sql := 'ERROR: UPDATE ' || pgr_quote_ident(geom_table) ||
-                ' SET source = ' || coalesce(source_id, '<NULL>') ||
-                ', target = ' || coalesce(target_id, '<NULL>') ||
-                ' WHERE ' || quote_ident(gid_cname) || ' =  ' ||
-                coalesce(points.id, '<NULL>');
-            RAISE NOTICE 'ERROR: %', sql;
+            RAISE NOTICE 'ERROR: UPDATE % SET source = %, target = % WHERE % = % ', pgr_quote_ident(geom_table), source_id, target_id, quote_ident(gid_cname),  points.id;
         ELSE
             EXECUTE sql;
         END IF;
