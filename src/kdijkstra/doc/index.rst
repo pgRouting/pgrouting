@@ -75,10 +75,6 @@ Description
 :id2:   path edge id
 :cost:  cost to traverse this edge or -1.0 if there is no path to this target
 
-.. note::
-
-    The graph may not contain an edge with negative weight.
-
 
 .. rubric:: History
 
@@ -93,7 +89,7 @@ Examples
 .. code-block:: sql
 
     SELECT seq, id1 AS source, id2 AS target, cost FROM pgr_kdijkstraCost(
-        'SELECT id, source, target, cost FROM edge_table WHERE cost >= 0',
+        'SELECT id, source, target, cost FROM edge_table',
         10, array[4,12], false, false
     );
 
@@ -106,7 +102,7 @@ Examples
 .. code-block:: sql
 
     SELECT seq, id1 AS path, id2 AS edge, cost FROM pgr_kdijkstraPath(
-        'SELECT id, source, target, cost FROM edge_table WHERE cost >= 0',
+        'SELECT id, source, target, cost FROM edge_table',
         10, array[4,12], false, false
     );
 
