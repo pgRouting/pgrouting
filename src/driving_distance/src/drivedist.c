@@ -64,7 +64,7 @@ long profipts1, profipts2, profopts;
 Datum driving_distance(PG_FUNCTION_ARGS);
 
 #undef DEBUG
-#define DEBUG 1
+//#define DEBUG 1
 
 #ifdef DEBUG
 #define DBG(format, arg...)                     \

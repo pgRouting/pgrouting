@@ -34,7 +34,7 @@ using namespace std;
 using namespace boost;
 
 #undef DEBUG
-#define DEBUG
+//#define DEBUG
 
 #ifdef DEBUG
 #include <stdio.h>
