@@ -157,8 +157,8 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
     */
     if (end >= 0) {
         DBG("Updating start end costs");
-        D(start,end)=INFINITY - 1000.0;
-        D(end,start)=0.000001;
+        D(start,end)=0.0;
+        D(end,start)=0.0;
     }
 
     DBG("Alloc ids");
@@ -175,7 +175,7 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
     DBG("Calling find_tsp_solution");
 
 // int find_tsp_solution(int num, DTYPE *dist, int *p_ids, int source, DTYPE *fit, char* err_msg);
-    ret = find_tsp_solution(num, matrix, ids, start, &fit, err_msg);
+    ret = find_tsp_solution(num, matrix, ids, start, end, &fit, err_msg);
     if (ret < 0) {
         elog(ERROR, "Error solving TSP, %s", err_msg);
     }
@@ -221,9 +221,7 @@ tsp_matrix(PG_FUNCTION_ARGS)
 
         ret = solve_tsp(matrix, num,
                         PG_GETARG_INT32(1), // start index
-                        // endpt does not work yet, leave this is -1
-                        //PG_GETARG_INT32(2), // end  index 
-                        -1,
+                        PG_GETARG_INT32(2), // end  index 
                         &tsp_res);
 
         pfree(matrix);
