@@ -38,7 +38,8 @@ This library contains following features:
 * Bi-directional A* Shortest Path
 * Shortest Path Dijkstra
 * Driving Distance
-* K-Shortest Path
+* K-Shortest Path, Multiple Alternative Paths
+* K-Dijkstra, One to Many Shortest Path
 * Traveling Sales Person
 * Turn Restriction Shortest Path (TRSP)
 
@@ -46,8 +47,8 @@ This library contains following features:
 ## REQUIREMENT
 
 * C and C++ compilers
-* Postgresql version >= [TBD]
-* PostGIS version >= [TBD]
+* Postgresql version >= 8.4 (9.1 or higher recommended)
+* PostGIS version >= 1.5 (2.0 or higher recommended)
 * The Boost Graph Library (BGL). Version >= [TBD]
 * CMake >= 2.8.8
 * (optional, for Driving Distance) CGAL >= [TBD] 
@@ -66,6 +67,10 @@ For MinGW on Windows
 	cmake -G"MSYS Makefiles" -DWITH_DD=ON ..
 	make
 	make install
+
+Also pre-built Windows binaries can be downloaded from:
+
+    http://www.postgis.net/windows_downloads
 
 For Linux
 	
@@ -89,12 +94,12 @@ For older versions of postgresql
 
 	createdb -T template1 template_postgis
 	psql template_postgis -c "create language plpgsql"
-	psql template_postgis -f /usr/share/postgresql/8.3/contrib/postgis-1.5/postgis.sql
-	psql template_postgis -f /usr/share/postgresql/8.3/contrib/postgis-1.5/spatial_ref_sys.sql
-	psql template_postgis -f /usr/share/postgresql/8.3/contrib/postgis_comments.sql
+	psql template_postgis -f /usr/share/postgresql/9.0/contrib/postgis-1.5/postgis.sql
+	psql template_postgis -f /usr/share/postgresql/9.0/contrib/postgis-1.5/spatial_ref_sys.sql
+	psql template_postgis -f /usr/share/postgresql/9.0/contrib/postgis_comments.sql
 
 	createdb -T template_postgis template_pgrouting
-	psql template_pgrouting -f /usr/share/pgrouting/pgrouting--1.0.7.sql
+	psql template_pgrouting -f /usr/share/postgresql/9.0/contrib/pgrouting-2.0/pgrouting.sql
 
 	createdb -T template_pgrouting mydatabase
 

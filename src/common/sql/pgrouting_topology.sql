@@ -61,6 +61,7 @@ DECLARE
     rowcount bigint;
     srid integer;
     cname text;
+    sql text;
 
 BEGIN
     /*
@@ -119,9 +120,15 @@ BEGIN
         source_id := pgr_pointToId(points.source, tolerance);
         target_id := pgr_pointToId(points.target, tolerance);
                                 
-        EXECUTE 'UPDATE ' || pgr_quote_ident(geom_table) || 
+        sql := 'UPDATE ' || pgr_quote_ident(geom_table) || 
             ' SET source = ' || source_id || ', target = ' || target_id || 
             ' WHERE ' || quote_ident(gid_cname) || ' =  ' || points.id;
+
+        IF sql IS NULL THEN
+            RAISE NOTICE 'ERROR: UPDATE % SET source = %, target = % WHERE % = % ', pgr_quote_ident(geom_table), source_id, target_id, quote_ident(gid_cname),  points.id;
+        ELSE
+            EXECUTE sql;
+        END IF;
     END LOOP;
 
     RETURN 'OK';

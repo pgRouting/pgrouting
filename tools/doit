@@ -1,4 +1,10 @@
 #!/bin/sh
+# ------------------------------------------------------------------------------
+# Build script
+# Copyright(c) pgRouting Contributors
+#
+# This script builds and install pgRouting
+# ------------------------------------------------------------------------------
 rm -rf build
 mkdir build
 cd build

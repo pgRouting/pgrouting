@@ -96,14 +96,30 @@ $BODY$
    'Schema.table' becomes '"Schema'.'table"'
 
 */
+
 create or replace function pgr_quote_ident(tab text)
     returns text as
 $body$
 declare
     t text[];
+    pgver text;
+
 begin
-    select into t array_agg(quote_ident(term)) from 
-        (select unnest(string_to_array(tab, '.', '')) as term) as foo;
+    pgver := regexp_replace(version(), E'^PostgreSQL ([^ ]+)[ ,].*$', E'\\1');
+
+/*
+    RAISE NOTICE 'pgr_quote_ident(%), pgver: %, version: %, versionless %',
+        tab, pgver, version(), pgr_versionless(pgver, '9.2');
+*/
+
+    if pgr_versionless(pgver, '9.2') then
+        select into t array_agg(quote_ident(term)) from
+            (select nullif(unnest, '') as term
+               from unnest(string_to_array(tab, '.'))) as foo;
+    else
+        select into t array_agg(quote_ident(term)) from
+            (select unnest(string_to_array(tab, '.', '')) as term) as foo;
+    end if;
     return array_to_string(t, '.');
 end;
 $body$

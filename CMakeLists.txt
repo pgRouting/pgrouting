@@ -30,10 +30,10 @@ set(POSTGRESQL_MINIMUM_VERSION "8.4.0")
 
 file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 
-string(REGEX REPLACE "^([^-]+)-.*" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
-string(REGEX REPLACE "^([^-]+)-([0-9]+)-.*" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
-string(REGEX REPLACE "^([^-]+)-([0-9]+)-g([0-9a-f]+) .*" "\\3" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
-string(REGEX REPLACE "^([^-]+)-([0-9]+)-g([0-9a-f]+) (.*)" "\\4" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
+string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
+string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
+string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
+string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\4" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
 
 set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_GIT_HASH} ${PGROUTING_GIT_BRANCH}")
 set(PGROUTING_VERSION_REVISION_HASH "${PGROUTING_GIT_HASH}")
@@ -150,12 +150,17 @@ execute_process(
   OUTPUT_VARIABLE SHARE_DIR)
 
 if(SHARE_DIR)
+  # Always install in "contrib" directory of PostgreSQL
+  set(CONTRIB_DIR "${SHARE_DIR}/contrib/pgrouting-${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
+  message(STATUS "Contrib directory for SQL files is set to ${CONTRIB_DIR}")
+
+  # Install as extension if supported by the version of PostgreSQL
   if(USE_PG_EXTENSION)
     set(SHARE_DIR "${SHARE_DIR}/extension")
-  else(USE_PG_EXTENSION)
-    set(SHARE_DIR "/usr/share/pgrouting")
+    message(STATUS "Extension directory for SQL files is set to ${SHARE_DIR}")
+  #else(USE_PG_EXTENSION)
+  #  set(SHARE_DIR "/usr/share/pgrouting")
   endif(USE_PG_EXTENSION)
-  message(STATUS "Install directory for SQL files is set to ${SHARE_DIR}")
 else(SHARE_DIR)
   message(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
 endif(SHARE_DIR)
@@ -271,8 +276,8 @@ file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.
 if(USE_PG_EXTENSION)
     file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
         "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
-    file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-        "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
+    #file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+    #    "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
 endif(USE_PG_EXTENSION)
 
 cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
@@ -305,7 +310,7 @@ else(UNIX)
     file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.dll")
 endif(UNIX)
 
-message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
+#message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
 
 install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
 
@@ -314,6 +319,17 @@ install(FILES
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
     "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
     DESTINATION "${SHARE_DIR}")
+
+# The following probably could be done better
+# The idea is to also have a "pgrouting-x.x" directory in PostgreSQL contrib
+configure_file("${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
+    "${CMAKE_BINARY_DIR}/lib/pgrouting.sql" COPYONLY)
+
+install(FILES
+    "${CMAKE_BINARY_DIR}/lib/pgrouting.sql"
+    "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
+    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
+    DESTINATION "${CONTRIB_DIR}")
 
 # TODO: The following probably should be done better
 if(WITH_DD)
@@ -326,5 +342,9 @@ if(WITH_DD)
   install(FILES
       "${CMAKE_BINARY_DIR}/lib/pgrouting_dd_legacy.sql"
       DESTINATION "${SHARE_DIR}")
+
+  install(FILES
+      "${CMAKE_BINARY_DIR}/lib/pgrouting_dd_legacy.sql"
+      DESTINATION "${CONTRIB_DIR}")
 endif(WITH_DD)
 

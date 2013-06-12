@@ -9,40 +9,79 @@
 DBUSER="postgres"
 DBNAME="pgrouting"
 
-POSTGIS_VERSION="$1"
+POSTGRESQL_VERSION="$1"
+POSTGIS_VERSION="$2"
+
+POSTGRESQL_DIRECTORY="/usr/share/postgresql/$POSTGRESQL_VERSION"
+
+# exit script on error
+set -e 
+ERROR=0
+
+# Define alias function for psql command
+run_psql () {
+    PGOPTIONS='--client-min-messages=warning' psql -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
+    if [ "$?" -ne 0 ]
+    then 
+        echo "Test query failed: $@"
+        ERROR=1
+    fi 
+}
 
 # ------------------------------------------------------------------------------
-# CASE: PostGIS 1.5
+# CREATE DATABASE
 # ------------------------------------------------------------------------------
-if [[ "$POSTGIS_VERSION" == "1.5" ]]; then 
+run_psql -U $DBUSER -l
+run_psql -U $DBUSER -c "CREATE DATABASE $DBNAME;"
 
-psql --quiet -U $DBUSER <<EOF 
-    \set ON_ERROR_STOP TRUE 
-    CREATE DATABASE $DBNAME;
-    \c $DBNAME
-    \i /usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql
-    \i /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql
-    CREATE EXTENSION pgrouting;
-EOF
+# ------------------------------------------------------------------------------
+# CREATE EXTENSION
+# ------------------------------------------------------------------------------
+if [ "$POSTGRESQL_VERSION" == "8.4" ] || [ "$POSTGRESQL_VERSION" == "9.0" ]
+then
+    run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "postgis.sql"`
+    run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "spatial_ref_sys.sql"`
+    run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "pgrouting.sql"`
+fi
 
-if [ $? -ne 0 ]; then exit $?; fi
+if [ "$POSTGRESQL_VERSION" == "9.1" ]
+then
+    if [ "$POSTGIS_VERSION" == "1.5" ]
+    then 
+        run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "postgis.sql"`
+        run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "spatial_ref_sys.sql"`
+        run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "pgrouting.sql"`
+    else
+        run_psql -U $DBUSER -d $DBNAME -c "CREATE EXTENSION postgis;"
+        run_psql -U $DBUSER -d $DBNAME -c "CREATE EXTENSION pgrouting;"
+    fi
+fi
+
+if [ "$POSTGRESQL_VERSION" == "9.2" ] || [ "$POSTGRESQL_VERSION" == "9.3" ]
+then
+    run_psql -U $DBUSER -d $DBNAME -c "CREATE EXTENSION postgis;"
+    run_psql -U $DBUSER -d $DBNAME -c "CREATE EXTENSION pgrouting;"
 fi
 
 # ------------------------------------------------------------------------------
-# CASE: PostGIS 2.0
+# Get version information
 # ------------------------------------------------------------------------------
-if [[ "$POSTGIS_VERSION" == "2.0" ]]; then 
+run_psql -U $DBUSER -d $DBNAME -c "SELECT postgis_full_version();"    
+run_psql -U $DBUSER -d $DBNAME -c "SELECT pgr_version();"
 
-psql --quiet -U $DBUSER <<EOF 
-    \set ON_ERROR_STOP TRUE 
-    CREATE DATABASE $DBNAME;
-    \c $DBNAME
-    CREATE EXTENSION postgis;
-    CREATE EXTENSION pgrouting;
-EOF
+PGROUTING_VERSION=`run_psql -U $DBUSER -A -t -d $DBNAME -c "SELECT version FROM pgr_version();"`
 
-if [ $? -ne 0 ]; then exit $?; fi
-fi
-
+# ------------------------------------------------------------------------------
 # Test runner
-./tools/test-runner.pl
+# ------------------------------------------------------------------------------
+# use -v -v for more verbose debuging output
+# ./tools/test-runner.pl -v -v -pgver $POSTGRESQL_VERSION
+./tools/test-runner.pl -pgver $POSTGRESQL_VERSION
+if [ "$?" -ne 0 ]
+then
+    ERROR=1
+fi
+
+# Return success or failure
+# ------------------------------------------------------------------------------
+exit $ERROR
