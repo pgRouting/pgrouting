@@ -39,7 +39,7 @@ typedef struct point
 extern "C"
 {
 #endif
-  int find_tsp_solution(int num, DTYPE *dist, int *p_ids, int source, DTYPE *fit, char* err_msg);
+  int find_tsp_solution(int num, DTYPE *dist, int *p_ids, int source, int end, DTYPE *fit, char* err_msg);
 #ifdef __cplusplus
 }
 #endif
