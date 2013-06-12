@@ -27,6 +27,21 @@
 
 *****************************************************************************/
 
+#undef DEBUG
+//#define DEBUG
+
+#ifdef DEBUG
+#include <stdio.h>
+static FILE *dbg;
+#define DBG(format, arg...) \
+    dbg = fopen("/tmp/sew-debug", "a"); \
+    fprintf(dbg, format,  ## arg); \
+    fclose(dbg);
+#else
+#define DBG(format, arg...) do { ; } while (0)
+#endif
+
+
 #include "BiDirAStar.h"
 
 BiDirAStar::BiDirAStar(void)
@@ -51,6 +66,9 @@ void BiDirAStar::init()
 void BiDirAStar::initall(int maxNode)
 {
 	int i;
+
+    DBG("BiDirAStar::initall(%d) called\n", maxNode);
+
 	m_pFParent = new PARENT_PATH[maxNode + 1];
 	m_pRParent = new PARENT_PATH[maxNode + 1];
 
@@ -68,8 +86,10 @@ void BiDirAStar::initall(int maxNode)
 	m_MinCost = INF;
 	m_MidNode = -1;
 
-    // reserve space for nodes
+    // reserve space for nodes and edges
     m_vecNodeVector.reserve(maxNode + 1);
+
+    DBG("Leaving BiDirAStar::initall\n");
 }
 
 /*
@@ -78,10 +98,12 @@ void BiDirAStar::initall(int maxNode)
 
 void BiDirAStar::deleteall()
 {
+    DBG("Calling BiDirAStar::deleteall\n");
 	delete [] m_pFParent;
 	delete [] m_pRParent;
 	delete [] m_pFCost;
 	delete [] m_pRCost;
+    DBG("Leaving BiDirAStar::deleteall\n");
 }
 
 /*
@@ -407,6 +429,9 @@ int BiDirAStar:: bidir_astar(edge_astar_t *edges, unsigned int edge_count, int m
 bool BiDirAStar::construct_graph(edge_astar_t* edges, int edge_count, int maxNode)
 {
 	int i;
+
+    DBG("Calling BiDirAStar::construct_graph(edges, ecnt:%d, maxNode:%d)\n", edge_count, maxNode);
+
 	// Create a dummy node
 	GraphNodeInfo nodeInfo;
 	nodeInfo.Connected_Edges_Index.clear();
@@ -414,6 +439,7 @@ bool BiDirAStar::construct_graph(edge_astar_t* edges, int edge_count, int maxNod
 
 	// Insert the dummy node into the node list. This acts as place holder. Also change the nodeId so that nodeId and node index in the vector are same.
 	// There may be some nodes here that does not appear in the edge list. The size of the list is upto maxNode which is equal to maximum node id.
+    DBG("    Adding nodes to m_vecNodeVector\n");
 	for(i = 0; i <= maxNode; i++)
 	{
 		nodeInfo.NodeID = i;
@@ -421,11 +447,15 @@ bool BiDirAStar::construct_graph(edge_astar_t* edges, int edge_count, int maxNod
 	}
 
 	// Process each edge from the edge list and update the member data structures accordingly.
+    DBG("    Reserving edges for graph(%d)\n", edge_count);
+    m_vecEdgeVector.reserve(edge_count);
+    DBG("    Adding edges to graph\n");
 	for(i = 0; i < edge_count; i++)
 	{
 		addEdge(edges[i]);
 	}
 
+    DBG("Leaving BiDirAStar::construct_graph\n");
 	return true;
 }
 
