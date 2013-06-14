@@ -74,6 +74,9 @@ For users, that do not want to use Euclidean distances, we also provode the abil
 
 :matrix: ``float[][]`` distance matrix of points
 :start: ``int4`` index of the start point
+:end: ``int4`` (optional) index of the end node
+
+The ``end`` node is an optional parameter, you can just leave it out if you want a loop where the ``start`` is the depot and the route returns back to the depot. If you include the ``end`` parameter, we optimize the path from ``start`` to ``end`` and minimize the distance of the route while include the remaining points.
 
 The distance matrix is a multidimensional `PostgreSQL array type <http://www.postgresql.org/docs/9.1/static/arrays.html>`_ that must be ``N x N`` in size. 
 
@@ -86,7 +89,7 @@ The result will be N records of ``[ seq, id ]``:
 .. rubric:: Footnotes
 
 .. [#f0] ``edge_id`` and ``cost`` attribute of the result set are not used and always contain ``0``.
-.. [#f1] There was some thought given to pre-calculating the driving distances between the nodes using Dijkstra, but then I read a paper (unfortunately I don't remember who wrote it), where it was proved that the quality of TSP with euclidean distance is only slightly worse that one with real distance in case of normal city layout. In case of very sparse network or rivers and bridges it becomes more inaccurate, but still wholly satisfactory. Of course it is nice to have exact solution, but this is a compromise between quality and speed (and development time also).
+.. [#f1] There was some thought given to pre-calculating the driving distances between the nodes using Dijkstra, but then I read a paper (unfortunately I don't remember who wrote it), where it was proved that the quality of TSP with euclidean distance is only slightly worse than one with real distance in case of normal city layout. In case of very sparse network or rivers and bridges it becomes more inaccurate, but still wholly satisfactory. Of course it is nice to have exact solution, but this is a compromise between quality and speed (and development time also). If you need a more accurate solution, you can generate a distance matrix and use that form of the function to get your results.
 
 
 .. rubric:: History

@@ -413,6 +413,8 @@ bool BiDirDijkstra::construct_graph(edge_t* edges, int edge_count, int maxNode)
 	}
 
 	// Process each edge from the edge list and update the member data structures accordingly.
+    DBG("reserving space for m_vecEdgeVector.reserve(%d)\n", edge_count);
+    m_vecEdgeVector.reserve(edge_count);
     DBG("calling addEdge in a loop\n");
 	for(i = 0; i < edge_count; i++)
 	{

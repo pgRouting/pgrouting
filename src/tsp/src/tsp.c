@@ -373,7 +373,7 @@ static int solve_tsp(char* sql, char* p_ids,
   DBG("DISTANCE matrix computed");
     
   ret = find_tsp_solution(total_tuples, DISTANCE, ids, 
-                          source, &fit, err_msg);
+                          source, -1, &fit, err_msg);
 
   DBG("TSP solved!");
   DBG("Score: %f", fit);
