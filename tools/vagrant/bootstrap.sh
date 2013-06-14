@@ -21,7 +21,7 @@ apt-get install -y -qq python-software-properties
 # Add PPA's'
 # ------------------------------------------------------------------------------
 apt-add-repository -y ppa:georepublic/pgrouting-travis
-#apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable
+apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable
 
 # Add PostgreSQL Apt repository
 # ------------------------------------------------------------------------------
@@ -35,5 +35,6 @@ apt-get update -qq
 # ------------------------------------------------------------------------------
 apt-get install -y -qq wget cmake git cmake cdbs build-essential checkinstall
 apt-get install -y -qq libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-server-dev-all
-apt-get install -y -qq python-sphinx 
+apt-get install -y -qq postgresql-9.1-postgis
+apt-get install -y -qq python-sphinx
 
