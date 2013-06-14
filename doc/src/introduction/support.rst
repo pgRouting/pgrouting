@@ -16,7 +16,7 @@ pgRouting community support is available through `website <http://www.pgrouting.
 
 
 Reporting Problems
-********************************************************************************
+-------------------------------------------------------------------------------
 
 Bugs are reported and managed in an `issue tracker <https://github.com/pgrouting/pgrouting/issues>`_. Please follow these steps:
 
@@ -28,7 +28,7 @@ Bugs are reported and managed in an `issue tracker <https://github.com/pgrouting
    
 
 Mailing List and GIS StackExchange
-********************************************************************************
+-------------------------------------------------------------------------------
 
 There are two mailing lists for pgRouting hosted on OSGeo mailing list server:
 
@@ -43,7 +43,7 @@ You can also ask at `GIS StackExchange <http://gis.stackexchange.com/>`_ and tag
 .. _support_commercial:
 
 Commercial Support
-********************************************************************************
+-------------------------------------------------------------------------------
 
 For users who require professional support, development and consulting services, consider contacting any of the following organizations, which have significantly contributed to the development of pgRouting:
 
