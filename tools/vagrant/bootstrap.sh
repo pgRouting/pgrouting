@@ -33,6 +33,7 @@ apt-get update -qq
 
 # Install packages
 # ------------------------------------------------------------------------------
-apt-get install -y -qq wget cmake git cmake cdbs libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-server-dev-all
-
+apt-get install -y -qq wget cmake git cmake cdbs build-essential checkinstall
+apt-get install -y -qq libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-server-dev-all
+apt-get install -y -qq python-sphinx 
 
