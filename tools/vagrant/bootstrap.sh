@@ -6,6 +6,13 @@
 # Virtual environment bootstrap script
 # ------------------------------------------------------------------------------
 
+set -e # Exit script immediately on first error.
+#set -x # Print commands and their arguments as they are executed.
+
+# Abort provisioning ifpgRouting development environment already setup.
+which cmake >/dev/null &&
+{ echo "pgRouting development environment already setup."; exit 0; }
+
 # Enable PPA support
 # ------------------------------------------------------------------------------
 apt-get update -qq
@@ -26,6 +33,6 @@ apt-get update -qq
 
 # Install packages
 # ------------------------------------------------------------------------------
-apt-get install -y -qq cmake git
+apt-get install -y -qq wget cmake git cmake cdbs libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-server-dev-all
 
 
