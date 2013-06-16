@@ -1,6 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+postgres = ENV['POSTGRESQL_VERSION'] || "9.1"
+postgis  = ENV['POSTGIS_VERSION']    || "2.0"
+
 Vagrant.configure("2") do |config|
 
   # Vagrant box configuration
@@ -8,7 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   # Bootstrap script
-  config.vm.provision :shell, :path => "tools/vagrant/bootstrap.sh"
+  config.vm.provision :shell, :path => "tools/vagrant/bootstrap.sh", :args => "%s %s" % [postgres, postgis]
 
   # Forward SSH agent to host
   config.ssh.forward_agent = true
