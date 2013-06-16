@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   #config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   config.vm.box = "pgr64"
-  config.vm.box_url = "http://pgrouting.s3-website-us-east-1.amazonaws.com/pgrouting-precise64.box"
+  config.vm.box_url = "http://s3.amazonaws.com/pgrouting/pgrouting-precise64.box"
 
   # Bootstrap script
   config.vm.provision :shell, :path => "tools/vagrant/bootstrap.sh", :args => "%s %s" % [postgres, postgis]
