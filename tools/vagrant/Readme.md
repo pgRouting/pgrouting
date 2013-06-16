@@ -1,13 +1,12 @@
-
 # Vagrant - Virtualized Development for pgRouting
 
 
-## Install
+1. Install
 
 Just download and install a binary package from the [Vagrant website](http://docs.vagrantup.com/v2/installation/)
 
 
-## Run 
+2. Run 
 
 Start the virtual machine:
 
@@ -28,7 +27,7 @@ cd /vagrant
 ```
 
 
-## Build pgRouting
+23 Build pgRouting
 
 ```
 tools/vagrant/build.sh
