@@ -64,7 +64,7 @@ release = '@PGROUTING_VERSION_STRING@ (@PGROUTING_VERSION_REVISION_NAME@)'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['doc/build']
+exclude_patterns = ['doc/build','../src/shooting_star/doc/index.rst']
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None

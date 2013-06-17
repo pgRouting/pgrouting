@@ -25,7 +25,7 @@ echo "PostGIS version: $POSTGIS_VERSION"
 # Enable PPA support
 # ------------------------------------------------------------------------------
 apt-get update -qq
-apt-get install -y -qq python-software-properties
+apt-get install -y -qq python-software-properties vim
 
 # Add PPA's'
 # ------------------------------------------------------------------------------
