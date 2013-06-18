@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_nodeNetwork - Nodes an network edge table. &mdash; pgRouting Manual (2.0.0-beta)</title>
+    
+    <link rel="stylesheet" href="../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '2.0.0-beta (8fa63c1 develop)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0-beta)" href="../../../../index.html" />
+    <link rel="next" title="pgr_pointToId - Inserts point into a vertices table" href="point_to_id.html" />
+    <link rel="prev" title="pgr_isColumnIndexed - Check if column is indexed" href="is_column_indexed.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+          <span>pgRouting Manual (2.0.0-beta)</span></a></h1>
+        <h2 class="heading"><span>pgr_nodeNetwork - Nodes an network edge table.</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="is_column_indexed.html">pgr_isColumnIndexed - Check if column is indexed</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="point_to_id.html">pgr_pointToId - Inserts point into a vertices table</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-nodenetwork-nodes-an-network-edge-table">
+<span id="pgr-node-network"></span><h1>pgr_nodeNetwork - Nodes an network edge table.<a class="headerlink" href="#pgr-nodenetwork-nodes-an-network-edge-table" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_nodeNetwork</span></tt> - Nodes an network edge table.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Nicolas Ribot</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Copyright:</th><td class="field-body">Nicolas Ribot, The source code is released under the MIT-X license.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>The function reads edges from a not &#8220;noded&#8221; network table and writes the &#8220;noded&#8221; edges into a new table.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="nb">text</span> <span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="nb">text</span> <span class="n">table_in</span><span class="p">,</span> <span class="nb">text</span> <span class="n">gid_cname</span><span class="p">,</span> <span class="nb">text</span> <span class="n">geo_cname</span><span class="p">,</span> <span class="nb">text</span> <span class="n">table_out</span><span class="p">,</span> <span class="n">double</span> <span class="k">precision</span> <span class="n">tolerance</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>A common problem associated with bringing GIS data into pgRouting is the fact that the data is often not &#8220;noded&#8221; correctly. This will create invalid topologies, which will result in routes that are incorrect.</p>
+<p>What we mean by &#8220;noded&#8221; is that at every intersection in the road network all the edges will be broken into separate road segments. There are cases like an over-pass and under-pass intersection where you can not traverse from the over-pass to the under-pass, but this function does not have the ability to detect and accomodate those situations.</p>
+<p>This function reads the <tt class="docutils literal"><span class="pre">table_in</span></tt> table, that has a primary key column <tt class="docutils literal"><span class="pre">gid_cname</span></tt> and geometry column named <tt class="docutils literal"><span class="pre">geo_cname</span></tt> and intersect all the segments in it against all the other segments and then creates a table <tt class="docutils literal"><span class="pre">table_out</span></tt>. It uses the <tt class="docutils literal"><span class="pre">tolerance</span></tt> for deciding that multiple nodes within the tolerance are considered the same node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">table_in:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> name of the input table to be noded</td>
+</tr>
+<tr class="field-even field"><th class="field-name">gid_cname:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> name of the primary key column for the input table</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">geo_cname:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> name of the geometry column that should be noded</td>
+</tr>
+<tr class="field-even field"><th class="field-name">table_out:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> name of the output table that will be created</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">tolerance:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> tolerance for coinicident points (in projection unit)</td>
+</tr>
+</tbody>
+</table>
+<p>The <tt class="docutils literal"><span class="pre">table_out</span></tt> table has a structure like:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> is a reference to the record in <tt class="docutils literal"><span class="pre">table_in</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">sub_id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">bigint</span></tt> is a sequence number that identifies all the new segments generated from the original record.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">geom:</th><td class="field-body"><tt class="docutils literal"><span class="pre">geometry</span></tt> attribute</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>New in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;edge_table_noded&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">);</span>
+
+               <span class="n">pgr_nodenetwork</span>
+<span class="c1">----------------------------------------------</span>
+ <span class="n">edge_table_noded</span> <span class="k">generated</span> <span class="k">with</span><span class="p">:</span> <span class="mi">16</span> <span class="n">segments</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="create_topology.html#pgr-create-topology"><em>pgr_createTopology - Building a Network Topology</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="is_column_indexed.html">pgr_isColumnIndexed - Check if column is indexed</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="point_to_id.html">pgr_pointToId - Inserts point into a vertices table</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-beta (8fa63c1 develop).
+      Last updated on Jun 19, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgRouting 2.0 Release Notes &mdash; pgRouting Manual (2.0.0-beta)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0-beta (8fa63c1 develop)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0-beta)" href="../../../index.html" />
+    <link rel="next" title="pgRouting 1.x Release Notes" href="1.x.html" />
+    <link rel="prev" title="Sample Data" href="../developer/sampledata.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.0.0-beta)</span></a></h1>
+        <h2 class="heading"><span>pgRouting 2.0 Release Notes</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../developer/sampledata.html">Sample Data</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="1.x.html">pgRouting 1.x Release Notes</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgrouting-2-0-release-notes">
+<span id="changelog-2-0"></span><h1>pgRouting 2.0 Release Notes<a class="headerlink" href="#pgrouting-2-0-release-notes" title="Permalink to this headline">¶</a></h1>
+<p>With the release of pgRouting 2.0 the library has abandoned backwards compatibility to <a class="reference internal" href="1.x.html#changelog-1-x"><em>pgRouting 1.x</em></a> releases. We did this so we could restructure pgRouting, standardize the function naming, and prepare the project for future development. As a result of this effort, we have been able to simplify pgRouting, add significant new functionality, integrate documentation and testing into the source tree and make it easier for multiple developers to make contribution.</p>
+<p>For important changes see the following release notes. To see the full list of changes check the list of <a class="reference external" href="https://github.com/pgRouting/pgrouting/commits">Git commits</a> on Github.</p>
+<div class="section" id="changes-for-2-0-0">
+<h2>Changes for 2.0.0<a class="headerlink" href="#changes-for-2-0-0" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Graph Analytics - tools for detecting and fixing connection some problems in a graph</li>
+<li>A collection of useful utility functions</li>
+<li>Two new All Pairs Short Path algorithms (pgr_apspJohnson, pgr_apspWarshall)</li>
+<li>Bi-directional Dijkstra and A-star search algorithms (pgr_bdAstar, pgr_bdDijkstra)</li>
+<li>One to many nodes search (pgr_kDijkstra)</li>
+<li>K alternate paths shortest path (pgr_ksp)</li>
+<li>New TSP solver that simplifies the code and the build process (pgr_tsp), dropped &#8220;Gaul Library&#8221; dependency</li>
+<li>Turn Restricted shortest path (pgr_trsp) that replaces Shooting Star</li>
+<li>Dropped support for Shooting Star</li>
+<li>Built a test infrastructure that is run before major code changes are checked in</li>
+<li>Tested and fixed most all of the outstanding bugs reported against 1.x that existing in the 2.0-dev code base.</li>
+<li>Improved build process for Windows</li>
+<li>Modular library design</li>
+<li>Compatibility with PostgreSQL 9.1 or newer</li>
+<li>Compatibility with PostGIS 2.0 or newer</li>
+<li>Installs as PostgreSQL EXTENSION</li>
+<li>Return types refactored and unified</li>
+<li>Support for table SCHEMA in function parameters</li>
+<li>Support for <tt class="docutils literal"><span class="pre">st_</span></tt> PostGIS function prefix</li>
+<li>Added <tt class="docutils literal"><span class="pre">pgr_</span></tt> prefix to functions and types</li>
+<li>Better documentation: <a class="reference external" href="http://docs.pgrouting.org">http://docs.pgrouting.org</a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../developer/sampledata.html">Sample Data</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="1.x.html">pgRouting 1.x Release Notes</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-beta (8fa63c1 develop).
+      Last updated on Jun 19, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

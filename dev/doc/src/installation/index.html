@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0-dev (aac02ca develop)',
+        VERSION:     '2.0.0-dev (372ebc8 develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -61,13 +61,17 @@
 </div>
 <div class="section" id="ubuntu-debian">
 <h2>Ubuntu/Debian<a class="headerlink" href="#ubuntu-debian" title="Permalink to this headline">¶</a></h2>
-<p>Ubuntu packages are available in a <a class="reference external" href="https://launchpad.net/~georepublic/+archive/pgrouting">Launchpad repository</a>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Add pgRouting launchpad repository</span>
-sudo add-apt-repository ppa:georepublic/pgrouting
+<p>Ubuntu packages are available in Launchpad repositories:</p>
+<ul class="simple">
+<li><em>stable</em> <a class="reference external" href="https://launchpad.net/~georepublic/+archive/pgrouting">https://launchpad.net/~georepublic/+archive/pgrouting</a></li>
+<li><em>unstable</em> <a class="reference external" href="https://launchpad.net/~georepublic/+archive/pgrouting-unstable">https://launchpad.net/~georepublic/+archive/pgrouting-unstable</a></li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Add pgRouting launchpad repository (&quot;stable&quot; or &quot;unstable&quot;)</span>
+sudo add-apt-repository ppa:georepublic/pgrouting<span class="o">[</span>-unstable<span class="o">]</span>
 sudo apt-get update
 
 <span class="c"># Install pgRouting packages</span>
-sudo apt-get install postgresql-9.1-pgrouting postgresql-9.1-pgrouting-dd
+sudo apt-get install postgresql-9.1-pgrouting
 </pre></div>
 </div>
 <p>Use <a class="reference external" href="https://launchpad.net/~ubuntugis/+archive/ubuntugis-unstable">UbuntuGIS-unstable PPA</a> to install PostGIS 2.0.</p>
@@ -87,11 +91,31 @@ sudo apt-get install postgresql-9.1-pgrouting postgresql-9.1-pgrouting-dd
 <h1>Build from Source<a class="headerlink" href="#build-from-source" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="source-package">
 <h2>Source Package<a class="headerlink" href="#source-package" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Git 2.0.0 release: <a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v2.0.0.tar.gz">v2.0.0.tar.gz</a>  | <a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v2.0.0.zip">v2.0.0.zip</a></li>
-<li>Git master branch: <a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/master.tar.gz">master.tar.gz</a>  | <a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/master.zip">master.zip</a></li>
-<li>Git develop branch: <a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/develop.tar.gz">develop.tar.gz</a>  | <a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/develop.zip">develop.zip</a></li>
-</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="34%" />
+<col width="30%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Git 2.0.0-beta release</td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v2.0.0-beta.tar.gz">v2.0.0-beta.tar.gz</a></td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v2.0.0-beta.zip">v2.0.0-beta.zip</a></td>
+</tr>
+<tr class="row-even"><td>Git 2.0.0-alpha release</td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v2.0.0-alpha.tar.gz">v2.0.0-alpha.tar.gz</a></td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v2.0.0-alpha.zip">v2.0.0-alpha.zip</a></td>
+</tr>
+<tr class="row-odd"><td>Git master branch</td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/master.tar.gz">master.tar.gz</a></td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/master.zip">master.zip</a></td>
+</tr>
+<tr class="row-even"><td>Git develop branch</td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/develop.tar.gz">develop.tar.gz</a></td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/develop.zip">develop.zip</a></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="using-git">
 <h2>Using Git<a class="headerlink" href="#using-git" title="Permalink to this headline">¶</a></h2>
@@ -122,8 +146,8 @@ sudo apt-get install postgresql-9.1-pgrouting postgresql-9.1-pgrouting-dd
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (aac02ca develop).
-      Last updated on Jun 04, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (372ebc8 develop).
+      Last updated on Jun 19, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>

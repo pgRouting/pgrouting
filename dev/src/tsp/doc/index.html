@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0-dev (aac02ca develop)',
+        VERSION:     '2.0.0-dev (372ebc8 develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -128,8 +128,11 @@
 </tr>
 <tr class="field-even field"><th class="field-name">start:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> index of the start point</td>
 </tr>
+<tr class="field-odd field"><th class="field-name">end:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> (optional) index of the end node</td>
+</tr>
 </tbody>
 </table>
+<p>The <tt class="docutils literal"><span class="pre">end</span></tt> node is an optional parameter, you can just leave it out if you want a loop where the <tt class="docutils literal"><span class="pre">start</span></tt> is the depot and the route returns back to the depot. If you include the <tt class="docutils literal"><span class="pre">end</span></tt> parameter, we optimize the path from <tt class="docutils literal"><span class="pre">start</span></tt> to <tt class="docutils literal"><span class="pre">end</span></tt> and minimize the distance of the route while include the remaining points.</p>
 <p>The distance matrix is a multidimensional <a class="reference external" href="http://www.postgresql.org/docs/9.1/static/arrays.html">PostgreSQL array type</a> that must be <tt class="docutils literal"><span class="pre">N</span> <span class="pre">x</span> <span class="pre">N</span></tt> in size.</p>
 <p>The result will be N records of <tt class="docutils literal"><span class="pre">[</span> <span class="pre">seq,</span> <span class="pre">id</span> <span class="pre">]</span></tt>:</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -152,7 +155,7 @@
 <table class="docutils footnote" frame="void" id="f1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[2]</a></td><td>There was some thought given to pre-calculating the driving distances between the nodes using Dijkstra, but then I read a paper (unfortunately I don&#8217;t remember who wrote it), where it was proved that the quality of TSP with euclidean distance is only slightly worse that one with real distance in case of normal city layout. In case of very sparse network or rivers and bridges it becomes more inaccurate, but still wholly satisfactory. Of course it is nice to have exact solution, but this is a compromise between quality and speed (and development time also).</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[2]</a></td><td>There was some thought given to pre-calculating the driving distances between the nodes using Dijkstra, but then I read a paper (unfortunately I don&#8217;t remember who wrote it), where it was proved that the quality of TSP with euclidean distance is only slightly worse than one with real distance in case of normal city layout. In case of very sparse network or rivers and bridges it becomes more inaccurate, but still wholly satisfactory. Of course it is nice to have exact solution, but this is a compromise between quality and speed (and development time also). If you need a more accurate solution, you can generate a distance matrix and use that form of the function to get your results.</td></tr>
 </tbody>
 </table>
 <p class="rubric">History</p>
@@ -166,20 +169,34 @@
 <ul class="simple">
 <li>Using SQL parameter</li>
 </ul>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;SELECT id AS source_id, x, y FROM vertex_table&#39;</span><span class="p">,</span><span class="s1">&#39;2,7,11&#39;</span><span class="p">,</span><span class="mi">7</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;SELECT id AS source_id, x, y FROM vertex_table&#39;</span><span class="p">,</span><span class="s1">&#39;2,7,11,9&#39;</span><span class="p">,</span><span class="mi">7</span><span class="p">);</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li>Using distance matrix</li>
+<li>Using distance matrix (Points 2,7,11 and 9, starting from 7)</li>
 </ul>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id</span> <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;{{0,1,2,3},{1,0,3,2},{2,3,0,4},{3,2,4,0}}&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id</span> <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;{{0,1,3,3},{1,0,2,2},{3,2,0,2},{3,2,2,0}}&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
 
  <span class="n">seq</span> <span class="o">|</span> <span class="n">id</span>
 <span class="c1">-----+----</span>
-   <span class="mi">0</span> <span class="o">|</span>  <span class="mi">2</span>
+   <span class="mi">0</span> <span class="o">|</span>  <span class="mi">1</span>
+   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">3</span>
+   <span class="mi">2</span> <span class="o">|</span>  <span class="mi">2</span>
+   <span class="mi">3</span> <span class="o">|</span>  <span class="mi">0</span>
+<span class="p">(</span><span class="mi">4</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Using distance matrix (Points 2,7,11 and 9, starting from 7, returning to 11)</li>
+</ul>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id</span> <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;{{0,1,3,3},{1,0,2,2},{3,2,0,2},{3,2,2,0}}&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">id</span>
+<span class="c1">-----+----</span>
+   <span class="mi">0</span> <span class="o">|</span>  <span class="mi">3</span>
    <span class="mi">1</span> <span class="o">|</span>  <span class="mi">0</span>
    <span class="mi">2</span> <span class="o">|</span>  <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>  <span class="mi">3</span>
+   <span class="mi">3</span> <span class="o">|</span>  <span class="mi">2</span>
 <span class="p">(</span><span class="mi">4</span> <span class="k">rows</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -208,8 +225,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (aac02ca develop).
-      Last updated on Jun 04, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (372ebc8 develop).
+      Last updated on Jun 19, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>

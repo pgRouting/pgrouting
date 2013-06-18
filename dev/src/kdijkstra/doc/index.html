@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0-dev (aac02ca develop)',
+        VERSION:     '2.0.0-dev (372ebc8 develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -141,10 +141,6 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The graph may not contain an edge with negative weight.</p>
-</div>
 <p class="rubric">History</p>
 <ul class="simple">
 <li>New in version 2.0.0</li>
@@ -156,7 +152,7 @@
 <li>Returning a <tt class="docutils literal"><span class="pre">cost</span></tt> result</li>
 </ul>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span> <span class="k">AS</span> <span class="k">source</span><span class="p">,</span> <span class="n">id2</span> <span class="k">AS</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="k">FROM</span> <span class="n">pgr_kdijkstraCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table WHERE cost &gt;= 0&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">10</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="k">false</span><span class="p">,</span> <span class="k">false</span>
 <span class="p">);</span>
 
@@ -167,7 +163,7 @@
 </pre></div>
 </div>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span> <span class="k">AS</span> <span class="n">path</span><span class="p">,</span> <span class="n">id2</span> <span class="k">AS</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span> <span class="k">FROM</span> <span class="n">pgr_kdijkstraPath</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table WHERE cost &gt;= 0&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">10</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="k">false</span><span class="p">,</span> <span class="k">false</span>
 <span class="p">);</span>
 
@@ -206,8 +202,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (aac02ca develop).
-      Last updated on Jun 04, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (372ebc8 develop).
+      Last updated on Jun 19, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>

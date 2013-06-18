@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Sample Data &mdash; pgRouting Manual (2.0.0-beta)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0-beta (8fa63c1 develop)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0-beta)" href="../../../index.html" />
+    <link rel="next" title="pgRouting 2.0 Release Notes" href="../changelog/2.0.html" />
+    <link rel="prev" title="Developer’s Guide" href="index.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.0.0-beta)</span></a></h1>
+        <h2 class="heading"><span>Sample Data</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Developer&#8217;s Guide</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../changelog/2.0.html">pgRouting 2.0 Release Notes</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="sample-data">
+<span id="sampledata"></span><h1>Sample Data<a class="headerlink" href="#sample-data" title="Permalink to this headline">¶</a></h1>
+<p>The documentation provides very simple example queries based on a small sample network.
+To be able to execute the sample queries, run the following SQL commands to create a table with a small network dataset.</p>
+<img alt="../../../_images/trsp-test-image.png" src="../../../_images/trsp-test-image.png" />
+<p class="rubric">Create table</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">edge_table</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">serial</span><span class="p">,</span>
+    <span class="n">dir</span> <span class="nb">character</span> <span class="nb">varying</span><span class="p">,</span>
+    <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span>
+    <span class="n">target</span> <span class="nb">integer</span><span class="p">,</span>
+    <span class="n">cost</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="n">reverse_cost</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="n">x1</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="n">y1</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="n">x2</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="n">y2</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="n">to_cost</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="k">rule</span> <span class="nb">text</span><span class="p">,</span>
+    <span class="n">the_geom</span> <span class="n">geometry</span><span class="p">(</span><span class="n">Linestring</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">vertex_table</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">serial</span><span class="p">,</span>
+    <span class="n">x</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="n">y</span> <span class="n">double</span> <span class="k">precision</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p class="rubric">Insert network data</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">edge_table</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;010200000002000000000000000000004000000000000000000000000000000040000000000000F03F&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">edge_table</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;0102000000020000000000000000000040000000000000F03F0000000000000840000000000000F03F&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">edge_table</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;0102000000020000000000000000000840000000000000F03F0000000000001040000000000000F03F&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">edge_table</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;0102000000020000000000000000000040000000000000F03F00000000000000400000000000000040&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">edge_table</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;0102000000020000000000000000000840000000000000F03F00000000000008400000000000000040&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">edge_table</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;01020000000200000000000000000000000000000000000040000000000000F03F0000000000000040&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">edge_table</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;010200000002000000000000000000F03F000000000000004000000000000000400000000000000040&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">edge_table</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;0102000000020000000000000000000040000000000000004000000000000008400000000000000040&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">edge_table</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;0102000000020000000000000000000840000000000000004000000000000010400000000000000040&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">edge_table</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;0102000000020000000000000000000040000000000000004000000000000000400000000000000840&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">edge_table</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;0102000000020000000000000000000840000000000000004000000000000008400000000000000840&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">edge_table</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;0102000000020000000000000000000040000000000000084000000000000008400000000000000840&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">edge_table</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;0102000000020000000000000000000840000000000000084000000000000010400000000000000840&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">edge_table</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;0102000000020000000000000000000040000000000000084000000000000000400000000000001040&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">edge_table</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;0102000000020000000000000000001040000000000000004000000000000010400000000000000840&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">edge_table</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;0102000000020000000000000000001040000000000000F03F00000000000010400000000000000040&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">vertex_table</span> <span class="k">VALUES</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Developer&#8217;s Guide</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../changelog/2.0.html">pgRouting 2.0 Release Notes</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-beta (8fa63c1 develop).
+      Last updated on Jun 19, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
