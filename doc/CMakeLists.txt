@@ -30,6 +30,12 @@ if(WITH_DOC)
     # HTML output directory
     set(SPHINX_HTML_DIR "${PGROUTING_BINARY_DIR}/html")
 
+    # PDF output directory
+    set(SPHINX_LATEX_DIR "${PGROUTING_BINARY_DIR}/latex")
+
+    # MAN output directory
+    set(SPHINX_MAN_DIR "${PGROUTING_BINARY_DIR}/man")
+
     configure_file(
         "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
         "${BINARY_BUILD_DIR}/conf.py"
@@ -55,5 +61,28 @@ if(WITH_DOC)
         "${PGROUTING_SOURCE_DIR}"
         "${SPHINX_HTML_DIR}"
         COMMENT "Building HTML documentation with Sphinx")
+
+    add_custom_target(pgRoutingDocumentationman ALL
+        ${SPHINX_EXECUTABLE}
+        -q -b man
+        -c "${BINARY_BUILD_DIR}"
+        -E
+        "${PGROUTING_SOURCE_DIR}"
+        "${SPHINX_MAN_DIR}"
+        COMMENT "Building MAN documentation with Sphinx")
+
+    add_custom_target(pgRoutingDocumentationtex ALL
+        ${SPHINX_EXECUTABLE}
+        -q -b latex
+        -c "${BINARY_BUILD_DIR}"
+        -E
+        "${PGROUTING_SOURCE_DIR}"
+        "${SPHINX_LATEX_DIR}"
+        COMMENT "Building LATEX documentation with Sphinx")
+
+    add_custom_command(
+        TARGET pgRoutingDocumentationtex POST_BUILD
+        COMMAND cd ${SPHINX_LATEX_DIR} && pdflatex -interaction=nonstopmode pgRoutingDocumentation.tex > /dev/null 2>&1
+        COMMENT "Converting to PDF format with Sphinx")
 
 endif(WITH_DOC)

@@ -47,7 +47,7 @@ apt-get update -qq
 # Install packages
 # ------------------------------------------------------------------------------
 echo "Installing packages ... this may take some time."
-apt-get install -y -qq packaging-dev checkinstall python-sphinx libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION postgresql-server-dev-$POSTGRESQL_VERSION libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev
+apt-get install -y -qq packaging-dev checkinstall libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION postgresql-server-dev-$POSTGRESQL_VERSION libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev python-sphinx texlive texlive-latex-extra
 
 # ------------------------------------------------------------------------------
 # Install PostGIS (always build from source)
