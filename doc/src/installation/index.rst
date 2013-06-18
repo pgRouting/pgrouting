@@ -26,16 +26,19 @@ Winnie Bot Experimental Builds:
 Ubuntu/Debian
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ubuntu packages are available in a `Launchpad repository <https://launchpad.net/~georepublic/+archive/pgrouting>`_:
+Ubuntu packages are available in Launchpad repositories:
+
+* *stable* https://launchpad.net/~georepublic/+archive/pgrouting
+* *unstable* https://launchpad.net/~georepublic/+archive/pgrouting-unstable
 
 .. code-block:: bash
 
-	# Add pgRouting launchpad repository
-	sudo add-apt-repository ppa:georepublic/pgrouting
+	# Add pgRouting launchpad repository ("stable" or "unstable")
+	sudo add-apt-repository ppa:georepublic/pgrouting[-unstable]
 	sudo apt-get update
 
 	# Install pgRouting packages
-	sudo apt-get install postgresql-9.1-pgrouting postgresql-9.1-pgrouting-dd 
+	sudo apt-get install postgresql-9.1-pgrouting
 
 Use `UbuntuGIS-unstable PPA <https://launchpad.net/~ubuntugis/+archive/ubuntugis-unstable>`_ to install PostGIS 2.0.
 
@@ -59,10 +62,14 @@ Source Package
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ======================== ======================= ====================
+Git 2.0.0-beta release   `v2.0.0-beta.tar.gz`_   `v2.0.0-beta.zip`_
 Git 2.0.0-alpha release  `v2.0.0-alpha.tar.gz`_  `v2.0.0-alpha.zip`_
 Git master branch        `master.tar.gz`_        `master.zip`_
 Git develop branch       `develop.tar.gz`_       `develop.zip`_
 ======================== ======================= ====================
+
+.. _v2.0.0-beta.tar.gz: https://github.com/pgRouting/pgrouting/archive/v2.0.0-beta.tar.gz
+.. _v2.0.0-beta.zip: https://github.com/pgRouting/pgrouting/archive/v2.0.0-beta.zip
 
 .. _v2.0.0-alpha.tar.gz: https://github.com/pgRouting/pgrouting/archive/v2.0.0-alpha.tar.gz
 .. _v2.0.0-alpha.zip: https://github.com/pgRouting/pgrouting/archive/v2.0.0-alpha.zip

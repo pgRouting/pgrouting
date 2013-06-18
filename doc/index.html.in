@@ -40,6 +40,9 @@
           <p>This documentation is for the alpha, beta and release candidate versions. Releases in this section are known to be unstable.</p>
           <div class="toctree-wrapper compound">
             <ul>
+                <li class="toctree-l1"><a class="reference internal" href="v2.0.0-beta/doc/index.html">pgRouting v2.0.0-beta</a></li>
+            </ul>
+            <ul>
                 <li class="toctree-l1"><a class="reference internal" href="v2.0.0-alpha/doc/index.html">pgRouting v2.0.0-alpha</a></li>
             </ul>
           </div>
