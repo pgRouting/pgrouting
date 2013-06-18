@@ -105,21 +105,35 @@ Examples
 
 .. code-block:: sql
 
-	SELECT * FROM pgr_tsp('SELECT id AS source_id, x, y FROM vertex_table','2,7,11',7);
+	SELECT * FROM pgr_tsp('SELECT id AS source_id, x, y FROM vertex_table','2,7,11,9',7);
 
 
-* Using distance matrix
+* Using distance matrix (Points 2,7,11 and 9, starting from 7)
 
 .. code-block:: sql
 
-	SELECT seq, id FROM pgr_tsp('{{0,1,2,3},{1,0,3,2},{2,3,0,4},{3,2,4,0}}',2);
+	SELECT seq, id FROM pgr_tsp('{{0,1,3,3},{1,0,2,2},{3,2,0,2},{3,2,2,0}}',1);
 
 	 seq | id 
 	-----+----
-	   0 |  2
+	   0 |  1
+	   1 |  3
+	   2 |  2
+	   3 |  0
+	(4 rows)
+
+* Using distance matrix (Points 2,7,11 and 9, starting from 7, returning to 11)
+
+.. code-block:: sql
+
+	SELECT seq, id FROM pgr_tsp('{{0,1,3,3},{1,0,2,2},{3,2,0,2},{3,2,2,0}}',1,2);
+
+	 seq | id 
+	-----+----
+	   0 |  3
 	   1 |  0
 	   2 |  1
-	   3 |  3
+	   3 |  2
 	(4 rows)
 
 The queries use the :ref:`sampledata` network.
