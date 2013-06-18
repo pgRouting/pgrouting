@@ -29,4 +29,8 @@ Vagrant.configure("2") do |config|
   # Forward SSH agent to host
   config.ssh.forward_agent = true
   
+  # Create synced folder for GnuPG keys and within home directory
+  config.vm.synced_folder "~/.gnupg", "/home/vagrant/.gnupg"
+  config.vm.synced_folder "../", "/home/vagrant/repos"
+
 end
