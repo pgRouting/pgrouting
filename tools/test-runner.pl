@@ -323,15 +323,20 @@ sub getSharePath {
     my $pg = shift;
 
     my $share;
+    my $isdebian = -e "/etc/debian_version";
     my $pg_config = `which pg_config`;
     $pg_config =~ s/^\s*|\s*$//g;
     print "which pg_config = $pg_config\n" if $VERBOSE;
     if (length($pg_config)) {
         $share = `$pg_config --sharedir`;
         $share =~ s/^\s*|\s*$//g;
-        $share =~ s/(\d+(\.\d+)?)$/$pg/;
-        if (length($share) && -d $share) {
-            return $share;
+        if ($isdebian) {
+            $share =~ s/(\d+(\.\d+)?)$/$pg/;
+            if (length($share) && -d $share) {
+                return $share;
+            }
+        } else {
+            return $share
         }
     }
     die "Could not determine the postgresql version" unless $pg;
