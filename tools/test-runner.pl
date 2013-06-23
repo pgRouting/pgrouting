@@ -86,6 +86,14 @@ if (! $psql) {
     $psql = findPsql() || die "ERROR: can not find psql, specify it on the command line.\n";
 }
 
+my $OS = "$^O";
+if (length($psql)) {
+    if ($OS =~ /msys/
+        || $OS =~ /MSWin/) {
+        $psql = "\"$psql\"";
+    }
+}
+
 # some unit tests
 #my $server_ver = getServerVersion();
 #my $server_ver = '9.2';
@@ -205,8 +213,13 @@ sub createTestDB {
         if ($vpgis) {
             $myver = " VERSION '$vpgis'";
         }
+        my $encoding = '';
+        if ($OS =~ /msys/
+            || $OS =~ /MSWin/) {
+            $encoding = "SET client_encoding TO 'UTF8';";
+        }
         print "-- Trying to install postgis extension $myver\n" if $DEBUG;
-        mysystem("$psql -U $DBUSER -h $DBHOST -p $DBPORT -c \"create extension postgis $myver\" $DBNAME");
+        mysystem("$psql -U $DBUSER -h $DBHOST -p $DBPORT -c \"$encoding create extension postgis $myver\" $DBNAME");
     }
     else {
         if ($vpgis && dbExists("template_postgis_$vpgis")) {
@@ -328,7 +341,7 @@ sub getSharePath {
     $pg_config =~ s/^\s*|\s*$//g;
     print "which pg_config = $pg_config\n" if $VERBOSE;
     if (length($pg_config)) {
-        $share = `$pg_config --sharedir`;
+        $share = `"$pg_config" --sharedir`;
         $share =~ s/^\s*|\s*$//g;
         if ($isdebian) {
             $share =~ s/(\d+(\.\d+)?)$/$pg/;
@@ -336,7 +349,7 @@ sub getSharePath {
                 return $share;
             }
         } else {
-            return $share
+            return "$share"
         }
     }
     die "Could not determine the postgresql version" unless $pg;
