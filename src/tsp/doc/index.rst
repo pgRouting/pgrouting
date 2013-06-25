@@ -57,7 +57,7 @@ The TSP solver is based on ordering the points using straight line (euclidean) d
 	:x: ``float8`` x-coordinate
 	:y: ``float8`` y-coordinate
 
-:ids: ``text`` string containig ``int4`` ids of vertices separated by commas
+:ids: ``text`` string containing ``int4`` ids of vertices separated by commas
 :source: ``int4`` id of the start point
 
 
