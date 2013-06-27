@@ -145,6 +145,9 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
 
     DBG("In solve_tsp: num: %d, start: %d, end: %d", num, start, end);
 
+    if (num < 4)
+        elog(ERROR, "Error TSP requires four or more locations to optimize. Only %d were supplied.", num);
+
     if (start < 0 || start >= num)
         elog(ERROR, "Error start must be in the range of 0 <= start(%d) < num(%d).", start, num);
 

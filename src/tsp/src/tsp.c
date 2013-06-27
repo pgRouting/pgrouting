@@ -238,6 +238,11 @@ static int solve_tsp(char* sql, char* p_ids,
 
   DBG("MAX_TOWNS=%d", MAX_TOWNS);
 
+  if (MAX_TOWNS < 4) {
+    elog(ERROR, "Error: TSP requires 4 or more locations. Only %d were supplied.", MAX_TOWNS);
+    return -1;
+  }
+
   *path = (path_element_t *) palloc( MAX_TOWNS * sizeof(path_element_t) );
   if (! *path) {
     elog(ERROR, "Failed to alloc memory!");
