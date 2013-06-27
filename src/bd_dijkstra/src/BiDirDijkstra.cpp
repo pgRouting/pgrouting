@@ -98,6 +98,11 @@ void BiDirDijkstra::initall(int maxNode)
 */
 void BiDirDijkstra::deleteall()
 {
+	std::vector<GraphNodeInfo*>::iterator it;
+	for(it  = m_vecNodeVector.begin(); it != m_vecNodeVector.end(); it++){
+		delete *it;
+	}
+	m_vecNodeVector.clear();
 	delete [] m_pFParent;
 	delete [] m_pRParent;
 	delete [] m_pFCost;
@@ -194,16 +199,16 @@ void BiDirDijkstra::explore(int cur_node, double cur_cost, int dir, std::priorit
 {
 	int i;
 	// Number of connected edges
-	int con_edge = m_vecNodeVector[cur_node].Connected_Edges_Index.size();
+	int con_edge = m_vecNodeVector[cur_node]->Connected_Edges_Index.size();
 	double edge_cost;
 
 	for(i = 0; i < con_edge; i++)
 	{
-		int edge_index = m_vecNodeVector[cur_node].Connected_Edges_Index[i];
+		int edge_index = m_vecNodeVector[cur_node]->Connected_Edges_Index[i];
 		// Get the edge from the edge list.
 		GraphEdgeInfo edge = m_vecEdgeVector[edge_index];
 		// Get the connected node
-		int new_node = m_vecNodeVector[cur_node].Connected_Nodes[i];
+		int new_node = m_vecNodeVector[cur_node]->Connected_Nodes[i];
 		
 		if(cur_node == edge.StartNode)
 		{
@@ -395,6 +400,7 @@ bool BiDirDijkstra::construct_graph(edge_t* edges, int edge_count, int maxNode)
 {
 	int i;
 
+	/*
 	// Create a dummy node
     DBG("Create a dummy node\n");
 	GraphNodeInfo nodeInfo;
@@ -402,13 +408,19 @@ bool BiDirDijkstra::construct_graph(edge_t* edges, int edge_count, int maxNode)
 	nodeInfo.Connected_Edges_Index.clear();
     DBG("calling nodeInfo.Connected_Nodes.clear\n");
 	nodeInfo.Connected_Nodes.clear();
+	*/
 
 	// Insert the dummy node into the node list. This acts as place holder. Also change the nodeId so that nodeId and node index in the vector are same.
 	// There may be some nodes here that does not appear in the edge list. The size of the list is upto maxNode which is equal to maximum node id.
     DBG("m_vecNodeVector.push_back for 0 - %d\n", maxNode);
 	for(i = 0; i <= maxNode; i++)
 	{
-		nodeInfo.NodeID = i;
+		// Create a dummy node
+		GraphNodeInfo* nodeInfo = new GraphNodeInfo();
+		nodeInfo->Connected_Edges_Index.clear();
+		nodeInfo->Connected_Nodes.clear();
+		
+		nodeInfo->NodeID = i;
 		m_vecNodeVector.push_back(nodeInfo);
 	}
 
@@ -482,12 +494,12 @@ bool BiDirDijkstra::addEdge(edge_t edgeIn)
 	}
 
 	// update connectivity information for the start node.
-	m_vecNodeVector[newEdge.StartNode].Connected_Nodes.push_back(newEdge.EndNode);
-	m_vecNodeVector[newEdge.StartNode].Connected_Edges_Index.push_back(newEdge.EdgeIndex);
+	m_vecNodeVector[newEdge.StartNode]->Connected_Nodes.push_back(newEdge.EndNode);
+	m_vecNodeVector[newEdge.StartNode]->Connected_Edges_Index.push_back(newEdge.EdgeIndex);
 
 	// update connectivity information for the start node.
-	m_vecNodeVector[newEdge.EndNode].Connected_Nodes.push_back(newEdge.StartNode);
-	m_vecNodeVector[newEdge.EndNode].Connected_Edges_Index.push_back(newEdge.EdgeIndex);
+	m_vecNodeVector[newEdge.EndNode]->Connected_Nodes.push_back(newEdge.StartNode);
+	m_vecNodeVector[newEdge.EndNode]->Connected_Edges_Index.push_back(newEdge.EdgeIndex);
 
 
 	
