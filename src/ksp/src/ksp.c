@@ -261,7 +261,6 @@ kshortest_path(PG_FUNCTION_ARGS)
       nulls =(bool *) palloc(4 * sizeof(bool));
 
 
-      Int32GetDatum(path[call_cntr].route_id);
       values[0] = Int32GetDatum(path[call_cntr].route_id);
       nulls[0] = false;
       values[1] = Int32GetDatum(path[call_cntr].vertex_id);
@@ -305,8 +304,8 @@ int compute_kshortest_path(char* sql, int start_vertex,
   ksp_edge_t *edges = NULL;
   int total_tuples = 0;
 #ifndef _MSC_VER
-  ksp_edge_columns_t edge_columns = {id: -1, source: -1, target: -1, 
-                                 cost: -1, reverse_cost: -1};
+  ksp_edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
+                                 .cost= -1, .reverse_cost= -1};
 #else // _MSC_VER
   ksp_edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
 #endif // _MSC_VER
