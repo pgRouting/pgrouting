@@ -148,8 +148,12 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
     if (start < 0 || start >= num)
         elog(ERROR, "Error start must be in the range of 0 <= start(%d) < num(%d).", start, num);
 
-    if (end < 0 && end >= num)
+    if (end >= num)
         elog(ERROR, "Error end must be in the range of 0 <= end(%d) < num(%d).", end, num);
+
+    /* if start and end are the same this is the same as setting end = -1 */
+    if (start == end)
+        end = -1;
 
     /*
        fix up matrix id we have an end point
