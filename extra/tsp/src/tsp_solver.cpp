@@ -299,19 +299,21 @@ find_tsp_solution(int num, float dist[MAX_TOWNS][MAX_TOWNS],
               );
 
       
-      if(score < ga_get_entity_from_rank(pop,0)->fitness)
-        {
-          score = ga_get_entity_from_rank(pop,0)->fitness;
-          *fit = score;
+      if (pop->size > 0)
+      {
+         if(score < ga_get_entity_from_rank(pop,0)->fitness)
+         {
+             score = ga_get_entity_from_rank(pop,0)->fitness;
+             *fit = score;
       
-          for(int l=0; l<cnum; l++)
-            { 
-              p_ids[l] = ids[
-                             ((int *)ga_get_entity_from_rank(pop,0)->
-                              chromosome[0])[l]];
-            }
-        }
-      
+             for(int l=0; l<cnum; l++)
+             { 
+                p_ids[l] = ids[
+                               ((int *)ga_get_entity_from_rank(pop,0)->
+                                chromosome[0])[l]];
+             }
+         }
+      }
     }  
   
   return EXIT_SUCCESS;
