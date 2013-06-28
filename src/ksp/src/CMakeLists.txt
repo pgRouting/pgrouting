@@ -24,9 +24,6 @@ add_library(routing_ksp ${LIBRARY_MODE_TARGET} BaseGraph.cpp BaseGraph.h BasePat
 if(WIN32)
   if(MSVC)
     set_target_properties(routing_ksp PROPERTIES COMPILE_FLAGS "-DHAVE_GETHOSTNAME")
-  else(MSVC)
-    set_target_properties(routing_ksp PROPERTIES COMPILE_FLAGS "-DBUILDING_DLL")
-    set_target_properties(routing_ksp PROPERTIES LINK_FLAGS -Wl,--export-all-symbols)
   endif(MSVC)
 endif(WIN32)
 
