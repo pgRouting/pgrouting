@@ -45,9 +45,8 @@ struct Vertex
 // Edge id, cost, source and target ids and coordinates are copied also
 template <class G, class E>
 static void
-graph_add_edge(G &graph, int id, int source, int target, float8 cost)
+graph_add_edge(G &graph, E &e, int id, int source, int target, float8 cost)
 {
-  E e;
   bool inserted;
 
   if (cost < 0) // edges are not inserted in the graph if cost is negative
@@ -87,8 +86,8 @@ try {
 
     for (std::size_t j = 0; j < count; ++j)
     {
-
-        graph_add_edge<graph_t, edge_descriptor>(graph,
+        edge_descriptor e;
+        graph_add_edge<graph_t, edge_descriptor>(graph, e,
                    edges[j].id, edges[j].source,
                    edges[j].target, edges[j].cost);
 
@@ -105,7 +104,7 @@ try {
               cost = edges[j].cost;
           }
 
-          graph_add_edge<graph_t, edge_descriptor>(graph,
+          graph_add_edge<graph_t, edge_descriptor>(graph, e,
                  edges[j].id,
                  edges[j].target,
                  edges[j].source,
