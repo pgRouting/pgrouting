@@ -40,7 +40,7 @@ mkdir -p $outdir/share/extension
 mkdir $outdir/bin
 mkdir $outdir/lib
 
-cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}/build/lib
+cd ${PROJECTS}/pgrouting/branches/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib
 strip *.dll
 
 cp -r *.sql $outdir/share/extension
