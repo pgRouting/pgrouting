@@ -450,7 +450,9 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
 {
     int   i, j;
     int   istart = 0;
+    int   jstart = 0;
     int   iend = -1;
+    int   jend = -1;
     int   rev = 0;
     TSP   tsp;
     long  seed = -314159L;
@@ -499,8 +501,8 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
 
 #ifdef DEBUG
     for (i=0; i<tsp.n; i++) {
-        DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d",
-            i, ids[i], tsp.iorder[i], tsp.jorder[i]);
+        DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d, jo[io[i]]: %d",
+            i, ids[i], tsp.iorder[i], tsp.jorder[i], tsp.jorder[tsp.iorder[i]]);
     }
 #endif
 
@@ -513,46 +515,42 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
 
     // get the idex of start in iorder
     for (i=0; i < tsp.n; i++) {
-        if (tsp.iorder[i] == istart) istart = i;
-        if (tsp.iorder[i] == iend)   iend = i;
+        if (tsp.iorder[i] == istart) jstart = i;
+        if (tsp.iorder[i] == iend)   jend = i;
     }
-    DBG("istart: %d, iend: %d", istart, iend);
+    DBG("jstart: %d, jend: %d", jstart, jend);
 
     /*
-     * If the end is specified and the end point is the first in the list
-     * or if it is after start node then we need to reverse everything
-     * to extract the nodes in the reverse order
-     * and later we will reverse them again so they are correct
+     * If the end is specified and the end point and it follow start
+     * then we swap start and end and extract the list backwards
+     * and later we reverse the list for the desired order.
     */
-    if (iend > 0 && iend == istart+1 || iend == 0) {
-        reverse(tsp.n, ids);
-        reverse(tsp.n, tsp.iorder);
-        reverse(tsp.n, tsp.jorder);
-        istart = tsp.n - istart - 1;
-        iend = tsp.n - iend -1;
+    if (jend > 0 && jend == jstart+1) {
+        int tmp = jend;
+        jend = jstart;
+        jstart = tmp;
         rev = 1;
-        DBG("reversed ids: istart: %d, iend: %d", istart, iend);
-#ifdef DEBUG
-        for (i=0; i<tsp.n; i++) {
-            DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d",
-                i, ids[i], tsp.iorder[i], tsp.jorder[i]);
-        }
-#endif
+        DBG("reversed start and end: jstart: %d, jend: %d", jstart, jend);
     }
 
     // copy ids to tsp.jorder so we can rewrite ids
     memcpy(tsp.jorder, ids, tsp.n * sizeof(int));
 
     // write reordered ids into ids[]
-    for (i=istart, j=0; i < tsp.n; i++, j++)
+    // remember at this point jorder is our list if ids
+    for (i=jstart, j=0; i < tsp.n; i++, j++)
         ids[j] = tsp.jorder[tsp.iorder[i]];
 
-    for (i=0; i < istart; i++, j++)
+    for (i=0; i < jstart; i++, j++)
         ids[j] =tsp.jorder[tsp.iorder[i]];
 
-    // if we reversed the order above so put it correct now.
-    if (rev)
+    // if we reversed the order above, now put it correct.
+    if (rev) {
+        int tmp = jend;
+        jend = jstart;
+        jstart = tmp;
         reverse(tsp.n, ids);
+    }
 
 #ifdef DEBUG
     DBG("ids getting returned!");
@@ -562,7 +560,7 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     }
 #endif
 
-    DBG("tsplib: istart=%d, iend=%d, n=%d, j=%d", istart, iend, tsp.n, j);
+    DBG("tsplib: jstart=%d, jend=%d, n=%d, j=%d", jstart, jend, tsp.n, j);
 
     return 0;
 }

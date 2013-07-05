@@ -19,13 +19,13 @@ Routing Topology
 Overview
 -------------------------------------------------------------------------------
 
-Typically when GIS files are loaded into the data database for use with pgRouting they do not have topology information assocatired with. For data to create a useful topology it needs to be "noded". This means that where two or more roads form an intersection there it needs to be a node at the intersection and all the road segments need to be broken at the intersection.
+Typically when GIS files are loaded into the data database for use with pgRouting they do not have topology information assocated with them. To create a useful topology the data needs to be "noded". This means that where two or more roads form an intersection there it needs to be a node at the intersection and all the road segments need to be broken at the intersection, assuming that you can navigate from any of these segments to any other segment via that intersection.
 
-You can use the :ref:`graph analysis functions <analytics>` to help you see where you might have problems in your data. If you need to node your data, we also have a function :ref:`pgr_nodeNetwork() <pgr_node_network>` that might work for you. This function splits ALL crossing segments and nodes them. There are some cases where this might NOT be the right thing to do.
+You can use the :ref:`graph analysis functions <analytics>` to help you see where you might have topology problems in your data. If you need to node your data, we also have a function :ref:`pgr_nodeNetwork() <pgr_node_network>` that might work for you. This function splits ALL crossing segments and nodes them. There are some cases where this might NOT be the right thing to do.
 
-For example, when you have an overpass and underpass intersection, you do not want these noded, but pgr_nodeNetwork does not know that is the cases and will node them which is not good because then the router will be able to turn off the overpass onto the underpass like it was a flat 2D intersection.
+For example, when you have an overpass and underpass intersection, you do not want these noded, but pgr_nodeNetwork does not know that is the case and will node them which is not good because then the router will be able to turn off the overpass onto the underpass like it was a flat 2D intersection. To deal with this problem some data sets use z-levels at these types of intersections and other data might not node these intersection which would be ok.
 
-For those cases where topology needs to be added the following functions may be useful. One way to prep the data for pgRouting is to add the following columns to your table and then populate them as appropriate.
+For those cases where topology needs to be added the following functions may be useful. One way to prep the data for pgRouting is to add the following columns to your table and then populate them as appropriate. This example makes a lot of assumption like that you original data tables already has certain columns in it like ``one_way``, ``fcc``, and possibly others and that they contain specific data values. This is only to give you an idea of what you can do with your data.
 
 .. code-block:: sql
 
@@ -50,10 +50,10 @@ The function :ref:`pgr_createTopology() <pgr_create_topology>` will create the `
 
 .. code-block:: sql
 
-    UPDATE edge_table SET x1 = x(st_startpoint(the_geom)),
-                          y1 = y(st_startpoint(the_geom)),
-                          x2 = x(st_endpoint(the_geom)),
-                          y2 = y(st_endpoint(the_geom)),
+    UPDATE edge_table SET x1 = st_x(st_startpoint(the_geom)),
+                          y1 = st_y(st_startpoint(the_geom)),
+                          x2 = st_x(st_endpoint(the_geom)),
+                          y2 = st_y(st_endpoint(the_geom)),
       cost_len  = st_length_spheroid(the_geom, 'SPHEROID["WGS84",6378137,298.25728]'),
       rcost_len = st_length_spheroid(the_geom, 'SPHEROID["WGS84",6378137,298.25728]'),
       len_km = st_length_spheroid(the_geom, 'SPHEROID["WGS84",6378137,298.25728]')/1000.0,

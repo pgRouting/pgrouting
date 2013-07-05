@@ -145,11 +145,18 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
 
     DBG("In solve_tsp: num: %d, start: %d, end: %d", num, start, end);
 
-    if (start < 0 || start > num)
-        elog(ERROR, "Error start must be in the range of 0 >= start <= num. (%d)", start);
+    if (num < 4)
+        elog(ERROR, "Error TSP requires four or more locations to optimize. Only %d were supplied.", num);
 
-    if (end >= 0 && end >= num)
-        elog(ERROR, "Error end must be in the range of 0 <= end <= num. (%d)", end);
+    if (start < 0 || start >= num)
+        elog(ERROR, "Error start must be in the range of 0 <= start(%d) < num(%d).", start, num);
+
+    if (end >= num)
+        elog(ERROR, "Error end must be in the range of 0 <= end(%d) < num(%d).", end, num);
+
+    /* if start and end are the same this is the same as setting end = -1 */
+    if (start == end)
+        end = -1;
 
     /*
        fix up matrix id we have an end point

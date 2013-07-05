@@ -37,6 +37,14 @@ else(CGAL_INCLUDE_DIR AND CGAL_LIBRARIES AND BOOST_THREAD_LIBRARIES AND GMP_LIBR
     set(BOOST_THREAD_LIBRARIES ${Boost_LIBRARIES})
   endif(Boost_FOUND)
 
+  # check boost version we may need other components
+  if("${Boost_VERSION}" VERSION_GREATER "104900")
+      find_package(Boost COMPONENTS thread system REQUIRED)
+      if(Boost_FOUND)
+        set(BOOST_THREAD_LIBRARIES ${Boost_LIBRARIES})
+      endif(Boost_FOUND)
+  endif("${Boost_VERSION}" VERSION_GREATER "104900")
+
   find_library(GMP_LIBRARIES NAMES gmp libgmp
      PATHS
       ${GMP_ROOT}/lib

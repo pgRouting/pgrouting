@@ -273,13 +273,13 @@ static int compute_trsp(
 
   edge_t *edges = NULL;
   int total_tuples = 0;
-  edge_columns_t edge_columns = {id: -1, source: -1, target: -1, 
-                                 cost: -1, reverse_cost: -1};
+  edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
+                                 .cost= -1, .reverse_cost= -1};
 
   restrict_t *restricts = NULL;
   int total_restrict_tuples = 0;
-  restrict_columns_t restrict_columns = {target_id: -1, via_path: -1,
-                                 to_cost: -1};
+  restrict_columns_t restrict_columns = {.target_id= -1, .via_path= -1,
+                                 .to_cost= -1};
   int v_max_id=0;
   int v_min_id=INT_MAX;
 

@@ -259,9 +259,9 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
   int v_max_id=0;
   int v_min_id=INT_MAX;  
 
-  edge_astar_columns_t edge_columns = {id: -1, source: -1, target: -1, 
-                       cost: -1, reverse_cost: -1, 
-                       s_x: -1, s_y: -1, t_x: -1, t_y: -1};
+  edge_astar_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
+                       .cost= -1, .reverse_cost= -1, 
+                       .s_x= -1, .s_y= -1, .t_x= -1, .t_y= -1};
   char *err_msg;
   int ret = -1;
   register int z;
