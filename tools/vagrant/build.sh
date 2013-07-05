@@ -11,7 +11,7 @@ set -e # Exit script immediately on first error.
 
 cd /vagrant
 rm -Rf build 
-cmake -H. -Bbuild -DWITH_DOC=ON -DWITH_DD=ON 
+cmake -H. -Bbuild -DWITH_DD=ON 
 cd build 
 make 
 cd ..

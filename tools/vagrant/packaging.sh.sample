@@ -6,10 +6,10 @@
 # Prepare packaging (sample)
 # ------------------------------------------------------------------------------
 
-echo "DEBEMAIL=daniel@georepublic.de" > ~/.bash_aliases
-echo "DEBFULLNAME='Daniel Kastl (Georepublic)'" >> ~/.bash_aliases
+echo "DEBEMAIL=mail@example.com" > ~/.bash_aliases
+echo "DEBFULLNAME='First Last'" >> ~/.bash_aliases
 
-git config --global user.name "Daniel Kastl"
-git config --global user.email "daniel@georepublic.de"
+git config --global user.name "First Last"
+git config --global user.email "mail@example.com"
 git config --global core.editor vim
 git config --global color.ui true
