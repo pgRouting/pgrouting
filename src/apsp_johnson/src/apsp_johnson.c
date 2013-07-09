@@ -23,6 +23,9 @@
 #include "executor/spi.h"
 #include "funcapi.h"
 #include "catalog/pg_type.h"
+#if PGSQL_VERSION > 92
+#include "acces/htup_details.h"
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include "apsp_johnson.h"

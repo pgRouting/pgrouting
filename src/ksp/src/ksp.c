@@ -24,6 +24,9 @@
 #include "funcapi.h"
 #include "catalog/pg_type.h"
 #include "fmgr.h"
+#if PGSQL_VERSION > 92
+#include "acces/htup_details.h"
+#endif
 
 #include "ksp.h" 
 #include "KSPDriver.h"
@@ -255,7 +258,7 @@ kshortest_path(PG_FUNCTION_ARGS)
       //bool nulls[4]; */
 
       Datum *values;
-      char* nulls;
+      bool* nulls;
 
       values = (Datum *)palloc(4 * sizeof(Datum));
       nulls =(bool *) palloc(4 * sizeof(bool));
