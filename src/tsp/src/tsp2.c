@@ -13,6 +13,9 @@
 #include "funcapi.h"
 #include "catalog/pg_type.h"
 #include "utils/array.h"
+#if PGSQL_VERSION > 92
+#include "acces/htup_details.h"
+#endif
 
 #include "fmgr.h"
 
