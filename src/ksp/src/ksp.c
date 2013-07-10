@@ -25,7 +25,7 @@
 #include "catalog/pg_type.h"
 #include "fmgr.h"
 #if PGSQL_VERSION > 92
-#include "acces/htup_details.h"
+#include "access/htup_details.h"
 #endif
 
 #include "ksp.h" 
