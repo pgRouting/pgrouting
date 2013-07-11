@@ -1,13 +1,5 @@
 set(LIBRARY_OUTPUT_PATH ../../../lib/)
 
-if(UNIX)
-  set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -frounding-math")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -frounding-math -Wno-deprecated")
-else(UNIX)
-  set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -frounding-math -Wno-deprecated")
-endif(UNIX)
-
 include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR})
 if(WIN32)
     include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
