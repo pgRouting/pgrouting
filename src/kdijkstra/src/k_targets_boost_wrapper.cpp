@@ -148,7 +148,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
 
         if (_target[i] < 0 )
         {
-            *err_msg = (char *) "Ending vertex %d not found", i;
+            *err_msg = (char *) "Ending vertex not found";
             return -1;
         }
     }        
@@ -356,7 +356,7 @@ try {
 
         if (_target[i] < 0)
         {
-            *err_msg = (char *) "Ending vertex %d not found", i;
+            *err_msg = (char *) "Ending vertex not found";
             return -1;
         }
     }        
