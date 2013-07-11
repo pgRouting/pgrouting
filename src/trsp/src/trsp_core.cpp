@@ -25,7 +25,7 @@ int trsp_node_wrapper(
 		std::vector<int> seq;
 		seq.clear();
         seq.push_back(restricts[i].target_id);
-		for(j = 0; j<MAX_RULE_LENGTH, restricts[i].via[j]>-1; j++)
+		for(j = 0; j<MAX_RULE_LENGTH && restricts[i].via[j]>-1; j++)
 		{
 			seq.push_back(restricts[i].via[j]);
 		}
@@ -64,7 +64,7 @@ int trsp_edge_wrapper(
 		std::vector<int> seq;
 		seq.clear();
         seq.push_back(restricts[i].target_id);
-		for(j = 0; j<MAX_RULE_LENGTH, restricts[i].via[j]>-1; j++)
+		for(j = 0; j<MAX_RULE_LENGTH && restricts[i].via[j]>-1; j++)
 		{
 			seq.push_back(restricts[i].via[j]);
 		}
