@@ -216,7 +216,7 @@ static int solve_tsp(char* sql, char* p_ids,
   int *ids;
 
   point_t *points=NULL;
-  point_columns_t point_columns = {id: -1, x: -1, y:-1};
+  point_columns_t point_columns = {.id= -1, .x= -1, .y=-1};
 
   char *err_msg = NULL;
   int ret = -1;

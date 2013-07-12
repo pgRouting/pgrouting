@@ -134,7 +134,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
 
     vertex_descriptor _source = vertex(start_vertex, graph);
 
-    if (_source < 0 /*|| _source >= num_nodes*/) 
+    if ((long)_source < 0) 
     {
         *err_msg = (char *) "Starting vertex not found";
         return -1;
@@ -146,7 +146,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
         _target[i] = vertex(end_vertices[i], graph);
 
 
-        if (_target[i] < 0 )
+        if ((long)_target[i] < 0 )
         {
             *err_msg = (char *) "Ending vertex not found";
             return -1;
@@ -342,7 +342,7 @@ try {
 
     vertex_descriptor _source = vertex(start_vertex, graph);
 
-    if (_source < 0 /*|| _source >= num_nodes*/) 
+    if ((long)_source < 0) 
     {
         *err_msg = (char *) "Starting vertex not found";
         return -1;
@@ -354,7 +354,7 @@ try {
         _target[i] = vertex(end_vertices[i], graph);
 
 
-        if (_target[i] < 0)
+        if ((long)_target[i] < 0)
         {
             *err_msg = (char *) "Ending vertex not found";
             return -1;

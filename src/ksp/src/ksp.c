@@ -87,6 +87,7 @@ static int ksp_finish(int code, int ret)
   return ret;
 }
 			  
+static int
 ksp_fetch_edge_columns(SPITupleTable *tuptable, ksp_edge_columns_t *edge_columns, 
                    bool has_reverse_cost)
 {
@@ -140,6 +141,7 @@ ksp_fetch_edge_columns(SPITupleTable *tuptable, ksp_edge_columns_t *edge_columns
     
   return 0;
 }
+
 void
 ksp_fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc, 
            ksp_edge_columns_t *edge_columns, ksp_edge_t *target_edge)

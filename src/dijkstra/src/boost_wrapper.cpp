@@ -116,14 +116,14 @@ try {
 
     vertex_descriptor _source = vertex(start_vertex, graph);
 
-    if (_source < 0 /*|| _source >= num_nodes*/) 
+    if ((long)_source < 0) 
     {
         *err_msg = (char *) "Starting vertex not found";
         return -1;
     }
 
     vertex_descriptor _target = vertex(end_vertex, graph);
-    if (_target < 0 /*|| _target >= num_nodes*/)
+    if ((long)_target < 0)
     {
         *err_msg = (char *) "Ending vertex not found";
         return -1;

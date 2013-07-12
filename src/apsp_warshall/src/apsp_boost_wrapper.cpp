@@ -186,6 +186,7 @@ try {
   }
 }
 
+#ifdef JUNK
 /*
 void static_warshall()
 {
@@ -301,3 +302,4 @@ int main()
     }
     return 1;
 }*/
+#endif

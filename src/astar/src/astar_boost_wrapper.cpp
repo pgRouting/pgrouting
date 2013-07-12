@@ -183,14 +183,14 @@ try {
 
   vertex_descriptor source_vertex = vertex(source_vertex_id, graph);
 
-  if (source_vertex < 0) 
+  if ((long)source_vertex < 0) 
   {
       *err_msg = (char *) "Source vertex not found";
       return -1;
   }
 
   vertex_descriptor target_vertex = vertex(target_vertex_id, graph);
-  if (target_vertex < 0)
+  if ((long)target_vertex < 0)
   {
       *err_msg = (char *) "Target vertex not found";
       return -1;
@@ -287,5 +287,6 @@ try {
     *err_msg = (char *) "Unknown exception caught!";
     return -1;
  }
+ return -1;
 }
 

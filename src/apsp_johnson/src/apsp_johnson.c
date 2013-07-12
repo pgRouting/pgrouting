@@ -129,7 +129,7 @@ int compute_apsp_johnson(char* sql, edge_apsp_johnson_t **output_edges,
   int v_max_id = 0;
   int v_min_id = INT_MAX;
 
-  edge_apsp_johnson_t edge_columns = { source: -1, target: -1, cost: -1 };
+  edge_apsp_johnson_t edge_columns = { .source= -1, .target= -1, .cost= -1 };
   char *err_msg;
   int ret = -1;
   register int z;
