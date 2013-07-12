@@ -19,12 +19,9 @@
 
 #include "fmgr.h"
 
-/*
-// this is not need because tsp.c has it covered for this library
 #ifdef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif
-*/
 
 #undef DEBUG
 //#define DEBUG 1

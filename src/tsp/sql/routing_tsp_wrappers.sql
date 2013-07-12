@@ -1,52 +1,79 @@
 --
--- Copyright (c) 2005 Sylvain Pasche,
---               2006-2007 Anton A. Patrushev, Orkney, Inc.
+-- Copyright (c) 2013 Stephen Woodbridge
 --
--- This program is free software; you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation; either version 2 of the License, or
--- (at your option) any later version.
+-- This files is released under an MIT-X license.
 --
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY; without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--- GNU General Public License for more details.
---
--- You should have received a copy of the GNU General Public License
--- along with this program; if not, write to the Free Software
--- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 
--- BEGIN;
 
------------------------------------------------------
--- Returns TSP solution as a set of vertex ids
---
--- Last changes: 14.02.2008
------------------------------------------------------
-CREATE OR REPLACE FUNCTION pgr_tspIds(geom_table varchar, 
-       ids varchar, source integer) 
-       RETURNS SETOF integer AS
-$$
-DECLARE 
-        r record;
-        path_result record;
-        v_id integer;
-	prev integer;
+create or replace function pgr_makeDistanceMatrix(sqlin text, OUT dmatrix double precision[], OUT ids integer[])
+  as
+$body$
+declare
+    sql text;
+    r record;
+    
+begin
+    dmatrix := array[]::double precision[];
+    ids := array[]::integer[];
 
-BEGIN
-	prev := -1;
-	FOR path_result IN EXECUTE 'SELECT vertex_id FROM tsp(''select distinct source::integer as source_id, ST_X(ST_StartPoint(the_geom)), ST_Y(ST_StartPoint(the_geom)) from ' ||
-		pgr_quote_ident(geom_table) || ' where source in (' || 
-                ids || ')  UNION select distinct target as source_id, ST_X(ST_EndPoint(the_geom)), ST_Y(ST_EndPoint(the_geom)) from '|| pgr_quote_ident(geom_table) ||' where target in ('||ids||')'', '''|| ids  ||''', '|| source  ||')' LOOP
+    sql := 'with nodes as (' || sqlin || ')
+        select i, array_agg(dist) as arow from (
+            select a.id as i, b.id as j, st_distance(st_makepoint(a.x, a.y), st_makepoint(b.x, b.y)) as dist
+              from nodes a, nodes b
+             order by a.id, b.id
+           ) as foo group by i order by i';
 
-                v_id = path_result.vertex_id;
-        RETURN NEXT v_id;
-	END LOOP;
+    for r in execute sql loop
+        dmatrix := array_cat(dmatrix, array[r.arow]);
+        ids := ids || array[r.i];
+    end loop;
 
-        RETURN;
-END;
-$$
-LANGUAGE 'plpgsql' VOLATILE STRICT; 
+end;
+$body$
+language plpgsql stable cost 10;
+
+
+
+create or replace function pgr_tsp(sql text, start_id integer, end_id integer default (-1))
+    returns setof pgr_costResult as
+$body$
+declare
+    sid integer;
+    eid integer;
+    
+begin
+
+    return query with dm  as (
+        select * from pgr_makeDistanceMatrix( sql )
+    ),
+    ids as (
+        select (row_number() over (order by id asc))-1 as rnum, id
+          from (
+                select unnest(ids) as id
+                  from dm
+                ) foo
+    ), 
+    t as (
+        select a.seq, b.rnum, b.id
+          from pgr_tsp(
+                   (select dmatrix from dm),
+                   (select rnum from ids where id=start_id)::integer,
+                   (case when end_id = -1 then -1 else (select rnum from ids where id=end_id) end)::integer
+               ) a,
+               ids b
+         where a.id=b.rnum
+    ),
+    r as (
+        select array_agg(t.rnum) as rnum from t 
+    )
+    select t.seq::integer, 
+           t.rnum::integer as id1, 
+           t.id::integer as id2, 
+           dm.dmatrix[r.rnum[t.seq+1]+1][r.rnum[(t.seq+1)%array_length(r.rnum, 1)+1]+1]::float8 as cost
+      from t, dm, r;
+end;
+$body$
+language plpgsql volatile cost 50 rows 50;
 
 
