@@ -25,7 +25,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
+The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a heuristic that allow it to solve most shortest path problems by evaluation only a sub-set of the overall graph. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
 
 .. code-block:: sql
 
@@ -117,3 +117,4 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`type_cost_result`
+* http://en.wikipedia.org/wiki/A*_search_algorithm

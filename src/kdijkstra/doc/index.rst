@@ -9,7 +9,7 @@
 
 .. _pgr_kdijkstra:
 
-pgr_kDijkstra - K-Shortest Path Dijkstra
+pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra
 ===============================================================================
 
 .. index::
@@ -27,7 +27,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that summarize the path cost or returns the paths.
+This function allow you to have a single start node and multiple destination nodes and will compute the routes to all the destinations from the source node. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that summarize the total path cost. ``pgr_kdijkstraCost`` returns one record for each destination node and the cost is the total code of the route to that node. ``pgr_kdijkstraPath`` returns one record for every edge in that path from source to destination and the cost is to traverse that edge.
 
 .. code-block:: sql
 
@@ -121,4 +121,4 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`type_cost_result`
-
+* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm

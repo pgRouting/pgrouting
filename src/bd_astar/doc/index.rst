@@ -25,7 +25,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
+This is a bi-directional A* search algorithm. It searchs from the source toward the distination and at the same time from the destination to the source and terminates whe these to searchs meet in the middle. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
 
 .. code-block:: sql
 
@@ -122,3 +122,5 @@ See Also
 
 * :ref:`type_cost_result`
 * :ref:`bd_dijkstra`
+* http://en.wikipedia.org/wiki/Bidirectional_search
+* http://en.wikipedia.org/wiki/A*_search_algorithm

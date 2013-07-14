@@ -25,7 +25,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
+The K shortest path routing algorithm based on Yen's algorithm. "K" is the number of shortest paths desired. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
 
 .. code-block:: sql
 
@@ -122,4 +122,4 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`type_cost_result`
-
+* http://en.wikipedia.org/wiki/K_shortest_path_routing
