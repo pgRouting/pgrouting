@@ -106,7 +106,8 @@ but we have some basic tools that might help.
 .. code-block:: sql
 
     select pgr_analyzegraph('myroads', 'the_geom', 0.000001);
-    select pgr_analyzeoneway('myroads', 'direction', s_in_rules, s_out_rules, t_in_rules, t_out_rules)
+    select pgr_analyzeoneway('myroads', 'direction', s_in_rules, s_out_rules,
+                             t_in_rules, t_out_rules)
 
 See :ref:`analytics` for more information.
 

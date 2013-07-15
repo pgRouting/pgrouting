@@ -29,7 +29,8 @@ The K shortest path routing algorithm based on Yen's algorithm. "K" is the numbe
 
 .. code-block:: sql
 
-  pgr_costResult[] pgr_ksp(sql text, source integer, target integer, paths integer, has_rcost boolean);
+  pgr_costResult[] pgr_ksp(sql text, source integer, target integer,
+                           paths integer, has_rcost boolean);
 
 
 Description

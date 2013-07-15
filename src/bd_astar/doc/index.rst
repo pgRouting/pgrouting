@@ -29,7 +29,8 @@ This is a bi-directional A* search algorithm. It searchs from the source toward 
 
 .. code-block:: sql
 
-  pgr_costResult[] pgr_bdAstar(sql text, source integer, target integer, directed boolean, has_rcost boolean);
+  pgr_costResult[] pgr_bdAstar(sql text, source integer, target integer,
+                               directed boolean, has_rcost boolean);
 
 
 Description

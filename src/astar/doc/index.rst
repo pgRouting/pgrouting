@@ -29,7 +29,8 @@ The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a h
 
 .. code-block:: sql
 
-	pgr_costResult[] pgr_astar(sql text, source integer, target integer, directed boolean, has_rcost boolean);
+	pgr_costResult[] pgr_astar(sql text, source integer, target integer,
+                               directed boolean, has_rcost boolean);
 
 
 Description

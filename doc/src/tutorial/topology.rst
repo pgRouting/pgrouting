@@ -57,7 +57,8 @@ The function :ref:`pgr_createTopology() <pgr_create_topology>` will create the `
       cost_len  = st_length_spheroid(the_geom, 'SPHEROID["WGS84",6378137,298.25728]'),
       rcost_len = st_length_spheroid(the_geom, 'SPHEROID["WGS84",6378137,298.25728]'),
       len_km = st_length_spheroid(the_geom, 'SPHEROID["WGS84",6378137,298.25728]')/1000.0,
-      len_miles = st_length_spheroid(the_geom, 'SPHEROID["WGS84",6378137,298.25728]')/1000.0*0.6213712,
+      len_miles = st_length_spheroid(the_geom, 'SPHEROID["WGS84",6378137,298.25728]')
+                  / 1000.0 * 0.6213712,
       speed_mph = CASE WHEN fcc='A10' THEN 65
                        WHEN fcc='A15' THEN 65
                        WHEN fcc='A20' THEN 55

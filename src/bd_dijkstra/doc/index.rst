@@ -30,7 +30,8 @@ This is a bi-directional Dijkstra search algorithm. It searchs from the source t
 
 .. code-block:: sql
 
-  pgr_costResult[] pgr_bdDijkstra(sql text, source integer, target integer, directed boolean, has_rcost boolean);
+  pgr_costResult[] pgr_bdDijkstra(sql text, source integer, target integer,
+                                  directed boolean, has_rcost boolean);
 
 
 Description

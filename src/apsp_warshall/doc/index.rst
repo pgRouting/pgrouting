@@ -25,7 +25,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-The Floyd-Warshall algorithm (also known as Floyd's algorithm and other names_ is a graph analysis algorithm for finding shortest paths in a weighted graph. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows for every pair of nodes in the graph.
+The Floyd-Warshall algorithm (also known as Floyd's algorithm and other names is a graph analysis algorithm for finding the shortest paths between all pairs of nodes in a weighted graph. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows for every pair of nodes in the graph.
 
 .. code-block:: sql
 

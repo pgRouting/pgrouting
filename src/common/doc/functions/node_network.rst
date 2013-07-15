@@ -32,7 +32,8 @@ The function reads edges from a not "noded" network table and writes the "noded"
 
 .. code-block:: sql
 
-    text pgr_nodeNetwork(text table_in, text gid_cname, text geo_cname, text table_out, double precision tolerance)
+    text pgr_nodeNetwork(text table_in, text gid_cname, text geo_cname,
+                         text table_out, double precision tolerance)
 
 
 Description

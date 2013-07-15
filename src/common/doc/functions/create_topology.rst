@@ -29,7 +29,8 @@ The function returns ``OK`` after the network topology has been built.
 
 .. code-block:: sql
 
-	varchar pgr_createTopology(varchar geom_table, double precision tolerance, varchar geo_cname, cvarchar gid_cname);
+	varchar pgr_createTopology(varchar geom_table, double precision tolerance,
+                               varchar geo_cname, cvarchar gid_cname);
 
 
 Description

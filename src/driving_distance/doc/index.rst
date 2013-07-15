@@ -33,7 +33,8 @@ This function computes a Dijkstra shortest path solution them extracts the cost 
 
 .. code-block:: sql
 
-	path_result[] pgr_drivingDistance(text sql, integer source, double precision distance, boolean directed, boolean has_rcost);
+	path_result[] pgr_drivingDistance(text sql, integer source, double precision distance,
+                                      boolean directed, boolean has_rcost);
 
 
 Description
