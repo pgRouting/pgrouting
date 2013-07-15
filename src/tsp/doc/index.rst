@@ -122,18 +122,36 @@ The result will be N records of ``[ seq, id ]``:
 Examples
 -------------------------------------------------------------------------------
 
-* Using SQL parameter
+* Using SQL parameter (all points from the table, atarting from 6 and ending at 5)
 
 .. code-block:: sql
 
-	SELECT * FROM pgr_tsp('SELECT id AS source_id, x, y FROM vertex_table','2,7,11,9',7);
+    SELECT seq, id1, id2, round(cost::numeric, 2) AS cost
+      FROM pgr_tsp('SELECT id, x, y FROM vertex_table ORDER BY id', 6, 5);
+
+     seq | id1 | id2 | cost
+    -----+-----+-----+------
+       0 |   5 |   6 | 1.00
+       1 |   6 |   7 | 1.00
+       2 |   1 |   2 | 1.00
+       3 |   0 |   1 | 1.41
+       4 |   2 |   3 | 1.00
+       5 |   7 |   8 | 1.41
+       6 |   3 |   4 | 1.00
+       7 |   8 |   9 | 1.00
+       8 |  11 |  12 | 1.00
+       9 |  10 |  11 | 1.00
+      10 |   9 |  10 | 1.00
+      11 |  12 |  13 | 2.83
+      12 |   4 |   5 | 1.00
+   (13 rows)
 
 
-* Using distance matrix (Points 2,7,11 and 9, starting from 7)
+* Using distance matrix (A loop starting from 1)
 
 .. code-block:: sql
 
-	SELECT seq, id FROM pgr_tsp('{{0,1,3,3},{1,0,2,2},{3,2,0,2},{3,2,2,0}}',1);
+	SELECT seq, id FROM pgr_tsp('{{0,1,3,3},{1,0,2,2},{3,2,0,2},{3,2,2,0}}'::float8[],1);
 
 	 seq | id 
 	-----+----
@@ -143,17 +161,17 @@ Examples
 	   3 |  0
 	(4 rows)
 
-* Using distance matrix (Points 2,7,11 and 9, starting from 7, returning to 11)
+* Using distance matrix (Starting from 1, ending at 2)
 
 .. code-block:: sql
 
-	SELECT seq, id FROM pgr_tsp('{{0,1,3,3},{1,0,2,2},{3,2,0,2},{3,2,2,0}}',1,2);
+	SELECT seq, id FROM pgr_tsp('{{0,1,3,3},{1,0,2,2},{3,2,0,2},{3,2,2,0}}'::float8[],1,2);
 
 	 seq | id 
 	-----+----
-	   0 |  3
+	   0 |  1
 	   1 |  0
-	   2 |  1
+	   2 |  3
 	   3 |  2
 	(4 rows)
 
