@@ -20,7 +20,7 @@ create table network (
 	reverse_cost float 
 );
 -- Add a geom column
-select addgeometrycolumn('','network','the_geom',3857,'MULTIlINESTRING',2);
+select addgeometrycolumn('','network','the_geom',3857,'MULTILINESTRING',2);
 -- Make the vertexs, location is not important in this example
 insert into nodes (vertex,the_geom,name) values (0,st_SetSRID(st_makepoint(0,0),3857),'Zero');
 insert into nodes (vertex,the_geom,name) values (1,st_SetSRID(st_makepoint(1,1),3857),'One');
