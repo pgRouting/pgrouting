@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Graph Analytics &mdash; pgRouting Manual (2.0.0-dev)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0-dev (1312409 develop)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0-dev)" href="../../../index.html" />
+    <link rel="next" title="Custom Query" href="custom_query.html" />
+    <link rel="prev" title="Routing Topology" href="topology.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.0.0-dev)</span></a></h1>
+        <h2 class="heading"><span>Graph Analytics</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="topology.html">Routing Topology</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="custom_query.html">Custom Query</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="graph-analytics">
+<span id="analytics"></span><h1>Graph Analytics<a class="headerlink" href="#graph-analytics" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Stephen Woodbridge &lt;<a class="reference external" href="mailto:woodbri&#37;&#52;&#48;swoodbridge&#46;com">woodbri<span>&#64;</span>swoodbridge<span>&#46;</span>com</a>&gt;</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Copyright:</th><td class="field-body">Stephen Woodbridge. The source code is released under the MIT-X license.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>It is common to find problems with graphs that have not been constructed fully noded or in graphs with zlevels at intersection that have been entered incorrectly. An other problem is oneway streets that have been entered in the wrong direction. We can not detect errors with respect to &#8220;ground&#8221; truth, but we can look for inconsistencies and some anomalies in a graph and report them for additional inspections.</p>
+<p>We do not current have any visualization tools for these problems, but I have used mapserver to render the graph and highlight potential problem areas. Someone familar with graphviz might contribute tools for generating images with that.</p>
+</div>
+<div class="section" id="analyze-a-graph">
+<h2>Analyze a Graph<a class="headerlink" href="#analyze-a-graph" title="Permalink to this headline">¶</a></h2>
+<p>With <a class="reference internal" href="../../../src/common/doc/functions/analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph - Analyze a Graph</em></a> the graph can be checked for errors.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000002</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>After the analyzing the graph, deadends are indentified by <tt class="docutils literal"><span class="pre">cnt=1</span></tt> in the &#8220;vertices_tmp&#8221; table and potential problems are identified with <tt class="docutils literal"><span class="pre">chk=1</span></tt>.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">vertices_tmp</span> <span class="k">WHERE</span> <span class="n">chk</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If you have isolated road segments, for example, a segment where both ends are deadends. you can find these with the following query:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span>
+    <span class="k">FROM</span> <span class="n">edge_tab</span> <span class="n">a</span><span class="p">,</span> <span class="n">vertices_tmp</span> <span class="n">b</span><span class="p">,</span> <span class="n">vertices_tmp</span> <span class="k">c</span>
+    <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="k">source</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="n">b</span><span class="p">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span> <span class="k">AND</span> <span class="n">a</span><span class="p">.</span><span class="n">target</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="k">c</span><span class="p">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If you want to visualize these on a graphic image, then you can use something like mapserver to render the edges and the vertices and style based on <tt class="docutils literal"><span class="pre">cnt</span></tt> or if they are isolated, etc. You can also do this with a tool like graphviz, or geoserver or other similar tools.</p>
+</div>
+<div class="section" id="analyze-one-way-streets">
+<h2>Analyze One Way Streets<a class="headerlink" href="#analyze-one-way-streets" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../../../src/common/doc/functions/analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway - Analyze One Way Streets</em></a> analyzes oneway streets in a graph and identifies any flipped segments. Basically if you count the edges coming into a node and the edges exiting a node the number has to be greater than one.</p>
+<p>This query will add two columns to the vertices_tmp table <tt class="docutils literal"><span class="pre">ein</span> <span class="pre">int</span></tt> and <tt class="docutils literal"><span class="pre">eout</span> <span class="pre">int</span></tt> and populate it with the appropriate counts. After running this on a graph you can identify nodes with potential problems with the following query.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">vertices_tmp</span> <span class="k">WHERE</span> <span class="k">in</span><span class="o">=</span><span class="mi">0</span> <span class="k">OR</span> <span class="k">out</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The rules are defined as an array of text strings that if match the <tt class="docutils literal"><span class="pre">col</span></tt> value would be counted as true for the source or target in or out condition.</p>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Lets assume we have a table &#8220;st&#8221; of edges and a column &#8220;one_way&#8221; that might have values like:</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#8216;FT&#8217;    - oneway from the source to the target node.</li>
+<li>&#8216;TF&#8217;    - oneway from the target to the source node.</li>
+<li>&#8216;B&#8217;     - two way street.</li>
+<li>&#8216;&#8217;      - empty field, assume twoway.</li>
+<li>&lt;NULL&gt;  - NULL field, use two_way_if_null flag.</li>
+</ul>
+</div></blockquote>
+<p>Then we could form the following query to analyze the oneway streets for errors.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="s1">&#39;st&#39;</span><span class="p">,</span> <span class="s1">&#39;one_way&#39;</span><span class="p">,</span>
+            <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
+            <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
+            <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
+            <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
+            <span class="k">true</span><span class="p">);</span>
+
+<span class="c1">-- now we can see the problem nodes</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">vertices_tmp</span> <span class="k">WHERE</span> <span class="n">ein</span><span class="o">=</span><span class="mi">0</span> <span class="k">OR</span> <span class="n">eout</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">-- and the problem edges connected to those nodes</span>
+<span class="k">SELECT</span> <span class="n">gid</span> <span class="k">FROM</span> <span class="n">st</span> <span class="n">a</span><span class="p">,</span> <span class="n">vertices_tmp</span> <span class="n">b</span> <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="k">source</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="n">ein</span><span class="o">=</span><span class="mi">0</span> <span class="k">OR</span> <span class="n">eout</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span> <span class="n">gid</span> <span class="k">FROM</span> <span class="n">st</span> <span class="n">a</span><span class="p">,</span> <span class="n">vertices_tmp</span> <span class="n">b</span> <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">target</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="n">ein</span><span class="o">=</span><span class="mi">0</span> <span class="k">OR</span> <span class="n">eout</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Typically these problems are generated by a break in the network, the oneway direction set wrong, maybe an error releted to zlevels or a network that is not properly noded.</p>
+<p>The above tools do not detect all network issues, but they will identify some common problems. There are other problems that are hard to detect because they are more global in nature like multiple disconnected networks. Think of an island with a road network that is not connected to the mainland network because the bridge ot ferry routes are missing.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../../src/common/doc/functions/analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph - Analyze a Graph</em></a></li>
+<li><a class="reference internal" href="../../../src/common/doc/functions/analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway - Analyze One Way Streets</em></a></li>
+<li><a class="reference internal" href="../../../src/common/doc/functions/node_network.html#pgr-node-network"><em>pgr_nodeNetwork - Nodes an network edge table.</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="topology.html">Routing Topology</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="custom_query.html">Custom Query</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (1312409 develop).
+      Last updated on Jul 16, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

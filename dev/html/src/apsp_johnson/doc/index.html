@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_apspJohnson - All Pairs Shortest Path, Johnson’s Algorithm &mdash; pgRouting Manual (2.0.0-dev)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0-dev (1312409 develop)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0-dev)" href="../../../index.html" />
+    <link rel="next" title="pgr_apspWarshall - All Pairs Shortest Path, Floyd-Warshall Algorithm" href="../../apsp_warshall/doc/index.html" />
+    <link rel="prev" title="pgr_geomResult[] - Path Result with Geometry" href="../../common/doc/types/geom_result.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.0.0-dev)</span></a></h1>
+        <h2 class="heading"><span>pgr_apspJohnson - All Pairs Shortest Path, Johnson’s Algorithm</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../common/doc/types/geom_result.html">pgr_geomResult[] - Path Result with Geometry</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../apsp_warshall/doc/index.html">pgr_apspWarshall - All Pairs Shortest Path, Floyd-Warshall Algorithm</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-apspjohnson-all-pairs-shortest-path-johnson-s-algorithm">
+<span id="pgr-apsp-johnson"></span><h1>pgr_apspJohnson - All Pairs Shortest Path, Johnson&#8217;s Algorithm<a class="headerlink" href="#pgr-apspjohnson-all-pairs-shortest-path-johnson-s-algorithm" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_apspJohnson</span></tt> - Returns all costs for each pair of nodes in the graph.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Johnson&#8217;s algorithm is a way to find the shortest paths between all pairs of vertices in a sparse, edge weighted, directed graph. Returns a set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a> (seq, id1, id2, cost) rows for every pair of nodes in the graph.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_apspJohnson</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first">a SQL query that should return the edges for the graph that will be analyzed:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="k">FROM</span> <span class="n">edge_table</span><span class="p">;</span>
+</pre></div>
+</div>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the source vertex for this edge</td>
+</tr>
+<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the target vertex for this edge</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> a positive value for the cost to traverse this edge</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Returns set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[] - Path Result with Cost</em></a>:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body">row sequence</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id1:</th><td class="field-body">source node ID</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">target node ID</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body">cost to traverse from <tt class="docutils literal"><span class="pre">id1</span></tt> to <tt class="docutils literal"><span class="pre">id2</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>New in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span> <span class="k">AS</span> <span class="k">from</span><span class="p">,</span> <span class="n">id2</span> <span class="k">AS</span> <span class="k">to</span><span class="p">,</span> <span class="n">cost</span>
+    <span class="k">FROM</span> <span class="n">pgr_apspJohnson</span><span class="p">(</span>
+        <span class="s1">&#39;SELECT source, target, cost FROM edge_table&#39;</span>
+    <span class="p">);</span>
+
+ <span class="n">seq</span> <span class="o">|</span> <span class="k">from</span> <span class="o">|</span> <span class="k">to</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="c1">-----+------+----+------</span>
+   <span class="mi">0</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
+   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mi">8</span> <span class="o">|</span>    <span class="mi">3</span>
+<span class="p">[...]</span>
+</pre></div>
+</div>
+<p>The query uses the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[] - Path Result with Cost</em></a></li>
+<li><a class="reference internal" href="../../apsp_warshall/doc/index.html#pgr-apsp-warshall"><em>pgr_apspWarshall - All Pairs Shortest Path, Floyd-Warshall Algorithm</em></a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Johnson%27s_algorithm">http://en.wikipedia.org/wiki/Johnson%27s_algorithm</a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../common/doc/types/geom_result.html">pgr_geomResult[] - Path Result with Geometry</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../apsp_warshall/doc/index.html">pgr_apspWarshall - All Pairs Shortest Path, Floyd-Warshall Algorithm</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (1312409 develop).
+      Last updated on Jul 16, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
