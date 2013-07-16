@@ -28,17 +28,19 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
+The turn restricted shorthest path (TRSP) is a shortest path algorithm that can optionally take into account complicated turn restrictions like those found in real work navigable road networks. Performamnce wise it is nearly as fast as the A* search but has many additional features like it works with edges rather than the nodes of the network. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
 
 .. code-block:: sql
 
-	pgr_costResult[] pgr_trsp(sql text, source integer, target integer, directed boolean, has_rcost boolean [,restrict_sql text]);
+	pgr_costResult[] pgr_trsp(sql text, source integer, target integer,
+                     directed boolean, has_rcost boolean [,restrict_sql text]);
 
 
 .. code-block:: sql
 
 	pgr_costResult[] pgr_trsp(sql text, source_edge integer, source_pos double precision, 
-	                          target_edge integer, target_pos double precision, directed boolean, has_rcost boolean [,restrict_sql text]);
+	                          target_edge integer, target_pos double precision, directed boolean,
+                              has_rcost boolean [,restrict_sql text]);
 
 
 Description
@@ -145,8 +147,19 @@ Then a query with turn restrictions is created as:
 		FROM pgr_trsp(
 			'SELECT id, source, target, cost FROM edge_table',
 			7, 12, false, false, 
-			'SELECT to_cost, to_edge AS target_id, from_edge || coalesce('','' || via, '''') AS via_path FROM restrictions'
+			'SELECT to_cost, to_edge AS target_id,
+                   from_edge || coalesce('','' || via, '''') AS via_path
+               FROM restrictions'
 		);
+
+     seq | node | edge | cost
+     -----+------+------+------
+        0 |    7 |    8 |    1
+        1 |    8 |   11 |    1
+        2 |   11 |   13 |    1
+        3 |   12 |   -1 |    0
+     (4 rows)
+
 
 
 The queries use the :ref:`sampledata` network.

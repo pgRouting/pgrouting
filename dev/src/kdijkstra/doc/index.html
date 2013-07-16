@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_kDijkstra - K-Shortest Path Dijkstra &mdash; pgRouting Manual (2.0.0-dev)</title>
+    <title>pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra &mdash; pgRouting Manual (2.0.0-dev)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0-dev (372ebc8 develop)',
+        VERSION:     '2.0.0-dev (0b4b655 develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,7 @@
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
           <span>pgRouting Manual (2.0.0-dev)</span></a></h1>
-        <h2 class="heading"><span>pgr_kDijkstra - K-Shortest Path Dijkstra</span></h2>
+        <h2 class="heading"><span>pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra</span></h2>
       </div>
       <div class="topnav">
       
@@ -49,8 +49,8 @@
       <div class="content">
         
         
-  <div class="section" id="pgr-kdijkstra-k-shortest-path-dijkstra">
-<span id="pgr-kdijkstra"></span><h1>pgr_kDijkstra - K-Shortest Path Dijkstra<a class="headerlink" href="#pgr-kdijkstra-k-shortest-path-dijkstra" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-kdijkstra-mutliple-destination-shortest-path-dijkstra">
+<span id="pgr-kdijkstra"></span><h1>pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra<a class="headerlink" href="#pgr-kdijkstra-mutliple-destination-shortest-path-dijkstra" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -60,7 +60,7 @@
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>Returns a set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a> (seq, id1, id2, cost) rows, that summarize the path cost or returns the paths.</p>
+<p>This function allow you to have a single start node and multiple destination nodes and will compute the routes to all the destinations from the source node. Returns a set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a> (seq, id1, id2, cost) rows, that summarize the total path cost. <tt class="docutils literal"><span class="pre">pgr_kdijkstraCost</span></tt> returns one record for each destination node and the cost is the total code of the route to that node. <tt class="docutils literal"><span class="pre">pgr_kdijkstraPath</span></tt> returns one record for every edge in that path from source to destination and the cost is to traverse that edge.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_kdijkstraCost</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">,</span> <span class="nb">integer</span> <span class="k">source</span><span class="p">,</span>
                  <span class="nb">integer</span><span class="p">[]</span> <span class="n">targets</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">directed</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">has_rcost</span><span class="p">);</span>
 
@@ -183,6 +183,7 @@
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[] - Path Result with Cost</em></a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></li>
 </ul>
 </div>
 </div>
@@ -202,8 +203,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (372ebc8 develop).
-      Last updated on Jun 19, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (0b4b655 develop).
+      Last updated on Jul 16, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>

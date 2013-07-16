@@ -25,7 +25,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows for every pair of nodes in the graph.
+Johnson's algorithm is a way to find the shortest paths between all pairs of vertices in a sparse, edge weighted, directed graph. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows for every pair of nodes in the graph.
 
 .. code-block:: sql
 
@@ -83,3 +83,4 @@ See Also
 
 * :ref:`type_cost_result`
 * :ref:`pgr_apsp_warshall`
+* http://en.wikipedia.org/wiki/Johnson%27s_algorithm

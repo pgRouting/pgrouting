@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '2.0.0-dev (372ebc8 develop)',
+        VERSION:     '2.0.0-dev (0b4b655 develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -58,7 +58,7 @@
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>Function to split a string on <tt class="docutils literal"><span class="pre">.</span></tt> characters and then quote the components as postgres identifiers and then join them back together with <tt class="docutils literal"><span class="pre">.</span></tt> characters.
-Multile <tt class="docutils literal"><span class="pre">.</span></tt> will get collapsed into a single <tt class="docutils literal"><span class="pre">.</span></tt>, so <tt class="docutils literal"><span class="pre">schema...table</span></tt> till get returned as <tt class="docutils literal"><span class="pre">schema.&quot;table&quot;</span></tt> and <tt class="docutils literal"><span class="pre">schema.table</span></tt> becomes <tt class="docutils literal"><span class="pre">&quot;Schema'.'table&quot;</span></tt>.</p>
+Multile <tt class="docutils literal"><span class="pre">.</span></tt> will get collapsed into a single <tt class="docutils literal"><span class="pre">.</span></tt>, so <tt class="docutils literal"><span class="pre">schema...table</span></tt> till get returned as <tt class="docutils literal"><span class="pre">schema.&quot;table&quot;</span></tt> and <tt class="docutils literal"><span class="pre">Schema.table</span></tt> becomes <tt class="docutils literal"><span class="pre">&quot;Schema&quot;.&quot;table&quot;</span></tt>.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="nb">text</span> <span class="n">pgr_quote_ident</span><span class="p">(</span><span class="nb">text</span> <span class="n">tab</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -127,8 +127,8 @@ Multile <tt class="docutils literal"><span class="pre">.</span></tt> will get co
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (372ebc8 develop).
-      Last updated on Jun 19, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (0b4b655 develop).
+      Last updated on Jul 16, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>

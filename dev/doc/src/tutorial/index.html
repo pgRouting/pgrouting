@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0-dev (372ebc8 develop)',
+        VERSION:     '2.0.0-dev (0b4b655 develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -145,7 +145,8 @@ connected to.</p>
 in the wrong direction. We do not have tools to search for all possible errors
 but we have some basic tools that might help.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">);</span>
-<span class="k">select</span> <span class="n">pgr_analyzeoneway</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="n">s_in_rules</span><span class="p">,</span> <span class="n">s_out_rules</span><span class="p">,</span> <span class="n">t_in_rules</span><span class="p">,</span> <span class="n">t_out_rules</span><span class="p">)</span>
+<span class="k">select</span> <span class="n">pgr_analyzeoneway</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">,</span> <span class="n">s_in_rules</span><span class="p">,</span> <span class="n">s_out_rules</span><span class="p">,</span>
+                         <span class="n">t_in_rules</span><span class="p">,</span> <span class="n">t_out_rules</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>See <a class="reference internal" href="analytics.html#analytics"><em>Graph Analytics</em></a> for more information.</p>
@@ -198,8 +199,8 @@ to get more information about each step in the path.</p>
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (372ebc8 develop).
-      Last updated on Jun 19, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (0b4b655 develop).
+      Last updated on Jul 16, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>

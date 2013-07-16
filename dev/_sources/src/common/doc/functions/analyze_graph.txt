@@ -25,11 +25,12 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Analyzes the "edge_tab" and "vertices_tmp" tables and flags if nodes are deadends, ie. ``vertices_tmp.cnt=1`` and identifies nodes that might be disconnected because of gaps < ``tolerance`` or because of zlevel errors in the data. 
+Analyzes the edge table and "vertices_tmp" tables and flags if nodes are deadends, ie. ``vertices_tmp.cnt=1`` and identifies nodes that might be disconnected because of gaps < ``tolerance`` or because of zlevel errors in the data. 
 
 .. code-block:: sql
 
-  character varying pgr_analyzeGraph(geom_table text, geo_cname text, tolerance double precision);
+  character varying pgr_analyzeGraph(geom_table text, geo_cname text,
+                                     tolerance double precision);
 
 
 Description

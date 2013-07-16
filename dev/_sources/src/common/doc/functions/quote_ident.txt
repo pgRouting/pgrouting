@@ -26,7 +26,7 @@ Synopsis
 -------------------------------------------------------------------------------
 
 Function to split a string on ``.`` characters and then quote the components as postgres identifiers and then join them back together with ``.`` characters. 
-Multile ``.`` will get collapsed into a single ``.``, so ``schema...table`` till get returned as ``schema."table"`` and ``schema.table`` becomes ``"Schema'.'table"``.
+Multile ``.`` will get collapsed into a single ``.``, so ``schema...table`` till get returned as ``schema."table"`` and ``Schema.table`` becomes ``"Schema"."table"``.
 
 .. code-block:: sql
 

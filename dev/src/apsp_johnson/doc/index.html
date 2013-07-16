@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0-dev (372ebc8 develop)',
+        VERSION:     '2.0.0-dev (0b4b655 develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -57,7 +57,7 @@
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>Returns a set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a> (seq, id1, id2, cost) rows for every pair of nodes in the graph.</p>
+<p>Johnson&#8217;s algorithm is a way to find the shortest paths between all pairs of vertices in a sparse, edge weighted, directed graph. Returns a set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a> (seq, id1, id2, cost) rows for every pair of nodes in the graph.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_apspJohnson</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -131,6 +131,7 @@
 <ul class="simple">
 <li><a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[] - Path Result with Cost</em></a></li>
 <li><a class="reference internal" href="../../apsp_warshall/doc/index.html#pgr-apsp-warshall"><em>pgr_apspWarshall - All Pairs Shortest Path, Floyd-Warshall Algorithm</em></a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Johnson%27s_algorithm">http://en.wikipedia.org/wiki/Johnson%27s_algorithm</a></li>
 </ul>
 </div>
 </div>
@@ -150,8 +151,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (372ebc8 develop).
-      Last updated on Jun 19, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (0b4b655 develop).
+      Last updated on Jul 16, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>
