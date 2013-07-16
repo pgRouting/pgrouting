@@ -82,58 +82,62 @@
 #define IMPROVED_PATH_PER_T           60*n   
 
 /*
- * Portable Uniform Integer Random Number in [0-2^31] range
- * Performs better than ansi-C rand() 
- * D.E Knuth, 1994 - The Stanford GraphBase
- */
-#define RANDOM()        (*rand_fptr >= 0 ? *rand_fptr-- : flipCycle ()) 
-#define two_to_the_31   ((unsigned long)0x80000000) 
-#define RREAL           ((double)RANDOM()/(double)two_to_the_31)
+ *   MACHINE INDEPENDENT RANDOM NUMBER GENERATOR
+ *   Written by:  DIMACS  (modified for TSP)
+*/
 
-static long A[56]= {-1};
-long *rand_fptr = A;
+#define PRANDMAX 1000000000
+static int a;
+static int b;
+static int arr[55];
 
-#define mod_diff(x,y)   (((x)-(y))&0x7fffffff) 
-long flipCycle()
+void initRand (int seed)
 {
-    register long *ii,*jj;
-    for (ii = &A[1], jj = &A[32]; jj <= &A[55]; ii++, jj++)
-    *ii= mod_diff (*ii, *jj);
+    int i, ii;
+    int last, next;
 
-    for (jj = &A[1]; ii <= &A[55]; ii++, jj++)
-    *ii= mod_diff (*ii, *jj);
-    rand_fptr = &A[54];
-    return A[55];
-}
+    seed %= PRANDMAX;
+    if (seed < 0) seed += PRANDMAX;
 
-void initRand (long seed)
-{
-    register long i;
-    register long prev = seed, next = 1;
-    seed = prev = mod_diff (prev,0);
-    A[55] = prev;
-    for (i = 21; i; i = (i+21)%55)
-    {
-        A[i] = next;
-        next = mod_diff (prev, next);
-        if (seed&1) seed = 0x40000000 + (seed >> 1);
-        else seed >>= 1;
-        next = mod_diff (next,seed);
-        prev = A[i];
+    arr[0] = last = seed;
+    next = 1;
+    for (i = 1; i < 55; i++) {
+        ii = (21 * i) % 55;
+        arr[ii] = next;
+        next = last - next;
+        if (next < 0)
+            next += PRANDMAX;
+        last = arr[ii];
     }
-    
-    for (i = 0; i < 7; i++) flipCycle(); 
+    a = 0;
+    b = 24;
+    for (i = 0; i < 165; i++)
+        last = Rand ();
 }
 
-long unifRand (long m)
+int Rand (void)
 {
-    register unsigned long t = two_to_the_31 - (two_to_the_31%m);
-    register long r;
-    do {
-        r = RANDOM();
-    } while (t <= (unsigned long)r);
-    return r%m;
+    int t;
+
+    if (a-- == 0)
+        a = 54;
+    if (b-- == 0)
+        b = 54;
+
+    t = arr[a] - arr[b];
+
+    if (t < 0)
+        t += PRANDMAX;
+
+    arr[a] = t;
+
+    return t;
 }
+
+#define RREAL ((double)Rand()/PRANDMAX)
+#define RANDOM Rand
+#define unifRand(n) (Rand()%n)
+
 
 /*
  * Defs
@@ -183,7 +187,7 @@ int findEulerianPath(TSP *tsp)
         elog(ERROR, "Failed to allocate memory!");
         return -1;
     }
-    DBG("findEulerianPath: 1");
+    //DBG("findEulerianPath: 1");
 
     j = -1;
     d = maxd;
@@ -198,7 +202,7 @@ int findEulerianPath(TSP *tsp)
             j = i;
         }
     }
-    DBG("findEulerianPath: j=%d", j);
+    //DBG("findEulerianPath: j=%d", j);
 
     if (j == -1)
         elog(ERROR, "Error TSP fail to findEulerianPath, check your distance matrix is valid.");
@@ -230,7 +234,7 @@ int findEulerianPath(TSP *tsp)
         }
         j = k;
     }
-    DBG("findEulerianPath: 3");
+    //DBG("findEulerianPath: 3");
 
     /*
      * Preorder Tour of MST
@@ -255,7 +259,7 @@ int findEulerianPath(TSP *tsp)
             }    
         }
     }
-    DBG("findEulerianPath: 4");
+    //DBG("findEulerianPath: 4");
 
     return 0;
 }
@@ -429,7 +433,7 @@ void annealing(TSP *tsp)
             if (pathlen < bestlen) bestlen = pathlen;
             if (pathchg > IMPROVED_PATH_PER_T) break; /* finish early */
         }   
-        DBG("T:%f L:%d B:%d C:%d", T, pathlen, bestlen, pathchg);
+        DBG("T:%f L:%f B:%f C:%d", T, pathlen, bestlen, pathchg);
         if (pathchg == 0) break;   /* if no change then quit */
     }
 }
@@ -457,6 +461,8 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     TSP   tsp;
     long  seed = -314159L;
 
+    DBG("sizeof(long)=%d", (int)sizeof(long));
+
     initRand (seed);
 
     /* initialize tsp struct */
@@ -480,7 +486,7 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     /* identity permutation */
     for (i = 0; i < tsp.n; i++) tsp.iorder[i] = i;
 
-    DBG("Initial Path Length: %d", pathLength(&tsp));
+    DBG("Initial Path Length: %.2f", pathLength(&tsp));
 
     /*
      * Set up first eulerian path iorder to be improved by
@@ -489,7 +495,7 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     if(findEulerianPath(&tsp))
         return -1;
 
-    DBG("Approximated Path Length: %d", pathLength(&tsp));
+    DBG("Approximated Path Length: %.2f", pathLength(&tsp));
 
     annealing(&tsp);
 
