@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_pointToId - Inserts point into a vertices table &mdash; pgRouting Manual (2.0.0-dev)</title>
+    
+    <link rel="stylesheet" href="../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '2.0.0-dev (03aad70 develop)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0-dev)" href="../../../../index.html" />
+    <link rel="next" title="pgr_quote_ident - Quote table name with Schema Component" href="quote_ident.html" />
+    <link rel="prev" title="pgr_nodeNetwork - Nodes an network edge table." href="node_network.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+          <span>pgRouting Manual (2.0.0-dev)</span></a></h1>
+        <h2 class="heading"><span>pgr_pointToId - Inserts point into a vertices table</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="node_network.html">pgr_nodeNetwork - Nodes an network edge table.</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="quote_ident.html">pgr_quote_ident - Quote table name with Schema Component</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-pointtoid-inserts-point-into-a-vertices-table">
+<span id="pgr-point-to-id"></span><h1>pgr_pointToId - Inserts point into a vertices table<a class="headerlink" href="#pgr-pointtoid-inserts-point-into-a-vertices-table" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_pointToId</span></tt> — Inserts a point into a temporary vertices table.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This function should not be used directly. Use <a class="reference internal" href="create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> instead.</p>
+</div>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Inserts a point into a temporary vertices table, and returns an id of a new point or an existing point. Tolerance is the minimal distance between existing points and the new point to create a new point.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="nb">bigint</span> <span class="n">pgr_pointToId</span><span class="p">(</span><span class="n">geometry</span> <span class="n">point</span><span class="p">,</span> <span class="n">double</span> <span class="k">precision</span> <span class="n">tolerance</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">point:</th><td class="field-body"><tt class="docutils literal"><span class="pre">geometry</span></tt> of the existing point</td>
+</tr>
+<tr class="field-even field"><th class="field-name">tolerance:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> snapping tolerance of disconnected edges (in projection unit)</td>
+</tr>
+</tbody>
+</table>
+<p>Returns point id (<tt class="docutils literal"><span class="pre">bigint</span></tt>) of a new or existing point.</p>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>Renamed in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="create_topology.html#pgr-create-topology"><em>pgr_createTopology - Building a Network Topology</em></a></li>
+<li><a class="reference internal" href="../../../../doc/src/tutorial/topology.html#topology"><em>Routing Topology</em></a></li>
+<li><a class="reference internal" href="node_network.html#pgr-node-network"><em>pgr_nodeNetwork - Nodes an network edge table.</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="node_network.html">pgr_nodeNetwork - Nodes an network edge table.</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="quote_ident.html">pgr_quote_ident - Quote table name with Schema Component</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (03aad70 develop).
+      Last updated on Jul 16, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
