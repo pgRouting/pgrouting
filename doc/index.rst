@@ -49,7 +49,7 @@ Tutorial
 	src/tutorial/recipes
 	src/tutorial/performance
 
-For a more complete introduction how to build a routing application read the `pgRouting Workshop <http://workshop.pgrouting.org>`_ (current version written for pgRouting 1.x).
+For a more complete introduction how to build a routing application read the `pgRouting Workshop <http://workshop.pgrouting.org>`_.
 
 *******************************************************************************
 Reference
