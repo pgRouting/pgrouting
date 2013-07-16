@@ -1,0 +1,5 @@
+	zip warning: missing end signature--probably not a zip file (did you
+	zip warning: remember to use binary mode when you transferred it?)
+	zip warning: (if you are trying to read a damaged archive try -F)
+
+zip error: Zip file structure invalid (build/man/pgrouting.7)

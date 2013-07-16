@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_isColumnInTable - Check if column exists &mdash; pgRouting Manual (2.0.0-rc1)</title>
+    
+    <link rel="stylesheet" href="../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '2.0.0-rc1 (bf13fd7 v2.0.0-rc1)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0-rc1)" href="../../../../index.html" />
+    <link rel="next" title="pgr_isColumnIndexed - Check if column is indexed" href="is_column_indexed.html" />
+    <link rel="prev" title="pgr_createTopology - Building a Network Topology" href="create_topology.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+          <span>pgRouting Manual (2.0.0-rc1)</span></a></h1>
+        <h2 class="heading"><span>pgr_isColumnInTable - Check if column exists</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="create_topology.html">pgr_createTopology - Building a Network Topology</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="is_column_indexed.html">pgr_isColumnIndexed - Check if column is indexed</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-iscolumnintable-check-if-column-exists">
+<span id="pgr-is-column-in-table"></span><h1>pgr_isColumnInTable - Check if column exists<a class="headerlink" href="#pgr-iscolumnintable-check-if-column-exists" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_isColumnInTable</span></tt> — Check if a column exists in a table.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Returns <tt class="docutils literal"><span class="pre">true</span></tt> or <tt class="docutils literal"><span class="pre">false</span></tt> if column “col” exists in table “tab”.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="nb">boolean</span> <span class="n">pgr_isColumnInTable</span><span class="p">(</span><span class="n">tab</span> <span class="nb">text</span><span class="p">,</span> <span class="n">col</span> <span class="nb">text</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">tab:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> table name with or without schema component</td>
+</tr>
+<tr class="field-even field"><th class="field-name">col:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> column name to be checked for</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>New in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_isColumnInTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">);</span>
+
+ <span class="n">pgr_iscolumnintable</span>
+<span class="c1">---------------------</span>
+ <span class="n">t</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The queries use the <a class="reference internal" href="../../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="is_column_indexed.html#pgr-is-column-indexed"><em>pgr_isColumnIndexed - Check if column is indexed</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="create_topology.html">pgr_createTopology - Building a Network Topology</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="is_column_indexed.html">pgr_isColumnIndexed - Check if column is indexed</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-rc1 (bf13fd7 v2.0.0-rc1).
+      Last updated on Jul 17, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
