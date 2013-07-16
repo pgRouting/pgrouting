@@ -62,11 +62,15 @@ Source Package
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ======================== ======================= ====================
+Git 2.0.0-rc1 release    `v2.0.0-rc1.tar.gz`_    `v2.0.0-rc1.zip`_
 Git 2.0.0-beta release   `v2.0.0-beta.tar.gz`_   `v2.0.0-beta.zip`_
 Git 2.0.0-alpha release  `v2.0.0-alpha.tar.gz`_  `v2.0.0-alpha.zip`_
 Git master branch        `master.tar.gz`_        `master.zip`_
 Git develop branch       `develop.tar.gz`_       `develop.zip`_
 ======================== ======================= ====================
+
+.. _v2.0.0-rc1.tar.gz: https://github.com/pgRouting/pgrouting/archive/v2.0.0-rc1.tar.gz
+.. _v2.0.0-rc1.zip: https://github.com/pgRouting/pgrouting/archive/v2.0.0-rc1.zip
 
 .. _v2.0.0-beta.tar.gz: https://github.com/pgRouting/pgrouting/archive/v2.0.0-beta.tar.gz
 .. _v2.0.0-beta.zip: https://github.com/pgRouting/pgrouting/archive/v2.0.0-beta.zip
