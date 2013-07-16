@@ -216,7 +216,7 @@ latex_domain_indices = False
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('doc/index_man', 'pgRoutingReference', u'pgRouting Reference', u'pgRouting Contributors', 1)
+    ('doc/index_man', 'pgrouting', u'pgRouting Reference', u'pgRouting Contributors', 7)
 ]
 
 # If true, show URL addresses after external links.
@@ -229,7 +229,7 @@ man_show_urls = False
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('doc/index', 'pgRoutingDocumentation', u'pgRouting Manual',
+  ('doc/index', 'pgrouting', u'pgRouting Manual',
    u'pgRouting Contributors', 'pgRoutingDocumentation', 'One line description of project.',
    'Miscellaneous'),
 ]
