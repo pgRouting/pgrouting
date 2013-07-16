@@ -18,7 +18,7 @@ create table noded2 (
   cost float8,
   rcost float8
  );
- select addgeometrycolumn('noded2', 'the_geom', 0, 'LINESTRING', 2);
+ select addgeometrycolumn('noded2', 'the_geom', ST_SRID('POINT(0 0)'::geometry) , 'LINESTRING', 2);
  insert into noded2 (id, dir, the_geom)
  select a.id, b.dir, a.the_geom
    from noded a, unnoded b

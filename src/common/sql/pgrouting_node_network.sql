@@ -40,14 +40,14 @@ BEGIN
     -- must handle the case where lines intersects at a linestring...
 
     EXECUTE 'insert into intergeom (l1id, l2id, geom)
-        select l1id, l2id, st_startpoint(geom)
+        select l1id, l2id, PGR_startpoint(geom)
         from intergeom where geometryType(geom) = ''LINESTRING'' ';
 
 	GET DIAGNOSTICS p_num = ROW_COUNT;
 	raise notice 'Num inserts: %', p_num;
 
     EXECUTE 'insert into intergeom (l1id, l2id, geom)
-        select l1id, l2id, st_endpoint(geom)
+        select l1id, l2id, PGR_endpoint(geom)
         from intergeom where geometryType(geom) = ''LINESTRING'' ';
 
 	GET DIAGNOSTICS p_num = ROW_COUNT;

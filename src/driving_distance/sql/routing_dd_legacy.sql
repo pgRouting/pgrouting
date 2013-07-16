@@ -95,13 +95,13 @@ DECLARE
     source_y float8;
 BEGIN
 
-    EXECUTE 'select ST_X(ST_StartPoint(the_geom)) as source_x from ' ||
+    EXECUTE 'select ST_X(PGR_StartPoint(the_geom)) as source_x from ' ||
             pgr_quote_ident(table_name) || ' where source = ' ||
             source_id || ' limit 1' INTO r;
     source_x := r.source_x;
 
 
-    EXECUTE 'select ST_Y(ST_StartPoint(the_geom)) as source_y from ' ||
+    EXECUTE 'select ST_Y(PGR_StartPoint(the_geom)) as source_y from ' ||
             pgr_quote_ident(table_name) || ' where source = ' ||
             source_id || ' limit 1' INTO r;
     source_y := r.source_y;

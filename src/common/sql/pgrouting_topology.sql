@@ -82,7 +82,7 @@ BEGIN
     END IF;
 
     srid := tabinfo.srid;
-    cname := 'ST_GeometryN(' || quote_ident(geo_cname) || ', 1)';
+    cname := quote_ident(geo_cname);
 
     -- get the approximate count of records for geom_table
     
@@ -100,8 +100,8 @@ BEGIN
 
     rowcount := 0;
     FOR points IN EXECUTE 'SELECT ' || quote_ident(gid_cname) || ' AS id,'
-        || ' ST_StartPoint(' || cname || ') AS source,'
-        || ' ST_EndPoint('   || cname || ') AS target'
+        || ' PGR_StartPoint(' || cname || ') AS source,'
+        || ' PGR_EndPoint('   || cname || ') AS target'
         || ' FROM '  || pgr_quote_ident(geom_table)
         || ' WHERE ' || quote_ident(geo_cname) || ' IS NOT NULL '
     LOOP

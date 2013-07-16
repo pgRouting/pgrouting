@@ -182,3 +182,36 @@ $BODY$
   LANGUAGE plpgsql IMMUTABLE STRICT
   COST 1;
 
+
+create or replace function pgr_startPoint(g geometry)
+    returns geometry as
+$body$
+declare
+
+begin
+    if geometrytype(g) ~ '^MULTI' then
+        return st_startpoint(st_geometryn(g,1));
+    else
+        return st_startpoint(g);
+    end if;
+end;
+$body$
+language plpgsql IMMUTABLE;
+
+
+
+create or replace function pgr_endPoint(g geometry)
+    returns geometry as
+$body$
+declare
+
+begin
+    if geometrytype(g) ~ '^MULTI' then
+        return st_endpoint(st_geometryn(g,1));
+    else
+        return st_endpoint(g);
+    end if;
+end;
+$body$
+language plpgsql IMMUTABLE;
+
