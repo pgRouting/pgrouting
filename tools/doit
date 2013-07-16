@@ -13,5 +13,5 @@ cmake -DWITH_DOC=ON -DWITH_DD=ON ..
 make && sudo make install && (cd ..; tools/test-runner.pl -clean)
 rsync -a html/* /u/www/html/pgr2-doc/.
 rsync -a latex/pgRoutingDocumentation.pdf /u/www/html/pgr2-doc/.
-gzip -c man/pgRoutingReference.1 > man/pgrouting.1.gz
-sudo install -t /usr/share/man/man1 man/pgrouting.1.gz
+gzip -c man/pgrouting.7 > man/pgrouting.7.gz
+sudo install -t /usr/share/man/man7 man/pgrouting.7.gz
