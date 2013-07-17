@@ -18,7 +18,28 @@ export PATHOLD=".:/bin:/include:/mingw/bin:/mingw/include:/c/Windows/system32:/c
 export PGWINVER=${PG_VER}edb
 export PostgreSQL_ROOT=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}
 export PATH="${PATHOLD}:${PostgreSQL_ROOT}/bin:${PostgreSQL_ROOT}/lib"
-export CGAL_VER=4.2
+if [[ "${GCC_TYPE}" == "gcc48" ]] ; then
+	export PROJECTS=/projects
+	export PATHOLD=$PATH
+	export PGPATH=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}
+	export PostgreSQL_ROOT=${PGPATH}
+	
+	export PATHOLD="/mingw/bin:/mingw/include:/c/Windows/system32:/c/Windows"
+	export PGWINVER=${PG_VER}w${OS_BUILD}${GCC_TYPE}edb
+	export PATH="${PATHOLD}:${PGPATH}/bin:${PGPATH}/lib:${PGPATH}/include"
+	export PATH="${PROJECTS}/rel-libiconv-1.13.1w${OS_BUILD}/include:${PATH}"
+	GMP_VER=5.1.2
+	MPFR_VER=3.1.2
+	CGAL_VER=4.2
+	BOOST_VER=1.53.0
+	BOOST_VER_WU=1_53_0
+	BOOST_VER_WUM=1_53
+else 
+  GMP_VER=5.1.2
+	MPFR_VER=3.1.2
+	CGAL_VER=3.9
+	BOOST_VER=1.46.1 
+fi;
 
 #cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}/build/lib
 cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
@@ -55,8 +76,10 @@ fi
 #cp extensions/postgis_topology/*.control ${RELDIR}/${RELVERDIR}/share/extension
 cp -r ${RELDIR}/packaging_notes/* ${RELDIR}/${RELVERDIR}/
 
-echo "pgRouting: ${PGROUTING_VER}.${PGROUTING_MICRO_VER}" > $verfile
-echo "PostgreSQL: ${PG_VER} ${OS_BUILD} ${GCC_TYPE}" >> $verfile
+echo "pgRouting http://pgrouting.org : ${PGROUTING_VER}.${PGROUTING_MICRO_VER}" > $verfile
+echo "PostgreSQL http://www.postgresql.org : ${PG_VER} ${OS_BUILD} ${GCC_TYPE}" >> $verfile
+echo "CGAL http://www.cgal.org : ${CGAL_VER}" >> $verfile
+echo "BOOST http://www.boost.org : ${BOOST_VER}" >> $verfile
 date_built="`eval date +%Y%m%d`"
 echo "Built: ${date_built}" >> $verfile
 
