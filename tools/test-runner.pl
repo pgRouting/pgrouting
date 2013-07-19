@@ -32,6 +32,7 @@ sub Usage {
         "       -psql /path/to/psql - optional path to psql\n" .
         "       -v                  - verbose messages for debuging(enter twice for more)\n" .
         "       -clean              - dropdb pgr_test__db__test\n" .
+        "       -ignorenotice       - ignore NOTICE statements when reporting failures\n" .
         "       -h                  - help\n";
 }
 
@@ -39,6 +40,7 @@ print "RUNNING: test-runner.pl " . join(" ", @ARGV) . "\n";
 
 my ($vpg, $vpgis, $vpgr, $psql);
 my $clean;
+my $ignore;
 
 while (my $a = shift @ARGV) {
     if ( $a eq '-pgver') {
@@ -63,6 +65,9 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a =~ /^-clean/) {
         $clean = 1;;
+    }
+    elsif ($a =~ /^-ignoren/i) {
+        $ignore = 1;;
     }
     elsif ($a =~ /^-v/i) {
         $VERBOSE = 1 if $DEBUG;
@@ -166,8 +171,9 @@ sub run_test {
 
     for my $x (@{$t->{tests}}) {
         mysystem("$psql -U $DBUSER -h $DBHOST -p $DBPORT -A -t -q -f '$dir/$x.test' $DBNAME > $TMP 2>\&1 ");
+        my $ign = ($ignore)?'| grep -v NOTICE ':'';
         # use diff -w to ignore white space differences like \r vs \r\n
-        my $r = `diff -w '$dir/$x.rest' $TMP`;
+        my $r = `diff -w '$dir/$x.rest' $TMP $ign`;
         $r =~ s/^\s*|\s*$//g;
         if ($r =~ /connection to server was lost/) {
             $res{"$dir/$x.test"} = "CRASHED SERVER: $r";
