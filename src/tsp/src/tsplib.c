@@ -168,8 +168,9 @@ typedef struct tspstruct {
 int findEulerianPath(TSP *tsp)
 {
     int *mst, *arc;    
-    int d, i, j, k, l, a;
+    int i, j, k, l, a;
     int n, *iorder, *jorder;
+    DTYPE d;
     DTYPE maxd;
     DTYPE *dist;
     DTYPE *dis;

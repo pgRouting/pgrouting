@@ -23,7 +23,7 @@
 #define _TSP_H
 
 // define the type of object for the distance matrix
-#define DTYPE float
+#define DTYPE double
 
 #include "postgres.h"
 #include "dijkstra.h" 
