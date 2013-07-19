@@ -78,7 +78,7 @@ fi
 make && make install
 
 cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
-perl tools/test-runner.pl -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
+perl tools/test-runner.pl -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}" -ignorenotice
 
 cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib
 strip *.dll
