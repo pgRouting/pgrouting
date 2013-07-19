@@ -175,6 +175,7 @@ sub run_test {
         # use diff -w to ignore white space differences like \r vs \r\n
         my $r = `diff -w '$dir/$x.rest' $TMP $ign`;
         $r =~ s/^\s*|\s*$//g;
+        $r =~ s/^\d+(,\d+)?[acd]\d+(,\d+)?(\s+---)?\s*$//s;
         if ($r =~ /connection to server was lost/) {
             $res{"$dir/$x.test"} = "CRASHED SERVER: $r";
             $stats{z_crash}++;
