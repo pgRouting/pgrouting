@@ -1,3 +1,4 @@
+set client_min_messages to WARNING;
 -- create a new table and merge attribute from original and noded
 -- into table noded3
 

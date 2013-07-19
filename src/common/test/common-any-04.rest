@@ -1,16 +1,3 @@
-psql:src/common/test/common-any-04.test:3: NOTICE:  table "intergeom" does not exist, skipping
-CONTEXT:  SQL statement "drop table  if exists intergeom"
-PL/pgSQL function pgr_nodenetwork(text,text,text,text,double precision) line 23 at SQL statement
-psql:src/common/test/common-any-04.test:3: NOTICE:  Num inserts: 0
-psql:src/common/test/common-any-04.test:3: NOTICE:  Num inserts: 0
-psql:src/common/test/common-any-04.test:3: NOTICE:  Num deleted: 0
-psql:src/common/test/common-any-04.test:3: NOTICE:  table "inter_loc" does not exist, skipping
-CONTEXT:  SQL statement "drop table if exists inter_loc"
-PL/pgSQL function pgr_nodenetwork(text,text,text,text,double precision) line 58 at SQL statement
-psql:src/common/test/common-any-04.test:3: NOTICE:  table "noded" does not exist, skipping
-CONTEXT:  SQL statement "drop table if exists noded"
-PL/pgSQL function pgr_nodenetwork(text,text,text,text,double precision) line 71 at EXECUTE statement
-psql:src/common/test/common-any-04.test:3: NOTICE:  Num inserted: 0
 noded generated with: 40 segments
 1|4|010200000002000000000000000000F03F000000000000004000000000000000400000000000000040
 1|5|0102000000020000000000000000000040000000000000004000000000000008400000000000000040
@@ -53,32 +40,10 @@ noded generated with: 40 segments
 8|7|0102000000020000000000000000001440000000000000104000000000000014400000000000001440
 8|8|0102000000020000000000000000001440000000000000144000000000000014400000000000001840
 ---------------------------------
-psql:src/common/test/common-any-04.test:20: NOTICE:  CREATE TABLE will create implicit sequence "noded2_gid_seq" for serial column "noded2.gid"
-psql:src/common/test/common-any-04.test:20: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "noded2_pkey" for table "noded2"
 public.noded2.the_geom SRID:0 TYPE:LINESTRING DIMS:2 
 ---------------------------------
-psql:src/common/test/common-any-04.test:29: NOTICE:  CREATE TABLE will create implicit sequence "vertices_tmp_id_seq" for serial column "vertices_tmp.id"
-CONTEXT:  SQL statement "CREATE TABLE vertices_tmp (id bigserial)"
-PL/pgSQL function pgr_createtopology(character varying,double precision,character varying,character varying) line 45 at SQL statement
-psql:src/common/test/common-any-04.test:29: NOTICE:  0 out of 0 edges processed
 OK
-psql:src/common/test/common-any-04.test:30: NOTICE:  Adding "cnt" and "chk" columns to vertices_tmp
-psql:src/common/test/common-any-04.test:30: NOTICE:  Adding unique index "vertices_tmp_id_idx".
-psql:src/common/test/common-any-04.test:30: NOTICE:  Adding index on "source" for "noded2".
-psql:src/common/test/common-any-04.test:30: NOTICE:  Adding index on "target" for "noded2".
-psql:src/common/test/common-any-04.test:30: NOTICE:  Adding index on "noded2" for "the_geom".
-psql:src/common/test/common-any-04.test:30: NOTICE:  Populating vertices_tmp.cnt
-psql:src/common/test/common-any-04.test:30: NOTICE:  Analyzing graph for gaps and zlev errors.
-psql:src/common/test/common-any-04.test:30: NOTICE:  Found 0 potential problems at 'SELECT * FROM vertices_tmp WHERE chk=1'
 OK
-psql:src/common/test/common-any-04.test:36: NOTICE:  Adding "ein" and "eout" columns to vertices_tmp
-psql:src/common/test/common-any-04.test:36: NOTICE:  Zeroing columns "ein" and "eout" on "vertices_tmp".
-psql:src/common/test/common-any-04.test:36: NOTICE:  Analyzing graph for one way street errors.
-psql:src/common/test/common-any-04.test:36: NOTICE:  Analysis 25% complete ...
-psql:src/common/test/common-any-04.test:36: NOTICE:  Analysis 50% complete ...
-psql:src/common/test/common-any-04.test:36: NOTICE:  Analysis 75% complete ...
-psql:src/common/test/common-any-04.test:36: NOTICE:  Analysis 100% complete ...
-psql:src/common/test/common-any-04.test:36: NOTICE:  Found 16 potential problems at 'SELECT * FROM vertices_tmp WHERE ein=0 or eout=0'
 OK
 ---------------------------------
 1|1|FT|1|2|||010200000002000000000000000000F03F000000000000004000000000000000400000000000000040

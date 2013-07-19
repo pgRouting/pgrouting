@@ -1,3 +1,4 @@
+set client_min_messages to WARNING;
 select pgr_createTopology('edges2', 0.000001, 'the_geom', 'eid');
 select * from vertices_tmp order by id;
 \echo '---------------------------------------'
