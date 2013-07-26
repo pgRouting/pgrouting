@@ -118,7 +118,7 @@ Examples
 
 * Returning a ``path`` result
 
-.. code:: sql
+.. code-block:: sql
 
     SELECT id1 as path, st_astext(st_linemerge(st_union(b.the_geom))) as the_geom
       FROM pgr_kdijkstraPath(
