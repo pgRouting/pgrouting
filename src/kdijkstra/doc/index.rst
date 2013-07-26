@@ -116,6 +116,25 @@ Examples
        5 |   12 |   13 |    1
     (6 rows)
 
+* Returning a ``path`` result
+
+.. code:: sql
+
+    SELECT id1 as path, st_astext(st_linemerge(st_union(b.the_geom))) as the_geom
+      FROM pgr_kdijkstraPath(
+                      'SELECT id, source, target, cost FROM edge_table',
+                      10, array[4,12], false, false
+                ) a,
+                edge_table b
+    WHERE a.id2=b.id
+    GROUP by id1
+    ORDER by id1;
+
+There is no assurance that the result above will be ordered in the direction
+of flow of the route, ie: it might be reversed. You will need to check if
+``st_startPoint()`` of the route is the same as the start node location and
+if it is not then call ``st_reverse()`` to reverse the direction of the route.
+
 
 See Also
 -------------------------------------------------------------------------------
