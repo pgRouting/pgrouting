@@ -1,11 +1,11 @@
-psql:src/common/test/common-any-02.test:1: NOTICE:  Adding "cnt" and "chk" columns to vertices_tmp
-psql:src/common/test/common-any-02.test:1: NOTICE:  Adding unique index "vertices_tmp_id_idx".
-psql:src/common/test/common-any-02.test:1: NOTICE:  Adding index on "source" for "edges2".
-psql:src/common/test/common-any-02.test:1: NOTICE:  Adding index on "target" for "edges2".
-psql:src/common/test/common-any-02.test:1: NOTICE:  Adding index on "edges2" for "the_geom".
-psql:src/common/test/common-any-02.test:1: NOTICE:  Populating vertices_tmp.cnt
-psql:src/common/test/common-any-02.test:1: NOTICE:  Analyzing graph for gaps and zlev errors.
-psql:src/common/test/common-any-02.test:1: NOTICE:  Found 1 potential problems at 'SELECT * FROM vertices_tmp WHERE chk=1'
+NOTICE:  Adding "cnt" and "chk" columns to vertices_tmp
+NOTICE:  Adding unique index "vertices_tmp_id_idx".
+NOTICE:  Adding index on "source" for "edges2".
+NOTICE:  Adding index on "target" for "edges2".
+NOTICE:  Adding index on "edges2" for "the_geom".
+NOTICE:  Populating vertices_tmp.cnt
+NOTICE:  Analyzing graph for gaps and zlev errors.
+NOTICE:  Found 1 potential problems at 'SELECT * FROM vertices_tmp WHERE chk=1'
 OK
 1
 ---------------------------------------

@@ -32,6 +32,7 @@ sub Usage {
         "       -psql /path/to/psql - optional path to psql\n" .
         "       -v                  - verbose messages for debuging(enter twice for more)\n" .
         "       -clean              - dropdb pgr_test__db__test\n" .
+        "       -ignorenotice       - ignore NOTICE statements when reporting failures\n" .
         "       -h                  - help\n";
 }
 
@@ -39,6 +40,7 @@ print "RUNNING: test-runner.pl " . join(" ", @ARGV) . "\n";
 
 my ($vpg, $vpgis, $vpgr, $psql);
 my $clean;
+my $ignore;
 
 while (my $a = shift @ARGV) {
     if ( $a eq '-pgver') {
@@ -64,6 +66,9 @@ while (my $a = shift @ARGV) {
     elsif ($a =~ /^-clean/) {
         $clean = 1;;
     }
+    elsif ($a =~ /^-ignoren/i) {
+        $ignore = 1;;
+    }
     elsif ($a =~ /^-v/i) {
         $VERBOSE = 1 if $DEBUG;
         $DEBUG = 1;
@@ -81,6 +86,7 @@ my @cfgs = ();
 my %stats = (z_pass=>0, z_fail=>0, z_crash=>0);
 my $TMP = "/tmp/pgr-test-runner-$$";
 my $TMP2 = "/tmp/pgr-test-runner-$$-2";
+my $TMP3 = "/tmp/pgr-test-runner-$$-3";
 
 if (! $psql) {
     $psql = findPsql() || die "ERROR: can not find psql, specify it on the command line.\n";
@@ -144,6 +150,7 @@ print Data::Dumper->Dump([\%stats], ['stats']);
 
 unlink $TMP;
 unlink $TMP2;
+unlink $TMP3;
 
 if ($stats{z_crash} || $stats{z_fail}) {
     exit 1;  # signal we had failures
@@ -165,9 +172,38 @@ sub run_test {
     }
 
     for my $x (@{$t->{tests}}) {
-        mysystem("$psql -U $DBUSER -h $DBHOST -p $DBPORT -A -t -q -f '$dir/$x.test' $DBNAME > $TMP 2>\&1 ");
+        open(TIN, "$dir/$x.test") || do {
+            $res{"$dir/$x.test"} = "FAILED: could not open '$dir/$x.test' : $!";
+            $stats{z_fail}++;
+            next;
+        };
+        open(PSQL, "|$psql -U $DBUSER -h $DBHOST -p $DBPORT -A -t -q $DBNAME > $TMP 2>\&1 ") || do {
+            $res{"$dir/$x.test"} = "FAILED: could not open connection to db : $!";
+            $stats{z_fail}++;
+            next;
+        };
+        print PSQL "set client_min_messages to WARNING;\n" if $ignore;
+        my @d = ();
+        if ($ignore) {
+            @d = grep !/^CONTEXT/, grep !/^PL\/pgSQL function/, <TIN>;
+        }
+        else {
+            @d = <TIN>;
+        }
+        print PSQL @d;
+        close(PSQL);
+        close(TIN);
+
+        my $dfile;
+        if ($ignore) {
+            $dfile = $TMP3;
+            mysystem("grep -v NOTICE '$dir/$x.rest' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile");
+        }
+        else {
+            $dfile = "$dir/$x.rest";
+        }
         # use diff -w to ignore white space differences like \r vs \r\n
-        my $r = `diff -w '$dir/$x.rest' $TMP`;
+        my $r = `diff -w '$dfile' $TMP`;
         $r =~ s/^\s*|\s*$//g;
         if ($r =~ /connection to server was lost/) {
             $res{"$dir/$x.test"} = "CRASHED SERVER: $r";

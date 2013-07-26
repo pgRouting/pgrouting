@@ -1,10 +1,10 @@
-psql:src/common/test/common-any-01.test:1: NOTICE:  table "vertices_tmp" does not exist, skipping
+NOTICE:  table "vertices_tmp" does not exist, skipping
 CONTEXT:  SQL statement "DROP TABLE IF EXISTS vertices_tmp"
 PL/pgSQL function pgr_createtopology(character varying,double precision,character varying,character varying) line 44 at SQL statement
-psql:src/common/test/common-any-01.test:1: NOTICE:  CREATE TABLE will create implicit sequence "vertices_tmp_id_seq" for serial column "vertices_tmp.id"
+NOTICE:  CREATE TABLE will create implicit sequence "vertices_tmp_id_seq" for serial column "vertices_tmp.id"
 CONTEXT:  SQL statement "CREATE TABLE vertices_tmp (id bigserial)"
 PL/pgSQL function pgr_createtopology(character varying,double precision,character varying,character varying) line 45 at SQL statement
-psql:src/common/test/common-any-01.test:1: NOTICE:  0 out of 23 edges processed
+NOTICE:  0 out of 23 edges processed
 OK
 1|010100000000000000000000400000000000000000
 2|01010000000000000000000040000000000000F03F
