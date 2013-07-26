@@ -333,7 +333,8 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
       }
   }
 
-  //defining min and max vertex id
+  //defining min and max vertex idS '$libdir/librouting_bd', 'bidir_astar_shortest_path'
+
 
   DBG("Total %i tuples", total_tuples);
 
