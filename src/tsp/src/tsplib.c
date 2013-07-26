@@ -532,7 +532,7 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
      * then we swap start and end and extract the list backwards
      * and later we reverse the list for the desired order.
     */
-    if (jend > 0 && jend == jstart+1) {
+    if ((jend > 0 && jend == jstart+1) || (jend == 0 && jstart == tsp.n-1)) {
         int tmp = jend;
         jend = jstart;
         jstart = tmp;
