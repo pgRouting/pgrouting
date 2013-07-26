@@ -1,4 +1,5 @@
-NOTICE:  Adding "cnt" and "chk" columns to vertices_tmp
+NOTICE:  Adding "cnt" column to vertices_tmp
+NOTICE:  Adding "chk" column to vertices_tmp
 NOTICE:  Adding unique index "vertices_tmp_id_idx".
 NOTICE:  Adding index on "source" for "edges2".
 NOTICE:  Adding index on "target" for "edges2".

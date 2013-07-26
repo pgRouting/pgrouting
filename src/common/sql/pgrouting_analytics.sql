@@ -42,39 +42,60 @@ DECLARE
 
 BEGIN
 
-    IF NOT pgr_isColumnInTable('vertices_tmp', 'cnt') THEN
-        RAISE NOTICE 'Adding "cnt" and "chk" columns to vertices_tmp';
-        ALTER TABLE vertices_tmp
-            ADD COLUMN cnt integer,
-            ADD COLUMN chk integer;
-    END IF;
+    BEGIN
+        RAISE NOTICE 'Adding "cnt" column to vertices_tmp';
+        ALTER TABLE vertices_tmp ADD COLUMN cnt integer;
+    EXCEPTION
+        WHEN DUPLICATE_COLUMN THEN
+            UPDATE vertices_tmp SET cnt=NULL;
+    END;
 
-    IF NOT pgr_isColumnIndexed('vertices_tmp', 'id') THEN
+    BEGIN
+        RAISE NOTICE 'Adding "chk" column to vertices_tmp';
+        ALTER TABLE vertices_tmp ADD COLUMN chk integer;
+    EXCEPTION
+        WHEN DUPLICATE_COLUMN THEN
+            UPDATE vertices_tmp SET chk=NULL;
+    END;
+
+    BEGIN
         RAISE NOTICE 'Adding unique index "vertices_tmp_id_idx".';
         create unique index vertices_tmp_id_idx on vertices_tmp using btree(id);
-    END IF;
+    EXCEPTION
+        WHEN DUPLICATE_TABLE THEN
+            -- NOP
+    END;
 
-    IF NOT pgr_isColumnIndexed(edge_tab, 'source') THEN
+    BEGIN
         RAISE NOTICE 'Adding index on "source" for "%".', edge_tab;
         EXECUTE 'create index '
             || quote_ident(edge_tab || '_source_idx') || ' on '
             || pgr_quote_ident(edge_tab) || ' using btree(source)';
-    END IF;
+    EXCEPTION
+        WHEN DUPLICATE_TABLE THEN
+            -- NOP
+    END;
 
-    IF NOT pgr_isColumnIndexed(edge_tab, 'target') THEN
+    BEGIN
         RAISE NOTICE 'Adding index on "target" for "%".', edge_tab;
         EXECUTE 'create index '
             || quote_ident(edge_tab || '_target_idx') || ' on '
             || pgr_quote_ident(edge_tab) || ' using btree(target)';
-    END IF;
+    EXCEPTION
+        WHEN DUPLICATE_TABLE THEN
+            -- NOP
+    END;
 
-    IF NOT pgr_isColumnIndexed(edge_tab, geom_col) THEN
+    BEGIN
         RAISE NOTICE 'Adding index on "%" for "%".', edge_tab, geom_col;
         EXECUTE 'CREATE INDEX '
             || quote_ident(edge_tab || '_' || geom_col || '_gidx' )
             || ' ON ' || pgr_quote_ident(edge_tab)
             || ' USING gist (' || quote_ident(geom_col) || ')';
-    END IF;
+    EXCEPTION
+        WHEN DUPLICATE_TABLE THEN
+            -- NOP
+    END;
 
     RAISE NOTICE 'Populating vertices_tmp.cnt';
     EXECUTE 'update vertices_tmp as a set cnt=(select count(*) from '
@@ -183,20 +204,32 @@ BEGIN
         RAISE EXCEPTION 'Failed to find "%" in table "%"!', col, tab;
     END IF;
 
-    IF NOT pgr_isColumnInTable('vertices_tmp', 'ein') THEN
-        RAISE NOTICE 'Adding "ein" and "eout" columns to vertices_tmp';
-        ALTER TABLE vertices_tmp
-            ADD COLUMN ein integer,
-            ADD COLUMN eout integer;
-    END IF;
+    BEGIN
+        RAISE NOTICE 'Adding "ein" column to vertices_tmp';
+        ALTER TABLE vertices_tmp ADD COLUMN ein integer;
+    EXCEPTION
+        WHEN DUPLICATE_COLUMN THEN
+            -- NOP
+    END;
+
+    BEGIN
+        RAISE NOTICE 'Adding "eout" column to vertices_tmp';
+        ALTER TABLE vertices_tmp ADD COLUMN eout integer;
+    EXCEPTION
+        WHEN DUPLICATE_COLUMN THEN
+            -- NOP
+    END;
 
     RAISE NOTICE 'Zeroing columns "ein" and "eout" on "vertices_tmp".';
     UPDATE vertices_tmp SET ein=0, eout=0;
 
-    IF NOT pgr_isColumnIndexed('vertices_tmp', 'id') THEN
+    BEGIN
         RAISE NOTICE 'Adding unique index "vertices_tmp_id_idx".';
         create unique index vertices_tmp_id_idx on vertices_tmp using btree(id);
-    END IF;
+    EXCEPTION
+        WHEN DUPLICATE_TABLE THEN
+            -- NOP
+    END;
 
     RAISE NOTICE 'Analyzing graph for one way street errors.';
 
