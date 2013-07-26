@@ -36,6 +36,9 @@ if(WITH_DOC)
     # MAN output directory
     set(SPHINX_MAN_DIR "${PGROUTING_BINARY_DIR}/man")
 
+    # Localization output directory
+    set(SPHINX_I18N_DIR "${PGROUTING_BINARY_DIR}/locale")
+
     configure_file(
         "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
         "${BINARY_BUILD_DIR}/conf.py"
@@ -53,14 +56,23 @@ if(WITH_DOC)
         "${CMAKE_CURRENT_SOURCE_DIR}/forward.html"
         "${SPHINX_HTML_DIR}/index.html")
 
-    add_custom_target(pgRoutingDocumentationdoc ALL
+    add_custom_target(pgRoutingDocumentationlocale ALL
+        ${SPHINX_EXECUTABLE}
+        -q -b gettext
+        -c "${BINARY_BUILD_DIR}"
+        -E
+        "${PGROUTING_SOURCE_DIR}"
+        "${SPHINX_I18N_DIR}"
+        COMMENT "SPHINX Build finished. The message catalogs are in ${SPHINX_I18N_DIR}.")
+
+    add_custom_target(pgRoutingDocumentationhtml ALL
         ${SPHINX_EXECUTABLE}
         -q -b html
         -c "${BINARY_BUILD_DIR}"
         -d "${SPHINX_CACHE_DIR}"
         "${PGROUTING_SOURCE_DIR}"
         "${SPHINX_HTML_DIR}"
-        COMMENT "Building HTML documentation with Sphinx")
+        COMMENT "SPHINX Build finished. The HTML pages are in ${SPHINX_HTML_DIR}.")
 
     add_custom_target(pgRoutingDocumentationman ALL
         ${SPHINX_EXECUTABLE}
@@ -69,7 +81,7 @@ if(WITH_DOC)
         -E
         "${PGROUTING_SOURCE_DIR}"
         "${SPHINX_MAN_DIR}"
-        COMMENT "Building MAN documentation with Sphinx")
+        COMMENT "SPHINX Build finished. The manual pages are in ${SPHINX_MAN_DIR}.")
 
     add_custom_target(pgRoutingDocumentationtex ALL
         ${SPHINX_EXECUTABLE}
@@ -78,7 +90,7 @@ if(WITH_DOC)
         -E
         "${PGROUTING_SOURCE_DIR}"
         "${SPHINX_LATEX_DIR}"
-        COMMENT "Building LATEX documentation with Sphinx")
+        COMMENT "SPHINX Build finished; the LaTeX files are in ${SPHINX_LATEX_DIR}.")
 
     add_custom_command(
         TARGET pgRoutingDocumentationtex POST_BUILD

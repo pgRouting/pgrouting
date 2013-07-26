@@ -82,3 +82,11 @@ fi
 # ------------------------------------------------------------------------------
 /etc/init.d/postgresql restart
 
+# ------------------------------------------------------------------------------
+# Manage localization with Transifex
+# https://www.transifex.com/projects/p/pgrouting/ 
+# http://sphinx.readthedocs.org/en/latest/intl.html
+# ------------------------------------------------------------------------------
+apt-get install python-pip
+pip install transifex-client
+pip install sphinx-intl
