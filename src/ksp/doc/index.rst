@@ -25,11 +25,11 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-The K shortest path routing algorithm based on Yen's algorithm. "K" is the number of shortest paths desired. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
+The K shortest path routing algorithm based on Yen's algorithm. "K" is the number of shortest paths desired. Returns a set of :ref:`pgr_costResult3 <type_cost_result3>` (seq, id1, id2, id3, cost) rows, that make up a path.
 
 .. code-block:: sql
 
-  pgr_costResult[] pgr_ksp(sql text, source integer, target integer,
+  pgr_costResult3[] pgr_ksp(sql text, source integer, target integer,
                            paths integer, has_rcost boolean);
 
 
@@ -56,10 +56,11 @@ Description
 
 Returns set of :ref:`type_cost_result`:
 
-:seq:   route ID
-:id1:   node ID
-:id2:   edge ID (``0`` for the last row)
-:cost:  cost to traverse from ``id1`` using ``id2``
+:seq:   sequence for ording the results
+:id1:   route ID
+:id2:   node ID
+:id3:   edge ID (``0`` for the last row)
+:cost:  cost to traverse from ``id2`` using ``id3``
 
 KSP code base taken from http://code.google.com/p/k-shortest-paths/source.
 
@@ -76,45 +77,47 @@ Examples
 
 .. code-block:: sql
 
-  SELECT seq AS route, id1 AS node, id2 AS edge, cost 
+   SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost
     FROM pgr_ksp(
       'SELECT id, source, target, cost FROM edge_table',
       7, 12, 2, false
     );
 
-   route | node | edge | cost 
-  -------+------+------+------
-       0 |    7 |    8 |    1
-       0 |    8 |   11 |    1
-       0 |   11 |   13 |    1
-       0 |   12 |    0 |    0
-       1 |    7 |    8 |    1
-       1 |    8 |    9 |    1
-       1 |    9 |   15 |    1
-       1 |   12 |    0 |    0
-  (8 rows)
+     seq | route | node | edge | cost
+    -----+-------+------+------+------
+       0 |     0 |    7 |    8 |    1
+       1 |     0 |    8 |    9 |    1
+       2 |     0 |    9 |   15 |    1
+       3 |     0 |   12 |    0 |    0
+       4 |     1 |    7 |    8 |    1
+       5 |     1 |    8 |   11 |    1
+       6 |     1 |   11 |   13 |    1
+       7 |     1 |   12 |    0 |    0
+    (8 rows)
+
 
 * With ``reverse_cost``
 
 .. code-block:: sql
 
-  SELECT seq AS route, id1 AS node, id2 AS edge, cost 
+   SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost
     FROM pgr_ksp(
       'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       7, 12, 2, true
     );
 
-   route | node | edge | cost 
-  -------+------+------+------
-       0 |    7 |    8 |    1
-       0 |    8 |   11 |    1
-       0 |   11 |   13 |    1
-       0 |   12 |    0 |    0
-       1 |    7 |    8 |    1
-       1 |    8 |    9 |    1
-       1 |    9 |   15 |    1
-       1 |   12 |    0 |    0
-  (8 rows)
+     seq | route | node | edge | cost
+    -----+-------+------+------+------
+       0 |     0 |    7 |   10 |    1
+       1 |     0 |   10 |   12 |    1
+       2 |     0 |   11 |   13 |    1
+       3 |     0 |   12 |    0 |    0
+       4 |     1 |    7 |    8 |    1
+       5 |     1 |    8 |    9 |    1
+       6 |     1 |    9 |   15 |    1
+       7 |     1 |   12 |    0 |    0
+    (8 rows)
+
 
 The queries use the :ref:`sampledata` network.
 
@@ -122,5 +125,5 @@ The queries use the :ref:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`type_cost_result`
+* :ref:`type_cost_result3`
 * http://en.wikipedia.org/wiki/K_shortest_path_routing
