@@ -536,7 +536,7 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
                 int *end_vertices, int nb_targets, bool directed, 
                 bool has_reverse_cost, 
 #ifdef PGR_MERGE
-                pgr_cost_t **distpaths,
+                pgr_cost3_t **distpaths,
 #else
                 path_fromto_t **distpaths,
 #endif
@@ -719,6 +719,7 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
 #ifdef PGR_MERGE
     for(z=0; z<pcount; z++) {
         (*distpaths)[z].id1 += v_min_id;
+        (*distpaths)[z].id2 += v_min_id;
     }
 
     *path_count = pcount;
@@ -750,7 +751,7 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
     TupleDesc            tuple_desc;
 
 #ifdef PGR_MERGE
-    pgr_cost_t          *path_res;
+    pgr_cost3_t          *path_res;
 #else
     path_fromto_t       *path_res;
 #endif
@@ -798,7 +799,7 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
 
         DBG("tuple_desc");
 #ifdef PGR_MERGE
-        funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("pgr_costresult"));
+        funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("pgr_costresult3"));
 #else
         funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("concatpath_result"));
 #endif
@@ -814,7 +815,7 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
     max_calls = funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
 #ifdef PGR_MERGE
-    path_res = (pgr_cost_t *) funcctx->user_fctx;
+    path_res = (pgr_cost3_t *) funcctx->user_fctx;
 #else
     path_res = (path_fromto_t *) funcctx->user_fctx;
 #endif
@@ -828,8 +829,8 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
 
         DBG("INIT values && nulls");
 #ifdef PGR_MERGE
-        values = palloc(4 * sizeof(Datum));
-        nulls = palloc(4 * sizeof(char));
+        values = palloc(5 * sizeof(Datum));
+        nulls = palloc(5 * sizeof(char));
 
         values[0] = Int32GetDatum(path_res[call_cntr].seq);
         nulls[0] = ' ';
@@ -837,8 +838,10 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
         nulls[1] = ' ';
         values[2] = Int32GetDatum(path_res[call_cntr].id2);
         nulls[2] = ' ';
-        values[3] = Float8GetDatum(path_res[call_cntr].cost);
+        values[3] = Int32GetDatum(path_res[call_cntr].id3);
         nulls[3] = ' ';
+        values[4] = Float8GetDatum(path_res[call_cntr].cost);
+        nulls[4] = ' ';
 #else
         values = palloc(6 * sizeof(Datum));
         nulls = palloc(6 * sizeof(char));

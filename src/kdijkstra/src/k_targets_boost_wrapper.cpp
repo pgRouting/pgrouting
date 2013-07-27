@@ -288,7 +288,7 @@ onetomany_dijkstra_boostpath(edge_t *edges, unsigned int count,
         int start_vertex, int *end_vertices, int nb_targets,
         bool directed, bool has_reverse_cost,
 #ifdef PGR_MERGE
-        pgr_cost_t **pathdists,
+        pgr_cost3_t **pathdists,
         int *path_count,
 #else
         path_fromto_t **pathdists,
@@ -405,7 +405,7 @@ try {
         sum_path_sizes += path_vect[i].size();
     }
 #ifdef PGR_MERGE
-    *pathdists = (pgr_cost_t *) malloc(sizeof(pgr_cost_t) * sum_path_sizes + nb_targets + 1);
+    *pathdists = (pgr_cost3_t *) malloc(sizeof(pgr_cost3_t) * sum_path_sizes + nb_targets + 1);
     if (! *pathdists) {
         *err_msg = (char *) "Error: out of memory";
         return -1;
@@ -419,6 +419,7 @@ try {
             (*pathdists)[seq].seq = seq;
             (*pathdists)[seq].id1 = id1;
             (*pathdists)[seq].id2 = -1;
+            (*pathdists)[seq].id3 = -1;
             (*pathdists)[seq].cost = -1.0;
             seq++;
             continue;
@@ -443,7 +444,8 @@ try {
                 if (targ == v_targ) {
                     (*pathdists)[seq].seq = seq;
                     (*pathdists)[seq].id1 = id1;
-                    (*pathdists)[seq].id2 = graph[*out_i].id; 
+                    (*pathdists)[seq].id2 = targ;
+                    (*pathdists)[seq].id3 = graph[*out_i].id; 
                     (*pathdists)[seq].cost = graph[*out_i].cost;
                     seq++;
                     break;
