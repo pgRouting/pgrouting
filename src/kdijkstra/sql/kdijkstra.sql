@@ -44,7 +44,7 @@ CREATE OR REPLACE FUNCTION pgr_kdijkstrapath(
     target_vid integer array,
     directed boolean,
     has_reverse_cost boolean)
-    RETURNS SETOF pgr_costResult
+    RETURNS SETOF pgr_costResult3
     AS '$libdir/librouting', 'onetomany_dijkstra_path'
     LANGUAGE C IMMUTABLE STRICT;
 
