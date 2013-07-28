@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0-dev (bf13fd7 develop)',
+        VERSION:     '2.0.0-dev (b0eaca0 costresult3)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -60,12 +62,12 @@
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>This function allow you to have a single start node and multiple destination nodes and will compute the routes to all the destinations from the source node. Returns a set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a> (seq, id1, id2, cost) rows, that summarize the total path cost. <tt class="docutils literal"><span class="pre">pgr_kdijkstraCost</span></tt> returns one record for each destination node and the cost is the total code of the route to that node. <tt class="docutils literal"><span class="pre">pgr_kdijkstraPath</span></tt> returns one record for every edge in that path from source to destination and the cost is to traverse that edge.</p>
+<p>These functions allow you to have a single start node and multiple destination nodes and will compute the routes to all the destinations from the source node. Returns a set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result3"><em>pgr_costResult3</em></a> or <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result3"><em>pgr_costResult3</em></a>. <tt class="docutils literal"><span class="pre">pgr_kdijkstraCost</span></tt> returns one record for each destination node and the cost is the total code of the route to that node. <tt class="docutils literal"><span class="pre">pgr_kdijkstraPath</span></tt> returns one record for every edge in that path from source to destination and the cost is to traverse that edge.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_kdijkstraCost</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">,</span> <span class="nb">integer</span> <span class="k">source</span><span class="p">,</span>
                  <span class="nb">integer</span><span class="p">[]</span> <span class="n">targets</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">directed</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">has_rcost</span><span class="p">);</span>
 
-<span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_kdijkstraPath</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">,</span> <span class="nb">integer</span> <span class="k">source</span><span class="p">,</span>
-                 <span class="nb">integer</span><span class="p">[]</span> <span class="n">targets</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">directed</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">has_rcost</span><span class="p">);</span>
+<span class="n">pgr_costResult3</span><span class="p">[]</span> <span class="n">pgr_kdijkstraPath</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">,</span> <span class="nb">integer</span> <span class="k">source</span><span class="p">,</span>
+                  <span class="nb">integer</span><span class="p">[]</span> <span class="n">targets</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">directed</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">has_rcost</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -126,18 +128,20 @@
 </tr>
 </tbody>
 </table>
-<p><tt class="docutils literal"><span class="pre">pgr_kdijkstraPath</span></tt> returns set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[] - Path Result with Cost</em></a>:</p>
+<p><tt class="docutils literal"><span class="pre">pgr_kdijkstraPath</span></tt> returns set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result3"><em>pgr_costResult3[] - Multiple Path Results with Cost</em></a>:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body">row sequence</td>
 </tr>
-<tr class="field-even field"><th class="field-name">id1:</th><td class="field-body">path vertex target id (identifies the target path).</td>
+<tr class="field-even field"><th class="field-name">id1:</th><td class="field-body">path target id (identifies the target path).</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">path edge id</td>
+<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">path edge target node id</td>
 </tr>
-<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body">cost to traverse this edge or -1.0 if there is no path to this target</td>
+<tr class="field-even field"><th class="field-name">id3:</th><td class="field-body">path edge id</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">cost:</th><td class="field-body">cost to traverse this edge or -1.0 if there is no path to this target</td>
 </tr>
 </tbody>
 </table>
@@ -162,22 +166,49 @@
    <span class="mi">1</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">2</span>
 </pre></div>
 </div>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span> <span class="k">AS</span> <span class="n">path</span><span class="p">,</span> <span class="n">id2</span> <span class="k">AS</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span> <span class="k">FROM</span> <span class="n">pgr_kdijkstraPath</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="mi">10</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="k">false</span><span class="p">,</span> <span class="k">false</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span> <span class="k">AS</span> <span class="n">path</span><span class="p">,</span> <span class="n">id2</span> <span class="k">AS</span> <span class="n">node</span><span class="p">,</span> <span class="n">id3</span> <span class="k">AS</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span>
+  <span class="k">FROM</span> <span class="n">pgr_kdijkstraPath</span><span class="p">(</span>
+      <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+      <span class="mi">10</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="k">false</span><span class="p">,</span> <span class="k">false</span>
 <span class="p">);</span>
 
- <span class="n">seq</span> <span class="o">|</span> <span class="n">path</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span>
-<span class="c1">-----+------+------+------</span>
-   <span class="mi">0</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="c1">-----+------+------+------+------</span>
+   <span class="mi">0</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
 <span class="p">(</span><span class="mi">6</span> <span class="k">rows</span><span class="p">)</span>
 </pre></div>
 </div>
+<ul class="simple">
+<li>Returning a <tt class="docutils literal"><span class="pre">path</span></tt> result</li>
+</ul>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id1</span> <span class="k">as</span> <span class="n">path</span><span class="p">,</span> <span class="n">st_astext</span><span class="p">(</span><span class="n">st_linemerge</span><span class="p">(</span><span class="n">st_union</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)))</span> <span class="k">as</span> <span class="n">the_geom</span>
+  <span class="k">FROM</span> <span class="n">pgr_kdijkstraPath</span><span class="p">(</span>
+                  <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+                  <span class="mi">10</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="k">false</span><span class="p">,</span> <span class="k">false</span>
+            <span class="p">)</span> <span class="n">a</span><span class="p">,</span>
+            <span class="n">edge_table</span> <span class="n">b</span>
+<span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">id3</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span>
+<span class="k">GROUP</span> <span class="k">by</span> <span class="n">id1</span>
+<span class="k">ORDER</span> <span class="k">by</span> <span class="n">id1</span><span class="p">;</span>
+
+<span class="n">path</span> <span class="o">|</span>            <span class="n">the_geom</span>
+<span class="c1">------+---------------------------------</span>
+    <span class="mi">4</span> <span class="o">|</span> <span class="n">LINESTRING</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">,</span><span class="mi">3</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span> <span class="mi">1</span><span class="p">)</span>
+   <span class="mi">12</span> <span class="o">|</span> <span class="n">LINESTRING</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">,</span><span class="mi">3</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There is no assurance that the result above will be ordered in the direction
+of flow of the route, ie: it might be reversed. You will need to check if
+<tt class="docutils literal"><span class="pre">st_startPoint()</span></tt> of the route is the same as the start node location and
+if it is not then call <tt class="docutils literal"><span class="pre">st_reverse()</span></tt> to reverse the direction of the route.
+This behavior is a function of PostGIS functions <tt class="docutils literal"><span class="pre">st_linemerge()</span></tt> and
+<tt class="docutils literal"><span class="pre">st_union()</span></tt> and not pgRouting.</p>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
@@ -203,9 +234,9 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (bf13fd7 develop).
-      Last updated on Jul 17, 2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (b0eaca0 costresult3).
+      Last updated on Jul 26, 2013.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>
