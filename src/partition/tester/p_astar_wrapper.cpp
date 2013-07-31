@@ -1,7 +1,6 @@
 
 
 
-
 #include <exception>
 #include "P_AStar.h"
 #include "b_astar.h"
@@ -12,7 +11,7 @@ int p_astar_wrapper(int source_vertex_id, int target_vertex_id, char **err_msg)
 
 	try {
 		P_AStar Pastar;
-		res = Pastar.p_astar( source_vertex_id, err_msg);     
+		res = Pastar.p_astar( source_vertex_id, target_vertex_id, err_msg);     
 	}
 	catch(std::exception& e) {
 		*err_msg = (char *) e.what();
