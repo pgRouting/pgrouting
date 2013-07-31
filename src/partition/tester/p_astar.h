@@ -4,6 +4,8 @@
 #include "postgres.h"
 
 
+int total_tuples;
+
 typedef struct edge_p_astar
 {
 	int id;

@@ -152,7 +152,7 @@ fetch_partition_edges(int vertex_id)
 	bool moredata = TRUE;
 	int ntuples;                                 
 	edge_p_astar_t *edges = NULL;
-	int total_tuples = 0;
+         total_tuples = 0;
                                                                         
 	char *sql_1;                  // this sql querry  will fetch the partion id of the vertex node //
 
