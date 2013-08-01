@@ -21,6 +21,7 @@
 
 #include <exception>
 #include <vector>
+#include <sstream>
 #include <boost/config.hpp>
 
 #include <boost/graph/graph_traits.hpp>

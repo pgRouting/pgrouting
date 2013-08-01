@@ -33,6 +33,10 @@ PG_MODULE_MAGIC;
 #define DBG(format, arg...) do { ; } while (0)
 #endif
 
+#ifndef INFINITY
+#define INFINITY (1.0/0.0)
+#endif
+
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
