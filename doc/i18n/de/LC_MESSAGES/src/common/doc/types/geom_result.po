@@ -1,0 +1,71 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/types/geom_result.rst:13
+msgid "pgr_geomResult[] - Path Result with Geometry"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:20
+msgid "Name"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:22
+msgid ""
+"``pgr_geomResult[]`` — A set of records to describe a path result with "
+"geometry attribute."
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:26
+msgid "Description"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:38
+msgid "sequential ID indicating the path order"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:39
+#: ../../../src/common/doc/types/geom_result.rst:40
+msgid "generic name, to be specified by the function"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:41
+msgid "geometry attribute"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:45
+msgid "History"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:46
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:47
+msgid "Replaces ``geoms``"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:51
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:53
+msgid ":ref:`common_types`"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:15
+msgid "pgr_geomResult[]"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:15
+msgid "types"
+msgstr ""

@@ -1,0 +1,43 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../index_man.rst:13
+msgid "pgRouting Reference"
+msgstr ""
+
+#: ../../index_man.rst:15
+msgid ""
+"pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL "
+"<http://postgresql.org>`_ geospatial database to provide geospatial routing "
+"and other network analysis functionality."
+msgstr ""
+
+#: ../../index_man.rst:22
+msgid "pgRouting provides several :ref:`common functions <common>`:"
+msgstr ""
+
+#: ../../index_man.rst:36
+msgid "pgRouting defines a few :ref:`custom data types <common_types>`:"
+msgstr ""
+
+#: ../../index_man.rst:50
+msgid "pgRouting functions in alphabetical order:"
+msgstr ""
+
+#: ../../index_man.rst:66
+msgid "If pgRouting is compiled with \"Driving Distance\" enabled:"
+msgstr ""
+
+#: ../../index_man.rst:75
+msgid "Some functions from previous releases may have been removed."
+msgstr ""

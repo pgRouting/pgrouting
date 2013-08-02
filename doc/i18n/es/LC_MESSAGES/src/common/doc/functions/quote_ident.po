@@ -1,0 +1,78 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/functions/quote_ident.rst:13
+msgid "pgr_quote_ident - Quote table name with Schema Component"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:20
+msgid "Name"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:22
+msgid ""
+"``pgr_quote_ident`` — Quote table name with or without schema component."
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:26
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:28
+msgid ""
+"Function to split a string on ``.`` characters and then quote the components"
+" as postgres identifiers and then join them back together with ``.`` "
+"characters. Multile ``.`` will get collapsed into a single ``.``, so "
+"``schema...table`` till get returned as ``schema.\"table\"`` and "
+"``Schema.table`` becomes ``\"Schema\".\"table\"``."
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:37
+msgid "Description"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:39
+msgid "``text`` table name with or without schema component"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:41
+msgid "Returns table name with or without schema as ``text``."
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:45
+msgid "History"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:46
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:50
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:77
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:79
+msgid "[TBD]"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:15
+msgid "pgr_quote_ident(text)"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:15
+msgid "common"
+msgstr ""

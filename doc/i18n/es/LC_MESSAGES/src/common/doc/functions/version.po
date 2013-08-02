@@ -1,0 +1,96 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/functions/version.rst:13
+msgid "pgr_version - Get version information"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:20
+msgid "Name"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:22
+msgid "``pgr_version`` — Query for pgRouting version information."
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:26
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:28
+msgid "Returns a table with pgRouting version information."
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:36
+msgid "Description"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:38
+msgid "Returns a table with:"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:40
+msgid "``varchar`` pgRouting version"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:41
+msgid "``varchar`` Git tag of pgRouting build"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:42
+msgid "``varchar`` Git hash of pgRouting build"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:43
+msgid "``varchar`` Git branch of pgRouting build"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:44
+msgid "``varchar`` Boost version"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:48
+msgid "History"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:49
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:53
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:55
+msgid "Query for full version string"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:67
+msgid "Query for ``version`` and ``boost`` attribute"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:80
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:82
+msgid ":ref:`pgr_versionless`"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:15
+msgid "pgr_version()"
+msgstr ""
+
+#: ../../../src/common/doc/functions/version.rst:15
+msgid "utilities"
+msgstr ""

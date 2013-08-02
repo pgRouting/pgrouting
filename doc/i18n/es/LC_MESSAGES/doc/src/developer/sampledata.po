@@ -1,0 +1,31 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../src/developer/sampledata.rst:13
+msgid "Sample Data"
+msgstr ""
+
+#: ../../src/developer/sampledata.rst:15
+msgid ""
+"The documentation provides very simple example queries based on a small "
+"sample network. To be able to execute the sample queries, run the following "
+"SQL commands to create a table with a small network dataset."
+msgstr ""
+
+#: ../../src/developer/sampledata.rst:21
+msgid "Create table"
+msgstr ""
+
+#: ../../src/developer/sampledata.rst:50
+msgid "Insert network data"
+msgstr ""

@@ -1,0 +1,235 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/trsp/doc/index.rst:13
+msgid "pgr_trsp - Turn Restriction Shortest Path (TRSP)"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:23
+msgid "Name"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:25
+msgid ""
+"``pgr_trsp`` — Returns the shortest path with support for turn restrictions."
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:29
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:31
+msgid ""
+"The turn restricted shorthest path (TRSP) is a shortest path algorithm that "
+"can optionally take into account complicated turn restrictions like those "
+"found in real work navigable road networks. Performamnce wise it is nearly "
+"as fast as the A* search but has many additional features like it works with"
+" edges rather than the nodes of the network. Returns a set of "
+":ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that "
+"make up a path."
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:47
+msgid "Description"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:49
+msgid ""
+"The Turn Restricted Shortest Path algorithm (TRSP) is similar to the "
+":ref:`shooting_star` in that you can specify turn restrictions."
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:51
+msgid ""
+"The TRSP setup is mostly the same as :ref:`Dijkstra shortest path "
+"<pgr_dijkstra>` with the addition of an optional turn restriction table. "
+"This makes adding turn restrictions to a road network much easier than "
+"trying to add them to Shooting Star where you had to ad the same edges "
+"multiple times if it was involved in a restriction."
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:54
+msgid ""
+"a SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:61
+msgid "``int4`` identifier of the edge"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:62
+msgid "``int4`` identifier of the source vertex"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:63
+msgid "``int4`` identifier of the target vertex"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:64
+msgid ""
+"``float8`` value, of the edge traversal cost. A negative cost will prevent "
+"the edge from being inserted in the graph."
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:65
+msgid ""
+"(optional) the cost for the reverse traversal of the edge. This is only used"
+" when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the "
+"above remark about negative costs)."
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:67
+msgid "``int4`` **NODE id** of the start point"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:68
+msgid "``int4`` **NODE id** of the end point"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:69
+msgid "``true`` if the graph is directed"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:70
+msgid ""
+"if ``true``, the ``reverse_cost`` column of the SQL generated set of rows "
+"will be used for the cost of the traversal of the edge in the opposite "
+"direction."
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:72
+msgid ""
+"(optional) a SQL query, which should return a set of rows with the following"
+" columns:"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:78
+msgid "``float8`` turn restriction cost"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:79
+msgid "``int4`` target id"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:80
+msgid ""
+"``text`` commar seperated list of edges in the reverse order of ``rule``"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:82
+msgid ""
+"Another variant of TRSP allows to specify **EDGE id** of source and target "
+"together with a fraction to interpolate the position:"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:84
+msgid "``int4`` **EDGE id** of the start edge"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:85
+msgid "``float8`` fraction of 1 defines the position on the start edge"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:86
+msgid "``int4`` **EDGE id** of the end edge"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:87
+msgid "``float8`` fraction of 1 defines the position on the end edge"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:89
+msgid "Returns set of :ref:`type_cost_result`:"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:91
+msgid "row sequence"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:92
+msgid "node ID"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:93
+msgid "edge ID (``-1`` for the last row)"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:94
+msgid "cost to traverse from ``id1`` using ``id2``"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:98
+msgid "History"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:99
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:103
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:105
+msgid "Without turn restrictions"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:124
+msgid "With turn restrictions"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:126
+msgid ""
+"Turn restrictions require additional information, which can be stored in a "
+"separate table:"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:142
+msgid "Then a query with turn restrictions is created as:"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:165
+msgid "The queries use the :ref:`sampledata` network."
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:169
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:171
+msgid ":ref:`type_cost_result`"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:15
+msgid "pgr_trsp(text,integer,integer,boolean,boolean)"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:15
+msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:15
+msgid ""
+"pgr_trsp(text,integer,double precision,integer,double "
+"precision,boolean,boolean)"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:15
+msgid ""
+"pgr_trsp(text,integer,double precision,integer,double "
+"precision,boolean,boolean,text)"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:15
+msgid "trsp"
+msgstr ""
