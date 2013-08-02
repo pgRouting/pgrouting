@@ -1,31 +1,42 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# This file is distributed under the same license as the pgRouting package.
 # 
+# Translators:
+# Daniel Kastl, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: pgRouting Docs\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-02 12:41\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-08-02 06:20+0000\n"
+"Last-Translator: Daniel Kastl\n"
+"Language-Team: German (http://www.transifex.com/projects/p/pgrouting/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+# 0bfadaed365c4a8b879e32fda5128183
 #: ../../index.rst:13
 msgid "Table of Contents"
-msgstr ""
+msgstr "Inhaltsverzeichnis"
 
+# 315dc202507e442c923471eb02fa360f
 #: ../../index.rst:15
 msgid ""
 "pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL "
 "<http://postgresql.org>`_ geospatial database to provide geospatial routing "
 "and other network analysis functionality."
-msgstr ""
+msgstr "pgRouting erweitert eine `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgresql.org>`_  Geo-Datenbank um Funktionen für “Kürzeste-Wege” Berechnung und andere netzorientierte Algorithmen."
 
+# d663436cd87441e991e7b562d93882ce
 #: ../../index.rst:17
 msgid "This is the manual for pgRouting |release|."
 msgstr ""
 
+# 443732eb9fff4742b403ee64fc4ce285
 #: ../../index.rst:23
 msgid ""
 "The pgRouting Manual is licensed under a `Creative Commons Attribution-Share"
@@ -36,60 +47,74 @@ msgid ""
 ":ref:`license` page."
 msgstr ""
 
+# 0451a35a80934d24ab4abb6421ff6240
 #: ../../index.rst:27
 msgid "General"
 msgstr ""
 
+# 674e25aceae047539b0436df6843f3b2
 #: ../../index.rst:39
 msgid "Tutorial"
-msgstr ""
+msgstr "Anleitung"
 
+# ea189372f5734e679e076ad9c30e68c0
 #: ../../index.rst:52
 msgid ""
 "For a more complete introduction how to build a routing application read the"
 " `pgRouting Workshop <http://workshop.pgrouting.org>`_."
 msgstr ""
 
+# 9db1b1781db14b5098d4114290c162e0
 #: ../../index.rst:56
 msgid "Reference"
-msgstr ""
+msgstr "Referenz"
 
+# 9da315c27b444a06b318353e4d742b77
 #: ../../index.rst:58
 msgid "pgRouting provides several :ref:`common functions <common>`:"
 msgstr ""
 
+# 14376c39e9a641d28e413f57d60d49b6
 #: ../../index.rst:72
 msgid "pgRouting introduces a few :ref:`custom data types <common_types>`:"
-msgstr ""
+msgstr "pgRouting verwendet ein paar  :ref:`custom data types <common_types>`:"
 
+# 1a4a45926b2a493aa2d84d41ec5b236a
 #: ../../index.rst:86
 msgid "pgRouting functions in alphabetical order:"
-msgstr ""
+msgstr "pgRouting Funktionen in alphabetischer Reihenfolge:"
 
+# 90fb6b1616804d45b977981ec07d4aab
 #: ../../index.rst:102
 msgid "If pgRouting is compiled with \"Driving Distance\" enabled:"
 msgstr ""
 
+# 2dca5ecf300247dfb02b1888af03d760
 #: ../../index.rst:111
 msgid "Some functions from previous releases may have been removed."
-msgstr ""
+msgstr "Einige Funktionen aus früheren Versionen wurden möglicherweise entfernt."
 
+# 9311ddd2875f4f8cb14b721087755b8e
 #: ../../index.rst:122
 msgid "Developer"
-msgstr ""
+msgstr "Entwickler"
 
+# 85dc087cc32145c9a5dbc6b30dad4c17
 #: ../../index.rst:133
 msgid "Release notes"
-msgstr ""
+msgstr "Release Notes"
 
+# ccfb34f567aa4260825bcf035bdf7c1f
 #: ../../index.rst:142
 msgid "Indices and tables"
-msgstr ""
+msgstr "Tabellen und Indizes"
 
+# 810e6d80b3dc436da4d9fde15aee0642
 #: ../../index.rst:143
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
+# d50c3bf123c941dcaafd1347d0b68801
 #: ../../index.rst:144
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
