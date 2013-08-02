@@ -1,0 +1,127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/types/cost_result.rst:13
+# d45ff2475b6340049f5713329f82f5ce
+msgid "pgr_costResult[] - Path Result with Cost"
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:20
+#: ../../../src/common/doc/types/cost_result.rst:54
+# 2f6f2d6f00e449a0be34e9cdf8b54089
+# 49e0aff7bd0a46318981c5d5b4396776
+msgid "Name"
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:22
+# a45c91f7558a4f87b3fed0f26f463d59
+msgid "``pgr_costResult[]`` — A set of records to describe a path result with cost attribute."
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:26
+#: ../../../src/common/doc/types/cost_result.rst:60
+# 5fc3974f02f645818a3611fa9ce6f340
+# 8715cd56817b45669397b146f21e4f1e
+msgid "Description"
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:38
+#: ../../../src/common/doc/types/cost_result.rst:73
+# 59efe1c4ccb6458db9691332176f61f7
+# be7d6e663fb44612b105c28f39709f3c
+msgid "sequential ID indicating the path order"
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:39
+#: ../../../src/common/doc/types/cost_result.rst:75
+# 5acbca7c63c447bc9798143e1f7c32c5
+# 9991525bc9974edb889fbbdb8a3d48e1
+msgid "generic name, to be specified by the function, typically the node id"
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:40
+#: ../../../src/common/doc/types/cost_result.rst:76
+# 918180cd0bec4697b66cf43ffd7c13e4
+# cf792e9c07264ccc8ad1687e29e5cd4a
+msgid "generic name, to be specified by the function, typically the edge id"
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:41
+#: ../../../src/common/doc/types/cost_result.rst:77
+# 9bbb4b85d2124b598c8f22ac3b6fd000
+# c4a061c89d9a47289bb5a775a447704c
+msgid "cost attribute"
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:47
+# 7c6b904126974ccb94287fd14ca3f293
+msgid "pgr_costResult3[] - Multiple Path Results with Cost"
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:56
+# 500927fa384d4ade920fa47bb368fb46
+msgid "``pgr_costResult3[]`` — A set of records to describe a path result with cost attribute."
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:74
+# 5d24561bcadd4f44809c5aa410b0bba5
+msgid "generic name, to be specified by the function, typically the path id"
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:81
+# 567f30b093df45ec893280a48cfb20e2
+msgid "History"
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:82
+# e3b470ecd1014b40a5fc434b24052217
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:83
+# 422765a8cd034a87b734341f38a8f9ec
+msgid "Replaces ``path_result``"
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:87
+# afdec513b7994bdf9e23ce49fd6d1a8c
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:89
+# 0ceb2255911b4471beda6d30793af4e1
+msgid ":ref:`common_types`"
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:15
+# aa51c8dd6e0a44c9b370567d8b24f944
+msgid "pgr_costResult[]"
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:15
+#: ../../../src/common/doc/types/cost_result.rst:49
+# aa51c8dd6e0a44c9b370567d8b24f944
+# 46049f8541d243e590a02133d49cb5ea
+msgid "types"
+msgstr ""
+
+#: ../../../src/common/doc/types/cost_result.rst:49
+# 46049f8541d243e590a02133d49cb5ea
+msgid "pgr_costResult3[]"
+msgstr ""
+

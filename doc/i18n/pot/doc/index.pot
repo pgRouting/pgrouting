@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../index.rst:13
+# 0bfadaed365c4a8b879e32fda5128183
+msgid "Table of Contents"
+msgstr ""
+
+#: ../../index.rst:15
+# 315dc202507e442c923471eb02fa360f
+msgid "pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgresql.org>`_ geospatial database to provide geospatial routing and other network analysis functionality."
+msgstr ""
+
+#: ../../index.rst:17
+# d663436cd87441e991e7b562d93882ce
+msgid "This is the manual for pgRouting |release|."
+msgstr ""
+
+#: ../../index.rst:23
+# 443732eb9fff4742b403ee64fc4ce285
+msgid "The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/>`_. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to http://pgrouting.org. For other licenses used in pgRouting see the :ref:`license` page."
+msgstr ""
+
+#: ../../index.rst:27
+# 0451a35a80934d24ab4abb6421ff6240
+msgid "General"
+msgstr ""
+
+#: ../../index.rst:39
+# 674e25aceae047539b0436df6843f3b2
+msgid "Tutorial"
+msgstr ""
+
+#: ../../index.rst:52
+# ea189372f5734e679e076ad9c30e68c0
+msgid "For a more complete introduction how to build a routing application read the `pgRouting Workshop <http://workshop.pgrouting.org>`_."
+msgstr ""
+
+#: ../../index.rst:56
+# 9db1b1781db14b5098d4114290c162e0
+msgid "Reference"
+msgstr ""
+
+#: ../../index.rst:58
+# 9da315c27b444a06b318353e4d742b77
+msgid "pgRouting provides several :ref:`common functions <common>`:"
+msgstr ""
+
+#: ../../index.rst:72
+# 14376c39e9a641d28e413f57d60d49b6
+msgid "pgRouting introduces a few :ref:`custom data types <common_types>`:"
+msgstr ""
+
+#: ../../index.rst:86
+# 1a4a45926b2a493aa2d84d41ec5b236a
+msgid "pgRouting functions in alphabetical order:"
+msgstr ""
+
+#: ../../index.rst:102
+# 90fb6b1616804d45b977981ec07d4aab
+msgid "If pgRouting is compiled with \"Driving Distance\" enabled:"
+msgstr ""
+
+#: ../../index.rst:111
+# 2dca5ecf300247dfb02b1888af03d760
+msgid "Some functions from previous releases may have been removed."
+msgstr ""
+
+#: ../../index.rst:122
+# 9311ddd2875f4f8cb14b721087755b8e
+msgid "Developer"
+msgstr ""
+
+#: ../../index.rst:133
+# 85dc087cc32145c9a5dbc6b30dad4c17
+msgid "Release notes"
+msgstr ""
+
+#: ../../index.rst:142
+# ccfb34f567aa4260825bcf035bdf7c1f
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../index.rst:143
+# 810e6d80b3dc436da4d9fde15aee0642
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../index.rst:144
+# d50c3bf123c941dcaafd1347d0b68801
+msgid ":ref:`search`"
+msgstr ""
+

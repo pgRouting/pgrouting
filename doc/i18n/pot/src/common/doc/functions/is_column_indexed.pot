@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/functions/is_column_indexed.rst:13
+# b53e9641b5cd45ce8d3de52924f6704b
+msgid "pgr_isColumnIndexed - Check if column is indexed"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_indexed.rst:20
+# f43dfea27e8f4b9290750bff06bc56c0
+msgid "Name"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_indexed.rst:22
+# d7dceff1748547358cc1dc78b0c6918c
+msgid "``pgr_isColumnIndexed`` — Check if a column in a table is indexed."
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_indexed.rst:26
+# cc77edd23ea546da9d9c6b9432a3f3d6
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_indexed.rst:28
+# f0b75e6f7ed24ccaa624bee6c35277c7
+msgid "Returns ``true`` or ``false`` if column “col” in table “tab” is indexed."
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_indexed.rst:36
+# 79d30a0b533c4b729353c7f5211e51ee
+msgid "Description"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_indexed.rst:38
+# a4cc9264f4da42bf853f0736b36fa3cb
+msgid "``text`` table name with or without schema component"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_indexed.rst:39
+# 6e01c5a5087b44cf8df761789c426766
+msgid "``text`` column name to be checked for"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_indexed.rst:43
+# 4ff3d8eba2aa48db9f5fe6bf0c4f0a99
+msgid "History"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_indexed.rst:44
+# 924f77894c334d1db52b5a98e2b59de6
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_indexed.rst:48
+# 8411294750dd4852b59a69f3128a8915
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_indexed.rst:59
+# bcdc2bbdcce248df83ae4d6c64504c71
+msgid "The queries use the :ref:`sampledata` network."
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_indexed.rst:63
+# 64e8db9cdfaf4eb89727e2042d5cc17f
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_indexed.rst:65
+# 894e9132f37b40a89558ecf37b17a425
+msgid ":ref:`pgr_is_column_in_table`"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_indexed.rst:15
+# 778853e62a95407eaec0a99656de278f
+msgid "pgr_isColumnIndexed(text,text)"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_indexed.rst:15
+# 778853e62a95407eaec0a99656de278f
+msgid "common"
+msgstr ""
+

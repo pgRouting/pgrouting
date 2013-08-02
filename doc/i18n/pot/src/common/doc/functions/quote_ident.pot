@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/functions/quote_ident.rst:13
+# 07a984066e344118b43e9f2d8c281a14
+msgid "pgr_quote_ident - Quote table name with Schema Component"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:20
+# 14531b6fbc9f4553ba7490dce903fe26
+msgid "Name"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:22
+# 3236b3ac2129475188ace6b4ca1d50e7
+msgid "``pgr_quote_ident`` — Quote table name with or without schema component."
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:26
+# f9c279f589e7429a8e029d0bc505a3f3
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:28
+# 225d8c3b16db4fbd8362708fe0a455d9
+msgid "Function to split a string on ``.`` characters and then quote the components as postgres identifiers and then join them back together with ``.`` characters. Multile ``.`` will get collapsed into a single ``.``, so ``schema...table`` till get returned as ``schema.\"table\"`` and ``Schema.table`` becomes ``\"Schema\".\"table\"``."
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:37
+# 72b0f90e57d74132bf7b1fe8e3d13b1a
+msgid "Description"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:39
+# da850257b04d4fc58c42500714c495e8
+msgid "``text`` table name with or without schema component"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:41
+# 217737aea0f547659f6ecabfafd4e2b4
+msgid "Returns table name with or without schema as ``text``."
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:45
+# 38f4d6fbda85418ea673f47c8d65db43
+msgid "History"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:46
+# 773dba9f4bd340da80cc7996a6101540
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:50
+# 57b3cb4acfe24ddd8ba0237f3cbadfd3
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:77
+# 6579117af3ac407d8b9a59ddfa75e650
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:79
+# a5f464cb97f34080974ba2216b9183dc
+msgid "[TBD]"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:15
+# 943dd0d0de9c407a94267cfb6e1dc721
+msgid "pgr_quote_ident(text)"
+msgstr ""
+
+#: ../../../src/common/doc/functions/quote_ident.rst:15
+# 943dd0d0de9c407a94267cfb6e1dc721
+msgid "common"
+msgstr ""
+

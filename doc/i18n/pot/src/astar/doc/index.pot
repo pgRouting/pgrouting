@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/astar/doc/index.rst:13
+# 92684dd61a19456cabf74f23f9920801
+msgid "pgr_astar - Shortest Path A*"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:20
+# c0471af966cb4207af4a7839033e7e7b
+msgid "Name"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:22
+# 6f8eb54df868460089437bffbfb09c03
+msgid "``pgr_astar`` — Returns the shortest path using A* algorithm."
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:26
+# 458b20751990436788130e111b9ab5db
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:28
+# 6bbc2a7a83fb4ce0afac53650d21b5fb
+msgid "The A* (pronounced \"A Star\") algorithm is based on Dijkstra's algorithm with a heuristic that allow it to solve most shortest path problems by evaluation only a sub-set of the overall graph. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path."
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:37
+# e8ff25ba52ef4031a94de67ec2a31a34
+msgid "Description"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:39
+# 36f349534eaa41789a4adc34ec27602d
+msgid "a SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:46
+# 6de74623ffe843bdaadc910102fa1491
+msgid "``int4`` identifier of the edge"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:47
+# 44c08d5fdd6345baa3c9bba4d25891ab
+msgid "``int4`` identifier of the source vertex"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:48
+# cffff071964b4588946b2a9303f114e6
+msgid "``int4`` identifier of the target vertex"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:49
+# 4377906024fe4c70a229885d8bdc3147
+msgid "``float8`` value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph."
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:50
+# eec528a7e22647aaa8336f64006e4682
+msgid "``x`` coordinate of the start point of the edge"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:51
+# d08ab9f4c0ac4dc190578020c4103751
+msgid "``y`` coordinate of the start point of the edge"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:52
+# 0e54655243a146a1bdfe8953f7103ae6
+msgid "``x`` coordinate of the end point of the edge"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:53
+# 3741bbdd8d5849eea6ed8227d3e3aa8c
+msgid "``y`` coordinate of the end point of the edge"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:54
+# 592b772c9cdd4435a8f764c6fa4ef3ba
+msgid "(optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs)."
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:56
+# 47a3da877087426b843336eeeb292d53
+msgid "``int4`` id of the start point"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:57
+# e0b020fab0af4049b21fefc6fd9182d1
+msgid "``int4`` id of the end point"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:58
+# ad156ba144754258b920b32a02c8648b
+msgid "``true`` if the graph is directed"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:59
+# 3d50f3f143954e6c8c67136b0b0ce0eb
+msgid "if ``true``, the ``reverse_cost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction."
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:61
+# 37ab8c3b44374512ad1218c7181b824a
+msgid "Returns set of :ref:`type_cost_result`:"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:63
+# d8dc66a4012d476d954ea8044bc7b8e6
+msgid "row sequence"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:64
+# 55bf202efa5841e5b8c530c6a86b129c
+msgid "node ID"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:65
+# c77c96af5af7444187b8509a4f2dfacf
+msgid "edge ID (``-1`` for the last row)"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:66
+# f39bec7587da478ba2fdf02f87c1dbd4
+msgid "cost to traverse from ``id1`` using ``id2``"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:70
+# 0d96603ddb4f435f8cb921169547a46e
+msgid "History"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:71
+# 91f7a113c08c4517a9c02fe3f2847032
+msgid "Renamed in version 2.0.0"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:75
+# c73e248708cc4f85b1efd8ca62126e12
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:77
+# e269a3443c7c495f9d68cf8be9fe77b1
+msgid "Without ``reverse_cost``"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:96
+# 0579667515894350aa27b085bba47858
+msgid "With ``reverse_cost``"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:114
+# e3cdccc16225475492b76d2b17ec1d64
+msgid "The queries use the :ref:`sampledata` network."
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:118
+# e2bfdfc7811a4cb895bf928b4121b135
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:120
+# ac74fe6f8ccb4a36b19b1a228d827cfd
+msgid ":ref:`type_cost_result`"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:121
+# 50a2809dc3e8489db580ede26d3124b9
+msgid "http://en.wikipedia.org/wiki/A*_search_algorithm"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:15
+# 265f0a156f524a8684b3e40b1e871f59
+msgid "pgr_astar(text,integer,integer,boolean,boolean)"
+msgstr ""
+
+#: ../../../src/astar/doc/index.rst:15
+# 265f0a156f524a8684b3e40b1e871f59
+msgid "astar"
+msgstr ""
+

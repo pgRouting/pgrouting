@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../index_man.rst:13
+# 55e36e07c47241689c61fb9f11a515fb
+msgid "pgRouting Reference"
+msgstr ""
+
+#: ../../index_man.rst:15
+# 2fd06cd290bb477997795528624a0f30
+msgid "pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgresql.org>`_ geospatial database to provide geospatial routing and other network analysis functionality."
+msgstr ""
+
+#: ../../index_man.rst:22
+# ba7ab0a05f864697ad5333401982f7de
+msgid "pgRouting provides several :ref:`common functions <common>`:"
+msgstr ""
+
+#: ../../index_man.rst:36
+# bd5863c81991472786bc27b2ab08ee76
+msgid "pgRouting defines a few :ref:`custom data types <common_types>`:"
+msgstr ""
+
+#: ../../index_man.rst:50
+# 7fcfe7c04b7c4bd6ba37e0ad8411b02b
+msgid "pgRouting functions in alphabetical order:"
+msgstr ""
+
+#: ../../index_man.rst:66
+# 9af838b274b8483c82d3379febf6bb0e
+msgid "If pgRouting is compiled with \"Driving Distance\" enabled:"
+msgstr ""
+
+#: ../../index_man.rst:75
+# 379f102ec9e0439295bd8eaff8ae48d2
+msgid "Some functions from previous releases may have been removed."
+msgstr ""
+

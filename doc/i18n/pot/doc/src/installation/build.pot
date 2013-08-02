@@ -1,0 +1,88 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../src/installation/build.rst:13
+# 696190537413425ca7f927b8ae11f571
+msgid "Build Guide"
+msgstr ""
+
+#: ../../src/installation/build.rst:15
+# 4b33bcd0252a424d984a70e11afbcddd
+msgid "To be able to compile pgRouting make sure that the following dependencies are met:"
+msgstr ""
+
+#: ../../src/installation/build.rst:17
+# 5ed1c41052094d659071f96b7637babf
+msgid "C and C++ compilers"
+msgstr ""
+
+#: ../../src/installation/build.rst:18
+# 3e4ca373b668477d8e95536993f89b3c
+msgid "Postgresql version >= 8.4 (>= 9.1 recommended)"
+msgstr ""
+
+#: ../../src/installation/build.rst:19
+# 7215aff43090474d90902ae633aa93fc
+msgid "PostGIS version >= 1.5 (>= 2.0 recommended)"
+msgstr ""
+
+#: ../../src/installation/build.rst:20
+# 285a8d20940443fb84c8dedfd3486d4d
+msgid "The Boost Graph Library (BGL). Version >= [TBD]"
+msgstr ""
+
+#: ../../src/installation/build.rst:21
+# df4d1558ee534e59960ef28ef5504736
+msgid "CMake >= 2.8.8"
+msgstr ""
+
+#: ../../src/installation/build.rst:22
+# fe4c32d4563142cabf9c3ee3834210ae
+msgid "(optional, for Driving Distance) CGAL >= [TBD]"
+msgstr ""
+
+#: ../../src/installation/build.rst:23
+# 33a06aa4fa6e4c799b0f2136bdbb67db
+msgid "(optional, for Documentation) Sphinx >= 1.1"
+msgstr ""
+
+#: ../../src/installation/build.rst:27
+# 2f3ded91163749bfa4470e688b7c0314
+msgid "For MinGW on Windows"
+msgstr ""
+
+#: ../../src/installation/build.rst:39
+# 6c2ae259c06f4dfbb4ca7f8d4b2d6171
+msgid "For Linux"
+msgstr ""
+
+#: ../../src/installation/build.rst:51
+# 4f8c0c5754aa4928a62e497b6cbe1f96
+msgid "With Documentation"
+msgstr ""
+
+#: ../../src/installation/build.rst:53
+# 9731e9b2446e4ae8b812f8074970caa4
+msgid "Build with documentation (requires `Sphinx <http://sphinx-doc.org/>`_):"
+msgstr ""
+
+#: ../../src/installation/build.rst:60
+# 53aea17a407040ec803b09e91a6d7ca4
+msgid "Rebuild modified documentation only:"
+msgstr ""
+

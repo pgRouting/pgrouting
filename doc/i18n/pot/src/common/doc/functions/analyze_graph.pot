@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:13
+# 3183aa8a1f2849e989574f9a723a0f2c
+msgid "pgr_analyzeGraph - Analyze a Graph"
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:20
+# bfd0eb1bb59347158a4f70046786ae6d
+msgid "Name"
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:22
+# 0c6778e9f827407197aa3e9757b5706d
+msgid "``pgr_analyzeGraph`` — Analyzes the \"network\" and \"vertices_tmp\" tables."
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:26
+# 18f46e4a82de43898c2f6e2d54e45ebc
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:28
+# ab707cdde03844c98244ecdaa71b77bb
+msgid "Analyzes the edge table and \"vertices_tmp\" tables and flags if nodes are deadends, ie. ``vertices_tmp.cnt=1`` and identifies nodes that might be disconnected because of gaps < ``tolerance`` or because of zlevel errors in the data."
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:37
+# 54d8b6bdf1e247618a8934ff17a99f7f
+msgid "Description"
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:39
+# 79b45c8d33874f3fa91bab34c7373275
+msgid "``text`` network table name (may contain the schema name as well)"
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:40
+# 9b231978f1f4472983afb2a32dd1e803
+msgid "``text`` geometry column name of the network table"
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:41
+# dc4e5e1b87b94fcfae8cd797f9668f7f
+msgid "``float8`` snapping tolerance of disconnected edges (in projection unit)"
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:45
+# 8689b5dbcc864050a6093ae8ffed98cf
+msgid "History"
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:46
+# 3744c651cd074368a23d7f2a219348fe
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:50
+# cb43d21efb82472793f56c20bb0b09f5
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:70
+# e017cd5f485a406bab0201ec41551e9e
+msgid "The queries use the :ref:`sampledata` network."
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:74
+# 0b7b98c7b6ec45baa1bf74099a33c6c6
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:76
+# da81e43b39ce419cb994bcf0f60a353d
+msgid ":ref:`pgr_analyze_oneway`"
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:77
+# 69159432d0264986b18df3ab4f6b6a62
+msgid ":ref:`analytics`"
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:15
+# 6eb53dac5f0b45cf8e96ee9569103745
+msgid "pgr_analyzeGraph(text,text,double precision)"
+msgstr ""
+
+#: ../../../src/common/doc/functions/analyze_graph.rst:15
+# 6eb53dac5f0b45cf8e96ee9569103745
+msgid "common"
+msgstr ""
+

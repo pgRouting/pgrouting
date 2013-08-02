@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../src/installation/index.rst:13
+# 3df3cca64cdf4c1c94bd188998bfb597
+msgid "Installation"
+msgstr ""
+
+#: ../../src/installation/index.rst:15
+# 22983ff82b4c4b80af33abc265eb25e2
+msgid "Binary packages are provided for the current version on the following platforms:"
+msgstr ""
+
+#: ../../src/installation/index.rst:19
+# eb14d72706864ca488bec376240172f6
+msgid "Windows"
+msgstr ""
+
+#: ../../src/installation/index.rst:21
+# 054a4aa945164d00a700e9f3684a2578
+msgid "Winnie Bot Experimental Builds:"
+msgstr ""
+
+#: ../../src/installation/index.rst:23
+# 34441ed3716545afa6c052c9b4fabf27
+msgid "`PostgreSQL 9.2 32-bit, 64-bit <http://winnie.postgis.net/download/windows/pg92/buildbot/>`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:27
+# de54b69b301a413e9893186b49ea5b6e
+msgid "Ubuntu/Debian"
+msgstr ""
+
+#: ../../src/installation/index.rst:29
+# 6cace92237b042d89260defb3a7a75a6
+msgid "Ubuntu packages are available in Launchpad repositories:"
+msgstr ""
+
+#: ../../src/installation/index.rst:31
+# 3fd7f6dd40974b258a1790b967f6044f
+msgid "*stable* https://launchpad.net/~georepublic/+archive/pgrouting"
+msgstr ""
+
+#: ../../src/installation/index.rst:32
+# cbf5843165bb46328d926ee16fafee7c
+msgid "*unstable* https://launchpad.net/~georepublic/+archive/pgrouting-unstable"
+msgstr ""
+
+#: ../../src/installation/index.rst:43
+# 6a05e41d82594c72a51fce11c468a426
+msgid "Use `UbuntuGIS-unstable PPA <https://launchpad.net/~ubuntugis/+archive/ubuntugis-unstable>`_ to install PostGIS 2.0."
+msgstr ""
+
+#: ../../src/installation/index.rst:47
+# c7f4e0965c924179953325953f52c221
+msgid "RHEL/CentOS/Fedora"
+msgstr ""
+
+#: ../../src/installation/index.rst:49
+# 8401c608b38b4c5c8bd84d7ff2f1cc43
+msgid "Fedora RPM's: https://admin.fedoraproject.org/pkgdb/acls/name/pgRouting"
+msgstr ""
+
+#: ../../src/installation/index.rst:53
+# 428bf8b85fa9417e83f591399ce7b2c7
+msgid "OSX"
+msgstr ""
+
+#: ../../src/installation/index.rst:55
+# e356b1dd5e9b47c0a8090d49e0dc6d93
+msgid "See `builds from KingChaos <http://www.kyngchaos.com/software/postgres>`_."
+msgstr ""
+
+#: ../../src/installation/index.rst:59
+# 9183f3bc4ce84c8ebffe1a0cdc3bd0c6
+msgid "Build from Source"
+msgstr ""
+
+#: ../../src/installation/index.rst:62
+# 4e3aa1045ca944ceac26a8d37f122846
+msgid "Source Package"
+msgstr ""
+
+#: ../../src/installation/index.rst:65
+# 7d18f1092e5a486eb2d028cf80724897
+msgid "Git 2.0.0-rc1 release"
+msgstr ""
+
+#: ../../src/installation/index.rst:65
+# 7fb295243ff94a57958652817b7d473f
+msgid "`v2.0.0-rc1.tar.gz`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:65
+# 5bcb087cd045465bbfa8c75d205afebe
+msgid "`v2.0.0-rc1.zip`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:66
+# b89eb56769c24145baab4d360b8739d4
+msgid "Git 2.0.0-beta release"
+msgstr ""
+
+#: ../../src/installation/index.rst:66
+# 5c382f19d905468c9a1cc85b036edefa
+msgid "`v2.0.0-beta.tar.gz`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:66
+# 024c6247437f40b1aa98c48102e99b17
+msgid "`v2.0.0-beta.zip`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:67
+# 8357f4d86e904fd180baff0c83516ea5
+msgid "Git 2.0.0-alpha release"
+msgstr ""
+
+#: ../../src/installation/index.rst:67
+# 9b2e7b66a4d84bec898cc9527dbf0e70
+msgid "`v2.0.0-alpha.tar.gz`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:67
+# ee0635f13a544db4a42536e422b66444
+msgid "`v2.0.0-alpha.zip`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:68
+# 12ec7adf735141c7a8a33cb469f4e1f7
+msgid "Git master branch"
+msgstr ""
+
+#: ../../src/installation/index.rst:68
+# 42192147cae242d7ba6ff6180f3e8311
+msgid "`master.tar.gz`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:68
+# 04d7f12eb7fc4321a702eb7b8cb33f41
+msgid "`master.zip`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:69
+# 61c1b6da60b34442b5760babd164d904
+msgid "Git develop branch"
+msgstr ""
+
+#: ../../src/installation/index.rst:69
+# 729b7588b79e44269785709b1021115b
+msgid "`develop.tar.gz`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:69
+# 1134e9dde2cc46339785f2ca1711dfa9
+msgid "`develop.zip`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:89
+# de920d9a34fc4e7d9ee50883eb010b77
+msgid "Using Git"
+msgstr ""
+
+#: ../../src/installation/index.rst:91
+# 0c03fdbc4aea4074ad0040d703f7dceb
+msgid "Git protocol (read-only):"
+msgstr ""
+
+#: ../../src/installation/index.rst:98
+# 0bd99630c93e4b6094af07067fc579ca
+msgid "HTTPS protocol (read-only):"
+msgstr ""
+
+#: ../../src/installation/index.rst:105
+# 1f80e144a9ee46a8b1414b24dc7898ff
+msgid "See :ref:`build` for notes on compiling from source."
+msgstr ""
+

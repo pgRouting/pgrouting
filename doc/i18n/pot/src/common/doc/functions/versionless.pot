@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/functions/versionless.rst:13
+# 39e31fe2421543a08b0f0d0b8145bd16
+msgid "pgr_versionless - Compare version numbers"
+msgstr ""
+
+#: ../../../src/common/doc/functions/versionless.rst:20
+# 7d2f0bd1046843ff85fd3d2af275eb36
+msgid "Name"
+msgstr ""
+
+#: ../../../src/common/doc/functions/versionless.rst:22
+# 8e1394442f0a45e4840102443f0f8d9d
+msgid "``pgr_version`` — Compare two version numbers and return if smaller."
+msgstr ""
+
+#: ../../../src/common/doc/functions/versionless.rst:26
+# f5b09d5f3d9e4e3e86b16d4c8a40e781
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/common/doc/functions/versionless.rst:28
+# 59a135555c22454a97173610cbd44356
+msgid "Returns ``true`` if the first version number is smaller than the second version number. Otherwise returns ``false``."
+msgstr ""
+
+#: ../../../src/common/doc/functions/versionless.rst:36
+# d9e59de197b941078e76b4353e71bbd0
+msgid "Description"
+msgstr ""
+
+#: ../../../src/common/doc/functions/versionless.rst:38
+# 2721f6c024f046c192a695760b923d44
+msgid "``text`` first version number"
+msgstr ""
+
+#: ../../../src/common/doc/functions/versionless.rst:39
+# cf52a37ca0d2469faaa39f15a791b36b
+msgid "``text`` second version number"
+msgstr ""
+
+#: ../../../src/common/doc/functions/versionless.rst:43
+# cc6ba603b27442878b4c69ae7388b480
+msgid "History"
+msgstr ""
+
+#: ../../../src/common/doc/functions/versionless.rst:44
+# 6767409f75724c29b2ce1be9bfb5681e
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../../src/common/doc/functions/versionless.rst:48
+# f64da5a668e340a3aeb05f7531993f3b
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/common/doc/functions/versionless.rst:61
+# 6d818815f0b644a99f76e3dc5dd00c0d
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/common/doc/functions/versionless.rst:63
+# b7b6116444304babb2dbc43febebbb04
+msgid ":ref:`pgr_version`"
+msgstr ""
+
+#: ../../../src/common/doc/functions/versionless.rst:15
+# 60b1e4dc18884ea6b5953ef7841b0316
+msgid "pgr_versionless(text,text)"
+msgstr ""
+
+#: ../../../src/common/doc/functions/versionless.rst:15
+# 60b1e4dc18884ea6b5953ef7841b0316
+msgid "utilities"
+msgstr ""
+
