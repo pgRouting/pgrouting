@@ -47,7 +47,17 @@ apt-get update -qq
 # Install packages
 # ------------------------------------------------------------------------------
 echo "Installing packages ... this may take some time."
-apt-get install -y -qq packaging-dev checkinstall libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION postgresql-server-dev-$POSTGRESQL_VERSION libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev python-sphinx texlive texlive-latex-extra
+apt-get install -y -qq packaging-dev checkinstall libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION postgresql-server-dev-$POSTGRESQL_VERSION libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev texlive texlive-latex-extra
+
+# ------------------------------------------------------------------------------
+# Manage localization with Transifex
+# https://www.transifex.com/projects/p/pgrouting/ 
+# http://sphinx.readthedocs.org/en/latest/intl.html
+# ------------------------------------------------------------------------------
+apt-get install python-pip python-dev
+pip install sphinx
+pip install transifex-client
+pip install sphinx-intl
 
 # ------------------------------------------------------------------------------
 # Install PostGIS (always build from source)
@@ -74,19 +84,13 @@ ldconfig
 
 # Build extension for PostGIS > 2.0
 if [ "$POSTGIS_VERSION" != "1.5" ]; then 
-	cd extensions && make && make install
+	cd extensions
+	make
+	make install
+	ldconfig
 fi
 
 # ------------------------------------------------------------------------------
 # Restart once
 # ------------------------------------------------------------------------------
 /etc/init.d/postgresql restart
-
-# ------------------------------------------------------------------------------
-# Manage localization with Transifex
-# https://www.transifex.com/projects/p/pgrouting/ 
-# http://sphinx.readthedocs.org/en/latest/intl.html
-# ------------------------------------------------------------------------------
-apt-get install python-pip
-pip install transifex-client
-pip install sphinx-intl
