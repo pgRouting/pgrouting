@@ -62,7 +62,8 @@ CONTEXT:  SQL statement "CREATE TABLE vertices_tmp (id bigserial)"
 PL/pgSQL function pgr_createtopology(character varying,double precision,character varying,character varying) line 45 at SQL statement
 NOTICE:  0 out of 0 edges processed
 OK
-NOTICE:  Adding "cnt" and "chk" columns to vertices_tmp
+NOTICE:  Adding "cnt" column to vertices_tmp
+NOTICE:  Adding "chk" column to vertices_tmp
 NOTICE:  Adding unique index "vertices_tmp_id_idx".
 NOTICE:  Adding index on "source" for "noded2".
 NOTICE:  Adding index on "target" for "noded2".
@@ -71,8 +72,10 @@ NOTICE:  Populating vertices_tmp.cnt
 NOTICE:  Analyzing graph for gaps and zlev errors.
 NOTICE:  Found 0 potential problems at 'SELECT * FROM vertices_tmp WHERE chk=1'
 OK
-NOTICE:  Adding "ein" and "eout" columns to vertices_tmp
+NOTICE:  Adding "ein" column to vertices_tmp
+NOTICE:  Adding "eout" column to vertices_tmp
 NOTICE:  Zeroing columns "ein" and "eout" on "vertices_tmp".
+NOTICE:  Adding unique index "vertices_tmp_id_idx".
 NOTICE:  Analyzing graph for one way street errors.
 NOTICE:  Analysis 25% complete ...
 NOTICE:  Analysis 50% complete ...

@@ -238,7 +238,7 @@ kshortest_path(PG_FUNCTION_ARGS)
       funcctx->user_fctx = path;
 
       funcctx->tuple_desc = 
-        BlessTupleDesc(RelationNameGetTupleDesc("pgr_costResult"));
+        BlessTupleDesc(RelationNameGetTupleDesc("pgr_costResult3"));
 
       MemoryContextSwitchTo(oldcontext);
     }
@@ -262,18 +262,20 @@ kshortest_path(PG_FUNCTION_ARGS)
       Datum *values;
       bool* nulls;
 
-      values = (Datum *)palloc(4 * sizeof(Datum));
-      nulls =(bool *) palloc(4 * sizeof(bool));
+      values = (Datum *)palloc(5 * sizeof(Datum));
+      nulls =(bool *) palloc(5 * sizeof(bool));
 
 
-      values[0] = Int32GetDatum(path[call_cntr].route_id);
+      values[0] = Int32GetDatum(call_cntr);
       nulls[0] = false;
-      values[1] = Int32GetDatum(path[call_cntr].vertex_id);
+      values[1] = Int32GetDatum(path[call_cntr].route_id);
       nulls[1] = false;
-      values[2] = Int32GetDatum(path[call_cntr].edge_id);
+      values[2] = Int32GetDatum(path[call_cntr].vertex_id);
       nulls[2] = false;
-      values[3] = Float8GetDatum(path[call_cntr].cost);
+      values[3] = Int32GetDatum(path[call_cntr].edge_id);
       nulls[3] = false;
+      values[4] = Float8GetDatum(path[call_cntr].cost);
+      nulls[4] = false;
 
       tuple = heap_form_tuple(tuple_desc, values, nulls);
 

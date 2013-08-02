@@ -1,5 +1,7 @@
-NOTICE:  Adding "ein" and "eout" columns to vertices_tmp
+NOTICE:  Adding "ein" column to vertices_tmp
+NOTICE:  Adding "eout" column to vertices_tmp
 NOTICE:  Zeroing columns "ein" and "eout" on "vertices_tmp".
+NOTICE:  Adding unique index "vertices_tmp_id_idx".
 NOTICE:  Analyzing graph for one way street errors.
 NOTICE:  Analysis 25% complete ...
 NOTICE:  Analysis 50% complete ...

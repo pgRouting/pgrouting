@@ -10,6 +10,15 @@ CREATE TYPE pgr_costResult AS
     cost float8
 );
 
+CREATE TYPE pgr_costResult3 AS
+(
+    seq integer,
+    id1 integer,
+    id2 integer,
+    id3 integer,
+    cost float8
+);
+
 CREATE TYPE pgr_geomResult AS
 (
     seq integer,

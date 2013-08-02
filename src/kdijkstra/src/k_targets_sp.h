@@ -51,6 +51,15 @@ typedef struct
     int id2;
     float8 cost;
 } pgr_cost_t;
+
+typedef struct
+{
+    int seq;
+    int id1;
+    int id2;
+    int id3;
+    float8 cost;
+} pgr_cost3_t;
 #endif
 
 typedef struct 
@@ -98,7 +107,7 @@ int onetomany_dijkstra_boostpath(
         int *end_vertices, int nb_targets,
 	    bool directed, bool has_reverse_cost,
 #ifdef PGR_MERGE
-	    pgr_cost_t **dists,
+	    pgr_cost3_t **dists,
         int *path_count,
 #else
 	    path_fromto_t **pathdists,

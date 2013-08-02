@@ -1,0 +1,19 @@
+#/bin/sh
+VERSION=`git describe --tags --long`
+BRANCH=`git branch | grep '*' | awk '{print $2}'`
+
+if test ! -d build ; then
+    echo "Error 'build' directory does not exist."
+    exit 1
+fi
+
+git checkout gh-pages && rm -Rf dev 
+
+cp -r build/html dev 
+cp build/latex/pgRoutingDocumentation.pdf dev/
+gzip -c build/man/pgrouting.7 > dev/pgrouting.7.gz
+
+git add dev && cp build/index.html .
+git commit -m "updated to commit $VERSION" . && git push origin gh-pages
+
+git checkout $BRANCH

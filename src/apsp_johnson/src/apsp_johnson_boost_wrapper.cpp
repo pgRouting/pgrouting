@@ -20,8 +20,13 @@
  */
 
 #include <boost/config.hpp>
+#include <boost/version.hpp>
 
+#if BOOST_VERSION > 103900
 #include <boost/property_map/property_map.hpp>
+#else
+#include <boost/vector_property_map.hpp>
+#endif
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/johnson_all_pairs_shortest.hpp>
 
