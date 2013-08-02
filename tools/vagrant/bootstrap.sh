@@ -6,8 +6,8 @@
 # Virtual environment bootstrap script
 # ------------------------------------------------------------------------------
 
-set -e # Exit script immediately on first error.
-#set -x # Print commands and their arguments as they are executed.
+# set -e # Exit script immediately on first error.
+# set -x # Print commands and their arguments as they are executed.
 
 # Abort provisioning if pgRouting development environment already setup.
 # ------------------------------------------------------------------------------

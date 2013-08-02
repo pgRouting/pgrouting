@@ -37,7 +37,7 @@ if(WITH_DOC)
     set(SPHINX_MAN_DIR "${PGROUTING_BINARY_DIR}/man")
 
     # Localization output directory
-    set(SPHINX_I18N_DIR "${PGROUTING_BINARY_DIR}/locale")
+    set(SPHINX_I18N_DIR "${CMAKE_CURRENT_SOURCE_DIR}/i18n/pot")
 
     configure_file(
         "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
@@ -96,5 +96,9 @@ if(WITH_DOC)
         TARGET pgRoutingDocumentationtex POST_BUILD
         COMMAND cd ${SPHINX_LATEX_DIR} && pdflatex -interaction=nonstopmode pgRoutingDocumentation.tex > /dev/null 2>&1
         COMMENT "Converting to PDF format with Sphinx")
+
+    add_dependencies(pgRoutingDocumentationhtml pgRoutingDocumentationlocale)
+    add_dependencies(pgRoutingDocumentationman pgRoutingDocumentationlocale)
+    add_dependencies(pgRoutingDocumentationtex pgRoutingDocumentationlocale)
 
 endif(WITH_DOC)

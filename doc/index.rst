@@ -134,8 +134,8 @@ Developer
 .. toctree::
 	:maxdepth: 1
 
-	src/changelog/2.0
-	src/changelog/1.x
+	src/changelog/2_0
+	src/changelog/1_x
 	
 
 .. rubric:: Indices and tables
