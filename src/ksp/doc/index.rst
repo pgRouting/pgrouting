@@ -56,7 +56,7 @@ Description
 
 Returns set of :ref:`type_cost_result`:
 
-:seq:   sequence for ording the results
+:seq:   sequence for ordering the results
 :id1:   route ID
 :id2:   node ID
 :id3:   edge ID (``0`` for the last row)
