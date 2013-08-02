@@ -69,7 +69,7 @@ pgRouting provides several :ref:`common functions <common>`:
 
 	../src/common/doc/functions/*
 
-pgRouting defines a few :ref:`custom data types <common_types>`:
+pgRouting introduces a few :ref:`custom data types <common_types>`:
 
 .. toctree::
 	:maxdepth: 1
@@ -129,7 +129,7 @@ Developer
 	src/developer/sampledata
 
 
-.. rubric:: Release Notes
+.. rubric:: Release notes
 
 .. toctree::
 	:maxdepth: 1
