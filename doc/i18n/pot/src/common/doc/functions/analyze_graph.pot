@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting 2.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,92 +17,82 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../src/common/doc/functions/analyze_graph.rst:13
-# 3183aa8a1f2849e989574f9a723a0f2c
+# e001849536eb421281e8e272d2796b79
 msgid "pgr_analyzeGraph - Analyze a Graph"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_graph.rst:20
-# bfd0eb1bb59347158a4f70046786ae6d
+# dacb39f6f57e4b92b83b0d6c672ef1e7
 msgid "Name"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_graph.rst:22
-# 0c6778e9f827407197aa3e9757b5706d
+# a875397916324663b57dd4799740d48b
 msgid "``pgr_analyzeGraph`` — Analyzes the \"network\" and \"vertices_tmp\" tables."
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_graph.rst:26
-# 18f46e4a82de43898c2f6e2d54e45ebc
+# 4b667f4bbcdf41eda0915259ce8d0dbf
 msgid "Synopsis"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_graph.rst:28
-# ab707cdde03844c98244ecdaa71b77bb
+# 4cfa384c0fe9482e922560d9c37fbe16
 msgid "Analyzes the edge table and \"vertices_tmp\" tables and flags if nodes are deadends, ie. ``vertices_tmp.cnt=1`` and identifies nodes that might be disconnected because of gaps < ``tolerance`` or because of zlevel errors in the data."
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_graph.rst:37
-# 54d8b6bdf1e247618a8934ff17a99f7f
+# 8319cc04bd6d48c7b53368c8299afbc0
 msgid "Description"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_graph.rst:39
-# 79b45c8d33874f3fa91bab34c7373275
+# dd782c2d4df442dab7a1abe663203b36
 msgid "``text`` network table name (may contain the schema name as well)"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_graph.rst:40
-# 9b231978f1f4472983afb2a32dd1e803
+# 10c6c9792be34c5d950ca0405566b21b
 msgid "``text`` geometry column name of the network table"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_graph.rst:41
-# dc4e5e1b87b94fcfae8cd797f9668f7f
+# 7c62e7d91d3f44059545ecae93fb1c1f
 msgid "``float8`` snapping tolerance of disconnected edges (in projection unit)"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_graph.rst:45
-# 8689b5dbcc864050a6093ae8ffed98cf
+# c9587ff1d0cb436d9e64c6eddd37ee7b
 msgid "History"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_graph.rst:46
-# 3744c651cd074368a23d7f2a219348fe
+# b846a73261594d9aaa312d40901e8058
 msgid "New in version 2.0.0"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_graph.rst:50
-# cb43d21efb82472793f56c20bb0b09f5
+# a807036566274d48b85fe9cbd868f800
 msgid "Examples"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_graph.rst:70
-# e017cd5f485a406bab0201ec41551e9e
+# b175ffad4f2b4c4fa8a3cc94b6289017
 msgid "The queries use the :ref:`sampledata` network."
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_graph.rst:74
-# 0b7b98c7b6ec45baa1bf74099a33c6c6
+# 991cd66893a64410bfeb6cca82c25793
 msgid "See Also"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_graph.rst:76
-# da81e43b39ce419cb994bcf0f60a353d
+# deb346bdd0f847eeac69e1eb38da3b36
 msgid ":ref:`pgr_analyze_oneway`"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_graph.rst:77
-# 69159432d0264986b18df3ab4f6b6a62
+# 19395f8266894f6aab137ab24e648e0d
 msgid ":ref:`analytics`"
-msgstr ""
-
-#: ../../../src/common/doc/functions/analyze_graph.rst:15
-# 6eb53dac5f0b45cf8e96ee9569103745
-msgid "pgr_analyzeGraph(text,text,double precision)"
-msgstr ""
-
-#: ../../../src/common/doc/functions/analyze_graph.rst:15
-# 6eb53dac5f0b45cf8e96ee9569103745
-msgid "common"
 msgstr ""
 

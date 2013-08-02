@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting 2.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,107 +17,97 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../src/common/doc/functions/version.rst:13
-# 71e6a8a7abec481fb90655c60eb197ee
+# dbab41817c8a46459e8f33cf684a7afb
 msgid "pgr_version - Get version information"
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:20
-# a0c0811b98e34726a2e245d0cadcae42
+# 19cd8fb76f754d898f75659f97628007
 msgid "Name"
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:22
-# a34acf418644409eaa82e6a75281dca9
+# 5531935ef2384b709c4f1d81ddcdf15c
 msgid "``pgr_version`` — Query for pgRouting version information."
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:26
-# 73fdc26bd92e496ea685f303b5d5c2a4
+# 52175fb13b944970989d3ef4a23a7b66
 msgid "Synopsis"
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:28
-# dabcd66a6dac4d238b712944509043b6
+# 14783f07374f4ccdaa53515b95c17943
 msgid "Returns a table with pgRouting version information."
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:36
-# cb887540a9b844ebab37c973f6a5bf38
+# 6d5995ab278d476d80f54ab15b8af686
 msgid "Description"
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:38
-# 709fe3127dc2414b9ed6fb668be3b732
+# b4baa0103a55431abaa586f16230af8c
 msgid "Returns a table with:"
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:40
-# 0cb62ccee09f43fa99a39740df591e77
+# 7d8a75cf72b840b39e0eea6140a5839d
 msgid "``varchar`` pgRouting version"
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:41
-# 2f171c0a6b9c45cbbdc13eabb78c6e6d
+# 2af5168bce0a4b03bf2b097d3099c850
 msgid "``varchar`` Git tag of pgRouting build"
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:42
-# 91f55a467ffb4ba0b3bbcc0cd7d84932
+# b4444b51e41549b399751bcba194a8a8
 msgid "``varchar`` Git hash of pgRouting build"
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:43
-# cce2be61a4ce46e9bf9ff4c68e60effa
+# 6737b5df55e94bb185f64d0de3389f3e
 msgid "``varchar`` Git branch of pgRouting build"
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:44
-# 28117ef3afe5411888846fd5ca0beb66
+# e5b735559b2949b09899e982d6f2ecf3
 msgid "``varchar`` Boost version"
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:48
-# 102d4bcdcdb14d2da685f999fb986525
+# 9042ea468aba4c4490b7124bbf14aacb
 msgid "History"
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:49
-# 145f8aed2f894177a5b4e0484b6d601e
+# 3829660b5485491083028df2cb267d03
 msgid "New in version 2.0.0"
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:53
-# 6952946f7d7f4c9fb2bd1c2ce07b561b
+# 8638cdf8594940cbad096c9ac3d261ad
 msgid "Examples"
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:55
-# b661034688844023b0e1473af6c2bbc5
+# d80877f2810741ada5737305d484de11
 msgid "Query for full version string"
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:67
-# 8f044a977e414625bc5b13506082c633
+# 2ff90cee91e644fab554650cc24bd3bf
 msgid "Query for ``version`` and ``boost`` attribute"
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:80
-# 673bb1032e434b73a87ba4e6f8764b1c
+# 6c3a1c332dc54ea2a01d81c5f5f9dcc1
 msgid "See Also"
 msgstr ""
 
 #: ../../../src/common/doc/functions/version.rst:82
-# f75ba6347e4b47be9d5e2a6ac18f6147
+# 1eeb4f68d3c342dbbadade6c52b87baf
 msgid ":ref:`pgr_versionless`"
-msgstr ""
-
-#: ../../../src/common/doc/functions/version.rst:15
-# c3a15dfb02a94e5dad5ba84eb869ef20
-msgid "pgr_version()"
-msgstr ""
-
-#: ../../../src/common/doc/functions/version.rst:15
-# c3a15dfb02a94e5dad5ba84eb869ef20
-msgid "utilities"
 msgstr ""
 

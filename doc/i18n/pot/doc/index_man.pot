@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting 2.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,37 +17,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../index_man.rst:13
-# 55e36e07c47241689c61fb9f11a515fb
+# 1914a1b474a149c8bbaf65aeab14378a
 msgid "pgRouting Reference"
 msgstr ""
 
 #: ../../index_man.rst:15
-# 2fd06cd290bb477997795528624a0f30
+# 8093a8913a4f4de1a13bd5ed9a619b72
 msgid "pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgresql.org>`_ geospatial database to provide geospatial routing and other network analysis functionality."
 msgstr ""
 
 #: ../../index_man.rst:22
-# ba7ab0a05f864697ad5333401982f7de
+# 35dff83aa750409290fa37e47d0cf9e2
 msgid "pgRouting provides several :ref:`common functions <common>`:"
 msgstr ""
 
 #: ../../index_man.rst:36
-# bd5863c81991472786bc27b2ab08ee76
+# 2f13f00ffd924bf1a61060f32ef5d04f
 msgid "pgRouting defines a few :ref:`custom data types <common_types>`:"
 msgstr ""
 
 #: ../../index_man.rst:50
-# 7fcfe7c04b7c4bd6ba37e0ad8411b02b
+# d906d773bf39489380f6f3f4f1eba3ce
 msgid "pgRouting functions in alphabetical order:"
 msgstr ""
 
 #: ../../index_man.rst:66
-# 9af838b274b8483c82d3379febf6bb0e
+# cc9325b2512b410daae91fb42c066dd8
 msgid "If pgRouting is compiled with \"Driving Distance\" enabled:"
 msgstr ""
 
 #: ../../index_man.rst:75
-# 379f102ec9e0439295bd8eaff8ae48d2
+# 8fbb1152017e48edbacdbbae19413776
 msgid "Some functions from previous releases may have been removed."
 msgstr ""
 

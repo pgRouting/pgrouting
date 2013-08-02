@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting 2.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,92 +17,82 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../src/common/doc/functions/point_to_id.rst:13
-# 1131aa3ef83e467f929866f073f42eef
+# 81e0b58a4b464395b3661da85edfaa90
 msgid "pgr_pointToId - Inserts point into a vertices table"
 msgstr ""
 
 #: ../../../src/common/doc/functions/point_to_id.rst:20
-# 7ac38c92f025490587a9cc78a5693693
+# 9bebf9f4ff2b43a39470ee284698fa33
 msgid "Name"
 msgstr ""
 
 #: ../../../src/common/doc/functions/point_to_id.rst:22
-# 4bbd07ddc6e54b4fbc40a110f571b2d4
+# 8fcf7e9e33b448b982f7111389a7e412
 msgid "``pgr_pointToId`` — Inserts a point into a temporary vertices table."
 msgstr ""
 
 #: ../../../src/common/doc/functions/point_to_id.rst:26
-# 6f68dfd3d4d44e0b8bf1f14fd2ec4880
+# 1ebe04b75e4444e2970f12bf667f07fa
 msgid "This function should not be used directly. Use :ref:`pgr_createTopology <pgr_create_topology>` instead."
 msgstr ""
 
 #: ../../../src/common/doc/functions/point_to_id.rst:30
-# 40d832773b4a4cc698147d630b559d48
+# 8c3303cb3d73446795471f411d835691
 msgid "Synopsis"
 msgstr ""
 
 #: ../../../src/common/doc/functions/point_to_id.rst:32
-# d746188b768f402fb9d1b8688aa55356
+# e17d53fea1674ad692e9d65129c04e5d
 msgid "Inserts a point into a temporary vertices table, and returns an id of a new point or an existing point. Tolerance is the minimal distance between existing points and the new point to create a new point."
 msgstr ""
 
 #: ../../../src/common/doc/functions/point_to_id.rst:40
-# eef67875e73a4ebfa1053a4467609fe2
+# 4b067a809bbd4210baf154f274aab5f0
 msgid "Description"
 msgstr ""
 
 #: ../../../src/common/doc/functions/point_to_id.rst:42
-# 2bd20839fe5a4ec9a644acef87dce6a0
+# de6b0b7b7ae44691a60a709a1245e12c
 msgid "``geometry`` of the existing point"
 msgstr ""
 
 #: ../../../src/common/doc/functions/point_to_id.rst:43
-# 29c362f4fe5b4d959f6b93e540d287cb
+# e05906cd2cd545eead6a6a277d441ea4
 msgid "``float8`` snapping tolerance of disconnected edges (in projection unit)"
 msgstr ""
 
 #: ../../../src/common/doc/functions/point_to_id.rst:45
-# 5a79c2e3952b405bbc40eb2859853e4a
+# 7eb52d95126d47efbf485a1397785c34
 msgid "Returns point id (``bigint``) of a new or existing point."
 msgstr ""
 
 #: ../../../src/common/doc/functions/point_to_id.rst:49
-# 913f98c6faec4b44a77933e7171a6c0a
+# 78ed162b771d42c1bdadb75ea1806c17
 msgid "History"
 msgstr ""
 
 #: ../../../src/common/doc/functions/point_to_id.rst:50
-# 0af012192b8c4c698b22cc68d4c751d8
+# 932b962d76c14946b54db15e77b3c90d
 msgid "Renamed in version 2.0.0"
 msgstr ""
 
 #: ../../../src/common/doc/functions/point_to_id.rst:54
-# 734397d7ccba48a59ccd3d0810ccac9a
+# c1b2ccd7df20427c88dcf1ebf4b06d82
 msgid "See Also"
 msgstr ""
 
 #: ../../../src/common/doc/functions/point_to_id.rst:56
-# 95a22a78afeb483c88e731c2fbc184e2
+# 4dafa239ff7648c2952a2d3ee70671bf
 msgid ":ref:`pgr_create_topology`"
 msgstr ""
 
 #: ../../../src/common/doc/functions/point_to_id.rst:57
-# 241a10d1e448490aa15f05e817908f6b
+# 8100a50d0b5f4b0cab8d62645becc674
 msgid ":ref:`topology`"
 msgstr ""
 
 #: ../../../src/common/doc/functions/point_to_id.rst:58
-# 64cbb4feabe947669842b256c68da5fe
+# 86ad35d9d3ce44a696b6dc61c466e04e
 msgid ":ref:`pgr_node_network`"
-msgstr ""
-
-#: ../../../src/common/doc/functions/point_to_id.rst:15
-# 4da51d646f674ba0b51a8f285b9a5422
-msgid "pgr_pointToId(geometry,double precision)"
-msgstr ""
-
-#: ../../../src/common/doc/functions/point_to_id.rst:15
-# 4da51d646f674ba0b51a8f285b9a5422
-msgid "common"
 msgstr ""
 

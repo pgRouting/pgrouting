@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting 2.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,197 +17,187 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../src/bd_astar/doc/index.rst:13
-# 1d48cd6c64914f8a9376fbbaa79cbf21
+# 85be4208bc2649afb8e83323b51bd832
 msgid "pgr_bdAstar - Bi-directional A* Shortest Path"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:20
-# 35b578c0d6bc42e4b7525704338d6032
+# 92d4a9f117e74259bbe011dc06aca80d
 msgid "Name"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:22
-# 8ad5d2689e814f44805d1fad863b5092
+# e34e1ac1f8cc4d5facd0811f927fde52
 msgid "``pgr_bdAstar`` - Returns the shortest path using Bidirectional A* algorithm."
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:26
-# 47d5a321a27d49079846db422871bde7
+# b5fd7276ef054d72a8ee0eff89f12440
 msgid "Synopsis"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:28
-# f4a424a95f6d4990bc4357c6d7fe1df7
+# 452b0fd0640a4fe8ab38b0d39ac4072b
 msgid "This is a bi-directional A* search algorithm. It searchs from the source toward the distination and at the same time from the destination to the source and terminates whe these to searchs meet in the middle. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path."
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:37
-# 00a4a1025e6340afa83f18e7a05c2444
+# d6b38dc8d51d4bbcb99bf82814b0f5aa
 msgid "Description"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:39
-# b406a91297d145d88250e5fcd4c1e03e
+# d355eda2ca244a0ca84b4c9d1307106b
 msgid "a SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:46
-# 38429c1ab21a455e86f4a03618cd492a
+# 27e80b13da0e421f826d44840ba34de9
 msgid "``int4`` identifier of the edge"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:47
-# 87adec5e1dd149c7a0166d0ac5bcb9ea
+# 51431993df884eef9e33b25131b4bb96
 msgid "``int4`` identifier of the source vertex"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:48
-# f06e08f2dcce42e8b16d57724e30adc4
+# 842f3647dda3472c886cdf4f21e7b7da
 msgid "``int4`` identifier of the target vertex"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:49
-# cf261cad5eeb4061ac8863e3c0510781
+# 4a2c222a902846a1a37581d1a5a3765f
 msgid "``float8`` value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph."
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:50
-# 369fcadeacc3491ba76c626e06a3d9e2
+# 4e89ffab7e774dd896845388550e460d
 msgid "``x`` coordinate of the start point of the edge"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:51
-# 6dd3383a7e654ebc89b66a20cda859c6
+# be31936fc90647f4802fe3dfdb70dd8d
 msgid "``y`` coordinate of the start point of the edge"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:52
-# c0198ccdaabe4f839d1512780233a5be
+# d5da348959af48e88de333055c898714
 msgid "``x`` coordinate of the end point of the edge"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:53
-# 0e04ee91a51e4e7a93c2fb0b07f48dc4
+# 75ce986f36fa4966a62a734fc8fdc169
 msgid "``y`` coordinate of the end point of the edge"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:54
-# c3a268d50822452cb1af2d24b491688e
+# 049f6426cced4995859bd342a5c57b86
 msgid "(optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs)."
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:56
-# 1ca3f722755f4537abc358741af95067
+# c18828ff9eec40a6b85dc512d5c2572d
 msgid "``int4`` id of the start point"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:57
-# f12414fcde0e43edac640c925197a0d3
+# b06c1ad1061548ec85eb2e94918a9007
 msgid "``int4`` id of the end point"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:58
-# 1129dbf3c5524f59a79a11f28a0daf91
+# f4ec18387b4d426aa6512d21a4c8164d
 msgid "``true`` if the graph is directed"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:59
-# 27dbd30fd5c8423286a565ddd8761b5c
+# 614c2d91bbac49e8bb76217342292a89
 msgid "if ``true``, the ``reverse_cost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction."
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:61
-# c46d673e4bf247538d291040824fd7f7
+# 2b5bdf5eab054801af5e34a5fabb2ff8
 msgid "Returns set of :ref:`type_cost_result`:"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:63
-# 96ef033f494d4a7a8f31ba8ab310c9ba
+# bba50cc0bba049efb78313f457fc5b93
 msgid "row sequence"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:64
-# 22f16151ee03400c8562bd17dcfe2319
+# acca7f12bdff4a1da47062ca1f23b43d
 msgid "node ID"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:65
-# 97580944a3d3450399d2dfb5dcf1082c
+# feec5bd983334f3d93773256d6bc6b34
 msgid "edge ID (``-1`` for the last row)"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:66
-# 67fafa8dff2a4bcc913e5f68949e662d
+# 8d526f94ea4c478e9213345c615b777f
 msgid "cost to traverse from ``id1`` using ``id2``"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:70
-# b3a7affb6112434e8710b16cdfe922a2
+# 6fb9e0cf50664c65946ac7cf941af466
 msgid "You must reconnect to the database after ``CREATE EXTENSION pgrouting``. Otherwise the function will return ``Error computing path: std::bad_alloc``."
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:74
-# c47b8ac53930453380132836f003588f
+# 7418be16efd64d13ad44f1468f73e6a4
 msgid "History"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:75
-# 7de8d1618c4441de80214a0aa11f34eb
+# fe5e11d7eb2a42d2a674d03f8ac489e6
 msgid "New in version 2.0.0"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:79
-# f1a4e59fa6d24cc8a94483df6bc5a7a7
+# a9c0785b66f84389bb6ed054606e847c
 msgid "Examples"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:81
-# edc9824d955c4b19a25ac25387e495ee
+# 12eab7851ef44e0698f52f86e4028c6f
 msgid "Without ``reverse_cost``"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:100
-# a6d8260768a5487e87609e996c43df25
+# 9dd90954549c49009ddcfaf705b1b764
 msgid "With ``reverse_cost``"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:118
-# 1bbd82f838e9418787d65aecd873be98
+# 360acb4bb3b54e71a6bcd04e180e346b
 msgid "The queries use the :ref:`sampledata` network."
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:122
-# a3f55d8a127b4f35bd48885c3303b0f3
+# 163f1ca3c0dc403e84bb27944a31e3ff
 msgid "See Also"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:124
-# b57dc07f8f47413eac98772ee3d0f47b
+# 3f11ee256ec54ff8a65546049c74fee6
 msgid ":ref:`type_cost_result`"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:125
-# 005160678cd54260acfa4a046b453257
+# 7c02fbef18b04d0f9c86334f4917ea22
 msgid ":ref:`bd_dijkstra`"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:126
-# 55081f8eec8d41fc9070c8d10ccd741d
+# 3b16da752c5b4025acb610183611225f
 msgid "http://en.wikipedia.org/wiki/Bidirectional_search"
 msgstr ""
 
 #: ../../../src/bd_astar/doc/index.rst:127
-# d3d7f613d37546d883ea7259cab83237
+# 17f8c64e6bc447c5b9f16d78aeb701ec
 msgid "http://en.wikipedia.org/wiki/A*_search_algorithm"
-msgstr ""
-
-#: ../../../src/bd_astar/doc/index.rst:15
-# 58f99d9fa1b04bbf84ed1d2609dffbde
-msgid "pgr_bdAstar(text, integer, integer, boolean, boolean)"
-msgstr ""
-
-#: ../../../src/bd_astar/doc/index.rst:15
-# 58f99d9fa1b04bbf84ed1d2609dffbde
-msgid "bidirectional, astar"
 msgstr ""
 
