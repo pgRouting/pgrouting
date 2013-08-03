@@ -68,7 +68,7 @@ various OpenSource tools that can help you, like:
 :osm2pgsql: - this is a tool for loading OSM data into postgresql
 
 So these tools and probably others will allow you to read vector data and
-and can load that data into your database as a table of some kind. At this
+can load that data into your database as a table of some kind. At this
 point you need to know a little about your data structure and content. One easy
 way to browse you data table is with pgAdmin3 or phpPgAdmin.
 
@@ -94,7 +94,7 @@ How to check your graph for errors
 
 There are lots of possible sources for errors in a graph. The data that you
 started with may not have been designed with routing in mind. A graph as some
-very specific requirments. One it that it is *NODED*, this means that except
+very specific requirements. One it that it is *NODED*, this means that except
 for some very specific use cases, each road segments starts and ends at a node
 and that in general is does not cross another road segment that it should be
 connected to.

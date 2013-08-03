@@ -23,7 +23,7 @@ cmake/
     cmake scripts used as part of our build system.
 
 core/
-    This is the algorithm source tree. Each alogorithm should be contained
+    This is the algorithm source tree. Each algorithm should be contained
     in its on sub-tree with doc, sql, src, and test sub-directories.
     This might get renamed to "algorithms" at some point.
 

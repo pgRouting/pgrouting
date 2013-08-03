@@ -48,7 +48,7 @@ Description
 
 The Turn Restricted Shortest Path algorithm (TRSP) is similar to the :ref:`shooting_star` in that you can specify turn restrictions.
 
-The TRSP setup is mostly the same as :ref:`Dijkstra shortest path <pgr_dijkstra>` with the addition of an optional turn restriction table. This makes adding turn restrictions to a road network much easier than trying to add them to Shooting Star where you had to ad the same edges multiple times if it was involved in a restriction.
+The TRSP setup is mostly the same as :ref:`Dijkstra shortest path <pgr_dijkstra>` with the addition of an optional turn restriction table. This makes adding turn restrictions to a road network much easier than trying to add them to Shooting Star where you had to add the same edges multiple times if it was involved in a restriction.
 
 
 :sql: a SQL query, which should return a set of rows with the following columns:
@@ -76,8 +76,20 @@ The TRSP setup is mostly the same as :ref:`Dijkstra shortest path <pgr_dijkstra>
 		SELECT to_cost, target_id, via_path FROM restrictions
 
 	:to_cost: ``float8`` turn restriction cost
-	:target_id: ``int4`` target id
-	:via_path: ``text`` commar seperated list of edges in the reverse order of ``rule``
+	:target_id: ``int4`` edge id where restriction is applied
+	:via_path: ``text`` comma seperated list of edges getting to ``target_id`` edge that makes up this restriction.
+
+Examples
+----------------------------------------------------------------------
+
+    .. code-block:: sql
+
+        to_cost | target_id | via_path
+        ----------------------------------------------
+         1000.0 |        27 | 32,44,36
+
+    In the above example, a path traveling edges from 36 -> 44 -> 32 -> 27 would be applied a cost of 1000.0. In this manner we can apply costs to complex paths through intersection.
+
 
 Another variant of TRSP allows to specify **EDGE id** of source and target together with a fraction to interpolate the position:
 
