@@ -108,10 +108,8 @@ msgstr ""
 msgid ":ref:`analytics`"
 msgstr ""
 
-#: ../../../src/common/doc/functions/analyze_oneway.rst:15
-msgid "pgr_analyzeOneway(text,text,text[],text[],text[],text[],boolean)"
-msgstr ""
+#~ msgid "pgr_analyzeOneway(text,text,text[],text[],text[],text[],boolean)"
+#~ msgstr ""
 
-#: ../../../src/common/doc/functions/analyze_oneway.rst:15
-msgid "common"
-msgstr ""
+#~ msgid "common"
+#~ msgstr ""

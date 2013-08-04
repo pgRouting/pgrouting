@@ -81,10 +81,8 @@ msgstr ""
 msgid ":ref:`pgr_node_network`"
 msgstr ""
 
-#: ../../../src/common/doc/functions/point_to_id.rst:15
-msgid "pgr_pointToId(geometry,double precision)"
-msgstr ""
+#~ msgid "pgr_pointToId(geometry,double precision)"
+#~ msgstr ""
 
-#: ../../../src/common/doc/functions/point_to_id.rst:15
-msgid "common"
-msgstr ""
+#~ msgid "common"
+#~ msgstr ""

@@ -86,10 +86,8 @@ msgstr ""
 msgid ":ref:`pgr_alphashape`"
 msgstr ""
 
-#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:15
-msgid "pgr_pointsAsPolygon(text)"
-msgstr ""
+#~ msgid "pgr_pointsAsPolygon(text)"
+#~ msgstr ""
 
-#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:15
-msgid "driving_distance"
-msgstr ""
+#~ msgid "driving_distance"
+#~ msgstr ""

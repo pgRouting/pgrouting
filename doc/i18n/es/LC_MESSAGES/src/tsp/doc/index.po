@@ -270,22 +270,17 @@ msgstr ""
 msgid "http://en.wikipedia.org/wiki/Simulated_annealing"
 msgstr ""
 
-#: ../../../src/tsp/doc/index.rst:15
-msgid "pgr_tsp(sql text, start_id integer)"
-msgstr ""
+#~ msgid "pgr_tsp(sql text, start_id integer)"
+#~ msgstr ""
 
-#: ../../../src/tsp/doc/index.rst:15
-msgid "pgr_tsp(sql text, start_id integer, end_id integer)"
-msgstr ""
+#~ msgid "pgr_tsp(sql text, start_id integer, end_id integer)"
+#~ msgstr ""
 
-#: ../../../src/tsp/doc/index.rst:15
-msgid "pgr_tsp(matrix float[][], start integer)"
-msgstr ""
+#~ msgid "pgr_tsp(matrix float[][], start integer)"
+#~ msgstr ""
 
-#: ../../../src/tsp/doc/index.rst:15
-msgid "pgr_tsp(matrix float[][], start integer, end integer)"
-msgstr ""
+#~ msgid "pgr_tsp(matrix float[][], start integer, end integer)"
+#~ msgstr ""
 
-#: ../../../src/tsp/doc/index.rst:15
-msgid "pgr_makeDistanceMatrix(sqlin text)"
-msgstr ""
+#~ msgid "pgr_makeDistanceMatrix(sqlin text)"
+#~ msgstr ""

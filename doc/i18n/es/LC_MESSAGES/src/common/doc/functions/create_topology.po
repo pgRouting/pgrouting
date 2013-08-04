@@ -106,10 +106,8 @@ msgstr ""
 msgid ":ref:`pgr_point_to_id`"
 msgstr ""
 
-#: ../../../src/common/doc/functions/create_topology.rst:15
-msgid "pgr_createTopology(varchar,double precision,varchar,varchar)"
-msgstr ""
+#~ msgid "pgr_createTopology(varchar,double precision,varchar,varchar)"
+#~ msgstr ""
 
-#: ../../../src/common/doc/functions/create_topology.rst:15
-msgid "common"
-msgstr ""
+#~ msgid "common"
+#~ msgstr ""

@@ -62,10 +62,8 @@ msgstr ""
 msgid ":ref:`common_types`"
 msgstr ""
 
-#: ../../../src/common/doc/types/geom_result.rst:15
-msgid "pgr_geomResult[]"
-msgstr ""
+#~ msgid "pgr_geomResult[]"
+#~ msgstr ""
 
-#: ../../../src/common/doc/types/geom_result.rst:15
-msgid "types"
-msgstr ""
+#~ msgid "types"
+#~ msgstr ""

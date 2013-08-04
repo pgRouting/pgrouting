@@ -210,26 +210,21 @@ msgstr ""
 msgid ":ref:`type_cost_result`"
 msgstr ""
 
-#: ../../../src/trsp/doc/index.rst:15
-msgid "pgr_trsp(text,integer,integer,boolean,boolean)"
-msgstr ""
+#~ msgid "pgr_trsp(text,integer,integer,boolean,boolean)"
+#~ msgstr ""
 
-#: ../../../src/trsp/doc/index.rst:15
-msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
-msgstr ""
+#~ msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
+#~ msgstr ""
 
-#: ../../../src/trsp/doc/index.rst:15
-msgid ""
-"pgr_trsp(text,integer,double precision,integer,double "
-"precision,boolean,boolean)"
-msgstr ""
+#~ msgid ""
+#~ "pgr_trsp(text,integer,double precision,integer,double "
+#~ "precision,boolean,boolean)"
+#~ msgstr ""
 
-#: ../../../src/trsp/doc/index.rst:15
-msgid ""
-"pgr_trsp(text,integer,double precision,integer,double "
-"precision,boolean,boolean,text)"
-msgstr ""
+#~ msgid ""
+#~ "pgr_trsp(text,integer,double precision,integer,double "
+#~ "precision,boolean,boolean,text)"
+#~ msgstr ""
 
-#: ../../../src/trsp/doc/index.rst:15
-msgid "trsp"
-msgstr ""
+#~ msgid "trsp"
+#~ msgstr ""

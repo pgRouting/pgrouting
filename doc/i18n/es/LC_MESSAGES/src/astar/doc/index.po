@@ -161,10 +161,8 @@ msgstr ""
 msgid "http://en.wikipedia.org/wiki/A*_search_algorithm"
 msgstr ""
 
-#: ../../../src/astar/doc/index.rst:15
-msgid "pgr_astar(text,integer,integer,boolean,boolean)"
-msgstr ""
+#~ msgid "pgr_astar(text,integer,integer,boolean,boolean)"
+#~ msgstr ""
 
-#: ../../../src/astar/doc/index.rst:15
-msgid "astar"
-msgstr ""
+#~ msgid "astar"
+#~ msgstr ""

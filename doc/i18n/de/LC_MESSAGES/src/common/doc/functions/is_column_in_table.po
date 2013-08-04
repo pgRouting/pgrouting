@@ -67,10 +67,8 @@ msgstr ""
 msgid ":ref:`pgr_is_column_indexed`"
 msgstr ""
 
-#: ../../../src/common/doc/functions/is_column_in_table.rst:15
-msgid "pgr_isColumnInTable(text,text)"
-msgstr ""
+#~ msgid "pgr_isColumnInTable(text,text)"
+#~ msgstr ""
 
-#: ../../../src/common/doc/functions/is_column_in_table.rst:15
-msgid "common"
-msgstr ""
+#~ msgid "common"
+#~ msgstr ""

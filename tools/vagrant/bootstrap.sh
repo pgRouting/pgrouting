@@ -55,9 +55,7 @@ apt-get install -y -qq packaging-dev checkinstall libcgal-dev libboost-graph-dev
 # http://sphinx.readthedocs.org/en/latest/intl.html
 # ------------------------------------------------------------------------------
 apt-get install python-pip python-dev
-pip install sphinx
-pip install transifex-client
-pip install sphinx-intl
+pip install sphinx transifex-client sphinx-intl
 
 # ------------------------------------------------------------------------------
 # Install PostGIS (always build from source)

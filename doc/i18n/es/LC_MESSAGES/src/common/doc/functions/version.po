@@ -87,10 +87,8 @@ msgstr ""
 msgid ":ref:`pgr_versionless`"
 msgstr ""
 
-#: ../../../src/common/doc/functions/version.rst:15
-msgid "pgr_version()"
-msgstr ""
+#~ msgid "pgr_version()"
+#~ msgstr ""
 
-#: ../../../src/common/doc/functions/version.rst:15
-msgid "utilities"
-msgstr ""
+#~ msgid "utilities"
+#~ msgstr ""

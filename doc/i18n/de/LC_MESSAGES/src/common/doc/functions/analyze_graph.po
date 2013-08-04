@@ -80,10 +80,8 @@ msgstr ""
 msgid ":ref:`analytics`"
 msgstr ""
 
-#: ../../../src/common/doc/functions/analyze_graph.rst:15
-msgid "pgr_analyzeGraph(text,text,double precision)"
-msgstr ""
+#~ msgid "pgr_analyzeGraph(text,text,double precision)"
+#~ msgstr ""
 
-#: ../../../src/common/doc/functions/analyze_graph.rst:15
-msgid "common"
-msgstr ""
+#~ msgid "common"
+#~ msgstr ""

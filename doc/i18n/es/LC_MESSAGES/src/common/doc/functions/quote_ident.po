@@ -69,10 +69,8 @@ msgstr ""
 msgid "[TBD]"
 msgstr ""
 
-#: ../../../src/common/doc/functions/quote_ident.rst:15
-msgid "pgr_quote_ident(text)"
-msgstr ""
+#~ msgid "pgr_quote_ident(text)"
+#~ msgstr ""
 
-#: ../../../src/common/doc/functions/quote_ident.rst:15
-msgid "common"
-msgstr ""
+#~ msgid "common"
+#~ msgstr ""

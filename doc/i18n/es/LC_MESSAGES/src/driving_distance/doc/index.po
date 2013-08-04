@@ -160,10 +160,8 @@ msgstr ""
 msgid ":ref:`pgr_alphashape`"
 msgstr ""
 
-#: ../../../src/driving_distance/doc/index.rst:15
-msgid "pgr_drivingDistance(text,integer,double precision,boolean,boolean)"
-msgstr ""
+#~ msgid "pgr_drivingDistance(text,integer,double precision,boolean,boolean)"
+#~ msgstr ""
 
-#: ../../../src/driving_distance/doc/index.rst:15
-msgid "driving_distance"
-msgstr ""
+#~ msgid "driving_distance"
+#~ msgstr ""

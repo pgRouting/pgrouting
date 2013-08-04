@@ -110,10 +110,8 @@ msgstr ""
 msgid "http://en.wikipedia.org/wiki/Johnson%27s_algorithm"
 msgstr ""
 
-#: ../../../src/apsp_johnson/doc/index.rst:15
-msgid "pgr_apspJohnson(text)"
-msgstr ""
+#~ msgid "pgr_apspJohnson(text)"
+#~ msgstr ""
 
-#: ../../../src/apsp_johnson/doc/index.rst:15
-msgid "apsp"
-msgstr ""
+#~ msgid "apsp"
+#~ msgstr ""

@@ -9,8 +9,16 @@
 CONFIG="build/doc/_build"
 DOCDIR="doc/i18n"
 
-LANGUAGES=(de es)
+LANGUAGES=(de es ja)
 
+echo "*************************************************************************"
+echo "Pull translations from Transifex and commit"
+echo "*************************************************************************"
+for i in "${LANGUAGES[@]}"; do
+	tx pull -l "${i}" -f --minimum-perc=1
+done
+git commit -m "pulled translations from Transifex"
+ 
 echo "*************************************************************************"
 echo "Create languages and update POT files"
 echo "*************************************************************************"

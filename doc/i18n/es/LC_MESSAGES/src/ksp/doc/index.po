@@ -91,10 +91,6 @@ msgstr ""
 msgid "Returns set of :ref:`type_cost_result`:"
 msgstr ""
 
-#: ../../../src/ksp/doc/index.rst:59
-msgid "sequence for ording the results"
-msgstr ""
-
 #: ../../../src/ksp/doc/index.rst:60
 msgid "route ID"
 msgstr ""
@@ -152,10 +148,15 @@ msgstr ""
 msgid "http://en.wikipedia.org/wiki/K_shortest_path_routing"
 msgstr ""
 
-#: ../../../src/ksp/doc/index.rst:15
-msgid "pgr_ksp(text,integer,integer,integer,boolean)"
+#: ../../../src/ksp/doc/index.rst:59
+msgid "sequence for ordering the results"
 msgstr ""
 
-#: ../../../src/ksp/doc/index.rst:15
-msgid "ksp"
-msgstr ""
+#~ msgid "sequence for ording the results"
+#~ msgstr ""
+
+#~ msgid "pgr_ksp(text,integer,integer,integer,boolean)"
+#~ msgstr ""
+
+#~ msgid "ksp"
+#~ msgstr ""

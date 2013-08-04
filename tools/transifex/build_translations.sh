@@ -10,7 +10,7 @@ ROOT=$(pwd)
 CONFIG="build/doc/_build"
 DOCDIR="doc/i18n"
 
-LANGUAGES=(de es)
+LANGUAGES=(de es ja)
 
 echo "*************************************************************************"
 echo "Download translations from Transifex (>1% translated)"

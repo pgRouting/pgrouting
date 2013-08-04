@@ -128,10 +128,8 @@ msgstr ""
 msgid ":ref:`pgr_create_topology`"
 msgstr ""
 
-#: ../../../src/common/doc/functions/node_network.rst:15
-msgid "pgr_NodeNetwork(text,text,text,text,double precision)"
-msgstr ""
+#~ msgid "pgr_NodeNetwork(text,text,text,text,double precision)"
+#~ msgstr ""
 
-#: ../../../src/common/doc/functions/node_network.rst:15
-msgid "common"
-msgstr ""
+#~ msgid "common"
+#~ msgstr ""

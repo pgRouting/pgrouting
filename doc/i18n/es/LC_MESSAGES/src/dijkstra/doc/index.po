@@ -145,10 +145,8 @@ msgstr ""
 msgid "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr ""
 
-#: ../../../src/dijkstra/doc/index.rst:15
-msgid "pgr_dijkstra(text,integer,integer,boolean,boolean)"
-msgstr ""
+#~ msgid "pgr_dijkstra(text,integer,integer,boolean,boolean)"
+#~ msgstr ""
 
-#: ../../../src/dijkstra/doc/index.rst:15
-msgid "dijkstra"
-msgstr ""
+#~ msgid "dijkstra"
+#~ msgstr ""

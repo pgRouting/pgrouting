@@ -26,15 +26,7 @@ msgid "Source Tree Layout"
 msgstr ""
 
 #: ../../src/developer/index.rst:23
-msgid "cmake/"
-msgstr ""
-
-#: ../../src/developer/index.rst:23
 msgid "cmake scripts used as part of our build system."
-msgstr ""
-
-#: ../../src/developer/index.rst:28
-msgid "core/"
 msgstr ""
 
 #: ../../src/developer/index.rst:26
@@ -44,19 +36,11 @@ msgid ""
 " renamed to \"algorithms\" at some point."
 msgstr ""
 
-#: ../../src/developer/index.rst:33
-msgid "core/astar/"
-msgstr ""
-
 #: ../../src/developer/index.rst:31
 msgid ""
 "This is an implementation of A* Search based on using Boost Graph libraries "
 "for its implementation. This is a Dijkstra shortest path implementation with"
 " a Euclidean Heuristic."
-msgstr ""
-
-#: ../../src/developer/index.rst:39
-msgid "core/common/"
 msgstr ""
 
 #: ../../src/developer/index.rst:36
@@ -67,18 +51,10 @@ msgid ""
 "tests should get added to validate the wrappers.*"
 msgstr ""
 
-#: ../../src/developer/index.rst:43
-msgid "core/dijkstra/"
-msgstr ""
-
 #: ../../src/developer/index.rst:42
 msgid ""
 "This is an implementation of Dikjstra's shortest path solution using Boost "
 "Graph libraries for the implementation."
-msgstr ""
-
-#: ../../src/developer/index.rst:49
-msgid "core/driving_distance/"
 msgstr ""
 
 #: ../../src/developer/index.rst:46
@@ -89,20 +65,12 @@ msgid ""
 "libraries to be installed."
 msgstr ""
 
-#: ../../src/developer/index.rst:56
-msgid "core/shooting_star/"
-msgstr ""
-
 #: ../../src/developer/index.rst:52
 msgid ""
 "*DEPRECATED and DOES NOT WORK and IS BEING REMOVED* This is an edge based "
 "shortest path algorithm that supports turn restrictions. It is based on "
 "Boost Graph. Do *NOT* use this algorithm as it is broken, instead use *trsp*"
 " which has the same functionality and is faster and give correct results."
-msgstr ""
-
-#: ../../src/developer/index.rst:62
-msgid "core/trsp/"
 msgstr ""
 
 #: ../../src/developer/index.rst:59
@@ -113,10 +81,6 @@ msgid ""
 "this make it easier to manage the data."
 msgstr ""
 
-#: ../../src/developer/index.rst:67
-msgid "core/tsp/"
-msgstr ""
-
 #: ../../src/developer/index.rst:65
 msgid ""
 "This optional package provides the ability to compute traveling salesman "
@@ -125,15 +89,7 @@ msgid ""
 msgstr ""
 
 #: ../../src/developer/index.rst:70
-msgid "tools/"
-msgstr ""
-
-#: ../../src/developer/index.rst:70
 msgid "Miscellaneous scripts and tools."
-msgstr ""
-
-#: ../../src/developer/index.rst:75
-msgid "lib/"
 msgstr ""
 
 #: ../../src/developer/index.rst:73
@@ -248,3 +204,36 @@ msgstr ""
 #: ../../src/developer/index.rst:141
 msgid "Then if there is a difference then an test failure is reported."
 msgstr ""
+
+#~ msgid "cmake/"
+#~ msgstr ""
+
+#~ msgid "core/"
+#~ msgstr ""
+
+#~ msgid "core/astar/"
+#~ msgstr ""
+
+#~ msgid "core/common/"
+#~ msgstr ""
+
+#~ msgid "core/dijkstra/"
+#~ msgstr ""
+
+#~ msgid "core/driving_distance/"
+#~ msgstr ""
+
+#~ msgid "core/shooting_star/"
+#~ msgstr ""
+
+#~ msgid "core/trsp/"
+#~ msgstr ""
+
+#~ msgid "core/tsp/"
+#~ msgstr ""
+
+#~ msgid "tools/"
+#~ msgstr ""
+
+#~ msgid "lib/"
+#~ msgstr ""

@@ -127,10 +127,8 @@ msgstr ""
 msgid "http://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm"
 msgstr ""
 
-#: ../../../src/apsp_warshall/doc/index.rst:15
-msgid "pgr_apspWarshall(text, boolean, boolean)"
-msgstr ""
+#~ msgid "pgr_apspWarshall(text, boolean, boolean)"
+#~ msgstr ""
 
-#: ../../../src/apsp_warshall/doc/index.rst:15
-msgid "apsp"
-msgstr ""
+#~ msgid "apsp"
+#~ msgstr ""
