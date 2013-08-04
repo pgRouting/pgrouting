@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting 2.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,172 +17,162 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../src/bd_dijkstra/doc/index.rst:13
-# ed0b910088a14e58abf85b6fba672978
+# f0e0b2df0e0343c9a028f135f6fa9d82
 msgid "pgr_bdDijkstra - Bi-directional Dijkstra Shortest Path"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:21
-# 855e8898f9844bd3b10dcc570a0f250e
+# 9fb50a51fd6d4c97b58c9e0af0ae2c78
 msgid "Name"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:23
-# ad80067d6c434445868062afb07797ca
+# 528ab5c49a504559aad6510b3f76e880
 msgid "``pgr_bdDijkstra`` - Returns the shortest path using Bidirectional Dijkstra algorithm."
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:27
-# d5a5c604f3ff489292649db7175d30be
+# a361a1ee897141cab3d40973c8a88511
 msgid "Synopsis"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:29
-# b191e630e1bb461a908520481d73c2e7
+# 4b3c616d815547b1b2db338198bde8c8
 msgid "This is a bi-directional Dijkstra search algorithm. It searchs from the source toward the distination and at the same time from the destination to the source and terminates whe these to searchs meet in the middle. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path."
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:38
-# 3ff02fbea25d4c5a8198058f2032bc8d
+# 76d490ec23054efcb64d4214f2f0909b
 msgid "Description"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:40
-# 64de42d3088c426095467a586ae73044
+# 30ed3da294244ad3bc811b2ed05a797d
 msgid "a SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:47
-# f2f7c8157a164ca7b996e463aad48efa
+# 40863b2fe1994ece9d1cbc6c5ef4cefb
 msgid "``int4`` identifier of the edge"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:48
-# cb17a1504e474d07a609522bbf6a2964
+# 48a96f24e9b948c29cc08a3348827eb8
 msgid "``int4`` identifier of the source vertex"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:49
-# f9c0c47d90af44da87b7abf7b05b95f6
+# e7f5432fe48a4280b33114cf1354c5fd
 msgid "``int4`` identifier of the target vertex"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:50
-# 4ecc5b6f00df43fe84bfd2364c20b6c3
+# 957d806570a2415bbabe44e88a25107f
 msgid "``float8`` value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph."
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:51
-# 8bf3083cf84e4700984df20689109de6
+# 392a5bd903b94d10be047c80dd606a55
 msgid "(optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs)."
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:53
-# 5fd8dc31b1374dda9236c1a1a9df9146
+# f062b812fc2947029be15c2f8d1ed0d8
 msgid "``int4`` id of the start point"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:54
-# 77c51f8520c848ddbb05e544ff42ef2b
+# fa0aae48a42f453aab758230c4d7a5d9
 msgid "``int4`` id of the end point"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:55
-# 1dc2a748b33e496cab961a9ac41f52af
+# 853a1779bcd84a7f9a275fc0bbd0af63
 msgid "``true`` if the graph is directed"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:56
-# 42170c3f99d64fcea3e0cf06cabf75a7
+# 7971a05863f34cdaaa8ebd82289448e4
 msgid "if ``true``, the ``reverse_cost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction."
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:58
-# d13fcb6315744302a837ccef13c8d97e
+# d7ebb4aa14a046bea8638f0168fd1ab5
 msgid "Returns set of :ref:`type_cost_result`:"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:60
-# cd2c5adacdbb4b748222966ff8c61e1f
+# ec8614f0a71645d4894cf0082d2ab742
 msgid "row sequence"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:61
-# b81a958753e5499bb875ba5cb3bae5fb
+# ea9d3167f43f4be8af65730b73d763e5
 msgid "node ID"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:62
-# 0cc6311da33342b5a8bdb606153eb9f2
+# b4e59f1b988742dc9cf826b5903e9d40
 msgid "edge ID (``-1`` for the last row)"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:63
-# 965bbe038acd4a6988acb8773bbcde41
+# 9d568ac69b684713b1641c15b1d6d2e8
 msgid "cost to traverse from ``id1`` using ``id2``"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:66
-# aa2fb40c8aaf40dcaed91c996edfa0a4
+# dacb53da506f45279c56f00249a78f88
 msgid "History"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:67
-# e943d336e42543e0bf1bba24fb235f6e
+# e2f28bb052f94c179af3820812a2ba5d
 msgid "New in version 2.0.0"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:71
-# 06228e5b07f94262bea4585119c35d0a
+# 5df6176e09084c8e8e2cdea46b387b2f
 msgid "Examples"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:73
-# fc6156168d314fbfbc9964e34fa1aea9
+# 4b89d253a9084d86b9371a0d252cc151
 msgid "Without ``reverse_cost``"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:92
-# a277686f07c24f199506127d4926be84
+# 2c93e202e6bc43d88caf5b618f1c6a32
 msgid "With ``reverse_cost``"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:111
-# 06e6d25598c5470d84611fbd6e1f6083
+# a4a7c96788574babb47e953f235116ef
 msgid "The queries use the :ref:`sampledata` network."
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:115
-# 02f4a0aec585437bb97813d54cf2c14f
+# 60fc631293c649e69dbff0ef1c672a6f
 msgid "See Also"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:117
-# 94cbf4751926496288bde5ffab7a61e7
+# 2fac331c3752445c959eed759da95521
 msgid ":ref:`type_cost_result`"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:118
-# f5ecd4812fb04df8be023a4eb43704aa
+# 546f88ac72354dee9acf7aab885b7ff2
 msgid ":ref:`bd_astar`"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:119
-# a9c412af96524923a8d7d1757ab563df
+# 5d7effee56c74c66b670f09b7e1de764
 msgid "http://en.wikipedia.org/wiki/Bidirectional_search"
 msgstr ""
 
 #: ../../../src/bd_dijkstra/doc/index.rst:120
-# a2a3416537b54ed1a27b90a35692f056
+# 25a096d3a1e2456699a06c1eaffa07bc
 msgid "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
-msgstr ""
-
-#: ../../../src/bd_dijkstra/doc/index.rst:15
-# 6b1cca5b80894e6a8f44d7bd49230818
-msgid "pgr_bdDijkstra(text, integer, integer, boolean, boolean)"
-msgstr ""
-
-#: ../../../src/bd_dijkstra/doc/index.rst:15
-# 6b1cca5b80894e6a8f44d7bd49230818
-msgid "bidirectional, dijkstra"
 msgstr ""
 

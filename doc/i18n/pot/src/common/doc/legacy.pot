@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting 2.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,32 +17,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../src/common/doc/legacy.rst:13
-# 2d9790b9bce44e659ec7d0c67fe10be0
+# af2e041923d44d0d9563d0085aea25c8
 msgid "Legacy Functions"
 msgstr ""
 
 #: ../../../src/common/doc/legacy.rst:15
-# 9106e025631344e5baf1cb77156faee6
+# d1e607e21eea4ec49b92a5b901eff665
 msgid "pgRouting 2.0 release has total restructured the function naming and obsoleted many of the functions that were available in the 1.x releases. While we realize that this may inconvenience our existing users, we felt this was needed for the long term viability of the project to be more response to our users and to be able to add new functionality and test existing functionality."
 msgstr ""
 
 #: ../../../src/common/doc/legacy.rst:17
-# 5adace0a76bb42d19e1448b111d4618b
+# 0fe94cadd0b6451fbc30559fa5f70275
 msgid "We have made a minimal effort to save most of these function and distribute with the release in a file ``pgrouting_legacy.sql`` that is not part of the pgrouting extension and is not supported. If you can use these functions that is great. We have not tested any of these functions so if you find issues and want to post a pull request or a patch to help other users that is fine, but it is likely this file will be removed in a future release and we strongly recommend that you convert your existing code to use the new documented and supported functions."
 msgstr ""
 
 #: ../../../src/common/doc/legacy.rst:19
-# e78a3fe0aba74ce8b7c9db490b8a1fd9
+# 8eb3da3e4cb1441d8743706f7397c8ee
 msgid "The follow is a list of TYPEs, CASTs and FUNCTION included in the ``pgrouting_legacy.sql`` file. The list is provide as a convenience but these functions are deprecated, not supported, and probably will need some changes to get them to work."
 msgstr ""
 
 #: ../../../src/common/doc/legacy.rst:23
-# a78864e412c44138982f564cac94d2bb
+# 96302a33dc8a461e9c82b33165d2f03f
 msgid "TYPEs & CASTs"
 msgstr ""
 
 #: ../../../src/common/doc/legacy.rst:34
-# 4540949bbee64df0aa0a90a9afde35d5
+# 0dca26b88cc44808b873318da81f0095
 msgid "FUNCTIONs"
 msgstr ""
 

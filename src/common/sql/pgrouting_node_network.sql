@@ -37,6 +37,16 @@ BEGIN
              on (st_dwithin(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ', ' || tol || '))
         where l1.' || quote_ident(n_pkey) || ' <> l2.' || quote_ident(n_pkey);
 
+    -- Explode multipoints and multilines to handle them as single geometries
+ 
+    EXECUTE 'insert into intergeom (l1id, l2id, geom)
+        select l1id, l2id, (st_dump(geom)).geom
+        from intergeom
+        where geometryType(geom) in (''MULTILINESTRING'' , ''MULTIPOINT'') ';
+     
+    GET DIAGNOSTICS p_num = ROW_COUNT;
+    raise notice 'Inserted % MULTI* geometries', p_num;
+
     -- must handle the case where lines intersects at a linestring...
 
     EXECUTE 'insert into intergeom (l1id, l2id, geom)

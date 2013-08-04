@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting 2.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,117 +17,107 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:13
-# 1dc20ceedaaa41bfa8797f2eb604b06a
+# 751da4cc7a8a4b9184b65146f54ee2f7
 msgid "pgr_alphashape - Alpha shape computation"
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:20
-# a7a9c758c0ec452697273ef43fc8592d
+# a8e86fc8a1ce4526b7d7241cd7430f85
 msgid "Name"
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:22
-# 102fe6c7bcb344a480302884bf192f35
+# a4a731e189ec4572ba4a8c96f83d0cbe
 msgid "``pgr_alphashape`` — Core function for alpha shape computation."
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:26
-# c7874656b5e6495cb4864bfdedf40232
+# 0633bc08ce9c4e3c92b9f2894bc28163
 msgid "This function should not be used directly. Use :ref:`pgr_drivingDistance <pgr_driving_distance>` instead."
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:30
-# 9906b6f903c442b2a75748ad14208c50
+# a75e137dc2704a44bddf581d3da9910e
 msgid "Synopsis"
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:32
-# c38a871b881e4575bce33352c55f31b1
+# 5f592382013b4eb8a9cec9aaf7b9b27c
 msgid "Returns a table with (x, y) rows that describe the vertices of an alpha shape."
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:40
-# ec33031deefc413c80c07f22d1b1848c
+# c99894bc58654855b080610abe760595
 msgid "Description"
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:42
-# 026fa62404d6415f9777c856390f8791
+# e0d065968f134d19a8f914152ad9d644
 msgid "``text`` a SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:48
-# d9ce0f8ff6d6423f9deb337cd7675346
+# 9c56888dca9042d7aabe4353d4acc641
 msgid "``int4`` identifier of the vertex"
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:49
-# be0478aa1baf4e34bc4280e7ab9a33cd
+# 5d7a76e45e2c47af82995fe14cd37d3f
 msgid "``float8`` x-coordinate"
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:50
-# 42cd3f4a46464195944ad3646be01173
+# 9087cda6c58b418bab28ed40865c6406
 msgid "``float8`` y-coordinate"
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:53
-# dfd9cc06c8774423b629742fb15cdc53
+# efff811556d2404c972da0b4ed20aa4d
 msgid "Returns a vertex record for each row :"
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:55
-# b809e9cff4f84f028fb009ac5b55b301
+# 2a3d73e301e54c72b01c94c05ccf2a22
 msgid "x-coordinate"
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:56
-# d5ba3b2185ed459baa82572bf8b96b48
+# 2854a08e1fb846ea826f37a75302ff70
 msgid "y-coordinate"
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:60
-# 7adcc3dc44454817ba0852c0970921f4
+# 32b2237ea6d34c84aa76ead8e6efcb0e
 msgid "History"
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:61
-# 8fc318ff30614395906ac3fb2fe3bd6c
+# 7efa65a200424382a51ba0a21d6d5b14
 msgid "Renamed in version 2.0.0"
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:65
-# 6528870c2ddb4236af7ce3f8f7ed9eb6
+# f900fff56e254ff9b907b43f0ef24066
 msgid "Examples"
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:81
-# 5f9d2c5d3193405982dfef5f816665a3
+# 18551f47190b4a86bd40850f1bb4e656
 msgid "The queries use the :ref:`sampledata` network."
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:85
-# e1b24587d9a74269a0347ca07751ecef
+# 85d2d1ca472341c1906889091cb12ef6
 msgid "See Also"
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:87
-# 3a05be8e95c445a59fe15754c9eb2cc4
+# 6e8d7c671d064e298950bb3fe04c002e
 msgid ":ref:`pgr_driving_distance`"
 msgstr ""
 
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:88
-# 0997063bf13e47af86a64df21a61a876
+# 0f30bf3bcf7c41758b10ba3ed1bea633
 msgid ":ref:`pgr_points_as_polygon`"
-msgstr ""
-
-#: ../../../src/driving_distance/doc/dd_alphashape.rst:15
-# 26cdd070cddb4e6cacf5ca2c6e6bd2a1
-msgid "pgr_alphashape(text)"
-msgstr ""
-
-#: ../../../src/driving_distance/doc/dd_alphashape.rst:15
-# 26cdd070cddb4e6cacf5ca2c6e6bd2a1
-msgid "driving_distance"
 msgstr ""
 

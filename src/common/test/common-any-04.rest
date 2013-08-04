@@ -1,15 +1,16 @@
 NOTICE:  table "intergeom" does not exist, skipping
 CONTEXT:  SQL statement "drop table  if exists intergeom"
 PL/pgSQL function pgr_nodenetwork(text,text,text,text,double precision) line 23 at SQL statement
+NOTICE:  Inserted 0 MULTI* geometries
 NOTICE:  Num inserts: 0
 NOTICE:  Num inserts: 0
 NOTICE:  Num deleted: 0
 NOTICE:  table "inter_loc" does not exist, skipping
 CONTEXT:  SQL statement "drop table if exists inter_loc"
-PL/pgSQL function pgr_nodenetwork(text,text,text,text,double precision) line 58 at SQL statement
+PL/pgSQL function pgr_nodenetwork(text,text,text,text,double precision) line 68 at SQL statement
 NOTICE:  table "noded" does not exist, skipping
 CONTEXT:  SQL statement "drop table if exists noded"
-PL/pgSQL function pgr_nodenetwork(text,text,text,text,double precision) line 71 at EXECUTE statement
+PL/pgSQL function pgr_nodenetwork(text,text,text,text,double precision) line 81 at EXECUTE statement
 NOTICE:  Num inserted: 0
 noded generated with: 40 segments
 1|4|010200000002000000000000000000F03F000000000000004000000000000000400000000000000040

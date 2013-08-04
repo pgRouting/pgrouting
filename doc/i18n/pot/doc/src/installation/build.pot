@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting 2.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,72 +17,72 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../src/installation/build.rst:13
-# 696190537413425ca7f927b8ae11f571
+# c5cf6a87972b42e690264e99c7e7f795
 msgid "Build Guide"
 msgstr ""
 
 #: ../../src/installation/build.rst:15
-# 4b33bcd0252a424d984a70e11afbcddd
+# 5527da7dad584795b7924d50c9a79bc5
 msgid "To be able to compile pgRouting make sure that the following dependencies are met:"
 msgstr ""
 
 #: ../../src/installation/build.rst:17
-# 5ed1c41052094d659071f96b7637babf
+# c618619f835444dd967f78370b841d92
 msgid "C and C++ compilers"
 msgstr ""
 
 #: ../../src/installation/build.rst:18
-# 3e4ca373b668477d8e95536993f89b3c
+# c6f85509591d47b1bdd395919b761319
 msgid "Postgresql version >= 8.4 (>= 9.1 recommended)"
 msgstr ""
 
 #: ../../src/installation/build.rst:19
-# 7215aff43090474d90902ae633aa93fc
+# 61951def91f1402395e57355188cec62
 msgid "PostGIS version >= 1.5 (>= 2.0 recommended)"
 msgstr ""
 
 #: ../../src/installation/build.rst:20
-# 285a8d20940443fb84c8dedfd3486d4d
+# 6a0e008243f44ec2bb618be4f76a271c
 msgid "The Boost Graph Library (BGL). Version >= [TBD]"
 msgstr ""
 
 #: ../../src/installation/build.rst:21
-# df4d1558ee534e59960ef28ef5504736
+# 2179e1be36474631a70ac3b85e801064
 msgid "CMake >= 2.8.8"
 msgstr ""
 
 #: ../../src/installation/build.rst:22
-# fe4c32d4563142cabf9c3ee3834210ae
+# a2d266c73ac3427a99d9bf46c26d448c
 msgid "(optional, for Driving Distance) CGAL >= [TBD]"
 msgstr ""
 
 #: ../../src/installation/build.rst:23
-# 33a06aa4fa6e4c799b0f2136bdbb67db
+# ae32d61c4d0e4d94ab13d2c5f5a63605
 msgid "(optional, for Documentation) Sphinx >= 1.1"
 msgstr ""
 
 #: ../../src/installation/build.rst:27
-# 2f3ded91163749bfa4470e688b7c0314
+# e4af919f484c44b5abe44e0b1687d39d
 msgid "For MinGW on Windows"
 msgstr ""
 
 #: ../../src/installation/build.rst:39
-# 6c2ae259c06f4dfbb4ca7f8d4b2d6171
+# b52927567d764a66bf438f60b059cec7
 msgid "For Linux"
 msgstr ""
 
 #: ../../src/installation/build.rst:51
-# 4f8c0c5754aa4928a62e497b6cbe1f96
+# 0cca23f827f646d08e5a07057f388eb0
 msgid "With Documentation"
 msgstr ""
 
 #: ../../src/installation/build.rst:53
-# 9731e9b2446e4ae8b812f8074970caa4
+# 2addc81e2db341c797d8531756937c4e
 msgid "Build with documentation (requires `Sphinx <http://sphinx-doc.org/>`_):"
 msgstr ""
 
 #: ../../src/installation/build.rst:60
-# 53aea17a407040ec803b09e91a6d7ca4
+# 27e2e61f20fe4b048aa384365b49ced1
 msgid "Rebuild modified documentation only:"
 msgstr ""
 

@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting 2.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,122 +17,112 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:13
-# 9afdf872505d41c394476e832bbd10ed
+# 4593aa3250f24ea68aa7e3550865b53e
 msgid "pgr_analyzeOneway - Analyze One Way Streets"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:20
-# 38727b69fa604225a62c4f881bb83012
+# 8080c8895e164eceb294a58d488c54a5
 msgid "Name"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:22
-# 44ff8f5ccf8d4befad9e2ad67ea93a51
+# 2f507cf3922f4938a00c3386c545f9ba
 msgid "``pgr_analyzeOneway`` — Analyzes oneway Sstreets and identifies flipped segments."
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:26
-# d9ada1217d084c2fab8c2804b9a5795d
+# b6c59a86e9f84c9e85c573eb92505474
 msgid "Synopsis"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:28
-# 6466223a2dea4069b722c33ae04f3075
+# 28a7aa8f8a33466fa95c7a01a9100b30
 msgid "This function analyzes oneway streets in a graph and identifies any flipped segments."
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:37
-# 772942d61f714537a0a95d52189722b5
+# 9a5de71a9b1249068206be80561cc4a2
 msgid "Description"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:39
-# 8732fce45c3748e6af0f7cc79b4cf8b3
+# 269e888404ea40fc8e0ed390240b4ae0
 msgid "``text`` network table name (may contain the schema name as well)"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:40
-# be3f4297d01a4d82b0218b70cc844c7d
+# 3e0a34fb8cf34ca9905d616197eb40f5
 msgid "``text`` oneway column name name of the network table"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:41
-# 57e7d6de379441e38ab8e10944529eb8
+# d8ebf6ff4b464c59bda08569aaa4e10b
 msgid "``text[]`` source node **in** rules"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:42
-# 9960f61aa1c34e7b8921e90ff11c5ffe
+# 6c7be35b9ada406cbeb0a1070d50992d
 msgid "``text[]`` source node **out** rules"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:43
-# 553e116a2e3445f39b796fc01bb186ec
+# 6156c1924f92405bbf432f81eb0d86e9
 msgid "``text[]`` target node **in** rules"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:44
-# f3d37ee0da614b6ab1d278cf3931ba7e
+# 7e265585f6324aacaf9f5b5552318e1f
 msgid "``text[]`` target node **out** rules"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:45
-# 423d6c0c7a714c79b0307c3bc725f1d4
+# c8b1e0690a6a4fea8ce57566510c6f14
 msgid "``boolean`` flag to treat oneway NULL values as bi-directional"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:47
-# 8edeabda06f644edbd527dfe19a32e8e
+# 361e0c6e060549deb34316e925ac53f9
 msgid "This query will add two columns to the vertices_tmp table ``ein int`` and ``eout int`` and populate it with the appropriate counts."
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:49
-# ab4f485356d04517864637c16aa0cd50
+# 6f064ab6c07e4229851fb1323d6d7f7e
 msgid "The rules are defined as an array of text strings that if match the ``1way_cname`` value would be counted as ``true`` for the source or target **in** or **out** condition."
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:53
-# 4ff8b81eb5f74236bd39a561b0a475e2
+# 438284d4b7984e16aa42e8ba22eb2090
 msgid "History"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:54
-# 2eb40288654f4adaa7bcf35b42e2b212
+# a0855d05e100486898a25b5e91fc4c1e
 msgid "New in version 2.0.0"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:58
-# 3dd7ab08419b48649d2c4a06f93aabaf
+# 65398da86613466fa37a88c382c67ba9
 msgid "Examples"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:83
-# e41f55853fbd4ff58413a8ae215f4e45
+# 0818004b3b24490fbfcdba0c24140a66
 msgid "The queries use the :ref:`sampledata` network."
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:87
-# 0a194c6750c84164aff0b7d2be74ccb1
+# 6a4afd532bf94a29880dbb1bb12f261f
 msgid "See Also"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:89
-# 5b6d72eb132245989137ddc2302613ec
+# 1b226fa6786642c2804043c2621be128
 msgid ":ref:`pgr_analyze_graph`"
 msgstr ""
 
 #: ../../../src/common/doc/functions/analyze_oneway.rst:90
-# 8c37ccd7553c4897a9e9950360ac10f0
+# 3f91481837214212b3ff4049995e2897
 msgid ":ref:`analytics`"
-msgstr ""
-
-#: ../../../src/common/doc/functions/analyze_oneway.rst:15
-# b82e434dfc054a859b7affdfbec2378e
-msgid "pgr_analyzeOneway(text,text,text[],text[],text[],text[],boolean)"
-msgstr ""
-
-#: ../../../src/common/doc/functions/analyze_oneway.rst:15
-# b82e434dfc054a859b7affdfbec2378e
-msgid "common"
 msgstr ""
 

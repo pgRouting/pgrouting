@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting 2.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,17 +17,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../src/changelog/1_x.rst:13
-# 6f8e2e68938248d58bc9739deaf42cfc
+# 80139f0bb8004897a03df48a5421cd3e
 msgid "pgRouting 1.x Release Notes"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:15
-# 6dbc5583e35d4c5a870ad23e02eeb58b
+# 5a7212eff9be4a0d95a236c540a97f10
 msgid "The following release notes have been copied from the previous ``RELEASE_NOTES`` file and are kept as a reference. Release notes starting with :ref:`version 2.0.0 <changelog_2_0>` will follow a different schema."
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:20
-# ebefe5761e7943e097e74bcdd6095e51
+# b5ad5e6d0b78449890dda7fa6d30ac8e
 msgid "Changes for release 1.05"
 msgstr ""
 
@@ -35,117 +35,117 @@ msgstr ""
 #: ../../src/changelog/1_x.rst:29
 #: ../../src/changelog/1_x.rst:50
 #: ../../src/changelog/1_x.rst:57
-# 936301a8dc1e44ea9d35f3e957db9b5a
-# fbeba16bfcd84239afa213002ac010fd
-# 794685c130414ef4a4ac4369e1d55ef6
-# 511e7ce2df9844398b9c2d52f0ac2e17
+# b37e8bfbe2794101a72e1fbb116f22cd
+# 2f1abbe57331424397cb03d0a5fafee2
+# 2da690cfaaea4d369a7bdb9f9d241bf2
+# e3524add2c604532a66d1bf9a62c5487
 msgid "Bugfixes"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:26
-# d07d039d7a3f4023b8f42cce48740427
+# a623678fab0744a3a38546523303795f
 msgid "Changes for release 1.03"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:28
-# 4742bfc56c95472bb615a5ede92551a0
+# e48813b4d3814054819ed027aa138f70
 msgid "Much faster topology creation"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:33
-# 6f65214630044962b7b90ac7e913243a
+# bdcfed86022a4309a80715bf768350ee
 msgid "Changes for release 1.02"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:35
 #: ../../src/changelog/1_x.rst:42
-# bc1b296dae214d58bfe54d838da182fe
-# 3784af7cd9464ae889b8ad1c32396c48
+# 3803dd4ae425474caf39f6e7a2f28d9a
+# 0c92f6ddb54741f590c61761ee27cfbe
 msgid "Shooting* bugfixes"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:36
-# 26b65b4e5f424880aefbee43ae1f7f07
+# b304d596bae846d98c278686a2c64275
 msgid "Compilation problems solved"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:40
-# e471aa8d651b4c96a34a72c0850a2a9e
+# 741de983a5cf41eb98a113e54b847ec1
 msgid "Changes for release 1.01"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:46
-# a5ce8333ced24537a0ab0b200d7e1204
+# 5f23e892e7ad4db6877db1f07f53a7ab
 msgid "Changes for release 1.0"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:48
-# 21890f0cb975408e8240d1d9faef3e34
+# 3cb70fa7d3064130a540fc0d347e55e7
 msgid "Core and extra functions are separated"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:49
-# cbccab2623564725b98958b99948fb42
+# 28375001527c4b8b80781351f8205d8a
 msgid "Cmake build process"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:54
-# 73a6769b7a874423a2460159a3cde4e1
+# 4c1b7575c8df44fab1668818780b0b4a
 msgid "Changes for release 1.0.0b"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:56
-# 2f5dbeb0f3234857a778a6b3173fd8d4
+# d7a94776f1854770a57103008fe4e7c9
 msgid "Additional SQL file with more simple names for wrapper functions"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:61
-# e4872b3e9c0c49f7b26d3f563825e553
+# faf0ddf9d574472fabced8dc174aa067
 msgid "Changes for release 1.0.0a"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:63
-# 6aeb9b1f58214d47baf99c34cab1d1d2
+# db33894da05b41928897b7e5f71c58b9
 msgid "Shooting* shortest path algorithm for real road networks"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:64
-# a676e033e1704cee9085b870a2aa64f5
+# f2c0f4381c3e47b6bde5b359c1e2bbcc
 msgid "Several SQL bugs were fixed"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:68
-# 0ee0111596e94c29b3728fd5518fb7d8
+# 6df06ca83d7d4d628cd6dec8fc31a678
 msgid "Changes for release 0.9.9"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:70
-# a45a5f1a95724f51ab184ace8581be01
+# e5dce1be773a447db6c9c01820775913
 msgid "PostgreSQL 8.2 support"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:71
-# 0f949e5c0e3d4b98af0f7f734f538611
+# 0e71a0116ff04ba2bfb985d5cebf4210
 msgid "Shortest path functions return empty result if they couldn’t find any path"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:75
-# be0a55fa7cfb4aa6999b7d2d3849b1de
+# 5eecb0b7cf404ff383192dc71ba233a9
 msgid "Changes for release 0.9.8"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:77
-# e096af823f5442baac2c293e7935c6ac
+# ef658c0aaf2f482a99d1dd9691b0762d
 msgid "Renumbering scheme was added to shortest path functions"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:78
-# d74dbd627d3043cdbc6c7bf2cd3d471c
+# e47ae703842949b280bd34e4f45a1c76
 msgid "Directed shortest path functions were added"
 msgstr ""
 
 #: ../../src/changelog/1_x.rst:79
-# 1d3f6b7881f74102ad213ddf6d6a6cc1
+# 46ab0c039fee4edcb20db32c73c62757
 msgid "routing_postgis.sql was modified to use dijkstra in TSP search"
 msgstr ""
 
