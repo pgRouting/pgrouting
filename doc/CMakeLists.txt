@@ -56,14 +56,14 @@ if(WITH_DOC)
         "${CMAKE_CURRENT_SOURCE_DIR}/forward.html"
         "${SPHINX_HTML_DIR}/en/index.html")
 
-    add_custom_target(doc_gettext ALL
-        ${SPHINX_EXECUTABLE}
-        -Q -a -E -b gettext
-        -c "${BINARY_BUILD_DIR}"
-        -d "${SPHINX_CACHE_DIR}"
-        "${PGROUTING_SOURCE_DIR}"
-        "${SPHINX_I18N_DIR}"
-        COMMENT "SPHINX build finished. The message catalogs are in ${SPHINX_I18N_DIR}.")
+    # add_custom_target(doc_gettext ALL
+    #     ${SPHINX_EXECUTABLE}
+    #     -Q -a -E -b gettext
+    #     -c "${BINARY_BUILD_DIR}"
+    #     -d "${SPHINX_CACHE_DIR}"
+    #     "${PGROUTING_SOURCE_DIR}"
+    #     "${SPHINX_I18N_DIR}"
+    #     COMMENT "SPHINX build finished. The message catalogs are in ${SPHINX_I18N_DIR}.")
 
     add_custom_target(doc_html ALL
         ${SPHINX_EXECUTABLE}
@@ -97,8 +97,8 @@ if(WITH_DOC)
         COMMAND cd "${SPHINX_LATEX_DIR}/en" && pdflatex -interaction=nonstopmode pgRoutingDocumentation.tex > /dev/null 2>&1
         COMMENT "Converting to PDF format with Sphinx")
 
-    add_dependencies(doc_html  doc_gettext)
-    add_dependencies(doc_man   doc_gettext)
-    add_dependencies(doc_latex doc_gettext)
+    # add_dependencies(doc_html  doc_gettext)
+    # add_dependencies(doc_man   doc_gettext)
+    # add_dependencies(doc_latex doc_gettext)
 
 endif(WITH_DOC)

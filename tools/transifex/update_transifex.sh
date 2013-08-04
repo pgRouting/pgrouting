@@ -6,8 +6,6 @@
 # Publish updated documentation to Transifex
 # ------------------------------------------------------------------------------
 
-DIRECTORY=$(cd `dirname $0` && pwd)
-
 CONFIG="build/doc/_build"
 DOCDIR="doc/i18n"
 
