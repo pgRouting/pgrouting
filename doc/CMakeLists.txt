@@ -8,97 +8,115 @@
 
 set(SPHINX_THEME "haiku")
 #set(SPHINX_THEME_DIR "_themes")
-
+ 
 if(WITH_DOC)
+ 
+    find_package(Sphinx)
 
-    find_package(Sphinx REQUIRED)
-
-    if(NOT DEFINED SPHINX_THEME)
-        set(SPHINX_THEME default)
+    if (NOT SPHINX_FOUND)
+        message(WARNING "Sphinx not found. Cannot generate documentation!")
+    else()
+        if (SPHINX_VERSION VERSION_LESS 1.0)
+            message(WARNING "Your Sphinx version is too old!
+                This project requires Sphinx v1.0 or above to produce
+                proper documentation (you have v${SPHINX_VERSION}).
+                You will get output but it will have errors.")
+        endif()
+ 
+        if(NOT DEFINED SPHINX_THEME)
+            set(SPHINX_THEME default)
+        endif()
+ 
+        if(NOT DEFINED SPHINX_THEME_DIR)
+            set(SPHINX_THEME_DIR)
+        endif()
+ 
+        # configured documentation tools and intermediate build results
+        set(BINARY_BUILD_DIR "${PGROUTING_BINARY_DIR}/doc/_build")
+ 
+        # Sphinx cache with pickled ReST documents
+        set(SPHINX_CACHE_DIR "${PGROUTING_BINARY_DIR}/doc/_doctrees")
+ 
+        # Sphinx cache with pickled ReST documents
+        set(SPHINX_BUILD_DIR "${PGROUTING_BINARY_DIR}/doc")
+ 
+        file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/static" DESTINATION "${BINARY_BUILD_DIR}")
+        file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/themes" DESTINATION "${BINARY_BUILD_DIR}")
+        file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/CNAME" DESTINATION "${SPHINX_BUILD_DIR}")
+ 
+        configure_file(
+            "${CMAKE_CURRENT_SOURCE_DIR}/index.html.in"
+            "${SPHINX_BUILD_DIR}/html/index.html")
+ 
+        configure_file(
+            "${CMAKE_CURRENT_SOURCE_DIR}/forward.html"
+            "${SPHINX_BUILD_DIR}/html/en/index.html")
+ 
+        # Add documentation to targets
+        set(DOC_TARGETS html)
+ 
+        option(BUILD_MAN "Create a target for building man pages." ON)
+ 
+        if (BUILD_MAN)
+            if (SPHINX_VERSION VERSION_LESS 1.0)
+                message(WARNING "Sphinx version 1.0 > is required to build man pages. You have v${SPHINX_VERSION}.")
+            else()
+                list(APPEND DOC_TARGETS man)
+            endif()
+        endif()
+ 
+        option(BUILD_LATEX "Create a target for building latex docs (to create PDF)." ON)
+ 
+        if (BUILD_LATEX)
+            find_package(LATEX)
+ 
+            if (NOT LATEX_COMPILER)
+                message("Couldn't find Latex, can't build latex docs using Sphinx")
+            else()
+                list(APPEND DOC_TARGETS latex)
+            endif()
+        endif()
+ 
+        # The doc target will build all documentation targets.
+        add_custom_target(doc)
+ 
+        # Localization output directory
+        # set(SPHINX_I18N_DIR "${CMAKE_CURRENT_SOURCE_DIR}/i18n/pot")
+ 
+        configure_file(
+            "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
+            "${BINARY_BUILD_DIR}/conf.py"
+            @ONLY)
+ 
+        foreach (DOC_TARGET ${DOC_TARGETS})
+            add_custom_target(${DOC_TARGET}
+                ${SPHINX_EXECUTABLE}
+                # -q   # Enable for quiet mode
+                # -Q   # Enable for more quiet mode
+                -b ${DOC_TARGET}
+                -d "${SPHINX_CACHE_DIR}"
+                -c "${BINARY_BUILD_DIR}" # enable if using cmake-generated conf.py
+                "${CMAKE_CURRENT_SOURCE_DIR}/doc"
+                "${SPHINX_BUILD_DIR}/${DOC_TARGET}"
+                COMMENT "Building ${DOC_TARGET} documentation with Sphinx")
+ 
+            add_dependencies(doc ${DOC_TARGET})
+        endforeach()
+ 
+        if(LATEX_COMPILER)
+            add_custom_target(pdf
+                pdflatex
+                -interaction=nonstopmode
+                "${PGROUTING_BINARY_DIR}/doc/latex/en/pgRoutingDocumentation.tex"
+                COMMENT "Converting to PDF format with Sphinx")
+ 
+            add_dependencies(doc pdf)
+            add_dependencies(pdf latex)
+            list(APPEND DOC_TARGETS pdf)
+        endif()
+ 
+        message("Building documentation enabled for: ${DOC_TARGETS}")
     endif()
-
-    if(NOT DEFINED SPHINX_THEME_DIR)
-        set(SPHINX_THEME_DIR)
-    endif()
-
-    # configured documentation tools and intermediate build results
-    set(BINARY_BUILD_DIR "${PGROUTING_BINARY_DIR}/doc/_build")
-
-    # Sphinx cache with pickled ReST documents
-    set(SPHINX_CACHE_DIR "${PGROUTING_BINARY_DIR}/doc/_doctrees")
-
-    # HTML output directory
-    set(SPHINX_HTML_DIR "${PGROUTING_BINARY_DIR}/doc/html")
-
-    # PDF output directory
-    set(SPHINX_LATEX_DIR "${PGROUTING_BINARY_DIR}/doc/latex")
-
-    # MAN output directory
-    set(SPHINX_MAN_DIR "${PGROUTING_BINARY_DIR}/doc/man")
-
-    # Localization output directory
-    set(SPHINX_I18N_DIR "${CMAKE_CURRENT_SOURCE_DIR}/i18n/pot")
-
-    configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
-        "${BINARY_BUILD_DIR}/conf.py"
-        @ONLY)
-
-    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/static" DESTINATION "${BINARY_BUILD_DIR}")
-    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/themes" DESTINATION "${BINARY_BUILD_DIR}")
-    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/CNAME" DESTINATION "${PGROUTING_BINARY_DIR}")
-
-    configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/index.html.in"
-        "${SPHINX_HTML_DIR}/index.html")
-
-    configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/forward.html"
-        "${SPHINX_HTML_DIR}/en/index.html")
-
-    # add_custom_target(doc_gettext ALL
-    #     ${SPHINX_EXECUTABLE}
-    #     -Q -a -E -b gettext
-    #     -c "${BINARY_BUILD_DIR}"
-    #     -d "${SPHINX_CACHE_DIR}"
-    #     "${PGROUTING_SOURCE_DIR}"
-    #     "${SPHINX_I18N_DIR}"
-    #     COMMENT "SPHINX build finished. The message catalogs are in ${SPHINX_I18N_DIR}.")
-
-    add_custom_target(doc_html ALL
-        ${SPHINX_EXECUTABLE}
-        -Q -a -E -b html
-        -c "${BINARY_BUILD_DIR}"
-        -d "${SPHINX_CACHE_DIR}"
-        "${PGROUTING_SOURCE_DIR}"
-        "${SPHINX_HTML_DIR}/en"
-        COMMENT "SPHINX build finished. The HTML pages are in ${SPHINX_HTML_DIR}/en.")
-
-    add_custom_target(doc_man ALL
-        ${SPHINX_EXECUTABLE}
-        -Q -a -E -b man
-        -c "${BINARY_BUILD_DIR}"
-        -d "${SPHINX_CACHE_DIR}"
-        "${PGROUTING_SOURCE_DIR}"
-        "${SPHINX_MAN_DIR}/en"
-        COMMENT "SPHINX build finished. The manual pages are in ${SPHINX_MAN_DIR}/en.")
-
-    add_custom_target(doc_latex ALL
-        ${SPHINX_EXECUTABLE}
-        -Q -a -E -b latex
-        -c "${BINARY_BUILD_DIR}"
-        -d "${SPHINX_CACHE_DIR}"
-        "${PGROUTING_SOURCE_DIR}"
-        "${SPHINX_LATEX_DIR}/en"
-        COMMENT "SPHINX build finished; the LaTeX files are in ${SPHINX_LATEX_DIR}/en.")
-
-    add_custom_command(
-        TARGET doc_latex POST_BUILD
-        COMMAND cd "${SPHINX_LATEX_DIR}/en" && pdflatex -interaction=nonstopmode pgRoutingDocumentation.tex > /dev/null 2>&1
-        COMMENT "Converting to PDF format with Sphinx")
-
-    # add_dependencies(doc_html  doc_gettext)
-    # add_dependencies(doc_man   doc_gettext)
-    # add_dependencies(doc_latex doc_gettext)
-
+ 
 endif(WITH_DOC)
+
