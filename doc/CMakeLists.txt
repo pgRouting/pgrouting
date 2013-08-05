@@ -79,6 +79,7 @@ if(WITH_DOC)
         endif()
 
         # The doc target will build all documentation targets.
+        # add_custom_target(doc ALL)
         add_custom_target(doc)
 
         # Localization output directory
@@ -90,11 +91,13 @@ if(WITH_DOC)
             @ONLY)
 
         foreach (DOC_TARGET ${DOC_TARGETS})
-            message(STATUS "add_custom_target(${DOC_TARGET}, ${PGROUTING_SOURCE_DIR}, ${PGROUTING_BINARY_DIR}/doc/${DOC_TARGET}/en)")
             add_custom_target(${DOC_TARGET}
                 ${SPHINX_EXECUTABLE}
                 # -q   # Enable for quiet mode
+                -Q  # Enable for even more quiet mode
                 -b ${DOC_TARGET}
+                -E  # don't use a saved environment, always read all file
+                -a  # write all files; default is to only write new and changed files
                 -d "${SPHINX_CACHE_DIR}"
                 -c "${BINARY_BUILD_DIR}" # enable if using cmake-generated conf.py
                 "${PGROUTING_SOURCE_DIR}"
@@ -109,7 +112,8 @@ if(WITH_DOC)
                 add_custom_target(pdf
                     pdflatex
                     -interaction=nonstopmode
-                    "${PGROUTING_BINARY_DIR}/doc/latex/en/pgRoutingDocumentation.tex"
+                    "pgRoutingDocumentation.tex" > /dev/null 2>&1
+                    WORKING_DIRECTORY "${PGROUTING_BINARY_DIR}/doc/latex/en"
                     COMMENT "Converting to PDF format with Sphinx")
 
                 add_dependencies(doc pdf)
@@ -120,10 +124,5 @@ if(WITH_DOC)
 
         message("Building documentation enabled for: ${DOC_TARGETS}")
     endif()
-
-
-    # add_dependencies(doc_html  doc_gettext)
-    # add_dependencies(doc_man   doc_gettext)
-    # add_dependencies(doc_latex doc_gettext)
 
 endif(WITH_DOC)
