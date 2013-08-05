@@ -104,16 +104,18 @@ if(WITH_DOC)
             add_dependencies(doc ${DOC_TARGET})
         endforeach()
 
-        if(LATEX_COMPILER)
-            add_custom_target(pdf
-                pdflatex
-                -interaction=nonstopmode
-                "${PGROUTING_BINARY_DIR}/doc/latex/en/pgRoutingDocumentation.tex"
-                COMMENT "Converting to PDF format with Sphinx")
+        if(BUILD_LATEX)
+            if(LATEX_COMPILER)
+                add_custom_target(pdf
+                    pdflatex
+                    -interaction=nonstopmode
+                    "${PGROUTING_BINARY_DIR}/doc/latex/en/pgRoutingDocumentation.tex"
+                    COMMENT "Converting to PDF format with Sphinx")
 
-            add_dependencies(doc pdf)
-            add_dependencies(pdf latex)
-            list(APPEND DOC_TARGETS pdf)
+                add_dependencies(doc pdf)
+                add_dependencies(pdf latex)
+                list(APPEND DOC_TARGETS pdf)
+            endif()
         endif()
 
         message("Building documentation enabled for: ${DOC_TARGETS}")
