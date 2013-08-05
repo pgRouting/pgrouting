@@ -79,8 +79,9 @@ if(WITH_DOC)
         endif()
 
         # The doc target will build all documentation targets.
-        # add_custom_target(doc ALL)
-        add_custom_target(doc)
+        add_custom_target(doc ALL
+            COMMENT "Building documentation with Sphinx")
+        # add_custom_target(doc)
 
         # Localization output directory
         #set(SPHINX_I18N_DIR "${CMAKE_CURRENT_SOURCE_DIR}/i18n/pot")
@@ -91,38 +92,53 @@ if(WITH_DOC)
             @ONLY)
 
         foreach (DOC_TARGET ${DOC_TARGETS})
-            add_custom_target(${DOC_TARGET}
-                ${SPHINX_EXECUTABLE}
-                # -q   # Enable for quiet mode
-                -Q  # Enable for even more quiet mode
-                -b ${DOC_TARGET}
-                -E  # don't use a saved environment, always read all file
-                -a  # write all files; default is to only write new and changed files
-                -d "${SPHINX_CACHE_DIR}"
-                -c "${BINARY_BUILD_DIR}" # enable if using cmake-generated conf.py
-                "${PGROUTING_SOURCE_DIR}"
-                "${PGROUTING_BINARY_DIR}/doc/${DOC_TARGET}/en"
-                COMMENT "Building ${DOC_TARGET} documentation with Sphinx")
+            add_custom_command(
+                TARGET doc POST_BUILD
+                COMMAND ${SPHINX_EXECUTABLE} 
+                    # -q   # Enable for quiet mode 
+                    -Q  # Enable for even more quiet mode
+                    -b ${DOC_TARGET}
+                    -E  # don't use a saved environment, always read all file
+                    -a  # write all files; default is to only write new and changed files
+                    -d "${SPHINX_CACHE_DIR}" 
+                    -c "${BINARY_BUILD_DIR}" 
+                    "${PGROUTING_SOURCE_DIR}" 
+                    "${PGROUTING_BINARY_DIR}/doc/${DOC_TARGET}/en"
+                COMMENT "Generating ${DOC_TARGET} documentation ...")
 
-            add_dependencies(doc ${DOC_TARGET})
+            # add_custom_target(${DOC_TARGET}
+            #     ${SPHINX_EXECUTABLE}
+            #     # -q   # Enable for quiet mode
+            #     -Q  # Enable for even more quiet mode
+            #     -b ${DOC_TARGET}
+            #     -E  # don't use a saved environment, always read all file
+            #     -a  # write all files; default is to only write new and changed files
+            #     -d "${SPHINX_CACHE_DIR}"
+            #     -c "${BINARY_BUILD_DIR}" # enable if using cmake-generated conf.py
+            #     "${PGROUTING_SOURCE_DIR}"
+            #     "${PGROUTING_BINARY_DIR}/doc/${DOC_TARGET}/en"
+            #     COMMENT "Building ${DOC_TARGET} documentation with Sphinx")
+
+            # add_dependencies(doc ${DOC_TARGET})
         endforeach()
 
         if(BUILD_LATEX)
             if(LATEX_COMPILER)
-                add_custom_target(pdf
-                    pdflatex
-                    -interaction=nonstopmode
-                    "pgRoutingDocumentation.tex" > /dev/null 2>&1
+                add_custom_command(
+                    TARGET doc POST_BUILD
+                    COMMAND pdflatex 
+                        -interaction=nonstopmode 
+                        "pgRoutingDocumentation.tex" > /dev/null 2>&1
                     WORKING_DIRECTORY "${PGROUTING_BINARY_DIR}/doc/latex/en"
-                    COMMENT "Converting to PDF format with Sphinx")
+                    COMMENT "Converting Latex to PDF format")
 
-                add_dependencies(doc pdf)
-                add_dependencies(pdf latex)
                 list(APPEND DOC_TARGETS pdf)
+                # add_dependencies(doc pdf)
+                # add_dependencies(pdf latex)
             endif()
         endif()
 
-        message("Building documentation enabled for: ${DOC_TARGETS}")
+        message("-- Building documentation enabled for: ${DOC_TARGETS}")
     endif()
 
 endif(WITH_DOC)
