@@ -62,6 +62,7 @@ DECLARE
     srid integer;
     cname text;
     sql text;
+    parts text[];
 
 BEGIN
     /*
@@ -84,9 +85,14 @@ BEGIN
     srid := tabinfo.srid;
     cname := quote_ident(geo_cname);
 
+    parts := regexp_split_to_array(geom_table, E'\\.');
+
     -- get the approximate count of records for geom_table
-    
-    EXECUTE 'SELECT reltuples::bigint AS totcount FROM pg_class WHERE relname='''|| pgr_quote_ident(geom_table) ||'''' INTO totcount;
+    IF array_length(parts, 1) = 1 THEN
+        EXECUTE 'SELECT reltuples::bigint AS totcount FROM pg_class WHERE relname='''|| quote_ident(parts[1]) ||'''' INTO totcount;
+    ELSIF array_length(parts, 1) = 2 THEN
+        EXECUTE 'SELECT p.reltuples::bigint AS totcount FROM pg_class p JOIN pg_catalog.pg_namespace n ON  n.oid = p.relnamespace WHERE relname='''|| quote_ident(parts[2]) || '''' || ' AND n.nspname=''' || quote_ident(parts[1]) || '''' INTO totcount;
+    END IF;
     totcount := coalesce(totcount, 0);
 
     /*

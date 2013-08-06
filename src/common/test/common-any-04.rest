@@ -60,7 +60,7 @@ public.noded2.the_geom SRID:0 TYPE:LINESTRING DIMS:2
 ---------------------------------
 NOTICE:  CREATE TABLE will create implicit sequence "vertices_tmp_id_seq" for serial column "vertices_tmp.id"
 CONTEXT:  SQL statement "CREATE TABLE vertices_tmp (id bigserial)"
-PL/pgSQL function pgr_createtopology(character varying,double precision,character varying,character varying) line 45 at SQL statement
+PL/pgSQL function pgr_createtopology(character varying,double precision,character varying,character varying) line 51 at SQL statement
 NOTICE:  0 out of 0 edges processed
 OK
 NOTICE:  Adding "cnt" column to vertices_tmp
