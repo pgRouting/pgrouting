@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting Docs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-06 14:00+0000\n"
+"Last-Translator: Daniel Kastl\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# f75f87afd7884c1a9350ba9527457d0a
+#: ../../../src/common/doc/types/cost_result.rst:13
+msgid "pgr_costResult[] - Path Result with Cost"
+msgstr ""
+
+# acaeee85ba794f39b3cea4ae3ae34d5d
+# a4ac74a319b346c9af03e5fc2b63db70
+#: ../../../src/common/doc/types/cost_result.rst:20
+#: ../../../src/common/doc/types/cost_result.rst:54
+msgid "Name"
+msgstr "名前"
+
+# 84e2911cc1944707bc7f8d8e05f0f635
+#: ../../../src/common/doc/types/cost_result.rst:22
+msgid ""
+"``pgr_costResult[]`` — A set of records to describe a path result with cost "
+"attribute."
+msgstr ""
+
+# 810a069082204041b80cb85b8b294702
+# 29c4c58428544ec48dbabd011b14b173
+#: ../../../src/common/doc/types/cost_result.rst:26
+#: ../../../src/common/doc/types/cost_result.rst:60
+msgid "Description"
+msgstr "説明"
+
+# fc379441345d4131b5b18596fe0fd0af
+# 2df5d27b7f8f464490ef1bee8d8d446c
+#: ../../../src/common/doc/types/cost_result.rst:38
+#: ../../../src/common/doc/types/cost_result.rst:73
+msgid "sequential ID indicating the path order"
+msgstr ""
+
+# 2a6f65cd5d6947dcb9fd0c08b8b4e843
+# e9e9678ef67c4da8aeb91e5246bb2532
+#: ../../../src/common/doc/types/cost_result.rst:39
+#: ../../../src/common/doc/types/cost_result.rst:75
+msgid "generic name, to be specified by the function, typically the node id"
+msgstr ""
+
+# 17c36468341c48199b6d16e39b1b2ff2
+# f52883c07af74227a49f59ab64d33461
+#: ../../../src/common/doc/types/cost_result.rst:40
+#: ../../../src/common/doc/types/cost_result.rst:76
+msgid "generic name, to be specified by the function, typically the edge id"
+msgstr ""
+
+# b9cf27e0ba39460fa0292babb570b257
+# 035d3ffd98fa4992bd613847577ee03f
+#: ../../../src/common/doc/types/cost_result.rst:41
+#: ../../../src/common/doc/types/cost_result.rst:77
+msgid "cost attribute"
+msgstr ""
+
+# 9987464ed2c44ba1b36c9161ca4192db
+#: ../../../src/common/doc/types/cost_result.rst:47
+msgid "pgr_costResult3[] - Multiple Path Results with Cost"
+msgstr ""
+
+# 7e724f0dce2a4bb08de44d36cdfc8e0b
+#: ../../../src/common/doc/types/cost_result.rst:56
+msgid ""
+"``pgr_costResult3[]`` — A set of records to describe a path result with cost"
+" attribute."
+msgstr ""
+
+# aa90c611715a4939a69273b58bb67eab
+#: ../../../src/common/doc/types/cost_result.rst:74
+msgid "generic name, to be specified by the function, typically the path id"
+msgstr ""
+
+# 80c524d7f10c47af88c8c6f2cd5ce776
+#: ../../../src/common/doc/types/cost_result.rst:81
+msgid "History"
+msgstr "歴史"
+
+# 6f2273d101a148329e692d63898b1fc4
+#: ../../../src/common/doc/types/cost_result.rst:82
+msgid "New in version 2.0.0"
+msgstr ""
+
+# bad6e6cef0944994843cf4c666f80e79
+#: ../../../src/common/doc/types/cost_result.rst:83
+msgid "Replaces ``path_result``"
+msgstr ""
+
+# d1d305a154f54bf68dc4be9400d9f1d3
+#: ../../../src/common/doc/types/cost_result.rst:87
+msgid "See Also"
+msgstr "参照"
+
+# 7e75d809786a4d0788818ce97a778176
+#: ../../../src/common/doc/types/cost_result.rst:89
+msgid ":ref:`common_types`"
+msgstr ""

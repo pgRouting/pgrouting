@@ -1,0 +1,121 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+# cvvergara, 2013
+# sanak <geosanak@gmail.com>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting Docs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-06 17:25+0000\n"
+"Last-Translator: sanak <geosanak@gmail.com>\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 8e0e9a4221ee4384940b01c6483da272
+#: ../../index.rst:13
+msgid "Table of Contents"
+msgstr "目次"
+
+# 52bacf1e9ef84942ac2b40b5cb7404e4
+#: ../../index.rst:15
+msgid ""
+"pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL "
+"<http://postgresql.org>`_ geospatial database to provide geospatial routing "
+"and other network analysis functionality."
+msgstr "pgRouting は地理空間における経路探索や他のネットワーク解析機能を提供するために `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgresql.org>`_ 地理空間データベースを拡張します。"
+
+# 058e6723e673445c83a90cf0b9c0952b
+#: ../../index.rst:17
+msgid "This is the manual for pgRouting |release|."
+msgstr "このマニュアルは pgRouting |release| のマニュアルです。"
+
+# 74b7b1936fc740c3ac40349a4cb3302d
+#: ../../index.rst:23
+msgid ""
+"The pgRouting Manual is licensed under a `Creative Commons Attribution-Share"
+" Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/>`_. Feel "
+"free to use this material any way you like, but we ask that you attribute "
+"credit to the pgRouting Project and wherever possible, a link back to "
+"http://pgrouting.org. For other licenses used in pgRouting see the "
+":ref:`license` page."
+msgstr "pgRouting マニュアルは `クリエイティブ・コモンズ 表示 - 継承 3.0 Unported <http://creativecommons.org/licenses/by-sa/3.0/>`_ ライセンスで提供されています。 自由にこのコンテンツを使用することが可能ですが、クレジットが pgRouting プロジェクトに帰すること、また、どこでも構いませんので、 http://pgrouting.org へのリンクを表示することを求めます。 pgRouting で使用されているその他のライセンスについては、  :ref:`ライセンス <license>` ページを参照して下さい。"
+
+# 9dbb9ddf990544db95bf71c476282935
+#: ../../index.rst:27
+msgid "General"
+msgstr "概要"
+
+# f2faf60864344a59a08891e5c37eedff
+#: ../../index.rst:39
+msgid "Tutorial"
+msgstr "チュートリアル"
+
+# 9ef12c6715134f038462ed596f0077f8
+#: ../../index.rst:52
+msgid ""
+"For a more complete introduction how to build a routing application read the"
+" `pgRouting Workshop <http://workshop.pgrouting.org>`_."
+msgstr "経路探索アプリケーションを構築するための、より完全なイントロダクションについては、 `pgRouting ワークショップ <http://workshop.pgrouting.org>`_ を読んで下さい。"
+
+# 62bfa0e9071046bf915dc11ebee13fe0
+#: ../../index.rst:56
+msgid "Reference"
+msgstr "リファレンス"
+
+# 4f6dced05e7f4f2fac0504c7bcbac375
+#: ../../index.rst:58
+msgid "pgRouting provides several :ref:`common functions <common>`:"
+msgstr "pgRouting が提供する :ref:`共通関数 <common>`:"
+
+# 9e76fdda85694ae09eb7a4daf3b04929
+#: ../../index.rst:72
+msgid "pgRouting introduces a few :ref:`custom data types <common_types>`:"
+msgstr "pgRouting が取り入れている :ref:`カスタムデータ型 <common_types>`:"
+
+# 19c2ac5ab06d4eec8c8a29f3f8564885
+#: ../../index.rst:86
+msgid "pgRouting functions in alphabetical order:"
+msgstr "pgRouting のアルファベット順関数:"
+
+# 6693f75074694be18cf9d365a30c487b
+#: ../../index.rst:102
+msgid "If pgRouting is compiled with \"Driving Distance\" enabled:"
+msgstr "pgRouting が \"Driving Distance\" 有効でコンパイルされている場合:"
+
+# 6c0fc85ea6f84d67b541943cb0134194
+#: ../../index.rst:111
+msgid "Some functions from previous releases may have been removed."
+msgstr "以前のリリースから、いくつかの関数が削除されているかもしれません。"
+
+# 461f9bed82d546699dc1657949b310b5
+#: ../../index.rst:122
+msgid "Developer"
+msgstr "開発者"
+
+# b6a11c0a4aa147719725ef6df08f7886
+#: ../../index.rst:133
+msgid "Release notes"
+msgstr "リリースノート"
+
+# 3a6e7c93c19c414788fec96a55ee17e5
+#: ../../index.rst:142
+msgid "Indices and tables"
+msgstr "索引とテーブル"
+
+# 6089ba03b1bc416eb6759a8a60f7c573
+#: ../../index.rst:143
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+# cd2f2590e93f4944bde6666a7ab16661
+#: ../../index.rst:144
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
