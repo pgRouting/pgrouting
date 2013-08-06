@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting Docs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-06 14:00+0000\n"
+"Last-Translator: Daniel Kastl\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# ebb698d42ab84a70942c2dc642d8689f
+#: ../../../src/common/doc/types/geom_result.rst:13
+msgid "pgr_geomResult[] - Path Result with Geometry"
+msgstr ""
+
+# 8c1135709e1f42109f51dbb19b910d32
+#: ../../../src/common/doc/types/geom_result.rst:20
+msgid "Name"
+msgstr "名前"
+
+# 0504426205734e54acafe64e1643ba59
+#: ../../../src/common/doc/types/geom_result.rst:22
+msgid ""
+"``pgr_geomResult[]`` — A set of records to describe a path result with "
+"geometry attribute."
+msgstr ""
+
+# 2fe63836e36143c0bf782667d44aeb1d
+#: ../../../src/common/doc/types/geom_result.rst:26
+msgid "Description"
+msgstr "説明"
+
+# c4356f080cdd45cdbea91b19f382af17
+#: ../../../src/common/doc/types/geom_result.rst:38
+msgid "sequential ID indicating the path order"
+msgstr ""
+
+# 28be111f472d4c46a2c96c103a8cab20
+# fd4d6b299a42442788d2806bbc172ecb
+#: ../../../src/common/doc/types/geom_result.rst:39
+#: ../../../src/common/doc/types/geom_result.rst:40
+msgid "generic name, to be specified by the function"
+msgstr ""
+
+# 3023c0d4cc7d442cb916111f5fb9e5c7
+#: ../../../src/common/doc/types/geom_result.rst:41
+msgid "geometry attribute"
+msgstr ""
+
+# 2a15ebb2d4364c599e179e0452466759
+#: ../../../src/common/doc/types/geom_result.rst:45
+msgid "History"
+msgstr "歴史"
+
+# e5e6297149664f34a89b901e03434765
+#: ../../../src/common/doc/types/geom_result.rst:46
+msgid "New in version 2.0.0"
+msgstr ""
+
+# 746866b5d04349148e7dee1f0906a73b
+#: ../../../src/common/doc/types/geom_result.rst:47
+msgid "Replaces ``geoms``"
+msgstr ""
+
+# 162b0b55bea4444680b5a7645d7e2f48
+#: ../../../src/common/doc/types/geom_result.rst:51
+msgid "See Also"
+msgstr "参照"
+
+# 5bd464cbd0fa498883a6e166120ca90b
+#: ../../../src/common/doc/types/geom_result.rst:53
+msgid ":ref:`common_types`"
+msgstr ""

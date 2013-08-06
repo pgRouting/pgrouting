@@ -1,0 +1,160 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting Docs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-06 14:00+0000\n"
+"Last-Translator: Daniel Kastl\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# a9464a666ddf4a3cafb34cd7875cb1f9
+#: ../../../src/common/doc/functions/node_network.rst:13
+msgid "pgr_nodeNetwork - Nodes an network edge table."
+msgstr ""
+
+# 499ee762782d401990c87c8a406016d3
+#: ../../../src/common/doc/functions/node_network.rst:20
+msgid "Name"
+msgstr "名前"
+
+# 126a572ada6a483592c73f33374b9b1f
+#: ../../../src/common/doc/functions/node_network.rst:22
+msgid "``pgr_nodeNetwork`` - Nodes an network edge table."
+msgstr ""
+
+# 4c6918a689634d1fab4321126ee2dd51
+#: ../../../src/common/doc/functions/node_network.rst:24
+msgid "Nicolas Ribot"
+msgstr ""
+
+# d4ece2502987402dbeae2118be595b03
+#: ../../../src/common/doc/functions/node_network.rst:25
+msgid "Nicolas Ribot, The source code is released under the MIT-X license."
+msgstr ""
+
+# ccae598006384288960ed51040e8c828
+#: ../../../src/common/doc/functions/node_network.rst:29
+msgid "Synopsis"
+msgstr "概要"
+
+# 9b0d3a3cd6de413c907f36c441d84876
+#: ../../../src/common/doc/functions/node_network.rst:31
+msgid ""
+"The function reads edges from a not \"noded\" network table and writes the "
+"\"noded\" edges into a new table."
+msgstr ""
+
+# 766b9075a95e44c6a0401e7f2f4954e5
+#: ../../../src/common/doc/functions/node_network.rst:40
+msgid "Description"
+msgstr "説明"
+
+# 862ebce3b15743a090693150e82b2b54
+#: ../../../src/common/doc/functions/node_network.rst:42
+msgid ""
+"A common problem associated with bringing GIS data into pgRouting is the "
+"fact that the data is often not \"noded\" correctly. This will create "
+"invalid topologies, which will result in routes that are incorrect."
+msgstr ""
+
+# 295bf322fbac410285d5df159419bc84
+#: ../../../src/common/doc/functions/node_network.rst:44
+msgid ""
+"What we mean by \"noded\" is that at every intersection in the road network "
+"all the edges will be broken into separate road segments. There are cases "
+"like an over-pass and under-pass intersection where you can not traverse "
+"from the over-pass to the under-pass, but this function does not have the "
+"ability to detect and accomodate those situations."
+msgstr ""
+
+# e4a7f7ed948744ab8ad4905bb68245ad
+#: ../../../src/common/doc/functions/node_network.rst:46
+msgid ""
+"This function reads the ``table_in`` table, that has a primary key column "
+"``gid_cname`` and geometry column named ``geo_cname`` and intersect all the "
+"segments in it against all the other segments and then creates a table "
+"``table_out``. It uses the ``tolerance`` for deciding that multiple nodes "
+"within the tolerance are considered the same node."
+msgstr ""
+
+# 9f833c7a38da42bb96c3a6029b070954
+#: ../../../src/common/doc/functions/node_network.rst:48
+msgid "``text`` name of the input table to be noded"
+msgstr ""
+
+# 400d367c13b644ca9a2392280679b0a4
+#: ../../../src/common/doc/functions/node_network.rst:49
+msgid "``text`` name of the primary key column for the input table"
+msgstr ""
+
+# c6ddba890a254ce1831c9714cdc24503
+#: ../../../src/common/doc/functions/node_network.rst:50
+msgid "``text`` name of the geometry column that should be noded"
+msgstr ""
+
+# 7fc0871cdbe1441c92e0457bc1c9699e
+#: ../../../src/common/doc/functions/node_network.rst:51
+msgid "``text`` name of the output table that will be created"
+msgstr ""
+
+# 4b57715be7a54c14b9dd23cc7e26b40b
+#: ../../../src/common/doc/functions/node_network.rst:52
+msgid "``float8`` tolerance for coinicident points (in projection unit)"
+msgstr ""
+
+# 73d04f3fcff441529947c1e2ec01cda2
+#: ../../../src/common/doc/functions/node_network.rst:54
+msgid "The ``table_out`` table has a structure like:"
+msgstr ""
+
+# 2649117fd8ef4cff98b813ef8c81b2d9
+#: ../../../src/common/doc/functions/node_network.rst:56
+msgid "``integer`` is a reference to the record in ``table_in``"
+msgstr ""
+
+# 2b31022888474f9291c8fa557d81de6b
+#: ../../../src/common/doc/functions/node_network.rst:57
+msgid ""
+"``bigint`` is a sequence number that identifies all the new segments "
+"generated from the original record."
+msgstr ""
+
+# 522f9ea90f954d2aaa39fdc2a4ef6731
+#: ../../../src/common/doc/functions/node_network.rst:58
+msgid "``geometry`` attribute"
+msgstr ""
+
+# e6cd3bba77a04bed9eff403db89c73d4
+#: ../../../src/common/doc/functions/node_network.rst:61
+msgid "History"
+msgstr "歴史"
+
+# 24d86d4b09e64eecb8a2b26bd8241993
+#: ../../../src/common/doc/functions/node_network.rst:62
+msgid "New in version 2.0.0"
+msgstr ""
+
+# 5c1ff55a074641678104e9ea70b2adca
+#: ../../../src/common/doc/functions/node_network.rst:66
+msgid "Examples"
+msgstr "例"
+
+# 30b3b800155b4bafb4082ef463889638
+#: ../../../src/common/doc/functions/node_network.rst:79
+msgid "See Also"
+msgstr "参照"
+
+# c74ab0ef78134f749c3fe6bb4a92c340
+#: ../../../src/common/doc/functions/node_network.rst:81
+msgid ":ref:`pgr_create_topology`"
+msgstr ""

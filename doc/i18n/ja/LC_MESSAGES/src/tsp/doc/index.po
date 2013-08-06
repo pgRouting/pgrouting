@@ -1,0 +1,330 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+# sanak <geosanak@gmail.com>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting Docs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-06 17:20+0000\n"
+"Last-Translator: sanak <geosanak@gmail.com>\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 0511b7c998a94591977f9347d4898011
+#: ../../../src/tsp/doc/index.rst:13
+msgid "pgr_tsp - Traveling Sales Person"
+msgstr ""
+
+# 6c323f213d4447ea96ee985d23d9b7c6
+#: ../../../src/tsp/doc/index.rst:23
+msgid "Name"
+msgstr "名前"
+
+# e87de02b9a0d4b99968f8ad6a75cae4d
+#: ../../../src/tsp/doc/index.rst:25
+msgid ""
+"``pgr_tsp`` - Returns the best route from a start node via a list of nodes."
+msgstr ""
+
+# a62764beb4254a948336a360574526f7
+#: ../../../src/tsp/doc/index.rst:26
+msgid ""
+"``pgr_tsp`` - Returns the best route order when passed a disance matrix."
+msgstr ""
+
+# 55cb369ad5d24d93afe622b2f9f024ac
+#: ../../../src/tsp/doc/index.rst:27
+msgid ""
+"``pgr_makeDistanceMatrix`` - Returns a Eucleadian distance Matrix from the "
+"points provided in the sql result."
+msgstr ""
+
+# d13e9e80a3b44da3af90e89c7a999e48
+#: ../../../src/tsp/doc/index.rst:31
+msgid "Synopsis"
+msgstr "概要"
+
+# 74bacdca44524ee4a0a24848c1178495
+#: ../../../src/tsp/doc/index.rst:33
+msgid ""
+"The travelling salesman problem (TSP) or travelling salesperson problem asks"
+" the following question: Given a list of cities and the distances between "
+"each pair of cities, what is the shortest possible route that visits each "
+"city exactly once and returns to the origin city? This algoritm uses "
+"simulated annealing to return a high quality approximate solution. Returns a"
+" set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows,"
+" that make up a path."
+msgstr ""
+
+# bba871f73c2f444f81e143d3b3b2d2dc
+#: ../../../src/tsp/doc/index.rst:41
+msgid ""
+"Returns a set of (seq integer, id1 integer, id2 integer, cost float8) that "
+"is the best order to visit the nodes in the matrix. ``id1`` is the index "
+"into the distance matrix. ``id2`` is the point id from the sql."
+msgstr ""
+
+# 04c3f7cdb1294cad951369b56ccfea83
+#: ../../../src/tsp/doc/index.rst:43
+msgid ""
+"If no ``end_id`` is supplied or it is -1 or equal to the start_id then the "
+"TSP result is assumed to be a circluar loop returning back to the start. If "
+"``end_id`` is supplied then the route is assumed to start and end the the "
+"designated ids."
+msgstr ""
+
+# cc21b04bc5d84435919dc0466d89dfcc
+#: ../../../src/tsp/doc/index.rst:52
+msgid "Description"
+msgstr "説明"
+
+# cb5805102d624eb6b4392a515bb4d711
+#: ../../../src/tsp/doc/index.rst:55
+msgid "With Euclidean distances"
+msgstr ""
+
+# 123ddf1b692448c68eaa418686baf663
+#: ../../../src/tsp/doc/index.rst:56
+msgid ""
+"The TSP solver is based on ordering the points using straight line "
+"(euclidean) distance [#f0]_ between nodes. The implementation is using an "
+"approximation algorithm that is very fast. It is not an exact solution, but "
+"it is guaranteed that a solution is returned after certain number of "
+"iterations."
+msgstr ""
+
+# bab6c4ebc54f434b9bf501a116433f8f
+#: ../../../src/tsp/doc/index.rst:58
+msgid ""
+"a SQL query, which should return a set of rows with the following columns:"
+msgstr "SQLのクエリーです。以下に続くカラムからなる行セットを返します:"
+
+# 727f1f43147a471ea8603528365832e5
+#: ../../../src/tsp/doc/index.rst:64
+msgid "``int4`` identifier of the vertex"
+msgstr ""
+
+# ecdfa74663ce4568a6e8e369fb0e0ad4
+#: ../../../src/tsp/doc/index.rst:65
+msgid "``float8`` x-coordinate"
+msgstr ""
+
+# 6d1910c2f1e64fafb2076efe4de5d868
+#: ../../../src/tsp/doc/index.rst:66
+msgid "``float8`` y-coordinate"
+msgstr ""
+
+# 9ad646c864774adc84623eade9d26ee6
+#: ../../../src/tsp/doc/index.rst:68
+msgid "``int4`` id of the start point"
+msgstr "``int4``型の始点ノードのID"
+
+# 09da8cd2207b4002b9d4bd5729000973
+#: ../../../src/tsp/doc/index.rst:69
+msgid ""
+"``int4`` id of the end point, This is *OPTIONAL*, if include the route is "
+"optimized from start to end, otherwise it is assumed that the start and the "
+"end are the same point."
+msgstr ""
+
+# 990e765c132d45848ed04e7807fe0e86
+#: ../../../src/tsp/doc/index.rst:72
+msgid "The function returns set of :ref:`type_cost_result`:"
+msgstr ""
+
+# dfc4189f9eee4cb181d9bb44180d1009
+# ef13091c0a1748e38a7c85cd8a1dcc28
+#: ../../../src/tsp/doc/index.rst:74 ../../../src/tsp/doc/index.rst:107
+msgid "row sequence"
+msgstr "行の連番"
+
+# 4208a328c16d47a591dc612b96d419b5
+#: ../../../src/tsp/doc/index.rst:75
+msgid "internal index to the distance matric"
+msgstr ""
+
+# 4fbab6e211f04951ab0e9681b71d343f
+#: ../../../src/tsp/doc/index.rst:76
+msgid "``id`` of the node"
+msgstr ""
+
+# 3d49a50ecb7047dab5b39c513f7b04db
+#: ../../../src/tsp/doc/index.rst:77
+msgid "cost to traverse from the current node to the next node."
+msgstr ""
+
+# 9b96120a487e4512a170834c30f011ce
+#: ../../../src/tsp/doc/index.rst:80
+msgid "Create a distance matrix"
+msgstr ""
+
+# 5f74c106a12d470ba005fe0bb38ef05d
+#: ../../../src/tsp/doc/index.rst:81
+msgid ""
+"For users that need a distance matrix we have a simple function that takes "
+"SQL in ``sql`` as described above and returns a record with ``dmatrix`` and "
+"``ids``."
+msgstr ""
+
+# 1ba17af000534bf5b04acc1e64f3eef3
+#: ../../../src/tsp/doc/index.rst:87
+msgid "The function returns a record of ``dmatrix``, ``ids``:"
+msgstr ""
+
+# 918f1f0018de481c8e23803bca1a2e23
+#: ../../../src/tsp/doc/index.rst:89
+msgid "``float8[][]`` a symeteric Euclidean distance matrix based on ``sql``."
+msgstr ""
+
+# 1012a5d466d24da6a1a6b2bf25f79488
+#: ../../../src/tsp/doc/index.rst:90
+msgid ""
+"``integer[]`` an array of ids as they are ordered in the distance matrix."
+msgstr ""
+
+# 48b1bd0095994f77a532b42923450336
+#: ../../../src/tsp/doc/index.rst:94
+msgid "With distance matrix"
+msgstr ""
+
+# c1a3acf804e242cdad3b81a017d31450
+#: ../../../src/tsp/doc/index.rst:95
+msgid ""
+"For users, that do not want to use Euclidean distances, we also provode the "
+"ability to pass a distance matrix that we will solve and return an ordered "
+"list of nodes for the best order to visit each. It is up to the user to "
+"fully populate the distance matrix."
+msgstr ""
+
+# 47a7569344e742bd9654cdb0e0572af6
+#: ../../../src/tsp/doc/index.rst:97
+msgid "``float[][]`` distance matrix of points"
+msgstr ""
+
+# 852369e448104e27bcf5dfdf3779e2f0
+#: ../../../src/tsp/doc/index.rst:98
+msgid "``int4`` index of the start point"
+msgstr ""
+
+# b905a6fd706f47109d50116da3ebfa6a
+#: ../../../src/tsp/doc/index.rst:99
+msgid "``int4`` (optional) index of the end node"
+msgstr ""
+
+# b4344c7e6c474cc9b0647cb109499e7a
+#: ../../../src/tsp/doc/index.rst:101
+msgid ""
+"The ``end`` node is an optional parameter, you can just leave it out if you "
+"want a loop where the ``start`` is the depot and the route returns back to "
+"the depot. If you include the ``end`` parameter, we optimize the path from "
+"``start`` to ``end`` and minimize the distance of the route while include "
+"the remaining points."
+msgstr ""
+
+# 54fe8b12dd0c404eaff8703ee157a665
+#: ../../../src/tsp/doc/index.rst:103
+msgid ""
+"The distance matrix is a multidimensional `PostgreSQL array type "
+"<http://www.postgresql.org/docs/9.1/static/arrays.html>`_ that must be ``N x"
+" N`` in size."
+msgstr ""
+
+# 9c772d429bf64327bb2a5fc9d2cf2cd6
+#: ../../../src/tsp/doc/index.rst:105
+msgid "The result will be N records of ``[ seq, id ]``:"
+msgstr ""
+
+# 0829c13c25474d8eba03f7089c06cca0
+#: ../../../src/tsp/doc/index.rst:108
+msgid "index into the matrix"
+msgstr ""
+
+# 55ae013678ea4628b6a74cb8c7d9ebb8
+#: ../../../src/tsp/doc/index.rst:112
+msgid "Footnotes"
+msgstr ""
+
+# 2bdc3ac2513a48b69c216c1464e3e622
+#: ../../../src/tsp/doc/index.rst:113
+msgid ""
+"There was some thought given to pre-calculating the driving distances "
+"between the nodes using Dijkstra, but then I read a paper (unfortunately I "
+"don't remember who wrote it), where it was proved that the quality of TSP "
+"with euclidean distance is only slightly worse than one with real distance "
+"in case of normal city layout. In case of very sparse network or rivers and "
+"bridges it becomes more inaccurate, but still wholly satisfactory. Of course"
+" it is nice to have exact solution, but this is a compromise between quality"
+" and speed (and development time also). If you need a more accurate "
+"solution, you can generate a distance matrix and use that form of the "
+"function to get your results."
+msgstr ""
+
+# e607f027f0dc40ba90c3c9dc3c94b167
+#: ../../../src/tsp/doc/index.rst:117
+msgid "History"
+msgstr "履歴"
+
+# 9e786a4bdd9743988df71b5173896982
+#: ../../../src/tsp/doc/index.rst:118
+msgid "Renamed in version 2.0.0"
+msgstr "バージョン 2.0.0 でリネームされました"
+
+# 112025fef569430bbf44dda14d143884
+#: ../../../src/tsp/doc/index.rst:119
+msgid "GAUL dependency removed in version 2.0.0"
+msgstr ""
+
+# ba6d7a2a8f3c42ee9f025719bc579f32
+#: ../../../src/tsp/doc/index.rst:123
+msgid "Examples"
+msgstr "例"
+
+# bf153b9533de49bfa698d60726f3ade0
+#: ../../../src/tsp/doc/index.rst:125
+msgid ""
+"Using SQL parameter (all points from the table, atarting from 6 and ending "
+"at 5)"
+msgstr ""
+
+# 482c64d9b6894415b22f84d2fa0909e4
+#: ../../../src/tsp/doc/index.rst:150
+msgid "Using distance matrix (A loop starting from 1)"
+msgstr ""
+
+# e6108752b840492ca7e8d0a28addb0c8
+#: ../../../src/tsp/doc/index.rst:164
+msgid "Using distance matrix (Starting from 1, ending at 2)"
+msgstr ""
+
+# 533314c280fd46d1b6df534dddb688b9
+#: ../../../src/tsp/doc/index.rst:178
+msgid "The queries use the :ref:`sampledata` network."
+msgstr "上記クエリは :ref:`sampledata` のネットワークを使用しています。"
+
+# 6ac74ec519654bd5a98343ebbbe805f2
+#: ../../../src/tsp/doc/index.rst:182
+msgid "See Also"
+msgstr "参照"
+
+# 70a4cb51147c4a77955b3d3cf3a12505
+#: ../../../src/tsp/doc/index.rst:184
+msgid ":ref:`type_cost_result`"
+msgstr ":ref:`type_cost_result`"
+
+# 832c1e777ee74c2ea64c6a94a083058b
+#: ../../../src/tsp/doc/index.rst:185
+msgid "http://en.wikipedia.org/wiki/Traveling_salesman_problem"
+msgstr ""
+
+# 78088fad5d074132aa4afeefdb2d1964
+#: ../../../src/tsp/doc/index.rst:186
+msgid "http://en.wikipedia.org/wiki/Simulated_annealing"
+msgstr ""
