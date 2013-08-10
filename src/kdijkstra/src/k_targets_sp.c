@@ -31,18 +31,27 @@
 
 #include "k_targets_sp.h"
 
-Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS);
-Datum onetomany_dijkstra_path(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum onetomany_dijkstra_path(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
 
+#ifndef _MSC_VER
 #ifdef DEBUG
 #define DBG(format, arg...)                     \
     elog(NOTICE, format , ## arg)
 #else
 #define DBG(format, arg...) do { ; } while (0)
 #endif
+#else // _MSC_VER
+#ifdef DEBUG
+#define DBG(format, ...) \
+  pgr_dbg(format, ##__VA_ARGS__)
+#else
+#define DBG(format, ...) do { ; } while (0)
+#endif
+#endif // _MSC_VER
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
@@ -198,7 +207,7 @@ static void fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc, edge_columns_t *edg
 
 
 static int tomanysp_dijkstra_dist(char* sql, int start_vertex, 
-         int *end_vertices, int nb_targets, bool directed, 
+         int *end_vertices, int nb_targets, int **t_count, bool directed, 
          bool has_reverse_cost, 
 #ifdef PGR_MERGE
          pgr_cost_t **dists,
@@ -215,21 +224,24 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
     int ntuples;
     edge_t *edges = NULL;
     int total_tuples = 0;
+#ifndef _MSC_VER
     edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
                                    .cost= -1, .reverse_cost= -1};
+#else // _MSC_VER
+    edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
+#endif // _MSC_VER
     int v_max_id=0;
     int v_min_id=INT_MAX;
 
     int sumFoundTargets = 0, numTarget;
 
     int s_count = 0;
-    int t_count[nb_targets];
-    for (numTarget = 0; numTarget < nb_targets; numTarget++)
-        t_count[numTarget] = 0;
-
     char *err_msg;
     int ret = -1;
     register int z;
+
+    for (numTarget = 0; numTarget < nb_targets; numTarget++)
+        (*t_count)[numTarget] = 0;
 
 
     DBG("start shortest_path\n");
@@ -319,7 +331,7 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
 
 
     for (numTarget = 0; numTarget < nb_targets; numTarget ++) {
-        t_count[numTarget] = 0;
+        (*t_count)[numTarget] = 0;
     }
 
     for(z=0; z<total_tuples; z++) {
@@ -329,7 +341,7 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
         for (numTarget = 0; numTarget < nb_targets; numTarget++) {
             if (edges[z].source == end_vertices[numTarget] ||
                     edges[z].target == end_vertices[numTarget]) {
-                ++t_count[numTarget];
+                ++((*t_count)[numTarget]);
                 ++sumFoundTargets;    
             }
         }
@@ -346,7 +358,7 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
     }
 
     for (numTarget = 0; numTarget < nb_targets; numTarget++) {
-        if(t_count[numTarget] == 0) {
+        if((*t_count)[numTarget] == 0) {
             elog(ERROR, "One of the target vertices was not found or several targets are the same.");
         }
     }
@@ -398,7 +410,7 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
 
 PG_FUNCTION_INFO_V1(onetomany_dijkstra_dist);
 
-Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
+PGDLLEXPORT Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
 {
 
     FuncCallContext     *funcctx;
@@ -426,6 +438,8 @@ Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
         MemoryContext   oldcontext;
         int path_count = 0;
         int ret;
+        int nb_targets;
+        int *t_count;
 
         DBG("source_ID = %d \n", source_ID);   
         DBG("There may be %d targets : \n", myTargets[4]);
@@ -438,8 +452,10 @@ Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
         /* switch to memory context appropriate for multiple function calls */
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
+        nb_targets = myTargets[4];
+        t_count = (int *)malloc(nb_targets * sizeof(int));
         ret = tomanysp_dijkstra_dist(sql, source_ID, &(myTargets[6]),
-                myTargets[4], PG_GETARG_BOOL(3), PG_GETARG_BOOL(4),
+                nb_targets, &t_count, PG_GETARG_BOOL(3), PG_GETARG_BOOL(4),
                 &dist, &path_count);
 
         if (ret) {
@@ -457,6 +473,7 @@ Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
         funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("dist_result"));
 #endif
 
+        free(t_count);
         MemoryContextSwitchTo(oldcontext);
     }
 
@@ -533,7 +550,7 @@ Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
 }
 
 static int tomanysp_dijkstra_ways(char* sql, int start_vertex, 
-                int *end_vertices, int nb_targets, bool directed, 
+                int *end_vertices, int nb_targets, int **t_count, bool directed, 
                 bool has_reverse_cost, 
 #ifdef PGR_MERGE
                 pgr_cost3_t **distpaths,
@@ -549,15 +566,18 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
     int ntuples;
     edge_t *edges = NULL;
     int total_tuples = 0;
+#ifndef _MSC_VER
     edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
                                    .cost= -1, .reverse_cost= -1};
+#else // _MSC_VER
+    edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
+#endif // _MSC_VER
     int v_max_id=0;
     int v_min_id=INT_MAX;
 
     int sumFoundTargets = 0, numTarget;
 
     int s_count = 0;
-    int t_count[nb_targets];
 
     int pcount = 0;
 
@@ -566,7 +586,7 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
     register int z;
 
     for (numTarget = 0; numTarget < nb_targets; numTarget++)
-        t_count[numTarget] = 0;
+        (*t_count)[numTarget] = 0;
 
     SPIcode = SPI_connect();
     if (SPIcode  != SPI_OK_CONNECT) {
@@ -651,7 +671,7 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
 
 
     for (numTarget = 0; numTarget < nb_targets; numTarget ++){
-        t_count[numTarget] = 0;
+        (*t_count)[numTarget] = 0;
     }
 
     for(z=0; z<total_tuples; z++) {
@@ -660,7 +680,7 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
             ++s_count;
         for (numTarget = 0; numTarget < nb_targets; numTarget++) {
             if(edges[z].source == end_vertices[numTarget] || edges[z].target == end_vertices[numTarget]) {
-                ++t_count[numTarget];
+                ++((*t_count)[numTarget]);
                 ++sumFoundTargets;    
             }
         }
@@ -677,7 +697,7 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
     }
 
     for (numTarget = 0; numTarget < nb_targets; numTarget++)
-        if(t_count[numTarget] == 0) {
+        if((*t_count)[numTarget] == 0) {
             elog(ERROR, "One of the target vertices was not found or several targets are the same.");
         }
 
@@ -741,7 +761,7 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
 
 PG_FUNCTION_INFO_V1(onetomany_dijkstra_path);
 
-Datum
+PGDLLEXPORT Datum
 onetomany_dijkstra_path(PG_FUNCTION_ARGS)
 {
 
@@ -771,6 +791,8 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
         MemoryContext   oldcontext;
         int path_count = 0;
         int ret;
+        int nb_targets;
+        int *t_count;
 
 
         DBG("source_ID = %d \n", source_ID);   
@@ -784,8 +806,10 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
         /* switch to memory context appropriate for multiple function calls */
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
+        nb_targets = myTargets[4];
+        t_count = (int *)malloc(nb_targets * sizeof(int));
         ret = tomanysp_dijkstra_ways(sql, source_ID, &(myTargets[6]),
-                myTargets[4], PG_GETARG_BOOL(3),
+                nb_targets, &t_count, PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4), &path_res, &path_count);
 
         if (ret) {
@@ -804,6 +828,7 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
         funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("concatpath_result"));
 #endif
 
+        free(t_count);
         MemoryContextSwitchTo(oldcontext);
 
     }

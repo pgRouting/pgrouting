@@ -74,17 +74,26 @@ long profipts1, profipts2, profopts;
 #endif // PROFILE
 
 
-Datum alphashape(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum alphashape(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
 
+#ifndef _MSC_VER
 #ifdef DEBUG
 #define DBG(format, arg...)                     \
     elog(NOTICE, format , ## arg)
 #else
 #define DBG(format, arg...) do { ; } while (0)
 #endif
+#else // _MSC_VER
+#ifdef DEBUG
+#define DBG(format, ...) \
+  pgr_dbg(format, ##__VA_ARGS__)
+#else
+#define DBG(format, ...) do { ; } while (0)
+#endif
+#endif // _MSC_VER
     
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
@@ -179,7 +188,11 @@ static int compute_alpha_shape(char* sql, vertex_t **res, int *res_count)
   int ntuples;
   vertex_t *vertices = NULL;
   int total_tuples = 0;
+#ifndef _MSC_VER
   vertex_columns_t vertex_columns = {.id= -1, .x= -1, .y= -1};
+#else // _MSC_VER
+  vertex_columns_t vertex_columns = {-1, -1, -1};
+#endif // _MSC_VER
   char *err_msg;
   int ret = -1;
 
@@ -289,7 +302,7 @@ static int compute_alpha_shape(char* sql, vertex_t **res, int *res_count)
 
 PG_FUNCTION_INFO_V1(alphashape);
 
-Datum alphashape(PG_FUNCTION_ARGS)
+PGDLLEXPORT Datum alphashape(PG_FUNCTION_ARGS)
 {
   FuncCallContext      *funcctx;
   int                  call_cntr;

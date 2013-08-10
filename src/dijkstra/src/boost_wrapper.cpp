@@ -52,7 +52,7 @@ graph_add_edge(G &graph, E &e, int id, int source, int target, float8 cost)
   if (cost < 0) // edges are not inserted in the graph if cost is negative
     return;
 
-  tie(e, inserted) = add_edge(source, target, graph);
+  boost::tie(e, inserted) = add_edge(source, target, graph);
 
   graph[e].cost = cost;
   graph[e].id = id;
@@ -182,7 +182,7 @@ try {
         double cost = 99999999.9;
         int edge_id = 0;
 
-        for (tie(out_i, out_end) = out_edges(v_src, graph); 
+        for (boost::tie(out_i, out_end) = out_edges(v_src, graph); 
              out_i != out_end; ++out_i)
         {
             graph_traits < graph_t >::vertex_descriptor v, targ;

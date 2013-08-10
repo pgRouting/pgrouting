@@ -56,5 +56,8 @@ int bidirsp_wrapper( edge_t *edges,
             int *path_count, 
             char **err_msg
             );
+#ifdef _MSC_VER
+void pgr_dbg(const char* format, ...);
+#endif // _MSC_VER
 
 #endif

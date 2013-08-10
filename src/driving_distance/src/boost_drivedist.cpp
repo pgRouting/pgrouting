@@ -36,6 +36,7 @@ using namespace boost;
 #undef DEBUG
 //#define DEBUG
 
+#ifndef _MSC_VER
 #ifdef DEBUG
 #include <stdio.h>
 static FILE *dbg;
@@ -46,6 +47,14 @@ static FILE *dbg;
 #else
 #define DBG(format, arg...) do { ; } while (0)
 #endif
+#else // _MSC_VER
+#ifdef DEBUG
+#define DBG(format, ...) \
+  pgr_dbg(format, ##__VA_ARGS__)
+#else
+#define DBG(format, ...) do { ; } while (0)
+#endif
+#endif // _MSC_VER
 
 
 // Maximal number of nodes in the path (to avoid infinite loops)
@@ -74,7 +83,7 @@ graph_add_edge(G &graph, int id, int source, int target, float8 cost)
     return;
   
   DBG("Calling add_edge id: %d\n", id);
-  tie(e, inserted) = add_edge(source, target, graph);
+  boost::tie(e, inserted) = add_edge(source, target, graph);
   
   graph[e].cost = cost;
   graph[e].id = id;
@@ -156,7 +165,7 @@ try {
   vector<path_element> path_vector;
   int j=0;
   
-  for(tie(vi, vend) = vertices(graph); vi != vend; vi++) {
+  for(boost::tie(vi, vend) = vertices(graph); vi != vend; vi++) {
                 
     if( (double)distances[*vi] <= rdistance ) {
       

@@ -9,18 +9,27 @@
 #include "fmgr.h"
 #include "trsp.h"
 
-Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
-Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
 
+#ifndef _MSC_VER
 #ifdef DEBUG
 #define DBG(format, arg...)                     \
     elog(NOTICE, format , ## arg)
 #else
 #define DBG(format, arg...) do { ; } while (0)
 #endif
+#else // _MSC_VER
+#ifdef DEBUG
+#define DBG(format, ...) \
+  pgr_dbg(format, ##__VA_ARGS__)
+#else
+#define DBG(format, ...) do { ; } while (0)
+#endif
+#endif // _MSC_VER
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
@@ -218,6 +227,7 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
   Datum binval;
   bool isnull;
   int t;
+  char *str;
 
   for(t=0; t<MAX_RULE_LENGTH;++t)
     rest->via[t] = -1;
@@ -231,7 +241,7 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
   if (isnull)
     elog(ERROR, "to_cost contains a null value");
   rest->to_cost = DatumGetFloat8(binval);
-  char *str = DatumGetCString(SPI_getvalue(*tuple, *tupdesc, restrict_columns->via_path));
+  str = DatumGetCString(SPI_getvalue(*tuple, *tupdesc, restrict_columns->via_path));
 
   //DBG("restriction: %f, %i, %s", rest->to_cost, rest->target_id, str);
 
@@ -276,13 +286,22 @@ static int compute_trsp(
 
   edge_t *edges = NULL;
   int total_tuples = 0;
+#ifndef _MSC_VER
   edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
                                  .cost= -1, .reverse_cost= -1};
+#else // _MSC_VER
+  edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
+#endif // _MSC_VER
 
   restrict_t *restricts = NULL;
   int total_restrict_tuples = 0;
+#ifndef _MSC_VER
   restrict_columns_t restrict_columns = {.target_id= -1, .via_path= -1,
                                  .to_cost= -1};
+#else // _MSC_VER
+  restrict_columns_t restrict_columns = {-1, -1, -1};
+#endif // _MSC_VER
+
   int v_max_id=0;
   int v_min_id=INT_MAX;
 
@@ -335,6 +354,10 @@ static int compute_trsp(
       total_tuples += ntuples;
 
       if (ntuples > 0) {
+          int t;
+          SPITupleTable *tuptable;
+          TupleDesc tupdesc;
+
           if (!edges)
             edges = palloc(total_tuples * sizeof(edge_t));
           else
@@ -345,9 +368,8 @@ static int compute_trsp(
               return finish(SPIcode, ret);	  
           }
 
-          int t;
-          SPITupleTable *tuptable = SPI_tuptable;
-          TupleDesc tupdesc = SPI_tuptable->tupdesc;
+          tuptable = SPI_tuptable;
+          tupdesc = SPI_tuptable->tupdesc;
                 
           for (t = 0; t < ntuples; t++) {
               //if (t%100 == 0) { DBG("    t: %i", t); }
@@ -463,6 +485,10 @@ static int compute_trsp(
           //DBG("Reading Restrictions: %i", total_restrict_tuples);
 
           if (ntuples > 0) {
+              int t;
+              SPITupleTable *tuptable;
+              TupleDesc tupdesc;
+
               if (!restricts)
                 restricts = palloc(total_restrict_tuples * sizeof(restrict_t));
               else
@@ -473,9 +499,8 @@ static int compute_trsp(
                   return finish(SPIcode, ret);
               }
 
-              int t;
-              SPITupleTable *tuptable = SPI_tuptable;
-              TupleDesc tupdesc = SPI_tuptable->tupdesc;
+              tuptable = SPI_tuptable;
+              tupdesc = SPI_tuptable->tupdesc;
 
               for (t = 0; t < ntuples; t++) {
                   HeapTuple tuple = tuptable->vals[t];
@@ -549,7 +574,7 @@ static int compute_trsp(
 
 
 PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
-Datum
+PGDLLEXPORT Datum
 turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 {
 	
@@ -674,7 +699,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 }
 
 PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_edge);
-Datum
+PGDLLEXPORT Datum
 turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 {
 	

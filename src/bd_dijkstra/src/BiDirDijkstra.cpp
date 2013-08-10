@@ -32,6 +32,7 @@
 #undef DEBUG
 //#define DEBUG
 
+#ifndef _MSC_VER
 #ifdef DEBUG
 #include <stdio.h>
 static FILE *dbg;
@@ -42,6 +43,14 @@ static FILE *dbg;
 #else
 #define DBG(format, arg...) do { ; } while (0)
 #endif
+#else // _MSC_VER
+#ifdef DEBUG
+#define DBG(format, ...) \
+  pgr_dbg(format, ##__VA_ARGS__)
+#else
+#define DBG(format, ...) do { ; } while (0)
+#endif
+#endif // _MSC_VER
 
 
 BiDirDijkstra::BiDirDijkstra(void)

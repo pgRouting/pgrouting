@@ -1,0 +1,57 @@
+=============================================================
+Build pgRouting for Windows with Microsoft Visual Studio 2010
+=============================================================
+
+Build environment assumes "Windows 7 64bit".
+
+CMake
+-------------------------------------------------------------
+ Use latest version(2.8.11) (win32 binary package)
+ 
+ http://www.cmake.org/files/v2.8/cmake-2.8.11.2-win32-x86.exe
+ 
+ Run the installer, and select 'Add CMake to the system PATH for xxx'.
+
+
+Boost
+-------------------------------------------------------------
+ Use latest version(1.54.0)
+ 
+ http://downloads.sourceforge.net/project/boost/boost/1.54.0/boost_1_54_0.zip
+ 
+ >bootstrap.bat
+ >b2 toolset=msvc-10.0 address-model=32 link=static threading=multi --with-thread --with-system --prefix=c:\build\local\msvc100\x86 install
+
+
+MPIR & MFPR
+-------------------------------------------------------------
+ TODO:
+
+CGAL
+-------------------------------------------------------------
+ Use latest version(4.2)
+ 
+ >mkdir build\msvc100\x86
+ >cd build\msvc100\x86
+ >cmake -G"Visual Studio 10" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=c:\build\local\msvc100\x86 -DBoost_USE_MULTITHREADED=ON -DCGAL_Boost_USE_STATIC_LIBS=ON -DBoost_USE_STATIC_RUNTIME=OFF -DBoost_INCLUDE_DIR:PATH=c:/build/local/msvc100/x86/include/boost-1_54 -DBOOST_LIBRARYDIR=c:/build/local/msvc100/x86/lib -DGMP_INCLUDE_DIR=c:/build/local/msvc100/x86/include -DGMP_LIBRARIES=c:/build/local/msvc100/x86/lib/mpir.lib -DMPFR_INCLUDE_DIR=c:/build/local/msvc100/x86/include -DMPFR_LIBRARIES=c:/build/local/msvc100/x86/lib/mpfr.lib -DWITH_CGAL_QT3=OFF -DWITH_CGAL_QT4=OFF ..\..\..\
+ 
+ Open "build\msvc100\x86\CGAL.sln" and build with "Release|Win32".
+
+PostgreSQL
+-------------------------------------------------------------
+ Use latest version(9.2.4)
+ 
+ http://www.enterprisedb.com/postgresql-924-installers-win32?ls=Crossover&type=Crossover
+ 
+ Run the installer, and install PostGIS(2.x) from Stack Builder.
+
+
+pgRouting
+-------------------------------------------------------------
+
+ >mkdir build\msvc100\x86
+ >cd build\msvc100\x86
+ >cmake -G"Visual Studio 10" -DPOSTGRESQL_INCLUDE_DIR:PATH="c:\PROGRA~2\PostgreSQL\9.2\include;c:\PROGRA~2\PostgreSQL\9.2\include\server;c:\PROGRA~2\PostgreSQL\9.2\include\server;c:\PROGRA~2\PostgreSQL\9.2\include\server\port;c:\PROGRA~2\PostgreSQL\9.2\include\server\port\win32;c:\PROGRA~2\PostgreSQL\9.2\include\server\port\win32_msvc" -DPOSTGRESQL_LIBRARIES:FILEPATH=c:\PROGRA~2\PostgreSQL\9.2\lib\postgres.lib -DPOSTGRESQL_EXECUTABLE:FILEPATH=c:\PROGRA~2\PostgreSQL\9.2\bin\postgres.exe -DPOSTGRESQL_PG_CONFIG:FILEPATH=c:\PROGRA~2\PostgreSQL\9.2\bin\pg_config.exe -DBoost_INCLUDE_DIR:PATH=c:\build\local\msvc100\x86\include\boost-1_54 -DBOOST_THREAD_LIBRARIES:FILEPATH="c:\build\local\msvc100\x86\lib\libboost_thread-vc100-mt-1_54.lib;c:\build\local\msvc100\x86\lib\libboost_system-vc100-mt-1_54.lib" -DCGAL_INCLUDE_DIR:PATH=c:\build\local\msvc100\x86\include -DCGAL_LIBRARIES:FILEPATH=c:\build\local\msvc100\x86\lib\libCGAL-vc100-mt-4.2.lib -DGMP_INCLUDE_DIR:PATH=c:\build\local\msvc100\x86\include -DGMP_LIBRARIES:FILEPATH=c:\build\local\msvc100\x86\lib\mpir.lib -DWITH_DD=ON ..\..\..\
+ 
+ Open "build\msvc100\x86\PGROUTING.sln" and build with "Release|Win32".
+
