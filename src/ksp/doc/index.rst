@@ -59,7 +59,7 @@ Returns set of :ref:`type_cost_result`:
 :seq:   sequence for ordering the results
 :id1:   route ID
 :id2:   node ID
-:id3:   edge ID (``0`` for the last row)
+:id3:   edge ID (``-1`` for the last row)
 :cost:  cost to traverse from ``id2`` using ``id3``
 
 KSP code base taken from http://code.google.com/p/k-shortest-paths/source.
@@ -88,11 +88,11 @@ Examples
        0 |     0 |    7 |    8 |    1
        1 |     0 |    8 |    9 |    1
        2 |     0 |    9 |   15 |    1
-       3 |     0 |   12 |    0 |    0
+       3 |     0 |   12 |   -1 |    0
        4 |     1 |    7 |    8 |    1
        5 |     1 |    8 |   11 |    1
        6 |     1 |   11 |   13 |    1
-       7 |     1 |   12 |    0 |    0
+       7 |     1 |   12 |   -1 |    0
     (8 rows)
 
 
@@ -111,11 +111,11 @@ Examples
        0 |     0 |    7 |   10 |    1
        1 |     0 |   10 |   12 |    1
        2 |     0 |   11 |   13 |    1
-       3 |     0 |   12 |    0 |    0
+       3 |     0 |   12 |   -1 |    0
        4 |     1 |    7 |    8 |    1
        5 |     1 |    8 |    9 |    1
        6 |     1 |    9 |   15 |    1
-       7 |     1 |   12 |    0 |    0
+       7 |     1 |   12 |   -1 |    0
     (8 rows)
 
 
