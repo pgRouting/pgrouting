@@ -432,20 +432,30 @@ try {
             graph_traits < graph_t >::edge_descriptor e;
             graph_traits < graph_t >::out_edge_iterator out_i, out_end;
 
-            if (i == 0) continue;
-
             v_src = path_vect[numTarget].at(i);
+
+            if (i == 0) {
+                (*pathdists)[seq].seq = seq;
+                (*pathdists)[seq].id1 = id1;
+                (*pathdists)[seq].id2 = v_src;
+                (*pathdists)[seq].id3 = -1;
+                (*pathdists)[seq].cost = 0.0;
+                seq++;
+                continue;
+            }
+
             v_targ = path_vect[numTarget].at(i - 1);
 
             for (tie(out_i, out_end) = out_edges(v_src, graph); out_i != out_end; ++out_i) {
-                graph_traits < graph_t >::vertex_descriptor v, targ;
+                graph_traits < graph_t >::vertex_descriptor src, targ;
                 e = *out_i;
+                src = source(e, graph);
                 targ = target(e, graph);
 
                 if (targ == v_targ) {
                     (*pathdists)[seq].seq = seq;
                     (*pathdists)[seq].id1 = id1;
-                    (*pathdists)[seq].id2 = targ;
+                    (*pathdists)[seq].id2 = src;
                     (*pathdists)[seq].id3 = graph[*out_i].id; 
                     (*pathdists)[seq].cost = graph[*out_i].cost;
                     seq++;
