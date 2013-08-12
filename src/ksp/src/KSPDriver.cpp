@@ -95,7 +95,7 @@ static ksp_path_element_t* dpPrint(KSPGraph *theGraph,BasePath *thePath, ksp_pat
 		BaseVertex  bv= *thePath->GetVertex(i);
 		path[*path_count].route_id= cnt;
 		path[*path_count].cost= 0.0;
-		path[*path_count].edge_id= 0;
+		path[*path_count].edge_id= -1;
 		path[*path_count].vertex_id= bv.getID();
 		if((i+1 )< thePath->length()){
 			BaseVertex  destbv= *thePath->GetVertex(i+1);
