@@ -72,8 +72,8 @@ Description
 
 :seq:   row sequence
 :id1:   path target id (identifies the target path).
-:id2:   path edge target node id
-:id3:   path edge id
+:id2:   path edge source node id
+:id3:   path edge id (``-1`` for the last row)
 :cost:  cost to traverse this edge or -1.0 if there is no path to this target
 
 
@@ -110,13 +110,15 @@ Examples
 
      seq | path | node | edge | cost
     -----+------+------+------+------
-       0 |    4 |   11 |   12 |    1
-       1 |    4 |   12 |   13 |    1
-       2 |    4 |    9 |   15 |    1
-       3 |    4 |    4 |   16 |    1
-       4 |   12 |   11 |   12 |    1
-       5 |   12 |   12 |   13 |    1
-    (6 rows)
+       0 |    4 |   10 |   12 |    1
+       1 |    4 |   11 |   13 |    1
+       2 |    4 |   12 |   15 |    1
+       3 |    4 |    9 |   16 |    1
+       4 |    4 |    4 |   -1 |    0
+       5 |   12 |   10 |   12 |    1
+       6 |   12 |   11 |   13 |    1
+       7 |   12 |   12 |   -1 |    0
+    (8 rows)
 
 * Returning a ``path`` result
 
