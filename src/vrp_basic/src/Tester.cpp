@@ -171,6 +171,55 @@ void loadDistanceMatrix()
 	fclose(fp);		
 }
 
+// Print the solution to a file.
+// TODO: Currently prints on a fixed file. Later the file name will be taken as a command line argument
+
+bool print_solution(std::string strError)
+{
+	FILE *fp = fopen("result.txt", "wt");
+	if(fp == NULL)
+	{
+		strError = "Could not open file";
+		return false;
+	}
+	CSolutionInfo solution;
+	bool bOK = solver.getSolution(solution, strError);
+	if(bOK == false)
+		return false;
+
+	int totalRoute = solution.getTourInfoVector().size();
+	CTourInfo ctour;
+
+	fprintf(fp, "Total Number of Route: %d\n", totalRoute);
+	fprintf(fp, "Total Cost: %.3lf\n", solution.getTotalCost());
+	fprintf(fp, "Total Distance: %.3lf\n", solution.getTotalDistance());
+	fprintf(fp, "Total TravelTime: %.3lf\n", solution.getTotalTravelTime());
+
+	for(int i = 0; i < totalRoute; i++)
+	{
+		ctour = solution.getTour(i);
+		fprintf(fp, "Route No. %d: \n", i + 1);
+		fprintf(fp, "Vehicle Id: %d\n", ctour.getVehicleId());
+		fprintf(fp, "Starting Depot Id: %d\n", ctour.getStartDepot());
+		fprintf(fp, "End Depot Id: %d\n", ctour.getEndDepot());
+
+		std::vector<int> vecOrder = ctour.getOrderVector();
+		int totalOrder = vecOrder.size();
+		fprintf(fp, "Visited Order Ids: ");
+		for(int j = 0; j < totalOrder; j++)
+		{
+			if(j > 0)
+				fprintf(fp, " ");
+			fprintf(fp, "%d", vecOrder[j]);
+			if(j < totalOrder - 1)
+				fprintf(fp, ",");
+		}
+	}
+
+	fclose(fp);
+	return true;
+}
+
 int main()
 {
 	loadOrders();
@@ -186,7 +235,7 @@ int main()
 	}
 	else
 	{
-		print_solution();
+		print_solution(strError);
 	}
 
 
