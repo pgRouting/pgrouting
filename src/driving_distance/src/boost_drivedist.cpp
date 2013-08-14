@@ -41,8 +41,10 @@ using namespace boost;
 static FILE *dbg;
 #define DBG(format, arg...) \
     dbg = fopen("/tmp/sew-debug", "a"); \
-    fprintf(dbg, format,  ## arg); \
-    fclose(dbg);
+    if (dbg) { \
+        fprintf(dbg, format,  ## arg); \
+        fclose(dbg); \
+    }
 #else
 #define DBG(format, arg...) do { ; } while (0)
 #endif
