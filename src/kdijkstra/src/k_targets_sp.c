@@ -22,6 +22,7 @@
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
+#include "utils/array.h"
 #include "catalog/pg_type.h"
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
@@ -87,6 +88,95 @@ static char * text2char(text *in)
   memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
   out[VARSIZE(in) - VARHDRSZ] = '\0';
   return out;
+}
+
+#define DTYPE int
+
+static DTYPE *get_pgarray(int *num, ArrayType *input)
+{
+    int         ndims, *dims, *lbs;
+    bool       *nulls;
+    Oid         i_eltype;
+    int16       i_typlen;
+    bool        i_typbyval;
+    char        i_typalign;
+    Datum      *i_data;
+    int         i, n;
+    DTYPE      *data;
+
+    /* get input array element type */
+    i_eltype = ARR_ELEMTYPE(input);
+    get_typlenbyvalalign(i_eltype, &i_typlen, &i_typbyval, &i_typalign);
+
+
+    /* validate input data type */
+    switch(i_eltype){
+    case INT2OID:
+    case INT4OID:
+    case FLOAT4OID:
+    case FLOAT8OID:
+            break;
+    default:
+            elog(ERROR, "target must be integer[]");
+            break;
+    }
+
+    /* get various pieces of data from the input array */
+    ndims = ARR_NDIM(input);
+    dims = ARR_DIMS(input);
+    lbs = ARR_LBOUND(input);
+
+    if (ndims != 1) {
+        elog(ERROR, "target must be integer[]");
+    }
+
+    /* get src data */
+    deconstruct_array(input, i_eltype, i_typlen, i_typbyval, i_typalign,
+&i_data, &nulls, &n);
+
+    DBG("get_pgarray: ndims=%d, n=%d", ndims, n);
+
+#ifdef DEBUG
+    for (i=0; i<ndims; i++) {
+        DBG("   dims[%d]=%d, lbs[%d]=%d", i, dims[i], i, lbs[i]);
+    }
+#endif
+
+    /* construct a C array */
+    data = (DTYPE *) palloc(n * sizeof(DTYPE));
+    if (!data) {
+        elog(ERROR, "Error: Out of memory!");
+    }
+
+    for (i=0; i<n; i++) {
+        if (nulls[i]) {
+            data[i] = -1;
+        }
+        else {
+            switch(i_eltype){
+                case INT2OID:
+                    data[i] = (DTYPE) DatumGetInt16(i_data[i]);
+                    break;
+                case INT4OID:
+                    data[i] = (DTYPE) DatumGetInt32(i_data[i]);
+                    break;
+                case FLOAT4OID:
+                    data[i] = (DTYPE) DatumGetFloat4(i_data[i]);
+                    break;
+                case FLOAT8OID:
+                    data[i] = (DTYPE) DatumGetFloat8(i_data[i]);
+                    break;
+            }
+        }
+        DBG("    data[%d]=%.4f", i, data[i]);
+    }
+
+    pfree(nulls);
+    pfree(i_data);
+
+    *num = dims[0];
+
+    return data;
 }
 
 
@@ -230,6 +320,7 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
     char *err_msg;
     int ret = -1;
     register int z;
+    int zcnt = 0;
 
 
     DBG("start shortest_path\n");
@@ -346,9 +437,11 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
     }
 
     for (numTarget = 0; numTarget < nb_targets; numTarget++) {
-        if(t_count[numTarget] == 0) {
-            elog(ERROR, "One of the target vertices was not found or several targets are the same.");
-        }
+        if(t_count[numTarget] == 0) zcnt++;
+        DBG("t_count[%d] = %d", end_vertices[numTarget], t_count[numTarget]);
+    }
+    if (zcnt > 0) {
+        elog(ERROR, "One of the target vertices was not found or several targets are the same.");
     }
 
     if(sumFoundTargets == 0 ) {
@@ -393,7 +486,17 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
     return finish(SPIcode, ret);
 }
 
-
+/*
+CREATE OR REPLACE FUNCTION pgr_kdijkstracost(
+    sql text,
+    source_vid integer,
+    target_vid integer array,
+    directed boolean,
+    has_reverse_cost boolean)
+RETURNS SETOF pgr_costResult
+AS '$libdir/librouting', 'onetomany_dijkstra_dist'
+LANGUAGE C IMMUTABLE STRICT;
+*/
 
 
 PG_FUNCTION_INFO_V1(onetomany_dijkstra_dist);
@@ -413,7 +516,6 @@ Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
 
     char * sql = text2char(PG_GETARG_TEXT_P(0));
     int source_ID = PG_GETARG_INT32(1);
-    int *myTargets = (int *)PG_GETARG_POINTER(2);
     int i;
 
     HeapTuple    tuple;
@@ -426,11 +528,10 @@ Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
         MemoryContext   oldcontext;
         int path_count = 0;
         int ret;
+        int num;
+        int *myTargets;
 
-        DBG("source_ID = %d \n", source_ID);   
-        DBG("There may be %d targets : \n", myTargets[4]);
-        for (i = 0; i < myTargets[4]; i++)
-            DBG("%d => %d\t", i+1, myTargets[6+i]);
+        DBG("source_ID = %d ", source_ID);   
 
         /* create a function context for cross-call persistence */
         funcctx = SRF_FIRSTCALL_INIT();
@@ -438,10 +539,17 @@ Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
         /* switch to memory context appropriate for multiple function calls */
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        ret = tomanysp_dijkstra_dist(sql, source_ID, &(myTargets[6]),
-                myTargets[4], PG_GETARG_BOOL(3), PG_GETARG_BOOL(4),
+        myTargets = get_pgarray(&num, PG_GETARG_ARRAYTYPE_P(2));
+
+        DBG("There are %d targets : \n", num);
+        for (i = 0; i < num; i++)
+            DBG("%d => %d\t", i+1, myTargets[i]);
+
+        ret = tomanysp_dijkstra_dist(sql, source_ID, myTargets,
+                num, PG_GETARG_BOOL(3), PG_GETARG_BOOL(4),
                 &dist, &path_count);
 
+        pfree(myTargets);
         if (ret) {
             elog(ERROR, "Error computing paths!");
         }
