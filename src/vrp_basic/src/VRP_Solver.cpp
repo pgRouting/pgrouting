@@ -1,7 +1,10 @@
 #include "VRP_Solver.h"
 
+#define DOUBLE_MAX 1e50
+
 CVehicleInfo::CVehicleInfo()
 {
+	m_iCurrentLoad = 0;
 }
 CVehicleInfo::~CVehicleInfo()
 {
@@ -117,7 +120,7 @@ CSolutionInfo CVRPSolver::generateInitialSolution()
 				removeOrder(PotentialInsert.second);
 			}
 		}
-		m_pInitialSolution.addTour(curTour);
+		initialSolution.addTour(curTour);
 	}
 	return initialSolution;
 }
@@ -199,7 +202,7 @@ std::pair<int,double> CVRPSolver::getPotentialInsert(CTourInfo& curTour, COrderI
 		}
 		else costFromOrder = getOrderToOrderCost( curOrder.getOrderId(), vecOrderId[i] );
 
-		dArrivalTime += curOrder->getServiceTime() + costFromOrder.traveltime;
+		dArrivalTime += curOrder.getServiceTime() + costFromOrder.traveltime;
 
 		if( i < vecOrderId.size() && dArrivalTime > m_vOrderInfos[vecOrderId[i]].getCloseTime())
 		{
@@ -217,7 +220,7 @@ std::pair<int,double> CVRPSolver::getPotentialInsert(CTourInfo& curTour, COrderI
 	return bestInsert;
 }
 
-void CVRPSolver::tabuSearch(CSolutionInfo curSolution)
+bool CVRPSolver::tabuSearch(CSolutionInfo& curSolution)
 {
 	m_bFoundOptimal = false;
 	updateFinalSolution(curSolution);
@@ -230,10 +233,11 @@ void CVRPSolver::tabuSearch(CSolutionInfo curSolution)
 	{
 		applyBestMoveInCurrentSolution(curSolution, identifyPotentialMove() );	
 		insertUnservedOrders(curSolution);
-		attemptFeasibleNodeExchange();
-		attempVehicleExchange();
+		attemptFeasibleNodeExchange(curSolution);
+		attempVehicleExchange(curSolution);
 		++numberOfSearch;
 	}
+	return true;
 }
 
 void CVRPSolver::applyBestMoveInCurrentSolution(CSolutionInfo& curSolution, CMoveInfo& bestMove)
@@ -243,7 +247,7 @@ void CVRPSolver::applyBestMoveInCurrentSolution(CSolutionInfo& curSolution, CMov
 
 	updateTabuCount(bestMove);
 
-	int totalTour = bestMove->getModifiedTourCount();
+	int totalTour = bestMove.getModifiedTourCount();
 	for(int i = 0;i<totalTour;++i)
 	{
 		curSolution.replaceTour( bestMove.getModifiedTourAt(i) );
@@ -270,7 +274,7 @@ void CVRPSolver::insertUnservedOrders(CSolutionInfo& curSolution)
 
 		for(int j = 0;j<totalTour;++j)
 		{
-			CTourInfo curTour = curSolution->getTour(j);
+			CTourInfo curTour = curSolution.getTour(j);
 			curMove.setInitialTour(curTour);
 
 			for(int i = 0;i<totalUnservedOrder;++i)
@@ -278,12 +282,12 @@ void CVRPSolver::insertUnservedOrders(CSolutionInfo& curSolution)
 				COrderInfo curOrder = m_vOrderInfos[curSolution.getUnservedOrderAt(i)];
 				std::pair<int,double> curInsert = curTour.getPotentialInsert( curOrder);
 
-				curTour.addOrder(curOrder,curInsert.first);
+				curTour.insertOrder(i,curInsert.first);
 				curMove.setModifiedTour(curTour);
 				curMove.getInitialTour(curTour);
 
 				//check if current move is tabu.
-				if( isTabuMove(pCurMove) )
+				if( isTabuMove(curMove) )
 				{
 					continue;
 				}
@@ -304,13 +308,12 @@ void CVRPSolver::insertUnservedOrders(CSolutionInfo& curSolution)
 
 			curSolution.addOrderAtTour(insertTourId,
 				PotentialInsert.first,
-				PotentialInsert.second));
+				PotentialInsert.second);
 
 			curMove.setModifiedTour(curSolution.getTour(insertTourId));
 			this->updateTabuCount(curMove);
-			this->evaluateCurrentSolution();
+			this->updateFinalSolution(curSolution);//this->evaluateCurrentSolution();
 		}
 	}
 	
 }
-

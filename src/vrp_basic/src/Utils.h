@@ -9,8 +9,6 @@
 
 
 
-
-typedef std::vector<long> LongVector;
 typedef std::vector<int> IntVector;
 typedef std::vector<double> DoubleVector;
 typedef std::vector<std::string> StringVector;

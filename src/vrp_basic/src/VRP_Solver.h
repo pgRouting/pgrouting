@@ -41,7 +41,7 @@ public:
 	bool unloadUnit(int lUnit);
 	
 	int getCapacity(){return m_iCapacity;}
-	void setCapacity(int capacity){m_iCapacity = capacity};}
+	void setCapacity(int capacity){m_iCapacity = capacity;}
 
 	int getId(){return m_iVehicleId;}
 	void setId(int id){m_iVehicleId = id;}
@@ -142,7 +142,7 @@ public:
 	CTourInfo();
 	~CTourInfo();
 	
-	init();
+	void init();
 
 	int getRemainingCapacity();
 	
@@ -153,14 +153,16 @@ public:
 	void setStartDepot(int depotId){m_iStartDepotId = depotId;}
 	
 	int getEndDepot(){return m_iEndDepotId;}
-	void setEndDepot(int depotId)(m_iEndDepotId = depotId;}
+	void setEndDepot(int depotId){m_iEndDepotId = depotId;}
 	
-	bool addCustomer(int customerId);
-	bool insertCustomer(int customerId, int pos);
+	bool addOrder(int orderId);
+	bool insertOrder(int orderId, int pos);
 	
 	std::vector<int> getOrderVector(){return m_viOrderIds;}
 
 	int getStartTime(int pos){return m_viStartTime[pos];}
+
+	std::pair<int,double> getPotentialInsert(COrderInfo curOrder);
 	
 	//CTourInfo( CTourInfo const& );
 	//CTourInfo& operator = (const CTourInfo& solution);
@@ -188,7 +190,7 @@ public:
 	
 	int getVehicleUsed(){return m_iVehicleUsed;}
 	int getOrderServed(){return m_iOrdersServed;}
-	int getVehicleUsed(){return m_iVehicleUsed;}
+	//int getVehicleUsed(){return m_iVehicleUsed;}
 	
 	bool addTour(CTourInfo& tour);
 	CTourInfo getTour(int pos){return m_vtourAll[pos];}
@@ -217,7 +219,7 @@ private:
 	double m_dTotalCost;
 	double m_dTotalDistance;
 	double m_dTotalTravelTime;
-}
+};
 
 class CMoveInfo
 {
@@ -283,19 +285,21 @@ public:
 	
 	bool solveVRP(std::string& strError);
 	
-	bool getSolution(CSolutionInfo *solution, std::string& strError);
+	bool getSolution(CSolutionInfo& solution, std::string& strError);
 	CSolutionInfo generateInitialSolution();
 	bool updateFinalSolution(CSolutionInfo& solutionInfo);
-	std::pair<int,double> getPotentialInsert(COrderInfo curOrder);
-	double getCostForInsert(CTourInfo& curTour, COrderInfo& curOrder, int pos);
+	std::pair<int,double> getPotentialInsert(CTourInfo& curTour, COrderInfo& curOrder);
+	CostPack getCostForInsert(CTourInfo& curTour, COrderInfo& curOrder, int pos);
 	bool tabuSearch(CSolutionInfo& solutionInfo);
 
-	void applyBestMoveInCurrentSolution(CSolutionInfo& solutionInfo, CMoveInfo bestMove );
+	void applyBestMoveInCurrentSolution(CSolutionInfo& solutionInfo, CMoveInfo& bestMove );
 	void insertUnservedOrders(CSolutionInfo& solutionInfo);
 	void attemptFeasibleNodeExchange(CSolutionInfo& solutionInfo);
 	void attempVehicleExchange(CSolutionInfo& solutionInfo);
 	CMoveInfo identifyPotentialMove();
 	void updateTabuCount(CMoveInfo& bestMove);
+
+	bool isTabuMove(CMoveInfo curMove);
 	
 
 private:
@@ -308,9 +312,9 @@ private:
 	std::map<int, int> m_mapVehicleIdToIndex;
 	std::map<int, int> m_mapDepotIdToIndex;
 	
-	std::map<pair<int, int>, CostPack> m_mapOrderToOrderCost;
-	std::map<pair<int, int>, CostPack> m_mapDepotToOrderrCost;
-	std::map<pair<int, int>, CostPack> m_mapOrderToDepotCost;
+	std::map<std::pair<int, int>, CostPack> m_mapOrderToOrderCost;
+	std::map<std::pair<int, int>, CostPack> m_mapDepotToOrderrCost;
+	std::map<std::pair<int, int>, CostPack> m_mapOrderToDepotCost;
 	
 	bool m_bIsSoultionReady;
 	CSolutionInfo m_solutionFinal;
@@ -322,7 +326,6 @@ private:
 	int m_iStepsSinceLastSolution;
 	bool m_bFoundOptimal;
 		
-}
+};
 
 #endif
-

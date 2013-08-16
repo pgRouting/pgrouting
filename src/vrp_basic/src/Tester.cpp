@@ -23,7 +23,7 @@ void loadOrders()
 		StringTokenizer tokenizer;
 		tokenizer.parse(buff, " ");
 		StringVector vecToken;
-		tokenizer.getToken(vecToken);
+		tokenizer.getTokens(vecToken);
 
 		if(vecToken.size() != 7)
 			continue;
@@ -72,7 +72,7 @@ void loadOrders()
 			order.setOrderUnit(demand);
 
 			int openTime = atoi(vecToken[4].c_str());
-			order.setOpenTime(openTime)
+			order.setOpenTime(openTime);
 
 			int closeTime = atoi(vecToken[5].c_str());
 			order.setCloseTime(closeTime);
@@ -106,7 +106,7 @@ void loadVehicles()
 		StringTokenizer tokenizer;
 		tokenizer.parse(buff, " ");
 		StringVector vecToken;
-		tokenizer.getToken(vecToken);
+		tokenizer.getTokens(vecToken);
 
 		if(vecToken.size() != 2)
 			continue;
@@ -133,7 +133,7 @@ void loadVehicles()
 // TODO: file names are hard coded, it should be changed to commandline argument.
 void loadDistanceMatrix()
 {
-	File *fp = fopen("Distance.txt", "rt");
+	FILE *fp = fopen("Distance.txt", "rt");
 	if(fp == NULL)
 	{
 		fprintf(stderr, "Cost file not found!\n");
@@ -147,7 +147,7 @@ void loadDistanceMatrix()
 		StringTokenizer tokenizer;
 		tokenizer.parse(buff, " ");
 		StringVector vecToken;
-		tokenizer.getToken(vecToken);
+		tokenizer.getTokens(vecToken);
 
 		if(vecToken.size() != 3)
 			continue;
@@ -158,7 +158,7 @@ void loadDistanceMatrix()
 		int fromId = atoi(vecToken[0].c_str());
 		int toId = atoi(vecToken[1].c_str());
 		CostPack cpack;
-		cpack.cost = cpack.distance = atof(vecToken[2]);
+		cpack.cost = cpack.distance = atof(vecToken[2].c_str());
 		cpack.traveltime = 1;
 		
 		if(fromId == 1)
@@ -231,7 +231,7 @@ int main()
 	
 	if(!bIsOK)
 	{
-		fprintf(strError, "Error Occurred: %s\n", strError.c_str());
+		fprintf(stderr, "Error Occurred: %s\n", strError.c_str());
 	}
 	else
 	{
