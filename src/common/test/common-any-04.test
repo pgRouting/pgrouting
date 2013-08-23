@@ -41,4 +41,4 @@ select * from noded2 order by gid;
 
 \echo '---------------------------------'
 
-select * from vertices_tmp order by id;
+select * from noded2_vertices_pgr  order by id;

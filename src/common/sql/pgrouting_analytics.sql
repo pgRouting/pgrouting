@@ -11,10 +11,14 @@ It has been contributed to pgRouting by iMaptools.com.
 
 */
 
-/*
-.. function:: pgr_analyzeGraph(edge_tab, geom_col, tol)
 
-   Analyzes the "edge_tab" and "vertices_tmp" tables and flags if
+CREATE OR REPLACE FUNCTION pgr_analyzegraph(edge_tab text, geom_col text, tol double precision,scol text default 'source',tcol text default 'target')
+RETURNS character varying AS
+$BODY$
+/*
+.. function:: pgr_analyzeGraph(edge_tab, geom_col, tol, scol,tcol)
+
+   Analyzes the "edge_tab" and "edge_tab_vertices_pgr" tables and flags if
    nodes are deadends, ie vertices_tmp.cnt=1 and identifies nodes
    that might be disconnected because of gaps < tol or because of
    zlevel errors in the data. For example:
@@ -25,105 +29,222 @@ It has been contributed to pgRouting by iMaptools.com.
 
    After the analyzing the graph, deadends are indentified by *cnt=1*
    in the "vertices_tmp" table and potential problems are identified
-   with *chk=1*.
+   with *chk=1*.  (Using 'source' and 'target' columns for analysis)
 
 .. code-block:: sql
 
        select * from vertices_tmp where chk = 1;
 
+HISOTRY
+:Author: Stephen Woodbridge <woodbri@swoodbridge.com>
+:Modified: 2013/08/20 by Vicky Vergara <vicky_vergara@hotmail.com>
+
+Makes more checks:
+   checks table edge_tab exists in the schema 
+   checks source and target columns exist in edge_tab
+   checks that source and target are completely populated i.e. do not have NULL values
+   checks table edge_tabVertices exist in the appropiate schema
+       if not, it creates it and populates it
+   checks 'cnt','chk' columns exist in  edge_tabVertices 
+       if not, it creates them
+   checks if 'id' column of edge_tabVertices is indexed 
+       if not, it creates the index
+   checks if 'source','target',geom_col columns of edge_tab are indexed 
+       if not, it creates their index     
+   populates cnt in edge_tabVertices  <--- changed the way it was processed, because on large tables took to long.
+					   For sure I am wrong doing this, but it gave me the same result as the original.
+   populates chk                      <--- added a notice for big tables, because it takes time
+           (edge_tab text, geom_col text, tol double precision)
 */
-CREATE OR REPLACE FUNCTION pgr_analyzeGraph(edge_tab text, geom_col text, tol double precision)
-  RETURNS character varying AS
-$BODY$
+
 DECLARE
     points record;
     seg record;
+    naming record;
     ecnt integer;
-
+    verticesTable text;
+    sname text;
+    tname text;
+    vname text;
+    sourcename text;
+    targetname text;
+    gname text;
+    cntname text;
+    chkname text;
+    tabName text;
+    flag boolean;
+    query text;
+    i integer;
+    tot integer;
 BEGIN
 
+   BEGIN
+    RAISE NOTICE 'Cheking % exists',edge_tab;
+    execute 'select * from pgr_getTableName('||quote_literal(edge_tab)||')' into naming;
+    sname=naming.sname;
+    tname=naming.tname;
+    IF sname IS NULL OR tname IS NULL THEN
+	RAISE EXCEPTION '% does not exist',edge_tab;
+    ELSE
+	RAISE NOTICE '  -----> OK';
+    END IF;
+    tabname=quote_ident(sname)||'.'||quote_ident(tname);
+    vname=tname||'_vertices_pgr';
+  END;  
+
+
+    BEGIN 
+       raise notice 'Checking "%", "%" and "%" columns are in % ',scol,tcol,geom_col,tabname;
+       execute 'select pgr_getColumnName('||quote_literal(sname||'.'||tname)||','||quote_literal(scol)||')' into sourcename;
+       execute 'select pgr_getColumnName('||quote_literal(sname||'.'||tname)||','||quote_literal(tcol)||')' into targetname;
+       execute 'select pgr_getColumnName('||quote_literal(sname||'.'||tname)||','||quote_literal(geom_col)||')' into gname;
+       
+       IF sourcename is not NULL and  targetname is not NULL and gname is not NULL then
+          BEGIN 
+                raise notice  '  ------>OK'; 
+                sourcename=quote_ident(sourcename);
+                targetname=quote_ident(targetname);
+                gname=quote_ident(gname);
+		raise notice 'checking that "%" and "%" are populated i.e. do not have NULL values',scol,tcol;
+		execute 'select count(*) from '||tabname||' where '||sourcename||' is NULL or '||targetname||' is NULL' into ecnt;
+		IF ecnt=0 then
+			raise notice  '  ------>OK'; 
+		ELSE
+			raise notice  '% records are going to be ignored',ecnt;
+		END IF;        END;    
+       ELSE 
+          raise exception  '  ------> "%" or "%" or % do not exist in %',scol,tcol,geom_col,tabname;
+       END IF;
+     END;
+
+  
+
     BEGIN
-        RAISE NOTICE 'Adding "cnt" column to vertices_tmp';
-        ALTER TABLE vertices_tmp ADD COLUMN cnt integer;
-    EXCEPTION
-        WHEN DUPLICATE_COLUMN THEN
-            UPDATE vertices_tmp SET cnt=NULL;
+      RAISE NOTICE 'Cheking "%" column in % is indexed',sourcename,tabname;
+      if (pgr_isColumnIndexed(tabname,sourcename)) then 
+	RAISE NOTICE '  ------>OK';
+      else 
+        RAISE NOTICE ' ------> Adding  index "%_%_idx".',tabname,sourcename;
+        execute 'create  index '||tname||'_'||sourcename||'_idx on '||tabname||' using btree('||sourcename||')';
+      END IF;
     END;
 
     BEGIN
-        RAISE NOTICE 'Adding "chk" column to vertices_tmp';
-        ALTER TABLE vertices_tmp ADD COLUMN chk integer;
-    EXCEPTION
-        WHEN DUPLICATE_COLUMN THEN
-            UPDATE vertices_tmp SET chk=NULL;
+      RAISE NOTICE 'Cheking "%" column in % is indexed',targetname,tabname;
+      if (pgr_isColumnIndexed(tabname,targetname)) then 
+	RAISE NOTICE '  ------>OK';
+      else 
+        RAISE NOTICE ' ------> Adding  index "%_%_idx".',tabname,targetname;
+        execute 'create  index '||tname||'_'||targetname||'_idx on '||tabname||' using btree('||targetname||')';
+      END IF;
     END;
 
     BEGIN
-        RAISE NOTICE 'Adding unique index "vertices_tmp_id_idx".';
-        create unique index vertices_tmp_id_idx on vertices_tmp using btree(id);
-    EXCEPTION
-        WHEN DUPLICATE_TABLE THEN
-            -- NOP
+      RAISE NOTICE 'Cheking "%" column in % is indexed',gname,tabname;
+      if (pgr_iscolumnindexed(tabname,gname)) then 
+	RAISE NOTICE '  ------>OK';
+      else 
+        RAISE NOTICE ' ------> Adding unique index "%_%_gidx".',tabname,gname;
+        execute 'CREATE INDEX '
+            || quote_ident(tname || '_' || gname || '_gidx' )
+            || ' ON ' || tabname
+            || ' USING gist (' || gname || ')';
+      END IF;
     END;
+
+ 
+    BEGIN 
+       raise notice 'Checking table %.% exists ',sname ,vname;
+       execute 'select * from pgr_getTableName('||quote_literal(sname||'.'||vname)||')' into naming;
+      vname=naming.tname;
+      verticesTable=quote_ident(sname)||'.'||quote_ident(vname);
+ 
+       IF naming.sname is not NULL and  naming.tname IS NOT NULL then
+	   raise notice  '  ------>OK';
+       ELSE
+           raise notice '   --->Table %.% does not exists',sname ,vname; 
+           raise exception '   --->Please create %.% using pgr_createTopology() or pgr_makeVerticesTable()',sname ,vname;
+       END IF;
+    END;               
+
 
     BEGIN
-        RAISE NOTICE 'Adding index on "source" for "%".', edge_tab;
-        EXECUTE 'create index '
-            || quote_ident(edge_tab || '_source_idx') || ' on '
-            || pgr_quote_ident(edge_tab) || ' using btree(source)';
-    EXCEPTION
-        WHEN DUPLICATE_TABLE THEN
-            -- NOP
+        RAISE NOTICE 'Cheking for "cnt" and "chk" column in %',verticesTable;
+        execute 'select pgr_getcolumnName('||quote_literal(verticesTable)||','||quote_literal('cnt')||')' into cntname;
+        execute 'select pgr_getcolumnName('||quote_literal(verticesTable)||','||quote_literal('chk')||')' into chkname;
+        if cntname is not null and chkname is not null then
+		cntname=quote_ident(cntname);
+		RAISE NOTICE '  ------>OK';
+	else if cntname is not null	then
+		RAISE NOTICE '  ------>Adding "cnt" column in %',verticesTable;
+		execute 'ALTER TABLE '||verticesTable||' ADD COLUMN cnt integer';
+		cntname=quote_ident('cnt');
+             end if;
+             if chkname is not null then
+		RAISE NOTICE '  ------>Adding "chk" column in %',verticesTable;
+		execute 'ALTER TABLE '||verticesTable||' ADD COLUMN chk integer';
+		cntname=quote_ident('chk');
+             end if;
+	END IF;
+	execute 'UPDATE '||verticesTable||' SET '||cntname||'=0 ,'||chkname||'=0';		
     END;
+
 
     BEGIN
-        RAISE NOTICE 'Adding index on "target" for "%".', edge_tab;
-        EXECUTE 'create index '
-            || quote_ident(edge_tab || '_target_idx') || ' on '
-            || pgr_quote_ident(edge_tab) || ' using btree(target)';
-    EXCEPTION
-        WHEN DUPLICATE_TABLE THEN
-            -- NOP
+      RAISE NOTICE 'Cheking "id" column in % is indexed',verticesTable;
+      if (pgr_iscolumnindexed(verticesTable,'id')) then 
+	RAISE NOTICE '  ------>OK';
+      else 
+        RAISE NOTICE ' ------> Adding unique index "%_vertices_id_idx".',vname;
+        execute 'create unique index '||vname||'_id_idx on '||verticesTable||' using btree(id)';
+      END IF;
     END;
+
 
     BEGIN
-        RAISE NOTICE 'Adding index on "%" for "%".', edge_tab, geom_col;
-        EXECUTE 'CREATE INDEX '
-            || quote_ident(edge_tab || '_' || geom_col || '_gidx' )
-            || ' ON ' || pgr_quote_ident(edge_tab)
-            || ' USING gist (' || quote_ident(geom_col) || ')';
-    EXCEPTION
-        WHEN DUPLICATE_TABLE THEN
-            -- NOP
+      RAISE NOTICE 'Populating %.cnt',verticesTable;
+      execute 'with countingsource as (select a.'||sourcename||' as id,count(*) as cnts from '||tabname||' a  group by a.'||sourcename||') 
+       ,countingtarget as (select a.'||targetname||' as id,count(*) as cntt from '||tabname||' a  group by a.'||targetname||') 
+       ,totalcount as (select id,case when cnts is null and cntt is null then 0
+		    when cnts is null then cntt 
+                    when cntt is null then cnts
+                    else cnts+cntt end as totcnt from ('||verticesTable||' as a left join countingsource as t using(id) ) left join countingtarget using(id))
+      update '||verticesTable||' as a set cnt=totcnt from totalcount as b where a.id=b.id';
     END;
-
-    RAISE NOTICE 'Populating vertices_tmp.cnt';
-    EXECUTE 'update vertices_tmp as a set cnt=(select count(*) from '
-        || pgr_quote_ident(edge_tab)
-        || ' b where a.id=b.source or a.id=b.target)';
 
     RAISE NOTICE 'Analyzing graph for gaps and zlev errors.';
-    FOR points IN SELECT * FROM vertices_tmp WHERE cnt = 1 ORDER BY id  LOOP
-        FOR seg IN EXECUTE 'SELECT * FROM ' || pgr_quote_ident(edge_tab) || ' a
-                WHERE ST_DWithin(a.' || quote_ident(geom_col) || ', $1, $2)'
+    i=0;
+    execute 'SELECT count(*) FROM '||verticesTable||' WHERE cnt = 1' into tot;
+    FOR points IN execute 'SELECT * FROM '||verticesTable||' WHERE cnt = 1 ORDER BY id ' LOOP
+        i=i+1;
+        if ((i % 1000)=0 or i=1) then raise notice '----->Analysis done to % out of %',i,tot; END IF;
+        FOR seg IN EXECUTE 'SELECT a.'||sourcename||' as source, a.'||targetname||' as target FROM ' || tabname || ' as a
+                WHERE ST_DWithin(a.' || gname || ', $1, $2)'
                 USING points.the_geom, tol
             LOOP
                 IF points.id NOT IN (seg.source, seg.target) THEN
-                    UPDATE vertices_tmp SET chk=1 WHERE id=points.id;
+                    execute 'UPDATE '||verticesTable||' SET chk=1 WHERE id='||points.id;
                 END IF;
         END LOOP;
     END LOOP;
 
-    SELECT count(*) INTO ecnt FROM vertices_tmp WHERE chk=1;
+    query ='SELECT count(*)  FROM '||verticesTable||' WHERE chk=1';
+    execute query  INTO ecnt;
 
-    RAISE NOTICE 'Found % potential problems at ''SELECT * FROM vertices_tmp WHERE chk=1''', ecnt;
+    RAISE NOTICE 'Found % potential problems at ''%''', ecnt,query;
 
     RETURN 'OK';
 END;
 $BODY$
-  LANGUAGE plpgsql VOLATILE STRICT
-  COST 100;
+  LANGUAGE plpgsql VOLATILE STRICT;
 
+
+
+
+CREATE OR REPLACE FUNCTION pgr_analyzeOneway(edge_tab text, ow_col text, s_in_rules TEXT[], s_out_rules TEXT[], t_in_rules TEXT[], 
+   t_out_rules TEXT[], two_way_if_null boolean, scol text default 'source',tcol text default 'target')
+  RETURNS text AS
+$BODY$
 
 /*
 .. function:: pgr_analyzeOneway(tab, col, s_in_rules, s_out_rules, t_in_rules, t_out_rules)
@@ -179,6 +300,7 @@ $BODY$
 
    -- and the problem edges connected to those nodes
    select gid
+
      from st a, vertices_tmp b
     where a.source=b.id and ein=0 or eout=0
    union
@@ -191,104 +313,176 @@ oneway direction set wrong, maybe an error releted to zlevels or
 a network that is not properly noded.
 
 */
-CREATE OR REPLACE FUNCTION pgr_analyzeOneway(tab text, col text, s_in_rules TEXT[], s_out_rules TEXT[], t_in_rules TEXT[], t_out_rules TEXT[], two_way_if_null boolean)
-  RETURNS text AS
-$BODY$
+
+
+
 DECLARE
     rule text;
-    cnt integer;
+    ecnt integer;
     instr text;
+    naming record;
+    sname text;
+    tname text;
+    tabname text;
+    vname text;
+    owname text;
+    sourcename text;
+    targetname text;
+    verticesTable text;
+    einname text;
+    eoutname text;
 
 BEGIN
-    IF NOT pgr_isColumnInTable(tab, col) THEN
-        RAISE EXCEPTION 'Failed to find "%" in table "%"!', col, tab;
+
+   BEGIN
+    RAISE NOTICE 'Cheking % exists',edge_tab;
+    execute 'select * from pgr_getTableName('||quote_literal(edge_tab)||')' into naming;
+    sname=naming.sname;
+    tname=naming.tname;
+    IF sname IS NULL OR tname IS NULL THEN
+        RAISE EXCEPTION '% not found',edge_tab;
+    ELSE
+        RAISE NOTICE '  -----> OK';
     END IF;
+    tabname=quote_ident(sname)||'.'||quote_ident(tname);
+    vname=tname||'_vertices_pgr';
+  END;
+
 
     BEGIN
-        RAISE NOTICE 'Adding "ein" column to vertices_tmp';
-        ALTER TABLE vertices_tmp ADD COLUMN ein integer;
-    EXCEPTION
-        WHEN DUPLICATE_COLUMN THEN
-            -- NOP
+        if scol is null then scol='source'; END IF;
+        if tcol is null then tcol='target'; END IF;
+        RAISE NOTICE 'Cheking for "%","%" and "%" columns in %',scol,tcol,ow_col,edge_tab;
+        execute 'select pgr_getcolumnName('||quote_literal(edge_tab)||','||quote_literal(ow_col)||')' into owname;
+        execute 'select pgr_getcolumnName('||quote_literal(edge_tab)||','||quote_literal(scol)||')' into sourcename;
+        execute 'select pgr_getcolumnName('||quote_literal(edge_tab)||','||quote_literal(tcol)||')' into targetname;
+        if owname is not null and sourcename is not null and targetname is not null then
+                owname=quote_ident(owname);
+                sourcename=quote_ident(sourcename);
+                targetname=quote_ident(targetname);
+                RAISE NOTICE '  ------>OK';
+        else
+                RAISE exception '  ------>"%" or "%" or "%" columns not in % found in',scol,tcol,ow_col,edge_tab;
+        END IF;
+    END;
+
+
+    BEGIN
+       raise notice 'Checking table %.% exists ',sname ,vname;
+       execute 'select * from pgr_getTableName('||quote_literal(sname||'.'||vname)||')' into naming;
+      vname=naming.tname;
+      verticesTable=quote_ident(sname)||'.'||quote_ident(vname);
+       IF naming.sname is not NULL and  naming.tname IS NOT NULL then
+           raise notice  '  ------>OK';
+       ELSE
+           raise notice '   --->Table %.% does not exists',sname ,vname;
+           raise exception '   --->Please create %.% using pgr_createTopology() or pgr_makeVerticesTable()',sname ,vname;
+       END IF;
+    END;
+
+
+    BEGIN
+      RAISE NOTICE 'Cheking "id" column in % is indexed',verticesTable;
+      if (pgr_iscolumnindexed(verticesTable,'id')) then
+        RAISE NOTICE '  ------>OK';
+      else
+        RAISE NOTICE ' ------> Adding unique index "%_vertices_id_idx".',vname;
+        execute 'create unique index '||vname||'_id_idx on '||verticesTable||' using btree(id)';
+      END IF;
+    END;
+
+
+
+
+    BEGIN
+        RAISE NOTICE 'Cheking for "ein" column in %',verticesTable;
+        execute 'select pgr_getcolumnName('||quote_literal(sname||'.'||vname)||','||quote_literal('ein')||')' into einname;
+        if einname is not null then
+                einname=quote_ident(einname);
+                RAISE NOTICE '  ------>OK';
+        else
+                RAISE NOTICE '  ------>Adding "ein" column in %',verticesTable;
+                execute 'ALTER TABLE '||verticesTable||' ADD COLUMN ein integer';
+                einname=quote_ident('ein');
+        END IF;
+    END;
+
+
+    BEGIN
+        RAISE NOTICE 'Cheking for "eout" column in %',verticesTable;
+        execute 'select pgr_getcolumnName('||quote_literal(sname||'.'||vname)||','||quote_literal('eout')||')' into eoutname;
+        if eoutname is not null then
+                eoutname=quote_ident(eoutname);
+                RAISE NOTICE '  ------>OK';
+        else
+                RAISE NOTICE '  ------>Adding "eout" column in %',verticesTable;
+                execute 'ALTER TABLE '||verticesTable||' ADD COLUMN eout integer';
+                eoutname=quote_ident('eout');
+        END IF;
     END;
 
     BEGIN
-        RAISE NOTICE 'Adding "eout" column to vertices_tmp';
-        ALTER TABLE vertices_tmp ADD COLUMN eout integer;
-    EXCEPTION
-        WHEN DUPLICATE_COLUMN THEN
-            -- NOP
+      RAISE NOTICE 'Zeroing columns "ein" and "eout" on "%".', verticesTable;
+      execute 'UPDATE '||verticesTable||' SET '||einname||'=0, '||eoutname||'=0';
     END;
 
-    RAISE NOTICE 'Zeroing columns "ein" and "eout" on "vertices_tmp".';
-    UPDATE vertices_tmp SET ein=0, eout=0;
-
-    BEGIN
-        RAISE NOTICE 'Adding unique index "vertices_tmp_id_idx".';
-        create unique index vertices_tmp_id_idx on vertices_tmp using btree(id);
-    EXCEPTION
-        WHEN DUPLICATE_TABLE THEN
-            -- NOP
-    END;
 
     RAISE NOTICE 'Analyzing graph for one way street errors.';
 
     rule := CASE WHEN two_way_if_null
-            THEN quote_ident(col) || ' IS NULL OR '
+            THEN owname || ' IS NULL OR '
             ELSE '' END;
 
     instr := '''' || array_to_string(s_in_rules, ''',''') || '''';
-    EXECUTE 'update vertices_tmp a set ein=coalesce(ein,0)+b.cnt
+       EXECUTE 'update '||verticesTable||' a set '||einname||'=coalesce('||einname||',0)+b.cnt
       from (
-         select source, count(*) as cnt 
-           from '|| pgr_quote_ident(tab) ||' 
-          where '|| rule || quote_ident(col) ||' in ('|| instr ||')
-          group by source ) b
-     where a.id=b.source';
+         select '|| sourcename ||', count(*) as cnt 
+           from '|| tabname ||' 
+          where '|| rule || owname ||' in ('|| instr ||')
+          group by '|| sourcename ||' ) b
+     where a.id=b.'|| sourcename;
 
     RAISE NOTICE 'Analysis 25%% complete ...';
 
     instr := '''' || array_to_string(t_in_rules, ''',''') || '''';
-    EXECUTE 'update vertices_tmp a set ein=coalesce(ein,0)+b.cnt
-      from (
-         select target, count(*) as cnt 
-           from '|| pgr_quote_ident(tab) ||' 
-          where '|| rule || quote_ident(col) ||' in ('|| instr ||')
-          group by target ) b
-     where a.id=b.target';
-
+    EXECUTE 'update '||verticesTable||' a set '||einname||'=coalesce('||einname||',0)+b.cnt
+        from (
+         select '|| targetname ||', count(*) as cnt 
+           from '|| tabname ||' 
+          where '|| rule || owname ||' in ('|| instr ||')
+          group by '|| targetname ||' ) b
+        where a.id=b.'|| targetname;
+     
     RAISE NOTICE 'Analysis 50%% complete ...';
 
     instr := '''' || array_to_string(s_out_rules, ''',''') || '''';
-    EXECUTE 'update vertices_tmp a set eout=coalesce(eout,0)+b.cnt
-      from (
-         select source, count(*) as cnt 
-           from '|| pgr_quote_ident(tab) ||' 
-          where '|| rule || quote_ident(col) ||' in ('|| instr ||')
-          group by source ) b
-     where a.id=b.source';
-
+    EXECUTE 'update '||verticesTable||' a set '||eoutname||'=coalesce('||eoutname||',0)+b.cnt
+        from (
+         select '|| sourcename ||', count(*) as cnt 
+           from '|| tabname ||' 
+          where '|| rule || owname ||' in ('|| instr ||')
+          group by '|| sourcename ||' ) b
+        where a.id=b.'|| sourcename;
     RAISE NOTICE 'Analysis 75%% complete ...';
 
     instr := '''' || array_to_string(t_out_rules, ''',''') || '''';
-    EXECUTE 'update vertices_tmp a set eout=coalesce(eout,0)+b.cnt
-      from (
-         select target, count(*) as cnt 
-           from '|| pgr_quote_ident(tab) ||' 
-          where '|| rule || quote_ident(col) ||' in ('|| instr ||')
-          group by target ) b
-     where a.id=b.target';
+    EXECUTE 'update '||verticesTable||' a set '||eoutname||'=coalesce('||eoutname||',0)+b.cnt
+        from (
+         select '|| targetname ||', count(*) as cnt 
+           from '|| tabname ||' 
+          where '|| rule || owname ||' in ('|| instr ||')
+          group by '|| targetname ||' ) b
+        where a.id=b.'|| targetname;
 
     RAISE NOTICE 'Analysis 100%% complete ...';
 
-    SELECT count(*) INTO cnt FROM vertices_tmp WHERE ein=0 or eout=0;
+    EXECUTE 'SELECT count(*)  FROM '||verticesTable||' WHERE ein=0 or eout=0' INTO ecnt;
 
-    RAISE NOTICE 'Found % potential problems at ''SELECT * FROM vertices_tmp WHERE ein=0 or eout=0''', cnt;
+    RAISE NOTICE 'Found % potential problems at ''SELECT * FROM % WHERE ein=0 or eout=0''', ecnt,verticesTable;
 
     RETURN 'OK';
+    
 END;
 $BODY$
-  LANGUAGE plpgsql VOLATILE STRICT
-  COST 100;
-
+  LANGUAGE plpgsql VOLATILE STRICT;
 

@@ -1,16 +1,16 @@
-NOTICE:  table "intergeom" does not exist, skipping
+ NOTICE:  table "intergeom" does not exist, skipping
 CONTEXT:  SQL statement "drop table  if exists intergeom"
-PL/pgSQL function pgr_nodenetwork(text,text,text,text,double precision) line 23 at SQL statement
-NOTICE:  Num inserts: 0
-NOTICE:  Num inserts: 0
-NOTICE:  Num deleted: 0
-NOTICE:  table "inter_loc" does not exist, skipping
+PL/pgSQL function "pgr_nodenetwork" line 23 at SQL statement
+ NOTICE:  Num inserts: 0
+ NOTICE:  Num inserts: 0
+ NOTICE:  Num deleted: 0
+ NOTICE:  table "inter_loc" does not exist, skipping
 CONTEXT:  SQL statement "drop table if exists inter_loc"
-PL/pgSQL function pgr_nodenetwork(text,text,text,text,double precision) line 58 at SQL statement
-NOTICE:  table "noded" does not exist, skipping
+PL/pgSQL function "pgr_nodenetwork" line 58 at SQL statement
+ NOTICE:  table "noded" does not exist, skipping
 CONTEXT:  SQL statement "drop table if exists noded"
-PL/pgSQL function pgr_nodenetwork(text,text,text,text,double precision) line 71 at EXECUTE statement
-NOTICE:  Num inserted: 0
+PL/pgSQL function "pgr_nodenetwork" line 71 at EXECUTE statement
+ NOTICE:  Num inserted: 0
 noded generated with: 40 segments
 1|4|010200000002000000000000000000F03F000000000000004000000000000000400000000000000040
 1|5|0102000000020000000000000000000040000000000000004000000000000008400000000000000040
@@ -53,35 +53,73 @@ noded generated with: 40 segments
 8|7|0102000000020000000000000000001440000000000000104000000000000014400000000000001440
 8|8|0102000000020000000000000000001440000000000000144000000000000014400000000000001840
 ---------------------------------
-NOTICE:  CREATE TABLE will create implicit sequence "noded2_gid_seq" for serial column "noded2.gid"
-NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "noded2_pkey" for table "noded2"
+ NOTICE:  CREATE TABLE will create implicit sequence "noded2_gid_seq" for serial column "noded2.gid"
+ NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "noded2_pkey" for table "noded2"
 public.noded2.the_geom SRID:0 TYPE:LINESTRING DIMS:2 
 ---------------------------------
-NOTICE:  CREATE TABLE will create implicit sequence "vertices_tmp_id_seq" for serial column "vertices_tmp.id"
-CONTEXT:  SQL statement "CREATE TABLE vertices_tmp (id bigserial)"
-PL/pgSQL function pgr_createtopology(character varying,double precision,character varying,character varying) line 45 at SQL statement
-NOTICE:  0 out of 0 edges processed
+ NOTICE:  Cheking noded2 exists
+ NOTICE:    -----> OK
+ NOTICE:  checking the_geom and gid columns in  public.noded2 
+ NOTICE:    ------>OK
+ NOTICE:  checking that  gid is completely populated i.e. do not have NULL values
+ NOTICE:    ------>OK
+ NOTICE:  checking "source" and "target" columns in  public.noded2 
+ NOTICE:    ------>OK
+ NOTICE:  Checking the SRID of the geometry the_geom
+ NOTICE:    -----> SRID found 0
+ NOTICE:  initializing public.noded2_vertices_pgr
+ NOTICE:  CREATE TABLE will create implicit sequence "noded2_vertices_pgr_id_seq" for serial column "noded2_vertices_pgr.id"
+CONTEXT:  SQL statement "CREATE TABLE public.noded2_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
+PL/pgSQL function "pgr_createtopology" line 127 at EXECUTE statement
+ NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "noded2_vertices_pgr_pkey" for table "noded2_vertices_pgr"
+CONTEXT:  SQL statement "CREATE TABLE public.noded2_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
+PL/pgSQL function "pgr_createtopology" line 127 at EXECUTE statement
+ NOTICE:  Creating Topology
+ NOTICE:  0 out of aprox 0 edges processed
+ NOTICE:    -----> DONE: 40 edges processed
 OK
-NOTICE:  Adding "cnt" column to vertices_tmp
-NOTICE:  Adding "chk" column to vertices_tmp
-NOTICE:  Adding unique index "vertices_tmp_id_idx".
-NOTICE:  Adding index on "source" for "noded2".
-NOTICE:  Adding index on "target" for "noded2".
-NOTICE:  Adding index on "noded2" for "the_geom".
-NOTICE:  Populating vertices_tmp.cnt
-NOTICE:  Analyzing graph for gaps and zlev errors.
-NOTICE:  Found 0 potential problems at 'SELECT * FROM vertices_tmp WHERE chk=1'
+ NOTICE:  Cheking noded2 exists
+ NOTICE:    -----> OK
+ NOTICE:  Checking "source", "target" and "the_geom" columns are in public.noded2 
+ NOTICE:    ------>OK
+ NOTICE:  checking that "source" and "target" are populated i.e. do not have NULL values
+ NOTICE:    ------>OK
+ NOTICE:  Cheking "source" column in public.noded2 is indexed
+ NOTICE:   ------> Adding  index "public.noded2_source_idx".
+ NOTICE:  Cheking "target" column in public.noded2 is indexed
+ NOTICE:   ------> Adding  index "public.noded2_target_idx".
+ NOTICE:  Cheking "the_geom" column in public.noded2 is indexed
+ NOTICE:   ------> Adding unique index "public.noded2_the_geom_gidx".
+ NOTICE:  Checking table public.noded2_vertices_pgr exists 
+ NOTICE:    ------>OK
+ NOTICE:  Cheking for "cnt" and "chk" column in public.noded2_vertices_pgr
+ NOTICE:    ------>OK
+ NOTICE:  Cheking "id" column in public.noded2_vertices_pgr is indexed
+ NOTICE:    ------>OK
+ NOTICE:  Populating public.noded2_vertices_pgr.cnt
+ NOTICE:  Analyzing graph for gaps and zlev errors.
+ NOTICE:  ----->Analysis done to 1 out of 16
+ NOTICE:  Found 0 potential problems at 'SELECT count(*)  FROM public.noded2_vertices_pgr WHERE chk=1'
 OK
-NOTICE:  Adding "ein" column to vertices_tmp
-NOTICE:  Adding "eout" column to vertices_tmp
-NOTICE:  Zeroing columns "ein" and "eout" on "vertices_tmp".
-NOTICE:  Adding unique index "vertices_tmp_id_idx".
-NOTICE:  Analyzing graph for one way street errors.
-NOTICE:  Analysis 25% complete ...
-NOTICE:  Analysis 50% complete ...
-NOTICE:  Analysis 75% complete ...
-NOTICE:  Analysis 100% complete ...
-NOTICE:  Found 16 potential problems at 'SELECT * FROM vertices_tmp WHERE ein=0 or eout=0'
+ NOTICE:  Cheking noded2 exists
+ NOTICE:    -----> OK
+ NOTICE:  Cheking for "source","target" and "dir" columns in noded2
+ NOTICE:    ------>OK
+ NOTICE:  Checking table public.noded2_vertices_pgr exists 
+ NOTICE:    ------>OK
+ NOTICE:  Cheking "id" column in public.noded2_vertices_pgr is indexed
+ NOTICE:    ------>OK
+ NOTICE:  Cheking for "ein" column in public.noded2_vertices_pgr
+ NOTICE:    ------>OK
+ NOTICE:  Cheking for "eout" column in public.noded2_vertices_pgr
+ NOTICE:    ------>OK
+ NOTICE:  Zeroing columns "ein" and "eout" on "public.noded2_vertices_pgr".
+ NOTICE:  Analyzing graph for one way street errors.
+ NOTICE:  Analysis 25% complete ...
+ NOTICE:  Analysis 50% complete ...
+ NOTICE:  Analysis 75% complete ...
+ NOTICE:  Analysis 100% complete ...
+ NOTICE:  Found 16 potential problems at 'SELECT * FROM public.noded2_vertices_pgr WHERE ein=0 or eout=0'
 OK
 ---------------------------------
 1|1|FT|1|2|||010200000002000000000000000000F03F000000000000004000000000000000400000000000000040
@@ -125,35 +163,35 @@ OK
 39|8|TF|17|23|||0102000000020000000000000000001440000000000000104000000000000014400000000000001440
 40|8|TF|23|32|||0102000000020000000000000000001440000000000000144000000000000014400000000000001840
 ---------------------------------
-1|0101000000000000000000F03F0000000000000040|1||0|1
-2|010100000000000000000000400000000000000040|4||2|2
-3|010100000000000000000008400000000000000040|4||2|2
-4|010100000000000000000010400000000000000040|4||2|2
-5|010100000000000000000014400000000000000040|4||2|2
-6|010100000000000000000018400000000000000040|1||1|0
-7|0101000000000000000000F03F0000000000000840|1||1|0
-8|010100000000000000000000400000000000000840|4||2|2
-9|010100000000000000000008400000000000000840|4||2|2
-10|010100000000000000000010400000000000000840|4||2|2
-11|010100000000000000000014400000000000000840|4||2|2
-12|010100000000000000000018400000000000000840|1||0|1
-13|0101000000000000000000F03F0000000000001040|1||0|1
-14|010100000000000000000000400000000000001040|4||2|2
-15|010100000000000000000008400000000000001040|4||2|2
-16|010100000000000000000010400000000000001040|4||2|2
-17|010100000000000000000014400000000000001040|4||2|2
-18|010100000000000000000018400000000000001040|1||1|0
-19|0101000000000000000000F03F0000000000001440|1||1|0
-20|010100000000000000000000400000000000001440|4||2|2
-21|010100000000000000000008400000000000001440|4||2|2
-22|010100000000000000000010400000000000001440|4||2|2
-23|010100000000000000000014400000000000001440|4||2|2
-24|010100000000000000000018400000000000001440|1||0|1
-25|01010000000000000000000040000000000000F03F|1||0|1
-26|010100000000000000000000400000000000001840|1||1|0
-27|01010000000000000000000840000000000000F03F|1||1|0
-28|010100000000000000000008400000000000001840|1||0|1
-29|01010000000000000000001040000000000000F03F|1||0|1
-30|010100000000000000000010400000000000001840|1||1|0
-31|01010000000000000000001440000000000000F03F|1||1|0
-32|010100000000000000000014400000000000001840|1||0|1
+1|1|0|0|1|0101000000000000000000F03F0000000000000040
+2|4|0|2|2|010100000000000000000000400000000000000040
+3|4|0|2|2|010100000000000000000008400000000000000040
+4|4|0|2|2|010100000000000000000010400000000000000040
+5|4|0|2|2|010100000000000000000014400000000000000040
+6|1|0|1|0|010100000000000000000018400000000000000040
+7|1|0|1|0|0101000000000000000000F03F0000000000000840
+8|4|0|2|2|010100000000000000000000400000000000000840
+9|4|0|2|2|010100000000000000000008400000000000000840
+10|4|0|2|2|010100000000000000000010400000000000000840
+11|4|0|2|2|010100000000000000000014400000000000000840
+12|1|0|0|1|010100000000000000000018400000000000000840
+13|1|0|0|1|0101000000000000000000F03F0000000000001040
+14|4|0|2|2|010100000000000000000000400000000000001040
+15|4|0|2|2|010100000000000000000008400000000000001040
+16|4|0|2|2|010100000000000000000010400000000000001040
+17|4|0|2|2|010100000000000000000014400000000000001040
+18|1|0|1|0|010100000000000000000018400000000000001040
+19|1|0|1|0|0101000000000000000000F03F0000000000001440
+20|4|0|2|2|010100000000000000000000400000000000001440
+21|4|0|2|2|010100000000000000000008400000000000001440
+22|4|0|2|2|010100000000000000000010400000000000001440
+23|4|0|2|2|010100000000000000000014400000000000001440
+24|1|0|0|1|010100000000000000000018400000000000001440
+25|1|0|0|1|01010000000000000000000040000000000000F03F
+26|1|0|1|0|010100000000000000000000400000000000001840
+27|1|0|1|0|01010000000000000000000840000000000000F03F
+28|1|0|0|1|010100000000000000000008400000000000001840
+29|1|0|0|1|01010000000000000000001040000000000000F03F
+30|1|0|1|0|010100000000000000000010400000000000001840
+31|1|0|1|0|01010000000000000000001440000000000000F03F
+32|1|0|0|1|010100000000000000000014400000000000001840

@@ -5,52 +5,225 @@
 -- This file is release unde an MIT-X license.
 -- -------------------------------------------------------------------
 
+
+CREATE OR REPLACE FUNCTION pgr_getTableName(IN otname text,OUT sname text,OUT tname text)
+  RETURNS RECORD AS
+$BODY$ 
+/*
+.. function:: pgr_getTableName(tab)
+   
+   Examples:  
+	* 	 select * from  pgr_getTableName('tab');
+        *        naming record;
+		 excecute 'select * from  pgr_getTableName('||quote_literal(tab)||')' INTO naming;
+	         schema=naming.sname; table=naming.tname
+		   
+
+   Returns (schema,name) of table "tab" considers Caps and when not found considers lowercases
+           (schema,NULL) when table was not found 
+           (NULL,NULL) when schema was not found. 
+
+   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
+
+  HISTORY
+     Created: 2013/08/19  for handling schemas
+
+*/
+DECLARE
+	naming record;
+	i integer;
+	query text;
+        sn text;
+        tn text;
+BEGIN
+
+    execute 'select strpos('||quote_literal(otname)||','||quote_literal('.')||')' into i;
+    if (i!=0) then 
+	execute 'select substr('||quote_literal(otname)||',1,strpos('||quote_literal(otname)||','||quote_literal('.')||')-1)' into sn;
+	execute 'select substr('||quote_literal(otname)||',strpos('||quote_literal(otname)||','||quote_literal('.')||')+1),length('||quote_literal(otname)||')' into tn;
+    else 
+        execute 'select current_schema' into sn;
+        tn =otname;
+    end if;
+    
+    
+    EXECUTE 'SELECT schema_name FROM information_schema.schemata WHERE schema_name = '||quote_literal(sn) into naming;
+    sname=naming.schema_name;
+    
+    if sname is NOT NULL THEN -- found schema (as is)
+    	EXECUTE 'select table_name from information_schema.tables where 
+		table_type='||quote_literal('BASE TABLE')||' and 
+		table_schema='||quote_literal(sname)||' and 
+		table_name='||quote_literal(tn) INTO  naming;
+	tname=naming.table_name;	
+	IF tname is NULL THEN
+	   EXECUTE 'select table_name from information_schema.tables where 
+		table_type='||quote_literal('BASE TABLE')||' and 
+		table_schema='||quote_literal(sname)||' and 
+		table_name='||quote_literal(lower(tn))||'order by table_name' INTO naming;
+	   tname=naming.table_name;		
+	END IF;
+    END IF;	 
+    IF sname is NULL or tname is NULL THEN 	--schema not found or table in schema was not found        	
+	EXECUTE 'SELECT schema_name FROM information_schema.schemata WHERE schema_name = '||quote_literal(lower(sn)) into naming;
+	sname=naming.schema_name;
+	if sname is NOT NULL THEN -- found schema (with lower caps)	
+	   EXECUTE 'select table_name from information_schema.tables where 
+		table_type='||quote_literal('BASE TABLE')||' and 
+		table_schema='||quote_literal(sname)||' and 
+		table_name='||quote_literal(tn) INTO  naming;
+	   tname=naming.table_name;	
+	   IF tname is NULL THEN
+		EXECUTE 'select table_name from information_schema.tables where 
+			table_type='||quote_literal('BASE TABLE')||' and 
+			table_schema='||quote_literal(sname)||' and 
+			table_name='||quote_literal(lower(tn))||'order by table_name' INTO naming;
+		tname=naming.table_name;		
+	   END IF;
+	END IF;
+    END IF;	   
+	        	
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
+COMMENT ON FUNCTION pgr_getTableName(text) IS 'args: table  -gets the schema (sname) and the table (tname) with the appropiate caps';
+
+
+CREATE OR REPLACE FUNCTION pgr_getColumnName(tab text, col text)
+RETURNS text AS
+$BODY$
+/*
+.. function:: pgr_getColumnName(tab)
+   
+   Examples:  
+	* 	 select  pgr_getColumnName('tab','col');
+        *        column text;
+		 excecute 'select pgr_getColumnName('||quote_literal('tab')||','||quote_literal('col')||')' INTO column;
+
+
+   Returns cname of column "col" in table "tab" considers Caps and when not found considers lowercases
+           NULL when "tab" is not found or when "col" is not in table "tab"
+
+   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
+
+  HISTORY
+     Created: 2013/08/19  for handling schemas
+*/
+DECLARE
+    sname text;
+    tname text;
+    cname text;
+    naming record;
+BEGIN
+    select * into naming from pgr_getTableName(tab) ;
+    sname=naming.sname;
+    tname=naming.tname;
+   
+    IF sname IS NULL or tname IS NULL THEN
+        RETURN NULL;
+    ELSE 
+        SELECT column_name INTO cname
+          FROM information_schema.columns 
+          WHERE table_name=tname and table_schema=sname and column_name=col;
+
+        IF FOUND THEN
+          RETURN cname;
+        ELSE
+            SELECT column_name INTO cname
+		FROM information_schema.columns 
+		WHERE table_name=tname and table_schema=sname and column_name=lower(col);
+            IF FOUND THEN
+		RETURN cname;
+	    ELSE
+		RETURN NULL;
+	    END IF;
+        END IF;
+    END IF;
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
+COMMENT ON FUNCTION pgr_getColumnName(text,text) IS 'args: table,column  -gets column (cname) with the appropiate caps';
+
+
+
+
+
+CREATE OR REPLACE FUNCTION pgr_isColumnInTable(tab text, col text)
+RETURNS boolean AS
+$BODY$
 /*
 .. function:: pgr_isColumnInTable(tab, col)
 
-   Return true ot false if column "col" exists in table "tab"
+   Examples:  
+	* 	 select  pgr_isColumnName('tab','col');
+        *        flag boolean;
+		 excecute 'select pgr_getColumnName('||quote_literal('tab')||','||quote_literal('col')||')' INTO flag;
 
+   Returns true  if column "col" exists in table "tab"
+           false when "tab" doesn't exist or when "col" is not in table "tab"
+
+   Author: Stephen Woodbridge <woodbri@imaptools.com>
+
+   Modified by: Vicky Vergara <vicky_vergara@hotmail.com>>
+
+  HISTORY
+     Modified: 2013/08/19  for handling schemas
 */
-CREATE OR REPLACE FUNCTION pgr_isColumnInTable(tab text, col text)
-  RETURNS boolean AS
-$BODY$
 DECLARE
     cname text;
-
 BEGIN
-    
-    SELECT column_name INTO cname
-        FROM information_schema.columns 
-        WHERE table_name=tab and column_name=col;
-
-    IF FOUND THEN
-        RETURN true;
-    ELSE
+    select * from pgr_getColumnName(tab,col) into cname;
+  
+    IF cname IS NULL THEN
         RETURN false;
+    ELSE
+        RETURN true;
     END IF;
 END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
+COMMENT ON FUNCTION pgr_isColumnInTable(text,text) IS 'args: table,column  -returns true when column is in table';
 
 
+CREATE OR REPLACE FUNCTION public.pgr_isColumnIndexed(tab text, col text)
+RETURNS boolean AS
+$BODY$
 /*
 .. function:: pgr_isColumnIndexed(tab, col)
 
-   Return true ot false if column "col" in table "tab" is indexed.
+   Examples:  
+	* 	 select  pgr_isColumnIndexed('tab','col');
+        *        flag boolean;
+		 excecute 'select pgr_getColumnIndexed('||quote_literal('tab')||','||quote_literal('col')||')' INTO flag;
+
+   Author: Stephen Woodbridge <woodbri@imaptools.com>
+
+   Modified by: Vicky Vergara <vicky_vergara@hotmail.com>>
+
+   Returns true  when column "col" in table "tab" is indexed.
+           false when table "tab"  is not found or 
+                 when column "col" is nor found in table "tab" or
+	  	 when column "col" is not indexed
 
 */
-CREATE OR REPLACE FUNCTION pgr_isColumnIndexed(tab text, col text)
-  RETURNS boolean AS
-$BODY$
 DECLARE
+    naming record;
     rec record;
-
+    sname text;
+    tname text;
+    cname text;
 BEGIN
-
-    IF NOT pgr_isColumnInTable(tab, col) THEN
-        RETURN false;
+    SELECT * into naming FROM pgr_getTableName(tab);
+    sname=naming.sname;
+    tname=naming.tname;
+    IF sname IS NULL OR tname IS NULL THEN
+	RETURN FALSE;
     END IF;
-
+    SELECT pgr_getColumnName(tab,col) INTO cname;
+    IF cname IS NULL THEN
+	RETURN FALSE;
+    END IF;
+   
     SELECT a.index_name, 
            b.attname,
            b.attnum,
@@ -62,17 +235,20 @@ BEGIN
                     a.indisprimary, 
                     c.relname index_name, 
                     unnest(a.indkey) index_num 
-               FROM pg_index a, 
+               FROM pg_index a,
                     pg_class b, 
-                    pg_class c 
-              WHERE b.relname=tab 
+                    pg_class c,
+                    pg_namespace d  
+              WHERE b.relname=tname
+                AND b.relnamespace=d.oid
+                AND d.nspname=sname 
                 AND b.oid=a.indrelid 
                 AND a.indexrelid=c.oid 
            ) a, 
            pg_attribute b 
      WHERE a.indrelid = b.attrelid 
        AND a.index_num = b.attnum 
-       AND b.attname = col
+       AND b.attname = cname
   ORDER BY a.index_name, 
            a.index_num;
 
@@ -84,10 +260,19 @@ BEGIN
 END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
+COMMENT ON FUNCTION pgr_isColumnIndexed(text,text) IS 'args: table,column  -returns true if column in table is indexed';
 
 
+
+
+
+create or replace function pgr_quote_ident(tab text)
+    returns text as
+$body$
 /*
 .. function:: pgr_quote_ident(text)
+
+   Author: Stephen Woodbridge <woodbri@imaptools.com>
 
    Function to split a string on '.' characters and then quote the 
    components as postgres identifiers and then join them back together
@@ -97,9 +282,6 @@ $BODY$
 
 */
 
-create or replace function pgr_quote_ident(tab text)
-    returns text as
-$body$
 declare
     t text[];
     pgver text;
@@ -124,19 +306,22 @@ begin
 end;
 $body$
 language plpgsql immutable;
+COMMENT ON function pgr_quote_ident(text) IS 'args: identifier  -  quote_ident to all parts of identifier';
 
 
+CREATE OR REPLACE FUNCTION pgr_versionless(v1 text, v2 text)
+  RETURNS boolean AS
+$BODY$
 /*
  * function for comparing version strings.
  * Ex: select pgr_version_less(postgis_lib_version(), '2.1');
+
+   Author: Stephen Woodbridge <woodbri@imaptools.com>
  *
  * needed because postgis 2.1 deprecates some function names and
  * we need to detect the version at runtime
 */
 
-CREATE OR REPLACE FUNCTION pgr_versionless(v1 text, v2 text)
-  RETURNS boolean AS
-$BODY$
 declare
     v1a text[];
     v2a text[];
@@ -181,6 +366,7 @@ end;
 $BODY$
   LANGUAGE plpgsql IMMUTABLE STRICT
   COST 1;
+COMMENT ON function pgr_versionless(text,text) IS 'args: version1,version2  - returns true when version1 < version2';
 
 
 create or replace function pgr_startPoint(g geometry)
@@ -197,6 +383,7 @@ begin
 end;
 $body$
 language plpgsql IMMUTABLE;
+COMMENT ON function pgr_startPoint(geometry) IS 'args: geometry  - returns start point of the geometry even if its multi';
 
 
 
@@ -214,4 +401,5 @@ begin
 end;
 $body$
 language plpgsql IMMUTABLE;
+COMMENT ON function pgr_endPoint(geometry) IS 'args: geometry  - returns end point of the geometry even if its multi';
 

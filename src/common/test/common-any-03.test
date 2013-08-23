@@ -4,5 +4,5 @@ select pgr_analyzeOneway('edges2', 'dir',
     ARRAY['', 'B', 'FT'],
     ARRAY['', 'B', 'TF'],
     true);
-select id, cnt, chk, ein, eout, st_astext(the_geom)  from vertices_tmp where ein=0 or eout=0;
+select id, cnt, chk, ein, eout, st_astext(the_geom)  from edges2_vertices_pgr where ein=0 or eout=0;
 
