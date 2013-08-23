@@ -14,6 +14,8 @@
 #define MAXIMUM_TRY 15
 #define TOTAL_NUMBER_OF_SEARCH 15
 
+typedef std::pair<int, int> PII;
+
 // Structure for Point, Geo coordinates can be represented with it
 typedef struct
 {
@@ -39,6 +41,7 @@ public:
 
 	bool loadUnit(int lUnit);
 	bool unloadUnit(int lUnit);
+	int getRemainingCapacity(){return (m_iCapacity - m_iCurrentLoad);}
 	
 	int getCapacity(){return m_iCapacity;}
 	void setCapacity(int capacity){m_iCapacity = capacity;}
@@ -146,8 +149,10 @@ public:
 
 	int getRemainingCapacity();
 	
-	int getVehicleId(){return m_iVehicleId;}
-	void setVehicleId(int vehicleId){m_iVehicleId = vehicleId;}
+	int getVehicleId(){return m_vehicleInfo.getId();}
+
+	CVehicleInfo& getVehicleInfo(){return m_vehicleInfo;}
+	void setVehicleInfo(CVehicleInfo vehicleInfo){m_vehicleInfo = vehicleInfo;}
 	
 	int getStartDepot(){return m_iStartDepotId;}
 	void setStartDepot(int depotId){m_iStartDepotId = depotId;}
@@ -155,8 +160,14 @@ public:
 	int getEndDepot(){return m_iEndDepotId;}
 	void setEndDepot(int depotId){m_iEndDepotId = depotId;}
 	
-	bool addOrder(int orderId);
 	bool insertOrder(int orderId, int pos);
+	
+
+	double getDistance(){return m_dTotalDistance;}
+
+	double getCost(){return m_dTotalCost;}
+
+	double getTravelTime(){return m_dTotalTraveltime;}
 	
 	std::vector<int> getOrderVector(){return m_viOrderIds;}
 
@@ -169,7 +180,7 @@ public:
 	
 
 private:
-	int m_iVehicleId;
+	CVehicleInfo m_vehicleInfo;
 	int m_iStartDepotId;
 	int m_iEndDepotId;
 	int m_iOrdersServed;
@@ -203,7 +214,7 @@ public:
 
 	void replaceTour(CTourInfo curTour);
 
-	bool init();
+	bool init(std::vector<int> vecOrder, int iTotalOrder, std::vector<int> vecVehicle);
 	
 	std::vector<CTourInfo> getTourInfoVector(){return m_vtourAll;}
 	
@@ -213,6 +224,7 @@ public:
 private:
 	std::vector<CTourInfo> m_vtourAll;
 	std::vector<int> m_vUnservedOrderId;
+	std::vector<int> m_vUnusedVehicles;
 	int m_iVehicleUsed;
 	int m_iOrdersServed;
 	int m_iTotalOrders;
@@ -292,6 +304,7 @@ public:
 	CostPack getCostForInsert(CTourInfo& curTour, COrderInfo& curOrder, int pos);
 	bool tabuSearch(CSolutionInfo& solutionInfo);
 
+	bool insertOrder(CTourInfo& tourInfo, int orderId, int pos);
 	void applyBestMoveInCurrentSolution(CSolutionInfo& solutionInfo, CMoveInfo& bestMove );
 	void insertUnservedOrders(CSolutionInfo& solutionInfo);
 	void attemptFeasibleNodeExchange(CSolutionInfo& solutionInfo);
@@ -308,7 +321,7 @@ private:
 	std::vector<COrderInfo> m_vOrderInfos;
 	std::vector<CDepotInfo> m_vDepotInfos;
 	
-	std::map<int, int> m_mapCustomerIdToIndex;
+	std::map<int, int> m_mapOrderIdToIndex;
 	std::map<int, int> m_mapVehicleIdToIndex;
 	std::map<int, int> m_mapDepotIdToIndex;
 	

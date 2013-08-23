@@ -31,12 +31,75 @@ CTourInfo::~CTourInfo()
 {
 }
 
+bool CTourInfo::insertOrder(int orderId, int pos)
+{
+	m_viOrderIds.insert(m_viOrderIds.begin() + pos, orderId);
+}
+
 CSolutionInfo::CSolutionInfo()
 {
 }
 CSolutionInfo::~CSolutionInfo()
 {
 }
+
+bool CSolutionInfo::init(std::vector<int> vecOrder, int iTotalOrder, std::vector<int> vecVehicle)
+{
+	m_vUnservedOrderId = vecOrder;
+	m_iTotalOrders = iTotalOrder;
+	m_vUnusedVehicles =  vecVehicle;
+
+	m_vtourAll.clear();
+	m_iVehicleUsed = 0;
+	m_iOrdersServed = 0;
+	m_iTotalOrders = 0;
+	m_dTotalCost = 0;
+	m_dTotalDistance = 0;
+	m_dTotalTravelTime = 0;
+	return true;
+}
+
+bool CSolutionInfo::addTour(CTourInfo& tour)
+{
+	m_vtourAll.push_back(tour);
+	int vid = tour.getVehicleId();
+	std::vector<int>::iterator it;
+	it = std::find(m_vUnusedVehicles.begin(), m_vUnusedVehicles.end(), vid);
+	if(it != m_vUnusedVehicles.end())
+	{
+		m_vUnusedVehicles.erase(it);
+	}
+	m_iVehicleUsed++;
+	m_dTotalDistance += tour.getDistance();
+	m_dTotalTravelTime += tour.getTravelTime();
+	m_dTotalCost += tour.getCost();
+
+	std::vector<int> vecOrders = tour.getOrderVector();
+
+	m_iOrdersServed += vecOrders.size();
+
+	for(int i = 0; i < vecOrders.size(); i++)
+	{
+		int oid = vecOrders[i];
+		it = std::find(m_vUnservedOrderId.begin(), m_vUnservedOrderId.end(), oid);
+		if(it != m_vUnservedOrderId.end())
+		{
+			m_vUnservedOrderId.erase(it);
+		}
+	}
+
+	return true;
+}
+
+CMoveInfo::CMoveInfo()
+{
+
+}
+CMoveInfo::~CMoveInfo()
+{
+
+}
+
 
 CVRPSolver::CVRPSolver()
 {
@@ -52,8 +115,19 @@ bool CVRPSolver::solveVRP(std::string& strError)
 		strError = "Scenario is not ready to solve. Configure all parameter";
 		return false;
 	}
+
+	std::vector<int> vecOrders, vecVehicles;
+	for(int i = 0; i < m_vOrderInfos.size(); i++)
+	{
+		vecOrders.push_back(m_vOrderInfos[i].getOrderId());
+	}
+
+	for(int i = 0; i < m_vVehicleInfos.size(); i++)
+	{
+		vecVehicles.push_back(m_vVehicleInfos[i].getId());
+	}
 	
-	m_solutionFinal.init();
+	m_solutionFinal.init(vecOrders, vecOrders.size(), vecVehicles);
 	int iAttemtCount = 0;
 	while(iAttemtCount < MAXIMUM_TRY)
 	{
@@ -76,7 +150,19 @@ bool CVRPSolver::solveVRP(std::string& strError)
 CSolutionInfo CVRPSolver::generateInitialSolution()
 {
 	CSolutionInfo initialSolution;
-	initialSolution.init();
+
+	std::vector<int> vecOrders, vecVehicles;
+	for(int i = 0; i < m_vOrderInfos.size(); i++)
+	{
+		vecOrders.push_back(m_vOrderInfos[i].getOrderId());
+	}
+
+	for(int i = 0; i < m_vVehicleInfos.size(); i++)
+	{
+		vecVehicles.push_back(m_vVehicleInfos[i].getId());
+	}
+
+	initialSolution.init(vecOrders, vecOrders.size(), vecVehicles);
 
 	int iUnusedVehicles = m_viUnusedVehicleIndex.size();
 	int iUnservedOrders = m_viUnservedOrderIndex.size();
@@ -86,7 +172,7 @@ CSolutionInfo CVRPSolver::generateInitialSolution()
 		CTourInfo curTour;
 
 		int vehicleIndex = rand() % iUnusedVehicles--;
-		curTour.setVehicleId(m_viUnusedVehicleIndex[vehicleIndex]);
+		curTour.setVehicleInfo(m_vVehicleInfos[m_viUnusedVehicleIndex[vehicleIndex]]);
 		removeVehicle(vehicleIndex);
 		curTour.setStartDepot(m_vDepotInfos[0].getDepotId());
 		curTour.setEndDepot(m_vDepotInfos[0].getDepotId());
@@ -116,7 +202,7 @@ CSolutionInfo CVRPSolver::generateInitialSolution()
 			if( insertAvailable )
 			{
 				iUnservedOrders--;
-				curTour.insertOrder(m_viUnservedOrderIndex[PotentialInsert.second], PotentialInsert.first);
+				insertOrder(curTour, m_viUnservedOrderIndex[PotentialInsert.second], PotentialInsert.first);
 				removeOrder(PotentialInsert.second);
 			}
 		}
@@ -282,7 +368,7 @@ void CVRPSolver::insertUnservedOrders(CSolutionInfo& curSolution)
 				COrderInfo curOrder = m_vOrderInfos[curSolution.getUnservedOrderAt(i)];
 				std::pair<int,double> curInsert = curTour.getPotentialInsert( curOrder);
 
-				curTour.insertOrder(i,curInsert.first);
+				insertOrder(curTour, i,curInsert.first);
 				curMove.setModifiedTour(curTour);
 				curMove.getInitialTour(curTour);
 
@@ -316,4 +402,148 @@ void CVRPSolver::insertUnservedOrders(CSolutionInfo& curSolution)
 		}
 	}
 	
+}
+
+bool CVRPSolver::addDepot(CDepotInfo depotInfo)
+{
+	int id = depotInfo.getDepotId();
+	if(m_mapDepotIdToIndex.find(id) != m_mapDepotIdToIndex.end())
+		return false;
+	m_mapDepotIdToIndex.insert(std::make_pair(id, m_vDepotInfos.size()));
+	m_vDepotInfos.push_back(depotInfo);
+	
+	return true;
+}
+
+bool CVRPSolver::addOrder(COrderInfo orderInfo)
+{
+	int id = orderInfo.getOrderId();
+	if(m_mapOrderIdToIndex.find(id) != m_mapOrderIdToIndex.end())
+	{
+		return false;
+	}
+	int index = m_vOrderInfos.size();
+	m_mapOrderIdToIndex.insert(std::make_pair(id, index));
+	m_vOrderInfos.push_back(orderInfo);
+	m_viUnservedOrderIndex.push_back(index);
+	return true;
+}
+
+bool CVRPSolver::addVehicle(CVehicleInfo vehicleInfo)
+{
+	int id = vehicleInfo.getId();
+	if(m_mapVehicleIdToIndex.find(id) != m_mapVehicleIdToIndex.end())
+	{
+		return false;
+	}
+	int index = m_vVehicleInfos.size();
+	m_mapVehicleIdToIndex.insert(std::make_pair(id, index));
+	m_vVehicleInfos.push_back(vehicleInfo);
+	m_viUnusedVehicleIndex.push_back(index);
+	return true;
+}
+
+bool CVRPSolver::addDepotToOrderCost(int depotId, int orderId, CostPack cost)
+{
+	PII depo_order = std::make_pair(depotId, orderId);
+	if(m_mapDepotToOrderrCost.find(depo_order) != m_mapDepotToOrderrCost.end())
+	{
+		return false;
+	}
+	m_mapDepotToOrderrCost.insert(make_pair(depo_order, cost));
+	return true;
+}
+
+bool CVRPSolver::addOrderToDepotCost(int depotId, int orderId, CostPack cost)
+{
+	PII depo_order = std::make_pair(orderId, depotId);
+	if(m_mapOrderToDepotCost.find(depo_order) != m_mapOrderToDepotCost.end())
+	{
+		return false;
+	}
+	m_mapOrderToDepotCost.insert(std::make_pair(depo_order, cost));
+	return true;
+}
+
+bool CVRPSolver::addOrderToOrderCost(int firstOrder, int secondOrder, CostPack cost)
+{
+	PII order_order = std::make_pair(firstOrder, secondOrder);
+	if(m_mapOrderToOrderCost.find(order_order) != m_mapOrderToOrderCost.end())
+	{
+		return false;
+	}
+	m_mapOrderToOrderCost.insert(std::make_pair(order_order, cost));
+	return true;
+}
+
+bool CVRPSolver::getSolution(CSolutionInfo& solution, std::string& strError)
+{
+	if(m_bIsSoultionReady == true)
+	{
+		solution = m_solutionFinal;
+		return true;
+	}
+	else
+	{
+		bool ret = solveVRP(strError);
+		if(ret == true)
+		{
+			solution = m_solutionFinal;
+			return true;
+		}
+		return false;
+	}
+}
+
+CostPack CVRPSolver::getDepotToOrderCost(int depotId, int orderId)
+{
+	PII depo_order = std::make_pair(depotId, orderId);
+
+	if(m_mapDepotToOrderrCost.find(depo_order) != m_mapDepotToOrderrCost.end())
+	{
+		return(m_mapDepotToOrderrCost[depo_order]);
+	}
+	CostPack ret;
+	ret.cost = ret.distance = ret.traveltime = 1e15;
+	return ret;
+}
+
+CostPack CVRPSolver::getOrderToOrderCost(int orderId1, int orderId2)
+{
+	PII order_order = std::make_pair(orderId1, orderId2);
+
+	if(m_mapOrderToOrderCost.find(order_order) != m_mapOrderToOrderCost.end())
+	{
+		return(m_mapOrderToOrderCost[order_order]);
+	}
+	CostPack ret;
+	ret.cost = ret.distance = ret.traveltime = 1e15;
+	return ret;
+}
+
+
+CostPack CVRPSolver::getOrderToDepotCost(int depotId, int orderId)
+{
+	PII depo_order = std::make_pair(orderId, depotId);
+
+	if(m_mapOrderToDepotCost.find(depo_order) != m_mapOrderToDepotCost.end())
+	{
+		return(m_mapOrderToDepotCost[depo_order]);
+	}
+	CostPack ret;
+	ret.cost = ret.distance = ret.traveltime = 1e15;
+	return ret;
+}
+
+bool CVRPSolver::insertOrder(CTourInfo& tourInfo, int orderId, int pos)
+{
+	if(pos < 0 || pos > tourInfo.getOrderVector().size())
+		return false;
+
+	tourInfo.insertOrder(orderId, pos);
+	int orderIndex = m_mapOrderIdToIndex[orderId];
+	tourInfo.getVehicleInfo().loadUnit(m_vOrderInfos[orderIndex].getOrderUnit());
+
+
+	return true;
 }
