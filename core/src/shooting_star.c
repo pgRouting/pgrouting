@@ -452,7 +452,7 @@ shortest_path_shooting_star(PG_FUNCTION_ARGS)
   int                  call_cntr;
   int                  max_calls;
   TupleDesc            tuple_desc;
-  path_element_t      *path;
+  path_element_t      *path = 0;
   
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL())
@@ -559,6 +559,7 @@ shortest_path_shooting_star(PG_FUNCTION_ARGS)
     }
   else    /* do when there is no more left */
     {
+      if (path) free(path);
       SRF_RETURN_DONE(funcctx);
     }
 }
