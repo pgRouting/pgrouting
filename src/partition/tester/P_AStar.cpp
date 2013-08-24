@@ -40,7 +40,7 @@ void P_AStar::load_partition(int vertex_id)
 {    
 	 edge_p_astar_t *edges; 
 		 
-	 fetch_partition_edges(vertex_id);
+	 edges=fetch_partition_edges(vertex_id);
 
 	 construct_graph(edges,total_tuples);                  //total tuples is declared globally in header file of c file.
 
