@@ -47,12 +47,32 @@ public:
 	int E_pid;
 };
 
+typedef struct{
+	int par_Node;
+	int par_Edge;
+}PARENT_PATH;
+
+
+
 typedef std::vector<GraphEdgeInfo> GraphEdgeVector;
 typedef std::map<long,LongVector> Long2LongVectorMap;
 typedef std::map<long,long> Long2LongMap;
 typedef std::vector<GraphNodeInfo> GraphNodeVector;
+typedef std::map<long,PARENT_PATH>  Long2ParentMap;
+typedef std::map<long,float> Long2FloatMap;
+
+typedef struct
+{
+	float cost;
+	int node_id;
+}pq_pair;
 
 
+class Compare
+{
+ public:
+	 bool operator()(pq_pair* p1, pq_pair*p2)
+};
 
 
 class P_AStar
@@ -64,36 +84,42 @@ class P_AStar
 		~P_AStar(void);
 		
 		
-		int p_astar(int start_vertex, int end_vertex, char **err_msg);
+		int p_astar(int start_vertex, int end_vertex,int s_pid ,int t_pid, char **err_msg);
 
 
 
 	private:
                 
-		void initall(int source_vertex,int target_vertex);
-		void load_partition( int vertex_id);
+		void initall(int s_pid,int t_pid);
+		void load_partition( int pid);
 		bool construct_graph(edge_p_astar_t *edges int edge_count);
 		void construct_path(int node_id);
 		bool addEdge(edge_p_astar_t edgeIn);
 		bool addNode(edge_p_astar_t edgeIn,int node_id);
 		void deleteall();
-		void explore(int cur_node, double cur_cost,Priority_queue pque);
-
-
+		void explore(int cur_node, float cur_cost, std::priority_queue<pq_pair*, std::vector<pq_pair*>, Compare > &que)
+		void check_whether_loaded(int node_id);  
+                double getcost(int node_id );
+		void setcost(int node_id,double cost);
+		void setparent(int node_id , int par_node ,int par_edge);
+		double gethcost(int node_id);
+		double dist(double x1,double y1,double x2,double y2);
 
 	private:
 		GraphEdgeVector m_vecEdgeVector;
 		Long2LongMap m_mapEdgeId2Index;
 		Long2LongMap m_mapNodeId2Index;
 		GraphNodeVector m_vecNodeVector;
+		Long2ParentMap m_pFParent;
+		Long2FloatMap m_pFCost ;
 
-		// a min heap will be required as well // 
 		int m_lStartNodeId;
 		int m_lEndNodeId;
 		double m_MinCost;
 		int m_MidNode;
-
-		bool loaded_partition[10000000]={false};
+		std::vector <path_element_t> m_vecPath;
+		
+		bool loaded_partition[10000000]; 
 
 };
 
