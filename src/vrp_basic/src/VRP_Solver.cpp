@@ -10,6 +10,13 @@ CVehicleInfo::~CVehicleInfo()
 {
 }
 
+bool CVehicleInfo::loadUnit(int lUnit)
+{
+	if(m_iCurrentLoad + lUnit > m_iCapacity)
+		return false;
+	m_iCurrentLoad += lUnit;
+}
+
 COrderInfo::COrderInfo()
 {
 }
@@ -34,6 +41,12 @@ CTourInfo::~CTourInfo()
 bool CTourInfo::insertOrder(int orderId, int pos)
 {
 	m_viOrderIds.insert(m_viOrderIds.begin() + pos, orderId);
+	return true;
+}
+
+int CTourInfo::getRemainingCapacity()
+{
+	return(m_vehicleInfo.getRemainingCapacity());
 }
 
 CSolutionInfo::CSolutionInfo()
@@ -392,7 +405,7 @@ void CVRPSolver::insertUnservedOrders(CSolutionInfo& curSolution)
 			totalUnservedOrder--;
 			curMove.setInitialTour(curSolution.getTour(insertTourId));
 
-			curSolution.addOrderAtTour(insertTourId,
+			addOrderAtTour(curSolution, insertTourId,
 				PotentialInsert.first,
 				PotentialInsert.second);
 
@@ -543,7 +556,59 @@ bool CVRPSolver::insertOrder(CTourInfo& tourInfo, int orderId, int pos)
 	tourInfo.insertOrder(orderId, pos);
 	int orderIndex = m_mapOrderIdToIndex[orderId];
 	tourInfo.getVehicleInfo().loadUnit(m_vOrderInfos[orderIndex].getOrderUnit());
-
+	
+	updateTourCosts(tourInfo);
 
 	return true;
+}
+
+bool CVRPSolver::updateTourCosts(CTourInfo& tourInfo)
+{
+	std::vector<int> vecOrderId = tourInfo.getOrderVector();
+
+	double dCost, dDistance, dTravelTime;
+	dCost = dDistance = dTravelTime = 0.0;
+
+	CostPack cPack = getDepotToOrderCost(tourInfo.getStartDepot(), vecOrderId[0]);
+
+	dCost += cPack.cost;
+	dDistance += cPack.distance;
+
+	int ind = m_mapOrderIdToIndex[vecOrderId[0]];
+
+	if(dTravelTime + cPack.traveltime > m_vOrderInfos[ind].getCloseTime())
+		return false;
+
+	dTravelTime = max(dTravelTime + cPack.traveltime + m_vOrderInfos[ind].getServiceTime(), 
+						m_vOrderInfos[ind].getOpenTime() + m_vOrderInfos[ind].getServiceTime());
+
+	int i;
+	for(i = 1; i < vecOrderId.size(); i++)
+	{
+		cPack = getOrderToOrderCost(vecOrderId[i - 1], vecOrderId[i]);
+		dCost += cPack.cost;
+		dDistance += cPack.distance;
+
+		ind = m_mapOrderIdToIndex[vecOrderId[i]];
+
+		if(dTravelTime + cPack.traveltime > m_vOrderInfos[ind].getCloseTime())
+			return false;
+
+		dTravelTime = max(dTravelTime + cPack.traveltime + m_vOrderInfos[ind].getServiceTime(), 
+			m_vOrderInfos[ind].getOpenTime() + m_vOrderInfos[ind].getServiceTime());
+	
+	}
+	
+	cPack = getOrderToDepotCost(vecOrderId[i - 1], tourInfo.getEndDepot());
+	dCost += cPack.cost;
+	dDistance += cPack.distance;
+
+	dTravelTime += cPack.traveltime;
+
+	return true;
+}
+
+bool CVRPSolver::addOrderAtTour(CSolutionInfo &solutionInfo, int tourIndex, int insertIndex, int orderIndex)
+{
+	return(insertOrder(solutionInfo.getTour(tourIndex), m_vOrderInfos[orderIndex].getOrderId(), insertIndex));
 }

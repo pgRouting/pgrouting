@@ -16,6 +16,8 @@
 
 typedef std::pair<int, int> PII;
 
+#define max(a,b) ((a)>(b))?(a):(b)
+
 // Structure for Point, Geo coordinates can be represented with it
 typedef struct
 {
@@ -204,13 +206,13 @@ public:
 	//int getVehicleUsed(){return m_iVehicleUsed;}
 	
 	bool addTour(CTourInfo& tour);
-	CTourInfo getTour(int pos){return m_vtourAll[pos];}
+	CTourInfo& getTour(int pos){return m_vtourAll[pos];}
 	
 	double getTotalCost(){return m_dTotalCost;}
 	double getTotalDistance(){return m_dTotalDistance;}
 	double getTotalTravelTime(){return m_dTotalTravelTime;}
 	int getUnservedOrderAt(int pos){return m_vUnservedOrderId[pos];}
-	void addOrderAtTour(int tourIndex, int insertIndex, int orderIndex);
+	//void addOrderAtTour(int tourIndex, int insertIndex, int orderIndex);
 
 	void replaceTour(CTourInfo curTour);
 
@@ -313,6 +315,8 @@ public:
 	void updateTabuCount(CMoveInfo& bestMove);
 
 	bool isTabuMove(CMoveInfo curMove);
+	bool updateTourCosts(CTourInfo& tourInfo);
+	bool addOrderAtTour(CSolutionInfo& solutionInfo, int tourIndex, int insertIndex, int orderIndex);
 	
 
 private:
