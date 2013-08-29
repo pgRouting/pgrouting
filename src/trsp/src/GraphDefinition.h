@@ -72,7 +72,7 @@ public:
 
 
 
-typedef std::vector<GraphEdgeInfo> GraphEdgeVector;
+typedef std::vector<GraphEdgeInfo*> GraphEdgeVector;
 typedef std::map<long,LongVector> Long2LongVectorMap;
 typedef std::map<long,long> Long2LongMap;
 
@@ -96,12 +96,13 @@ public:
 private:
 	bool construct_graph(edge_t *edges, int edge_count);
 	double construct_path(int ed_id, int v_pos);
-	void explore(int cur_node, GraphEdgeInfo cur_edge, bool isStart, LongVector &vecIndex, std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > &que);
-	double getRestrictionCost(int cur_node, GraphEdgeInfo new_edge, bool isStart);
+	void explore(int cur_node, GraphEdgeInfo& cur_edge, bool isStart, LongVector &vecIndex, std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > &que);
+	double getRestrictionCost(int cur_node, GraphEdgeInfo& new_edge, bool isStart);
 	bool addEdge(edge edgeIn);
 	bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
 	bool get_single_cost(double total_cost, path_element_t **path, int *path_count);
 	void init();
+    void deleteall();
 
 private:
 	GraphEdgeVector m_vecEdgeVector;

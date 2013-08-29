@@ -48,7 +48,7 @@ Description
   :source: ``int4`` identifier of the source vertex
   :target: ``int4`` identifier of the target vertex
   :cost: ``float8`` value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph.
-  :reverse_cost: (optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs).
+  :reverse_cost: ``float8`` (optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs).
 
 :source: ``int4`` id of the start point
 :target: ``int4`` id of the end point

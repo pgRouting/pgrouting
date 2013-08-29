@@ -1,0 +1,259 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting Docs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-06 17:20+0000\n"
+"Last-Translator: Daniel Kastl\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# cfa2f875c913487ba00431d50f10ce52
+#: ../../../src/trsp/doc/index.rst:13
+msgid "pgr_trsp - Turn Restriction Shortest Path (TRSP)"
+msgstr ""
+
+# 9a2a455c126546639878464b6436ef96
+#: ../../../src/trsp/doc/index.rst:23
+msgid "Name"
+msgstr "名前"
+
+# a00bb1f2f58a47c29d946baa7641c1c6
+#: ../../../src/trsp/doc/index.rst:25
+msgid ""
+"``pgr_trsp`` — Returns the shortest path with support for turn restrictions."
+msgstr ""
+
+# c82a5429813a44f29a2ab417aeaf9d43
+#: ../../../src/trsp/doc/index.rst:29
+msgid "Synopsis"
+msgstr "概要"
+
+# 96c292d4af1d47e1882c0abc06b9c96b
+#: ../../../src/trsp/doc/index.rst:31
+msgid ""
+"The turn restricted shorthest path (TRSP) is a shortest path algorithm that "
+"can optionally take into account complicated turn restrictions like those "
+"found in real work navigable road networks. Performamnce wise it is nearly "
+"as fast as the A* search but has many additional features like it works with"
+" edges rather than the nodes of the network. Returns a set of "
+":ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that "
+"make up a path."
+msgstr ""
+
+# 65f3fa4c8552431e8be5a2e81abc527d
+#: ../../../src/trsp/doc/index.rst:47
+msgid "Description"
+msgstr "説明"
+
+# 76e9d5c0405b4b58a929fcf897c937f3
+#: ../../../src/trsp/doc/index.rst:49
+msgid ""
+"The Turn Restricted Shortest Path algorithm (TRSP) is similar to the "
+":ref:`shooting_star` in that you can specify turn restrictions."
+msgstr ""
+
+# 3564a0c9a95e464489bb4163e1e42240
+#: ../../../src/trsp/doc/index.rst:51
+msgid ""
+"The TRSP setup is mostly the same as :ref:`Dijkstra shortest path "
+"<pgr_dijkstra>` with the addition of an optional turn restriction table. "
+"This makes adding turn restrictions to a road network much easier than "
+"trying to add them to Shooting Star where you had to ad the same edges "
+"multiple times if it was involved in a restriction."
+msgstr ""
+
+# fe33c249bdd54e2f8bc3dc74f048f29d
+#: ../../../src/trsp/doc/index.rst:54
+msgid ""
+"a SQL query, which should return a set of rows with the following columns:"
+msgstr "SQLのクエリーです。以下に続くカラムからなる行セットを返します:"
+
+# 70b2271a2a5743b1b6af544861bac163
+#: ../../../src/trsp/doc/index.rst:61
+msgid "``int4`` identifier of the edge"
+msgstr "エッジの識別子[``int4``]"
+
+# 2d2ce8fc582942ec953bd0d4ec32f1a5
+#: ../../../src/trsp/doc/index.rst:62
+msgid "``int4`` identifier of the source vertex"
+msgstr "``int4``型の始点ノードの識別子"
+
+# bc41607130754c1ba185db2c531feb57
+#: ../../../src/trsp/doc/index.rst:63
+msgid "``int4`` identifier of the target vertex"
+msgstr "``int4``型の終点ノードの識別子"
+
+# 06c368930f7f49c09271fdd626c92eaf
+#: ../../../src/trsp/doc/index.rst:64
+msgid ""
+"``float8`` value, of the edge traversal cost. A negative cost will prevent "
+"the edge from being inserted in the graph."
+msgstr "``float8``型のエッジにかかる重み。負の重みはエッジがグラフに挿入されることを防ぎます。"
+
+# 7b7376cabffe48fbb3fe367907131aba
+#: ../../../src/trsp/doc/index.rst:65
+msgid ""
+"(optional) the cost for the reverse traversal of the edge. This is only used"
+" when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the "
+"above remark about negative costs)."
+msgstr "(オプション) エッジの反対方向のコスト。この値は``directed``および``has_rcost``パラメータが``true``の場合のみ使用されます。(負のコストについては前述の通りです)"
+
+# 2d3309ec1c3e42aca8363eb30d180dd7
+#: ../../../src/trsp/doc/index.rst:67
+msgid "``int4`` **NODE id** of the start point"
+msgstr ""
+
+# baaabc6b91d94ff4990d75519c9b8047
+#: ../../../src/trsp/doc/index.rst:68
+msgid "``int4`` **NODE id** of the end point"
+msgstr ""
+
+# 87cf66f9cf0c4380923b9e89359cf884
+#: ../../../src/trsp/doc/index.rst:69
+msgid "``true`` if the graph is directed"
+msgstr "有向グラフの場合は``true``を指定"
+
+# dc5293d15c004ad7812acb44d8b97048
+#: ../../../src/trsp/doc/index.rst:70
+msgid ""
+"if ``true``, the ``reverse_cost`` column of the SQL generated set of rows "
+"will be used for the cost of the traversal of the edge in the opposite "
+"direction."
+msgstr "``true``の場合、SQLで生成される行セットの``reverse_cost``カラムは、エッジの逆方向にかかる重みとして使用されます。"
+
+# 56ca23e87c8942519c1da7282f8ad6f2
+#: ../../../src/trsp/doc/index.rst:72
+msgid ""
+"(optional) a SQL query, which should return a set of rows with the following"
+" columns:"
+msgstr ""
+
+# 2bc1b43184f84168accd245c76ee6059
+#: ../../../src/trsp/doc/index.rst:78
+msgid "``float8`` turn restriction cost"
+msgstr ""
+
+# 25b8a5f1b1d2452499bf86ab3d09ccbc
+#: ../../../src/trsp/doc/index.rst:79
+msgid "``int4`` target id"
+msgstr ""
+
+# 708d1fcc1acd4504b6df1f8a93b7fd89
+#: ../../../src/trsp/doc/index.rst:80
+msgid ""
+"``text`` commar seperated list of edges in the reverse order of ``rule``"
+msgstr ""
+
+# 935dd4481b854b998c1dbcaecf39cf67
+#: ../../../src/trsp/doc/index.rst:82
+msgid ""
+"Another variant of TRSP allows to specify **EDGE id** of source and target "
+"together with a fraction to interpolate the position:"
+msgstr ""
+
+# 3c75ccca4ca74f97a1a00e8f3c59be9e
+#: ../../../src/trsp/doc/index.rst:84
+msgid "``int4`` **EDGE id** of the start edge"
+msgstr ""
+
+# 859f93b515884d57ac5e338caf27b7de
+#: ../../../src/trsp/doc/index.rst:85
+msgid "``float8`` fraction of 1 defines the position on the start edge"
+msgstr ""
+
+# 6e5c6b5dba02428298c395fa5890291f
+#: ../../../src/trsp/doc/index.rst:86
+msgid "``int4`` **EDGE id** of the end edge"
+msgstr ""
+
+# 2b5b3f50feb04557809cf08aa4f30064
+#: ../../../src/trsp/doc/index.rst:87
+msgid "``float8`` fraction of 1 defines the position on the end edge"
+msgstr ""
+
+# 5c84eda4c25041758179fac6488e4801
+#: ../../../src/trsp/doc/index.rst:89
+msgid "Returns set of :ref:`type_cost_result`:"
+msgstr ":ref:`type_cost_result` のセットを返します:"
+
+# 852621c0f3f241eb81d6eeb34b2f1469
+#: ../../../src/trsp/doc/index.rst:91
+msgid "row sequence"
+msgstr "行の連番"
+
+# d4dd3cfe73644963b2b588cdd8ff54bb
+#: ../../../src/trsp/doc/index.rst:92
+msgid "node ID"
+msgstr "ノードID"
+
+# bc818fde81a04c30b27251e8e2a0afa1
+#: ../../../src/trsp/doc/index.rst:93
+msgid "edge ID (``-1`` for the last row)"
+msgstr "エッジID (最終行は``-1``)"
+
+# b431c4a009d349f5850f72d36f2ff97b
+#: ../../../src/trsp/doc/index.rst:94
+msgid "cost to traverse from ``id1`` using ``id2``"
+msgstr "``id1``から``id2``を横断するコスト"
+
+# f62f8f1308a0470a83970a0b7b36e801
+#: ../../../src/trsp/doc/index.rst:98
+msgid "History"
+msgstr "歴史"
+
+# 4d102cbb09204c75bee37f77341394a1
+#: ../../../src/trsp/doc/index.rst:99
+msgid "New in version 2.0.0"
+msgstr ""
+
+# 50b16767814a41c4a66af635c0af84c9
+#: ../../../src/trsp/doc/index.rst:103
+msgid "Examples"
+msgstr "例"
+
+# 0beecbb7ea32400f8576709844c8ceed
+#: ../../../src/trsp/doc/index.rst:105
+msgid "Without turn restrictions"
+msgstr ""
+
+# 4bd212850c834e9b93270595315ff387
+#: ../../../src/trsp/doc/index.rst:124
+msgid "With turn restrictions"
+msgstr ""
+
+# c4bc78f0bf5048129ed9e5dbdc39c647
+#: ../../../src/trsp/doc/index.rst:126
+msgid ""
+"Turn restrictions require additional information, which can be stored in a "
+"separate table:"
+msgstr ""
+
+# 564ef7cf329248709cee792855b5a91e
+#: ../../../src/trsp/doc/index.rst:142
+msgid "Then a query with turn restrictions is created as:"
+msgstr ""
+
+# 84c4168f625645359e9ba06c07d7ef0c
+#: ../../../src/trsp/doc/index.rst:165
+msgid "The queries use the :ref:`sampledata` network."
+msgstr "上記クエリは :ref:`sampledata` のネットワークを使用しています。"
+
+# 39bef19224c243b7bf17a098d2c960c6
+#: ../../../src/trsp/doc/index.rst:169
+msgid "See Also"
+msgstr "参照"
+
+# 08726e7f686d4e3290b2fbc3f00c4f19
+#: ../../../src/trsp/doc/index.rst:171
+msgid ":ref:`type_cost_result`"
+msgstr ":ref:`type_cost_result`"

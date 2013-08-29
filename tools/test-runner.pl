@@ -33,12 +33,14 @@ sub Usage {
         "       -v                  - verbose messages for debuging(enter twice for more)\n" .
         "       -clean              - dropdb pgr_test__db__test\n" .
         "       -ignorenotice       - ignore NOTICE statements when reporting failures\n" .
+        "       -alg 'dir'          - directory to select which algorithm subdirs to test\n" .
         "       -h                  - help\n";
 }
 
 print "RUNNING: test-runner.pl " . join(" ", @ARGV) . "\n";
 
 my ($vpg, $vpgis, $vpgr, $psql);
+my $alg = '';
 my $clean;
 my $ignore;
 
@@ -54,6 +56,9 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a eq '-pgrver') {
         $vpgr = shift @ARGV || Usage();
+    }
+    elsif ($a eq '-alg') {
+        $alg = shift @ARGV || Usage();
     }
     elsif ($a eq '-psql') {
         $psql = shift @ARGV || Usage();
@@ -113,7 +118,7 @@ if (length($psql)) {
 #exit;
 
 # Traverse desired filesystems
-File::Find::find({wanted => \&want_tests}, 'src');
+File::Find::find({wanted => \&want_tests}, "src/$alg");
 
 die "Error: no test files found. Run this command from the top level pgRouting directory!\n" unless @cfgs;
 

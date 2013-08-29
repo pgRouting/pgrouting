@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+# cvvergara, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting Docs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-06 14:00+0000\n"
+"Last-Translator: cvvergara\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# f15b37fde8e64b508893630a0291dc6a
+#: ../../../src/common/doc/functions/versionless.rst:13
+msgid "pgr_versionless - Compare version numbers"
+msgstr ""
+
+# cd0dcc3f3489468ab55c89598715d895
+#: ../../../src/common/doc/functions/versionless.rst:20
+msgid "Name"
+msgstr "名前"
+
+# e2f0eb00eca142c8bc7d71b317604c7e
+#: ../../../src/common/doc/functions/versionless.rst:22
+msgid "``pgr_version`` — Compare two version numbers and return if smaller."
+msgstr ""
+
+# d85cf15bf8894e158945855624a422f5
+#: ../../../src/common/doc/functions/versionless.rst:26
+msgid "Synopsis"
+msgstr "概要"
+
+# ed2cb6f5c03645b3ab2a296d062c1eb9
+#: ../../../src/common/doc/functions/versionless.rst:28
+msgid ""
+"Returns ``true`` if the first version number is smaller than the second "
+"version number. Otherwise returns ``false``."
+msgstr ""
+
+# a11f675500e140ae997cdb4f167d2da4
+#: ../../../src/common/doc/functions/versionless.rst:36
+msgid "Description"
+msgstr "説明"
+
+# 7d1ac8fa4fce4362965d8587a3cd7099
+#: ../../../src/common/doc/functions/versionless.rst:38
+msgid "``text`` first version number"
+msgstr ""
+
+# 1d8a5a36a0fa4da19892193a11578a08
+#: ../../../src/common/doc/functions/versionless.rst:39
+msgid "``text`` second version number"
+msgstr ""
+
+# a32770a22cf849cb96bd78825f332825
+#: ../../../src/common/doc/functions/versionless.rst:43
+msgid "History"
+msgstr "歴史"
+
+# 14ef379da17a48389cb627817c173253
+#: ../../../src/common/doc/functions/versionless.rst:44
+msgid "New in version 2.0.0"
+msgstr ""
+
+# 7a3d2290bca342b79b4105e7aee330b0
+#: ../../../src/common/doc/functions/versionless.rst:48
+msgid "Examples"
+msgstr "例"
+
+# ca2f13a6ce4444258be7f46d40c8bd2a
+#: ../../../src/common/doc/functions/versionless.rst:61
+msgid "See Also"
+msgstr "参照"
+
+# a621baf581ff4ba8b4b03d3481d5a660
+#: ../../../src/common/doc/functions/versionless.rst:63
+msgid ":ref:`pgr_version`"
+msgstr ":ref:`pgr_version`"

@@ -19,7 +19,7 @@ pgr_versionless - Compare version numbers
 Name
 -------------------------------------------------------------------------------
 
-``pgr_version`` — Compare two version numbers and return if smaller.
+``pgr_versionless`` — Compare two version numbers.
 
 
 Synopsis
