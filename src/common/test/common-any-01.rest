@@ -1,23 +1,17 @@
- NOTICE:  Cheking edges2 exists
- NOTICE:    -----> OK
- NOTICE:  checking the_geom and eid columns in  public.edges2 
- NOTICE:    ------>OK
- NOTICE:  checking that  eid is completely populated i.e. do not have NULL values
- NOTICE:    ------>OK
- NOTICE:  checking "source" and "target" columns in  public.edges2 
- NOTICE:    ------>OK
- NOTICE:  Checking the SRID of the geometry the_geom
- NOTICE:    -----> SRID found 0
- NOTICE:  initializing public.edges2_vertices_pgr
+ NOTICE:  PROCESSING:
+ NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','eid','source','target','true')
+ NOTICE:  Performing checks, pelase wait .....
  NOTICE:  CREATE TABLE will create implicit sequence "edges2_vertices_pgr_id_seq" for serial column "edges2_vertices_pgr.id"
 CONTEXT:  SQL statement "CREATE TABLE public.edges2_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createtopology" line 127 at EXECUTE statement
+PL/pgSQL function "pgr_createtopology" line 203 at EXECUTE statement
  NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "edges2_vertices_pgr_pkey" for table "edges2_vertices_pgr"
 CONTEXT:  SQL statement "CREATE TABLE public.edges2_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createtopology" line 127 at EXECUTE statement
- NOTICE:  Creating Topology
- NOTICE:  0 out of aprox 23 edges processed
- NOTICE:    -----> DONE: 23 edges processed
+PL/pgSQL function "pgr_createtopology" line 203 at EXECUTE statement
+ NOTICE:  Creating Topology, Please wait...
+ NOTICE:  -------------> TOPOLOGY CREATED FOR  23 edges
+ NOTICE:  Rows with NULL geometry or NULL id: 0
+ NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
+ NOTICE:  ----------------------------------------------
 OK
 1|||||010100000000000000000000400000000000000000
 2|||||01010000000000000000000040000000000000F03F

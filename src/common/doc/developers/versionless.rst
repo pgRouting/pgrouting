@@ -7,36 +7,37 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_is_column_in_table:
+.. _pgr_versionless:
 
-pgr_isColumnInTable - Check if column exists
+pgr_versionless
 ===============================================================================
 
 .. index:: 
-	single: pgr_isColumnInTable(text,text)
-	module: common
+	single: pgr_versionless(text,text)
+	module: utilities
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_isColumnInTable`` — Check if a column exists in a table.
+``pgr_version`` — Compare two version numbers and return if smaller.
 
+.. note:: This function is intended for the developer’s aid.
 
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns ``true`` or ``false`` if column “col” exists in table “tab”.
+Returns ``true`` if the first version number is smaller than the second version number. Otherwise returns ``false``.
 
 .. code-block:: sql
 
-	boolean pgr_isColumnInTable(tab text, col text);
+	boolean pgr_versionless(text v1, text v2);
 
 
 Description
 -------------------------------------------------------------------------------
 
-:tab: ``text`` table name with or without schema component
-:col: ``text`` column name to be checked for
+:v1: ``text`` first version number
+:v2: ``text`` second version number
 
 
 .. rubric:: History
@@ -49,17 +50,16 @@ Examples
 
 .. code-block:: sql
 
-    SELECT pgr_isColumnInTable('edge_table','the_geom');
-    
-     pgr_iscolumnintable 
-    ---------------------
+    SELECT pgr_versionless('2.0.1', '2.1');
+
+     pgr_versionless 
+    -----------------
      t
     (1 row)
-
-The queries use the :ref:`sampledata` network.
 
 
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_is_column_indexed`
+* :ref:`developer` for the tree layout of the project.
+* :ref:`pgr_version` to get the current version of pgRouting.

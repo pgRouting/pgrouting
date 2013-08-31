@@ -9,7 +9,7 @@
 
 .. _pgr_version:
 
-pgr_version - Get version information
+pgr_version 
 ===============================================================================
 
 .. index:: 
@@ -79,4 +79,4 @@ Examples
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_versionless`
+* :ref:`pgr_versionless` to compare two version numbers

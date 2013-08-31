@@ -7,20 +7,13 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _intro:
+.. _data_types:
 
- 
+pgRouting Data Types
 ===============================================================================
 
-
 .. toctree::
-	:maxdepth: 1
+   :maxdepth: 1
 
-        introduction	
-        support
-
-.. rubric:: Indices and tables
-
-* :ref:`genindex`
-* :ref:`search`
-
+	pgr_costResult[] - Path Result with Cost <cost_result>
+	pgr_geomResult[] - Path Result with Geometry  <geom_result>

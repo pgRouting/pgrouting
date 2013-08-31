@@ -14,7 +14,7 @@ Common Functions
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
-   functions/*
-
+   developers/index
+   functions/index
+   types/index

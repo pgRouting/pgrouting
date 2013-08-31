@@ -7,20 +7,14 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _intro:
+.. _change_log:
 
- 
+Release Notes
 ===============================================================================
 
-
 .. toctree::
-	:maxdepth: 1
+        :maxdepth: 1
 
-        introduction	
-        support
-
-.. rubric:: Indices and tables
-
-* :ref:`genindex`
-* :ref:`search`
+	2.0
+        1.x
 

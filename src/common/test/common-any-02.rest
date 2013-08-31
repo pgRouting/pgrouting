@@ -1,25 +1,26 @@
- NOTICE:  Cheking edges2 exists
- NOTICE:    -----> OK
- NOTICE:  Checking "source", "target" and "the_geom" columns are in public.edges2 
- NOTICE:    ------>OK
- NOTICE:  checking that "source" and "target" are populated i.e. do not have NULL values
- NOTICE:    ------>OK
- NOTICE:  Cheking "source" column in public.edges2 is indexed
- NOTICE:   ------> Adding  index "public.edges2_source_idx".
- NOTICE:  Cheking "target" column in public.edges2 is indexed
- NOTICE:   ------> Adding  index "public.edges2_target_idx".
- NOTICE:  Cheking "the_geom" column in public.edges2 is indexed
- NOTICE:   ------> Adding unique index "public.edges2_the_geom_gidx".
- NOTICE:  Checking table public.edges2_vertices_pgr exists 
- NOTICE:    ------>OK
- NOTICE:  Cheking for "cnt" and "chk" column in public.edges2_vertices_pgr
- NOTICE:    ------>OK
- NOTICE:  Cheking "id" column in public.edges2_vertices_pgr is indexed
- NOTICE:    ------>OK
- NOTICE:  Populating public.edges2_vertices_pgr.cnt
- NOTICE:  Analyzing graph for gaps and zlev errors.
- NOTICE:  ----->Analysis done to 1 out of 4
- NOTICE:  Found 1 potential problems at 'SELECT count(*)  FROM public.edges2_vertices_pgr WHERE chk=1'
+ NOTICE:  PROCESSING:
+ NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','eid','source','target','true')
+ NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Creating Topology, Please wait...
+ NOTICE:  -------------> TOPOLOGY CREATED FOR  23 edges
+ NOTICE:  Rows with NULL geometry or NULL id: 0
+ NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
+ NOTICE:  ----------------------------------------------
+OK
+ NOTICE:  PROCESSING:
+ NOTICE:  pgr_analizeGraph('edges2',1e-06,'the_geom','eid','source','target','true')
+ NOTICE:  Performing checks, pelase wait...
+ NOTICE:  Analyzing for dead ends. Please wait...
+ NOTICE:  Analyzing for gaps. Please wait...
+ NOTICE:  Analyzing for isolated edges. Please wait...
+ NOTICE:  Analyzing for ring geometries. Please wait...
+ NOTICE:  Analyzing for intersections. Please wait...
+ NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
+ NOTICE:                    Isolated segments: 0
+ NOTICE:                            Dead ends: 4
+ NOTICE:  Potential gaps found near dead ends: 1
+ NOTICE:               Intersections detected: 8
+ NOTICE:                      Ring geometries: 0
 OK
 1
 ---------------------------------------

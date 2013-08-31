@@ -9,7 +9,7 @@
 
 .. _pgr_is_column_indexed:
 
-pgr_isColumnIndexed - Check if column is indexed
+pgr_isColumnIndexed
 ===============================================================================
 
 .. index:: 
@@ -21,24 +21,33 @@ Name
 
 ``pgr_isColumnIndexed`` — Check if a column in a table is indexed.
 
+.. note:: This function is intended for the developer’s aid.
 
 Synopsis
 -------------------------------------------------------------------------------
 
-Returns ``true`` or ``false`` if column “col” in table “tab” is indexed.
+Returns ``true`` when the column “col” in table “tab” is indexed.
 
 .. code-block:: sql
 
-	boolean pgr_isColumnIndexed(tab text, col text);
+	boolean pgr_isColumnIndexed(text tab, text col);
 
 
 Description
 -------------------------------------------------------------------------------
 
-:tab: ``text`` table name with or without schema component
-:col: ``text`` column name to be checked for
+:tab: ``text`` Table name with or without schema component.
+:col: ``text`` Column name to be checked for.
 
+Returns:
 
+  -  ``true`` when the column “col” in table “tab” is indexed.
+  -  ``false`` when:
+
+    * The table "tab" is not found or
+    * Column “col” is not found in table “tab” or
+    * Column "col" in table "tab" is not indexed
+ 
 .. rubric:: History
 
 * New in version 2.0.0
@@ -49,17 +58,30 @@ Examples
 
 .. code-block:: sql
 
-    SELECT pgr_isColumnIndexed('edge_table','the_geom');
+    SELECT pgr_isColumnIndexed('edge_table','x1');
 
      pgr_iscolumnindexed 
     ---------------------
      f
     (1 row)
 
-The queries use the :ref:`sampledata` network.
+    SELECT pgr_isColumnIndexed('public.edge_table','cost');
+
+     pgr_iscolumnindexed 
+    ---------------------
+     f
+    (1 row)
+
+
+
+The example use the :ref:`sampledata` network.
 
 
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_is_column_in_table`
+* :ref:`developer` for the tree layout of the project.
+* :ref:`pgr_is_column_in_table` to check only for the existance of the column in the table.
+* :ref:`pgr_get_column_name` to get the name of the column as is stored in the postgres administration tables.
+* :ref:`pgr_get_table_name` to get the name of the table as is stored in the postgres administration tables.
+
