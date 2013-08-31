@@ -474,58 +474,8 @@ PL/pgSQL function "pgr_createverticestable" line 126 at EXECUTE statement
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on myschema.Edges2 using btree(source)"
 PL/pgSQL function "pgr_createverticestable" line 126 at EXECUTE statement
- NOTICE:  CREATE TABLE will create implicit sequence "bigtable_id_seq" for serial column "bigtable.id"
- NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "bigtable_pkey" for table "bigtable"
-myschema.bigtable.the_geom SRID:0 TYPE:LINESTRING DIMS:2 
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('bigtable','the_geom','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  CREATE TABLE will create implicit sequence "bigtable_vertices_pgr_id_seq" for serial column "bigtable_vertices_pgr.id"
-CONTEXT:  SQL statement "CREATE TABLE myschema.bigtable_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createverticestable" line 166 at EXECUTE statement
- NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "bigtable_vertices_pgr_pkey" for table "bigtable_vertices_pgr"
-CONTEXT:  SQL statement "CREATE TABLE myschema.bigtable_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createverticestable" line 166 at EXECUTE statement
- NOTICE:  Populating myschema.bigtable_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  0 vertices
- NOTICE:  Edges with NULL geometry,source or target: 3000
- NOTICE:  Vertices table for table myschema.bigtable is: myschema.bigtable_vertices_pgr
- NOTICE:  ----------------------------------------------
-OK
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('bigtable',0.0001,'the_geom','id','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  Creating Topology, Please wait...
- NOTICE:  1000 edges processed
- NOTICE:  2000 edges processed
- NOTICE:  3000 edges processed
- NOTICE:  -------------> TOPOLOGY CREATED FOR  3000 edges
- NOTICE:  Rows with NULL geometry or NULL id: 0
- NOTICE:  Vertices table for table myschema.bigtable is: myschema.bigtable_vertices_pgr
- NOTICE:  ----------------------------------------------
-OK
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('myschema.bigtable','the_geom','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  CREATE TABLE will create implicit sequence "bigtable_vertices_pgr_id_seq" for serial column "bigtable_vertices_pgr.id"
-CONTEXT:  SQL statement "CREATE TABLE myschema.bigtable_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createverticestable" line 166 at EXECUTE statement
- NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "bigtable_vertices_pgr_pkey" for table "bigtable_vertices_pgr"
-CONTEXT:  SQL statement "CREATE TABLE myschema.bigtable_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createverticestable" line 166 at EXECUTE statement
- NOTICE:  Populating myschema.bigtable_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  6000 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
- NOTICE:  Vertices table for table myschema.bigtable is: myschema.bigtable_vertices_pgr
- NOTICE:  ----------------------------------------------
-OK
-t
-6000
  NOTICE:  table "Edges2_vertices_pgr" does not exist, skipping
- NOTICE:  drop cascades to 6 other objects
+ NOTICE:  drop cascades to 3 other objects
 DETAIL:  drop cascades to table myschema.edges2
 drop cascades to table myschema."Edges2"
 drop cascades to table myschema.edges2_vertices_pgr
-drop cascades to table myschema.bigtable
-drop cascades to table myschema.big_table_vertices
-drop cascades to table myschema.bigtable_vertices_pgr
