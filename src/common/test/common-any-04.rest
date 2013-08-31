@@ -4,12 +4,18 @@
  NOTICE:  CREATE TABLE will create implicit sequence "unnoded_noded_id_seq" for serial column "unnoded_noded.id"
 CONTEXT:  SQL statement "CREATE TABLE public.unnoded_noded (id bigserial PRIMARY KEY,old_id integer,sub_id integer,
 								source bigint,target bigint)"
-PL/pgSQL function "pgr_nodenetwork" line 121 at EXECUTE statement
+PL/pgSQL function pgr_nodenetwork(text,double precision,text,text,text) line 121 at EXECUTE statement
  NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "unnoded_noded_pkey" for table "unnoded_noded"
 CONTEXT:  SQL statement "CREATE TABLE public.unnoded_noded (id bigserial PRIMARY KEY,old_id integer,sub_id integer,
 								source bigint,target bigint)"
-PL/pgSQL function "pgr_nodenetwork" line 121 at EXECUTE statement
+PL/pgSQL function pgr_nodenetwork(text,double precision,text,text,text) line 121 at EXECUTE statement
  NOTICE:  Processing, pelase wait .....
+ NOTICE:  insert into intergeom (l1id, l2id, geom)
+         select l1id, l2id, PGR_startpoint(geom)
+         from intergeom where geometryType(geom) = 'LINESTRING'
+ NOTICE:  insert into intergeom (l1id, l2id, geom)
+         select l1id, l2id, PGR_endpoint(geom)
+         from intergeom where geometryType(geom) = 'LINESTRING'
  NOTICE:    Splitted Edges: 8
  NOTICE:   Untouched Edges: 0
  NOTICE:       Total original Edges: 8
@@ -24,10 +30,10 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  NOTICE:  CREATE TABLE will create implicit sequence "unnoded_noded_vertices_pgr_id_seq" for serial column "unnoded_noded_vertices_pgr.id"
 CONTEXT:  SQL statement "CREATE TABLE public.unnoded_noded_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createtopology" line 203 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 203 at EXECUTE statement
  NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "unnoded_noded_vertices_pgr_pkey" for table "unnoded_noded_vertices_pgr"
 CONTEXT:  SQL statement "CREATE TABLE public.unnoded_noded_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createtopology" line 203 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 203 at EXECUTE statement
  NOTICE:  Creating Topology, Please wait...
  NOTICE:  -------------> TOPOLOGY CREATED FOR  40 edges
  NOTICE:  Rows with NULL geometry or NULL id: 0
@@ -130,10 +136,10 @@ public.noded2.the_geom SRID:0 TYPE:LINESTRING DIMS:2
  NOTICE:  Performing checks, pelase wait .....
  NOTICE:  CREATE TABLE will create implicit sequence "noded2_vertices_pgr_id_seq" for serial column "noded2_vertices_pgr.id"
 CONTEXT:  SQL statement "CREATE TABLE public.noded2_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createtopology" line 203 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 203 at EXECUTE statement
  NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "noded2_vertices_pgr_pkey" for table "noded2_vertices_pgr"
 CONTEXT:  SQL statement "CREATE TABLE public.noded2_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createtopology" line 203 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 203 at EXECUTE statement
  NOTICE:  Creating Topology, Please wait...
  NOTICE:  -------------> TOPOLOGY CREATED FOR  40 edges
  NOTICE:  Rows with NULL geometry or NULL id: 0

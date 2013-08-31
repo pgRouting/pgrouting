@@ -6,6 +6,7 @@ use strict;
 use File::Find ();
 use File::Basename;
 use Data::Dumper;
+use Time::HiRes qw(gettimeofday tv_interval);
 $Data::Dumper::Sortkeys = 1;
 
 # for the convenience of &wanted calls, including -eval statements:
@@ -177,6 +178,8 @@ sub run_test {
     }
 
     for my $x (@{$t->{tests}}) {
+        print "Processing test: $x\n";
+        my $t0 = [gettimeofday];
         open(TIN, "$dir/$x.test") || do {
             $res{"$dir/$x.test"} = "FAILED: could not open '$dir/$x.test' : $!";
             $stats{z_fail}++;
@@ -225,6 +228,7 @@ sub run_test {
             $res{"$dir/$x.test"} = "Passed";
             $stats{z_pass}++;
         }
+        print "    test run time: " . tv_interval($t0, [gettimeofday]) . "\n";
     }
 
     return \%res;

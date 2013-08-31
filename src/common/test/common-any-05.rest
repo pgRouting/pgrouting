@@ -8,10 +8,10 @@ public.noded3.the_geom SRID:0 TYPE:MULTILINESTRING DIMS:2
  NOTICE:  Performing checks, pelase wait .....
  NOTICE:  CREATE TABLE will create implicit sequence "noded3_vertices_pgr_id_seq" for serial column "noded3_vertices_pgr.id"
 CONTEXT:  SQL statement "CREATE TABLE public.noded3_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createtopology" line 203 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 203 at EXECUTE statement
  NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "noded3_vertices_pgr_pkey" for table "noded3_vertices_pgr"
 CONTEXT:  SQL statement "CREATE TABLE public.noded3_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createtopology" line 203 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 203 at EXECUTE statement
  NOTICE:  Creating Topology, Please wait...
  NOTICE:  -------------> TOPOLOGY CREATED FOR  40 edges
  NOTICE:  Rows with NULL geometry or NULL id: 0

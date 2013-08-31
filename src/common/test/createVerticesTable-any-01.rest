@@ -159,19 +159,19 @@ FAIL
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on public.Edges2 using btree(source)"
-PL/pgSQL function "pgr_createverticestable" line 126 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('Edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on public.Edges2 using btree(source)"
-PL/pgSQL function "pgr_createverticestable" line 126 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('Edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on public.Edges2 using btree(source)"
-PL/pgSQL function "pgr_createverticestable" line 126 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('public.edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
@@ -186,7 +186,7 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on public.Edges2 using btree(source)"
-PL/pgSQL function "pgr_createverticestable" line 126 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('Public.edges2','The_Geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
@@ -210,7 +210,7 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on public.Edges2 using btree(source)"
-PL/pgSQL function "pgr_createverticestable" line 126 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('public.edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
@@ -305,10 +305,10 @@ FAIL
  NOTICE:  Performing checks, pelase wait .....
  NOTICE:  CREATE TABLE will create implicit sequence "edges2_vertices_pgr_id_seq" for serial column "edges2_vertices_pgr.id"
 CONTEXT:  SQL statement "CREATE TABLE myschema.edges2_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createverticestable" line 166 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 166 at EXECUTE statement
  NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "edges2_vertices_pgr_pkey" for table "edges2_vertices_pgr"
 CONTEXT:  SQL statement "CREATE TABLE myschema.edges2_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createverticestable" line 166 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 166 at EXECUTE statement
  NOTICE:  Populating myschema.edges2_vertices_pgr, please wait...
  NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
  NOTICE:  Edges with NULL geometry,source or target: 0
@@ -320,7 +320,7 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on myschema.Edges2 using btree(source)"
-PL/pgSQL function "pgr_createverticestable" line 126 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','The_Geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
@@ -344,7 +344,7 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on myschema.Edges2 using btree(source)"
-PL/pgSQL function "pgr_createverticestable" line 126 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
@@ -448,14 +448,14 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on myschema.Edges2 using btree(source)"
-PL/pgSQL function "pgr_createverticestable" line 126 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('Edges2','the_geom','source','target',' the_geom && (select st_buffer(the_geom,0.0001) as buffer from "Edges2" 
 where eid=6)')
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on myschema.Edges2 using btree(source)"
-PL/pgSQL function "pgr_createverticestable" line 126 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','eid<')
  NOTICE:  Performing checks, pelase wait .....
@@ -467,13 +467,13 @@ FAIL
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on myschema.Edges2 using btree(source)"
-PL/pgSQL function "pgr_createverticestable" line 126 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('Edges2','the_geom','source','target',' the_geom && (select st_buffer(the_geom,0.0001 as buffer from "Edges2" where eid=6)')
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on myschema.Edges2 using btree(source)"
-PL/pgSQL function "pgr_createverticestable" line 126 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
  NOTICE:  CREATE TABLE will create implicit sequence "bigtable_id_seq" for serial column "bigtable.id"
  NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "bigtable_pkey" for table "bigtable"
 myschema.bigtable.the_geom SRID:0 TYPE:LINESTRING DIMS:2 
@@ -482,10 +482,10 @@ myschema.bigtable.the_geom SRID:0 TYPE:LINESTRING DIMS:2
  NOTICE:  Performing checks, pelase wait .....
  NOTICE:  CREATE TABLE will create implicit sequence "bigtable_vertices_pgr_id_seq" for serial column "bigtable_vertices_pgr.id"
 CONTEXT:  SQL statement "CREATE TABLE myschema.bigtable_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createverticestable" line 166 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 166 at EXECUTE statement
  NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "bigtable_vertices_pgr_pkey" for table "bigtable_vertices_pgr"
 CONTEXT:  SQL statement "CREATE TABLE myschema.bigtable_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createverticestable" line 166 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 166 at EXECUTE statement
  NOTICE:  Populating myschema.bigtable_vertices_pgr, please wait...
  NOTICE:    -----> VERTICES TABLE CREATED WITH  0 vertices
  NOTICE:  Edges with NULL geometry,source or target: 3000
@@ -509,10 +509,10 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  NOTICE:  CREATE TABLE will create implicit sequence "bigtable_vertices_pgr_id_seq" for serial column "bigtable_vertices_pgr.id"
 CONTEXT:  SQL statement "CREATE TABLE myschema.bigtable_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createverticestable" line 166 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 166 at EXECUTE statement
  NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "bigtable_vertices_pgr_pkey" for table "bigtable_vertices_pgr"
 CONTEXT:  SQL statement "CREATE TABLE myschema.bigtable_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function "pgr_createverticestable" line 166 at EXECUTE statement
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 166 at EXECUTE statement
  NOTICE:  Populating myschema.bigtable_vertices_pgr, please wait...
  NOTICE:    -----> VERTICES TABLE CREATED WITH  6000 vertices
  NOTICE:  Edges with NULL geometry,source or target: 0
