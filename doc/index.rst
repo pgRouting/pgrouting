@@ -51,31 +51,6 @@ For a more complete introduction how to build a routing application read the `pg
 Data Types
 *******************************************************************************
 
-<<<<<<< HEAD
-pgRouting provides several :ref:`common functions <common>`:
-
-.. toctree::
-	:maxdepth: 1
-	:hidden:
-
-	../src/common/doc/index
-
-.. toctree::
-	:maxdepth: 1
-	:glob: 
-
-	../src/common/doc/functions/*
-
-pgRouting introduces a few :ref:`custom data types <common_types>`:
-
-.. toctree::
-	:maxdepth: 1
-	:hidden:
-
-	../src/common/doc/types
-
-=======
->>>>>>> vicky/develop
 .. toctree::
         :maxdepth: 2
 
