@@ -8,6 +8,14 @@ RETURNS TABLE(
 		boost varchar
 	) AS
 $BODY$
+/*
+.. function:: pgr_version()
+
+   Author: Stephen Woodbridge <woodbri@imaptools.com>
+
+   Returns the version of pgrouting,Git build,Git hash, Git branch and boost
+*/
+
 DECLARE
 
 BEGIN

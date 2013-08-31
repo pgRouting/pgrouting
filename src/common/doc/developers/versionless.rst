@@ -9,7 +9,7 @@
 
 .. _pgr_versionless:
 
-pgr_versionless - Compare version numbers
+pgr_versionless
 ===============================================================================
 
 .. index:: 
@@ -21,6 +21,7 @@ Name
 
 ``pgr_versionless`` — Compare two version numbers.
 
+.. note:: This function is intended for the developer’s aid.
 
 Synopsis
 -------------------------------------------------------------------------------
@@ -60,4 +61,5 @@ Examples
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_version`
+* :ref:`developer` for the tree layout of the project.
+* :ref:`pgr_version` to get the current version of pgRouting.

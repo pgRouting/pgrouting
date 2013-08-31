@@ -7,19 +7,24 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _intro:
+.. _routing_functions:
 
- 
-===============================================================================
-
+Routing Functions
+------------------
 
 .. toctree::
 	:maxdepth: 1
 
-        introduction	
-        support
-
-.. rubric:: Indices and tables
+	apsp_johnson/doc/index
+	apsp_warshall/doc/index
+	astar/doc/index
+	bd_astar/doc/index
+	bd_dijkstra/doc/index
+	dijkstra/doc/index
+	kdijkstra/doc/index
+	ksp/doc/index
+	tsp/doc/index
+	trsp/doc/index
 
 * :ref:`genindex`
 * :ref:`search`

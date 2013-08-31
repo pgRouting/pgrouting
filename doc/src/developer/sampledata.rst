@@ -15,7 +15,7 @@ Sample Data
 The documentation provides very simple example queries based on a small sample network.
 To be able to execute the sample queries, run the following SQL commands to create a table with a small network dataset.
 
-.. image:: images/trsp-test-image.png
+.. image:: ../../../src/common/doc/functions/images/before_node_net.png
 
 .. rubric:: Create table
 
@@ -50,38 +50,29 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 .. code-block:: sql
 
-	INSERT INTO edge_table VALUES (1, 'B', 1, 2, 1, 1, 2, 0, 2, 1, NULL, NULL,
-    '010200000002000000000000000000004000000000000000000000000000000040000000000000F03F');
-	INSERT INTO edge_table VALUES (2, 'TF', 2, 3, -1, 1, 2, 1, 3, 1, NULL, NULL,
-    '0102000000020000000000000000000040000000000000F03F0000000000000840000000000000F03F');
-	INSERT INTO edge_table VALUES (3, 'TF', 3, 4, -1, 1, 3, 1, 4, 1, NULL, NULL,
-    '0102000000020000000000000000000840000000000000F03F0000000000001040000000000000F03F');
-	INSERT INTO edge_table VALUES (4, 'B', 2, 7, 1, 1, 2, 1, 2, 2, NULL, NULL,
-    '0102000000020000000000000000000040000000000000F03F00000000000000400000000000000040');
-	INSERT INTO edge_table VALUES (5, 'FT', 3, 8, 1, -1, 3, 1, 3, 2, NULL, NULL, 
-    '0102000000020000000000000000000840000000000000F03F00000000000008400000000000000040');
-	INSERT INTO edge_table VALUES (6, 'B', 5, 6, 1, 1, 0, 2, 1, 2, NULL, NULL, 
-    '01020000000200000000000000000000000000000000000040000000000000F03F0000000000000040');
-	INSERT INTO edge_table VALUES (7, 'B', 6, 7, 1, 1, 1, 2, 2, 2, NULL, NULL, 
-    '010200000002000000000000000000F03F000000000000004000000000000000400000000000000040');
-	INSERT INTO edge_table VALUES (8, 'B', 7, 8, 1, 1, 2, 2, 3, 2, NULL, NULL, 
-    '0102000000020000000000000000000040000000000000004000000000000008400000000000000040');
-	INSERT INTO edge_table VALUES (9, 'B', 8, 9, 1, 1, 3, 2, 4, 2, NULL, NULL, 
-    '0102000000020000000000000000000840000000000000004000000000000010400000000000000040');
-	INSERT INTO edge_table VALUES (10, 'B', 7, 10, 1, 1, 2, 2, 2, 3, NULL, NULL, 
-    '0102000000020000000000000000000040000000000000004000000000000000400000000000000840');
-	INSERT INTO edge_table VALUES (11, 'FT', 8, 11, 1, -1, 3, 2, 3, 3, NULL, NULL, 
-    '0102000000020000000000000000000840000000000000004000000000000008400000000000000840');
-	INSERT INTO edge_table VALUES (12, 'FT', 10, 11, 1, -1, 2, 3, 3, 3, NULL, NULL, 
-    '0102000000020000000000000000000040000000000000084000000000000008400000000000000840');
-	INSERT INTO edge_table VALUES (13, 'FT', 11, 12, 1, -1, 3, 3, 4, 3, NULL, NULL, 
-    '0102000000020000000000000000000840000000000000084000000000000010400000000000000840');
-	INSERT INTO edge_table VALUES (14, 'B', 10, 13, 1, 1, 2, 3, 2, 4, NULL, NULL, 
-    '0102000000020000000000000000000040000000000000084000000000000000400000000000001040');
-	INSERT INTO edge_table VALUES (15, 'B', 9, 12, 1, 1, 4, 2, 4, 3, NULL, NULL, 
-    '0102000000020000000000000000001040000000000000004000000000000010400000000000000840');
-	INSERT INTO edge_table VALUES (16, 'B', 4, 9, 1, 1, 4, 1, 4, 2, NULL, NULL, 
-    '0102000000020000000000000000001040000000000000F03F00000000000010400000000000000040');
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  2,0,   2,1);
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ('TF',-1, 1,  2,1,   3,1);
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ('TF',-1, 1,  3,1,   4,1);
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  2,1,   2,2);
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ('FT', 1,-1,  3,1,   3,2);
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  0,2,   1,2);
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  1,2,   2,2);
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  2,2,   3,2);
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  3,2,   4,2);
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  2,2,   2,3);
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ('FT', 1,-1,  3,2,   3,3);
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ('FT', 1,-1,  2,3,   3,3);
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ('FT', 1,-1,  3,3,   4,3);
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  2,3,   2,4);
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  4,2,   4,3);
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  4,1,   4,2);
+	INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  0.5,3.5,  1.999999999999,3.5);
+        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  3.5,2.3,  3.5,4);
+
+	update edge_table set the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2));
+
+
+Use :ref:`pgr_createTopology<pgr_create_topology>` to fill the source and target columns
 
 .. code-block:: sql
 
