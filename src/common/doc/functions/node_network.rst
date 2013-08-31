@@ -44,7 +44,7 @@ A common problem associated with bringing GIS data into pgRouting is the fact th
 
 What we mean by "noded" is that at every intersection in the road network all the edges will be broken into separate road segments. There are cases like an over-pass and under-pass intersection where you can not traverse from the over-pass to the under-pass, but this function does not have the ability to detect and accomodate those situations.
 
-This function reads the ``table_in`` table, that has a primary key column ``gid_cname`` and geometry column named ``geo_cname`` and intersect all the segments in it against all the other segments and then creates a table ``table_out``. It uses the ``tolerance`` for deciding that multiple nodes within the tolerance are considered the same node. 
+This function reads the ``table_in`` table, that has a primary key column ``gid_cname`` and geometry column named ``geo_cname`` and intersects all the segments in it against all the other segments and then creates a table ``table_out``. It uses the ``tolerance`` for deciding that multiple nodes within the tolerance are considered the same node. 
 
 Parameters
 
@@ -267,6 +267,6 @@ See Also
 
 :ref:`topology` for an overview of a topology for routing algorithms.
 :ref:`pgr_analyze_oneway` to analyze directionality of the edges.
-:ref: `pgr_create_topology`  to create a topology based on the geometry.
-:ref: `pgr_analyzei_graph` to analyze the edges and vertices of the edge table.
+:ref:`pgr_create_topology`  to create a topology based on the geometry.
+:ref:`pgr_analyzei_graph` to analyze the edges and vertices of the edge table.
 
