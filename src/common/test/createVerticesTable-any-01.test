@@ -115,6 +115,7 @@ select pgr_createVerticesTable('edges2',rows_where:='eid<');
 select pgr_createVerticesTable('Edges2', rows_where:='eid<15 and ed>5');
 select pgr_createVerticesTable('Edges2', rows_where:=' the_geom && (select st_buffer(the_geom,0.0001 as buffer from "Edges2" where eid=6)') ;
 
+/* BIG TABLE TEST TAKES TIME
 create table bigtable ( id bigserial PRIMARY KEY, source integer,target integer);
 SELECT AddGeometryColumn( 'bigtable', 'the_geom', 0, 'LINESTRING',2);
 insert into bigtable (the_geom) ( select ST_MakeLine(ST_MakePoint(random()*1000,random()*1000), ST_MakePoint(random()*1000,random()*1000)) 
@@ -126,7 +127,7 @@ drop table if exists bigtable_vertices_pgr;
 select pgr_createVerticesTable('myschema.bigtable');
 select (select count(*) from myschema.big_table_vertices) = (select count(*) from myschema.bigtable_vertices_pgr);
 select count(*) from ( (select * from myschema.big_table_vertices) union (select * from myschema.bigtable_vertices_pgr)) as a;
-
+*/
 
 SET search_path TO public;
 drop table if exists "Edges2";
