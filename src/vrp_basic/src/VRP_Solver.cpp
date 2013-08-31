@@ -15,6 +15,7 @@ bool CVehicleInfo::loadUnit(int lUnit)
 	if(m_iCurrentLoad + lUnit > m_iCapacity)
 		return false;
 	m_iCurrentLoad += lUnit;
+	return true;
 }
 
 COrderInfo::COrderInfo()
@@ -112,6 +113,51 @@ CMoveInfo::~CMoveInfo()
 {
 
 }
+
+void CMoveInfo::setInitialTour(CTourInfo tourData)
+{
+	m_vInitialTour.clear();
+	m_vInitialTour.push_back(tourData);
+}
+
+void CMoveInfo::setInitialTour(CTourInfo tourData1, CTourInfo tourData2)
+{
+	m_vInitialTour.clear();
+	m_vInitialTour.push_back(tourData1);
+	m_vInitialTour.push_back(tourData2);
+}
+
+void CMoveInfo::setModifiedTour(CTourInfo tourData)
+{
+	m_vModifiedTour.clear();
+	m_vModifiedTour.push_back(tourData);
+}
+
+void CMoveInfo::setModifiedTour(CTourInfo tourData1, CTourInfo tourData2)
+{
+	m_vModifiedTour.clear();
+	m_vModifiedTour.push_back(tourData1);
+	m_vModifiedTour.push_back(tourData2);
+}
+
+void CMoveInfo::getInitialTour(CTourInfo &tourData)
+{
+	tourData = m_vInitialTour[0];
+}
+
+void CMoveInfo::getInitialTour(CTourInfo &tourData1, CTourInfo &tourData2)
+{
+	tourData1 = m_vInitialTour[0];
+	tourData2 = m_vInitialTour[1];
+}
+
+bool CMoveInfo::getModifiedTourAt(int index, CTourInfo& tourInfo)
+{
+	if(index < 0 || index >= m_vModifiedTour.size())
+		return false;
+	tourInfo = m_vModifiedTour[index];
+}
+
 
 
 CVRPSolver::CVRPSolver()
@@ -349,7 +395,11 @@ void CVRPSolver::applyBestMoveInCurrentSolution(CSolutionInfo& curSolution, CMov
 	int totalTour = bestMove.getModifiedTourCount();
 	for(int i = 0;i<totalTour;++i)
 	{
-		curSolution.replaceTour( bestMove.getModifiedTourAt(i) );
+		CTourInfo tourInfo;
+		bool bIsValid = bestMove.getModifiedTourAt(i, tourInfo);
+
+		if(bIsValid)
+			curSolution.replaceTour(tourInfo);
 	}
 	updateFinalSolution(curSolution);
 	
@@ -612,3 +662,125 @@ bool CVRPSolver::addOrderAtTour(CSolutionInfo &solutionInfo, int tourIndex, int 
 {
 	return(insertOrder(solutionInfo.getTour(tourIndex), m_vOrderInfos[orderIndex].getOrderId(), insertIndex));
 }
+
+CostPack CVRPSolver::getCostForInsert(CTourInfo& curTour, COrderInfo& curOrder, int pos)
+{
+	std::vector<int> vecOrderId = curTour.getOrderVector();
+	
+	vecOrderId.insert(vecOrderId.begin() + pos, curOrder.getOrderId());
+	double dCost, dDistance, dTravelTime;
+	dCost = dDistance = dTravelTime = 0.0;
+	CostPack costRet;
+
+	costRet.cost = INF;
+	costRet.distance = INF;
+	costRet.traveltime = INF;
+
+	CostPack cPack = getDepotToOrderCost(curTour.getStartDepot(), vecOrderId[0]);
+
+	dCost += cPack.cost;
+	dDistance += cPack.distance;
+
+	int ind = m_mapOrderIdToIndex[vecOrderId[0]];
+
+	if(dTravelTime + cPack.traveltime > m_vOrderInfos[ind].getCloseTime())
+		return costRet;
+
+	dTravelTime = max(dTravelTime + cPack.traveltime + m_vOrderInfos[ind].getServiceTime(), 
+		m_vOrderInfos[ind].getOpenTime() + m_vOrderInfos[ind].getServiceTime());
+
+	int i;
+	for(i = 1; i < vecOrderId.size(); i++)
+	{
+		cPack = getOrderToOrderCost(vecOrderId[i - 1], vecOrderId[i]);
+		dCost += cPack.cost;
+		dDistance += cPack.distance;
+
+		ind = m_mapOrderIdToIndex[vecOrderId[i]];
+
+		if(dTravelTime + cPack.traveltime > m_vOrderInfos[ind].getCloseTime())
+			return costRet;
+
+		dTravelTime = max(dTravelTime + cPack.traveltime + m_vOrderInfos[ind].getServiceTime(), 
+			m_vOrderInfos[ind].getOpenTime() + m_vOrderInfos[ind].getServiceTime());
+
+	}
+
+	cPack = getOrderToDepotCost(vecOrderId[i - 1], curTour.getEndDepot());
+	dCost += cPack.cost;
+	dDistance += cPack.distance;
+
+	dTravelTime += cPack.traveltime;
+
+
+	costRet.cost = dCost - curTour.getCost();
+	costRet.distance = dDistance - curTour.getDistance();
+	costRet.traveltime = dTravelTime - curTour.getTravelTime();
+
+	return costRet;
+}
+
+void CVRPSolver::attempVehicleExchange(CSolutionInfo& solutionInfo)
+{
+	++m_iGeneratedSolutionCount;
+	++m_iStepsSinceLastSolution;
+	CMoveInfo curMove; 
+	CMoveInfo bestMove;
+
+	int bestFreeCapacity = 0;
+	std::pair<int,int> bestSwapIndex;
+	int totalTour = solutionInfo.getTourCount();
+
+	for (int i = 0;i<totalTour;++i)
+	{
+		CTourInfo firstTour = solutionInfo.getTour(i);
+		int firstTourLoad = firstTour.getVehicleInfo().getCurrentLoad();
+		int firstVehicleCapacity = firstTour.getVehicleInfo().getCapacity();
+
+		for (int j = i+1;j<totalTour;++j)
+		{
+			CTourInfo secondTour = solutionInfo.getTour(j);
+			curMove.setInitialTour(firstTour,secondTour);
+
+			int FirstTourRemainingCapacity = firstVehicleCapacity - secondTour.getVehicleInfo().getCurrentLoad();
+
+			int SecondTourRemainingCapacity = secondTour.getVehicleInfo().getCapacity() - firstTourLoad;
+
+			int prevFreeCapacity = max( secondTour.getRemainingCapacity(), firstTour.getRemainingCapacity() );
+
+			int curFreeCapacity = max(FirstTourRemainingCapacity,SecondTourRemainingCapacity);
+
+			if ( FirstTourRemainingCapacity > 0 && SecondTourRemainingCapacity > 0 && 
+				curFreeCapacity > curFreeCapacity && curFreeCapacity > bestFreeCapacity )
+			{
+
+				CVehicleInfo tempVehicle = m_vVehicleInfos[firstTour.getVehicleId()];
+				firstTour.setVehicleInfo(m_vVehicleInfos[secondTour.getVehicleId()] );
+				secondTour.setVehicleInfo( tempVehicle );
+
+				curMove.setModifiedTour(firstTour, secondTour);
+
+				if (!isTabuMove(curMove))
+				{
+					bestMove = curMove;
+					bestFreeCapacity = curFreeCapacity;
+					bestSwapIndex = std::make_pair(i,j);
+				}
+
+				curMove.getInitialTour(firstTour,secondTour);
+			}
+		}
+	}
+	if (bestFreeCapacity > 0)
+	{
+		CTourInfo tempTour;
+		bestMove.getModifiedTourAt(0, tempTour);
+		solutionInfo.replaceTourAt(bestSwapIndex.first, tempTour);
+		bestMove.getModifiedTourAt(1, tempTour);
+		solutionInfo.replaceTourAt(bestSwapIndex.second, tempTour);
+		updateTabuCount(bestMove);
+		updateFinalSolution(solutionInfo);
+	}
+	
+}
+

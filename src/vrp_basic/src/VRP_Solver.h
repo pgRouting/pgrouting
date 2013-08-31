@@ -14,6 +14,8 @@
 #define MAXIMUM_TRY 15
 #define TOTAL_NUMBER_OF_SEARCH 15
 
+#define INF (1e15)
+
 typedef std::pair<int, int> PII;
 
 #define max(a,b) ((a)>(b))?(a):(b)
@@ -44,6 +46,8 @@ public:
 	bool loadUnit(int lUnit);
 	bool unloadUnit(int lUnit);
 	int getRemainingCapacity(){return (m_iCapacity - m_iCurrentLoad);}
+
+	int getCurrentLoad(){return m_iCurrentLoad;}
 	
 	int getCapacity(){return m_iCapacity;}
 	void setCapacity(int capacity){m_iCapacity = capacity;}
@@ -207,6 +211,8 @@ public:
 	
 	bool addTour(CTourInfo& tour);
 	CTourInfo& getTour(int pos){return m_vtourAll[pos];}
+
+	int getTourCount(){return (m_vtourAll.size());}
 	
 	double getTotalCost(){return m_dTotalCost;}
 	double getTotalDistance(){return m_dTotalDistance;}
@@ -214,6 +220,7 @@ public:
 	int getUnservedOrderAt(int pos){return m_vUnservedOrderId[pos];}
 	//void addOrderAtTour(int tourIndex, int insertIndex, int orderIndex);
 
+	void replaceTourAt(int index, CTourInfo curTour);
 	void replaceTour(CTourInfo curTour);
 
 	bool init(std::vector<int> vecOrder, int iTotalOrder, std::vector<int> vecVehicle);
@@ -250,7 +257,7 @@ public:
 	void setModifiedTour(CTourInfo pTourData);
 	void setModifiedTour(CTourInfo pTourData1, CTourInfo pTourData2);
 
-	CTourInfo getModifiedTourAt(int index) const;
+	bool getModifiedTourAt(int index, CTourInfo& tourInfo);
 	int getModifiedTourCount() const { return m_vModifiedTour.size();}
 	double getModifiedTourCost() const;
 	void getInitialTour(CTourInfo &TourData);
