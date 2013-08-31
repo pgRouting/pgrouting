@@ -79,7 +79,7 @@ if(WITH_DOC)
         endif()
 
         # The doc target will build all documentation targets.
-        add_custom_target(doc ALL
+        add_custom_target(doc #ALL
             COMMENT "Building documentation with Sphinx")
         # add_custom_target(doc)
 
