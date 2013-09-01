@@ -1,6 +1,7 @@
 -- create a new table and merge attribute from original and noded
 -- into table noded3
 
+set client_min_messages to warning;
 drop table if exists noded3 cascade;
 create table noded3 (
   gid serial not null primary key,
