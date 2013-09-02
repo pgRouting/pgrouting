@@ -9,7 +9,7 @@
 
 .. _type_geom_result:
 
-pgr_geomResult[] - Path Result with Geometry
+pgr_geomResult[] 
 ===============================================================================
 
 .. index:: 
