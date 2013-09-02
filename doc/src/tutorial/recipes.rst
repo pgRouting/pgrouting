@@ -21,7 +21,7 @@ Use an issue traker (see :ref:`support`) with a title containing: *Proposing a R
   - date: Date posted
   - comments and code:  using reStructuredText format
 
-Any contact with the author will be done using the developers mailing list. The pgRouting team will evaluate the recipe and will be include it in this section when approved.
+Any contact with the author will be done using the developers mailing list. The pgRouting team will evaluate the recipe and will be included it in this section when approved.
 
 Comparing topology of a unnodded network with a noded network
 -------------------------------------------------------------

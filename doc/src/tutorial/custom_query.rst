@@ -20,11 +20,13 @@ In general, the routing algorithms need an SQL query that contain one or more of
 :source: int4
 :target: int4
 :cost:	float8
+:reverse_cost: float8
+:x:     float8
+:y:     float8
 :x1:	float8
 :y1:	float8 
 :x2:	float8 
 :y2:	float8
-:reverse_cost: float8
 
 When the edge table has the mentioned columns, the following SQL queries can be used.
 
@@ -34,7 +36,7 @@ When the edge table has the mentioned columns, the following SQL queries can be 
 	SELECT id, source, target, cost FROM edge_table;
 	SELECT id, source, target, cost, x1, y1, x2, y2 ,reverse_cost FROM edge_table
 
-When the edge table has a different name to represent the requiered columns:
+When the edge table has a different name to represent the required columns:
 
 .. code-block:: sql
 
@@ -46,7 +48,7 @@ When the edge table has a different name to represent the requiered columns:
 
 .. Topology functions
 
-The topology functions use the same names for ``id``, ``source`` and ``target`` columns of the edge table, The fowoling parameters have as default value:
+The topology functions use the same names for ``id``, ``source`` and ``target`` columns of the edge table, The fowllowing parameters have as default value:
 
 :id:	 int4 Default ``id``
 :source: int4 Default ``source``
@@ -64,7 +66,7 @@ The following parameters do not have a default value and when used they have to 
 :t_in_rules: text[]
 :t_out_rules: text[]
 
-When the columns requiered have the default names this can be used (pgr_func is to represent a topology function)
+When the columns required have the default names this can be used (pgr_func is to represent a topology function)
 
 .. code-block:: sql
 
@@ -74,7 +76,7 @@ When the columns requiered have the default names this can be used (pgr_func is 
 	SELECT pgr_analyzeOneway('edge_table', ARRAY['', 'B', 'TF'], ARRAY['', 'B', 'FT'], 
 					       ARRAY['', 'B', 'FT'], ARRAY['', 'B', 'TF']) 
 
-When the columns requiered do not have the default names its strongly recomended to use the *named notation*.
+When the columns required do not have the default names its strongly recomended to use the *named notation*.
 
 .. code-block:: sql
 
