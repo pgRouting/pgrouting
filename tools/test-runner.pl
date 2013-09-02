@@ -42,6 +42,7 @@ print "RUNNING: test-runner.pl " . join(" ", @ARGV) . "\n";
 
 my ($vpg, $vpgis, $vpgr, $psql);
 my $alg = '';
+my @testpath = ("doc/", "src/");
 my $clean;
 my $ignore;
 
@@ -60,6 +61,12 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a eq '-alg') {
         $alg = shift @ARGV || Usage();
+        if ($alg eq 'doc') {
+            @testpath = ($alg);
+        }
+        else {
+            @testpath = ("src/$alg");
+        }
     }
     elsif ($a eq '-psql') {
         $psql = shift @ARGV || Usage();
@@ -119,7 +126,7 @@ if (length($psql)) {
 #exit;
 
 # Traverse desired filesystems
-File::Find::find({wanted => \&want_tests}, "src/$alg");
+File::Find::find({wanted => \&want_tests}, @testpath);
 
 die "Error: no test files found. Run this command from the top level pgRouting directory!\n" unless @cfgs;
 
