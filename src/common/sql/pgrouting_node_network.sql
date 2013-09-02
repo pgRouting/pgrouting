@@ -30,12 +30,14 @@ DECLARE
     touched bigint;
     untouched bigint;
     geomtype text;
+    debuglevel text;
    
 
 BEGIN
   raise notice 'PROCESSING:'; 
   raise notice 'pgr_nodeNetwork(''%'',%,''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,table_ending;
   raise notice 'Performing checks, pelase wait .....';
+  execute 'show client_min_messages' into debuglevel;
 
   BEGIN
     RAISE DEBUG 'Cheking % exists',edge_table;
@@ -102,7 +104,10 @@ BEGIN
 	RAISE DEBUG '  ------>OK';
       else 
         RAISE DEBUG ' ------> Adding  index "%_%_idx".',n_pkey,intab;
+
+	set client_min_messages  to warning;
         execute 'create  index '||tname||'_'||n_pkey||'_idx on '||pgr_quote_ident(intab)||' using btree('||quote_ident(n_pkey)||')';
+	execute 'set client_min_messages  to '|| debuglevel;
       END IF;
     END;
 
@@ -112,10 +117,12 @@ BEGIN
 	RAISE DEBUG '  ------>OK';
       else 
         RAISE DEBUG ' ------> Adding unique index "%_%_gidx".',intab,n_geom;
+	set client_min_messages  to warning;
         execute 'CREATE INDEX '
             || quote_ident(tname || '_' || n_geom || '_gidx' )
             || ' ON ' || pgr_quote_ident(intab)
             || ' USING gist (' || quote_ident(n_geom) || ')';
+	execute 'set client_min_messages  to '|| debuglevel;
       END IF;
     END;
 ---------------
@@ -126,6 +133,7 @@ BEGIN
            execute 'TRUNCATE TABLE '||pgr_quote_ident(outtab)||' RESTART IDENTITY';
            execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(outname)||','||quote_literal(n_geom)||')';
        ELSE
+	   set client_min_messages  to warning;
        	   execute 'CREATE TABLE '||pgr_quote_ident(outtab)||' (id bigserial PRIMARY KEY,old_id integer,sub_id integer,
 								source bigint,target bigint)';
        END IF;
@@ -133,6 +141,7 @@ BEGIN
        execute 'select addGeometryColumn('||quote_literal(sname)||','||quote_literal(outname)||','||
                 quote_literal(n_geom)||','|| srid||', '||quote_literal(geomtype)||', 2)';
        execute 'CREATE INDEX '||quote_ident(outname||'_'||n_geom||'_idx')||' ON '||pgr_quote_ident(outtab)||'  USING GIST ('||quote_ident(n_geom)||')';
+	execute 'set client_min_messages  to '|| debuglevel;
        raise DEBUG  '  ------>OK'; 
     END;  
 ----------------

@@ -92,11 +92,14 @@ DECLARE
     query text;
     sourcetype  text;
     targettype text;
+    debuglevel text;
 
 BEGIN
   raise notice 'PROCESSING:'; 
   raise notice 'pgr_createTopology(''%'',%,''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where;
   raise notice 'Performing checks, pelase wait .....';
+  execute 'show client_min_messages' into debuglevel;
+
 
   BEGIN
     RAISE DEBUG 'Cheking % exists',edge_table;
@@ -202,7 +205,9 @@ BEGIN
 	RAISE DEBUG '  ------>OK';
       else 
         RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,idname;
+        set client_min_messages  to warning;
         execute 'create  index '||tname||'_'||idname||'_idx on '||tabname||' using btree('||quote_ident(idname)||')';
+        execute 'set client_min_messages  to '|| debuglevel;
       END IF;
     END;
 
@@ -212,7 +217,9 @@ BEGIN
 	RAISE DEBUG '  ------>OK';
       else 
         RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,sourcename;
+        set client_min_messages  to warning;
         execute 'create  index '||tname||'_'||sourcename||'_idx on '||tabname||' using btree('||quote_ident(sourcename)||')';
+        execute 'set client_min_messages  to '|| debuglevel;
       END IF;
     END;
 
@@ -222,7 +229,9 @@ BEGIN
 	RAISE DEBUG '  ------>OK';
       else 
         RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,targetname;
+        set client_min_messages  to warning;
         execute 'create  index '||tname||'_'||targetname||'_idx on '||tabname||' using btree('||quote_ident(targetname)||')';
+        execute 'set client_min_messages  to ' ||debuglevel;
       END IF;
     END;
 
@@ -232,10 +241,12 @@ BEGIN
 	RAISE DEBUG '  ------>OK';
       else 
         RAISE DEBUG ' ------> Adding unique index "%_%_gidx".',tabname,gname;
+        set client_min_messages  to warning;
         execute 'CREATE INDEX '
             || quote_ident(tname || '_' || gname || '_gidx' )
             || ' ON ' || tabname
             || ' USING gist (' || quote_ident(gname) || ')';
+        execute 'set client_min_messages  to '|| debuglevel;
       END IF;
     END;
        gname=quote_ident(gname);
@@ -252,11 +263,13 @@ BEGIN
            execute 'TRUNCATE TABLE '||pgr_quote_ident(vertname)||' RESTART IDENTITY';
            execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
        ELSE
+           set client_min_messages  to warning;
        	   execute 'CREATE TABLE '||pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)';
        END IF;
        execute 'select addGeometryColumn('||quote_literal(sname)||','||quote_literal(vname)||','||
                 quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
        execute 'CREATE INDEX '||quote_ident(vname||'_the_geom_idx')||' ON '||pgr_quote_ident(vertname)||'  USING GIST (the_geom)';
+       execute 'set client_min_messages  to '|| debuglevel;
        raise DEBUG  '  ------>OK'; 
     END;       
 
