@@ -80,12 +80,6 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt','true')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  CREATE TABLE will create implicit sequence "mytable_vertices_pgr_id_seq" for serial column "mytable_vertices_pgr.id"
- CONTEXT:  SQL statement "CREATE TABLE public.mytable_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
- PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 203 at EXECUTE statement
- NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "mytable_vertices_pgr_pkey" for table "mytable_vertices_pgr"
- CONTEXT:  SQL statement "CREATE TABLE public.mytable_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
- PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 203 at EXECUTE statement
  NOTICE:  Creating Topology, Please wait...
  NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
  NOTICE:  Rows with NULL geometry or NULL id: 0
