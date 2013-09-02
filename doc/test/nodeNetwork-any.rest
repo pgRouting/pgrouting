@@ -25,6 +25,14 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_nodeNetwork('edge_table',0.001,'the_geom','id','noded')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  CREATE TABLE will create implicit sequence "edge_table_noded_id_seq" for serial column "edge_table_noded.id"
+ CONTEXT:  SQL statement "CREATE TABLE public.edge_table_noded (id bigserial PRIMARY KEY,old_id integer,sub_id integer,
+                                                               source bigint,target bigint)"
+ PL/pgSQL function pgr_nodenetwork(text,double precision,text,text,text) line 121 at EXECUTE statement
+ NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "edge_table_noded_pkey" for table "edge_table_noded"
+ CONTEXT:  SQL statement "CREATE TABLE public.edge_table_noded (id bigserial PRIMARY KEY,old_id integer,sub_id integer,
+                                                               source bigint,target bigint)"
+ PL/pgSQL function pgr_nodenetwork(text,double precision,text,text,text) line 121 at EXECUTE statement
  NOTICE:  Processing, pelase wait .....
  NOTICE:  insert into intergeom (l1id, l2id, geom)
         select l1id, l2id, PGR_startpoint(geom)
@@ -64,6 +72,12 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('edge_table_noded',0.001,'the_geom','id','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  CREATE TABLE will create implicit sequence "edge_table_noded_vertices_pgr_id_seq" for serial column "edge_table_noded_vertices_pgr.id"
+ CONTEXT:  SQL statement "CREATE TABLE public.edge_table_noded_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
+ PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 203 at EXECUTE statement
+ NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "edge_table_noded_vertices_pgr_pkey" for table "edge_table_noded_vertices_pgr"
+ CONTEXT:  SQL statement "CREATE TABLE public.edge_table_noded_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
+ PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 203 at EXECUTE statement
  NOTICE:  Creating Topology, Please wait...
  NOTICE:  -------------> TOPOLOGY CREATED FOR  20 edges
  NOTICE:  Rows with NULL geometry or NULL id: 0
@@ -140,5 +154,3 @@ OK
  NOTICE:               Intersections detected: 5
  NOTICE:                      Ring geometries: 0
 OK
-(2.0.0-dev,v2.0.0-rc1,73,cf1045b,vicky-issue178,1.46.1)
-2.0.0-dev|1.46.1
