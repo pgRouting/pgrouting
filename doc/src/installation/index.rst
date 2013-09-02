@@ -55,9 +55,6 @@ OSX
 See `builds from KingChaos <http://www.kyngchaos.com/software/postgres>`_.
 
 
-Build from Source
-===============================================================================
-
 Source Package
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -96,7 +93,6 @@ Git protocol (read-only):
 
 
 HTTPS protocol (read-only):
-
 .. code-block:: bash
 
 	git clone https://github.com/pgRouting/pgrouting.git
