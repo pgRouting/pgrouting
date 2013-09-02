@@ -15,7 +15,6 @@ Sample Data
 The documentation provides very simple example queries based on a small sample network.
 To be able to execute the sample queries, run the following SQL commands to create a table with a small network dataset.
 
-.. image:: ../../../src/common/doc/functions/images/before_node_net.png
 
 .. rubric:: Create table
 
@@ -57,7 +56,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
         INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,3,   2,4);
         INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  4,2,   4,3);
         INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  4,1,   4,2);
-	    INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  0.5,3.5,  1.999999999999,3.5);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  0.5,3.5,  1.999999999999,3.5);
         INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  3.5,2.3,  3.5,4);
 
 
@@ -68,16 +67,14 @@ To be able to execute the sample queries, run the following SQL commands to crea
                                          ELSE '' END;                                -- unknown  
 
 
-	UPDATE edge_table SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2));
-
 Before you test a routing function use this query to fill the source and target columns.
 
 .. code-block:: sql
 
     SELECT pgr_createTopology('edge_table',0.001);
 
-If you add more edges to `edge_table` Cost and reverse_cost can be filled with the following query
 
+This table is used in some of our examples
 
 .. code-block:: sql
 
@@ -92,3 +89,7 @@ If you add more edges to `edge_table` Cost and reverse_cost can be filled with t
 	INSERT INTO vertex_table VALUES 
 		(1,2,0), (2,2,1), (3,3,1), (4,4,1), (5,0,2), (6,1,2), (7,2,2),
 		(8,3,2), (9,4,2), (10,2,3), (11,3,3), (12,4,3), (13,2,4);
+
+.. rubric:: The network created in *edge_table*
+
+.. image:: ../../../src/common/doc/functions/images/before_node_net.png
