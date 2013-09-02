@@ -45,13 +45,13 @@ Description
 
 The topology creation function accepts the following parameters:
 
-:edge_table: ``text`` Network table name. (may contain the schema name as well)
+:edge_table: ``text`` Network table name. (may contain the schema name AS well)
 :tolerance: ``float8`` Snapping tolerance of disconnected edges. (in projection unit)
 :the_geom: ``text``  Geometry column name of the network table. Default value is ``the_geom``.  
 :id: ``text``  Primary key column name of the network table. Default value is ``id``. 
 :source: ``text`` Source column name of the network table. Default value is ``source``.
 :target: ``text``  Target column name of the network table.  Default value is ``target``. 
-:rows_where: ``text``   Condition to select a subset or rows.  Default value is ``true`` to indicate all rows.
+:rows_where: ``text``   Condition to SELECT a subset or rows.  Default value is ``true`` to indicate all rows.
 
 .. warning::
 
@@ -92,8 +92,8 @@ The structure of the vertices table is:
 :id: ``bigint`` Identifier of the vertex.
 :cnt: ``integer`` Number of vertices in the edge_table that reference this vertex. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`.
 :chk: ``integer``  Indicator that the vertex might have a problem. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`.
-:ein: ``integer`` Number of vertices in the edge_table that reference this vertex as incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`.
-:eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`. 
+:ein: ``integer`` Number of vertices in the edge_table that reference this vertex AS incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`.
+:eout: ``integer`` Number of vertices in the edge_table that reference this vertex AS outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`. 
 :the_geom: ``geometry`` Point geometry of the vertex.
 
 .. rubric:: History
@@ -107,7 +107,7 @@ Usage when the edge table's columns MATCH the default values:
 
 .. code-block:: sql
 
-	 select  pgr_createTopology('edge_table',0.001);
+	 SELECT  pgr_createTopology('edge_table',0.001);
 
 
 
@@ -115,12 +115,12 @@ Usage when the edge table's columns MATCH the default values:
 
 .. code-block:: sql
 
-	 select  pgr_createTopology('edge_table',0.001,'the_geom','id','source','target');
+	 SELECT  pgr_createTopology('edge_table',0.001,'the_geom','id','source','target');
 
-We get the same result as the simplest way to use the function.
+We get the same result AS the simplest way to use the function.
 
-.. warning::  | An error would occur when the arguments are not given in the appropiate order: In this example, the column ``id`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the id column. 
- | ``select  pgr_createTopology('edge_table',0.001,'id','the_geom','source','target')``
+.. warning::  | An error would occur when the arguments are not given in the appropiate order: In this example, the column ``id`` of the table ``ege_table`` is passed to the function AS the geometry column, and the geometry column ``the_geom`` is passed to the function AS the id column. 
+ | ``SELECT  pgr_createTopology('edge_table',0.001,'id','the_geom','source','target');``
  | ERROR: Can not determine the srid of the geometry "id" in table public.edge_table
 
 .. rubric:: When using the named notation
@@ -129,17 +129,17 @@ The order of the parameters do not matter:
 
 .. code-block:: sql
 
-	 select  pgr_createTopology('edge_table',0.001,the_geom:='the_geom',id:='id',source:='source',target:='target');
+	 SELECT  pgr_createTopology('edge_table',0.001,the_geom:='the_geom',id:='id',source:='source',target:='target');
 
 .. code-block:: sql
 
-	 select  pgr_createTopology('edge_table',0.001,source:='source',id:='id',target:='target',the_geom:='the_geom');
+	 SELECT  pgr_createTopology('edge_table',0.001,source:='source',id:='id',target:='target',the_geom:='the_geom');
 
-Parameters defined with a default value can be ommited, as long as the value matches the default:
+Parameters defined with a default value can be ommited, AS long AS the value matches the default:
 
 .. code-block:: sql
 
-	 select  pgr_createTopology('edge_table',0.001,source:='source');
+	 SELECT  pgr_createTopology('edge_table',0.001,source:='source');
 
 .. rubric:: Selecting rows using rows_where parameter
 
@@ -147,21 +147,21 @@ Selecting rows based on the id.
 
 .. code-block:: sql
 
-	 select  pgr_createTopology('edge_table',0.001,rows_where:='id < 10');
+	 SELECT  pgr_createTopology('edge_table',0.001,rows_where:='id < 10');
 
 Selecting the rows where the geometry is near the geometry of row with ``id`` =5 .
 
 .. code-block:: sql
 
-	 select  pgr_createTopology('edge_table',0.001,rows_where:='the_geom && (select st_buffer(the_geom,0.05) from edge_table where id=5)');
+	 SELECT  pgr_createTopology('edge_table',0.001,rows_where:='the_geom && (SELECT st_buffer(the_geom,0.05) FROM edge_table WHERE id=5)');
 
 Selecting the rows where the geometry is near the geometry of the row with ``gid`` =100 of the table ``othertable``.
 
 .. code-block:: sql
 
-	drop table if exists otherTable;
-	create table otherTable as  (select 100 as gid, st_point(2.5,2.5) as other_geom);
-	select  pgr_createTopology('edge_table',0.001,rows_where:='the_geom && (select st_buffer(other_geom,1) from otherTable where gid=100)');
+	DROP TABLE IF EXISTS otherTable;
+	CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom);
+	SELECT  pgr_createTopology('edge_table',0.001,rows_where:='the_geom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE gid=100)');
 
 
 
@@ -172,7 +172,8 @@ For the following table
 
 .. code-block:: sql
 
-	  mytable (gid  bigint, mygeom geometry, src integer, tgt integer) ;
+	DROP TABLE IF EXISTS mytable;
+	CREATE TABLE mytable AS (SELECT id AS gid, the_geom AS mygeom,source AS src ,target AS tgt FROM edge_table) ;
 
 .. rubric:: Using positional notation: 
 
@@ -180,10 +181,10 @@ The arguments need to be given in the order described in the parameters:
 
 .. code-block:: sql
 
-	 select  pgr_createTopology('mytable',0.001,'mygeom','gid','src',tgt');
+	SELECT  pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt');
 
-.. warning::  | An error would occur when the arguments are not given in the appropiate order: In this example, the column ``gid`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``mygeom`` is passed to the function as the id column.
- | ``select  pgr_createTopology('mytable',0.001,'gid','mygeom','src','tgt')``
+.. warning::  | An error would occur when the arguments are not given in the appropiate order: In this example, the column ``gid`` of the table ``mytable`` is passed to the function AS the geometry column, and the geometry column ``mygeom`` is passed to the function AS the id column.
+ | ``SELECT  pgr_createTopology('mytable',0.001,'gid','mygeom','src','tgt');``
  | ERROR: Can not determine the srid of the geometry "gid" in table public.mytable
 
 
@@ -193,11 +194,11 @@ The order of the parameters do not matter:
 
 .. code-block:: sql
 
-	 select  pgr_createTopology('mytable',0.001,the_geom:='mygeom',id:='gid',source:='src',target:='tgt');
+	 SELECT  pgr_createTopology('mytable',0.001,the_geom:='mygeom',id:='gid',source:='src',target:='tgt');
 
 .. code-block:: sql
 
-	 select  pgr_createTopology('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom');
+	 SELECT  pgr_createTopology('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom');
 
 In this scenario omitting a parameter would create an error because the default values for the column names do not match the column names of the table.
 
@@ -208,37 +209,37 @@ Selecting rows based on the id.
 
 .. code-block:: sql
 
-	 select  pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt',rows_where:='gid < 10');
+	 SELECT  pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt',rows_where:='gid < 10');
 
 .. code-block:: sql
 
-	 select  pgr_createTopology('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',rows_where:='gid < 10');
+	 SELECT  pgr_createTopology('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',rows_where:='gid < 10');
 
 Selecting the rows where the geometry is near the geometry of row with ``id`` =5 .
 
 .. code-block:: sql
 
-	 select  pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt',
-	                            rows_where:='mygeom && (select st_buffer(mygeom,1) from mytable where gid=5)');
+	 SELECT  pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt',
+	                            rows_where:='mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)');
 
 .. code-block:: sql
 
-	 select  pgr_createTopology('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
-	                            rows_where:='mygeom && (select st_buffer(mygeom,1) from mytable where gid=5)');
+	 SELECT  pgr_createTopology('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
+	                            rows_where:='mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)');
 
 Selecting the rows where the geometry is near the geometry of the row with ``gid`` =100 of the table ``othertable``.
 
 .. code-block:: sql
 
-	drop table if exists otherTable;
-	create table otherTable as  (select 100 as gid, st_point(2.5,2.5) as other_geom) ; 
-	select  pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt',
-                           rows_where:='mygeom && (select st_buffer(other_geom,1) from otherTable where gid=100)');
+	DROP TABLE IF EXISTS otherTable;
+	CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ; 
+	SELECT  pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt',
+                           rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE gid=100)');
 
 .. code-block:: sql
 
-	 select  pgr_createTopology('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
-                           rows_where:='mygeom && (select st_buffer(other_geom,1) from otherTable where gid=100)');
+	 SELECT  pgr_createTopology('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
+                           rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE gid=100)');
 
 
 

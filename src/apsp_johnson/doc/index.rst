@@ -71,8 +71,8 @@ Examples
     -----+------+----+------
        0 |    1 |  1 |    0
        1 |    1 |  2 |    1
-       2 |    1 |  7 |    2
-       3 |    1 |  8 |    3
+       2 |    1 |  5 |    2
+       3 |    1 |  6 |    3
     [...]
 
 The query uses the :ref:`sampledata` network.

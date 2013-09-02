@@ -78,6 +78,20 @@ Examples
      0 | 2
     (6 rows)
 
+    SELECT * FROM pgr_alphAShape('SELECT id::integer, st_x(the_geom)::float as x, st_y(the_geom)::float as y  FROM edge_table_vertices_pgr');
+      x  |  y  
+    -----+-----
+     0.5 | 3.5
+       0 |   2
+       2 |   0
+       4 |   1
+       4 |   2
+       4 |   3
+     3.5 |   4
+       2 |   4
+    (8 rows)
+
+    
 The queries use the :ref:`sampledata` network.
 
 

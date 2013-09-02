@@ -56,7 +56,7 @@ The analyze graph function accepts the following parameters:
 :id: ``text``  Primary key column name of the network table. Default value is ``id``. 
 :source: ``text`` Source column name of the network table. Default value is ``source``.
 :target: ``text``  Target column name of the network table.  Default value is ``target``. 
-:rows_where: ``text``   Condition to select a subset or rows.  Default value is ``true`` to indicate all rows.
+:rows_where: ``text``   Condition to select  a subset or rows.  Default value is ``true`` to indicate all rows.
 
 The function returns:
 
@@ -99,18 +99,19 @@ Usage when the edge table's columns MATCH the default values:
 
 .. code-block:: sql
 
-	 select  pgr_analyzeGraph('edge_table',0.0001);
+	 SELECT  pgr_create_topology('edge_table',0.001);
+	 SELECT  pgr_analyzeGraph('edge_table',0.001);
 
 .. rubric:: When the arguments are given in the order described in the parameters:
 
 .. code-block:: sql
 
-	 select  pgr_analyzeGraph('edge_table',0.0001,'the_geom','id','source','target');
+	 SELECT  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target');
 
 We get the same result as the simplest way to use the function.
 
 .. warning::  | An error would occur when the arguments are not given in the appropiate order: In this example, the column ``id`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the id column. 
- | ``select  pgr_analyzeGraph('edge_table',0.0001,'id','the_geom','source','target')``
+ | ``SELECT  pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target');``
  | ERROR: Can not determine the srid of the geometry "id" in table public.edge_table
 
 .. rubric:: When using the named notation
@@ -119,17 +120,17 @@ The order of the parameters do not matter:
 
 .. code-block:: sql
 
-	 select  pgr_analyzeGraph('edge_table',0.0001,the_geom:='the_geom',id:='id',source:='source',target:='target');
+	 SELECT  pgr_analyzeGraph('edge_table',0.001,the_geom:='the_geom',id:='id',source:='source',target:='target');
 
 .. code-block:: sql
 
-	 select  pgr_analyzeGraph('edge_table',0.001,source:='source',id:='id',target:='target',the_geom:='the_geom');
+	 SELECT  pgr_analyzeGraph('edge_table',0.001,source:='source',id:='id',target:='target',the_geom:='the_geom');
 
 Parameters defined with a default value can be ommited, as long as the value matches the default:
 
 .. code-block:: sql
 
-	 select  pgr_analyzeGraph('edge_table',0.0001,source:='source');
+	 SELECT  pgr_analyzeGraph('edge_table',0.001,source:='source');
 
 .. rubric:: Selecting rows using rows_where parameter
 
@@ -137,21 +138,21 @@ Selecting rows based on the id. Displays the analysis a the section of the netwo
 
 .. code-block:: sql
 
-	 select  pgr_analyzeGraph('edge_table',0.0001,rows_where:='id < 10');
+	 SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='id < 10');
 
 Selecting the rows where the geometry is near the geometry of row with ``id`` =5 .
 
 .. code-block:: sql
 
-	 select  pgr_analyzeGraph('edge_table',0.0001,rows_where:='the_geom && (select st_buffer(the_geom,0.05) from edge_table where id=5)');
+	 SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='the_geom && (SELECT st_buffer(the_geom,0.05) FROM edge_table WHERE id=5)');
 
 Selecting the rows where the geometry is near the geometry of the row with ``gid`` =100 of the table ``othertable``.
 
 .. code-block:: sql
 
-        drop table if exists otherTable;
-	create table otherTable as  (select 100 as gid, st_point(2.5,2.5) as other_geom) ;
-	select  pgr_analyzeGraph('edge_table',0.0001,rows_where:='the_geom && (select st_buffer(other_geom,1) from otherTable where gid=100)');
+        DROP TABLE IF EXISTS otherTable;
+	CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ;
+	SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='the_geom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE gid=100)');
 
 
 
@@ -162,9 +163,9 @@ For the following table
 
 .. code-block:: sql
 
-	drop table if exists mytable;
-	create table mytable as (select id as gid, source as src ,target as tgt , the_geom as mygeom from edge_table);
-	select pgr_createTopology('mytable',0.0001,'mygeom','gid','src','tgt');
+	DROP TABLE IF EXISTS mytable;
+	CREATE TABLE mytable AS (SELECT id AS gid, source AS src ,target AS tgt , the_geom AS mygeom FROM edge_table);
+	SELECT pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt');
 
 .. rubric:: Using positional notation: 
 
@@ -172,10 +173,10 @@ The arguments need to be given in the order described in the parameters:
 
 .. code-block:: sql
 
-	 select  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src',tgt');
+	 SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt');
 
 .. warning::  | An error would occur when the arguments are not given in the appropiate order: In this example, the column ``gid`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``mygeom`` is passed to the function as the id column.
- | ``select  pgr_analyzeGraph('mytable',0.0001,'gid','mygeom','src','tgt')``
+ | ``SELECT  pgr_analyzeGraph('mytable',0.001,'gid','mygeom','src','tgt');``
  | ERROR: Can not determine the srid of the geometry "gid" in table public.mytable
 
 
@@ -185,11 +186,11 @@ The order of the parameters do not matter:
 
 .. code-block:: sql
 
-	 select  pgr_analyzeGraph('mytable',0.0001,the_geom:='mygeom',id:='gid',source:='src',target:='tgt');
+	 SELECT  pgr_analyzeGraph('mytable',0.001,the_geom:='mygeom',id:='gid',source:='src',target:='tgt');
 
 .. code-block:: sql
 
-	 select  pgr_analyzeGraph('mytable',0.0001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom');
+	 SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom');
 
 In this scenario omitting a parameter would create an error because the default values for the column names do not match the column names of the table.
 
@@ -200,37 +201,37 @@ Selecting rows based on the id.
 
 .. code-block:: sql
 
-	 select  pgr_analyzeGraph('mytable',0.0001,'mygeom','gid','src','tgt',rows_where:='gid < 10');
+	 SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt',rows_where:='gid < 10');
 
 .. code-block:: sql
 
-	 select  pgr_analyzeGraph('mytable',0.0001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',rows_where:='gid < 10');
+	 SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',rows_where:='gid < 10');
 
-Selecting the rows where the geometry is near the geometry of row with ``id`` =5 .
-
-.. code-block:: sql
-
-	 select  pgr_analyzeGraph('mytable',0.0001,'mygeom','gid','src','tgt',
-	                            rows_where:='mygeom && (select st_buffer(mygeom,1) from mytable where gid=5)');
+Selecting the rows WHERE the geometry is near the geometry of row with ``id`` =5 .
 
 .. code-block:: sql
 
-	 select  pgr_analyzeGraph('mytable',0.0001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
-	                            rows_where:='mygeom && (select st_buffer(mygeom,1) from mytable where gid=5)');
-
-Selecting the rows where the geometry is near the place='myhouse' of the table ``othertable``. (note the use of quote_literal)
+	 SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt',
+	                            rows_where:='mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)');
 
 .. code-block:: sql
 
-        drop table if exists otherTable;
-	create table otherTable as  (select 'myhouse'::text as place, st_point(2.5,2.5) as other_geom) ;
-	select  pgr_analyzeGraph('mytable',0.0001,'mygeom','gid','src','tgt',
-                 rows_where:='mygeom && (select st_buffer(other_geom,1) from otherTable where place='||quote_literal('myhouse')||')');
+	 SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
+	                            rows_where:='mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)');
+
+Selecting the rows WHERE the geometry is near the place='myhouse' of the table ``othertable``. (note the use of quote_literal)
 
 .. code-block:: sql
 
-	 select  pgr_analyzeGraph('mytable',0.0001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
-                 rows_where:='mygeom && (select st_buffer(other_geom,1) from otherTable where place='||quote_literal('myhouse')||')');
+        DROP TABLE IF EXISTS otherTable;
+	CREATE TABLE otherTable AS  (SELECT 'myhouse'::text AS place, st_point(2.5,2.5) AS other_geom) ;
+	SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt',
+                 rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='||quote_literal('myhouse')||')');
+
+.. code-block:: sql
+
+	 SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
+                 rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='||quote_literal('myhouse')||')');
 
 
 
@@ -239,9 +240,10 @@ Examples
 
 .. code-block:: sql
 
-	SELECT pgr_analyzeGraph('edge_table', 0.0001);
+	SELECT  pgr_create_topology('edge_table',0.001);
+	SELECT pgr_analyzeGraph('edge_table', 0.001);
 	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analizeGraph('edge_table',0.0001,'the_geom','id','source','target','true')
+	NOTICE:  pgr_analizeGraph('edge_table',0.001,'the_geom','id','source','target','true')
 	NOTICE:  Performing checks, pelase wait...
 	NOTICE:  Analyzing for dead ends. Please wait...
 	NOTICE:  Analyzing for gaps. Please wait...
@@ -251,7 +253,7 @@ Examples
 	NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
 	NOTICE:                    Isolated segments: 2
 	NOTICE:                            Dead ends: 7
-	NOTICE:  Potential gaps found near dead ends: 0
+	NOTICE:  Potential gaps found near dead ends: 1
 	NOTICE:               Intersections detected: 1
 	NOTICE:                      Ring geometries: 0
 	
@@ -272,7 +274,7 @@ Examples
 	NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
 	NOTICE:                    Isolated segments: 0
 	NOTICE:                            Dead ends: 2
-	NOTICE:  Potential gaps found near dead ends: 0
+	NOTICE:  Potential gaps found near dead ends: 1
 	NOTICE:               Intersections detected: 0
 	NOTICE:                      Ring geometries: 0
 
@@ -293,7 +295,7 @@ Examples
 	NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
 	NOTICE:                    Isolated segments: 2
 	NOTICE:                            Dead ends: 5
-	NOTICE:  Potential gaps found near dead ends: 0
+	NOTICE:  Potential gaps found near dead ends: 1
 	NOTICE:               Intersections detected: 1
 	NOTICE:                      Ring geometries: 0
 	
@@ -303,10 +305,10 @@ Examples
 	(1 row)
 
 	-- Simulate removal of edges
-	SELECT pgr_createTopology('edge_table', 0.0001,rows_where:='id <17');
-	SELECT pgr_analyzeGraph('edge_table', 0.0001);
+	SELECT pgr_createTopology('edge_table', 0.001,rows_where:='id <17');
+	SELECT pgr_analyzeGraph('edge_table', 0.001);
 	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analizeGraph('edge_table',0.0001,'the_geom','id','source','target','true')
+	NOTICE:  pgr_analizeGraph('edge_table',0.001,'the_geom','id','source','target','true')
 	NOTICE:  Performing checks, pelase wait...
 	NOTICE:  Analyzing for dead ends. Please wait...
 	NOTICE:  Analyzing for gaps. Please wait...

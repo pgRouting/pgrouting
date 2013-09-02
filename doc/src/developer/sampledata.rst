@@ -32,10 +32,52 @@ To be able to execute the sample queries, run the following SQL commands to crea
 	    y1 double precision,
 	    x2 double precision,
 	    y2 double precision,
-	    to_cost double precision,
-	    rule text,
 	    the_geom geometry(Linestring)
 	);
+
+
+
+.. rubric:: Insert network data
+
+.. code-block:: sql
+
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,0,   2,1);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES (-1, 1,  2,1,   3,1);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES (-1, 1,  3,1,   4,1);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,1,   2,2);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1,-1,  3,1,   3,2);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  0,2,   1,2);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  1,2,   2,2);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,2,   3,2);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  3,2,   4,2);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,2,   2,3);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1,-1,  3,2,   3,3);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1,-1,  2,3,   3,3);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1,-1,  3,3,   4,3);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,3,   2,4);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  4,2,   4,3);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  4,1,   4,2);
+	    INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  0.5,3.5,  1.999999999999,3.5);
+        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  3.5,2.3,  3.5,4);
+
+
+        UPDATE edge_table SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2)),
+                              dir = CASE WHEN (cost>0 and reverse_cost>0) THEN 'B'   -- both ways
+                                         WHEN (cost>0 and reverse_cost<0) THEN 'FT'  -- direction of the LINESSTRING
+                                         WHEN (cost<0 and reverse_cost>0) THEN 'TF'  -- reverse direction of the LINESTRING
+                                         ELSE '' END;                                -- unknown  
+
+
+	UPDATE edge_table SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2));
+
+Before you test a routing function use this query to fill the source and target columns.
+
+.. code-block:: sql
+
+    SELECT pgr_createTopology('edge_table',0.001);
+
+If you add more edges to `edge_table` Cost and reverse_cost can be filled with the following query
+
 
 .. code-block:: sql
 
@@ -44,35 +86,6 @@ To be able to execute the sample queries, run the following SQL commands to crea
 	    x double precision,
 	    y double precision
 	);
-
-
-.. rubric:: Insert network data
-
-.. code-block:: sql
-
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  2,0,   2,1);
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ('TF',-1, 1,  2,1,   3,1);
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ('TF',-1, 1,  3,1,   4,1);
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  2,1,   2,2);
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ('FT', 1,-1,  3,1,   3,2);
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  0,2,   1,2);
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  1,2,   2,2);
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  2,2,   3,2);
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  3,2,   4,2);
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  2,2,   2,3);
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ('FT', 1,-1,  3,2,   3,3);
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ('FT', 1,-1,  2,3,   3,3);
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ('FT', 1,-1,  3,3,   4,3);
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  2,3,   2,4);
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  4,2,   4,3);
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  4,1,   4,2);
-	INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  0.5,3.5,  1.999999999999,3.5);
-        INSERT INTO edge_table (dir,cost,reverse_cost,x1,y1,x2,y2) VALUES ( 'B', 1, 1,  3.5,2.3,  3.5,4);
-
-	update edge_table set the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2));
-
-
-Use :ref:`pgr_createTopology<pgr_create_topology>` to fill the source and target columns
 
 .. code-block:: sql
 

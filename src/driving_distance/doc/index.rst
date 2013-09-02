@@ -16,7 +16,7 @@ With Driving Distance Enabled
 .. toctree::
 	:maxdepth: 1
 
-	dd_basics
+	dd_drivingdistance
 	dd_alphashape
 	dd_points_as_polygon
 

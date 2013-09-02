@@ -48,7 +48,7 @@ The reconstruction of the vertices table  function accepts the following paramet
 :the_geom: ``text``  Geometry column name of the network table. Default value is ``the_geom``.  
 :source: ``text`` Source column name of the network table. Default value is ``source``.
 :target: ``text``  Target column name of the network table.  Default value is ``target``. 
-:rows_where: ``text``   Condition to select a subset or rows.  Default value is ``true`` to indicate all rows.
+:rows_where: ``text``   Condition to SELECT a subset or rows.  Default value is ``true`` to indicate all rows.
 
 .. warning::
 
@@ -98,19 +98,19 @@ Usage when the edge table's columns MATCH the default values:
 
 .. code-block:: sql
 
-	 select  pgr_createVerticesTable('mytable')
+	 SELECT  pgr_createVerticesTable('edge_table');
 
 
 .. rubric:: When the arguments are given in the order described in the parameters:
 
 .. code-block:: sql
 
-	 select  pgr_createVerticesTable('mytable','the_geom','source','target')
+	 SELECT  pgr_createVerticesTable('edge_table','the_geom','source','target');
 
 We get the same result as the simplest way to use the function.
 
 .. warning::  | An error would occur when the arguments are not given in the appropiate order: In this example, the column source column ``source`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the source column. 
- | ``select  pgr_createVerticesTable('mytable','source','the_geom','target')``
+ | ``SELECT  pgr_createVerticesTable('edge_table','source','the_geom','target');``
 
 
 .. rubric:: When using the named notation
@@ -119,17 +119,17 @@ The order of the parameters do not matter:
 
 .. code-block:: sql
 
-	 select  pgr_createVerticesTable('mytable',the_geom:='the_geom',source:='source',target:='target')
+	 SELECT  pgr_createVerticesTable('edge_table',the_geom:='the_geom',source:='source',target:='target');
 
 .. code-block:: sql
 
-	 select  pgr_createVerticesTable('mytable',source:='source',target:='target',the_geom:='the_geom')
+	 SELECT  pgr_createVerticesTable('edge_table',source:='source',target:='target',the_geom:='the_geom');
 
 Parameters defined with a default value can be ommited, as long as the value matches the default:
 
 .. code-block:: sql
 
-	 select  pgr_createVerticesTable('mytable',source:='source')
+	 SELECT  pgr_createVerticesTable('edge_table',source:='source');
 
 .. rubric:: Selecting rows using rows_where parameter
 
@@ -137,19 +137,21 @@ Selecting rows based on the id.
 
 .. code-block:: sql
 
-	 select  pgr_createVerticesTable('mytable',rows_where:='id < 10')
+	 SELECT  pgr_createVerticesTable('edge_table',rows_where:='id < 10');
 
 Selecting the rows where the geometry is near the geometry of row with ``id`` =5 .
 
 .. code-block:: sql
 
-	 select  pgr_createVerticesTable('mytable',rows_where:='the_geom && (select st_buffer(the_geom,0.05) from mytable where id=5)')
+	 SELECT  pgr_createVerticesTable('edge_table',rows_where:='the_geom && (select st_buffer(the_geom,0.05) FROM edge_table WHERE id=5)');
 
 Selecting the rows where the geometry is near the geometry of the row with ``gid`` =100 of the table ``othertable``.
 
 .. code-block:: sql
 
-	 select  pgr_createVerticesTable('mytable',rows_where:='the_geom && (select st_buffer(othergeom,0.05) from otherTable where gid=100)')
+	DROP TABLE IF EXISTS otherTable;
+	CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ; 
+	SELECT  pgr_createVerticesTable('edge_table',rows_where:='the_geom && (select st_buffer(othergeom,0.05) FROM otherTable WHERE gid=100)');
 
 
 
@@ -160,7 +162,8 @@ For the following table
 
 .. code-block:: sql
 
-	  mytable (gid  bigint, mygeom geometry, src integer, tgt integer) 
+	DROP TABLE IF EXISTS mytable;
+	CREATE TABLE mytable AS (SELECT id AS gid, the_geom AS mygeom,source AS src ,target AS tgt FROM edge_table) ;
 
 .. rubric:: Using positional notation: 
 
@@ -168,10 +171,10 @@ The arguments need to be given in the order described in the parameters:
 
 .. code-block:: sql
 
-	 select  pgr_createVerticesTable('mytable','mygeom','src',tgt')
+	 SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt');
 
 .. warning::  | An error would occur when the arguments are not given in the appropiate order: In this example, the column ``src`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``mygeom`` is passed to the function as the source column.
- | ``select  pgr_createVerticesTable('mytable','src','mygeom','tgt')``
+ | ``SELECT  pgr_createVerticesTable('mytable','src','mygeom','tgt');``
 
 
 .. rubric:: When using the named notation
@@ -180,50 +183,52 @@ The order of the parameters do not matter:
 
 .. code-block:: sql
 
-	 select  pgr_createVerticesTable('mytable',the_geom:='mygeom',source:='src',target:='tgt')
+	 SELECT  pgr_createVerticesTable('mytable',the_geom:='mygeom',source:='src',target:='tgt');
 
 .. code-block:: sql
 
-	 select  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom')
+	 SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom');
 
 In this scenario omitting a parameter would create an error because the default values for the column names do not match the column names of the table.
 
 
 .. rubric:: Selecting rows using rows_where parameter
 
-Selecting rows based on the id.
+Selecting rows based on the gid.
 
 .. code-block:: sql
 
-	 select  pgr_createVerticesTable('mytable','mygeom','src','tgt',rows_where:='id < 10')
+	 SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt',rows_where:='gid < 10');
 
 .. code-block:: sql
 
-	 select  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',rows_where:='id < 10')
+	 SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',rows_where:='gid < 10');
 
-Selecting the rows where the geometry is near the geometry of row with ``id`` =5 .
-
-.. code-block:: sql
-
-	 select  pgr_createVerticesTable('mytable','mygeom','src','tgt',
-	                            rows_where:='the_geom && (select st_buffer(the_geom,0.05) from mytable where id=5)')
+Selecting the rows where the geometry is near the geometry of row with ``gid`` =5 .
 
 .. code-block:: sql
 
-	 select  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',
-	                            rows_where:='the_geom && (select st_buffer(the_geom,0.05) from mytable where id=5)')
+	 SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt',
+	                            rows_where:='the_geom && (SELECT st_buffer(mygeom,0.05) FROM mytable WHERE gid=5)');
+
+.. code-block:: sql
+
+	 SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',
+	                            rows_where:='mygeom && (SELECT st_buffer(mygeom,0.05) FROM mytable WHERE id=5)');
 
 Selecting the rows where the geometry is near the geometry of the row with ``gid`` =100 of the table ``othertable``.
 
 .. code-block:: sql
 
-	 select  pgr_createVerticesTable('mytable','mygeom','src','tgt',
-	                            rows_where:='the_geom && (select st_buffer(othergeom,0.05) from otherTable where gid=100)')
+	DROP TABLE IF EXISTS otherTable;
+	CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ; 
+	SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt',
+	                            rows_where:='the_geom && (SELECT st_buffer(othergeom,0.05) FROM otherTable WHERE gid=100)');
 
 .. code-block:: sql
 
-	 select  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',
-	                            rows_where:='the_geom && (select st_buffer(othergeom,0.05) from otherTable where gid=100)')
+	SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',
+	                            rows_where:='the_geom && (SELECT st_buffer(othergeom,0.05) FROM otherTable WHERE gid=100)');
 
 
 
@@ -234,12 +239,14 @@ Examples
 
 	SELECT pgr_createVerticesTable('edge_table');
 	NOTICE:  PROCESSING:
+	NOTICE:  pgr_createVerticeNOTICE:  PROCESSING:
 	NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
 	NOTICE:  Performing checks, pelase wait .....
 	NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
-	NOTICE:    -----> VERTICES TABLE CREATED WITH  17 vertices
-	NOTICE:  Edges with NULL geometry,source or target: 0
+	NOTICE:    -----> VERTICES TABLE CREATED WITH  9 vertices
+	NOTICE:  Edges with NULL geometry,source or target: 9
 	NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+	NOTICE:  ----------------------------------------------
 	
 	 pgr_createVerticesTable 
 	--------------------

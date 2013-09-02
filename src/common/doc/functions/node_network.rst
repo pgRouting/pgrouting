@@ -44,7 +44,7 @@ A common problem associated with bringing GIS data into pgRouting is the fact th
 
 What we mean by "noded" is that at every intersection in the road network all the edges will be broken into separate road segments. There are cases like an over-pass and under-pass intersection where you can not traverse from the over-pass to the under-pass, but this function does not have the ability to detect and accomodate those situations.
 
-This function reads the ``table_in`` table, that has a primary key column ``gid_cname`` and geometry column named ``geo_cname`` and intersects all the segments in it against all the other segments and then creates a table ``table_out``. It uses the ``tolerance`` for deciding that multiple nodes within the tolerance are considered the same node. 
+This function reads the ``table_in`` table, that has a primary key column ``gid_cname`` and geometry column named ``geo_cname`` and intersect all the segments in it against all the other segments and then creates a table ``table_out``. It uses the ``tolerance`` for deciding that multiple nodes within the tolerance are considered the same node. 
 
 Parameters
 
@@ -84,6 +84,7 @@ Let's create the topology for the data in :ref:`sampledata`
 	NOTICE:  Rows with NULL geometry or NULL id: 0
 	NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 	NOTICE:  ----------------------------------------------
+ 
  	pgr_createtopology 
 	--------------------
  	OK
@@ -113,7 +114,7 @@ Now we can analyze the network.
  	OK
 	(1 row)
 
-The analysis tell us that the network has a gap and and two intersection. We try to fix the problem using:
+The analysis tell us that the network has a gap and and an intersection. We try to fix the problem using:
 
 .. code-block:: sql
 
@@ -202,8 +203,8 @@ Now let's analyze the new topology
 	NOTICE:  Potential gaps found near dead ends: 0
 	NOTICE:               Intersections detected: 0
 	NOTICE:                      Ring geometries: 0
- 	pgr_analyzegraph 
-	------------------
+ 	pgr_createtopology 
+	--------------------
  	OK
 	(1 row)
 
@@ -255,7 +256,118 @@ Comparing with the Analysis in the original edge_table, we see that.
 
 
 
+Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and 18-2 into our edge-table, copying the data for dir,cost,and reverse cost with tho following steps:
 
+   - Add a column old_id into edge_table, this column is going to keep track the id of the original edge
+   - Insert only the segmented edges, that is, the ones whose max(sub_id) >1
+ 
+.. code-block:: sql
+
+	alter table edge_table drop column if exists old_id;
+	alter table edge_table add column old_id integer;
+	insert into edge_table (old_id,dir,cost,reverse_cost,the_geom)
+   		(with
+       		segmented as (select old_id,count(*) as i from edge_table_noded group by old_id)
+   		select  segments.old_id,dir,cost,reverse_cost,segments.the_geom
+       			from edge_table as edges join edge_table_noded as segments on (edges.id = segments.old_id) 
+       			where edges.id in (select old_id from segmented where i>1) );
+
+We recreate the topology:
+
+.. code-block:: sql
+
+	SELECT pgr_createTopology('edge_table', 0.001);
+
+	NOTICE:  PROCESSING:
+	NOTICE:  pgr_createTopology('edge_table',0.001,'the_geom','id','source','target','true')
+	NOTICE:  Performing checks, pelase wait .....
+	NOTICE:  Creating Topology, Please wait...
+	NOTICE:  -------------> TOPOLOGY CREATED FOR  24 edges
+	NOTICE:  Rows with NULL geometry or NULL id: 0
+	NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+	NOTICE:  ----------------------------------------------
+ 	pgr_createtopology 
+	--------------------
+ 	OK
+	(1 row)
+
+
+To get the same analysis results as the topology of edge_table_noded, we do the following query:
+
+.. code-block:: sql
+
+	SELECT pgr_analyzegraph('edge_table', 0.001,rows_where:='id not in (select old_id from edge_table where old_id is not null)');
+
+	NOTICE:  PROCESSING:
+	NOTICE:  pgr_analizeGraph('edge_table',0.001,'the_geom','id','source','target',
+                                   'id not in (select old_id from edge_table where old_id is not null)')
+	NOTICE:  Performing checks, pelase wait...
+	NOTICE:  Analyzing for dead ends. Please wait...
+	NOTICE:  Analyzing for gaps. Please wait...
+	NOTICE:  Analyzing for isolated edges. Please wait...
+	NOTICE:  Analyzing for ring geometries. Please wait...
+	NOTICE:  Analyzing for intersections. Please wait...
+	NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
+	NOTICE:                    Isolated segments: 0
+	NOTICE:                            Dead ends: 6
+	NOTICE:  Potential gaps found near dead ends: 0
+	NOTICE:               Intersections detected: 0
+	NOTICE:                      Ring geometries: 0
+ 	pgr_createtopology 
+	--------------------
+ 	OK
+	(1 row)
+
+
+To get the same analysis results as the original edge_table, we do the following query:
+
+.. code-block:: sql
+
+	SELECT pgr_analyzegraph('edge_table', 0.001,rows_where:='old_id is null')
+
+	NOTICE:  PROCESSING:
+	NOTICE:  pgr_analizeGraph('edge_table',0.001,'the_geom','id','source','target','old_id is null')
+	NOTICE:  Performing checks, pelase wait...
+	NOTICE:  Analyzing for dead ends. Please wait...
+	NOTICE:  Analyzing for gaps. Please wait...
+	NOTICE:  Analyzing for isolated edges. Please wait...
+	NOTICE:  Analyzing for ring geometries. Please wait...
+	NOTICE:  Analyzing for intersections. Please wait...
+	NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
+	NOTICE:                    Isolated segments: 2
+	NOTICE:                            Dead ends: 7
+	NOTICE:  Potential gaps found near dead ends: 1
+	NOTICE:               Intersections detected: 1
+	NOTICE:                      Ring geometries: 0
+ 	pgr_createtopology 
+	--------------------
+ 	OK
+	(1 row)
+
+Or we can analize everything because, maybe edge 18 is an overpass, edge 14 is an under pass and there is also a street level juction, and the same happens with edges 17 and 13.
+
+.. code-block:: sql
+
+	SELECT pgr_analyzegraph('edge_table', 0.001);
+
+	NOTICE:  PROCESSING:
+	NOTICE:  pgr_analizeGraph('edge_table',0.001,'the_geom','id','source','target','true')
+	NOTICE:  Performing checks, pelase wait...
+	NOTICE:  Analyzing for dead ends. Please wait...
+	NOTICE:  Analyzing for gaps. Please wait...
+	NOTICE:  Analyzing for isolated edges. Please wait...
+	NOTICE:  Analyzing for ring geometries. Please wait...
+	NOTICE:  Analyzing for intersections. Please wait...
+	NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
+	NOTICE:                    Isolated segments: 0
+	NOTICE:                            Dead ends: 3
+	NOTICE:  Potential gaps found near dead ends: 0
+	NOTICE:               Intersections detected: 5
+	NOTICE:                      Ring geometries: 0
+ 	pgr_createtopology 
+	--------------------
+ 	OK
+	(1 row)
 
 
 
@@ -267,6 +379,6 @@ See Also
 
 :ref:`topology` for an overview of a topology for routing algorithms.
 :ref:`pgr_analyze_oneway` to analyze directionality of the edges.
-:ref:`pgr_create_topology`  to create a topology based on the geometry.
-:ref:`pgr_analyzei_graph` to analyze the edges and vertices of the edge table.
+:ref: `pgr_create_topology`  to create a topology based on the geometry.
+:ref: `pgr_analyzei_graph` to analyze the edges and vertices of the edge table.
 
