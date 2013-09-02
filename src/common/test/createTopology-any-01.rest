@@ -149,19 +149,19 @@ FAIL
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on public.Edges2 using btree(source)"
-PL/pgSQL function "pgr_createtopology" line 169 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 169 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('Edges2',1e-06,'the_geom','eid','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on public.Edges2 using btree(source)"
-PL/pgSQL function "pgr_createtopology" line 169 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 169 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('Edges2',1e-06,'the_geom','eid','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on public.Edges2 using btree(source)"
-PL/pgSQL function "pgr_createtopology" line 169 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 169 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('public.edges2',1e-06,'the_geom','eid','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
@@ -176,7 +176,7 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on public.Edges2 using btree(source)"
-PL/pgSQL function "pgr_createtopology" line 169 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 169 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('Public.edges2',1e-06,'The_Geom','eid','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
@@ -209,7 +209,7 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on public.Edges2 using btree(source)"
-PL/pgSQL function "pgr_createtopology" line 169 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 169 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('public.edges2',1e-06,'the_geom','eid','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
@@ -313,7 +313,7 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_eid_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_eid_idx on myschema.Edges2 using btree(eid)"
-PL/pgSQL function "pgr_createtopology" line 157 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 157 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('edges2',1e-06,'The_Geom','eid','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
@@ -346,7 +346,7 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_eid_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_eid_idx on myschema.Edges2 using btree(eid)"
-PL/pgSQL function "pgr_createtopology" line 157 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 157 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','eid','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
@@ -450,13 +450,13 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_eid_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_eid_idx on myschema.Edges2 using btree(eid)"
-PL/pgSQL function "pgr_createtopology" line 157 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 157 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('Edges2',1e-06,'the_geom','eid','source','target',' the_geom && (select st_buffer(the_geom,0.0001) as buffer from "Edges2" where eid=6)')
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_eid_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_eid_idx on myschema.Edges2 using btree(eid)"
-PL/pgSQL function "pgr_createtopology" line 157 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 157 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','eid','source','target','eid<')
  NOTICE:  Performing checks, pelase wait .....
@@ -468,13 +468,13 @@ FAIL
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_eid_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_eid_idx on myschema.Edges2 using btree(eid)"
-PL/pgSQL function "pgr_createtopology" line 157 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 157 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('Edges2',1e-06,'the_geom','eid','source','target',' the_geom && (select st_buffer(the_geom,0.0001 as buffer from "Edges2" where eid=6)')
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_eid_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_eid_idx on myschema.Edges2 using btree(eid)"
-PL/pgSQL function "pgr_createtopology" line 157 at EXECUTE statement
+PL/pgSQL function pgr_createtopology(text,double precision,text,text,text,text,text) line 157 at EXECUTE statement
  NOTICE:  table "Edges2_vertices_pgr" does not exist, skipping
  NOTICE:  drop cascades to 3 other objects
 DETAIL:  drop cascades to table myschema.edges2
