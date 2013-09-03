@@ -12,6 +12,8 @@
 pgRouting Data Types
 ===============================================================================
 
+The following are commonly used data types for some of the pgRouting functions.
+
 .. toctree::
    :maxdepth: 1
 

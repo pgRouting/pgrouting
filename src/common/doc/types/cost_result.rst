@@ -86,4 +86,4 @@ Description
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`common_types`
+* :ref:`introduction`
