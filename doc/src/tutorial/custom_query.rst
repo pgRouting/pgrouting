@@ -14,7 +14,7 @@ Custom Query
 
 .. Routing Algorithms:
 
-In general, the routing algorithms need an SQL query that contain one or more of the following requiered columns with the prefered type:
+In general, the routing algorithms need an SQL query that contain one or more of the following required columns with the preferred type:
 
 :id:	 int4
 :source: int4

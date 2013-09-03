@@ -42,14 +42,14 @@ Description
 
 A common problem associated with bringing GIS data into pgRouting is the fact that the data is often not "noded" correctly. This will create invalid topologies, which will result in routes that are incorrect.
 
-What we mean by "noded" is that at every intersection in the road network all the edges will be broken into separate road segments. There are cases like an over-pass and under-pass intersection where you can not traverse from the over-pass to the under-pass, but this function does not have the ability to detect and accomodate those situations.
+What we mean by "noded" is that at every intersection in the road network all the edges will be broken into separate road segments. There are cases like an over-pass and under-pass intersection where you can not traverse from the over-pass to the under-pass, but this function does not have the ability to detect and accommodate those situations.
 
-This function reads the ``table_in`` table, that has a primary key column ``gid_cname`` and geometry column named ``geo_cname`` and intersect all the segments in it against all the other segments and then creates a table ``table_out``. It uses the ``tolerance`` for deciding that multiple nodes within the tolerance are considered the same node. 
+This function reads the ``edge_table`` table, that has a primary key column ``id`` and geometry column named ``the_geom`` and intersect all the segments in it against all the other segments and then creates a table ``edge_table_noded``. It uses the ``tolerance`` for deciding that multiple nodes within the tolerance are considered the same node. 
 
 Parameters
 
 :edge_table: ``text`` Network table name. (may contain the schema name as well)
-:tolerance: ``float8`` tolerance for coinicident points (in projection unit)dd
+:tolerance: ``float8`` tolerance for coincident points (in projection unit)dd
 :id: ``text`` Primary key column name of the network table. Default value is ``id``.
 :the_geom: ``text`` Geometry column name of the network table. Default value is ``the_geom``.
 :table_ending: ``text`` Suffix for the new table's. Default value is ``noded``.
@@ -59,8 +59,8 @@ The output table will have for  ``edge_table_noded``
 :id: ``bigint`` Unique identifier for the table
 :old_id: ``bigint``  Identifier of the edge in original table
 :sub_id: ``integer`` Segment number of the original edge
-:source:
-:target:
+:source: ``integer`` Empty source column to be used with  :ref:`create_topology` function
+:target: ``integer`` Empty target column to be used with  :ref:`create_topology` function
 :the geom: ``geometry`` Geometry column of the noded network
 
 .. rubric:: History
@@ -136,7 +136,7 @@ The analysis tell us that the network has a gap and and an intersection. We try 
  	OK
 	(1 row)
 	
-Inspecting the generated table, we can see that edges 13,14 and 18 has been segmentized
+Inspecting the generated table, we can see that edges 13,14 and 18 has been segmented
 
 .. code-block:: sql
 
@@ -245,11 +245,11 @@ Comparing with the Analysis in the original edge_table, we see that.
 |                  | they have 2 dead ends                   |  - Edge 17 now shares a node with edges 14-1 and 14-2        |
 |                  |                                         |  - Edges 18-1 and 18-2 share a node with edges 13-1 and 13-2 |
 +------------------+-----------------------------------------+--------------------------------------------------------------+
-|  Gaps            | There is a gap between edge 17 and 14   | Edge 14 was segmentized                                      |
+|  Gaps            | There is a gap between edge 17 and 14   | Edge 14 was segmented                                      |
 |                  | because edge 14 is near to the right    | Now edges: 14-1 14-2 17 share the same node                  |
 |                  | node of edge 17                         | The tolerance value was taken in account                     |
 +------------------+-----------------------------------------+--------------------------------------------------------------+
-|Intersections     | Edges 13 and 18 were intersecting       | Edges were segmentized, So, now in the interection's         |
+|Intersections     | Edges 13 and 18 were intersecting       | Edges were segmented, So, now in the interection's         |
 |                  |                                         | point there is a node and the following edges share it:      |
 |                  |                                         | 13-1 13-2 18-1 18-2                                          |
 +------------------+-----------------------------------------+--------------------------------------------------------------+
@@ -380,5 +380,5 @@ See Also
 :ref:`topology` for an overview of a topology for routing algorithms.
 :ref:`pgr_analyze_oneway` to analyze directionality of the edges.
 :ref: `pgr_create_topology`  to create a topology based on the geometry.
-:ref: `pgr_analyzei_graph` to analyze the edges and vertices of the edge table.
+:ref: `pgr_analyze_graph` to analyze the edges and vertices of the edge table.
 

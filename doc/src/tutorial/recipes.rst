@@ -14,16 +14,16 @@ Use's Recipes contributions
 
 .. rubric:: How to contribute.
 
-Use an issue traker (see :ref:`support`) with a title containing: *Proposing a Recipe: Myrecipename*. The body will contain: 
+Use an issue tracker (see :ref:`support`) with a title containing: *Proposing a Recipe: Myrecipename*. The body will contain: 
 
   - author:  Required
-  - mail: if you are subscibed to the developers list this is not necessary
+  - mail: if you are subscribed to the developers list this is not necessary
   - date: Date posted
   - comments and code:  using reStructuredText format
 
 Any contact with the author will be done using the developers mailing list. The pgRouting team will evaluate the recipe and will be included it in this section when approved.
 
-Comparing topology of a unnodded network with a noded network
+Comparing topology of a unnoded network with a noded network
 -------------------------------------------------------------
 
 
