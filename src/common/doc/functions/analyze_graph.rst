@@ -32,7 +32,7 @@ The function returns:
 
 .. code-block:: sql
 
-	varchar pgr_analizeGrpah(text edge_table, double precision tolerance, 
+	varchar pgr_analyzeGrpah(text edge_table, double precision tolerance, 
                            text the_geom:='the_geom', text id:='id',
                            text source:='source',text target:='target',text rows_where:='true')
 
@@ -95,7 +95,7 @@ The structure of the vertices table is:
 Usage when the edge table's columns MATCH the default values:
 -------------------------------------------------------------------------------
  
-.. rubric:: The simplest way to use pgr_analizeGraph is: 
+.. rubric:: The simplest way to use pgr_analyzeGraph is: 
 
 .. code-block:: sql
 
@@ -243,7 +243,7 @@ Examples
 	SELECT  pgr_create_topology('edge_table',0.001);
 	SELECT pgr_analyzeGraph('edge_table', 0.001);
 	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analizeGraph('edge_table',0.001,'the_geom','id','source','target','true')
+	NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','true')
 	NOTICE:  Performing checks, pelase wait...
 	NOTICE:  Analyzing for dead ends. Please wait...
 	NOTICE:  Analyzing for gaps. Please wait...
@@ -264,7 +264,7 @@ Examples
 
 	SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='id < 10');
 	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analizeGraph('edge_table',0.001,'the_geom','id','source','target','id < 10')
+	NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','id < 10')
 	NOTICE:  Performing checks, pelase wait...
 	NOTICE:  Analyzing for dead ends. Please wait...
 	NOTICE:  Analyzing for gaps. Please wait...
@@ -273,8 +273,8 @@ Examples
 	NOTICE:  Analyzing for intersections. Please wait...
 	NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
 	NOTICE:                    Isolated segments: 0
-	NOTICE:                            Dead ends: 2
-	NOTICE:  Potential gaps found near dead ends: 1
+	NOTICE:                            Dead ends: 4
+	NOTICE:  Potential gaps found near dead ends: 0
 	NOTICE:               Intersections detected: 0
 	NOTICE:                      Ring geometries: 0
 
@@ -285,7 +285,7 @@ Examples
 
 	SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='id >= 10');
 	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analizeGraph('edge_table',0.001,'the_geom','id','source','target','id >= 10')
+	NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','id >= 10')
 	NOTICE:  Performing checks, pelase wait...
 	NOTICE:  Analyzing for dead ends. Please wait...
 	NOTICE:  Analyzing for gaps. Please wait...
@@ -294,7 +294,7 @@ Examples
 	NOTICE:  Analyzing for intersections. Please wait...
 	NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
 	NOTICE:                    Isolated segments: 2
-	NOTICE:                            Dead ends: 5
+	NOTICE:                            Dead ends: 8
 	NOTICE:  Potential gaps found near dead ends: 1
 	NOTICE:               Intersections detected: 1
 	NOTICE:                      Ring geometries: 0
@@ -308,7 +308,7 @@ Examples
 	SELECT pgr_createTopology('edge_table', 0.001,rows_where:='id <17');
 	SELECT pgr_analyzeGraph('edge_table', 0.001);
 	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analizeGraph('edge_table',0.001,'the_geom','id','source','target','true')
+	NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','true')
 	NOTICE:  Performing checks, pelase wait...
 	NOTICE:  Analyzing for dead ends. Please wait...
 	NOTICE:  Analyzing for gaps. Please wait...
@@ -326,6 +326,42 @@ Examples
 	--------------------
 	 OK
 	(1 row)
+    SELECT pgr_createTopology('edge_table', 0.001,rows_where:='id <17');
+    NOTICE:  PROCESSING:
+    NOTICE:  pgr_createTopology('edge_table',0.001,'the_geom','id','source','target','id <17')
+    NOTICE:  Performing checks, pelase wait .....
+    NOTICE:  Creating Topology, Please wait...
+    NOTICE:  -------------> TOPOLOGY CREATED FOR  16 edges
+    NOTICE:  Rows with NULL geometry or NULL id: 0
+    NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+    NOTICE:  ----------------------------------------------
+	
+	 pgr_analizeGraph 
+	--------------------
+	 OK
+	(1 row)
+
+    SELECT pgr_analyzeGraph('edge_table', 0.001);
+    NOTICE:  PROCESSING:
+    NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','true')
+    NOTICE:  Performing checks, pelase wait...
+    NOTICE:  Analyzing for dead ends. Please wait...
+    NOTICE:  Analyzing for gaps. Please wait...
+    NOTICE:  Analyzing for isolated edges. Please wait...
+    NOTICE:  Analyzing for ring geometries. Please wait...
+    NOTICE:  Analyzing for intersections. Please wait...
+    NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
+    NOTICE:                    Isolated segments: 0
+    NOTICE:                            Dead ends: 3
+    NOTICE:  Potential gaps found near dead ends: 0
+    NOTICE:               Intersections detected: 0
+    NOTICE:                      Ring geometries: 0
+	
+	 pgr_analizeGraph 
+	--------------------
+	 OK
+	(1 row)
+                         
 
 The examples use the :ref:`sampledata` network.
 

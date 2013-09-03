@@ -158,15 +158,14 @@ BEGIN
         vst_line_locate_point := 'st_linelocatepoint';
     end if;
 
---    -- First creates temp table with intersection points
---HAD TO CHANGE THIS QUERY
+--    -- First creates temp table with intersection points and gap points
     p_ret = 'create temp table intergeom on commit drop as (
         select l1.' || quote_ident(n_pkey) || ' as l1id, 
                l2.' || quote_ident(n_pkey) || ' as l2id, 
 	       l1.' || quote_ident(n_geom) || ' as line,
 	       pgr_startpoint(l2.' || quote_ident(n_geom) || ') as source,
 	       pgr_endpoint(l2.' || quote_ident(n_geom) || ') as target,
-               st_intersection(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ') as geom 
+           st_intersection(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ') as geom 
         from ' || pgr_quote_ident(intab) || ' l1 
              join ' || pgr_quote_ident(intab) || ' l2 
              on (st_dwithin(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ', ' || tolerance || '))'||
@@ -178,46 +177,6 @@ BEGIN
     raise debug '%',p_ret;	
     EXECUTE p_ret;	
 
-/*
-    -- Explode multipoints and multilines to handle them as single geometries
- 
-    EXECUTE 'insert into intergeom (l1id, l2id, geom)
-        select l1id, l2id, (st_dump(geom)).geom
-        from intergeom
-        where geometryType(geom) in (''MULTILINESTRING'' , ''MULTIPOINT'') ';
-     
-    GET DIAGNOSTICS p_num = ROW_COUNT;
-    raise notice 'Inserted % MULTI* geometries', p_num;
-*/
-
-    -- must handle the case where lines intersects at a linestring...
-
-    p_ret = 'insert into intergeom (l1id, l2id, geom)
-        select l1id, l2id, PGR_startpoint(geom)
-        from intergeom where geometryType(geom) = ''LINESTRING'' ';
-
-	GET DIAGNOSTICS p_num = ROW_COUNT;
-	raise DEBUG 'Num inserts: %', p_num;
-    raise notice '%',p_ret;	
-    EXECUTE p_ret;	
-
-    p_ret = 'insert into intergeom (l1id, l2id, geom)
-        select l1id, l2id, PGR_endpoint(geom)
-        from intergeom where geometryType(geom) = ''LINESTRING'' ';
-    raise notice '%',p_ret;	
-    EXECUTE p_ret;	
-
-	GET DIAGNOSTICS p_num = ROW_COUNT;
-	raise DEBUG 'Num inserts: %', p_num;
-	
-    -- keeps only true intersection points
---- BECAUSE THIS WAS ERASING THE NEAR EDGE
-    EXECUTE 'delete from intergeom where geometryType(geom) <> ''POINT'' ';
-
-	GET DIAGNOSTICS p_num = ROW_COUNT;
-	raise DEBUG 'Num deleted: %', p_num;
---up to here
----------------------------------------------------------------------------------------*/
     -- second temp table with locus (index of intersection point on the line)
     -- to avoid updating the previous table
     -- we keep only intersection points occuring onto the line, not at one of its ends

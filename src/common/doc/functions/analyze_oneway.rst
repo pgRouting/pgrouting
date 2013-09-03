@@ -114,7 +114,7 @@ Examples
         ARRAY['', 'B', 'TF'],
         oneway:='dir');
 	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analizeGraph('edge_table','{"",B,TF}','{"",B,FT}','{"",B,FT}','{"",B,TF}','dir','source','target',t)
+	NOTICE:  pgr_analyzeGraph('edge_table','{"",B,TF}','{"",B,FT}','{"",B,FT}','{"",B,TF}','dir','source','target',t)
 	NOTICE:  Analyzing graph for one way street errors.
 	NOTICE:  Analysis 25% complete ...
 	NOTICE:  Analysis 50% complete ...

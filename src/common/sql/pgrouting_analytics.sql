@@ -94,7 +94,7 @@ DECLARE
 
 BEGIN
   raise notice 'PROCESSING:'; 
-  raise notice 'pgr_analizeGraph(''%'',%,''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where;
+  raise notice 'pgr_analyzeGraph(''%'',%,''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where;
   raise NOTICE  'Performing checks, pelase wait...';
 
 
@@ -296,85 +296,92 @@ BEGIN
                            (select '||targetname||' as id from '||pgr_quote_ident(tabname)||' where true '||rows_where||'))';
     
 
+
+    
+
+   BEGIN
+       RAISE NOTICE 'Analyzing for dead ends. Please wait...';
+       query= 'with countingsource as (select a.'||sourcename||' as id,count(*) as cnts 
+               from (select * from '||pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  group by a.'||sourcename||') 
+                     ,countingtarget as (select a.'||targetname||' as id,count(*) as cntt 
+                    from (select * from '||pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  group by a.'||targetname||') 
+                   ,totalcount as (select id,case when cnts is null and cntt is null then 0
+                                                   when cnts is null then cntt 
+                                                   when cntt is null then cnts
+                                                   else cnts+cntt end as totcnt 
+                                   from ('||pgr_quote_ident(vertname)||' as a left 
+                                   join countingsource as t using(id) ) left join countingtarget using(id))
+               update '||pgr_quote_ident(vertname)||' as a set cnt=totcnt from totalcount as b where a.id=b.id';
+        raise debug '%',query;
+        execute query;
+        query=selectionquery||'
+              SELECT count(*)  FROM '||pgr_quote_ident(vertname)||' WHERE cnt=1 and id in (select id from selectedRows)';
+        raise debug '%',query;
+        execute query  INTO numdeadends;
+   END;
+
+
+
     BEGIN
-    RAISE NOTICE 'Analyzing for dead ends. Please wait...';
-      execute 'with countingsource as (select a.'||sourcename||' as id,count(*) as cnts from '||tabname||' a  group by a.'||sourcename||') 
-       ,countingtarget as (select a.'||targetname||' as id,count(*) as cntt from '||tabname||' a  group by a.'||targetname||') 
-       ,totalcount as (select id,case when cnts is null and cntt is null then 0
-		    when cnts is null then cntt 
-                    when cntt is null then cnts
-                    else cnts+cntt end as totcnt from ('||pgr_quote_ident(vertname)||' as a left join countingsource as t using(id) ) left join countingtarget using(id))
-      update '||pgr_quote_ident(vertname)||' as a set cnt=totcnt from totalcount as b where a.id=b.id';
-    query=selectionquery||'SELECT count(*)  FROM '||pgr_quote_ident(vertname)||' WHERE cnt=1 and id in (select id from selectedRows)';
-    execute query  INTO numdeadends;
+          RAISE NOTICE 'Analyzing for gaps. Please wait...';
+          query = 'with 
+                   buffer as (select id,st_buffer(the_geom,'||tolerance||') as buff from '||pgr_quote_ident(vertname)||' where cnt=1)
+                   ,veryclose as (select b.id,st_crosses(a.'||gname||',b.buff) as flag 
+                   from  (select * from '||pgr_quote_ident(tabname)||' where true '||rows_where||' ) as a 
+                   join buffer as b on (a.'||gname||'&&b.buff)  
+                   where '||sourcename||'!=b.id and '||targetname||'!=b.id )
+                   update '||pgr_quote_ident(vertname)||' set chk=1 where id in (select distinct id from veryclose where flag=true)'; 
+          raise debug '%' ,query; 
+          execute query; 
+          GET DIAGNOSTICS  numgaps= ROW_COUNT; 
+    END; 
+    
+    BEGIN
+        RAISE NOTICE 'Analyzing for isolated edges. Please wait...'; 
+        query=selectionquery|| ' SELECT count(*) FROM (select * from '||pgr_quote_ident(tabname)||' where true '||rows_where||' )  as a,
+                                                 '||pgr_quote_ident(vertname)||' as b,
+                                                 '||pgr_quote_ident(vertname)||' as c 
+                            WHERE b.id in (select id from selectedRows) and a.'||sourcename||' =b.id 
+                            AND b.cnt=1 AND a.'||targetname||' =c.id 
+                            AND c.cnt=1';
+        raise debug '%' ,query; 
+        execute query  INTO NumIsolated; 
     END;
 
     BEGIN
-      RAISE NOTICE 'Analyzing for gaps. Please wait...';
-      query = 'with 
-            buffer as (select id,st_buffer(the_geom,'||tolerance||') as buff from '||pgr_quote_ident(vertname)||' where cnt=1)
-	    ,veryclose as (select b.id,st_crosses(a.'||gname||',b.buff) as flag 
-               from '||pgr_quote_ident(tabname)||' as a join buffer as b on (a.'||gname||'&&b.buff)  
-               where '||sourcename||'!=b.id and '||targetname||'!=b.id )
-	    update '||pgr_quote_ident(vertname)||' set chk=1 where id in (select distinct id from veryclose where flag=true)';
---raise notice '%' ,query;	    
-       execute query;	    
-       GET DIAGNOSTICS  numgaps= ROW_COUNT;
+        RAISE NOTICE 'Analyzing for ring geometries. Please wait...'; 
+        execute 'SELECT geometrytype('||gname||')  FROM '||pgr_quote_ident(tabname) limit 1 into geotype; 
+        IF (geotype='MULTILINESTRING') THEN 
+            query ='SELECT count(*)  FROM '||pgr_quote_ident(tabname)||' 
+                                 WHERE true  '||rows_where||' and st_isRing(st_linemerge('||gname||'))'; 
+            raise debug '%' ,query; 
+            execute query  INTO numRings; 
+        ELSE query ='SELECT count(*)  FROM '||pgr_quote_ident(tabname)||' 
+                                  WHERE true  '||rows_where||' and st_isRing('||gname||')'; 
+            raise debug '%' ,query; 
+            execute query  INTO numRings; 
+        END IF; 
+    END;
+
+    BEGIN
+        RAISE NOTICE 'Analyzing for intersections. Please wait...'; 
+        query = 'select count(*) from (select distinct case when a.'||idname||' < b.'||idname||' then a.'||idname||' 
+                                                        else b.'||idname||' end, 
+                                                   case when a.'||idname||' < b.'||idname||' then b.'||idname||' 
+                                                        else a.'||idname||' end 
+                                    FROM (select * from '||pgr_quote_ident(tabname)||' where true '||rows_where||') as a 
+                                    JOIN (select * from '||pgr_quote_ident(tabname)||' where true '||rows_where||') as b 
+                                    ON (a.'|| gname||' && b.'||gname||') 
+                                    WHERE a.'||idname||' != b.'||idname|| ' 
+                                        and (a.'||sourcename||' in (b.'||sourcename||',b.'||targetname||') 
+                                              or a.'||targetname||' in (b.'||sourcename||',b.'||targetname||')) = false 
+                                        and st_intersects(a.'||gname||', b.'||gname||')=true) as d '; 
+        raise debug '%' ,query;
+        execute query  INTO numCrossing;
     END;
 
 
-/*
-    RAISE NOTICE 'Analyzing for gaps. Please wait...';
---    numDeadends=0;
---    execute 'SELECT count(*) FROM '||pgr_quote_ident(vertname)||' WHERE cnt = 1' into tot;
-    FOR points IN execute 'SELECT * FROM '||pgr_quote_ident(vertname)||' WHERE cnt = 1 ORDER BY id ' LOOP
---        numDeadends=numDeadends+1;
---        if (i % 1000)=0 then raise notice '    -- Analysis done to % ',numdeadends; END IF;
-        FOR seg IN EXECUTE 'SELECT a.'||sourcename||' as source, a.'||targetname||' as target FROM ' || pgr_quote_ident(tabname) || ' as a
-                WHERE ST_DWithin(a.' || gname || ', $1, $2)'
-                USING points.the_geom, tolerance
-            LOOP
-                IF points.id NOT IN (seg.source, seg.target) THEN
-                    execute 'UPDATE '||pgr_quote_ident(vertname)||' SET chk=1 WHERE id='||points.id;
-                END IF;
-        END LOOP;
-    END LOOP;
 
-
-    query =selectionquery||'SELECT count(*)  FROM '||pgr_quote_ident(vertname)||' WHERE chk=1 and id in (select id from selectedRows)';
-    execute query  INTO numgaps;
-*/
-
-
-    RAISE NOTICE 'Analyzing for isolated edges. Please wait...';
-    query=selectionquery|| 'SELECT count(*) FROM '||pgr_quote_ident(tabname)||' as a, '||pgr_quote_ident(vertname)||' as b,'||pgr_quote_ident(vertname)||' as c
-    		WHERE b.id in (select id from selectedRows) and a.'||sourcename||' =b.id AND b.cnt=1 AND a.'||targetname||' =c.id AND c.cnt=1';
-    execute query  INTO NumIsolated;
-    
-    
-    RAISE NOTICE 'Analyzing for ring geometries. Please wait...';
-    execute 'SELECT geometrytype('||gname||')  FROM '||pgr_quote_ident(tabname) limit 1 into geotype;
-    if (geotype='MULTILINESTRING') THEN
-      query ='SELECT count(*)  FROM '||pgr_quote_ident(tabname)||' WHERE st_isRing(st_linemerge('||gname||'))'||rows_where;
-      execute query  INTO numRings;
-    ELSE
-      query ='SELECT count(*)  FROM '||pgr_quote_ident(tabname)||' WHERE st_isRing('||gname||')'||rows_where;
-      execute query  INTO numRings;
-    END IF;
-
-    RAISE NOTICE 'Analyzing for intersections. Please wait...';
-    query = 'select count(*) from (select distinct case when a.'||idname||' < b.'||idname||' then a.'||idname||'
-            					       else b.'||idname||' end, 
-                                                  case when a.'||idname||' < b.'||idname||' then b.'||idname||'
-            					  else a.'||idname||' end
-		 FROM (select * from '||pgr_quote_ident(tabname)||' where true '||rows_where||') as a 
-                                   join '||pgr_quote_ident(tabname)||' as b 
-                                   on (a.'|| gname||' && b.'||gname||') 
-                                  WHERE a.'||idname||' != b.'||idname|| 
-				       ' and (a.'||sourcename||' in (b.'||sourcename||',b.'||targetname||') 
-                                                or a.'||targetname||' in (b.'||sourcename||',b.'||targetname||')) = false
-				         and st_intersects(a.'||gname||', b.'||gname||')=true) as d ';
-    execute query  INTO numCrossing;
 
     RAISE NOTICE '            ANALYSIS RESULTS FOR SELECTED EDGES:';
     RAISE NOTICE '                  Isolated segments: %', NumIsolated;
@@ -487,7 +494,7 @@ DECLARE
 
 BEGIN
   raise notice 'PROCESSING:'; 
-  raise notice 'pgr_analizeOneway(''%'',''%'',''%'',''%'',''%'',''%'',''%'',''%'',%)',
+  raise notice 'pgr_analyzeOneway(''%'',''%'',''%'',''%'',''%'',''%'',''%'',''%'',%)',
 		edge_table, s_in_rules , s_out_rules, t_in_rules, t_out_rules, oneway, source ,target,two_way_if_null ;
 
   BEGIN

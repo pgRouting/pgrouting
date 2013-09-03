@@ -3,12 +3,6 @@
  NOTICE:  pgr_nodeNetwork('unnoded',1e-06,'the_geom','id','noded')
  NOTICE:  Performing checks, pelase wait .....
  NOTICE:  Processing, pelase wait .....
- NOTICE:  insert into intergeom (l1id, l2id, geom)
-        select l1id, l2id, PGR_startpoint(geom)
-        from intergeom where geometryType(geom) = 'LINESTRING' 
- NOTICE:  insert into intergeom (l1id, l2id, geom)
-        select l1id, l2id, PGR_endpoint(geom)
-        from intergeom where geometryType(geom) = 'LINESTRING' 
  NOTICE:    Splitted Edges: 8
  NOTICE:   Untouched Edges: 0
  NOTICE:       Total original Edges: 8

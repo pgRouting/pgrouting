@@ -14,108 +14,144 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('Edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','The_Geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','The_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('Edges2','The_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','Source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','eid<15')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (eid<15)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  13 VERTICES
+ NOTICE:                                         FOR   16  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 16
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','eid<15 and eid>5')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (eid<15 and eid>5)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
+ NOTICE:                                         FOR   10  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 10
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
@@ -159,25 +195,28 @@ FAIL
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on public.Edges2 using btree(source)"
-PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
+PL/pgSQL function "pgr_createverticestable" line 128 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('Edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on public.Edges2 using btree(source)"
-PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
+PL/pgSQL function "pgr_createverticestable" line 128 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('Edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on public.Edges2 using btree(source)"
-PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
+PL/pgSQL function "pgr_createverticestable" line 128 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('public.edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
@@ -186,22 +225,28 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on public.Edges2 using btree(source)"
-PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
+PL/pgSQL function "pgr_createverticestable" line 128 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('Public.edges2','The_Geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('public.edges2','The_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
@@ -210,58 +255,76 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on public.Edges2 using btree(source)"
-PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
+PL/pgSQL function "pgr_createverticestable" line 128 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('public.edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('public.edges2','the_geom','Source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('public.edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('public.edges2','the_geom','source','target','eid<15')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (eid<15)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  13 VERTICES
+ NOTICE:                                         FOR   16  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 16
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('public.edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('public.edges2','the_geom','source','target','eid<15')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from public.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (eid<15)
  NOTICE:  Populating public.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  13 VERTICES
+ NOTICE:                                         FOR   16  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 16
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
@@ -305,13 +368,16 @@ FAIL
  NOTICE:  Performing checks, pelase wait .....
  NOTICE:  CREATE TABLE will create implicit sequence "edges2_vertices_pgr_id_seq" for serial column "edges2_vertices_pgr.id"
 CONTEXT:  SQL statement "CREATE TABLE myschema.edges2_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 166 at EXECUTE statement
+PL/pgSQL function "pgr_createverticestable" line 168 at EXECUTE statement
  NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "edges2_vertices_pgr_pkey" for table "edges2_vertices_pgr"
 CONTEXT:  SQL statement "CREATE TABLE myschema.edges2_vertices_pgr (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)"
-PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 166 at EXECUTE statement
+PL/pgSQL function "pgr_createverticestable" line 168 at EXECUTE statement
+ NOTICE:  select count(*) from myschema.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating myschema.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table myschema.edges2 is: myschema.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
@@ -320,22 +386,28 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on myschema.Edges2 using btree(source)"
-PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
+PL/pgSQL function "pgr_createverticestable" line 128 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','The_Geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from myschema.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating myschema.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table myschema.edges2 is: myschema.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','The_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from myschema.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating myschema.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table myschema.edges2 is: myschema.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
@@ -344,58 +416,76 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on myschema.Edges2 using btree(source)"
-PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
+PL/pgSQL function "pgr_createverticestable" line 128 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from myschema.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating myschema.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table myschema.edges2 is: myschema.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','Source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from myschema.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating myschema.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table myschema.edges2 is: myschema.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from myschema.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating myschema.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table myschema.edges2 is: myschema.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','eid<15')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from myschema.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (eid<15)
  NOTICE:  Populating myschema.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  13 VERTICES
+ NOTICE:                                         FOR   16  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 16
  NOTICE:  Vertices table for table myschema.edges2 is: myschema.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from myschema.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating myschema.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
+ NOTICE:                                         FOR   23  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 23
  NOTICE:  Vertices table for table myschema.edges2 is: myschema.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','eid<15')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from myschema.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (eid<15)
  NOTICE:  Populating myschema.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  13 VERTICES
+ NOTICE:                                         FOR   16  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 16
  NOTICE:  Vertices table for table myschema.edges2 is: myschema.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
@@ -437,9 +527,12 @@ FAIL
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','eid<15')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  select count(*) from myschema.edges2 WHERE (the_geom IS NULL or source is null or target is null)=true  AND (eid<15)
  NOTICE:  Populating myschema.edges2_vertices_pgr, please wait...
- NOTICE:    -----> VERTICES TABLE CREATED WITH  20 vertices
- NOTICE:  Edges with NULL geometry,source or target: 0
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  13 VERTICES
+ NOTICE:                                         FOR   16  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 16
  NOTICE:  Vertices table for table myschema.edges2 is: myschema.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
@@ -448,14 +541,14 @@ OK
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on myschema.Edges2 using btree(source)"
-PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
+PL/pgSQL function "pgr_createverticestable" line 128 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('Edges2','the_geom','source','target',' the_geom && (select st_buffer(the_geom,0.0001) as buffer from "Edges2" 
 where eid=6)')
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on myschema.Edges2 using btree(source)"
-PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
+PL/pgSQL function "pgr_createverticestable" line 128 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','eid<')
  NOTICE:  Performing checks, pelase wait .....
@@ -467,13 +560,13 @@ FAIL
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on myschema.Edges2 using btree(source)"
-PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
+PL/pgSQL function "pgr_createverticestable" line 128 at EXECUTE statement
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('Edges2','the_geom','source','target',' the_geom && (select st_buffer(the_geom,0.0001 as buffer from "Edges2" where eid=6)')
  NOTICE:  Performing checks, pelase wait .....
  ERROR:  relation "edges2_source_idx" already exists
 CONTEXT:  SQL statement "create  index Edges2_source_idx on myschema.Edges2 using btree(source)"
-PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
+PL/pgSQL function "pgr_createverticestable" line 128 at EXECUTE statement
  NOTICE:  table "Edges2_vertices_pgr" does not exist, skipping
  NOTICE:  drop cascades to 3 other objects
 DETAIL:  drop cascades to table myschema.edges2

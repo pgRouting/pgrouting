@@ -31,11 +31,9 @@ General
 
     src/introduction/introduction
     src/installation/index
+    src/installation/build
     src/introduction/support
 
-
-
-src/introduction/introduction
 
 *******************************************************************************
 Tutorial
@@ -68,7 +66,7 @@ Functions reference
 	../src/common/doc/functions/index
 	../src/index
 	../src/driving_distance/doc/index
-	../src/common/doc/developers/index
+	../src/common/doc/utilities/index
 
 .. toctree::
 	:maxdepth: 1
@@ -82,15 +80,11 @@ Developer
 *******************************************************************************
 
 .. toctree::
-	:maxdepth: 2
+    :maxdepth: 2
 
-	src/developer/index
-        src/changelog/index
+    src/developer/index
+    src/changelog/index
 
-.. toctree::
-	:maxdepth: 1
-
-	src/installation/build
 
 
 .. rubric:: Indices and tables

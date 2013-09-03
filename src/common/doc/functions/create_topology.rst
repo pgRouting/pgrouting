@@ -248,21 +248,6 @@ Examples
 
 .. code-block:: sql
 
-	SELECT pgr_createTopology('edge_table', 0.001);
-	NOTICE:  PROCESSING:
-	NOTICE:  pgr_createTopology('edge_table',0.0001,'the_geom','id','source','target','true')
-	NOTICE:  Performing checks, pelase wait .....
-	NOTICE:  Creating Topology, Please wait...
-	NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
-	NOTICE:  Rows with NULL geometry or NULL id: 0
-	NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
-
-	 pgr_createtopology 
-	--------------------
-	 OK
-	(1 row)
-
-
 	SELECT pgr_createTopology('edge_table', 0.001,rows_where:='id<10');
 	NOTICE:  PROCESSING:
 	NOTICE:  pgr_createTopology('edge_table',0.0001,'the_geom','id','source','target','id<10')
@@ -272,6 +257,20 @@ Examples
 	NOTICE:  Rows with NULL geometry or NULL id: 0
 	NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 	
+	 pgr_createtopology 
+	--------------------
+	 OK
+	(1 row)
+
+	SELECT pgr_createTopology('edge_table', 0.001);
+	NOTICE:  PROCESSING:
+	NOTICE:  pgr_createTopology('edge_table',0.0001,'the_geom','id','source','target','true')
+	NOTICE:  Performing checks, pelase wait .....
+	NOTICE:  Creating Topology, Please wait...
+	NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
+	NOTICE:  Rows with NULL geometry or NULL id: 0
+	NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+
 	 pgr_createtopology 
 	--------------------
 	 OK

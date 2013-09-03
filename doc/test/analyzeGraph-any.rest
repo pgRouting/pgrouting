@@ -97,8 +97,8 @@ OK
  NOTICE:  Analyzing for intersections. Please wait...
  NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
  NOTICE:                    Isolated segments: 0
- NOTICE:                            Dead ends: 2
- NOTICE:  Potential gaps found near dead ends: 1
+ NOTICE:                            Dead ends: 4
+ NOTICE:  Potential gaps found near dead ends: 0
  NOTICE:               Intersections detected: 0
  NOTICE:                      Ring geometries: 0
 OK
@@ -112,8 +112,8 @@ OK
  NOTICE:  Analyzing for intersections. Please wait...
  NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
  NOTICE:                    Isolated segments: 0
- NOTICE:                            Dead ends: 0
- NOTICE:  Potential gaps found near dead ends: 1
+ NOTICE:                            Dead ends: 5
+ NOTICE:  Potential gaps found near dead ends: 0
  NOTICE:               Intersections detected: 0
  NOTICE:                      Ring geometries: 0
 OK
@@ -127,7 +127,7 @@ OK
  NOTICE:  Analyzing for intersections. Please wait...
  NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
  NOTICE:                    Isolated segments: 2
- NOTICE:                            Dead ends: 5
+ NOTICE:                            Dead ends: 10
  NOTICE:  Potential gaps found near dead ends: 1
  NOTICE:               Intersections detected: 1
  NOTICE:                      Ring geometries: 0
@@ -201,8 +201,8 @@ OK
  NOTICE:  Analyzing for intersections. Please wait...
  NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
  NOTICE:                    Isolated segments: 0
- NOTICE:                            Dead ends: 2
- NOTICE:  Potential gaps found near dead ends: 1
+ NOTICE:                            Dead ends: 4
+ NOTICE:  Potential gaps found near dead ends: 0
  NOTICE:               Intersections detected: 0
  NOTICE:                      Ring geometries: 0
 OK
@@ -216,8 +216,8 @@ OK
  NOTICE:  Analyzing for intersections. Please wait...
  NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
  NOTICE:                    Isolated segments: 0
- NOTICE:                            Dead ends: 2
- NOTICE:  Potential gaps found near dead ends: 1
+ NOTICE:                            Dead ends: 4
+ NOTICE:  Potential gaps found near dead ends: 0
  NOTICE:               Intersections detected: 0
  NOTICE:                      Ring geometries: 0
 OK
@@ -231,8 +231,8 @@ OK
  NOTICE:  Analyzing for intersections. Please wait...
  NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
  NOTICE:                    Isolated segments: 1
- NOTICE:                            Dead ends: 4
- NOTICE:  Potential gaps found near dead ends: 1
+ NOTICE:                            Dead ends: 5
+ NOTICE:  Potential gaps found near dead ends: 0
  NOTICE:               Intersections detected: 1
  NOTICE:                      Ring geometries: 0
 OK
@@ -246,7 +246,22 @@ OK
  NOTICE:  Analyzing for intersections. Please wait...
  NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
  NOTICE:                    Isolated segments: 1
- NOTICE:                            Dead ends: 4
+ NOTICE:                            Dead ends: 5
+ NOTICE:  Potential gaps found near dead ends: 0
+ NOTICE:               Intersections detected: 1
+ NOTICE:                      Ring geometries: 0
+OK
+ NOTICE:  PROCESSING:
+ NOTICE:  pgr_analizeGraph('mytable',0.001,'mygeom','gid','src','tgt','mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='myhouse')')
+ NOTICE:  Performing checks, pelase wait...
+ NOTICE:  Analyzing for dead ends. Please wait...
+ NOTICE:  Analyzing for gaps. Please wait...
+ NOTICE:  Analyzing for isolated edges. Please wait...
+ NOTICE:  Analyzing for ring geometries. Please wait...
+ NOTICE:  Analyzing for intersections. Please wait...
+ NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
+ NOTICE:                    Isolated segments: 2
+ NOTICE:                            Dead ends: 10
  NOTICE:  Potential gaps found near dead ends: 1
  NOTICE:               Intersections detected: 1
  NOTICE:                      Ring geometries: 0
@@ -261,30 +276,20 @@ OK
  NOTICE:  Analyzing for intersections. Please wait...
  NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
  NOTICE:                    Isolated segments: 2
- NOTICE:                            Dead ends: 5
+ NOTICE:                            Dead ends: 10
  NOTICE:  Potential gaps found near dead ends: 1
  NOTICE:               Intersections detected: 1
  NOTICE:                      Ring geometries: 0
 OK
  NOTICE:  PROCESSING:
- NOTICE:  pgr_analizeGraph('mytable',0.001,'mygeom','gid','src','tgt','mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='myhouse')')
- NOTICE:  Performing checks, pelase wait...
- NOTICE:  Analyzing for dead ends. Please wait...
- NOTICE:  Analyzing for gaps. Please wait...
- NOTICE:  Analyzing for isolated edges. Please wait...
- NOTICE:  Analyzing for ring geometries. Please wait...
- NOTICE:  Analyzing for intersections. Please wait...
- NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
- NOTICE:                    Isolated segments: 2
- NOTICE:                            Dead ends: 5
- NOTICE:  Potential gaps found near dead ends: 1
- NOTICE:               Intersections detected: 1
- NOTICE:                      Ring geometries: 0
+ NOTICE:  pgr_createTopology('edge_table',0.001,'the_geom','id','source','target','true')
+ NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Creating Topology, Please wait...
+ NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
+ NOTICE:  Rows with NULL geometry or NULL id: 0
+ NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+ NOTICE:  ----------------------------------------------
 OK
- ERROR:  function pgr_create_topology(unknown, numeric) does not exist
-LINE 1: SELECT  pgr_create_topology('edge_table',0.001);
-                ^
-HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
  NOTICE:  PROCESSING:
  NOTICE:  pgr_analizeGraph('edge_table',0.001,'the_geom','id','source','target','true')
  NOTICE:  Performing checks, pelase wait...
@@ -310,8 +315,8 @@ OK
  NOTICE:  Analyzing for intersections. Please wait...
  NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
  NOTICE:                    Isolated segments: 0
- NOTICE:                            Dead ends: 2
- NOTICE:  Potential gaps found near dead ends: 1
+ NOTICE:                            Dead ends: 4
+ NOTICE:  Potential gaps found near dead ends: 0
  NOTICE:               Intersections detected: 0
  NOTICE:                      Ring geometries: 0
 OK
@@ -325,9 +330,24 @@ OK
  NOTICE:  Analyzing for intersections. Please wait...
  NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
  NOTICE:                    Isolated segments: 2
- NOTICE:                            Dead ends: 5
+ NOTICE:                            Dead ends: 8
  NOTICE:  Potential gaps found near dead ends: 1
  NOTICE:               Intersections detected: 1
+ NOTICE:                      Ring geometries: 0
+OK
+ NOTICE:  PROCESSING:
+ NOTICE:  pgr_analizeGraph('edge_table',0.001,'the_geom','id','source','target','id < 17')
+ NOTICE:  Performing checks, pelase wait...
+ NOTICE:  Analyzing for dead ends. Please wait...
+ NOTICE:  Analyzing for gaps. Please wait...
+ NOTICE:  Analyzing for isolated edges. Please wait...
+ NOTICE:  Analyzing for ring geometries. Please wait...
+ NOTICE:  Analyzing for intersections. Please wait...
+ NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
+ NOTICE:                    Isolated segments: 0
+ NOTICE:                            Dead ends: 3
+ NOTICE:  Potential gaps found near dead ends: 0
+ NOTICE:               Intersections detected: 0
  NOTICE:                      Ring geometries: 0
 OK
  NOTICE:  PROCESSING:

@@ -38,10 +38,12 @@
                  rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='||quote_literal('myhouse')||')');
 	 SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
                  rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='||quote_literal('myhouse')||')');
-	SELECT  pgr_create_topology('edge_table',0.001);
+                 --------------------
+	SELECT  pgr_createTopology('edge_table',0.001);
 	SELECT pgr_analyzeGraph('edge_table', 0.001);
 	SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='id < 10');
 	SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='id >= 10');
+	SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='id < 17');
 
 	-- Simulate removal of edges
 	SELECT pgr_createTopology('edge_table', 0.001,rows_where:='id <17');

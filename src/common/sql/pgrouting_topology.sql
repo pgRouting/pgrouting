@@ -386,6 +386,8 @@ DECLARE
     totcount integer;
     i integer;
     notincluded integer;
+    included integer;
+
 BEGIN 
   raise notice 'PROCESSING:'; 
   raise notice 'pgr_createVerticesTable(''%'',''%'',''%'',''%'',''%'')',edge_table,the_geom,source,target,rows_where;
@@ -531,6 +533,7 @@ BEGIN
     EXECUTE sql into i;
     sql = 'select count(*) from '||pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NULL or '||
 		sourcename||' is null or '||targetname||' is null)=true '||rows_where;
+    raise notice '%',sql;
     EXECUTE SQL  into notincluded;
     EXCEPTION WHEN OTHERS THEN  BEGIN
          RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition';
@@ -542,20 +545,37 @@ BEGIN
 
     BEGIN
        raise notice 'Populating %, please wait...',vertname;
-       execute 'with
+       sql= 'with
 		lines as ((select distinct '||sourcename||' as id, st_startpoint(st_linemerge('||gname||')) as the_geom from '||pgr_quote_ident(tabname)||
-		                  ' where ('|| gname || ' IS NULL or '||sourcename||' is null or '||targetname||' is null)=false)
+		                  ' where ('|| gname || ' IS NULL 
+                                    or '||sourcename||' is null 
+                                    or '||targetname||' is null)=false 
+                                     '||rows_where||')
 			union (select distinct '||targetname||' as id,st_endpoint(st_linemerge('||gname||')) as the_geom from '||pgr_quote_ident(tabname)||
-			          ' where ('|| gname || ' IS NULL or '||sourcename||' is null or '||targetname||' is null)=false))
+			          ' where ('|| gname || ' IS NULL 
+                                    or '||sourcename||' is null 
+                                    or '||targetname||' is null)=false
+                                     '||rows_where||'))
 		,numberedLines as (select row_number() OVER (ORDER BY id) AS i,* from lines )
 		,maxid as (select id,max(i) as maxi from numberedLines group by id)
 		insert into '||pgr_quote_ident(vertname)||'(id,the_geom)  (select id,the_geom  from numberedLines join maxid using(id) where i=maxi order by id)';
+       RAISE debug '%',sql;
+       execute sql;
        GET DIAGNOSTICS totcount = ROW_COUNT;
+
+       sql = 'select count(*) from '||pgr_quote_ident(tabname)||' a, '||pgr_quote_ident(vertname)||' b 
+            where '||sourcename||'=b.id and '|| targetname||' in (select id from '||pgr_quote_ident(vertname)||')';
+       RAISE debug '%',sql;
+       execute sql into included;
+
+
 
        execute 'select max(id) from '||pgr_quote_ident(vertname) into ecnt;
        execute 'SELECT setval('||quote_literal(vertname||'_id_seq')||','||coalesce(ecnt,1)||' , false)';
-       raise notice '  -----> VERTICES TABLE CREATED WITH  % vertices', totcount;
-       RAISE NOTICE 'Edges with NULL geometry,source or target: %',notincluded;
+       raise notice '  ----->   VERTICES TABLE CREATED WITH  % VERTICES', totcount;
+       raise notice '                                       FOR   %  EDGES', included+notincluded;
+       RAISE NOTICE '  Edges with NULL geometry,source or target: %',notincluded;
+       RAISE NOTICE '                            Edges processed: %',included;
        Raise notice 'Vertices table for table % is: %',pgr_quote_ident(tabname),pgr_quote_ident(vertname);
        raise notice '----------------------------------------------';
     END;

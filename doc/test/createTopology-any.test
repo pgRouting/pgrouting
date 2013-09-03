@@ -39,6 +39,6 @@
                            rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE gid=100)');
 
 -------------------------------------------------------------------------------
-	SELECT pgr_createTopology('edge_table', 0.001);
 	SELECT pgr_createTopology('edge_table', 0.001,rows_where:='id<10');
+	SELECT pgr_createTopology('edge_table', 0.001);
 	

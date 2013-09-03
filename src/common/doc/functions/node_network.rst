@@ -96,7 +96,7 @@ Now we can analyze the network.
 
 	SELECT pgr_analyzegraph('edge_table', 0.001);
 	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analizeGraph('edge_table',0.001,'the_geom','id','source','target','true')
+	NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','true')
 	NOTICE:  Performing checks, pelase wait...
 	NOTICE:  Analyzing for dead ends. Please wait...
 	NOTICE:  Analyzing for gaps. Please wait...
@@ -190,7 +190,7 @@ Now let's analyze the new topology
 
 	SELECT pgr_analyzegraph('edge_table_noded', 0.001); 
 	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analizeGraph('edge_table_noded',0.001,'the_geom','id','source','target','true')
+	NOTICE:  pgr_analyzeGraph('edge_table_noded',0.001,'the_geom','id','source','target','true')
 	NOTICE:  Performing checks, pelase wait...
 	NOTICE:  Analyzing for dead ends. Please wait...
 	NOTICE:  Analyzing for gaps. Please wait...
@@ -299,7 +299,7 @@ To get the same analysis results as the topology of edge_table_noded, we do the 
 	SELECT pgr_analyzegraph('edge_table', 0.001,rows_where:='id not in (select old_id from edge_table where old_id is not null)');
 
 	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analizeGraph('edge_table',0.001,'the_geom','id','source','target',
+	NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target',
                                    'id not in (select old_id from edge_table where old_id is not null)')
 	NOTICE:  Performing checks, pelase wait...
 	NOTICE:  Analyzing for dead ends. Please wait...
@@ -326,7 +326,7 @@ To get the same analysis results as the original edge_table, we do the following
 	SELECT pgr_analyzegraph('edge_table', 0.001,rows_where:='old_id is null')
 
 	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analizeGraph('edge_table',0.001,'the_geom','id','source','target','old_id is null')
+	NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','old_id is null')
 	NOTICE:  Performing checks, pelase wait...
 	NOTICE:  Analyzing for dead ends. Please wait...
 	NOTICE:  Analyzing for gaps. Please wait...
@@ -344,14 +344,14 @@ To get the same analysis results as the original edge_table, we do the following
  	OK
 	(1 row)
 
-Or we can analize everything because, maybe edge 18 is an overpass, edge 14 is an under pass and there is also a street level juction, and the same happens with edges 17 and 13.
+Or we can analyze everything because, maybe edge 18 is an overpass, edge 14 is an under pass and there is also a street level juction, and the same happens with edges 17 and 13.
 
 .. code-block:: sql
 
 	SELECT pgr_analyzegraph('edge_table', 0.001);
 
 	NOTICE:  PROCESSING:
-	NOTICE:  pgr_analizeGraph('edge_table',0.001,'the_geom','id','source','target','true')
+	NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','true')
 	NOTICE:  Performing checks, pelase wait...
 	NOTICE:  Analyzing for dead ends. Please wait...
 	NOTICE:  Analyzing for gaps. Please wait...

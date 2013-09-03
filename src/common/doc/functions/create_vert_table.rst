@@ -143,7 +143,7 @@ Selecting the rows where the geometry is near the geometry of row with ``id`` =5
 
 .. code-block:: sql
 
-	 SELECT  pgr_createVerticesTable('edge_table',rows_where:='the_geom && (select st_buffer(the_geom,0.05) FROM edge_table WHERE id=5)');
+	 SELECT  pgr_createVerticesTable('edge_table',rows_where:='the_geom && (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)');
 
 Selecting the rows where the geometry is near the geometry of the row with ``gid`` =100 of the table ``othertable``.
 
@@ -151,7 +151,7 @@ Selecting the rows where the geometry is near the geometry of the row with ``gid
 
 	DROP TABLE IF EXISTS otherTable;
 	CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ; 
-	SELECT  pgr_createVerticesTable('edge_table',rows_where:='the_geom && (select st_buffer(othergeom,0.05) FROM otherTable WHERE gid=100)');
+	SELECT  pgr_createVerticesTable('edge_table',rows_where:='the_geom && (select st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)');
 
 
 
@@ -209,12 +209,12 @@ Selecting the rows where the geometry is near the geometry of row with ``gid`` =
 .. code-block:: sql
 
 	 SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt',
-	                            rows_where:='the_geom && (SELECT st_buffer(mygeom,0.05) FROM mytable WHERE gid=5)');
+	                            rows_where:='the_geom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)');
 
 .. code-block:: sql
 
 	 SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',
-	                            rows_where:='mygeom && (SELECT st_buffer(mygeom,0.05) FROM mytable WHERE id=5)');
+	                            rows_where:='mygeom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE id=5)');
 
 Selecting the rows where the geometry is near the geometry of the row with ``gid`` =100 of the table ``othertable``.
 
@@ -223,12 +223,12 @@ Selecting the rows where the geometry is near the geometry of the row with ``gid
 	DROP TABLE IF EXISTS otherTable;
 	CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ; 
 	SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt',
-	                            rows_where:='the_geom && (SELECT st_buffer(othergeom,0.05) FROM otherTable WHERE gid=100)');
+	                            rows_where:='the_geom && (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)');
 
 .. code-block:: sql
 
 	SELECT  pgr_createVerticesTable('mytable',source:='src',target:='tgt',the_geom:='mygeom',
-	                            rows_where:='the_geom && (SELECT st_buffer(othergeom,0.05) FROM otherTable WHERE gid=100)');
+	                            rows_where:='the_geom && (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)');
 
 
 
@@ -239,15 +239,16 @@ Examples
 
 	SELECT pgr_createVerticesTable('edge_table');
 	NOTICE:  PROCESSING:
-	NOTICE:  pgr_createVerticeNOTICE:  PROCESSING:
-	NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
-	NOTICE:  Performing checks, pelase wait .....
-	NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
-	NOTICE:    -----> VERTICES TABLE CREATED WITH  9 vertices
-	NOTICE:  Edges with NULL geometry,source or target: 9
-	NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
-	NOTICE:  ----------------------------------------------
-	
+    NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
+    NOTICE:  Performing checks, pelase wait .....
+    NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
+    NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
+    NOTICE:                                         FOR   18  EDGES
+    NOTICE:    Edges with NULL geometry,source or target: 0
+    NOTICE:                              Edges processed: 18
+    NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+    NOTICE:  ----------------------------------------------
+               
 	 pgr_createVerticesTable 
 	--------------------
 	 OK
