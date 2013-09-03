@@ -19,8 +19,9 @@ Developers's Functions
 	pgr_getTableName - to retrieve the name of the table as is stored in the postgres administration tables.<get_table_name>
 	pgr_isColumnIndexed - to check if the column is indexed. <is_column_indexed>
 	pgr_isColumnInTable - to check only for the existance of the column.<is_column_in_table> 
-	pgr_pointToId -to get the id of the ineserted point in a vertices table.<point_to_id>
+	pgr_pointToId -to insert/get the id of the ineserted point in a vertices table.<point_to_id>
 	pgr_quote_ident - to quotes the input text to be used as an identifier in an SQL statement string.<quote_ident>
+    pgr_version - to get pgRouting's version information.  <version>
 	pgr_versionless - to compare two version numbers<versionless>
 
 
