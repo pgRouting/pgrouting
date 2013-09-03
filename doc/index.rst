@@ -27,13 +27,15 @@ General
 *******************************************************************************
 
 .. toctree::
-	:maxdepth: 2
+    :maxdepth: 2
 
-	src/introduction/introduction
-	src/introduction/support
-        src/installation/index
+    src/introduction/introduction
+    src/installation/index
+    src/introduction/support
 
 
+
+src/introduction/introduction
 
 *******************************************************************************
 Tutorial
@@ -52,9 +54,9 @@ Data Types
 *******************************************************************************
 
 .. toctree::
-        :maxdepth: 2
+   :maxdepth: 2
 
-        ../src/common/doc/types/index
+   ../src/common/doc/types/index
 
 *******************************************************************************
 Functions reference
