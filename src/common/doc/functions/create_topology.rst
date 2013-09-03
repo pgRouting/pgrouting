@@ -77,7 +77,7 @@ The function returns:
 
   - ``FAIL`` when the network topology was not built due to an error:
 
-    * A requiered column of the Network table is not found or is not of the appropiate type.
+    * A required column of the Network table is not found or is not of the appropriate type.
     * The condition is not well formed.
     * The names of source , target or id are the same.
     * The SRID of the geometry could not be determined.
@@ -85,7 +85,7 @@ The function returns:
 
 .. rubric:: The Vertices Table
 
-The vertices table is a requierment of the :ref:`pgr_analyzeGraph <pgr_analyze_graph>` and the :ref:`pgr_analyzeOneway <pgr_analyze_oneway>` functions.
+The vertices table is a requirment of the :ref:`pgr_analyzeGraph <pgr_analyze_graph>` and the :ref:`pgr_analyzeOneway <pgr_analyze_oneway>` functions.
 
 The structure of the vertices table is:
 
@@ -119,7 +119,7 @@ Usage when the edge table's columns MATCH the default values:
 
 We get the same result AS the simplest way to use the function.
 
-.. warning::  | An error would occur when the arguments are not given in the appropiate order: In this example, the column ``id`` of the table ``ege_table`` is passed to the function AS the geometry column, and the geometry column ``the_geom`` is passed to the function AS the id column. 
+.. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column ``id`` of the table ``ege_table`` is passed to the function AS the geometry column, and the geometry column ``the_geom`` is passed to the function AS the id column. 
  | ``SELECT  pgr_createTopology('edge_table',0.001,'id','the_geom','source','target');``
  | ERROR: Can not determine the srid of the geometry "id" in table public.edge_table
 
@@ -135,7 +135,7 @@ The order of the parameters do not matter:
 
 	 SELECT  pgr_createTopology('edge_table',0.001,source:='source',id:='id',target:='target',the_geom:='the_geom');
 
-Parameters defined with a default value can be ommited, AS long AS the value matches the default:
+Parameters defined with a default value can be omited, AS long AS the value matches the default:
 
 .. code-block:: sql
 
@@ -183,7 +183,7 @@ The arguments need to be given in the order described in the parameters:
 
 	SELECT  pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt');
 
-.. warning::  | An error would occur when the arguments are not given in the appropiate order: In this example, the column ``gid`` of the table ``mytable`` is passed to the function AS the geometry column, and the geometry column ``mygeom`` is passed to the function AS the id column.
+.. warning::  | An error would occur when the arguments are not given in the appropiriate order: In this example, the column ``gid`` of the table ``mytable`` is passed to the function AS the geometry column, and the geometry column ``mygeom`` is passed to the function AS the id column.
  | ``SELECT  pgr_createTopology('mytable',0.001,'gid','mygeom','src','tgt');``
  | ERROR: Can not determine the srid of the geometry "gid" in table public.mytable
 

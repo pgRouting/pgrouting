@@ -28,7 +28,7 @@ Synopsis
 The function returns:
 
   - ``OK`` after the vertices table has been reconstructed.
-  - ``FAIL`` when the vertices table was not recosntructed due to an error. 
+  - ``FAIL`` when the vertices table was not reconstructed due to an error. 
 
 .. code-block:: sql
 
@@ -67,9 +67,9 @@ The function returns:
     * Creates a vertices table: <edge_table>_vertices_pgr.
     * Fills ``id`` and ``the_geom`` columns of the vertices table based on the source and target columns of the edge table.
 
-  - ``FAIL`` when the vertices table was not recosntructed due to an error. 
+  - ``FAIL`` when the vertices table was not reconstructed due to an error. 
 
-    * A requiered column of the Network table is not found or is not of the appropiate type.
+    * A required column of the Network table is not found or is not of the appropriate type.
     * The condition is not well formed.
     * The names of source, target are the same.
     * The SRID of the geometry could not be determined.
@@ -109,7 +109,7 @@ Usage when the edge table's columns MATCH the default values:
 
 We get the same result as the simplest way to use the function.
 
-.. warning::  | An error would occur when the arguments are not given in the appropiate order: In this example, the column source column ``source`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the source column. 
+.. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column source column ``source`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the source column. 
  | ``SELECT  pgr_createVerticesTable('edge_table','source','the_geom','target');``
 
 
@@ -125,7 +125,7 @@ The order of the parameters do not matter:
 
 	 SELECT  pgr_createVerticesTable('edge_table',source:='source',target:='target',the_geom:='the_geom');
 
-Parameters defined with a default value can be ommited, as long as the value matches the default:
+Parameters defined with a default value can be omited, as long as the value matches the default:
 
 .. code-block:: sql
 
@@ -173,7 +173,7 @@ The arguments need to be given in the order described in the parameters:
 
 	 SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt');
 
-.. warning::  | An error would occur when the arguments are not given in the appropiate order: In this example, the column ``src`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``mygeom`` is passed to the function as the source column.
+.. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column ``src`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``mygeom`` is passed to the function as the source column.
  | ``SELECT  pgr_createVerticesTable('mytable','src','mygeom','tgt');``
 
 

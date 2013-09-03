@@ -14,10 +14,10 @@ User's wrapper contributions
 
 .. rubric:: How to contribute.
 
-Use an issue traker (see :ref:`support`) with a title containing: *Proposing a wrapper: Mywrappername*. The body will contain: 
+Use an issue tracker (see :ref:`support`) with a title containing: *Proposing a wrapper: Mywrappername*. The body will contain: 
 
   - author:  Required
-  - mail: if you are subscibed to the developers list this is not necessary
+  - mail: if you are subscribed to the developers list this is not necessary
   - date: Date posted
   - comments and code:  using reStructuredText format
 

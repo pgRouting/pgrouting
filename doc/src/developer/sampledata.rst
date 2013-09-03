@@ -13,7 +13,7 @@ Sample Data
 ===============================================================================
 
 The documentation provides very simple example queries based on a small sample network.
-To be able to execute the sample queries, run the following SQL commands to create a table with a small network dataset.
+To be able to execute the sample queries, run the following SQL commands to create a table with a small network data set.
 
 
 .. rubric:: Create table

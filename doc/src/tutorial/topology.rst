@@ -19,7 +19,7 @@ Routing Topology
 Overview
 -------------------------------------------------------------------------------
 
-Typically when GIS files are loaded into the data database for use with pgRouting they do not have topology information assocated with them. To create a useful topology the data needs to be "noded". This means that where two or more roads form an intersection there it needs to be a node at the intersection and all the road segments need to be broken at the intersection, assuming that you can navigate from any of these segments to any other segment via that intersection.
+Typically when GIS files are loaded into the data database for use with pgRouting they do not have topology information associated with them. To create a useful topology the data needs to be "noded". This means that where two or more roads form an intersection there it needs to be a node at the intersection and all the road segments need to be broken at the intersection, assuming that you can navigate from any of these segments to any other segment via that intersection.
 
 You can use the :ref:`graph analysis functions <analytics>` to help you see where you might have topology problems in your data. If you need to node your data, we also have a function :ref:`pgr_nodeNetwork() <pgr_node_network>` that might work for you. This function splits ALL crossing segments and nodes them. There are some cases where this might NOT be the right thing to do.
 

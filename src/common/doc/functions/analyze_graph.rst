@@ -69,7 +69,7 @@ The function returns:
   - ``FAIL`` when the analysis was not completed due to an error. 
 
     * The vertices table is not found.
-    * A requiered column of the Network table is not found or is not of the appropiate type.
+    * A required column of the Network table is not found or is not of the appropriate type.
     * The condition is not well formed.
     * The names of source , target or id are the same.
     * The SRID of the geometry could not be determined.
@@ -110,7 +110,7 @@ Usage when the edge table's columns MATCH the default values:
 
 We get the same result as the simplest way to use the function.
 
-.. warning::  | An error would occur when the arguments are not given in the appropiate order: In this example, the column ``id`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the id column. 
+.. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column ``id`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the id column. 
  | ``SELECT  pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target');``
  | ERROR: Can not determine the srid of the geometry "id" in table public.edge_table
 
@@ -175,7 +175,7 @@ The arguments need to be given in the order described in the parameters:
 
 	 SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt');
 
-.. warning::  | An error would occur when the arguments are not given in the appropiate order: In this example, the column ``gid`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``mygeom`` is passed to the function as the id column.
+.. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column ``gid`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``mygeom`` is passed to the function as the id column.
  | ``SELECT  pgr_analyzeGraph('mytable',0.001,'gid','mygeom','src','tgt');``
  | ERROR: Can not determine the srid of the geometry "gid" in table public.mytable
 
