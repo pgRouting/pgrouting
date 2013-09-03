@@ -13,8 +13,8 @@ Release Notes
 ===============================================================================
 
 .. toctree::
-        :maxdepth: 1
+   :maxdepth: 1
 
-	2.0
-        1.x
+   pgRouting 2.0 Release Notes <2_0>
+   pgRouting 1.x Release Notes <1_x>
 

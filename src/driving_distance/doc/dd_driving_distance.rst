@@ -9,7 +9,7 @@
 
 .. _pgr_driving_distance:
 
-pgr_drivingDistance - Driving Distance
+pgr_drivingDistance 
 ===============================================================================
 
 .. index:: 
@@ -124,5 +124,5 @@ The queries use the :ref:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_points_as_polygon`
-* :ref:`pgr_alphashape`
+* :ref:`pgr_alphashape` - Alpha shape computation
+* :ref:`pgr_points_as_polygon` - Polygon around set of points

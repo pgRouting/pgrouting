@@ -9,7 +9,7 @@
 
 .. _pgr_points_as_polygon:
 
-pgr_pointsAsPolygon - Polygon around set of points
+pgr_pointsAsPolygon
 ===============================================================================
 
 .. index:: 
@@ -79,5 +79,5 @@ The queries use the :ref:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_driving_distance`
-* :ref:`pgr_alphashape`
+* :ref:`pgr_driving_distance` - Driving Distance
+* :ref:`pgr_alphashape` - Alpha shape computation

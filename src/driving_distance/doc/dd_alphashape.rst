@@ -9,7 +9,7 @@
 
 .. _pgr_alphashape:
 
-pgr_alphashape - Alpha shape computation
+pgr_alphaShape
 ===============================================================================
 
 .. index:: 
@@ -98,5 +98,5 @@ The queries use the :ref:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_driving_distance`
-* :ref:`pgr_points_as_polygon`
+* :ref:`pgr_driving_distance` - Driving Distance
+* :ref:`pgr_points_as_polygon` - Polygon around set of points
