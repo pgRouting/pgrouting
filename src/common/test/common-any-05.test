@@ -1,6 +1,7 @@
 -- create a new table and merge attribute from original and noded
 -- into table noded3
 
+set client_min_messages to warning;
 drop table if exists noded3 cascade;
 create table noded3 (
   gid serial not null primary key,
@@ -14,13 +15,13 @@ create table noded3 (
 select addgeometrycolumn('noded3', 'the_geom', ST_SRID('POINT(0 0)'::geometry) , 'MULTILINESTRING', 2);
 insert into noded3 (id, dir, the_geom)
  select a.id, b.dir, st_multi(a.the_geom) as the_geom
-   from noded a, unnoded b
-  where a.id=b.id;
+   from unnoded_noded a, unnoded b
+  where a.old_id=b.id;
 
 \echo '---------------------------------'
 
-select pgr_createtopology('noded3', 0.000001, 'the_geom', 'gid');
+select pgr_createtopology('noded3', 0.000001, id:= 'gid');
 
 \echo '---------------------------------'
 
-select * from vertices_tmp order by id;
+select * from noded3_vertices_pgr order by id;

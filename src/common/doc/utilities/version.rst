@@ -7,38 +7,41 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_quote_ident:
+.. _pgr_version:
 
-pgr_quote_ident - Quote table name with Schema Component
+pgr_version 
 ===============================================================================
 
 .. index:: 
-	single: pgr_quote_ident(text)
-	module: common
+	single: pgr_version()
+	module: utilities
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_quote_ident`` — Quote table name with or without schema component.
+``pgr_version`` — Query for pgRouting version information.
 
 
 Synopsis
 -------------------------------------------------------------------------------
 
-Function to split a string on ``.`` characters and then quote the components as postgres identifiers and then join them back together with ``.`` characters. 
-Multile ``.`` will get collapsed into a single ``.``, so ``schema...table`` till get returned as ``schema."table"`` and ``Schema.table`` becomes ``"Schema"."table"``.
+Returns a table with pgRouting version information.
 
 .. code-block:: sql
 
-	text pgr_quote_ident(text tab);
+	table() pgr_version();
 
 
 Description
 -------------------------------------------------------------------------------
 
-:tab: ``text`` table name with or without schema component
+Returns a table with:
 
-Returns table name with or without schema as ``text``.
+:version: ``varchar`` pgRouting version
+:tag: ``varchar`` Git tag of pgRouting build
+:hash: ``varchar`` Git hash of pgRouting build
+:branch: ``varchar`` Git branch of pgRouting build
+:boost: ``varchar`` Boost version
 
 
 .. rubric:: History
@@ -49,31 +52,31 @@ Returns table name with or without schema as ``text``.
 Examples
 -------------------------------------------------------------------------------
 
+* Query for full version string
+
 .. code-block:: sql
 
-	SELECT pgr_quote_ident('public.edge_table');
+    SELECT pgr_version();
 
-	  pgr_quote_ident  
-	-------------------
-	 public.edge_table
-	(1 row)
-
-
-	SELECT pgr_quote_ident('edge_table');
-	 pgr_quote_ident 
-	-----------------
-	 edge_table
-	(1 row)
+                         pgr_version                      
+    ------------------------------------------------------
+     (2.0.0-dev,v2.0dev,290,c64bcb9,sew-devel-2_0,1.49.0)
+    (1 row)
 
 
-	SELECT pgr_quote_ident('Public...edge_table');
-	   pgr_quote_ident   
-	---------------------
-	 "Public".edge_table
-	(1 row)
+* Query for ``version`` and ``boost`` attribute
+
+.. code-block:: sql
+
+    SELECT version, boost FROM pgr_version();
+
+      version  | boost  
+    -----------+--------
+     2.0.0-dev | 1.49.0
+    (1 row)
 
 
 See Also
 -------------------------------------------------------------------------------
 
-* [TBD]
+* :ref:`pgr_versionless` to compare two version numbers

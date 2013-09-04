@@ -26,7 +26,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-This is a bi-directional Dijkstra search algorithm. It searches from the source toward the destination and at the same time from the destination to the source and terminates where these to searches meet in the middle. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
+This is a bi-directional Dijkstra search algorithm. It searchs from the source toward the distination and at the same time from the destination to the source and terminates whe these to searchs meet in the middle. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
 
 .. code-block:: sql
 
@@ -48,7 +48,7 @@ Description
   :source: ``int4`` identifier of the source vertex
   :target: ``int4`` identifier of the target vertex
   :cost: ``float8`` value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph.
-  :reverse_cost: ``float8`` (optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs).
+  :reverse_cost: (optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs).
 
 :source: ``int4`` id of the start point
 :target: ``int4`` id of the end point
@@ -77,16 +77,17 @@ Examples
     SELECT seq, id1 AS node, id2 AS edge, cost 
         FROM pgr_bdDijkstra(
             'SELECT id, source, target, cost FROM edge_table',
-            7, 12, false, false
+            4, 10, false, false
         );
 
 	 seq | node | edge | cost 
 	-----+------+------+------
-	   0 |    7 |    8 |    1
-	   1 |    8 |    9 |    1
-	   2 |    9 |   15 |    1
-	   3 |   12 |   -1 |    0
-	(4 rows)
+	   0 |    4 |    3 |    0
+	   1 |    3 |    5 |    1
+	   2 |    6 |   11 |    1
+	   3 |   11 |   12 |    0
+	   4 |   10 |   -1 |    0
+	(5 rows)
 
 
 * With ``reverse_cost``
@@ -96,16 +97,17 @@ Examples
     SELECT seq, id1 AS node, id2 AS edge, cost 
         FROM pgr_bdDijkstra(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            7, 12, true, true
+            4, 10, true, true
         );
 
 	 seq | node | edge | cost 
 	-----+------+------+------
-	   0 |    7 |    8 |    1
-	   1 |    8 |    9 |    1
-	   2 |    9 |   15 |    1
-	   3 |   12 |   -1 |    0
-	(4 rows)
+	   0 |    4 |    3 |    1
+	   1 |    3 |    2 |    1
+	   2 |    2 |    4 |    1
+	   3 |    5 |   10 |    1
+	   4 |   10 |   -1 |    0
+	(5 rows)
 
 
 The queries use the :ref:`sampledata` network.

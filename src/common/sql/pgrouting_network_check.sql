@@ -4,7 +4,6 @@
 	Example:
 	SELECT * FROM data.PGR_analyze_graph('SELECT source, target, geom_way 
 		AS geom FROM data.dhaka_2po_4pgr', 0.000001) WHERE checkit;
- */
 CREATE OR REPLACE FUNCTION PGR_analyzeGraph(sql text, tolerance float)
   RETURNS TABLE(
 	vertex bigint, 
@@ -85,3 +84,4 @@ END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT
   COST 100;
+ */

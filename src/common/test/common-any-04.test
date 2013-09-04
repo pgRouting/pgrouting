@@ -1,14 +1,19 @@
 -- node the network
 
-select pgr_nodenetwork('unnoded', 'id', 'the_geom', 'noded', 0.000001);
+select count(*) from unnoded limit 1;
+select pgr_nodenetwork('unnoded', 0.000001);
+select pgr_createtopology('unnoded_noded', 0.000001 );
+select pgr_analyzegraph('unnoded_noded',  0.000001);
 
-select * from noded order by id, sub_id;
+select * from unnoded_noded order by old_id, sub_id;
+select * from unnoded_noded_vertices_pgr order by id;
 
-\echo '---------------------------------'
+
 
 -- create a new table and merge attribute from original and noded
 -- into table noded2
-
+set client_min_messages to warning;
+drop table if exists noded2;
 create table noded2 (
   gid serial not null primary key,
   id int,
@@ -18,27 +23,24 @@ create table noded2 (
   cost float8,
   rcost float8
  );
+
+
+
  select addgeometrycolumn('noded2', 'the_geom', ST_SRID('POINT(0 0)'::geometry) , 'LINESTRING', 2);
  insert into noded2 (id, dir, the_geom)
- select a.id, b.dir, a.the_geom
-   from noded a, unnoded b
-  where a.id=b.id;
+ select a.old_id, b.dir, a.the_geom
+   from unnoded_noded a, unnoded b
+  where a.old_id=b.id;
 
-\echo '---------------------------------'
-
-select pgr_createtopology('noded2', 0.000001, 'the_geom', 'gid');
-select pgr_analyzegraph('noded2', 'the_geom', 0.000001);
-select pgr_analyzeoneway('noded2', 'dir', 
+select pgr_createtopology('noded2', 0.000001,id:='gid');
+select pgr_analyzegraph('noded2', 0.000001,id:='gid');
+select pgr_analyzeoneway('noded2',
     ARRAY['', 'B', 'TF'],
     ARRAY['', 'B', 'FT'],
     ARRAY['', 'B', 'FT'],
     ARRAY['', 'B', 'TF'],
-    true);
+    oneway:='dir');
 
-\echo '---------------------------------'
 
-select * from noded2 order by gid;
-
-\echo '---------------------------------'
-
-select * from vertices_tmp order by id;
+select * from noded2 order by id;
+select * from noded2_vertices_pgr order by id;

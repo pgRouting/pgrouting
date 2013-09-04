@@ -10,7 +10,7 @@ union all
 select st_astext(st_makeline(st_makepoint(s1,0), st_makepoint(s1,51))) from (select generate_series(1,50) as s1) as foo;
 
 -- node the grid so we can use it
-select pgr_nodenetwork('ddunnoded', 'id', 'the_geom', 'ddnoded', 0.000001);
+select pgr_nodenetwork('ddunnoded',0.000001);
 
 -- copy the noded table into a table we can use for a graph
 -- and add the required columns
@@ -25,10 +25,10 @@ select addgeometrycolumn('ddnoded2', 'the_geom', ST_SRID('POINT(0 0)'::geometry)
 
 insert into ddnoded2 (id, cost, the_geom)
 select a.id, 1.0::float8 as cost, a.the_geom
-  from ddnoded a order by id, sub_id;
+  from ddunnoded_noded a order by id, sub_id;
 
 -- now create a topology
-select pgr_createtopology('ddnoded2', 0.000001, 'the_geom', 'gid');
+select pgr_createtopology('ddnoded2', 0.000001, id:='gid');
 
 -- Total query runtime: 8080 ms.
 

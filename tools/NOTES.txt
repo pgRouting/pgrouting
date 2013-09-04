@@ -1,5 +1,6 @@
 Author: Stephen Woodbridge
 Date: 2013-03-30
+Updated: 2013-09-01
 
 #--------------------------- TODO -----------------------------------
 
@@ -9,21 +10,21 @@ Date: 2013-03-30
 
 [ ] rewrite driving distance to use postgis delaney triangles
 [X] integrate my tsp solver
-[ ] refactor tsp to use my solver
+[X] refactor tsp to use my solver
 [ ] add assign_vertex_id_3d
-[ ] refactor the sql api to be more consistent
-[ ] prefix all functions (and types?) with pgr_
-[ ] integrate APSP into tree (2 versions)
+[X] refactor the sql api to be more consistent
+[X] prefix all functions (and types?) with pgr_
+[X] integrate APSP into tree (2 versions)
     https://github.com/pgRouting/pgrouting/wiki/APSP
     https://github.com/pgRouting/pgrouting/tree/gsoc-tdsp/core/src
     https://github.com/pgRouting/pgrouting/tree/apsp-johnson/core/src
-[ ] add bidirectional sp and A* functions
+[X] add bidirectional sp and A* functions
     https://github.com/zibon/pgrouting
 [ ] compute route between multiple way points using a single graph
 [ ] implement driving distance with concave hull
     https://github.com/mbasa/pgrouting
 [ ] implement driving distance with deluaney triangles and intersect Z planes
-[ ] kdijkstra implementation?
+[X] kdijkstra implementation?
     https://github.com/pgRouting/pgrouting/wiki/One_to_many-Dijkstra---To-review
 
 

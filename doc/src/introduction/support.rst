@@ -25,7 +25,15 @@ Bugs are reported and managed in an `issue tracker <https://github.com/pgrouting
 3. In your report include explicit instructions to replicate your issue. The best tickets include the exact SQL necessary to replicate a problem. 
 4. If you can test older versions of PostGIS for your problem, please do. On your ticket, note the earliest version the problem appears.
 5. For the versions where you can replicate the problem, note the operating system and version of pgRouting, PostGIS and PostgreSQL.
-   
+6. It is recommended to use the following wrapper on the problem to pin point the step that is causing the problem. 
+
+.. code-block:: sql
+
+    SET client_min_messages TO debug; 
+      <your code>
+    SET client_min_messages TO notice; 
+
+
 
 Mailing List and GIS StackExchange
 -------------------------------------------------------------------------------
