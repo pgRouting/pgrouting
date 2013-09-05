@@ -49,10 +49,16 @@ RHEL/CentOS/Fedora
 * Fedora RPM's: https://admin.fedoraproject.org/pkgdb/acls/name/pgRouting
 
 
-OSX
+OS X
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See `builds from KingChaos <http://www.kyngchaos.com/software/postgres>`_.
+.. See `builds from KingChaos <http://www.kyngchaos.com/software/postgres>`_.
+
+* Homebrew
+
+.. code-block:: bash
+
+	brew install pgrouting
 
 
 Source Package
