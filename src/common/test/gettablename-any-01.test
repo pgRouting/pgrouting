@@ -1,3 +1,4 @@
+set client_min_messages  to warning;
 
 SET search_path TO "$user", public;
 
@@ -14,6 +15,8 @@ create table "S2".streets (id serial ,source integer,target integer);
 create table s3."Streets" (id serial ,source integer,target integer);
 create table s3."sTreets" (id serial ,source integer,target integer);
 create table s3."StrEets" (id serial ,source integer,target integer);
+
+set client_min_messages to notice;
 
 select * from pgr_getTableName('StreEts'); 	--public.streets
 select * from pgr_getTableName('Streets');	--public.Streets
@@ -189,6 +192,7 @@ select pgr_isColumnIndexed('s1.Streets','SOURCE');	--f
 select pgr_isColumnIndexed('s1.Streets','Target');	--f
 select pgr_isColumnIndexed('s1.Streets','Targ');	--f
 
+set client_min_messages  to warning;
 
 SET search_path TO "$user", public;
 

@@ -1,9 +1,3 @@
-CREATE OR REPLACE FUNCTION pgr_pointToId(point geometry, tolerance double precision,vertname text,srid integer)
-  RETURNS bigint AS
-$BODY$ 
-DECLARE
-    rec record; 
-    pid bigint; 
 
 /*
 .. function:: pgr_pointToId(point geometry, tolerance double precision,vname text,srid integer)
@@ -24,6 +18,12 @@ DECLARE
     2013-08-19:  handling schemas
 */
 
+CREATE OR REPLACE FUNCTION pgr_pointToId(point geometry, tolerance double precision,vertname text,srid integer)
+  RETURNS bigint AS
+$BODY$ 
+DECLARE
+    rec record; 
+    pid bigint; 
 
 BEGIN
     execute 'SELECT ST_Distance(the_geom,ST_GeomFromText(st_astext('||quote_literal(point::text)||'),'||srid||')) AS d, id, the_geom
@@ -46,11 +46,6 @@ $BODY$
 COMMENT ON FUNCTION pgr_pointToId(geometry,double precision, text,integer) IS 'args: point geometry,tolerance,verticesTable,srid - inserts the point into the vertices table using tolerance to determine if its an existing point and returns the id assigned to it' ;
 
 
-CREATE OR REPLACE FUNCTION pgr_createtopology(edge_table text, tolerance double precision, 
-			   the_geom text default 'the_geom', id text default 'id',
-			   source text default 'source', target text default 'target',rows_where text default 'true')
-  RETURNS VARCHAR AS
-$BODY$
 /*
 .. function:: pgr_createtopology(edge_table, tolerance,the_geom,id,source,target,rows_where)
 
@@ -66,6 +61,11 @@ $BODY$
     2013-08-19:  handling schemas
 */
 
+CREATE OR REPLACE FUNCTION pgr_createtopology(edge_table text, tolerance double precision, 
+			   the_geom text default 'the_geom', id text default 'id',
+			   source text default 'source', target text default 'target',rows_where text default 'true')
+  RETURNS VARCHAR AS
+$BODY$
 
 DECLARE
     points record;
@@ -206,7 +206,8 @@ BEGIN
       else 
         RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,idname;
         set client_min_messages  to warning;
-        execute 'create  index '||tname||'_'||idname||'_idx on '||tabname||' using btree('||quote_ident(idname)||')';
+        execute 'create  index '||pgr_quote_ident(tname||'_'||idname||'_idx')||' 
+                         on '||pgr_quote_ident(tabname)||' using btree('||quote_ident(idname)||')';
         execute 'set client_min_messages  to '|| debuglevel;
       END IF;
     END;
@@ -218,7 +219,8 @@ BEGIN
       else 
         RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,sourcename;
         set client_min_messages  to warning;
-        execute 'create  index '||tname||'_'||sourcename||'_idx on '||tabname||' using btree('||quote_ident(sourcename)||')';
+        execute 'create  index '||pgr_quote_ident(tname||'_'||sourcename||'_idx')||' 
+                         on '||pgr_quote_ident(tabname)||' using btree('||quote_ident(sourcename)||')';
         execute 'set client_min_messages  to '|| debuglevel;
       END IF;
     END;
@@ -230,7 +232,8 @@ BEGIN
       else 
         RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,targetname;
         set client_min_messages  to warning;
-        execute 'create  index '||tname||'_'||targetname||'_idx on '||tabname||' using btree('||quote_ident(targetname)||')';
+        execute 'create  index '||pgr_quote_ident(tname||'_'||targetname||'_idx')||' 
+                         on '||pgr_quote_ident(tabname)||' using btree('||quote_ident(targetname)||')';
         execute 'set client_min_messages  to ' ||debuglevel;
       END IF;
     END;
@@ -244,7 +247,7 @@ BEGIN
         set client_min_messages  to warning;
         execute 'CREATE INDEX '
             || quote_ident(tname || '_' || gname || '_gidx' )
-            || ' ON ' || tabname
+            || ' ON ' || pgr_quote_ident(tabname)
             || ' USING gist (' || quote_ident(gname) || ')';
         execute 'set client_min_messages  to '|| debuglevel;
       END IF;
@@ -308,14 +311,7 @@ BEGIN
 
         source_id := pgr_pointToId(points.source, tolerance,vertname,srid);
         target_id := pgr_pointToId(points.target, tolerance,vertname,srid);
-/*        IF (sourcetype='smallint' AND source_id>32767) OR (sourcetype='integer' AND source_id>2147483647) THEN
-               RAISE NOTICE 'ERROR: Data type "%" of "%" is insufficient to store the vertices id',sourcetype,source;
-               RETURN 'FAIL';
-        END IF; 
-        IF (targettype='smallint' AND target_id>32767) OR (targettype='integer' AND target_id>2147483647) THEN
-               RAISE NOTICE 'ERROR: Data type "%" of "%" is insufficient to store the vertices id',targettype,source;
-        END IF; 
-*/      BEGIN                         
+        BEGIN                         
         sql := 'UPDATE ' || pgr_quote_ident(tabname) || 
             ' SET '||sourcename||' = '|| source_id::text || ','||targetname||' = ' || target_id::text || 
             ' WHERE ' || idname || ' =  ' || points.id::text;
@@ -343,7 +339,8 @@ END;
 
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION pgr_createTopology(text, double precision,text,text,text,text,text) IS 'args: edge_table,tolerance - optional args: the_geom="the_geom",source:="source", target:="target",rows_where:="true" - fills columns source and target in the geometry table and creates a vertices table';
+COMMENT ON FUNCTION pgr_createTopology(text, double precision,text,text,text,text,text) 
+IS 'args: edge_table,tolerance, the_geom:=''the_geom'',source:=''source'', target:=''target'',rows_where:=''true'' - fills columns source and target in the geometry table and creates a vertices table for selected rows';
 
 
 
@@ -351,9 +348,6 @@ COMMENT ON FUNCTION pgr_createTopology(text, double precision,text,text,text,tex
 /*------------------------------------------------*/
 
 
-CREATE OR REPLACE FUNCTION pgr_createverticestable(edge_table text, the_geom text DEFAULT 'the_geom'::text, source text DEFAULT 'source'::text, target text DEFAULT 'target'::text, rows_where text DEFAULT 'true'::text)
-  RETURNS text AS
-$BODY$
 /*
 .. function:: pgr_createVerticesTable(edge_table text, the_geom text, source text default 'source', target text default 'target')
 
@@ -366,6 +360,9 @@ $BODY$
     Created 2013-08-19
 */
 
+CREATE OR REPLACE FUNCTION pgr_createverticestable(edge_table text, the_geom text DEFAULT 'the_geom'::text, source text DEFAULT 'source'::text, target text DEFAULT 'target'::text, rows_where text DEFAULT 'true'::text)
+  RETURNS text AS
+$BODY$
 DECLARE
     naming record;
     sridinfo record;
@@ -387,11 +384,13 @@ DECLARE
     i integer;
     notincluded integer;
     included integer;
+    debuglevel text;
 
 BEGIN 
   raise notice 'PROCESSING:'; 
   raise notice 'pgr_createVerticesTable(''%'',''%'',''%'',''%'',''%'')',edge_table,the_geom,source,target,rows_where;
   raise notice 'Performing checks, pelase wait .....';
+  execute 'show client_min_messages' into debuglevel;
 
   BEGIN
     RAISE DEBUG 'Cheking % exists',edge_table;
@@ -480,7 +479,10 @@ BEGIN
         RAISE DEBUG '  ------>OK';
       else
         RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,sourcename;
-        execute 'create  index '||tname||'_'||sourcename||'_idx on '||tabname||' using btree('||quote_ident(sourcename)||')';
+        set client_min_messages  to warning;
+        execute 'create  index '||pgr_quote_ident(tname||'_'||sourcename||'_idx')||' 
+                         on '||pgr_quote_ident(tabname)||' using btree('||quote_ident(sourcename)||')';
+        execute 'set client_min_messages  to '|| debuglevel;
       END IF;
     END;
 
@@ -490,7 +492,10 @@ BEGIN
         RAISE DEBUG '  ------>OK';
       else
         RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,targetname;
-        execute 'create  index '||tname||'_'||targetname||'_idx on '||tabname||' using btree('||quote_ident(targetname)||')';
+        set client_min_messages  to warning;
+        execute 'create  index '||pgr_quote_ident(tname||'_'||targetname||'_idx')||' 
+                         on '||pgr_quote_ident(tabname)||' using btree('||quote_ident(targetname)||')';
+        execute 'set client_min_messages  to '|| debuglevel;
       END IF;
     END;
 
@@ -500,10 +505,12 @@ BEGIN
         RAISE DEBUG '  ------>OK';
       else
         RAISE DEBUG ' ------> Adding unique index "%_%_gidx".',tabname,gname;
+        set client_min_messages  to warning;
         execute 'CREATE INDEX '
             || quote_ident(tname || '_' || gname || '_gidx' )
-            || ' ON ' || tabname
+            || ' ON ' || pgr_quote_ident(tabname)
             || ' USING gist (' || quote_ident(gname) || ')';
+        execute 'set client_min_messages  to '|| debuglevel;
       END IF;
     END;
        gname=quote_ident(gname);
@@ -520,11 +527,13 @@ BEGIN
            execute 'TRUNCATE TABLE '||pgr_quote_ident(vertname)||' RESTART IDENTITY';
            execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
        ELSE
+           set client_min_messages  to warning;
        	   execute 'CREATE TABLE '||pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)';
        END IF;
        execute 'select addGeometryColumn('||quote_literal(sname)||','||quote_literal(vname)||','||
                 quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
        execute 'CREATE INDEX '||quote_ident(vname||'_the_geom_idx')||' ON '||pgr_quote_ident(vertname)||'  USING GIST (the_geom)';
+       execute 'set client_min_messages  to '|| debuglevel;
        raise DEBUG  '  ------>OK'; 
     END;       
 
@@ -533,7 +542,7 @@ BEGIN
     EXECUTE sql into i;
     sql = 'select count(*) from '||pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NULL or '||
 		sourcename||' is null or '||targetname||' is null)=true '||rows_where;
-    raise notice '%',sql;
+    raise debug '%',sql;
     EXECUTE SQL  into notincluded;
     EXCEPTION WHEN OTHERS THEN  BEGIN
          RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition';
@@ -546,12 +555,12 @@ BEGIN
     BEGIN
        raise notice 'Populating %, please wait...',vertname;
        sql= 'with
-		lines as ((select distinct '||sourcename||' as id, st_startpoint(st_linemerge('||gname||')) as the_geom from '||pgr_quote_ident(tabname)||
+		lines as ((select distinct '||sourcename||' as id, pgr_startpoint(st_linemerge('||gname||')) as the_geom from '||pgr_quote_ident(tabname)||
 		                  ' where ('|| gname || ' IS NULL 
                                     or '||sourcename||' is null 
                                     or '||targetname||' is null)=false 
                                      '||rows_where||')
-			union (select distinct '||targetname||' as id,st_endpoint(st_linemerge('||gname||')) as the_geom from '||pgr_quote_ident(tabname)||
+			union (select distinct '||targetname||' as id,pgr_endpoint(st_linemerge('||gname||')) as the_geom from '||pgr_quote_ident(tabname)||
 			          ' where ('|| gname || ' IS NULL 
                                     or '||sourcename||' is null 
                                     or '||targetname||' is null)=false
@@ -585,4 +594,5 @@ END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
-COMMENT ON FUNCTION pgr_createVerticesTable(text, text,text,text,text) IS 'args: geometry table,geometry column,source column="source", target column="target" - creates a vertices table based on the source and target identifiers';
+COMMENT ON FUNCTION pgr_createVerticesTable(text,text,text,text,text) 
+IS 'args: edge_table, the_geom:=''the_geom'',source:=''source'', target:=''target'' rows_where:=''true'' - creates a vertices table based on the source and target identifiers for selected rows';

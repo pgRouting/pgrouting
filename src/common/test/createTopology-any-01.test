@@ -1,7 +1,11 @@
+set  client_min_messages to warning;
+
 SET search_path TO public;
 drop table if exists "Edges2";
 drop table if exists "Edges2_vertices_pgr";
 drop schema if exists "myschema" cascade;
+
+set  client_min_messages to notice;
 
 -- The following should be OK
 
@@ -119,6 +123,9 @@ select pgr_createTopology('Edges2', 0.000001, id:= 'eid',rows_where:=' the_geom 
 --insert into bigtable (the_geom) ( select ST_MakeLine(ST_MakePoint(random()*1000,random()*1000), ST_MakePoint(random()*1000,random()*1000)) 
 --from  (SELECT * FROM generate_series(1,20000) AS id) AS x) ;
 --select pgr_createTopology('bigtable', 0.000001);
+
+
+set  client_min_messages to warning;
 
 SET search_path TO public;
 drop table if exists "Edges2";

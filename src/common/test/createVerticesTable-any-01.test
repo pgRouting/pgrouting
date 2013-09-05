@@ -1,8 +1,11 @@
+set client_min_messages to warning;
 SET search_path TO public;
 
 drop table if exists "Edges2";
 drop table if exists "Edges2_vertices_pgr";
 drop schema if exists "myschema" cascade;
+
+set client_min_messages to notice;
 
 -- The following should be OK
 
@@ -129,6 +132,7 @@ select (select count(*) from myschema.big_table_vertices) = (select count(*) fro
 select count(*) from ( (select * from myschema.big_table_vertices) union (select * from myschema.bigtable_vertices_pgr)) as a;
 */
 
+set client_min_messages to warning;
 SET search_path TO public;
 drop table if exists "Edges2";
 drop table if exists "Edges2_vertices_pgr";
