@@ -158,14 +158,14 @@ BEGIN
         vst_line_locate_point := 'st_linelocatepoint';
     end if;
 
---    -- First creates temp table with intersection points and gap points
+--    -- First creates temp table with intersection points
     p_ret = 'create temp table intergeom on commit drop as (
         select l1.' || quote_ident(n_pkey) || ' as l1id, 
                l2.' || quote_ident(n_pkey) || ' as l2id, 
 	       l1.' || quote_ident(n_geom) || ' as line,
 	       pgr_startpoint(l2.' || quote_ident(n_geom) || ') as source,
 	       pgr_endpoint(l2.' || quote_ident(n_geom) || ') as target,
-           st_intersection(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ') as geom 
+               st_intersection(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ') as geom 
         from ' || pgr_quote_ident(intab) || ' l1 
              join ' || pgr_quote_ident(intab) || ' l2 
              on (st_dwithin(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ', ' || tolerance || '))'||
@@ -256,4 +256,8 @@ END;
 $BODY$
     LANGUAGE 'plpgsql' VOLATILE STRICT COST 100;
 
+
+COMMENT ON FUNCTION pgr_nodeNetwork(text,tolerance double precision, 
+                        text,  text ,  text )
+ IS  'edge_table, tolerance, id:=''id'', the_geom:=''the_geom'', table_ending:=''noded'' ';
 

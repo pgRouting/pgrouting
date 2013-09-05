@@ -1,16 +1,3 @@
- NOTICE:  CREATE TABLE will create implicit sequence "streets_id_seq" for serial column "streets.id"
- NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "streets_pkey" for table "streets"
- NOTICE:  CREATE TABLE will create implicit sequence "Streets_id_seq" for serial column "Streets.id"
- NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "Streets_pkey" for table "Streets"
- NOTICE:  CREATE TABLE will create implicit sequence "streets_ID_seq" for serial column "streets.ID"
- NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "streets_pkey" for table "streets"
- NOTICE:  CREATE TABLE will create implicit sequence "Streets_ID_seq" for serial column "Streets.ID"
- NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "Streets_pkey" for table "Streets"
- NOTICE:  CREATE TABLE will create implicit sequence "Streets_id_seq" for serial column "Streets.id"
- NOTICE:  CREATE TABLE will create implicit sequence "streets_id_seq" for serial column "streets.id"
- NOTICE:  CREATE TABLE will create implicit sequence "Streets_id_seq" for serial column "Streets.id"
- NOTICE:  CREATE TABLE will create implicit sequence "sTreets_id_seq" for serial column "sTreets.id"
- NOTICE:  CREATE TABLE will create implicit sequence "StrEets_id_seq" for serial column "StrEets.id"
 public|streets
 public|Streets
 public|streets
@@ -162,12 +149,3 @@ f
 f
 f
 f
- NOTICE:  drop cascades to 2 other objects
-DETAIL:  drop cascades to table s1.streets
-drop cascades to table s1."Streets"
- NOTICE:  drop cascades to table s2."Streets"
- NOTICE:  drop cascades to table "S2".streets
- NOTICE:  drop cascades to 3 other objects
-DETAIL:  drop cascades to table s3."Streets"
-drop cascades to table s3."sTreets"
-drop cascades to table s3."StrEets"

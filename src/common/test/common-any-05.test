@@ -18,6 +18,8 @@ insert into noded3 (id, dir, the_geom)
    from unnoded_noded a, unnoded b
   where a.old_id=b.id;
 
+set client_min_messages to notice;
+
 \echo '---------------------------------'
 
 select pgr_createtopology('noded3', 0.000001, id:= 'gid');

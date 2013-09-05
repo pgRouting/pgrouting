@@ -6,9 +6,6 @@
 -- -------------------------------------------------------------------
 
 
-CREATE OR REPLACE FUNCTION pgr_getTableName(IN tab text,OUT sname text,OUT tname text)
-  RETURNS RECORD AS
-$BODY$ 
 /*
 .. function:: pgr_getTableName(tab)
    
@@ -29,6 +26,9 @@ $BODY$
      Created: 2013/08/19  for handling schemas
 
 */
+CREATE OR REPLACE FUNCTION pgr_getTableName(IN tab text,OUT sname text,OUT tname text)
+  RETURNS RECORD AS
+$BODY$ 
 DECLARE
 	naming record;
 	i integer;
@@ -89,11 +89,8 @@ LANGUAGE plpgsql VOLATILE STRICT;
 COMMENT ON FUNCTION pgr_getTableName(text) IS 'args: tab  -gets the schema (sname) and the table (tname) form the table tab';
 
 
-CREATE OR REPLACE FUNCTION pgr_getColumnName(tab text, col text)
-RETURNS text AS
-$BODY$
 /*
-.. function:: pgr_getColumnName(tab)
+.. function:: pgr_getColumnName(tab,col)
    
    Examples:  
 	* 	 select  pgr_getColumnName('tab','col');
@@ -109,6 +106,9 @@ $BODY$
   HISTORY
      Created: 2013/08/19  for handling schemas
 */
+CREATE OR REPLACE FUNCTION pgr_getColumnName(tab text, col text)
+RETURNS text AS
+$BODY$
 DECLARE
     sname text;
     tname text;
@@ -148,9 +148,6 @@ COMMENT ON FUNCTION pgr_getColumnName(text,text) IS 'args: tab,col  -gets the re
 
 
 
-CREATE OR REPLACE FUNCTION pgr_isColumnInTable(tab text, col text)
-RETURNS boolean AS
-$BODY$
 /*
 .. function:: pgr_isColumnInTable(tab, col)
 
@@ -169,6 +166,9 @@ $BODY$
   HISTORY
      Modified: 2013/08/19  for handling schemas
 */
+CREATE OR REPLACE FUNCTION pgr_isColumnInTable(tab text, col text)
+RETURNS boolean AS
+$BODY$
 DECLARE
     cname text;
 BEGIN
@@ -185,9 +185,6 @@ $BODY$
 COMMENT ON FUNCTION pgr_isColumnInTable(text,text) IS 'args: tab,col  -returns true when the column "col" is in table "tab"';
 
 
-CREATE OR REPLACE FUNCTION public.pgr_isColumnIndexed(tab text, col text)
-RETURNS boolean AS
-$BODY$
 /*
 .. function:: pgr_isColumnIndexed(tab, col)
 
@@ -206,12 +203,16 @@ $BODY$
 	  	 when column "col" is not indexed
 
 */
+CREATE OR REPLACE FUNCTION public.pgr_isColumnIndexed(tab text, col text)
+RETURNS boolean AS
+$BODY$
 DECLARE
     naming record;
     rec record;
     sname text;
     tname text;
     cname text;
+    pkey text;
 BEGIN
     SELECT * into naming FROM pgr_getTableName(tab);
     sname=naming.sname;
@@ -223,6 +224,22 @@ BEGIN
     IF cname IS NULL THEN
 	RETURN FALSE;
     END IF;
+    SELECT               
+          pg_attribute.attname into pkey
+         --  format_type(pg_attribute.atttypid, pg_attribute.atttypmod) 
+          FROM pg_index, pg_class, pg_attribute 
+          WHERE 
+                  pg_class.oid = pgr_quote_ident(sname||'.'||tname)::regclass AND
+                  indrelid = pg_class.oid AND
+                  pg_attribute.attrelid = pg_class.oid AND 
+                  pg_attribute.attnum = any(pg_index.indkey)
+                  AND indisprimary;
+        
+    IF pkey=cname then
+          RETURN TRUE; 
+    END IF;
+                      
+
    
     SELECT a.index_name, 
            b.attname,

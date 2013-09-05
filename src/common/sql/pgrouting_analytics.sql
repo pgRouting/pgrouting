@@ -12,9 +12,6 @@ It has been contributed to pgRouting by iMaptools.com.
 */
 
 
-CREATE OR REPLACE FUNCTION pgr_analyzegraph(edge_table text,tolerance double precision,the_geom text default 'the_geom',id text default 'id',source text default 'source',target text default 'target',rows_where text default 'true')
-RETURNS character varying AS
-$BODY$
 /*
 .. function:: pgr_analyzeGraph(edge_tab, tolerance,the_geom, source,target)
 
@@ -56,6 +53,10 @@ Makes more checks:
    populates chk                      <--- added a notice for big tables, because it takes time
            (edge_tab text, the_geom text, tolerance double precision)
 */
+
+CREATE OR REPLACE FUNCTION pgr_analyzegraph(edge_table text,tolerance double precision,the_geom text default 'the_geom',id text default 'id',source text default 'source',target text default 'target',rows_where text default 'true')
+RETURNS character varying AS
+$BODY$
 
 DECLARE
     points record;
@@ -395,14 +396,11 @@ BEGIN
 END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
+COMMENT ON FUNCTION pgr_analyzeGraph(text,double precision,text,text,text,text,text) IS 'args: edge_table, tolerance,the_geom:=''the_geom'',id:=''id'',source column:=''source'', target column:=''target'' rows_where:=''true'' - creates a vertices table based on the geometry for selected rows';
 
 
 
 
-CREATE OR REPLACE FUNCTION pgr_analyzeOneway(edge_table text, s_in_rules TEXT[], s_out_rules TEXT[], t_in_rules TEXT[], 
-   t_out_rules TEXT[], oneway text default 'oneway',two_way_if_null boolean default true, source text default 'source',target text default 'target')
-  RETURNS text AS
-$BODY$
 
 /*
 .. function:: pgr_analyzeOneway(tab, col, s_in_rules, s_out_rules, t_in_rules, t_out_rules)
@@ -472,6 +470,18 @@ a network that is not properly noded.
 
 */
 
+CREATE OR REPLACE FUNCTION pgr_analyzeOneway(
+   edge_table text, 
+   s_in_rules TEXT[], 
+   s_out_rules TEXT[], 
+   t_in_rules TEXT[], 
+   t_out_rules TEXT[], 
+   two_way_if_null boolean default true, 
+   oneway text default 'oneway',
+   source text default 'source',
+   target text default 'target')
+  RETURNS text AS
+$BODY$
 
 
 DECLARE
@@ -672,4 +682,7 @@ BEGIN
 END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
+
+COMMENT ON FUNCTION pgr_analyzeOneway(text,TEXT[],TEXT[], TEXT[],TEXT[],boolean,text,text,text)
+IS 'args:edge_table , s_in_rules , s_out_rules, t_in_rules , t_out_rules, two_way_if_null:= true, oneway:=''oneway'',source:= ''source'',target:=''target'' - Analizes the directionality of the edges based on the rules';
 

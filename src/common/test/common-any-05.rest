@@ -1,5 +1,13 @@
 public.noded3.the_geom SRID:0 TYPE:MULTILINESTRING DIMS:2 
 ---------------------------------
+ NOTICE:  PROCESSING:
+ NOTICE:  pgr_createTopology('noded3',1e-06,'the_geom','gid','source','target','true')
+ NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Creating Topology, Please wait...
+ NOTICE:  -------------> TOPOLOGY CREATED FOR  40 edges
+ NOTICE:  Rows with NULL geometry or NULL id: 0
+ NOTICE:  Vertices table for table public.noded3 is: public.noded3_vertices_pgr
+ NOTICE:  ----------------------------------------------
 OK
 ---------------------------------
 1|||||0101000000000000000000F03F0000000000000040

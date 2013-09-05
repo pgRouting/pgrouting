@@ -1,7 +1,6 @@
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.edge_table WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
  NOTICE:                                         FOR   18  EDGES
@@ -13,7 +12,6 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.edge_table WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
  NOTICE:                                         FOR   18  EDGES
@@ -30,7 +28,6 @@ FAIL
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.edge_table WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
  NOTICE:                                         FOR   18  EDGES
@@ -42,7 +39,6 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.edge_table WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
  NOTICE:                                         FOR   18  EDGES
@@ -54,7 +50,6 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.edge_table WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
  NOTICE:                                         FOR   18  EDGES
@@ -66,7 +61,6 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','id < 10')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.edge_table WHERE (the_geom IS NULL or source is null or target is null)=true  AND (id < 10)
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
  NOTICE:                                         FOR   10  EDGES
@@ -78,7 +72,6 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','the_geom && (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.edge_table WHERE (the_geom IS NULL or source is null or target is null)=true  AND (the_geom && (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5))
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
  NOTICE:                                         FOR   9  EDGES
@@ -90,7 +83,6 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','the_geom && (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.edge_table WHERE (the_geom IS NULL or source is null or target is null)=true  AND (the_geom && (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100))
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  10 VERTICES
  NOTICE:                                         FOR   12  EDGES
@@ -102,7 +94,6 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','true')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.mytable WHERE (mygeom IS NULL or src is null or tgt is null)=true  AND (true)
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
  NOTICE:                                         FOR   18  EDGES
@@ -119,7 +110,6 @@ FAIL
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','true')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.mytable WHERE (mygeom IS NULL or src is null or tgt is null)=true  AND (true)
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
  NOTICE:                                         FOR   18  EDGES
@@ -131,7 +121,6 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','true')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.mytable WHERE (mygeom IS NULL or src is null or tgt is null)=true  AND (true)
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
  NOTICE:                                         FOR   18  EDGES
@@ -143,7 +132,6 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','gid < 10')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.mytable WHERE (mygeom IS NULL or src is null or tgt is null)=true  AND (gid < 10)
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
  NOTICE:                                         FOR   10  EDGES
@@ -155,7 +143,6 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','gid < 10')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.mytable WHERE (mygeom IS NULL or src is null or tgt is null)=true  AND (gid < 10)
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
  NOTICE:                                         FOR   10  EDGES
@@ -167,7 +154,6 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','mygeom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.mytable WHERE (mygeom IS NULL or src is null or tgt is null)=true  AND (mygeom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5))
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
  NOTICE:                                         FOR   9  EDGES
@@ -179,7 +165,6 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','mygeom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.mytable WHERE (mygeom IS NULL or src is null or tgt is null)=true  AND (mygeom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5))
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
  NOTICE:                                         FOR   9  EDGES
@@ -191,7 +176,6 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','mygeom && (SELECT st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.mytable WHERE (mygeom IS NULL or src is null or tgt is null)=true  AND (mygeom && (SELECT st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100))
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  10 VERTICES
  NOTICE:                                         FOR   12  EDGES
@@ -203,7 +187,6 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','mygeom && (SELECT st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.mytable WHERE (mygeom IS NULL or src is null or tgt is null)=true  AND (mygeom && (SELECT st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100))
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  10 VERTICES
  NOTICE:                                         FOR   12  EDGES
@@ -215,7 +198,6 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  select count(*) from public.edge_table WHERE (the_geom IS NULL or source is null or target is null)=true  AND (true)
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
  NOTICE:                                         FOR   18  EDGES
