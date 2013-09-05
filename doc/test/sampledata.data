@@ -16,7 +16,7 @@ CREATE TABLE edge_table (
     y1 double precision,
     x2 double precision,
     y2 double precision,
-    the_geom geometry(Linestring)
+    the_geom geometry
 );
 
 INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,0,   2,1);
