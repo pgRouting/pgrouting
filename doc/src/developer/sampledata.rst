@@ -31,7 +31,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 	    y1 double precision,
 	    x2 double precision,
 	    y2 double precision,
-	    the_geom geometry(Linestring)
+	    the_geom geometry
 	);
 
 
