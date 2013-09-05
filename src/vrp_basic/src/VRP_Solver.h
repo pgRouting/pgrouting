@@ -10,9 +10,11 @@
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
+#include <set>
 
 #define MAXIMUM_TRY 15
 #define TOTAL_NUMBER_OF_SEARCH 15
+#define MAXIMUM_MOVE_FREQUENCY 15
 
 #define INF (1e15)
 
@@ -165,7 +167,10 @@ public:
 	
 	int getEndDepot(){return m_iEndDepotId;}
 	void setEndDepot(int depotId){m_iEndDepotId = depotId;}
-	
+
+	int getServedOrderCount(){return m_viOrderIds.size();}
+
+
 	bool insertOrder(int orderId, int pos);
 	
 
@@ -179,7 +184,7 @@ public:
 
 	int getStartTime(int pos){return m_viStartTime[pos];}
 
-	std::pair<int,double> getPotentialInsert(COrderInfo curOrder);
+	
 	
 	//CTourInfo( CTourInfo const& );
 	//CTourInfo& operator = (const CTourInfo& solution);
@@ -316,7 +321,7 @@ public:
 	bool insertOrder(CTourInfo& tourInfo, int orderId, int pos);
 	void applyBestMoveInCurrentSolution(CSolutionInfo& solutionInfo, CMoveInfo& bestMove );
 	void insertUnservedOrders(CSolutionInfo& solutionInfo);
-	void attemptFeasibleNodeExchange(CSolutionInfo& solutionInfo);
+	//void attemptFeasibleNodeExchange(CSolutionInfo& solutionInfo);
 	void attempVehicleExchange(CSolutionInfo& solutionInfo);
 	CMoveInfo identifyPotentialMove();
 	void updateTabuCount(CMoveInfo& bestMove);
@@ -339,6 +344,10 @@ private:
 	std::map<std::pair<int, int>, CostPack> m_mapOrderToOrderCost;
 	std::map<std::pair<int, int>, CostPack> m_mapDepotToOrderrCost;
 	std::map<std::pair<int, int>, CostPack> m_mapOrderToDepotCost;
+
+	std::map<CMoveInfo, int> m_mapMoveFrequency;
+	std::map<CMoveInfo, std::pair<int, int> > m_mapTabuCount;
+	std::set<CMoveInfo> m_sTabuList;
 	
 	bool m_bIsSoultionReady;
 	CSolutionInfo m_solutionFinal;

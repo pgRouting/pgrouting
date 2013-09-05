@@ -57,6 +57,27 @@ CSolutionInfo::~CSolutionInfo()
 {
 }
 
+void CSolutionInfo::replaceTour(CTourInfo curTour)
+{
+	int i;
+	for(i = 0; i < m_vtourAll.size(); i++)
+	{
+		if(m_vtourAll[i].getVehicleId() == curTour.getVehicleId())
+		{
+			m_vtourAll[i] = curTour;
+			return;
+		}
+	}
+	return;
+}
+
+void CSolutionInfo::replaceTourAt(int index, CTourInfo curTour)
+{
+	if(index < 0 || index >= m_vtourAll.size())
+		return;
+	m_vtourAll[index] = curTour;
+}
+
 bool CSolutionInfo::init(std::vector<int> vecOrder, int iTotalOrder, std::vector<int> vecVehicle)
 {
 	m_vUnservedOrderId = vecOrder;
@@ -378,7 +399,7 @@ bool CVRPSolver::tabuSearch(CSolutionInfo& curSolution)
 	{
 		applyBestMoveInCurrentSolution(curSolution, identifyPotentialMove() );	
 		insertUnservedOrders(curSolution);
-		attemptFeasibleNodeExchange(curSolution);
+		//attemptFeasibleNodeExchange(curSolution);
 		attempVehicleExchange(curSolution);
 		++numberOfSearch;
 	}
@@ -429,7 +450,7 @@ void CVRPSolver::insertUnservedOrders(CSolutionInfo& curSolution)
 			for(int i = 0;i<totalUnservedOrder;++i)
 			{
 				COrderInfo curOrder = m_vOrderInfos[curSolution.getUnservedOrderAt(i)];
-				std::pair<int,double> curInsert = curTour.getPotentialInsert( curOrder);
+				std::pair<int,double> curInsert = getPotentialInsert(curTour, curOrder);
 
 				insertOrder(curTour, i,curInsert.first);
 				curMove.setModifiedTour(curTour);
@@ -782,5 +803,102 @@ void CVRPSolver::attempVehicleExchange(CSolutionInfo& solutionInfo)
 		updateFinalSolution(solutionInfo);
 	}
 	
+}
+/*
+void CVRPSolver::attemptFeasibleNodeExchange(CSolutionInfo& solutionInfo)
+{
+	++m_iGeneratedSolutionCount;
+	++m_iStepsSinceLastSolution;
+	CMoveInfo bestMove, curMove;
+
+	int totalTour = solutionInfo.getTourCount();
+	
+	for (int i = 0;i<totalTour;++i)
+	{
+		CTourInfo curTour = solutionInfo.getTour(i);
+		std::vector<int> vecOrderId = curTour.getOrderVector();
+		curMove.setInitialTour(curTour);
+		int totalCustomer = curTour.getServedOrderCount();
+		std::pair<int,int> bestSwapIndex;
+		double lowestCost = DOUBLE_MAX;
+
+		for (int j = 0;j<totalCustomer;++j)
+		{
+			for (int k = j+1;k<totalCustomer;++k)
+			{
+				COrderInfo firstCustomer = m_vOrderInfos[m_mapOrderIdToIndex[vecOrderId[j]]];
+				COrderInfo secondCustomer = m_vOrderInfos[m_mapOrderIdToIndex[vecOrderId[k]]];
+
+				if ( curTour->isFeasibleReplace(j,pSecondCustomer) && pCurTour->isFeasibleReplace(k,pFirstCustomer) )
+				{
+					pCurTour->removeCustomer(j,false);
+					pCurTour->addCustomer(pSecondCustomer,j);
+
+					pCurTour->removeCustomer(k,false);
+					pCurTour->addCustomer(pFirstCustomer,k);
+
+					pCurMove->setModifiedTour(pCurTour);
+					if (isTabuMove(pCurMove))
+					{
+						pCurMove->getInitialTour(pCurTour);
+						continue;
+					}
+
+					double curTourCost = pCurTour->getTourData()->calcCost(pCurTour->getAssignedVehicle());
+					if ( curTourCost < lowestCost )
+					{
+						*pBestMove = *pCurMove;
+						lowestCost = curTourCost;
+						bestSwapIndex = std::make_pair(j,k);
+					}
+					pCurMove->getInitialTour(pCurTour);
+				}
+			}
+		}
+
+		if (lowestCost!=DOUBLE_MAX)
+		{
+			m_pCurrentSolution->replaceTourAt(i,pBestMove->getModifiedTourAt(0));
+			this->updateTabuCount(pBestMove);
+			this->evaluateCurrentSolution();
+		}
+	}
+	delete pCurMove;
+	delete pBestMove;
+}
+*/
+
+void CVRPSolver::updateTabuCount(CMoveInfo& bestMove)
+{
+	/*
+	bestMove.reverseMove();
+	CMoveInfo curMove;
+
+	std::map< CMoveInfo,int >::iterator mpIt = m_mapMoveFrequency.find(bestMove);
+
+	if (mpIt == m_mapMoveFrequency.end())
+	{
+		curMove = bestMove;
+	}
+	else curMove = (*mpIt).first;
+
+	m_mapMoveFrequency[curMove]++;
+
+	if( m_mapMoveFrequency[curMove] >= MAXIMUM_MOVE_FREQUENCY )
+	{
+		CMoveInfo tmpMove;
+		std::set<CMoveInfo>::iterator sIt = m_sTabuList.find(curMove);
+
+		CMoveInfo tmpMove2;
+		if ( sIt == m_sTabuList.end() )
+		{
+			tmpMove2 = curMove;
+		}
+		else tmpMove2 = (*sIt);
+		m_sTabuList.insert(tmpMove2);
+	}
+	m_mapTabuCount[curMove] = std::make_pair(m_iGeneratedSolutionCount,m_iStepsSinceLastSolution);
+	bestMove.reverseMove();
+	*/
 }
 
