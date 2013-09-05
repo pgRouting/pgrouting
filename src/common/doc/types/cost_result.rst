@@ -9,7 +9,7 @@
 
 .. _type_cost_result:
 
-pgr_costResult[] - Path Result with Cost
+pgr_costResult[] 
 ===============================================================================
 
 .. index:: 
@@ -86,4 +86,4 @@ Description
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`common_types`
+* :ref:`introduction`

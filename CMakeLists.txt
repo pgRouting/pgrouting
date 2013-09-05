@@ -15,10 +15,19 @@ project(PGROUTING)
 #    "Set ON|OFF (default=OFF) to build TSP library" OFF)
 
 option(WITH_DD
-    "Set ON|OFF (default=OFF) to build Driving distance library" OFF)
+    "Set ON|OFF (default=ON) to build Driving distance library" ON)
 
 option(WITH_DOC
     "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
+
+option(BUILD_LATEX
+    "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
+
+option(BUILD_HTML
+    "Set ON|OFF (default=ON) to build Documentation library tree as HTML" ON)
+
+option(BUILD_MAN
+    "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" ON)
 
 #-----------------------------------------------------------------------------
 # PGROUTING version number.

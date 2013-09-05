@@ -7,16 +7,14 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _common_types:
+.. _change_log:
 
-Custom Types
+Release Notes
 ===============================================================================
 
-The following are commonly used data types for some of the pgRouting functions. 
-
 .. toctree::
-    :maxdepth: 1
-    :glob:
+   :maxdepth: 1
 
-    types/*
+   pgRouting 2.0 Release Notes <2_0>
+   pgRouting 1.x Release Notes <1_x>
 

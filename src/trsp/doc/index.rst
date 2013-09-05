@@ -28,7 +28,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-The turn restricted shorthest path (TRSP) is a shortest path algorithm that can optionally take into account complicated turn restrictions like those found in real work navigable road networks. Performance wise it is nearly as fast as the A* search but has many additional features like it works with edges rather than the nodes of the network. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
+The turn restricted shorthest path (TRSP) is a shortest path algorithm that can optionally take into account complicated turn restrictions like those found in real work navigable road networks. Performamnce wise it is nearly as fast as the A* search but has many additional features like it works with edges rather than the nodes of the network. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
 
 .. code-block:: sql
 
@@ -48,7 +48,7 @@ Description
 
 The Turn Restricted Shortest Path algorithm (TRSP) is similar to the :ref:`shooting_star` in that you can specify turn restrictions.
 
-The TRSP setup is mostly the same as :ref:`Dijkstra shortest path <pgr_dijkstra>` with the addition of an optional turn restriction table. This makes adding turn restrictions to a road network much easier than trying to add them to Shooting Star where you had to add the same edges multiple times if it was involved in a restriction.
+The TRSP setup is mostly the same as :ref:`Dijkstra shortest path <pgr_dijkstra>` with the addition of an optional turn restriction table. This makes adding turn restrictions to a road network much easier than trying to add them to Shooting Star where you had to ad the same edges multiple times if it was involved in a restriction.
 
 
 :sql: a SQL query, which should return a set of rows with the following columns:
@@ -76,20 +76,8 @@ The TRSP setup is mostly the same as :ref:`Dijkstra shortest path <pgr_dijkstra>
 		SELECT to_cost, target_id, via_path FROM restrictions
 
 	:to_cost: ``float8`` turn restriction cost
-	:target_id: ``int4`` edge id where restriction is applied
-	:via_path: ``text`` comma seperated list of edges getting to ``target_id`` edge that makes up this restriction.
-
-Examples
-----------------------------------------------------------------------
-
-    .. code-block:: sql
-
-        to_cost | target_id | via_path
-        ----------------------------------------------
-         1000.0 |        27 | 32,44,36
-
-    In the above example, a path traveling edges from 36 -> 44 -> 32 -> 27 would be applied a cost of 1000.0. In this manner we can apply costs to complex paths through intersection.
-
+	:target_id: ``int4`` target id
+	:via_path: ``text`` commar seperated list of edges in the reverse order of ``rule``
 
 Another variant of TRSP allows to specify **EDGE id** of source and target together with a fraction to interpolate the position:
 
@@ -124,13 +112,16 @@ Examples
 			7, 12, false, false
 		);
 
-	 seq | node | edge | cost 
-	-----+------+------+------
-	   0 |    7 |    8 |    1
-	   1 |    8 |   11 |    1
-	   2 |   11 |   13 |    1
-	   3 |   12 |   -1 |    0
-	(4 rows)
+	seq | node | edge | cost 
+	----+------+------+------
+	  0 |    7 |    6 |    1
+	  1 |    8 |    7 |    1
+	  2 |    5 |    8 |    1
+	  3 |    6 |   11 |    1
+	  4 |   11 |   13 |    1
+	  5 |   12 |   -1 |    0
+(6 rows)
+
 
 
 * With turn restrictions
@@ -164,13 +155,15 @@ Then a query with turn restrictions is created as:
                FROM restrictions'
 		);
 
-     seq | node | edge | cost
-     -----+------+------+------
-        0 |    7 |    8 |    1
-        1 |    8 |   11 |    1
-        2 |   11 |   13 |    1
-        3 |   12 |   -1 |    0
-     (4 rows)
+	 seq | node | edge | cost 
+	-----+------+------+------
+	   0 |    7 |    6 |    1
+	   1 |    8 |    7 |    1
+	   2 |    5 |    8 |    1
+	   3 |    6 |   11 |    1
+	   4 |   11 |   13 |    1
+	   5 |   12 |   -1 |    0
+(6 rows)
 
 
 
