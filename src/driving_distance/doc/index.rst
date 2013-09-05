@@ -17,8 +17,8 @@ Driving distance related Functions
 .. toctree::
 	:maxdepth: 1
 
-	dvingDistance - Driving Distance <dd_driving_distance>
-	pgr_alphashape - Alpha shape computation <dd_alphashape>
+	pgr_drivingDistance - Driving Distance <dd_driving_distance>
+	pgr_alphaShape - Alpha shape computation <dd_alphashape>
 	pgr_pointsAsPolygon - Polygon around set of points <dd_points_as_polygon>
 
 .. rubric:: Indices and tables

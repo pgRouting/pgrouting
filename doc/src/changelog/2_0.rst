@@ -39,6 +39,7 @@ Changes for 2.0.0
 * Built a test infrastructure that is run before major code changes are checked in
 * Tested and fixed most all of the outstanding bugs reported against 1.x that existing in the 2.0-dev code base.
 * Improved build process for Windows
+* Automated testing on Linux and Windows platforms trigger by every commit
 * Modular library design
 * Compatibility with PostgreSQL 9.1 or newer 
 * Compatibility with PostGIS 2.0 or newer 
