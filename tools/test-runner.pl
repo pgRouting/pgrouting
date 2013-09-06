@@ -199,26 +199,25 @@ sub run_test {
         };
         print PSQL "set client_min_messages to WARNING;\n" if $ignore;
         my @d = ();
-        if ($ignore) {
-            @d = grep !/^CONTEXT/, grep !/^PL\/pgSQL function/, <TIN>;
-        }
-        else {
-            @d = <TIN>;
-        }
+        @d = <TIN>;
         print PSQL @d;
         close(PSQL);
         close(TIN);
 
         my $dfile;
+        my $dfile2;
         if ($ignore) {
+            $dfile2 = $TMP2;
+            mysystem("grep -v NOTICE '$TMP' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile2");
             $dfile = $TMP3;
             mysystem("grep -v NOTICE '$dir/$x.rest' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile");
         }
         else {
             $dfile = "$dir/$x.rest";
+            $dfile2 = $TMP;
         }
         # use diff -w to ignore white space differences like \r vs \r\n
-        my $r = `diff -w '$dfile' $TMP`;
+        my $r = `diff -w '$dfile' '$dfile2' `;
         $r =~ s/^\s*|\s*$//g;
         if ($r =~ /connection to server was lost/) {
             $res{"$dir/$x.test"} = "CRASHED SERVER: $r";
