@@ -26,7 +26,7 @@ create table noded2 (
 
 
 
-select addgeometrycolumn('noded2', 'the_geom', ST_SRID('POINT(0 0)'::geometry) , 'LINESTRING', 2);
+select regexp_replace(addgeometrycolumn('noded2', 'the_geom', ST_SRID('POINT(0 0)'::geometry) , 'LINESTRING', 2), 'SRID:-1', 'SRID:0');
 insert into noded2 (id, dir, the_geom)
  select a.old_id, b.dir, a.the_geom
    from unnoded_noded a, unnoded b

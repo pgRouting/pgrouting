@@ -12,7 +12,7 @@ create table noded3 (
   cost float8,
   rcost float8
  );
-select addgeometrycolumn('noded3', 'the_geom', ST_SRID('POINT(0 0)'::geometry) , 'MULTILINESTRING', 2);
+select regexp_replace(addgeometrycolumn('noded3', 'the_geom', ST_SRID('POINT(0 0)'::geometry) , 'MULTILINESTRING', 2), 'SRID:-1', 'SRID:0');
 insert into noded3 (id, dir, the_geom)
  select a.id, b.dir, st_multi(a.the_geom) as the_geom
    from unnoded_noded a, unnoded b
