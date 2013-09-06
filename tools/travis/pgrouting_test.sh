@@ -37,7 +37,7 @@ run_psql -U $DBUSER -c "CREATE DATABASE $DBNAME;"
 # ------------------------------------------------------------------------------
 # CREATE EXTENSION
 # ------------------------------------------------------------------------------
-IGNORE=
+IGNORE=-ignorenotice
 if [ "$POSTGRESQL_VERSION" == "8.4" ] || [ "$POSTGRESQL_VERSION" == "9.0" ]
 then
     run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "postgis.sql"`
