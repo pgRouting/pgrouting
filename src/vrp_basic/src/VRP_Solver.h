@@ -54,11 +54,14 @@ public:
 	int getCapacity(){return m_iCapacity;}
 	void setCapacity(int capacity){m_iCapacity = capacity;}
 
-	int getId(){return m_iVehicleId;}
+	int getId(){return (this->m_iVehicleId);}
 	void setId(int id){m_iVehicleId = id;}
 
 	double getCostPerKM(){return m_dCostPerKM;}
 	void setCostPerKM(double cost){m_dCostPerKM = cost;}
+
+	friend bool operator != (const CVehicleInfo& cur, const CVehicleInfo& that);
+	
 	
 	//CVehicleInfo( CVehicleInfo const& );
 	//CVehicleInfo& operator = (const CVehicleInfo& vehicleInfo);
@@ -170,8 +173,13 @@ public:
 
 	int getServedOrderCount(){return m_viOrderIds.size();}
 
+	void updateCost(double cost, double distance, double travelTime);
+
+	void setStartTime(std::vector<int> vStartTime){m_viStartTime = vStartTime;}
+
 
 	bool insertOrder(int orderId, int pos);
+	bool removeOrder(int pos);
 	
 
 	double getDistance(){return m_dTotalDistance;}
@@ -182,9 +190,16 @@ public:
 	
 	std::vector<int> getOrderVector(){return m_viOrderIds;}
 
-	int getStartTime(int pos){return m_viStartTime[pos];}
+	int getStartTime(int pos){if(pos >= m_viStartTime.size()) return 0; 
+								else return m_viStartTime[pos];}
 
+	friend bool operator== (const CTourInfo& cur, const CTourInfo& that);
 	
+
+	//bool operator != (const CTourInfo& that)
+	//{
+	//	return(!(*this == that));
+	//}
 	
 	//CTourInfo( CTourInfo const& );
 	//CTourInfo& operator = (const CTourInfo& solution);
@@ -202,6 +217,8 @@ private:
 	double m_dTotalTraveltime;
 };
 
+
+
 // This class will represent a solution of a VRP problem. A solution will be consist of multiple tour. 
 // It also contains the number of vehicle used, number of orders served and total cost, distance and traveltime.
 class CSolutionInfo
@@ -218,6 +235,14 @@ public:
 	CTourInfo& getTour(int pos){return m_vtourAll[pos];}
 
 	int getTourCount(){return (m_vtourAll.size());}
+
+	int getUnservedOrderCount(){return m_vUnservedOrderId.size();}
+	int getUnusedVehicleCount(){return m_vUnusedVehicles.size();}
+
+	int getUnusedVehicleAt(int pos){return m_vUnusedVehicles[pos];}
+
+	void removeVehicle(int pos){m_vUnusedVehicles.erase(m_vUnusedVehicles.begin() + pos);}
+	void removeOrder(int pos){m_vUnservedOrderId.erase(m_vUnservedOrderId.begin() + pos);}
 	
 	double getTotalCost(){return m_dTotalCost;}
 	double getTotalDistance(){return m_dTotalDistance;}
@@ -268,6 +293,14 @@ public:
 	void getInitialTour(CTourInfo &TourData);
 	void getInitialTour(CTourInfo &TourData1, CTourInfo &TourData2);
 
+	friend bool operator == (const CMoveInfo& cur, const CMoveInfo& that);
+	
+
+	//bool operator != (const CMoveInfo& that)
+	//{
+	//	return(!(*this == that));
+	//}
+
 	//CMoveInfo( CMoveInfo const& );
 	//CMoveInfo& operator = (const CMoveInfo& solution);
 
@@ -279,6 +312,8 @@ private:
 	std::vector<CTourInfo> m_vInitialTour;
 	std::vector<CTourInfo> m_vModifiedTour;
 };
+
+
 
 
 // This is the main class that will solve the VRP problem. It will use the previous classes to represent the problem and the solution.
@@ -323,10 +358,10 @@ public:
 	void insertUnservedOrders(CSolutionInfo& solutionInfo);
 	//void attemptFeasibleNodeExchange(CSolutionInfo& solutionInfo);
 	void attempVehicleExchange(CSolutionInfo& solutionInfo);
-	CMoveInfo identifyPotentialMove();
+	//CMoveInfo identifyPotentialMove();
 	void updateTabuCount(CMoveInfo& bestMove);
 
-	bool isTabuMove(CMoveInfo curMove);
+	bool isTabuMove(CMoveInfo& curMove);
 	bool updateTourCosts(CTourInfo& tourInfo);
 	bool addOrderAtTour(CSolutionInfo& solutionInfo, int tourIndex, int insertIndex, int orderIndex);
 	
@@ -345,11 +380,15 @@ private:
 	std::map<std::pair<int, int>, CostPack> m_mapDepotToOrderrCost;
 	std::map<std::pair<int, int>, CostPack> m_mapOrderToDepotCost;
 
+	/*
 	std::map<CMoveInfo, int> m_mapMoveFrequency;
 	std::map<CMoveInfo, std::pair<int, int> > m_mapTabuCount;
 	std::set<CMoveInfo> m_sTabuList;
+	*/
+
+	std::vector<CMoveInfo> m_veMoves;
 	
-	bool m_bIsSoultionReady;
+	bool m_bIsSolutionReady;
 	CSolutionInfo m_solutionFinal;
 
 private:

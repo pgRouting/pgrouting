@@ -46,29 +46,13 @@ public:
 
 	bool parse(std::string strInput, std::string chDelim)
 	{
-		size_t iStartPos = 0;
-		while(true)	
+		char *ptr = strtok((char *)strInput.c_str(), chDelim.c_str());
+		while(ptr != NULL)
 		{
-			size_t iPos = strInput.find(chDelim[0],iStartPos);
-			if(iPos != std::string::npos)
-			{
-				std::string strToken;
-				strToken = strInput.substr(iStartPos,iPos - iStartPos);
-				vecTokens.push_back(strToken);
-				iStartPos = iPos + 1;
-			}
-			else if(iPos == std::string::npos && strInput.length() > 0 )
-			{
-				std::string strToken;
-				strToken = strInput.substr(iStartPos, strInput.length() - iStartPos);
-				if(strToken.length() > 0)
-					vecTokens.push_back(strToken);
-				break;
-			}		
-			else 
-				break;
-
-		}		
+			std::string str = ptr;
+			vecTokens.push_back(str);
+			ptr = strtok(NULL, chDelim.c_str());
+		}
 		return true;
 	}
 

@@ -21,7 +21,7 @@ void loadOrders()
 		if(strlen(buff) == 0)
 			break;
 		StringTokenizer tokenizer;
-		tokenizer.parse(buff, " ");
+		tokenizer.parse(buff, " \t");
 		StringVector vecToken;
 		tokenizer.getTokens(vecToken);
 
@@ -104,7 +104,7 @@ void loadVehicles()
 		if(strlen(buff) == 0)
 			break;
 		StringTokenizer tokenizer;
-		tokenizer.parse(buff, " ");
+		tokenizer.parse(buff, " \t");
 		StringVector vecToken;
 		tokenizer.getTokens(vecToken);
 
@@ -137,6 +137,7 @@ void loadDistanceMatrix()
 	if(fp == NULL)
 	{
 		fprintf(stderr, "Cost file not found!\n");
+		return;
 	}
 
 	// From To Cost
@@ -145,7 +146,7 @@ void loadDistanceMatrix()
 		if(strlen(buff) == 0)
 			break;
 		StringTokenizer tokenizer;
-		tokenizer.parse(buff, " ");
+		tokenizer.parse(buff, " \t");
 		StringVector vecToken;
 		tokenizer.getTokens(vecToken);
 
@@ -159,7 +160,7 @@ void loadDistanceMatrix()
 		int toId = atoi(vecToken[1].c_str());
 		CostPack cpack;
 		cpack.cost = cpack.distance = atof(vecToken[2].c_str());
-		cpack.traveltime = 1;
+		cpack.traveltime = cpack.cost;
 		
 		if(fromId == 1)
 			solver.addDepotToOrderCost(fromId, toId, cpack);
@@ -214,6 +215,7 @@ bool print_solution(std::string strError)
 			if(j < totalOrder - 1)
 				fprintf(fp, ",");
 		}
+		fprintf(fp, "\n");
 	}
 
 	fclose(fp);
