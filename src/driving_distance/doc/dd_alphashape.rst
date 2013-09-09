@@ -63,6 +63,7 @@ Returns a vertex record for each row :
 
 Examples
 -------------------------------------------------------------------------------
+In the alpha shape code we have no way to control the order of the points so the actual output you might get could be similar but different. The simple query is followed by a more complex one that constructs a polygon and computes the areas of it. This should be the same as the result on your system. We leave the details of the complex query to the reader as an exercise if they wish to decompose it into understandable pieces or to just copy and paste it into a SQL window to run.
 
 .. code-block:: sql
 
@@ -78,6 +79,18 @@ Examples
      0 | 2
     (6 rows)
 
+    SELECT st_area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))
+    from (select st_makeline(points order by id)  as openline from
+    (SELECT st_makepoint(x,y) as points ,row_number() over() AS id 
+    FROM pgr_alphAShape('SELECT id, x, y FROM vertex_table')
+    ) as a) as foo;
+
+     st_area
+    ---------
+       10.00
+    (1 row)
+
+
     SELECT * FROM pgr_alphAShape('SELECT id::integer, st_x(the_geom)::float as x, st_y(the_geom)::float as y  FROM edge_table_vertices_pgr');
       x  |  y  
     -----+-----
@@ -91,7 +104,18 @@ Examples
        2 |   4
     (8 rows)
 
-    
+    SELECT st_area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))
+    from (select st_makeline(points order by id)  as openline from
+    (SELECT st_makepoint(x,y) as points ,row_number() over() AS id 
+    FROM pgr_alphAShape('SELECT id::integer, st_x(the_geom)::float as x, st_y(the_geom)::float as y  FROM edge_table_vertices_pgr')
+    ) as a) as foo;
+
+     st_area
+    ---------
+       10.00
+    (1 row)
+
+ 
 The queries use the :ref:`sampledata` network.
 
 
