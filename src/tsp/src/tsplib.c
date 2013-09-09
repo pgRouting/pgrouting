@@ -149,8 +149,10 @@ typedef struct tspstruct {
     int n;
     DTYPE maxd;
     DTYPE *dist;
+    DTYPE bestlen;
     int *iorder;
     int *jorder;
+    int *border;  // best order we find
     float b[4];
 } TSP;
 
@@ -384,14 +386,13 @@ void doReverse(TSP *tsp, Path p)
 void annealing(TSP *tsp)
 {
     Path   p;
-    int    i=1, j, pathchg;
+    int    i, j, pathchg;
     int    numOnPath, numNotOnPath;
-    DTYPE    pathlen, bestlen;
+    DTYPE    pathlen;
     int    n = tsp->n;
     double energyChange, T;
 
     pathlen = pathLength (tsp); 
-    bestlen = pathlen;
 
     for (T = T_INIT; T > FINAL_T; T *= COOLING)  /* annealing schedule */
     {
@@ -431,10 +432,14 @@ void annealing(TSP *tsp)
                     doReverse(tsp, p); 
                 }
             }
-            if (pathlen < bestlen) bestlen = pathlen;
+            // if the new length is better than best then save it as best
+            if (pathlen < tsp->bestlen) {
+                tsp->bestlen = pathlen;
+                for (i=0; i<tsp->n; i++) tsp->border[i] = tsp->iorder[i];
+            }
             if (pathchg > IMPROVED_PATH_PER_T) break; /* finish early */
         }   
-        DBG("T:%f L:%f B:%f C:%d", T, pathlen, bestlen, pathchg);
+        DBG("T:%f L:%f B:%f C:%d", T, pathlen, tsp->bestlen, pathchg);
         if (pathchg == 0) break;   /* if no change then quit */
     }
 }
@@ -461,19 +466,36 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     int   rev = 0;
     TSP   tsp;
     long  seed = -314159L;
+    DTYPE blength;
 
     DBG("sizeof(long)=%d", (int)sizeof(long));
 
     initRand (seed);
+
+#ifdef DEBUG
+    char bufff[2048];
+    int nnn;
+    DBG("---------- Matrix[%d][%d] ---------------------\n", num, num);
+    for (i=0; i<num; i++) {
+        sprintf(bufff, "%d:", i);
+        nnn = 0;
+        for (j=0; j<num; j++) {
+            nnn += sprintf(bufff+nnn, "\t%.4f", cost[i*num+j]);
+        }
+        DBG("%s", bufff);
+    }
+#endif
 
     /* initialize tsp struct */
     tsp.n = num;
     tsp.dist   = NULL;
     tsp.iorder = NULL;
     tsp.jorder = NULL;
+    tsp.border = NULL;
 
     if (!(tsp.iorder = (int*) palloc (tsp.n * sizeof(int)))   ||
-        !(tsp.jorder = (int*) palloc (tsp.n * sizeof(int))) ) {
+        !(tsp.jorder = (int*) palloc (tsp.n * sizeof(int)))   ||
+        !(tsp.border = (int*) palloc (tsp.n * sizeof(int)))   ) {
             elog(FATAL, "Memory allocation failed!");
             return -1;
         }
@@ -487,7 +509,10 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     /* identity permutation */
     for (i = 0; i < tsp.n; i++) tsp.iorder[i] = i;
 
-    DBG("Initial Path Length: %.2f", pathLength(&tsp));
+    tsp.bestlen = pathLength(&tsp);
+    for (i = 0; i < tsp.n; i++) tsp.border[i] = tsp.iorder[i];
+
+    DBG("Initial Path Length: %.4f", tsp.bestlen);
 
     /*
      * Set up first eulerian path iorder to be improved by
@@ -496,12 +521,21 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     if(findEulerianPath(&tsp))
         return -1;
 
-    DBG("Approximated Path Length: %.2f", pathLength(&tsp));
+    blength = pathLength(&tsp);
+    if (blength < tsp.bestlen) {
+        tsp.bestlen = blength;
+        for (i = 0; i < tsp.n; i++) tsp.border[i] = tsp.iorder[i];
+    }
+
+    DBG("Approximated Path Length: %.4f", blength);
 
     annealing(&tsp);
 
     *total_len = pathLength(&tsp);
+    DBG("Final Path Length: %.4f", *total_len);
 
+    *total_len = tsp.bestlen;
+    for (i=0; i<tsp.n; i++) tsp.iorder[i] = tsp.border[i];
     DBG("Best Path Length: %.4f", *total_len);
 
     // reorder ids[] with start as first
