@@ -79,7 +79,7 @@ In the alpha shape code we have no way to control the order of the points so the
      0 | 2
     (6 rows)
 
-    SELECT st_area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))
+    SELECT round(st_area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) as st_area
     from (select st_makeline(points order by id)  as openline from
     (SELECT st_makepoint(x,y) as points ,row_number() over() AS id 
     FROM pgr_alphAShape('SELECT id, x, y FROM vertex_table')
@@ -104,7 +104,7 @@ In the alpha shape code we have no way to control the order of the points so the
        2 |   4
     (8 rows)
 
-    SELECT st_area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))
+    SELECT round(st_area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) as st_area
     from (select st_makeline(points order by id)  as openline from
     (SELECT st_makepoint(x,y) as points ,row_number() over() AS id 
     FROM pgr_alphAShape('SELECT id::integer, st_x(the_geom)::float as x, st_y(the_geom)::float as y  FROM edge_table_vertices_pgr')
