@@ -26,14 +26,14 @@ P_AStar::~P_AStar(void)
 
 //Load the initial edges that correspond to the partition id of the source and target and initialize a few variables.
 
+
 void P_AStar::initall(int s_pid, int t_pid )
 {
           m_vecNodeVector.clear();
 	  m_vecEdgeVector.clear();
 	  m_pFParent.clear();
 	  m_pFCost.clear();
-	  for(int i=0;i<10000000;i++)
-		  loaded_partition[i]=false;            // we can use a vector here instead of a bool array 
+	  loaded_partition.clear();
 
           load_partition(s_pid);
           load_partition(t_pid); 	  
@@ -44,14 +44,16 @@ void P_AStar::initall(int s_pid, int t_pid )
 
 
 // check whether the partition in which the node lies is loaded or not ,if not load it .
+
 void P_AStar::check_whether_loaded(int node_id)
 {
 
 	Long2LongMap::iterator it = m_mapNodeId2Index.find(node_id);
 
 	//check whether the node exists the node vector or not .
+        Long2BoolMap::iterator it1=loaded_partition.find(m_vecNodeVector[it->second].pid);
 
-        if(!loaded_partition[m_vecNodeVector[it->second].pid])
+	if(it1 == loaded_partition.end())	
 	{
                 load_partition(m_vecNodeVector[it->second].pid);
 	}	
@@ -62,10 +64,10 @@ void P_AStar::check_whether_loaded(int node_id)
 double P_AStar::getcost(int node_id)
 {
 	Long2FloatMap::iterator it =m_pFCost.find(node_id); 
-         if(it != m_pFCost.end())
+     //    if(it != m_pFCost.end())
 		 return it->second;
 	
-	return INF; 
+//	return INF; 
 
 
 }
@@ -143,7 +145,7 @@ void P_AStar::deleteall()
 	m_vecEdgeVector.clear();
 }
 
-void P_AStar::explore(int cur_node, float cur_cost, std::priority_queue<pq_pair*, std::vector<pq_pair*>, Compare > &que)
+void P_AStar::explore(int cur_node, double cur_cost, std::priority_queue<pq_pair*, std::vector<pq_pair*>, Compare > &que)
 {
                                
           int i ;
@@ -229,7 +231,7 @@ int P_AStar::p_astar(int start_vertex,int end_vertex,int s_pid, int t_pid, path_
 
 	initall(s_pid,t_pid);
 
-	m_lStartNodeId = start_vertex;
+/*	m_lStartNodeId = start_vertex;
 	m_lEndNodeId = end_vertex;
         
 	m_vecPath.clear();
@@ -306,11 +308,14 @@ int P_AStar::p_astar(int start_vertex,int end_vertex,int s_pid, int t_pid, path_
        }
 
       deleteall();
+  */    
       return 0;
 }
 
 
 //  This fuction fetches edges using partion id 
+
+
 void P_AStar::load_partition(int pid)
 
 {    
@@ -321,7 +326,7 @@ void P_AStar::load_partition(int pid)
 
 	
          if(total_tuples!=-1 && edges!=NULL)
-		 loaded_partition[pid]=true ;                 // check for total tuples and edges and set the correspondin loaded partition                                                             //    value as true.   
+	   loaded_partition.insert(std::make_pair(pid, true));
 
 	 
 	 construct_graph(edges,total_tuples);                 
@@ -329,14 +334,15 @@ void P_AStar::load_partition(int pid)
 	 
 }
 
-bool P_AStar::construct_graph(edge_p_astar_t *edges ,int edge_count)
+void P_AStar::construct_graph(edge_p_astar_t *edges ,int edge_count)
 {             
 
        int i;
 
        for(i=0;i<edge_count;i++)
        {
-              addEdge(edges[i]);
+	     bool yes;  
+             yes=addEdge(edges[i]);
 
 
        }
@@ -365,6 +371,7 @@ bool P_AStar::addEdge(edge_p_astar_t edgeIn)
 	newEdge.StartNode = edgeIn.source;
 	newEdge.EndNode = edgeIn.target;
 	newEdge.Cost = edgeIn.cost;
+	newEdge.reverse_cost=edgeIn.reverse_cost;
        
 // check whether source or traget nodes are already present in the node vector ,if present update conncted nodes and conncetd edges index
 // if it is not present push it to the node vector.       	
@@ -432,7 +439,7 @@ bool P_AStar::addEdge(edge_p_astar_t edgeIn)
 	m_mapEdgeId2Index.insert(std::make_pair(newEdge.EdgeID, m_vecEdgeVector.size()));
 	m_vecEdgeVector.push_back(newEdge);
 
-
+       return true; 
 }
 
 

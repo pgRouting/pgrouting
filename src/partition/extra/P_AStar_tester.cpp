@@ -192,13 +192,13 @@ int main()
 		// Load edge information from graph file
 		loadGraph(graphFile);
 
-		// Use partition  AStar to get the route
-//		P_AStar gdef;
+		// Use partition  AStar to get the route/	
+		P_AStar gdef;
 		cl = clock();
 
-//	        int res = gdef.p_astar( startNode, endNode,s_pid ,t_pid , &path, &path_count, &err_msg);
-
-//		cl = clock() - cl;
+	   //     int res = gdef.p_astar( startNode, endNode,s_pid ,t_pid , &path, &path_count, &err_msg);
+            //    printf("Yes it got %d\n ",res);
+		cl = clock() - cl;
 		// Write the route in the result file
 
 //		write_result(pathFile, res);
