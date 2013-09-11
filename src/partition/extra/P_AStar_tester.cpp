@@ -196,12 +196,12 @@ int main()
 		P_AStar gdef;
 		cl = clock();
 
-	   //     int res = gdef.p_astar( startNode, endNode,s_pid ,t_pid , &path, &path_count, &err_msg);
+	        int res = gdef.p_astar( startNode, endNode,s_pid ,t_pid , &path, &path_count, &err_msg);
             //    printf("Yes it got %d\n ",res);
 		cl = clock() - cl;
 		// Write the route in the result file
 
-//		write_result(pathFile, res);
+		write_result(pathFile, res);
 		free(path);
 	}
 	return 0;
