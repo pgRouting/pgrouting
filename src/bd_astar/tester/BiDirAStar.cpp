@@ -216,7 +216,7 @@ void BiDirAStar::explore(int cur_node, double cur_cost, int dir, MinHeap &que)
 		else
 			mult = dir;
 		if(cur_node == edge.StartNode)
-		{
+	
 			// Current node is the startnode of the edge. For forward search it should use forward cost, otherwise it should use the reverse cost,
 			// i.e. if the reverse direction is valid then this node may be visited from the end node.
 			if(dir > 0)
