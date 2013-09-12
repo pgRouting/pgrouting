@@ -34,6 +34,7 @@ void P_AStar::initall(int s_pid, int t_pid )
 	  m_pFParent.clear();
 	  m_pFCost.clear();
 	  loaded_partition.clear();
+	  closed_set.clear();
 
           load_partition(s_pid);
           load_partition(t_pid); 	  
@@ -117,7 +118,7 @@ double P_AStar::getHcost( int node_id)
 double P_AStar::dist(double x1, double y1, double x2, double y2)
 {
 	double ret = fabs((x1 - x2) + fabs(y1 - y2));
-	return(ret * 10);
+	return(ret );
 }
 
 // construct the path from the source node
@@ -169,6 +170,11 @@ void P_AStar::explore(int cur_node, double cur_cost, std::priority_queue<pq_pair
 		  int con_node=m_vecNodeVector[node_index].Connected_Nodes[i];
 
 
+                  
+          	  Long2BoolMap::iterator it1=closed_set.find(con_node);
+		  if(it1!=closed_set.end())
+			  continue;
+		 
 		  if(cur_node==edge.StartNode)
 		  {
 
@@ -183,7 +189,7 @@ void P_AStar::explore(int cur_node, double cur_cost, std::priority_queue<pq_pair
 
 					   pq_pair *p1 =new pq_pair ;
 					   p1->node_id=con_node;
-					   p1->cost=cur_cost + edge_cost ;//getHcost(con_node);
+					   p1->cost=cur_cost + edge_cost + getHcost(con_node);
 					   que.push(p1);
 
 					   if(getcost(con_node)<m_MinCost)
@@ -208,7 +214,7 @@ void P_AStar::explore(int cur_node, double cur_cost, std::priority_queue<pq_pair
 
 					   pq_pair *p1 =new pq_pair ;
 					   p1->node_id=con_node;
-					   p1->cost=cur_cost + edge_cost ; //getHcost(con_node);
+					   p1->cost=cur_cost + edge_cost + getHcost(con_node);
 					   que.push(p1);
 
 					   if(getcost(con_node)<m_MinCost)
@@ -265,7 +271,7 @@ int P_AStar::p_astar(int start_vertex,int end_vertex,int s_pid, int t_pid, path_
 
 		 check_whether_loaded(ptr3->node_id);
 
-		 Long2FloatMap::iterator it = m_pFCost.find(ptr3->node_id);
+//		 Long2FloatMap::iterator it = m_pFCost.find(ptr3->node_id);
                 
                /*  if(  ptr3->node_id==end_vertex)
 		 {
@@ -286,9 +292,11 @@ int P_AStar::p_astar(int start_vertex,int end_vertex,int s_pid, int t_pid, path_
 		 }*/
 		 cur_node=ptr3->node_id;
 		 pque.pop();
-		 delete ptr3;
 
-		 explore(cur_node,it->second,pque); 
+		 explore(cur_node,ptr3->cost,pque); 
+
+		 closed_set.insert(std::make_pair(cur_node,true));
+		 delete ptr3;
 	}
 	
        
@@ -302,13 +310,13 @@ int P_AStar::p_astar(int start_vertex,int end_vertex,int s_pid, int t_pid, path_
        else 
        {
 
-
+               
 
 	       // Transfer data path to path_element_t format and allocate memory and populate the pointer
 	       *path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
 	       *path_count = m_vecPath.size();
 
-	       for(int i = 0; i < *path_count; i++)
+	       for(int i = 0; i < m_vecPath.size(); i++)
 	       {
 		       (*path)[i].vertex_id = m_vecPath[i].vertex_id;
 		       (*path)[i].edge_id = m_vecPath[i].edge_id;
@@ -417,7 +425,7 @@ bool P_AStar::addEdge(edge_p_astar_t edgeIn)
 	}
   
 
-/*	Long2LongMap::iterator it1 = m_mapNodeId2Index.find(edgeIn.target);
+	Long2LongMap::iterator it1 = m_mapNodeId2Index.find(edgeIn.target);
       
 	if(it1 != m_mapNodeId2Index.end())
 	{
@@ -446,7 +454,7 @@ bool P_AStar::addEdge(edge_p_astar_t edgeIn)
 		m_vecNodeVector.push_back(nodeInfo);
 	}
   
-*/
+
 	m_mapEdgeId2Index.insert(std::make_pair(newEdge.EdgeID, m_vecEdgeVector.size()));
 	m_vecEdgeVector.push_back(newEdge);
 

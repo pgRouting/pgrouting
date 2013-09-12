@@ -141,6 +141,7 @@ class P_AStar
 		Long2ParentMap m_pFParent;
 		Long2FloatMap m_pFCost ;
 		Long2BoolMap loaded_partition;
+		Long2BoolMap closed_set;
 
 		int m_lStartNodeId;
 		int m_lEndNodeId;
