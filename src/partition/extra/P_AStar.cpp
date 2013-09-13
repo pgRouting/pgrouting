@@ -192,12 +192,12 @@ void P_AStar::explore(int cur_node, double cur_cost, std::priority_queue<pq_pair
 					   p1->cost=cur_cost + edge_cost + getHcost(con_node);
 					   que.push(p1);
 
-					   if(getcost(con_node)<m_MinCost)
+				/*	   if(getcost(con_node)<m_MinCost)
 					   {
 						   m_MinCost=getcost(con_node);         // minimum cost update so far 
 						   m_MidNode=con_node;
 					   }
-                                              
+                                  */            
 			  }                                
 
 		  }
@@ -217,12 +217,12 @@ void P_AStar::explore(int cur_node, double cur_cost, std::priority_queue<pq_pair
 					   p1->cost=cur_cost + edge_cost + getHcost(con_node);
 					   que.push(p1);
 
-					   if(getcost(con_node)<m_MinCost)
+				/*	   if(getcost(con_node)<m_MinCost)
 					   {
 						   m_MinCost=getcost(con_node);
 						   m_MidNode=con_node;
 					   }
-                                              
+                                  */            
 			  }                                
 		  }
 
@@ -259,6 +259,7 @@ int P_AStar::p_astar(int start_vertex,int end_vertex,int s_pid, int t_pid, path_
 
 	int new_node;
 	int cur_node;
+	int flag=0;
 
 // the algorithm starts from here , breaks when it reaches the target node 	
 
@@ -283,6 +284,7 @@ int P_AStar::p_astar(int start_vertex,int end_vertex,int s_pid, int t_pid, path_
                  if(ptr3->node_id == end_vertex)
 		 {
 			 construct_path(ptr3->node_id);
+			 flag=1;
 			break;		 
 		 }
              /*    if(ptr3->cost > m_MinCost)
@@ -300,7 +302,7 @@ int P_AStar::p_astar(int start_vertex,int end_vertex,int s_pid, int t_pid, path_
 	}
 	
        
-       if(m_MidNode==-1)
+       if(flag==0)
        {
 	       *err_msg = (char *)"Path Not Found";
 	       deleteall();
