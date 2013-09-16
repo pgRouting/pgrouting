@@ -142,7 +142,7 @@ static void fetch_edge_p_astar(HeapTuple *tuple, TupleDesc *tupdesc,edge_p_astar
 
 
 edge_p_astar_t *
-fetch_partition_edges(int vertex_id)
+fetch_partition_edges(int vertex_id, int* ptuples)
 {
 	
 	
@@ -152,7 +152,7 @@ fetch_partition_edges(int vertex_id)
 	bool moredata = TRUE;
 	int ntuples;                                 
 	edge_p_astar_t *edges = NULL;
-	int total_tuples = 0;
+         total_tuples = 0;
                                                                         
 	char *sql_1;                  // this sql querry  will fetch the partion id of the vertex node //
 
@@ -208,9 +208,9 @@ fetch_partition_edges(int vertex_id)
 		ntuples = SPI_processed;
 		total_tuples += ntuples;
 		if (!edges)
-			edges = palloc(total_tuples * sizeof(edge_p_astar_t));
+			edges = malloc(total_tuples * sizeof(edge_p_astar_t));
 		else
-			edges = repalloc(edges, total_tuples * sizeof(edge_p_astar_t));
+			edges = realloc(edges, total_tuples * sizeof(edge_p_astar_t));
 
 		if (edges == NULL) {
 			elog(ERROR, "Out of memory");
@@ -242,7 +242,7 @@ fetch_partition_edges(int vertex_id)
 		return edges;}
 	
 	
-
+        *ptuples=total_tuples;  
 	return edges;	
 
 }
