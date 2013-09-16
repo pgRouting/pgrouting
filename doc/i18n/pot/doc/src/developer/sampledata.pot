@@ -1,0 +1,38 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../src/developer/sampledata.rst:13
+# 57710d17ae7543e2b771629aff75600e
+msgid "Sample Data"
+msgstr ""
+
+#: ../../src/developer/sampledata.rst:15
+# 7f421eecf5044efd98b200b36124a83c
+msgid "The documentation provides very simple example queries based on a small sample network. To be able to execute the sample queries, run the following SQL commands to create a table with a small network dataset."
+msgstr ""
+
+#: ../../src/developer/sampledata.rst:21
+# 22d8afba7fd34fd6b7bf201ba4e1ba0c
+msgid "Create table"
+msgstr ""
+
+#: ../../src/developer/sampledata.rst:50
+# 39ea0437205c4eaca6eb612e61a74795
+msgid "Insert network data"
+msgstr ""
+

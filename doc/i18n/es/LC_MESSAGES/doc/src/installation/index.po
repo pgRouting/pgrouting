@@ -1,0 +1,161 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../src/installation/index.rst:13
+msgid "Installation"
+msgstr ""
+
+#: ../../src/installation/index.rst:15
+msgid ""
+"Binary packages are provided for the current version on the following "
+"platforms:"
+msgstr ""
+
+#: ../../src/installation/index.rst:19
+msgid "Windows"
+msgstr ""
+
+#: ../../src/installation/index.rst:21
+msgid "Winnie Bot Experimental Builds:"
+msgstr ""
+
+#: ../../src/installation/index.rst:23
+msgid ""
+"`PostgreSQL 9.2 32-bit, 64-bit "
+"<http://winnie.postgis.net/download/windows/pg92/buildbot/>`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:27
+msgid "Ubuntu/Debian"
+msgstr ""
+
+#: ../../src/installation/index.rst:29
+msgid "Ubuntu packages are available in Launchpad repositories:"
+msgstr ""
+
+#: ../../src/installation/index.rst:31
+msgid "*stable* https://launchpad.net/~georepublic/+archive/pgrouting"
+msgstr ""
+
+#: ../../src/installation/index.rst:32
+msgid ""
+"*unstable* https://launchpad.net/~georepublic/+archive/pgrouting-unstable"
+msgstr ""
+
+#: ../../src/installation/index.rst:43
+msgid ""
+"Use `UbuntuGIS-unstable PPA <https://launchpad.net/~ubuntugis/+archive"
+"/ubuntugis-unstable>`_ to install PostGIS 2.0."
+msgstr ""
+
+#: ../../src/installation/index.rst:47
+msgid "RHEL/CentOS/Fedora"
+msgstr ""
+
+#: ../../src/installation/index.rst:49
+msgid ""
+"Fedora RPM's: https://admin.fedoraproject.org/pkgdb/acls/name/pgRouting"
+msgstr ""
+
+#: ../../src/installation/index.rst:53
+msgid "OSX"
+msgstr ""
+
+#: ../../src/installation/index.rst:55
+msgid ""
+"See `builds from KingChaos <http://www.kyngchaos.com/software/postgres>`_."
+msgstr ""
+
+#: ../../src/installation/index.rst:59
+msgid "Build from Source"
+msgstr ""
+
+#: ../../src/installation/index.rst:62
+msgid "Source Package"
+msgstr ""
+
+#: ../../src/installation/index.rst:65
+msgid "Git 2.0.0-rc1 release"
+msgstr ""
+
+#: ../../src/installation/index.rst:65
+msgid "`v2.0.0-rc1.tar.gz`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:65
+msgid "`v2.0.0-rc1.zip`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:66
+msgid "Git 2.0.0-beta release"
+msgstr ""
+
+#: ../../src/installation/index.rst:66
+msgid "`v2.0.0-beta.tar.gz`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:66
+msgid "`v2.0.0-beta.zip`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:67
+msgid "Git 2.0.0-alpha release"
+msgstr ""
+
+#: ../../src/installation/index.rst:67
+msgid "`v2.0.0-alpha.tar.gz`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:67
+msgid "`v2.0.0-alpha.zip`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:68
+msgid "Git master branch"
+msgstr ""
+
+#: ../../src/installation/index.rst:68
+msgid "`master.tar.gz`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:68
+msgid "`master.zip`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:69
+msgid "Git develop branch"
+msgstr ""
+
+#: ../../src/installation/index.rst:69
+msgid "`develop.tar.gz`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:69
+msgid "`develop.zip`_"
+msgstr ""
+
+#: ../../src/installation/index.rst:89
+msgid "Using Git"
+msgstr ""
+
+#: ../../src/installation/index.rst:91
+msgid "Git protocol (read-only):"
+msgstr ""
+
+#: ../../src/installation/index.rst:98
+msgid "HTTPS protocol (read-only):"
+msgstr ""
+
+#: ../../src/installation/index.rst:105
+msgid "See :ref:`build` for notes on compiling from source."
+msgstr ""

@@ -1,0 +1,184 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/bd_astar/doc/index.rst:13
+msgid "pgr_bdAstar - Bi-directional A* Shortest Path"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:20
+msgid "Name"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:22
+msgid ""
+"``pgr_bdAstar`` - Returns the shortest path using Bidirectional A* "
+"algorithm."
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:26
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:28
+msgid ""
+"This is a bi-directional A* search algorithm. It searchs from the source "
+"toward the distination and at the same time from the destination to the "
+"source and terminates whe these to searchs meet in the middle. Returns a set"
+" of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, "
+"that make up a path."
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:37
+msgid "Description"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:39
+msgid ""
+"a SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:46
+msgid "``int4`` identifier of the edge"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:47
+msgid "``int4`` identifier of the source vertex"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:48
+msgid "``int4`` identifier of the target vertex"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:49
+msgid ""
+"``float8`` value, of the edge traversal cost. A negative cost will prevent "
+"the edge from being inserted in the graph."
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:50
+msgid "``x`` coordinate of the start point of the edge"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:51
+msgid "``y`` coordinate of the start point of the edge"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:52
+msgid "``x`` coordinate of the end point of the edge"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:53
+msgid "``y`` coordinate of the end point of the edge"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:54
+msgid ""
+"(optional) the cost for the reverse traversal of the edge. This is only used"
+" when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the "
+"above remark about negative costs)."
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:56
+msgid "``int4`` id of the start point"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:57
+msgid "``int4`` id of the end point"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:58
+msgid "``true`` if the graph is directed"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:59
+msgid ""
+"if ``true``, the ``reverse_cost`` column of the SQL generated set of rows "
+"will be used for the cost of the traversal of the edge in the opposite "
+"direction."
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:61
+msgid "Returns set of :ref:`type_cost_result`:"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:63
+msgid "row sequence"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:64
+msgid "node ID"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:65
+msgid "edge ID (``-1`` for the last row)"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:66
+msgid "cost to traverse from ``id1`` using ``id2``"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:70
+msgid ""
+"You must reconnect to the database after ``CREATE EXTENSION pgrouting``. "
+"Otherwise the function will return ``Error computing path: std::bad_alloc``."
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:74
+msgid "History"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:75
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:79
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:81
+msgid "Without ``reverse_cost``"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:100
+msgid "With ``reverse_cost``"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:118
+msgid "The queries use the :ref:`sampledata` network."
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:122
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:124
+msgid ":ref:`type_cost_result`"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:125
+msgid ":ref:`bd_dijkstra`"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:126
+msgid "http://en.wikipedia.org/wiki/Bidirectional_search"
+msgstr ""
+
+#: ../../../src/bd_astar/doc/index.rst:127
+msgid "http://en.wikipedia.org/wiki/A*_search_algorithm"
+msgstr ""
+
+#~ msgid "pgr_bdAstar(text, integer, integer, boolean, boolean)"
+#~ msgstr ""
+
+#~ msgid "bidirectional, astar"
+#~ msgstr ""

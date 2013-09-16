@@ -57,12 +57,12 @@ BEGIN
                 ' SET the_geom = NULL';
 
 	EXECUTE 'UPDATE ' || quote_ident(vertices_table) || 
-                ' SET the_geom = ST_StartPoint(ST_GeometryN(m.the_geom, 1)) FROM ' ||
+                ' SET the_geom = PGR_StartPoint(m.the_geom) FROM ' ||
                  quote_ident(geom_table) || 
                 ' m where geom_id = m.source';
 
 	EXECUTE 'UPDATE ' || quote_ident(vertices_table) || 
-                ' set the_geom = ST_EndPoint(ST_GeometryN(m.the_geom, 1)) FROM ' || 
+                ' set the_geom = PGR_EndPoint(m.the_geom) FROM ' || 
                 quote_ident(geom_table) || 
                 ' m where geom_id = m.target_id AND ' || 
                 quote_ident(vertices_table) || 
@@ -216,14 +216,14 @@ BEGIN
 	srid := rec.srid;
 	
 	FOR rec IN EXECUTE 
-            'select ST_X(ST_StartPoint(the_geom)) as source_x from ' || 
+            'select ST_X(PGR_StartPoint(the_geom)) as source_x from ' || 
             quote_ident(geom_table) || ' where gid = '||sourceid
         LOOP
 	END LOOP;
 	source_x := rec.source_x;
 	
 	FOR rec IN EXECUTE 
-            'select ST_Y(ST_StartPoint(the_geom)) as source_y from ' || 
+            'select ST_Y(PGR_StartPoint(the_geom)) as source_y from ' || 
             quote_ident(geom_table) || ' where gid = ' ||sourceid
         LOOP
 	END LOOP;
@@ -231,7 +231,7 @@ BEGIN
 	source_y := rec.source_y;
 
 	FOR rec IN EXECUTE 
-            'select ST_X(ST_StartPoint(the_geom)) as target_x from ' ||
+            'select ST_X(PGR_StartPoint(the_geom)) as target_x from ' ||
             quote_ident(geom_table) || ' where gid = ' ||targetid
         LOOP
 	END LOOP;
@@ -239,7 +239,7 @@ BEGIN
 	target_x := rec.target_x;
 	
 	FOR rec IN EXECUTE 
-            'select ST_Y(ST_StartPoint(the_geom)) as target_y from ' || 
+            'select ST_Y(PGR_StartPoint(the_geom)) as target_y from ' || 
             quote_ident(geom_table) || ' where gid = ' ||targetid
         LOOP
 	END LOOP;
@@ -419,7 +419,7 @@ BEGIN
 	srid := rec.srid;
 	
 	FOR rec IN EXECUTE 
-            'select ST_X(ST_StartPoint(the_geom)) as source_x from ' || 
+            'select ST_X(PGR_StartPoint(the_geom)) as source_x from ' || 
             quote_ident(geom_table) || ' where source = ' || 
             sourceid ||  ' or target='||sourceid||' limit 1'
         LOOP
@@ -427,7 +427,7 @@ BEGIN
 	source_x := rec.source_x;
 	
 	FOR rec IN EXECUTE 
-            'select ST_Y(ST_StartPoint(the_geom)) as source_y from ' || 
+            'select ST_Y(PGR_StartPoint(the_geom)) as source_y from ' || 
             quote_ident(geom_table) || ' where source = ' || 
             sourceid ||  ' or target='||sourceid||' limit 1'
         LOOP
@@ -436,7 +436,7 @@ BEGIN
 	source_y := rec.source_y;
 
 	FOR rec IN EXECUTE 
-            'select ST_X(ST_StartPoint(the_geom)) as target_x from ' ||
+            'select ST_X(PGR_StartPoint(the_geom)) as target_x from ' ||
             quote_ident(geom_table) || ' where source = ' || 
             targetid ||  ' or target='||targetid||' limit 1'
         LOOP
@@ -445,7 +445,7 @@ BEGIN
 	target_x := rec.target_x;
 	
 	FOR rec IN EXECUTE 
-            'select ST_Y(ST_StartPoint(the_geom)) as target_y from ' || 
+            'select ST_Y(PGR_StartPoint(the_geom)) as target_y from ' || 
             quote_ident(geom_table) || ' where source = ' || 
             targetid ||  ' or target='||targetid||' limit 1'
         LOOP
@@ -620,7 +620,7 @@ BEGIN
 	srid := rec.srid;
 	
 	FOR rec IN EXECUTE 
-            'select ST_X(ST_StartPoint(the_geom)) as source_x from ' || 
+            'select ST_X(PGR_StartPoint(the_geom)) as source_x from ' || 
             quote_ident(geom_table) || ' where source = ' || 
             sourceid || ' or target='||sourceid||' limit 1'
         LOOP
@@ -628,7 +628,7 @@ BEGIN
 	source_x := rec.source_x;
 	
 	FOR rec IN EXECUTE 
-            'select ST_Y(ST_StartPoint(the_geom)) as source_y from ' || 
+            'select ST_Y(PGR_StartPoint(the_geom)) as source_y from ' || 
             quote_ident(geom_table) || ' where source = ' || 
             sourceid ||  ' or target='||sourceid||' limit 1'
         LOOP
@@ -637,7 +637,7 @@ BEGIN
 	source_y := rec.source_y;
 
 	FOR rec IN EXECUTE 
-            'select ST_X(ST_StartPoint(the_geom)) as target_x from ' ||
+            'select ST_X(PGR_StartPoint(the_geom)) as target_x from ' ||
             quote_ident(geom_table) || ' where source = ' || 
             targetid ||  ' or target='||targetid||' limit 1'
         LOOP
@@ -646,7 +646,7 @@ BEGIN
 	target_x := rec.target_x;
 	
 	FOR rec IN EXECUTE 
-            'select ST_Y(ST_StartPoint(the_geom)) as target_y from ' || 
+            'select ST_Y(PGR_StartPoint(the_geom)) as target_y from ' || 
             quote_ident(geom_table) || ' where source = ' || 
             targetid ||  ' or target='||targetid||' limit 1'
         LOOP
@@ -1133,7 +1133,7 @@ BEGIN
 	srid := rec.srid;
 
 	FOR rec IN EXECUTE 
-            'select ST_X(ST_StartPoint(the_geom)) as source_x from ' || 
+            'select ST_X(PGR_StartPoint(the_geom)) as source_x from ' || 
             quote_ident(geom_table) || ' where source = ' || 
             sourceid ||  ' or target='||sourceid||' limit 1'
         LOOP
@@ -1141,7 +1141,7 @@ BEGIN
 	source_x := rec.source_x;
 	
 	FOR rec IN EXECUTE 
-            'select ST_Y(ST_StartPoint(the_geom)) as source_y from ' || 
+            'select ST_Y(PGR_StartPoint(the_geom)) as source_y from ' || 
             quote_ident(geom_table) || ' where source = ' || 
             sourceid ||  ' or target='||sourceid||' limit 1'
         LOOP
@@ -1150,7 +1150,7 @@ BEGIN
 	source_y := rec.source_y;
 
 	FOR rec IN EXECUTE 
-            'select ST_X(ST_StartPoint(the_geom)) as target_x from ' ||
+            'select ST_X(PGR_StartPoint(the_geom)) as target_x from ' ||
             quote_ident(geom_table) || ' where source = ' || 
             targetid ||  ' or target='||targetid||' limit 1'
         LOOP
@@ -1159,7 +1159,7 @@ BEGIN
 	target_x := rec.target_x;
 	
 	FOR rec IN EXECUTE 
-            'select ST_Y(ST_StartPoint(the_geom)) as target_y from ' || 
+            'select ST_Y(PGR_StartPoint(the_geom)) as target_y from ' || 
             quote_ident(geom_table) || ' where source = ' || 
             targetid ||  ' or target='||targetid||' limit 1'
         LOOP
@@ -1239,7 +1239,7 @@ BEGIN
 	prev := source;
 	FOR path_result IN EXECUTE 'SELECT vertex_id FROM tsp(''select distinct source::integer as source_id, x1::double precision as x, y1::double precision as y from ' ||
 	  quote_ident(geom_table) || ' where source in (' || 
-          ids || ') UNION select distinct target as source_id, ST_X(ST_EndPoint(the_geom)), ST_Y(ST_EndPoint(the_geom)) from '|| quote_ident(geom_table) ||' where target in ('||ids||')'', '''|| ids  ||''', '|| source  ||')' LOOP
+          ids || ') UNION select distinct target as source_id, ST_X(PGR_EndPoint(the_geom)), ST_Y(PGR_EndPoint(the_geom)) from '|| quote_ident(geom_table) ||' where target in ('||ids||')'', '''|| ids  ||''', '|| source  ||')' LOOP
 
                 v_id = path_result.vertex_id;
 		
@@ -1340,9 +1340,9 @@ BEGIN
 	
 	id :=0;
 	prev := source;
-	FOR path_result IN EXECUTE 'SELECT vertex_id FROM tsp(''select distinct source::integer as source_id, ST_X(ST_StartPoint(the_geom)), ST_Y(ST_StartPoint(the_geom)) from ' ||
+	FOR path_result IN EXECUTE 'SELECT vertex_id FROM tsp(''select distinct source::integer as source_id, ST_X(PGR_StartPoint(the_geom)), ST_Y(PGR_StartPoint(the_geom)) from ' ||
 	   quote_ident(geom_table) || ' where source in (' || 
-           ids || ') UNION select distinct target as source_id, ST_X(ST_EndPoint(the_geom)), ST_Y(ST_EndPoint(the_geom)) from '|| quote_ident(geom_table) ||' where target in ('||ids||')'', '''|| ids  ||''', '|| source  ||')' LOOP
+           ids || ') UNION select distinct target as source_id, ST_X(PGR_EndPoint(the_geom)), ST_Y(PGR_EndPoint(the_geom)) from '|| quote_ident(geom_table) ||' where target in ('||ids||')'', '''|| ids  ||''', '|| source  ||')' LOOP
 
                 v_id = path_result.vertex_id;
 		
@@ -1390,13 +1390,13 @@ BEGIN
 	prev := source;
 	
 	query := 'SELECT vertex_id FROM tsp(''select distinct source::integer as source_id, '||
-		    'ST_X(ST_StartPoint(the_geom)), ST_Y(ST_StartPoint(the_geom))';
+		    'ST_X(PGR_StartPoint(the_geom)), ST_Y(PGR_StartPoint(the_geom))';
 		    
 	IF rc THEN query := query || ' , reverse_cost ';
 	END IF;
 
 	query := query || ' from ' || quote_ident(geom_table) || ' where source in (' || 
-           ids || ') UNION select distinct target as source_id, ST_X(ST_EndPoint(the_geom)), ST_Y(ST_EndPoint(the_geom))';
+           ids || ') UNION select distinct target as source_id, ST_X(PGR_EndPoint(the_geom)), ST_Y(PGR_EndPoint(the_geom))';
         
         IF rc THEN query := query || ' , reverse_cost ';
 	END IF;

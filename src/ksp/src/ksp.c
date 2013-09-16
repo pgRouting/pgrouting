@@ -24,6 +24,9 @@
 #include "funcapi.h"
 #include "catalog/pg_type.h"
 #include "fmgr.h"
+#if PGSQL_VERSION > 92
+#include "access/htup_details.h"
+#endif
 
 #include "ksp.h" 
 #include "KSPDriver.h"
@@ -84,6 +87,7 @@ static int ksp_finish(int code, int ret)
   return ret;
 }
 			  
+static int
 ksp_fetch_edge_columns(SPITupleTable *tuptable, ksp_edge_columns_t *edge_columns, 
                    bool has_reverse_cost)
 {
@@ -137,6 +141,7 @@ ksp_fetch_edge_columns(SPITupleTable *tuptable, ksp_edge_columns_t *edge_columns
     
   return 0;
 }
+
 void
 ksp_fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc, 
            ksp_edge_columns_t *edge_columns, ksp_edge_t *target_edge)
@@ -233,7 +238,7 @@ kshortest_path(PG_FUNCTION_ARGS)
       funcctx->user_fctx = path;
 
       funcctx->tuple_desc = 
-        BlessTupleDesc(RelationNameGetTupleDesc("pgr_costResult"));
+        BlessTupleDesc(RelationNameGetTupleDesc("pgr_costResult3"));
 
       MemoryContextSwitchTo(oldcontext);
     }
@@ -255,21 +260,22 @@ kshortest_path(PG_FUNCTION_ARGS)
       //bool nulls[4]; */
 
       Datum *values;
-      char* nulls;
+      bool* nulls;
 
-      values = (Datum *)palloc(4 * sizeof(Datum));
-      nulls =(bool *) palloc(4 * sizeof(bool));
+      values = (Datum *)palloc(5 * sizeof(Datum));
+      nulls =(bool *) palloc(5 * sizeof(bool));
 
 
-      Int32GetDatum(path[call_cntr].route_id);
-      values[0] = Int32GetDatum(path[call_cntr].route_id);
+      values[0] = Int32GetDatum(call_cntr);
       nulls[0] = false;
-      values[1] = Int32GetDatum(path[call_cntr].vertex_id);
+      values[1] = Int32GetDatum(path[call_cntr].route_id);
       nulls[1] = false;
-      values[2] = Int32GetDatum(path[call_cntr].edge_id);
+      values[2] = Int32GetDatum(path[call_cntr].vertex_id);
       nulls[2] = false;
-      values[3] = Float8GetDatum(path[call_cntr].cost);
+      values[3] = Int32GetDatum(path[call_cntr].edge_id);
       nulls[3] = false;
+      values[4] = Float8GetDatum(path[call_cntr].cost);
+      nulls[4] = false;
 
       tuple = heap_form_tuple(tuple_desc, values, nulls);
 
@@ -305,8 +311,8 @@ int compute_kshortest_path(char* sql, int start_vertex,
   ksp_edge_t *edges = NULL;
   int total_tuples = 0;
 #ifndef _MSC_VER
-  ksp_edge_columns_t edge_columns = {id: -1, source: -1, target: -1, 
-                                 cost: -1, reverse_cost: -1};
+  ksp_edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
+                                 .cost= -1, .reverse_cost= -1};
 #else // _MSC_VER
   ksp_edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
 #endif // _MSC_VER

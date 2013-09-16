@@ -40,7 +40,13 @@
           <p>This documentation is for the alpha, beta and release candidate versions. Releases in this section are known to be unstable.</p>
           <div class="toctree-wrapper compound">
             <ul>
-                <li class="toctree-l1"><a class="reference internal" href="v2.0.0-alpha/doc/index.html">pgRouting v2.0.0-alpha</a></li>
+                <li class="toctree-l1"><a class="reference internal" href="v2.0.0-rc1/doc/index.html">pgRouting v2.0.0-rc1</a> [<a class="reference external" href="v2.0.0-rc1/pgRoutingDocumentation.pdf">PDF</a> | <a class="reference external" href="v2.0.0-rc1/pgrouting.7.gz">MAN</a>]</li>
+            </ul>
+            <ul>
+                <li class="toctree-l1"><a class="reference internal" href="v2.0.0-beta/doc/index.html">pgRouting v2.0.0-beta</a> [PDF | MAN]</li>
+            </ul>
+            <ul>
+                <li class="toctree-l1"><a class="reference internal" href="v2.0.0-alpha/doc/index.html">pgRouting v2.0.0-alpha</a> [PDF | MAN]</li>
             </ul>
           </div>
         </div>
@@ -50,7 +56,7 @@
           <p>This documentation is for the unreleased version currently under development, and is frequently updated and changed.</p>
           <div class="toctree-wrapper compound">
             <ul>
-              <li class="toctree-l1"><a class="reference internal" href="dev/doc/index.html">pgRouting ${PGROUTING_VERSION_STRING}</a> (${PGROUTING_VERSION_REVISION_NAME})</li>
+              <li class="toctree-l1"><a class="reference internal" href="dev/en/doc/index.html">pgRouting ${PGROUTING_VERSION_STRING}</a> [<a class="reference external" href="dev/en/pgRoutingDocumentation.pdf">PDF</a> | <a class="reference external" href="dev/en/pgrouting.7.gz">MAN</a>] (${PGROUTING_VERSION_REVISION_NAME})</li>
             </ul>
           </div>
         </div>

@@ -84,7 +84,7 @@ used for routing with pgrouting. We provide a tools the will help with this:
 
 .. code-block:: sql
 
-    select pgr_createTopology('myroads', 0.000001, 'the_geom', 'gid');
+    select pgr_createTopology('myroads', 0.000001);
 
 See :ref:`pgr_create_topology` for more information.
 
@@ -105,8 +105,10 @@ but we have some basic tools that might help.
 
 .. code-block:: sql
 
-    select pgr_analyzegraph('myroads', 'the_geom', 0.000001);
-    select pgr_analyzeoneway('myroads', 'direction', s_in_rules, s_out_rules, t_in_rules, t_out_rules)
+    select pgr_analyzegraph('myroads', 0.000001);
+    select pgr_analyzeoneway('myroads',  s_in_rules, s_out_rules,
+                                         t_in_rules, t_out_rules
+                                         direction)
 
 See :ref:`analytics` for more information.
 
@@ -128,8 +130,8 @@ road network. The general form of a route query is:
 
 As you can see this is fairly straight forward and you can look and the 
 specific algorithms for the details on how to use them. What you get as a
-result from these queries will be a set of record of type ``pgr_costResult``
-or ``pgr_geomResult``. These results have information like edge id and/or the
+result from these queries will be a set of record of type :ref:`type_cost_result`
+or :ref:`type_geom_result`. These results have information like edge id and/or the
 node id along with the cost or geometry for the step in the path from *start*
 to *end*. Using the ids you can join these result back to your edge table
 to get more information about each step in the path.
@@ -145,5 +147,16 @@ How to create a web app
 -------------------------------------------------------------------------------
 
 TBD
+
+.. toctree:: 
+   :maxdepth: 1
+   :hidden:
+      
+         An overview of a topology for routing algorithms.        <topology>
+         An overview of the analysis of a graph.        <analytics>
+         How to write a query for the routing algorithms        <custom_query>
+         User's wrappers contributions         <custom_wrapper>
+         User's recipies contributions       <recipes>
+         How to handle performance        <performance>
 
 

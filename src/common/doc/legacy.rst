@@ -39,22 +39,27 @@ FUNCTIONs
 	FUNCTION add_vertices_geometry(geom_table varchar)
 	FUNCTION update_cost_from_distance(geom_table varchar)
 	FUNCTION insert_vertex(vertices_table varchar, geom_id anyelement)
-	FUNCTION pgr_shootingStar(sql text, source_id integer, target_id integer,directed boolean, has_reverse_cost boolean)
+	FUNCTION pgr_shootingStar(sql text, source_id integer, target_id integer,
+                              directed boolean, has_reverse_cost boolean)
 	FUNCTION shootingstar_sp( varchar,int4, int4, float8, varchar, boolean, boolean)
 	FUNCTION astar_sp_delta( varchar,int4, int4, float8)
 	FUNCTION astar_sp_delta_directed( varchar,int4, int4, float8, boolean, boolean)
 	FUNCTION astar_sp_delta_cc( varchar,int4, int4, float8, varchar)
 	FUNCTION astar_sp_delta_cc_directed( varchar,int4, int4, float8, varchar, boolean, boolean)
 	FUNCTION astar_sp_bbox( varchar,int4, int4, float8, float8, float8, float8)
-	FUNCTION astar_sp_bbox_directed( varchar,int4, int4, float8, float8, float8, float8, boolean, boolean)
+	FUNCTION astar_sp_bbox_directed( varchar,int4, int4, float8, float8, float8,
+                                     float8, boolean, boolean)
 	FUNCTION astar_sp( geom_table varchar, source int4, target int4)
-	FUNCTION astar_sp_directed( geom_table varchar, source int4, target int4, dir boolean, rc boolean)
+	FUNCTION astar_sp_directed( geom_table varchar, source int4, target int4,
+                                dir boolean, rc boolean)
 	FUNCTION dijkstra_sp( geom_table varchar, source int4, target int4)
-	FUNCTION dijkstra_sp_directed( geom_table varchar, source int4, target int4, dir boolean, rc boolean)
+	FUNCTION dijkstra_sp_directed( geom_table varchar, source int4, target int4,
+                                   dir boolean, rc boolean)
 	FUNCTION dijkstra_sp_delta( varchar,int4, int4, float8)
 	FUNCTION dijkstra_sp_delta_directed( varchar,int4, int4, float8, boolean, boolean)
 	FUNCTION tsp_astar( geom_table varchar,ids varchar, source integer, delta double precision)
 	FUNCTION tsp_astar_directed( geom_table varchar,ids varchar, source integer, delta float8, dir boolean, rc boolean)
 	FUNCTION tsp_dijkstra( geom_table varchar,ids varchar, source integer)
-	FUNCTION tsp_dijkstra_directed( geom_table varchar,ids varchar, source integer, delta float8, dir boolean, rc boolean)
+	FUNCTION tsp_dijkstra_directed( geom_table varchar,ids varchar, source integer,
+                                    delta float8, dir boolean, rc boolean)
 

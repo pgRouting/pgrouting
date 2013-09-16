@@ -1,0 +1,93 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:13
+msgid "pgr_pointsAsPolygon - Polygon around set of points"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:20
+msgid "Name"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:22
+msgid ""
+"``pgr_pointsAsPolygon`` — Draws an alpha shape around given set of points."
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:26
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:28
+msgid "Returns the alpha shape as polygon geometry."
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:36
+msgid "Description"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:38
+msgid ""
+"``text`` a SQL query, which should return a set of rows with the following "
+"columns:"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:44
+msgid "``int4`` identifier of the vertex"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:45
+msgid "``float8`` x-coordinate"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:46
+msgid "``float8`` y-coordinate"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:49
+msgid "Returns a polygon geometry."
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:53
+msgid "History"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:54
+msgid "Renamed in version 2.0.0"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:58
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:69
+msgid "The queries use the :ref:`sampledata` network."
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:73
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:75
+msgid ":ref:`pgr_driving_distance`"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:76
+msgid ":ref:`pgr_alphashape`"
+msgstr ""
+
+#~ msgid "pgr_pointsAsPolygon(text)"
+#~ msgstr ""
+
+#~ msgid "driving_distance"
+#~ msgstr ""

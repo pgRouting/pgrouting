@@ -22,7 +22,11 @@
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
+#include "utils/array.h"
 #include "catalog/pg_type.h"
+#if PGSQL_VERSION > 92
+#include "access/htup_details.h"
+#endif
 
 #include "fmgr.h"
 
@@ -84,6 +88,95 @@ static char * text2char(text *in)
   memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
   out[VARSIZE(in) - VARHDRSZ] = '\0';
   return out;
+}
+
+#define DTYPE int
+
+static DTYPE *get_pgarray(int *num, ArrayType *input)
+{
+    int         ndims, *dims, *lbs;
+    bool       *nulls;
+    Oid         i_eltype;
+    int16       i_typlen;
+    bool        i_typbyval;
+    char        i_typalign;
+    Datum      *i_data;
+    int         i, n;
+    DTYPE      *data;
+
+    /* get input array element type */
+    i_eltype = ARR_ELEMTYPE(input);
+    get_typlenbyvalalign(i_eltype, &i_typlen, &i_typbyval, &i_typalign);
+
+
+    /* validate input data type */
+    switch(i_eltype){
+    case INT2OID:
+    case INT4OID:
+    case FLOAT4OID:
+    case FLOAT8OID:
+            break;
+    default:
+            elog(ERROR, "target must be integer[]");
+            break;
+    }
+
+    /* get various pieces of data from the input array */
+    ndims = ARR_NDIM(input);
+    dims = ARR_DIMS(input);
+    lbs = ARR_LBOUND(input);
+
+    if (ndims != 1) {
+        elog(ERROR, "target must be integer[]");
+    }
+
+    /* get src data */
+    deconstruct_array(input, i_eltype, i_typlen, i_typbyval, i_typalign,
+&i_data, &nulls, &n);
+
+    DBG("get_pgarray: ndims=%d, n=%d", ndims, n);
+
+#ifdef DEBUG
+    for (i=0; i<ndims; i++) {
+        DBG("   dims[%d]=%d, lbs[%d]=%d", i, dims[i], i, lbs[i]);
+    }
+#endif
+
+    /* construct a C array */
+    data = (DTYPE *) palloc(n * sizeof(DTYPE));
+    if (!data) {
+        elog(ERROR, "Error: Out of memory!");
+    }
+
+    for (i=0; i<n; i++) {
+        if (nulls[i]) {
+            data[i] = -1;
+        }
+        else {
+            switch(i_eltype){
+                case INT2OID:
+                    data[i] = (DTYPE) DatumGetInt16(i_data[i]);
+                    break;
+                case INT4OID:
+                    data[i] = (DTYPE) DatumGetInt32(i_data[i]);
+                    break;
+                case FLOAT4OID:
+                    data[i] = (DTYPE) DatumGetFloat4(i_data[i]);
+                    break;
+                case FLOAT8OID:
+                    data[i] = (DTYPE) DatumGetFloat8(i_data[i]);
+                    break;
+            }
+        }
+        DBG("    data[%d]=%.4f", i, data[i]);
+    }
+
+    pfree(nulls);
+    pfree(i_data);
+
+    *num = dims[0];
+
+    return data;
 }
 
 
@@ -212,8 +305,8 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
     int ntuples;
     edge_t *edges = NULL;
     int total_tuples = 0;
-    edge_columns_t edge_columns = {id: -1, source: -1, target: -1, 
-                                 cost: -1, reverse_cost: -1};
+    edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
+                                   .cost= -1, .reverse_cost= -1};
     int v_max_id=0;
     int v_min_id=INT_MAX;
 
@@ -227,6 +320,7 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
     char *err_msg;
     int ret = -1;
     register int z;
+    int zcnt = 0;
 
 
     DBG("start shortest_path\n");
@@ -343,9 +437,11 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
     }
 
     for (numTarget = 0; numTarget < nb_targets; numTarget++) {
-        if(t_count[numTarget] == 0) {
-            elog(ERROR, "One of the target vertices was not found or several targets are the same.");
-        }
+        if(t_count[numTarget] == 0) zcnt++;
+        DBG("t_count[%d] = %d", end_vertices[numTarget], t_count[numTarget]);
+    }
+    if (zcnt > 0) {
+        elog(ERROR, "One of the target vertices was not found or several targets are the same.");
     }
 
     if(sumFoundTargets == 0 ) {
@@ -390,7 +486,17 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
     return finish(SPIcode, ret);
 }
 
-
+/*
+CREATE OR REPLACE FUNCTION pgr_kdijkstracost(
+    sql text,
+    source_vid integer,
+    target_vid integer array,
+    directed boolean,
+    has_reverse_cost boolean)
+RETURNS SETOF pgr_costResult
+AS '$libdir/librouting', 'onetomany_dijkstra_dist'
+LANGUAGE C IMMUTABLE STRICT;
+*/
 
 
 PG_FUNCTION_INFO_V1(onetomany_dijkstra_dist);
@@ -410,7 +516,6 @@ Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
 
     char * sql = text2char(PG_GETARG_TEXT_P(0));
     int source_ID = PG_GETARG_INT32(1);
-    int *myTargets = (int *)PG_GETARG_POINTER(2);
     int i;
 
     HeapTuple    tuple;
@@ -423,11 +528,10 @@ Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
         MemoryContext   oldcontext;
         int path_count = 0;
         int ret;
+        int num;
+        int *myTargets;
 
-        DBG("source_ID = %d \n", source_ID);   
-        DBG("There may be %d targets : \n", myTargets[4]);
-        for (i = 0; i < myTargets[4]; i++)
-            DBG("%d => %d\t", i+1, myTargets[6+i]);
+        DBG("source_ID = %d ", source_ID);   
 
         /* create a function context for cross-call persistence */
         funcctx = SRF_FIRSTCALL_INIT();
@@ -435,10 +539,17 @@ Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
         /* switch to memory context appropriate for multiple function calls */
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        ret = tomanysp_dijkstra_dist(sql, source_ID, &(myTargets[6]),
-                myTargets[4], PG_GETARG_BOOL(3), PG_GETARG_BOOL(4),
+        myTargets = get_pgarray(&num, PG_GETARG_ARRAYTYPE_P(2));
+
+        DBG("There are %d targets : \n", num);
+        for (i = 0; i < num; i++)
+            DBG("%d => %d\t", i+1, myTargets[i]);
+
+        ret = tomanysp_dijkstra_dist(sql, source_ID, myTargets,
+                num, PG_GETARG_BOOL(3), PG_GETARG_BOOL(4),
                 &dist, &path_count);
 
+        pfree(myTargets);
         if (ret) {
             elog(ERROR, "Error computing paths!");
         }
@@ -533,7 +644,7 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
                 int *end_vertices, int nb_targets, bool directed, 
                 bool has_reverse_cost, 
 #ifdef PGR_MERGE
-                pgr_cost_t **distpaths,
+                pgr_cost3_t **distpaths,
 #else
                 path_fromto_t **distpaths,
 #endif
@@ -546,8 +657,8 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
     int ntuples;
     edge_t *edges = NULL;
     int total_tuples = 0;
-    edge_columns_t edge_columns = {id: -1, source: -1, target: -1, 
-                                 cost: -1, reverse_cost: -1};
+    edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
+                                   .cost= -1, .reverse_cost= -1};
     int v_max_id=0;
     int v_min_id=INT_MAX;
 
@@ -716,6 +827,7 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
 #ifdef PGR_MERGE
     for(z=0; z<pcount; z++) {
         (*distpaths)[z].id1 += v_min_id;
+        (*distpaths)[z].id2 += v_min_id;
     }
 
     *path_count = pcount;
@@ -747,7 +859,7 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
     TupleDesc            tuple_desc;
 
 #ifdef PGR_MERGE
-    pgr_cost_t          *path_res;
+    pgr_cost3_t          *path_res;
 #else
     path_fromto_t       *path_res;
 #endif
@@ -795,7 +907,7 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
 
         DBG("tuple_desc");
 #ifdef PGR_MERGE
-        funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("pgr_costresult"));
+        funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("pgr_costresult3"));
 #else
         funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("concatpath_result"));
 #endif
@@ -811,7 +923,7 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
     max_calls = funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
 #ifdef PGR_MERGE
-    path_res = (pgr_cost_t *) funcctx->user_fctx;
+    path_res = (pgr_cost3_t *) funcctx->user_fctx;
 #else
     path_res = (path_fromto_t *) funcctx->user_fctx;
 #endif
@@ -825,8 +937,8 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
 
         DBG("INIT values && nulls");
 #ifdef PGR_MERGE
-        values = palloc(4 * sizeof(Datum));
-        nulls = palloc(4 * sizeof(char));
+        values = palloc(5 * sizeof(Datum));
+        nulls = palloc(5 * sizeof(char));
 
         values[0] = Int32GetDatum(path_res[call_cntr].seq);
         nulls[0] = ' ';
@@ -834,8 +946,10 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
         nulls[1] = ' ';
         values[2] = Int32GetDatum(path_res[call_cntr].id2);
         nulls[2] = ' ';
-        values[3] = Float8GetDatum(path_res[call_cntr].cost);
+        values[3] = Int32GetDatum(path_res[call_cntr].id3);
         nulls[3] = ' ';
+        values[4] = Float8GetDatum(path_res[call_cntr].cost);
+        nulls[4] = ' ';
 #else
         values = palloc(6 * sizeof(Datum));
         nulls = palloc(6 * sizeof(char));

@@ -1,3 +1,6 @@
 # default build directory
 build
 .DS_Store
+.vagrant
+tools/vagrant/packaging.sh
+*.mo

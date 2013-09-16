@@ -8,15 +8,26 @@
 cmake_minimum_required(VERSION 2.8.8 FATAL_ERROR)
 project(PGROUTING)
 
+#set(CMAKE_VERBOSE_MAKEFILE 1)
+
 # Configure options
 #option(WITH_TSP
 #    "Set ON|OFF (default=OFF) to build TSP library" OFF)
 
 option(WITH_DD
-    "Set ON|OFF (default=OFF) to build Driving distance library" OFF)
+    "Set ON|OFF (default=ON) to build Driving distance library" ON)
 
 option(WITH_DOC
     "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
+
+option(BUILD_LATEX
+    "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
+
+option(BUILD_HTML
+    "Set ON|OFF (default=ON) to build Documentation library tree as HTML" ON)
+
+option(BUILD_MAN
+    "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" ON)
 
 #-----------------------------------------------------------------------------
 # PGROUTING version number.
@@ -66,12 +77,18 @@ if(WIN32)
     set(OS_BUILD "64")
   endif(NOT OS_BUILD)
   set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH}:/c/ming${OS_BUILD}/projects/pgx${OS_BUILD}/pg92)
-  set(BOOST_ROOT c:/ming${OS_BUILD}/msys/local)
-  set(GAUL_ROOT c:/ming${OS_BUILD}/msys/local)
-  set(CGAL_ROOT c:/ming${OS_BUILD}/msys/local)
-  set(GMP_ROOT c:/ming${OS_BUILD}/mingw${OS_BUILD})
+  if (NOT BOOST_ROOT)
+    set(BOOST_ROOT c:/ming${OS_BUILD}/msys/local)
+  endif(NOT BOOST_ROOT)
+   
+  if (NOT CGAL_ROOT)
+    set(CGAL_ROOT c:/ming${OS_BUILD}/msys/local)
+  endif(NOT CGAL_ROOT)
+  
+  if (NOT GMP_ROOT)
+    set(GMP_ROOT c:/ming${OS_BUILD}/mingw${OS_BUILD})
+  endif(NOT GMP_ROOT)
   message(STATUS "OS_BUILD=${OS_BUILD}")
-  message(STATUS "GAUL_ROOT=${GAUL_ROOT}")
   message(STATUS "CGAL_ROOT=${CGAL_ROOT}")
   message(STATUS "GMP_ROOT=${GMP_ROOT}")
   message(STATUS "BOOST_ROOT=${BOOST_ROOT}")
@@ -108,7 +125,7 @@ endif(NOT POSTGRESQL_FOUND)
 #set(Boost_DEBUG ON)
 find_package(Boost)
 if(Boost_INCLUDE_DIRS)
-  message("Boost headers were found here: ${Boost_INCLUDE_DIR}")
+  message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIR}")
 else(Boost_INCLUDE_DIRS)
   message(FATAL_ERROR " Please check your Boost installation ") 
 endif(Boost_INCLUDE_DIRS)
@@ -120,6 +137,9 @@ endif(NOT POSTGRESQL_VERSION_STRING)
 message(STATUS "POSTGRESQL_VERSION_STRING is ${POSTGRESQL_VERSION_STRING}")
 string(SUBSTRING "${POSTGRESQL_VERSION_STRING}" 11 -1 POSTGRESQL_VERSION)
 message(STATUS "POSTGRESQL_VERSION is ${POSTGRESQL_VERSION}")
+string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQL_VERSION})
+message(STATUS "PGSQL_VERSION is ${PGSQL_VERSION}")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
 
 if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
   message(FATAL_ERROR " PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
@@ -192,13 +212,26 @@ if(WIN32)
   link_libraries(postgres)
 endif(WIN32)
 
-if(UNIX)
+if(APPLE)
+  # support GNU(Xcode<4) and Clang(Xcode>=4)
+  if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -frounding-math")
+  else()
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g")
+  endif()
+  if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -frounding-math -Wno-deprecated")
+  else()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -Wno-deprecated")
+  endif()
+elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGWIN)
   set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -frounding-math")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -frounding-math -Wno-deprecated")
-else(UNIX)
+elseif(WIN32)
+  # currently, support MinGW only
   set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -frounding-math -Wno-deprecated")
-endif(UNIX)
+endif()
 
 # List variable to collect module SQL file names
 set(PACKAGE_SQL_FILES "")

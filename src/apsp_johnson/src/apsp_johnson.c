@@ -23,6 +23,9 @@
 #include "executor/spi.h"
 #include "funcapi.h"
 #include "catalog/pg_type.h"
+#if PGSQL_VERSION > 92
+#include "access/htup_details.h"
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include "apsp_johnson.h"
@@ -126,7 +129,7 @@ int compute_apsp_johnson(char* sql, edge_apsp_johnson_t **output_edges,
   int v_max_id = 0;
   int v_min_id = INT_MAX;
 
-  edge_apsp_johnson_t edge_columns = { source: -1, target: -1, cost: -1 };
+  edge_apsp_johnson_t edge_columns = { .source= -1, .target= -1, .cost= -1 };
   char *err_msg;
   int ret = -1;
   register int z;

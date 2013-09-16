@@ -1,0 +1,88 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/functions/is_column_in_table.rst:13
+# 1451c59201944bfd9022c90ef89ebf8a
+msgid "pgr_isColumnInTable - Check if column exists"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_in_table.rst:20
+# cb570c2703fc45e9bba281cae42780d6
+msgid "Name"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_in_table.rst:22
+# b4cdca42128d4828961c3e7076774fc0
+msgid "``pgr_isColumnInTable`` — Check if a column exists in a table."
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_in_table.rst:26
+# 33b135e2f8dd4f5e81aad53d1a016cfe
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_in_table.rst:28
+# 96d06813601a419c9b44fe8298f74a51
+msgid "Returns ``true`` or ``false`` if column “col” exists in table “tab”."
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_in_table.rst:36
+# 44f17585bbd843cb9fbcacb785ad3130
+msgid "Description"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_in_table.rst:38
+# b57ee4621bd04e6991a266235c5a592a
+msgid "``text`` table name with or without schema component"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_in_table.rst:39
+# ac6b45788cac4cc7a5dcf6e4c44bb9ad
+msgid "``text`` column name to be checked for"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_in_table.rst:43
+# 5f4ac9523c3b487884e6dd8e67b1e082
+msgid "History"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_in_table.rst:44
+# 028851614bd7489991629d8c8f6f8bbf
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_in_table.rst:48
+# 3c3db2df87634ae4b3c8713633f9214f
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_in_table.rst:59
+# 61e31f4885e444eea60640117f0f8264
+msgid "The queries use the :ref:`sampledata` network."
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_in_table.rst:63
+# 179da1f0bf5342b49e83327d1e277ca9
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/common/doc/functions/is_column_in_table.rst:65
+# 7e1d2140f94d40db8ce6f48c9a3b119f
+msgid ":ref:`pgr_is_column_indexed`"
+msgstr ""
+

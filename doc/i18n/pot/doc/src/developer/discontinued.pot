@@ -1,0 +1,48 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../src/developer/discontinued.rst:13
+# 09366a0298d04b47be343c8bf8c6e12a
+msgid "Discontinued Functions"
+msgstr ""
+
+#: ../../src/developer/discontinued.rst:15
+# 8ab172e3591c493f94919b9391d65313
+msgid "Especially with new major releases functionality may change and functions may be discontinued for various reasons. Functionality that has been discontinued will be listed here."
+msgstr ""
+
+#: ../../src/developer/discontinued.rst:22
+# 6bb9bb9b649544eb9384e2c03fa6e60d
+msgid "Shooting Star algorithm"
+msgstr ""
+
+#: ../../src/developer/discontinued.rst:24
+# 6c87b9ac3f1b441a88d4bd7a32449eeb
+msgid "Removed with 2.0.0"
+msgstr ""
+
+#: ../../src/developer/discontinued.rst:25
+# 6afa2318319f4b5e93e9eb99d1dd1843
+msgid "Unresolved bugs, no maintainer, replaced with :ref:`trsp`"
+msgstr ""
+
+#: ../../src/developer/discontinued.rst:26
+# 7e711820b4534143a7fd0d1aa4c5cc58
+msgid "Please :ref:`contact us <support>` if you're interested to sponsor or maintain this algorithm. The function signature is still available in :ref:`common_legacy` but it is just a wrapper that throws an error. We have not included any of the old code for this in this release."
+msgstr ""
+

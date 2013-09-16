@@ -23,6 +23,9 @@
 #include "executor/spi.h"
 #include "funcapi.h"
 #include "catalog/pg_type.h"
+#if PGSQL_VERSION > 92
+#include "access/htup_details.h"
+#endif
 
 #include "drivedist.h"
 
@@ -217,8 +220,8 @@ static int compute_driving_distance(char* sql, int source_vertex_id,
   int ntuples;
   edge_t *edges = NULL;
   int total_tuples = 0;
-  edge_columns_t edge_columns = {id: -1, source: -1, target: -1, 
-                                 cost: -1, reverse_cost: -1};
+  edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
+                                 .cost= -1, .reverse_cost= -1};
 
   int v_max_id=0;
   int v_min_id=INT_MAX;
@@ -336,15 +339,17 @@ static int compute_driving_distance(char* sql, int source_vertex_id,
                           
   source_vertex_id -= v_min_id;
 
-  DBG("Calling boost_dijkstra\n");
-        
   profstop("extract", prof_extract);
   profstart(prof_dijkstra);
   
+  DBG("Calling boost_dijkstra\n");
+        
   ret = boost_dijkstra_dist(edges, total_tuples, source_vertex_id,
                             distance, directed, has_reverse_cost, 
                             path, path_count, &err_msg);
     
+  DBG("Back from  boost_dijkstra\n");
+        
   if (ret < 0) {
     elog(ERROR, "Error computing path: %s", err_msg);
   } 

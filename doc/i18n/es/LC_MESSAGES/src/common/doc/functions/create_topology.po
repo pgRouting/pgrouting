@@ -1,0 +1,113 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/functions/create_topology.rst:13
+msgid "pgr_createTopology - Building a Network Topology"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:20
+msgid "Name"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:22
+msgid ""
+"``pgr_createTopology`` — Builds a network topology with source and target "
+"information."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:26
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:28
+msgid "The function returns ``OK`` after the network topology has been built."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:37
+msgid "Description"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:39
+msgid ""
+"This function assumes the ``source`` and ``target`` columns exist on table "
+"``geom_table`` and are of type integer or bigint."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:50
+msgid ""
+"It fills the ``source`` and ``target`` id column for all edges. All line "
+"ends with a distance less than tolerance, are assigned the same id."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:52
+msgid "The topology creation function accepts the following parameters:"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:54
+msgid "``varchar`` network table name (may contain the schema name as well)"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:55
+msgid ""
+"``float8`` snapping tolerance of disconnected edges (in projection unit)"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:56
+msgid "``varchar`` geometry column name of the network table"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:57
+msgid "``varchar`` primary key column name of the network table"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:59
+msgid "The function ``OK`` after the network topology has been built."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:63
+msgid "History"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:64
+msgid "Renamed in version 2.0.0"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:68
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:80
+msgid "The queries use the :ref:`sampledata` network."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:84
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:86
+msgid ":ref:`topology`"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:87
+msgid ":ref:`pgr_node_network`"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_topology.rst:88
+msgid ":ref:`pgr_point_to_id`"
+msgstr ""
+
+#~ msgid "pgr_createTopology(varchar,double precision,varchar,varchar)"
+#~ msgstr ""
+
+#~ msgid "common"
+#~ msgstr ""

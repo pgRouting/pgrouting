@@ -13,15 +13,15 @@
 #include "funcapi.h"
 #include "catalog/pg_type.h"
 #include "utils/array.h"
+#if PGSQL_VERSION > 92
+#include "access/htup_details.h"
+#endif
 
 #include "fmgr.h"
 
-/*
-// this is not need because tsp.c has it covered for this library
 #ifdef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif
-*/
 
 #undef DEBUG
 //#define DEBUG 1
@@ -31,6 +31,10 @@ PG_MODULE_MAGIC;
     elog(NOTICE, format , ## arg)
 #else
 #define DBG(format, arg...) do { ; } while (0)
+#endif
+
+#ifndef INFINITY
+#define INFINITY (1.0/0.0)
 #endif
 
 // The number of tuples to fetch from the SPI cursor at each iteration
@@ -145,11 +149,18 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
 
     DBG("In solve_tsp: num: %d, start: %d, end: %d", num, start, end);
 
-    if (start < 0 || start > num)
-        elog(ERROR, "Error start must be in the range of 0 >= start <= num. (%d)", start);
+    if (num < 4)
+        elog(ERROR, "Error TSP requires four or more locations to optimize. Only %d were supplied.", num);
 
-    if (end >= 0 && end >= num)
-        elog(ERROR, "Error end must be in the range of 0 <= end <= num. (%d)", end);
+    if (start < 0 || start >= num)
+        elog(ERROR, "Error start must be in the range of 0 <= start(%d) < num(%d).", start, num);
+
+    if (end >= num)
+        elog(ERROR, "Error end must be in the range of 0 <= end(%d) < num(%d).", end, num);
+
+    /* if start and end are the same this is the same as setting end = -1 */
+    if (start == end)
+        end = -1;
 
     /*
        fix up matrix id we have an end point
@@ -157,13 +168,13 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
     */
     if (end >= 0) {
         DBG("Updating start end costs");
-        D(start,end)=INFINITY - 1000.0;
-        D(end,start)=0.000001;
+        D(start,end)=0.0;
+        D(end,start)=0.0;
     }
 
     DBG("Alloc ids");
 
-    ids = (int *) palloc(num * sizeof(int));
+    ids = (int *) malloc(num * sizeof(int));
     if (!ids) {
         elog(ERROR, "Error: Out of memory (solve_tsp)");
     }
@@ -175,7 +186,7 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
     DBG("Calling find_tsp_solution");
 
 // int find_tsp_solution(int num, DTYPE *dist, int *p_ids, int source, DTYPE *fit, char* err_msg);
-    ret = find_tsp_solution(num, matrix, ids, start, &fit, err_msg);
+    ret = find_tsp_solution(num, matrix, ids, start, end, &fit, err_msg);
     if (ret < 0) {
         elog(ERROR, "Error solving TSP, %s", err_msg);
     }
@@ -221,9 +232,7 @@ tsp_matrix(PG_FUNCTION_ARGS)
 
         ret = solve_tsp(matrix, num,
                         PG_GETARG_INT32(1), // start index
-                        // endpt does not work yet, leave this is -1
-                        //PG_GETARG_INT32(2), // end  index 
-                        -1,
+                        PG_GETARG_INT32(2), // end  index 
                         &tsp_res);
 
         pfree(matrix);
@@ -300,8 +309,10 @@ tsp_matrix(PG_FUNCTION_ARGS)
         SRF_RETURN_NEXT(funcctx, result);
     }
     else {   /* do when there is no more left */
-        DBG("Ending function");
+        DBG("Freeing tsp_res");
+        free(tsp_res);
 
+        DBG("Ending function");
         SRF_RETURN_DONE(funcctx);
     }
 }

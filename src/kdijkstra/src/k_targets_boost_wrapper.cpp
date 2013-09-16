@@ -21,6 +21,7 @@
 
 #include <exception>
 #include <vector>
+#include <sstream>
 #include <boost/config.hpp>
 
 #include <boost/graph/graph_traits.hpp>
@@ -60,9 +61,8 @@ struct Vertex
 // Edge id, cost, source and target ids and coordinates are copied also
 template <class G, class E>
 static void
-graph_add_edge(G &graph, int id, int source, int target, float8 cost)
+graph_add_edge(G &graph, E &e, int id, int source, int target, float8 cost)
 {
-  E e;
   bool inserted;
 
   if (cost < 0) // edges are not inserted in the graph if cost is negative
@@ -105,8 +105,8 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
 
     for (std::size_t j = 0; j < count; ++j)
     {
-
-        graph_add_edge<graph_t, edge_descriptor>(graph,
+        edge_descriptor e;
+        graph_add_edge<graph_t, edge_descriptor>(graph, e,
                    edges[j].id, edges[j].source,
                    edges[j].target, edges[j].cost);
 
@@ -123,7 +123,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
               cost = edges[j].cost;
           }
 
-          graph_add_edge<graph_t, edge_descriptor>(graph,
+          graph_add_edge<graph_t, edge_descriptor>(graph, e,
                  edges[j].id,
                  edges[j].target,
                  edges[j].source,
@@ -135,7 +135,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
 
     vertex_descriptor _source = vertex(start_vertex, graph);
 
-    if (_source < 0 /*|| _source >= num_nodes*/) 
+    if ((long)_source < 0) 
     {
         *err_msg = (char *) "Starting vertex not found";
         return -1;
@@ -147,9 +147,9 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
         _target[i] = vertex(end_vertices[i], graph);
 
 
-        if (_target[i] < 0 )
+        if ((long)_target[i] < 0 )
         {
-            *err_msg = (char *) "Ending vertex %d not found", i;
+            *err_msg = (char *) "Ending vertex not found";
             return -1;
         }
     }        
@@ -289,7 +289,7 @@ onetomany_dijkstra_boostpath(edge_t *edges, unsigned int count,
         int start_vertex, int *end_vertices, int nb_targets,
         bool directed, bool has_reverse_cost,
 #ifdef PGR_MERGE
-        pgr_cost_t **pathdists,
+        pgr_cost3_t **pathdists,
         int *path_count,
 #else
         path_fromto_t **pathdists,
@@ -313,8 +313,8 @@ try {
 
     for (std::size_t j = 0; j < count; ++j)
     {
-
-        graph_add_edge<graph_t, edge_descriptor>(graph,
+        edge_descriptor e;
+        graph_add_edge<graph_t, edge_descriptor>(graph, e,
                    edges[j].id, edges[j].source,
                    edges[j].target, edges[j].cost);
 
@@ -331,7 +331,7 @@ try {
               cost = edges[j].cost;
           }
 
-          graph_add_edge<graph_t, edge_descriptor>(graph,
+          graph_add_edge<graph_t, edge_descriptor>(graph, e,
                  edges[j].id,
                  edges[j].target,
                  edges[j].source,
@@ -343,7 +343,7 @@ try {
 
     vertex_descriptor _source = vertex(start_vertex, graph);
 
-    if (_source < 0 /*|| _source >= num_nodes*/) 
+    if ((long)_source < 0) 
     {
         *err_msg = (char *) "Starting vertex not found";
         return -1;
@@ -355,9 +355,9 @@ try {
         _target[i] = vertex(end_vertices[i], graph);
 
 
-        if (_target[i] < 0)
+        if ((long)_target[i] < 0)
         {
-            *err_msg = (char *) "Ending vertex %d not found", i;
+            *err_msg = (char *) "Ending vertex not found";
             return -1;
         }
     }        
@@ -406,7 +406,7 @@ try {
         sum_path_sizes += path_vect[i].size();
     }
 #ifdef PGR_MERGE
-    *pathdists = (pgr_cost_t *) malloc(sizeof(pgr_cost_t) * sum_path_sizes + nb_targets + 1);
+    *pathdists = (pgr_cost3_t *) malloc(sizeof(pgr_cost3_t) * sum_path_sizes + nb_targets + 1);
     if (! *pathdists) {
         *err_msg = (char *) "Error: out of memory";
         return -1;
@@ -420,6 +420,7 @@ try {
             (*pathdists)[seq].seq = seq;
             (*pathdists)[seq].id1 = id1;
             (*pathdists)[seq].id2 = -1;
+            (*pathdists)[seq].id3 = -1;
             (*pathdists)[seq].cost = -1.0;
             seq++;
             continue;
@@ -431,20 +432,31 @@ try {
             graph_traits < graph_t >::edge_descriptor e;
             graph_traits < graph_t >::out_edge_iterator out_i, out_end;
 
-            if (i == 0) continue;
-
             v_src = path_vect[numTarget].at(i);
+
+            if (i == 0) {
+                (*pathdists)[seq].seq = seq;
+                (*pathdists)[seq].id1 = id1;
+                (*pathdists)[seq].id2 = v_src;
+                (*pathdists)[seq].id3 = -1;
+                (*pathdists)[seq].cost = 0.0;
+                seq++;
+                continue;
+            }
+
             v_targ = path_vect[numTarget].at(i - 1);
 
             for (tie(out_i, out_end) = out_edges(v_src, graph); out_i != out_end; ++out_i) {
-                graph_traits < graph_t >::vertex_descriptor v, targ;
+                graph_traits < graph_t >::vertex_descriptor src, targ;
                 e = *out_i;
+                src = source(e, graph);
                 targ = target(e, graph);
 
                 if (targ == v_targ) {
                     (*pathdists)[seq].seq = seq;
                     (*pathdists)[seq].id1 = id1;
-                    (*pathdists)[seq].id2 = graph[*out_i].id; 
+                    (*pathdists)[seq].id2 = src;
+                    (*pathdists)[seq].id3 = graph[*out_i].id; 
                     (*pathdists)[seq].cost = graph[*out_i].cost;
                     seq++;
                     break;

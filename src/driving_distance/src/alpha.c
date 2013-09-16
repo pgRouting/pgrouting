@@ -24,6 +24,9 @@
 #include "executor/spi.h"
 #include "funcapi.h"
 #include "catalog/pg_type.h"
+#if PGSQL_VERSION > 92
+#include "access/htup_details.h"
+#endif
 
 #include "alpha.h"
 
@@ -176,7 +179,7 @@ static int compute_alpha_shape(char* sql, vertex_t **res, int *res_count)
   int ntuples;
   vertex_t *vertices = NULL;
   int total_tuples = 0;
-  vertex_columns_t vertex_columns = {id: -1, x: -1, y: -1};
+  vertex_columns_t vertex_columns = {.id= -1, .x= -1, .y= -1};
   char *err_msg;
   int ret = -1;
 

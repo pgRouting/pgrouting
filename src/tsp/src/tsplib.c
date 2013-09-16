@@ -82,58 +82,62 @@
 #define IMPROVED_PATH_PER_T           60*n   
 
 /*
- * Portable Uniform Integer Random Number in [0-2^31] range
- * Performs better than ansi-C rand() 
- * D.E Knuth, 1994 - The Stanford GraphBase
- */
-#define RANDOM()        (*rand_fptr >= 0 ? *rand_fptr-- : flipCycle ()) 
-#define two_to_the_31   ((unsigned long)0x80000000) 
-#define RREAL           ((double)RANDOM()/(double)two_to_the_31)
+ *   MACHINE INDEPENDENT RANDOM NUMBER GENERATOR
+ *   Written by:  DIMACS  (modified for TSP)
+*/
 
-static long A[56]= {-1};
-long *rand_fptr = A;
+#define PRANDMAX 1000000000
+static int a;
+static int b;
+static int arr[55];
 
-#define mod_diff(x,y)   (((x)-(y))&0x7fffffff) 
-long flipCycle()
+void initRand (int seed)
 {
-    register long *ii,*jj;
-    for (ii = &A[1], jj = &A[32]; jj <= &A[55]; ii++, jj++)
-    *ii= mod_diff (*ii, *jj);
+    int i, ii;
+    int last, next;
 
-    for (jj = &A[1]; ii <= &A[55]; ii++, jj++)
-    *ii= mod_diff (*ii, *jj);
-    rand_fptr = &A[54];
-    return A[55];
-}
+    seed %= PRANDMAX;
+    if (seed < 0) seed += PRANDMAX;
 
-void initRand (long seed)
-{
-    register long i;
-    register long prev = seed, next = 1;
-    seed = prev = mod_diff (prev,0);
-    A[55] = prev;
-    for (i = 21; i; i = (i+21)%55)
-    {
-        A[i] = next;
-        next = mod_diff (prev, next);
-        if (seed&1) seed = 0x40000000 + (seed >> 1);
-        else seed >>= 1;
-        next = mod_diff (next,seed);
-        prev = A[i];
+    arr[0] = last = seed;
+    next = 1;
+    for (i = 1; i < 55; i++) {
+        ii = (21 * i) % 55;
+        arr[ii] = next;
+        next = last - next;
+        if (next < 0)
+            next += PRANDMAX;
+        last = arr[ii];
     }
-    
-    for (i = 0; i < 7; i++) flipCycle(); 
+    a = 0;
+    b = 24;
+    for (i = 0; i < 165; i++)
+        last = Rand ();
 }
 
-long unifRand (long m)
+int Rand (void)
 {
-    register unsigned long t = two_to_the_31 - (two_to_the_31%m);
-    register long r;
-    do {
-        r = RANDOM();
-    } while (t <= (unsigned long)r);
-    return r%m;
+    int t;
+
+    if (a-- == 0)
+        a = 54;
+    if (b-- == 0)
+        b = 54;
+
+    t = arr[a] - arr[b];
+
+    if (t < 0)
+        t += PRANDMAX;
+
+    arr[a] = t;
+
+    return t;
 }
+
+#define RREAL ((double)Rand()/PRANDMAX)
+#define RANDOM Rand
+#define unifRand(n) (Rand()%n)
+
 
 /*
  * Defs
@@ -145,8 +149,10 @@ typedef struct tspstruct {
     int n;
     DTYPE maxd;
     DTYPE *dist;
+    DTYPE bestlen;
     int *iorder;
     int *jorder;
+    int *border;  // best order we find
     float b[4];
 } TSP;
 
@@ -164,8 +170,9 @@ typedef struct tspstruct {
 int findEulerianPath(TSP *tsp)
 {
     int *mst, *arc;    
-    int d, i, j, k, l, a;
+    int i, j, k, l, a;
     int n, *iorder, *jorder;
+    DTYPE d;
     DTYPE maxd;
     DTYPE *dist;
     DTYPE *dis;
@@ -183,7 +190,7 @@ int findEulerianPath(TSP *tsp)
         elog(ERROR, "Failed to allocate memory!");
         return -1;
     }
-    DBG("findEulerianPath: 1");
+    //DBG("findEulerianPath: 1");
 
     j = -1;
     d = maxd;
@@ -198,7 +205,7 @@ int findEulerianPath(TSP *tsp)
             j = i;
         }
     }
-    DBG("findEulerianPath: j=%d", j);
+    //DBG("findEulerianPath: j=%d", j);
 
     if (j == -1)
         elog(ERROR, "Error TSP fail to findEulerianPath, check your distance matrix is valid.");
@@ -230,7 +237,7 @@ int findEulerianPath(TSP *tsp)
         }
         j = k;
     }
-    DBG("findEulerianPath: 3");
+    //DBG("findEulerianPath: 3");
 
     /*
      * Preorder Tour of MST
@@ -255,7 +262,7 @@ int findEulerianPath(TSP *tsp)
             }    
         }
     }
-    DBG("findEulerianPath: 4");
+    //DBG("findEulerianPath: 4");
 
     return 0;
 }
@@ -379,14 +386,13 @@ void doReverse(TSP *tsp, Path p)
 void annealing(TSP *tsp)
 {
     Path   p;
-    int    i=1, j, pathchg;
+    int    i, j, pathchg;
     int    numOnPath, numNotOnPath;
-    DTYPE    pathlen, bestlen;
+    DTYPE    pathlen;
     int    n = tsp->n;
     double energyChange, T;
 
     pathlen = pathLength (tsp); 
-    bestlen = pathlen;
 
     for (T = T_INIT; T > FINAL_T; T *= COOLING)  /* annealing schedule */
     {
@@ -426,32 +432,70 @@ void annealing(TSP *tsp)
                     doReverse(tsp, p); 
                 }
             }
-            if (pathlen < bestlen) bestlen = pathlen;
+            // if the new length is better than best then save it as best
+            if (pathlen < tsp->bestlen) {
+                tsp->bestlen = pathlen;
+                for (i=0; i<tsp->n; i++) tsp->border[i] = tsp->iorder[i];
+            }
             if (pathchg > IMPROVED_PATH_PER_T) break; /* finish early */
         }   
-        DBG("T:%f L:%d B:%d C:%d", T, pathlen, bestlen, pathchg);
+        DBG("T:%f L:%f B:%f C:%d", T, pathlen, tsp->bestlen, pathchg);
         if (pathchg == 0) break;   /* if no change then quit */
     }
 }
 
 
-int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, DTYPE *total_len, char *err_msg)
+void reverse(int num, int *ids)
+{
+    int i, j, t;
+    for (i=0, j=num-1; i<j; i++, j--) {
+        t = ids[j];
+        ids[j] = ids[i];
+        ids[i] = t;
+    }
+}
+
+
+int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE *total_len, char *err_msg)
 {
     int   i, j;
     int   istart = 0;
+    int   jstart = 0;
+    int   iend = -1;
+    int   jend = -1;
+    int   rev = 0;
     TSP   tsp;
     long  seed = -314159L;
+    DTYPE blength;
+
+    DBG("sizeof(long)=%d", (int)sizeof(long));
 
     initRand (seed);
+
+#ifdef DEBUG
+    char bufff[2048];
+    int nnn;
+    DBG("---------- Matrix[%d][%d] ---------------------\n", num, num);
+    for (i=0; i<num; i++) {
+        sprintf(bufff, "%d:", i);
+        nnn = 0;
+        for (j=0; j<num; j++) {
+            nnn += sprintf(bufff+nnn, "\t%.4f", cost[i*num+j]);
+        }
+        DBG("%s", bufff);
+    }
+#endif
 
     /* initialize tsp struct */
     tsp.n = num;
     tsp.dist   = NULL;
     tsp.iorder = NULL;
     tsp.jorder = NULL;
+    tsp.border = NULL;
 
     if (!(tsp.iorder = (int*) palloc (tsp.n * sizeof(int)))   ||
-        !(tsp.jorder = (int*) palloc (tsp.n * sizeof(int))) ) {
+        !(tsp.jorder = (int*) palloc (tsp.n * sizeof(int)))   ||
+        !(tsp.border = (int*) palloc (tsp.n * sizeof(int)))   ) {
             elog(FATAL, "Memory allocation failed!");
             return -1;
         }
@@ -465,7 +509,10 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, DTYPE *total_le
     /* identity permutation */
     for (i = 0; i < tsp.n; i++) tsp.iorder[i] = i;
 
-    DBG("Initial Path Length: %d", pathLength(&tsp));
+    tsp.bestlen = pathLength(&tsp);
+    for (i = 0; i < tsp.n; i++) tsp.border[i] = tsp.iorder[i];
+
+    DBG("Initial Path Length: %.4f", tsp.bestlen);
 
     /*
      * Set up first eulerian path iorder to be improved by
@@ -474,57 +521,87 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, DTYPE *total_le
     if(findEulerianPath(&tsp))
         return -1;
 
-    DBG("Approximated Path Length: %d", pathLength(&tsp));
+    blength = pathLength(&tsp);
+    if (blength < tsp.bestlen) {
+        tsp.bestlen = blength;
+        for (i = 0; i < tsp.n; i++) tsp.border[i] = tsp.iorder[i];
+    }
+
+    DBG("Approximated Path Length: %.4f", blength);
 
     annealing(&tsp);
 
     *total_len = pathLength(&tsp);
+    DBG("Final Path Length: %.4f", *total_len);
 
-    DBG("Best Path Length: %d", *total_len);
+    *total_len = tsp.bestlen;
+    for (i=0; i<tsp.n; i++) tsp.iorder[i] = tsp.border[i];
+    DBG("Best Path Length: %.4f", *total_len);
 
     // reorder ids[] with start as first
 
 #ifdef DEBUG
     for (i=0; i<tsp.n; i++) {
-        DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d",
-            i, ids[i], tsp.iorder[i], tsp.jorder[i]);
+        DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d, jo[io[i]]: %d",
+            i, ids[i], tsp.iorder[i], tsp.jorder[i], tsp.jorder[tsp.iorder[i]]);
     }
 #endif
 
     // get index of start node in ids
-    for (i=0; i < tsp.n; i++) 
-        if (ids[i] == start) {
-            istart = i;
-            break;
-        }
-    DBG("istart: %d", istart);
+    for (i=0; i < tsp.n; i++) {
+        if (ids[i] == start) istart = i;
+        if (ids[i] == end)   iend = i;
+    }
+    DBG("istart: %d, iend: %d", istart, iend);
 
     // get the idex of start in iorder
-    for (i=0; i < tsp.n; i++)
-        if (tsp.iorder[i] == istart) {
-            istart = i;
-            break;
-        }
-    DBG("istart: %d", istart);
+    for (i=0; i < tsp.n; i++) {
+        if (tsp.iorder[i] == istart) jstart = i;
+        if (tsp.iorder[i] == iend)   jend = i;
+    }
+    DBG("jstart: %d, jend: %d", jstart, jend);
+
+    /*
+     * If the end is specified and the end point and it follow start
+     * then we swap start and end and extract the list backwards
+     * and later we reverse the list for the desired order.
+    */
+    if ((jend > 0 && jend == jstart+1) || (jend == 0 && jstart == tsp.n-1)) {
+        int tmp = jend;
+        jend = jstart;
+        jstart = tmp;
+        rev = 1;
+        DBG("reversed start and end: jstart: %d, jend: %d", jstart, jend);
+    }
 
     // copy ids to tsp.jorder so we can rewrite ids
     memcpy(tsp.jorder, ids, tsp.n * sizeof(int));
 
     // write reordered ids into ids[]
-    for (i=istart, j=0; i < tsp.n; i++, j++)
+    // remember at this point jorder is our list if ids
+    for (i=jstart, j=0; i < tsp.n; i++, j++)
         ids[j] = tsp.jorder[tsp.iorder[i]];
 
-    for (i=0; i < istart; i++, j++)
+    for (i=0; i < jstart; i++, j++)
         ids[j] =tsp.jorder[tsp.iorder[i]];
 
+    // if we reversed the order above, now put it correct.
+    if (rev) {
+        int tmp = jend;
+        jend = jstart;
+        jstart = tmp;
+        reverse(tsp.n, ids);
+    }
+
 #ifdef DEBUG
+    DBG("ids getting returned!");
     for (i=0; i<tsp.n; i++) {
         DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d",
             i, ids[i], tsp.iorder[i], tsp.jorder[i]);
     }
 #endif
 
-    DBG("tsplib: istart=%d, n=%d, j=%d", istart, tsp.n, j);
+    DBG("tsplib: jstart=%d, jend=%d, n=%d, j=%d", jstart, jend, tsp.n, j);
 
     return 0;
 }

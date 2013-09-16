@@ -6,6 +6,7 @@ use strict;
 use File::Find ();
 use File::Basename;
 use Data::Dumper;
+use Time::HiRes qw(gettimeofday tv_interval);
 $Data::Dumper::Sortkeys = 1;
 
 # for the convenience of &wanted calls, including -eval statements:
@@ -32,13 +33,18 @@ sub Usage {
         "       -psql /path/to/psql - optional path to psql\n" .
         "       -v                  - verbose messages for debuging(enter twice for more)\n" .
         "       -clean              - dropdb pgr_test__db__test\n" .
+        "       -ignorenotice       - ignore NOTICE statements when reporting failures\n" .
+        "       -alg 'dir'          - directory to select which algorithm subdirs to test\n" .
         "       -h                  - help\n";
 }
 
 print "RUNNING: test-runner.pl " . join(" ", @ARGV) . "\n";
 
 my ($vpg, $vpgis, $vpgr, $psql);
+my $alg = '';
+my @testpath = ("doc/", "src/");
 my $clean;
+my $ignore;
 
 while (my $a = shift @ARGV) {
     if ( $a eq '-pgver') {
@@ -53,6 +59,15 @@ while (my $a = shift @ARGV) {
     elsif ($a eq '-pgrver') {
         $vpgr = shift @ARGV || Usage();
     }
+    elsif ($a eq '-alg') {
+        $alg = shift @ARGV || Usage();
+        if ($alg eq 'doc') {
+            @testpath = ($alg);
+        }
+        else {
+            @testpath = ("src/$alg");
+        }
+    }
     elsif ($a eq '-psql') {
         $psql = shift @ARGV || Usage();
         die "'$psql' is not executable!\n"
@@ -63,6 +78,9 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a =~ /^-clean/) {
         $clean = 1;;
+    }
+    elsif ($a =~ /^-ignoren/i) {
+        $ignore = 1;;
     }
     elsif ($a =~ /^-v/i) {
         $VERBOSE = 1 if $DEBUG;
@@ -81,9 +99,18 @@ my @cfgs = ();
 my %stats = (z_pass=>0, z_fail=>0, z_crash=>0);
 my $TMP = "/tmp/pgr-test-runner-$$";
 my $TMP2 = "/tmp/pgr-test-runner-$$-2";
+my $TMP3 = "/tmp/pgr-test-runner-$$-3";
 
 if (! $psql) {
     $psql = findPsql() || die "ERROR: can not find psql, specify it on the command line.\n";
+}
+
+my $OS = "$^O";
+if (length($psql)) {
+    if ($OS =~ /msys/
+        || $OS =~ /MSWin/) {
+        $psql = "\"$psql\"";
+    }
 }
 
 # some unit tests
@@ -99,7 +126,7 @@ if (! $psql) {
 #exit;
 
 # Traverse desired filesystems
-File::Find::find({wanted => \&want_tests}, 'src');
+File::Find::find({wanted => \&want_tests}, @testpath);
 
 die "Error: no test files found. Run this command from the top level pgRouting directory!\n" unless @cfgs;
 
@@ -136,6 +163,7 @@ print Data::Dumper->Dump([\%stats], ['stats']);
 
 unlink $TMP;
 unlink $TMP2;
+unlink $TMP3;
 
 if ($stats{z_crash} || $stats{z_fail}) {
     exit 1;  # signal we had failures
@@ -157,9 +185,39 @@ sub run_test {
     }
 
     for my $x (@{$t->{tests}}) {
-        mysystem("$psql -U $DBUSER -h $DBHOST -p $DBPORT -A -t -q -f '$dir/$x.test' $DBNAME > $TMP 2>\&1 ");
+        print "Processing test: $x\n";
+        my $t0 = [gettimeofday];
+        open(TIN, "$dir/$x.test") || do {
+            $res{"$dir/$x.test"} = "FAILED: could not open '$dir/$x.test' : $!";
+            $stats{z_fail}++;
+            next;
+        };
+        open(PSQL, "|$psql -U $DBUSER -h $DBHOST -p $DBPORT -A -t -q $DBNAME > $TMP 2>\&1 ") || do {
+            $res{"$dir/$x.test"} = "FAILED: could not open connection to db : $!";
+            $stats{z_fail}++;
+            next;
+        };
+        print PSQL "set client_min_messages to WARNING;\n" if $ignore;
+        my @d = ();
+        @d = <TIN>;
+        print PSQL @d;
+        close(PSQL);
+        close(TIN);
+
+        my $dfile;
+        my $dfile2;
+        if ($ignore) {
+            $dfile2 = $TMP2;
+            mysystem("grep -v NOTICE '$TMP' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile2");
+            $dfile = $TMP3;
+            mysystem("grep -v NOTICE '$dir/$x.rest' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile");
+        }
+        else {
+            $dfile = "$dir/$x.rest";
+            $dfile2 = $TMP;
+        }
         # use diff -w to ignore white space differences like \r vs \r\n
-        my $r = `diff -w '$dir/$x.rest' $TMP`;
+        my $r = `diff -w '$dfile' '$dfile2' `;
         $r =~ s/^\s*|\s*$//g;
         if ($r =~ /connection to server was lost/) {
             $res{"$dir/$x.test"} = "CRASHED SERVER: $r";
@@ -176,6 +234,7 @@ sub run_test {
             $res{"$dir/$x.test"} = "Passed";
             $stats{z_pass}++;
         }
+        print "    test run time: " . tv_interval($t0, [gettimeofday]) . "\n";
     }
 
     return \%res;
@@ -205,8 +264,13 @@ sub createTestDB {
         if ($vpgis) {
             $myver = " VERSION '$vpgis'";
         }
+        my $encoding = '';
+        if ($OS =~ /msys/
+            || $OS =~ /MSWin/) {
+            $encoding = "SET client_encoding TO 'UTF8';";
+        }
         print "-- Trying to install postgis extension $myver\n" if $DEBUG;
-        mysystem("$psql -U $DBUSER -h $DBHOST -p $DBPORT -c \"create extension postgis $myver\" $DBNAME");
+        mysystem("$psql -U $DBUSER -h $DBHOST -p $DBPORT -c \"$encoding create extension postgis $myver\" $DBNAME");
     }
     else {
         if ($vpgis && dbExists("template_postgis_$vpgis")) {
@@ -323,15 +387,20 @@ sub getSharePath {
     my $pg = shift;
 
     my $share;
+    my $isdebian = -e "/etc/debian_version";
     my $pg_config = `which pg_config`;
     $pg_config =~ s/^\s*|\s*$//g;
     print "which pg_config = $pg_config\n" if $VERBOSE;
     if (length($pg_config)) {
-        $share = `$pg_config --sharedir`;
+        $share = `"$pg_config" --sharedir`;
         $share =~ s/^\s*|\s*$//g;
-        $share =~ s/(\d+(\.\d+)?)$/$pg/;
-        if (length($share) && -d $share) {
-            return $share;
+        if ($isdebian) {
+            $share =~ s/(\d+(\.\d+)?)$/$pg/;
+            if (length($share) && -d $share) {
+                return $share;
+            }
+        } else {
+            return "$share"
         }
     }
     die "Could not determine the postgresql version" unless $pg;

@@ -4,7 +4,6 @@
 	Example:
 	SELECT * FROM data.PGR_analyze_graph('SELECT source, target, geom_way 
 		AS geom FROM data.dhaka_2po_4pgr', 0.000001) WHERE checkit;
- */
 CREATE OR REPLACE FUNCTION PGR_analyzeGraph(sql text, tolerance float)
   RETURNS TABLE(
 	vertex bigint, 
@@ -35,7 +34,7 @@ BEGIN
 		-- Source
 		BEGIN
 			EXECUTE 'INSERT INTO vertices_temp (vertex,geom,source) VALUES ($1,$2,1)' 
-				USING rec.source, ST_Startpoint(rec.geom);
+				USING rec.source, PGR_Startpoint(rec.geom);
 				-- This assumes that source equals start point of geometry
 		EXCEPTION WHEN unique_violation THEN
 			EXECUTE 'UPDATE vertices_temp SET source = source + 1 WHERE vertex = $1' 
@@ -45,7 +44,7 @@ BEGIN
 		-- Target
 		BEGIN
 			EXECUTE 'INSERT INTO vertices_temp (vertex,geom,target) VALUES ($1,$2,1)' 
-				USING rec.target, ST_Endpoint(rec.geom);
+				USING rec.target, PGR_Endpoint(rec.geom);
 				-- This assumes that target equals end point of geometry
 		EXCEPTION WHEN unique_violation THEN
 			EXECUTE 'UPDATE vertices_temp SET target = target + 1 WHERE vertex = $1' 
@@ -85,3 +84,4 @@ END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT
   COST 100;
+ */

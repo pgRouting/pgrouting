@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../src/changelog/1_x.rst:13
+# 80139f0bb8004897a03df48a5421cd3e
+msgid "pgRouting 1.x Release Notes"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:15
+# 5a7212eff9be4a0d95a236c540a97f10
+msgid "The following release notes have been copied from the previous ``RELEASE_NOTES`` file and are kept as a reference. Release notes starting with :ref:`version 2.0.0 <changelog_2_0>` will follow a different schema."
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:20
+# b5ad5e6d0b78449890dda7fa6d30ac8e
+msgid "Changes for release 1.05"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:22
+#: ../../src/changelog/1_x.rst:29
+#: ../../src/changelog/1_x.rst:50
+#: ../../src/changelog/1_x.rst:57
+# b37e8bfbe2794101a72e1fbb116f22cd
+# 2f1abbe57331424397cb03d0a5fafee2
+# 2da690cfaaea4d369a7bdb9f9d241bf2
+# e3524add2c604532a66d1bf9a62c5487
+msgid "Bugfixes"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:26
+# a623678fab0744a3a38546523303795f
+msgid "Changes for release 1.03"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:28
+# e48813b4d3814054819ed027aa138f70
+msgid "Much faster topology creation"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:33
+# bdcfed86022a4309a80715bf768350ee
+msgid "Changes for release 1.02"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:35
+#: ../../src/changelog/1_x.rst:42
+# 3803dd4ae425474caf39f6e7a2f28d9a
+# 0c92f6ddb54741f590c61761ee27cfbe
+msgid "Shooting* bugfixes"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:36
+# b304d596bae846d98c278686a2c64275
+msgid "Compilation problems solved"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:40
+# 741de983a5cf41eb98a113e54b847ec1
+msgid "Changes for release 1.01"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:46
+# 5f23e892e7ad4db6877db1f07f53a7ab
+msgid "Changes for release 1.0"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:48
+# 3cb70fa7d3064130a540fc0d347e55e7
+msgid "Core and extra functions are separated"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:49
+# 28375001527c4b8b80781351f8205d8a
+msgid "Cmake build process"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:54
+# 4c1b7575c8df44fab1668818780b0b4a
+msgid "Changes for release 1.0.0b"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:56
+# d7a94776f1854770a57103008fe4e7c9
+msgid "Additional SQL file with more simple names for wrapper functions"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:61
+# faf0ddf9d574472fabced8dc174aa067
+msgid "Changes for release 1.0.0a"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:63
+# db33894da05b41928897b7e5f71c58b9
+msgid "Shooting* shortest path algorithm for real road networks"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:64
+# f2c0f4381c3e47b6bde5b359c1e2bbcc
+msgid "Several SQL bugs were fixed"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:68
+# 6df06ca83d7d4d628cd6dec8fc31a678
+msgid "Changes for release 0.9.9"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:70
+# e5dce1be773a447db6c9c01820775913
+msgid "PostgreSQL 8.2 support"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:71
+# 0e71a0116ff04ba2bfb985d5cebf4210
+msgid "Shortest path functions return empty result if they couldn’t find any path"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:75
+# 5eecb0b7cf404ff383192dc71ba233a9
+msgid "Changes for release 0.9.8"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:77
+# ef658c0aaf2f482a99d1dd9691b0762d
+msgid "Renumbering scheme was added to shortest path functions"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:78
+# e47ae703842949b280bd34e4f45a1c76
+msgid "Directed shortest path functions were added"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:79
+# 46ab0c039fee4edcb20db32c73c62757
+msgid "routing_postgis.sql was modified to use dijkstra in TSP search"
+msgstr ""
+

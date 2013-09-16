@@ -1,0 +1,163 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../src/tutorial/analytics.rst:13
+# 23979832a43e4f649b9d1e0a9600e92c
+msgid "Graph Analytics"
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:15
+# 870087e3aec148fda371faa46eaa2ce7
+msgid "Stephen Woodbridge <woodbri@swoodbridge.com>"
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:16
+# 4946729e48894e889375ad1363e1e7d4
+msgid "Stephen Woodbridge. The source code is released under the MIT-X license."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:20
+# 25f24981252f48e89824070b89cd3423
+msgid "Overview"
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:22
+# e9d52dba5e404196a29544d302148264
+msgid "It is common to find problems with graphs that have not been constructed fully noded or in graphs with zlevels at intersection that have been entered incorrectly. An other problem is oneway streets that have been entered in the wrong direction. We can not detect errors with respect to \"ground\" truth, but we can look for inconsistencies and some anomalies in a graph and report them for additional inspections."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:24
+# 58592f133a874ed5b020d85d8686ee80
+msgid "We do not current have any visualization tools for these problems, but I have used mapserver to render the graph and highlight potential problem areas. Someone familar with graphviz might contribute tools for generating images with that."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:28
+# 2852df2e27df4d4380c91898a3058e66
+msgid "Analyze a Graph"
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:30
+# 86e59c4e533842cf9992b34939e60e22
+msgid "With :ref:`pgr_analyze_graph` the graph can be checked for errors."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:37
+# 27125a2ee9ed4622a7eaab027c9d738f
+msgid "After the analyzing the graph, deadends are indentified by ``cnt=1`` in the \"vertices_tmp\" table and potential problems are identified with ``chk=1``."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:44
+# c9ad68211bdf47adba8f53d0f19c8308
+msgid "If you have isolated road segments, for example, a segment where both ends are deadends. you can find these with the following query:"
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:53
+# 6bd1e7249d22418d93b75265102073cd
+msgid "If you want to visualize these on a graphic image, then you can use something like mapserver to render the edges and the vertices and style based on ``cnt`` or if they are isolated, etc. You can also do this with a tool like graphviz, or geoserver or other similar tools."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:57
+# e1ab479696a94a8bb2918be3ac8c02bf
+msgid "Analyze One Way Streets"
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:59
+# d229e9757c3a416bacbb77b74265717e
+msgid ":ref:`pgr_analyze_oneway` analyzes oneway streets in a graph and identifies any flipped segments. Basically if you count the edges coming into a node and the edges exiting a node the number has to be greater than one."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:61
+# e21764f266e44098a1c4970c603a3c91
+msgid "This query will add two columns to the vertices_tmp table ``ein int`` and ``eout int`` and populate it with the appropriate counts. After running this on a graph you can identify nodes with potential problems with the following query."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:68
+# 9e7381775ed64ef694f7b027d79ed956
+msgid "The rules are defined as an array of text strings that if match the ``col`` value would be counted as true for the source or target in or out condition."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:72
+# b167af7d65854885b2f3eaebca08b505
+msgid "Example"
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:74
+# adf5dedf104347848fb6b0a3589257c1
+msgid "Lets assume we have a table \"st\" of edges and a column \"one_way\" that might have values like:"
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:76
+# b721dbca4dd5428a9026173bde6f7319
+msgid "'FT'    - oneway from the source to the target node."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:77
+# e6a4bb1e19dd44768851da51fcc498c9
+msgid "'TF'    - oneway from the target to the source node."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:78
+# cddb1f7a26d94eafaf24a8cfc79e4a94
+msgid "'B'     - two way street."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:79
+# 4f8757fc3c8f48ba9deecbe2cda8dd06
+msgid "''      - empty field, assume twoway."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:80
+# e999d75f7c314466bd2230df567e2b51
+msgid "<NULL>  - NULL field, use two_way_if_null flag."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:82
+# e7605d8922cc4e8389000be32a6f265f
+msgid "Then we could form the following query to analyze the oneway streets for errors."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:101
+# 6f823f2752f0468e89350317f49ed92e
+msgid "Typically these problems are generated by a break in the network, the oneway direction set wrong, maybe an error releted to zlevels or a network that is not properly noded."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:103
+# d0559fbd0bb34aebaed10e69cde97e83
+msgid "The above tools do not detect all network issues, but they will identify some common problems. There are other problems that are hard to detect because they are more global in nature like multiple disconnected networks. Think of an island with a road network that is not connected to the mainland network because the bridge ot ferry routes are missing."
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:107
+# 428bcc7c2ada46aa9caa2dd99b1bfe36
+msgid "See Also"
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:109
+# 7b075945985c46899af62cc8d3b0dac1
+msgid ":ref:`pgr_analyze_graph`"
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:110
+# 02fcd6c8b89549fdbb6c6adb1ffab563
+msgid ":ref:`pgr_analyze_oneway`"
+msgstr ""
+
+#: ../../src/tutorial/analytics.rst:111
+# 5a2ad95cbe7148339bdae716e38b629b
+msgid ":ref:`pgr_node_network`"
+msgstr ""
+
