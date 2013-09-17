@@ -2,8 +2,6 @@
 #include "utils.h"
 
 
-std::vector<PDVI> ruleTable;
-
 int trsp_node_wrapper(
     edge_t *edges,
     unsigned int edge_count,
@@ -19,6 +17,8 @@ int trsp_node_wrapper(
     )
 {
     try {
+
+        std::vector<PDVI> ruleTable;
 
         int i, j;
         ruleTable.clear();
@@ -69,6 +69,8 @@ int trsp_edge_wrapper(
     )
 {
     try {
+
+        std::vector<PDVI> ruleTable;
 
         int i, j;
         ruleTable.clear();
