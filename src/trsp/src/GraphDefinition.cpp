@@ -594,7 +594,7 @@ bool GraphDefinition::addEdge(edge_t edgeIn)
 	}
 	if(newEdge->m_lEndNode > max_node_id)
 	{
-		max_node_id = newEdge->m_lEdgeIndex;
+		max_node_id = newEdge->m_lEndNode;
 	}
 
 	//Searching the start node for connectivity
