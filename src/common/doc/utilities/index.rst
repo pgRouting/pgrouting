@@ -23,6 +23,8 @@ Developers's Functions
 	pgr_quote_ident - to quotes the input text to be used as an identifier in an SQL statement string.<quote_ident>
     pgr_version - to get pgRouting's version information.  <version>
 	pgr_versionless - to compare two version numbers<versionless>
+	pgr_startPoint - to get the start point of a (multi)linestring<start_point>
+	pgr_endPoint - to get the end point of a (multi)linestring<end_point>
 
 
 
