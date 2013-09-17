@@ -37,9 +37,15 @@ cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 
 export REL_PGVER=${PG_VER//./} #strip the period
 
+if [[ "$PGROUTING_MICRO_VER"  == *SVN* || "$PGROUTING_MICRO_VER"  == *dev* ]] ; then
+  export RELDIR=${PROJECTS}/pgrouting/builds/${PGROUTING_VER}
+  export RELVERDIR=pgrouting-pg${REL_PGVER}-binaries-${PGROUTING_VER}.${PGROUTING_MICRO_VER}w${OS_BUILD}${GCC_TYPE}
+else
+	#tagged version -- official release
+	export RELDIR=${PROJECTS}/pgrouting/builds/${PGROUTING_VER}
+	export RELVERDIR=pgrouting-pg${REL_PGVER}-binaries-${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
+fi;
 
-export RELDIR=${PROJECTS}/pgrouting/builds/${PGROUTING_VER}
-export RELVERDIR=pgrouting-pg${REL_PGVER}-binaries-${PGROUTING_VER}.${PGROUTING_MICRO_VER}w${OS_BUILD}${GCC_TYPE}
 
 outdir="${RELDIR}/${RELVERDIR}"
 package="${RELDIR}/${RELVERDIR}.zip"
