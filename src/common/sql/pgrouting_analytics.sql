@@ -89,6 +89,7 @@ DECLARE
     numgaps integer;
     NumCrossing integer;
     numRings integer;
+    debuglevel text;
 
 
 
@@ -97,6 +98,7 @@ BEGIN
   raise notice 'PROCESSING:'; 
   raise notice 'pgr_analyzeGraph(''%'',%,''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where;
   raise NOTICE  'Performing checks, pelase wait...';
+  execute 'show client_min_messages' into debuglevel;
 
 
   BEGIN
@@ -257,12 +259,16 @@ BEGIN
 		RAISE DEBUG '  ------>OK';
 	else if cntname is not null	then
 		RAISE NOTICE '  ------>Adding "cnt" column in %',vertname;
+        set client_min_messages  to warning;
 		execute 'ALTER TABLE '||pgr_quote_ident(vertname)||' ADD COLUMN cnt integer';
+        execute 'set client_min_messages  to '|| debuglevel;
 		cntname=quote_ident('cnt');
              end if;
              if chkname is not null then
 		RAISE DEBUG '  ------>Adding "chk" column in %',vertname;
+        set client_min_messages  to warning;
 		execute 'ALTER TABLE '||pgr_quote_ident(vertname)||' ADD COLUMN chk integer';
+        execute 'set client_min_messages  to '|| debuglevel;
 		cntname=quote_ident('chk');
              end if;
 	END IF;
@@ -276,7 +282,9 @@ BEGIN
 	RAISE DEBUG '  ------>OK';
       else 
         RAISE DEBUG ' ------> Adding unique index "%_vertices_id_idx".',vname;
-        execute 'create unique index '||vname||'_id_idx on '||vertname||' using btree(id)';
+        set client_min_messages  to warning;
+        execute 'create unique index '||vname||'_id_idx on '||pgr_quote_ident(vertname)||' using btree(id)';
+        execute 'set client_min_messages  to '|| debuglevel;
       END IF;
     END;
     
@@ -501,11 +509,14 @@ DECLARE
     vertname text;
     einname text;
     eoutname text;
+    debuglevel text;
+
 
 BEGIN
   raise notice 'PROCESSING:'; 
   raise notice 'pgr_analyzeOneway(''%'',''%'',''%'',''%'',''%'',''%'',''%'',''%'',%)',
 		edge_table, s_in_rules , s_out_rules, t_in_rules, t_out_rules, oneway, source ,target,two_way_if_null ;
+  execute 'show client_min_messages' into debuglevel;
 
   BEGIN
     RAISE DEBUG 'Cheking % exists',edge_table;
@@ -599,7 +610,9 @@ BEGIN
                 RAISE DEBUG '  ------>OK';
         else
                 RAISE DEBUG '  ------>Adding "ein" column in %',vertname;
+                set client_min_messages  to warning;
                 execute 'ALTER TABLE '||pgr_quote_ident(vertname)||' ADD COLUMN ein integer';
+                execute 'set client_min_messages  to '|| debuglevel;
                 einname=quote_ident('ein');
         END IF;
     END;
@@ -613,7 +626,9 @@ BEGIN
                 RAISE DEBUG '  ------>OK';
         else
                 RAISE DEBUG '  ------>Adding "eout" column in %',verticesTable;
+                set client_min_messages  to warning;
                 execute 'ALTER TABLE '||pgr_quote_ident(vertname)||' ADD COLUMN eout integer';
+                execute 'set client_min_messages  to '|| debuglevel;
                 eoutname=quote_ident('eout');
         END IF;
     END;

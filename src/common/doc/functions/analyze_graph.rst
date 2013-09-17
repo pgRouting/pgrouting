@@ -32,7 +32,7 @@ The function returns:
 
 .. code-block:: sql
 
-	varchar pgr_analyzeGrpah(text edge_table, double precision tolerance, 
+	varchar pgr_analyzeGraph(text edge_table, double precision tolerance, 
                            text the_geom:='the_geom', text id:='id',
                            text source:='source',text target:='target',text rows_where:='true')
 
