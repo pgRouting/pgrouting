@@ -27,7 +27,7 @@ P_AStar::~P_AStar(void)
 //Load the initial edges that correspond to the partition id of the source and target and initialize a few variables.
 
 
-void P_AStar::initall(int s_pid, int t_pid )
+void P_AStar::initall(int s_pid, int t_pid,bool has_reverse_cost )
 {
           m_vecNodeVector.clear();
 	  m_vecEdgeVector.clear();
@@ -36,8 +36,8 @@ void P_AStar::initall(int s_pid, int t_pid )
 	  loaded_partition.clear();
 	  closed_set.clear();
 
-          load_partition(s_pid);
-          load_partition(t_pid); 	  
+          load_partition(s_pid,has_reverse_cost);
+          load_partition(t_pid,has_reverse_cost); 	  
 
 	  m_MinCost=INF;
 	  m_MidNode=-1;
@@ -46,7 +46,7 @@ void P_AStar::initall(int s_pid, int t_pid )
 
 // check whether the partition in which the node lies is loaded or not ,if not load it .
 
-void P_AStar::check_whether_loaded(int node_id)
+void P_AStar::check_whether_loaded(int node_id,bool has_reverse_cost)
 {
 
 	Long2LongMap::iterator it = m_mapNodeId2Index.find(node_id);
@@ -56,7 +56,7 @@ void P_AStar::check_whether_loaded(int node_id)
 
 	if(it1 == loaded_partition.end())	
 	{
-                load_partition(m_vecNodeVector[it->second].pid);
+                load_partition(m_vecNodeVector[it->second].pid,has_reverse_cost);
 	}	
 
 
@@ -244,10 +244,10 @@ void P_AStar::explore(int cur_node, double cur_cost, std::priority_queue<pq_pair
 
 //This is the main solver class where the the shortest path is computed
 
-int P_AStar::p_astar(int start_vertex,int end_vertex,int s_pid, int t_pid, path_element_t **path,int *path_count,char **err_msg)
+int P_AStar::p_astar(int start_vertex,int end_vertex,int s_pid, int t_pid,bool has_reverse_cost, path_element_t **path,int *path_count,char **err_msg)
 {
 
-	initall(s_pid,t_pid);
+	initall(s_pid,t_pid,has_reverse_cost);
 
 	m_lStartNodeId = start_vertex;
 	m_lEndNodeId = end_vertex;
@@ -282,7 +282,7 @@ int P_AStar::p_astar(int start_vertex,int end_vertex,int s_pid, int t_pid, path_
                  pq_pair *ptr3;
 		 ptr3=pque.top();
 
-		 check_whether_loaded(ptr3->node_id);
+		 check_whether_loaded(ptr3->node_id,has_reverse_cost);
 
 //		 Long2FloatMap::iterator it = m_pFCost.find(ptr3->node_id);
                 
@@ -348,13 +348,13 @@ int P_AStar::p_astar(int start_vertex,int end_vertex,int s_pid, int t_pid, path_
 //  This fuction fetches edges using partion id 
 
 
-void P_AStar::load_partition(int pid)
+void P_AStar::load_partition(int pid, bool has_reverse_cost)
 
 {    
 	 edge_p_astar_t *edges; 
          int total_tuples=-1;		                            
 	 
-	 edges=fetch_partition_edges(pid, &total_tuples);
+	 edges=fetch_partition_edges(pid, &total_tuples,has_reverse_cost);
 
 	
          if(total_tuples!=-1 && edges!=NULL)
