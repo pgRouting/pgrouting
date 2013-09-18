@@ -31,6 +31,9 @@ typedef struct path_element
 } path_element_t;
 
 
+#ifdef __cplusplus
+extern "C"
+#endif
 
 edge_p_astar_t *
 fetch_partition_edges(int pid , int* ptuples,
@@ -38,6 +41,9 @@ fetch_partition_edges(int pid , int* ptuples,
 						 	inside the c function which takes a node_id as an argument and fetches all 
 						        the edges from the edge table using the partition id of that node  */
 
+#ifdef __cplusplus
+extern "C"
+#endif
 
 int p_astar_wrapper(int start_vertex, int end_vertex,int s_pid ,int t_pid,bool has_reverse_cost, path_element_t **path , int *path_count,
 		char **err_msg);

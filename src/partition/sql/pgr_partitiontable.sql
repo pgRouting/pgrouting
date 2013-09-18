@@ -58,7 +58,7 @@ declare
   r record;
   
 begin
-  if not pgr_columnInTable(vtab, 'quadkey') then
+  if not pgr_isColumnInTable(vtab, 'quadkey') then
     execute 'alter table ' || pgr_quote_ident(vtab) || ' add column quadkey text';
   end if;
 
