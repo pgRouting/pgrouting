@@ -6,7 +6,7 @@
 #include "p_astar.h"
 
 int p_astar_wrapper(int start_vertex, int end_vertex,int s_pid ,int t_pid,bool has_reverse_cost, path_element_t **path , int *path_count,
-		char **err_msg);
+		char **err_msg)
 
 {
 	int res;

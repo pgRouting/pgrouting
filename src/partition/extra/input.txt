@@ -1,3 +1,3 @@
 ways.txt 1 5 11 13 path1.txt
 ways.txt 1 4 11 12 path2.txt
-
+ways.txt 5 1 13 11 path3.txt

@@ -405,6 +405,8 @@ bool P_AStar::addEdge(edge_p_astar_t edgeIn)
 	newEdge.Cost = edgeIn.cost;
 	newEdge.reverse_cost=edgeIn.reverse_cost;
        
+	newEdge.S_pid=edgeIn.s_pid;
+	newEdge.E_pid=edgeIn.t_pid;
 // check whether source or traget nodes are already present in the node vector ,if present update conncted nodes and conncetd edges index
 // if it is not present push it to the node vector.       	
 	
@@ -444,9 +446,9 @@ bool P_AStar::addEdge(edge_p_astar_t edgeIn)
 	if(it1 != m_mapNodeId2Index.end())
 	{
              
-              m_vecNodeVector[it->second].Connected_Nodes.push_back(edgeIn.source);
+              m_vecNodeVector[it1->second].Connected_Nodes.push_back(edgeIn.source);
 
-              m_vecNodeVector[it->second].Connected_Edges_Index.push_back(newEdge.EdgeIndex);
+              m_vecNodeVector[it1->second].Connected_Edges_Index.push_back(newEdge.EdgeIndex);
                 
         }
 	else 
@@ -474,7 +476,6 @@ bool P_AStar::addEdge(edge_p_astar_t edgeIn)
 
        return true; 
 }
-
 
 
 
