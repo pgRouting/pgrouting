@@ -1,5 +1,5 @@
-#ifndef _P_ASTAR_H
-#define _p_ASTAR_H
+#ifndef _p_astar_h
+#define _p_astar_h
 
 #include "postgres.h"
 
@@ -20,7 +20,7 @@ typedef struct edge_p_astar
 	float8 t_x;
 	float8 t_y;
 
-}edge_p_astar_t ;
+} edge_p_astar_t;
 
 
 typedef struct path_element

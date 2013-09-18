@@ -11,7 +11,7 @@
 #include <string.h>
 
 
-//#include "p_astar.h"
+#include "p_astar.h"
 #define INF 1e15
 
 
@@ -124,7 +124,7 @@ class P_AStar
 		int m_lEndNodeId;
 		double m_MinCost;
 		int m_MidNode;
-		std::vector <path_element_t> m_vecPath;
+		std::vector<path_element_t> m_vecPath;
 
 
 };

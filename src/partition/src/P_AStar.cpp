@@ -444,9 +444,9 @@ bool P_AStar::addEdge(edge_p_astar_t edgeIn)
 	if(it1 != m_mapNodeId2Index.end())
 	{
              
-              m_vecNodeVector[it->second].Connected_Nodes.push_back(edgeIn.source);
+              m_vecNodeVector[it1->second].Connected_Nodes.push_back(edgeIn.source);
 
-              m_vecNodeVector[it->second].Connected_Edges_Index.push_back(newEdge.EdgeIndex);
+              m_vecNodeVector[it1->second].Connected_Edges_Index.push_back(newEdge.EdgeIndex);
                 
         }
 	else 
