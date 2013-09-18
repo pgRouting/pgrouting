@@ -1,0 +1,228 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/trsp/doc/index.rst:13
+# cfa2f875c913487ba00431d50f10ce52
+msgid "pgr_trsp - Turn Restriction Shortest Path (TRSP)"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:23
+# 9a2a455c126546639878464b6436ef96
+msgid "Name"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:25
+# a00bb1f2f58a47c29d946baa7641c1c6
+msgid "``pgr_trsp`` — Returns the shortest path with support for turn restrictions."
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:29
+# c82a5429813a44f29a2ab417aeaf9d43
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:31
+# 96c292d4af1d47e1882c0abc06b9c96b
+msgid "The turn restricted shorthest path (TRSP) is a shortest path algorithm that can optionally take into account complicated turn restrictions like those found in real work navigable road networks. Performamnce wise it is nearly as fast as the A* search but has many additional features like it works with edges rather than the nodes of the network. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path."
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:47
+# 65f3fa4c8552431e8be5a2e81abc527d
+msgid "Description"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:49
+# 76e9d5c0405b4b58a929fcf897c937f3
+msgid "The Turn Restricted Shortest Path algorithm (TRSP) is similar to the :ref:`shooting_star` in that you can specify turn restrictions."
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:51
+# 3564a0c9a95e464489bb4163e1e42240
+msgid "The TRSP setup is mostly the same as :ref:`Dijkstra shortest path <pgr_dijkstra>` with the addition of an optional turn restriction table. This makes adding turn restrictions to a road network much easier than trying to add them to Shooting Star where you had to ad the same edges multiple times if it was involved in a restriction."
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:54
+# fe33c249bdd54e2f8bc3dc74f048f29d
+msgid "a SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:61
+# 70b2271a2a5743b1b6af544861bac163
+msgid "``int4`` identifier of the edge"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:62
+# 2d2ce8fc582942ec953bd0d4ec32f1a5
+msgid "``int4`` identifier of the source vertex"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:63
+# bc41607130754c1ba185db2c531feb57
+msgid "``int4`` identifier of the target vertex"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:64
+# 06c368930f7f49c09271fdd626c92eaf
+msgid "``float8`` value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph."
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:65
+# 7b7376cabffe48fbb3fe367907131aba
+msgid "(optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs)."
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:67
+# 2d3309ec1c3e42aca8363eb30d180dd7
+msgid "``int4`` **NODE id** of the start point"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:68
+# baaabc6b91d94ff4990d75519c9b8047
+msgid "``int4`` **NODE id** of the end point"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:69
+# 87cf66f9cf0c4380923b9e89359cf884
+msgid "``true`` if the graph is directed"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:70
+# dc5293d15c004ad7812acb44d8b97048
+msgid "if ``true``, the ``reverse_cost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction."
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:72
+# 56ca23e87c8942519c1da7282f8ad6f2
+msgid "(optional) a SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:78
+# 2bc1b43184f84168accd245c76ee6059
+msgid "``float8`` turn restriction cost"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:79
+# 25b8a5f1b1d2452499bf86ab3d09ccbc
+msgid "``int4`` target id"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:80
+# 708d1fcc1acd4504b6df1f8a93b7fd89
+msgid "``text`` commar seperated list of edges in the reverse order of ``rule``"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:82
+# 935dd4481b854b998c1dbcaecf39cf67
+msgid "Another variant of TRSP allows to specify **EDGE id** of source and target together with a fraction to interpolate the position:"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:84
+# 3c75ccca4ca74f97a1a00e8f3c59be9e
+msgid "``int4`` **EDGE id** of the start edge"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:85
+# 859f93b515884d57ac5e338caf27b7de
+msgid "``float8`` fraction of 1 defines the position on the start edge"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:86
+# 6e5c6b5dba02428298c395fa5890291f
+msgid "``int4`` **EDGE id** of the end edge"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:87
+# 2b5b3f50feb04557809cf08aa4f30064
+msgid "``float8`` fraction of 1 defines the position on the end edge"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:89
+# 5c84eda4c25041758179fac6488e4801
+msgid "Returns set of :ref:`type_cost_result`:"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:91
+# 852621c0f3f241eb81d6eeb34b2f1469
+msgid "row sequence"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:92
+# d4dd3cfe73644963b2b588cdd8ff54bb
+msgid "node ID"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:93
+# bc818fde81a04c30b27251e8e2a0afa1
+msgid "edge ID (``-1`` for the last row)"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:94
+# b431c4a009d349f5850f72d36f2ff97b
+msgid "cost to traverse from ``id1`` using ``id2``"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:98
+# f62f8f1308a0470a83970a0b7b36e801
+msgid "History"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:99
+# 4d102cbb09204c75bee37f77341394a1
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:103
+# 50b16767814a41c4a66af635c0af84c9
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:105
+# 0beecbb7ea32400f8576709844c8ceed
+msgid "Without turn restrictions"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:124
+# 4bd212850c834e9b93270595315ff387
+msgid "With turn restrictions"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:126
+# c4bc78f0bf5048129ed9e5dbdc39c647
+msgid "Turn restrictions require additional information, which can be stored in a separate table:"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:142
+# 564ef7cf329248709cee792855b5a91e
+msgid "Then a query with turn restrictions is created as:"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:165
+# 84c4168f625645359e9ba06c07d7ef0c
+msgid "The queries use the :ref:`sampledata` network."
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:169
+# 39bef19224c243b7bf17a098d2c960c6
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/trsp/doc/index.rst:171
+# 08726e7f686d4e3290b2fbc3f00c4f19
+msgid ":ref:`type_cost_result`"
+msgstr ""
+

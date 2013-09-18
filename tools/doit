@@ -1,0 +1,22 @@
+#!/bin/sh
+# ------------------------------------------------------------------------------
+# Build script
+# Copyright(c) pgRouting Contributors
+#
+# This script builds and install pgRouting
+# ------------------------------------------------------------------------------
+rm -rf build
+mkdir build
+cd build
+cmake -DBUILD_LATEX=OFF -DWITH_DOC=ON -DWITH_DD=ON ..
+#cmake  -DWITH_DD=ON ..
+make all doc && sudo make install && (cd ..; tools/test-runner.pl -clean)
+rsync -a doc/html/* /u/www/html/pgr2-doc/.
+ln -sf /u/www/html/pgr2-doc/. /u/www/html/pgr2-doc/dev
+gzip -c doc/man/en/pgrouting.7 > doc/man/en/pgrouting.7.gz
+for x in `ls doc/latex` ; do
+    mkdir -p /u/www/html/pgr2-doc/$x/.
+    rsync -a doc/latex/$x/pgRoutingDocumentation.pdf /u/www/html/pgr2-doc/$x/.
+    rsync -a doc/man/en/pgrouting.7.gz /u/www/html/pgr2-doc/$x/.
+done
+sudo install -t /usr/share/man/man7 doc/man/en/pgrouting.7.gz

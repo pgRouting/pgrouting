@@ -1,5 +1,7 @@
-CMakeFiles
-Makefile
-*.cmake
-CMakeCache.txt
-lib
+# default build directory
+build
+.DS_Store
+.vagrant
+issues
+tools/vagrant/packaging.sh
+*.mo

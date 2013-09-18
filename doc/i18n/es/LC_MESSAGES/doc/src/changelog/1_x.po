@@ -1,0 +1,117 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../src/changelog/1_x.rst:13
+msgid "pgRouting 1.x Release Notes"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:15
+msgid ""
+"The following release notes have been copied from the previous "
+"``RELEASE_NOTES`` file and are kept as a reference. Release notes starting "
+"with :ref:`version 2.0.0 <changelog_2_0>` will follow a different schema."
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:20
+msgid "Changes for release 1.05"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:22 ../../src/changelog/1_x.rst:29
+#: ../../src/changelog/1_x.rst:50 ../../src/changelog/1_x.rst:57
+msgid "Bugfixes"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:26
+msgid "Changes for release 1.03"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:28
+msgid "Much faster topology creation"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:33
+msgid "Changes for release 1.02"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:35 ../../src/changelog/1_x.rst:42
+msgid "Shooting* bugfixes"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:36
+msgid "Compilation problems solved"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:40
+msgid "Changes for release 1.01"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:46
+msgid "Changes for release 1.0"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:48
+msgid "Core and extra functions are separated"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:49
+msgid "Cmake build process"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:54
+msgid "Changes for release 1.0.0b"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:56
+msgid "Additional SQL file with more simple names for wrapper functions"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:61
+msgid "Changes for release 1.0.0a"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:63
+msgid "Shooting* shortest path algorithm for real road networks"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:64
+msgid "Several SQL bugs were fixed"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:68
+msgid "Changes for release 0.9.9"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:70
+msgid "PostgreSQL 8.2 support"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:71
+msgid ""
+"Shortest path functions return empty result if they couldn’t find any path"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:75
+msgid "Changes for release 0.9.8"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:77
+msgid "Renumbering scheme was added to shortest path functions"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:78
+msgid "Directed shortest path functions were added"
+msgstr ""
+
+#: ../../src/changelog/1_x.rst:79
+msgid "routing_postgis.sql was modified to use dijkstra in TSP search"
+msgstr ""

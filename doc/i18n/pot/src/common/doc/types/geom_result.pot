@@ -1,0 +1,80 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/types/geom_result.rst:13
+# ebb698d42ab84a70942c2dc642d8689f
+msgid "pgr_geomResult[] - Path Result with Geometry"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:20
+# 8c1135709e1f42109f51dbb19b910d32
+msgid "Name"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:22
+# 0504426205734e54acafe64e1643ba59
+msgid "``pgr_geomResult[]`` — A set of records to describe a path result with geometry attribute."
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:26
+# 2fe63836e36143c0bf782667d44aeb1d
+msgid "Description"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:38
+# c4356f080cdd45cdbea91b19f382af17
+msgid "sequential ID indicating the path order"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:39
+#: ../../../src/common/doc/types/geom_result.rst:40
+# 28be111f472d4c46a2c96c103a8cab20
+# fd4d6b299a42442788d2806bbc172ecb
+msgid "generic name, to be specified by the function"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:41
+# 3023c0d4cc7d442cb916111f5fb9e5c7
+msgid "geometry attribute"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:45
+# 2a15ebb2d4364c599e179e0452466759
+msgid "History"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:46
+# e5e6297149664f34a89b901e03434765
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:47
+# 746866b5d04349148e7dee1f0906a73b
+msgid "Replaces ``geoms``"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:51
+# 162b0b55bea4444680b5a7645d7e2f48
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/common/doc/types/geom_result.rst:53
+# 5bd464cbd0fa498883a6e166120ca90b
+msgid ":ref:`common_types`"
+msgstr ""
+

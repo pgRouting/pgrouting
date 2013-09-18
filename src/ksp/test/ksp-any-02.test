@@ -1,0 +1,14 @@
+--
+-- Dump a 15 fastest routes between nodes 4 and 5 by total route length
+--
+select ksp.id1, round(sum(st_length(n.the_geom))::numeric, 2) as len
+  from pgr_ksp(
+    'select source, target, cost, reverse_cost, id from network',
+    4,
+    5,
+    15,
+    'f') ksp,
+    network n
+ where ksp.id3=n.id
+ group by id1
+ order by id1;

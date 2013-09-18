@@ -1,0 +1,20 @@
+#!/bin/bash
+# ------------------------------------------------------------------------------
+# Git Tweaks
+# Copyright(c) pgRouting Contributors
+#
+# About:
+# ------
+# This script writes the current Git version into the VERSION file
+# To trigger this together with every commit, run
+#
+#	cp tools/pre-commit .git/hooks/pre-commit
+#
+# Note:
+# -----
+# The VERSION file is always one commit behind HEAD
+# ------------------------------------------------------------------------------
+
+VERSION=`git describe --tags --long`
+BRANCH=`git branch | grep '*' | awk '{print $2}'`
+echo $VERSION $BRANCH > $GIT_DIR/../VERSION

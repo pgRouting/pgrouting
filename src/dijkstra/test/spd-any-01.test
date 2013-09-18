@@ -1,0 +1,4 @@
+-- ignore reverse costs
+-- eliminate edges with negative costs
+
+select * from pgr_dijkstra('select eid as id, source::int4, target::int4, cost from edges1 where cost>0', 11, 5, false, false);

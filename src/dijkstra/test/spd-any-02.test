@@ -1,0 +1,5 @@
+-- this causes a server crash because of -1 costs
+-- code needs to be revised to check for costs < 0 and eliminate these edges
+-- should 0.0 costs be allowed??
+select * from pgr_dijkstra('select eid as id, source::int4, target::int4, cost from edges1', 11, 5, false, false);
+

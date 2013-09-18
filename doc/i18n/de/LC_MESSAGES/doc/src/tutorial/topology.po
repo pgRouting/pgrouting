@@ -1,0 +1,103 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 12:41\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../src/tutorial/topology.rst:13
+msgid "Routing Topology"
+msgstr ""
+
+#: ../../src/tutorial/topology.rst:15
+msgid "Stephen Woodbridge <woodbri@swoodbridge.com>"
+msgstr ""
+
+#: ../../src/tutorial/topology.rst:16
+msgid ""
+"Stephen Woodbridge. The source code is released under the MIT-X license."
+msgstr ""
+
+#: ../../src/tutorial/topology.rst:20
+msgid "Overview"
+msgstr ""
+
+#: ../../src/tutorial/topology.rst:22
+msgid ""
+"Typically when GIS files are loaded into the data database for use with "
+"pgRouting they do not have topology information assocated with them. To "
+"create a useful topology the data needs to be \"noded\". This means that "
+"where two or more roads form an intersection there it needs to be a node at "
+"the intersection and all the road segments need to be broken at the "
+"intersection, assuming that you can navigate from any of these segments to "
+"any other segment via that intersection."
+msgstr ""
+
+#: ../../src/tutorial/topology.rst:24
+msgid ""
+"You can use the :ref:`graph analysis functions <analytics>` to help you see "
+"where you might have topology problems in your data. If you need to node "
+"your data, we also have a function :ref:`pgr_nodeNetwork() "
+"<pgr_node_network>` that might work for you. This function splits ALL "
+"crossing segments and nodes them. There are some cases where this might NOT "
+"be the right thing to do."
+msgstr ""
+
+#: ../../src/tutorial/topology.rst:26
+msgid ""
+"For example, when you have an overpass and underpass intersection, you do "
+"not want these noded, but pgr_nodeNetwork does not know that is the case and"
+" will node them which is not good because then the router will be able to "
+"turn off the overpass onto the underpass like it was a flat 2D intersection."
+" To deal with this problem some data sets use z-levels at these types of "
+"intersections and other data might not node these intersection which would "
+"be ok."
+msgstr ""
+
+#: ../../src/tutorial/topology.rst:28
+msgid ""
+"For those cases where topology needs to be added the following functions may"
+" be useful. One way to prep the data for pgRouting is to add the following "
+"columns to your table and then populate them as appropriate. This example "
+"makes a lot of assumption like that you original data tables already has "
+"certain columns in it like ``one_way``, ``fcc``, and possibly others and "
+"that they contain specific data values. This is only to give you an idea of "
+"what you can do with your data."
+msgstr ""
+
+#: ../../src/tutorial/topology.rst:49
+msgid ""
+"The function :ref:`pgr_createTopology() <pgr_create_topology>` will create "
+"the ``vertices_tmp`` table and populate the ``source`` and ``target`` "
+"columns. The following example populated the remaining columns. In this "
+"example, the ``fcc`` column contains feature class code and the ``CASE`` "
+"statements converts it to an average speed."
+msgstr ""
+
+#: ../../src/tutorial/topology.rst:112
+msgid ""
+"Now your database should be ready to use any (most?) of the pgRouting "
+"algorithms."
+msgstr ""
+
+#: ../../src/tutorial/topology.rst:116
+msgid "See Also"
+msgstr ""
+
+#: ../../src/tutorial/topology.rst:118
+msgid ":ref:`pgr_create_topology`"
+msgstr ""
+
+#: ../../src/tutorial/topology.rst:119
+msgid ":ref:`pgr_node_network`"
+msgstr ""
+
+#: ../../src/tutorial/topology.rst:120
+msgid ":ref:`pgr_point_to_id`"
+msgstr ""
