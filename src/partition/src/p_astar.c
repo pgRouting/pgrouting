@@ -247,7 +247,7 @@ fetch_edge_p_astar(HeapTuple *tuple, TupleDesc *tupdesc,
 
 
 edge_p_astar_t *
-fetch_partition_edges(int pid,int *ptuples,bool has_reverse_cost);
+fetch_partition_edges(int pid,int *ptuples,bool has_reverse_cost)
 {
   int SPIcode;
   void *SPIplan;
@@ -348,7 +348,7 @@ fetch_partition_edges(int pid,int *ptuples,bool has_reverse_cost);
 //  profstop("extract", prof_extract);
 //  profstart(prof_astar);
 
-  SPI_code=SPI_finish();
+  SPIcode=SPI_finish();
    if (SPIcode  != SPI_OK_FINISH ) {
                elog(ERROR,"couldn't disconnect from SPI");
 	       return edges;}
