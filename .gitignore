@@ -2,5 +2,6 @@
 build
 .DS_Store
 .vagrant
+issues
 tools/vagrant/packaging.sh
 *.mo
