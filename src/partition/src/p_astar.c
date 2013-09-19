@@ -246,7 +246,7 @@ fetch_edge_p_astar(HeapTuple *tuple, TupleDesc *tupdesc,
 }
 
 
-edge_p_astar_t *
+edge_p_astar_t * 
 fetch_partition_edges(int pid,int *ptuples,bool has_reverse_cost)
 {
   int SPIcode;

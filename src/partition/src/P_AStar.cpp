@@ -130,7 +130,7 @@ double P_AStar::getHcost( int node_id)
 double P_AStar::dist(double x1, double y1, double x2, double y2)
 {
 	double ret = fabs((x1 - x2) + fabs(y1 - y2));
-	return(ret );
+	return(ret * 10 );
 }
 
 // construct the path from the source node
@@ -324,7 +324,12 @@ int P_AStar::p_astar(int start_vertex,int end_vertex,int s_pid, int t_pid,bool h
        else 
        {
 
-               
+	       path_element_t pelement;
+	       pelement.vertex_id = end_vertex;
+	       pelement.edge_id = -1;                
+	       pelement.cost = 0.0;
+	       m_vecPath.push_back(pelement);
+
 
 	       // Transfer data path to path_element_t format and allocate memory and populate the pointer
 	       *path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));

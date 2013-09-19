@@ -7,7 +7,7 @@ using namespace std;
 
 bool Compare::operator() ( pq_pair* p1, pq_pair *p2)
 {
-	if(p1->cost > p2->cost)
+	if(p1->cost < p2->cost)
 		return true;
 	return false;
 }
