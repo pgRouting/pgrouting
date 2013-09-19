@@ -8,17 +8,17 @@ typedef struct vrp_vehicles
 {
 	int id;
 	int capacity;
-	float8 costperkm;
+	
 } vrp_vehicles_t;
 
 
 typedef struct vrp_orders 
 {
 	int id;
-	int orderunit;
-	int opentime;
-	int closetime;
-	int servicetime;
+	int order_unit;
+	int open_time;
+	int close_time;
+	int service_time;
 	
 	float8 x;
 	float8 y;
@@ -32,8 +32,6 @@ typedef struct vrp_cost_element
 	int cost;
 	int distance;
 	int traveltime;
-	
-	int costtype; // 0 for depot-order, 1 for order-order, 2 for order-depot
 
 }vrp_cost_element_t;
 
@@ -52,7 +50,7 @@ typedef struct vrp_result_element
 extern "C"
 #endif
 
-int vrp_basic_wrapper(vrp_vehicles_t *vehicles, int vehicle_count, 
+int find_vrp_solution(vrp_vehicles_t *vehicles, int vehicle_count, 
 					  vrp_orders_t *orders, int order_count,
 					  vrp_cost_element_t *costmatrix, int cost_count,
 					  int depot_id,
