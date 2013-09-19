@@ -30,7 +30,7 @@
           <p>This documentation is for the released versions and will contain corrections and errata as they are available.</p>
           <div class="toctree-wrapper compound">
             <ul>
-              <li class="toctree-l1"><a class="reference internal" href="http://pgrouting.org/docs/2.0/index.html">pgRouting 2.0</a></li>
+              <li class="toctree-l1"><a class="reference internal" href="http://docs.pgrouting.org/2.0/en/doc/index.html">pgRouting 2.0</a></li>
               <li class="toctree-l1"><a class="reference internal" href="http://pgrouting.org/docs/1.x/index.html">pgRouting 1.0</a></li>
             </ul>
           </div>
