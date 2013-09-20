@@ -1,0 +1,71 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../src/installation/build.rst:13
+msgid "Build Guide"
+msgstr ""
+
+#: ../../src/installation/build.rst:15
+msgid ""
+"To be able to compile pgRouting make sure that the following dependencies "
+"are met:"
+msgstr ""
+
+#: ../../src/installation/build.rst:17
+msgid "C and C++ compilers"
+msgstr ""
+
+#: ../../src/installation/build.rst:18
+msgid "Postgresql version >= 8.4 (>= 9.1 recommended)"
+msgstr ""
+
+#: ../../src/installation/build.rst:19
+msgid "PostGIS version >= 1.5 (>= 2.0 recommended)"
+msgstr ""
+
+#: ../../src/installation/build.rst:20
+msgid "The Boost Graph Library (BGL). Version >= [TBD]"
+msgstr ""
+
+#: ../../src/installation/build.rst:21
+msgid "CMake >= 2.8.8"
+msgstr ""
+
+#: ../../src/installation/build.rst:22
+msgid "(optional, for Driving Distance) CGAL >= [TBD]"
+msgstr ""
+
+#: ../../src/installation/build.rst:23
+msgid "(optional, for Documentation) Sphinx >= 1.1"
+msgstr ""
+
+#: ../../src/installation/build.rst:27
+msgid "For MinGW on Windows"
+msgstr ""
+
+#: ../../src/installation/build.rst:39
+msgid "For Linux"
+msgstr ""
+
+#: ../../src/installation/build.rst:51
+msgid "With Documentation"
+msgstr ""
+
+#: ../../src/installation/build.rst:53
+msgid ""
+"Build with documentation (requires `Sphinx <http://sphinx-doc.org/>`_):"
+msgstr ""
+
+#: ../../src/installation/build.rst:60
+msgid "Rebuild modified documentation only:"
+msgstr ""

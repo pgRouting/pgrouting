@@ -1,0 +1,105 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+# erikap, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Documentation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-24 11:12+0000\n"
+"Last-Translator: erikap\n"
+"Language-Team: French (http://www.transifex.com/projects/p/pgrouting/language/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+# 81e0b58a4b464395b3661da85edfaa90
+#: ../../../src/common/doc/functions/point_to_id.rst:13
+msgid "pgr_pointToId - Inserts point into a vertices table"
+msgstr "pgr_pointToId - Insère un point dans un tableau de sommets"
+
+# 9bebf9f4ff2b43a39470ee284698fa33
+#: ../../../src/common/doc/functions/point_to_id.rst:20
+msgid "Name"
+msgstr "Nom"
+
+# 8fcf7e9e33b448b982f7111389a7e412
+#: ../../../src/common/doc/functions/point_to_id.rst:22
+msgid "``pgr_pointToId`` — Inserts a point into a temporary vertices table."
+msgstr "``pgr_pointToId`` — Insère un point dans un tableau temporaire de sommets a point"
+
+# 1ebe04b75e4444e2970f12bf667f07fa
+#: ../../../src/common/doc/functions/point_to_id.rst:26
+msgid ""
+"This function should not be used directly. Use :ref:`pgr_createTopology "
+"<pgr_create_topology>` instead."
+msgstr "Cette fonction ne devrait pas être utilisée directement. Utiliser :ref:`pgr_createTopology <pgr_create_topology>` à la place."
+
+# 8c3303cb3d73446795471f411d835691
+#: ../../../src/common/doc/functions/point_to_id.rst:30
+msgid "Synopsis"
+msgstr "Synopsis"
+
+# e17d53fea1674ad692e9d65129c04e5d
+#: ../../../src/common/doc/functions/point_to_id.rst:32
+msgid ""
+"Inserts a point into a temporary vertices table, and returns an id of a new "
+"point or an existing point. Tolerance is the minimal distance between "
+"existing points and the new point to create a new point."
+msgstr "Insère un point dans un tableau temporaire de sommets, et retourne un id d'un nouveau point ou d'un point existant. La tolérance est la distance minimale entre les points existants et le nouveau point pour créer un nouveau point."
+
+# 4b067a809bbd4210baf154f274aab5f0
+#: ../../../src/common/doc/functions/point_to_id.rst:40
+msgid "Description"
+msgstr "Description"
+
+# de6b0b7b7ae44691a60a709a1245e12c
+#: ../../../src/common/doc/functions/point_to_id.rst:42
+msgid "``geometry`` of the existing point"
+msgstr "``geometry`` du point existant"
+
+# e05906cd2cd545eead6a6a277d441ea4
+#: ../../../src/common/doc/functions/point_to_id.rst:43
+msgid ""
+"``float8`` snapping tolerance of disconnected edges (in projection unit)"
+msgstr "Tolérance de fermeture ``float8`` des arêtes déconnectées (en unité de projection)"
+
+# 7eb52d95126d47efbf485a1397785c34
+#: ../../../src/common/doc/functions/point_to_id.rst:45
+msgid "Returns point id (``bigint``) of a new or existing point."
+msgstr "Retourne un id de point (``bigint``) d'un point nouveau ou existant."
+
+# 78ed162b771d42c1bdadb75ea1806c17
+#: ../../../src/common/doc/functions/point_to_id.rst:49
+msgid "History"
+msgstr "Histoire"
+
+# 932b962d76c14946b54db15e77b3c90d
+#: ../../../src/common/doc/functions/point_to_id.rst:50
+msgid "Renamed in version 2.0.0"
+msgstr "Renommé depuis la version 2.0.0"
+
+# c1b2ccd7df20427c88dcf1ebf4b06d82
+#: ../../../src/common/doc/functions/point_to_id.rst:54
+msgid "See Also"
+msgstr "Voir aussi"
+
+# 4dafa239ff7648c2952a2d3ee70671bf
+#: ../../../src/common/doc/functions/point_to_id.rst:56
+msgid ":ref:`pgr_create_topology`"
+msgstr ":ref:`pgr_create_topology`"
+
+# 8100a50d0b5f4b0cab8d62645becc674
+#: ../../../src/common/doc/functions/point_to_id.rst:57
+msgid ":ref:`topology`"
+msgstr ":ref:`topology`"
+
+# 86ad35d9d3ce44a696b6dc61c466e04e
+#: ../../../src/common/doc/functions/point_to_id.rst:58
+msgid ":ref:`pgr_node_network`"
+msgstr ":ref:`pgr_node_network`"

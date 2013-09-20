@@ -1,0 +1,246 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+# erikap, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Documentation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-21 19:10+0000\n"
+"Last-Translator: erikap\n"
+"Language-Team: French (http://www.transifex.com/projects/p/pgrouting/language/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+# 1d69d70e3de44767ae858314df13b562
+#: ../../src/developer/index.rst:13
+msgid "Developer's Guide"
+msgstr "Guide du développeur"
+
+# 82f29db373764b3e96cdb308263a9321
+#: ../../src/developer/index.rst:16
+msgid ""
+"All documentation should be in reStructuredText format. See: "
+"<http://docutils.sf.net/rst.html> for introductory docs."
+msgstr "Toute la documentation devrait être dans le format reStructuredText. Voir : <http://docutils.sf.net/rst.html> pour les docs d'introduction."
+
+# 5641994c410248fbb2042daf032b4f2d
+#: ../../src/developer/index.rst:20
+msgid "Source Tree Layout"
+msgstr "Disposition de l'Arbre des sources"
+
+# 696f1ffe5fef47a68eb3f899e315ac24
+#: ../../src/developer/index.rst:23
+msgid "cmake scripts used as part of our build system."
+msgstr "Scripts cmake utilisés en partie pour notre système de build."
+
+# 1f0669f1dce543df8ec72ab64c0a3435
+#: ../../src/developer/index.rst:26
+msgid ""
+"This is the algorithm source tree. Each alogorithm should be contained in "
+"its on sub-tree with doc, sql, src, and test sub-directories. This might get"
+" renamed to \"algorithms\" at some point."
+msgstr "Ceci est l'algorithme de l'arbre de sources. Chaque algorithme doit être contenu dans son sous-arbre avec sous-répertoires doc, sql, src, et test. Cela pourrait être renommé \"algorithms\" à un certain point."
+
+# d510542616954ff48b4208874a211b08
+#: ../../src/developer/index.rst:31
+msgid ""
+"This is an implementation of A* Search based on using Boost Graph libraries "
+"for its implementation. This is a Dijkstra shortest path implementation with"
+" a Euclidean Heuristic."
+msgstr "Ceci est une implémentation de la Recherche A* basée sur l'utilisation de la bibliothèque Boost Graph. Ceci est une implémentation du plus court chemin Dijkstra avec une Heuristique Euclidienne."
+
+# 82e5ed804fa34202903c4ca49117d16e
+#: ../../src/developer/index.rst:36
+msgid ""
+"At the moment this does not have an core in \"src\", but does have a lot of "
+"SQL wrapper code and topology code in the \"sql\" directory. *Algorithm "
+"specific wrappers should get move to the algorithm tree and appropriate "
+"tests should get added to validate the wrappers.*"
+msgstr "Pour le moment ceci n'a pas de core in \"src\", mais a un certain nombre de codes de wrappers SQL et de codes de topologie dans le répertoire \"sql\". *Les wrappers spécifiques d'algorithmes devraient être déplacées à l'arbre d'algorithme et les tests appropriés devraient être ajoutés pour valider les wrappers.*"
+
+# bfff36e01ca84eadbf8dd70bb1d2276b
+#: ../../src/developer/index.rst:42
+msgid ""
+"This is an implementation of Dikjstra's shortest path solution using Boost "
+"Graph libraries for the implementation."
+msgstr "Ceci est une implémentation de la solution du plus court chemin Dikjstra utilisant les bibliothèques Boost Graph pour l'implémentation."
+
+# 4b632593c518431abd06afc2badcf018
+#: ../../src/developer/index.rst:46
+msgid ""
+"This optional package creates driving distance polygons based on solving a "
+"Dijkstra shortest path solution, then creating polygons based on equal cost "
+"distances from the start point. This optional package requires CGAL "
+"libraries to be installed."
+msgstr "Ce paquet optionnel créée des polygones de driving distance basées sur la résolution de la solution du plus court chemin Dijkstra, ensuite en créant des polygones basés sur les distances de coût égal depuis le point de départ. Ce paquet optionnel requiert d'avoir installé les librairies CGAL."
+
+# 936e4db4894447a899f6c0b8ca26f617
+#: ../../src/developer/index.rst:52
+msgid ""
+"*DEPRECATED and DOES NOT WORK and IS BEING REMOVED* This is an edge based "
+"shortest path algorithm that supports turn restrictions. It is based on "
+"Boost Graph. Do *NOT* use this algorithm as it is broken, instead use *trsp*"
+" which has the same functionality and is faster and give correct results."
+msgstr "*DESAPPROUVE et NE FONCTIONNE PAS et SUR LE POINT D'ETRE SUPPRIME* Ceci est une arête basée sur l'algorithme du plus court chemin qui supporte les restrictions de virage. It is based on Boost Graph. Ne *PAS* utiliser cet algorithme comme il est cassé, utiliser *trsp* à la place, qui a la même fonctionnalité et est plus rapide et donne des résultats corrects. "
+
+# c7f26387b9b24096ba96fb7a518e437a
+#: ../../src/developer/index.rst:59
+msgid ""
+"This is a turn restricted shortest path algorithm. It has some nice features"
+" like you can specify the start and end points as a percentage along an "
+"edge. Restrictions are stored in a separate table from the graph edges and "
+"this make it easier to manage the data."
+msgstr "Ceci est un algorithme du plus court chemin avec restrictions de virage. Il a des caractéristiques sympathiques comme vous pouvez spécifiez les points de début et la fin comme un pourcentage d'une arête. Les restrictions sont sauvegardées dans une table séparée des arêtes du graphe et cela rend plus facile de gérer les données."
+
+# 3141234121954acaa2dc52065d5d7dce
+#: ../../src/developer/index.rst:65
+msgid ""
+"This optional package provides the ability to compute traveling salesman "
+"problem solutions and compute the resulting route. This optional package "
+"requires GAUL libaries to be installed."
+msgstr "Ce paquet optionnel fournit la capacité de calculer les solutions du problème du voyageur de commerce et calcule la route résultante. Ce paquet optionnel requiert l'installation des librairies GAUL."
+
+# 5ace4e065d5c41c2808f78da0db17058
+#: ../../src/developer/index.rst:70
+msgid "Miscellaneous scripts and tools."
+msgstr "Scripts divers et outils."
+
+# 498a3b11a76644cfa7088aa739876e51
+#: ../../src/developer/index.rst:73
+msgid ""
+"This is the output directory where compiled libraries and installation "
+"targets are staged before installation."
+msgstr "Ceci est le répertoire de sortie où les cibles des bibliothèques compilées et des installations sont présentées avant l'installation."
+
+# 52c0a49d07ec469bb08dae55c7b29f1d
+#: ../../src/developer/index.rst:78
+msgid "Documentation Layout"
+msgstr "Mise en page de la documentation"
+
+# 223870fbd494436ba478618c7f0655ab
+#: ../../src/developer/index.rst:80
+msgid ""
+"*As noted above all documentation should be done using reStructuredText "
+"formated files.*"
+msgstr "*Comme mentionné ci-dessus toute la documentation devrait être construite en utilisant les fichiers formattés  reStructuredText.*"
+
+# 056f8e732df8417c8d30876629544918
+#: ../../src/developer/index.rst:83
+msgid ""
+"Documentation is distributed into the source tree. This top level \"doc\" "
+"directory is intended for high level documentation cover subjects like:"
+msgstr "La documentation est distribuée dans l'arbre des sources. Ce répertoire \"doc\" de haut niveau est prévu pour la documentation de haut niveau couvrant les sujets comme :"
+
+# cb7d40e7fa8f4bf99586caad505ee056
+#: ../../src/developer/index.rst:86
+msgid "Compiling and testing"
+msgstr "Compilation et tests"
+
+# f8297a944ea14512ac068fffbebb9704
+#: ../../src/developer/index.rst:87
+msgid "Installation"
+msgstr "Installation"
+
+# 2623e7a6862948a88651b230afb04066
+#: ../../src/developer/index.rst:88
+msgid "Tutorials"
+msgstr "Tutoriels"
+
+# 48cc983d7eb14596bc213e04f2424ef5
+#: ../../src/developer/index.rst:89
+msgid "Users' Guide front materials"
+msgstr "Documentation liminaire du Guide Utilisateur"
+
+# 35d4289409ff4e20b9f3fc99e5ff3ebc
+#: ../../src/developer/index.rst:90
+msgid "Reference Manual front materials"
+msgstr "Documentation liminaire du Manuel de référence"
+
+# 0a39de23e4754aeaaf23bda932025e46
+#: ../../src/developer/index.rst:91
+msgid "etc"
+msgstr "etc"
+
+# 1d97d5eb207f4948a5d054cbc1f0d11d
+#: ../../src/developer/index.rst:93
+msgid ""
+"Since the algorithm specific documentation is contained in the source tree "
+"with the algorithm specific files, the process of building the documentation"
+" and publishing it will need to assemble the details with the front material"
+" as needed."
+msgstr "Puisque la documentation spécifique de l'algorithme est contenue dans l'arbre de sources avec les fichiers spécifiques de l'algorithme, le processus de la construction de la documentation et la publication va avoir besoin d'assembler les détails avec la documentation de premier rang si besoin."
+
+# 4a479c8d44504c31bb0c966f29b59fca
+#: ../../src/developer/index.rst:98
+msgid ""
+"Also, to keep the \"doc\" directory from getting cluttered, each major book "
+"like those listed above, should be contained in a separate directory under "
+"\"doc\". Any images or other materials related to the book should also be "
+"kept in that directory."
+msgstr "Aussi, pour empêcher le répertoire \"doc\" d'être encombré, chaque libre majeur comme ceux listés ci-dessus, doivent être contenu dans un répertoire séparé dans \"doc\". Toutes les images ou autres documents liés au livre doivent être aussi mis dans ce répertoire."
+
+# c7f0aeb3bd8b446780356e0c8cda8810
+#: ../../src/developer/index.rst:105
+msgid "Testing Infrastructure"
+msgstr "Infrastructure de test"
+
+# c623e96a0a244704afbc0fd1bdc839eb
+#: ../../src/developer/index.rst:107
+msgid ""
+"There is a very basic testing infrastructure put in place. Here are the "
+"basics of how it works. We need more test cases. Longer term we should "
+"probably get someone to setup travis-ci or jenkins testing frameworks."
+msgstr "L'infrastructure de test mise en place est très basique. Voici les bases de comment ça marche. Nous avons besoin de plus de cas de tests. A long terme nous devrons probablement avoir une personne pour installer les frameworks travis-ci ou jenkins."
+
+# 795beec501574346bf79b70ec796327d
+#: ../../src/developer/index.rst:111
+msgid "Here is the graph for the TRSP tests."
+msgstr "Voici le graphe des tests TRSP."
+
+# c307557b6e9345bb80ecec65181e0e3b
+#: ../../src/developer/index.rst:115
+msgid ""
+"Tests are run via the script at the top level tools/test-runner.pl and it "
+"runs all the test configured tests and at the moment just dumps the results "
+"structure of the test. This can be prettied up later."
+msgstr "Les tests sont lancés via le script au haut niveau tools/test-runner.pl qui exécute tous les tests configurés et pour le moment produit en résultats la structure de test. Cela peut être amélioré par la suite."
+
+# 0124c9e435cd45ed8add01948a01c8b4
+#: ../../src/developer/index.rst:119
+msgid ""
+"It also assumes that you have installed the libraries as it tests using the "
+"installed postgresql. This probably needs to be made smarter so we can test "
+"out of the build tree. I'll need to think about that."
+msgstr "Cela suppose aussi que vous avez installé les librairies car les tests requièrent postgresql installé. Il est probablement nécessaire de rendre cela mieux conçu pour que nous puissions essayer l'arbre de build. Je vais essayer de réfléchir à ça."
+
+# ba9f62496a8043bfa546ff97514644ee
+#: ../../src/developer/index.rst:124
+msgid ""
+"Basically each .../test/ directory should include one *test.conf* file that "
+"is a perl script fragment that defines what data files to load and what "
+"tests to run. I have built in some mechanisms to allow test and data to be "
+"pg version and postgis version specific, but I'm not using that yet. So for "
+"example, *core/trsp/test/test-any-00.data* is a sql plain text dump that "
+"will load and needed data for a set of tests. This is also the graph in the "
+"image above. You can specify multiple files to load, but as a group they "
+"need to have unique names."
+msgstr "Simplement chaque répertoire .../test/ doit inclure un fichier *test.conf* qui est un fragment de script perl qui définit quels fichiers de données charger et quels tests lancer. J'ai intégré certains mécanismes pour autoriser tests et données d'être spécifiques aux version pg et postgis, mais je ne l'utilise pas encore. Ainsi par exemple, *core/trsp/test/test-any-00.data* est un texte plein généré qui va charger les données nécessaires pour un jeu de tests. C'est aussi le graphe dans l'image de dessus. Vous pouvez spécifier plusieurs fichiers à charger, mais comme un groupe ils ont besoin d'avoir des noms uniques."
+
+# 43961b4cdd0949378b7a7fc420ef8db7
+#: ../../src/developer/index.rst:133
+msgid ""
+"core/trsp/test/test-any-00.test is a sql command to be run. It will get run "
+"as:"
+msgstr "core/trsp/test/test-any-00.test est une commande sql qui peut être exécutée. Elle s'exécute ainsi : "
+
+# bcfc5aa90d5f426eb6d757230beba796
+#: ../../src/developer/index.rst:141
+msgid "Then if there is a difference then an test failure is reported."
+msgstr "Ensuite si il y a une différence, alors un échec de test est reporté."

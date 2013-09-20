@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+# erikap, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Documentation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-22 18:15+0000\n"
+"Last-Translator: erikap\n"
+"Language-Team: French (http://www.transifex.com/projects/p/pgrouting/language/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+# f85a66c48ca94cc9a5bba227e6479482
+#: ../../../src/common/doc/functions/is_column_indexed.rst:13
+msgid "pgr_isColumnIndexed - Check if column is indexed"
+msgstr "pgr_isColumnIndexed - Vérifier si la colonne est indexée"
+
+# a4e361cfe30d494982b2755f507c2df4
+#: ../../../src/common/doc/functions/is_column_indexed.rst:20
+msgid "Name"
+msgstr "Nom"
+
+# 2616614bd27b4f3aac95e5ee66f8771c
+#: ../../../src/common/doc/functions/is_column_indexed.rst:22
+msgid "``pgr_isColumnIndexed`` — Check if a column in a table is indexed."
+msgstr "``pgr_isColumnIndexed`` — Vérifier si une colonne dans une table est indexée."
+
+# 4aff78895aaf431bb254a1725ab1bab6
+#: ../../../src/common/doc/functions/is_column_indexed.rst:26
+msgid "Synopsis"
+msgstr "Synopsis"
+
+# 62d98585fdfb49d287f711a97ba6f261
+#: ../../../src/common/doc/functions/is_column_indexed.rst:28
+msgid ""
+"Returns ``true`` or ``false`` if column “col” in table “tab” is indexed."
+msgstr "Retourne ``true`` ou ``false`` si la colonne “col” dans la table “tab” est indexée."
+
+# 016a3d2a60a745c39afdaa4ba6d24b5f
+#: ../../../src/common/doc/functions/is_column_indexed.rst:36
+msgid "Description"
+msgstr "Description"
+
+# 5efc6b2a366544cdadac135ab40dee54
+#: ../../../src/common/doc/functions/is_column_indexed.rst:38
+msgid "``text`` table name with or without schema component"
+msgstr "Le nom de la table ``text`` avec ou sans composant de schéma"
+
+# 76548c59562d4c4188ea7a5bbd5b769a
+#: ../../../src/common/doc/functions/is_column_indexed.rst:39
+msgid "``text`` column name to be checked for"
+msgstr "``text`` nom de colonne à être vérifié pour"
+
+# 20bbf0766ada4f7b81807c2e917be118
+#: ../../../src/common/doc/functions/is_column_indexed.rst:43
+msgid "History"
+msgstr "Histoire"
+
+# 3ca6785c8cb24235a6b581e63c32bd03
+#: ../../../src/common/doc/functions/is_column_indexed.rst:44
+msgid "New in version 2.0.0"
+msgstr "Nouveau depuis la version 2.0.0"
+
+# 89feb49b01e94980935495257bf135a9
+#: ../../../src/common/doc/functions/is_column_indexed.rst:48
+msgid "Examples"
+msgstr "Exemples"
+
+# c8b849f8431c42ef9ecdcde47c516f03
+#: ../../../src/common/doc/functions/is_column_indexed.rst:59
+msgid "The queries use the :ref:`sampledata` network."
+msgstr "Les requêtes utilisent le réseau :ref:`sampledata`."
+
+# 4d38c2d872d0425290c2371cbc5d27e8
+#: ../../../src/common/doc/functions/is_column_indexed.rst:63
+msgid "See Also"
+msgstr "Voir aussi"
+
+# ed5ed4b10dc74af48b9de1a8743ec37b
+#: ../../../src/common/doc/functions/is_column_indexed.rst:65
+msgid ":ref:`pgr_is_column_in_table`"
+msgstr ":ref:`pgr_is_column_in_table`"

@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+# erikap, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Documentation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-22 18:09+0000\n"
+"Last-Translator: erikap\n"
+"Language-Team: French (http://www.transifex.com/projects/p/pgrouting/language/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+# 59a19788e4ba478cb0d046fc07c08179
+#: ../../../src/common/doc/functions/quote_ident.rst:13
+msgid "pgr_quote_ident - Quote table name with Schema Component"
+msgstr "pgr_quote_ident - Nom de table entre guillemets avec composant de schéma"
+
+# 61a86f593d04476692b89157939b8a1e
+#: ../../../src/common/doc/functions/quote_ident.rst:20
+msgid "Name"
+msgstr "Nom"
+
+# 7ae4a51cc62143058b829f9317d4b282
+#: ../../../src/common/doc/functions/quote_ident.rst:22
+msgid ""
+"``pgr_quote_ident`` — Quote table name with or without schema component."
+msgstr "``pgr_quote_ident`` — Nom de table entre guillemets avec ou sans composant de schéma."
+
+# d09400822917498ab08038e0453f93a2
+#: ../../../src/common/doc/functions/quote_ident.rst:26
+msgid "Synopsis"
+msgstr "Synopsis"
+
+# 02e534c6d94e4d7fa366eb30dfd82602
+#: ../../../src/common/doc/functions/quote_ident.rst:28
+msgid ""
+"Function to split a string on ``.`` characters and then quote the components"
+" as postgres identifiers and then join them back together with ``.`` "
+"characters. Multile ``.`` will get collapsed into a single ``.``, so "
+"``schema...table`` till get returned as ``schema.\"table\"`` and "
+"``Schema.table`` becomes ``\"Schema\".\"table\"``."
+msgstr "Fonction pour partager une chaîne de caractères sur les caractères ``.`` et ensuite mettre entre guillemets les composants comme les identifiants postgres et ensuite les joindre ensemble avec les caractères ``.``. Les multiples ``.`` seront fusionnés en un unique ``.``, ainsi ``schema...table`` sera retourné en ``schema.\"table\"`` et ``Schema.table`` devient ``\"Schema\".\"table\"``."
+
+# 70b63ad008b14b5cbd540f478c596e97
+#: ../../../src/common/doc/functions/quote_ident.rst:37
+msgid "Description"
+msgstr "Description"
+
+# 76375d16726e4e8a8c4e02b54bd4b33a
+#: ../../../src/common/doc/functions/quote_ident.rst:39
+msgid "``text`` table name with or without schema component"
+msgstr "Le nom de la table ``text`` avec ou sans composant de schéma"
+
+# d8548a7bfe3542b28f614894ba6f4b84
+#: ../../../src/common/doc/functions/quote_ident.rst:41
+msgid "Returns table name with or without schema as ``text``."
+msgstr "Retourne le nom de la table avec ou sans schéma comme "
+
+# ebc95d6ee53c42f29aa6a18a134d4d20
+#: ../../../src/common/doc/functions/quote_ident.rst:45
+msgid "History"
+msgstr "Histoire"
+
+# 6bea52def68e4f05ae56873b8d4f9d1c
+#: ../../../src/common/doc/functions/quote_ident.rst:46
+msgid "New in version 2.0.0"
+msgstr "Nouveau depuis la version 2.0.0"
+
+# 21e9cb20b57e4b4681d4e04d5f083d2a
+#: ../../../src/common/doc/functions/quote_ident.rst:50
+msgid "Examples"
+msgstr "Exemples"
+
+# 5e3a344a21eb45bfba3e880ae3981a30
+#: ../../../src/common/doc/functions/quote_ident.rst:77
+msgid "See Also"
+msgstr "Voir aussi"
+
+# b4ee52cbb2b74bb59b22b1802748f96d
+#: ../../../src/common/doc/functions/quote_ident.rst:79
+msgid "[TBD]"
+msgstr "[À déterminer]"

@@ -1,0 +1,195 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+# erikap, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Documentation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-25 07:10+0000\n"
+"Last-Translator: erikap\n"
+"Language-Team: French (http://www.transifex.com/projects/p/pgrouting/language/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+# f0e0b2df0e0343c9a028f135f6fa9d82
+#: ../../../src/bd_dijkstra/doc/index.rst:13
+msgid "pgr_bdDijkstra - Bi-directional Dijkstra Shortest Path"
+msgstr "pgr_bdDijkstra - Plus court chemin bidirectionnel Dijkstra"
+
+# 9fb50a51fd6d4c97b58c9e0af0ae2c78
+#: ../../../src/bd_dijkstra/doc/index.rst:21
+msgid "Name"
+msgstr "Nom"
+
+# 528ab5c49a504559aad6510b3f76e880
+#: ../../../src/bd_dijkstra/doc/index.rst:23
+msgid ""
+"``pgr_bdDijkstra`` - Returns the shortest path using Bidirectional Dijkstra "
+"algorithm."
+msgstr "``pgr_bdDijkstra`` - Retourne le plus court chemin en utilisant l'algorithme bidirectionnel Dijkstra."
+
+# a361a1ee897141cab3d40973c8a88511
+#: ../../../src/bd_dijkstra/doc/index.rst:27
+msgid "Synopsis"
+msgstr "Synopsis"
+
+# 4b3c616d815547b1b2db338198bde8c8
+#: ../../../src/bd_dijkstra/doc/index.rst:29
+msgid ""
+"This is a bi-directional Dijkstra search algorithm. It searchs from the "
+"source toward the distination and at the same time from the destination to "
+"the source and terminates whe these to searchs meet in the middle. Returns a"
+" set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows,"
+" that make up a path."
+msgstr "C'est un algorithme de recherche bidirectionnel Dijkstra. Cela recherche depuis la source vers la destination et en même temps depuis la destination vers la source et se termine quand ces deux recherches se rencontrent au milieu. Retourne un ensemble de lignes :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost), qui fabriquent un chemin."
+
+# 76d490ec23054efcb64d4214f2f0909b
+#: ../../../src/bd_dijkstra/doc/index.rst:38
+msgid "Description"
+msgstr "Description"
+
+# 30ed3da294244ad3bc811b2ed05a797d
+#: ../../../src/bd_dijkstra/doc/index.rst:40
+msgid ""
+"a SQL query, which should return a set of rows with the following columns:"
+msgstr "une requête SQL, qui devrait retourner un ensemble de lignes avec les colonnes suivantes :"
+
+# 40863b2fe1994ece9d1cbc6c5ef4cefb
+#: ../../../src/bd_dijkstra/doc/index.rst:47
+msgid "``int4`` identifier of the edge"
+msgstr "``int4`` identifiant de l'arête"
+
+# 48a96f24e9b948c29cc08a3348827eb8
+#: ../../../src/bd_dijkstra/doc/index.rst:48
+msgid "``int4`` identifier of the source vertex"
+msgstr "``int4`` identifiant du sommet source"
+
+# e7f5432fe48a4280b33114cf1354c5fd
+#: ../../../src/bd_dijkstra/doc/index.rst:49
+msgid "``int4`` identifier of the target vertex"
+msgstr "``int4`` identifiant du sommet cible"
+
+# 957d806570a2415bbabe44e88a25107f
+#: ../../../src/bd_dijkstra/doc/index.rst:50
+msgid ""
+"``float8`` value, of the edge traversal cost. A negative cost will prevent "
+"the edge from being inserted in the graph."
+msgstr "``float8`` valeur, du coût de l'arête traversée. Un coût négatif va prévenir l'arête d'être insérée dans le graphe."
+
+# 392a5bd903b94d10be047c80dd606a55
+#: ../../../src/bd_dijkstra/doc/index.rst:51
+msgid ""
+"(optional) the cost for the reverse traversal of the edge. This is only used"
+" when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the "
+"above remark about negative costs)."
+msgstr "(optionnel) le coût pour la traversée inverse de l'arête. Ceci est seulement utilisé quand les paramètres ``directed`` et ``has_rcost`` sont ``true`` (voir la remarque ci-dessus sur les coûts négatifs)."
+
+# f062b812fc2947029be15c2f8d1ed0d8
+#: ../../../src/bd_dijkstra/doc/index.rst:53
+msgid "``int4`` id of the start point"
+msgstr "``int4`` id du point de départ"
+
+# fa0aae48a42f453aab758230c4d7a5d9
+#: ../../../src/bd_dijkstra/doc/index.rst:54
+msgid "``int4`` id of the end point"
+msgstr "``int4`` id du point final"
+
+# 853a1779bcd84a7f9a275fc0bbd0af63
+#: ../../../src/bd_dijkstra/doc/index.rst:55
+msgid "``true`` if the graph is directed"
+msgstr "``true`` si le graphe est dirigé"
+
+# 7971a05863f34cdaaa8ebd82289448e4
+#: ../../../src/bd_dijkstra/doc/index.rst:56
+msgid ""
+"if ``true``, the ``reverse_cost`` column of the SQL generated set of rows "
+"will be used for the cost of the traversal of the edge in the opposite "
+"direction."
+msgstr "si ``true``,  la colonne ``reverse_cost`` du SQL générant l'ensemble des lignes va être utilisé pour le coût de la traversée de l'arête dans la direction opposée."
+
+# d7ebb4aa14a046bea8638f0168fd1ab5
+#: ../../../src/bd_dijkstra/doc/index.rst:58
+msgid "Returns set of :ref:`type_cost_result`:"
+msgstr "Retourne un ensemble de :ref:`type_cost_result`:"
+
+# ec8614f0a71645d4894cf0082d2ab742
+#: ../../../src/bd_dijkstra/doc/index.rst:60
+msgid "row sequence"
+msgstr "séquence de ligne"
+
+# ea9d3167f43f4be8af65730b73d763e5
+#: ../../../src/bd_dijkstra/doc/index.rst:61
+msgid "node ID"
+msgstr "ID noeud"
+
+# b4e59f1b988742dc9cf826b5903e9d40
+#: ../../../src/bd_dijkstra/doc/index.rst:62
+msgid "edge ID (``-1`` for the last row)"
+msgstr "ID arête (``-1`` pour la dernière ligne)"
+
+# 9d568ac69b684713b1641c15b1d6d2e8
+#: ../../../src/bd_dijkstra/doc/index.rst:63
+msgid "cost to traverse from ``id1`` using ``id2``"
+msgstr "coût pour traverser depuis ``id1`` en utilisant ``id2``"
+
+# dacb53da506f45279c56f00249a78f88
+#: ../../../src/bd_dijkstra/doc/index.rst:66
+msgid "History"
+msgstr "Histoire"
+
+# e2f28bb052f94c179af3820812a2ba5d
+#: ../../../src/bd_dijkstra/doc/index.rst:67
+msgid "New in version 2.0.0"
+msgstr "Nouveau depuis la version 2.0.0"
+
+# 5df6176e09084c8e8e2cdea46b387b2f
+#: ../../../src/bd_dijkstra/doc/index.rst:71
+msgid "Examples"
+msgstr "Exemples"
+
+# 4b89d253a9084d86b9371a0d252cc151
+#: ../../../src/bd_dijkstra/doc/index.rst:73
+msgid "Without ``reverse_cost``"
+msgstr "Sans ``reverse_cost``"
+
+# 2c93e202e6bc43d88caf5b618f1c6a32
+#: ../../../src/bd_dijkstra/doc/index.rst:92
+msgid "With ``reverse_cost``"
+msgstr "Avec ``reverse_cost``"
+
+# a4a7c96788574babb47e953f235116ef
+#: ../../../src/bd_dijkstra/doc/index.rst:111
+msgid "The queries use the :ref:`sampledata` network."
+msgstr "Les requêtes utilisent le réseau :ref:`sampledata`."
+
+# 60fc631293c649e69dbff0ef1c672a6f
+#: ../../../src/bd_dijkstra/doc/index.rst:115
+msgid "See Also"
+msgstr "Voir aussi"
+
+# 2fac331c3752445c959eed759da95521
+#: ../../../src/bd_dijkstra/doc/index.rst:117
+msgid ":ref:`type_cost_result`"
+msgstr ":ref:`type_cost_result`"
+
+# 546f88ac72354dee9acf7aab885b7ff2
+#: ../../../src/bd_dijkstra/doc/index.rst:118
+msgid ":ref:`bd_astar`"
+msgstr ":ref:`bd_astar`"
+
+# 5d7effee56c74c66b670f09b7e1de764
+#: ../../../src/bd_dijkstra/doc/index.rst:119
+msgid "http://en.wikipedia.org/wiki/Bidirectional_search"
+msgstr "http://en.wikipedia.org/wiki/Bidirectional_search"
+
+# 25a096d3a1e2456699a06c1eaffa07bc
+#: ../../../src/bd_dijkstra/doc/index.rst:120
+msgid "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+msgstr "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"

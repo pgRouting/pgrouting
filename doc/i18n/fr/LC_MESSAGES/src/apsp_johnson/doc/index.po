@@ -1,0 +1,141 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+# erikap, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Documentation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-25 19:11+0000\n"
+"Last-Translator: erikap\n"
+"Language-Team: French (http://www.transifex.com/projects/p/pgrouting/language/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+# 3b399cae01c4448db64a38f0cb80dea4
+#: ../../../src/apsp_johnson/doc/index.rst:13
+msgid "pgr_apspJohnson - All Pairs Shortest Path, Johnson's Algorithm"
+msgstr "pgr_apspJohnson - Plus court chemin toutes paires, algorithme de Johnson"
+
+# 667270b3279f4a679e5470ae861a2324
+#: ../../../src/apsp_johnson/doc/index.rst:20
+msgid "Name"
+msgstr "Nom"
+
+# 220312e57d6c4cb88ef7f9445507c185
+#: ../../../src/apsp_johnson/doc/index.rst:22
+msgid ""
+"``pgr_apspJohnson`` - Returns all costs for each pair of nodes in the graph."
+msgstr "``pgr_apspJohnson`` - Retourne tous les coûts pour chaque paire de noeuds dans le graphe."
+
+# 6876fb34e3be43f78d64e4dd53f06035
+#: ../../../src/apsp_johnson/doc/index.rst:26
+msgid "Synopsis"
+msgstr "Synopsis"
+
+# 2ee7d51ea89c4613b59ab3b50f2b3700
+#: ../../../src/apsp_johnson/doc/index.rst:28
+msgid ""
+"Johnson's algorithm is a way to find the shortest paths between all pairs of"
+" vertices in a sparse, edge weighted, directed graph. Returns a set of "
+":ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows for "
+"every pair of nodes in the graph."
+msgstr "L'algorithme de Johnson est un moyen de trouver les plus courts chemins entre toutes les paires de sommets dans un graphe épars, pondéré arête, dirigé. Retourne un ensemble de lignes :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) pour chaque paire de nœuds dans le graphe."
+
+# 3dd02efac3c246f09da261d6774121d2
+#: ../../../src/apsp_johnson/doc/index.rst:36
+msgid "Description"
+msgstr "Description"
+
+# 9503ce3641a641c892f6c1be9b33bab1
+#: ../../../src/apsp_johnson/doc/index.rst:38
+msgid ""
+"a SQL query that should return the edges for the graph that will be "
+"analyzed:"
+msgstr "une requête SQL qui maintient les arêtes pour le graphe qui sera analysé :"
+
+# 9269c554d66c4aba97ef0db68376062e
+#: ../../../src/apsp_johnson/doc/index.rst:44
+msgid "``int4`` identifier of the source vertex for this edge"
+msgstr "``int4`` identifiant du sommet source pour cette arête"
+
+# 9deedee90d1842849537bb0f82bb1616
+#: ../../../src/apsp_johnson/doc/index.rst:45
+msgid "``int4`` identifier of the target vertex for this edge"
+msgstr "``int4`` identifiant du sommet cible pour cette arête"
+
+# 47068aa1686045eea0954f66330353df
+#: ../../../src/apsp_johnson/doc/index.rst:46
+msgid "``float8`` a positive value for the cost to traverse this edge"
+msgstr "``float8`` une valeur positive pour le coût pour traverser cette arête"
+
+# 7521849f19e2473cb6ea7fd6ddc7a677
+#: ../../../src/apsp_johnson/doc/index.rst:48
+msgid "Returns set of :ref:`type_cost_result`:"
+msgstr "Retourne un ensemble de :ref:`type_cost_result`:"
+
+# f017f03505744126b8c2a308ba2a2e04
+#: ../../../src/apsp_johnson/doc/index.rst:50
+msgid "row sequence"
+msgstr "séquence de ligne"
+
+# 669d3e5cf094434c807f281e3f5f7c6f
+#: ../../../src/apsp_johnson/doc/index.rst:51
+msgid "source node ID"
+msgstr "ID noeud source"
+
+# 67d92e4d26844e95befca0994c454de3
+#: ../../../src/apsp_johnson/doc/index.rst:52
+msgid "target node ID"
+msgstr "ID nœud cible"
+
+# 8ed8da0579ad437fa9a66e10dffd5844
+#: ../../../src/apsp_johnson/doc/index.rst:53
+msgid "cost to traverse from ``id1`` to ``id2``"
+msgstr "coût pour traverser de ``id1`` en utilisant ``id2``"
+
+# 2807f1b1efee4127a766446df738321b
+#: ../../../src/apsp_johnson/doc/index.rst:56
+msgid "History"
+msgstr "Histoire"
+
+# 7a575ee243744a0fa832f62e9fcfc104
+#: ../../../src/apsp_johnson/doc/index.rst:57
+msgid "New in version 2.0.0"
+msgstr "Nouveau depuis la version 2.0.0"
+
+# a39fe42926b240f1855e3bfb84c623c4
+#: ../../../src/apsp_johnson/doc/index.rst:61
+msgid "Examples"
+msgstr "Exemples"
+
+# b3f3e82223ce484a9cfb8e37013155ee
+#: ../../../src/apsp_johnson/doc/index.rst:78
+msgid "The query uses the :ref:`sampledata` network."
+msgstr "La requête utilise le réseau :ref:`sampledata`."
+
+# e1eafbeaf7c2490abb1da391e21f3578
+#: ../../../src/apsp_johnson/doc/index.rst:82
+msgid "See Also"
+msgstr "Voir aussi"
+
+# 7d669026f4d8497a8c805fa63ff6f79c
+#: ../../../src/apsp_johnson/doc/index.rst:84
+msgid ":ref:`type_cost_result`"
+msgstr ":ref:`type_cost_result`"
+
+# 0d127ccef0ac4e219aedb5bdd79ad88e
+#: ../../../src/apsp_johnson/doc/index.rst:85
+msgid ":ref:`pgr_apsp_warshall`"
+msgstr ":ref:`pgr_apsp_warshall`"
+
+# 88583b8ad25d4b7baa26d1a22155a864
+#: ../../../src/apsp_johnson/doc/index.rst:86
+msgid "http://en.wikipedia.org/wiki/Johnson%27s_algorithm"
+msgstr "http://en.wikipedia.org/wiki/Johnson%27s_algorithm"

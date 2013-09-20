@@ -1,0 +1,130 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+# erikap, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Documentation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-24 11:15+0000\n"
+"Last-Translator: erikap\n"
+"Language-Team: French (http://www.transifex.com/projects/p/pgrouting/language/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+# 751da4cc7a8a4b9184b65146f54ee2f7
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:13
+msgid "pgr_alphashape - Alpha shape computation"
+msgstr "pgr_alphashape - calcul de la forme Alpha"
+
+# a8e86fc8a1ce4526b7d7241cd7430f85
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:20
+msgid "Name"
+msgstr "Nom"
+
+# a4a731e189ec4572ba4a8c96f83d0cbe
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:22
+msgid "``pgr_alphashape`` — Core function for alpha shape computation."
+msgstr "``pgr_alphashape`` — Fonction Core pour le calcul de la forme alpha"
+
+# 0633bc08ce9c4e3c92b9f2894bc28163
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:26
+msgid ""
+"This function should not be used directly. Use :ref:`pgr_drivingDistance "
+"<pgr_driving_distance>` instead."
+msgstr "Cette fonction ne devrait pas être utilisée directement. Utilisez :ref:`pgr_drivingDistance <pgr_driving_distance>` à la place."
+
+# a75e137dc2704a44bddf581d3da9910e
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:30
+msgid "Synopsis"
+msgstr "Synopsis"
+
+# 5f592382013b4eb8a9cec9aaf7b9b27c
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:32
+msgid ""
+"Returns a table with (x, y) rows that describe the vertices of an alpha "
+"shape."
+msgstr "Retourne un tableau avec des lignes (x, y) qui décrivent les sommets d'une forme alpha."
+
+# c99894bc58654855b080610abe760595
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:40
+msgid "Description"
+msgstr "Description"
+
+# e0d065968f134d19a8f914152ad9d644
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:42
+msgid ""
+"``text`` a SQL query, which should return a set of rows with the following "
+"columns:"
+msgstr "``text`` une requête SQL, qui doit retourner un ensemble de lignes avec les colonnes suivantes :"
+
+# 9c56888dca9042d7aabe4353d4acc641
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:48
+msgid "``int4`` identifier of the vertex"
+msgstr "``int4`` identifiant du sommet"
+
+# 5d7a76e45e2c47af82995fe14cd37d3f
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:49
+msgid "``float8`` x-coordinate"
+msgstr "coordonnée x ``float8``"
+
+# 9087cda6c58b418bab28ed40865c6406
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:50
+msgid "``float8`` y-coordinate"
+msgstr "coordonnée y ``float8``"
+
+# efff811556d2404c972da0b4ed20aa4d
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:53
+msgid "Returns a vertex record for each row :"
+msgstr "Retourne un enregistrement sommet  pour chaque ligne :"
+
+# 2a3d73e301e54c72b01c94c05ccf2a22
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:55
+msgid "x-coordinate"
+msgstr "coordonnée x"
+
+# 2854a08e1fb846ea826f37a75302ff70
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:56
+msgid "y-coordinate"
+msgstr "coordonnée y"
+
+# 32b2237ea6d34c84aa76ead8e6efcb0e
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:60
+msgid "History"
+msgstr "Histoire"
+
+# 7efa65a200424382a51ba0a21d6d5b14
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:61
+msgid "Renamed in version 2.0.0"
+msgstr "Renommé depuis la version 2.0.0"
+
+# f900fff56e254ff9b907b43f0ef24066
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:65
+msgid "Examples"
+msgstr "Exemples"
+
+# 18551f47190b4a86bd40850f1bb4e656
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:81
+msgid "The queries use the :ref:`sampledata` network."
+msgstr "Les requêtes utilisent le réseau :ref:`sampledata`."
+
+# 85d2d1ca472341c1906889091cb12ef6
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:85
+msgid "See Also"
+msgstr "Voir aussi"
+
+# 6e8d7c671d064e298950bb3fe04c002e
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:87
+msgid ":ref:`pgr_driving_distance`"
+msgstr ":ref:`pgr_driving_distance`"
+
+# 0f30bf3bcf7c41758b10ba3ed1bea633
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:88
+msgid ":ref:`pgr_points_as_polygon`"
+msgstr ":ref:`pgr_points_as_polygon`"
