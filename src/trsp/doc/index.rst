@@ -120,8 +120,7 @@ Examples
 	  3 |    6 |   11 |    1
 	  4 |   11 |   13 |    1
 	  5 |   12 |   -1 |    0
-(6 rows)
-
+	(6 rows)
 
 
 * With turn restrictions
@@ -163,9 +162,7 @@ Then a query with turn restrictions is created as:
 	   3 |    6 |   11 |    1
 	   4 |   11 |   13 |    1
 	   5 |   12 |   -1 |    0
-(6 rows)
-
-
+	(6 rows)
 
 The queries use the :ref:`sampledata` network.
 
@@ -174,4 +171,3 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`type_cost_result`
-

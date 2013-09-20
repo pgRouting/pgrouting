@@ -36,7 +36,6 @@ The function reads edges from a not "noded" network table and writes the "noded"
 			 text  id='id', text the_geom='the_geom',text table_ending='noded')
   
 
-
 Description
 -------------------------------------------------------------------------------
 
@@ -59,8 +58,8 @@ The output table will have for  ``edge_table_noded``
 :id: ``bigint`` Unique identifier for the table
 :old_id: ``bigint``  Identifier of the edge in original table
 :sub_id: ``integer`` Segment number of the original edge
-:source: ``integer`` Empty source column to be used with  :ref:`create_topology` function
-:target: ``integer`` Empty target column to be used with  :ref:`create_topology` function
+:source: ``integer`` Empty source column to be used with  :ref:`pgr_create_topology` function
+:target: ``integer`` Empty target column to be used with  :ref:`pgr_create_topology` function
 :the geom: ``geometry`` Geometry column of the noded network
 
 .. rubric:: History
@@ -84,10 +83,9 @@ Let's create the topology for the data in :ref:`sampledata`
 	NOTICE:  Rows with NULL geometry or NULL id: 0
 	NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 	NOTICE:  ----------------------------------------------
- 
  	pgr_createtopology 
 	--------------------
- 	OK
+ 	 OK
 	(1 row)
 	
 Now we can analyze the network.
@@ -111,7 +109,7 @@ Now we can analyze the network.
 	NOTICE:                      Ring geometries: 0
  	pgr_analyzegraph 
 	------------------
- 	OK
+ 	 OK
 	(1 row)
 
 The analysis tell us that the network has a gap and and an intersection. We try to fix the problem using:
@@ -133,7 +131,7 @@ The analysis tell us that the network has a gap and and an intersection. We try 
 	NOTICE:  ----------------------------------
  	pgr_nodenetwork 
 	-----------------
- 	OK
+ 	 OK
 	(1 row)
 	
 Inspecting the generated table, we can see that edges 13,14 and 18 has been segmented
@@ -141,29 +139,29 @@ Inspecting the generated table, we can see that edges 13,14 and 18 has been segm
 .. code-block:: sql
 
 	SELECT old_id,sub_id FROM edge_table_noded ORDER BY old_id,sub_id;
- 	old_id | sub_id 
+ 	 old_id | sub_id 
 	--------+--------
-      	1      |      1
-      	2      |      1
-      	3      |      1
-      	4      |      1
-      	5      |      1
-      	6      |      1
-      	7      |      1
-      	8      |      1
-      	9      |      1
-     	10     |      1
-     	11     |      1
-     	12     |      1
-     	13     |      1
-     	13     |      2
-     	14     |      1
-     	14     |      2
-     	15     |      1
-     	16     |      1
-     	17     |      1
-     	18     |      1
-     	18     |      2
+  	 1      |      1
+  	 2      |      1
+  	 3      |      1
+  	 4      |      1
+  	 5      |      1
+  	 6      |      1
+  	 7      |      1
+  	 8      |      1
+  	 9      |      1
+ 	 10     |      1
+ 	 11     |      1
+ 	 12     |      1
+ 	 13     |      1
+ 	 13     |      2
+ 	 14     |      1
+ 	 14     |      2
+ 	 15     |      1
+ 	 16     |      1
+ 	 17     |      1
+ 	 18     |      1
+ 	 18     |      2
 	(21 rows)
 		
 We can create the topology of the new network
@@ -181,7 +179,7 @@ We can create the topology of the new network
 	NOTICE:  ----------------------------------------------
  	pgr_createtopology 
 	--------------------
- 	OK
+ 	 OK
 	(1 row)
 	
 Now let's analyze the new topology
@@ -205,25 +203,45 @@ Now let's analyze the new topology
 	NOTICE:                      Ring geometries: 0
  	pgr_createtopology 
 	--------------------
- 	OK
+ 	 OK
 	(1 row)
 
 
 Images
-------------
+-------------------------------------------------------------------------------
 
-+--------------------------------------+-------------------------------------+
-|.. Rubric:: Before Image              |.. Rubric:: After Image              |
-|                                      |                                     |
-|.. image:: images/before_node_net.png |.. image:: images/after_node_net.png |
-|   :scale: 60 %                       |   :scale: 60 %                      |
-|   :alt: alternate text               |   :alt: alternate text              |
-|   :align: left                       |   :align: right                     |
-+--------------------------------------+-------------------------------------+
+.. only:: html
+
+	+--------------------------------------+-------------------------------------+
+	|.. Rubric:: Before Image              |.. Rubric:: After Image              |
+	|                                      |                                     |
+	|.. image:: images/before_node_net.png |.. image:: images/after_node_net.png |
+	|   :scale: 60%                        |   :scale: 60%                       |
+	|   :alt: before image                 |   :alt: after image                 |
+	|   :align: left                       |   :align: right                     |
+	+--------------------------------------+-------------------------------------+
+
+
+.. only:: latex
+
+	.. Rubric:: Before Image
+
+	.. image:: images/before_node_net.png 
+		:scale: 60%
+		:alt: before image 
+		:align: left
+
+
+	.. Rubric:: After Image
+
+	.. image:: images/after_node_net.png 
+		:scale: 60%
+		:alt: after image 
+		:align: left
+
 
 Comparing the results
-----------------------------------------------
-
+-------------------------------------------------------------------------------
 
 Comparing with the Analysis in the original edge_table, we see that.  
 
@@ -245,16 +263,14 @@ Comparing with the Analysis in the original edge_table, we see that.
 |                  | they have 2 dead ends                   |  - Edge 17 now shares a node with edges 14-1 and 14-2        |
 |                  |                                         |  - Edges 18-1 and 18-2 share a node with edges 13-1 and 13-2 |
 +------------------+-----------------------------------------+--------------------------------------------------------------+
-|  Gaps            | There is a gap between edge 17 and 14   | Edge 14 was segmented                                      |
+|Gaps              | There is a gap between edge 17 and 14   | Edge 14 was segmented                                        |
 |                  | because edge 14 is near to the right    | Now edges: 14-1 14-2 17 share the same node                  |
 |                  | node of edge 17                         | The tolerance value was taken in account                     |
 +------------------+-----------------------------------------+--------------------------------------------------------------+
-|Intersections     | Edges 13 and 18 were intersecting       | Edges were segmented, So, now in the interection's         |
+|Intersections     | Edges 13 and 18 were intersecting       | Edges were segmented, So, now in the interection's           |
 |                  |                                         | point there is a node and the following edges share it:      |
 |                  |                                         | 13-1 13-2 18-1 18-2                                          |
 +------------------+-----------------------------------------+--------------------------------------------------------------+
-
-
 
 Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and 18-2 into our edge-table, copying the data for dir,cost,and reverse cost with tho following steps:
 
@@ -370,15 +386,10 @@ Or we can analyze everything because, maybe edge 18 is an overpass, edge 14 is a
 	(1 row)
 
 
-
-
-
-
 See Also
 -------------------------------------------------------------------------------
 
 :ref:`topology` for an overview of a topology for routing algorithms.
 :ref:`pgr_analyze_oneway` to analyze directionality of the edges.
-:ref: `pgr_create_topology`  to create a topology based on the geometry.
-:ref: `pgr_analyze_graph` to analyze the edges and vertices of the edge table.
-
+:ref:`pgr_create_topology` to create a topology based on the geometry.
+:ref:`pgr_analyze_graph` to analyze the edges and vertices of the edge table.

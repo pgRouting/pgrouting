@@ -17,14 +17,11 @@ Depending on the algorithm, you can create a topology or just reconstruct the ve
 We also provide a function to node an unoded network.
 
 .. toctree::
-   :maxdepth: 1
+  :maxdepth: 1
 
-	pgr_createTopology to create a topology based on the geometry.  <create_topology>
-	pgr_createVerticesTable -to reconstruct the vertices table based on the source and target information.  <create_vert_table>
-	pgr_analyzeGraph - to analyze the edges and vertices of the edge table. <analyze_graph>
-	pgr_analyzeOneway to analyze directionality of the edges.  <analyze_oneway>
-	pgr_nodeNetwork -to create nodes to a not noded edge table.  <node_network>
-
-
-
+  pgr_createTopology to create a topology based on the geometry. <create_topology>
+  pgr_createVerticesTable -to reconstruct the vertices table based on the source and target information. <create_vert_table>
+  pgr_analyzeGraph - to analyze the edges and vertices of the edge table. <analyze_graph>
+  pgr_analyzeOneway to analyze directionality of the edges. <analyze_oneway>
+  pgr_nodeNetwork -to create nodes to a not noded edge table. <node_network>
 

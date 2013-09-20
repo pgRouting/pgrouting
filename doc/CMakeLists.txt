@@ -96,7 +96,7 @@ if(WITH_DOC)
                 TARGET doc POST_BUILD
                 COMMAND ${SPHINX_EXECUTABLE} 
                     # -q   # Enable for quiet mode 
-                    -Q  # Enable for even more quiet mode
+                    # -Q  # Enable for even more quiet mode
                     -b ${DOC_TARGET}
                     -E  # don't use a saved environment, always read all file
                     -a  # write all files; default is to only write new and changed files
@@ -105,21 +105,6 @@ if(WITH_DOC)
                     "${PGROUTING_SOURCE_DIR}" 
                     "${PGROUTING_BINARY_DIR}/doc/${DOC_TARGET}/en"
                 COMMENT "Generating ${DOC_TARGET} documentation ...")
-
-            # add_custom_target(${DOC_TARGET}
-            #     ${SPHINX_EXECUTABLE}
-            #     # -q   # Enable for quiet mode
-            #     -Q  # Enable for even more quiet mode
-            #     -b ${DOC_TARGET}
-            #     -E  # don't use a saved environment, always read all file
-            #     -a  # write all files; default is to only write new and changed files
-            #     -d "${SPHINX_CACHE_DIR}"
-            #     -c "${BINARY_BUILD_DIR}" # enable if using cmake-generated conf.py
-            #     "${PGROUTING_SOURCE_DIR}"
-            #     "${PGROUTING_BINARY_DIR}/doc/${DOC_TARGET}/en"
-            #     COMMENT "Building ${DOC_TARGET} documentation with Sphinx")
-
-            # add_dependencies(doc ${DOC_TARGET})
         endforeach()
 
         if(BUILD_LATEX)
@@ -133,8 +118,6 @@ if(WITH_DOC)
                     COMMENT "Converting Latex to PDF format")
 
                 list(APPEND DOC_TARGETS pdf)
-                # add_dependencies(doc pdf)
-                # add_dependencies(pdf latex)
             endif()
         endif()
 

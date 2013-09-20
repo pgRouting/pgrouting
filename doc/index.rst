@@ -86,7 +86,6 @@ Developer
     src/changelog/index
 
 
-
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
