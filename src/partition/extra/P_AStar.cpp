@@ -146,7 +146,7 @@ void P_AStar::construct_path(int node_id)
 	pt.edge_id = it->second.par_Edge;
 	Long2FloatMap:: iterator t1=m_pFCost.find(it->first);
 	Long2FloatMap:: iterator t2=m_pFCost.find(it->second.par_Node);
-        pt.cost= t1->second - t2->second ;
+        pt.cost= t1->second - t2->second - getHcost(it->second.par_Node) ;
 	m_vecPath.push_back(pt);
 
 }

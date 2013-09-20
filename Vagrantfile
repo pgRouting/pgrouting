@@ -31,6 +31,6 @@ Vagrant.configure("2") do |config|
   
   # Create synced folder for GnuPG keys and within home directory
   config.vm.synced_folder "../", "/home/vagrant/repos"
-  config.vm.synced_folder "~/.gnupg", "/home/vagrant/.gnupg"
+# config.vm.synced_folder " "/home/vagrant/.gnupg"
 
 end

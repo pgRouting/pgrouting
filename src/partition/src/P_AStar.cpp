@@ -35,7 +35,7 @@ void P_AStar::initall(int s_pid, int t_pid,bool has_reverse_cost )
 	  m_pFCost.clear();
 	  loaded_partition.clear();
 	  closed_set.clear();
-
+          m_vecPath.clear();
           load_partition(s_pid,has_reverse_cost);
           load_partition(t_pid,has_reverse_cost); 	  
 
@@ -137,8 +137,8 @@ double P_AStar::dist(double x1, double y1, double x2, double y2)
 
 void P_AStar::construct_path(int node_id)
 {
-	Long2ParentMap::iterator it=m_pFParent.find(node_id);                     // still to be tested , i dont know if iterators	
-	if(it->second.par_Node==-1)                                               // work in recursion or not;  
+	Long2ParentMap::iterator it=m_pFParent.find(node_id);                     
+	if(it->second.par_Node==-1)                                                
 		return;
 	construct_path(it->second.par_Node);                                       
 	path_element_t pt;
@@ -146,7 +146,9 @@ void P_AStar::construct_path(int node_id)
 	pt.edge_id = it->second.par_Edge;
 	Long2FloatMap:: iterator t1=m_pFCost.find(it->first);
 	Long2FloatMap:: iterator t2=m_pFCost.find(it->second.par_Node);
-        pt.cost= t1->second - t2->second ;
+        pt.cost= t1->second - t2->second -getHcost(it->second.par_Node);
+//	Long2LongMap::iterator itMap = m_mapEdgeId2Index.find(it->second.par_Edge);
+//        pt.cost= m_vecEdgeVector[itMap->second].Cost;
 	m_vecPath.push_back(pt);
 
 }
@@ -156,6 +158,9 @@ void P_AStar::deleteall()
 	m_pFCost.clear();
 	m_vecNodeVector.clear();
 	m_vecEdgeVector.clear();
+	loaded_partition.clear();
+	closed_set.clear();
+	m_vecPath.clear();
 }
 
 void P_AStar::explore(int cur_node, double cur_cost, std::priority_queue<pq_pair*, std::vector<pq_pair*>, Compare > &que)
@@ -204,12 +209,6 @@ void P_AStar::explore(int cur_node, double cur_cost, std::priority_queue<pq_pair
 					   p1->cost=cur_cost + edge_cost + getHcost(con_node);
 					   que.push(p1);
 
-				/*	   if(getcost(con_node)<m_MinCost)
-					   {
-						   m_MinCost=getcost(con_node);         // minimum cost update so far 
-						   m_MidNode=con_node;
-					   }
-                                  */            
 			  }                                
 
 		  }
@@ -229,12 +228,6 @@ void P_AStar::explore(int cur_node, double cur_cost, std::priority_queue<pq_pair
 					   p1->cost=cur_cost + edge_cost + getHcost(con_node);
 					   que.push(p1);
 
-				/*	   if(getcost(con_node)<m_MinCost)
-					   {
-						   m_MinCost=getcost(con_node);
-						   m_MidNode=con_node;
-					   }
-                                  */            
 			  }                                
 		  }
 
@@ -266,7 +259,7 @@ int P_AStar::p_astar(int start_vertex,int end_vertex,int s_pid, int t_pid,bool h
 	pq_pair *ptr1=new pq_pair;                                         // push start vertex along with the cost into min heap
 
 	ptr1->node_id=start_vertex;
-	ptr1->cost=0.0;
+	ptr1->cost=0.0 + getHcost(start_vertex);
 	pque.push(ptr1);	
 
 	int new_node;
@@ -284,14 +277,6 @@ int P_AStar::p_astar(int start_vertex,int end_vertex,int s_pid, int t_pid,bool h
 
 		 check_whether_loaded(ptr3->node_id,has_reverse_cost);
 
-//		 Long2FloatMap::iterator it = m_pFCost.find(ptr3->node_id);
-                
-               /*  if(  ptr3->node_id==end_vertex)
-		 {
-			 //  reached target
-			 construct_path(m_MidNode);
-	                       break;
-		 }*/
 
                  if(ptr3->node_id == end_vertex)
 		 {
@@ -299,11 +284,6 @@ int P_AStar::p_astar(int start_vertex,int end_vertex,int s_pid, int t_pid,bool h
 			 flag=1;
 			break;		 
 		 }
-             /*    if(ptr3->cost > m_MinCost)
-		 {      
-			construct_path(m_MidNode);
-			break;
-		 }*/
 		 cur_node=ptr3->node_id;
 		 pque.pop();
 
