@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '2.0.0 (c9cb5b9 master)',
+        VERSION:     '2.0.0 (d4d49b7 master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -109,9 +109,9 @@
 </tr>
 <tr class="field-odd field"><th class="field-name">sub_id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Segment number of the original edge</td>
 </tr>
-<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Empty source column to be used with  <em class="xref std std-ref">create_topology</em> function</td>
+<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Empty source column to be used with  <a class="reference internal" href="create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> function</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Empty target column to be used with  <em class="xref std std-ref">create_topology</em> function</td>
+<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Empty target column to be used with  <a class="reference internal" href="create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> function</td>
 </tr>
 <tr class="field-even field"><th class="field-name">the geom:</th><td class="field-body"><tt class="docutils literal"><span class="pre">geometry</span></tt> Geometry column of the noded network</td>
 </tr>
@@ -134,10 +134,9 @@
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="k">Rows</span> <span class="k">with</span> <span class="k">NULL</span> <span class="n">geometry</span> <span class="k">or</span> <span class="k">NULL</span> <span class="n">id</span><span class="p">:</span> <span class="mi">0</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="k">table</span> <span class="k">for</span> <span class="k">table</span> <span class="k">public</span><span class="p">.</span><span class="n">edge_table</span> <span class="k">is</span><span class="p">:</span> <span class="k">public</span><span class="p">.</span><span class="n">edge_table_vertices_pgr</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="c1">----------------------------------------------</span>
-
 <span class="n">pgr_createtopology</span>
 <span class="c1">--------------------</span>
-<span class="n">OK</span>
+ <span class="n">OK</span>
 <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -159,7 +158,7 @@
 <span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
 <span class="n">pgr_analyzegraph</span>
 <span class="c1">------------------</span>
-<span class="n">OK</span>
+ <span class="n">OK</span>
 <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -179,35 +178,35 @@
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="c1">----------------------------------</span>
 <span class="n">pgr_nodenetwork</span>
 <span class="c1">-----------------</span>
-<span class="n">OK</span>
+ <span class="n">OK</span>
 <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Inspecting the generated table, we can see that edges 13,14 and 18 has been segmented</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">old_id</span><span class="p">,</span><span class="n">sub_id</span> <span class="k">FROM</span> <span class="n">edge_table_noded</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">old_id</span><span class="p">,</span><span class="n">sub_id</span><span class="p">;</span>
-<span class="n">old_id</span> <span class="o">|</span> <span class="n">sub_id</span>
+ <span class="n">old_id</span> <span class="o">|</span> <span class="n">sub_id</span>
 <span class="c1">--------+--------</span>
-<span class="mi">1</span>      <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">2</span>      <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">3</span>      <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">4</span>      <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">5</span>      <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">6</span>      <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">7</span>      <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">8</span>      <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">9</span>      <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">10</span>     <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">11</span>     <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">12</span>     <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">13</span>     <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">13</span>     <span class="o">|</span>      <span class="mi">2</span>
-<span class="mi">14</span>     <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">14</span>     <span class="o">|</span>      <span class="mi">2</span>
-<span class="mi">15</span>     <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">16</span>     <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">17</span>     <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">18</span>     <span class="o">|</span>      <span class="mi">1</span>
-<span class="mi">18</span>     <span class="o">|</span>      <span class="mi">2</span>
+ <span class="mi">1</span>      <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">2</span>      <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">3</span>      <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">4</span>      <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">5</span>      <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">6</span>      <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">7</span>      <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">8</span>      <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">9</span>      <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">10</span>     <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">11</span>     <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">12</span>     <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">13</span>     <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">13</span>     <span class="o">|</span>      <span class="mi">2</span>
+ <span class="mi">14</span>     <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">14</span>     <span class="o">|</span>      <span class="mi">2</span>
+ <span class="mi">15</span>     <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">16</span>     <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">17</span>     <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">18</span>     <span class="o">|</span>      <span class="mi">1</span>
+ <span class="mi">18</span>     <span class="o">|</span>      <span class="mi">2</span>
 <span class="p">(</span><span class="mi">21</span> <span class="k">rows</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -223,7 +222,7 @@
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="c1">----------------------------------------------</span>
 <span class="n">pgr_createtopology</span>
 <span class="c1">--------------------</span>
-<span class="n">OK</span>
+ <span class="n">OK</span>
 <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -245,7 +244,7 @@
 <span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
 <span class="n">pgr_createtopology</span>
 <span class="c1">--------------------</span>
-<span class="n">OK</span>
+ <span class="n">OK</span>
 <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -259,10 +258,10 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><p class="first rubric">Before Image</p>
-<a class="last reference internal image-reference" href="../../../../_images/before_node_net1.png"><img alt="alternate text" class="align-left" src="../../../../_images/before_node_net1.png" style="width: 460.2px; height: 440.4px;" /></a>
+<a class="last reference internal image-reference" href="../../../../_images/before_node_net1.png"><img alt="before image" class="align-left" src="../../../../_images/before_node_net1.png" style="width: 460.2px; height: 440.4px;" /></a>
 </td>
 <td><p class="first rubric">After Image</p>
-<a class="last reference internal image-reference" href="../../../../_images/after_node_net.png"><img alt="alternate text" class="align-right" src="../../../../_images/after_node_net.png" style="width: 456.0px; height: 439.2px;" /></a>
+<a class="last reference internal image-reference" href="../../../../_images/after_node_net.png"><img alt="after image" class="align-right" src="../../../../_images/after_node_net.png" style="width: 456.0px; height: 439.2px;" /></a>
 </td>
 </tr>
 </tbody>
@@ -271,6 +270,67 @@
 <div class="section" id="comparing-the-results">
 <h2>Comparing the results<a class="headerlink" href="#comparing-the-results" title="Permalink to this headline">¶</a></h2>
 <p>Comparing with the Analysis in the original edge_table, we see that.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="34%" />
+<col width="51%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&nbsp;</th>
+<th class="head">Before</th>
+<th class="head">After</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Table name</td>
+<td>edge_table</td>
+<td>edge_table_noded</td>
+</tr>
+<tr class="row-odd"><td>Fields</td>
+<td>All original fields</td>
+<td>Has only basic fields to do a topology analysis</td>
+</tr>
+<tr class="row-even"><td>Dead ends</td>
+<td><ul class="first simple">
+<li>Edges with 1 dead end: 1,6,24</li>
+<li>Edges with 2 dead ends  17,18</li>
+</ul>
+<p class="last">Edge 17&#8217;s right node is a dead end
+because there is no other edge sharing
+that same node. (cnt=1)</p>
+</td>
+<td>Edges with 1 dead end: 1-1 ,6-1,14-2, 18-1 17-1 18-2</td>
+</tr>
+<tr class="row-odd"><td>Isolated segments</td>
+<td>two isolated segments:  17 and 18 both
+they have 2 dead ends</td>
+<td><dl class="first last docutils">
+<dt>No Isolated segments</dt>
+<dd><ul class="first last simple">
+<li>Edge 17 now shares a node with edges 14-1 and 14-2</li>
+<li>Edges 18-1 and 18-2 share a node with edges 13-1 and 13-2</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td>Gaps</td>
+<td>There is a gap between edge 17 and 14
+because edge 14 is near to the right
+node of edge 17</td>
+<td>Edge 14 was segmented
+Now edges: 14-1 14-2 17 share the same node
+The tolerance value was taken in account</td>
+</tr>
+<tr class="row-odd"><td>Intersections</td>
+<td>Edges 13 and 18 were intersecting</td>
+<td>Edges were segmented, So, now in the interection&#8217;s
+point there is a node and the following edges share it:
+13-1 13-2 18-1 18-2</td>
+</tr>
+</tbody>
+</table>
 <p>Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and 18-2 into our edge-table, copying the data for dir,cost,and reverse cost with tho following steps:</p>
 <blockquote>
 <div><ul class="simple">
@@ -380,8 +440,8 @@
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="../../../../doc/src/tutorial/topology.html#topology"><em>Routing Topology</em></a> for an overview of a topology for routing algorithms.
 <a class="reference internal" href="analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a> to analyze directionality of the edges.
-:ref: <cite>pgr_create_topology</cite>  to create a topology based on the geometry.
-:ref: <cite>pgr_analyze_graph</cite> to analyze the edges and vertices of the edge table.</p>
+<a class="reference internal" href="create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> to create a topology based on the geometry.
+<a class="reference internal" href="analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a> to analyze the edges and vertices of the edge table.</p>
 </div>
 </div>
 
@@ -400,8 +460,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0 (c9cb5b9 master).
-      Last updated on Sep 18, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
+      Last updated on Sep 20, 2013.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

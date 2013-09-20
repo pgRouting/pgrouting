@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_kDijkstra - Plus court chemin Dijkstra à multiples destinations &mdash; pgRouting Manual (2.0.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0 (d4d49b7 master)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
+    <link rel="up" title="Routing Functions" href="../../index.html" />
+    <link rel="next" title="pgr_ksp - K-plus court chemin" href="../../ksp/doc/index.html" />
+    <link rel="prev" title="pgr_dijkstra - Plus court chemin Dijkstra" href="../../dijkstra/doc/index.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.0.0)</span></a></h1>
+        <h2 class="heading"><span>pgr_kDijkstra - Plus court chemin Dijkstra à multiples destinations</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../dijkstra/doc/index.html">pgr_dijkstra - Plus court chemin Dijkstra</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../ksp/doc/index.html">pgr_ksp - K-plus court chemin</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-kdijkstra-mutliple-destination-shortest-path-dijkstra">
+<span id="pgr-kdijkstra"></span><h1>pgr_kDijkstra - Plus court chemin Dijkstra à multiples destinations<a class="headerlink" href="#pgr-kdijkstra-mutliple-destination-shortest-path-dijkstra" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Nom<a class="headerlink" href="#name" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">pgr_kdijkstraCost</span></tt> - Retourne les coûts pour les K plus courts chemins utilisant l&#8217;algoithme Dijkstra.</li>
+<li><tt class="docutils literal"><span class="pre">pgr_kdijkstraPath</span></tt> - Retourne les chemins pour les K plus courts chemins en utilisant l&#8217;algorithme Dijkstra.</li>
+</ul>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Ces fonctions vous autorisent à avoir un unique nœud de départ et des nœuds de destination multiple et va calculer les routes pour toutes les destinations depuis le noeud source. Retourne un ensemble de <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result3"><em>pgr_costResult3</em></a> ou <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result3"><em>pgr_costResult3</em></a>. <tt class="docutils literal"><span class="pre">pgr_kdijkstraCost</span></tt> Retourne un enregistrement pour chaque nœud et le coût est le coût total de la route vers ce noeud.  <tt class="docutils literal"><span class="pre">pgr_kdijkstraPath</span></tt> retourne un enregistrement pour chaque nœud dans ce chemin depuis la source vers la destination et le coût pour traverser cette arête.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_kdijkstraCost</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">,</span> <span class="nb">integer</span> <span class="k">source</span><span class="p">,</span>
+                 <span class="nb">integer</span><span class="p">[]</span> <span class="n">targets</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">directed</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">has_rcost</span><span class="p">);</span>
+
+<span class="n">pgr_costResult3</span><span class="p">[]</span> <span class="n">pgr_kdijkstraPath</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">,</span> <span class="nb">integer</span> <span class="k">source</span><span class="p">,</span>
+                  <span class="nb">integer</span><span class="p">[]</span> <span class="n">targets</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">directed</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">has_rcost</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Lien permanent vers ce titre">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first">une requête SQL, qui devrait retourner un ensemble de lignes avec les colonnes suivantes :</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="p">[,</span><span class="n">reverse_cost</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">edge_table</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifiant de l&#8217;arête</td>
+</tr>
+<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifiant du sommet source</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifiant du sommet cible</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> valeur, du coût de l&#8217;arête traversée. Un coût négatif va prévenir l&#8217;arête d&#8217;être insérée dans le graphe.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">reverse_cost:</th><td class="field-body">(optionnel) le coût pour la traversée inverse de l&#8217;arête. Ceci est seulement utilisé quand les paramètres <tt class="docutils literal"><span class="pre">directed</span></tt> et <tt class="docutils literal"><span class="pre">has_rcost</span></tt> sont <tt class="docutils literal"><span class="pre">true</span></tt> (voir la remarque ci-dessus sur les coûts négatifs).</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int4</span></tt> id du point de départ</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">targets:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int4[]</span></tt> un tableau d&#8217;ids des points finaux</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">directed:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">true</span></tt> si le graphe est dirigé</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">has_rcost:</th><td class="field-body"><p class="first last">si <tt class="docutils literal"><span class="pre">true</span></tt>,  la colonne <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> du SQL générant l&#8217;ensemble des lignes va être utilisé pour le coût de la traversée de l&#8217;arête dans la direction opposée.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><tt class="docutils literal"><span class="pre">pgr_kdijkstraCost</span></tt> retourne un ensemble de <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a>:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body">séquence de ligne</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id1:</th><td class="field-body">id source du chemin de sommets (cela va toujours être la source du point final dans la requête).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">id cible du sommet du chemin</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body">coût pour traverser le chemin de <tt class="docutils literal"><span class="pre">id1</span></tt> à <tt class="docutils literal"><span class="pre">id2</span></tt>. Le coût sera de -1.0 si il n&#8217;y a pas de chemin pour cet id de sommet cible.</td>
+</tr>
+</tbody>
+</table>
+<p><tt class="docutils literal"><span class="pre">pgr_kdijkstraPath</span></tt> retourne un ensemble de <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result3"><em>pgr_costResult3[] - Résultats du chemin multiple avec coût</em></a>:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body">séquence de ligne</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id1:</th><td class="field-body">id chemin cible (identifie le chemin cible).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">path edge source node id</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id3:</th><td class="field-body">path edge id (<tt class="docutils literal"><span class="pre">-1</span></tt> for the last row)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">cost:</th><td class="field-body">coût pour traverser l&#8217;arête ou -1.0 si il n&#8217;y a pas de chemin pour cette cible</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Histoire</p>
+<ul class="simple">
+<li>Nouveau depuis la version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Exemples<a class="headerlink" href="#examples" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li>Retourne un résultat <tt class="docutils literal"><span class="pre">cost</span></tt></li>
+</ul>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span> <span class="k">AS</span> <span class="k">source</span><span class="p">,</span> <span class="n">id2</span> <span class="k">AS</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="k">FROM</span> <span class="n">pgr_kdijkstraCost</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="mi">10</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="k">false</span><span class="p">,</span> <span class="k">false</span>
+<span class="p">);</span>
+
+ <span class="n">seq</span> <span class="o">|</span> <span class="k">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="c1">-----+--------+--------+------</span>
+   <span class="mi">0</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">4</span>
+   <span class="mi">1</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">2</span>
+</pre></div>
+</div>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span> <span class="k">AS</span> <span class="n">path</span><span class="p">,</span> <span class="n">id2</span> <span class="k">AS</span> <span class="n">node</span><span class="p">,</span> <span class="n">id3</span> <span class="k">AS</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span>
+  <span class="k">FROM</span> <span class="n">pgr_kdijkstraPath</span><span class="p">(</span>
+      <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+      <span class="mi">10</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="k">false</span><span class="p">,</span> <span class="k">false</span>
+<span class="p">);</span>
+
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="c1">-----+------+------+------+------</span>
+   <span class="mi">0</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
+   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
+<span class="p">(</span><span class="mi">8</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Retourne un résultat</li>
+</ul>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id1</span> <span class="k">as</span> <span class="n">path</span><span class="p">,</span> <span class="n">st_astext</span><span class="p">(</span><span class="n">st_linemerge</span><span class="p">(</span><span class="n">st_union</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)))</span> <span class="k">as</span> <span class="n">the_geom</span>
+  <span class="k">FROM</span> <span class="n">pgr_kdijkstraPath</span><span class="p">(</span>
+                  <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+                  <span class="mi">10</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="k">false</span><span class="p">,</span> <span class="k">false</span>
+            <span class="p">)</span> <span class="n">a</span><span class="p">,</span>
+            <span class="n">edge_table</span> <span class="n">b</span>
+<span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">id3</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span>
+<span class="k">GROUP</span> <span class="k">by</span> <span class="n">id1</span>
+<span class="k">ORDER</span> <span class="k">by</span> <span class="n">id1</span><span class="p">;</span>
+
+<span class="n">path</span> <span class="o">|</span>            <span class="n">the_geom</span>
+<span class="c1">------+---------------------------------</span>
+    <span class="mi">4</span> <span class="o">|</span> <span class="n">LINESTRING</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">,</span><span class="mi">3</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span> <span class="mi">1</span><span class="p">)</span>
+   <span class="mi">12</span> <span class="o">|</span> <span class="n">LINESTRING</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">,</span><span class="mi">3</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Il n&#8217;y a pas d&#8217;assurance que le résultat au-dessus sera ordonné dans la direction du flot de la route, càd : il peut être inversé. Vous aurez besoin de vérifier si <tt class="docutils literal"><span class="pre">st_startPoint()</span></tt> de la route est la même que la localisation du point de départ et si ça ne l&#8217;est pas, alors appelez <tt class="docutils literal"><span class="pre">st_reverse()</span></tt> pour inverser la direction de la route. Ce comportement est l&#8217;une des fonctions PostGIS <tt class="docutils literal"><span class="pre">st_linemerge()</span></tt> et <tt class="docutils literal"><span class="pre">st_union()</span></tt> et non pgRouting.</p>
+</div>
+<div class="section" id="see-also">
+<h2>Voir aussi<a class="headerlink" href="#see-also" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../dijkstra/doc/index.html">pgr_dijkstra - Plus court chemin Dijkstra</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../ksp/doc/index.html">pgr_ksp - K-plus court chemin</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
+      Mis à jour le Sep 20, 2013.
+      Créé avec <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

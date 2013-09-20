@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_tsp - Voyageur du commerce &mdash; pgRouting Manual (2.0.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0 (d4d49b7 master)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
+    <link rel="up" title="Routing Functions" href="../../index.html" />
+    <link rel="next" title="pgr_trsp - Plus court chemin avec restriction de virage (TRSP)" href="../../trsp/doc/index.html" />
+    <link rel="prev" title="pgr_ksp - K-plus court chemin" href="../../ksp/doc/index.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.0.0)</span></a></h1>
+        <h2 class="heading"><span>pgr_tsp - Voyageur du commerce</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../ksp/doc/index.html">pgr_ksp - K-plus court chemin</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../trsp/doc/index.html">pgr_trsp - Plus court chemin avec restriction de virage (TRSP)</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-tsp-traveling-sales-person">
+<span id="pgr-tsp"></span><h1>pgr_tsp - Voyageur du commerce<a class="headerlink" href="#pgr-tsp-traveling-sales-person" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Nom<a class="headerlink" href="#name" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">pgr_tsp</span></tt> - Retourne la meilleure route à partir d&#8217;un point de départ via une liste de nœuds.</li>
+<li><tt class="docutils literal"><span class="pre">pgr_tsp</span></tt> - Retourne le meilleur ordre de route quand passée une matrice de distance.</li>
+<li><tt class="docutils literal"><span class="pre">pgr_makeDistanceMatrix</span></tt> - Retourne une matrice de distance Euclidienne à partir de points fournis par le résultat sql.</li>
+</ul>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Le problème du voyageur du commerce (TSP) demande la question suivante : étant donnée une liste de villes et les distances entre chaque paire de villes, quelle est la route la plus courte possible qui visite chaque ville exactement une fois et retourne à la ville originale ? Cet algorithme utilise un recuit simulé pour retourner une solution approximative de haute qualité. Retourne un ensemble de lignes <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a> (seq, id1, id2, cost), qui constituent un chemin.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">start_id</span> <span class="nb">integer</span><span class="p">);</span>
+<span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">start_id</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">end_id</span> <span class="nb">integer</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Retourne un ensemble de (seq integer, id1 integer, id2 integer, cost float8) qui est le meilleur ordre pour visiter les noeuds dans la matrice. <tt class="docutils literal"><span class="pre">id1</span></tt> est l&#8217;index dans la matrice de distance. <tt class="docutils literal"><span class="pre">id2</span></tt> est l&#8217;id du point à partir du sql.</p>
+<p>Si aucun <tt class="docutils literal"><span class="pre">end_id</span></tt> est donné ou est -1 ou égal au start_id alors le résultat TSP est supposé être une boucle circulaire retournant au départ. Si <tt class="docutils literal"><span class="pre">end_id</span></tt> est fourni alors la route est supposée commencer et finir aux ids désignés.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">record</span><span class="p">[]</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="n">matrix</span> <span class="nb">float</span><span class="p">[][],</span> <span class="k">start</span> <span class="nb">integer</span><span class="p">)</span>
+<span class="n">record</span><span class="p">[]</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="n">matrix</span> <span class="nb">float</span><span class="p">[][],</span> <span class="k">start</span> <span class="nb">integer</span><span class="p">,</span> <span class="k">end</span> <span class="nb">integer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Lien permanent vers ce titre">¶</a></h2>
+<p class="rubric">Avec distances euclidiennes</p>
+<p>Le solveur TSP est basé sur l&#8217;ordonnancement des points en utilisant la distance (euclidienne) de ligne droite <a class="footnote-reference" href="#f0" id="id1">[]</a> entre les noeuds. L&#8217;implémentation est utilisé un algorithme d&#8217;approximation qui est très rapide. Ce n&#8217;est pas une solution exacte, mais il est garanti qu&#8217;une solution est retournée après un certain nombre d&#8217;itérations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first">une requête SQL, qui devrait retourner un ensemble de lignes avec les colonnes suivantes :</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">FROM</span> <span class="n">vertex_table</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifiant du sommet</td>
+</tr>
+<tr class="field-even field"><th class="field-name">x:</th><td class="field-body">coordonnée x <tt class="docutils literal"><span class="pre">float8</span></tt></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">y:</th><td class="field-body">coordonnée y <tt class="docutils literal"><span class="pre">float8</span></tt></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">start_id:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int4</span></tt> id du point de départ</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">end_id:</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">int4</span></tt> id du point final, c&#8217;est <em>OPTIONNEL</em>, si inclure la route est optimisée d&#8217;un point de départ à la fin, sinon c&#8217;est supposé que le départ et la fin sont le même point.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>La fonction retourne un ensemble de <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a>:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body">séquence de ligne</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id1:</th><td class="field-body">index interne de la matrice de distance</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body"><tt class="docutils literal"><span class="pre">id</span></tt> du noeud</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body">coût pour traverser du nœud courant au prochain nœud</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Créer une matrice de distance</p>
+<p>Pour les utilisateurs qui ont besoin d&#8217;une matrice de distance, nous avons une fonction simple qui prend le SQL dans <tt class="docutils literal"><span class="pre">sql</span></tt> comme décrit au-dessus et retourne avec <tt class="docutils literal"><span class="pre">dmatrix</span></tt> et <tt class="docutils literal"><span class="pre">ids</span></tt>.</p>
+<blockquote>
+<div><div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">dmatrix</span><span class="p">,</span> <span class="n">ids</span> <span class="k">from</span> <span class="n">pgr_makeDistanceMatrix</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>La fonction retourne un enregistrement de <tt class="docutils literal"><span class="pre">dmatrix</span></tt>, <tt class="docutils literal"><span class="pre">ids</span></tt>:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">dmatrix:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8[][]</span></tt> une distance symétrique euclidienne basée sur <tt class="docutils literal"><span class="pre">sql</span></tt>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ids:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer[]</span></tt> un tableau d&#8217;ids comme ils sont ordonnés dans la matrice de distances.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Avec matrice de distance</p>
+<p>Pour les utilisateurs, qui ne veulent pas utiliser les distances euclidiennes, nous fournissons aussi la capacité de passer une matrice de distances et retourne une liste ordonnée de nœuds pour le meilleur ordre pour visiter chacun. C&#8217;est à l&#8217;utilisateur de remplir complètement la matrice de distances.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">matrix:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float[][]</span></tt> matrice de distances de points</td>
+</tr>
+<tr class="field-even field"><th class="field-name">start:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> index du point de départ</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">end:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> (optionnel) index du point final</td>
+</tr>
+</tbody>
+</table>
+<p>Le noeud <tt class="docutils literal"><span class="pre">end</span></tt> est un paramètre optionnel, vous pouvez juste le laisser ainsi si vous voulez une boucle où <tt class="docutils literal"><span class="pre">start``est</span> <span class="pre">le</span> <span class="pre">dépôt</span> <span class="pre">et</span> <span class="pre">la</span> <span class="pre">route</span> <span class="pre">retourne</span> <span class="pre">au</span> <span class="pre">dépôt.</span> <span class="pre">Si</span> <span class="pre">vous</span> <span class="pre">incluez</span> <span class="pre">le</span> <span class="pre">paramètre</span> <span class="pre">``end</span></tt>, nous optimisons le chemin de <tt class="docutils literal"><span class="pre">start</span></tt> à <tt class="docutils literal"><span class="pre">end</span></tt> et minimisons la distance de la route en incluant les points restants.</p>
+<p>La matrice de distances est un tableau multidimensionnel <a class="reference external" href="http://www.postgresql.org/docs/9.1/static/arrays.html">PostgreSQL array type</a> qui doit être de taille <tt class="docutils literal"><span class="pre">N</span> <span class="pre">x</span> <span class="pre">N</span></tt>.</p>
+<p>Le résultat sera de N enregistrements de <tt class="docutils literal"><span class="pre">[</span> <span class="pre">seq,</span> <span class="pre">id</span> <span class="pre">]</span></tt>:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body">séquence de ligne</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id:</th><td class="field-body">index dans la matrice</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes de bas de page</p>
+<table class="docutils footnote" frame="void" id="f0" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Il a été pensé que pré-calculer les distances de conduites entre les noeuds en utilisant Dijkstra, mais ensuite j&#8217;ai lu un papier (malheureusement je ne me rappelle plus qu&#8217;il l&#8217;a écrit), où il a été prouvé que la qualité de TSP avec la distance euclidienne est seulement légèrement moindre que celle avec la distance réelle dans le cas d&#8217;une couche de ville normale. Dans le cas d&#8217;un réseau très épars ou rivières et ponts ça devient plus imprécis, mais toujours pleinement satisfaisant. Bien sûr c&#8217;est mieux d&#8217;avoir une solution exacte, mais c&#8217;est un compromis entre la qualité et la vitesse (et le temps de développement aussi. Si vous avez besoin d&#8217;une solution précise, vous pouvez générer une matrice de distance et utiliser ce formulaire de la fonction pour obtenir vos résultats.</td></tr>
+</tbody>
+</table>
+<p class="rubric">Histoire</p>
+<ul class="simple">
+<li>Renommé depuis la version 2.0.0</li>
+<li>dépendance GAUL supprimée depuis la version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Exemples<a class="headerlink" href="#examples" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li>Using SQL parameter (all points from the table, atarting from 6 and ending at 5). We have listed two queries in this example, the first might vary from system to system because there are multiple equivalent answers. The second query should be stable in that the length optimal route should be the same regardless of order.</li>
+</ul>
+<div class="highlight-sql"><div class="highlight"><pre> <span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span><span class="p">,</span> <span class="n">id2</span><span class="p">,</span> <span class="n">round</span><span class="p">(</span><span class="n">cost</span><span class="p">::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">cost</span>
+   <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+
+  <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span> <span class="n">cost</span>
+ <span class="c1">-----+-----+-----+------</span>
+    <span class="mi">0</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">00</span>
+    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">00</span>
+    <span class="mi">2</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">41</span>
+    <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">00</span>
+    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">41</span>
+    <span class="mi">5</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">00</span>
+    <span class="mi">6</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">00</span>
+    <span class="mi">7</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">00</span>
+    <span class="mi">8</span> <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span>  <span class="mi">12</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">00</span>
+    <span class="mi">9</span> <span class="o">|</span>  <span class="mi">10</span> <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">41</span>
+   <span class="mi">10</span> <span class="o">|</span>  <span class="mi">12</span> <span class="o">|</span>  <span class="mi">13</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">00</span>
+   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">10</span> <span class="o">|</span> <span class="mi">2</span><span class="p">.</span><span class="mi">24</span>
+   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">00</span>
+ <span class="p">(</span><span class="mi">13</span> <span class="k">rows</span><span class="p">)</span>
+
+ <span class="k">SELECT</span> <span class="n">round</span><span class="p">(</span><span class="k">sum</span><span class="p">(</span><span class="n">cost</span><span class="p">)::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="k">as</span> <span class="n">cost</span>
+<span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+
+   <span class="n">cost</span>
+ <span class="c1">---------</span>
+  <span class="mi">15</span><span class="p">.</span><span class="mi">4787</span>
+ <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Utiliser la matrice de distances (boucle A en partant de 1)</li>
+</ul>
+<p>When using just the start node you are getting a loop that starts with 1, in this case, and travels through the other nodes and is implied to return to the start node from the last one in the list. Since this is a circle there are at least two possible paths, one clockwise and one counter-clockwise that will have the same length and be equall valid. So in the following example it is also possible to get back a sequence of ids = {1,0,3,2} instead of the {1,2,3,0} sequence listed below.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id</span> <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;{{0,1,2,3},{1,0,4,5},{2,4,0,6},{3,5,6,0}}&#39;</span><span class="p">::</span><span class="n">float8</span><span class="p">[],</span><span class="mi">1</span><span class="p">);</span>
+
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">id</span>
+<span class="c1">-----+----</span>
+   <span class="mi">0</span> <span class="o">|</span>  <span class="mi">1</span>
+   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">2</span>
+   <span class="mi">2</span> <span class="o">|</span>  <span class="mi">3</span>
+   <span class="mi">3</span> <span class="o">|</span>  <span class="mi">0</span>
+<span class="p">(</span><span class="mi">4</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Utiliser la matrice de distance (en partant de 1, jusqu&#8217;à 2)</li>
+</ul>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id</span> <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;{{0,1,2,3},{1,0,4,5},{2,4,0,6},{3,5,6,0}}&#39;</span><span class="p">::</span><span class="n">float8</span><span class="p">[],</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">id</span>
+<span class="c1">-----+----</span>
+   <span class="mi">0</span> <span class="o">|</span>  <span class="mi">1</span>
+   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>  <span class="mi">3</span>
+   <span class="mi">3</span> <span class="o">|</span>  <span class="mi">2</span>
+<span class="p">(</span><span class="mi">4</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Using the vertices table edge_table_vertices_pgr generated by <a class="reference internal" href="../../common/doc/functions/create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a>. Again we have two queries where the first might vary and the second is based on the overal path length.</li>
+</ul>
+<div class="highlight-sql"><div class="highlight"><pre>     <span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span><span class="p">,</span> <span class="n">id2</span><span class="p">,</span> <span class="n">round</span><span class="p">(</span><span class="n">cost</span><span class="p">::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">cost</span>
+<span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;SELECT id::integer, st_x(the_geom) as x,st_x(the_geom) as y FROM edge_table_vertices_pgr  ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+
+  <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span> <span class="n">cost</span>
+ <span class="c1">-----+-----+-----+------</span>
+    <span class="mi">0</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00</span>
+    <span class="mi">1</span> <span class="o">|</span>  <span class="mi">10</span> <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00</span>
+    <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">41</span>
+    <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00</span>
+    <span class="mi">4</span> <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span>  <span class="mi">12</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00</span>
+    <span class="mi">5</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">71</span>
+    <span class="mi">6</span> <span class="o">|</span>  <span class="mi">15</span> <span class="o">|</span>  <span class="mi">16</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00</span>
+    <span class="mi">7</span> <span class="o">|</span>  <span class="mi">16</span> <span class="o">|</span>  <span class="mi">17</span> <span class="o">|</span> <span class="mi">2</span><span class="p">.</span><span class="mi">12</span>
+    <span class="mi">8</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00</span>
+    <span class="mi">9</span> <span class="o">|</span>  <span class="mi">14</span> <span class="o">|</span>  <span class="mi">15</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">41</span>
+   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">41</span>
+   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">71</span>
+   <span class="mi">12</span> <span class="o">|</span>  <span class="mi">13</span> <span class="o">|</span>  <span class="mi">14</span> <span class="o">|</span> <span class="mi">2</span><span class="p">.</span><span class="mi">12</span>
+   <span class="mi">13</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00</span>
+   <span class="mi">14</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">10</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00</span>
+   <span class="mi">15</span> <span class="o">|</span>  <span class="mi">12</span> <span class="o">|</span>  <span class="mi">13</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00</span>
+   <span class="mi">16</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">41</span>
+ <span class="p">(</span><span class="mi">17</span> <span class="k">rows</span><span class="p">)</span>
+
+ <span class="k">SELECT</span> <span class="n">round</span><span class="p">(</span><span class="k">sum</span><span class="p">(</span><span class="n">cost</span><span class="p">)::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="k">as</span> <span class="n">cost</span>
+    <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;SELECT id::integer, st_x(the_geom) as x,st_x(the_geom) as y FROM edge_table_vertices_pgr  ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+
+   <span class="n">cost</span>
+ <span class="c1">---------</span>
+  <span class="mi">11</span><span class="p">.</span><span class="mi">3137</span>
+ <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Les requêtes utilisent le réseau <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Données d&#8217;échantillon</em></a>.</p>
+</div>
+<div class="section" id="see-also">
+<h2>Voir aussi<a class="headerlink" href="#see-also" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Traveling_salesman_problem">http://en.wikipedia.org/wiki/Traveling_salesman_problem</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Simulated_annealing">http://en.wikipedia.org/wiki/Simulated_annealing</a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../ksp/doc/index.html">pgr_ksp - K-plus court chemin</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../trsp/doc/index.html">pgr_trsp - Plus court chemin avec restriction de virage (TRSP)</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
+      Mis à jour le Sep 20, 2013.
+      Créé avec <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

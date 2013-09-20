@@ -1,0 +1,140 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Soporte &mdash; pgRouting Manual (2.0.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0 (d4d49b7 master)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
+    <link rel="next" title="Tutorial" href="../tutorial/index.html" />
+    <link rel="prev" title="Guía de Compilación" href="../installation/build.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.0.0)</span></a></h1>
+        <h2 class="heading"><span>Soporte</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../installation/build.html">Guía de Compilación</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../tutorial/index.html">Tutorial</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="support">
+<span id="id1"></span><h1>Soporte<a class="headerlink" href="#support" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Ayudas comunitarias de pgRouting son a través del <a class="reference external" href="http://www.pgrouting.org">website</a>, <a class="reference external" href="http://docs.pgrouting.org">documentation</a>,  tutoriales, listas de correo y otros. Si usted está buscando <a class="reference internal" href="#support-commercial"><em>apoyo comercial</em></a>, a continuación encontrará una lista de las empresas que prestan servicios de consultoría y de desarrollo para pgRouting.</p>
+<div class="section" id="reporting-problems">
+<h2>Informes de problemas<a class="headerlink" href="#reporting-problems" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Errores son registrados y manejados en un <a class="reference external" href="https://github.com/pgrouting/pgrouting/issues">issue tracker</a>. Por favor siga los siguientes pasos:</p>
+<ol class="arabic simple">
+<li>Buscar en las entradas para ver si ya se ha informado de su problema. Si es así, añadir cualquier contexto extra que usted haya encontrado, o al menos indicar que también están teniendo el problema. Esto nos ayudará a priorizar los problemas comunes.</li>
+<li>Si el problema no está reportado , crear una <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/new">nueva entrada</a> para el problema.</li>
+<li>En su informe incluya instrucciones explícitas para reproducir el problema. Las mejores entradas incluyen consultas SQL exactas que se necesitan para reproducir el problema.</li>
+<li>Si usted puede probar las versiones anteriores de PostGIS para su problema, por favor hágalo. En su reporte, tenga en cuenta la versión más antigua en la que aparezca el problema.</li>
+<li>Para las versiones donde se puede reproducir el problema, anote el sistema operativo y la versión de pgRouting, PostGIS y PostgreSQL.</li>
+<li>It is recommended to use the following wrapper on the problem to pin point the step that is causing the problem.</li>
+</ol>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SET</span> <span class="n">client_min_messages</span> <span class="k">TO</span> <span class="n">debug</span><span class="p">;</span>
+  <span class="o">&lt;</span><span class="n">your</span> <span class="n">code</span><span class="o">&gt;</span>
+<span class="k">SET</span> <span class="n">client_min_messages</span> <span class="k">TO</span> <span class="n">notice</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mailing-list-and-gis-stackexchange">
+<h2>Listas de correo y GIS StackExchange<a class="headerlink" href="#mailing-list-and-gis-stackexchange" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Hay dos listas de correo para pgRouting alojados en las listas de correo del Servidor de OSGeo:</p>
+<ul class="simple">
+<li>Lista de correos para usuarios: <a class="reference external" href="http://lists.osgeo.org/mailman/listinfo/pgrouting-users">http://lists.osgeo.org/mailman/listinfo/pgrouting-users</a></li>
+<li>Lista de correo para desarrolladores: <a class="reference external" href="http://lists.osgeo.org/mailman/listinfo/pgrouting-dev">http://lists.osgeo.org/mailman/listinfo/pgrouting-dev</a></li>
+</ul>
+<p>Para preguntas generales y tópicos sobre el uso pgRouting, escriba a la lista de correo para usuario.</p>
+<p>También se puede preguntar en <a class="reference external" href="http://gis.stackexchange.com/">StackExchange GIS</a> y etiquetar la pregunta con <tt class="docutils literal"><span class="pre">pgRouting</span></tt>. Buscar todas las preguntas con la etiqueta <tt class="docutils literal"><span class="pre">pgRouting</span></tt> bajo <a class="reference external" href="http://gis.stackexchange.com/questions/tagged/pgrouting">http://gis.stackexchange.com/questions/tagged/pgrouting</a> o suscribirse al <a class="reference external" href="http://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&amp;sort=newest">Alimentador de preguntas de pgRouting</a>.</p>
+</div>
+<div class="section" id="commercial-support">
+<span id="support-commercial"></span><h2>Soporte comercial<a class="headerlink" href="#commercial-support" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para usuarios que requieren apoyo profesional, desarrollo y servicios de consultoría, considere ponerse en contacto con cualquiera de las siguientes organizaciones, que han contribuido significativamente al desarrollo de pgRouting:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="35%" />
+<col width="43%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Empresa</strong></td>
+<td><strong>Oficinas en</strong></td>
+<td><strong>Sitio web</strong></td>
+</tr>
+<tr class="row-even"><td>Georepublic</td>
+<td>Alemania, Japón</td>
+<td><a class="reference external" href="http://georepublic.info">http://georepublic.info</a></td>
+</tr>
+<tr class="row-odd"><td>iMaptools</td>
+<td>Estados Unidos</td>
+<td><a class="reference external" href="http://imaptools.com">http://imaptools.com</a></td>
+</tr>
+<tr class="row-even"><td>Orkney Inc.</td>
+<td>Japón</td>
+<td><a class="reference external" href="http://www.orkney.co.jp">http://www.orkney.co.jp</a></td>
+</tr>
+<tr class="row-odd"><td>Camptocamp</td>
+<td>Suiza, Francia</td>
+<td><a class="reference external" href="http://www.camptocamp.com">http://www.camptocamp.com</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../installation/build.html">Guía de Compilación</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../tutorial/index.html">Tutorial</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
+      Actualizado por última vez en Sep 20, 2013.
+      Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

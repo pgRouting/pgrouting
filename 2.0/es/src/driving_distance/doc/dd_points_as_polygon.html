@@ -1,0 +1,165 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_pointsAsPolygon &mdash; pgRouting Manual (2.0.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0 (d4d49b7 master)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
+    <link rel="up" title="With Driving Distance Enabled" href="index.html" />
+    <link rel="next" title="Developers’s Functions" href="../../common/doc/utilities/index.html" />
+    <link rel="prev" title="pgr_alphaShape" href="dd_alphashape.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.0.0)</span></a></h1>
+        <h2 class="heading"><span>pgr_pointsAsPolygon</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="dd_alphashape.html">pgr_alphaShape</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../common/doc/utilities/index.html">Developers&#8217;s Functions</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-pointsaspolygon">
+<span id="pgr-points-as-polygon"></span><h1>pgr_pointsAsPolygon<a class="headerlink" href="#pgr-pointsaspolygon" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Nombre<a class="headerlink" href="#name" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_pointsAsPolygon</span></tt> — Dibuja un figura Alfa  alrededor de un conjunto de puntos dado.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Sinopsis<a class="headerlink" href="#synopsis" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Devuelve la forma alfa con geometría de polígono.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">geometry</span> <span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">text</span></tt> una consulta SQL la cual debe proporcionar un conjunto de registros con los siguientes campos:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">FROM</span> <span class="n">vertex_result</span><span class="p">;</span>
+</pre></div>
+</div>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> Identificador del vértice</td>
+</tr>
+<tr class="field-even field"><th class="field-name">x:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt>  coordenada x</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">y:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt>  coordenada y</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Devuelve una geometría polígonal.</p>
+<p class="rubric">Historia</p>
+<ul class="simple">
+<li>Renombrado en la versión 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Ejemplos<a class="headerlink" href="#examples" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>In the following query there is not way to control which point in the polygon is the first in the list, so you may get similar but different results than the following which are also correct. Each of the pgr_pointsAsPolygon queries below is followed by one the compute the area of the polygon. This area should remain constant regardles of the order of the points making up the polygon.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table&#39;</span><span class="p">));</span>
+
+               <span class="n">st_astext</span>
+<span class="c1">----------------------------------------</span>
+ <span class="n">POLYGON</span><span class="p">((</span><span class="mi">2</span> <span class="mi">0</span><span class="p">,</span><span class="mi">4</span> <span class="mi">1</span><span class="p">,</span><span class="mi">4</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">,</span><span class="mi">2</span> <span class="mi">4</span><span class="p">,</span><span class="mi">0</span> <span class="mi">2</span><span class="p">,</span><span class="mi">2</span> <span class="mi">0</span><span class="p">))</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+<span class="k">SELECT</span> <span class="n">round</span><span class="p">(</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table&#39;</span><span class="p">))::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="n">st_area</span><span class="p">;</span>
+
+ <span class="n">st_area</span>
+<span class="c1">---------</span>
+   <span class="mi">10</span><span class="p">.</span><span class="mi">00</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+
+<span class="k">SELECT</span> <span class="n">ST_ASText</span><span class="p">(</span><span class="n">pgr_pointsASPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id::integer, st_x(the_geom)::float as x, st_y(the_geom)::float as y</span>
+<span class="s1">                                      FROM edge_table_vertices_pgr&#39;</span><span class="p">));</span>
+                    <span class="n">st_astext</span>
+<span class="c1">----------------------------------------------------------</span>
+ <span class="n">POLYGON</span><span class="p">((</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span> <span class="mi">3</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span> <span class="mi">2</span><span class="p">,</span><span class="mi">2</span> <span class="mi">0</span><span class="p">,</span><span class="mi">4</span> <span class="mi">1</span><span class="p">,</span><span class="mi">4</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">.</span><span class="mi">5</span> <span class="mi">4</span><span class="p">,</span><span class="mi">2</span> <span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span> <span class="mi">3</span><span class="p">.</span><span class="mi">5</span><span class="p">))</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+<span class="k">SELECT</span> <span class="n">round</span><span class="p">(</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_pointsASPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id::integer, st_x(the_geom)::float as x, st_y(the_geom)::float as y</span>
+<span class="s1">     FROM edge_table_vertices_pgr&#39;</span><span class="p">))::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="n">st_area</span><span class="p">;</span>
+
+ <span class="n">st_area</span>
+<span class="c1">---------</span>
+   <span class="mi">11</span><span class="p">.</span><span class="mi">75</span>
+</pre></div>
+</div>
+<p>Las consulta usa la red de ejemplo  <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Datos Muestra</em></a></p>
+</div>
+<div class="section" id="see-also">
+<h2>Véase también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="dd_driving_distance.html#pgr-driving-distance"><em>pgr_drivingDistance</em></a> - Driving Distance</li>
+<li><a class="reference internal" href="dd_alphashape.html#pgr-alphashape"><em>pgr_alphaShape</em></a> - Alpha shape computation</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="dd_alphashape.html">pgr_alphaShape</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../common/doc/utilities/index.html">Developers&#8217;s Functions</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
+      Actualizado por última vez en Sep 20, 2013.
+      Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

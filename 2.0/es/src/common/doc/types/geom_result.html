@@ -1,0 +1,121 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_geomResult[] &mdash; pgRouting Manual (2.0.0)</title>
+    
+    <link rel="stylesheet" href="../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '2.0.0 (d4d49b7 master)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../../index.html" />
+    <link rel="up" title="pgRouting Data Types" href="index.html" />
+    <link rel="next" title="Topology Functions" href="../functions/index.html" />
+    <link rel="prev" title="pgr_costResult[]" href="cost_result.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+          <span>pgRouting Manual (2.0.0)</span></a></h1>
+        <h2 class="heading"><span>pgr_geomResult[]</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="cost_result.html">pgr_costResult[]</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../functions/index.html">Topology Functions</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-geomresult">
+<span id="type-geom-result"></span><h1>pgr_geomResult[]<a class="headerlink" href="#pgr-geomresult" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Nombre<a class="headerlink" href="#name" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_geomResult[]</span></tt> — un conjunto de registros para describir un recorrido que incluye el atributo de la geometría.</p>
+</div>
+<div class="section" id="description">
+<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TYPE</span> <span class="n">pgr_geomResult</span> <span class="k">AS</span>
+<span class="p">(</span>
+    <span class="n">seq</span> <span class="nb">integer</span><span class="p">,</span>
+    <span class="n">id1</span> <span class="nb">integer</span><span class="p">,</span>
+    <span class="n">id2</span> <span class="nb">integer</span><span class="p">,</span>
+    <span class="n">geom</span> <span class="n">geometry</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body">identificador secuencial, indicando el orden del recorrido</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id1:</th><td class="field-body">nombre genérico, a ser especificado por la función</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">nombre genérico, a ser especificado por la función</td>
+</tr>
+<tr class="field-even field"><th class="field-name">geom:</th><td class="field-body">atributo de geometría</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Historia</p>
+<ul class="simple">
+<li>Nuevo en la versión 2.0.0</li>
+<li>Sustituye a <tt class="docutils literal"><span class="pre">geoms</span></tt></li>
+</ul>
+</div>
+<div class="section" id="see-also">
+<h2>Véase también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../../../doc/src/introduction/introduction.html#introduction"><em>Introduction</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="cost_result.html">pgr_costResult[]</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../functions/index.html">Topology Functions</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
+      Actualizado por última vez en Sep 20, 2013.
+      Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

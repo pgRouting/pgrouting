@@ -1,0 +1,145 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Guide du développeur &mdash; pgRouting Manual (2.0.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0 (d4d49b7 master)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
+    <link rel="next" title="Release Notes" href="../changelog/index.html" />
+    <link rel="prev" title="Fonctions discontinues" href="discontinued.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.0.0)</span></a></h1>
+        <h2 class="heading"><span>Guide du développeur</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="discontinued.html">Fonctions discontinues</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../changelog/index.html">Release Notes</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="developer-s-guide">
+<span id="developer"></span><h1>Guide du développeur<a class="headerlink" href="#developer-s-guide" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Toute la documentation devrait être dans le format reStructuredText. Voir : &lt;<a class="reference external" href="http://docutils.sf.net/rst.html">http://docutils.sf.net/rst.html</a>&gt; pour les docs d&#8217;introduction.</p>
+</div>
+<div class="section" id="source-tree-layout">
+<h2>Disposition de l&#8217;Arbre des sources<a class="headerlink" href="#source-tree-layout" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="docutils">
+<dt>cmake/</dt>
+<dd>Scripts cmake utilisés en partie pour notre système de build.</dd>
+<dt>core/</dt>
+<dd>This is the algorithm source tree. Each algorithm should be contained
+in its on sub-tree with doc, sql, src, and test sub-directories.
+This might get renamed to &#8220;algorithms&#8221; at some point.</dd>
+<dt>core/astar/</dt>
+<dd>Ceci est une implémentation de la Recherche A* basée sur l&#8217;utilisation de la bibliothèque Boost Graph. Ceci est une implémentation du plus court chemin Dijkstra avec une Heuristique Euclidienne.</dd>
+<dt>core/common/</dt>
+<dd>Pour le moment ceci n&#8217;a pas de core in &#8220;src&#8221;, mais a un certain nombre de codes de wrappers SQL et de codes de topologie dans le répertoire &#8220;sql&#8221;. <em>Les wrappers spécifiques d&#8217;algorithmes devraient être déplacées à l&#8217;arbre d&#8217;algorithme et les tests appropriés devraient être ajoutés pour valider les wrappers.</em></dd>
+<dt>core/dijkstra/</dt>
+<dd>Ceci est une implémentation de la solution du plus court chemin Dikjstra utilisant les bibliothèques Boost Graph pour l&#8217;implémentation.</dd>
+<dt>core/driving_distance/</dt>
+<dd>Ce paquet optionnel créée des polygones de driving distance basées sur la résolution de la solution du plus court chemin Dijkstra, ensuite en créant des polygones basés sur les distances de coût égal depuis le point de départ. Ce paquet optionnel requiert d&#8217;avoir installé les librairies CGAL.</dd>
+<dt>core/shooting_star/</dt>
+<dd><em>DESAPPROUVE et NE FONCTIONNE PAS et SUR LE POINT D&#8217;ETRE SUPPRIME</em> Ceci est une arête basée sur l&#8217;algorithme du plus court chemin qui supporte les restrictions de virage. It is based on Boost Graph. Ne <em>PAS</em> utiliser cet algorithme comme il est cassé, utiliser <em>trsp</em> à la place, qui a la même fonctionnalité et est plus rapide et donne des résultats corrects.</dd>
+<dt>core/trsp/</dt>
+<dd>Ceci est un algorithme du plus court chemin avec restrictions de virage. Il a des caractéristiques sympathiques comme vous pouvez spécifiez les points de début et la fin comme un pourcentage d&#8217;une arête. Les restrictions sont sauvegardées dans une table séparée des arêtes du graphe et cela rend plus facile de gérer les données.</dd>
+<dt>core/tsp/</dt>
+<dd>Ce paquet optionnel fournit la capacité de calculer les solutions du problème du voyageur de commerce et calcule la route résultante. Ce paquet optionnel requiert l&#8217;installation des librairies GAUL.</dd>
+<dt>tools/</dt>
+<dd>Scripts divers et outils.</dd>
+<dt>lib/</dt>
+<dd>Ceci est le répertoire de sortie où les cibles des bibliothèques compilées et des installations sont présentées avant l&#8217;installation.</dd>
+</dl>
+</div>
+<div class="section" id="documentation-layout">
+<h2>Mise en page de la documentation<a class="headerlink" href="#documentation-layout" title="Lien permanent vers ce titre">¶</a></h2>
+<p><em>Comme mentionné ci-dessus toute la documentation devrait être construite en utilisant les fichiers formattés  reStructuredText.</em></p>
+<p>La documentation est distribuée dans l&#8217;arbre des sources. Ce répertoire &#8220;doc&#8221; de haut niveau est prévu pour la documentation de haut niveau couvrant les sujets comme :</p>
+<blockquote>
+<div><ul class="simple">
+<li>Compilation et tests</li>
+<li>Installation</li>
+<li>Tutoriels</li>
+<li>Documentation liminaire du Guide Utilisateur</li>
+<li>Documentation liminaire du Manuel de référence</li>
+<li>etc</li>
+</ul>
+</div></blockquote>
+<p>Puisque la documentation spécifique de l&#8217;algorithme est contenue dans l&#8217;arbre de sources avec les fichiers spécifiques de l&#8217;algorithme, le processus de la construction de la documentation et la publication va avoir besoin d&#8217;assembler les détails avec la documentation de premier rang si besoin.</p>
+<p>Aussi, pour empêcher le répertoire &#8220;doc&#8221; d&#8217;être encombré, chaque libre majeur comme ceux listés ci-dessus, doivent être contenu dans un répertoire séparé dans &#8220;doc&#8221;. Toutes les images ou autres documents liés au livre doivent être aussi mis dans ce répertoire.</p>
+</div>
+<div class="section" id="testing-infrastructure">
+<h2>Infrastructure de test<a class="headerlink" href="#testing-infrastructure" title="Lien permanent vers ce titre">¶</a></h2>
+<p>L&#8217;infrastructure de test mise en place est très basique. Voici les bases de comment ça marche. Nous avons besoin de plus de cas de tests. A long terme nous devrons probablement avoir une personne pour installer les frameworks travis-ci ou jenkins.</p>
+<p>Voici le graphe des tests TRSP.</p>
+<img alt="../../../_images/trsp-test-image.png" src="../../../_images/trsp-test-image.png" />
+<p>Les tests sont lancés via le script au haut niveau tools/test-runner.pl qui exécute tous les tests configurés et pour le moment produit en résultats la structure de test. Cela peut être amélioré par la suite.</p>
+<blockquote>
+<div>Cela suppose aussi que vous avez installé les librairies car les tests requièrent postgresql installé. Il est probablement nécessaire de rendre cela mieux conçu pour que nous puissions essayer l&#8217;arbre de build. Je vais essayer de réfléchir à ça.</div></blockquote>
+<p>Simplement chaque répertoire .../test/ doit inclure un fichier <em>test.conf</em> qui est un fragment de script perl qui définit quels fichiers de données charger et quels tests lancer. J&#8217;ai intégré certains mécanismes pour autoriser tests et données d&#8217;être spécifiques aux version pg et postgis, mais je ne l&#8217;utilise pas encore. Ainsi par exemple, <em>core/trsp/test/test-any-00.data</em> est un texte plein généré qui va charger les données nécessaires pour un jeu de tests. C&#8217;est aussi le graphe dans l&#8217;image de dessus. Vous pouvez spécifier plusieurs fichiers à charger, mais comme un groupe ils ont besoin d&#8217;avoir des noms uniques.</p>
+<p>core/trsp/test/test-any-00.test est une commande sql qui peut être exécutée. Elle s&#8217;exécute ainsi :</p>
+<div class="highlight-bash"><div class="highlight"><pre>psql ... -A -t -q -f file.test dbname &gt; tmpfile
+diff -w file.rest tmpfile
+</pre></div>
+</div>
+<p>Ensuite si il y a une différence, alors un échec de test est reporté.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="discontinued.html">Fonctions discontinues</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../changelog/index.html">Release Notes</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
+      Mis à jour le Sep 20, 2013.
+      Créé avec <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

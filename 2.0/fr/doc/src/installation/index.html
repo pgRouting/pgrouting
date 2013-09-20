@@ -1,0 +1,163 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation &mdash; pgRouting Manual (2.0.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0 (d4d49b7 master)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
+    <link rel="next" title="Guide pour le Build" href="build.html" />
+    <link rel="prev" title="Introduction" href="../introduction/introduction.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.0.0)</span></a></h1>
+        <h2 class="heading"><span>Installation</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../introduction/introduction.html">Introduction</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="build.html">Guide pour le Build</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="installation">
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Les paquets binaires sont fournis pour la version courante sur les plateformes suivantes :</p>
+<div class="section" id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Winnie Bot Experimental Builds:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://winnie.postgis.net/download/windows/pg92/buildbot/">PostgreSQL 9.2 32-bit, 64-bit</a></li>
+</ul>
+</div>
+<div class="section" id="ubuntu-debian">
+<h2>Ubuntu/Debian<a class="headerlink" href="#ubuntu-debian" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Les paquets Ubuntu sont disponibles dans les dépôts Launchpad :</p>
+<ul class="simple">
+<li><em>stable</em> <a class="reference external" href="https://launchpad.net/~georepublic/+archive/pgrouting">https://launchpad.net/~georepublic/+archive/pgrouting</a></li>
+<li><em>unstable</em> <a class="reference external" href="https://launchpad.net/~georepublic/+archive/pgrouting-unstable">https://launchpad.net/~georepublic/+archive/pgrouting-unstable</a></li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Add pgRouting launchpad repository (&quot;stable&quot; or &quot;unstable&quot;)</span>
+sudo add-apt-repository ppa:georepublic/pgrouting<span class="o">[</span>-unstable<span class="o">]</span>
+sudo apt-get update
+
+<span class="c"># Install pgRouting packages</span>
+sudo apt-get install postgresql-9.1-pgrouting
+</pre></div>
+</div>
+<p>Utiliser <a class="reference external" href="https://launchpad.net/~ubuntugis/+archive/ubuntugis-unstable">UbuntuGIS-unstable PPA</a> pour installer  PostGIS 2.0.</p>
+</div>
+<div class="section" id="rhel-centos-fedora">
+<h2>RHEL/CentOS/Fedora<a class="headerlink" href="#rhel-centos-fedora" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li>Fedora RPM&#8217;s: <a class="reference external" href="https://admin.fedoraproject.org/pkgdb/acls/name/pgRouting">https://admin.fedoraproject.org/pkgdb/acls/name/pgRouting</a></li>
+</ul>
+</div>
+<div class="section" id="os-x">
+<h2>OS X<a class="headerlink" href="#os-x" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li>Homebrew</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>brew install pgrouting
+</pre></div>
+</div>
+</div>
+<div class="section" id="source-package">
+<h2>Paquets Sources<a class="headerlink" href="#source-package" title="Lien permanent vers ce titre">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="34%" />
+<col width="30%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Git 2.0.0-rc1 release</td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v2.0.0-rc1.tar.gz">v2.0.0-rc1.tar.gz</a></td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v2.0.0-rc1.zip">v2.0.0-rc1.zip</a></td>
+</tr>
+<tr class="row-even"><td>Git 2.0.0-beta release</td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v2.0.0-beta.tar.gz">v2.0.0-beta.tar.gz</a></td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v2.0.0-beta.zip">v2.0.0-beta.zip</a></td>
+</tr>
+<tr class="row-odd"><td>Git 2.0.0-alpha release</td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v2.0.0-alpha.tar.gz">v2.0.0-alpha.tar.gz</a></td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v2.0.0-alpha.zip">v2.0.0-alpha.zip</a></td>
+</tr>
+<tr class="row-even"><td>Git master branch</td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/master.tar.gz">master.tar.gz</a></td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/master.zip">master.zip</a></td>
+</tr>
+<tr class="row-odd"><td>Git develop branch</td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/develop.tar.gz">develop.tar.gz</a></td>
+<td><a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/develop.zip">develop.zip</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="using-git">
+<h2>Utiliser Git<a class="headerlink" href="#using-git" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Protocole Git (en lecture seule) :</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone git://github.com/pgRouting/pgrouting.git
+</pre></div>
+</div>
+<p>HTTPS protocol (read-only):
+.. code-block:: bash</p>
+<blockquote>
+<div>git clone <a class="reference external" href="https://github.com/pgRouting/pgrouting.git">https://github.com/pgRouting/pgrouting.git</a></div></blockquote>
+<p>Voir <a class="reference internal" href="build.html#build"><em>Guide pour le Build</em></a> les notes sur comment compiler depuis les sources.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../introduction/introduction.html">Introduction</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="build.html">Guide pour le Build</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
+      Mis à jour le Sep 20, 2013.
+      Créé avec <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

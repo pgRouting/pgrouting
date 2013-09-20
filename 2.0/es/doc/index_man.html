@@ -1,0 +1,137 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Referencias para pgRouting &mdash; pgRouting Manual (2.0.0)</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0 (d4d49b7 master)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0)" href="../index.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
+          <span>pgRouting Manual (2.0.0)</span></a></h1>
+        <h2 class="heading"><span>Referencias para pgRouting</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgrouting-reference">
+<span id="man"></span><h1>Referencias para pgRouting<a class="headerlink" href="#pgrouting-reference" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>pgRouting extiende a las bases de datos geoespaciales <a class="reference external" href="http://postgis.net">PostGIS</a> /<a class="reference external" href="http://postgresql.org">PostgreSQL</a> para proveer ruteo geoespacial y otras funcionalidades de análisis de redes.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="src/introduction/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src/introduction/support.html">Soporte</a></li>
+</ul>
+</div>
+<p>pgRouting provee varias <a class="reference internal" href="../src/common/doc/index.html#common"><em>funciones comunes</em></a>:</p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/analyze_graph.html">pgr_analyzeGraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/analyze_oneway.html">pgr_analyzeOneway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/create_topology.html">pgr_createTopology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/create_vert_table.html">pgr_createVerticesTable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/index.html">Topology Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/node_network.html">pgr_nodeNetwork</a></li>
+</ul>
+</div>
+<p>pgRouting defines a few <a class="reference internal" href="../src/common/doc/types/index.html#data-types"><em>custom data types</em></a>:</p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/types/cost_result.html">pgr_costResult[]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/types/cost_result.html#pgr-costresult3-multiple-path-results-with-cost">pgr_costResult3[]  -  resultados múltiples de recorridos con costo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/types/geom_result.html">pgr_geomResult[]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/types/index.html">pgRouting Data Types</a></li>
+</ul>
+</div>
+<p>Funciones de pgRouting en orden alfabético:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../src/apsp_johnson/doc/index.html">pgr_apspJohnson -   Ruta más corta de todos los pares, algoritmo de Johnson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/apsp_warshall/doc/index.html">pgr_apspWarshall - Camino más corto de todos los pares, Algoritmo de Floyd-Warshall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/astar/doc/index.html">pgr_astar - Camino más corto A*</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/bd_astar/doc/index.html">pgr_bdAstar - Camino más corto bidireccional A*</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/bd_dijkstra/doc/index.html">pgr_bdDijkstra - Camino más corto bidireccional de Dijkstra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/dijkstra/doc/index.html">pgr_dijkstra - Camino más corto de Dijkstra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/kdijkstra/doc/index.html">pgr_kDijkstra -  Camino más corto camino con múltiples  destinos de Dijkstra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/ksp/doc/index.html">pgr_ksp - K caminos más cortos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/tsp/doc/index.html">pgr_tsp - Vendedor Viajante</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/trsp/doc/index.html">pgr_trsp - Camino más corto con giros restringidos (TRSP)</a></li>
+</ul>
+</div>
+<p>Si  pgRouting es compilado con &#8220;Distancia de Manejo&#8221; habilitado:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../src/driving_distance/doc/dd_alphashape.html">pgr_alphaShape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/driving_distance/doc/index.html">With Driving Distance Enabled</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/driving_distance/doc/dd_points_as_polygon.html">pgr_pointsAsPolygon</a></li>
+</ul>
+</div>
+<p>Algunas funciones de versiones anteriores han sido eliminadas.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/legacy.html">Funciones heredadas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src/developer/discontinued.html">Funciones Descontinuadas</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="src/introduction/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src/introduction/support.html">Soporte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src/introduction/support.html">Soporte</a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
+      Actualizado por última vez en Sep 20, 2013.
+      Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Notas de la versión 2.0 de pgRouting &mdash; pgRouting Manual (2.0.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0 (d4d49b7 master)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
+    <link rel="up" title="Release Notes" href="index.html" />
+    <link rel="next" title="Notas de versión de pgRouting 1.x" href="1_x.html" />
+    <link rel="prev" title="Release Notes" href="index.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.0.0)</span></a></h1>
+        <h2 class="heading"><span>Notas de la versión 2.0 de pgRouting</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Release Notes</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="1_x.html">Notas de versión de pgRouting 1.x</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgrouting-2-0-release-notes">
+<span id="changelog-2-0"></span><h1>Notas de la versión 2.0 de pgRouting<a class="headerlink" href="#pgrouting-2-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Con el lanzamiento de la versión 2.0 de pgRouting,   las bibliotecas dejan de tener compatibilidad con las versiones <a class="reference internal" href="1_x.html#changelog-1-x"><em>pgRouting 1.x</em></a> .  Se hizo esto para poder reestructurar pgRouting, estandarizando los nombres de las funciones y preparando el proyecto para el futuros desarrollos. Como resultado de este esfuerzo, hemos sido capaces de simplificar pgRouting, añadiendo funcionalidades importantes, integrando la documentación y probando el árbol del código fuente, haciéndolo más sencillo para que varios  desarrolladores puedan contribuir.</p>
+<p>Para los cambios importantes, consulte las siguientes notas de la versión. Para ver la lista completa de cambios revise la lista de <a class="reference external" href="https://github.com/pgRouting/pgrouting/commits">Git commits</a> en Github.</p>
+<div class="section" id="changes-for-2-0-0">
+<h2>Cambios en la versioón 2.0.0<a class="headerlink" href="#changes-for-2-0-0" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li>Análisis gráfico - herramientas para detectar y arreglar algunos problemas de conexión en un gráfico de red</li>
+<li>Una colección de funciones útiles</li>
+<li>Dos nuevos algoritmos para el camino más corto de todos pares  (pgr_apspJohnson, pgr_apspWarshall)</li>
+<li>Algoritmos para el Dijkstra bidireccional y la  búsqueda A*(pgr_bdAstar, pgr_bdDijkstra)</li>
+<li>Búsqueda de uno a varios nodos (pgr_kDijkstra)</li>
+<li>K alternate paths shortest path (pgr_ksp)</li>
+<li>Nuevo solucionador TSP  que simplifica el código donde  el proceso de compilación (pgr_tsp), ya no dependene de la biblioteca &#8220;Gaul Library&#8221;</li>
+<li>Ruta más corta con giros restringidos (pgr_trsp) que reemplaza a la estrella fugaz &#8220;Shooting Star&#8221;</li>
+<li>Se deja de soportar a la Estrella fugaz &#8220;Shooting Star&#8221;</li>
+<li>Se construye una  infraestructura de pruebas que se ejecuta antes de que se incorporen grandes cambios al código principal.</li>
+<li>Se probó y se arreglaron todos los errores excepcionales registrados en la versión 1.x existente en la base del código 2.0-dev.</li>
+<li>Proceso de compilación mejorados para Windows</li>
+<li>Automated testing on Linux and Windows platforms trigger by every commit</li>
+<li>Diseño modular de bibliotecas</li>
+<li>Compatibilidad con PostgreSQL 9.1 o posterior</li>
+<li>Compatibilidad con PostGIS 2.0 o posterior</li>
+<li>Se instala como EXTENSION de PostgreSQL</li>
+<li>Los Tipos de datos son unificados</li>
+<li>Soporte para esquema en los parámetros de las funciones</li>
+<li>Soporte para el prefijo <tt class="docutils literal"><span class="pre">st_</span></tt> de las funciones de PostGIS</li>
+<li>Prefijo <tt class="docutils literal"><span class="pre">pgr_</span></tt>  agregado a las funciones y tipos</li>
+<li>Mejor documentación: <a class="reference external" href="http://docs.pgrouting.org">http://docs.pgrouting.org</a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Release Notes</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="1_x.html">Notas de versión de pgRouting 1.x</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
+      Actualizado por última vez en Sep 20, 2013.
+      Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

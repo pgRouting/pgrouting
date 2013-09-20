@@ -1,0 +1,262 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_trsp - Plus court chemin avec restriction de virage (TRSP) &mdash; pgRouting Manual (2.0.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0 (d4d49b7 master)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
+    <link rel="up" title="Routing Functions" href="../../index.html" />
+    <link rel="next" title="With Driving Distance Enabled" href="../../driving_distance/doc/index.html" />
+    <link rel="prev" title="pgr_tsp - Voyageur du commerce" href="../../tsp/doc/index.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.0.0)</span></a></h1>
+        <h2 class="heading"><span>pgr_trsp - Plus court chemin avec restriction de virage (TRSP)</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../tsp/doc/index.html">pgr_tsp - Voyageur du commerce</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../driving_distance/doc/index.html">With Driving Distance Enabled</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-trsp-turn-restriction-shortest-path-trsp">
+<span id="trsp"></span><h1>pgr_trsp - Plus court chemin avec restriction de virage (TRSP)<a class="headerlink" href="#pgr-trsp-turn-restriction-shortest-path-trsp" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Nom<a class="headerlink" href="#name" title="Lien permanent vers ce titre">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_trsp</span></tt> — Retourne le plus court chemin avec support pour les restrictions de virage.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Le plus court chemin avec restriction de virage (TRSP) est un algorithme de plus court chemin qui peut optionnellement prendre en compte les restrictions comme celles trouvées dans les réseaux routiers navigables réels. La performance est pratiquement aussi rapide que la recherche A* mais a beaucoup de fonctionnalités additionnelles puisque fonctionnant avec des arêtes plus qu&#8217;avec des nœuds du réseau. Retourne un ensemble de lignes <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a> (seq, id1, id2, cost), qui constituent un chemin.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_trsp</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">target</span> <span class="nb">integer</span><span class="p">,</span>
+             <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="nb">boolean</span> <span class="p">[,</span><span class="n">restrict_sql</span> <span class="nb">text</span><span class="p">]);</span>
+</pre></div>
+</div>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_trsp</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">source_edge</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">source_pos</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+                          <span class="n">target_edge</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">target_pos</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span> <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span>
+                      <span class="n">has_rcost</span> <span class="nb">boolean</span> <span class="p">[,</span><span class="n">restrict_sql</span> <span class="nb">text</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Lien permanent vers ce titre">¶</a></h2>
+<p>L&#8217;algorithme de plus court chemin avec restriction de virage (TRSP) est similaire au <a class="reference internal" href="../../../doc/src/developer/discontinued.html#shooting-star"><em>Algorithme Shooting Star</em></a> dans lequel vous pouvez spécifier les restrictions de virage.</p>
+<p>La configuration TRSP est essentiellement la même que <a class="reference internal" href="../../dijkstra/doc/index.html#pgr-dijkstra"><em>Dijkstra shortest path</em></a> avec l&#8217;addition d&#8217;une table optionnelle de restrictions de virage. Cela rend plus facile l&#8217;ajout des restrictions de virage à un réseau routier, que d&#8217;essayer de les ajouter au Shooting Star où vous aviez à ajouter les mêmes arêtes plusieurs fois si vous étiez impliqués dans une restriction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first">une requête SQL, qui devrait retourner un ensemble de lignes avec les colonnes suivantes :</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="p">[,</span><span class="n">reverse_cost</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">edge_table</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifiant de l&#8217;arête</td>
+</tr>
+<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifiant du sommet source</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifiant du sommet cible</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> valeur, du coût de l&#8217;arête traversée. Un coût négatif va prévenir l&#8217;arête d&#8217;être insérée dans le graphe.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">reverse_cost:</th><td class="field-body">(optionnel) le coût pour la traversée inverse de l&#8217;arête. Ceci est seulement utilisé quand les paramètres <tt class="docutils literal"><span class="pre">directed</span></tt> et <tt class="docutils literal"><span class="pre">has_rcost</span></tt> sont <tt class="docutils literal"><span class="pre">true</span></tt> (voir la remarque ci-dessus sur les coûts négatifs).</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int4</span></tt> <strong>NODE id</strong> du point de départ</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int4</span></tt> <strong>NODE id</strong> du point final</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">directed:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">true</span></tt> si le graphe est dirigé</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">has_rcost:</th><td class="field-body"><p class="first">si <tt class="docutils literal"><span class="pre">true</span></tt>,  la colonne <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> du SQL générant l&#8217;ensemble des lignes va être utilisé pour le coût de la traversée de l&#8217;arête dans la direction opposée.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">restrict_sql:</th><td class="field-body"><p class="first">(optionnel) une requête SQL, qui devrait retourner un ensemble de lignes avec les colonnes suivantes :</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">to_cost</span><span class="p">,</span> <span class="n">target_id</span><span class="p">,</span> <span class="n">via_path</span> <span class="k">FROM</span> <span class="n">restrictions</span>
+</pre></div>
+</div>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">to_cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> coût de restriction de virage</td>
+</tr>
+<tr class="field-even field"><th class="field-name">target_id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> id cible</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">via_path:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> liste séparée par virgule d&#8217;arêtes dans l&#8217;ordre inverse de <tt class="docutils literal"><span class="pre">rule</span></tt></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Un autre variante de TRSP autorise de spécifier <strong>EDGE id</strong> de source et cible ensemble avec une fraction pour interpoler la position :</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">source_edge:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> <strong>EDGE id</strong> d&#8217;une arête de départ</td>
+</tr>
+<tr class="field-even field"><th class="field-name">source_pos:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> fraction de 1 définit la position de l&#8217;arête de départ</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">target_edge:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> <strong>EDGE id</strong> de l&#8217;arête finale</td>
+</tr>
+<tr class="field-even field"><th class="field-name">target_pos:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> fraction de 1 définit la position de l&#8217;arête finale</td>
+</tr>
+</tbody>
+</table>
+<p>Retourne un ensemble de <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a>:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body">séquence de ligne</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id1:</th><td class="field-body">ID noeud</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">ID arête (<tt class="docutils literal"><span class="pre">-1</span></tt> pour la dernière ligne)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body">coût pour traverser à partir de <tt class="docutils literal"><span class="pre">id1</span></tt> en utilisant <tt class="docutils literal"><span class="pre">id2</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Histoire</p>
+<ul class="simple">
+<li>Nouveau depuis la version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Exemples<a class="headerlink" href="#examples" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li>Sans restrictions de virage</li>
+</ul>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span> <span class="k">AS</span> <span class="n">node</span><span class="p">,</span> <span class="n">id2</span> <span class="k">AS</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span>
+        <span class="k">FROM</span> <span class="n">pgr_trsp</span><span class="p">(</span>
+                <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+                <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">false</span>
+        <span class="p">);</span>
+
+<span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="c1">----+------+------+------</span>
+  <span class="mi">0</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">2</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">4</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">5</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
+<span class="p">(</span><span class="mi">6</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Avec restrictions de virage</li>
+</ul>
+<p>Les restrictions de virage requièrent des informations additionnelles, qui peuvent être stockées dans une table séparée :</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">restrictions</span> <span class="p">(</span>
+    <span class="n">rid</span> <span class="nb">serial</span><span class="p">,</span>
+    <span class="n">to_cost</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="n">to_edge</span> <span class="nb">integer</span><span class="p">,</span>
+    <span class="n">from_edge</span> <span class="nb">integer</span><span class="p">,</span>
+    <span class="n">via</span> <span class="nb">text</span>
+<span class="p">);</span>
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">restrictions</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="k">null</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">restrictions</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">restrictions</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="k">null</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Ensuite une requête avec des restrictions de virage est créée comme :</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span> <span class="k">AS</span> <span class="n">node</span><span class="p">,</span> <span class="n">id2</span> <span class="k">AS</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span>
+        <span class="k">FROM</span> <span class="n">pgr_trsp</span><span class="p">(</span>
+                <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+                <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span>
+                <span class="s1">&#39;SELECT to_cost, to_edge AS target_id,</span>
+<span class="s1">           from_edge || coalesce(&#39;&#39;,&#39;&#39; || via, &#39;&#39;&#39;&#39;) AS via_path</span>
+<span class="s1">       FROM restrictions&#39;</span>
+        <span class="p">);</span>
+
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="c1">-----+------+------+------</span>
+   <span class="mi">0</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
+<span class="p">(</span><span class="mi">6</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Les requêtes utilisent le réseau <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Données d&#8217;échantillon</em></a>.</p>
+</div>
+<div class="section" id="see-also">
+<h2>Voir aussi<a class="headerlink" href="#see-also" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../tsp/doc/index.html">pgr_tsp - Voyageur du commerce</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../driving_distance/doc/index.html">With Driving Distance Enabled</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
+      Mis à jour le Sep 20, 2013.
+      Créé avec <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

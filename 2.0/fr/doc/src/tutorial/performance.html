@@ -1,0 +1,101 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Conseils pour la performance &mdash; pgRouting Manual (2.0.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0 (d4d49b7 master)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
+    <link rel="up" title="Tutorial" href="index.html" />
+    <link rel="next" title="User’s wrapper contributions" href="custom_wrapper.html" />
+    <link rel="prev" title="Requête personnalisée" href="custom_query.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.0.0)</span></a></h1>
+        <h2 class="heading"><span>Conseils pour la performance</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="custom_query.html">Requête personnalisée</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="custom_wrapper.html">User&#8217;s wrapper contributions</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="performance-tips">
+<span id="performance"></span><h1>Conseils pour la performance<a class="headerlink" href="#performance-tips" title="Lien permanent vers ce titre">¶</a></h1>
+<p>When &#8220;you know&#8221; that you are going to remove a set of edges from the edges table, and without those edges you are going to use a routing function you can do the following:</p>
+<p>Analize the new topology based on the actual topology:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Or create a new topology if the change is permanent:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
+<span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Use an SQL that &#8220;removes&#8221; the edges in the routing function</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span> <span class="k">from</span> <span class="n">edge_table</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">&lt;</span> <span class="mi">17</span>
+</pre></div>
+</div>
+<p>When &#8220;you know&#8221; that the route will not go out of a particular area, to speed up the process you can use a more complex SQL query like</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span> <span class="k">from</span> <span class="n">edge_table</span> <span class="k">WHERE</span>
+        <span class="n">id</span> <span class="o">&lt;</span> <span class="mi">17</span> <span class="k">and</span>
+        <span class="n">the_geom</span>  <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="k">select</span> <span class="n">st_buffer</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">myarea</span> <span class="k">FROM</span>  <span class="n">edge_table</span> <span class="k">where</span> <span class="n">id</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that the  same condition <tt class="docutils literal"><span class="pre">id</span> <span class="pre">&lt;</span> <span class="pre">17</span></tt> is used in all cases.</p>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="custom_query.html">Requête personnalisée</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="custom_wrapper.html">User&#8217;s wrapper contributions</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
+      Mis à jour le Sep 20, 2013.
+      Créé avec <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

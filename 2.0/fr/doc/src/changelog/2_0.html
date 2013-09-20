@@ -1,0 +1,109 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Notes de version pgRouting 2.0 &mdash; pgRouting Manual (2.0.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0 (d4d49b7 master)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
+    <link rel="up" title="Release Notes" href="index.html" />
+    <link rel="next" title="Notes de version pgRouting 1.0" href="1_x.html" />
+    <link rel="prev" title="Release Notes" href="index.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.0.0)</span></a></h1>
+        <h2 class="heading"><span>Notes de version pgRouting 2.0</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Release Notes</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="1_x.html">Notes de version pgRouting 1.0</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgrouting-2-0-release-notes">
+<span id="changelog-2-0"></span><h1>Notes de version pgRouting 2.0<a class="headerlink" href="#pgrouting-2-0-release-notes" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Avec la version de pgRouting 2.0 la librairie a abandonné la compatibilité restrospective aux versions <a class="reference internal" href="1_x.html#changelog-1-x"><em>pgRouting 1.x</em></a>. Nous avons fait ça pour que nous puissions restructurer pgRouting, standardiser le nommage de fonction, et préparer le projet pour un développement future. Comme un résultat de cet effort, nous avons été capable de simplifier pgRouting, ajouter de façon significative de nouvelles fonctionnalités, intégrer de la documentation et tester dans l&#8217;arbre source et rendre plus facile pour les multiples développeurs de contribuer.</p>
+<p>Pour les changements importants voir les notes de versions suivantes. Pour voir la liste complète des changements, vérifiez la liste de <cite>Git commits &lt;https://github.com/pgRouting/pgrouting/commits&gt;</cite> sur Github.</p>
+<div class="section" id="changes-for-2-0-0">
+<h2>Changements pour la version 2.0.0<a class="headerlink" href="#changes-for-2-0-0" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li>Graph Analytics - outils pour la détection et la résolution certains problèmes de connexion dans un graphe.</li>
+<li>Une collection de fonctions utiles.</li>
+<li>Deux nouveaux algorithmes de plus court chemin toutes paires (pgr_apspJohnson, pgr_apspWarshall)</li>
+<li>Algorithmes de recherches bidirectionnels Dijkstra et A-star (pgr_bdAstar, pgr_bdDijkstra)</li>
+<li>Recherche à nœuds un à plusieurs (pgr_kDijkstra)</li>
+<li>Plus court chemin K chemins alternatifs (pgr_ksp)</li>
+<li>Nouveau solveur TSP qui simplifie le code et le processus de build (pgr_tsp), supprimé la dépendance &#8220;Gaul Library&#8221;</li>
+<li>Le plus court chemin à virage restreint (pgr_trsp) qui remplace Shooting Star</li>
+<li>Support supprimé pour Shooting Star</li>
+<li>Construit une infrastructure de test qui est exécutée avant que des changements de code majeurs soient enregistrés.</li>
+<li>Testé et résolu la plupart des bugs non résolus rapportés sur la 1.x et existant dans la base de code 2.0-dev.</li>
+<li>Processus de build amélioré pour Windows</li>
+<li>Automated testing on Linux and Windows platforms trigger by every commit</li>
+<li>Conception en librairie modulaire</li>
+<li>Compatibilité avec PostgreSQL 9.1 ou plus récent</li>
+<li>Compatibilité avec PostGIS 2.0 ou plus récent</li>
+<li>Installe comme une EXTENSION PostgreSQL</li>
+<li>Retourne les types remaniés et unifiés</li>
+<li>Support pour la table SCHEMA dans les paramètres de fonction</li>
+<li>Support pour préfixe de fonction <tt class="docutils literal"><span class="pre">st_</span></tt> PostGIS</li>
+<li>Ajouté préfixe <tt class="docutils literal"><span class="pre">pgr_</span></tt> aux fonctions et types</li>
+<li>Meilleure documentation: <a class="reference external" href="http://docs.pgrouting.org">http://docs.pgrouting.org</a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Release Notes</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="1_x.html">Notes de version pgRouting 1.0</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
+      Mis à jour le Sep 20, 2013.
+      Créé avec <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

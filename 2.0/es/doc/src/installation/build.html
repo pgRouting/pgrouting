@@ -1,0 +1,158 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Guía de Compilación &mdash; pgRouting Manual (2.0.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.0.0 (d4d49b7 master)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
+    <link rel="next" title="Soporte" href="../introduction/support.html" />
+    <link rel="prev" title="Instalación" href="index.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.0.0)</span></a></h1>
+        <h2 class="heading"><span>Guía de Compilación</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Instalación</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../introduction/support.html">Soporte</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="build-guide">
+<span id="build"></span><h1>Guía de Compilación<a class="headerlink" href="#build-guide" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Para poder compilar pgRouting asegúrese de que se cumplan las siguientes dependencias:</p>
+<ul class="simple">
+<li>Compiladores de C y C++</li>
+<li>Postgresql versiones &gt;= 8.4 (&gt;= 9.1 recomendado)</li>
+<li>PostGIS version &gt;= 1.5 (&gt;= 2.0 recommended)</li>
+<li>La biblioteca de gráficos de Boost (BGL).  Versión &gt; = [por determinarse]</li>
+<li>CMake &gt;= 2.8.8</li>
+<li>(opcional, para la distancia de manejo) CGAL &gt; = [por determinarse]</li>
+<li>(opcional, para la documentación) Sphinx &gt; = 1.1</li>
+<li>(optional, for Documentation as PDF) Latex &gt;= [TBD]</li>
+</ul>
+<p>The cmake system has variables the can be configured via the command line options by setting them with -D&lt;varable&gt;=&lt;value&gt;. You can get a listing of these via:</p>
+<div class="highlight-bash"><div class="highlight"><pre>mkdir build
+<span class="nb">cd </span>build
+cmake -L ..
+</pre></div>
+</div>
+<p>Currently these are:</p>
+<blockquote>
+<div>Boost_DIR:PATH=Boost_DIR-NOTFOUND
+CMAKE_BUILD_TYPE:STRING=
+CMAKE_INSTALL_PREFIX:PATH=/usr/local
+POSTGRESQL_EXECUTABLE:FILEPATH=/usr/lib/postgresql/9.2/bin/postgres
+POSTGRESQL_PG_CONFIG:FILEPATH=/usr/bin/pg_config
+WITH_DD:BOOL=ON
+WITH_DOC:BOOL=OFF
+BUILD_HTML:BOOL=ON
+BUILD_LATEX:BOOL=OFF
+BUILD_MAN:BOOL=ON</div></blockquote>
+<p>These also show the current or default values based on our development system. So your values my be different. In general the ones that are of most interest are:</p>
+<blockquote>
+<div>WITH_DD:BOOL=ON       &#8211; Turn on/off building driving distance code.
+WITH_DOC:BOOL=OFF     &#8211; Turn on/off building the documentation
+BUILD_HTML:BOOL=ON    &#8211; If WITH_DOC=ON, turn on/off building HTML
+BUILD_LATEX:BOOL=OFF  &#8211; If WITH_DOC=ON, turn on/off building PDF
+BUILD_MAN:BOOL=ON     &#8211; If WITH_DOC=ON, turn on/off building MAN pages</div></blockquote>
+<p>To change any of these add <tt class="docutils literal"><span class="pre">-D&lt;variable&gt;=&lt;value&gt;</span></tt> to the cmake lines below. For example to turn on documentation, your cmake command might look like:</p>
+<div class="highlight-bash"><div class="highlight"><pre>cmake -DWITH_DOC<span class="o">=</span>ON ..   <span class="c"># Turn on the doc with default settings</span>
+cmake -DWITH_DOC<span class="o">=</span>ON -DBUILD_LATEX ..  <span class="c"># Turn on doc and pdf</span>
+</pre></div>
+</div>
+<p>If you turn on the documentation, you also need to add the <tt class="docutils literal"><span class="pre">doc</span></tt> target to the make command.</p>
+<div class="highlight-bash"><div class="highlight"><pre>make          <span class="c"># build the code but not the doc</span>
+make doc      <span class="c"># build only the doc</span>
+make all doc  <span class="c"># build both the code and the doc</span>
+</pre></div>
+</div>
+<div class="section" id="for-mingw-on-windows">
+<h2>Para MinGW en Windows<a class="headerlink" href="#for-mingw-on-windows" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre>mkdir build
+<span class="nb">cd </span>build
+cmake -G<span class="s2">&quot;MSYS Makefiles&quot;</span> ..
+make
+make install
+</pre></div>
+</div>
+</div>
+<div class="section" id="for-linux">
+<h2>Para Linux<a class="headerlink" href="#for-linux" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre>mkdir build
+<span class="nb">cd </span>build
+cmake  ..
+make
+sudo make install
+</pre></div>
+</div>
+</div>
+<div class="section" id="with-documentation">
+<h2>Con la documentación<a class="headerlink" href="#with-documentation" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Construir con documentación (requiere <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a>):</p>
+<div class="highlight-bash"><div class="highlight"><pre>    cmake -DWITH_DOC<span class="o">=</span>ON ..
+make all doc
+</pre></div>
+</div>
+<p>Reconstrucción de la documentación modificada solamente:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sphinx-build -b html -c build/doc/_build -d build/doc/_doctrees . build/html
+</pre></div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Instalación</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../introduction/support.html">Soporte</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
+      Actualizado por última vez en Sep 20, 2013.
+      Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
