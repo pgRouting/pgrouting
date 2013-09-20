@@ -5,7 +5,7 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting Docs\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-02 16:47\n"
 "PO-Revision-Date: 2013-08-06 14:00+0000\n"

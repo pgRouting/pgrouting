@@ -1,113 +1,135 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
 # 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-04 04:20+0000\n"
+"Last-Translator: Daniel Kastl\n"
+"Language-Team: German (http://www.transifex.com/projects/p/pgrouting/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+# 5ecdde4d413646dea6574de17b792284
 #: ../../../src/common/doc/functions/create_topology.rst:13
 msgid "pgr_createTopology - Building a Network Topology"
 msgstr ""
 
+# c98545d1ae02459e91ba655a7c183392
 #: ../../../src/common/doc/functions/create_topology.rst:20
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
+# c06df067b218420ab3da42e649f379a9
 #: ../../../src/common/doc/functions/create_topology.rst:22
 msgid ""
 "``pgr_createTopology`` — Builds a network topology with source and target "
 "information."
 msgstr ""
 
+# 47a4ca36d9bb4ab696d81ac95f618cdd
 #: ../../../src/common/doc/functions/create_topology.rst:26
 msgid "Synopsis"
-msgstr ""
+msgstr "Übersicht"
 
+# 416515b0aad24c4ab3292c342831dfaf
 #: ../../../src/common/doc/functions/create_topology.rst:28
 msgid "The function returns ``OK`` after the network topology has been built."
 msgstr ""
 
+# 07d6393e5f6c4a748e1151949dc4966a
 #: ../../../src/common/doc/functions/create_topology.rst:37
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
+# 4cab83e8016f4cb7b960e31a014cb6a0
 #: ../../../src/common/doc/functions/create_topology.rst:39
 msgid ""
 "This function assumes the ``source`` and ``target`` columns exist on table "
 "``geom_table`` and are of type integer or bigint."
 msgstr ""
 
+# 7eae20752c814c8aa04f015979ef73e3
 #: ../../../src/common/doc/functions/create_topology.rst:50
 msgid ""
 "It fills the ``source`` and ``target`` id column for all edges. All line "
 "ends with a distance less than tolerance, are assigned the same id."
 msgstr ""
 
+# b2ac4398cd1445a5ba003ebbd4a9a568
 #: ../../../src/common/doc/functions/create_topology.rst:52
 msgid "The topology creation function accepts the following parameters:"
 msgstr ""
 
+# c5c379f05e914288a45925a637a72240
 #: ../../../src/common/doc/functions/create_topology.rst:54
 msgid "``varchar`` network table name (may contain the schema name as well)"
 msgstr ""
 
+# 14597881b70e4470b22fd8c0fe3c5986
 #: ../../../src/common/doc/functions/create_topology.rst:55
 msgid ""
 "``float8`` snapping tolerance of disconnected edges (in projection unit)"
 msgstr ""
 
+# 82390e50492f485fb20cb5d056e7671a
 #: ../../../src/common/doc/functions/create_topology.rst:56
 msgid "``varchar`` geometry column name of the network table"
 msgstr ""
 
+# 19a0565d60144f5e8df755ec6d1a6ffd
 #: ../../../src/common/doc/functions/create_topology.rst:57
 msgid "``varchar`` primary key column name of the network table"
 msgstr ""
 
+# 6fb69bb0e5da4e29a2fecc6ffdbb1274
 #: ../../../src/common/doc/functions/create_topology.rst:59
 msgid "The function ``OK`` after the network topology has been built."
 msgstr ""
 
+# 2b3548ea9fdf4359a04b05e8419adb24
 #: ../../../src/common/doc/functions/create_topology.rst:63
 msgid "History"
-msgstr ""
+msgstr "Geschichte"
 
+# 01d6c5adc0d3458ba23ffa4534a9dee5
 #: ../../../src/common/doc/functions/create_topology.rst:64
 msgid "Renamed in version 2.0.0"
 msgstr ""
 
+# aa72ca8a15b547a4afc8e03b135e380f
 #: ../../../src/common/doc/functions/create_topology.rst:68
 msgid "Examples"
-msgstr ""
+msgstr "Beispiele"
 
+# ad8210ab4fc84265b0ea9f7379d85f18
 #: ../../../src/common/doc/functions/create_topology.rst:80
 msgid "The queries use the :ref:`sampledata` network."
 msgstr ""
 
+# c56da07841b14abf9a13c7be7f613a80
 #: ../../../src/common/doc/functions/create_topology.rst:84
 msgid "See Also"
-msgstr ""
+msgstr "Siehe auch"
 
+# 848fd11cbf4944f28398aa0c83790744
 #: ../../../src/common/doc/functions/create_topology.rst:86
 msgid ":ref:`topology`"
 msgstr ""
 
+# 0844157284514318a76884b369f00ad6
 #: ../../../src/common/doc/functions/create_topology.rst:87
 msgid ":ref:`pgr_node_network`"
 msgstr ""
 
+# 685d4340f08143758def841632bf5c5e
 #: ../../../src/common/doc/functions/create_topology.rst:88
 msgid ":ref:`pgr_point_to_id`"
 msgstr ""
-
-#~ msgid "pgr_createTopology(varchar,double precision,varchar,varchar)"
-#~ msgstr ""
-
-#~ msgid "common"
-#~ msgstr ""

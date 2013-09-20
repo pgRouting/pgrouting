@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
+# cvvergara, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting Docs\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-06 17:20+0000\n"
-"Last-Translator: Daniel Kastl\n"
+"PO-Revision-Date: 2013-08-07 12:30+0000\n"
+"Last-Translator: cvvergara\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -181,14 +182,14 @@ msgstr ":ref:`type_cost_result`"
 # 546f88ac72354dee9acf7aab885b7ff2
 #: ../../../src/bd_dijkstra/doc/index.rst:118
 msgid ":ref:`bd_astar`"
-msgstr ""
+msgstr ":ref:`bd_astar`"
 
 # 5d7effee56c74c66b670f09b7e1de764
 #: ../../../src/bd_dijkstra/doc/index.rst:119
 msgid "http://en.wikipedia.org/wiki/Bidirectional_search"
-msgstr ""
+msgstr "http://en.wikipedia.org/wiki/Bidirectional_search"
 
 # 25a096d3a1e2456699a06c1eaffa07bc
 #: ../../../src/bd_dijkstra/doc/index.rst:120
 msgid "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
-msgstr ""
+msgstr "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"

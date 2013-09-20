@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (c11a3d8 develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
 # Daniel Kastl, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting Docs\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
 "PO-Revision-Date: 2013-08-02 06:20+0000\n"
 "Last-Translator: Daniel Kastl\n"
 "Language-Team: German (http://www.transifex.com/projects/p/pgrouting/language/de/)\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-# 0bfadaed365c4a8b879e32fda5128183
+# 8e0e9a4221ee4384940b01c6483da272
 #: ../../index.rst:13
 msgid "Table of Contents"
 msgstr "Inhaltsverzeichnis"
 
-# 315dc202507e442c923471eb02fa360f
+# 52bacf1e9ef84942ac2b40b5cb7404e4
 #: ../../index.rst:15
 msgid ""
 "pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL "
@@ -31,12 +31,12 @@ msgid ""
 "and other network analysis functionality."
 msgstr "pgRouting erweitert eine `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgresql.org>`_  Geo-Datenbank um Funktionen für “Kürzeste-Wege” Berechnung und andere netzorientierte Algorithmen."
 
-# d663436cd87441e991e7b562d93882ce
+# 058e6723e673445c83a90cf0b9c0952b
 #: ../../index.rst:17
 msgid "This is the manual for pgRouting |release|."
 msgstr ""
 
-# 443732eb9fff4742b403ee64fc4ce285
+# 74b7b1936fc740c3ac40349a4cb3302d
 #: ../../index.rst:23
 msgid ""
 "The pgRouting Manual is licensed under a `Creative Commons Attribution-Share"
@@ -47,74 +47,74 @@ msgid ""
 ":ref:`license` page."
 msgstr ""
 
-# 0451a35a80934d24ab4abb6421ff6240
+# 9dbb9ddf990544db95bf71c476282935
 #: ../../index.rst:27
 msgid "General"
 msgstr ""
 
-# 674e25aceae047539b0436df6843f3b2
+# f2faf60864344a59a08891e5c37eedff
 #: ../../index.rst:39
 msgid "Tutorial"
 msgstr "Anleitung"
 
-# ea189372f5734e679e076ad9c30e68c0
+# 9ef12c6715134f038462ed596f0077f8
 #: ../../index.rst:52
 msgid ""
 "For a more complete introduction how to build a routing application read the"
 " `pgRouting Workshop <http://workshop.pgrouting.org>`_."
 msgstr ""
 
-# 9db1b1781db14b5098d4114290c162e0
+# 62bfa0e9071046bf915dc11ebee13fe0
 #: ../../index.rst:56
 msgid "Reference"
 msgstr "Referenz"
 
-# 9da315c27b444a06b318353e4d742b77
+# 4f6dced05e7f4f2fac0504c7bcbac375
 #: ../../index.rst:58
 msgid "pgRouting provides several :ref:`common functions <common>`:"
 msgstr ""
 
-# 14376c39e9a641d28e413f57d60d49b6
+# 9e76fdda85694ae09eb7a4daf3b04929
 #: ../../index.rst:72
 msgid "pgRouting introduces a few :ref:`custom data types <common_types>`:"
 msgstr "pgRouting verwendet ein paar  :ref:`custom data types <common_types>`:"
 
-# 1a4a45926b2a493aa2d84d41ec5b236a
+# 19c2ac5ab06d4eec8c8a29f3f8564885
 #: ../../index.rst:86
 msgid "pgRouting functions in alphabetical order:"
 msgstr "pgRouting Funktionen in alphabetischer Reihenfolge:"
 
-# 90fb6b1616804d45b977981ec07d4aab
+# 6693f75074694be18cf9d365a30c487b
 #: ../../index.rst:102
 msgid "If pgRouting is compiled with \"Driving Distance\" enabled:"
 msgstr ""
 
-# 2dca5ecf300247dfb02b1888af03d760
+# 6c0fc85ea6f84d67b541943cb0134194
 #: ../../index.rst:111
 msgid "Some functions from previous releases may have been removed."
 msgstr "Einige Funktionen aus früheren Versionen wurden möglicherweise entfernt."
 
-# 9311ddd2875f4f8cb14b721087755b8e
+# 461f9bed82d546699dc1657949b310b5
 #: ../../index.rst:122
 msgid "Developer"
 msgstr "Entwickler"
 
-# 85dc087cc32145c9a5dbc6b30dad4c17
+# b6a11c0a4aa147719725ef6df08f7886
 #: ../../index.rst:133
 msgid "Release notes"
 msgstr "Release Notes"
 
-# ccfb34f567aa4260825bcf035bdf7c1f
+# 3a6e7c93c19c414788fec96a55ee17e5
 #: ../../index.rst:142
 msgid "Indices and tables"
 msgstr "Tabellen und Indizes"
 
-# 810e6d80b3dc436da4d9fde15aee0642
+# 6089ba03b1bc416eb6759a8a60f7c573
 #: ../../index.rst:143
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-# d50c3bf123c941dcaafd1347d0b68801
+# cd2f2590e93f4944bde6666a7ab16661
 #: ../../index.rst:144
 msgid ":ref:`search`"
 msgstr ":ref:`search`"

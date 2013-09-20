@@ -1,40 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
 # 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-04 04:22+0000\n"
+"Last-Translator: Daniel Kastl\n"
+"Language-Team: German (http://www.transifex.com/projects/p/pgrouting/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+# 35ac554dda8b4ffda3db59487b1c17d0
 #: ../../../src/kdijkstra/doc/index.rst:13
 msgid "pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra"
 msgstr ""
 
+# b2eb47e09e0a45488eabd8508fe50e9a
 #: ../../../src/kdijkstra/doc/index.rst:21
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
+# c7d8a8c07d194ad29dddecbe9cb8957f
 #: ../../../src/kdijkstra/doc/index.rst:23
 msgid ""
 "``pgr_kdijkstraCost`` - Returns the costs for K shortest paths using "
 "Dijkstra algorithm."
 msgstr ""
 
+# 65d0744ecc274468b91bdf92a54ecdc6
 #: ../../../src/kdijkstra/doc/index.rst:24
 msgid ""
 "``pgr_kdijkstraPath`` - Returns the paths for K shortest paths using "
 "Dijkstra algorithm."
 msgstr ""
 
+# 6a2d2a130e8b4494bd8cebd37da5553a
 #: ../../../src/kdijkstra/doc/index.rst:28
 msgid "Synopsis"
-msgstr ""
+msgstr "Übersicht"
 
+# 609c67939b9a44769c9886e9cd74c349
 #: ../../../src/kdijkstra/doc/index.rst:30
 msgid ""
 "These functions allow you to have a single start node and multiple "
@@ -47,33 +59,40 @@ msgid ""
 "traverse that edge."
 msgstr ""
 
+# 974e907064d44d7a9e373b297e8c347f
 #: ../../../src/kdijkstra/doc/index.rst:42
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
+# d4b29b49be544e9bb7250369151c5d2f
 #: ../../../src/kdijkstra/doc/index.rst:44
 msgid ""
 "a SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
+# 10b4ab6f6fb4465184a6fe94ec33ee1e
 #: ../../../src/kdijkstra/doc/index.rst:51
 msgid "``int4`` identifier of the edge"
 msgstr ""
 
+# a3b606228dfc4105b89b89b830b07421
 #: ../../../src/kdijkstra/doc/index.rst:52
 msgid "``int4`` identifier of the source vertex"
 msgstr ""
 
+# eeb4e7cd88884fa8b7a93289df32a092
 #: ../../../src/kdijkstra/doc/index.rst:53
 msgid "``int4`` identifier of the target vertex"
 msgstr ""
 
+# d14f90ce4fe04b6e8cdad90fe1765c44
 #: ../../../src/kdijkstra/doc/index.rst:54
 msgid ""
 "``float8`` value, of the edge traversal cost. A negative cost will prevent "
 "the edge from being inserted in the graph."
 msgstr ""
 
+# a9ebed865e1a4df9a1fdfda4fd06b03e
 #: ../../../src/kdijkstra/doc/index.rst:55
 msgid ""
 "(optional) the cost for the reverse traversal of the edge. This is only used"
@@ -81,18 +100,22 @@ msgid ""
 "above remark about negative costs)."
 msgstr ""
 
+# fbfd7d5d481141eea9f9bc3191fa7151
 #: ../../../src/kdijkstra/doc/index.rst:57
 msgid "``int4`` id of the start point"
 msgstr ""
 
+# e873f5169af0436c9a92475615c7d020
 #: ../../../src/kdijkstra/doc/index.rst:58
 msgid "``int4[]`` an array of ids of the end points"
 msgstr ""
 
+# d7621239f7ca4fb5bdd73dd29bddefc3
 #: ../../../src/kdijkstra/doc/index.rst:59
 msgid "``true`` if the graph is directed"
 msgstr ""
 
+# f82016f1ebb84435951e508e8a85e1a6
 #: ../../../src/kdijkstra/doc/index.rst:60
 msgid ""
 "if ``true``, the ``reverse_cost`` column of the SQL generated set of rows "
@@ -100,70 +123,87 @@ msgid ""
 "direction."
 msgstr ""
 
+# b1a2fd2024484b56a83620b116b15ae8
 #: ../../../src/kdijkstra/doc/index.rst:63
 msgid "``pgr_kdijkstraCost`` returns set of :ref:`type_cost_result`:"
 msgstr ""
 
+# 02453a68514d481db4fcebc83dbbaea7
+# aa1c688802114655b05f6d478a17386d
 #: ../../../src/kdijkstra/doc/index.rst:65
 #: ../../../src/kdijkstra/doc/index.rst:73
 msgid "row sequence"
 msgstr ""
 
+# 0b2bd50110e5407f9b2d48ddc9fb2010
 #: ../../../src/kdijkstra/doc/index.rst:66
 msgid ""
 "path vertex source id (this will always be source start point in the query)."
 msgstr ""
 
+# 79c895aeaf604347a1cb4b39ad701f14
 #: ../../../src/kdijkstra/doc/index.rst:67
 msgid "path vertex target id"
 msgstr ""
 
+# 1fef6d4f061b46ada0a20bc3f755ef05
 #: ../../../src/kdijkstra/doc/index.rst:68
 msgid ""
 "cost to traverse the path from ``id1`` to ``id2``. Cost will be -1.0 if "
 "there is no path to that target vertex id."
 msgstr ""
 
+# e657ad0881db43eab8fc03b9bc8259f0
 #: ../../../src/kdijkstra/doc/index.rst:71
 msgid "``pgr_kdijkstraPath`` returns set of :ref:`type_cost_result3`:"
 msgstr ""
 
+# 09c2daeefb2145f38f63daa17cc1190c
 #: ../../../src/kdijkstra/doc/index.rst:74
 msgid "path target id (identifies the target path)."
 msgstr ""
 
+# 99c4ce7f8bd9436984f5b057acb8d122
 #: ../../../src/kdijkstra/doc/index.rst:75
 msgid "path edge target node id"
 msgstr ""
 
+# 9d1bc2f1c8754f0e8f5b7ed02d6b1157
 #: ../../../src/kdijkstra/doc/index.rst:76
 msgid "path edge id"
 msgstr ""
 
+# 73229a70b9db402694366c8bfacf0ed0
 #: ../../../src/kdijkstra/doc/index.rst:77
 msgid "cost to traverse this edge or -1.0 if there is no path to this target"
 msgstr ""
 
+# e5bd93b2fafe4984af962eeb8c25052e
 #: ../../../src/kdijkstra/doc/index.rst:81
 msgid "History"
-msgstr ""
+msgstr "Geschichte"
 
+# 45324890c03042308fb9597d4972b502
 #: ../../../src/kdijkstra/doc/index.rst:82
 msgid "New in version 2.0.0"
-msgstr ""
+msgstr "Neu in Version 2.0.0"
 
+# bd1dc988f12b44478c823b1afeb9f5a6
 #: ../../../src/kdijkstra/doc/index.rst:86
 msgid "Examples"
-msgstr ""
+msgstr "Beispiele"
 
+# 64c8d21cfff64cfab91f071df283d10a
 #: ../../../src/kdijkstra/doc/index.rst:88
 msgid "Returning a ``cost`` result"
 msgstr ""
 
+# a1e3356de77748e18efe4bf65f317b93
 #: ../../../src/kdijkstra/doc/index.rst:121
 msgid "Returning a ``path`` result"
 msgstr ""
 
+# ed108fb9344c4acda46b76fbc59ef50a
 #: ../../../src/kdijkstra/doc/index.rst:142
 msgid ""
 "There is no assurance that the result above will be ordered in the direction"
@@ -174,23 +214,17 @@ msgid ""
 "and ``st_union()`` and not pgRouting."
 msgstr ""
 
+# bf6d068bab3b43a0bfb71df0cb5b155c
 #: ../../../src/kdijkstra/doc/index.rst:151
 msgid "See Also"
-msgstr ""
+msgstr "Siehe auch"
 
+# 532db661536041839ced0b992e75ff35
 #: ../../../src/kdijkstra/doc/index.rst:153
 msgid ":ref:`type_cost_result`"
 msgstr ""
 
+# d75416886111433997181c7667bc0d6e
 #: ../../../src/kdijkstra/doc/index.rst:154
 msgid "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr ""
-
-#~ msgid "pgr_kDijkstraCost(text,integer,integer[],boolean,boolean)"
-#~ msgstr ""
-
-#~ msgid "pgr_kDijkstraPath(text,integer,integer[],boolean,boolean)"
-#~ msgstr ""
-
-#~ msgid "dijkstra"
-#~ msgstr ""

@@ -1,22 +1,31 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
 # 
+# Translators:
+# cvvergara, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-10 18:28+0000\n"
+"Last-Translator: cvvergara\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/pgrouting/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+# a647839f49f94a9997479367dc35d13f
 #: ../../../src/common/doc/types.rst:13
 msgid "Custom Types"
-msgstr ""
+msgstr "Tipos Personalizados"
 
+# f00f6611879f4afd961586e955284a41
 #: ../../../src/common/doc/types.rst:15
 msgid ""
 "The following are commonly used data types for some of the pgRouting "
 "functions."
-msgstr ""
+msgstr "Los siguientes tipos de datos se utilizan comúnmente en algunas de las funciones pgRouting."

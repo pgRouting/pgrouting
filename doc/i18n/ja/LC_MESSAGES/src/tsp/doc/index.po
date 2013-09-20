@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
+# cvvergara, 2013
 # sanak <geosanak@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting Docs\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-06 17:20+0000\n"
-"Last-Translator: sanak <geosanak@gmail.com>\n"
+"PO-Revision-Date: 2013-08-07 12:30+0000\n"
+"Last-Translator: cvvergara\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -322,7 +323,7 @@ msgstr ":ref:`type_cost_result`"
 # 832c1e777ee74c2ea64c6a94a083058b
 #: ../../../src/tsp/doc/index.rst:185
 msgid "http://en.wikipedia.org/wiki/Traveling_salesman_problem"
-msgstr ""
+msgstr "http://en.wikipedia.org/wiki/Traveling_salesman_problem"
 
 # 78088fad5d074132aa4afeefdb2d1964
 #: ../../../src/tsp/doc/index.rst:186

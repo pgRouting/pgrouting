@@ -1,20 +1,28 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
 # 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-08-02 02:37+0000\n"
+"Last-Translator: Daniel Kastl\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
+# c1b1516c8da846a195824e5281582281
 #: ../../src/changelog/2_0.rst:13
 msgid "pgRouting 2.0 Release Notes"
 msgstr ""
 
+# 3e67d45a281c48bd9d6eea1ce58d38c3
 #: ../../src/changelog/2_0.rst:15
 msgid ""
 "With the release of pgRouting 2.0 the library has abandoned backwards "
@@ -26,6 +34,7 @@ msgid ""
 "for multiple developers to make contribution."
 msgstr ""
 
+# b7dbd742ac1c45cea48afc0b61bf3a35
 #: ../../src/changelog/2_0.rst:17
 msgid ""
 "For important changes see the following release notes. To see the full list "
@@ -33,101 +42,123 @@ msgid ""
 "<https://github.com/pgRouting/pgrouting/commits>`_ on Github."
 msgstr ""
 
+# f0cd146d674e46449ba99a8100934ec0
 #: ../../src/changelog/2_0.rst:28
 msgid "Changes for 2.0.0"
 msgstr ""
 
+# ef9ef27b926145108086d936b6ca0b28
 #: ../../src/changelog/2_0.rst:30
 msgid ""
 "Graph Analytics - tools for detecting and fixing connection some problems in"
 " a graph"
 msgstr ""
 
+# 42f88056af7e4432b32f065a7a24a919
 #: ../../src/changelog/2_0.rst:31
 msgid "A collection of useful utility functions"
 msgstr ""
 
+# 2f534c34e0974efe890889f3b21a0b4d
 #: ../../src/changelog/2_0.rst:32
 msgid ""
 "Two new All Pairs Short Path algorithms (pgr_apspJohnson, pgr_apspWarshall)"
 msgstr ""
 
+# 8ce3dd738c2d4dc4b31299c1a0914faf
 #: ../../src/changelog/2_0.rst:33
 msgid ""
 "Bi-directional Dijkstra and A-star search algorithms (pgr_bdAstar, "
 "pgr_bdDijkstra)"
 msgstr ""
 
+# 8f43c2d6075f49e79bbaa6f8aabab4da
 #: ../../src/changelog/2_0.rst:34
 msgid "One to many nodes search (pgr_kDijkstra)"
 msgstr ""
 
+# c4b5876cdfd748b0b212c0934c824f64
 #: ../../src/changelog/2_0.rst:35
 msgid "K alternate paths shortest path (pgr_ksp)"
 msgstr ""
 
+# acd1a044738b4276a2e8e94a0dd76534
 #: ../../src/changelog/2_0.rst:36
 msgid ""
 "New TSP solver that simplifies the code and the build process (pgr_tsp), "
 "dropped \"Gaul Library\" dependency"
 msgstr ""
 
+# 8f926050f9324e25900b05fed56a589e
 #: ../../src/changelog/2_0.rst:37
 msgid "Turn Restricted shortest path (pgr_trsp) that replaces Shooting Star"
 msgstr ""
 
+# d1e83f5c735b4bfcba1d268ea2935a7f
 #: ../../src/changelog/2_0.rst:38
 msgid "Dropped support for Shooting Star"
 msgstr ""
 
+# ca6f7155ffb1427ba1c145efd90b72e3
 #: ../../src/changelog/2_0.rst:39
 msgid ""
 "Built a test infrastructure that is run before major code changes are "
 "checked in"
 msgstr ""
 
+# 3d47be6570aa47e3b48a446cfd55c3f8
 #: ../../src/changelog/2_0.rst:40
 msgid ""
 "Tested and fixed most all of the outstanding bugs reported against 1.x that "
 "existing in the 2.0-dev code base."
 msgstr ""
 
+# f99da159237841a583466e7bdaa5a964
 #: ../../src/changelog/2_0.rst:41
 msgid "Improved build process for Windows"
 msgstr ""
 
+# eaef81c47c28441d9c6d9c55785f6664
 #: ../../src/changelog/2_0.rst:42
 msgid "Modular library design"
 msgstr ""
 
+# 5b1f3d44b55d4502b2761acd0aed5b08
 #: ../../src/changelog/2_0.rst:43
 msgid "Compatibility with PostgreSQL 9.1 or newer"
 msgstr ""
 
+# 592cb52588884e7e88488112e5001c71
 #: ../../src/changelog/2_0.rst:44
 msgid "Compatibility with PostGIS 2.0 or newer"
 msgstr ""
 
+# 6f72789ca5ae4828bbe00dd0b44ed049
 #: ../../src/changelog/2_0.rst:45
 msgid "Installs as PostgreSQL EXTENSION"
 msgstr ""
 
+# 7f85fdaaa5374934b83c0baef45e2074
 #: ../../src/changelog/2_0.rst:46
 msgid "Return types refactored and unified"
 msgstr ""
 
+# 60c67a38e1594c7cb774d5b29c284a17
 #: ../../src/changelog/2_0.rst:47
 msgid "Support for table SCHEMA in function parameters"
 msgstr ""
 
+# da8aea5a0d034dce84e5a2bfd3e2b342
 #: ../../src/changelog/2_0.rst:48
 msgid "Support for ``st_`` PostGIS function prefix"
 msgstr ""
 
+# c204bde79a394b93a1a3c46bbedab1a0
 #: ../../src/changelog/2_0.rst:49
 msgid "Added ``pgr_`` prefix to functions and types"
 msgstr ""
 
+# d7df479e712e4c3689e121a22f45f909
 #: ../../src/changelog/2_0.rst:50
 msgid "Better documentation: http://docs.pgrouting.org"
 msgstr ""

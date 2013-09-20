@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
+# cvvergara, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting Docs\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-06 16:30+0000\n"
-"Last-Translator: Daniel Kastl\n"
+"PO-Revision-Date: 2013-08-06 19:50+0000\n"
+"Last-Translator: cvvergara\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -95,9 +96,9 @@ msgstr "参照"
 # deb346bdd0f847eeac69e1eb38da3b36
 #: ../../../src/common/doc/functions/analyze_graph.rst:76
 msgid ":ref:`pgr_analyze_oneway`"
-msgstr ""
+msgstr ":ref:`pgr_analyze_oneway`"
 
 # 19395f8266894f6aab137ab24e648e0d
 #: ../../../src/common/doc/functions/analyze_graph.rst:77
 msgid ":ref:`analytics`"
-msgstr ""
+msgstr ":ref:`analytics`"

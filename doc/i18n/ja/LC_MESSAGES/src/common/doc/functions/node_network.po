@@ -5,10 +5,10 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting Docs\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-06 14:00+0000\n"
+"PO-Revision-Date: 2013-08-06 19:50+0000\n"
 "Last-Translator: Daniel Kastl\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
 "MIME-Version: 1.0\n"
@@ -157,4 +157,4 @@ msgstr "参照"
 # c74ab0ef78134f749c3fe6bb4a92c340
 #: ../../../src/common/doc/functions/node_network.rst:81
 msgid ":ref:`pgr_create_topology`"
-msgstr ""
+msgstr ":ref:`pgr_create_topology`"

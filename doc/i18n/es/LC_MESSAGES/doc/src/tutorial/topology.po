@@ -1,33 +1,45 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
 # 
+# Translators:
+# cvvergara, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-12 15:40+0000\n"
+"Last-Translator: cvvergara\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/pgrouting/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+# 2e965f30c7e0495fa8a53b1be5150746
 #: ../../src/tutorial/topology.rst:13
 msgid "Routing Topology"
-msgstr ""
+msgstr "Topología para rutas"
 
+# 5400cbce8e09474fa5add24d4dc5b466
 #: ../../src/tutorial/topology.rst:15
 msgid "Stephen Woodbridge <woodbri@swoodbridge.com>"
-msgstr ""
+msgstr "Stephen Woodbridge <woodbri@swoodbridge.com>"
 
+# e7c08e6547ac481cbd0a2e623387b702
 #: ../../src/tutorial/topology.rst:16
 msgid ""
 "Stephen Woodbridge. The source code is released under the MIT-X license."
-msgstr ""
+msgstr "Stephen Woodbridge. El código fuente está liberado bajo la licencia MIT-X."
 
+# 79b3480b2905452aab56c2d466152972
 #: ../../src/tutorial/topology.rst:20
 msgid "Overview"
-msgstr ""
+msgstr "Resumen"
 
+# ebf26fb7f3db4a2fb4ed4bbc56554d84
 #: ../../src/tutorial/topology.rst:22
 msgid ""
 "Typically when GIS files are loaded into the data database for use with "
@@ -37,8 +49,9 @@ msgid ""
 "the intersection and all the road segments need to be broken at the "
 "intersection, assuming that you can navigate from any of these segments to "
 "any other segment via that intersection."
-msgstr ""
+msgstr "Normalmente cuando se cargan archivos SIG a la base de datos para su uso con pgRouting, no contienen información topológica asociada. Para crear una topología útil los datos deben ser \"asociados con nodos\". Esto significa que cuando dos o más caminos forman una intersección allí debe existir un nodo  y todos los segmentos de los caminos necesitan ser partidos en las intersecciones, suponiendo que se puede navegar desde cualquiera de estos segmentos a cualquier otro segmento usando esa intersección."
 
+# 9371ec6508e04ee7a9c31985bb8fac9c
 #: ../../src/tutorial/topology.rst:24
 msgid ""
 "You can use the :ref:`graph analysis functions <analytics>` to help you see "
@@ -47,8 +60,9 @@ msgid ""
 "<pgr_node_network>` that might work for you. This function splits ALL "
 "crossing segments and nodes them. There are some cases where this might NOT "
 "be the right thing to do."
-msgstr ""
+msgstr "Puede utilizar las :ref:`funciones de análisis de gráficas <analytics>` para apoyarse en la búsqueda de problemas topológicos en los datos. Si se necesitan nodos en los datos, también se cuenta con la función :ref:`pgr_nodeNetwork() <pgr_node_network>` que le puede ser útil. Esta función divide todos los segmentos de los caminos y les asigna nodos entre ellos. Existen algunos casos donde no es lo apropiado."
 
+# a4760bd5fec24e478318fc3d6a5c7f24
 #: ../../src/tutorial/topology.rst:26
 msgid ""
 "For example, when you have an overpass and underpass intersection, you do "
@@ -58,8 +72,9 @@ msgid ""
 " To deal with this problem some data sets use z-levels at these types of "
 "intersections and other data might not node these intersection which would "
 "be ok."
-msgstr ""
+msgstr "Por ejemplo, cuando se tiene un cruce de puente o de un túnel, no quieres estos contengan un nodo, pero pgr_nodeNetwork no sabe que ese es el caso y va a crear un nodo,  entonces el enrutador interpretará el puente o  el paso a desnivel como si fuera una intersección plana en 2D. Para lidiar con este problema, se debe utilizar niveles z ya se para estos tipos de intersecciones o para otros casos en donde crear el nodo de la intersección no sea lo correcto."
 
+# dace0a618e54403c90f1ba04c590cfbb
 #: ../../src/tutorial/topology.rst:28
 msgid ""
 "For those cases where topology needs to be added the following functions may"
@@ -69,8 +84,9 @@ msgid ""
 "certain columns in it like ``one_way``, ``fcc``, and possibly others and "
 "that they contain specific data values. This is only to give you an idea of "
 "what you can do with your data."
-msgstr ""
+msgstr "Para los casos donde la topología debe construirse,  las siguientes funciones pueden ser de utilidad. Una forma de preparar los datos para pgRouting es agregar los siguientes campos a la tabla y luego poblarlas según corresponda. Este ejemplo tiene como supuestos: que la tabla original ya tiene columnas como  ``one_way``, ``fcc`` y posiblemente otras y que contienen valores de datos específicos. Esto es sólo para darle una idea de lo que se puede hacer con los datos."
 
+# fac3502c69e64d55bea893eb89e4237c
 #: ../../src/tutorial/topology.rst:49
 msgid ""
 "The function :ref:`pgr_createTopology() <pgr_create_topology>` will create "
@@ -78,26 +94,31 @@ msgid ""
 "columns. The following example populated the remaining columns. In this "
 "example, the ``fcc`` column contains feature class code and the ``CASE`` "
 "statements converts it to an average speed."
-msgstr ""
+msgstr "La función :ref:`pgr_createTopology() <pgr_create_topology>` creará la tabla ``vertices_tmp``  y rellenará las columnas ``source`` y ``target``. El ejemplo siguiente termina de llenar las columnas restantes. En este ejemplo, la columna ``fcc`` contiene códigos de las características de la calle y las declaraciones del ``CASE`` las convierte a una velocidad media."
 
+# c72208e2b9334a20bc85ab7c9c0ff2c4
 #: ../../src/tutorial/topology.rst:112
 msgid ""
 "Now your database should be ready to use any (most?) of the pgRouting "
 "algorithms."
-msgstr ""
+msgstr "Ahora su base de datos debe estar lista para usarse en cualquiera (mayoría?) de los algoritmos de pgRouting."
 
+# b02584cae7584f1bb39c0d6488cf0a84
 #: ../../src/tutorial/topology.rst:116
 msgid "See Also"
-msgstr ""
+msgstr "Véase también"
 
+# f376a1fc4f3442b1b49008cd2ff37b40
 #: ../../src/tutorial/topology.rst:118
 msgid ":ref:`pgr_create_topology`"
-msgstr ""
+msgstr ":ref:`pgr_create_topology`"
 
+# 864676f90cda450fa380d69990f05f93
 #: ../../src/tutorial/topology.rst:119
 msgid ":ref:`pgr_node_network`"
-msgstr ""
+msgstr ":ref:`pgr_node_network`"
 
+# 668344ff5fd04f8a83a1de5941c5352e
 #: ../../src/tutorial/topology.rst:120
 msgid ":ref:`pgr_point_to_id`"
-msgstr ""
+msgstr ":ref:`pgr_point_to_id`"

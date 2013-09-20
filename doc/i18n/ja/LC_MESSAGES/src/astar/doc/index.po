@@ -6,10 +6,10 @@
 # sanak <geosanak@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting Docs\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-06 17:23+0000\n"
+"PO-Revision-Date: 2013-08-07 13:30+0000\n"
 "Last-Translator: sanak <geosanak@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 # ff2a35bdb03f478a94c2aadc10c85339
 #: ../../../src/astar/doc/index.rst:13
 msgid "pgr_astar - Shortest Path A*"
-msgstr "pgr_astar - A*アルゴリズムを用いた最短経路探索"
+msgstr "pgr_astar - A*アルゴリズムによる最短経路探索"
 
 # 0df5cb289cd14d2ba277a61723174003
 #: ../../../src/astar/doc/index.rst:20

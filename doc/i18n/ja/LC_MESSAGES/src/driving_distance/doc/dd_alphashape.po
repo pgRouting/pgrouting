@@ -5,10 +5,10 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting Docs\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-06 16:30+0000\n"
+"PO-Revision-Date: 2013-08-06 19:40+0000\n"
 "Last-Translator: Daniel Kastl\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
 "MIME-Version: 1.0\n"
@@ -126,4 +126,4 @@ msgstr ""
 # 0f30bf3bcf7c41758b10ba3ed1bea633
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:88
 msgid ":ref:`pgr_points_as_polygon`"
-msgstr ""
+msgstr ":ref:`pgr_points_as_polygon`"

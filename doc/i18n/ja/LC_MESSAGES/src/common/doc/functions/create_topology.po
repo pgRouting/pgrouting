@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
+# cvvergara, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting Docs\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-06 16:30+0000\n"
-"Last-Translator: Daniel Kastl\n"
+"PO-Revision-Date: 2013-08-06 19:50+0000\n"
+"Last-Translator: cvvergara\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -122,14 +123,14 @@ msgstr "参照"
 # 848fd11cbf4944f28398aa0c83790744
 #: ../../../src/common/doc/functions/create_topology.rst:86
 msgid ":ref:`topology`"
-msgstr ""
+msgstr ":ref:`topology`"
 
 # 0844157284514318a76884b369f00ad6
 #: ../../../src/common/doc/functions/create_topology.rst:87
 msgid ":ref:`pgr_node_network`"
-msgstr ""
+msgstr ":ref:`pgr_node_network`"
 
 # 685d4340f08143758def841632bf5c5e
 #: ../../../src/common/doc/functions/create_topology.rst:88
 msgid ":ref:`pgr_point_to_id`"
-msgstr ""
+msgstr ":ref:`pgr_point_to_id`"

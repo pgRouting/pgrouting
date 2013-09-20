@@ -1,33 +1,45 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
 # 
+# Translators:
+# cvvergara, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-12 15:40+0000\n"
+"Last-Translator: cvvergara\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/pgrouting/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+# 23979832a43e4f649b9d1e0a9600e92c
 #: ../../src/tutorial/analytics.rst:13
 msgid "Graph Analytics"
-msgstr ""
+msgstr "Análisis de gráficas"
 
+# 870087e3aec148fda371faa46eaa2ce7
 #: ../../src/tutorial/analytics.rst:15
 msgid "Stephen Woodbridge <woodbri@swoodbridge.com>"
-msgstr ""
+msgstr "Stephen Woodbridge <woodbri@swoodbridge.com>"
 
+# 4946729e48894e889375ad1363e1e7d4
 #: ../../src/tutorial/analytics.rst:16
 msgid ""
 "Stephen Woodbridge. The source code is released under the MIT-X license."
-msgstr ""
+msgstr "Stephen Woodbridge. El código fuente está liberado bajo la licencia MIT-X."
 
+# 25f24981252f48e89824070b89cd3423
 #: ../../src/tutorial/analytics.rst:20
 msgid "Overview"
-msgstr ""
+msgstr "Resumen"
 
+# e9d52dba5e404196a29544d302148264
 #: ../../src/tutorial/analytics.rst:22
 msgid ""
 "It is common to find problems with graphs that have not been constructed "
@@ -36,112 +48,132 @@ msgid ""
 "the wrong direction. We can not detect errors with respect to \"ground\" "
 "truth, but we can look for inconsistencies and some anomalies in a graph and"
 " report them for additional inspections."
-msgstr ""
+msgstr "Es común encontrar problemas con gráficos que no se han construido completamente con nodos o los niveles z en las intersección se han introducido incorrectamente, etc. Otro problema es la unidireccionalidad de las calles que han sido introducidas en la dirección equivocada. No se pueden detectar errores  \"respecto al piso\", pero podemos buscar inconsistencias y algunas anomalías en una gráfica y permitiendo inspecciones adicionales."
 
+# 58592f133a874ed5b020d85d8686ee80
 #: ../../src/tutorial/analytics.rst:24
 msgid ""
 "We do not current have any visualization tools for these problems, but I "
 "have used mapserver to render the graph and highlight potential problem "
 "areas. Someone familar with graphviz might contribute tools for generating "
 "images with that."
-msgstr ""
+msgstr "Nosotros no tenemos herramientas de visualización para estos problemas, pero se ha utilizado MapServer para hacer la gráfica y poner en relieve las áreas con problemas potenciales. Alguien familiarizado con graphviz podría contribuir con herramientas para generar imágenes para este propósito."
 
+# 2852df2e27df4d4380c91898a3058e66
 #: ../../src/tutorial/analytics.rst:28
 msgid "Analyze a Graph"
-msgstr ""
+msgstr "Analizar un gráfico"
 
+# 86e59c4e533842cf9992b34939e60e22
 #: ../../src/tutorial/analytics.rst:30
 msgid "With :ref:`pgr_analyze_graph` the graph can be checked for errors."
-msgstr ""
+msgstr "Con :ref:`pgr_analyze_graph` el gráfico puede comprobarse por errores."
 
+# 27125a2ee9ed4622a7eaab027c9d738f
 #: ../../src/tutorial/analytics.rst:37
 msgid ""
 "After the analyzing the graph, deadends are indentified by ``cnt=1`` in the "
 "\"vertices_tmp\" table and potential problems are identified with ``chk=1``."
-msgstr ""
+msgstr "Después de generar el análisis de la gráfica, callejones sin salida son identificados con ``cnt = 1`` en la tabla \"vertices_tmp\"  y los problemas potenciales se identifican con ``chk = 1``."
 
+# c9ad68211bdf47adba8f53d0f19c8308
 #: ../../src/tutorial/analytics.rst:44
 msgid ""
 "If you have isolated road segments, for example, a segment where both ends "
 "are deadends. you can find these with the following query:"
-msgstr ""
+msgstr "Si se tienen segmentos aislados de caminos, por ejemplo, un segmento en el cual los dos extremos son callejones sin salida, se pueden encontrar con la siguiente consulta:"
 
+# 6bd1e7249d22418d93b75265102073cd
 #: ../../src/tutorial/analytics.rst:53
 msgid ""
 "If you want to visualize these on a graphic image, then you can use "
 "something like mapserver to render the edges and the vertices and style "
 "based on ``cnt`` or if they are isolated, etc. You can also do this with a "
 "tool like graphviz, or geoserver or other similar tools."
-msgstr ""
+msgstr "Si quieren visualizar en una imagen gráfica, entonces usted puede utilizar algo como MapServer para representar los bordes y los vértices y el estilizar en base a ``cnt`` o si están aislados, etc. También se puede hacer esto con una herramienta como graphviz o geoserver u otras herramientas similares."
 
+# e1ab479696a94a8bb2918be3ac8c02bf
 #: ../../src/tutorial/analytics.rst:57
 msgid "Analyze One Way Streets"
-msgstr ""
+msgstr "Analizar las calles unidireccionales"
 
+# d229e9757c3a416bacbb77b74265717e
 #: ../../src/tutorial/analytics.rst:59
 msgid ""
 ":ref:`pgr_analyze_oneway` analyzes oneway streets in a graph and identifies "
 "any flipped segments. Basically if you count the edges coming into a node "
 "and the edges exiting a node the number has to be greater than one."
-msgstr ""
+msgstr ":ref:`pgr_analyze_oneway` analiza calles de sentido único en un grafo e identifica segmentos invertidos. Básicamente, si se cuentan los bordes entrada en un nodo y los bordes de salida de un nodo el número tiene que ser mayor que uno."
 
+# e21764f266e44098a1c4970c603a3c91
 #: ../../src/tutorial/analytics.rst:61
 msgid ""
 "This query will add two columns to the vertices_tmp table ``ein int`` and "
 "``eout int`` and populate it with the appropriate counts. After running this"
 " on a graph you can identify nodes with potential problems with the "
 "following query."
-msgstr ""
+msgstr "Esta consulta agrega dos columnas a la tabla vertices_tmp ``ein int``  y ``eout int`` (ein = borde de entrada, eout=borde de salida) y las rellena con los conteos  correspondientes. Después de su ejecución, en un grafo se pueden identificar los nodos con  problemas potenciales utilizando la siguiente consulta.  "
 
+# 9e7381775ed64ef694f7b027d79ed956
 #: ../../src/tutorial/analytics.rst:68
 msgid ""
 "The rules are defined as an array of text strings that if match the ``col`` "
 "value would be counted as true for the source or target in or out condition."
-msgstr ""
+msgstr "Las reglas se definen como un conjunto de cadenas de texto que si coinciden con el valor de ``col`` se considera como válido para el origen o destino dentro o fuera de la condición."
 
+# b167af7d65854885b2f3eaebca08b505
 #: ../../src/tutorial/analytics.rst:72
 msgid "Example"
-msgstr ""
+msgstr "Ejemplo"
 
+# adf5dedf104347848fb6b0a3589257c1
 #: ../../src/tutorial/analytics.rst:74
 msgid ""
 "Lets assume we have a table \"st\" of edges and a column \"one_way\" that "
 "might have values like:"
-msgstr ""
+msgstr "Supongamos que tenemos una tabla \"st\" de bordes y una columna \"one_way\" que podría tener valores como:"
 
+# b721dbca4dd5428a9026173bde6f7319
 #: ../../src/tutorial/analytics.rst:76
 msgid "'FT'    - oneway from the source to the target node."
-msgstr ""
+msgstr "'FT' - dirección unidireccional de la fuente para el nodo de destino."
 
+# e6a4bb1e19dd44768851da51fcc498c9
 #: ../../src/tutorial/analytics.rst:77
 msgid "'TF'    - oneway from the target to the source node."
-msgstr ""
+msgstr "'TF' - dirección unidireccional  desde el nodo destino hasta el nodo fuente."
 
+# cddb1f7a26d94eafaf24a8cfc79e4a94
 #: ../../src/tutorial/analytics.rst:78
 msgid "'B'     - two way street."
-msgstr ""
+msgstr "'B' - calle de doble sentido."
 
+# 4f8757fc3c8f48ba9deecbe2cda8dd06
 #: ../../src/tutorial/analytics.rst:79
 msgid "''      - empty field, assume twoway."
-msgstr ""
+msgstr "''- campo vacío, suponer doble sentido."
 
+# e999d75f7c314466bd2230df567e2b51
 #: ../../src/tutorial/analytics.rst:80
 msgid "<NULL>  - NULL field, use two_way_if_null flag."
-msgstr ""
+msgstr "<NULL> - Campo NULL, usar bandera de two_way_if_null, es decir, doble sentido cuando nulo."
 
+# e7605d8922cc4e8389000be32a6f265f
 #: ../../src/tutorial/analytics.rst:82
 msgid ""
 "Then we could form the following query to analyze the oneway streets for "
 "errors."
-msgstr ""
+msgstr "Entonces se puede  formar la siguiente consulta para analizar las calles unidireccionales para errores."
 
+# 6f823f2752f0468e89350317f49ed92e
 #: ../../src/tutorial/analytics.rst:101
 msgid ""
 "Typically these problems are generated by a break in the network, the oneway"
 " direction set wrong, maybe an error releted to zlevels or a network that is"
 " not properly noded."
-msgstr ""
+msgstr "Normalmente estos problemas son generados por una ruptura en la red, la dirección del sentido ser incorrecta, tal vez un error relacionado con los niveles z o una red que no está debidamente preparada."
 
+# d0559fbd0bb34aebaed10e69cde97e83
 #: ../../src/tutorial/analytics.rst:103
 msgid ""
 "The above tools do not detect all network issues, but they will identify "
@@ -149,20 +181,24 @@ msgid ""
 "because they are more global in nature like multiple disconnected networks. "
 "Think of an island with a road network that is not connected to the mainland"
 " network because the bridge ot ferry routes are missing."
-msgstr ""
+msgstr "Las herramientas anteriores no detectan todos los problemas de la red, pero identifican algunos problemas comunes. Hay otros problemas que son difíciles de detectar porque son más globales en su naturaleza como múltiples redes desconectadas. Piense usted en una isla con una red de carreteras que no está conectada a la red del continente porque faltan las rutas del puente o del ferry."
 
+# 428bcc7c2ada46aa9caa2dd99b1bfe36
 #: ../../src/tutorial/analytics.rst:107
 msgid "See Also"
-msgstr ""
+msgstr "Véase también"
 
+# 7b075945985c46899af62cc8d3b0dac1
 #: ../../src/tutorial/analytics.rst:109
 msgid ":ref:`pgr_analyze_graph`"
-msgstr ""
+msgstr ":ref:`pgr_analyze_graph`"
 
+# 02fcd6c8b89549fdbb6c6adb1ffab563
 #: ../../src/tutorial/analytics.rst:110
 msgid ":ref:`pgr_analyze_oneway`"
-msgstr ""
+msgstr ":ref:`pgr_analyze_oneway`"
 
+# 5a2ad95cbe7148339bdae716e38b629b
 #: ../../src/tutorial/analytics.rst:111
 msgid ":ref:`pgr_node_network`"
-msgstr ""
+msgstr ":ref:`pgr_node_network`"

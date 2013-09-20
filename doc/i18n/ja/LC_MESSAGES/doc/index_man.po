@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
+# sanak <geosanak@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting Docs\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-06 13:40+0000\n"
-"Last-Translator: Daniel Kastl\n"
+"PO-Revision-Date: 2013-08-07 12:50+0000\n"
+"Last-Translator: sanak <geosanak@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +21,7 @@ msgstr ""
 # 1914a1b474a149c8bbaf65aeab14378a
 #: ../../index_man.rst:13
 msgid "pgRouting Reference"
-msgstr ""
+msgstr "pgRouting リファレンス"
 
 # 8093a8913a4f4de1a13bd5ed9a619b72
 #: ../../index_man.rst:15
@@ -38,7 +39,7 @@ msgstr "pgRouting が提供する :ref:`共通関数 <common>`:"
 # 2f13f00ffd924bf1a61060f32ef5d04f
 #: ../../index_man.rst:36
 msgid "pgRouting defines a few :ref:`custom data types <common_types>`:"
-msgstr ""
+msgstr "pgRouting が定義する :ref:`カスタムデータ型 <common_types>`:"
 
 # d906d773bf39489380f6f3f4f1eba3ce
 #: ../../index_man.rst:50

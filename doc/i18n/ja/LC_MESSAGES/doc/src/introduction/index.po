@@ -1,20 +1,28 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
 # 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-08-02 02:37+0000\n"
+"Last-Translator: Daniel Kastl\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
+# 3578828508b04a519b4276259257eff3
 #: ../../src/introduction/index.rst:13
 msgid "Introduction"
 msgstr ""
 
+# 053e0e115255410abb5ad20bcd664813
 #: ../../src/introduction/index.rst:15
 msgid ""
 "pgRouting is an extension of `PostGIS <http://postgis.net>`_ and `PostgreSQL"
@@ -27,6 +35,7 @@ msgid ""
 "broad user community."
 msgstr ""
 
+# 006fc0ebcbe14986a2ad1494ff152ee5
 #: ../../src/introduction/index.rst:17
 msgid ""
 "pgRouting is an `OSGeo Labs <http://wiki.osgeo.org/wiki/OSGeo_Labs>`_ "
@@ -34,71 +43,86 @@ msgid ""
 " Live <http://live.osgeo.org/>`_."
 msgstr ""
 
+# e9fdf385a56641d7b1021df6ad54bf9f
 #: ../../src/introduction/index.rst:23
 msgid "License"
 msgstr ""
 
+# 6da9fbf840214d2ba6a7ec5e6cb793a1
 #: ../../src/introduction/index.rst:25
 msgid "The following licenses can be found in pgRouting:"
 msgstr ""
 
+# 3c0929f515534368ad7457c2d79b6122
 #: ../../src/introduction/index.rst:30
 msgid "**License**"
 msgstr ""
 
+# bea339edc1d5429f888489b30349aa2b
 #: ../../src/introduction/index.rst:32
 msgid "GNU General Public License, version 2"
 msgstr ""
 
+# 7278de8acf8248f2a728b0b7de877387
 #: ../../src/introduction/index.rst:33
 msgid ""
 "Most features of pgRouting are available under `GNU General Public License, "
 "version 2 <http://www.gnu.org/licenses/gpl-2.0.html>`_."
 msgstr ""
 
+# 9259898754a9439a94ae6ab433b3040e
 #: ../../src/introduction/index.rst:34
 msgid "Boost Software License - Version 1.0"
 msgstr ""
 
+# 005eacf3de434eb1a0a77b99d98daf11
 #: ../../src/introduction/index.rst:35
 msgid ""
 "Some Boost extensions are available under `Boost Software License - Version "
 "1.0 <http://www.boost.org/LICENSE_1_0.txt>`_."
 msgstr ""
 
+# bd2beb7acf8841178708edda88aad861
 #: ../../src/introduction/index.rst:36
 msgid "MIT-X License"
 msgstr ""
 
+# 7934facaaaf44e07a928f04ad6ee59c2
 #: ../../src/introduction/index.rst:37
 msgid ""
 "Some code contributed by iMaptools.com is available under MIT-X license."
 msgstr ""
 
+# 32db69132d0a4f768694c41c878058d1
 #: ../../src/introduction/index.rst:38
 msgid "Creative Commons Attribution-Share Alike 3.0 License"
 msgstr ""
 
+# 57aa93b5fe39476382d540609cc8845f
 #: ../../src/introduction/index.rst:39
 msgid ""
 "The pgRouting Manual is licensed under a `Creative Commons Attribution-Share"
 " Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/>`_."
 msgstr ""
 
+# 583da20c87be42408a755f77efb4d969
 #: ../../src/introduction/index.rst:41
 msgid ""
 "In general license information should be included in the header of each "
 "source file."
 msgstr ""
 
+# ca8b70c1ee51416ea6f384ece24af9c3
 #: ../../src/introduction/index.rst:45
 msgid "Contributors"
 msgstr ""
 
+# d95579e31ebd40ab9be3ff32f52d1606
 #: ../../src/introduction/index.rst:48
 msgid "Individuals (in alphabetical order)"
 msgstr ""
 
+# 5d15c2f6a6ca41b4abc245fe83a071be
 #: ../../src/introduction/index.rst:50
 msgid ""
 "Akio Takubo, Anton Patrushev, Ashraf Hossain, Christian Gonzalez, Daniel "
@@ -108,46 +132,55 @@ msgid ""
 "Woodbridge, Sylvain Housseman, Sylvain Pasche"
 msgstr ""
 
+# ad40ece4c1d64a698b42acdc93b2afa8
 #: ../../src/introduction/index.rst:54
 msgid "Corporate Sponsors (in alphabetical order)"
 msgstr ""
 
+# 8daa4f96d22d4e839c2bac0ea18d35df
 #: ../../src/introduction/index.rst:56
 msgid ""
 "These are corporate entities that have contributed developer time, hosting, "
 "or direct monetary funding to the pgRouting project:"
 msgstr ""
 
+# 888c252ce8834def83c6b9feb1c78d9c
 #: ../../src/introduction/index.rst:58
 msgid ""
 "Camptocamp, CSIS (University of Tokyo), Georepublic, Google Summer of Code, "
 "iMaptools, Orkney, Paragon Corporation"
 msgstr ""
 
+# f4ca8b32cba14d83a44331e67a9a81d9
 #: ../../src/introduction/index.rst:62
 msgid "More Information"
 msgstr ""
 
+# 152f3c5ed7e14dae9b06b7ab57951f7d
 #: ../../src/introduction/index.rst:64
 msgid ""
 "The latest software, documentation and news items are available at the "
 "pgRouting web site http://pgrouting.org."
 msgstr ""
 
+# f51e8fa58ccb4c4b8983697ae7585160
 #: ../../src/introduction/index.rst:65
 msgid ""
 "PostgreSQL database server at the PostgreSQL main site "
 "http://www.postgresql.org."
 msgstr ""
 
+# 407c955125f348e0babe3820f82b21f2
 #: ../../src/introduction/index.rst:66
 msgid "PostGIS extension at the PostGIS project web site http://postgis.net."
 msgstr ""
 
+# 36b8a5c7e97c4d67b4d7924e137682e3
 #: ../../src/introduction/index.rst:67
 msgid "Boost C++ source libraries at http://www.boost.org."
 msgstr ""
 
+# dc3c8cf6ca86472a89ee92c46d3b7aad
 #: ../../src/introduction/index.rst:68
 msgid ""
 "Computational Geometry Algorithms Library (CGAL) at http://www.cgal.org."

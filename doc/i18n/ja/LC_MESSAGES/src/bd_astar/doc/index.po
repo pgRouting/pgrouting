@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
+# cvvergara, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting Docs\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-06 17:20+0000\n"
-"Last-Translator: Daniel Kastl\n"
+"PO-Revision-Date: 2013-08-07 12:30+0000\n"
+"Last-Translator: cvvergara\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -208,12 +209,12 @@ msgstr ":ref:`type_cost_result`"
 # 7c02fbef18b04d0f9c86334f4917ea22
 #: ../../../src/bd_astar/doc/index.rst:125
 msgid ":ref:`bd_dijkstra`"
-msgstr ""
+msgstr ":ref:`bd_dijkstra`"
 
 # 3b16da752c5b4025acb610183611225f
 #: ../../../src/bd_astar/doc/index.rst:126
 msgid "http://en.wikipedia.org/wiki/Bidirectional_search"
-msgstr ""
+msgstr "http://en.wikipedia.org/wiki/Bidirectional_search"
 
 # 17f8c64e6bc447c5b9f16d78aeb701ec
 #: ../../../src/bd_astar/doc/index.rst:127

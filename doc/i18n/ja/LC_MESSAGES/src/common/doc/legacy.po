@@ -1,20 +1,28 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
 # 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-08-02 02:38+0000\n"
+"Last-Translator: Daniel Kastl\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
+# af2e041923d44d0d9563d0085aea25c8
 #: ../../../src/common/doc/legacy.rst:13
 msgid "Legacy Functions"
 msgstr ""
 
+# d1e607e21eea4ec49b92a5b901eff665
 #: ../../../src/common/doc/legacy.rst:15
 msgid ""
 "pgRouting 2.0 release has total restructured the function naming and "
@@ -25,6 +33,7 @@ msgid ""
 "existing functionality."
 msgstr ""
 
+# 0fe94cadd0b6451fbc30559fa5f70275
 #: ../../../src/common/doc/legacy.rst:17
 msgid ""
 "We have made a minimal effort to save most of these function and distribute "
@@ -37,6 +46,7 @@ msgid ""
 "documented and supported functions."
 msgstr ""
 
+# 8eb3da3e4cb1441d8743706f7397c8ee
 #: ../../../src/common/doc/legacy.rst:19
 msgid ""
 "The follow is a list of TYPEs, CASTs and FUNCTION included in the "
@@ -45,10 +55,12 @@ msgid ""
 "changes to get them to work."
 msgstr ""
 
+# 96302a33dc8a461e9c82b33165d2f03f
 #: ../../../src/common/doc/legacy.rst:23
 msgid "TYPEs & CASTs"
 msgstr ""
 
+# 0dca26b88cc44808b873318da81f0095
 #: ../../../src/common/doc/legacy.rst:34
 msgid "FUNCTIONs"
 msgstr ""

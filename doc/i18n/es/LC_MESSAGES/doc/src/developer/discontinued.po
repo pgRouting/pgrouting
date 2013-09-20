@@ -1,43 +1,56 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
 # 
+# Translators:
+# cvvergara, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-12 01:30+0000\n"
+"Last-Translator: cvvergara\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/pgrouting/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+# 09366a0298d04b47be343c8bf8c6e12a
 #: ../../src/developer/discontinued.rst:13
 msgid "Discontinued Functions"
-msgstr ""
+msgstr "Funciones Descontinuadas"
 
+# 8ab172e3591c493f94919b9391d65313
 #: ../../src/developer/discontinued.rst:15
 msgid ""
 "Especially with new major releases functionality may change and functions "
 "may be discontinued for various reasons. Functionality that has been "
 "discontinued will be listed here."
-msgstr ""
+msgstr "La nueva funcionalidad de las versiones principales pueden ser cambiadas y, por ende, las funciones pueden ser descontinuadas por varias razones. La funcionalidad que ha sido descontinuada aparecerá aquí."
 
+# 6bb9bb9b649544eb9384e2c03fa6e60d
 #: ../../src/developer/discontinued.rst:22
 msgid "Shooting Star algorithm"
-msgstr ""
+msgstr "Algoritmo Shooting Star"
 
+# 6c87b9ac3f1b441a88d4bd7a32449eeb
 #: ../../src/developer/discontinued.rst:24
 msgid "Removed with 2.0.0"
-msgstr ""
+msgstr "Descontinuada en 2.0.0"
 
+# 6afa2318319f4b5e93e9eb99d1dd1843
 #: ../../src/developer/discontinued.rst:25
 msgid "Unresolved bugs, no maintainer, replaced with :ref:`trsp`"
-msgstr ""
+msgstr "Errores sin resolver, sin mantenimiento, sustituido con :ref:`trsp`"
 
+# 7e711820b4534143a7fd0d1aa4c5cc58
 #: ../../src/developer/discontinued.rst:26
 msgid ""
 "Please :ref:`contact us <support>` if you're interested to sponsor or "
 "maintain this algorithm. The function signature is still available in "
 ":ref:`common_legacy` but it is just a wrapper that throws an error. We have "
 "not included any of the old code for this in this release."
-msgstr ""
+msgstr "Por favor :ref:`contáctenos <support>` si usted está interesado en patrocinar o mantener este algoritmo. La firma de la función sigue disponible en :ref:`common_legacy` pero es simplemente un contenedor que genera un error.  No hemos incluido ningún código anterior en esta versión."

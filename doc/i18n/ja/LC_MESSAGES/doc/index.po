@@ -7,10 +7,10 @@
 # sanak <geosanak@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting Docs\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-06 17:25+0000\n"
+"PO-Revision-Date: 2013-08-06 17:31+0000\n"
 "Last-Translator: sanak <geosanak@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
 "MIME-Version: 1.0\n"

@@ -1,87 +1,104 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# This file is distributed under the same license as the pgRouting package.
 # 
+# Translators:
+# cvvergara, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 12:41\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2013-08-02 16:47\n"
+"PO-Revision-Date: 2013-08-12 15:40+0000\n"
+"Last-Translator: cvvergara\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/pgrouting/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+# e001849536eb421281e8e272d2796b79
 #: ../../../src/common/doc/functions/analyze_graph.rst:13
 msgid "pgr_analyzeGraph - Analyze a Graph"
-msgstr ""
+msgstr "pgr_analyzeGraph - Analizar una gráfica"
 
+# dacb39f6f57e4b92b83b0d6c672ef1e7
 #: ../../../src/common/doc/functions/analyze_graph.rst:20
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
+# a875397916324663b57dd4799740d48b
 #: ../../../src/common/doc/functions/analyze_graph.rst:22
 msgid "``pgr_analyzeGraph`` — Analyzes the \"network\" and \"vertices_tmp\" tables."
-msgstr ""
+msgstr "``pgr_analyzeGraph`` — Analiza las tablas de \"red\" y \"vertices_tmp\"."
 
+# 4b667f4bbcdf41eda0915259ce8d0dbf
 #: ../../../src/common/doc/functions/analyze_graph.rst:26
 msgid "Synopsis"
-msgstr ""
+msgstr "Sinopsis"
 
+# 4cfa384c0fe9482e922560d9c37fbe16
 #: ../../../src/common/doc/functions/analyze_graph.rst:28
 msgid ""
 "Analyzes the edge table and \"vertices_tmp\" tables and flags if nodes are "
 "deadends, ie. ``vertices_tmp.cnt=1`` and identifies nodes that might be "
 "disconnected because of gaps < ``tolerance`` or because of zlevel errors in "
 "the data."
-msgstr ""
+msgstr "Analiza la tabla de bordes y la tabla \"vertices_tmp\" y marca con banderas si los nodos son incorrectos, por ejemplo, ``vertices_tmp.cnt=1``,  e identifica los nodos que se pueden estar desconectados por brechas < ``tolerancia``   o debido a errores en los datos de nivel z."
 
+# 8319cc04bd6d48c7b53368c8299afbc0
 #: ../../../src/common/doc/functions/analyze_graph.rst:37
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
+# dd782c2d4df442dab7a1abe663203b36
 #: ../../../src/common/doc/functions/analyze_graph.rst:39
 msgid "``text`` network table name (may contain the schema name as well)"
-msgstr ""
+msgstr "``text`` nombre de tabla de la red (puede contener el nombre del esquema)"
 
+# 10c6c9792be34c5d950ca0405566b21b
 #: ../../../src/common/doc/functions/analyze_graph.rst:40
 msgid "``text`` geometry column name of the network table"
-msgstr ""
+msgstr "``text``  nombre de columna de geometría de la tabla de la red"
 
+# 7c62e7d91d3f44059545ecae93fb1c1f
 #: ../../../src/common/doc/functions/analyze_graph.rst:41
 msgid ""
 "``float8`` snapping tolerance of disconnected edges (in projection unit)"
-msgstr ""
+msgstr "``float8``  tolerancia de ruptura de bordes desconectados (en la unidad de proyección)"
 
+# c9587ff1d0cb436d9e64c6eddd37ee7b
 #: ../../../src/common/doc/functions/analyze_graph.rst:45
 msgid "History"
-msgstr ""
+msgstr "Historia"
 
+# b846a73261594d9aaa312d40901e8058
 #: ../../../src/common/doc/functions/analyze_graph.rst:46
 msgid "New in version 2.0.0"
-msgstr ""
+msgstr "Nuevo en la versión 2.0.0"
 
+# a807036566274d48b85fe9cbd868f800
 #: ../../../src/common/doc/functions/analyze_graph.rst:50
 msgid "Examples"
-msgstr ""
+msgstr "Ejemplos"
 
+# b175ffad4f2b4c4fa8a3cc94b6289017
 #: ../../../src/common/doc/functions/analyze_graph.rst:70
 msgid "The queries use the :ref:`sampledata` network."
-msgstr ""
+msgstr "La consulta usando la red de ejemplo  :ref:`sampledata`"
 
+# 991cd66893a64410bfeb6cca82c25793
 #: ../../../src/common/doc/functions/analyze_graph.rst:74
 msgid "See Also"
-msgstr ""
+msgstr "Vease también"
 
+# deb346bdd0f847eeac69e1eb38da3b36
 #: ../../../src/common/doc/functions/analyze_graph.rst:76
 msgid ":ref:`pgr_analyze_oneway`"
-msgstr ""
+msgstr ":ref:`pgr_analyze_oneway`"
 
+# 19395f8266894f6aab137ab24e648e0d
 #: ../../../src/common/doc/functions/analyze_graph.rst:77
 msgid ":ref:`analytics`"
-msgstr ""
-
-#~ msgid "pgr_analyzeGraph(text,text,double precision)"
-#~ msgstr ""
-
-#~ msgid "common"
-#~ msgstr ""
+msgstr ":ref:`analytics`"
