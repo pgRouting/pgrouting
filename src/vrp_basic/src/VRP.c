@@ -1,46 +1,50 @@
 
-#include "vrp.h"
+#include "VRP.h"
 
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
 #include "catalog/pg_type.h"
+#if PGSQL_VERSION > 92
+#include "access/htup_details.h"
+#endif
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <search.h>
 
 #include "string.h"
 #include "math.h"
 
 #include "fmgr.h"
 
-#ifdef PG_MODULE_MAGIC
-PG_MODULE_MAGIC;
-#endif
-
 #undef qsort
 
-// ------------------------------------------------------------------------
+//-------------------------------------------------------------------------
 
 /*
-* Define this to have profiling enabled
-*/
+ * Define this to have profiling enabled
+ */
 //#define PROFILE
 
 #ifdef PROFILE
 #include <sys/time.h>
 
-struct timeval prof_vrp, prof_store, prof_extract, prof_total;
+struct timeval prof_astar, prof_store, prof_extract, prof_total;
 long proftime[5];
 long profipts1, profipts2, profopts;
+
 #define profstart(x) do { gettimeofday(&x, NULL); } while (0);
-#define profstop(n, x) do { struct timeval _profstop;   
-	long _proftime;                         
-	gettimeofday(&_profstop, NULL);                         
-	_proftime = ( _profstop.tv_sec*1000000+_profstop.tv_usec) -     
-	( x.tv_sec*1000000+x.tv_usec); 
-	elog(NOTICE, 
-	"PRF(%s) %lu (%f ms)", 
-	(n), 
-	_proftime, _proftime / 1000.0);    
-} while (0);
+#define profstop(n, x) do { struct timeval _profstop;   \
+        long _proftime;                         \
+        gettimeofday(&_profstop, NULL);                         \
+        _proftime = ( _profstop.tv_sec*1000000+_profstop.tv_usec) -     \
+                ( x.tv_sec*1000000+x.tv_usec); \
+        elog(NOTICE, \
+                "PRF(%s) %lu (%f ms)", \
+                (n), \
+             _proftime, _proftime / 1000.0);    \
+        } while (0);
 
 #else
 
@@ -49,22 +53,27 @@ long profipts1, profipts2, profopts;
 
 #endif // PROFILE
 
+
 // ------------------------------------------------------------------------
 
 Datum vrp(PG_FUNCTION_ARGS);
 
-//#undef DEBUG
-#define DEBUG 1
+#undef DEBUG
+//#define DEBUG 1
 
 #ifdef DEBUG
-#define DBG(format, arg...)                    
-	elog(NOTICE, format , ## arg)
+#define DBG(format, arg...)                     \
+    elog(NOTICE, format , ## arg)
 #else
 #define DBG(format, arg...) do { ; } while (0)
 #endif
 
 // The number of tuples to fetch from the SPI cursor at each iteration
-#define TUPLIMIT 10000
+#define TUPLIMIT 1000
+
+#ifdef PG_MODULE_MAGIC
+PG_MODULE_MAGIC;
+#endif
 
 typedef struct vehicle_columns
 {
@@ -99,36 +108,6 @@ typedef struct distance_columns
 //float x[MAX_TOWNS],y[MAX_TOWNS];
 int total_tuples;
 int order_num, vehicle_num, dist_num;
-
-int 
-order_cmp (const void *c1, const void *c2)
-{
-	vrp_orders_t *o1 = (vrp_orders_t*)c1;
-	vrp_orders_t *o2 = (vrp_orders_t*)c2;
-	return o1->order_id - o2->order_id;
-}
-
-int 
-order_cmp_asc (const void *c1, const void *c2)
-{
-	vrp_orders_t *o1 = (vrp_orders_t*)c1;
-	vrp_orders_t *o2 = (vrp_orders_t*)c2;
-	return o2->order_id - o1->order_id;
-}
-
-int find_order(int order_id, vrp_orders_t *orders, int count)
-{
-	int id = -1;
-	vrp_orders_t target, *result;
-	target.order_id = order_id;
-
-	result = bsearch(&target, orders, count, sizeof (vrp_orders_t),
-		order_cmp);
-	if (result)
-		id = result->id;
-
-	return id;
-}
 
 static char *
 text2char(text *in)
@@ -301,9 +280,9 @@ fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
 	if (isnull)
 		elog(ERROR, "order_id contains a null value");
 
-	order->order_id = DatumGetInt32(binval);
+	order->id = DatumGetInt32(binval);
 
-	DBG("order_id = %i\n", order->order_id);  
+	DBG("order_id = %i\n", order->id);  
 
 
 	binval = SPI_getbinval(*tuple, *tupdesc, order_columns->order_unit, &isnull);
@@ -350,7 +329,7 @@ fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
 	if (isnull)
 		elog(ERROR, "y contains a null value");
 
-	order->y = DatumGetIntervalP(binval);
+	order->y = DatumGetFloat8(binval);
 
 	DBG("doUT = %f\n", order->y);
 
@@ -400,9 +379,9 @@ fetch_vehicle(HeapTuple *tuple, TupleDesc *tupdesc,
 	if (isnull)
 		elog(ERROR, "vehicle_id contains a null value");
 
-	vehicle->vehicle_id = DatumGetInt32(binval);
+	vehicle->id = DatumGetInt32(binval);
 
-	DBG("vehicle_id = %i\n", vehicle->vehicle_id);
+	DBG("vehicle_id = %i\n", vehicle->id);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->capacity, &isnull);
 	if (isnull)
@@ -466,13 +445,13 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 	int ntuples;
 
 	vrp_vehicles_t *vehicles=NULL;
-	vehicle_columns_t vehicle_columns = {id: -1, capacity: -1, costperkm = -1};
+	vehicle_columns_t vehicle_columns = {vehicle_id: -1, capacity: -1};
 
 	vrp_orders_t *orders=NULL;
-	order_columns_t order_columns = {id = 1, order_unit = -1, opentime = -1, closetime = -1, servicetime = -1, x = -1, y = -1};
+	order_columns_t order_columns = {id: -1, order_unit: -1, open_time: -1, close_time: -1, service_time: -1, x: -1, y: -1};
 
-	vrp_cost_element_t *costs=NULL:
-	distance_columns_t distance_columns = {src_id = -1, dest_id = -1, cost = -1, distance = -1,	traveltime = -1};
+	vrp_cost_element_t *costs=NULL;
+	distance_columns_t distance_columns = {src_id: -1, dest_id: -1, cost: -1, distance: -1,	traveltime: -1};
 
 	char *err_msg = NULL;
 	int ret = -1;
@@ -522,7 +501,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 
 		DBG("cursor fetched\n");
 
-		if (order_columns.order_id == -1)
+		if (order_columns.id == -1)
 		{
 			if (fetch_order_columns(SPI_tuptable, &order_columns) == -1)
 				return finish(&SPIcode);
@@ -593,7 +572,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 	{
 		SPI_cursor_fetch(SPIportal_v, TRUE, TUPLIMIT);
 
-		if (vehicle_columns.id == -1)
+		if (vehicle_columns.vehicle_id == -1)
 		{
 			if (fetch_vehicle_columns(SPI_tuptable, &vehicle_columns) == -1)
 				return finish(&SPIcode);
@@ -777,7 +756,7 @@ vrp(PG_FUNCTION_ARGS)
 		oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-		path = (vrp_result_element_t *)palloc(sizeof(vrp_result_element_t)*(MAX_ORDERS-1)*2*MAX_VEHICLES);
+		//path = (vrp_result_element_t *)palloc(sizeof(vrp_result_element_t)*(MAX_ORDERS-1)*2*MAX_VEHICLES);
 
 
 		ret = solve_vrp(//text2char(PG_GETARG_TEXT_P(0)), // points sql
@@ -821,11 +800,11 @@ vrp(PG_FUNCTION_ARGS)
 		values = palloc(5 * sizeof(Datum));
 		nulls = palloc(5 * sizeof(char));
 
-		values[0] = Int32GetDatum(path[call_cntr].id);   // order id
+		values[0] = Int32GetDatum(path[call_cntr].order_id);   // order id
 		nulls[0] = ' ';
-		values[1] = Int32GetDatum(path[call_cntr].order);  // order pos
+		values[1] = Int32GetDatum(path[call_cntr].order_pos);  // order pos
 		nulls[1] = ' ';
-		values[2] = Int32GetDatum(path[call_cntr].vehicle); // vehicle id
+		values[2] = Int32GetDatum(path[call_cntr].vehicle_id); // vehicle id
 		nulls[2] = ' ';
 		values[3] = Int32GetDatum(path[call_cntr].arrival_time); // arrival time
 		nulls[3] = ' ';

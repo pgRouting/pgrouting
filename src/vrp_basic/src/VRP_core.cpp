@@ -72,7 +72,7 @@ void loadVehicles(vrp_vehicles_t *vehicles, int vehicle_count)
 	{
 		CVehicleInfo vehicle;
 
-		int id = vehicle[i].id;
+		int id = vehicles[i].id;
 		vehicle.setId(id);
 
 		int capcity = vehicles[i].capacity;
@@ -148,7 +148,7 @@ int find_vrp_solution(vrp_vehicles_t *vehicles, int vehicle_count,
 			totRows += (solution.getTour(i).getServedOrderCount() + 2);
 		}
 		*results = (vrp_result_element_t *) malloc(sizeof(vrp_result_element_t) * totRows);
-		result_count = totRows;
+		*result_count = totRows;
 		int cnt = 0;
 		for(int i = 0; i < totalRoute; i++)
 		{

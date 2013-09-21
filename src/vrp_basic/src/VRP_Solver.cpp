@@ -738,6 +738,8 @@ bool CVRPSolver::updateTourCosts(CTourInfo& tourInfo)
 	dDistance += cPack.distance;
 
 	dTravelTime += cPack.traveltime;
+
+	vecStartTimes.push_back(ceil(dTravelTime));
 	ind = m_mapDepotIdToIndex[tourInfo.getEndDepot()];
 	if(dTravelTime > m_vDepotInfos[ind].getCloseTime())
 		return false;
@@ -803,6 +805,9 @@ CostPack CVRPSolver::getCostForInsert(CTourInfo& curTour, COrderInfo& curOrder, 
 
 	dTravelTime += cPack.traveltime;
 
+	ind = m_mapDepotIdToIndex[curTour.getEndDepot()];
+	if(dTravelTime > m_vDepotInfos[ind].getCloseTime())
+		return costRet;
 
 	costRet.cost = dCost - curTour.getCost();
 	costRet.distance = dDistance - curTour.getDistance();

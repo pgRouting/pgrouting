@@ -353,6 +353,7 @@ public:
 	std::pair<int,double> getPotentialInsert(CTourInfo& curTour, COrderInfo& curOrder);
 	CostPack getCostForInsert(CTourInfo& curTour, COrderInfo& curOrder, int pos);
 	bool tabuSearch(CSolutionInfo& solutionInfo);
+	int getServiceTime(int order_id){return (m_vOrderInfos[m_mapOrderIdToIndex[order_id]].getServiceTime());}
 
 	bool insertOrder(CTourInfo& tourInfo, int orderId, int pos);
 	void applyBestMoveInCurrentSolution(CSolutionInfo& solutionInfo, CMoveInfo& bestMove );
