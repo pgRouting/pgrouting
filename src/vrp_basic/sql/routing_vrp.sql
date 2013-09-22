@@ -5,7 +5,7 @@
 --
 --
 
-create or replace pgr_vrpOneDepot(
+create or replace function pgr_vrpOneDepot(
 	order_sql text,
 	vehicle_sql text,
 	cost_sql text,
