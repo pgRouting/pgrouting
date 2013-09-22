@@ -1,0 +1,1 @@
+ways.txt 5 1 13 11 path1.txt
