@@ -18,6 +18,8 @@
 
 #include "fmgr.h"
 
+
+
 #undef qsort
 
 //-------------------------------------------------------------------------
@@ -514,10 +516,10 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 
 		DBG("Tuples: %i\n", order_num);
 
-		//if (!orders)
-		  orders = palloc(order_num * sizeof(vrp_orders_t));
-		//else
-		//orders = repalloc(orders, (order_num + 1) * sizeof(vrp_orders_t));
+		if (!orders)
+		  	orders = palloc(order_num * sizeof(vrp_orders_t));
+		else
+			orders = repalloc(orders, (order_num + 1) * sizeof(vrp_orders_t));
 
 		if (orders == NULL)
 		{
@@ -539,6 +541,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 				//DBG("Before order fetched [%i]\n", order_num - ntuples + t);
 				fetch_order(&tuple, &tupdesc, &order_columns,
 					&orders[order_num - ntuples + t], t);
+
 				//&orders[t+1], t);
 				DBG("Order fetched\n");
 			}
@@ -551,7 +554,13 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 		}
 	}// end of fetching orders
 	//finish(&SPIcode_o);
-
+/*
+	int o;
+	for(o=0; o<order_num+1;++o)
+	{
+		elog(NOTICE, "ORDERS[%i] = {id=%i, open=%i, close=%i, service=%i}", o, orders[o].id, orders[o].open_time, orders[o].close_time, orders[o].service_time);
+	}
+*/
 	DBG ("order_num = %i", order_num); 
 
 	//qsort (orders, order_num+1, sizeof (vrp_orders_t), order_cmp);
@@ -708,12 +717,13 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 		DBG("ORDERS[%i] = {id=%i, open=%i, close=%i, service=%i}", o, orders[o].id, orders[o].open_time, orders[o].close_time, orders[o].service_time);
 	}
 #endif
+	
 
 
 	//itinerary = (vrp_result_element_t *)palloc(sizeof(vrp_result_element_t)*(order_num*2-1)*vehicle_num);
 
 	DBG("Calling vrp solver\n");
-    elog(NOTICE, "Calling find_vrp_solution: vehicles: %i, orders: %i, dists: %i", vehicle_num, order_num, dist_num);
+    //elog(NOTICE, "Calling find_vrp_solution: vehicles: %i, orders: %i, dists: %i, depot: %i", vehicle_num, order_num, dist_num, depot);
 
 	ret = find_vrp_solution(vehicles, vehicle_num,
 		orders, order_num,
@@ -721,9 +731,16 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 		depot,
 		path, path_count, &err_msg);
 
-
-	total_tuples = ret;
-
+	//ret = -1;
+	total_tuples = *path_count;
+	//elog(NOTICE, "vrp solved! ret: %d, path_count: %d", ret, *path_count);
+	int pp;
+/*
+	for(pp = 0; pp < *path_count; pp++)
+	{
+		elog(NOTICE, "Row: %d: %d %d %d %d %d", pp, (*path)[pp].order_id, (*path)[pp].order_pos, (*path)[pp].vehicle_id, (*path)[pp].arrival_time, (*path)[pp].depart_time);
+	}
+*/
 	DBG("vrp solved! ret: %d, path_count: %d", ret, path_count);
 	//DBG("Score: %f\n", fit);
 
@@ -785,6 +802,7 @@ vrp(PG_FUNCTION_ARGS)
 			&path, &path_count);
 
 		DBG("Back from solve_vrp, path_count:%d", path_count);
+		//elog(NOTICE, "Back from solve_vrp, path_count:%d", path_count);
         
         /* total number of tuples to be returned */
 		//DBG("Counting tuples number\n");
@@ -793,9 +811,24 @@ vrp(PG_FUNCTION_ARGS)
 
 		funcctx->user_fctx = path;
 
-		funcctx->tuple_desc = BlessTupleDesc(
-			RelationNameGetTupleDesc("itinerary"));
+		/* Build a tuple descriptor for our result type */
+        	if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+            		ereport(ERROR,
+                    	(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+                     	errmsg("function returning record called in context "
+                            "that cannot accept type record")));
+
+        	funcctx->tuple_desc = BlessTupleDesc(tuple_desc);
+
+        	/*
+         	* generate attribute metadata needed later to produce tuples from raw
+         	* C strings
+         	*/
+        	//attinmeta = TupleDescGetAttInMetadata(tuple_desc);
+        	//funcctx->attinmeta = attinmeta;
+
 		MemoryContextSwitchTo(oldcontext);
+		//elog(NOTICE, "table formed");
 	}
 
 	/* stuff done on every call of the function */
@@ -807,6 +840,7 @@ vrp(PG_FUNCTION_ARGS)
 
 	path = (vrp_result_element_t *)funcctx->user_fctx;
 
+	//elog(NOTICE, "Point 1");
 	//DBG("Trying to allocate some memory\n");
 	//DBG("call_cntr = %i, max_calls = %i\n", call_cntr, max_calls);
 
@@ -833,7 +867,7 @@ vrp(PG_FUNCTION_ARGS)
 		nulls[4] = ' ';
 
 		// DBG("Heap making\n");
-
+		//elog(NOTICE,"Result %d %d %d", call_cntr, path[call_cntr].order_id, max_calls);
 		tuple = heap_formtuple(tuple_desc, values, nulls);
 
 		//DBG("Datum making\n");
@@ -852,13 +886,14 @@ vrp(PG_FUNCTION_ARGS)
 	}
 	else    /* do when there is no more left */
 	{
+		
 		DBG("Ending function\n");
 		profstop("store", prof_store);
 		profstop("total", prof_total);
 		DBG("Profiles stopped\n");
 
-		pfree(path);
-
+		free(path);
+		
 		DBG("Itinerary cleared\n");
 
 		SRF_RETURN_DONE(funcctx);

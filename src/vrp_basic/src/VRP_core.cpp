@@ -4,14 +4,33 @@
 
 CVRPSolver solver;
 
+char buff[1024];
+void dlog(char *ptr)
+{
+/*
+	FILE *fp = fopen("/tmp/vrp-debug.log", "a+");;
+	fprintf(fp,ptr);
+	fprintf(fp, "\n");
+	fclose(fp);	
+*/
+}
+
+
 void loadOrders(vrp_orders_t *orders, int order_count, int depotId)
 {
 	int i;
+	sprintf(buff, "%d", depotId);
+	//dlog("Depot ID");
+	//dlog(buff);
 	for(i = 0; i < order_count; i++)
 	{
 		int id = orders[i].id;
+		//sprintf(buff, "%d", id);
+		//dlog("Depot ID");
+		//dlog(buff);
 		if (id == depotId)
 		{
+			//dlog("Got depot");
 			// This order represents Deopot
 			CDepotInfo depot;
 			
@@ -115,14 +134,19 @@ int find_vrp_solution(vrp_vehicles_t *vehicles, int vehicle_count,
 					  vrp_result_element_t **results, int *result_count, char **err_msg)
 {
 	int res;
+	
 	std::string strError;
 	try {
+		//dlog("Before load order");
 		loadOrders(orders, order_count, depot_id);
+		//dlog("After load order");
 		loadVehicles(vehicles, vehicle_count);
+		//dlog("After load vehicles");
 		loadDistanceMatrix(costmatrix, cost_count, depot_id);
+		//dlog("After load distance matrix");
 		res = solver.solveVRP(strError);
-
-		
+		//dlog("After VRP Solve");
+	
 	}
 	catch(std::exception& e) {
 		*err_msg = (char *) e.what();
@@ -133,10 +157,12 @@ int find_vrp_solution(vrp_vehicles_t *vehicles, int vehicle_count,
 		return -1;
 	}
 
+	
 	if (res < 0)
 		return res;
 	else
 	{
+		try {
 		CSolutionInfo solution;
 		CTourInfo ctour;
 		bool bOK = solver.getSolution(solution, strError);
@@ -147,7 +173,7 @@ int find_vrp_solution(vrp_vehicles_t *vehicles, int vehicle_count,
 		{
 			totRows += (solution.getTour(i).getServedOrderCount() + 2);
 		}
-		*results = (vrp_result_element_t *) malloc(sizeof(vrp_result_element_t) * totRows);
+		*results = (vrp_result_element_t *) malloc(totRows * sizeof(vrp_result_element_t));
 		*result_count = totRows;
 		int cnt = 0;
 		for(int i = 0; i < totalRoute; i++)
@@ -167,11 +193,11 @@ int find_vrp_solution(vrp_vehicles_t *vehicles, int vehicle_count,
 			// For each order
 			for(int j = 0; j < totalOrder; j++)
 			{
-				(*results)[cnt].order_id = vecOrder[i];
+				(*results)[cnt].order_id = vecOrder[j];
 				(*results)[cnt].order_pos = j + 1;
 				(*results)[cnt].vehicle_id = ctour.getVehicleId();
 				(*results)[cnt].depart_time = ctour.getStartTime(j + 1);
-				(*results)[cnt].arrival_time = ctour.getStartTime(j + 1) - solver.getServiceTime(vecOrder[i]);
+				(*results)[cnt].arrival_time = ctour.getStartTime(j + 1) - solver.getServiceTime(vecOrder[j]);
 				cnt++;
 			}
 			
@@ -183,6 +209,16 @@ int find_vrp_solution(vrp_vehicles_t *vehicles, int vehicle_count,
 			(*results)[cnt].depart_time = -1;
 			cnt++;
 		}
+		}
+		catch(std::exception& e) {
+		*err_msg = (char *) e.what();
+		return -1;
+		}
+		catch(...) {
+		*err_msg = (char *) "Caught unknown exception!";
+		return -1;
+		}
 	}
 	return EXIT_SUCCESS;
 }
+
