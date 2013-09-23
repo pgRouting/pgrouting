@@ -1,4 +1,3 @@
-
 /*
 .. function:: pgr_pointToId(point geometry, tolerance double precision,vname text,srid integer)
 
@@ -278,7 +277,7 @@ BEGIN
 
   
   BEGIN 
-    sql = 'select * from '||pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
+    sql = 'SELECT count(*) FROM '||pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' LIMIT 1';
     EXECUTE sql into i;
     sql = 'select count(*) from '||pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NOT NULL AND '||
 		idname||' IS NOT NULL)=false '||rows_where;
