@@ -107,7 +107,6 @@ typedef struct distance_columns
 //float DISTANCE[MAX_TOWNS][MAX_TOWNS];
 //float x[MAX_TOWNS],y[MAX_TOWNS];
 int total_tuples;
-int order_num, vehicle_num, dist_num;
 
 static char *
 text2char(text *in)
@@ -165,20 +164,20 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
 	Datum binval;
 	bool isnull;
 
-	//int from_order, to_order;
-	//int from_point, to_point;
-	float value;
-
-	//DBG("Inside distance fetched\n");
+	DBG("fetch_distance: src_id col:%i", distance_columns->src_id);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, distance_columns->src_id, &isnull);
+
+    DBG("back from SPI_getbinval for src_id");
+    DBG("binval=%i", binval);
 
 	if (isnull)
 		elog(ERROR, "src_id contains a null value");
 
 	dist->src_id = DatumGetInt32(binval);
 
-	//DBG("from_order=%i",from_order);
+    DBG("back from DatumGetInt32");
+	DBG("src_id=%i", dist->src_id);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, distance_columns->dest_id, &isnull);
 	if (isnull)
@@ -186,7 +185,7 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	dist->dest_id = DatumGetInt32(binval);
 
-	//DBG("to_order=%i",to_order);
+	DBG("dest_id=%i", dist->dest_id);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, distance_columns->cost, &isnull);
 
@@ -195,7 +194,7 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	dist->cost = DatumGetFloat8(binval);
 
-	//DBG("from_point=%i",from_point);
+	DBG("cost=%lf", dist->cost);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, distance_columns->distance, &isnull);
 	if (isnull)
@@ -203,7 +202,7 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	dist->distance = DatumGetFloat8(binval);
 
-	//DBG("to_point=%i",to_point);
+	DBG("distance=%lf", dist->distance);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, distance_columns->traveltime, &isnull);
 
@@ -212,7 +211,7 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	dist->traveltime = DatumGetFloat8(binval);
 
-	//DBG("value=%f",value);
+	DBG("traveltime=%lf", dist->traveltime);
 
 	//DBG("dist[%i][%i] = %f\n", from_point, to_point, value);
 
@@ -444,6 +443,8 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 	bool moredata = TRUE;
 	int ntuples;
 
+    int order_num, vehicle_num, dist_num;
+
 	vrp_vehicles_t *vehicles=NULL;
 	vehicle_columns_t vehicle_columns = {vehicle_id: -1, capacity: -1};
 
@@ -464,14 +465,12 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 
 	int prep = -1, con = -1;
 
-	DBG("inside vrp\n");
-
 	//int total_tuples = 0;
 	total_tuples = 0;
 	order_num = 0;
 	vehicle_num = 0;
 
-	DBG("start vrp\n");
+	DBG("start solve_vrp\n");
 
 	//vrp_orders_t depot_ord = {id:0, order_id:depot, from:depot_point, to:depot_point};
 	//orders = palloc(1 * sizeof(vrp_orders_t));
@@ -484,6 +483,8 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 
 
 	// Fetching orders
+
+    DBG("calling prepare_query for orders_sql");
 
 	prep = prepare_query(&SPIportal_o, orders_sql);
 
@@ -649,6 +650,19 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 		ntuples = SPI_processed;
 		dist_num += ntuples;
 
+		DBG("Tuples: %i\n", vehicle_num);
+
+		if (!costs)
+			costs = palloc(dist_num * sizeof(vrp_cost_element_t));
+		else
+			costs = repalloc(costs, dist_num * sizeof(vrp_cost_element_t));
+
+		if (costs == NULL)
+		{
+			elog(ERROR, "Out of memory");
+			return finish(&SPIcode);
+		}
+
 		if (ntuples > 0)
 		{
 			int t;
@@ -687,17 +701,19 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 	//qsort (orders, order_num+1, sizeof (vrp_orders_t), order_cmp_asc);
 
 
+#ifdef DEBUG
 	int o;
 	for(o=0; o<order_num+1;++o)
 	{
-		DBG("ORDERS[%i] = {id=%i,order_id=%i,from=%i,to=%i}",o,orders[o].id,orders[o].order_id,orders[o].from,orders[o].to);
+		DBG("ORDERS[%i] = {id=%i, open=%i, close=%i, service=%i}", o, orders[o].id, orders[o].open_time, orders[o].close_time, orders[o].service_time);
 	}
-	//return 0;
+#endif
 
 
 	//itinerary = (vrp_result_element_t *)palloc(sizeof(vrp_result_element_t)*(order_num*2-1)*vehicle_num);
 
 	DBG("Calling vrp solver\n");
+    elog(NOTICE, "Calling find_vrp_solution: vehicles: %i, orders: %i, dists: %i", vehicle_num, order_num, dist_num);
 
 	ret = find_vrp_solution(vehicles, vehicle_num,
 		orders, order_num,
@@ -708,7 +724,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 
 	total_tuples = ret;
 
-	DBG("vrp solved!\n");
+	DBG("vrp solved! ret: %d, path_count: %d", ret, path_count);
 	//DBG("Score: %f\n", fit);
 
 	profstop("vrp", prof_vrp);
@@ -759,6 +775,8 @@ vrp(PG_FUNCTION_ARGS)
 		//path = (vrp_result_element_t *)palloc(sizeof(vrp_result_element_t)*(MAX_ORDERS-1)*2*MAX_VEHICLES);
 
 
+        DBG("Calling solve_vrp ...");
+
 		ret = solve_vrp(//text2char(PG_GETARG_TEXT_P(0)), // points sql
 			text2char(PG_GETARG_TEXT_P(0)),  // orders sql
 			text2char(PG_GETARG_TEXT_P(1)),  // vehicles sql
@@ -766,7 +784,9 @@ vrp(PG_FUNCTION_ARGS)
 			PG_GETARG_INT32(3),  // depot id
 			&path, &path_count);
 
-		/* total number of tuples to be returned */
+		DBG("Back from solve_vrp, path_count:%d", path_count);
+        
+        /* total number of tuples to be returned */
 		//DBG("Counting tuples number\n");
 
 		funcctx->max_calls = total_tuples;
