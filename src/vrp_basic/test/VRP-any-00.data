@@ -123,26 +123,26 @@ create table vrp_vehicles (
 );
 
 copy vrp_vehicles (vehicle_id, capacity, case_no) from stdin;
-1	200
-2	200
-3	200
-4	200
-5	200
-6	200
-7	200
-8	200
-9	200
-10	200
-11	200
-12	200
-13	200
-14	200
-15	200
-16	200
-17	200
-18	200
-19	200
-20	200
+1	200	5
+2	200	5
+3	200	5
+4	200	5
+5	200	5
+6	200	5
+7	200	5
+8	200	5
+9	200	5
+10	200	5
+11	200	5
+12	200	5
+13	200	5
+14	200	5
+15	200	5
+16	200	5
+17	200	5
+18	200	5
+19	200	5
+20	200	5
 \.
 
 drop table if exists vrp_distance cascade;
@@ -151,7 +151,7 @@ create table vrp_distance (
     dest_id integer,
     cost Float8,
     distance Float8,
-    traveltime   
+    traveltime Float8
 );
 
 copy vrp_distance (src_id, dest_id, cost, distance, traveltime) from stdin;
