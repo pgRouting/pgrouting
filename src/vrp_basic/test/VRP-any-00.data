@@ -7,7 +7,7 @@ create table vrp_orders (
     close_time integer,
     service_time integer,
     x float8,
-    y float8,
+    y float8
      
 );
 

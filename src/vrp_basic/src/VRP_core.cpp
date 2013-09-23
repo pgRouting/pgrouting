@@ -1,6 +1,6 @@
-#include <exception>
 #include "VRP.h"
 #include "VRP_Solver.h"
+#include <exception>
 
 CVRPSolver solver;
 
