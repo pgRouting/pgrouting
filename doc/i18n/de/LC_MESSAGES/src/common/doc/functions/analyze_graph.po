@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-04 04:20+0000\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-22 06:20+0000\n"
 "Last-Translator: Daniel Kastl\n"
 "Language-Team: German (http://www.transifex.com/projects/p/pgrouting/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -17,87 +17,394 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-# e001849536eb421281e8e272d2796b79
+# 4ec68d2c61f945ef81648e1b5c6415f1
 #: ../../../src/common/doc/functions/analyze_graph.rst:13
-msgid "pgr_analyzeGraph - Analyze a Graph"
+msgid "pgr_analyzeGraph"
 msgstr ""
 
-# dacb39f6f57e4b92b83b0d6c672ef1e7
+# 4c3762e114fb4e67a2515bba541c8f36
 #: ../../../src/common/doc/functions/analyze_graph.rst:20
 msgid "Name"
 msgstr "Name"
 
-# a875397916324663b57dd4799740d48b
+# ac455e0fb31e44308320f39bbd78adfc
 #: ../../../src/common/doc/functions/analyze_graph.rst:22
-msgid "``pgr_analyzeGraph`` — Analyzes the \"network\" and \"vertices_tmp\" tables."
+msgid "``pgr_anlizeGraph`` — Analyzes the network topology."
 msgstr ""
 
-# 4b667f4bbcdf41eda0915259ce8d0dbf
+# 7d6b06e1d5354d94ac2855084e4e9e71
 #: ../../../src/common/doc/functions/analyze_graph.rst:26
 msgid "Synopsis"
 msgstr "Übersicht"
 
-# 4cfa384c0fe9482e922560d9c37fbe16
+# 19f89e76f38342129988c1b3de66af9a
+# ebc7d96a54cb409a916a9e44ff8544f9
 #: ../../../src/common/doc/functions/analyze_graph.rst:28
-msgid ""
-"Analyzes the edge table and \"vertices_tmp\" tables and flags if nodes are "
-"deadends, ie. ``vertices_tmp.cnt=1`` and identifies nodes that might be "
-"disconnected because of gaps < ``tolerance`` or because of zlevel errors in "
-"the data."
+#: ../../../src/common/doc/functions/analyze_graph.rst:61
+msgid "The function returns:"
 msgstr ""
 
-# 8319cc04bd6d48c7b53368c8299afbc0
-#: ../../../src/common/doc/functions/analyze_graph.rst:37
+# b996e0d0950741438419d72fc2aaa1a6
+# ac02a2dca7d24bb296b418e5019b5d52
+#: ../../../src/common/doc/functions/analyze_graph.rst:30
+#: ../../../src/common/doc/functions/analyze_graph.rst:63
+msgid "``OK`` after the analysis has finished."
+msgstr ""
+
+# 6494556e5a0240b6b89d6cc13588a959
+# 226def8709104fefbde358ee19f0dbdc
+#: ../../../src/common/doc/functions/analyze_graph.rst:31
+#: ../../../src/common/doc/functions/analyze_graph.rst:69
+msgid "``FAIL`` when the analysis was not completed due to an error."
+msgstr ""
+
+# 258df98c829a48e794073f4f67e64d37
+#: ../../../src/common/doc/functions/analyze_graph.rst:40
 msgid "Description"
 msgstr "Beschreibung"
 
-# dd782c2d4df442dab7a1abe663203b36
-#: ../../../src/common/doc/functions/analyze_graph.rst:39
-msgid "``text`` network table name (may contain the schema name as well)"
+# 2ea823d9ac6a4b309542c1efdf685188
+#: ../../../src/common/doc/functions/analyze_graph.rst:43
+msgid "Prerequisites"
 msgstr ""
 
-# 10c6c9792be34c5d950ca0405566b21b
-#: ../../../src/common/doc/functions/analyze_graph.rst:40
-msgid "``text`` geometry column name of the network table"
-msgstr ""
-
-# 7c62e7d91d3f44059545ecae93fb1c1f
-#: ../../../src/common/doc/functions/analyze_graph.rst:41
+# b6f61bceeb764c09a0519ef218788641
+#: ../../../src/common/doc/functions/analyze_graph.rst:44
 msgid ""
-"``float8`` snapping tolerance of disconnected edges (in projection unit)"
+"The  edge table to be analyzed must contain a source column and a target "
+"column filled with id's of the vertices of the segments and the "
+"corresponding vertices table <edge_table>_vertices_pgr that stores the "
+"vertices information."
 msgstr ""
 
-# c9587ff1d0cb436d9e64c6eddd37ee7b
-#: ../../../src/common/doc/functions/analyze_graph.rst:45
+# bc5a5fd73e194a1eb18560c62b8726c5
+#: ../../../src/common/doc/functions/analyze_graph.rst:46
+msgid ""
+"Use :ref:`pgr_createVerticesTable <pgr_create_vert_table>` to create the "
+"vertices table."
+msgstr ""
+
+# dddd02de549c450da54ecc30da50bcac
+#: ../../../src/common/doc/functions/analyze_graph.rst:47
+msgid ""
+"Use :ref:`pgr_createTopology <pgr_create_topology>` to create the topology "
+"and the vertices table."
+msgstr ""
+
+# 2f1a64c5c7df47c08b9460c1c2ca9a0d
+#: ../../../src/common/doc/functions/analyze_graph.rst:50
+msgid "Parameters"
+msgstr "Parameter"
+
+# f7ef120ecd234df3bc9de0b69122a094
+#: ../../../src/common/doc/functions/analyze_graph.rst:51
+msgid "The analyze graph function accepts the following parameters:"
+msgstr ""
+
+# 93b5fa9bcdd84ccbae6d4945adb6b9b5
+#: ../../../src/common/doc/functions/analyze_graph.rst:53
+msgid "``text`` Network table name. (may contain the schema name as well)"
+msgstr ""
+
+# 0c3bf879395649e1aac68ae62880746b
+#: ../../../src/common/doc/functions/analyze_graph.rst:54
+msgid ""
+"``float8`` Snapping tolerance of disconnected edges. (in projection unit)"
+msgstr ""
+
+# cd2deb23e3394ad298d9787e069561e2
+#: ../../../src/common/doc/functions/analyze_graph.rst:55
+msgid ""
+"``text``  Geometry column name of the network table. Default value is "
+"``the_geom``."
+msgstr ""
+
+# 31330d72cbb748289eafa0fcb996153d
+#: ../../../src/common/doc/functions/analyze_graph.rst:56
+msgid ""
+"``text``  Primary key column name of the network table. Default value is "
+"``id``."
+msgstr ""
+
+# b9e5db8199ce47ccb092272e93020d7c
+#: ../../../src/common/doc/functions/analyze_graph.rst:57
+msgid ""
+"``text`` Source column name of the network table. Default value is "
+"``source``."
+msgstr ""
+
+# 245c992a7082431684659ae5845aced6
+#: ../../../src/common/doc/functions/analyze_graph.rst:58
+msgid ""
+"``text``  Target column name of the network table.  Default value is "
+"``target``."
+msgstr ""
+
+# 8e81329133844e65b7eef1f84cb73965
+#: ../../../src/common/doc/functions/analyze_graph.rst:59
+msgid ""
+"``text``   Condition to select  a subset or rows.  Default value is ``true``"
+" to indicate all rows."
+msgstr ""
+
+# c99a684aa3994cc4b60c334882d9ed78
+#: ../../../src/common/doc/functions/analyze_graph.rst:65
+msgid "Uses the vertices table: <edge_table>_vertices_pgr."
+msgstr ""
+
+# e32eb0de40d0487fbb1062ec88c5bbe9
+#: ../../../src/common/doc/functions/analyze_graph.rst:66
+msgid "Fills completly the ``cnt`` and ``chk`` columns of the vertices table."
+msgstr ""
+
+# a4a0f627086946459e80cc8ac16b31b8
+#: ../../../src/common/doc/functions/analyze_graph.rst:67
+msgid ""
+"Returns the analysis of the section of the network defined by  "
+"``rows_where``"
+msgstr ""
+
+# f2d3df84fbb14b48a0dba64650326883
+#: ../../../src/common/doc/functions/analyze_graph.rst:71
+msgid "The vertices table is not found."
+msgstr ""
+
+# 1c3dd89f91d94a32b0fa96e3c8544649
+#: ../../../src/common/doc/functions/analyze_graph.rst:72
+msgid ""
+"A required column of the Network table is not found or is not of the "
+"appropriate type."
+msgstr ""
+
+# 0e7728a66df8403b80c0e73cc496d665
+#: ../../../src/common/doc/functions/analyze_graph.rst:73
+msgid "The condition is not well formed."
+msgstr ""
+
+# 8a41f89e1b6c4622925078236419ba59
+#: ../../../src/common/doc/functions/analyze_graph.rst:74
+msgid "The names of source , target or id are the same."
+msgstr ""
+
+# 9a0c49ad17e7442291584a6d38ad24f0
+#: ../../../src/common/doc/functions/analyze_graph.rst:75
+msgid "The SRID of the geometry could not be determined."
+msgstr ""
+
+# a28d4cfc2fb145bd8b620cd99ae007ef
+#: ../../../src/common/doc/functions/analyze_graph.rst:79
+msgid "The Vertices Table"
+msgstr ""
+
+# 6726eb03c9e14ce487a84ef6bdb3d061
+#: ../../../src/common/doc/functions/analyze_graph.rst:80
+msgid ""
+"The vertices table can be created with :ref:`pgr_createVerticesTable "
+"<pgr_create_vert_table>` or :ref:`pgr_createTopology <pgr_create_topology>`"
+msgstr ""
+
+# f69881355abd43b08fd4b112a15c823a
+#: ../../../src/common/doc/functions/analyze_graph.rst:82
+msgid "The structure of the vertices table is:"
+msgstr ""
+
+# e9b846b6c67a40a5a56ce827cbde2335
+#: ../../../src/common/doc/functions/analyze_graph.rst:84
+msgid "``bigint`` Identifier of the vertex."
+msgstr ""
+
+# c76d33c8d1d243e78adb977c995c1ed9
+#: ../../../src/common/doc/functions/analyze_graph.rst:85
+msgid ""
+"``integer`` Number of vertices in the edge_table that reference this vertex."
+msgstr ""
+
+# 2a14dd7a08114891908953fe3f87a075
+#: ../../../src/common/doc/functions/analyze_graph.rst:86
+msgid "``integer``  Indicator that the vertex might have a problem."
+msgstr ""
+
+# 9731ccd0742c4573b05224539f373580
+#: ../../../src/common/doc/functions/analyze_graph.rst:87
+msgid ""
+"``integer`` Number of vertices in the edge_table that reference this vertex "
+"as incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`."
+msgstr ""
+
+# bf31d82856954293ac270255b046d010
+#: ../../../src/common/doc/functions/analyze_graph.rst:88
+msgid ""
+"``integer`` Number of vertices in the edge_table that reference this vertex "
+"as outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`."
+msgstr ""
+
+# fa51c4280ee2409daf5cee9fbc858ef4
+#: ../../../src/common/doc/functions/analyze_graph.rst:89
+msgid "``geometry`` Point geometry of the vertex."
+msgstr ""
+
+# 3a2bb12205fe4cd6ad67ba6a8f37afe4
+#: ../../../src/common/doc/functions/analyze_graph.rst:92
 msgid "History"
 msgstr "Geschichte"
 
-# b846a73261594d9aaa312d40901e8058
-#: ../../../src/common/doc/functions/analyze_graph.rst:46
+# 378f4d42f82e4d30a6ab016e5ecc621a
+#: ../../../src/common/doc/functions/analyze_graph.rst:93
 msgid "New in version 2.0.0"
 msgstr "Neu in Version 2.0.0"
 
-# a807036566274d48b85fe9cbd868f800
-#: ../../../src/common/doc/functions/analyze_graph.rst:50
+# f2b122f189224840ad820005cf04c3c1
+#: ../../../src/common/doc/functions/analyze_graph.rst:96
+msgid "Usage when the edge table's columns MATCH the default values:"
+msgstr ""
+
+# bbc188364d7a4ba9b73c901703f754a0
+#: ../../../src/common/doc/functions/analyze_graph.rst:99
+msgid "The simplest way to use pgr_analyzeGraph is:"
+msgstr ""
+
+# eef338680d2247e485489cda2088d085
+#: ../../../src/common/doc/functions/analyze_graph.rst:106
+msgid "When the arguments are given in the order described in the parameters:"
+msgstr ""
+
+# bd9ee1725f5f458e84d65ccbde7489d2
+#: ../../../src/common/doc/functions/analyze_graph.rst:111
+msgid "We get the same result as the simplest way to use the function."
+msgstr ""
+
+# e6bd1bc511a6475aaa6fcce1db0cc9fd
+# 667d346fce1340c89b86814855215f31
+#: ../../../src/common/doc/functions/analyze_graph.rst:118
+#: ../../../src/common/doc/functions/analyze_graph.rst:184
+msgid "When using the named notation"
+msgstr ""
+
+# a6f10ab57f0645b6b0307bcb5d6c7ef3
+# eae5acaa57ff4a459953c203612092fa
+#: ../../../src/common/doc/functions/analyze_graph.rst:119
+#: ../../../src/common/doc/functions/analyze_graph.rst:185
+msgid "The order of the parameters do not matter:"
+msgstr ""
+
+# 0b36ba3cb2c24c17b8740a45f3430b69
+#: ../../../src/common/doc/functions/analyze_graph.rst:129
+msgid ""
+"Parameters defined with a default value can be ommited, as long as the value"
+" matches the default:"
+msgstr ""
+
+# 5130840677694ba3a4c08ae3b787e4d5
+# 309f2f767a9c4f419bb1a4ad1c1bfacf
+#: ../../../src/common/doc/functions/analyze_graph.rst:136
+#: ../../../src/common/doc/functions/analyze_graph.rst:199
+msgid "Selecting rows using rows_where parameter"
+msgstr ""
+
+# e7093f0dacbf44af908a1259b2b8f45d
+#: ../../../src/common/doc/functions/analyze_graph.rst:137
+msgid ""
+"Selecting rows based on the id. Displays the analysis a the section of the "
+"network."
+msgstr ""
+
+# 2867ea63b6b14572adb1130a9d04e28a
+#: ../../../src/common/doc/functions/analyze_graph.rst:143
+msgid ""
+"Selecting the rows where the geometry is near the geometry of row with "
+"``id`` =5 ."
+msgstr ""
+
+# 3cf323ab63204d99ac7ca31677b9e667
+#: ../../../src/common/doc/functions/analyze_graph.rst:149
+msgid ""
+"Selecting the rows where the geometry is near the geometry of the row with "
+"``gid`` =100 of the table ``othertable``."
+msgstr ""
+
+# baf5ffc28192473483bc4a1a4a0315f3
+#: ../../../src/common/doc/functions/analyze_graph.rst:160
+msgid "Usage when the edge table's columns DO NOT MATCH the default values:"
+msgstr ""
+
+# 57cb32f6495d4cb0b5f36be03adc7efa
+#: ../../../src/common/doc/functions/analyze_graph.rst:162
+msgid "For the following table"
+msgstr ""
+
+# 12fcad9f3b484280baa8b29867859861
+#: ../../../src/common/doc/functions/analyze_graph.rst:171
+msgid "Using positional notation:"
+msgstr ""
+
+# 07a02c55d3eb4f9eb1dfed2833efcbe8
+#: ../../../src/common/doc/functions/analyze_graph.rst:172
+msgid ""
+"The arguments need to be given in the order described in the parameters:"
+msgstr ""
+
+# 5dc716a92a81438c888764e8cb2b5b79
+#: ../../../src/common/doc/functions/analyze_graph.rst:195
+msgid ""
+"In this scenario omitting a parameter would create an error because the "
+"default values for the column names do not match the column names of the "
+"table."
+msgstr ""
+
+# 057829092b8a4504a3115036a73a489f
+#: ../../../src/common/doc/functions/analyze_graph.rst:200
+msgid "Selecting rows based on the id."
+msgstr ""
+
+# 5c1437170b9149c5bc4174edc58ee875
+#: ../../../src/common/doc/functions/analyze_graph.rst:210
+msgid ""
+"Selecting the rows WHERE the geometry is near the geometry of row with "
+"``id`` =5 ."
+msgstr ""
+
+# 3d622065f50846578692f7a1b2a136d9
+#: ../../../src/common/doc/functions/analyze_graph.rst:222
+msgid ""
+"Selecting the rows WHERE the geometry is near the place='myhouse' of the "
+"table ``othertable``. (note the use of quote_literal)"
+msgstr ""
+
+# 2cffbd13f5f54de1abd9c025df6a762a
+#: ../../../src/common/doc/functions/analyze_graph.rst:239
 msgid "Examples"
 msgstr "Beispiele"
 
-# b175ffad4f2b4c4fa8a3cc94b6289017
-#: ../../../src/common/doc/functions/analyze_graph.rst:70
-msgid "The queries use the :ref:`sampledata` network."
+# eeedfddf23864b98a801913ef15f7cd9
+#: ../../../src/common/doc/functions/analyze_graph.rst:366
+msgid "The examples use the :ref:`sampledata` network."
 msgstr ""
 
-# 991cd66893a64410bfeb6cca82c25793
-#: ../../../src/common/doc/functions/analyze_graph.rst:74
+# d6f7c52a1a824867943d8adae7b2e245
+#: ../../../src/common/doc/functions/analyze_graph.rst:370
 msgid "See Also"
 msgstr "Siehe auch"
 
-# deb346bdd0f847eeac69e1eb38da3b36
-#: ../../../src/common/doc/functions/analyze_graph.rst:76
-msgid ":ref:`pgr_analyze_oneway`"
+# ba0f07ab7dca4083a5aef16d566cf506
+#: ../../../src/common/doc/functions/analyze_graph.rst:372
+msgid ":ref:`topology`  for an overview of a topology for routing algorithms."
 msgstr ""
 
-# 19395f8266894f6aab137ab24e648e0d
-#: ../../../src/common/doc/functions/analyze_graph.rst:77
-msgid ":ref:`analytics`"
+# 90d9202a2da94489b4b43a71caa66956
+#: ../../../src/common/doc/functions/analyze_graph.rst:373
+msgid ":ref:`pgr_analyze_oneway` to analyze directionality of the edges."
+msgstr ""
+
+# 73d10e9d35dd4a269249fbc09274000b
+#: ../../../src/common/doc/functions/analyze_graph.rst:374
+msgid ""
+":ref:`pgr_createVerticesTable <pgr_create_vert_table>` to reconstruct the "
+"vertices table based on the source and target information."
+msgstr ""
+
+# 2f459b0453c141239d9564e2467fbdd5
+#: ../../../src/common/doc/functions/analyze_graph.rst:375
+msgid ""
+":ref:`pgr_nodeNetwork <pgr_node_network>` to create nodes to a not noded "
+"edge table."
 msgstr ""

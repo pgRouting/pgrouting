@@ -1,0 +1,144 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Documentation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-22 06:20+0000\n"
+"Last-Translator: Daniel Kastl\n"
+"Language-Team: German (http://www.transifex.com/projects/p/pgrouting/language/de/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# 94641dca24af4c0dba2fbeed97300d22
+#: ../../../src/common/doc/utilities/point_to_id.rst:13
+msgid "pgr_pointToId"
+msgstr ""
+
+# 56e635560a6d4492ae86100badf0e086
+#: ../../../src/common/doc/utilities/point_to_id.rst:20
+msgid "Name"
+msgstr "Name"
+
+# 81cc9d306cd54f46b4d517216a806eb7
+#: ../../../src/common/doc/utilities/point_to_id.rst:22
+msgid ""
+"``pgr_pointToId`` — Inserts a point into a vertices table and returns the "
+"corresponig id."
+msgstr ""
+
+# f6b714528cf7426dbeb9245b9719427c
+#: ../../../src/common/doc/utilities/point_to_id.rst:26
+msgid ""
+"This function is intended for the developer's aid. Use "
+":ref:`pgr_createTopology <pgr_create_topology>` or "
+":ref:`pgr_createVerticesTable <pgr_create_vert_table>` instead."
+msgstr ""
+
+# ba51b8bd879447188b15521bc44768c2
+#: ../../../src/common/doc/utilities/point_to_id.rst:30
+msgid "Synopsis"
+msgstr "Übersicht"
+
+# 426a196654d64ba99aa86b9e3eb47996
+#: ../../../src/common/doc/utilities/point_to_id.rst:32
+msgid ""
+"This function returns the ``id`` of the row in the vertices table that "
+"corresponds to the ``point`` geometry"
+msgstr ""
+
+# ad82864ab2bc436bb940d9dbb4bb7e28
+#: ../../../src/common/doc/utilities/point_to_id.rst:40
+msgid "Description"
+msgstr "Beschreibung"
+
+# 6f0b7969c38c4b60a652b8c56e860cb5
+#: ../../../src/common/doc/utilities/point_to_id.rst:42
+msgid "``geometry`` \"POINT\" geometry to be inserted."
+msgstr ""
+
+# 972b42f5a56a456584ffe992d2c9f597
+#: ../../../src/common/doc/utilities/point_to_id.rst:43
+msgid ""
+"``float8`` Snapping tolerance of disconnected edges. (in projection unit)"
+msgstr ""
+
+# 8026350c7b7b4ab9bb8a4d01a5398e92
+#: ../../../src/common/doc/utilities/point_to_id.rst:44
+msgid "``text`` Vertices table name WITH schema included."
+msgstr ""
+
+# fdb31c3aac0442fd9a79fd2e3cec8567
+#: ../../../src/common/doc/utilities/point_to_id.rst:45
+msgid "``integer`` SRID of the geometry point."
+msgstr ""
+
+# 1cb7d86e4eb54c46b998f27b7d883269
+#: ../../../src/common/doc/utilities/point_to_id.rst:47
+msgid ""
+"This function returns the id of the row that corresponds to the ``point`` "
+"geometry"
+msgstr ""
+
+# 6444a2e3a1eb4ec1b9e456bd7d566ec3
+#: ../../../src/common/doc/utilities/point_to_id.rst:49
+msgid ""
+"When the ``point`` geometry already exists in the vertices table "
+"``vertname``, it returns the corresponing ``id``."
+msgstr ""
+
+# f348861666b446b8b94833b19fc43b3a
+#: ../../../src/common/doc/utilities/point_to_id.rst:50
+msgid ""
+"When the ``point`` geometry is not found in the vertices table ``vertname``,"
+" the funcion inserts the ``point`` and returns the corresponing ``id`` of "
+"the newly created vertex."
+msgstr ""
+
+# bbc93993a9494838bb777feb3c966b2b
+#: ../../../src/common/doc/utilities/point_to_id.rst:52
+msgid ""
+"The function do not perform any checking of the parameters. Any validation "
+"has to be done before calling this function."
+msgstr ""
+
+# feb893694fe44a30b39b6671d6603125
+#: ../../../src/common/doc/utilities/point_to_id.rst:55
+msgid "History"
+msgstr "Geschichte"
+
+# ac4bb20cbeeb49e8a95d92ca52981979
+#: ../../../src/common/doc/utilities/point_to_id.rst:56
+msgid "Renamed in version 2.0.0"
+msgstr "Umbenannt in Version 2.0.0"
+
+# f159557b0fd44238a8114795dbd499e6
+#: ../../../src/common/doc/utilities/point_to_id.rst:60
+msgid "See Also"
+msgstr "Siehe auch"
+
+# 44d7d6a102634aaab89b81a21117e3b4
+#: ../../../src/common/doc/utilities/point_to_id.rst:62
+msgid ":ref:`developer` for the tree layout of the project."
+msgstr ""
+
+# 34d3f5b67bd04eef9a27bb0f9058f7a0
+#: ../../../src/common/doc/utilities/point_to_id.rst:63
+msgid ""
+":ref:`pgr_createVerticesTable <pgr_create_vert_table>` to create a topology "
+"based on the geometry."
+msgstr ""
+
+# 6efeb93fdd6f461b95ba6fa218148c75
+#: ../../../src/common/doc/utilities/point_to_id.rst:64
+msgid ""
+":ref:`pgr_createTopology <pgr_create_topology>` to create a topology based "
+"on the geometry."
+msgstr ""

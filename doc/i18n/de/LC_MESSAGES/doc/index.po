@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (187a022 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-02 06:20+0000\n"
-"Last-Translator: Daniel Kastl\n"
+"POT-Creation-Date: 2013-09-23 21:48\n"
+"PO-Revision-Date: 2013-09-24 02:49+0000\n"
+"Last-Translator: cvvergara\n"
 "Language-Team: German (http://www.transifex.com/projects/p/pgrouting/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-# 8e0e9a4221ee4384940b01c6483da272
+# c86028e885c64c0987f44bbcc08fb02a
 #: ../../index.rst:13
 msgid "Table of Contents"
 msgstr "Inhaltsverzeichnis"
 
-# 52bacf1e9ef84942ac2b40b5cb7404e4
+# 32111013f9c94976b553857e93812724
 #: ../../index.rst:15
 msgid ""
 "pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL "
@@ -31,12 +31,12 @@ msgid ""
 "and other network analysis functionality."
 msgstr "pgRouting erweitert eine `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgresql.org>`_  Geo-Datenbank um Funktionen für “Kürzeste-Wege” Berechnung und andere netzorientierte Algorithmen."
 
-# 058e6723e673445c83a90cf0b9c0952b
+# cd5bc882f7f3412b8a937ba25e203de8
 #: ../../index.rst:17
 msgid "This is the manual for pgRouting |release|."
-msgstr ""
+msgstr "Dies ist das Handbuch für pgRouting |release|."
 
-# 74b7b1936fc740c3ac40349a4cb3302d
+# d928c97ad24c4daeae96bb02b87c5a6d
 #: ../../index.rst:23
 msgid ""
 "The pgRouting Manual is licensed under a `Creative Commons Attribution-Share"
@@ -47,74 +47,313 @@ msgid ""
 ":ref:`license` page."
 msgstr ""
 
-# 9dbb9ddf990544db95bf71c476282935
+# 9024be66e4ef47b9b53de9a42af4550d
 #: ../../index.rst:27
 msgid "General"
-msgstr ""
+msgstr "Allgemein"
 
-# f2faf60864344a59a08891e5c37eedff
-#: ../../index.rst:39
+# 268439cb0a4f4417b56ca21d51394850
+#: ../../index.rst:40
 msgid "Tutorial"
 msgstr "Anleitung"
 
-# 9ef12c6715134f038462ed596f0077f8
-#: ../../index.rst:52
+# bf01af3d0d3244f283f5b3fab105caad
+#: ../../index.rst:42
+msgid ":ref:`Tutorial <tutorial1>`"
+msgstr ""
+
+# 116777f411a248f9afe42b9b51679b78
+#: ../../index.rst:44
+msgid ":ref:`Getting started <tutorial>`"
+msgstr ""
+
+# 2066f7d15ec8444c833547cfb3b06a98
+#: ../../index.rst:45
+msgid ":ref:`topology` for an overview of a topology for routing algorithms."
+msgstr ""
+
+# 2753f71d0fc14b0bbabb14a5180b10d9
+#: ../../index.rst:46
+msgid ":ref:`analytics` for an overview of the analysis of a graph."
+msgstr ""
+
+# 042f858c16ca4c7ea9fb4baa62efdd44
+#: ../../index.rst:47
+msgid ":ref:`custom_query` that is used in the routing algorithms."
+msgstr ""
+
+# 13f4fade1d47458abf8ba3706110d874
+#: ../../index.rst:48
+msgid ":ref:`performance` to improve your performance."
+msgstr ""
+
+# c3ccc6e6651e47f9b9d271c60976b15c
+#: ../../index.rst:49
+msgid ":ref:`custom_wrapper` to colaborate with a wrapper."
+msgstr ""
+
+# 233aebcc461745c2b0811b7f4328ce3a
+#: ../../index.rst:50
+msgid ":ref:`recipes` to colaborate with a recipe."
+msgstr ""
+
+# 3ae724b7e3714db2942fb7c77124cfc4
+#: ../../index.rst:51
+msgid ":ref:`sampledata` that is used in the examples of this manual."
+msgstr ""
+
+# c92e843c52364963a35112272cb814fd
+#: ../../index.rst:61
 msgid ""
 "For a more complete introduction how to build a routing application read the"
 " `pgRouting Workshop <http://workshop.pgrouting.org>`_."
 msgstr ""
 
-# 62bfa0e9071046bf915dc11ebee13fe0
-#: ../../index.rst:56
-msgid "Reference"
-msgstr "Referenz"
+# 524c7dc0d5654f319fc62f2ae08b86f7
+#: ../../index.rst:65
+msgid "Data Types"
+msgstr "Datentypen"
 
-# 4f6dced05e7f4f2fac0504c7bcbac375
-#: ../../index.rst:58
-msgid "pgRouting provides several :ref:`common functions <common>`:"
+# e49a23cdc901419e8a3d5f17ed6c6ea0
+#: ../../index.rst:67
+msgid ":ref:`data_types`"
 msgstr ""
 
-# 9e76fdda85694ae09eb7a4daf3b04929
-#: ../../index.rst:72
-msgid "pgRouting introduces a few :ref:`custom data types <common_types>`:"
-msgstr "pgRouting verwendet ein paar  :ref:`custom data types <common_types>`:"
+# ef6b2fcc629f48c7b88d3ac78527893a
+#: ../../index.rst:69
+msgid ""
+":ref:`type_cost_result` -  A set of records to describe a path result with "
+"cost attribute."
+msgstr ""
 
-# 19c2ac5ab06d4eec8c8a29f3f8564885
+# 84a33ec406d2412c9e681656b4cb9b43
+#: ../../index.rst:70
+msgid ""
+":ref:`pgr_costResult3[]<type_cost_result3>` - A set of records to describe a"
+" path result with cost attribute."
+msgstr ""
+
+# 6a2ba698d366498caa046c97178f05d5
+#: ../../index.rst:71
+msgid ""
+":ref:`pgr_geomResult<type_geom_result>` - A set of records to describe a "
+"path result with geometry attribute."
+msgstr ""
+
+# 9c4629c11bc143a184a6564177b0e7bd
+#: ../../index.rst:80
+msgid "Functions reference"
+msgstr "Referenz aller Funktionen"
+
+# 1f3545abdf7c42cdb73e76f5f149a31b
+#: ../../index.rst:82
+msgid ":ref:`topology_functions`"
+msgstr ""
+
+# 058f97425ccb4cb5870163ebbe948a72
+#: ../../index.rst:84
+msgid ""
+":ref:`pgr_create_topology` -  to create a topology based on the geometry."
+msgstr ""
+
+# e839b8e9c3664685a6dc346cac1ea039
+#: ../../index.rst:85
+msgid ""
+":ref:`pgr_create_vert_table` - to reconstruct the vertices table based on "
+"the source and target information."
+msgstr ""
+
+# 5d9cd0c5ac3043b99ae4fb495036d05f
 #: ../../index.rst:86
-msgid "pgRouting functions in alphabetical order:"
-msgstr "pgRouting Funktionen in alphabetischer Reihenfolge:"
-
-# 6693f75074694be18cf9d365a30c487b
-#: ../../index.rst:102
-msgid "If pgRouting is compiled with \"Driving Distance\" enabled:"
+msgid ""
+":ref:`pgr_analyze_graph`  - to analyze the edges and vertices of the edge "
+"table."
 msgstr ""
 
-# 6c0fc85ea6f84d67b541943cb0134194
-#: ../../index.rst:111
-msgid "Some functions from previous releases may have been removed."
-msgstr "Einige Funktionen aus früheren Versionen wurden möglicherweise entfernt."
+# 714b5f8623914db981048d201845d040
+#: ../../index.rst:87
+msgid ":ref:`pgr_analyze_oneway` - to analyze directionality of the edges."
+msgstr ""
 
-# 461f9bed82d546699dc1657949b310b5
-#: ../../index.rst:122
+# 5f3a1ebfa74d4463912b1c695028121d
+#: ../../index.rst:88
+msgid ":ref:`pgr_node_network`  -to create nodes to a not noded edge table."
+msgstr ""
+
+# 655d025751764d39b841997c13775783
+#: ../../index.rst:90
+msgid ":ref:`routing_functions`"
+msgstr ""
+
+# 6a94d292d24b45f7aafda5a754a6ba30
+#: ../../index.rst:92
+msgid ""
+":ref:`pgr_apspJohnson <pgr_apsp_johnson>`- All Pairs Shortest Path, "
+"Johnson’s Algorithm"
+msgstr ""
+
+# fbda3d31d88e4df891d2095dfbb8ab52
+#: ../../index.rst:93
+msgid ""
+":ref:`pgr_apspWarshall<pgr_apsp_warshall>` - All Pairs Shortest Path, Floyd-"
+"Warshall Algorithm"
+msgstr ""
+
+# 10cf6d194dcf4af2be81f0f8034cd5cb
+#: ../../index.rst:94
+msgid ":ref:`pgr_astar<pgr_astar>` - Shortest Path A*"
+msgstr ""
+
+# 72aa55b5147341e6be8b3ac29edc5056
+#: ../../index.rst:95
+msgid ":ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path"
+msgstr ""
+
+# 659e5f56cae84ce598a95fe83608da28
+#: ../../index.rst:96
+msgid ""
+":ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path"
+msgstr ""
+
+# 2a0544bf5ac444cb9f814c98ddd9cac0
+#: ../../index.rst:97
+msgid ":ref:`pgr_dijkstra<pgr_dijkstra>` - Shortest Path Dijkstra"
+msgstr ""
+
+# 0d062718bba84332bc05094be53c7b0b
+#: ../../index.rst:98
+msgid ""
+":ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path "
+"Dijkstra"
+msgstr ""
+
+# 388e0ef15cac4c7a87ed5f5f7d164eab
+#: ../../index.rst:99
+msgid ":ref:`pgr_ksp<ksp>` - K-Shortest Path"
+msgstr ""
+
+# 488a2b3901c548b394c466b7580ea9a4
+#: ../../index.rst:100
+msgid ":ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person"
+msgstr ""
+
+# dc4452cb04fb47fb9d72b4a408ffabeb
+#: ../../index.rst:101
+msgid ":ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)"
+msgstr ""
+
+# e49a23cdc901419e8a3d5f17ed6c6ea0
+#: ../../index.rst:103
+msgid ":ref:`dd_index`"
+msgstr ""
+
+# 4f472ddb75b84b6abd644e500b7415f4
+#: ../../index.rst:105
+msgid ":ref:`pgr_driving_distance` - Driving Distance"
+msgstr ""
+
+# 607bcbfc39c649a4b54020f8d62ce9d0
+#: ../../index.rst:106
+msgid ":ref:`pgr_alphaShape` - Alpha shape computation"
+msgstr ""
+
+# f2e6773ccf394c739af44245aaaf5d02
+#: ../../index.rst:107
+msgid ":ref:`pgr_points_as_polygon` - Polygon around set of points"
+msgstr ""
+
+# ef6b2fcc629f48c7b88d3ac78527893a
+#: ../../index.rst:110
+msgid ""
+":ref:`pgr_get_column_name` - to get the name of the column as is stored in "
+"the postgres administration tables."
+msgstr ""
+
+# b080d86d06dd4b248b6191f5c98ed0b7
+#: ../../index.rst:111
+msgid ""
+":ref:`pgr_get_table_name` - to retrieve the name of the table as is stored "
+"in the postgres administration tables."
+msgstr ""
+
+# 187f8a7ace1944dda76ab8ae8460d727
+#: ../../index.rst:112
+msgid ":ref:`pgr_is_column_indexed` - to check if the column is indexed."
+msgstr ""
+
+# 767ec7460a314ae0ae3ad47836c94182
+#: ../../index.rst:113
+msgid ""
+":ref:`pgr_is_column_in_table` - to check only for the existance of the "
+"column."
+msgstr ""
+
+# 6d632e8288614fc59c04dbdfa5fceb36
+#: ../../index.rst:114
+msgid ""
+":ref:`pgr_point_to_id` -to insert/get the id of the inserted point in a "
+"vertices table."
+msgstr ""
+
+# fd1def8169f543b9afc595abde9021ef
+#: ../../index.rst:115
+msgid ""
+":ref:`pgr_quote_ident` - to quotes the input text to be used as an "
+"identifier in an SQL statement string."
+msgstr ""
+
+# 79be0c2066f3417fb063d0f11b8858bb
+#: ../../index.rst:116
+msgid ":ref:`pgr_version` - to get pgRouting's version information."
+msgstr ""
+
+# e92514488cf348499952b55020516c0f
+#: ../../index.rst:117
+msgid ":ref:`pgr_versionless` - to compare two version numbers."
+msgstr ""
+
+# 52049dec1aa94a84b44977cf3645aeee
+#: ../../index.rst:118
+msgid ""
+":ref:`pgr_start_point` - to get the start point of a (multi)linestring."
+msgstr ""
+
+# b58261fb708141cfbd15342b18e83df7
+#: ../../index.rst:119
+msgid ":ref:`pgr_end_point` - to get the end point of a (multi)linestring."
+msgstr ""
+
+# ccf6b70d55024c8cb87cd02c497cd394
+#: ../../index.rst:138
 msgid "Developer"
 msgstr "Entwickler"
 
-# b6a11c0a4aa147719725ef6df08f7886
-#: ../../index.rst:133
-msgid "Release notes"
-msgstr "Release Notes"
+# bc20d365d4514a6dbf644153d3323f8d
+#: ../../index.rst:145
+msgid ":ref:`change_log`"
+msgstr ""
 
-# 3a6e7c93c19c414788fec96a55ee17e5
-#: ../../index.rst:142
+# a6c26cabff9f4df5bbaa3de0ed924b11
+#: ../../index.rst:147
+msgid ":ref:`changelog_2_0`"
+msgstr ""
+
+# 9d2d97e5ab6a4af08a3f5903f9a87114
+#: ../../index.rst:148
+msgid ":ref:`changelog_1_x`"
+msgstr ""
+
+# d1533298308344f6bfa8e1644e3aace0
+#: ../../index.rst:157
 msgid "Indices and tables"
 msgstr "Tabellen und Indizes"
 
-# 6089ba03b1bc416eb6759a8a60f7c573
-#: ../../index.rst:143
+# e49a23cdc901419e8a3d5f17ed6c6ea0
+#: ../../index.rst:158
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-# cd2f2590e93f4944bde6666a7ab16661
-#: ../../index.rst:144
+# 1572d01be82949ec8e487a5dc596b6a4
+#: ../../index.rst:159
 msgid ":ref:`search`"
 msgstr ":ref:`search`"

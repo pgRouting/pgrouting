@@ -1,0 +1,81 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (187a022 develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+# Daniel Kastl, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Documentation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-23 15:04\n"
+"PO-Revision-Date: 2013-09-23 20:17+0000\n"
+"Last-Translator: cvvergara\n"
+"Language-Team: German (http://www.transifex.com/projects/p/pgrouting/language/de/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# a7c0f1373b4a433684d0580309cec634
+#: ../../../src/index.rst:13
+msgid "Routing Functions"
+msgstr "Routing-Funktionen"
+
+# 4e64e043a06f42cabd4c08c71b866662
+#: ../../../src/index.rst:15
+msgid ""
+":ref:`pgr_apspJohnson <pgr_apsp_johnson>`- All Pairs Shortest Path, "
+"Johnson’s Algorithm"
+msgstr ""
+
+# 19f78548228b4618bcec3c9f7603b2d0
+#: ../../../src/index.rst:16
+msgid ""
+":ref:`pgr_apspWarshall<pgr_apsp_warshall>` - All Pairs Shortest Path, Floyd-"
+"Warshall Algorithm"
+msgstr ""
+
+# cf861ca040624d81961f9ca0520b92ad
+#: ../../../src/index.rst:17
+msgid ":ref:`pgr_astar<pgr_astar>` - Shortest Path A*"
+msgstr ""
+
+# c5b280cd3cef4722abbfa6362d721aed
+#: ../../../src/index.rst:18
+msgid ":ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path"
+msgstr ""
+
+# 0e20115c70e4487d9eb50b8ca6dd4c2b
+#: ../../../src/index.rst:19
+msgid ""
+":ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path"
+msgstr ""
+
+# cdb0bd03676b4bfca36fd4dc10b0473a
+#: ../../../src/index.rst:20
+msgid ":ref:`pgr_dijkstra<pgr_dijkstra>` - Shortest Path Dijkstra"
+msgstr ""
+
+# 7f1f5596a0d54dbd9672956b7463e7b4
+#: ../../../src/index.rst:21
+msgid ""
+":ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path "
+"Dijkstra"
+msgstr ""
+
+# 4ff10fab541f4f7686ef8163d75aa200
+#: ../../../src/index.rst:22
+msgid ":ref:`pgr_ksp<ksp>` - K-Shortest Path"
+msgstr ""
+
+# 6cec1b719ac34893b665a4b16b2f7f58
+#: ../../../src/index.rst:23
+msgid ":ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person"
+msgstr ""
+
+# 525e92b52a974d73b4bac048a34bd9c9
+#: ../../../src/index.rst:24
+msgid ":ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)"
+msgstr ""

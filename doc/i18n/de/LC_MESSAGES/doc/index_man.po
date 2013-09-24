@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-02 05:40+0000\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-22 06:08+0000\n"
 "Last-Translator: Daniel Kastl\n"
 "Language-Team: German (http://www.transifex.com/projects/p/pgrouting/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-# 1914a1b474a149c8bbaf65aeab14378a
+# 3f6e76c37d304447af292931aa52e56f
 #: ../../index_man.rst:13
 msgid "pgRouting Reference"
 msgstr "pgRouting Referenz"
 
-# 8093a8913a4f4de1a13bd5ed9a619b72
+# 8347fe2ff4be4f9fbcaafbad7adac911
 #: ../../index_man.rst:15
 msgid ""
 "pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL "
@@ -31,27 +31,27 @@ msgid ""
 "and other network analysis functionality."
 msgstr "pgRouting erweitert eine `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgresql.org>`_  Geo-Datenbank um Funktionen für “Kürzeste-Wege” Berechnung und andere netzorientierte Algorithmen."
 
-# 35dff83aa750409290fa37e47d0cf9e2
+# 3f626ce82e7e467c8d0b401e6a88d9ca
 #: ../../index_man.rst:22
 msgid "pgRouting provides several :ref:`common functions <common>`:"
-msgstr ""
+msgstr "pgRouting stellt verschiedene :ref:`common functions <common>` zur Verfügung:"
 
-# 2f13f00ffd924bf1a61060f32ef5d04f
+# 387e53a164e94fa1a2c34d515a8958d2
 #: ../../index_man.rst:36
-msgid "pgRouting defines a few :ref:`custom data types <common_types>`:"
-msgstr ""
+msgid "pgRouting defines a few :ref:`custom data types <data_types>`:"
+msgstr "PgRouting definiert ein paar :ref:`custom data types <data_types>`:"
 
-# d906d773bf39489380f6f3f4f1eba3ce
+# af0d92429b274dda891066d0b07d530f
 #: ../../index_man.rst:50
 msgid "pgRouting functions in alphabetical order:"
 msgstr "pgRouting Funktionen in alphabetischer Reihenfolge:"
 
-# cc9325b2512b410daae91fb42c066dd8
+# 9f2f876866c6467ba1b45223a42790c6
 #: ../../index_man.rst:66
 msgid "If pgRouting is compiled with \"Driving Distance\" enabled:"
-msgstr ""
+msgstr "Wenn pgRouting mit \"Driving Distance\" aktiviert kompiliert wird:"
 
-# 8fbb1152017e48edbacdbbae19413776
+# 1e0ce2246f904afbaf6c882025206eaa
 #: ../../index_man.rst:75
 msgid "Some functions from previous releases may have been removed."
 msgstr "Einige Funktionen aus früheren Versionen wurden möglicherweise entfernt."
