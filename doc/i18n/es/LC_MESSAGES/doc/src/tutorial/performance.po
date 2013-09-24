@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-10 15:09+0000\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-21 19:20+0000\n"
 "Last-Translator: cvvergara\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/pgrouting/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,42 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-# 1cd2afc4adbb468398fef1d40d5c4336
+# 02750fc506e541eaa5e3a34280aabce6
 #: ../../src/tutorial/performance.rst:13
 msgid "Performance Tips"
 msgstr "Consejos de Rendimiento"
+
+# c6cdc3cc67d54b349406611e4f2fba51
+#: ../../src/tutorial/performance.rst:16
+msgid ""
+"When \"you know\" that you are going to remove a set of edges from the edges"
+" table, and without those edges you are going to use a routing function you "
+"can do the following:"
+msgstr "Cuando \"sabe\" que va a eliminar un conjunto de bordes de la tabla de  bordes, y sin esos bordes va a utilizar una función de enrrutamiento puede hacer el siguiente:"
+
+# 09daa462ecb3460fb93b4a3a05fccb4f
+#: ../../src/tutorial/performance.rst:18
+msgid "Analize the new topology based on the actual topology:"
+msgstr "Analizar la topología nueva basada en la topología actual:"
+
+# 6481ccc4d94a4513893f4b1ec5fd615f
+#: ../../src/tutorial/performance.rst:24
+msgid "Or create a new topology if the change is permanent:"
+msgstr "O crear una nueva topología si el cambio es permanente:"
+
+# f83a8c75a53848f4b2b2ce62be14b3b1
+#: ../../src/tutorial/performance.rst:31
+msgid "Use an SQL that \"removes\" the edges in the routing function"
+msgstr "Utilice un SQL que \"elimina\" los bordes en la función de enrrutamiento"
+
+# d598fe2adbc346ce8aa4ea167d2cc77d
+#: ../../src/tutorial/performance.rst:37
+msgid ""
+"When \"you know\" that the route will not go out of a particular area, to "
+"speed up the process you can use a more complex SQL query like"
+msgstr "Cuando \"sabe\" que la ruta no saldrá de un área en particular, para acelerar el proceso puede utilizar una consulta SQL más compleja como"
+
+# c7e739bf9e1e42cfaedf49458bedb00c
+#: ../../src/tutorial/performance.rst:46
+msgid "Note that the  same condition ``id < 17`` is used in all cases."
+msgstr "Tenga en cuenta que la misma condición ``id < 17`` se utiliza en todos los casos."

@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-10 21:50+0000\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-21 18:20+0000\n"
 "Last-Translator: cvvergara\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/pgrouting/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -18,25 +18,42 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-# 57710d17ae7543e2b771629aff75600e
+# 8292d60ebfc34fb492ea6193998bab3e
 #: ../../src/developer/sampledata.rst:13
 msgid "Sample Data"
 msgstr "Datos Muestra"
 
-# 7f421eecf5044efd98b200b36124a83c
+# 4b0d58dd2dff4d9c97134f99fe6b536f
 #: ../../src/developer/sampledata.rst:15
 msgid ""
 "The documentation provides very simple example queries based on a small "
 "sample network. To be able to execute the sample queries, run the following "
-"SQL commands to create a table with a small network dataset."
-msgstr "La documentación proporciona ejemplos de consultas muy simples basados ​​en un ejemplo pequeño de red. Para poder ejecutar las consultas de los ejemplos, debe ejecutar los siguientes comandos SQL para crear la tabla con el pequeño conjunto de datos de la red."
+"SQL commands to create a table with a small network data set."
+msgstr "La documentación proporciona consultas de ejemplo muy simples basadas en una red muestra pequeña. Para ser capaz de ejecutar las consultas de la muestra, ejecute los siguientes comandos SQL para crear una tabla con el conjunto de datos de la red."
 
-# 22d8afba7fd34fd6b7bf201ba4e1ba0c
-#: ../../src/developer/sampledata.rst:21
+# e01baf347c854525b5c3bdc1af8d1523
+#: ../../src/developer/sampledata.rst:20
 msgid "Create table"
 msgstr "Crear tabla"
 
-# 39ea0437205c4eaca6eb612e61a74795
-#: ../../src/developer/sampledata.rst:50
+# f6ec8db09c164800a1e2d817a06e2a20
+#: ../../src/developer/sampledata.rst:40
 msgid "Insert network data"
 msgstr "Insertar los datos de la red"
+
+# 41d209ca693c4739986152fcdfcb3d25
+#: ../../src/developer/sampledata.rst:70
+msgid ""
+"Before you test a routing function use this query to fill the source and "
+"target columns."
+msgstr "Antes de probar la función de  enrrutamiento utilice esta consulta para llenar las columnas de origen ``source`` y de destino ``target``."
+
+# 449efcf19ef14ade9797f5818e87ab24
+#: ../../src/developer/sampledata.rst:77
+msgid "This table is used in some of our examples"
+msgstr "Esta tabla se utiliza en algunos de nuestros ejemplos"
+
+# eb2ac2aa18da494185f02f4a2fe0427d
+#: ../../src/developer/sampledata.rst:94
+msgid "The network created in *edge_table*"
+msgstr "La red creada en *edge_table*"

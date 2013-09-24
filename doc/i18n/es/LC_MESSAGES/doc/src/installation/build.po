@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-12 02:00+0000\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-21 19:10+0000\n"
 "Last-Translator: cvvergara\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/pgrouting/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -18,75 +18,136 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-# c5cf6a87972b42e690264e99c7e7f795
+# 36951e7f140d4d5b980b0b6a97a04faf
 #: ../../src/installation/build.rst:13
 msgid "Build Guide"
 msgstr "Guía de Compilación"
 
-# 5527da7dad584795b7924d50c9a79bc5
+# 8c64736c7cb4454d8d602456cae13eb7
 #: ../../src/installation/build.rst:15
 msgid ""
 "To be able to compile pgRouting make sure that the following dependencies "
 "are met:"
 msgstr "Para poder compilar pgRouting asegúrese de que se cumplan las siguientes dependencias:"
 
-# c618619f835444dd967f78370b841d92
+# 803fb42d0ed746e7b1434fc0702fecc4
 #: ../../src/installation/build.rst:17
 msgid "C and C++ compilers"
 msgstr "Compiladores de C y C++"
 
-# c6f85509591d47b1bdd395919b761319
+# c5384bc38f6745bd858daa8f2778464c
 #: ../../src/installation/build.rst:18
 msgid "Postgresql version >= 8.4 (>= 9.1 recommended)"
 msgstr "Postgresql versiones >= 8.4 (>= 9.1 recomendado)"
 
-# 61951def91f1402395e57355188cec62
+# 7822317678024503afbe9da83351626f
 #: ../../src/installation/build.rst:19
 msgid "PostGIS version >= 1.5 (>= 2.0 recommended)"
 msgstr " PostGIS Versión> = 1.5 (> = 2.0 recomendado)"
 
-# 6a0e008243f44ec2bb618be4f76a271c
+# 2092361736a94597ae950089f6baeb7c
 #: ../../src/installation/build.rst:20
 msgid "The Boost Graph Library (BGL). Version >= [TBD]"
 msgstr "La biblioteca de gráficos de Boost (BGL).  Versión > = [por determinarse]"
 
-# 2179e1be36474631a70ac3b85e801064
+# ad7f5e5325504267abb8922823e31b6c
 #: ../../src/installation/build.rst:21
 msgid "CMake >= 2.8.8"
 msgstr "CMake >= 2.8.8"
 
-# a2d266c73ac3427a99d9bf46c26d448c
+# 9423854129e8411ca11bc2e79ed0a44e
 #: ../../src/installation/build.rst:22
 msgid "(optional, for Driving Distance) CGAL >= [TBD]"
 msgstr "(opcional, para la distancia de manejo) CGAL > = [por determinarse]"
 
-# ae32d61c4d0e4d94ab13d2c5f5a63605
+# fbff857abfa44607b05113423945439a
 #: ../../src/installation/build.rst:23
 msgid "(optional, for Documentation) Sphinx >= 1.1"
 msgstr "(opcional, para la documentación) Sphinx > = 1.1"
 
-# e4af919f484c44b5abe44e0b1687d39d
-#: ../../src/installation/build.rst:27
+# 48f6a3951914403f9e1b5ac7d64ada3f
+#: ../../src/installation/build.rst:24
+msgid "(optional, for Documentation as PDF) Latex >= [TBD]"
+msgstr "(opcional, para la documentación en formato PDF) Látex > = [TBD]"
+
+# c6b958f8611849fe90a824cc62db1a74
+#: ../../src/installation/build.rst:26
+msgid ""
+"The cmake system has variables the can be configured via the command line "
+"options by setting them with -D<varable>=<value>. You can get a listing of "
+"these via:"
+msgstr "El sistema cmake tiene variables la pueden configurarse mediante las opciones de línea de comandos con -D <varable>=<value>. Usted puede obtener un listado de estos mediante:"
+
+# 62a69adeee3141d5a7de8e0510818440
+#: ../../src/installation/build.rst:34
+msgid "Currently these are:"
+msgstr "Actualmente son:"
+
+# 35027a6663fc4210b027e5210150e681
+#: ../../src/installation/build.rst:36
+msgid ""
+"Boost_DIR:PATH=Boost_DIR-NOTFOUND CMAKE_BUILD_TYPE:STRING= "
+"CMAKE_INSTALL_PREFIX:PATH=/usr/local "
+"POSTGRESQL_EXECUTABLE:FILEPATH=/usr/lib/postgresql/9.2/bin/postgres "
+"POSTGRESQL_PG_CONFIG:FILEPATH=/usr/bin/pg_config WITH_DD:BOOL=ON "
+"WITH_DOC:BOOL=OFF BUILD_HTML:BOOL=ON BUILD_LATEX:BOOL=OFF BUILD_MAN:BOOL=ON"
+msgstr "Boost_DIR:Path = CMAKE_BUILD_TYPE:STRING Boost_DIR-NOTFOUND = CMAKE_INSTALL_PREFIX:PATH = / usr/local POSTGRESQL_EXECUTABLE:FILEPATH=/usr/lib/postgresql/9.2/bin/postgres POSTGRESQL_PG_CONFIG:FILEPATH = / usr/bin/pg_config WITH_DD:BOOL = ON WITH_DOC:BOOL = OFF BUILD_HTML:BOOL = ON BUILD_LATEX:BOOL = OFF BUILD_MAN:BOOL = ON"
+
+# 2a6ecc049d1a49e481516a497cb42cfd
+#: ../../src/installation/build.rst:47
+msgid ""
+"These also show the current or default values based on our development "
+"system. So your values my be different. In general the ones that are of most"
+" interest are:"
+msgstr "Estos también muestran los valores por defecto basados en nuestro sistema de desarrollo. Así que algunos de sus valores pueden ser diferentes en su sistema. En general los que son de mayor interés son:"
+
+# b07b4fda86d7472b823a2e8982cf6b05
+#: ../../src/installation/build.rst:49
+msgid ""
+"WITH_DD:BOOL=ON       -- Turn on/off building driving distance code. "
+"WITH_DOC:BOOL=OFF     -- Turn on/off building the documentation "
+"BUILD_HTML:BOOL=ON    -- If WITH_DOC=ON, turn on/off building HTML "
+"BUILD_LATEX:BOOL=OFF  -- If WITH_DOC=ON, turn on/off building PDF "
+"BUILD_MAN:BOOL=ON     -- If WITH_DOC=ON, turn on/off building MAN pages"
+msgstr "WITH_DD:bool = ON -- encender/apagar Distancia de Manejo.\nWITH_DOC:bool = OFF -- encender/apagar la documentación BUILD_HTML:BOOL  = ON -- con WITH_DOC = ON, encender/apagar HTML BUILD_LATEX:BOOL = OFF -- con WITH_DOC = ON, encender/apagar PDF BUILD_MAN:BOOL = ON -- si WITH_DOC = ON, encender/apagar MAN"
+
+# 1b3877776a474e2bbae2cdf632ab7898
+#: ../../src/installation/build.rst:55
+msgid ""
+"To change any of these add ``-D<variable>=<value>`` to the cmake lines "
+"below. For example to turn on documentation, your cmake command might look "
+"like:"
+msgstr "Para cambiar cualquiera de estos añadir ``-D<variable>=<value>`` a las líneas de cmake. Por ejemplo activar la documentación, el comando cmake:"
+
+# ce5663a99fe540e59ba79b8415f2e8cf
+#: ../../src/installation/build.rst:62
+msgid ""
+"If you turn on the documentation, you also need to add the ``doc`` target to"
+" the make command."
+msgstr "Si enciende la documentación, también tienes que añadir el objetivo ``doc`` al comando \"make\""
+
+# 3447ac18753a48cd8b36008a1c4c10c7
+#: ../../src/installation/build.rst:72
 msgid "For MinGW on Windows"
 msgstr "Para MinGW en Windows"
 
-# b52927567d764a66bf438f60b059cec7
-#: ../../src/installation/build.rst:39
+# 9e2e9bb5dfd54856a24b3e0f455b0c82
+#: ../../src/installation/build.rst:84
 msgid "For Linux"
 msgstr "Para Linux"
 
-# 0cca23f827f646d08e5a07057f388eb0
-#: ../../src/installation/build.rst:51
+# 4939346c6ad34ddc92927ceeb1b5a543
+#: ../../src/installation/build.rst:96
 msgid "With Documentation"
 msgstr "Con la documentación"
 
-# 2addc81e2db341c797d8531756937c4e
-#: ../../src/installation/build.rst:53
+# a86f43c9a5b84d089caa0a06ac07f64c
+#: ../../src/installation/build.rst:98
 msgid ""
 "Build with documentation (requires `Sphinx <http://sphinx-doc.org/>`_):"
 msgstr "Construir con documentación (requiere `Sphinx <http://sphinx-doc.org/>`_):"
 
-# 27e2e61f20fe4b048aa384365b49ced1
-#: ../../src/installation/build.rst:60
+# c9c92cc08d7440f98fe61e333ffc6fe6
+#: ../../src/installation/build.rst:106
 msgid "Rebuild modified documentation only:"
 msgstr "Reconstrucción de la documentación modificada solamente:"
