@@ -1,0 +1,135 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Documentation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-22 05:50+0000\n"
+"Last-Translator: Daniel Kastl\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# ad4f702fd7ab40f587534a31a99d703a
+#: ../../../src/common/doc/utilities/quote_ident.rst:13
+msgid "pgr_quote_ident"
+msgstr ""
+
+# a05a481e84424fde848925bc9df67822
+#: ../../../src/common/doc/utilities/quote_ident.rst:20
+msgid "Name"
+msgstr "名前"
+
+# 2c0d5a39de7d48a894991413895eeb1d
+#: ../../../src/common/doc/utilities/quote_ident.rst:22
+msgid ""
+"``pgr_quote_ident`` — Quotes the input text to be used as an identifier in "
+"an SQL statement string."
+msgstr ""
+
+# 81be5b43d83b4f259a8627fdbd918321
+#: ../../../src/common/doc/utilities/quote_ident.rst:24
+msgid "This function is intended for the developer's aid."
+msgstr ""
+
+# 9a208d9638b343d49e208a250552bf58
+#: ../../../src/common/doc/utilities/quote_ident.rst:28
+msgid "Synopsis"
+msgstr "概要"
+
+# 20357172c5b74450a1dd908f249e1c22
+#: ../../../src/common/doc/utilities/quote_ident.rst:30
+msgid ""
+"Returns the given identifier ``idname`` suitably quoted to be used as an "
+"identifier in an SQL statement string."
+msgstr ""
+
+# ec0d7e517b52424e83e0a39e700f6ded
+#: ../../../src/common/doc/utilities/quote_ident.rst:38
+msgid "Description"
+msgstr "説明"
+
+# 0333bd56b4d146478a759f9bec187900
+#: ../../../src/common/doc/utilities/quote_ident.rst:41
+msgid "Parameters"
+msgstr ""
+
+# 24fafacf2e084c8ebd35cc820529ddf1
+#: ../../../src/common/doc/utilities/quote_ident.rst:42
+msgid ""
+"``text`` Name of an SQL identifier. Can include ``.`` dot notation for "
+"schemas.table identifiers"
+msgstr ""
+
+# 43a32f6d513f42dda64a31f538a7cb0b
+#: ../../../src/common/doc/utilities/quote_ident.rst:44
+msgid ""
+"Returns the given string suitably quoted to be used as an identifier in an "
+"SQL statement string."
+msgstr ""
+
+# d4e0873a14da42f5b4ca3f89505e8335
+#: ../../../src/common/doc/utilities/quote_ident.rst:46
+msgid ""
+"When the identifier ``idname`` contains on or more ``.`` separators, each "
+"component is suitably quoted to be used in an SQL string."
+msgstr ""
+
+# 1842d74622194549bf87e0e37e8220c8
+#: ../../../src/common/doc/utilities/quote_ident.rst:50
+msgid "History"
+msgstr "履歴"
+
+# 3e97c734ccfc46efaedb156bfd028772
+#: ../../../src/common/doc/utilities/quote_ident.rst:51
+msgid "New in version 2.0.0"
+msgstr ""
+
+# 4c8ad273e78c414ca99c84a290acff83
+#: ../../../src/common/doc/utilities/quote_ident.rst:55
+msgid "Examples"
+msgstr "例"
+
+# c27e93edd7144c1986103e042e5b991c
+#: ../../../src/common/doc/utilities/quote_ident.rst:57
+msgid "Everything is lower case so nothing needs to be quoted."
+msgstr ""
+
+# 275c25d761794895a7a9474bd1622943
+#: ../../../src/common/doc/utilities/quote_ident.rst:76
+msgid "The column is upper case so its double quoted."
+msgstr ""
+
+# 7fc7d47e83624683a58343f8b5935b6f
+#: ../../../src/common/doc/utilities/quote_ident.rst:95
+msgid "The schema name has a capital letter so its double quoted."
+msgstr ""
+
+# 68aa84ac853546419c541739eee038e6
+#: ../../../src/common/doc/utilities/quote_ident.rst:106
+msgid "Ignores extra ``.`` separators."
+msgstr ""
+
+# 13976da7e76249c1bbbc10fb34130c59
+#: ../../../src/common/doc/utilities/quote_ident.rst:118
+msgid "See Also"
+msgstr "参照"
+
+# 9ca53a95db55462780e7fb68bba70aca
+#: ../../../src/common/doc/utilities/quote_ident.rst:120
+msgid ":ref:`developer` for the tree layout of the project."
+msgstr ""
+
+# fb4b95d8a6d8403497a36238ed980b58
+#: ../../../src/common/doc/utilities/quote_ident.rst:121
+msgid ""
+":ref:`pgr_get_table_name` to get the name of the table as is stored in the "
+"postgres administration tables."
+msgstr ""

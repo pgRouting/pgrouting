@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-07 12:30+0000\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-20 14:15+0000\n"
 "Last-Translator: Daniel Kastl\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
 "MIME-Version: 1.0\n"
@@ -18,27 +18,27 @@ msgstr ""
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-# 9b66035e44bf4bc985f5fb7bb89c25f3
+# dc72571c7ce5498b92c659e3e482c885
 #: ../../../src/ksp/doc/index.rst:13
 msgid "pgr_ksp - K-Shortest Path"
 msgstr ""
 
-# 2a05f75425294af784e67fad96a2b9d1
+# 57b24beea69846f58a8cb9b1a7a892b5
 #: ../../../src/ksp/doc/index.rst:20
 msgid "Name"
 msgstr "名前"
 
-# 548220de242345d1b173568ac9bd0234
+# b3d0fc92b23443c8b718233c1e16f052
 #: ../../../src/ksp/doc/index.rst:22
 msgid "``pgr_ksp`` — Returns the \"K\" shortest paths."
 msgstr ""
 
-# 5f8916ea41a34ea5bd0e4c4fcbc32500
+# 0e60ee2dfa944557a1e9c76106489a7f
 #: ../../../src/ksp/doc/index.rst:26
 msgid "Synopsis"
 msgstr "概要"
 
-# fd470017b0b94cb1be5924fb962367d6
+# bcf915dc485c4e3b90c9a8ea251b55d1
 #: ../../../src/ksp/doc/index.rst:28
 msgid ""
 "The K shortest path routing algorithm based on Yen's algorithm. \"K\" is the"
@@ -46,40 +46,40 @@ msgid ""
 "<type_cost_result3>` (seq, id1, id2, id3, cost) rows, that make up a path."
 msgstr ""
 
-# ab40d8403eec41c0855611d2ebaf603b
+# 46b5ce0d54a64718819888b77b007080
 #: ../../../src/ksp/doc/index.rst:37
 msgid "Description"
 msgstr "説明"
 
-# eb720c91fb9a42c3ae64e38627c33c54
+# dddbbca8781f41eab4aac1d4e2ecdf32
 #: ../../../src/ksp/doc/index.rst:39
 msgid ""
 "a SQL query, which should return a set of rows with the following columns:"
 msgstr "SQLのクエリーです。以下に続くカラムからなる行セットを返します:"
 
-# d4c4882d6d294dcf9679c1af63fac3fa
+# 575d21e3bc994dc3a92a7c6cbb0ed6a2
 #: ../../../src/ksp/doc/index.rst:46
 msgid "``int4`` identifier of the edge"
 msgstr "エッジの識別子[``int4``]"
 
-# bcf872b1fa184e7e8e5c429c40c0177e
+# 589751b9c7d34dac9b4eeb12894fd648
 #: ../../../src/ksp/doc/index.rst:47
 msgid "``int4`` identifier of the source vertex"
 msgstr "``int4``型の始点ノードの識別子"
 
-# c64ce8fd62b24911b33a6aac8d3fb8b3
+# 6567c097438040d9b678e88df7521b35
 #: ../../../src/ksp/doc/index.rst:48
 msgid "``int4`` identifier of the target vertex"
 msgstr "``int4``型の終点ノードの識別子"
 
-# 86964ef2ed834e949fc31c9a50980607
+# a1e24bd423dd445889b72928d964a5ec
 #: ../../../src/ksp/doc/index.rst:49
 msgid ""
 "``float8`` value, of the edge traversal cost. A negative cost will prevent "
 "the edge from being inserted in the graph."
 msgstr "``float8``型のエッジにかかる重み。負の重みはエッジがグラフに挿入されることを防ぎます。"
 
-# df6ada8d18df44a5baacbf417871c402
+# ed76ed5e3a504c7aa3a35ea3fa5b4c16
 #: ../../../src/ksp/doc/index.rst:50
 msgid ""
 "(optional) the cost for the reverse traversal of the edge. This is only used"
@@ -87,22 +87,22 @@ msgid ""
 "negative costs)."
 msgstr ""
 
-# d068d5564a85462882c04a2832ec539f
+# 588bdec4303b49869b6d1eedd541c198
 #: ../../../src/ksp/doc/index.rst:52
 msgid "``int4`` id of the start point"
 msgstr "``int4``型の始点ノードのID"
 
-# fd704897a8be43f98cdde7a53364deb3
+# 96b44480fac34f6286b863e6c75d4d8a
 #: ../../../src/ksp/doc/index.rst:53
 msgid "``int4`` id of the end point"
 msgstr "``int4``型の始点ノードのID"
 
-# 1a52615102644a6db4206b79245b7a98
+# 0ffd51df58754f0b89f1b3ad6f75b632
 #: ../../../src/ksp/doc/index.rst:54
 msgid "``int4`` number of alternative routes"
 msgstr ""
 
-# d6fac579d48445aa9ff97d9e8acd327b
+# 0fc58370aa30454ea32a2c8b9f3b14a3
 #: ../../../src/ksp/doc/index.rst:55
 msgid ""
 "if ``true``, the ``reverse_cost`` column of the SQL generated set of rows "
@@ -110,83 +110,83 @@ msgid ""
 "direction."
 msgstr "``true``の場合、SQLで生成される行セットの``reverse_cost``カラムは、エッジの逆方向にかかる重みとして使用されます。"
 
-# 2cfb0819dfac478c97b60f36e72620ac
+# dc8dfcffbd604441a95743930181b042
 #: ../../../src/ksp/doc/index.rst:57
 msgid "Returns set of :ref:`type_cost_result`:"
 msgstr ":ref:`type_cost_result` のセットを返します:"
 
-# 07c3ba7e14504ae4ab3d54358be46fa7
+# 611d6bbb82ca4987ae39fd45bb107c2b
 #: ../../../src/ksp/doc/index.rst:59
-msgid "sequence for ordering the results"
+msgid "sequence for ording the results"
 msgstr ""
 
-# a1a68a97048648c3b7c90ef8a63d66a8
+# b79966a030e04ee3b5e992b5a6858947
 #: ../../../src/ksp/doc/index.rst:60
 msgid "route ID"
 msgstr ""
 
-# db279dc5f27f470fa2ffc425806d3fb1
+# a324539cdc2e4202b416aa19693d1c3f
 #: ../../../src/ksp/doc/index.rst:61
 msgid "node ID"
 msgstr "ノードID"
 
-# 66ccd3797d88490f86491475ea34b435
+# 4d87667a7b744eec999819b399fee50c
 #: ../../../src/ksp/doc/index.rst:62
 msgid "edge ID (``0`` for the last row)"
 msgstr ""
 
-# 13de5f26db104f74abf40abbc95972d6
+# baaba3dc621142bd8fc6b8ba32eb2b2e
 #: ../../../src/ksp/doc/index.rst:63
 msgid "cost to traverse from ``id2`` using ``id3``"
 msgstr ""
 
-# eff0805133e549adbd3f0be34155b119
+# b585e07096f74b0389f8b7dffc969faa
 #: ../../../src/ksp/doc/index.rst:65
 msgid ""
 "KSP code base taken from http://code.google.com/p/k-shortest-paths/source."
 msgstr ""
 
-# 617f9a2ee1304107835daaba8208a5ae
+# 2d033ec25b09426c82d7bc27450b0e13
 #: ../../../src/ksp/doc/index.rst:69
 msgid "History"
 msgstr "歴史"
 
-# d4ff206de8b84ea28b98a08828565c70
+# 2910d7995ec342b995c857c1e8ea0ac3
 #: ../../../src/ksp/doc/index.rst:70
 msgid "New in version 2.0.0"
 msgstr ""
 
-# b1432e4dbb084faf8e333fb57672baa4
+# 0fb494088fa241d6a4aa5482217c2851
 #: ../../../src/ksp/doc/index.rst:74
 msgid "Examples"
 msgstr "例"
 
-# e517e2de654249d2a99c32704f53c0d9
+# d3ea07b1c58a42ea9f68558e55eb90a0
 #: ../../../src/ksp/doc/index.rst:76
 msgid "Without ``reverse_cost``"
 msgstr "``reverse_cost``なしの場合"
 
-# b98734209091434987e7f9c2e7056546
-#: ../../../src/ksp/doc/index.rst:99
+# 7c55b739634c4401b46c4014669d2896
+#: ../../../src/ksp/doc/index.rst:104
 msgid "With ``reverse_cost``"
 msgstr "``reverse_cost``ありの場合"
 
-# 90cddae88b5744528f870ce795993f23
-#: ../../../src/ksp/doc/index.rst:122
+# 2412b0b4ec044973a1c2304488a73b1a
+#: ../../../src/ksp/doc/index.rst:131
 msgid "The queries use the :ref:`sampledata` network."
 msgstr "上記クエリは :ref:`sampledata` のネットワークを使用しています。"
 
-# 1eb25f88570e4f11a0ffa624ede532e4
-#: ../../../src/ksp/doc/index.rst:126
+# 14d58e1d3a8f4723bb11ed549594cb26
+#: ../../../src/ksp/doc/index.rst:135
 msgid "See Also"
 msgstr "参照"
 
-# b28036b2182942ae812b535cc5b7a14b
-#: ../../../src/ksp/doc/index.rst:128
+# 73cf1bb94518468996cdd3ff6bf897be
+#: ../../../src/ksp/doc/index.rst:137
 msgid ":ref:`type_cost_result3`"
 msgstr ":ref:`type_cost_result3`"
 
-# db9fc1cf7052471fb9003a34d25de5b3
-#: ../../../src/ksp/doc/index.rst:129
+# 3dde120556744d3f9ce7d6e9b9f0c1ee
+#: ../../../src/ksp/doc/index.rst:138
 msgid "http://en.wikipedia.org/wiki/K_shortest_path_routing"
 msgstr ""

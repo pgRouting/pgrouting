@@ -1,0 +1,95 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Documentation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-22 05:50+0000\n"
+"Last-Translator: Daniel Kastl\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 5209a60f43eb4ca889765b2f2855917f
+#: ../../../src/common/doc/utilities/versionless.rst:13
+msgid "pgr_versionless"
+msgstr ""
+
+# cf214511459c4e01a98c636ee93edf10
+#: ../../../src/common/doc/utilities/versionless.rst:20
+msgid "Name"
+msgstr "名前"
+
+# af9f449a91a94497a1a06310c12763cc
+#: ../../../src/common/doc/utilities/versionless.rst:22
+msgid "``pgr_versionless`` — Compare two version numbers."
+msgstr ""
+
+# cfa4ec4da8d143e9bb4f33521dc1f6b2
+#: ../../../src/common/doc/utilities/versionless.rst:24
+msgid "This function is intended for the developer’s aid."
+msgstr ""
+
+# 7a40ac52554840c48edaf4e3bc893f86
+#: ../../../src/common/doc/utilities/versionless.rst:27
+msgid "Synopsis"
+msgstr "概要"
+
+# 99a72026827e4e44b1b7e0b9defa52f8
+#: ../../../src/common/doc/utilities/versionless.rst:29
+msgid ""
+"Returns ``true`` if the first version number is smaller than the second "
+"version number. Otherwise returns ``false``."
+msgstr ""
+
+# b541ba956f94407fbbfa4f325152d137
+#: ../../../src/common/doc/utilities/versionless.rst:37
+msgid "Description"
+msgstr "説明"
+
+# f2b9c579402a4d529bdcf44885b7999e
+#: ../../../src/common/doc/utilities/versionless.rst:39
+msgid "``text`` first version number"
+msgstr ""
+
+# ff2f3530055d46b39b083a6e013b18f1
+#: ../../../src/common/doc/utilities/versionless.rst:40
+msgid "``text`` second version number"
+msgstr ""
+
+# aa0e1cf348454207aba6b1bd4d82ddcd
+#: ../../../src/common/doc/utilities/versionless.rst:44
+msgid "History"
+msgstr "履歴"
+
+# 84d6600a81814c3b87c5e309a80eef62
+#: ../../../src/common/doc/utilities/versionless.rst:45
+msgid "New in version 2.0.0"
+msgstr ""
+
+# 0dbed91f114f41a2a1ccbffbb4886a47
+#: ../../../src/common/doc/utilities/versionless.rst:49
+msgid "Examples"
+msgstr "例"
+
+# cd2ca34fb88c4024ac73c6c7076b3de2
+#: ../../../src/common/doc/utilities/versionless.rst:62
+msgid "See Also"
+msgstr "参照"
+
+# ac8a4a1b5fd0499e910d1f9c088d0d25
+#: ../../../src/common/doc/utilities/versionless.rst:64
+msgid ":ref:`developer` for the tree layout of the project."
+msgstr ""
+
+# f733092d16de4d7b9bdf31b6bdae27d3
+#: ../../../src/common/doc/utilities/versionless.rst:65
+msgid ":ref:`pgr_version` to get the current version of pgRouting."
+msgstr ""

@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-06 19:40+0000\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-20 14:14+0000\n"
 "Last-Translator: Daniel Kastl\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
 "MIME-Version: 1.0\n"
@@ -17,113 +17,125 @@ msgstr ""
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-# 751da4cc7a8a4b9184b65146f54ee2f7
+# cb2e05bbf556427191f8dd5d87c670db
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:13
-msgid "pgr_alphashape - Alpha shape computation"
+msgid "pgr_alphaShape"
 msgstr ""
 
-# a8e86fc8a1ce4526b7d7241cd7430f85
+# cd5cca6682b34a85b72fd0b7c90d739b
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:20
 msgid "Name"
 msgstr "名前"
 
-# a4a731e189ec4572ba4a8c96f83d0cbe
+# 9a0ca65720774711aefd2d017e4487e9
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:22
 msgid "``pgr_alphashape`` — Core function for alpha shape computation."
 msgstr ""
 
-# 0633bc08ce9c4e3c92b9f2894bc28163
+# 525edb2bc28a4e77804ac30781cc3dc5
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:26
 msgid ""
 "This function should not be used directly. Use :ref:`pgr_drivingDistance "
 "<pgr_driving_distance>` instead."
 msgstr ""
 
-# a75e137dc2704a44bddf581d3da9910e
+# 96d2ea88d3bf44a793219826f7fddda3
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:30
 msgid "Synopsis"
 msgstr "概要"
 
-# 5f592382013b4eb8a9cec9aaf7b9b27c
+# 4b5074bd7bc64d1c89dcc1e5b250c5f0
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:32
 msgid ""
 "Returns a table with (x, y) rows that describe the vertices of an alpha "
 "shape."
 msgstr ""
 
-# c99894bc58654855b080610abe760595
+# eed5f82ec9924367b7a2c7ce8ce7704a
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:40
 msgid "Description"
 msgstr "説明"
 
-# e0d065968f134d19a8f914152ad9d644
+# 3607e16f8fe24de6a2226bb43a73dadd
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:42
 msgid ""
 "``text`` a SQL query, which should return a set of rows with the following "
 "columns:"
 msgstr ""
 
-# 9c56888dca9042d7aabe4353d4acc641
+# afd24b1ef69d439691025ff955e63f25
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:48
 msgid "``int4`` identifier of the vertex"
 msgstr ""
 
-# 5d7a76e45e2c47af82995fe14cd37d3f
+# c4ec83f59d634b458e6e04dc6822cc62
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:49
 msgid "``float8`` x-coordinate"
 msgstr ""
 
-# 9087cda6c58b418bab28ed40865c6406
+# c78115c69ec645ceb3a8de6f3a97ebdc
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:50
 msgid "``float8`` y-coordinate"
 msgstr ""
 
-# efff811556d2404c972da0b4ed20aa4d
+# 63cffe47a71d462cae8c09a10473bdaf
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:53
 msgid "Returns a vertex record for each row :"
 msgstr ""
 
-# 2a3d73e301e54c72b01c94c05ccf2a22
+# 385ec313cc69493989a17eecd282d5b4
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:55
 msgid "x-coordinate"
 msgstr ""
 
-# 2854a08e1fb846ea826f37a75302ff70
+# 2eb9452ee2864540b535c7be538a73f0
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:56
 msgid "y-coordinate"
 msgstr ""
 
-# 32b2237ea6d34c84aa76ead8e6efcb0e
+# bf1e04aab9ed4558aeb274dbc93fc476
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:60
 msgid "History"
 msgstr "歴史"
 
-# 7efa65a200424382a51ba0a21d6d5b14
+# 6301d43186dc47ca9c0925f563c2b4ee
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:61
 msgid "Renamed in version 2.0.0"
 msgstr "バージョン 2.0.0 でリネームされました"
 
-# f900fff56e254ff9b907b43f0ef24066
+# 2dcc599a683743b09eb440895c823584
 #: ../../../src/driving_distance/doc/dd_alphashape.rst:65
 msgid "Examples"
 msgstr "例"
 
-# 18551f47190b4a86bd40850f1bb4e656
-#: ../../../src/driving_distance/doc/dd_alphashape.rst:81
+# 28059fce0d66461c88851c2efa8995b4
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:66
+msgid ""
+"In the alpha shape code we have no way to control the order of the points so"
+" the actual output you might get could be similar but different. The simple "
+"query is followed by a more complex one that constructs a polygon and "
+"computes the areas of it. This should be the same as the result on your "
+"system. We leave the details of the complex query to the reader as an "
+"exercise if they wish to decompose it into understandable pieces or to just "
+"copy and paste it into a SQL window to run."
+msgstr ""
+
+# cea925c912c14e2bae7b67a9493f67d0
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:119
 msgid "The queries use the :ref:`sampledata` network."
 msgstr "上記クエリは :ref:`sampledata` のネットワークを使用しています。"
 
-# 85d2d1ca472341c1906889091cb12ef6
-#: ../../../src/driving_distance/doc/dd_alphashape.rst:85
+# b737b880282d447b840b23e77501d03b
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:123
 msgid "See Also"
 msgstr "参照"
 
-# 6e8d7c671d064e298950bb3fe04c002e
-#: ../../../src/driving_distance/doc/dd_alphashape.rst:87
-msgid ":ref:`pgr_driving_distance`"
+# 79772e0e113745068a7c48d32ae903ee
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:125
+msgid ":ref:`pgr_driving_distance` - Driving Distance"
 msgstr ""
 
-# 0f30bf3bcf7c41758b10ba3ed1bea633
-#: ../../../src/driving_distance/doc/dd_alphashape.rst:88
-msgid ":ref:`pgr_points_as_polygon`"
-msgstr ":ref:`pgr_points_as_polygon`"
+# 98ad4c5291f04893a9e5a6f616ce2d11
+#: ../../../src/driving_distance/doc/dd_alphashape.rst:126
+msgid ":ref:`pgr_points_as_polygon` - Polygon around set of points"
+msgstr ""
