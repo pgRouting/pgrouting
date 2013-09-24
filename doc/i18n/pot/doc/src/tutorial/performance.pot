@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (b19690f doc-merge)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: pgRouting 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
+"POT-Creation-Date: 2013-09-24 15:37\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../src/tutorial/performance.rst:13
-# 1cd2afc4adbb468398fef1d40d5c4336
+# dcdbd525f2b248ecab7ac1feaffe77ef
 msgid "Performance Tips"
+msgstr ""
+
+#: ../../src/tutorial/performance.rst:16
+# 301a27864ab84e54bbb66c299f3a4b0d
+msgid "When \"you know\" that you are going to remove a set of edges from the edges table, and without those edges you are going to use a routing function you can do the following:"
+msgstr ""
+
+#: ../../src/tutorial/performance.rst:18
+# 09a0f58bd304468caf8497a339d2bfea
+msgid "Analize the new topology based on the actual topology:"
+msgstr ""
+
+#: ../../src/tutorial/performance.rst:24
+# fa006eadd05447759f7070fb8d7152b3
+msgid "Or create a new topology if the change is permanent:"
+msgstr ""
+
+#: ../../src/tutorial/performance.rst:31
+# c7ac177f8c31416a821a69f8e3ecdd93
+msgid "Use an SQL that \"removes\" the edges in the routing function"
+msgstr ""
+
+#: ../../src/tutorial/performance.rst:37
+# 36aa057dbf6a45cd83e18d532a439ec3
+msgid "When \"you know\" that the route will not go out of a particular area, to speed up the process you can use a more complex SQL query like"
+msgstr ""
+
+#: ../../src/tutorial/performance.rst:46
+# d1f505a12a444c9ea717d68a92f694d2
+msgid "Note that the  same condition ``id < 17`` is used in all cases."
 msgstr ""
 

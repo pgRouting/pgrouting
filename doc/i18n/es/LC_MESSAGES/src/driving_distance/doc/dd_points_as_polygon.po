@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-12 15:40+0000\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-23 15:30+0000\n"
 "Last-Translator: cvvergara\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/pgrouting/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -18,95 +18,106 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-# 90f54555f7e84b9f8f4d425ec5568e96
+# a2329478f830474e9819c418ae391538
 #: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:13
-msgid "pgr_pointsAsPolygon - Polygon around set of points"
-msgstr "pgr_pointsAsPolygon - Polígono alrededor de un conjunto de puntos"
+msgid "pgr_pointsAsPolygon"
+msgstr "pgr_pointsAsPolygon"
 
-# 703ffc7b584743aca600cd47b0dedbaf
+# df6c5bd4620d47ae9f8682195aca1e18
 #: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:20
 msgid "Name"
 msgstr "Nombre"
 
-# 711c2ac27dc648e79ca5bea64b32664e
+# 968dbf3147554bcc994e903e5917a0bd
 #: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:22
 msgid ""
 "``pgr_pointsAsPolygon`` — Draws an alpha shape around given set of points."
 msgstr "``pgr_pointsAsPolygon`` — Dibuja un figura Alfa  alrededor de un conjunto de puntos dado."
 
-# 68ee09952af841cca281ab7353e657df
+# 0b81c4a0e03d47938cd256882a6facac
 #: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:26
 msgid "Synopsis"
 msgstr "Sinopsis"
 
-# 98eadfebd62c4d3d85b079eb48b32bbd
+# 568b6a3cf23a4a7980b7796df73d334b
 #: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:28
 msgid "Returns the alpha shape as polygon geometry."
 msgstr "Devuelve la forma alfa con geometría de polígono."
 
-# 2335b43670a34c139ba933c9beb8460e
+# 240f6c0c9ac848a2b1815408c264a3d7
 #: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:36
 msgid "Description"
 msgstr "Descripción"
 
-# ea668ec07f444c75b65395e604e4d641
+# bfa10edae1114295852086c42f84d811
 #: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:38
 msgid ""
 "``text`` a SQL query, which should return a set of rows with the following "
 "columns:"
 msgstr "``text`` una consulta SQL la cual debe proporcionar un conjunto de registros con los siguientes campos:"
 
-# 2d48fa2358024c85852978ff7143be70
+# d3ca4ae81d3e4a709a2fda2d60f23946
 #: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:44
 msgid "``int4`` identifier of the vertex"
 msgstr "``int4`` Identificador del vértice"
 
-# 037456feed17466e97ac41fdbbf6651d
+# 10e342dfa5274ea89ea284bd657b2469
 #: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:45
 msgid "``float8`` x-coordinate"
 msgstr "``float8``  coordenada x "
 
-# a91d92c8755647ae8851b10443f4f1b3
+# d36090e578224b30b065a3c28f26d565
 #: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:46
 msgid "``float8`` y-coordinate"
 msgstr "``float8``  coordenada y "
 
-# 1c7cb125bf594f5fb02d55dee5b4b104
+# 1029622f3ac34a30abc0f3babfe7118f
 #: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:49
 msgid "Returns a polygon geometry."
 msgstr "Devuelve una geometría polígonal."
 
-# 0554b8b985524e1a8d6409562375b086
+# 49392543fb984b5f922e683b9ba560c5
 #: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:53
 msgid "History"
 msgstr "Historia"
 
-# 8fc736e0d4144492b8d01514609295e8
+# b00e0e03870244cca7aa9e1c81bad9c1
 #: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:54
 msgid "Renamed in version 2.0.0"
 msgstr "Renombrado en la versión 2.0.0"
 
-# 276302836cbe479d8644c41ea0bd39dc
+# f8001d60b6d54b67afc641f38b8e5b4a
 #: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:58
 msgid "Examples"
 msgstr "Ejemplos"
 
-# db40d29ab21f4bdc88e31a086e4254b3
-#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:69
+# 7e01fc6f880549e7b7bde01255cc2811
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:59
+msgid ""
+"In the following query there is not way to control which point in the "
+"polygon is the first in the list, so you may get similar but different "
+"results than the following which are also correct. Each of the "
+"pgr_pointsAsPolygon queries below is followed by one the compute the area of"
+" the polygon. This area should remain constant regardles of the order of the"
+" points making up the polygon."
+msgstr "En la siguiente consulta no hay manera de controlar cúal punto del polígono es el primero en la lista, así obtendrá resultados similares pero diferentes en orden,  pero que  también es correctos. Cada una de las consultas de pgr_pointsAsPolygon en los ejemplos es seguida por una consulta para calcular el área del polígono. Esta área debe permanecer constante independientemente del orden de los puntos que componen el polígono."
+
+# 1deae2c2bb624110980cf832e66993d9
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:93
 msgid "The queries use the :ref:`sampledata` network."
 msgstr "Las consulta usa la red de ejemplo  :ref:`sampledata`"
 
-# 0437ff811d9e48439c3c3db3821fe26e
-#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:73
+# 801871cf3dd94fd292387e49941223e3
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:97
 msgid "See Also"
 msgstr "Véase también"
 
-# 4f32c04b9e8548e9a53c543c20f7c007
-#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:75
-msgid ":ref:`pgr_driving_distance`"
-msgstr ":ref:`pgr_driving_distance`"
+# abc4c217086645fe88ff21568ab13c50
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:99
+msgid ":ref:`pgr_driving_distance` - Driving Distance"
+msgstr ":ref:`pgr_driving_distance`  - Distancia de Manejo"
 
-# 39d6ceec8379474aa98f89fbc9b53f4c
-#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:76
-msgid ":ref:`pgr_alphashape`"
-msgstr ":ref:`pgr_alphashape`"
+# 51bae94aaf75403a81353100c953d805
+#: ../../../src/driving_distance/doc/dd_points_as_polygon.rst:100
+msgid ":ref:`pgr_alphashape` - Alpha shape computation"
+msgstr ":ref:`pgr_alphashape` - cómputo de forma alfa"

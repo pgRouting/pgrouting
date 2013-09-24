@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Documentation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-22 05:50+0000\n"
+"Last-Translator: Daniel Kastl\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/pgrouting/language/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# a24de4d0526742168dd2c7673d357cfe
+#: ../../../src/common/doc/utilities/start_point.rst:13
+msgid "pgr_startPoint"
+msgstr ""
+
+# 2878d80121d3453794e0871f34873592
+#: ../../../src/common/doc/utilities/start_point.rst:20
+msgid "Name"
+msgstr "名前"
+
+# ef267d5bd4dc444b9db70d9f4079f505
+#: ../../../src/common/doc/utilities/start_point.rst:22
+msgid ""
+"``pgr_startPoint`` — Returns a start point of a (multi)linestring geometry."
+msgstr ""
+
+# 57c55f6c23fd4dc59ad7f25a4a4e6f90
+#: ../../../src/common/doc/utilities/start_point.rst:24
+msgid "This function is intended for the developer's aid."
+msgstr ""
+
+# 7fb8df5ab251417bba38529aaefd457b
+#: ../../../src/common/doc/utilities/start_point.rst:28
+msgid "Synopsis"
+msgstr "概要"
+
+# 7becd53f47734fbe99a71ba8adef0d07
+# 9345f683e56b40dcb259f1ef2ea5e240
+#: ../../../src/common/doc/utilities/start_point.rst:30
+#: ../../../src/common/doc/utilities/start_point.rst:44
+msgid ""
+"Returns the geometry of the start point of the first LINESTRING of ``geom``."
+msgstr ""
+
+# f2295bc1e9ef4b08884c65ec18de9744
+#: ../../../src/common/doc/utilities/start_point.rst:38
+msgid "Description"
+msgstr "説明"
+
+# fef77a15910b4557bb253c868468c67a
+#: ../../../src/common/doc/utilities/start_point.rst:41
+msgid "Parameters"
+msgstr ""
+
+# c938ded08b8743bf9eac1b5d064e0ed0
+#: ../../../src/common/doc/utilities/start_point.rst:42
+msgid "``geometry`` Geometry of a MULTILINESTRING or LINESTRING."
+msgstr ""
+
+# 364eba92da1046889b073b64c9827bdf
+#: ../../../src/common/doc/utilities/start_point.rst:49
+msgid "History"
+msgstr "履歴"
+
+# 62c8d013ab68473c8adda6fbfaf564e9
+#: ../../../src/common/doc/utilities/start_point.rst:50
+msgid "New in version 2.0.0"
+msgstr ""
+
+# 8e8a05a8da734bb5961b296230e53bcb
+#: ../../../src/common/doc/utilities/start_point.rst:55
+msgid "See Also"
+msgstr "参照"
+
+# 6026c7e6914a49cab16a616dd0fb6bac
+#: ../../../src/common/doc/utilities/start_point.rst:57
+msgid ":ref:`developer` for the tree layout of the project."
+msgstr ""
+
+# 5b0650667c4b470691f4647d5b73f783
+#: ../../../src/common/doc/utilities/start_point.rst:58
+msgid ":ref:`pgr_end_Point` to get the end point of a (multi)linestring."
+msgstr ""

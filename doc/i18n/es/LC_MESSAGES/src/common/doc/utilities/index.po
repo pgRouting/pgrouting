@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (187a022 develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+# cvvergara, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Documentation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-23 15:04\n"
+"PO-Revision-Date: 2013-09-23 20:40+0000\n"
+"Last-Translator: cvvergara\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/pgrouting/language/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# e262455eaf304db884c939d3a27905d7
+#: ../../../src/common/doc/utilities/index.rst:13
+msgid "Developers's Functions"
+msgstr "Funciones para Desarrolladores"
+
+# 6ebf2b3b104d4fababace44710277924
+#: ../../../src/common/doc/utilities/index.rst:15
+msgid "Functions to help you develop a wrapper or a recipe"
+msgstr "Funciones para ayudarle a desarrollar un contenedor o una receta"
+
+# 0be37c4f2fa144fbb3b4a976a946317a
+#: ../../../src/common/doc/utilities/index.rst:17
+msgid ""
+":ref:`pgr_get_column_name` - to get the name of the column as is stored in "
+"the postgres administration tables."
+msgstr ":ref:`pgr_get_column_name`  para obtener el nombre de la columna como se almacena en las tablas de la administración de postgres."
+
+# 9f513d4551d54509ac679e98aff1a731
+#: ../../../src/common/doc/utilities/index.rst:18
+msgid ""
+":ref:`pgr_get_table_name` - to retrieve the name of the table as is stored "
+"in the postgres administration tables."
+msgstr ":ref:`pgr_get_table_name` para obtener el nombre de la tabla tal cual se almacena en las tablas de la administración de postgres."
+
+# 20e81f559b1f4f56af56463e06b47d70
+#: ../../../src/common/doc/utilities/index.rst:19
+msgid ":ref:`pgr_is_column_indexed` - to check if the column is indexed."
+msgstr ":ref:`pgr_is_column_indexed` para comprobar si la columna está indexada."
+
+# d82d4278e4b14798898589b62a07a6fd
+#: ../../../src/common/doc/utilities/index.rst:20
+msgid ""
+":ref:`pgr_is_column_in_table` - to check only for the existance of the "
+"column."
+msgstr ":ref:`pgr_is_column_in_table` para revisar sólo la existencia de la columna."
+
+# 166c0d8f61a54958932722413c5c1a96
+#: ../../../src/common/doc/utilities/index.rst:21
+msgid ""
+":ref:`pgr_point_to_id` -to insert/get the id of the inserted point in a "
+"vertices table."
+msgstr ":ref:`pgr_point_to_id` - para insertar o conseguir la identificación del punto insertado en una tabla de vértices."
+
+# 81426148e40b4e9fa21b940bb818b523
+#: ../../../src/common/doc/utilities/index.rst:22
+msgid ""
+":ref:`pgr_quote_ident` - to quotes the input text to be used as an "
+"identifier in an SQL statement string."
+msgstr ":ref:`pgr_quote_ident` - pone entre comillas el texto de entrada para ser utilizado como un identificador en una cadena de instrucción SQL."
+
+# d41e3a55240246999890d539bc866a4f
+#: ../../../src/common/doc/utilities/index.rst:23
+msgid ":ref:`pgr_version` - to get pgRouting's version information."
+msgstr ":ref:`pgr_version` para obtener la versión actual de pgRouting."
+
+# 3d10df2242a348afb70157ab2869b42e
+#: ../../../src/common/doc/utilities/index.rst:24
+msgid ":ref:`pgr_versionless` - to compare two version numbers."
+msgstr ":ref:`pgr_versionless` - para comparar dos números de versión."
+
+# 86e6bdd38ba14caeaee7bfeb51f3f7a5
+#: ../../../src/common/doc/utilities/index.rst:25
+msgid ""
+":ref:`pgr_start_point` - to get the start point of a (multi)linestring."
+msgstr ":ref:`pgr_start_Point` para obtener el punto inicial de un (multi)linestring."
+
+# 46480bc0b18a481e99a6913018d07218
+#: ../../../src/common/doc/utilities/index.rst:26
+msgid ":ref:`pgr_end_point` - to get the end point of a (multi)linestring."
+msgstr ":ref:`pgr_end_Point` para obtener el punto final de un (multi)linestring."

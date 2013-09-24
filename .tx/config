@@ -7,6 +7,11 @@ file_filter = doc/i18n/<lang>/LC_MESSAGES/doc/index.po
 source_file = doc/i18n/pot/doc/index.pot
 source_lang = en
 
+[pgrouting.src--index]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/src/index.po
+source_file = doc/i18n/pot/src/index.pot
+source_lang = en
+
 [pgrouting.doc--index_man]
 file_filter = doc/i18n/<lang>/LC_MESSAGES/doc/index_man.po
 source_file = doc/i18n/pot/doc/index_man.pot
@@ -16,6 +21,12 @@ source_lang = en
 file_filter = doc/i18n/<lang>/LC_MESSAGES/doc/src/tutorial/index.po
 source_file = doc/i18n/pot/doc/src/tutorial/index.pot
 source_lang = en
+
+[pgrouting.doc--src--tutorial--tutorial]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/doc/src/tutorial/tutorial.po
+source_file = doc/i18n/pot/doc/src/tutorial/tutorial.pot
+source_lang = en
+
 
 [pgrouting.doc--src--tutorial--custom_wrapper]
 file_filter = doc/i18n/<lang>/LC_MESSAGES/doc/src/tutorial/custom_wrapper.po
@@ -67,9 +78,19 @@ file_filter = doc/i18n/<lang>/LC_MESSAGES/doc/src/introduction/index.po
 source_file = doc/i18n/pot/doc/src/introduction/index.pot
 source_lang = en
 
+[pgrouting.doc--src--introduction--introduction]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/doc/src/introduction/introduction.po
+source_file = doc/i18n/pot/doc/src/introduction/introduction.pot
+source_lang = en
+
 [pgrouting.doc--src--introduction--support]
 file_filter = doc/i18n/<lang>/LC_MESSAGES/doc/src/introduction/support.po
 source_file = doc/i18n/pot/doc/src/introduction/support.pot
+source_lang = en
+
+[pgrouting.doc--src--changelog--index]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/doc/src/changelog/index.po
+source_file = doc/i18n/pot/doc/src/changelog/index.pot
 source_lang = en
 
 [pgrouting.doc--src--changelog--1_x]
@@ -92,9 +113,9 @@ file_filter = doc/i18n/<lang>/LC_MESSAGES/doc/src/installation/build.po
 source_file = doc/i18n/pot/doc/src/installation/build.pot
 source_lang = en
 
-[pgrouting.src--common--doc--types]
-file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/types.po
-source_file = doc/i18n/pot/src/common/doc/types.pot
+[pgrouting.src--common--doc--types--index]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/types/index.po
+source_file = doc/i18n/pot/src/common/doc/types/index.pot
 source_lang = en
 
 [pgrouting.src--common--doc--index]
@@ -117,9 +138,19 @@ file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/types/cost_result.po
 source_file = doc/i18n/pot/src/common/doc/types/cost_result.pot
 source_lang = en
 
-[pgrouting.src--common--doc--functions--versionless]
-file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/functions/versionless.po
-source_file = doc/i18n/pot/src/common/doc/functions/versionless.pot
+[pgrouting.src--common--doc--utilities--index]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/utilities/index.po
+source_file = doc/i18n/pot/src/common/doc/utilities/index.pot
+source_lang = en
+
+[pgrouting.src--common--doc--functions--index]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/functions/index.po
+source_file = doc/i18n/pot/src/common/doc/functions/index.pot
+source_lang = en
+
+[pgrouting.src--common--doc--utilities--versionless]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/utilities/versionless.po
+source_file = doc/i18n/pot/src/common/doc/utilities/versionless.pot
 source_lang = en
 
 [pgrouting.src--common--doc--functions--analyze_graph]
@@ -127,24 +158,49 @@ file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/functions/analyze_graph
 source_file = doc/i18n/pot/src/common/doc/functions/analyze_graph.pot
 source_lang = en
 
+[pgrouting.src--common--doc--functions--create_vert_table]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/functions/create_vert_table.po
+source_file = doc/i18n/pot/src/common/doc/functions/create_vert_table.pot
+source_lang = en
+
 [pgrouting.src--common--doc--functions--create_topology]
 file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/functions/create_topology.po
 source_file = doc/i18n/pot/src/common/doc/functions/create_topology.pot
 source_lang = en
 
-[pgrouting.src--common--doc--functions--is_column_in_table]
-file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/functions/is_column_in_table.po
-source_file = doc/i18n/pot/src/common/doc/functions/is_column_in_table.pot
+[pgrouting.src--common--doc--utilities--is_column_in_table]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/utilities/is_column_in_table.po
+source_file = doc/i18n/pot/src/common/doc/utilities/is_column_in_table.pot
 source_lang = en
 
-[pgrouting.src--common--doc--functions--version]
-file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/functions/version.po
-source_file = doc/i18n/pot/src/common/doc/functions/version.pot
+[pgrouting.src--common--doc--utilities--version]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/utilities/version.po
+source_file = doc/i18n/pot/src/common/doc/utilities/version.pot
 source_lang = en
 
-[pgrouting.src--common--doc--functions--quote_ident]
-file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/functions/quote_ident.po
-source_file = doc/i18n/pot/src/common/doc/functions/quote_ident.pot
+[pgrouting.src--common--doc--utilities--get_table_name]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/utilities/get_table_name.po
+source_file = doc/i18n/pot/src/common/doc/utilities/get_table_name.pot
+source_lang = en
+
+[pgrouting.src--common--doc--utilities--start_point]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/utilities/start_point.po
+source_file = doc/i18n/pot/src/common/doc/utilities/start_point.pot
+source_lang = en
+
+[pgrouting.src--common--doc--utilities--end_point]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/utilities/end_point.po
+source_file = doc/i18n/pot/src/common/doc/utilities/end_point.pot
+source_lang = en
+
+[pgrouting.src--common--doc--utilities--get_column_name]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/utilities/get_column_name.po
+source_file = doc/i18n/pot/src/common/doc/utilities/get_column_name.pot
+source_lang = en
+
+[pgrouting.src--common--doc--utilities--quote_ident]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/utilities/quote_ident.po
+source_file = doc/i18n/pot/src/common/doc/utilities/quote_ident.pot
 source_lang = en
 
 [pgrouting.src--common--doc--functions--node_network]
@@ -152,19 +208,24 @@ file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/functions/node_network.
 source_file = doc/i18n/pot/src/common/doc/functions/node_network.pot
 source_lang = en
 
-[pgrouting.src--common--doc--functions--point_to_id]
-file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/functions/point_to_id.po
-source_file = doc/i18n/pot/src/common/doc/functions/point_to_id.pot
+[pgrouting.src--common--doc--utilities--point_to_id]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/utilities/point_to_id.po
+source_file = doc/i18n/pot/src/common/doc/utilities/point_to_id.pot
 source_lang = en
 
-[pgrouting.src--common--doc--functions--is_column_indexed]
-file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/functions/is_column_indexed.po
-source_file = doc/i18n/pot/src/common/doc/functions/is_column_indexed.pot
+[pgrouting.src--common--doc--utilities--is_column_indexed]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/utilities/is_column_indexed.po
+source_file = doc/i18n/pot/src/common/doc/utilities/is_column_indexed.pot
 source_lang = en
 
 [pgrouting.src--common--doc--functions--analyze_oneway]
 file_filter = doc/i18n/<lang>/LC_MESSAGES/src/common/doc/functions/analyze_oneway.po
 source_file = doc/i18n/pot/src/common/doc/functions/analyze_oneway.pot
+source_lang = en
+
+[pgrouting.src--driving_distance--doc--dd_driving_distance]
+file_filter = doc/i18n/<lang>/LC_MESSAGES/src/driving_distance/doc/dd_driving_distance.po
+source_file = doc/i18n/pot/src/driving_distance/doc/dd_driving_distance.pot
 source_lang = en
 
 [pgrouting.src--driving_distance--doc--dd_points_as_polygon]
@@ -231,4 +292,3 @@ source_lang = en
 file_filter = doc/i18n/<lang>/LC_MESSAGES/src/ksp/doc/index.po
 source_file = doc/i18n/pot/src/ksp/doc/index.pot
 source_lang = en
-

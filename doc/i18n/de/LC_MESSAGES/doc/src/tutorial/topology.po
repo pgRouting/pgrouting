@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-02 14:50+0000\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-20 14:12+0000\n"
 "Last-Translator: Daniel Kastl\n"
 "Language-Team: German (http://www.transifex.com/projects/p/pgrouting/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -17,32 +17,32 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-# 2e965f30c7e0495fa8a53b1be5150746
+# 95ba56beb837464cac49ef7880693c4c
 #: ../../src/tutorial/topology.rst:13
 msgid "Routing Topology"
 msgstr ""
 
-# 5400cbce8e09474fa5add24d4dc5b466
+# a13e17875be047edb65c4dff0e77e3a3
 #: ../../src/tutorial/topology.rst:15
 msgid "Stephen Woodbridge <woodbri@swoodbridge.com>"
 msgstr ""
 
-# e7c08e6547ac481cbd0a2e623387b702
+# fae10235d477445e8c8ad3b8ddf138c5
 #: ../../src/tutorial/topology.rst:16
 msgid ""
 "Stephen Woodbridge. The source code is released under the MIT-X license."
 msgstr ""
 
-# 79b3480b2905452aab56c2d466152972
+# bb8d84bed17047048664ea7fe078eb94
 #: ../../src/tutorial/topology.rst:20
 msgid "Overview"
 msgstr ""
 
-# ebf26fb7f3db4a2fb4ed4bbc56554d84
+# 2a882bec3de94c1eb574a3eb222c98e4
 #: ../../src/tutorial/topology.rst:22
 msgid ""
 "Typically when GIS files are loaded into the data database for use with "
-"pgRouting they do not have topology information assocated with them. To "
+"pgRouting they do not have topology information associated with them. To "
 "create a useful topology the data needs to be \"noded\". This means that "
 "where two or more roads form an intersection there it needs to be a node at "
 "the intersection and all the road segments need to be broken at the "
@@ -50,7 +50,7 @@ msgid ""
 "any other segment via that intersection."
 msgstr ""
 
-# 9371ec6508e04ee7a9c31985bb8fac9c
+# 65c5e66127ab486492799e66af98970c
 #: ../../src/tutorial/topology.rst:24
 msgid ""
 "You can use the :ref:`graph analysis functions <analytics>` to help you see "
@@ -61,7 +61,7 @@ msgid ""
 "be the right thing to do."
 msgstr ""
 
-# a4760bd5fec24e478318fc3d6a5c7f24
+# efc1fb5385064e7da087f3b0371faf57
 #: ../../src/tutorial/topology.rst:26
 msgid ""
 "For example, when you have an overpass and underpass intersection, you do "
@@ -73,7 +73,7 @@ msgid ""
 "be ok."
 msgstr ""
 
-# dace0a618e54403c90f1ba04c590cfbb
+# 43c22da1f7b34db7999adbad7ac7a4e1
 #: ../../src/tutorial/topology.rst:28
 msgid ""
 "For those cases where topology needs to be added the following functions may"
@@ -85,7 +85,7 @@ msgid ""
 "what you can do with your data."
 msgstr ""
 
-# fac3502c69e64d55bea893eb89e4237c
+# 30e52836594b46f1917dd9ffaa55fc0c
 #: ../../src/tutorial/topology.rst:49
 msgid ""
 "The function :ref:`pgr_createTopology() <pgr_create_topology>` will create "
@@ -95,29 +95,29 @@ msgid ""
 "statements converts it to an average speed."
 msgstr ""
 
-# c72208e2b9334a20bc85ab7c9c0ff2c4
+# 6aa2b52ff1ac4c16a315c9ddfdf90b57
 #: ../../src/tutorial/topology.rst:112
 msgid ""
 "Now your database should be ready to use any (most?) of the pgRouting "
 "algorithms."
 msgstr ""
 
-# b02584cae7584f1bb39c0d6488cf0a84
+# 6cc3d005cb454b77959bfbdc6fdd2105
 #: ../../src/tutorial/topology.rst:116
 msgid "See Also"
 msgstr "Siehe auch"
 
-# f376a1fc4f3442b1b49008cd2ff37b40
+# 40847af777814998afe63d824d73c507
 #: ../../src/tutorial/topology.rst:118
 msgid ":ref:`pgr_create_topology`"
 msgstr ""
 
-# 864676f90cda450fa380d69990f05f93
+# 974b427fbcf64ec8ab76456dcd37bd7d
 #: ../../src/tutorial/topology.rst:119
 msgid ":ref:`pgr_node_network`"
 msgstr ""
 
-# 668344ff5fd04f8a83a1de5941c5352e
+# adedad6329b0494988daee57bcf0cb98
 #: ../../src/tutorial/topology.rst:120
 msgid ":ref:`pgr_point_to_id`"
 msgstr ""

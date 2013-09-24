@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (b19690f doc-merge)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: pgRouting 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
+"POT-Creation-Date: 2013-09-24 15:37\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,32 +17,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../src/developer/discontinued.rst:13
-# 09366a0298d04b47be343c8bf8c6e12a
+# 7490293fd85e4e4e98e4da73f4d33c48
 msgid "Discontinued Functions"
 msgstr ""
 
 #: ../../src/developer/discontinued.rst:15
-# 8ab172e3591c493f94919b9391d65313
+# c03453e9026146b0bc840f71521310c9
 msgid "Especially with new major releases functionality may change and functions may be discontinued for various reasons. Functionality that has been discontinued will be listed here."
 msgstr ""
 
 #: ../../src/developer/discontinued.rst:22
-# 6bb9bb9b649544eb9384e2c03fa6e60d
+# b4716d2a622d4da4832313344d6d314d
 msgid "Shooting Star algorithm"
 msgstr ""
 
 #: ../../src/developer/discontinued.rst:24
-# 6c87b9ac3f1b441a88d4bd7a32449eeb
+# 67a2d7fa801d4041ad839993dedad031
 msgid "Removed with 2.0.0"
 msgstr ""
 
 #: ../../src/developer/discontinued.rst:25
-# 6afa2318319f4b5e93e9eb99d1dd1843
+# 22b71502b61844b7b11f8487e2b4ec4f
 msgid "Unresolved bugs, no maintainer, replaced with :ref:`trsp`"
 msgstr ""
 
 #: ../../src/developer/discontinued.rst:26
-# 7e711820b4534143a7fd0d1aa4c5cc58
+# ae3be36c2d784a5798b139317310e375
 msgid "Please :ref:`contact us <support>` if you're interested to sponsor or maintain this algorithm. The function signature is still available in :ref:`common_legacy` but it is just a wrapper that throws an error. We have not included any of the old code for this in this release."
 msgstr ""
 

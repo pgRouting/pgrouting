@@ -14,15 +14,13 @@ With Driving Distance Enabled
 
 Driving distance related Functions
 
+  - :ref:`pgr_driving_distance` - Driving Distance 
+  - :ref:`pgr_alphaShape` - Alpha shape computation
+  - :ref:`pgr_points_as_polygon` - Polygon around set of points 
+    
 .. toctree::
-	:maxdepth: 1
+	:hidden:
 
 	pgr_drivingDistance - Driving Distance <dd_driving_distance>
 	pgr_alphaShape - Alpha shape computation <dd_alphashape>
 	pgr_pointsAsPolygon - Polygon around set of points <dd_points_as_polygon>
-
-.. rubric:: Indices and tables
-
-* :ref:`genindex`
-* :ref:`search`
-

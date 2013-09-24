@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-22 17:35+0000\n"
-"Last-Translator: erikap\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-20 14:13+0000\n"
+"Last-Translator: Daniel Kastl\n"
 "Language-Team: French (http://www.transifex.com/projects/p/pgrouting/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,66 +18,66 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-# ebb698d42ab84a70942c2dc642d8689f
+# baeae55a13de4766b42a9f43c6f8caaf
 #: ../../../src/common/doc/types/geom_result.rst:13
-msgid "pgr_geomResult[] - Path Result with Geometry"
-msgstr "pgr_geomResult[] - Résultat du chemin avec la géométrie"
+msgid "pgr_geomResult[]"
+msgstr ""
 
-# 8c1135709e1f42109f51dbb19b910d32
+# 4fc9eadff47c4a24baa096c8c667c469
 #: ../../../src/common/doc/types/geom_result.rst:20
 msgid "Name"
 msgstr "Nom"
 
-# 0504426205734e54acafe64e1643ba59
+# 03beb686e4ec49e08cd6f1f0f5e03339
 #: ../../../src/common/doc/types/geom_result.rst:22
 msgid ""
 "``pgr_geomResult[]`` — A set of records to describe a path result with "
 "geometry attribute."
 msgstr "``pgr_geomResult[]`` — Un ensemble d'enregistrements pour décrire un résultat de chemin avec un attribut géométrie."
 
-# 2fe63836e36143c0bf782667d44aeb1d
+# fd9c91caacdf4a2fb1c186c45e1d5525
 #: ../../../src/common/doc/types/geom_result.rst:26
 msgid "Description"
 msgstr "Description"
 
-# c4356f080cdd45cdbea91b19f382af17
+# c00f6b668c744c7d822d2d2155e76b7a
 #: ../../../src/common/doc/types/geom_result.rst:38
 msgid "sequential ID indicating the path order"
 msgstr "séquence ID indiquant l'ordre du chemin"
 
-# 28be111f472d4c46a2c96c103a8cab20
-# fd4d6b299a42442788d2806bbc172ecb
+# 5782feff61f84fd4b3130a80b1abd7a9
+# 69c0e9623b4d41669a2601517d1563d2
 #: ../../../src/common/doc/types/geom_result.rst:39
 #: ../../../src/common/doc/types/geom_result.rst:40
 msgid "generic name, to be specified by the function"
 msgstr "nom générique, à être spécifié par la fonction"
 
-# 3023c0d4cc7d442cb916111f5fb9e5c7
+# c837b15d4460475996b2f7bac8b14076
 #: ../../../src/common/doc/types/geom_result.rst:41
 msgid "geometry attribute"
 msgstr "attribut de géométrie"
 
-# 2a15ebb2d4364c599e179e0452466759
+# cf5503504b26427b800efddbc1098b64
 #: ../../../src/common/doc/types/geom_result.rst:45
 msgid "History"
 msgstr "Histoire"
 
-# e5e6297149664f34a89b901e03434765
+# 4e474c2cf69748c680853e0505ce4773
 #: ../../../src/common/doc/types/geom_result.rst:46
 msgid "New in version 2.0.0"
 msgstr "Nouveau depuis la version 2.0.0"
 
-# 746866b5d04349148e7dee1f0906a73b
+# f4d42016a50f43438838421dfb361835
 #: ../../../src/common/doc/types/geom_result.rst:47
 msgid "Replaces ``geoms``"
 msgstr "Remplace ``geoms``"
 
-# 162b0b55bea4444680b5a7645d7e2f48
+# 0075486d62f84298b41797b5789d377a
 #: ../../../src/common/doc/types/geom_result.rst:51
 msgid "See Also"
 msgstr "Voir aussi"
 
-# 5bd464cbd0fa498883a6e166120ca90b
+# 5a190ec8601a4a919a058395614d7db5
 #: ../../../src/common/doc/types/geom_result.rst:53
-msgid ":ref:`common_types`"
-msgstr ":ref:`common_types`"
+msgid ":ref:`introduction`"
+msgstr ""

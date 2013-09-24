@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
 "PO-Revision-Date: 2013-08-22 18:00+0000\n"
 "Last-Translator: erikap\n"
 "Language-Team: French (http://www.transifex.com/projects/p/pgrouting/language/fr/)\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-# af2e041923d44d0d9563d0085aea25c8
+# 7e98fba52c6f402c811f8c50dd811f39
 #: ../../../src/common/doc/legacy.rst:13
 msgid "Legacy Functions"
 msgstr "Fonctions antérieures"
 
-# d1e607e21eea4ec49b92a5b901eff665
+# 18b051582e6742be8a3737391d4676ad
 #: ../../../src/common/doc/legacy.rst:15
 msgid ""
 "pgRouting 2.0 release has total restructured the function naming and "
@@ -34,7 +34,7 @@ msgid ""
 "existing functionality."
 msgstr "La sortie de pgRouting 2.0 a complètement restructuré le nommage des fonctions et rendu obsolète nombre de fonctions qui étaient disponibles dans les versions 1.x. Même si nous réalisons que cela peut être gênant pour nos utilisateurs actuels, nous considérons que cela est nécessaire pour la viabilité du projet sur le long terme pour être plus une solution à nos utilisateurs et d'être en mesure d'ajouter de nouvelles fonctionnalités et tester les fonctionnalités existantes."
 
-# 0fe94cadd0b6451fbc30559fa5f70275
+# cf6d9479ec0b4eb6b0607f3302df5dca
 #: ../../../src/common/doc/legacy.rst:17
 msgid ""
 "We have made a minimal effort to save most of these function and distribute "
@@ -47,7 +47,7 @@ msgid ""
 "documented and supported functions."
 msgstr "Nous avons fait un effort minimum pour sauver la plupart de ces fonctions et les distribuer avec la version dans un fichier ``pgrouting_legacy.sql`` qui n'est pas une partie de l'extension pgrouting et n'est pas supportée. Si vous pouvez utiliser ces fonctions, c'est bien. Nous n'avons pas testé toutes ces fonctions donc si vous trouvez des problèmes et voulez poster une requête ou un patch pour aider les autres utilisateurs c'est très bien, mais il est probable que ce fichier soit supprimé dans une future version et nous recommandons que vous convertissiez votre code existant pour utiliser les nouvelles fonctions documentées et supportées."
 
-# 8eb3da3e4cb1441d8743706f7397c8ee
+# 82da52e7fec44c24956e90636a8a9355
 #: ../../../src/common/doc/legacy.rst:19
 msgid ""
 "The follow is a list of TYPEs, CASTs and FUNCTION included in the "
@@ -56,12 +56,12 @@ msgid ""
 "changes to get them to work."
 msgstr "La liste suivant est une liste des TYPEs, CASTs et FUNCTION inclus dans le fichier ``pgrouting_legacy.sql``. La liste est fournie pour commodité mais ces fonctions sont déconseillées, non supportées, et probablement ont besoin de certaines modifications pour fonctionner."
 
-# 96302a33dc8a461e9c82b33165d2f03f
+# 7ae0da52fff04aaaaec8fd9b91d3b7b0
 #: ../../../src/common/doc/legacy.rst:23
 msgid "TYPEs & CASTs"
 msgstr "TYPEs & CASTs"
 
-# 0dca26b88cc44808b873318da81f0095
+# 8e73926e03514dff813a00fbf7d202e0
 #: ../../../src/common/doc/legacy.rst:34
 msgid "FUNCTIONs"
 msgstr "FUNCTIONs"

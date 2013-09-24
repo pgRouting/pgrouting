@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (187a022 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-10 15:12+0000\n"
+"POT-Creation-Date: 2013-09-23 15:04\n"
+"PO-Revision-Date: 2013-09-23 20:20+0000\n"
 "Last-Translator: cvvergara\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/pgrouting/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,68 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-# 227045a7e0474d4998d6a6d10503851b
+# 2d164be73a6143b9850a47118af6fac0
 #: ../../src/tutorial/recipes.rst:13
-msgid "Useful Recipes"
-msgstr "Recetas Útiles"
+msgid "User's Recipes contributions"
+msgstr "Contribuciones de recetas de los usuarios"
+
+# 8f4e11e136e347c49071a20b75e3f7db
+#: ../../src/tutorial/recipes.rst:16
+msgid "How to contribute."
+msgstr "Cómo contribuir."
+
+# c28848a4efb9438e9753f9724a0b1bba
+#: ../../src/tutorial/recipes.rst:17
+msgid ""
+"Use an issue tracker (see :ref:`support`) with a title containing: "
+"*Proposing a Recipe: Myrecipename*. The body will contain:"
+msgstr "Utilice un issue tracker en git (ver :ref:`Soporte <support>`) con un título que contiene: *Proposing a Recipe: MiNombreDeReceta*. El cuerpo debe contiener:"
+
+# 304b12401b0a4ae6995e2e6f43ab60ed
+#: ../../src/tutorial/recipes.rst:19
+msgid "author:  Required"
+msgstr "Autor: requerido"
+
+# 0de50268810243a9a9eae4fbe089d207
+#: ../../src/tutorial/recipes.rst:20
+msgid ""
+"mail: if you are subscribed to the developers list this is not necessary"
+msgstr "Correo: Si usted está suscrito a la lista de los desarrolladores no es necesario"
+
+# d84afc673d2a47e5a939a1905c7ac458
+#: ../../src/tutorial/recipes.rst:21
+msgid "date: Date posted"
+msgstr "Fecha: fecha"
+
+# a77ebe21f0d644da8c0573551db24a3e
+#: ../../src/tutorial/recipes.rst:22
+msgid "comments and code:  using reStructuredText format"
+msgstr "Comentarios y código: formato reStructuredText"
+
+# 586b6b7d313849ccb0eff13b59bcde27
+#: ../../src/tutorial/recipes.rst:24
+msgid ""
+"Any contact with the author will be done using the developers mailing list. "
+"The pgRouting team will evaluate the recipe and will be included it in this "
+"section when approved."
+msgstr "Cualquier contacto con el autor se hará utilizando la lista de correo de desarrolladores. El equipo pgRouting evaluará la receta y será incluido en esta sección cuando sea aprobada."
+
+# c0fb6175b7b640e18821f49b08810c30
+#: ../../src/tutorial/recipes.rst:27
+msgid "Comparing topology of a unnoded network with a noded network"
+msgstr "Comparando la topología de una red de que no tiene nodos en las intersecciones con una red con nodos en las intersecciones"
+
+# 4f1d4919585f4bc2bb4d02067ccaa841
+#: ../../src/tutorial/recipes.rst:30
+msgid "pgRouting team."
+msgstr "Equipo pgRouting."
+
+# 413f44066e2e4af0952d3a31b7bbaeff
+#: ../../src/tutorial/recipes.rst:32
+msgid "This recipe uses the :ref:`sampledata` network."
+msgstr "Esta receta se utiliza la :ref:`red de ejemplo <sampledata>`."
+
+# 1e7ee7f6cb5b421d85ca530f636a264b
+#: ../../src/tutorial/recipes.rst:42
+msgid "*No more contributions*"
+msgstr "*No hay más contribuciones*"

@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (187a022 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-12 00:40+0000\n"
+"POT-Creation-Date: 2013-09-23 15:04\n"
+"PO-Revision-Date: 2013-09-24 00:21+0000\n"
 "Last-Translator: cvvergara\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/pgrouting/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -18,190 +18,82 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-# bfde7d3b00074ef39bf1433751c1b0dd
+# 6a8f93140b244bb29541e366b9af91dd
 #: ../../src/tutorial/index.rst:13
-msgid "Getting Started"
-msgstr "Comenzando a trabajar"
+msgid "Tutorial"
+msgstr "Tutoriales"
 
-# ad46db82896c4e33a57f049195cc1e10
-#: ../../src/tutorial/index.rst:15
-msgid ""
-"This is a simple guide to walk you through the steps of getting started with"
-" pgRouting. In this guide we will cover:"
-msgstr "Esta es una guía simple para llevarte a través de los pasos básicos para trabajar con pgRouting. Esta guía cubre:"
+# a64c244637f4455cbded0e09c15fb8e1
+#: ../../src/tutorial/index.rst:16
+msgid ":ref:`Getting started <tutorial>`"
+msgstr ":ref:`Comenzando a trabajar <tutorial>`"
 
-# 78a056bb71b64a1ba4726a1680dea91a
-# 4813f33a966749b8b16bbf2d074ee232
-#: ../../src/tutorial/index.rst:18 ../../src/tutorial/index.rst:27
+# acf4544cb0394b96859312fe489b6b5f
+#: ../../src/tutorial/index.rst:18
 msgid "How to create a database to use for our project"
 msgstr "Cómo crear una base de datos para ser utilizada por nuestro proyecto"
 
-# bc02ff60db1e44d1898d3510e4671095
-# 0bfa47046d7b4ee5ae4d264c668ff536
-#: ../../src/tutorial/index.rst:19 ../../src/tutorial/index.rst:61
+# 29bb03c78beb407cb3c7ef833144e908
+#: ../../src/tutorial/index.rst:19
 msgid "How to load some data"
 msgstr "Cómo cargar algunos datos"
 
-# 776fd606c30f487ebc900a2021817536
-# bd58aa0b779048408f76daacb96e8fc5
-#: ../../src/tutorial/index.rst:20 ../../src/tutorial/index.rst:77
+# 6522624c4787423098652645beaca70b
+#: ../../src/tutorial/index.rst:20
 msgid "How to build a topology"
 msgstr "Cómo construir una topología"
 
-# 59c4e5f15866459dabf8a624a9593584
-# c001c569f8f1478083c1a4596487b390
-#: ../../src/tutorial/index.rst:21 ../../src/tutorial/index.rst:93
+# 7e3a1701c1cb4f2399f80cab2f32fbfd
+#: ../../src/tutorial/index.rst:21
 msgid "How to check your graph for errors"
 msgstr "Cómo comprobar la gráfica para errores"
 
-# 8e0e03f5d4ef45f5ad5e6ad7ec30bf33
-# e63b07ffd2ba4cebb436a39034c1d650
-#: ../../src/tutorial/index.rst:22 ../../src/tutorial/index.rst:120
+# 7a4ac738b5a54446a3fb6a2a872ee973
+#: ../../src/tutorial/index.rst:22
 msgid "How to compute a route"
 msgstr "Cómo calcular una ruta"
 
-# 6d8ca88d3eb74940bc42acf29ab88dde
-# 107bbc827cb84ba7af9251892d20db0a
-#: ../../src/tutorial/index.rst:23 ../../src/tutorial/index.rst:141
+# 267375c5b956437cab09d66694082436
+#: ../../src/tutorial/index.rst:23
 msgid "How to use other tools to view your graph and route"
 msgstr "Cómo utilizar otras herramientas para ver la gráfica y la ruta"
 
-# c0fd4d351fbe4e40899e41cf3316cdd4
-# bf2b93cf3a994f88a2c146757b72cc9d
-#: ../../src/tutorial/index.rst:24 ../../src/tutorial/index.rst:146
+# 7eb6346c00174549a67aa3ba5b639061
+#: ../../src/tutorial/index.rst:24
 msgid "How to create a web app"
 msgstr "Cómo crear una aplicación web"
 
-# 36e95513368744f7883a8f57ee8026f3
+# 9c88e3538b4443db8727c2ac29dfe064
+#: ../../src/tutorial/index.rst:26
+msgid "Advanced Topics"
+msgstr "Tópicos avanzados"
+
+# 96bfb05f4c374de79f250704d4c8b3e7
+#: ../../src/tutorial/index.rst:28
+msgid ":ref:`topology` for an overview of a topology for routing algorithms."
+msgstr ":ref:`topology` para tener una visión general de una topología de algoritmos de encaminamiento."
+
+# 5bb8a81892314636b035fe0d8e56b426
 #: ../../src/tutorial/index.rst:29
-msgid ""
-"The first thing we need to do is create a database and load pgrouting in the"
-" database. Typically you will create a database for each project. Once you "
-"have a database to work in, your can load your data and build your "
-"application in that database. This makes it easy to move your project later "
-"if you want to to say a production server."
-msgstr "Lo primero que hay que hacer es crear una base de datos y cargar pgRouting a la base de datos. Típicamente se creará una base de datos para cada proyecto. Una vez que se tiene una base de datos donde trabajar, se pueden cargar los datos y construir la aplicación en la base de datos. Esto hace que sea sencillo de mover el proyecto en el futuro, como por ejemplo, a un servidor de producción."
+msgid ":ref:`analytics` for an overview of the analysis of a graph."
+msgstr ":ref:`analytics` para tener una visión general del análisis de un gráfico."
 
-# 7cb471a92c554e5d85c5cb507d6ae2c9
-#: ../../src/tutorial/index.rst:35
-msgid "For Postgresql 9.1 and later versions"
-msgstr "Para Postgresql 9.1 y versiones posteriores"
+# 6cfe3bc3d8b942b188c87a00b5e92cb8
+#: ../../src/tutorial/index.rst:30
+msgid ":ref:`custom_query` that is used in the routing algorithms."
+msgstr ":ref:`custom_query` que se utiliza en los algoritmos de encaminamiento."
 
-# f708955d64874268893240e272bb36dd
-#: ../../src/tutorial/index.rst:44
-msgid "For older versions of postgresql"
-msgstr "Para versiones anteriores de postgresql"
+# 2fc8eb635e614b249d37a76fb7d66f68
+#: ../../src/tutorial/index.rst:31
+msgid ":ref:`performance` to improve your performance."
+msgstr ":ref:`performance` para mejorar su rendimiento."
 
-# ad29ded18a604842aa180e6ed7512d39
-#: ../../src/tutorial/index.rst:63
-msgid ""
-"How you load your data will depend in what form it comes it. There are "
-"various OpenSource tools that can help you, like:"
-msgstr "El cómo cargar los datos dependerá de el formato que tienen. Existen varias herramientas de Código Abierto  que le pueden ayudar, como:"
+# 1cf3220a11c4411b85339e05e3546f22
+#: ../../src/tutorial/index.rst:32
+msgid ":ref:`custom_wrapper` to colaborate with a wrapper."
+msgstr ":ref:`custom_wrapper` para colaborar con un envoltorio."
 
-# f912087745b641ff87297a046d68c2e2
-#: ../../src/tutorial/index.rst:66
-msgid "this is the postgresql shapefile loader"
-msgstr "Este es un cargador de archivo shape a postgresql"
-
-# 07f53d758c4b41be86d0eea2f9da92b0
-#: ../../src/tutorial/index.rst:67
-msgid "this is a vector data conversion utility"
-msgstr "Esta es una utilidad de conversión de datos vectoriales"
-
-# 3d5996dc8f454aa18532ecc2cb1ca9ef
-#: ../../src/tutorial/index.rst:68
-msgid "this is a tool for loading OSM data into postgresql"
-msgstr "Esta es una herramienta para cargar los datos de OSM a postgresql"
-
-# e4f801d269294f09bb30f20140923c41
-#: ../../src/tutorial/index.rst:70
-msgid ""
-"So these tools and probably others will allow you to read vector data and "
-"and can load that data into your database as a table of some kind. At this "
-"point you need to know a little about your data structure and content. One "
-"easy way to browse you data table is with pgAdmin3 or phpPgAdmin."
-msgstr "Así que estas herramientas, y probablemente otras más, le permitan leer datos vectoriales y se pueden cargar esos datos a una tabla de la base de datos. En este momento, se necesita  saber un poco sobre el contenido y estructura de los datos. Una forma fácil de navegar en tu bases de datos es con pgAdmin3 o phpPgAdmin."
-
-# 2c4107eadee643b299ef2fd3ac939130
-#: ../../src/tutorial/index.rst:79
-msgid ""
-"Next we need to build a topology for our street data. What this means is "
-"that for any given edge in your street data the ends of that edge will be "
-"connected to a unique node and to other edges that are also connected to "
-"that same unique node. Once all the edges are connected to nodes we have a "
-"graph that can be used for routing with pgrouting. We provide a tools the "
-"will help with this:"
-msgstr "Lo siguiente que se necesita hacer es construir la topología de nuestros datos de las calles. Lo que esto significa es que para cualquier borde que se encuentra en los datos de las calles, los extremos del borde se conectan a un nodo único y a otros bordes que también se conectan a ese mismo nodo único. Una vez que todos los bordes están conectados a los nodos tenemos una gráfica que se puede ser utilizada para el ruteo con pgRouting. Proporcionamos herramientas que ayudarán con esto:"
-
-# b3cbda580c1d4e6fa0e5321d63dc35f1
-#: ../../src/tutorial/index.rst:89
-msgid "See :ref:`pgr_create_topology` for more information."
-msgstr "Ver :ref:`pgr_create_topology` para más información."
-
-# 9513976286e54aedb9be7aada39c7bb4
-#: ../../src/tutorial/index.rst:95
-msgid ""
-"There are lots of possible sources for errors in a graph. The data that you "
-"started with may not have been designed with routing in mind. A graph as "
-"some very specific requirments. One it that it is *NODED*, this means that "
-"except for some very specific use cases, each road segments starts and ends "
-"at a node and that in general is does not cross another road segment that it"
-" should be connected to."
-msgstr "Hay varias posibles fuentes de errores en un gráfico. Los datos con los que usted comenzó pudieron no haber sido diseñados con ruteo en mente. Un gráfico tiene algunos requerimientos muy específicos. Uno es que sea *NODED*, esto significa que, a excepción de algunos casos de uso muy especial, cada uno de los segmentos del camino comienza y termina en un nodo y que en general no cruzan un segmento de camino al que deba conectarse."
-
-# 830e57fea71b4f2c8b5e4c3d0e16241c
-#: ../../src/tutorial/index.rst:102
-msgid ""
-"There can be other errors like the direction of a one-way street being "
-"entered in the wrong direction. We do not have tools to search for all "
-"possible errors but we have some basic tools that might help."
-msgstr "Puede haber otros errores como en una calle de un solo sentido tener el sentido equivocado. No contamos con herramientas para buscar todos los errores posibles, pero tenemos algunas herramientas básicas que pueden ayudar."
-
-# 029351e785774ab4811f26d59eea4e33
-#: ../../src/tutorial/index.rst:112
-msgid "See :ref:`analytics` for more information."
-msgstr "Ver :ref:`analytics` para más información."
-
-# cd1a633700554c6e8e9567e52631169d
-#: ../../src/tutorial/index.rst:114
-msgid ""
-"If your data needs to be *NODED*, we have a tool that can help for that "
-"also."
-msgstr "Si necesita crearle a sus datos los *los nodos*, tenemos una herramienta que puede ayudar."
-
-# cad5130234504eb28dfbb848a18fe8c3
-#: ../../src/tutorial/index.rst:116
-msgid "See :ref:`pgr_node_network` for more information."
-msgstr "Ver :ref:`pgr_node_network` para más información."
-
-# a4e850bf06074dbc8f24e9d4aa4d93ba
-#: ../../src/tutorial/index.rst:122
-msgid ""
-"Once you have all the prep work done above, computing a route is fairly "
-"easy. We have a lot of different algorithms but they can work with your "
-"prepared road network. The general form of a route query is:"
-msgstr "Una vez realizado el trabajo de preparación descrito anteriormente, el cálculo de una ruta es bastante fácil. Contamos con varios algoritmos, pero pueden trabajar con su red vial preparada. La forma general de una consulta de ruta es:"
-
-# 39e1f503951c454da79eba8e3f3650c2
-#: ../../src/tutorial/index.rst:130
-msgid ""
-"As you can see this is fairly straight forward and you can look and the "
-"specific algorithms for the details on how to use them. What you get as a "
-"result from these queries will be a set of record of type ``pgr_costResult``"
-" or ``pgr_geomResult``. These results have information like edge id and/or "
-"the node id along with the cost or geometry for the step in the path from "
-"*start* to *end*. Using the ids you can join these result back to your edge "
-"table to get more information about each step in the path."
-msgstr "Como se puede ver, es bastante sencillo. Puede revisar los algoritmos específicos para ver los detalles y cómo usarlos. Lo que usted recibe como el resultado de estas consultas será un conjunto de registros de tipo ``pgr_costResult`` o ``pgr_geomResult``.  Estos resultados tienen información como; Identificación del borde y/o el identificador del nodo, junto con el costo o la geometría para el camino desde el *punto de partida* hasta el *punto de llegada*. Usando los identificadores, puede unir estos resultados con su tabla de calles para obtener más información acerca de cada paso en el camino."
-
-# 0b6ea30b368c4a9088f307905aaadd2b
-#: ../../src/tutorial/index.rst:138
-msgid "See also :ref:`type_cost_result` and :ref:`type_geom_result`."
-msgstr "Véase también :ref:`type_cost_result` y :ref:`type_geom_result`."
-
-# da163ed2a17f47bc87a8d57217e41da8
-# 02898bf0c78a4b26b0cf24bf5839dcb3
-#: ../../src/tutorial/index.rst:143 ../../src/tutorial/index.rst:148
-msgid "TBD"
-msgstr "Por Definirse"
+# 025472df762342bb955f96e2572111ed
+#: ../../src/tutorial/index.rst:33
+msgid ":ref:`recipes` to colaborate with a recipe."
+msgstr ":ref:`recipes` para colaborar con una receta."

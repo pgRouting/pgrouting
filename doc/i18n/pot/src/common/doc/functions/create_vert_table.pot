@@ -1,0 +1,342 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (b19690f doc-merge)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-24 15:37\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:13
+# 19a631dd8d134b8b84a68204ed3e9d41
+msgid "pgr_createVerticesTable"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:20
+# dbd6600ecaac45f6b8867e57eb38fc5d
+msgid "Name"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:22
+# a29458cc158d4f499d981869b9fe80f1
+msgid "``pgr_createVerticesTable`` — Reconstructs the vertices table based on the source and target information."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:26
+# aae2526fd60c48e180fef3b043df1e78
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:28
+#: ../../../src/common/doc/functions/create_vert_table.rst:63
+# 27dc7808202b457697769289df7fd7df
+# aa36c85dd6024813a58efb3559cea011
+msgid "The function returns:"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:30
+#: ../../../src/common/doc/functions/create_vert_table.rst:65
+# a71d7d0641964f8ab1d90cc85ffa5698
+# d23fc0c9251a4a7893267070122dece1
+msgid "``OK`` after the vertices table has been reconstructed."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:31
+#: ../../../src/common/doc/functions/create_vert_table.rst:70
+# 575b00c1ef0d4ce9be181b3a4618b86a
+# c4f9095eb78b46cda68c21b5b6c4177a
+msgid "``FAIL`` when the vertices table was not reconstructed due to an error."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:41
+# 5d4e599359bb4044a0ab76a42ec24d55
+msgid "Description"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:44
+# ff2ba7f56e154fbfb7c8ca1cef5bcd83
+msgid "Parameters"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:45
+# d6fe650a9beb48faae0604ad27d0473e
+msgid "The reconstruction of the vertices table  function accepts the following parameters:"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:47
+# 1cb3bba0eace4224bfd959ceb965d5b3
+msgid "``text`` Network table name. (may contain the schema name as well)"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:48
+# 3693db7e8e03488f8c7e41ce66f68564
+msgid "``text``  Geometry column name of the network table. Default value is ``the_geom``."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:49
+# db6c17c2d53a417f9c03f50c92c005e3
+msgid "``text`` Source column name of the network table. Default value is ``source``."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:50
+# 07030afe12f24527a339ee08106acdd4
+msgid "``text``  Target column name of the network table.  Default value is ``target``."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:51
+# 953d953272574d1cb2f2082781e7cd57
+msgid "``text``   Condition to SELECT a subset or rows.  Default value is ``true`` to indicate all rows."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:55
+# 93eec2b40e2543329968022ac0fb743e
+msgid "The ``edge_table`` will be affected"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:57
+# 87e963ab8d6740c3b1a1c7c90aadb0cb
+msgid "An index will be created, if it doesn't exists, to speed up the process to the following columns:"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:59
+# 0b4db9bedb5c4e8aae178cdf8501e995
+msgid "``the_geom``"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:60
+# c6f28e49bbb94fff8a6a79a37a37f148
+msgid "``source``"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:61
+# 48bf54d2872e42e3951374082f047936
+msgid "``target``"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:67
+# b8c36294294f415091c47eed722e184e
+msgid "Creates a vertices table: <edge_table>_vertices_pgr."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:68
+# 20a5668e4f824df08ce6d40b2972d67c
+msgid "Fills ``id`` and ``the_geom`` columns of the vertices table based on the source and target columns of the edge table."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:72
+# f773aa554da04cc6970ffd2696e995ba
+msgid "A required column of the Network table is not found or is not of the appropriate type."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:73
+# b5a53ad737e74ba382d562f7885b692a
+msgid "The condition is not well formed."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:74
+# e6a33ab1fef64aad86222787fab3af3c
+msgid "The names of source, target are the same."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:75
+# 6d469609f58c46f29de5c8a90af5081a
+msgid "The SRID of the geometry could not be determined."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:78
+# 147e1b6b08814f7b9ee88407b62a498a
+msgid "The Vertices Table"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:79
+# 3c4bf582df624750bc03941c3619f4c7
+msgid "The vertices table is a requierment of the :ref:`pgr_analyzeGraph <pgr_analyze_graph>` and the :ref:`pgr_analyzeOneway <pgr_analyze_oneway>` functions."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:81
+# 91b1981a14a94c20bca776be85b535a3
+msgid "The structure of the vertices table is:"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:83
+# dc0e633324514f4e9b38f21fcc433f60
+msgid "``bigint`` Identifier of the vertex."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:84
+# 332ebc8247294592991bb43d212d2934
+msgid "``integer`` Number of vertices in the edge_table that reference this vertex. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:85
+# 9dadca7827724a16a72b724caecaf17d
+msgid "``integer``  Indicator that the vertex might have a problem. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:86
+# 39745576abc34406876c0adcee78bc5f
+msgid "``integer`` Number of vertices in the edge_table that reference this vertex as incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:87
+# 22e339ae16f14852a431554fb215af48
+msgid "``integer`` Number of vertices in the edge_table that reference this vertex as outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:88
+# ce14855be22b4104bbb07a5e5604f2d4
+msgid "``geometry`` Point geometry of the vertex."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:91
+# 459b3b8c4acd4aa3a9871f6dd5738099
+msgid "History"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:92
+# 53812a5605b541d388700a95581cffb5
+msgid "Renamed in version 2.0.0"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:95
+# 308e674a2f0042ecb68fa5cdfda66c35
+msgid "Usage when the edge table's columns MATCH the default values:"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:98
+# 60cd2611626e4881a4f7598d088f7ae9
+msgid "The simplest way to use pgr_createVerticesTable is:"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:105
+# 2f2349e83a9943c5914bdc408761e821
+msgid "When the arguments are given in the order described in the parameters:"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:110
+# f781676f7b5c4f96ab2a6c29d9da6f7f
+msgid "We get the same result as the simplest way to use the function."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:117
+#: ../../../src/common/doc/functions/create_vert_table.rst:181
+# 664c471ccfda4497b6645e8a878dc3dc
+# 7e918d97a00f411da9454756825ff8c8
+msgid "When using the named notation"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:118
+#: ../../../src/common/doc/functions/create_vert_table.rst:182
+# 73df3af7e8674465a0fea28f5ef4af6a
+# d67790fcb73148b08041370ea40c9704
+msgid "The order of the parameters do not matter:"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:128
+# d75edd32144a4a56876ce8669eb9c666
+msgid "Parameters defined with a default value can be omited, as long as the value matches the default:"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:135
+#: ../../../src/common/doc/functions/create_vert_table.rst:196
+# 205323d5b2c84c60bcc0a48cf0ffe2c3
+# b8ee67193fef4450b7b078d5e0f9ed8e
+msgid "Selecting rows using rows_where parameter"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:136
+# 78b6beb526fe44a08ba33968fd97e704
+msgid "Selecting rows based on the id."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:142
+# 87beb11c777742819e896cdba5e1e69c
+msgid "Selecting the rows where the geometry is near the geometry of row with ``id`` =5 ."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:148
+#: ../../../src/common/doc/functions/create_vert_table.rst:219
+# 23096a1510064202a6666747f3283d4b
+# 3107ec82a919450798746493e0878454
+msgid "Selecting the rows where the geometry is near the geometry of the row with ``gid`` =100 of the table ``othertable``."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:159
+# cffbe0ddc41c4322a015816531b6c20d
+msgid "Usage when the edge table's columns DO NOT MATCH the default values:"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:161
+# dbe012108f364058a8796adaafb1e023
+msgid "For the following table"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:169
+# 08dccb27acdb4f51a09d7804934b76ff
+msgid "Using positional notation:"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:170
+# 3a0524fff1ba43cd990d2c3e9af31526
+msgid "The arguments need to be given in the order described in the parameters:"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:192
+# 399db1d8f6ac4444beabbbe5d87a715b
+msgid "In this scenario omitting a parameter would create an error because the default values for the column names do not match the column names of the table."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:197
+# ee561095bdf14700b7d35c5e9cb495a3
+msgid "Selecting rows based on the gid."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:207
+# 12595dac797d451d93c5ef33bb5a0dec
+msgid "Selecting the rows where the geometry is near the geometry of row with ``gid`` =5 ."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:236
+# dfa04bca1d5a4dc29d3d0ecb59e23b5a
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:258
+# 4a25da4213474121ab37fdd23d3ebcb3
+msgid "The example uses the :ref:`sampledata` network."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:262
+# 743fc9bd38c24e9599c37117b09a12d4
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:264
+# 99d6f7120b264df29684f04f5a052e7d
+msgid ":ref:`topology`  for an overview of a topology for routing algorithms."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:265
+# 7626b59fe28f49d9bca9b18466f65ed0
+msgid ":ref:`pgr_createTopology <pgr_create_topology>` to create a topology based on the geometry."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:266
+# 68c51bd2f3f34bf0837774644e0d90ed
+msgid ":ref:`pgr_analyze_graph` to analyze the edges and vertices of the edge table."
+msgstr ""
+
+#: ../../../src/common/doc/functions/create_vert_table.rst:267
+# 5c232ab6d6bf483fbba17b835369ea67
+msgid ":ref:`pgr_analyze_oneway` to analyze directionality of the edges."
+msgstr ""
+

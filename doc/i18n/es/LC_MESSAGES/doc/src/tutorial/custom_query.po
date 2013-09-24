@@ -1,15 +1,16 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
 # cvvergara, 2013
+# Daniel Kastl, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-10 15:18+0000\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-23 15:11+0000\n"
 "Last-Translator: cvvergara\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/pgrouting/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +19,132 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-# b91f0d6588cf4d91a064ad81536cb9a5
+# 6f7957030f094b6d9cbc9409e43365cc
 #: ../../src/tutorial/custom_query.rst:13
 msgid "Custom Query"
 msgstr "Consultas Personalizadas"
+
+# d51566c70ba441bd97b5f05d3319f75b
+#: ../../src/tutorial/custom_query.rst:17
+msgid ""
+"In general, the routing algorithms need an SQL query that contain one or "
+"more of the following required columns with the preferred type:"
+msgstr "En general, los algoritmos de enrutamiento necesitan una consulta SQL que contienen uno o más de las siguientes columnas necesarias con el tipo preferido:"
+
+# 3635e11429294bfb8119843ed85e9357
+# 3e7594678daf45f18a5e66bd639a5eff
+# 1cbb2351bab547248a9e9c603cd7a566
+#: ../../src/tutorial/custom_query.rst:19
+#: ../../src/tutorial/custom_query.rst:20
+#: ../../src/tutorial/custom_query.rst:21
+msgid "int4"
+msgstr "int4"
+
+# 4215130eed644b249425772c5e56bd0f
+# 56540a30c9bd4368b8cabf5c501404f4
+# cd08d7d274414ff8ab7201e379a68284
+# bcb0372ecaf94af1b1ddac5411662b4c
+# 0e6362bbf64c4705b5b1f75692ec42ef
+# 8d70966ee0614b2c887aaab9e45c0dd5
+# 4326b5bb0231435698e3b6d52f933827
+# 3181c241469e4670bcae933939634002
+# cb8241385b0c44c4839d156649851190
+#: ../../src/tutorial/custom_query.rst:22
+#: ../../src/tutorial/custom_query.rst:23
+#: ../../src/tutorial/custom_query.rst:24
+#: ../../src/tutorial/custom_query.rst:25
+#: ../../src/tutorial/custom_query.rst:26
+#: ../../src/tutorial/custom_query.rst:27
+#: ../../src/tutorial/custom_query.rst:28
+#: ../../src/tutorial/custom_query.rst:29
+#: ../../src/tutorial/custom_query.rst:63
+msgid "float8"
+msgstr "float8"
+
+# 18ef546ea54244b9a998d5db49cd6b44
+#: ../../src/tutorial/custom_query.rst:31
+msgid ""
+"When the edge table has the mentioned columns, the following SQL queries can"
+" be used."
+msgstr "Cuando el la tabla de bordes tiene las columnas mencionadas, pueden utilizarse las siguientes consultas SQL."
+
+# d6c69e08f2e942548a8da4a67c6be175
+#: ../../src/tutorial/custom_query.rst:39
+msgid ""
+"When the edge table has a different name to represent the required columns:"
+msgstr "Cuandola tabla de bordes tiene un nombre diferente para representar las columnas necesarias:"
+
+# d121b6e40b2549b68baeebb6ac20ebfe
+#: ../../src/tutorial/custom_query.rst:51
+msgid ""
+"The topology functions use the same names for ``id``, ``source`` and "
+"``target`` columns of the edge table, The fowllowing parameters have as "
+"default value:"
+msgstr "Las funciones de topología utilizan los mismos nombres de columnas ``id``, ``source`` y ``target`` de la tabla del bordes, los siguientes parámetros  tienen como valor predeterminado:"
+
+# 0cffe4e3fec240748ea92fc80198a879
+#: ../../src/tutorial/custom_query.rst:53
+msgid "int4 Default ``id``"
+msgstr "int4 Por defecto ``id``"
+
+# 317d18ac6e654e2699ab3c5386987100
+#: ../../src/tutorial/custom_query.rst:54
+msgid "int4 Default ``source``"
+msgstr "int4 Por defecto ``source``"
+
+# dc30cae70610482b9da90a59e92699b1
+#: ../../src/tutorial/custom_query.rst:55
+msgid "int4 Default ``target``"
+msgstr "int4 Por defecto  ``target``"
+
+# 5ea6410c1e7948d8a0de99e9348a3617
+#: ../../src/tutorial/custom_query.rst:56
+msgid "text Default ``the_geom``"
+msgstr "text  Por defecto  ``the_geom``"
+
+# 234a816e3ec248f6938cf67c6d91e5e1
+#: ../../src/tutorial/custom_query.rst:57
+msgid "text Default ``oneway``"
+msgstr "text Por defecto  ``oneway``"
+
+# a4dbcf322242431e86e21cf0dd2d0323
+#: ../../src/tutorial/custom_query.rst:58
+msgid "text Default ``true`` to indicate all rows (this is not a column)"
+msgstr "text Por defecto  ``true``  para indicar todos los registros (esto no es una columna)"
+
+# 0a9261da3a204fe8973f128ef6a960e6
+#: ../../src/tutorial/custom_query.rst:60
+msgid ""
+"The following parameters do not have a default value and when used they have"
+" to be inserted in strict order:"
+msgstr "Los siguientes parámetros no tienen un valor por defecto y cuando se usan tienen que insertarse en estricto orden:"
+
+# 24f06f6b1d4e4d4ba7fb3d078899cbeb
+#: ../../src/tutorial/custom_query.rst:62
+msgid "text"
+msgstr "text"
+
+# 25b4027b78f7437bb8ce6a6142881103
+# a08810d55bc040ce8de287b6455d6007
+# 9e98508be5844523a5de60001d5ca3ee
+# c5bc2ea08c5d4e188935bd817a23e363
+#: ../../src/tutorial/custom_query.rst:64
+#: ../../src/tutorial/custom_query.rst:65
+#: ../../src/tutorial/custom_query.rst:66
+#: ../../src/tutorial/custom_query.rst:67
+msgid "text[]"
+msgstr "text[]"
+
+# 324f6836a74d4eb9a61de9ec13f4efd8
+#: ../../src/tutorial/custom_query.rst:69
+msgid ""
+"When the columns required have the default names this can be used (pgr_func "
+"is to represent a topology function)"
+msgstr "Cuando las columnas necesarias tienen los nombres por defecto se puede usar lo siguiente: (pgr_func es representar una función de topología)"
+
+# 250d7353f04c4625a0a939e34b72cbf8
+#: ../../src/tutorial/custom_query.rst:79
+msgid ""
+"When the columns required do not have the default names its strongly "
+"recomended to use the *named notation*."
+msgstr "Cuando las columnas necesarias no tienen los nombres por defecto se recomienda enormemente usar la *notación con nombre*."

@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (b19690f doc-merge)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-24 15:37\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/functions/index.rst:13
+# e6059e864a2f45449fd7f85406460837
+msgid "Topology Functions"
+msgstr ""
+
+#: ../../../src/common/doc/functions/index.rst:15
+# 9ea9f6b4b70c4435aa543c472a818b2f
+msgid "The pgRouting's topology of a network, represented with an edge table with source and target attributes and a vertices table associated with it. Depending on the algorithm, you can create a topology or just reconstruct the vertices table, You can analyze the topology, We also provide a function to node an unoded network."
+msgstr ""
+
+#: ../../../src/common/doc/functions/index.rst:19
+# 76da7263f53f4462a723804e1174e3ff
+msgid ":ref:`pgr_create_topology` -  to create a topology based on the geometry."
+msgstr ""
+
+#: ../../../src/common/doc/functions/index.rst:20
+# 7e6fef362938498ca27bcaeec5ab9410
+msgid ":ref:`pgr_create_vert_table` - to reconstruct the vertices table based on the source and target information."
+msgstr ""
+
+#: ../../../src/common/doc/functions/index.rst:21
+# 46b3cb82a6ca4081af5590a2b3d42a66
+msgid ":ref:`pgr_analyze_graph`  - to analyze the edges and vertices of the edge table."
+msgstr ""
+
+#: ../../../src/common/doc/functions/index.rst:22
+# 39c72fdc49ea45c889de546e56648f89
+msgid ":ref:`pgr_analyze_oneway` - to analyze directionality of the edges."
+msgstr ""
+
+#: ../../../src/common/doc/functions/index.rst:23
+# 97cb5a2e957349b8a30dee4f69b4b2de
+msgid ":ref:`pgr_node_network`  -to create nodes to a not noded edge table."
+msgstr ""
+

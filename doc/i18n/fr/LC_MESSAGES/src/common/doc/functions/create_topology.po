@@ -1,16 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
+# Daniel Kastl, 2013
 # erikap, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-25 06:08+0000\n"
-"Last-Translator: erikap\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-20 14:28+0000\n"
+"Last-Translator: Daniel Kastl\n"
 "Language-Team: French (http://www.transifex.com/projects/p/pgrouting/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,119 +19,397 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-# 5ecdde4d413646dea6574de17b792284
+# 841ce4ae2ccd42aeb6708e0469affc85
 #: ../../../src/common/doc/functions/create_topology.rst:13
-msgid "pgr_createTopology - Building a Network Topology"
-msgstr "pgr_createTopology - Construire une topologie réseau"
+msgid "pgr_createTopology"
+msgstr ""
 
-# c98545d1ae02459e91ba655a7c183392
+# bceb18f1c7484f2495890a181eb43749
 #: ../../../src/common/doc/functions/create_topology.rst:20
 msgid "Name"
 msgstr "Nom"
 
-# c06df067b218420ab3da42e649f379a9
+# efddc8da13ee412aa1fb75bf84ad023b
 #: ../../../src/common/doc/functions/create_topology.rst:22
 msgid ""
-"``pgr_createTopology`` — Builds a network topology with source and target "
+"``pgr_createTopology`` — Builds a network topology based on the geometry "
 "information."
-msgstr "``pgr_createTopology`` — Construit une topologie réseau avec information de la source et de la cible"
+msgstr ""
 
-# 47a4ca36d9bb4ab696d81ac95f618cdd
+# c01e1abb389b4e0096e2971378967ac9
 #: ../../../src/common/doc/functions/create_topology.rst:26
 msgid "Synopsis"
 msgstr "Synopsis"
 
-# 416515b0aad24c4ab3292c342831dfaf
+# 0dcc6bb9100b4d89afa5b1404283d0c9
+# 2f90d445d42f4c839d6d2b2e4bdd588b
 #: ../../../src/common/doc/functions/create_topology.rst:28
-msgid "The function returns ``OK`` after the network topology has been built."
-msgstr "La fonction retourne ``OK`` après que la topologie réseau a été construite."
+#: ../../../src/common/doc/functions/create_topology.rst:69
+msgid "The function returns:"
+msgstr ""
 
-# 07d6393e5f6c4a748e1151949dc4966a
-#: ../../../src/common/doc/functions/create_topology.rst:37
+# 88833f75e6d741b5bc91526488d66e4e
+#: ../../../src/common/doc/functions/create_topology.rst:30
+msgid ""
+"``OK`` after the network topology has been built and the vertices table "
+"created."
+msgstr ""
+
+# da6aad799955428fb1bef9ff2dbd70b5
+#: ../../../src/common/doc/functions/create_topology.rst:31
+msgid "``FAIL`` when the network topology was not built due to an error."
+msgstr ""
+
+# c4d463cfb61840f689831eeafe2844dc
+#: ../../../src/common/doc/functions/create_topology.rst:42
 msgid "Description"
 msgstr "Description"
 
-# 4cab83e8016f4cb7b960e31a014cb6a0
-#: ../../../src/common/doc/functions/create_topology.rst:39
-msgid ""
-"This function assumes the ``source`` and ``target`` columns exist on table "
-"``geom_table`` and are of type integer or bigint."
-msgstr "La fonction suppose que les colonnes ``source`` et ``target`` existent dans la table ``geom_table`` et sont de type integer ou bigint."
+# fba8585de1c94f0ba612f64f8cd4f39d
+#: ../../../src/common/doc/functions/create_topology.rst:45
+msgid "Parameters"
+msgstr ""
 
-# 7eae20752c814c8aa04f015979ef73e3
-#: ../../../src/common/doc/functions/create_topology.rst:50
-msgid ""
-"It fills the ``source`` and ``target`` id column for all edges. All line "
-"ends with a distance less than tolerance, are assigned the same id."
-msgstr "Cela remplit les colonnes id ``source`` et ``target`` pour toutes les arêtes. Toutes les lignes avec une distance inférieure à la tolérance, les mêmes id sont définis."
-
-# b2ac4398cd1445a5ba003ebbd4a9a568
-#: ../../../src/common/doc/functions/create_topology.rst:52
+# 33e33f7ee98e4b9a9d333f8ab95cbc9b
+#: ../../../src/common/doc/functions/create_topology.rst:46
 msgid "The topology creation function accepts the following parameters:"
 msgstr "La fonction de création de topologie accepte les paramètres suivants :"
 
-# c5c379f05e914288a45925a637a72240
-#: ../../../src/common/doc/functions/create_topology.rst:54
-msgid "``varchar`` network table name (may contain the schema name as well)"
-msgstr "``varchar`` nom de table réseau (peut également contenir le nom de schéma)"
+# d19b1856e3d440749487a15a83c9d44c
+#: ../../../src/common/doc/functions/create_topology.rst:48
+msgid "``text`` Network table name. (may contain the schema name AS well)"
+msgstr ""
 
-# 14597881b70e4470b22fd8c0fe3c5986
-#: ../../../src/common/doc/functions/create_topology.rst:55
+# 6afd7b88cbaf4a58b2dcbd161b278356
+#: ../../../src/common/doc/functions/create_topology.rst:49
 msgid ""
-"``float8`` snapping tolerance of disconnected edges (in projection unit)"
-msgstr "``float8`` tolérance de fermeture des arêtes déconnectées (en unité de projection)"
+"``float8`` Snapping tolerance of disconnected edges. (in projection unit)"
+msgstr ""
 
-# 82390e50492f485fb20cb5d056e7671a
-#: ../../../src/common/doc/functions/create_topology.rst:56
-msgid "``varchar`` geometry column name of the network table"
-msgstr "``varchar`` nom de la colonne géométrie de la table réseau"
+# 905510b263854f1eb05f10c8a64d9d20
+#: ../../../src/common/doc/functions/create_topology.rst:50
+msgid ""
+"``text``  Geometry column name of the network table. Default value is "
+"``the_geom``."
+msgstr ""
 
-# 19a0565d60144f5e8df755ec6d1a6ffd
-#: ../../../src/common/doc/functions/create_topology.rst:57
-msgid "``varchar`` primary key column name of the network table"
-msgstr "``varchar`` colonne de clé primaire de la table réseau"
+# f9b621bcf0ab41c3b87693c812f3d710
+#: ../../../src/common/doc/functions/create_topology.rst:51
+msgid ""
+"``text``  Primary key column name of the network table. Default value is "
+"``id``."
+msgstr ""
 
-# 6fb69bb0e5da4e29a2fecc6ffdbb1274
-#: ../../../src/common/doc/functions/create_topology.rst:59
-msgid "The function ``OK`` after the network topology has been built."
-msgstr "La fonction retourne ``OK`` après que la topologie de réseau a été construite."
+# 6bcaf9c3c7e1422ea8e1b4dc45e7c613
+#: ../../../src/common/doc/functions/create_topology.rst:52
+msgid ""
+"``text`` Source column name of the network table. Default value is "
+"``source``."
+msgstr ""
 
-# 2b3548ea9fdf4359a04b05e8419adb24
-#: ../../../src/common/doc/functions/create_topology.rst:63
+# e2b13126a14a4ebeb8c3f453235560a1
+#: ../../../src/common/doc/functions/create_topology.rst:53
+msgid ""
+"``text``  Target column name of the network table.  Default value is "
+"``target``."
+msgstr ""
+
+# adbfdd92db3740e5b4e8a6259a0a064c
+#: ../../../src/common/doc/functions/create_topology.rst:54
+msgid ""
+"``text``   Condition to SELECT a subset or rows.  Default value is ``true`` "
+"to indicate all rows."
+msgstr ""
+
+# 65297b06273d46cc98c9a3be75886137
+#: ../../../src/common/doc/functions/create_topology.rst:58
+msgid "The ``edge_table`` will be affected"
+msgstr ""
+
+# 7f45565b3b8d40408b2da1bee3d1c354
+#: ../../../src/common/doc/functions/create_topology.rst:60
+msgid "The ``source`` column values will change."
+msgstr ""
+
+# e05fe9ce627848aa8aa72f032d303f04
+#: ../../../src/common/doc/functions/create_topology.rst:61
+msgid "The ``target`` column values will change."
+msgstr ""
+
+# 72c3682247aa4841a49790a78db8c3c3
+#: ../../../src/common/doc/functions/create_topology.rst:62
+msgid ""
+"An index will be created, if it doesn't exists, to speed up the process to "
+"the following columns:"
+msgstr ""
+
+# 993784afa3ce4ca68f11e8e02f2b4b27
+#: ../../../src/common/doc/functions/create_topology.rst:64
+msgid "``id``"
+msgstr "``id``"
+
+# 3074ee818e8241bc93c5a3284d7c3af4
+#: ../../../src/common/doc/functions/create_topology.rst:65
+msgid "``the_geom``"
+msgstr "``the_geom``"
+
+# e40fef18592542b98d234ac6a8038def
+#: ../../../src/common/doc/functions/create_topology.rst:66
+msgid "``source``"
+msgstr "``source``"
+
+# 0360a33adc734d1eaf83f5e1e314cc73
+#: ../../../src/common/doc/functions/create_topology.rst:67
+msgid "``target``"
+msgstr "``target``"
+
+# a2aae07be90348b0b2190f647731fb26
+#: ../../../src/common/doc/functions/create_topology.rst:71
+msgid "``OK`` after the network topology has been built."
+msgstr ""
+
+# 33a4fd15e75a41a68105d2ea67b4aab1
+#: ../../../src/common/doc/functions/create_topology.rst:73
+msgid "Creates a vertices table: <edge_table>_vertices_pgr."
+msgstr ""
+
+# 589a7e90c6404cbe902baec0a884189b
+#: ../../../src/common/doc/functions/create_topology.rst:74
+msgid "Fills ``id`` and ``the_geom`` columns of the vertices table."
+msgstr ""
+
+# 92e7ab03c5ce43ed8c705a26aa4b801c
+#: ../../../src/common/doc/functions/create_topology.rst:75
+msgid ""
+"Fills the source and target columns of the edge table referencing the ``id``"
+" of the vertices table."
+msgstr ""
+
+# 0635e9d515184ccc80747864939f789c
+#: ../../../src/common/doc/functions/create_topology.rst:78
+msgid "``FAIL`` when the network topology was not built due to an error:"
+msgstr ""
+
+# 607fcb6f6ae3438789ecf9c95992bc3f
+#: ../../../src/common/doc/functions/create_topology.rst:80
+msgid ""
+"A required column of the Network table is not found or is not of the "
+"appropriate type."
+msgstr ""
+
+# 2bad2b565914457a90a990e718e857fd
+#: ../../../src/common/doc/functions/create_topology.rst:81
+msgid "The condition is not well formed."
+msgstr ""
+
+# c800f5e3462c44c1b786308aec4cfea4
+#: ../../../src/common/doc/functions/create_topology.rst:82
+msgid "The names of source , target or id are the same."
+msgstr ""
+
+# 51c96f82e8ea49bcbde8aaeb905a6c6c
+#: ../../../src/common/doc/functions/create_topology.rst:83
+msgid "The SRID of the geometry could not be determined."
+msgstr ""
+
+# f5f0d0a1c3814e1d9c14e4de52bd9899
+#: ../../../src/common/doc/functions/create_topology.rst:87
+msgid "The Vertices Table"
+msgstr ""
+
+# 54ef7e60b4d445cfa453323fbe80032d
+#: ../../../src/common/doc/functions/create_topology.rst:88
+msgid ""
+"The vertices table is a requirment of the :ref:`pgr_analyzeGraph "
+"<pgr_analyze_graph>` and the :ref:`pgr_analyzeOneway <pgr_analyze_oneway>` "
+"functions."
+msgstr ""
+
+# faaffddd86fd4680a80925c8c3877f07
+#: ../../../src/common/doc/functions/create_topology.rst:90
+msgid "The structure of the vertices table is:"
+msgstr ""
+
+# fc31880c8b034aae99d6d4caec420302
+#: ../../../src/common/doc/functions/create_topology.rst:92
+msgid "``bigint`` Identifier of the vertex."
+msgstr ""
+
+# 7684f52a607845ef802799c26c221bf3
+#: ../../../src/common/doc/functions/create_topology.rst:93
+msgid ""
+"``integer`` Number of vertices in the edge_table that reference this vertex."
+" See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`."
+msgstr ""
+
+# 1dc63c1d7cbb417d916ed0561df67df9
+#: ../../../src/common/doc/functions/create_topology.rst:94
+msgid ""
+"``integer``  Indicator that the vertex might have a problem. See "
+":ref:`pgr_analyzeGraph <pgr_analyze_graph>`."
+msgstr ""
+
+# 546f74ccc20545de9c032cabcaac878f
+#: ../../../src/common/doc/functions/create_topology.rst:95
+msgid ""
+"``integer`` Number of vertices in the edge_table that reference this vertex "
+"AS incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`."
+msgstr ""
+
+# 9fe606ee590d4f009989e3cdcf09b5c5
+#: ../../../src/common/doc/functions/create_topology.rst:96
+msgid ""
+"``integer`` Number of vertices in the edge_table that reference this vertex "
+"AS outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`."
+msgstr ""
+
+# 2ee4f32c8546412bad1e109e6051e249
+#: ../../../src/common/doc/functions/create_topology.rst:97
+msgid "``geometry`` Point geometry of the vertex."
+msgstr ""
+
+# a63156aa23b54785aaf66150bfe98a52
+#: ../../../src/common/doc/functions/create_topology.rst:100
 msgid "History"
 msgstr "Histoire"
 
-# 01d6c5adc0d3458ba23ffa4534a9dee5
-#: ../../../src/common/doc/functions/create_topology.rst:64
+# da8726d6435e42f09d83f4a310d5c432
+#: ../../../src/common/doc/functions/create_topology.rst:101
 msgid "Renamed in version 2.0.0"
 msgstr "Renommé depuis la version 2.0.0"
 
-# aa72ca8a15b547a4afc8e03b135e380f
-#: ../../../src/common/doc/functions/create_topology.rst:68
+# 5b4b6a4bea1543ac98f444d9ec32d7eb
+#: ../../../src/common/doc/functions/create_topology.rst:104
+msgid "Usage when the edge table's columns MATCH the default values:"
+msgstr ""
+
+# 6db23da4afd448bab89802246bccb65a
+#: ../../../src/common/doc/functions/create_topology.rst:107
+msgid "The simplest way to use pgr_createtopology is:"
+msgstr ""
+
+# 6905f56f53bb4cdfb9ae49021265afe9
+#: ../../../src/common/doc/functions/create_topology.rst:115
+msgid "When the arguments are given in the order described in the parameters:"
+msgstr ""
+
+# f8c6c68c7d334f68bac36a818c4091ab
+#: ../../../src/common/doc/functions/create_topology.rst:120
+msgid "We get the same result AS the simplest way to use the function."
+msgstr ""
+
+# 8dcbdbf60c2e4522a87d80a7796a354b
+# b72940f0e2054c46a50358fc40af026e
+#: ../../../src/common/doc/functions/create_topology.rst:127
+#: ../../../src/common/doc/functions/create_topology.rst:192
+msgid "When using the named notation"
+msgstr ""
+
+# 460cbff5c7054542a80375a4f50072e0
+# 56d9daba24ff4ce9ac02e3326af007af
+#: ../../../src/common/doc/functions/create_topology.rst:128
+#: ../../../src/common/doc/functions/create_topology.rst:193
+msgid "The order of the parameters do not matter:"
+msgstr ""
+
+# 4b24ad3db4be4b60a6c8bfcc38fae359
+#: ../../../src/common/doc/functions/create_topology.rst:138
+msgid ""
+"Parameters defined with a default value can be omited, AS long AS the value "
+"matches the default:"
+msgstr ""
+
+# 8aab982078634384ab4dfced463b5c14
+# d9c7d4fa12394a5a915a9f6f664e7a8a
+#: ../../../src/common/doc/functions/create_topology.rst:145
+#: ../../../src/common/doc/functions/create_topology.rst:207
+msgid "Selecting rows using rows_where parameter"
+msgstr ""
+
+# 4be49c2f23734283895a40625620047b
+# 1734ac1429ad4691861fbfcc7954d800
+#: ../../../src/common/doc/functions/create_topology.rst:146
+#: ../../../src/common/doc/functions/create_topology.rst:208
+msgid "Selecting rows based on the id."
+msgstr ""
+
+# 499347aef3cb49f993c320d1fd353a29
+# a0cd57644bf443fbaa81efed8df8a30f
+#: ../../../src/common/doc/functions/create_topology.rst:152
+#: ../../../src/common/doc/functions/create_topology.rst:218
+msgid ""
+"Selecting the rows where the geometry is near the geometry of row with "
+"``id`` =5 ."
+msgstr ""
+
+# b8e12b4f62d24fb0a535290a0a480ff0
+# 42da9f122c7240bea10a78685a6b5b8d
+#: ../../../src/common/doc/functions/create_topology.rst:158
+#: ../../../src/common/doc/functions/create_topology.rst:230
+msgid ""
+"Selecting the rows where the geometry is near the geometry of the row with "
+"``gid`` =100 of the table ``othertable``."
+msgstr ""
+
+# 596d74ac25d34cbda9a05349a4a0af21
+#: ../../../src/common/doc/functions/create_topology.rst:169
+msgid "Usage when the edge table's columns DO NOT MATCH the default values:"
+msgstr ""
+
+# ac1bf6e79288443486b7b105e25e07eb
+#: ../../../src/common/doc/functions/create_topology.rst:171
+msgid "For the following table"
+msgstr ""
+
+# a24fc2426b5c4b91bc53f875e37dddaa
+#: ../../../src/common/doc/functions/create_topology.rst:179
+msgid "Using positional notation:"
+msgstr ""
+
+# d1937a888b40477b8d696215b7b93425
+#: ../../../src/common/doc/functions/create_topology.rst:180
+msgid ""
+"The arguments need to be given in the order described in the parameters:"
+msgstr ""
+
+# 7e510379477f445a9432549c095c12bb
+#: ../../../src/common/doc/functions/create_topology.rst:203
+msgid ""
+"In this scenario omitting a parameter would create an error because the "
+"default values for the column names do not match the column names of the "
+"table."
+msgstr ""
+
+# de088e18a1634e6a96b99df9171c530a
+#: ../../../src/common/doc/functions/create_topology.rst:247
 msgid "Examples"
 msgstr "Exemples"
 
-# ad8210ab4fc84265b0ea9f7379d85f18
-#: ../../../src/common/doc/functions/create_topology.rst:80
-msgid "The queries use the :ref:`sampledata` network."
-msgstr "Les requêtes utilisent le réseau :ref:`sampledata`."
+# 89b592f2e7f6474cbed2d9d5bca887e9
+#: ../../../src/common/doc/functions/create_topology.rst:279
+msgid "The example uses the :ref:`sampledata` network."
+msgstr ""
 
-# c56da07841b14abf9a13c7be7f613a80
-#: ../../../src/common/doc/functions/create_topology.rst:84
+# ae52cd8922264c939460bd2df2108508
+#: ../../../src/common/doc/functions/create_topology.rst:283
 msgid "See Also"
 msgstr "Voir aussi"
 
-# 848fd11cbf4944f28398aa0c83790744
-#: ../../../src/common/doc/functions/create_topology.rst:86
-msgid ":ref:`topology`"
-msgstr ":ref:`topology`"
+# 664429e917764979b9255e4f9a72377f
+#: ../../../src/common/doc/functions/create_topology.rst:285
+msgid ":ref:`topology` for an overview of a topology for routing algorithms."
+msgstr ""
 
-# 0844157284514318a76884b369f00ad6
-#: ../../../src/common/doc/functions/create_topology.rst:87
-msgid ":ref:`pgr_node_network`"
-msgstr ":ref:`pgr_node_network`"
+# 9ded0191d7344e8baca758e97f34cf68
+#: ../../../src/common/doc/functions/create_topology.rst:286
+msgid ""
+":ref:`pgr_create_vert_table` to reconstruct the vertices table based on the "
+"source and target information."
+msgstr ""
 
-# 685d4340f08143758def841632bf5c5e
-#: ../../../src/common/doc/functions/create_topology.rst:88
-msgid ":ref:`pgr_point_to_id`"
-msgstr ":ref:`pgr_point_to_id`"
+# ca4432eb1b4246268b1acee87b464b2f
+#: ../../../src/common/doc/functions/create_topology.rst:287
+msgid ""
+":ref:`pgr_analyze_graph` to analyze the edges and vertices of the edge "
+"table."
+msgstr ""

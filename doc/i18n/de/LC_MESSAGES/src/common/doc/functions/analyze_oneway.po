@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-04 04:21+0000\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-22 06:20+0000\n"
 "Last-Translator: Daniel Kastl\n"
 "Language-Team: German (http://www.transifex.com/projects/p/pgrouting/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -17,121 +17,319 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-# 4593aa3250f24ea68aa7e3550865b53e
+# f8ca74e3c9a54cd0b0e6cd3bcec8de7e
 #: ../../../src/common/doc/functions/analyze_oneway.rst:13
-msgid "pgr_analyzeOneway - Analyze One Way Streets"
+msgid "pgr_analyzeOneway"
 msgstr ""
 
-# 8080c8895e164eceb294a58d488c54a5
+# ee3b92d1a5184a92b6fa72a69ab2f1c9
 #: ../../../src/common/doc/functions/analyze_oneway.rst:20
 msgid "Name"
 msgstr "Name"
 
-# 2f507cf3922f4938a00c3386c545f9ba
+# fd816817954b4f3d8d25927cebce353b
 #: ../../../src/common/doc/functions/analyze_oneway.rst:22
 msgid ""
 "``pgr_analyzeOneway`` — Analyzes oneway Sstreets and identifies flipped "
 "segments."
 msgstr ""
 
-# b6c59a86e9f84c9e85c573eb92505474
+# 4c9dfc86ed0042de97bf0107b0b2eccd
 #: ../../../src/common/doc/functions/analyze_oneway.rst:26
 msgid "Synopsis"
 msgstr "Übersicht"
 
-# 28a7aa8f8a33466fa95c7a01a9100b30
+# d31a1ab567db4873a46256e8ecbdedf4
 #: ../../../src/common/doc/functions/analyze_oneway.rst:28
 msgid ""
 "This function analyzes oneway streets in a graph and identifies any flipped "
 "segments."
 msgstr ""
 
-# 9a5de71a9b1249068206be80561cc4a2
-#: ../../../src/common/doc/functions/analyze_oneway.rst:37
+# 74bdfef086ae480bbe2affdece2c9efa
+#: ../../../src/common/doc/functions/analyze_oneway.rst:40
 msgid "Description"
 msgstr "Beschreibung"
 
-# 269e888404ea40fc8e0ed390240b4ae0
-#: ../../../src/common/doc/functions/analyze_oneway.rst:39
-msgid "``text`` network table name (may contain the schema name as well)"
+# 04f93117821f4eae962594c71a06a5a8
+#: ../../../src/common/doc/functions/analyze_oneway.rst:42
+msgid ""
+"The analyses of one way segments is pretty simple but can be a powerful "
+"tools to identifying some the potential problems created by setting the "
+"direction of a segment the wrong way. A node is a `source` if it has edges "
+"the exit from that node and no edges enter that node. Conversely, a node is "
+"a `sink` if all edges enter the node but none exit that node. For a `source`"
+" type node it is logically impossible to exist because no vehicle can exit "
+"the node if no vehicle and enter the node. Likewise, if you had a `sink` "
+"node you would have an infinite number of vehicle piling up on this node "
+"because you can enter it but not leave it."
 msgstr ""
 
-# 3e0a34fb8cf34ca9905d616197eb40f5
-#: ../../../src/common/doc/functions/analyze_oneway.rst:40
-msgid "``text`` oneway column name name of the network table"
+# 035956781a774bc3bb1214394ad77be8
+#: ../../../src/common/doc/functions/analyze_oneway.rst:44
+msgid ""
+"So why do we care if the are not feasible? Well if the direction of an edge "
+"was reversed by mistake we could generate exactly these conditions. Think "
+"about a divided highway and on the north bound lane one segment got entered "
+"wrong or maybe a sequence of multiple segments got entered wrong or maybe "
+"this happened on a round-about. The result would be potentially a `source` "
+"and/or a `sink` node."
 msgstr ""
 
-# d8ebf6ff4b464c59bda08569aaa4e10b
-#: ../../../src/common/doc/functions/analyze_oneway.rst:41
+# 007bbd995cbf4e7c86ce8e9916675879
+#: ../../../src/common/doc/functions/analyze_oneway.rst:46
+msgid ""
+"So by counting the number of edges entering and exiting each node we can "
+"identify both `source` and `sink` nodes so that you can look at those areas "
+"of your network to make repairs and/or report the problem back to your data "
+"vendor."
+msgstr ""
+
+# f972114db5c841928b7f2ac705bb0687
+#: ../../../src/common/doc/functions/analyze_oneway.rst:49
+msgid "Prerequisites"
+msgstr ""
+
+# 54a0c52cee394d389a81fcd50b24ad97
+#: ../../../src/common/doc/functions/analyze_oneway.rst:50
+msgid ""
+"The  edge table to be analyzed must contain a source column and a target "
+"column filled with id's of the vertices of the segments and the "
+"corresponding vertices table <edge_table>_vertices_pgr that stores the "
+"vertices information."
+msgstr ""
+
+# 808b5b795d364182b543ab30a1ad1644
+#: ../../../src/common/doc/functions/analyze_oneway.rst:52
+msgid ""
+"Use :ref:`pgr_createVerticesTable <pgr_create_vert_table>` to create the "
+"vertices table."
+msgstr ""
+
+# f6248fc57e734ead94edd12cab567915
+#: ../../../src/common/doc/functions/analyze_oneway.rst:53
+msgid ""
+"Use :ref:`pgr_createTopology <pgr_create_topology>` to create the topology "
+"and the vertices table."
+msgstr ""
+
+# 4cacac934ba64cda907561e98847bf8b
+#: ../../../src/common/doc/functions/analyze_oneway.rst:56
+msgid "Parameters"
+msgstr "Parameter"
+
+# 669f0d5432dd4c0c8da55dba8c3502e7
+#: ../../../src/common/doc/functions/analyze_oneway.rst:57
+msgid "``text`` Network table name. (may contain the schema name as well)"
+msgstr ""
+
+# a16edb2699f1486c91c10ac7533fef7c
+#: ../../../src/common/doc/functions/analyze_oneway.rst:58
 msgid "``text[]`` source node **in** rules"
 msgstr ""
 
-# 6c7be35b9ada406cbeb0a1070d50992d
-#: ../../../src/common/doc/functions/analyze_oneway.rst:42
+# 28b4c2457d3b4aaba43dc42af4d2bd5e
+#: ../../../src/common/doc/functions/analyze_oneway.rst:59
 msgid "``text[]`` source node **out** rules"
 msgstr ""
 
-# 6156c1924f92405bbf432f81eb0d86e9
-#: ../../../src/common/doc/functions/analyze_oneway.rst:43
+# 5180ad82f6e6434a99defa1823c0a2d8
+#: ../../../src/common/doc/functions/analyze_oneway.rst:60
 msgid "``text[]`` target node **in** rules"
 msgstr ""
 
-# 7e265585f6324aacaf9f5b5552318e1f
-#: ../../../src/common/doc/functions/analyze_oneway.rst:44
+# 4866b796c7fb49d985a479c3a97eec38
+#: ../../../src/common/doc/functions/analyze_oneway.rst:61
 msgid "``text[]`` target node **out** rules"
 msgstr ""
 
-# c8b1e0690a6a4fea8ce57566510c6f14
-#: ../../../src/common/doc/functions/analyze_oneway.rst:45
-msgid "``boolean`` flag to treat oneway NULL values as bi-directional"
-msgstr ""
-
-# 361e0c6e060549deb34316e925ac53f9
-#: ../../../src/common/doc/functions/analyze_oneway.rst:47
+# 2744331fb9ac447ba0c40a6035ac0a95
+#: ../../../src/common/doc/functions/analyze_oneway.rst:62
 msgid ""
-"This query will add two columns to the vertices_tmp table ``ein int`` and "
-"``eout int`` and populate it with the appropriate counts."
+"``text`` oneway column name name of the network table. Default value is "
+"``oneway``."
 msgstr ""
 
-# 6f064ab6c07e4229851fb1323d6d7f7e
-#: ../../../src/common/doc/functions/analyze_oneway.rst:49
+# b116cd1fc10f4f5bbd8fe9800562b62f
+#: ../../../src/common/doc/functions/analyze_oneway.rst:63
+msgid ""
+"``text`` Source column name of the network table. Default value is "
+"``source``."
+msgstr ""
+
+# 8ca5a93ed45443c09202b1e5779dfa76
+#: ../../../src/common/doc/functions/analyze_oneway.rst:64
+msgid ""
+"``text``  Target column name of the network table.  Default value is "
+"``target``."
+msgstr ""
+
+# e41f4c872a3445dbbc0bd183a71971fa
+#: ../../../src/common/doc/functions/analyze_oneway.rst:65
+msgid ""
+"``boolean`` flag to treat oneway NULL values as bi-directional.  Default "
+"value is ``true``."
+msgstr ""
+
+# 9cd0459ca40940448e6c0d9c07c4a157
+#: ../../../src/common/doc/functions/analyze_oneway.rst:67
+msgid ""
+"It is strongly recommended to use the named notation. See "
+":ref:`pgr_createVerticesTable <pgr_create_vert_table>` or "
+":ref:`pgr_createTopology <pgr_create_topology>` for examples."
+msgstr ""
+
+# e217ab2060e447e9a7a3745f4d84390d
+#: ../../../src/common/doc/functions/analyze_oneway.rst:70
+msgid "The function returns:"
+msgstr ""
+
+# 95dedd1c39c9424a906e6f2ff882e84a
+#: ../../../src/common/doc/functions/analyze_oneway.rst:72
+msgid "``OK`` after the analysis has finished."
+msgstr ""
+
+# 573d5fab7bb247d5adc39d8460683357
+#: ../../../src/common/doc/functions/analyze_oneway.rst:74
+msgid "Uses the vertices table: <edge_table>_vertices_pgr."
+msgstr ""
+
+# 86597d037fe242378cc71e6e2ec88b19
+#: ../../../src/common/doc/functions/analyze_oneway.rst:75
+msgid ""
+"Fills completely the ``ein`` and ``eout`` columns of the vertices table."
+msgstr ""
+
+# dcae6d2cceea4b6bb47a700cc4338340
+#: ../../../src/common/doc/functions/analyze_oneway.rst:77
+msgid "``FAIL`` when the analysis was not completed due to an error."
+msgstr ""
+
+# 792572ffb7314163be7e4aabadd4429c
+#: ../../../src/common/doc/functions/analyze_oneway.rst:79
+msgid "The vertices table is not found."
+msgstr ""
+
+# affbb7122dd844f3b5c7962c97dec0d3
+#: ../../../src/common/doc/functions/analyze_oneway.rst:80
+msgid ""
+"A required column of the Network table is not found or is not of the "
+"appropriate type."
+msgstr ""
+
+# e50d016ee05048779dea2db4006500be
+#: ../../../src/common/doc/functions/analyze_oneway.rst:81
+msgid "The names of source , target or oneway are the same."
+msgstr ""
+
+# f14e2456527945e0a80e7888bb6dde7f
+#: ../../../src/common/doc/functions/analyze_oneway.rst:83
 msgid ""
 "The rules are defined as an array of text strings that if match the "
-"``1way_cname`` value would be counted as ``true`` for the source or target "
+"``oneway`` value would be counted as ``true`` for the source or target "
 "**in** or **out** condition."
 msgstr ""
 
-# 438284d4b7984e16aa42e8ba22eb2090
-#: ../../../src/common/doc/functions/analyze_oneway.rst:53
+# 02623674186e4e0c961078942584c0ec
+#: ../../../src/common/doc/functions/analyze_oneway.rst:86
+msgid "The Vertices Table"
+msgstr ""
+
+# dd7fb8252bfe456aaa65515346941e74
+#: ../../../src/common/doc/functions/analyze_oneway.rst:87
+msgid ""
+"The vertices table can be created with :ref:`pgr_createVerticesTable "
+"<pgr_create_vert_table>` or :ref:`pgr_createTopology <pgr_create_topology>`"
+msgstr ""
+
+# f838bf466e424966bd61af7b901279d2
+#: ../../../src/common/doc/functions/analyze_oneway.rst:89
+msgid "The structure of the vertices table is:"
+msgstr ""
+
+# 722239d3877b48d8bc5e63052fc7424f
+#: ../../../src/common/doc/functions/analyze_oneway.rst:91
+msgid "``bigint`` Identifier of the vertex."
+msgstr ""
+
+# 0d3b269abc8e45a1abf355e4bb7d51c0
+#: ../../../src/common/doc/functions/analyze_oneway.rst:92
+msgid ""
+"``integer`` Number of vertices in the edge_table that reference this vertex."
+" See :ref:`pgr_analyzeGgraph <pgr_analyze_graph>`."
+msgstr ""
+
+# 50b3729c83964ef3ae1a1511c76b50f8
+#: ../../../src/common/doc/functions/analyze_oneway.rst:93
+msgid ""
+"``integer``  Indicator that the vertex might have a problem. See "
+":ref:`pgr_analyzeGraph <pgr_analyze_graph>`."
+msgstr ""
+
+# a5b1fe0206ea4c428c94f43a141b527b
+#: ../../../src/common/doc/functions/analyze_oneway.rst:94
+msgid ""
+"``integer`` Number of vertices in the edge_table that reference this vertex "
+"as incoming."
+msgstr ""
+
+# 7c678b91ca8a408aafda94e5fa217fae
+#: ../../../src/common/doc/functions/analyze_oneway.rst:95
+msgid ""
+"``integer`` Number of vertices in the edge_table that reference this vertex "
+"as outgoing."
+msgstr ""
+
+# 6d672d0be9cf41d69db69e46109d1624
+#: ../../../src/common/doc/functions/analyze_oneway.rst:96
+msgid "``geometry`` Point geometry of the vertex."
+msgstr ""
+
+# b7cf2a5bba544714b9b79373c889e6cc
+#: ../../../src/common/doc/functions/analyze_oneway.rst:100
 msgid "History"
 msgstr "Geschichte"
 
-# a0855d05e100486898a25b5e91fc4c1e
-#: ../../../src/common/doc/functions/analyze_oneway.rst:54
+# ee9866aeb2c94c7fb0aa1e6cda48e6cb
+#: ../../../src/common/doc/functions/analyze_oneway.rst:101
 msgid "New in version 2.0.0"
 msgstr "Neu in Version 2.0.0"
 
-# 65398da86613466fa37a88c382c67ba9
-#: ../../../src/common/doc/functions/analyze_oneway.rst:58
+# 3eed638ba1dd400186848b0928d632cf
+#: ../../../src/common/doc/functions/analyze_oneway.rst:105
 msgid "Examples"
 msgstr "Beispiele"
 
-# 0818004b3b24490fbfcdba0c24140a66
-#: ../../../src/common/doc/functions/analyze_oneway.rst:83
+# fb1f0f5537c0427a866814b367160245
+#: ../../../src/common/doc/functions/analyze_oneway.rst:129
 msgid "The queries use the :ref:`sampledata` network."
 msgstr ""
 
-# 6a4afd532bf94a29880dbb1bb12f261f
-#: ../../../src/common/doc/functions/analyze_oneway.rst:87
+# 34726fcf405940b780880e71c6a2dad3
+#: ../../../src/common/doc/functions/analyze_oneway.rst:133
 msgid "See Also"
 msgstr "Siehe auch"
 
-# 1b226fa6786642c2804043c2621be128
-#: ../../../src/common/doc/functions/analyze_oneway.rst:89
-msgid ":ref:`pgr_analyze_graph`"
+# 384816237f7b49d5911a48675467810d
+#: ../../../src/common/doc/functions/analyze_oneway.rst:135
+msgid ":ref:`topology`  for an overview of a topology for routing algorithms."
 msgstr ""
 
-# 3f91481837214212b3ff4049995e2897
-#: ../../../src/common/doc/functions/analyze_oneway.rst:90
-msgid ":ref:`analytics`"
+# f8a2c637ce834c5ab9fea42ec365f0d1
+#: ../../../src/common/doc/functions/analyze_oneway.rst:136
+msgid ":ref:`analytics` for an overview of the analysis of a graph."
+msgstr ""
+
+# 1688102891bc4abaaed229738ca05755
+#: ../../../src/common/doc/functions/analyze_oneway.rst:137
+msgid ""
+":ref:`pgr_analyze_graph` to analyze the edges and vertices of the edge "
+"table."
+msgstr ""
+
+# 5914f34793e24715acb0adbe7d9fe1e0
+#: ../../../src/common/doc/functions/analyze_oneway.rst:138
+msgid ""
+":ref:`pgr_create_vert_table` to reconstruct the vertices table based on the "
+"source and target information."
 msgstr ""

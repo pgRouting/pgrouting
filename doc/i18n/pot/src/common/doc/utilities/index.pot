@@ -1,0 +1,78 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (b19690f doc-merge)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-24 15:37\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/utilities/index.rst:13
+# 0e77eadde21444ae8a4bc5dfa8fcba26
+msgid "Developers's Functions"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/index.rst:15
+# 44d25d4823da463ebe59f9505bc73b29
+msgid "Functions to help you develop a wrapper or a recipe"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/index.rst:17
+# 97ca2436709a413e9bae93f5ec5a539d
+msgid ":ref:`pgr_get_column_name` - to get the name of the column as is stored in the postgres administration tables."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/index.rst:18
+# 48f28d2862a24e5c847dcea700e620b8
+msgid ":ref:`pgr_get_table_name` - to retrieve the name of the table as is stored in the postgres administration tables."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/index.rst:19
+# f8890b6d41d04962882925746b968dc8
+msgid ":ref:`pgr_is_column_indexed` - to check if the column is indexed."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/index.rst:20
+# 6232be8593ed443c99052062d09b347c
+msgid ":ref:`pgr_is_column_in_table` - to check only for the existance of the column."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/index.rst:21
+# 9babeb7d18094806b7e34f5fd45a5a4c
+msgid ":ref:`pgr_point_to_id` -to insert/get the id of the inserted point in a vertices table."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/index.rst:22
+# 2c5079432fc74c5b90347fd8ce15d598
+msgid ":ref:`pgr_quote_ident` - to quotes the input text to be used as an identifier in an SQL statement string."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/index.rst:23
+# f90adbe880bd4fb8a26d5b8d422f1ffa
+msgid ":ref:`pgr_version` - to get pgRouting's version information."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/index.rst:24
+# 6a11b5d8649c487e8c0ec8e47374f58c
+msgid ":ref:`pgr_versionless` - to compare two version numbers."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/index.rst:25
+# 13fa2ec9535a49f896660871c5b17d8f
+msgid ":ref:`pgr_start_point` - to get the start point of a (multi)linestring."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/index.rst:26
+# 91fb0530fd06415da1b7ce63b4ee387d
+msgid ":ref:`pgr_end_point` - to get the end point of a (multi)linestring."
+msgstr ""
+

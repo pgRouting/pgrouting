@@ -1,0 +1,64 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (187a022 develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+# cvvergara, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Documentation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-23 15:04\n"
+"PO-Revision-Date: 2013-09-23 20:40+0000\n"
+"Last-Translator: cvvergara\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/pgrouting/language/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# deb0ed12ae874b7a8bb888e9e2be5881
+#: ../../../src/common/doc/functions/index.rst:13
+msgid "Topology Functions"
+msgstr "Funciones Topológicas"
+
+# cbbdace0de7449b1a859558858d76f6e
+#: ../../../src/common/doc/functions/index.rst:15
+msgid ""
+"The pgRouting's topology of a network, represented with an edge table with "
+"source and target attributes and a vertices table associated with it. "
+"Depending on the algorithm, you can create a topology or just reconstruct "
+"the vertices table, You can analyze the topology, We also provide a function"
+" to node an unoded network."
+msgstr "La topología de una red de pgRouting,  es representada con una tabla de bordes con atributos de origen y destino  y una tabla de vértices asociada. Dependiendo del algoritmo, puede crear una topología o simplemente reconstruir la tabla vértices, puede analizar la topología, también ofrecemos una función para generar nodos de un red con nodos faltantes."
+
+# f4e85c020cba4850a7e4da7b9456baa9
+#: ../../../src/common/doc/functions/index.rst:19
+msgid ""
+":ref:`pgr_create_topology` -  to create a topology based on the geometry."
+msgstr ":ref:`pgr_create_topology` para crear la topología basado en la geometría."
+
+# 2d4de3856acc4c43a732847a834661e6
+#: ../../../src/common/doc/functions/index.rst:20
+msgid ""
+":ref:`pgr_create_vert_table` - to reconstruct the vertices table based on "
+"the source and target information."
+msgstr ":ref:`pgr_create_vert_table` para reconstruir la tabla vértices basándose en la información de origen y de destino."
+
+# 4cf0c54d4785484e9694aa275658e7a7
+#: ../../../src/common/doc/functions/index.rst:21
+msgid ""
+":ref:`pgr_analyze_graph`  - to analyze the edges and vertices of the edge "
+"table."
+msgstr ":ref:`pgr_analyze_graph` Para analizar los bordes y vértices de la tabla de bordes."
+
+# a7edff2f50444a3d985d747d5e6a609e
+#: ../../../src/common/doc/functions/index.rst:22
+msgid ":ref:`pgr_analyze_oneway` - to analyze directionality of the edges."
+msgstr ":ref:`pgr_analyze_oneway` para analizar la direccionalidad de los bordes."
+
+# e04ee2a942c4495fa185f89d37b0c42b
+#: ../../../src/common/doc/functions/index.rst:23
+msgid ":ref:`pgr_node_network`  -to create nodes to a not noded edge table."
+msgstr ":ref:`pgr_nodeNetwork <pgr_node_network>` - para crear nodos a una tabla de borde sin nodos."

@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-12 01:50+0000\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-21 16:10+0000\n"
 "Last-Translator: cvvergara\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/pgrouting/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-# 3f3e673fb58a4facae23af5d85b92a3e
+# c7c0c737d2bc483ca92c96d3625c5985
 #: ../../src/introduction/support.rst:13
 msgid "Support"
 msgstr "Soporte"
 
-# 054afbc73bff4758b3f1f2f23c57f16c
+# 32ad6c32431b44539592025892c46046
 #: ../../src/introduction/support.rst:15
 msgid ""
 "pgRouting community support is available through `website "
@@ -31,14 +31,14 @@ msgid ""
 "tutorials, mailing lists and others. If you’re looking for :ref:`commercial "
 "support <support_commercial>`, find below a list of companies providing "
 "pgRouting development and consulting services."
-msgstr "Ayudas comunitarias de pgRouting son a través del `website <http://www.pgrouting.org>`_, `documentation <http://docs.pgrouting.org>`_,  tutoriales, listas de correo y otros. Si usted está buscando :ref:`apoyo comercial  <support_commercial>`, a continuación encontrará una lista de las empresas que prestan servicios de consultoría y de desarrollo para pgRouting."
+msgstr "Ayudas comunitarias de pgRouting son a través del sitio `pgrouting <http://www.pgrouting.org>`_, `documentación <http://docs.pgrouting.org>`_,  tutoriales, listas de correo y otros. Si usted está buscando :ref:`apoyo comercial  <support_commercial>`, a continuación encontrará una lista de las empresas que prestan servicios de consultoría y de desarrollo para pgRouting."
 
-# 00eb6c3f6a9d4ffa879660f666f09fd2
+# 4bff50a608f740b89877515e393b43a3
 #: ../../src/introduction/support.rst:19
 msgid "Reporting Problems"
-msgstr "Informes de problemas"
+msgstr "Reporte de problemas"
 
-# f852f553af29413fa977344ea5ebe860
+# a0003d2bba284084b83f648947e1d28a
 #: ../../src/introduction/support.rst:21
 msgid ""
 "Bugs are reported and managed in an `issue tracker "
@@ -46,76 +46,83 @@ msgid ""
 "steps:"
 msgstr "Errores son registrados y manejados en un `issue tracker <https://github.com/pgrouting/pgrouting/issues>`_. Por favor siga los siguientes pasos:"
 
-# 6db36a1db3dd43e58fd38f9dbd64a222
+# 456e34fdd1a64ac2bf279b123f8c60ec
 #: ../../src/introduction/support.rst:23
 msgid ""
 "Search the tickets to see if your problem has already been reported. If so, "
 "add any extra context you might have found, or at least indicate that you "
 "too are having the problem. This will help us prioritize common issues."
-msgstr "Buscar en las entradas para ver si ya se ha informado de su problema. Si es así, añadir cualquier contexto extra que usted haya encontrado, o al menos indicar que también están teniendo el problema. Esto nos ayudará a priorizar los problemas comunes."
+msgstr "Buscar en las entradas para ver si ya se ha informado de su problema. Si es así, añadir cualquier contexto extra que usted haya encontrado, o al menos indicar que también está teniendo el problema. Esto nos ayudará a priorizar los problemas más comunes."
 
-# c1bf71ad2fbb411bb697d605d746d9a7
+# c7868bf251024c2284115bdc5ff6a56a
 #: ../../src/introduction/support.rst:24
 msgid ""
 "If your problem is unreported, create a `new issue "
 "<https://github.com/pgRouting/pgrouting/issues/new>`_ for it."
 msgstr "Si el problema no está reportado , crear una `nueva entrada <https://github.com/pgRouting/pgrouting/issues/new>`_ para el problema."
 
-# fe9adaa2deb041a29b790096a0172f6d
+# 8780a71171ad4ee891831e77e352e463
 #: ../../src/introduction/support.rst:25
 msgid ""
 "In your report include explicit instructions to replicate your issue. The "
 "best tickets include the exact SQL necessary to replicate a problem."
 msgstr "En su informe incluya instrucciones explícitas para reproducir el problema. Las mejores entradas incluyen consultas SQL exactas que se necesitan para reproducir el problema."
 
-# a1b37c7ea578450897528b3c37b048d1
+# e37493a4d9354b66abcd37cee8516738
 #: ../../src/introduction/support.rst:26
 msgid ""
 "If you can test older versions of PostGIS for your problem, please do. On "
 "your ticket, note the earliest version the problem appears."
 msgstr "Si usted puede probar las versiones anteriores de PostGIS para su problema, por favor hágalo. En su reporte, tenga en cuenta la versión más antigua en la que aparezca el problema."
 
-# 7c99e581b4624250aff7cdae6bdcd0c8
+# 2fb24e96127c45d08bb73c55f52a7153
 #: ../../src/introduction/support.rst:27
 msgid ""
 "For the versions where you can replicate the problem, note the operating "
 "system and version of pgRouting, PostGIS and PostgreSQL."
 msgstr "Para las versiones donde se puede reproducir el problema, anote el sistema operativo y la versión de pgRouting, PostGIS y PostgreSQL."
 
-# b5fd7543c8b54f34b556a133fb638174
-#: ../../src/introduction/support.rst:31
+# a663e12c88ed4c958554c604f0b6d4d0
+#: ../../src/introduction/support.rst:28
+msgid ""
+"It is recommended to use the following wrapper on the problem to pin point "
+"the step that is causing the problem."
+msgstr "Se recomienda que utilice el siguiente envoltorio en su problema para determinar el paso que está causando el problema"
+
+# 47052f7fae7249d6ae1cf64282ceb59c
+#: ../../src/introduction/support.rst:39
 msgid "Mailing List and GIS StackExchange"
 msgstr "Listas de correo y GIS StackExchange"
 
-# 2867bdf7c4d8450b86de7702b26e37ab
-#: ../../src/introduction/support.rst:33
+# 27b8ce0f71384ba693efcb0dfb73ae3a
+#: ../../src/introduction/support.rst:41
 msgid ""
 "There are two mailing lists for pgRouting hosted on OSGeo mailing list "
 "server:"
 msgstr "Hay dos listas de correo para pgRouting alojados en las listas de correo del Servidor de OSGeo:"
 
-# 36b218682a5b495386d69caea89554a0
-#: ../../src/introduction/support.rst:35
+# 80462e7382f24471ba09d7fd3a545a9e
+#: ../../src/introduction/support.rst:43
 msgid ""
 "User mailing list: http://lists.osgeo.org/mailman/listinfo/pgrouting-users"
 msgstr "Lista de correos para usuarios: http://lists.osgeo.org/mailman/listinfo/pgrouting-users"
 
-# af2dbf4b5c35487cbbf47c409093d3c3
-#: ../../src/introduction/support.rst:36
+# 13e85084f4834b80bc71de82070cd045
+#: ../../src/introduction/support.rst:44
 msgid ""
 "Developer mailing list: http://lists.osgeo.org/mailman/listinfo/pgrouting-"
 "dev"
 msgstr "Lista de correo para desarrolladores: http://lists.osgeo.org/mailman/listinfo/pgrouting-dev"
 
-# 37947883c7b74e47bfa51cdac68b080a
-#: ../../src/introduction/support.rst:38
+# 1c9e5bb5962e4e0eb6def2fb057836f0
+#: ../../src/introduction/support.rst:46
 msgid ""
 "For general questions and topics about how to use pgRouting, please write to"
 " the user mailing list."
 msgstr "Para preguntas generales y tópicos sobre el uso pgRouting, escriba a la lista de correo para usuario."
 
-# 7e3dfcc3a31a4ba3bc41f6c7d5a3c19b
-#: ../../src/introduction/support.rst:40
+# 6ee669e36133404c80e8b4970948411f
+#: ../../src/introduction/support.rst:48
 msgid ""
 "You can also ask at `GIS StackExchange <http://gis.stackexchange.com/>`_ and"
 " tag the question with ``pgrouting``. Find all questions tagged with "
@@ -124,90 +131,90 @@ msgid ""
 "<http://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&sort=newest>`_."
 msgstr "También se puede preguntar en `StackExchange GIS <http://gis.stackexchange.com/>`_ y etiquetar la pregunta con ``pgRouting``. Buscar todas las preguntas con la etiqueta ``pgRouting`` bajo http://gis.stackexchange.com/questions/tagged/pgrouting o suscribirse al `Alimentador de preguntas de pgRouting <http://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&sort=newest>`_."
 
-# 18af2d65168042edac691be50d758d38
-#: ../../src/introduction/support.rst:46
+# 6a373e258f034db7a828d6136b10d6f2
+#: ../../src/introduction/support.rst:54
 msgid "Commercial Support"
-msgstr "Soporte comercial"
+msgstr "Soporte Comercial"
 
-# 01737e94c36042388ff00a08c37c5837
-#: ../../src/introduction/support.rst:48
+# cc0ba72823c14231862a66b9ae93346a
+#: ../../src/introduction/support.rst:56
 msgid ""
 "For users who require professional support, development and consulting "
 "services, consider contacting any of the following organizations, which have"
 " significantly contributed to the development of pgRouting:"
 msgstr "Para usuarios que requieren apoyo profesional, desarrollo y servicios de consultoría, considere ponerse en contacto con cualquiera de las siguientes organizaciones, que han contribuido significativamente al desarrollo de pgRouting:"
 
-# 698641cbd88f432f9273710e46df58c5
-#: ../../src/introduction/support.rst:53
+# 67e18fa7bf2148078cd7d3f651ee5127
+#: ../../src/introduction/support.rst:61
 msgid "**Company**"
 msgstr "**Empresa**"
 
-# 0ab2194260424eb395df6be8d03f0611
-#: ../../src/introduction/support.rst:54
+# 19beaf22bba14bad81ecc361e70f065f
+#: ../../src/introduction/support.rst:62
 msgid "**Offices in**"
 msgstr "**Oficinas en**"
 
-# e3c7d214f6aa4fc5bc8e54c16bd586b3
-#: ../../src/introduction/support.rst:55
+# 0fab02b12f7a41429938b4d160ad4255
+#: ../../src/introduction/support.rst:63
 msgid "**Website**"
 msgstr "**Sitio web**"
 
-# 6342d8daef894a66b042852b7aed0be3
-#: ../../src/introduction/support.rst:56
+# 350e6cd672124438a6fa234a5c635414
+#: ../../src/introduction/support.rst:64
 msgid "Georepublic"
 msgstr "Georepublic"
 
-# 4cff0cbdf09142fe96cedf784e527f88
-#: ../../src/introduction/support.rst:57
+# dd5cf051ee424f30aebcd1f07cb73b6e
+#: ../../src/introduction/support.rst:65
 msgid "Germany, Japan"
 msgstr "Alemania, Japón"
 
-# d21fbd0b66dd460782765e0899cda198
-#: ../../src/introduction/support.rst:58
+# 466fe62593f94b62a69ead6e8a03565b
+#: ../../src/introduction/support.rst:66
 msgid "http://georepublic.info"
 msgstr "http://georepublic.info"
 
-# 4709209a400848fbb145d3e9bbd8289b
-#: ../../src/introduction/support.rst:59
+# addd13f2e8ba4a588f031b6f49ee8928
+#: ../../src/introduction/support.rst:67
 msgid "iMaptools"
 msgstr "iMaptools"
 
-# 9c4e2cec8d6e49b9b1d395ef568e7bf4
-#: ../../src/introduction/support.rst:60
+# a8daac2def214afc8d8ceb9a27d25589
+#: ../../src/introduction/support.rst:68
 msgid "United States"
 msgstr "Estados Unidos"
 
-# f139763c29294bb79ebd32b4794edfcb
-#: ../../src/introduction/support.rst:61
+# 08a0ae9e94434d9bb44c3c8403243f3f
+#: ../../src/introduction/support.rst:69
 msgid "http://imaptools.com"
 msgstr "http://imaptools.com"
 
-# bc88272585b7418e87f8aa1e03fd54a5
-#: ../../src/introduction/support.rst:62
+# de65746683f949569928286d2b94e0c9
+#: ../../src/introduction/support.rst:70
 msgid "Orkney Inc."
 msgstr "Orkney Inc."
 
-# 84daebce6fc94b6e953b97d39cdf8c25
-#: ../../src/introduction/support.rst:63
+# f9673096ad4b4c9fb435f7e806e95b68
+#: ../../src/introduction/support.rst:71
 msgid "Japan"
 msgstr "Japón"
 
-# 624d95640fbb41c3b1e2c8be2ac6643f
-#: ../../src/introduction/support.rst:64
+# d23116ef9a0f4feba31c83b54b3e823f
+#: ../../src/introduction/support.rst:72
 msgid "http://www.orkney.co.jp"
 msgstr "http://www.orkney.co.jp"
 
-# dfe08a11bfac41ccb2e0c58cb1e0147c
-#: ../../src/introduction/support.rst:65
+# dceb3f34abe74bfbad46c5a5e37c852b
+#: ../../src/introduction/support.rst:73
 msgid "Camptocamp"
 msgstr "Camptocamp"
 
-# 6de446c9b4aa48b7bdf619923546c10d
-#: ../../src/introduction/support.rst:66
+# 6bb5afc92f294b7e8322302390f56fec
+#: ../../src/introduction/support.rst:74
 msgid "Switzerland, France"
 msgstr "Suiza, Francia"
 
-# c15be03a07254055b4b18b07c808943c
-#: ../../src/introduction/support.rst:67
+# bd2983c88d074017be19551e6cf11fff
+#: ../../src/introduction/support.rst:75
 msgid "http://www.camptocamp.com"
 msgstr "http://www.camptocamp.com"
