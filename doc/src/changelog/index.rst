@@ -12,8 +12,11 @@
 Release Notes
 ===============================================================================
 
+   - :ref:`changelog_2_0`  
+   - :ref:`changelog_1_x`  
+
 .. toctree::
-   :maxdepth: 1
+   :hidden: 
 
    pgRouting 2.0 Release Notes <2_0>
    pgRouting 1.x Release Notes <1_x>

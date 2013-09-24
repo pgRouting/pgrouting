@@ -12,8 +12,19 @@
 Routing Functions
 ------------------
 
+  -  :ref:`pgr_apspJohnson <pgr_apsp_johnson>`- All Pairs Shortest Path, Johnson’s Algorithm
+  -  :ref:`pgr_apspWarshall<pgr_apsp_warshall>` - All Pairs Shortest Path, Floyd-Warshall Algorithm
+  -  :ref:`pgr_astar<pgr_astar>` - Shortest Path A*
+  -  :ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
+  -  :ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path
+  -  :ref:`pgr_dijkstra<pgr_dijkstra>` - Shortest Path Dijkstra
+  -  :ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path Dijkstra
+  -  :ref:`pgr_ksp<ksp>` - K-Shortest Path
+  -  :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
+  -  :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
+
 .. toctree::
-	:maxdepth: 1
+	:hidden: 
 
 	apsp_johnson/doc/index
 	apsp_warshall/doc/index
@@ -26,6 +37,4 @@ Routing Functions
 	tsp/doc/index
 	trsp/doc/index
 
-* :ref:`genindex`
-* :ref:`search`
 
