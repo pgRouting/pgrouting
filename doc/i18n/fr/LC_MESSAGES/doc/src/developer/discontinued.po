@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
 "PO-Revision-Date: 2013-08-21 18:10+0000\n"
 "Last-Translator: erikap\n"
 "Language-Team: French (http://www.transifex.com/projects/p/pgrouting/language/fr/)\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-# 09366a0298d04b47be343c8bf8c6e12a
+# ecfce536b0aa4abcb4b588ec5c569d01
 #: ../../src/developer/discontinued.rst:13
 msgid "Discontinued Functions"
 msgstr "Fonctions discontinues"
 
-# 8ab172e3591c493f94919b9391d65313
+# a62da7ecbf3e4e56817c5acd4b283ad1
 #: ../../src/developer/discontinued.rst:15
 msgid ""
 "Especially with new major releases functionality may change and functions "
@@ -31,22 +31,22 @@ msgid ""
 "discontinued will be listed here."
 msgstr "Particulièrement avec les nouvelles versions majeures, des fonctionnalités peuvent changer et des fonctions peuvent être retirées pour diverses raisons. Toute fonctionnalité qui a été retirée est listée ici."
 
-# 6bb9bb9b649544eb9384e2c03fa6e60d
+# 778ac5fe0c47470883e33983eee7b86e
 #: ../../src/developer/discontinued.rst:22
 msgid "Shooting Star algorithm"
 msgstr "Algorithme Shooting Star"
 
-# 6c87b9ac3f1b441a88d4bd7a32449eeb
+# b6e21b5fe8ff45d3b6ae4cd3e21ff661
 #: ../../src/developer/discontinued.rst:24
 msgid "Removed with 2.0.0"
 msgstr "Supprimé depuis 2.0.0"
 
-# 6afa2318319f4b5e93e9eb99d1dd1843
+# 681aaa34e63344de87e7765476be87f2
 #: ../../src/developer/discontinued.rst:25
 msgid "Unresolved bugs, no maintainer, replaced with :ref:`trsp`"
 msgstr "Bugs non résolus,  maintenance non assurée, remplacé par :ref:`trsp`"
 
-# 7e711820b4534143a7fd0d1aa4c5cc58
+# c11387652cc84dd7ad0e964baff5182e
 #: ../../src/developer/discontinued.rst:26
 msgid ""
 "Please :ref:`contact us <support>` if you're interested to sponsor or "

@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
+# This file is distributed under the same license as the pgRouting package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Documentation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-22 05:50+0000\n"
+"Last-Translator: Daniel Kastl\n"
+"Language-Team: French (http://www.transifex.com/projects/p/pgrouting/language/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+# 95f0c2d0bb88448c8b72400e83c9f6f4
+#: ../../../src/common/doc/utilities/get_table_name.rst:13
+msgid "pgr_getTableName"
+msgstr ""
+
+# 68a49ae29d0e4036bda025f169e4f3f7
+#: ../../../src/common/doc/utilities/get_table_name.rst:20
+msgid "Name"
+msgstr "Nom"
+
+# 8f9480f595c9426f945620d8b5977b86
+#: ../../../src/common/doc/utilities/get_table_name.rst:22
+msgid ""
+"``pgr_getTableName`` — Retrieves the name of the column as is stored in the "
+"postgres administration tables."
+msgstr ""
+
+# c06c3bd3649a4e27af6f710e189ea071
+#: ../../../src/common/doc/utilities/get_table_name.rst:24
+msgid "This function is intended for the developer’s aid."
+msgstr ""
+
+# 3285b01b587a4aac94ab9ee03a474ef7
+#: ../../../src/common/doc/utilities/get_table_name.rst:27
+msgid "Synopsis"
+msgstr "Synopsis"
+
+# ecd7065df5e047ef8415f13acf653201
+#: ../../../src/common/doc/utilities/get_table_name.rst:29
+msgid ""
+"Returns a record containing the registered names of the table and of the "
+"schema it belongs to."
+msgstr ""
+
+# 9912cc30113340efa3e5e3ac408d3a3c
+#: ../../../src/common/doc/utilities/get_table_name.rst:37
+msgid "Description"
+msgstr "Description"
+
+# 787a57d13f8a48a289b545e5c5fc50d5
+#: ../../../src/common/doc/utilities/get_table_name.rst:39
+msgid "Parameters"
+msgstr ""
+
+# 3c523e72ddd74a10b3defc135e0a1fa1
+#: ../../../src/common/doc/utilities/get_table_name.rst:41
+msgid "``text`` table name with or without schema component."
+msgstr ""
+
+# bc51a86638e44b1b8d435a7fcec971e1
+#: ../../../src/common/doc/utilities/get_table_name.rst:43
+msgid "Returns"
+msgstr ""
+
+# a3da192f153341e484e7a1c973e77570
+#: ../../../src/common/doc/utilities/get_table_name.rst:47
+msgid "``text`` containing the registered name of the schema of table \"tab\"."
+msgstr ""
+
+# 77471087a83049e4924411216422cd8f
+#: ../../../src/common/doc/utilities/get_table_name.rst:49
+msgid "when the schema was not provided in \"tab\" the current schema is used."
+msgstr ""
+
+# f253b42e28a3413abcbeebd5a25fbb53
+# a25f490ebce344728e53d37057ded897
+#: ../../../src/common/doc/utilities/get_table_name.rst:51
+#: ../../../src/common/doc/utilities/get_table_name.rst:58
+msgid "``NULL`` when :"
+msgstr ""
+
+# ab062cff517a43b6b5a40e1090073265
+# 49a4ab8abced47adaf11ea7b321f06b9
+#: ../../../src/common/doc/utilities/get_table_name.rst:53
+#: ../../../src/common/doc/utilities/get_table_name.rst:60
+msgid "The schema is not found in the postgres administration tables."
+msgstr ""
+
+# 19d2a93e6d45419d89974c286d1347f3
+#: ../../../src/common/doc/utilities/get_table_name.rst:57
+msgid "``text`` containing the registered name of the table \"tab\"."
+msgstr ""
+
+# 7c7d80132bbc4693a79fbb1bb32a804d
+#: ../../../src/common/doc/utilities/get_table_name.rst:61
+msgid ""
+"The table \"tab\" is not registered under the schema ``sname`` in the "
+"postgres administration tables"
+msgstr ""
+
+# fe048e6d68984dfb9e8d91f72f99f65a
+#: ../../../src/common/doc/utilities/get_table_name.rst:65
+msgid "History"
+msgstr "Histoire"
+
+# 0ac3887a0f0642ca8bf6c6fa12f497bb
+#: ../../../src/common/doc/utilities/get_table_name.rst:66
+msgid "New in version 2.0.0"
+msgstr "Nouveau depuis la version 2.0.0"
+
+# fbd75b0146ff4f9595156794c4ebd6fd
+#: ../../../src/common/doc/utilities/get_table_name.rst:70
+msgid "Examples"
+msgstr "Exemples"
+
+# 3792394a3a344c4493db40c2d04b5e2d
+#: ../../../src/common/doc/utilities/get_table_name.rst:95
+msgid "The examples use the :ref:`sampledata` network."
+msgstr ""
+
+# 10229dc5fd6545bdb875c9885f090618
+#: ../../../src/common/doc/utilities/get_table_name.rst:99
+msgid "See Also"
+msgstr "Voir aussi"
+
+# c24e1b3593b44343b2e4c86e06b4cbb2
+#: ../../../src/common/doc/utilities/get_table_name.rst:101
+msgid ":ref:`developer` for the tree layout of the project."
+msgstr ""
+
+# 830f93a843b145ebb35db5cf5de99e00
+#: ../../../src/common/doc/utilities/get_table_name.rst:102
+msgid ""
+":ref:`pgr_is_column_in_table` to check only for the existance of the column."
+msgstr ""
+
+# e731438ed94a48a0b26ea5223b564393
+#: ../../../src/common/doc/utilities/get_table_name.rst:103
+msgid ""
+":ref:`pgr_get_table_name` to retrieve the name of the table as is stored in "
+"the postgres administration tables."
+msgstr ""

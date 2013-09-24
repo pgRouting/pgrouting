@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (ec59fc1 develop)
 # This file is distributed under the same license as the pgRouting package.
 # 
 # Translators:
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Documentation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
-"PO-Revision-Date: 2013-08-29 02:58+0000\n"
-"Last-Translator: erikap\n"
+"POT-Creation-Date: 2013-09-22 13:52\n"
+"PO-Revision-Date: 2013-09-20 14:12+0000\n"
+"Last-Translator: Daniel Kastl\n"
 "Language-Team: French (http://www.transifex.com/projects/p/pgrouting/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,73 +18,84 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-# 23979832a43e4f649b9d1e0a9600e92c
+# 980fad1a06484f7c8cef9a7fde4958ec
 #: ../../src/tutorial/analytics.rst:13
 msgid "Graph Analytics"
 msgstr "Analytiques de graphe"
 
-# 870087e3aec148fda371faa46eaa2ce7
+# 92dfdaca18154d5fb972e4b0377224d1
 #: ../../src/tutorial/analytics.rst:15
 msgid "Stephen Woodbridge <woodbri@swoodbridge.com>"
 msgstr "Stephen Woodbridge <woodbri@swoodbridge.com>"
 
-# 4946729e48894e889375ad1363e1e7d4
+# 9d29818196394fe6bde3a64a6a4ecc11
 #: ../../src/tutorial/analytics.rst:16
 msgid ""
 "Stephen Woodbridge. The source code is released under the MIT-X license."
 msgstr "Stephen Woodbridge. The code source est distribué sous la licence MIT-X."
 
-# 25f24981252f48e89824070b89cd3423
+# 310f125aa8204065bcc2b95d49db2196
 #: ../../src/tutorial/analytics.rst:20
 msgid "Overview"
 msgstr "Présentation"
 
-# e9d52dba5e404196a29544d302148264
+# a3236e530b504e8895bcee266c2f686b
 #: ../../src/tutorial/analytics.rst:22
 msgid ""
 "It is common to find problems with graphs that have not been constructed "
-"fully noded or in graphs with zlevels at intersection that have been entered"
-" incorrectly. An other problem is oneway streets that have been entered in "
-"the wrong direction. We can not detect errors with respect to \"ground\" "
-"truth, but we can look for inconsistencies and some anomalies in a graph and"
-" report them for additional inspections."
-msgstr "Il est commun de trouver des problèmes avec des graphes qui n'ont pas été construit complètement noués ou dans les graphes avec des zlevels en intersections qui n'ont pas été entrés correctement. Un autre problème est les routes à sens unique qui ont été entrées dans la mauvaise direction. Nous ne pouvons pas détecter les erreurs en accord à la vérité \"terrain\", mais nous pouvons regarder les manques de cohérence et certaines anomalies dans un graphe et les signaler pour inspections supplémentaires."
+"fully noded or in graphs with z-levels at intersection that have been "
+"entered incorrectly. An other problem is one way streets that have been "
+"entered in the wrong direction. We can not detect errors with respect to "
+"\"ground\" truth, but we can look for inconsistencies and some anomalies in "
+"a graph and report them for additional inspections."
+msgstr ""
 
-# 58592f133a874ed5b020d85d8686ee80
+# be553e417c184b5eb0ad8ee4096ad7fa
 #: ../../src/tutorial/analytics.rst:24
 msgid ""
 "We do not current have any visualization tools for these problems, but I "
 "have used mapserver to render the graph and highlight potential problem "
-"areas. Someone familar with graphviz might contribute tools for generating "
+"areas. Someone familiar with graphviz might contribute tools for generating "
 "images with that."
-msgstr "Nous n'avons actuellement aucun outil de visualisation pour ces problèmes, mais j'ai utilisé mapserver pour afficher le graphe et   mettre en valeur les aires de problèmes potentiels. Quelqu'un de familier avec graphviz pourrait contribuer aux outils pour générer les images avec ça."
+msgstr ""
 
-# 2852df2e27df4d4380c91898a3058e66
+# d3e3bf311b944d1cb4f8ebfa1e3d1c35
 #: ../../src/tutorial/analytics.rst:28
 msgid "Analyze a Graph"
 msgstr "Analyser un graphe"
 
-# 86e59c4e533842cf9992b34939e60e22
+# b7b34732b36b4c3386ebb82a99725c87
 #: ../../src/tutorial/analytics.rst:30
-msgid "With :ref:`pgr_analyze_graph` the graph can be checked for errors."
-msgstr "Avec :ref:`pgr_analyze_graph` le graphe peut être vérifié pour erreurs."
-
-# 27125a2ee9ed4622a7eaab027c9d738f
-#: ../../src/tutorial/analytics.rst:37
 msgid ""
-"After the analyzing the graph, deadends are indentified by ``cnt=1`` in the "
-"\"vertices_tmp\" table and potential problems are identified with ``chk=1``."
-msgstr "Après avoir analysé le graphe, les impasses sont identifiés par ``cnt=1`` dans la table \"vertices_tmp\" et les problèmes potentiels sont identifiés avec "
+"With :ref:`pgr_analyze_graph` the graph can be checked for errors. For "
+"example for table \"mytab\" that has \"mytab_vertices_pgr\" as the vertices "
+"table:"
+msgstr ""
 
-# c9ad68211bdf47adba8f53d0f19c8308
-#: ../../src/tutorial/analytics.rst:44
-msgid ""
-"If you have isolated road segments, for example, a segment where both ends "
-"are deadends. you can find these with the following query:"
-msgstr "Si vous avez des segments de route, par exemple, un segment où les deux terminaisons sont des impasses. Vous pouvez trouver ceux-ci avec la requête suivante :"
-
-# 6bd1e7249d22418d93b75265102073cd
+# 883152de9fb3419fa261d8c6761b619f
 #: ../../src/tutorial/analytics.rst:53
+msgid "In the vertices table \"mytab_vertices_pgr\":"
+msgstr ""
+
+# dde249ef911949ab835d0b7d9350c416
+#: ../../src/tutorial/analytics.rst:55
+msgid "Deadends are indentified by ``cnt=1``"
+msgstr ""
+
+# 99f8cb76dde84268b23cafcadb364a32
+#: ../../src/tutorial/analytics.rst:56
+msgid "Potencial gap problems are identified with ``chk=1``."
+msgstr ""
+
+# fd199f728c124588a6fccf258e912e65
+#: ../../src/tutorial/analytics.rst:74
+msgid ""
+"For isolated road segments, for example, a segment where both ends are "
+"deadends. you can find these with the following query:"
+msgstr ""
+
+# 6986ddb18688499ca9065a00ac84b5fc
+#: ../../src/tutorial/analytics.rst:83
 msgid ""
 "If you want to visualize these on a graphic image, then you can use "
 "something like mapserver to render the edges and the vertices and style "
@@ -92,21 +103,21 @@ msgid ""
 "tool like graphviz, or geoserver or other similar tools."
 msgstr "Si vous voulez visualiser ceux-ci sur une image graphique, alors vous pouvez utiliser quelque chose comme mapserver pour rendre les arêtes et les sommets et le style basé sur ``cnt`` ou ils sont isolés, etc. Vous pouvez aussi faire cela avec un outil comme graphviz, ou geoserver ou autres outils similaires."
 
-# e1ab479696a94a8bb2918be3ac8c02bf
-#: ../../src/tutorial/analytics.rst:57
+# a9cdd802bf2d44b8ad116075edfa006d
+#: ../../src/tutorial/analytics.rst:87
 msgid "Analyze One Way Streets"
 msgstr "Analyser les routes à sens unique"
 
-# d229e9757c3a416bacbb77b74265717e
-#: ../../src/tutorial/analytics.rst:59
+# ceeba0ba5905459c92f8e38e90544cb4
+#: ../../src/tutorial/analytics.rst:89
 msgid ""
-":ref:`pgr_analyze_oneway` analyzes oneway streets in a graph and identifies "
-"any flipped segments. Basically if you count the edges coming into a node "
+":ref:`pgr_analyze_oneway` analyzes one way streets in a graph and identifies"
+" any flipped segments. Basically if you count the edges coming into a node "
 "and the edges exiting a node the number has to be greater than one."
-msgstr ":ref:`pgr_analyze_oneway` analyse les routes à sens unique dans un graphe et identifie tout segment tourneboulé. Simplement, si vous comptez les arêtes venant dans un noeud et les arêtes quittant un noeud, le nombre doit être plus grand que un."
+msgstr ""
 
-# e21764f266e44098a1c4970c603a3c91
-#: ../../src/tutorial/analytics.rst:61
+# 965b89e720674f77a4d6d97b26312235
+#: ../../src/tutorial/analytics.rst:91
 msgid ""
 "This query will add two columns to the vertices_tmp table ``ein int`` and "
 "``eout int`` and populate it with the appropriate counts. After running this"
@@ -114,91 +125,91 @@ msgid ""
 "following query."
 msgstr "Cette requête va ajouter deux colonnes à la table vertices_tmp ``ein int`` et ``eout int`` et la remplir avec les comptes appropriés. Après avoir exécuté ceci sur un graphe vous pouvez identifier les noeuds avec des problèmes potentiels avec la requête suivante."
 
-# 9e7381775ed64ef694f7b027d79ed956
-#: ../../src/tutorial/analytics.rst:68
+# 7a483848e9424b628eadf2560140d784
+#: ../../src/tutorial/analytics.rst:94
 msgid ""
 "The rules are defined as an array of text strings that if match the ``col`` "
 "value would be counted as true for the source or target in or out condition."
 msgstr "Les règles sont définies comme un tableau de chaînes de caractères qui s'ils correspondent à la valeur ``col`` serait être comptée comme vraie pour la source ou cible sous ou en dehors de la condition."
 
-# b167af7d65854885b2f3eaebca08b505
-#: ../../src/tutorial/analytics.rst:72
+# 07304f9bde2d4248af5616aa3ad7b998
+#: ../../src/tutorial/analytics.rst:98
 msgid "Example"
 msgstr "Exemple"
 
-# adf5dedf104347848fb6b0a3589257c1
-#: ../../src/tutorial/analytics.rst:74
+# 3a0862cb802a42dd9a8eb1972e947d4a
+#: ../../src/tutorial/analytics.rst:100
 msgid ""
 "Lets assume we have a table \"st\" of edges and a column \"one_way\" that "
 "might have values like:"
 msgstr "Supposons que nous avons un tableau \"st\" des arêtes et une colonne à \"sens unique\" qui pourrait avoir des valeurs comme :"
 
-# b721dbca4dd5428a9026173bde6f7319
-#: ../../src/tutorial/analytics.rst:76
+# 04d77c12d42a49098ac138d4cd8d1134
+#: ../../src/tutorial/analytics.rst:102
 msgid "'FT'    - oneway from the source to the target node."
 msgstr "'FT'    - sens unique de la source au noeud cible."
 
-# e6a4bb1e19dd44768851da51fcc498c9
-#: ../../src/tutorial/analytics.rst:77
+# 1e433297e48745b8a26d9bdc471bb079
+#: ../../src/tutorial/analytics.rst:103
 msgid "'TF'    - oneway from the target to the source node."
 msgstr "'TF'    - sens unique de la cible au noeud source."
 
-# cddb1f7a26d94eafaf24a8cfc79e4a94
-#: ../../src/tutorial/analytics.rst:78
+# ec58ad375c304521a62c088b53b57cca
+#: ../../src/tutorial/analytics.rst:104
 msgid "'B'     - two way street."
 msgstr "'B'     - route à deux voies."
 
-# 4f8757fc3c8f48ba9deecbe2cda8dd06
-#: ../../src/tutorial/analytics.rst:79
+# de3d50611ab84de8abc0434aaf176361
+#: ../../src/tutorial/analytics.rst:105
 msgid "''      - empty field, assume twoway."
 msgstr "''      - champ vide, supposé à deux voies."
 
-# e999d75f7c314466bd2230df567e2b51
-#: ../../src/tutorial/analytics.rst:80
+# bec6afb7e7f0453b8d028b521ce38b1f
+#: ../../src/tutorial/analytics.rst:106
 msgid "<NULL>  - NULL field, use two_way_if_null flag."
 msgstr "<NULL>  - champ NULL, utiliser le flag two_way_if_null."
 
-# e7605d8922cc4e8389000be32a6f265f
-#: ../../src/tutorial/analytics.rst:82
+# 8b2a6e5d0f58459b9c0d857b8094b2b1
+#: ../../src/tutorial/analytics.rst:108
 msgid ""
 "Then we could form the following query to analyze the oneway streets for "
 "errors."
 msgstr "Ensuite nous pourrions former la requête suivante pour analyser les routes à sens unique pour les erreurs."
 
-# 6f823f2752f0468e89350317f49ed92e
-#: ../../src/tutorial/analytics.rst:101
+# ca0da22fa34a4ab8abffbb33176f1196
+#: ../../src/tutorial/analytics.rst:127
 msgid ""
-"Typically these problems are generated by a break in the network, the oneway"
-" direction set wrong, maybe an error releted to zlevels or a network that is"
-" not properly noded."
-msgstr "Typiquement ces problèmes sont générés par une pause dans le réseau, la direction à sens unique mets faux, peut-être une erreur relatée aux zlevels ou un réseau qui n'est pas proprement noué."
+"Typically these problems are generated by a break in the network, the one "
+"way direction set wrong, maybe an error related to z-levels or a network "
+"that is not properly noded."
+msgstr ""
 
-# d0559fbd0bb34aebaed10e69cde97e83
-#: ../../src/tutorial/analytics.rst:103
+# e6995522d4b34322a49f7fc234ef5a92
+#: ../../src/tutorial/analytics.rst:129
 msgid ""
 "The above tools do not detect all network issues, but they will identify "
 "some common problems. There are other problems that are hard to detect "
 "because they are more global in nature like multiple disconnected networks. "
 "Think of an island with a road network that is not connected to the mainland"
-" network because the bridge ot ferry routes are missing."
-msgstr "Les outils ci-dessus ne détectent pas tous les problèmes de réseau, mais ils vont identifier quelques problèmes communs. Ils sont des problèmes qui sont difficiles à détecter parce que ils sont plus globales en nature comme les réseaux multiples déconnectés. Pensez à une île avec un réseau routier qui n'est pas connecté au réseau terrestre parce que les routes du pont ou du ferry sont manquants."
+" network because the bridge or ferry routes are missing."
+msgstr ""
 
-# 428bcc7c2ada46aa9caa2dd99b1bfe36
-#: ../../src/tutorial/analytics.rst:107
+# f35ee6b63cb84a21956ba58f495375b3
+#: ../../src/tutorial/analytics.rst:133
 msgid "See Also"
 msgstr "Voir aussi"
 
-# 7b075945985c46899af62cc8d3b0dac1
-#: ../../src/tutorial/analytics.rst:109
+# 46adfdf5d9b042109be5c667ad12afdc
+#: ../../src/tutorial/analytics.rst:135
 msgid ":ref:`pgr_analyze_graph`"
 msgstr ":ref:`pgr_analyze_graph`"
 
-# 02fcd6c8b89549fdbb6c6adb1ffab563
-#: ../../src/tutorial/analytics.rst:110
+# d6a1979339344f65beef1fb134c99ea0
+#: ../../src/tutorial/analytics.rst:136
 msgid ":ref:`pgr_analyze_oneway`"
 msgstr ":ref:`pgr_analyze_oneway`"
 
-# 5a2ad95cbe7148339bdae716e38b629b
-#: ../../src/tutorial/analytics.rst:111
+# b1e8747121eb4e61bc26581ab784c9ce
+#: ../../src/tutorial/analytics.rst:137
 msgid ":ref:`pgr_node_network`"
 msgstr ":ref:`pgr_node_network`"
