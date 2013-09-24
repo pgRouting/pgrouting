@@ -36,8 +36,8 @@
                   <li><a class="reference internal" href="2.0/en/doc/index.html">English</a> [ <a class="reference internal" href="2.0/en/pgRoutingDocumentation.pdf">PDF</a> | <a class="reference internal" href="2.0/en/pgrouting.7.gz">MAN</a> | Transifex ]</li>
                   <li><a class="reference internal" href="2.0/fr/doc/index.html">French</a> [ <a class="reference internal" href="2.0/fr/pgRoutingDocumentation.pdf">PDF</a> | MAN | <a href="https://www.transifex.com/projects/p/pgrouting/language/fr/">Transifex</a> ]</li>
                   <li><a class="reference internal" href="2.0/es/doc/index.html">Spanish</a> [ <a class="reference internal" href="/2.0/es/pgRoutingDocumentation.pdf">PDF</a> | MAN | <a href="https://www.transifex.com/projects/p/pgrouting/language/es/">Transifex</a> ]</li>
-                  <li>Japanese [ PDF | MAN | <a href="https://www.transifex.com/projects/p/pgrouting/language/ja/">Transifex</a> ]</li>
-                  <li>German [ PDF | MAN | <a href="https://www.transifex.com/projects/p/pgrouting/language/de/">Transifex</a> ]</li>
+                  <li><a class="reference internal" href="2.0/ja/doc/index.html">Japanese</a> [ <a class="reference internal" href="/2.0/ja/pgRoutingDocumentation.pdf">PDF</a> | MAN | <a href="https://www.transifex.com/projects/p/pgrouting/language/ja/">Transifex</a> ]</li>
+                  <li><a class="reference internal" href="2.0/de/doc/index.html">German</a> [ <a class="reference internal" href="/2.0/ja/pgRoutingDocumentation.pdf">PDF</a> | MAN | <a href="https://www.transifex.com/projects/p/pgrouting/language/de/">Transifex</a> ]</li>
                 </ul>
               </li>
               <li class="toctree-l1"><a class="reference internal" href="http://pgrouting.org/docs/1.x/index.html">pgRouting 1.0</a></li>
