@@ -16,8 +16,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../../src/common/doc/index.rst:13
-# def264c0f9e943f4bfe3be4277eaf0e4
-msgid "Common Functions"
+#: ../../src/changelog/index.rst:13
+# f1cec6fbd88145139cbdf844035c461e
+msgid "Release Notes"
+msgstr ""
+
+#: ../../src/changelog/index.rst:15
+# 469fe2c4cf14420887968fb244b89641
+msgid ":ref:`changelog_2_0`"
+msgstr ""
+
+#: ../../src/changelog/index.rst:16
+# 4a9469338e814f81aaef87cd6efcb2c5
+msgid ":ref:`changelog_1_x`"
 msgstr ""
 

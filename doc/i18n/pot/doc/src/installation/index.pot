@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (b19690f doc-merge)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: pgRouting 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
+"POT-Creation-Date: 2013-09-24 15:37\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,177 +17,177 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../src/installation/index.rst:13
-# 163e330cdbbe4f1895d0b837c5e70863
+# e99a02e543da4575b3119115c1b12890
 msgid "Installation"
 msgstr ""
 
 #: ../../src/installation/index.rst:15
-# 6ce6ab6a98ca40bcb2f8a9b323420347
+# 750ddf4b1b794660b7193b507fc50a97
 msgid "Binary packages are provided for the current version on the following platforms:"
 msgstr ""
 
 #: ../../src/installation/index.rst:19
-# 05f844edf06c4e02ad708863cbce2c0b
+# 17f7d5c2722145e58d527b1986c38729
 msgid "Windows"
 msgstr ""
 
 #: ../../src/installation/index.rst:21
-# a160af2c58664a97bf2d2b70b86c1a77
+# a0f76335d522429eb8fd312cd44fbbf0
 msgid "Winnie Bot Experimental Builds:"
 msgstr ""
 
 #: ../../src/installation/index.rst:23
-# d4ecd2a3db9b4e87bb57273b674f6d0f
+# 42b5f2fa3fe94023bba24019c3f4cd70
 msgid "`PostgreSQL 9.2 32-bit, 64-bit <http://winnie.postgis.net/download/windows/pg92/buildbot/>`_"
 msgstr ""
 
 #: ../../src/installation/index.rst:27
-# d5014bf62620469b9712ec5f65bcf3eb
+# 7caea0f739ac40079a65734a3f904587
 msgid "Ubuntu/Debian"
 msgstr ""
 
 #: ../../src/installation/index.rst:29
-# b01ddbea3b8a41acb6fb1d0f4bc5b47a
+# 391c003657a7419386648662df8b2fe1
 msgid "Ubuntu packages are available in Launchpad repositories:"
 msgstr ""
 
 #: ../../src/installation/index.rst:31
-# 7161d112f8b84fb99b4d331d0b5c50f0
+# cf5d713f52384127acefcb1835615575
 msgid "*stable* https://launchpad.net/~georepublic/+archive/pgrouting"
 msgstr ""
 
 #: ../../src/installation/index.rst:32
-# a8317be66d4447aea1946994220ce26b
+# ee401bf810574986a8d76adc89207709
 msgid "*unstable* https://launchpad.net/~georepublic/+archive/pgrouting-unstable"
 msgstr ""
 
 #: ../../src/installation/index.rst:43
-# b3e4f3a43bb74b368605395a9052413c
+# 7d155c97705942f38e617e56e930fdcf
 msgid "Use `UbuntuGIS-unstable PPA <https://launchpad.net/~ubuntugis/+archive/ubuntugis-unstable>`_ to install PostGIS 2.0."
 msgstr ""
 
 #: ../../src/installation/index.rst:47
-# e936e220d939412a8cf6d96a001f1972
+# 7ed4d0e8f7bf489bb4260cf72d619353
 msgid "RHEL/CentOS/Fedora"
 msgstr ""
 
 #: ../../src/installation/index.rst:49
-# 0ee2b5493d0d45cf8b576674352dc29f
+# 880be2917ef44e348715720724eeb36a
 msgid "Fedora RPM's: https://admin.fedoraproject.org/pkgdb/acls/name/pgRouting"
 msgstr ""
 
 #: ../../src/installation/index.rst:53
-# 8f056c29f5c042d5b3e3a6fb26632448
-msgid "OSX"
+# b7656017a37847af917b9982e783f484
+msgid "OS X"
 msgstr ""
 
-#: ../../src/installation/index.rst:55
-# ed8ef1be20f64f4582b6b5ade7f9dab8
-msgid "See `builds from KingChaos <http://www.kyngchaos.com/software/postgres>`_."
+#: ../../src/installation/index.rst:57
+# 094f8f18c1bf4a549eae698ecf436c70
+msgid "Homebrew"
 msgstr ""
 
-#: ../../src/installation/index.rst:59
-# 1a87de6c454844e4be378f1df26c524e
-msgid "Build from Source"
-msgstr ""
-
-#: ../../src/installation/index.rst:62
-# 2d222bc491194fabab4b8e99c2692f59
+#: ../../src/installation/index.rst:65
+# 9bd8a95b05884a6f9dd3386461499f65
 msgid "Source Package"
 msgstr ""
 
-#: ../../src/installation/index.rst:65
-# d1443c9ed92746328d680435d8d8818a
+#: ../../src/installation/index.rst:68
+# 85c05371670747c19470a6aa635eca43
 msgid "Git 2.0.0-rc1 release"
 msgstr ""
 
-#: ../../src/installation/index.rst:65
-# 2b974ad9ee254e0aa0b29f2ca8387c9b
+#: ../../src/installation/index.rst:68
+# 93e66bb1bcfe48879472f8a2fc8f0eb2
 msgid "`v2.0.0-rc1.tar.gz`_"
 msgstr ""
 
-#: ../../src/installation/index.rst:65
-# 6629edb488814621841fc5d654df4268
+#: ../../src/installation/index.rst:68
+# 7d1faf7a050b4600892612b9b5cb9107
 msgid "`v2.0.0-rc1.zip`_"
 msgstr ""
 
-#: ../../src/installation/index.rst:66
-# a846a5dc3d9d4b34aa18e6226d2b0051
+#: ../../src/installation/index.rst:69
+# 7779ccda870a464287858c6f1246fe6c
 msgid "Git 2.0.0-beta release"
 msgstr ""
 
-#: ../../src/installation/index.rst:66
-# 6cc5c0ed1f994c7e9af5c58f2eaf5a53
+#: ../../src/installation/index.rst:69
+# 1cf3f78fdae44893b69017dd3431fbde
 msgid "`v2.0.0-beta.tar.gz`_"
 msgstr ""
 
-#: ../../src/installation/index.rst:66
-# faccd199fa2444b89de2e56aad585fff
+#: ../../src/installation/index.rst:69
+# 6de5c2e8d36d405f9e93540de8cefcc0
 msgid "`v2.0.0-beta.zip`_"
 msgstr ""
 
-#: ../../src/installation/index.rst:67
-# 90006b2011c34a2dba6a4a9a331ad85d
+#: ../../src/installation/index.rst:70
+# 8dab8cbc19df4943b2bb123cbef01b4f
 msgid "Git 2.0.0-alpha release"
 msgstr ""
 
-#: ../../src/installation/index.rst:67
-# e1cf3fc6b7a14c00a4cb8f0c9aa79326
+#: ../../src/installation/index.rst:70
+# c0ac0a4fb9964caabd4dba0f0878f1f2
 msgid "`v2.0.0-alpha.tar.gz`_"
 msgstr ""
 
-#: ../../src/installation/index.rst:67
-# 5983f427034b4116a8afb3fdf0381714
+#: ../../src/installation/index.rst:70
+# e30f4a87fa444db69f37e0ee0dd9d66a
 msgid "`v2.0.0-alpha.zip`_"
 msgstr ""
 
-#: ../../src/installation/index.rst:68
-# 0df6abc6dedf471f8e19c1c19dfd6d4b
+#: ../../src/installation/index.rst:71
+# b3ebd6fb08094d32adbfacc9d58fcf1c
 msgid "Git master branch"
 msgstr ""
 
-#: ../../src/installation/index.rst:68
-# 8b34a03d3ab2472b9d52d9a0cf02f2f8
+#: ../../src/installation/index.rst:71
+# 67521c1fdf4f49ebacfe1e5c769a0ecd
 msgid "`master.tar.gz`_"
 msgstr ""
 
-#: ../../src/installation/index.rst:68
-# 650cb6bea4c7421c809a7004eb659752
+#: ../../src/installation/index.rst:71
+# 092f447e5e0e43ada3e9a6bf507f91ad
 msgid "`master.zip`_"
 msgstr ""
 
-#: ../../src/installation/index.rst:69
-# 8ef094f785bd4f5798cf97ee067fdc1f
+#: ../../src/installation/index.rst:72
+# 92d860c92dc64e34a0dc7c71b2d53a28
 msgid "Git develop branch"
 msgstr ""
 
-#: ../../src/installation/index.rst:69
-# abe3478ebc7340d3a3b72e90a594893b
+#: ../../src/installation/index.rst:72
+# 1dcd902807c54fcda900cece955a2f4e
 msgid "`develop.tar.gz`_"
 msgstr ""
 
-#: ../../src/installation/index.rst:69
-# 4dfb2f54f804476e9ee2633269cee592
+#: ../../src/installation/index.rst:72
+# f4b1bad880d9412fb5bda9b850f4898b
 msgid "`develop.zip`_"
 msgstr ""
 
-#: ../../src/installation/index.rst:89
-# 96bcd0300f4d4b82bac12c6bc618c447
+#: ../../src/installation/index.rst:92
+# 55016de8fc864e98bb25e136f909267e
 msgid "Using Git"
 msgstr ""
 
-#: ../../src/installation/index.rst:91
-# 18952685a3b14b359dc6ec26aa24fe9e
+#: ../../src/installation/index.rst:94
+# 94e2754216444adaabe114a815eba7db
 msgid "Git protocol (read-only):"
 msgstr ""
 
-#: ../../src/installation/index.rst:98
-# e8ce5f46743846ed8a1702c07ff568a2
-msgid "HTTPS protocol (read-only):"
+#: ../../src/installation/index.rst:101
+# 5cb5c9c516a14820a509d0158b2b37c2
+msgid "HTTPS protocol (read-only): .. code-block:: bash"
 msgstr ""
 
-#: ../../src/installation/index.rst:105
-# 2ea3553b44b045099b3407681b9c893f
+#: ../../src/installation/index.rst:104
+# fe6100c2adc24a76b628be1832abea60
+msgid "git clone https://github.com/pgRouting/pgrouting.git"
+msgstr ""
+
+#: ../../src/installation/index.rst:107
+# e15c461c5aee4a16af0194821336d21a
 msgid "See :ref:`build` for notes on compiling from source."
 msgstr ""
 

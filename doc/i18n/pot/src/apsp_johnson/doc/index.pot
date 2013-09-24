@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (b19690f doc-merge)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: pgRouting 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
+"POT-Creation-Date: 2013-09-24 15:37\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,117 +17,117 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../src/apsp_johnson/doc/index.rst:13
-# 3b399cae01c4448db64a38f0cb80dea4
+# 88a2ec1d2eb44607a0dcec23c001f89f
 msgid "pgr_apspJohnson - All Pairs Shortest Path, Johnson's Algorithm"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:20
-# 667270b3279f4a679e5470ae861a2324
+# 2f8388c94505467cbaff2676afaa6256
 msgid "Name"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:22
-# 220312e57d6c4cb88ef7f9445507c185
+# 17a5236a6aca4fadaf3096c0518dec09
 msgid "``pgr_apspJohnson`` - Returns all costs for each pair of nodes in the graph."
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:26
-# 6876fb34e3be43f78d64e4dd53f06035
+# 3618c952a36b4852a671f2f7b9a3ab14
 msgid "Synopsis"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:28
-# 2ee7d51ea89c4613b59ab3b50f2b3700
+# c277608a374e444c8d7e5c5034e03f73
 msgid "Johnson's algorithm is a way to find the shortest paths between all pairs of vertices in a sparse, edge weighted, directed graph. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows for every pair of nodes in the graph."
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:36
-# 3dd02efac3c246f09da261d6774121d2
+# cbecd97ba97d4faba51654305d98d1e9
 msgid "Description"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:38
-# 9503ce3641a641c892f6c1be9b33bab1
+# 04393824e2034fda8655aac415d76c11
 msgid "a SQL query that should return the edges for the graph that will be analyzed:"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:44
-# 9269c554d66c4aba97ef0db68376062e
+# 3e25a6e034ab42e8ad52a1bdc54d8811
 msgid "``int4`` identifier of the source vertex for this edge"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:45
-# 9deedee90d1842849537bb0f82bb1616
+# 392c3bd6824e4bb6a2d440eb658105f6
 msgid "``int4`` identifier of the target vertex for this edge"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:46
-# 47068aa1686045eea0954f66330353df
+# e0f466d3f95444998039171e00e7f179
 msgid "``float8`` a positive value for the cost to traverse this edge"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:48
-# 7521849f19e2473cb6ea7fd6ddc7a677
+# e3a9871c7b9843528244c29cbcf2c3fb
 msgid "Returns set of :ref:`type_cost_result`:"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:50
-# f017f03505744126b8c2a308ba2a2e04
+# 81c0db551a0f496ea7b9db840c8df97b
 msgid "row sequence"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:51
-# 669d3e5cf094434c807f281e3f5f7c6f
+# b80c00eeb0c84881a5ab4b6616dadca0
 msgid "source node ID"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:52
-# 67d92e4d26844e95befca0994c454de3
+# 329100ef2f684ef4b1e38ee686694f4d
 msgid "target node ID"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:53
-# 8ed8da0579ad437fa9a66e10dffd5844
+# 3c805361256c4e63ab2a9d0e892c5edd
 msgid "cost to traverse from ``id1`` to ``id2``"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:56
-# 2807f1b1efee4127a766446df738321b
+# 760bf1e4ab2843dcb5b31cfdc927c722
 msgid "History"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:57
-# 7a575ee243744a0fa832f62e9fcfc104
+# 63a884de17654ec6b1b2d13b172649b6
 msgid "New in version 2.0.0"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:61
-# a39fe42926b240f1855e3bfb84c623c4
+# de09c9bbab4747879ae4dccc40f14ee6
 msgid "Examples"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:78
-# b3f3e82223ce484a9cfb8e37013155ee
+# e5dc5bd74bac4bca9c72ffeebd06934c
 msgid "The query uses the :ref:`sampledata` network."
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:82
-# e1eafbeaf7c2490abb1da391e21f3578
+# be0394087e64497fb6149bab9d484a84
 msgid "See Also"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:84
-# 7d669026f4d8497a8c805fa63ff6f79c
+# b8020a9b49ea4c51804260cb16f55ad5
 msgid ":ref:`type_cost_result`"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:85
-# 0d127ccef0ac4e219aedb5bdd79ad88e
+# 0f1298616a094d49b8455587893aac05
 msgid ":ref:`pgr_apsp_warshall`"
 msgstr ""
 
 #: ../../../src/apsp_johnson/doc/index.rst:86
-# 88583b8ad25d4b7baa26d1a22155a864
+# d28e3419b9164f73b602f91ba5e564e6
 msgid "http://en.wikipedia.org/wiki/Johnson%27s_algorithm"
 msgstr ""
 

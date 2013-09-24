@@ -1,0 +1,133 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (b19690f doc-merge)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-24 15:37\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:13
+# 249bbcc592de4defa96a706809fc3785
+msgid "pgr_isColumnInTable"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:20
+# 4fc8574f1bba4c1c97c68686a8c17ea7
+msgid "Name"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:22
+# d320ba4dd38a406096f36129cf93bb5c
+msgid "``pgr_isColumnInTable`` — Check if a column is in the table."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:24
+# 1f01a91f656f49efaa498ecbcf900842
+msgid "This function is intended for the developer’s aid."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:27
+# 3dbea64f332247db87bafa9d74054e32
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:29
+# 94612313263543b8a1f2ad219d40aaa2
+msgid "Returns ``true`` when the column “col” is in table “tab”."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:37
+# f7dcd242fd4842e285f2fbb8bbf812ba
+msgid "Description"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:39
+# 264091f88283469fb410faef9afd05ba
+msgid "``text`` Table name with or without schema component."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:40
+# b9b1222fcb2a4cf2aa4d26432d91020f
+msgid "``text`` Column name to be checked for."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:42
+# 508f280252014ae5b55822eae9be2223
+msgid "Returns:"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:44
+# b8660f2c224f432b9f8d2f5fe61356f7
+msgid "``true`` when the column “col” is in table “tab”."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:45
+# a98df291793349c79cf9761f21f67f1f
+msgid "``false`` when:"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:47
+# b2c36f120012430cbac241a9e1ab9659
+msgid "The table \"tab\" is not found or"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:48
+# 451ea2ad463f41a1a2355879e20b10f9
+msgid "Column “col” is not found in table “tab”"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:51
+# 2823c34d7c7b4630824516676011afff
+msgid "History"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:52
+# d1093638c71f4386bbe1c99e16ede035
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:56
+# 558127c6356443dcadef96ae091e326c
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:76
+# 5dee6228faa249d3943f6af3cc20ae12
+msgid "The example use the :ref:`sampledata` network."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:80
+# c3ae4d108abb43cf9a5b58742432b4a6
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:82
+# b2652f8ce39f4f8aae2f8877fc762682
+msgid ":ref:`developer` for the tree layout of the project."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:83
+# 94e580c9269642828c55365079238843
+msgid ":ref:`pgr_is_column_indexed` to check if the column is indexed."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:84
+# 9c693d02d3254bd9835275539c98d986
+msgid ":ref:`pgr_get_column_name` to get the name of the column as is stored in the postgres administration tables."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/is_column_in_table.rst:85
+# ee582e3bef7042ea91f53e14a2ce7961
+msgid ":ref:`pgr_get_table_name` to get the name of the table as is stored in the postgres administration tables."
+msgstr ""
+

@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (b19690f doc-merge)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-24 15:37\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/utilities/versionless.rst:13
+# bc5450efd52446e5b77059638a5489b9
+msgid "pgr_versionless"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/versionless.rst:20
+# 2f65851860ce4d92aa624ec6220926f9
+msgid "Name"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/versionless.rst:22
+# 392ec183950848928c4ed890d366048a
+msgid "``pgr_versionless`` — Compare two version numbers."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/versionless.rst:24
+# 08c5a652edb447058c68ad1665ed5b37
+msgid "This function is intended for the developer’s aid."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/versionless.rst:27
+# d20c83be337d4d70b92314f8456c00ac
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/versionless.rst:29
+# 5fdd9b5a2c0e4a0a884ecfb88571e774
+msgid "Returns ``true`` if the first version number is smaller than the second version number. Otherwise returns ``false``."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/versionless.rst:37
+# 83187570213e4f0abf4baa9d9041b0a7
+msgid "Description"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/versionless.rst:39
+# 76df5f109e9544eda9bffefb0eddcaf8
+msgid "``text`` first version number"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/versionless.rst:40
+# 802d2ea5436f4736afd84178d7ca2933
+msgid "``text`` second version number"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/versionless.rst:44
+# ba3d1a09dc494fba9a10df433131521f
+msgid "History"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/versionless.rst:45
+# 4a6dccc0743e4964a47f0f7fdd76f048
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/versionless.rst:49
+# 5e55333851f146efb2467abadd1b9a67
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/versionless.rst:62
+# 87f3cfc47d18405a93604e77f0e5db79
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/versionless.rst:64
+# 147571c3db724ba4b6e49b670cb5d433
+msgid ":ref:`developer` for the tree layout of the project."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/versionless.rst:65
+# 09128f53be59426cb5052a986bd2399c
+msgid ":ref:`pgr_version` to get the current version of pgRouting."
+msgstr ""
+

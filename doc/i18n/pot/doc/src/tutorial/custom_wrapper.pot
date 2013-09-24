@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (b19690f doc-merge)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: pgRouting 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
+"POT-Creation-Date: 2013-09-24 15:37\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../src/tutorial/custom_wrapper.rst:13
-# eabd47deb6034d1c95a09b9014e26c69
-msgid "Custom Wrapper"
+# 70bd07ac44fb4ee79a8480875ef3110e
+msgid "User's wrapper contributions"
+msgstr ""
+
+#: ../../src/tutorial/custom_wrapper.rst:16
+# bd53876fbf0449e5bd8c13e28f434fb1
+msgid "How to contribute."
+msgstr ""
+
+#: ../../src/tutorial/custom_wrapper.rst:17
+# f1ebeeb384cb46b28d7ad725d2a043ab
+msgid "Use an issue tracker (see :ref:`support`) with a title containing: *Proposing a wrapper: Mywrappername*. The body will contain:"
+msgstr ""
+
+#: ../../src/tutorial/custom_wrapper.rst:19
+# 9dd8bc946b7542289e73645f5afc3e30
+msgid "author:  Required"
+msgstr ""
+
+#: ../../src/tutorial/custom_wrapper.rst:20
+# 381e313e46bb44188e812ba5e24218e7
+msgid "mail: if you are subscribed to the developers list this is not necessary"
+msgstr ""
+
+#: ../../src/tutorial/custom_wrapper.rst:21
+# f902c8b242f448108cde6e8cc8364551
+msgid "date: Date posted"
+msgstr ""
+
+#: ../../src/tutorial/custom_wrapper.rst:22
+# 5de2adde9c234b50a567041468e1df7e
+msgid "comments and code:  using reStructuredText format"
+msgstr ""
+
+#: ../../src/tutorial/custom_wrapper.rst:24
+# dc75ff6fc3cb4f709aecbe418998349f
+msgid "Any contact with the author will be done using the developers mailing list. The pgRouting team will evaluate the wrapper and will be included it in this section when approved."
+msgstr ""
+
+#: ../../src/tutorial/custom_wrapper.rst:27
+# 2e5442c3cb56493b850e662432a8a21b
+msgid "*No contributions at this time*"
 msgstr ""
 

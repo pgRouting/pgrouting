@@ -1,0 +1,174 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (b19690f doc-merge)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-24 15:37\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../src/tutorial/tutorial.rst:13
+# 4fa427625676477cb1b87dd1d73d66cb
+msgid "Getting Started"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:15
+# dbb966efab874ff1b8a0476e0fbc52c1
+msgid "This is a simple guide to walk you through the steps of getting started with pgRouting. In this guide we will cover:"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:18
+#: ../../src/tutorial/tutorial.rst:27
+# b1b1339701754942b16ae3f85df3aa69
+# 5c9bbf6d7d8e4f698f1671a72db3bf46
+msgid "How to create a database to use for our project"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:19
+#: ../../src/tutorial/tutorial.rst:61
+# 64e5375efb394ceb9386dfe70c7ba356
+# a2fa349f8f6c4078b8b6d8008306d92d
+msgid "How to load some data"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:20
+#: ../../src/tutorial/tutorial.rst:77
+# e00e69310537477596b4a48d5f281df7
+# 9f9463792ade4d4b942b9d333b4366d9
+msgid "How to build a topology"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:21
+#: ../../src/tutorial/tutorial.rst:93
+# 4622aba512d2427db82e14a2c53eb5ea
+# a301a0c0a02f40089f5cbb347b3b6668
+msgid "How to check your graph for errors"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:22
+#: ../../src/tutorial/tutorial.rst:121
+# 45dc9701dc5f4213a7295611b6b7811f
+# b3649bed48ba4412b15dc6499d7e86eb
+msgid "How to compute a route"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:23
+#: ../../src/tutorial/tutorial.rst:142
+# e1902906d1aa4c9aa36eb36dcba81cd7
+# f43de5f970c64d078f4fffcff081e259
+msgid "How to use other tools to view your graph and route"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:24
+#: ../../src/tutorial/tutorial.rst:147
+# dbaf43eea3784d8a8266dcc29fef55c9
+# fd2b9f1faf90467396554662fdbf8ef2
+msgid "How to create a web app"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:29
+# 96187cb600b24f0da3e47a188f10f6e5
+msgid "The first thing we need to do is create a database and load pgrouting in the database. Typically you will create a database for each project. Once you have a database to work in, your can load your data and build your application in that database. This makes it easy to move your project later if you want to to say a production server."
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:35
+# e43130bd40e3494b9be318f73b9725e6
+msgid "For Postgresql 9.1 and later versions"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:44
+# d6b87512844f4305b2d26cb7a8ff5d19
+msgid "For older versions of postgresql"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:63
+# c3044d368fab44ab8b786cc57e5c193a
+msgid "How you load your data will depend in what form it comes it. There are various OpenSource tools that can help you, like:"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:66
+# c6a67a06b55e46568d65fa85269dbd26
+msgid "this is the postgresql shapefile loader"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:67
+# 65d939a281214360b0df8df9a45f4a91
+msgid "this is a vector data conversion utility"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:68
+# 80cdc1e6692a4276af3a243af69fb17c
+msgid "this is a tool for loading OSM data into postgresql"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:70
+# d41410c64b974f29b25ee3bb886255cc
+msgid "So these tools and probably others will allow you to read vector data and and can load that data into your database as a table of some kind. At this point you need to know a little about your data structure and content. One easy way to browse you data table is with pgAdmin3 or phpPgAdmin."
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:79
+# 30b9e6e2ca104b7f9ddd16e92c5ddd3b
+msgid "Next we need to build a topology for our street data. What this means is that for any given edge in your street data the ends of that edge will be connected to a unique node and to other edges that are also connected to that same unique node. Once all the edges are connected to nodes we have a graph that can be used for routing with pgrouting. We provide a tools the will help with this:"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:89
+# c03da0290952410e897a52c691bb2501
+msgid "See :ref:`pgr_create_topology` for more information."
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:95
+# fba9ad34b68e4bf581d28a5aec85f701
+msgid "There are lots of possible sources for errors in a graph. The data that you started with may not have been designed with routing in mind. A graph as some very specific requirments. One it that it is *NODED*, this means that except for some very specific use cases, each road segments starts and ends at a node and that in general is does not cross another road segment that it should be connected to."
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:102
+# 9a7d951c3c044167add56c2ba01cc504
+msgid "There can be other errors like the direction of a one-way street being entered in the wrong direction. We do not have tools to search for all possible errors but we have some basic tools that might help."
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:113
+# a28be3d4b3854387a93f6b9a4df34736
+msgid "See :ref:`analytics` for more information."
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:115
+# 45de2e4d69e84c63b389b8e835f5e070
+msgid "If your data needs to be *NODED*, we have a tool that can help for that also."
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:117
+# 5ac8361d061f47a2a75c67fb35cb72c3
+msgid "See :ref:`pgr_node_network` for more information."
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:123
+# b63410ea77944bfbbf97cf74378e81f7
+msgid "Once you have all the prep work done above, computing a route is fairly easy. We have a lot of different algorithms but they can work with your prepared road network. The general form of a route query is:"
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:131
+# 8c2139cb15374d8493e9d357b0db0a95
+msgid "As you can see this is fairly straight forward and you can look and the specific algorithms for the details on how to use them. What you get as a result from these queries will be a set of record of type :ref:`type_cost_result` or :ref:`type_geom_result`. These results have information like edge id and/or the node id along with the cost or geometry for the step in the path from *start* to *end*. Using the ids you can join these result back to your edge table to get more information about each step in the path."
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:139
+# 1ee9ba41f235467bbdf850b6814d9821
+msgid "See also :ref:`type_cost_result` and :ref:`type_geom_result`."
+msgstr ""
+
+#: ../../src/tutorial/tutorial.rst:144
+#: ../../src/tutorial/tutorial.rst:149
+# 7834933387a54412bfa93b3bd5910012
+# 5ed47f57bd5b4f80b06008666fc961b3
+msgid "TBD"
+msgstr ""
+

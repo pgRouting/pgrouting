@@ -1,0 +1,178 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (b19690f doc-merge)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-24 15:37\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:13
+# 13ad2bf13e424cc6860d73932d3d0ef3
+msgid "pgr_drivingDistance"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:20
+# a3a62f6711c643cd8b46d6c8efa8979a
+msgid "Name"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:22
+# 4df03c9837844d15a2ef1f69c8b1d6d1
+msgid "``pgr_drivingDistance`` - Returns the driving distance from a start node."
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:26
+# ed124ddfdba740f1a7a2fe858b044921
+msgid "Requires :ref:`to build pgRouting <build>` with support for Driving Distance."
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:30
+# d30cc7baa5ec4ef9b0e2cfcaa9abc823
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:32
+# c39bf072197e44af857573b4321b93f8
+msgid "This function computes a Dijkstra shortest path solution them extracts the cost to get to each node in the network from the starting node. Using these nodes and costs it is possible to compute constant drive time polygons. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a list of accessible points."
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:41
+# cfa9c122e87741d1b420a6c009bde3bd
+msgid "Description"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:43
+# 5b11549936b247e0916c31575bc873a9
+msgid "a SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:50
+# 1cad499986e64e7087c9d53c00edf785
+msgid "``int4`` identifier of the edge"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:51
+# 4a0642fea1dc458ebe0fff4bd9ae068e
+msgid "``int4`` identifier of the source vertex"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:52
+# 6eb2c2e575474bf6b9fdf5f73a3d3133
+msgid "``int4`` identifier of the target vertex"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:53
+# 37c527d8ce7d4835bc902f791545e719
+msgid "``float8`` value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph."
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:54
+# 0e0be8b97cdc4789bf52927612f18093
+msgid "(optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs)."
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:56
+# 51879485fdc74456ab8713532784bae9
+msgid "``int4`` id of the start point"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:57
+# cc718c6eeaf142aebebbac343f3735ee
+msgid "``float8`` value in edge cost units (not in projection units - they might be different)."
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:58
+# e799a2c5db3f4e3ea5acccb7885c9c09
+msgid "``true`` if the graph is directed"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:59
+# b5a481533b404906a0ac80911c3d128c
+msgid "if ``true``, the ``reverse_cost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction."
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:61
+# 4347c456fe8842a1a71bf1a6dda67c9c
+msgid "Returns set of :ref:`type_cost_result`:"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:63
+# feca3515964d4e13831803c5cce23ef7
+msgid "row sequence"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:64
+# cea1ec0763be4d9493014381ac1a9f4d
+msgid "node ID"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:65
+# 58485a6aae3f467b8003af4a2466a4db
+msgid "edge ID (this is probably not a useful item)"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:66
+# 40a1586ef5c247098537a0a9a02bb439
+msgid "cost to get to this node ID"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:70
+# 91feeda5554f4491b1021dd096bde9c1
+msgid "You must reconnect to the database after ``CREATE EXTENSION pgrouting``. Otherwise the function will return ``Error computing path: std::bad_alloc``."
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:74
+# 1cb8d1668c9143d1add08f338e6b6226
+msgid "History"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:75
+# 1ba0522ef3114a84a02fef855734fdfa
+msgid "Renamed in version 2.0.0"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:79
+# 71327a7485e24bf4a12c6e44c8e89b0d
+msgid "Examples"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:81
+# e100d6420c0a4c238d29b1b7e88276bf
+msgid "Without ``reverse_cost``"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:101
+# 8d5f6019a42f496aa35aecd4876b1d28
+msgid "With ``reverse_cost``"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:121
+# ab3dcc12ed474b6b8368041393f4ae6b
+msgid "The queries use the :ref:`sampledata` network."
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:125
+# 83f1ee65122647598d2f2d93adf5570b
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:127
+# a57748a909a84cbb81c6e89f951ff521
+msgid ":ref:`pgr_alphashape` - Alpha shape computation"
+msgstr ""
+
+#: ../../../src/driving_distance/doc/dd_driving_distance.rst:128
+# 1803d90dc87943b3bcd563650ce43a28
+msgid ":ref:`pgr_points_as_polygon` - Polygon around set of points"
+msgstr ""
+

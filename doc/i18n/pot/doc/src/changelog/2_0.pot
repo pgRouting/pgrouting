@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version 2.0.0-dev (129919f develop)
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (b19690f doc-merge)
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting 2.0.0-dev\n"
+"Project-Id-Version: pgRouting 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 16:47\n"
+"POT-Creation-Date: 2013-09-24 15:37\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,127 +17,132 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../src/changelog/2_0.rst:13
-# c1b1516c8da846a195824e5281582281
+# a715879e688945d0a6861bd9140c950b
 msgid "pgRouting 2.0 Release Notes"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:15
-# 3e67d45a281c48bd9d6eea1ce58d38c3
+# 91b9abe3dfe5419d85dcba21dd72768e
 msgid "With the release of pgRouting 2.0 the library has abandoned backwards compatibility to :ref:`pgRouting 1.x <changelog_1_x>` releases. We did this so we could restructure pgRouting, standardize the function naming, and prepare the project for future development. As a result of this effort, we have been able to simplify pgRouting, add significant new functionality, integrate documentation and testing into the source tree and make it easier for multiple developers to make contribution."
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:17
-# b7dbd742ac1c45cea48afc0b61bf3a35
+# 0ed2708f626c458e8cd7a754cc290bee
 msgid "For important changes see the following release notes. To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github."
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:28
-# f0cd146d674e46449ba99a8100934ec0
+# 134b54d9dc28424186d8c764b65a64cd
 msgid "Changes for 2.0.0"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:30
-# ef9ef27b926145108086d936b6ca0b28
+# bcec99c0b1564dde8484f7bcfcab58fd
 msgid "Graph Analytics - tools for detecting and fixing connection some problems in a graph"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:31
-# 42f88056af7e4432b32f065a7a24a919
+# 152b4d4ec49c4de8b45e75aa69aab982
 msgid "A collection of useful utility functions"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:32
-# 2f534c34e0974efe890889f3b21a0b4d
+# e8085889ef4441c29c57d6717560dfba
 msgid "Two new All Pairs Short Path algorithms (pgr_apspJohnson, pgr_apspWarshall)"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:33
-# 8ce3dd738c2d4dc4b31299c1a0914faf
+# ea0d25e8d5ef4758b69cfff801f79014
 msgid "Bi-directional Dijkstra and A-star search algorithms (pgr_bdAstar, pgr_bdDijkstra)"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:34
-# 8f43c2d6075f49e79bbaa6f8aabab4da
+# 60e72f802c0c42bfa1d0e03b910fb2a6
 msgid "One to many nodes search (pgr_kDijkstra)"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:35
-# c4b5876cdfd748b0b212c0934c824f64
+# 3c96500d421c4c57886cb99b260341ae
 msgid "K alternate paths shortest path (pgr_ksp)"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:36
-# acd1a044738b4276a2e8e94a0dd76534
+# 197a5368f7a64d23ac1174757e001245
 msgid "New TSP solver that simplifies the code and the build process (pgr_tsp), dropped \"Gaul Library\" dependency"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:37
-# 8f926050f9324e25900b05fed56a589e
+# f43a9a4f30384f5d84c9c01b0e3bcfa9
 msgid "Turn Restricted shortest path (pgr_trsp) that replaces Shooting Star"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:38
-# d1e83f5c735b4bfcba1d268ea2935a7f
+# e170b7e329464668ad9056078feaf9fb
 msgid "Dropped support for Shooting Star"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:39
-# ca6f7155ffb1427ba1c145efd90b72e3
+# 6657465c4bff46eead7e2f624ab9784f
 msgid "Built a test infrastructure that is run before major code changes are checked in"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:40
-# 3d47be6570aa47e3b48a446cfd55c3f8
+# 1ec3c1c7e92344fa98b966301fd7908f
 msgid "Tested and fixed most all of the outstanding bugs reported against 1.x that existing in the 2.0-dev code base."
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:41
-# f99da159237841a583466e7bdaa5a964
+# b0209200646b4cc99f00cc60383c4dcd
 msgid "Improved build process for Windows"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:42
-# eaef81c47c28441d9c6d9c55785f6664
-msgid "Modular library design"
+# 7fc2fc8bea044f54a63f96bbfef9e2e5
+msgid "Automated testing on Linux and Windows platforms trigger by every commit"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:43
-# 5b1f3d44b55d4502b2761acd0aed5b08
-msgid "Compatibility with PostgreSQL 9.1 or newer"
+# 4e500be4dfdf48559ce8509625cc990c
+msgid "Modular library design"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:44
-# 592cb52588884e7e88488112e5001c71
-msgid "Compatibility with PostGIS 2.0 or newer"
+# cf70e3dec74f4f6dbd9fa0c980eeb380
+msgid "Compatibility with PostgreSQL 9.1 or newer"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:45
-# 6f72789ca5ae4828bbe00dd0b44ed049
-msgid "Installs as PostgreSQL EXTENSION"
+# be4611c8b8694e29ba749c111d3289b4
+msgid "Compatibility with PostGIS 2.0 or newer"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:46
-# 7f85fdaaa5374934b83c0baef45e2074
-msgid "Return types refactored and unified"
+# 634a9f4e6a3b478cb42717a3e7bca991
+msgid "Installs as PostgreSQL EXTENSION"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:47
-# 60c67a38e1594c7cb774d5b29c284a17
-msgid "Support for table SCHEMA in function parameters"
+# 382bb46ee7a44e5a87985e1ffdc7c57f
+msgid "Return types refactored and unified"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:48
-# da8aea5a0d034dce84e5a2bfd3e2b342
-msgid "Support for ``st_`` PostGIS function prefix"
+# d17f7b7db0ee4030bdcba8819d0cae9a
+msgid "Support for table SCHEMA in function parameters"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:49
-# c204bde79a394b93a1a3c46bbedab1a0
-msgid "Added ``pgr_`` prefix to functions and types"
+# 86455c26d4e3493a910fa8309f9f21ec
+msgid "Support for ``st_`` PostGIS function prefix"
 msgstr ""
 
 #: ../../src/changelog/2_0.rst:50
-# d7df479e712e4c3689e121a22f45f909
+# 98da605c73074436ac641ea1eb74ba37
+msgid "Added ``pgr_`` prefix to functions and types"
+msgstr ""
+
+#: ../../src/changelog/2_0.rst:51
+# ca139831bcab4d5290685d4ba3a39bba
 msgid "Better documentation: http://docs.pgrouting.org"
 msgstr ""
 

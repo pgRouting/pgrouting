@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version 2.0.0 (b19690f doc-merge)
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting 2.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-24 15:37\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../src/common/doc/utilities/end_point.rst:13
+# 6cebbdd85e6945bfa9cafb9a5982c546
+msgid "pgr_endPoint"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/end_point.rst:20
+# 045307769ed24168935d9b6c6bf6c30e
+msgid "Name"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/end_point.rst:22
+# 93f527ab4669454ea6168501b2061f07
+msgid "``pgr_endPoint`` — Returns an end point of a (multi)linestring geometry."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/end_point.rst:24
+# d33216fe0e844048af08255bf6a6ddd6
+msgid "This function is intended for the developer's aid."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/end_point.rst:28
+# 39bea53092fd40b4ad3986450abb8629
+msgid "Synopsis"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/end_point.rst:30
+#: ../../../src/common/doc/utilities/end_point.rst:44
+# c0445bd91f26473aa475b5ee5cc891a9
+# c946ccfe66dd4386b291cda29045536c
+msgid "Returns the geometry of the end point of the first LINESTRING of ``geom``."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/end_point.rst:38
+# 7eb29fbc5d7d401fa8a3649c14d45145
+msgid "Description"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/end_point.rst:41
+# 34ae5b1615bd4f13a79b0fa2b2083ea6
+msgid "Parameters"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/end_point.rst:42
+# 27cf4b1be0f64a198ee7b53aaf668dca
+msgid "``geometry`` Geometry of a MULTILINESTRING or LINESTRING."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/end_point.rst:49
+# e31e97e4f8c345e1a70e0777d7e8b8e7
+msgid "History"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/end_point.rst:50
+# 881eef9e0f41473c8fd665512a3e841f
+msgid "New in version 2.0.0"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/end_point.rst:55
+# 65ff973c398846eb8a6951c0d9ba6aab
+msgid "See Also"
+msgstr ""
+
+#: ../../../src/common/doc/utilities/end_point.rst:57
+# cfe22f1c5c6e468bb860b1b4c449fb60
+msgid ":ref:`developer` for the tree layout of the project."
+msgstr ""
+
+#: ../../../src/common/doc/utilities/end_point.rst:58
+# e1ddf7fa1e004c11bc7590169b8c249e
+msgid ":ref:`pgr_start_point` to get the start point of a (multi)linestring."
+msgstr ""
+
