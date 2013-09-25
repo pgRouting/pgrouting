@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '2.0.0 (d4d49b7 master)',
+        VERSION:     '2.0.0 (0a53b89 master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../../../../_static/theme_extras.js"></script>
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../../index.html" />
-    <link rel="up" title="Developers’s Functions" href="index.html" />
+    <link rel="up" title="Funciones para Desarrolladores" href="index.html" />
     <link rel="next" title="pgr_quote_ident" href="quote_ident.html" />
     <link rel="prev" title="pgr_isColumnInTable" href="is_column_in_table.html" /> 
   </head>
@@ -56,58 +56,58 @@
   <div class="section" id="pgr-pointtoid">
 <span id="pgr-point-to-id"></span><h1>pgr_pointToId<a class="headerlink" href="#pgr-pointtoid" title="Enlazar permanentemente con este título">¶</a></h1>
 <div class="section" id="name">
-<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Enlazar permanentemente con este título">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_pointToId</span></tt> — Inserts a point into a vertices table and returns the corresponig id.</p>
+<span id="index-0"></span><h2>Nombre<a class="headerlink" href="#name" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_pointToId</span></tt> — inserta un punto en una tabla de vértices y devuelve el id de correspondiente.</p>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
-<p class="last">This function is intended for the developer&#8217;s aid. Use <a class="reference internal" href="../functions/create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> or <a class="reference internal" href="../functions/create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> instead.</p>
+<p class="last">Esta función está diseñada para la ayuda de los desarrolladores. Usar <cite>pgr_createTopology &lt;pgr_create_topology&gt;</cite> o <a class="reference internal" href="../functions/create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> en su lugar.</p>
 </div>
 </div>
 <div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>This function returns the <tt class="docutils literal"><span class="pre">id</span></tt> of the row in the vertices table that corresponds to the <tt class="docutils literal"><span class="pre">point</span></tt> geometry</p>
+<h2>Sinopsis<a class="headerlink" href="#synopsis" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Esta función devuelve el``id`` de la fila de la tabla de vértices que corresponde a la geometría  <tt class="docutils literal"><span class="pre">point</span></tt></p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="nb">bigint</span> <span class="n">pgr_pointToId</span><span class="p">(</span><span class="n">geometry</span> <span class="n">point</span><span class="p">,</span> <span class="n">double</span> <span class="k">precision</span> <span class="n">tolerance</span><span class="p">,</span><span class="nb">text</span> <span class="n">vertname</span> <span class="nb">text</span><span class="p">,</span><span class="nb">integer</span> <span class="n">srid</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="description">
-<h2>Description<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">point:</th><td class="field-body"><tt class="docutils literal"><span class="pre">geometry</span></tt> &#8220;POINT&#8221; geometry to be inserted.</td>
+<tr class="field-odd field"><th class="field-name">point:</th><td class="field-body"><tt class="docutils literal"><span class="pre">geometry</span></tt> geometría &#8220;POINT&#8221; que se insertará.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">tolerance:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> Snapping tolerance of disconnected edges. (in projection unit)</td>
+<tr class="field-even field"><th class="field-name">tolerance:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> ajuste tolerancia de bordes desconectados. (en la unidad de proyección)</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">vertname:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> Vertices table name WITH schema included.</td>
+<tr class="field-odd field"><th class="field-name">vertname:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> nombre de la tabla CON componente de esquema</td>
 </tr>
-<tr class="field-even field"><th class="field-name">srid:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> SRID of the geometry point.</td>
+<tr class="field-even field"><th class="field-name">srid:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> SRID del punto de la geometría.</td>
 </tr>
 </tbody>
 </table>
-<p>This function returns the id of the row that corresponds to the <tt class="docutils literal"><span class="pre">point</span></tt> geometry</p>
+<p>Esta función devuelve el id de la fila que corresponde a la geometría <tt class="docutils literal"><span class="pre">point</span></tt></p>
 <blockquote>
 <div><ul class="simple">
-<li>When the <tt class="docutils literal"><span class="pre">point</span></tt> geometry already exists in the vertices table <tt class="docutils literal"><span class="pre">vertname</span></tt>, it returns the corresponing <tt class="docutils literal"><span class="pre">id</span></tt>.</li>
-<li>When the <tt class="docutils literal"><span class="pre">point</span></tt> geometry is not found in the vertices table <tt class="docutils literal"><span class="pre">vertname</span></tt>, the funcion inserts the <tt class="docutils literal"><span class="pre">point</span></tt> and returns the corresponing <tt class="docutils literal"><span class="pre">id</span></tt> of the newly created vertex.</li>
+<li>Cuando la geometría <tt class="docutils literal"><span class="pre">point</span></tt> ya existe en la tabla de vértices <tt class="docutils literal"><span class="pre">vertname</span></tt>, devuelve el <tt class="docutils literal"><span class="pre">id</span></tt> corredpondiente.</li>
+<li>Cuando la geometría <tt class="docutils literal"><span class="pre">point</span></tt> no se encuentra en la tabla de vértices <tt class="docutils literal"><span class="pre">vertname</span></tt>, la función inserta el <tt class="docutils literal"><span class="pre">point</span></tt> y devuelve el correspondiente <tt class="docutils literal"><span class="pre">id</span></tt> del vértice recién creado.</li>
 </ul>
 </div></blockquote>
 <div class="admonition warning">
 <p class="first admonition-title">Advertencia</p>
-<p class="last">The function do not perform any checking of the parameters. Any validation has to be done before calling this function.</p>
+<p class="last">La función no realiza ninguna comprobación de los parámetros. Cualquier validación debe hacerse antes de llamar a esta función.</p>
 </div>
-<p class="rubric">History</p>
+<p class="rubric">Historia</p>
 <ul class="simple">
-<li>Renamed in version 2.0.0</li>
+<li>Renombrado en la versión 2.0.0</li>
 </ul>
 </div>
 <div class="section" id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Véase también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="../../../../doc/src/developer/index.html#developer"><em>Guía del desarrollador</em></a> for the tree layout of the project.</li>
-<li><a class="reference internal" href="../functions/create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> to create a topology based on the geometry.</li>
-<li><a class="reference internal" href="../functions/create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> to create a topology based on the geometry.</li>
+<li><a class="reference internal" href="../../../../doc/src/developer/index.html#developer"><em>Guía del desarrollador</em></a> para el diseño del árbol del proyecto.</li>
+<li><a class="reference internal" href="../functions/create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> para reconstruir la tabla de vértices basándose en la información de origen y de destino.</li>
+<li><a class="reference internal" href="../functions/create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> — Construye una topología de red basada en la información de geometría.</li>
 </ul>
 </div>
 </div>
@@ -127,8 +127,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
-      Actualizado por última vez en Sep 20, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (0a53b89 master).
+      Actualizado por última vez en Sep 24, 2013.
       Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

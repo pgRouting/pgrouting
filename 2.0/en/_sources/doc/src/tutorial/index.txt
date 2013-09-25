@@ -12,13 +12,33 @@
 Tutorial
 ===============================================================================
 
+
+:ref:`Getting started <tutorial>` 
+
+  - How to create a database to use for our project
+  - How to load some data
+  - How to build a topology
+  - How to check your graph for errors
+  - How to compute a route
+  - How to use other tools to view your graph and route
+  - How to create a web app
+
+Advanced Topics
+
+  - :ref:`topology` for an overview of a topology for routing algorithms.  
+  - :ref:`analytics` for an overview of the analysis of a graph.
+  - :ref:`custom_query` that is used in the routing algorithms.
+  - :ref:`performance` to improve your performance.
+  - :ref:`custom_wrapper` to colaborate with a wrapper.
+  - :ref:`recipes` to colaborate with a recipe.
+
 .. toctree:: 
-   :maxdepth: 2
+   :hidden: 
          
     Getting started        <tutorial>
 
 .. toctree:: 
-   :maxdepth: 1
+   :hidden: 
          
     An overview of a topology for routing algorithms.        <topology>
     An overview of the analysis of a graph.        <analytics>

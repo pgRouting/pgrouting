@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '2.0.0 (d4d49b7 master)',
+        VERSION:     '2.0.0 (0a53b89 master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../../../../_static/theme_extras.js"></script>
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../../index.html" />
-    <link rel="up" title="Developers’s Functions" href="index.html" />
+    <link rel="up" title="Funciones para Desarrolladores" href="index.html" />
     <link rel="next" title="pgr_versionless" href="versionless.html" />
     <link rel="prev" title="pgr_quote_ident" href="quote_ident.html" /> 
   </head>
@@ -56,44 +56,44 @@
   <div class="section" id="pgr-version">
 <span id="id1"></span><h1>pgr_version<a class="headerlink" href="#pgr-version" title="Enlazar permanentemente con este título">¶</a></h1>
 <div class="section" id="name">
-<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Enlazar permanentemente con este título">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_version</span></tt> — Query for pgRouting version information.</p>
+<span id="index-0"></span><h2>Nombre<a class="headerlink" href="#name" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_version</span></tt> — consulta de información sobre la versión de pgRouting.</p>
 </div>
 <div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Returns a table with pgRouting version information.</p>
+<h2>Sinopsis<a class="headerlink" href="#synopsis" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Devuelve una tabla con la información sobre la versión de pgRouting.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">table</span><span class="p">()</span> <span class="n">pgr_version</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="description">
-<h2>Description<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Returns a table with:</p>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Devuelve una tabla con:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">version:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> pgRouting version</td>
+<tr class="field-odd field"><th class="field-name">version:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> versión de pgRouting</td>
 </tr>
-<tr class="field-even field"><th class="field-name">tag:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> Git tag of pgRouting build</td>
+<tr class="field-even field"><th class="field-name">tag:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> La etiqueta de la construcción en Git de pgRouting</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">hash:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> Git hash of pgRouting build</td>
+<tr class="field-odd field"><th class="field-name">hash:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> El Hash de la construcción en Git de pgRouting</td>
 </tr>
-<tr class="field-even field"><th class="field-name">branch:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> Git branch of pgRouting build</td>
+<tr class="field-even field"><th class="field-name">branch:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> La ramificación de la construcción en Git de pgRouting</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">boost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> Boost version</td>
+<tr class="field-odd field"><th class="field-name">boost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt>  versión de Boost</td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">History</p>
+<p class="rubric">Historia</p>
 <ul class="simple">
-<li>New in version 2.0.0</li>
+<li>Nuevo en la versión 2.0.0</li>
 </ul>
 </div>
 <div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ejemplos<a class="headerlink" href="#examples" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li>Query for full version string</li>
+<li>Consulta para la cadena con la información completa de la versión.</li>
 </ul>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_version</span><span class="p">();</span>
 
@@ -104,7 +104,7 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li>Query for <tt class="docutils literal"><span class="pre">version</span></tt> and <tt class="docutils literal"><span class="pre">boost</span></tt> attribute</li>
+<li>Consulta para los atributos <tt class="docutils literal"><span class="pre">version</span></tt> y <tt class="docutils literal"><span class="pre">boost</span></tt></li>
 </ul>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="k">version</span><span class="p">,</span> <span class="n">boost</span> <span class="k">FROM</span> <span class="n">pgr_version</span><span class="p">();</span>
 
@@ -116,9 +116,9 @@
 </div>
 </div>
 <div class="section" id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Véase también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="versionless.html#pgr-versionless"><em>pgr_versionless</em></a> to compare two version numbers</li>
+<li><a class="reference internal" href="versionless.html#pgr-versionless"><em>pgr_versionless</em></a> - Comparar dos números de versión</li>
 </ul>
 </div>
 </div>
@@ -138,8 +138,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
-      Actualizado por última vez en Sep 20, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (0a53b89 master).
+      Actualizado por última vez en Sep 24, 2013.
       Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

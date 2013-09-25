@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0 (d4d49b7 master)',
+        VERSION:     '2.0.0 (0a53b89 master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -63,39 +63,27 @@
 <li>CMake &gt;= 2.8.8</li>
 <li>(opcional, para la distancia de manejo) CGAL &gt; = [por determinarse]</li>
 <li>(opcional, para la documentación) Sphinx &gt; = 1.1</li>
-<li>(optional, for Documentation as PDF) Latex &gt;= [TBD]</li>
+<li>(opcional, para la documentación en formato PDF) Látex &gt; = [TBD]</li>
 </ul>
-<p>The cmake system has variables the can be configured via the command line options by setting them with -D&lt;varable&gt;=&lt;value&gt;. You can get a listing of these via:</p>
+<p>El sistema cmake tiene variables la pueden configurarse mediante las opciones de línea de comandos con -D &lt;varable&gt;=&lt;value&gt;. Usted puede obtener un listado de estos mediante:</p>
 <div class="highlight-bash"><div class="highlight"><pre>mkdir build
 <span class="nb">cd </span>build
 cmake -L ..
 </pre></div>
 </div>
-<p>Currently these are:</p>
+<p>Actualmente son:</p>
 <blockquote>
-<div>Boost_DIR:PATH=Boost_DIR-NOTFOUND
-CMAKE_BUILD_TYPE:STRING=
-CMAKE_INSTALL_PREFIX:PATH=/usr/local
-POSTGRESQL_EXECUTABLE:FILEPATH=/usr/lib/postgresql/9.2/bin/postgres
-POSTGRESQL_PG_CONFIG:FILEPATH=/usr/bin/pg_config
-WITH_DD:BOOL=ON
-WITH_DOC:BOOL=OFF
-BUILD_HTML:BOOL=ON
-BUILD_LATEX:BOOL=OFF
-BUILD_MAN:BOOL=ON</div></blockquote>
-<p>These also show the current or default values based on our development system. So your values my be different. In general the ones that are of most interest are:</p>
+<div>Boost_DIR:Path = CMAKE_BUILD_TYPE:STRING Boost_DIR-NOTFOUND = CMAKE_INSTALL_PREFIX:PATH = / usr/local POSTGRESQL_EXECUTABLE:FILEPATH=/usr/lib/postgresql/9.2/bin/postgres POSTGRESQL_PG_CONFIG:FILEPATH = / usr/bin/pg_config WITH_DD:BOOL = ON WITH_DOC:BOOL = OFF BUILD_HTML:BOOL = ON BUILD_LATEX:BOOL = OFF BUILD_MAN:BOOL = ON</div></blockquote>
+<p>Estos también muestran los valores por defecto basados en nuestro sistema de desarrollo. Así que algunos de sus valores pueden ser diferentes en su sistema. En general los que son de mayor interés son:</p>
 <blockquote>
-<div>WITH_DD:BOOL=ON       &#8211; Turn on/off building driving distance code.
-WITH_DOC:BOOL=OFF     &#8211; Turn on/off building the documentation
-BUILD_HTML:BOOL=ON    &#8211; If WITH_DOC=ON, turn on/off building HTML
-BUILD_LATEX:BOOL=OFF  &#8211; If WITH_DOC=ON, turn on/off building PDF
-BUILD_MAN:BOOL=ON     &#8211; If WITH_DOC=ON, turn on/off building MAN pages</div></blockquote>
-<p>To change any of these add <tt class="docutils literal"><span class="pre">-D&lt;variable&gt;=&lt;value&gt;</span></tt> to the cmake lines below. For example to turn on documentation, your cmake command might look like:</p>
+<div>WITH_DD:bool = ON &#8211; encender/apagar Distancia de Manejo.
+WITH_DOC:bool = OFF &#8211; encender/apagar la documentación BUILD_HTML:BOOL  = ON &#8211; con WITH_DOC = ON, encender/apagar HTML BUILD_LATEX:BOOL = OFF &#8211; con WITH_DOC = ON, encender/apagar PDF BUILD_MAN:BOOL = ON &#8211; si WITH_DOC = ON, encender/apagar MAN</div></blockquote>
+<p>Para cambiar cualquiera de estos añadir <tt class="docutils literal"><span class="pre">-D&lt;variable&gt;=&lt;value&gt;</span></tt> a las líneas de cmake. Por ejemplo activar la documentación, el comando cmake:</p>
 <div class="highlight-bash"><div class="highlight"><pre>cmake -DWITH_DOC<span class="o">=</span>ON ..   <span class="c"># Turn on the doc with default settings</span>
 cmake -DWITH_DOC<span class="o">=</span>ON -DBUILD_LATEX ..  <span class="c"># Turn on doc and pdf</span>
 </pre></div>
 </div>
-<p>If you turn on the documentation, you also need to add the <tt class="docutils literal"><span class="pre">doc</span></tt> target to the make command.</p>
+<p>Si enciende la documentación, también tienes que añadir el objetivo <tt class="docutils literal"><span class="pre">doc</span></tt> al comando &#8220;make&#8221;</p>
 <div class="highlight-bash"><div class="highlight"><pre>make          <span class="c"># build the code but not the doc</span>
 make doc      <span class="c"># build only the doc</span>
 make all doc  <span class="c"># build both the code and the doc</span>
@@ -150,8 +138,8 @@ make all doc
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
-      Actualizado por última vez en Sep 20, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (0a53b89 master).
+      Actualizado por última vez en Sep 24, 2013.
       Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

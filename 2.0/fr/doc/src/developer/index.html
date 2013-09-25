@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0 (d4d49b7 master)',
+        VERSION:     '2.0.0 (0a53b89 master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -63,23 +63,23 @@
 <dl class="docutils">
 <dt>cmake/</dt>
 <dd>Scripts cmake utilisés en partie pour notre système de build.</dd>
-<dt>core/</dt>
+<dt>src/</dt>
 <dd>This is the algorithm source tree. Each algorithm should be contained
 in its on sub-tree with doc, sql, src, and test sub-directories.
 This might get renamed to &#8220;algorithms&#8221; at some point.</dd>
-<dt>core/astar/</dt>
+<dt>src/astar/</dt>
 <dd>Ceci est une implémentation de la Recherche A* basée sur l&#8217;utilisation de la bibliothèque Boost Graph. Ceci est une implémentation du plus court chemin Dijkstra avec une Heuristique Euclidienne.</dd>
-<dt>core/common/</dt>
+<dt>src/common/</dt>
 <dd>Pour le moment ceci n&#8217;a pas de core in &#8220;src&#8221;, mais a un certain nombre de codes de wrappers SQL et de codes de topologie dans le répertoire &#8220;sql&#8221;. <em>Les wrappers spécifiques d&#8217;algorithmes devraient être déplacées à l&#8217;arbre d&#8217;algorithme et les tests appropriés devraient être ajoutés pour valider les wrappers.</em></dd>
-<dt>core/dijkstra/</dt>
+<dt>src/dijkstra/</dt>
 <dd>Ceci est une implémentation de la solution du plus court chemin Dikjstra utilisant les bibliothèques Boost Graph pour l&#8217;implémentation.</dd>
-<dt>core/driving_distance/</dt>
+<dt>src/driving_distance/</dt>
 <dd>Ce paquet optionnel créée des polygones de driving distance basées sur la résolution de la solution du plus court chemin Dijkstra, ensuite en créant des polygones basés sur les distances de coût égal depuis le point de départ. Ce paquet optionnel requiert d&#8217;avoir installé les librairies CGAL.</dd>
-<dt>core/shooting_star/</dt>
+<dt>src/shooting_star/</dt>
 <dd><em>DESAPPROUVE et NE FONCTIONNE PAS et SUR LE POINT D&#8217;ETRE SUPPRIME</em> Ceci est une arête basée sur l&#8217;algorithme du plus court chemin qui supporte les restrictions de virage. It is based on Boost Graph. Ne <em>PAS</em> utiliser cet algorithme comme il est cassé, utiliser <em>trsp</em> à la place, qui a la même fonctionnalité et est plus rapide et donne des résultats corrects.</dd>
-<dt>core/trsp/</dt>
+<dt>src/trsp/</dt>
 <dd>Ceci est un algorithme du plus court chemin avec restrictions de virage. Il a des caractéristiques sympathiques comme vous pouvez spécifiez les points de début et la fin comme un pourcentage d&#8217;une arête. Les restrictions sont sauvegardées dans une table séparée des arêtes du graphe et cela rend plus facile de gérer les données.</dd>
-<dt>core/tsp/</dt>
+<dt>src/tsp/</dt>
 <dd>Ce paquet optionnel fournit la capacité de calculer les solutions du problème du voyageur de commerce et calcule la route résultante. Ce paquet optionnel requiert l&#8217;installation des librairies GAUL.</dd>
 <dt>tools/</dt>
 <dd>Scripts divers et outils.</dd>
@@ -137,8 +137,8 @@ diff -w file.rest tmpfile
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
-      Mis à jour le Sep 20, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (0a53b89 master).
+      Mis à jour le Sep 24, 2013.
       Créé avec <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

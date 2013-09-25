@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '2.0.0 (d4d49b7 master)',
+        VERSION:     '2.0.0 (0a53b89 master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../../../../_static/theme_extras.js"></script>
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../../index.html" />
-    <link rel="up" title="Developers’s Functions" href="index.html" />
+    <link rel="up" title="Funciones para Desarrolladores" href="index.html" />
     <link rel="next" title="pgr_startPoint" href="start_point.html" />
     <link rel="prev" title="pgr_version" href="version.html" /> 
   </head>
@@ -56,39 +56,39 @@
   <div class="section" id="pgr-versionless">
 <span id="id1"></span><h1>pgr_versionless<a class="headerlink" href="#pgr-versionless" title="Enlazar permanentemente con este título">¶</a></h1>
 <div class="section" id="name">
-<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Enlazar permanentemente con este título">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_versionless</span></tt> — Compare two version numbers.</p>
+<span id="index-0"></span><h2>Nombre<a class="headerlink" href="#name" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>pgr_versionless - Comparar los números de versión</p>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
-<p class="last">This function is intended for the developer’s aid.</p>
+<p class="last">Esta función es para ayudar a los desarrolladores</p>
 </div>
 </div>
 <div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Returns <tt class="docutils literal"><span class="pre">true</span></tt> if the first version number is smaller than the second version number. Otherwise returns <tt class="docutils literal"><span class="pre">false</span></tt>.</p>
+<h2>Sinopsis<a class="headerlink" href="#synopsis" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Devuelve <tt class="docutils literal"><span class="pre">true</span></tt>  si el primer número de versión es más pequeño que el segundo número de la versión. De lo contrario, devuelve <tt class="docutils literal"><span class="pre">false</span></tt>.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="nb">boolean</span> <span class="n">pgr_versionless</span><span class="p">(</span><span class="nb">text</span> <span class="n">v1</span><span class="p">,</span> <span class="nb">text</span> <span class="n">v2</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="description">
-<h2>Description<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">v1:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> first version number</td>
+<tr class="field-odd field"><th class="field-name">v1:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> primer número de versión</td>
 </tr>
-<tr class="field-even field"><th class="field-name">v2:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> second version number</td>
+<tr class="field-even field"><th class="field-name">v2:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> segundo número de versión</td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">History</p>
+<p class="rubric">Historia</p>
 <ul class="simple">
-<li>New in version 2.0.0</li>
+<li>Nuevo en la versión 2.0.0</li>
 </ul>
 </div>
 <div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ejemplos<a class="headerlink" href="#examples" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_versionless</span><span class="p">(</span><span class="s1">&#39;2.0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;2.1&#39;</span><span class="p">);</span>
 
  <span class="n">pgr_versionless</span>
@@ -99,10 +99,10 @@
 </div>
 </div>
 <div class="section" id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Véase también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="../../../../doc/src/developer/index.html#developer"><em>Guía del desarrollador</em></a> for the tree layout of the project.</li>
-<li><a class="reference internal" href="version.html#pgr-version"><em>pgr_version</em></a> to get the current version of pgRouting.</li>
+<li><a class="reference internal" href="../../../../doc/src/developer/index.html#developer"><em>Guía del desarrollador</em></a> para el diseño del árbol del proyecto.</li>
+<li><a class="reference internal" href="version.html#pgr-version"><em>pgr_version</em></a> para obtener la versión actual de pgRouting.</li>
 </ul>
 </div>
 </div>
@@ -122,8 +122,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
-      Actualizado por última vez en Sep 20, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (0a53b89 master).
+      Actualizado por última vez en Sep 24, 2013.
       Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

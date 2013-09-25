@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '2.0.0 (d4d49b7 master)',
+        VERSION:     '2.0.0 (0a53b89 master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../../../../_static/theme_extras.js"></script>
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../../index.html" />
-    <link rel="up" title="Topology Functions" href="index.html" />
+    <link rel="up" title="Funciones Topológicas" href="index.html" />
     <link rel="next" title="pgr_nodeNetwork" href="node_network.html" />
     <link rel="prev" title="pgr_analyzeGraph" href="analyze_graph.html" /> 
   </head>
@@ -57,7 +57,7 @@
 <span id="pgr-analyze-oneway"></span><h1>pgr_analyzeOneway<a class="headerlink" href="#pgr-analyzeoneway" title="Enlazar permanentemente con este título">¶</a></h1>
 <div class="section" id="name">
 <span id="index-0"></span><h2>Nombre<a class="headerlink" href="#name" title="Enlazar permanentemente con este título">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_analyzeOneway</span></tt> — Analizarcalles unidireccionales e identifica segmentos invertidos</p>
+<p><tt class="docutils literal"><span class="pre">pgr_analyzeOneway</span></tt> — Analizar calles unidireccionales e identifica segmentos invertidos</p>
 </div>
 <div class="section" id="synopsis">
 <h2>Sinopsis<a class="headerlink" href="#synopsis" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -72,23 +72,23 @@
 </div>
 <div class="section" id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>The analyses of one way segments is pretty simple but can be a powerful tools to identifying some the potential problems created by setting the direction of a segment the wrong way. A node is a <cite>source</cite> if it has edges the exit from that node and no edges enter that node. Conversely, a node is a <cite>sink</cite> if all edges enter the node but none exit that node. For a <cite>source</cite> type node it is logically impossible to exist because no vehicle can exit the node if no vehicle and enter the node. Likewise, if you had a <cite>sink</cite> node you would have an infinite number of vehicle piling up on this node because you can enter it but not leave it.</p>
-<p>So why do we care if the are not feasible? Well if the direction of an edge was reversed by mistake we could generate exactly these conditions. Think about a divided highway and on the north bound lane one segment got entered wrong or maybe a sequence of multiple segments got entered wrong or maybe this happened on a round-about. The result would be potentially a <cite>source</cite> and/or a <cite>sink</cite> node.</p>
-<p>So by counting the number of edges entering and exiting each node we can identify both <cite>source</cite> and <cite>sink</cite> nodes so that you can look at those areas of your network to make repairs and/or report the problem back to your data vendor.</p>
-<p class="rubric">Prerequisites</p>
-<p>The  edge table to be analyzed must contain a source column and a target column filled with id&#8217;s of the vertices of the segments and the corresponding vertices table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
+<p>El análisis de segmentos que tienen un solo sentido es bastante simple, pero a la vez  ser una herramienta poderosa para identificar algunos problemas potenciales que son creados al establecer la dirección de un segmento de la manera equivocada. Un nodo es un <cite>source</cite> si tiene bordes que salen de ese nodo y no hay bordes que entren a  ese nodo. Por el contrario, un nodo es un`sink` si todos los bordes entran al nodo pero ninguno sale de ese nodo. Para un nodo <cite>source</cite> es lógicamente imposible existir porque ningún vehículo puede salir del nodo o si algún vehículo logró entrar en el nodo. Asimismo, si tuvieras un nodo <cite>sink</cite> tienes un número infinito de vehículos que se van  acumulando en este nodo porque no pueden salir de el.</p>
+<p>Así que ¿por qué nos importa si no es factibles? Si la dirección de un borde se revirtió por error podríamos generar exactamente en estas condiciones. Pensar en una carretera dividida y en el carril que va al norte un segmento o varios segmentos fueron introducidos al revés, o tal vez esto sucedió en una glorieta. El resultado sería potencialmente un nodo <cite>source</cite> y/o a <cite>sink</cite> node.</p>
+<p>Así contando el número de aristas entrantes y salientes de cada nodo podemos identificar los nodos <cite>source</cite> y <cite>sink</cite>, así que usted puede mirar esas áreas de su red para hacer reparaciones o informar del problema a su proveedor de datos.</p>
+<p class="rubric">Requisitos previos</p>
+<p>La tabla de bordes debe ser analizada debe contener una columna de origen y una columna de destino llena con los identificadores de los vértices de los segmentos y los vértices correspondientes de la tabla &lt;edge_table&gt;_vertices_pgr que almacena la información de los vértices.</p>
 <blockquote>
 <div><ul class="simple">
-<li>Use <a class="reference internal" href="create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> to create the vertices table.</li>
-<li>Use <a class="reference internal" href="create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> to create the topology and the vertices table.</li>
+<li>usar <a class="reference internal" href="create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> para crear la tabla de vértices.</li>
+<li>Usar <a class="reference internal" href="create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> para crear la topología y la tabla de vértices.</li>
 </ul>
 </div></blockquote>
-<p class="rubric">Parameters</p>
+<p class="rubric">Parámetros</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edge_table:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> Network table name. (may contain the schema name as well)</td>
+<tr class="field-odd field"><th class="field-name">edge_table:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> La tabla de la red. (puede contener el nombre del esquema)</td>
 </tr>
 <tr class="field-even field"><th class="field-name">s_in_rules:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text[]</span></tt> reglas de <strong>entrada</strong> del nodo inicial</td>
 </tr>
@@ -98,56 +98,56 @@
 </tr>
 <tr class="field-odd field"><th class="field-name">t_out_rules:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text[]</span></tt> reglas de <strong>salida</strong> del nodo final</td>
 </tr>
-<tr class="field-even field"><th class="field-name">oneway:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> oneway column name name of the network table. Default value is <tt class="docutils literal"><span class="pre">oneway</span></tt>.</td>
+<tr class="field-even field"><th class="field-name">oneway:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> El nombre de la columna del sentido. El valor por defecto es <tt class="docutils literal"><span class="pre">oneway</span></tt>.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> Source column name of the network table. Default value is <tt class="docutils literal"><span class="pre">source</span></tt>.</td>
+<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> El nombre de la columna del nodo de salida del segmento. El valor por defecto es``source``.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt>  Target column name of the network table.  Default value is <tt class="docutils literal"><span class="pre">target</span></tt>.</td>
+<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt>  El nombre de la columna del nodo de llegada del segmneto.  El valor por defecto es <tt class="docutils literal"><span class="pre">target</span></tt>.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">two_way_if_null:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><tt class="docutils literal"><span class="pre">boolean</span></tt> flag to treat oneway NULL values as bi-directional.  Default value is <tt class="docutils literal"><span class="pre">true</span></tt>.</td>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><tt class="docutils literal"><span class="pre">boolean</span></tt>  bandera para tratar los valores NULL de oneway como bidireccional.  Valor predeterminado es``true``.</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
-<p class="last">It is strongly recommended to use the named notation. See <a class="reference internal" href="create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> or <a class="reference internal" href="create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> for examples.</p>
+<p class="last">Se recomienda enormemente que se utilice la notación con nombre. Ver <a class="reference internal" href="create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> o <a class="reference internal" href="create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> para ejemlos.</p>
 </div>
-<p>The function returns:</p>
+<p>La función devuelve:</p>
 <blockquote>
 <div><ul class="simple">
-<li><tt class="docutils literal"><span class="pre">OK</span></tt> after the analysis has finished.<ul>
-<li>Uses the vertices table: &lt;edge_table&gt;_vertices_pgr.</li>
-<li>Fills completely the <tt class="docutils literal"><span class="pre">ein</span></tt> and <tt class="docutils literal"><span class="pre">eout</span></tt> columns of the vertices table.</li>
+<li><tt class="docutils literal"><span class="pre">OK</span></tt> Cuando el análisis ha terminado.<ul>
+<li>Utiliza la tabla de los vértices: &lt;edge_table&gt;_vertices_pgr.</li>
+<li>Se llena completamente las columnas de la tabla de vértices <tt class="docutils literal"><span class="pre">ein</span></tt> y <tt class="docutils literal"><span class="pre">eout</span></tt>.</li>
 </ul>
 </li>
-<li><tt class="docutils literal"><span class="pre">FAIL</span></tt> when the analysis was not completed due to an error.<ul>
-<li>The vertices table is not found.</li>
-<li>A required column of the Network table is not found or is not of the appropriate type.</li>
-<li>The names of source , target or oneway are the same.</li>
+<li><tt class="docutils literal"><span class="pre">FAIL</span></tt> cuando el análisis no se completó debido a un error.<ul>
+<li>No se encuentra en la tabla de los vértices.</li>
+<li>Una columna de la tabla de red requerida no se encuentra o no es del tipo apropiado.</li>
+<li>Los nombres de origen, destino o oneway son las mismos.</li>
 </ul>
 </li>
 </ul>
 </div></blockquote>
-<p>The rules are defined as an array of text strings that if match the <tt class="docutils literal"><span class="pre">oneway</span></tt> value would be counted as <tt class="docutils literal"><span class="pre">true</span></tt> for the source or target <strong>in</strong> or <strong>out</strong> condition.</p>
-<p class="rubric">The Vertices Table</p>
-<p>The vertices table can be created with <a class="reference internal" href="create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> or <a class="reference internal" href="create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a></p>
-<p>The structure of the vertices table is:</p>
+<p>Las reglas se definen como un conjunto de textos que si encajan con el valor de <tt class="docutils literal"><span class="pre">oneway</span></tt> se contara como <tt class="docutils literal"><span class="pre">true</span></tt> para las condiciones de el origen o destino <strong>in</strong> o <strong>out</strong> .</p>
+<p class="rubric">La tabla de vértices</p>
+<p>La tabla de los vértices puede crearse con  <a class="reference internal" href="create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> o <a class="reference internal" href="create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a></p>
+<p>La estructura de la tabla de los vértices es:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">bigint</span></tt> Identifier of the vertex.</td>
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">bigint</span></tt> identificador del vértice.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">cnt:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Number of vertices in the edge_table that reference this vertex. See <a class="reference internal" href="analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGgraph</em></a>.</td>
+<tr class="field-even field"><th class="field-name">cnt:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> número de vértices en la edge_table que hacen referencia a este vértice. Ver <a class="reference internal" href="analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGgraph</em></a>.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">chk:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt>  Indicator that the vertex might have a problem. See <a class="reference internal" href="analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a>.</td>
+<tr class="field-odd field"><th class="field-name">chk:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> indicador que el vértice podría tener un problema. Ver <a class="reference internal" href="analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a>.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">ein:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Number of vertices in the edge_table that reference this vertex as incoming.</td>
+<tr class="field-even field"><th class="field-name">ein:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> número de vértices en la edge_table que hacen referencia a este vértice como entrante.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">eout:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Number of vertices in the edge_table that reference this vertex as outgoing.</td>
+<tr class="field-odd field"><th class="field-name">eout:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> número de vértices en la edge_table que hacen referencia a este vértice como saliente.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body"><tt class="docutils literal"><span class="pre">geometry</span></tt> Point geometry of the vertex.</td>
+<tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body"><tt class="docutils literal"><span class="pre">geometry</span></tt> Valor de la geometría POINT del vértice.</td>
 </tr>
 </tbody>
 </table>
@@ -184,10 +184,10 @@
 <div class="section" id="see-also">
 <h2>Véase también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="../../../../doc/src/tutorial/topology.html#topology"><em>Topología para rutas</em></a>  for an overview of a topology for routing algorithms.</li>
-<li><a class="reference internal" href="../../../../doc/src/tutorial/analytics.html#analytics"><em>Análisis de gráficas</em></a> for an overview of the analysis of a graph.</li>
-<li><a class="reference internal" href="analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a> to analyze the edges and vertices of the edge table.</li>
-<li><a class="reference internal" href="create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> to reconstruct the vertices table based on the source and target information.</li>
+<li><a class="reference internal" href="../../../../doc/src/tutorial/topology.html#topology"><em>Topología para Ruteo</em></a> para tener una visión general de una topología de algoritmos de encaminamiento.</li>
+<li><a class="reference internal" href="../../../../doc/src/tutorial/analytics.html#analytics"><em>Análisis de gráficas</em></a> para tener una visión general del análisis de un gráfico.</li>
+<li><a class="reference internal" href="analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a> Para analizar los bordes y vértices de la tabla de bordes.</li>
+<li><a class="reference internal" href="create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> para reconstruir la tabla vértices basándose en la información de origen y de destino.</li>
 </ul>
 </div>
 </div>
@@ -207,8 +207,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
-      Actualizado por última vez en Sep 20, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (0a53b89 master).
+      Actualizado por última vez en Sep 24, 2013.
       Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

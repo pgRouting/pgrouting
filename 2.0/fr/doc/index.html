@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.0.0 (d4d49b7 master)',
+        VERSION:     '2.0.0 (0a53b89 master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -52,17 +52,17 @@
   <div class="section" id="table-of-contents">
 <span id="index"></span><h1>Table des matières<a class="headerlink" href="#table-of-contents" title="Lien permanent vers ce titre">¶</a></h1>
 <p>pgRouting est une extension de la base de données géospatiale <a class="reference external" href="http://postgis.net">PostGIS</a>/<a class="reference external" href="http://postgresql.org">PostgreSQL</a> afin de proposer des fonctionnalités de routage géospatial et d&#8217;autres analyses de réseaux.</p>
-<p>Ceci est le manuel de pgRouting 2.0.0 (d4d49b7 master).</p>
+<p>Ceci est le manuel de pgRouting 2.0.0 (0a53b89 master).</p>
 <img alt="Creative Commons Attribution-Share Alike 3.0 License" class="align-left" src="../_images/ccbysa.png" />
-<p>Le Manuel pgRouting est distribué sous <a class="reference external" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>. N&#8217;hésitez pas à utiliser ce manuel comme vous le souhaitez, mais nous demandons que vous mentionnez le crédit au Projet pgRouting et à chaque fois que cela est possible un lien vers <a class="reference external" href="http://pgrouting.org">http://pgrouting.org</a>. Pour les autres licences utilisées dans pgRouting, voir la page <a class="reference internal" href="src/introduction/introduction.html#license"><em>License</em></a>.</p>
+<p>Le Manuel pgRouting est distribué sous <a class="reference external" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>. N&#8217;hésitez pas à utiliser ce manuel comme vous le souhaitez, mais nous demandons que vous mentionnez le crédit au Projet pgRouting et à chaque fois que cela est possible un lien vers <a class="reference external" href="http://pgrouting.org">http://pgrouting.org</a>. Pour les autres licences utilisées dans pgRouting, voir la page <a class="reference internal" href="src/introduction/introduction.html#license"><em>Licence</em></a>.</p>
 <div class="section" id="general">
 <h2>Général<a class="headerlink" href="#general" title="Lien permanent vers ce titre">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="src/introduction/introduction.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="src/introduction/introduction.html#license">License</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/introduction/introduction.html#contributors">Contributors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/introduction/introduction.html#more-information">More Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/introduction/introduction.html#license">Licence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/introduction/introduction.html#contributors">Contributeurs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/introduction/introduction.html#more-information">Plus d&#8217;informations</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="src/installation/index.html">Installation</a><ul>
@@ -91,81 +91,88 @@
 </div>
 <div class="section" id="tutorial">
 <h2>Tutoriel<a class="headerlink" href="#tutorial" title="Lien permanent vers ce titre">¶</a></h2>
+<p><a class="reference internal" href="src/tutorial/index.html#tutorial1"><em>Tutorial</em></a></p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="src/tutorial/tutorial.html#tutorial"><em>Getting started</em></a></li>
+<li><a class="reference internal" href="src/tutorial/topology.html#topology"><em>Topologie de routage</em></a> for an overview of a topology for routing algorithms.</li>
+<li><a class="reference internal" href="src/tutorial/analytics.html#analytics"><em>Analytiques de graphe</em></a> for an overview of the analysis of a graph.</li>
+<li><a class="reference internal" href="src/tutorial/custom_query.html#custom-query"><em>Requête personnalisée</em></a> that is used in the routing algorithms.</li>
+<li><a class="reference internal" href="src/tutorial/performance.html#performance"><em>Conseils pour la performance</em></a> to improve your performance.</li>
+<li><a class="reference internal" href="src/tutorial/custom_wrapper.html#custom-wrapper"><em>User&#8217;s wrapper contributions</em></a> to colaborate with a wrapper.</li>
+<li><a class="reference internal" href="src/tutorial/recipes.html#recipes"><em>Use&#8217;s Recipes contributions</em></a> to colaborate with a recipe.</li>
+<li><a class="reference internal" href="src/developer/sampledata.html#sampledata"><em>Données d&#8217;échantillon</em></a> that is used in the examples of this manual.</li>
+</ul>
+</div></blockquote>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="src/tutorial/index.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="src/tutorial/tutorial.html"> Getting started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/tutorial/topology.html"> An overview of a topology for routing algorithms.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/tutorial/analytics.html"> An overview of the analysis of a graph.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/tutorial/custom_query.html"> How to write a query for the routing algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/tutorial/performance.html"> How to handle performance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/tutorial/custom_wrapper.html"> User&#8217;s wrappers contributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/tutorial/recipes.html"> User&#8217;s recipies contributions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="src/developer/sampledata.html">Données d&#8217;échantillon</a></li>
-</ul>
 </div>
 <p>Pour une introduction plus complète sur comment construire une application de routage, lire l&#8217;<a class="reference external" href="http://workshop.pgrouting.org">Atelier pgRouting</a>.</p>
 </div>
 <div class="section" id="data-types">
 <h2>Data Types<a class="headerlink" href="#data-types" title="Lien permanent vers ce titre">¶</a></h2>
+<p><a class="reference internal" href="../src/common/doc/types/index.html#data-types"><em>pgRouting Data Types</em></a></p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../src/common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a> -  A set of records to describe a path result with cost attribute.</li>
+<li><a class="reference internal" href="../src/common/doc/types/cost_result.html#type-cost-result3"><em>pgr_costResult3[]</em></a> - A set of records to describe a path result with cost attribute.</li>
+<li><a class="reference internal" href="../src/common/doc/types/geom_result.html#type-geom-result"><em>pgr_geomResult</em></a> - A set of records to describe a path result with geometry attribute.</li>
+</ul>
+</div></blockquote>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/types/index.html">pgRouting Data Types</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/types/cost_result.html">pgr_costResult[]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/types/cost_result.html#pgr-costresult3-multiple-path-results-with-cost">pgr_costResult3[] - Résultats du chemin multiple avec coût</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/types/geom_result.html">     pgr_geomResult[] - Path Result with Geometry</a></li>
-</ul>
-</li>
-</ul>
 </div>
 </div>
 <div class="section" id="functions-reference">
 <h2>Functions reference<a class="headerlink" href="#functions-reference" title="Lien permanent vers ce titre">¶</a></h2>
+<p><a class="reference internal" href="../src/common/doc/functions/index.html#topology-functions"><em>Topology Functions</em></a></p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../src/common/doc/functions/create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> -  to create a topology based on the geometry.</li>
+<li><a class="reference internal" href="../src/common/doc/functions/create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> - to reconstruct the vertices table based on the source and target information.</li>
+<li><a class="reference internal" href="../src/common/doc/functions/analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a>  - to analyze the edges and vertices of the edge table.</li>
+<li><a class="reference internal" href="../src/common/doc/functions/analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a> - to analyze directionality of the edges.</li>
+<li><a class="reference internal" href="../src/common/doc/functions/node_network.html#pgr-node-network"><em>pgr_nodeNetwork</em></a>  -to create nodes to a not noded edge table.</li>
+</ul>
+</div></blockquote>
+<p><a class="reference internal" href="../src/index.html#routing-functions"><em>Routing Functions</em></a></p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../src/apsp_johnson/doc/index.html#pgr-apsp-johnson"><em>pgr_apspJohnson</em></a>- All Pairs Shortest Path, Johnson’s Algorithm</li>
+<li><a class="reference internal" href="../src/apsp_warshall/doc/index.html#pgr-apsp-warshall"><em>pgr_apspWarshall</em></a> - All Pairs Shortest Path, Floyd-Warshall Algorithm</li>
+<li><a class="reference internal" href="../src/astar/doc/index.html#pgr-astar"><em>pgr_astar</em></a> - Shortest Path A*</li>
+<li><a class="reference internal" href="../src/bd_astar/doc/index.html#bd-astar"><em>pgr_bdAstar</em></a> - Bi-directional A* Shortest Path</li>
+<li><a class="reference internal" href="../src/bd_dijkstra/doc/index.html#bd-dijkstra"><em>pgr_bdDijkstra</em></a> - Bi-directional Dijkstra Shortest Path</li>
+<li><a class="reference internal" href="../src/dijkstra/doc/index.html#pgr-dijkstra"><em>pgr_dijkstra</em></a> - Shortest Path Dijkstra</li>
+<li><a class="reference internal" href="../src/kdijkstra/doc/index.html#pgr-kdijkstra"><em>pgr_kDijkstra</em></a> - Mutliple destination Shortest Path Dijkstra</li>
+<li><a class="reference internal" href="../src/ksp/doc/index.html#ksp"><em>pgr_ksp</em></a> - K-Shortest Path</li>
+<li><a class="reference internal" href="../src/tsp/doc/index.html#pgr-tsp"><em>pgr_tsp</em></a> - Traveling Sales Person</li>
+<li><a class="reference internal" href="../src/trsp/doc/index.html#trsp"><em>pgr_trsp</em></a> - Turn Restriction Shortest Path (TRSP)</li>
+</ul>
+</div></blockquote>
+<p><a class="reference internal" href="../src/driving_distance/doc/index.html#dd-index"><em>With Driving Distance Enabled</em></a></p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../src/driving_distance/doc/dd_driving_distance.html#pgr-driving-distance"><em>pgr_drivingDistance</em></a> - Driving Distance</li>
+<li><a class="reference internal" href="../src/driving_distance/doc/dd_alphashape.html#pgr-alphashape"><em>pgr_alphaShape</em></a> - Alpha shape computation</li>
+<li><a class="reference internal" href="../src/driving_distance/doc/dd_points_as_polygon.html#pgr-points-as-polygon"><em>pgr_pointsAsPolygon</em></a> - Polygon around set of points</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt><a class="reference internal" href="../src/common/doc/utilities/index.html#developer-functions"><em>Developers&#8217;s Functions</em></a></dt>
+<dd><ul class="first last simple">
+<li><a class="reference internal" href="../src/common/doc/utilities/get_column_name.html#pgr-get-column-name"><em>pgr_getColumnName</em></a> - to get the name of the column as is stored in the postgres administration tables.</li>
+<li><a class="reference internal" href="../src/common/doc/utilities/get_table_name.html#pgr-get-table-name"><em>pgr_getTableName</em></a> - to retrieve the name of the table as is stored in the postgres administration tables.</li>
+<li><a class="reference internal" href="../src/common/doc/utilities/is_column_indexed.html#pgr-is-column-indexed"><em>pgr_isColumnIndexed</em></a> - to check if the column is indexed.</li>
+<li><a class="reference internal" href="../src/common/doc/utilities/is_column_in_table.html#pgr-is-column-in-table"><em>pgr_isColumnInTable</em></a> - to check only for the existance of the column.</li>
+<li><a class="reference internal" href="../src/common/doc/utilities/point_to_id.html#pgr-point-to-id"><em>pgr_pointToId</em></a> -to insert/get the id of the inserted point in a vertices table.</li>
+<li><a class="reference internal" href="../src/common/doc/utilities/quote_ident.html#pgr-quote-ident"><em>pgr_quote_ident</em></a> - to quotes the input text to be used as an identifier in an SQL statement string.</li>
+<li><a class="reference internal" href="../src/common/doc/utilities/version.html#pgr-version"><em>pgr_version</em></a> - to get pgRouting&#8217;s version information.</li>
+<li><a class="reference internal" href="../src/common/doc/utilities/versionless.html#pgr-versionless"><em>pgr_versionless</em></a> - to compare two version numbers.</li>
+<li><a class="reference internal" href="../src/common/doc/utilities/start_point.html#pgr-start-point"><em>pgr_startPoint</em></a> - to get the start point of a (multi)linestring.</li>
+<li><a class="reference internal" href="../src/common/doc/utilities/end_point.html#pgr-end-point"><em>pgr_endPoint</em></a> - to get the end point of a (multi)linestring.</li>
+</ul>
+</dd>
+</dl>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/index.html">Topology Functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/functions/create_topology.html">pgr_createTopology to create a topology based on the geometry.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/functions/create_vert_table.html">pgr_createVerticesTable -to reconstruct the vertices table based on the source and target information.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/functions/analyze_graph.html">pgr_analyzeGraph - to analyze the edges and vertices of the edge table.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/functions/analyze_oneway.html">pgr_analyzeOneway to analyze directionality of the edges.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/functions/node_network.html">pgr_nodeNetwork -to create nodes to a not noded edge table.</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../src/index.html">Routing Functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../src/apsp_johnson/doc/index.html">pgr_apspJohnson - Plus court chemin toutes paires, algorithme de Johnson</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/apsp_warshall/doc/index.html">pgr_apspWarshall - Plus court chemin toutes paires, Algorithme Floyd-Warshall</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/astar/doc/index.html">pgr_astar - Plus court chemin A*</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/bd_astar/doc/index.html">pgr_bdAstar - plus court chemin bidirectionnel A*</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/bd_dijkstra/doc/index.html">pgr_bdDijkstra - Plus court chemin bidirectionnel Dijkstra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/dijkstra/doc/index.html">pgr_dijkstra - Plus court chemin Dijkstra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/kdijkstra/doc/index.html">pgr_kDijkstra - Plus court chemin Dijkstra à multiples destinations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/ksp/doc/index.html">pgr_ksp - K-plus court chemin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/tsp/doc/index.html">pgr_tsp - Voyageur du commerce</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/trsp/doc/index.html">pgr_trsp - Plus court chemin avec restriction de virage (TRSP)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../src/driving_distance/doc/index.html">With Driving Distance Enabled</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../src/driving_distance/doc/dd_driving_distance.html">pgr_drivingDistance - Driving Distance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/driving_distance/doc/dd_alphashape.html">pgr_alphaShape - Alpha shape computation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/driving_distance/doc/dd_points_as_polygon.html">pgr_pointsAsPolygon - Polygon around set of points</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/utilities/index.html">Developers&#8217;s Functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/utilities/get_column_name.html">     pgr_getColumnName - to get the name of the column as is stored in the postgres administration tables.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/utilities/get_table_name.html">     pgr_getTableName - to retrieve the name of the table as is stored in the postgres administration tables.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/utilities/is_column_indexed.html">     pgr_isColumnIndexed - to check if the column is indexed.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/utilities/is_column_in_table.html">     pgr_isColumnInTable - to check only for the existance of the column.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/utilities/point_to_id.html">     pgr_pointToId -to insert/get the id of the inserted point in a vertices table.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/utilities/quote_ident.html">     pgr_quote_ident - to quotes the input text to be used as an identifier in an SQL statement string.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/utilities/version.html"> pgr_version - to get pgRouting&#8217;s version information.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/utilities/versionless.html">     pgr_versionless - to compare two version numbers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/utilities/start_point.html">     pgr_startPoint - to get the start point of a (multi)linestring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../src/common/doc/utilities/end_point.html">     pgr_endPoint - to get the end point of a (multi)linestring</a></li>
-</ul>
-</li>
-</ul>
 </div>
 <div class="toctree-wrapper compound">
 <ul>
@@ -184,12 +191,16 @@
 <li class="toctree-l2"><a class="reference internal" href="src/developer/index.html#testing-infrastructure">Infrastructure de test</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="src/changelog/index.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="src/changelog/2_0.html">pgRouting 2.0 Release Notes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/changelog/1_x.html">pgRouting 1.x Release Notes</a></li>
 </ul>
-</li>
+</div>
+<p><a class="reference internal" href="src/changelog/index.html#change-log"><em>Release Notes</em></a></p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="src/changelog/2_0.html#changelog-2-0"><em>Notes de version pgRouting 2.0</em></a></li>
+<li><a class="reference internal" href="src/changelog/1_x.html#changelog-1-x"><em>Notes de version pgRouting 1.0</em></a></li>
 </ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
 </div>
 <p class="rubric">Index et tableaux</p>
 <ul class="simple">
@@ -212,8 +223,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
-      Mis à jour le Sep 20, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (0a53b89 master).
+      Mis à jour le Sep 24, 2013.
       Créé avec <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

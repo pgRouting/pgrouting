@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0 (d4d49b7 master)',
+        VERSION:     '2.0.0 (0a53b89 master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,9 +30,9 @@
     <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
-    <link rel="up" title="Tutorial" href="index.html" />
+    <link rel="up" title="Tutoriales" href="index.html" />
     <link rel="next" title="Consultas Personalizadas" href="custom_query.html" />
-    <link rel="prev" title="Topología para rutas" href="topology.html" /> 
+    <link rel="prev" title="Topología para Ruteo" href="topology.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
@@ -42,7 +42,7 @@
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="topology.html">Topología para rutas</a>
+        «&#160;&#160;<a href="topology.html">Topología para Ruteo</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -67,12 +67,12 @@
 </table>
 <div class="section" id="overview">
 <h2>Resumen<a class="headerlink" href="#overview" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>It is common to find problems with graphs that have not been constructed fully noded or in graphs with z-levels at intersection that have been entered incorrectly. An other problem is one way streets that have been entered in the wrong direction. We can not detect errors with respect to &#8220;ground&#8221; truth, but we can look for inconsistencies and some anomalies in a graph and report them for additional inspections.</p>
-<p>We do not current have any visualization tools for these problems, but I have used mapserver to render the graph and highlight potential problem areas. Someone familiar with graphviz might contribute tools for generating images with that.</p>
+<p>Es común encontrar problemas con los gráficos que no se han construido completamente ligados con nodos o con gráficos con niveles z en intersecciónes que se han introducido incorrectamente. Otro problema es que las calles han sido introducidas en la dirección equivocada. No podemos detectar errores con respecto a la verdad respecto a la &#8220;tierra&#8221;, pero podemos buscar inconsistencias y algunas anomalías en un gráfico y les reportarlas para inspecciones adicionales.</p>
+<p>Nosotros no tenemos herramientas de visualización para estos problemas, pero se ha utilizado MapServer para reproducir la gráfica y poner en relieve las áreas con problemas potenciales. Alguien familiarizado con graphviz podría contribuir con herramientas para generar imágenes para este propósito.</p>
 </div>
 <div class="section" id="analyze-a-graph">
 <h2>Analizar un gráfico<a class="headerlink" href="#analyze-a-graph" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>With <a class="reference internal" href="../../../src/common/doc/functions/analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a> the graph can be checked for errors. For example for table &#8220;mytab&#8221; that has &#8220;mytab_vertices_pgr&#8221; as the vertices table:</p>
+<p>Con <a class="reference internal" href="../../../src/common/doc/functions/analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a> el gráfico puede comprobarse errores. Por ejemplo para la tabla &#8220;mytab&#8221; que tiene &#8220;mytab_vertices_pgr&#8221; como la tabla de vértices:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000002</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">pelase</span> <span class="n">wait</span><span class="p">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="p">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="p">...</span>
@@ -92,11 +92,11 @@
 <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In the vertices table &#8220;mytab_vertices_pgr&#8221;:</p>
+<p>En la tabla de vértices &#8220;mytab_vertices_pgr&#8221;:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Deadends are indentified by <tt class="docutils literal"><span class="pre">cnt=1</span></tt></li>
-<li>Potencial gap problems are identified with <tt class="docutils literal"><span class="pre">chk=1</span></tt>.</li>
+<li>Incorrectos son identificados por <tt class="docutils literal"><span class="pre">cnt=1</span></tt></li>
+<li>Se identifican problemas potenciales brecha con``chk=1``.</li>
 </ul>
 </div></blockquote>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">deadends</span>  <span class="k">FROM</span> <span class="n">mytab_vertices_pgr</span> <span class="k">WHERE</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -112,7 +112,7 @@
  <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For isolated road segments, for example, a segment where both ends are deadends. you can find these with the following query:</p>
+<p>Si se tienen segmentos aislados de caminos, por ejemplo, un segmento en el cual los dos extremos son callejones sin salida, se pueden encontrar con la siguiente consulta:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span>
     <span class="k">FROM</span> <span class="n">mytab</span> <span class="n">a</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="n">b</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="k">c</span>
     <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="k">source</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="n">b</span><span class="p">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span> <span class="k">AND</span> <span class="n">a</span><span class="p">.</span><span class="n">target</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="k">c</span><span class="p">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
@@ -122,7 +122,7 @@
 </div>
 <div class="section" id="analyze-one-way-streets">
 <h2>Analizar las calles unidireccionales<a class="headerlink" href="#analyze-one-way-streets" title="Enlazar permanentemente con este título">¶</a></h2>
-<p><a class="reference internal" href="../../../src/common/doc/functions/analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a> analyzes one way streets in a graph and identifies any flipped segments. Basically if you count the edges coming into a node and the edges exiting a node the number has to be greater than one.</p>
+<p><a class="reference internal" href="../../../src/common/doc/functions/analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a> analiza calles de sentido único en un grafo e identifica segmentos invertidos. Básicamente, si se cuentan los bordes entrada en un nodo y los bordes de salida de un nodo el número tiene que ser mayor que uno.</p>
 <p>Esta consulta agrega dos columnas a la tabla vertices_tmp <tt class="docutils literal"><span class="pre">ein</span> <span class="pre">int</span></tt>  y <tt class="docutils literal"><span class="pre">eout</span> <span class="pre">int</span></tt> (ein = borde de entrada, eout=borde de salida) y las rellena con los conteos  correspondientes. Después de su ejecución, en un grafo se pueden identificar los nodos con  problemas potenciales utilizando la siguiente consulta.</p>
 <p>Las reglas se definen como un conjunto de cadenas de texto que si coinciden con el valor de <tt class="docutils literal"><span class="pre">col</span></tt> se considera como válido para el origen o destino dentro o fuera de la condición.</p>
 </div>
@@ -155,8 +155,8 @@
 <span class="k">SELECT</span> <span class="n">gid</span> <span class="k">FROM</span> <span class="n">mytab</span> <span class="n">a</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="n">b</span> <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">target</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="n">ein</span><span class="o">=</span><span class="mi">0</span> <span class="k">OR</span> <span class="n">eout</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Typically these problems are generated by a break in the network, the one way direction set wrong, maybe an error related to z-levels or a network that is not properly noded.</p>
-<p>The above tools do not detect all network issues, but they will identify some common problems. There are other problems that are hard to detect because they are more global in nature like multiple disconnected networks. Think of an island with a road network that is not connected to the mainland network because the bridge or ferry routes are missing.</p>
+<p>Normalmente estos problemas son generados por una rotura en la red, la dirección un camino equivocado, quizás un error relacionado con niveles z o una red que no esté debidamente indicada con nodos.</p>
+<p>Las herramientas anteriores no detectan todos los problemas de la red, pero identifican algunos problemas comunes. Hay otros problemas que son difíciles de detectar porque son más globales en su naturaleza como múltiples redes desconectadas. Piense usted en una isla con una red de carreteras que no está conectada a la red del continente porque faltan las rutas del puente o del ferry.</p>
 </div>
 <div class="section" id="see-also">
 <h2>Véase también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -173,7 +173,7 @@
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="topology.html">Topología para rutas</a>
+        «&#160;&#160;<a href="topology.html">Topología para Ruteo</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -183,8 +183,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
-      Actualizado por última vez en Sep 20, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (0a53b89 master).
+      Actualizado por última vez en Sep 24, 2013.
       Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0 (d4d49b7 master)',
+        VERSION:     '2.0.0 (0a53b89 master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
-    <link rel="up" title="Routing Functions" href="../../index.html" />
+    <link rel="up" title="Funciones para Enrrutamiento" href="../../index.html" />
     <link rel="next" title="pgr_trsp - Camino más corto con giros restringidos (TRSP)" href="../../trsp/doc/index.html" />
     <link rel="prev" title="pgr_ksp - K caminos más cortos" href="../../ksp/doc/index.html" /> 
   </head>
@@ -159,7 +159,7 @@
 </tbody>
 </table>
 <p>El nodo final  <tt class="docutils literal"><span class="pre">end</span></tt> es un parámetro opcional, se puede omitir cuando se requiere un bucle donde el principio <tt class="docutils literal"><span class="pre">start</span></tt> es un depósito  y la ruta debe regresar de vuelta al depósito. Al incluir el parámetro  final <tt class="docutils literal"><span class="pre">end</span></tt>, se optimiza el camino de principio <tt class="docutils literal"><span class="pre">start</span></tt>  al final <tt class="docutils literal"><span class="pre">end</span></tt> y se reduce al mínimo la distancia de la ruta al ir incluyendo los puntos restantes.</p>
-<p>La matriz de distancias es un multidimensional <a class="reference external" href="http://www.postgresql.org/docs/9.1/static/arrays.html">PostgreSQL array type</a>  que debe ser de tamaño <tt class="docutils literal"><span class="pre">N</span> <span class="pre">x</span> <span class="pre">N</span></tt>.</p>
+<p>La matriz de distancias es un <a class="reference external" href="http://www.postgresql.org/docs/9.1/static/arrays.html">array de PostgreSQL</a>  multidimensional que debe ser de tamaño <tt class="docutils literal"><span class="pre">N</span> <span class="pre">x</span> <span class="pre">N</span></tt>.</p>
 <p>El resultado será de N registros de <tt class="docutils literal"><span class="pre">[</span> <span class="pre">seq,</span> <span class="pre">id</span> <span class="pre">]</span></tt>:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -187,7 +187,7 @@
 <div class="section" id="examples">
 <h2>Ejemplos<a class="headerlink" href="#examples" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li>Using SQL parameter (all points from the table, atarting from 6 and ending at 5). We have listed two queries in this example, the first might vary from system to system because there are multiple equivalent answers. The second query should be stable in that the length optimal route should be the same regardless of order.</li>
+<li>Usando el parámetro SQL (todos los puntos de la tabla,  comenzando en 6 y terminando en 5).  En este ejemplo, hemos enumerado dos consultas, la primera puede variar de sistema a sistema porque hay varias respuestas equivalentes. La segunda consulta debe ser estable en que la ruta óptima ya que la longitud debe ser la misma independientemente del orden.</li>
 </ul>
 <div class="highlight-sql"><div class="highlight"><pre> <span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span><span class="p">,</span> <span class="n">id2</span><span class="p">,</span> <span class="n">round</span><span class="p">(</span><span class="n">cost</span><span class="p">::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">cost</span>
    <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
@@ -221,7 +221,7 @@
 <ul class="simple">
 <li>Utilizando la matriz de distancia (un circuito a partir de 1)</li>
 </ul>
-<p>When using just the start node you are getting a loop that starts with 1, in this case, and travels through the other nodes and is implied to return to the start node from the last one in the list. Since this is a circle there are at least two possible paths, one clockwise and one counter-clockwise that will have the same length and be equall valid. So in the following example it is also possible to get back a sequence of ids = {1,0,3,2} instead of the {1,2,3,0} sequence listed below.</p>
+<p>Cuando se utiliza sólo el nodo de inicio, entoces se tiene un bucle que comienza, en este caso, con 1 y viaja a través de los otros nodos y se sobreentiende que regresa al nodo inicial desde el último nodo de la lista. Puesto que esto es un bucle, hay al menos dos posibles caminos, uno hacia la derecha y otro en sentido opuesto que tienen la misma longitud y ambos son igualmente válidos. Así que en el ejemplo siguiente también es posible recuperar una secuencia de identificadores = {1,0,3,2} en vez de la secuencia {1,2,3,0} que se obtiene a continuación.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id</span> <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;{{0,1,2,3},{1,0,4,5},{2,4,0,6},{3,5,6,0}}&#39;</span><span class="p">::</span><span class="n">float8</span><span class="p">[],</span><span class="mi">1</span><span class="p">);</span>
 
  <span class="n">seq</span> <span class="o">|</span> <span class="n">id</span>
@@ -248,7 +248,7 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li>Using the vertices table edge_table_vertices_pgr generated by <a class="reference internal" href="../../common/doc/functions/create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a>. Again we have two queries where the first might vary and the second is based on the overal path length.</li>
+<li>Usando la tabla de vértices edge_table_vertices_pgr generada por <a class="reference internal" href="../../common/doc/functions/create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a>. De nuevo tenemos dos consultas donde la primera puede variar y la segunda se basa en la longitud total del camino.</li>
 </ul>
 <div class="highlight-sql"><div class="highlight"><pre>     <span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span><span class="p">,</span> <span class="n">id2</span><span class="p">,</span> <span class="n">round</span><span class="p">(</span><span class="n">cost</span><span class="p">::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">cost</span>
 <span class="k">FROM</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="s1">&#39;SELECT id::integer, st_x(the_geom) as x,st_x(the_geom) as y FROM edge_table_vertices_pgr  ORDER BY id&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
@@ -310,8 +310,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
-      Actualizado por última vez en Sep 20, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (0a53b89 master).
+      Actualizado por última vez en Sep 24, 2013.
       Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

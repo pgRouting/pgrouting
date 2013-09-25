@@ -22,46 +22,46 @@ Source Tree Layout
 cmake/
     cmake scripts used as part of our build system.
 
-core/
+src/
     This is the algorithm source tree. Each algorithm should be contained
     in its on sub-tree with doc, sql, src, and test sub-directories.
     This might get renamed to "algorithms" at some point.
 
-core/astar/
+src/astar/
     This is an implementation of A* Search based on using Boost Graph
     libraries for its implementation. This is a Dijkstra shortest path
     implementation with a Euclidean Heuristic.
 
-core/common/
+src/common/
     At the moment this does not have an core in "src", but does have a lot
     of SQL wrapper code and topology code in the "sql" directory. *Algorithm
     specific wrappers should get move to the algorithm tree and appropriate
     tests should get added to validate the wrappers.*
 
-core/dijkstra/
+src/dijkstra/
     This is an implementation of Dikjstra's shortest path solution using
     Boost Graph libraries for the implementation.
 
-core/driving_distance/
+src/driving_distance/
     This optional package creates driving distance polygons based on
     solving a Dijkstra shortest path solution, then creating polygons
     based on equal cost distances from the start point.
     This optional package requires CGAL libraries to be installed.
 
-core/shooting_star/
+src/shooting_star/
     *DEPRECATED and DOES NOT WORK and IS BEING REMOVED*
     This is an edge based shortest path algorithm that supports turn
     restrictions. It is based on Boost Graph.
     Do *NOT* use this algorithm as it is broken, instead use *trsp*
     which has the same functionality and is faster and give correct results.
 
-core/trsp/
+src/trsp/
     This is a turn restricted shortest path algorithm. It has some nice
     features like you can specify the start and end points as a percentage
     along an edge. Restrictions are stored in a separate table from the
     graph edges and this make it easier to manage the data.
 
-core/tsp/
+src/tsp/
     This optional package provides the ability to compute traveling
     salesman problem solutions and compute the resulting route.
     This optional package requires GAUL libaries to be installed.

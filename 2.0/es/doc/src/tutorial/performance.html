@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0 (d4d49b7 master)',
+        VERSION:     '2.0.0 (0a53b89 master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,8 +30,8 @@
     <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
-    <link rel="up" title="Tutorial" href="index.html" />
-    <link rel="next" title="User’s wrapper contributions" href="custom_wrapper.html" />
+    <link rel="up" title="Tutoriales" href="index.html" />
+    <link rel="next" title="Contribuciones de envolturas de los usuarios" href="custom_wrapper.html" />
     <link rel="prev" title="Consultas Personalizadas" href="custom_query.html" /> 
   </head>
   <body>
@@ -46,7 +46,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="custom_wrapper.html">User&#8217;s wrapper contributions</a>&#160;&#160;»
+        <a href="custom_wrapper.html">Contribuciones de envolturas de los usuarios</a>&#160;&#160;»
         </p>
 
       </div>
@@ -55,27 +55,27 @@
         
   <div class="section" id="performance-tips">
 <span id="performance"></span><h1>Consejos de Rendimiento<a class="headerlink" href="#performance-tips" title="Enlazar permanentemente con este título">¶</a></h1>
-<p>When &#8220;you know&#8221; that you are going to remove a set of edges from the edges table, and without those edges you are going to use a routing function you can do the following:</p>
-<p>Analize the new topology based on the actual topology:</p>
+<p>Cuando &#8220;sabe&#8221; que va a eliminar un conjunto de bordes de la tabla de  bordes, y sin esos bordes va a utilizar una función de enrrutamiento puede hacer el siguiente:</p>
+<p>Analizar la topología nueva basada en la topología actual:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Or create a new topology if the change is permanent:</p>
+<p>O crear una nueva topología si el cambio es permanente:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
 <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Use an SQL that &#8220;removes&#8221; the edges in the routing function</p>
+<p>Utilice un SQL que &#8220;elimina&#8221; los bordes en la función de enrrutamiento</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span> <span class="k">from</span> <span class="n">edge_table</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">&lt;</span> <span class="mi">17</span>
 </pre></div>
 </div>
-<p>When &#8220;you know&#8221; that the route will not go out of a particular area, to speed up the process you can use a more complex SQL query like</p>
+<p>Cuando &#8220;sabe&#8221; que la ruta no saldrá de un área en particular, para acelerar el proceso puede utilizar una consulta SQL más compleja como</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span> <span class="k">from</span> <span class="n">edge_table</span> <span class="k">WHERE</span>
         <span class="n">id</span> <span class="o">&lt;</span> <span class="mi">17</span> <span class="k">and</span>
         <span class="n">the_geom</span>  <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="k">select</span> <span class="n">st_buffer</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">myarea</span> <span class="k">FROM</span>  <span class="n">edge_table</span> <span class="k">where</span> <span class="n">id</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Note that the  same condition <tt class="docutils literal"><span class="pre">id</span> <span class="pre">&lt;</span> <span class="pre">17</span></tt> is used in all cases.</p>
+<p>Tenga en cuenta que la misma condición <tt class="docutils literal"><span class="pre">id</span> <span class="pre">&lt;</span> <span class="pre">17</span></tt> se utiliza en todos los casos.</p>
 </div>
 
 
@@ -87,14 +87,14 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="custom_wrapper.html">User&#8217;s wrapper contributions</a>&#160;&#160;»
+        <a href="custom_wrapper.html">Contribuciones de envolturas de los usuarios</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
-      Actualizado por última vez en Sep 20, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (0a53b89 master).
+      Actualizado por última vez en Sep 24, 2013.
       Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

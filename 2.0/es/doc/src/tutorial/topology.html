@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Topología para rutas &mdash; pgRouting Manual (2.0.0)</title>
+    <title>Topología para Ruteo &mdash; pgRouting Manual (2.0.0)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0 (d4d49b7 master)',
+        VERSION:     '2.0.0 (0a53b89 master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,19 +30,19 @@
     <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
-    <link rel="up" title="Tutorial" href="index.html" />
+    <link rel="up" title="Tutoriales" href="index.html" />
     <link rel="next" title="Análisis de gráficas" href="analytics.html" />
-    <link rel="prev" title="Getting Started" href="tutorial.html" /> 
+    <link rel="prev" title="Comenzando a trabajar" href="tutorial.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
           <span>pgRouting Manual (2.0.0)</span></a></h1>
-        <h2 class="heading"><span>Topología para rutas</span></h2>
+        <h2 class="heading"><span>Topología para Ruteo</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="tutorial.html">Getting Started</a>
+        «&#160;&#160;<a href="tutorial.html">Comenzando a trabajar</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -54,7 +54,7 @@
         
         
   <div class="section" id="routing-topology">
-<span id="topology"></span><h1>Topología para rutas<a class="headerlink" href="#routing-topology" title="Enlazar permanentemente con este título">¶</a></h1>
+<span id="topology"></span><h1>Topología para Ruteo<a class="headerlink" href="#routing-topology" title="Enlazar permanentemente con este título">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -67,7 +67,7 @@
 </table>
 <div class="section" id="overview">
 <h2>Resumen<a class="headerlink" href="#overview" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Typically when GIS files are loaded into the data database for use with pgRouting they do not have topology information associated with them. To create a useful topology the data needs to be &#8220;noded&#8221;. This means that where two or more roads form an intersection there it needs to be a node at the intersection and all the road segments need to be broken at the intersection, assuming that you can navigate from any of these segments to any other segment via that intersection.</p>
+<p>Normalmente cuando se cargan archivos GIS en la base de datos para su uso con pgRouting no tienen información de la topología asociada a ellos. Para crear una topología útil, los datos debe ser &#8220;noded&#8221;. Esto significa que donde dos o más caminos forman una intersección allí debe existir y todos los segmentos de carretera necesitan estar partidos en la intersección, eso suponiendo que puede navegar a cualquier otro segmento mediante la intersección de cualquiera de estos segmentos.</p>
 <p>Puede utilizar las <a class="reference internal" href="analytics.html#analytics"><em>funciones de análisis de gráficas</em></a> para apoyarse en la búsqueda de problemas topológicos en los datos. Si se necesitan nodos en los datos, también se cuenta con la función <a class="reference internal" href="../../../src/common/doc/functions/node_network.html#pgr-node-network"><em>pgr_nodeNetwork()</em></a> que le puede ser útil. Esta función divide todos los segmentos de los caminos y les asigna nodos entre ellos. Existen algunos casos donde no es lo apropiado.</p>
 <p>Por ejemplo, cuando se tiene un cruce de puente o de un túnel, no quieres estos contengan un nodo, pero pgr_nodeNetwork no sabe que ese es el caso y va a crear un nodo,  entonces el enrutador interpretará el puente o  el paso a desnivel como si fuera una intersección plana en 2D. Para lidiar con este problema, se debe utilizar niveles z ya se para estos tipos de intersecciones o para otros casos en donde crear el nodo de la intersección no sea lo correcto.</p>
 <p>Para los casos donde la topología debe construirse,  las siguientes funciones pueden ser de utilidad. Una forma de preparar los datos para pgRouting es agregar los siguientes campos a la tabla y luego poblarlas según corresponda. Este ejemplo tiene como supuestos: que la tabla original ya tiene columnas como  <tt class="docutils literal"><span class="pre">one_way</span></tt>, <tt class="docutils literal"><span class="pre">fcc</span></tt> y posiblemente otras y que contienen valores de datos específicos. Esto es sólo para darle una idea de lo que se puede hacer con los datos.</p>
@@ -166,7 +166,7 @@
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="tutorial.html">Getting Started</a>
+        «&#160;&#160;<a href="tutorial.html">Comenzando a trabajar</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -176,8 +176,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
-      Actualizado por última vez en Sep 20, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (0a53b89 master).
+      Actualizado por última vez en Sep 24, 2013.
       Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

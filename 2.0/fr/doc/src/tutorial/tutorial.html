@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started &mdash; pgRouting Manual (2.0.0)</title>
+    <title>Prise en main &mdash; pgRouting Manual (2.0.0)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0 (d4d49b7 master)',
+        VERSION:     '2.0.0 (0a53b89 master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,19 +30,19 @@
     <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
-    <link rel="up" title="Tutorial" href="index.html" />
+    <link rel="up" title="Tutoriel" href="index.html" />
     <link rel="next" title="Topologie de routage" href="topology.html" />
-    <link rel="prev" title="Tutorial" href="index.html" /> 
+    <link rel="prev" title="Tutoriel" href="index.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
           <span>pgRouting Manual (2.0.0)</span></a></h1>
-        <h2 class="heading"><span>Getting Started</span></h2>
+        <h2 class="heading"><span>Prise en main</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="index.html">Tutorial</a>
+        «&#160;&#160;<a href="index.html">Tutoriel</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contenu</a>
         &#160;&#160;::&#160;&#160;
@@ -54,34 +54,29 @@
         
         
   <div class="section" id="getting-started">
-<span id="tutorial"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Lien permanent vers ce titre">¶</a></h1>
-<p>This is a simple guide to walk you through the steps of getting started
-with pgRouting. In this guide we will cover:</p>
+<span id="tutorial"></span><h1>Prise en main<a class="headerlink" href="#getting-started" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Ceci est un guide simplifié pour vous guider pas à pas à démarrer avec pgRouting. Dans ce guide nous détaillerons :</p>
 <blockquote>
 <div><ul class="simple">
-<li>How to create a database to use for our project</li>
-<li>How to load some data</li>
-<li>How to build a topology</li>
-<li>How to check your graph for errors</li>
-<li>How to compute a route</li>
-<li>How to use other tools to view your graph and route</li>
-<li>How to create a web app</li>
+<li>Comment créer une base de données pour notre projet</li>
+<li>Comment charger des données</li>
+<li>Comment construire une topologie</li>
+<li>Comment vérifier les erreurs de votre graphe</li>
+<li>Comment calculer une route</li>
+<li>Comment utiliser d&#8217;autres outils pour votre graphe et votre route</li>
+<li>Comment créer une application web</li>
 </ul>
 </div></blockquote>
 <div class="section" id="how-to-create-a-database-to-use-for-our-project">
-<h2>How to create a database to use for our project<a class="headerlink" href="#how-to-create-a-database-to-use-for-our-project" title="Lien permanent vers ce titre">¶</a></h2>
-<p>The first thing we need to do is create a database and load pgrouting in
-the database. Typically you will create a database for each project. Once
-you have a database to work in, your can load your data and build your
-application in that database. This makes it easy to move your project
-later if you want to to say a production server.</p>
-<p>For Postgresql 9.1 and later versions</p>
+<h2>Comment créer une base de données pour notre projet<a class="headerlink" href="#how-to-create-a-database-to-use-for-our-project" title="Lien permanent vers ce titre">¶</a></h2>
+<p>La première chose que nous avons besoin de faire est de créer une base de données et charger pgrouting dans la base de données. Typiquement vous allez créer une base de données pour chaque projet. Une fois que vous avez une base de données sur laquelle travailler, vous pouvez charger vos données et construire votre application à partir de cette base de données. Cela facilite les choses si vous voulez plus tard migrer le projet sur un serveur de production.</p>
+<p>Pour Postgresql 9.1 et les versions ultérieures</p>
 <div class="highlight-bash"><div class="highlight"><pre>createdb mydatabase
 psql mydatabase -c <span class="s2">&quot;create extension postgis&quot;</span>
 psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span>
 </pre></div>
 </div>
-<p>For older versions of postgresql</p>
+<p>Pour les versions précédentes de postgresql</p>
 <div class="highlight-bash"><div class="highlight"><pre>createdb -T template1 template_postgis
 psql template_postgis -c <span class="s2">&quot;create language plpgsql&quot;</span>
 psql template_postgis -f /usr/share/postgresql/9.0/contrib/postgis-1.5/postgis.sql
@@ -96,73 +91,56 @@ createdb -T template_pgrouting mydatabase
 </div>
 </div>
 <div class="section" id="how-to-load-some-data">
-<h2>How to load some data<a class="headerlink" href="#how-to-load-some-data" title="Lien permanent vers ce titre">¶</a></h2>
-<p>How you load your data will depend in what form it comes it. There are
-various OpenSource tools that can help you, like:</p>
+<h2>Comment charger des données<a class="headerlink" href="#how-to-load-some-data" title="Lien permanent vers ce titre">¶</a></h2>
+<p>La façon dont vous chargez vos données dépend du format des données. Il existe des outils OpenSource variés qui peuvent vous aider, comme :</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">shp2pgsql:</th><td class="field-body"><ul class="first simple">
-<li>this is the postgresql shapefile loader</li>
+<li>c&#8217;est le chargeur de fichier au format postgresql</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">ogr2ogr:</th><td class="field-body"><ul class="first simple">
-<li>this is a vector data conversion utility</li>
+<li>c&#8217;est un utilitaire de conversion de données vectorielles</li>
 </ul>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">osm2pgsql:</th><td class="field-body"><ul class="first last simple">
-<li>this is a tool for loading OSM data into postgresql</li>
+<li>c&#8217;est un outil de chargement des données OSM dans postgresql</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p>So these tools and probably others will allow you to read vector data and
-and can load that data into your database as a table of some kind. At this
-point you need to know a little about your data structure and content. One easy
-way to browse you data table is with pgAdmin3 or phpPgAdmin.</p>
+<p>Ces outils et probablement d&#8217;autres vont donc vous permettre de lire des données vectorielles et peuvent charger ces données dans votre base de données comme une table d&#8217;un certain type. A ce point vous avez besoin de connaître un peu votre structure de données et son contenu. Un moyen facile d&#8217;explorer vos tables de données est d&#8217;utiliser pgAdmin3 ou phpPgAdmin.</p>
 </div>
 <div class="section" id="how-to-build-a-topology">
-<h2>How to build a topology<a class="headerlink" href="#how-to-build-a-topology" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Next we need to build a topology for our street data. What this means is that
-for any given edge in your street data the ends of that edge will be connected
-to a unique node and to other edges that are also connected to that same unique
-node. Once all the edges are connected to nodes we have a graph that can be
-used for routing with pgrouting. We provide a tools the will help with this:</p>
+<h2>Comment construire une topologie<a class="headerlink" href="#how-to-build-a-topology" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Ensuite nous avons besoin de construire une topologie de nos données routières. Cela signifie que pour toute arête dans vos données routieres, les terminaisons de cette arête vont être connectées en un unique noeud et aux autres arêtes qui sont aussi connectées à ce meme noeud. Une fois que les arêtes sont connectées aux noeuds nous avons un graphe qui peut etre utilisé pour le routage avec pgrouting. Nous proposons un outil qui aide pour cela :</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>See <a class="reference internal" href="../../../src/common/doc/functions/create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> for more information.</p>
+<p>Voir <a class="reference internal" href="../../../src/common/doc/functions/create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> pour plus d&#8217;informations.</p>
 </div>
 <div class="section" id="how-to-check-your-graph-for-errors">
-<h2>How to check your graph for errors<a class="headerlink" href="#how-to-check-your-graph-for-errors" title="Lien permanent vers ce titre">¶</a></h2>
-<p>There are lots of possible sources for errors in a graph. The data that you
-started with may not have been designed with routing in mind. A graph as some
-very specific requirments. One it that it is <em>NODED</em>, this means that except
-for some very specific use cases, each road segments starts and ends at a node
-and that in general is does not cross another road segment that it should be
-connected to.</p>
-<p>There can be other errors like the direction of a one-way street being entered
-in the wrong direction. We do not have tools to search for all possible errors
-but we have some basic tools that might help.</p>
+<h2>Comment vérifier les erreurs de votre graphe<a class="headerlink" href="#how-to-check-your-graph-for-errors" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Il y a beaucoup de sources d’erreurs possibles dans un graphe. Les données avec lesquelles vous avez commencé peuvent ne pas avoir été conçues avec l’idée de routage. Un graphe a des conditions très spécifiques. L’une est qu’il est <em>NODED</em>, cela signifie que mis à part des cas d’utilisation très spécifiques, chaque segment de route commence et finit comme un nœud et en général ne croise pas d’autre segment de route avec lequel il devrait être connecté.</p>
+<p>Il peut y avoir d&#8217;autres erreurs comme la direction d&#8217;une route à sens unique étant entrée dans la mauvaise direction. Nous n&#8217;avons pas les outils pour chercher toutes les erreurs possibles mais nous avons les outils qui peuvent aider.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">);</span>
 <span class="k">select</span> <span class="n">pgr_analyzeoneway</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span>  <span class="n">s_in_rules</span><span class="p">,</span> <span class="n">s_out_rules</span><span class="p">,</span>
                                      <span class="n">t_in_rules</span><span class="p">,</span> <span class="n">t_out_rules</span>
                                      <span class="n">direction</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See <a class="reference internal" href="analytics.html#analytics"><em>Analytiques de graphe</em></a> for more information.</p>
-<p>If your data needs to be <em>NODED</em>, we have a tool that can help for that also.</p>
-<p>See <a class="reference internal" href="../../../src/common/doc/functions/node_network.html#pgr-node-network"><em>pgr_nodeNetwork</em></a> for more information.</p>
+<p>Voir <a class="reference internal" href="analytics.html#analytics"><em>Analytiques de graphe</em></a> pour plus d&#8217;informations.</p>
+<p>Si vos données ont besoin d&#8217;être <em>NODED</em>, nous avons un outil qui peut aider pour cela aussi.</p>
+<p>Voir <a class="reference internal" href="../../../src/common/doc/functions/node_network.html#pgr-node-network"><em>pgr_nodeNetwork</em></a> pour plus d&#8217;informations.</p>
 </div>
 <div class="section" id="how-to-compute-a-route">
-<h2>How to compute a route<a class="headerlink" href="#how-to-compute-a-route" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Once you have all the prep work done above, computing a route is fairly easy.
-We have a lot of different algorithms but they can work with your prepared
-road network. The general form of a route query is:</p>
+<h2>Comment calculer une route<a class="headerlink" href="#how-to-compute-a-route" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Une fois que vous avez tout le travail préparatoire de-dessus fini, calculer une route est assez facile. Nous avons beaucoup d&#8217;algorithmes différents mais ils peuvent fonctionner avec votre réseau de routes préparé. La forme générale d&#8217;une route est :</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_</span><span class="o">&lt;</span><span class="n">algorithm</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="k">SQL</span> <span class="k">for</span> <span class="n">edges</span><span class="o">&gt;</span><span class="p">,</span> <span class="k">start</span><span class="p">,</span> <span class="k">end</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">additonal</span> <span class="k">options</span><span class="o">&gt;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -175,17 +153,17 @@ to <em>end</em>. Using the ids you can join these result back to your edge table
 to get more information about each step in the path.</p>
 <blockquote>
 <div><ul class="simple">
-<li>See also <a class="reference internal" href="../../../src/common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a> and <a class="reference internal" href="../../../src/common/doc/types/geom_result.html#type-geom-result"><em>pgr_geomResult[]</em></a>.</li>
+<li>Voir aussi <a class="reference internal" href="../../../src/common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a> et <a class="reference internal" href="../../../src/common/doc/types/geom_result.html#type-geom-result"><em>pgr_geomResult[]</em></a>.</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="how-to-use-other-tools-to-view-your-graph-and-route">
-<h2>How to use other tools to view your graph and route<a class="headerlink" href="#how-to-use-other-tools-to-view-your-graph-and-route" title="Lien permanent vers ce titre">¶</a></h2>
-<p>TBD</p>
+<h2>Comment utiliser d&#8217;autres outils pour votre graphe et votre route<a class="headerlink" href="#how-to-use-other-tools-to-view-your-graph-and-route" title="Lien permanent vers ce titre">¶</a></h2>
+<p>À déterminer</p>
 </div>
 <div class="section" id="how-to-create-a-web-app">
-<h2>How to create a web app<a class="headerlink" href="#how-to-create-a-web-app" title="Lien permanent vers ce titre">¶</a></h2>
-<p>TBD</p>
+<h2>Comment créer une application web<a class="headerlink" href="#how-to-create-a-web-app" title="Lien permanent vers ce titre">¶</a></h2>
+<p>À déterminer</p>
 </div>
 </div>
 
@@ -194,7 +172,7 @@ to get more information about each step in the path.</p>
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="index.html">Tutorial</a>
+        «&#160;&#160;<a href="index.html">Tutoriel</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contenu</a>
         &#160;&#160;::&#160;&#160;
@@ -204,8 +182,8 @@ to get more information about each step in the path.</p>
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
-      Mis à jour le Sep 20, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (0a53b89 master).
+      Mis à jour le Sep 24, 2013.
       Créé avec <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

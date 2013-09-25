@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0 (d4d49b7 master)',
+        VERSION:     '2.0.0 (0a53b89 master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,9 +30,9 @@
     <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.0.0)" href="../../../index.html" />
-    <link rel="up" title="Tutorial" href="index.html" />
+    <link rel="up" title="Tutoriales" href="index.html" />
     <link rel="next" title="Datos Muestra" href="../developer/sampledata.html" />
-    <link rel="prev" title="User’s wrapper contributions" href="custom_wrapper.html" /> 
+    <link rel="prev" title="Contribuciones de envolturas de los usuarios" href="custom_wrapper.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
@@ -42,7 +42,7 @@
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="custom_wrapper.html">User&#8217;s wrapper contributions</a>
+        «&#160;&#160;<a href="custom_wrapper.html">Contribuciones de envolturas de los usuarios</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -55,28 +55,28 @@
         
   <div class="section" id="use-s-recipes-contributions">
 <span id="recipes"></span><h1>Use&#8217;s Recipes contributions<a class="headerlink" href="#use-s-recipes-contributions" title="Enlazar permanentemente con este título">¶</a></h1>
-<p class="rubric">How to contribute.</p>
-<p>Use an issue tracker (see <a class="reference internal" href="../introduction/support.html#support"><em>Soporte</em></a>) with a title containing: <em>Proposing a Recipe: Myrecipename</em>. The body will contain:</p>
+<p class="rubric">Cómo contribuir.</p>
+<p>Utilice un issue tracker en git (ver <a class="reference internal" href="../introduction/support.html#support"><em>Soporte</em></a>) con un título que contiene: <em>Proposing a Recipe: MiNombreDeReceta</em>. El cuerpo debe contiener:</p>
 <blockquote>
 <div><ul class="simple">
-<li>author:  Required</li>
-<li>mail: if you are subscribed to the developers list this is not necessary</li>
-<li>date: Date posted</li>
-<li>comments and code:  using reStructuredText format</li>
+<li>Autor: requerido</li>
+<li>Correo: Si usted está suscrito a la lista de los desarrolladores no es necesario</li>
+<li>Fecha: fecha</li>
+<li>Comentarios y código: formato reStructuredText</li>
 </ul>
 </div></blockquote>
-<p>Any contact with the author will be done using the developers mailing list. The pgRouting team will evaluate the recipe and will be included it in this section when approved.</p>
+<p>Cualquier contacto con el autor se hará utilizando la lista de correo de desarrolladores. El equipo pgRouting evaluará la receta y será incluido en esta sección cuando sea aprobada.</p>
 <div class="section" id="comparing-topology-of-a-unnoded-network-with-a-noded-network">
-<h2>Comparing topology of a unnoded network with a noded network<a class="headerlink" href="#comparing-topology-of-a-unnoded-network-with-a-noded-network" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Comparando la topología de una red de que no tiene nodos en las intersecciones con una red con nodos en las intersecciones<a class="headerlink" href="#comparing-topology-of-a-unnoded-network-with-a-noded-network" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">pgRouting team.</td>
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Equipo pgRouting.</td>
 </tr>
 </tbody>
 </table>
-<p>This recipe uses the <a class="reference internal" href="../developer/sampledata.html#sampledata"><em>Datos Muestra</em></a> network.</p>
+<p>Esta receta se utiliza la <a class="reference internal" href="../developer/sampledata.html#sampledata"><em>red de ejemplo</em></a>.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
 <span class="k">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
 <span class="k">SELECT</span> <span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
@@ -84,7 +84,7 @@
 <span class="k">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table_noded&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
 </pre></div>
 </div>
-<p><em>No more contributions</em></p>
+<p><em>No hay más contribuciones</em></p>
 </div>
 </div>
 
@@ -93,7 +93,7 @@
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="custom_wrapper.html">User&#8217;s wrapper contributions</a>
+        «&#160;&#160;<a href="custom_wrapper.html">Contribuciones de envolturas de los usuarios</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -103,8 +103,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0 (d4d49b7 master).
-      Actualizado por última vez en Sep 20, 2013.
+        &copy; Copyright pgRouting Contributors - Version 2.0.0 (0a53b89 master).
+      Actualizado por última vez en Sep 24, 2013.
       Creado con <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
