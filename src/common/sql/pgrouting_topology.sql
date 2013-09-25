@@ -93,6 +93,7 @@ DECLARE
     sourcetype  text;
     targettype text;
     debuglevel text;
+    rec record;
 
 BEGIN
   raise notice 'PROCESSING:'; 
@@ -278,8 +279,9 @@ BEGIN
 
   
   BEGIN 
+    raise DEBUG 'checking condituion %',rows_where;
     sql = 'select * from '||pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
-    EXECUTE sql into i;
+    EXECUTE sql into rec;
     sql = 'select count(*) from '||pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NOT NULL AND '||
 		idname||' IS NOT NULL)=false '||rows_where;
     EXECUTE SQL  into notincluded;
