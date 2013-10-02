@@ -18,6 +18,6 @@ create or replace function pgr_vrpOneDepot(
 	OUT tdepart integer)
 returns setof record as
 '$libdir/librouting_vrp', 'vrp'
-LANGUAGE c IMMUTABLE STRICT;
+LANGUAGE c VOLATILE STRICT;
 
 
