@@ -16,6 +16,7 @@ notifications:
 
 branches:
   only:
+    - master
     - develop
     - feature-travis
 
