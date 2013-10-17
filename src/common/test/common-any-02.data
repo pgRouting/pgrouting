@@ -1,0 +1,132 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: edge_table; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+DROP TABLE IF EXISTS edge_table CASCADE;
+
+CREATE TABLE edge_table (
+    id integer NOT NULL,
+    dir character varying,
+    source integer,
+    target integer,
+    cost double precision,
+    reverse_cost double precision,
+    x1 double precision,
+    y1 double precision,
+    x2 double precision,
+    y2 double precision,
+    the_geom geometry,
+    sgid integer,
+    tgid integer
+);
+
+
+ALTER TABLE edge_table OWNER TO postgres;
+
+--
+-- Name: edge_table_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE edge_table_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE edge_table_id_seq OWNER TO postgres;
+
+--
+-- Name: edge_table_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE edge_table_id_seq OWNED BY edge_table.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY edge_table ALTER COLUMN id SET DEFAULT nextval('edge_table_id_seq'::regclass);
+
+
+--
+-- Data for Name: edge_table; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY edge_table (id, dir, source, target, cost, reverse_cost, x1, y1, x2, y2, the_geom, sgid, tgid) FROM stdin;
+1	B	1	2	1	1	2	0	2	1	010200000002000000000000000000004000000000000000000000000000000040000000000000F03F	2	4
+2	TF	2	3	-1	1	2	1	3	1	0102000000020000000000000000000040000000000000F03F0000000000000840000000000000F03F	4	4
+3	TF	3	4	-1	1	3	1	4	1	0102000000020000000000000000000840000000000000F03F0000000000001040000000000000F03F	4	4
+7	B	8	5	1	1	1	2	2	2	010200000002000000000000000000F03F000000000000004000000000000000400000000000000040	4	4
+4	B	2	5	1	1	2	1	2	2	0102000000020000000000000000000040000000000000F03F00000000000000400000000000000040	4	4
+5	FT	3	6	1	-1	3	1	3	2	0102000000020000000000000000000840000000000000F03F00000000000008400000000000000040	4	4
+6	B	7	8	1	1	0	2	1	2	01020000000200000000000000000000000000000000000040000000000000F03F0000000000000040	1	4
+16	B	4	9	1	1	4	1	4	2	0102000000020000000000000000001040000000000000F03F00000000000010400000000000000040	4	4
+12	FT	10	11	1	-1	2	3	3	3	0102000000020000000000000000000040000000000000084000000000000008400000000000000840	3	3
+11	FT	6	11	1	-1	3	2	3	3	0102000000020000000000000000000840000000000000004000000000000008400000000000000840	4	3
+13	FT	11	12	1	-1	3	3	4	3	0102000000020000000000000000000840000000000000084000000000000010400000000000000840	3	3
+15	B	9	12	1	1	4	2	4	3	0102000000020000000000000000001040000000000000004000000000000010400000000000000840	4	3
+14	B	10	13	1	1	2	3	2	4	0102000000020000000000000000000040000000000000084000000000000000400000000000001040	3	3
+17	B	14	15	1	1	0.5	3.5	1.99999999999899991	3.5	010200000002000000000000000000E03F0000000000000C4068EEFFFFFFFFFF3F0000000000000C40	3	3
+18	B	16	17	1	1	3.5	2.29999999999999982	3.5	4	0102000000020000000000000000000C4066666666666602400000000000000C400000000000001040	4	3
+8	B	5	6	1	1	2	2	3	2	0102000000020000000000000000000040000000000000004000000000000008400000000000000040	4	4
+9	B	6	9	1	1	3	2	4	2	0102000000020000000000000000000840000000000000004000000000000010400000000000000040	4	4
+10	B	5	10	1	1	2	2	2	3	0102000000020000000000000000000040000000000000004000000000000000400000000000000840	4	3
+\.
+
+
+--
+-- Name: edge_table_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('edge_table_id_seq', 18, true);
+
+
+--
+-- Name: edge_table_id_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX edge_table_id_idx ON edge_table USING btree (id);
+
+
+--
+-- Name: edge_table_source_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX edge_table_source_idx ON edge_table USING btree (source);
+
+
+--
+-- Name: edge_table_target_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX edge_table_target_idx ON edge_table USING btree (target);
+
+
+--
+-- Name: edge_table_the_geom_gidx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX edge_table_the_geom_gidx ON edge_table USING gist (the_geom);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
