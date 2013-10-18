@@ -62,7 +62,6 @@ struct Edge
 struct Vertex
 {
   int id;
-  int edge_id;
 };
 
 template <class G, class E>
@@ -89,8 +88,6 @@ graph_add_edge(G &graph, int id, int source, int target, float8 cost)
   DBG("updating graph\n");
   graph[s].id = source;
   graph[t].id = target;
-  graph[s].edge_id = id;
-  graph[t].edge_id = id;
 
 }
 
