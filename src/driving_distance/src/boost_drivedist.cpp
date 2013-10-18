@@ -165,12 +165,20 @@ try {
       path_element pe;
 
       graph_traits<graph_t>::vertex_descriptor s;
+      graph_traits<graph_t>::edge_descriptor e;
+      bool edge_exists;
 
       s = vertex(*vi, graph);
+      tie(e, edge_exists) = boost::edge(predecessors[s], s, graph);
 
       pe.vertex_id = graph[s].id;
-      pe.edge_id   = graph[s].edge_id;
       pe.cost      = distances[*vi];
+
+      if (!edge_exists) {
+        pe.edge_id = -1;
+      } else {
+        pe.edge_id = graph[e].id;
+      }
 
       DBG("adding to path_vector[%d]\n", j++);
       path_vector.push_back( pe );
