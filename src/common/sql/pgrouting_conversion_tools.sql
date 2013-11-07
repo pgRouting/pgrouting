@@ -24,7 +24,7 @@ begin
     if rr.the_geom is not null then
         -- deal with MULTILINESTRINGS
         if geometrytype(rr.the_geom)='MULTILINESTRING' THEN
-            rr.the_geom := GeometryN(rr.the_geom, 1);
+            rr.the_geom := ST_GeometryN(rr.the_geom, 1);
         end if;
 
         -- project the point onto the linestring

@@ -28,6 +28,7 @@ These function my be helpful when you need to create or manipulate distance matr
 
  - :ref:`pgr_points_to_dmatrix` - Create a distance matrix from an array of points.
  - :ref:`pgr_vids_to_dmatrix` - Create a distance matrix from an array of ``vertix_id``.
+ - :ref:`pgr_vids_to_dmatrix2` - Create a distance matrix from an array of ``vertix_id``.
 
 .. toctree::
   :hidden:
@@ -39,4 +40,5 @@ These function my be helpful when you need to create or manipulate distance matr
 
   pgr_pointsToDMatrix - Create a distance matrix from an array of points. <points_to_dmatrix>
   pgr_vidsToDMatrix - Create a distance matrix from an array of ``vertix_id``. <vids_to_dmatrix>
+  pgr_vidsToDMatrix - Create a distance matrix from an array of ``vertix_id``. <vids_to_dmatrix2>
 

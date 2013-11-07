@@ -1,4 +1,4 @@
-create or replace function pgr_pointstodmatrix(pnts geometry[], OUT dmatrix double precision[], OUT ids integer[])
+create or replace function pgr_pointstodmatrix(pnts geometry[], mode integer default (0), OUT dmatrix double precision[], OUT ids integer[])
     returns record as
 $body$
 /*
@@ -20,7 +20,11 @@ begin
     for r in with nodes as (select row_number() over()::integer as id, p from (select unnest(pnts) as p) as foo)
         -- compute a row of distances
         select i, array_agg(dist) as arow from (
-            select a.id as i, b.id as j, st_distance(a.p, b.p) as dist
+            select a.id as i, b.id as j, 
+                case when mode=0
+                    then st_distance(a.p, b.p)
+                    else st_distance_sphere(a.p, b.p)
+                end as dist
               from nodes a, nodes b
              order by a.id, b.id
            ) as foo group by i order by i loop

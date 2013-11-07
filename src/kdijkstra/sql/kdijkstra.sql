@@ -36,7 +36,7 @@ CREATE OR REPLACE FUNCTION pgr_kdijkstracost(
     has_reverse_cost boolean)
     RETURNS SETOF pgr_costResult
     AS '$libdir/librouting', 'onetomany_dijkstra_dist'
-    LANGUAGE C IMMUTABLE STRICT;
+    LANGUAGE C STABLE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_kdijkstrapath(
     sql text,
@@ -46,6 +46,10 @@ CREATE OR REPLACE FUNCTION pgr_kdijkstrapath(
     has_reverse_cost boolean)
     RETURNS SETOF pgr_costResult3
     AS '$libdir/librouting', 'onetomany_dijkstra_path'
-    LANGUAGE C IMMUTABLE STRICT;
+    LANGUAGE C STABLE STRICT;
 
-
+CREATE OR REPLACE FUNCTION pgr_vidsToDMatrix(sql text,
+    vids integer[], dir bool, has_rcost bool, want_symmetric bool)
+    RETURNS float8[]
+    AS '$libdir/librouting', 'manytomany_dijkstra_dmatrix'
+    LANGUAGE C STABLE STRICT;
