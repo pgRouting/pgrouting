@@ -113,6 +113,7 @@ Functions reference
   -  :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
   - :ref:`pgr_points_to_dmatrix` - Create a distance matrix from an array of points.
   - :ref:`pgr_vids_to_dmatrix` - Create a distance matrix from an array of ``vertix_id``.
+  - :ref:`pgr_vids_to_dmatrix2` - Create a distance matrix from an array of ``vertix_id``.
 
 :ref:`developer_functions`  
   -  :ref:`pgr_get_column_name` - to get the name of the column as is stored in the postgres administration tables.
