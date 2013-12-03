@@ -1,4 +1,3 @@
-
 /*
 .. function:: pgr_pointToId(point geometry, tolerance double precision,vname text,srid integer)
 
@@ -301,6 +300,7 @@ BEGIN
         || ' PGR_EndPoint('   || gname || ') AS target'
         || ' FROM '  || pgr_quote_ident(tabname)
         || ' WHERE ' || gname || ' IS NOT NULL AND ' || idname||' IS NOT NULL '||rows_where
+        || ' ORDER BY ' || idname
     LOOP
 
         rowcount := rowcount + 1;
