@@ -484,18 +484,21 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','eid','source','target','eid<')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Got syntax error at or near ")"
  NOTICE:  ERROR: Condition is not correct, please execute the following query to test your condition
- NOTICE:  select * from myschema.edges2 WHERE true AND (eid<) limit 1
+ NOTICE:  select count(*) from ( select * from myschema.edges2 WHERE true AND (eid<) limit 1 ) foo
 FAIL
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('Edges2',1e-06,'the_geom','eid','source','target','eid<15 and ed>5')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Got column "ed" does not exist
  NOTICE:  ERROR: Condition is not correct, please execute the following query to test your condition
- NOTICE:  select * from myschema."Edges2" WHERE true AND (eid<15 and ed>5) limit 1
+ NOTICE:  select count(*) from ( select * from myschema."Edges2" WHERE true AND (eid<15 and ed>5) limit 1 ) foo
 FAIL
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('Edges2',1e-06,'the_geom','eid','source','target',' the_geom && (select st_buffer(the_geom,0.0001 as buffer from "Edges2" where eid=6)')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Got syntax error at or near "as"
  NOTICE:  ERROR: Condition is not correct, please execute the following query to test your condition
- NOTICE:  select * from myschema."Edges2" WHERE true AND ( the_geom && (select st_buffer(the_geom,0.0001 as buffer from "Edges2" where eid=6)) limit 1
+ NOTICE:  select count(*) from ( select * from myschema."Edges2" WHERE true AND ( the_geom && (select st_buffer(the_geom,0.0001 as buffer from "Edges2" where eid=6)) limit 1 ) foo
 FAIL
