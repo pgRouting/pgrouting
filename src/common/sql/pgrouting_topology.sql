@@ -301,7 +301,9 @@ BEGIN
         || ' PGR_StartPoint(' || gname || ') AS source,'
         || ' PGR_EndPoint('   || gname || ') AS target'
         || ' FROM '  || pgr_quote_ident(tabname)
-        || ' WHERE ' || gname || ' IS NOT NULL AND ' || idname||' IS NOT NULL '||rows_where
+        || ' WHERE ' || gname || ' IS NOT NULL AND ' 
+        || idname || ' IS NOT NULL ' || rows_where
+        || ' ORDER BY ' || idname
     LOOP
 
         rowcount := rowcount + 1;
