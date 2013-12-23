@@ -8,7 +8,8 @@
 #export PGROUTING_MICRO_VER=0dev
 export PGUSER=postgres
 
-export PROJECTS=/c/jenkins
+#this should be setup as a mapping in msys/etc/fstab to where you keep your projects
+export PROJECTS=/projects 
 
 export PATHOLD=$PATH
 
