@@ -13,10 +13,16 @@
 #include "YenTopKShortestPathsAlg.h"
 extern "C" {
 #include "postgres.h"
-#include "executor/spi.h"
-#include "funcapi.h"
-#include "catalog/pg_type.h"
 #include "fmgr.h"
+#include "executor/spi.h"
+#include "catalog/pg_type.h"
+#define using _using
+#define typeid _typeid
+#define typename _typename
+#include "funcapi.h"
+#undef using
+#undef typeid
+#undef typename
 #include "ksp.h"
 	extern void DBG(const char *format, ...);
 }
