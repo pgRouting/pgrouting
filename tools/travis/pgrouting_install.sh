@@ -16,37 +16,28 @@ ERROR=0
 # ------------------------------------------------------------------------------
 # Remove PostgreSQL and all its files
 # ------------------------------------------------------------------------------
-if [ "$POSTGRESQL_VERSION" != "9.1" ]; then
-	sudo service postgresql stop
-	sudo apt-get remove postgresql postgresql-common postgresql-client-common postgresql-9.1 postgresql-client-9.1 libpq-dev libpq5  -qq --purge
-fi
+sudo service postgresql stop
+sudo apt-get remove postgresql postgresql-common postgresql-client-common postgresql-9.1 postgresql-client-9.1 libpq-dev libpq5  -qq --purge
 
 # Add PPA's'
 # ------------------------------------------------------------------------------
 sudo apt-add-repository -y ppa:georepublic/pgrouting-travis
 
 if [ "$POSTGIS_VERSION" == "2.0" ] || [ "$POSTGIS_VERSION" == "2.1" ]; then 
-	sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable
+	sudo apt-add-repository -y ppa:ubuntugis/ppa
 fi
 
 # Add PostgreSQL Apt repository
 # ------------------------------------------------------------------------------
-if [ "$POSTGRESQL_VERSION" != "9.1" ]; then
-	echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > pgdg.list
-	sudo mv pgdg.list /etc/apt/sources.list.d/
-	wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
-fi
-
-# Reload package archive
-# ------------------------------------------------------------------------------
+echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > pgdg.list
+sudo mv pgdg.list /etc/apt/sources.list.d/
+wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
 sudo apt-get update -qq
 
 # ------------------------------------------------------------------------------
-# Install PostgreSQL
+# Install PostgreSQL (always install from PostgreSQL Apt repository)
 # ------------------------------------------------------------------------------
-if [ "$POSTGRESQL_VERSION" != "9.1" ]; then
-	sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" install -y -qq postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION
-fi
+sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" install -y -qq postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION
 
 # ------------------------------------------------------------------------------
 # Install dependecies
