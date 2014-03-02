@@ -17,7 +17,7 @@ ERROR=0
 # Remove PostgreSQL and all its files
 # ------------------------------------------------------------------------------
 sudo service postgresql stop
-sudo apt-get remove postgresql postgresql-common postgresql-client-common postgresql-9.1 postgresql-client-9.1 libpq-dev libpq5  -qq --purge
+sudo apt-get remove postgresql\* libpq-dev libpq5  -qq --purge
 
 # Add PPA's'
 # ------------------------------------------------------------------------------
