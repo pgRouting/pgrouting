@@ -59,16 +59,19 @@ sudo apt-get install cmake libcgal-dev libboost-graph-dev libboost-thread-dev po
 sudo apt-get install -y -qq build-essential libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev 
 
 if [ "$POSTGIS_VERSION" == "1.5" ]; then 
-	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-1.5.8.tar.gz | tar xzf -
+	RELEASE="1.5.8"
+	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
 fi
 
 if [ "$POSTGIS_VERSION" == "2.0" ]; then 
-	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-2.0.3.tar.gz | tar xzf -
+	RELEASE="2.0.4"
+	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
 fi
 
 if [ "$POSTGIS_VERSION" == "2.1" ]; then 
 	sudo apt-get install -y -qq libpoppler-dev libarmadillo-dev libepsilon-dev liblzma-dev libxml2-dev
-	wget --quiet -O - https://github.com/postgis/postgis/archive/svn-trunk.tar.gz | tar xzf -
+	RELEASE="2.1.1"
+	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
 fi
 
 # Build and compile
