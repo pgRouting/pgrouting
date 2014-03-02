@@ -46,6 +46,8 @@ sudo apt-get update -qq
 # ------------------------------------------------------------------------------
 if [ "$POSTGRESQL_VERSION" != "9.1" ]; then
 	sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" install -y -qq postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION
+else
+	sudo apt-get install -y -qq postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION
 fi
 
 # ------------------------------------------------------------------------------
