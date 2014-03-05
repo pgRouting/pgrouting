@@ -352,6 +352,8 @@ Datum alphashape(PG_FUNCTION_ARGS)
       Datum        result;
       Datum *values;
       char* nulls;
+      double x;
+      double y;
 
       /* This will work for some compilers. If it crashes with segfault, try to change the following block with this one    
 
@@ -369,10 +371,22 @@ Datum alphashape(PG_FUNCTION_ARGS)
       values = palloc(2 * sizeof(Datum));
       nulls = palloc(2 * sizeof(char));
 
-      values[0] = Float8GetDatum(res[call_cntr].x);
-      nulls[0] = ' ';
-      values[1] = Float8GetDatum(res[call_cntr].y);
-      nulls[1] = ' ';
+      x = res[call_cntr].x;
+      y = res[call_cntr].y;
+      if (x == DBL_MAX && y == DBL_MAX)
+      {
+        values[0] = 0;
+        values[1] = 0;
+        nulls[0] = 'n';
+        nulls[1] = 'n';
+      }
+      else
+      {
+        values[0] = Float8GetDatum(x);
+        values[1] = Float8GetDatum(y);
+        nulls[0] = ' ';
+        nulls[1] = ' ';
+      }
 	
       DBG("Heap making\n");
 

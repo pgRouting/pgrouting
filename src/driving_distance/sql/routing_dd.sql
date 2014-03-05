@@ -45,36 +45,54 @@ CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar)
 	$$
 	DECLARE
 		r record;
-		path_result record;					     
-		i int;							     
+		geoms geometry[];
+		vertex_result record;
+		i int;
+		n int;
+		spos int;
 		q text;
 		x float8[];
 		y float8[];
 
-	BEGIN	
-		i := 1;								     
-		q := 'SELECT ST_GeometryFromText(''POLYGON((';
+	BEGIN
+		geoms := array[]::geometry[];
+		i := 1;
 
-		FOR path_result IN EXECUTE 'SELECT x, y FROM pgr_alphashape('''|| query || ''')' 
+		FOR vertex_result IN EXECUTE 'SELECT x, y FROM pgr_alphashape('''|| query || ''')' 
 		LOOP
-			x[i] = path_result.x;
-			y[i] = path_result.y;
+			x[i] = vertex_result.x;
+			y[i] = vertex_result.y;
 			i := i+1;
 		END LOOP;
 
-		q := q || x[1] || ' ' || y[1];
-		i := 2;
+		n := i;
+		IF n = 1 THEN
+			RAISE NOTICE 'n = 1';
+			RETURN NULL;
+		END IF;
 
-		WHILE x[i] IS NOT NULL 
-		LOOP
-			q := q || ', ' || x[i] || ' ' || y[i];
-			i := i + 1;
+		spos := 1;
+		q := 'SELECT ST_GeometryFromText(''POLYGON((';
+		FOR i IN 1..n LOOP
+			IF x[i] IS NULL AND y[i] IS NULL THEN
+				q := q || ', ' || x[spos] || ' ' || y[spos] || '))'',0) AS geom;';
+				EXECUTE q INTO r;
+				geoms := geoms || array[r.geom];
+				q := '';
+			ELSE
+				IF q = '' THEN
+					spos := i;
+					q := 'SELECT ST_GeometryFromText(''POLYGON((';
+				END IF;
+				IF i = spos THEN
+					q := q || x[spos] || ' ' || y[spos];
+				ELSE
+					q := q || ', ' || x[i] || ' ' || y[i];
+				END IF;
+			END IF;
 		END LOOP;
 
-		q := q || ', ' || x[1] || ' ' || y[1] || '))'',0) AS geom';
-
-		EXECUTE q INTO r;
-		RETURN r.geom;
+		RETURN ST_BuildArea(ST_Collect(geoms));
 	END;
 	$$
 	LANGUAGE 'plpgsql' VOLATILE STRICT;
