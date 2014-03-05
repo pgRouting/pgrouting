@@ -17,7 +17,8 @@ ERROR=0
 # Remove PostgreSQL and all its files
 # ------------------------------------------------------------------------------
 sudo service postgresql stop
-sudo apt-get remove postgresql\* libpq-dev libpq5  -qq --purge
+sudo apt-get remove postgresql libpq-dev libpq5 postgresql-client-common postgresql-common -qq --purge -y 
+sudo rm -rf /var/lib/postgresql
 
 # Add PPA's'
 # ------------------------------------------------------------------------------
@@ -28,7 +29,7 @@ if [ "$POSTGIS_VERSION" == "2.0" ] || [ "$POSTGIS_VERSION" == "2.1" ]; then
 fi
 
 # Add PostgreSQL Apt repository
-# ------------------------------------------------------------------------------
+# ----------------------------------------------postgresql-client-common postgresql-common--------------------------------
 echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > pgdg.list
 sudo mv pgdg.list /etc/apt/sources.list.d/
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
@@ -37,17 +38,16 @@ sudo apt-get update -qq
 # ------------------------------------------------------------------------------
 # Install PostgreSQL (always install from PostgreSQL Apt repository)
 # ------------------------------------------------------------------------------
-sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" install -y -qq postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION
+sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" install -y -qq postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION postgresql-server-dev-$POSTGRESQL_VERSION
 
-# ------------------------------------------------------------------------------
-# Install dependecies
-# ------------------------------------------------------------------------------
-sudo apt-get install cmake libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-server-dev-$POSTGRESQL_VERSION
+ls -la /etc/postgresql
+ls -la /etc/postgresql/*
+ls -la /etc/postgresql/*/*
 
+# Install packages
 # ------------------------------------------------------------------------------
-# Install PostGIS (always build from source)
-# ------------------------------------------------------------------------------
-sudo apt-get install -y -qq build-essential libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev 
+echo "Installing packages ... this may take some time."
+sudo apt-get install -y -qq packaging-dev checkinstall libcgal-dev libboost-graph-dev libboost-thread-dev libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev 
 
 if [ "$POSTGIS_VERSION" == "1.5" ]; then 
 	RELEASE="1.5.8"

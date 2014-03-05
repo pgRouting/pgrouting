@@ -21,7 +21,9 @@ branches:
     - feature-travis
 
 services:
-  #- postgresql
+  #- postgresql: 9.1
+  #- postgresql: 9.2
+  #- postgresql: 9.3
 
 env:
   matrix:
