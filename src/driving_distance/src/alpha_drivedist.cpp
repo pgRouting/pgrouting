@@ -181,7 +181,7 @@ alpha_edges( const Alpha_shape_2&  A,
 }
 
 
-int alpha_shape(vertex_t *vertices, unsigned int count, 
+int alpha_shape(vertex_t *vertices, unsigned int count, double alpha,
                 vertex_t **res, int *res_count, char **err_msg)
 {
   std::list<Point> points;
@@ -209,7 +209,11 @@ int alpha_shape(vertex_t *vertices, unsigned int count,
 //  Alpha_shape_2::Face_iterator fit;
 //  Alpha_shape_2::Face_handle face;
   
-  A.set_alpha(*A.find_optimal_alpha(1)*6);
+  if (alpha <= 0.0)
+  {
+    alpha = *A.find_optimal_alpha(1);
+  }
+  A.set_alpha(alpha);
 
   alpha_edges( A, std::back_inserter(segments));
 

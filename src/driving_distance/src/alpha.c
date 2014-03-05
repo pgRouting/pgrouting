@@ -169,7 +169,7 @@ fetch_vertex(HeapTuple *tuple, TupleDesc *tupdesc,
   target_vertex->y = DatumGetFloat8(binval);
 }
 
-static int compute_alpha_shape(char* sql, vertex_t **res, int *res_count) 
+static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, int *res_count)
 {
 
   int SPIcode;
@@ -273,7 +273,7 @@ static int compute_alpha_shape(char* sql, vertex_t **res, int *res_count)
   profstop("extract", prof_extract);
   profstart(prof_alpha);
 
-  ret = alpha_shape(vertices, total_tuples, res, res_count, &err_msg);
+  ret = alpha_shape(vertices, total_tuples, alpha, res, res_count, &err_msg);
 
   profstop("alpha", prof_alpha);
   profstart(prof_store);
@@ -315,7 +315,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
       ret = compute_alpha_shape(text2char(PG_GETARG_TEXT_P(0)), 
-                                &res, &res_count);
+                                PG_GETARG_FLOAT8(1), &res, &res_count);
 
       /* total number of tuples to be returned */
       DBG("Conting tuples number\n");
