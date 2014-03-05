@@ -41,10 +41,6 @@ sudo apt-get update -qq
 # ------------------------------------------------------------------------------
 sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" install -y -qq postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION postgresql-server-dev-$POSTGRESQL_VERSION
 
-ls -la /etc/postgresql
-ls -la /etc/postgresql/*
-ls -la /etc/postgresql/*/*
-
 # Install packages
 # ------------------------------------------------------------------------------
 echo "Installing packages ... this may take some time."
