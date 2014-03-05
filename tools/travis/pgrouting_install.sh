@@ -48,7 +48,7 @@ ls -la /etc/postgresql/*/*
 # Install packages
 # ------------------------------------------------------------------------------
 echo "Installing packages ... this may take some time."
-sudo apt-get install -y -qq packaging-dev checkinstall libcgal-dev libboost-graph-dev libboost-thread-dev libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev 
+sudo apt-get install -y -qq packaging-dev cmake checkinstall libcgal-dev libboost-graph-dev libboost-thread-dev libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev 
 
 if [ "$POSTGIS_VERSION" == "1.5" ]; then 
 	RELEASE="1.5.8"
