@@ -29,10 +29,11 @@ if [ "$POSTGIS_VERSION" == "2.0" ] || [ "$POSTGIS_VERSION" == "2.1" ]; then
 fi
 
 # Add PostgreSQL Apt repository
-# ----------------------------------------------postgresql-client-common postgresql-common--------------------------------
-echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > pgdg.list
-sudo mv pgdg.list /etc/apt/sources.list.d/
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+# UPDATE: seems to be already available in Travis
+# ------------------------------------------------------------------------------
+# echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > pgdg.list
+# sudo mv pgdg.list /etc/apt/sources.list.d/
+# wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 sudo apt-get update -qq
 
 # ------------------------------------------------------------------------------
