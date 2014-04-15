@@ -278,12 +278,13 @@ BEGIN
 
   
   BEGIN 
-    sql = 'select * from '||pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
+    sql = 'select count(*) from ( select * from '||pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1 ) foo';
     EXECUTE sql into i;
     sql = 'select count(*) from '||pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NOT NULL AND '||
 		idname||' IS NOT NULL)=false '||rows_where;
     EXECUTE SQL  into notincluded;
     EXCEPTION WHEN OTHERS THEN  BEGIN
+         RAISE NOTICE 'Got %', SQLERRM;
          RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition'; 
          RAISE NOTICE '%',sql;
          RETURN 'FAIL'; 
@@ -300,7 +301,9 @@ BEGIN
         || ' PGR_StartPoint(' || gname || ') AS source,'
         || ' PGR_EndPoint('   || gname || ') AS target'
         || ' FROM '  || pgr_quote_ident(tabname)
-        || ' WHERE ' || gname || ' IS NOT NULL AND ' || idname||' IS NOT NULL '||rows_where
+        || ' WHERE ' || gname || ' IS NOT NULL AND ' 
+        || idname || ' IS NOT NULL ' || rows_where
+        || ' ORDER BY ' || idname
     LOOP
 
         rowcount := rowcount + 1;

@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  */
  
@@ -39,7 +39,7 @@ extern "C"
 {
 #endif
                                                                      
-  int alpha_shape(vertex_t *vertices, unsigned int count, 
+  int alpha_shape(vertex_t *vertices, unsigned int count, double alpha,
                   vertex_t **res, int *res_count, char **err_msg);
 
 #ifdef __cplusplus

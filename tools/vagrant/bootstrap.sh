@@ -32,17 +32,15 @@ apt-get install -y -qq python-software-properties vim
 apt-add-repository -y ppa:georepublic/pgrouting-travis
 
 if [ "$POSTGIS_VERSION" == "2.0" ] || [ "$POSTGIS_VERSION" == "2.1" ]; then 
-	apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable
+	apt-add-repository -y ppa:ubuntugis/ppa
 fi
 
 # Add PostgreSQL Apt repository
 # ------------------------------------------------------------------------------
-if [ "$POSTGRESQL_VERSION" != "9.1" ]; then
-	echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
-	wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | apt-key add -
-fi
-
-apt-get update -qq
+echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > pgdg.list
+sudo mv pgdg.list /etc/apt/sources.list.d/
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update -qq
 
 # Install packages
 # ------------------------------------------------------------------------------
@@ -62,16 +60,19 @@ pip install sphinx transifex-client sphinx-intl
 # ------------------------------------------------------------------------------
 
 if [ "$POSTGIS_VERSION" == "1.5" ]; then 
-	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-1.5.8.tar.gz | tar xzf -
+	RELEASE="1.5.8"
+	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
 fi
 
 if [ "$POSTGIS_VERSION" == "2.0" ]; then 
-	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-2.0.3.tar.gz | tar xzf -
+	RELEASE="2.0.4"
+	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
 fi
 
 if [ "$POSTGIS_VERSION" == "2.1" ]; then 
-	apt-get install -y -qq libpoppler-dev libarmadillo-dev libepsilon-dev liblzma-dev libxml2-dev
-	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-2.1.0.tar.gz | tar xzf -
+	sudo apt-get install -y -qq libpoppler-dev libarmadillo-dev libepsilon-dev liblzma-dev libxml2-dev
+	RELEASE="2.1.1"
+	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
 fi
 
 # Build and compile
