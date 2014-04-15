@@ -58,7 +58,7 @@ CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar, alpha float8 DEFAU
 		geoms := array[]::geometry[];
 		i := 1;
 
-		FOR path_result IN EXECUTE 'SELECT x, y FROM pgr_alphashape('''|| query || ''', ' || alpha || ')' 
+		FOR vertex_result IN EXECUTE 'SELECT x, y FROM pgr_alphashape('''|| query || ''', ' || alpha || ')' 
 		LOOP
 			x[i] = vertex_result.x;
 			y[i] = vertex_result.y;
