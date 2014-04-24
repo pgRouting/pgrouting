@@ -1,0 +1,5 @@
+select * from pgr_vrpOneDepot(
+    'select * from vrp_orders'::text,
+    'select * from vrp_vehicles'::text,
+    'select * from vrp_distance'::text,
+    1 );
