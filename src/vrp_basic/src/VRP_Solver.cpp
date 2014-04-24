@@ -638,6 +638,11 @@ bool CVRPSolver::getSolution(CSolutionInfo& solution, std::string& strError)
 	}
 	else
 	{
+        // set a seed for the random number generator
+        // so it will generate consistent results for the same input
+        // otherwise we can not test it :(
+        srand(1726354);
+
 		bool ret = solveVRP(strError);
 		if(ret == true)
 		{
