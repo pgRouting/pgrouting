@@ -8,10 +8,10 @@
     A simple logging mechanism the can be disabled for production
     and should work in C or C++ code.
 
-    USEAGE:
+    USAGE:
 
     #define LOGGERR_ON
-    #udef LOGGER_ON  // turn off logging for production
+    #undef LOGGER_ON  // turn off logging for production
 
     // override the default log file "/tmp/pgr_logger.log"
     #define LOGGER_FILE "mylogger.log"
