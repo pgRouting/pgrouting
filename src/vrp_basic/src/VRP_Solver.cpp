@@ -1,17 +1,11 @@
 #include "VRP_Solver.h"
 
-#define DOUBLE_MAX 1e50
+#undef PGR_LOGGER_ON
+#define PGR_LOGGER_LOC
+#define PGR_LOGGER_FILE "/tmp/vrp-debug.log"
+#include "../../common/src/pgr_logger.h"
 
-char bufff[1024];
-void dlog2(char *ptr)
-{
-/*
-	FILE *fp = fopen("/tmp/vrp-debug.log", "a+");;
-	fprintf(fp,ptr);
-	fprintf(fp, "\n");
-	fclose(fp);	
-*/
-}
+#define DOUBLE_MAX 1e50
 
 bool operator != (const CVehicleInfo& cur, const CVehicleInfo& that)
 {
@@ -257,7 +251,7 @@ bool CVRPSolver::solveVRP(std::string& strError)
 //		strError = "Scenario is not ready to solve. Configure all parameter";
 //		return false;
 //	}
-	//dlog2("Inside Solve VRP");
+	PGR_LOG("Inside Solve VRP");
 	std::vector<int> vecOrders, vecVehicles;
 	for(int i = 0; i < m_vOrderInfos.size(); i++)
 	{
@@ -270,18 +264,18 @@ bool CVRPSolver::solveVRP(std::string& strError)
 	}
 	
 	m_solutionFinal.init(vecOrders, vecOrders.size(), vecVehicles);
-	//dlog2("After init solution");
+	PGR_LOG("After init solution");
 	int iAttemtCount = 0;
 	while(iAttemtCount < MAXIMUM_TRY)
 	{
 		bool bUpdateFound = false;
 		CSolutionInfo initialSolution = generateInitialSolution();
-		//dlog2("After Generate initial Solution");
+		PGR_LOG("After Generate initial Solution");
 		iAttemtCount++;
 		bUpdateFound = updateFinalSolution(initialSolution);
-		//dlog2("After update final Solution");
+		PGR_LOG("After update final Solution");
 		bool bUpdateFound2 = tabuSearch(initialSolution);
-		//dlog2("After Tabu Search");
+		PGR_LOG("After Tabu Search");
 		if((bUpdateFound == true) || (bUpdateFound2 == true))
 		{
 			iAttemtCount = 0;
@@ -295,7 +289,7 @@ bool CVRPSolver::solveVRP(std::string& strError)
 CSolutionInfo CVRPSolver::generateInitialSolution()
 {
 	CSolutionInfo initialSolution;
-	//dlog2("Inside gen ini sol");
+	PGR_LOG("Inside gen ini sol");
 	std::vector<int> vecOrders, vecVehicles;
 	for(int i = 0; i < m_vOrderInfos.size(); i++)
 	{
@@ -311,7 +305,7 @@ CSolutionInfo CVRPSolver::generateInitialSolution()
 
 	int iUnusedVehicles = initialSolution.getUnusedVehicleCount();
 	int iUnservedOrders = initialSolution.getUnservedOrderCount();//m_viUnservedOrderIndex.size();
-	//dlog2("before while");
+	PGR_LOG("before while");
 	while( iUnusedVehicles && iUnservedOrders )
 	{
 		CTourInfo curTour;

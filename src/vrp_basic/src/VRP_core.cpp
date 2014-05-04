@@ -2,35 +2,24 @@
 #include "VRP_Solver.h"
 #include <exception>
 
+#undef PGR_LOGGER_ON
+#define PGR_LOGGER_LOC
+#define PGR_LOGGER_FILE "/tmp/vrp-debug.log"
+#include "../../common/src/pgr_logger.h"
+
 CVRPSolver solver;
-
-char buff[1024];
-void dlog(char *ptr)
-{
-/*
-	FILE *fp = fopen("/tmp/vrp-debug.log", "a+");;
-	fprintf(fp,ptr);
-	fprintf(fp, "\n");
-	fclose(fp);	
-*/
-}
-
 
 void loadOrders(vrp_orders_t *orders, int order_count, int depotId)
 {
 	int i;
-	sprintf(buff, "%d", depotId);
-	//dlog("Depot ID");
-	//dlog(buff);
+    PGR_LOGF("%s: %d\n", "Depot ID", id)
 	for(i = 0; i < order_count; i++)
 	{
 		int id = orders[i].id;
-		//sprintf(buff, "%d", id);
-		//dlog("Depot ID");
-		//dlog(buff);
+        PGR_LOGF("%s: %d\n", "Order ID", id)
 		if (id == depotId)
 		{
-			//dlog("Got depot");
+			PGR_LOG("Got depot");
 			// This order represents Deopot
 			CDepotInfo depot;
 			
@@ -137,15 +126,15 @@ int find_vrp_solution(vrp_vehicles_t *vehicles, int vehicle_count,
 	
 	std::string strError;
 	try {
-		//dlog("Before load order");
+		PGR_LOG("Before load order");
 		loadOrders(orders, order_count, depot_id);
-		//dlog("After load order");
+		PGR_LOG("After load order");
 		loadVehicles(vehicles, vehicle_count);
-		//dlog("After load vehicles");
+		PGR_LOG("After load vehicles");
 		loadDistanceMatrix(costmatrix, cost_count, depot_id);
-		//dlog("After load distance matrix");
+		PGR_LOG("After load distance matrix");
 		res = solver.solveVRP(strError);
-		//dlog("After VRP Solve");
+		PGR_LOG("After VRP Solve");
 	
 	}
 	catch(std::exception& e) {
