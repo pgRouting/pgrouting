@@ -1,16 +1,16 @@
 
-#define LOGGER_ON
-#define LOGGER_LOC
-#define LOGGER_FILE "test-log.log"
+#define PGR_LOGGER_ON
+#define PGR_LOGGER_LOC
+#define PGR_LOGGER_FILE "test-log.log"
 
 #include "../src/pgr_logger.h"
 
 #include <time.h>
 
 int main () {
-    LOG("%s\n", "message 1");
-    LOG("%s at epoch %d\n", "message 2", (int)time(NULL));
-    LOG("%s\n", "message 3");
+    PGR_LOG("message 1");
+    PGR_LOGF("%s at epoch %d\n", "message 2", (int)time(NULL));
+    PGR_LOG("message 3");
 
     return 0;
 }

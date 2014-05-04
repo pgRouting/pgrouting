@@ -15,4 +15,4 @@ test: clean
 	+cat test-log.log
 
 clean:
-	+rm -f test-log.log
+	+rm -f test1 test2 test-log.log

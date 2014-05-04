@@ -60,6 +60,6 @@
 #  define PGR_LOGF(format, ...)
 #endif  // ifndef LOGGER_ON
 
-#define PGR_LOG(str) LOGF("%s\n", str)
+#define PGR_LOG(str) PGR_LOGF("%s\n", str)
 
 #endif  // ifndef PGR_LOGGER_H
