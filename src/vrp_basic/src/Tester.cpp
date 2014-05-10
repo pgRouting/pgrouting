@@ -91,7 +91,7 @@ void loadOrders()
 
 void loadVehicles()
 {
-	FILE *fp = fopen("vehicles.txt", "rt");
+	FILE *fp = fopen("Vehicles.txt", "rt");
 
 	if(fp == NULL)
 	{
