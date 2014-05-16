@@ -1,0 +1,94 @@
+Total Number of Route: 18
+Total Cost: 2184.860
+Total Distance: 2184.860
+Total TravelTime: 3590.035
+Route No. 1: 
+Vehicle Id: 19
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 66, 70, 99, 89, 91, 67, 57, 92, 94, 81
+Route No. 2: 
+Vehicle Id: 7
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 93, 96, 62, 82, 95, 97, 55, 69, 71, 101
+Route No. 3: 
+Vehicle Id: 17
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 83, 53, 100, 54, 56, 61
+Route No. 4: 
+Vehicle Id: 12
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 84, 65, 52, 86, 85, 21, 25
+Route No. 5: 
+Vehicle Id: 10
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 63, 68, 72, 51, 33
+Route No. 6: 
+Vehicle Id: 9
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 15, 60, 87, 58, 75, 59
+Route No. 7: 
+Vehicle Id: 5
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 73, 40, 45, 41, 39, 42, 44, 36
+Route No. 8: 
+Vehicle Id: 3
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 6, 46, 3, 7, 8, 47, 5, 2
+Route No. 9: 
+Vehicle Id: 2
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 48, 13, 12, 17, 10, 11, 14, 18
+Route No. 10: 
+Vehicle Id: 20
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 74, 80, 79
+Route No. 11: 
+Vehicle Id: 1
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 43, 37, 38
+Route No. 12: 
+Vehicle Id: 15
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 24, 22, 20, 50, 23, 49, 26
+Route No. 13: 
+Vehicle Id: 14
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 16, 88, 98, 78
+Route No. 14: 
+Vehicle Id: 11
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 9, 4
+Route No. 15: 
+Vehicle Id: 6
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 64, 77, 19, 90
+Route No. 16: 
+Vehicle Id: 18
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 28, 30, 32, 31, 35, 27
+Route No. 17: 
+Vehicle Id: 8
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 29, 34
+Route No. 18: 
+Vehicle Id: 16
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 76
