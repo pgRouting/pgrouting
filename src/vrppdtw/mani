@@ -1,1 +1,41 @@
 Getting started
+
+pgRouting Flow of Work :::
+
+What I understood?
+SPI Reference: http://www.postgresql.org/docs/9.2/static/spi.html
+http://www.postgresql.org/docs/9.2/static/spi-examples.html
+Flow ::
+1. fetch all data via spi, and copy it to C structs
+2. pass c structs to c++ code
+3. compute stuff, and restruct results to C code, 4 then return results one record at a time to SQL from the C code
+Things you might face while doing this:
+1. copy is important, don't pass pointers as they may not be valid when you go to    reference them.
+if you get an error compiling Tester.cpp about strtok, then you need to add #include   <string.h> into Utils.h
+
+*Look in sql directory, that links the sql command to an entry point in the library that is created
+*Then VRP.c contains the entry point and the code to fetch the data from the user and the database
+*It calls VRP_core.cpp which create an instance of the solver, and loads the data from the C code into it and starts it running
+*Then it gets the results from the solver and passes it back to the C code which in turn passes it back to the SQL/database caller
+
+"../sql/routing_vrp.sql"
+create or replace function pgr_vrpOneDepot( 
+                order_sql text, 
+                vehicle_sql text, 
+                cost_sql text, 
+                depot_id integer, 
+
+                OUT oid integer, 
+                OUT opos integer, 
+                OUT vid integer, 
+                OUT tarrival integer, 
+                OUT tdepart integer) 
+returns setof record as 
+'$libdir/librouting_vrp', 'vrp' 
+LANGUAGE c VOLATILE STRICT; 
+so this is how the sql gets mapped into the function vrp() in VRP.c
+the OUT parameters define a record type that this function will return.
+
+
+
+
