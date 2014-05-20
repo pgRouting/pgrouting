@@ -28,6 +28,7 @@ sub Usage {
     die "Usage: test-runner.pl -pgver vpg -pgisver vpgis -psql /path/to/psql\n" .
         "       -pgver vpg          - postgresql version\n" .
         "       -pgport port        - postgresql port to use (default: 5432)\n" .
+        "       -pguser user        - postgresql user to use (default: postgres)\n" .
         "       -pgisver vpgis      - postgis version\n" .
         "       -pgrver vpgr        - pgrouting version\n" .
         "       -psql /path/to/psql - optional path to psql\n" .
@@ -52,6 +53,9 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a eq '-pgport') {
         $DBPORT = shift @ARGV || Usage();
+    }
+    elsif ($a eq '-pguser') {
+        $DBUSER = shift @ARGV || Usage();
     }
     elsif ($a eq '-pgisver') {
         $vpgis = shift @ARGV || Usage();
