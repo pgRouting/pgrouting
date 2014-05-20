@@ -293,6 +293,7 @@ BEGIN
         EXECUTE query into ecnt;
          EXCEPTION WHEN OTHERS THEN 
          BEGIN 
+            RAISE NOTICE 'ERROR: %', SQLERRM;
             RAISE NOTICE 'ERROR: Condition is not correct. Please execute the following query to test your condition'; 
             RAISE NOTICE '%',query;
             RETURN 'FAIL'; 
