@@ -19,7 +19,7 @@ export PATHOLD=".:/bin:/include:/mingw/bin:/mingw/include:/c/Windows/system32:/c
 export PGWINVER=${PG_VER}edb
 export PostgreSQL_ROOT=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}
 export PATH="${PATHOLD}:${PostgreSQL_ROOT}/bin:${PostgreSQL_ROOT}/lib"
-if [[ "${GCC_TYPE}" == "gcc48" ]] ; then
+if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	GMP_VER=5.1.2
 	MPFR_VER=3.1.2
 	CGAL_VER=4.2

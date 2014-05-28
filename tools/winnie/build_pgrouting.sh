@@ -14,7 +14,7 @@ export PGUSER=postgres
 
 
 #export PROJECTS=/c/ming${OS_BUILD}/projects
-if [[ "${GCC_TYPE}" == "gcc48" ]] ; then
+if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	export PROJECTS=/projects
 	export PATHOLD=$PATH
 	export PGPATH=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}
