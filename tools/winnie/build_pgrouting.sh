@@ -23,7 +23,7 @@ if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	export PATHOLD="/mingw/bin:/mingw/include:/c/Windows/system32:/c/Windows"
 	export PGWINVER=${PG_VER}w${OS_BUILD}${GCC_TYPE}edb
 	export PATH="${PATHOLD}:${PGPATH}/bin:${PGPATH}/lib:${PGPATH}/include"
-	export PATH="${PROJECTS}/rel-libiconv-1.13.1w${OS_BUILD}/include:${PATH}"
+	export PATH="${PROJECTS}/rel-libiconv-1.13.1w${OS_BUILD}${GCC_TYPE}/include:${PATH}"
 	GMP_VER=5.1.2
 	MPFR_VER=3.1.2
 	CGAL_VER=4.2

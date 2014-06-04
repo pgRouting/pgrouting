@@ -67,7 +67,7 @@ cp -r *.control $outdir/share/extension
 cp -r *.dll $outdir/lib
 #newer gcc for some reason CGAL is not statically linked
 # so need to distribute
-if [[ "${GCC_TYPE}" == "gcc48" ]] ; then
+if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	cp ${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}/bin/libCGAL.dll $outdir/bin
 fi
 #cp extensions/postgis_topology/sql/* ${RELDIR}/${RELVERDIR}/share/extension
