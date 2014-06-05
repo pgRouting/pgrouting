@@ -10,6 +10,8 @@ Test data in --- data.txt
 
 
 What savings algorithm exactly  does ? 
+Better explained here : http://youtu.be/A1wsIFDKqBk?t=44m53s
+
 
 Step1::
    It calculates all the combinations from the distance matrix. 
