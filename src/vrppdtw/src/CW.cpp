@@ -186,10 +186,11 @@ int main()
 
 
         //checking 
+        /*
         for(int i=0;i<length_comb;i++)
         {
                 printf("i1=%d i2=%d =%d\n",comb[i].index1,comb[i].index2,comb[i].value);
-        }
+        }*/
         //sort 
         int temp1,temp2;
         for(int j=0;j<length_comb;j++)
