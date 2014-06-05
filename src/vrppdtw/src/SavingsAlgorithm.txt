@@ -1,4 +1,8 @@
-Well this algorithm is one of the best one's to give you a initial feasible solution. 
+
+
+******************************* Clarke and Wright ***************************************8
+
+Well this algorithm is one of the best  to give you a initial feasible solution. 
 This works based on Clarke and Wright Algorithm which is introduced in 1964.
 
 Lets assume we have a test data of all the cities i.e.. their distance matrix and demands of the customers. 
@@ -20,8 +24,31 @@ Step2::
 
 Step3::
    Main heart of the algorithm to calculate the routes from now!!
+   
+   Starting with the largest savings, do the following:
+   (a)  If linking cities i and j results in a feasible route, then add this link to the route;  if not, reject the link.
+   (b) Try the next savings in the list and repeat (a).
+
+   Do not break any links formed earlier.
+   Start new routes when necessary.
+   Stop when all cities are on a route.
 
 
+
+
+
+
+
+                         *******************Code***********************
+Lets come to code part:
+
+From line 152-219 ::: In main these things are happening 
+         1.) Scan the data 
+         2.) Calculate combinations 
+         3.) Sort them 
+
+From 221-224 ::: A function is called which calculates the route ! 
+         Line 29-145::: Main function which follows step4 accordingly.
 
 
 
