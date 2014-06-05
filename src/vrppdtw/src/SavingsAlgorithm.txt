@@ -1,0 +1,27 @@
+Well this algorithm is one of the best one's to give you a initial feasible solution. 
+This works based on Clarke and Wright Algorithm which is introduced in 1964.
+
+Lets assume we have a test data of all the cities i.e.. their distance matrix and demands of the customers. 
+Test data in --- data.txt 
+
+
+What savings algorithm exactly  does ? 
+
+Step1::
+   It calculates all the combinations from the distance matrix. 
+   For example if there are 5   customers , combinations will be 5c2 = 10
+               if there are 10  customers , combinations will be 10c2 = 45 
+               if there are 20  customers , combinations will be 20c2 = 190 
+               if there are 100 customers , combinations will be 100c2 = 4950 
+
+Step2:: 
+   Sort all the combinations, From large to small (Non-increasing order)
+
+
+Step3::
+   Main heart of the algorithm to calculate the routes from now!!
+
+
+
+
+
