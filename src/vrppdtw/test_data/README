@@ -1,0 +1,39 @@
+DATA:::
+According to the documentation given in the website it is noted that the data sets are in the following order.
+
+               ***********************************************************************
+
+Number of Vehicles  -- Capacity 
+
+CustNo: -- X --  Y -- Demand -- Earliest Pick/Del Time -- Latest Pick/Del Time -- Service Time -- PickUp(Index to sib) -- Deliver(Index to sib)
+
+
+
+              *************************************************************************
+
+
+              
+Handling data :
+
+NumberofVehicles:   VehicleCount (int)
+Capacity :          Capacity(int)
+Speed :             speed(int)
+
+Structs required to handle customers::   
+
+Struct cust{
+        int id;
+        float X;
+        float Y;
+        int demand;
+        int Earliest_TIME;
+        int Delivery_TIME;
+        int Service_TIME;
+        int Pickup;
+        int delivery;
+};
+
+
+
+Algorithm to handle this things:
+
