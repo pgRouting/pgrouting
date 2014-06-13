@@ -102,7 +102,7 @@ BEGIN
 
 
   BEGIN
-    RAISE DEBUG 'Cheking % exists',edge_table;
+    RAISE DEBUG 'Checking % exists',edge_table;
     execute 'select * from pgr_getTableName('||quote_literal(edge_table)||')' into naming;
     sname=naming.sname;
     tname=naming.tname;
@@ -200,7 +200,7 @@ BEGIN
 
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',idname,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',idname,tabname;
       if (pgr_isColumnIndexed(tabname,idname)) then 
 	RAISE DEBUG '  ------>OK';
       else 
@@ -213,7 +213,7 @@ BEGIN
     END;
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',sourcename,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',sourcename,tabname;
       if (pgr_isColumnIndexed(tabname,sourcename)) then 
 	RAISE DEBUG '  ------>OK';
       else 
@@ -226,7 +226,7 @@ BEGIN
     END;
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',targetname,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',targetname,tabname;
       if (pgr_isColumnIndexed(tabname,targetname)) then 
 	RAISE DEBUG '  ------>OK';
       else 
@@ -239,7 +239,7 @@ BEGIN
     END;
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',gname,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',gname,tabname;
       if (pgr_iscolumnindexed(tabname,gname)) then 
 	RAISE DEBUG '  ------>OK';
       else 
@@ -396,7 +396,7 @@ BEGIN
   execute 'show client_min_messages' into debuglevel;
 
   BEGIN
-    RAISE DEBUG 'Cheking % exists',edge_table;
+    RAISE DEBUG 'Checking % exists',edge_table;
     execute 'select * from pgr_getTableName('||quote_literal(edge_table)||')' into naming;
     sname=naming.sname;
     tname=naming.tname;
@@ -477,7 +477,7 @@ BEGIN
   END;
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',sourcename,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',sourcename,tabname;
       if (pgr_isColumnIndexed(tabname,sourcename)) then
         RAISE DEBUG '  ------>OK';
       else
@@ -490,7 +490,7 @@ BEGIN
     END;
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',targetname,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',targetname,tabname;
       if (pgr_isColumnIndexed(tabname,targetname)) then
         RAISE DEBUG '  ------>OK';
       else
@@ -503,7 +503,7 @@ BEGIN
     END;
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',gname,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',gname,tabname;
       if (pgr_iscolumnindexed(tabname,gname)) then
         RAISE DEBUG '  ------>OK';
       else
