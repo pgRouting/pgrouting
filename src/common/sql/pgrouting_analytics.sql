@@ -97,7 +97,7 @@ DECLARE
 BEGIN
   raise notice 'PROCESSING:'; 
   raise notice 'pgr_analyzeGraph(''%'',%,''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where;
-  raise NOTICE  'Performing checks, pelase wait...';
+  raise NOTICE  'Performing checks, please wait...';
   execute 'show client_min_messages' into debuglevel;
 
 
