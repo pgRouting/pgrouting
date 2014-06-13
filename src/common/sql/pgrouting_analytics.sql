@@ -102,7 +102,7 @@ BEGIN
 
 
   BEGIN
-    RAISE DEBUG 'Cheking % exists',edge_table;
+    RAISE DEBUG 'Checking % exists',edge_table;
     execute 'select * from pgr_getTableName('||quote_literal(edge_table)||')' into naming;
     sname=naming.sname;
     tname=naming.tname;
@@ -199,7 +199,7 @@ BEGIN
 
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',sourcename,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',sourcename,tabname;
       if (pgr_isColumnIndexed(tabname,sourcename)) then 
 	RAISE DEBUG '  ------>OK';
       else 
@@ -209,7 +209,7 @@ BEGIN
     END;
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',targetname,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',targetname,tabname;
       if (pgr_isColumnIndexed(tabname,targetname)) then 
 	RAISE DEBUG '  ------>OK';
       else 
@@ -219,7 +219,7 @@ BEGIN
     END;
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',gname,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',gname,tabname;
       if (pgr_iscolumnindexed(tabname,gname)) then 
 	RAISE DEBUG '  ------>OK';
       else 
@@ -251,7 +251,7 @@ BEGIN
 
 
     BEGIN
-        RAISE DEBUG 'Cheking for "cnt" and "chk" column in %',vertname;
+        RAISE DEBUG 'Checking for "cnt" and "chk" column in %',vertname;
         execute 'select pgr_getcolumnName('||quote_literal(vertname)||','||quote_literal('cnt')||')' into cntname;
         execute 'select pgr_getcolumnName('||quote_literal(vertname)||','||quote_literal('chk')||')' into chkname;
         if cntname is not null and chkname is not null then
@@ -277,7 +277,7 @@ BEGIN
 
 
     BEGIN
-      RAISE DEBUG 'Cheking "id" column in % is indexed',vertname;
+      RAISE DEBUG 'Checking "id" column in % is indexed',vertname;
       if (pgr_iscolumnindexed(vertname,'id')) then 
 	RAISE DEBUG '  ------>OK';
       else 
@@ -519,7 +519,7 @@ BEGIN
   execute 'show client_min_messages' into debuglevel;
 
   BEGIN
-    RAISE DEBUG 'Cheking % exists',edge_table;
+    RAISE DEBUG 'Checking % exists',edge_table;
     execute 'select * from pgr_getTableName('||quote_literal(edge_table)||')' into naming;
     sname=naming.sname;
     tname=naming.tname;
@@ -603,7 +603,7 @@ BEGIN
 
 
     BEGIN
-        RAISE DEBUG 'Cheking for "ein" column in %',vertname;
+        RAISE DEBUG 'Checking for "ein" column in %',vertname;
         execute 'select pgr_getcolumnName('||quote_literal(vertname)||','||quote_literal('ein')||')' into einname;
         if einname is not null then
                 einname=quote_ident(einname);
@@ -619,7 +619,7 @@ BEGIN
 
 
     BEGIN
-        RAISE DEBUG 'Cheking for "eout" column in %',vertname;
+        RAISE DEBUG 'Checking for "eout" column in %',vertname;
         execute 'select pgr_getcolumnName('||quote_literal(vertname)||','||quote_literal('eout')||')' into eoutname;
         if eoutname is not null then
                 eoutname=quote_ident(eoutname);
