@@ -21,8 +21,8 @@ Speed :             speed(int)
 
 Structs required to handle customers::   
 
-Struct cust{
-        int id;
+struct cust{
+        int nid;
         float X;
         float Y;
         int demand;
@@ -35,5 +35,30 @@ Struct cust{
 
 
 
+struct order{
+        int oid;
+        float Xp;
+        float Yp;
+        float Xd;
+        float Yd;
+        int demand;
+        int dis_p;
+        int dis_d;
+        //Handle Time Windows
+        int assigned;
+};
+
+
+Sort all the orders based on dis_p;
+
+
+
 Algorithm to handle this things:
+
+
+
+
+
+
+
 
