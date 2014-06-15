@@ -56,7 +56,27 @@ Sort all the orders based on dis_p;
 Algorithm to handle this things:
 
 
+Sequential Construction Algorithm and Hill Climbing Method
 
+*********************************************
+Write a class for each route 
+
+class Route{
+        Route();
+        ~Route();
+
+        public:
+        int twv;
+        int cv;
+        int dist;
+        int Path[100];
+        int Orders[100];
+        int path_length;
+
+        int CostCal();
+        int update(); // Calculate all the three variables.
+
+};
 
 
 

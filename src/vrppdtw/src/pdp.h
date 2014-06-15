@@ -41,8 +41,17 @@ typedef struct Pickup{
         int Pid;
         int Ddist;
         int Did;
+        int checked;
 }pickup; 
 
+
+
+typedef struct Delivery{
+        int id;
+        int Did;
+        int Ddist;
+        int Pid;
+}delivery; 
 
 int CalculateDistance(int x1,int y1,int x2,int y2)
 {
@@ -51,7 +60,7 @@ int CalculateDistance(int x1,int y1,int x2,int y2)
 
 depot ScanDepot(depot d)
 {
-        
+
         scanf("%d",&d.id);
         scanf("%d",&d.x);
         scanf("%d",&d.y);
@@ -96,7 +105,115 @@ int temp=0;
 int CustomerLength=0;
 int OrderLength=0;
 
+typedef struct cs{
+        int twv;
+        int cv;
+        int dis;
+        int path[1000];
+        int order[1000];
+        int path_length;
+}State;
+
+// Class 
+class Route
+{
+        public:
+                int twv;
+                int cv;
+                int dis;
+                int path[1000];
+                int order[1000];
+                int path_length;
+                Route()
+                {
+                        twv=0;
+                        cv=0;
+                        dis=0;
+                        path_length=0;
+                        for(int i=0;i<1000;i++)
+                        {
+                                path[i]=0;
+                                order[i]=0;
+                        }
+                }
+
+                State  append(customer *c, Pickup p, depot d,int CustomerLength, int PickupLength, State S)
+                {
+                        //Save State;
+                        S.twv=twv;
+                        S.cv=cv;
+                        S.dis=dis;
+                        S.path_length=path_length;
+                        for(int i=0;i<path_length;i++)
+                        {
+                                S.path[i]=path[i];
+                                S.order[i]=order[i];
+                        }
+
+                        // Insert Order 
+                                printf("Path_length=%d\n",path_length);
+                                path[path_length]=p.Pid;
+                                printf("Pid=%d\n",p.Pid);
+                                order[path_length]=p.id;
+                                path[path_length+1]=p.Did;
+                                printf("Did=%d\n",p.Did);
+                                order[path_length+1]=p.id;
+                                path_length+=2;
+
+                        return S;
+                }
+
+                void remove( State S)
+                {
+                        printf("Remove Called\n");
+                        twv=S.twv;
+                        cv=S.cv;
+                        dis=S.dis;
+                        path_length=S.path_length;
+                        for(int i=0;i<path_length;i++)
+                        {
+                                path[i]=S.path[i];
+                                order[i]=S.order[i];
+                        }
+                        return;
+                }
+                void path_print(int path[],int path_length)
+                {
+                        printf("Path  ");
+                        for(int i=0;i<path_length;i++)
+                        {
+                                printf("%d ",path[i]);
+                        }
+                        printf("\n");
+                        return;
+                }
+
+                void print()
+                {
+                        printf("TWV=%d\n",twv);
+                        printf("dis=%d\n",dis);
+                        printf("cv=%d\n",cv);
+                        printf("Path ");
+                        for(int i=0;i<path_length;i++)
+                        {
+                                printf("%d ",path[i]);
+                        }
+                        printf("\n");
+                        return;
+                }
+};
+
 
 
 
 #endif
+
+
+
+
+
+
+
+
+
+
