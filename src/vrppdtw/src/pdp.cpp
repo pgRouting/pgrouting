@@ -66,29 +66,18 @@ int main()
                 }
                 p[i].checked=0;
         }
-        /*
-           printf("After Sorting:  \n");
-           for(int i=1;i<=PickupLength;i++)
-           {
-           printf("Ddist =%d  id=%d   Pid=%d\n",p[i].Ddist,p[i].id,p[i].Pid);
-           }
-         */
-
         //Sequential Construction 
         for(int v=0;v<50;v++)
         {
-                printf("*********Vehicle Beginning********\n");
+                printf("\n*********Vehicle Beginning********\n");
                 for(int i=PickupLength;i>=1;i--)
                 {
                         if(p[i].checked!=1)
                         {
                                 State S;
-                                printf("\n \n Inserting New Request , Path print :\n");
-                                r[v].print();
                                 S=r[v].append(c,p[i],d,CustomerLength,PickupLength,S);
-                                int flag=r[v].HillClimbing(c,p[i],d);
-                                printf("flag=%d\n",flag);
-                                if(flag==0)
+                                int flag=r[v].HillClimbing(c,d);
+                                if(flag==1)
                                 {
                                         //Remove 
                                         r[v].remove(S);
@@ -101,12 +90,8 @@ int main()
                 }
 
                 r[v].print();
-                printf("*******Vehicle DOne***********\n");
+                printf("\n*******Vehicle DOne***********\n");
 
-        }
-        for(int i=1;i<=PickupLength;i++)
-        {
-                printf("Order %d ,  Checked %d\n",i,p[i].checked);
         }
 
         return 0;

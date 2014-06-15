@@ -151,21 +151,113 @@ class Route
                         }
 
                         // Insert Order 
-                                printf("Path_length=%d\n",path_length);
                                 path[path_length]=p.Pid;
-                                printf("Pid=%d\n",p.Pid);
                                 order[path_length]=p.id;
                                 path[path_length+1]=p.Did;
-                                printf("Did=%d\n",p.Did);
                                 order[path_length+1]=p.id;
                                 path_length+=2;
 
                         return S;
                 }
 
+
+
+               void update(customer *c,depot d)
+               {
+                       dis=0,twv=0,cv=0;
+                       int load=0;
+                       for(int i=-1;i<path_length;i++)
+                       {
+                               //depot to first customer
+                               if(i==-1)
+                               {
+                                       dis+=sqrt(((d.x-c[path[i+1]].x)*(d.x-c[path[i+1]].x))+((d.y-c[path[i+1]].y)*(d.y-c[path[i+1]].y)));
+                                       if(dis<c[path[i+1]].Etime)
+                                       {
+                                               dis=c[path[i+1]].Etime;
+                                       }
+                                       else if(dis>c[path[i+1]].Ltime)
+                                       {
+                                               twv+=1;
+                                       }
+                                       dis+=c[path[i+1]].Stime;
+                                       load+=c[path[i+1]].demand;
+                               }
+                               //Last cusotmer to depot 
+                               if(i==path_length-1)
+                               {
+                                       dis+=sqrt(((d.x-c[path[i]].x)*(d.x-c[path[i]].x))+((d.y-c[path[i]].y)*(d.y-c[path[i]].y)));
+                                       if(dis>d.Ltime)
+                                       {
+                                               twv+=1;
+                                       }
+                               }
+                               //Middle customers
+                               if(i>=0 && i< path_length-1)
+                               {
+                                       dis+=sqrt(((c[path[i]].x-c[path[i+1]].x)*(c[path[i]].x-c[path[i+1]].x))+((c[path[i]].y-c[path[i+1]].y)*(c[path[i]].y-c[path[i+1]].y)));
+                                       if(dis<c[path[i+1]].Etime)
+                                       {
+                                               dis=c[path[i+1]].Etime;
+                                       }
+                                       else if(dis>c[path[i+1]].Ltime)
+                                       {
+                                               twv+=1;
+                                       }
+                                       dis+=c[path[i+1]].Stime;
+                                       load+=c[path[i+1]].demand;
+                               }
+
+                               if(load>200 || load<0)
+                               {
+                                       cv+=1;
+                               }
+                       }
+                       return;
+               }
+
+               int cost()
+               {
+                       return (0.2*dis)+(0.5*twv)+(0.3*cv);
+               }
+
+               int HillClimbing(customer *c,depot d)
+               {
+                       int cost1=0,cost2=0,swap=0;
+                       update(c,d);
+                       cost1=cost();
+                       for(int i=0;i<path_length;i++)
+                       {
+                               for(int j=0;j<path_length;j++)
+                               {
+                                       if(c[path[i]].Ltime > c[path[j]].Ltime)
+                                       {
+                                               swap=path[i];
+                                               path[i]=path[j];
+                                               path[j]=swap;
+                                       }
+                                       update(c,d);
+                                       cost2=cost();
+                                       if(cost2>cost1)
+                                       {
+                                               swap=path[i];
+                                               path[i]=path[j];
+                                               path[j]=swap;
+                                       }
+                               }
+                       }
+                       update(c,d);
+                       if(twv>0 || cv>0 || dis> d.Ltime)
+                       {
+                               return 1;
+                       }
+                       return 0;
+               }
+
+
+
                 void remove( State S)
                 {
-                        printf("Remove Called\n");
                         twv=S.twv;
                         cv=S.cv;
                         dis=S.dis;
@@ -175,16 +267,6 @@ class Route
                                 path[i]=S.path[i];
                                 order[i]=S.order[i];
                         }
-                        return;
-                }
-                void path_print(int path[],int path_length)
-                {
-                        printf("Path  ");
-                        for(int i=0;i<path_length;i++)
-                        {
-                                printf("%d ",path[i]);
-                        }
-                        printf("\n");
                         return;
                 }
 
