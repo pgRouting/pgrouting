@@ -40,7 +40,7 @@ BEGIN
   execute 'show client_min_messages' into debuglevel;
 
   BEGIN
-    RAISE DEBUG 'Cheking % exists',edge_table;
+    RAISE DEBUG 'Checking % exists',edge_table;
     execute 'select * from pgr_getTableName('||quote_literal(edge_table)||')' into naming;
     sname=naming.sname;
     tname=naming.tname;
@@ -99,7 +99,7 @@ BEGIN
   END;
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',n_pkey,intab;
+      RAISE DEBUG 'Checking "%" column in % is indexed',n_pkey,intab;
       if (pgr_isColumnIndexed(intab,n_pkey)) then 
 	RAISE DEBUG '  ------>OK';
       else 
@@ -112,7 +112,7 @@ BEGIN
     END;
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',n_geom,intab;
+      RAISE DEBUG 'Checking "%" column in % is indexed',n_geom,intab;
       if (pgr_iscolumnindexed(intab,n_geom)) then 
 	RAISE DEBUG '  ------>OK';
       else 
