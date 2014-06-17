@@ -229,6 +229,7 @@ int main()
 	loadDistanceMatrix();
 	
 	std::string strError;
+	
 	bool bIsOK = solver.solveVRP(strError);
 	
 	if(!bIsOK)
