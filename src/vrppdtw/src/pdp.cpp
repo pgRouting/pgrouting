@@ -8,18 +8,18 @@ int PickupLength=0;
 
 
 depot d;
+VehicleInfo Vehicle;
 customer c[1000];
 int len=0;
 
 
 Route r[500];
 
+
 int main()
 {
         pickup p[600];
-        scanf("%d",&VehicleCount);
-        scanf("%d",&Capacity);
-        scanf("%d",&Speed);
+        VehicleInfo Vehicle=ScanVehicle(Vehicle);
         depot d=ScanDepot(d);
         while((scanf("%d",&temp))!=EOF)
         {
@@ -43,7 +43,8 @@ int main()
 
 
         //Sort Pickup's
-        int swap1,swap2,swap3,swap4;
+        int swap;
+        double swap1;
         for(int i=1;i<=PickupLength;i++)
         {
                 for(int j=1;j<=PickupLength-i;j++)
@@ -53,30 +54,31 @@ int main()
                                 swap1=p[j].Ddist;
                                 p[j].Ddist=p[j+1].Ddist;
                                 p[j+1].Ddist=swap1;
-                                swap2=p[j].Did;
+                                swap=p[j].Did;
                                 p[j].Did=p[j+1].Did;
-                                p[j+1].Did=swap2;
-                                swap3=p[j].Pid;
+                                p[j+1].Did=swap;
+                                swap=p[j].Pid;
                                 p[j].Pid=p[j+1].Pid;
-                                p[j+1].Pid=swap3;
-                                swap4=p[j].id;
+                                p[j+1].Pid=swap;
+                                swap=p[j].id;
                                 p[j].id=p[j+1].id;
-                                p[j+1].id=swap4;
+                                p[j+1].id=swap;
                         }
                 }
                 p[i].checked=0;
         }
+       
+        int flag_complete=0,checked=0;
         //Sequential Construction 
-        for(int v=0;v<50;v++)
+        for(int v=1;v<1000;v++)
         {
-                printf("\n*********Vehicle Beginning********\n");
                 for(int i=PickupLength;i>=1;i--)
                 {
                         if(p[i].checked!=1)
                         {
                                 State S;
                                 S=r[v].append(c,p[i],d,CustomerLength,PickupLength,S);
-                                int flag=r[v].HillClimbing(c,d);
+                                int flag=r[v].HillClimbing(c,d,p[i]) ;
                                 if(flag==1)
                                 {
                                         //Remove 
@@ -85,14 +87,30 @@ int main()
                                 else
                                 {
                                         p[i].checked=1;
+                                        checked+=1;
                                 }
                         }
+                        //Requests complete
                 }
-
+                Vehicle.used_vehicles=v;
+                printf("%d, ",v+1);
                 r[v].print();
-                printf("\n*******Vehicle DOne***********\n");
-
+                if(checked==PickupLength)
+                {
+                        v=999;
+                }
         }
+        int sum=0,rts=0;
+        for(int i=1;i<=Vehicle.used_vehicles;i++)
+        {
+                sum+=r[i].dis;
+                if(r[i].dis!=0)
+                {
+                        rts+=1;
+                }
+        }
+        printf("Sum=%d  Routes=%d\n",sum,rts);
+
 
         return 0;
 }
