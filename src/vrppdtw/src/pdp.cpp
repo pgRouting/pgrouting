@@ -93,7 +93,7 @@ int main()
                         //Requests complete
                 }
                 Vehicle.used_vehicles=v;
-                printf("%d, ",v+1);
+                printf("%d, ",v);
                 r[v].print();
                 if(checked==PickupLength)
                 {
