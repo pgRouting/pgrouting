@@ -205,6 +205,8 @@ public:
 	
 	std::vector<int> getOrderVector(){return m_viOrderIds;}
 
+	void setOrderVector(std::vector<int> order_vector);
+
 	int getStartTime(int pos){if(pos >= m_viStartTime.size()) return 0; 
 								else return m_viStartTime[pos];}
 
@@ -367,7 +369,10 @@ public:
 	bool updateFinalSolution(CSolutionInfo& solutionInfo);
 	int getServiceTime(int order_id){return (m_vOrderInfos[m_mapOrderIdToIndex[order_id]].getServiceTime());}
 
-	
+	CTourInfo Hill_Climbing(CTourInfo curTour,COrderInfo curOrder);
+	double hill_climbing_cost(CTourInfo curTour,std::vector<int> order_vector);
+        bool updateTourCosts(CTourInfo& tourInfo);
+
 
 private:
 	bool m_bIsReadyToSolve;
