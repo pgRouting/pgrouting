@@ -382,7 +382,7 @@ CSolutionInfo CVRPSolver::generateInitialSolution()
 
 CTourInfo CVRPSolver::Hill_Climbing(CTourInfo curTour,COrderInfo curOrder){
 
-	std::vector<int> order_vector=cur_Tour.getOrderVector();
+	std::vector<int> order_vector=curTour.getOrderVector();
 
 	int size=order_vector.size();
 
@@ -390,8 +390,8 @@ CTourInfo CVRPSolver::Hill_Climbing(CTourInfo curTour,COrderInfo curOrder){
        if(size==0)
        {
 	       order_vector.push_back(curOrder.getOrderId());
-	       cur_Tour.setOrdervector(order_vector);
-	       return cur_Tour;
+	       curTour.setOrdervector(order_vector);
+	       return curTour;
 
        }  
 
