@@ -20,7 +20,12 @@ Windows
 
 Winnie Bot Experimental Builds: 
 
-* `PostgreSQL 9.2 32-bit, 64-bit <http://winnie.postgis.net/download/windows/pg92/buildbot/>`_
+* `PostgreSQL 9.2-9.4beta1 32-bit, 64-bit <http://postgis.net/windows_downloads>`_
+
+Production Builds:
+
+* Production builds are part of the Spatial Extensions/PostGIS Bundle available via Application StackBuilder
+* `Can also get PostGIS Bundle from <http://download.osgeo.org/postgis/windows/>`_ 
 
 
 Ubuntu/Debian
