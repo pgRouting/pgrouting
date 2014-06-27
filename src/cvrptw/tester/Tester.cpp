@@ -188,6 +188,8 @@ bool print_solution(std::string strError)
 	if(bOK == false)
 		return false;
 
+
+	int to=0;
 	int totalRoute = solution.getTourInfoVector().size();
 	CTourInfo ctour;
 
@@ -206,6 +208,7 @@ bool print_solution(std::string strError)
 
 		std::vector<int> vecOrder = ctour.getOrderVector();
 		int totalOrder = vecOrder.size();
+		to+=totalOrder;
 		fprintf(fp, "Visited Order Ids: ");
 		for(int j = 0; j < totalOrder; j++)
 		{
@@ -218,6 +221,7 @@ bool print_solution(std::string strError)
 		fprintf(fp, "\n");
 	}
 
+		fprintf(fp, "total order served %d\n", to);
 	fclose(fp);
 	return true;
 }

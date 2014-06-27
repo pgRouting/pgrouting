@@ -38,7 +38,8 @@ typedef struct
 
 typedef struct 
 { std::pair<int,int> d_o_pair;
-	CostPack cost;
+//	CostPack cost;
+	int cost;
 }pq_pair;
 
 
