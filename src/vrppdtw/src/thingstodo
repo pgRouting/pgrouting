@@ -1,5 +1,9 @@
-Refactor the code.
-Use vectors instead of arrays.
+Things done:
+Initial Solution is done.
 
-Change the HC and Sequential Construction.
+Things to do:
 
+Discuss about TABU. Read some resources. 
+Code TABU. 
+Combine everything.
+Integrate into pgRouting.
