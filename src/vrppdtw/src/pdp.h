@@ -115,7 +115,7 @@ int temp=0;
 int CustomerLength=0;
 int OrderLength=0;
 
-typedef struct cs{
+typedef struct statesave{
         int twv;
         int cv;
         int dis;
@@ -152,10 +152,6 @@ class Route
                 int HillClimbing(customer *c,depot d,Pickup p);
                 void remove(State S);
                 void print();
-
-
-
-
 };
 
 
@@ -206,7 +202,7 @@ void Route::update(customer *c,depot d)
                         }
                         dis+=c[path[i+1]].Stime;
                         load+=c[path[i+1]].demand;
-                }
+                }1
                 //Last cusotmer to depot 
                 if(i==path_length-1)
                 {
