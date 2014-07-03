@@ -8,7 +8,6 @@ int PickupLength=0;
 
 
 depot d;
-VehicleInfo Vehicle;
 customer c[1000];
 int len=0;
 
@@ -16,10 +15,14 @@ int len=0;
 Route r[500];
 
 
+
+
 int main()
 {
         pickup p[600];
-        VehicleInfo Vehicle=ScanVehicle(Vehicle);
+        scanf("%d",&VehicleCount);
+        scanf("%d",&Capacity);
+        scanf("%d",&Speed);
         depot d=ScanDepot(d);
         while((scanf("%d",&temp))!=EOF)
         {
@@ -29,7 +32,7 @@ int main()
         }
 
         //From customers put aside all the pickup's;
-        for(int i=1;i<=CustomerLength;i++)
+        for(int i=1;i<=106;i++)
         {
                 if(c[i].P==1)
                 {
@@ -40,7 +43,7 @@ int main()
                         p[PickupLength].Pid=c[i].id;
                 }
         }
-        printf("Pickup Length=%d \n",PickupLength);
+
 
         //Sort Pickup's
         int swap;
@@ -67,19 +70,15 @@ int main()
                 }
                 p[i].checked=0;
         }
-
-
-/*
-        for(int i=1;i<=PickupLength;i++)
-        {
-                printf("PickupID[%d]=%lf\n",p[i].id,p[i].Ddist);
-        }
- */
-
-
-        int flag_complete=0,checked=0;
+      /*  
+        cout << "Pickups after sorted";
+       for(int i=1;i<=PickupLength;i++)
+       {
+               printf("id= %d   Dist=%f  pick=%d  del=%d\n",p[i].id,p[i].Ddist,p[i].Pid,p[i].Did);
+       }
+       */
         //Sequential Construction 
-        for(int v=1;v<110;v++)
+        for(int v=0;v<36;v++)
         {
                 for(int i=PickupLength;i>=1;i--)
                 {
@@ -91,34 +90,20 @@ int main()
                                 if(flag==1)
                                 {
                                         //Remove 
-                                        p[i].checked=0;
                                         r[v].remove(S);
                                 }
                                 else
                                 {
                                         p[i].checked=1;
-                                        checked+=1;
                                 }
                         }
-                        //Requests complete
                 }
-                Vehicle.used_vehicles=v;
-                printf("%d, ",v);
-               r[v].print();
-  //              printf("PLen=%d  checked=%d\n",PickupLength,checked);
-                if(checked==PickupLength)
-                {
-    //                    printf(" ***********Checking Length=%d\n",checked);
-                        v=9999;
-                }
-        }
-        for(int i=1;i<=PickupLength;i++)
-        {
-//                printf("PickupID[%d]=%d\n",i,p[i].checked);
+                printf("%d, ",v+1);
+                r[v].print();
+
         }
         int sum=0,rts=0;
-        
-        for(int i=1;i<=Vehicle.used_vehicles;i++)
+        for(int i=0;i<40;i++)
         {
                 sum+=r[i].dis;
                 if(r[i].dis!=0)

@@ -2,24 +2,6 @@
 #ifndef _PDP_H
 #define _PDP_H
 
-
-#include <vector>
-#include <map>
-#include <queue>
-#include <string>
-#include <stdlib.h>
-#include <iostream>
-#include <algorithm>
-#include <math.h>
-#include <stdio.h>
-#include <string.h>
-#include <set>
-
-
-using namespace std;
-
-
-
 int VehicleCount;
 int Capacity;
 int Speed;
@@ -61,15 +43,6 @@ typedef struct Pickup{
         int Did;
         int checked;
 }pickup; 
-
-
-
-typedef struct Vehile{
-        int capacity;
-        int used_vehicles;
-        int given_vehicles;
-        int speed;
-}VehicleInfo;
 
 
 double CalculateDistance(int x1,int y1,int x2,int y2)
@@ -117,15 +90,6 @@ customer ScanCustomer(int id,customer c,depot d)
         return c;
 }
 
-VehicleInfo ScanVehicle(VehicleInfo Vehicle)
-{
-        scanf("%d",&Vehicle.given_vehicles);
-        scanf("%d",&Vehicle.capacity);
-        scanf("%d",&Vehicle.speed);
-        Vehicle.used_vehicles=0;
-        return Vehicle;
-
-}
 
 //temp variables
 int temp=0;
@@ -133,12 +97,10 @@ int temp=0;
 int CustomerLength=0;
 int OrderLength=0;
 
-typedef struct statesave{
+typedef struct cs{
         int twv;
         int cv;
         int dis;
-        //       vector<int> path;
-        //      vector<int> order;
         int path[1000];
         int order[1000];
         int path_length;
@@ -151,8 +113,6 @@ class Route
                 int twv;
                 int cv;
                 int dis;
-                //       vector<int> path;
-                //      vector<int> order;
                 int path[1000];
                 int order[1000];
                 int path_length;
@@ -168,12 +128,16 @@ class Route
                                 order[i]=0;
                         }
                 }
-                State append(customer *c, Pickup p, depot d,int CustomerLength, int PickupLength, State S);
+                State  append(customer *c, Pickup p, depot d,int CustomerLength, int PickupLength, State S);
                 void update(customer *c,depot d);
                 double cost();
                 int HillClimbing(customer *c,depot d,Pickup p);
                 void remove(State S);
                 void print();
+
+
+
+
 };
 
 
@@ -220,13 +184,7 @@ void Route::update(customer *c,depot d)
                         }
                         else if(dis>c[path[i+1]].Ltime)
                         {
-                                        if(order[i]==19 && order[i-1]==42)
-                                                printf("Here twv   babyy =%d\n",twv);
-                                         twv+=1;
-                                        if(order[i]==19 && order[i-1]==42)
-                                        {
-                                               printf("twv=%d cv=%d dis=%d \n",twv,cv,dis);
-                                        }
+                                twv+=1;
                         }
                         dis+=c[path[i+1]].Stime;
                         load+=c[path[i+1]].demand;
@@ -237,13 +195,7 @@ void Route::update(customer *c,depot d)
                         dis+=sqrt(((d.x-c[path[i]].x)*(d.x-c[path[i]].x))+((d.y-c[path[i]].y)*(d.y-c[path[i]].y)));
                         if(dis>d.Ltime)
                         {
-                                        if(order[i]==19 && order[i-1]==42)
-                                printf("Here twv  up =%d\n",twv);
                                 twv+=1;
-                                        if(order[i]==19 && order[i-1]==42)
-                                        {
-                                               printf("twv=%d cv=%d dis=%d \n",twv,cv,dis);
-                                        }
                         }
                 }
                 //Middle customers
@@ -256,13 +208,7 @@ void Route::update(customer *c,depot d)
                         }
                         else if(dis>c[path[i+1]].Ltime)
                         {
-                                        if(order[i]==19 && order[i-1]==42)
-                                printf("Here twv   down=%d\n",twv);
                                 twv+=1;
-                                        if(order[i]==19 && order[i-1]==42)
-                                        {
-                                               printf("twv=%d cv=%d dis=%d \n",twv,cv,dis);
-                                        }
                         }
                         dis+=c[path[i+1]].Stime;
                         load+=c[path[i+1]].demand;
@@ -286,8 +232,13 @@ int Route::HillClimbing(customer *c,depot d,Pickup p)
         double cost1=0,cost2=0;
         int swap=0;
         update(c,d);
+        if(twv==0 && cv==0 && dis<=d.Ltime)
+        {
+                return 0;
+        }
         cost1=cost();
 
+  //      print();
         for(int i=0;i<path_length;i++)
         {
                 for(int j=0;j<path_length;j++)
@@ -295,9 +246,6 @@ int Route::HillClimbing(customer *c,depot d,Pickup p)
                         int swap_flag=0,count_flag=0;
                         if((c[path[i]].Ltime > c[path[j]].Ltime) &&  (count_flag==0) )
                         {
-                                if(order[i-1]==32 && order[i]==45)
-                                {
-                                }
                                 swap_flag=1;
                                 count_flag=1;
                                 //Swap Path
@@ -305,46 +253,43 @@ int Route::HillClimbing(customer *c,depot d,Pickup p)
                                 path[i]=path[j];
                                 path[j]=swap;
                                 //Swap order
-
+                                
                                 swap=order[i];
                                 order[i]=order[j];
                                 order[j]=swap;
-
-                        }
-                        update(c,d);
-                        cost2=cost();
-
-                        if(cost2>cost1)
-                        {
+                                
+                       }                        
+                       update(c,d);
+                       cost2=cost();
+                       if(cost2>cost1)
+                       {
                                 if(swap_flag==1)
                                 {
-                                        //Swap Path
-                                        swap=path[i];
-                                        path[i]=path[j];
-                                        path[j]=swap;
-                                        //Swap order
-
-                                        swap=order[i];
-                                        order[i]=order[j];
-                                        order[j]=swap;
-                                        update(c,d);
-                                        if(order[i]==19 && order[i-1]==42)
-                                        {
-                                                print();
-                                             printf("twv=%d cv=%d dis=%d \n",twv,cv,dis);
-                                        }
+                                //Swap Path
+                                swap=path[i];
+                                path[i]=path[j];
+                                path[j]=swap;
+                                //Swap order                                
+                                swap=order[i];
+                                order[i]=order[j];
+                                order[j]=swap;
+                                update(c,d);
                                 }
-                        }
+                        }          
                 }
         }
-        update(c,d);
+                       update(c,d);
+            /*           printf("\nPrint starts\n");
+                       printf("twv=%d  cv=%d dis=%d\n",twv,cv,dis);
+                       print();
+                       if(dis==1162 && twv==0 &&  cv==0)
+                       {
+                               printf("****************Here I am Bitch *************\n");
+                       }
+                       printf("Print Done\n");
+             */
         if(twv>0 || cv>0 || dis> d.Ltime)
         {
-                if(p.id==19) 
-                {
-                                                print();
-                        printf("Maniiii        dis=%d twv=%d  cv=%d\n",dis,twv,cv);
-                }
                 return 1;
         }
         return 0;
@@ -353,16 +298,16 @@ int Route::HillClimbing(customer *c,depot d,Pickup p)
 
 void Route::print()
 {
-        printf("%d ",dis);
-        printf("%d ",twv);
-        printf("%d ",cv);
-        printf("[");
+        printf("dis=%d ",dis);
+        printf("TWV=%d ",twv);
+        printf("cv=%d ",cv);
+        printf("Path [");
         for(int i=0;i<path_length;i++)
         {
                 printf("%d ",path[i]);
         }
-        printf("] ");
-        printf("[");
+        printf("]");
+        printf(" Order [");
         for(int i=0;i<path_length;i++)
         {
                 printf("%d ",order[i]);
