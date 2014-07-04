@@ -1,59 +1,59 @@
-Total Number of Route: 20
-Total Cost: 2640.594
-Total Distance: 2640.594
-Total TravelTime: 4104.592
+Total Number of Route: 21
+Total Cost: 2694.445
+Total Distance: 2694.445
+Total TravelTime: 4237.518
 Route No. 1: 
-Vehicle Id: 19
+Vehicle Id: 17
 Starting Depot Id: 1
 End Depot Id: 1
 Visited Order Ids: 66, 73, 45, 39, 42, 38, 36, 94
 Route No. 2: 
-Vehicle Id: 7
+Vehicle Id: 2
 Starting Depot Id: 1
 End Depot Id: 1
 Visited Order Ids: 93, 96, 64, 68, 95, 51, 92, 81
 Route No. 3: 
-Vehicle Id: 17
+Vehicle Id: 11
 Starting Depot Id: 1
 End Depot Id: 1
 Visited Order Ids: 43, 40, 37, 41, 4, 56, 71
 Route No. 4: 
-Vehicle Id: 12
+Vehicle Id: 18
 Starting Depot Id: 1
 End Depot Id: 1
 Visited Order Ids: 84, 70, 62, 82, 44, 101
 Route No. 5: 
+Vehicle Id: 25
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 46, 3, 89, 91, 21, 25
+Route No. 6: 
+Vehicle Id: 20
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 83, 99, 17, 10, 98, 59
+Route No. 7: 
+Vehicle Id: 8
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 12, 74, 80, 47, 5, 2
+Route No. 8: 
 Vehicle Id: 10
 Starting Depot Id: 1
 End Depot Id: 1
 Visited Order Ids: 15, 60, 76, 11, 14
-Route No. 6: 
-Vehicle Id: 9
-Starting Depot Id: 1
-End Depot Id: 1
-Visited Order Ids: 46, 3, 89, 91, 21, 25
-Route No. 7: 
-Vehicle Id: 5
-Starting Depot Id: 1
-End Depot Id: 1
-Visited Order Ids: 6, 13, 79, 67
-Route No. 8: 
-Vehicle Id: 3
-Starting Depot Id: 1
-End Depot Id: 1
-Visited Order Ids: 83, 99, 17, 10, 98, 59
 Route No. 9: 
-Vehicle Id: 2
+Vehicle Id: 3
 Starting Depot Id: 1
 End Depot Id: 1
 Visited Order Ids: 48, 16, 100, 87, 57
 Route No. 10: 
-Vehicle Id: 20
+Vehicle Id: 12
 Starting Depot Id: 1
 End Depot Id: 1
 Visited Order Ids: 34, 32, 28, 35, 27
 Route No. 11: 
-Vehicle Id: 1
+Vehicle Id: 24
 Starting Depot Id: 1
 End Depot Id: 1
 Visited Order Ids: 63, 65, 52, 85, 97
@@ -63,43 +63,48 @@ Starting Depot Id: 1
 End Depot Id: 1
 Visited Order Ids: 53, 24, 19, 50, 75
 Route No. 13: 
-Vehicle Id: 14
-Starting Depot Id: 1
-End Depot Id: 1
-Visited Order Ids: 12, 74, 80, 47, 5, 2
-Route No. 14: 
-Vehicle Id: 11
+Vehicle Id: 13
 Starting Depot Id: 1
 End Depot Id: 1
 Visited Order Ids: 29, 30, 31, 33, 90
+Route No. 14: 
+Vehicle Id: 22
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 6, 13, 79, 67
 Route No. 15: 
-Vehicle Id: 6
-Starting Depot Id: 1
-End Depot Id: 1
-Visited Order Ids: 72, 86, 55
-Route No. 16: 
-Vehicle Id: 18
-Starting Depot Id: 1
-End Depot Id: 1
-Visited Order Ids: 22, 77, 69
-Route No. 17: 
-Vehicle Id: 8
+Vehicle Id: 4
 Starting Depot Id: 1
 End Depot Id: 1
 Visited Order Ids: 20, 88, 18, 61
-Route No. 18: 
+Route No. 16: 
 Vehicle Id: 16
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 72, 86, 55
+Route No. 17: 
+Vehicle Id: 14
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 22, 77, 69
+Route No. 18: 
+Vehicle Id: 19
 Starting Depot Id: 1
 End Depot Id: 1
 Visited Order Ids: 8, 9, 7
 Route No. 19: 
-Vehicle Id: 4
+Vehicle Id: 9
 Starting Depot Id: 1
 End Depot Id: 1
 Visited Order Ids: 54, 78, 26
 Route No. 20: 
-Vehicle Id: 13
+Vehicle Id: 5
 Starting Depot Id: 1
 End Depot Id: 1
 Visited Order Ids: 23, 49
-total order served 99
+Route No. 21: 
+Vehicle Id: 26
+Starting Depot Id: 1
+End Depot Id: 1
+Visited Order Ids: 58
+total order served 100

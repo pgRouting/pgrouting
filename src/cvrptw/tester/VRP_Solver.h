@@ -370,11 +370,12 @@ public:
 	bool updateFinalSolution(CSolutionInfo& solutionInfo);
 	int getServiceTime(int order_id){return (m_vOrderInfos[m_mapOrderIdToIndex[order_id]].getServiceTime());}
 
+	CTourInfo Modified_Hill_Climbing(CTourInfo curTour,COrderInfo curOrder);
 	CTourInfo Hill_Climbing(CTourInfo curTour,COrderInfo curOrder);
 	double hill_climbing_cost(CTourInfo curTour,std::vector<int> order_vector);
         bool updateTourCosts(CTourInfo& tourInfo);
 
-
+        CSolutionInfo Reduce_Vehicles(CSolutionInfo InitialSolution);
 private:
 	bool m_bIsReadyToSolve;
 	std::vector<CVehicleInfo> m_vVehicleInfos;

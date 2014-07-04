@@ -295,10 +295,112 @@ bool CVRPSolver::solveVRP(std::string& strError)
 		PGR_LOG("After Generate initial Solution");
 
 	m_bIsSolutionReady = true;
-        m_solutionFinal = initialSolution;
+        m_solutionFinal = Reduce_Vehicles(initialSolution);
 
 	return true;
 	
+}
+
+
+
+CSolutionInfo CVRPSolver::Reduce_Vehicles(CSolutionInfo InitialSolution)
+{
+  
+     std::vector<CTourInfo> Tour_Vector=InitialSolution.getTourInfoVector();
+
+     int count=Tour_Vector.size();
+
+     for(int i=0;i<count;i++)                                // sort the tours in descending order of their orders served
+     {
+	     for(int j=0;j<count-1;j++)
+	     {
+		     if(Tour_Vector[j].getServedOrderCount()<Tour_Vector[j+1].getServedOrderCount())
+		     {
+			     CTourInfo temp;
+			     temp=Tour_Vector[j];
+			     Tour_Vector[j]=Tour_Vector[j+1];                                                
+			     Tour_Vector[j+1]=temp;
+		     }
+	     }
+     }
+      
+
+    int start=0,end=count-1;
+    bool possible=true;
+
+    int c=10000;
+    while(end>Tour_Vector.size()/2)
+    {
+	    CTourInfo end_tour=Tour_Vector[end];
+
+	    std::vector<int>end_order= end_tour.getOrderVector();
+
+	    while(!end_order.empty() && start<end)
+	    {
+	    CTourInfo start_tour=Tour_Vector[start];
+	    
+            
+	    for(int i=0;i<end_order.size();i++)
+	    {
+                  int orderInd = m_mapOrderIdToIndex[end_order[i]];
+                  COrderInfo order= m_vOrderInfos[orderInd];
+		  start_tour=Modified_Hill_Climbing(start_tour,order);
+
+		  if(updateTourCosts(start_tour))
+		  {
+			  Tour_Vector[start]=start_tour;
+			  end_order.erase(end_order.begin()+i);
+                          printf("here ");			 
+		  }
+				  				  
+	    }
+	    start++;
+	    
+
+	    }
+
+           if(end_order.empty())
+	   {
+                  Tour_Vector.erase(Tour_Vector.begin() + end);
+		  end--;
+		  start=0;
+	   }
+	   else
+	   {
+		   end_tour.setOrderVector(end_order);
+                   bool yes=updateTourCosts(end_tour);
+		   Tour_Vector[end]=end_tour;
+		   end--;
+		   start=0;
+
+	   }
+
+    }  
+
+
+	CSolutionInfo NewSolution;
+
+	std::vector<int> vecOrders, vecVehicles;
+	for(int i = 0; i < m_vOrderInfos.size(); i++)
+	{
+		vecOrders.push_back(m_vOrderInfos[i].getOrderId());
+	}
+
+	for(int i = 0; i < m_vVehicleInfos.size(); i++)
+	{
+		vecVehicles.push_back(m_vVehicleInfos[i].getId());
+	}
+
+	NewSolution.init(vecOrders, vecOrders.size(), vecVehicles,do_pq);
+
+	for(int i=0;i<Tour_Vector.size();i++)
+	{
+                     NewSolution.addTour(Tour_Vector[i]);
+	}
+ 
+
+	return NewSolution;
+
 }
 
 CSolutionInfo CVRPSolver::generateInitialSolution()
@@ -389,6 +491,64 @@ CSolutionInfo CVRPSolver::generateInitialSolution()
 }
 
 
+CTourInfo CVRPSolver::Modified_Hill_Climbing(CTourInfo curTour,COrderInfo curOrder){
+
+	std::vector<int> order_vector=curTour.getOrderVector();
+
+	int size=order_vector.size();
+
+
+       if(size==0)
+       {
+	       order_vector.push_back(curOrder.getOrderId());
+	       curTour.setOrderVector(order_vector);
+	       return curTour;
+
+       }  
+
+       else
+       {
+
+	       order_vector.push_back(curOrder.getOrderId());
+	       size=order_vector.size();
+	for(int i=0;i<size-1 ;i++)
+	{
+		int flag=0;
+		for(int j=i+1;j<size;j++)
+		{
+			//double cost1=hill_climbing_cost(curTour,order_vector);
+                      
+			if( m_vOrderInfos[m_mapOrderIdToIndex[order_vector[i]]].getCloseTime() >  m_vOrderInfos[m_mapOrderIdToIndex[order_vector[j]]].getCloseTime())
+		{
+				std::vector<int> temp_order_vector=order_vector;
+
+				int temp=temp_order_vector[i];
+				temp_order_vector[i]=temp_order_vector[j];
+				temp_order_vector[j]=temp_order_vector[i];
+			//	double cost2=hill_climbing_cost(curTour,temp_order_vector);
+
+			//	if(cost2-cost1 <0)
+				{
+					order_vector=temp_order_vector;
+					flag=1;
+				}
+		
+            	}
+	// 	if(flag==0)
+	//		break;
+		}
+          		
+	}
+        curTour.setOrderVector(order_vector);
+        return curTour;	
+
+       }
+	
+
+}
+
+
+
 CTourInfo CVRPSolver::Hill_Climbing(CTourInfo curTour,COrderInfo curOrder){
 
 	std::vector<int> order_vector=curTour.getOrderVector();
@@ -444,6 +604,9 @@ CTourInfo CVRPSolver::Hill_Climbing(CTourInfo curTour,COrderInfo curOrder){
 	
 
 }
+
+
+
 
 double CVRPSolver::hill_climbing_cost(CTourInfo curTour,std::vector<int> order_vector)
 {
