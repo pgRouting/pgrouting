@@ -117,7 +117,7 @@ customer ScanCustomer(int id,customer c,depot d)
         return c;
 }
 
-VehicleInfo ScanVehicle(VehicleInfo Vehicle)
+VehicleInfo ScanVehicle(VehicleInf Vehicle)
 {
         scanf("%d",&Vehicle.given_vehicles);
         scanf("%d",&Vehicle.capacity);
