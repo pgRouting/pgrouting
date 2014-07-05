@@ -324,7 +324,7 @@ int Route::HillClimbing(customer *c,depot d,Pickup p)
         for(int i=0;i<path_length;i++)
         {
                 path[i]=temp[i];
-                tempo[i]=order[path_length-i-1];
+                order[i]=tempo[i];
         }
         update(c,d);
         if(twv>0 || cv>0 || dis> d.Ltime)
