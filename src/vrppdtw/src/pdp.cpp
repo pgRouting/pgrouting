@@ -12,9 +12,7 @@ VehicleInfo Vehicle;
 customer c[1000];
 int len=0;
 
-
 Route r[500];
-
 
 int main()
 {

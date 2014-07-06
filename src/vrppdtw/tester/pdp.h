@@ -69,6 +69,7 @@ typedef struct Vehile{
         int used_vehicles;
         int given_vehicles;
         int speed;
+        double cost;
 }VehicleInfo;
 
 
@@ -260,7 +261,7 @@ void Route::update(customer *c,depot d)
 
 double Route::cost()
 {
-        return (0.2*dis)+(0.7*twv)+(0.1*cv);
+        return (0.3*dis)+(0.5*twv)+(0.2*cv);
 }
 
 int Route::HillClimbing(customer *c,depot d,Pickup p)
@@ -327,6 +328,11 @@ int Route::HillClimbing(customer *c,depot d,Pickup p)
                 order[i]=tempo[i];
         }
         update(c,d);
+       /* 
+        printf("\n ");
+        print();
+        printf("\n");
+        */
         if(twv>0 || cv>0 || dis> d.Ltime)
         {
                 return 1;
@@ -340,6 +346,7 @@ void Route::print()
         printf("%d ",dis);
         printf("%d ",twv);
         printf("%d ",cv);
+        printf("%lf ",cost());
         printf("[");
         for(int i=0;i<path_length;i++)
         {
