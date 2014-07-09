@@ -295,8 +295,10 @@ bool CVRPSolver::solveVRP(std::string& strError)
 		PGR_LOG("After Generate initial Solution");
 
 	m_bIsSolutionReady = true;
-        m_solutionFinal = Reduce_Vehicles(initialSolution);
-
+//        m_solutionFinal = Reduce_Vehicles(initialSolution);
+//	m_solutionFinal=Tabu_Search(m_solutionFinal);
+       m_solutionFinal=Tabu_Search(initialSolution);
+       m_solutionFinal=Reduce_Vehicles(m_solutionFinal);
 	return true;
 	
 }
@@ -491,6 +493,194 @@ CSolutionInfo CVRPSolver::generateInitialSolution()
 }
 
 
+CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
+{
+     CSolutionInfo BestSolution=InitialSolution;
+     int count=100000;
+     while(count--)
+     {  
+	
+	std::vector<CTourInfo> TourVector=BestSolution.getTourInfoVector();
+	int tour_size=TourVector.size();
+	int t1,t2;
+	t1=rand()%tour_size;
+	t2=rand()%tour_size;
+	while(t1==t2)
+	{
+            t2=rand()%tour_size;
+	}
+
+
+	CTourInfo tour1=TourVector[t1];
+	CTourInfo tour2=TourVector[t2];
+
+       std::vector<int> order1=tour1.getOrderVector();
+       std::vector<int> order2=tour2.getOrderVector();
+       int id1,id2;
+       double min=100000000.00;
+
+       for(int i=0;i<order1.size();i++)
+       {
+		for(int j=0;j<order2.size();j++)
+	       {
+		     CostPack  cPack = getOrderToOrderCost(order1[i], order2[j]);
+
+		     if(cPack.cost<min)
+		     {
+			     min=cPack.cost; id1=i;id2=j;
+
+		     }
+			 cPack = getOrderToOrderCost(order1[j], order2[i]);
+		      if(cPack.cost<min)
+		      {
+			      min=cPack.cost;id1=i;id2=j;
+		      }
+
+	        }
+       }
+       int flag=0;
+       std::vector<int> temp;
+       CMoveInfo Move;
+       Move.setInitialTour(tour1,tour2);
+
+       if(flag==0)
+       {
+	       temp=order1;
+	       temp.insert(temp.begin()+id1,order2[id2]);
+	       tour1.setOrderVector(temp);
+	       if(updateTourCosts(tour1))
+	       {
+		       order2.erase(order2.begin()+id2);
+		       tour2.setOrderVector(order2);
+		       if(updateTourCosts(tour2))
+		       {
+		       TourVector[t1]=tour1;
+		       TourVector[t2]=tour2;
+		       flag=1;
+		       }
+
+	       }
+	       else{
+		       tour1=TourVector[t1];
+	       }
+		       
+       }
+       else if(flag==0)
+       {
+
+	       temp=order1;
+	       temp.insert(temp.begin()+id1+1,order2[id2]);
+	       tour1.setOrderVector(temp);
+	       if(updateTourCosts(tour1))
+	       {
+		       order2.erase(order2.begin()+id2);
+		       tour2.setOrderVector(order2);
+		       if(updateTourCosts(tour2))
+		       {
+		       TourVector[t1]=tour1;
+		       TourVector[t2]=tour2;
+		       flag=1;
+		       }
+
+	       }
+	       else{
+		       tour1=TourVector[t1];
+	       }
+	 }
+       else if(flag==0)
+       {
+
+	       temp=order2;
+	       temp.insert(temp.begin()+id2,order1[id1]);
+	       tour2.setOrderVector(temp);
+	       if(updateTourCosts(tour2))
+	       {
+		       order1.erase(order1.begin()+id1);
+		       tour1.setOrderVector(order1);
+		       if(updateTourCosts(tour1))
+		       {
+		       TourVector[t1]=tour1;
+		       TourVector[t2]=tour2;
+		       flag=1;
+		       }
+
+	       }
+	       else{
+		       tour2=TourVector[t2];
+	       }
+		       
+
+       }
+       else if(flag==0)
+       {
+
+	       temp=order2;
+	       temp.insert(temp.begin()+id2+1,order1[id1]);
+	       tour2.setOrderVector(temp);
+	       if(updateTourCosts(tour2))
+	       {
+		       order1.erase(order1.begin()+id1);
+		       tour1.setOrderVector(order1);
+		       if(updateTourCosts(tour1))
+		       {
+		       TourVector[t1]=tour1;
+		       TourVector[t2]=tour2;
+		       flag=1;
+		       }
+
+	       }
+	       else{
+		       tour2=TourVector[t2];
+	       }
+		       
+       }
+
+       
+
+       if(flag==1)
+       {
+        
+	Move.setModifiedTour(tour1,tour2);
+	CSolutionInfo NewSolution;
+
+	std::vector<int> vecOrders, vecVehicles;
+	for(int i = 0; i < m_vOrderInfos.size(); i++)
+	{
+		vecOrders.push_back(m_vOrderInfos[i].getOrderId());
+	}
+
+	for(int i = 0; i < m_vVehicleInfos.size(); i++)
+	{
+		vecVehicles.push_back(m_vVehicleInfos[i].getId());
+	}
+
+	NewSolution.init(vecOrders, vecOrders.size(), vecVehicles,do_pq);
+
+	for(int i=0;i<TourVector.size();i++)
+	{
+                     NewSolution.addTour(TourVector[i]);
+	}
+
+	if(NewSolution.getTotalTravelTime()< BestSolution.getTotalTravelTime())
+	{
+              if(!isTabuMove(Move))
+	      {
+		BestSolution=NewSolution;
+		
+		  m_veMoves.push_back(Move);
+
+		  if( m_veMoves.size()>30)
+			   m_veMoves.erase( m_veMoves.begin());
+	      }
+	}
+
+       }
+
+
+    }
+     return BestSolution;
+}
+
 CTourInfo CVRPSolver::Modified_Hill_Climbing(CTourInfo curTour,COrderInfo curOrder){
 
 	std::vector<int> order_vector=curTour.getOrderVector();
@@ -518,7 +708,7 @@ CTourInfo CVRPSolver::Modified_Hill_Climbing(CTourInfo curTour,COrderInfo curOrd
 		{
 			//double cost1=hill_climbing_cost(curTour,order_vector);
                       
-			if( m_vOrderInfos[m_mapOrderIdToIndex[order_vector[i]]].getCloseTime() >  m_vOrderInfos[m_mapOrderIdToIndex[order_vector[j]]].getCloseTime())
+//			if( m_vOrderInfos[m_mapOrderIdToIndex[order_vector[i]]].getCloseTime() >  m_vOrderInfos[m_mapOrderIdToIndex[order_vector[j]]].getCloseTime())
 		{
 				std::vector<int> temp_order_vector=order_vector;
 
@@ -934,4 +1124,16 @@ CostPack CVRPSolver::getOrderToDepotCost(int depotId, int orderId)
 }
 
 
+bool CVRPSolver::isTabuMove(CMoveInfo& curMove)
 
+{
+
+	int i, tot = m_veMoves.size();
+	for(i = 0; i < tot; i++)
+	{
+	if(curMove == m_veMoves[i])
+		return true;
+	}
+	return false;
+
+}

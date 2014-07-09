@@ -274,7 +274,7 @@ public:
 	bool init(std::vector<int> vecOrder, int iTotalOrder, std::vector<int> vecVehicle,std::priority_queue<pq_pair,std::vector<pq_pair>,Compare> pq);
 	
 	std::vector<CTourInfo> getTourInfoVector(){return m_vtourAll;}
-	
+        void setTourInfoVector(std::vector<CTourInfo> TourVector){m_vtourAll=TourVector;};	
 	//CTourInfo( CTourInfo const& );
 	//CTourInfo& operator = (const CTourInfo& solution);
 	
@@ -374,7 +374,8 @@ public:
 	CTourInfo Hill_Climbing(CTourInfo curTour,COrderInfo curOrder);
 	double hill_climbing_cost(CTourInfo curTour,std::vector<int> order_vector);
         bool updateTourCosts(CTourInfo& tourInfo);
-
+        bool isTabuMove(CMoveInfo& curMove);
+        CSolutionInfo Tabu_Search(CSolutionInfo InitialSolution);
         CSolutionInfo Reduce_Vehicles(CSolutionInfo InitialSolution);
 private:
 	bool m_bIsReadyToSolve;
