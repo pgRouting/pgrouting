@@ -134,8 +134,7 @@ int find_vrp_solution(vrp_vehicles_t *vehicles, int vehicle_count,
 		loadDistanceMatrix(costmatrix, cost_count, depot_id);
 		PGR_LOG("After load distance matrix");
 		res = solver.solveVRP(strError);
-		PGR_LOG("After VRP Solve");
-	
+		PGR_LOG("After VRP Solve");	
 	}
 	catch(std::exception& e) {
 		*err_msg = (char *) e.what();

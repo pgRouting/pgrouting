@@ -1,0 +1,42 @@
+1.generate intial solution 
+2. S= S0
+3. CBest = S.getCost()
+4. t_list.clear()
+5. n=0 
+6. while(1)
+{
+        S= S.getBestofNeighborhood;
+        if(!S)
+                break;
+        if(S.getCost() < CBest)
+               {
+                       SBest=S;
+                       CBest = S.getCost();
+               }
+        T.push_back(S);
+        n++;
+        if(n>maxter)
+        {
+                break;
+        }
+}
+7.report(CBest, SBest);
+
+
+
+A few things to remember :
+
+PSC(pure saving cost) :
+PSC(R1,R2) = R1.Cost()+R2.Cost()-R1P.Cost()-R2PCost()
+
+BIAS ROUTE SAVING COST(BRSC):
+BRSC(R1P,R2P)= PSC(R1,R2)+ P/(N1/2) + P/(N2/2)
+
+
+Neighborhoods::
+SPI ::   
+SBR ::
+WRI ::
+ 
+
+We'll use hilclimbing in the middle Which tries to reorder the customers. 
