@@ -1,0 +1,76 @@
+class TMove { 
+        public: 
+                int moveType; 
+                int oid1; 
+                int oid2; 
+                int rid1; 
+                int rid2; 
+                double savings; 
+
+                TMove() { 
+                        moveType = -1; // 0-SPI, 1-SBR, 2=WRI 
+                        oid1 = -1; 
+                        oid2 = -1; 
+                        rid1 = -1; 
+                        rid2 = -1; 
+                        savings = 0; 
+                }; 
+
+                inline void dump() { 
+                        std::cout << "TMove: type: " << moveType 
+                                << ", oid1: " << oid1 
+                                << ", oid2: " << oid2 
+                                << ", rid1: " << rid1 
+                                << ", rid2: " << rid2 << std::endl; 
+                }; 
+
+}; 
+
+inline bool operator==(const TMove& a, const TMove& b) { 
+        return a.moveType == b.moveType && 
+                a.oid1 == b.oid1 && a.oid2 == b.oid2 && 
+                a.rid1 == b.rid1 && a.rid2 == b.rid2; 
+}; 
+I use the operator with std::find to search the Tabulist for a move
+And this is what I'm thinking I will use for my solver:
+Solution TabuSearch::solve() { 
+
+        T.clear(); // clear the Tabu list 
+        int iter = 0; // init the iteration counter 
+        int maxIter = 1000; 
+        int tabuLength = std::max(30, (int)S.P.O.size()); 
+
+        // get the average time window length 
+        double atwl = S.P.atwl; 
+
+        while (iter++ < maxIter) { 
+                int ok1 = 0; 
+                int ok3 = 0; 
+                double ardl = S.getAverageRouteDurationLength(); 
+                if (atwl/ardl > 0.25) { 
+                        ok1 = doSPI(); 
+                        if (ok1) { 
+                                for (int i=0; i<S.P.O.size(); i++) { 
+                                        int ok2 = doWRI(); 
+                                        if (!ok2) break; 
+                                } 
+                        } 
+                } 
+                else if (atwl/ardl < 0.25) { 
+                        ok1 = doSPI(); 
+                        if (ok1) { 
+                                for (int i=0; i<S.P.O.size(); i++) { 
+                                        int ok2 = doWRI(); 
+                                        if (!ok2) break; 
+                                } 
+                        } 
+                } 
+
+                if (!ok1) 
+                        ok3 = doSBR(); 
+
+                if (!ok3) break; 
+        } 
+
+        return Best; 
+} 

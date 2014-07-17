@@ -64,12 +64,12 @@ typedef struct Pickup{
 
 
 
-typedef struct Vehile{
+typedef struct Vehicle{
         int capacity;
         int used_vehicles;
         int given_vehicles;
         int speed;
-        double cost;
+        int cost;
 }VehicleInfo;
 
 

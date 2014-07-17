@@ -1,0 +1,204 @@
+#ifndef ROUTE_H 
+#define ROUTE_H 
+
+#include <stdexcept> 
+#include <algorithm> 
+#include <iostream> 
+#include <fstream> 
+#include <sstream> 
+#include <string> 
+#include <vector> 
+#include <math.h> 
+
+class Solution;     // forward reference 
+
+#include "Order.h" 
+#include "Problem.h" 
+
+class Route { 
+        public: 
+                int rid; 
+
+                Problem& P; 
+
+                std::vector<int> path;      // node ids along the path 
+                std::vector<int> orders;    // order ids associated with the nodes 
+                //    std::vector<int> capacity;  // capacity after node is loaded 
+                //    std::vector<double> pdist;  // distance at node max(arrival time, tw_open) 
+                bool updated; 
+                int D;      // duration 
+                int TWV;    // TW violations 
+                int CV;     // capacity violations 
+                double cost; 
+
+                Route(Problem& p); 
+
+                // ~Route() {}; 
+
+                Route &operator = (const Route &r) { P = r.P; return *this; } 
+
+                void update(); 
+
+                double getCost(); 
+
+                void addOrder(const Order &o); 
+
+                void removeOrder(const Order &o); 
+
+                int addPickup(const Order &o); 
+
+                void addDelivery(const Order &o); 
+
+                void hillClimbOpt(); 
+
+                void dump(); 
+}; 
+
+#endif 
+#ifndef SOLUTION_H 
+#define SOLUTION_H 
+
+#include <vector> 
+#include <cmath> 
+
+#include "Problem.h" 
+#include "Route.h" 
+
+const double EPSILON = 0.001; 
+
+class Solution { 
+        public: 
+                Problem& P; 
+                std::vector<Route> R; 
+                std::vector<int> mapOtoR; 
+                double totalDistance; 
+                double totalCost; 
+
+                Solution(Problem& p) : P(p) { 
+                        totalDistance = 0; 
+                        totalCost = 0; 
+                        mapOtoR.clear(); 
+                        mapOtoR.resize(P.O.size()); 
+                        for (int i=0; i<P.O.size(); i++) 
+                                mapOtoR[i] = -1; 
+                        R.clear(); 
+                }; 
+
+                void dump(); 
+
+                void sequentialConstruction(); 
+
+                void computeCosts(); 
+
+                double getCost(); 
+
+                double getDistance(); 
+
+                double getAverageRouteDurationLength(); 
+
+                bool operator == (Solution &another) const { 
+                        return R.size() == another.R.size() && 
+                                abs(totalCost - another.totalCost) < EPSILON; 
+                }; 
+
+                bool operator <  (Solution &another) const { 
+                        return R.size() < another.R.size() || totalCost < another.totalCost; 
+                }; 
+
+}; 
+
+#endif 
+#ifndef TABUSEARCH 
+#define TABUSEARCH 
+
+#include <stdexcept> 
+#include <limits> 
+#include <algorithm> 
+#include <iostream> 
+#include <fstream> 
+#include <sstream> 
+#include <string> 
+#include <vector> 
+
+#include "TMove.h" 
+#include "Solution.h" 
+
+class TabuSearch { 
+        public: 
+                // variables for Tabu Search 
+                Solution S; 
+                Solution Best; 
+
+                std::vector<TMove> T; 
+                TMove bestMove; 
+                double bestCost; 
+
+                TabuSearch(Solution &s) : S(s), Best(s) { 
+                        bestCost = Best.getCost();   //cost of the best 
+                }; 
+
+                Solution solve(); 
+
+                int doSPI(); 
+
+                int doSBR(); 
+
+                int doWRI(); 
+
+                double getAverageRouteDurationLength(); 
+
+                void applyMove(TMove& m); 
+
+                bool isMoveTabu(TMove& m); 
+
+                void dumpTabu() { 
+                        std::cout << "Tabu List:" << std::endl; 
+                        for (int i=0; i<T.size(); i++) { 
+                                std::cout << "  "; 
+                                T[i].dump(); 
+                        } 
+                }; 
+
+}; 
+
+#endif 
+#ifndef TMOVE_H 
+#define TMOVE_H 
+
+class TMove { 
+        public: 
+                int moveType; 
+                int oid1; 
+                int oid2; 
+                int rid1; 
+                int rid2; 
+                double savings; 
+
+                TMove() { 
+                        moveType = -1; // 0-SPI, 1-SBR, 2=WRI 
+                        oid1 = -1; 
+                        oid2 = -1; 
+                        rid1 = -1; 
+                        rid2 = -1; 
+                        savings = 0; 
+                }; 
+
+                inline void dump() { 
+                        std::cout << "TMove: type: " << moveType 
+                                << ", oid1: " << oid1 
+                                << ", oid2: " << oid2 
+                                << ", rid1: " << rid1 
+                                << ", rid2: " << rid2 << std::endl; 
+                }; 
+
+}; 
+
+inline bool operator==(const TMove& a, const TMove& b) { 
+        return a.moveType == b.moveType && 
+                a.oid1 == b.oid1 && a.oid2 == b.oid2 && 
+                a.rid1 == b.rid1 && a.rid2 == b.rid2; 
+}; 
+
+#endif 
+me:  Okay sir
+Lots of implementation differences. I should

@@ -101,30 +101,30 @@ int main()
                         //Requests complete
                 }
                 Vehicle.used_vehicles=v;
-                printf("%d, ",v);
-               r[v].print();
-  //              printf("PLen=%d  checked=%d\n",PickupLength,checked);
+         //      r[v].print();
                 if(checked==PickupLength)
                 {
-    //                    printf(" ***********Checking Length=%d\n",checked);
                         v=9999;
                 }
-        }
-        for(int i=1;i<=PickupLength;i++)
-        {
-//                printf("PickupID[%d]=%d\n",i,p[i].checked);
         }
         int sum=0,rts=0;
         
         for(int i=1;i<=Vehicle.used_vehicles;i++)
         {
+                printf("%d, ",i);
+                r[i].print();
                 sum+=r[i].dis;
                 if(r[i].dis!=0)
                 {
                         rts+=1;
                 }
+                Vehicle.cost=sum;
         }
         printf("Sum=%d  Routes=%d\n",sum,rts);
+
+
+        //Starting Neighborhoods
+        printf("\nNeighborhoods From now\n");
 
 
         return 0;
