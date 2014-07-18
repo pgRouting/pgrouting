@@ -14,7 +14,7 @@ export PGUSER=postgres
 
 
 #export PROJECTS=/c/ming${OS_BUILD}/projects
-if [[ "${GCC_TYPE}" == "gcc48" ]] ; then
+if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	export PROJECTS=/projects
 	export PATHOLD=$PATH
 	export PGPATH=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}
@@ -23,7 +23,7 @@ if [[ "${GCC_TYPE}" == "gcc48" ]] ; then
 	export PATHOLD="/mingw/bin:/mingw/include:/c/Windows/system32:/c/Windows"
 	export PGWINVER=${PG_VER}w${OS_BUILD}${GCC_TYPE}edb
 	export PATH="${PATHOLD}:${PGPATH}/bin:${PGPATH}/lib:${PGPATH}/include"
-	export PATH="${PROJECTS}/rel-libiconv-1.13.1w${OS_BUILD}/include:${PATH}"
+	export PATH="${PROJECTS}/rel-libiconv-1.13.1w${OS_BUILD}${GCC_TYPE}/include:${PATH}"
 	GMP_VER=5.1.2
 	MPFR_VER=3.1.2
 	CGAL_VER=4.2
@@ -52,7 +52,7 @@ if [[ "${GCC_TYPE}" == "gcc48" ]] ; then
 	cd build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 	cmake -G "MSYS Makefiles" -DWITH_DD=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DBOOST_ROOT:PATH=${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE} -DCGAL_ROOT:PATH=${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE} -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include"  ../branches/${PGROUTING_VER}
 else 
-	export PROJECTS=/c/jenkins
+	export PROJECTS=/projects
 	#alias cmake="/c/ming${OS_BUILD}/cmake-2.8.10.2-win32-x86/bin/cmake"
 	
 	export PGPATH=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}

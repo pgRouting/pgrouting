@@ -2,7 +2,7 @@
 
 ## STATUS
 
-The *master* branch reflects our current 2.0.0 release. iPost 2.0.0 development will happen in the *develop* branch. The 2.0 release is not backwards compatible with the 1.x releases because we have totally restructured the API and the source code to position the product for additional future growth. Once you see all the new functionality that we have added and the simplier API design we think you will be very happy with the results.
+The *master* branch reflects our current 2.0.0 release. Post 2.0.0 development will happen in the *develop* branch. The 2.0 release is not backwards compatible with the 1.x releases because we have totally restructured the API and the source code to position the product for additional future growth. Once you see all the new functionality that we have added and the simplier API design we thing you will be very happy with the results.
 
 ## LINKS
 

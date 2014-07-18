@@ -102,7 +102,7 @@ BEGIN
 
 
   BEGIN
-    RAISE DEBUG 'Cheking % exists',edge_table;
+    RAISE DEBUG 'Checking % exists',edge_table;
     execute 'select * from pgr_getTableName('||quote_literal(edge_table)||')' into naming;
     sname=naming.sname;
     tname=naming.tname;
@@ -200,7 +200,7 @@ BEGIN
 
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',idname,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',idname,tabname;
       if (pgr_isColumnIndexed(tabname,idname)) then 
 	RAISE DEBUG '  ------>OK';
       else 
@@ -213,7 +213,7 @@ BEGIN
     END;
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',sourcename,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',sourcename,tabname;
       if (pgr_isColumnIndexed(tabname,sourcename)) then 
 	RAISE DEBUG '  ------>OK';
       else 
@@ -226,7 +226,7 @@ BEGIN
     END;
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',targetname,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',targetname,tabname;
       if (pgr_isColumnIndexed(tabname,targetname)) then 
 	RAISE DEBUG '  ------>OK';
       else 
@@ -239,7 +239,7 @@ BEGIN
     END;
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',gname,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',gname,tabname;
       if (pgr_iscolumnindexed(tabname,gname)) then 
 	RAISE DEBUG '  ------>OK';
       else 
@@ -278,12 +278,13 @@ BEGIN
 
   
   BEGIN 
-    sql = 'select * from '||pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
+    sql = 'select count(*) from ( select * from '||pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1 ) foo';
     EXECUTE sql into i;
     sql = 'select count(*) from '||pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NOT NULL AND '||
 		idname||' IS NOT NULL)=false '||rows_where;
     EXECUTE SQL  into notincluded;
     EXCEPTION WHEN OTHERS THEN  BEGIN
+         RAISE NOTICE 'Got %', SQLERRM;
          RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition'; 
          RAISE NOTICE '%',sql;
          RETURN 'FAIL'; 
@@ -300,7 +301,9 @@ BEGIN
         || ' PGR_StartPoint(' || gname || ') AS source,'
         || ' PGR_EndPoint('   || gname || ') AS target'
         || ' FROM '  || pgr_quote_ident(tabname)
-        || ' WHERE ' || gname || ' IS NOT NULL AND ' || idname||' IS NOT NULL '||rows_where
+        || ' WHERE ' || gname || ' IS NOT NULL AND ' 
+        || idname || ' IS NOT NULL ' || rows_where
+        || ' ORDER BY ' || idname
     LOOP
 
         rowcount := rowcount + 1;
@@ -393,7 +396,7 @@ BEGIN
   execute 'show client_min_messages' into debuglevel;
 
   BEGIN
-    RAISE DEBUG 'Cheking % exists',edge_table;
+    RAISE DEBUG 'Checking % exists',edge_table;
     execute 'select * from pgr_getTableName('||quote_literal(edge_table)||')' into naming;
     sname=naming.sname;
     tname=naming.tname;
@@ -474,7 +477,7 @@ BEGIN
   END;
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',sourcename,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',sourcename,tabname;
       if (pgr_isColumnIndexed(tabname,sourcename)) then
         RAISE DEBUG '  ------>OK';
       else
@@ -487,7 +490,7 @@ BEGIN
     END;
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',targetname,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',targetname,tabname;
       if (pgr_isColumnIndexed(tabname,targetname)) then
         RAISE DEBUG '  ------>OK';
       else
@@ -500,7 +503,7 @@ BEGIN
     END;
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',gname,tabname;
+      RAISE DEBUG 'Checking "%" column in % is indexed',gname,tabname;
       if (pgr_iscolumnindexed(tabname,gname)) then
         RAISE DEBUG '  ------>OK';
       else

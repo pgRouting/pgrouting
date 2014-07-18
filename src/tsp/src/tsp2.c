@@ -145,7 +145,7 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
     int i;
     int *ids;
     DTYPE fit;
-    char *err_msg;
+    char *err_msg = NULL;
 
     DBG("In solve_tsp: num: %d, start: %d, end: %d", num, start, end);
 

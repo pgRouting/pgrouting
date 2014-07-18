@@ -106,6 +106,15 @@ Functions reference
   - :ref:`pgr_alphaShape` - Alpha shape computation
   - :ref:`pgr_points_as_polygon` - Polygon around set of points
 
+:ref:`convenience_functions`
+  -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
+  -  :ref:`pgr_flip_edges` - flip the edges in an array of geometries so the connect end to end.
+  -  :ref:`pgr_text_to_points` - convert a string of ``x,y;x,y;...`` locations into point geometries.
+  -  :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
+  - :ref:`pgr_points_to_dmatrix` - Create a distance matrix from an array of points.
+  - :ref:`pgr_vids_to_dmatrix` - Create a distance matrix from an array of ``vertix_id``.
+  - :ref:`pgr_vids_to_dmatrix2` - Create a distance matrix from an array of ``vertix_id``.
+
 :ref:`developer_functions`  
   -  :ref:`pgr_get_column_name` - to get the name of the column as is stored in the postgres administration tables.
   -  :ref:`pgr_get_table_name` - to retrieve the name of the table as is stored in the postgres administration tables.
@@ -124,6 +133,7 @@ Functions reference
 	../src/common/doc/functions/index
 	../src/index
 	../src/driving_distance/doc/index
+	../src/common/doc/convenience/index
 	../src/common/doc/utilities/index
 
 .. toctree::

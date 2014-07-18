@@ -8,7 +8,8 @@
 #export PGROUTING_MICRO_VER=0dev
 export PGUSER=postgres
 
-export PROJECTS=/c/jenkins
+#this should be setup as a mapping in msys/etc/fstab to where you keep your projects
+export PROJECTS=/projects 
 
 export PATHOLD=$PATH
 
@@ -18,7 +19,7 @@ export PATHOLD=".:/bin:/include:/mingw/bin:/mingw/include:/c/Windows/system32:/c
 export PGWINVER=${PG_VER}edb
 export PostgreSQL_ROOT=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}
 export PATH="${PATHOLD}:${PostgreSQL_ROOT}/bin:${PostgreSQL_ROOT}/lib"
-if [[ "${GCC_TYPE}" == "gcc48" ]] ; then
+if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	GMP_VER=5.1.2
 	MPFR_VER=3.1.2
 	CGAL_VER=4.2
@@ -66,7 +67,7 @@ cp -r *.control $outdir/share/extension
 cp -r *.dll $outdir/lib
 #newer gcc for some reason CGAL is not statically linked
 # so need to distribute
-if [[ "${GCC_TYPE}" == "gcc48" ]] ; then
+if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	cp ${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}/bin/libCGAL.dll $outdir/bin
 fi
 #cp extensions/postgis_topology/sql/* ${RELDIR}/${RELVERDIR}/share/extension

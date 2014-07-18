@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  */
 
@@ -989,5 +989,251 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
 
     DBG("return done");
     SRF_RETURN_DONE(funcctx);    
+}
+
+
+static int many2many_dijkstra_dm(char *sql, int *vids, int num, bool directed,
+        bool has_reverse_cost, bool symmetric, float8 *dm)
+{
+    int SPIcode;
+    void *SPIplan;
+    Portal SPIportal;
+    bool moredata = TRUE;
+    int ntuples;
+    edge_t *edges = NULL;
+    int total_tuples = 0;
+    edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1,
+                                   .cost= -1, .reverse_cost= -1};
+    int v_max_id = 0;
+    int v_min_id = INT_MAX;
+
+    int sumFoundVids = 0;
+
+    int i, j;
+    int zcnt = 0;
+
+    int vvids[num];
+    int v_count[num];
+    for (i=0; i<num; i++)
+        v_count[i] = 0;
+
+    char *err_msg;
+    int ret = -1;
+
+    pgr_cost_t *dists;
+
+    DBG("start many2many_dijkstra_dm");
+
+    SPIcode = SPI_connect();
+    if (SPIcode != SPI_OK_CONNECT) {
+        elog(ERROR, "many2many_dijkstra_dm: couldn't open an SPI connection");
+        return -1;
+    }
+
+    DBG("Calling SPI_prepare");
+    SPIplan = SPI_prepare(sql, 0, NULL);
+    if (SPIplan == NULL) {
+        elog(ERROR, "many2many_dijkstra_dm: SPI_prepare failed for (%s)", sql);
+        return -1;
+    }
+
+    DBG("Calling SPI_cursor_open");
+    SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true);
+    if (SPIportal == NULL) {
+        elog(ERROR, "many2many_dijkstra_dm: SPI_cursor_open(%s) failed!", sql);
+        return -1;
+    }
+
+    DBG("Starting while loop to collect edges ...");
+
+    while (moredata == TRUE) {
+        DBG("Calling SPI_cursor_fetch");
+        SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
+
+        if (fetch_edge_columns(SPI_tuptable, &edge_columns,
+                has_reverse_cost) == -1) {
+            return finish(SPIcode, ret);
+        }
+
+        ntuples = SPI_processed;
+        DBG("ntuples=%d", ntuples);
+        if (ntuples > 0) {
+            SPITupleTable *tuptable = SPI_tuptable;
+            TupleDesc tupdesc = SPI_tuptable->tupdesc;
+            int t;
+
+            total_tuples += ntuples;
+
+            if (!edges)
+                edges = palloc(total_tuples * sizeof(edge_t));
+            else
+                edges = repalloc(edges, total_tuples * sizeof(edge_t));
+
+            if (edges == NULL) {
+                elog(ERROR, "Out of memory!");
+                return finish(SPIcode, ret);
+            }
+
+            for (t=0; t < ntuples; t++) {
+                HeapTuple tuple = tuptable->vals[t];
+                fetch_edge(&tuple, &tupdesc, &edge_columns,
+                    &edges[total_tuples - ntuples + t]);
+            }
+            SPI_freetuptable(tuptable);
+        }
+        else {
+            moredata = FALSE;
+        }
+    }
+    DBG("Total %d edges!", total_tuples);
+
+    // find min and max vertex ids
+
+    for (i=0; i<total_tuples; i++) {
+        if (edges[i].source < v_min_id) v_min_id = edges[i].source;
+        if (edges[i].source > v_max_id) v_max_id = edges[i].source;
+        if (edges[i].target < v_min_id) v_min_id = edges[i].target;
+        if (edges[i].target > v_max_id) v_max_id = edges[i].target;
+    }
+    DBG("v_min_id: %d, v_max_id: %d", v_min_id, v_max_id);
+
+    // renumber vertices
+
+    for (i=0; i<total_tuples; i++) {
+        // check if edge contains vids[]
+        for (j=0; j<num; j++) {
+            if (edges[i].source == vids[j] || edges[i].target == vids[j])
+                v_count[j]++;
+        }
+        edges[i].source -= v_min_id;
+        edges[i].target -= v_min_id;
+    }
+
+    for (j=0; j< num; j++) {
+        if (v_count[j] == 0) zcnt++;
+        DBG("vids[%d]: %d, cnt: %d", j, vids[j], v_count[j]);
+        vvids[j] = vids[j] - v_min_id;
+    }
+
+    if (zcnt > 0) {
+        elog(ERROR, "%d vid(s) were not found in the edges!", zcnt);
+        return -1;
+    }
+
+    DBG("Starting loop to build dmatrix!");
+
+    for (j=0; j<num; j++) {
+        DBG("Calling onetomany_dijkstra_boostdist j=%d", j);
+
+        ret = onetomany_dijkstra_boostdist(edges, total_tuples, vvids[j],
+                vvids, num, directed, has_reverse_cost, &dists, &err_msg);
+
+        if (ret < 0) {
+            elog(ERROR, "onetomany_dijkstra_boostdist failed on j=%d", j);
+        }
+
+        // ASSUMING: results are in order of vvids array
+        for (i=0; i<num; i++) {
+            dm[j*num + i] = dists[i].cost;
+        }
+
+        free(dists);
+        dists = NULL;
+    }
+    
+    DBG("Making the matrix symmertic if requested!");
+
+    // if symmetric requsted, then average cells to make it symmetric
+
+    if (symmetric) {
+        for (i=0; i<num; i++) {
+            dm[i * num + i] = 0.0;
+            for (j=i+1; j<num; j++) {
+                if (dm[j*num + i] < 0.0 && dm[i*num + j] > 0.0)
+                    dm[j*num + i] = dm[i*num + j];
+                else if (dm[i*num + j] < 0.0 && dm[j*num + i] > 0.0)
+                    dm[i*num + j] = dm[j*num + i];
+                else if (dm[j*num + i] < 0.0 && dm[i*num + j] < 0.0)
+                    dm[i*num + j] = dm[j*num + i] = -1.0;
+                else
+                    dm[j*num + i] = dm[i*num + j] = (dm[j*num + i] + dm[i*num + j]) / 2.0;
+            }
+        }
+    }
+
+    DBG("Leaving many2many_dijkstra_dm");
+
+    return finish(SPIcode, ret);
+}
+
+/*
+    create or replace function pgr_vidsToDMatrix(sql text,
+        vids integer[], dir bool, has_rcost bool, symmetric bool)
+    return real8[]
+    as '', 'manytomany_dijkstra_dmatrix' language C stable strict;
+
+*/
+
+PG_FUNCTION_INFO_V1(manytomany_dijkstra_dmatrix);
+
+Datum manytomany_dijkstra_dmatrix(PG_FUNCTION_ARGS)
+{
+    ArrayType   *result;
+    Datum  *result_data;
+    Datum  *values;
+    bool   *nulls;
+    int     i;
+    int     num;
+    int     ret;
+    float8 *dm;
+
+    Oid     o_eltype   = FLOAT8OID;
+    int16   o_typlen;
+    bool    o_typbyval;
+    char    o_typalign;
+
+    int     ndims = 2;
+    int     dims[2];
+    int     lbs[2] = {1, 1};;
+
+    char   *sql = text2char(PG_GETARG_TEXT_P(0));
+    int    *vids = get_pgarray(&num, PG_GETARG_ARRAYTYPE_P(1));
+
+    dm = (float8 *)palloc(num * num * sizeof(float8));
+
+    ret = many2many_dijkstra_dm(sql, vids, num,
+        PG_GETARG_BOOL(2), PG_GETARG_BOOL(3), PG_GETARG_BOOL(4),
+        dm);
+    
+    if (ret) {
+        elog(ERROR, "Error computing distance matrix!");
+    }
+
+    result_data = (Datum *)palloc(num * num * sizeof(Datum));
+    nulls       = (bool *)palloc(num * num * sizeof(bool));
+
+    for (i=0; i<num*num; i++) {
+        if (dm[i] < 0.0) {
+            nulls[i] = true;
+            result_data[i] = PointerGetDatum(NULL);
+        }
+        else {
+            nulls[i] = false;
+            result_data[i] = Float8GetDatum((float8)dm[i]);
+        }
+    }
+
+    pfree(dm);
+
+    dims[0] = dims[1] = num;
+    get_typlenbyvalalign(o_eltype, &o_typlen, &o_typbyval, &o_typalign);
+
+    result = construct_md_array((void *)result_data, nulls, ndims, dims,
+        lbs, o_eltype, o_typlen, o_typbyval, o_typalign);
+
+    pfree(result_data);
+    pfree(nulls);
+
+    PG_RETURN_ARRAYTYPE_P(result);
 }
 
