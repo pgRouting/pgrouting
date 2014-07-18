@@ -565,7 +565,7 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
 	       }
 		       
        }
-       else if(flag==0)
+       if(flag==0)
        {
 
 	       temp=order1;
@@ -587,7 +587,7 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
 		       tour1=TourVector[t1];
 	       }
 	 }
-       else if(flag==0)
+       if(flag==0)
        {
 
 	       temp=order2;
@@ -611,7 +611,7 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
 		       
 
        }
-       else if(flag==0)
+       if(flag==0)
        {
 
 	       temp=order2;
@@ -634,9 +634,7 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
 	       }
 		       
        }
-
-       
-
+      int next_move=0; 
        if(flag==1)
        {
         
@@ -671,10 +669,74 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
 
 		  if( m_veMoves.size()>30)
 			   m_veMoves.erase( m_veMoves.begin());
+		  next_move=1;
 	      }
 	}
 
        }
+       if(next_move==0||next_move==1)
+       {
+	   //    printf("Hit inside");
+
+       order1=tour1.getOrderVector();
+       order2=tour2.getOrderVector();
+       int temp1;
+      
+        for(int i=0;i<order1.size();i++)
+         {	
+	       	 for(int j=0;j<order2.size();j++)
+	       {
+                       temp1=order1[i];
+		       order1[i]=order2[j];
+		       order2[j]=temp1;
+		       tour1.setOrderVector(order1);
+		       tour2.setOrderVector(order2);
+		       int swap=0;
+		       if(updateTourCosts(tour1) && updateTourCosts(tour2))
+		       {
+
+			       Move.setModifiedTour(tour1,tour2);
+			       CSolutionInfo NewSolution;
+
+			       std::vector<int> vecOrders, vecVehicles;
+			       for(int i = 0; i < m_vOrderInfos.size(); i++)
+			      	       vecOrders.push_back(m_vOrderInfos[i].getOrderId());
+			      
+
+			       for(int i = 0; i < m_vVehicleInfos.size(); i++)
+			  	       vecVehicles.push_back(m_vVehicleInfos[i].getId());
+			      
+				     NewSolution.init(vecOrders, vecOrders.size(), vecVehicles,do_pq);
+
+			       for(int i=0;i<TourVector.size();i++)
+			       	       NewSolution.addTour(TourVector[i]);
+			      
+
+			       if(NewSolution.getTotalTravelTime()< BestSolution.getTotalTravelTime())
+			       {
+				       if(!isTabuMove(Move))
+				       {
+					       BestSolution=NewSolution;
+					       m_veMoves.push_back(Move);
+					       if( m_veMoves.size()>30)
+						       m_veMoves.erase( m_veMoves.begin());
+					       swap=1;
+					       printf("Hit ");
+				       }
+			       }
+		       }
+		       if(swap==0)
+		       {
+
+                       temp1=order1[i];
+		       order1[i]=order2[j];
+		       order2[j]=temp1;
+		       }
+	       }
+	 }
+       }
+       
+
 
 
     }
