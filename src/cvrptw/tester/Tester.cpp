@@ -177,7 +177,7 @@ void loadDistanceMatrix()
 
 bool print_solution(std::string strError)
 {
-	FILE *fp = fopen("result_new_version2.txt", "wt");
+	FILE *fp = fopen("result_new_version3.txt", "wt");
 	if(fp == NULL)
 	{
 		strError = "Could not open file";

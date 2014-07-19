@@ -552,7 +552,7 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
 	       {
 		       order2.erase(order2.begin()+id2);
 		       tour2.setOrderVector(order2);
-		       if(updateTourCosts(tour2))
+		       if(updateTourCosts(tour2)||order2.size()==0)
 		       {
 		       TourVector[t1]=tour1;
 		       TourVector[t2]=tour2;
@@ -575,7 +575,7 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
 	       {
 		       order2.erase(order2.begin()+id2);
 		       tour2.setOrderVector(order2);
-		       if(updateTourCosts(tour2))
+		       if(updateTourCosts(tour2)||order2.size()==0)
 		       {
 		       TourVector[t1]=tour1;
 		       TourVector[t2]=tour2;
@@ -586,7 +586,7 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
 	       else{
 		       tour1=TourVector[t1];
 	       }
-	 }
+	}
        if(flag==0)
        {
 
@@ -597,7 +597,7 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
 	       {
 		       order1.erase(order1.begin()+id1);
 		       tour1.setOrderVector(order1);
-		       if(updateTourCosts(tour1))
+		       if(updateTourCosts(tour1)||order1.size()==0)
 		       {
 		       TourVector[t1]=tour1;
 		       TourVector[t2]=tour2;
@@ -621,7 +621,7 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
 	       {
 		       order1.erase(order1.begin()+id1);
 		       tour1.setOrderVector(order1);
-		       if(updateTourCosts(tour1))
+		       if(updateTourCosts(tour1)||order1.size()==0)
 		       {
 		       TourVector[t1]=tour1;
 		       TourVector[t2]=tour2;
@@ -656,7 +656,9 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
 
 	for(int i=0;i<TourVector.size();i++)
 	{
-                     NewSolution.addTour(TourVector[i]);
+                    std::vector<int> order3=TourVector[i].getOrderVector();
+		    if(order3.size()>0)
+			NewSolution.addTour(TourVector[i]);
 	}
 
 	if(NewSolution.getTotalTravelTime()< BestSolution.getTotalTravelTime())
@@ -676,7 +678,7 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
        }
        if(next_move==0||next_move==1)
        {
-	   //    printf("Hit inside");
+//	    printf("Hit inside");
 
        order1=tour1.getOrderVector();
        order2=tour2.getOrderVector();
@@ -694,6 +696,10 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
 		       int swap=0;
 		       if(updateTourCosts(tour1) && updateTourCosts(tour2))
 		       {
+
+
+		       TourVector[t1]=tour1;
+		       TourVector[t2]=tour2;
 
 			       Move.setModifiedTour(tour1,tour2);
 			       CSolutionInfo NewSolution;
@@ -926,6 +932,12 @@ bool CVRPSolver::updateTourCosts(CTourInfo& tourInfo)
 	std::vector<int> vecOrderId = tourInfo.getOrderVector();
 	std::vector<int> vecStartTimes;
 
+
+	if(vecOrderId.size()==0)
+	{   
+
+	       return false;	
+	}
 
        int vehicle_ind= m_mapVehicleIdToIndex[tourInfo.getVehicleId()];
        tourInfo.setVehicleInfo(m_vVehicleInfos[vehicle_ind]);
