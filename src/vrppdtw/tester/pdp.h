@@ -180,8 +180,8 @@ class Route
 
 
 
-State  Route::append(customer *c, Pickup p, depot d,int CustomerLength, int PickupLength, State S)
-{
+State  Route::append(customer *c, Pickup p, depot d,int CustomerLength, int PickupLength, State S){
+  
         //Save State;
         S.twv=twv;
         S.cv=cv;
@@ -328,11 +328,6 @@ int Route::HillClimbing(customer *c,depot d,Pickup p)
                 order[i]=tempo[i];
         }
         update(c,d);
-       /* 
-        printf("\n ");
-        print();
-        printf("\n");
-        */
         if(twv>0 || cv>0 || dis> d.Ltime)
         {
                 return 1;
@@ -341,8 +336,7 @@ int Route::HillClimbing(customer *c,depot d,Pickup p)
 }
 
 
-void Route::print()
-{
+void Route::print(){
         printf("%d ",dis);
         printf("%d ",twv);
         printf("%d ",cv);
@@ -365,8 +359,7 @@ void Route::print()
 
 
 
-void Route::remove( State S)
-{
+void Route::remove( State S){
         twv=S.twv;
         cv=S.cv;
         dis=S.dis;

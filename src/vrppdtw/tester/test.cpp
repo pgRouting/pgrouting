@@ -1,19 +1,16 @@
 #include<stdio.h>
 #include<vector>
 #include<iostream>
-
 using namespace std;
-
 typedef struct mani
 {
         int length;
         int path[1000];
         int order[1000];
 }M;
-
 int main()
 {
-        vector<M> ma(1000);
+        vector<M> ma;
         for(int i=0;i<10;i++)
         {
                 ma[i].length=i;

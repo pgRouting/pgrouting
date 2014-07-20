@@ -1,3 +1,7 @@
+
+Create Solution Class::
+
+
 1.generate intial solution 
 2. S= S0
 3. CBest = S.getCost()

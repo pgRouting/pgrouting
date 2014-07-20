@@ -2,34 +2,45 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-class Test{
+class route{
         public:
-        int init_sum()
-        {
-                int sum=0;
-                a=10,b=5,c=2;
-                sum=a+b+c;
-                return sum;
-        }
-        private:
-        int a,b,c;
-
+                route(){
+                }
+                int arr[100];
+                int arr_length;
 };
-int main()
-{
-        Test T;
-        vector<int> arr;
-        printf("Sum=%d\n",T.init_sum());
-        for(int i=0;i<100;i++)
-        {
-                arr.push_back(i);
+class Solution{
+        public:
+                Solution(){
+                }
+                ~Solution(){
+                }
+                int twv;
+                int cost; 
+                int route_length;
+                route r[100];
+};
+int main(){
+        route r;
+        for(int i=0;i<100;i++){
+                r.arr[i]=i;
         }
-        int i=100;
-       while(i)
-       {
-               printf("arr[%d]=%d\n",i,arr[i]);
-               i--;
-       }
-       printf("front=%d\n",arr.front());
+        for(int i=0;i<100;i++){
+                printf("r.arr[%d]=%d\n",i,r.arr[i]);
+        }
+        Solution S;      
+        S.route_length=10;
+        for(int i=0;i<10;i++) {
+                for(int j=0;j<100;j++)
+                {
+                        S.r[i].arr[j]=j;
+                }
+        }
+        for(int i=0;i<10;i++) {
+                for(int j=0;j<100;j++)
+                {
+                        printf("S.r[%d].arr[%d]=%d\n",i,j,S.r[i].arr[j]);
+                }
+        }
         return 0;
 }
