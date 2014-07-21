@@ -1,3 +1,19 @@
+/*                                 
+
+ *****list of files in this dir*******
+ pdp.cpp  --> Main solver
+ pdp.h    ---> Structures defined in this header file
+ Solution.h  -----> It contains the Solution Class and Code related to Neighborhoods  
+
+ The main problem is in two steps. 1.)Getting the initial solutiion and 2.)Optimizing it.
+
+ 1.) "Initial solution":
+ A few heuristics are applied to find a feasible initial solution. Sequential Construction and Hill climbing. More implementation details are found here:: https://github.com/pgRouting/pgrouting/wiki/VRP-Pickup-Delivery-Problem 
+
+ 2.) "Optimizing the Solution":
+ A reactive tabu search is applied on the initial solution to get a feasible optimized solution. TabuSearch comes under local search methods. We have three neighborhoods i) Single Paired Insertion  ii) Swapping pairs between routes  iii)Within Route Insertion. Tabu attributes plays an important role in giving the best solution(it includes TabuLength, A vector containing feasible solutions and a counter for number of solutions) Reactive part here is to modify TabuLength based on the solution cycle. 
+
+ */
 #include <vector>
 #include <map>
 #include <queue>
@@ -13,7 +29,6 @@
 //Headers Include
 #include "./pdp.h"
 #include "./Solution.h"
-using namespace std;
 
 int PickupLength=0;
 
@@ -28,6 +43,10 @@ Route r[500];
 
 //Definitions for a few functions 
 void TabuSearch();
+
+//Initial Solution
+Solution S0;
+
 
 int main()
 {
@@ -120,10 +139,25 @@ int main()
                 }
                 Vehicle.cost=sum;
         }
-        printf("Sum=%d  Routes=%d\n",sum,rts);
+        printf("Sum=%d  Routes=%d  Vehicle.used_vehicles=%d\n",sum,rts,Vehicle.used_vehicles);
 
 
-        //Storing Initial Solution
+        //Storing Initial Solution (S0 is the Initial Solution)
+        for(int i=1;i<=Vehicle.used_vehicles;i++)
+        {
+                S0.cost_total+=r[i].cost();
+                S0.dis_total+=r[i].dis;
+                S0.twv_total+=r[i].twv;
+                S0.cv_total+=r[i].cv;
+        }
+        S0.route_length=Vehicle.used_vehicles;
+        for(int i=1;i<=Vehicle.used_vehicles;i++)
+        {
+                S0.r.push_back(r[i]);
+        }
+        printf("Size  =>>  S0.r.size=%d\n",S0.r.size());
+
+
 
 
         //Starting Neighborhoods
@@ -133,25 +167,61 @@ int main()
         return 0;
 }
 
-
+int n=0,maxItr=30;
 void TabuSearch()
 {
         printf("TABU Called\n");
-        Solution S[100];
-        Route r3;
-        printf("Cost=%lf\n",S[9].getCost());
+        Solution S,SBest;
+        double CBest;
+        //Pseudo Code
+        /*
+
+         **********Before*********
+         int n=0; //Counter     
+         Create Tabu List  Vector of Solutions  std::vector<Solution> T;
+
+         **********After**********
+         Solution S,S0,SBest;  //S0 is initial 
+         S=S0;
+         Double CBest,SBest;
+         CBest = S.getCost();
+         SBest = S0;
+         n=0; //Counter
+         while(1)
+         {
+         S = S.getBextofNeighborhood();
+         if(S==NULL)
+         break;
+         if(S.getCost() < CBest){
+         SBest = S;
+         CBest = S.getCost();
+         }
+         T.push_back(S);
+         n++;
+         if(n>maxItr)
+         break;
+         }
+
+         */
+
+        S=S0;
+        CBest = S.getCost();
+        SBest = S0;
+        while(1)
+        {
+                S = S.getBestofNeighborhood(S);
+                if(S.getCost()==0)
+                        break;
+                if (S.getCost() < CBest){
+                        SBest = S;
+                        CBest = S.getCost();
+                }   
+                n++;
+                if (n > maxItr)
+                        break;
+        }
+
         return;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
