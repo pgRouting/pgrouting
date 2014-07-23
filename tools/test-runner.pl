@@ -241,8 +241,8 @@ sub run_test {
 }
 
 sub createTestDB {
-    die "ERROR: test database '$DBNAME' exists, you must drop or rename it!\n"
-        if dbExists($DBNAME);
+#   die "ERROR: test database '$DBNAME' exists, you must drop or rename it!\n"
+#        if dbExists($DBNAME);
 
     my $template;
     

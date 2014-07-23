@@ -1,1 +1,13 @@
-Single Paired Insertion:
+=>Single Paired Insertion::
+   * We have the list of all the nodes from top to bottom!
+   * So now we take the first order and remove it from the original route. We need RemoveOrder(); Remove from path and order, If SPI is'nt successful go for SBR. 
+   * Create a class SPI and RemoveOrder(). Insert & Check, return
+
+
+/*    ******************************************     */
+class SPI{
+        public:
+                SPI(){}
+                ~SPI(){}
+                /* customer c, depot d, pickup p*/
+};

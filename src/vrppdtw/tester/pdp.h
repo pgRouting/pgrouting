@@ -176,11 +176,7 @@ class Route
                 void remove(State S);
                 void print();
 };
-
-
-
-
-State  Route::append(customer *c, Pickup p, depot d,int CustomerLength, int PickupLength, State S){
+State  Route::append(customer *c, Pickup p, depot d, int CustomerLength, int PickupLength, State S){
   
         //Save State;
         S.twv=twv;
@@ -202,10 +198,7 @@ State  Route::append(customer *c, Pickup p, depot d,int CustomerLength, int Pick
 
         return S;
 }
-
-
-
-void Route::update(customer *c,depot d)
+void Route::update(customer *c, depot d)
 {
         dis=0,twv=0,cv=0;
         int load=0;
@@ -258,30 +251,23 @@ void Route::update(customer *c,depot d)
         }
         return;
 }
-
 double Route::cost()
 {
         return (0.3*dis)+(0.5*twv)+(0.2*cv);
 }
-
-int Route::HillClimbing(customer *c,depot d,Pickup p)
+int Route::HillClimbing(customer *c, depot d, Pickup p)
 {
         double cost1=0,cost2=0;
         int swap=0;
         update(c,d);
         cost1=cost();
-
-        if(twv==0 && cv==0 && dis<d.Ltime)
-        {
+        if(twv==0 && cv==0 && dis<d.Ltime)        
                 return 0;
-        }
-        for(int i=0;i<path_length;i++)
-        {
-                for(int j=0;j<path_length;j++)
-                {
+        
+        for(int i=0;i<path_length;i++){
+                for(int j=0;j<path_length;j++){
                         int swap_flag=0,count_flag=0;
-                        if((c[path[i]].Ltime > c[path[j]].Ltime) &&  (count_flag==0) )
-                        {
+                        if((c[path[i]].Ltime > c[path[j]].Ltime) &&  (count_flag==0) ){
                                 swap_flag=1;
                                 count_flag=1;
                                 //Swap Path
@@ -289,7 +275,6 @@ int Route::HillClimbing(customer *c,depot d,Pickup p)
                                 path[i]=path[j];
                                 path[j]=swap;
                                 //Swap order
-
                                 swap=order[i];
                                 order[i]=order[j];
                                 order[j]=swap;
@@ -297,16 +282,13 @@ int Route::HillClimbing(customer *c,depot d,Pickup p)
                         }
                         update(c,d);
                         cost2=cost();
-                        if(cost2>cost1)
-                        {
-                                if(swap_flag==1)
-                                {
+                        if(cost2>cost1){
+                                if(swap_flag==1){
                                         //Swap Path
                                         swap=path[i];
                                         path[i]=path[j];
                                         path[j]=swap;
                                         //Swap order
-
                                         swap=order[i];
                                         order[i]=order[j];
                                         order[j]=swap;
@@ -356,8 +338,6 @@ void Route::print(){
         return;
 
 }
-
-
 
 void Route::remove( State S){
         twv=S.twv;
