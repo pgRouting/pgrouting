@@ -175,7 +175,52 @@ class Route
                 int HillClimbing(customer *c,depot d,Pickup p);
                 void remove(State S);
                 void print();
+                int RemoveOrder(Pickup p);
 };
+
+
+
+int  Route::RemoveOrder(Pickup p){
+        int flag=0;
+        printf("Remove Order with Pid=%d  Did=%d\n",p.Pid,p.Did);
+        for(int i=0;i<path_length;i++)
+        {
+                if(path[i]==p.Pid || path[i]==p.Did)
+                {
+                        flag=1;
+                        path[i]=0;
+                        order[i]=0;
+                }
+        }
+        int new_path[path_length+1],new_length=0,new_order[path_length+1];
+        if(flag==1)
+        {
+        //copy 
+        for(int i=0;i<path_length;i++)
+        {
+                if(path[i]!=0)
+                {
+                        new_path[i]=path[i];
+                        new_length++;
+                        new_order[i]=order[i];
+                }
+        }
+        //Reverse Copy
+        for(int i=0;i<new_length;i++)
+        {
+                path[i]=new_path[i];
+                order[i]=new_order[i];
+        }
+        path_length=new_length;
+        printf("!!!!!!!!!!!!!Removed Order baby  with Pid=%d   !!!!!!!!!!!!!!!!!\n",p.Pid);
+        return 1;
+        }
+        else
+        {
+                printf("Not here :D \n");
+                return 0;
+        }
+}
 State  Route::append(customer *c, Pickup p, depot d, int CustomerLength, int PickupLength, State S){
   
         //Save State;

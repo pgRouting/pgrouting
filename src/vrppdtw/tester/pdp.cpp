@@ -212,7 +212,7 @@ void TabuSearch()
         T.push_back(S0);
         while(1)
         {
-                S = S.getBestofNeighborhood(S,c,d,p,10,CBest,CustomerLength,PickupLength);
+                S = S.getBestofNeighborhood(S,c,d,p,CustomerLength,PickupLength);
                 if(S.getCost()==0)
                         break;
                 if (S.getCost() < CBest){

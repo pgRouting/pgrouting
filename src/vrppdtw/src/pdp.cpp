@@ -102,17 +102,10 @@ int main()
                 }
                 Vehicle.used_vehicles=v;
                 printf("%d, ",v);
-               r[v].print();
-  //              printf("PLen=%d  checked=%d\n",PickupLength,checked);
                 if(checked==PickupLength)
                 {
-    //                    printf(" ***********Checking Length=%d\n",checked);
                         v=9999;
                 }
-        }
-        for(int i=1;i<=PickupLength;i++)
-        {
-//                printf("PickupID[%d]=%d\n",i,p[i].checked);
         }
         int sum=0,rts=0;
         
