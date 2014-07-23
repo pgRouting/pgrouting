@@ -53,7 +53,7 @@ Solution S0;
 int main()
 {
         Vehicle=ScanVehicle(Vehicle);
-        depot d=ScanDepot(d);
+        d=ScanDepot(d);
         while((scanf("%d",&temp))!=EOF){
                 CustomerLength+=1;
                 len=CustomerLength;
@@ -210,9 +210,9 @@ void TabuSearch()
         SBest = S0;
         T.clear();
         T.push_back(S0);
+                S = S.getBestofNeighborhood(S,c,d,p,CustomerLength,PickupLength);
         while(1)
         {
-                S = S.getBestofNeighborhood(S,c,d,p,CustomerLength,PickupLength);
                 if(S.getCost()==0)
                         break;
                 if (S.getCost() < CBest){

@@ -173,6 +173,7 @@ class Route
                 void update(customer *c,depot d);
                 double cost();
                 int HillClimbing(customer *c,depot d,Pickup p);
+                int insertOrder(customer *c,depot d,Pickup p);
                 void remove(State S);
                 void print();
                 int RemoveOrder(Pickup p);
@@ -200,9 +201,10 @@ int  Route::RemoveOrder(Pickup p){
         {
                 if(path[i]!=0)
                 {
-                        new_path[i]=path[i];
+                        printf("path[%d]=%d \n",new_length,path[i]);
+                        new_path[new_length]=path[i];
+                        new_order[new_length]=order[i];
                         new_length++;
-                        new_order[i]=order[i];
                 }
         }
         //Reverse Copy
@@ -212,12 +214,11 @@ int  Route::RemoveOrder(Pickup p){
                 order[i]=new_order[i];
         }
         path_length=new_length;
-        printf("!!!!!!!!!!!!!Removed Order baby  with Pid=%d   !!!!!!!!!!!!!!!!!\n",p.Pid);
+        printf("!!!!!!!!!!!!!Removed Order baby  with Pid=%d    New Length = %d  !!!!!!!!!!!!!!!!!\n",p.Pid,path_length);
         return 1;
         }
         else
         {
-                printf("Not here :D \n");
                 return 0;
         }
 }
@@ -300,9 +301,59 @@ double Route::cost()
 {
         return (0.3*dis)+(0.5*twv)+(0.2*cv);
 }
+int Route::insertOrder(customer *c, depot d, Pickup p)
+{
+        double cost1=0,cost2=0;
+        twv=0,cv=0,dis=0;
+        int swap=0;
+        update(c,d);
+        if(twv==0 && cv==0 && dis<d.Ltime)        
+                return 0;
+        
+        for(int i=0;i<path_length;i++)
+        {
+                for(int j=0;j<path_length;j++)
+                {
+                        if((c[path[i]].Ltime > c[path[j]].Ltime) ){
+                                //Swap Path
+                                swap=path[i];
+                                path[i]=path[j];
+                                path[j]=swap;
+                                //Swap order
+                                swap=order[i];
+                                order[i]=order[j];
+                                order[j]=swap;
+
+                        }
+                }
+        }
+        //After complete sort
+        int temp[10000],tempo[10000];
+        for(int i=0;i<path_length;i++)
+        {
+                temp[i]=path[path_length-i-1];
+                tempo[i]=order[path_length-i-1];
+        }
+        for(int i=0;i<path_length;i++)
+        {
+                path[i]=temp[i];
+                order[i]=tempo[i];
+        }
+
+        twv=0,cv=0,dis=0;
+        print(); 
+        update(c,d);        
+        if(twv>0 || cv>0 || dis> d.Ltime)
+        { 
+                return 1;
+        }
+        return 0;
+}
+
 int Route::HillClimbing(customer *c, depot d, Pickup p)
 {
         double cost1=0,cost2=0;
+        twv=0,cv=0,dis=0;
         int swap=0;
         update(c,d);
         cost1=cost();
@@ -337,7 +388,7 @@ int Route::HillClimbing(customer *c, depot d, Pickup p)
                                         swap=order[i];
                                         order[i]=order[j];
                                         order[j]=swap;
-                                        update(c,d);
+                                   //     update(c,d);
                                 }
                         }
                 }
@@ -354,9 +405,11 @@ int Route::HillClimbing(customer *c, depot d, Pickup p)
                 path[i]=temp[i];
                 order[i]=tempo[i];
         }
+
+
         update(c,d);
         if(twv>0 || cv>0 || dis> d.Ltime)
-        {
+        { 
                 return 1;
         }
         return 0;
