@@ -1,3 +1,35 @@
+/*
+  0: debuging   raise debug
+  1: report     raise notice
+  2: abort excecution  
+*/
+
+CREATE OR REPLACE FUNCTION pgr_onError(IN err boolean,IN action int, IN functionname text, IN msgerr text, IN hinto text default NULL,IN msgok text default 'OK' )
+  RETURNS void AS
+$BODY$
+BEGIN
+  if err=true then 
+     if action=0 then
+       raise debug '----> PGR ERROR in %: %',functionname,msgerr USING HINT = '  ---->'|| hinto;
+     else 
+       if action = 2 then
+         raise EXCEPTION '----> PGR ERROR in %: %',functionname,msgerr USING HINT = '  ---->'|| hinto;
+       else
+         raise notice '----> PGR ERROR in %: %',functionname,msgerr USING HINT = '  ---->'|| hinto;
+       end if;
+     end if;
+  else
+       raise debug 'PGR ----> %: %',functionname,msgok;
+  end if;
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
+COMMENT ON FUNCTION pgr_onError(boolean,int,text,text,text,text) IS 'args: err,action,functionname,msgerr,hinto=NULL, msgOK=OK,  -raises the error message and hint message at different levels';
+   
+
+
+
+
 -- -------------------------------------------------------------------
 -- pgrouting_utilities.sql
 -- AuthorL Stephen Woodbridge <woodbri@imaptools.com>
@@ -26,7 +58,7 @@
      Created: 2013/08/19  for handling schemas
 
 */
-CREATE OR REPLACE FUNCTION pgr_getTableName(IN tab text,OUT sname text,OUT tname text)
+CREATE OR REPLACE FUNCTION pgr_getTableName(IN tab text, IN reportErrs int default 1, OUT sname text,OUT tname text)
   RETURNS RECORD AS
 $BODY$ 
 DECLARE
@@ -35,7 +67,14 @@ DECLARE
 	query text;
         sn text;
         tn text;
+        err boolean;
+	debuglevel text;
 BEGIN
+
+    execute 'show client_min_messages' into debuglevel;
+
+
+    RAISE DEBUG 'Cheking % exists',tab;
 
     execute 'select strpos('||quote_literal(tab)||','||quote_literal('.')||')' into i;
     if (i!=0) then 
@@ -82,11 +121,13 @@ BEGIN
 	   END IF;
 	END IF;
     END IF;	   
+   err= case when sname IS NULL OR tname IS NULL then true else false end; 
+   perform pgr_onError(err, reportErrs, 'pgr_getTableName', 'Table ' || tab ||' not found',' Check your table name', 'Table '|| tab || ' found');
 	        	
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION pgr_getTableName(text) IS 'args: tab  -gets the schema (sname) and the table (tname) form the table tab';
+COMMENT ON FUNCTION pgr_getTableName(text,int) IS 'args: tab,reportErrs=1  -gets the schema (sname) and the table (tname) form the table tab';
 
 
 /*
@@ -106,7 +147,39 @@ COMMENT ON FUNCTION pgr_getTableName(text) IS 'args: tab  -gets the schema (snam
   HISTORY
      Created: 2013/08/19  for handling schemas
 */
-CREATE OR REPLACE FUNCTION pgr_getColumnName(tab text, col text)
+
+
+
+CREATE OR REPLACE FUNCTION pgr_getColumnName(sname text, tname text, col text, IN reportErrs int default 1)
+RETURNS text AS
+$BODY$
+DECLARE
+    cname text;
+    naming record;
+    err boolean;
+BEGIN
+
+    execute 'SELECT column_name FROM information_schema.columns
+          WHERE table_name='||quote_literal(tname)||' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(col) into cname;
+
+    IF cname is null  THEN
+            execute 'SELECT column_name FROM information_schema.columns
+            WHERE table_name='||quote_literal(tname)||' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(lower(col)) into cname;
+    END if;
+
+    err=cname is null;
+
+    perform pgr_onError(err, reportErrs, 'pgr_getColumnName',  'Column '|| col ||' not found', ' Check your column name','Column '|| col || ' found');
+    RETURN cname;
+END;
+
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
+COMMENT ON FUNCTION pgr_getColumnName(text,text,text,int) IS 'args: sname,tname,col -gets the rregistered column name of "col" in table "sname.tname"';
+
+
+
+CREATE OR REPLACE FUNCTION pgr_getColumnName(tab text, col text, IN reportErrs int default 1)
 RETURNS text AS
 $BODY$
 DECLARE
@@ -114,36 +187,66 @@ DECLARE
     tname text;
     cname text;
     naming record;
+    err boolean;
 BEGIN
-    select * into naming from pgr_getTableName(tab) ;
+    select * into naming from pgr_getTableName(tab,reportErrs) ;
     sname=naming.sname;
     tname=naming.tname;
    
-    IF sname IS NULL or tname IS NULL THEN
-        RETURN NULL;
-    ELSE 
-        SELECT column_name INTO cname
-          FROM information_schema.columns 
-          WHERE table_name=tname and table_schema=sname and column_name=col;
-
-        IF FOUND THEN
-          RETURN cname;
-        ELSE
-            SELECT column_name INTO cname
-		FROM information_schema.columns 
-		WHERE table_name=tname and table_schema=sname and column_name=lower(col);
-            IF FOUND THEN
-		RETURN cname;
-	    ELSE
-		RETURN NULL;
-	    END IF;
-        END IF;
-    END IF;
+    select * into cname from pgr_getColumnName(sname,tname,col,reportErrs);
+    RETURN cname;
 END;
+
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION pgr_getColumnName(text,text) IS 'args: tab,col  -gets the registered column name of "col" in table "tab"';
+COMMENT ON FUNCTION pgr_getColumnName(text,text,int) IS 'args: tab,col -gets the registered column name of "col" in table "tab"';
 
+/*
+*/
+CREATE OR REPLACE FUNCTION pgr_getColumnType(sname text, tname text, cname text, IN reportErrs int default 1)
+RETURNS text AS
+$BODY$
+DECLARE
+    ctype text;
+    naming record;
+    err boolean;
+BEGIN
+
+    EXECUTE 'select data_type  from information_schema.columns where table_name = '||quote_literal(tname)||
+                        ' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(cname) into ctype;
+    err=ctype is null;
+    perform pgr_onError(err, reportErrs, 'pgr_getColumnType',  'Type of Column '|| cname ||' not found', ' Check your column name','Type of Column '|| cname || ' is ' || ctype);
+    RETURN ctype;
+END;
+
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
+COMMENT ON FUNCTION pgr_getColumnType(text,text,text,int) IS 'args: sname,tname,cname -gets the type of the column  "col" in table "sname.tname"';
+
+
+CREATE OR REPLACE FUNCTION pgr_getColumnType(tab text, col text, IN reportErrs int default 1)
+RETURNS text AS
+$BODY$
+DECLARE
+    sname text;
+    tname text;
+    cname text;
+    ctype text;
+    naming record;
+    err boolean;
+BEGIN
+  
+    select * into naming from pgr_getTableName(tab,reportErrs) ;
+    sname=naming.sname;
+    tname=naming.tname;
+    select * into cname from pgr_getColumnName(tab,col,reportErrs) ;
+    select * into ctype from pgr_getColumnType(sname,tname,cname,reportErrs);
+    RETURN ctype;
+END;
+
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
+COMMENT ON FUNCTION pgr_getColumnType(text,text,int) IS 'args: tab,col -gets the type of column name of "col" in table "tab"';
 
 
 
@@ -172,7 +275,7 @@ $BODY$
 DECLARE
     cname text;
 BEGIN
-    select * from pgr_getColumnName(tab,col) into cname;
+    select * from pgr_getColumnName(tab,col,0) into cname;
   
     IF cname IS NULL THEN
         RETURN false;
@@ -279,6 +382,41 @@ $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 COMMENT ON FUNCTION pgr_isColumnIndexed(text,text) IS 'args: tab,col  -returns true if column "col" in table "tab" is indexed';
 
+
+CREATE OR REPLACE FUNCTION pgr_createIndex(tabname text, colname text, indextype text)
+RETURNS void AS
+$BODY$
+DECLARE
+    debuglevel text;
+    naming record;
+    sname text;
+    tname text;
+
+BEGIN
+    execute 'show client_min_messages' into debuglevel;
+    execute 'select * from pgr_getTableName('||quote_literal(tabname)||',0)' into naming;
+    sname=naming.sname;
+    tname=naming.tname;
+    RAISE DEBUG 'Cheking "%" column in % is indexed',colname,tabname;
+    IF (pgr_isColumnIndexed(tabname,colname)) then
+          RAISE DEBUG ' ------>OK';
+    else
+      RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,colname;
+      set client_min_messages  to warning;
+      if indextype = 'btree' then 
+          execute 'create  index '||pgr_quote_ident(tname||'_'||colname||'_idx')||' 
+                         on '||pgr_quote_ident(tabname)||' using btree('||quote_ident(colname)||')';
+      else 
+          execute 'create  index '||pgr_quote_ident(tname||'_'||colname||'_gidx')||' 
+                         on '||pgr_quote_ident(tabname)||' using gist ('||quote_ident(colname)||')';
+      end if;
+          execute 'set client_min_messages  to ' ||debuglevel;
+    END IF;
+END;
+
+$BODY$
+  LANGUAGE plpgsql VOLATILE STRICT;
+--COMMENT ON FUNCTION pgr_isColumnInTable(text,text) IS 'args: tab,col  -returns true when the column "col" is in table "tab"';
 
 
 
