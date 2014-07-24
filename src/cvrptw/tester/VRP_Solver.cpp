@@ -496,15 +496,17 @@ CSolutionInfo CVRPSolver::generateInitialSolution()
 CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
 {
      CSolutionInfo BestSolution=InitialSolution;
-     int count=100000;
+     int count=10000;
      while(count--)
      {  
 	
 	std::vector<CTourInfo> TourVector=BestSolution.getTourInfoVector();
 	int tour_size=TourVector.size();
 	int t1,t2;
+
 	t1=rand()%tour_size;
 	t2=rand()%tour_size;
+//	printf("%d %d   ",t1,t2);
 	while(t1==t2)
 	{
             t2=rand()%tour_size;
@@ -513,9 +515,78 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
 
 	CTourInfo tour1=TourVector[t1];
 	CTourInfo tour2=TourVector[t2];
+	CTourInfo O_Tour1,O_Tour2;
+	O_Tour1=tour1;
+	O_Tour2=tour2;
 
-       std::vector<int> order1=tour1.getOrderVector();
-       std::vector<int> order2=tour2.getOrderVector();
+	std::vector<int> order1=tour1.getOrderVector();
+	std::vector<int> order2=tour2.getOrderVector();
+
+
+	for(int i=0;i<order1.size();i++)
+	{
+
+		CMoveInfo Move;
+		Move.setInitialTour(O_Tour1,O_Tour2);
+		std::vector<int> t_order1=order1;
+		std::vector<int> t_order2=order2;
+		for(int j=0;j<order2.size();j++)
+		{
+			t_order2.insert(t_order2.begin()+j,t_order1[i]);
+			tour2.setOrderVector(t_order2);
+			if(updateTourCosts(tour2))
+			{
+
+				t_order1.erase(t_order1.begin()+i);
+				tour1.setOrderVector(t_order1);
+				if(updateTourCosts(tour1)||t_order1.size()==0)
+				{
+					TourVector[t1]=tour1;
+					TourVector[t2]=tour2;
+
+					Move.setModifiedTour(tour1,tour2);
+					CSolutionInfo NewSolution;
+
+					std::vector<int> vecOrders, vecVehicles;
+					for(int i = 0; i < m_vOrderInfos.size(); i++)
+						vecOrders.push_back(m_vOrderInfos[i].getOrderId());
+
+
+					for(int i = 0; i < m_vVehicleInfos.size(); i++)
+						vecVehicles.push_back(m_vVehicleInfos[i].getId());
+
+					NewSolution.init(vecOrders, vecOrders.size(), vecVehicles,do_pq);
+
+					for(int i=0;i<TourVector.size();i++)
+					{
+
+						std::vector<int> order3=TourVector[i].getOrderVector();
+						if(order3.size()>0)
+							NewSolution.addTour(TourVector[i]);
+					}
+
+					if(NewSolution.getTotalTravelTime()< BestSolution.getTotalTravelTime())
+					{
+						if(!isTabuMove(Move))
+						{
+							BestSolution=NewSolution;
+							m_veMoves.push_back(Move);
+							if( m_veMoves.size()>30)
+								m_veMoves.erase( m_veMoves.begin());
+						
+							printf("New_Hit ");
+						}
+					}
+
+				}
+
+			}
+		}
+	}
+
+
+
+
        int id1,id2;
        double min=100000000.00;
 
@@ -540,8 +611,8 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
        }
        int flag=0;
        std::vector<int> temp;
-       CMoveInfo Move;
-       Move.setInitialTour(tour1,tour2);
+       CMoveInfo Move1;
+       Move1.setInitialTour(O_Tour1,O_Tour2);
 
        if(flag==0)
        {
@@ -638,7 +709,7 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
        if(flag==1)
        {
         
-	Move.setModifiedTour(tour1,tour2);
+	Move1.setModifiedTour(tour1,tour2);
 	CSolutionInfo NewSolution;
 
 	std::vector<int> vecOrders, vecVehicles;
@@ -663,29 +734,32 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
 
 	if(NewSolution.getTotalTravelTime()< BestSolution.getTotalTravelTime())
 	{
-              if(!isTabuMove(Move))
+              if(!isTabuMove(Move1))
 	      {
 		BestSolution=NewSolution;
 		
-		  m_veMoves.push_back(Move);
+		  m_veMoves.push_back(Move1);
 
 		  if( m_veMoves.size()>30)
 			   m_veMoves.erase( m_veMoves.begin());
 		  next_move=1;
+		  printf("done ");
 	      }
 	}
 
        }
-       if(next_move==0||next_move==1)
+       //       if(next_move==0||next_move==1)
        {
 //	    printf("Hit inside");
 
-       order1=tour1.getOrderVector();
-       order2=tour2.getOrderVector();
+       order1=O_Tour1.getOrderVector();
+       order2=O_Tour2.getOrderVector();
        int temp1;
       
         for(int i=0;i<order1.size();i++)
          {	
+		CMoveInfo Move;
+		Move.setInitialTour(O_Tour1,O_Tour2);
 	       	 for(int j=0;j<order2.size();j++)
 	       {
                        temp1=order1[i];
