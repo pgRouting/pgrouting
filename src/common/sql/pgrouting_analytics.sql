@@ -97,158 +97,118 @@ DECLARE
 BEGIN
   raise notice 'PROCESSING:'; 
   raise notice 'pgr_analyzeGraph(''%'',%,''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where;
-  raise NOTICE  'Performing checks, pelase wait...';
   execute 'show client_min_messages' into debuglevel;
 
 
+  raise notice 'Performing checks, pelase wait ...';
   BEGIN
-    RAISE DEBUG 'Cheking % exists',edge_table;
-    execute 'select * from pgr_getTableName('||quote_literal(edge_table)||')' into naming;
+    execute 'select * from pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
+
     sname=naming.sname;
     tname=naming.tname;
-    IF sname IS NULL OR tname IS NULL THEN
-        RAISE NOTICE '-------> % not found',edge_table;
-        RETURN 'FAIL';
-    ELSE
-        RAISE DEBUG '  -----> OK';
-    END IF;
-  
     tabname=sname||'.'||tname;
     vname=tname||'_vertices_pgr';
     vertname= sname||'.'||vname;
-    rows_where = ' AND ('||rows_where||')'; 
+    rows_where = ' AND ('||rows_where||')';
+    raise debug '--> Edge table exists: OK';
+    EXCEPTION WHEN raise_exception THEN
+      RAISE NOTICE 'ERROR: something went wrong checking the table name';
+      RETURN 'FAIL';
   END;
 
-  BEGIN 
-       raise DEBUG 'Checking id column "%" columns in  % ',id,tabname;
-       EXECUTE 'select pgr_getColumnName('||quote_literal(tabname)||','||quote_literal(the_geom)||')' INTO gname;
-       EXECUTE 'select pgr_getColumnName('||quote_literal(tabname)||','||quote_literal(id)||')' INTO idname;
-       IF idname is NULL then
-          raise notice  'ERROR: id column "%"  not found in %',id,tabname;
+  BEGIN
+       raise DEBUG 'Checking table %.% exists ',sname ,vname;
+       execute 'select * from pgr_getTableName('||quote_literal(vertname)||',2)' into naming;
+       raise DEBUG  '  ------>OK';
+       EXCEPTION WHEN raise_exception THEN
+           raise notice '   --->Table %.% does not exists',sname ,vname; 
+           raise notice '   --->Please create %.% using pgr_createTopology() or pgr_createVerticesTable()',sname ,vname;
+           return 'FAIL';
+  END;       
+
+
+  BEGIN
+       raise debug 'Checking column names,types,and indices in edge table';
+       select * into idname     from pgr_getColumnName(sname, tname,id,2);
+       select * into sourcename from pgr_getColumnName(sname, tname,source,2);
+       select * into targetname from pgr_getColumnName(sname, tname,target,2);
+       select * into gname      from pgr_getColumnName(sname, tname,the_geom,2);
+
+
+       perform pgr_onError( sourcename in (targetname,idname,gname) or  targetname in (idname,gname) or idname=gname, 2,
+                       'pgr_createToplogy',  'Two columns share the same name', 'Parameter names for id,the_geom,source and target  must be different',
+                       'Column names are OK');
+
+       raise debug '--> Column names: OK';
+       EXCEPTION WHEN raise_exception THEN
+          RAISE NOTICE 'ERROR: something went wrong checking the column names';
           RETURN 'FAIL';
-       END IF;
-       raise DEBUG 'Checking geometry column "%" column  in  % ',the_geom,tabname;
-       IF gname is not NULL then
-          BEGIN
-                raise DEBUG 'Checking the SRID of the geometry "%"', gname;
-                EXECUTE 'SELECT ST_SRID(' || quote_ident(gname) || ') as srid '
-                        || ' FROM ' || pgr_quote_ident(tabname)
-                        || ' WHERE ' || quote_ident(gname)
-                        || ' IS NOT NULL LIMIT 1'
-                        INTO sridinfo;
-
-                IF sridinfo IS NULL OR sridinfo.srid IS NULL THEN
-                        RAISE NOTICE 'ERROR: Can not determine the srid of the geometry "%" in table %', the_geom,tabname;
-                        RETURN 'FAIL';
-                END IF;
-                srid := sridinfo.srid;
-                raise DEBUG '  -----> SRID found %',srid;
-                EXCEPTION WHEN OTHERS THEN
-                        RAISE NOTICE 'ERROR: Can not determine the srid of the geometry "%" in table %', the_geom,tabname;
-                        RETURN 'FAIL';
-          END;
-        ELSE 
-                raise notice  'ERROR: Geometry column "%"  not found in %',the_geom,tabname;
-                RETURN 'FAIL';
-        END IF;
   END;
 
 
-  BEGIN 
-       raise DEBUG 'Checking source column "%" and target column "%"  in  % ',source,target,tabname;
-       EXECUTE 'select  pgr_getColumnName('||quote_literal(tabname)||','||quote_literal(source)||')' INTO sourcename;
-       EXECUTE 'select  pgr_getColumnName('||quote_literal(tabname)||','||quote_literal(target)||')' INTO targetname;
-       IF sourcename is not NULL and targetname is not NULL then
-                --check that the are integer
-                EXECUTE 'select data_type  from information_schema.columns where table_name = '||quote_literal(tname)||
-                        ' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(sourcename) into sourcetype;
-                EXECUTE 'select data_type  from information_schema.columns where table_name = '||quote_literal(tname)||
-                        ' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(targetname) into targettype;
-                IF sourcetype not in('integer','smallint','bigint')  THEN
-                    raise notice  'ERROR: source column "%" is not of integer type',sourcename;
-                    RETURN 'FAIL';
-                END IF;
-                IF targettype not in('integer','smallint','bigint')  THEN
-                    raise notice  'ERROR: target column "%" is not of integer type',targetname;
-                    RETURN 'FAIL';
-                END IF;
-                raise DEBUG  '  ------>OK '; 
-       END IF;
-       IF sourcename is NULL THEN
-                raise notice  'ERROR: source column "%"  not found in %',source,tabname;
-                RETURN 'FAIL';
-       END IF;
-       IF targetname is NULL THEN
-                raise notice  'ERROR: target column "%"  not found in %',target,tabname;
-                RETURN 'FAIL';
-       END IF;   
-       IF sourcename=targetname THEN
-                raise notice  'ERROR: source and target columns have the same name "%" in %',target,tabname;
-                RETURN 'FAIL';
-       END IF;
-       IF sourcename=idname THEN
-                raise notice  'ERROR: source and id columns have the same name "%" in %',target,tabname;
-                RETURN 'FAIL';
-       END IF;
-       IF targetname=idname THEN
-                raise notice  'ERROR: target and id columns have the same name "%" in %',target,tabname;
-                RETURN 'FAIL';
-       END IF;
-  
-  END;
+  BEGIN
+       select * into sourcetype from pgr_getColumnType(sname,tname,sourcename,1);
+       select * into targettype from pgr_getColumnType(sname,tname,targetname,1);
+--       select * into idtype from pgr_getColumnType(sname,tname,idname,1);
+
+--       perform pgr_onError(idtype not in('integer','smallint','bigint') , 2,
+--                       'pgr_createTopology',  'Wrong type of Column '|| idname, ' Expected type of '|| idname || ' is integer,smallint or bigint but '||idtype||' was found',
+--                       'Type of Column '|| idname || ' is ' || idtype);
+
+       perform pgr_onError(sourcetype not in('integer','smallint','bigint') , 2,
+                       'pgr_createTopology',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found',
+                       'Type of Column '|| sourcename || ' is ' || sourcetype);
+
+       perform pgr_onError(targettype not in('integer','smallint','bigint') , 2,
+                       'pgr_createTopology',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or biginti but '||targettype||' was found',
+                       'Type of Column '|| targetname || ' is ' || targettype);
+
+       raise debug '-->Column types:OK';
+       EXCEPTION WHEN raise_exception THEN
+          RAISE NOTICE 'ERROR: something went wrong checking the column types';
+          RETURN 'FAIL';
+   END;
+
+   BEGIN
+         query= 'SELECT ST_SRID(' || quote_ident(gname) || ') as srid '
+            || ' FROM ' || pgr_quote_ident(tabname)
+            || ' WHERE ' || quote_ident(gname)
+            || ' IS NOT NULL LIMIT 1';
+         EXECUTE QUERY INTO sridinfo;
+
+         perform pgr_onError( sridinfo IS NULL OR sridinfo.srid IS NULL,2,
+                 'Can not determine the srid of the geometry '|| gname ||' in table '||tabname, 'Check the geometry of column '||gname,
+                 'SRID of '||gname||' is '||sridinfo.srid);
+
+         IF sridinfo IS NULL OR sridinfo.srid IS NULL THEN
+             RAISE NOTICE ' Can not determine the srid of the geometry "%" in table %', the_geom,tabname;
+             RETURN 'FAIL';
+         END IF;
+         srid := sridinfo.srid;
+         raise DEBUG '-->Check geometry column: OK';
+         EXCEPTION WHEN OTHERS THEN
+             RAISE NOTICE 'ERROR: something went wrong when looking for SRID of % in table %', the_geom,tabname;
+             RETURN 'FAIL';
+    END;
 
 
     BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',sourcename,tabname;
-      if (pgr_isColumnIndexed(tabname,sourcename)) then 
-	RAISE DEBUG '  ------>OK';
-      else 
-        RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,sourcename;
-        execute 'create  index '||tname||'_'||sourcename||'_idx on '||tabname||' using btree('||quote_ident(sourcename)||')';
-      END IF;
-    END;
+       perform pgr_createIndex(tabname , idname , 'btree');
+       perform pgr_createIndex(tabname , sourcename , 'btree');
+       perform pgr_createIndex(tabname , targetname , 'btree');
+       perform pgr_createIndex(tabname , gname , 'gist');
+       raise DEBUG '-->Check indices: OK';
 
-    BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',targetname,tabname;
-      if (pgr_isColumnIndexed(tabname,targetname)) then 
-	RAISE DEBUG '  ------>OK';
-      else 
-        RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,targetname;
-        execute 'create  index '||tname||'_'||targetname||'_idx on '||tabname||' using btree('||quote_ident(targetname)||')';
-      END IF;
-    END;
-
-    BEGIN
-      RAISE DEBUG 'Cheking "%" column in % is indexed',gname,tabname;
-      if (pgr_iscolumnindexed(tabname,gname)) then 
-	RAISE DEBUG '  ------>OK';
-      else 
-        RAISE DEBUG ' ------> Adding unique index "%_%_gidx".',tabname,gname;
-        execute 'CREATE INDEX '
-            || quote_ident(tname || '_' || gname || '_gidx' )
-            || ' ON ' || tabname
-            || ' USING gist (' || quote_ident(gname) || ')';
-      END IF;
-    END;
-
-  
        gname=quote_ident(gname);
        sourcename=quote_ident(sourcename);
        targetname=quote_ident(targetname);
        idname=quote_ident(idname);
+       EXCEPTION WHEN raise_exception THEN
+          RAISE NOTICE 'ERROR: something went wrong creating indices';
+          RETURN 'FAIL';
+    END;
 
-    BEGIN
-       raise DEBUG 'Checking table %.% exists ',sname ,vname;
-       execute 'select * from pgr_getTableName('||quote_literal(vertname)||')' into naming;
-       IF sname=naming.sname  AND vname=naming.tname  THEN
-	   raise DEBUG  '  ------>OK';
-       ELSE
-           raise notice '   --->Table %.% does not exists',sname ,vname; 
-           raise notice '   --->Please create %.% using pgr_createTopology() or pgr_createVerticesTable()',sname ,vname;
-           return 'FAIL';
-       END IF;
-    END;       
-
+--checking vertices table
 
     BEGIN
         RAISE DEBUG 'Cheking for "cnt" and "chk" column in %',vertname;
