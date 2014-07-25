@@ -16,7 +16,7 @@ create table s3."Streets" (id serial ,source integer,target integer);
 create table s3."sTreets" (id serial ,source integer,target integer);
 create table s3."StrEets" (id serial ,source integer,target integer);
 
-set client_min_messages to notice;
+set client_min_messages to warning;
 
 select * from pgr_getTableName('StreEts'); 	--public.streets
 select * from pgr_getTableName('Streets');	--public.Streets

@@ -140,40 +140,12 @@ OK
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edges22','the_geom','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  -------> edges22 not found
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edges2','geom','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: Geometry column "geom"  not found in public.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edges2','the_geom','gid','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source column "gid"  not found in public.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edges2','the_geom','sourc','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source column "sourc"  not found in public.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','source','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source and target columns have the same name "source" in public.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edges2','the_geom','the_geom','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source column "the_geom" is not of integer type
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','the_geom','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: target column "the_geom" is not of integer type
 FAIL
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('Edges2','the_geom','source','target','true')
@@ -329,44 +301,22 @@ OK
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('public.edges22','the_geom','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  -------> public.edges22 not found
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('public.edges2','geom','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: Geometry column "geom"  not found in public.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('public.edges2','the_geom','gid','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source column "gid"  not found in public.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('public.Edges2','the_geom','sourc','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source column "sourc"  not found in public.Edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('public.edges2','the_geom','source','source','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source and target columns have the same name "source" in public.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('public.edges2','the_geom','the_geom','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source column "the_geom" is not of integer type
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('public.edges2','the_geom','source','the_geom','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: target column "the_geom" is not of integer type
 FAIL
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  ----> PGR ERROR in pgr_getTableName: Table myschema.edges2_vertices_pgr not found
+HINT:    ----> Check your table name
+CONTEXT:  SQL statement "SELECT pgr_onError(err, reportErrs, 'pgr_getTableName', 'Table ' || tab ||' not found',' Check your table name', 'Table '|| tab || ' found')"
+PL/pgSQL function pgr_gettablename(text,integer) line 63 at PERFORM
+SQL statement "select * from pgr_getTableName('myschema.edges2_vertices_pgr')"
+PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
  NOTICE:  Populating myschema.edges2_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
  NOTICE:                                         FOR   23  EDGES
@@ -485,40 +435,12 @@ OK
  NOTICE:  Vertices table for table myschema.edges2 is: myschema.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edges22','the_geom','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  -------> edges22 not found
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edges2','geom','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: Geometry column "geom"  not found in myschema.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edges2','the_geom','gid','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source column "gid"  not found in myschema.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edges2','the_geom','sourc','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source column "sourc"  not found in myschema.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','source','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source and target columns have the same name "source" in myschema.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edges2','the_geom','the_geom','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source column "the_geom" is not of integer type
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','the_geom','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: target column "the_geom" is not of integer type
 FAIL
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','eid<15')
@@ -554,21 +476,6 @@ where eid=6)')
  NOTICE:  Vertices table for table myschema."Edges2" is: myschema."Edges2_vertices_pgr"
  NOTICE:  ----------------------------------------------
 OK
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','eid<')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: Condition is not correct, please execute the following query to test your condition
- NOTICE:  select * from myschema.edges2 WHERE true AND (eid<) limit 1
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('Edges2','the_geom','source','target','eid<15 and ed>5')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: Condition is not correct, please execute the following query to test your condition
- NOTICE:  select * from myschema."Edges2" WHERE true AND (eid<15 and ed>5) limit 1
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('Edges2','the_geom','source','target',' the_geom && (select st_buffer(the_geom,0.0001 as buffer from "Edges2" where eid=6)')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: Condition is not correct, please execute the following query to test your condition
- NOTICE:  select * from myschema."Edges2" WHERE true AND ( the_geom && (select st_buffer(the_geom,0.0001 as buffer from "Edges2" where eid=6)) limit 1
 FAIL

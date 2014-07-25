@@ -13,7 +13,8 @@ BEGIN
        raise debug '----> PGR ERROR in %: %',functionname,msgerr USING HINT = '  ---->'|| hinto;
      else 
        if action = 2 then
-         raise EXCEPTION '----> PGR ERROR in %: %',functionname,msgerr USING HINT = '  ---->'|| hinto;
+         raise notice '----> PGR ERROR in %: %',functionname,msgerr USING HINT = '  ---->'|| hinto;
+         raise raise_exception;
        else
          raise notice '----> PGR ERROR in %: %',functionname,msgerr USING HINT = '  ---->'|| hinto;
        end if;

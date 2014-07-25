@@ -106,40 +106,12 @@ OK
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edges22',1e-06,'the_geom','eid','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  -------> edges22 not found
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edges2',1e-06,'geom','eid','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: Geometry column "geom"  not found in public.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','gid','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: id column "gid"  not found in public.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','eid','sourc','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source column "sourc"  not found in public.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','eid','source','source','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source and target columns have the same name "source" in public.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','eid','the_geom','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source column "the_geom" is not of integer type
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','eid','source','the_geom','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: target column "the_geom" is not of integer type
 FAIL
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('Edges2',1e-06,'the_geom','eid','source','target','true')
@@ -276,40 +248,12 @@ OK
  NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('public.edges22',1e-06,'the_geom','eid','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  -------> public.edges22 not found
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('public.edges2',1e-06,'geom','eid','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: Geometry column "geom"  not found in public.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('public.edges2',1e-06,'the_geom','gid','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: id column "gid"  not found in public.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('public.Edges2',1e-06,'the_geom','eid','sourc','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source column "sourc"  not found in public.Edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('public.edges2',1e-06,'the_geom','eid','source','source','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source and target columns have the same name "source" in public.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('public.edges2',1e-06,'the_geom','eid','the_geom','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source column "the_geom" is not of integer type
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('public.edges2',1e-06,'the_geom','eid','source','the_geom','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: target column "the_geom" is not of integer type
 FAIL
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','eid','source','target','true')
@@ -419,40 +363,12 @@ OK
  NOTICE:  Vertices table for table myschema.edges2 is: myschema.edges2_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edges22',1e-06,'the_geom','eid','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  -------> edges22 not found
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edges2',1e-06,'geom','eid','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: Geometry column "geom"  not found in myschema.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','gid','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: id column "gid"  not found in myschema.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','eid','sourc','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source column "sourc"  not found in myschema.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','eid','source','source','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source and target columns have the same name "source" in myschema.edges2
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','eid','the_geom','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: source column "the_geom" is not of integer type
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','eid','source','the_geom','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: target column "the_geom" is not of integer type
 FAIL
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','eid','source','target','eid<15')
@@ -481,21 +397,6 @@ OK
  NOTICE:  Vertices table for table myschema."Edges2" is: myschema."Edges2_vertices_pgr"
  NOTICE:  ----------------------------------------------
 OK
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edges2',1e-06,'the_geom','eid','source','target','eid<')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: Condition is not correct, please execute the following query to test your condition
- NOTICE:  select * from myschema.edges2 WHERE true AND (eid<) limit 1
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('Edges2',1e-06,'the_geom','eid','source','target','eid<15 and ed>5')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: Condition is not correct, please execute the following query to test your condition
- NOTICE:  select * from myschema."Edges2" WHERE true AND (eid<15 and ed>5) limit 1
 FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('Edges2',1e-06,'the_geom','eid','source','target',' the_geom && (select st_buffer(the_geom,0.0001 as buffer from "Edges2" where eid=6)')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: Condition is not correct, please execute the following query to test your condition
- NOTICE:  select * from myschema."Edges2" WHERE true AND ( the_geom && (select st_buffer(the_geom,0.0001 as buffer from "Edges2" where eid=6)) limit 1
 FAIL

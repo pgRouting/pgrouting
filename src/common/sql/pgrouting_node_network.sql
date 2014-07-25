@@ -41,7 +41,7 @@ BEGIN
 
   BEGIN
     RAISE DEBUG 'Cheking % exists',edge_table;
-    execute 'select * from pgr_getTableName('||quote_literal(edge_table)||')' into naming;
+    execute 'select * from pgr_getTableName('||quote_literal(edge_table)||',0)' into naming;
     sname=naming.sname;
     tname=naming.tname;
     IF sname IS NULL OR tname IS NULL THEN
@@ -128,7 +128,7 @@ BEGIN
 ---------------
     BEGIN
        raise DEBUG 'initializing %',outtab;
-       execute 'select * from pgr_getTableName('||quote_literal(outtab)||')' into naming;
+       execute 'select * from pgr_getTableName('||quote_literal(outtab)||',0)' into naming;
        IF sname=naming.sname  AND outname=naming.tname  THEN
            execute 'TRUNCATE TABLE '||pgr_quote_ident(outtab)||' RESTART IDENTITY';
            execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(outname)||','||quote_literal(n_geom)||')';
