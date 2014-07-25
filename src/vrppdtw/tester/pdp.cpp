@@ -30,6 +30,7 @@
 //Headers Include
 #include "./pdp.h"
 #include "./Solution.h"
+#include "./Route.h"
 
 int PickupLength=0;
 
@@ -39,7 +40,7 @@ depot d;
 VehicleInfo Vehicle;
 //Customer Data
 customer c[1000];
-        pickup p[600];
+pickup p[600];
 int len=0;
 
 Route r[500];
