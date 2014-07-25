@@ -75,7 +75,8 @@ int main()
         //Sort Pickup's
         int swap;
         double swap1;
-        for(int i=1;i<=PickupLength;i++){
+        for(int i=1;i<=PickupLength;i++)
+        {
                 for(int j=1;j<=PickupLength-i;j++){
                         if(p[j].Ddist>p[j+1].Ddist){
                                 swap1=p[j].Ddist;
@@ -157,16 +158,12 @@ int main()
         }
         printf("Size  =>>  S0.r.size=%d\n",S0.r.size());
 
-
         //Starting Neighborhoods
         printf("\nNeighborhoods From now\n");
         TabuSearch();
         return 0;
 }
-
 int n=0,maxItr=30;
-
-
 
 void TabuSearch()
 {
@@ -210,9 +207,9 @@ void TabuSearch()
         SBest = S0;
         T.clear();
         T.push_back(S0);
-                S = S.getBestofNeighborhood(S,c,d,p,CustomerLength,PickupLength);
         while(1)
         {
+                S = S.getBestofNeighborhood(S,c,d,p,CustomerLength,PickupLength);
                 if(S.getCost()==0)
                         break;
                 if (S.getCost() < CBest){
@@ -220,11 +217,22 @@ void TabuSearch()
                         CBest = S.getCost();
                         T.push_back(S);
                 }   
+                else if(S.getCost() == CBest )
+                {
+                        printf("\n****************Repeated Solution****************\n");
+                        int k= ((12)*maxItr)/100;
+                        maxItr = maxItr-k;
+                        printf("Maxitr after repeating %d k =%d\n",maxItr,k);
+                }
                 n++;
                 if (n > maxItr)
                         break;
         }
-        printf("Size of Tabu ==>>> %d\n",T.size());
+        printf("Size of Tabu=%d &&& n=%d  maxItr=%d\n",T.size(),n,maxItr);
+        for(int itr=0;itr<T.size();itr++)
+        {
+                T[itr].dump();
+        }
         return;
 }
 

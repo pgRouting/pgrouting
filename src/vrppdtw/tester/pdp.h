@@ -214,7 +214,6 @@ int  Route::RemoveOrder(Pickup p){
                 order[i]=new_order[i];
         }
         path_length=new_length;
-        printf("!!!!!!!!!!!!!Removed Order baby  with Pid=%d    New Length = %d  !!!!!!!!!!!!!!!!!\n",p.Pid,path_length);
         return 1;
         }
         else
@@ -341,8 +340,8 @@ int Route::insertOrder(customer *c, depot d, Pickup p)
         }
 
         twv=0,cv=0,dis=0;
-        print(); 
         update(c,d);        
+        print(); 
         if(twv>0 || cv>0 || dis> d.Ltime)
         { 
                 return 1;

@@ -43,15 +43,21 @@ class Neighborhoods{
 
 void Solution::UpdateSol()
 {
-        route_length=0,cost_total=0,twv_total=0,cv_total=0,dis_total=0;
-
+        cost_total=0,twv_total=0,cv_total=0,dis_total=0;
+        int routes_del=0;
         for(int i=0;i<route_length;i++)
         {
                 twv_total+=r[i].twv;
                 dis_total+=r[i].dis;
                 cv_total+=r[i].cv;
                 cost_total+=r[i].cost();
+                if(r[i].path_length==0)
+                {
+                        routes_del++;
+                        r.erase(r.begin()+i);   
+                }
         }
+        route_length=route_length-routes_del;
         return;
 }
 
@@ -65,7 +71,8 @@ void Solution::dump(){
         printf("Routes \n",route_length);
         for(int i=0;i<route_length;i++)
         {
-                printf("Route::%d   [ ",i);
+                printf("Route::%d  ",i);
+                printf("TWV=%d  CV=%d DIS=%d [ ",r[i].twv,r[i].cv,r[i].dis);
                 for(int j=0;j<r[i].path_length;j++)
                 {
                         printf("%d ",r[i].path[j]);
@@ -78,7 +85,7 @@ double Solution::getCost(){
         cost_total=0;
         for(int i=0;i<r.size();i++)
         {
-                cost_total+=r[i].dis;
+                cost_total+=r[i].cost();
         }
         return cost_total;
 }
@@ -104,12 +111,10 @@ Solution Neighborhoods::BestSPI(Solution S, customer *c, depot d, Pickup *p,  in
         {
                 OrderRequests[order]=p[order];
         }
-        printf("Routes Size  %d\n",BestSol.r.size());
 
         //Main SPI
-        for(int order=PickupLength;order>=1;order--)
+        for(int order=1;order<=PickupLength;order++)
         {
-                int rflag=0;
                 //Order Find and Remove it! 
                 for(int route_remove=0;route_remove<CurrSol.r.size();route_remove++)
                 {                                
@@ -117,51 +122,38 @@ Solution Neighborhoods::BestSPI(Solution S, customer *c, depot d, Pickup *p,  in
                         TempSol=CurrSol;
                         if(Ro_flag==1)
                         {
-                                //Insert, Hill climb, Total Cost, (if it is more copy back the solution) ,  (else store best=temp, checked=2, break )            
+                                //Insert, Total Cost, (if it is more copy back the solution) ,  (else store best=temp, checked=2, break )          
                                 for(int route=0;route<CurrSol.r.size();route++)
                                 {
                                         TempState=CurrSol.r[route].append(c,OrderRequests[order],d,CustomerLength, PickupLength,TempState);
                                         Hc_flag=CurrSol.r[route].insertOrder(c,d,OrderRequests[order]);
-                                        printf("After Inserting into route %d with HC=%d  twv=%d \n",route,Hc_flag,CurrSol.r[route].twv);
-                                        CurrSol.r[route].print();
+                                        // Hc flag tells us about insertion
                                         if(Hc_flag==0)
                                         {
-                                                //Feasible solution
-                                                printf("-->Feasible Solution\n");
-                                                printf("-->CurrCost =%lf  BestCost=%lf \n",CurrSol.getCost(),BestSol.getCost());
-                                                CurrSol.dump();
-                                                if(CurrSol.getCost() > BestSol.getCost())
+                                                if(CurrSol.r[route].cost() <= BestSol.r[route].cost())
                                                 {
-                                                        CurrSol=TempSol;
-                                                }
-                                                else
-                                                {
+                                                        CurrSol.UpdateSol();
                                                         BestSol=CurrSol;
-                                                        for(int z=0;z<CurrSol.r.size();z++)
-                                                        {
-                                                                CurrSol.UpdateSol();
-                                                                BestSol.r[z]= CurrSol.r[z];
-
-                                                                BestSol.cost_total= CurrSol.cost_total;
-                                                                BestSol.dis_total=CurrSol.dis_total;
-                                                                BestSol.twv_total=CurrSol.twv_total;
-                                                                BestSol.cv_total=CurrSol.cv_total;
-                                                        }
-
-                                                        OrderRequests[order].checked=2;
                                                 }
                                         }
-                                        else
-                                        {
-                                                CurrSol=TempSol;
-                                        }
-                                }
+                                        TempSol.UpdateSol();
+                                        CurrSol=TempSol;
+                                        //   CurrSol = BestSol;
+                                }        
+                                BestSol.UpdateSol();
+                                CurrSol = BestSol;
+                                break;
+                        }
+                        else
+                        {
+                                continue;
                         }
                 }
         }
-        CurrSol.dump();
+        BestSol.UpdateSol();
         return BestSol;
-
 }
+
+
 
 #endif 
