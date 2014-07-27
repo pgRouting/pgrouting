@@ -13,7 +13,7 @@
 #include "access/htup_details.h"
 #include "fmgr.h"
 #endif
-*/
+ */
 
 #include <vector>
 #include <map>
@@ -26,14 +26,11 @@
 #include "math.h"
 
 
-
-
-
-
-
 using namespace std;
 
 
+
+// Structures and variables which help us in storing the data
 
 int VehicleCount;
 int Capacity;
@@ -88,11 +85,14 @@ typedef struct Vehicle{
 }VehicleInfo;
 
 
+// A module which calculates distance 
 double CalculateDistance(int x1,int y1,int x2,int y2)
 {
         return sqrt(((x2-x1)*(x2-x1))+((y2-y1)*(y2-y1)));
 }
 
+
+// DEPOT:  With id=0
 depot ScanDepot(depot d)
 {
 
@@ -108,6 +108,41 @@ depot ScanDepot(depot d)
         return d;
 }
 
+static int fetch_distance_columns(SPITupleTable *tuptable, customer *c)
+{
+        DBG("Customer Data");
+
+        c->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
+        c->x = SPI_fnumber(SPI_tuptable->tupdesc, "x");
+        c->y = SPI_fnumber(SPI_tuptable->tupdesc, "y");
+        c->demand = SPI_fnumber(SPI_tuptable->tupdesc, "demand");
+        c->Etime = SPI_fnumber(SPI_tuptable->tupdesc, "Etime");
+        c->Ltime = SPI_fnumber(SPI_tuptable->tupdesc, "Ltime");
+        c->Stime = SPI_fnumber(SPI_tuptable->tupdesc, "Stime");
+        c->Pindex = SPI_fnumber(SPI_tuptable->tupdesc, "Pindex");
+        c->Dindex = SPI_fnumber(SPI_tuptable->tupdesc, "Dindex");
+        if (c->id == SPI_ERROR_NOATTRIBUTE ||
+                        c->x == SPI_ERROR_NOATTRIBUTE ||
+                        c->y == SPI_ERROR_NOATTRIBUTE ||
+                        c->demand == SPI_ERROR_NOATTRIBUTE ||
+                        c->Ltime == SPI_ERROR_NOATTRIBUTE ||
+                        c->Stime == SPI_ERROR_NOATTRIBUTE ||
+                        c->Pindex == SPI_ERROR_NOATTRIBUTE ||
+                        c->Dindex == SPI_ERROR_NOATTRIBUTE ||
+                        c->Etime == SPI_ERROR_NOATTRIBUTE)
+        {
+                elog(ERROR, "Error, query must return columns "
+                                "'id', 'x','y','demand', 'Etime',  'Ltime', 'Stime', 'Pindex',  and 'Dindex'");
+                return -1;
+        }
+
+        return 0;
+}
+
+
+
+
+// CUSTOMER: WITH id>=1
 customer ScanCustomer(int id,customer c,depot d)
 {
         c.id=id;
@@ -133,6 +168,8 @@ customer ScanCustomer(int id,customer c,depot d)
         return c;
 }
 
+
+//VEHICLE: First Line contains vehicle data
 VehicleInfo ScanVehicle(VehicleInfo Vehicle)
 {
         scanf("%d",&Vehicle.given_vehicles);
@@ -149,6 +186,8 @@ int temp=0;
 int CustomerLength=0;
 int OrderLength=0;
 
+
+// Part of code: It is used to save some variables and helps if we need to revisit previous state.
 typedef struct statesave{
         int twv;
         int cv;
@@ -159,6 +198,26 @@ typedef struct statesave{
         int order[1000];
         int path_length;
 }State;
+
+
+//SPI code 
+
+static int conn(int *SPIcode)
+{
+        int res = 0;
+
+        *SPIcode = SPI_connect();
+
+        if (*SPIcode  != SPI_OK_CONNECT)
+        {
+                elog(ERROR, "vrp: couldn't open a connection to SPI");
+                res = -1;
+        }
+
+        return res;
+}
+
+
 
 
 #endif
