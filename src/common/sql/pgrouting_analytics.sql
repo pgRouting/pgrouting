@@ -76,8 +76,6 @@ DECLARE
     targettype text;
     geotype text;
     gname text;
-    cntname text;
-    chkname text;
     tabName text;
     flag boolean ;
     query text;
@@ -102,33 +100,34 @@ BEGIN
 
   raise notice 'Performing checks, pelase wait ...';
   BEGIN
+    raise debug 'Checking existance of Edge table';
     execute 'select * from pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
-
     sname=naming.sname;
     tname=naming.tname;
     tabname=sname||'.'||tname;
     vname=tname||'_vertices_pgr';
     vertname= sname||'.'||vname;
     rows_where = ' AND ('||rows_where||')';
-    raise debug '--> Edge table exists: OK';
+    raise DEBUG '     --> OK';
     EXCEPTION WHEN raise_exception THEN
       RAISE NOTICE 'ERROR: something went wrong checking the table name';
       RETURN 'FAIL';
   END;
 
   BEGIN
-       raise DEBUG 'Checking table %.% exists ',sname ,vname;
-       execute 'select * from pgr_getTableName('||quote_literal(vertname)||',2)' into naming;
-       raise DEBUG  '  ------>OK';
+       raise debug 'Checking Vertices table';
+       execute 'select * from  pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","cnt","chk"}''::text[])' into naming;
+       execute 'UPDATE '||pgr_quote_ident(vertname)||' SET cnt=0 ,chk=0';		
+       raise DEBUG '     --> OK';
        EXCEPTION WHEN raise_exception THEN
-           raise notice '   --->Table %.% does not exists',sname ,vname; 
-           raise notice '   --->Please create %.% using pgr_createTopology() or pgr_createVerticesTable()',sname ,vname;
-           return 'FAIL';
-  END;       
+          RAISE NOTICE 'ERROR: something went wrong checking the vertices table';
+          RETURN 'FAIL';
+  END;
 
+    
 
   BEGIN
-       raise debug 'Checking column names,types,and indices in edge table';
+       raise debug 'Checking column names in edge table';
        select * into idname     from pgr_getColumnName(sname, tname,id,2);
        select * into sourcename from pgr_getColumnName(sname, tname,source,2);
        select * into targetname from pgr_getColumnName(sname, tname,target,2);
@@ -139,7 +138,7 @@ BEGIN
                        'pgr_createToplogy',  'Two columns share the same name', 'Parameter names for id,the_geom,source and target  must be different',
                        'Column names are OK');
 
-       raise debug '--> Column names: OK';
+        raise DEBUG '     --> OK';
        EXCEPTION WHEN raise_exception THEN
           RAISE NOTICE 'ERROR: something went wrong checking the column names';
           RETURN 'FAIL';
@@ -147,13 +146,9 @@ BEGIN
 
 
   BEGIN
+       raise debug 'Checking column types in edge table';
        select * into sourcetype from pgr_getColumnType(sname,tname,sourcename,1);
        select * into targettype from pgr_getColumnType(sname,tname,targetname,1);
---       select * into idtype from pgr_getColumnType(sname,tname,idname,1);
-
---       perform pgr_onError(idtype not in('integer','smallint','bigint') , 2,
---                       'pgr_createTopology',  'Wrong type of Column '|| idname, ' Expected type of '|| idname || ' is integer,smallint or bigint but '||idtype||' was found',
---                       'Type of Column '|| idname || ' is ' || idtype);
 
        perform pgr_onError(sourcetype not in('integer','smallint','bigint') , 2,
                        'pgr_createTopology',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found',
@@ -163,13 +158,14 @@ BEGIN
                        'pgr_createTopology',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or biginti but '||targettype||' was found',
                        'Type of Column '|| targetname || ' is ' || targettype);
 
-       raise debug '-->Column types:OK';
+       raise DEBUG '     --> OK';
        EXCEPTION WHEN raise_exception THEN
           RAISE NOTICE 'ERROR: something went wrong checking the column types';
           RETURN 'FAIL';
    END;
 
    BEGIN
+       raise debug 'Checking SRID of geometry column';
          query= 'SELECT ST_SRID(' || quote_ident(gname) || ') as srid '
             || ' FROM ' || pgr_quote_ident(tabname)
             || ' WHERE ' || quote_ident(gname)
@@ -185,14 +181,15 @@ BEGIN
              RETURN 'FAIL';
          END IF;
          srid := sridinfo.srid;
-         raise DEBUG '-->Check geometry column: OK';
+         raise DEBUG '     --> OK';
          EXCEPTION WHEN OTHERS THEN
-             RAISE NOTICE 'ERROR: something went wrong when looking for SRID of % in table %', the_geom,tabname;
+             RAISE NOTICE 'ERROR: something went wrong when checking for SRID of % in table %', the_geom,tabname;
              RETURN 'FAIL';
     END;
 
 
     BEGIN
+       raise debug 'Checking  indices in edge table';
        perform pgr_createIndex(tabname , idname , 'btree');
        perform pgr_createIndex(tabname , sourcename , 'btree');
        perform pgr_createIndex(tabname , targetname , 'btree');
@@ -203,60 +200,22 @@ BEGIN
        sourcename=quote_ident(sourcename);
        targetname=quote_ident(targetname);
        idname=quote_ident(idname);
+       raise DEBUG '     --> OK';
        EXCEPTION WHEN raise_exception THEN
-          RAISE NOTICE 'ERROR: something went wrong creating indices';
+          RAISE NOTICE 'ERROR: something went wrong checking indices';
           RETURN 'FAIL';
     END;
 
---checking vertices table
 
-    BEGIN
-        RAISE DEBUG 'Cheking for "cnt" and "chk" column in %',vertname;
-        execute 'select pgr_getcolumnName('||quote_literal(vertname)||','||quote_literal('cnt')||')' into cntname;
-        execute 'select pgr_getcolumnName('||quote_literal(vertname)||','||quote_literal('chk')||')' into chkname;
-        if cntname is not null and chkname is not null then
-		cntname=quote_ident(cntname);
-		RAISE DEBUG '  ------>OK';
-	else if cntname is not null	then
-		RAISE NOTICE '  ------>Adding "cnt" column in %',vertname;
-        set client_min_messages  to warning;
-		execute 'ALTER TABLE '||pgr_quote_ident(vertname)||' ADD COLUMN cnt integer';
-        execute 'set client_min_messages  to '|| debuglevel;
-		cntname=quote_ident('cnt');
-             end if;
-             if chkname is not null then
-		RAISE DEBUG '  ------>Adding "chk" column in %',vertname;
-        set client_min_messages  to warning;
-		execute 'ALTER TABLE '||pgr_quote_ident(vertname)||' ADD COLUMN chk integer';
-        execute 'set client_min_messages  to '|| debuglevel;
-		cntname=quote_ident('chk');
-             end if;
-	END IF;
-	execute 'UPDATE '||pgr_quote_ident(vertname)||' SET '||cntname||'=0 ,'||chkname||'=0';		
-    END;
-
-
-    BEGIN
-      RAISE DEBUG 'Cheking "id" column in % is indexed',vertname;
-      if (pgr_iscolumnindexed(vertname,'id')) then 
-	RAISE DEBUG '  ------>OK';
-      else 
-        RAISE DEBUG ' ------> Adding unique index "%_vertices_id_idx".',vname;
-        set client_min_messages  to warning;
-        execute 'create unique index '||vname||'_id_idx on '||pgr_quote_ident(vertname)||' using btree(id)';
-        execute 'set client_min_messages  to '|| debuglevel;
-      END IF;
-    END;
-    
     BEGIN
         query='select count(*) from '||pgr_quote_ident(tabname)||' where true  '||rows_where;
         EXECUTE query into ecnt;
+        raise DEBUG '-->Rows Where condition: OK';
+        raise DEBUG '     --> OK';
          EXCEPTION WHEN OTHERS THEN 
-         BEGIN 
             RAISE NOTICE 'ERROR: Condition is not correct. Please execute the following query to test your condition'; 
             RAISE NOTICE '%',query;
             RETURN 'FAIL'; 
-        END;
     END;    
 
     selectionquery ='with 
@@ -281,12 +240,16 @@ BEGIN
                                    from ('||pgr_quote_ident(vertname)||' as a left 
                                    join countingsource as t using(id) ) left join countingtarget using(id))
                update '||pgr_quote_ident(vertname)||' as a set cnt=totcnt from totalcount as b where a.id=b.id';
-        raise debug '%',query;
-        execute query;
-        query=selectionquery||'
+       raise debug '%',query;
+       execute query;
+       query=selectionquery||'
               SELECT count(*)  FROM '||pgr_quote_ident(vertname)||' WHERE cnt=1 and id in (select id from selectedRows)';
-        raise debug '%',query;
-        execute query  INTO numdeadends;
+       raise debug '%',query;
+       execute query  INTO numdeadends;
+       raise DEBUG '     --> OK';
+       EXCEPTION WHEN raise_exception THEN
+          RAISE NOTICE 'ERROR: something went wrong when analizing for dead ends';
+          RETURN 'FAIL';
    END;
 
 
@@ -300,9 +263,13 @@ BEGIN
                    join buffer as b on (a.'||gname||'&&b.buff)  
                    where '||sourcename||'!=b.id and '||targetname||'!=b.id )
                    update '||pgr_quote_ident(vertname)||' set chk=1 where id in (select distinct id from veryclose where flag=true)'; 
-          raise debug '%' ,query; 
+          raise debug '%' ,query;
           execute query; 
           GET DIAGNOSTICS  numgaps= ROW_COUNT; 
+          raise DEBUG '     --> OK';
+          EXCEPTION WHEN raise_exception THEN
+            RAISE NOTICE 'ERROR: something went wrong when Analyzing for gaps';
+            RETURN 'FAIL';
     END; 
     
     BEGIN
@@ -315,6 +282,10 @@ BEGIN
                             AND c.cnt=1';
         raise debug '%' ,query; 
         execute query  INTO NumIsolated; 
+        raise DEBUG '     --> OK';
+        EXCEPTION WHEN raise_exception THEN
+            RAISE NOTICE 'ERROR: something went wrong when Analyzing for isolated edges';
+            RETURN 'FAIL';
     END;
 
     BEGIN
@@ -330,6 +301,10 @@ BEGIN
             raise debug '%' ,query; 
             execute query  INTO numRings; 
         END IF; 
+        raise DEBUG '     --> OK';
+        EXCEPTION WHEN raise_exception THEN
+            RAISE NOTICE 'ERROR: something went wrong when Analyzing for ring geometries';
+            RETURN 'FAIL';
     END;
 
     BEGIN
@@ -347,6 +322,10 @@ BEGIN
                                         and st_intersects(a.'||gname||', b.'||gname||')=true) as d '; 
         raise debug '%' ,query;
         execute query  INTO numCrossing;
+        raise DEBUG '     --> OK';
+        EXCEPTION WHEN raise_exception THEN
+            RAISE NOTICE 'ERROR: something went wrong when Analyzing for intersections';
+            RETURN 'FAIL';
     END;
 
 
@@ -467,8 +446,6 @@ DECLARE
     sourcetype text;
     targettype text;
     vertname text;
-    einname text;
-    eoutname text;
     debuglevel text;
 
 
@@ -479,124 +456,67 @@ BEGIN
   execute 'show client_min_messages' into debuglevel;
 
   BEGIN
-    RAISE DEBUG 'Cheking % exists',edge_table;
-    execute 'select * from pgr_getTableName('||quote_literal(edge_table)||')' into naming;
+    raise debug 'Checking existance of Edge table';
+    execute 'select * from pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
     sname=naming.sname;
     tname=naming.tname;
-    IF sname IS NULL OR tname IS NULL THEN
-        RAISE NOTICE '-------> % not found',edge_table;
-        RETURN 'FAIL';
-    ELSE
-        RAISE DEBUG '  -----> OK';
-    END IF;
-  
     tabname=sname||'.'||tname;
     vname=tname||'_vertices_pgr';
     vertname= sname||'.'||vname;
+    raise DEBUG '     --> OK';
+    EXCEPTION WHEN raise_exception THEN
+      RAISE NOTICE 'ERROR: something went wrong checking the table name';
+      RETURN 'FAIL';
+  END;
+
+  BEGIN
+       raise debug 'Checking Vertices table';
+       execute 'select * from  pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::text[])' into naming;
+       execute 'UPDATE '||pgr_quote_ident(vertname)||' SET eout=0 ,ein=0';
+       raise DEBUG '     --> OK';
+       EXCEPTION WHEN raise_exception THEN
+          RAISE NOTICE 'ERROR: something went wrong checking the vertices table';
+          RETURN 'FAIL';
   END;
 
 
-  BEGIN 
-       raise DEBUG 'Checking oneway, source column "%" and target column "%"  in  % ',source,target,tabname;
-       EXECUTE 'select  pgr_getColumnName('||quote_literal(tabname)||','||quote_literal(source)||')' INTO sourcename;
-       EXECUTE 'select  pgr_getColumnName('||quote_literal(tabname)||','||quote_literal(oneway)||')' INTO owname;
-       EXECUTE 'select  pgr_getColumnName('||quote_literal(tabname)||','||quote_literal(target)||')' INTO targetname;
-       IF sourcename is not NULL and targetname is not NULL then
-                --check that the are integer
-                EXECUTE 'select data_type  from information_schema.columns where table_name = '||quote_literal(tname)||
-                        ' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(sourcename) into sourcetype;
-                EXECUTE 'select data_type  from information_schema.columns where table_name = '||quote_literal(tname)||
-                        ' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(targetname) into targettype;
-                IF sourcetype not in('integer','smallint','bigint')  THEN
-                    raise notice  'ERROR: source column "%" is not of integer type',sourcename;
-                    RETURN 'FAIL';
-                END IF;
-                IF targettype not in('integer','smallint','bigint')  THEN
-                    raise notice  'ERROR: target column "%" is not of integer type',targetname;
-                    RETURN 'FAIL';
-                END IF;
-                raise DEBUG  '  ------>OK '; 
-       END IF;
-       IF owname is NULL THEN
-                raise notice  'ERROR: oneway column "%"  not found in %',oneway,tabname;
-                RETURN 'FAIL';
-       END IF;
-       IF sourcename is NULL THEN
-                raise notice  'ERROR: source column "%"  not found in %',source,tabname;
-                RETURN 'FAIL';
-       END IF;
-       IF targetname is NULL THEN
-                raise notice  'ERROR: target column "%"  not found in %',target,tabname;
-                RETURN 'FAIL';
-       END IF;   
-       IF sourcename=targetname THEN
-                raise notice  'ERROR: source and target columns have the same name "%" in %',target,tabname;
-                RETURN 'FAIL';
-       END IF;
-       IF sourcename=owname THEN
-                raise notice  'ERROR: source and owname columns have the same name "%" in %',source,tabname;
-                RETURN 'FAIL';
-       END IF;
-       IF targetname=owname THEN
-                raise notice  'ERROR: target and owname columns have the same name "%" in %',target,tabname;
-                RETURN 'FAIL';
-       END IF;
-       sourcename=quote_ident(sourcename);
-       targetname=quote_ident(targetname);
-       owname=quote_ident(owname);
-  
+  BEGIN
+       raise debug 'Checking column names in edge table';
+       select * into sourcename from pgr_getColumnName(sname, tname,source,2);
+       select * into targetname from pgr_getColumnName(sname, tname,target,2);
+       select * into owname from pgr_getColumnName(sname, tname,oneway,2);
+
+
+       perform pgr_onError( sourcename in (targetname,owname) or  targetname=owname, 2,
+                       'pgr_createToplogy',  'Two columns share the same name', 'Parameter names for oneway,source and target  must be different',
+                       'Column names are OK');
+
+       raise DEBUG '     --> OK';
+       EXCEPTION WHEN raise_exception THEN
+          RAISE NOTICE 'ERROR: something went wrong checking the column names';
+          RETURN 'FAIL';
   END;
 
-
-    BEGIN
-       raise DEBUG 'Checking table %.% exists ',sname ,vname;
-       execute 'select * from pgr_getTableName('||quote_literal(sname||'.'||vname)||')' into naming;
-      vname=naming.tname;
-      vertname=sname||'.'||vname;
-       IF naming.sname is not NULL and  naming.tname IS NOT NULL then
-           raise DEBUG  '  ------>OK';
-       ELSE
-           raise notice '   --->Table %.% does not exists',sname ,vname;
-           raise exception '   --->Please create %.% using pgr_createTopology() or pgr_makeVerticesTable()',sname ,vname;
-       END IF;
-    END;
+  BEGIN
+       raise debug 'Checking column types in edge table';
+       select * into sourcetype from pgr_getColumnType(sname,tname,sourcename,1);
+       select * into targettype from pgr_getColumnType(sname,tname,targetname,1);
 
 
-    BEGIN
-        RAISE DEBUG 'Cheking for "ein" column in %',vertname;
-        execute 'select pgr_getcolumnName('||quote_literal(vertname)||','||quote_literal('ein')||')' into einname;
-        if einname is not null then
-                einname=quote_ident(einname);
-                RAISE DEBUG '  ------>OK';
-        else
-                RAISE DEBUG '  ------>Adding "ein" column in %',vertname;
-                set client_min_messages  to warning;
-                execute 'ALTER TABLE '||pgr_quote_ident(vertname)||' ADD COLUMN ein integer';
-                execute 'set client_min_messages  to '|| debuglevel;
-                einname=quote_ident('ein');
-        END IF;
-    END;
+       perform pgr_onError(sourcetype not in('integer','smallint','bigint') , 2,
+                       'pgr_createTopology',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found',
+                       'Type of Column '|| sourcename || ' is ' || sourcetype);
 
+       perform pgr_onError(targettype not in('integer','smallint','bigint') , 2,
+                       'pgr_createTopology',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or biginti but '||targettype||' was found',
+                       'Type of Column '|| targetname || ' is ' || targettype);
 
-    BEGIN
-        RAISE DEBUG 'Cheking for "eout" column in %',vertname;
-        execute 'select pgr_getcolumnName('||quote_literal(vertname)||','||quote_literal('eout')||')' into eoutname;
-        if eoutname is not null then
-                eoutname=quote_ident(eoutname);
-                RAISE DEBUG '  ------>OK';
-        else
-                RAISE DEBUG '  ------>Adding "eout" column in %',verticesTable;
-                set client_min_messages  to warning;
-                execute 'ALTER TABLE '||pgr_quote_ident(vertname)||' ADD COLUMN eout integer';
-                execute 'set client_min_messages  to '|| debuglevel;
-                eoutname=quote_ident('eout');
-        END IF;
-    END;
+       raise DEBUG '     --> OK';
+       EXCEPTION WHEN raise_exception THEN
+          RAISE NOTICE 'ERROR: something went wrong checking the column types';
+          RETURN 'FAIL';
+   END;
 
-    BEGIN
-      RAISE DEBUG 'Zeroing columns "ein" and "eout" on "%".', vertname;
-      execute 'UPDATE '||pgr_quote_ident(vertname)||' SET '||einname||'=0, '||eoutname||'=0';
-    END;
 
 
     RAISE NOTICE 'Analyzing graph for one way street errors.';
@@ -606,7 +526,7 @@ BEGIN
             ELSE '' END;
 
     instr := '''' || array_to_string(s_in_rules, ''',''') || '''';
-       EXECUTE 'update '||pgr_quote_ident(vertname)||' a set '||einname||'=coalesce('||einname||',0)+b.cnt
+       EXECUTE 'update '||pgr_quote_ident(vertname)||' a set ein=coalesce(ein,0)+b.cnt
       from (
          select '|| sourcename ||', count(*) as cnt 
            from '|| tabname ||' 
@@ -617,7 +537,7 @@ BEGIN
     RAISE NOTICE 'Analysis 25%% complete ...';
 
     instr := '''' || array_to_string(t_in_rules, ''',''') || '''';
-    EXECUTE 'update '||pgr_quote_ident(vertname)||' a set '||einname||'=coalesce('||einname||',0)+b.cnt
+    EXECUTE 'update '||pgr_quote_ident(vertname)||' a set ein=coalesce(ein,0)+b.cnt
         from (
          select '|| targetname ||', count(*) as cnt 
            from '|| tabname ||' 
@@ -628,7 +548,7 @@ BEGIN
     RAISE NOTICE 'Analysis 50%% complete ...';
 
     instr := '''' || array_to_string(s_out_rules, ''',''') || '''';
-    EXECUTE 'update '||pgr_quote_ident(vertname)||' a set '||eoutname||'=coalesce('||eoutname||',0)+b.cnt
+    EXECUTE 'update '||pgr_quote_ident(vertname)||' a set eout=coalesce(eout,0)+b.cnt
         from (
          select '|| sourcename ||', count(*) as cnt 
            from '|| tabname ||' 
@@ -638,7 +558,7 @@ BEGIN
     RAISE NOTICE 'Analysis 75%% complete ...';
 
     instr := '''' || array_to_string(t_out_rules, ''',''') || '''';
-    EXECUTE 'update '||pgr_quote_ident(vertname)||' a set '||eoutname||'=coalesce('||eoutname||',0)+b.cnt
+    EXECUTE 'update '||pgr_quote_ident(vertname)||' a set eout=coalesce(eout,0)+b.cnt
         from (
          select '|| targetname ||', count(*) as cnt 
            from '|| tabname ||' 

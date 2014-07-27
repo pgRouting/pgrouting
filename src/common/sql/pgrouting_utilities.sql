@@ -204,6 +204,52 @@ COMMENT ON FUNCTION pgr_getColumnName(text,text,int) IS 'args: tab,col -gets the
 
 /*
 */
+CREATE OR REPLACE FUNCTION pgr_checkVertTab(vertname text, columns  text[], reporterrs integer default 1,OUT sname text,OUT vname text)
+RETURNS record AS
+$BODY$
+DECLARE
+    cname text;
+    colname text;
+    naming record;
+    debuglevel text;
+    err boolean;
+--checking vertices table
+
+BEGIN
+   execute 'show client_min_messages' into debuglevel;
+
+
+    BEGIN
+       raise DEBUG 'Checking table % exists ',vertname;
+       execute 'select * from pgr_getTableName('||quote_literal(vertname)||',2)' into naming;
+       sname=naming.sname;
+       vname=naming.tname;
+       EXCEPTION WHEN raise_exception THEN
+           raise notice '   --->Please create % using pgr_createTopology() or pgr_createVerticesTable()',vertname;
+    END;
+
+   FOREACH cname IN ARRAY columns loop
+      raise debug 'checking ---> %',cname;
+       execute 'select pgr_getcolumnName('||quote_literal(vertname)||','||quote_literal(cname)||',0)' into colname;
+       if colname is null     then
+         RAISE debug '  ------>Adding % column in %',cname,vertname;
+         set client_min_messages  to warning;
+                execute 'ALTER TABLE '||pgr_quote_ident(vertname)||' ADD COLUMN '||cname|| ' integer';
+         execute 'set client_min_messages  to '|| debuglevel;
+        end if;
+  end loop;
+  perform pgr_createIndex(vertname , 'id' , 'btree');
+
+ END
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
+
+
+
+
+
+/*
+*/
 CREATE OR REPLACE FUNCTION pgr_getColumnType(sname text, tname text, cname text, IN reportErrs int default 1)
 RETURNS text AS
 $BODY$
