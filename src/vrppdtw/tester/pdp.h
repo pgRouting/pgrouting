@@ -3,17 +3,32 @@
 #define _PDP_H
 
 
+
+/*
+#include "postgres.h"
+#include "executor/spi.h"
+#include "funcapi.h"
+#include "catalog/pg_type.h"
+#if PGSQL_VERSION > 92
+#include "access/htup_details.h"
+#include "fmgr.h"
+#endif
+*/
+
 #include <vector>
 #include <map>
 #include <queue>
-#include <string>
-#include <stdlib.h>
-#include <iostream>
-#include <algorithm>
-#include <math.h>
 #include <stdio.h>
-#include <string.h>
-#include <set>
+#include <stdlib.h>
+#include <search.h>
+
+#include "string.h"
+#include "math.h"
+
+
+
+
+
 
 
 using namespace std;
