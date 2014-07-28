@@ -183,6 +183,7 @@ BEGIN
          srid := sridinfo.srid;
          raise DEBUG '     --> OK';
          EXCEPTION WHEN OTHERS THEN
+             RAISE NOTICE 'Got %', SQLERRM;--issue 210,211,213
              RAISE NOTICE 'ERROR: something went wrong when checking for SRID of % in table %', the_geom,tabname;
              RETURN 'FAIL';
     END;
@@ -194,7 +195,6 @@ BEGIN
        perform pgr_createIndex(tabname , sourcename , 'btree');
        perform pgr_createIndex(tabname , targetname , 'btree');
        perform pgr_createIndex(tabname , gname , 'gist');
-       raise DEBUG '-->Check indices: OK';
 
        gname=quote_ident(gname);
        sourcename=quote_ident(sourcename);
@@ -213,6 +213,7 @@ BEGIN
         raise DEBUG '-->Rows Where condition: OK';
         raise DEBUG '     --> OK';
          EXCEPTION WHEN OTHERS THEN 
+            RAISE NOTICE 'Got %', SQLERRM;  --issue 210,211,213
             RAISE NOTICE 'ERROR: Condition is not correct. Please execute the following query to test your condition'; 
             RAISE NOTICE '%',query;
             RETURN 'FAIL'; 

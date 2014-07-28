@@ -164,8 +164,7 @@ BEGIN
           WHERE table_name='||quote_literal(tname)||' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(col) into cname;
 
     IF cname is null  THEN
-            execute 'SELECT column_name FROM information_schema.columns
-            WHERE table_name='||quote_literal(tname)||' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(lower(col)) into cname;
+    execute 'SELECT column_name FROM information_schema.columns WHERE table_name='||quote_literal(tname)||' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(lower(col))  into cname;
     END if;
 
     err=cname is null;
@@ -353,27 +352,14 @@ COMMENT ON FUNCTION pgr_isColumnInTable(text,text) IS 'args: tab,col  -returns t
 	  	 when column "col" is not indexed
 
 */
-CREATE OR REPLACE FUNCTION public.pgr_isColumnIndexed(tab text, col text)
+CREATE OR REPLACE FUNCTION public.pgr_isColumnIndexed(sname text,tname text, cname text)
 RETURNS boolean AS
 $BODY$
 DECLARE
     naming record;
     rec record;
-    sname text;
-    tname text;
-    cname text;
     pkey text;
 BEGIN
-    SELECT * into naming FROM pgr_getTableName(tab);
-    sname=naming.sname;
-    tname=naming.tname;
-    IF sname IS NULL OR tname IS NULL THEN
-	RETURN FALSE;
-    END IF;
-    SELECT pgr_getColumnName(tab,col) INTO cname;
-    IF cname IS NULL THEN
-	RETURN FALSE;
-    END IF;
     SELECT               
           pg_attribute.attname into pkey
          --  format_type(pg_attribute.atttypid, pg_attribute.atttypmod) 
@@ -424,10 +410,79 @@ BEGIN
     ELSE
         RETURN false;
     END IF;
+--    EXCEPTION WHEN OTHERS THEN
+--       RETURN false;
+
 END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION pgr_isColumnIndexed(text,text) IS 'args: tab,col  -returns true if column "col" in table "tab" is indexed';
+--COMMENT ON FUNCTION pgr_isColumnIndexed(text,text,text) IS 'args: tab,col  -returns true if column "col" in table "tab" is indexed';
+
+CREATE OR REPLACE FUNCTION public.pgr_isColumnIndexed(tab text, col text)
+RETURNS boolean AS
+$BODY$
+DECLARE
+    naming record;
+    rec record;
+    sname text;
+    tname text;
+    cname text;
+    pkey text;
+    value boolean;
+BEGIN
+    SELECT * into naming FROM pgr_getTableName(tab);
+    sname=naming.sname;
+    tname=naming.tname;
+    IF sname IS NULL OR tname IS NULL THEN
+        RETURN FALSE;
+    END IF;
+    SELECT * into cname from pgr_getColumnName(sname,tname,col,0) ;
+    IF cname IS NULL THEN
+        RETURN FALSE;
+    END IF;
+    select * into value  from pgr_isColumnIndexed(sname,tname, cname);
+    return value;
+END
+$BODY$
+  LANGUAGE plpgsql VOLATILE STRICT;
+--COMMENT ON FUNCTION pgr_isColumnIndexed(text,text) IS 'args: tab,col  -returns true if column "col" in table "tab" is indexed';
+
+/*
+*/
+
+CREATE OR REPLACE FUNCTION pgr_createIndex(sname text,tname text, colname text, indextype text)
+RETURNS void AS
+$BODY$
+DECLARE
+    debuglevel text;
+    naming record;
+    tabname text;
+q text;
+BEGIN
+    execute 'show client_min_messages' into debuglevel;
+    tabname=pgr_quote_ident(sname||'.'||tname);
+    RAISE DEBUG 'Cheking "%" column in % is indexed',colname,tabname;
+    IF (pgr_isColumnIndexed(sname,tname,colname)) then
+          RAISE DEBUG ' ------>OK';
+    else
+           q='create  index '||pgr_quote_ident(tname||'_'||colname||'_idx')||' 
+                         on '||tabname||' using btree('||quote_ident(colname)||')';
+      RAISE DEBUG ' ------> Adding  index "%_%_idx". -->>>%',tabname,colname,q;
+      set client_min_messages  to warning;
+      if indextype = 'btree' then
+          execute 'create  index '||pgr_quote_ident(tname||'_'||colname||'_idx')||' 
+                         on '||tabname||' using btree('||quote_ident(colname)||')';
+      else
+          execute 'create  index '||pgr_quote_ident(tname||'_'||colname||'_gidx')||' 
+                         on '||tabname||' using gist ('||quote_ident(colname)||')';
+      end if;
+      execute 'set client_min_messages  to ' ||debuglevel;
+    END IF;
+END;
+
+$BODY$
+  LANGUAGE plpgsql VOLATILE STRICT;
+--COMMENT ON FUNCTION pgr_isColumnInTable(text,text) IS 'args: tab,col  -returns true when the column "col" is in table "tab"';
 
 
 CREATE OR REPLACE FUNCTION pgr_createIndex(tabname text, colname text, indextype text)
@@ -444,21 +499,7 @@ BEGIN
     execute 'select * from pgr_getTableName('||quote_literal(tabname)||',0)' into naming;
     sname=naming.sname;
     tname=naming.tname;
-    RAISE DEBUG 'Cheking "%" column in % is indexed',colname,tabname;
-    IF (pgr_isColumnIndexed(tabname,colname)) then
-          RAISE DEBUG ' ------>OK';
-    else
-      RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,colname;
-      set client_min_messages  to warning;
-      if indextype = 'btree' then 
-          execute 'create  index '||pgr_quote_ident(tname||'_'||colname||'_idx')||' 
-                         on '||pgr_quote_ident(tabname)||' using btree('||quote_ident(colname)||')';
-      else 
-          execute 'create  index '||pgr_quote_ident(tname||'_'||colname||'_gidx')||' 
-                         on '||pgr_quote_ident(tabname)||' using gist ('||quote_ident(colname)||')';
-      end if;
-          execute 'set client_min_messages  to ' ||debuglevel;
-    END IF;
+    execute pgr_createIndex(sname,tname,colname,indextype);
 END;
 
 $BODY$

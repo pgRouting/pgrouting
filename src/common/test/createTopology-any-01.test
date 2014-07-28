@@ -1,13 +1,13 @@
-set  client_min_messages to warning;
+set client_min_messages to warning;
 
 SET search_path TO public;
 drop table if exists "Edges2";
 drop table if exists "Edges2_vertices_pgr";
 drop schema if exists "myschema" cascade;
 
-set  client_min_messages to notice;
 
 -- The following should be OK
+set client_min_messages to notice;
 
 select pgr_createTopology('edges2', 0.000001, id:='eid');
 select pgr_createTopology('Edges2', 0.000001, 'the_geom', 'eid');
@@ -23,8 +23,8 @@ select pgr_createTopology('edges2', 0.000001, 'the_geom', 'eid',source:='source'
 select pgr_createTopology('edges2', 0.000001, 'the_geom', 'eid',target:='target',rows_where:='eid<15 and eid>5');
 
 -- the following tests should FAIL
+set client_min_messages to warning;
 
-set  client_min_messages to warning;
 select pgr_createTopology('edges22', 0.000001, 'the_geom', 'eid');
 select pgr_createTopology('edges2', 0.000001, 'geom', 'eid');
 select pgr_createTopology('edges2', 0.000001, 'the_geom', 'gid');
@@ -38,7 +38,7 @@ select pgr_createTopology('edges2', 0.000001, id:='eid',target:='the_geom');
 select * into "Edges2" from edges2;
 
 -- The following should be OK
-set  client_min_messages to notice;
+set client_min_messages to notice;
 
 select pgr_createTopology('Edges2', 0.000001,id:='eid');
 update "Edges2" set the_geom=NULL where eid=5;
@@ -51,6 +51,7 @@ SET search_path TO myschema,public;
 
 -- reaching tables when located in another schema
 -- the following should be OK
+set client_min_messages to notice;
 
 select pgr_createTopology('public.edges2', 0.000001, id:='eid');
 select pgr_createTopology('public.Edges2', 0.000001, 'the_geom', 'eid');
@@ -66,8 +67,7 @@ select pgr_createTopology('public.edges2', 0.000001, 'the_geom', 'eid',source:='
 select pgr_createTopology('public.edges2', 0.000001, 'the_geom', 'eid',target:='target',rows_where:='eid<15');
 
 -- the following tests should fail
-set  client_min_messages to warning;
-
+set client_min_messages to warning;
 
 select pgr_createTopology('public.edges22', 0.000001, 'the_geom', 'eid');
 select pgr_createTopology('public.edges2', 0.000001, 'geom', 'eid');
@@ -82,8 +82,8 @@ select pgr_createTopology('public.edges2', 0.000001, id:='eid',target:='the_geom
 select * into edges2 from public.edges2;
 select * into "Edges2" from public."Edges2";
 
--- The following should be OK 
-set  client_min_messages to notice;
+-- The following should be OK
+set client_min_messages to notice;
 
 select pgr_createTopology('edges2', 0.000001, id:='eid');
 select pgr_createTopology('Edges2', 0.000001, 'the_geom', 'eid');
@@ -99,7 +99,7 @@ select pgr_createTopology('edges2', 0.000001, 'the_geom', 'eid',source:='source'
 select pgr_createTopology('edges2', 0.000001, 'the_geom', 'eid',target:='target',rows_where:='eid<15');
 
 -- the following tests should FAIL
-set  client_min_messages to warning;
+set client_min_messages to warning;
 
 select pgr_createTopology('edges22', 0.000001, 'the_geom', 'eid');
 select pgr_createTopology('edges2', 0.000001, 'geom', 'eid');
@@ -109,17 +109,17 @@ select pgr_createTopology('edges2', 0.000001, 'the_geom', 'eid',target:='source'
 select pgr_createTopology('edges2', 0.000001, id:='eid',source:='the_geom');
 select pgr_createTopology('edges2', 0.000001, id:='eid',target:='the_geom');
 
---Test of the rows_where  clause
+--Test of the rows_where clause
 
 
 -- The following should be OK
-set  client_min_messages to notice;
+set client_min_messages to notice;
 select pgr_createTopology('edges2', 0.000001, id:= 'eid',rows_where:='eid<15');
 select pgr_createTopology('Edges2', 0.000001, id:= 'eid',rows_where:='eid<15 and eid>5');
 select pgr_createTopology('Edges2', 0.000001, id:= 'eid',rows_where:=' the_geom && (select st_buffer(the_geom,0.0001) as buffer from "Edges2" where eid=6)') ;
 
 -- The following should FAIL (working on myschema)
-set  client_min_messages to warning;
+set client_min_messages to warning;
 
 select pgr_createTopology('edges2', 0.000001, id:= 'eid',rows_where:='eid<');
 select pgr_createTopology('Edges2', 0.000001, id:= 'eid',rows_where:='eid<15 and ed>5');
@@ -128,12 +128,12 @@ select pgr_createTopology('Edges2', 0.000001, id:= 'eid',rows_where:=' the_geom 
 -- BIG TABLE TEST TAKES TIME
 --create table bigtable ( id bigserial PRIMARY KEY, source smallint,target smallint);
 --SELECT AddGeometryColumn( 'bigtable', 'the_geom', 0, 'LINESTRING',2);
---insert into bigtable (the_geom) ( select ST_MakeLine(ST_MakePoint(random()*1000,random()*1000), ST_MakePoint(random()*1000,random()*1000)) 
---from  (SELECT * FROM generate_series(1,20000) AS id) AS x) ;
+--insert into bigtable (the_geom) ( select ST_MakeLine(ST_MakePoint(random()*1000,random()*1000), ST_MakePoint(random()*1000,random()*1000))
+--from (SELECT * FROM generate_series(1,20000) AS id) AS x) ;
 --select pgr_createTopology('bigtable', 0.000001);
 
 
-set  client_min_messages to warning;
+set client_min_messages to warning;
 
 SET search_path TO public;
 drop table if exists "Edges2";

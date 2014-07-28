@@ -311,12 +311,6 @@ FAIL
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edges2','the_geom','source','target','true')
  NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ----> PGR ERROR in pgr_getTableName: Table myschema.edges2_vertices_pgr not found
-HINT:    ----> Check your table name
-CONTEXT:  SQL statement "SELECT pgr_onError(err, reportErrs, 'pgr_getTableName', 'Table ' || tab ||' not found',' Check your table name', 'Table '|| tab || ' found')"
-PL/pgSQL function pgr_gettablename(text,integer) line 63 at PERFORM
-SQL statement "select * from pgr_getTableName('myschema.edges2_vertices_pgr')"
-PL/pgSQL function pgr_createverticestable(text,text,text,text,text) line 126 at EXECUTE statement
  NOTICE:  Populating myschema.edges2_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  20 VERTICES
  NOTICE:                                         FOR   23  EDGES
