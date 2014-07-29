@@ -11,11 +11,11 @@ create or replace function pgr_gsoc_vrppdtw(
                 x integer,
                 y integer,
                 demand integer,
-                Etime integer,
-                Ltime integer,
-                Stime integer,
-                Pindex integer,
-                Dindex integer)
+                etime integer,
+                ltime integer,
+                stime integer,
+                pindex integer,
+                dindex integer)
 returns setof record as
 '$libdir/librouting_vrpdtw', 'vrpdtw'
 LANGUAGE c VOLATILE STRICT;
