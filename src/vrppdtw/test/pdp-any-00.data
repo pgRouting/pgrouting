@@ -4,14 +4,13 @@ create table customer (
                 x integer,
                 y integer,
                 demand integer,
-                Etime integer,
-                Ltime integer, 
-                Stime integer, 
-                Pindex integer,
-                Dindex integer, 
+                etime integer,
+                ltime integer, 
+                stime integer, 
+                pindex integer,
+                dindex integer, 
                 );
-copy customer (id,x,y,demand,Etime,Ltime, Stime,Pindex, Dindex) from stdin;
-
+copy customer (id,x,y,demand,etime,ltime, stime,pindex, dindex) from stdin;
 0	40	50	0	0	1236	0	0	0
 1	45	68	-10	912	967	90	11	0
 2	45	70	-20	825	870	90	6	0
