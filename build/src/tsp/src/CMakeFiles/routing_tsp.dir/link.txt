@@ -1,0 +1,1 @@
+/usr/bin/gcc  -fPIC  -DPGSQL_VERSION=91 -fPIC -O2 -g -frounding-math   -shared -Wl,-soname,librouting_tsp.so -o ../../../lib/librouting_tsp.so CMakeFiles/routing_tsp.dir/tsp2.c.o CMakeFiles/routing_tsp.dir/tsplib.c.o 
