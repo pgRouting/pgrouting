@@ -10,9 +10,6 @@ create table customer (
                 Pindex integer,
                 Dindex integer, 
                 );
-
-
-
 copy customer (id,x,y,demand,Etime,Ltime, Stime,Pindex, Dindex) from stdin;
 
 0	40	50	0	0	1236	0	0	0
