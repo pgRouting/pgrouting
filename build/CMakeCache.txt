@@ -209,11 +209,17 @@ POSTGRESQL_INCLUDE_DIR:PATH=/usr/include/postgresql/9.1/server
 //Path to a program.
 POSTGRESQL_PG_CONFIG:FILEPATH=/usr/bin/pg_config
 
+//Path to a program.
+PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python
+
+//Sphinx documentation generator tool
+SPHINX_EXECUTABLE:FILEPATH=SPHINX_EXECUTABLE-NOTFOUND
+
 //Set ON|OFF (default=ON) to build Driving distance library
 WITH_DD:BOOL=ON
 
 //Set ON|OFF (default=OFF) to build Documentation library tree
-WITH_DOC:BOOL=OFF
+WITH_DOC:BOOL=ON
 
 //Dependencies for target
 routing_LIB_DEPENDS:STATIC=
@@ -384,8 +390,14 @@ CMAKE_UNAME:INTERNAL=/bin/uname
 CMAKE_USE_RELATIVE_PATHS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding PythonInterp
+FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python][v2.7.3()]
 //ADVANCED property for variable: GMP_LIBRARIES
 GMP_LIBRARIES-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: POSTGRESQL_INCLUDE_DIR
 POSTGRESQL_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PYTHON_EXECUTABLE
+PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SPHINX_EXECUTABLE
+SPHINX_EXECUTABLE-ADVANCED:INTERNAL=1
 
