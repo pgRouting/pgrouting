@@ -1,8 +1,4 @@
 
-#ifndef _PDP_H
-#define _PDP_H
-
-
 
 
 #include "postgres.h"
