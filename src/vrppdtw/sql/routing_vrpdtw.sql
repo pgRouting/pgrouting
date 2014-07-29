@@ -6,16 +6,16 @@
 --
 
 create or replace function pgr_gsoc_vrppdtw(
-	order_sql text,
-	vehicle_sql text,
-	cost_sql text,
-	depot_id integer,
-	 
-	OUT oid integer, 
-	OUT opos integer, 
-	OUT vid integer, 
-	OUT tarrival integer, 
-	OUT tdepart integer)
+                sql text,
+                id integer,
+                x integer,
+                y integer,
+                demand integer,
+                Etime integer,
+                Ltime integer,
+                Stime integer,
+                Pindex integer,
+                Dindex integer)
 returns setof record as
 '$libdir/librouting_vrpdtw', 'vrpdtw'
 LANGUAGE c VOLATILE STRICT;
