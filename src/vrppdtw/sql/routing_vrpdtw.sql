@@ -5,7 +5,7 @@
 --
 --
 
-create or replace function pgr_GsocVrppdtw(
+create or replace function pgr_gsoc_vrppdtw(
 	order_sql text,
 	vehicle_sql text,
 	cost_sql text,

@@ -4,7 +4,7 @@
 
 
 
-/*
+
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -13,7 +13,6 @@
 #include "access/htup_details.h"
 #include "fmgr.h"
 #endif
- */
 
 #include <vector>
 #include <map>
@@ -26,7 +25,39 @@
 #include "math.h"
 
 
+//
+#ifdef DEBUG
+#define DBG(format, arg...)                     \
+        elog(NOTICE, format , ## arg)
+#else
+#define DBG(format, arg...) do { ; } while (0)
+#endif
+
+// The number of tuples to fetch from the SPI cursor at each iteration
+#define TUPLIMIT 1000
+
+#ifdef PG_MODULE_MAGIC
+PG_MODULE_MAGIC;
+#endif
+
+
+//
+
+
 using namespace std;
+
+
+        static int
+finish(int code, int ret)
+{
+        code = SPI_finish();
+        if (code  != SPI_OK_FINISH ) {
+                elog(ERROR,"couldn't disconnect from SPI");
+                return -1 ;
+        }
+
+        return ret;
+}
 
 
 
@@ -210,7 +241,7 @@ static int conn(int *SPIcode)
 
         if (*SPIcode  != SPI_OK_CONNECT)
         {
-                elog(ERROR, "vrp: couldn't open a connection to SPI");
+                elog(ERROR, "vrppdtw: couldn't open a connection to SPI");
                 res = -1;
         }
 
