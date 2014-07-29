@@ -3,22 +3,65 @@
 #define _PDP_H
 
 
+
+
+#include "postgres.h"
+#include "executor/spi.h"
+#include "funcapi.h"
+#include "catalog/pg_type.h"
+#if PGSQL_VERSION > 92
+#include "access/htup_details.h"
+#include "fmgr.h"
+#endif
+
 #include <vector>
 #include <map>
 #include <queue>
-#include <string>
-#include <stdlib.h>
-#include <iostream>
-#include <algorithm>
-#include <math.h>
 #include <stdio.h>
-#include <string.h>
-#include <set>
+#include <stdlib.h>
+#include <search.h>
+
+#include "string.h"
+#include "math.h"
+
+
+//
+#ifdef DEBUG
+#define DBG(format, arg...)                     \
+        elog(NOTICE, format , ## arg)
+#else
+#define DBG(format, arg...) do { ; } while (0)
+#endif
+
+// The number of tuples to fetch from the SPI cursor at each iteration
+#define TUPLIMIT 1000
+
+#ifdef PG_MODULE_MAGIC
+PG_MODULE_MAGIC;
+#endif
+
+
+//
 
 
 using namespace std;
 
 
+        static int
+finish(int code, int ret)
+{
+        code = SPI_finish();
+        if (code  != SPI_OK_FINISH ) {
+                elog(ERROR,"couldn't disconnect from SPI");
+                return -1 ;
+        }
+
+        return ret;
+}
+
+
+
+// Structures and variables which help us in storing the data
 
 int VehicleCount;
 int Capacity;
@@ -64,20 +107,23 @@ typedef struct Pickup{
 
 
 
-typedef struct Vehile{
+typedef struct Vehicle{
         int capacity;
         int used_vehicles;
         int given_vehicles;
         int speed;
-        double cost;
+        int cost;
 }VehicleInfo;
 
 
+// A module which calculates distance 
 double CalculateDistance(int x1,int y1,int x2,int y2)
 {
         return sqrt(((x2-x1)*(x2-x1))+((y2-y1)*(y2-y1)));
 }
 
+
+// DEPOT:  With id=0
 depot ScanDepot(depot d)
 {
 
@@ -93,6 +139,41 @@ depot ScanDepot(depot d)
         return d;
 }
 
+static int fetch_distance_columns(SPITupleTable *tuptable, customer *c)
+{
+        DBG("Customer Data");
+
+        c->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
+        c->x = SPI_fnumber(SPI_tuptable->tupdesc, "x");
+        c->y = SPI_fnumber(SPI_tuptable->tupdesc, "y");
+        c->demand = SPI_fnumber(SPI_tuptable->tupdesc, "demand");
+        c->Etime = SPI_fnumber(SPI_tuptable->tupdesc, "Etime");
+        c->Ltime = SPI_fnumber(SPI_tuptable->tupdesc, "Ltime");
+        c->Stime = SPI_fnumber(SPI_tuptable->tupdesc, "Stime");
+        c->Pindex = SPI_fnumber(SPI_tuptable->tupdesc, "Pindex");
+        c->Dindex = SPI_fnumber(SPI_tuptable->tupdesc, "Dindex");
+        if (c->id == SPI_ERROR_NOATTRIBUTE ||
+                        c->x == SPI_ERROR_NOATTRIBUTE ||
+                        c->y == SPI_ERROR_NOATTRIBUTE ||
+                        c->demand == SPI_ERROR_NOATTRIBUTE ||
+                        c->Ltime == SPI_ERROR_NOATTRIBUTE ||
+                        c->Stime == SPI_ERROR_NOATTRIBUTE ||
+                        c->Pindex == SPI_ERROR_NOATTRIBUTE ||
+                        c->Dindex == SPI_ERROR_NOATTRIBUTE ||
+                        c->Etime == SPI_ERROR_NOATTRIBUTE)
+        {
+                elog(ERROR, "Error, query must return columns "
+                                "'id', 'x','y','demand', 'Etime',  'Ltime', 'Stime', 'Pindex',  and 'Dindex'");
+                return -1;
+        }
+
+        return 0;
+}
+
+
+
+
+// CUSTOMER: WITH id>=1
 customer ScanCustomer(int id,customer c,depot d)
 {
         c.id=id;
@@ -118,6 +199,8 @@ customer ScanCustomer(int id,customer c,depot d)
         return c;
 }
 
+
+//VEHICLE: First Line contains vehicle data
 VehicleInfo ScanVehicle(VehicleInfo Vehicle)
 {
         scanf("%d",&Vehicle.given_vehicles);
@@ -134,6 +217,8 @@ int temp=0;
 int CustomerLength=0;
 int OrderLength=0;
 
+
+// Part of code: It is used to save some variables and helps if we need to revisit previous state.
 typedef struct statesave{
         int twv;
         int cv;
@@ -145,239 +230,24 @@ typedef struct statesave{
         int path_length;
 }State;
 
-// Class 
-class Route
+
+//SPI code 
+
+static int conn(int *SPIcode)
 {
-        public:
-                int twv;
-                int cv;
-                int dis;
-                //       vector<int> path;
-                //      vector<int> order;
-                int path[1000];
-                int order[1000];
-                int path_length;
-                Route()
-                {
-                        twv=0;
-                        cv=0;
-                        dis=0;
-                        path_length=0;
-                        for(int i=0;i<1000;i++)
-                        {
-                                path[i]=0;
-                                order[i]=0;
-                        }
-                }
-                State append(customer *c, Pickup p, depot d,int CustomerLength, int PickupLength, State S);
-                void update(customer *c,depot d);
-                double cost();
-                int HillClimbing(customer *c,depot d,Pickup p);
-                void remove(State S);
-                void print();
-};
+        int res = 0;
 
+        *SPIcode = SPI_connect();
 
-
-
-State  Route::append(customer *c, Pickup p, depot d,int CustomerLength, int PickupLength, State S)
-{
-        //Save State;
-        S.twv=twv;
-        S.cv=cv;
-        S.dis=dis;
-        S.path_length=path_length;
-        for(int i=0;i<path_length;i++)
+        if (*SPIcode  != SPI_OK_CONNECT)
         {
-                S.path[i]=path[i];
-                S.order[i]=order[i];
+                elog(ERROR, "vrppdtw: couldn't open a connection to SPI");
+                res = -1;
         }
 
-        // Insert Order 
-        path[path_length]=p.Pid;
-        order[path_length]=p.id;
-        path[path_length+1]=p.Did;
-        order[path_length+1]=p.id;
-        path_length+=2;
-
-        return S;
+        return res;
 }
 
-
-
-void Route::update(customer *c,depot d)
-{
-        dis=0,twv=0,cv=0;
-        int load=0;
-        for(int i=-1;i<path_length;i++)
-        {
-                //depot to first customer
-                if(i==-1)
-                {
-                        dis+=sqrt(((d.x-c[path[i+1]].x)*(d.x-c[path[i+1]].x))+((d.y-c[path[i+1]].y)*(d.y-c[path[i+1]].y)));
-                        if(dis<c[path[i+1]].Etime)
-                        {
-                                dis=c[path[i+1]].Etime;
-                        }
-                        else if(dis>c[path[i+1]].Ltime)
-                        {
-                                         twv+=1;
-                        }
-                        dis+=c[path[i+1]].Stime;
-                        load+=c[path[i+1]].demand;
-                }
-                //Last cusotmer to depot 
-                if(i==path_length-1)
-                {
-                        dis+=sqrt(((d.x-c[path[i]].x)*(d.x-c[path[i]].x))+((d.y-c[path[i]].y)*(d.y-c[path[i]].y)));
-                        if(dis>d.Ltime)
-                        {
-                                twv+=1;
-                        }
-                }
-                //Middle customers
-                if(i>=0 && i< path_length-1)
-                {
-                        dis+=sqrt(((c[path[i]].x-c[path[i+1]].x)*(c[path[i]].x-c[path[i+1]].x))+((c[path[i]].y-c[path[i+1]].y)*(c[path[i]].y-c[path[i+1]].y)));
-                        if(dis<c[path[i+1]].Etime)
-                        {
-                                dis=c[path[i+1]].Etime;
-                        }
-                        else if(dis>c[path[i+1]].Ltime)
-                        {
-                                twv+=1;
-                        }
-                        dis+=c[path[i+1]].Stime;
-                        load+=c[path[i+1]].demand;
-                }
-
-                if(load>200 || load<0)
-                {
-                        cv+=1;
-                }
-        }
-        return;
-}
-
-double Route::cost()
-{
-        return (0.3*dis)+(0.5*twv)+(0.2*cv);
-}
-
-int Route::HillClimbing(customer *c,depot d,Pickup p)
-{
-        double cost1=0,cost2=0;
-        int swap=0;
-        update(c,d);
-        cost1=cost();
-
-        if(twv==0 && cv==0 && dis<d.Ltime)
-        {
-                return 0;
-        }
-        for(int i=0;i<path_length;i++)
-        {
-                for(int j=0;j<path_length;j++)
-                {
-                        int swap_flag=0,count_flag=0;
-                        if((c[path[i]].Ltime > c[path[j]].Ltime) &&  (count_flag==0) )
-                        {
-                                swap_flag=1;
-                                count_flag=1;
-                                //Swap Path
-                                swap=path[i];
-                                path[i]=path[j];
-                                path[j]=swap;
-                                //Swap order
-
-                                swap=order[i];
-                                order[i]=order[j];
-                                order[j]=swap;
-
-                        }
-                        update(c,d);
-                        cost2=cost();
-                        if(cost2>cost1)
-                        {
-                                if(swap_flag==1)
-                                {
-                                        //Swap Path
-                                        swap=path[i];
-                                        path[i]=path[j];
-                                        path[j]=swap;
-                                        //Swap order
-
-                                        swap=order[i];
-                                        order[i]=order[j];
-                                        order[j]=swap;
-                                        update(c,d);
-                                }
-                        }
-                }
-        }
-        //After complete sort
-        int temp[10000],tempo[10000];
-        for(int i=0;i<path_length;i++)
-        {
-                temp[i]=path[path_length-i-1];
-                tempo[i]=order[path_length-i-1];
-        }
-        for(int i=0;i<path_length;i++)
-        {
-                path[i]=temp[i];
-                order[i]=tempo[i];
-        }
-        update(c,d);
-       /* 
-        printf("\n ");
-        print();
-        printf("\n");
-        */
-        if(twv>0 || cv>0 || dis> d.Ltime)
-        {
-                return 1;
-        }
-        return 0;
-}
-
-
-void Route::print()
-{
-        printf("%d ",dis);
-        printf("%d ",twv);
-        printf("%d ",cv);
-        printf("%lf ",cost());
-        printf("[");
-        for(int i=0;i<path_length;i++)
-        {
-                printf("%d ",path[i]);
-        }
-        printf("] ");
-        printf("[");
-        for(int i=0;i<path_length;i++)
-        {
-                printf("%d ",order[i]);
-        }
-        printf("] \n");
-        return;
-
-}
-
-
-
-void Route::remove( State S)
-{
-        twv=S.twv;
-        cv=S.cv;
-        dis=S.dis;
-        path_length=S.path_length;
-        for(int i=0;i<path_length;i++)
-        {
-                path[i]=S.path[i];
-                order[i]=S.order[i];
-        }
-        return;
-}
 
 
 

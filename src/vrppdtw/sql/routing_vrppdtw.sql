@@ -4,7 +4,6 @@
 -----------------------------------------------------------------------
 --
 --
-
 create or replace function pgr_gsoc_vrppdtw(
                 sql text,
                 id integer,
