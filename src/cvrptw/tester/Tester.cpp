@@ -9,7 +9,7 @@ CVRPSolver solver;
 // TODO: file names are hard coded, it should be changed to commandline argument.
 void loadOrders()
 {
-	FILE *fp = fopen("Orders.txt", "rt");
+	FILE *fp = fopen("input.txt", "rt");
 	if(fp == NULL)
 	{
 		fprintf(stderr, "Order file not found!\n");
@@ -133,7 +133,7 @@ void loadVehicles()
 // TODO: file names are hard coded, it should be changed to commandline argument.
 void loadDistanceMatrix()
 {
-	FILE *fp = fopen("Distance.txt", "rt");
+	FILE *fp = fopen("output.txt", "rt");
 	if(fp == NULL)
 	{
 		fprintf(stderr, "Cost file not found!\n");
@@ -177,7 +177,7 @@ void loadDistanceMatrix()
 
 bool print_solution(std::string strError)
 {
-	FILE *fp = fopen("result_new_version4.txt", "wt");
+	FILE *fp = fopen("C1_100.txt", "wt");
 	if(fp == NULL)
 	{
 		strError = "Could not open file";

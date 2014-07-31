@@ -585,6 +585,66 @@ CSolutionInfo CVRPSolver::Tabu_Search(CSolutionInfo InitialSolution)
 	}
 
 
+	for(int i=0;i<order2.size();i++)
+	{
+
+		CMoveInfo Move;
+		Move.setInitialTour(O_Tour1,O_Tour2);
+		std::vector<int> t_order1=order1;
+		std::vector<int> t_order2=order2;
+		for(int j=0;j<order1.size();j++)
+		{
+			t_order1.insert(t_order1.begin()+j,t_order2[i]);
+			tour1.setOrderVector(t_order1);
+			if(updateTourCosts(tour1))
+			{
+
+				t_order2.erase(t_order2.begin()+i);
+				tour2.setOrderVector(t_order2);
+				if(updateTourCosts(tour2)||t_order2.size()==0)
+				{
+					TourVector[t1]=tour1;
+					TourVector[t2]=tour2;
+
+					Move.setModifiedTour(tour1,tour2);
+					CSolutionInfo NewSolution;
+
+					std::vector<int> vecOrders, vecVehicles;
+					for(int i = 0; i < m_vOrderInfos.size(); i++)
+						vecOrders.push_back(m_vOrderInfos[i].getOrderId());
+
+
+					for(int i = 0; i < m_vVehicleInfos.size(); i++)
+						vecVehicles.push_back(m_vVehicleInfos[i].getId());
+
+					NewSolution.init(vecOrders, vecOrders.size(), vecVehicles,do_pq);
+
+					for(int i=0;i<TourVector.size();i++)
+					{
+
+						std::vector<int> order3=TourVector[i].getOrderVector();
+						if(order3.size()>0)
+							NewSolution.addTour(TourVector[i]);
+					}
+
+					if(NewSolution.getTotalTravelTime()< BestSolution.getTotalTravelTime())
+					{
+						if(!isTabuMove(Move))
+						{
+							BestSolution=NewSolution;
+							m_veMoves.push_back(Move);
+							if( m_veMoves.size()>30)
+								m_veMoves.erase( m_veMoves.begin());
+						
+							printf("other_Hit ");
+						}
+					}
+
+				}
+
+			}
+		}
+	}
 
 
        int id1,id2;
