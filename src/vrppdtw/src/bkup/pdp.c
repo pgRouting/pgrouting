@@ -9,8 +9,6 @@
 #include "fmgr.h"
 
 
-Datum vrppdtw(PG_FUNCTION_ARGS);
-
 
 #undef DEBUG
 //#define DEBUG 1
@@ -47,14 +45,27 @@ typedef struct Customer_type{
 }customer_t;
 
 
-        static char *
-text2char(text *in)
+static char *text2char(text *in)
 {
-        char *out = (char*)palloc(VARSIZE(in));
+        char *out = palloc(VARSIZE(in));
 
         memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
         out[VARSIZE(in) - VARHDRSZ] = '\0';
-        return out;
+        nt id;
+        int x;
+        int y;
+        int demand;
+        int Etime;
+        int Ltime;
+        int Stime;
+        int Pindex;
+        int Dindex;
+        double Ddist;
+        int P;
+        int D;
+}customer;
+
+return out;
 }
 
         static int
@@ -68,42 +79,6 @@ finish(int code, int ret)
         return ret;
 }
 
-
-static int conn(int *SPIcode)
-{
-        int res = 0;
-
-        *SPIcode = SPI_connect();
-
-        if (*SPIcode  != SPI_OK_CONNECT)
-        {
-                elog(ERROR, "vrppdtw: couldn't open a connection to SPI");
-                res = -1;
-        }
-
-        return res;
-}
-
-static int prepare_query(Portal *SPIportal, char* sql)
-{
-        int res = 0;
-
-        void* SPIplan = SPI_prepare(sql, 0, NULL);
-
-        if (SPIplan  == NULL)
-        {
-                elog(ERROR, "vrppdtw: couldn't create query plan via SPI");
-                res = -1;
-        }
-
-        if ((*SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL)
-        {
-                elog(ERROR, "vrppdtw: SPI_cursor_open('%s') returns NULL", sql);
-                res = -1;
-        }
-
-        return res;
-}
 
 
 static int fetch_customer_columns(SPITupleTable *tuptable, customer *c)
@@ -276,11 +251,11 @@ while (moredata == TRUE) {
 
 
 
-PG_FUNCTION_INFO_V1(vrppdtw);
+PG_FUNCTION_INFO_V1(vrp);
 
 Datum
 
-vrp(pdtwPG_FUNCTION_ARGS)
+vrp(PG_FUNCTION_ARGS)
 
 {
 
@@ -331,7 +306,14 @@ vrp(pdtwPG_FUNCTION_ARGS)
                 oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
+
+
+
                 //path = (vrp_result_element_t *)palloc(sizeof(vrp_result_element_t)*(MAX_ORDERS-1)*2*MAX_VEHICLES);
+
+
+
+
 
                 DBG("Calling solve_vrp ...");
 

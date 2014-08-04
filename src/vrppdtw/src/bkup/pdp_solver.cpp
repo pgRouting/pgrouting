@@ -51,7 +51,7 @@ void TabuSearch();
 //Initial Solution
 Solution S0;
 
-int Solver(customer *c, int VehicleLength, int capacity)
+int main()
 {
         Vehicle=ScanVehicle(Vehicle);
         d=ScanDepot(d);
