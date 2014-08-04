@@ -1,3 +1,5 @@
+#include<stdio.h>
+#include<stdlib.h>
 
 #ifndef _PDP_H
 #define _PDP_H
@@ -5,7 +7,6 @@
 
 
 
-using namespace std;
 
 // Structures and variables which help us in storing the data
 

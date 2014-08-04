@@ -156,6 +156,30 @@ vrppdtw/fast:
 	cd /home/manikanta/Study/GSoC/main/pgrouting/build && $(MAKE) -f src/vrppdtw/src/CMakeFiles/vrppdtw.dir/build.make src/vrppdtw/src/CMakeFiles/vrppdtw.dir/build
 .PHONY : vrppdtw/fast
 
+pdp.o: pdp.c.o
+.PHONY : pdp.o
+
+# target to build an object file
+pdp.c.o:
+	cd /home/manikanta/Study/GSoC/main/pgrouting/build && $(MAKE) -f src/vrppdtw/src/CMakeFiles/vrppdtw.dir/build.make src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp.c.o
+.PHONY : pdp.c.o
+
+pdp.i: pdp.c.i
+.PHONY : pdp.i
+
+# target to preprocess a source file
+pdp.c.i:
+	cd /home/manikanta/Study/GSoC/main/pgrouting/build && $(MAKE) -f src/vrppdtw/src/CMakeFiles/vrppdtw.dir/build.make src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp.c.i
+.PHONY : pdp.c.i
+
+pdp.s: pdp.c.s
+.PHONY : pdp.s
+
+# target to generate assembly for a file
+pdp.c.s:
+	cd /home/manikanta/Study/GSoC/main/pgrouting/build && $(MAKE) -f src/vrppdtw/src/CMakeFiles/vrppdtw.dir/build.make src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp.c.s
+.PHONY : pdp.c.s
+
 pdp_solver.o: pdp_solver.cpp.o
 .PHONY : pdp_solver.o
 
@@ -193,6 +217,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... vrppdtw"
+	@echo "... pdp.o"
+	@echo "... pdp.i"
+	@echo "... pdp.s"
 	@echo "... pdp_solver.o"
 	@echo "... pdp_solver.i"
 	@echo "... pdp_solver.s"

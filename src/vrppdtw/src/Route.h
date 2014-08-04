@@ -23,8 +23,6 @@ class Route
                 int twv;
                 int cv;
                 int dis;
-                //       vector<int> path;
-                //      vector<int> order;
                 int path[1000];
                 int order[1000];
                 int path_length;
