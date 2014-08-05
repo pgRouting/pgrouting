@@ -382,7 +382,7 @@ vrppdtw(PG_FUNCTION_ARGS)
 
                 //path = (vrp_result_element_t *)palloc(sizeof(vrp_result_element_t)*(MAX_ORDERS-1)*2*MAX_VEHICLES);
 
-                DBG("Calling solve_vrp ...");
+                DBG("Calling compute_shortes_path");
 
 
 

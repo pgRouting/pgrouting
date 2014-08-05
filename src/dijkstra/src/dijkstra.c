@@ -33,8 +33,8 @@
 
 Datum shortest_path(PG_FUNCTION_ARGS);
 
-#undef DEBUG
-//#define DEBUG 1
+//#undef DEBUG
+#define DEBUG 1
 
 #ifdef DEBUG
 #define DBG(format, arg...)                     \
