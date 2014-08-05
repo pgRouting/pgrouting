@@ -52,32 +52,9 @@ include src/vrppdtw/src/CMakeFiles/vrppdtw.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/vrppdtw/src/CMakeFiles/vrppdtw.dir/flags.make
 
-src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/flags.make
-src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o: ../src/vrppdtw/src/pdp_solver.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/manikanta/Study/GSoC/main/pgrouting/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o"
-	cd /home/manikanta/Study/GSoC/main/pgrouting/build/src/vrppdtw/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o -c /home/manikanta/Study/GSoC/main/pgrouting/src/vrppdtw/src/pdp_solver.cpp
-
-src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vrppdtw.dir/pdp_solver.cpp.i"
-	cd /home/manikanta/Study/GSoC/main/pgrouting/build/src/vrppdtw/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/manikanta/Study/GSoC/main/pgrouting/src/vrppdtw/src/pdp_solver.cpp > CMakeFiles/vrppdtw.dir/pdp_solver.cpp.i
-
-src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vrppdtw.dir/pdp_solver.cpp.s"
-	cd /home/manikanta/Study/GSoC/main/pgrouting/build/src/vrppdtw/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/manikanta/Study/GSoC/main/pgrouting/src/vrppdtw/src/pdp_solver.cpp -o CMakeFiles/vrppdtw.dir/pdp_solver.cpp.s
-
-src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o.requires:
-.PHONY : src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o.requires
-
-src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o.provides: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o.requires
-	$(MAKE) -f src/vrppdtw/src/CMakeFiles/vrppdtw.dir/build.make src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o.provides.build
-.PHONY : src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o.provides
-
-src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o.provides.build: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o
-
 src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp.c.o: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/flags.make
 src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp.c.o: ../src/vrppdtw/src/pdp.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/manikanta/Study/GSoC/main/pgrouting/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/manikanta/Study/GSoC/main/pgrouting/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp.c.o"
 	cd /home/manikanta/Study/GSoC/main/pgrouting/build/src/vrppdtw/src && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/vrppdtw.dir/pdp.c.o   -c /home/manikanta/Study/GSoC/main/pgrouting/src/vrppdtw/src/pdp.c
 
@@ -98,8 +75,31 @@ src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp.c.o.provides: src/vrppdtw/src/CMakeFi
 
 src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp.c.o.provides.build: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp.c.o
 
-vrppdtw: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o
+src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/flags.make
+src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o: ../src/vrppdtw/src/pdp_solver.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/manikanta/Study/GSoC/main/pgrouting/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o"
+	cd /home/manikanta/Study/GSoC/main/pgrouting/build/src/vrppdtw/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o -c /home/manikanta/Study/GSoC/main/pgrouting/src/vrppdtw/src/pdp_solver.cpp
+
+src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vrppdtw.dir/pdp_solver.cpp.i"
+	cd /home/manikanta/Study/GSoC/main/pgrouting/build/src/vrppdtw/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/manikanta/Study/GSoC/main/pgrouting/src/vrppdtw/src/pdp_solver.cpp > CMakeFiles/vrppdtw.dir/pdp_solver.cpp.i
+
+src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vrppdtw.dir/pdp_solver.cpp.s"
+	cd /home/manikanta/Study/GSoC/main/pgrouting/build/src/vrppdtw/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/manikanta/Study/GSoC/main/pgrouting/src/vrppdtw/src/pdp_solver.cpp -o CMakeFiles/vrppdtw.dir/pdp_solver.cpp.s
+
+src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o.requires:
+.PHONY : src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o.requires
+
+src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o.provides: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o.requires
+	$(MAKE) -f src/vrppdtw/src/CMakeFiles/vrppdtw.dir/build.make src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o.provides.build
+.PHONY : src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o.provides
+
+src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o.provides.build: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o
+
 vrppdtw: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp.c.o
+vrppdtw: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o
 vrppdtw: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/build.make
 .PHONY : vrppdtw
 
@@ -107,8 +107,8 @@ vrppdtw: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/build.make
 src/vrppdtw/src/CMakeFiles/vrppdtw.dir/build: vrppdtw
 .PHONY : src/vrppdtw/src/CMakeFiles/vrppdtw.dir/build
 
-src/vrppdtw/src/CMakeFiles/vrppdtw.dir/requires: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o.requires
 src/vrppdtw/src/CMakeFiles/vrppdtw.dir/requires: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp.c.o.requires
+src/vrppdtw/src/CMakeFiles/vrppdtw.dir/requires: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o.requires
 .PHONY : src/vrppdtw/src/CMakeFiles/vrppdtw.dir/requires
 
 src/vrppdtw/src/CMakeFiles/vrppdtw.dir/clean:

@@ -44,23 +44,34 @@ pickup p[600];
 int len=0;
 
 Route r[500];
-
+ int CustomerLength;
 //Definitions for a few functions 
 void TabuSearch();
 
 //Initial Solution
 Solution S0;
 
-int Solver(customer *c, int VehicleLength, int capacity)
+int Solver(customer *c,int total_tuples, int VehicleLength, int capacity , char **msg)
 {
-        Vehicle=ScanVehicle(Vehicle);
+ /*       Vehicle=ScanVehicle(Vehicle);
         d=ScanDepot(d);
         while((scanf("%d",&temp))!=EOF){
                 CustomerLength+=1;
                 len=CustomerLength;
                 c[CustomerLength]=ScanCustomer(temp,c[CustomerLength],d);
         }
+*/
+      int   CustomerLength= total_tuples;
 
+        d.id = c[0].id;
+        d.x = c[0].id;
+        d.y = c[0].id;
+        d.demand = c[0].demand;
+        d.Etime = c[0].Etime;
+        d.Ltime = c[0].Ltime;
+        d.Stime = c[0].Stime;
+        d.Pindex = c[0].Pindex;
+        d.Dindex = c[0].Dindex;
         //From customers put aside all the pickup's;
         for(int i=1;i<=CustomerLength;i++){
                 if(c[i].P==1){

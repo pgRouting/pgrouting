@@ -69,66 +69,63 @@ double CalculateDistance(int x1,int y1,int x2,int y2)
         return sqrt(((x2-x1)*(x2-x1))+((y2-y1)*(y2-y1)));
 }
 
-
+/*
 // DEPOT:  With id=0
 depot ScanDepot(depot d)
 {
 
-        scanf("%d",&d.id);
-        scanf("%d",&d.x);
-        scanf("%d",&d.y);
-        scanf("%d",&d.demand);
-        scanf("%d",&d.Etime);
-        scanf("%d",&d.Ltime);
-        scanf("%d",&d.Stime);
-        scanf("%d",&d.Pindex);
-        scanf("%d",&d.Dindex);
-        return d;
+scanf("%d",&d.id);
+scanf("%d",&d.x);
+scanf("%d",&d.y);
+scanf("%d",&d.demand);
+scanf("%d",&d.Etime);
+scanf("%d",&d.Ltime);
+scanf("%d",&d.Stime);
+scanf("%d",&d.Pindex);
+scanf("%d",&d.Dindex);
+return d;
 }
 
 // CUSTOMER: WITH id>=1
 customer ScanCustomer(int id,customer c,depot d)
 {
-        c.id=id;
-        scanf("%d",&c.x);
-        scanf("%d",&c.y);
-        scanf("%d",&c.demand);
-        scanf("%d",&c.Etime);
-        scanf("%d",&c.Ltime);
-        scanf("%d",&c.Stime);
-        scanf("%d",&c.Pindex);
-        scanf("%d",&c.Dindex);
-        if(c.Pindex==0)
-        { 
-                c.P=1;
-                c.D=0;
-        }  
-        else if(c.Dindex==0)
-        {
-                c.D=1;
-                c.P=0;
-        }
-        c.Ddist=CalculateDistance(c.x,c.y,d.x,d.y);
-        return c;
+c.id=id;
+scanf("%d",&c.x);
+scanf("%d",&c.y);
+scanf("%d",&c.demand);
+scanf("%d",&c.Etime);
+scanf("%d",&c.Ltime);
+scanf("%d",&c.Stime);
+scanf("%d",&c.Pindex);
+scanf("%d",&c.Dindex);
+if(c.Pindex==0)
+{ 
+c.P=1;
+c.D=0;
+}  
+else if(c.Dindex==0)
+{
+c.D=1;
+c.P=0;
+}
+c.Ddist=CalculateDistance(c.x,c.y,d.x,d.y);
+return c;
 }
 
 
 //VEHICLE: First Line contains vehicle data
 VehicleInfo ScanVehicle(VehicleInfo Vehicle)
 {
-        scanf("%d",&Vehicle.given_vehicles);
-        scanf("%d",&Vehicle.capacity);
-        scanf("%d",&Vehicle.speed);
-        Vehicle.used_vehicles=0;
-        return Vehicle;
+scanf("%d",&Vehicle.given_vehicles);
+scanf("%d",&Vehicle.capacity);
+scanf("%d",&Vehicle.speed);
+Vehicle.used_vehicles=0;
+return Vehicle;
 
 }
 
-//temp variables
-int temp=0;
 
-int CustomerLength=0;
-int OrderLength=0;
+ */
 
 
 // Part of code: It is used to save some variables and helps if we need to revisit previous state.
@@ -142,6 +139,17 @@ typedef struct statesave{
         int order[1000];
         int path_length;
 }State;
+
+
+
+#ifdef __cplusplus
+extern "C"
+#endif
+int Solver(customer *c, int total_tuples, int vehicle_count, int capacity , char **msg);
+
+#ifdef __cplusplus
+extern "C"
+#endif
 
 
 

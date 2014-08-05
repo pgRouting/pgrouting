@@ -1,6 +1,6 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o"
   "CMakeFiles/vrppdtw.dir/pdp.c.o"
+  "CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

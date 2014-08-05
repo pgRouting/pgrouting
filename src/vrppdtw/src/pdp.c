@@ -7,6 +7,7 @@
 #endif
 
 #include "fmgr.h"
+#include "./pdp.h"
 
 
 Datum vrppdtw(PG_FUNCTION_ARGS);
@@ -29,6 +30,39 @@ Datum vrppdtw(PG_FUNCTION_ARGS);
 PG_MODULE_MAGIC;
 #endif
 
+/*
+    * Define this to have profiling enabled
+     */
+//#define PROFILE
+
+#ifdef PROFILE
+#include <sys/time.h>
+
+struct timeval prof_astar, prof_store, prof_extract, prof_total;
+long proftime[5];
+long profipts1, profipts2, profopts;
+
+#define profstart(x) do { gettimeofday(&x, NULL); } while (0);
+#define profstop(n, x) do { struct timeval _profstop;   \
+                long _proftime;                         \
+                gettimeofday(&_profstop, NULL);                         \
+                _proftime = ( _profstop.tv_sec*1000000+_profstop.tv_usec) -     \
+                        ( x.tv_sec*1000000+x.tv_usec); \
+                elog(NOTICE, \
+                                                "PRF(%s) %lu (%f ms)", \
+                                                (n), \
+                                             _proftime, _proftime / 1000.0);    \
+                } while (0);
+
+#else
+
+#define profstart(x) do { } while (0);
+#define profstop(n, x) do { } while (0);
+
+#endif // PROFILE
+
+
+
 
 
 typedef struct Customer_type{
@@ -47,7 +81,7 @@ typedef struct Customer_type{
 }customer_t;
 
 
-        static char *
+static char *
 text2char(text *in)
 {
         char *out = (char*)palloc(VARSIZE(in));
@@ -57,7 +91,7 @@ text2char(text *in)
         return out;
 }
 
-        static int
+static int
 finish(int code, int ret)
 {
         code = SPI_finish();
@@ -106,7 +140,7 @@ static int prepare_query(Portal *SPIportal, char* sql)
 }
 
 
-static int fetch_customer_columns(SPITupleTable *tuptable, customer *c)
+static int fetch_customer_columns(SPITupleTable *tuptable, customer_t *c)
 {
         DBG("Customer Data");
 
@@ -139,140 +173,156 @@ static int fetch_customer_columns(SPITupleTable *tuptable, customer *c)
 
 
 
-//SPI code 
-
-static int conn(int *SPIcode)
-{
-        int res = 0;
-
-        *SPIcode = SPI_connect();
-
-        if (*SPIcode  != SPI_OK_CONNECT)
-        {
-                elog(ERROR, "vrppdtw: couldn't open a connection to SPI");
-                res = -1;
-        }
-
-        return res;
-}
 
 
-/*
 
-   static void fetch_customer(HeapTuple *tuple, TupleDesc *tupdesc, 
-   edge_columns_t *edge_columns, edge_t *target_edge)
+
+static void fetch_customer(HeapTuple *tuple, TupleDesc *tupdesc, customer_t *c_all, customer *c_single)
    {
    Datum binval;
    bool isnull;
 
-   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->id, &isnull);
+   binval = SPI_getbinval(*tuple, *tupdesc, c_all->id, &isnull);
    if (isnull) elog(ERROR, "id contains a null value");
-   target_edge->id = DatumGetInt32(binval);
-
-   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->source, &isnull);
-   if (isnull) elog(ERROR, "source contains a null value");
-   target_edge->source = DatumGetInt32(binval);
-
-   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->target, &isnull);
-   if (isnull) elog(ERROR, "target contains a null value");
-   target_edge->target = DatumGetInt32(binval);
-
-   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->cost, &isnull);
-   if (isnull) elog(ERROR, "cost contains a null value");
-   target_edge->cost = DatumGetFloat8(binval);
-
-   if (edge_columns->reverse_cost != -1) {
-   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->reverse_cost, 
-   &isnull);
-   if (isnull) elog(ERROR, "reverse_cost contains a null value");
-   target_edge->reverse_cost =  DatumGetFloat8(binval);
-   }
-   }
+   c_single->id = DatumGetInt32(binval);
 
 
-   static int compute_shortest_path(char* sql, int start_vertex, 
-   int end_vertex, bool directed, 
-   bool has_reverse_cost, 
-   path_element_t **path, int *path_count) 
-   {
+   binval = SPI_getbinval(*tuple, *tupdesc, c_all->x, &isnull);
+   if (isnull) elog(ERROR, "x contains a null value");
+   c_single->x = DatumGetInt32(binval);
 
-   int SPIcode;
-   void *SPIplan;
-   Portal SPIportal;
-   bool moredata = TRUE;
-   int ntuples;
-   edge_t *edges = NULL;
-   int total_tuples = 0;
-   edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
-   .cost= -1, .reverse_cost= -1};
-   int v_max_id=0;
-   int v_min_id=INT_MAX;
+   binval = SPI_getbinval(*tuple, *tupdesc, c_all->y, &isnull);
+   if (isnull) elog(ERROR, "y contains a null value");
+   c_single->y = DatumGetInt32(binval);
 
-   int s_count = 0;
-   int t_count = 0;
 
-   char *err_msg;
-   int ret = -1;
-   register int z;
+   binval = SPI_getbinval(*tuple, *tupdesc, c_all->demand, &isnull);
+   if (isnull) elog(ERROR, "demand contains a null value");
+   c_single->demand = DatumGetInt32(binval);
 
-   DBG("start shortest_path\n");
 
-   SPIcode = SPI_connect();
-   if (SPIcode  != SPI_OK_CONNECT) {
-   elog(ERROR, "shortest_path: couldn't open a connection to SPI");
-   return -1;
+   binval = SPI_getbinval(*tuple, *tupdesc, c_all->Etime, &isnull);
+   if (isnull) elog(ERROR, "Etime contains a null value");
+   c_single->Etime = DatumGetInt32(binval);
+
+
+   binval = SPI_getbinval(*tuple, *tupdesc, c_all->Ltime, &isnull);
+   if (isnull) elog(ERROR, "Ltime contains a null value");
+   c_single->Ltime = DatumGetInt32(binval);
+
+
+   binval = SPI_getbinval(*tuple, *tupdesc, c_all->Stime, &isnull);
+   if (isnull) elog(ERROR, "Stime contains a null value");
+   c_single->Stime = DatumGetInt32(binval);
+
+
+   binval = SPI_getbinval(*tuple, *tupdesc, c_all->Pindex, &isnull);
+   if (isnull) elog(ERROR, "pindex contains a null value");
+   c_single->Pindex = DatumGetInt32(binval);
+
+   binval = SPI_getbinval(*tuple, *tupdesc, c_all->Dindex, &isnull);
+   if (isnull) elog(ERROR, "dindex contains a null value");
+   c_single->Dindex = DatumGetInt32(binval);
+
+   
    }
 
-   SPIplan = SPI_prepare(sql, 0, NULL);
-   if (SPIplan  == NULL) {
-   elog(ERROR, "shortest_path: couldn't create query plan via SPI");
-   return -1;
-   }
 
-if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
-        elog(ERROR, "shortest_path: SPI_cursor_open('%s') returns NULL", sql);
-        return -1;
-}
 
-while (moredata == TRUE) {
-        SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
 
-        if (edge_columns.id == -1) {
-                if (fetch_edge_columns(SPI_tuptable, &edge_columns, 
-                                        has_reverse_cost) == -1)
-                        return finish(SPIcode, ret);
+//Note:: edge_colums = total , //ly customer_t = total ....
+
+static int compute_shortest_path(char* sql, int  vehicle_count, int capacity ) 
+{
+
+        int SPIcode;
+        void *SPIplan;
+        Portal SPIportal;
+        bool moredata = TRUE;
+        int ntuples;
+        customer *customer_single = NULL;
+        int total_tuples = 0;
+        customer_t customer_all = {.id= -1, .x=-1, .y=-1 , .demand=-1 , .Etime=-1, .Ltime=-1 , .Stime=-1 , .Pindex=-1 , .Dindex=-1 };   // write this 
+
+        char *err_msg;
+        int ret = -1;
+        register int z;
+
+        DBG("start shortest_path\n");
+
+        SPIcode = SPI_connect();
+        if (SPIcode  != SPI_OK_CONNECT) {
+                elog(ERROR, "shortest_path: couldn't open a connection to SPI");
+                return -1;
         }
 
-        ntuples = SPI_processed;
-        total_tuples += ntuples;
-        if (!edges)
-                edges = palloc(total_tuples * sizeof(edge_t));
-        else
-                edges = repalloc(edges, total_tuples * sizeof(edge_t));
-
-        if (edges == NULL) {
-                elog(ERROR, "Out of memory");
-                return finish(SPIcode, ret);        
+        SPIplan = SPI_prepare(sql, 0, NULL);
+        if (SPIplan  == NULL) {
+                elog(ERROR, "shortest_path: couldn't create query plan via SPI");
+                return -1;
         }
 
-        if (ntuples > 0) {
-                int t;
-                SPITupleTable *tuptable = SPI_tuptable;
-                TupleDesc tupdesc = SPI_tuptable->tupdesc;
+        if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
+                elog(ERROR, "shortest_path: SPI_cursor_open('%s') returns NULL", sql);
+                return -1;
+        }
 
-                for (t = 0; t < ntuples; t++) {
-                        HeapTuple tuple = tuptable->vals[t];
-                        fetch_edge(&tuple, &tupdesc, &edge_columns, 
-                                        &edges[total_tuples - ntuples + t]);
+        while (moredata == TRUE) {
+                SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
+
+                if (customer_all.id == -1) {
+                        if (fetch_customer_columns(SPI_tuptable, &customer_all) == -1)
+                                return finish(SPIcode, ret);
                 }
-                SPI_freetuptable(tuptable);
-        } 
-        else {
-                moredata = FALSE;
+
+                ntuples = SPI_processed;
+                total_tuples += ntuples;
+                /*
+                if (customer_all!=NULL)
+                        customer_all = palloc(total_tuples * sizeof(customer_t));
+                else
+                        customer_all = repalloc(customer_all, total_tuples * sizeof(customer_t));
+
+                        */
+
+                if (ntuples > 0) {
+                        int t;
+                        SPITupleTable *tuptable = SPI_tuptable;
+                        TupleDesc tupdesc = SPI_tuptable->tupdesc;
+
+                        for (t = 0; t < ntuples; t++) {
+                                HeapTuple tuple = tuptable->vals[t];
+                                fetch_customer(&tuple, &tupdesc, &customer_all , 
+                                                &customer_single[total_tuples - ntuples + t]);
+                        }
+                        SPI_freetuptable(tuptable);
+                } 
+                else {
+                        moredata = FALSE;
+                }
         }
+
+
+        DBG("Calling Solver Instance\n");
+
+
+        ret = Solver(customer_single, total_tuples, vehicle_count, capacity , &err_msg);
+
+        if (ret < 0) {
+                //elog(ERROR, "Error computing path: %s", err_msg);
+                ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED), 
+                                        errmsg("Error computing path: %s", err_msg)));
+        } 
+
+
+
+        DBG("ret = %i\n", ret);
+
+
+        DBG("ret = %i\n", ret);
+
+        return finish(SPIcode, ret);
 }
-}
-*/
 
 
 
@@ -280,7 +330,7 @@ PG_FUNCTION_INFO_V1(vrppdtw);
 
 Datum
 
-vrp(pdtwPG_FUNCTION_ARGS)
+vrppdtw(PG_FUNCTION_ARGS)
 
 {
 
@@ -292,7 +342,6 @@ vrp(pdtwPG_FUNCTION_ARGS)
 
         TupleDesc            tuple_desc;
 
-        vrp_result_element_t         *path;
 
 
 
@@ -337,21 +386,17 @@ vrp(pdtwPG_FUNCTION_ARGS)
 
 
 
-                ret = solve_vrp(//text2char(PG_GETARG_TEXT_P(0)), // points sql
+                ret = compute_shortest_path(//text2char(PG_GETARG_TEXT_P(0)), // points sql
 
                                 text2char(PG_GETARG_TEXT_P(0)),  // orders sql
 
-                                text2char(PG_GETARG_TEXT_P(1)),  // vehicles sql
+                              PG_GETARG_INT32(1),  // vehicles sql
 
-                                text2char(PG_GETARG_TEXT_P(2)),  // distances query
-
-                                PG_GETARG_INT32(3),  // depot id
-
-                                &path, &path_count);
+                               PG_GETARG_INT32(2)  // distances query
+);
 
 
 
-                DBG("Back from solve_vrp, path_count:%d", path_count);
 
                 //elog(NOTICE, "Back from solve_vrp, path_count:%d", path_count);
 
@@ -360,33 +405,6 @@ vrp(pdtwPG_FUNCTION_ARGS)
                 /* total number of tuples to be returned */
 
                 //DBG("Counting tuples number\n");
-
-
-
-                funcctx->max_calls = total_tuples;
-
-
-
-                funcctx->user_fctx = path;
-
-
-
-                /* Build a tuple descriptor for our result type */
-
-                if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
-
-                        ereport(ERROR,
-
-                                        (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-
-                                         errmsg("function returning record called in context "
-
-                                                 "that cannot accept type record")));
-
-
-
-                funcctx->tuple_desc = BlessTupleDesc(tuple_desc);
-
 
 
                 /*
@@ -403,7 +421,6 @@ vrp(pdtwPG_FUNCTION_ARGS)
 
 
 
-                MemoryContextSwitchTo(oldcontext);
 
                 //elog(NOTICE, "table formed");
 

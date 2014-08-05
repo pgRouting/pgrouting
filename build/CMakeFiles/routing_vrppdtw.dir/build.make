@@ -57,11 +57,11 @@ routing_vrppdtw_OBJECTS =
 
 # External object files for target routing_vrppdtw
 routing_vrppdtw_EXTERNAL_OBJECTS = \
-"/home/manikanta/Study/GSoC/main/pgrouting/build/src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o" \
-"/home/manikanta/Study/GSoC/main/pgrouting/build/src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp.c.o"
+"/home/manikanta/Study/GSoC/main/pgrouting/build/src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp.c.o" \
+"/home/manikanta/Study/GSoC/main/pgrouting/build/src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o"
 
-lib/librouting_vrppdtw.so: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o
 lib/librouting_vrppdtw.so: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp.c.o
+lib/librouting_vrppdtw.so: src/vrppdtw/src/CMakeFiles/vrppdtw.dir/pdp_solver.cpp.o
 lib/librouting_vrppdtw.so: CMakeFiles/routing_vrppdtw.dir/build.make
 lib/librouting_vrppdtw.so: CMakeFiles/routing_vrppdtw.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX shared library lib/librouting_vrppdtw.so"

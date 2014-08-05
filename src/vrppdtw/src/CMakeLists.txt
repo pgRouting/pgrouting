@@ -1,3 +1,3 @@
-add_library(vrppdtw OBJECT  pdp.c pdp_solver.cpp pdp.h Route.h   Solution.h  )
+add_library(vrppdtw OBJECT  pdp.h  pdp.c  Route.h   Solution.h pdp_solver.cpp )
 
 
