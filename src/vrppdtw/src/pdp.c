@@ -1,4 +1,4 @@
-#include "postgres.h"
+#include "./postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
 #include "catalog/pg_type.h"
@@ -63,6 +63,25 @@ long profipts1, profipts2, profopts;
 
 
 
+static char *text2char(text *in)
+{
+        char *out = (char*)palloc(VARSIZE(in));
+
+        memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
+        out[VARSIZE(in) - VARHDRSZ] = '\0';
+        return out;
+}
+
+static int finish(int code, int ret)
+{
+        code = SPI_finish();
+        if (code  != SPI_OK_FINISH ) {
+                elog(ERROR,"couldn't disconnect from SPI");
+                return -1 ;
+        }
+        return ret;
+}
+
 
 
 typedef struct Customer_type{
@@ -75,32 +94,7 @@ typedef struct Customer_type{
         int Stime;
         int Pindex;
         int Dindex;
-        double Ddist;
-        int P;
-        int D;
 }customer_t;
-
-
-static char *
-text2char(text *in)
-{
-        char *out = (char*)palloc(VARSIZE(in));
-
-        memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
-        out[VARSIZE(in) - VARHDRSZ] = '\0';
-        return out;
-}
-
-static int
-finish(int code, int ret)
-{
-        code = SPI_finish();
-        if (code  != SPI_OK_FINISH ) {
-                elog(ERROR,"couldn't disconnect from SPI");
-                return -1 ;
-        }
-        return ret;
-}
 
 
 static int conn(int *SPIcode)
@@ -140,19 +134,28 @@ static int prepare_query(Portal *SPIportal, char* sql)
 }
 
 
-static int fetch_customer_columns(SPITupleTable *tuptable, customer_t *c)
+static int fetch_customer_columns(SPITupleTable *tuptable, customer_t *c , int vehicle_count , int capacity)
 {
         DBG("Customer Data");
 
         c->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
+        DBG(" id done ");
         c->x = SPI_fnumber(SPI_tuptable->tupdesc, "x");
+        DBG("x done");
         c->y = SPI_fnumber(SPI_tuptable->tupdesc, "y");
+        DBG("y done");
         c->demand = SPI_fnumber(SPI_tuptable->tupdesc, "demand");
+        DBG("demand done");
         c->Etime = SPI_fnumber(SPI_tuptable->tupdesc, "etime");
+        DBG("etime done");
         c->Ltime = SPI_fnumber(SPI_tuptable->tupdesc, "ltime");
+        DBG("ltime done");
         c->Stime = SPI_fnumber(SPI_tuptable->tupdesc, "stime");
+        DBG("stime done");
         c->Pindex = SPI_fnumber(SPI_tuptable->tupdesc, "pindex");
+        DBG("pindex done");
         c->Dindex = SPI_fnumber(SPI_tuptable->tupdesc, "dindex");
+        DBG("dindex done");
         if (c->id == SPI_ERROR_NOATTRIBUTE ||
                         c->x == SPI_ERROR_NOATTRIBUTE ||
                         c->y == SPI_ERROR_NOATTRIBUTE ||
@@ -168,27 +171,28 @@ static int fetch_customer_columns(SPITupleTable *tuptable, customer_t *c)
                 return -1;
         }
 
+                DBG("Returned from here  ");
         return 0;
 }
 
 
-
-
-
-
-
 static void fetch_customer(HeapTuple *tuple, TupleDesc *tupdesc, customer_t *c_all, customer *c_single)
-   {
+{
    Datum binval;
    bool isnull;
+                DBG("Hey baby in fetch_customer");
 
    binval = SPI_getbinval(*tuple, *tupdesc, c_all->id, &isnull);
+                DBG("fetching first thing");
    if (isnull) elog(ERROR, "id contains a null value");
-   c_single->id = DatumGetInt32(binval);
+                DBG("value of binval =  %d",binval);
+  c_single->id = DatumGetInt32(binval);
 
 
+                DBG("fetching second  thing");
    binval = SPI_getbinval(*tuple, *tupdesc, c_all->x, &isnull);
-   if (isnull) elog(ERROR, "x contains a null value");
+   if (isnull) 
+           elog(ERROR, "x contains a null value");
    c_single->x = DatumGetInt32(binval);
 
    binval = SPI_getbinval(*tuple, *tupdesc, c_all->y, &isnull);
@@ -225,7 +229,7 @@ static void fetch_customer(HeapTuple *tuple, TupleDesc *tupdesc, customer_t *c_a
    c_single->Dindex = DatumGetInt32(binval);
 
    
-   }
+}
 
 
 
@@ -240,7 +244,7 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity )
         Portal SPIportal;
         bool moredata = TRUE;
         int ntuples;
-        customer *customer_single = NULL;
+        customer customer_single[100];
         int total_tuples = 0;
         customer_t customer_all = {.id= -1, .x=-1, .y=-1 , .demand=-1 , .Etime=-1, .Ltime=-1 , .Stime=-1 , .Pindex=-1 , .Dindex=-1 };   // write this 
 
@@ -270,13 +274,20 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity )
         while (moredata == TRUE) {
                 SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
 
+                DBG("Checking ");
+
                 if (customer_all.id == -1) {
-                        if (fetch_customer_columns(SPI_tuptable, &customer_all) == -1)
+                DBG("Checking everytime bitch ");
+                        if (fetch_customer_columns(SPI_tuptable, &customer_all,vehicle_count, capacity) == -1)
+                        {
                                 return finish(SPIcode, ret);
+                        }
+                DBG("Here I am ");
                 }
 
                 ntuples = SPI_processed;
                 total_tuples += ntuples;
+                DBG("Calculated total_tuples  ntuples=%d   total_tuples =%d ", ntuples, total_tuples);
                 /*
                 if (customer_all!=NULL)
                         customer_all = palloc(total_tuples * sizeof(customer_t));
@@ -286,14 +297,17 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity )
                         */
 
                 if (ntuples > 0) {
+                DBG("Check here ");
                         int t;
                         SPITupleTable *tuptable = SPI_tuptable;
                         TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
                         for (t = 0; t < ntuples; t++) {
+                DBG("In for loop ");
                                 HeapTuple tuple = tuptable->vals[t];
-                                fetch_customer(&tuple, &tupdesc, &customer_all , 
-                                                &customer_single[total_tuples - ntuples + t]);
+                DBG("Manikanta ");
+                                fetch_customer(&tuple, &tupdesc, &customer_all , &customer_single[total_tuples - ntuples + t]);
+                DBG("After Function call");
                         }
                         SPI_freetuptable(tuptable);
                 } 
@@ -301,14 +315,19 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity )
                         moredata = FALSE;
                 }
         }
-
+  
+        int k;
+       for(k=0;k<total_tuples;k++)
+       {
+               DBG("id= %d ,  x=%d  y=%d", customer_single[k].id, customer_single[k].x , customer_single[k].y);
+       }
 
         DBG("Calling Solver Instance\n");
 
 
         ret = Solver(customer_single, total_tuples, vehicle_count, capacity , &err_msg);
 
-        if (ret < 0) {
+        if (ret < -2) {
                 //elog(ERROR, "Error computing path: %s", err_msg);
                 ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED), 
                                         errmsg("Error computing path: %s", err_msg)));
@@ -319,7 +338,6 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity )
         DBG("ret = %i\n", ret);
 
 
-        DBG("ret = %i\n", ret);
 
         return finish(SPIcode, ret);
 }
@@ -327,22 +345,13 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity )
 
 
 PG_FUNCTION_INFO_V1(vrppdtw);
-
 Datum
-
 vrppdtw(PG_FUNCTION_ARGS)
-
 {
-
         FuncCallContext     *funcctx;
-
         int                  call_cntr;
-
         int                  max_calls;
-
         TupleDesc            tuple_desc;
-
-
 
 
         /* stuff done only on the first call of the function */
@@ -350,15 +359,10 @@ vrppdtw(PG_FUNCTION_ARGS)
         if (SRF_IS_FIRSTCALL())
 
         {
-
                 MemoryContext   oldcontext;
-
                 //int path_count;
-
-                int ret=-1;
-
+                int ret;
                 int path_count = 0;
-
 
 
                 // XXX profiling messages are not thread safe
@@ -393,7 +397,7 @@ vrppdtw(PG_FUNCTION_ARGS)
                               PG_GETARG_INT32(1),  // vehicles sql
 
                                PG_GETARG_INT32(2)  // distances query
-);
+                               );
 
 
 

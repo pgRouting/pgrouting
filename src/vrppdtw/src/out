@@ -1,0 +1,12 @@
+seq, rid, oseq, nid, cost
+seq is the record set sequence 1..N
+rid - route id 1..NR
+oseq is the node sequence in the route
+nid is the node id
+cost is the cost to get to this node
+1,1,1,0,0
+2,1,2,3,40
+3,1,3,2,50
+4,1,4,1,60
+5,1,5,4,70
+6,1,6,0,80

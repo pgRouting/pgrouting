@@ -5,9 +5,6 @@
 #define _PDP_H
 
 
-
-
-
 // Structures and variables which help us in storing the data
 
 int VehicleCount;

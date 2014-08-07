@@ -32,6 +32,7 @@
 #include "./Solution.h"
 #include "./Route.h"
 
+
 int PickupLength=0;
 
 //Depot 
@@ -61,7 +62,7 @@ int Solver(customer *c,int total_tuples, int VehicleLength, int capacity , char 
                 c[CustomerLength]=ScanCustomer(temp,c[CustomerLength],d);
         }
 */
-      int   CustomerLength= total_tuples;
+      int   CustomerLength= total_tuples-1;
 
         d.id = c[0].id;
         d.x = c[0].id;
@@ -108,12 +109,12 @@ int Solver(customer *c,int total_tuples, int VehicleLength, int capacity , char 
                 p[i].checked=0;
         }
 
-        /*
+        
            for(int i=1;i<=PickupLength;i++)
            {
-           printf("PickupID[%d]=%lf\n",p[i].id,p[i].Ddist);
+ //          DBG("PickupID[%d]=%lf\n",p[i].id,p[i].Ddist);
            }
-         */
+         
 
 
         int flag_complete=0,checked=0;
@@ -173,7 +174,7 @@ int Solver(customer *c,int total_tuples, int VehicleLength, int capacity , char 
         //Starting Neighborhoods
         printf("\nNeighborhoods From now\n");
         TabuSearch();
-        return 0;
+        return -2;
 }
 int n=0,maxItr=30;
 
