@@ -1,18 +1,13 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<math.h>
+#include "postgres.h"
 
 #ifndef _PDP_H
 #define _PDP_H
 
 
-
-
-
 // Structures and variables which help us in storing the data
-
-int VehicleCount;
-int Capacity;
-int Speed;
 
 typedef struct Depot{
         int id;
@@ -141,11 +136,18 @@ typedef struct statesave{
 }State;
 
 
+typedef struct PathElement {
+         int seq;
+         int rid;
+         int nid;
+} path_element;
+
+
 
 #ifdef __cplusplus
 extern "C"
 #endif
-int Solver(customer *c, int total_tuples, int vehicle_count, int capacity , char **msg);
+int Solver(customer *c, int total_tuples, int vehicle_count, int capacity , char **msg, path_element **results, int *length_results);
 
 #ifdef __cplusplus
 extern "C"

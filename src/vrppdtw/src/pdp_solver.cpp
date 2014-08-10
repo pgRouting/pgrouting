@@ -38,41 +38,74 @@ int PickupLength=0;
 //Depot 
 depot d;
 //Vehicle
-VehicleInfo Vehicle;
 //Customer Data
 customer c[1000];
 pickup p[600];
 int len=0;
 
+int CustomerLength;
+
+
+std::vector<Solution> T;
+
 Route r[500];
- int CustomerLength;
 //Definitions for a few functions 
-void TabuSearch();
+int TabuSearch();
+//Vector containing solutions
 
 //Initial Solution
 Solution S0;
 
-int Solver(customer *c,int total_tuples, int VehicleLength, int capacity , char **msg)
+void result_struct();
+int Solver(customer *c1,int total_tuples, int VehicleLength, int capacity , char **msg, path_element **results, int *length_results_struct)
 {
- /*       Vehicle=ScanVehicle(Vehicle);
-        d=ScanDepot(d);
-        while((scanf("%d",&temp))!=EOF){
-                CustomerLength+=1;
-                len=CustomerLength;
-                c[CustomerLength]=ScanCustomer(temp,c[CustomerLength],d);
-        }
-*/
-      int   CustomerLength= total_tuples-1;
+        CustomerLength= total_tuples-1;
 
-        d.id = c[0].id;
-        d.x = c[0].id;
-        d.y = c[0].id;
-        d.demand = c[0].demand;
-        d.Etime = c[0].Etime;
-        d.Ltime = c[0].Ltime;
-        d.Stime = c[0].Stime;
-        d.Pindex = c[0].Pindex;
-        d.Dindex = c[0].Dindex;
+VehicleInfo Vehicle;
+        //Depot Data
+        d.id = c1[0].id;
+        d.x = c1[0].x;
+        d.y = c1[0].y;
+        d.demand = c1[0].demand;
+        d.Etime = c1[0].Etime;
+        d.Ltime = c1[0].Ltime;
+        d.Stime = c1[0].Stime;
+        d.Pindex = c1[0].Pindex;
+        d.Dindex = c1[0].Dindex;
+
+        //Customer Data 
+        for(int i=1;i<=CustomerLength;i++)
+        {
+                c[i].id = c1[i].id;
+                c[i].x = c1[i].x;
+                c[i].y = c1[i].x;
+                c[i].Etime = c1[i].Etime;
+                c[i].demand = c1[i].demand;
+                c[i].Ltime = c1[i].Ltime;
+                c[i].Stime = c1[i].Stime;
+                c[i].Pindex = c1[i].Pindex;
+                c[i].Dindex = c1[i].Dindex;
+                c[i].Ddist= CalculateDistance(c[i].x, c[i].y ,d.x, d.y);                        
+                if(c[i].Pindex==0){
+                        c[i].P=1;
+                        c[i].D=0;
+                }
+                if(c[i].Dindex==0){
+                        c[i].D=1;
+                        c[i].P=0;
+                }
+        }
+
+        //Vehicle Data 
+                  
+         Vehicle.given_vehicles =  VehicleLength;
+         Vehicle.capacity = capacity;
+         Vehicle.speed = 1;
+         Vehicle.used_vehicles=0;
+
+      
+
+
         //From customers put aside all the pickup's;
         for(int i=1;i<=CustomerLength;i++){
                 if(c[i].P==1){
@@ -109,12 +142,12 @@ int Solver(customer *c,int total_tuples, int VehicleLength, int capacity , char 
                 p[i].checked=0;
         }
 
-        
-           for(int i=1;i<=PickupLength;i++)
-           {
- //          DBG("PickupID[%d]=%lf\n",p[i].id,p[i].Ddist);
-           }
-         
+
+        for(int i=1;i<=PickupLength;i++)
+        {
+                //          DBG("PickupID[%d]=%lf\n",p[i].id,p[i].Ddist);
+        }
+
 
 
         int flag_complete=0,checked=0;
@@ -143,6 +176,7 @@ int Solver(customer *c,int total_tuples, int VehicleLength, int capacity , char 
                         v=9999;
                 }
         }
+         *length_results_struct = r[2].path_length;
         int sum=0,rts=0;
 
         for(int i=1;i<=Vehicle.used_vehicles;i++){
@@ -171,24 +205,52 @@ int Solver(customer *c,int total_tuples, int VehicleLength, int capacity , char 
         }
         printf("Size  =>>  S0.r.size=%d\n",S0.r.size());
 
-        //Starting Neighborhoods
+ 
+       //Starting Neighborhoods
         printf("\nNeighborhoods From now\n");
-        TabuSearch();
-        return -2;
+        int sol_count=TabuSearch();
+
+        //Copying back the results 
+        // path_element->results , path_length   {  we need to send (results, length_results) backk ; 
+        int nodes_count;
+        nodes_count= CustomerLength;
+        *results = (path_element *) malloc(sizeof(path_element) * (nodes_count + 1));
+        int length_results=1;
+        
+        for(int i=1;i<=nodes_count;i++){
+                double cost;
+                for(int itr=0;itr<=T[sol_count].route_length;itr++)
+                {
+                        for(int z=0;z<T[sol_count].r[itr].path_length;z++)
+                        {
+                                if(T[sol_count].r[itr].path[z]==i){
+                                        (*results)[length_results].seq = i;
+                                        (*results)[length_results].rid = itr;
+                                        (*results)[length_results].nid = z;
+                                        length_results++;
+                                }
+                        }
+                }
+        }
+
+//        *length_results_struct = T[0].route_length;
+
+        return 0;
 }
 int n=0,maxItr=30;
 
-void TabuSearch()
+
+int TabuSearch()
 {
         printf("TABU Called\n");
         Solution S,SBest;
         double CBest;
-        std::vector<Solution> T;
         //Pseudo Code
         /*
 
          **********Before*********
          int n=0; //Counter     
+
          Create Tabu List  Vector of Solutions  std::vector<Solution> T;
 
          **********After**********
@@ -246,6 +308,6 @@ void TabuSearch()
         {
                 T[itr].dump();
         }
-        return;
+        return T.size()-1;
 }
 

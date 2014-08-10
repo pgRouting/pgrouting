@@ -230,10 +230,12 @@ void TabuSearch()
                         break;
         }
         printf("Size of Tabu=%d &&& n=%d  maxItr=%d\n",T.size(),n,maxItr);
-        for(int itr=0;itr<T.size();itr++)
+        for(int itr=0;itr<=T.size();itr++)
         {
                 T[itr].dump();
         }
+        printf("Solution with itr=2\n");
+                T[2].dump();
         return;
 }
 

@@ -31,8 +31,8 @@ PG_MODULE_MAGIC;
 #endif
 
 /*
-    * Define this to have profiling enabled
-     */
+ * Define this to have profiling enabled
+ */
 //#define PROFILE
 
 #ifdef PROFILE
@@ -44,15 +44,15 @@ long profipts1, profipts2, profopts;
 
 #define profstart(x) do { gettimeofday(&x, NULL); } while (0);
 #define profstop(n, x) do { struct timeval _profstop;   \
-                long _proftime;                         \
-                gettimeofday(&_profstop, NULL);                         \
-                _proftime = ( _profstop.tv_sec*1000000+_profstop.tv_usec) -     \
-                        ( x.tv_sec*1000000+x.tv_usec); \
-                elog(NOTICE, \
-                                                "PRF(%s) %lu (%f ms)", \
-                                                (n), \
-                                             _proftime, _proftime / 1000.0);    \
-                } while (0);
+        long _proftime;                         \
+        gettimeofday(&_profstop, NULL);                         \
+        _proftime = ( _profstop.tv_sec*1000000+_profstop.tv_usec) -     \
+        ( x.tv_sec*1000000+x.tv_usec); \
+        elog(NOTICE, \
+                        "PRF(%s) %lu (%f ms)", \
+                        (n), \
+                        _proftime, _proftime / 1000.0);    \
+} while (0);
 
 #else
 
@@ -95,6 +95,8 @@ typedef struct Customer_type{
         int Pindex;
         int Dindex;
 }customer_t;
+
+
 
 
 static int conn(int *SPIcode)
@@ -171,64 +173,64 @@ static int fetch_customer_columns(SPITupleTable *tuptable, customer_t *c , int v
                 return -1;
         }
 
-                DBG("Returned from here  ");
+        DBG("Returned from here  ");
         return 0;
 }
 
 
 static void fetch_customer(HeapTuple *tuple, TupleDesc *tupdesc, customer_t *c_all, customer *c_single)
 {
-   Datum binval;
-   bool isnull;
-                DBG("Hey baby in fetch_customer");
+        Datum binval;
+        bool isnull;
+        DBG("Hey baby in fetch_customer");
 
-   binval = SPI_getbinval(*tuple, *tupdesc, c_all->id, &isnull);
-                DBG("fetching first thing");
-   if (isnull) elog(ERROR, "id contains a null value");
-                DBG("value of binval =  %d",binval);
-  c_single->id = DatumGetInt32(binval);
-
-
-                DBG("fetching second  thing");
-   binval = SPI_getbinval(*tuple, *tupdesc, c_all->x, &isnull);
-   if (isnull) 
-           elog(ERROR, "x contains a null value");
-   c_single->x = DatumGetInt32(binval);
-
-   binval = SPI_getbinval(*tuple, *tupdesc, c_all->y, &isnull);
-   if (isnull) elog(ERROR, "y contains a null value");
-   c_single->y = DatumGetInt32(binval);
+        binval = SPI_getbinval(*tuple, *tupdesc, c_all->id, &isnull);
+        DBG("fetching first thing");
+        if (isnull) elog(ERROR, "id contains a null value");
+        DBG("value of binval =  %d",binval);
+        c_single->id = DatumGetInt32(binval);
 
 
-   binval = SPI_getbinval(*tuple, *tupdesc, c_all->demand, &isnull);
-   if (isnull) elog(ERROR, "demand contains a null value");
-   c_single->demand = DatumGetInt32(binval);
+        DBG("fetching second  thing");
+        binval = SPI_getbinval(*tuple, *tupdesc, c_all->x, &isnull);
+        if (isnull) 
+                elog(ERROR, "x contains a null value");
+        c_single->x = DatumGetInt32(binval);
+
+        binval = SPI_getbinval(*tuple, *tupdesc, c_all->y, &isnull);
+        if (isnull) elog(ERROR, "y contains a null value");
+        c_single->y = DatumGetInt32(binval);
 
 
-   binval = SPI_getbinval(*tuple, *tupdesc, c_all->Etime, &isnull);
-   if (isnull) elog(ERROR, "Etime contains a null value");
-   c_single->Etime = DatumGetInt32(binval);
+        binval = SPI_getbinval(*tuple, *tupdesc, c_all->demand, &isnull);
+        if (isnull) elog(ERROR, "demand contains a null value");
+        c_single->demand = DatumGetInt32(binval);
 
 
-   binval = SPI_getbinval(*tuple, *tupdesc, c_all->Ltime, &isnull);
-   if (isnull) elog(ERROR, "Ltime contains a null value");
-   c_single->Ltime = DatumGetInt32(binval);
+        binval = SPI_getbinval(*tuple, *tupdesc, c_all->Etime, &isnull);
+        if (isnull) elog(ERROR, "Etime contains a null value");
+        c_single->Etime = DatumGetInt32(binval);
 
 
-   binval = SPI_getbinval(*tuple, *tupdesc, c_all->Stime, &isnull);
-   if (isnull) elog(ERROR, "Stime contains a null value");
-   c_single->Stime = DatumGetInt32(binval);
+        binval = SPI_getbinval(*tuple, *tupdesc, c_all->Ltime, &isnull);
+        if (isnull) elog(ERROR, "Ltime contains a null value");
+        c_single->Ltime = DatumGetInt32(binval);
 
 
-   binval = SPI_getbinval(*tuple, *tupdesc, c_all->Pindex, &isnull);
-   if (isnull) elog(ERROR, "pindex contains a null value");
-   c_single->Pindex = DatumGetInt32(binval);
+        binval = SPI_getbinval(*tuple, *tupdesc, c_all->Stime, &isnull);
+        if (isnull) elog(ERROR, "Stime contains a null value");
+        c_single->Stime = DatumGetInt32(binval);
 
-   binval = SPI_getbinval(*tuple, *tupdesc, c_all->Dindex, &isnull);
-   if (isnull) elog(ERROR, "dindex contains a null value");
-   c_single->Dindex = DatumGetInt32(binval);
 
-   
+        binval = SPI_getbinval(*tuple, *tupdesc, c_all->Pindex, &isnull);
+        if (isnull) elog(ERROR, "pindex contains a null value");
+        c_single->Pindex = DatumGetInt32(binval);
+
+        binval = SPI_getbinval(*tuple, *tupdesc, c_all->Dindex, &isnull);
+        if (isnull) elog(ERROR, "dindex contains a null value");
+        c_single->Dindex = DatumGetInt32(binval);
+
+ return ;
 }
 
 
@@ -236,7 +238,7 @@ static void fetch_customer(HeapTuple *tuple, TupleDesc *tupdesc, customer_t *c_a
 
 //Note:: edge_colums = total , //ly customer_t = total ....
 
-static int compute_shortest_path(char* sql, int  vehicle_count, int capacity ) 
+static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , path_element **results, int *length_results_struct) 
 {
 
         int SPIcode;
@@ -277,37 +279,37 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity )
                 DBG("Checking ");
 
                 if (customer_all.id == -1) {
-                DBG("Checking everytime bitch ");
+                        DBG("Checking everytime bitch ");
                         if (fetch_customer_columns(SPI_tuptable, &customer_all,vehicle_count, capacity) == -1)
                         {
                                 return finish(SPIcode, ret);
                         }
-                DBG("Here I am ");
+                        DBG("Here I am ");
                 }
 
                 ntuples = SPI_processed;
                 total_tuples += ntuples;
                 DBG("Calculated total_tuples  ntuples=%d   total_tuples =%d ", ntuples, total_tuples);
                 /*
-                if (customer_all!=NULL)
-                        customer_all = palloc(total_tuples * sizeof(customer_t));
-                else
-                        customer_all = repalloc(customer_all, total_tuples * sizeof(customer_t));
+                   if (customer_all!=NULL)
+                   customer_all = palloc(total_tuples * sizeof(customer_t));
+                   else
+                   customer_all = repalloc(customer_all, total_tuples * sizeof(customer_t));
 
-                        */
+                 */
 
                 if (ntuples > 0) {
-                DBG("Check here ");
+                        DBG("Check here ");
                         int t;
                         SPITupleTable *tuptable = SPI_tuptable;
                         TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
                         for (t = 0; t < ntuples; t++) {
-                DBG("In for loop ");
+                                DBG("In for loop ");
                                 HeapTuple tuple = tuptable->vals[t];
-                DBG("Manikanta ");
+                                DBG("Manikanta ");
                                 fetch_customer(&tuple, &tupdesc, &customer_all , &customer_single[total_tuples - ntuples + t]);
-                DBG("After Function call");
+                                DBG("After Function call");
                         }
                         SPI_freetuptable(tuptable);
                 } 
@@ -315,17 +317,17 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity )
                         moredata = FALSE;
                 }
         }
-  
+
         int k;
-       for(k=0;k<total_tuples;k++)
-       {
-               DBG("id= %d ,  x=%d  y=%d", customer_single[k].id, customer_single[k].x , customer_single[k].y);
-       }
+        for(k=0;k<total_tuples;k++)
+        {
+                DBG("%d     %d     %d     %d     %d     %d     %d     %d     %d" , customer_single[k].id, customer_single[k].x , customer_single[k].y , customer_single[k].demand , customer_single[k].Etime ,customer_single[k].Ltime ,customer_single[k].Stime, customer_single[k].Pindex,  customer_single[k].Dindex);
+        }
 
         DBG("Calling Solver Instance\n");
 
 
-        ret = Solver(customer_single, total_tuples, vehicle_count, capacity , &err_msg);
+        ret = Solver(customer_single, total_tuples, vehicle_count, capacity , &err_msg,results, length_results_struct);
 
         if (ret < -2) {
                 //elog(ERROR, "Error computing path: %s", err_msg);
@@ -334,9 +336,20 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity )
         } 
 
 
+        DBG("*length_results_count  = %i\n", *length_results_struct);
 
         DBG("ret = %i\n", ret);
 
+
+
+
+int vb;
+for(vb=1;vb<*length_results_struct;vb++)
+{
+        DBG("results[%d].seq=%d  ",vb, (*results)[vb].seq);
+        DBG("results[%d].rid=%d  ",vb, (*results)[vb].rid);
+        DBG("results[%d].nid=%d \n",vb, (*results)[vb].nid);
+}
 
 
         return finish(SPIcode, ret);
@@ -345,13 +358,14 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity )
 
 
 PG_FUNCTION_INFO_V1(vrppdtw);
-Datum
+        Datum
 vrppdtw(PG_FUNCTION_ARGS)
 {
         FuncCallContext     *funcctx;
         int                  call_cntr;
         int                  max_calls;
         TupleDesc            tuple_desc;
+        path_element     *results = 0;
 
 
         /* stuff done only on the first call of the function */
@@ -360,9 +374,8 @@ vrppdtw(PG_FUNCTION_ARGS)
 
         {
                 MemoryContext   oldcontext;
-                //int path_count;
                 int ret;
-                int path_count = 0;
+                int length_results_struct = 0;
 
 
                 // XXX profiling messages are not thread safe
@@ -384,7 +397,7 @@ vrppdtw(PG_FUNCTION_ARGS)
                 oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-                //path = (vrp_result_element_t *)palloc(sizeof(vrp_result_element_t)*(MAX_ORDERS-1)*2*MAX_VEHICLES);
+                results = (path_element *)palloc(sizeof(path_element)*((length_results_struct)+1));
 
                 DBG("Calling compute_shortes_path");
 
@@ -394,45 +407,67 @@ vrppdtw(PG_FUNCTION_ARGS)
 
                                 text2char(PG_GETARG_TEXT_P(0)),  // orders sql
 
-                              PG_GETARG_INT32(1),  // vehicles sql
+                                PG_GETARG_INT32(1),  // vehicles sql
 
-                               PG_GETARG_INT32(2)  // distances query
-                               );
+                                PG_GETARG_INT32(2),  // distances query
 
-
-
-
-                //elog(NOTICE, "Back from solve_vrp, path_count:%d", path_count);
-
+                                &results, &length_results_struct
+                                );
 
 
                 /* total number of tuples to be returned */
+                funcctx->max_calls = length_results_struct;
+                funcctx->user_fctx = results;
 
-                //DBG("Counting tuples number\n");
+                funcctx->tuple_desc = BlessTupleDesc(
+                                RelationNameGetTupleDesc("pgr_costResult"));
 
+                MemoryContextSwitchTo(oldcontext);
+        }
 
-                /*
+        /* stuff done on every call of the function */
+        funcctx = SRF_PERCALL_SETUP();
 
-                 * generate attribute metadata needed later to produce tuples from raw
+        call_cntr = funcctx->call_cntr;
+        max_calls = funcctx->max_calls;
+        tuple_desc = funcctx->tuple_desc;
+        results = (path_element*) funcctx->user_fctx;
 
-                 * C strings
+        /* do when there is more left to send */
+        if (call_cntr < max_calls) {
+                HeapTuple    tuple;
+                Datum        result;
+                Datum *values;
+                char* nulls;
 
-                 */
+                values = palloc(4 * sizeof(Datum));
+                nulls = palloc(4 * sizeof(char));
 
-                //attinmeta = TupleDescGetAttInMetadata(tuple_desc);
+                values[0] = Int32GetDatum(call_cntr);
+                nulls[0] = ' ';
+                values[1] = Int32GetDatum(results[call_cntr].seq);
+                nulls[1] = ' ';
+                values[2] = Int32GetDatum(results[call_cntr].rid);
+                nulls[2] = ' ';
+                values[3] = Int32GetDatum(results[call_cntr].nid);
+                nulls[3] = ' ';
 
-                //funcctx->attinmeta = attinmeta;
+                tuple = heap_formtuple(tuple_desc, values, nulls);
 
+                /* make the tuple into a datum */
+                result = HeapTupleGetDatum(tuple);
 
+                /* clean up (this is not really necessary) */
+                pfree(values);
+                pfree(nulls);
 
-
-                //elog(NOTICE, "table formed");
-
+                SRF_RETURN_NEXT(funcctx, result);
+        }
+        /* do when there is no more left */
+        else {
+                if (results) free(results);
+                SRF_RETURN_DONE(funcctx);
         }
 
 
-
-        //  till line: 832  in VRP.c 
-
 }
-

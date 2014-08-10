@@ -51,6 +51,10 @@ void TabuSearch();
 //Initial Solution
 Solution S0;
 
+
+int temp=0;
+int CustomerLength=0;
+int OrderLength=0;
 int main()
 {
         Vehicle=ScanVehicle(Vehicle);
@@ -58,6 +62,7 @@ int main()
         while((scanf("%d",&temp))!=EOF){
                 CustomerLength+=1;
                 len=CustomerLength;
+                printf("Scanning customer  %d \n",CustomerLength);
                 c[CustomerLength]=ScanCustomer(temp,c[CustomerLength],d);
         }
 
@@ -172,36 +177,6 @@ void TabuSearch()
         Solution S,SBest;
         double CBest;
         std::vector<Solution> T;
-        //Pseudo Code
-        /*
-
-         **********Before*********
-         int n=0; //Counter     
-         Create Tabu List  Vector of Solutions  std::vector<Solution> T;
-
-         **********After**********
-         Solution S,S0,SBest;  //S0 is initial 
-         S=S0;
-         Double CBest,SBest;
-         CBest = S.getCost();
-         SBest = S0;
-         n=0; //Counter
-         while(1)
-         {
-         S = S.getBextofNeighborhood();
-         if(S==NULL)
-         break;
-         if(S.getCost() < CBest){
-         SBest = S;
-         CBest = S.getCost();
-         }
-         T.push_back(S);
-         n++;
-         if(n>maxItr)
-         break;
-         }
-
-         */
 
         S=S0;
         CBest = S.getCost();

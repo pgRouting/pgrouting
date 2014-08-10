@@ -122,10 +122,6 @@ VehicleInfo ScanVehicle(VehicleInfo Vehicle)
 }
 
 //temp variables
-int temp=0;
-
-int CustomerLength=0;
-int OrderLength=0;
 
 
 // Part of code: It is used to save some variables and helps if we need to revisit previous state.
