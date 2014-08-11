@@ -1,0 +1,6 @@
+ typedef struct result {
+         int seq;
+         int rid;
+         int nid;
+         float8 cost;
+ } RESULT;

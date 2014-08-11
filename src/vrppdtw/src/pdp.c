@@ -72,17 +72,17 @@ static char *text2char(text *in)
         return out;
 }
 
-static int finish(int *code)
-{
-        *code = SPI_finish();
-        if (*code  != SPI_OK_FINISH )
-        {
-                elog(ERROR,"couldn't disconnect from SPI");
-                return -1 ;
-        }
-        return 0;
-}
-
+ static int
+  finish(int code, int ret)
+         {
+                    code = SPI_finish();
+                       if (code  != SPI_OK_FINISH ) {
+                                    elog(ERROR,"couldn't disconnect from SPI");
+                                         return -1 ;
+                                            }
+                          return ret;
+                           }
+ 
 
 typedef struct Customer_type{
         int id;
@@ -281,7 +281,7 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
                 if (customer_all.id == -1) {
                         if (fetch_customer_columns(SPI_tuptable, &customer_all,vehicle_count, capacity) == -1)
                         {
-                                return finish(&SPIcode);
+                               return finish(SPIcode, ret);
                         }
                         DBG("Here I am ");
                 }
@@ -351,7 +351,8 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
         }
 
         DBG("Working till here ");
-        finish(&SPIcode);
+        return finish(SPIcode, ret);
+
 }
 
 
