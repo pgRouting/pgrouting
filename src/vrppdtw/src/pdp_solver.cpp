@@ -78,7 +78,7 @@ VehicleInfo Vehicle;
         {
                 c[i].id = c1[i].id;
                 c[i].x = c1[i].x;
-                c[i].y = c1[i].x;
+                c[i].y = c1[i].y;
                 c[i].Etime = c1[i].Etime;
                 c[i].demand = c1[i].demand;
                 c[i].Ltime = c1[i].Ltime;
@@ -157,7 +157,7 @@ VehicleInfo Vehicle;
                         if(p[i].checked!=1){
                                 State S;
                                 S=r[v].append(c,p[i],d,CustomerLength,PickupLength,S);
-                                int flag=r[v].HillClimbing(c,d,p[i]) ;
+                                int flag=r[v].HillClimbing(c,d,p[i]);
                                 if(flag==1){
                                         //Remove 
                                         p[i].checked=0;
@@ -176,7 +176,7 @@ VehicleInfo Vehicle;
                         v=9999;
                 }
         }
-         *length_results_struct = r[2].path_length;
+     //   *length_results_struct = d.Ltime;
         int sum=0,rts=0;
 
         for(int i=1;i<=Vehicle.used_vehicles;i++){
@@ -233,7 +233,7 @@ VehicleInfo Vehicle;
                 }
         }
 
-//        *length_results_struct = T[0].route_length;
+       *length_results_struct = length_results;
 
         return 0;
 }

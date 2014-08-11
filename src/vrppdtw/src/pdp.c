@@ -72,16 +72,16 @@ static char *text2char(text *in)
         return out;
 }
 
-static int finish(int code, int ret)
+static int finish(int *code)
 {
-        code = SPI_finish();
-        if (code  != SPI_OK_FINISH ) {
+        *code = SPI_finish();
+        if (*code  != SPI_OK_FINISH )
+        {
                 elog(ERROR,"couldn't disconnect from SPI");
                 return -1 ;
         }
-        return ret;
+        return 0;
 }
-
 
 
 typedef struct Customer_type{
@@ -230,7 +230,7 @@ static void fetch_customer(HeapTuple *tuple, TupleDesc *tupdesc, customer_t *c_a
         if (isnull) elog(ERROR, "dindex contains a null value");
         c_single->Dindex = DatumGetInt32(binval);
 
- return ;
+        return;
 }
 
 
@@ -279,10 +279,9 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
                 DBG("Checking ");
 
                 if (customer_all.id == -1) {
-                        DBG("Checking everytime bitch ");
                         if (fetch_customer_columns(SPI_tuptable, &customer_all,vehicle_count, capacity) == -1)
                         {
-                                return finish(SPIcode, ret);
+                                return finish(&SPIcode);
                         }
                         DBG("Here I am ");
                 }
@@ -343,16 +342,16 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
 
 
 
-int vb;
-for(vb=1;vb<*length_results_struct;vb++)
-{
-        DBG("results[%d].seq=%d  ",vb, (*results)[vb].seq);
-        DBG("results[%d].rid=%d  ",vb, (*results)[vb].rid);
-        DBG("results[%d].nid=%d \n",vb, (*results)[vb].nid);
-}
+        int vb;
+        for(vb=1;vb<*length_results_struct;vb++)
+        {
+                DBG("results[%d].seq=%d  ",vb, (*results)[vb].seq);
+                DBG("results[%d].rid=%d  ",vb, (*results)[vb].rid);
+                DBG("results[%d].nid=%d \n",vb, (*results)[vb].nid);
+        }
 
-
-        return finish(SPIcode, ret);
+        DBG("Working till here ");
+        finish(&SPIcode);
 }
 
 
@@ -403,24 +402,31 @@ vrppdtw(PG_FUNCTION_ARGS)
 
 
 
-                ret = compute_shortest_path(//text2char(PG_GETARG_TEXT_P(0)), // points sql
+                ret = compute_shortest_path(
 
-                                text2char(PG_GETARG_TEXT_P(0)),  // orders sql
+                                text2char(PG_GETARG_TEXT_P(0)),  // customers sql
 
-                                PG_GETARG_INT32(1),  // vehicles sql
+                                PG_GETARG_INT32(1),  // vehicles  count
 
-                                PG_GETARG_INT32(2),  // distances query
+                                PG_GETARG_INT32(2),  // capacity count
 
                                 &results, &length_results_struct
                                 );
 
+                DBG("Back from solve_vrp, length_results: %d", length_results_struct);
 
                 /* total number of tuples to be returned */
                 funcctx->max_calls = length_results_struct;
                 funcctx->user_fctx = results;
 
-                funcctx->tuple_desc = BlessTupleDesc(
-                                RelationNameGetTupleDesc("pgr_costResult"));
+                /* Build a tuple descriptor for our result type */
+                if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+                        ereport(ERROR,
+                                        (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+                                         errmsg("function returning record called in context "
+                                                 "that cannot accept type record")));
+
+                funcctx->tuple_desc = BlessTupleDesc(tuple_desc);
 
                 MemoryContextSwitchTo(oldcontext);
         }
@@ -431,7 +437,7 @@ vrppdtw(PG_FUNCTION_ARGS)
         call_cntr = funcctx->call_cntr;
         max_calls = funcctx->max_calls;
         tuple_desc = funcctx->tuple_desc;
-        results = (path_element*) funcctx->user_fctx;
+        results = (path_element *) funcctx->user_fctx;
 
         /* do when there is more left to send */
         if (call_cntr < max_calls) {
@@ -443,14 +449,12 @@ vrppdtw(PG_FUNCTION_ARGS)
                 values = palloc(4 * sizeof(Datum));
                 nulls = palloc(4 * sizeof(char));
 
-                values[0] = Int32GetDatum(call_cntr);
+                values[0] = Int32GetDatum(results[call_cntr].seq);
                 nulls[0] = ' ';
-                values[1] = Int32GetDatum(results[call_cntr].seq);
+                values[1] = Int32GetDatum(results[call_cntr].rid);
                 nulls[1] = ' ';
-                values[2] = Int32GetDatum(results[call_cntr].rid);
+                values[2] = Int32GetDatum(results[call_cntr].nid);
                 nulls[2] = ' ';
-                values[3] = Int32GetDatum(results[call_cntr].nid);
-                nulls[3] = ' ';
 
                 tuple = heap_formtuple(tuple_desc, values, nulls);
 
@@ -465,6 +469,16 @@ vrppdtw(PG_FUNCTION_ARGS)
         }
         /* do when there is no more left */
         else {
+                DBG("Ending function\n");
+                profstop("store", prof_store);
+                profstop("total", prof_total);
+                DBG("Profiles stopped\n");
+
+                free(results);
+
+                DBG("Itinerary cleared\n");
+
+
                 if (results) free(results);
                 SRF_RETURN_DONE(funcctx);
         }
