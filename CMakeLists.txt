@@ -277,8 +277,14 @@ add_library(routing_vrp
     $<TARGET_OBJECTS:vrp_single>
     )
 
-install(TARGETS routing_vrp DESTINATION ${LIBRARY_INSTALL_PATH})
+add_library(routing_cvrptw
+		${LIBRARY_MODE_TARGET}
+		$<TARGET_OBJECTS:cvrptw>
+	   )
 
+
+install(TARGETS routing_vrp DESTINATION ${LIBRARY_INSTALL_PATH})
+install(TARGETS routing_cvrptw DESTINATION ${LIBRARY_INSTALL_PATH})
 
 if(APPLE)
     set_target_properties(routing
@@ -290,6 +296,9 @@ if(APPLE)
     set_target_properties(routing_vrp
         PROPERTIES
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
+    set_target_properties(routing_cvrptw
+	PROPERTIES
+	LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)
 
 #include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
