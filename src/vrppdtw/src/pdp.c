@@ -246,7 +246,7 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
         Portal SPIportal;
         bool moredata = TRUE;
         int ntuples;
-        customer customer_single[100];
+        customer customer_single[200];
         int total_tuples = 0;
         customer_t customer_all = {.id= -1, .x=-1, .y=-1 , .demand=-1 , .Etime=-1, .Ltime=-1 , .Stime=-1 , .Pindex=-1 , .Dindex=-1 };   // write this 
 
@@ -476,11 +476,9 @@ vrppdtw(PG_FUNCTION_ARGS)
                 DBG("Profiles stopped\n");
 
                 free(results);
-
                 DBG("Itinerary cleared\n");
 
 
-                if (results) free(results);
                 SRF_RETURN_DONE(funcctx);
         }
 
