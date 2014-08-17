@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/vagrant/repos/gsoc/pgrouting/src/apsp_johnson/src/apsp_johnson.h
+
+/home/vagrant/repos/gsoc/pgrouting/src/apsp_johnson/src/apsp_johnson_boost_wrapper.cpp
+boost/config.hpp
+-
+boost/version.hpp
+-
+boost/property_map/property_map.hpp
+-
+boost/vector_property_map.hpp
+-
+boost/graph/adjacency_list.hpp
+-
+boost/graph/johnson_all_pairs_shortest.hpp
+-
+apsp_johnson.h
+/home/vagrant/repos/gsoc/pgrouting/src/apsp_johnson/src/apsp_johnson.h
+cmath
+-
+

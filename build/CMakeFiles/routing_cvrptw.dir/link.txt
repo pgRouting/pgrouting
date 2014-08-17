@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC  -fPIC -O2 -g -frounding-math -Wno-deprecated   -shared -Wl,-soname,librouting_cvrptw.so -o lib/librouting_cvrptw.so src/cvrptw/src/CMakeFiles/cvrptw.dir/VRP.c.o src/cvrptw/src/CMakeFiles/cvrptw.dir/VRP_core.cpp.o src/cvrptw/src/CMakeFiles/cvrptw.dir/VRP_Solver.cpp.o 

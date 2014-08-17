@@ -1,0 +1,15 @@
+/usr/lib/postgresql/9.1/lib/librouting_bd.so
+/usr/lib/postgresql/9.1/lib/librouting.so
+/usr/lib/postgresql/9.1/lib/librouting_vrp.so
+/usr/lib/postgresql/9.1/lib/librouting_cvrptw.so
+/usr/share/postgresql/9.1/extension/pgrouting--2.0.0.sql
+/usr/share/postgresql/9.1/extension/pgrouting.control
+/usr/share/postgresql/9.1/extension/pgrouting_legacy.sql
+/usr/share/postgresql/9.1/contrib/pgrouting-2.0/pgrouting.sql
+/usr/share/postgresql/9.1/contrib/pgrouting-2.0/pgrouting.control
+/usr/share/postgresql/9.1/contrib/pgrouting-2.0/pgrouting_legacy.sql
+/usr/share/postgresql/9.1/extension/pgrouting_dd_legacy.sql
+/usr/share/postgresql/9.1/contrib/pgrouting-2.0/pgrouting_dd_legacy.sql
+/usr/lib/postgresql/9.1/lib/librouting_tsp.so
+/usr/lib/postgresql/9.1/lib/librouting_ksp.so
+/usr/lib/postgresql/9.1/lib/librouting_dd.so

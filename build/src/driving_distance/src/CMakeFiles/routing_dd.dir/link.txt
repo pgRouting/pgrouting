@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC  -fPIC -O2 -g -frounding-math -Wno-deprecated   -shared -Wl,-soname,librouting_dd.so -o ../../../lib/librouting_dd.so CMakeFiles/routing_dd.dir/alpha.c.o CMakeFiles/routing_dd.dir/alpha_drivedist.cpp.o CMakeFiles/routing_dd.dir/boost_drivedist.cpp.o CMakeFiles/routing_dd.dir/drivedist.c.o -lCGAL -lgmp -lboost_thread-mt -lpthread 
