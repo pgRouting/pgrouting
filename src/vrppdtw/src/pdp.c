@@ -30,37 +30,6 @@ Datum vrppdtw(PG_FUNCTION_ARGS);
 PG_MODULE_MAGIC;
 #endif
 
-/*
- * Define this to have profiling enabled
- */
-//#define PROFILE
-
-#ifdef PROFILE
-#include <sys/time.h>
-
-struct timeval prof_astar, prof_store, prof_extract, prof_total;
-long proftime[5];
-long profipts1, profipts2, profopts;
-
-#define profstart(x) do { gettimeofday(&x, NULL); } while (0);
-#define profstop(n, x) do { struct timeval _profstop;   \
-        long _proftime;                         \
-        gettimeofday(&_profstop, NULL);                         \
-        _proftime = ( _profstop.tv_sec*1000000+_profstop.tv_usec) -     \
-        ( x.tv_sec*1000000+x.tv_usec); \
-        elog(NOTICE, \
-                        "PRF(%s) %lu (%f ms)", \
-                        (n), \
-                        _proftime, _proftime / 1000.0);    \
-} while (0);
-
-#else
-
-#define profstart(x) do { } while (0);
-#define profstop(n, x) do { } while (0);
-
-#endif // PROFILE
-
 
 
 static char *text2char(text *in)
@@ -378,12 +347,6 @@ vrppdtw(PG_FUNCTION_ARGS)
                 int length_results_struct = 0;
 
 
-                // XXX profiling messages are not thread safe
-
-                profstart(prof_total);
-
-                profstart(prof_extract);
-
 
 
                 /* create a function context for cross-call persistence */
@@ -461,8 +424,6 @@ vrppdtw(PG_FUNCTION_ARGS)
                 nulls[3] = ' ';
       //          values[4] = Int32GetDatum(results[call_cntr].cost);
        //         nulls[4] = ' ';
-
-                DBG("Till hereee  down duppa ");
                 tuple = heap_formtuple(tuple_desc, values, nulls);
 
                 /* make the tuple into a datum */
@@ -472,16 +433,13 @@ vrppdtw(PG_FUNCTION_ARGS)
                 pfree(values);
                 pfree(nulls);
 
-                DBG("Till hereee bottom ");
                 SRF_RETURN_NEXT(funcctx, result);
         }
         /* do when there is no more left */
         else {
                 DBG("Ending function\n");
-                profstop("store", prof_store);
-                profstop("total", prof_total);
-                DBG("Profiles stopped\n");
 
+                if(results);
                 free(results);
                 DBG("Itinerary cleared\n");
 
