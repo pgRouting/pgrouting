@@ -217,6 +217,10 @@ VehicleInfo Vehicle;
         *results = (path_element *) malloc(sizeof(path_element) * (nodes_count + 1));
         int length_results=1;
         
+                                        (*results)[0].seq = nodes_count;
+                                        (*results)[0].rid = T[sol_count].route_length ;
+                                        (*results)[0].nid = 0;
+                                        (*results)[0].cost = T[sol_count].dis_total;
         for(int i=1;i<=nodes_count;i++){
                 double cost;
                 for(int itr=0;itr<=T[sol_count].route_length;itr++)
@@ -226,7 +230,9 @@ VehicleInfo Vehicle;
                                 if(T[sol_count].r[itr].path[z]==i){
                                         (*results)[length_results].seq = i;
                                         (*results)[length_results].rid = itr;
+                                   //     (*results)[length_results].nseq = i;
                                         (*results)[length_results].nid = z;
+                                        (*results)[length_results].cost = T[sol_count].r[itr].dis;
                                         length_results++;
                                 }
                         }

@@ -246,7 +246,7 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
         Portal SPIportal;
         bool moredata = TRUE;
         int ntuples;
-        customer customer_single[200];
+        customer *customer_single=NULL;
         int total_tuples = 0;
         customer_t customer_all = {.id= -1, .x=-1, .y=-1 , .demand=-1 , .Etime=-1, .Ltime=-1 , .Stime=-1 , .Pindex=-1 , .Dindex=-1 };   // write this 
 
@@ -289,13 +289,13 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
                 ntuples = SPI_processed;
                 total_tuples += ntuples;
                 DBG("Calculated total_tuples  ntuples=%d   total_tuples =%d ", ntuples, total_tuples);
-                /*
-                   if (customer_all!=NULL)
-                   customer_all = palloc(total_tuples * sizeof(customer_t));
+                
+                   if (customer_single==NULL)
+                   customer_single = palloc(total_tuples * sizeof(customer));
                    else
-                   customer_all = repalloc(customer_all, total_tuples * sizeof(customer_t));
+                   customer_single = repalloc(customer_single, total_tuples * sizeof(customer));
 
-                 */
+                 
 
                 if (ntuples > 0) {
                         DBG("Check here ");
@@ -447,6 +447,7 @@ vrppdtw(PG_FUNCTION_ARGS)
                 Datum *values;
                 char* nulls;
 
+                DBG("Till hereee ");
                 values = palloc(4 * sizeof(Datum));
                 nulls = palloc(4 * sizeof(char));
 
@@ -456,7 +457,12 @@ vrppdtw(PG_FUNCTION_ARGS)
                 nulls[1] = ' ';
                 values[2] = Int32GetDatum(results[call_cntr].nid);
                 nulls[2] = ' ';
+                values[3] = Int32GetDatum(results[call_cntr].cost);
+                nulls[3] = ' ';
+      //          values[4] = Int32GetDatum(results[call_cntr].cost);
+       //         nulls[4] = ' ';
 
+                DBG("Till hereee  down duppa ");
                 tuple = heap_formtuple(tuple_desc, values, nulls);
 
                 /* make the tuple into a datum */
@@ -466,6 +472,7 @@ vrppdtw(PG_FUNCTION_ARGS)
                 pfree(values);
                 pfree(nulls);
 
+                DBG("Till hereee bottom ");
                 SRF_RETURN_NEXT(funcctx, result);
         }
         /* do when there is no more left */

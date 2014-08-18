@@ -140,6 +140,8 @@ typedef struct PathElement {
          int seq;
          int rid;
          int nid;
+         int nseq;
+         int cost;
 } path_element;
 
 

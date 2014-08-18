@@ -10,9 +10,8 @@ create or replace function pgr_gsoc_vrppdtw(
                 capacity integer,
                 OUT seq integer,
                 OUT rid integer,
-                OUT nseq integer,
                 OUT nid integer,
-                OUT cost float
+                OUT cost integer
                 )
 returns setof record as
 '$libdir/librouting_vrppdtw', 'vrppdtw'
