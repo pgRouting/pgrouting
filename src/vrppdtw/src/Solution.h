@@ -104,7 +104,8 @@ Solution Solution::getBestofNeighborhood(Solution S, customer *c, depot d, Picku
 Solution Neighborhoods::BestSPI(Solution S, customer *c, depot d, Pickup *p,  int CustomerLength, int PickupLength){
         Solution CurrSol,BestSol,TempSol;
         CurrSol=BestSol=S;
-        Pickup OrderRequests[1005];
+        Pickup *OrderRequests=NULL;
+        OrderRequests= (Pickup *)malloc(2000*sizeof(Pickup));
         int Ro_flag,Hc_flag;
         State TempState;
         //Copy Order requests from pickup's

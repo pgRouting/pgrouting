@@ -39,8 +39,8 @@ int PickupLength=0;
 depot d;
 //Vehicle
 //Customer Data
-customer c[1000];
-pickup p[600];
+customer *c=NULL;
+pickup *p=NULL;
 int len=0;
 
 int CustomerLength;
@@ -48,7 +48,7 @@ int CustomerLength;
 
 std::vector<Solution> T;
 
-Route r[500];
+Route *r=NULL;
 //Definitions for a few functions 
 int TabuSearch();
 //Vector containing solutions
@@ -61,6 +61,9 @@ int Solver(customer *c1,int total_tuples, int VehicleLength, int capacity , char
 {
         CustomerLength= total_tuples-1;
 
+        c = (customer *)malloc((CustomerLength+5)*sizeof(customer));
+        p = (pickup *)malloc((CustomerLength+5)*sizeof(pickup));
+        r = (Route *)malloc((CustomerLength+5)*sizeof(Route));
 VehicleInfo Vehicle;
         //Depot Data
         d.id = c1[0].id;
@@ -72,6 +75,7 @@ VehicleInfo Vehicle;
         d.Stime = c1[0].Stime;
         d.Pindex = c1[0].Pindex;
         d.Dindex = c1[0].Dindex;
+
 
         //Customer Data 
         for(int i=1;i<=CustomerLength;i++)
@@ -210,17 +214,14 @@ VehicleInfo Vehicle;
         printf("\nNeighborhoods From now\n");
         int sol_count=TabuSearch();
 
-        //Copying back the results 
-        // path_element->results , path_length   {  we need to send (results, length_results) backk ; 
+ //Copying back the results 
+ // path_element->results , path_length   {  we need to send (results, length_results) backk ; 
         int nodes_count;
         nodes_count= CustomerLength;
-        *results = (path_element *) malloc(sizeof(path_element) * (nodes_count + 1));
-        int length_results=1;
-        
-                                        (*results)[0].seq = nodes_count;
-                                        (*results)[0].rid = T[sol_count].route_length ;
-                                        (*results)[0].nid = 0;
-                                        (*results)[0].cost = T[sol_count].dis_total;
+        *results = (path_element *) malloc(sizeof(path_element) * (nodes_count + 5*VehicleLength));
+        int length_results=0;
+
+/* 
         for(int i=1;i<=nodes_count;i++){
                 double cost;
                 for(int itr=0;itr<=T[sol_count].route_length;itr++)
@@ -230,7 +231,6 @@ VehicleInfo Vehicle;
                                 if(T[sol_count].r[itr].path[z]==i){
                                         (*results)[length_results].seq = i;
                                         (*results)[length_results].rid = itr;
-                                   //     (*results)[length_results].nseq = i;
                                         (*results)[length_results].nid = z;
                                         (*results)[length_results].cost = T[sol_count].r[itr].dis;
                                         length_results++;
@@ -239,7 +239,116 @@ VehicleInfo Vehicle;
                 }
         }
 
+*/
+ 
+
+        int *cost, *cost_nodes;
+        cost = (int *)malloc(1000*sizeof(int));
+        cost_nodes = (int *)malloc(1000*sizeof(int));
+        //Cost Calculation 
+
+        int copy_length=0;
+        // TAKE AN ARRAY EMBED EVERYTHING 
+        for(int itr_route=0;itr_route<T[sol_count].route_length;itr_route++)
+        {
+                cost[copy_length]=d.id;
+                copy_length++;
+                for(int itr_node=0;itr_node<T[sol_count].r[itr_route].path_length;itr_node++)
+                {
+                cost[copy_length]=T[sol_count].r[itr_route].path[itr_node];
+                copy_length++;
+                }
+                cost[copy_length]=d.id;
+                copy_length++;
+        }
+
+        copy_length-=1;
+        int temp_dis=0;
+        for(int i=0;i<copy_length;i++)
+        {                
+                if(i==0)
+                {
+                        cost_nodes[0]=0;
+                        temp_dis=0;
+                }
+                else 
+                {
+                //Depot to first node 
+                if(cost[i-1]==d.id && cost[i]!=d.id )
+                 {
+                         temp_dis=0;
+                        temp_dis+=sqrt(((c[cost[i]].x-d.x)*(c[cost[i]].x-d.x))+((c[cost[i]].y-d.y)*(c[cost[i]].y-d.y)));
+                        if(temp_dis < c[cost[i]].Etime)
+                        {
+                                        temp_dis=c[cost[i]].Etime;
+                        }
+
+                        cost_nodes[i]=temp_dis;
+                }
+
+                //Between nodes 
+                else if(cost[i-1]!=d.id && cost[i]!=d.id)
+                {
+                        temp_dis+=sqrt(((c[cost[i]].x-c[cost[i-1]].x)*(c[cost[i]].x-c[cost[i-1]].x))+((c[cost[i]].y-c[cost[i-1]].y)*(c[cost[i]].y-c    [cost[i-1]].y)));
+                        
+                         if(temp_dis < c[cost[i]].Etime)
+                                  {
+                                          temp_dis=c[cost[i]].Etime;
+                                  }
+                        
+                        temp_dis+=c[cost[i-1]].Stime;
+                        cost_nodes[i]=temp_dis;
+                }
+                else if(cost[i]==d.id && cost[i-1]!=d.id)
+                {
+                        temp_dis+=sqrt(((d.x-c[cost[i-1]].x)*(d.x-c[cost[i-1]].x))+((d.y-c[cost[i-1]].y)*(d.y-c[cost[i-1]].y)));
+                        cost_nodes[i]=temp_dis;
+                        temp_dis=0;
+                }
+                else if(cost[i]==d.id && cost[i-1]==d.id)
+                {
+                        cost_nodes[i]=0;
+                        temp_dis=0;
+                }
+                }
+                //Last node to deopt  
+        }
+
+        //Done cost calculation 
+
+
+        for(int itr_route=0; itr_route<T[sol_count].route_length; itr_route++)
+        {
+               (*results)[length_results].seq = length_results;
+                (*results)[length_results].rid = itr_route+1;
+                (*results)[length_results].nid = d.id;
+                (*results)[length_results].cost = cost_nodes[length_results];
+                length_results++;
+                
+                //Loop for path elements.
+                for(int itr_node=0;itr_node < T[sol_count].r[itr_route].path_length;itr_node++)
+                {
+                (*results)[length_results].seq = length_results;
+                (*results)[length_results].rid = itr_route+1;
+                (*results)[length_results].nid = T[sol_count].r[itr_route].path[itr_node];
+                (*results)[length_results].cost = cost_nodes[length_results];
+                length_results++;
+                }
+
+                (*results)[length_results].seq = length_results;
+                (*results)[length_results].rid = itr_route+1;
+                (*results)[length_results].nid = d.id;
+                (*results)[length_results].cost = cost_nodes[length_results];
+                length_results++;
+                
+        }
+
        *length_results_struct = length_results;
+        free(c);
+        free(p);
+        free(r);
+
+//Copying is done till here
 
         return 0;
 }

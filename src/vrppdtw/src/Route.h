@@ -23,8 +23,8 @@ class Route
                 int twv;
                 int cv;
                 int dis;
-                int path[1000];
-                int order[1000];
+                int path[1200];
+                int order[1200];
                 int path_length;
                 Route()
                 {
@@ -196,7 +196,10 @@ int Route::insertOrder(customer *c, depot d, Pickup p)
                 }
         }
         //After complete sort
-        int temp[10000],tempo[10000];
+        int *temp=NULL;
+            int *tempo=NULL;
+            temp= (int *)malloc(1000*sizeof(int));
+            tempo= (int *)malloc(1000*sizeof(int));
         for(int i=0;i<path_length;i++)
         {
                 temp[i]=path[path_length-i-1];
@@ -262,7 +265,10 @@ int Route::HillClimbing(customer *c, depot d, Pickup p)
                 }
         }
         //After complete sort
-        int temp[10000],tempo[10000];
+        int *temp=NULL;
+            int *tempo=NULL;
+            temp= (int *)malloc(1000*sizeof(int));
+            tempo= (int *)malloc(1000*sizeof(int));
         for(int i=0;i<path_length;i++)
         {
                 temp[i]=path[path_length-i-1];

@@ -264,7 +264,14 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
                    else
                    customer_single = repalloc(customer_single, total_tuples * sizeof(customer));
 
-                 
+
+                DBG("Error here ");
+                    if (customer_single == NULL) {
+                                 elog(ERROR, "Out of memory");
+                                          return finish(SPIcode, ret);
+                                           }
+
+
 
                 if (ntuples > 0) {
                         DBG("Check here ");
@@ -319,6 +326,7 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
                 DBG("results[%d].nid=%d \n",vb, (*results)[vb].nid);
         }
 
+        pfree(customer_single);
         DBG("Working till here ");
         return finish(SPIcode, ret);
 
@@ -422,8 +430,6 @@ vrppdtw(PG_FUNCTION_ARGS)
                 nulls[2] = ' ';
                 values[3] = Int32GetDatum(results[call_cntr].cost);
                 nulls[3] = ' ';
-      //          values[4] = Int32GetDatum(results[call_cntr].cost);
-       //         nulls[4] = ' ';
                 tuple = heap_formtuple(tuple_desc, values, nulls);
 
                 /* make the tuple into a datum */
@@ -439,7 +445,6 @@ vrppdtw(PG_FUNCTION_ARGS)
         else {
                 DBG("Ending function\n");
 
-                if(results);
                 free(results);
                 DBG("Itinerary cleared\n");
 
