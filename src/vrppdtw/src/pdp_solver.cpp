@@ -5,6 +5,7 @@
  pdp.h    ---> Structures defined in this header file
  Solution.h  -----> It contains the Solution Class and Code related to Neighborhoods  
  Route.h     -----> Explains all about Route Class.
+ pdp.c --->  Contains all the details on pgRouting integration.
 
  The main problem is in two steps. 1.)Getting the initial solutiion and 2.)Optimizing it.
 
@@ -12,7 +13,12 @@
  A few heuristics are applied to find a feasible initial solution. Sequential Construction and Hill climbing. More implementation details are found here:: https://github.com/pgRouting/pgrouting/wiki/VRP-Pickup-Delivery-Problem 
 
  2.) "Optimizing the Solution":
- A reactive tabu search is applied on the initial solution to get a feasible optimized solution. TabuSearch comes under local search methods. We have three neighborhoods i) Single Paired Insertion  ii) Swapping pairs between routes  iii)Within Route Insertion. Tabu attributes plays an important role in giving the best solution(it includes TabuLength, A vector containing feasible solutions and a counter for number of solutions) Reactive part discussed in the paper is to modify TabuLength based on the solution cycle. 
+ A reactive tabu search is applied on the initial solution to get a feasible optimized solution. TabuSearch comes under local search methods. We have three neighborhoods 
+                       i) Single Paired Insertion  
+                       ii) Swapping pairs between routes  
+                       iii)Within Route Insertion. 
+                        Tabu attributes plays an important role in giving the best solution(it includes TabuLength, A vector containing feasible solutions and a counter for number of solutions). 
+                        Reactive part discussed in the paper is to modify TabuLength based on the solution cycle. 
 
  */
 
@@ -221,25 +227,6 @@ VehicleInfo Vehicle;
         *results = (path_element *) malloc(sizeof(path_element) * (nodes_count + 5*VehicleLength));
         int length_results=0;
 
-/* 
-        for(int i=1;i<=nodes_count;i++){
-                double cost;
-                for(int itr=0;itr<=T[sol_count].route_length;itr++)
-                {
-                        for(int z=0;z<T[sol_count].r[itr].path_length;z++)
-                        {
-                                if(T[sol_count].r[itr].path[z]==i){
-                                        (*results)[length_results].seq = i;
-                                        (*results)[length_results].rid = itr;
-                                        (*results)[length_results].nid = z;
-                                        (*results)[length_results].cost = T[sol_count].r[itr].dis;
-                                        length_results++;
-                                }
-                        }
-                }
-        }
-
-*/
  
 
         int *cost, *cost_nodes;
@@ -354,6 +341,9 @@ VehicleInfo Vehicle;
 }
 int n=0,maxItr=30;
 
+
+
+/* TABU search helps us to store the solutions after every different move. The overview of TABU search will be a list containing list of solutions*/
 
 int TabuSearch()
 {

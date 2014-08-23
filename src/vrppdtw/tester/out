@@ -1,0 +1,425 @@
+TICE:  results[1].seq=1  
+NOTICE:  results[1].rid=15  
+NOTICE:  results[1].nid=7 
+
+NOTICE:  results[2].seq=2  
+NOTICE:  results[2].rid=10  
+NOTICE:  results[2].nid=5 
+
+NOTICE:  results[3].seq=3  
+NOTICE:  results[3].rid=19  
+NOTICE:  results[3].nid=0 
+
+NOTICE:  results[4].seq=4  
+NOTICE:  results[4].rid=14  
+NOTICE:  results[4].nid=3 
+
+NOTICE:  results[5].seq=5  
+NOTICE:  results[5].rid=11  
+NOTICE:  results[5].nid=0 
+
+NOTICE:  results[6].seq=6  
+NOTICE:  results[6].rid=10  
+NOTICE:  results[6].nid=4 
+
+NOTICE:  results[7].seq=7  
+NOTICE:  results[7].rid=11  
+NOTICE:  results[7].nid=2 
+
+NOTICE:  results[8].seq=8  
+NOTICE:  results[8].rid=18  
+NOTICE:  results[8].nid=2 
+
+NOTICE:  results[9].seq=9  
+NOTICE:  results[9].rid=14  
+NOTICE:  results[9].nid=2 
+
+NOTICE:  results[10].seq=10  
+NOTICE:  results[10].rid=18  
+NOTICE:  results[10].nid=3 
+
+NOTICE:  results[11].seq=11  
+NOTICE:  results[11].rid=15  
+NOTICE:  results[11].nid=3 
+
+NOTICE:  results[12].seq=12  
+NOTICE:  results[12].rid=8  
+NOTICE:  results[12].nid=5 
+
+NOTICE:  results[13].seq=13  
+NOTICE:  results[13].rid=10  
+NOTICE:  results[13].nid=0 
+
+NOTICE:  results[14].seq=14  
+NOTICE:  results[14].rid=7  
+NOTICE:  results[14].nid=3 
+
+NOTICE:  results[15].seq=15  
+NOTICE:  results[15].rid=7  
+NOTICE:  results[15].nid=1 
+
+NOTICE:  results[16].seq=16  
+NOTICE:  results[16].rid=7  
+NOTICE:  results[16].nid=2 
+
+NOTICE:  results[17].seq=17  
+NOTICE:  results[17].rid=10  
+NOTICE:  results[17].nid=1 
+
+NOTICE:  results[18].seq=18  
+NOTICE:  results[18].rid=8  
+NOTICE:  results[18].nid=2 
+
+NOTICE:  results[19].seq=19  
+NOTICE:  results[19].rid=7  
+NOTICE:  results[19].nid=0 
+
+NOTICE:  results[20].seq=20  
+NOTICE:  results[20].rid=8  
+NOTICE:  results[20].nid=0 
+
+NOTICE:  results[21].seq=21  
+NOTICE:  results[21].rid=5  
+NOTICE:  results[21].nid=1 
+
+NOTICE:  results[22].seq=22  
+NOTICE:  results[22].rid=11  
+NOTICE:  results[22].nid=5 
+
+NOTICE:  results[23].seq=23  
+NOTICE:  results[23].rid=7  
+NOTICE:  results[23].nid=4 
+
+NOTICE:  results[24].seq=24  
+NOTICE:  results[24].rid=8  
+NOTICE:  results[24].nid=1 
+
+NOTICE:  results[25].seq=25  
+NOTICE:  results[25].rid=14  
+NOTICE:  results[25].nid=0 
+
+NOTICE:  results[26].seq=26  
+NOTICE:  results[26].rid=9  
+NOTICE:  results[26].nid=3 
+
+NOTICE:  results[27].seq=27  
+NOTICE:  results[27].rid=14  
+NOTICE:  results[27].nid=1 
+
+NOTICE:  results[28].seq=28  
+NOTICE:  results[28].rid=11  
+NOTICE:  results[28].nid=4 
+
+NOTICE:  results[29].seq=29  
+NOTICE:  results[29].rid=9  
+NOTICE:  results[29].nid=2 
+
+NOTICE:  results[30].seq=30  
+NOTICE:  results[30].rid=5  
+NOTICE:  results[30].nid=0 
+
+NOTICE:  results[31].seq=31  
+NOTICE:  results[31].rid=6  
+NOTICE:  results[31].nid=1 
+
+NOTICE:  results[32].seq=32  
+NOTICE:  results[32].rid=6  
+NOTICE:  results[32].nid=0 
+
+NOTICE:  results[33].seq=33  
+NOTICE:  results[33].rid=2  
+NOTICE:  results[33].nid=0 
+
+NOTICE:  results[34].seq=34  
+NOTICE:  results[34].rid=2  
+NOTICE:  results[34].nid=5 
+
+NOTICE:  results[35].seq=35  
+NOTICE:  results[35].rid=3  
+NOTICE:  results[35].nid=2 
+
+NOTICE:  results[36].seq=36  
+NOTICE:  results[36].rid=1  
+NOTICE:  results[36].nid=2 
+
+NOTICE:  results[37].seq=37  
+NOTICE:  results[37].rid=2  
+NOTICE:  results[37].nid=2 
+
+NOTICE:  results[38].seq=38  
+NOTICE:  results[38].rid=2  
+NOTICE:  results[38].nid=3 
+
+NOTICE:  results[39].seq=39  
+NOTICE:  results[39].rid=3  
+NOTICE:  results[39].nid=3 
+
+NOTICE:  results[40].seq=40  
+NOTICE:  results[40].rid=11  
+NOTICE:  results[40].nid=3 
+
+NOTICE:  results[41].seq=41  
+NOTICE:  results[41].rid=18  
+NOTICE:  results[41].nid=1 
+
+NOTICE:  results[42].seq=42  
+NOTICE:  results[42].rid=11  
+NOTICE:  results[42].nid=1 
+
+NOTICE:  results[43].seq=43  
+NOTICE:  results[43].rid=18  
+NOTICE:  results[43].nid=0 
+
+NOTICE:  results[44].seq=44  
+NOTICE:  results[44].rid=8  
+NOTICE:  results[44].nid=3 
+
+NOTICE:  results[45].seq=45  
+NOTICE:  results[45].rid=13  
+NOTICE:  results[45].nid=2 
+
+NOTICE:  results[46].seq=46  
+NOTICE:  results[46].rid=8  
+NOTICE:  results[46].nid=4 
+
+NOTICE:  results[47].seq=47  
+NOTICE:  results[47].rid=0  
+NOTICE:  results[47].nid=5 
+
+NOTICE:  results[48].seq=48  
+NOTICE:  results[48].rid=13  
+NOTICE:  results[48].nid=3 
+
+NOTICE:  results[49].seq=49  
+NOTICE:  results[49].rid=0  
+NOTICE:  results[49].nid=4 
+
+NOTICE:  results[50].seq=50  
+NOTICE:  results[50].rid=1  
+NOTICE:  results[50].nid=4 
+
+NOTICE:  results[51].seq=51  
+NOTICE:  results[51].rid=6  
+NOTICE:  results[51].nid=4 
+
+NOTICE:  results[52].seq=52  
+NOTICE:  results[52].rid=1  
+NOTICE:  results[52].nid=5 
+
+NOTICE:  results[53].seq=53  
+NOTICE:  results[53].rid=16  
+NOTICE:  results[53].nid=2 
+
+NOTICE:  results[54].seq=54  
+NOTICE:  results[54].rid=2  
+NOTICE:  results[54].nid=1 
+
+NOTICE:  results[55].seq=55  
+NOTICE:  results[55].rid=9  
+NOTICE:  results[55].nid=1 
+
+NOTICE:  results[56].seq=56  
+NOTICE:  results[56].rid=12  
+NOTICE:  results[56].nid=2 
+
+NOTICE:  results[57].seq=57  
+NOTICE:  results[57].rid=9  
+NOTICE:  results[57].nid=0 
+
+NOTICE:  results[58].seq=58  
+NOTICE:  results[58].rid=16  
+NOTICE:  results[58].nid=4 
+
+NOTICE:  results[59].seq=59  
+NOTICE:  results[59].rid=12  
+NOTICE:  results[59].nid=4 
+
+NOTICE:  results[60].seq=60  
+NOTICE:  results[60].rid=2  
+NOTICE:  results[60].nid=4 
+
+NOTICE:  results[61].seq=61  
+NOTICE:  results[61].rid=15  
+NOTICE:  results[61].nid=4 
+
+NOTICE:  results[62].seq=62  
+NOTICE:  results[62].rid=17  
+NOTICE:  results[62].nid=2 
+
+NOTICE:  results[63].seq=63  
+NOTICE:  results[63].rid=16  
+NOTICE:  results[63].nid=1 
+
+NOTICE:  results[64].seq=64  
+NOTICE:  results[64].rid=18  
+NOTICE:  results[64].nid=4 
+
+NOTICE:  results[65].seq=65  
+NOTICE:  results[65].rid=12  
+NOTICE:  results[65].nid=0 
+
+NOTICE:  results[66].seq=66  
+NOTICE:  results[66].rid=3  
+NOTICE:  results[66].nid=4 
+
+NOTICE:  results[67].seq=67  
+NOTICE:  results[67].rid=15  
+NOTICE:  results[67].nid=0 
+
+NOTICE:  results[68].seq=68  
+NOTICE:  results[68].rid=17  
+NOTICE:  results[68].nid=5 
+
+NOTICE:  results[69].seq=69  
+NOTICE:  results[69].rid=3  
+NOTICE:  results[69].nid=5 
+
+NOTICE:  results[70].seq=70  
+NOTICE:  results[70].rid=4  
+NOTICE:  results[70].nid=1 
+
+NOTICE:  results[71].seq=71  
+NOTICE:  results[71].rid=0  
+NOTICE:  results[71].nid=0 
+
+NOTICE:  results[72].seq=72  
+NOTICE:  results[72].rid=12  
+NOTICE:  results[72].nid=3 
+
+NOTICE:  results[73].seq=73  
+NOTICE:  results[73].rid=1  
+NOTICE:  results[73].nid=1 
+
+NOTICE:  results[74].seq=74  
+NOTICE:  results[74].rid=16  
+NOTICE:  results[74].nid=3 
+
+NOTICE:  results[75].seq=75  
+NOTICE:  results[75].rid=19  
+NOTICE:  results[75].nid=1 
+
+NOTICE:  results[76].seq=76  
+NOTICE:  results[76].rid=1  
+NOTICE:  results[76].nid=0 
+
+NOTICE:  results[77].seq=77  
+NOTICE:  results[77].rid=0  
+NOTICE:  results[77].nid=1 
+
+NOTICE:  results[78].seq=78  
+NOTICE:  results[78].rid=3  
+NOTICE:  results[78].nid=0 
+
+NOTICE:  results[79].seq=79  
+NOTICE:  results[79].rid=0  
+NOTICE:  results[79].nid=2 
+
+NOTICE:  results[80].seq=80  
+NOTICE:  results[80].rid=0  
+NOTICE:  results[80].nid=3 
+
+NOTICE:  results[81].seq=81  
+NOTICE:  results[81].rid=4  
+NOTICE:  results[81].nid=0 
+
+NOTICE:  results[82].seq=82  
+NOTICE:  results[82].rid=6  
+NOTICE:  results[82].nid=2 
+
+NOTICE:  results[83].seq=83  
+NOTICE:  results[83].rid=13  
+NOTICE:  results[83].nid=1 
+
+NOTICE:  results[84].seq=84  
+NOTICE:  results[84].rid=4  
+NOTICE:  results[84].nid=2 
+
+NOTICE:  results[85].seq=85  
+NOTICE:  results[85].rid=6  
+NOTICE:  results[85].nid=3 
+
+NOTICE:  results[86].seq=86  
+NOTICE:  results[86].rid=12  
+NOTICE:  results[86].nid=1 
+
+NOTICE:  results[87].seq=87  
+NOTICE:  results[87].rid=13  
+NOTICE:  results[87].nid=0 
+
+NOTICE:  results[88].seq=88  
+NOTICE:  results[88].rid=16  
+NOTICE:  results[88].nid=5 
+
+NOTICE:  results[89].seq=89  
+NOTICE:  results[89].rid=4  
+NOTICE:  results[89].nid=3 
+
+NOTICE:  results[90].seq=90  
+NOTICE:  results[90].rid=16  
+NOTICE:  results[90].nid=0 
+
+NOTICE:  results[91].seq=91  
+NOTICE:  results[91].rid=12  
+NOTICE:  results[91].nid=5 
+
+NOTICE:  results[92].seq=92  
+NOTICE:  results[92].rid=17  
+NOTICE:  results[92].nid=3 
+
+NOTICE:  results[93].seq=93  
+NOTICE:  results[93].rid=17  
+NOTICE:  results[93].nid=4 
+
+NOTICE:  results[94].seq=94  
+NOTICE:  results[94].rid=15  
+NOTICE:  results[94].nid=2 
+
+NOTICE:  results[95].seq=95  
+NOTICE:  results[95].rid=17  
+NOTICE:  results[95].nid=1 
+
+NOTICE:  results[96].seq=96  
+NOTICE:  results[96].rid=15  
+NOTICE:  results[96].nid=1 
+
+NOTICE:  results[97].seq=97  
+NOTICE:  results[97].rid=10  
+NOTICE:  results[97].nid=2 
+
+NOTICE:  results[98].seq=98  
+NOTICE:  results[98].rid=17  
+NOTICE:  results[98].nid=0 
+
+NOTICE:  results[99].seq=99  
+NOTICE:  results[99].rid=15  
+NOTICE:  results[99].nid=6 
+
+NOTICE:  results[100].seq=100  
+NOTICE:  results[100].rid=15  
+NOTICE:  results[100].nid=5 
+
+NOTICE:  results[101].seq=101  
+NOTICE:  results[101].rid=6  
+NOTICE:  results[101].nid=5 
+
+NOTICE:  results[102].seq=102  
+NOTICE:  results[102].rid=18  
+NOTICE:  results[102].nid=5 
+
+NOTICE:  results[103].seq=103  
+NOTICE:  results[103].rid=7  
+NOTICE:  results[103].nid=5 
+
+NOTICE:  results[104].seq=104  
+NOTICE:  results[104].rid=3  
+NOTICE:  results[104].nid=1 
+
+NOTICE:  results[105].seq=105  
+NOTICE:  results[105].rid=1  
+NOTICE:  results[105].nid=3 
+
+NOTICE:  results[106].seq=106  
+NOTICE:  results[106].rid=10  
+NOTICE:  results[106].nid=3 
+
+
