@@ -21,10 +21,6 @@ Name
 
 ``pgr_alphashape`` — Core function for alpha shape computation.
 
-.. note:: 
-
-	This function should not be used directly. Use :ref:`pgr_drivingDistance <pgr_driving_distance>` instead. 
-
 
 Synopsis
 -------------------------------------------------------------------------------
