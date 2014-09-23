@@ -21,6 +21,7 @@
  
 #define _ASTAR_H
 
+#include <unistd.h>
 #include "postgres.h"
 #include "dijkstra.h"
 

@@ -22,6 +22,7 @@
 #ifndef _DRIVEDIST_H
 #define _DRIVEDIST_H
 
+#include <unistd.h>
 #include "postgres.h"
 #include "dijkstra.h"
 
