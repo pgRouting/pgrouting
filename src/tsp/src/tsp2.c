@@ -13,6 +13,7 @@
 #include "funcapi.h"
 #include "catalog/pg_type.h"
 #include "utils/array.h"
+#include "utils/lsyscache.h"
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
