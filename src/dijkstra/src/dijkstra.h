@@ -22,6 +22,7 @@
 #ifndef _DIJKSTRA_H
 #define _DIJKSTRA_H
 
+#include <unistd.h>
 #include "postgres.h"
 
 typedef struct edge 
