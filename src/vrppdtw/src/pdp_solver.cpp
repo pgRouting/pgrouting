@@ -158,8 +158,6 @@ VehicleInfo Vehicle;
                 //          DBG("PickupID[%d]=%lf\n",p[i].id,p[i].Ddist);
         }
 
-
-
         int flag_complete=0,checked=0;
         //Sequential Construction 
         for(int v=1;v<110;v++){

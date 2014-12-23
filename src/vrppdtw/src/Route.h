@@ -15,8 +15,6 @@
 #include <string.h>
 #include <set>
 
-
-
 class Route
 {
         public:
