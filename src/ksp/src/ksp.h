@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  *
  */
  
@@ -26,7 +26,7 @@
 #define PATH_ALLOC_TOTAL 5
 
 #include "postgres.h"
-
+#define DEBUG
 #ifdef __cplusplus
 extern "C"
 {
@@ -65,11 +65,10 @@ int compute_kshortest_path(char* sql, int start_vertex,
                                  ksp_path_element_t **path, int *ksp_path_count) ;
 
 ksp_path_element_t * get_ksp_memory(int,ksp_path_element_t *path);
-/*int ksp_finish(int code, int ret);*/
 
-#ifdef _MSC_VER
-  void DBG(const char* format, ...);
-#endif // _MSC_VER
+
+
+extern void kspDBG(const char* format, ...);
 #ifdef __cplusplus
 }
 #endif

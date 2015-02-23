@@ -2,6 +2,7 @@
 #ifndef __KSPGraph_h
 #define __KSPGraph_h
 
+#include "GraphElements.h"
 #include "Graph.h"
 
 class KSPGraph : public Graph {

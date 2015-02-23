@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  *
  */
 
@@ -37,29 +37,21 @@ Datum kshortest_path(PG_FUNCTION_ARGS);
 PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
 #endif // _MSC_VER
 
-#undef DEBUG
+#define DEBUG 1
 
-
-#ifndef _MSC_VER
-#ifdef DEBUG
-#define DBG(format, arg...)                     \
-    elog(NOTICE, format , ## arg)
-#else
-#define DBG(format, arg...) do { ; } while (0)
-#endif
-#else // _MSC_VER
-extern void DBG(const char *format, ...)
+extern void kspDBG(const char *format, ...)
 {
 #if DEBUG
 	va_list ap;
 	char msg[256];
 	va_start(ap, format);
-	_vsprintf_p(msg, 256, format, ap);
+	vsnprintf(msg, 256, format, ap);
 	va_end(ap);
 	elog(NOTICE, msg);
-#endif
+#else 
+	;
+#endif /* DEBUG */
 }
-#endif // _MSC_VER
 
 
 #ifdef PG_MODULE_MAGIC
@@ -113,7 +105,7 @@ ksp_fetch_edge_columns(SPITupleTable *tuptable, ksp_edge_columns_t *edge_columns
       return -1;
     }
 
-  DBG("columns: id %i source %i target %i cost %f", 
+  kspDBG("columns: id %i source %i target %i cost %f", 
       edge_columns->id, edge_columns->source, 
       edge_columns->target, edge_columns->cost);
 
@@ -136,7 +128,7 @@ ksp_fetch_edge_columns(SPITupleTable *tuptable, ksp_edge_columns_t *edge_columns
           return -1;
         }
 
-      DBG("columns: reverse_cost cost %f", edge_columns->reverse_cost);
+      kspDBG("columns: reverse_cost cost %f", edge_columns->reverse_cost);
     }
     
   return 0;
@@ -224,14 +216,14 @@ kshortest_path(PG_FUNCTION_ARGS)
         
           for (i = 0; i < path_count; i++) 
             {
-              DBG("Step %i route_id  %d ", i, path[i].route_id);
-              DBG("        vertex_id  %d ", path[i].vertex_id);
-              DBG("        edge_id    %d ", path[i].edge_id);
-              DBG("        cost       %f ", path[i].cost);
+              kspDBG("Step %i route_id  %d ", i, path[i].route_id);
+              kspDBG("        vertex_id  %d ", path[i].vertex_id);
+              kspDBG("        edge_id    %d ", path[i].edge_id);
+              kspDBG("        cost       %f ", path[i].cost);
             }
         }
 #endif
-     DBG("Path-Cnt  %i ", path_count);
+     kspDBG("Path-Cnt  %i ", path_count);
 	
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;
@@ -327,7 +319,7 @@ int compute_kshortest_path(char* sql, int start_vertex,
   register int z;
 
 
-  DBG("start kshortest_path %s\n",sql);
+  kspDBG("start kshortest_path %s\n",sql);
         
   SPIcode = SPI_connect();
   if (SPIcode  != SPI_OK_CONNECT)
@@ -395,7 +387,7 @@ int compute_kshortest_path(char* sql, int start_vertex,
 
  
       
-  DBG("Total %i tuples", total_tuples);
+  kspDBG("Total %i tuples", total_tuples);
 
   for(z=0; z<total_tuples; z++)
   {
@@ -405,10 +397,10 @@ int compute_kshortest_path(char* sql, int start_vertex,
     if(edges[z].source == end_vertex || edges[z].target == end_vertex)
       ++t_count;
 
-    DBG("%i - %i", edges[z].source, edges[z].target);      
+    kspDBG("%i - %i", edges[z].source, edges[z].target);      
   }
 
-  DBG("Total %i tuples", total_tuples);
+  kspDBG("Total %i tuples", total_tuples);
   
 
   if(s_count == 0)
@@ -423,16 +415,16 @@ int compute_kshortest_path(char* sql, int start_vertex,
     return -1;
   }
   
-  DBG("Calling doKpaths\n");
+  kspDBG("Calling doKpaths\n");
         
-  DBG("SIZE %i\n",total_tuples);
+  kspDBG("SIZE %i\n",total_tuples);
   ret = doKpaths(edges, total_tuples,
 			start_vertex, end_vertex,
                        no_paths, has_reverse_cost,
                        ksp_path, path_count, &err_msg);
-  DBG("SIZE %i\n",*path_count);
+  kspDBG("SIZE %i\n",*path_count);
 
-  DBG("ret = %i\n", ret);
+  kspDBG("ret = %i\n", ret);
 
   
   if (ret < 0)

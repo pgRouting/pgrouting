@@ -1,3 +1,5 @@
+#include <vector>
+#include <set>
 #include <map>
 #include "KSPGraph.h"
 #include "YenTopKShortestPathsAlg.h"
