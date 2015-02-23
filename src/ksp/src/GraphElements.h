@@ -69,6 +69,7 @@ public:
 *  @remarks <TODO: insert remarks here>
 *
 *  @author Yan Qi @date 6/6/2010
+*  @modified Vicky Vergara @date Feb/2015
 **************************************************************************/
 class BaseVertex
 {
