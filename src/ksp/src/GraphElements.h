@@ -77,6 +77,19 @@ class BaseVertex
 
 public:
 
+        BaseVertex(int id_, double weight_) {
+           m_nID=id_;
+           m_dWeight=weight_;
+        }
+        BaseVertex(int id_) {
+           m_nID=id_;
+           m_dWeight=0;
+        }
+        BaseVertex() {
+           m_nID=0;
+           m_dWeight=0;
+        }
+        
 	int getID() const { return m_nID; }
 	void setID(int ID_) { m_nID = ID_; }
 
@@ -88,6 +101,42 @@ public:
 		out_stream << m_nID;
 	}
 };
+
+
+/**************************************************************************
+*  BaseEdge
+*  <TODO: insert class description here>
+*
+*
+*  @remarks <TODO: insert remarks here>
+*
+*  @author Vicky Vergara @date Feb/2015
+**************************************************************************/
+class BaseEdge
+{
+        BaseVertex m_Start;
+        BaseVertex m_End;
+        int m_nID;
+        double m_dWeight;
+
+public:
+        BaseEdge(int id_, int start_, int end_, double weight_)
+          : m_Start(start_,0), m_End(end_,0) {
+          m_nID=id_;
+          m_dWeight=weight_;
+        }
+        int getID() const { return m_nID; }
+        int getStart() const { return m_Start.getID(); }
+        int getEnd() const { return m_End.getID(); }
+        double Weight() const { return m_dWeight; }
+
+        void PrintOut(std::ostream& out_stream)
+        {
+                out_stream << m_nID;
+                //out_stream << m_nID<<"("<<getStart()<<","<<getEnd()<<")="<<getWeight()<<";
+        }
+};
+
 
 
 /**************************************************************************
