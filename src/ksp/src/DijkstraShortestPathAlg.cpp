@@ -20,33 +20,59 @@
 
 BasePath* DijkstraShortestPathAlg::get_shortest_path( BaseVertex* source, BaseVertex* sink )
 {
-	determine_shortest_paths(source, sink, true);
+        bool is_source2sink=true;
+	BaseVertex* start_vertex = is_source2sink ? source : sink;
+	BaseVertex* end_vertex = is_source2sink ? sink : source;
 
-	std::vector<BaseVertex*> vertex_list;
-	std::map<BaseVertex*, double>::const_iterator pos = 
-		m_mpStartDistanceIndex.find(sink);
-	double weight = pos != m_mpStartDistanceIndex.end() ? pos->second : Graph::DISCONNECT;
+	determine_shortest_paths(source, sink, is_source2sink);
+        POS start_id = start_vertex->getNID();
+        POS sink_id = end_vertex->getNID();
 
+	std::deque<BaseEdge*> edges_list;
+
+        double weight = m_pDirectGraph.Weight(sink_id);
+        
+
+	POS curr_vertex;
+	BaseVertex *prev_vertex;
 	if (weight < Graph::DISCONNECT)
 	{
-		BaseVertex* cur_vertex_pt = sink;
-		do 
-		{
-			vertex_list.insert(vertex_list.begin(), cur_vertex_pt);
-
-			std::map<BaseVertex*, BaseVertex*>::const_iterator pre_pos = 
-				m_mpPredecessorVertex.find(cur_vertex_pt);
-
-			if (pre_pos == m_mpPredecessorVertex.end()) break;
-
-			cur_vertex_pt = pre_pos->second;
-
-		} while (cur_vertex_pt != source);
-
-		vertex_list.insert(vertex_list.begin(), source);
+		curr_vertex = sink_id;
+		BaseEdge* edge;
+		do {
+                   edge = bestEdge(curr_vertex, is_source2sink);
+		   edges_list.push_front( edge ) ;
+                   prev_vertex =  is_source2sink ?  m_pDirectGraph.get_vertex(edge->getStart()): 
+                                                    m_pDirectGraph.get_vertex(edge->getEnd());
+                   curr_vertex = prev_vertex->getNID(); 
+		} while (curr_vertex != start_id);
 	}
-	return new BasePath(vertex_list, weight);
+	return new BasePath(edges_list, weight);
 }
+
+BaseEdge* DijkstraShortestPathAlg::bestEdge(POS sink_id, bool is_source2sink) const {
+	std::deque<BaseEdge*> incomming_edges_list;
+        double curr_dist = m_pDirectGraph.Weight(sink_id);
+
+	if(is_source2sink)
+		m_pDirectGraph.get_precedent_edges(sink_id, incomming_edges_list);
+	else
+		m_pDirectGraph.get_adjacent_edges(sink_id, incomming_edges_list);
+
+        BaseEdge *edge; 
+        double prev_dist;
+	for(POS pos = 0; pos < incomming_edges_list.size(); pos++) {
+                edge = incomming_edges_list[pos];
+                prev_dist =  is_source2sink ? m_pDirectGraph.Weight(edge->getStart()) 
+                                            : m_pDirectGraph.Weight(edge->getEnd());
+                if (curr_dist == prev_dist + edge->Weight()) 
+                    return edge;
+        };
+        return NULL;
+}
+
+
+
 
 void DijkstraShortestPathAlg::determine_shortest_paths( BaseVertex* source, BaseVertex* sink, bool is_source2sink )
 {
@@ -54,99 +80,94 @@ void DijkstraShortestPathAlg::determine_shortest_paths( BaseVertex* source, Base
 	clear();
 
 	//2. initiate the local variables
-	BaseVertex* end_vertex = is_source2sink ? sink : source;
 	BaseVertex* start_vertex = is_source2sink ? source : sink;
-	m_mpStartDistanceIndex[start_vertex] = 0;
+	BaseVertex* sink_vertex = is_source2sink ? sink : source;
+	//m_mpStartDistanceIndex[start_vertex] = 0;
 	start_vertex->Weight(0);
-	m_quCandidateVertices.insert(start_vertex);
+        POS start_id = start_vertex->getNID();
+        POS sink_id = sink_vertex->getNID();
+        
+        // m_pDirectGraph
+	m_CandidateVertices.push_back(start_id);
 
 	//3. start searching for the shortest path
-	while (!m_quCandidateVertices.empty())
-	{
-		multiset<BaseVertex*, WeightLess<BaseVertex> >::const_iterator pos = m_quCandidateVertices.begin();
-
-		BaseVertex* cur_vertex_pt = *pos; //m_quCandidateVertices.top();
-		m_quCandidateVertices.erase(pos);
-	
-		if (cur_vertex_pt == end_vertex) break;
-
-		m_stDeterminedVertices.insert(cur_vertex_pt->getID());
-
-		improve2vertex(cur_vertex_pt, is_source2sink);
-	}
+	improve2vertex( m_CandidateVertices, sink_id, is_source2sink);
 }
 
-void DijkstraShortestPathAlg::improve2vertex( BaseVertex* cur_vertex_pt, bool is_source2sink )
+void DijkstraShortestPathAlg::improve2vertex(std::deque<POS> &m_CandidateVertices, POS sink_id, bool is_source2sink )
 {
-	// 1. get the neighboring vertices 
-	set<BaseVertex*>* neighbor_vertex_list_pt = new set<BaseVertex*>();
-		
+    while (!m_CandidateVertices.empty()) {
+        int current_id = selectBest(m_CandidateVertices);
+        m_CandidateVertices.erase( m_CandidateVertices.begin() );
+
+	// 1. get the neighboring edges (vertices are sotred on the edges) 
+	std::deque<BaseEdge*> neighbor_edges_list;
+
 	if(is_source2sink)
-	{
-		m_pDirectGraph->get_adjacent_vertices(cur_vertex_pt, *neighbor_vertex_list_pt);
-	}else
-	{
-		m_pDirectGraph->get_precedent_vertices(cur_vertex_pt, *neighbor_vertex_list_pt);
-	}
+		m_pDirectGraph.get_adjacent_edges(current_id, neighbor_edges_list);
+	else
+		m_pDirectGraph.get_precedent_edges(current_id, neighbor_edges_list);
 
 	// 2. update the distance passing on the current vertex
-	for(set<BaseVertex*>::iterator cur_neighbor_pos=neighbor_vertex_list_pt->begin(); 
-		cur_neighbor_pos!=neighbor_vertex_list_pt->end(); ++cur_neighbor_pos)
+	BaseEdge *edge;
+        BaseVertex *curr_vertex;
+        BaseVertex *next_vertex;
+        double distance;
+	for(POS pos = 0; pos < neighbor_edges_list.size(); pos++)
 	{
+                edge = neighbor_edges_list[pos];
+                curr_vertex =  m_pDirectGraph.get_vertex(current_id);
+                next_vertex =  is_source2sink ? m_pDirectGraph.get_vertex(edge->getEnd())
+                                              : m_pDirectGraph.get_vertex(edge->getStart());
+
 		//2.1 skip if it has been visited before
-		if (m_stDeterminedVertices.find((*cur_neighbor_pos)->getID())!=m_stDeterminedVertices.end())
-		{
-			continue;
-		}
-
+		if( next_vertex->visited()) continue;
+	        m_CandidateVertices.push_back(next_vertex->getNID());
+                
 		//2.2 calculate the distance
-		map<BaseVertex*, double>::const_iterator cur_pos = m_mpStartDistanceIndex.find(cur_vertex_pt);
-		double distance =  cur_pos != m_mpStartDistanceIndex.end() ? cur_pos->second : Graph::DISCONNECT;
+		distance = curr_vertex->Weight() + edge->Weight();
 
-		distance += is_source2sink ? m_pDirectGraph->get_edge_weight(cur_vertex_pt, *cur_neighbor_pos) : 
-			m_pDirectGraph->get_edge_weight(*cur_neighbor_pos, cur_vertex_pt);
-
-		//2.3 update the distance if necessary
-		cur_pos = m_mpStartDistanceIndex.find(*cur_neighbor_pos);
-		if (cur_pos == m_mpStartDistanceIndex.end() || cur_pos->second > distance)
-		{
-			m_mpStartDistanceIndex[*cur_neighbor_pos] = distance;
-			m_mpPredecessorVertex[*cur_neighbor_pos] = cur_vertex_pt;
-			
-			(*cur_neighbor_pos)->Weight(distance);
-
-			multiset<BaseVertex*, WeightLess<BaseVertex> >::const_iterator pos = m_quCandidateVertices.begin();
-			for(; pos != m_quCandidateVertices.end(); ++pos)
-			{
-				if ((*pos)->getID() == (*cur_neighbor_pos)->getID())
-				{
-					break;
-				}
-			}
-			if(pos != m_quCandidateVertices.end())
-			{
-				m_quCandidateVertices.erase(pos);
-			}
-			m_quCandidateVertices.insert(*cur_neighbor_pos);
-		}
+		//2.3 update the distance if necessary (comparison and assignment in BaseVertex)
+                next_vertex->Weight(distance);
 	}
+        neighbor_edges_list.clear();
+        curr_vertex->visit();  //mark as Visited
+        if (curr_vertex->getNID()==sink_id) return;
+    }
+    return;
 }
+
+POS DijkstraShortestPathAlg::selectBest( std::deque<POS> &m_CandidateVertices ) {
+    POS best = 0;
+    double bestDistance = Graph::DISCONNECT;
+    POS current_id;
+    for(POS pos = 0; pos < m_CandidateVertices.size(); pos++)
+    {
+       current_id = m_CandidateVertices[pos];
+       if ( bestDistance > m_pDirectGraph.Weight(current_id)) {
+	  best= pos;
+          bestDistance = m_pDirectGraph.Weight(current_id);
+      }
+    }
+    return best;
+}
+
 
 void DijkstraShortestPathAlg::clear()
 {
-	m_stDeterminedVertices.clear();
-	m_mpPredecessorVertex.clear();
-	m_mpStartDistanceIndex.clear();
-	m_quCandidateVertices.clear();
+	//m_stDeterminedVertices.clear();
+	//m_mpPredecessorVertex.clear();
+	//m_mpStartDistanceIndex.clear();
+	//m_quCandidateVertices.clear();
 }
-
+#if 0
 BasePath* DijkstraShortestPathAlg::update_cost_forward( BaseVertex* vertex )
 {
 	double cost = Graph::DISCONNECT;
 
  	// 1. get the set of successors of the input vertex
 	set<BaseVertex*>* adj_vertex_set = new set<BaseVertex*>();
-	m_pDirectGraph->get_adjacent_vertices(vertex, *adj_vertex_set);
+	m_pDirectGraph.get_adjacent_vertices(vertex, *adj_vertex_set);
  
  	// 2. make sure the input vertex exists in the index
 	map<BaseVertex*, double>::iterator pos4vertexInStartDistIndex = m_mpStartDistanceIndex.find(vertex);
@@ -181,8 +202,8 @@ BasePath* DijkstraShortestPathAlg::update_cost_forward( BaseVertex* vertex )
 	BasePath* sub_path = NULL;
 	if(cost < Graph::DISCONNECT) 
  	{
-		vector<BaseVertex*> vertex_list;
-		vertex_list.push_back(vertex);
+		deque<BaseEdge*> edges_list;
+		edges_list.push_back(vertex);
 
 		map<BaseVertex*, BaseVertex*>::const_iterator pos4PredVertexMap =
 			m_mpPredecessorVertex.find(vertex);
@@ -198,7 +219,9 @@ BasePath* DijkstraShortestPathAlg::update_cost_forward( BaseVertex* vertex )
  	}
  	return sub_path;
 }
+#endif
 
+#if 0
 void DijkstraShortestPathAlg::correct_cost_backward( BaseVertex* vertex )
 {
  	// 1. initialize the list of vertex to be updated
@@ -214,7 +237,7 @@ void DijkstraShortestPathAlg::correct_cost_backward( BaseVertex* vertex )
  		double cost_of_cur_vertex = m_mpStartDistanceIndex[cur_vertex_pt];
 
 		set<BaseVertex*> pre_vertex_set;
-		m_pDirectGraph->get_precedent_vertices(cur_vertex_pt, pre_vertex_set);
+		m_pDirectGraph.get_precedent_vertices(cur_vertex_pt, pre_vertex_set);
 		for(set<BaseVertex*>::const_iterator pos=pre_vertex_set.begin(); pos!=pre_vertex_set.end();++pos)
 		{
 			map<BaseVertex*,double>::const_iterator pos4StartDistIndexMap = 
@@ -232,3 +255,5 @@ void DijkstraShortestPathAlg::correct_cost_backward( BaseVertex* vertex )
 		}
 	}
 }
+
+#endif

@@ -37,11 +37,10 @@ Datum kshortest_path(PG_FUNCTION_ARGS);
 PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
 #endif // _MSC_VER
 
-#define DEBUG 1
 
 extern void kspDBG(const char *format, ...)
 {
-#if DEBUG
+#ifdef DEBUG
 	va_list ap;
 	char msg[256];
 	va_start(ap, format);

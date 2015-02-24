@@ -17,19 +17,7 @@ using namespace std;
 class Path : public BasePath
 {
 public: 
-
-	Path(const std::vector<BaseVertex*>& vertex_list, double weight):BasePath(vertex_list,weight){}
-
-	// display the content
-	void PrintOut(std::ostream& out_stream) const
-	{
-		out_stream << "Cost: " << m_dWeight << " Length: " << m_vtVertexList.size() << std::endl;
-		for(std::vector<BaseVertex*>::const_iterator pos=m_vtVertexList.begin(); pos!=m_vtVertexList.end();++pos)
-		{
-			out_stream << (*pos)->getID() << " ";
-		}
-		out_stream << std::endl <<  "*********************************************" << std::endl;	
-	}
+	Path(const std::deque<BaseEdge*>& edges_list, double weight):BasePath(edges_list,weight){}
 };
 
 class Graph
@@ -37,26 +25,13 @@ class Graph
 public: // members
 
 	const static double DISCONNECT; 
-
-	typedef set<BaseVertex*>::iterator VertexPtSetIterator;
-	typedef map<BaseVertex*, set<BaseVertex*>*>::iterator BaseVertexPt2SetMapIterator;
+	//typedef set<BaseEdge*>::iterator EdgesPtSetIterator;
+	typedef deque< deque<BaseEdge*> > BaseVertexMap;
 
 protected: // members
 
-	// Basic information
-	map<BaseVertex*, set<BaseVertex*>*> m_mpFanoutVertices;
-	map<BaseVertex*, set<BaseVertex*>*> m_mpFaninVertices;
-	map<int, double> m_mpEdgeCodeWeight; 
-	vector<BaseVertex*> m_vtVertices;
-	int m_nEdgeNum;
-	int m_nVertexNum;
-
-	map<int, BaseVertex*> m_mpVertexIndex;
-
-	// Members for graph modification
-	set<int> m_stRemovedVertexIds;
-	set<pair<int,int> > m_stRemovedEdge;
-
+        deque<BaseVertex> m_vtVertices;
+        deque<BaseEdge> m_vtEdges;
 public:
 
 	// Constructors and Destructor
@@ -67,49 +42,91 @@ public:
 
 	void clear();
 
+        //functions used to insert the data from postgres into the graph
+        void insertNewEdge( int id, POS startPos, POS endPos, double edge_weight);
+        POS getNewVertex( int node_id );
+         
+	BaseVertex GetVertex(int node_id);
 	BaseVertex* get_vertex(int node_id);
+	double Weight(int node_id) const { return m_vtVertices[node_id].Weight(); };
+        BasePath Dijkstra( POS source_id, POS target_id);
 	
 	int get_edge_code(const BaseVertex* start_vertex_pt, const BaseVertex* end_vertex_pt) const;
-	set<BaseVertex*>* get_vertex_set_pt(BaseVertex* vertex_, map<BaseVertex*, set<BaseVertex*>*>& vertex_container_index);
+	//set<BaseVertex*>* get_vertex_set_pt(BaseVertex* vertex_, map<BaseVertex*, set<BaseVertex*>*>& vertex_container_index);
 
 	double get_original_edge_weight(const BaseVertex* source, const BaseVertex* sink);
 
-	double get_edge_weight(const BaseVertex* source, const BaseVertex* sink);
-	void get_adjacent_vertices(BaseVertex* vertex, set<BaseVertex*>& vertex_set);
-	void get_precedent_vertices(BaseVertex* vertex, set<BaseVertex*>& vertex_set);
+        void insertEdge(int source, int target, double weight);
 
-	/// Methods for changing graph
-	void remove_edge(const pair<int,int> edge)
-	{
-		m_stRemovedEdge.insert(edge);
-	}
+	double get_edge_weight(const BaseEdge &edge) const; 
+	double get_edge_weight(int edge_id) const;
 
-	void remove_vertex(const int vertex_id)
+        void  get_adjacent_edges ( POS vertex_id, deque<BaseEdge*> &edges_set ) const;
+        void  get_precedent_edges ( POS vertex_id, deque<BaseEdge*> &edges_set ) const;
+
+        POS find_vertex (int vertex_id) const {
+            POS i;
+            if (m_vtVertices.size() ==0)
+	    for ( i=0; i<m_vtVertices.size() && m_vtVertices[i].getID()!=vertex_id; i++) {};
+            if ( i>=m_vtVertices.size()) return 0;
+            else return i;
+        }
+        
+        bool checkVertexIDs( POS nodeNID, int nodeID) {
+            if ( !(nodeNID < m_vtVertices.size()) ) return false;
+            if ( m_vtVertices[nodeNID].getID()  != nodeID ) return false;
+            return true;
+        }
+
+	void remove_edge(POS edge_id)
 	{
-		m_stRemovedVertexIds.insert(vertex_id);
-	}
+		m_vtEdges[edge_id].remove();
+        }
+
+        void removeNodes ( const BasePath &path ){
+            for (POS i = 0 ; path.size() -1 ; i++){
+               m_vtVertices[ path[i]->getStart() ].remove();
+            } 
+            m_vtVertices[ path[ path.size()-1  ]->getEnd() ].remove();
+        }
+
+/*
+	void remove_edge(BaseEdge* edge)
+	{
+                edge->remove();
+        }
+
+	void remove_vertex(BaseVertex* vertex)
+	{
+                vertex->remove();
+        }
+
+	void remove_vertex(POS vertex_id)
+	{
+		m_vtVertices[vertex_id].remove();
+        } 
 
 	void recover_removed_edges()
 	{
-		m_stRemovedEdge.clear();
-	}
-
+	    for ( POS i=0; i<m_vtEdges.size(); i++) 
+               m_vtEdges[i].reInsert();
+        }
 	void recover_removed_vertices()
 	{
-		m_stRemovedVertexIds.clear();
-	}
-
-	void recover_removed_edge(const pair<int,int> edge)
-	{
-		m_stRemovedEdge.erase(m_stRemovedEdge.find(edge));
-	}
-
+	    for ( POS i=0; i<m_vtVertices.size(); i++) 
+               m_vtVertices[i].reInsert();
+        }
 	void recover_removed_vertex(int vertex_id)
 	{
-		m_stRemovedVertexIds.erase(m_stRemovedVertexIds.find(vertex_id));
-	}
-	
+            POS pos= find_vertex( vertex_id);
+	    m_vtVertices[pos].reInsert();
+        }
+	void recover_removed_edge(POS edge_id)
+	{
+	    m_vtEdges[edge_id].reInsert();
+        }
+*/       
 private:
-	void _import_from_file(const std::string& file_name);
+	//void _import_from_file(const std::string& file_name);
 
 };

@@ -17,42 +17,49 @@ using namespace std;
 
 class YenTopKShortestPathsAlg
 {
-	Graph* m_pGraph;
+	Graph m_Graph;
 
-	vector<BasePath*> m_vResultList;
-	map<BasePath*, BaseVertex*> m_mpDerivationVertexIndex;
-	multiset<BasePath*, WeightLess<BasePath> > m_quPathCandidates;
+	std::deque<BasePath> m_ResultList;
+        std::deque<BasePath> m_Heap;
 
-	BaseVertex* m_pSourceVertex;
-	BaseVertex* m_pTargetVertex;
+        POS m_Source_id;
+        POS m_Target_id;
+        int m_K;
 
-	int m_nGeneratedPathNum;
+	//map<BasePath*, BaseVertex*> m_mpDerivationVertexIndex;
+	//multiset<BasePath*, WeightLess<BasePath> > m_quPathCandidates;
+
+	//BaseVertex* m_pSourceVertex;
+	//BaseVertex* m_pTargetVertex;
+
+	//int m_nGeneratedPathNum;
 
 private:
+	BasePath* get_shortest_path(BaseVertex* pSource, BaseVertex* pTarget);
+	void get_shortest_paths(BaseVertex* pSource, BaseVertex* pTarget, int top_k, 
+		std::deque<BasePath>&);
 
 	void _init();
 
 public:
-
+/*
 	YenTopKShortestPathsAlg(const Graph& graph)
 	{
 		YenTopKShortestPathsAlg(graph, NULL, NULL);
 	}
-
-	YenTopKShortestPathsAlg(const Graph& graph, BaseVertex* pSource, BaseVertex* pTarget)
-		:m_pSourceVertex(pSource), m_pTargetVertex(pTarget)
+*/
+	YenTopKShortestPathsAlg(const Graph& graph, POS pSource, POS pTarget, int K)
+                : m_Graph(graph),
+		 m_Source_id(pSource), m_Target_id(pTarget),
+                 m_K(K)
 	{
-		m_pGraph = new Graph(graph);
 		_init();
 	}
 
 	~YenTopKShortestPathsAlg(void){clear();}
-
+        void execute( std::deque<BasePath>& );
 	void clear();
-	bool has_next();	
-	BasePath* next();
+	//bool has_next();	
+	void next();
 
-	BasePath* get_shortest_path(BaseVertex* pSource, BaseVertex* pTarget);
-	void get_shortest_paths(BaseVertex* pSource, BaseVertex* pTarget, int top_k, 
-		vector<BasePath*>&);
 };

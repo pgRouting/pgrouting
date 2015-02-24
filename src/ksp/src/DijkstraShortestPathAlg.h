@@ -14,28 +14,31 @@
 #pragma once
 
 using namespace std;
+#include "GraphElements.h"
 
 class DijkstraShortestPathAlg
 {
 private: // members
 
-	Graph* m_pDirectGraph;
+	Graph m_pDirectGraph;
 
-	std::map<BaseVertex*, double> m_mpStartDistanceIndex; 
-	std::map<BaseVertex*, BaseVertex*> m_mpPredecessorVertex; 
+//	std::map<BaseVertex*, double> m_mpStartDistanceIndex; 
+//	std::map<BaseVertex*, BaseVertex*> m_mpPredecessorVertex; 
 
-	std::set<int> m_stDeterminedVertices;
+//	std::set<int> m_stDeterminedVertices;
 	
-	std::multiset<BaseVertex*, WeightLess<BaseVertex> > m_quCandidateVertices;
+//	std::multiset<BaseVertex*, WeightLess<BaseVertex> > m_quCandidateVertices;
+	std::deque<POS> m_CandidateVertices;
+        
 	
 public:
-	DijkstraShortestPathAlg(Graph* pGraph):m_pDirectGraph(pGraph){}
+	DijkstraShortestPathAlg(Graph &Graph):m_pDirectGraph(Graph){}
 	~DijkstraShortestPathAlg(void){clear();}
 
 	void clear();
 
 	BasePath* get_shortest_path(BaseVertex* source, BaseVertex* sink);
-
+/*
 	void set_predecessor_vertex(BaseVertex* vt1, BaseVertex* vt2)
 	{
 		m_mpPredecessorVertex[vt1] = vt2;
@@ -59,11 +62,12 @@ public:
 	// The following two methods are prepared for the top-k shortest paths algorithm
 	BasePath* update_cost_forward(BaseVertex* vertex);
 	void correct_cost_backward(BaseVertex* vertex);
-
+*/
 protected:
 
 	void determine_shortest_paths(BaseVertex* source, BaseVertex* sink, bool is_source2sink);
-
-	void improve2vertex(BaseVertex* cur_vertex_pt, bool is_source2sink);
+        void improve2vertex(std::deque<POS> &m_CandidateVertices, POS sink_id, bool is_source2sink );
+        BaseEdge* bestEdge(POS sink_id, bool is_source2sink) const;
+        POS selectBest( std::deque<POS> &m_CandidateVertices ) ;
 
 };

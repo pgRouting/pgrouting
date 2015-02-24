@@ -11,10 +11,10 @@
 ///
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <set>
-#include <map>
-#include <queue>
-#include <vector>
+//#include <set>
+//#include <map>
+//#include <algorithm>
+#include <deque>
 #include "GraphElements.h"
 #include "Graph.h"
 #include "DijkstraShortestPathAlg.h"
@@ -24,186 +24,122 @@ using namespace std;
 
 void YenTopKShortestPathsAlg::clear()
 {
-	m_nGeneratedPathNum = 0;
-	m_mpDerivationVertexIndex.clear();
-	m_vResultList.clear();
-	m_quPathCandidates.clear();
+	//m_nGeneratedPathNum = 0;
+	//m_mpDerivationVertexIndex.clear();
+	m_ResultList.clear();
+	//m_PathCandidates.clear();
+        m_Heap.clear();
 }
 
 void YenTopKShortestPathsAlg::_init()
 {
 	clear();
-	if (m_pSourceVertex != NULL && m_pTargetVertex != NULL)
-	{
-		BasePath* pShortestPath = get_shortest_path(m_pSourceVertex, m_pTargetVertex);
-		if (pShortestPath != NULL && pShortestPath->length() > 1)
-		{
-			m_quPathCandidates.insert(pShortestPath);
-			m_mpDerivationVertexIndex[pShortestPath] = m_pSourceVertex;
-		}
-	}
+        Graph graph(m_Graph);
+	BasePath shortestPath = graph.Dijkstra(m_Source_id, m_Target_id);
+ 	if ( !shortestPath.isEmpty()) {   //to be empty has no edges
+	    m_ResultList.push_back(shortestPath);
+        }
 }
 
 BasePath* YenTopKShortestPathsAlg::get_shortest_path( BaseVertex* pSource, BaseVertex* pTarget )
 {
-	DijkstraShortestPathAlg dijkstra_alg(m_pGraph);
+	DijkstraShortestPathAlg dijkstra_alg(m_Graph);
 	return dijkstra_alg.get_shortest_path(pSource, pTarget);
 }
-
+/*
 bool YenTopKShortestPathsAlg::has_next()
 {
 	return !m_quPathCandidates.empty();
 }
-
-BasePath* YenTopKShortestPathsAlg::next()
+*/
+void YenTopKShortestPathsAlg::next()
 {
+        Graph graph(m_Graph);
+
 	//1. Prepare for removing vertices and arcs
-	BasePath* cur_path = *(m_quPathCandidates.begin());//m_quPathCandidates.top();
+	//BasePath* cur_path = *(m_quPathCandidates.begin());
+	//m_quPathCandidates.erase(m_quPathCandidates.begin());
+	//m_vResultList.push_back(cur_path);
+
+	//POS count = m_vResultList.size();
 	
-	//m_quPathCandidates.pop();
-	m_quPathCandidates.erase(m_quPathCandidates.begin());
-	m_vResultList.push_back(cur_path);
+	//BaseVertex* cur_derivation_pt = m_mpDerivationVertexIndex.find(cur_path)->second; 
+	//std::deque<BaseEdge*> sub_path_of_derivation_pt;
+	//cur_path->SubPath(sub_path_of_derivation_pt, cur_derivation_pt);
+	//POS sub_path_length = sub_path_of_derivation_pt.size();
+        
+        // Spur node is retrieved from the previous k-shortest path, k − 1.  currPathId= k-1 
+        //   spurNode = A[k-1].node(i);    
+        // The sequence of nodes from the source to the spur node of the previous k-shortest path.
+        //   rootPath = A[k-1].nodes(0, i);
+       
+        POS currPathId =  m_ResultList.size()-1 ;
+	BasePath cur_result_path = m_ResultList[ currPathId ];
+        BaseEdge* spurEdge = cur_result_path[currPathId];
+        //POS spurEdgeId = spurEdge->getID();
+        POS spurNode = spurEdge->getStart() ;
 
-	int count = m_vResultList.size();
-	
-	BaseVertex* cur_derivation_pt = m_mpDerivationVertexIndex.find(cur_path)->second; 
-	vector<BaseVertex*> sub_path_of_derivation_pt;
-	cur_path->SubPath(sub_path_of_derivation_pt, cur_derivation_pt);
-	int sub_path_length = sub_path_of_derivation_pt.size();
+        BasePath rootPath(m_Source_id);
+        cur_result_path.subPath(rootPath, currPathId);    //con (0,0)  regresa un path vacio pero el source debe ser el primer vertice del primer edge del path);
 
-	//2. Remove the vertices and arcs in the graph
-	for (int i=0; i<count-1; ++i)
+	for (POS i=0; i<m_ResultList.size()-1; ++i)
 	{
-		BasePath* cur_result_path = m_vResultList.at(i);
-		vector<BaseVertex*> cur_result_sub_path_of_derivation_pt;
 		
-		if (!cur_result_path->SubPath(cur_result_sub_path_of_derivation_pt, cur_derivation_pt)) continue;
+               //for each path p in A:
+               //   if rootPath == p.nodes(0, i):
+               //     Remove the links that are part of the previous shortest paths which share the same root path.
+               //     remove p.edge(i, i + 1) from Graph;
 
-		if (sub_path_length != cur_result_sub_path_of_derivation_pt.size()) continue;
-		
-		bool is_equal = true;
-		for (int i=0; i<sub_path_length; ++i)
-		{
-			if (sub_path_of_derivation_pt.at(i) != cur_result_sub_path_of_derivation_pt.at(i))
-			{
-				is_equal = false;
-				break;
-			}
-		}
-		if (!is_equal) continue;
+               BasePath workingPath = m_ResultList[i]; // p
+ 	       if (rootPath.isEqual(workingPath) ) {  //this isequal compares up to the size of rootPath
+	            int edgeToBeRemoved = workingPath[i]->getID(); 
+		    graph.remove_edge( edgeToBeRemoved );
+	       }
+        
+	       //2.1 remove vertices and edges along the current result
+               // for each node  in rootPath except spurNode:
+               //       remove node from Graph;
+               graph.removeNodes( rootPath ); //should remove the nodes that are in rootpath except the last node (that belongs to the spureEdge
 
-		//
-		BaseVertex* cur_succ_vertex = cur_result_path->GetVertex(sub_path_length+1);
-		m_pGraph->remove_edge(make_pair(cur_derivation_pt->getID(), cur_succ_vertex->getID()));
+               // Calculate the spur path from the spur node to the sink.
+               BasePath spurPath( spurNode );
+               spurPath = graph.Dijkstra(spurNode, m_Target_id);
+  
+               // Entire path is made up of the root path and spur path.
+               rootPath.append(spurPath);  //this should also update the cost of the totalPath
+
+               // Add the potential k-shortest path to the heap.
+               if (rootPath.FromTo(m_Source_id, m_Target_id))
+                   m_Heap.push_back(rootPath); 
 	}
-
-	//2.1 remove vertices and edges along the current result
-	int path_length = cur_path->length();
-	for(int i=0; i<path_length-1; ++i)
-	{
-		m_pGraph->remove_vertex(cur_path->GetVertex(i)->getID());
-		m_pGraph->remove_edge(make_pair(
-			cur_path->GetVertex(i)->getID(), cur_path->GetVertex(i+1)->getID()));
-	}
-
-	//3. Calculate the shortest tree rooted at target vertex in the graph
-	DijkstraShortestPathAlg reverse_tree(m_pGraph);
-	reverse_tree.get_shortest_path_flower(m_pTargetVertex);
-
-	//4. Recover the deleted vertices and update the cost and identify the new candidates results
-	bool is_done = false;
-	for(int i=path_length-2; i>=0 && !is_done; --i)
-	{
-		//4.1 Get the vertex to be recovered
-		BaseVertex* cur_recover_vertex = cur_path->GetVertex(i);
-		m_pGraph->recover_removed_vertex(cur_recover_vertex->getID());
-
-		//4.2 Check if we should stop continuing in the next iteration
-		if (cur_recover_vertex->getID() == cur_derivation_pt->getID())
-		{
-			is_done = true;
-		}
-
-		//4.3 Calculate cost using forward star form
-		BasePath* sub_path = reverse_tree.update_cost_forward(cur_recover_vertex);
-
-		//4.4 Get one candidate result if possible
-		if (sub_path != NULL)
-		{
-			++m_nGeneratedPathNum;
-
-			//4.4.1 Get the prefix from the concerned path
-			double cost = 0;
-			reverse_tree.correct_cost_backward(cur_recover_vertex);
-
-			vector<BaseVertex*> pre_path_list;
-			for (int j=0; j<path_length; ++j)
-			{
-				BaseVertex* cur_vertex = cur_path->GetVertex(j);
-				if (cur_vertex->getID() == cur_recover_vertex->getID())
-				{
-					//j = path_length;
-					break;
-				}else
-				{
-					cost += m_pGraph->get_original_edge_weight(
-						cur_path->GetVertex(j), cur_path->GetVertex(1+j));
-					pre_path_list.push_back(cur_vertex);
-				}
-			}
-			//
-			for (int j=0; j<sub_path->length(); ++j)
-			{
-				pre_path_list.push_back(sub_path->GetVertex(j));
-			}
-
-			//4.4.2 Compose a candidate
-			sub_path = new Path(pre_path_list, cost+sub_path->Weight());
-
-			//4.4.3 Put it in the candidate pool if new
-			if (m_mpDerivationVertexIndex.find(sub_path) == m_mpDerivationVertexIndex.end())
-			{
-				m_quPathCandidates.insert(sub_path);
-				m_mpDerivationVertexIndex[sub_path] = cur_recover_vertex;
-			}
-		}
-
-		//4.5 Restore the edge
-		BaseVertex* succ_vertex = cur_path->GetVertex(i+1);
-		m_pGraph->recover_removed_edge(make_pair(cur_recover_vertex->getID(), succ_vertex->getID()));
-
-		//4.6 Update cost if necessary
-		double cost_1 = m_pGraph->get_edge_weight(cur_recover_vertex, succ_vertex)
-			+ reverse_tree.get_start_distance_at(succ_vertex);
-
-		if (reverse_tree.get_start_distance_at(cur_recover_vertex) > cost_1)
-		{
-			reverse_tree.set_start_distance_at(cur_recover_vertex, cost_1);
-			reverse_tree.set_predecessor_vertex(cur_recover_vertex, succ_vertex);
-			reverse_tree.correct_cost_backward(cur_recover_vertex);
-		}
-	}
-
-	//5. Restore everything
-	m_pGraph->recover_removed_edges();
-	m_pGraph->recover_removed_vertices();
-
-	return cur_path;
 }
 
+/*
+bool OrderByCost (const BasePath &p1,const BasePath &p2) { 
+       return p1.Weight() < p2.Weight()
+              || p1.size() < p2.size()
+              || p1.EdgesLessComapre(p2);
+}
+*/
 void YenTopKShortestPathsAlg::get_shortest_paths( BaseVertex* pSource, 
-	BaseVertex* pTarget, int top_k, vector<BasePath*>& result_list)
+	BaseVertex* pTarget, int top_k, std::deque<BasePath>& result_list)
 {
-	m_pSourceVertex = pSource;
-	m_pTargetVertex = pTarget;
+        if (pSource != NULL && pTarget != NULL)
+        {
+	  m_Source_id = pSource->getNID();
+	  m_Target_id = pTarget->getNID();
 
-	_init();
-	int count = 0; 
-	while (has_next() && count < top_k)
-	{
+	  _init();
+	  int count = 0; 
+	  while ( count < top_k)
+	  {
 		next();
+                if ( m_Heap.empty() ) break;
+//                std::sort( m_Heap.begin() , m_Heap.end() );  // , OrderByCost );
+                m_ResultList.push_back( m_Heap[0] );
+                m_Heap.erase( m_Heap.begin() );
 		++count;
-	}
-
-	result_list.assign(m_vResultList.begin(),m_vResultList.end());
+	  }
+	  result_list = m_ResultList;
+         }
 }

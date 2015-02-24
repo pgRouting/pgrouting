@@ -33,7 +33,7 @@ extern "C" {
 #else // _MSC_VER
 extern void DBG(const char *format, ...)
 {
-#if DEBUG
+#ifdef DEBUG
         va_list ap;
         char msg[256];
         va_start(ap, format);
@@ -55,13 +55,32 @@ KSPGraph::KSPGraph(const std::string & f):Graph(f){
 
 void KSPGraph::clear(void){
 	Graph::clear();
-	m_mpEdgeValues.clear();;
-	
+	//m_mpEdgeValues.clear();
 }
-void KSPGraph::StartLoad(const  int len ){
+
+void KSPGraph::AddData( ksp_edge_t  * edges,  int total_tuples, bool has_reverse_cost) {
+           for(int i=0; i<total_tuples; i++) {
+                insertTuple( edges[i].id, edges[i].source, edges[i].target, edges[i].cost, edges[i].reverse_cost, has_reverse_cost );
+           }
+};
+
+void KSPGraph::insertTuple( int id, int source, int target, float cost, float reverse_cost, bool has_reverse_cost){
+   if (cost >= 0 || ( reverse_cost>= 0 && has_reverse_cost)) {
+      POS sourcePos= getNewVertex( source );
+      POS targetPos= getNewVertex( target );
+      if ( cost >= 0 )
+         insertNewEdge( id, sourcePos, targetPos, cost );
+      if ( reverse_cost>= 0 && has_reverse_cost ) 
+         insertNewEdge( id, targetPos, sourcePos, reverse_cost );
+   }
+};
+
+
+void KSPGraph::StartLoad(){
 	clear();
-	m_nVertexNum=len;
 }
+
+#if 0
 /*
  * a rewrite of input_from file, but one line at the time
  */
@@ -86,11 +105,14 @@ void KSPGraph::AddData(const int start_vertex,const int end_vertex ,const float 
 
     m_mpEdgeValues[get_edge_code(start_vertex_pt, end_vertex_pt)] = edge_id;
 }
+#endif
+
 void KSPGraph::EndLoad(void){
-	m_nVertexNum = m_vtVertices.size();
-  	m_nEdgeNum = m_mpEdgeCodeWeight.size();
+	//m_nVertexNum = m_vtVertices.size();
+  	//m_nEdgeNum = m_mpEdgeCodeWeight.size();
 }
 
+#if 0
 int  KSPGraph::get_edge_value( const BaseVertex* source, const BaseVertex* sink )
 {
   std::map<int, int>::const_iterator pos =
@@ -104,3 +126,4 @@ int  KSPGraph::get_edge_value( const BaseVertex* source, const BaseVertex* sink 
     return DISCONNECT;
   }
 }
+#endif
