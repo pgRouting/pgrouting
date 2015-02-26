@@ -15,6 +15,7 @@
 //#include <map>
 //#include <algorithm>
 #include <deque>
+#include <cassert>
 #include "GraphElements.h"
 #include "Graph.h"
 #include "DijkstraShortestPathAlg.h"
@@ -24,28 +25,49 @@ using namespace std;
 
 void YenTopKShortestPathsAlg::clear()
 {
-	//m_nGeneratedPathNum = 0;
-	//m_mpDerivationVertexIndex.clear();
+        DijkstraShortestPathAlg::clear();
 	m_ResultList.clear();
-	//m_PathCandidates.clear();
         m_Heap.clear();
 }
 
 void YenTopKShortestPathsAlg::_init()
 {
 	clear();
-        Graph graph(m_Graph);
-	BasePath shortestPath = graph.Dijkstra(m_Source_id, m_Target_id);
+	BasePath shortestPath = Dijkstra(m_Source_id, m_Target_id);
+        DijkstraShortestPathAlg::clear();
+#if 0
+shortestPath.PrintOut(std::cout);
+#endif
  	if ( !shortestPath.isEmpty()) {   //to be empty has no edges
 	    m_ResultList.push_back(shortestPath);
         }
 }
 
-BasePath* YenTopKShortestPathsAlg::get_shortest_path( BaseVertex* pSource, BaseVertex* pTarget )
-{
-	DijkstraShortestPathAlg dijkstra_alg(m_Graph);
-	return dijkstra_alg.get_shortest_path(pSource, pTarget);
+
+std::deque<BasePath> YenTopKShortestPathsAlg::Yen( int  source, int  sink, int K ) {
+	clear();
+        if (  source !=sink && K > 0 && exist_vertex(source) && exist_vertex(sink) ) {
+
+	     m_Source_id = source;
+	     m_Target_id = sink;
+             sourceID = find_vertex(source);
+             targetID = find_vertex(sink);
+             get_shortest_paths( find_vertex(source), find_vertex(sink), K );
+#if 0
+std::cout<<"paths found "<<m_ResultList.size()<<"\n";
+#endif
+        }
+        return m_ResultList;
 }
+
+
+BasePath YenTopKShortestPathsAlg::get_shortest_path( POS  sourcePos, POS  targetPos )
+{
+	int source_id = m_vtVertices[ sourcePos ].getID();
+	int target_id = m_vtVertices[ targetPos ].getID();
+	return Dijkstra( source_id,  target_id );
+}
+
 /*
 bool YenTopKShortestPathsAlg::has_next()
 {
@@ -54,63 +76,114 @@ bool YenTopKShortestPathsAlg::has_next()
 */
 void YenTopKShortestPathsAlg::next()
 {
-        Graph graph(m_Graph);
-
-	//1. Prepare for removing vertices and arcs
-	//BasePath* cur_path = *(m_quPathCandidates.begin());
-	//m_quPathCandidates.erase(m_quPathCandidates.begin());
-	//m_vResultList.push_back(cur_path);
-
-	//POS count = m_vResultList.size();
-	
-	//BaseVertex* cur_derivation_pt = m_mpDerivationVertexIndex.find(cur_path)->second; 
-	//std::deque<BaseEdge*> sub_path_of_derivation_pt;
-	//cur_path->SubPath(sub_path_of_derivation_pt, cur_derivation_pt);
-	//POS sub_path_length = sub_path_of_derivation_pt.size();
+#if 0
+std::cout<<"Entering YenTopKShortestPathsAlg::next\n";
+#endif
         
-        // Spur node is retrieved from the previous k-shortest path, k − 1.  currPathId= k-1 
-        //   spurNode = A[k-1].node(i);    
-        // The sequence of nodes from the source to the spur node of the previous k-shortest path.
-        //   rootPath = A[k-1].nodes(0, i);
-       
         POS currPathId =  m_ResultList.size()-1 ;
-	BasePath cur_result_path = m_ResultList[ currPathId ];
-        BaseEdge* spurEdge = cur_result_path[currPathId];
-        //POS spurEdgeId = spurEdge->getID();
-        POS spurNode = spurEdge->getStart() ;
+	BasePath curr_result_path = m_ResultList[ currPathId ];
+#if 0
+std::cout<<"current path\n";
+curr_result_path.PrintOut(std::cout);
+std::cout<<"size is "<<curr_result_path.size()<<"\n";
+#endif
+//        POS currPathSize= curr_result_path.size();
 
-        BasePath rootPath(m_Source_id);
-        cur_result_path.subPath(rootPath, currPathId);    //con (0,0)  regresa un path vacio pero el source debe ser el primer vertice del primer edge del path);
 
-	for (POS i=0; i<m_ResultList.size()-1; ++i)
+        BaseEdge* spurEdge;
+        POS spurNode;
+        BasePath rootPath;
+	for (POS i = 0; i < curr_result_path.size(); ++i)
 	{
+#if 0
+std::cout<<"Entering cycle\n";
+#endif
+            spurEdge = curr_result_path[i];
+#if 0
+std::cout<<"\nspur Edge\n";
+spurEdge->PrintOut(std::cout);
+#endif
+            spurNode = spurEdge->getStart();
+#if 0
+std::cout<<"\nspur node\n";
+m_vtVertices[spurNode].PrintOut(std::cout, m_vtEdges);
+#endif
+            curr_result_path.subPath(rootPath, i);  
+#if 0
+//std::cout<<"SubPath results:\ncurrent path\n";
+//curr_result_path.PrintOut(std::cout);
+std::cout<<"root path\n";
+rootPath.PrintOut(std::cout);
+#endif
+
 		
                //for each path p in A:
                //   if rootPath == p.nodes(0, i):
                //     Remove the links that are part of the previous shortest paths which share the same root path.
                //     remove p.edge(i, i + 1) from Graph;
 
-               BasePath workingPath = m_ResultList[i]; // p
+#if 0
+std::cout<<"\nGraph status before removed edges\n";
+PrintOut(std::cout);
+#endif
+            for ( POS j=0; j < m_ResultList.size(); j++) {
+               BasePath workingPath = m_ResultList[j]; // p (luego lo arreglo para que no se copie
+#if 0
+std::cout<<"\nworkingPath #"<<j<<"\n";
+workingPath.PrintOut(std::cout);
+#endif
  	       if (rootPath.isEqual(workingPath) ) {  //this isequal compares up to the size of rootPath
-	            int edgeToBeRemoved = workingPath[i]->getID(); 
-		    graph.remove_edge( edgeToBeRemoved );
+	            int edgeToBeRemoved = workingPath[i]->getNID(); 
+		    remove_edge( edgeToBeRemoved );
+#if 0
+std::cout<<"\nremoved Edge for processing\n";
+m_vtEdges[ edgeToBeRemoved ].PrintOut(std::cout);
+#endif
 	       }
-        
-	       //2.1 remove vertices and edges along the current result
-               // for each node  in rootPath except spurNode:
-               //       remove node from Graph;
-               graph.removeNodes( rootPath ); //should remove the nodes that are in rootpath except the last node (that belongs to the spureEdge
+             }
 
-               // Calculate the spur path from the spur node to the sink.
-               BasePath spurPath( spurNode );
-               spurPath = graph.Dijkstra(spurNode, m_Target_id);
+        
+
+               removeNodes( rootPath ); 
+
+               BasePath spurPath;
+#if 0
+std::cout<<"\n !!!!!!!!!going to Dijstra" <<  m_vtVertices[ spurNode ].getID() <<" to "<< m_Target_id <<"\n";
+std::cout<<"aka" <<  spurNode  <<" to "<< targetID <<"\n";
+if (spurNode ==1 ) PrintOut(std::cout);
+#endif
+               //spurPath = DijkstraShortestPathAlg::Dijkstra( m_vtVertices[ spurNode ].getID(), m_Target_id);
+               spurPath = DijkstraShortestPathAlg::Dijkstra(  spurNode , targetID, true);
+               DijkstraShortestPathAlg::clear();
+#if 0
+std::cout<<"\nGraph status after Dij clear\n";
+PrintOut(std::cout);
+std::cout<<"\n*****************\n";
+#endif
+
   
+#if 0
+std::cout<<"root path\n";
+rootPath.PrintOut(std::cout);
+std::cout<<"spur path\n";
+spurPath.PrintOut(std::cout);
+#endif
                // Entire path is made up of the root path and spur path.
                rootPath.append(spurPath);  //this should also update the cost of the totalPath
+#if 0
+std::cout<<"total path\n";
+rootPath.PrintOut(std::cout);
+#endif
 
                // Add the potential k-shortest path to the heap.
-               if (rootPath.FromTo(m_Source_id, m_Target_id))
+               if (rootPath.FromTo(sourceID, targetID)) {
                    m_Heap.push_back(rootPath); 
+#if 0
+std::cout<<"\npath added to HEAP\n";
+rootPath.PrintOut(std::cout);
+//assert(true==false);
+#endif
+             }
 	}
 }
 
@@ -121,25 +194,21 @@ bool OrderByCost (const BasePath &p1,const BasePath &p2) {
               || p1.EdgesLessComapre(p2);
 }
 */
-void YenTopKShortestPathsAlg::get_shortest_paths( BaseVertex* pSource, 
-	BaseVertex* pTarget, int top_k, std::deque<BasePath>& result_list)
+void YenTopKShortestPathsAlg::get_shortest_paths( POS source_id, POS target_id, int K)
 {
-        if (pSource != NULL && pTarget != NULL)
-        {
-	  m_Source_id = pSource->getNID();
-	  m_Target_id = pTarget->getNID();
 
-	  _init();
-	  int count = 0; 
-	  while ( count < top_k)
+	  _init(); // get the best using Dijkstra
+	  while ( m_ResultList.size() < (unsigned int) K )
 	  {
 		next();
                 if ( m_Heap.empty() ) break;
 //                std::sort( m_Heap.begin() , m_Heap.end() );  // , OrderByCost );
                 m_ResultList.push_back( m_Heap[0] );
+#if 0
+std::cout<<"\npath added to results\n";
+m_ResultList[ m_ResultList.size()-1 ].PrintOut(std::cout);
+//assert(true==false);
+#endif
                 m_Heap.erase( m_Heap.begin() );
-		++count;
 	  }
-	  result_list = m_ResultList;
-         }
 }

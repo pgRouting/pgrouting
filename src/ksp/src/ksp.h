@@ -64,7 +64,7 @@ int compute_kshortest_path(char* sql, int start_vertex,
                                  bool has_reverse_cost, 
                                  ksp_path_element_t **path, int *ksp_path_count) ;
 
-ksp_path_element_t * get_ksp_memory(int,ksp_path_element_t *path);
+ksp_path_element_t * get_ksp_memory(int, ksp_path_element_t *path);
 
 
 

@@ -15,15 +15,15 @@
 
 using namespace std;
 
-class YenTopKShortestPathsAlg
+class YenTopKShortestPathsAlg: public DijkstraShortestPathAlg
 {
-	Graph m_Graph;
-
 	std::deque<BasePath> m_ResultList;
         std::deque<BasePath> m_Heap;
 
-        POS m_Source_id;
-        POS m_Target_id;
+        int m_Source_id;
+        int m_Target_id;
+        POS sourceID;
+        POS targetID;
         int m_K;
 
 	//map<BasePath*, BaseVertex*> m_mpDerivationVertexIndex;
@@ -35,10 +35,8 @@ class YenTopKShortestPathsAlg
 	//int m_nGeneratedPathNum;
 
 private:
-	BasePath* get_shortest_path(BaseVertex* pSource, BaseVertex* pTarget);
-	void get_shortest_paths(BaseVertex* pSource, BaseVertex* pTarget, int top_k, 
-		std::deque<BasePath>&);
-
+	BasePath get_shortest_path(POS sourcePos, POS targetPos);
+	void get_shortest_paths(POS pSource, POS pTarget, int top_k);
 	void _init();
 
 public:
@@ -48,16 +46,14 @@ public:
 		YenTopKShortestPathsAlg(graph, NULL, NULL);
 	}
 */
-	YenTopKShortestPathsAlg(const Graph& graph, POS pSource, POS pTarget, int K)
-                : m_Graph(graph),
-		 m_Source_id(pSource), m_Target_id(pTarget),
-                 m_K(K)
-	{
-		_init();
-	}
+	YenTopKShortestPathsAlg(const Graph& graph)
+                : DijkstraShortestPathAlg(graph),
+		 m_Source_id(0), m_Target_id(0),
+                 m_K(1)
+	{ }
 
-	~YenTopKShortestPathsAlg(void){clear();}
-        void execute( std::deque<BasePath>& );
+	~YenTopKShortestPathsAlg(void){ clear(); }
+        std::deque<BasePath> Yen( int source, int target, int numb_paths );
 	void clear();
 	//bool has_next();	
 	void next();

@@ -37,7 +37,7 @@ Datum kshortest_path(PG_FUNCTION_ARGS);
 PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
 #endif // _MSC_VER
 
-
+#if 0
 extern void kspDBG(const char *format, ...)
 {
 #ifdef DEBUG
@@ -51,7 +51,7 @@ extern void kspDBG(const char *format, ...)
 	;
 #endif /* DEBUG */
 }
-
+#endif
 
 #ifdef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
@@ -436,6 +436,7 @@ int compute_kshortest_path(char* sql, int start_vertex,
   return ksp_finish(SPIcode, ret);
 }
 
+// path gets size big
 ksp_path_element_t * get_ksp_memory(int size,ksp_path_element_t *path){
 	if(path ==0  ){
 		path=malloc(size * sizeof(ksp_path_element_t));

@@ -10,64 +10,33 @@
 ///  $Id: DijkstraShortestPathAlg.h 65 2010-09-08 06:48:36Z yan.qi.asu $
 ///
 ///////////////////////////////////////////////////////////////////////////////
+#ifndef _DIJKSTRASHORTESTPATHALG_H
+#define  _DIJKSTRASHORTESTPATHALG_H
 
-#pragma once
 
 using namespace std;
 #include "GraphElements.h"
 
-class DijkstraShortestPathAlg
+class DijkstraShortestPathAlg: public Graph
 {
-private: // members
-
-	Graph m_pDirectGraph;
-
-//	std::map<BaseVertex*, double> m_mpStartDistanceIndex; 
-//	std::map<BaseVertex*, BaseVertex*> m_mpPredecessorVertex; 
-
-//	std::set<int> m_stDeterminedVertices;
-	
-//	std::multiset<BaseVertex*, WeightLess<BaseVertex> > m_quCandidateVertices;
+private: 
+        //int from_id;
+        //int to_id;
 	std::deque<POS> m_CandidateVertices;
-        
 	
 public:
-	DijkstraShortestPathAlg(Graph &Graph):m_pDirectGraph(Graph){}
-	~DijkstraShortestPathAlg(void){clear();}
-
+        BasePath Dijkstra( int source, int sink ) ;
+        BasePath Dijkstra( POS source, POS sink , bool localids ) ;
+	DijkstraShortestPathAlg(const Graph &graph): Graph(graph){}
 	void clear();
-
-	BasePath* get_shortest_path(BaseVertex* source, BaseVertex* sink);
-/*
-	void set_predecessor_vertex(BaseVertex* vt1, BaseVertex* vt2)
-	{
-		m_mpPredecessorVertex[vt1] = vt2;
-	}
-
-	double get_start_distance_at(BaseVertex* vertex)
-	{
-		return m_mpStartDistanceIndex.find(vertex)->second;
-	}
-
-	void set_start_distance_at(BaseVertex* vertex, double weight)
-	{
-		m_mpStartDistanceIndex[vertex] = weight;
-	}
-
-	void get_shortest_path_flower(BaseVertex* root)
-	{
-		determine_shortest_paths(NULL, root, false);
-	}
-
-	// The following two methods are prepared for the top-k shortest paths algorithm
-	BasePath* update_cost_forward(BaseVertex* vertex);
-	void correct_cost_backward(BaseVertex* vertex);
-*/
 protected:
 
-	void determine_shortest_paths(BaseVertex* source, BaseVertex* sink, bool is_source2sink);
-        void improve2vertex(std::deque<POS> &m_CandidateVertices, POS sink_id, bool is_source2sink );
-        BaseEdge* bestEdge(POS sink_id, bool is_source2sink) const;
-        POS selectBest( std::deque<POS> &m_CandidateVertices ) ;
-
+	BasePath get_shortest_path(POS source_id, POS sink_id );
+	void determine_shortest_paths(POS source_id, POS sink_id) ; 
+        void improve2vertex( POS sink_id );
+        BaseEdge* bestEdge(POS sink_id);
+        POS selectBestCandidate( ) ;
+        void InsertIntoCandidate(POS node_id);
 };
+
+#endif

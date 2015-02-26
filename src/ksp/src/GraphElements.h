@@ -8,10 +8,12 @@
 ///
 ///  $Id: GraphElements.h 65 2010-09-08 06:48:36Z yan.qi.asu $
 ///////////////////////////////////////////////////////////////////////////////
+#ifndef _GRAPHELEMENTS_H
+#define _GRAPHELEMENTS_H
 
-#pragma once
 
 #include <string>
+#include <cassert>
 #include <deque>
 #include <iostream>
 #include <limits>
@@ -66,6 +68,49 @@ public:
 
 
 
+
+/**************************************************************************
+*  BaseEdge
+*  <TODO: insert class description here>
+*
+*
+*  @remarks <TODO: insert remarks here>
+*
+*  @author Vicky Vergara @date Feb/2015
+**************************************************************************/
+class BaseEdge
+{
+        POS m_Start;  // position on the vertices table
+        POS m_End;  // position on the vertices table
+        int m_nID;
+        POS m_nNID;
+        double m_dWeight;
+	bool m_active;   //to indicate if its removed or not
+
+public:
+        BaseEdge(POS nid, int  id_, int start_, int end_, double weight_)
+          : m_Start(start_), m_End(end_),
+            m_nID(id_), m_nNID(nid),
+            m_dWeight(weight_),
+            m_active(true)
+        {};
+        int getID() const { return m_nID; }
+        POS getNID() const { return m_nNID; }
+        POS  getStart() const { return m_Start; }
+        POS  getEnd() const { return m_End; }
+        double Weight() const { return m_dWeight; }
+        bool isRemoved() const { return !m_active; }
+        bool isActive() const { return m_active; }
+        void remove() {m_active=false;}
+        void reInsert() {m_active=true;}
+
+        void PrintOut(std::ostream& out_stream) const
+        {
+                out_stream << "local ID =" <<m_nNID<< " (ID="<< m_nID<<", From="<<getStart()<<",To="<<getEnd()<<", Weight="<<Weight()<<"Active="<<m_active<<")";
+        }
+};
+
+
 /**************************************************************************
 *  BaseVertex
 *  <TODO: insert class description here>
@@ -76,14 +121,13 @@ public:
 *  @author Yan Qi @date 6/6/2010
 *  @modified Vicky Vergara @date Feb/2015
 **************************************************************************/
-class BaseEdge;
 class BaseVertex
 {
 	int m_nID;
 	unsigned int m_nNID;
 	double m_dWeight;
-        std::deque< BaseEdge* > m_FaninEdges;
-        std::deque< BaseEdge* > m_FanoutEdges;
+        std::deque< POS > m_FaninEdges;
+        std::deque< POS > m_FanoutEdges;
 	bool m_active;   //to indicate if its removed or not
 	bool m_visited;   //to indicate if iwe have visited the node
 
@@ -125,72 +169,54 @@ public:
 	unsigned int getNID() const { return m_nNID; }
 	void setID(int ID_) { m_nID = ID_; }
 	void setNID(int NID_) { m_nNID = NID_; }
-        const std::deque< BaseEdge* > getFanIn() const  {return m_FaninEdges;}
-        const std::deque< BaseEdge* > getFanOut() const {return m_FanoutEdges;}
+        const std::deque< POS > getFanIn() const  {return m_FaninEdges;}
+        const std::deque< POS > getFanOut() const {return m_FanoutEdges;}
 
 		
-        void push_FanIn(BaseEdge* edge) { m_FaninEdges.push_back(edge);}
-        void push_FanOut(BaseEdge* edge) { m_FanoutEdges.push_back(edge); }
+        void push_FanIn( POS edge) { m_FaninEdges.push_back(edge);}
+        void push_FanOut( POS edge) { m_FanoutEdges.push_back(edge); }
 	double Weight() const { return m_dWeight; }
-	void Weight(double val) {  m_dWeight = m_dWeight > val? val : m_dWeight; }
+	void Weight(double val) {  m_dWeight = (m_dWeight > val)? val : m_dWeight; }
         bool isRemoved() const { return !m_active; }
         bool isActive() const { return m_active; }
         void reInsert() {m_active=true;}
         void remove() {m_active=false;}
+        void restore() { 
+             m_active=true; 
+             m_dWeight=std::numeric_limits<double>::max();
+             m_visited=false;
+        }
+
 
         bool visited() const { return m_visited; }
         void unVisit() {m_visited=false;}
-        void visit() {m_visited=true;}
+        void setAsVisited() {m_visited=true;}
 
         void clear() {
            m_FaninEdges.clear();
            m_FanoutEdges.clear();
         }
-	void PrintOut(std::ostream& out_stream)
-	{
-		out_stream << m_nID;
-	}
-};
-
-
-/**************************************************************************
-*  BaseEdge
-*  <TODO: insert class description here>
-*
-*
-*  @remarks <TODO: insert remarks here>
-*
-*  @author Vicky Vergara @date Feb/2015
-**************************************************************************/
-class BaseEdge
-{
-        POS m_Start;  // position on the vertices table
-        POS m_End;  // position on the vertices table
-        int m_nID;
-        POS m_nNID;
-        double m_dWeight;
-	bool m_active;   //to indicate if its removed or not
-
-public:
-        BaseEdge(POS nid, int  id_, int start_, int end_, double weight_)
-          : m_Start(start_), m_End(end_),
-            m_nID(id_), m_nNID(nid),
-            m_dWeight(weight_)
-        {};
-        int getID() const { return m_nID; }
-        POS getNID() const { return m_nNID; }
-        POS  getStart() const { return m_Start; }
-        POS  getEnd() const { return m_End; }
-        double Weight() const { return m_dWeight; }
-        bool isRemoved() const { return !m_active; }
-        bool isActive() const { return m_active; }
-        void remove() {m_active=false;}
-        void reInsert() {m_active=true;}
-
-        void PrintOut(std::ostream& out_stream)
+	void PrintOut(std::ostream& out_stream ) const
         {
-                out_stream << m_nID<<"("<<getStart()<<","<<getEnd()<<")="<<Weight()<<std::endl;
+                out_stream << "local ID" << m_nNID<< "( ID=" <<m_nID<<", Weight="<<m_dWeight<<", Active="<<m_active<<", Visited="<<m_visited<<")";
         }
+	void PrintOut(std::ostream& out_stream, const std::deque<BaseEdge> &edgesTable) const
+        {
+                out_stream << "local ID" << m_nNID<< "( ID=" <<m_nID<<", Weight="<<m_dWeight<<", Active="<<m_active<<", Visited="<<m_visited<<")";
+                out_stream <<"\n In comming Edges\n";
+                for (POS i = 0; i < m_FaninEdges.size(); i++) {
+                   edgesTable[m_FaninEdges[i]].PrintOut(out_stream);
+                   out_stream<<"\n";
+                }
+                out_stream <<"Out Going Edges\n";
+                for (POS i = 0; i < m_FanoutEdges.size(); i++) {
+                   edgesTable[m_FanoutEdges[i]].PrintOut(out_stream);
+                   out_stream<<"\n";
+                }
+        }
+
+
+
 };
 
 
@@ -219,6 +245,12 @@ public:
 	BasePath(unsigned int  start_id, unsigned int sink_id)
 		:m_dWeight(0),
                  m_start_id(start_id)
+	{
+		m_vtEdgesList.clear();
+	}
+	BasePath()
+		:m_dWeight(0),
+                 m_start_id(-1)
 	{
 		m_vtEdgesList.clear();
 	}
@@ -265,13 +297,21 @@ public:
 	}
 
         bool FromTo (POS from, POS to ) const {
-             return from == m_vtEdgesList[0]->getStart()
+             if ( size() == 0 ) return false;
+             return 
+                     from == m_vtEdgesList[0]->getStart()
                     && to == m_vtEdgesList[ size()-1 ]->getEnd();
         }
 
        bool isEqual(const  BasePath &largerPath ) const {
+#if 0
+std::cout<<"Entering isEqual\n";
+PrintOut(std::cout);
+largerPath.PrintOut(std::cout);
+#endif
+
             if (size() > largerPath.size()) return false;
-            for (POS i = 0 ; i < size()-1 ; i++ ) {
+            for (POS i = 0 ; i < size() ; i++ ) {
                 if (! m_vtEdgesList[i]->getID() == largerPath.m_vtEdgesList[i]->getID()) return false;
             }
             return true;
@@ -293,6 +333,12 @@ public:
             m_dWeight += edge->Weight();
         }
 
+        void push_front( BaseEdge * edge) {
+            m_start_id = edge->getStart();
+            m_vtEdgesList.push_front(edge);
+            m_dWeight += edge->Weight();
+        }
+
         void clear( ) { 
             m_vtEdgesList.clear();
             m_dWeight=0;
@@ -309,7 +355,7 @@ public:
                 if (m_vtEdgesList.size()==0) return false;
                 if (upTo >= size()) return false;
                 sub_path.m_start_id = m_start_id;
-		for (POS i=1; i<upTo; i++)
+		for (POS i=0; i<upTo; i++)
 		{
 		   sub_path.push_back( m_vtEdgesList[i] );
 		}
@@ -336,4 +382,4 @@ public:
 		out_stream << std::endl <<  "*********************************************" << std::endl;
 	}
 };
-
+#endif
