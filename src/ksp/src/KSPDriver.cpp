@@ -30,9 +30,11 @@ int  doKpaths(ksp_edge_t  * edges,int total_tuples,int  start_vertex,int  end_ve
         };
         
 
-        YenTopKShortestPathsAlg yenAlg(theGraph, start_id, end_id, no_paths);
+        YenTopKShortestPathsAlg yenGraph(theGraph);
+
         std::deque<BasePath> paths;
-//        yenAlg.execute( paths );
+        paths = yenGraph.Yen( start_id, end_id, no_paths);
+ 
 
 
         int count=0;

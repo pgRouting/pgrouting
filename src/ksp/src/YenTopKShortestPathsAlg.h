@@ -10,10 +10,11 @@
 ///  $Id: YenTopKShortestPathsAlg.h 65 2010-09-08 06:48:36Z yan.qi.asu $
 ///
 ///////////////////////////////////////////////////////////////////////////////
+#ifndef _YENTOPKSHORTESTPATHSALG_H
+#define _YENTOPKSHORTESTPATHSALG_H
 
-#pragma once
-
-using namespace std;
+#include <deque>
+#include "DijkstraShortestPathAlg.h"
 
 class YenTopKShortestPathsAlg: public DijkstraShortestPathAlg
 {
@@ -59,3 +60,4 @@ public:
 	void next();
 
 };
+#endif
