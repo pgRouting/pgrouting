@@ -37,7 +37,11 @@ Datum kshortest_path(PG_FUNCTION_ARGS);
 PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
 #endif // _MSC_VER
 
+#ifdef DEBUG
+#undef DEBUG
+#endif
 #if 0
+#define DEBUG 1
 extern void kspDBG(const char *format, ...)
 {
 #ifdef DEBUG
@@ -52,6 +56,18 @@ extern void kspDBG(const char *format, ...)
 #endif /* DEBUG */
 }
 #endif
+
+#undef DEBUG
+//#define DEBUG 1
+#ifdef DEBUG
+#define kspDBG(format, arg...) \
+elog(NOTICE, format , ## arg)
+#else
+#define kspDBG(format, arg...) do { ; } while (0)
+#endif
+
+
+
 
 #ifdef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
