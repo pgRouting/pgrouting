@@ -220,6 +220,7 @@ kshortest_path(PG_FUNCTION_ARGS)
 				  &path, 
 				  &path_count);
       toDel=path;
+#if 0
 #ifdef DEBUG
       if (ret >= 0) 
         {
@@ -234,7 +235,8 @@ kshortest_path(PG_FUNCTION_ARGS)
             }
         }
 #endif
-     kspDBG("Path-Cnt  %i ", path_count);
+#endif 
+     kspDBG("Total number of tuples to be returned %i ", path_count);
 	
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;
@@ -399,51 +401,18 @@ int compute_kshortest_path(char* sql, int start_vertex,
  
       
   kspDBG("Total %i tuples in query", total_tuples);
-#if 0
-  for(z=0; z<total_tuples; z++)
-  {
-    //check if edges[] contains source and target
-    if(edges[z].source == start_vertex || edges[z].target == start_vertex)
-      ++s_count;
-    if(edges[z].source == end_vertex || edges[z].target == end_vertex)
-      ++t_count;
-
-    kspDBG("%i - %i", edges[z].source, edges[z].target);      
-  }
-#endif
-  kspDBG("Total %i tuples", total_tuples);
   
-#if 0
-  if(s_count == 0)
-  {
-    elog(ERROR, "Start vertex was not found.");
-    return -1;
-  }
-      
-  if(t_count == 0)
-  {
-    elog(ERROR, "Target vertex was not found.");
-    return -1;
-  }
-
-  if(start_vertex == end_vertex)
-  {
-    elog(ERROR, "Source and Target vertices is the same. (Does Not solve circular).");
-    return -1;
-  }
-#endif
-
   kspDBG("Calling doKpaths\n");
         
-  kspDBG("total tuples %i\n",total_tuples);
   ret = doKpaths(edges, total_tuples,
 			start_vertex, end_vertex,
                        no_paths, has_reverse_cost,
                        ksp_path, path_count, &err_msg);
   kspDBG("total paths found %i\n",*path_count);
+  kspDBG("Exist Status = %i\n", ret);
+  kspDBG("Returned message = %s\n", err_msg);
 
-  kspDBG("returned value = %i\n", ret);
-
+  
   
   if (ret < 0)
     {

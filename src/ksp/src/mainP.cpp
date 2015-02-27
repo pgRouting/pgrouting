@@ -62,7 +62,23 @@ void yenTest (int testNumb, int from, int to, int k, const Graph &graph) {
 
 void testYenAlg()
 {
-	//Graph my_graph("../data/test_6_2");
+        std::string fileName("../devdata/sampledata.data");
+	Graph my_graph(fileName);
+        yenTest(1, 1,2, 1, my_graph);
+        yenTest(2, 1,2, 2, my_graph);
+        yenTest(2, 1,2, 100, my_graph);
+        yenTest(2, 1,6, 1, my_graph);
+        yenTest(2, 1,6, 2, my_graph);
+        yenTest(2, 1,6, 3, my_graph);
+        yenTest(2, 1,6, 100, my_graph);
+        yenTest(3, 2,6, 1, my_graph);
+        yenTest(3, 2,6, 2, my_graph);
+        yenTest(3, 2,6, 3, my_graph);
+        yenTest(4, 2,16, 1, my_graph);
+}
+
+void testYenAlgParallel()
+{
         std::string fileName("../devdata/issue285.data");
 	Graph my_graph(fileName);
         yenTest(1, 2,3, 2, my_graph);
@@ -81,6 +97,7 @@ int main(...)
 {
 	std::cout << "Welcome to the real world!" << std::endl;
 
-	//testDijkstraGraph();
+	// testDijkstraGraph();
 	testYenAlg();
+	testYenAlgParallel();
 }

@@ -85,14 +85,15 @@ void YenTopKShortestPathsAlg::next() {
             spurPath = DijkstraShortestPathAlg::Dijkstra(spurNode , targetID, true);
             DijkstraShortestPathAlg::clear();
 
+            if (spurPath.size() > 0) {
+                // Entire path is made up of the root path and spur path.
+                rootPath.append(spurPath);  // this should also update the cost of the totalPath
 
-            // Entire path is made up of the root path and spur path.
-            rootPath.append(spurPath);  // this should also update the cost of the totalPath
-
-            // Add the potential k-shortest path to the heap.
-            if (rootPath.FromTo(sourceID, targetID)) {
+                // Add the potential k-shortest path to the heap.
+                if (rootPath.FromTo(sourceID, targetID)) {
                    m_Heap.push_back(rootPath);
-            }
+                }
+           }
         }
 }
 
@@ -105,9 +106,10 @@ bool OrderByCost (const BasePath &p1,const BasePath &p2) {
 */
 void YenTopKShortestPathsAlg::get_shortest_paths(POS source_id, POS target_id, int K) {
           _init();  // get the best using Dijkstra
+          if (m_ResultList.size() == 0) return; //no path found
           while ( m_ResultList.size() < (unsigned int) K ) {
                 next();
-                if ( m_Heap.empty() ) break;
+                if ( m_Heap.size() == 0 ) break;
 // TODO(Vicky): do the sorting
 //                std::sort( m_Heap.begin() , m_Heap.end() );  // , OrderByCost );
                 m_ResultList.push_back(m_Heap[0]);
