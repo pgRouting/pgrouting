@@ -68,7 +68,7 @@ ksp_path_element_t * get_ksp_memory(int, ksp_path_element_t *path);
 
 
 
-extern void kspDBG(const char* format, ...);
+//extern void kspDBG(const char* format, ...);
 #ifdef __cplusplus
 }
 #endif

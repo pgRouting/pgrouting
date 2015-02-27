@@ -37,11 +37,7 @@ Datum kshortest_path(PG_FUNCTION_ARGS);
 PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
 #endif // _MSC_VER
 
-#ifdef DEBUG
-#undef DEBUG
-#endif
-#if 0
-#define DEBUG 1
+#if 0  // change to 1 to leave it as a function (not working)
 extern void kspDBG(const char *format, ...)
 {
 #ifdef DEBUG
@@ -55,11 +51,11 @@ extern void kspDBG(const char *format, ...)
 	;
 #endif /* DEBUG */
 }
+
 #endif
 
-#undef DEBUG
 //#define DEBUG 1
-#ifdef DEBUG
+#ifdef DEBUG 
 #define kspDBG(format, arg...) \
 elog(NOTICE, format , ## arg)
 #else
@@ -334,7 +330,7 @@ int compute_kshortest_path(char* sql, int start_vertex,
   register int z;
 
 
-  kspDBG("start kshortest_path %s\n",sql);
+  kspDBG("Starting kshortest_path %s\n",sql);
         
   SPIcode = SPI_connect();
   if (SPIcode  != SPI_OK_CONNECT)
@@ -402,8 +398,8 @@ int compute_kshortest_path(char* sql, int start_vertex,
 
  
       
-  kspDBG("Total %i tuples", total_tuples);
-
+  kspDBG("Total %i tuples in query", total_tuples);
+#if 0
   for(z=0; z<total_tuples; z++)
   {
     //check if edges[] contains source and target
@@ -414,10 +410,10 @@ int compute_kshortest_path(char* sql, int start_vertex,
 
     kspDBG("%i - %i", edges[z].source, edges[z].target);      
   }
-
+#endif
   kspDBG("Total %i tuples", total_tuples);
   
-
+#if 0
   if(s_count == 0)
   {
     elog(ERROR, "Start vertex was not found.");
@@ -429,24 +425,31 @@ int compute_kshortest_path(char* sql, int start_vertex,
     elog(ERROR, "Target vertex was not found.");
     return -1;
   }
-  
+
+  if(start_vertex == end_vertex)
+  {
+    elog(ERROR, "Source and Target vertices is the same. (Does Not solve circular).");
+    return -1;
+  }
+#endif
+
   kspDBG("Calling doKpaths\n");
         
-  kspDBG("SIZE %i\n",total_tuples);
+  kspDBG("total tuples %i\n",total_tuples);
   ret = doKpaths(edges, total_tuples,
 			start_vertex, end_vertex,
                        no_paths, has_reverse_cost,
                        ksp_path, path_count, &err_msg);
-  kspDBG("SIZE %i\n",*path_count);
+  kspDBG("total paths found %i\n",*path_count);
 
-  kspDBG("ret = %i\n", ret);
+  kspDBG("returned value = %i\n", ret);
 
   
   if (ret < 0)
     {
       //elog(ERROR, "Error computing path: %s", err_msg);
       ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED), 
-        errmsg("Error computing path: %s", err_msg)));
+      errmsg("Error computing path: %s", err_msg)));
     } 
     
   return ksp_finish(SPIcode, ret);

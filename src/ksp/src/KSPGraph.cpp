@@ -21,29 +21,6 @@ extern "C" {
     extern void DBG(const char *format, ...);
 }
 
-#undef DEBUG
-#define DEBUG 1
-
-#ifndef _MSC_VER
-#ifdef DEBUG
-#define DBG(format, arg...)                     \
-    elog(NOTICE, format , ## arg)
-#else
-#define DBG(format, arg...) do { ; } while (0)
-#endif
-#else  // _MSC_VER
-extern void DBG(const char *format, ...) {
-#ifdef DEBUG
-        va_list ap;
-        char msg[256];
-        va_start(ap, format);
-        _vsprintf_p(msg, 256, format, ap);
-        va_end(ap);
-        elog(NOTICE, msg);
-#endif
-}
-#endif  // _MSC_VER
-
 KSPGraph::KSPGraph(void) {}
 KSPGraph::~KSPGraph(void) {}
 KSPGraph::KSPGraph(const Graph& g):Graph(g) {}

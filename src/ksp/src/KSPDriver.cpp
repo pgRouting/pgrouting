@@ -11,7 +11,15 @@ static  void dpPrint(const KSPGraph &theGraph,
                      const BasePath &thePath,
                      ksp_path_element_t *path,
                      int &sequence, int route_id);
-
+static  ksp_path_element_t * noPathFound(int start_id) {
+        ksp_path_element_t *no_path;
+        no_path = get_ksp_memory(1, no_path);
+        no_path[0].route_id  = 0;
+        no_path[0].vertex_id = start_id;
+        no_path[0].cost = 0;
+        no_path[0].edge_id = -1;
+        return no_path;
+}
 
 int  doKpaths(ksp_edge_t  * edges, int total_tuples,
                        int  start_vertex, int  end_vertex,
@@ -23,21 +31,30 @@ int  doKpaths(ksp_edge_t  * edges, int total_tuples,
         theGraph.StartLoad();
         theGraph.AddData(edges, total_tuples, has_reverse_cost);
         theGraph.EndLoad();
+        (*path_count) = 0;
 
-        POS start_id = theGraph.find_vertex(start_vertex);
-        POS end_id = theGraph.find_vertex(start_vertex);
 
-        if ( !theGraph.checkVertexIDs(start_id, start_vertex)
-            || !theGraph.checkVertexIDs(end_id, end_vertex)) {
-             // TODO(vicky):  insert a message that says could not find the start or the ending vertex
+        if ( !theGraph.exist_vertex(start_vertex)) {
+            *err_msg = strdup( "Starting vertex not found on any edge" );
+            (*path_count) = 1;
+            *path = noPathFound(start_vertex);
             return 0;
         }
 
+        if (!theGraph.exist_vertex(end_vertex)) {
+            *err_msg = strdup( "Ending vertex not found" );
+            return -1;
+        }
+
+        if (start_vertex == end_vertex) {
+            *err_msg = strdup( "Starting and Ending vertices are the same" );
+            return -1;
+        }
 
         YenTopKShortestPathsAlg yenGraph(theGraph);
 
         std::deque<BasePath> paths;
-        paths = yenGraph.Yen(start_id, end_id, no_paths);
+        paths = yenGraph.Yen(start_vertex, end_vertex, no_paths);
 
 
 
