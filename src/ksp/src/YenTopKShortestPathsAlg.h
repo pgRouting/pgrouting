@@ -35,6 +35,7 @@ class YenTopKShortestPathsAlg: public DijkstraShortestPathAlg {
         std::deque<BasePath> Yen(int source, int target, int numb_paths);
         void clear();
  private:
+        void semiOrderHeap();
         void get_shortest_paths(POS pSource, POS pTarget, int top_k);
         BasePath get_shortest_path(POS pSource, POS pTarget);
         void _init();

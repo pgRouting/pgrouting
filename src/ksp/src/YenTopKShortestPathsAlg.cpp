@@ -12,6 +12,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <deque>
+#include <algorithm>
 #include "GraphElements.h"
 #include "DijkstraShortestPathAlg.h"
 #include "YenTopKShortestPathsAlg.h"
@@ -99,13 +100,15 @@ void YenTopKShortestPathsAlg::next() {
         }
 }
 
-/* TODO(Vicky): do the sorting
-bool OrderByCost (const BasePath &p1,const BasePath &p2) {
-       return p1.Weight() < p2.Weight()
-              || p1.size() < p2.size()
-              || p1.EdgesLessComapre(p2);
+void YenTopKShortestPathsAlg::semiOrderHeap() {
+   if (m_Heap.size()==0) return;
+   for (POS i = m_Heap.size()-1; i > 0 ; i--) {
+       if ( m_Heap[i].Weight() <  m_Heap[i-1].Weight() )
+           std::swap(m_Heap[i],  m_Heap[i-1]);
+   }           
+
 }
-*/
+
 void YenTopKShortestPathsAlg::get_shortest_paths(POS source_id, POS target_id, int K) {
           _init();  // get the best using Dijkstra
           if (m_ResultList.size() == 0) return; //no path found
@@ -113,7 +116,7 @@ void YenTopKShortestPathsAlg::get_shortest_paths(POS source_id, POS target_id, i
                 next();
                 if ( m_Heap.size() == 0 ) break;
 // TODO(Vicky): do the sorting
-//                std::sort( m_Heap.begin() , m_Heap.end() );  // , OrderByCost );
+                semiOrderHeap();
                 m_ResultList.push_back(m_Heap[0]);
                 m_Heap.erase(m_Heap.begin());
           }
