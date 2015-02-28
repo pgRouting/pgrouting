@@ -74,6 +74,7 @@ int  doKpaths(ksp_edge_t  * edges, int total_tuples,
         for (unsigned int i = 0; i < paths.size(); ++i ) {
            if (paths[i].size() > 0)  // don't count empty routes
               count += paths[i].size() + 1;   // add final vertex
+#if 0
            for (unsigned int j = 0; j < paths[i].size(); ++j ) {
              log << seq << "\t" <<   paths[i][j].getStart() << "\toriginal" << yenGraph.getVertexOriginalID(paths[i][j].getStart()) 
                  << "\t" << paths[i][j].getOriginalID() 
@@ -84,9 +85,12 @@ int  doKpaths(ksp_edge_t  * edges, int total_tuples,
            log << seq << "\t" <<  paths[i][ paths[i].size()-1 ].getEnd() << "\toriginal" << yenGraph.getVertexOriginalID(paths[i][ paths[i].size()-1 ].getEnd())
                << "\t0\t -1\n";
            seq++;
+#endif
         }
         log << "NOTICE Count: " << count << "\n";
 #if 0
+// move around this lines to force a return with an empty path and the logging messages
+// cool for debugging
 *err_msg = strdup( log.str().c_str());
 (*path_count) = 1;
 *path = noPathFound(start_vertex);
