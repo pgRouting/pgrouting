@@ -64,6 +64,7 @@ void testYenAlg()
 {
         std::string fileName("../devdata/sampledata.data");
 	Graph my_graph(fileName);
+#if 0
         yenTest(1, 1,2, 1, my_graph);
         yenTest(2, 1,2, 2, my_graph);
         yenTest(2, 1,2, 100, my_graph);
@@ -75,6 +76,8 @@ void testYenAlg()
         yenTest(3, 2,6, 2, my_graph);
         yenTest(3, 2,6, 3, my_graph);
         yenTest(4, 2,16, 1, my_graph);
+#endif
+        yenTest(3, 2,6, 3, my_graph);
 }
 
 void testYenAlgParallel()
@@ -99,5 +102,5 @@ int main(...)
 
 	// testDijkstraGraph();
 	testYenAlg();
-	testYenAlgParallel();
+	//testYenAlgParallel();
 }

@@ -57,10 +57,6 @@ int  doKpaths(ksp_edge_t  * edges, int total_tuples,
         log << "Step 3: Getting the paths \n";
         std::deque<BasePath> paths;
         paths = yenGraph.Yen(start_vertex, end_vertex, no_paths);
-*err_msg = strdup( log.str().c_str());
-(*path_count) = 1;
-*path = noPathFound(start_vertex);
-return 0;
 
         if (paths.size() == 0) {
             *err_msg = strdup( "No path found between Starting and Ending vertices" );
@@ -79,21 +75,23 @@ return 0;
            if (paths[i].size() > 0)  // don't count empty routes
               count += paths[i].size() + 1;   // add final vertex
            for (unsigned int j = 0; j < paths[i].size(); ++j ) {
-             log << seq << "\t" <<   paths[i][j]->getStart() << "\t" << yenGraph.getVertex(paths[i][j]->getStart()) 
-                 << "\t" << paths[i][j]->getID() 
-                 << "\t" <<  paths[i][j]->Weight() << "\n";
+             log << seq << "\t" <<   paths[i][j].getStart() << "\toriginal" << yenGraph.getVertexOriginalID(paths[i][j].getStart()) 
+                 << "\t" << paths[i][j].getOriginalID() 
+                 << "\t" <<  paths[i][j].Weight() << "\n";
  
              seq ++;
            }
-           log << seq << "\t" <<  paths[i][ paths[i].size()-1 ]->getEnd() << "\t0\t -1\n";
+           log << seq << "\t" <<  paths[i][ paths[i].size()-1 ].getEnd() << "\toriginal" << yenGraph.getVertexOriginalID(paths[i][ paths[i].size()-1 ].getEnd())
+               << "\t0\t -1\n";
            seq++;
         }
         log << "Count: " << count << "\n";
+#if 0
 *err_msg = strdup( log.str().c_str());
 (*path_count) = 1;
 *path = noPathFound(start_vertex);
 return 0;
-
+#endif
         // get the space required to store all the paths
         ksp_path_element_t *ksp_path;
         ksp_path = 0;
@@ -130,11 +128,11 @@ static  void dpPrint(const KSPGraph &theGraph,
         double cost;
 
         for (unsigned int i = 0; i < thePath.size(); i++) {
-                edgeId = thePath.getID(i);
-                nodeId = theGraph.getVertex(thePath[i]->getStart());
-                cost = thePath[i]->Weight();
+                edgeId = thePath.getOriginalID(i);
+                nodeId = theGraph.getVertexOriginalID(thePath[i].getStart());
+                cost = thePath[i].Weight();
                 if (i == thePath.size()-1)
-                      lastNodeId = theGraph.getVertex(thePath[i]->getEnd());
+                      lastNodeId = theGraph.getVertexOriginalID(thePath[i].getEnd());
 
                path[sequence].route_id = route_id;
                path[sequence].vertex_id = nodeId;

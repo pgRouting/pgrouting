@@ -43,11 +43,11 @@ class Graph {
      void insertEdge(int source, int target, double weight);
 
      void get_adjacent_edges(POS vertex_id, std::deque< POS> &edges_set) const;
-     void get_precedent_edges(POS vertex_id, std::deque< BaseEdge*> &edges_set);
+     void get_precedent_edges(POS vertex_id, std::deque< BaseEdge> &edges_set);
 
      POS find_vertex(int vertex_id) const;
      POS exist_vertex(int vertex_id) const;
-     int getVertex(POS vertex_id) const {return m_vtVertices[vertex_id].getID();}
+     int getVertexOriginalID(POS vertex_id) const {return m_vtVertices[vertex_id].getNID();}
      bool checkVertexIDs(POS nodeNID, int nodeID);
 
      void remove_edge(POS edge_id);

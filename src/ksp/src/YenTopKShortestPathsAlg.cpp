@@ -47,8 +47,8 @@ std::deque<BasePath> YenTopKShortestPathsAlg::Yen(int  source, int  sink, int K)
 
 
 BasePath YenTopKShortestPathsAlg::get_shortest_path(POS  sourcePos, POS  targetPos) {
-        int source_id = m_vtVertices[ sourcePos ].getID();
-        int target_id = m_vtVertices[ targetPos ].getID();
+        int source_id = m_vtVertices[ sourcePos ].getOriginalID();
+        int target_id = m_vtVertices[ targetPos ].getOriginalID();
         return Dijkstra(source_id,  target_id);
 }
 
@@ -57,12 +57,11 @@ void YenTopKShortestPathsAlg::next() {
         BasePath curr_result_path = m_ResultList[ currPathId ];
 
 
-        BaseEdge* spurEdge;
         POS spurNode;
         BasePath rootPath;
         for (POS i = 0; i < curr_result_path.size(); ++i) {
-            spurEdge = curr_result_path[i];
-            spurNode = spurEdge->getStart();
+            BaseEdge spurEdge (curr_result_path[i]);
+            spurNode = spurEdge.getStart();
             curr_result_path.subPath(rootPath, i);
 
 
@@ -71,11 +70,14 @@ void YenTopKShortestPathsAlg::next() {
                //     Remove the links that are part of the previous shortest paths which share the same root path.
                //     remove p.edge(i, i + 1) from Graph;
 
+            POS edgeToBeRemoved;
             for (POS j=0; j < m_ResultList.size(); j++) {
                BasePath workingPath = m_ResultList[j];  // TODO(vicky): can be placed inside the condition
-                if (rootPath.isEqual(workingPath)) {
-                    int edgeToBeRemoved = workingPath[i]->getNID();
-                    remove_edge(edgeToBeRemoved);
+               if (rootPath.isEqual(workingPath)) {
+                   if ( i < workingPath.size()) { 
+                      edgeToBeRemoved = workingPath[i].getNID();
+                      remove_edge(edgeToBeRemoved);
+                   }
                }
             }
 

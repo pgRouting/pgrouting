@@ -421,6 +421,7 @@ int compute_kshortest_path(char* sql, int start_vertex,
       errmsg("Error computing path: %s", err_msg)));
     } 
     
+  pfree(edges);
   return ksp_finish(SPIcode, ret);
 }
 

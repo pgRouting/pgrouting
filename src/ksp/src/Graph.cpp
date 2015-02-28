@@ -87,7 +87,7 @@ POS  Graph::find_vertex(int vertex_id) const {
     POS i;
     if (m_vtVertices.size() == 0) return 0;
     for (i = 0; i < m_vtVertices.size()
-          && m_vtVertices[i].getID() != vertex_id; i++) {}
+          && m_vtVertices[i].getOriginalID() != vertex_id; i++) {}
     if (i >= m_vtVertices.size()) return 0;
     return i;
 }
@@ -95,13 +95,13 @@ POS  Graph::find_vertex(int vertex_id) const {
 POS  Graph::exist_vertex(int vertex_id) const {
     POS i;
     if (m_vtVertices.size() == 0) return false;
-    for (i=0; i < m_vtVertices.size() && m_vtVertices[i].getID() != vertex_id; i++) {}
+    for (i=0; i < m_vtVertices.size() && m_vtVertices[i].getOriginalID() != vertex_id; i++) {}
     if (i >= m_vtVertices.size()) return false;
     return true;
 }
 bool  Graph::checkVertexIDs(POS nodeNID, int nodeID) {
     if (!(nodeNID < m_vtVertices.size())) return false;
-    if (m_vtVertices[nodeNID].getID() != nodeID) return false;
+    if (m_vtVertices[nodeNID].getOriginalID() != nodeID) return false;
     return true;
 }
 
@@ -112,7 +112,7 @@ void  Graph::remove_edge(POS edge_id) {
 void  Graph::removeNodes(const BasePath &path) {
     if (path.size() == 0) return;
     for (POS i = 0 ; i  <  path.size() ; i++) {
-    m_vtVertices[ path[i]->getStart() ].remove();
+    m_vtVertices[ path[i].getStart() ].remove();
     }
 }
 
@@ -133,13 +133,13 @@ void Graph::get_adjacent_edges(POS vertex_id, std::deque<POS> &edges_set) const 
         }
 }
 
-void Graph::get_precedent_edges(POS vertex_id, std::deque<BaseEdge*> &edges_set) {
+void Graph::get_precedent_edges(POS vertex_id, std::deque<BaseEdge> &edges_set) {
         if (m_vtVertices[vertex_id].isActive()) {
            std::deque<POS> FanIn = m_vtVertices[vertex_id].getFanIn();
            for (POS i = 0; i < FanIn.size(); i++) {
                if (m_vtVertices[  m_vtEdges[ FanIn[i] ].getStart() ].isActive()
                    &&  m_vtEdges[ FanIn[i] ].isActive())
-                       edges_set.push_back(&m_vtEdges[ FanIn[i] ]);
+                       edges_set.push_back(m_vtEdges[ FanIn[i] ]);
            }
         }
 }
@@ -168,14 +168,14 @@ void Graph::PrintPath(std::ostream &out_stream, const BasePath &path, int startN
     }
 
     for (POS i=0 ; i < path.size() ; i++) {
-        BaseEdge edge = (*path[i]);
-        int start = m_vtVertices[ edge.getStart() ].getID();
+        BaseEdge edge = path[i];
+        int start = m_vtVertices[ edge.getStart() ].getOriginalID();
         double cost  = edge.Weight();
-        int edgeId = edge.getID();
+        int edgeId = edge.getOriginalID();
         out_stream << "Route " << i<< "\n";
         out_stream << start << "\t" << edgeId << "\t" << cost << "\n";
     }
-    out_stream<< m_vtVertices[ path[path.size()-1 ]->getEnd() ].getID() << "\t-1 \t0\n";
+    out_stream<< m_vtVertices[ path[path.size()-1 ].getEnd() ].getOriginalID() << "\t-1 \t0\n";
 }
 
 ///////////////////////////////////////////////////////////////////////////////

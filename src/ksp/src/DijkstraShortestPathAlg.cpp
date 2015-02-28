@@ -36,38 +36,36 @@ BasePath DijkstraShortestPathAlg::get_shortest_path(POS source_id, POS sink_id) 
         m_CandidateVertices.clear();
 
         determine_shortest_paths(source_id, sink_id);
-
-        std::deque<BaseEdge*> edges_list;
+//        std::deque<BaseEdge> edges_list;
 
         double weight = NodeWeight(sink_id);
 
 
         POS curr_vertex;
+        BaseEdge *edge_pt;
         if (weight < Graph::DISCONNECT) {
                curr_vertex = sink_id;
-               BaseEdge* edge_pt;
                do {
-                   edge_pt = bestEdge(curr_vertex);
-                   if (!edge_pt) break;
-                  path.push_front(edge_pt);
-                   curr_vertex =  edge_pt->getStart();
+                  edge_pt = bestEdge(curr_vertex);
+                  if (!edge_pt) break;
+                  path.push_front(*edge_pt);
+                  curr_vertex =  edge_pt->getStart();
                } while (curr_vertex != source_id);
         }
         return path;
 }
 
 BaseEdge* DijkstraShortestPathAlg::bestEdge(POS sink_id) {
-        std::deque<BaseEdge*> incomming_edges_list;
+        std::deque<BaseEdge> incomming_edges_list;
         double curr_dist = NodeWeight(sink_id);
         get_precedent_edges(sink_id, incomming_edges_list);
 
-        BaseEdge *edge_pt;
         double prev_dist;
         for (POS i = 0; i < incomming_edges_list.size(); i++) {
-                edge_pt = incomming_edges_list[i];
-                prev_dist = NodeWeight(edge_pt->getStart());
-                if (curr_dist == prev_dist + edge_pt->Weight())
-                    return edge_pt;
+                BaseEdge edge = incomming_edges_list[i];
+                prev_dist = NodeWeight(edge.getStart());
+                if (curr_dist == prev_dist + edge.Weight())
+                    return &m_vtEdges[edge.getNID()];
         }
         return NULL;
 }
