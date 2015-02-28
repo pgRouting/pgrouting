@@ -408,7 +408,7 @@ int compute_kshortest_path(char* sql, int start_vertex,
 			start_vertex, end_vertex,
                        no_paths, has_reverse_cost,
                        ksp_path, path_count, &err_msg);
-  kspDBG("total paths found %i\n",*path_count);
+  kspDBG("total tuples found %i\n",*path_count);
   kspDBG("Exist Status = %i\n", ret);
   kspDBG("Returned message = %s\n", err_msg);
 

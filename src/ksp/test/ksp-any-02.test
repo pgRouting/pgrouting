@@ -1,14 +1,48 @@
 --
--- Dump a 15 fastest routes between nodes 4 and 5 by total route length
+-- tests with Sample Data in Documentation
 --
-select ksp.id1, round(sum(st_length(n.the_geom))::numeric, 2) as len
-  from pgr_ksp(
-    'select source, target, cost, reverse_cost, id from network',
-    4,
-    5,
-    15,
-    'f') ksp,
-    network n
- where ksp.id3=n.id
- group by id1
- order by id1;
+
+
+
+
+SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
+    FROM pgr_ksp(
+        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+        1, 2, 1, true
+);
+
+SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
+    FROM pgr_ksp(
+        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+        1, 2, 2, true
+);
+
+SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
+    FROM pgr_ksp(
+        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+        1, 2, 100, true
+);
+
+SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
+    FROM pgr_ksp(
+        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+        1, 6, 1, true
+);
+
+SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
+    FROM pgr_ksp(
+        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+        1, 6, 2, true
+);
+SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
+    FROM pgr_ksp(
+        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+        1, 6, 4, true
+);
+
+SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
+    FROM pgr_ksp(
+        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+        2, 6, 100, true
+);
+

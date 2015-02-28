@@ -1,0 +1,171 @@
+ NOTICE:  Starting kshortest_path SELECT id, source, target, cost, reverse_cost FROM parallel
+
+ NOTICE:  columns: id 1 source 2 target 3 cost 4.000000
+ NOTICE:  columns: reverse_cost cost 5.000000
+ NOTICE:  Total 5 tuples in query
+ NOTICE:  Calling doKpaths
+
+ NOTICE:  total tuples found 2
+
+ NOTICE:  Exist Status = 1
+
+ NOTICE:  Returned message = OK
+
+ NOTICE:  Total number of tuples to be returned 2 
+0|0|1|2|2
+1|0|2|-1|0
+ ERROR:  syntax error at or near "ELECT"
+LINE 1: ELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost
+        ^
+ NOTICE:  Starting kshortest_path SELECT id, source, target, cost, reverse_cost FROM parallel
+
+ NOTICE:  columns: id 1 source 2 target 3 cost 4.000000
+ NOTICE:  columns: reverse_cost cost 5.000000
+ NOTICE:  Total 5 tuples in query
+ NOTICE:  Calling doKpaths
+
+ NOTICE:  total tuples found 6
+
+ NOTICE:  Exist Status = 1
+
+ NOTICE:  Returned message = OK
+
+ NOTICE:  Total number of tuples to be returned 6 
+0|0|1|2|2
+1|0|2|-1|0
+2|1|1|3|2.82842707633972
+3|1|2|-1|0
+4|2|1|4|4
+5|2|2|-1|0
+ NOTICE:  Starting kshortest_path SELECT id, source, target, cost, reverse_cost FROM parallel
+
+ NOTICE:  columns: id 1 source 2 target 3 cost 4.000000
+ NOTICE:  columns: reverse_cost cost 5.000000
+ NOTICE:  Total 5 tuples in query
+ NOTICE:  Calling doKpaths
+
+ NOTICE:  total tuples found 6
+
+ NOTICE:  Exist Status = 1
+
+ NOTICE:  Returned message = OK
+
+ NOTICE:  Total number of tuples to be returned 6 
+0|0|1|2|2
+1|0|2|-1|0
+2|1|1|3|2.82842707633972
+3|1|2|-1|0
+4|2|1|4|4
+5|2|2|-1|0
+ NOTICE:  Starting kshortest_path SELECT id, source, target, cost, reverse_cost FROM parallel
+
+ NOTICE:  columns: id 1 source 2 target 3 cost 4.000000
+ NOTICE:  columns: reverse_cost cost 5.000000
+ NOTICE:  Total 5 tuples in query
+ NOTICE:  Calling doKpaths
+
+ NOTICE:  total tuples found 6
+
+ NOTICE:  Exist Status = 1
+
+ NOTICE:  Returned message = OK
+
+ NOTICE:  Total number of tuples to be returned 6 
+0|0|1|2|2
+1|0|2|-1|0
+2|1|1|3|2.82842707633972
+3|1|2|-1|0
+4|2|1|4|4
+5|2|2|-1|0
+ NOTICE:  Starting kshortest_path SELECT id, source, target, cost, reverse_cost FROM parallel
+
+ NOTICE:  columns: id 1 source 2 target 3 cost 4.000000
+ NOTICE:  columns: reverse_cost cost 5.000000
+ NOTICE:  Total 5 tuples in query
+ NOTICE:  Calling doKpaths
+
+ NOTICE:  total tuples found 4
+
+ NOTICE:  Exist Status = 1
+
+ NOTICE:  Returned message = OK
+
+ NOTICE:  Total number of tuples to be returned 4 
+0|0|0|1|1
+1|0|1|2|2
+2|0|2|5|1
+3|0|3|-1|0
+ NOTICE:  Starting kshortest_path SELECT id, source, target, cost, reverse_cost FROM parallel
+
+ NOTICE:  columns: id 1 source 2 target 3 cost 4.000000
+ NOTICE:  columns: reverse_cost cost 5.000000
+ NOTICE:  Total 5 tuples in query
+ NOTICE:  Calling doKpaths
+
+ NOTICE:  total tuples found 8
+
+ NOTICE:  Exist Status = 1
+
+ NOTICE:  Returned message = OK
+
+ NOTICE:  Total number of tuples to be returned 8 
+0|0|0|1|1
+1|0|1|2|2
+2|0|2|5|1
+3|0|3|-1|0
+4|1|0|1|1
+5|1|1|3|2.82842707633972
+6|1|2|5|1
+7|1|3|-1|0
+ NOTICE:  Starting kshortest_path SELECT id, source, target, cost, reverse_cost FROM parallel
+
+ NOTICE:  columns: id 1 source 2 target 3 cost 4.000000
+ NOTICE:  columns: reverse_cost cost 5.000000
+ NOTICE:  Total 5 tuples in query
+ NOTICE:  Calling doKpaths
+
+ NOTICE:  total tuples found 12
+
+ NOTICE:  Exist Status = 1
+
+ NOTICE:  Returned message = OK
+
+ NOTICE:  Total number of tuples to be returned 12 
+0|0|0|1|1
+1|0|1|2|2
+2|0|2|5|1
+3|0|3|-1|0
+4|1|0|1|1
+5|1|1|3|2.82842707633972
+6|1|2|5|1
+7|1|3|-1|0
+8|2|0|1|1
+9|2|1|4|4
+10|2|2|5|1
+11|2|3|-1|0
+ NOTICE:  Starting kshortest_path SELECT id, source, target, cost, reverse_cost FROM parallel
+
+ NOTICE:  columns: id 1 source 2 target 3 cost 4.000000
+ NOTICE:  columns: reverse_cost cost 5.000000
+ NOTICE:  Total 5 tuples in query
+ NOTICE:  Calling doKpaths
+
+ NOTICE:  total tuples found 12
+
+ NOTICE:  Exist Status = 1
+
+ NOTICE:  Returned message = OK
+
+ NOTICE:  Total number of tuples to be returned 12 
+0|0|0|1|1
+1|0|1|2|2
+2|0|2|5|1
+3|0|3|-1|0
+4|1|0|1|1
+5|1|1|3|2.82842707633972
+6|1|2|5|1
+7|1|3|-1|0
+8|2|0|1|1
+9|2|1|4|4
+10|2|2|5|1
+11|2|3|-1|0

@@ -22,44 +22,44 @@ int  doKpaths(ksp_edge_t  * edges, int total_tuples,
         KSPGraph theGraph = KSPGraph();
         std::ostringstream log;
 
-        log << "Step 0: Loading the graph\n";
+        log << "NOTICE: Step 0: Loading the graph\n";
         theGraph.StartLoad();
         theGraph.AddData(edges, total_tuples, has_reverse_cost);
         theGraph.EndLoad();
         (*path_count) = 0;
 
-        log << "Step 1: checking Sarting and Ending Vertex\n";
+        log << "NOTICE: Step 1: checking Sarting and Ending Vertex\n";
 
         if ( !theGraph.exist_vertex(start_vertex)) {
-            *err_msg = strdup( "Starting vertex not found on any edge" );
+            *err_msg = strdup( "NOTICE: Starting vertex not found on any edge" );
             (*path_count) = 1;
             *path = noPathFound(start_vertex);
             return 0;
         }
 
         if (!theGraph.exist_vertex(end_vertex)) {
-            *err_msg = strdup( "Ending vertex not found on any edge" );
+            *err_msg = strdup( "NOTICE: Ending vertex not found on any edge" );
             (*path_count) = 1;
             *path = noPathFound(start_vertex);
             return 0;
         }
 
         if (start_vertex == end_vertex) {
-            *err_msg = strdup( "Starting and Ending vertices are the same" );
+            *err_msg = strdup( "NOTICE: Starting and Ending vertices are the same" );
             (*path_count) = 1;
             *path = noPathFound(start_vertex);
             return 0;
         }
-        log << "Step 2: Starting Yen graph \n";
+        log << "NOTICE: Step 2: Starting Yen graph \n";
 
         YenTopKShortestPathsAlg yenGraph(theGraph);
 
-        log << "Step 3: Getting the paths \n";
+        log << "NOTICE: Step 3: Getting the paths \n";
         std::deque<BasePath> paths;
         paths = yenGraph.Yen(start_vertex, end_vertex, no_paths);
 
         if (paths.size() == 0) {
-            *err_msg = strdup( "No path found between Starting and Ending vertices" );
+            *err_msg = strdup( "NOTICE: No path found between Starting and Ending vertices" );
             (*path_count) = 1;
             *path = noPathFound(start_vertex);
             return 0;
@@ -68,7 +68,7 @@ int  doKpaths(ksp_edge_t  * edges, int total_tuples,
 
 
 
-        log << "Step 3: Calculating the number of tuples \n";
+        log << "NOTICE: Step 4: Calculating the number of tuples \n";
         int count = 0;
         int seq = 0;
         for (unsigned int i = 0; i < paths.size(); ++i ) {
@@ -85,7 +85,7 @@ int  doKpaths(ksp_edge_t  * edges, int total_tuples,
                << "\t0\t -1\n";
            seq++;
         }
-        log << "Count: " << count << "\n";
+        log << "NOTICE Count: " << count << "\n";
 #if 0
 *err_msg = strdup( log.str().c_str());
 (*path_count) = 1;
@@ -103,13 +103,13 @@ return 0;
                dpPrint(theGraph, paths[route_id], ksp_path, sequence, route_id);
         }
 
-        log << "Sequence: " << sequence << "\n";
+        log << "NOTICE Sequence: " << sequence << "\n";
         if (count != sequence) {
-            log << "Internal count and real count are different. \nThis should not happen: Please report in GitHub: pgrouting issues.";
+            log << "ERROR: Internal count and real count are different. \nERROR: This should not happen: Please report in GitHub: pgrouting issues.";
             *err_msg = strdup( log.str().c_str());
             return -1;
         }
-        #if 0
+        #if 1
         *err_msg = strdup("OK");
         #else
         *err_msg = strdup( log.str().c_str());

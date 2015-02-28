@@ -1,7 +1,5 @@
 --
--- Generate 15 shortest paths between nodes 4 and 5
---
--- List by links
+-- Tests with original data
 --
 select *
   from pgr_ksp(

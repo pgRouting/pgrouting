@@ -136,6 +136,7 @@ SELECT pgr_createTopology('edge_table',0.001);
 
 --   SAMPLE DATA FROM THE ISSUE 285
 
+drop table if exists parallel;
 CREATE TABLE parallel (
     id serial,
     source integer,
