@@ -12,8 +12,8 @@
  NOTICE:  Returned message = OK
 
  NOTICE:  Total number of tuples to be returned 2 
-0|0|0|1|1
-1|0|1|-1|0
+0|0|1|1|1
+1|0|2|-1|0
  NOTICE:  Starting kshortest_path SELECT id, source, target, cost, reverse_cost FROM edge_table
 
  NOTICE:  columns: id 1 source 2 target 3 cost 4.000000
@@ -28,8 +28,8 @@
  NOTICE:  Returned message = OK
 
  NOTICE:  Total number of tuples to be returned 2 
-0|0|0|1|1
-1|0|1|-1|0
+0|0|1|1|1
+1|0|2|-1|0
  NOTICE:  Starting kshortest_path SELECT id, source, target, cost, reverse_cost FROM edge_table
 
  NOTICE:  columns: id 1 source 2 target 3 cost 4.000000
@@ -44,8 +44,8 @@
  NOTICE:  Returned message = OK
 
  NOTICE:  Total number of tuples to be returned 2 
-0|0|0|1|1
-1|0|1|-1|0
+0|0|1|1|1
+1|0|2|-1|0
  NOTICE:  Starting kshortest_path SELECT id, source, target, cost, reverse_cost FROM edge_table
 
  NOTICE:  columns: id 1 source 2 target 3 cost 4.000000
@@ -60,10 +60,10 @@
  NOTICE:  Returned message = OK
 
  NOTICE:  Total number of tuples to be returned 4 
-0|0|0|1|1
-1|0|1|4|1
-2|0|4|8|1
-3|0|5|-1|0
+0|0|1|1|1
+1|0|2|4|1
+2|0|5|8|1
+3|0|6|-1|0
  NOTICE:  Starting kshortest_path SELECT id, source, target, cost, reverse_cost FROM edge_table
 
  NOTICE:  columns: id 1 source 2 target 3 cost 4.000000
@@ -78,10 +78,10 @@
  NOTICE:  Returned message = OK
 
  NOTICE:  Total number of tuples to be returned 4 
-0|0|0|1|1
-1|0|1|4|1
-2|0|4|8|1
-3|0|5|-1|0
+0|0|1|1|1
+1|0|2|4|1
+2|0|5|8|1
+3|0|6|-1|0
  NOTICE:  Starting kshortest_path SELECT id, source, target, cost, reverse_cost FROM edge_table
 
  NOTICE:  columns: id 1 source 2 target 3 cost 4.000000
@@ -96,10 +96,10 @@
  NOTICE:  Returned message = OK
 
  NOTICE:  Total number of tuples to be returned 4 
-0|0|0|1|1
-1|0|1|4|1
-2|0|4|8|1
-3|0|5|-1|0
+0|0|1|1|1
+1|0|2|4|1
+2|0|5|8|1
+3|0|6|-1|0
  NOTICE:  Starting kshortest_path SELECT id, source, target, cost, reverse_cost FROM edge_table
 
  NOTICE:  columns: id 1 source 2 target 3 cost 4.000000
@@ -114,13 +114,13 @@
  NOTICE:  Returned message = OK
 
  NOTICE:  Total number of tuples to be returned 10 
-0|0|1|4|1
-1|0|4|8|1
-2|0|5|-1|0
-3|1|1|4|1
-4|1|4|10|1
-5|1|9|12|1
-6|1|10|13|1
-7|1|11|15|1
-8|1|8|9|1
-9|1|5|-1|0
+0|0|2|4|1
+1|0|5|8|1
+2|0|6|-1|0
+3|1|2|4|1
+4|1|5|10|1
+5|1|10|12|1
+6|1|11|13|1
+7|1|12|15|1
+8|1|9|9|1
+9|1|6|-1|0

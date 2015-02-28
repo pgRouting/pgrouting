@@ -47,7 +47,7 @@ class Graph {
 
      POS find_vertex(int vertex_id) const;
      POS exist_vertex(int vertex_id) const;
-     int getVertexOriginalID(POS vertex_id) const {return m_vtVertices[vertex_id].getNID();}
+     int getVertexOriginalID(POS vertex_id) const {return m_vtVertices[vertex_id].getOriginalID();}
      bool checkVertexIDs(POS nodeNID, int nodeID);
 
      void remove_edge(POS edge_id);
