@@ -17,8 +17,9 @@
 #include "DijkstraShortestPathAlg.h"
 
 class YenTopKShortestPathsAlg: public DijkstraShortestPathAlg {
+        std::set<BasePath, BasePath::compBasePath> m_ResultSet;
         std::deque<BasePath> m_ResultList;
-        std::deque<BasePath> m_Heap;
+        std::set<BasePath, BasePath::compBasePath> m_Heap;
 
         int m_Source_id;
         int m_Target_id;
@@ -35,8 +36,10 @@ class YenTopKShortestPathsAlg: public DijkstraShortestPathAlg {
         std::deque<BasePath> Yen(int source, int target, int numb_paths);
         void clear();
  private:
-        void semiOrderHeap();
+        void insertIntoHeap(const BasePath &path);
         void get_shortest_paths(POS pSource, POS pTarget, int top_k);
+        void avoidDijkstra(POS edgeToBeRemoved, POS atPosOfPath, BasePath &workingPath);
+
         BasePath get_shortest_path(POS pSource, POS pTarget);
         void _init();
         void next();

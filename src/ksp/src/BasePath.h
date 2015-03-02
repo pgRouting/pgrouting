@@ -25,12 +25,30 @@
 ********************************************************************** */
 class BasePath {
  protected:
-        double m_dWeight; //! weight of the path
-        std::deque<BaseEdge> m_vtEdgesList;
+        double m_Weight; //! weight of the path
+        std::deque<BaseEdge> m_EdgesList;
 
  public:
-        BasePath() :m_dWeight(0) {
-                m_vtEdgesList.clear();
+
+        class compBasePath {
+         public:
+           bool operator()(const BasePath &p1, const BasePath &p2) const {
+             if (p1.m_Weight < p2.m_Weight) return true;
+             if (p1.m_Weight > p2.m_Weight) return false;
+             //paths weights are equal now we check by length
+             if (p1.m_EdgesList.size() < p2.m_EdgesList.size()) return true;
+             if (p1.m_EdgesList.size() > p2.m_EdgesList.size()) return false;
+             //paths lengths are equal now we check by edges id's
+             for (POS i = 0; i < p1.m_EdgesList.size(); i++) {
+                if (p1.m_EdgesList[i].ID() < p2.m_EdgesList[i].ID()) return true;
+                if (p1.m_EdgesList[i].ID() > p2.m_EdgesList[i].ID()) return false;
+             }
+             // we got here and everything is equal
+             return false;
+          };
+        };
+        BasePath() :m_Weight(0) {
+                m_EdgesList.clear();
         }
 
 
@@ -38,42 +56,42 @@ class BasePath {
         ///@{
 
         //! Returns the weight of the path 
-        double Weight() const { return m_dWeight;}
+        double Weight() const { return m_Weight;}
         //! Returns the size of the path 
-        POS size() const { return m_vtEdgesList.size();}
+        POS size() const { return m_EdgesList.size();}
         //! Returns True when size==0
         bool isEmpty() const { return size() == 0;}
         //! Returns the EdgeId of edge at position i 
         int getEdgeID(POS i) const { 
-	    assert(i < m_vtEdgesList.size());
-            return m_vtEdgesList[i].ID();
+	    assert(i < m_EdgesList.size());
+            return m_EdgesList[i].ID();
         }
         //! Returns the Edge's original Id of edge at position i 
         int getEdgeOriginalID(POS i) const {
-            assert(i < m_vtEdgesList.size());
-            return m_vtEdgesList[i].originalID();
+            assert(i < m_EdgesList.size());
+            return m_EdgesList[i].originalID();
         }
         //! Returns a copy of edge at position i 
         BaseEdge GetEdge(POS i) const {
-            assert(i < m_vtEdgesList.size());
-            return m_vtEdgesList.at(i);
+            assert(i < m_EdgesList.size());
+            return m_EdgesList.at(i);
         }
         //! Returns a copy of the ith edge of the path
         BaseEdge operator[](POS i) const {
-		assert(i < m_vtEdgesList.size());
-                return (m_vtEdgesList[i]);
+		assert(i < m_EdgesList.size());
+                return (m_EdgesList[i]);
         }
         //! Returns true when path goes fromId -> toId (local id's)
         bool FromTo(POS fromId, POS toId) const {
              if (size() == 0) return false;
-             return fromId == m_vtEdgesList[0].getStart()
-                    && toId == m_vtEdgesList[ size()-1 ].getEnd();
+             return fromId == m_EdgesList[0].getStart()
+                    && toId == m_EdgesList[ size()-1 ].getEnd();
         }
         //! Returns true when this path shares the same edges as the largerPath
         bool isEqual(const  BasePath &largerPath) const {
             if (size() > largerPath.size()) return false;
             for (POS i = 0 ; i < size() ; i++) {
-                if (m_vtEdgesList[i].ID() != largerPath.m_vtEdgesList[i].ID()) return false;
+                if (m_EdgesList[i].ID() != largerPath.m_EdgesList[i].ID()) return false;
             }
             return true;
         }
@@ -81,7 +99,7 @@ class BasePath {
         bool EdgesLessComapre(const BasePath &p2) const {
               POS limit = (size() < p2.size()) ? size() : p2.size();
               for (POS i = 0 ; i < limit; i++) {
-                   if (m_vtEdgesList[i].ID() < p2.m_vtEdgesList[i].ID())
+                   if (m_EdgesList[i].ID() < p2.m_EdgesList[i].ID())
                        return true;
               }
               return false;
@@ -92,26 +110,26 @@ class BasePath {
         ///@{
 
         //! Changes the path's weight to be: val
-        void Weight(double val) { m_dWeight = val;}
+        void Weight(double val) { m_Weight = val;}
         //! Adds an edge at the end of the path updating the corresponding weight of the path
         void push_back(BaseEdge edge) {
-            m_vtEdgesList.push_back(edge);
-            m_dWeight += edge.Weight();
+            m_EdgesList.push_back(edge);
+            m_Weight += edge.Weight();
         }
         //! Adds an edge at the front of the path updating the corresponding weight of the path
         void push_front(BaseEdge edge) {
-            m_vtEdgesList.push_front(edge);
-            m_dWeight += edge.Weight();
+            m_EdgesList.push_front(edge);
+            m_Weight += edge.Weight();
         }
         //! Adds a path at the end of this path, updates the weight of the path
         void append(const BasePath &trail) {
             for (POS i=0; i < trail.size(); i++)
-                push_back(trail.m_vtEdgesList[i]);
+                push_back(trail.m_EdgesList[i]);
         }
         //! Deletes all edges of the path, and sets the wigth to 0
         void clear() {
-            m_vtEdgesList.clear();
-            m_dWeight = 0;
+            m_EdgesList.clear();
+            m_Weight = 0;
         }
         ///@}
 
@@ -124,10 +142,10 @@ class BasePath {
         */
         bool subPath(BasePath &sub_path, POS upTo) {
                 sub_path.clear();
-                if (m_vtEdgesList.size() == 0) return false;
+                if (m_EdgesList.size() == 0) return false;
                 if (upTo >= size()) return false;
                 for (POS i = 0; i < upTo; i++) {
-                   sub_path.push_back(m_vtEdgesList[i]);
+                   sub_path.push_back(m_EdgesList[i]);
                 }
                 if (sub_path.size() == upTo) return true;
                 sub_path.clear();
@@ -138,9 +156,10 @@ class BasePath {
 
         // display the content
         void PrintOut(std::ostream& out_stream) const {
-                out_stream << "Cost: " << m_dWeight << " Length: " << m_vtEdgesList.size() << std::endl;
-                for (POS i = 0; i < m_vtEdgesList.size(); i++) {
-                        m_vtEdgesList[i].PrintOut(out_stream);
+                out_stream << "Cost: " << m_Weight << " Length: " << m_EdgesList.size() << std::endl;
+                for (POS i = 0; i < m_EdgesList.size(); i++) {
+                        out_stream << m_EdgesList[i].originalID();
+                        //m_EdgesList[i].PrintOut(out_stream);
                         out_stream << "->";
                 }
                 out_stream << std::endl
