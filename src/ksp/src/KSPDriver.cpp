@@ -132,7 +132,7 @@ static  void dpPrint(const KSPGraph &theGraph,
         double cost;
 
         for (unsigned int i = 0; i < thePath.size(); i++) {
-                edgeId = thePath.getOriginalID(i);
+                edgeId = thePath.getEdgeOriginalID(i);
                 nodeId = theGraph.getVertexOriginalID(thePath[i].getStart());
                 cost = thePath[i].Weight();
                 if (i == thePath.size()-1)
