@@ -76,7 +76,7 @@ void YenTopKShortestPathsAlg::next() {
                BasePath workingPath = m_ResultList[j];  // TODO(vicky): can be placed inside the condition
                if (rootPath.isEqual(workingPath)) {
                    if ( i < workingPath.size()) { 
-                      edgeToBeRemoved = workingPath[i].getNID();
+                      edgeToBeRemoved = workingPath[i].ID();
                       remove_edge(edgeToBeRemoved);
                    }
                }

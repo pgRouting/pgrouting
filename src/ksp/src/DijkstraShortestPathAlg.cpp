@@ -65,7 +65,7 @@ BaseEdge* DijkstraShortestPathAlg::bestEdge(POS sink_id) {
                 BaseEdge edge = incomming_edges_list[i];
                 prev_dist = NodeWeight(edge.getStart());
                 if (curr_dist == prev_dist + edge.Weight())
-                    return &m_vtEdges[edge.getNID()];
+                    return &m_vtEdges[edge.ID()];
         }
         return NULL;
 }

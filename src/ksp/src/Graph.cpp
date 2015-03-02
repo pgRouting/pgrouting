@@ -171,7 +171,7 @@ void Graph::PrintPath(std::ostream &out_stream, const BasePath &path, int startN
         BaseEdge edge = path[i];
         int start = m_vtVertices[ edge.getStart() ].getOriginalID();
         double cost  = edge.Weight();
-        int edgeId = edge.getOriginalID();
+        int edgeId = edge.originalID();
         out_stream << "Route " << i<< "\n";
         out_stream << start << "\t" << edgeId << "\t" << cost << "\n";
     }
