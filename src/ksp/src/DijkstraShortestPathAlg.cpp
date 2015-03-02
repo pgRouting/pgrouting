@@ -100,7 +100,7 @@ void DijkstraShortestPathAlg::improve2vertex(POS sink_id ) {
                // 2.1 skip if it has been visited before
                if (next_vertex_pt->visited()) continue;
 
-               InsertIntoCandidate(next_vertex_pt->getNID());
+               InsertIntoCandidate(next_vertex_pt->ID());
 
                // 2.2 calculate the distance
                distance = curr_vertex_pt->Weight() + edge_pt->Weight();
@@ -108,7 +108,7 @@ void DijkstraShortestPathAlg::improve2vertex(POS sink_id ) {
                // 2.3 update the distance if necessary (comparison and assignment in BaseVertex)
                 next_vertex_pt->Weight(distance);
                 curr_vertex_pt->setAsVisited();  // mark as Visited
-                if (curr_vertex_pt->getNID() == sink_id) return;
+                if (curr_vertex_pt->ID() == sink_id) return;
         }
         neighbor_edges_list.clear();
       }

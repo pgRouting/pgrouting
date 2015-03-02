@@ -15,7 +15,7 @@
 
 
 /**************************************************************************/
-//!  BaseEdge    (fromVertex, toVertex, Weight)
+//!  BasePath    (deque of BaseEdges with auto weight update)
 /*!
 \author Dave Potts
 \author Vicky Vergara

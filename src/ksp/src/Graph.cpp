@@ -57,8 +57,8 @@ void Graph::insertNewEdge(int id,  POS startPos, POS endPos, double edge_weight)
     BaseEdge edge(edgePos, id, startPos, endPos, edge_weight);
     m_vtEdges.push_back(edge);
 
-    m_vtVertices[startPos].push_FanOut(edgePos);
-    m_vtVertices[endPos].push_FanIn(edgePos);
+    m_vtVertices[startPos].push_FanOut( &m_vtEdges[edgePos]);
+    m_vtVertices[endPos].push_FanIn(&m_vtEdges[edgePos]);
 }
 
 
@@ -118,32 +118,37 @@ void  Graph::removeNodes(const BasePath &path) {
 
 
 
+
+
 void Graph::get_adjacent_edges(POS vertex_id, std::deque<POS> &edges_set) const {
         POS edgeId, nextNodeId;
-
-        if (m_vtVertices[vertex_id].isActive()) {
-           std::deque<POS> FanOut = m_vtVertices[vertex_id].getFanOut();
-           for (POS i = 0; i < FanOut.size(); i++) {
-               edgeId = FanOut[i];
-               nextNodeId =  m_vtEdges[ edgeId ].getEnd();
+        edges_set.clear();
+        if (!m_vtVertices[vertex_id].isActive()) return;
+                
+        std::deque<BaseEdge*> FanOut = m_vtVertices[vertex_id].getFanOut();
+        for (POS i = 0; i < FanOut.size(); i++) {
+               edgeId = FanOut[i]->ID();
+               nextNodeId =  FanOut[i]->getEnd();
                if (m_vtVertices[ nextNodeId ].isActive()
                    && m_vtEdges[ edgeId ].isActive())
                        edges_set.push_back(edgeId);
-           }
         }
 }
 
 void Graph::get_precedent_edges(POS vertex_id, std::deque<BaseEdge> &edges_set) {
-        if (m_vtVertices[vertex_id].isActive()) {
-           std::deque<POS> FanIn = m_vtVertices[vertex_id].getFanIn();
-           for (POS i = 0; i < FanIn.size(); i++) {
-               if (m_vtVertices[  m_vtEdges[ FanIn[i] ].getStart() ].isActive()
-                   &&  m_vtEdges[ FanIn[i] ].isActive())
-                       edges_set.push_back(m_vtEdges[ FanIn[i] ]);
-           }
+        POS edgeId, prevNodeId;
+        edges_set.clear();
+        if (!m_vtVertices[vertex_id].isActive()) return;
+
+        std::deque<BaseEdge*> FanIn = m_vtVertices[vertex_id].getFanIn();
+        for (POS i = 0; i < FanIn.size(); i++) {
+               edgeId = FanIn[i]->ID();
+               prevNodeId =  FanIn[i]->getStart();
+               if ( m_vtVertices[ prevNodeId ].isActive()
+                   &&  m_vtEdges[ edgeId ].isActive())
+                       edges_set.push_back(m_vtEdges[edgeId]);
         }
 }
-
 
 void Graph::PrintOut(std::ostream &out_stream) const {
     out_stream << "Vertices \n";
