@@ -13,12 +13,12 @@
 #ifndef SRC_KSP_SRC_DIJKSTRASHORTESTPATHALG_H_
 #define SRC_KSP_SRC_DIJKSTRASHORTESTPATHALG_H_
 
-#include <deque>
+#include <set>
 #include "Graph.h"
 
 class DijkstraShortestPathAlg: public Graph {
  private:
-       std::deque<POS> m_CandidateVertices;
+       std::set<BaseVertex*> m_CandidateVertices;
 
  public:
        BasePath Dijkstra(int source, int sink);

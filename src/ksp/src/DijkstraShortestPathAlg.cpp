@@ -75,7 +75,7 @@ BaseEdge* DijkstraShortestPathAlg::bestEdge(POS sink_id) {
 
 void DijkstraShortestPathAlg::determine_shortest_paths(POS source_id, POS sink_id) {
         m_vtVertices[source_id].Weight(0);  // the source starts with 0 as cost
-        m_CandidateVertices.push_back(source_id);
+        m_CandidateVertices.insert(&m_vtVertices[source_id]);
         improve2vertex(sink_id);  // start searching for the shortest path
 }
 
@@ -115,27 +115,14 @@ void DijkstraShortestPathAlg::improve2vertex(POS sink_id ) {
 }
 
 POS DijkstraShortestPathAlg::selectBestCandidate() {
-    assert(m_CandidateVertices.size());
-    POS best = 0;
-    POS best_id;
-    double bestDistance = Graph::DISCONNECT;
-    POS current_id;
-    for (POS i = 0; i < m_CandidateVertices.size(); i++) {
-       current_id = m_CandidateVertices[i];
-       if (bestDistance > NodeWeight(current_id)) {
-          best = i;
-          best_id = current_id;
-          bestDistance = NodeWeight(current_id);
-      }
-    }
-    m_CandidateVertices.erase(m_CandidateVertices.begin()+best);
+    BaseVertex *vertex = (*m_CandidateVertices.begin());
+    POS best_id = vertex->ID();
+    m_CandidateVertices.erase(m_CandidateVertices.begin());
     return best_id;
 }
-
+    
 void DijkstraShortestPathAlg::InsertIntoCandidate(POS node_id) {
-    for (POS i = 0; i < m_CandidateVertices.size(); i++)
-      if (m_CandidateVertices[i]== node_id) return;
-    m_CandidateVertices.push_back(node_id);
+    m_CandidateVertices.insert(&m_vtVertices[node_id]);
 }
 
 void DijkstraShortestPathAlg::clear() {
