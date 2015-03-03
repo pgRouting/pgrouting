@@ -4,28 +4,44 @@
 #include "Graph.h"
 #include "DijkstraShortestPathAlg.h"
 
+/*!
+\param[in] source: original id of the source
+\param[in] sink: original id of the sink
+\Returns BasePath
+*/
 BasePath DijkstraShortestPathAlg::Dijkstra(int source, int sink) {
         if (  source !=sink  && exist_vertex(source) && exist_vertex(sink) )
              return get_shortest_path( find_vertex(source), find_vertex(sink) );
         return BasePath();
 }
 
+/*!
+\param[in] source: Graph ID of the source
+\param[in] sink: Graph ID of the sink
+\param[in] localids: when third parameter exists is identify that the IDs are graph's IDs
+(the truth value is ignored)
+\Returns BasePath
+*/
 BasePath DijkstraShortestPathAlg::Dijkstra(UINT source, UINT sink, bool localids) {
     if ( source < m_Vertices.size() && sink < m_Vertices.size() &&  source != sink)
          return get_shortest_path( source, sink );
     return BasePath();
 }
 
+/*!
+\param[in] source: Graph ID of the source
+\param[in] sink: Graph ID of the sink
+\Returns BasePath
+*/
 BasePath DijkstraShortestPathAlg::get_shortest_path(UINT source_id, UINT sink_id) {
         BasePath path;
         m_CandidateVertices.clear();
-
+        // 
         determine_shortest_paths(source_id, sink_id);
-//        std::deque<BaseEdge> edges_list;
 
         double weight = vertexWeight(sink_id);
 
-
+        // 
         UINT curr_vertex;
         BaseEdge *edge_pt;
         if (weight < Graph::DISCONNECT) {
@@ -40,6 +56,10 @@ BasePath DijkstraShortestPathAlg::get_shortest_path(UINT source_id, UINT sink_id
         return path;
 }
 
+/*!
+\param[in] sink: Graph ID of the sink
+\Returns BaseEdge pointer
+*/
 BaseEdge* DijkstraShortestPathAlg::bestEdge(UINT sink_id) {
         std::deque<BaseEdge> incomming_edges_list;
         double curr_weight = vertexWeight(sink_id);
@@ -58,17 +78,28 @@ BaseEdge* DijkstraShortestPathAlg::bestEdge(UINT sink_id) {
 
 
 
+/*!
+\param[in] source_id: Graph ID of the source
+\param[in] sink_id: Graph ID of the sink
+\Returns BasePath
+*/
 void DijkstraShortestPathAlg::determine_shortest_paths(UINT source_id, UINT sink_id) {
         m_Vertices[source_id].Weight(0);  // the source starts with 0 as cost
         m_CandidateVertices.insert(&m_Vertices[source_id]);
         improve2vertex(sink_id);  // start searching for the shortest path
 }
 
+/*!
+Uses extensively m_CandidateVertices
+\param[in] sink_id: Graph ID of the sink
+\Returns BasePath
+*/
+
 void DijkstraShortestPathAlg::improve2vertex(UINT sink_id ) {
      while (!m_CandidateVertices.empty()) {
         int current_id = selectBestCandidate();
 
-        // 1. get the neighboring edges (vertices are stiored on the vertices)
+        // 1. get the neighboring edges (vertices are stored on the vertices)
         std::deque<UINT> neighbor_edges_list;
         getFanOutActiveEdgesIds(current_id, neighbor_edges_list);
 
@@ -76,7 +107,7 @@ void DijkstraShortestPathAlg::improve2vertex(UINT sink_id ) {
         BaseEdge *edge_pt;
         BaseVertex *curr_vertex_pt;
         BaseVertex *next_vertex_pt;
-        double distance;
+        double weight;
         for (UINT i = 0; i < neighbor_edges_list.size(); i++) {
                 edge_pt = &m_Edges[ neighbor_edges_list[i] ];
                 curr_vertex_pt =  getVertexPt(current_id);
@@ -88,28 +119,46 @@ void DijkstraShortestPathAlg::improve2vertex(UINT sink_id ) {
                InsertIntoCandidate(next_vertex_pt->ID());
 
                // 2.2 calculate the distance
-               distance = curr_vertex_pt->Weight() + edge_pt->Weight();
+               weight = curr_vertex_pt->Weight() + edge_pt->Weight();
 
-               // 2.3 update the distance if necessary (comparison and assignment in BaseVertex)
-                next_vertex_pt->Weight(distance);
-                curr_vertex_pt->setAsVisited();  // mark as Visited
-                if (curr_vertex_pt->ID() == sink_id) return;
+               // 2.3 update the weight if necessary (comparison and assignment in BaseVertex)
+               next_vertex_pt->Weight(weight);
+               curr_vertex_pt->setAsVisited();  
+               if (curr_vertex_pt->ID() == sink_id) return;
         }
         neighbor_edges_list.clear();
       }
 }
 
+/*!
+The m_CandidateVertices becuase its a set the best candidate is the fist element.\n
+At the end removes the vertex as candidate, becuase it eventually will be set
+as visited.
+\Returns ID of best vertex candidate
+*/
 UINT DijkstraShortestPathAlg::selectBestCandidate() {
+    assert(m_CandidateVertices.size());
     BaseVertex *vertex = (*m_CandidateVertices.begin());
     UINT best_id = vertex->ID();
     m_CandidateVertices.erase(m_CandidateVertices.begin());
     return best_id;
 }
     
-void DijkstraShortestPathAlg::InsertIntoCandidate(UINT node_id) {
-    m_CandidateVertices.insert(&m_Vertices[node_id]);
+/*!
+Inserts the pointer to the vertex as a candidate
+\params[in] vertex_id
+*/
+void DijkstraShortestPathAlg::InsertIntoCandidate(UINT vertex_id) {
+    assert(vertex_id < m_Vertices.size());
+    m_CandidateVertices.insert(&m_Vertices[vertex_id]);
 }
 
+/*!
+Restores the graph for the next iteration so it has:
+  - all the vertices logically inserted and unvisited in the graph with
+    weight set as max
+  - all the edges logically inserted in the graph
+*/
 void DijkstraShortestPathAlg::clear() {
      for (UINT i = 0; i < m_Vertices.size(); i++)
           m_Vertices[i].restore();

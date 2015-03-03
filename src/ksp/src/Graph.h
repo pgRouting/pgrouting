@@ -50,7 +50,7 @@ class Graph {
      //! Returns the Id of the vertex originaly identified by vertex_id (0 when nor found);
      UINT find_vertex(int vertex_id) const;
      //! True when the identified originaly by vertex_id is in the graph
-     UINT exist_vertex(int vertex_id) const;
+     bool exist_vertex(int vertex_id) const;
      //! Returns a pointer to vertex_id
      BaseVertex* getVertexPt(UINT vertex_id) ;
      ///@}

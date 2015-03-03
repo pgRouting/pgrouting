@@ -1,39 +1,67 @@
-///////////////////////////////////////////////////////////////////////////////
-///  DijkstraShortestPathAlg.h
-///  The implementation of Dijkstra algorithm to get the shortest path of
-///  a pair of vertices in a graph.
-///
-///  @remarks <TODO: insert remarks here>
-///
-///  @author Yan Qi @date 5/30/2010
-///
-///  $Id: DijkstraShortestPathAlg.h 65 2010-09-08 06:48:36Z yan.qi.asu $
-///
-///////////////////////////////////////////////////////////////////////////////
 #ifndef SRC_KSP_SRC_DIJKSTRASHORTESTPATHALG_H_
 #define SRC_KSP_SRC_DIJKSTRASHORTESTPATHALG_H_
 
 #include <set>
 #include "Graph.h"
 
+/**************************************************************************/
+//! DijkstraShortestPathAlg: public Graph edge oriented implementation
+/*!
+\author Vicky Vergara
+\date Feb/2015
+\copyright GNU General Public License, version 2
+\details  Class to store an edge of a graph.
+\sa Graph 
+********************************************************************** */
 class DijkstraShortestPathAlg: public Graph {
  private:
+       //! Ordered by weight set of pointers to vertices used in the algorithm
        std::set<BaseVertex*> m_CandidateVertices;
 
  public:
+       /** @name Dijkstra execution
+       \Returns empty path: when:
+         - source is the same as sink
+         - source is is not found in any edge
+         - sink is is not found in any edge
+         - the edges structure don't allow to go from source to sink
+       \Returns the shortest path from source to sink
+
+       Path A is shorter than path B when:
+          - A's weight < B's weight
+          - when the weights are the same then
+            - A's length < B's length
+          - when the weights and lenth are the same then on the first edge that is different
+            - A's edge(i)'s Id < B's edge(i)'s Id
+       */
+       ///@{
+
+       //! Dijkstra using the original ids
        BasePath Dijkstra(int source, int sink);
+       //! Dijkstra using the graph's IDs 
        BasePath Dijkstra(UINT source, UINT sink , bool localids);
+       ///@}
        explicit DijkstraShortestPathAlg(const Graph &graph)
         :Graph(graph) {}
        void clear();
 
  protected:
-       BasePath get_shortest_path(UINT source_id, UINT sink_id);
+       /** @name Routines used in the algorithm*/
+       ///@{
+
+       //! Initial step
        void determine_shortest_paths(UINT source_id, UINT sink_id);
+       //! returns the shortest path from source_id to sink_id
+       BasePath get_shortest_path(UINT source_id, UINT sink_id);
+       //! Intermidiate step in the algorithm
        void improve2vertex(UINT sink_id);
+       //return a pointer to the best Edge
        BaseEdge* bestEdge(UINT sink_id);
+       //* returns the ID of the candidate vertices
        UINT selectBestCandidate();
-       void InsertIntoCandidate(UINT node_id);
+       //* Insert a pointer to the vertex into the candidate vertices
+       void InsertIntoCandidate(UINT vertex_id);
+       ///@}
 };
 
 #endif  // SRC_KSP_SRC_DIJKSTRASHORTESTPATHALG_H_

@@ -1,5 +1,5 @@
 CC=g++
-CCFLAGS=-Wall
+CCFLAGS=-Wall -g -O1
 LDFLAGS= 
 INCFLAGS= -I /usr/include/postgresql/9.3/server/
 SOURCES= mainP.cpp Graph.cpp DijkstraShortestPathAlg.cpp YenTopKShortestPathsAlg.cpp 
@@ -17,5 +17,7 @@ $(TARGET): $(OBJECTS)
 $(TARGET).o: $(TARGET).cpp GraphElements.h Graph.h DijkstraShortestPathAlg.h YenTopKShortestPathsAlg.h
 	$(CC) $(INCFLAGS) $(CCFLAGS) -c $<
  
+valgrind: mainP
+	valgrind -v --track-origins=yes --undef-value-errors=yes --leak-check=full --show-leak-kinds=all ./mainP &> ./valgrindlog.txt
 clean:
 	rm -f *.o $(TARGET) 

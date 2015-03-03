@@ -109,7 +109,15 @@ void Graph::clear() {
              m_Vertices[pos].clear();
         m_Vertices.clear();
 }
-
+/*!
+\warning  Please use Graph::exist_vertex before calling this function otherwise:
+  - when 0 is returned:
+    - it might indicate not found
+    - it might indicate the ID 
+\param[in] vertex_id: Original Id of the vertex
+\Return 0 if vertex_id is not found
+\Return ID: the position/ID of vertex_id when not found
+*/
 UINT  Graph::find_vertex(int vertex_id) const {
     UINT i;
     if (m_Vertices.size() == 0) return 0;
@@ -119,7 +127,7 @@ UINT  Graph::find_vertex(int vertex_id) const {
     return i;
 }
 
-UINT  Graph::exist_vertex(int vertex_id) const {
+bool  Graph::exist_vertex(int vertex_id) const {
     UINT i;
     if (m_Vertices.size() == 0) return false;
     for (i=0; i < m_Vertices.size() && m_Vertices[i].getOriginalID() != vertex_id; i++) {}
@@ -128,6 +136,7 @@ UINT  Graph::exist_vertex(int vertex_id) const {
 }
 
 void  Graph::remove_edge(UINT edge_id) {
+    assert(edge_id < m_Edges.size());
     m_Edges[edge_id].remove();
 }
 
@@ -139,6 +148,7 @@ void  Graph::removeVertices(const BasePath &path) {
 }
 
 void Graph::getFanOutActiveEdgesIds(UINT vertex_id, std::deque<UINT> &edges_set) const {
+        assert(vertex_id < m_Vertices.size());
         UINT edgeId, nextNodeId;
         edges_set.clear();
         if (!m_Vertices[vertex_id].isActive()) return;
@@ -155,6 +165,7 @@ void Graph::getFanOutActiveEdgesIds(UINT vertex_id, std::deque<UINT> &edges_set)
 
 
 void Graph::getFanOutActiveEdges(UINT vertex_id, std::deque<BaseEdge> &edges_set) const {
+        assert(vertex_id < m_Vertices.size());
         UINT edgeId, prevNodeId;
         edges_set.clear();
         if (!m_Vertices[vertex_id].isActive()) return;
@@ -170,6 +181,7 @@ void Graph::getFanOutActiveEdges(UINT vertex_id, std::deque<BaseEdge> &edges_set
 }
 
 void Graph::getFanInActiveEdges(UINT vertex_id, std::deque<BaseEdge> &edges_set) const{
+        assert(vertex_id < m_Vertices.size());
         UINT edgeId, prevNodeId;
         edges_set.clear();
         if (!m_Vertices[vertex_id].isActive()) return;
