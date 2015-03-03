@@ -36,46 +36,49 @@ std::deque<BasePath> YenTopKShortestPathsAlg::Yen(int  source, int  sink, int K)
 }
 
 
-BasePath YenTopKShortestPathsAlg::get_shortest_path(POS  sourcePos, POS  targetPos) {
-        int source_id = m_vtVertices[ sourcePos ].getOriginalID();
-        int target_id = m_vtVertices[ targetPos ].getOriginalID();
+BasePath YenTopKShortestPathsAlg::get_shortest_path(UINT  sourcePos, UINT  targetPos) {
+        int source_id = m_Vertices[ sourcePos ].getOriginalID();
+        int target_id = m_Vertices[ targetPos ].getOriginalID();
         return Dijkstra(source_id,  target_id);
 }
 
 
-void YenTopKShortestPathsAlg::avoidDijkstra(POS edgeToBeRemoved, POS atPosOfPath, BasePath &workingPath) {
+void YenTopKShortestPathsAlg::avoidDijkstra(UINT edgeToBeRemoved, UINT atPosOfPath, BasePath &workingPath) {
          //generate and store on the heap all paths that have parallel edges to edgeToBeRemoved
-         POS startId = m_vtEdges[edgeToBeRemoved].getStart();
-         POS endId = m_vtEdges[edgeToBeRemoved].getEnd();
-         std::deque<BaseEdge*> fanOut = m_vtVertices[startId].getFanOut();
+         UINT startId = m_Edges[edgeToBeRemoved].getStart();
+         UINT endId = m_Edges[edgeToBeRemoved].getEnd();
+
+         //std::deque<BaseEdge*> fanOut = m_Vertices[startId].getFanOut();
+         std::deque<BaseEdge> fanOut;
+         getFanOutActiveEdges(startId,fanOut);
          BasePath newPath; 
-         for (POS i = 0; i < fanOut.size(); i++) {
-             if (edgeToBeRemoved == fanOut[i]->ID()) {
+         for (UINT i = 0; i < fanOut.size(); i++) {
+             if (edgeToBeRemoved == fanOut[i].ID()){
                 remove_edge(edgeToBeRemoved);
                 continue;
              }
-             if ((fanOut[i]->getStart() == startId) && (fanOut[i]->getEnd() == endId)) {
+             if ((fanOut[i].getStart() == startId) && (fanOut[i].getEnd() == endId)) {
                  // a new path can be formed with the parallel edge:
                  //  NewPath = rootpath + Paralleledgeof(edgeToBeRemoved) + rest of the curr_result path
                  workingPath.subPath(newPath, atPosOfPath); //copy the path up to the position
-                 newPath.push_back(*fanOut[i]);  //insert the paralel edge
-                 for (POS j = atPosOfPath+1; j < workingPath.size(); j++) {
+                 newPath.push_back(fanOut[i]);  //insert the paralel edge
+                 for (UINT j = atPosOfPath+1; j < workingPath.size(); j++) {
 		     newPath.push_back( workingPath[j] );
                  }
                  insertIntoHeap(newPath);
-                 remove_edge(fanOut[i]->ID());
+                 remove_edge(fanOut[i].ID());
              }
           }
 };                 
 
 void YenTopKShortestPathsAlg::next() {
-        POS currPathId =  m_ResultList.size()-1;
+        UINT currPathId =  m_ResultList.size()-1;
         BasePath curr_result_path = m_ResultList[ currPathId ];
 
 
-        POS spurNode;
+        UINT spurNode;
         BasePath rootPath;
-        for (POS i = 0; i < curr_result_path.size(); ++i) {
+        for (UINT i = 0; i < curr_result_path.size(); ++i) {
             BaseEdge spurEdge (curr_result_path[i]);
             spurNode = spurEdge.getStart();
 
@@ -86,8 +89,8 @@ void YenTopKShortestPathsAlg::next() {
             //  NewPath = rootpath + Paralleledgeof(supredge) rest of the curr_result path
             // is the shortest path using the paralel edge
             
-            POS edgeToBeRemoved;
-            for (POS j=0; j < m_ResultList.size(); j++) {
+            UINT edgeToBeRemoved;
+            for (UINT j=0; j < m_ResultList.size(); j++) {
                BasePath workingPath = m_ResultList[j];
                if (rootPath.isEqual(workingPath)) {
                    if ( i < workingPath.size()) { 
@@ -98,7 +101,7 @@ void YenTopKShortestPathsAlg::next() {
                }
             }
 
-            removeNodes(rootPath);
+            removeVertices(rootPath);
 
             BasePath spurPath;
             spurPath = DijkstraShortestPathAlg::Dijkstra(spurNode , targetID, true);
@@ -121,7 +124,7 @@ void YenTopKShortestPathsAlg::insertIntoHeap(const BasePath &path) {
    m_Heap.insert(path);
 }
 
-void YenTopKShortestPathsAlg::get_shortest_paths(POS source_id, POS target_id, int K) {
+void YenTopKShortestPathsAlg::get_shortest_paths(UINT source_id, UINT target_id, int K) {
           _init();  // get the best using Dijkstra
           if (m_ResultList.size() == 0) return; //no path found
 

@@ -22,18 +22,18 @@ class DijkstraShortestPathAlg: public Graph {
 
  public:
        BasePath Dijkstra(int source, int sink);
-       BasePath Dijkstra(POS source, POS sink , bool localids);
+       BasePath Dijkstra(UINT source, UINT sink , bool localids);
        explicit DijkstraShortestPathAlg(const Graph &graph)
         :Graph(graph) {}
        void clear();
 
  protected:
-       BasePath get_shortest_path(POS source_id, POS sink_id);
-       void determine_shortest_paths(POS source_id, POS sink_id);
-       void improve2vertex(POS sink_id);
-       BaseEdge* bestEdge(POS sink_id);
-       POS selectBestCandidate();
-       void InsertIntoCandidate(POS node_id);
+       BasePath get_shortest_path(UINT source_id, UINT sink_id);
+       void determine_shortest_paths(UINT source_id, UINT sink_id);
+       void improve2vertex(UINT sink_id);
+       BaseEdge* bestEdge(UINT sink_id);
+       UINT selectBestCandidate();
+       void InsertIntoCandidate(UINT node_id);
 };
 
 #endif  // SRC_KSP_SRC_DIJKSTRASHORTESTPATHALG_H_

@@ -7,17 +7,17 @@
 
 
 /**************************************************************************/
-//!  BaseEdge    (fromVertex, toVertex, Weight)
+//! BaseEdge    (fromVertex, toVertex, Weight)
 /*!
 \author Vicky Vergara
 \date Feb/2015
 \copyright GNU General Public License, version 2
 \details  Class to store an edge of a graph.
-The only value that can change is:  m_active
+\sa BaseVertex
 ********************************************************************** */
 class BaseEdge {
  public:
-        BaseEdge(POS id, int  originalId, int start, int end, double weight)
+        BaseEdge(UINT id, int  originalId, int start, int end, double weight)
           : m_Start(start), m_End(end),
             m_Weight(weight),
             m_originalID(originalId), m_ID(id),
@@ -39,11 +39,11 @@ class BaseEdge {
         //! Returns the original ID of the edge
         int originalID() const { return m_originalID;}
         //! Returns the graph's ID of the edge
-        POS ID() const { return m_ID;}
+        UINT ID() const { return m_ID;}
         //! Returns the graph's ID of the starting vertex of the edge 
-        POS  getStart() const { return m_Start;}
+        UINT  getStart() const { return m_Start;}
         //! Returns the graph's ID of the ending vertex of the edge
-        POS  getEnd() const { return m_End;}
+        UINT  getEnd() const { return m_End;}
         //! Returns the graph's ID of the weight of the edge
         double Weight() const { return m_Weight;}
         //! Returns true if the edge has being logically removed from the graph
@@ -71,11 +71,11 @@ class BaseEdge {
         }
         ///@}
  private:
-        POS m_Start;  //!< graph's starting Vertex ID of the edge
-        POS m_End;    //!< graphs's ending vertex ID of the edge
+        UINT m_Start;  //!< graph's starting Vertex ID of the edge
+        UINT m_End;    //!< graphs's ending vertex ID of the edge
         double m_Weight;  //!< edge's weight
         int m_originalID;  //!< original ID of the edge
-        POS m_ID;     //!< graphs's id of the edge
+        UINT m_ID;     //!< graphs's id of the edge
         bool m_active;   //!< used to indicate if edge is logically removed or not
 
 };

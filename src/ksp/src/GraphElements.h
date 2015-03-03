@@ -12,7 +12,7 @@
 #define SRC_KSP_SRC_GRAPHELEMENTS_H_
 
 
-typedef unsigned int POS;
+typedef unsigned int UINT;
 
 #include "BaseEdge.h"
 #include "BaseVertex.h"

@@ -23,8 +23,8 @@ class YenTopKShortestPathsAlg: public DijkstraShortestPathAlg {
 
         int m_Source_id;
         int m_Target_id;
-        POS sourceID;
-        POS targetID;
+        UINT sourceID;
+        UINT targetID;
 
 
  public:
@@ -37,10 +37,10 @@ class YenTopKShortestPathsAlg: public DijkstraShortestPathAlg {
         void clear();
  private:
         void insertIntoHeap(const BasePath &path);
-        void get_shortest_paths(POS pSource, POS pTarget, int top_k);
-        void avoidDijkstra(POS edgeToBeRemoved, POS atPosOfPath, BasePath &workingPath);
+        void get_shortest_paths(UINT pSource, UINT pTarget, int top_k);
+        void avoidDijkstra(UINT edgeToBeRemoved, UINT atPosOfPath, BasePath &workingPath);
 
-        BasePath get_shortest_path(POS pSource, POS pTarget);
+        BasePath get_shortest_path(UINT pSource, UINT pTarget);
         void _init();
         void next();
 };

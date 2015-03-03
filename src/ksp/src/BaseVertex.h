@@ -23,7 +23,7 @@
 ********************************************************************** */
 class BaseVertex {
         int m_originalID;
-        POS m_ID;
+        UINT m_ID;
         double m_Weight;
         std::set< BaseEdge*, BaseEdge::compBaseEdge> m_FaninEdges;
         std::set< BaseEdge*,  BaseEdge::compBaseEdge> m_FanoutEdges;
@@ -74,7 +74,7 @@ class BaseVertex {
         //! Returns the original id of the vertex
         int getOriginalID() const { return m_originalID;}
         //! Returns the id of the vertex
-        POS ID() const { return m_ID;}
+        UINT ID() const { return m_ID;}
         //! Returns a copy of all Incomming edges (regardles of active or visited)
         const std::deque< BaseEdge* > getFanIn() const  {
             std::deque< BaseEdge* > edges;

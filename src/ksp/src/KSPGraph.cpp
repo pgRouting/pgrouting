@@ -1,24 +1,7 @@
-// #include <limits>
-// #include <set>
-// #include <map>
-// #include <queue>
 #include <string>
-// #include <vector>
-// #include <fstream>
-// #include <iostream>
-// #include <algorithm>
-// #include "GraphElements.h"
  #include "KSPGraph.h"
-// #include "Graph.h"
-// #include "YenTopKShortestPathsAlg.h"
 extern "C" {
-// #include "postgres.h"
-// #include "executor/spi.h"
-// #include "funcapi.h"
-// #include "catalog/pg_type.h"
-// #include "fmgr.h"
 #include "ksp.h"
-    extern void DBG(const char *format, ...);
 }
 
 KSPGraph::KSPGraph(void) {}
@@ -39,8 +22,8 @@ void KSPGraph::AddData(ksp_edge_t  * edges,  int total_tuples, bool has_reverse_
 void KSPGraph::insertTuple(int id, int source, int target,
                 float cost, float reverse_cost, bool has_reverse_cost) {
     if (cost >= 0 || (reverse_cost>= 0 && has_reverse_cost)) {
-       POS sourcePos = getNewVertex(source);
-       POS targetPos = getNewVertex(target);
+       UINT sourcePos = getNewVertex(source);
+       UINT targetPos = getNewVertex(target);
        if (cost >= 0) {
            insertNewEdge(id, sourcePos, targetPos, cost);
        }

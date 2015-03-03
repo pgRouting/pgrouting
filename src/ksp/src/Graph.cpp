@@ -1,20 +1,5 @@
-///////////////////////////////////////////////////////////////////////////////
-///  Graph.cpp
-///  <TODO: insert file description here>
-///
-///  @remarks <TODO: insert remarks here>
-///
-///  @author Yan Qi @date 8/18/2010
-///
-///  $Id: Graph.cpp 65 2010-09-08 06:48:36Z yan.qi.asu $
-///////////////////////////////////////////////////////////////////////////////
-
 #include <limits>
-// #include <set>
-// #include <map>
 #include <string>
-// #include <cassert>
-// #include "ksp.h"
 #include <deque>
 #include <fstream>
 #include <iostream>
@@ -26,139 +11,188 @@
 const double Graph::DISCONNECT = (std::numeric_limits<double>::max)();
 
 Graph::Graph(const std::string &file_name) {
-        _import_from_file(file_name);
+        import_from_file(file_name);
 }
 
 Graph::Graph(const Graph &graph) {
-        m_vtVertices.assign(graph.m_vtVertices.begin(), graph.m_vtVertices.end());
-        m_vtEdges.assign(graph.m_vtEdges.begin(), graph.m_vtEdges.end());
+        m_Vertices.assign(graph.m_Vertices.begin(), graph.m_Vertices.end());
+        m_Edges.assign(graph.m_Edges.begin(), graph.m_Edges.end());
 }
 
 Graph::Graph(void) {}
 Graph::~Graph(void) { clear();}
 
 
-POS Graph::getNewVertex(int node_id) {
-    POS nodePos;
-    if (!exist_vertex(node_id)) {
-        nodePos = m_vtVertices.size();
-        BaseVertex vertex(nodePos, node_id);
-        m_vtVertices.push_back(vertex);
+/*!
+The original Id of the vertex is going stored at position ID in the vertices's deque. \n
+In other words, the position in the deque is going to identify the vertex in the graph and will be used as
+the ID of the vertex.\n
+
+1. when vertex_id already exist in the graph
+  - will return the exising ID of the vertex
+2. otherwise
+  - a new vertex is created and the new ID will be returned
+
+\param[in] vertex_id: Original Id of the vertex
+\return ID: of the vertex in the graph.
+*/
+UINT Graph::getNewVertex(int vertex_id) {
+    UINT nodePos;
+    if (!exist_vertex(vertex_id)) {
+        nodePos = m_Vertices.size();
+        BaseVertex vertex(nodePos, vertex_id);
+        m_Vertices.push_back(vertex);
         return nodePos;
     }
-    nodePos = find_vertex(node_id);
+    nodePos = find_vertex(vertex_id);
     return nodePos;
 }
 
 
-void Graph::insertNewEdge(int id,  POS startPos, POS endPos, double edge_weight) {
-    // all edges are different regardless of sharing same start & end nodes
-    POS edgePos = m_vtEdges.size();
-    BaseEdge edge(edgePos, id, startPos, endPos, edge_weight);
-    m_vtEdges.push_back(edge);
+/*!
+All edges are different regardless of sharing same start & end vertices.\n
+The original Id of the edge is going stored at position ID in the Edge's deque.\n
+In other words, the position in the deque is going to identify the edge in the graph and will be used as
+the ID of the edge.\n
+The FanIn of the ending vertex and FanOut of the starting vertex will include the edge
 
-    m_vtVertices[startPos].push_FanOut( &m_vtEdges[edgePos]);
-    m_vtVertices[endPos].push_FanIn(&m_vtEdges[edgePos]);
+\param[in] edge_id: Original Id of the vertex
+\param[in] startId: ID of the starting vertex
+\param[in] endId: ID of the ending vertex
+\param[in] edge_weight: weight of the edge
+\return ID: of the edge in the graph.
+*/
+UINT Graph::insertNewEdge(int edge_id,  UINT startId, UINT endId, double edge_weight) {
+    UINT edgePos = m_Edges.size();
+    BaseEdge edge(edgePos, edge_id, startId, endId, edge_weight);
+    m_Edges.push_back(edge);
+
+    m_Vertices[startId].push_FanOut( &m_Edges[edgePos]);
+    m_Vertices[endId].push_FanIn(&m_Edges[edgePos]);
+    return edgePos;
+}
+
+
+double Graph::vertexWeight(UINT vertex_id) const { 
+    assert (vertex_id < m_Vertices.size());
+    return m_Vertices[vertex_id].Weight();
+}
+double Graph::edgeWeight(UINT edge_id) const {
+    assert (edge_id < m_Edges.size());
+    return m_Edges[edge_id].Weight();
+}
+int Graph::getVertexOriginalID(UINT vertex_id) const {
+    assert (vertex_id < m_Vertices.size());
+    return m_Vertices[vertex_id].getOriginalID();
 }
 
 
 
-BaseVertex Graph::GetVertex(int node_id) {
-        BaseVertex vertex_pt = m_vtVertices[node_id];
+BaseVertex Graph::getVertex(UINT vertex_id) const {
+        assert (vertex_id < m_Vertices.size());
+        return m_Vertices[vertex_id];
+}
+
+
+
+BaseVertex* Graph::getVertexPt(UINT vertex_id) {
+        if ( vertex_id >= m_Vertices.size() ) return NULL;
+        BaseVertex * vertex_pt = &m_Vertices[vertex_id];
+        if (vertex_pt->isRemoved()) return NULL;
         return vertex_pt;
 }
 
-
-BaseVertex* Graph::get_vertex(int node_id) {
-        BaseVertex * vertex_pt = &m_vtVertices[node_id];
-        if (vertex_pt->isRemoved())
-                return NULL;
-        return vertex_pt;
-}
 
 void Graph::clear() {
-        m_vtEdges.clear();
-        for (POS pos=0; pos < m_vtVertices.size(); pos++)
-             m_vtVertices[pos].clear();
-        m_vtVertices.clear();
+        m_Edges.clear();
+        for (UINT pos=0; pos < m_Vertices.size(); pos++)
+             m_Vertices[pos].clear();
+        m_Vertices.clear();
 }
 
-POS  Graph::find_vertex(int vertex_id) const {
-    POS i;
-    if (m_vtVertices.size() == 0) return 0;
-    for (i = 0; i < m_vtVertices.size()
-          && m_vtVertices[i].getOriginalID() != vertex_id; i++) {}
-    if (i >= m_vtVertices.size()) return 0;
+UINT  Graph::find_vertex(int vertex_id) const {
+    UINT i;
+    if (m_Vertices.size() == 0) return 0;
+    for (i = 0; i < m_Vertices.size()
+          && m_Vertices[i].getOriginalID() != vertex_id; i++) {}
+    if (i >= m_Vertices.size()) return 0;
     return i;
 }
 
-POS  Graph::exist_vertex(int vertex_id) const {
-    POS i;
-    if (m_vtVertices.size() == 0) return false;
-    for (i=0; i < m_vtVertices.size() && m_vtVertices[i].getOriginalID() != vertex_id; i++) {}
-    if (i >= m_vtVertices.size()) return false;
-    return true;
-}
-bool  Graph::checkVertexIDs(POS nodeNID, int nodeID) {
-    if (!(nodeNID < m_vtVertices.size())) return false;
-    if (m_vtVertices[nodeNID].getOriginalID() != nodeID) return false;
+UINT  Graph::exist_vertex(int vertex_id) const {
+    UINT i;
+    if (m_Vertices.size() == 0) return false;
+    for (i=0; i < m_Vertices.size() && m_Vertices[i].getOriginalID() != vertex_id; i++) {}
+    if (i >= m_Vertices.size()) return false;
     return true;
 }
 
-void  Graph::remove_edge(POS edge_id) {
-    m_vtEdges[edge_id].remove();
+void  Graph::remove_edge(UINT edge_id) {
+    m_Edges[edge_id].remove();
 }
 
-void  Graph::removeNodes(const BasePath &path) {
+void  Graph::removeVertices(const BasePath &path) {
     if (path.size() == 0) return;
-    for (POS i = 0 ; i  <  path.size() ; i++) {
-    m_vtVertices[ path[i].getStart() ].remove();
+    for (UINT i = 0 ; i  <  path.size() ; i++) {
+      m_Vertices[ path[i].getStart() ].remove();
     }
 }
 
-
-
-
-
-void Graph::get_adjacent_edges(POS vertex_id, std::deque<POS> &edges_set) const {
-        POS edgeId, nextNodeId;
+void Graph::getFanOutActiveEdgesIds(UINT vertex_id, std::deque<UINT> &edges_set) const {
+        UINT edgeId, nextNodeId;
         edges_set.clear();
-        if (!m_vtVertices[vertex_id].isActive()) return;
+        if (!m_Vertices[vertex_id].isActive()) return;
                 
-        std::deque<BaseEdge*> FanOut = m_vtVertices[vertex_id].getFanOut();
-        for (POS i = 0; i < FanOut.size(); i++) {
+        std::deque<BaseEdge*> FanOut = m_Vertices[vertex_id].getFanOut();
+        for (UINT i = 0; i < FanOut.size(); i++) {
                edgeId = FanOut[i]->ID();
                nextNodeId =  FanOut[i]->getEnd();
-               if (m_vtVertices[ nextNodeId ].isActive()
-                   && m_vtEdges[ edgeId ].isActive())
+               if (m_Vertices[ nextNodeId ].isActive()
+                   && m_Edges[ edgeId ].isActive())
                        edges_set.push_back(edgeId);
         }
 }
 
-void Graph::get_precedent_edges(POS vertex_id, std::deque<BaseEdge> &edges_set) {
-        POS edgeId, prevNodeId;
-        edges_set.clear();
-        if (!m_vtVertices[vertex_id].isActive()) return;
 
-        std::deque<BaseEdge*> FanIn = m_vtVertices[vertex_id].getFanIn();
-        for (POS i = 0; i < FanIn.size(); i++) {
+void Graph::getFanOutActiveEdges(UINT vertex_id, std::deque<BaseEdge> &edges_set) const {
+        UINT edgeId, prevNodeId;
+        edges_set.clear();
+        if (!m_Vertices[vertex_id].isActive()) return;
+
+        std::deque<BaseEdge*> FanOut = m_Vertices[vertex_id].getFanOut();
+        for (UINT i = 0; i < FanOut.size(); i++) {
+               edgeId = FanOut[i]->ID();
+               prevNodeId =  FanOut[i]->getStart();
+               if ( m_Vertices[ prevNodeId ].isActive()
+                   &&  m_Edges[ edgeId ].isActive())
+                       edges_set.push_back(m_Edges[edgeId]);
+        }
+}
+
+void Graph::getFanInActiveEdges(UINT vertex_id, std::deque<BaseEdge> &edges_set) const{
+        UINT edgeId, prevNodeId;
+        edges_set.clear();
+        if (!m_Vertices[vertex_id].isActive()) return;
+
+        std::deque<BaseEdge*> FanIn = m_Vertices[vertex_id].getFanIn();
+        for (UINT i = 0; i < FanIn.size(); i++) {
                edgeId = FanIn[i]->ID();
                prevNodeId =  FanIn[i]->getStart();
-               if ( m_vtVertices[ prevNodeId ].isActive()
-                   &&  m_vtEdges[ edgeId ].isActive())
-                       edges_set.push_back(m_vtEdges[edgeId]);
+               if ( m_Vertices[ prevNodeId ].isActive()
+                   &&  m_Edges[ edgeId ].isActive())
+                       edges_set.push_back(m_Edges[edgeId]);
         }
 }
 
 void Graph::PrintOut(std::ostream &out_stream) const {
     out_stream << "Vertices \n";
-    for (POS i = 0; i< m_vtVertices.size(); i++) {
-        m_vtVertices[i].PrintOut(out_stream);
+    for (UINT i = 0; i< m_Vertices.size(); i++) {
+        m_Vertices[i].PrintOut(out_stream);
         out_stream << "\n";
     }
     out_stream << "Edges\n";
-    for (POS i = 0; i < m_vtEdges.size(); i++) {
-        m_vtEdges[i].PrintOut(out_stream);
+    for (UINT i = 0; i < m_Edges.size(); i++) {
+        m_Edges[i].PrintOut(out_stream);
         out_stream << "\n";
     }
 }
@@ -172,60 +206,51 @@ void Graph::PrintPath(std::ostream &out_stream, const BasePath &path, int startN
         return;
     }
 
-    for (POS i=0 ; i < path.size() ; i++) {
+    for (UINT i=0 ; i < path.size() ; i++) {
         BaseEdge edge = path[i];
-        int start = m_vtVertices[ edge.getStart() ].getOriginalID();
+        int start = m_Vertices[ edge.getStart() ].getOriginalID();
         double cost  = edge.Weight();
         int edgeId = edge.originalID();
         out_stream << "Route " << i<< "\n";
         out_stream << start << "\t" << edgeId << "\t" << cost << "\n";
     }
-    out_stream<< m_vtVertices[ path[path.size()-1 ].getEnd() ].getOriginalID() << "\t-1 \t0\n";
+    out_stream<< m_Vertices[ path[path.size()-1 ].getEnd() ].getOriginalID() << "\t-1 \t0\n";
 }
 
-///////////////////////////////////////////////////////////////////////////////
-///  private  _import_from_file
-///  Construct the graph by importing the edges from the input file.
-///
-///  @param [in]       file_name const std::string &    The input graph file
-///
-///  This function doesn't return a value
-///
-///  @remarks The format of the file is as follows:
-///   1. The first line has an integer as the number of vertices of the graph
-///   2. Each line afterwards contains a directed edge in the graph:
-///                     starting point, ending point and the weight of the edge.
-///                 These values are separated by 'white space'.
-///
-///  @see <TODO: insert text here>
-///
-///  @author Yan Qi @date 5/29/2010
-///////////////////////////////////////////////////////////////////////////////
-void Graph::_import_from_file(const std::string &input_file_name) {
+/*!
+To be used when developing with a standby program
+1. Check the validity of the file
+2. Cleans the graph
+3. Start to read information from the input file.
+  - 3.1. The first line indicates if it has a reverse cost (0 = no)
+  - 3.2. In the following lines, each line contains a directed edge in the graph:
+      - id of the edge, 
+      - id of starting point,
+      - id of ending point,
+      - weight of the edge.
+      - Reverse Weight of the edge (when reverse cost is !=0)
+  - 3.3 These values are separated by 'white space'.
+4. Stops when the id of the edge is -1 and closes the file
+\param[in] file_name
+*/
+void Graph::import_from_file(const std::string &input_file_name) {
         const char* file_name = input_file_name.c_str();
 
-        // 1. Check the validity of the file
         std::ifstream ifs(file_name);
         if (!ifs) {
                 std::cerr << "The file " << file_name << " can not be opened!" << std::endl;
                 exit(1);
         }
 
-        // 2. Reset the members of the class
         clear();
 
-        // 3. Start to read information from the input file.
-        // 3.1 The first line indicates if it has a reverse cost
         bool has_reverse_cost;
         ifs >> has_reverse_cost;
 
-        // 3.2 In the following lines, each line contains a directed edge in the graph:
-        ///   id of the edge, the id of starting point, the id of ending point, the weight of the edge.
-        ///   These values are separated by 'white space'.
         int edge_id, start_id, end_id;
         double edge_weight, reverse_weight;
-        POS startPos;
-        POS endPos;
+        UINT startPos;
+        UINT endPos;
 
         while (ifs >> edge_id) {
                 if (edge_id == -1)  break;
@@ -235,17 +260,13 @@ void Graph::_import_from_file(const std::string &input_file_name) {
                 ifs >> edge_weight;
                 if (has_reverse_cost) ifs >> reverse_weight;
 
-                /// 3.2.1 construct the vertices
-                  /// look for existing vertex or create
                 startPos = Graph::getNewVertex(start_id);
                 endPos = Graph::getNewVertex(end_id);
 
-                /// 3.2.2 add the edge
                 if (edge_weight >0)
                        insertNewEdge(edge_id, startPos, endPos, edge_weight);
                 if (has_reverse_cost && reverse_weight >0)
                        insertNewEdge(edge_id, endPos, startPos, reverse_weight);
         }
-
         ifs.close();
 }

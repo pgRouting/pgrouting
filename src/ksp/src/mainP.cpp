@@ -54,7 +54,7 @@ void yenTest (int testNumb, int from, int to, int k, const Graph &graph) {
         paths = test.Yen(from,to,k);
         std::cout<<"paths found "<<paths.size()<<"\n";
         std::cout << "The PATHS" << std::endl;
-        for (POS i=0; i < paths.size(); i++) { 
+        for (UINT i=0; i < paths.size(); i++) { 
           std::cout << "*****" << i <<  "*****" << std::endl;
           paths[i].PrintOut(std::cout);
         }
