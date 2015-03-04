@@ -19,6 +19,7 @@ int  doKpaths(ksp_edge_t  * edges, int total_tuples,
                        int no_paths, bool has_reverse_cost,
                        ksp_path_element_t **path, int *path_count,
                        char ** err_msg) {
+   try {
         KSPGraph theGraph = KSPGraph();
         std::ostringstream log;
 
@@ -120,7 +121,11 @@ return 0;
         #endif
         *path = ksp_path;
         *path_count = count;
-        return 1;
+        return EXIT_SUCCESS;
+   } catch ( ... ) {
+     *err_msg = strdup( "Caught unknown expection!" );
+     return -1;
+   }
 }
 
 static  void dpPrint(const KSPGraph &theGraph,

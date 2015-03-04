@@ -14,9 +14,10 @@
 
 typedef unsigned int UINT;
 
-#include "BaseEdge.h"
-#include "BaseVertex.h"
-#include "BasePath.h"
+#include "./vrp_assert.h"
+#include "./BaseEdge.h"
+#include "./BaseVertex.h"
+#include "./BasePath.h"
 
 
 #endif  // SRC_KSP_SRC_GRAPHELEMENTS_H_

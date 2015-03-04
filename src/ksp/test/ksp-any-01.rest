@@ -6,7 +6,7 @@
 
  NOTICE:  total tuples found 2
 
- NOTICE:  Exist Status = 1
+ NOTICE:  Exist Status = 0
 
  NOTICE:  Returned message = OK
 
@@ -21,7 +21,7 @@
 
  NOTICE:  total tuples found 8
 
- NOTICE:  Exist Status = 1
+ NOTICE:  Exist Status = 0
 
  NOTICE:  Returned message = OK
 
@@ -42,7 +42,7 @@
 
  NOTICE:  total tuples found 106
 
- NOTICE:  Exist Status = 1
+ NOTICE:  Exist Status = 0
 
  NOTICE:  Returned message = OK
 
@@ -161,7 +161,7 @@
 
  NOTICE:  total tuples found 438
 
- NOTICE:  Exist Status = 1
+ NOTICE:  Exist Status = 0
 
  NOTICE:  Returned message = OK
 
@@ -613,7 +613,7 @@
 
  NOTICE:  total tuples found 2
 
- NOTICE:  Exist Status = 1
+ NOTICE:  Exist Status = 0
 
  NOTICE:  Returned message = OK
 
@@ -629,7 +629,7 @@
 
  NOTICE:  total tuples found 4
 
- NOTICE:  Exist Status = 1
+ NOTICE:  Exist Status = 0
 
  NOTICE:  Returned message = OK
 
@@ -647,7 +647,7 @@
 
  NOTICE:  total tuples found 84
 
- NOTICE:  Exist Status = 1
+ NOTICE:  Exist Status = 0
 
  NOTICE:  Returned message = OK
 
@@ -745,7 +745,7 @@
 
  NOTICE:  total tuples found 688
 
- NOTICE:  Exist Status = 1
+ NOTICE:  Exist Status = 0
 
  NOTICE:  Returned message = OK
 

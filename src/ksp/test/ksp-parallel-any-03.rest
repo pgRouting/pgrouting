@@ -7,7 +7,7 @@
 
  NOTICE:  total tuples found 2
 
- NOTICE:  Exist Status = 1
+ NOTICE:  Exist Status = 0
 
  NOTICE:  Returned message = OK
 
@@ -26,7 +26,7 @@ LINE 1: ELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost
 
  NOTICE:  total tuples found 6
 
- NOTICE:  Exist Status = 1
+ NOTICE:  Exist Status = 0
 
  NOTICE:  Returned message = OK
 
@@ -46,7 +46,7 @@ LINE 1: ELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost
 
  NOTICE:  total tuples found 6
 
- NOTICE:  Exist Status = 1
+ NOTICE:  Exist Status = 0
 
  NOTICE:  Returned message = OK
 
@@ -66,7 +66,7 @@ LINE 1: ELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost
 
  NOTICE:  total tuples found 6
 
- NOTICE:  Exist Status = 1
+ NOTICE:  Exist Status = 0
 
  NOTICE:  Returned message = OK
 
@@ -86,7 +86,7 @@ LINE 1: ELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost
 
  NOTICE:  total tuples found 4
 
- NOTICE:  Exist Status = 1
+ NOTICE:  Exist Status = 0
 
  NOTICE:  Returned message = OK
 
@@ -104,7 +104,7 @@ LINE 1: ELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost
 
  NOTICE:  total tuples found 8
 
- NOTICE:  Exist Status = 1
+ NOTICE:  Exist Status = 0
 
  NOTICE:  Returned message = OK
 
@@ -126,7 +126,7 @@ LINE 1: ELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost
 
  NOTICE:  total tuples found 12
 
- NOTICE:  Exist Status = 1
+ NOTICE:  Exist Status = 0
 
  NOTICE:  Returned message = OK
 
@@ -152,7 +152,7 @@ LINE 1: ELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost
 
  NOTICE:  total tuples found 12
 
- NOTICE:  Exist Status = 1
+ NOTICE:  Exist Status = 0
 
  NOTICE:  Returned message = OK
 
