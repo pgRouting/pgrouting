@@ -16,7 +16,7 @@
 class DijkstraShortestPathAlg: public Graph {
  private:
        //! Ordered by weight set of pointers to vertices used in the algorithm
-       std::set<BaseVertex*> m_CandidateVertices;
+       std::set<BaseVertex*, BaseVertex::compBaseVertex> m_CandidateVertices;
 
  public:
        /** @name Dijkstra execution

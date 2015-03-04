@@ -60,11 +60,12 @@ class BaseVertex {
           m_FanoutEdges.clear();
         }
 
-        class compBaseEdge {
+        class compBaseVertex {
          public:
           bool operator()(const BaseVertex *v1, const BaseVertex *v2) const {
-            return v1->m_Weight < v2->m_Weight 
-                   || (v1->m_Weight == v2->m_Weight && v1->m_ID < v2->m_ID);
+            if (v1->m_Weight < v2->m_Weight) return true;
+            if  ((v1->m_Weight == v2->m_Weight) && (v1->m_ID < v2->m_ID)) return true;
+            else return false;
             }
         };
 

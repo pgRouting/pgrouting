@@ -30,8 +30,10 @@ std::deque<BasePath> YenTopKShortestPathsAlg::Yen(int  source, int  sink, int K)
              m_Target_id = sink;
              sourceID = find_vertex(source);
              targetID = find_vertex(sink);
-             get_shortest_paths(find_vertex(source), find_vertex(sink), K);
+             get_shortest_paths(sourceID, targetID, K);
+             //get_shortest_paths(find_vertex(source), find_vertex(sink), K);
         }
+        m_ResultList.assign(m_ResultSet.begin(),m_ResultSet.end());
         return m_ResultList;
 }
 
