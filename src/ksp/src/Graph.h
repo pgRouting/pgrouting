@@ -23,6 +23,7 @@ class Graph {
  protected:
      std::deque <BaseVertex> m_Vertices; //<! Vertices
      std::deque <BaseEdge> m_Edges; //<! Edges
+     std::set <BaseEdge*, BaseEdge::compBestEdge> m_BestEdgesPt; //<! set of pointers to best edges between 2 nodes
 
  public:
      Graph();
@@ -78,6 +79,7 @@ class Graph {
 
  private:
      void import_from_file(const std::string &file_name);
+     void updateBestEdgesSet(BaseEdge *edgePt);
 };
 
 #endif  // SRC_KSP_SRC_GRAPH_H_

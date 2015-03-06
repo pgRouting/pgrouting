@@ -82,6 +82,7 @@ void testYenAlgParallel()
 {
         std::string fileName("../devdata/issue285.data");
 	Graph my_graph(fileName);
+#if 0
         yenTest(1, 2,3, 2, my_graph);
         yenTest(2, 1,3, 2, my_graph);
         yenTest(3, 1,4, 2, my_graph);
@@ -91,6 +92,7 @@ void testYenAlgParallel()
         yenTest(7, 2,4, 3, my_graph);
         yenTest(8, 2,3, 3, my_graph);
         yenTest(9, 2,3, 4, my_graph);
+#endif
         yenTest(10, 2,4, 4, my_graph);
 }
 void testYenAlgOptimize()
@@ -111,6 +113,6 @@ int main(...)
 
 	// testDijkstraGraph();
 	//testYenAlg();
-	//testYenAlgParallel();
-	testYenAlgOptimize();
+	testYenAlgParallel();
+	//testYenAlgOptimize();
 }

@@ -29,9 +29,20 @@ class BaseEdge {
         class compBaseEdge {
          public:
           bool operator()(const BaseEdge *e1, const BaseEdge *e2) const {
-            return e1->m_Weight < e2->m_Weight 
-                   || (e1->m_Weight == e2->m_Weight && e1->m_ID < e2->m_ID);
+            return (e1->m_Weight < e2->m_Weight)
+                   || ((e1->m_Weight == e2->m_Weight) && (e1->m_ID < e2->m_ID));
             }
+        };
+        /*! \class compBestEdge
+         * \brief An Edge comparison class for keeping the best parallel BaseEdge
+        */
+        class compBestEdge {
+         public:
+          bool operator()(const BaseEdge *e1, const BaseEdge *e2) const {
+            if ( e1->m_Start <  e2->m_Start) return true;
+            if ((e1->m_Start ==  e2->m_Start) && (e1->m_End <  e2->m_End)) return true;
+            return false;
+          }
         };
 	/** @name accessors */
         ///@{

@@ -69,9 +69,26 @@ UINT Graph::insertNewEdge(int edge_id,  UINT startId, UINT endId, double edge_we
 
     m_Vertices[startId].push_FanOut( &m_Edges[edgePos]);
     m_Vertices[endId].push_FanIn(&m_Edges[edgePos]);
+    updateBestEdgesSet(&m_Edges[edgePos]);
     return edgePos;
 }
 
+
+void Graph::updateBestEdgesSet(BaseEdge *edgePt) {
+    std::set <BaseEdge*, BaseEdge::compBestEdge>::iterator edgeInSet;
+    edgeInSet = m_BestEdgesPt.find(edgePt);
+    if (edgeInSet == m_BestEdgesPt.end()) {
+        m_BestEdgesPt.insert(edgePt);
+    } else {
+        if ((*edgeInSet)->Weight() < edgePt->Weight()) {
+           // the set has the best edge pointer
+        } else {
+           // swap to the best edge
+           m_BestEdgesPt.erase(edgeInSet);
+           m_BestEdgesPt.insert(edgePt);
+        }
+    }
+}
 
 double Graph::vertexWeight(UINT vertex_id) const { 
     assert (vertex_id < m_Vertices.size());
@@ -282,4 +299,5 @@ void Graph::import_from_file(const std::string &input_file_name) {
                        insertNewEdge(edge_id, endPos, startPos, reverse_weight);
         }
         ifs.close();
+
 }
