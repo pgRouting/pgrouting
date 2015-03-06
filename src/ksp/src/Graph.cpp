@@ -158,6 +158,7 @@ void Graph::getFanOutActiveEdgesIds(UINT vertex_id, std::deque<UINT> &edges_set)
                edgeId = FanOut[i]->ID();
                nextNodeId =  FanOut[i]->getEnd();
                if (m_Vertices[ nextNodeId ].isActive()
+                   && !m_Vertices[ nextNodeId ].visited()
                    && m_Edges[ edgeId ].isActive())
                        edges_set.push_back(edgeId);
         }

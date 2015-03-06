@@ -16,7 +16,9 @@
 class DijkstraShortestPathAlg: public Graph {
  private:
        //! Ordered by weight set of pointers to vertices used in the algorithm
-       std::set<BaseVertex*, BaseVertex::compBaseVertex> m_CandidateVertices;
+       //std::set<BaseVertex*, BaseVertex::compBaseVertex> m_CandidateVertices;
+       std::deque<BaseVertex*> m_CandidateVertices;
+       std::set<UINT> m_CandidateVerticesId;
 
  public:
        /** @name Dijkstra execution
@@ -60,7 +62,7 @@ class DijkstraShortestPathAlg: public Graph {
        //* returns the ID of the candidate vertices
        UINT selectBestCandidate();
        //* Insert a pointer to the vertex into the candidate vertices
-       void InsertIntoCandidate(UINT vertex_id);
+       void insertIntoCandidate(UINT vertex_id);
        ///@}
 };
 
