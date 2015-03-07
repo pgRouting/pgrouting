@@ -3,7 +3,6 @@
 
 
 #include <string>
-#include <cassert>
 #include <deque>
 #include <iostream>
 #include <limits>
@@ -11,6 +10,7 @@
 
 #include "BaseEdge.h"
 #include "BaseVertex.h"
+#include "vrp_assert.h"
 
 
 

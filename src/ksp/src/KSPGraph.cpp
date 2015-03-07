@@ -22,13 +22,13 @@ void KSPGraph::AddData(ksp_edge_t  * edges,  int total_tuples, bool has_reverse_
 void KSPGraph::insertTuple(int id, int source, int target,
                 float cost, float reverse_cost, bool has_reverse_cost) {
     if (cost >= 0 || (reverse_cost>= 0 && has_reverse_cost)) {
-       UINT sourcePos = getNewVertex(source);
-       UINT targetPos = getNewVertex(target);
+       BaseVertex* sourcePos = getNewVertex(source);
+       BaseVertex* targetPos = getNewVertex(target);
        if (cost >= 0) {
-           insertNewEdge(id, sourcePos, targetPos, cost);
+           insertNewEdge(id, sourcePos->ID(), targetPos->ID(), cost);
        }
        if (reverse_cost>= 0 && has_reverse_cost) {
-           insertNewEdge(id, targetPos, sourcePos, reverse_cost);
+           insertNewEdge(id, targetPos->ID(), sourcePos->ID(), reverse_cost);
        }
     }
 }

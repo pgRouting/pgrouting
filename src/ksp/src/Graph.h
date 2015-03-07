@@ -19,10 +19,18 @@ Vertices and Edges are stored in this implementation with deque
 class Graph {
  public:
      const static double DISCONNECT;
+     typedef typename std::deque<BaseVertex> vList;
+     typedef typename std::deque<BaseVertex>::iterator vListIt;
+     typedef typename std::set<BaseVertex*, BaseVertex::compBaseVertexID> vSetPt;
+     typedef typename std::set<BaseVertex*, BaseVertex::compBaseVertexID>::iterator vSetIt;
+
+     typedef typename std::deque<BaseEdge> eSet;
+     typedef typename std::deque<BaseEdge>::iterator eSetIt;
 
  protected:
-     std::deque <BaseVertex> m_Vertices; //<! Vertices
-     std::deque <BaseEdge> m_Edges; //<! Edges
+     vList m_Vertices; //<! Vertices
+     vSetPt m_VerticesPt; //<! Vertices pointers ordered by original Id
+     eSet m_Edges; //<! Edges
      std::set <BaseEdge*, BaseEdge::compBestEdge> m_BestEdgesPt; //<! set of pointers to best edges between 2 nodes
 
  public:
@@ -49,7 +57,7 @@ class Graph {
      //! Returns the original ID of vertex_id
      int getVertexOriginalID(UINT vertex_id) const;
      //! Returns the Id of the vertex originaly identified by vertex_id (0 when nor found);
-     UINT find_vertex(int vertex_id) const;
+     BaseVertex* find_vertex(int vertex_id) const;
      //! True when the identified originaly by vertex_id is in the graph
      bool exist_vertex(int vertex_id) const;
      //! Returns a pointer to vertex_id
@@ -64,7 +72,7 @@ class Graph {
      //! Inserts an edge to the graph (original id, startId, endId, weight)
      UINT insertNewEdge(int id, UINT startId, UINT endId, double edge_weight);
      //! Returns the Id a the newly created vertex or the Id if it already exists
-     UINT getNewVertex(int vertex_id);
+     BaseVertex* getNewVertex(int vertex_id);
      //! logically removes the edge from the graph
      void remove_edge(UINT edge_id);
      //! logically removes the vertices from the graph that are starting vertices of the edges in path

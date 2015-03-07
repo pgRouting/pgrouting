@@ -2,7 +2,7 @@ CC=g++
 CCFLAGS=-Wall -g -O2
 LDFLAGS= 
 INCFLAGS= -I /usr/include/postgresql/9.4/server/
-SOURCES= mainP.cpp Graph.cpp DijkstraShortestPathAlg.cpp YenTopKShortestPathsAlg.cpp 
+SOURCES= mainP.cpp Graph.cpp DijkstraShortestPathAlg.cpp YenTopKShortestPathsAlg.cpp vrp_assert.cpp 
 OBJECTS=$(SOURCES:.cpp=.o)
 TARGET= mainP
  

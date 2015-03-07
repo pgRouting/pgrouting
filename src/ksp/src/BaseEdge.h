@@ -3,6 +3,7 @@
 
 
 #include <iostream>
+#include "vrp_assert.h"
 
 
 

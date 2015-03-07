@@ -1,6 +1,6 @@
 #include <deque>
-#include <cassert>
 #include <algorithm>
+#include "vrp_assert.h"
 #include "GraphElements.h"
 #include "DijkstraShortestPathAlg.h"
 #include "YenTopKShortestPathsAlg.h"
@@ -14,8 +14,14 @@ void YenTopKShortestPathsAlg::clear() {
 
 void YenTopKShortestPathsAlg::_init() {
         clear();
-        BasePath shortestPath = Dijkstra(m_Source_id, m_Target_id);
-        DijkstraShortestPathAlg::clear();
+        BasePath shortestPath = Dijkstra(sourceID, targetID, true);
+        //BasePath shortestPath = Dijkstra(m_Source_id, m_Target_id);
+#if 0
+std::cout<<"the shortest path is\n";
+shortestPath.PrintOut(std::cout);
+assert(true==false);
+#endif
+        //DijkstraShortestPathAlg::clear();
          if (!shortestPath.isEmpty()) { 
             m_ResultList.push_back(shortestPath);
             m_ResultSet.insert(shortestPath);
@@ -25,13 +31,17 @@ void YenTopKShortestPathsAlg::_init() {
 
 std::deque<BasePath> YenTopKShortestPathsAlg::Yen(int  source, int  sink, int K) {
         clear();
-        if (source !=sink && K > 0 && exist_vertex(source) && exist_vertex(sink)) {
+        if ((source !=sink) && (K > 0)) {
              m_Source_id = source;
              m_Target_id = sink;
-             sourceID = find_vertex(source);
-             targetID = find_vertex(sink);
+
+             BaseVertex* sourcePt = find_vertex(source);
+             if (sourcePt == NULL) return m_ResultList;
+             BaseVertex* sinkPt = find_vertex(sink);
+             if (sinkPt == NULL) return m_ResultList;
+             sourceID = sourcePt->ID();
+             targetID = sinkPt->ID();
              get_shortest_paths(sourceID, targetID, K);
-             //get_shortest_paths(find_vertex(source), find_vertex(sink), K);
         }
         m_ResultList.assign(m_ResultSet.begin(),m_ResultSet.end());
         return m_ResultList;
@@ -128,6 +138,7 @@ void YenTopKShortestPathsAlg::insertIntoHeap(const BasePath &path) {
 
 void YenTopKShortestPathsAlg::get_shortest_paths(UINT source_id, UINT target_id, int K) {
           _init();  // get the best using Dijkstra
+
           if (m_ResultList.size() == 0) return; //no path found
 
           while ( m_ResultList.size() < (unsigned int) K ) {

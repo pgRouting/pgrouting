@@ -1,5 +1,5 @@
 #include <deque>
-#include <cassert>
+#include "vrp_assert.h"
 #include "GraphElements.h"
 #include "Graph.h"
 #include "DijkstraShortestPathAlg.h"
@@ -22,8 +22,11 @@ struct Vertex
 \Returns BasePath
 */
 BasePath DijkstraShortestPathAlg::Dijkstra(int source, int sink) {
-        if (  source !=sink  && exist_vertex(source) && exist_vertex(sink) )
-             return get_shortest_path( find_vertex(source), find_vertex(sink) );
+        if (  source !=sink ) {
+             BaseVertex* sourcePt =find_vertex(source);
+             BaseVertex* sinkPt =find_vertex(sink);
+             return boostDijkstra(sourcePt->ID(), sinkPt->ID());
+        }
         return BasePath();
 }
 
@@ -36,16 +39,13 @@ BasePath DijkstraShortestPathAlg::Dijkstra(int source, int sink) {
 */
 BasePath DijkstraShortestPathAlg::Dijkstra(UINT source, UINT sink, bool localids) {
     if ( source < m_Vertices.size() && sink < m_Vertices.size() &&  source != sink)
-         return get_shortest_path( source, sink );
+         //return get_shortest_path( source, sink );
+         return boostDijkstra(source, sink);
     return BasePath();
 }
 
-/*!
-\param[in] source: Graph ID of the source
-\param[in] sink: Graph ID of the sink
-\Returns BasePath
-*/
-BasePath DijkstraShortestPathAlg::get_shortest_path(UINT source_id, UINT sink_id) {
+BasePath DijkstraShortestPathAlg::boostDijkstra(UINT source_id, UINT sink_id) {
+    assert(m_BestEdgesPt.size());
     BasePath path;
     path.clear();
 
@@ -65,15 +65,19 @@ BasePath DijkstraShortestPathAlg::get_shortest_path(UINT source_id, UINT sink_id
             if (edgePt->isActive() 
                 && m_Vertices[edgePt->getStart()].isActive()
                 && m_Vertices[edgePt->getEnd()].isActive()) {
+//std::cout<<"\nabout to insert\n";
+//(*it)->PrintOut(std::cout);
                    edge_descriptor e;
                    bool inserted;
                    //if (cost < 0) continue;
                    tie(e, inserted) = add_edge(edgePt->getStart(), edgePt->getEnd(), graph);
                    graph[e].cost = edgePt->Weight();
                    graph[e].id = edgePt->ID();
-                   //typedef typename graph_traits<graph_t>::vertex_descriptor Vertex;
-                   //Vertex s = vertex(edgePt->getStart(), graph);
-                   //Vertex t = vertex(edgePt->getEnd(), graph);
+ //                  typedef typename graph_traits<graph_t>::vertex_descriptor Vertex;
+//                   Vertex s = vertex(edgePt->getStart(), graph);
+//                   Vertex t = vertex(edgePt->getEnd(), graph);
+//std::cout<<"\nfrom "<< s<<"\t";
+//std::cout<<"to "<<t<<"\n";
             }
     }
     std::vector<vertex_descriptor> predecessors(num_vertices(graph));
@@ -133,7 +137,14 @@ BasePath DijkstraShortestPathAlg::get_shortest_path(UINT source_id, UINT sink_id
     }
     return path;
 }
+
 #if 0
+/*!
+\param[in] source: Graph ID of the source
+\param[in] sink: Graph ID of the sink
+\Returns BasePath
+*/
+BasePath DijkstraShortestPathAlg::get_shortest_path(UINT source_id, UINT sink_id) {
         BasePath path;
         clear();
         m_CandidateVertices.clear();
@@ -157,7 +168,6 @@ BasePath DijkstraShortestPathAlg::get_shortest_path(UINT source_id, UINT sink_id
         }
         return path;
 }
-#endif
 
 
 
@@ -283,6 +293,7 @@ void DijkstraShortestPathAlg::insertIntoCandidate(UINT vertex_id) {
 */
      assert(m_CandidateVertices.size() == m_CandidateVerticesId.size());
 }
+#endif
 
 /*!
 Restores the graph for the next iteration so it has:
@@ -296,4 +307,3 @@ void DijkstraShortestPathAlg::clear() {
      for (UINT i = 0; i < m_Edges.size(); i++)
           m_Edges[i].reInsert();
 }
-

@@ -50,7 +50,8 @@ class DijkstraShortestPathAlg: public Graph {
  protected:
        /** @name Routines used in the algorithm*/
        ///@{
-
+       BasePath boostDijkstra(UINT source_id, UINT sink_id);
+#if 0
        //! Initial step
        void determine_shortest_paths(UINT source_id, UINT sink_id);
        //! returns the shortest path from source_id to sink_id
@@ -63,6 +64,7 @@ class DijkstraShortestPathAlg: public Graph {
        UINT selectBestCandidate();
        //* Insert a pointer to the vertex into the candidate vertices
        void insertIntoCandidate(UINT vertex_id);
+#endif
        ///@}
 };
 

@@ -3,7 +3,8 @@
 #include <deque>
 #include <fstream>
 #include <iostream>
- #include <algorithm>
+#include <algorithm>
+#include "vrp_assert.h"
 #include "GraphElements.h"
 #include "Graph.h"
 
@@ -16,7 +17,9 @@ Graph::Graph(const std::string &file_name) {
 
 Graph::Graph(const Graph &graph) {
         m_Vertices.assign(graph.m_Vertices.begin(), graph.m_Vertices.end());
+        m_VerticesPt = graph.m_VerticesPt;
         m_Edges.assign(graph.m_Edges.begin(), graph.m_Edges.end());
+        m_BestEdgesPt=graph.m_BestEdgesPt;
 }
 
 Graph::Graph(void) {}
@@ -36,16 +39,27 @@ the ID of the vertex.\n
 \param[in] vertex_id: Original Id of the vertex
 \return ID: of the vertex in the graph.
 */
-UINT Graph::getNewVertex(int vertex_id) {
+BaseVertex* Graph::getNewVertex(int vertex_id) {
     UINT nodePos;
-    if (!exist_vertex(vertex_id)) {
-        nodePos = m_Vertices.size();
-        BaseVertex vertex(nodePos, vertex_id);
-        m_Vertices.push_back(vertex);
-        return nodePos;
+    nodePos = m_Vertices.size();
+    BaseVertex vertex(nodePos, vertex_id);
+//vertex.PrintOut(std::cout);
+    m_Vertices.push_back(vertex); //optimistic insertion
+    vSetIt it;
+    it = m_VerticesPt.find(&m_Vertices.back());
+    if (it == m_VerticesPt.end()) {
+//std::cout<<"not found\n";
+//assert(true==false);
+        m_VerticesPt.insert(&m_Vertices.back());
+        return &m_Vertices.back();
+    } else { //was already inserted
+//std::cout<<"found\n";
+//(*it)->PrintOut(std::cout);
+//assert(true==false);
+        m_Vertices.pop_back();
+        return (*it);
     }
-    nodePos = find_vertex(vertex_id);
-    return nodePos;
+    return NULL;
 }
 
 
@@ -122,9 +136,8 @@ BaseVertex* Graph::getVertexPt(UINT vertex_id) {
 
 void Graph::clear() {
         m_Edges.clear();
-        for (UINT pos=0; pos < m_Vertices.size(); pos++)
-             m_Vertices[pos].clear();
         m_Vertices.clear();
+        m_VerticesPt.clear();
 }
 /*!
 \warning  Please use Graph::exist_vertex before calling this function otherwise:
@@ -135,13 +148,28 @@ void Graph::clear() {
 \Return 0 if vertex_id is not found
 \Return ID: the position/ID of vertex_id when not found
 */
-UINT  Graph::find_vertex(int vertex_id) const {
-    UINT i;
-    if (m_Vertices.size() == 0) return 0;
-    for (i = 0; i < m_Vertices.size()
-          && m_Vertices[i].getOriginalID() != vertex_id; i++) {}
-    if (i >= m_Vertices.size()) return 0;
-    return i;
+
+BaseVertex*  Graph::find_vertex(int vertex_id) const {
+    UINT nodePos;
+    nodePos = m_Vertices.size();
+    BaseVertex vertex(nodePos, vertex_id);
+    vSetIt it;
+    it = m_VerticesPt.find(&vertex);
+    if (it == m_VerticesPt.end()) {
+#if 0
+std::cout<<"not found\n";
+PrintOut(std::cout);
+assert(true==false);
+#endif
+       return NULL;
+    } 
+#if 0
+std::cout<<"found\n";
+(*it)->PrintOut(std::cout);
+std::cout<<"found\n";
+assert(true==false);
+#endif
+    return (*it);
 }
 
 bool  Graph::exist_vertex(int vertex_id) const {
@@ -225,6 +253,11 @@ void Graph::PrintOut(std::ostream &out_stream) const {
         m_Edges[i].PrintOut(out_stream);
         out_stream << "\n";
     }
+    out_stream << "Vertices By ID\n";
+    for (vSetIt it = m_VerticesPt.begin(); it != m_VerticesPt.end(); ++it) {
+        (*it)->PrintOut(out_stream);
+        out_stream << "\n";
+    }
 }
 
 
@@ -279,8 +312,9 @@ void Graph::import_from_file(const std::string &input_file_name) {
 
         int edge_id, start_id, end_id;
         double edge_weight, reverse_weight;
-        UINT startPos;
-        UINT endPos;
+        BaseVertex* startPos;
+        BaseVertex* endPos;
+        int count = 0;
 
         while (ifs >> edge_id) {
                 if (edge_id == -1)  break;
@@ -288,16 +322,28 @@ void Graph::import_from_file(const std::string &input_file_name) {
                 ifs >> start_id;
                 ifs >> end_id;
                 ifs >> edge_weight;
+
+//std::cout<<"inserting"<<edge_id<<"\n";
                 if (has_reverse_cost) ifs >> reverse_weight;
 
                 startPos = Graph::getNewVertex(start_id);
                 endPos = Graph::getNewVertex(end_id);
 
                 if (edge_weight >0)
-                       insertNewEdge(edge_id, startPos, endPos, edge_weight);
+                       insertNewEdge(edge_id, startPos->ID(), endPos->ID(), edge_weight);
                 if (has_reverse_cost && reverse_weight >0)
-                       insertNewEdge(edge_id, endPos, startPos, reverse_weight);
+                       insertNewEdge(edge_id, endPos->ID(), startPos->ID(), reverse_weight);
+                count++;
+#if 0
+if ((count % 1000)== 0) {
+std::cout<<"Edges read\n"<<count;
+PrintOut(std::cout);
+std::cout<<"\n";
+assert(true==false);
+}
+#endif
         }
         ifs.close();
-
+        assert(m_BestEdgesPt.size());
+//assert(true==false);
 }

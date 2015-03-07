@@ -3,12 +3,11 @@
 
 
 #include <string>
-#include <cassert>
 #include <set>
 #include <deque>
 #include <iostream>
 #include <limits>
-
+#include "vrp_assert.h"
 #include "BaseEdge.h"
 
 
@@ -68,6 +67,14 @@ class BaseVertex {
             else return false;
             }
         };
+
+        class compBaseVertexID {
+         public:
+          bool operator()(const BaseVertex *v1, const BaseVertex *v2) const {
+            return v1->m_originalID < v2->m_originalID;
+            }
+        };
+
 
         /** @name accessors */
         ///@{

@@ -46,11 +46,13 @@ void testDijkstraGraph()
         path.PrintOut(std::cout);
 
 }
+
 #endif
 void yenTest (int testNumb, int from, int to, int k, const Graph &graph) {
 	std::deque<BasePath> paths;
         std::cout<<"TEST "<< testNumb<<": "<< k <<" paths from "<< from <<" to "<< to <<" \n";
         YenTopKShortestPathsAlg test(graph);
+//test.PrintOut(std::cout);
         paths = test.Yen(from,to,k);
         std::cout<<"paths found "<<paths.size()<<"\n";
         std::cout << "The PATHS" << std::endl;
@@ -82,7 +84,6 @@ void testYenAlgParallel()
 {
         std::string fileName("../devdata/issue285.data");
 	Graph my_graph(fileName);
-#if 0
         yenTest(1, 2,3, 2, my_graph);
         yenTest(2, 1,3, 2, my_graph);
         yenTest(3, 1,4, 2, my_graph);
@@ -92,14 +93,14 @@ void testYenAlgParallel()
         yenTest(7, 2,4, 3, my_graph);
         yenTest(8, 2,3, 3, my_graph);
         yenTest(9, 2,3, 4, my_graph);
-#endif
         yenTest(10, 2,4, 4, my_graph);
 }
+
 void testYenAlgOptimize()
 {
         std::string fileName("../devdata/optimizing.data");
         Graph my_graph(fileName);
-        my_graph.PrintOut(std::cout);
+        //my_graph.PrintOut(std::cout);
         //yenTest(1, 1,3, 1, my_graph);
         //yenTest(1, 1,3, 3, my_graph);
         //yenTest(1, 1,3, 20, my_graph);
@@ -107,12 +108,21 @@ void testYenAlgOptimize()
         yenTest(1, 1,5, 100, my_graph);
 }
 
+void testWorkshop()
+{
+        std::string fileName("../devdata/workshop.data");
+        Graph my_graph(fileName);
+        //my_graph.PrintOut(std::cout);
+        //yenTest(1, 52836,471, 1, my_graph);
+        yenTest(1, 52836,471, 3, my_graph);
+}
 int main(...)
 {
 	std::cout << "Welcome to the real world!" << std::endl;
 
 	// testDijkstraGraph();
 	//testYenAlg();
-	testYenAlgParallel();
+	//testYenAlgParallel();
 	//testYenAlgOptimize();
+	testWorkshop();
 }
