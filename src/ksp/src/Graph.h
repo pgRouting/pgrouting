@@ -35,34 +35,42 @@ class Graph {
 
  public:
      Graph();
+#if 0
      explicit Graph(const Graph &rGraph);
-     explicit Graph(const std::string &file_name);
      ~Graph(void);
+#endif
+     explicit Graph(const std::string &file_name);
 
      /** @name accessors */
      ///@{
 
+#if 0
      //! Edges set returns a deque containing the Ids of the fanOut edges of vertex_id;
      void getFanOutActiveEdgesIds(UINT vertex_id, std::deque< UINT> &edges_set) const;
      //! Edges set returns a deque containing a copy of the fanOut edges of vertex_id;
      void getFanOutActiveEdges(UINT vertex_id, std::deque< BaseEdge> &edges_set) const;
+#endif
+#if 0
      //! Edges set returns a deque containing a copy of the fanIn edges of vertex_id;
-     void getFanInActiveEdges(UINT vertex_id, std::deque< BaseEdge> &edges_set) const;
+     void getFanInActiveEdges(UINT vertex_id, BaseVertex::eSetPt &edges_set) const;
      //! Returns the weight of vertex_id
      double vertexWeight(UINT vertex_id) const;
      //! Returns the weight of the edge identified by edge_id
      double edgeWeight(UINT edge_id) const;
      //! Returns the a copy of the vertex identified by vertex_id
      BaseVertex getVertex(UINT vertex_id) const;
+#endif
      //! Returns the original ID of vertex_id
      int getVertexOriginalID(UINT vertex_id) const;
-     //! Returns the Id of the vertex originaly identified by vertex_id (0 when nor found);
+     //! Returns a pointer to the vertex originaly identified by vertex_id (NULL when nor found);
      BaseVertex* find_vertex(int vertex_id) const;
+#if 0
      //! True when the identified originaly by vertex_id is in the graph
      bool exist_vertex(int vertex_id) const;
      //! Returns a pointer to vertex_id
      BaseVertex* getVertexPt(UINT vertex_id) ;
      ///@}
+#endif
 
      /** @name mutators */
      ///@{

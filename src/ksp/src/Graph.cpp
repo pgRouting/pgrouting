@@ -15,15 +15,16 @@ Graph::Graph(const std::string &file_name) {
         import_from_file(file_name);
 }
 
+#if 0
 Graph::Graph(const Graph &graph) {
         m_Vertices.assign(graph.m_Vertices.begin(), graph.m_Vertices.end());
         m_VerticesPt = graph.m_VerticesPt;
         m_Edges.assign(graph.m_Edges.begin(), graph.m_Edges.end());
         m_BestEdgesPt=graph.m_BestEdgesPt;
 }
-
-Graph::Graph(void) {}
 Graph::~Graph(void) { clear();}
+#endif
+Graph::Graph(void) {}
 
 
 /*!
@@ -104,6 +105,7 @@ void Graph::updateBestEdgesSet(BaseEdge *edgePt) {
     }
 }
 
+#if 0
 double Graph::vertexWeight(UINT vertex_id) const { 
     assert (vertex_id < m_Vertices.size());
     return m_Vertices[vertex_id].Weight();
@@ -112,11 +114,12 @@ double Graph::edgeWeight(UINT edge_id) const {
     assert (edge_id < m_Edges.size());
     return m_Edges[edge_id].Weight();
 }
+#endif
 int Graph::getVertexOriginalID(UINT vertex_id) const {
     assert (vertex_id < m_Vertices.size());
     return m_Vertices[vertex_id].getOriginalID();
 }
-
+#if 0
 
 
 BaseVertex Graph::getVertex(UINT vertex_id) const {
@@ -132,6 +135,7 @@ BaseVertex* Graph::getVertexPt(UINT vertex_id) {
         if (vertex_pt->isRemoved()) return NULL;
         return vertex_pt;
 }
+#endif
 
 
 void Graph::clear() {
@@ -172,6 +176,7 @@ assert(true==false);
     return (*it);
 }
 
+#if 0
 bool  Graph::exist_vertex(int vertex_id) const {
     UINT i;
     if (m_Vertices.size() == 0) return false;
@@ -179,6 +184,7 @@ bool  Graph::exist_vertex(int vertex_id) const {
     if (i >= m_Vertices.size()) return false;
     return true;
 }
+#endif
 
 void  Graph::remove_edge(UINT edge_id) {
     assert(edge_id < m_Edges.size());
@@ -192,6 +198,7 @@ void  Graph::removeVertices(const BasePath &path) {
     }
 }
 
+#if 0
 void Graph::getFanOutActiveEdgesIds(UINT vertex_id, std::deque<UINT> &edges_set) const {
         assert(vertex_id < m_Vertices.size());
         UINT edgeId, nextNodeId;
@@ -209,7 +216,6 @@ void Graph::getFanOutActiveEdgesIds(UINT vertex_id, std::deque<UINT> &edges_set)
         }
 }
 
-
 void Graph::getFanOutActiveEdges(UINT vertex_id, std::deque<BaseEdge> &edges_set) const {
         assert(vertex_id < m_Vertices.size());
         UINT edgeId, prevNodeId;
@@ -225,22 +231,26 @@ void Graph::getFanOutActiveEdges(UINT vertex_id, std::deque<BaseEdge> &edges_set
                        edges_set.push_back(m_Edges[edgeId]);
         }
 }
+#endif
 
-void Graph::getFanInActiveEdges(UINT vertex_id, std::deque<BaseEdge> &edges_set) const{
+#if 0
+void Graph::getFanInActiveEdges(UINT vertex_id, BaseVertex::eSetPt &edges_set) const{
         assert(vertex_id < m_Vertices.size());
         UINT edgeId, prevNodeId;
         edges_set.clear();
         if (!m_Vertices[vertex_id].isActive()) return;
 
-        std::deque<BaseEdge*> FanIn = m_Vertices[vertex_id].getFanIn();
-        for (UINT i = 0; i < FanIn.size(); i++) {
-               edgeId = FanIn[i]->ID();
-               prevNodeId =  FanIn[i]->getStart();
+        BaseVertex::eSetPt FanIn = m_Vertices[vertex_id].getFanIn();
+        BaseVertex::eSetPtIt it;
+        for (it = FanIn.begin(); it != FanIn.end(); ++it) {
+               edgeId = (*it)->ID();
+               prevNodeId =  (*it)->getStart();
                if ( m_Vertices[ prevNodeId ].isActive()
                    &&  m_Edges[ edgeId ].isActive())
-                       edges_set.push_back(m_Edges[edgeId]);
+                       edges_set.insert(*it);
         }
 }
+#endif
 
 void Graph::PrintOut(std::ostream &out_stream) const {
     out_stream << "Vertices \n";

@@ -30,15 +30,17 @@ int  doKpaths(ksp_edge_t  * edges, int total_tuples,
         (*path_count) = 0;
 
         log << "NOTICE: Step 1: checking Sarting and Ending Vertex\n";
+        BaseVertex* startPt = theGraph.find_vertex(start_vertex);
+        BaseVertex* sinkPt = theGraph.find_vertex(end_vertex);
 
-        if ( !theGraph.exist_vertex(start_vertex)) {
+        if (startPt == NULL) {
             *err_msg = strdup( "NOTICE: Starting vertex not found on any edge" );
             (*path_count) = 1;
             *path = noPathFound(start_vertex);
             return 0;
         }
 
-        if (!theGraph.exist_vertex(end_vertex)) {
+        if (sinkPt == NULL) {
             *err_msg = strdup( "NOTICE: Ending vertex not found on any edge" );
             (*path_count) = 1;
             *path = noPathFound(start_vertex);

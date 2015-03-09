@@ -8,7 +8,7 @@
 #include <iostream>
 #include <limits>
 #include "vrp_assert.h"
-#include "BaseEdge.h"
+//#include "BaseEdge.h"
 
 
 /**************************************************************************/
@@ -20,16 +20,17 @@
 \copyright GNU General Public License, version 2
 \details  Class to store a vertex with FanIn & FanOut Edges.
 ********************************************************************** */
+class BaseEdge;
 class BaseVertex {
-        int m_originalID;
-        UINT m_ID;
-        double m_Weight;
-        std::set< BaseEdge*, BaseEdge::compBaseEdge> m_FaninEdges;
-        std::set< BaseEdge*,  BaseEdge::compBaseEdge> m_FanoutEdges;
-        bool m_active;   // to indicate if its removed or not
-        bool m_visited;  // to indicate if iwe have visited the node
-
  public:
+        typedef typename  std::set< BaseEdge*, BaseEdge::compBaseEdge> eSetPt;
+        typedef typename  std::set< BaseEdge*, BaseEdge::compBaseEdge>::iterator eSetPtIt;
+
+        /*! @name constructors
+            Copy constructor is the Default
+        */
+        ///@{
+
         BaseVertex(unsigned int nid_, int id_, double weight_)
            : m_originalID(id_),
              m_ID(nid_),
@@ -58,23 +59,32 @@ class BaseVertex {
           m_FaninEdges.clear();
           m_FanoutEdges.clear();
         }
+        ///@}
 
-        class compBaseVertex {
+        /** @name comparisons */
+        ///@{
+
+
+        /*! Order By Weight
+           -In case of a tie: then by original ID
+        */
+        class compBaseVertexWEIGHT {
          public:
           bool operator()(const BaseVertex *v1, const BaseVertex *v2) const {
             if (v1->m_Weight < v2->m_Weight) return true;
-            if  ((v1->m_Weight == v2->m_Weight) && (v1->m_ID < v2->m_ID)) return true;
+            if  ((v1->m_Weight == v2->m_Weight) && (v1->m_originalID < v2->m_originalID)) return true;
             else return false;
             }
         };
 
+        //! Order By original ID
         class compBaseVertexID {
          public:
           bool operator()(const BaseVertex *v1, const BaseVertex *v2) const {
             return v1->m_originalID < v2->m_originalID;
             }
         };
-
+        ///@}
 
         /** @name accessors */
         ///@{
@@ -83,17 +93,17 @@ class BaseVertex {
         int getOriginalID() const { return m_originalID;}
         //! Returns the id of the vertex
         UINT ID() const { return m_ID;}
-        //! Returns a copy of all Incomming edges (regardles of active or visited)
-        const std::deque< BaseEdge* > getFanIn() const  {
-            std::deque< BaseEdge* > edges;
-            edges.assign(m_FaninEdges.begin(), m_FaninEdges.end());
-            return edges;
+        //! Returns a reference of all Incomming edges
+        const eSetPt& getFanIn() const  {
+//            std::deque<BaseEdge*> edges;
+//            edges.assign(m_FaninEdges.begin(), m_FaninEdges.end());
+            return m_FaninEdges;
         }
         //! Returns a copy of all outgoing edges (regardles of active or visited)
-        const std::deque< BaseEdge* > getFanOut() const  {
-            std::deque< BaseEdge* > edges;
-            edges.assign(m_FanoutEdges.begin(), m_FanoutEdges.end());
-            return edges;
+        const eSetPt& getFanOut() const  {
+//            std::deque< BaseEdge* > edges;
+//            edges.assign(m_FanoutEdges.begin(), m_FanoutEdges.end());
+            return m_FanoutEdges;
         }
         //const std::deque< BaseEdge* > getFanOut() const {return m_FanoutEdges;}
         //! Returns true if it has being logically removed from the graph
@@ -149,6 +159,15 @@ class BaseVertex {
                  << ", Visited=" << m_visited << ")";
         }
         ///@}
+
+ private:
+        int m_originalID;
+        UINT m_ID;
+        double m_Weight;
+        eSetPt m_FaninEdges;
+        eSetPt m_FanoutEdges;
+        bool m_active;   // to indicate if its removed or not
+        bool m_visited;  // to indicate if iwe have visited the node
 };
 
 

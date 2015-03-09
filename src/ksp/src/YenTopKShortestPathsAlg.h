@@ -1,15 +1,3 @@
-///////////////////////////////////////////////////////////////////////////////
-///  YenTopKShortestPathsAlg.h
-///  The implementation of Yen's algorithm to get the top k shortest paths
-///  connecting a pair of vertices in a graph.
-///
-///  @remarks <TODO: insert remarks here>
-///
-///  @author Yan Qi @date 7/10/2010
-///
-///  $Id: YenTopKShortestPathsAlg.h 65 2010-09-08 06:48:36Z yan.qi.asu $
-///
-///////////////////////////////////////////////////////////////////////////////
 #ifndef SRC_KSP_SRC_YENTOPKSHORTESTPATHSALG_H_
 #define SRC_KSP_SRC_YENTOPKSHORTESTPATHSALG_H_
 
@@ -21,6 +9,7 @@ class YenTopKShortestPathsAlg: public DijkstraShortestPathAlg {
         std::deque<BasePath> m_ResultList;
         std::set<BasePath, BasePath::compBasePath> m_Heap;
 
+        bool m_DoIt;
         int m_Source_id;
         int m_Target_id;
         UINT sourceID;
@@ -29,7 +18,7 @@ class YenTopKShortestPathsAlg: public DijkstraShortestPathAlg {
 
  public:
         explicit YenTopKShortestPathsAlg(const Graph& graph)
-                : DijkstraShortestPathAlg(graph),
+                : DijkstraShortestPathAlg(graph), m_DoIt(false),
                  m_Source_id(0), m_Target_id(0) {}
 
         ~YenTopKShortestPathsAlg(void) {clear();}
@@ -37,11 +26,13 @@ class YenTopKShortestPathsAlg: public DijkstraShortestPathAlg {
         void clear();
  private:
         void insertIntoHeap(const BasePath &path);
-        void get_shortest_paths(UINT pSource, UINT pTarget, int top_k);
+        void executeYen(UINT pSource, UINT pTarget, int top_k);
         void avoidDijkstra(UINT edgeToBeRemoved, UINT atPosOfPath, BasePath &workingPath);
+        void getParallelShort(BasePath &solutionPath, bool doIt);
+        void removeEdgeAndParallels(UINT edgeId);
 
         BasePath get_shortest_path(UINT pSource, UINT pTarget);
-        void _init();
+        void getFirstSolution();
         void next();
 };
 #endif  // SRC_KSP_SRC_YENTOPKSHORTESTPATHSALG_H_

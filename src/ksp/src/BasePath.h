@@ -55,6 +55,9 @@ class BasePath {
         /** @name accessors */
         ///@{
 
+        //! returns a reference to the EdgesList
+        const std::deque<BaseEdge>& path() const { return m_EdgesList;}
+
         //! Returns the weight of the path 
         double Weight() const { return m_Weight;}
         //! Returns the size of the path 
@@ -91,7 +94,9 @@ class BasePath {
         bool isEqual(const  BasePath &largerPath) const {
             if (size() > largerPath.size()) return false;
             for (UINT i = 0 ; i < size() ; i++) {
-                if (m_EdgesList[i].ID() != largerPath.m_EdgesList[i].ID()) return false;
+                if (m_EdgesList[i].getStart() != largerPath.m_EdgesList[i].getStart()) return false;
+                if (m_EdgesList[i].getEnd() != largerPath.m_EdgesList[i].getEnd()) return false;
+                // if (m_EdgesList[i].ID() != largerPath.m_EdgesList[i].ID()) return false;
             }
             return true;
         }
