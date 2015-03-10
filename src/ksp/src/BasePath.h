@@ -24,11 +24,9 @@
 \details  Class to store a path.
 ********************************************************************** */
 class BasePath {
- protected:
-        double m_Weight; //! weight of the path
-        std::deque<BaseEdge> m_EdgesList;
-
  public:
+        typedef typename std::deque<BaseEdge> eDeque;
+        typedef typename std::deque<BaseEdge>::const_iterator eDequeIt;
 
         class compBasePath {
          public:
@@ -38,11 +36,22 @@ class BasePath {
              //paths weights are equal now we check by length
              if (p1.m_EdgesList.size() < p2.m_EdgesList.size()) return true;
              if (p1.m_EdgesList.size() > p2.m_EdgesList.size()) return false;
+#if 1
+             eDequeIt et1,et2;
+             for (et1 = p1.m_EdgesList.begin(), et2 = p2.m_EdgesList.begin();
+                  (et1 != p1.m_EdgesList.end()) && (et2 != p2.m_EdgesList.end());
+                  ++et1, ++et2) {
+                  if ((*et1).ID() < (*et2).ID()) return true;
+                  if ((*et1).ID() > (*et2).ID()) return false;
+             }
+
+#else
              //paths lengths are equal now we check by edges id's
              for (UINT i = 0; i < p1.m_EdgesList.size(); i++) {
                 if (p1.m_EdgesList[i].ID() < p2.m_EdgesList[i].ID()) return true;
                 if (p1.m_EdgesList[i].ID() > p2.m_EdgesList[i].ID()) return false;
              }
+#endif
              // we got here and everything is equal
              return false;
           };
@@ -169,6 +178,9 @@ class BasePath {
                 out_stream << std::endl
                   <<  "*********************************************" << std::endl;
         }
+ protected:
+        double m_Weight; //! weight of the path
+        eDeque m_EdgesList;
 };
 
 #endif  // SRC_KSP_SRC_BASEPATH_H_
