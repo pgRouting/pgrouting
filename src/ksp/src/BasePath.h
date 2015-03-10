@@ -90,8 +90,8 @@ class BasePath {
         }
         //! Returns a copy of the ith edge of the path
         BaseEdge operator[](UINT i) const {
-		assert(i < m_EdgesList.size());
-                return (m_EdgesList[i]);
+            assert(i < m_EdgesList.size());
+            return (m_EdgesList[i]);
         }
         //! Returns true when path goes fromId -> toId (local id's)
         bool FromTo(UINT fromId, UINT toId) const {
@@ -102,19 +102,38 @@ class BasePath {
         //! Returns true when this path shares the vertices as the this path
         bool isEqual(const  BasePath &largerPath) const {
             if (size() > largerPath.size()) return false;
+#if 1
+             eDequeIt et1,et2;
+             for (et1 = m_EdgesList.begin(), et2 = largerPath.m_EdgesList.begin();
+                  (et1 != m_EdgesList.end()) && (et2 != largerPath.m_EdgesList.end());
+                  ++et1, ++et2) {
+                  if ((*et1).getStart() != (*et2).getStart()) return false;
+                  if ((*et1).getEnd() != (*et2).getEnd()) return false;
+             }
+#else
             for (UINT i = 0 ; i < size() ; i++) {
                 if (m_EdgesList[i].getStart() != largerPath.m_EdgesList[i].getStart()) return false;
                 if (m_EdgesList[i].getEnd() != largerPath.m_EdgesList[i].getEnd()) return false;
             }
+#endif
             return true;
         }
 
         bool EdgesLessComapre(const BasePath &p2) const {
+#if 1
+             eDequeIt et1,et2;
+             for (et1 = m_EdgesList.begin(), et2 = p2.m_EdgesList.begin();
+                  (et1 != m_EdgesList.end()) && (et2 != p2.m_EdgesList.end());
+                  ++et1, ++et2) {
+                  if ((*et1).ID() < (*et2).ID()) return false;
+             }
+#else
               UINT limit = (size() < p2.size()) ? size() : p2.size();
               for (UINT i = 0 ; i < limit; i++) {
                    if (m_EdgesList[i].ID() < p2.m_EdgesList[i].ID())
                        return true;
               }
+#endif
               return false;
         }
         ///@}
@@ -126,18 +145,27 @@ class BasePath {
         void Weight(double val) { m_Weight = val;}
         //! Adds an edge at the end of the path updating the corresponding weight of the path
         void push_back(BaseEdge edge) {
+            if (size() > 0) assert(m_EdgesList.back().getEnd() == edge.getStart());
             m_EdgesList.push_back(edge);
             m_Weight += edge.Weight();
         }
         //! Adds an edge at the front of the path updating the corresponding weight of the path
         void push_front(BaseEdge edge) {
+            if (size() > 0) assert(m_EdgesList.front().getStart() == edge.getEnd());
             m_EdgesList.push_front(edge);
             m_Weight += edge.Weight();
         }
         //! Adds a path at the end of this path, updates the weight of the path
         void append(const BasePath &trail) {
+            if (size() > 0) assert(m_EdgesList.back().getEnd() == trail.m_EdgesList.front().getStart());
+#if 1
+            m_Weight += trail.m_Weight;
+            m_EdgesList.insert(m_EdgesList.end(), trail.m_EdgesList.begin(), trail.m_EdgesList.end());
+            
+#else
             for (UINT i=0; i < trail.size(); i++)
                 push_back(trail.m_EdgesList[i]);
+#endif
         }
         //! Deletes all edges of the path, and sets the wigth to 0
         void clear() {
