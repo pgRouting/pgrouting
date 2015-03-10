@@ -21,14 +21,15 @@ struct Vertex
 \param[in] sink: original id of the sink
 \Returns BasePath
 */
-BasePath DijkstraShortestPathAlg::Dijkstra(int source, int sink) {
+std::deque<BaseEdge> DijkstraShortestPathAlg::Dijkstra(int source, int sink) {
+        std::deque<BaseEdge> emptyPath;
         if (  source !=sink ) {
              BaseVertex* sourcePt =find_vertex(source);
              BaseVertex* sinkPt =find_vertex(sink);
-             if ((sourcePt == NULL) || (sinkPt == NULL)) return BasePath();
-             return boostDijkstra(sourcePt->ID(), sinkPt->ID());
+             if ((sourcePt == NULL) || (sinkPt == NULL)) return emptyPath;
+             return boostDijkstra(sourcePt->ID(), sinkPt->ID()).Path();
         }
-        return BasePath();
+        return emptyPath;
 }
 
 /*!
@@ -38,8 +39,7 @@ BasePath DijkstraShortestPathAlg::Dijkstra(int source, int sink) {
 (the truth value is ignored)
 \Returns BasePath
 */
-BasePath DijkstraShortestPathAlg::Dijkstra(UINT source, UINT sink, bool localids) {
-    if (localids == false) return Dijkstra(source, sink);
+BasePath DijkstraShortestPathAlg::Dijkstra(UINT source, UINT sink) {
     if ( source < m_Vertices.size() && sink < m_Vertices.size() &&  source != sink)
          return boostDijkstra(source, sink);
     return BasePath();

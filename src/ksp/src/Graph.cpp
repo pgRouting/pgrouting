@@ -45,7 +45,7 @@ BaseVertex* Graph::getNewVertex(int vertex_id) {
     nodePos = m_Vertices.size();
     BaseVertex vertex(nodePos, vertex_id);
 //vertex.PrintOut(std::cout);
-    m_Vertices.push_back(vertex); //optimistic insertion
+    m_Vertices.push_back(vertex); //optimistic insertion  // TODO maybe not needed
     vSetIt it;
     it = m_VerticesPt.find(&m_Vertices.back());
     if (it == m_VerticesPt.end()) {
@@ -77,15 +77,16 @@ The FanIn of the ending vertex and FanOut of the starting vertex will include th
 \param[in] edge_weight: weight of the edge
 \return ID: of the edge in the graph.
 */
-UINT Graph::insertNewEdge(int edge_id,  UINT startId, UINT endId, double edge_weight) {
+BaseEdge* Graph::insertNewEdge(int edge_id,  UINT startId, UINT endId, double edge_weight) {
     UINT edgePos = m_Edges.size();
     BaseEdge edge(edgePos, edge_id, startId, endId, edge_weight);
     m_Edges.push_back(edge);
+    BaseEdge *edgePt = &m_Edges.back();
 
-    m_Vertices[startId].push_FanOut( &m_Edges[edgePos]);
-    m_Vertices[endId].push_FanIn(&m_Edges[edgePos]);
-    updateBestEdgesSet(&m_Edges[edgePos]);
-    return edgePos;
+    m_Vertices[startId].push_FanOut(edgePt);
+    m_Vertices[endId].push_FanIn(edgePt);
+    updateBestEdgesSet(edgePt);
+    return edgePt;
 }
 
 
@@ -186,9 +187,8 @@ bool  Graph::exist_vertex(int vertex_id) const {
 }
 #endif
 
-void  Graph::remove_edge(UINT edge_id) {
-    assert(edge_id < m_Edges.size());
-    m_Edges[edge_id].remove();
+void  Graph::remove_edge(BaseEdge *edgePt) {
+    edgePt->remove();
 }
 
 void  Graph::removeVertices(const BasePath &path) {
@@ -196,6 +196,14 @@ void  Graph::removeVertices(const BasePath &path) {
 //TODO convert to iterator
     for (UINT i = 0 ; i  <  path.size() ; i++) {
       m_Vertices[ path[i]->getStart() ].remove();
+    }
+}
+
+void  Graph::restoreVertices(const BasePath &path) {
+    if (path.size() == 0) return;
+//TODO convert to iterator
+    for (UINT i = 0 ; i  <  path.size() ; i++) {
+      m_Vertices[ path[i]->getStart() ].restore();
     }
 }
 

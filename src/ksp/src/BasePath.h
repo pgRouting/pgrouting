@@ -66,6 +66,14 @@ class BasePath {
 
         //! returns a reference to the EdgesList
         const eDeque& path() const { return m_EdgesList;}
+        std::deque<BaseEdge> Path() const {
+             std::deque<BaseEdge> localPath;
+             eDequeIt et1;
+             for (et1 = m_EdgesList.begin(); et1 != m_EdgesList.end(); ++et1) {
+                localPath.push_back(*(*et1));
+             }
+             return localPath;
+        }
 
         //! Returns the weight of the path 
         double Weight() const { return m_Weight;}

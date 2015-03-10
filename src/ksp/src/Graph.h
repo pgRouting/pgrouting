@@ -78,13 +78,15 @@ class Graph {
      //! clears the edges and vertices of the graph
      void clear();
      //! Inserts an edge to the graph (original id, startId, endId, weight)
-     UINT insertNewEdge(int id, UINT startId, UINT endId, double edge_weight);
+     BaseEdge* insertNewEdge(int id, UINT startId, UINT endId, double edge_weight);
      //! Returns the Id a the newly created vertex or the Id if it already exists
      BaseVertex* getNewVertex(int vertex_id);
      //! logically removes the edge from the graph
-     void remove_edge(UINT edge_id);
+     void remove_edge(BaseEdge *edgePt);
      //! logically removes the vertices from the graph that are starting vertices of the edges in path
      void removeVertices(const BasePath &path);
+     //! logically restores the vertices from the graph that are starting vertices of the edges in path
+     void restoreVertices(const BasePath &path);
      ///@}
 
      /** @name debugging */

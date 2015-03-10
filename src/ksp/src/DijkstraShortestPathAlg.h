@@ -17,8 +17,8 @@ class DijkstraShortestPathAlg: public Graph {
  private:
        //! Ordered by weight set of pointers to vertices used in the algorithm
        //std::set<BaseVertex*, BaseVertex::compBaseVertex> m_CandidateVertices;
-       std::deque<BaseVertex*> m_CandidateVertices;
-       std::set<UINT> m_CandidateVerticesId;
+//       std::deque<BaseVertex*> m_CandidateVertices;
+//       std::set<UINT> m_CandidateVerticesId;
 
  public:
        /** @name Dijkstra execution
@@ -39,9 +39,9 @@ class DijkstraShortestPathAlg: public Graph {
        ///@{
 
        //! Dijkstra using the original ids
-       BasePath Dijkstra(int source, int sink);
+       std::deque<BaseEdge> Dijkstra(int source, int sink);
        //! Dijkstra using the graph's IDs 
-       BasePath Dijkstra(UINT source, UINT sink , bool localids);
+       BasePath Dijkstra(UINT source, UINT sink);
        ///@}
        explicit DijkstraShortestPathAlg(const Graph &graph)
         :Graph(graph) {}
