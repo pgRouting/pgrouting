@@ -193,8 +193,9 @@ void  Graph::remove_edge(UINT edge_id) {
 
 void  Graph::removeVertices(const BasePath &path) {
     if (path.size() == 0) return;
+//TODO convert to iterator
     for (UINT i = 0 ; i  <  path.size() ; i++) {
-      m_Vertices[ path[i].getStart() ].remove();
+      m_Vertices[ path[i]->getStart() ].remove();
     }
 }
 
@@ -278,16 +279,17 @@ void Graph::PrintPath(std::ostream &out_stream, const BasePath &path, int startN
         out_stream << startNode << "\t-1 \t0\n";
         return;
     }
-
+// TODO convert to iterator
     for (UINT i=0 ; i < path.size() ; i++) {
-        BaseEdge edge = path[i];
-        int start = m_Vertices[ edge.getStart() ].getOriginalID();
-        double cost  = edge.Weight();
-        int edgeId = edge.originalID();
+        BaseEdge* edge = path[i];
+        //int start = m_Vertices[ edge.getStart() ].getOriginalID();
+	int start = edge->getStart();
+        double cost  = edge->Weight();
+        int edgeId = edge->originalID();
         out_stream << "Route " << i<< "\n";
         out_stream << start << "\t" << edgeId << "\t" << cost << "\n";
     }
-    out_stream<< m_Vertices[ path[path.size()-1 ].getEnd() ].getOriginalID() << "\t-1 \t0\n";
+    out_stream<< m_Vertices[ path[path.size()-1 ]->getEnd() ].getOriginalID() << "\t-1 \t0\n";
 }
 
 /*!

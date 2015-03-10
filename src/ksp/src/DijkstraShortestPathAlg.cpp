@@ -128,7 +128,7 @@ BasePath DijkstraShortestPathAlg::boostDijkstra(UINT source_id, UINT sink_id) {
                  break;   
             }
         }
-        path.push_back(m_Edges[edge_id]);
+        path.push_back(&m_Edges[edge_id]);
     }
     return path;
 }

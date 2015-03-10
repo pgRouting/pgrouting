@@ -95,6 +95,7 @@ void YenTopKShortestPathsAlg::removeEdgeAndParallels(UINT edgeId) {
 void YenTopKShortestPathsAlg::getParallelShort(const BasePath &solutionPath){
     REG_SIGINT
     if (!m_DoIt) return;
+#if 0
     BaseEdge *edgePt;
     BaseVertex *startPt = NULL;
     BaseVertex::eSetPt fanOutSet;
@@ -136,6 +137,7 @@ void YenTopKShortestPathsAlg::getParallelShort(const BasePath &solutionPath){
             }
         }
      }
+#endif
 }
             
 
@@ -150,8 +152,8 @@ void YenTopKShortestPathsAlg::next() {
         UINT spurNode;
         BasePath rootPath;
         for (UINT i = 0; i < curr_result_path.size(); ++i) {
-            BaseEdge spurEdge (curr_result_path[i]);
-            spurNode = spurEdge.getStart();
+            BaseEdge* spurEdge(curr_result_path[i]);
+            spurNode = spurEdge->getStart();
 
             curr_result_path.subPath(rootPath, i);
 
@@ -170,7 +172,7 @@ void YenTopKShortestPathsAlg::next() {
                BasePath workingPath = m_ResultList[j];
                if (rootPath.isEqual(workingPath)) {
                    if ( i < workingPath.size()) { 
-                      edgeToBeRemoved = workingPath[i].ID();
+                      edgeToBeRemoved = workingPath[i]->ID();
                       removeEdgeAndParallels(edgeToBeRemoved);
                    }
                }

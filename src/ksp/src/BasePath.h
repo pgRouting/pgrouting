@@ -25,8 +25,8 @@
 ********************************************************************** */
 class BasePath {
  public:
-        typedef typename std::deque<BaseEdge> eDeque;
-        typedef typename std::deque<BaseEdge>::const_iterator eDequeIt;
+        typedef typename std::deque<BaseEdge*> eDeque;
+        typedef typename std::deque<BaseEdge*>::const_iterator eDequeIt;
 
         class compBasePath {
          public:
@@ -41,15 +41,15 @@ class BasePath {
              for (et1 = p1.m_EdgesList.begin(), et2 = p2.m_EdgesList.begin();
                   (et1 != p1.m_EdgesList.end()) && (et2 != p2.m_EdgesList.end());
                   ++et1, ++et2) {
-                  if ((*et1).ID() < (*et2).ID()) return true;
-                  if ((*et1).ID() > (*et2).ID()) return false;
+                  if ((*et1)->ID() < (*et2)->ID()) return true;
+                  if ((*et1)->ID() > (*et2)->ID()) return false;
              }
 
 #else
              //paths lengths are equal now we check by edges id's
              for (UINT i = 0; i < p1.m_EdgesList.size(); i++) {
-                if (p1.m_EdgesList[i].ID() < p2.m_EdgesList[i].ID()) return true;
-                if (p1.m_EdgesList[i].ID() > p2.m_EdgesList[i].ID()) return false;
+                if (p1.m_EdgesList[i]->ID() < p2.m_EdgesList[i]->ID()) return true;
+                if (p1.m_EdgesList[i]->ID() > p2.m_EdgesList[i]->ID()) return false;
              }
 #endif
              // we got here and everything is equal
@@ -65,7 +65,7 @@ class BasePath {
         ///@{
 
         //! returns a reference to the EdgesList
-        const std::deque<BaseEdge>& path() const { return m_EdgesList;}
+        const eDeque& path() const { return m_EdgesList;}
 
         //! Returns the weight of the path 
         double Weight() const { return m_Weight;}
@@ -76,28 +76,28 @@ class BasePath {
         //! Returns the EdgeId of edge at position i 
         int getEdgeID(UINT i) const { 
 	    assert(i < m_EdgesList.size());
-            return m_EdgesList[i].ID();
+            return m_EdgesList[i]->ID();
         }
-        //! Returns the Edge's original Id of edge at position i 
+        //! Returns the Edge's->original Id of edge at position i 
         int getEdgeOriginalID(UINT i) const {
             assert(i < m_EdgesList.size());
-            return m_EdgesList[i].originalID();
+            return m_EdgesList[i]->originalID();
         }
         //! Returns a copy of edge at position i 
-        BaseEdge GetEdge(UINT i) const {
+        BaseEdge* GetEdge(UINT i) const {
             assert(i < m_EdgesList.size());
             return m_EdgesList.at(i);
         }
         //! Returns a copy of the ith edge of the path
-        BaseEdge operator[](UINT i) const {
+        BaseEdge* operator[](UINT i) const {
             assert(i < m_EdgesList.size());
             return (m_EdgesList[i]);
         }
         //! Returns true when path goes fromId -> toId (local id's)
         bool FromTo(UINT fromId, UINT toId) const {
              if (size() == 0) return false;
-             return fromId == m_EdgesList[0].getStart()
-                    && toId == m_EdgesList[ size()-1 ].getEnd();
+             return fromId == m_EdgesList[0]->getStart()
+                    && toId == m_EdgesList[ size()-1 ]->getEnd();
         }
         //! Returns true when this path shares the vertices as the this path
         bool isEqual(const  BasePath &largerPath) const {
@@ -107,13 +107,13 @@ class BasePath {
              for (et1 = m_EdgesList.begin(), et2 = largerPath.m_EdgesList.begin();
                   (et1 != m_EdgesList.end()) && (et2 != largerPath.m_EdgesList.end());
                   ++et1, ++et2) {
-                  if ((*et1).getStart() != (*et2).getStart()) return false;
-                  if ((*et1).getEnd() != (*et2).getEnd()) return false;
+                  if ((*et1)->getStart() != (*et2)->getStart()) return false;
+                  if ((*et1)->getEnd() != (*et2)->getEnd()) return false;
              }
 #else
             for (UINT i = 0 ; i < size() ; i++) {
-                if (m_EdgesList[i].getStart() != largerPath.m_EdgesList[i].getStart()) return false;
-                if (m_EdgesList[i].getEnd() != largerPath.m_EdgesList[i].getEnd()) return false;
+                if (m_EdgesList[i]->getStart() != largerPath.m_EdgesList[i]->getStart()) return false;
+                if (m_EdgesList[i]->getEnd() != largerPath.m_EdgesList[i]->getEnd()) return false;
             }
 #endif
             return true;
@@ -125,12 +125,12 @@ class BasePath {
              for (et1 = m_EdgesList.begin(), et2 = p2.m_EdgesList.begin();
                   (et1 != m_EdgesList.end()) && (et2 != p2.m_EdgesList.end());
                   ++et1, ++et2) {
-                  if ((*et1).ID() < (*et2).ID()) return false;
+                  if ((*et1)->ID() < (*et2)->ID()) return false;
              }
 #else
               UINT limit = (size() < p2.size()) ? size() : p2.size();
               for (UINT i = 0 ; i < limit; i++) {
-                   if (m_EdgesList[i].ID() < p2.m_EdgesList[i].ID())
+                   if (m_EdgesList[i]->ID() < p2.m_EdgesList[i]->ID())
                        return true;
               }
 #endif
@@ -142,22 +142,22 @@ class BasePath {
         ///@{
 
         //! Changes the path's weight to be: val
-        void Weight(double val) { m_Weight = val;}
+        void Weight(double val) {m_Weight = val;}
         //! Adds an edge at the end of the path updating the corresponding weight of the path
-        void push_back(BaseEdge edge) {
-            if (size() > 0) assert(m_EdgesList.back().getEnd() == edge.getStart());
+        void push_back(BaseEdge *edge) {
+            if (size() > 0) assert(m_EdgesList.back()->getEnd() == edge->getStart());
             m_EdgesList.push_back(edge);
-            m_Weight += edge.Weight();
+            m_Weight += edge->Weight();
         }
         //! Adds an edge at the front of the path updating the corresponding weight of the path
-        void push_front(BaseEdge edge) {
-            if (size() > 0) assert(m_EdgesList.front().getStart() == edge.getEnd());
+        void push_front(BaseEdge *edge) {
+            if (size() > 0) assert(m_EdgesList.front()->getStart() == edge->getEnd());
             m_EdgesList.push_front(edge);
-            m_Weight += edge.Weight();
+            m_Weight += edge->Weight();
         }
         //! Adds a path at the end of this path, updates the weight of the path
         void append(const BasePath &trail) {
-            if (size() > 0) assert(m_EdgesList.back().getEnd() == trail.m_EdgesList.front().getStart());
+            if (size() > 0) assert(m_EdgesList.back()->getEnd() == trail.m_EdgesList.front()->getStart());
 #if 1
             m_Weight += trail.m_Weight;
             m_EdgesList.insert(m_EdgesList.end(), trail.m_EdgesList.begin(), trail.m_EdgesList.end());
@@ -199,7 +199,7 @@ class BasePath {
         void PrintOut(std::ostream& out_stream) const {
                 out_stream << "Cost: " << m_Weight << " Length: " << m_EdgesList.size() << std::endl;
                 for (UINT i = 0; i < m_EdgesList.size(); i++) {
-                        out_stream << m_EdgesList[i].originalID();
+                        out_stream << m_EdgesList[i]->originalID();
                         //m_EdgesList[i].PrintOut(out_stream);
                         out_stream << "->";
                 }
