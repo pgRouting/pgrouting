@@ -5,6 +5,7 @@
 typedef unsigned int UINT;
 
 #include "./vrp_assert.h"
+#include "./signalhandler.h"
 #include "./BaseEdge.h"
 #include "./BaseVertex.h"
 #include "./BasePath.h"

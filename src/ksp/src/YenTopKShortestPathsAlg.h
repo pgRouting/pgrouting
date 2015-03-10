@@ -28,7 +28,7 @@ class YenTopKShortestPathsAlg: public DijkstraShortestPathAlg {
         void insertIntoHeap(const BasePath &path);
         void executeYen(UINT pSource, UINT pTarget, int top_k);
         void avoidDijkstra(UINT edgeToBeRemoved, UINT atPosOfPath, BasePath &workingPath);
-        void getParallelShort(BasePath &solutionPath, bool doIt);
+        void getParallelShort(const BasePath &solutionPath);
         void removeEdgeAndParallels(UINT edgeId);
 
         BasePath get_shortest_path(UINT pSource, UINT pTarget);

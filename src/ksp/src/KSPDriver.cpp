@@ -1,6 +1,7 @@
 #include <deque>
 #include <sstream>
 
+#include "./signalhandler.h"
 #include "KSPGraph.h"
 #include "YenTopKShortestPathsAlg.h"
 extern "C" {
@@ -20,6 +21,7 @@ int  doKpaths(ksp_edge_t  * edges, int total_tuples,
                        ksp_path_element_t **path, int *path_count,
                        char ** err_msg) {
    try {
+        REG_SIGINT
         KSPGraph theGraph = KSPGraph();
         std::ostringstream log;
 
@@ -28,6 +30,7 @@ int  doKpaths(ksp_edge_t  * edges, int total_tuples,
         theGraph.AddData(edges, total_tuples, has_reverse_cost);
         theGraph.EndLoad();
         (*path_count) = 0;
+	THROW_ON_SIGINT
 
         log << "NOTICE: Step 1: checking Sarting and Ending Vertex\n";
         BaseVertex* startPt = theGraph.find_vertex(start_vertex);
@@ -55,11 +58,14 @@ int  doKpaths(ksp_edge_t  * edges, int total_tuples,
         }
         log << "NOTICE: Step 2: Starting Yen graph \n";
 
+	THROW_ON_SIGINT
         YenTopKShortestPathsAlg yenGraph(theGraph);
+	THROW_ON_SIGINT
 
         log << "NOTICE: Step 3: Getting the paths \n";
         std::deque<BasePath> paths;
         paths = yenGraph.Yen(start_vertex, end_vertex, no_paths);
+	THROW_ON_SIGINT
 
         if (paths.size() == 0) {
             *err_msg = strdup( "NOTICE: No path found between Starting and Ending vertices" );
@@ -75,6 +81,7 @@ int  doKpaths(ksp_edge_t  * edges, int total_tuples,
         int count = 0;
         int seq = 0;
         for (unsigned int i = 0; i < paths.size(); ++i ) {
+	   THROW_ON_SIGINT
            if (paths[i].size() > 0)  // don't count empty routes
               count += paths[i].size() + 1;   // add final vertex
 #if 0

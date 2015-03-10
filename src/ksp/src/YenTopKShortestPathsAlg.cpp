@@ -1,9 +1,10 @@
 #include <deque>
 #include <algorithm>
-#include "vrp_assert.h"
-#include "GraphElements.h"
-#include "DijkstraShortestPathAlg.h"
-#include "YenTopKShortestPathsAlg.h"
+#include "./signalhandler.h"
+#include "./vrp_assert.h"
+#include "./GraphElements.h"
+#include "./DijkstraShortestPathAlg.h"
+#include "./YenTopKShortestPathsAlg.h"
 
 
 void YenTopKShortestPathsAlg::clear() {
@@ -15,8 +16,8 @@ void YenTopKShortestPathsAlg::clear() {
 void YenTopKShortestPathsAlg::getFirstSolution() {
         BasePath shortestPath = Dijkstra(sourceID, targetID, true);
         if (!shortestPath.isEmpty()) { 
-            // remove if not finding parallels
-	    getParallelShort(shortestPath, m_DoIt);
+            // m_DoIt is set to false for the PgRouting Project
+	    getParallelShort(shortestPath);
             m_ResultList.push_back(shortestPath);
             m_ResultSet.insert(shortestPath);
         }
@@ -41,7 +42,7 @@ std::deque<BasePath> YenTopKShortestPathsAlg::Yen(int  source, int  sink, int K)
         return m_ResultList;
 }
 
-
+#if 0
 void YenTopKShortestPathsAlg::avoidDijkstra(UINT edgeToBeRemoved, UINT atPosOfPath, BasePath &workingPath) {
          //generate and store on the heap all paths that have parallel edges to edgeToBeRemoved
          UINT startId = m_Edges[edgeToBeRemoved].getStart();
@@ -73,7 +74,7 @@ void YenTopKShortestPathsAlg::avoidDijkstra(UINT edgeToBeRemoved, UINT atPosOfPa
              }
          }
 };                 
-
+#endif
 
 void YenTopKShortestPathsAlg::removeEdgeAndParallels(UINT edgeId) {
     BaseEdge* edgePt = &m_Edges[ edgeId ];
@@ -91,66 +92,60 @@ void YenTopKShortestPathsAlg::removeEdgeAndParallels(UINT edgeId) {
 
 
  
-void YenTopKShortestPathsAlg::getParallelShort(BasePath &solutionPath, bool doIt){
-    if (!doIt) return;
+void YenTopKShortestPathsAlg::getParallelShort(const BasePath &solutionPath){
+    REG_SIGINT
+    if (!m_DoIt) return;
     BaseEdge *edgePt;
-    //BaseEdge *parallelPt = NULL;
     BaseVertex *startPt = NULL;
     BaseVertex::eSetPt fanOutSet;
     BaseVertex::eSetPtIt fIt;
     BasePath newPath;
     std::deque<BaseEdge>::iterator eIt;
-#if 0
-UINT count =0;
-UINT totalCount=0;
-std::cout<<"\nlooking for Parallels of\n";
-solutionPath.PrintOut(std::cout);
-count = 0;
-#endif
     for (UINT i = 0; i < solutionPath.size(); ++i) {
+        THROW_ON_SIGINT
         edgePt = &m_Edges[ solutionPath[i].ID() ];
         startPt = &m_Vertices[ edgePt->getStart() ];
         fanOutSet = startPt->getFanOut();
         UINT endId = edgePt->getEnd();
 
         for (fIt = fanOutSet.begin(); fIt !=fanOutSet.end(); ++fIt) {
-            if ((*fIt)->getStart() != startPt->ID()) assert(true==false);  //somethingwent really wrong
-            if ((*fIt)->getEnd() != endId) continue;  // not a parallel edge
-            if ((*fIt)->ID() == edgePt->ID()) continue; // its the edge that is part of the solution
-            // parallelPt = (*fIt);
-#if 0
-std::cout<<"\nParallel Edge Found at "<<i<<" \n";
-parallelPt->PrintOut(std::cout);
-#endif
-            newPath.clear();
+            THROW_ON_SIGINT
+            // skipping:
+            //  somethingwent really wrong
+            //  not a parallel edge
+            //  its the edge that is part of the solution
+            if ((*fIt)->getStart() != startPt->ID()) assert(true==false);  
+            if ((*fIt)->getEnd() != endId) continue;
+            if ((*fIt)->ID() == edgePt->ID()) continue;
+
             // copy the path up the the ith position
             // insert the parallel found
             // append the rest of the solution path
-            solutionPath.subPath(newPath, i); //copy the path up to the position
+            newPath.clear();
+            solutionPath.subPath(newPath, i);
             newPath.push_back(*(*fIt));
             for (UINT j = i + 1; j < solutionPath.size(); j++) {
-                     newPath.push_back( solutionPath[j] );
+                 newPath.push_back( solutionPath[j] );
             }
-            insertIntoHeap(newPath);
-#if 0
-++count;
-newPath.PrintOut(std::cout);
-#endif
+            // if has same (or less)  weight then insert as solution, otherwise insert into heap 
+            if (newPath.Weight() <= solutionPath.Weight()) {
+                m_ResultList.push_back(newPath);
+                m_ResultSet.insert(newPath);
+            } else {
+                insertIntoHeap(newPath);
+            }
         }
-// totalCount = totalCount + count;
      }
-// std::cout<<"\ntotal count"<<totalCount<<"\n";
 }
             
 
 
 
 
-
 void YenTopKShortestPathsAlg::next() {
+        REG_SIGINT
         UINT currPathId =  m_ResultList.size()-1;
         BasePath curr_result_path = m_ResultList[ currPathId ];
-
 
         UINT spurNode;
         BasePath rootPath;
@@ -167,13 +162,16 @@ void YenTopKShortestPathsAlg::next() {
             
             UINT edgeToBeRemoved;
             for (UINT j=0; j < m_ResultList.size(); j++) {
+               // This next condition to skip parallel paths already as answer
+               if ( m_DoIt && j < m_ResultList.size() - 1  
+                    && curr_result_path.isEqual(m_ResultList[j])) {
+                         continue;
+               }
                BasePath workingPath = m_ResultList[j];
                if (rootPath.isEqual(workingPath)) {
                    if ( i < workingPath.size()) { 
                       edgeToBeRemoved = workingPath[i].ID();
                       removeEdgeAndParallels(edgeToBeRemoved);
-                      // avoidDijkstra(edgeToBeRemoved, i, workingPath);
-                      // remove_edge(edgeToBeRemoved);
                    }
                }
             }
@@ -181,13 +179,15 @@ void YenTopKShortestPathsAlg::next() {
             removeVertices(rootPath);
 
             BasePath spurPath;
+            THROW_ON_SIGINT
             spurPath = DijkstraShortestPathAlg::Dijkstra(spurNode , targetID, true);
+            THROW_ON_SIGINT
             DijkstraShortestPathAlg::clear();
+            THROW_ON_SIGINT
 
             if (spurPath.size() > 0) {
                 // Entire path is made up of the root path and spur path.
-                rootPath.append(spurPath);  // this also update the cost of the totalPath
-	        getParallelShort(rootPath, m_DoIt);
+                rootPath.append(spurPath);  
 
                 // Add the potential k-shortest path to the heap.
                 if (rootPath.FromTo(sourceID, targetID)) {
@@ -199,9 +199,7 @@ void YenTopKShortestPathsAlg::next() {
 
 void YenTopKShortestPathsAlg::insertIntoHeap(const BasePath &path) {
    if (m_ResultSet.find(path) != m_ResultSet.end()) return; //already is a solution
-// std::cout<<"before inserting " <<m_Heap.size()<<"\n";
    m_Heap.insert(path);
-// std::cout<<"after inserting " <<m_Heap.size()<<"\n";
 }
 
 void YenTopKShortestPathsAlg::executeYen(UINT source_id, UINT target_id, int K) {
@@ -215,6 +213,7 @@ void YenTopKShortestPathsAlg::executeYen(UINT source_id, UINT target_id, int K) 
                 if ( m_Heap.size() == 0 ) break;
 
                 m_ResultList.push_back(*m_Heap.begin());
+	        getParallelShort(*m_Heap.begin()); // in case for parallels
                 m_ResultSet.insert(*m_Heap.begin());
                 m_Heap.erase(m_Heap.begin());
           }

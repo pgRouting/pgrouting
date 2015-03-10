@@ -11,7 +11,7 @@ else(APPLE)
     set(LIBRARY_MODE_TARGET "SHARED")
 endif(APPLE)
 
-add_library(routing_ksp ${LIBRARY_MODE_TARGET} DijkstraShortestPathAlg.cpp DijkstraShortestPathAlg.h  Graph.cpp GraphElements.h Graph.h  YenTopKShortestPathsAlg.cpp YenTopKShortestPathsAlg.h ksp.c KSPDriver.cpp KSPGraph.h KSPGraph.cpp vrp_assert.cpp)
+add_library(routing_ksp ${LIBRARY_MODE_TARGET} DijkstraShortestPathAlg.cpp DijkstraShortestPathAlg.h  Graph.cpp GraphElements.h Graph.h  YenTopKShortestPathsAlg.cpp YenTopKShortestPathsAlg.h ksp.c KSPDriver.cpp KSPGraph.h KSPGraph.cpp vrp_assert.cpp signalhandler.cpp)
 
 if(WIN32)
   if(MSVC)

@@ -90,13 +90,12 @@ class BasePath {
              return fromId == m_EdgesList[0].getStart()
                     && toId == m_EdgesList[ size()-1 ].getEnd();
         }
-        //! Returns true when this path shares the same edges as the largerPath
+        //! Returns true when this path shares the vertices as the this path
         bool isEqual(const  BasePath &largerPath) const {
             if (size() > largerPath.size()) return false;
             for (UINT i = 0 ; i < size() ; i++) {
                 if (m_EdgesList[i].getStart() != largerPath.m_EdgesList[i].getStart()) return false;
                 if (m_EdgesList[i].getEnd() != largerPath.m_EdgesList[i].getEnd()) return false;
-                // if (m_EdgesList[i].ID() != largerPath.m_EdgesList[i].ID()) return false;
             }
             return true;
         }
@@ -145,7 +144,7 @@ class BasePath {
           the path is empty
           its requierd more elements than it has
         */
-        bool subPath(BasePath &sub_path, UINT upTo) {
+        bool subPath(BasePath &sub_path, UINT upTo) const {
                 sub_path.clear();
                 if (m_EdgesList.size() == 0) return false;
                 if (upTo >= size()) return false;
