@@ -195,8 +195,8 @@ void YenTopKShortestPathsAlg::executeYen(UINT source_id, UINT target_id, int K) 
                 next();
                 if ( m_Heap.size() == 0 ) break;
 
-                m_ResultList.push_back(*m_Heap.begin());
 	        getParallelShort(*m_Heap.begin()); // in case for parallels
+                m_ResultList.push_back(*m_Heap.begin());
                 m_ResultSet.insert(*m_Heap.begin());
                 m_Heap.erase(m_Heap.begin());
           }

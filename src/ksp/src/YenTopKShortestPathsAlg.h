@@ -19,7 +19,8 @@ class YenTopKShortestPathsAlg: public DijkstraShortestPathAlg {
 
  public:
         explicit YenTopKShortestPathsAlg(const Graph& graph)
-                : DijkstraShortestPathAlg(graph), m_DoIt(false),
+                : DijkstraShortestPathAlg(graph), 
+                 m_DoIt(false),  // in case of wanted parallels set to true
                  m_Source_id(0), m_Target_id(0) {}
 
         ~YenTopKShortestPathsAlg(void) {clear();}
