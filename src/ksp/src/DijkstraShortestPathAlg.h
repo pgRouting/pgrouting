@@ -2,6 +2,7 @@
 #define SRC_KSP_SRC_DIJKSTRASHORTESTPATHALG_H_
 
 #include <set>
+#include <deque>
 #include "Graph.h"
 
 /**************************************************************************/
@@ -14,12 +15,6 @@
 \sa Graph 
 ********************************************************************** */
 class DijkstraShortestPathAlg: public Graph {
- private:
-       //! Ordered by weight set of pointers to vertices used in the algorithm
-       //std::set<BaseVertex*, BaseVertex::compBaseVertex> m_CandidateVertices;
-//       std::deque<BaseVertex*> m_CandidateVertices;
-//       std::set<UINT> m_CandidateVerticesId;
-
  public:
        /** @name Dijkstra execution
        \Returns empty path: when:
@@ -40,7 +35,7 @@ class DijkstraShortestPathAlg: public Graph {
 
        //! Dijkstra using the original ids
        std::deque<BaseEdge> Dijkstra(int source, int sink);
-       //! Dijkstra using the graph's IDs 
+       //! Dijkstra using the graph's IDs
        BasePath Dijkstra(UINT source, UINT sink);
        ///@}
        explicit DijkstraShortestPathAlg(const Graph &graph)

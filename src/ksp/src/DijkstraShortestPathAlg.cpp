@@ -1,16 +1,18 @@
-#include <deque>
-#include "vrp_assert.h"
-#include "GraphElements.h"
-#include "Graph.h"
-#include "DijkstraShortestPathAlg.h"
 #include <boost/config.hpp>
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
+#include <deque>
+#include <set>
+#include <vector>
+
+#include "./vrp_assert.h"
+#include "./GraphElements.h"
+#include "./Graph.h"
+#include "./DijkstraShortestPathAlg.h"
 
 using namespace boost;
-struct Vertex
-{
+struct Vertex {
     int id;
     double cost;
 };
@@ -23,9 +25,9 @@ struct Vertex
 */
 std::deque<BaseEdge> DijkstraShortestPathAlg::Dijkstra(int source, int sink) {
         std::deque<BaseEdge> emptyPath;
-        if (  source !=sink ) {
-             BaseVertex* sourcePt =find_vertex(source);
-             BaseVertex* sinkPt =find_vertex(sink);
+        if (source != sink) {
+             BaseVertex* sourcePt = find_vertex(source);
+             BaseVertex* sinkPt = find_vertex(sink);
              if ((sourcePt == NULL) || (sinkPt == NULL)) return emptyPath;
              return boostDijkstra(sourcePt->ID(), sinkPt->ID()).Path();
         }
@@ -53,7 +55,6 @@ BasePath DijkstraShortestPathAlg::boostDijkstra(UINT source_id, UINT sink_id) {
     typedef adjacency_list < listS, vecS, directedS, no_property, Vertex> graph_t;
     typedef graph_traits < graph_t >::vertex_descriptor vertex_descriptor;
     typedef graph_traits < graph_t >::edge_descriptor edge_descriptor;
-    //typedef std::pair<int, int> Edge;
 
     const unsigned int numberOfNodes = m_Vertices.size();
     graph_t graph(numberOfNodes);
@@ -63,12 +64,11 @@ BasePath DijkstraShortestPathAlg::boostDijkstra(UINT source_id, UINT sink_id) {
     std::set <BaseEdge*, BaseEdge::compBestEdge>::iterator it;
     for (it = m_BestEdgesPt.begin(); it != m_BestEdgesPt.end(); ++it) {
             edgePt = *it;
-            if (edgePt->isActive() 
+            if (edgePt->isActive()
                 && m_Vertices[edgePt->getStart()].isActive()
                 && m_Vertices[edgePt->getEnd()].isActive()) {
                    edge_descriptor e;
                    bool inserted;
-                   //if (cost < 0) continue;
                    tie(e, inserted) = add_edge(edgePt->getStart(), edgePt->getEnd(), graph);
                    graph[e].cost = edgePt->Weight();
                    graph[e].id = edgePt->ID();
@@ -102,30 +102,28 @@ BasePath DijkstraShortestPathAlg::boostDijkstra(UINT source_id, UINT sink_id) {
         path_vect.push_front(_target);
     }
 
-    assert (path_vect.size() > 1);
-    for(UINT i = 0; i< path_vect.size() - 1; i++)
-    {
+    assert(path_vect.size() > 1);
+    for (UINT i = 0; i< path_vect.size() - 1; i++) {
         graph_traits < graph_t >::vertex_descriptor v_src;
         graph_traits < graph_t >::vertex_descriptor v_targ;
         graph_traits < graph_t >::edge_descriptor e;
         graph_traits < graph_t >::out_edge_iterator out_i, out_end;
         if ( i == path_vect.size()-1) break;
-           
+
         v_src = path_vect.at(i);
         v_targ = path_vect.at(i + 1);
 
         int edge_id = 0;
 
         for (tie(out_i, out_end) = out_edges(v_src, graph);
-             out_i != out_end; ++out_i)
-        {
+             out_i != out_end; ++out_i) {
             graph_traits < graph_t >::vertex_descriptor v, targ;
             e = *out_i;
             v = source(e, graph);
             targ = target(e, graph);
             if (targ == v_targ) {
                  edge_id = graph[*out_i].id;
-                 break;   
+                 break;
             }
         }
         path.push_back(&m_Edges[edge_id]);

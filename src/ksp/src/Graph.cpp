@@ -1,29 +1,20 @@
 #include <limits>
 #include <string>
 #include <deque>
+#include <set>
 #include <fstream>
 #include <iostream>
 #include <algorithm>
-#include "vrp_assert.h"
-#include "GraphElements.h"
-#include "Graph.h"
 
+#include "./vrp_assert.h"
+#include "./GraphElements.h"
+#include "./Graph.h"
 
-const double Graph::DISCONNECT = (std::numeric_limits<double>::max)();
 
 Graph::Graph(const std::string &file_name) {
         import_from_file(file_name);
 }
 
-#if 0
-Graph::Graph(const Graph &graph) {
-        m_Vertices.assign(graph.m_Vertices.begin(), graph.m_Vertices.end());
-        m_VerticesPt = graph.m_VerticesPt;
-        m_Edges.assign(graph.m_Edges.begin(), graph.m_Edges.end());
-        m_BestEdgesPt=graph.m_BestEdgesPt;
-}
-Graph::~Graph(void) { clear();}
-#endif
 Graph::Graph(void) {}
 
 
@@ -44,20 +35,16 @@ BaseVertex* Graph::getNewVertex(int vertex_id) {
     UINT nodePos;
     nodePos = m_Vertices.size();
     BaseVertex vertex(nodePos, vertex_id);
-//vertex.PrintOut(std::cout);
-    m_Vertices.push_back(vertex); //optimistic insertion  // TODO maybe not needed
+
+    m_Vertices.push_back(vertex);  // optimistic insertion
     vSetIt it;
     it = m_VerticesPt.find(&m_Vertices.back());
+
     if (it == m_VerticesPt.end()) {
-//std::cout<<"not found\n";
-//assert(true==false);
         m_VerticesPt.insert(&m_Vertices.back());
         return &m_Vertices.back();
-    } else { //was already inserted
-//std::cout<<"found\n";
-//(*it)->PrintOut(std::cout);
-//assert(true==false);
-        m_Vertices.pop_back();
+    } else {  // was already inserted
+        m_Vertices.pop_back();  // remove the insertion
         return (*it);
     }
     return NULL;
@@ -106,37 +93,10 @@ void Graph::updateBestEdgesSet(BaseEdge *edgePt) {
     }
 }
 
-#if 0
-double Graph::vertexWeight(UINT vertex_id) const { 
-    assert (vertex_id < m_Vertices.size());
-    return m_Vertices[vertex_id].Weight();
-}
-double Graph::edgeWeight(UINT edge_id) const {
-    assert (edge_id < m_Edges.size());
-    return m_Edges[edge_id].Weight();
-}
-#endif
 int Graph::getVertexOriginalID(UINT vertex_id) const {
-    assert (vertex_id < m_Vertices.size());
+    assert(vertex_id < m_Vertices.size());
     return m_Vertices[vertex_id].getOriginalID();
 }
-#if 0
-
-
-BaseVertex Graph::getVertex(UINT vertex_id) const {
-        assert (vertex_id < m_Vertices.size());
-        return m_Vertices[vertex_id];
-}
-
-
-
-BaseVertex* Graph::getVertexPt(UINT vertex_id) {
-        if ( vertex_id >= m_Vertices.size() ) return NULL;
-        BaseVertex * vertex_pt = &m_Vertices[vertex_id];
-        if (vertex_pt->isRemoved()) return NULL;
-        return vertex_pt;
-}
-#endif
 
 
 void Graph::clear() {
@@ -161,31 +121,11 @@ BaseVertex*  Graph::find_vertex(int vertex_id) const {
     vSetIt it;
     it = m_VerticesPt.find(&vertex);
     if (it == m_VerticesPt.end()) {
-#if 0
-std::cout<<"not found\n";
-PrintOut(std::cout);
-assert(true==false);
-#endif
        return NULL;
-    } 
-#if 0
-std::cout<<"found\n";
-(*it)->PrintOut(std::cout);
-std::cout<<"found\n";
-assert(true==false);
-#endif
+    }
     return (*it);
 }
 
-#if 0
-bool  Graph::exist_vertex(int vertex_id) const {
-    UINT i;
-    if (m_Vertices.size() == 0) return false;
-    for (i=0; i < m_Vertices.size() && m_Vertices[i].getOriginalID() != vertex_id; i++) {}
-    if (i >= m_Vertices.size()) return false;
-    return true;
-}
-#endif
 
 void  Graph::remove_edge(BaseEdge *edgePt) {
     edgePt->remove();
@@ -193,7 +133,7 @@ void  Graph::remove_edge(BaseEdge *edgePt) {
 
 void  Graph::removeVertices(const BasePath &path) {
     if (path.size() == 0) return;
-//TODO convert to iterator
+    // TODO(vicky): convert to iterator
     for (UINT i = 0 ; i  <  path.size() ; i++) {
       m_Vertices[ path[i]->getStart() ].remove();
     }
@@ -201,65 +141,12 @@ void  Graph::removeVertices(const BasePath &path) {
 
 void  Graph::restoreVertices(const BasePath &path) {
     if (path.size() == 0) return;
-//TODO convert to iterator
+    // TODO(vicky): convert to iterator
     for (UINT i = 0 ; i  <  path.size() ; i++) {
       m_Vertices[ path[i]->getStart() ].restore();
     }
 }
 
-#if 0
-void Graph::getFanOutActiveEdgesIds(UINT vertex_id, std::deque<UINT> &edges_set) const {
-        assert(vertex_id < m_Vertices.size());
-        UINT edgeId, nextNodeId;
-        edges_set.clear();
-        if (!m_Vertices[vertex_id].isActive()) return;
-                
-        std::deque<BaseEdge*> FanOut = m_Vertices[vertex_id].getFanOut();
-        for (UINT i = 0; i < FanOut.size(); i++) {
-               edgeId = FanOut[i]->ID();
-               nextNodeId =  FanOut[i]->getEnd();
-               if (m_Vertices[ nextNodeId ].isActive()
-                   && !m_Vertices[ nextNodeId ].visited()
-                   && m_Edges[ edgeId ].isActive())
-                       edges_set.push_back(edgeId);
-        }
-}
-
-void Graph::getFanOutActiveEdges(UINT vertex_id, std::deque<BaseEdge> &edges_set) const {
-        assert(vertex_id < m_Vertices.size());
-        UINT edgeId, prevNodeId;
-        edges_set.clear();
-        if (!m_Vertices[vertex_id].isActive()) return;
-
-        std::deque<BaseEdge*> FanOut = m_Vertices[vertex_id].getFanOut();
-        for (UINT i = 0; i < FanOut.size(); i++) {
-               edgeId = FanOut[i]->ID();
-               prevNodeId =  FanOut[i]->getStart();
-               if ( m_Vertices[ prevNodeId ].isActive()
-                   &&  m_Edges[ edgeId ].isActive())
-                       edges_set.push_back(m_Edges[edgeId]);
-        }
-}
-#endif
-
-#if 0
-void Graph::getFanInActiveEdges(UINT vertex_id, BaseVertex::eSetPt &edges_set) const{
-        assert(vertex_id < m_Vertices.size());
-        UINT edgeId, prevNodeId;
-        edges_set.clear();
-        if (!m_Vertices[vertex_id].isActive()) return;
-
-        BaseVertex::eSetPt FanIn = m_Vertices[vertex_id].getFanIn();
-        BaseVertex::eSetPtIt it;
-        for (it = FanIn.begin(); it != FanIn.end(); ++it) {
-               edgeId = (*it)->ID();
-               prevNodeId =  (*it)->getStart();
-               if ( m_Vertices[ prevNodeId ].isActive()
-                   &&  m_Edges[ edgeId ].isActive())
-                       edges_set.insert(*it);
-        }
-}
-#endif
 
 void Graph::PrintOut(std::ostream &out_stream) const {
     out_stream << "Vertices \n";
@@ -287,11 +174,10 @@ void Graph::PrintPath(std::ostream &out_stream, const BasePath &path, int startN
         out_stream << startNode << "\t-1 \t0\n";
         return;
     }
-// TODO convert to iterator
+    // TODO(vicky): convert to iterator not so important is for debugging
     for (UINT i=0 ; i < path.size() ; i++) {
         BaseEdge* edge = path[i];
-        //int start = m_Vertices[ edge.getStart() ].getOriginalID();
-	int start = edge->getStart();
+        int start = edge->getStart();
         double cost  = edge->Weight();
         int edgeId = edge->originalID();
         out_stream << "Route " << i<< "\n";
@@ -343,7 +229,6 @@ void Graph::import_from_file(const std::string &input_file_name) {
                 ifs >> end_id;
                 ifs >> edge_weight;
 
-//std::cout<<"inserting"<<edge_id<<"\n";
                 if (has_reverse_cost) ifs >> reverse_weight;
 
                 startPos = Graph::getNewVertex(start_id);
@@ -354,16 +239,7 @@ void Graph::import_from_file(const std::string &input_file_name) {
                 if (has_reverse_cost && reverse_weight >0)
                        insertNewEdge(edge_id, endPos->ID(), startPos->ID(), reverse_weight);
                 count++;
-#if 0
-if ((count % 1000)== 0) {
-std::cout<<"Edges read\n"<<count;
-PrintOut(std::cout);
-std::cout<<"\n";
-assert(true==false);
-}
-#endif
         }
         ifs.close();
         assert(m_BestEdgesPt.size());
-//assert(true==false);
 }
