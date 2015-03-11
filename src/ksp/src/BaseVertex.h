@@ -7,8 +7,7 @@
 #include <deque>
 #include <iostream>
 #include <limits>
-#include "vrp_assert.h"
-//#include "BaseEdge.h"
+#include "./vrp_assert.h"
 
 
 /**************************************************************************/
@@ -17,14 +16,14 @@
 \author Dave Potts
 \author Vicky Vergara
 \date Feb/2015
-\copyright GNU General Public License, version 2
+\copyright 2015 GNU General Public License, version 2
 \details  Class to store a vertex with FanIn & FanOut Edges.
 ********************************************************************** */
 class BaseEdge;
 class BaseVertex {
  public:
-        typedef typename  std::set< BaseEdge*, BaseEdge::compBaseEdge> eSetPt;
-        typedef typename  std::set< BaseEdge*, BaseEdge::compBaseEdge>::iterator eSetPtIt;
+  typedef typename  std::set< BaseEdge*, BaseEdge::compBaseEdge> eSetPt;
+  typedef typename  std::set< BaseEdge*, BaseEdge::compBaseEdge>::iterator eSetPtIt;
 
         /*! @name constructors
             Copy constructor is the Default
@@ -34,9 +33,7 @@ class BaseVertex {
         BaseVertex(unsigned int nid_, int id_, double weight_)
            : m_originalID(id_),
              m_ID(nid_),
-//             m_Weight(weight_),
-             m_active(true){
-//             m_visited(false) {
+             m_active(true) {
           m_FaninEdges.clear();
           m_FanoutEdges.clear();
         }
@@ -44,18 +41,14 @@ class BaseVertex {
         BaseVertex(unsigned int nid_, int id_)
            : m_originalID(id_),
              m_ID(nid_),
- //            m_Weight(std::numeric_limits<double>::max()),
-             m_active(true){
-   //          m_visited(false) {
+             m_active(true) {
           m_FaninEdges.clear();
           m_FanoutEdges.clear();
         }
         BaseVertex()
            : m_originalID(-1),
              m_ID(0),
-//             m_Weight(std::numeric_limits<double>::max()),
-             m_active(false){
-//             m_visited(false) {
+             m_active(false) {
           m_FaninEdges.clear();
           m_FanoutEdges.clear();
         }
@@ -64,18 +57,6 @@ class BaseVertex {
         /** @name comparisons */
         ///@{
 
-
-        /*! Order By Weight
-           -In case of a tie: then by original ID
-        class compBaseVertexWEIGHT {
-         public:
-          bool operator()(const BaseVertex *v1, const BaseVertex *v2) const {
-            if (v1->m_Weight < v2->m_Weight) return true;
-            if  ((v1->m_Weight == v2->m_Weight) && (v1->m_originalID < v2->m_originalID)) return true;
-            else return false;
-            }
-        };
-        */
 
         //! Order By original ID
         class compBaseVertexID {
@@ -93,31 +74,18 @@ class BaseVertex {
         int getOriginalID() const { return m_originalID;}
         //! Returns the id of the vertex
         UINT ID() const { return m_ID;}
-        //! Returns a reference of all Incomming edges
+        //! Returns a reference of incomming edges
         const eSetPt& getFanIn() const  {
-//            std::deque<BaseEdge*> edges;
-//            edges.assign(m_FaninEdges.begin(), m_FaninEdges.end());
             return m_FaninEdges;
         }
-        //! Returns a copy of all outgoing edges (regardles of active or visited)
+        //! Returns a reference to outgoing edges
         const eSetPt& getFanOut() const  {
-//            std::deque< BaseEdge* > edges;
-//            edges.assign(m_FanoutEdges.begin(), m_FanoutEdges.end());
             return m_FanoutEdges;
         }
-        //const std::deque< BaseEdge* > getFanOut() const {return m_FanoutEdges;}
         //! Returns true if it has being logically removed from the graph
         bool isRemoved() const { return !m_active;}
         //! Returns true if it logically exists in the graph
         bool isActive() const { return m_active;}
-        //! Returns true if it has being visited
-//        bool visited() const { return m_visited;}
-        //! Returns the weight of the vertex (max when its not active)
-/*        double Weight() const {
-            if (isRemoved()) return std::numeric_limits<double>::max();
-            return m_Weight;
-        }
-*/
         ///@}
 
         /** @name mutators */
@@ -127,21 +95,13 @@ class BaseVertex {
         void push_FanIn(BaseEdge *edge_pt) { m_FaninEdges.insert(edge_pt);}
         //! adds the pointer to the edge as Outgoing  edge
         void push_FanOut(BaseEdge *edge_pt) { m_FanoutEdges.insert(edge_pt);}
-        //! Sets the weight of the vertex as the min value of the actual weight and the new value
-//        void Weight(double val) {  m_Weight = (m_Weight > val)? val : m_Weight;}
         //! Logically inserts the vertex in the graph
         void reInsert() {m_active = true;}
         //! Logically removes the vertex in the graph
         void remove() {m_active = false;}
-        //! Logically sets the vertex as unvisited
-//        void unVisit() {m_visited = false;}
-        //! Logically sets the vertex as visited
-//        void setAsVisited() {m_visited = true;}
-        //! Logically activates, unvisits and sets the Vertex weight to max 
+        //! Logically activates, unvisits and sets the Vertex weight to max
         void restore() {
              m_active = true;
- //            m_Weight = std::numeric_limits<double>::max();
- //            m_visited = false;
         }
         //! Clears all incomming and outgoing edges of the vertex
         void clear() {
@@ -155,20 +115,17 @@ class BaseVertex {
 
         void PrintOut(std::ostream& out_stream) const {
              out_stream << "local ID" << m_ID
-                 << "( original ID=" << m_originalID 
+                 << "( original ID=" << m_originalID
                  << ", Active=" << m_active << ")";
- //                << ", Visited=" << m_visited << ")";
         }
         ///@}
 
  private:
-        int m_originalID;
-        UINT m_ID;
-//        double m_Weight;
-        eSetPt m_FaninEdges;
-        eSetPt m_FanoutEdges;
-        bool m_active;   // to indicate if its removed or not
-//        bool m_visited;  // to indicate if iwe have visited the node
+        int m_originalID;      //!< Original id
+        UINT m_ID;             //!< Local id
+        eSetPt m_FaninEdges;    //!< Fan in edges
+        eSetPt m_FanoutEdges;  //!< Fan out edges
+        bool m_active;   //!< to indicate if its removed or not
 };
 
 

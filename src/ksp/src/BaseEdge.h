@@ -1,11 +1,8 @@
 #ifndef SRC_KSP_SRC_BASEEDGE_H_
 #define SRC_KSP_SRC_BASEEDGE_H_
 
-
 #include <iostream>
-#include "vrp_assert.h"
-
-
+#include "./vrp_assert.h"
 
 /**************************************************************************/
 //! BaseEdge    (fromVertex, toVertex, Weight)
@@ -41,18 +38,19 @@ class BaseEdge {
          public:
           bool operator()(const BaseEdge *e1, const BaseEdge *e2) const {
             if ( e1->m_Start <  e2->m_Start) return true;
-            if ((e1->m_Start ==  e2->m_Start) && (e1->m_End <  e2->m_End)) return true;
+            if ((e1->m_Start ==  e2->m_Start) && (e1->m_End <  e2->m_End))
+                return true;
             return false;
           }
         };
-	/** @name accessors */
+        /** @name accessors */
         ///@{
 
         //! Returns the original ID of the edge
         int originalID() const { return m_originalID;}
         //! Returns the graph's ID of the edge
         UINT ID() const { return m_ID;}
-        //! Returns the graph's ID of the starting vertex of the edge 
+        //! Returns the graph's ID of the starting vertex of the edge
         UINT  getStart() const { return m_Start;}
         //! Returns the graph's ID of the ending vertex of the edge
         UINT  getEnd() const { return m_End;}
@@ -64,7 +62,7 @@ class BaseEdge {
         bool isActive() const { return m_active;}
         ///@}
 
-	/** @name mutators */
+        /** @name mutators */
         ///@{
 
         //! Logically remove the edge from the graph
@@ -73,7 +71,7 @@ class BaseEdge {
         void reInsert() {m_active = true;}
         ///@}
 
-	/** @name debugging Printout */
+        /** @name debugging Printout */
         ///@{
         void PrintOut(std::ostream& out_stream) const {
             out_stream << "local ID =" << m_ID
@@ -88,8 +86,7 @@ class BaseEdge {
         double m_Weight;  //!< edge's weight
         int m_originalID;  //!< original ID of the edge
         UINT m_ID;     //!< graphs's id of the edge
-        bool m_active;   //!< used to indicate if edge is logically removed or not
-
+        bool m_active;   //!< Indicate if edge is logically removed or not
 };
 
 #endif  // SRC_KSP_SRC_BASEEDGE_H_
