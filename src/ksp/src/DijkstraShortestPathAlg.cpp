@@ -47,6 +47,7 @@ BasePath DijkstraShortestPathAlg::Dijkstra(UINT source, UINT sink) {
     return BasePath();
 }
 
+// TODO(vicky) brake this huge function into little more esay to undertand functions
 BasePath DijkstraShortestPathAlg::boostDijkstra(UINT source_id, UINT sink_id) {
     assert(m_BestEdgesPt.size());
     BasePath path;
@@ -64,9 +65,14 @@ BasePath DijkstraShortestPathAlg::boostDijkstra(UINT source_id, UINT sink_id) {
     std::set <BaseEdge*, BaseEdge::compBestEdge>::iterator it;
     for (it = m_BestEdgesPt.begin(); it != m_BestEdgesPt.end(); ++it) {
             edgePt = *it;
-            if (edgePt->isActive()
-                && m_Vertices[edgePt->getStart()].isActive()
-                && m_Vertices[edgePt->getEnd()].isActive()) {
+            if (isActive(edgePt)) {
+#if 0
+std::cout<<"Inserting";
+edgePt->PrintOut(std::cout);
+std::cout<<"\n";
+if(edgePt->isParallel()) edgePt->PrintOut(std::cout);
+#endif
+                   assert(edgePt->isMain());
                    edge_descriptor e;
                    bool inserted;
                    tie(e, inserted) = add_edge(edgePt->getStart(), edgePt->getEnd(), graph);
@@ -133,15 +139,106 @@ BasePath DijkstraShortestPathAlg::boostDijkstra(UINT source_id, UINT sink_id) {
 
 
 /*!
+book-keeping is done of the removed edges
+if the removed edge is a minimal, then its the only one removed
+otherwise from all the parallel edges, the minimal is searched and removed
+/param[in] edgePt: pointer to the edge to be removed
+*/
+void DijkstraShortestPathAlg::removeEdgeAndParallels(BaseEdge *edgePt) {
+    if (edgePt->isMain() && edgePt->isActive()) {
+        edgePt->remove();
+        removedEdges.push_back(edgePt);
+        m_BestEdgesPt.erase(m_BestEdgesPt.find(edgePt));
+        return;
+    }
+    BaseVertex *startPt = &m_Vertices[ edgePt->getStart() ];
+    BaseVertex::eSetPt fanOutSet = startPt->getFanOut();
+    BaseVertex::eSetPtIt fIt;
+    for (fIt = fanOutSet.begin(); fIt !=fanOutSet.end(); ++fIt) {
+        // skiping:
+        //   somethingwent really wrong
+        //   not a parallel edge
+        //   parallel but not the minimal
+        //   already removed edges
+        if ((*fIt)->getStart() != startPt->ID()) assert(true == false);
+        if ((*fIt)->getEnd() != edgePt->getEnd()) continue;
+        if ((*fIt)->isParallel()) continue;
+        if (!((*fIt)->isActive())) continue;
+        // the minimal parallel non-removed edge has being found
+        BaseEdge *edgeMain = (*fIt);
+        assert(edgeMain->isMain() && edgeMain->isActive());
+        m_BestEdgesPt.erase(edgeMain);
+        edgeMain->remove();
+        removedEdges.push_back(edgeMain);
+        break;
+    }
+}
+
+void DijkstraShortestPathAlg::restoreEdges() {
+    while (removedEdges.size()) {
+        removedEdges.front()->restore();
+        m_BestEdgesPt.insert(removedEdges.front());
+        removedEdges.pop_front();
+    }
+}
+
+/*!
+An edge to be active, the follwoing conditions must be met:
+  - must be active by itself
+  - the start vertex must be active
+  - the end vertex must be active
+/param[in] edgePt: pointer to the tested edge
+*/
+bool DijkstraShortestPathAlg::isActive(const BaseEdge *edgePt) const {
+    return edgePt->isActive()
+        && m_Vertices[edgePt->getStart()].isActive()
+        && m_Vertices[edgePt->getEnd()].isActive();
+}
+
+/*!
+Does not remove the incomming/outgoing edges of the vertex:
+
+When "edgePt" is a pointer to an  incomming or outgoing edge the following
+ - isActive(edgePt): will return false because one of the vertices is removed
+ - edgePt->isActive(): will return true because the edge is still active
+
+/param[in] path: the path containg the vertices to be removed
+*/
+void  DijkstraShortestPathAlg::removeVertices(const BasePath &path) {
+    if (path.size() == 0) return;
+    BasePath::eDequeIt eIt;
+    for (eIt =  path.path().begin(); eIt !=  path.path().end(); ++eIt) {
+      m_Vertices[ (*eIt)->getStart() ].remove();
+    }
+}
+
+/*!
+/param[in] path: the path containg the vertices to be restored
+*/
+void  DijkstraShortestPathAlg::restoreVertices(const BasePath &path) {
+    if (path.size() == 0) return;
+    BasePath::eDequeIt eIt;
+    for (eIt =  path.path().begin(); eIt !=  path.path().end(); ++eIt) {
+      m_Vertices[ (*eIt)->getStart() ].restore();
+    }
+}
+
+
+/*!
+Does not:
+  - Deletes the vertices
+  - Deletes the edges
+
 Restores the graph for a next iteration so it has:
-  - all the vertices logically inserted and unvisited in the graph with
-    weight set as max
-  - all the edges logically inserted in the graph
-/todo TODO this can be improved
+  - all the vertices are logically inserted
+  - all the edges are logically inserted
 */
 void DijkstraShortestPathAlg::clear() {
-     for (UINT i = 0; i < m_Vertices.size(); i++)
-          m_Vertices[i].restore();
-     for (UINT i = 0; i < m_Edges.size(); i++)
-          m_Edges[i].reInsert();
+     vListIt vIt;
+     for (vIt =  m_Vertices.begin(); vIt !=  m_Vertices.end(); ++vIt)
+          (*vIt).restore();
+     eListIt eIt;
+     for (eIt =  m_Edges.begin(); eIt !=  m_Edges.end(); ++eIt)
+          (*eIt).restore();
+     removedEdges.clear();
 }

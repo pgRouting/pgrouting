@@ -80,17 +80,39 @@ BaseEdge* Graph::insertNewEdge(int edge_id,  UINT startId, UINT endId, double ed
 void Graph::updateBestEdgesSet(BaseEdge *edgePt) {
     std::set <BaseEdge*, BaseEdge::compBestEdge>::iterator edgeInSet;
     edgeInSet = m_BestEdgesPt.find(edgePt);
+bool found = false;
     if (edgeInSet == m_BestEdgesPt.end()) {
+        // first <start,end> edge found is allways the min
+        edgePt->setMain();
         m_BestEdgesPt.insert(edgePt);
     } else {
         if ((*edgeInSet)->Weight() < edgePt->Weight()) {
-           // the set has the best edge pointer
+           // the set has the best edge pointer so edgePt is a parallel
+           edgePt->setParallel();
         } else {
            // swap to the best edge
+           BaseEdge *oldEdge = (*edgeInSet);
+           oldEdge->setParallel();
+           edgePt->setMain();
            m_BestEdgesPt.erase(edgeInSet);
            m_BestEdgesPt.insert(edgePt);
         }
     }
+#if 0
+// correctness
+    for (eListIt eIt = m_Edges.begin(); eIt != m_Edges.end(); ++eIt) {
+        edgeInSet = m_BestEdgesPt.find(&(*eIt));
+        if (edgeInSet == m_BestEdgesPt.end()) {
+           assert (true == false);
+        } else {
+           if ((*edgeInSet)->ID() == eIt->ID()) {
+                assert(eIt->isMain());
+           } else {
+               assert(eIt->isParallel());
+           }
+        }
+    }
+#endif
 }
 
 int Graph::getVertexOriginalID(UINT vertex_id) const {
@@ -124,27 +146,6 @@ BaseVertex*  Graph::find_vertex(int vertex_id) const {
        return NULL;
     }
     return (*it);
-}
-
-
-void  Graph::remove_edge(BaseEdge *edgePt) {
-    edgePt->remove();
-}
-
-void  Graph::removeVertices(const BasePath &path) {
-    if (path.size() == 0) return;
-    // TODO(vicky): convert to iterator
-    for (UINT i = 0 ; i  <  path.size() ; i++) {
-      m_Vertices[ path[i]->getStart() ].remove();
-    }
-}
-
-void  Graph::restoreVertices(const BasePath &path) {
-    if (path.size() == 0) return;
-    // TODO(vicky): convert to iterator
-    for (UINT i = 0 ; i  <  path.size() ; i++) {
-      m_Vertices[ path[i]->getStart() ].restore();
-    }
 }
 
 
@@ -241,5 +242,21 @@ void Graph::import_from_file(const std::string &input_file_name) {
                 count++;
         }
         ifs.close();
-        assert(m_BestEdgesPt.size());
+
+#if 0
+// correctness only edges in set are Main (minimal) others are parallel
+    std::set <BaseEdge*, BaseEdge::compBestEdge>::iterator edgeInSet;
+    for (eListIt eIt = m_Edges.begin(); eIt != m_Edges.end(); ++eIt) {
+        edgeInSet = m_BestEdgesPt.find(&(*eIt));
+        if (edgeInSet == m_BestEdgesPt.end()) {
+          assert (true == false);
+        } else {
+           if ((*edgeInSet)->ID() == eIt->ID()) {
+                assert(eIt->isMain());
+           } else {
+               assert(eIt->isParallel());
+           }
+        }
+    }
+#endif
 }

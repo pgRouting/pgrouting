@@ -19,7 +19,7 @@ class BaseEdge {
           : m_Start(start), m_End(end),
             m_Weight(weight),
             m_originalID(originalId), m_ID(id),
-            m_active(true)
+            m_active(true), m_Main(true)
         {}
         /*! \class compEdge
          * \brief An Edge comparison class for ordering BaseEdge in a set by weight.
@@ -60,15 +60,23 @@ class BaseEdge {
         bool isRemoved() const { return !m_active;}
         //! Returns true if the edge is logically in the graph
         bool isActive() const { return m_active;}
+        //! Returns true if the edge is a parallel of the min edge
+        bool isParallel() const { return !m_Main;}
+        //! Returns true if the edge is the min edge of all the parallels
+        bool isMain() const { return m_Main;}
         ///@}
 
         /** @name mutators */
         ///@{
 
+        //! Logically set the edge as minimal
+        void setMain() {m_Main = true;}
+        //! Logically set the edge as parallel
+        void setParallel() {m_Main = false;}
         //! Logically remove the edge from the graph
         void remove() {m_active = false;}
         //! Logically add the edge to the graph
-        void reInsert() {m_active = true;}
+        void restore() {m_active = true;}
         ///@}
 
         /** @name debugging Printout */
@@ -77,7 +85,7 @@ class BaseEdge {
             out_stream << "local ID =" << m_ID
                 << " ( original ID=" << m_originalID << ", From=" << getStart()
                 << ",To=" <<getEnd() << ", Weight=" << Weight()
-                << "Active=" << m_active << ")";
+                << "Active=" << m_active << "Main= "<< m_Main << ")";
         }
         ///@}
  private:
@@ -87,6 +95,7 @@ class BaseEdge {
         int m_originalID;  //!< original ID of the edge
         UINT m_ID;     //!< graphs's id of the edge
         bool m_active;   //!< Indicate if edge is logically removed or not
+        bool m_Main;   //!< True when its the min edge of all the parallels
 };
 
 #endif  // SRC_KSP_SRC_BASEEDGE_H_

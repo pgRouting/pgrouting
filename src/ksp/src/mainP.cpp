@@ -114,7 +114,7 @@ void testWorkshop()
         Graph my_graph(fileName);
         //my_graph.PrintOut(std::cout);
         //yenTest(1, 52836,471, 1, my_graph);
-        yenTest(1, 52836,471, 2, my_graph);
+        yenTest(1, 52836,471, 5, my_graph);
 }
 int main(...)
 {

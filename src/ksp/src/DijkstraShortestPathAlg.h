@@ -40,13 +40,39 @@ class DijkstraShortestPathAlg: public Graph {
        ///@}
        explicit DijkstraShortestPathAlg(const Graph &graph)
         :Graph(graph) {}
-       void clear();
+       
 
  protected:
-       /** @name Routines used in the algorithm*/
-       ///@{
-       BasePath boostDijkstra(UINT source_id, UINT sink_id);
-       ///@}
+    /** @name Routines used in the algorithm*/
+    ///@{
+
+    BasePath boostDijkstra(UINT source_id, UINT sink_id);
+
+    ///@}
+    /** @name Routines to modify the graph*/
+    ///@{
+
+    //! logically removes the vertices from the graph that are starting vertices of the edges in path
+    void removeVertices(const BasePath &path);
+    //! logically restores the vertices from the graph that are starting vertices of the edges in path
+    void restoreVertices(const BasePath &path);
+    //! ture when edge is active and both of its vertices are active
+    bool isActive(const BaseEdge *edgePt) const;
+    //! logically removes the edge and all its parallels
+    void removeEdgeAndParallels(BaseEdge *edgePt);
+    //! logically restores the edge kept in the book-keeping
+    void restoreEdges();
+    //! logically restores all edges & vertices
+    void clear();
+    ///@}
+
+ protected:
+    std::deque<BaseEdge*> removedEdges;
+ private:
+    /* TODO(vicky):
+       put as member the boost graph
+       once its a member, the routines that modify the graph should modify this graph also
+    */
 };
 
 #endif  // SRC_KSP_SRC_DIJKSTRASHORTESTPATHALG_H_

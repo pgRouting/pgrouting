@@ -24,13 +24,13 @@ class Graph {
      typedef typename std::set<BaseVertex*, BaseVertex::compBaseVertexID> vSetPt;
      typedef typename std::set<BaseVertex*, BaseVertex::compBaseVertexID>::iterator vSetIt;
 
-     typedef typename std::deque<BaseEdge> eSet;
-     typedef typename std::deque<BaseEdge>::iterator eSetIt;
+     typedef typename std::deque<BaseEdge> eList;
+     typedef typename std::deque<BaseEdge>::iterator eListIt;
 
  protected:
      vList m_Vertices;    //<! Vertices
      vSetPt m_VerticesPt; //<! Vertices pointers ordered by original Id
-     eSet m_Edges;        //<! Edges
+     eList m_Edges;       //<! Edges
      std::set<BaseEdge*, BaseEdge::compBestEdge> m_BestEdgesPt;  //<! set of pointers to best edges between 2 nodes
 
  public:
@@ -55,12 +55,6 @@ class Graph {
      BaseEdge* insertNewEdge(int id, UINT startId, UINT endId, double edge_weight);
      //! Returns the Id a the newly created vertex or the Id if it already exists
      BaseVertex* getNewVertex(int vertex_id);
-     //! logically removes the edge from the graph
-     void remove_edge(BaseEdge *edgePt);
-     //! logically removes the vertices from the graph that are starting vertices of the edges in path
-     void removeVertices(const BasePath &path);
-     //! logically restores the vertices from the graph that are starting vertices of the edges in path
-     void restoreVertices(const BasePath &path);
      ///@}
 
      /** @name debugging */
