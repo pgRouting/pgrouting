@@ -36,11 +36,15 @@ std::deque<BasePath> YenTopKShortestPathsAlg::Yen(int  source, int  sink, int K)
              targetID = sinkPt->ID();
              executeYen(sourceID, targetID, K);
         }
+#if 1  // 1  K paths + heap paths are to be returned
         while (m_Heap.size()){
              curr_result_path = *m_Heap.begin();
              m_ResultSet.insert(curr_result_path);
              m_Heap.erase(m_Heap.begin());
         }
+#else  // set to 0 if NEVER the heap paths are to be returned
+        if (K >= m_ResultList.size()) m_ResultList.resize(K);
+#endif
         m_ResultList.assign(m_ResultSet.begin(), m_ResultSet.end());
         return m_ResultList;
 }
