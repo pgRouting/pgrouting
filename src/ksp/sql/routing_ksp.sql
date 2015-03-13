@@ -18,9 +18,9 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id integer, target_id intege
   RETURNS SETOF pgr_costresult3 AS
   $BODY$ begin 
     if $6 = false then
-       return query SELECT * FROM pgr_ksp($1, $2, $3, $4, $5) where id1 < $4; 
+       return query SELECT * FROM _pgr_ksp($1, $2, $3, $4, $5) where id1 < $4; 
     else
-       return query SELECT * FROM pgr_ksp($1, $2, $3, $4, $5); 
+       return query SELECT * FROM _pgr_ksp($1, $2, $3, $4, $5); 
     end if;
   end 
   $BODY$

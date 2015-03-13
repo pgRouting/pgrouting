@@ -26,7 +26,9 @@
 #define PATH_ALLOC_TOTAL 5
 
 #include "postgres.h"
-#define DEBUG
+
+#undef DEBUG
+
 #ifdef __cplusplus
 extern "C"
 {
