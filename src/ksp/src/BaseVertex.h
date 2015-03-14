@@ -30,7 +30,7 @@ class BaseVertex {
         */
         ///@{
 
-        BaseVertex(unsigned int nid_, int id_, double weight_)
+        BaseVertex(UINT nid_, long id_, double weight_)
            : m_originalID(id_),
              m_ID(nid_),
              m_active(true) {
@@ -38,7 +38,7 @@ class BaseVertex {
           m_FanoutEdges.clear();
         }
 
-        BaseVertex(unsigned int nid_, int id_)
+        BaseVertex(UINT nid_, long id_)
            : m_originalID(id_),
              m_ID(nid_),
              m_active(true) {
@@ -71,7 +71,7 @@ class BaseVertex {
         ///@{
 
         //! Returns the original id of the vertex
-        int getOriginalID() const { return m_originalID;}
+        long getOriginalID() const { return m_originalID;}
         //! Returns the id of the vertex
         UINT ID() const { return m_ID;}
         //! Returns a reference of incomming edges
@@ -121,7 +121,7 @@ class BaseVertex {
         ///@}
 
  private:
-        int m_originalID;      //!< Original id
+        long m_originalID;      //!< Original id
         UINT m_ID;             //!< Local id
         eSetPt m_FaninEdges;    //!< Fan in edges
         eSetPt m_FanoutEdges;  //!< Fan out edges

@@ -15,7 +15,7 @@
 ********************************************************************** */
 class BaseEdge {
  public:
-        BaseEdge(UINT id, int  originalId, int start, int end, double weight)
+        BaseEdge(UINT id, long  originalId, long start, long end, double weight)
           : m_Start(start), m_End(end),
             m_Weight(weight),
             m_originalID(originalId), m_ID(id),
@@ -47,7 +47,7 @@ class BaseEdge {
         ///@{
 
         //! Returns the original ID of the edge
-        int originalID() const { return m_originalID;}
+        long originalID() const { return m_originalID;}
         //! Returns the graph's ID of the edge
         UINT ID() const { return m_ID;}
         //! Returns the graph's ID of the starting vertex of the edge
@@ -92,7 +92,7 @@ class BaseEdge {
         UINT m_Start;  //!< graph's starting Vertex ID of the edge
         UINT m_End;    //!< graphs's ending vertex ID of the edge
         double m_Weight;  //!< edge's weight
-        int m_originalID;  //!< original ID of the edge
+        long m_originalID;  //!< original ID of the edge
         UINT m_ID;     //!< graphs's id of the edge
         bool m_active;   //!< Indicate if edge is logically removed or not
         bool m_Main;   //!< True when its the min edge of all the parallels

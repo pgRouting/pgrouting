@@ -15,8 +15,8 @@ class KSPGraph : public Graph {
     explicit KSPGraph(const Graph&);
     KSPGraph();
     explicit KSPGraph(const std::string &);
-    void AddData(ksp_edge_t  * edges,  int total_tuples, bool has_reverse_cost);
-    void insertTuple(int edgeId, int source, int target,
+    void AddData(ksp_edge_t  * edges,  UINT total_tuples, bool has_reverse_cost);
+    void insertTuple(long edgeId, long source, long target,
                      float cost, float reverse_cost, bool has_reverse_cost);
 
     void StartLoad();

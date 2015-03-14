@@ -36,9 +36,9 @@ extern "C"
 
 typedef struct ksp_edge 
 {
-    int id;
-    int source;
-    int target;
+    long id;
+    long source;
+    long target;
     float8 cost;
     float8 reverse_cost;
 } ksp_edge_t;
