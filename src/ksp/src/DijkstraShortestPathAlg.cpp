@@ -66,12 +66,6 @@ BasePath DijkstraShortestPathAlg::boostDijkstra(UINT source_id, UINT sink_id) {
     for (it = m_BestEdgesPt.begin(); it != m_BestEdgesPt.end(); ++it) {
             edgePt = *it;
             if (isActive(edgePt)) {
-#if 0
-std::cout<<"Inserting";
-edgePt->PrintOut(std::cout);
-std::cout<<"\n";
-if(edgePt->isParallel()) edgePt->PrintOut(std::cout);
-#endif
                    assert(edgePt->isMain());
                    edge_descriptor e;
                    bool inserted;

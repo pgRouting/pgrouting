@@ -9,16 +9,13 @@
 
 void YenTopKShortestPathsAlg::clear() {
         DijkstraShortestPathAlg::clear();
-//        m_ResultList.clear();
         m_Heap.clear();
 }
 
 void YenTopKShortestPathsAlg::getFirstSolution() {
         BasePath shortestPath = Dijkstra(sourceID, targetID);
         if (!shortestPath.isEmpty()) {
-            // m_DoIt is set to false for the PgRouting Project
             getParallelShort(shortestPath);
-            //m_ResultList.push_back(shortestPath);
             curr_result_path = shortestPath;
             m_ResultSet.insert(shortestPath);
         }
@@ -117,7 +114,6 @@ void YenTopKShortestPathsAlg::doNextCycle() {
             // no dijkstra has to be done because:
             //  NewPath = rootpath + Paralleledgeof(supredge) rest of the curr_result path
             // is the shortest path using the paralel edge
-#if 1
             std::set<BasePath, BasePath::compBasePath>::iterator pIt;
             for (pIt = m_ResultSet.begin(); pIt != m_ResultSet.end(); ++pIt) {
                if ( m_DoIt && ((*pIt).path() != curr_result_path.path()) 
@@ -127,41 +123,16 @@ void YenTopKShortestPathsAlg::doNextCycle() {
                if (rootPath.isEqual(*pIt)) {
                    if (i < (*pIt).size()) {
                       BaseEdge* edgeToBeRemoved = (*pIt)[i];
-//edgeToBeRemoved->PrintOut(std::cout);
-//std::cout<<"\n";
                       if (!m_DoIt) assert(edgeToBeRemoved->isMain());
                       removeEdgeAndParallels(edgeToBeRemoved);
                    }
                }
             }
-//spurEdge->PrintOut(std::cout);
-//std::cout<<"\n";
-//assert(!isActive(spurEdge));
-#else
-            for (UINT j=0; j < m_ResultList.size(); j++) {
-               // This next condition to skip parallel paths already as answer
-               if ( m_DoIt && j < m_ResultList.size() - 1
-                    && curr_result_path.isEqual(m_ResultList[j])) {
-                         continue;
-               }
-               if (rootPath.isEqual(m_ResultList[j])) {
-                   if (i < m_ResultList[j].size()) {
-                      BaseEdge* edgeToBeRemoved = m_ResultList[j][i];
-                      removeEdgeAndParallels(edgeToBeRemoved);
-                   }
-               }
-            }
-#endif
             removeVertices(rootPath);
 
             BasePath spurPath;
             THROW_ON_SIGINT
-//std::cout<< "going to do dijstra from "<<spurNodeId<<"to "<< targetID<<"\n";
             spurPath = DijkstraShortestPathAlg::Dijkstra(spurNodeId , targetID);
-/*if (spurPath.size()>0) {
-   spurPath.PrintOut(std::cout);
-}*/
-
             THROW_ON_SIGINT
 
             restoreEdges();
@@ -169,6 +140,8 @@ void YenTopKShortestPathsAlg::doNextCycle() {
 
 #if 0
 // correctness only edges in set are Main (minimal) others are parallel
+// consumes hugh amount of time and its a little complicated
+// so I am not removing it, only commenting it out
     std::set <BaseEdge*, BaseEdge::compBestEdge>::iterator edgeInSet;
     for (eListIt eIt = m_Edges.begin(); eIt != m_Edges.end(); ++eIt) {
         edgeInSet = m_BestEdgesPt.find(&(*eIt));
@@ -198,37 +171,28 @@ void YenTopKShortestPathsAlg::doNextCycle() {
                 // Add the potential k-shortest path to the heap.
                 if (rootPath.FromTo(sourceID, targetID)) {
                    insertIntoHeap(rootPath);
-//std::cout << "Heap size after inserting" <<  m_Heap.size()<<"\n";
                 }
            }
         }
 }
 
 void YenTopKShortestPathsAlg::insertIntoHeap(const BasePath &path) {
-    if (m_ResultSet.find(path) != m_ResultSet.end()) {
-curr_result_path.PrintOut(std::cout);
-path.PrintOut(std::cout);
-assert(true==false);
-return;  // already is a solution
-}
+//    assert(m_ResultSet.find(path) == m_ResultSet.end()); // O(log n) assertion
     m_Heap.insert(path);
 }
 
 void YenTopKShortestPathsAlg::executeYen(UINT source_id, UINT target_id, int K) {
+          assert(m_DoIt == false); // make sure we are not generating based on parallel edges
           clear();
           getFirstSolution();
 
           if (curr_result_path.size() == 0) return;  // no path found
 
           while ( m_ResultSet.size() < (unsigned int) K ) {
-//std::cout << K << "VS result set size before next cyle" <<  m_ResultSet.size()<<"\n";
-//std::cout << "Heap size before next cycle" <<  m_Heap.size()<<"\n";
                 doNextCycle();
-//std::cout << "Heap size after next cycle" <<  m_Heap.size()<<"\n";
                 if ( m_Heap.size() == 0 ) break;
                 curr_result_path = *m_Heap.begin();
                 getParallelShort(*m_Heap.begin());  // in case for parallels
-                //m_ResultList.push_back(*m_Heap.begin());
                 m_ResultSet.insert(curr_result_path);
                 m_Heap.erase(m_Heap.begin());
           }

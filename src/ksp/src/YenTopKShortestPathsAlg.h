@@ -10,8 +10,6 @@ class YenTopKShortestPathsAlg: public DijkstraShortestPathAlg {
         explicit YenTopKShortestPathsAlg(const Graph& graph)
                 : DijkstraShortestPathAlg(graph),
                  m_DoIt(false) {}  // in case of wanted parallels set to true
-//                 m_Source_id(0), m_Target_id(0) {}
-
         ~YenTopKShortestPathsAlg(void) {clear();}
         std::deque<BasePath> Yen(int source, int target, int K);
         void clear();
@@ -37,8 +35,7 @@ class YenTopKShortestPathsAlg: public DijkstraShortestPathAlg {
         //! ordered set of paths found
         std::set<BasePath, BasePath::compBasePath> m_ResultSet;
         BasePath curr_result_path; //!< latest path found
-        //std::deque<BasePath> m_ResultList;
-        std::set<BasePath, BasePath::compBasePath> m_Heap;
+        std::set<BasePath, BasePath::compBasePath> m_Heap; //!< the heap
 
  private:
         /** @name For parallel paths */
