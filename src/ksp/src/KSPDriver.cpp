@@ -1,5 +1,6 @@
 #include <deque>
 #include <sstream>
+#include <climits>
 
 #include "./signalhandler.h"
 #include "KSPGraph.h"
@@ -15,8 +16,8 @@ static  void dpPrint(const KSPGraph &theGraph,
                      int &sequence, int route_id);
 static  ksp_path_element_t * noPathFound(int start_id);
 
-int  doKpaths(ksp_edge_t  * edges, int total_tuples,
-                       int  start_vertex, int  end_vertex,
+int  doKpaths(ksp_edge_t  * edges, long total_tuples,
+                       long  start_vertex, long  end_vertex,
                        int no_paths, bool has_reverse_cost,
                        ksp_path_element_t **path, int *path_count,
                        char ** err_msg) {
@@ -123,9 +124,10 @@ return 0;
             *err_msg = strdup( log.str().c_str());
             return -1;
         }
-        #if 1
+        #if 0
         *err_msg = strdup("OK");
         #else
+        log << "NOTICE max long: " << LONG_MAX << "\n";
         *err_msg = strdup( log.str().c_str());
         #endif
         *path = ksp_path;
@@ -154,14 +156,14 @@ static  void dpPrint(const KSPGraph &theGraph,
 
                path[sequence].route_id = route_id;
                path[sequence].vertex_id = nodeId;
+               path[sequence].edge_id = -edgeId;
                path[sequence].cost = cost;
-               path[sequence].edge_id = edgeId;
                sequence++;
                 if (i == thePath.size()-1) {
                       path[sequence].route_id = route_id;
                       path[sequence].vertex_id = lastNodeId;
+                      path[sequence].edge_id = long(-1);
                       path[sequence].cost = 0;
-                      path[sequence].edge_id = -1;
                       sequence++;
                }
         }

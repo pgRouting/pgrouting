@@ -27,7 +27,8 @@
 
 #include "postgres.h"
 
-#undef DEBUG
+//#undef DEBUG
+#define DEBUG
 
 #ifdef __cplusplus
 extern "C"
@@ -36,9 +37,9 @@ extern "C"
 
 typedef struct ksp_edge 
 {
-    long id;
-    long source;
-    long target;
+    int64_t id;
+    int64_t source;
+    int64_t target;
     float8 cost;
     float8 reverse_cost;
 } ksp_edge_t;
@@ -46,23 +47,23 @@ typedef struct ksp_edge
 typedef struct ksp_path_element 
 {
     int route_id;
-    int vertex_id;
-    int edge_id;
+    int64_t vertex_id;
+    int64_t edge_id;
     float8 cost;
 } ksp_path_element_t;
 
 typedef struct ksp_edge_columns 
 {
-  int id;
-  int source;
-  int target;
+  int64_t id;
+  int64_t source;
+  int64_t target;
   float8  cost;
   float8  reverse_cost;
 } ksp_edge_columns_t;
 
 
-int compute_kshortest_path(char* sql, int start_vertex, 
-                                 int end_vertex, int no_paths, 
+int compute_kshortest_path(char* sql, int64_t start_vertex, 
+                                 int64_t end_vertex, int no_paths, 
                                  bool has_reverse_cost, 
                                  ksp_path_element_t **path, int *ksp_path_count) ;
 

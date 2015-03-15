@@ -98,7 +98,7 @@ ksp_fetch_edge_columns(SPITupleTable *tuptable, ksp_edge_columns_t *edge_columns
   edge_columns->source = SPI_fnumber(SPI_tuptable->tupdesc, "source");
   edge_columns->target = SPI_fnumber(SPI_tuptable->tupdesc, "target");
   edge_columns->cost = SPI_fnumber(SPI_tuptable->tupdesc, "cost");
-  if (edge_columns->id == SPI_ERROR_NOATTRIBUTE ||
+/*  if (edge_columns->id == SPI_ERROR_NOATTRIBUTE ||
       edge_columns->source == SPI_ERROR_NOATTRIBUTE ||
       edge_columns->target == SPI_ERROR_NOATTRIBUTE ||
       edge_columns->cost == SPI_ERROR_NOATTRIBUTE) 
@@ -107,7 +107,8 @@ ksp_fetch_edge_columns(SPITupleTable *tuptable, ksp_edge_columns_t *edge_columns
            "'id', 'source', 'target' and 'cost'");
       return -1;
     }
-
+*/
+/*
   if (SPI_gettypeid(SPI_tuptable->tupdesc, edge_columns->source) != INT4OID ||
       SPI_gettypeid(SPI_tuptable->tupdesc, edge_columns->target) != INT4OID ||
       SPI_gettypeid(SPI_tuptable->tupdesc, edge_columns->cost) != FLOAT8OID) 
@@ -115,8 +116,9 @@ ksp_fetch_edge_columns(SPITupleTable *tuptable, ksp_edge_columns_t *edge_columns
       elog(ERROR, "Error, columns 'source', 'target' must be of type int4, 'cost' must be of type float8");
       return -1;
     }
+*/
 
-  kspDBG("columns: id %i source %i target %i cost %f", 
+  kspDBG("columns: id %ld source %ld target %ld cost %f", 
       edge_columns->id, edge_columns->source, 
       edge_columns->target, edge_columns->cost);
 
@@ -220,7 +222,6 @@ kshortest_path(PG_FUNCTION_ARGS)
 				  &path, 
 				  &path_count);
       toDel=path;
-#if 0
 #ifdef DEBUG
       if (ret >= 0) 
         {
@@ -228,14 +229,13 @@ kshortest_path(PG_FUNCTION_ARGS)
         
           for (i = 0; i < path_count; i++) 
             {
-              kspDBG("Step %i route_id  %d ", i, path[i].route_id);
-              kspDBG("        vertex_id  %d ", path[i].vertex_id);
-              kspDBG("        edge_id    %d ", path[i].edge_id);
-              kspDBG("        cost       %f ", path[i].cost);
+//              kspDBG("Step %i route_id  %d ", i, path[i].route_id);
+//              kspDBG("        vertex_id  %ld ", path[i].vertex_id);
+//              kspDBG("        edge_id    %ld ", path[i].edge_id);
+//              kspDBG("        cost       %f ", path[i].cost);
             }
         }
 #endif
-#endif 
      kspDBG("Total number of tuples to be returned %i ", path_count);
 	
       /* total number of tuples to be returned */
@@ -243,7 +243,7 @@ kshortest_path(PG_FUNCTION_ARGS)
       funcctx->user_fctx = path;
 
       funcctx->tuple_desc = 
-        BlessTupleDesc(RelationNameGetTupleDesc("pgr_costResult3"));
+        BlessTupleDesc(RelationNameGetTupleDesc("pgr_costResult3Big"));
 
       MemoryContextSwitchTo(oldcontext);
     }
@@ -275,9 +275,9 @@ kshortest_path(PG_FUNCTION_ARGS)
       nulls[0] = false;
       values[1] = Int32GetDatum(path[call_cntr].route_id);
       nulls[1] = false;
-      values[2] = Int32GetDatum(path[call_cntr].vertex_id);
+      values[2] = Int64GetDatum(path[call_cntr].vertex_id);
       nulls[2] = false;
-      values[3] = Int32GetDatum(path[call_cntr].edge_id);
+      values[3] = Int64GetDatum(path[call_cntr].edge_id);
       nulls[3] = false;
       values[4] = Float8GetDatum(path[call_cntr].cost);
       nulls[4] = false;
@@ -302,8 +302,8 @@ kshortest_path(PG_FUNCTION_ARGS)
 
 
 
-int compute_kshortest_path(char* sql, int start_vertex, 
-			 int end_vertex, int no_paths, 
+int compute_kshortest_path(char* sql, int64_t start_vertex, 
+			 int64_t end_vertex, int no_paths, 
 			 bool has_reverse_cost, 
 			 ksp_path_element_t **ksp_path, int *path_count) 
 {
@@ -314,22 +314,22 @@ int compute_kshortest_path(char* sql, int start_vertex,
   bool moredata = TRUE;
   int ntuples;
   ksp_edge_t *edges = NULL;
-  int total_tuples = 0;
+  long total_tuples = 0;
 #ifndef _MSC_VER
   ksp_edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
                                  .cost= -1, .reverse_cost= -1};
 #else // _MSC_VER
   ksp_edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
 #endif // _MSC_VER
-  int v_max_id=0;
-  int v_min_id=INT_MAX;
-
-  int s_count = 0;
-  int t_count = 0;
+  long v_max_id=0;
+  long v_min_id=LONG_MAX;
+  //kspDBG("values: %ld",LONG_MAX);
+  long s_count = 0;
+  long t_count = 0;
 
   char *err_msg=(char *)"";
   int ret = -1;
-  register int z;
+  //register int z;
 
 
   kspDBG("Starting kshortest_path %s\n",sql);
@@ -364,7 +364,6 @@ int compute_kshortest_path(char* sql, int start_vertex,
                                  has_reverse_cost) == -1)
 	    return ksp_finish(SPIcode, ret);
         }
-
       ntuples = SPI_processed;
       total_tuples += ntuples;
       if (!edges)
@@ -400,7 +399,7 @@ int compute_kshortest_path(char* sql, int start_vertex,
 
  
       
-  kspDBG("Total %i tuples in query", total_tuples);
+  kspDBG("Total %ld tuples in query", total_tuples);
   
   kspDBG("Calling doKpaths\n");
         
