@@ -1,6 +1,5 @@
 #include <deque>
 #include <sstream>
-#include <climits>
 
 #include "./signalhandler.h"
 #include "KSPGraph.h"
@@ -29,7 +28,6 @@ int  doKpaths(ksp_edge_t  * edges, long total_tuples,
         log << "NOTICE: Step 0: Loading the graph\n";
         theGraph.StartLoad();
         theGraph.AddData(edges, total_tuples, has_reverse_cost);
-theGraph.PrintOut(log);
         theGraph.EndLoad();
         (*path_count) = 0;
 	THROW_ON_SIGINT
@@ -41,7 +39,6 @@ theGraph.PrintOut(log);
         if (startPt == NULL) {
             *err_msg = strdup( "NOTICE: Starting vertex not found on any edge" );
             (*path_count) = 1;
-*err_msg = strdup( log.str().c_str());
             *path = noPathFound(start_vertex);
             return 0;
         }
@@ -117,7 +114,6 @@ return 0;
         int sequence = 0;
         for (unsigned int route_id = 0; route_id < paths.size(); route_id++) {
           if (paths[route_id].size() > 0)
-paths[route_id].PrintOut(log);
                dpPrint(theGraph, paths[route_id], ksp_path, sequence, route_id);
         }
 
@@ -127,10 +123,9 @@ paths[route_id].PrintOut(log);
             *err_msg = strdup( log.str().c_str());
             return -1;
         }
-        #if 0
+        #if 1
         *err_msg = strdup("OK");
         #else
-        log << "NOTICE max long: " << LONG_MAX << "\n";
         *err_msg = strdup( log.str().c_str());
         #endif
         *path = ksp_path;
