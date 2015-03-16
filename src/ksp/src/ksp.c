@@ -157,17 +157,17 @@ ksp_fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->id, &isnull);
   if (isnull)
     elog(ERROR, "id contains a null value");
-  target_edge->id = DatumGetInt32(binval);
+  target_edge->id = DatumGetInt64(binval);
 
   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->source, &isnull);
   if (isnull)
     elog(ERROR, "source contains a null value");
-  target_edge->source = DatumGetInt32(binval);
+  target_edge->source = DatumGetInt64(binval);
 
   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->target, &isnull);
   if (isnull)
     elog(ERROR, "target contains a null value");
-  target_edge->target = DatumGetInt32(binval);
+  target_edge->target = DatumGetInt64(binval);
 
   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->cost, &isnull);
   if (isnull)
@@ -215,11 +215,11 @@ kshortest_path(PG_FUNCTION_ARGS)
 
 
       ret = compute_kshortest_path(text2char(PG_GETARG_TEXT_P(0)), /* SQL string */
-                                  PG_GETARG_INT32(1),             /* source id */
-                                  PG_GETARG_INT32(2),             /* target_id */
+                                  PG_GETARG_INT64(1),             /* source id */
+                                  PG_GETARG_INT64(2),             /* target_id */
                                   PG_GETARG_INT32(3),             /* number of paths */
                                   PG_GETARG_BOOL(4), 		  /* has reverse_cost */
-				  &path, 
+				  &path,
 				  &path_count);
       toDel=path;
 #ifdef DEBUG
@@ -229,10 +229,10 @@ kshortest_path(PG_FUNCTION_ARGS)
         
           for (i = 0; i < path_count; i++) 
             {
-//              kspDBG("Step %i route_id  %d ", i, path[i].route_id);
-//              kspDBG("        vertex_id  %ld ", path[i].vertex_id);
-//              kspDBG("        edge_id    %ld ", path[i].edge_id);
-//              kspDBG("        cost       %f ", path[i].cost);
+              kspDBG("Step %i route_id  %d ", i, path[i].route_id);
+              kspDBG("        vertex_id  %ld ", path[i].vertex_id);
+              kspDBG("        edge_id    %ld ", path[i].edge_id);
+              kspDBG("        cost       %f ", path[i].cost);
             }
         }
 #endif

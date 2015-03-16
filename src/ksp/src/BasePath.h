@@ -69,13 +69,15 @@ class BasePath {
      UINT size() const { return m_EdgesList.size();}
      //! Returns True when size==0
      bool isEmpty() const { return size() == 0;}
+#if 0
      //! Returns the EdgeId of edge at position i
-     int getEdgeID(UINT i) const {
+      getEdgeID(UINT i) const {
          assert(i < m_EdgesList.size());
          return m_EdgesList[i]->ID();
      }
+#endif
      //! Returns the Edge's->original Id of edge at position i
-     int getEdgeOriginalID(UINT i) const {
+     long getEdgeOriginalID(UINT i) const {
          assert(i < m_EdgesList.size());
          return m_EdgesList[i]->originalID();
      }

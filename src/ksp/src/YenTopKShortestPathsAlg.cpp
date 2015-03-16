@@ -22,7 +22,7 @@ void YenTopKShortestPathsAlg::getFirstSolution() {
 }
 
 
-std::deque<BasePath> YenTopKShortestPathsAlg::Yen(int  source, int  sink, int K) {
+std::deque<BasePath> YenTopKShortestPathsAlg::Yen(long  source, long  sink, int K) {
         std::deque<BasePath> m_ResultList;
         if ((source !=sink) && (K > 0)) {
              BaseVertex* sourcePt = find_vertex(source);

@@ -53,13 +53,13 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id bigint, target_id bigint,
 
     execute 'select pg_typeof(id)::text as id_type, pg_typeof(source)::text as source_type, pg_typeof(target)::text as target_type '
             || ' from ('||sql||' limit 1) AS a ' into rec;
-    if not (rec.id_type in ('integer'::text, 'smallint'::text)) then
+    if not (rec.id_type in ('bigint'::text, 'integer'::text, 'smallint'::text)) then
         RAISE EXCEPTION 'id is NOT of type integer or smallint';
     end if;
-    if not (rec.source_type in ('integer'::text, 'smallint'::text)) then
+    if not (rec.source_type in ('bigint'::text, 'integer'::text, 'smallint'::text)) then
         RAISE EXCEPTION 'id is NOT of type integer or smallint';
     end if;
-    if not (rec.target_type in ('integer'::text, 'smallint'::text)) then
+    if not (rec.target_type in ('bigint'::text, 'integer'::text, 'smallint'::text)) then
         RAISE EXCEPTION 'id is NOT of type integer or smallint';
     end if;
         

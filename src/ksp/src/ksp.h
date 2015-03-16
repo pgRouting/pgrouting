@@ -27,8 +27,8 @@
 
 #include "postgres.h"
 
-//#undef DEBUG
-#define DEBUG
+#undef DEBUG
+//#define DEBUG
 
 #ifdef __cplusplus
 extern "C"

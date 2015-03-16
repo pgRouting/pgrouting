@@ -31,7 +31,7 @@ the ID of the vertex.\n
 \param[in] vertex_id: Original Id of the vertex
 \return ID: of the vertex in the graph.
 */
-BaseVertex* Graph::getNewVertex(int vertex_id) {
+BaseVertex* Graph::getNewVertex(long vertex_id) {
     UINT nodePos;
     nodePos = m_Vertices.size();
     BaseVertex vertex(nodePos, vertex_id);
@@ -64,7 +64,7 @@ The FanIn of the ending vertex and FanOut of the starting vertex will include th
 \param[in] edge_weight: weight of the edge
 \return ID: of the edge in the graph.
 */
-BaseEdge* Graph::insertNewEdge(int edge_id,  UINT startId, UINT endId, double edge_weight) {
+BaseEdge* Graph::insertNewEdge(long edge_id,  UINT startId, UINT endId, double edge_weight) {
     UINT edgePos = m_Edges.size();
     BaseEdge edge(edgePos, edge_id, startId, endId, edge_weight);
     m_Edges.push_back(edge);
@@ -115,7 +115,7 @@ bool found = false;
 #endif
 }
 
-int Graph::getVertexOriginalID(UINT vertex_id) const {
+long Graph::getVertexOriginalID(UINT vertex_id) const {
     assert(vertex_id < m_Vertices.size());
     return m_Vertices[vertex_id].getOriginalID();
 }
@@ -136,7 +136,7 @@ void Graph::clear() {
 \Return ID: the position/ID of vertex_id when not found
 */
 
-BaseVertex*  Graph::find_vertex(int vertex_id) const {
+BaseVertex*  Graph::find_vertex(long vertex_id) const {
     UINT nodePos;
     nodePos = m_Vertices.size();
     BaseVertex vertex(nodePos, vertex_id);
@@ -169,7 +169,7 @@ void Graph::PrintOut(std::ostream &out_stream) const {
 
 
 
-void Graph::PrintPath(std::ostream &out_stream, const BasePath &path, int startNode) const {
+void Graph::PrintPath(std::ostream &out_stream, const BasePath &path, long startNode) const {
     if (path.size() == 0) {
         out_stream << "Route 0\n";
         out_stream << startNode << "\t-1 \t0\n";
@@ -178,9 +178,9 @@ void Graph::PrintPath(std::ostream &out_stream, const BasePath &path, int startN
     // TODO(vicky): convert to iterator not so important is for debugging
     for (UINT i=0 ; i < path.size() ; i++) {
         BaseEdge* edge = path[i];
-        int start = edge->getStart();
+        long start = edge->getStart();
         double cost  = edge->Weight();
-        int edgeId = edge->originalID();
+        long edgeId = edge->originalID();
         out_stream << "Route " << i<< "\n";
         out_stream << start << "\t" << edgeId << "\t" << cost << "\n";
     }
@@ -217,7 +217,7 @@ void Graph::import_from_file(const std::string &input_file_name) {
         bool has_reverse_cost;
         ifs >> has_reverse_cost;
 
-        int edge_id, start_id, end_id;
+        long edge_id, start_id, end_id;
         double edge_weight, reverse_weight;
         BaseVertex* startPos;
         BaseVertex* endPos;

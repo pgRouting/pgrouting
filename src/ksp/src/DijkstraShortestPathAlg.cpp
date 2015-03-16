@@ -13,7 +13,7 @@
 
 using namespace boost;
 struct Vertex {
-    int id;
+    long id;
     double cost;
 };
 
@@ -23,7 +23,7 @@ struct Vertex {
 \param[in] sink: original id of the sink
 \Returns BasePath
 */
-std::deque<BaseEdge> DijkstraShortestPathAlg::Dijkstra(int source, int sink) {
+std::deque<BaseEdge> DijkstraShortestPathAlg::Dijkstra(long source, long sink) {
         std::deque<BaseEdge> emptyPath;
         if (source != sink) {
              BaseVertex* sourcePt = find_vertex(source);
@@ -113,7 +113,7 @@ BasePath DijkstraShortestPathAlg::boostDijkstra(UINT source_id, UINT sink_id) {
         v_src = path_vect.at(i);
         v_targ = path_vect.at(i + 1);
 
-        int edge_id = 0;
+        long edge_id = 0;
 
         for (tie(out_i, out_end) = out_edges(v_src, graph);
              out_i != out_end; ++out_i) {

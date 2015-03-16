@@ -41,9 +41,9 @@ class Graph {
      ///@{
 
      //! Returns the original ID of vertex_id
-     int getVertexOriginalID(UINT vertex_id) const;
+     long getVertexOriginalID(UINT vertex_id) const;
      //! Returns a pointer to the vertex originaly identified by vertex_id (NULL when nor found);
-     BaseVertex* find_vertex(int vertex_id) const;
+     BaseVertex* find_vertex(long vertex_id) const;
      ///@}
 
      /** @name mutators */
@@ -52,15 +52,15 @@ class Graph {
      //! clears the edges and vertices of the graph
      void clear();
      //! Inserts an edge to the graph (original id, startId, endId, weight)
-     BaseEdge* insertNewEdge(int id, UINT startId, UINT endId, double edge_weight);
+     BaseEdge* insertNewEdge(long id, UINT startId, UINT endId, double edge_weight);
      //! Returns the Id a the newly created vertex or the Id if it already exists
-     BaseVertex* getNewVertex(int vertex_id);
+     BaseVertex* getNewVertex(long vertex_id);
      ///@}
 
      /** @name debugging */
      ///@{
      void PrintOut(std::ostream &out_stream) const;
-     void PrintPath(std::ostream &out_stream, const BasePath &path, int start) const;
+     void PrintPath(std::ostream &out_stream, const BasePath &path, long start) const;
      ///@}
 
  private:

@@ -14,7 +14,7 @@ static  void dpPrint(const KSPGraph &theGraph,
                      const BasePath &thePath,
                      ksp_path_element_t *path,
                      int &sequence, int route_id);
-static  ksp_path_element_t * noPathFound(int start_id);
+static  ksp_path_element_t * noPathFound(long start_id);
 
 int  doKpaths(ksp_edge_t  * edges, long total_tuples,
                        long  start_vertex, long  end_vertex,
@@ -29,6 +29,7 @@ int  doKpaths(ksp_edge_t  * edges, long total_tuples,
         log << "NOTICE: Step 0: Loading the graph\n";
         theGraph.StartLoad();
         theGraph.AddData(edges, total_tuples, has_reverse_cost);
+theGraph.PrintOut(log);
         theGraph.EndLoad();
         (*path_count) = 0;
 	THROW_ON_SIGINT
@@ -40,6 +41,7 @@ int  doKpaths(ksp_edge_t  * edges, long total_tuples,
         if (startPt == NULL) {
             *err_msg = strdup( "NOTICE: Starting vertex not found on any edge" );
             (*path_count) = 1;
+*err_msg = strdup( log.str().c_str());
             *path = noPathFound(start_vertex);
             return 0;
         }
@@ -115,6 +117,7 @@ return 0;
         int sequence = 0;
         for (unsigned int route_id = 0; route_id < paths.size(); route_id++) {
           if (paths[route_id].size() > 0)
+paths[route_id].PrintOut(log);
                dpPrint(theGraph, paths[route_id], ksp_path, sequence, route_id);
         }
 
@@ -144,7 +147,7 @@ static  void dpPrint(const KSPGraph &theGraph,
                      ksp_path_element_t *path,
                      int &sequence, int route_id) {
         // the row data:  seq, route, nodeid, edgeId, cost
-        int nodeId, edgeId, lastNodeId;
+        long nodeId, edgeId, lastNodeId;
         double cost;
 
         for (unsigned int i = 0; i < thePath.size(); i++) {
@@ -156,20 +159,20 @@ static  void dpPrint(const KSPGraph &theGraph,
 
                path[sequence].route_id = route_id;
                path[sequence].vertex_id = nodeId;
-               path[sequence].edge_id = -edgeId;
+               path[sequence].edge_id = edgeId;
                path[sequence].cost = cost;
                sequence++;
                 if (i == thePath.size()-1) {
                       path[sequence].route_id = route_id;
                       path[sequence].vertex_id = lastNodeId;
-                      path[sequence].edge_id = long(-1);
+                      path[sequence].edge_id = -1;
                       path[sequence].cost = 0;
                       sequence++;
                }
         }
 }
 
-static  ksp_path_element_t * noPathFound(int start_id) {
+static  ksp_path_element_t * noPathFound(long start_id) {
         ksp_path_element_t *no_path;
         no_path = get_ksp_memory(1, no_path);
         no_path[0].route_id  = 0;

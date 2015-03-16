@@ -83,7 +83,7 @@ class BaseEdge {
         ///@{
         void PrintOut(std::ostream& out_stream) const {
             out_stream << "local ID =" << m_ID
-                << " ( original ID=" << m_originalID << ", From=" << getStart()
+                << " ( original ID=" << long(m_originalID) << ", From=" << getStart()
                 << ",To=" <<getEnd() << ", Weight=" << Weight()
                 << "Active=" << m_active << "Main= "<< m_Main << ")";
         }

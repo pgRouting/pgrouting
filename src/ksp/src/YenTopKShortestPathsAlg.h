@@ -11,7 +11,7 @@ class YenTopKShortestPathsAlg: public DijkstraShortestPathAlg {
                 : DijkstraShortestPathAlg(graph),
                  m_DoIt(false) {}  // in case of wanted parallels set to true
         ~YenTopKShortestPathsAlg(void) {clear();}
-        std::deque<BasePath> Yen(int source, int target, int K);
+        std::deque<BasePath> Yen(long source, long target, int K);
         void clear();
 
  private:
