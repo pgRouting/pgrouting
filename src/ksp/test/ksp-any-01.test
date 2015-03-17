@@ -1,43 +1,46 @@
 --
 -- Tests with original data
 --
+drop extension pgrouting;
+create extension pgrouting;
+
 select *
   from pgr_ksp(
-    'select source, target, cost,reverse_cost, id from network order by id',
-    4, 5, 1, false);
+    'select source, target, id from network order by id',
+    4, 5, 1);
+
+select *
+  from pgr_ksp(
+    'select source, target, cost, id from network order by id',
+    4, 5, 2);
+
+select *
+  from pgr_ksp(
+    'select source, target, cost, id from network order by id',
+    4, 5, 15);
+
+select *
+  from pgr_ksp(
+    'select source, target, cost, id from network order by id',
+    4, 5, 100);
 
 select *
   from pgr_ksp(
     'select source, target, cost,reverse_cost, id from network order by id',
-    4, 5, 2, false);
+    4, 5, 1);
 
 select *
   from pgr_ksp(
     'select source, target, cost,reverse_cost, id from network order by id',
-    4, 5, 15, false);
+    4, 5, 2);
 
 select *
   from pgr_ksp(
     'select source, target, cost,reverse_cost, id from network order by id',
-    4, 5, 100, false);
+    4, 5, 15);
 
 select *
   from pgr_ksp(
     'select source, target, cost,reverse_cost, id from network order by id',
-    4, 5, 1, true);
-
-select *
-  from pgr_ksp(
-    'select source, target, cost,reverse_cost, id from network order by id',
-    4, 5, 2, true);
-
-select *
-  from pgr_ksp(
-    'select source, target, cost,reverse_cost, id from network order by id',
-    4, 5, 15, true);
-
-select *
-  from pgr_ksp(
-    'select source, target, cost,reverse_cost, id from network order by id',
-    4, 5, 100, true);
+    4, 5, 100);
 

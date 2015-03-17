@@ -7,42 +7,102 @@
 
 SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
     FROM pgr_ksp(
+        'SELECT id, source, target, cost FROM edge_table',
+        2, 3, 1
+);
+
+SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
+    FROM pgr_ksp(
+        'SELECT id, source, target, cost FROM edge_table',
+        2, 3, 2
+);
+
+SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
+    FROM pgr_ksp(
+        'SELECT id, source, target, cost FROM edge_table',
+        2, 3, 10
+);
+
+
+
+SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
+    FROM pgr_ksp(
+        'SELECT id, source, target, reverse_cost as cost FROM edge_table',
+        2, 3, 1
+);
+
+SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
+    FROM pgr_ksp(
+        'SELECT id, source, target, reverse_cost as cost FROM edge_table',
+        2, 3, 2
+);
+
+SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
+    FROM pgr_ksp(
+        'SELECT id, source, target, reverse_cost as cost FROM edge_table',
+        2, 3, 10
+);
+
+
+
+
+
+SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
+    FROM pgr_ksp(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-        1, 2, 1, true
+        2, 3, 1
 );
 
 SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
     FROM pgr_ksp(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-        1, 2, 2, true
+        2, 3, 2
 );
 
 SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
     FROM pgr_ksp(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-        1, 2, 100, true
+        2, 3, 10
+);
+
+
+
+SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
+    FROM pgr_ksp(
+        'SELECT id, source, target, cost, cost as reverse_cost FROM edge_table',
+        2, 3, 1
 );
 
 SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
     FROM pgr_ksp(
-        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-        1, 6, 1, true
+        'SELECT id, source, target, cost, cost as reverse_cost FROM edge_table',
+        2, 3, 2
 );
 
 SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
     FROM pgr_ksp(
-        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-        1, 6, 2, true
+        'SELECT id, source, target, cost, cost as reverse_cost FROM edge_table',
+        2, 3, 10
 );
+
+
+
 SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
     FROM pgr_ksp(
-        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-        1, 6, 4, true
+        'SELECT id, source, target, reverse_cost as cost, reverse_cost FROM edge_table',
+        2, 3, 1
 );
 
 SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
     FROM pgr_ksp(
-        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-        2, 6, 100, true
+        'SELECT id, source, target, reverse_cost as cost, reverse_cost FROM edge_table',
+        2, 3, 2
 );
+
+SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost 
+    FROM pgr_ksp(
+        'SELECT id, source, target, reverse_cost as cost, reverse_cost FROM edge_table',
+        2, 3, 10
+);
+
 

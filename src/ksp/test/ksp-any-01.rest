@@ -1,31 +1,6 @@
- NOTICE:  Starting kshortest_path select source, target, cost,reverse_cost, id from network order by id
-
- NOTICE:  columns: id 5 source 1 target 2 cost 3.000000
- NOTICE:  Total 40 tuples in query
- NOTICE:  Calling doKpaths
-
- NOTICE:  total tuples found 2
-
- NOTICE:  Exist Status = 0
-
- NOTICE:  Returned message = OK
-
- NOTICE:  Total number of tuples to be returned 2 
-0|0|4|15|2
-1|0|5|-1|0
- NOTICE:  Starting kshortest_path select source, target, cost,reverse_cost, id from network order by id
-
- NOTICE:  columns: id 5 source 1 target 2 cost 3.000000
- NOTICE:  Total 40 tuples in query
- NOTICE:  Calling doKpaths
-
- NOTICE:  total tuples found 7
-
- NOTICE:  Exist Status = 0
-
- NOTICE:  Returned message = OK
-
- NOTICE:  Total number of tuples to be returned 7 
+ ERROR:  An expected column was not found in the query
+HINT:  Please veryfy the column names: id, source, target, cost
+CONTEXT:  PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 5 at assignment
 0|0|4|15|2
 1|0|5|-1|0
 2|1|4|13|1.41421353816986
@@ -33,19 +8,6 @@
 4|1|0|2|2.82842707633972
 5|1|2|9|4.4721360206604
 6|1|5|-1|0
- NOTICE:  Starting kshortest_path select source, target, cost,reverse_cost, id from network order by id
-
- NOTICE:  columns: id 5 source 1 target 2 cost 3.000000
- NOTICE:  Total 40 tuples in query
- NOTICE:  Calling doKpaths
-
- NOTICE:  total tuples found 106
-
- NOTICE:  Exist Status = 0
-
- NOTICE:  Returned message = OK
-
- NOTICE:  Total number of tuples to be returned 106 
 0|0|4|15|2
 1|0|5|-1|0
 2|1|4|13|1.41421353816986
@@ -152,19 +114,6 @@
 103|14|12|37|2
 104|14|13|39|6.32455539703369
 105|14|5|-1|0
- NOTICE:  Starting kshortest_path select source, target, cost,reverse_cost, id from network order by id
-
- NOTICE:  columns: id 5 source 1 target 2 cost 3.000000
- NOTICE:  Total 40 tuples in query
- NOTICE:  Calling doKpaths
-
- NOTICE:  total tuples found 438
-
- NOTICE:  Exist Status = 0
-
- NOTICE:  Returned message = OK
-
- NOTICE:  Total number of tuples to be returned 438 
 0|0|4|15|2
 1|0|5|-1|0
 2|1|4|13|1.41421353816986
@@ -603,36 +552,8 @@
 435|44|12|37|2
 436|44|13|39|6.32455539703369
 437|44|5|-1|0
- NOTICE:  Starting kshortest_path select source, target, cost,reverse_cost, id from network order by id
-
- NOTICE:  columns: id 5 source 1 target 2 cost 3.000000
- NOTICE:  columns: reverse_cost cost 4.000000
- NOTICE:  Total 40 tuples in query
- NOTICE:  Calling doKpaths
-
- NOTICE:  total tuples found 2
-
- NOTICE:  Exist Status = 0
-
- NOTICE:  Returned message = OK
-
- NOTICE:  Total number of tuples to be returned 2 
 0|0|4|15|2
 1|0|5|-1|0
- NOTICE:  Starting kshortest_path select source, target, cost,reverse_cost, id from network order by id
-
- NOTICE:  columns: id 5 source 1 target 2 cost 3.000000
- NOTICE:  columns: reverse_cost cost 4.000000
- NOTICE:  Total 40 tuples in query
- NOTICE:  Calling doKpaths
-
- NOTICE:  total tuples found 7
-
- NOTICE:  Exist Status = 0
-
- NOTICE:  Returned message = OK
-
- NOTICE:  Total number of tuples to be returned 7 
 0|0|4|15|2
 1|0|5|-1|0
 2|1|4|13|1.41421353816986
@@ -640,20 +561,6 @@
 4|1|0|2|2.82842707633972
 5|1|2|9|4.4721360206604
 6|1|5|-1|0
- NOTICE:  Starting kshortest_path select source, target, cost,reverse_cost, id from network order by id
-
- NOTICE:  columns: id 5 source 1 target 2 cost 3.000000
- NOTICE:  columns: reverse_cost cost 4.000000
- NOTICE:  Total 40 tuples in query
- NOTICE:  Calling doKpaths
-
- NOTICE:  total tuples found 106
-
- NOTICE:  Exist Status = 0
-
- NOTICE:  Returned message = OK
-
- NOTICE:  Total number of tuples to be returned 106 
 0|0|4|15|2
 1|0|5|-1|0
 2|1|4|13|1.41421353816986
@@ -760,20 +667,6 @@
 103|14|12|37|2
 104|14|13|39|6.32455539703369
 105|14|5|-1|0
- NOTICE:  Starting kshortest_path select source, target, cost,reverse_cost, id from network order by id
-
- NOTICE:  columns: id 5 source 1 target 2 cost 3.000000
- NOTICE:  columns: reverse_cost cost 4.000000
- NOTICE:  Total 40 tuples in query
- NOTICE:  Calling doKpaths
-
- NOTICE:  total tuples found 438
-
- NOTICE:  Exist Status = 0
-
- NOTICE:  Returned message = OK
-
- NOTICE:  Total number of tuples to be returned 438 
 0|0|4|15|2
 1|0|5|-1|0
 2|1|4|13|1.41421353816986
