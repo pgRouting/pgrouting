@@ -154,6 +154,7 @@ Developer
 
 :ref:`change_log`                            
 
+   - :ref:`changelog_2_1_develop`                            
    - :ref:`changelog_2_0`                            
    - :ref:`changelog_1_x`
 
