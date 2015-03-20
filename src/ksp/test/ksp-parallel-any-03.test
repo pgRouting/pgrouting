@@ -9,7 +9,7 @@ SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost
         2, 3, 1, true
 );
 
-ELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost
+SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost
     FROM pgr_ksp(
         'SELECT id, source, target, cost, reverse_cost FROM parallel',
         2, 3, 2, true

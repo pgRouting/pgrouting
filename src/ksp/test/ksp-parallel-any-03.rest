@@ -1,8 +1,7 @@
 0|0|2|2|2
 1|0|3|-1|0
- ERROR:  syntax error at or near "ELECT"
-LINE 1: ELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost
-        ^
+0|0|2|2|2
+1|0|3|-1|0
 0|0|2|2|2
 1|0|3|-1|0
 0|0|2|2|2
