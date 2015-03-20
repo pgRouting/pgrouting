@@ -1,46 +1,15 @@
 --
--- Tests with original data
+-- Generate 15 shortest paths between nodes 4 and 5
 --
-drop extension pgrouting;
-create extension pgrouting;
-
-select *
-  from pgr_ksp(
-    'select source, target, id from network order by id',
-    4, 5, 1);
-
-select *
-  from pgr_ksp(
-    'select source, target, cost, id from network order by id',
-    4, 5, 2);
-
-select *
-  from pgr_ksp(
-    'select source, target, cost, id from network order by id',
-    4, 5, 15);
-
-select *
-  from pgr_ksp(
-    'select source, target, cost, id from network order by id',
-    4, 5, 100);
-
-select *
+-- List by links
+--
+select ksp.id1, ksp.id3, n.source, n.target, round(st_length(n.the_geom)::numeric, 2) as len
   from pgr_ksp(
     'select source, target, cost,reverse_cost, id from network order by id',
-    4, 5, 1);
-
-select *
-  from pgr_ksp(
-    'select source, target, cost,reverse_cost, id from network order by id',
-    4, 5, 2);
-
-select *
-  from pgr_ksp(
-    'select source, target, cost,reverse_cost, id from network order by id',
-    4, 5, 15);
-
-select *
-  from pgr_ksp(
-    'select source, target, cost,reverse_cost, id from network order by id',
-    4, 5, 100);
-
+    4,
+    5,
+    15,
+    'f') ksp,
+        network n
+ where ksp.id3=n.id
+ order by ksp.id1, ksp.id3;
