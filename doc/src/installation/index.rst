@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -18,14 +18,14 @@ Binary packages are provided for the current version on the following platforms:
 Windows
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Winnie Bot Experimental Builds: 
+Winnie Bot Experimental Builds:
 
 * `PostgreSQL 9.2-9.4beta1 32-bit, 64-bit <http://postgis.net/windows_downloads>`_
 
 Production Builds:
 
 * Production builds are part of the Spatial Extensions/PostGIS Bundle available via Application StackBuilder
-* `Can also get PostGIS Bundle from <http://download.osgeo.org/postgis/windows/>`_ 
+* `Can also get PostGIS Bundle from <http://download.osgeo.org/postgis/windows/>`_
 
 
 Ubuntu/Debian
@@ -52,6 +52,17 @@ RHEL/CentOS/Fedora
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Fedora RPM's: https://admin.fedoraproject.org/pkgdb/acls/name/pgRouting
+
+
+FreeBSD
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+pgRouting can be installed via ports:
+
+.. code-block:: bash
+
+  cd /usr/ports/databases/pgRouting
+  make install clean
 
 
 OS X
