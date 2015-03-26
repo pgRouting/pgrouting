@@ -49,9 +49,9 @@ BasePath DijkstraShortestPathAlg::Dijkstra(UINT source, UINT sink) {
 
 // TODO(vicky) brake this huge function into little more esay to undertand functions
 BasePath DijkstraShortestPathAlg::boostDijkstra(UINT source_id, UINT sink_id) {
-    assert(m_BestEdgesPt.size());
     BasePath path;
     path.clear();
+    if (m_BestEdgesPt.size() == 0) return path;
 
     typedef adjacency_list < listS, vecS, directedS, no_property, Vertex> graph_t;
     typedef graph_traits < graph_t >::vertex_descriptor vertex_descriptor;
