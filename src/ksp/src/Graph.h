@@ -5,6 +5,7 @@
 #include <set>
 #include <deque>
 #include <string>
+#include "GraphElements.h"
 
 /**************************************************************************/
 //!  Graph(Vertices,Edges)
