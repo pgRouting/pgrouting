@@ -22,8 +22,8 @@
 class BaseEdge;
 class BaseVertex {
  public:
-  typedef typename  std::set< BaseEdge*, BaseEdge::compBaseEdge> eSetPt;
-  typedef typename  std::set< BaseEdge*, BaseEdge::compBaseEdge>::iterator eSetPtIt;
+  typedef  std::set< BaseEdge*, BaseEdge::compBaseEdge> eSetPt;
+  typedef  std::set< BaseEdge*, BaseEdge::compBaseEdge>::iterator eSetPtIt;
 
         /*! @name constructors
             Copy constructor is the Default

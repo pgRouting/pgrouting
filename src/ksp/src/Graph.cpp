@@ -80,7 +80,7 @@ BaseEdge* Graph::insertNewEdge(long edge_id,  UINT startId, UINT endId, double e
 void Graph::updateBestEdgesSet(BaseEdge *edgePt) {
     std::set <BaseEdge*, BaseEdge::compBestEdge>::iterator edgeInSet;
     edgeInSet = m_BestEdgesPt.find(edgePt);
-bool found = false;
+// bool found = false;
     if (edgeInSet == m_BestEdgesPt.end()) {
         // first <start,end> edge found is allways the min
         edgePt->setMain();

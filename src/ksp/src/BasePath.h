@@ -21,8 +21,8 @@
 ********************************************************************** */
 class BasePath {
  public:
-     typedef typename std::deque<BaseEdge*> eDeque;
-     typedef typename std::deque<BaseEdge*>::const_iterator eDequeIt;
+     typedef std::deque<BaseEdge*> eDeque;
+     typedef std::deque<BaseEdge*>::const_iterator eDequeIt;
 
      class compBasePath {
       public:

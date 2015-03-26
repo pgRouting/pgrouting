@@ -20,13 +20,13 @@ Vertices and Edges are stored in this implementation with deque
 ********************************************************************** */
 class Graph {
  public:
-     typedef typename std::deque<BaseVertex> vList;
-     typedef typename std::deque<BaseVertex>::iterator vListIt;
-     typedef typename std::set<BaseVertex*, BaseVertex::compBaseVertexID> vSetPt;
-     typedef typename std::set<BaseVertex*, BaseVertex::compBaseVertexID>::iterator vSetIt;
+     typedef std::deque<BaseVertex> vList;
+     typedef std::deque<BaseVertex>::iterator vListIt;
+     typedef std::set<BaseVertex*, BaseVertex::compBaseVertexID> vSetPt;
+     typedef std::set<BaseVertex*, BaseVertex::compBaseVertexID>::iterator vSetIt;
 
-     typedef typename std::deque<BaseEdge> eList;
-     typedef typename std::deque<BaseEdge>::iterator eListIt;
+     typedef std::deque<BaseEdge> eList;
+     typedef std::deque<BaseEdge>::iterator eListIt;
 
  protected:
      vList m_Vertices;    //<! Vertices

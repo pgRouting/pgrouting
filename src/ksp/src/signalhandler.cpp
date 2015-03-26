@@ -35,7 +35,7 @@ SignalHandler::registerHandler ( int signum, EventHandler *eh )
 
 void SignalHandler::removeHandler( int signum )
 {
-  EventHandler *old_eh = signalHandlers_[signum];
+  // EventHandler *old_eh = signalHandlers_[signum];
   signalHandlers_[signum] = static_cast<EventHandler *>(0);
 }
 
