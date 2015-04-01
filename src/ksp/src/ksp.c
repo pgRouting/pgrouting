@@ -326,6 +326,8 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
   //kspDBG("values: %ld",LONG_MAX);
   long s_count = 0;
   long t_count = 0;
+  bool sourceFound = false;
+  bool targetFound = false;
 
   char *err_msg=(char *)"";
   int ret = -1;
@@ -388,6 +390,12 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
               HeapTuple tuple = tuptable->vals[t];
               ksp_fetch_edge(&tuple, &tupdesc, &edge_columns, 
                          &edges[total_tuples - ntuples + t]);
+              if (!sourceFound && edges[total_tuples - ntuples + t].source == start_vertex) {
+                  sourceFound = true;
+              }
+              if (!targetFound && edges[total_tuples - ntuples + t].target == end_vertex) {
+                  targetFound = true;
+              }
             }
           SPI_freetuptable(tuptable);
         } 
@@ -398,6 +406,14 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
     }
 
  
+  if (!sourceFound) {
+      elog(ERROR, "Starting Vertex does not exist, or has no outgoing edges");
+      return -1;
+  }
+  if (!targetFound) {
+      elog(ERROR, "Ending Vertex does not exist, or has no incoming edges");
+      return -1;
+  }
       
   kspDBG("Total %ld tuples in query", total_tuples);
   

@@ -16,6 +16,27 @@ struct Vertex {
     long id;
     double cost;
 };
+template <class Vertex, class Tag>
+struct target_visitor : public default_dijkstra_visitor
+{
+ target_visitor(Vertex u) : v(u) { }
+
+ template <class Graph>
+ void examine_vertex(Vertex u, Graph& g)
+ {
+  if( u == v ) {
+   throw(-1);
+  }
+ }
+private:
+ Vertex v;
+};
+
+template <class Vertex, class Tag>
+target_visitor<Vertex, Tag>
+target_visit(Vertex u, Tag) {
+ return target_visitor<Vertex, Tag>(u);
+}
 
 
 /*!
@@ -89,6 +110,7 @@ BasePath DijkstraShortestPathAlg::boostDijkstra(UINT source_id, UINT sink_id) {
                 predecessor_map(&predecessors[0]).
                 weight_map(get(&Vertex::cost, graph))
                 .distance_map(&distances[0]));
+                //.distance_map(&distances[0]).visitor(target_visit(_target, on_examine_vertex())));
 
     std::deque<int> path_vect;
 

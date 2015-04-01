@@ -17,7 +17,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(sql text, big boolean default fa
   BEGIN 
     -- checking query is executable
     BEGIN
-      execute 'select * from ('||sql||' limit 1) AS a ';
+      execute 'select * from ('||sql||' ) AS a limit 1' into rec;
       EXCEPTION
         WHEN OTHERS THEN
             RAISE EXCEPTION 'Could not excecute query please verify sintax of: '
@@ -26,7 +26,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(sql text, big boolean default fa
 
     -- checking the fixed columns and data types of the integers
     BEGIN
-      execute 'select id,source,target,cost  from ('||sql||' limit 1) AS a ' into rec;
+      execute 'select id,source,target,cost  from ('||sql||' ) AS a limit 1 ' into rec;
       EXCEPTION
         WHEN OTHERS THEN
             RAISE EXCEPTION 'An expected column was not found in the query'
@@ -35,28 +35,28 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(sql text, big boolean default fa
     
     BEGIN
     execute 'select pg_typeof(id)::text as id_type, pg_typeof(source)::text as source_type, pg_typeof(target)::text as target_type, pg_typeof(cost)::text as cost_type'
-            || ' from ('||sql||' limit 1) AS a ' into rec;
+            || ' from ('||sql||') AS a limit 1' into rec;
     if (big) then
-      if not (rec.id_type in ('bigint'::text, 'integer'::text, 'smallint'::text))
+      if not (rec.id_type in ('bigint'::text, 'integer'::text, 'smallint'::text)
          OR   not (rec.source_type in ('bigint'::text, 'integer'::text, 'smallint'::text))
          OR   not (rec.target_type in ('bigint'::text, 'integer'::text, 'smallint'::text))
-         OR   not (rec.cost_type = 'double precision'::text) then
+         OR   not (rec.cost_type = 'double precision'::text)) then
          RAISE EXCEPTION 'support for id,source,target columns only of type: BigInt, integer or smallint. Support for Cost: double precision';
       end if;
     else
       if not (rec.id_type in ('integer'::text, 'smallint'::text))
-         OR   not (rec.source_type in ('integer'::text, 'smallint'::text))
-         OR   not (rec.target_type in ('integer'::text, 'smallint'::text)) 
+         OR   not (rec.source_type in ('integer'::text))
+         OR   not (rec.target_type in ('integer'::text))
          OR   not (rec.cost_type = 'double precision'::text) then
-          RAISE EXCEPTION 'support for id,source,target columns only of type: integer or smallint. Support for Cost: double precision';
+          RAISE EXCEPTION 'support for id,source,target columns only of type: integer. Support for Cost: double precision';
       end if;
     end if;
     END;
 
-    -- checking the data types of the optional reverse_cost
-    has_reverse = false;
+    -- raise DEBUG "checking the data types of the optional reverse_cost";
+    has_reverse := false;
     BEGIN
-      execute 'select reverse_cost  from ('||sql||' limit 1) AS a ' into rec1;
+      execute 'select reverse_cost  from ('||sql||' ) AS a limit 1 ' into rec1;
       has_reverse := true;
       EXCEPTION
          WHEN OTHERS THEN
