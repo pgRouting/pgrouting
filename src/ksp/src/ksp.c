@@ -390,10 +390,14 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
               HeapTuple tuple = tuptable->vals[t];
               ksp_fetch_edge(&tuple, &tupdesc, &edge_columns, 
                          &edges[total_tuples - ntuples + t]);
-              if (!sourceFound && edges[total_tuples - ntuples + t].source == start_vertex) {
+              if (!sourceFound &&
+                   ( (edges[total_tuples - ntuples + t].source == start_vertex)
+                     || (edges[total_tuples - ntuples + t].source == start_vertex))) {
                   sourceFound = true;
               }
-              if (!targetFound && edges[total_tuples - ntuples + t].target == end_vertex) {
+              if (!targetFound &&
+                   ( (edges[total_tuples - ntuples + t].target == end_vertex)
+                     || (edges[total_tuples - ntuples + t].target == end_vertex))) {
                   targetFound = true;
               }
             }
@@ -407,11 +411,11 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
 
  
   if (!sourceFound) {
-      elog(ERROR, "Starting Vertex does not exist, or has no outgoing edges");
+      elog(ERROR, "Starting Vertex does not exist in the data");
       return -1;
   }
   if (!targetFound) {
-      elog(ERROR, "Ending Vertex does not exist, or has no incoming edges");
+      elog(ERROR, "Ending Vertex does not exist in the data");
       return -1;
   }
       
