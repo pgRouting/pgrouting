@@ -1,39 +1,9 @@
-CREATE OR REPLACE FUNCTION pgr_version()
-RETURNS TABLE(
-		"version" varchar, 
-		tag varchar,
-		build varchar,
-		hash varchar,
-		branch varchar,
-		boost varchar
-	) AS
-$BODY$
-/*
-.. function:: pgr_version()
 
-   Author: Stephen Woodbridge <woodbri@imaptools.com>
-
-   Returns the version of pgrouting,Git build,Git hash, Git branch and boost
-*/
-
-DECLARE
-
-BEGIN
-    RETURN QUERY SELECT '${PGROUTING_VERSION_STRING}'::varchar AS version, 
-    					'${PGROUTING_GIT_TAG}'::varchar AS tag, 
-                        '${PGROUTING_GIT_BUILD}'::varchar AS build, 
-                        '${PGROUTING_GIT_HASH}'::varchar AS hash, 
-                        '${PGROUTING_GIT_BRANCH}'::varchar AS branch, 
-                        '${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}'::varchar AS boost;
-END;
-$BODY$
-LANGUAGE plpgsql IMMUTABLE;
-
-create or replace function pgr_quote_ident(idname text)
+create or replace function _pgr_quote_ident(idname text)
     returns text as
 $body$
 /*
-.. function:: pgr_quote_ident(text)
+.. function:: _pgr_quote_ident(text)
 
    Author: Stephen Woodbridge <woodbri@imaptools.com>
 
@@ -52,7 +22,7 @@ declare
 begin
     pgver := regexp_replace(version(), E'^PostgreSQL ([^ ]+)[ ,].*$', E'\\1');
 
-    if pgr_versionless(pgver, '9.2') then
+    if _pgr_versionless(pgver, '9.2') then
         select into t array_agg(quote_ident(term)) from
             (select nullif(unnest, '') as term
                from unnest(string_to_array(idname, '.'))) as foo;
@@ -64,19 +34,19 @@ begin
 end;
 $body$
 language plpgsql immutable;
-COMMENT ON function pgr_quote_ident(text) IS 'args: idname  -  quote_ident to all parts of the identifier "idname"';
+COMMENT ON function _pgr_quote_ident(text) IS 'args: idname  -  quote_ident to all parts of the identifier "idname"';
 
 
 /*
  * function for comparing version strings.
- * Ex: select pgr_version_less(postgis_lib_version(), '2.1');
+ * Ex: select _pgr_version_less(postgis_lib_version(), '2.1');
 
    Author: Stephen Woodbridge <woodbri@imaptools.com>
  *
  * needed because postgis 2.1 deprecates some function names and
  * we need to detect the version at runtime
 */
-CREATE OR REPLACE FUNCTION pgr_versionless(v1 text, v2 text)
+CREATE OR REPLACE FUNCTION _pgr_versionless(v1 text, v2 text)
   RETURNS boolean AS
 $BODY$
 
@@ -125,12 +95,12 @@ end;
 $BODY$
   LANGUAGE plpgsql IMMUTABLE STRICT
   COST 1;
-COMMENT ON function pgr_versionless(text,text) IS 'args: v1,v2  - returns true when v1 < v2';
+COMMENT ON function _pgr_versionless(text,text) IS 'args: v1,v2  - returns true when v1 < v2';
 
 
 
 
-create or replace function pgr_startPoint(g geometry)
+create or replace function _pgr_startPoint(g geometry)
     returns geometry as
 $body$
 declare
@@ -144,11 +114,11 @@ begin
 end;
 $body$
 language plpgsql IMMUTABLE;
-COMMENT ON function pgr_startPoint(geometry) IS 'args: g  - returns start point of the geometry "g" even if its multi';
+COMMENT ON function _pgr_startPoint(geometry) IS 'args: g  - returns start point of the geometry "g" even if its multi';
 
 
 
-create or replace function pgr_endPoint(g geometry)
+create or replace function _pgr_endPoint(g geometry)
     returns geometry as
 $body$
 declare
@@ -162,5 +132,5 @@ begin
 end;
 $body$
 language plpgsql IMMUTABLE;
-COMMENT ON function pgr_endPoint(geometry) IS 'args: g  - returns end point of the geometry "g" even if its multi';
+COMMENT ON function _pgr_endPoint(geometry) IS 'args: g  - returns end point of the geometry "g" even if its multi';
 

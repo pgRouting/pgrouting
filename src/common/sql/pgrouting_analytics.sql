@@ -101,7 +101,7 @@ BEGIN
   raise notice 'Performing checks, pelase wait ...';
   BEGIN
     raise debug 'Checking existance of Edge table';
-    execute 'select * from pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
+    execute 'select * from _pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
     sname=naming.sname;
     tname=naming.tname;
     tabname=sname||'.'||tname;
@@ -109,15 +109,16 @@ BEGIN
     vertname= sname||'.'||vname;
     rows_where = ' AND ('||rows_where||')';
     raise DEBUG '     --> OK';
-    EXCEPTION WHEN raise_exception THEN
+/*    EXCEPTION WHEN raise_exception THEN
       RAISE NOTICE 'ERROR: something went wrong checking the table name';
       RETURN 'FAIL';
+*/
   END;
 
   BEGIN
        raise debug 'Checking Vertices table';
-       execute 'select * from  pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","cnt","chk"}''::text[])' into naming;
-       execute 'UPDATE '||pgr_quote_ident(vertname)||' SET cnt=0 ,chk=0';		
+       execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","cnt","chk"}''::text[])' into naming;
+       execute 'UPDATE '||_pgr_quote_ident(vertname)||' SET cnt=0 ,chk=0';		
        raise DEBUG '     --> OK';
        EXCEPTION WHEN raise_exception THEN
           RAISE NOTICE 'ERROR: something went wrong checking the vertices table';
@@ -128,14 +129,14 @@ BEGIN
 
   BEGIN
        raise debug 'Checking column names in edge table';
-       select * into idname     from pgr_getColumnName(sname, tname,id,2);
-       select * into sourcename from pgr_getColumnName(sname, tname,source,2);
-       select * into targetname from pgr_getColumnName(sname, tname,target,2);
-       select * into gname      from pgr_getColumnName(sname, tname,the_geom,2);
+       select * into idname     from _pgr_getColumnName(sname, tname,id,2);
+       select * into sourcename from _pgr_getColumnName(sname, tname,source,2);
+       select * into targetname from _pgr_getColumnName(sname, tname,target,2);
+       select * into gname      from _pgr_getColumnName(sname, tname,the_geom,2);
 
 
-       perform pgr_onError( sourcename in (targetname,idname,gname) or  targetname in (idname,gname) or idname=gname, 2,
-                       'pgr_createToplogy',  'Two columns share the same name', 'Parameter names for id,the_geom,source and target  must be different',
+       perform _pgr_onError( sourcename in (targetname,idname,gname) or  targetname in (idname,gname) or idname=gname, 2,
+                       'pgr_analyzeGraph',  'Two columns share the same name', 'Parameter names for id,the_geom,source and target  must be different',
                        'Column names are OK');
 
         raise DEBUG '     --> OK';
@@ -147,15 +148,15 @@ BEGIN
 
   BEGIN
        raise debug 'Checking column types in edge table';
-       select * into sourcetype from pgr_getColumnType(sname,tname,sourcename,1);
-       select * into targettype from pgr_getColumnType(sname,tname,targetname,1);
+       select * into sourcetype from _pgr_getColumnType(sname,tname,sourcename,1);
+       select * into targettype from _pgr_getColumnType(sname,tname,targetname,1);
 
-       perform pgr_onError(sourcetype not in('integer','smallint','bigint') , 2,
-                       'pgr_createTopology',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found',
+       perform _pgr_onError(sourcetype not in('integer','smallint','bigint') , 2,
+                       'pgr_analyzeGraph',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found',
                        'Type of Column '|| sourcename || ' is ' || sourcetype);
 
-       perform pgr_onError(targettype not in('integer','smallint','bigint') , 2,
-                       'pgr_createTopology',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or biginti but '||targettype||' was found',
+       perform _pgr_onError(targettype not in('integer','smallint','bigint') , 2,
+                       'pgr_analyzeGraph',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or biginti but '||targettype||' was found',
                        'Type of Column '|| targetname || ' is ' || targettype);
 
        raise DEBUG '     --> OK';
@@ -167,12 +168,12 @@ BEGIN
    BEGIN
        raise debug 'Checking SRID of geometry column';
          query= 'SELECT ST_SRID(' || quote_ident(gname) || ') as srid '
-            || ' FROM ' || pgr_quote_ident(tabname)
+            || ' FROM ' || _pgr_quote_ident(tabname)
             || ' WHERE ' || quote_ident(gname)
             || ' IS NOT NULL LIMIT 1';
          EXECUTE QUERY INTO sridinfo;
 
-         perform pgr_onError( sridinfo IS NULL OR sridinfo.srid IS NULL,2,
+         perform _pgr_onError( sridinfo IS NULL OR sridinfo.srid IS NULL,2,
                  'Can not determine the srid of the geometry '|| gname ||' in table '||tabname, 'Check the geometry of column '||gname,
                  'SRID of '||gname||' is '||sridinfo.srid);
 
@@ -191,10 +192,10 @@ BEGIN
 
     BEGIN
        raise debug 'Checking  indices in edge table';
-       perform pgr_createIndex(tabname , idname , 'btree');
-       perform pgr_createIndex(tabname , sourcename , 'btree');
-       perform pgr_createIndex(tabname , targetname , 'btree');
-       perform pgr_createIndex(tabname , gname , 'gist');
+       perform _pgr_createIndex(tabname , idname , 'btree');
+       perform _pgr_createIndex(tabname , sourcename , 'btree');
+       perform _pgr_createIndex(tabname , targetname , 'btree');
+       perform _pgr_createIndex(tabname , gname , 'gist');
 
        gname=quote_ident(gname);
        sourcename=quote_ident(sourcename);
@@ -208,7 +209,7 @@ BEGIN
 
 
     BEGIN
-        query='select count(*) from '||pgr_quote_ident(tabname)||' where true  '||rows_where;
+        query='select count(*) from '||_pgr_quote_ident(tabname)||' where true  '||rows_where;
         EXECUTE query into ecnt;
         raise DEBUG '-->Rows Where condition: OK';
         raise DEBUG '     --> OK';
@@ -220,9 +221,9 @@ BEGIN
     END;    
 
     selectionquery ='with 
-           selectedRows as( (select '||sourcename||' as id from '||pgr_quote_ident(tabname)||' where true '||rows_where||')
+           selectedRows as( (select '||sourcename||' as id from '||_pgr_quote_ident(tabname)||' where true '||rows_where||')
                            union
-                           (select '||targetname||' as id from '||pgr_quote_ident(tabname)||' where true '||rows_where||'))';
+                           (select '||targetname||' as id from '||_pgr_quote_ident(tabname)||' where true '||rows_where||'))';
     
 
 
@@ -231,24 +232,25 @@ BEGIN
    BEGIN
        RAISE NOTICE 'Analyzing for dead ends. Please wait...';
        query= 'with countingsource as (select a.'||sourcename||' as id,count(*) as cnts 
-               from (select * from '||pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  group by a.'||sourcename||') 
+               from (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  group by a.'||sourcename||') 
                      ,countingtarget as (select a.'||targetname||' as id,count(*) as cntt 
-                    from (select * from '||pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  group by a.'||targetname||') 
+                    from (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  group by a.'||targetname||') 
                    ,totalcount as (select id,case when cnts is null and cntt is null then 0
                                                    when cnts is null then cntt 
                                                    when cntt is null then cnts
                                                    else cnts+cntt end as totcnt 
-                                   from ('||pgr_quote_ident(vertname)||' as a left 
+                                   from ('||_pgr_quote_ident(vertname)||' as a left 
                                    join countingsource as t using(id) ) left join countingtarget using(id))
-               update '||pgr_quote_ident(vertname)||' as a set cnt=totcnt from totalcount as b where a.id=b.id';
+               update '||_pgr_quote_ident(vertname)||' as a set cnt=totcnt from totalcount as b where a.id=b.id';
        raise debug '%',query;
        execute query;
        query=selectionquery||'
-              SELECT count(*)  FROM '||pgr_quote_ident(vertname)||' WHERE cnt=1 and id in (select id from selectedRows)';
+              SELECT count(*)  FROM '||_pgr_quote_ident(vertname)||' WHERE cnt=1 and id in (select id from selectedRows)';
        raise debug '%',query;
        execute query  INTO numdeadends;
        raise DEBUG '     --> OK';
        EXCEPTION WHEN raise_exception THEN
+          RAISE NOTICE 'Got %', SQLERRM;  --issue 210,211,213
           RAISE NOTICE 'ERROR: something went wrong when analizing for dead ends';
           RETURN 'FAIL';
    END;
@@ -258,12 +260,12 @@ BEGIN
     BEGIN
           RAISE NOTICE 'Analyzing for gaps. Please wait...';
           query = 'with 
-                   buffer as (select id,st_buffer(the_geom,'||tolerance||') as buff from '||pgr_quote_ident(vertname)||' where cnt=1)
+                   buffer as (select id,st_buffer(the_geom,'||tolerance||') as buff from '||_pgr_quote_ident(vertname)||' where cnt=1)
                    ,veryclose as (select b.id,st_crosses(a.'||gname||',b.buff) as flag 
-                   from  (select * from '||pgr_quote_ident(tabname)||' where true '||rows_where||' ) as a 
+                   from  (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) as a 
                    join buffer as b on (a.'||gname||'&&b.buff)  
                    where '||sourcename||'!=b.id and '||targetname||'!=b.id )
-                   update '||pgr_quote_ident(vertname)||' set chk=1 where id in (select distinct id from veryclose where flag=true)'; 
+                   update '||_pgr_quote_ident(vertname)||' set chk=1 where id in (select distinct id from veryclose where flag=true)'; 
           raise debug '%' ,query;
           execute query; 
           GET DIAGNOSTICS  numgaps= ROW_COUNT; 
@@ -275,9 +277,9 @@ BEGIN
     
     BEGIN
         RAISE NOTICE 'Analyzing for isolated edges. Please wait...'; 
-        query=selectionquery|| ' SELECT count(*) FROM (select * from '||pgr_quote_ident(tabname)||' where true '||rows_where||' )  as a,
-                                                 '||pgr_quote_ident(vertname)||' as b,
-                                                 '||pgr_quote_ident(vertname)||' as c 
+        query=selectionquery|| ' SELECT count(*) FROM (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||' )  as a,
+                                                 '||_pgr_quote_ident(vertname)||' as b,
+                                                 '||_pgr_quote_ident(vertname)||' as c 
                             WHERE b.id in (select id from selectedRows) and a.'||sourcename||' =b.id 
                             AND b.cnt=1 AND a.'||targetname||' =c.id 
                             AND c.cnt=1';
@@ -291,13 +293,13 @@ BEGIN
 
     BEGIN
         RAISE NOTICE 'Analyzing for ring geometries. Please wait...'; 
-        execute 'SELECT geometrytype('||gname||')  FROM '||pgr_quote_ident(tabname) limit 1 into geotype; 
+        execute 'SELECT geometrytype('||gname||')  FROM '||_pgr_quote_ident(tabname) limit 1 into geotype; 
         IF (geotype='MULTILINESTRING') THEN 
-            query ='SELECT count(*)  FROM '||pgr_quote_ident(tabname)||' 
+            query ='SELECT count(*)  FROM '||_pgr_quote_ident(tabname)||' 
                                  WHERE true  '||rows_where||' and st_isRing(st_linemerge('||gname||'))'; 
             raise debug '%' ,query; 
             execute query  INTO numRings; 
-        ELSE query ='SELECT count(*)  FROM '||pgr_quote_ident(tabname)||' 
+        ELSE query ='SELECT count(*)  FROM '||_pgr_quote_ident(tabname)||' 
                                   WHERE true  '||rows_where||' and st_isRing('||gname||')'; 
             raise debug '%' ,query; 
             execute query  INTO numRings; 
@@ -314,8 +316,8 @@ BEGIN
                                                         else b.'||idname||' end, 
                                                    case when a.'||idname||' < b.'||idname||' then b.'||idname||' 
                                                         else a.'||idname||' end 
-                                    FROM (select * from '||pgr_quote_ident(tabname)||' where true '||rows_where||') as a 
-                                    JOIN (select * from '||pgr_quote_ident(tabname)||' where true '||rows_where||') as b 
+                                    FROM (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||') as a 
+                                    JOIN (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||') as b 
                                     ON (a.'|| gname||' && b.'||gname||') 
                                     WHERE a.'||idname||' != b.'||idname|| ' 
                                         and (a.'||sourcename||' in (b.'||sourcename||',b.'||targetname||') 
@@ -351,7 +353,7 @@ COMMENT ON FUNCTION pgr_analyzeGraph(text,double precision,text,text,text,text,t
 
 
 /*
-.. function:: pgr_analyzeOneway(tab, col, s_in_rules, s_out_rules, t_in_rules, t_out_rules)
+.. function:: _pgr_analyzeOneway(tab, col, s_in_rules, s_out_rules, t_in_rules, t_out_rules)
 
    This function analyzes oneway streets in a graph and identifies any
    flipped segments. Basically if you count the edges coming into a node
@@ -392,7 +394,7 @@ COMMENT ON FUNCTION pgr_analyzeGraph(text,double precision,text,text,text,text,t
 
 .. code-block:: sql
 
-   select pgr_analyzeOneway('st', 'one_way',
+   select _pgr_analyzeOneway('st', 'one_way',
         ARRAY['', 'B', 'TF'],
         ARRAY['', 'B', 'FT'],
         ARRAY['', 'B', 'FT'],
@@ -458,7 +460,7 @@ BEGIN
 
   BEGIN
     raise debug 'Checking existance of Edge table';
-    execute 'select * from pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
+    execute 'select * from _pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
     sname=naming.sname;
     tname=naming.tname;
     tabname=sname||'.'||tname;
@@ -472,8 +474,8 @@ BEGIN
 
   BEGIN
        raise debug 'Checking Vertices table';
-       execute 'select * from  pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::text[])' into naming;
-       execute 'UPDATE '||pgr_quote_ident(vertname)||' SET eout=0 ,ein=0';
+       execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::text[])' into naming;
+       execute 'UPDATE '||_pgr_quote_ident(vertname)||' SET eout=0 ,ein=0';
        raise DEBUG '     --> OK';
        EXCEPTION WHEN raise_exception THEN
           RAISE NOTICE 'ERROR: something went wrong checking the vertices table';
@@ -483,13 +485,13 @@ BEGIN
 
   BEGIN
        raise debug 'Checking column names in edge table';
-       select * into sourcename from pgr_getColumnName(sname, tname,source,2);
-       select * into targetname from pgr_getColumnName(sname, tname,target,2);
-       select * into owname from pgr_getColumnName(sname, tname,oneway,2);
+       select * into sourcename from _pgr_getColumnName(sname, tname,source,2);
+       select * into targetname from _pgr_getColumnName(sname, tname,target,2);
+       select * into owname from _pgr_getColumnName(sname, tname,oneway,2);
 
 
-       perform pgr_onError( sourcename in (targetname,owname) or  targetname=owname, 2,
-                       'pgr_createToplogy',  'Two columns share the same name', 'Parameter names for oneway,source and target  must be different',
+       perform _pgr_onError( sourcename in (targetname,owname) or  targetname=owname, 2,
+                       '_pgr_createToplogy',  'Two columns share the same name', 'Parameter names for oneway,source and target  must be different',
                        'Column names are OK');
 
        raise DEBUG '     --> OK';
@@ -500,16 +502,16 @@ BEGIN
 
   BEGIN
        raise debug 'Checking column types in edge table';
-       select * into sourcetype from pgr_getColumnType(sname,tname,sourcename,1);
-       select * into targettype from pgr_getColumnType(sname,tname,targetname,1);
+       select * into sourcetype from _pgr_getColumnType(sname,tname,sourcename,1);
+       select * into targettype from _pgr_getColumnType(sname,tname,targetname,1);
 
 
-       perform pgr_onError(sourcetype not in('integer','smallint','bigint') , 2,
-                       'pgr_createTopology',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found',
+       perform _pgr_onError(sourcetype not in('integer','smallint','bigint') , 2,
+                       '_pgr_createTopology',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found',
                        'Type of Column '|| sourcename || ' is ' || sourcetype);
 
-       perform pgr_onError(targettype not in('integer','smallint','bigint') , 2,
-                       'pgr_createTopology',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or biginti but '||targettype||' was found',
+       perform _pgr_onError(targettype not in('integer','smallint','bigint') , 2,
+                       '_pgr_createTopology',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or biginti but '||targettype||' was found',
                        'Type of Column '|| targetname || ' is ' || targettype);
 
        raise DEBUG '     --> OK';
@@ -527,7 +529,7 @@ BEGIN
             ELSE '' END;
 
     instr := '''' || array_to_string(s_in_rules, ''',''') || '''';
-       EXECUTE 'update '||pgr_quote_ident(vertname)||' a set ein=coalesce(ein,0)+b.cnt
+       EXECUTE 'update '||_pgr_quote_ident(vertname)||' a set ein=coalesce(ein,0)+b.cnt
       from (
          select '|| sourcename ||', count(*) as cnt 
            from '|| tabname ||' 
@@ -538,7 +540,7 @@ BEGIN
     RAISE NOTICE 'Analysis 25%% complete ...';
 
     instr := '''' || array_to_string(t_in_rules, ''',''') || '''';
-    EXECUTE 'update '||pgr_quote_ident(vertname)||' a set ein=coalesce(ein,0)+b.cnt
+    EXECUTE 'update '||_pgr_quote_ident(vertname)||' a set ein=coalesce(ein,0)+b.cnt
         from (
          select '|| targetname ||', count(*) as cnt 
            from '|| tabname ||' 
@@ -549,7 +551,7 @@ BEGIN
     RAISE NOTICE 'Analysis 50%% complete ...';
 
     instr := '''' || array_to_string(s_out_rules, ''',''') || '''';
-    EXECUTE 'update '||pgr_quote_ident(vertname)||' a set eout=coalesce(eout,0)+b.cnt
+    EXECUTE 'update '||_pgr_quote_ident(vertname)||' a set eout=coalesce(eout,0)+b.cnt
         from (
          select '|| sourcename ||', count(*) as cnt 
            from '|| tabname ||' 
@@ -559,7 +561,7 @@ BEGIN
     RAISE NOTICE 'Analysis 75%% complete ...';
 
     instr := '''' || array_to_string(t_out_rules, ''',''') || '''';
-    EXECUTE 'update '||pgr_quote_ident(vertname)||' a set eout=coalesce(eout,0)+b.cnt
+    EXECUTE 'update '||_pgr_quote_ident(vertname)||' a set eout=coalesce(eout,0)+b.cnt
         from (
          select '|| targetname ||', count(*) as cnt 
            from '|| tabname ||' 
@@ -569,7 +571,7 @@ BEGIN
 
     RAISE NOTICE 'Analysis 100%% complete ...';
 
-    EXECUTE 'SELECT count(*)  FROM '||pgr_quote_ident(vertname)||' WHERE ein=0 or eout=0' INTO ecnt;
+    EXECUTE 'SELECT count(*)  FROM '||_pgr_quote_ident(vertname)||' WHERE ein=0 or eout=0' INTO ecnt;
 
     RAISE NOTICE 'Found % potential problems in directionality' ,ecnt;
 
