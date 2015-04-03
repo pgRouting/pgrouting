@@ -1,6 +1,7 @@
 -- -------------------------------------------------------------------
 -- pgrouting_utilities.sql
 -- AuthorL Stephen Woodbridge <woodbri@imaptools.com>
+-- CoAuthorL Vicky Vergara <vicky_vergara@hotmail.com>
 -- Copyright 2013 Stephen Woodbridge
 -- This file is release unde an MIT-X license.
 -- -------------------------------------------------------------------

@@ -1,3 +1,10 @@
+-- -------------------------------------------------------------------
+-- pgrouting_utilities.sql
+-- AuthorL Stephen Woodbridge <woodbri@imaptools.com>
+-- Copyright 2013 Stephen Woodbridge
+-- This file is release unde an MIT-X license.
+-- -------------------------------------------------------------------
+
 
 create or replace function _pgr_quote_ident(idname text)
     returns text as
@@ -7,10 +14,10 @@ $body$
 
    Author: Stephen Woodbridge <woodbri@imaptools.com>
 
-   Function to split a string on '.' characters and then quote the 
+   Function to split a string on '.' characters and then quote the
    components as postgres identifiers and then join them back together
    with '.' characters. multile '.' will get collapsed into a single
-   '.' so 'schema...table' till get returned as 'schema."table"' and 
+   '.' so 'schema...table' till get returned as 'schema."table"' and
    'Schema.table' becomes '"Schema'.'table"'
 
 */
@@ -58,7 +65,7 @@ declare
     nv2 integer;
     ne1 integer;
     ne2 integer;
-    
+
 begin
     -- separate components into an array, like:
     -- '2.1.0-beta3dev'  =>  {2,1,0,beta3dev}
@@ -84,8 +91,8 @@ begin
     nv1 := v1a[1]::integer * 10000 +
            coalesce(v1a[2], '0')::integer * 1000 +
            coalesce(v1a[3], '0')::integer *  100 + ne1;
-    nv2 := v2a[1]::integer * 10000 + 
-           coalesce(v2a[2], '0')::integer * 1000 + 
+    nv2 := v2a[1]::integer * 10000 +
+           coalesce(v2a[2], '0')::integer * 1000 +
            coalesce(v2a[3], '0')::integer *  100 + ne2;
 
     --raise notice 'nv1: %, nv2: %, ne1: %, ne2: %', nv1, nv2, ne1, ne2;

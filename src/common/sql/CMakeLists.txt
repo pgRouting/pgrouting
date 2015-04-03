@@ -4,7 +4,7 @@ LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_topology.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_analytics.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_node_network.sql
-    ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_itilities.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_utilities.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/utilities_pgr.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/more_utilities_pgr.sql
 )
