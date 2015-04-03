@@ -41,7 +41,6 @@ begin
 end;
 $body$
 language plpgsql immutable;
-COMMENT ON function _pgr_quote_ident(text) IS 'args: idname  -  quote_ident to all parts of the identifier "idname"';
 
 
 /*
@@ -102,7 +101,6 @@ end;
 $BODY$
   LANGUAGE plpgsql IMMUTABLE STRICT
   COST 1;
-COMMENT ON function _pgr_versionless(text,text) IS 'args: v1,v2  - returns true when v1 < v2';
 
 
 
@@ -121,7 +119,6 @@ begin
 end;
 $body$
 language plpgsql IMMUTABLE;
-COMMENT ON function _pgr_startPoint(geometry) IS 'args: g  - returns start point of the geometry "g" even if its multi';
 
 
 
@@ -139,5 +136,4 @@ begin
 end;
 $body$
 language plpgsql IMMUTABLE;
-COMMENT ON function _pgr_endPoint(geometry) IS 'args: g  - returns end point of the geometry "g" even if its multi';
 

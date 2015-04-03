@@ -49,7 +49,6 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION _pgr_onError(boolean,int,text,text,text,text) IS 'args: errCond,action,functionname,msgerr,hinto=NULL, msgOK=OK,  -raises the error message and hint message at different levels';
    
 
 
@@ -142,7 +141,6 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION _pgr_getTableName(text,int) IS 'args: tab,reportErrs=1  -gets the schema (sname) and the table (tname) form the table tab';
 
 
 /*
@@ -219,7 +217,6 @@ END;
 
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION _pgr_getColumnName(text,text,int) IS 'args: tab,col -gets the registered column name of "col" in table "tab"';
 
 
 /*
@@ -261,7 +258,6 @@ END;
 
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION _pgr_getColumnType(text,text,text,int) IS 'args: sname,tname,cname -gets the type of the column  "col" in table "sname.tname"';
 
 
 CREATE OR REPLACE FUNCTION _pgr_getColumnType(tab text, col text, IN reportErrs int default 1)
@@ -286,7 +282,6 @@ END;
 
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION _pgr_getColumnType(text,text,int) IS 'args: tab,col -gets the type of column name of "col" in table "tab"';
 
 
 
@@ -325,7 +320,6 @@ BEGIN
 END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION _pgr_isColumnInTable(text,text) IS 'args: tab,col  -returns true when the column "col" is in table "tab"';
 
 
 /*
@@ -407,7 +401,6 @@ BEGIN
 END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION _pgr_isColumnIndexed(text,text,text) IS 'args: sname,tname,cname  -returns true if "cname" in table "sname.tname" is indexed';
 
 CREATE OR REPLACE FUNCTION public._pgr_isColumnIndexed(tab text, col text)
 RETURNS boolean AS
@@ -436,7 +429,6 @@ BEGIN
 END
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION _pgr_isColumnIndexed(text,text) IS 'args: tab,col  -returns true if column "col" in table "tab" is indexed';
 
 /*
 .. function:: _pgr_createIndex(tab, col,indextype)
@@ -488,7 +480,6 @@ END;
 
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION _pgr_createIndex(text,text,text,text) IS 'args: sname,tname,colname,indext -creates indext on colname in table sname.tname';
 
 
 CREATE OR REPLACE FUNCTION _pgr_createIndex(tabname text, colname text, indext text)
@@ -510,7 +501,6 @@ END;
 
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION _pgr_createIndex(text,text,text) IS 'args: tabname,colname,indext -creates indext on colname in table tabname';
 
 
 /*
@@ -568,5 +558,4 @@ BEGIN
  END
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION _pgr_checkVertTab(text,text[]) IS 'args: vertname,columnsArr -Checks structure and gets registered schema and table name of the vertices table';
 
