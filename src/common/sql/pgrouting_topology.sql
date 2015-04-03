@@ -1,40 +1,38 @@
-
 /*
-.. function:: pgr_pointToId(point geometry, tolerance double precision,vname text,srid integer)
+.. function:: _pgr_pointToId(point geometry, tolerance double precision,vname text,srid integer)
 
-  This function should not be used directly. Use assign_vertex_id instead
- 
-  Inserts a point into the vertices tablei "vname" with the srid "srid", and return an id
-  of a new point or an existing point. Tolerance is the minimal distance
-  between existing points and the new point to create a new point.
+This function should not be used directly. Use assign_vertex_id instead
+Inserts a point into the vertices tablei "vname" with the srid "srid", and return an id
+of a new point or an existing point. Tolerance is the minimal distance
+between existing points and the new point to create a new point.
 
- Last changes: 2013-03-22
- Author: Christian Gonzalez
- Author: Stephen Woodbridge <woodbri@imaptools.com>
- Modified by: Vicky Vergara <vicky_vergara@hotmail,com>
+Last changes: 2013-03-22
+Author: Christian Gonzalez
+Author: Stephen Woodbridge <woodbri@imaptools.com>
+Modified by: Vicky Vergara <vicky_vergara@hotmail,com>
 
- HISTORY
-    Last changes: 2013-03-22
-    2013-08-19:  handling schemas
+HISTORY
+Last changes: 2013-03-22
+2013-08-19: handling schemas
 */
 
-CREATE OR REPLACE FUNCTION pgr_pointToId(point geometry, tolerance double precision,vertname text,srid integer)
+CREATE OR REPLACE FUNCTION _pgr_pointToId(point geometry, tolerance double precision,vertname text,srid integer)
   RETURNS bigint AS
-$BODY$ 
+$BODY$
 DECLARE
-    rec record; 
-    pid bigint; 
+    rec record;
+    pid bigint;
 
 BEGIN
     execute 'SELECT ST_Distance(the_geom,ST_GeomFromText(st_astext('||quote_literal(point::text)||'),'||srid||')) AS d, id, the_geom
-        FROM '||pgr_quote_ident(vertname)||'
-        WHERE ST_DWithin(the_geom, ST_GeomFromText(st_astext('||quote_literal(point::text)||'),'||srid||'),'|| tolerance||')
-        ORDER BY d
-        LIMIT 1' INTO rec ;
+FROM '||_pgr_quote_ident(vertname)||'
+WHERE ST_DWithin(the_geom, ST_GeomFromText(st_astext('||quote_literal(point::text)||'),'||srid||'),'|| tolerance||')
+ORDER BY d
+LIMIT 1' INTO rec ;
     IF rec.id is not null THEN
         pid := rec.id;
     ELSE
-        execute 'INSERT INTO '||pgr_quote_ident(vertname)||' (the_geom) VALUES ('||quote_literal(point::text)||')';
+        execute 'INSERT INTO '||_pgr_quote_ident(vertname)||' (the_geom) VALUES ('||quote_literal(point::text)||')';
         pid := lastval();
     END IF;
 
@@ -43,28 +41,30 @@ BEGIN
 END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION pgr_pointToId(geometry,double precision, text,integer) IS 'args: point geometry,tolerance,verticesTable,srid - inserts the point into the vertices table using tolerance to determine if its an existing point and returns the id assigned to it' ;
+COMMENT ON FUNCTION _pgr_pointToId(geometry,double precision, text,integer) IS 'args: point geometry,tolerance,verticesTable,srid - inserts the point into the vertices table using tolerance to determine if its an existing point and returns the id assigned to it' ;
 
 
 /*
-.. function:: pgr_createtopology(edge_table, tolerance,the_geom,id,source,target,rows_where)
+.. function:: _pgr_createtopology(edge_table, tolerance,the_geom,id,source,target,rows_where)
 
-  Fill the source and target column for all lines. All line ends
-  with a distance less than tolerance, are assigned the same id
+Fill the source and target column for all lines. All line ends
+with a distance less than tolerance, are assigned the same id
 
-  Author: Christian Gonzalez <christian.gonzalez@sigis.com.ve>
-  Author: Stephen Woodbridge <woodbri@imaptools.com>
-  Modified by: Vicky Vergara <vicky_vergara@hotmail,com>
+Author: Christian Gonzalez <christian.gonzalez@sigis.com.ve>
+Author: Stephen Woodbridge <woodbri@imaptools.com>
+Modified by: Vicky Vergara <vicky_vergara@hotmail,com>
 
- HISTORY
-    Last changes: 2013-03-22
-    2013-08-19:  handling schemas
+HISTORY
+Last changes: 2013-03-22
+2013-08-19:  handling schemas
+2014-july: fixes issue 211
 */
 
 CREATE OR REPLACE FUNCTION pgr_createtopology(edge_table text, tolerance double precision, 
-			   the_geom text default 'the_geom', id text default 'id',
-			   source text default 'source', target text default 'target',rows_where text default 'true')
-  RETURNS VARCHAR AS
+		   the_geom text default 'the_geom', id text default 'id',
+		   source text default 'source', target text default 'target',rows_where text default 'true',
+		   clean boolean default true)
+RETURNS VARCHAR AS
 $BODY$
 
 DECLARE
@@ -88,261 +88,229 @@ DECLARE
     notincluded integer;
     i integer;
     naming record;
+    info record;
     flag boolean;
     query text;
-    sourcetype  text;
+    idtype text;
+    gtype text;
+    sourcetype text;
     targettype text;
     debuglevel text;
 
+
+
+
 BEGIN
-  raise notice 'PROCESSING:'; 
-  raise notice 'pgr_createTopology(''%'',%,''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where;
-  raise notice 'Performing checks, pelase wait .....';
-  execute 'show client_min_messages' into debuglevel;
+    raise notice 'PROCESSING:'; 
+    raise notice 'pgr_createTopology(''%'',%,''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where;
+--    raise notice 'pgr_createTopology(''%'',%,''%'',''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where,clean;
+    execute 'show client_min_messages' into debuglevel;
 
 
-  BEGIN
-    RAISE DEBUG 'Checking % exists',edge_table;
-    execute 'select * from pgr_getTableName('||quote_literal(edge_table)||')' into naming;
-    sname=naming.sname;
-    tname=naming.tname;
-    IF sname IS NULL OR tname IS NULL THEN
-	RAISE NOTICE '-------> % not found',edge_table;
+    raise notice 'Performing checks, pelase wait .....';
+    BEGIN
+        RAISE DEBUG 'Checking % exists',edge_table;
+        execute 'select * from _pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
+        sname=naming.sname;
+        tname=naming.tname;
+        tabname=sname||'.'||tname;
+        vname=tname||'_vertices_pgr';
+        vertname= sname||'.'||vname;
+        rows_where = ' AND ('||rows_where||')'; 
+        
+        raise DEBUG '     --> OK';
+/*
+        EXCEPTION WHEN raise_exception THEN
+        RAISE NOTICE 'ERROR: something went wrong checking the table name';
         RETURN 'FAIL';
-    ELSE
-	RAISE DEBUG '  -----> OK';
-    END IF;
-  
-    tabname=sname||'.'||tname;
-    vname=tname||'_vertices_pgr';
-    vertname= sname||'.'||vname;
-    rows_where = ' AND ('||rows_where||')'; 
-  END;
+*/
+        raise debug 'Checking column names in edge table';
+        select * into idname     from _pgr_getColumnName(sname, tname,id,2);
+        select * into sourcename from _pgr_getColumnName(sname, tname,source,2);
+        select * into targetname from _pgr_getColumnName(sname, tname,target,2);
+        select * into gname      from _pgr_getColumnName(sname, tname,the_geom,2);
 
-  BEGIN 
-       raise DEBUG 'Checking id column "%" columns in  % ',id,tabname;
-       EXECUTE 'select pgr_getColumnName('||quote_literal(tabname)||','||quote_literal(the_geom)||')' INTO gname;
-       EXECUTE 'select pgr_getColumnName('||quote_literal(tabname)||','||quote_literal(id)||')' INTO idname;
-       IF idname is NULL then
-          raise notice  'ERROR: id column "%"  not found in %',id,tabname;
+
+        perform _pgr_onError( sourcename in (targetname,idname,gname) or  targetname in (idname,gname) or idname=gname, 2, 
+	       'pgr_createToplogy',  'Two columns share the same name', 'Parameter names for id,the_geom,source and target  must be different',
+	       'Column names are OK');
+
+        raise DEBUG '     --> OK';
+ /*
+       EXCEPTION WHEN raise_exception THEN
+          RAISE NOTICE 'ERROR: something went wrong checking the column names';
           RETURN 'FAIL';
-       END IF;
-       raise DEBUG 'Checking geometry column "%" column  in  % ',the_geom,tabname;
-       IF gname is not NULL then
-    	  BEGIN
-        	raise DEBUG 'Checking the SRID of the geometry "%"', gname;
-        	query= 'SELECT ST_SRID(' || quote_ident(gname) || ') as srid '
-           		|| ' FROM ' || pgr_quote_ident(tabname)
-           		|| ' WHERE ' || quote_ident(gname)
-           		|| ' IS NOT NULL LIMIT 1';
-                EXECUTE QUERY
-           		INTO sridinfo;
+*/
+        raise debug 'Checking column types in edge table';
 
-        	IF sridinfo IS NULL OR sridinfo.srid IS NULL THEN
-            		RAISE NOTICE 'ERROR: Can not determine the srid of the geometry "%" in table %', the_geom,tabname;
-            		RETURN 'FAIL';
-        	END IF;
-        	srid := sridinfo.srid;
-        	raise DEBUG '  -----> SRID found %',srid;
-        	EXCEPTION WHEN OTHERS THEN
-            		RAISE NOTICE 'ERROR: Can not determine the srid of the geometry "%" in table %', the_geom,tabname;
-            		RETURN 'FAIL';
-    	  END;
-        ELSE 
-                raise notice  'ERROR: Geometry column "%"  not found in %',the_geom,tabname;
-                RETURN 'FAIL';
-        END IF;
-  END;
+        select * into sourcetype from _pgr_getColumnType(sname,tname,sourcename,1);
+        select * into targettype from _pgr_getColumnType(sname,tname,targetname,1);
+        select * into idtype from _pgr_getColumnType(sname,tname,idname,1);
 
-  BEGIN 
-       raise DEBUG 'Checking source column "%" and target column "%"  in  % ',source,target,tabname;
-       EXECUTE 'select  pgr_getColumnName('||quote_literal(tabname)||','||quote_literal(source)||')' INTO sourcename;
-       EXECUTE 'select  pgr_getColumnName('||quote_literal(tabname)||','||quote_literal(target)||')' INTO targetname;
-       IF sourcename is not NULL and targetname is not NULL then
-                --check that the are integer
-                EXECUTE 'select data_type  from information_schema.columns where table_name = '||quote_literal(tname)||
-                        ' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(sourcename) into sourcetype;
-                EXECUTE 'select data_type  from information_schema.columns where table_name = '||quote_literal(tname)||
-                        ' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(targetname) into targettype;
-                IF sourcetype not in('integer','smallint','bigint')  THEN
-          	    raise notice  'ERROR: source column "%" is not of integer type',sourcename;
-          	    RETURN 'FAIL';
-                END IF;
-                IF targettype not in('integer','smallint','bigint')  THEN
-          	    raise notice  'ERROR: target column "%" is not of integer type',targetname;
-          	    RETURN 'FAIL';
-                END IF;
-                raise DEBUG  '  ------>OK '; 
-       END IF;
-       IF sourcename is NULL THEN
-          	raise notice  'ERROR: source column "%"  not found in %',source,tabname;
-          	RETURN 'FAIL';
-       END IF;
-       IF targetname is NULL THEN
-          	raise notice  'ERROR: target column "%"  not found in %',target,tabname;
-          	RETURN 'FAIL';
-       END IF;
-  END;
+        perform _pgr_onError(idtype not in('integer','smallint','bigint') , 2, 
+	       'pgr_createTopology',  'Wrong type of Column id:'|| idname, ' Expected type of '|| idname || ' is integer,smallint or bigint but '||idtype||' was found',
+	       'Type of Column '|| idname || ' is ' || idtype);
 
-    
-       IF sourcename=targetname THEN
-		raise notice  'ERROR: source and target columns have the same name "%" in %',target,tabname;
-                RETURN 'FAIL';
-       END IF;
-       IF sourcename=idname THEN
-		raise notice  'ERROR: source and id columns have the same name "%" in %',target,tabname;
-                RETURN 'FAIL';
-       END IF;
-       IF targetname=idname THEN
-		raise notice  'ERROR: target and id columns have the same name "%" in %',target,tabname;
-                RETURN 'FAIL';
-       END IF;
+        perform _pgr_onError(sourcetype not in('integer','smallint','bigint') , 2, 
+	       'pgr_createTopology',  'Wrong type of Column source:'|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found',
+	       'Type of Column '|| sourcename || ' is ' || sourcetype);
 
+        perform _pgr_onError(targettype not in('integer','smallint','bigint') , 2, 
+	       'pgr_createTopology',  'Wrong type of Column target:'|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or biginti but '||targettype||' was found',
+	       'Type of Column '|| targetname || ' is ' || targettype);
 
-    BEGIN
-      RAISE DEBUG 'Checking "%" column in % is indexed',idname,tabname;
-      if (pgr_isColumnIndexed(tabname,idname)) then 
-	RAISE DEBUG '  ------>OK';
-      else 
-        RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,idname;
-        set client_min_messages  to warning;
-        execute 'create  index '||pgr_quote_ident(tname||'_'||idname||'_idx')||' 
-                         on '||pgr_quote_ident(tabname)||' using btree('||quote_ident(idname)||')';
-        execute 'set client_min_messages  to '|| debuglevel;
-      END IF;
+        raise DEBUG '     --> OK';
+        EXCEPTION WHEN raise_exception THEN
+              RETURN 'FAIL';
     END;
 
     BEGIN
-      RAISE DEBUG 'Checking "%" column in % is indexed',sourcename,tabname;
-      if (pgr_isColumnIndexed(tabname,sourcename)) then 
-	RAISE DEBUG '  ------>OK';
-      else 
-        RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,sourcename;
-        set client_min_messages  to warning;
-        execute 'create  index '||pgr_quote_ident(tname||'_'||sourcename||'_idx')||' 
-                         on '||pgr_quote_ident(tabname)||' using btree('||quote_ident(sourcename)||')';
-        execute 'set client_min_messages  to '|| debuglevel;
-      END IF;
+        raise debug 'Checking SRID of geometry column';
+
+         query= 'SELECT ST_SRID(' || quote_ident(gname) || ') as srid '
+            || ' FROM ' || _pgr_quote_ident(tabname)
+            || ' WHERE ' || quote_ident(gname)
+            || ' IS NOT NULL LIMIT 1';
+         raise debug '%',query;
+         EXECUTE query INTO sridinfo;
+
+         perform _pgr_onError( sridinfo IS NULL OR sridinfo.srid IS NULL,2,
+	     'Can not determine the srid of the geometry '|| gname ||' in table '||tabname, 'Check the geometry of column '||gname,
+	     'SRID of '||gname||' is '||sridinfo.srid);
+
+         IF sridinfo IS NULL OR sridinfo.srid IS NULL THEN
+             RAISE NOTICE ' Can not determine the srid of the geometry "%" in table %', the_geom,tabname;
+             RETURN 'FAIL';
+         END IF;
+         srid := sridinfo.srid;
+         raise DEBUG '     --> OK';
+/*
+         EXCEPTION WHEN OTHERS THEN
+             RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
+             RAISE NOTICE 'ERROR: something went wrong when looking for SRID of % in table %', the_geom,tabname;
+             RETURN 'FAIL';
+*/
     END;
 
     BEGIN
-      RAISE DEBUG 'Checking "%" column in % is indexed',targetname,tabname;
-      if (pgr_isColumnIndexed(tabname,targetname)) then 
-	RAISE DEBUG '  ------>OK';
-      else 
-        RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,targetname;
-        set client_min_messages  to warning;
-        execute 'create  index '||pgr_quote_ident(tname||'_'||targetname||'_idx')||' 
-                         on '||pgr_quote_ident(tabname)||' using btree('||quote_ident(targetname)||')';
-        execute 'set client_min_messages  to ' ||debuglevel;
-      END IF;
+        raise debug 'Checking  indices in edge table';
+        perform _pgr_createIndex(sname, tname , idname , 'btree');
+--return 'FAIL';
+        perform _pgr_createIndex(sname, tname , sourcename , 'btree');
+        perform _pgr_createIndex(sname, tname , targetname , 'btree');
+        perform _pgr_createIndex(sname, tname , gname , 'gist');
+
+        gname=quote_ident(gname);
+        idname=quote_ident(idname);
+        sourcename=quote_ident(sourcename);
+        targetname=quote_ident(targetname);
+        raise DEBUG '     --> OK';
+        EXCEPTION WHEN raise_exception THEN
+              RAISE NOTICE 'ERROR: something went wrong creating indices';
+              RETURN 'FAIL';
     END;
 
-    BEGIN
-      RAISE DEBUG 'Checking "%" column in % is indexed',gname,tabname;
-      if (pgr_iscolumnindexed(tabname,gname)) then 
-	RAISE DEBUG '  ------>OK';
-      else 
-        RAISE DEBUG ' ------> Adding unique index "%_%_gidx".',tabname,gname;
-        set client_min_messages  to warning;
-        execute 'CREATE INDEX '
-            || quote_ident(tname || '_' || gname || '_gidx' )
-            || ' ON ' || pgr_quote_ident(tabname)
-            || ' USING gist (' || quote_ident(gname) || ')';
-        execute 'set client_min_messages  to '|| debuglevel;
-      END IF;
-    END;
-       gname=quote_ident(gname);
-       idname=quote_ident(idname);
-       sourcename=quote_ident(sourcename);
-       targetname=quote_ident(targetname);
+    BEGIN 
+        sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';  --issue 213
+        EXECUTE sql into i;
+        sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NOT NULL AND '||
+	    idname||' IS NOT NULL)=false '||rows_where;
+        EXECUTE SQL  into notincluded;
+
+        if clean then 
+            raise debug 'Cleaning previous Topology ';
+               execute 'UPDATE ' || _pgr_quote_ident(tabname) ||
+               ' SET '||sourcename||' = NULL,'||targetname||' = NULL'; 
+        else 
+            raise debug 'Creating topology for edges with non assigned topology';
+            if rows_where=' AND (true)' then
+                rows_where=  ' and ('||quote_ident(sourcename)||' is null or '||quote_ident(targetname)||' is  null)'; 
+            end if;
+        end if;
+        EXCEPTION WHEN OTHERS THEN  
+             RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
+             RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition'; 
+             RAISE NOTICE '%',sql;
+             RETURN 'FAIL'; 
+    END;    
 
 
-    
     BEGIN
-       raise DEBUG 'initializing %',vertname;
-       execute 'select * from pgr_getTableName('||quote_literal(vertname)||')' into naming;
-       IF sname=naming.sname  AND vname=naming.tname  THEN
-           execute 'TRUNCATE TABLE '||pgr_quote_ident(vertname)||' RESTART IDENTITY';
-           execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
-       ELSE
-           set client_min_messages  to warning;
-       	   execute 'CREATE TABLE '||pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)';
-       END IF;
-       execute 'select addGeometryColumn('||quote_literal(sname)||','||quote_literal(vname)||','||
-                quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
-       execute 'CREATE INDEX '||quote_ident(vname||'_the_geom_idx')||' ON '||pgr_quote_ident(vertname)||'  USING GIST (the_geom)';
-       execute 'set client_min_messages  to '|| debuglevel;
-       raise DEBUG  '  ------>OK'; 
+        if clean then 
+             raise DEBUG 'initializing %',vertname;
+             execute 'select * from _pgr_getTableName('||quote_literal(vertname)||',0)' into naming;
+             set client_min_messages  to warning;
+             IF sname=naming.sname  AND vname=naming.tname  THEN
+                   execute 'TRUNCATE TABLE '||_pgr_quote_ident(vertname)||' RESTART IDENTITY';
+                   execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
+             ELSE
+                   execute 'CREATE TABLE '||_pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)';
+             END IF;
+             execute 'select addGeometryColumn('||quote_literal(sname)||','||quote_literal(vname)||','||
+	     quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
+             perform _pgr_createIndex(vertname , 'the_geom' , 'gist');
+             execute 'set client_min_messages  to '|| debuglevel;
+        else  
+             execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id"}''::text[])' into naming;
+        end if;
+        raise DEBUG  '  ------>OK'; 
+        EXCEPTION WHEN OTHERS THEN  
+             RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
+             RAISE NOTICE 'ERROR: something went wrong when initializing the verties table';
+             RETURN 'FAIL'; 
     END;       
 
-  
-  BEGIN 
-    sql = 'select count(*) from ( select * from '||pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1 ) foo';
-    EXECUTE sql into i;
-    sql = 'select count(*) from '||pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NOT NULL AND '||
-		idname||' IS NOT NULL)=false '||rows_where;
-    EXECUTE SQL  into notincluded;
-    EXCEPTION WHEN OTHERS THEN  BEGIN
-         RAISE NOTICE 'Got %', SQLERRM;
-         RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition'; 
-         RAISE NOTICE '%',sql;
-         RETURN 'FAIL'; 
-    END;
-  END;    
-
 
     BEGIN
-    raise notice 'Creating Topology, Please wait...';
-    execute 'UPDATE ' || pgr_quote_ident(tabname) ||
-            ' SET '||sourcename||' = NULL,'||targetname||' = NULL'; 
-    rowcount := 0;
-    FOR points IN EXECUTE 'SELECT ' || idname || '::bigint AS id,'
-        || ' PGR_StartPoint(' || gname || ') AS source,'
-        || ' PGR_EndPoint('   || gname || ') AS target'
-        || ' FROM '  || pgr_quote_ident(tabname)
-        || ' WHERE ' || gname || ' IS NOT NULL AND ' 
-        || idname || ' IS NOT NULL ' || rows_where
-        || ' ORDER BY ' || idname
-    LOOP
+        raise notice 'Creating Topology, Please wait...';
+        rowcount := 0;
+        FOR points IN EXECUTE 'SELECT ' || idname || '::bigint AS id,'
+            || ' _pgr_StartPoint(' || gname || ') AS source,'
+            || ' _pgr_EndPoint('   || gname || ') AS target'
+            || ' FROM '  || _pgr_quote_ident(tabname)
+            || ' WHERE ' || gname || ' IS NOT NULL AND ' || idname||' IS NOT NULL '||rows_where
+        LOOP
 
-        rowcount := rowcount + 1;
-        IF rowcount % 1000 = 0 THEN
-            RAISE NOTICE '% edges processed', rowcount;
-        END IF;
+            rowcount := rowcount + 1;
+            IF rowcount % 1000 = 0 THEN
+                RAISE NOTICE '% edges processed', rowcount;
+            END IF;
 
 
-        source_id := pgr_pointToId(points.source, tolerance,vertname,srid);
-        target_id := pgr_pointToId(points.target, tolerance,vertname,srid);
-        BEGIN                         
-        sql := 'UPDATE ' || pgr_quote_ident(tabname) || 
-            ' SET '||sourcename||' = '|| source_id::text || ','||targetname||' = ' || target_id::text || 
-            ' WHERE ' || idname || ' =  ' || points.id::text;
+            source_id := _pgr_pointToId(points.source, tolerance,vertname,srid);
+            target_id := _pgr_pointToId(points.target, tolerance,vertname,srid);
+            BEGIN                         
+                sql := 'UPDATE ' || _pgr_quote_ident(tabname) || 
+                    ' SET '||sourcename||' = '|| source_id::text || ','||targetname||' = ' || target_id::text || 
+                    ' WHERE ' || idname || ' =  ' || points.id::text;
 
-        IF sql IS NULL THEN
-            RAISE NOTICE 'WARNING: UPDATE % SET source = %, target = % WHERE % = % ', tabname, source_id::text, target_id::text, idname,  points.id::text;
-        ELSE
-            EXECUTE sql;
-        END IF;
-        EXCEPTION WHEN OTHERS THEN 
-            RAISE NOTICE '%', SQLERRM;
-            RAISE NOTICE '%',sql;
-            RETURN 'FAIL'; 
-        end;
-    END LOOP;
-    raise notice '-------------> TOPOLOGY CREATED FOR  % edges', rowcount;
-    RAISE NOTICE 'Rows with NULL geometry or NULL id: %',notincluded;
-    Raise notice 'Vertices table for table % is: %',pgr_quote_ident(tabname),pgr_quote_ident(vertname);
-    raise notice '----------------------------------------------';
+                IF sql IS NULL THEN
+                    RAISE NOTICE 'WARNING: UPDATE % SET source = %, target = % WHERE % = % ', tabname, source_id::text, target_id::text, idname,  points.id::text;
+                ELSE
+                    EXECUTE sql;
+                END IF;
+                EXCEPTION WHEN OTHERS THEN 
+                    RAISE NOTICE '%', SQLERRM;
+                    RAISE NOTICE '%',sql;
+                    RETURN 'FAIL'; 
+            end;
+        END LOOP;
+        raise notice '-------------> TOPOLOGY CREATED FOR  % edges', rowcount;
+        RAISE NOTICE 'Rows with NULL geometry or NULL id: %',notincluded;
+        Raise notice 'Vertices table for table % is: %',_pgr_quote_ident(tabname), _pgr_quote_ident(vertname);
+        raise notice '----------------------------------------------';
     END;
     RETURN 'OK';
+ EXCEPTION WHEN OTHERS THEN
+   RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
+   RETURN 'FAIL';
 
 END;
 
 
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION pgr_createTopology(text, double precision,text,text,text,text,text) 
+COMMENT ON FUNCTION pgr_createTopology(text, double precision,text,text,text,text,text,boolean) 
 IS 'args: edge_table,tolerance, the_geom:=''the_geom'',source:=''source'', target:=''target'',rows_where:=''true'' - fills columns source and target in the geometry table and creates a vertices table for selected rows';
 
 
@@ -363,8 +331,9 @@ IS 'args: edge_table,tolerance, the_geom:=''the_geom'',source:=''source'', targe
     Created 2013-08-19
 */
 
-CREATE OR REPLACE FUNCTION pgr_createverticestable(edge_table text, the_geom text DEFAULT 'the_geom'::text, source text DEFAULT 'source'::text, target text DEFAULT 'target'::text, rows_where text DEFAULT 'true'::text)
-  RETURNS text AS
+    CREATE OR REPLACE FUNCTION pgr_createverticestable(edge_table text, the_geom text DEFAULT 'the_geom'::text, source text DEFAULT 'source'::text, target text DEFAULT 'target'::text, rows_where text DEFAULT 'true'::text
+    )
+ RETURNS text AS
 $BODY$
 DECLARE
     naming record;
@@ -392,162 +361,136 @@ DECLARE
 BEGIN 
   raise notice 'PROCESSING:'; 
   raise notice 'pgr_createVerticesTable(''%'',''%'',''%'',''%'',''%'')',edge_table,the_geom,source,target,rows_where;
-  raise notice 'Performing checks, pelase wait .....';
   execute 'show client_min_messages' into debuglevel;
 
+  raise notice 'Performing checks, pelase wait .....';
   BEGIN
     RAISE DEBUG 'Checking % exists',edge_table;
-    execute 'select * from pgr_getTableName('||quote_literal(edge_table)||')' into naming;
+    execute 'select * from _pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
+
     sname=naming.sname;
     tname=naming.tname;
-    IF sname IS NULL OR tname IS NULL THEN
-	RAISE NOTICE '-------> % not found',edge_table;
-        RETURN 'FAIL';
-    ELSE
-	RAISE DEBUG '  -----> OK';
-    END IF;
-  
     tabname=sname||'.'||tname;
     vname=tname||'_vertices_pgr';
     vertname= sname||'.'||vname;
-    rows_where = ' AND ('||rows_where||')'; 
+    rows_where = ' AND ('||rows_where||')';
+    raise debug '--> Edge table exists: OK';
+/*
+    EXCEPTION WHEN raise_exception THEN
+      RAISE NOTICE 'ERROR: something went wrong checking the table name';
+      RETURN 'FAIL';
+*/
   END;
 
 
-  BEGIN 
-       EXECUTE 'select pgr_getColumnName('||quote_literal(tabname)||','||quote_literal(the_geom)||')' INTO gname;
-       raise DEBUG 'Checking geometry column "%" column  in  % ',the_geom,tabname;
-       IF gname is not NULL then
-    	  BEGIN
-        	raise DEBUG 'Checking the SRID of the geometry "%"', gname;
-        	EXECUTE 'SELECT ST_SRID(' || quote_ident(gname) || ') as srid '
-           		|| ' FROM ' || pgr_quote_ident(tabname)
-           		|| ' WHERE ' || quote_ident(gname)
-           		|| ' IS NOT NULL LIMIT 1'
-           		INTO sridinfo;
+   
 
-        	IF sridinfo IS NULL OR sridinfo.srid IS NULL THEN
-            		RAISE NOTICE 'ERROR: Can not determine the srid of the geometry "%" in table %', the_geom,tabname;
-            		RETURN 'FAIL';
-        	END IF;
-        	srid := sridinfo.srid;
-        	raise DEBUG '  -----> SRID found %',srid;
-        	EXCEPTION WHEN OTHERS THEN
-            		RAISE NOTICE 'ERROR: Can not determine the srid of the geometry "%" in table %', the_geom,tabname;
-            		RETURN 'FAIL';
-    	  END;
-        ELSE 
-                raise notice  'ERROR: Geometry column "%"  not found in %',the_geom,tabname;
-                RETURN 'FAIL';
-        END IF;
+  BEGIN
+       raise debug 'Checking column names,types,and indices';
+       select * into sourcename from _pgr_getColumnName(sname, tname,source,2);
+       select * into targetname from _pgr_getColumnName(sname, tname,target,2);
+       select * into gname      from _pgr_getColumnName(sname, tname,the_geom,2);
+
+
+       perform _pgr_onError( sourcename in (targetname,gname) or  targetname=gname, 2,
+                       'pgr_createVerticesTable',  'Two columns share the same name', 'Parameter names for the_geom,source and target  must be different',
+                       'Column names are OK');
+
+       raise debug '--> Column names: OK';
+       EXCEPTION WHEN raise_exception THEN
+          RAISE NOTICE 'ERROR: something went wrong checking the column names';
+          RETURN 'FAIL';
   END;
 
-  BEGIN 
-       raise DEBUG 'Checking source column "%" and target column "%"  in  % ',source,target,tabname;
-       IF source=target THEN
-		raise notice  'ERROR: source and target columns have the same name "%" in %',target,tabname;
-                RETURN 'FAIL';
-       END IF;
-       EXECUTE 'select  pgr_getColumnName('||quote_literal(tabname)||','||quote_literal(source)||')' INTO sourcename;
-       EXECUTE 'select  pgr_getColumnName('||quote_literal(tabname)||','||quote_literal(target)||')' INTO targetname;
-       IF sourcename is not NULL and targetname is not NULL then
-                --check that the are integer
-                EXECUTE 'select data_type  from information_schema.columns where table_name = '||quote_literal(tname)||
-                        ' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(sourcename) into sourcetype;
-                EXECUTE 'select data_type  from information_schema.columns where table_name = '||quote_literal(tname)||
-                        ' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(targetname) into targettype;
-                IF sourcetype not in('integer','smallint','bigint')  THEN
-          	    raise notice  'ERROR: source column "%" is not of integer type',sourcename;
-          	    RETURN 'FAIL';
-                END IF;
-                IF targettype not in('integer','smallint','bigint')  THEN
-          	    raise notice  'ERROR: target column "%" is not of integer type',targetname;
-          	    RETURN 'FAIL';
-                END IF;
-                raise DEBUG  '  ------>OK '; 
-       END IF;
-       IF sourcename is NULL THEN
-          	raise notice  'ERROR: source column "%"  not found in %',source,tabname;
-          	RETURN 'FAIL';
-       END IF;
-       IF targetname is NULL THEN
-          	raise notice  'ERROR: target column "%"  not found in %',target,tabname;
-          	RETURN 'FAIL';
-       END IF;
-  END;
+  BEGIN
+       select * into sourcetype from _pgr_getColumnType(sname,tname,sourcename,1);
+       select * into targettype from _pgr_getColumnType(sname,tname,targetname,1);
+
+
+       perform _pgr_onError(sourcetype not in('integer','smallint','bigint') , 2,
+                       'pgr_createVerticesTable',  'Wrong type of Column source: '|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found',
+                       'Type of Column '|| sourcename || ' is ' || sourcetype);
+
+       perform _pgr_onError(targettype not in('integer','smallint','bigint') , 2,
+                       'pgr_createVerticesTable',  'Wrong type of Column target:'|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or biginti but '||targettype||' was found',
+                       'Type of Column '|| targetname || ' is ' || targettype);
+       raise debug '-->Column types:OK';
+/*
+       EXCEPTION WHEN raise_exception THEN
+          RAISE NOTICE 'ERROR: something went wrong checking the column types';
+          RETURN 'FAIL';
+*/
+   END;
+
 
     BEGIN
-      RAISE DEBUG 'Checking "%" column in % is indexed',sourcename,tabname;
-      if (pgr_isColumnIndexed(tabname,sourcename)) then
-        RAISE DEBUG '  ------>OK';
-      else
-        RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,sourcename;
-        set client_min_messages  to warning;
-        execute 'create  index '||pgr_quote_ident(tname||'_'||sourcename||'_idx')||' 
-                         on '||pgr_quote_ident(tabname)||' using btree('||quote_ident(sourcename)||')';
-        execute 'set client_min_messages  to '|| debuglevel;
-      END IF;
-    END;
+         query= 'SELECT ST_SRID(' || quote_ident(gname) || ') as srid '
+            || ' FROM ' || _pgr_quote_ident(tabname)
+            || ' WHERE ' || quote_ident(gname)
+            || ' IS NOT NULL LIMIT 1';
+         EXECUTE QUERY INTO sridinfo;
 
-    BEGIN
-      RAISE DEBUG 'Checking "%" column in % is indexed',targetname,tabname;
-      if (pgr_isColumnIndexed(tabname,targetname)) then
-        RAISE DEBUG '  ------>OK';
-      else
-        RAISE DEBUG ' ------> Adding  index "%_%_idx".',tabname,targetname;
-        set client_min_messages  to warning;
-        execute 'create  index '||pgr_quote_ident(tname||'_'||targetname||'_idx')||' 
-                         on '||pgr_quote_ident(tabname)||' using btree('||quote_ident(targetname)||')';
-        execute 'set client_min_messages  to '|| debuglevel;
-      END IF;
-    END;
+         perform _pgr_onError( sridinfo IS NULL OR sridinfo.srid IS NULL,2,
+                 'Can not determine the srid of the geometry '|| gname ||' in table '||tabname, 'Check the geometry of column '||gname,
+                 'SRID of '||gname||' is '||sridinfo.srid);
 
-    BEGIN
-      RAISE DEBUG 'Checking "%" column in % is indexed',gname,tabname;
-      if (pgr_iscolumnindexed(tabname,gname)) then
-        RAISE DEBUG '  ------>OK';
-      else
-        RAISE DEBUG ' ------> Adding unique index "%_%_gidx".',tabname,gname;
-        set client_min_messages  to warning;
-        execute 'CREATE INDEX '
-            || quote_ident(tname || '_' || gname || '_gidx' )
-            || ' ON ' || pgr_quote_ident(tabname)
-            || ' USING gist (' || quote_ident(gname) || ')';
-        execute 'set client_min_messages  to '|| debuglevel;
-      END IF;
-    END;
+         IF sridinfo IS NULL OR sridinfo.srid IS NULL THEN
+             RAISE NOTICE ' Can not determine the srid of the geometry "%" in table %', the_geom,tabname;
+             RETURN 'FAIL';
+         END IF;
+         srid := sridinfo.srid;
+       raise DEBUG '-->Check geometry column: OK';
+         EXCEPTION WHEN OTHERS THEN
+             RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
+             RAISE NOTICE 'ERROR: something went wrong when looking for SRID of % in table %', the_geom,tabname;
+             RETURN 'FAIL';
+     END;
+  
+   BEGIN
+       perform _pgr_createIndex(sname, tname , sourcename , 'btree');
+       perform _pgr_createIndex(sname, tname , targetname , 'btree');
+       perform _pgr_createIndex(sname, tname , gname , 'gist');
+       raise DEBUG '-->Check indices: OK';
+
        gname=quote_ident(gname);
        sourcename=quote_ident(sourcename);
        targetname=quote_ident(targetname);
+/*
+       EXCEPTION WHEN raise_exception THEN
+          RAISE NOTICE 'ERROR: something went wrong creating indices';
+          RETURN 'FAIL';
+*/
+   END;
 
 
 
     
     BEGIN
        raise DEBUG 'initializing %',vertname;
-       execute 'select * from pgr_getTableName('||quote_literal(vertname)||')' into naming;
+       execute 'select * from _pgr_getTableName('||quote_literal(vertname)||',0)' into naming;
        IF sname=naming.sname  AND vname=naming.tname  THEN
-           execute 'TRUNCATE TABLE '||pgr_quote_ident(vertname)||' RESTART IDENTITY';
+           execute 'TRUNCATE TABLE '||_pgr_quote_ident(vertname)||' RESTART IDENTITY';
            execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
        ELSE
            set client_min_messages  to warning;
-       	   execute 'CREATE TABLE '||pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)';
+       	   execute 'CREATE TABLE '||_pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)';
        END IF;
        execute 'select addGeometryColumn('||quote_literal(sname)||','||quote_literal(vname)||','||
                 quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
-       execute 'CREATE INDEX '||quote_ident(vname||'_the_geom_idx')||' ON '||pgr_quote_ident(vertname)||'  USING GIST (the_geom)';
+       execute 'CREATE INDEX '||quote_ident(vname||'_the_geom_idx')||' ON '||_pgr_quote_ident(vertname)||'  USING GIST (the_geom)';
        execute 'set client_min_messages  to '|| debuglevel;
        raise DEBUG  '  ------>OK'; 
     END;       
 
   BEGIN
-    sql = 'select * from '||pgr_quote_ident(tabname)||' WHERE true'||rows_where||' limit 1';
+    sql = 'select * from '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where||' limit 1';
     EXECUTE sql into i;
-    sql = 'select count(*) from '||pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NULL or '||
+    sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NULL or '||
 		sourcename||' is null or '||targetname||' is null)=true '||rows_where;
     raise debug '%',sql;
     EXECUTE SQL  into notincluded;
     EXCEPTION WHEN OTHERS THEN  BEGIN
+         RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
          RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition';
          RAISE NOTICE '%',sql;
          RETURN 'FAIL';
@@ -558,41 +501,44 @@ BEGIN
     BEGIN
        raise notice 'Populating %, please wait...',vertname;
        sql= 'with
-		lines as ((select distinct '||sourcename||' as id, pgr_startpoint(st_linemerge('||gname||')) as the_geom from '||pgr_quote_ident(tabname)||
+		lines as ((select distinct '||sourcename||' as id, _pgr_startpoint(st_linemerge('||gname||')) as the_geom from '||_pgr_quote_ident(tabname)||
 		                  ' where ('|| gname || ' IS NULL 
                                     or '||sourcename||' is null 
                                     or '||targetname||' is null)=false 
                                      '||rows_where||')
-			union (select distinct '||targetname||' as id,pgr_endpoint(st_linemerge('||gname||')) as the_geom from '||pgr_quote_ident(tabname)||
+			union (select distinct '||targetname||' as id,_pgr_endpoint(st_linemerge('||gname||')) as the_geom from '||_pgr_quote_ident(tabname)||
 			          ' where ('|| gname || ' IS NULL 
                                     or '||sourcename||' is null 
                                     or '||targetname||' is null)=false
                                      '||rows_where||'))
 		,numberedLines as (select row_number() OVER (ORDER BY id) AS i,* from lines )
 		,maxid as (select id,max(i) as maxi from numberedLines group by id)
-		insert into '||pgr_quote_ident(vertname)||'(id,the_geom)  (select id,the_geom  from numberedLines join maxid using(id) where i=maxi order by id)';
+		insert into '||_pgr_quote_ident(vertname)||'(id,the_geom)  (select id,the_geom  from numberedLines join maxid using(id) where i=maxi order by id)';
        RAISE debug '%',sql;
        execute sql;
        GET DIAGNOSTICS totcount = ROW_COUNT;
 
-       sql = 'select count(*) from '||pgr_quote_ident(tabname)||' a, '||pgr_quote_ident(vertname)||' b 
-            where '||sourcename||'=b.id and '|| targetname||' in (select id from '||pgr_quote_ident(vertname)||')';
+       sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' a, '||_pgr_quote_ident(vertname)||' b 
+            where '||sourcename||'=b.id and '|| targetname||' in (select id from '||_pgr_quote_ident(vertname)||')';
        RAISE debug '%',sql;
        execute sql into included;
 
 
 
-       execute 'select max(id) from '||pgr_quote_ident(vertname) into ecnt;
+       execute 'select max(id) from '||_pgr_quote_ident(vertname) into ecnt;
        execute 'SELECT setval('||quote_literal(vertname||'_id_seq')||','||coalesce(ecnt,1)||' , false)';
        raise notice '  ----->   VERTICES TABLE CREATED WITH  % VERTICES', totcount;
        raise notice '                                       FOR   %  EDGES', included+notincluded;
        RAISE NOTICE '  Edges with NULL geometry,source or target: %',notincluded;
        RAISE NOTICE '                            Edges processed: %',included;
-       Raise notice 'Vertices table for table % is: %',pgr_quote_ident(tabname),pgr_quote_ident(vertname);
+       Raise notice 'Vertices table for table % is: %',_pgr_quote_ident(tabname),_pgr_quote_ident(vertname);
        raise notice '----------------------------------------------';
     END;
     
     RETURN 'OK';
+ EXCEPTION WHEN OTHERS THEN
+   RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
+   RETURN 'FAIL';
 END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;

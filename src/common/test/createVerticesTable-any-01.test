@@ -25,6 +25,7 @@ select pgr_createVerticesTable('edges2', 'the_geom',source:='source');
 select pgr_createVerticesTable('edges2', 'the_geom',target:='target',rows_where:='eid<15 and eid>5');
 
 -- the following tests should FAIL
+set client_min_messages to warning;
 
 select pgr_createVerticesTable('edges22', 'the_geom');
 select pgr_createVerticesTable('edges2', 'geom');
@@ -39,6 +40,7 @@ select pgr_createVerticesTable('edges2', target:='the_geom');
 select * into "Edges2" from edges2;
 
 -- The following should be OK                                                                                                                 
+set client_min_messages to notice;
                                                                                                                                               
 select pgr_createVerticesTable('Edges2');                                                                                     
 update "Edges2" set the_geom=NULL where eid=5;                                                                                                
@@ -65,6 +67,7 @@ select pgr_createVerticesTable('public.edges2', 'the_geom',source:='source');
 select pgr_createVerticesTable('public.edges2', 'the_geom',target:='target',rows_where:='eid<15');
 
 -- the following tests should fail
+set client_min_messages to warning;
 
 select pgr_createVerticesTable('public.edges22', 'the_geom');
 select pgr_createVerticesTable('public.edges2', 'geom');
@@ -80,6 +83,7 @@ select * into edges2 from public.edges2;
 select * into "Edges2" from public."Edges2";
 
 -- The following should be OK 
+set client_min_messages to notice;
 
 select pgr_createVerticesTable('edges2');
 select pgr_createVerticesTable('Edges2', 'the_geom');
@@ -94,6 +98,7 @@ select pgr_createVerticesTable('edges2', 'the_geom',source:='source');
 select pgr_createVerticesTable('edges2', 'the_geom',target:='target',rows_where:='eid<15');
 
 -- the following tests should FAIL
+set client_min_messages to warning;
 
 select pgr_createVerticesTable('edges22', 'the_geom');
 select pgr_createVerticesTable('edges2', 'geom');
@@ -107,12 +112,14 @@ select pgr_createVerticesTable('edges2', target:='the_geom');
 
 
 -- The following should be OK
+set client_min_messages to notice;
 select pgr_createVerticesTable('edges2', rows_where:='eid<15');
 select pgr_createVerticesTable('Edges2', rows_where:='eid<15 and eid>5');
 select pgr_createVerticesTable('Edges2', rows_where:=' the_geom && (select st_buffer(the_geom,0.0001) as buffer from "Edges2" 
 where eid=6)') ;
 
 -- The following should FAIL (working on myschema)
+set client_min_messages to warning;
 
 select pgr_createVerticesTable('edges2',rows_where:='eid<');
 select pgr_createVerticesTable('Edges2', rows_where:='eid<15 and ed>5');
