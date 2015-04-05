@@ -29,12 +29,15 @@ LANGUAGE plpgsql VOLATILE STRICT;
 CREATE OR REPLACE FUNCTION pgr_isColumnInTable(tab text, col text)
 RETURNS boolean AS
 $BODY$
+DECLARE
+    cname text;
 BEGIN
     raise notice 'pgr_isColumnInTable: This function will no longer be soported';
-    return _pgr_isColumnInTable(tab,col); -- into sname,tname;
+    select * from _pgr_getColumnName(tab,col,0, 'pgr_isColumnInTable') into cname;
+    return  cname IS not NULL;
 END;
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
+  LANGUAGE plpgsql VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_isColumnIndexed(tab text, col text)
 RETURNS boolean AS

@@ -198,12 +198,7 @@ DECLARE
     cname text;
 BEGIN
     select * from _pgr_getColumnName(tab,col,0, '_pgr_isColumnInTable') into cname;
-
-    IF cname IS NULL THEN
-        RETURN false;
-    ELSE
-        RETURN true;
-    END IF;
+    return cname is not null;
 END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
