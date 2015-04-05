@@ -11,7 +11,7 @@ RETURNS RECORD AS
 $BODY$ 
 BEGIN
     raise notice 'pgr_getTableName: This function will no longer be soported';
-    select * from _pgr_getTableName(tab) into sname,tname;
+    select * from _pgr_getTableName(tab, 2, 'pgr_getTableName') into sname,tname;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -21,7 +21,7 @@ RETURNS text AS
 $BODY$
 BEGIN
     raise notice 'pgr_getColumnName: This function will no longer be soported';
-    return _pgr_getColumnName(tab,col);
+    return _pgr_getColumnName(tab,col, 2, 'pgr_getColumnName');
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -45,18 +45,6 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-
-CREATE OR REPLACE FUNCTION pgr_isColumnInTable(tab text, col text)
-RETURNS boolean AS
-$BODY$
-BEGIN
-    raise notice 'pgr_isColumnInTable: This function will no longer be soported';
-    return _pgr_isColumnInTable(tab,col);
-END;
-$BODY$
-  LANGUAGE plpgsql VOLATILE STRICT;
-
-
 
 
 create or replace function pgr_quote_ident(idname text)

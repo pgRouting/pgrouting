@@ -197,12 +197,10 @@ BEGIN
           WHERE table_name='||quote_literal(tname)||' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(lower(col))  into cname;
     END if;
 
-    err=cname is null;
+    err = cname is null;
 
     perform _pgr_onError(err, reportErrs, fnName,  'Column '|| col ||' not found', ' Check your column name','Column '|| col || ' found');
     RETURN cname;
-    EXCEPTION WHEN OTHERS THEN
-          RETURN NULL;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;

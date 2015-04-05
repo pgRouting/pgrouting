@@ -1,0 +1,28 @@
+
+set client_min_messages to notice;
+select  * from pgr_getTableName('EDGes2');
+select  * from pgr_getTableName('EDes2');
+
+select * from pgr_getColumnName('EDGes2', 'SOuRce');
+select * from pgr_getColumnName('EDes2', 'SOuRce');
+select * from pgr_getColumnName('EDes2', 'SOuce');
+select * from pgr_getColumnName('EDes2', 'SOuce');
+
+select * from pgr_isColumnInTable('EDGes2', 'SOuRce');
+select * from pgr_isColumnInTable('EDes2', 'SOuRce');
+select * from pgr_isColumnInTable('EDes2', 'SOuce');
+select * from pgr_isColumnInTable('EDes2', 'SOuce');
+
+select pgr_isColumnIndexed('EDGes2', 'eid');
+select pgr_isColumnIndexed('EDGes2', 'X1');
+
+select pgr_versionless('2.1.0foobar23', '2.1');
+select pgr_versionless('2.1.0foobar23', '2.1-rc1');
+select pgr_versionless('2.1.0foobar23', '2.1-beta');
+
+select pgr_quote_ident('idname.text');
+
+select pgr_startPoint(the_geom) from edges2 where eid = 1;
+select pgr_endPoint(the_geom) from edges2 where eid = 1;
+
+
