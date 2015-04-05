@@ -8,7 +8,7 @@ LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_conversion_tools.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_dmatrix_tools.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/utilities_pgr.sql
-    ${CMAKE_CURRENT_SOURCE_DIR}/more_utilities_pgr.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/noUnderUtilities.sql
 )
 
 # set in parent scope

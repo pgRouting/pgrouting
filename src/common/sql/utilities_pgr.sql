@@ -1,8 +1,7 @@
 -- -------------------------------------------------------------------
 -- pgrouting_utilities.sql
--- AuthorL Stephen Woodbridge <woodbri@imaptools.com>
--- CoAuthorL Vicky Vergara <vicky_vergara@hotmail.com>
--- Copyright 2013 Stephen Woodbridge
+-- Author Vicky Vergara <vicky_vergara@hotmail.com>
+-- Copyright 2015 Vicky Vergara
 -- This file is release unde an MIT-X license.
 -- -------------------------------------------------------------------
 
@@ -83,7 +82,6 @@ BEGIN
 END 
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-*/
 
 CREATE OR REPLACE FUNCTION _pgr_getTableName(IN tab text, IN reportErrs int default 1, IN fnName text default '_pgr_getTableName', OUT sname text,OUT tname text)
   RETURNS RECORD AS
@@ -154,6 +152,7 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
+*/
 
 
 /*
@@ -176,7 +175,6 @@ LANGUAGE plpgsql VOLATILE STRICT;
   HISTORY
      Created: 2013/08/19  for handling schemas
      Modified: 2014/JUL/28 added overloadig
-*/
 
 
 
@@ -227,6 +225,7 @@ END;
 
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
+*/
 
 
 /*
@@ -313,7 +312,6 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
   HISTORY
      Modified: 2013/08/19  for handling schemas
-*/
 CREATE OR REPLACE FUNCTION _pgr_isColumnInTable(tab text, col text)
 RETURNS boolean AS
 $BODY$
@@ -330,6 +328,7 @@ BEGIN
 END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
+*/
 
 
 /*
@@ -349,7 +348,6 @@ $BODY$
                  when column "col" is nor found in table "tab" or
 	  	 when column "col" is not indexed
 
-*/
 CREATE OR REPLACE FUNCTION public._pgr_isColumnIndexed(sname text,tname text, cname text)
 RETURNS boolean AS
 $BODY$
@@ -439,6 +437,7 @@ BEGIN
 END
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
+*/
 
 /*
 .. function:: _pgr_createIndex(tab, col,indextype)
