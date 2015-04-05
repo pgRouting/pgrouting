@@ -28,23 +28,23 @@
   
 ************************************************************************/
 
-CREATE OR REPLACE FUNCTION _pgr_onError(IN errCond boolean,IN action int, IN functionname text, IN msgerr text, IN hinto text default 'No hint',IN msgok text default 'OK' )
+CREATE OR REPLACE FUNCTION _pgr_onError(IN errCond boolean,IN action int, IN fnName text, IN msgerr text, IN hinto text default 'No hint',IN msgok text default 'OK')
   RETURNS void AS
 $BODY$
 BEGIN
   if errCond=true then 
      if action=0 then
-       raise debug '----> PGR ERROR in %: %',functionname,msgerr USING HINT = '  ---->'|| hinto;
+       raise debug '----> PGR ERROR in %: %',fnName,msgerr USING HINT = '  ---->'|| hinto;
      else
        if action = 2 then
-         raise notice '----> PGR ERROR in %: %',functionname,msgerr USING HINT = '  ---->'|| hinto;
+         raise notice '----> PGR ERROR in %: %',fnName,msgerr USING HINT = '  ---->'|| hinto;
          raise raise_exception;
        else
-         raise notice '----> PGR ERROR in %: %',functionname,msgerr USING HINT = '  ---->'|| hinto;
+         raise notice '----> PGR ERROR in %: %',fnName,msgerr USING HINT = '  ---->'|| hinto;
        end if;
      end if;
   else
-       raise debug 'PGR ----> %: %',functionname,msgok;
+       raise debug 'PGR ----> %: %',fnName,msgok;
   end if;
 END;
 $BODY$
@@ -72,7 +72,20 @@ LANGUAGE plpgsql VOLATILE STRICT;
      Created: 2013/08/19  for handling schemas
 
 */
-CREATE OR REPLACE FUNCTION _pgr_getTableName(IN tab text, IN reportErrs int default 1, OUT sname text,OUT tname text)
+/*
+CREATE OR REPLACE FUNCTION _pgr_getTableName(IN tab text, OUT sname text,OUT tname text)
+  RETURNS RECORD AS
+$BODY$
+DECLARE
+  result record;
+BEGIN
+  select * from _pgr_getTableName(tab, 1, '_pgr_getTableName') into sname, tname;
+END 
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
+*/
+
+CREATE OR REPLACE FUNCTION _pgr_getTableName(IN tab text, IN reportErrs int default 1, IN fnName text default '_pgr_getTableName', OUT sname text,OUT tname text)
   RETURNS RECORD AS
 $BODY$ 
 DECLARE
@@ -136,7 +149,7 @@ BEGIN
 	END IF;
     END IF;	   
    err= case when sname IS NULL OR tname IS NULL then true else false end; 
-   perform _pgr_onError(err, reportErrs, '_pgr_getTableName', 'Table ' || tab ||' not found',' Check your table name', 'Table '|| tab || ' found');
+   perform _pgr_onError(err, reportErrs, fnName, 'Table ' || tab ||' not found',' Check your table name', 'Table '|| tab || ' found');
 	        	
 END;
 $BODY$
@@ -167,7 +180,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 
-CREATE OR REPLACE FUNCTION _pgr_getColumnName(sname text, tname text, col text, IN reportErrs int default 1)
+CREATE OR REPLACE FUNCTION _pgr_getColumnName(sname text, tname text, col text, IN reportErrs int default 1, IN fnName text default '_pgr_getColumnName')
 RETURNS text AS
 $BODY$
 DECLARE
@@ -186,18 +199,17 @@ BEGIN
 
     err=cname is null;
 
-    perform _pgr_onError(err, reportErrs, 'pgr_getColumnName',  'Column '|| col ||' not found', ' Check your column name','Column '|| col || ' found');
+    perform _pgr_onError(err, reportErrs, fnName,  'Column '|| col ||' not found', ' Check your column name','Column '|| col || ' found');
     RETURN cname;
     EXCEPTION WHEN OTHERS THEN
           RETURN NULL;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION _pgr_getColumnName(text,text,text,int) IS 'args: sname,tname,col -gets the rregistered column name of "col" in table "sname.tname"';
 
 
 
-CREATE OR REPLACE FUNCTION _pgr_getColumnName(tab text, col text, IN reportErrs int default 1)
+CREATE OR REPLACE FUNCTION _pgr_getColumnName(tab text, col text, IN reportErrs int default 1, IN fnName text default '_pgr_getColumnName')
 RETURNS text AS
 $BODY$
 DECLARE
@@ -207,11 +219,11 @@ DECLARE
     naming record;
     err boolean;
 BEGIN
-    select * into naming from _pgr_getTableName(tab,reportErrs) ;
+    select * into naming from _pgr_getTableName(tab,reportErrs, fnName) ;
     sname=naming.sname;
     tname=naming.tname;
    
-    select * into cname from _pgr_getColumnName(sname,tname,col,reportErrs);
+    select * into cname from _pgr_getColumnName(sname,tname,col,reportErrs, fnName);
     RETURN cname;
 END;
 
@@ -240,7 +252,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
      Created: 2014/JUL/28 
 */
 
-CREATE OR REPLACE FUNCTION _pgr_getColumnType(sname text, tname text, cname text, IN reportErrs int default 1)
+CREATE OR REPLACE FUNCTION _pgr_getColumnType(sname text, tname text, cname text, IN reportErrs int default 1, IN fnName text default 'pgr_getColumnType')
 RETURNS text AS
 $BODY$
 DECLARE
@@ -251,8 +263,8 @@ BEGIN
 
     EXECUTE 'select data_type  from information_schema.columns where table_name = '||quote_literal(tname)||
                         ' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(cname) into ctype;
-    err=ctype is null;
-    perform _pgr_onError(err, reportErrs, 'pgr_getColumnType',  'Type of Column '|| cname ||' not found', ' Check your column name','Type of Column '|| cname || ' is ' || ctype);
+    err = ctype is null;
+    perform _pgr_onError(err, reportErrs, fnName,  'Type of Column '|| cname ||' not found', ' Check your column name','Type of Column '|| cname || ' is ' || ctype);
     RETURN ctype;
 END;
 
@@ -260,7 +272,7 @@ $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
 
-CREATE OR REPLACE FUNCTION _pgr_getColumnType(tab text, col text, IN reportErrs int default 1)
+CREATE OR REPLACE FUNCTION _pgr_getColumnType(tab text, col text, IN reportErrs int default 1, IN fnName text default 'pgr_getColumnType')
 RETURNS text AS
 $BODY$
 DECLARE
@@ -272,11 +284,11 @@ DECLARE
     err boolean;
 BEGIN
   
-    select * into naming from _pgr_getTableName(tab,reportErrs) ;
+    select * into naming from _pgr_getTableName(tab,reportErrs, fnName) ;
     sname=naming.sname;
     tname=naming.tname;
-    select * into cname from _pgr_getColumnName(tab,col,reportErrs) ;
-    select * into ctype from _pgr_getColumnType(sname,tname,cname,reportErrs);
+    select * into cname from _pgr_getColumnName(tab,col,reportErrs, fnName) ;
+    select * into ctype from _pgr_getColumnType(sname,tname,cname,reportErrs, fnName);
     RETURN ctype;
 END;
 
@@ -310,7 +322,7 @@ $BODY$
 DECLARE
     cname text;
 BEGIN
-    select * from _pgr_getColumnName(tab,col,0) into cname;
+    select * from _pgr_getColumnName(tab,col,0, '_pgr_isColumnInTable') into cname;
   
     IF cname IS NULL THEN
         RETURN false;
@@ -402,7 +414,7 @@ END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
-CREATE OR REPLACE FUNCTION public._pgr_isColumnIndexed(tab text, col text)
+CREATE OR REPLACE FUNCTION _pgr_isColumnIndexed(tab text, col text)
 RETURNS boolean AS
 $BODY$
 DECLARE
@@ -414,13 +426,13 @@ DECLARE
     pkey text;
     value boolean;
 BEGIN
-    SELECT * into naming FROM _pgr_getTableName(tab);
+    SELECT * into naming FROM _pgr_getTableName(tab, 0, '_pgr_isColumnIndexed');
     sname=naming.sname;
     tname=naming.tname;
     IF sname IS NULL OR tname IS NULL THEN
         RETURN FALSE;
     END IF;
-    SELECT * into cname from _pgr_getColumnName(sname,tname,col,0) ;
+    SELECT * into cname from _pgr_getColumnName(sname,tname,col,0, '_pgr_isColumnIndexed') ;
     IF cname IS NULL THEN
         RETURN FALSE;
     END IF;
