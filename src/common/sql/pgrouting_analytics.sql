@@ -95,10 +95,10 @@ DECLARE
 BEGIN
   raise notice 'PROCESSING:';
   raise notice 'pgr_analyzeGraph(''%'',%,''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where;
+  raise notice 'Performing checks, pelase wait ...';
   execute 'show client_min_messages' into debuglevel;
 
 
-  raise notice 'Performing checks, pelase wait ...';
   BEGIN
     RAISE DEBUG 'Checking % exists',edge_table;
     execute 'select * from _pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
