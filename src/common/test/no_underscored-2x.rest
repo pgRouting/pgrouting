@@ -1,61 +1,15 @@
  NOTICE:  pgr_getTableName: This function will no longer be soported
 public|edges2
  NOTICE:  pgr_getTableName: This function will no longer be soported
- NOTICE:  ----> PGR ERROR in pgr_getTableName: Table EDes2 not found
-HINT:    ----> Check your table name
-CONTEXT:  SQL statement "SELECT _pgr_onError(err, reportErrs, fnName, 'Table ' || tab ||' not found',' Check your table name', 'Table '|| tab || ' found')"
-PL/pgSQL function _pgr_gettablename(text,integer,text) line 63 at PERFORM
-SQL statement "select * from _pgr_getTableName(tab, 2, 'pgr_getTableName')"
-PL/pgSQL function pgr_gettablename(text) line 4 at SQL statement
- ERROR:  raise_exception
-CONTEXT:  SQL statement "SELECT _pgr_onError(err, reportErrs, fnName, 'Table ' || tab ||' not found',' Check your table name', 'Table '|| tab || ' found')"
-PL/pgSQL function _pgr_gettablename(text,integer,text) line 63 at PERFORM
-SQL statement "select * from _pgr_getTableName(tab, 2, 'pgr_getTableName')"
-PL/pgSQL function pgr_gettablename(text) line 4 at SQL statement
+public|
  NOTICE:  pgr_getColumnName: This function will no longer be soported
 source
  NOTICE:  pgr_getColumnName: This function will no longer be soported
- NOTICE:  ----> PGR ERROR in pgr_getColumnName: Table EDes2 not found
-HINT:    ----> Check your table name
-CONTEXT:  SQL statement "SELECT _pgr_onError(err, reportErrs, fnName, 'Table ' || tab ||' not found',' Check your table name', 'Table '|| tab || ' found')"
-PL/pgSQL function _pgr_gettablename(text,integer,text) line 63 at PERFORM
-SQL statement "select *             from _pgr_getTableName(tab,reportErrs, fnName)"
-PL/pgSQL function _pgr_getcolumnname(text,text,integer,text) line 9 at SQL statement
-PL/pgSQL function pgr_getcolumnname(text,text) line 4 at RETURN
- ERROR:  raise_exception
-CONTEXT:  SQL statement "SELECT _pgr_onError(err, reportErrs, fnName, 'Table ' || tab ||' not found',' Check your table name', 'Table '|| tab || ' found')"
-PL/pgSQL function _pgr_gettablename(text,integer,text) line 63 at PERFORM
-SQL statement "select *             from _pgr_getTableName(tab,reportErrs, fnName)"
-PL/pgSQL function _pgr_getcolumnname(text,text,integer,text) line 9 at SQL statement
-PL/pgSQL function pgr_getcolumnname(text,text) line 4 at RETURN
+
  NOTICE:  pgr_getColumnName: This function will no longer be soported
- NOTICE:  ----> PGR ERROR in pgr_getColumnName: Table EDes2 not found
-HINT:    ----> Check your table name
-CONTEXT:  SQL statement "SELECT _pgr_onError(err, reportErrs, fnName, 'Table ' || tab ||' not found',' Check your table name', 'Table '|| tab || ' found')"
-PL/pgSQL function _pgr_gettablename(text,integer,text) line 63 at PERFORM
-SQL statement "select *             from _pgr_getTableName(tab,reportErrs, fnName)"
-PL/pgSQL function _pgr_getcolumnname(text,text,integer,text) line 9 at SQL statement
-PL/pgSQL function pgr_getcolumnname(text,text) line 4 at RETURN
- ERROR:  raise_exception
-CONTEXT:  SQL statement "SELECT _pgr_onError(err, reportErrs, fnName, 'Table ' || tab ||' not found',' Check your table name', 'Table '|| tab || ' found')"
-PL/pgSQL function _pgr_gettablename(text,integer,text) line 63 at PERFORM
-SQL statement "select *             from _pgr_getTableName(tab,reportErrs, fnName)"
-PL/pgSQL function _pgr_getcolumnname(text,text,integer,text) line 9 at SQL statement
-PL/pgSQL function pgr_getcolumnname(text,text) line 4 at RETURN
+
  NOTICE:  pgr_getColumnName: This function will no longer be soported
- NOTICE:  ----> PGR ERROR in pgr_getColumnName: Table EDes2 not found
-HINT:    ----> Check your table name
-CONTEXT:  SQL statement "SELECT _pgr_onError(err, reportErrs, fnName, 'Table ' || tab ||' not found',' Check your table name', 'Table '|| tab || ' found')"
-PL/pgSQL function _pgr_gettablename(text,integer,text) line 63 at PERFORM
-SQL statement "select *             from _pgr_getTableName(tab,reportErrs, fnName)"
-PL/pgSQL function _pgr_getcolumnname(text,text,integer,text) line 9 at SQL statement
-PL/pgSQL function pgr_getcolumnname(text,text) line 4 at RETURN
- ERROR:  raise_exception
-CONTEXT:  SQL statement "SELECT _pgr_onError(err, reportErrs, fnName, 'Table ' || tab ||' not found',' Check your table name', 'Table '|| tab || ' found')"
-PL/pgSQL function _pgr_gettablename(text,integer,text) line 63 at PERFORM
-SQL statement "select *             from _pgr_getTableName(tab,reportErrs, fnName)"
-PL/pgSQL function _pgr_getcolumnname(text,text,integer,text) line 9 at SQL statement
-PL/pgSQL function pgr_getcolumnname(text,text) line 4 at RETURN
+
  NOTICE:  pgr_isColumnInTable: This function will no longer be soported
 t
  NOTICE:  pgr_isColumnInTable: This function will no longer be soported
