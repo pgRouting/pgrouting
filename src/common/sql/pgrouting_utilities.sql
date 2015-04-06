@@ -29,8 +29,7 @@
 */
 
 
-CREATE OR REPLACE FUNCTION _pgr_getTableName(IN tab text, 
-       IN action text default 'notice', IN fnName text default '_pgr_getTableName', OUT sname text,OUT tname text)
+CREATE OR REPLACE FUNCTION _pgr_getTableName(IN tab text, IN reportErrs int default 1, IN fnName text default '_pgr_getTableName', OUT sname text,OUT tname text)
   RETURNS RECORD AS
 $BODY$
 DECLARE
@@ -125,7 +124,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 */
 
 
-CREATE OR REPLACE FUNCTION _pgr_getColumnName(sname text, tname text, col text, IN action text, IN fnName text )
+CREATE OR REPLACE FUNCTION _pgr_getColumnName(sname text, tname text, col text, IN reportErrs int default 1, IN fnName text default '_pgr_getColumnName')
 RETURNS text AS
 $BODY$
 DECLARE
@@ -143,27 +142,16 @@ BEGIN
     END if;
 
     err = cname is null;
-    perform _pgr_onError(err, action, fnName,  'Column '|| col ||' not found', ' Check your column name','Column '|| col || ' found');
+
+    perform _pgr_onError(err, reportErrs, fnName,  'Column '|| col ||' not found', ' Check your column name','Column '|| col || ' found');
     RETURN cname;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
 
-CREATE OR REPLACE FUNCTION _pgr_getColumnName(sname text, tname text, col text) --, IN action text, IN fnName text )
-RETURNS text AS
-$BODY$
-DECLARE
-    cname text;
-BEGIN
-    select * into cname from _pgr_getColumnName(sname, tname, col, 'debug', '_pgr_getColumnName');
-    return cname;
-END;
-$BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
 
-
-CREATE OR REPLACE FUNCTION _pgr_getColumnName(tab text, col text) --, IN reportErrs text default 'debug', IN fnName text default '_pgr_getColumnName')
+CREATE OR REPLACE FUNCTION _pgr_getColumnName(tab text, col text, IN reportErrs int default 1, IN fnName text default '_pgr_getColumnName')
 RETURNS text AS
 $BODY$
 DECLARE
@@ -172,13 +160,12 @@ DECLARE
     cname text;
     naming record;
     err boolean;
-    
 BEGIN
-    select * into naming from _pgr_getTableName(tab, 'debug', '_pgr_getColumnName') ;
+    select * into naming from _pgr_getTableName(tab,reportErrs, fnName) ;
     sname=naming.sname;
     tname=naming.tname;
 
-    select * into cname from _pgr_getColumnName(sname, tname, col, 'debug', '_pgr_getColumnName');
+    select * into cname from _pgr_getColumnName(sname,tname,col,reportErrs, fnName);
     RETURN cname;
 END;
 

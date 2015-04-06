@@ -28,13 +28,11 @@ BEGIN
    if (returnvalue=result) then
       return 'test #'|| testnumber || ':OK';
    else
-      return 'test #'|| testnumber || ':got '||returnvalue || ' expected: '|| result;
+      return 'test #'|| testnumber || ':got '||returnvalue;
    end if;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE ;
-
-
 set client_min_messages  to warning;
 select * from make_tests_return_text('select * from  _pgr_getColumnName (''streets'',''id'')',  'id',1);  
 select * from make_tests_return_text('select * from  _pgr_getColumnName (''streets'',''ID'')',  'id',2);  
