@@ -57,8 +57,8 @@ select * from make_tests_return_text('select * from  _pgr_getColumnType (''Stree
 
 SET search_path TO "$user", public;
 --NULL when table or column doesnt exist
-select * from make_tests_return_text('select * from  _pgr_getColumnType (''Streets'',''data'',0)',	NULL,	16);
-select * from make_tests_return_text('select * from  _pgr_getColumnType (''strats'',''id'',0)', 		NULL,	17);
+select * from make_tests_return_text('select * from  _pgr_getColumnType (''Streets'',''data'')',	NULL,	16);
+select * from make_tests_return_text('select * from  _pgr_getColumnType (''strats'',''id'')', 		NULL,	17);
 
 -- becuase this dont test for schema or table names the expected results are NULL
 select * from make_tests_return_text('select * from  _pgr_getColumnType (''publIc'',''Streets'',''gid'')',  NULL, 18);

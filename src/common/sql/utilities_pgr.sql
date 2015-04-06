@@ -27,19 +27,19 @@
   
 ************************************************************************/
 
-CREATE OR REPLACE FUNCTION _pgr_onError(IN errCond boolean,IN action int, IN fnName text, IN msgerr text, IN hinto text default 'No hint',IN msgok text default 'OK')
+CREATE OR REPLACE FUNCTION _pgr_onError(IN errCond boolean, IN action text, IN fnName text, IN msgerr text, IN hinto text default 'No hint',IN msgok text default 'OK')
   RETURNS void AS
 $BODY$
 BEGIN
   if errCond=true then 
-     if action=0 then
-       raise debug '----> PGR ERROR in %: %',fnName,msgerr USING HINT = '  ---->'|| hinto;
+     if action = 'debug' then
+       raise debug '----> PGR DEBUG in %: %',fnName,msgerr USING HINT = '  ---->'|| hinto;
      else
-       if action = 2 then
+       if action = 'abort' then
          raise notice '----> PGR ERROR in %: %',fnName,msgerr USING HINT = '  ---->'|| hinto;
          raise raise_exception;
        else
-         raise notice '----> PGR ERROR in %: %',fnName,msgerr USING HINT = '  ---->'|| hinto;
+         raise notice '----> PGR NOTICE in %: %',fnName,msgerr USING HINT = '  ---->'|| hinto;
        end if;
      end if;
   else
@@ -72,7 +72,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
      Created: 2014/JUL/28 
 */
 
-CREATE OR REPLACE FUNCTION _pgr_getColumnType(sname text, tname text, cname text, IN reportErrs int default 1, IN fnName text default 'pgr_getColumnType')
+CREATE OR REPLACE FUNCTION _pgr_getColumnType(sname text, tname text, cname text, IN reportErrs text , IN fnName text )
 RETURNS text AS
 $BODY$
 DECLARE
@@ -84,15 +84,29 @@ BEGIN
     EXECUTE 'select data_type  from information_schema.columns where table_name = '||quote_literal(tname)||
                         ' and table_schema='||quote_literal(sname)||' and column_name='||quote_literal(cname) into ctype;
     err = ctype is null;
-    perform _pgr_onError(err, reportErrs, fnName,  'Type of Column '|| cname ||' not found', ' Check your column name','Type of Column '|| cname || ' is ' || ctype);
+    perform _pgr_onError(err, reportErrs, fnName,  
+         'Type of Column '|| cname ||' not found', ' Check your column name','Type of Column '|| cname || ' is ' || ctype);
     RETURN ctype;
 END;
 
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
+CREATE OR REPLACE FUNCTION _pgr_getColumnType(sname text, tname text, cname text) --, IN action text, IN fnName text )
+RETURNS text AS
+$BODY$
+DECLARE
+    ctype text;
+BEGIN
+    select * into ctype from _pgr_getColumnType(sname, tname, cname, 'debug', '_pgr_getColumnType');
+    return ctype;
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
 
-CREATE OR REPLACE FUNCTION _pgr_getColumnType(tab text, col text, IN reportErrs int default 1, IN fnName text default 'pgr_getColumnType')
+
+
+CREATE OR REPLACE FUNCTION _pgr_getColumnType(tab text, col text) -- , IN reportErrs int default 1, IN fnName text default 'pgr_getColumnType')
 RETURNS text AS
 $BODY$
 DECLARE
@@ -102,13 +116,14 @@ DECLARE
     ctype text;
     naming record;
     err boolean;
+    fnName text;
 BEGIN
-  
-    select * into naming from _pgr_getTableName(tab,reportErrs, fnName) ;
+    fnName = '_pgr_getColumnType';
+    select * into naming from _pgr_getTableName(tab); --, 'debug', fnName) ;
     sname=naming.sname;
     tname=naming.tname;
-    select * into cname from _pgr_getColumnName(tab,col,reportErrs, fnName) ;
-    select * into ctype from _pgr_getColumnType(sname,tname,cname,reportErrs, fnName);
+    select * into cname from _pgr_getColumnName(tab, col); -- , 'debug', fnName) ;
+    select * into ctype from _pgr_getColumnType(sname, tname, cname, 'debug', fnName);
     RETURN ctype;
 END;
 
