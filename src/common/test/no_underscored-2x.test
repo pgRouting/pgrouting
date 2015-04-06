@@ -1,28 +1,28 @@
 
 set client_min_messages to notice;
-select  * from pgr_getTableName('EDGes2');
-select  * from pgr_getTableName('EDes2');
+select 1, sname = 'public' and tname = 'edges2' from pgr_getTableName('EDGes2');
+select 2, sname = 'public' and tname is NULL from pgr_getTableName('EDes2');
 
-select * from pgr_getColumnName('EDGes2', 'SOuRce');
-select * from pgr_getColumnName('EDes2', 'SOuRce');
-select * from pgr_getColumnName('EDes2', 'SOuce');
-select * from pgr_getColumnName('EDes2', 'SOuce');
+select 3,  'source' = pgr_getColumnName('EDGes2', 'SOuRce');
+select 4,  pgr_getColumnName('EDes2', 'SOuRce') is null;
+select 5,  pgr_getColumnName('EDes2', 'SOuce') is null ;
+select 6,  pgr_getColumnName('EDes2', 'SOuce') is null ;
 
-select * from pgr_isColumnInTable('EDGes2', 'SOuRce');
-select * from pgr_isColumnInTable('EDes2', 'SOuRce');
-select * from pgr_isColumnInTable('EDes2', 'SOuce');
-select * from pgr_isColumnInTable('EDes2', 'SOuce');
+select * from  pgr_isColumnInTable('EDGes2', 'SOuRce');
+select * from  pgr_isColumnInTable('EDes2', 'SOuRce');
+select * from  pgr_isColumnInTable('EDes2', 'SOuce');
+select * from  pgr_isColumnInTable('EDes2', 'SOuce');
 
-select pgr_isColumnIndexed('EDGes2', 'eid');
-select pgr_isColumnIndexed('EDGes2', 'X1');
+select 11, true = pgr_isColumnIndexed('EDGes2', 'eid');
+select 12, false = pgr_isColumnIndexed('EDGes2', 'X1');
 
-select pgr_versionless('2.1.0foobar23', '2.1');
-select pgr_versionless('2.1.0foobar23', '2.1-rc1');
-select pgr_versionless('2.1.0foobar23', '2.1-beta');
+select 13, true = pgr_versionless('2.1.0foobar23', '2.1');
+select 14, true = pgr_versionless('2.1.0foobar23', '2.1-rc1');
+select 15, true = pgr_versionless('2.1.0foobar23', '2.1-beta');
 
-select pgr_quote_ident('idname.text');
+select 16, pgr_quote_ident('idname.text');
 
-select pgr_startPoint(the_geom) from edges2 where eid = 1;
-select pgr_endPoint(the_geom) from edges2 where eid = 1;
+select 17, pgr_startPoint(the_geom) from edges2 where eid = 1;
+select 18,  pgr_endPoint(the_geom) from edges2 where eid = 1;
 
 

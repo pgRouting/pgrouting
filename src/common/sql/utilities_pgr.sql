@@ -1,5 +1,5 @@
 -- -------------------------------------------------------------------
--- pgrouting_utilities.sql
+-- utilities_pgr.sql
 -- Author Vicky Vergara <vicky_vergara@hotmail.com>
 -- Copyright 2015 Vicky Vergara
 -- This file is release unde an MIT-X license.

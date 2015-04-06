@@ -11,7 +11,7 @@ RETURNS RECORD AS
 $BODY$ 
 BEGIN
     raise notice 'pgr_getTableName: This function will no longer be soported';
-    select * from _pgr_getTableName(tab, 0, 'pgr_getTableName') into sname,tname;
+    select * from _pgr_getTableName(tab, 'notice', 'pgr_getTableName') into sname,tname;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -21,7 +21,7 @@ RETURNS text AS
 $BODY$
 BEGIN
     raise notice 'pgr_getColumnName: This function will no longer be soported';
-    return _pgr_getColumnName(tab,col, 0, 'pgr_getColumnName');
+    return _pgr_getColumnName(tab,col); --, 0, 'pgr_getColumnName');
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -33,8 +33,8 @@ DECLARE
     cname text;
 BEGIN
     raise notice 'pgr_isColumnInTable: This function will no longer be soported';
-    select * from _pgr_getColumnName(tab,col,0, 'pgr_isColumnInTable') into cname;
-    return  cname IS not NULL;
+    select * into cname from   _pgr_getColumnName(tab,col) ; --,0, 'pgr_isColumnInTable') into cname;
+    return  (cname IS not NULL);
 END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;

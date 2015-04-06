@@ -210,7 +210,7 @@ $BODY$
 DECLARE
     cname text;
 BEGIN
-    select * from _pgr_getColumnName(tab,col,0, '_pgr_isColumnInTable') into cname;
+    select * into cname from _pgr_getColumnName(tab,col);
     return cname is not null;
 END;
 $BODY$
@@ -309,17 +309,17 @@ DECLARE
     pkey text;
     value boolean;
 BEGIN
-    SELECT * into naming FROM _pgr_getTableName(tab, 0, '_pgr_isColumnIndexed');
+    SELECT * into naming FROM _pgr_getTableName(tab, 'debug', '_pgr_isColumnIndexed');
     sname=naming.sname;
     tname=naming.tname;
     IF sname IS NULL OR tname IS NULL THEN
         RETURN FALSE;
     END IF;
-    SELECT * into cname from _pgr_getColumnName(sname,tname,col,0, '_pgr_isColumnIndexed') ;
+    SELECT * into cname from _pgr_getColumnName(sname, tname, col, 'debug', '_pgr_isColumnIndexed') ;
     IF cname IS NULL THEN
         RETURN FALSE;
     END IF;
-    select * into value  from _pgr_isColumnIndexed(sname,tname, cname);
+    select * into value  from _pgr_isColumnIndexed(sname, tname, cname);
     return value;
 END
 $BODY$
