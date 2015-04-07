@@ -29,7 +29,7 @@
 */
 
 
-CREATE OR REPLACE FUNCTION _pgr_getTableName(IN tab text, IN reportErrs int default 1, IN fnName text default '_pgr_getTableName', OUT sname text,OUT tname text)
+CREATE OR REPLACE FUNCTION _pgr_getTableName(IN tab text, IN reportErrs int default 0, IN fnName text default '_pgr_getTableName', OUT sname text,OUT tname text)
   RETURNS RECORD AS
 $BODY$
 DECLARE
@@ -45,7 +45,8 @@ BEGIN
     execute 'show client_min_messages' into debuglevel;
 
 
-    RAISE DEBUG 'Cheking % exists',tab;
+    perform _pgr_msg( 0, fnName, 'Checking table ' || tab || ' exists');
+    --RAISE DEBUG 'Checking % exists',tab;
 
     execute 'select strpos('||quote_literal(tab)||','||quote_literal('.')||')' into i;
     if (i!=0) then
@@ -92,8 +93,8 @@ BEGIN
            END IF;
         END IF;
     END IF;
-   --err= case when sname IS NULL OR tname IS NULL then true else false end;
-   --perform _pgr_onError(err, reportErrs, fnName, 'Table ' || tab ||' not found',' Check your table name', 'Table '|| tab || ' found');
+   err = case when sname IS NULL OR tname IS NULL then true else false end;
+   perform _pgr_onError(err, reportErrs, fnName, 'Table ' || tab ||' not found',' Check your table name', 'Table '|| tab || ' found');
 
 END;
 $BODY$
@@ -222,7 +223,8 @@ $BODY$
                    when column "col" is not indexed
 */
 
-CREATE OR REPLACE FUNCTION _pgr_isColumnIndexed(sname text,tname text, cname text)
+CREATE OR REPLACE FUNCTION _pgr_isColumnIndexed(sname text, tname text, cname text,
+      IN reportErrs int default 1, IN fnName text default '_pgr_isColumnIndexed')
 RETURNS boolean AS
 $BODY$
 DECLARE
@@ -244,8 +246,6 @@ BEGIN
     IF pkey=cname then
           RETURN TRUE;
     END IF;
-
-
 
     SELECT a.index_name,
            b.attname,
@@ -275,16 +275,17 @@ BEGIN
   ORDER BY a.index_name,
            a.index_num;
 
-    IF FOUND THEN
-        RETURN true;
-    ELSE
-        RETURN false;
-    END IF;
+  RETURN FOUND;
+  EXCEPTION WHEN OTHERS THEN
+    perform _pgr_onError( true, reportErrs, fnName,
+    'Error when checking for the postgres system attributes', SQLERR);
+    RETURN FALSE;
 END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
-CREATE OR REPLACE FUNCTION _pgr_isColumnIndexed(tab text, col text)
+CREATE OR REPLACE FUNCTION _pgr_isColumnIndexed(tab text, col text,
+      IN reportErrs int default 1, IN fnName text default '_pgr_isColumnIndexed')
 RETURNS boolean AS
 $BODY$
 DECLARE
@@ -296,17 +297,17 @@ DECLARE
     pkey text;
     value boolean;
 BEGIN
-    SELECT * into naming FROM _pgr_getTableName(tab, 0, '_pgr_isColumnIndexed');
+    SELECT * into naming FROM _pgr_getTableName(tab, 0, fnName);
     sname=naming.sname;
     tname=naming.tname;
     IF sname IS NULL OR tname IS NULL THEN
         RETURN FALSE;
     END IF;
-    SELECT * into cname from _pgr_getColumnName(sname,tname,col,0, '_pgr_isColumnIndexed') ;
+    SELECT * into cname from _pgr_getColumnName(sname, tname, col, 0, fnName) ;
     IF cname IS NULL THEN
         RETURN FALSE;
     END IF;
-    select * into value  from _pgr_isColumnIndexed(sname,tname, cname);
+    select * into value  from _pgr_isColumnIndexed(sname, tname, cname, reportErrs, fnName);
     return value;
 END
 $BODY$

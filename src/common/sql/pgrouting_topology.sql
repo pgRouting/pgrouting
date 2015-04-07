@@ -99,19 +99,19 @@ DECLARE
     dummyRec text;
     fnName text;
     err bool;
-
+    msgKind int;
 
 BEGIN
+    msgKind = 1; -- notice
     fnName = 'pgr_createTopology';
     raise notice 'PROCESSING:'; 
     raise notice 'pgr_createTopology(''%'',%,''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where;
---    raise notice 'pgr_createTopology(''%'',%,''%'',''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where,clean;
+    -- raise notice 'pgr_createTopology(''%'',%,''%'',''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where,clean;
     execute 'show client_min_messages' into debuglevel;
 
 
     raise notice 'Performing checks, pelase wait .....';
 
-      RAISE DEBUG 'Checking % exists',edge_table;
         execute 'select * from _pgr_getTableName('|| quote_literal(edge_table)
                                                   || ',2,' || quote_literal(fnName) ||' )' into naming;
         sname=naming.sname;
