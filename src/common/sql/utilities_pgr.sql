@@ -1,23 +1,43 @@
--- -------------------------------------------------------------------
--- pgrouting_utilities.sql
--- Author Vicky Vergara <vicky_vergara@hotmail.com>
--- Copyright 2015 Vicky Vergara
--- This file is release unde an MIT-X license.
--- -------------------------------------------------------------------
+/*PGR
+ utilities_pgr.sql
+
+ Copyright (c) 2015 Celia Virginia Vergara Castillo
+ vicky_vergara@hotmail.com
+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+*/
 
 
 /************************************************************************
-.. function:: _pgr_onError(errCond,action,functionname,msgerr,hinto,msgok)
+.. function:: _pgr_onError(errCond,reportErrs,functionname,msgerr,hinto,msgok)
   
-  If the error condition is is true, i.e., there is an error, it will raise a message based on the action:
-  0: debug      raise debug
+  If the error condition is is true, i.e., there is an error,
+   it will raise a message based on the reportErrs:
+  0: debug_      raise debug_
   1: report     raise notice
   2: abort      throw a raise_exception  
    Examples:  
    
-	*	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',  'Two columns share the same name');
-	*	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',  'Two columns share the same name', 'Idname and gname must be different');
-        *	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',  'Two columns share the same name', 'Idname and gname must be different','Column names are OK');
+	*	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
+                     'Two columns share the same name');
+	*	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
+                     'Two columns share the same name', 'Idname and gname must be different');
+        *	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
+                     'Two columns share the same name', 'Idname and gname must be different',
+                     'Column names are OK');
 
    
    Author: Vicky Vergara <vicky_vergara@hotmail.com>>
@@ -27,7 +47,13 @@
   
 ************************************************************************/
 
-CREATE OR REPLACE FUNCTION _pgr_onError(IN errCond boolean, IN reportErrs int, IN fnName text, IN msgerr text, IN hinto text default 'No hint',IN msgok text default 'OK')
+CREATE OR REPLACE FUNCTION _pgr_onError(
+  IN errCond boolean,  -- true there is an error
+  IN reportErrs int,   -- 0, 1 or 2
+  IN fnName text,      -- function name that generates the error
+  IN msgerr text,      -- error message
+  IN hinto text default 'No hint', -- hint help
+  IN msgok text default 'OK')      -- message if everything is ok
   RETURNS void AS
 $BODY$
 BEGIN
@@ -48,8 +74,27 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
+
+/************************************************************************
+.. function:: _pgr_msg(msgKind, fnName, msg)
+  
+  It will raise a message based on the msgKind:
+  0: debug_      raise debug_
+  1: notice     raise notice
+  anything else: report     raise notice
+
+   Examples:  
    
---  Only debug and notices messges (aka reportErrs can be used)
+	*	preforn _pgr_msg( 1, 'pgr_createToplogy', 'Starting a long process... ');
+	*	preforn _pgr_msg( 1, 'pgr_createToplogy');
+
+   
+   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
+
+  HISTORY
+     Created: 2014/JUl/28  handling the errors, and have a more visual output
+  
+************************************************************************/
 
 CREATE OR REPLACE FUNCTION _pgr_msg(IN msgKind int, IN fnName text, IN msg text default '---->OK')
   RETURNS void AS
@@ -65,14 +110,14 @@ $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
 
-/*
-.. function:: _pgr_getColumnType(sname,tname,col,reportErrs default 1) returns text
-.. function:: _pgr_getColumnType(tab,col,reportErrs default 1) returns text
+/************************************************************************
+.. function:: _pgr_getColumnType(sname,tname,col,reportErrs,fnName) returns text
+.. function:: _pgr_getColumnType(tab,col,reportErrs,fname) returns text
 
     Returns:
           type   the types of the registered column "col" in table "tab" or "sname.tname" 
           NULL   when "tab"/"sname"/"tname" is not found or when "col" is not in table "tab"/"sname.tname"
-    unless otherwise indicated raises notices on errors
+    unless otherwise indicated raises debug_  on errors
  
  Examples:  
 	* 	 select  _pgr_getColumnType('tab','col');
@@ -84,7 +129,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
   HISTORY
      Created: 2014/JUL/28 
-*/
+************************************************************************/
 
 CREATE OR REPLACE FUNCTION _pgr_getColumnType(sname text, tname text, cname text,
      IN reportErrs int default 0, IN fnName text default '_pgr_getColumnType')
@@ -141,7 +186,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 
-/*
+/************************************************************************
 .. function:: _pgr_createIndex(tab, col,indextype)
               _pgr_createIndex(sname,tname,colname,indextypes)
               
@@ -162,7 +207,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
   HISTORY
      Created: 2014/JUL/28 
-*/
+************************************************************************/
 
 CREATE OR REPLACE FUNCTION _pgr_createIndex(
     sname text, tname text, colname text, indext text,
@@ -193,7 +238,6 @@ BEGIN
       end if;
       perform _pgr_msg(msgKind, fnName, 'Adding index ' || tabname || '_' ||  colname || '_idx');
       perform _pgr_msg(msgKind, fnName, ' Using ' ||  query);
-      -- RAISE DEBUG ' ------> Adding  index "%_%_idx". -->>>%', tabname, colname, query;
       set client_min_messages  to warning;
       BEGIN
         execute query;
@@ -230,7 +274,7 @@ $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
 
-/*
+/************************************************************************
 .. function:: _pgr_checkVertTab(vertname,columnsArr,reportErrs) returns record of sname,vname
 
     Returns:
@@ -247,7 +291,7 @@ $BODY$
 
   HISTORY
      Created: 2014/JUL/27 
-*/
+************************************************************************/
 CREATE OR REPLACE FUNCTION _pgr_checkVertTab(vertname text, columnsArr  text[],
     IN reportErrs int default 1, IN fnName text default '_pgr_checkVertTab',
     OUT sname text,OUT vname text)
@@ -266,7 +310,6 @@ BEGIN
     execute 'show client_min_messages' into debuglevel;
 
     perform _pgr_msg(msgKind, fnName, 'Checking table ' || vertname || ' exists');
-    -- raise DEBUG 'Checking table % exists ',vertname;
        select * from _pgr_getTableName(vertname, 0, fnName) into naming;
        sname=naming.sname;
        vname=naming.tname;
@@ -278,13 +321,11 @@ BEGIN
     
 
     perform _pgr_msg(msgKind, fnName, 'Checking columns of ' || vertname);
-    -- raise DEBUG 'Checking columns of:  %',vertname;
       FOREACH cname IN ARRAY columnsArr
       loop
          select _pgr_getcolumnName(vertname, cname, 0, fnName) into colname;
          if colname is null then
            perform _pgr_msg(msgKind, fnName, 'Adding column ' || cname || ' in ' || vertname);
-           -- RAISE debug '  ------>Adding % column in %',cname,vertname;
            set client_min_messages  to warning;
                 execute 'ALTER TABLE '||_pgr_quote_ident(vertname)||' ADD COLUMN '||cname|| ' integer';
            execute 'set client_min_messages  to '|| debuglevel;
