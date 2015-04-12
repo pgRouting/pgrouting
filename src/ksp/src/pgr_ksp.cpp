@@ -1,6 +1,6 @@
 #include "./vrp_assert.h"
 #include "./signalhandler.h"
-#include "./basePath.h"
+#include "./basePath_SSEC.hpp"
 
 template < class G >
 void Pgr_ksp< G >::clear() {
@@ -17,20 +17,14 @@ void Pgr_ksp< G >::getFirstSolution() {
      if (path.path.size() <= 1 ) return;
      curr_result_path = path;
      m_ResultSet.insert(curr_result_path);
-     curr_result_path.print_path();
 }
 
 template < class G>
 std::deque<Path> Pgr_ksp< G >::Yen(int64_t  start_vertex, int64_t  end_vertex, int K) {
-    //typedef typename boost::graph_traits < G >::vertex_descriptor V;
-    //V v_source;
-    //V v_target;
 
-std::cout << "Entering  Pgr_ksp< G >::Yen\n";
     std::deque<Path> l_ResultList;
     if ((start_vertex != end_vertex) && (K > 0)) {
         if (!this->get_gVertex(start_vertex, v_source) or !this->get_gVertex(end_vertex, v_target)){
-             // TODO assign empty path
              return l_ResultList;
         }
         m_start = start_vertex;
@@ -38,7 +32,7 @@ std::cout << "Entering  Pgr_ksp< G >::Yen\n";
         executeYen(K);
 
         }
-       // 1  K paths + heap paths are to be returned
+
         while (m_Heap.size()){
              curr_result_path = *m_Heap.begin();
              m_ResultSet.insert(curr_result_path);
@@ -66,9 +60,9 @@ void Pgr_ksp< G >::doNextCycle() {
 
         int64_t spurNodeId;
         Path rootPath;
+        Path spurPath;
 
         for (unsigned int i = 0; i < curr_result_path.path.size() ; ++i) {
-std::cout << "iteration" << i << "\n";
 
             int64_t  spurEdge = curr_result_path.path[i].edge;
             spurNodeId = curr_result_path.path[i].source;
@@ -86,24 +80,21 @@ std::cout << "iteration" << i << "\n";
                }
             }
             removeVertices(rootPath);
-this->print_graph();
 
-            Path spurPath;
             int spurPathSize;
 
             THROW_ON_SIGINT
             this->process_dijkstra(spurPath, spurNodeId , m_end);
             THROW_ON_SIGINT
 
-       spurPath.print_path();
-rootPath.print_path();
             if (spurPath.path.size() > 0) {
                 rootPath.appendPath(spurPath);
                 m_Heap.insert(rootPath);
             }
-rootPath.print_path();
 
             this->restore_graph();
+            rootPath.clear();
+            spurPath.clear();
         }
 }
 

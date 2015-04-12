@@ -3,7 +3,7 @@
 
 #include <deque>
 #include <set>
-#include "basePath.h"
+#include "basePath_SSEC.hpp"
 #include "pgr_dijkstra.hpp"
 
 template < class G >
@@ -84,6 +84,6 @@ class Pgr_ksp: public Pgr_dijkstra< G > {
         ///@}
 };
 
-#include "./YenTopKShortestPathsAlg.cpp"
+#include "./pgr_ksp.cpp"
 
 #endif  // SRC_KSP_SRC_YENTOPKSHORTESTPATHSALG_H_

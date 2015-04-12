@@ -13,7 +13,7 @@ all: $(OBJECTS) $(TARGET)
 $(TARGET): $(OBJECTS) 
 	$(CC)  -o $@ $^ $(LDFLAGS)
  
-$(TARGET).o: $(TARGET).cpp baseGraph.hpp pgr_types.h pgr_dijkstra.hpp YenTopKShortestPathsAlg.h YenTopKShortestPathsAlg.cpp
+$(TARGET).o: $(TARGET).cpp baseGraph.hpp pgr_types.h pgr_dijkstra.hpp pgr_ksp.hpp pgr_ksp.cpp basePath_SSEC.hpp
 	$(CC)  $(CCFLAGS) $(INCFLAGS) -c $<
  
 %.o: %.cpp %.h 

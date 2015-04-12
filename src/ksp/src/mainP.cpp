@@ -14,9 +14,9 @@ namespace po = boost::program_options;
 
 #include "postgres.h"
 #include "./pgr_types.h"
-#include "./basePath.h"
+#include "./basePath_SSEC.hpp"
 #include "./pgr_dijkstra.hpp"
-#include "./YenTopKShortestPathsAlg.h"
+#include "./pgr_ksp.hpp"
 
 
 
@@ -57,83 +57,6 @@ void import_from_file(const std::string &input_file_name, pgr_edge_t *edges, uns
   ifs.close();
   found = s_found && t_found;
 }
-
-
-
-#if 0
-void yenTest (int testNumb, int from, int to, int k, const Graph &graph) {
-	std::deque<pgr_path_t> paths;
-        std::cout<<"TEST "<< testNumb<<": "<< k <<" paths from "<< from <<" to "<< to <<" \n";
-        YenTopKShortestPathsAlg test(graph);
-//test.PrintOut(std::cout);
-        paths = test.Yen(from,to,k);
-        std::cout<<"paths found "<<paths.size()<<"\n";
-        std::cout << "The PATHS" << std::endl;
-        for (UINT i=0; i < paths.size(); i++) { 
-          std::cout << "*****" << i <<  "*****" << std::endl;
-          paths[i].PrintOut(std::cout);
-        }
-}
-#endif
-
-void testYenAlg(std::string &fileName)
-{
-#if 0
-	Graph my_graph(fileName);
-        yenTest(1, 1,2, 1, my_graph);
-        yenTest(2, 1,2, 2, my_graph);
-        yenTest(2, 1,2, 100, my_graph);
-        yenTest(2, 1,6, 1, my_graph);
-        yenTest(2, 1,6, 2, my_graph);
-        yenTest(2, 1,6, 3, my_graph);
-        yenTest(2, 1,6, 100, my_graph);
-        yenTest(3, 2,6, 1, my_graph);
-        yenTest(3, 2,6, 2, my_graph);
-        yenTest(3, 2,6, 3, my_graph);
-        yenTest(4, 2,16, 1, my_graph);
-        yenTest(3, 2,6, 3, my_graph);
-#endif
-}
-
-#if 0
-void testYenAlgParallel()
-{
-        std::string fileName("../devdata/issue285.data");
-	Graph my_graph(fileName);
-        yenTest(1, 2,3, 2, my_graph);
-        yenTest(2, 1,3, 2, my_graph);
-        yenTest(3, 1,4, 2, my_graph);
-        yenTest(4, 1,1, 2, my_graph);
-        yenTest(5, 1,2, 2, my_graph);
-        yenTest(6, 2,4, 2, my_graph);
-        yenTest(7, 2,4, 3, my_graph);
-        yenTest(8, 2,3, 3, my_graph);
-        yenTest(9, 2,3, 4, my_graph);
-        yenTest(10, 2,4, 4, my_graph);
-}
-
-void testYenAlgOptimize()
-{
-        std::string fileName("../devdata/optimizing.data");
-        Graph my_graph(fileName);
-        //my_graph.PrintOut(std::cout);
-        //yenTest(1, 1,3, 1, my_graph);
-        //yenTest(1, 1,3, 3, my_graph);
-        //yenTest(1, 1,3, 20, my_graph);
-        //yenTest(1, 1,5, 3, my_graph);
-        yenTest(1, 1,5, 100, my_graph);
-}
-
-void testWorkshop()
-{
-        std::string fileName("../devdata/workshop.data");
-        Graph my_graph(fileName);
-        //my_graph.PrintOut(std::cout);
-        //yenTest(1, 52836,471, 1, my_graph);
-        yenTest(1, 52836,471, 5, my_graph);
-}
-
-#endif
 
 int main(int ac, char* av[]) {
     po::options_description desc("Allowed options");
@@ -254,17 +177,24 @@ int main(int ac, char* av[]) {
 
       std::cout << "KSP DIRECTED GRAPH DEMO 2 path\n";
       k2digraph.initialize_graph(data_edges, count);
-      ksp_paths = k2digraph.Yen(start_vertex, end_vertex, 2);
+      ksp_paths = k2digraph.Yen(start_vertex, end_vertex, 10);
 
       std::cout << "THE GRAPH \n";
       k2digraph.print_graph();
+   } else {
+      std::cout << "KSP UNDIRECTED GRAPH DEMO 2 path\n";
+      k2undigraph.initialize_graph(data_edges, count);
+      ksp_paths = k2undigraph.Yen(start_vertex, end_vertex, 10);
+
+      std::cout << "THE GRAPH \n";
+      k2undigraph.print_graph();
    }
 
    // the outputs are independent of the graph
    std::cout << "THE OPUTPUTS ---->  total outputs: " << ksp_paths.size() << "\n";
    for (unsigned int i = 0; i < ksp_paths.size(); ++i) {
        if (sizeof(ksp_paths[i]) == 0) continue; //no solution found
-       std::cout << "Path #" << i << "\n";
+       std::cout << "Path #" << i << " cost: " << ksp_paths[i].cost << "\n";
        ksp_paths[i].print_path();
    }
 }

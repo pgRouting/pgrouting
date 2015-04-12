@@ -82,13 +82,11 @@ void disconnect_edge(int64_t p_from, int64_t p_to) {
       EO_i out, out_end;
       for (boost::tie(out, out_end) = out_edges(g_from, graph); out != out_end; ++out) {
             if (target(*out,graph) == g_to) {
-                //std::cout << ' ' << *out << "=(" << graph[source(*out,graph)].id << "," << graph[target(*out,graph)].id << ") = " <<  graph[*out].cost <<"\t";
                 d_edge.id = graph[*out].id;
                 d_edge.source = graph[source(*out,graph)].id;
                 d_edge.target = graph[target(*out,graph)].id;
                 d_edge.cost = graph[*out].cost;
                 d_edge.reverse_cost = -1;
-                //std::cout << "\n";
                 removed_edges.push_back(d_edge);
             }
       }
@@ -102,35 +100,27 @@ void disconnect_vertex(int64_t p_vertex) {
       // nothing to do, the vertex doesnt exist
       if (!get_gVertex(p_vertex, g_vertex)) return;
       EO_i out, out_end;
-//      std::cout << "Deleting \n";
       for (boost::tie(out, out_end) = out_edges(g_vertex, graph); out != out_end; ++out) {
-//            std::cout << ' ' << *out << "=(" << graph[source(*out,graph)].id << "," << graph[target(*out,graph)].id << ") = " <<  graph[*out].cost <<"\t";
             d_edge.id = graph[*out].id;
             d_edge.source = graph[source(*out,graph)].id;
             d_edge.target = graph[target(*out,graph)].id;
             d_edge.cost = graph[*out].cost;
             d_edge.reverse_cost = -1;
-//            std::cout << ' ' <<   d_edge.id << "=(" <<  d_edge.source << "," <<  d_edge.target << ") = " <<  d_edge.cost <<"\t";
             removed_edges.push_back(d_edge);
       }
-//      std::cout << "\n";
 
       if (m_gType == DIRECTED) {
           EI_i in, in_end;
-//          std::cout << "Deleting \n";
           for (boost::tie(in, in_end) = in_edges(g_vertex, graph); in != in_end; ++in) {
-//                std::cout << ' ' << *in << "=(" << graph[source(*in,graph)].id << "," << graph[target(*in,graph)].id << ") = " <<  graph[*in].cost <<"\t";
                 d_edge.id = graph[*in].id;
                 d_edge.source = graph[source(*in,graph)].id;
                 d_edge.target = graph[target(*in,graph)].id;
                 d_edge.cost = graph[*in].cost;
                 d_edge.reverse_cost = -1;
-//                std::cout << ' ' <<   d_edge.id << "=(" <<  d_edge.source << "," <<  d_edge.target << ") = " <<  d_edge.cost <<"\t";
                 removed_edges.push_back(d_edge);
           }
       }
 
-      std::cout << "\n";
       V  d_vertex = boost::vertex( vertices_map.left.find(p_vertex)->second, graph);
       boost::clear_vertex(d_vertex,graph);
 }
@@ -209,18 +199,11 @@ get_path( Path &path,
     target = predecessors[target];
   }
 
-//  (*path) = (pgr_path_t *) malloc(sizeof(pgr_path_t) * (*result_size));
 
   target = target_back;
   int seq = result_size;
 
   path.push_front(seq, graph[target].id, -1, 0);
-#if 0
-  (*path)[seq-1].seq  = seq;
-  (*path)[seq-1].source  = graph[target].id; 
-  (*path)[seq-1].edge  = -1; 
-  (*path)[seq-1].cost  = 0; 
-#endif
   while (target != source) {
     if (target == predecessors[target]) break;
     --seq;
@@ -234,12 +217,6 @@ get_path( Path &path,
         distances[target] - distances[predecessors[target]] // dist(from,to)
     );
     target = predecessors[target];
-#if 0
-    (*path)[seq-1].seq  = seq;
-    (*path)[seq-1].source  = graph[predecessors[target]].id; 
-    (*path)[seq-1].cost  =  distances[target] - distances[predecessors[target]]; 
-    (*path)[seq-1].edge  = get_edge_id(graph, predecessors[target], target, (*path)[seq-1].cost); 
-#endif
   }
   return;
 }

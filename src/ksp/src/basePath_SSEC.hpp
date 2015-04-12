@@ -9,6 +9,8 @@ class Path {
     std::deque< pgr_path_t > path;
     float8 cost;
 
+    Path(): cost(0)  {}
+
     void push_back(pgr_path_t data) {
         path.push_back(data);
         cost += data.cost;
@@ -69,9 +71,7 @@ class Path {
 
    void appendPath(const Path &o_path){
         path.insert(path.end(), o_path.path.begin(), o_path.path.end());
-    std::cout<< "printing new path\n";
-    print_path();
-    std::cout<< "end printing path\n";
+        cost +=  o_path.cost;
    }
 
    void empty_path(unsigned int d_source) {

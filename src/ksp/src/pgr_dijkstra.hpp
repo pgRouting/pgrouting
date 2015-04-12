@@ -16,7 +16,7 @@
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 
 #include "./pgr_types.h"
-#include "./basePath.h"
+#include "./basePath_SSEC.hpp"
 #include "./baseGraph.hpp"
 
 template < class G >
