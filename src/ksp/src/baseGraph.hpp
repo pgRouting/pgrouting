@@ -10,6 +10,7 @@
 
 #include <stdlib.h>
 #include <fstream>
+#include <limits>
 
 #include <boost/bimap.hpp>
 #include <boost/graph/adjacency_list.hpp>
@@ -229,14 +230,18 @@ get_edge_id(G &graph, V from, V to, float8 distance) {
     typename boost::graph_traits < G >::edge_descriptor e;
     typename boost::graph_traits < G >::out_edge_iterator out_i, out_end;
     V v_source, v_target;
+    float8 minCost =  std::numeric_limits<float8>::max();
+    int64_t minEdge = -2; 
     for (boost::tie(out_i, out_end) = boost::out_edges(from, graph);
         out_i != out_end; ++out_i) {
             e = *out_i;
             v_target = target(e, graph);
-            if ((to == v_target) && (distance == graph[*out_i].cost))
-                    return  graph[*out_i].id;
+            if ((to == v_target) && (minCost > graph[*out_i].cost)) {
+                    minCost = graph[*out_i].cost;
+                    minEdge = graph[*out_i].id;
+            }
     }
-    return -2;
+    return minEdge;
 }
 
 

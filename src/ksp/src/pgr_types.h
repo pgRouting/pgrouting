@@ -3,6 +3,18 @@
 
 #include "postgres.h"
 
+
+
+typedef struct ksp_path_element
+{
+    int route_id;
+    int64_t vertex_id;
+    int64_t edge_id;
+    float8 cost;
+} ksp_path_element_t;
+
+
+
 typedef struct {
   int64_t id;
   int64_t source;

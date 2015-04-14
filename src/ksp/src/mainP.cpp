@@ -117,6 +117,7 @@ int main(int ac, char* av[]) {
 
     const int initial_size = 1;
 
+#if 0
     // no size overhead because the graph is empty
     // have them available thru out the code
     Pgr_dijkstra< DirectedGraph > digraph(gType, initial_size);
@@ -140,11 +141,11 @@ int main(int ac, char* av[]) {
       undigraph.print_graph();
 
    }
+#endif   
 
    // the output is independent of the graph
    std::cout << "THE OPUTPUT ---->  total cost: " << path.cost << "\n";
    path.print_path();
-   
    path.clear();
    Pgr_ksp < DirectedGraph > kdigraph(gType, initial_size);
    Pgr_ksp < UndirectedGraph > kundigraph(gType, initial_size);
@@ -177,14 +178,14 @@ int main(int ac, char* av[]) {
 
       std::cout << "KSP DIRECTED GRAPH DEMO 2 path\n";
       k2digraph.initialize_graph(data_edges, count);
-      ksp_paths = k2digraph.Yen(start_vertex, end_vertex, 10);
+      ksp_paths = k2digraph.Yen(start_vertex, end_vertex, 2);
 
       std::cout << "THE GRAPH \n";
       k2digraph.print_graph();
    } else {
       std::cout << "KSP UNDIRECTED GRAPH DEMO 2 path\n";
       k2undigraph.initialize_graph(data_edges, count);
-      ksp_paths = k2undigraph.Yen(start_vertex, end_vertex, 10);
+      ksp_paths = k2undigraph.Yen(start_vertex, end_vertex, 2);
 
       std::cout << "THE GRAPH \n";
       k2undigraph.print_graph();

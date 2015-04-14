@@ -35,6 +35,10 @@ extern "C"
 {
 #endif
 
+
+#include "pgr_types.h"
+
+#if 0
 typedef struct ksp_edge 
 {
     int64_t id;
@@ -60,15 +64,14 @@ typedef struct ksp_edge_columns
   float8  cost;
   float8  reverse_cost;
 } ksp_edge_columns_t;
-
+#endif
 
 int compute_kshortest_path(char* sql, int64_t start_vertex, 
                                  int64_t end_vertex, int no_paths, 
-                                 bool has_reverse_cost, 
+                                 bool has_reverse_cost, bool directedFlag,
                                  ksp_path_element_t **path, int *ksp_path_count) ;
 
 ksp_path_element_t * get_ksp_memory(int, ksp_path_element_t *path);
-
 
 
 //extern void kspDBG(const char* format, ...);

@@ -2,6 +2,7 @@
 #define SRC_PGR_PATH_T_H
 
 #include <deque>
+#include <iostream>
 #include "pgr_types.h"
 
 class Path {

@@ -1,71 +1,59 @@
 #include <deque>
 #include <sstream>
 
-#include "./signalhandler.h"
-#include "KSPGraph.h"
-#include "YenTopKShortestPathsAlg.h"
+#include <boost/config.hpp>
+#include <boost/graph/adjacency_list.hpp>
+
 extern "C" {
+#include "postgres.h"
 #include "ksp.h"
 }
 
+#include "pgr_types.h"
+#include "pgr_ksp.hpp"
 #include "KSPDriver.h"
-static  void dpPrint(const KSPGraph &theGraph,
-                     const BasePath &thePath,
+static  void dpPrint(
+                     const Path &thePath,
                      ksp_path_element_t *path,
                      int &sequence, int route_id);
-static  ksp_path_element_t * noPathFound(long start_id);
+static  ksp_path_element_t * noPathFound(int64_t start_id);
 
-int  doKpaths(ksp_edge_t  * edges, long total_tuples,
-                       long  start_vertex, long  end_vertex,
-                       int no_paths, bool has_reverse_cost,
+int  doKpaths(pgr_edge_t  *data_edges, int64_t total_tuples,
+                       int64_t  start_vertex, int64_t  end_vertex,
+                       int no_paths, bool has_reverse_cost, bool directedFlag,
                        ksp_path_element_t **path, int *path_count,
                        char ** err_msg) {
    try {
-        REG_SIGINT
-        KSPGraph theGraph = KSPGraph();
+        // in c code this should have been checked:
+        //  1) start_vertex is in the data_edges  DONE
+        //  2) end_vertex is in the data_edges    DONE
+        //  3) start and end_vertex are different DONE
         std::ostringstream log;
 
-        log << "NOTICE: Step 0: Loading the graph\n";
-        theGraph.StartLoad();
-        theGraph.AddData(edges, total_tuples, has_reverse_cost);
-        theGraph.EndLoad();
-        (*path_count) = 0;
-	THROW_ON_SIGINT
+        graphType gType = directedFlag? DIRECTED: UNDIRECTED;
+        const int initial_size = 1;
 
-        log << "NOTICE: Step 1: checking Sarting and Ending Vertex\n";
-        BaseVertex* startPt = theGraph.find_vertex(start_vertex);
-        BaseVertex* sinkPt = theGraph.find_vertex(end_vertex);
+        std::deque< Path > paths;
+        typedef boost::adjacency_list < boost::vecS, boost::vecS, boost::undirectedS,
+            boost_vertex_t, boost_edge_t > UndirectedGraph;
+        typedef boost::adjacency_list < boost::vecS, boost::vecS, boost::bidirectionalS,
+            boost_vertex_t, boost_edge_t > DirectedGraph;
 
-        if (startPt == NULL) {
-            *err_msg = strdup( "NOTICE: Starting vertex not found on any edge" );
-            (*path_count) = 1;
-            *path = noPathFound(start_vertex);
-            return 0;
+        Pgr_ksp < DirectedGraph > digraph(gType, initial_size);
+        Pgr_ksp < UndirectedGraph > undigraph(gType, initial_size);
+
+        if (directedFlag) {
+
+            digraph.initialize_graph(data_edges, total_tuples);
+            paths = digraph.Yen(start_vertex, end_vertex, no_paths);
+            digraph.clear();
+
+        } else {
+
+            undigraph.initialize_graph(data_edges, total_tuples);
+            paths = undigraph.Yen(start_vertex, end_vertex, no_paths);
+
         }
-
-        if (sinkPt == NULL) {
-            *err_msg = strdup( "NOTICE: Ending vertex not found on any edge" );
-            (*path_count) = 1;
-            *path = noPathFound(start_vertex);
-            return 0;
-        }
-
-        if (start_vertex == end_vertex) {
-            *err_msg = strdup( "NOTICE: Starting and Ending vertices are the same" );
-            (*path_count) = 1;
-            *path = noPathFound(start_vertex);
-            return 0;
-        }
-        log << "NOTICE: Step 2: Starting Yen graph \n";
-
-	THROW_ON_SIGINT
-        YenTopKShortestPathsAlg yenGraph(theGraph);
-	THROW_ON_SIGINT
-
-        log << "NOTICE: Step 3: Getting the paths \n";
-        std::deque<BasePath> paths;
-        paths = yenGraph.Yen(start_vertex, end_vertex, no_paths);
-	THROW_ON_SIGINT
 
         if (paths.size() == 0) {
             *err_msg = strdup( "NOTICE: No path found between Starting and Ending vertices" );
@@ -74,28 +62,12 @@ int  doKpaths(ksp_edge_t  * edges, long total_tuples,
             return 0;
         }
 
-
-
-
         log << "NOTICE: Step 4: Calculating the number of tuples \n";
         int count = 0;
         int seq = 0;
         for (unsigned int i = 0; i < paths.size(); ++i ) {
-	   THROW_ON_SIGINT
-           if (paths[i].size() > 0)  // don't count empty routes
-              count += paths[i].size() + 1;   // add final vertex
-#if 0
-           for (unsigned int j = 0; j < paths[i].size(); ++j ) {
-             log << seq << "\t" <<   paths[i][j].getStart() << "\toriginal" << yenGraph.getVertexOriginalID(paths[i][j].getStart()) 
-                 << "\t" << paths[i][j].getOriginalID() 
-                 << "\t" <<  paths[i][j].Weight() << "\n";
- 
-             seq ++;
-           }
-           log << seq << "\t" <<  paths[i][ paths[i].size()-1 ].getEnd() << "\toriginal" << yenGraph.getVertexOriginalID(paths[i][ paths[i].size()-1 ].getEnd())
-               << "\t0\t -1\n";
-           seq++;
-#endif
+           if (paths[i].path.size() > 0)  // don't count empty routes (just in case)
+              count += paths[i].path.size();   
         }
         log << "NOTICE Count: " << count << "\n";
 #if 0
@@ -113,8 +85,8 @@ return 0;
 
         int sequence = 0;
         for (unsigned int route_id = 0; route_id < paths.size(); route_id++) {
-          if (paths[route_id].size() > 0)
-               dpPrint(theGraph, paths[route_id], ksp_path, sequence, route_id);
+          if (paths[route_id].path.size() > 0)
+               dpPrint(paths[route_id], ksp_path, sequence, route_id);
         }
 
         log << "NOTICE Sequence: " << sequence << "\n";
@@ -137,37 +109,39 @@ return 0;
    }
 }
 
-static  void dpPrint(const KSPGraph &theGraph,
-                     const BasePath &thePath,
+static  void dpPrint(
+                     const Path &thePath,
                      ksp_path_element_t *path,
                      int &sequence, int route_id) {
         // the row data:  seq, route, nodeid, edgeId, cost
-        long nodeId, edgeId, lastNodeId;
+        int64_t nodeId, edgeId, lastNodeId;
         double cost;
 
-        for (unsigned int i = 0; i < thePath.size(); i++) {
-                edgeId = thePath.getEdgeOriginalID(i);
-                nodeId = theGraph.getVertexOriginalID(thePath[i]->getStart());
-                cost = thePath[i]->Weight();
-                if (i == thePath.size()-1)
-                      lastNodeId = theGraph.getVertexOriginalID(thePath[i]->getEnd());
+        for (unsigned int i = 0; i < thePath.path.size(); i++) {
+                edgeId = thePath.path[i].edge;
+                nodeId = thePath.path[i].source;
+                cost = thePath.path[i].cost;
+               // if (i == thePath.size()-1)
+               //       lastNodeId = theGraph.getVertexOriginalID(thePath[i]->getEnd());
 
                path[sequence].route_id = route_id;
                path[sequence].vertex_id = nodeId;
                path[sequence].edge_id = edgeId;
                path[sequence].cost = cost;
                sequence++;
-                if (i == thePath.size()-1) {
+#if 0
+               if (i == thePath.size()-1) {
                       path[sequence].route_id = route_id;
                       path[sequence].vertex_id = lastNodeId;
                       path[sequence].edge_id = -1;
                       path[sequence].cost = 0;
                       sequence++;
                }
+#endif
         }
 }
 
-static  ksp_path_element_t * noPathFound(long start_id) {
+static  ksp_path_element_t * noPathFound(int64_t start_id) {
         ksp_path_element_t *no_path;
         no_path = get_ksp_memory(1, no_path);
         no_path[0].route_id  = 0;

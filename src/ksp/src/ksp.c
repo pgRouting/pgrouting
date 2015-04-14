@@ -91,7 +91,7 @@ static int ksp_finish(int code, int ret)
 }
 			  
 static int
-ksp_fetch_edge_columns(SPITupleTable *tuptable, ksp_edge_columns_t *edge_columns, 
+ksp_fetch_edge_columns(SPITupleTable *tuptable, pgr_edge_t *edge_columns, 
                    bool has_reverse_cost)
 {
   edge_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
@@ -149,7 +149,7 @@ ksp_fetch_edge_columns(SPITupleTable *tuptable, ksp_edge_columns_t *edge_columns
 
 void
 ksp_fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc, 
-           ksp_edge_columns_t *edge_columns, ksp_edge_t *target_edge)
+           pgr_edge_t *edge_columns, pgr_edge_t *target_edge)
 {
   Datum binval;
   bool isnull;
@@ -219,6 +219,7 @@ kshortest_path(PG_FUNCTION_ARGS)
                                   PG_GETARG_INT64(2),             /* target_id */
                                   PG_GETARG_INT32(3),             /* number of paths */
                                   PG_GETARG_BOOL(4), 		  /* has reverse_cost */
+                                  PG_GETARG_BOOL(5), 		  /* directed */
 				  &path,
 				  &path_count);
       toDel=path;
@@ -304,7 +305,7 @@ kshortest_path(PG_FUNCTION_ARGS)
 
 int compute_kshortest_path(char* sql, int64_t start_vertex, 
 			 int64_t end_vertex, int no_paths, 
-			 bool has_reverse_cost, 
+			 bool has_reverse_cost, bool directed,
 			 ksp_path_element_t **ksp_path, int *path_count) 
 {
 
@@ -313,13 +314,13 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
   Portal SPIportal;
   bool moredata = TRUE;
   int ntuples;
-  ksp_edge_t *edges = NULL;
+  pgr_edge_t *edges = NULL;
   long total_tuples = 0;
 #ifndef _MSC_VER
-  ksp_edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
+  pgr_edge_t edge_columns = {.id= -1, .source= -1, .target= -1, 
                                  .cost= -1, .reverse_cost= -1};
 #else // _MSC_VER
-  ksp_edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
+  pgr_edge_t edge_columns = {-1, -1, -1, -1, -1};
 #endif // _MSC_VER
   long v_max_id=0;
   long v_min_id=LONG_MAX;
@@ -369,9 +370,9 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
       ntuples = SPI_processed;
       total_tuples += ntuples;
       if (!edges)
-        edges = (ksp_edge_t *)palloc(total_tuples * sizeof(ksp_edge_t));
+        edges = (pgr_edge_t *)palloc(total_tuples * sizeof(pgr_edge_t));
       else
-        edges = (ksp_edge_t *)repalloc(edges, total_tuples * sizeof(ksp_edge_t));
+        edges = (pgr_edge_t *)repalloc(edges, total_tuples * sizeof(pgr_edge_t));
 
       if (edges == NULL) 
         {
@@ -418,6 +419,10 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
       elog(ERROR, "Ending Vertex does not exist in the data");
       return -1;
   }
+  if (start_vertex == end_vertex) {
+      elog(ERROR, "Starting vertex and Ending Vertex are equal");
+      return -1;
+  }
       
   kspDBG("Total %ld tuples in query", total_tuples);
   
@@ -425,7 +430,7 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
         
   ret = doKpaths(edges, total_tuples,
 			start_vertex, end_vertex,
-                       no_paths, has_reverse_cost,
+                       no_paths, has_reverse_cost, directed,
                        ksp_path, path_count, &err_msg);
   kspDBG("total tuples found %i\n",*path_count);
   kspDBG("Exist Status = %i\n", ret);
@@ -447,10 +452,11 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
 // path gets size big
 ksp_path_element_t * get_ksp_memory(int size,ksp_path_element_t *path){
 	if(path ==0  ){
-		path=malloc(size * sizeof(ksp_path_element_t));
+		path= malloc(size * sizeof(ksp_path_element_t));
 	} else {
 		path=realloc(path,size * sizeof(ksp_path_element_t));
 	}
 	return path;
 }
+
 
