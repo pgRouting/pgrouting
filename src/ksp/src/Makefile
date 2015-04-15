@@ -2,7 +2,7 @@ CC= g++
 CCFLAGS=  -g -O3 -std=c++0x
 LDFLAGS= -lboost_program_options
 INCFLAGS= -I /usr/include/postgresql/9.4/server/ 
-SOURCES= mainP.cpp signalhandler.cpp vrp_assert.cpp
+SOURCES= mainP.cpp ./../../common/src/signalhandler.cpp ./../../common/src/pgr_assert.cpp
 # Graph.cpp DijkstraShortestPathAlg.cpp YenTopKShortestPathsAlg.cpp vrp_assert.cpp signalhandler.cpp
 
 OBJECTS= $(SOURCES:.cpp=.o)
@@ -10,10 +10,10 @@ TARGET= mainP
  
 all: $(OBJECTS) $(TARGET) 
  
-$(TARGET): $(OBJECTS) 
+$(TARGET): signalhandler.o pgr_assert.o mainP.o 
 	$(CC)  -o $@ $^ $(LDFLAGS)
  
-$(TARGET).o: $(TARGET).cpp baseGraph.hpp pgr_types.h pgr_dijkstra.hpp pgr_ksp.hpp pgr_ksp.cpp basePath_SSEC.hpp
+$(TARGET).o: $(TARGET).cpp ./../../common/src/baseGraph.hpp ./../../common/src/pgr_types.h ./../../dijkstra/src/pgr_dijkstra.hpp pgr_ksp.cpp ./../../common/src/basePath_SSEC.hpp
 	$(CC)  $(CCFLAGS) $(INCFLAGS) -c $<
  
 %.o: %.cpp %.h 

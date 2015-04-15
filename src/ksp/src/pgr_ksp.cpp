@@ -1,6 +1,6 @@
-#include "./vrp_assert.h"
-#include "./signalhandler.h"
-#include "./basePath_SSEC.hpp"
+// #include "./vrp_assert.h"
+#include "./../../common/src/signalhandler.h"
+#include "./../../common/src/basePath_SSEC.hpp"
 
 template < class G >
 void Pgr_ksp< G >::clear() {

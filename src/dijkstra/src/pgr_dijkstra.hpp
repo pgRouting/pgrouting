@@ -15,9 +15,9 @@
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 
-#include "./pgr_types.h"
-#include "./basePath_SSEC.hpp"
-#include "./baseGraph.hpp"
+#include "./../../common/src/pgr_types.h"
+#include "./../../common/src/basePath_SSEC.hpp"
+#include "./../../common/src/baseGraph.hpp"
 
 template < class G >
 class Pgr_dijkstra: public Pgr_base_graph<G> {

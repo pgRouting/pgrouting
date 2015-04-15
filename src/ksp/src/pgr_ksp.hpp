@@ -3,8 +3,8 @@
 
 #include <deque>
 #include <set>
-#include "basePath_SSEC.hpp"
-#include "pgr_dijkstra.hpp"
+#include "./../../common/src/basePath_SSEC.hpp"
+#include "./../../dijkstra/src/pgr_dijkstra.hpp"
 
 template < class G >
 class Pgr_ksp: public Pgr_dijkstra< G > {

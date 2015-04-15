@@ -5,7 +5,7 @@
 #include <csignal>
 #include <exception>
 
-#include "vrp_assert.h"
+#include "./pgr_assert.h"
 
 class UserQuitException : public std::exception
 {

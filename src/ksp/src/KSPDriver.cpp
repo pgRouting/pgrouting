@@ -9,9 +9,10 @@ extern "C" {
 #include "ksp.h"
 }
 
-#include "pgr_types.h"
-#include "pgr_ksp.hpp"
-#include "KSPDriver.h"
+#include "./../../common/src/pgr_types.h"
+#include "./pgr_ksp.hpp"
+#include "./KSPDriver.h"
+
 static  void dpPrint(
                      const Path &thePath,
                      ksp_path_element_t **path,

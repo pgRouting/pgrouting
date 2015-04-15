@@ -13,9 +13,9 @@ namespace po = boost::program_options;
 
 
 #include "postgres.h"
-#include "./pgr_types.h"
-#include "./basePath_SSEC.hpp"
-#include "./pgr_dijkstra.hpp"
+#include "./../../common/src/pgr_types.h"
+#include "./../../common/src/basePath_SSEC.hpp"
+#include "./../../dijkstra/src/pgr_dijkstra.hpp"
 #include "./pgr_ksp.hpp"
 
 

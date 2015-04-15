@@ -11,14 +11,14 @@ else(APPLE)
     set(LIBRARY_MODE_TARGET "SHARED")
 endif(APPLE)
 
-set(routing_ksp_SRCS pgr_dijkstra.hpp 
-                     baseGraph.hpp 
-                     basePath_SSEC.hpp 
+set(routing_ksp_SRCS ./../../dijkstra/src/pgr_dijkstra.hpp 
+                     ./../../common/src/baseGraph.hpp 
+                     ./../../common/src/basePath_SSEC.hpp 
                      pgr_ksp.hpp
                      ksp.c ksp.h 
                      KSPDriver.cpp KSPDriver.h 
-                     vrp_assert.cpp vrp_assert.h
-                     signalhandler.cpp signalhandler.h)
+                     ./../../common/src/pgr_assert.cpp ./../../common/src/pgr_assert.h
+                     ./../../common/src/signalhandler.cpp ./../../common/src/signalhandler.h)
 
 add_library(routing_ksp ${LIBRARY_MODE_TARGET} ${routing_ksp_SRCS})
 

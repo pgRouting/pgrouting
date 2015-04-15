@@ -36,7 +36,7 @@ extern "C"
 #endif
 
 
-#include "pgr_types.h"
+#include "./../../common/src/pgr_types.h"
 
 #if 0
 typedef struct ksp_edge 
