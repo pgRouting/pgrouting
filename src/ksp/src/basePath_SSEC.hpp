@@ -3,6 +3,7 @@
 
 #include <deque>
 #include <iostream>
+#include "postgres.h"
 #include "pgr_types.h"
 
 class Path {
@@ -42,11 +43,14 @@ class Path {
         cost = 0;
     }
 
-    void print_path() {
+    void print_path(std::ostream& log) {
        for (unsigned int i = 0; i < path.size(); ++i)
-          std::cout << path[i].seq << "\t" << path[i].source << "\t" << path[i].edge << "\t" << path[i].cost << "\n";
+          log << path[i].seq << "\t" << path[i].source << "\t" << path[i].edge << "\t" << path[i].cost << "\n";
     }
 
+    void print_path() {
+       print_path(std::cout);
+    }
 
 
     Path  getSubpath(unsigned int j) {

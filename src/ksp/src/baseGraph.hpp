@@ -16,23 +16,18 @@
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/graph_utility.hpp>
 
-/****************************************
-SIMULATES  PGR_TYPES.H
-****************************************/
 #include "./pgr_types.h"
 
 
-/****************************************
-SIMULATES A GENERAL GRAPH FILE
-****************************************/
-
-void empty_path(pgr_path_t **path, int64_t start_vertex) {
-  (*path) = (pgr_path_t *) malloc(sizeof(pgr_path_t));
+#if 0
+void empty_path(pgr_edge_t **path, int64_t start_vertex) {
+  (*path) = (pgr_edge_t *) malloc(sizeof(pgr_edge_t));
   (*path)[0].seq  = 1;
   (*path)[0].source  = start_vertex;
   (*path)[0].edge  = -1;
   (*path)[0].cost  = 0;
 }
+#endif
 
 template <class G>
 class Pgr_base_graph {
@@ -183,42 +178,66 @@ set_gVertex_id(int64_t vertex_id, int64_t &gVertex_id) {
 
 public:
 void
-get_path( Path &path,
-          V source, V target) {
+get_path( Path &path, V source, V target) {
 
+  // backup of the target
   V target_back = target;
-  int64_t result_size = 1;
 
+  // no path was found
   if (target == predecessors[target]) {
        path.clear();
        return;
   };
 
+
+  // findout how large is the path
+  int64_t result_size = 1;
   while (target != source) {
     if (target == predecessors[target]) break;
     result_size++;
     target = predecessors[target];
   }
 
-
+  // recover the target
   target = target_back;
-  int seq = result_size;
 
+  // variables that are going to be stored
+  int64_t source_id;
+  int64_t edge_id;
+  float8 cost;
+
+  // working from the last to the beginning
+
+  // initialize the sequence
+  int seq = result_size;
+  // the last stop is the target
   path.push_front(seq, graph[target].id, -1, 0);
+
+#if 0
+std::cout << "starting path\n";
+path.print_path();
+#endif
+
   while (target != source) {
+    // we are done when the predecesor of the target is the target
     if (target == predecessors[target]) break;
+    //values to be inserted in the path
     --seq;
-    path.push_front(seq,
-        graph[predecessors[target]].id,  // source
-        get_edge_id(graph,               // edge
-                    predecessors[target],   // from
-                    target,                 // to
-                    distances[target] - distances[predecessors[target]] //dist(from,to)
-        ),
-        distances[target] - distances[predecessors[target]] // dist(from,to)
-    );
+    cost = distances[target] - distances[predecessors[target]];
+    source_id = graph[predecessors[target]].id;
+    edge_id = get_edge_id(graph, predecessors[target], target, cost);
+
+    path.push_front(seq, source_id, /*(int64_t)cost*/ edge_id, cost);
     target = predecessors[target];
+#if 0
+std::cout << "after the push\n";
+path.print_path();
+#endif
   }
+#if 0
+std::cout << "resulting path\n";
+path.print_path();
+#endif
   return;
 }
 
@@ -226,7 +245,7 @@ get_path( Path &path,
 
 public:  //  ???
 int64_t
-get_edge_id(G &graph, V from, V to, float8 distance) { 
+get_edge_id(G &graph, V from, V to, float8 &distance) { 
     typename boost::graph_traits < G >::edge_descriptor e;
     typename boost::graph_traits < G >::out_edge_iterator out_i, out_end;
     V v_source, v_target;
@@ -236,11 +255,16 @@ get_edge_id(G &graph, V from, V to, float8 distance) {
         out_i != out_end; ++out_i) {
             e = *out_i;
             v_target = target(e, graph);
-            if ((to == v_target) && (minCost > graph[*out_i].cost)) {
-                    minCost = graph[*out_i].cost;
-                    minEdge = graph[*out_i].id;
+            v_source = source(e, graph);
+//std::cout<< "(" <<v_source <<","<< v_target << ") = " << graph[*out_i].cost; 
+            if ((from == v_source) && (to == v_target ) &&  (distance == graph[e].cost))
+                    return graph[e].id;
+            if ((from == v_source) &&  (to == v_target ) && (minCost > graph[e].cost)) {
+                    minCost = graph[e].cost;
+                    minEdge = graph[e].id;
             }
     }
+    distance = minCost;
     return minEdge;
 }
 

@@ -44,10 +44,10 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(sql text, big boolean default fa
          RAISE EXCEPTION 'support for id,source,target columns only of type: BigInt, integer or smallint. Support for Cost: double precision';
       end if;
     else
-      if not (rec.id_type in ('integer'::text, 'smallint'::text))
-         OR   not (rec.source_type in ('integer'::text))
-         OR   not (rec.target_type in ('integer'::text))
-         OR   not (rec.cost_type = 'double precision'::text) then
+      if not(   (rec.id_type in ('integer'::text))
+            and (rec.source_type in ('integer'::text))
+            and (rec.target_type in ('integer'::text))
+            and (rec.cost_type = 'double precision'::text)) then
           RAISE EXCEPTION 'support for id,source,target columns only of type: integer. Support for Cost: double precision';
       end if;
     end if;

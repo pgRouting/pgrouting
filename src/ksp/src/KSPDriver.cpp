@@ -14,14 +14,15 @@ extern "C" {
 #include "KSPDriver.h"
 static  void dpPrint(
                      const Path &thePath,
-                     ksp_path_element_t *path,
-                     int &sequence, int route_id);
+                     ksp_path_element_t **path,
+                     int &sequence, int route_id, std::ostream &log);
+
 static  ksp_path_element_t * noPathFound(int64_t start_id);
 
 int  doKpaths(pgr_edge_t  *data_edges, int64_t total_tuples,
                        int64_t  start_vertex, int64_t  end_vertex,
                        int no_paths, bool has_reverse_cost, bool directedFlag,
-                       ksp_path_element_t **path, int *path_count,
+                       ksp_path_element_t **ksp_path, int *path_count,
                        char ** err_msg) {
    try {
         // in c code this should have been checked:
@@ -55,52 +56,56 @@ int  doKpaths(pgr_edge_t  *data_edges, int64_t total_tuples,
 
         }
 
+// TODO clean this mess
         if (paths.size() == 0) {
             *err_msg = strdup( "NOTICE: No path found between Starting and Ending vertices" );
             (*path_count) = 1;
-            *path = noPathFound(start_vertex);
+            *ksp_path = noPathFound(start_vertex);
             return 0;
         }
 
-        log << "NOTICE: Step 4: Calculating the number of tuples \n";
+        log << "NOTICE: Calculating the number of tuples \n";
         int count = 0;
         int seq = 0;
         for (unsigned int i = 0; i < paths.size(); ++i ) {
            if (paths[i].path.size() > 0)  // don't count empty routes (just in case)
-              count += paths[i].path.size();   
+              count += paths[i].path.size();
         }
         log << "NOTICE Count: " << count << "\n";
+        // get the space required to store all the paths
+        // ksp_path_element_t *ksp_path;
+        *ksp_path = NULL;
+        *ksp_path = get_ksp_memory(count, (*ksp_path));
+
+        int sequence = 0;
+        for (unsigned int route_id = 0; route_id < paths.size(); route_id++) {
+          if (paths[route_id].path.size() > 0)
+               dpPrint(paths[route_id], ksp_path, sequence, route_id, log);
+#if 0  
+          paths[route_id].print_path(log);
+#endif
+        }
+
 #if 0
 // move around this lines to force a return with an empty path and the logging messages
 // cool for debugging
 *err_msg = strdup( log.str().c_str());
 (*path_count) = 1;
 *path = noPathFound(start_vertex);
-return 0;
+return -1;
 #endif
-        // get the space required to store all the paths
-        ksp_path_element_t *ksp_path;
-        ksp_path = 0;
-        ksp_path = get_ksp_memory(count, ksp_path);
-
-        int sequence = 0;
-        for (unsigned int route_id = 0; route_id < paths.size(); route_id++) {
-          if (paths[route_id].path.size() > 0)
-               dpPrint(paths[route_id], ksp_path, sequence, route_id);
-        }
-
         log << "NOTICE Sequence: " << sequence << "\n";
         if (count != sequence) {
             log << "ERROR: Internal count and real count are different. \nERROR: This should not happen: Please report in GitHub: pgrouting issues.";
             *err_msg = strdup( log.str().c_str());
             return -1;
         }
-        #if 1
+        #if 0
         *err_msg = strdup("OK");
         #else
         *err_msg = strdup( log.str().c_str());
         #endif
-        *path = ksp_path;
+        //*path = ksp_path;
         *path_count = count;
         return EXIT_SUCCESS;
    } catch ( ... ) {
@@ -111,33 +116,32 @@ return 0;
 
 static  void dpPrint(
                      const Path &thePath,
-                     ksp_path_element_t *path,
-                     int &sequence, int route_id) {
+                     ksp_path_element_t **path,
+                     int &sequence, int route_id, std::ostream &log ) {
         // the row data:  seq, route, nodeid, edgeId, cost
         int64_t nodeId, edgeId, lastNodeId;
         double cost;
 
+#if 1
+        log << "bulding route\n";
+#endif
         for (unsigned int i = 0; i < thePath.path.size(); i++) {
                 edgeId = thePath.path[i].edge;
                 nodeId = thePath.path[i].source;
                 cost = thePath.path[i].cost;
-               // if (i == thePath.size()-1)
-               //       lastNodeId = theGraph.getVertexOriginalID(thePath[i]->getEnd());
 
-               path[sequence].route_id = route_id;
-               path[sequence].vertex_id = nodeId;
-               path[sequence].edge_id = edgeId;
-               path[sequence].cost = cost;
-               sequence++;
-#if 0
-               if (i == thePath.size()-1) {
-                      path[sequence].route_id = route_id;
-                      path[sequence].vertex_id = lastNodeId;
-                      path[sequence].edge_id = -1;
-                      path[sequence].cost = 0;
-                      sequence++;
-               }
+               (*path)[sequence].route_id = route_id;
+               (*path)[sequence].vertex_id = nodeId;
+               (*path)[sequence].edge_id = edgeId;
+               (*path)[sequence].cost = cost;
+#if 1
+               log << sequence << "\t"
+                   <<  (*path)[sequence].route_id << "\t"
+                   <<  (*path)[sequence].vertex_id << "\t"
+                   <<  (*path)[sequence].edge_id << "\t"
+                   <<  (*path)[sequence].cost << "\n";
 #endif
+               sequence++;
         }
 }
 

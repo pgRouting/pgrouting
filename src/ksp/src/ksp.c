@@ -98,7 +98,8 @@ ksp_fetch_edge_columns(SPITupleTable *tuptable, pgr_edge_t *edge_columns,
   edge_columns->source = SPI_fnumber(SPI_tuptable->tupdesc, "source");
   edge_columns->target = SPI_fnumber(SPI_tuptable->tupdesc, "target");
   edge_columns->cost = SPI_fnumber(SPI_tuptable->tupdesc, "cost");
-/*  if (edge_columns->id == SPI_ERROR_NOATTRIBUTE ||
+#if 0
+  if (edge_columns->id == SPI_ERROR_NOATTRIBUTE ||
       edge_columns->source == SPI_ERROR_NOATTRIBUTE ||
       edge_columns->target == SPI_ERROR_NOATTRIBUTE ||
       edge_columns->cost == SPI_ERROR_NOATTRIBUTE) 
@@ -107,8 +108,8 @@ ksp_fetch_edge_columns(SPITupleTable *tuptable, pgr_edge_t *edge_columns,
            "'id', 'source', 'target' and 'cost'");
       return -1;
     }
-*/
-/*
+
+
   if (SPI_gettypeid(SPI_tuptable->tupdesc, edge_columns->source) != INT4OID ||
       SPI_gettypeid(SPI_tuptable->tupdesc, edge_columns->target) != INT4OID ||
       SPI_gettypeid(SPI_tuptable->tupdesc, edge_columns->cost) != FLOAT8OID) 
@@ -116,9 +117,9 @@ ksp_fetch_edge_columns(SPITupleTable *tuptable, pgr_edge_t *edge_columns,
       elog(ERROR, "Error, columns 'source', 'target' must be of type int4, 'cost' must be of type float8");
       return -1;
     }
-*/
+#endif
 
-  kspDBG("columns: id %ld source %ld target %ld cost %f", 
+  kspDBG("columns position: id %ld source %ld target %ld cost %f", 
       edge_columns->id, edge_columns->source, 
       edge_columns->target, edge_columns->cost);
 
@@ -126,14 +127,15 @@ ksp_fetch_edge_columns(SPITupleTable *tuptable, pgr_edge_t *edge_columns,
     {
       edge_columns->reverse_cost = SPI_fnumber(SPI_tuptable->tupdesc, 
                                                "reverse_cost");
-
+#if 0
+      // this is checked before calling the function
       if (edge_columns->reverse_cost == SPI_ERROR_NOATTRIBUTE) 
         {
           elog(ERROR, "Error, reverse_cost is used, but query did't return "
                "'reverse_cost' column");
           return -1;
         }
-
+      //this is checked before calling the function
       if (SPI_gettypeid(SPI_tuptable->tupdesc, edge_columns->reverse_cost) 
           != FLOAT8OID) 
         {
@@ -141,7 +143,8 @@ ksp_fetch_edge_columns(SPITupleTable *tuptable, pgr_edge_t *edge_columns,
           return -1;
         }
 
-      kspDBG("columns: reverse_cost cost %f", edge_columns->reverse_cost);
+      kspDBG("column position: reverse_cost cost %f", edge_columns->reverse_cost);
+#endif
     }
     
   return 0;
@@ -149,10 +152,11 @@ ksp_fetch_edge_columns(SPITupleTable *tuptable, pgr_edge_t *edge_columns,
 
 void
 ksp_fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc, 
-           pgr_edge_t *edge_columns, pgr_edge_t *target_edge)
+           pgr_edge_t *edge_columns, pgr_edge_t *target_edge, bool has_rcost)
 {
   Datum binval;
   bool isnull;
+ // is STRICT this might not be necessary
 
   binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->id, &isnull);
   if (isnull)
@@ -174,7 +178,7 @@ ksp_fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
     elog(ERROR, "cost contains a null value");
   target_edge->cost = DatumGetFloat8(binval);
 
-  if (edge_columns->reverse_cost != -1) 
+  if (has_rcost) 
     {
       binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->reverse_cost, 
                              &isnull);
@@ -182,6 +186,7 @@ ksp_fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
         elog(ERROR, "reverse_cost contains a null value");
       target_edge->reverse_cost =  DatumGetFloat8(binval);
     }
+  else target_edge->reverse_cost = -1.0;
 }
 
 
@@ -237,7 +242,7 @@ kshortest_path(PG_FUNCTION_ARGS)
             }
         }
 #endif
-     kspDBG("Total number of tuples to be returned %i ", path_count);
+      kspDBG("Total number of tuples to be returned %i ", path_count);
 	
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;
@@ -272,16 +277,22 @@ kshortest_path(PG_FUNCTION_ARGS)
       nulls =(bool *) palloc(5 * sizeof(bool));
 
 
+
       values[0] = Int32GetDatum(call_cntr);
       nulls[0] = false;
+
       values[1] = Int32GetDatum(path[call_cntr].route_id);
       nulls[1] = false;
+
       values[2] = Int64GetDatum(path[call_cntr].vertex_id);
       nulls[2] = false;
+
       values[3] = Int64GetDatum(path[call_cntr].edge_id);
       nulls[3] = false;
+
       values[4] = Float8GetDatum(path[call_cntr].cost);
       nulls[4] = false;
+
 
       tuple = heap_form_tuple(tuple_desc, values, nulls);
 
@@ -390,7 +401,7 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
             {
               HeapTuple tuple = tuptable->vals[t];
               ksp_fetch_edge(&tuple, &tupdesc, &edge_columns, 
-                         &edges[total_tuples - ntuples + t]);
+                         &edges[total_tuples - ntuples + t], has_reverse_cost);
               if (!sourceFound &&
                    ( (edges[total_tuples - ntuples + t].source == start_vertex)
                      || (edges[total_tuples - ntuples + t].source == start_vertex))) {
@@ -440,7 +451,6 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
   
   if (ret < 0)
     {
-      //elog(ERROR, "Error computing path: %s", err_msg);
       ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED), 
       errmsg("Error computing path: %s", err_msg)));
     } 

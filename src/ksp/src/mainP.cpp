@@ -47,6 +47,7 @@ void import_from_file(const std::string &input_file_name, pgr_edge_t *edges, uns
                 ifs >> edges[i].target;
                 ifs >> edges[i].cost;
                 ifs >> edges[i].reverse_cost;
+ edges[i].reverse_cost=-1;
                 // when loading checking if start and end are found
                 if (!s_found)
                    s_found = ((edges[i].source == start_vertex) || (edges[i].target == end_vertex));
