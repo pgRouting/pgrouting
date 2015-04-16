@@ -240,7 +240,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
       SRF_RETURN_NEXT(funcctx, result);
   } else {   /* do when there is no more left */
     free(path);
-      SRF_RETURN_DONE(funcctx);
+    SRF_RETURN_DONE(funcctx);
   }
 }
 

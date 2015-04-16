@@ -11,7 +11,7 @@
  * the terms of the MIT License. Please file LICENSE for details.
  *
  ********************************************************************VRP*/
-#include "pgr_assert.h"
+#include "./pgr_assert.h"
 #include <exception>
 
 #ifdef assert
@@ -25,12 +25,11 @@
 #define __TOSTRING(x) __STRING(x)
 
 
-const char *AssertFailedException::what() const throw()
-{
+const char *AssertFailedException::what() const throw() {
   return str;
-};
+}
 
-AssertFailedException::AssertFailedException( const char *_str ) : str(
-    _str ) {};
+AssertFailedException::AssertFailedException(const char *_str) : str(
+    _str ) {}
 
 

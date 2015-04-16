@@ -1,4 +1,4 @@
-/*VRP*********************************************************************
+/*PGR*********************************************************************
  *
  * vehicle routing problems
  *      A collection of C++ classes for developing VRP solutions
@@ -11,6 +11,7 @@
  * the terms of the MIT License. Please file LICENSE for details.
  *
  ********************************************************************VRP*/
+
 /*! \file vrp_assert.h
  * \brief An assert functionality that uses C++ throw().
  *
@@ -20,8 +21,8 @@
  * re-throw if needed so we can catch errors in the postgresql environment
  * so we do not crash the backend server.
  */
-#ifndef VRP_ASSERT_H
-#define VRP_ASSERT_H
+#ifndef  SRC_COMMON_SRC_PGR_ASSERT_H_
+#define  SRC_COMMON_SRC_PGR_ASSERT_H_
 
 #include <exception>
 
@@ -68,20 +69,19 @@
 #define assert(expr) \
     ((expr) \
      ? static_cast<void>(0) \
-     : throw AssertFailedException( "AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) ))
+     : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) ))
 
 
 /*! \class AssertFailedException
  * \brief Extends std::exception and is the exception that we throw if an assert fails.
  */
-class AssertFailedException : public std::exception
-{
-private:
+class AssertFailedException : public std::exception {
+ private:
   const char *str;    ///< str Holds the what() string for the exception.
 
-public:
+ public:
   virtual const char *what() const throw();
-  AssertFailedException( const char *_str );
+  explicit AssertFailedException(const char *_str);
 };
 
-#endif
+#endif  //  SRC_COMMON_SRC_PGR_ASSERT_H_
