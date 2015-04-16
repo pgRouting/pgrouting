@@ -1,8 +1,6 @@
-/*VRP*********************************************************************
+/*PGR*********************************************************************
  *
- * vehicle routing problems
- *      A collection of C++ classes for developing VRP solutions
- *      and specific solutions developed using these classes.
+ * file pgr_assert.cpp
  *
  * Copyright 2014 Stephen Woodbridge <woodbri@imaptools.com>
  * Copyright 2014 Vicky Vergara <vicky_vergara@hotmail.com>
@@ -10,7 +8,7 @@
  * This is free software; you can redistribute and/or modify it under
  * the terms of the MIT License. Please file LICENSE for details.
  *
- ********************************************************************VRP*/
+ ********************************************************************PGR*/
 #include "./pgr_assert.h"
 #include <exception>
 
