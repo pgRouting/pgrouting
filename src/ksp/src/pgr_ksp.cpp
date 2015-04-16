@@ -1,4 +1,27 @@
-// #include "./vrp_assert.h"
+/*PGR
+
+file: pgr_ksp.cpp
+
+Copyright (c) 2013 Dave Potts
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+vicky_vergara@hotmail.com
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+*/
+#include <deque>
 #include "./../../common/src/signalhandler.h"
 #include "./../../common/src/basePath_SSEC.hpp"
 
@@ -20,82 +43,78 @@ void Pgr_ksp< G >::getFirstSolution() {
 }
 
 template < class G>
-std::deque<Path> Pgr_ksp< G >::Yen(int64_t  start_vertex, int64_t  end_vertex, int K) {
-
+std::deque<Path> Pgr_ksp< G >::Yen(
+  int64_t  start_vertex, int64_t end_vertex, int K) {
     std::deque<Path> l_ResultList;
     if ((start_vertex != end_vertex) && (K > 0)) {
-        if (!this->get_gVertex(start_vertex, v_source) or !this->get_gVertex(end_vertex, v_target)){
+        if   (!this->get_gVertex(start_vertex, v_source)
+           || !this->get_gVertex(end_vertex, v_target)) {
              return l_ResultList;
         }
         m_start = start_vertex;
         m_end = end_vertex;
         executeYen(K);
-
         }
 
-        while (m_Heap.size()){
-             curr_result_path = *m_Heap.begin();
-             m_ResultSet.insert(curr_result_path);
-             m_Heap.erase(m_Heap.begin());
-        }
+    while (m_Heap.size()) {
+         curr_result_path = *m_Heap.begin();
+         m_ResultSet.insert(curr_result_path);
+         m_Heap.erase(m_Heap.begin());
+    }
 
-        while (m_ResultSet.size()){
-             l_ResultList.push_back((*m_ResultSet.begin()));
-             m_ResultSet.erase(m_ResultSet.begin());
-        }
-        return l_ResultList;
+    while (m_ResultSet.size()) {
+         l_ResultList.push_back((*m_ResultSet.begin()));
+         m_ResultSet.erase(m_ResultSet.begin());
+    }
+    return l_ResultList;
 }
 
 
 template < class G >
 void Pgr_ksp< G >::removeVertices(const Path &subpath) {
-    for (int i = 0; i < subpath.path.size(); i++) 
+    for (int i = 0; i < subpath.path.size(); i++)
        this->disconnect_vertex(subpath.path[i].source);
 }
 
 template < class G >
 void Pgr_ksp< G >::doNextCycle() {
-        REG_SIGINT
+    REG_SIGINT
 
 
-        int64_t spurNodeId;
-        Path rootPath;
-        Path spurPath;
+    int64_t spurNodeId;
+    Path rootPath;
+    Path spurPath;
 
-        for (unsigned int i = 0; i < curr_result_path.path.size() ; ++i) {
+    for (unsigned int i = 0; i < curr_result_path.path.size() ; ++i) {
+        int64_t  spurEdge = curr_result_path.path[i].edge;
+        spurNodeId = curr_result_path.path[i].source;
 
-            int64_t  spurEdge = curr_result_path.path[i].edge;
-            spurNodeId = curr_result_path.path[i].source;
-             
-            rootPath = curr_result_path.getSubpath(i);
+        rootPath = curr_result_path.getSubpath(i);
 
-            // when spur node has parallels to the end of the spur edge then
-            // no dijkstra has to be done because:
-            //  NewPath = rootpath + Paralleledgeof(supredge) rest of the curr_result path
-            // is the shortest path using the paralel edge
-            for (pIt = m_ResultSet.begin(); pIt != m_ResultSet.end(); ++pIt) {
-               if ((*pIt).isEqual(rootPath)) {
-                   // edge to be removed = (*pIt).path[i].edge;
-                  this->disconnect_edge((*pIt).path[i].source, (*pIt).path[i+1].source);
-               }
-            }
-            removeVertices(rootPath);
-
-            int spurPathSize;
-
-            THROW_ON_SIGINT
-            this->process_dijkstra(spurPath, spurNodeId , m_end);
-            THROW_ON_SIGINT
-
-            if (spurPath.path.size() > 0) {
-                rootPath.appendPath(spurPath);
-                m_Heap.insert(rootPath);
-            }
-
-            this->restore_graph();
-            rootPath.clear();
-            spurPath.clear();
+        for (pIt = m_ResultSet.begin(); pIt != m_ResultSet.end(); ++pIt) {
+           if ((*pIt).isEqual(rootPath)) {
+              // edge to be removed = (*pIt).path[i].edge;
+              this->disconnect_edge((*pIt).path[i].source,     // from
+                                    (*pIt).path[i+1].source);  // to
+           }
         }
+        removeVertices(rootPath);
+
+        int spurPathSize;
+
+        THROW_ON_SIGINT
+        this->process_dijkstra(spurPath, spurNodeId , m_end);
+        THROW_ON_SIGINT
+
+        if (spurPath.path.size() > 0) {
+            rootPath.appendPath(spurPath);
+            m_Heap.insert(rootPath);
+        }
+
+        this->restore_graph();
+        rootPath.clear();
+        spurPath.clear();
+    }
 }
 
 template < class G >

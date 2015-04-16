@@ -1,5 +1,29 @@
-#ifndef SRC_KSP_SRC_YENTOPKSHORTESTPATHSALG_H_
-#define SRC_KSP_SRC_YENTOPKSHORTESTPATHSALG_H_
+/*PGR
+
+file: pgr_ksp.hpp
+
+Copyright (c) 2013 Dave Potts
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+vicky_vergara@hotmail.com
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+*/
+
+#ifndef SRC_KSP_SRC_PGR_KSP_HPP_
+#define SRC_KSP_SRC_PGR_KSP_HPP_
 
 #include <deque>
 #include <set>
@@ -8,11 +32,18 @@
 
 template < class G >
 class Pgr_ksp: public Pgr_dijkstra< G > {
+ public:
+        explicit Pgr_ksp(graphType gtype, const int initial_size)
+                : Pgr_dijkstra <G>(gtype, initial_size)
+           {}
 
-    // typedef typename std::pair<pgr_path_t*, float8> Paths;
+        ~Pgr_ksp(void) {}
+        std::deque<Path> Yen(int64_t source, int64_t target, int K);
+        void clear();
 
+ private:
     class compPaths {
-      public:
+     public:
         bool operator()(const Path &p1, const Path  &p2) const {
           if (p1.cost < p2.cost) return true;
           if (p1.cost > p2.cost) return false;
@@ -29,61 +60,40 @@ class Pgr_ksp: public Pgr_dijkstra< G > {
           // we got here and everything is equal
           return false;
        }
-   };
+    };
 
+    //! the actual algorithm
+    void executeYen(int top_k);
 
+    /** @name Auxiliary function for yen's algorithm */
+    ///@{
 
- public:
-        explicit Pgr_ksp(graphType gtype, const int initial_size) 
-                : Pgr_dijkstra <G>(gtype, initial_size)
-           {}
-
-        ~Pgr_ksp(void) {} //  {clear();}
-        std::deque<Path> Yen(int64_t source, int64_t target, int K);
-        void clear();
-
- private:
-        //! the actual algorithm 
-        void executeYen(int top_k);
-
-        /** @name Auxiliary function for yen's algorithm */
-        ///@{
-
-        //! Performs the first Dijkstra of the algorithm
-        void getFirstSolution();
-        //! Performs the next cycle of the algorithm
-        void doNextCycle();
-        //! stores in subPath the first i elements of path
-        void removeVertices(const Path &path);
-        ///@}
+    //! Performs the first Dijkstra of the algorithm
+    void getFirstSolution();
+    //! Performs the next cycle of the algorithm
+    void doNextCycle();
+    //! stores in subPath the first i elements of path
+    void removeVertices(const Path &path);
+    ///@}
 
  private:
+    /** @name members */
+    ///@{
     typedef typename boost::graph_traits < G >::vertex_descriptor V;
-    V v_source;
-    V v_target;
-    int64_t m_start;
-    int64_t m_end;
+    V v_source;  //!< source descriptor
+    V v_target;  //!< target descriptor
+    int64_t m_start;  //!< source id
+    int64_t m_end;   //!< target id
 
-        // unsigned int sourceID;  //!< local ID of the source
-        // unsigned int targetID;  //!< local ID of the target
-        //! ordered set of paths found
-    
+    Path curr_result_path;  //!< storage for the current result
 
-    Path curr_result_path;
-    
     typedef typename  std::set<Path, compPaths> pSet;
     typedef typename  std::set<Path, compPaths>::iterator pSet_i;
-    pSet m_ResultSet;
-    pSet m_Heap; //!< the heap
-    pSet_i pIt;
-
- private:
-        /** @name For parallel paths */
-        ///@{
-        //void getParallelShort(const BasePath &solutionPath);
-        ///@}
+    pSet m_ResultSet;  //!< ordered set of shortest paths
+    pSet m_Heap;  //!< the heap
+    pSet_i pIt;   //!< iterator for heap and result set
 };
 
 #include "./pgr_ksp.cpp"
 
-#endif  // SRC_KSP_SRC_YENTOPKSHORTESTPATHSALG_H_
+#endif  // SRC_KSP_SRC_PGR_KSP_HPP_
