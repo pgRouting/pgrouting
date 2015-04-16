@@ -1,4 +1,4 @@
-/*
+/* PGR
  * kShortest path algorithm for PostgreSQL
  *
  * Copyright (c) 2011 Dave Potts
@@ -28,8 +28,8 @@
 #include "access/htup_details.h"
 #endif
 
-#include "ksp.h" 
-#include "KSPDriver.h"
+#include "./ksp.h" 
+#include "./KSPDriver.h"
 
 #ifndef _MSC_VER
 Datum kshortest_path(PG_FUNCTION_ARGS);
@@ -37,22 +37,6 @@ Datum kshortest_path(PG_FUNCTION_ARGS);
 PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
 #endif // _MSC_VER
 
-#if 0  // change to 1 to leave it as a function (not working)
-extern void kspDBG(const char *format, ...)
-{
-#ifdef DEBUG
-	va_list ap;
-	char msg[256];
-	va_start(ap, format);
-	vsnprintf(msg, 256, format, ap);
-	va_end(ap);
-	elog(NOTICE, msg);
-#else 
-	;
-#endif /* DEBUG */
-}
-
-#endif
 
 //#define DEBUG 1
 #ifdef DEBUG 
@@ -333,11 +317,15 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
 #else // _MSC_VER
   pgr_edge_t edge_columns = {-1, -1, -1, -1, -1};
 #endif // _MSC_VER
+
+#if 0
   long v_max_id=0;
   long v_min_id=LONG_MAX;
   //kspDBG("values: %ld",LONG_MAX);
   long s_count = 0;
   long t_count = 0;
+#endif
+
   bool sourceFound = false;
   bool targetFound = false;
 
