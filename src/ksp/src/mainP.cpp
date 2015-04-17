@@ -98,8 +98,8 @@ int main(int ac, char* av[]) {
     int directedFlag(vm["directed"].as<bool>());
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
     bool found = false;
-    int result_size;
-    float8 total_cost;
+//    int result_size;
+//    float8 total_cost;
 
     Path path;
     import_from_file(fileName, data_edges, &count, start_vertex, end_vertex, found);

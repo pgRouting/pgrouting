@@ -1,5 +1,5 @@
 CC= g++
-CCFLAGS=  -g -O3 -std=c++0x
+CCFLAGS=  -g -O3 -std=c++0x -Wall -pedantic  -Wredeclared-class-member
 LDFLAGS= -lboost_program_options
 INCFLAGS= -I /usr/include/postgresql/9.4/server/ 
 SOURCES= mainP.cpp ./../../common/src/signalhandler.cpp ./../../common/src/pgr_assert.cpp

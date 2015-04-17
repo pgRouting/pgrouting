@@ -32,7 +32,6 @@ void Pgr_ksp< G >::clear() {
 
 template < class G >
 void Pgr_ksp< G >::getFirstSolution() {
-     int result_size;
      Path path;
 
      this->process_dijkstra(path, m_start, m_end);
@@ -54,7 +53,7 @@ std::deque<Path> Pgr_ksp< G >::Yen(
         m_start = start_vertex;
         m_end = end_vertex;
         executeYen(K);
-        }
+    }
 
     while (m_Heap.size()) {
          curr_result_path = *m_Heap.begin();
@@ -72,7 +71,7 @@ std::deque<Path> Pgr_ksp< G >::Yen(
 
 template < class G >
 void Pgr_ksp< G >::removeVertices(const Path &subpath) {
-    for (int i = 0; i < subpath.path.size(); i++)
+    for (unsigned int i = 0; i < subpath.path.size(); i++)
        this->disconnect_vertex(subpath.path[i].source);
 }
 
@@ -86,7 +85,7 @@ void Pgr_ksp< G >::doNextCycle() {
     Path spurPath;
 
     for (unsigned int i = 0; i < curr_result_path.path.size() ; ++i) {
-        int64_t  spurEdge = curr_result_path.path[i].edge;
+        // int64_t  spurEdge = curr_result_path.path[i].edge;
         spurNodeId = curr_result_path.path[i].source;
 
         rootPath = curr_result_path.getSubpath(i);
@@ -100,7 +99,7 @@ void Pgr_ksp< G >::doNextCycle() {
         }
         removeVertices(rootPath);
 
-        int spurPathSize;
+        // int spurPathSize;
 
         THROW_ON_SIGINT
         this->process_dijkstra(spurPath, spurNodeId , m_end);
