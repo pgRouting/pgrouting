@@ -49,15 +49,23 @@ class Pgr_base_graph {
 
 
   // store a map for the vertices
+#if 0
   typedef typename boost::bimap< int64_t, int64_t > bm_type;
   typedef typename bm_type::left_iterator LI;
   typedef typename bm_type::value_type VT;
+#else
+  typedef typename std::map< int64_t, V > id_to_V;
+  typedef typename std::map< V, int64_t > V_to_id;
+  typedef typename id_to_V::const_iterator LI;
+  typedef typename V_to_id::const_iterator RI;
+#endif
 
   G graph;
   int64_t numb_vertices;
   graphType m_gType;
 
-  bm_type  vertices_map;
+  id_to_V  vertices_map;   // id -> graph id
+  V_to_id  gVertices_map;  // graph id -> id
 
   // used by dijkstra
   std::vector<V> predecessors;
@@ -75,7 +83,7 @@ class Pgr_base_graph {
  private:
   // MAC solution # 1 explicitly define operator =
   // making it private, because we are actually not allowing graph assigmnet
-  operator = (const Pgr_base_graph< G > &graph) {}
+  // operator = (const Pgr_base_graph< G > &graph) {}
       
 
  public:
@@ -128,7 +136,7 @@ void disconnect_vertex(int64_t p_vertex) {
           }
       }
 
-      V d_vertex = boost::vertex(vertices_map.left.find(p_vertex)->second, graph);
+      V d_vertex = boost::vertex(vertices_map.find(p_vertex)->second, graph);
       boost::clear_vertex(d_vertex, graph);
     }
 
@@ -138,10 +146,6 @@ void disconnect_vertex(int64_t p_vertex) {
             removed_edges.pop_front();
         }
     }
-
-
-
-
 
     void
     print_graph() {
@@ -160,32 +164,32 @@ void disconnect_vertex(int64_t p_vertex) {
         }
     }
 
+
  protected:
     bool get_gVertex(int64_t vertex_id, V &gVertex) {
-      LI vertex_ptr = vertices_map.left.find(vertex_id);
+      LI vertex_ptr = vertices_map.find(vertex_id);
 
-      if (vertex_ptr == vertices_map.left.end())
+      if (vertex_ptr == vertices_map.end())
           return false;
 
       gVertex = vertex(vertex_ptr->second, graph);
       return true;
     }
-
+/*
  private:
-    void set_gVertex_id(int64_t vertex_id, int64_t &gVertex_id) {
+    void set_gVertex_id(int64_t vertex_id, V &gVertex_id) {
       // look for it in the map
-      LI vertex_ptr = vertices_map.left.find(vertex_id);
+      LI vertex_ptr = vertices_map.find(vertex_id);
 
       // it doesn't exist
-      if (vertex_ptr  == vertices_map.left.end()) {
+      if (vertex_ptr  == vertices_map.end()) {
           // insert it
-          vertex_ptr = vertices_map.insert(VT(vertex_id, numb_vertices++));
+          vertex_ptr = vertices_map[vertex_id] = numb_vertices++;
       }
-
       // get the gVertex_id
       gVertex_id = vertex_ptr->second;
     }
-
+*/
  public:
     void get_path(Path &path, V source, V target) {
       // backup of the target
@@ -269,16 +273,18 @@ void disconnect_vertex(int64_t p_vertex) {
       LI vm_s, vm_t;
       E e;
 
-      vm_s = vertices_map.left.find(edge.source);
-      if (vm_s == vertices_map.left.end()) {
-        vertices_map.insert(VT(edge.source, numb_vertices++));
-        vm_s = vertices_map.left.find(edge.source);
+      vm_s = vertices_map.find(edge.source);
+      if (vm_s == vertices_map.end()) {
+        vertices_map[edge.source]=  numb_vertices;
+        gVertices_map[numb_vertices++] = edge.source;
+        vm_s = vertices_map.find(edge.source);
       }
 
-      vm_t = vertices_map.left.find(edge.target);
-      if (vm_t == vertices_map.left.end()) {
-        vertices_map.insert(VT(edge.target, numb_vertices++));
-        vm_t = vertices_map.left.find(edge.target);
+      vm_t = vertices_map.find(edge.target);
+      if (vm_t == vertices_map.end()) {
+        vertices_map[edge.target]=  numb_vertices;
+        gVertices_map[numb_vertices++] = edge.target;
+        vm_t = vertices_map.find(edge.target);
       }
 
       if (edge.cost >= 0) {
@@ -299,8 +305,8 @@ void disconnect_vertex(int64_t p_vertex) {
       for (unsigned int i = 0; i < count; ++i) {
          graph_add_edge(data_edges[i]);
       }
-      for (unsigned int i = 0; i < vertices_map.size(); ++i )
-         graph[i].id = vertices_map.right.find(i)->second;
+      for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i )
+         graph[i].id = gVertices_map.find(i)->second;
     }
 };
 

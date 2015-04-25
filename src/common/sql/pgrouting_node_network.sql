@@ -36,7 +36,7 @@ DECLARE
 BEGIN
   raise notice 'PROCESSING:'; 
   raise notice 'pgr_nodeNetwork(''%'',%,''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,table_ending;
-  raise notice 'Performing checks, pelase wait .....';
+  raise notice 'Performing checks, please wait .....';
   execute 'show client_min_messages' into debuglevel;
 
   BEGIN
@@ -147,7 +147,7 @@ BEGIN
 ----------------
 
 
-  raise notice 'Processing, pelase wait .....';
+  raise notice 'Processing, please wait .....';
 
 
     if pgis_ver_old then

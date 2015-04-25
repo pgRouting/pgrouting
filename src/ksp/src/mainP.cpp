@@ -47,7 +47,6 @@ void import_from_file(const std::string &input_file_name, pgr_edge_t *edges, uns
                 ifs >> edges[i].target;
                 ifs >> edges[i].cost;
                 ifs >> edges[i].reverse_cost;
- edges[i].reverse_cost=-1;
                 // when loading checking if start and end are found
                 if (!s_found)
                    s_found = ((edges[i].source == start_vertex) || (edges[i].target == end_vertex));
@@ -98,8 +97,6 @@ int main(int ac, char* av[]) {
     int directedFlag(vm["directed"].as<bool>());
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
     bool found = false;
-//    int result_size;
-//    float8 total_cost;
 
     Path path;
     import_from_file(fileName, data_edges, &count, start_vertex, end_vertex, found);
@@ -118,7 +115,7 @@ int main(int ac, char* av[]) {
 
     const int initial_size = 1;
 
-#if 0
+#if 1
     // no size overhead because the graph is empty
     // have them available thru out the code
     Pgr_dijkstra< DirectedGraph > digraph(gType, initial_size);
@@ -126,7 +123,7 @@ int main(int ac, char* av[]) {
 
     if (directedFlag) {
 
-      std::cout << "DIRECTED GRAPH DEMO\n";
+      std::cout << "DIJKSTRA DIRECTED GRAPH DEMO\n";
       digraph.initialize_graph(data_edges, count);
       digraph.process_dijkstra(path, start_vertex, end_vertex);
       std::cout << "THE GRAPH \n";
@@ -134,7 +131,7 @@ int main(int ac, char* av[]) {
 
 
    } else {
-      std::cout << "UNDIRECTED GRAPH DEMO\n";
+      std::cout << "DIJKSTRA UNDIRECTED GRAPH DEMO\n";
       undigraph.initialize_graph(data_edges, count);
       undigraph.process_dijkstra(path, start_vertex, end_vertex);
 
