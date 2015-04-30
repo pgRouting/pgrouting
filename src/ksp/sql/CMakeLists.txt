@@ -1,7 +1,7 @@
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/routing_ksp.sql 
-    ${CMAKE_CURRENT_SOURCE_DIR}/pgr_costresult3big.sql 
+#    ${CMAKE_CURRENT_SOURCE_DIR}/pgr_costresult3big.sql 
 #    ${CMAKE_CURRENT_SOURCE_DIR}/pgr_parameter_check.sql
   )
         
