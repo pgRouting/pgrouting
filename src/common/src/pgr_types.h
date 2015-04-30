@@ -5,13 +5,13 @@
 
 
 
-typedef struct ksp_path_element
+typedef struct path_element3
 {
     int route_id;
     int64_t vertex_id;
     int64_t edge_id;
     float8 cost;
-} ksp_path_element_t;
+} pgr_path_element3_t;
 
 
 

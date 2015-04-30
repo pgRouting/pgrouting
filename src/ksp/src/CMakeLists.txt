@@ -14,6 +14,8 @@ endif(APPLE)
 set(routing_ksp_SRCS ./../../dijkstra/src/pgr_dijkstra.hpp 
                      ./../../common/src/baseGraph.hpp 
                      ./../../common/src/basePath_SSEC.hpp 
+                     ./../../common/src/postgres_connection.h 
+                     ./../../common/src/postgres_connection.c 
                      pgr_ksp.hpp
                      ksp.c ksp.h 
                      KSPDriver.cpp KSPDriver.h 

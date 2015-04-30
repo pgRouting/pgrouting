@@ -37,7 +37,7 @@ extern "C" {
 int  doKpaths(pgr_edge_t  * edges, int64_t total_tuples,
                       int64_t  start_vertex, int64_t end_vertex,
                       int no_paths, bool has_reverse_cost, bool directed,
-                      ksp_path_element_t **ksp_path, int *path_count,
+                      pgr_path_element3_t **ksp_path, int *path_count,
                       char ** err_msg);
 
 #ifdef __cplusplus
