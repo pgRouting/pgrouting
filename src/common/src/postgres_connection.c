@@ -47,61 +47,131 @@ int pgr_finish(int code, int ret)
   }			
   return ret;
 }
-			  
-int pgr_fetch_edge_columns(
-     SPITupleTable *tuptable,
-     int edge_columns[], 
-     bool has_rcost) {
 
-  bool error;
-  edge_columns[0] = SPI_fnumber(SPI_tuptable->tupdesc, "id");
-  edge_columns[1] = SPI_fnumber(SPI_tuptable->tupdesc, "source");
-  edge_columns[2] = SPI_fnumber(SPI_tuptable->tupdesc, "target");
-  edge_columns[3] = SPI_fnumber(SPI_tuptable->tupdesc, "cost");
-  if (has_rcost) {
-    edge_columns[4] = SPI_fnumber(SPI_tuptable->tupdesc, "reverse_cost");
-    error = (edge_columns[4] == SPI_ERROR_NOATTRIBUTE);
 
+
+#if 0
+int pgr_fetch_edge_columns(SPITupleTable *tuptable, pgr_edge_t *edge_columns, 
+                   bool has_reverse_cost)
+{
+  edge_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
+  edge_columns->source = SPI_fnumber(SPI_tuptable->tupdesc, "source");
+  edge_columns->target = SPI_fnumber(SPI_tuptable->tupdesc, "target");
+  edge_columns->cost = SPI_fnumber(SPI_tuptable->tupdesc, "cost");
+
+  DBG("columns: id %ld source %ld target %ld cost %f", 
+      edge_columns->id, edge_columns->source, 
+      edge_columns->target, edge_columns->cost);
+
+  if (has_reverse_cost) {
+    edge_columns->reverse_cost = SPI_fnumber(SPI_tuptable->tupdesc, 
+                                               "reverse_cost");
+
+    DBG("columns: reverse_cost cost %f", edge_columns->reverse_cost);
   }
-
-  int i;
-  for (i = 0; i < 4; ++i)
-    error = error || (edge_columns[i] == SPI_ERROR_NOATTRIBUTE);
-
-  return error? 0: -1;
+    
+  return 0;
 }
 
 void pgr_fetch_edge(
    HeapTuple *tuple,
    TupleDesc *tupdesc, 
-   int edge_columns[],
+   //int edge_columns[],
+   pgr_edge_t *edge_columns,
    pgr_edge_t *target_edge,
    bool has_rcost) {
+
   Datum binval;
   bool isnull;
 
-  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns[0], &isnull);
+  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->id, &isnull);
   if (isnull)
     elog(ERROR, "id contains a null value");
   target_edge->id = DatumGetInt64(binval);
 
-  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns[1], &isnull);
+  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->source, &isnull);
   if (isnull)
     elog(ERROR, "source contains a null value");
   target_edge->source = DatumGetInt64(binval);
 
-  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns[2], &isnull);
+  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->target, &isnull);
   if (isnull)
     elog(ERROR, "target contains a null value");
   target_edge->target = DatumGetInt64(binval);
 
-  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns[3], &isnull);
+  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->cost, &isnull);
   if (isnull)
     elog(ERROR, "cost contains a null value");
   target_edge->cost = DatumGetFloat8(binval);
 
   if (has_rcost) {
-    binval = SPI_getbinval(*tuple, *tupdesc, edge_columns[4], &isnull);
+    binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->reverse_cost, &isnull);
+    if (isnull)
+      elog(ERROR, "reverse_cost contains a null value");
+    target_edge->reverse_cost =  DatumGetFloat8(binval);
+  } else {
+    target_edge->reverse_cost = -1.0;
+  }
+}
+#endif
+
+
+
+#if 1			  
+int pgr_fetch_edge_columns(
+     SPITupleTable *tuptable,
+     int (*edge_columns)[5], 
+     bool has_rcost) {
+
+  bool error;
+  (*edge_columns)[0] = SPI_fnumber(SPI_tuptable->tupdesc, "id");
+  (*edge_columns)[1] = SPI_fnumber(SPI_tuptable->tupdesc, "source");
+  (*edge_columns)[2] = SPI_fnumber(SPI_tuptable->tupdesc, "target");
+  (*edge_columns)[3] = SPI_fnumber(SPI_tuptable->tupdesc, "cost");
+  if (has_rcost) {
+    (*edge_columns)[4] = SPI_fnumber(SPI_tuptable->tupdesc, "reverse_cost");
+    error = ((*edge_columns[4]) == SPI_ERROR_NOATTRIBUTE);
+  }
+
+  int i;
+  for (i = 0; i < 4; ++i)
+    error = error || ((*edge_columns)[i] == SPI_ERROR_NOATTRIBUTE);
+
+  return error? -1: 0;
+}
+#endif
+
+void pgr_fetch_edge(
+   HeapTuple *tuple,
+   TupleDesc *tupdesc, 
+   int (*edge_columns)[5],
+   pgr_edge_t *target_edge,
+   bool has_rcost) {
+  Datum binval;
+  bool isnull;
+
+  binval = SPI_getbinval(*tuple, *tupdesc, (*edge_columns)[0], &isnull);
+  if (isnull)
+    elog(ERROR, "id contains a null value");
+  target_edge->id = DatumGetInt64(binval);
+
+  binval = SPI_getbinval(*tuple, *tupdesc, (*edge_columns)[1], &isnull);
+  if (isnull)
+    elog(ERROR, "source contains a null value");
+  target_edge->source = DatumGetInt64(binval);
+
+  binval = SPI_getbinval(*tuple, *tupdesc, (*edge_columns)[2], &isnull);
+  if (isnull)
+    elog(ERROR, "target contains a null value");
+  target_edge->target = DatumGetInt64(binval);
+
+  binval = SPI_getbinval(*tuple, *tupdesc, (*edge_columns)[3], &isnull);
+  if (isnull)
+    elog(ERROR, "cost contains a null value");
+  target_edge->cost = DatumGetFloat8(binval);
+
+  if (has_rcost) {
+    binval = SPI_getbinval(*tuple, *tupdesc, (*edge_columns)[4], &isnull);
     if (isnull)
       elog(ERROR, "reverse_cost contains a null value");
     target_edge->reverse_cost =  DatumGetFloat8(binval);
@@ -112,7 +182,7 @@ void pgr_fetch_edge(
 }
 
 
-
+#if 0
 int pgr_retrieve_data_from_sql(
     char *sql,
     pgr_edge_t *edges,
@@ -237,7 +307,7 @@ int pgr_retrieve_data_from_sql(
   DBG("Total %ld tuples in query", total_tuples);
   return SPIcode;
 }
-
+#endif
 
 pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path){
 	if(path ==0  ){
