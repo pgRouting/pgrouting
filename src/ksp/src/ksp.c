@@ -121,8 +121,6 @@ kshortest_path(PG_FUNCTION_ARGS) {
       values = (Datum *)palloc(5 * sizeof(Datum));
       nulls = (bool *) palloc(5 * sizeof(bool));
 
-
-
       values[0] = Int32GetDatum(call_cntr);
       nulls[0] = false;
 
