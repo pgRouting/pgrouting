@@ -29,6 +29,7 @@
 #endif
 
 #include "./../../common/src/pgr_types.h"
+//#define DEBUG 1
 #include "./../../common/src/postgres_connection.h"
 #include "./ksp.h"
 #include "./ksp_driver.h"
@@ -40,13 +41,6 @@ PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
 #endif  // _MSC_VER
 
 
-#define DEBUG 1
-#ifdef DEBUG
-#define kspDBG(format, arg...) \
-elog(NOTICE, format , ## arg)
-#else
-#define kspDBG(format, arg...) do { ; } while (0)
-#endif
 
 
 
@@ -83,7 +77,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-      ret = compute_kshortest_path(
+      ret = compute(
               pgr_text2char(PG_GETARG_TEXT_P(0)), /* SQL  */
               PG_GETARG_INT64(1),   /* source id */
               PG_GETARG_INT64(2),   /* target_id */
@@ -94,7 +88,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
               &path_count);
       toDel = path;
 
-      kspDBG("Total number of tuples to be returned %i ", path_count);
+      PGR_DBG("Total number of tuples to be returned %i ", path_count);
 
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;
@@ -163,7 +157,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
 
 
 
-int compute_kshortest_path(char* sql, int64_t start_vertex,
+int compute(char* sql, int64_t start_vertex,
          int64_t end_vertex, int no_paths,
          bool has_rcost, bool directed,
          pgr_path_element3_t **ksp_path, int *path_count) {
@@ -178,117 +172,22 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
   char *err_msg = (char *)"";
   int ret = -1;
 
-  DBG("Entering compute");
+  if (start_vertex == end_vertex) {
+      elog(ERROR, "Starting vertex and Ending Vertex are equal");
+      return -1;
+  }
 
+  PGR_DBG("Load data");
   bool sourceFound = false;
   bool targetFound = false;
   SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
                start_vertex, end_vertex, &sourceFound, &targetFound);
   if (SPIcode == -1) {
-    kspDBG("Error getting data\n");
+    PGR_DBG("Error getting data\n");
     return SPIcode;
   } 
 
-  kspDBG("Total %ld tuples in query:", total_tuples);
-  kspDBG("Calling do_pgr_ksp\n");
-
-
-#if 0
-#if 1
-  // order: id, source, target, cost, reverse_cost
-  int edge_columns[5];
-  int i;
-  for (i = 0; i < 5; ++i) edge_columns[i] = -1;
-
-  kspDBG("Starting process");
-
-#else
-#ifndef _MSC_VER
-  pgr_edge_t edge_columns = {.id = -1, .source = -1, .target = -1,
-                                 .cost = -1, .reverse_cost = -1};
-#else  // _MSC_VER
-  pgr_edge_t edge_columns = {-1, -1, -1, -1, -1};
-#endif  // _MSC_VER
-#endif
-
-
-  char *err_msg = (char *)"";
-  int ret = -1;
-// ****************  LOAD DATA
-  kspDBG("Starting kshortest_path %s\n", sql);
-  SPIcode = SPI_connect();
-  if (SPIcode != SPI_OK_CONNECT) {
-      elog(ERROR, "kshortest_path: couldn't open a connection to SPI");
-      return -1;
-  }
-
-  SPIplan = SPI_prepare(sql, 0, NULL);
-  if (SPIplan  == NULL) {
-      elog(ERROR, "kshortest_path: couldn't create query plan via SPI");
-      return -1;
-  }
-
-  if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
-      elog(ERROR, "shortest_path: SPI_cursor_open('%s') returns NULL", sql);
-      return -1;
-  }
-
-
-  /* proceed to read the data from the query */
-  while (moredata == TRUE) {
-      SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
-
-      /*  on the first tuple get the column numbers */
-      if (edge_columns[0] == -1) {
-        kspDBG("Fetching column numbers");
-        if (pgr_fetch_edge_columns(SPI_tuptable, &edge_columns,
-                                 has_rcost) == -1)
-           return pgr_finish(SPIcode, ret);
-        kspDBG("Finished fetching columnnumbers");
-      }
-
-      ntuples = SPI_processed;
-      total_tuples += ntuples;
-
-      if (!edges)
-        edges = (pgr_edge_t *)palloc(total_tuples * sizeof(pgr_edge_t));
-      else
-        edges = (pgr_edge_t *)repalloc(edges, total_tuples * sizeof(pgr_edge_t));
-
-    if (edges == NULL) {
-          elog(ERROR, "Out of memory");
-        return pgr_finish(SPIcode, ret);
-    }
-
-    if (ntuples > 0) {
-        int t;
-        SPITupleTable *tuptable = SPI_tuptable;
-        TupleDesc tupdesc = SPI_tuptable->tupdesc;
-
-        for (t = 0; t < ntuples; t++) {
-            HeapTuple tuple = tuptable->vals[t];
-            pgr_fetch_edge(&tuple, &tupdesc, &edge_columns,
-                       &edges[total_tuples - ntuples + t], has_rcost);
-
-            if (!sourceFound
-                 && ((edges[total_tuples - ntuples + t].source == start_vertex)
-                 || (edges[total_tuples - ntuples + t].source == start_vertex))) {
-                    sourceFound = true;
-            }
-            if (!targetFound
-                 && ((edges[total_tuples - ntuples + t].target == end_vertex)
-                 || (edges[total_tuples - ntuples + t].target == end_vertex))) {
-                  targetFound = true;
-            }
-        }
-          SPI_freetuptable(tuptable);
-     } else {
-          moredata = FALSE;
-     }
-  }
-// ***********************
-#endif
-
+  PGR_DBG("Total %ld tuples in query:", total_tuples);
 
   if (!sourceFound) {
       elog(ERROR, "Starting Vertex does not exist in the data");
@@ -298,25 +197,15 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
       elog(ERROR, "Ending Vertex does not exist in the data");
       return -1;
   }
-  if (start_vertex == end_vertex) {
-      elog(ERROR, "Starting vertex and Ending Vertex are equal");
-      return -1;
-  }
 
-
-#if 0
-  int i;
-  for (i = 0; i < total_tuples; ++i)
-    kspDBG("%i = %li\n", i, edges[i].id);
-#endif
-
+  PGR_DBG("Calling do_pgr_ksp\n");
   ret = do_pgr_ksp(edges, total_tuples,
             start_vertex, end_vertex,
                        no_paths, has_rcost, directed,
                        ksp_path, path_count, &err_msg);
-  kspDBG("total tuples found %i\n", *path_count);
-  kspDBG("Exist Status = %i\n", ret);
-  kspDBG("Returned message = %s\n", err_msg);
+  PGR_DBG("total tuples found %i\n", *path_count);
+  PGR_DBG("Exist Status = %i\n", ret);
+  PGR_DBG("Returned message = %s\n", err_msg);
 
 
 

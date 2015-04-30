@@ -28,7 +28,6 @@
 #include "postgres.h"
 
 #undef DEBUG
-//#define DEBUG
 
 #ifdef __cplusplus
 extern "C"
@@ -38,15 +37,11 @@ extern "C"
 
 #include "./../../common/src/pgr_types.h"
 
-int compute_kshortest_path(char* sql, int64_t start_vertex, 
-                                 int64_t end_vertex, int no_paths, 
-                                 bool has_reverse_cost, bool directedFlag,
-                                 pgr_path_element3_t **path, int *ksp_path_count) ;
+int compute(char* sql, int64_t start_vertex, 
+            int64_t end_vertex, int no_paths, 
+            bool has_reverse_cost, bool directedFlag,
+            pgr_path_element3_t **path, int *ksp_path_count) ;
 
-//ksp_path_element_t * get_ksp_memory(int, ksp_path_element_t *path);
-
-
-//extern void kspDBG(const char* format, ...);
 #ifdef __cplusplus
 }
 #endif

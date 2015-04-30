@@ -126,7 +126,7 @@ int pgr_get_data(
     int64_t end_vertex,
     bool *sourceFound,
     bool *targetFound) {
-  DBG("Entering pgr_get_data");
+  PGR_DBG("Entering pgr_get_data");
 
   (*sourceFound) = false;
   (*targetFound) = false;
@@ -136,18 +136,10 @@ int pgr_get_data(
   int edge_columns[5];
   int i;
   for (i = 0; i < 5; ++i) edge_columns[i] = -1;
-#if 0
-#ifndef _MSC_VER
-  pgr_edge_t edge_columns = {.id= -1, .source= -1, .target= -1, 
-                                 .cost= -1, .reverse_cost= -1};
-#else // _MSC_VER
-  pgr_edge_t edge_columns = {-1, -1, -1, -1, -1};
-#endif // _MSC_VER
-#endif
   int ret = -1;
 
         
-  DBG("Connecting to SPI");
+  PGR_DBG("Connecting to SPI");
   int SPIcode;
   SPIcode = SPI_connect();
   if (SPIcode  != SPI_OK_CONNECT) {
@@ -155,7 +147,7 @@ int pgr_get_data(
       return -1;
   }
 
-  DBG("Preparing Plan");
+  PGR_DBG("Preparing Plan");
   void *SPIplan;
   SPIplan = SPI_prepare(sql, 0, NULL);
   if (SPIplan  == NULL) {
@@ -163,7 +155,7 @@ int pgr_get_data(
       return -1;
   }
 
-  DBG("Opening Portal");
+  PGR_DBG("Opening Portal");
   Portal SPIportal;
   if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
       elog(ERROR, "shortest_path: SPI_cursor_open('%s') returns NULL", sql);
@@ -171,7 +163,7 @@ int pgr_get_data(
   }
 
 
-  DBG("Starting Cycle");
+  PGR_DBG("Starting Cycle");
   bool moredata = TRUE;
   (*totalTuples) = total_tuples = 0;
   while (moredata == TRUE) {
@@ -179,22 +171,22 @@ int pgr_get_data(
 
       /*  on the first tuple get the column numbers */
       if (edge_columns[0] == -1) {
-        DBG("Fetching column numbers");
+        PGR_DBG("Fetching column numbers");
         if (pgr_fetch_edge_columns(SPI_tuptable, &edge_columns,
                                  has_rcost) == -1)
            return pgr_finish(SPIcode, ret);
-        DBG("Finished fetching column numbers");
+        PGR_DBG("Finished fetching column numbers");
       }
 
       ntuples = SPI_processed;
       total_tuples += ntuples;
 
-      DBG("Getting Memory");
+      PGR_DBG("Getting Memory");
       if ((*edges) == NULL)
         (*edges) = (pgr_edge_t *)palloc(total_tuples * sizeof(pgr_edge_t));
       else
         (*edges) = (pgr_edge_t *)repalloc((*edges), total_tuples * sizeof(pgr_edge_t));
-      DBG("Got Memory");
+      PGR_DBG("Got Memory");
 
       if ((*edges) == NULL) {
           elog(ERROR, "Out of memory");
@@ -226,8 +218,19 @@ int pgr_get_data(
       } else {
           moredata = FALSE;
       }
-    }
+  }
 
+  
+  if (! (*sourceFound)) {
+      elog(ERROR, "Starting Vertex does not exist in the data");
+          return pgr_finish(SPIcode, ret);	  
+      return -1;
+  }
+  if (! (*targetFound)) {
+      elog(ERROR, "Ending Vertex does not exist in the data");
+          return pgr_finish(SPIcode, ret);	  
+      return -1;
+  }
 
   (*totalTuples) = total_tuples;
   return 0;

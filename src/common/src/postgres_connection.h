@@ -28,12 +28,11 @@
 #include "postgres_connection.h"
 
 
-#define DEBUG 1
 #ifdef DEBUG 
-#define DBG(format, arg...) \
+#define PGR_DBG(format, arg...) \
 elog(NOTICE, format , ## arg)
 #else
-#define DBG(format, arg...) do { ; } while (0)
+#define PGR_DBG(format, arg...) do { ; } while (0)
 #endif
 
 
