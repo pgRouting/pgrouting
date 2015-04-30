@@ -93,18 +93,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
               &path,
               &path_count);
       toDel = path;
-#ifdef ZDEBUG
-      if (ret > = 0) {
-          int i;
 
-          for (i = 0; i < path_count; i++) {
-              kspDBG("Step %i route_id  %d ", i, path[i].route_id);
-              kspDBG("        vertex_id  %ld ", path[i].vertex_id);
-              kspDBG("        edge_id    %ld ", path[i].edge_id);
-              kspDBG("        cost       %f ", path[i].cost);
-            }
-        }
-#endif
       kspDBG("Total number of tuples to be returned %i ", path_count);
 
       /* total number of tuples to be returned */
@@ -317,15 +306,4 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
   return pgr_finish(SPIcode, ret);
 }
 
-#if 0
-// path gets size big
-ksp_path_element_t * get_ksp_memory(int size, ksp_path_element_t *path) {
-    if (path == 0) {
-        path = malloc(size * sizeof(ksp_path_element_t));
-    } else {
-        path = realloc(path, size * sizeof(ksp_path_element_t));
-    }
-    return path;
-}
-#endif
 
