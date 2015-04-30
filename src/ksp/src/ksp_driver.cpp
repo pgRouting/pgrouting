@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
 
-#include "./KSPDriver.h"
+#include "./ksp_driver.h"
 
 extern "C" {
 #include "postgres.h"
@@ -45,7 +45,7 @@ static  void dpPrint(
                      pgr_path_element3_t **path,
                      int &sequence, int route_id, std::ostream &log);
 
-static  pgr_path_element3_t * noPathFound(int64_t start_id);
+//static  pgr_path_element3_t * noPathFound(int64_t start_id);
 
 int  doKpaths(pgr_edge_t  *data_edges, int64_t total_tuples,
                        int64_t  start_vertex, int64_t  end_vertex,
@@ -105,7 +105,7 @@ int  doKpaths(pgr_edge_t  *data_edges, int64_t total_tuples,
         int sequence = 0;
         for (unsigned int route_id = 0; route_id < paths.size(); route_id++) {
           if (paths[route_id].path.size() > 0)
-               dpPrint(paths[route_id], ksp_path, sequence, route_id, log);
+               dpPrint3(paths[route_id], ksp_path, sequence, route_id, log);
 #if 0
           paths[route_id].print_path(log);
 #endif
@@ -161,6 +161,7 @@ static void dpPrint(
         }
 }
 
+#if 0
 static  pgr_path_element3_t * noPathFound(int64_t start_id) {
         pgr_path_element3_t *no_path;
         no_path = pgr_get_memory3(1, no_path);
@@ -170,4 +171,5 @@ static  pgr_path_element3_t * noPathFound(int64_t start_id) {
         no_path[0].edge_id = -1;
         return no_path;
 }
+#endif
 

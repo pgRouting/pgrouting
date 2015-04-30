@@ -31,7 +31,7 @@
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./ksp.h"
-#include "./KSPDriver.h"
+#include "./ksp_driver.h"
 
 #ifndef _MSC_VER
 Datum kshortest_path(PG_FUNCTION_ARGS);

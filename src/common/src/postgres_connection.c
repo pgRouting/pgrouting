@@ -317,3 +317,15 @@ pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path){
 	}
 	return path;
 }
+
+
+pgr_path_element3_t * noPathFound3(int64_t start_id) {
+        pgr_path_element3_t *no_path;
+        no_path = pgr_get_memory3(1, no_path);
+        no_path[0].route_id  = 0;
+        no_path[0].vertex_id = start_id;
+        no_path[0].cost = 0;
+        no_path[0].edge_id = -1;
+        return no_path;
+}
+

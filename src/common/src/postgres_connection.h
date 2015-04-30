@@ -41,22 +41,20 @@ extern "C"
 {
 #endif
 
-char * pgr_text2char(text *in);
-int pgr_finish(int code, int ret);
+  char * pgr_text2char(text *in);
+  int pgr_finish(int code, int ret);
+  void dpPrint3(
+    const Path &thePath,
+    pgr_path_element3_t **path,
+    int &sequence,
+    int route_id,
+    std::ostream &log);
 			  
-#if 1
 int pgr_fetch_edge_columns(SPITupleTable *tuptable, int (*edge_columns)[5], 
                    bool has_reverse_cost);
 void pgr_fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc, 
            int (*edge_columns)[5], pgr_edge_t *target_edge,
            bool has_rcost);
-#else
-int pgr_fetch_edge_columns(SPITupleTable *tuptable,  pgr_edge_t *edge_columns, 
-                   bool has_reverse_cost);
-void pgr_fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc, 
-           pgr_edge_t *edge_columns, pgr_edge_t *target_edge,
-           bool has_rcost);
-#endif
 
 pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path);
 int pgr_retrieve_data_from_sql(
