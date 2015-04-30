@@ -85,7 +85,7 @@ int  doKpaths(pgr_edge_t  *data_edges, int64_t total_tuples,
         if (paths.size() == 0) {
             *err_msg = strdup("NOTICE: No path found between Starting and Ending vertices");
             (*path_count) = 1;
-            *ksp_path = noPathFound(start_vertex);
+            *ksp_path = noPathFound3(start_vertex);
             return 0;
         }
 
@@ -105,7 +105,7 @@ int  doKpaths(pgr_edge_t  *data_edges, int64_t total_tuples,
         int sequence = 0;
         for (unsigned int route_id = 0; route_id < paths.size(); route_id++) {
           if (paths[route_id].path.size() > 0)
-               dpPrint3(paths[route_id], ksp_path, sequence, route_id, log);
+               dpPrint(paths[route_id], ksp_path, sequence, route_id, log);
 #if 0
           paths[route_id].print_path(log);
 #endif
