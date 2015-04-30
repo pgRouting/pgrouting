@@ -47,7 +47,7 @@ static  void dpPrint(
 
 //static  pgr_path_element3_t * noPathFound(int64_t start_id);
 
-int  doKpaths(pgr_edge_t  *data_edges, int64_t total_tuples,
+int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
                        int64_t  start_vertex, int64_t  end_vertex,
                        int no_paths, bool has_reverse_cost, bool directedFlag,
                        pgr_path_element3_t **ksp_path, int *path_count,

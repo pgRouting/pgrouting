@@ -165,7 +165,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
 
 int compute_kshortest_path(char* sql, int64_t start_vertex,
          int64_t end_vertex, int no_paths,
-         bool has_reverse_cost, bool directed,
+         bool has_rcost, bool directed,
          pgr_path_element3_t **ksp_path, int *path_count) {
   int SPIcode;
   void *SPIplan;
@@ -174,6 +174,26 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
   int ntuples;
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
+
+  char *err_msg = (char *)"";
+  int ret = -1;
+
+  DBG("Entering compute");
+
+  bool sourceFound = false;
+  bool targetFound = false;
+  SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
+               start_vertex, end_vertex, &sourceFound, &targetFound);
+  if (SPIcode == -1) {
+    kspDBG("Error getting data\n");
+    return SPIcode;
+  } 
+
+  kspDBG("Total %ld tuples in query:", total_tuples);
+  kspDBG("Calling do_pgr_ksp\n");
+
+
+#if 0
 #if 1
   // order: id, source, target, cost, reverse_cost
   int edge_columns[5];
@@ -191,12 +211,10 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
 #endif  // _MSC_VER
 #endif
 
-  bool sourceFound = false;
-  bool targetFound = false;
 
   char *err_msg = (char *)"";
   int ret = -1;
-
+// ****************  LOAD DATA
   kspDBG("Starting kshortest_path %s\n", sql);
   SPIcode = SPI_connect();
   if (SPIcode != SPI_OK_CONNECT) {
@@ -224,7 +242,7 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
       if (edge_columns[0] == -1) {
         kspDBG("Fetching column numbers");
         if (pgr_fetch_edge_columns(SPI_tuptable, &edge_columns,
-                                 has_reverse_cost) == -1)
+                                 has_rcost) == -1)
            return pgr_finish(SPIcode, ret);
         kspDBG("Finished fetching columnnumbers");
       }
@@ -240,34 +258,36 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
     if (edges == NULL) {
           elog(ERROR, "Out of memory");
         return pgr_finish(SPIcode, ret);
-        }
+    }
 
-      if (ntuples > 0) {
-          int t;
-          SPITupleTable *tuptable = SPI_tuptable;
-          TupleDesc tupdesc = SPI_tuptable->tupdesc;
+    if (ntuples > 0) {
+        int t;
+        SPITupleTable *tuptable = SPI_tuptable;
+        TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
-          for (t = 0; t < ntuples; t++) {
-              HeapTuple tuple = tuptable->vals[t];
-              pgr_fetch_edge(&tuple, &tupdesc, &edge_columns,
-                         &edges[total_tuples - ntuples + t], has_reverse_cost);
+        for (t = 0; t < ntuples; t++) {
+            HeapTuple tuple = tuptable->vals[t];
+            pgr_fetch_edge(&tuple, &tupdesc, &edge_columns,
+                       &edges[total_tuples - ntuples + t], has_rcost);
 
-              if (!sourceFound
+            if (!sourceFound
                  && ((edges[total_tuples - ntuples + t].source == start_vertex)
                  || (edges[total_tuples - ntuples + t].source == start_vertex))) {
                     sourceFound = true;
-              }
-              if (!targetFound
+            }
+            if (!targetFound
                  && ((edges[total_tuples - ntuples + t].target == end_vertex)
                  || (edges[total_tuples - ntuples + t].target == end_vertex))) {
                   targetFound = true;
-             }
-          }
-          SPI_freetuptable(tuptable);
-        } else {
-          moredata = FALSE;
+            }
         }
-    }
+          SPI_freetuptable(tuptable);
+     } else {
+          moredata = FALSE;
+     }
+  }
+// ***********************
+#endif
 
 
   if (!sourceFound) {
@@ -283,13 +303,16 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
       return -1;
   }
 
-  kspDBG("Total %ld tuples in query", total_tuples);
 
-  kspDBG("Calling doKpaths\n");
+#if 0
+  int i;
+  for (i = 0; i < total_tuples; ++i)
+    kspDBG("%i = %li\n", i, edges[i].id);
+#endif
 
-  ret = doKpaths(edges, total_tuples,
+  ret = do_pgr_ksp(edges, total_tuples,
             start_vertex, end_vertex,
-                       no_paths, has_reverse_cost, directed,
+                       no_paths, has_rcost, directed,
                        ksp_path, path_count, &err_msg);
   kspDBG("total tuples found %i\n", *path_count);
   kspDBG("Exist Status = %i\n", ret);

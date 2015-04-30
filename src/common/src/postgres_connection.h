@@ -28,6 +28,7 @@
 #include "postgres_connection.h"
 
 
+#define DEBUG 1
 #ifdef DEBUG 
 #define DBG(format, arg...) \
 elog(NOTICE, format , ## arg)
@@ -52,13 +53,16 @@ extern "C"
            bool has_rcost);
 
   pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path);
-  int pgr_retrieve_data_from_sql(
+  int pgr_get_data(
       char *sql,
-      pgr_edge_t * edges,
+      pgr_edge_t **edges,
       long *total_tuples,
       bool has_reverse_cost,
       int64_t start_Vertex,
-      int64_t end_vertex);
+      int64_t end_vertex,
+      bool *sourceFound,
+      bool *targetFound);
+
 
 
 #ifdef __cplusplus
