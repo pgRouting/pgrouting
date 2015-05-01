@@ -60,20 +60,21 @@ int pgr_fetch_edge_columns(
      int (*edge_columns)[5], 
      bool has_rcost) {
 
-  bool error;
+  bool error = false;
   (*edge_columns)[0] = SPI_fnumber(SPI_tuptable->tupdesc, "id");
   (*edge_columns)[1] = SPI_fnumber(SPI_tuptable->tupdesc, "source");
   (*edge_columns)[2] = SPI_fnumber(SPI_tuptable->tupdesc, "target");
   (*edge_columns)[3] = SPI_fnumber(SPI_tuptable->tupdesc, "cost");
   if (has_rcost) {
     (*edge_columns)[4] = SPI_fnumber(SPI_tuptable->tupdesc, "reverse_cost");
-    error = ((*edge_columns[4]) == SPI_ERROR_NOATTRIBUTE);
+    error = ((*edge_columns)[4] == SPI_ERROR_NOATTRIBUTE);
+    if (error)  elog(ERROR, "Fetching columns in reverse_Cost");
   }
 
   int i;
   for (i = 0; i < 4; ++i)
     error = error || ((*edge_columns)[i] == SPI_ERROR_NOATTRIBUTE);
-
+  if (error)  elog(ERROR, "Fetching columns");
   return error? -1: 0;
 }
 
@@ -123,13 +124,11 @@ int pgr_get_data(
     int64_t *totalTuples,
     bool has_rcost,
     int64_t start_vertex,
-    int64_t end_vertex,
-    bool *sourceFound,
-    bool *targetFound) {
+    int64_t end_vertex) {
   PGR_DBG("Entering pgr_get_data");
 
-  (*sourceFound) = false;
-  (*targetFound) = false;
+  bool sourceFound = false;
+  bool targetFound = false;
   int ntuples;
   int64_t total_tuples;
 
@@ -203,15 +202,15 @@ int pgr_get_data(
               pgr_fetch_edge(&tuple, &tupdesc, &edge_columns,
                          &(*edges)[total_tuples - ntuples + t], has_rcost);
 
-              if (!(*sourceFound)
+              if (!sourceFound
                  && (((*edges)[total_tuples - ntuples + t].source == start_vertex)
                  || ((*edges)[total_tuples - ntuples + t].source == start_vertex))) {
-                    (*sourceFound) = true;
+                    sourceFound = true;
               }
-              if (!(*targetFound)
+              if (!targetFound
                  && (((*edges)[total_tuples - ntuples + t].target == end_vertex)
                  || ((*edges)[total_tuples - ntuples + t].target == end_vertex))) {
-                  (*targetFound) = true;
+                  targetFound = true;
              }
            }
            SPI_freetuptable(tuptable);
@@ -221,12 +220,12 @@ int pgr_get_data(
   }
 
   
-  if (! (*sourceFound)) {
+  if (!sourceFound) {
       elog(ERROR, "Starting Vertex does not exist in the data");
           return pgr_finish(SPIcode, ret);	  
       return -1;
   }
-  if (! (*targetFound)) {
+  if (!targetFound) {
       elog(ERROR, "Ending Vertex does not exist in the data");
           return pgr_finish(SPIcode, ret);	  
       return -1;

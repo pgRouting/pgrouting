@@ -43,7 +43,6 @@ extern "C"
 
   char * pgr_text2char(text *in);
   int pgr_finish(int code, int ret);
-  pgr_path_element3_t * noPathFound3(int64_t start_id);
 			  
   int pgr_fetch_edge_columns(SPITupleTable *tuptable, int (*edge_columns)[5], 
                    bool has_reverse_cost);
@@ -51,18 +50,26 @@ extern "C"
            int (*edge_columns)[5], pgr_edge_t *target_edge,
            bool has_rcost);
 
-  pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path);
-  int pgr_get_data(
+  /*! 
+   Signature 1:
+      bigint id,
+      bigint source,
+      bigint target,
+      float cost
+      float reverse_cost
+  */
+  int pgr_get_data_signature_1(
       char *sql,
       pgr_edge_t **edges,
       long *total_tuples,
-      bool has_reverse_cost,
+      bool has_rcost,
       int64_t start_Vertex,
-      int64_t end_vertex,
-      bool *sourceFound,
-      bool *targetFound);
+      int64_t end_vertex);
 
 
+  // output corresponding to costResult3Big
+  pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path);
+  pgr_path_element3_t * noPathFound3(int64_t start_id);
 
 #ifdef __cplusplus
 }

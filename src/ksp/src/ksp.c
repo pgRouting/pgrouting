@@ -30,6 +30,7 @@
 
 #include "./../../common/src/pgr_types.h"
 //#define DEBUG 1
+#undef DEBUG
 #include "./../../common/src/postgres_connection.h"
 #include "./ksp.h"
 #include "./ksp_driver.h"
@@ -186,7 +187,7 @@ int compute(char* sql, int64_t start_vertex,
   } 
 
   PGR_DBG("Total %ld tuples in query:", total_tuples);
-
+#if 0
   if (!sourceFound) {
       elog(ERROR, "Starting Vertex does not exist in the data");
       return -1;
@@ -195,7 +196,7 @@ int compute(char* sql, int64_t start_vertex,
       elog(ERROR, "Ending Vertex does not exist in the data");
       return -1;
   }
-
+#endif
   PGR_DBG("Calling do_pgr_ksp\n");
   ret = do_pgr_ksp(edges, total_tuples,
             start_vertex, end_vertex,
