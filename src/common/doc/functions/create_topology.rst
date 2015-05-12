@@ -35,7 +35,7 @@ The function returns:
 	varchar pgr_createTopology(text edge_table, double precision tolerance, 
                            text the_geom:='the_geom', text id:='id',
                            text source:='source',text target:='target',
-                           text rows_where:='true', clean:=false)
+                           text rows_where:='true', boolean clean:=false)
 
 
 
@@ -52,7 +52,9 @@ The topology creation function accepts the following parameters:
 :id: ``text``  Primary key column name of the network table. Default value is ``id``. 
 :source: ``text`` Source column name of the network table. Default value is ``source``.
 :target: ``text``  Target column name of the network table.  Default value is ``target``. 
-:rows_where: ``text``   Condition to SELECT a subset or rows.  Default value is ``true`` to indicate all rows.
+:rows_where: ``text``   Condition to SELECT a subset or rows.  Default value is ``true`` to indicate
+ all rows that where ``source`` or ``target`` have a null value, otherwise the condition is used.
+:clean ``boolean`` Clean any previous topology.  Default value is ``false``.
 
 .. warning::
 
