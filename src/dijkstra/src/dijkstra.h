@@ -25,6 +25,7 @@
 #include <unistd.h>
 #include "postgres.h"
 
+#if 0
 typedef struct edge 
 {
     int id;
@@ -40,11 +41,16 @@ typedef struct path_element
     int edge_id;
     float8 cost;
 } path_element_t;
+#else
+#include "../../common/src/pgr_types.h"
+#endif
+
+
 
 #ifdef __cplusplus
 extern "C"
 #endif
-int boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vertex,
+int boost_dijkstra(pgr_edge_t *edges, unsigned int count, int start_vertex, int end_vertex,
 		   bool directed, bool has_reverse_cost,
                    path_element_t **path, int *path_count, char **err_msg);
 

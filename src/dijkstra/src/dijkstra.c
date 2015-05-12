@@ -28,11 +28,15 @@
 #endif
 
 #include "fmgr.h"
-
-#include "dijkstra.h"
+#include "./../../common/src/pgr_types.h"
+//#define DEBUG 1
+#undef DEBUG
+#include "./../../common/src/postgres_connection.h"
+#include "dijkstra_driver.h"
 
 Datum shortest_path(PG_FUNCTION_ARGS);
 
+#if 0
 #undef DEBUG
 //#define DEBUG 1
 
@@ -42,6 +46,7 @@ Datum shortest_path(PG_FUNCTION_ARGS);
 #else
 #define DBG(format, arg...) do { ; } while (0)
 #endif
+#endif
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
@@ -50,6 +55,7 @@ Datum shortest_path(PG_FUNCTION_ARGS);
 PG_MODULE_MAGIC;
 #endif
 
+#if 0
 static char *
 text2char(text *in)
 {
@@ -132,7 +138,7 @@ fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns,
 
 static void
 fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc, 
-           edge_columns_t *edge_columns, edge_t *target_edge)
+           edge_columns_t *edge_columns, pgr_edge_t *target_edge)
 {
   Datum binval;
   bool isnull;
@@ -160,12 +166,12 @@ fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
       target_edge->reverse_cost =  DatumGetFloat8(binval);
   }
 }
-
+#endif
 
 static int compute_shortest_path(char* sql, int start_vertex, 
                                  int end_vertex, bool directed, 
-                                 bool has_reverse_cost, 
-                                 path_element_t **path, int *path_count) 
+                                 bool has_rcost, 
+                                 pgr_path_element3_t **path, int *path_count) 
 {
 
   int SPIcode;
@@ -173,8 +179,31 @@ static int compute_shortest_path(char* sql, int start_vertex,
   Portal SPIportal;
   bool moredata = TRUE;
   int ntuples;
-  edge_t *edges = NULL;
+  pgr_edge_t *edges = NULL;
   int total_tuples = 0;
+
+
+  char *err_msg = (char *)"";
+  int ret = -1;
+
+  if (start_vertex == end_vertex) {
+      elog(ERROR, "Starting vertex and Ending Vertex are equal");
+      return -1;
+  }
+
+  PGR_DBG("Load data");
+  bool sourceFound = false;
+  bool targetFound = false;
+  SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
+               start_vertex, end_vertex, &sourceFound, &targetFound);
+  if (SPIcode == -1) {
+    PGR_DBG("Error getting data\n");
+    return SPIcode;
+  }
+
+  PGR_DBG("Total %ld tuples in query:", total_tuples);
+
+#if 0
   edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
                                  .cost= -1, .reverse_cost= -1};
   int v_max_id=0;
@@ -288,10 +317,13 @@ static int compute_shortest_path(char* sql, int start_vertex,
         
   start_vertex -= v_min_id;
   end_vertex   -= v_min_id;
+#endif
 
-  ret = boost_dijkstra(edges, total_tuples, start_vertex, end_vertex,
-                       directed, has_reverse_cost,
-                       path, path_count, &err_msg);
+
+  ret = do_pgr_dijkstra(edges, total_tuples,
+                        start_vertex, end_vertex,
+                        has_rcost, directed,
+                        path, path_count, &err_msg);
 
   if (ret < 0) {
       //elog(ERROR, "Error computing path: %s", err_msg);
@@ -299,6 +331,20 @@ static int compute_shortest_path(char* sql, int start_vertex,
         errmsg("Error computing path: %s", err_msg)));
   } 
     
+  PGR_DBG("total tuples found %i\n", *path_count);
+  PGR_DBG("Exist Status = %i\n", ret);
+  PGR_DBG("Returned message = %s\n", err_msg);
+
+
+
+  if (ret < 0) {
+      ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
+      errmsg("Error computing path: %s", err_msg)));
+    }
+
+  pfree(edges);
+  return pgr_finish(SPIcode, ret);
+#if 0
   DBG("SIZE %i\n",*path_count);
 
   //::::::::::::::::::::::::::::::::
@@ -316,6 +362,7 @@ static int compute_shortest_path(char* sql, int start_vertex,
   DBG("ret = %i\n", ret);
   
   return finish(SPIcode, ret);
+#endif
 }
 
 
@@ -327,7 +374,7 @@ shortest_path(PG_FUNCTION_ARGS)
   int                  call_cntr;
   int                  max_calls;
   TupleDesc            tuple_desc;
-  path_element_t      *path = 0;
+  pgr_path_element3_t  *ret_path = 0;
 
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL()) {
@@ -342,26 +389,26 @@ shortest_path(PG_FUNCTION_ARGS)
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-      ret = compute_shortest_path(text2char(PG_GETARG_TEXT_P(0)),
+      ret = compute_shortest_path(pgr_text2char(PG_GETARG_TEXT_P(0)),
                                   PG_GETARG_INT32(1),
                                   PG_GETARG_INT32(2),
                                   PG_GETARG_BOOL(3),
-                                  PG_GETARG_BOOL(4), &path, &path_count);
+                                  PG_GETARG_BOOL(4), &ret_path, &path_count);
 #ifdef DEBUG
       DBG("Ret is %i", ret);
       if (ret >= 0) {
           int i;
           for (i = 0; i < path_count; i++) {
-              DBG("Step %i vertex_id  %i ", i, path[i].vertex_id);
-              DBG("        edge_id    %i ", path[i].edge_id);
-              DBG("        cost       %f ", path[i].cost);
+              DBG("Step %i vertex_id  %i ", i, ret_path[i].vertex_id);
+              DBG("        edge_id    %i ", ret_path[i].edge_id);
+              DBG("        cost       %f ", ret_path[i].cost);
           }
       }
 #endif
 
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;
-      funcctx->user_fctx = path;
+      funcctx->user_fctx = ret_path;
 
       funcctx->tuple_desc = BlessTupleDesc(
             RelationNameGetTupleDesc("pgr_costResult"));
@@ -375,7 +422,7 @@ shortest_path(PG_FUNCTION_ARGS)
   call_cntr = funcctx->call_cntr;
   max_calls = funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
-  path = (path_element_t*) funcctx->user_fctx;
+  ret_path = (pgr_path_element3_t*) funcctx->user_fctx;
 
   /* do when there is more left to send */
   if (call_cntr < max_calls) {
@@ -389,11 +436,11 @@ shortest_path(PG_FUNCTION_ARGS)
   
       values[0] = Int32GetDatum(call_cntr);
       nulls[0] = ' ';
-      values[1] = Int32GetDatum(path[call_cntr].vertex_id);
+      values[1] = Int32GetDatum(ret_path[call_cntr].vertex_id);
       nulls[1] = ' ';
-      values[2] = Int32GetDatum(path[call_cntr].edge_id);
+      values[2] = Int32GetDatum(ret_path[call_cntr].edge_id);
       nulls[2] = ' ';
-      values[3] = Float8GetDatum(path[call_cntr].cost);
+      values[3] = Float8GetDatum(ret_path[call_cntr].cost);
       nulls[3] = ' ';
 		      
       tuple = heap_formtuple(tuple_desc, values, nulls);
@@ -409,7 +456,7 @@ shortest_path(PG_FUNCTION_ARGS)
   }
   /* do when there is no more left */
   else {
-      if (path) free(path);
+      if (ret_path) free(ret_path);
       SRF_RETURN_DONE(funcctx);
   }
 }

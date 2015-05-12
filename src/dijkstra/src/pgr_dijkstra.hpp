@@ -11,7 +11,6 @@
 #include <stdlib.h>
 #include <fstream>
 
-#include <boost/bimap.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 

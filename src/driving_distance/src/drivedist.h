@@ -24,13 +24,15 @@
 
 #include <unistd.h>
 #include "postgres.h"
-#include "dijkstra.h"
+#include "../../common/src/pgr_types.h"
+
+typedef pgr_edge_t edge_t;
 
 #ifdef __cplusplus
 extern "C"
 #endif
 
-int boost_dijkstra_dist(edge_t *edges, unsigned int count, 
+int boost_dijkstra_dist(pgr_edge_t *edges, unsigned int count, 
                    int source_vertex_id, double rdistance,
 		   bool directed, bool has_reverse_cost,
                    path_element_t **path, int *path_count, char **err_msg);
