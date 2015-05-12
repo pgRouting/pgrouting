@@ -23,29 +23,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 #include "./dijkstra_driver.h"
+#include <sstream>
 
 extern "C" {
 #include "postgres.h"
-// #include "./dijkstra.h"
 }
 
-#include <deque>
-#include <sstream>
 
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
-
-#include "./pgr_dijkstra.hpp"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
+#include "./pgr_dijkstra.hpp"
 
-
-static  void dpPrint(
-                     const Path &thePath,
-                     pgr_path_element3_t **path,
-                     int &sequence, int route_id, std::ostream &log);
-
-//static  pgr_path_element3_t * noPathFound(int64_t start_id);
 
 int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
                        int64_t  start_vertex, int64_t  end_vertex,
@@ -84,7 +72,8 @@ int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
         }
 
         if (paths.path.size() == 0) {
-            *err_msg = strdup("NOTICE: No path found between Starting and Ending vertices");
+            *err_msg = strdup(
+                "NOTICE: No path found between Starting and Ending vertices");
             (*path_count) = 1;
             *ret_path = noPathFound3(start_vertex);
             return 0;
@@ -101,7 +90,7 @@ int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
         *ret_path = pgr_get_memory3(count, (*ret_path));
 
         int sequence = 0;
-        dpPrint(paths, ret_path, sequence, 0, log);
+        paths.dpPrint(ret_path, sequence, 0);
 
 #if 0
 // move around this lines to force a return with an empty path and the log msg
@@ -131,37 +120,4 @@ return -1;
      return -1;
     }
 }
-
-static void dpPrint(
-                     const Path &thePath,
-                     pgr_path_element3_t **path,
-                     int &sequence, int route_id, std::ostream &log ) {
-        // the row data:  seq, route, nodeid, edgeId, cost
-        int64_t nodeId, edgeId, lastNodeId;
-        double cost;
-
-        for (unsigned int i = 0; i < thePath.path.size(); i++) {
-                edgeId = thePath.path[i].edge;
-                nodeId = thePath.path[i].source;
-                cost = thePath.path[i].cost;
-
-               (*path)[sequence].route_id = route_id;
-               (*path)[sequence].vertex_id = nodeId;
-               (*path)[sequence].edge_id = edgeId;
-               (*path)[sequence].cost = cost;
-               sequence++;
-        }
-}
-
-#if 0
-static  pgr_path_element3_t * noPathFound(int64_t start_id) {
-        pgr_path_element3_t *no_path;
-        no_path = pgr_get_memory3(1, no_path);
-        no_path[0].route_id  = 0;
-        no_path[0].vertex_id = start_id;
-        no_path[0].cost = 0;
-        no_path[0].edge_id = -1;
-        return no_path;
-}
-#endif
 

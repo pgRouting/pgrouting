@@ -40,12 +40,6 @@ extern "C" {
 #include "./../../common/src/postgres_connection.h"
 
 
-static  void dpPrint(
-                     const Path &thePath,
-                     pgr_path_element3_t **path,
-                     int &sequence, int route_id, std::ostream &log);
-
-//static  pgr_path_element3_t * noPathFound(int64_t start_id);
 
 int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
                        int64_t  start_vertex, int64_t  end_vertex,
@@ -105,10 +99,7 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
         int sequence = 0;
         for (unsigned int route_id = 0; route_id < paths.size(); route_id++) {
           if (paths[route_id].path.size() > 0)
-               dpPrint(paths[route_id], ksp_path, sequence, route_id, log);
-#if 0
-          paths[route_id].print_path(log);
-#endif
+               paths[route_id].dpPrint(ksp_path, sequence, route_id);
         }
 
 #if 0
@@ -140,36 +131,4 @@ return -1;
     }
 }
 
-static void dpPrint(
-                     const Path &thePath,
-                     pgr_path_element3_t **path,
-                     int &sequence, int route_id, std::ostream &log ) {
-        // the row data:  seq, route, nodeid, edgeId, cost
-        int64_t nodeId, edgeId, lastNodeId;
-        double cost;
-
-        for (unsigned int i = 0; i < thePath.path.size(); i++) {
-                edgeId = thePath.path[i].edge;
-                nodeId = thePath.path[i].source;
-                cost = thePath.path[i].cost;
-
-               (*path)[sequence].route_id = route_id;
-               (*path)[sequence].vertex_id = nodeId;
-               (*path)[sequence].edge_id = edgeId;
-               (*path)[sequence].cost = cost;
-               sequence++;
-        }
-}
-
-#if 0
-static  pgr_path_element3_t * noPathFound(int64_t start_id) {
-        pgr_path_element3_t *no_path;
-        no_path = pgr_get_memory3(1, no_path);
-        no_path[0].route_id  = 0;
-        no_path[0].vertex_id = start_id;
-        no_path[0].cost = 0;
-        no_path[0].edge_id = -1;
-        return no_path;
-}
-#endif
 

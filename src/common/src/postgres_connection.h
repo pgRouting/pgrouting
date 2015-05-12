@@ -24,8 +24,8 @@
 #include "postgres.h"
 #include "executor/spi.h"
 
-#include "pgr_types.h"
-#include "postgres_connection.h"
+#include "./pgr_types.h"
+#include "./postgres_connection.h"
 
 
 #ifdef DEBUG 
@@ -70,6 +70,7 @@ extern "C"
   // output corresponding to costResult3Big
   pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path);
   pgr_path_element3_t * noPathFound3(int64_t start_id);
+
 
 #ifdef __cplusplus
 }
