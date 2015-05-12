@@ -34,7 +34,7 @@ template < class G >
 void Pgr_ksp< G >::getFirstSolution() {
      Path path;
 
-     this->process_dijkstra(path, m_start, m_end);
+     this->dijkstra(path, m_start, m_end);
 
      if (path.path.size() <= 1 ) return;
      curr_result_path = path;
@@ -102,7 +102,7 @@ void Pgr_ksp< G >::doNextCycle() {
         // int spurPathSize;
 
         THROW_ON_SIGINT
-        this->process_dijkstra(spurPath, spurNodeId , m_end);
+        this->dijkstra(spurPath, spurNodeId , m_end);
         THROW_ON_SIGINT
 
         if (spurPath.path.size() > 0) {

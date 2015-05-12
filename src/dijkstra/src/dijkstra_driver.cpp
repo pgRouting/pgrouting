@@ -63,12 +63,10 @@ int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
 
         if (directedFlag) {
             digraph.initialize_graph(data_edges, total_tuples);
-            digraph.process_dijkstra(paths, start_vertex, end_vertex);
-            // digraph.clear();
+            digraph.dijkstra(paths, start_vertex, end_vertex);
         } else {
             undigraph.initialize_graph(data_edges, total_tuples);
-            undigraph.process_dijkstra(paths, start_vertex, end_vertex);
-            // undigraph.clear();
+            undigraph.dijkstra(paths, start_vertex, end_vertex);
         }
 
         if (paths.path.size() == 0) {
