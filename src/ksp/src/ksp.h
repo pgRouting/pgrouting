@@ -25,6 +25,7 @@
 #define TUPLIMIT 1000
 #define PATH_ALLOC_TOTAL 5
 
+#include <unistd.h>
 #include "postgres.h"
 
 #undef DEBUG
