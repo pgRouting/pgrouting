@@ -102,14 +102,6 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
                paths[route_id].dpPrint(ksp_path, sequence, route_id);
         }
 
-#if 0
-// move around this lines to force a return with an empty path and the log msg
-// cool for debugging
-*err_msg = strdup(log.str().c_str());
-(*path_count) = 1;
-*path = noPathFound(start_vertex);
-return -1;
-#endif
         log << "NOTICE Sequence: " << sequence << "\n";
         if (count != sequence) {
             log << "ERROR: Internal count and real count are different. \n"
@@ -132,3 +124,11 @@ return -1;
 }
 
 
+#if 0
+// move around this lines to force a return with an empty path and the log msg
+// cool for debugging
+*err_msg = strdup(log.str().c_str());
+(*path_count) = 1;
+*path = noPathFound(start_vertex);
+return -1;
+#endif

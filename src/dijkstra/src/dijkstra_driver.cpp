@@ -92,14 +92,6 @@ int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
         int sequence = 0;
         paths.dpPrint(ret_path, sequence, 0);
 
-#if 0
-// move around this lines to force a return with an empty path and the log msg
-// cool for debugging
-*err_msg = strdup(log.str().c_str());
-(*path_count) = 1;
-*path = noPathFound(start_vertex);
-return -1;
-#endif
         log << "NOTICE Sequence: " << sequence << "\n";
         if (count != sequence) {
             log << "ERROR: Internal count and real count are different. \n"
@@ -121,3 +113,11 @@ return -1;
     }
 }
 
+#if 0
+// move around this lines to force a return with an empty path and the log msg
+// cool for debugging
+*err_msg = strdup(log.str().c_str());
+(*path_count) = 1;
+*path = noPathFound(start_vertex);
+return -1;
+#endif
