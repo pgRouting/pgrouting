@@ -1,213 +1,167 @@
-/*
- * Shortest path algorithm for PostgreSQL
- *
- * Copyright (c) 2005 Sylvain Pasche
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- */
+/*PGR
 
-// Include C header first for windows build issue
-#include "dijkstra.h"
-#include <cfloat>
+file: KSPDriver.cpp
+
+Copyright (c) 2013 Dave Potts
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+vicky_vergara@hotmail.com
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+*/
+
+#include "./dijkstra_driver.h"
+
+extern "C" {
+#include "postgres.h"
+#include "./dijkstra.h"
+}
+
+#include <deque>
+#include <sstream>
 
 #include <boost/config.hpp>
-
-#include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/dijkstra_shortest_paths.hpp>
 
-using namespace std;
-using namespace boost;
-
-// Maximal number of nodes in the path (to avoid infinite loops)
-#define MAX_NODES 100000000
-
-struct Vertex
-{
-    int id;
-    float8 cost;
-};
-
-// Adds an edge to the graph.
-// Edge id, cost, source and target ids and coordinates are copied also
-template <class G, class E>
-static void
-graph_add_edge(G &graph, E &e, int id, int source, int target, float8 cost)
-{
-  bool inserted;
-
-  if (cost < 0) // edges are not inserted in the graph if cost is negative
-    return;
-
-  tie(e, inserted) = add_edge(source, target, graph);
-
-  graph[e].cost = cost;
-  graph[e].id = id;
-
-  typedef typename graph_traits<G>::vertex_descriptor Vertex;
-  Vertex s = vertex(source, graph);
-  Vertex t = vertex(target, graph);
-}
+#include "./pgr_dijkstra.hpp"
+#include "./../../common/src/pgr_types.h"
+#include "./../../common/src/postgres_connection.h"
 
 
-int 
-boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vertex,
-	       bool directed, bool has_reverse_cost,
-	       path_element_t **path, int *path_count, char **err_msg)
-{
-try {
-    // FIXME: use a template for the directedS parameters
-    typedef adjacency_list < listS, vecS, directedS, no_property, Vertex> graph_t;
+static  void dpPrint(
+                     const Path &thePath,
+                     pgr_path_element3_t **path,
+                     int &sequence, int route_id, std::ostream &log);
 
-    typedef graph_traits < graph_t >::vertex_descriptor vertex_descriptor;
-    typedef graph_traits < graph_t >::edge_descriptor edge_descriptor;
-    typedef std::pair<int, int> Edge;
+//static  pgr_path_element3_t * noPathFound(int64_t start_id);
 
-    // FIXME: compute this value
-    const unsigned int num_nodes = ((directed && has_reverse_cost ? 2 : 1) * count) + 100;
+int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
+                       int64_t  start_vertex, int64_t  end_vertex,
+                       bool has_reverse_cost, bool directedFlag,
+                       pgr_path_element3_t **ret_path, int *path_count,
+                       char ** err_msg) {
+    try {
+        // in c code this should have been checked:
+        //  1) start_vertex is in the data_edges  DONE
+        //  2) end_vertex is in the data_edges    DONE
+        //  3) start and end_vertex are different DONE
+        std::ostringstream log;
 
-    graph_t graph(num_nodes);
+        graphType gType = directedFlag? DIRECTED: UNDIRECTED;
+        const int initial_size = 1;
 
-    // commented out to fix APPLE build, is it needed?
-    //property_map<graph_t, edge_weight_t>::type weightmap = get(edge_weight, graph);
+        Path paths;
+        typedef boost::adjacency_list < boost::vecS, boost::vecS,
+            boost::undirectedS,
+            boost_vertex_t, boost_edge_t > UndirectedGraph;
+        typedef boost::adjacency_list < boost::vecS, boost::vecS,
+            boost::bidirectionalS,
+            boost_vertex_t, boost_edge_t > DirectedGraph;
 
-    for (std::size_t j = 0; j < count; ++j)
-    {
-        edge_descriptor e;
-        graph_add_edge<graph_t, edge_descriptor>(graph, e,
-                   edges[j].id, edges[j].source,
-                   edges[j].target, edges[j].cost);
+        Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
+        Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
 
-        if (!directed || (directed && has_reverse_cost))
-        {
-          float8 cost;
+        if (directedFlag) {
+            digraph.initialize_graph(data_edges, total_tuples);
+            digraph.process_dijkstra(paths, start_vertex, end_vertex);
+            // digraph.clear();
+        } else {
+            undigraph.initialize_graph(data_edges, total_tuples);
+            undigraph.process_dijkstra(paths, start_vertex, end_vertex);
+            // undigraph.clear();
+        }
 
-          if (has_reverse_cost)
-          {
-              cost = edges[j].reverse_cost;
-          }
-          else
-          {
-              cost = edges[j].cost;
-          }
-
-          graph_add_edge<graph_t, edge_descriptor>(graph, e,
-                 edges[j].id,
-                 edges[j].target,
-                 edges[j].source,
-                 cost);
-          }
-    }
-
-    std::vector<vertex_descriptor> predecessors(num_vertices(graph));
-
-    vertex_descriptor _source = vertex(start_vertex, graph);
-
-    if ((long)_source < 0) 
-    {
-        *err_msg = (char *) "Starting vertex not found";
-        return -1;
-    }
-
-    vertex_descriptor _target = vertex(end_vertex, graph);
-    if ((long)_target < 0)
-    {
-        *err_msg = (char *) "Ending vertex not found";
-        return -1;
-    }
-
-    std::vector<float8> distances(num_vertices(graph));
-    // calling Boost function
-    dijkstra_shortest_paths(graph, _source,
-                predecessor_map(&predecessors[0]).
-                weight_map(get(&Vertex::cost, graph))
-                .distance_map(&distances[0]));
-
-    vector<int> path_vect;
-    int max = MAX_NODES;
-    path_vect.push_back(_target);
-
-    while (_target != _source) 
-    {
-        if (_target == predecessors[_target]) 
-        {
-            *err_msg = (char *) "No path found";
+        if (paths.path.size() == 0) {
+            *err_msg = strdup("NOTICE: No path found between Starting and Ending vertices");
+            (*path_count) = 1;
+            *ret_path = noPathFound3(start_vertex);
             return 0;
         }
-        _target = predecessors[_target];
 
-        path_vect.push_back(_target);
-        if (!max--) 
-        {
-            *err_msg = (char *) "Overflow";
+        log << "NOTICE: Calculating the number of tuples \n";
+        int count = paths.path.size();
+        int seq = 0;
+
+        log << "NOTICE Count: " << count << " tuples\n";
+
+        // get the space required to store all the paths
+        *ret_path = NULL;
+        *ret_path = pgr_get_memory3(count, (*ret_path));
+
+        int sequence = 0;
+        dpPrint(paths, ret_path, sequence, 0, log);
+
+#if 0
+// move around this lines to force a return with an empty path and the log msg
+// cool for debugging
+*err_msg = strdup(log.str().c_str());
+(*path_count) = 1;
+*path = noPathFound(start_vertex);
+return -1;
+#endif
+        log << "NOTICE Sequence: " << sequence << "\n";
+        if (count != sequence) {
+            log << "ERROR: Internal count and real count are different. \n"
+                << "ERROR: This should not happen: Please report in GitHub:"
+                << " pgrouting issues.";
+            *err_msg = strdup(log.str().c_str());
             return -1;
         }
+        #if 1
+        *err_msg = strdup("OK");
+        #else
+        *err_msg = strdup(log.str().c_str());
+        #endif
+        *path_count = count;
+        return EXIT_SUCCESS;
+    } catch ( ... ) {
+     *err_msg = strdup("Caught unknown expection!");
+     return -1;
     }
-
-    *path = (path_element_t *) malloc(sizeof(path_element_t) * (path_vect.size() + 1));
-    *path_count = path_vect.size();
-
-    for(int i = path_vect.size() - 1, j = 0; i >= 0; i--, j++)
-    {
-        graph_traits < graph_t >::vertex_descriptor v_src;
-        graph_traits < graph_t >::vertex_descriptor v_targ;
-        graph_traits < graph_t >::edge_descriptor e;
-        graph_traits < graph_t >::out_edge_iterator out_i, out_end;
-
-        (*path)[j].vertex_id = path_vect.at(i);
-
-        (*path)[j].edge_id = -1;
-        (*path)[j].cost = distances[_target];
-	
-        if (i == 0) 
-        {
-            continue;
-        }
-
-        v_src = path_vect.at(i);
-        v_targ = path_vect.at(i - 1);
-        double cost = 99999999.9;
-        int edge_id = 0;
-
-        for (tie(out_i, out_end) = out_edges(v_src, graph); 
-             out_i != out_end; ++out_i)
-        {
-            graph_traits < graph_t >::vertex_descriptor v, targ;
-            e = *out_i;
-            v = source(e, graph);
-            targ = target(e, graph);
-								
-            if (targ == v_targ)
-            {
-                // if there are multiple parallel edges get the lowest cost
-                if (graph[*out_i].cost < cost)
-                {
-                    edge_id = graph[*out_i].id;
-                    cost = graph[*out_i].cost;
-                }
-            }
-        }
-        (*path)[j].edge_id = edge_id;
-        (*path)[j].cost = cost;
-    }
-
-    return EXIT_SUCCESS;
-  }
-  catch(...) {
-      *err_msg = (char *) "Unknown exception caught!";
-      return -1;
-  }
 }
+
+static void dpPrint(
+                     const Path &thePath,
+                     pgr_path_element3_t **path,
+                     int &sequence, int route_id, std::ostream &log ) {
+        // the row data:  seq, route, nodeid, edgeId, cost
+        int64_t nodeId, edgeId, lastNodeId;
+        double cost;
+
+        for (unsigned int i = 0; i < thePath.path.size(); i++) {
+                edgeId = thePath.path[i].edge;
+                nodeId = thePath.path[i].source;
+                cost = thePath.path[i].cost;
+
+               (*path)[sequence].route_id = route_id;
+               (*path)[sequence].vertex_id = nodeId;
+               (*path)[sequence].edge_id = edgeId;
+               (*path)[sequence].cost = cost;
+               sequence++;
+        }
+}
+
+#if 0
+static  pgr_path_element3_t * noPathFound(int64_t start_id) {
+        pgr_path_element3_t *no_path;
+        no_path = pgr_get_memory3(1, no_path);
+        no_path[0].route_id  = 0;
+        no_path[0].vertex_id = start_id;
+        no_path[0].cost = 0;
+        no_path[0].edge_id = -1;
+        return no_path;
+}
+#endif
+

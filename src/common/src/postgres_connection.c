@@ -204,13 +204,13 @@ int pgr_get_data(
 
               if (!sourceFound
                  && (((*edges)[total_tuples - ntuples + t].source == start_vertex)
-                 || ((*edges)[total_tuples - ntuples + t].source == start_vertex))) {
+                 || ((*edges)[total_tuples - ntuples + t].target == start_vertex))) {
                     sourceFound = true;
               }
               if (!targetFound
-                 && (((*edges)[total_tuples - ntuples + t].target == end_vertex)
+                 && (((*edges)[total_tuples - ntuples + t].source == end_vertex)
                  || ((*edges)[total_tuples - ntuples + t].target == end_vertex))) {
-                  targetFound = true;
+                    targetFound = true;
              }
            }
            SPI_freetuptable(tuptable);

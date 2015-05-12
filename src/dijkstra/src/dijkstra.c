@@ -2,6 +2,7 @@
  * Shortest path algorithm for PostgreSQL
  *
  * Copyright (c) 2005 Sylvain Pasche
+ *               2015 Celia Virginia Vergara Castillo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -390,8 +391,8 @@ shortest_path(PG_FUNCTION_ARGS)
 
 
       ret = compute_shortest_path(pgr_text2char(PG_GETARG_TEXT_P(0)),
-                                  PG_GETARG_INT32(1),
-                                  PG_GETARG_INT32(2),
+                                  PG_GETARG_INT64(1),
+                                  PG_GETARG_INT64(2),
                                   PG_GETARG_BOOL(3),
                                   PG_GETARG_BOOL(4), &ret_path, &path_count);
 #ifdef DEBUG
@@ -411,7 +412,7 @@ shortest_path(PG_FUNCTION_ARGS)
       funcctx->user_fctx = ret_path;
 
       funcctx->tuple_desc = BlessTupleDesc(
-            RelationNameGetTupleDesc("pgr_costResult"));
+            RelationNameGetTupleDesc("pgr_costResultBig"));
 
       MemoryContextSwitchTo(oldcontext);
   }
@@ -436,9 +437,9 @@ shortest_path(PG_FUNCTION_ARGS)
   
       values[0] = Int32GetDatum(call_cntr);
       nulls[0] = ' ';
-      values[1] = Int32GetDatum(ret_path[call_cntr].vertex_id);
+      values[1] = Int64GetDatum(ret_path[call_cntr].vertex_id);
       nulls[1] = ' ';
-      values[2] = Int32GetDatum(ret_path[call_cntr].edge_id);
+      values[2] = Int64GetDatum(ret_path[call_cntr].edge_id);
       nulls[2] = ' ';
       values[3] = Float8GetDatum(ret_path[call_cntr].cost);
       nulls[3] = ' ';

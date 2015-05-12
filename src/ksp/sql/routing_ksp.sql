@@ -1,13 +1,21 @@
------------------------------------------------------------------------
--- Function for k shortest_path computation
--- See README for description
------------------------------------------------------------------------
-/* original query   (also Yen*.cpp has to be modified)
-CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id integer, target_id integer, no_paths integer, has_reverse_cost boolean)
-    RETURNS SETOF pgr_costResult3
-    AS '$libdir/librouting_ksp', 'kshortest_path'
-    LANGUAGE c IMMUTABLE STRICT;
-*/
+--
+-- Copyright (c)  2015 Celia Vriginia Vergara Castillo.
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+--
+
 
 CREATE OR REPLACE FUNCTION _pgr_ksp(sql text, source_id bigint, target_id bigint, no_paths integer, has_reverse_cost boolean, directed boolean)
     RETURNS SETOF pgr_costResult3Big
