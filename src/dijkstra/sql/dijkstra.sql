@@ -54,7 +54,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bi
       end if;
 
       return query SELECT seq, id1::integer, id2::integer, cost
-                FROM _pgr_dijkstra(sql, source_id, target_id, directed, has_reverse);
+                FROM _pgr_dijkstra(sql, source_id, target_id, directed, has_rcost);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE
