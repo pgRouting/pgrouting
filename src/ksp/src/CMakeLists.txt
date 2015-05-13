@@ -16,9 +16,10 @@ set(routing_ksp_SRCS ./../../dijkstra/src/pgr_dijkstra.hpp
                      ./../../common/src/basePath_SSEC.hpp 
                      pgr_ksp.hpp
                      ksp.c ksp.h 
-                     KSPDriver.cpp KSPDriver.h 
-                     ./../../common/src/pgr_assert.cpp ./../../common/src/pgr_assert.h
-                     ./../../common/src/signalhandler.cpp ./../../common/src/signalhandler.h)
+                     KSPDriver.cpp KSPDriver.h
+  )
+#                     ./../../common/src/pgr_assert.cpp ./../../common/src/pgr_assert.h
+#                     ./../../common/src/signalhandler.cpp ./../../common/src/signalhandler.h)
 
 add_library(routing_ksp ${LIBRARY_MODE_TARGET} ${routing_ksp_SRCS})
 

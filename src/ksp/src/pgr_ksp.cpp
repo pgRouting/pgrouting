@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
 #include <deque>
-#include "./../../common/src/signalhandler.h"
+// #include "./../../common/src/signalhandler.h"
 #include "./../../common/src/basePath_SSEC.hpp"
 
 template < class G >
@@ -77,7 +77,7 @@ void Pgr_ksp< G >::removeVertices(const Path &subpath) {
 
 template < class G >
 void Pgr_ksp< G >::doNextCycle() {
-    REG_SIGINT
+    // REG_SIGINT
 
 
     int64_t spurNodeId;
@@ -101,9 +101,9 @@ void Pgr_ksp< G >::doNextCycle() {
 
         // int spurPathSize;
 
-        THROW_ON_SIGINT
+        // THROW_ON_SIGINT
         this->process_dijkstra(spurPath, spurNodeId , m_end);
-        THROW_ON_SIGINT
+        // THROW_ON_SIGINT
 
         if (spurPath.path.size() > 0) {
             rootPath.appendPath(spurPath);
