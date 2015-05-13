@@ -198,7 +198,6 @@ void disconnect_vertex(int64_t p_vertex) {
         path.clear();
         get_path(path, source, *s_it);
         paths.push_back(path);
-        path.print_path();
       }  
     }
 

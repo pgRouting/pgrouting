@@ -175,7 +175,7 @@ class Pgr_dijkstra
       catch(found_all_goals &fg) {
         found = true;  // Target vertex found
       }
-#if 1
+#if 0
       for (unsigned int i=0; i < this->distances.size(); ++i)
         std::cout << this->distances[i] <<"\n";
 #endif
