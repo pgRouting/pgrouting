@@ -190,6 +190,18 @@ void disconnect_vertex(int64_t p_vertex) {
     }
 */
  public:
+    void get_path(std::deque< Path > &paths, V source, std::set< V > targets) {
+      // used when multiple goals
+      Path path;
+      typename std::set< V >::iterator s_it;
+      for (s_it = targets.begin(); s_it!=targets.end(); ++s_it) {
+        path.clear();
+        get_path(path, source, *s_it);
+        paths.push_back(path);
+        path.print_path();
+      }  
+    }
+
     void get_path(Path &path, V source, V target) {
       // backup of the target
       V target_back = target;

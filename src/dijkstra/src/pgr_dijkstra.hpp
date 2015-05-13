@@ -81,6 +81,43 @@ class Pgr_dijkstra
       return this->get_path(path, v_source, v_target);
     }
 
+    // preparation for 1 to many
+    void
+    dijkstra(std::deque< Path > &paths, int64_t start_vertex, std::vector< int64_t > end_vertex) {
+      typedef typename boost::graph_traits < G >::vertex_descriptor V;
+
+      // adjust predecessors and distances vectors
+      this->predecessors.clear();
+      this->distances.clear();
+
+      this->predecessors.resize(boost::num_vertices(this->graph));
+      this->distances.resize(boost::num_vertices(this->graph));
+
+      // get the graphs source and target
+      V v_source;
+      if (!this->get_gVertex(start_vertex, v_source)) {
+        paths.clear();
+        return;
+      }
+      
+      std::set< V > v_targets;
+      for (unsigned int i = 0; i < end_vertex.size(); i++) {
+          V v_target;
+          if (!this->get_gVertex(end_vertex[i], v_target)) {
+            paths.clear();
+            return;
+          }
+          v_targets.insert(v_target);
+      }
+
+      // perform the algorithm
+      dijkstra_1_to_many(v_source, v_targets);
+
+      // get the results
+      return this->get_path(paths, v_source, v_targets); // TODO
+    }
+
+
  private:
     //! visitor that terminates when we find the goal
     struct found_one_goal{};  //!< exception for termination
@@ -98,6 +135,52 @@ class Pgr_dijkstra
      private:
        Vertex m_goal;
     };
+
+    //! visitor that terminates when we find  all goals
+    struct found_all_goals{};  //!< exception for termination
+
+    //! class for stopping when all targets are found
+    template <class V>
+    class dijkstra_many_goal_visitor
+      :public boost::default_dijkstra_visitor {
+     public:
+       explicit dijkstra_many_goal_visitor(std::set< V > goals) : m_goals(goals) {}
+       template <class Graph>
+       void examine_vertex(V u, Graph &g) {
+         typename std::set< V >::iterator s_it;
+         s_it = m_goals.find(u);
+         if (s_it == m_goals.end()) return;
+         // we found one more goal
+         m_goals.erase(s_it);
+         if (m_goals.size() == 0) throw found_all_goals();
+       }
+     private:
+       std::set< V > m_goals;
+    };
+
+    
+
+    //! Call to Dijkstra  1 source to many targets
+    template <class V>
+    bool
+    dijkstra_1_to_many(V source, std::set< V > targets) {
+      bool found = false;
+      try {
+      boost::dijkstra_shortest_paths(this->graph, source,
+          boost::predecessor_map(&this->predecessors[0])
+          .weight_map(get(&boost_edge_t::cost, this->graph))
+          .distance_map(&this->distances[0])
+          .visitor(dijkstra_many_goal_visitor< V >(targets)));
+      }
+      catch(found_all_goals &fg) {
+        found = true;  // Target vertex found
+      }
+#if 1
+      for (unsigned int i=0; i < this->distances.size(); ++i)
+        std::cout << this->distances[i] <<"\n";
+#endif
+      return found;
+    }
 
     //! Call to Dijkstra  1 source to 1 target
     template <class V>

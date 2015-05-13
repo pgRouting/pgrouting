@@ -62,6 +62,7 @@ int main(int ac, char* av[]) {
     po::options_description desc("Allowed options");
     desc.add_options()
         ("help", "produce help message")
+        ("alg,a", po::value<std::string>()->default_value("d"), "set algorithm to test d=dijkstra, k=ksp, dm=dijstra 1 to many ")
         ("file,f", po::value<std::string>(), "set file_name")
         ("source,s", po::value<int64_t>(), "set source")
         ("target,t", po::value<int64_t>(), "set target")
@@ -92,6 +93,7 @@ int main(int ac, char* av[]) {
     unsigned int count = 0;
 
     std::string fileName(vm["file"].as<std::string>());
+    std::string algorithm(vm["alg"].as<std::string>());
     int start_vertex(vm["source"].as<int64_t>());
     int end_vertex(vm["target"].as<int64_t>());
     int directedFlag(vm["directed"].as<bool>());
@@ -115,85 +117,129 @@ int main(int ac, char* av[]) {
 
     const int initial_size = 1;
 
-#if 1
-    // no size overhead because the graph is empty
-    // have them available thru out the code
-    Pgr_dijkstra< DirectedGraph > digraph(gType, initial_size);
-    Pgr_dijkstra< UndirectedGraph > undigraph(gType, initial_size);
+    
 
-    if (directedFlag) {
+    if (algorithm == "dm") {
+      // no size overhead because the graph is empty
+      // have them available thru out the code
+      Pgr_dijkstra< DirectedGraph > digraph(gType, initial_size);
+      Pgr_dijkstra< UndirectedGraph > undigraph(gType, initial_size);
+      std::vector<int64_t> targets;
+      std::deque<Path> paths;
+      targets.push_back(end_vertex);
+      targets.push_back(5);
+      targets.push_back(6);
 
-      std::cout << "DIJKSTRA DIRECTED GRAPH DEMO\n";
-      digraph.initialize_graph(data_edges, count);
-      digraph.process_dijkstra(path, start_vertex, end_vertex);
-      std::cout << "THE GRAPH \n";
-      digraph.print_graph();
+      if (directedFlag) {
+
+        std::cout << "DIJKSTRA DIRECTED GRAPH DEMO\n";
+        digraph.initialize_graph(data_edges, count);
+        digraph.dijkstra(paths, start_vertex, targets);
+        std::cout << "THE GRAPH \n";
+        digraph.print_graph();
 
 
-   } else {
-      std::cout << "DIJKSTRA UNDIRECTED GRAPH DEMO\n";
-      undigraph.initialize_graph(data_edges, count);
-      undigraph.process_dijkstra(path, start_vertex, end_vertex);
+     } else {
+        std::cout << "DIJKSTRA UNDIRECTED GRAPH DEMO\n";
+        undigraph.initialize_graph(data_edges, count);
+        undigraph.dijkstra(paths, start_vertex, targets);
 
-      std::cout << "THE GRAPH \n";
-      undigraph.print_graph();
+        std::cout << "THE GRAPH \n";
+        undigraph.print_graph();
 
-   }
-#endif   
+     }
 
-   // the output is independent of the graph
-   std::cout << "THE OPUTPUT ---->  total cost: " << path.cost << "\n";
-   path.print_path();
-   path.clear();
-   Pgr_ksp < DirectedGraph > kdigraph(gType, initial_size);
-   Pgr_ksp < UndirectedGraph > kundigraph(gType, initial_size);
+     // the outputs are independent of the graph
+     std::cout << "THE OPUTPUTS ---->  total outputs: " << paths.size() << "\n";
+     for (unsigned int i = 0; i < paths.size(); ++i) {
+         if (sizeof(paths[i]) == 0) continue; //no solution found
+         std::cout << "Path #" << i << " cost: " << paths[i].cost << "\n";
+         paths[i].print_path();
+     }
+   }  // alg = "dm"
 
-   std::deque< Path > ksp_paths;
 
-   if (directedFlag) {
+    if (algorithm == "d") {
+      // no size overhead because the graph is empty
+      // have them available thru out the code
+      Pgr_dijkstra< DirectedGraph > digraph(gType, initial_size);
+      Pgr_dijkstra< UndirectedGraph > undigraph(gType, initial_size);
 
-      std::cout << "KSP DIRECTED GRAPH DEMO 1 path\n";
-      kdigraph.initialize_graph(data_edges, count);
-      ksp_paths = kdigraph.Yen(start_vertex, end_vertex, 1);
+      if (directedFlag) {
 
-      std::cout << "THE GRAPH \n";
-      kdigraph.print_graph();
-   } 
+        std::cout << "DIJKSTRA DIRECTED GRAPH DEMO\n";
+        digraph.initialize_graph(data_edges, count);
+        digraph.dijkstra(path, start_vertex, end_vertex);
+        std::cout << "THE GRAPH \n";
+        digraph.print_graph();
+
+
+     } else {
+        std::cout << "DIJKSTRA UNDIRECTED GRAPH DEMO\n";
+        undigraph.initialize_graph(data_edges, count);
+        undigraph.dijkstra(path, start_vertex, end_vertex);
+  
+        std::cout << "THE GRAPH \n";
+        undigraph.print_graph();
+
+     }
+
+     // the output is independent of the graph
+     std::cout << "THE OPUTPUT ---->  total cost: " << path.cost << "\n";
+     path.print_path();
+     path.clear();
+   }  // alg = "d"
+
+   if (algorithm == "k") {
+     Pgr_ksp < DirectedGraph > kdigraph(gType, initial_size);
+     Pgr_ksp < UndirectedGraph > kundigraph(gType, initial_size);
+
+     std::deque< Path > ksp_paths;
+
+     if (directedFlag) {
+        std::cout << "KSP DIRECTED GRAPH DEMO 1 path\n";
+        kdigraph.initialize_graph(data_edges, count);
+        ksp_paths = kdigraph.Yen(start_vertex, end_vertex, 1);
+
+        std::cout << "THE GRAPH \n";
+        kdigraph.print_graph();
+     } 
+
+     // the outputs are independent of the graph
+     std::cout << "THE OPUTPUTS ---->  total outputs: " << ksp_paths.size() << "\n";
+     for (unsigned int i = 0; i < ksp_paths.size(); ++i) {
+         if (sizeof(ksp_paths[i]) == 0) continue; //no solution found
+         std::cout << "Path #" << i << "\n";
+         ksp_paths[i].print_path();
+     }
+
+
+     Pgr_ksp < DirectedGraph > k2digraph(gType, initial_size);
+     Pgr_ksp < UndirectedGraph > k2undigraph(gType, initial_size);
+
+     if (directedFlag) {
+
+        std::cout << "KSP DIRECTED GRAPH DEMO 2 path\n";
+        k2digraph.initialize_graph(data_edges, count);
+        ksp_paths = k2digraph.Yen(start_vertex, end_vertex, 2);
+
+        std::cout << "THE GRAPH \n";
+        k2digraph.print_graph();
+     } else {
+        std::cout << "KSP UNDIRECTED GRAPH DEMO 2 path\n";
+        k2undigraph.initialize_graph(data_edges, count);
+        ksp_paths = k2undigraph.Yen(start_vertex, end_vertex, 2);
+
+        std::cout << "THE GRAPH \n";
+        k2undigraph.print_graph();
+     }
 
    // the outputs are independent of the graph
-   std::cout << "THE OPUTPUTS ---->  total outputs: " << ksp_paths.size() << "\n";
-   for (unsigned int i = 0; i < ksp_paths.size(); ++i) {
-       if (sizeof(ksp_paths[i]) == 0) continue; //no solution found
-       std::cout << "Path #" << i << "\n";
-       ksp_paths[i].print_path();
-   }
-
-
-   Pgr_ksp < DirectedGraph > k2digraph(gType, initial_size);
-   Pgr_ksp < UndirectedGraph > k2undigraph(gType, initial_size);
-
-   if (directedFlag) {
-
-      std::cout << "KSP DIRECTED GRAPH DEMO 2 path\n";
-      k2digraph.initialize_graph(data_edges, count);
-      ksp_paths = k2digraph.Yen(start_vertex, end_vertex, 2);
-
-      std::cout << "THE GRAPH \n";
-      k2digraph.print_graph();
-   } else {
-      std::cout << "KSP UNDIRECTED GRAPH DEMO 2 path\n";
-      k2undigraph.initialize_graph(data_edges, count);
-      ksp_paths = k2undigraph.Yen(start_vertex, end_vertex, 2);
-
-      std::cout << "THE GRAPH \n";
-      k2undigraph.print_graph();
-   }
-
-   // the outputs are independent of the graph
-   std::cout << "THE OPUTPUTS ---->  total outputs: " << ksp_paths.size() << "\n";
-   for (unsigned int i = 0; i < ksp_paths.size(); ++i) {
-       if (sizeof(ksp_paths[i]) == 0) continue; //no solution found
-       std::cout << "Path #" << i << " cost: " << ksp_paths[i].cost << "\n";
-       ksp_paths[i].print_path();
-   }
+     std::cout << "THE OPUTPUTS ---->  total outputs: " << ksp_paths.size() << "\n";
+     for (unsigned int i = 0; i < ksp_paths.size(); ++i) {
+         if (sizeof(ksp_paths[i]) == 0) continue; //no solution found
+         std::cout << "Path #" << i << " cost: " << ksp_paths[i].cost << "\n";
+         ksp_paths[i].print_path();
+     }
+   }  // alg = "k"
 }

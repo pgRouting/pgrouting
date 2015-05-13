@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <deque>
 #include <iostream>
+#include <fstream>
 #include "postgres.h"
 #include "./pgr_types.h"
 
@@ -117,7 +118,7 @@ class Path {
         pgr_path_element3_t **ret_path,
         int &sequence, int route_id) const {
         // the row data:  seq, route, nodeid, edgeId, cost
-    int64_t nodeId, edgeId, lastNodeId;
+    int64_t nodeId, edgeId;
     double cost;
 
     for (unsigned int i = 0; i < path.size(); i++) {
