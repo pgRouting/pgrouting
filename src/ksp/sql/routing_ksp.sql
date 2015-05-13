@@ -46,21 +46,22 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id bigint, target_id bigint,
   ROWS 1000;
 
 /* invert the comments when pgRouting decides for bigints */
-CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id bigint, target_id bigint, no_paths integer)
+CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id anyelement, target_id anyelement, no_paths integer)
   --RETURNS SETOF pgr_costresult3Big AS
   RETURNS SETOF pgr_costresult3 AS
   $BODY$ 
   DECLARE
   has_reverse boolean;
   BEGIN
-         has_reverse =_pgr_parameter_check(sql);
-         return query SELECT seq, id1 , id2::integer , id3::integer, cost FROM pgr_ksp(sql, source_id, target_id, no_paths, has_reverse);
+         has_reverse =_pgr_parameter_check(sql::text);
+         return query SELECT seq, id1 , id2::integer , id3::integer, cost FROM pgr_ksp(sql::text, source_id::bigint, target_id::bigint, no_paths, has_reverse);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100
   ROWS 1000;
 
+/*
 CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id integer, target_id integer, no_paths integer)
   --RETURNS SETOF pgr_costresult3Big AS
   RETURNS SETOF pgr_costresult3 AS
@@ -72,4 +73,4 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id integer, target_id intege
   LANGUAGE plpgsql VOLATILE
   COST 100
   ROWS 1000;
-
+*/
