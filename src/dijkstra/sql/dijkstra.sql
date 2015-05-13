@@ -61,7 +61,6 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bi
   COST 100
   ROWS 1000;
 
-/* invert the comments when pgRouting decides for bigints */
 CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bigint)
   --RETURNS SETOF pgr_costresultBig AS
   RETURNS SETOF pgr_costresult AS
@@ -71,6 +70,21 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bi
   BEGIN
          has_reverse =_pgr_parameter_check(sql);
          return query SELECT seq, id1::integer , id2::integer, cost FROM pgr_dijkstra(sql, source_id, target_id, false, has_reverse);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100
+  ROWS 1000;
+
+CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bigint, directed boolean)
+  --RETURNS SETOF pgr_costresultBig AS
+  RETURNS SETOF pgr_costresult AS
+  $BODY$
+  DECLARE
+  has_reverse boolean;
+  BEGIN
+         has_reverse =_pgr_parameter_check(sql);
+         return query SELECT seq, id1::integer , id2::integer, cost FROM pgr_dijkstra(sql, source_id, target_id, directed, has_reverse);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE

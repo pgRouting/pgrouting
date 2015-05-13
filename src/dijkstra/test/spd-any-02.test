@@ -1,2 +1,0 @@
-select * from pgr_dijkstra('select id, source::int4, target::int4, cost from edges1', 11, 5, false, false);
-
