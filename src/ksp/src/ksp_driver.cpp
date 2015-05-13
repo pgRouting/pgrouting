@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
 
-#include "./KSPDriver.h"
+#include "./ksp_driver.h"
 
 extern "C" {
 #include "postgres.h"
@@ -37,19 +37,14 @@ extern "C" {
 
 #include "./pgr_ksp.hpp"
 #include "./../../common/src/pgr_types.h"
+#include "./../../common/src/postgres_connection.h"
 
 
-static  void dpPrint(
-                     const Path &thePath,
-                     ksp_path_element_t **path,
-                     int &sequence, int route_id, std::ostream &log);
 
-static  ksp_path_element_t * noPathFound(int64_t start_id);
-
-int  doKpaths(pgr_edge_t  *data_edges, int64_t total_tuples,
+int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
                        int64_t  start_vertex, int64_t  end_vertex,
                        int no_paths, bool has_reverse_cost, bool directedFlag,
-                       ksp_path_element_t **ksp_path, int *path_count,
+                       pgr_path_element3_t **ksp_path, int *path_count,
                        char ** err_msg) {
     try {
         // in c code this should have been checked:
@@ -84,7 +79,7 @@ int  doKpaths(pgr_edge_t  *data_edges, int64_t total_tuples,
         if (paths.size() == 0) {
             *err_msg = strdup("NOTICE: No path found between Starting and Ending vertices");
             (*path_count) = 1;
-            *ksp_path = noPathFound(start_vertex);
+            *ksp_path = noPathFound3(start_vertex);
             return 0;
         }
 
@@ -99,25 +94,14 @@ int  doKpaths(pgr_edge_t  *data_edges, int64_t total_tuples,
 
         // get the space required to store all the paths
         *ksp_path = NULL;
-        *ksp_path = get_ksp_memory(count, (*ksp_path));
+        *ksp_path = pgr_get_memory3(count, (*ksp_path));
 
         int sequence = 0;
         for (unsigned int route_id = 0; route_id < paths.size(); route_id++) {
           if (paths[route_id].path.size() > 0)
-               dpPrint(paths[route_id], ksp_path, sequence, route_id, log);
-#if 0
-          paths[route_id].print_path(log);
-#endif
+               paths[route_id].dpPrint(ksp_path, sequence, route_id);
         }
 
-#if 0
-// move around this lines to force a return with an empty path and the log msg
-// cool for debugging
-*err_msg = strdup(log.str().c_str());
-(*path_count) = 1;
-*path = noPathFound(start_vertex);
-return -1;
-#endif
         log << "NOTICE Sequence: " << sequence << "\n";
         if (count != sequence) {
             log << "ERROR: Internal count and real count are different. \n"
@@ -139,34 +123,12 @@ return -1;
     }
 }
 
-static void dpPrint(
-                     const Path &thePath,
-                     ksp_path_element_t **path,
-                     int &sequence, int route_id, std::ostream &log ) {
-        // the row data:  seq, route, nodeid, edgeId, cost
-        int64_t nodeId, edgeId, lastNodeId;
-        double cost;
 
-        for (unsigned int i = 0; i < thePath.path.size(); i++) {
-                edgeId = thePath.path[i].edge;
-                nodeId = thePath.path[i].source;
-                cost = thePath.path[i].cost;
-
-               (*path)[sequence].route_id = route_id;
-               (*path)[sequence].vertex_id = nodeId;
-               (*path)[sequence].edge_id = edgeId;
-               (*path)[sequence].cost = cost;
-               sequence++;
-        }
-}
-
-static  ksp_path_element_t * noPathFound(int64_t start_id) {
-        ksp_path_element_t *no_path;
-        no_path = get_ksp_memory(1, no_path);
-        no_path[0].route_id  = 0;
-        no_path[0].vertex_id = start_id;
-        no_path[0].cost = 0;
-        no_path[0].edge_id = -1;
-        return no_path;
-}
-
+#if 0
+// move around this lines to force a return with an empty path and the log msg
+// cool for debugging
+*err_msg = strdup(log.str().c_str());
+(*path_count) = 1;
+*path = noPathFound(start_vertex);
+return -1;
+#endif

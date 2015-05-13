@@ -19,7 +19,7 @@ pgr_dijkstra - Shortest Path Dijkstra
 Name
 -------------------------------------------------------------------------------
 
-``pgr_dijkstra`` — Returns the shortest path using Dijkstra algorithm.
+``pgr_dijkstra`` — Returns the shortest path form a single source to a single target using Dijkstra algorithm.
 
 
 Synopsis
@@ -29,7 +29,12 @@ Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1
 
 .. code-block:: sql
 
-	pgr_costResult[] pgr_dijkstra(text sql, integer source, integer target, 
+	pgr_costResult[] pgr_dijkstra(text sql, integer source, integer target);
+
+	pgr_costResult[] pgr_dijkstra(text sql, integer source, integer target,
+	                           boolean directed);
+
+	pgr_costResult[] pgr_dijkstra(text sql, integer source, integer target,
 	                           boolean directed, boolean has_rcost);
 
 
@@ -46,13 +51,13 @@ Description
 	:id: ``int4`` identifier of the edge
 	:source: ``int4`` identifier of the source vertex
 	:target: ``int4`` identifier of the target vertex
-	:cost: ``float8`` value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph.
-	:reverse_cost: ``float8`` (optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs).
+	:cost: ``float8`` value of the edge traversal cost. A negative cost will prevent the edge (``source``, ``target``) from being inserted in the graph.
+	:reverse_cost: ``float8`` (optional) the value for the reverse traversal of the edge. A negative cost will prevent the edge (``target``. ``source``) from being inserted in the graph.
 
-:source: ``int4`` id of the start point
-:target: ``int4`` id of the end point
-:directed: ``true`` if the graph is directed
-:has_rcost: if ``true``, the ``reverse_cost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.
+:starting: ``int4`` id of the starting vertex
+:ending: ``int4`` id of the ending vertex
+:directed: ``boolean`` (optional). When ``true`` the graph is considered as Directed. Default is ``false`` which considers the graph as Undirected.
+:has_rcost: ``boolean`` (optional). Default is auto detected. If set to ``true``, the ``reverse_cost`` column will be used (error if it doesn't exist). If set to ``false`` the ``reverse_cost`` column will be not be used even if it exist (but a message will show)
 
 Returns set of :ref:`type_cost_result`:
 
@@ -64,48 +69,157 @@ Returns set of :ref:`type_cost_result`:
 
 .. rubric:: History
 
-* Renamed in version 2.0.0
+* Renamed in version 2.0.0 
 
 
-Examples
+Examples for Undirected Graph
 -------------------------------------------------------------------------------
 
 * Without ``reverse_cost``
+
+The following queries are equivalent
 
 .. code-block:: sql
 
 	SELECT seq, id1 AS node, id2 AS edge, cost 
 		FROM pgr_dijkstra(
 			'SELECT id, source, target, cost FROM edge_table',
-			7, 12, false, false
+			2, 3,
+                        false,    -- directed flag
+                        false     -- has_rcost
 		);
 
-	 seq | node | edge | cost 
-	-----+------+------+------
-	   0 |    7 |    8 |    1
-	   1 |    8 |    9 |    1
-	   2 |    9 |   15 |    1
-	   3 |   12 |   -1 |    0
-	(4 rows)
+	SELECT seq, id1 AS node, id2 AS edge, cost 
+		FROM pgr_dijkstra(
+			'SELECT id, source, target, cost FROM edge_table',
+			2, 3,
+                        false     -- directed flag
+			          -- has_rcost is set to false automatically
+		);
+
+
+	SELECT seq, id1 AS node, id2 AS edge, cost 
+		FROM pgr_dijkstra(
+			'SELECT id, source, target, cost FROM edge_table',
+			2, 3
+                                  -- directed's flag default is false
+			          -- has_rcost is set to false automatically
+		);
+
+         seq | node | edge | cost 
+        -----+------+------+------
+           0 |    2 |    4 |    1
+           1 |    5 |    8 |    1
+           2 |    6 |    5 |    1
+           3 |    3 |   -1 |    0
+        (4 rows)
+
 
 
 * With ``reverse_cost``
+
+The following queries are equivalent
 
 .. code-block:: sql
 
 	SELECT seq, id1 AS node, id2 AS edge, cost 
 		FROM pgr_dijkstra(
 			'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-			7, 12, true, true
+			2, 3,
+                        false,    -- directed flag
+                        true      -- has_rcost
 		);
 
-	 seq | node | edge | cost 
-	-----+------+------+------
-	   0 |    7 |    8 |    1
-	   1 |    8 |    9 |    1
-	   2 |    9 |   15 |    1
-	   3 |   12 |   -1 |    0
-	(4 rows)
+	SELECT seq, id1 AS node, id2 AS edge, cost 
+		FROM pgr_dijkstra(
+			'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+			2, 3,
+                        false     -- directed flag
+			          -- has_rcost is set to true automatically
+		);
+
+
+	SELECT seq, id1 AS node, id2 AS edge, cost 
+		FROM pgr_dijkstra(
+			'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+			2, 3
+                                  -- directed's flag default is false
+			          -- has_rcost is set to true automatically
+		);
+
+         seq | node | edge | cost 
+        -----+------+------+------
+           0 |    2 |    2 |    1
+           1 |    3 |   -1 |    0
+	(2 rows)
+
+The queries use the :ref:`sampledata` network.
+
+
+Examples for Directed Graph
+-------------------------------------------------------------------------------
+
+* Without ``reverse_cost``
+
+The following queries are equivalent
+
+.. code-block:: sql
+
+	SELECT seq, id1 AS node, id2 AS edge, cost 
+		FROM pgr_dijkstra(
+			'SELECT id, source, target, cost FROM edge_table',
+			2, 3,
+                        true,    -- directed flag
+                        false    -- has_rcost
+		);
+
+	SELECT seq, id1 AS node, id2 AS edge, cost 
+		FROM pgr_dijkstra(
+			'SELECT id, source, target, cost FROM edge_table',
+			2, 3,
+                        true     -- directed flag
+                                 -- has_rcost is set to false automatically
+		);
+
+         seq | node | edge | cost 
+        -----+------+------+------
+           0 |    2 |   -1 |    0
+        (1 rows)
+
+
+
+* With ``reverse_cost``
+
+The following queries are equivalent
+
+.. code-block:: sql
+
+	SELECT seq, id1 AS node, id2 AS edge, cost 
+		FROM pgr_dijkstra(
+			'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+			2, 3,
+                        true,    -- directed flag
+                        true     -- has_rcost
+		);
+
+	SELECT seq, id1 AS node, id2 AS edge, cost 
+		FROM pgr_dijkstra(
+			'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+			2, 3,
+                        true     -- directed flag
+			         -- has_rcost is set to true automatically
+		);
+
+         seq | node | edge | cost 
+        -----+------+------+------
+           0 |    2 |    4 |    1
+           1 |    5 |    8 |    1
+           2 |    6 |    9 |    1
+           3 |    9 |   16 |    1
+           4 |    4 |    3 |    1
+           5 |    3 |   -1 |    0
+        (6 rows)
+
 
 The queries use the :ref:`sampledata` network.
 

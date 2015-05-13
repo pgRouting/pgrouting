@@ -28,8 +28,12 @@
 #include "access/htup_details.h"
 #endif
 
+#include "./../../common/src/pgr_types.h"
+//#define DEBUG 1
+#undef DEBUG
+#include "./../../common/src/postgres_connection.h"
 #include "./ksp.h"
-#include "./KSPDriver.h"
+#include "./ksp_driver.h"
 
 #ifndef _MSC_VER
 Datum kshortest_path(PG_FUNCTION_ARGS);
@@ -38,13 +42,6 @@ PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
 #endif  // _MSC_VER
 
 
-// #define DEBUG 1
-#ifdef DEBUG
-#define kspDBG(format, arg...) \
-elog(NOTICE, format , ## arg)
-#else
-#define kspDBG(format, arg...) do { ; } while (0)
-#endif
 
 
 
@@ -52,81 +49,6 @@ elog(NOTICE, format , ## arg)
 #ifdef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif
-
-static char *
-text2char(text *in) {
-  char *out = palloc(VARSIZE(in));
-
-  memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
-  out[VARSIZE(in) - VARHDRSZ] = '\0';
-  return out;
-}
-
-static int ksp_finish(int code, int ret) {
-  code = SPI_finish();
-  if (code != SPI_OK_FINISH) {
-    elog(ERROR, "couldn't disconnect from SPI");
-    return -1;
-  }
-  return ret;
-}
-
-static int
-ksp_fetch_edge_columns(SPITupleTable *tuptable, pgr_edge_t *edge_columns,
-      bool has_reverse_cost) {
-  edge_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
-  edge_columns->source = SPI_fnumber(SPI_tuptable->tupdesc, "source");
-  edge_columns->target = SPI_fnumber(SPI_tuptable->tupdesc, "target");
-  edge_columns->cost = SPI_fnumber(SPI_tuptable->tupdesc, "cost");
-
-  kspDBG("columns position: id %ld source %ld target %ld cost %f",
-      edge_columns->id, edge_columns->source,
-      edge_columns->target, edge_columns->cost);
-
-  if (has_reverse_cost) {
-      edge_columns->reverse_cost = SPI_fnumber(SPI_tuptable->tupdesc,
-             "reverse_cost");
-  }
-
-  return 0;
-}
-
-void
-ksp_fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
-  pgr_edge_t *edge_columns, pgr_edge_t *target_edge, bool has_rcost) {
-  Datum binval;
-  bool isnull;
-
-  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->id, &isnull);
-  if (isnull)
-    elog(ERROR, "id contains a null value");
-  target_edge->id = DatumGetInt64(binval);
-
-  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->source, &isnull);
-  if (isnull)
-    elog(ERROR, "source contains a null value");
-  target_edge->source = DatumGetInt64(binval);
-
-  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->target, &isnull);
-  if (isnull)
-    elog(ERROR, "target contains a null value");
-  target_edge->target = DatumGetInt64(binval);
-
-  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->cost, &isnull);
-  if (isnull)
-    elog(ERROR, "cost contains a null value");
-  target_edge->cost = DatumGetFloat8(binval);
-
-  if (has_rcost) {
-      binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->reverse_cost,
-                             &isnull);
-      if (isnull)
-        elog(ERROR, "reverse_cost contains a null value");
-      target_edge->reverse_cost =  DatumGetFloat8(binval);
-  } else {
-      target_edge->reverse_cost = -1.0;
-  }
-}
 
 
 PG_FUNCTION_INFO_V1(kshortest_path);
@@ -140,7 +62,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
   int                  call_cntr;
   int                  max_calls;
   TupleDesc            tuple_desc;
-  ksp_path_element_t      *path;
+  pgr_path_element3_t      *path;
   void * toDel;
 
   /* stuff done only on the first call of the function */
@@ -156,28 +78,18 @@ kshortest_path(PG_FUNCTION_ARGS) {
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-      ret = compute_kshortest_path(text2char(PG_GETARG_TEXT_P(0)), /* SQL  */
-                                  PG_GETARG_INT64(1),   /* source id */
-                                  PG_GETARG_INT64(2),   /* target_id */
-                                  PG_GETARG_INT32(3),   /* number of paths */
-                                  PG_GETARG_BOOL(4),    /* has reverse_cost */
-                                  PG_GETARG_BOOL(5),    /* directed */
-                  &path,
-                  &path_count);
+      ret = compute(
+              pgr_text2char(PG_GETARG_TEXT_P(0)), /* SQL  */
+              PG_GETARG_INT64(1),   /* source id */
+              PG_GETARG_INT64(2),   /* target_id */
+              PG_GETARG_INT32(3),   /* number of paths */
+              PG_GETARG_BOOL(4),    /* has reverse_cost */
+              PG_GETARG_BOOL(5),    /* directed */
+              &path,
+              &path_count);
       toDel = path;
-#ifdef DEBUG
-      if (ret > = 0) {
-          int i;
 
-          for (i = 0; i < path_count; i++) {
-              kspDBG("Step %i route_id  %d ", i, path[i].route_id);
-              kspDBG("        vertex_id  %ld ", path[i].vertex_id);
-              kspDBG("        edge_id    %ld ", path[i].edge_id);
-              kspDBG("        cost       %f ", path[i].cost);
-            }
-        }
-#endif
-      kspDBG("Total number of tuples to be returned %i ", path_count);
+      PGR_DBG("Total number of tuples to be returned %i ", path_count);
 
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;
@@ -196,7 +108,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
   call_cntr = funcctx->call_cntr;
   max_calls = funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
-  path = (ksp_path_element_t*) funcctx->user_fctx;
+  path = (pgr_path_element3_t*) funcctx->user_fctx;
 
   if (call_cntr < max_calls) {   /* do when there is more left to send */
       HeapTuple    tuple;
@@ -209,8 +121,6 @@ kshortest_path(PG_FUNCTION_ARGS) {
 
       values = (Datum *)palloc(5 * sizeof(Datum));
       nulls = (bool *) palloc(5 * sizeof(bool));
-
-
 
       values[0] = Int32GetDatum(call_cntr);
       nulls[0] = false;
@@ -246,10 +156,10 @@ kshortest_path(PG_FUNCTION_ARGS) {
 
 
 
-int compute_kshortest_path(char* sql, int64_t start_vertex,
+int compute(char* sql, int64_t start_vertex,
          int64_t end_vertex, int no_paths,
-         bool has_reverse_cost, bool directed,
-         ksp_path_element_t **ksp_path, int *path_count) {
+         bool has_rcost, bool directed,
+         pgr_path_element3_t **ksp_path, int *path_count) {
   int SPIcode;
   void *SPIplan;
   Portal SPIportal;
@@ -257,89 +167,27 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
   int ntuples;
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
-#ifndef _MSC_VER
-  pgr_edge_t edge_columns = {.id = -1, .source = -1, .target = -1,
-                                 .cost = -1, .reverse_cost = -1};
-#else  // _MSC_VER
-  pgr_edge_t edge_columns = {-1, -1, -1, -1, -1};
-#endif  // _MSC_VER
-
-
-  bool sourceFound = false;
-  bool targetFound = false;
 
   char *err_msg = (char *)"";
   int ret = -1;
 
-  kspDBG("Starting kshortest_path %s\n", sql);
-  SPIcode = SPI_connect();
-  if (SPIcode != SPI_OK_CONNECT) {
-      elog(ERROR, "kshortest_path: couldn't open a connection to SPI");
+  if (start_vertex == end_vertex) {
+      elog(ERROR, "Starting vertex and Ending Vertex are equal");
       return -1;
   }
 
-  SPIplan = SPI_prepare(sql, 0, NULL);
-  if (SPIplan  == NULL) {
-      elog(ERROR, "kshortest_path: couldn't create query plan via SPI");
-      return -1;
-  }
+  PGR_DBG("Load data");
+  bool sourceFound = false;
+  bool targetFound = false;
+  SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
+               start_vertex, end_vertex, &sourceFound, &targetFound);
+  if (SPIcode == -1) {
+    PGR_DBG("Error getting data\n");
+    return SPIcode;
+  } 
 
-  if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
-      elog(ERROR, "shortest_path: SPI_cursor_open('%s') returns NULL", sql);
-      return -1;
-  }
-
-  /* proceed to read the data from the query */
-  while (moredata == TRUE) {
-      SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
-
-      if (edge_columns.id == -1) {
-          if (ksp_fetch_edge_columns(SPI_tuptable, &edge_columns,
-                                 has_reverse_cost) == -1)
-        return ksp_finish(SPIcode, ret);
-      }
-
-      ntuples = SPI_processed;
-      total_tuples += ntuples;
-
-      if (!edges)
-        edges = (pgr_edge_t *)palloc(total_tuples * sizeof(pgr_edge_t));
-      else
-        edges = (pgr_edge_t *)repalloc(edges, total_tuples * sizeof(pgr_edge_t));
-
-      if (edges == NULL) {
-          elog(ERROR, "Out of memory");
-        return ksp_finish(SPIcode, ret);
-        }
-
-      if (ntuples > 0) {
-          int t;
-          SPITupleTable *tuptable = SPI_tuptable;
-          TupleDesc tupdesc = SPI_tuptable->tupdesc;
-
-          for (t = 0; t < ntuples; t++) {
-              HeapTuple tuple = tuptable->vals[t];
-              ksp_fetch_edge(&tuple, &tupdesc, &edge_columns,
-                         &edges[total_tuples - ntuples + t], has_reverse_cost);
-
-              if (!sourceFound
-                 && ((edges[total_tuples - ntuples + t].source == start_vertex)
-                 || (edges[total_tuples - ntuples + t].source == start_vertex))) {
-                    sourceFound = true;
-              }
-              if (!targetFound
-                 && ((edges[total_tuples - ntuples + t].target == end_vertex)
-                 || (edges[total_tuples - ntuples + t].target == end_vertex))) {
-                  targetFound = true;
-             }
-          }
-          SPI_freetuptable(tuptable);
-        } else {
-          moredata = FALSE;
-        }
-    }
-
-
+  PGR_DBG("Total %ld tuples in query:", total_tuples);
+#if 0
   if (!sourceFound) {
       elog(ERROR, "Starting Vertex does not exist in the data");
       return -1;
@@ -348,22 +196,15 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
       elog(ERROR, "Ending Vertex does not exist in the data");
       return -1;
   }
-  if (start_vertex == end_vertex) {
-      elog(ERROR, "Starting vertex and Ending Vertex are equal");
-      return -1;
-  }
-
-  kspDBG("Total %ld tuples in query", total_tuples);
-
-  kspDBG("Calling doKpaths\n");
-
-  ret = doKpaths(edges, total_tuples,
+#endif
+  PGR_DBG("Calling do_pgr_ksp\n");
+  ret = do_pgr_ksp(edges, total_tuples,
             start_vertex, end_vertex,
-                       no_paths, has_reverse_cost, directed,
+                       no_paths, has_rcost, directed,
                        ksp_path, path_count, &err_msg);
-  kspDBG("total tuples found %i\n", *path_count);
-  kspDBG("Exist Status = %i\n", ret);
-  kspDBG("Returned message = %s\n", err_msg);
+  PGR_DBG("total tuples found %i\n", *path_count);
+  PGR_DBG("Exist Status = %i\n", ret);
+  PGR_DBG("Returned message = %s\n", err_msg);
 
 
 
@@ -373,17 +214,7 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
     }
 
   pfree(edges);
-  return ksp_finish(SPIcode, ret);
-}
-
-// path gets size big
-ksp_path_element_t * get_ksp_memory(int size, ksp_path_element_t *path) {
-    if (path == 0) {
-        path = malloc(size * sizeof(ksp_path_element_t));
-    } else {
-        path = realloc(path, size * sizeof(ksp_path_element_t));
-    }
-    return path;
+  return pgr_finish(SPIcode, ret);
 }
 
 

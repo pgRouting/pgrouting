@@ -112,5 +112,26 @@ class Path {
         data.cost = 0;
         path.push_back(data);
     }
+
+ void dpPrint(
+        pgr_path_element3_t **ret_path,
+        int &sequence, int route_id) const {
+        // the row data:  seq, route, nodeid, edgeId, cost
+    int64_t nodeId, edgeId, lastNodeId;
+    double cost;
+
+    for (unsigned int i = 0; i < path.size(); i++) {
+      edgeId = path[i].edge;
+      nodeId = path[i].source;
+      cost = path[i].cost;
+
+      (*ret_path)[sequence].route_id = route_id;
+      (*ret_path)[sequence].vertex_id = nodeId;
+      (*ret_path)[sequence].edge_id = edgeId;
+      (*ret_path)[sequence].cost = cost;
+      sequence++;
+    }
+  }
+
 };
 #endif  // SRC_COMMON_SRC_BASE_PATH_SSCE_H_

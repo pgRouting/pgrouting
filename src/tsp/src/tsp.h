@@ -26,7 +26,7 @@
 #define DTYPE double
 
 #include "postgres.h"
-#include "dijkstra.h" 
+#include "../../common/src/pgr_types.h" 
 
 typedef struct point
 {
