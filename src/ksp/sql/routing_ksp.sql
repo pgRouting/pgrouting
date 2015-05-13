@@ -61,4 +61,15 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id bigint, target_id bigint,
   COST 100
   ROWS 1000;
 
-       
+CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id integer, target_id integer, no_paths integer)
+  --RETURNS SETOF pgr_costresult3Big AS
+  RETURNS SETOF pgr_costresult3 AS
+  $BODY$
+  BEGIN
+         return query SELECT seq, id1 , id2::integer , id3::integer, cost FROM pgr_ksp(sql, source_id::bigint, target_id::bigint, no_paths);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100
+  ROWS 1000;
+
