@@ -1,7 +1,5 @@
 /*PGR
 
-file: basePath_SSCE.hpp
-
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
 
@@ -26,6 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <deque>
 #include <vector>
+#include <set>
+#include <map>
 #include <limits>
 
 #include <boost/config.hpp>
@@ -36,57 +36,140 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "postgres.h"
 #include "./pgr_types.h"
 
+/*! \brief boost::graph simplified to pgRouting needs
+
+This class gives the handling basics of a boost::graph of kind G
+where G:
+ can be an undirected graph or a directed graph.
+
+Usage:
+======
+
+ Given the following types:
+~~~~{.c}
+ typedef boost::adjacency_list < boost::vecS, boost::vecS,
+            boost::undirectedS,
+            boost_vertex_t, boost_edge_t > UndirectedGraph;
+
+ typedef boost::adjacency_list < boost::vecS, boost::vecS,
+            boost::bidirectionalS,
+            boost_vertex_t, boost_edge_t > DirectedGraph;
+~~~~
+
+direct usage:
+---------------
+
+~~~~{.c}
+    Pgr_base_graph < DirectedGraph > digraph(gType, initial_size);
+    Pgr_base_graph < UndirectedGraph > undigraph(gType, initial_size);
+~~~~
+
+usage by inheritance:
+---------------------
+
+~~~~{.c}
+ class my_graph: public Pgr_base_graph {
+   explicit my_graph(graphType gtype, const int initial_size)
+     :Pgr_base_graph< G >(gtype, initial_size) {}
+   // the class: my_graph will have the functionality of this class
+ }
+ 
+ my_graph < DirectedGraph > digraph(gType, initial_size);
+ my_graph < UndirectedGraph > undigraph(gType, initial_size);
+~~~~
+
+*/
+
 template <class G>
 class Pgr_base_graph {
  public:
+  /** @name Graph related types
+  Type      |     boost meaning     |   pgRouting Meaning
+:---------: | :-------------------- | :----------------------
+   G        | boost::adjacency_list |   Graph
+   V        | vertex_descriptor     |   Think of it as local ID of a vertex
+   E        | edge_descriptor       |   Think of it as local ID of an edge
+   V_i      | vertex_iterator       |   To cycle the vertices of the Graph
+   E_i      | edge_iterator         |   To cycle the edges of the Graph
+   EO_i     | out_edge_iterator     |   To cycle the out going edges of a vertex
+   EI_i     | in_edge_iterator      |   To cycle the in coming edges of a vertex (only in bidirectional graphs)
+  */
+  //@{
   typedef typename boost::graph_traits < G >::vertex_descriptor V;
   typedef typename boost::graph_traits < G >::edge_descriptor E;
+  typedef typename boost::graph_traits < G >::vertex_iterator V_i;
   typedef typename boost::graph_traits < G >::edge_iterator E_i;
   typedef typename boost::graph_traits < G >::out_edge_iterator EO_i;
   typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
-  typedef typename boost::graph_traits < G >::vertex_iterator V_i, V_iend;
+  //@}
 
-
-  // store a map for the vertices
-#if 0
-  typedef typename boost::bimap< int64_t, int64_t > bm_type;
-  typedef typename bm_type::left_iterator LI;
-  typedef typename bm_type::value_type VT;
-#else
+  /** @name Id handling related types
+  Type      |  Meaning       |   pgRouting Meaning
+:---------: | :------------- | :----------------------
+   id_to_V  | maps id -> V   | given an id store the V
+   V_to_id  | maps V -> id   | given a V store the id
+   LI       | Left Iterator  | iterates over id_to_V
+   RI       | right Iterator | iterates over V_to_id
+  */
+  //@{
   typedef typename std::map< int64_t, V > id_to_V;
   typedef typename std::map< V, int64_t > V_to_id;
   typedef typename id_to_V::const_iterator LI;
   typedef typename V_to_id::const_iterator RI;
-#endif
+  //@}
 
-  G graph;
-  int64_t numb_vertices;
-  graphType m_gType;
+  //! @name The Graph 
+  //@{
+  G graph;                //!< The graph
+  int64_t numb_vertices;  //!< number of vertices
+  graphType m_gType;      //!< type (DIRECTED or UNDIRECTED)
+  //@}
 
-  id_to_V  vertices_map;   // id -> graph id
-  V_to_id  gVertices_map;  // graph id -> id
+  //! @name Id handling
+  //@{
+  id_to_V  vertices_map;   //!< id -> graph id
+  V_to_id  gVertices_map;  //!< graph id -> id
+  //@}
 
-  // used by dijkstra
+  //! @name Graph Modification 
+  //@{
+  //! Used for storing the removed_edges
+  std::deque<pgr_edge_t> removed_edges;
+  //@}
+
+  //! @name Used by dijkstra
+  //@{
   std::vector<V> predecessors;
   std::vector<float8> distances;
+  //@}
 
-  // used for modification
-  std::deque<pgr_edge_t> removed_edges;
-
+  //! @name The Graph
+  //@{
+  //! \brief Constructor
+  /*!
+    Prepares the _graph_ to be of type _gtype_ with the
+    aproximate number of vertices its coing to have as *initial_size*
+  */
   explicit Pgr_base_graph< G >(graphType gtype, const int initial_size)
      : graph(initial_size),
        numb_vertices(0),
        m_gType(gtype)
      {}
 
- private:
-  // MAC solution # 1 explicitly define operator =
-  // making it private, because we are actually not allowing graph assigmnet
-  // operator = (const Pgr_base_graph< G > &graph) {}
-      
 
- public:
-    void disconnect_edge(int64_t p_from, int64_t p_to) {
+  //! \brief Disconnects all edges from p_from to p_to
+  /*!
+    - No edge is disconnected if the vertices id's do not exist in the graph
+    - All removed edges are stored for future reinsertion
+    - All parallel edges are disconnected (automatically by boost)
+
+    ![disconnect_edge(2,3) on an UNDIRECTED graph](disconnectEdgeUndirected.png)
+    ![disconnect_edge(2,3) on a DIRECTED graph](disconnectEdgeDirected.png)
+
+    @param [IN] *p_from* original vertex id of the starting point of the edge
+    @param [IN] *p_to*   original vertex id of the ending point of the edge
+  */
+  void disconnect_edge(int64_t p_from, int64_t p_to) {
       V g_from;
       V g_to;
       pgr_edge_t d_edge;
@@ -94,6 +177,7 @@ class Pgr_base_graph {
       if (!get_gVertex(p_from, g_from)) return;
       if (!get_gVertex(p_to, g_to)) return;
       EO_i out, out_end;
+      // store the edges that are going to be removed
       for (boost::tie(out, out_end) = out_edges(g_from, graph); out != out_end; ++out) {
             if (target(*out, graph) == g_to) {
                 d_edge.id = graph[*out].id;
@@ -104,16 +188,32 @@ class Pgr_base_graph {
                 removed_edges.push_back(d_edge);
             }
       }
+      // the actual removal
       boost::remove_edge(g_from, g_to, graph);
-    }
+  }
 
 
-void disconnect_vertex(int64_t p_vertex) {
+  //! \brief Disconnects all incomming and outgoing edges from the vertex
+  /*!
+    boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
+    simulated by disconnecting the vertex from the graph
+    
+    - No edge is disconnected if the vertices id's do not exist in the graph
+    - All removed edges are stored for future reinsertion
+    - All parallel edges are disconnected (automatically by boost)
+
+    ![disconnect_vertex(2) on an UNDIRECTED graph](disconnectVertexUndirected.png)
+    ![disconnect_vertex(2) on a DIRECTED graph](disconnectVertexDirected.png)
+
+    @param [IN] *p_vertex* original vertex id of the starting point of the edge
+  */
+  void disconnect_vertex(int64_t p_vertex) {
       V g_vertex;
       pgr_edge_t d_edge;
       // nothing to do, the vertex doesnt exist
       if (!get_gVertex(p_vertex, g_vertex)) return;
       EO_i out, out_end;
+      // store the edges that are going to be removed
       for (boost::tie(out, out_end) = out_edges(g_vertex, graph); out != out_end; ++out) {
             d_edge.id = graph[*out].id;
             d_edge.source = graph[source(*out, graph)].id;
@@ -123,6 +223,7 @@ void disconnect_vertex(int64_t p_vertex) {
             removed_edges.push_back(d_edge);
       }
 
+      // special case
       if (m_gType == DIRECTED) {
           EI_i in, in_end;
           for (boost::tie(in, in_end) = in_edges(g_vertex, graph); in != in_end; ++in) {
@@ -136,15 +237,18 @@ void disconnect_vertex(int64_t p_vertex) {
       }
 
       V d_vertex = boost::vertex(vertices_map.find(p_vertex)->second, graph);
+      // delete incomming and outgoing edges from the vertex
       boost::clear_vertex(d_vertex, graph);
-    }
+  }
 
+  //! \brief Reconnects all edges that were removed
     void restore_graph() {
         while (removed_edges.size() != 0) {
             graph_add_edge(removed_edges[0]);
             removed_edges.pop_front();
         }
     }
+  //@}
 
     void
     print_graph() {
