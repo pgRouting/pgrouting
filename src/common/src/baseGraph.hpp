@@ -22,16 +22,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef SRC_COMMON_SRC_BASE_GRAPH_HPP_
 #define SRC_COMMON_SRC_BASE_GRAPH_HPP_
 
+#include <boost/config.hpp>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/graph_utility.hpp>
+
 #include <deque>
 #include <vector>
 #include <set>
 #include <map>
 #include <limits>
-
-#include <boost/config.hpp>
-
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/graph_utility.hpp>
 
 #include "postgres.h"
 #include "./pgr_types.h"
@@ -118,7 +117,7 @@ class Pgr_base_graph {
   typedef typename V_to_id::const_iterator RI;
   //@}
 
-  //! @name The Graph 
+  //! @name The Graph
   //@{
   G graph;                //!< The graph
   int64_t numb_vertices;  //!< number of vertices
@@ -131,7 +130,7 @@ class Pgr_base_graph {
   V_to_id  gVertices_map;  //!< graph id -> id
   //@}
 
-  //! @name Graph Modification 
+  //! @name Graph Modification
   //@{
   //! Used for storing the removed_edges
   std::deque<pgr_edge_t> removed_edges;
@@ -156,6 +155,14 @@ class Pgr_base_graph {
        m_gType(gtype)
      {}
 
+  //! \brief Inserts *count* edges of type *pgr_edge_t* into the graph
+  void graph_insert_data(const pgr_edge_t *data_edges, int64_t count) {
+      for (unsigned int i = 0; i < count; ++i) {
+         graph_add_edge(data_edges[i]);
+      }
+      for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i )
+         graph[i].id = gVertices_map.find(i)->second;
+  }
 
   //! \brief Disconnects all edges from p_from to p_to
   /*!
@@ -178,7 +185,8 @@ class Pgr_base_graph {
       if (!get_gVertex(p_to, g_to)) return;
       EO_i out, out_end;
       // store the edges that are going to be removed
-      for (boost::tie(out, out_end) = out_edges(g_from, graph); out != out_end; ++out) {
+      for (boost::tie(out, out_end) = out_edges(g_from, graph);
+           out != out_end; ++out) {
             if (target(*out, graph) == g_to) {
                 d_edge.id = graph[*out].id;
                 d_edge.source = graph[source(*out, graph)].id;
@@ -214,7 +222,8 @@ class Pgr_base_graph {
       if (!get_gVertex(p_vertex, g_vertex)) return;
       EO_i out, out_end;
       // store the edges that are going to be removed
-      for (boost::tie(out, out_end) = out_edges(g_vertex, graph); out != out_end; ++out) {
+      for (boost::tie(out, out_end) = out_edges(g_vertex, graph);
+        out != out_end; ++out) {
             d_edge.id = graph[*out].id;
             d_edge.source = graph[source(*out, graph)].id;
             d_edge.target = graph[target(*out, graph)].id;
@@ -226,7 +235,8 @@ class Pgr_base_graph {
       // special case
       if (m_gType == DIRECTED) {
           EI_i in, in_end;
-          for (boost::tie(in, in_end) = in_edges(g_vertex, graph); in != in_end; ++in) {
+          for (boost::tie(in, in_end) = in_edges(g_vertex, graph);
+            in != in_end; ++in) {
                 d_edge.id = graph[*in].id;
                 d_edge.source = graph[source(*in, graph)].id;
                 d_edge.target = graph[target(*in, graph)].id;
@@ -250,26 +260,27 @@ class Pgr_base_graph {
     }
   //@}
 
-    void
-    print_graph() {
+  //! @name only for stand by program
+  //@{
+  void print_graph() {
         EO_i out, out_end;
         V_i vi;
 
         for (vi = vertices(graph).first; vi != vertices(graph).second; ++vi) {
             std::cout << (*vi) << " out_edges(" << graph[(*vi)].id << "):";
             for (boost::tie(out, out_end) = out_edges(*vi, graph);
-                out != out_end; ++out) {
-                std::cout << ' ' << *out << "=(" << graph[source(*out, graph)].id
-                          << ", " << graph[target(*out, graph)].id << ") = "
-                          <<  graph[*out].cost <<"\t";
+              out != out_end; ++out) {
+              std::cout << ' ' << *out << "=(" << graph[source(*out, graph)].id
+                        << ", " << graph[target(*out, graph)].id << ") = "
+                        <<  graph[*out].cost <<"\t";
             }
             std::cout << std::endl;
         }
     }
+  //@}
 
 
- protected:
-    bool get_gVertex(int64_t vertex_id, V &gVertex) {
+  bool get_gVertex(int64_t vertex_id, V &gVertex) {
       LI vertex_ptr = vertices_map.find(vertex_id);
 
       if (vertex_ptr == vertices_map.end())
@@ -277,32 +288,19 @@ class Pgr_base_graph {
 
       gVertex = vertex(vertex_ptr->second, graph);
       return true;
-    }
-/*
- private:
-    void set_gVertex_id(int64_t vertex_id, V &gVertex_id) {
-      // look for it in the map
-      LI vertex_ptr = vertices_map.find(vertex_id);
+  }
 
-      // it doesn't exist
-      if (vertex_ptr  == vertices_map.end()) {
-          // insert it
-          vertex_ptr = vertices_map[vertex_id] = numb_vertices++;
-      }
-      // get the gVertex_id
-      gVertex_id = vertex_ptr->second;
-    }
-*/
+
  public:
     void get_path(std::deque< Path > &paths, V source, std::set< V > targets) {
       // used when multiple goals
       Path path;
       typename std::set< V >::iterator s_it;
-      for (s_it = targets.begin(); s_it!=targets.end(); ++s_it) {
+      for (s_it = targets.begin(); s_it != targets.end(); ++s_it) {
         path.clear();
         get_path(path, source, *s_it);
         paths.push_back(path);
-      }  
+      }
     }
 
     void get_path(Path &path, V source, V target) {
@@ -356,10 +354,10 @@ class Pgr_base_graph {
 
 
  private:
-    int64_t
-    get_edge_id(const G &graph, V from, V to, float8 &distance) {
-        typename boost::graph_traits < G >::edge_descriptor e;
-        typename boost::graph_traits < G >::out_edge_iterator out_i, out_end;
+  int64_t
+  get_edge_id(const G &graph, V from, V to, float8 &distance) {
+        E e;
+        EO_i out_i, out_end;
         V v_source, v_target;
         float8 minCost =  std::numeric_limits<float8>::max();
         int64_t minEdge = -2;
@@ -368,21 +366,23 @@ class Pgr_base_graph {
               e = *out_i;
               v_target = target(e, graph);
               v_source = source(e, graph);
-              if ((from == v_source) && (to == v_target) && (distance == graph[e].cost))
-                  return graph[e].id;
-              if ((from == v_source) && (to == v_target) && (minCost > graph[e].cost)) {
-                  minCost = graph[e].cost;
-                  minEdge = graph[e].id;
+              if ((from == v_source) && (to == v_target)
+                   && (distance == graph[e].cost))
+                     return graph[e].id;
+              if ((from == v_source) && (to == v_target)
+                   && (minCost > graph[e].cost)) {
+                     minCost = graph[e].cost;
+                     minEdge = graph[e].id;
               }
         }
         distance = minCost;
         return minEdge;
-    }
+  }
 
 
  private:
-    void
-    graph_add_edge(const pgr_edge_t &edge ) {
+  void
+  graph_add_edge(const pgr_edge_t &edge ) {
       bool inserted;
       LI vm_s, vm_t;
       E e;
@@ -402,25 +402,18 @@ class Pgr_base_graph {
       }
 
       if (edge.cost >= 0) {
-        boost::tie(e, inserted) = boost::add_edge(vm_s->second, vm_t->second, graph);
+        boost::tie(e, inserted) =
+          boost::add_edge(vm_s->second, vm_t->second, graph);
         graph[e].cost = edge.cost;
         graph[e].id = edge.id;
       }
 
       if (edge.reverse_cost >= 0) {
-        boost::tie(e, inserted) = boost::add_edge(vm_t->second, vm_s->second, graph);
+        boost::tie(e, inserted) =
+          boost::add_edge(vm_t->second, vm_s->second, graph);
         graph[e].cost = edge.reverse_cost;
         graph[e].id = edge.id;
       }
-    }
-
- public:
-    void graph_insert_data(const pgr_edge_t *data_edges, int64_t count) {
-      for (unsigned int i = 0; i < count; ++i) {
-         graph_add_edge(data_edges[i]);
-      }
-      for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i )
-         graph[i].id = gVertices_map.find(i)->second;
     }
 };
 
