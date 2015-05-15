@@ -91,6 +91,8 @@ static int a;
 static int b;
 static int arr[55];
 
+int Rand();
+
 void initRand (int seed)
 {
     int i, ii;

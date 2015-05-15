@@ -13,6 +13,7 @@
 #include "funcapi.h"
 #include "catalog/pg_type.h"
 #include "utils/array.h"
+#include "utils/lsyscache.h"
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
@@ -145,7 +146,7 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
     int i;
     int *ids;
     DTYPE fit;
-    char *err_msg;
+    char *err_msg = NULL;
 
     DBG("In solve_tsp: num: %d, start: %d, end: %d", num, start, end);
 

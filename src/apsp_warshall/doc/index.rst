@@ -39,7 +39,7 @@ Description
 
     .. code-block:: sql
 
-        SELECT source, target, cost FROM edge_table;
+        SELECT id, source, target, cost FROM edge_table;
 
     :id: ``int4`` identifier of the edge
     :source: ``int4`` identifier of the source vertex for this edge
