@@ -93,17 +93,17 @@ void pgr_fetch_edge(
   binval = SPI_getbinval(*tuple, *tupdesc, (*edge_columns)[0], &isnull);
   if (isnull)
     elog(ERROR, "id contains a null value");
-  target_edge->id = DatumGetInt32(binval);
+  target_edge->id = (int64_t) DatumGetInt32(binval);
 
   binval = SPI_getbinval(*tuple, *tupdesc, (*edge_columns)[1], &isnull);
   if (isnull)
     elog(ERROR, "source contains a null value");
-  target_edge->source = DatumGetInt32(binval);
+  target_edge->source = (int64_t) DatumGetInt32(binval);
 
   binval = SPI_getbinval(*tuple, *tupdesc, (*edge_columns)[2], &isnull);
   if (isnull)
     elog(ERROR, "target contains a null value");
-  target_edge->target = DatumGetInt32(binval);
+  target_edge->target = (int64_t) DatumGetInt32(binval);
 
   binval = SPI_getbinval(*tuple, *tupdesc, (*edge_columns)[3], &isnull);
   if (isnull)
