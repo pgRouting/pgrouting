@@ -1,5 +1,0 @@
--- include reverse_costs
--- convert -1 costs to a large number
-
-select * from pgr_dijkstra('select eid as id, source::int4, target::int4, cost, reverse_cost from edges1', 11, 5, false, true);
-

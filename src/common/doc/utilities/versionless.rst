@@ -23,6 +23,9 @@ Name
 
 .. note:: This function is intended for the developer’s aid.
 
+.. warning:: This function is foing to be discontinued. 
+             Use `_pgr_versionless` instead
+
 Synopsis
 -------------------------------------------------------------------------------
 

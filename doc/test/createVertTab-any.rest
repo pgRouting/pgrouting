@@ -1,6 +1,6 @@
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
  NOTICE:                                         FOR   18  EDGES
@@ -11,23 +11,7 @@
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
- NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
- NOTICE:                                         FOR   18  EDGES
- NOTICE:    Edges with NULL geometry,source or target: 0
- NOTICE:                              Edges processed: 18
- NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
- NOTICE:  ----------------------------------------------
-OK
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edge_table','source','the_geom','target','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: Can not determine the srid of the geometry "source" in table public.edge_table
-FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
  NOTICE:                                         FOR   18  EDGES
@@ -38,7 +22,7 @@ FAIL
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
  NOTICE:                                         FOR   18  EDGES
@@ -49,7 +33,18 @@ OK
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
+ NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
+ NOTICE:                                         FOR   18  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 18
+ NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+ NOTICE:  ----------------------------------------------
+OK
+ NOTICE:  PROCESSING:
+ NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
  NOTICE:                                         FOR   18  EDGES
@@ -60,7 +55,7 @@ OK
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','id < 10')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
  NOTICE:                                         FOR   10  EDGES
@@ -71,7 +66,7 @@ OK
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','the_geom && (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
  NOTICE:                                         FOR   9  EDGES
@@ -82,7 +77,7 @@ OK
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','the_geom && (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  10 VERTICES
  NOTICE:                                         FOR   12  EDGES
@@ -93,23 +88,7 @@ OK
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  Populating public.mytable_vertices_pgr, please wait...
- NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
- NOTICE:                                         FOR   18  EDGES
- NOTICE:    Edges with NULL geometry,source or target: 0
- NOTICE:                              Edges processed: 18
- NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
- NOTICE:  ----------------------------------------------
-OK
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('mytable','src','mygeom','tgt','true')
- NOTICE:  Performing checks, pelase wait .....
- NOTICE:  ERROR: Can not determine the srid of the geometry "src" in table public.mytable
-FAIL
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','true')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
  NOTICE:                                         FOR   18  EDGES
@@ -120,7 +99,18 @@ FAIL
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','true')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
+ NOTICE:  Populating public.mytable_vertices_pgr, please wait...
+ NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
+ NOTICE:                                         FOR   18  EDGES
+ NOTICE:    Edges with NULL geometry,source or target: 0
+ NOTICE:                              Edges processed: 18
+ NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
+ NOTICE:  ----------------------------------------------
+OK
+ NOTICE:  PROCESSING:
+ NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','true')
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
  NOTICE:                                         FOR   18  EDGES
@@ -131,7 +121,7 @@ OK
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','gid < 10')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
  NOTICE:                                         FOR   10  EDGES
@@ -142,7 +132,7 @@ OK
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','gid < 10')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
  NOTICE:                                         FOR   10  EDGES
@@ -153,7 +143,7 @@ OK
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','mygeom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
  NOTICE:                                         FOR   9  EDGES
@@ -164,7 +154,7 @@ OK
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','mygeom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
  NOTICE:                                         FOR   9  EDGES
@@ -175,7 +165,7 @@ OK
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','mygeom && (SELECT st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  10 VERTICES
  NOTICE:                                         FOR   12  EDGES
@@ -186,7 +176,7 @@ OK
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','mygeom && (SELECT st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.mytable_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  10 VERTICES
  NOTICE:                                         FOR   12  EDGES
@@ -197,7 +187,7 @@ OK
 OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
  NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
  NOTICE:                                         FOR   18  EDGES

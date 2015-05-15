@@ -4,12 +4,88 @@
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 
-SELECT seq, id1 AS node, id2 AS edge, cost
-        FROM pgr_dijkstra(
-                'SELECT id, source, target, cost FROM edge_table order by id',
-                7, 12, false, false);
 
-SELECT seq, id1 AS node, id2 AS edge, cost
-        FROM pgr_dijkstra(
-                'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-                7, 12, true, true);
+        SELECT seq, id1 AS node, id2 AS edge, cost 
+                FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost FROM edge_table',
+                        2, 3,
+                        false,    -- directed flag
+                        false     -- has_rcost
+                );
+
+        SELECT seq, id1 AS node, id2 AS edge, cost 
+                FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost FROM edge_table',
+                        2, 3,
+                        false     -- directed flag
+                                  -- has_rcost is set to false automatically
+                );
+
+
+        SELECT seq, id1 AS node, id2 AS edge, cost 
+                FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost FROM edge_table',
+                        2, 3
+                                  -- directed's flag default is false
+                                  -- has_rcost is set to false automatically
+                );
+
+        SELECT seq, id1 AS node, id2 AS edge, cost 
+                FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        2, 3,
+                        false,    -- directed flag
+                        true      -- has_rcost
+                );
+
+        SELECT seq, id1 AS node, id2 AS edge, cost 
+                FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        2, 3,
+                        false     -- directed flag
+                                  -- has_rcost is set to true automatically
+                );
+
+
+        SELECT seq, id1 AS node, id2 AS edge, cost 
+                FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        2, 3
+                                  -- directed's flag default is false
+                                  -- has_rcost is set to true automatically
+                );
+
+
+        SELECT seq, id1 AS node, id2 AS edge, cost 
+                FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost FROM edge_table',
+                        2, 3,
+                        true,    -- directed flag
+                        false    -- has_rcost
+                );
+
+        SELECT seq, id1 AS node, id2 AS edge, cost 
+                FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost FROM edge_table',
+                        2, 3,
+                        true     -- directed flag
+                                 -- has_rcost is set to false automatically
+                );
+
+
+        SELECT seq, id1 AS node, id2 AS edge, cost 
+                FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        2, 3,
+                        true,    -- directed flag
+                        true     -- has_rcost
+                );
+
+        SELECT seq, id1 AS node, id2 AS edge, cost 
+                FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        2, 3,
+                        true     -- directed flag
+                                 -- has_rcost is set to true automatically
+                );
+

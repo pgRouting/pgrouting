@@ -16,8 +16,8 @@ create table network (
 	id serial NOT NULL,
 	source integer NOT NULL,
 	target integer NOT NULL,
-	cost float,
-	reverse_cost float 
+	cost double precision,
+	reverse_cost double precision 
 );
 -- Add a geom column
 select addgeometrycolumn('','network','the_geom',3857,'MULTILINESTRING',2);
