@@ -39,8 +39,8 @@ PG_MODULE_MAGIC;
 
 Datum shortest_path(PG_FUNCTION_ARGS);
 
-static int compute_shortest_path(char* sql, int start_vertex,
-                                 int end_vertex, bool directed,
+static int compute_shortest_path(char* sql, int64_t start_vertex,
+                                 int64_t end_vertex, bool directed,
                                  bool has_rcost,
                                  pgr_path_element3_t **path, int *path_count) {
   int SPIcode;
