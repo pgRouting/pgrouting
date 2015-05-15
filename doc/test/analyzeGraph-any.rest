@@ -40,7 +40,8 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target','true')
  NOTICE:  Performing checks, please wait...
- NOTICE:  ERROR: Can not determine the srid of the geometry "id" in table public.edge_table
+ NOTICE:  Got function st_srid(integer) does not exist
+ NOTICE:  ERROR: something went wrong when checking for SRID of id in table public.edge_table
 FAIL
  NOTICE:  PROCESSING:
  NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','true')
@@ -159,7 +160,8 @@ OK
  NOTICE:  PROCESSING:
  NOTICE:  pgr_analyzeGraph('mytable',0.0001,'gid','mygeom','src','tgt','true')
  NOTICE:  Performing checks, please wait...
- NOTICE:  ERROR: Can not determine the srid of the geometry "gid" in table public.mytable
+ NOTICE:  Got function st_srid(integer) does not exist
+ NOTICE:  ERROR: something went wrong when checking for SRID of gid in table public.mytable
 FAIL
  NOTICE:  PROCESSING:
  NOTICE:  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt','true')

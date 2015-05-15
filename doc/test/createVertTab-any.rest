@@ -21,11 +21,6 @@ OK
  NOTICE:  ----------------------------------------------
 OK
  NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('edge_table','source','the_geom','target','true')
- NOTICE:  Performing checks, please wait .....
- NOTICE:  ERROR: Can not determine the srid of the geometry "source" in table public.edge_table
-FAIL
- NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
  NOTICE:  Performing checks, please wait .....
  NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
@@ -102,11 +97,6 @@ OK
  NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
- NOTICE:  PROCESSING:
- NOTICE:  pgr_createVerticesTable('mytable','src','mygeom','tgt','true')
- NOTICE:  Performing checks, please wait .....
- NOTICE:  ERROR: Can not determine the srid of the geometry "src" in table public.mytable
-FAIL
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','true')
  NOTICE:  Performing checks, please wait .....
