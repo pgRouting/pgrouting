@@ -1,11 +1,9 @@
- NOTICE:  CREATE TABLE will create implicit sequence "edge_table_id_seq" for serial column "edge_table.id"
  NOTICE:  PROCESSING:
  NOTICE:  pgr_createTopology('edge_table',0.001,'the_geom','id','source','target','true')
- NOTICE:  Performing checks, pelase wait .....
+ NOTICE:  Performing checks, please wait .....
  NOTICE:  Creating Topology, Please wait...
  NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
  NOTICE:  Rows with NULL geometry or NULL id: 0
  NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
  NOTICE:  ----------------------------------------------
 OK
- NOTICE:  CREATE TABLE will create implicit sequence "vertex_table_id_seq" for serial column "vertex_table.id"

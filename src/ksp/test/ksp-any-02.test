@@ -1,14 +1,21 @@
 --
--- Dump a 15 fastest routes between nodes 4 and 5 by total route length
+-- Generate 15 shortest paths between nodes 4 and 5
+-- with auto detection
 --
-select ksp.id1, round(sum(st_length(n.the_geom))::numeric, 2) as len
-  from pgr_ksp(
-    'select source, target, cost, reverse_cost, id from network',
-    4,
-    5,
-    15,
-    'f') ksp,
-    network n
- where ksp.id3=n.id
- group by id1
- order by id1;
+--
+select seq, id1, id2, id3, round(cost::numeric, 4) from pgr_ksp(
+    'select id, source, target, cost from network order by id',
+    4, 5,
+    15);
+
+select id1, round(sum(cost)::numeric,4) from pgr_ksp(
+    'select id, source, target, cost from network order by id',
+    4, 5,
+    15) group by id1 order by id1;
+
+
+-- the equality conditions
+select seq, id1, id2 = network.source,  id3 = network.id, round(network.cost::numeric,4) = round(result.cost::numeric, 4) from pgr_ksp(
+    'select id, source, target, cost from network order by id',
+    4, 5,
+    15) result, network where id = id3 order by seq;
