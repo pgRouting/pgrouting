@@ -18,8 +18,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
  */
-#ifndef _POSTGRES_CONNECTION_H 
-#define _POSTGRES_CONNECTION_H 
+#ifndef SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
+#define SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
 
 #include "postgres.h"
 #include "executor/spi.h"
@@ -27,8 +27,7 @@
 #include "./pgr_types.h"
 #include "./postgres_connection.h"
 
-
-#ifdef DEBUG 
+#ifdef DEBUG
 #define PGR_DBG(format, arg...) \
 elog(NOTICE, format , ## arg)
 #else
@@ -37,20 +36,19 @@ elog(NOTICE, format , ## arg)
 
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
   char * pgr_text2char(text *in);
   int pgr_finish(int code, int ret);
-			  
-  int pgr_fetch_edge_columns(SPITupleTable *tuptable, int (*edge_columns)[5], 
+
+  int pgr_fetch_edge_columns(SPITupleTable *tuptable, int (*edge_columns)[5],
                    bool has_reverse_cost);
-  void pgr_fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc, 
+  void pgr_fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
            int (*edge_columns)[5], pgr_edge_t *target_edge,
            bool has_rcost);
 
-  /*! 
+  /*!
    Signature 1:
       bigint id,
       bigint source,
@@ -59,12 +57,12 @@ extern "C"
       float reverse_cost
   */
   int pgr_get_data_signature_1(
-      char *sql,
-      pgr_edge_t **edges,
-      long *total_tuples,
-      bool has_rcost,
-      int64_t start_Vertex,
-      int64_t end_vertex);
+      char *sql,           //!< \param [IN]  sql from where we get the data
+      pgr_edge_t **edges,  //!< \param [OUT] edges retrieved edges
+      long *total_tuples,  //!< \param [OUT] total_tuples Total edges retrived
+      bool has_rcost,      //!< \param [IN]  has_rcost flag for reverse_cost
+      int64_t start_vertex,  //!< \param [IN] start_vertex index to look for
+      int64_t end_vertex);   //!< \param [IN] end_vertex index to look for
 
 
   // output corresponding to costResult3Big
@@ -76,4 +74,4 @@ extern "C"
 }
 #endif
 
-#endif  // _POSTGRES_CONNECTION_H 
+#endif  // SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
