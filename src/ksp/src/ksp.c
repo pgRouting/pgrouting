@@ -180,7 +180,7 @@ int compute(char* sql, int64_t start_vertex,
   bool sourceFound = false;
   bool targetFound = false;
   SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
-               start_vertex, end_vertex, &sourceFound, &targetFound);
+               start_vertex, end_vertex); // , &sourceFound, &targetFound);
   if (SPIcode == -1) {
     PGR_DBG("Error getting data\n");
     return SPIcode;

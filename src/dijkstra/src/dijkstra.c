@@ -49,7 +49,7 @@ static int compute_shortest_path(char* sql, int64_t start_vertex,
   bool moredata = TRUE;
   int ntuples;
   pgr_edge_t *edges = NULL;
-  int total_tuples = 0;
+  int64_t total_tuples = 0;
 
 
   char *err_msg = (char *)"";
@@ -64,7 +64,7 @@ static int compute_shortest_path(char* sql, int64_t start_vertex,
   bool sourceFound = false;
   bool targetFound = false;
   SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
-               start_vertex, end_vertex, &sourceFound, &targetFound);
+               start_vertex, end_vertex);  //  , &sourceFound, &targetFound);
   if (SPIcode == -1) {
     PGR_DBG("Error getting data\n");
     return SPIcode;
