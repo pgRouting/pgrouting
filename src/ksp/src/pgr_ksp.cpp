@@ -1,8 +1,5 @@
 /*PGR
 
-file: pgr_ksp.cpp
-
-Copyright (c) 2013 Dave Potts
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
 

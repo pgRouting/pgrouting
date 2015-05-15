@@ -1,7 +1,5 @@
 /*PGR
 
-file: basePath_SSCE.hpp
-
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
 
