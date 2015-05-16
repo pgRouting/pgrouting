@@ -148,35 +148,31 @@ int main(int ac, char* av[]) {
       // have them available thru out the code
       Pgr_dijkstra< DirectedGraph > digraph(gType, initial_size);
       Pgr_dijkstra< UndirectedGraph > undigraph(gType, initial_size);
-      std::deque<Path> paths;
+      Path path;
 
       if (directedFlag) {
 
         std::cout << "DRIVING DISTANCE DIRECTED GRAPH DEMO\n";
         digraph.initialize_graph(data_edges, count);
-        digraph.dijkstra(paths, start_vertex, distance);
+        digraph.dijkstra_dd(path, start_vertex, distance);
         std::cout << "THE GRAPH \n";
         digraph.print_graph();
 
 
-     } else {
+      } else {
         std::cout << "DRIVING DISTANCE UNDIRECTED GRAPH DEMO\n";
         undigraph.initialize_graph(data_edges, count);
-        undigraph.dijkstra(paths, start_vertex, distance);
+        undigraph.dijkstra_dd(path, start_vertex, distance);
 
         std::cout << "THE GRAPH \n";
         undigraph.print_graph();
 
-     }
+      }
 
-     // the outputs are independent of the graph
-     std::cout << "THE OPUTPUTS ---->  total outputs: " << paths.size() << "\n";
-     for (unsigned int i = 0; i < paths.size(); ++i) {
-         if (sizeof(paths[i]) == 0) continue; //no solution found
-         std::cout << "Path #" << i << " cost: " << paths[i].cost << "\n";
-         paths[i].print_path();
-     }
-   }  // alg = "dd"
+      // the outputs are independent of the graph
+      std::cout << "THE OPUTPUT ---->  total output: \n";
+      path.print_path();
+    }  // alg = "dd"
 
 
     if (algorithm == "dm") {

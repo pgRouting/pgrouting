@@ -140,6 +140,7 @@ class Pgr_base_graph {
   //@{
   std::vector<V> predecessors;
   std::vector<float8> distances;
+  std::deque<V> nodesInDistance;
   //@}
 
   //! @name The Graph
@@ -296,17 +297,17 @@ class Pgr_base_graph {
 
 
  public:
-    void get_path(std::deque< Path > &paths, V source, float8 distance) {
-#if 0
+    void get_nodesInDistance(Path &path, V source, float8 distance) {
       // used when multiple goals
-      Path path;
-      typename std::set< V >::iterator s_it;
-      for (s_it = targets.begin(); s_it != targets.end(); ++s_it) {
-        path.clear();
-        get_path(path, source, *s_it);
-        paths.push_back(path);
+      path.clear();
+      typename std::deque< V >::iterator s_it;
+      int seq=0;
+      for (s_it = nodesInDistance.begin(); s_it != nodesInDistance.end(); ++s_it) {
+        if (distances[*s_it] <= distance ) {
+          path.push_back(seq, graph[*s_it].id, -1, distances[*s_it]);
+          seq++;
+        }
       }
-#endif
     }
 
     void get_path(std::deque< Path > &paths, V source, std::set< V > targets) {

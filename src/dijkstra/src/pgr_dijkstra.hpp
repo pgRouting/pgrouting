@@ -117,14 +117,15 @@ class Pgr_dijkstra
       return this->get_path(paths, v_source, v_targets);
     }
 
-    // preparation for 1 to many
+    // preparation for 1 to distance
     void
-    dijkstra(std::deque< Path > &paths, int64_t start_vertex, float8 distance) {
+    dijkstra_dd(Path &path, int64_t start_vertex, float8 distance) {
       typedef typename boost::graph_traits < G >::vertex_descriptor V;
 
       // adjust predecessors and distances vectors
       this->predecessors.clear();
       this->distances.clear();
+      this->nodesInDistance.clear();
 
       this->predecessors.resize(boost::num_vertices(this->graph));
       this->distances.resize(boost::num_vertices(this->graph));
@@ -132,17 +133,15 @@ class Pgr_dijkstra
       // get the graphs source and target
       V v_source;
       if (!this->get_gVertex(start_vertex, v_source)) {
-        paths.clear();
+        path.clear();
         return;
       }
 
       // perform the algorithm
       dijkstra_1_to_distance(v_source, distance);
 
-this-> print_graph();
       // get the results
-      return this->get_path(paths, v_source, distance);
-      paths.clear(); return;
+      return this->get_nodesInDistance(path, v_source, distance);
     }
 
 
@@ -172,13 +171,19 @@ this-> print_graph();
     class dijkstra_distance_visitor
       :public boost::default_dijkstra_visitor {
      public:
-       explicit dijkstra_distance_visitor(float8 goal) : m_goal(goal) {}
+       explicit dijkstra_distance_visitor(float8 goal,
+               std::deque< Vertex > &nodesInDistance,
+               std::vector< float8 > &distances)
+         :m_goal(goal), m_nodes(nodesInDistance), m_dist(distances) {}
        template <class Graph>
        void examine_vertex(Vertex u, Graph& g) {
-         if (this->distances[u] >= m_goal) throw found_one_goal();
+         m_nodes.push_back(u); 
+         if (m_dist[u] >= m_goal) throw found_one_goal();
        }
      private:
        float8 m_goal;
+       std::deque< Vertex > &m_nodes;
+       std::vector< float8 > &m_dist;
     };
 
     //! visitor that terminates when we find  all goals
@@ -220,10 +225,6 @@ this-> print_graph();
       catch(found_all_goals &fg) {
         found = true;  // Target vertex found
       }
-#if 0
-      for (unsigned int i=0; i < this->distances.size(); ++i)
-        std::cout << this->distances[i] <<"\n";
-#endif
       return found;
     }
 
@@ -244,6 +245,7 @@ this-> print_graph();
       }
       return found;
     }
+
     //! Call to Dijkstra  1 source to distance
     template <class V>
     bool
@@ -254,7 +256,10 @@ this-> print_graph();
           boost::predecessor_map(&this->predecessors[0])
           .weight_map(get(&boost_edge_t::cost, this->graph))
           .distance_map(&this->distances[0])
-          .visitor(dijkstra_one_goal_visitor< V >(distance)));
+          .visitor(dijkstra_distance_visitor< V >(
+              distance, 
+              this->nodesInDistance,
+              this->distances)));
       }
       catch(found_one_goal &fg) {
         found = true;  // Target vertex found
