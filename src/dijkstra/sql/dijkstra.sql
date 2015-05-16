@@ -38,8 +38,8 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bi
       -- for backwards comptability uncomment latter if keeping the flag:
 
       if (has_reverse != has_rcost) then
-         if (has_reverse) then raise NOTICE 'has_reverse_cost set to false but reverse_cost column found, Ignoring';
-         else raise EXCEPTION 'has_reverse_cost set to true but reverse_cost not found';
+         if (has_reverse) then raise NOTICE 'has_rcost set to false but reverse_cost column found, Ignoring';
+         else raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
          end if;
       end if;
 

@@ -21,10 +21,72 @@
 -- Core function for driving distance.
 -- The sql should return edge and vertex ids.
 -----------------------------------------------------------------------
+/*
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id integer, distance float8, directed boolean, has_reverse_cost boolean)
     RETURNS SETOF pgr_costResultBig
     AS '$libdir/librouting_dd', 'driving_distance'
     LANGUAGE c IMMUTABLE STRICT;
+*/
+CREATE OR REPLACE FUNCTION _pgr_drivingDistance(sql text, source_id bigint, distance float8, directed boolean, has_rcost boolean)
+    RETURNS SETOF pgr_costResultBig
+    AS '$libdir/librouting_dd', 'driving_distance'
+    LANGUAGE c IMMUTABLE STRICT;
+
+
+-- invert the comments when pgRouting decides for bigints 
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id bigint, distance float8, directed boolean, has_rcost boolean)
+  --RETURNS SETOF pgr_costresultBig AS
+  RETURNS SETOF pgr_costresult AS
+  $BODY$
+  DECLARE
+  has_reverse boolean;
+  BEGIN
+      has_reverse =_pgr_parameter_check(sql);
+      -- for backwards comptability uncomment latter if keeping the flag:
+
+      if (has_reverse != has_rcost) then
+         if (has_reverse) then raise NOTICE 'has_rcost set to false but reverse_cost column found, Ignoring';
+         else raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
+         end if;
+      end if;
+
+      return query SELECT seq, id1::integer, id2::integer, cost
+                FROM _pgr_drivingDistance(sql, source_id, distance, directed, has_rcost);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100
+  ROWS 1000;
+
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id bigint, distance float8)
+  --RETURNS SETOF pgr_costresultBig AS
+  RETURNS SETOF pgr_costresult AS
+  $BODY$
+  DECLARE
+  has_reverse boolean;
+  BEGIN
+         has_reverse =_pgr_parameter_check(sql);
+         return query SELECT seq, id1::integer , id2::integer, cost FROM pgr_drivingDistance(sql, source_id, target_id, false, has_reverse);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100
+  ROWS 1000;
+
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id bigint, distance float8, directed boolean)
+  --RETURNS SETOF pgr_costresultBig AS
+  RETURNS SETOF pgr_costresult AS
+  $BODY$
+  DECLARE
+  has_reverse boolean;
+  BEGIN
+         has_reverse =_pgr_parameter_check(sql);
+         return query SELECT seq, id1::integer , id2::integer, cost FROM pgr_drivingDistance(sql, source_id, distance, directed, has_reverse);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100
+  ROWS 1000;
                         
 -----------------------------------------------------------------------
 -- Core function for alpha shape computation.

@@ -112,7 +112,7 @@ driving_distance(PG_FUNCTION_ARGS) {
 
 
       ret = compute_driving_distance(pgr_text2char(PG_GETARG_TEXT_P(0)),
-                                  PG_GETARG_INT32(1),  /* source_id*/
+                                  PG_GETARG_INT64(1),  /* source_id*/
                                   PG_GETARG_FLOAT8(2), /* distance */
                                   PG_GETARG_BOOL(3), /* directed*/
                                   PG_GETARG_BOOL(4), &ret_path, &path_count);
