@@ -300,11 +300,10 @@ class Pgr_base_graph {
     void get_nodesInDistance(Path &path, V source, float8 distance) {
       // used when multiple goals
       path.clear();
-      typename std::deque< V >::iterator s_it;
-      int seq=0;
-      for (s_it = nodesInDistance.begin(); s_it != nodesInDistance.end(); ++s_it) {
-        if (distances[*s_it] <= distance ) {
-          path.push_back(seq, graph[*s_it].id, -1, distances[*s_it]);
+      int seq = 0;
+      for (V i = 0; i < distances.size(); ++i) {
+        if (distances[i] <= distance ) {
+          path.push_back(seq, graph[i].id, i, distances[i]);
           seq++;
         }
       }

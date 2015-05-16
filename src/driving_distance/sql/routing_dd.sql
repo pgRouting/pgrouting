@@ -22,7 +22,7 @@
 -- The sql should return edge and vertex ids.
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id integer, distance float8, directed boolean, has_reverse_cost boolean)
-    RETURNS SETOF pgr_costResult
+    RETURNS SETOF pgr_costResultBig
     AS '$libdir/librouting_dd', 'driving_distance'
     LANGUAGE c IMMUTABLE STRICT;
                         
