@@ -30,6 +30,7 @@ namespace po = boost::program_options;
 #include <boost/graph/adjacency_list.hpp>
 
 #include <iostream>
+#include <fstream>
 #include <deque>
 
 
@@ -83,10 +84,12 @@ int main(int ac, char* av[]) {
     po::options_description desc("Allowed options");
     desc.add_options()
         ("help", "produce help message")
-        ("alg,a", po::value<std::string>()->default_value("d"), "set algorithm to test d=dijkstra, k=ksp, dm=dijstra 1 to many ")
+        ("alg,a", po::value<std::string>()->default_value("d"),
+           "set algorithm to test:\n\td=dijkstra\n\tk=ksp\n\tdm=dijstra 1 to many\n\tdd=driving_distance ")
         ("file,f", po::value<std::string>(), "set file_name")
         ("source,s", po::value<int64_t>(), "set source")
         ("target,t", po::value<int64_t>(), "set target")
+        ("dist,x", po::value<float8>(), "set distance")
         ("directed,d", po::value<bool>()->default_value(true), "True when directed graph")
     ;
 
@@ -118,6 +121,7 @@ int main(int ac, char* av[]) {
     int start_vertex(vm["source"].as<int64_t>());
     int end_vertex(vm["target"].as<int64_t>());
     int directedFlag(vm["directed"].as<bool>());
+    float8 distance(vm["dist"].as<float8>()); 
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
     bool found = false;
 
@@ -139,6 +143,41 @@ int main(int ac, char* av[]) {
     const int initial_size = 1;
 
     
+    if (algorithm == "dd") {
+      // no size overhead because the graph is empty
+      // have them available thru out the code
+      Pgr_dijkstra< DirectedGraph > digraph(gType, initial_size);
+      Pgr_dijkstra< UndirectedGraph > undigraph(gType, initial_size);
+      std::deque<Path> paths;
+
+      if (directedFlag) {
+
+        std::cout << "DRIVING DISTANCE DIRECTED GRAPH DEMO\n";
+        digraph.initialize_graph(data_edges, count);
+        digraph.dijkstra(paths, start_vertex, distance);
+        std::cout << "THE GRAPH \n";
+        digraph.print_graph();
+
+
+     } else {
+        std::cout << "DRIVING DISTANCE UNDIRECTED GRAPH DEMO\n";
+        undigraph.initialize_graph(data_edges, count);
+        undigraph.dijkstra(paths, start_vertex, distance);
+
+        std::cout << "THE GRAPH \n";
+        undigraph.print_graph();
+
+     }
+
+     // the outputs are independent of the graph
+     std::cout << "THE OPUTPUTS ---->  total outputs: " << paths.size() << "\n";
+     for (unsigned int i = 0; i < paths.size(); ++i) {
+         if (sizeof(paths[i]) == 0) continue; //no solution found
+         std::cout << "Path #" << i << " cost: " << paths[i].cost << "\n";
+         paths[i].print_path();
+     }
+   }  // alg = "dd"
+
 
     if (algorithm == "dm") {
       // no size overhead because the graph is empty

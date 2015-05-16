@@ -276,6 +276,10 @@ class Pgr_base_graph {
             }
             std::cout << std::endl;
         }
+        std::cout << "\n i, distance, predecesor\n"; 
+        for (unsigned int i = 0; i < distances.size(); i++) {
+            std::cout << i+1 << ", " << distances[i] << ", " << predecessors[i] << "\n";
+        }
     }
   //@}
 
@@ -292,6 +296,19 @@ class Pgr_base_graph {
 
 
  public:
+    void get_path(std::deque< Path > &paths, V source, float8 distance) {
+#if 0
+      // used when multiple goals
+      Path path;
+      typename std::set< V >::iterator s_it;
+      for (s_it = targets.begin(); s_it != targets.end(); ++s_it) {
+        path.clear();
+        get_path(path, source, *s_it);
+        paths.push_back(path);
+      }
+#endif
+    }
+
     void get_path(std::deque< Path > &paths, V source, std::set< V > targets) {
       // used when multiple goals
       Path path;
