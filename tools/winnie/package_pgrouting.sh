@@ -74,6 +74,7 @@ fi
 #cp extensions/postgis_topology/*.control ${RELDIR}/${RELVERDIR}/share/extension
 cp -r ${RELDIR}/packaging_notes/* ${RELDIR}/${RELVERDIR}/
 
+echo "The git commit is ${GIT_COMMIT}"
 echo "pgRouting http://pgrouting.org : ${PGROUTING_VER}.${PGROUTING_MICRO_VER} ${GIT_COMMIT}" > $verfile
 echo "PostgreSQL http://www.postgresql.org : ${PG_VER} ${OS_BUILD} ${GCC_TYPE}" >> $verfile
 echo "CGAL http://www.cgal.org : ${CGAL_VER}" >> $verfile
