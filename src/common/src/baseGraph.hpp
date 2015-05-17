@@ -301,9 +301,13 @@ class Pgr_base_graph {
       // used when multiple goals
       path.clear();
       int seq = 0;
+      double cost;
+      int64_t source_id, edge_id;
       for (V i = 0; i < distances.size(); ++i) {
         if (distances[i] <= distance ) {
-          path.push_back(seq, graph[i].id, i, distances[i]);
+          cost = distances[i] - distances[predecessors[i]];
+          edge_id = get_edge_id(graph, predecessors[i], i, cost);
+          path.push_back(seq, graph[i].id, edge_id, distances[i]);
           seq++;
         }
       }
