@@ -11,7 +11,7 @@ export PGUSER=postgres
 #POSTGIS_VER=2.1.0SVN
 #GCC_TYPE=
 #export POSTIGS_VER=2.1.0beta3
-
+export PGPATHEDB=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}edb  #this is so winnie know's where to copy the dlls for vc++ edb compiled postgresql testing
 
 #export PROJECTS=/c/ming${OS_BUILD}/projects
 if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
@@ -75,7 +75,17 @@ else
 	cmake -G "MSYS Makefiles" -DWITH_DD=ON ../branches/${PGROUTING_VER}
 fi
 #cmake -G "MSYS Makefiles" -DWITH_DD=ON ..
+#first delete old pgrouting files from installed folder before we reinstall
+rm ${PGPATH}/lib/librouting*
+rm ${PGPATH}/share/extension/pgrouting*
 make && make install
+
+#we need uninstall and reinstall copy to VC++ EDB instance if we want to test on standard Windows installed versions
+rm ${PGPATHEDB}/lib/librouting*
+cp lib/*.dll ${PGPATHEDB}/lib/
+rm ${PGPATHEDB}/share/extension/pgrouting*
+cp lib/*.sql ${PGPATHEDB}/share/extension/
+cp lib/*.control ${PGPATHEDB}/share/extension/
 
 cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
 perl tools/test-runner.pl -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}" -ignorenotice
