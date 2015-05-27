@@ -381,7 +381,7 @@ class Pgr_base_graph {
         EO_i out_i, out_end;
         V v_source, v_target;
         float8 minCost =  std::numeric_limits<float8>::max();
-        int64_t minEdge = -2;
+        int64_t minEdge = -1;
         for (boost::tie(out_i, out_end) = boost::out_edges(from, graph);
           out_i != out_end; ++out_i) {
               e = *out_i;
