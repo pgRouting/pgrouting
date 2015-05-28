@@ -6,11 +6,11 @@
 #export PGPORT=8442
 #export PGROUTING_VER=2.0
 #export PGROUTING_MICRO_VER=0dev
+#export GIT_COMMIT=whatever
 export PGUSER=postgres
 
 #this should be setup as a mapping in msys/etc/fstab to where you keep your projects
 export PROJECTS=/projects 
-
 export PATHOLD=$PATH
 
 #export PATHOLD=".:/bin:/include:/mingw/bin:/mingw/include:/c/Windows/system32:/c/Windows:/usr/local/bin:/c/ming64/Silksvn/bin:/c/Program Files (x86)/Git/bin"
@@ -74,7 +74,8 @@ fi
 #cp extensions/postgis_topology/*.control ${RELDIR}/${RELVERDIR}/share/extension
 cp -r ${RELDIR}/packaging_notes/* ${RELDIR}/${RELVERDIR}/
 
-echo "pgRouting http://pgrouting.org : ${PGROUTING_VER}.${PGROUTING_MICRO_VER}" > $verfile
+echo "The git commit is ${GIT_COMMIT}"
+echo "pgRouting http://pgrouting.org : ${PGROUTING_VER}.${PGROUTING_MICRO_VER} ${GIT_COMMIT}" > $verfile
 echo "PostgreSQL http://www.postgresql.org : ${PG_VER} ${OS_BUILD} ${GCC_TYPE}" >> $verfile
 echo "CGAL http://www.cgal.org : ${CGAL_VER}" >> $verfile
 echo "BOOST http://www.boost.org : ${BOOST_VER}" >> $verfile
