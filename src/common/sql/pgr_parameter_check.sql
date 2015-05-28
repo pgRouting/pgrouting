@@ -33,10 +33,13 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(sql text, big boolean default fa
   rec record;
   rec1 record;
   has_reverse boolean;
+  safesql text;
   BEGIN 
     -- checking query is executable
     BEGIN
-      execute 'select * from ('||sql||' ) AS a limit 1' into rec;
+      safesql =  'select * from ('||sql||' ) AS __a__ limit 1';
+      execute safesql into rec;
+      -- execute 'select * from ('||sql||' ) AS a limit 1' into rec;
       EXCEPTION
         WHEN OTHERS THEN
             RAISE EXCEPTION 'Could not excecute query please verify sintax of: '
@@ -45,7 +48,8 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(sql text, big boolean default fa
 
     -- checking the fixed columns and data types of the integers
     BEGIN
-      execute 'select id,source,target,cost  from ('||sql||' ) AS a limit 1 ' into rec;
+      execute 'select id,source,target,cost  from ('||safesql||') as __b__' into rec;
+      -- execute 'select id,source,target,cost  from ('||sql||' ) AS a limit 1 ' into rec;
       EXCEPTION
         WHEN OTHERS THEN
             RAISE EXCEPTION 'An expected column was not found in the query'
@@ -54,7 +58,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(sql text, big boolean default fa
     
     BEGIN
     execute 'select pg_typeof(id)::text as id_type, pg_typeof(source)::text as source_type, pg_typeof(target)::text as target_type, pg_typeof(cost)::text as cost_type'
-            || ' from ('||sql||') AS a limit 1' into rec;
+            || ' from ('||safesql||') AS __b__ ' into rec;
     if (big) then
       if not (rec.id_type in ('bigint'::text, 'integer'::text, 'smallint'::text)
          OR   not (rec.source_type in ('bigint'::text, 'integer'::text, 'smallint'::text))
@@ -75,14 +79,14 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(sql text, big boolean default fa
     -- raise DEBUG "checking the data types of the optional reverse_cost";
     has_reverse := false;
     BEGIN
-      execute 'select reverse_cost  from ('||sql||' ) AS a limit 1 ' into rec1;
+      execute 'select reverse_cost  from ('||safesql||' ) AS __b__ limit 1 ' into rec1;
       has_reverse := true;
       EXCEPTION
          WHEN OTHERS THEN
             has_reverse = false;
       END;
       if (has_reverse) then
-        execute 'select pg_typeof(reverse_cost)::text as reverse_type from ('||sql||' limit 1) AS a ' into rec1;
+        execute 'select pg_typeof(reverse_cost)::text as reverse_type from ('||safesql||') AS __b__ ' into rec1;
         if (rec1.reverse_type != 'double precision') then
           raise EXCEPTION 'Reverse_cost is not double precision';
         end if;
