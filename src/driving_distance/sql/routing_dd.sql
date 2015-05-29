@@ -27,14 +27,14 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id integer, dist
     AS '$libdir/librouting_dd', 'driving_distance'
     LANGUAGE c IMMUTABLE STRICT;
 */
-CREATE OR REPLACE FUNCTION _pgr_drivingDistance(sql text, source_id bigint, distance float8, directed boolean, has_rcost boolean)
+CREATE OR REPLACE FUNCTION _pgr_drivingDistance(sql text, source bigint, distance float8, directed boolean, has_rcost boolean)
     RETURNS SETOF pgr_costResultBig
     AS '$libdir/librouting_dd', 'driving_distance'
     LANGUAGE c IMMUTABLE STRICT;
 
 
 -- invert the comments when pgRouting decides for bigints 
-CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id bigint, distance float8, directed boolean, has_rcost boolean)
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance float8, directed boolean, has_rcost boolean)
   --RETURNS SETOF pgr_costresultBig AS
   RETURNS SETOF pgr_costresult AS
   $BODY$
@@ -51,14 +51,14 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id bigint, dista
       end if;
 
       return query SELECT seq, id1::integer, id2::integer, cost
-                FROM _pgr_drivingDistance(sql, source_id, distance, directed, has_rcost);
+                FROM _pgr_drivingDistance(sql, source, distance, directed, has_rcost);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100
   ROWS 1000;
 
-CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id bigint, distance float8)
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance float8)
   --RETURNS SETOF pgr_costresultBig AS
   RETURNS SETOF pgr_costresult AS
   $BODY$
@@ -66,14 +66,14 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id bigint, dista
   has_reverse boolean;
   BEGIN
          has_reverse =_pgr_parameter_check(sql);
-         return query SELECT seq, id1::integer , id2::integer, cost FROM pgr_drivingDistance(sql, source_id, target_id, false, has_reverse);
+         return query SELECT seq, id1::integer , id2::integer, cost FROM pgr_drivingDistance(sql, source, distance, false, has_reverse);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100
   ROWS 1000;
 
-CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id bigint, distance float8, directed boolean)
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance float8, directed boolean)
   --RETURNS SETOF pgr_costresultBig AS
   RETURNS SETOF pgr_costresult AS
   $BODY$
@@ -81,7 +81,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id bigint, dista
   has_reverse boolean;
   BEGIN
          has_reverse =_pgr_parameter_check(sql);
-         return query SELECT seq, id1::integer , id2::integer, cost FROM pgr_drivingDistance(sql, source_id, distance, directed, has_reverse);
+         return query SELECT seq, id1::integer , id2::integer, cost FROM pgr_drivingDistance(sql, source, distance, directed, has_reverse);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE
