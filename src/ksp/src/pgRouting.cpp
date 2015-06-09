@@ -265,7 +265,7 @@ int main(int ac, char* av[]) {
 
    std::string data_sql;
    std::cout << "Input data query: ";
-   #if 1
+   #if 0
    data_sql = "select id, source, target, cost, reverse_cost from edge_table order by id";
    #else
    std::getline (std::cin,data_sql);
