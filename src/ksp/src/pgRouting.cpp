@@ -86,6 +86,8 @@ void import_from_file(const std::string &input_file_name, pgr_edge_t *edges, uns
 void get_options_description(po::options_description &od_desc) {
     od_desc.add_options()
         ("help", "Produce this help message.")
+        ("test,t",  po::value<bool>()->default_value(false),
+            "For testing purposes.")
         ("dbname,d", po::value<std::string>()->required(), 
             "Specifies the name of the database to connect to.")
         ("host,h",  po::value<std::string>()->default_value("localhost"),
@@ -179,7 +181,7 @@ void process(G graph, pgr_edge_t *data_edges, int row_count) {
      << "\tdijkstra from  to1 to2 to3\n\n"
      << "\tDRIVING DISTANCE\n"
      << "(Use kewywords)\n"
-     << "\tdrivDist from <id> [<id> ...] dist <distance>\n"
+     << "\tdrivDist from <id> [<id> ...] dist <distance> [equi]\n"
      << "\tend\n\n"
      << ">>>";
     tokens.clear();
@@ -268,7 +270,6 @@ void process(G graph, pgr_edge_t *data_edges, int row_count) {
         std::cout << "drivDist: No start value found\n";
         continue;
       }
-      
 
       ++i_ptr;
       if (i_ptr == tokens.size()) {
@@ -278,22 +279,44 @@ void process(G graph, pgr_edge_t *data_edges, int row_count) {
 
       double distance = stod(tokens[i_ptr], &sz);
 
+      ++i_ptr;
+      bool equiCost(false);
+      if (i_ptr != tokens.size()) {
+        if (tokens[i_ptr].compare("equi") != 0) {
+          std::cout << " Unknown keyword '" << tokens[i_ptr] << "' found";
+          continue;
+        } else {
+          equiCost = true;
+        }
+      }
+
+      std::cout << "found " << sources.size() << "starting locations";
+
       if (sources.size() == 1) {
+        std::cout << "Performing pgr_DrivingDistance for single source";
         Path path;
         graph.dijkstra_dd(path, sources[0], distance);
         std::cout << "\t\t\tTHE OPUTPUT\n";
         std::cout << "seq\tfrom\tnode\tedge\tcost\n";
         path.print_path();
-        path.clear();
       } else {
-        // continue;
+
         std::deque< Path >  paths;
         graph.dijkstra_dd(paths, sources, distance);
-        std::cout << "\t\t\tTHE OPUTPUT\n";
-        std::cout << "seq\tfrom\tnode\tedge\tcost\n";
-        for (const auto &path :  paths) {
-           if (sizeof(path) == 0) continue; //no solution found
-           path.print_path();
+        if (equiCost == false) {
+          std::cout << "Performing pgr_DrivingDistance for multiple sources";
+          std::cout << "\t\t\tTHE OPUTPUT\n";
+          std::cout << "seq\tfrom\tnode\tedge\tcost\n";
+          for (const auto &path :  paths) {
+            if (sizeof(path) == 0) continue; //no solution found
+            path.print_path();
+          }
+        } else {
+          std::cout << "Performing pgr_DrivingDistance for multiple sources with equi-cost";
+          Path path = equi_cost(paths); 
+          std::cout << "\t\t\tTHE EquiCost OPUTPUT\n";
+          std::cout << "seq\tfrom\tnode\tedge\tcost\n";
+          path.print_path();
         }
       }
     }   
@@ -320,6 +343,7 @@ int main(int ac, char* av[]) {
     auto db_port(vm["port"].as<std::string>());
     auto db_username(vm["username"].as<std::string>());
     auto db_pwd(vm["password"].as<std::string>());
+    auto test(vm["test"].as<bool>());
     //auto db_no_pwd(vm["no-password"].as<std::string>());
 
     const char *conninfo = db_dbase.c_str();
@@ -339,13 +363,13 @@ int main(int ac, char* av[]) {
     }
 
    std::string data_sql;
-   std::cout << "Input data query: ";
-   #if 0
-   data_sql = "select id, source, target, cost, reverse_cost from edge_table order by id";
-   #else
-   std::getline (std::cin,data_sql);
-   #endif
-   std::cout << "\nThe data is " << data_sql <<"\n";
+   if (test) {
+     data_sql = "select id, source, target, cost, reverse_cost from edge_table order by id";
+   } else {
+     std::cout << "Input data query: ";
+     std::getline (std::cin,data_sql);
+   }
+   std::cout << "\nThe data is from:" << data_sql <<"\n";
 
    res = PQexec(conn, data_sql.c_str());
 
@@ -401,7 +425,7 @@ int main(int ac, char* av[]) {
           str = std::string(PQgetvalue(res, row, reverse_fnum));
           data_edges[row].reverse_cost = stod(str, &sz);
         } 
-
+#if 0
         std::cout << "\tid: " << data_edges[row].id << "\t";
         std::cout << "\tsource: " << data_edges[row].source << "\t";
         std::cout << "\ttarget: " << data_edges[row].target << "\t";
@@ -410,6 +434,7 @@ int main(int ac, char* av[]) {
           std::cout << "\treverse: " << data_edges[row].reverse_cost << "\t";
         }
         std::cout << "\n";
+#endif
       }
 
 

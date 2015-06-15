@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <deque>
 #include <iostream>
+#include <algorithm>
 // #include <fstream>
 #include "postgres.h"
 #include "./pgr_types.h"
@@ -36,13 +37,13 @@ class Path {
     Path(): cost(0) {}
 
     void push_front(pgr_path_element3_t data) {
-        path.push_back(data);
         cost += data.cost;
+        path.push_back(data);
     }
 
     void push_back(pgr_path_element3_t data) {
-        path.push_back(data);
         cost += data.cost;
+        path.push_back(data);
     }
 
     pgr_path_element3_t set_data(
@@ -179,5 +180,106 @@ class Path {
   }
 
 
+/* delete it because it belongs to the other one
+                        THE OPUTPUT
+seq     from    node    edge    cost
+0       12      1       1       5 *
+1       12      2       2       4 *
+2       12      3       3       3 
+3       12      4       16      2
+4       12      5       8       3 *
+5       12      6       9       2
+6       12      11      11      3
+7       12      10      10      4 *
+8       12      12      -1      0
+9       12      13      14      5 *
+10      12      9       15      1
+11      12      7       6       5 *
+12      12      8       7       4 *
+
+0       7       1       1       4
+1       7       2       4       3
+2       7       3       3       6 *
+3       7       4       16      5 *
+4       7       5       7       2 
+5       7       6       8       3 *
+6       7       11      12      4 *
+7       7       10      10      3
+8       7       12      15      5 *
+9       7       13      14      4 
+10      7       9       9       4 *
+11      7       7       -1      0
+12      7       8       6       1
+
+                        THE OPUTPUT
+seq     from    node    edge    cost
+2       12      3       3       3 
+3       12      4       16      2
+5       12      6       9       2
+6       12      11      11      3
+8       12      12      -1      0
+10      12      9       15      1
+
+0       7       1       1       4
+1       7       2       4       3
+4       7       5       7       2 
+7       7       10      10      3
+9       7       13      14      4 
+11      7       7       -1      0
+12      7       8       6       1
+
+                        THE OPUTPUT
+seq     from    node    edge    cost
+
+0       7       1       1       4
+1       7       2       4       3
+2       12      3       3       3 
+3       12      4       16      2
+4       7       5       7       2 
+5       12      6       9       2
+11      7       7       -1      0
+12      7       8       6       1
+10      12      9       15      1
+7       7       10      10      3
+6       12      11      11      3
+8       12      12      -1      0
+9       7       13      14      4 
+
+  // when they are equal choose one
+  // ordenar por numero de nodo
+*/
+  
+  friend Path equi_cost(const Path &p1, const Path &p2) {
+    Path result(p1);
+    sort(result.path.begin(), result.path.end(), 
+      [](const pgr_path_element3_t &e1, const pgr_path_element3_t &e2)->bool { 
+         return e1.vertex < e2.vertex; 
+      });
+
+    for (auto const &e : p2.path) {
+      auto pos = find_if(result.path.begin(), result.path.end(),
+                 [&e](const pgr_path_element3_t &e1)->bool { 
+                   return e.vertex == e1.vertex; 
+                 });
+      if (pos != result.path.end()) {
+        if (pos->cost > e.cost) {
+           (*pos) = e;
+        }  
+      } else {
+        result.push_back(e);
+      }
+    }
+    return result;
+  }
+
+  friend Path equi_cost(const std::deque< Path > &paths) {
+    Path result;
+    for (const auto &p1 : paths) {
+      result = equi_cost(result, p1);
+    }
+    return result;
+  }
 };
+
+
 #endif  // SRC_COMMON_SRC_BASE_PATH_SSCE_H_
