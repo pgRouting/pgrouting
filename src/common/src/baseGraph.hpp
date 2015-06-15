@@ -298,33 +298,43 @@ class Pgr_base_graph {
 
  public:
     void get_nodesInDistance(Path &path, V source, float8 distance) {
-      // used when multiple goals
       path.clear();
       int seq = 0;
       double cost;
-      int64_t source_id, edge_id;
+      int64_t edge_id;
       for (V i = 0; i < distances.size(); ++i) {
         if (distances[i] <= distance ) {
           cost = distances[i] - distances[predecessors[i]];
           edge_id = get_edge_id(graph, predecessors[i], i, cost);
-          path.push_back(seq, graph[i].id, edge_id, distances[i]);
+          path.push_back(seq, graph[source].id, graph[i].id, edge_id, distances[i]);
           seq++;
         }
       }
     }
 
-    void get_path(std::deque< Path > &paths, V source, std::set< V > targets) {
+    void get_path(std::deque< Path > &paths, std::set< V > sources, V &target) const{
+      // used with multiple sources
+      Path path;
+      for (const auto source: sources) {
+        path.clear();
+        get_path(path, source, target, graph[source].id);
+        paths.push_back(path);
+      }
+    }
+
+
+    void get_path(std::deque< Path > &paths, V source, std::set< V > &targets) {
       // used when multiple goals
       Path path;
       typename std::set< V >::iterator s_it;
       for (s_it = targets.begin(); s_it != targets.end(); ++s_it) {
         path.clear();
-        get_path(path, source, *s_it);
+        get_path(path, source, *s_it, graph[(*s_it)].id);
         paths.push_back(path);
       }
     }
 
-    void get_path(Path &path, V source, V target) {
+    void get_path(Path &path, V source, V target, int64_t route_id) {
       // backup of the target
       V target_back = target;
 
@@ -346,7 +356,7 @@ class Pgr_base_graph {
       target = target_back;
 
       // variables that are going to be stored
-      int64_t source_id;
+      int64_t vertex_id;
       int64_t edge_id;
       float8 cost;
 
@@ -355,7 +365,7 @@ class Pgr_base_graph {
       // initialize the sequence
       int seq = result_size;
       // the last stop is the target
-      path.push_front(seq, graph[target].id, -1, 0);
+      path.push_front(seq, route_id, graph[target].id, -1, 0);
 
       while (target != source) {
         // we are done when the predecesor of the target is the target
@@ -363,10 +373,10 @@ class Pgr_base_graph {
           // values to be inserted in the path
           --seq;
           cost = distances[target] - distances[predecessors[target]];
-          source_id = graph[predecessors[target]].id;
+          vertex_id = graph[predecessors[target]].id;
           edge_id = get_edge_id(graph, predecessors[target], target, cost);
 
-          path.push_front(seq, source_id, edge_id, cost);
+          path.push_front(seq, route_id, vertex_id, edge_id, cost);
           target = predecessors[target];
       }
       return;

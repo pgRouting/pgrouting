@@ -47,9 +47,10 @@ typedef struct path_element
 
 typedef struct path_element3
 {
-    int route_id;
-    int64_t vertex_id;
-    int64_t edge_id;
+    int seq;
+    int64_t route;
+    int64_t vertex;
+    int64_t edge;
     float8 cost;
 } pgr_path_element3_t;
 

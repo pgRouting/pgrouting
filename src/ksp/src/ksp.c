@@ -126,13 +126,13 @@ kshortest_path(PG_FUNCTION_ARGS) {
       values[0] = Int32GetDatum(call_cntr);
       nulls[0] = false;
 
-      values[1] = Int32GetDatum(path[call_cntr].route_id);
+      values[1] = Int64GetDatum(path[call_cntr].route);
       nulls[1] = false;
 
-      values[2] = Int64GetDatum(path[call_cntr].vertex_id);
+      values[2] = Int64GetDatum(path[call_cntr].vertex);
       nulls[2] = false;
 
-      values[3] = Int64GetDatum(path[call_cntr].edge_id);
+      values[3] = Int64GetDatum(path[call_cntr].edge);
       nulls[3] = false;
 
       values[4] = Float8GetDatum(path[call_cntr].cost);

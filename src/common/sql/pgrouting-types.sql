@@ -30,7 +30,7 @@ CREATE TYPE pgr_costResult3 AS
 
 CREATE TYPE pgr_costResult3Big AS (
     seq integer,
-    id1 integer,
+    id1 bigint,
     id2 bigint,
     id3 bigint,
     cost float8

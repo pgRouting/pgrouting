@@ -52,7 +52,7 @@ class Pgr_ksp: public Pgr_dijkstra< G > {
           // paths weights & lengths are equal now we check by ID
           unsigned int i;
           for ( i = 0; i < p1.path.size() ; i++)
-               if ( p1.path[i].source < p2.path[i].source) return true;
+               if ( p1.path[i].vertex < p2.path[i].vertex) return true;
 
           // we got here and everything is equal
           return false;

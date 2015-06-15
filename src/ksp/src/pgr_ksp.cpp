@@ -69,7 +69,7 @@ std::deque<Path> Pgr_ksp< G >::Yen(
 template < class G >
 void Pgr_ksp< G >::removeVertices(const Path &subpath) {
     for (unsigned int i = 0; i < subpath.path.size(); i++)
-       this->disconnect_vertex(subpath.path[i].source);
+       this->disconnect_vertex(subpath.path[i].vertex);
 }
 
 template < class G >
@@ -83,15 +83,15 @@ void Pgr_ksp< G >::doNextCycle() {
 
     for (unsigned int i = 0; i < curr_result_path.path.size() ; ++i) {
         // int64_t  spurEdge = curr_result_path.path[i].edge;
-        spurNodeId = curr_result_path.path[i].source;
+        spurNodeId = curr_result_path.path[i].vertex;
 
         rootPath = curr_result_path.getSubpath(i);
 
         for (pIt = m_ResultSet.begin(); pIt != m_ResultSet.end(); ++pIt) {
            if ((*pIt).isEqual(rootPath)) {
               // edge to be removed = (*pIt).path[i].edge;
-              this->disconnect_edge((*pIt).path[i].source,     // from
-                                    (*pIt).path[i+1].source);  // to
+              this->disconnect_edge((*pIt).path[i].vertex,     // from
+                                    (*pIt).path[i+1].vertex);  // to
            }
         }
         removeVertices(rootPath);

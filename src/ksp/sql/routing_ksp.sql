@@ -44,10 +44,10 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id bigint, target_id bigint,
       end if;
 
       if heap_paths = false then
-         return query SELECT seq,id1,id2::integer, id3::integer,cost 
+         return query SELECT seq,id1::integer, id2::integer, id3::integer,cost 
                 FROM _pgr_ksp(sql::text, source_id, target_id, no_paths, has_reverse, true) where id1 < no_paths;
       else
-         return query SELECT seq,id1,id2::integer, id3::integer,cost 
+         return query SELECT seq,id1::integer, id2::integer, id3::integer,cost 
                 FROM _pgr_ksp(sql::text, source_id, target_id, no_paths, has_reverse, true);
       end if;
   END

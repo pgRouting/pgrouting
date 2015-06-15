@@ -156,9 +156,9 @@ shortest_path(PG_FUNCTION_ARGS) {
 
       values[0] = Int32GetDatum(call_cntr);
       nulls[0] = ' ';
-      values[1] = Int64GetDatum(ret_path[call_cntr].vertex_id);
+      values[1] = Int64GetDatum(ret_path[call_cntr].vertex);
       nulls[1] = ' ';
-      values[2] = Int64GetDatum(ret_path[call_cntr].edge_id);
+      values[2] = Int64GetDatum(ret_path[call_cntr].edge);
       nulls[2] = ' ';
       values[3] = Float8GetDatum(ret_path[call_cntr].cost);
       nulls[3] = ' ';

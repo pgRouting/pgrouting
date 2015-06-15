@@ -86,12 +86,7 @@ void import_from_file(const std::string &input_file_name, pgr_edge_t *edges, uns
 void get_options_description(po::options_description &od_desc) {
     od_desc.add_options()
         ("help", "Produce this help message.")
-        // ("alg,a", po::value<std::string>()->default_value("d"), "set algorithm to test d=dijkstra, k=ksp, dm=dijstra 1 to many ")
-        // ("file,f", po::value<std::string>(), "set file_name")
-        // ("source,s", po::value<int64_t>(), "set source")
-        // ("target,t", po::value<int64_t>(), "set target")
-        // ("directed", po::value<bool>()->default_value(true), "True when directed graph")
-        ("dbname,d", po::value<std::string>(), 
+        ("dbname,d", po::value<std::string>()->required(), 
             "Specifies the name of the database to connect to.")
         ("host,h",  po::value<std::string>()->default_value("localhost"),
             "Specifies the host name of the machine on which the server is running.")
@@ -111,33 +106,34 @@ void get_options_description(po::options_description &od_desc) {
 }
 
 
-int process_prog_options(
+int process_command_line(
   po::variables_map &vm, 
   po::options_description &od_desc) {
-  if (vm.count("help")) {
+
+    if (vm.count("help")) {
         std::cout << od_desc << "\n";
         return 0;
-  }
+    }
 
-  if (vm.count("dbname")) 
-    std::cout << "dbname = " << vm["dbname"].as<std::string>() << "\n";
-  else
-    std::cout << "Parameter: dbname missing\n";
+    if (vm.count("dbname")) 
+      std::cout << "dbname = " << vm["dbname"].as<std::string>() << "\n";
+    else
+      std::cout << "Parameter: dbname missing\n";
 
-  if (vm.count("host")) 
-    std::cout << "host = " << vm["host"].as<std::string>() << "\n";
-  else
-    std::cout << "Parameter: host missing\n";
+    if (vm.count("host")) 
+      std::cout << "host = " << vm["host"].as<std::string>() << "\n";
+    else
+      std::cout << "Parameter: host missing\n";
 
-  if (vm.count("port")) 
-    std::cout << "port = " << vm["port"].as<std::string>() << "\n";
-  else
-    std::cout << "Parameter: port missing\n";
+    if (vm.count("port")) 
+      std::cout << "port = " << vm["port"].as<std::string>() << "\n";
+    else
+      std::cout << "Parameter: port missing\n";
 
-  if (vm.count("username")) 
-    std::cout << "username = " << vm["username"].as<std::string>() << "\n";
-  else
-    std::cout << "Parameter: username missing\n";
+    if (vm.count("username")) 
+      std::cout << "username = " << vm["username"].as<std::string>() << "\n";
+    else
+      std::cout << "Parameter: username missing\n";
 
     if (vm.count("dbname") & vm.count("username") & vm.count("host")) {
         std::cout << "Parameters: \n"
@@ -168,8 +164,6 @@ void process(G graph, pgr_edge_t *data_edges, int row_count) {
   std::vector<int64_t> targets;
   int64_t start_vertex;
   int64_t end_vertex;
-  Path path;
-  std::deque<Path> paths;
   std::string::size_type sz;
 
   
@@ -178,11 +172,16 @@ void process(G graph, pgr_edge_t *data_edges, int row_count) {
   std::string buf;
   std::vector<std::string> tokens;
   while (true) {
-    std::cout << "\t\t COMMANDS\n "
-     << "Input the command separating with spaces\n"
-     << "dijkstra from to\n"
-     << "dijkstra from to1 to2 to3 to4\n"
-     << "end\n";
+    std::cout << "\n\n\n\n\t\t COMMANDS\n\n "
+     << "\tDIJKSTRA\n"
+     << "(Input the command separating with spaces)\n"
+     << "\tdijkstra from  to \n"
+     << "\tdijkstra from  to1 to2 to3\n\n"
+     << "\tDRIVING DISTANCE\n"
+     << "(Use kewywords)\n"
+     << "\tdrivDist from <id> [<id> ...] dist <distance>\n"
+     << "\tend\n\n"
+     << ">>>";
     tokens.clear();
     targets.clear();
     cmd = "";
@@ -192,51 +191,127 @@ void process(G graph, pgr_edge_t *data_edges, int row_count) {
         tokens.push_back(buf);
     }
 
+    if (tokens.size() == 0) {
+      std::cout << "No command received\n";
+      continue;
+    }
+
     if (tokens[0].compare("end")==0) return;
+
+    if (tokens.size() < 2 ) {
+      std::cout << "Missing parameters\n";
+      continue;
+    }
+
   
-    if (tokens[0].compare("dijkstra")!=0) {
+    if (tokens[0].compare("dijkstra") != 0 
+       && tokens[0].compare("drivDist") != 0 ) {
       std::cout << "Command: " << cmd << " not found\n";
       continue;
     }
     
-    start_vertex = stol(tokens[1], &sz);
-    if (tokens.size() == 2) {   
-      end_vertex = stol(tokens[2], &sz);
-      graph.dijkstra(path, start_vertex, end_vertex);
-      std::cout << "THE OPUTPUT ---->  total cost: " << path.cost << "\n";
-      path.print_path();
-      path.clear();
     
-    } else {
-      for (unsigned int i = 2; i < tokens.size(); ++i) {
-        end_vertex = stol(tokens[i], &sz);
-        targets.push_back(end_vertex);
+    if (tokens[0].compare("dijkstra") == 0) {
+      if (tokens[1].compare("from") == 0) {
+        std::cout << "missing 'from' kewyword";
+      }
+      start_vertex = stol(tokens[1], &sz);
+      if (tokens.size() == 2) {   
+        Path path;
+        end_vertex = stol(tokens[2], &sz);
+        graph.dijkstra(path, start_vertex, end_vertex);
+        std::cout << "THE OPUTPUT ---->  total cost: " << path.cost << "\n";
+        path.print_path();
+        path.clear();
+      } else {
+        std::deque<Path> paths;
+        for (unsigned int i = 2; i < tokens.size(); ++i) {
+          end_vertex = stol(tokens[i], &sz);
+          targets.push_back(end_vertex);
+        }
+
+        graph.dijkstra(paths, start_vertex, targets);
+
+        std::cout << "THE OPUTPUTS ---->  total outputs: " << paths.size() << "\n";
+        for (unsigned int i = 0; i < paths.size(); ++i) {
+           if (sizeof(paths[i]) == 0) continue; //no solution found
+           std::cout << "Path #" << i << " cost: " << paths[i].cost << "\n";
+           paths[i].print_path();
+        }
+      }
+    } else if (tokens[0].compare("drivDist") == 0) {
+
+      // driving distance
+      if (tokens[1].compare("from") != 0) {
+        std::cout << "missing 'from' kewyword\n";
+        continue;
       }
 
-      graph.dijkstra(paths, start_vertex, targets);
-
-      std::cout << "THE OPUTPUTS ---->  total outputs: " << paths.size() << "\n";
-      for (unsigned int i = 0; i < paths.size(); ++i) {
-         if (sizeof(paths[i]) == 0) continue; //no solution found
-         std::cout << "Path #" << i << " cost: " << paths[i].cost << "\n";
-         paths[i].print_path();
+      std::vector< int64_t > sources; 
+      unsigned int i_ptr = 2;
+      for ( ; i_ptr < tokens.size(); ++i_ptr) {
+          if (tokens[i_ptr].compare("dist") == 0) break;
+          try {
+            uint64_t start_vertex(stol(tokens[i_ptr], &sz));
+            sources.push_back(start_vertex);
+          } catch(...) {
+            break;
+          }
       }
-    }
 
+      if (i_ptr == tokens.size() || tokens[i_ptr].compare("dist") != 0) {
+        std::cout << "drivDist: 'dist' kewyword not found\n";
+        continue;
+      }
+
+      if (sources.size() == 0) {
+        std::cout << "drivDist: No start value found\n";
+        continue;
+      }
+      
+
+      ++i_ptr;
+      if (i_ptr == tokens.size()) {
+        std::cout << " 'distance' value not found";
+        continue;
+      }
+
+      double distance = stod(tokens[i_ptr], &sz);
+
+      if (sources.size() == 1) {
+        Path path;
+        graph.dijkstra_dd(path, sources[0], distance);
+        std::cout << "\t\t\tTHE OPUTPUT\n";
+        std::cout << "seq\tfrom\tnode\tedge\tcost\n";
+        path.print_path();
+        path.clear();
+      } else {
+        // continue;
+        std::deque< Path >  paths;
+        graph.dijkstra_dd(paths, sources, distance);
+        std::cout << "\t\t\tTHE OPUTPUT\n";
+        std::cout << "seq\tfrom\tnode\tedge\tcost\n";
+        for (const auto &path :  paths) {
+           if (sizeof(path) == 0) continue; //no solution found
+           path.print_path();
+        }
+      }
+    }   
   }
 }
 
 
 
 int main(int ac, char* av[]) {
+
     po::options_description od_desc("Allowed options");
     get_options_description(od_desc);
     
     po::variables_map vm;
     po::store(po::parse_command_line(ac, av, od_desc), vm);
     po::notify(vm);
-    auto ok = process_prog_options(vm, od_desc);
-    if (ok != 2) return ok;
+    auto ret_val = process_command_line(vm, od_desc);
+    if (ret_val != 2) return ret_val;
 
 
     auto db_dbase(vm["dbname"].as<std::string>());
