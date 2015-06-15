@@ -41,7 +41,7 @@ namespace po = boost::program_options;
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
-#include "./pgr_ksp.hpp"
+#include "./../../ksp/src/pgr_ksp.hpp"
 
 
 
@@ -273,7 +273,7 @@ void process(G graph, pgr_edge_t *data_edges, int row_count) {
 
       ++i_ptr;
       if (i_ptr == tokens.size()) {
-        std::cout << " 'distance' value not found";
+        std::cout << " 'distance' value not found\n";
         continue;
       }
 
@@ -283,17 +283,17 @@ void process(G graph, pgr_edge_t *data_edges, int row_count) {
       bool equiCost(false);
       if (i_ptr != tokens.size()) {
         if (tokens[i_ptr].compare("equi") != 0) {
-          std::cout << " Unknown keyword '" << tokens[i_ptr] << "' found";
+          std::cout << " Unknown keyword '" << tokens[i_ptr] << "' found\n";
           continue;
         } else {
           equiCost = true;
         }
       }
 
-      std::cout << "found " << sources.size() << "starting locations";
+      std::cout << "found " << sources.size() << "starting locations\n";
 
       if (sources.size() == 1) {
-        std::cout << "Performing pgr_DrivingDistance for single source";
+        std::cout << "Performing pgr_DrivingDistance for single source\n";
         Path path;
         graph.dijkstra_dd(path, sources[0], distance);
         std::cout << "\t\t\tTHE OPUTPUT\n";
@@ -304,7 +304,7 @@ void process(G graph, pgr_edge_t *data_edges, int row_count) {
         std::deque< Path >  paths;
         graph.dijkstra_dd(paths, sources, distance);
         if (equiCost == false) {
-          std::cout << "Performing pgr_DrivingDistance for multiple sources";
+          std::cout << "Performing pgr_DrivingDistance for multiple sources\n";
           std::cout << "\t\t\tTHE OPUTPUT\n";
           std::cout << "seq\tfrom\tnode\tedge\tcost\n";
           for (const auto &path :  paths) {
@@ -312,7 +312,7 @@ void process(G graph, pgr_edge_t *data_edges, int row_count) {
             path.print_path();
           }
         } else {
-          std::cout << "Performing pgr_DrivingDistance for multiple sources with equi-cost";
+          std::cout << "Performing pgr_DrivingDistance for multiple sources with equi-cost\n";
           Path path = equi_cost(paths); 
           std::cout << "\t\t\tTHE EquiCost OPUTPUT\n";
           std::cout << "seq\tfrom\tnode\tedge\tcost\n";

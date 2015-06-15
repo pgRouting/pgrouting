@@ -13,7 +13,7 @@ all: $(OBJECTS) $(TARGET)
 $(TARGET): signalhandler.o pgr_assert.o pgRouting.o 
 	$(CC)  -o $@ $^ $(LDFLAGS)
  
-$(TARGET).o: $(TARGET).cpp ./../../common/src/baseGraph.hpp ./../../common/src/pgr_types.h ./../../dijkstra/src/pgr_dijkstra.hpp pgr_ksp.cpp ./../../common/src/basePath_SSEC.hpp
+$(TARGET).o: $(TARGET).cpp ./../../common/src/baseGraph.hpp ./../../common/src/pgr_types.h ./../../dijkstra/src/pgr_dijkstra.hpp ../../ksp/src/pgr_ksp.cpp ./../../common/src/basePath_SSEC.hpp
 	$(CC)  $(CCFLAGS) $(INCFLAGS) -c $<
  
 %.o: %.cpp %.h 
