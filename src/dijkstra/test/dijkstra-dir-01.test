@@ -25,11 +25,11 @@ select * from pgr_dijkstra(
     'select id, source, target, 
          case when cost<=0 then 999 else cost end as cost 
        from edges1', 
-    11, 5, true);
+    11, 5);
 
 select * from pgr_dijkstra(
     'select id, source, target, 
          cost
        from edges1', 
-    11, 5, true);
+    11, 5);
 

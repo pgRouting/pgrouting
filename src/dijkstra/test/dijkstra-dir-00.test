@@ -26,18 +26,18 @@ select * from pgr_dijkstra(
          case when cost<=0 then 999 else cost end as cost, 
          case when reverse_cost<=0 then 999 else reverse_cost end as reverse_cost 
        from edges1', 
-    11, 5, true);
+    11, 5);
 
 select * from pgr_dijkstra(
     'select id, source, target, 
          cost, 
          reverse_cost 
        from edges1', 
-    11, 5, true);
+    11, 5);
 
 
 select * from pgr_dijkstra(
     'select * 
        from edges1', 
-    11, 5, true);
+    11, 5);
 
