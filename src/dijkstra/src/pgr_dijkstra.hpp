@@ -70,7 +70,7 @@ class Pgr_dijkstra
 
       if (!this->get_gVertex(start_vertex, v_source)
           || !this->get_gVertex(end_vertex, v_target)) {
-           path.clear();
+           // path.clear();
            return;
       }
 
@@ -100,7 +100,7 @@ class Pgr_dijkstra
       // get the graphs source and target
       V v_source;
       if (!this->get_gVertex(start_vertex, v_source)) {
-        paths.clear();
+        // paths.clear();
         return;
       }
       
@@ -108,7 +108,7 @@ class Pgr_dijkstra
       for (unsigned int i = 0; i < end_vertex.size(); i++) {
           V v_target;
           if (!this->get_gVertex(end_vertex[i], v_target)) {
-            paths.clear();
+            // paths.clear();
             return;
           }
           v_targets.insert(v_target);
@@ -121,6 +121,57 @@ class Pgr_dijkstra
       this->get_path(paths, v_source, v_targets);
       return;
     }
+
+    // preparation for many to 1
+    void
+    dijkstra(std::deque< Path > &paths, std::vector < int64_t > start_vertex, int64_t end_vertex) {
+      typedef typename boost::graph_traits < G >::vertex_descriptor V;
+
+      // adjust predecessors and distances vectors
+      this->predecessors.clear();
+      this->distances.clear();
+
+      this->predecessors.resize(boost::num_vertices(this->graph));
+      this->distances.resize(boost::num_vertices(this->graph));
+
+      // get the graphs source and target
+      V v_target;
+      if (!this->get_gVertex(end_vertex, v_target)) {
+        // paths.clear();
+        return;
+      }
+
+      std::set< V > v_sources;
+      for (unsigned int i = 0; i < start_vertex.size(); i++) {
+          V v_source;
+          if (!this->get_gVertex(start_vertex[i], v_source)) {
+            // paths.clear();
+            return;
+          }
+          v_sources.insert(v_source);
+      }
+
+      // perform the algorithm // a call for each of the sources
+      for (const auto &v_source: v_sources) {
+         Path path;
+         dijkstra_1_to_1(v_source, v_target);
+         this->get_path(path, v_source, v_target, this->graph[v_source].id);
+         paths.push_back(path);
+      }
+      return;
+    }
+
+    // preparation for many to many
+    void
+    dijkstra(std::deque< Path > &paths, std::vector < int64_t > start_vertex, std::vector < int64_t > end_vertex) {
+      // a call to 1 to many is faster for each of the sources
+      for (const auto &start: start_vertex) {
+         dijkstra(paths, start, end_vertex);
+      }
+      return;
+    }
+
+
 
     // preparation for 1 to distance
     void
@@ -135,7 +186,7 @@ class Pgr_dijkstra
       this->predecessors.resize(boost::num_vertices(this->graph));
       this->distances.resize(boost::num_vertices(this->graph));
 
-      // get the graphs source and target
+      // get ource;
       V v_source;
       if (!this->get_gVertex(start_vertex, v_source)) {
         path.clear();
@@ -146,7 +197,8 @@ class Pgr_dijkstra
       dijkstra_1_to_distance(v_source, distance);
 
       // get the results
-      return this->get_nodesInDistance(path, v_source, distance);
+      this->get_nodesInDistance(path, v_source, distance);
+      return; 
     }
 
 

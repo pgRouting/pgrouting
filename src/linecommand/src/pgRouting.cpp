@@ -42,6 +42,8 @@ namespace po = boost::program_options;
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
 #include "./../../ksp/src/pgr_ksp.hpp"
+#include "./driving.cpp"
+#include "./dijkstra.cpp"
 
 
 
@@ -164,8 +166,6 @@ template <typename G>
 void process(G graph, pgr_edge_t *data_edges, int row_count) {
   graph.initialize_graph(data_edges, row_count);
   std::vector<int64_t> targets;
-  int64_t start_vertex;
-  int64_t end_vertex;
   std::string::size_type sz;
 
   
@@ -214,6 +214,9 @@ void process(G graph, pgr_edge_t *data_edges, int row_count) {
     
     
     if (tokens[0].compare("dijkstra") == 0) {
+       process_dijkstra(graph, tokens);
+    } else {
+#if 0
       if (tokens[1].compare("from") == 0) {
         std::cout << "missing 'from' kewyword";
       }
@@ -242,84 +245,9 @@ void process(G graph, pgr_edge_t *data_edges, int row_count) {
         }
       }
     } else if (tokens[0].compare("drivDist") == 0) {
-
-      // driving distance
-      if (tokens[1].compare("from") != 0) {
-        std::cout << "missing 'from' kewyword\n";
-        continue;
-      }
-
-      std::vector< int64_t > sources; 
-      unsigned int i_ptr = 2;
-      for ( ; i_ptr < tokens.size(); ++i_ptr) {
-          if (tokens[i_ptr].compare("dist") == 0) break;
-          try {
-            uint64_t start_vertex(stol(tokens[i_ptr], &sz));
-            sources.push_back(start_vertex);
-          } catch(...) {
-            break;
-          }
-      }
-
-      if (i_ptr == tokens.size() || tokens[i_ptr].compare("dist") != 0) {
-        std::cout << "drivDist: 'dist' kewyword not found\n";
-        continue;
-      }
-
-      if (sources.size() == 0) {
-        std::cout << "drivDist: No start value found\n";
-        continue;
-      }
-
-      ++i_ptr;
-      if (i_ptr == tokens.size()) {
-        std::cout << " 'distance' value not found\n";
-        continue;
-      }
-
-      double distance = stod(tokens[i_ptr], &sz);
-
-      ++i_ptr;
-      bool equiCost(false);
-      if (i_ptr != tokens.size()) {
-        if (tokens[i_ptr].compare("equi") != 0) {
-          std::cout << " Unknown keyword '" << tokens[i_ptr] << "' found\n";
-          continue;
-        } else {
-          equiCost = true;
-        }
-      }
-
-      std::cout << "found " << sources.size() << "starting locations\n";
-
-      if (sources.size() == 1) {
-        std::cout << "Performing pgr_DrivingDistance for single source\n";
-        Path path;
-        graph.dijkstra_dd(path, sources[0], distance);
-        std::cout << "\t\t\tTHE OPUTPUT\n";
-        std::cout << "seq\tfrom\tnode\tedge\tcost\n";
-        path.print_path();
-      } else {
-
-        std::deque< Path >  paths;
-        graph.dijkstra_dd(paths, sources, distance);
-        if (equiCost == false) {
-          std::cout << "Performing pgr_DrivingDistance for multiple sources\n";
-          std::cout << "\t\t\tTHE OPUTPUT\n";
-          std::cout << "seq\tfrom\tnode\tedge\tcost\n";
-          for (const auto &path :  paths) {
-            if (sizeof(path) == 0) continue; //no solution found
-            path.print_path();
-          }
-        } else {
-          std::cout << "Performing pgr_DrivingDistance for multiple sources with equi-cost\n";
-          Path path = equi_cost(paths); 
-          std::cout << "\t\t\tTHE EquiCost OPUTPUT\n";
-          std::cout << "seq\tfrom\tnode\tedge\tcost\n";
-          path.print_path();
-        }
-      }
-    }   
+    #endif
+      process_drivingDistance(graph, tokens);
+    }
   }
 }
 
