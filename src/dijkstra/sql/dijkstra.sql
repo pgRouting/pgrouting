@@ -20,30 +20,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(sql text, source_id bigint, target_id bigint, directed boolean, has_rcost boolean)
-    RETURNS SETOF pgr_costResultBig
-    AS '$libdir/librouting', 'shortest_path'
+CREATE OR REPLACE FUNCTION _pgr_dijkstra(sql text, source_id bigint, target_id bigint, directed boolean, has_rcost boolean,
+  OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float)
+  RETURNS SETOF RECORD AS
+ '$libdir/librouting', 'shortest_path'
     LANGUAGE c IMMUTABLE STRICT;
 
 
--- invert the comments when pgRouting decides for bigints 
+-- V2 signature
 CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bigint, directed boolean, has_rcost boolean)
-  --RETURNS SETOF pgr_costresultBig AS
   RETURNS SETOF pgr_costresult AS
   $BODY$
   DECLARE
   has_reverse boolean;
   BEGIN
-      has_reverse =_pgr_parameter_check(sql);
-      -- for backwards comptability uncomment latter if keeping the flag:
-
+      -- raise notice 'This function signature will no longer be supported in V3';
+      has_reverse =_pgr_parameter_check('dijkstra', sql, false);
       if (has_reverse != has_rcost) then
-         if (has_reverse) then raise NOTICE 'has_rcost set to false but reverse_cost column found, Ignoring';
+         if (has_reverse) then -- raise NOTICE 'has_rcost set to false but reverse_cost column found, Ignoring';
          else raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
          end if;
       end if;
 
-      return query SELECT seq, id1::integer, id2::integer, cost
+      return query SELECT seq, node::integer as id1, edge::integer as id2, cost
                 FROM _pgr_dijkstra(sql, source_id, target_id, directed, has_rcost);
   END
   $BODY$
@@ -51,30 +50,38 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bi
   COST 100
   ROWS 1000;
 
-CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bigint)
-  --RETURNS SETOF pgr_costresultBig AS
-  RETURNS SETOF pgr_costresult AS
+
+-- V3 signature
+CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bigint,
+  OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float)
+  RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
-  has_reverse boolean;
+  has_rcost boolean;
   BEGIN
-         has_reverse =_pgr_parameter_check(sql);
-         return query SELECT seq, id1::integer , id2::integer, cost FROM pgr_dijkstra(sql, source_id, target_id, false, has_reverse);
+      -- raise notice 'This function signature belongs to  V3';
+      has_rcost =_pgr_parameter_check('dijkstra', sql, true);
+      return query SELECT * -- seq, id1, id2, cost
+         FROM _pgr_dijkstra(sql, source_id, target_id, true, has_rcost);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100
   ROWS 1000;
 
-CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bigint, directed boolean)
-  --RETURNS SETOF pgr_costresultBig AS
-  RETURNS SETOF pgr_costresult AS
+
+-- V3 signature
+CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bigint, directed boolean,
+  OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float)
+  RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
-  has_reverse boolean;
+  has_rcost boolean;
   BEGIN
-         has_reverse =_pgr_parameter_check(sql);
-         return query SELECT seq, id1::integer , id2::integer, cost FROM pgr_dijkstra(sql, source_id, target_id, directed, has_reverse);
+      -- raise notice 'This function signature belongs to  V3';
+      has_rcost =_pgr_parameter_check('dijkstra', sql, true);
+      return query SELECT * --seq, id1, id2, cost
+         FROM _pgr_dijkstra(sql, source_id, target_id, directed, has_rcost);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE
