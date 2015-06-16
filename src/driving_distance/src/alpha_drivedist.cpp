@@ -60,6 +60,9 @@ namespace boost {
 #include <CGAL/Alpha_shape_face_base_2.h>
 #include <CGAL/Alpha_shape_vertex_base_2.h>
 
+#define _USE_MATH_DEFINESi
+#include <math.h>
+
 typedef double coord_type;
 
 typedef CGAL::Simple_cartesian<coord_type>  SC;
