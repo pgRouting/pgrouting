@@ -60,8 +60,6 @@ namespace boost {
 #include <CGAL/Alpha_shape_face_base_2.h>
 #include <CGAL/Alpha_shape_vertex_base_2.h>
 
-#define _USE_MATH_DEFINES
-#include <math.h>
 
 typedef double coord_type;
 
@@ -93,13 +91,14 @@ typedef Alpha_shape_2::Alpha_shape_edges_iterator Alpha_shape_edges_iterator;
 
 double get_angle(Point p, Point q, Point r)
 {
+  double m_pi(3.14159265358979323846);
   Vector v1(q, p);
   Vector v2(q, r);
   double cross = v1.x() * v2.y() - v1.y() * v2.x();
   double dot = v1.x() * v2.x() + v1.y() * v2.y();
   double angle = atan2(cross, dot);
   if (angle < 0.0) {
-    angle += 2 * M_PI;
+    angle += 2 * m_pi;
   }
   return angle;
 }
