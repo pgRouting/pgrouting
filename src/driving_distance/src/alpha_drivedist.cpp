@@ -60,7 +60,7 @@ namespace boost {
 #include <CGAL/Alpha_shape_face_base_2.h>
 #include <CGAL/Alpha_shape_vertex_base_2.h>
 
-#define _USE_MATH_DEFINESi
+#define _USE_MATH_DEFINES
 #include <math.h>
 
 typedef double coord_type;
