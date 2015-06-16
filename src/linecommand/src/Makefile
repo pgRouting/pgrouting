@@ -1,5 +1,5 @@
 CC= g++
-CCFLAGS=  -g -O3 -std=c++0x -Wall -pedantic  
+CCFLAGS=  -g -O3 -std=c++11 -Wall -pedantic  
 LDFLAGS= -lboost_program_options -lpq 
 INCFLAGS= -I /usr/include/postgresql/9.4/server/ -I /usr/include/postgresql/ 
 SOURCES= pgRouting.cpp ./../../common/src/signalhandler.cpp ./../../common/src/pgr_assert.cpp
