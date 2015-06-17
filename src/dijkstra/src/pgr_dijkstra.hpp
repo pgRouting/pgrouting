@@ -78,7 +78,7 @@ class Pgr_dijkstra
       dijkstra_1_to_1(v_source, v_target);
 
       // get the results
-      this->get_path(path, v_source, v_target, 0);
+      this->get_path(path, v_source, v_target);
       return;
     }
 
@@ -155,7 +155,7 @@ class Pgr_dijkstra
       for (const auto &v_source: v_sources) {
          Path path;
          dijkstra_1_to_1(v_source, v_target);
-         this->get_path(path, v_source, v_target, this->graph[v_source].id);
+         this->get_path(path, v_source, v_target);
          paths.push_back(path);
       }
       return;

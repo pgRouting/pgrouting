@@ -48,10 +48,12 @@ typedef struct path_element
 typedef struct path_element3
 {
     int seq;
-    int64_t route;
+    int64_t from;
+    int64_t to;
     int64_t vertex;
     int64_t edge;
     float8 cost;
+    float8 tot_cost;
 } pgr_path_element3_t;
 
 typedef struct {

@@ -300,13 +300,13 @@ class Pgr_base_graph {
     void get_nodesInDistance(Path &path, V source, float8 distance) {
       path.clear();
       int seq = 0;
-      double cost;
+      float8 cost;
       int64_t edge_id;
       for (V i = 0; i < distances.size(); ++i) {
         if (distances[i] <= distance ) {
           cost = distances[i] - distances[predecessors[i]];
           edge_id = get_edge_id(graph, predecessors[i], i, cost);
-          path.push_back(seq, graph[source].id, graph[i].id, edge_id, distances[i]);
+          path.push_back(seq, graph[source].id, graph[source].id, graph[i].id, edge_id, cost, distances[i]);
           seq++;
         }
       }
@@ -317,7 +317,7 @@ class Pgr_base_graph {
       Path path;
       for (const auto source: sources) {
         path.clear();
-        get_path(path, source, target, graph[source].id);
+        get_path(path, source, target);
         paths.push_back(path);
       }
     }
@@ -329,14 +329,16 @@ class Pgr_base_graph {
       typename std::set< V >::iterator s_it;
       for (s_it = targets.begin(); s_it != targets.end(); ++s_it) {
         path.clear();
-        get_path(path, source, *s_it, graph[(*s_it)].id);
+        get_path(path, source, *s_it);
         paths.push_back(path);
       }
     }
 
-    void get_path(Path &path, V source, V target, int64_t route_id) {
+    void get_path(Path &path, V source, V target) {
       // backup of the target
       V target_back = target;
+      uint64_t from(graph[source].id);
+      uint64_t to(graph[target].id);
 
       // no path was found
       if (target == predecessors[target]) {
@@ -365,7 +367,7 @@ class Pgr_base_graph {
       // initialize the sequence
       int seq = result_size;
       // the last stop is the target
-      path.push_front(seq, route_id, graph[target].id, -1, 0);
+      path.push_front(seq, from, to, graph[target].id, -1, 0, 0);
 
       while (target != source) {
         // we are done when the predecesor of the target is the target
@@ -376,7 +378,7 @@ class Pgr_base_graph {
           vertex_id = graph[predecessors[target]].id;
           edge_id = get_edge_id(graph, predecessors[target], target, cost);
 
-          path.push_front(seq, route_id, vertex_id, edge_id, cost);
+          path.push_front(seq, from, to, vertex_id, edge_id, cost, distances[target]);
           target = predecessors[target];
       }
       return;
@@ -406,7 +408,7 @@ class Pgr_base_graph {
                      minEdge = graph[e].id;
               }
         }
-        distance = minCost;
+        distance = minEdge == -1? 0: minCost;
         return minEdge;
   }
 
