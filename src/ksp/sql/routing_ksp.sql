@@ -52,24 +52,6 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id integer, target_id intege
   ROWS 1000;
 
 
-/*
---V3 DEFAULTS directed:=true heap_paths:=false
-CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id bigint, target_id bigint, no_paths integer)
-  RETURNS SETOF pgr_costresult3Big AS
-  $BODY$ 
-  DECLARE
-  has_rcost boolean;
-  BEGIN
-      has_rcost =_pgr_parameter_check('ksp', sql::text, true);
-      return query SELECT seq, id1, id2, id3, cost 
-                FROM _pgr_ksp(sql::text, source_id, target_id, no_paths, has_rcost, true) where id1 < no_paths;
-  END
-  $BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100
-  ROWS 1000;
-*/
-
 --V3 DEFAULTS directed:=true heap_paths:=false
 CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id bigint, target_id bigint, no_paths integer,
   directed boolean default true, heap_paths boolean default false,
@@ -94,18 +76,3 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id bigint, target_id bigint,
   ROWS 1000;
 
 
-
-
-/*
-CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id integer, target_id integer, no_paths integer)
-  --RETURNS SETOF pgr_costresult3Big AS
-  RETURNS SETOF pgr_costresult3 AS
-  $BODY$
-  BEGIN
-         return query SELECT seq, id1 , id2::integer , id3::integer, cost FROM pgr_ksp(sql, source_id::bigint, target_id::bigint, no_paths);
-  END
-  $BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100
-  ROWS 1000;
-*/

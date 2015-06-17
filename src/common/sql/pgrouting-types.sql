@@ -12,6 +12,15 @@ CREATE TYPE __pgr_ksp AS (
     tot float8
 );
 
+CREATE TYPE __pgr_dijkstra AS (
+    seq integer,
+    id1 bigint,
+    id2 bigint,
+    cost float8,
+    tot float8
+);
+
+
 CREATE TYPE pgr_costResult AS
 (
     seq integer,
@@ -21,8 +30,7 @@ CREATE TYPE pgr_costResult AS
 );
 
 
-CREATE TYPE pgr_costResultBig AS
-(
+CREATE TYPE pgr_costResultBig AS (
     seq integer,
     id1 bigint,
     id2 bigint,

@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(sql text, source_id bigint, target_id bigint, directed boolean, has_rcost boolean,
-  OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float)
+  OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
   RETURNS SETOF RECORD AS
  '$libdir/librouting', 'shortest_path'
     LANGUAGE c IMMUTABLE STRICT;
@@ -53,7 +53,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bi
 
 -- V3 signature
 CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bigint,
-  OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float)
+  OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
@@ -72,7 +72,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bi
 
 -- V3 signature
 CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bigint, directed boolean,
-  OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float)
+  OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
