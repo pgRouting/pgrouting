@@ -20,9 +20,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 
-CREATE OR REPLACE FUNCTION _pgr_ksp(sql text, source_id bigint, target_id bigint, no_paths integer, has_reverse_cost boolean, directed boolean)
-    RETURNS SETOF pgr_costResult3Big
-    AS '$libdir/librouting_ksp', 'kshortest_path'
+CREATE OR REPLACE FUNCTION _pgr_ksp(sql text, source_id bigint, target_id bigint, no_paths integer, has_reverse_cost boolean, directed boolean,
+  OUT seq integer, OUT route bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+  RETURNS SETOF RECORD AS
+    '$libdir/librouting_ksp', 'kshortest_path'
     LANGUAGE c IMMUTABLE STRICT;
 
 
@@ -42,13 +43,14 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id integer, target_id intege
          end if;
       end if;
 
-      return query SELECT seq,id1::integer, id2::integer, id3::integer,cost 
-            FROM _pgr_ksp(sql::text, source_id, target_id, no_paths, has_reverse, true) where id1 < no_paths;
+      return query SELECT seq, route::integer, node::integer, edge::integer, cost 
+            FROM _pgr_ksp(sql::text, source_id, target_id, no_paths, has_reverse, true) where route < no_paths;
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100
   ROWS 1000;
+
 
 /*
 --V3 DEFAULTS directed:=true heap_paths:=false
@@ -70,18 +72,19 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id bigint, target_id bigint,
 
 --V3 DEFAULTS directed:=true heap_paths:=false
 CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id bigint, target_id bigint, no_paths integer,
-  directed boolean default true, heap_paths boolean default false)
-  RETURNS SETOF pgr_costresult3Big AS
+  directed boolean default true, heap_paths boolean default false,
+  OUT seq integer, OUT route bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+  RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
   has_rcost boolean;
   BEGIN
       has_rcost =_pgr_parameter_check('ksp', sql::text, true);
       if heap_paths = false then
-         return query SELECT seq, id1, id2, id3, cost 
-                FROM _pgr_ksp(sql::text, source_id, target_id, no_paths, has_rcost, directed) where id1 < no_paths;
+         return query SELECT *
+                FROM _pgr_ksp(sql::text, source_id, target_id, no_paths, has_rcost, directed) a where a.route < no_paths;
       else
-         return query SELECT seq, id1, id2, id3, cost 
+         return query SELECT *
                 FROM _pgr_ksp(sql::text, source_id, target_id, no_paths, has_rcost, directed);
       end if;
   END

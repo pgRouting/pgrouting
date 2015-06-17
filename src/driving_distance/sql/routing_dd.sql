@@ -44,7 +44,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance
       has_reverse =_pgr_parameter_check('driving', sql, false);
 
       if (has_reverse != has_rcost) then
-         if (has_reverse) then raise NOTICE 'has_rcost set to false but reverse_cost column found, Ignoring';
+         if (has_reverse) then --raise NOTICE 'has_rcost set to false but reverse_cost column found, Ignoring';
          else raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
          end if;
       end if;
@@ -58,14 +58,15 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance
   ROWS 1000;
 
 
-CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance float8)
-  RETURNS SETOF pgr_costresultBig AS
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance float8,
+       OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float)
+  RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
-  has_reverse boolean;
+  has_rcost boolean;
   BEGIN
-      has_reverse =_pgr_parameter_check('driving', sql, true);
-      return query SELECT seq, id1, id2, cost
+      has_rcost =_pgr_parameter_check('driving', sql, true);
+      return query SELECT *
                 FROM _pgr_drivingDistance(sql, source, distance, true, has_rcost);
   END
   $BODY$
@@ -74,14 +75,15 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance
   ROWS 1000;
 
 
-CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance float8, directed boolean)
-  RETURNS SETOF pgr_costresultBig AS
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance float8, directed boolean,
+       OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float)
+  RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
-  has_reverse boolean;
+  has_rcost boolean;
   BEGIN
-      has_reverse =_pgr_parameter_check('driving', sql, true);
-      return query SELECT seq, id1, id2, cost
+      has_rcost =_pgr_parameter_check('driving', sql, true);
+      return query SELECT *
                 FROM _pgr_drivingDistance(sql, source, distance, true, has_rcost);
   END
   $BODY$

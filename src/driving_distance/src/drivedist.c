@@ -151,7 +151,7 @@ driving_distance(PG_FUNCTION_ARGS) {
       nulls[1] = ' ';
       values[2] = Int64GetDatum(ret_path[call_cntr].edge);
       nulls[2] = ' ';
-      values[3] = Float8GetDatum(ret_path[call_cntr].cost);
+      values[3] = Float8GetDatum(ret_path[call_cntr].tot_cost);
       nulls[3] = ' ';
 
       tuple = heap_formtuple(tuple_desc, values, nulls);

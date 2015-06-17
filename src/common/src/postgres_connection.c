@@ -301,10 +301,13 @@ pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path){
 pgr_path_element3_t * noPathFound3(int64_t start_id) {
         pgr_path_element3_t *no_path;
         no_path = pgr_get_memory3(1, no_path);
-        no_path[0].route  = 0;
+        no_path[0].seq  = 0;
+        no_path[0].from  = start_id;
+        no_path[0].to  = start_id;
         no_path[0].vertex = start_id;
-        no_path[0].cost = 0;
         no_path[0].edge = -1;
+        no_path[0].cost = 0;
+        no_path[0].tot_cost = 0;
         return no_path;
 }
 
