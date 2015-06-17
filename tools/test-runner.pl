@@ -92,7 +92,7 @@ while (my $a = shift @ARGV) {
     }
 }
 
-mysystem("dropdb -U $DBUSER -h $DBHOST -p $DBPORT $DBNAME") if 1;
+mysystem("dropdb -U $DBUSER -h $DBHOST -p $DBPORT $DBNAME") if $clean;
 
 %main::tests = ();
 my @cfgs = ();
