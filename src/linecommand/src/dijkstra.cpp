@@ -67,6 +67,7 @@ void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
         // many to 1
         std::deque<Path> paths;
         graph.dijkstra(paths, sources, targets[0]);
+        
 
         std::cout << "THE OPUTPUTS ---->  total outputs: " << paths.size() << "\n";
         for (unsigned int i = 0; i < paths.size(); ++i) {

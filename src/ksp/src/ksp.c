@@ -44,9 +44,6 @@ PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
 
 
 
-
-
-
 #ifdef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif
@@ -97,7 +94,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
       funcctx->user_fctx = path;
 
       funcctx->tuple_desc =
-        BlessTupleDesc(RelationNameGetTupleDesc("__pgr_ksp"));
+        BlessTupleDesc(RelationNameGetTupleDesc("__pgr_3b2f"));
 
       MemoryContextSwitchTo(oldcontext);
     }

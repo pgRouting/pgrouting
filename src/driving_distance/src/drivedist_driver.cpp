@@ -70,7 +70,7 @@ int  do_pgr_driving_distance(pgr_edge_t  *data_edges, int64_t total_tuples,
             *err_msg = strdup(
                 "NOTICE: No driving distance node found");
             (*path_count) = 1;
-            *ret_path = noPathFound3(start_vertex);
+            *ret_path = noPathFound3(start_vertex, (*ret_path));
             return 0;
         }
 

@@ -161,74 +161,19 @@ class Path {
   }
 
 
-/* delete it because it belongs to the other one
-                        THE OPUTPUT
-seq     from    node    edge    cost
-0       12      1       1       5 *
-1       12      2       2       4 *
-2       12      3       3       3 
-3       12      4       16      2
-4       12      5       8       3 *
-5       12      6       9       2
-6       12      11      11      3
-7       12      10      10      4 *
-8       12      12      -1      0
-9       12      13      14      5 *
-10      12      9       15      1
-11      12      7       6       5 *
-12      12      8       7       4 *
+  friend int collapse_paths(
+      pgr_path_element3_t **ret_path,
+      const std::deque< Path > &paths) {
+   int sequence = 0;
+   for (const Path &path : paths) {
+   if (path.path.size() > 0)
+        path.dpPrint(ret_path, sequence);
+   }
+   return sequence;
+  }
 
-0       7       1       1       4
-1       7       2       4       3
-2       7       3       3       6 *
-3       7       4       16      5 *
-4       7       5       7       2 
-5       7       6       8       3 *
-6       7       11      12      4 *
-7       7       10      10      3
-8       7       12      15      5 *
-9       7       13      14      4 
-10      7       9       9       4 *
-11      7       7       -1      0
-12      7       8       6       1
 
-                        THE OPUTPUT
-seq     from    node    edge    cost
-2       12      3       3       3 
-3       12      4       16      2
-5       12      6       9       2
-6       12      11      11      3
-8       12      12      -1      0
-10      12      9       15      1
 
-0       7       1       1       4
-1       7       2       4       3
-4       7       5       7       2 
-7       7       10      10      3
-9       7       13      14      4 
-11      7       7       -1      0
-12      7       8       6       1
-
-                        THE OPUTPUT
-seq     from    node    edge    cost
-
-0       7       1       1       4
-1       7       2       4       3
-2       12      3       3       3 
-3       12      4       16      2
-4       7       5       7       2 
-5       12      6       9       2
-11      7       7       -1      0
-12      7       8       6       1
-10      12      9       15      1
-7       7       10      10      3
-6       12      11      11      3
-8       12      12      -1      0
-9       7       13      14      4 
-
-  // when they are equal choose one
-  // ordenar por numero de nodo
-*/
   
   friend Path equi_cost(const Path &p1, const Path &p2) {
     Path result(p1);
@@ -260,6 +205,15 @@ seq     from    node    edge    cost
     }
     return result;
   }
+ 
+  friend int count_tuples(const std::deque< Path > &paths) {
+    int count(0);
+    for (const Path &e : paths) {
+       count += e.path.size();
+    }
+    return count;
+  }
+
 };
 
 

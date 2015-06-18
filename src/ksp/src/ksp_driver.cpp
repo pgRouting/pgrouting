@@ -76,7 +76,7 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
         if (paths.size() == 0) {
             *err_msg = strdup("NOTICE: No path found between Starting and Ending vertices");
             (*path_count) = 1;
-            *ksp_path = noPathFound3(start_vertex);
+            *ksp_path = noPathFound3(start_vertex, (*ksp_path));
             return 0;
         }
 

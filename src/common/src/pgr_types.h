@@ -82,6 +82,30 @@ struct boost_edge_t{
   int64_t target_id;
 };
 
+// used in kdijktra
+#if 0
+typedef struct 
+{
+   int64_t vertex_id_source;
+   int64_t edge_id_source;
+   int64_t vertex_id_target;
+   int64_t edge_id_target;
+   float8 cost;
+   float8 totcost;
+} dist_fromto_t;
+
+
+typedef struct 
+{
+  int64_t vertex_id_source;
+  int64_t edge_id_source;
+  int64_t vertex_id_target;
+  int64_t edge_id_target;
+  float8 cost;
+  char* the_way;
+} path_fromto_t;
+#endif
+
 enum graphType { UNDIRECTED= 0, DIRECTED};
 
 #endif // PGR_TYPES_H

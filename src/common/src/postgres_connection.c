@@ -19,12 +19,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
 
-
+// #define DEBUG
 #include "postgres.h"
 #include "catalog/pg_type.h"
+#include "utils/array.h"
 #include "executor/spi.h"
 
-// #define DEBUG
 
 #include "pgr_types.h"
 #include "postgres_connection.h"
@@ -69,6 +69,81 @@ static int pgr_fetch_column_info(
   }
 
     
+int64_t* pgr_get_bigIntArray(int *arrlen, ArrayType *input) {
+    int         ndims, *lbs;
+    bool       *nulls;
+    Oid         i_eltype;
+    int16       i_typlen;
+    bool        i_typbyval;
+    char        i_typalign;
+    Datum      *i_data;
+    int         i, n;
+    int64_t      *data;
+
+    /* get input array element type */
+    i_eltype = ARR_ELEMTYPE(input);
+    get_typlenbyvalalign(i_eltype, &i_typlen, &i_typbyval, &i_typalign);
+
+
+    /* validate input data type */
+    switch(i_eltype){
+      case INT2OID:
+      case INT4OID:
+      case INT8OID:
+            break;
+    default:
+      elog(ERROR, "Expected array of any-integer");
+      return (int64_t*) NULL;  
+      break;
+    }
+
+    /* get various pieces of data from the input array */
+    ndims = ARR_NDIM(input);
+    n = (*ARR_DIMS(input));
+    (*arrlen) = n;
+    lbs = ARR_LBOUND(input);
+
+    if ( (ndims) != 1) {
+        elog(ERROR, "One dimenton expected");
+    }
+
+    /* get src data */
+    deconstruct_array(input, i_eltype, i_typlen, i_typbyval, i_typalign,
+       &i_data, &nulls, &n);
+
+    /* construct a C array */
+    data = (int64_t *) malloc((*arrlen) * sizeof(int64_t));
+    if (!data) {
+        elog(ERROR, "Error: Out of memory!");
+    }
+    PGR_DBG("array size %d", (*arrlen));
+
+    for (i=0; i<(*arrlen); i++) {
+        if (nulls[i]) {
+            data[i] = -1;
+        }
+        else {
+            switch(i_eltype){
+                case INT2OID:
+                    data[i] = (int64_t) DatumGetInt16(i_data[i]);
+                    break;
+                case INT4OID:
+                    data[i] = (int64_t) DatumGetInt32(i_data[i]);
+                    break;
+                case INT8OID:
+                    data[i] = DatumGetInt64(i_data[i]);
+                    break;
+            }
+        }
+        PGR_DBG("    data[%d]=%li", i, data[i]);
+    }
+
+    pfree(nulls);
+    pfree(i_data);
+
+    return (int64_t*)data;
+}
+
 
 /********************
 Functions for pgr_foo with sql:
@@ -169,6 +244,8 @@ void pgr_fetch_edge(
           target_edge->id,  target_edge->source,  target_edge->target,  target_edge->cost,  target_edge->reverse_cost);
 }
 
+
+
 int pgr_get_data(
     char *sql,
     pgr_edge_t **edges,
@@ -249,7 +326,7 @@ int pgr_get_data(
           int t;
           SPITupleTable *tuptable = SPI_tuptable;
           TupleDesc tupdesc = SPI_tuptable->tupdesc;
-
+          PGR_DBG("processing %d", ntuples);
           for (t = 0; t < ntuples; t++) {
               HeapTuple tuple = tuptable->vals[t];
               pgr_fetch_edge(&tuple, &tupdesc, &edge_columns, &edge_types,
@@ -298,8 +375,7 @@ pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path){
 }
 
 
-pgr_path_element3_t * noPathFound3(int64_t start_id) {
-        pgr_path_element3_t *no_path;
+pgr_path_element3_t* noPathFound3(int64_t start_id, pgr_path_element3_t *no_path) {
         no_path = pgr_get_memory3(1, no_path);
         no_path[0].seq  = 0;
         no_path[0].from  = start_id;
@@ -308,7 +384,9 @@ pgr_path_element3_t * noPathFound3(int64_t start_id) {
         no_path[0].edge = -1;
         no_path[0].cost = 0;
         no_path[0].tot_cost = 0;
-        return no_path;
+        return;
 }
+
+
 
 

@@ -3,7 +3,7 @@
 
 
 
-CREATE TYPE __pgr_ksp AS (
+CREATE TYPE __pgr_3b2f AS (
     seq integer,
     id1 bigint,
     id2 bigint,
@@ -19,6 +19,7 @@ CREATE TYPE __pgr_dijkstra AS (
     cost float8,
     tot float8
 );
+
 
 
 CREATE TYPE pgr_costResult AS

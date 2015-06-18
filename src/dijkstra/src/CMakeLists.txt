@@ -11,5 +11,6 @@
 #ENDIF(APPLE)
 
 ADD_LIBRARY(dijkstra OBJECT ../../common/src/postgres_connection.c
+                            1_to_many_dijkstra.c 
                             dijkstra.c 
                             dijkstra_driver.cpp)

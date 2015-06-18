@@ -26,6 +26,12 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstra(sql text, source_id bigint, target_id b
  '$libdir/librouting', 'shortest_path'
     LANGUAGE c IMMUTABLE STRICT;
 
+CREATE OR REPLACE FUNCTION _pgr_dijkstra(sql text, source_id bigint, target_id anyarray, directed boolean, has_rcost boolean,
+  OUT seq integer, OUT end_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+  RETURNS SETOF RECORD AS
+ '$libdir/librouting', 'dijkstra_1_to_many'
+    LANGUAGE c IMMUTABLE STRICT;
+
 
 -- V2 signature
 CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bigint, directed boolean, has_rcost boolean)
@@ -87,3 +93,22 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bi
   LANGUAGE plpgsql VOLATILE
   COST 100
   ROWS 1000;
+
+-- V3 signature for 1 to many
+CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source bigint, target anyarray, directed boolean default true,
+  OUT seq integer, OUT end_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+  RETURNS SETOF RECORD AS
+  $BODY$
+  DECLARE
+  has_rcost boolean;
+  BEGIN
+      has_rcost =_pgr_parameter_check('dijkstra', sql, true);
+      return query SELECT * -- seq, id1, id2, cost
+         FROM _pgr_dijkstra(sql, source, target, directed, has_rcost);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100
+  ROWS 1000;
+
+
