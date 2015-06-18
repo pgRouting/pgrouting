@@ -32,7 +32,7 @@ extern "C" {
 #include "./pgr_dijkstra.hpp"
 
 int  do_pgr_dijkstra_many_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
-                       int64_t  *start_vertex, int s_len, int64_t  end_vertex, int e_len,
+                       int64_t  *start_vertex, int s_len, int64_t  *end_vertex, int e_len,
                        bool has_reverse_cost, bool directedFlag,
                        pgr_path_element3_t **ret_path, int *path_count,
                        char ** err_msg) {
@@ -211,9 +211,6 @@ int  do_pgr_dijkstra_1_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
 
 
         std::vector< int64_t > end_vertices(end_vertex, end_vertex + e_len);
-        //for (int i = 0; i < e_len; ++i) {
-          //  end_vertices[i] = end_vertex[i];
-        //}
 
         if (directedFlag) {
             digraph.initialize_graph(data_edges, total_tuples);

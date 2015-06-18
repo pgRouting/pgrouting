@@ -257,6 +257,9 @@ int pgr_get_data(
 
   bool sourceFound = false;
   bool targetFound = false;
+  if (start_vertex == -1 && end_vertex == -1) {
+    sourceFound = targetFound = true;
+  }
   int ntuples;
   int64_t total_tuples;
 

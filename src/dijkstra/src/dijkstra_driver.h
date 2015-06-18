@@ -31,7 +31,7 @@ extern "C" {
 #endif
 
 int  do_pgr_dijkstra_many_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
-                       int64_t  *start_vertex, int s_len, int64_t  end_vertex, int e_len,
+                       int64_t  *start_vertex, int s_len, int64_t  *end_vertex, int e_len,
                        bool has_reverse_cost, bool directedFlag,
                        pgr_path_element3_t **ret_path, int *path_count,
                        char ** err_msg);
