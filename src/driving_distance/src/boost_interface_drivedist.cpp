@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
 
-#include "./drivedist_driver.h"
+#include "./boost_interface_drivedist.h"
 #include <sstream>
 
 extern "C" {
@@ -30,6 +30,94 @@ extern "C" {
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
+
+
+
+
+int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
+                       int64_t  *start_vertex, int s_len, 
+                       float8 distance,
+                       bool directedFlag,
+                       bool equiCostFlag,
+                       pgr_path_element3_t **ret_path, int *path_count,
+                       char ** err_msg) {
+    try {
+        // in c code this should this must have been checked:
+        //  1) end_vertex is in the data_edges
+        
+        #if 0  // set to 1 if needed
+        std::ostringstream log;
+        #endif
+
+        graphType gType = directedFlag? DIRECTED: UNDIRECTED;
+        const int initial_size = 1;
+
+        std::deque< Path >paths;
+        typedef boost::adjacency_list < boost::vecS, boost::vecS,
+            boost::undirectedS,
+            boost_vertex_t, boost_edge_t > UndirectedGraph;
+        typedef boost::adjacency_list < boost::vecS, boost::vecS,
+            boost::bidirectionalS,
+            boost_vertex_t, boost_edge_t > DirectedGraph;
+
+        Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
+        Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
+        
+        std::vector< int64_t > start_vertices(start_vertex, start_vertex + s_len);
+
+        if (directedFlag) {
+            digraph.initialize_graph(data_edges, total_tuples);
+            digraph.dijkstra_dd(paths, start_vertices, distance);
+        } else {
+            undigraph.initialize_graph(data_edges, total_tuples);
+            undigraph.dijkstra_dd(paths, start_vertices, distance);
+        }
+
+
+        if (paths.size() == 0) {
+            *err_msg = strdup(
+                "NOTICE: No paths found between any of the starting vertices and the Ending vertex");
+            (*path_count) = 1;
+            *ret_path = noPathFound3(-1, (*ret_path));
+            return 0;
+        }
+        
+        
+        
+        
+        if (equiCostFlag == false) {
+            int count(count_tuples(paths));
+            *ret_path = pgr_get_memory3(count, (*ret_path));
+            int trueCount(collapse_paths(ret_path, paths));
+            *path_count = count;
+            // assert (count == trueCount);
+
+        } else {
+            Path path = equi_cost(paths); 
+            size_t count(path.size());
+            int trueCount = 0;
+            path.dpPrint(ret_path, trueCount, 0);
+            *path_count = count;
+            // assert (count == trueCount);
+            
+        }
+        
+      #if 1
+        *err_msg = strdup("OK");
+        #else
+        *err_msg = strdup(log.str().c_str());
+        #endif
+        return EXIT_SUCCESS;
+    } catch ( ... ) {
+     *err_msg = strdup("Caught unknown expection!");
+     return -1;
+    }
+}
+
+
+
+
+
 
 
 int  do_pgr_driving_distance(pgr_edge_t  *data_edges, int64_t total_tuples,
@@ -86,21 +174,14 @@ int  do_pgr_driving_distance(pgr_edge_t  *data_edges, int64_t total_tuples,
 
         int sequence = 0;
         paths.dpPrint(ret_path, sequence, 0);
+        *path_count = count;
 
-        log << "NOTICE Sequence: " << sequence << "\n";
-        if (count != sequence) {
-            log << "ERROR: Internal count and real count are different. \n"
-                << "ERROR: This should not happen: Please report in GitHub:"
-                << " pgrouting issues.";
-            *err_msg = strdup(log.str().c_str());
-            return -1;
-        }
         #if 1
         *err_msg = strdup("OK");
         #else
         *err_msg = strdup(log.str().c_str());
         #endif
-        *path_count = count;
+        
         return EXIT_SUCCESS;
     } catch ( ... ) {
      *err_msg = strdup("Caught unknown expection!");

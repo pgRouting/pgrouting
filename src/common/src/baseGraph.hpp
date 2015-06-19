@@ -367,7 +367,7 @@ class Pgr_base_graph {
       // initialize the sequence
       int seq = result_size;
       // the last stop is the target
-      path.push_front(seq, from, to, graph[target].id, -1, 0, 0);
+      path.push_front(seq, from, to, graph[target].id, -1, 0,  distances[target]);
 
       while (target != source) {
         // we are done when the predecesor of the target is the target

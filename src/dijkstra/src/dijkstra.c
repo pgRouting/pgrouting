@@ -131,7 +131,7 @@ shortest_path(PG_FUNCTION_ARGS) {
       funcctx->user_fctx = ret_path;
 
       funcctx->tuple_desc = BlessTupleDesc(
-            RelationNameGetTupleDesc("__pgr_dijkstra"));
+            RelationNameGetTupleDesc("__pgr_2b2f"));
 
       MemoryContextSwitchTo(oldcontext);
   }

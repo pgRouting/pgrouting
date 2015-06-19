@@ -387,7 +387,7 @@ pgr_path_element3_t* noPathFound3(int64_t start_id, pgr_path_element3_t *no_path
         no_path[0].edge = -1;
         no_path[0].cost = 0;
         no_path[0].tot_cost = 0;
-        return;
+        return no_path;
 }
 
 

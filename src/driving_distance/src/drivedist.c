@@ -31,9 +31,8 @@
 #include "fmgr.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
-#include "./drivedist_driver.h"
+#include "./boost_interface_drivedist.h"
 
-Datum driving_distance(PG_FUNCTION_ARGS);
 
 static int compute_driving_distance(char* sql, int64_t start_vertex,
                                  float8 distance, bool directed,
@@ -88,9 +87,19 @@ static int compute_driving_distance(char* sql, int64_t start_vertex,
   return pgr_finish(SPIcode, ret);
 }
 
+#ifndef _MSC_VER
+Datum driving_distance(PG_FUNCTION_ARGS);
+#else  // _MSC_VER
+PGDLLEXPORT Datum driving_distance(PG_FUNCTION_ARGS);
+#endif  // _MSC_VER
 
 PG_FUNCTION_INFO_V1(driving_distance);
+
+#ifndef _MSC_VER
 Datum
+#else  // _MSC_VER
+PGDLLEXPORT Datum
+#endif
 driving_distance(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
   int                  call_cntr;
@@ -111,18 +120,20 @@ driving_distance(PG_FUNCTION_ARGS) {
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-      ret = compute_driving_distance(pgr_text2char(PG_GETARG_TEXT_P(0)),
-                                  PG_GETARG_INT64(1),  /* source_id*/
-                                  PG_GETARG_FLOAT8(2), /* distance */
-                                  PG_GETARG_BOOL(3), /* directed*/
-                                  PG_GETARG_BOOL(4), &ret_path, &path_count);
+      ret = compute_driving_distance(pgr_text2char(
+                                  PG_GETARG_TEXT_P(0)),       // sql
+                                  PG_GETARG_INT64(1),         // source_id
+                                  PG_GETARG_FLOAT8(2),        // distance 
+                                  PG_GETARG_BOOL(3),          // directed
+                                  PG_GETARG_BOOL(4),          // has_rcost
+                                  &ret_path, &path_count);
 
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;
       funcctx->user_fctx = ret_path;
 
       funcctx->tuple_desc = BlessTupleDesc(
-            RelationNameGetTupleDesc("__pgr_dijkstra"));
+            RelationNameGetTupleDesc("__pgr_2b2f"));
 
       MemoryContextSwitchTo(oldcontext);
   }

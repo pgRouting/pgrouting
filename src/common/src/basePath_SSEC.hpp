@@ -35,6 +35,7 @@ class Path {
     float8 cost;
 
     Path(): cost(0) {}
+    size_t size() const { return path.size();}
 
     void push_front(pgr_path_element3_t data) {
         cost += data.cost;
