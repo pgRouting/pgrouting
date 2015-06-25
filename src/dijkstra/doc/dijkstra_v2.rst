@@ -7,9 +7,9 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_dijkstra:
+.. _pgr_dijkstra_v2:
 
-pgr_dijkstra - Shortest Path Dijkstra
+pgr_dijkstra (V 2.0)- Shortest Path Dijkstra
 ===============================================================================
 
 .. index:: 
@@ -32,6 +32,7 @@ Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1
 	pgr_costResult[] pgr_dijkstra(text sql, integer source, integer target, 
 	                           boolean directed, boolean has_rcost);
 
+.. warning:: This will be discontinuated on version 3.0
 
 Description
 -------------------------------------------------------------------------------
@@ -67,48 +68,86 @@ Returns set of :ref:`type_cost_result`:
 * Renamed in version 2.0.0
 
 
-Examples
+Examples: Directed
 -------------------------------------------------------------------------------
 
 * Without ``reverse_cost``
 
 .. code-block:: sql
 
-	SELECT seq, id1 AS node, id2 AS edge, cost 
-		FROM pgr_dijkstra(
-			'SELECT id, source, target, cost FROM edge_table',
-			7, 12, false, false
-		);
+        SELECT seq, id1 AS node, id2 AS edge, cost 
+                FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        2,3, true, false
+                );
 
-	 seq | node | edge | cost 
-	-----+------+------+------
-	   0 |    7 |    8 |    1
-	   1 |    8 |    9 |    1
-	   2 |    9 |   15 |    1
-	   3 |   12 |   -1 |    0
-	(4 rows)
+         seq | node | edge | cost 
+        -----+------+------+------
+           0 |    2 |   -1 |    0
+        (1 rows)
 
 
 * With ``reverse_cost``
 
 .. code-block:: sql
 
-	SELECT seq, id1 AS node, id2 AS edge, cost 
-		FROM pgr_dijkstra(
-			'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-			7, 12, true, true
-		);
+        SELECT seq, id1 AS node, id2 AS edge, cost 
+                FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        2,3, true, true
+                );
+         seq | node | edge | cost 
+        -----+------+------+------
+           0 |    2 |    4 |    1
+           1 |    5 |    8 |    1
+           2 |    6 |    9 |    1
+           3 |    9 |   16 |    1
+           4 |    4 |    3 |    1
+           5 |    3 |   -1 |    0
+        (6 rows)
 
-	 seq | node | edge | cost 
-	-----+------+------+------
-	   0 |    7 |    8 |    1
-	   1 |    8 |    9 |    1
-	   2 |    9 |   15 |    1
-	   3 |   12 |   -1 |    0
-	(4 rows)
+
+
+
+
+Examples: Undirected
+-------------------------------------------------------------------------------
+
+* Without ``reverse_cost``
+
+.. code-block:: sql
+
+       SELECT seq, id1 AS node, id2 AS edge, cost 
+                FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost FROM edge_table',
+                        2, 3, false, false
+                );
+        seq | node | edge | cost 
+       -----+------+------+------
+          0 |    2 |    4 |    1
+          1 |    5 |    8 |    1
+          2 |    6 |    5 |    1
+          3 |    3 |   -1 |    0
+       (4 rows)
+
+
+* With ``reverse_cost``
+
+.. code-block:: sql
+
+       SELECT seq, id1 AS node, id2 AS edge, cost 
+                FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        2, 3, false, true
+                );
+        seq | node | edge | cost 
+       -----+------+------+------
+          0 |    2 |    2 |    1
+          1 |    3 |   -1 |    0
+       (2 rows)
+
 
 The queries use the :ref:`sampledata` network.
-
 
 See Also
 -------------------------------------------------------------------------------
