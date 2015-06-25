@@ -378,7 +378,7 @@ class Pgr_base_graph {
           vertex_id = graph[predecessors[target]].id;
           edge_id = get_edge_id(graph, predecessors[target], target, cost);
 
-          path.push_front(seq, from, to, vertex_id, edge_id, cost, distances[target]);
+          path.push_front(seq, from, to, vertex_id, edge_id, cost, distances[target] - cost);
           target = predecessors[target];
       }
       return;
