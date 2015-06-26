@@ -44,7 +44,7 @@ PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
 
 
 
-#ifdef PG_MODULE_MAGIC
+#ifndef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif
 

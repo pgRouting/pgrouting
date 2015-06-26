@@ -10,7 +10,7 @@
 #    SET_TARGET_PROPERTIES(routing PROPERTIES LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 #ENDIF(APPLE)
 
-ADD_LIBRARY(dijkstra OBJECT ../../common/src/postgres_connection.c
+ADD_LIBRARY(dijkstra OBJECT 
                             dijkstra.c 
                             1_to_many_dijkstra.c 
                             many_to_1_dijkstra.c 

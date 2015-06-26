@@ -196,6 +196,8 @@ set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/apsp_warshall/src
 #    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
     ${PGROUTING_SOURCE_DIR}/src/tsp/src
+    ${PGROUTING_SOURCE_DIR}/src/ksp/src
+    ${PGROUTING_SOURCE_DIR}/src/vrp/src
     ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
     ${PGROUTING_SOURCE_DIR}/src/trsp/src
     )
@@ -251,13 +253,13 @@ else(APPLE)
     set(LIBRARY_MODE_TARGET "SHARED")
 endif(APPLE)
 
-add_library(routing_bd
-    ${LIBRARY_MODE_TARGET}
-    $<TARGET_OBJECTS:bd_astar>
-    $<TARGET_OBJECTS:bd_dijkstra>
-    )
+#add_library(routing_bd
+#    ${LIBRARY_MODE_TARGET}
+#    $<TARGET_OBJECTS:bd_astar>
+#    $<TARGET_OBJECTS:bd_dijkstra>
+#    )
 
-install(TARGETS routing_bd DESTINATION ${LIBRARY_INSTALL_PATH})
+#install(TARGETS routing_bd DESTINATION ${LIBRARY_INSTALL_PATH})
 
 add_library(routing
     ${LIBRARY_MODE_TARGET}
@@ -265,19 +267,26 @@ add_library(routing
     $<TARGET_OBJECTS:dijkstra>
     $<TARGET_OBJECTS:kdijkstra>
     $<TARGET_OBJECTS:apsp_johnson>
+    $<TARGET_OBJECTS:ksp>
     $<TARGET_OBJECTS:apsp_warshall>
-#    $<TARGET_OBJECTS:shooting_star>
     $<TARGET_OBJECTS:trsp>
+    $<TARGET_OBJECTS:vrp_single>
+    $<TARGET_OBJECTS:bd_astar>
+    $<TARGET_OBJECTS:bd_dijkstra>
+    $<TARGET_OBJECTS:tsp>
+
+
+#    $<TARGET_OBJECTS:shooting_star>
     )
 
 install(TARGETS routing DESTINATION ${LIBRARY_INSTALL_PATH})
 
-add_library(routing_vrp
-    ${LIBRARY_MODE_TARGET}
-    $<TARGET_OBJECTS:vrp_single>
-    )
+#add_library(routing_vrp
+#    ${LIBRARY_MODE_TARGET}
+#    $<TARGET_OBJECTS:vrp_single>
+#    )
 
-install(TARGETS routing_vrp DESTINATION ${LIBRARY_INSTALL_PATH})
+#install(TARGETS routing_vrp DESTINATION ${LIBRARY_INSTALL_PATH})
 
 
 if(APPLE)
