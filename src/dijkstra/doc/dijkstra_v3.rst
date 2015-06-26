@@ -33,17 +33,25 @@ Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1
 	SET OF (seq, node, edge, cost, tot_cost)
 	    pgr_dijkstra(text sql, bigint source, bigint target);
 
+.. code-block:: sql
+
 	SET OF (seq, node, edge, cost, tot_cost)
 	    pgr_dijkstra(text sql, bigint source, bigint target,
 	                           boolean directed:=true);
+
+.. code-block:: sql
 
 	SET OF (seq, start_v, node, edge, cost, tot_cost)
 	    pgr_dijkstra(text sql, array[ANY_INTEGER] source, bigint target,
 	                           boolean directed:=true);
 
+.. code-block:: sql
+
 	SET OF (seq, end_v, node, edge, cost, tot_cost)
 	    pgr_dijkstra(text sql, bigint source, array[ANY_INTEGER] target,
 	                           boolean directed:=true);
+
+.. code-block:: sql
 
 	SET OF (seq, start_v, end_v, node, edge, cost, tot_cost)
 	    pgr_dijkstra(text sql, array[ANY_INTEGER] source, array[ANY_INTEGER] target,
@@ -70,7 +78,7 @@ Description
 :end_v: ``BIGINT`` id of the ending vertex
 :directed: ``boolean`` (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
 
-Returns set of ``(seq, node, edge, cost, tot_cost)``
+Returns set of ``(seq [, start_v] [, end_v] , node, edge, cost, tot_cost)``
 
 :seq:   row sequence
 :node:   node ID
@@ -83,12 +91,6 @@ Returns set of ``(seq, node, edge, cost, tot_cost)``
 
 * Renamed in version 2.0.0 
 
-then we can see in  :ref:`fig1-direct-Cost-Reverse`
-then we can see in  :ref:`fig2-undirect-Cost-Reverse`
-then we can see in  :ref:`fig3-direct-Cost`
-then we can see in  :ref:`fig4-undirect-Cost`
-
-
 
 Examples for :ref:`fig1-direct-Cost-Reverse` 
 -------------------------------------------------------------------------------
@@ -99,37 +101,110 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         2, 3
                 );
+         seq | node | edge | cost | tot_cost 
+        -----+------+------+------+----------
+           0 |    2 |    4 |    1 |        0
+           1 |    5 |    8 |    1 |        1
+           2 |    6 |    9 |    1 |        2
+           3 |    9 |   16 |    1 |        3
+           4 |    4 |    3 |    1 |        4
+           5 |    3 |   -1 |    0 |        5
+        (6 rows)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         2, 5
                 );
+         seq | node | edge | cost | tot_cost 
+        -----+------+------+------+----------
+           0 |    2 |    4 |    1 |        0
+           1 |    5 |   -1 |    0 |        1
+        (2 rows)
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        2, array[3,5]
+                );
+         seq | end_v | node | edge | cost | tot_cost 
+        -----+-------+------+------+------+----------
+           0 |     3 |    2 |    4 |    1 |        0
+           1 |     3 |    5 |    8 |    1 |        1
+           2 |     3 |    6 |    9 |    1 |        2
+           3 |     3 |    9 |   16 |    1 |        3
+           4 |     3 |    4 |    3 |    1 |        4
+           5 |     3 |    3 |   -1 |    0 |        5
+           6 |     5 |    2 |    4 |    1 |        0
+           7 |     5 |    5 |   -1 |    0 |        1
+        (8 rows)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         11, 3
                 );
+         seq | node | edge | cost | tot_cost 
+        -----+------+------+------+----------
+           0 |   11 |   13 |    1 |        0
+           1 |   12 |   15 |    1 |        1
+           2 |    9 |   16 |    1 |        2
+           3 |    4 |    3 |    1 |        3
+           4 |    3 |   -1 |    0 |        4
+        (5 rows)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         11, 5
                 );
+         seq | node | edge | cost | tot_cost 
+        -----+------+------+------+----------
+           0 |   11 |   13 |    1 |        0
+           1 |   12 |   15 |    1 |        1
+           2 |    9 |    9 |    1 |        2
+           3 |    6 |    8 |    1 |        3
+           4 |    5 |   -1 |    0 |        4
+        (5 rows)
 
        
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         array[2,11], 5
                 );
+         seq | start_v | node | edge | cost | tot_cost 
+        -----+---------+------+------+------+----------
+           0 |       2 |    2 |    4 |    1 |        0
+           1 |       2 |    5 |   -1 |    0 |        1
+           2 |      11 |   11 |   13 |    1 |        0
+           3 |      11 |   12 |   15 |    1 |        1
+           4 |      11 |    9 |    9 |    1 |        2
+           5 |      11 |    6 |    8 |    1 |        3
+           6 |      11 |    5 |   -1 |    0 |        4
+        (7 rows)
 
-        SELECT * FROM pgr_dijkstra(
-                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-                        2, array[3,5]
-                );
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         array[2, 11], array[3,5]
                 );
+         seq | start_v | end_v | node | edge | cost | tot_cost 
+        -----+---------+-------+------+------+------+----------
+           0 |       2 |     3 |    2 |    4 |    1 |        0
+           1 |       2 |     3 |    5 |    8 |    1 |        1
+           2 |       2 |     3 |    6 |    9 |    1 |        2
+           3 |       2 |     3 |    9 |   16 |    1 |        3
+           4 |       2 |     3 |    4 |    3 |    1 |        4
+           5 |       2 |     3 |    3 |   -1 |    0 |        5
+           6 |       2 |     5 |    2 |    4 |    1 |        0
+           7 |       2 |     5 |    5 |   -1 |    0 |        1
+           8 |      11 |     3 |   11 |   13 |    1 |        0
+           9 |      11 |     3 |   12 |   15 |    1 |        1
+          10 |      11 |     3 |    9 |   16 |    1 |        2
+          11 |      11 |     3 |    4 |    3 |    1 |        3
+          12 |      11 |     3 |    3 |   -1 |    0 |        4
+          13 |      11 |     5 |   11 |   13 |    1 |        0
+          14 |      11 |     5 |   12 |   15 |    1 |        1
+          15 |      11 |     5 |    9 |    9 |    1 |        2
+          16 |      11 |     5 |    6 |    8 |    1 |        3
+          17 |      11 |     5 |    5 |   -1 |    0 |        4
+        (18 rows)
 
 
 Examples for :ref:`fig2-undirect-Cost-Reverse` 
@@ -142,24 +217,46 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
                         2, 3,
                         false
                 );
+         seq | node | edge | cost | tot_cost 
+        -----+------+------+------+----------
+           0 |    2 |    2 |    1 |        0
+           1 |    3 |   -1 |    0 |        1
+        (2 rows)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         2, 5,
                         false
                 );
+         seq | node | edge | cost | tot_cost 
+        -----+------+------+------+----------
+           0 |    2 |    4 |    1 |        0
+           1 |    5 |   -1 |    0 |        1
+        (2 rows)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         11, 3,
                         false
                 );
+         seq | node | edge | cost | tot_cost 
+        -----+------+------+------+----------
+           0 |   11 |   11 |    1 |        0
+           1 |    6 |    5 |    1 |        1
+           2 |    3 |   -1 |    0 |        2
+        (3 rows)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         11, 5,
                         false
                 );
+         seq | node | edge | cost | tot_cost 
+        -----+------+------+------+----------
+           0 |   11 |   11 |    1 |        0
+           1 |    6 |    8 |    1 |        1
+           2 |    5 |   -1 |    0 |        2
+        (3 rows)
 
        
         SELECT * FROM pgr_dijkstra(
@@ -167,19 +264,46 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
                         array[2,11], 5,
                         false
                 );
+         seq | start_v | node | edge | cost | tot_cost 
+        -----+---------+------+------+------+----------
+           0 |       2 |    2 |    4 |    1 |        0
+           1 |       2 |    5 |   -1 |    0 |        1
+           2 |      11 |   11 |   11 |    1 |        0
+           3 |      11 |    6 |    8 |    1 |        1
+           4 |      11 |    5 |   -1 |    0 |        2
+        (5 rows)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         2, array[3,5],
                         false
                 );
+         seq | end_v | node | edge | cost | tot_cost 
+        -----+-------+------+------+------+----------
+           0 |     3 |    2 |    2 |    1 |        0
+           1 |     3 |    3 |   -1 |    0 |        1
+           2 |     5 |    2 |    4 |    1 |        0
+           3 |     5 |    5 |   -1 |    0 |        1
+        (4 rows)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         array[2, 11], array[3,5],
                         false
                 );
-
+         seq | start_v | end_v | node | edge | cost | tot_cost 
+        -----+---------+-------+------+------+------+----------
+           0 |       2 |     3 |    2 |    2 |    1 |        0
+           1 |       2 |     3 |    3 |   -1 |    0 |        1
+           2 |       2 |     5 |    2 |    4 |    1 |        0
+           3 |       2 |     5 |    5 |   -1 |    0 |        1
+           4 |      11 |     3 |   11 |   11 |    1 |        0
+           5 |      11 |     3 |    6 |    5 |    1 |        1
+           6 |      11 |     3 |    3 |   -1 |    0 |        2
+           7 |      11 |     5 |   11 |   11 |    1 |        0
+           8 |      11 |     5 |    6 |    8 |    1 |        1
+           9 |      11 |     5 |    5 |   -1 |    0 |        2
+        
 
 Examples for :ref:`fig3-direct-Cost` 
 -------------------------------------------------------------------------------
@@ -190,37 +314,69 @@ Examples for :ref:`fig3-direct-Cost`
                         'SELECT id, source, target, cost FROM edge_table',
                         2, 3
                 );
+         seq | node | edge | cost | tot_cost 
+        -----+------+------+------+----------
+           0 |    2 |   -1 |    0 |        0
+        (1 row)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost FROM edge_table',
                         2, 5
                 );
+         seq | node | edge | cost | tot_cost 
+        -----+------+------+------+----------
+           0 |    2 |    4 |    1 |        0
+           1 |    5 |   -1 |    0 |        1
+        (2 rows)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost FROM edge_table',
                         11, 3
                 );
+         seq | node | edge | cost | tot_cost 
+        -----+------+------+------+----------
+           0 |   11 |   -1 |    0 |        0
+        (1 row)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost FROM edge_table',
                         11, 5
                 );
+         seq | node | edge | cost | tot_cost 
+        -----+------+------+------+----------
+           0 |   11 |   -1 |    0 |        0
+        (1 row)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost FROM edge_table',
                         array[2,11], 5
                 );
+         seq | start_v | node | edge | cost | tot_cost 
+        -----+---------+------+------+------+----------
+           0 |       2 |    2 |    4 |    1 |        0
+           1 |       2 |    5 |   -1 |    0 |        1
+        (2 rows)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost FROM edge_table',
                         2, array[3,5]
                 );
+         seq | end_v | node | edge | cost | tot_cost 
+        -----+-------+------+------+------+----------
+           0 |     5 |    2 |    4 |    1 |        0
+           1 |     5 |    5 |   -1 |    0 |        1
+        (2 rows)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost FROM edge_table',
                         array[2, 11], array[3,5]
                 );
-
+         seq | start_v | end_v | node | edge | cost | tot_cost 
+        -----+---------+-------+------+------+------+----------
+           0 |       2 |     5 |    2 |    4 |    1 |        0
+           1 |       2 |     5 |    5 |   -1 |    0 |        1
+        (2 rows)
+        
 
 
 
@@ -232,26 +388,50 @@ Examples for :ref:`fig4-undirect-Cost`
 	SELECT * FROM pgr_dijkstra(
 			'SELECT id, source, target, cost FROM edge_table',
 			2, 3,
-                        false,
+                        false
 		);
+        seq | node | edge | cost | tot_cost 
+       -----+------+------+------+----------
+          0 |    2 |    4 |    1 |        0
+          1 |    5 |    8 |    1 |        1
+          2 |    6 |    5 |    1 |        2
+          3 |    3 |   -1 |    0 |        3
+       (4 rows)
 
 	SELECT * FROM pgr_dijkstra(
 			'SELECT id, source, target, cost FROM edge_table',
 			2, 5,
                         false
 		);
+        seq | node | edge | cost | tot_cost 
+       -----+------+------+------+----------
+          0 |    2 |    4 |    1 |        0
+          1 |    5 |   -1 |    0 |        1
+       (2 rows)
 
 	SELECT * FROM pgr_dijkstra(
 			'SELECT id, source, target, cost FROM edge_table',
 			11, 3,
                         false
 		);
+        seq | node | edge | cost | tot_cost 
+       -----+------+------+------+----------
+          0 |   11 |   11 |    1 |        0
+          1 |    6 |    5 |    1 |        1
+          2 |    3 |   -1 |    0 |        2
+       (3 rows)
 
 	SELECT * FROM pgr_dijkstra(
 			'SELECT id, source, target, cost FROM edge_table',
 			11, 5,
                         false
 		);
+        seq | node | edge | cost | tot_cost 
+       -----+------+------+------+----------
+          0 |   11 |   11 |    1 |        0
+          1 |    6 |    8 |    1 |        1
+          2 |    5 |   -1 |    0 |        2
+       (3 rows)
 
        
 	SELECT * FROM pgr_dijkstra(
@@ -259,18 +439,50 @@ Examples for :ref:`fig4-undirect-Cost`
 			array[2,11], 5,
                         false
 		);
+        seq | start_v | node | edge | cost | tot_cost 
+       -----+---------+------+------+------+----------
+          0 |       2 |    2 |    4 |    1 |        0
+          1 |       2 |    5 |   -1 |    0 |        1
+          2 |      11 |   11 |   11 |    1 |        0
+          3 |      11 |    6 |    8 |    1 |        1
+          4 |      11 |    5 |   -1 |    0 |        2
+       (5 rows)
 
 	SELECT * FROM pgr_dijkstra(
 			'SELECT id, source, target, cost FROM edge_table',
 			2, array[3,5],
                         false
 		);
+        seq | end_v | node | edge | cost | tot_cost 
+       -----+-------+------+------+------+----------
+          0 |     3 |    2 |    4 |    1 |        0
+          1 |     3 |    5 |    8 |    1 |        1
+          2 |     3 |    6 |    5 |    1 |        2
+          3 |     3 |    3 |   -1 |    0 |        3
+          4 |     5 |    2 |    4 |    1 |        0
+          5 |     5 |    5 |   -1 |    0 |        1
+       (6 rows)
 
 	SELECT * FROM pgr_dijkstra(
 			'SELECT id, source, target, cost FROM edge_table',
 			array[2, 11], array[3,5],
                         false
 		);
+        seq | start_v | end_v | node | edge | cost | tot_cost 
+       -----+---------+-------+------+------+------+----------
+          0 |       2 |     3 |    2 |    4 |    1 |        0
+          1 |       2 |     3 |    5 |    8 |    1 |        1
+          2 |       2 |     3 |    6 |    5 |    1 |        2
+          3 |       2 |     3 |    3 |   -1 |    0 |        3
+          4 |       2 |     5 |    2 |    4 |    1 |        0
+          5 |       2 |     5 |    5 |   -1 |    0 |        1
+          6 |      11 |     3 |   11 |   11 |    1 |        0
+          7 |      11 |     3 |    6 |    5 |    1 |        1
+          8 |      11 |     3 |    3 |   -1 |    0 |        2
+          9 |      11 |     5 |   11 |   11 |    1 |        0
+         10 |      11 |     5 |    6 |    8 |    1 |        1
+         11 |      11 |     5 |    5 |   -1 |    0 |        2
+       (12 rows)
 
 
 
