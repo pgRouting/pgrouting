@@ -287,6 +287,7 @@ try {
     *err_msg = (char *) "Unknown exception caught!";
     return -1;
  }
- return -1;
+ *err_msg = (char *) "No path found";
+ return 0;
 }
 

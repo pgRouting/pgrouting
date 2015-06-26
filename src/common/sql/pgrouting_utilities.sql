@@ -203,7 +203,7 @@ COMMENT ON FUNCTION pgr_isColumnInTable(text,text) IS 'args: tab,col  -returns t
 	  	 when column "col" is not indexed
 
 */
-CREATE OR REPLACE FUNCTION public.pgr_isColumnIndexed(tab text, col text)
+CREATE OR REPLACE FUNCTION pgr_isColumnIndexed(tab text, col text)
 RETURNS boolean AS
 $BODY$
 DECLARE
