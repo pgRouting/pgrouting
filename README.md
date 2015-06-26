@@ -67,6 +67,8 @@ This library contains following features:
 
 See online documentation: http://docs.pgrouting.org/
 
+If you have multiple versions of PostgreSQL installed you can select the version you want to build with using the cmake option *-DPG_VERSION=x.y* where x.y is the major.minor version number, eg: 9.1, 9.2, 9.3, 9.4.
+
 ## COMPILATION
 
 For MinGW on Windows
@@ -85,13 +87,13 @@ For Linux
 	
 	mkdir build
 	cd build
-	cmake -DWITH_DD=ON ..
+	cmake -DWITH_DD=ON -DPG_VERSION=9.1 ..
 	make
 	sudo make install
 
 Build with documentation (requires [Sphinx](http://sphinx-doc.org/))
 
-	cmake -DWITH_DOC=ON -DWITH_DD=ON ..
+	cmake -DWITH_DOC=ON -DWITH_DD=ON -DPG_VERSION=9.1 ..
 
 Postgresql 9.1+
 

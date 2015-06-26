@@ -14,21 +14,29 @@
 
 # Add the postgresql and mysql include paths here
 
+# A check condition to see if those variables are set
+
+SET(PG_VERSION "" CACHE STRING "Some user-specified option")  #PG_VERSION is a commandline argument to specify the version.
+
 if(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE AND POSTGRESQL_VERSION_STRING)
     set(POSTGRESQL_FOUND TRUE)
 else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
 
-
+# Checking POSTGRESQL_EXECUTABLE in all the dir (*) - implies that 
     find_program(POSTGRESQL_EXECUTABLE NAMES postgres
         PATHS
-        /usr/lib/postgresql/*/bin/
+        /usr/lib/postgresql/${PG_VERSION}/bin/
         )
+    message(STATUS "PG_VERSION in FindPostgreSQL.cmake is "${PG_VERSION} ) 
     message(STATUS "POSTGRESQL_EXECUTABLE is " ${POSTGRESQL_EXECUTABLE})
 
+# Checking POSTGRESQL_PG_CONFIG 
     find_program(POSTGRESQL_PG_CONFIG NAMES pg_config
         PATHS
-        /usr/lib/postgresql/*/bin/
+        /usr/lib/postgresql/${PG_VERSION}/bin/
+    	NO_DEFAULT_PATH
         )
+
     message(STATUS "POSTGRESQL_PG_CONFIG is " ${POSTGRESQL_PG_CONFIG})
 
     if(POSTGRESQL_PG_CONFIG)
@@ -51,11 +59,11 @@ else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
         /usr/include/pgsql/server
         /usr/local/include/pgsql/server
         /usr/include/postgresql/server
-        /usr/include/postgresql/*/server
+        /usr/include/postgresql/${PG_VERSION}/server
         /usr/local/include/postgresql/server
-        /usr/local/include/postgresql/*/server
-        $ENV{ProgramFiles}/PostgreSQL/*/include/server
-        $ENV{SystemDrive}/PostgreSQL/*/include/server
+        /usr/local/include/postgresql/${PG_VERSION}/server
+        $ENV{ProgramFiles}/PostgreSQL/${PG_VERSION}/include/server
+        $ENV{SystemDrive}/PostgreSQL/${PG_VERSION}/include/server
         )
 
     if(POSTGRESQL_PG_CONFIG)
