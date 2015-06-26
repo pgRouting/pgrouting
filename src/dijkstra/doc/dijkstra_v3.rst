@@ -83,60 +83,199 @@ Returns set of ``(seq, node, edge, cost, tot_cost)``
 
 * Renamed in version 2.0.0 
 
+then we can see in  :ref:`fig1-direct-Cost-Reverse`
+then we can see in  :ref:`fig2-undirect-Cost-Reverse`
+then we can see in  :ref:`fig3-direct-Cost`
+then we can see in  :ref:`fig4-undirect-Cost`
 
-Examples for Undirected Graph
+
+
+Examples for :ref:`fig1-direct-Cost-Reverse` 
 -------------------------------------------------------------------------------
-
-* Without ``reverse_cost``
-
-The following queries are equivalent
 
 .. code-block:: sql
 
-	SELECT seq, id1 AS node, id2 AS edge, cost 
-		FROM pgr_dijkstra(
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        2, 3
+                );
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        2, 5
+                );
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        11, 3
+                );
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        11, 5
+                );
+
+       
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        array[2,11], 5
+                );
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        2, array[3,5]
+                );
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        array[2, 11], array[3,5]
+                );
+
+
+Examples for :ref:`fig2-undirect-Cost-Reverse` 
+-------------------------------------------------------------------------------
+
+.. code-block:: sql
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        2, 3,
+                        false
+                );
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        2, 5,
+                        false
+                );
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        11, 3,
+                        false
+                );
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        11, 5,
+                        false
+                );
+
+       
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        array[2,11], 5,
+                        false
+                );
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        2, array[3,5],
+                        false
+                );
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                        array[2, 11], array[3,5],
+                        false
+                );
+
+
+Examples for :ref:`fig3-direct-Cost` 
+-------------------------------------------------------------------------------
+
+.. code-block:: sql
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost FROM edge_table',
+                        2, 3
+                );
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost FROM edge_table',
+                        2, 5
+                );
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost FROM edge_table',
+                        11, 3
+                );
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost FROM edge_table',
+                        11, 5
+                );
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost FROM edge_table',
+                        array[2,11], 5
+                );
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost FROM edge_table',
+                        2, array[3,5]
+                );
+
+        SELECT * FROM pgr_dijkstra(
+                        'SELECT id, source, target, cost FROM edge_table',
+                        array[2, 11], array[3,5]
+                );
+
+
+
+
+Examples for :ref:`fig4-undirect-Cost` 
+-------------------------------------------------------------------------------
+
+.. code-block:: sql
+
+	SELECT * FROM pgr_dijkstra(
 			'SELECT id, source, target, cost FROM edge_table',
 			2, 3,
-                        false,    -- directed flag
-                        false     -- has_rcost
+                        false,
 		);
 
-	SELECT seq, id1 AS node, id2 AS edge, cost 
-		FROM pgr_dijkstra(
+	SELECT * FROM pgr_dijkstra(
 			'SELECT id, source, target, cost FROM edge_table',
-			2, 3,
-                        false     -- directed flag
-			          -- has_rcost is set to false automatically
+			2, 5,
+                        false
 		);
 
-
-	SELECT seq, id1 AS node, id2 AS edge, cost 
-		FROM pgr_dijkstra(
+	SELECT * FROM pgr_dijkstra(
 			'SELECT id, source, target, cost FROM edge_table',
-			2, 3
-                                  -- directed's flag default is false
-			          -- has_rcost is set to false automatically
+			11, 3,
+                        false
 		);
 
-         seq | node | edge | cost 
-        -----+------+------+------
-           0 |    2 |    4 |    1
-           1 |    5 |    8 |    1
-           2 |    6 |    5 |    1
-           3 |    3 |   -1 |    0
-        (4 rows)
+	SELECT * FROM pgr_dijkstra(
+			'SELECT id, source, target, cost FROM edge_table',
+			11, 5,
+                        false
+		);
+
+       
+	SELECT * FROM pgr_dijkstra(
+			'SELECT id, source, target, cost FROM edge_table',
+			array[2,11], 5,
+                        false
+		);
+
+	SELECT * FROM pgr_dijkstra(
+			'SELECT id, source, target, cost FROM edge_table',
+			2, array[3,5],
+                        false
+		);
+
+	SELECT * FROM pgr_dijkstra(
+			'SELECT id, source, target, cost FROM edge_table',
+			array[2, 11], array[3,5],
+                        false
+		);
 
 
 
-* With ``reverse_cost``
 
-The following queries  
-
-
-
-
-
-Examples:  Equivalences for directed Graph with reverse cost
+Equivalences for :ref:`fig1-direct-Cost-Reverse` 
 -------------------------------------------------------------------------------
 
 .. code-block:: sql
@@ -233,7 +372,7 @@ Examples:  Equivalences for directed Graph with reverse cost
 
 
 
-Examples:  Equivalences for undirected graph with reverse cost
+Equivalences for :ref:`fig2-undirect-Cost-Reverse` 
 -------------------------------------------------------------------------------
 
 .. code-block:: sql
@@ -308,86 +447,7 @@ Examples:  Equivalences for undirected graph with reverse cost
 The queries use the :ref:`sampledata` network.
 
 
-
-
-
-
-
-
-
-
-
-
-Examples for Directed Graph
--------------------------------------------------------------------------------
-
-* Without ``reverse_cost``
-
-The following queries are equivalent
-
-.. code-block:: sql
-
-	SELECT seq, id1 AS node, id2 AS edge, cost 
-		FROM pgr_dijkstra(
-			'SELECT id, source, target, cost FROM edge_table',
-			2, 3,
-                        true,    -- directed flag
-                        false    -- has_rcost
-		);
-
-	SELECT seq, id1 AS node, id2 AS edge, cost 
-		FROM pgr_dijkstra(
-			'SELECT id, source, target, cost FROM edge_table',
-			2, 3,
-                        true     -- directed flag
-                                 -- has_rcost is set to false automatically
-		);
-
-         seq | node | edge | cost 
-        -----+------+------+------
-           0 |    2 |   -1 |    0
-        (1 rows)
-
-
-
-* With ``reverse_cost``
-
-The following queries are equivalent
-
-.. code-block:: sql
-
-	SELECT seq, id1 AS node, id2 AS edge, cost 
-		FROM pgr_dijkstra(
-			'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-			2, 3,
-                        true,    -- directed flag
-                        true     -- has_rcost
-		);
-
-	SELECT seq, id1 AS node, id2 AS edge, cost 
-		FROM pgr_dijkstra(
-			'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-			2, 3,
-                        true     -- directed flag
-			         -- has_rcost is set to true automatically
-		);
-
-         seq | node | edge | cost 
-        -----+------+------+------
-           0 |    2 |    4 |    1
-           1 |    5 |    8 |    1
-           2 |    6 |    9 |    1
-           3 |    9 |   16 |    1
-           4 |    4 |    3 |    1
-           5 |    3 |   -1 |    0
-        (6 rows)
-
-
-The queries use the :ref:`sampledata` network.
-
-
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`type_cost_result`
 * http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
