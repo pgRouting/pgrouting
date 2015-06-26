@@ -105,13 +105,13 @@ Description of the return values
 
 Returns set of ``(seq [, start_v] [, end_v] , node, edge, cost, tot_cost)``
 
-:seq:   row sequence
+:seq: ``INT``  row sequence
 :start_v: ``BIGINT`` id of the starting vertex. Used when multiple starting vetrices are in the query.
 :end_v: ``BIGINT`` id of the ending vertex. Used when multiple ending vertices are in the query.
 :node: ``BIGINT`` id of the node in the path from start_v to end_v.
-:edge: ``BIGINT`` id of the edge used to go to the next node in the path. ``-1`` for the last row of the path. 
-:cost: ``FLOAT`` cost to traverse from ``node`` using ``edge`` to the next node in the sequence.
-:tot_cost:  total cost from ``start_v`` to ``node``.
+:edge: ``BIGINT`` id of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path. 
+:cost: ``FLOAT`` cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
+:tot_cost:  ``FLOAT`` total cost from ``start_v`` to ``node``.
 
 
 
