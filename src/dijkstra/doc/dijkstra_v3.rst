@@ -27,38 +27,47 @@ Synopsis
 
 Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956. It is a graph search algorithm that solves the single-source shortest path problem for a graph with non-negative edge path costs, producing a shortest path tree.
 
+The minimal signature:
 
 .. code-block:: sql
 
 	SET OF (seq, node, edge, cost, tot_cost)
-	    pgr_dijkstra(text sql, bigint source, bigint target);
+	    pgr_dijkstra(text sql, bigint start_v, bigint target);
+
+Dijkstra 1 to 1:
 
 .. code-block:: sql
 
 	SET OF (seq, node, edge, cost, tot_cost)
-	    pgr_dijkstra(text sql, bigint source, bigint target,
+	    pgr_dijkstra(text sql, bigint start_v, bigint end_v,
 	                           boolean directed:=true);
+
+Dijkstra many to 1:
 
 .. code-block:: sql
 
 	SET OF (seq, start_v, node, edge, cost, tot_cost)
-	    pgr_dijkstra(text sql, array[ANY_INTEGER] source, bigint target,
+	    pgr_dijkstra(text sql, array[ANY_INTEGER] start_v, bigint end_v,
 	                           boolean directed:=true);
+
+Dijkstra 1 to many:
 
 .. code-block:: sql
 
 	SET OF (seq, end_v, node, edge, cost, tot_cost)
-	    pgr_dijkstra(text sql, bigint source, array[ANY_INTEGER] target,
+	    pgr_dijkstra(text sql, bigint start_v, array[ANY_INTEGER] end_v,
 	                           boolean directed:=true);
+
+Dijkstra many to many:
 
 .. code-block:: sql
 
 	SET OF (seq, start_v, end_v, node, edge, cost, tot_cost)
-	    pgr_dijkstra(text sql, array[ANY_INTEGER] source, array[ANY_INTEGER] target,
+	    pgr_dijkstra(text sql, array[ANY_INTEGER] start_v, array[ANY_INTEGER] end_v,
 	                           boolean directed:=true);
 
 
-Description
+Description of the SQL query
 -------------------------------------------------------------------------------
 
 :sql: a SQL query, which should return a set of rows with the following columns:
@@ -68,28 +77,42 @@ Description
 		SELECT id, source, target, cost [,reverse_cost] FROM edge_table
 
 
-	:id: ``ANY-INTEGER`` identifier of the edge
-	:source: ``ANY-INTEGER`` identifier of the source vertex
-	:target: ``ANY-INTEGER`` identifier of the target vertex
+	:id: ``ANY-INTEGER`` identifier of the edge.
+	:source: ``ANY-INTEGER`` identifier of the source vertex of the edge.
+	:target: ``ANY-INTEGER`` identifier of the target vertex of the edge.
 	:cost: ``ANY-NUMERICAL`` value of the edge traversal cost. A negative cost will prevent the edge (``source``, ``target``) from being inserted in the graph.
 	:reverse_cost: ``ANY-NUMERICAL`` (optional) the value for the reverse traversal of the edge. A negative cost will prevent the edge (``target``, ``source``) from being inserted in the graph.
 
-:start_v: ``BIGINT`` id of the starting vertex
-:end_v: ``BIGINT`` id of the ending vertex
+Where:
+
+:ANY-INTEGER: smallint, int, bigint
+:ANY-NUMERICAL: smallint, int, bigint, real, float
+
+
+Description of the parameters of the signatures
+-------------------------------------------------------------------------------
+
+:sql: SQL query as decribed above.
+:start_v: ``BIGINT`` id of the starting vertex.
+:start_v: ``array[ANY-INTEGER]`` array of id of starting vertices.
+:end_v: ``BIGINT`` id of the ending vertex.
+:end_v: ``array[ANY-INTEGER]`` array of id of ending vertices.
 :directed: ``boolean`` (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
+
+
+Description of the return values
+-------------------------------------------------------------------------------
 
 Returns set of ``(seq [, start_v] [, end_v] , node, edge, cost, tot_cost)``
 
 :seq:   row sequence
-:node:   node ID
-:edge:   edge ID (``-1`` for the last row)
-:cost:  cost to traverse from ``node`` using ``edge`` to the next node in the sequence
-:tot_cost:  total cost from ``start_v`` to this point in the route
+:start_v: ``BIGINT`` id of the starting vertex. Used when multiple starting vetrices are in the query.
+:end_v: ``BIGINT`` id of the ending vertex. Used when multiple ending vertices are in the query.
+:node: ``BIGINT`` id of the node in the path from start_v to end_v.
+:edge: ``BIGINT`` id of the edge used to go to the next node in the path. ``-1`` for the last row of the path. 
+:cost: ``FLOAT`` cost to traverse from ``node`` using ``edge`` to the next node in the sequence.
+:tot_cost:  total cost from ``start_v`` to ``node``.
 
-
-.. rubric:: History
-
-* Renamed in version 2.0.0 
 
 
 Examples for :ref:`fig1-direct-Cost-Reverse` 
@@ -657,6 +680,11 @@ Equivalences for :ref:`fig2-undirect-Cost-Reverse`
 
 
 The queries use the :ref:`sampledata` network.
+
+.. rubric:: History
+
+* Renamed in version 2.0.0 
+* Added functionality for version 3.0.0 in version 2.1
 
 
 See Also
