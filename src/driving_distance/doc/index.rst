@@ -16,12 +16,13 @@ Driving Distance
 Version 2.x 
 ------------------
 
-  - :ref:`pgr_driving_distance<dd_driving_distance_v2>` - Driving Distance 
+  - :ref:`pgr_driving_distance<pgr_driving_distance_v2>` - Driving Distance 
     
+
 Version 3.x 
 ------------------
 
-  - :ref:`pgr_driving_distance<dd_driving_distance_v3>` - Driving Distance 
+  - :ref:`pgr_driving_distance<pgr_driving_distance_v3>` - Driving Distance 
 
 .. toctree::
 	:hidden:

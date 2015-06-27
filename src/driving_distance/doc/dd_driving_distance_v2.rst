@@ -61,14 +61,7 @@ Returns set of :ref:`type_cost_result`:
 :id2:   edge ID (this is probably not a useful item)
 :cost:  cost to get to this node ID
 
-.. warning::
 
-	You must reconnect to the database after ``CREATE EXTENSION pgrouting``. Otherwise the function will return ``Error computing path: std::bad_alloc``.
-
-
-.. rubric:: History
-
-* Renamed in version 2.0.0
 
 
 Examples
@@ -115,6 +108,10 @@ Examples
 
 
 The queries use the :ref:`sampledata` network.
+
+.. rubric:: History
+
+* Renamed in version 2.0.0
 
 
 See Also
