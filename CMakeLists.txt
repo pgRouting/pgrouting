@@ -12,8 +12,8 @@ project(PGROUTING)
 
 # Configure options
 
-option(WITH_DD
-    "Set ON|OFF (default=ON) to build Driving distance library" ON)
+#option(WITH_DD
+#    "Set ON|OFF (default=ON) to build Driving distance library" ON)
 
 option(WITH_DOC
     "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
@@ -132,7 +132,7 @@ endif(Boost_INCLUDE_DIRS)
 
 find_package(CGAL)
 if(NOT CGAL_FOUND)
-    message(FATAL_ERROR " Please check your CGAL installation, or set correct path to CGAL_INCLUDE_DIR and CGAL_LIBRARIES.")
+   message(FATAL_ERROR " Please check your CGAL installation, or set correct path to CGAL_INCLUDE_DIR and CGAL_LIBRARIES.")
 endif(NOT CGAL_FOUND)
 
 if(NOT POSTGRESQL_VERSION_STRING)
@@ -194,6 +194,7 @@ endif(SHARE_DIR)
 add_subdirectory(doc)
 
 set(PGROUTING_INCLUDE_DIRECTORIES
+    ${PGROUTING_SOURCE_DIR}/src/common/src
     ${PGROUTING_SOURCE_DIR}/src/astar/src
     ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
     ${PGROUTING_SOURCE_DIR}/src/kdijkstra/src
@@ -272,7 +273,7 @@ endif(APPLE)
 
 LINK_LIBRARIES(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
 
-add_library(routing
+add_library(routing-2.1
     ${LIBRARY_MODE_TARGET}
     $<TARGET_OBJECTS:astar>
     $<TARGET_OBJECTS:dijkstra>
@@ -292,7 +293,7 @@ add_library(routing
 #    $<TARGET_OBJECTS:shooting_star>
     )
 
-install(TARGETS routing DESTINATION ${LIBRARY_INSTALL_PATH})
+install(TARGETS routing-2.1 DESTINATION ${LIBRARY_INSTALL_PATH})
 
 #add_library(routing_vrp
 #    ${LIBRARY_MODE_TARGET}
@@ -303,7 +304,7 @@ install(TARGETS routing DESTINATION ${LIBRARY_INSTALL_PATH})
 
 
 if(APPLE)
-    set_target_properties(routing
+    set_target_properties(routing-2.1
         PROPERTIES
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
     #set_target_properties(routing_bd

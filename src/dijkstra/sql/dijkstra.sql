@@ -23,25 +23,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(sql text, source_id bigint, target_id bigint, directed boolean, has_rcost boolean,
   OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
   RETURNS SETOF RECORD AS
- '$libdir/librouting', 'shortest_path'
+ '$libdir/librouting-2.1', 'shortest_path'
     LANGUAGE c IMMUTABLE STRICT;
 
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(sql text, source_id bigint, target_id anyarray, directed boolean, has_rcost boolean,
   OUT seq integer, OUT end_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
   RETURNS SETOF RECORD AS
- '$libdir/librouting', 'dijkstra_1_to_many'
+ '$libdir/librouting-2.1', 'dijkstra_1_to_many'
     LANGUAGE c IMMUTABLE STRICT;
 
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(sql text, source_id anyarray, target_id bigint, directed boolean, has_rcost boolean,
   OUT seq integer, OUT start_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
   RETURNS SETOF RECORD AS
- '$libdir/librouting', 'dijkstra_many_to_1'
+ '$libdir/librouting-2.1', 'dijkstra_many_to_1'
     LANGUAGE c IMMUTABLE STRICT;
 
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(sql text, source_id anyarray, target_id anyarray, directed boolean, has_rcost boolean,
   OUT seq integer, OUT start_v bigint, OUT end_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
   RETURNS SETOF RECORD AS
- '$libdir/librouting', 'dijkstra_many_to_many'
+ '$libdir/librouting-2.1', 'dijkstra_many_to_many'
     LANGUAGE c IMMUTABLE STRICT;
 
 -- V2 signature

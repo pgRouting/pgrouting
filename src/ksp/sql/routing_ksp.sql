@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION _pgr_ksp(sql text, source_id bigint, target_id bigint, no_paths integer, has_reverse_cost boolean, directed boolean,
   OUT seq integer, OUT route bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
   RETURNS SETOF RECORD AS
-    '$libdir/librouting_ksp', 'kshortest_path'
+    '$libdir/librouting-2.1', 'kshortest_path'
     LANGUAGE c IMMUTABLE STRICT;
 
 

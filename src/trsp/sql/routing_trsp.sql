@@ -13,7 +13,7 @@ CREATE OR REPLACE FUNCTION pgr_trsp(
         has_reverse_cost boolean, 
         turn_restrict_sql text DEFAULT null)
         RETURNS SETOF pgr_costResult
-        AS '$libdir/librouting', 'turn_restrict_shortest_path_vertex'
+        AS '$libdir/librouting-2.1', 'turn_restrict_shortest_path_vertex'
         LANGUAGE 'c' IMMUTABLE;
 
 CREATE OR REPLACE FUNCTION pgr_trsp(
@@ -26,6 +26,6 @@ CREATE OR REPLACE FUNCTION pgr_trsp(
         has_reverse_cost boolean, 
         turn_restrict_sql text DEFAULT null)
         RETURNS SETOF pgr_costResult
-        AS '$libdir/librouting', 'turn_restrict_shortest_path_edge'
+        AS '$libdir/librouting-2.1', 'turn_restrict_shortest_path_edge'
         LANGUAGE 'c' IMMUTABLE;
 
