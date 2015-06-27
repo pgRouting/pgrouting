@@ -13,8 +13,8 @@ Developer's Guide
 ===============================================================================
 
 .. note:: 
-	All documentation should be in reStructuredText format.
-	See: <http://docutils.sf.net/rst.html> for introductory docs.
+    All documentation should be in reStructuredText format.
+    See: <http://docutils.sf.net/rst.html> for introductory docs.
 
 Source Tree Layout
 -------------------------------------------------------------------------------
@@ -23,8 +23,8 @@ cmake/
     cmake scripts used as part of our build system.
 
 src/
-    This is the algorithm source tree. Each algorithm should be contained
-    in its on sub-tree with doc, sql, src, and test sub-directories.
+    This is the algorithm source tree. Each subtree conatins an algorithm 
+    with doc, sql, src, and test sub-directories.
     This might get renamed to "algorithms" at some point.
 
 src/astar/
@@ -96,7 +96,7 @@ documentation and publishing it will need to assemble the details with
 the front material as needed.
 
 Also, to keep the "doc" directory from getting cluttered, each major book
-like those listed above, should be contained in a separate directory under
+like those listed above, should be maintained in a separate directory under
 "doc". Any images or other materials related to the book should also be kept
 in that directory.
 
