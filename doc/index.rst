@@ -99,12 +99,9 @@ Functions reference
   -  :ref:`pgr_ksp<ksp>` - K-Shortest Path
   -  :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
   -  :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
-
-:ref:`dd_index`  
-
-  - :ref:`pgr_driving_distance` - Driving Distance
-  - :ref:`pgr_alphaShape` - Alpha shape computation
-  - :ref:`pgr_points_as_polygon` - Polygon around set of points
+  -  :ref:`pgr_driving_distance<pgr_driving_distance>` - Driving Distance
+  -  :ref:`pgr_alphaShape` - Alpha shape computation
+  -  :ref:`pgr_points_as_polygon` - Polygon around set of points
 
 :ref:`convenience_functions`
   -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
@@ -132,7 +129,6 @@ Functions reference
 
 	../src/common/doc/functions/index
 	../src/index
-	../src/driving_distance/doc/index
 	../src/common/doc/convenience/index
 	../src/common/doc/utilities/index
 

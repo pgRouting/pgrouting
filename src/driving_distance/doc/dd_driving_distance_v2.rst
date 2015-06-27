@@ -7,9 +7,9 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_driving_distance:
+.. _pgr_driving_distance_v2:
 
-pgr_drivingDistance 
+pgr_drivingDistance (V 2.0)
 ===============================================================================
 
 .. index:: 
@@ -20,10 +20,6 @@ Name
 -------------------------------------------------------------------------------
 
 ``pgr_drivingDistance`` - Returns the driving distance from a start node.
-
-.. note::
-
-	Requires :ref:`to build pgRouting <build>` with support for Driving Distance.
 
 
 Synopsis
