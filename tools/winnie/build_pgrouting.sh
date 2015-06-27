@@ -7,7 +7,7 @@
 #export PGHOST=localhost
 #export PGPORT=8442
 export PGUSER=postgres
-#export PGROUTING_VER=2.0
+#export PGROUTING_VER=2.1
 #POSTGIS_VER=2.1.0SVN
 #GCC_TYPE=
 #export POSTIGS_VER=2.1.0beta3
@@ -87,7 +87,7 @@ cp lib/*.sql ${PGPATHEDB}/share/extension/
 cp lib/*.control ${PGPATHEDB}/share/extension/
 
 cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
-perl tools/test-runner.pl -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}" -ignorenotice -clean
+perl tools/test-runner.pl -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}" -ignorenotice -clean -alg dijkstra
 
 cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib
 strip *.dll
