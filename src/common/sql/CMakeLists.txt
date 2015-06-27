@@ -10,6 +10,8 @@ LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/pgr_parameter_check.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/utilities_pgr.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/noUnderUtilities.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/create_vertices_table.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/createIndex.sql
 )
 
 # set in parent scope

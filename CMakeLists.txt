@@ -208,10 +208,10 @@ set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/trsp/src
     ${PGROUTING_SOURCE_DIR}/src/tsp/src
     ${PGROUTING_SOURCE_DIR}/src/vrp_basic/src
-    ${PGROUTING_SOURCE_DIR}/src/vrpdptw/src
 
 #not suported but directory exists
 #    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
+#    ${PGROUTING_SOURCE_DIR}/src/vrpdptw/src
     )
 include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
 
@@ -296,10 +296,10 @@ add_library(routing-2.1
     $<TARGET_OBJECTS:trsp>
     $<TARGET_OBJECTS:tsp>
     $<TARGET_OBJECTS:vrp_basic>
-    $<TARGET_OBJECTS:vrpdptw>
 
 #not supported but directory exists
 #    $<TARGET_OBJECTS:shooting_star>
+#    $<TARGET_OBJECTS:vrpdptw>
     )
 
 install(TARGETS routing-2.1 DESTINATION ${LIBRARY_INSTALL_PATH})
