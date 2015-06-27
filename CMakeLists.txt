@@ -130,6 +130,11 @@ else(Boost_INCLUDE_DIRS)
   message(FATAL_ERROR " Please check your Boost installation ") 
 endif(Boost_INCLUDE_DIRS)
 
+find_package(CGAL)
+if(NOT CGAL_FOUND)
+    message(FATAL_ERROR " Please check your CGAL installation, or set correct path to CGAL_INCLUDE_DIR and CGAL_LIBRARIES.")
+endif(NOT CGAL_FOUND)
+
 if(NOT POSTGRESQL_VERSION_STRING)
   message(FATAL_ERROR "pg_config was not found. Please check your PostgreSQL installation!")
 endif(NOT POSTGRESQL_VERSION_STRING)
@@ -265,6 +270,8 @@ endif(APPLE)
 
 #install(TARGETS routing_bd DESTINATION ${LIBRARY_INSTALL_PATH})
 
+LINK_LIBRARIES(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
+
 add_library(routing
     ${LIBRARY_MODE_TARGET}
     $<TARGET_OBJECTS:astar>
@@ -273,6 +280,7 @@ add_library(routing
     $<TARGET_OBJECTS:apsp_johnson>
     $<TARGET_OBJECTS:ksp>
     $<TARGET_OBJECTS:apsp_warshall>
+    $<TARGET_OBJECTS:driving_distance>
     $<TARGET_OBJECTS:trsp>
     $<TARGET_OBJECTS:vrp_single>
     $<TARGET_OBJECTS:bd_astar>
@@ -313,17 +321,17 @@ endif(APPLE)
 #add_subdirectory(src/tsp)
 #list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 
-if(WITH_DD)
-  find_package(CGAL)
-  if(NOT CGAL_FOUND)
-    message(FATAL_ERROR " Please check your CGAL installation, or set correct path to CGAL_INCLUDE_DIR and CGAL_LIBRARIES.")
-  endif(NOT CGAL_FOUND)
-  #add_definitions(-DBOOST_ALL_NO_LIB)
+#if(WITH_DD)
+  #find_package(CGAL)
+  #if(NOT CGAL_FOUND)
+    #message(FATAL_ERROR " Please check your CGAL installation, or set correct path to CGAL_INCLUDE_DIR and CGAL_LIBRARIES.")
+  #endif(NOT CGAL_FOUND)
+  ##add_definitions(-DBOOST_ALL_NO_LIB)
   #add_definitions(-DBOOST_THREAD_USE_LIB)
-  include_directories(${CGAL_INCLUDE_DIR})
-  add_subdirectory(src/driving_distance)
-  list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
-endif(WITH_DD)
+  #include_directories(${CGAL_INCLUDE_DIR})
+  #add_subdirectory(src/driving_distance)
+  #list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
+#endif(WITH_DD)
 
 #MESSAGE("PACKAGE_SQL_FILES are ${L_PACKAGE_SQL_FILES}")
 
