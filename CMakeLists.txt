@@ -193,24 +193,29 @@ endif(SHARE_DIR)
 # Handles documentation
 add_subdirectory(doc)
 
+#include directories: files in alphabetical order
 set(PGROUTING_INCLUDE_DIRECTORIES
-    ${PGROUTING_SOURCE_DIR}/src/common/src
-    ${PGROUTING_SOURCE_DIR}/src/astar/src
-    ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
-    ${PGROUTING_SOURCE_DIR}/src/kdijkstra/src
     ${PGROUTING_SOURCE_DIR}/src/apsp_johnson/src
     ${PGROUTING_SOURCE_DIR}/src/apsp_warshall/src
-    ${PGROUTING_SOURCE_DIR}/src/ksp/src
-    ${PGROUTING_SOURCE_DIR}/src/vrp/src
+    ${PGROUTING_SOURCE_DIR}/src/astar/src
+    ${PGROUTING_SOURCE_DIR}/src/bd_astar/src
+    ${PGROUTING_SOURCE_DIR}/src/bd_dijkstra/src
+    ${PGROUTING_SOURCE_DIR}/src/common/src
+    ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
     ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
+    ${PGROUTING_SOURCE_DIR}/src/kdijkstra/src
+    ${PGROUTING_SOURCE_DIR}/src/ksp/src
     ${PGROUTING_SOURCE_DIR}/src/trsp/src
     ${PGROUTING_SOURCE_DIR}/src/tsp/src
+    ${PGROUTING_SOURCE_DIR}/src/vrp_basic/src
+    ${PGROUTING_SOURCE_DIR}/src/vrpdptw/src
 
-
+#not suported but directory exists
 #    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
     )
-
 include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
+
+
 if(WIN32)
   include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
 endif(WIN32)
@@ -222,6 +227,8 @@ if(WIN32)
   link_libraries(postgres)
 endif(WIN32)
 
+
+#compiler directives
 if(APPLE)
   # support GNU(Xcode<4) and Clang(Xcode>=4)
   if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
@@ -273,23 +280,25 @@ endif(APPLE)
 
 LINK_LIBRARIES(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
 
+# libraries listed in alphabetical order.
 add_library(routing-2.1
     ${LIBRARY_MODE_TARGET}
-    $<TARGET_OBJECTS:astar>
-    $<TARGET_OBJECTS:dijkstra>
-    $<TARGET_OBJECTS:kdijkstra>
     $<TARGET_OBJECTS:apsp_johnson>
-    $<TARGET_OBJECTS:ksp>
     $<TARGET_OBJECTS:apsp_warshall>
-    $<TARGET_OBJECTS:driving_distance>
-    $<TARGET_OBJECTS:trsp>
-    $<TARGET_OBJECTS:vrp_single>
+    $<TARGET_OBJECTS:astar>
     $<TARGET_OBJECTS:bd_astar>
     $<TARGET_OBJECTS:bd_dijkstra>
-    $<TARGET_OBJECTS:tsp>
     $<TARGET_OBJECTS:common>
+    $<TARGET_OBJECTS:dijkstra>
+    $<TARGET_OBJECTS:driving_distance>
+    $<TARGET_OBJECTS:kdijkstra>
+    $<TARGET_OBJECTS:ksp>
+    $<TARGET_OBJECTS:trsp>
+    $<TARGET_OBJECTS:tsp>
+    $<TARGET_OBJECTS:vrp_basic>
+    $<TARGET_OBJECTS:vrpdptw>
 
-
+#not supported but directory exists
 #    $<TARGET_OBJECTS:shooting_star>
     )
 
@@ -386,7 +395,7 @@ install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
 install(FILES
     "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
+#    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
     DESTINATION "${SHARE_DIR}")
 
 # The following probably could be done better
@@ -397,23 +406,23 @@ configure_file("${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.s
 install(FILES
     "${CMAKE_BINARY_DIR}/lib/pgrouting.sql"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
+#    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
     DESTINATION "${CONTRIB_DIR}")
 
 # TODO: The following probably should be done better
-if(WITH_DD)
+#if(WITH_DD)
   # We will copy the routing_dd_legacy.sql, but not install it as part of 
   # the extension. TODO: we might want to also include a 
   # routing_dd_legacy_uninstall.sql file or add it to the extension
-  configure_file("${PGROUTING_SOURCE_DIR}/src/driving_distance/sql/routing_dd_legacy.sql"
-      "${CMAKE_BINARY_DIR}/lib/pgrouting_dd_legacy.sql" COPYONLY)
+#  configure_file("${PGROUTING_SOURCE_DIR}/src/driving_distance/sql/routing_dd_legacy.sql"
+#      "${CMAKE_BINARY_DIR}/lib/pgrouting_dd_legacy.sql" COPYONLY)
 
-  install(FILES
-      "${CMAKE_BINARY_DIR}/lib/pgrouting_dd_legacy.sql"
-      DESTINATION "${SHARE_DIR}")
+#  install(FILES
+#      "${CMAKE_BINARY_DIR}/lib/pgrouting_dd_legacy.sql"
+#      DESTINATION "${SHARE_DIR}")
 
-  install(FILES
-      "${CMAKE_BINARY_DIR}/lib/pgrouting_dd_legacy.sql"
-      DESTINATION "${CONTRIB_DIR}")
-endif(WITH_DD)
+#  install(FILES
+#      "${CMAKE_BINARY_DIR}/lib/pgrouting_dd_legacy.sql"
+#      DESTINATION "${CONTRIB_DIR}")
+#endif(WITH_DD)
 
