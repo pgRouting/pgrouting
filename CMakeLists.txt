@@ -11,8 +11,6 @@ project(PGROUTING)
 #set(CMAKE_VERBOSE_MAKEFILE 1)
 
 # Configure options
-#option(WITH_TSP
-#    "Set ON|OFF (default=OFF) to build TSP library" OFF)
 
 option(WITH_DD
     "Set ON|OFF (default=ON) to build Driving distance library" ON)
@@ -117,6 +115,8 @@ endif(WIN32)
 #macro_optional_find_package(PostgreSQL)
 #  POSTGRESQL_INCLUDE_DIR, where to find POSTGRESQL.h
 #  POSTGRESQL_LIBRARIES, the libraries needed to use POSTGRESQL.
+
+
 find_package(PostgreSQL)
 if(NOT POSTGRESQL_FOUND)
   message(FATAL_ERROR " Please check your PostgreSQL installation.") 
@@ -194,12 +194,14 @@ set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/kdijkstra/src
     ${PGROUTING_SOURCE_DIR}/src/apsp_johnson/src
     ${PGROUTING_SOURCE_DIR}/src/apsp_warshall/src
-#    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
-    ${PGROUTING_SOURCE_DIR}/src/tsp/src
     ${PGROUTING_SOURCE_DIR}/src/ksp/src
     ${PGROUTING_SOURCE_DIR}/src/vrp/src
     ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
     ${PGROUTING_SOURCE_DIR}/src/trsp/src
+    ${PGROUTING_SOURCE_DIR}/src/tsp/src
+
+
+#    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
     )
 
 include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
@@ -226,9 +228,11 @@ if(APPLE)
   else()
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -std=c++11 -g -Wno-deprecated")
   endif()
+
 elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGWIN)
   set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -frounding-math")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -std=c++11 -frounding-math -Wno-deprecated")
+
 elseif(WIN32)
   # currently, support MinGW only
   set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
@@ -274,6 +278,7 @@ add_library(routing
     $<TARGET_OBJECTS:bd_astar>
     $<TARGET_OBJECTS:bd_dijkstra>
     $<TARGET_OBJECTS:tsp>
+    $<TARGET_OBJECTS:common>
 
 
 #    $<TARGET_OBJECTS:shooting_star>
@@ -293,12 +298,12 @@ if(APPLE)
     set_target_properties(routing
         PROPERTIES
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
-    set_target_properties(routing_bd
-        PROPERTIES
-        LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
-    set_target_properties(routing_vrp
-        PROPERTIES
-        LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
+    #set_target_properties(routing_bd
+        #PROPERTIES
+        #LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
+    #set_target_properties(routing_vrp
+        #PROPERTIES
+        #LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)
 
 #include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
@@ -324,8 +329,10 @@ endif(WITH_DD)
 
 file(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
 "-- pgRouting version '${PGROUTING_VERSION_STRING}' extension for postgresql\n")
+
 file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
 "-- built WITH_DD = ${WITH_DD}\n")
+
 if(USE_PG_EXTENSION)
     file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
         "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
