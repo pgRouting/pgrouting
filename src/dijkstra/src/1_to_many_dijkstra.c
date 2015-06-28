@@ -18,7 +18,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  */
+
 // #define DEBUG
+
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -62,9 +64,8 @@ static int dijkstra_1_to_many_driver(
                start_vertex, start_vertex);
 
   if (SPIcode == -1) {
-    
     return SPIcode;
-  } 
+  }
 
   ret = do_pgr_dijkstra_1_to_many(edges, total_tuples,
                         start_vertex, end_vertex, num,
@@ -123,22 +124,21 @@ dijkstra_1_to_many(PG_FUNCTION_ARGS) {
 
       targetsArr = (int64_t*) pgr_get_bigIntArray(&num, PG_GETARG_ARRAYTYPE_P(2));
       PGR_DBG("targetsArr size %d ", num);
-      
+
 
       int i;
-      for (i = 0; i < num; ++i)
-      {
-        PGR_DBG("targetsArr[%d]=%li",i,targetsArr[i]);
-      };
+      for (i = 0; i < num; ++i) {
+        PGR_DBG("targetsArr[%d]=%li", i, targetsArr[i]);
+      }
 
       PGR_DBG("Calling dijkstra_1_to_many_driver");
       ret = dijkstra_1_to_many_driver(
-               pgr_text2char(PG_GETARG_TEXT_P(0)),  
-               PG_GETARG_INT64(1),                  
-               targetsArr, num, 
+               pgr_text2char(PG_GETARG_TEXT_P(0)),
+               PG_GETARG_INT64(1),
+               targetsArr, num,
                PG_GETARG_BOOL(3),
                PG_GETARG_BOOL(4), &ret_path, &path_count);
-      
+
       free(targetsArr);
 
       /* total number of tuples to be returned */

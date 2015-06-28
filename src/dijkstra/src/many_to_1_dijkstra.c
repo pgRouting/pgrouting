@@ -62,12 +62,11 @@ static int dijkstra_many_to_1_driver(
                end_vertex, end_vertex);
 
   if (SPIcode == -1) {
-    
     return SPIcode;
-  } 
+  }
 
   ret = do_pgr_dijkstra_many_to_1(edges, total_tuples,
-                        start_vertex, num, end_vertex, 
+                        start_vertex, num, end_vertex,
                         has_rcost, directed,
                         path, path_count, &err_msg);
 
@@ -123,15 +122,15 @@ dijkstra_many_to_1(PG_FUNCTION_ARGS) {
 
       sourcesArr = (int64_t*) pgr_get_bigIntArray(&num, PG_GETARG_ARRAYTYPE_P(1));
       PGR_DBG("sourcesArr size %d ", num);
-      
+
       PGR_DBG("Calling dijkstra_many_to_1_driver");
       ret = dijkstra_many_to_1_driver(
-               pgr_text2char(PG_GETARG_TEXT_P(0)),  
-               sourcesArr, num, 
-               PG_GETARG_INT64(2),                  
+               pgr_text2char(PG_GETARG_TEXT_P(0)),
+               sourcesArr, num,
+               PG_GETARG_INT64(2),
                PG_GETARG_BOOL(3),
                PG_GETARG_BOOL(4), &ret_path, &path_count);
-      
+
       free(sourcesArr);
 
       /* total number of tuples to be returned */

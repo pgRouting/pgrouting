@@ -22,6 +22,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef SRC_DIJKSTRA_SRC_PGR_DIJKSTRA_H_
 #define SRC_DIJKSTRA_SRC_PGR_DIJKSTRA_H_
 
+
+#include <deque>
+#include <vector>
+#include <set>
+
 #include <boost/config.hpp>
 #include "postgres.h"
 
@@ -87,7 +92,9 @@ class Pgr_dijkstra
 
     // preparation for 1 to many
     void
-    dijkstra(std::deque< Path > &paths, int64_t start_vertex, std::vector< int64_t > end_vertex) {
+    dijkstra(std::deque< Path > &paths,
+             int64_t start_vertex,
+             std::vector< int64_t > end_vertex) {
       typedef typename boost::graph_traits < G >::vertex_descriptor V;
 
       // adjust predecessors and distances vectors
@@ -103,7 +110,7 @@ class Pgr_dijkstra
         // paths.clear();
         return;
       }
-      
+
       std::set< V > v_targets;
       for (unsigned int i = 0; i < end_vertex.size(); i++) {
           V v_target;
@@ -124,7 +131,9 @@ class Pgr_dijkstra
 
     // preparation for many to 1
     void
-    dijkstra(std::deque< Path > &paths, std::vector < int64_t > start_vertex, int64_t end_vertex) {
+    dijkstra(std::deque< Path > &paths,
+             std::vector < int64_t > start_vertex,
+             int64_t end_vertex) {
       typedef typename boost::graph_traits < G >::vertex_descriptor V;
 
       // adjust predecessors and distances vectors
@@ -152,7 +161,7 @@ class Pgr_dijkstra
       }
 
       // perform the algorithm // a call for each of the sources
-      for (const auto &v_source: v_sources) {
+      for (const auto &v_source : v_sources) {
          Path path;
          dijkstra_1_to_1(v_source, v_target);
          this->get_path(path, v_source, v_target);
@@ -163,9 +172,11 @@ class Pgr_dijkstra
 
     // preparation for many to many
     void
-    dijkstra(std::deque< Path > &paths, std::vector < int64_t > start_vertex, std::vector < int64_t > end_vertex) {
+    dijkstra(std::deque< Path > &paths,
+             std::vector< int64_t > start_vertex,
+              std::vector< int64_t > end_vertex) {
       // a call to 1 to many is faster for each of the sources
-      for (const auto &start: start_vertex) {
+      for (const auto &start : start_vertex) {
          dijkstra(paths, start, end_vertex);
       }
       return;
@@ -198,13 +209,15 @@ class Pgr_dijkstra
 
       // get the results
       this->get_nodesInDistance(path, v_source, distance);
-      return; 
+      return;
     }
 
 
     // preparation for many to distance
     void
-    dijkstra_dd(std::deque< Path > &paths, std::vector< int64_t > start_vertex, float8 distance) {
+    dijkstra_dd(std::deque< Path > &paths,
+                std::vector< int64_t > start_vertex,
+                float8 distance) {
       typedef typename boost::graph_traits < G >::vertex_descriptor V;
 
       // adjust predecessors and distances vectors
@@ -227,7 +240,7 @@ class Pgr_dijkstra
       }
 
       // perform the algorithm
-      for (const auto &v_source: v_sources) {
+      for (const auto &v_source : v_sources) {
         dijkstra_1_to_distance(v_source, distance);
         Path path;
         this->get_nodesInDistance(path, v_source, distance);
@@ -269,7 +282,7 @@ class Pgr_dijkstra
          :m_goal(goal), m_nodes(nodesInDistance), m_dist(distances) {}
        template <class Graph>
        void examine_vertex(Vertex u, Graph& g) {
-         m_nodes.push_back(u); 
+         m_nodes.push_back(u);
          if (m_dist[u] >= m_goal) throw found_one_goal();
        }
      private:
@@ -300,7 +313,7 @@ class Pgr_dijkstra
        std::set< V > m_goals;
     };
 
-    
+
 
     //! Call to Dijkstra  1 source to many targets
     template <class V>
@@ -349,7 +362,7 @@ class Pgr_dijkstra
           .weight_map(get(&boost_edge_t::cost, this->graph))
           .distance_map(&this->distances[0])
           .visitor(dijkstra_distance_visitor< V >(
-              distance, 
+              distance,
               this->nodesInDistance,
               this->distances)));
       }

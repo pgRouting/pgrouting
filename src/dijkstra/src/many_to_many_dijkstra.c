@@ -62,9 +62,8 @@ static int dijkstra_many_to_many_driver(
   SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost, -1, -1);
 
   if (SPIcode == -1) {
-    
     return SPIcode;
-  } 
+  }
 
   ret = do_pgr_dijkstra_many_to_many(edges, total_tuples,
                         start_vertex, s_len, end_vertex, e_len,
@@ -125,15 +124,15 @@ dijkstra_many_to_many(PG_FUNCTION_ARGS) {
       sourcesArr = (int64_t*) pgr_get_bigIntArray(&s_len, PG_GETARG_ARRAYTYPE_P(1));
       targetsArr = (int64_t*) pgr_get_bigIntArray(&e_len, PG_GETARG_ARRAYTYPE_P(2));
       PGR_DBG("sourcesArr size %d ", num);
-      
+
       PGR_DBG("Calling dijkstra_many_to_1_driver");
       ret = dijkstra_many_to_many_driver(
-               pgr_text2char(PG_GETARG_TEXT_P(0)),  
-               sourcesArr, s_len, 
-               targetsArr, e_len, 
+               pgr_text2char(PG_GETARG_TEXT_P(0)),
+               sourcesArr, s_len,
+               targetsArr, e_len,
                PG_GETARG_BOOL(3),
                PG_GETARG_BOOL(4), &ret_path, &path_count);
-      
+
       free(sourcesArr);
       free(targetsArr);
 
