@@ -101,7 +101,7 @@ Routing functions
   -  :ref:`pgr_dijkstra<pgr_dijkstra>` - Shortest Path Dijkstra
   -  :ref:`pgr_driving_distance<pgr_driving_distance>` - Driving Distance
   -  :ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path Dijkstra
-  -  :ref:`pgr_ksp<ksp>` - K-Shortest Path
+  -  :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
   -  :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
   -  :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
 

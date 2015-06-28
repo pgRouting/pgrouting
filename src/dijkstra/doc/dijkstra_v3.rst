@@ -27,7 +27,7 @@ Synopsis
 
 Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956. It is a graph search algorithm that solves the single-source shortest path problem for a graph with non-negative edge path costs, producing a shortest path tree.
 
-The minimal signature:
+The minimal use signature:
 
 .. code-block:: sql
 
@@ -40,7 +40,7 @@ Dijkstra 1 to 1:
 
 	SET OF (seq, node, edge, cost, tot_cost)
 	    pgr_dijkstra(text sql, bigint start_v, bigint end_v,
-	                           boolean directed:=true);
+	                 boolean directed:=true);
 
 Dijkstra many to 1:
 
@@ -48,7 +48,7 @@ Dijkstra many to 1:
 
 	SET OF (seq, start_v, node, edge, cost, tot_cost)
 	    pgr_dijkstra(text sql, array[ANY_INTEGER] start_v, bigint end_v,
-	                           boolean directed:=true);
+	                 boolean directed:=true);
 
 Dijkstra 1 to many:
 
@@ -56,7 +56,7 @@ Dijkstra 1 to many:
 
 	SET OF (seq, end_v, node, edge, cost, tot_cost)
 	    pgr_dijkstra(text sql, bigint start_v, array[ANY_INTEGER] end_v,
-	                           boolean directed:=true);
+	                 boolean directed:=true);
 
 Dijkstra many to many:
 
@@ -64,7 +64,7 @@ Dijkstra many to many:
 
 	SET OF (seq, start_v, end_v, node, edge, cost, tot_cost)
 	    pgr_dijkstra(text sql, array[ANY_INTEGER] start_v, array[ANY_INTEGER] end_v,
-	                           boolean directed:=true);
+	                 boolean directed:=true);
 
 
 Description of the SQL query
