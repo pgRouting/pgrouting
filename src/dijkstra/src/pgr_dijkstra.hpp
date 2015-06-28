@@ -299,7 +299,8 @@ class Pgr_dijkstra
     class dijkstra_many_goal_visitor
       :public boost::default_dijkstra_visitor {
      public:
-       explicit dijkstra_many_goal_visitor(std::set< V > goals) : m_goals(goals) {}
+       explicit dijkstra_many_goal_visitor(std::set< V > goals)
+                :m_goals(goals) {}
        template <class Graph>
        void examine_vertex(V u, Graph &g) {
          typename std::set< V >::iterator s_it;

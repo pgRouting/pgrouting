@@ -21,13 +21,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./ksp_driver.h"
 
+#include <deque>
+#include <sstream>
+
 extern "C" {
 #include "postgres.h"
 #include "./ksp.h"
 }
-
-#include <deque>
-#include <sstream>
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
@@ -77,7 +77,8 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
         int count(count_tuples(paths));
 
         if (count == 0) {
-            *err_msg = strdup("NOTICE: No path found between Starting and Ending vertices");
+            *err_msg = strdup(
+               "NOTICE: No path found between Starting and Ending vertices");
             (*path_count) = 1;
             *ksp_path = noPathFound3(-1, (*ksp_path));
             return 0;

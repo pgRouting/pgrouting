@@ -19,9 +19,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
 
- 
-#ifndef _KSP_H
-#define _KSP_H
+
+#ifndef SRC_KSP_SRC_KSP_H_
+#define SRC_KSP_SRC_KSP_H_
 
 #define TUPLIMIT 1000
 #define PATH_ALLOC_TOTAL 5
@@ -30,20 +30,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "postgres.h"
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
 
 #include "./../../common/src/pgr_types.h"
 
-int compute(char* sql, int64_t start_vertex, 
-            int64_t end_vertex, int no_paths, 
+int compute(char* sql, int64_t start_vertex,
+            int64_t end_vertex, int no_paths,
             bool has_reverse_cost, bool directedFlag,
-            pgr_path_element3_t **path, int *ksp_path_count) ;
+            pgr_path_element3_t **path, int *ksp_path_count);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // _KSP_H
+#endif  // SRC_KSP_SRC_KSP_H_
