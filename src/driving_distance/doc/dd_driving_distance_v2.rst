@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -12,7 +12,7 @@
 pgr_drivingDistance (V 2.0)
 ===============================================================================
 
-.. index:: 
+.. index::
 	single: pgr_drivingDistance(text,integer,double precision,boolean,boolean)
 	module: driving_distance
 
@@ -71,12 +71,12 @@ Examples
 
 .. code-block:: sql
 
-	SELECT seq, id1 AS node, cost 
+	SELECT seq, id1 AS node, cost
 		FROM pgr_drivingDistance(
 			'SELECT id, source, target, cost FROM edge_table',
 			6, 1.5, false, false
 		);
-         seq | node | cost 
+         seq | node | cost
         -----+------+------
            0 |    3 |    1
            1 |    5 |    1
@@ -89,12 +89,12 @@ Examples
 
 .. code-block:: sql
 
-	SELECT seq, id1 AS node, cost 
+	SELECT seq, id1 AS node, cost
 		FROM pgr_drivingDistance(
 			'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 			7, 1.5, true, true
 		);
-         seq | node | cost 
+         seq | node | cost
         -----+------+------
            0 |    5 |    1
            1 |    6 |    0

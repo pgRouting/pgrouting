@@ -21,8 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
 
-#ifndef SRC_DIJKSTRA_SRC_DIJKSTRA_DRIVER_H_
-#define SRC_DIJKSTRA_SRC_DIJKSTRA_DRIVER_H_
+#ifndef SRC_DRIVING_DISTANCE_SRC_BOOST_INTERFACE_DRIVEDIST_H_
+#define SRC_DRIVING_DISTANCE_SRC_BOOST_INTERFACE_DRIVEDIST_H_
 
 #include "./../../common/src/pgr_types.h"
 
@@ -48,4 +48,4 @@ int  do_pgr_driving_distance(pgr_edge_t  * edges, int64_t total_tuples,
 }
 #endif
 
-#endif  //  SRC_DIJKSTRA_SRC_DIJKSTRA_DRIVER_H_
+#endif  //  SRC_DRIVING_DISTANCE_SRC_BOOST_INTERFACE_DRIVEDIST_H_

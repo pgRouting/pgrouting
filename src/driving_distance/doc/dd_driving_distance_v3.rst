@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -12,7 +12,7 @@
 pgr_drivingDistance (V 3.0)
 ===============================================================================
 
-.. index:: 
+.. index::
 	single: pgr_drivingDistance(text, integer, double precision, boolean, boolean)
 	module: driving_distance
 
@@ -47,7 +47,7 @@ Driving Distance from a multiple starting points:
 .. code-block:: sql
 
      SET OF (seq, start_v, node, edge, cost, tot_cost)
-       pgr_drivingDistance(sql text, start_v anyarray, distance float8, 
+       pgr_drivingDistance(sql text, start_v anyarray, distance float8,
          directed boolean default true,
          equicost boolean default false)
 
@@ -97,7 +97,7 @@ Returns set of ``(seq [, start_v], node, edge, cost, tot_cost)``
 
 
 
-Examples for :ref:`fig1-direct-Cost-Reverse` 
+Examples for :ref:`fig1-direct-Cost-Reverse`
 -------------------------------------------------------------------------------
 
 .. code-block:: sql
@@ -106,7 +106,7 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         2, 3
       );
-     seq | node | edge | cost | tot_cost 
+     seq | node | edge | cost | tot_cost
     -----+------+------+------+----------
        0 |    1 |    1 |    1 |        1
        1 |    2 |   -1 |    0 |        0
@@ -124,7 +124,7 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         13, 3
       );
-     seq | node | edge | cost | tot_cost 
+     seq | node | edge | cost | tot_cost
     -----+------+------+------+----------
        0 |    2 |    4 |    1 |        3
        1 |    5 |   10 |    1 |        2
@@ -140,7 +140,7 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3
       );
-     seq | start_v | node | edge | cost | tot_cost 
+     seq | start_v | node | edge | cost | tot_cost
     -----+---------+------+------+------+----------
        0 |       2 |    1 |    1 |    1 |        1
        1 |       2 |    2 |   -1 |    0 |        0
@@ -166,7 +166,7 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3, equicost:=true
       );
-     seq | start_v | node | edge | cost | tot_cost 
+     seq | start_v | node | edge | cost | tot_cost
     -----+---------+------+------+------+----------
        0 |       2 |    1 |    1 |    1 |        1
        1 |       2 |    2 |   -1 |    0 |        0
@@ -183,7 +183,7 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
 
 
 
-Examples for :ref:`fig2-undirect-Cost-Reverse` 
+Examples for :ref:`fig2-undirect-Cost-Reverse`
 -------------------------------------------------------------------------------
 
 .. code-block:: sql
@@ -192,7 +192,7 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         2, 3, false
       );
-     seq | node | edge | cost | tot_cost 
+     seq | node | edge | cost | tot_cost
     -----+------+------+------+----------
        0 |    1 |    1 |    1 |        1
        1 |    2 |   -1 |    0 |        0
@@ -212,7 +212,7 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         13, 3, false
       );
-     seq | node | edge | cost | tot_cost 
+     seq | node | edge | cost | tot_cost
     -----+------+------+------+----------
        0 |    2 |    4 |    1 |        3
        1 |    5 |   10 |    1 |        2
@@ -228,7 +228,7 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3, false
       );
-     seq | start_v | node | edge | cost | tot_cost 
+     seq | start_v | node | edge | cost | tot_cost
     -----+---------+------+------+------+----------
        0 |       2 |    1 |    1 |    1 |        1
        1 |       2 |    2 |   -1 |    0 |        0
@@ -256,7 +256,7 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3, false, equicost:=true
       );
-     seq | start_v | node | edge | cost | tot_cost 
+     seq | start_v | node | edge | cost | tot_cost
     -----+---------+------+------+------+----------
        0 |       2 |    1 |    1 |    1 |        1
        1 |       2 |    2 |   -1 |    0 |        0
@@ -272,11 +272,11 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
       11 |      13 |   13 |   -1 |    0 |        0
       12 |      13 |   12 |   13 |    1 |        3
     (13 rows)
-    
 
 
 
-Examples for :ref:`fig3-direct-Cost` 
+
+Examples for :ref:`fig3-direct-Cost`
 -------------------------------------------------------------------------------
 
 .. code-block:: sql
@@ -285,7 +285,7 @@ Examples for :ref:`fig3-direct-Cost`
         'SELECT id, source, target, cost FROM edge_table',
         2, 3
       );
-     seq | node | edge | cost | tot_cost 
+     seq | node | edge | cost | tot_cost
     -----+------+------+------+----------
        0 |    2 |   -1 |    0 |        0
        1 |    5 |    4 |    1 |        1
@@ -300,16 +300,16 @@ Examples for :ref:`fig3-direct-Cost`
         'SELECT id, source, target, cost FROM edge_table',
         13, 3
       );
-     seq | node | edge | cost | tot_cost 
+     seq | node | edge | cost | tot_cost
     -----+------+------+------+----------
        0 |   13 |   -1 |    0 |        0
     (1 row)
-    
+
     SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         array[2,13], 3
       );
-     seq | start_v | node | edge | cost | tot_cost 
+     seq | start_v | node | edge | cost | tot_cost
     -----+---------+------+------+------+----------
        0 |       2 |    2 |   -1 |    0 |        0
        1 |       2 |    5 |    4 |    1 |        1
@@ -320,12 +320,12 @@ Examples for :ref:`fig3-direct-Cost`
        6 |       2 |    9 |    9 |    1 |        3
        7 |      13 |   13 |   -1 |    0 |        0
     (8 rows)
-    
+
     SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         array[2,13], 3, equicost:=true
       );
-     seq | start_v | node | edge | cost | tot_cost 
+     seq | start_v | node | edge | cost | tot_cost
     -----+---------+------+------+------+----------
        0 |       2 |    2 |   -1 |    0 |        0
        1 |       2 |    5 |    4 |    1 |        1
@@ -338,7 +338,7 @@ Examples for :ref:`fig3-direct-Cost`
 
 
 
-Examples for :ref:`fig4-undirect-Cost` 
+Examples for :ref:`fig4-undirect-Cost`
 -------------------------------------------------------------------------------
 
 .. code-block:: sql
@@ -347,7 +347,7 @@ Examples for :ref:`fig4-undirect-Cost`
         'SELECT id, source, target, cost FROM edge_table',
         2, 3, false
       );
-     seq | node | edge | cost | tot_cost 
+     seq | node | edge | cost | tot_cost
     -----+------+------+------+----------
        0 |    1 |    1 |    1 |        1
        1 |    2 |   -1 |    0 |        0
@@ -366,7 +366,7 @@ Examples for :ref:`fig4-undirect-Cost`
         'SELECT id, source, target, cost FROM edge_table',
         13, 3, false
       );
-     seq | node | edge | cost | tot_cost 
+     seq | node | edge | cost | tot_cost
     -----+------+------+------+----------
        0 |    2 |    4 |    1 |        3
        1 |    5 |   10 |    1 |        2
@@ -382,7 +382,7 @@ Examples for :ref:`fig4-undirect-Cost`
         'SELECT id, source, target, cost FROM edge_table',
         array[2,13], 3, false
       );
-     seq | start_v | node | edge | cost | tot_cost 
+     seq | start_v | node | edge | cost | tot_cost
     -----+---------+------+------+------+----------
        0 |       2 |    1 |    1 |    1 |        1
        1 |       2 |    2 |   -1 |    0 |        0
@@ -409,7 +409,7 @@ Examples for :ref:`fig4-undirect-Cost`
         'SELECT id, source, target, cost FROM edge_table',
         array[2,13], 3, false, equicost:=true
       );
-     seq | start_v | node | edge | cost | tot_cost 
+     seq | start_v | node | edge | cost | tot_cost
     -----+---------+------+------+------+----------
        0 |       2 |    1 |    1 |    1 |        1
        1 |       2 |    2 |   -1 |    0 |        0

@@ -21,6 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./boost_interface_drivedist.h"
 #include <sstream>
+#include <deque>
+#include <vector>
 
 extern "C" {
 #include "postgres.h"
@@ -35,7 +37,7 @@ extern "C" {
 
 
 int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
-                       int64_t  *start_vertex, int s_len, 
+                       int64_t  *start_vertex, int s_len,
                        float8 distance,
                        bool directedFlag,
                        bool equiCostFlag,
@@ -44,7 +46,7 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
     try {
         // in c code this should this must have been checked:
         //  1) end_vertex is in the data_edges
-        
+
         #if 0  // set to 1 if needed
         std::ostringstream log;
         #endif
@@ -62,7 +64,7 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
 
         Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
         Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
-        
+
         std::vector< int64_t > start_vertices(start_vertex, start_vertex + s_len);
 
         if (directedFlag) {
@@ -73,7 +75,7 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
             undigraph.dijkstra_dd(paths, start_vertices, distance);
         }
 
-        
+
         if (equiCostFlag == false) {
             int count(count_tuples(paths));
             if (count == 0) {
@@ -88,7 +90,7 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
             // assert (count == trueCount);
 
         } else {
-            Path path = equi_cost(paths); 
+            Path path = equi_cost(paths);
             size_t count(path.size());
             if (count == 0) {
               *err_msg = strdup("NOTICE: No return values was found");
@@ -101,9 +103,8 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
             path.dpPrint(ret_path, trueCount);
             *path_count = count;
             // assert (count == trueCount);
-            
         }
-        
+
       #if 1
         *err_msg = strdup("OK");
         #else
@@ -183,7 +184,7 @@ int  do_pgr_driving_distance(pgr_edge_t  *data_edges, int64_t total_tuples,
         #else
         *err_msg = strdup(log.str().c_str());
         #endif
-        
+
         return EXIT_SUCCESS;
     } catch ( ... ) {
      *err_msg = strdup("Caught unknown expection!");

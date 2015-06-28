@@ -61,12 +61,11 @@ static int driving_many_to_dist_driver(
   SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost, -1, -1);
 
   if (SPIcode == -1) {
-    
     return SPIcode;
-  } 
+  }
 
   ret = do_pgr_driving_many_to_dist(edges, total_tuples,
-                        start_vertex, num, distance, 
+                        start_vertex, num, distance,
                         directed, equicost,
                         path, path_count, &err_msg);
 
@@ -122,17 +121,17 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
 
       sourcesArr = (int64_t*) pgr_get_bigIntArray(&num, PG_GETARG_ARRAYTYPE_P(1));
       PGR_DBG("sourcesArr size %d ", num);
-      
+
       PGR_DBG("Calling driving_many_to_dist_driver");
       ret = driving_many_to_dist_driver(
                pgr_text2char(PG_GETARG_TEXT_P(0)),  // sql
-               sourcesArr, num, 		    // array of sources
+               sourcesArr, num,                     // array of sources
                PG_GETARG_FLOAT8(2),                 // distance
-               PG_GETARG_BOOL(3),		    // directed
+               PG_GETARG_BOOL(3),                   // directed
                PG_GETARG_BOOL(4),                   // equicost
                PG_GETARG_BOOL(5),                   // has_rcost
                &ret_path, &path_count);
-      
+
       free(sourcesArr);
 
       /* total number of tuples to be returned */

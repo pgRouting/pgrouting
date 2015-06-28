@@ -1,4 +1,4 @@
-ADD_LIBRARY(driving_distance OBJECT 
+ADD_LIBRARY(driving_distance OBJECT
     alpha.c
     alpha_drivedist.cpp
 
