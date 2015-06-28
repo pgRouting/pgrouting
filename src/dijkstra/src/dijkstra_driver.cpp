@@ -156,7 +156,7 @@ int  do_pgr_dijkstra_many_to_1(pgr_edge_t *data_edges, int64_t total_tuples,
       *err_msg = strdup(
         "NOTICE: No paths found between any of the starting vertices and the Ending vertex");
       (*path_count) = 1;
-      *ret_path = noPathFound3(end_vertex, (*ret_path));
+      *ret_path = noPathFound3(-1, (*ret_path));
       return 0;
     }
 
@@ -229,7 +229,7 @@ int do_pgr_dijkstra_1_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
       *err_msg = strdup(
         "NOTICE: No paths found between Starting and any of the Ending vertices");
       (*path_count) = 1;
-      *ret_path = noPathFound3(start_vertex, (*ret_path));
+      *ret_path = noPathFound3(-1, (*ret_path));
       return 0;
     }
 
@@ -302,7 +302,7 @@ int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
       *err_msg = strdup(
         "NOTICE: No path found between Starting and Ending vertices");
       (*path_count) = 1;
-      *ret_path = noPathFound3(start_vertex, (*ret_path));
+      *ret_path = noPathFound3(-1, (*ret_path));
       return 0;
     }
 

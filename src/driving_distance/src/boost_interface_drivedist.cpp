@@ -73,18 +73,15 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
             undigraph.dijkstra_dd(paths, start_vertices, distance);
         }
 
-
-        if (paths.size() == 0) {
-            *err_msg = strdup(
-                "NOTICE: No return values was found");
-            (*path_count) = 1;
-            *ret_path = noPathFound3(-1, (*ret_path));
-            return 0;
-        }
-        
         
         if (equiCostFlag == false) {
             int count(count_tuples(paths));
+            if (count == 0) {
+              *err_msg = strdup("NOTICE: No return values was found");
+              (*path_count) = 1;
+              *ret_path = noPathFound3(-1, (*ret_path));
+              return 0;
+            }
             *ret_path = pgr_get_memory3(count, (*ret_path));
             int trueCount(collapse_paths(ret_path, paths));
             *path_count = count;
@@ -93,6 +90,12 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
         } else {
             Path path = equi_cost(paths); 
             size_t count(path.size());
+            if (count == 0) {
+              *err_msg = strdup("NOTICE: No return values was found");
+              (*path_count) = 1;
+              *ret_path = noPathFound3(-1, (*ret_path));
+              return 0;
+            }
             int trueCount = 0;
             *ret_path = pgr_get_memory3(count, (*ret_path));
             path.dpPrint(ret_path, trueCount);
@@ -157,7 +160,7 @@ int  do_pgr_driving_distance(pgr_edge_t  *data_edges, int64_t total_tuples,
             *err_msg = strdup(
                 "NOTICE: No driving distance node found");
             (*path_count) = 1;
-            *ret_path = noPathFound3(start_vertex, (*ret_path));
+            *ret_path = noPathFound3(-1, (*ret_path));
             return 0;
         }
 

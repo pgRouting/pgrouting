@@ -114,7 +114,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source bigint, target anyarray
   has_rcost boolean;
   BEGIN
       has_rcost =_pgr_parameter_check('dijkstra', sql, true);
-      return query SELECT * -- seq, id1, id2, cost
+      return query SELECT *
          FROM _pgr_dijkstra(sql, source, target, directed, has_rcost);
   END
   $BODY$
@@ -132,7 +132,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source anyarray, target bigint
   has_rcost boolean;
   BEGIN
       has_rcost =_pgr_parameter_check('dijkstra', sql, true);
-      return query SELECT * -- seq, id1, id2, cost
+      return query SELECT * 
          FROM _pgr_dijkstra(sql, source, target, directed, has_rcost);
   END
   $BODY$
@@ -150,7 +150,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source anyarray, target anyarr
   has_rcost boolean;
   BEGIN
       has_rcost =_pgr_parameter_check('dijkstra', sql, true);
-      return query SELECT * -- seq, id1, id2, cost
+      return query SELECT * 
          FROM _pgr_dijkstra(sql, source, target, directed, has_rcost);
   END
   $BODY$

@@ -101,7 +101,7 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
             *err_msg = strdup(log.str().c_str());
             return -1;
         }
-        #if 0
+        #if 1
         *err_msg = strdup("OK");
         #else
         *err_msg = strdup(log.str().c_str());
