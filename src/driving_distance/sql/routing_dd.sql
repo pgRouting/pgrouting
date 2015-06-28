@@ -27,14 +27,14 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id integer, dist
     AS '$libdir/librouting_dd', 'driving_distance'
     LANGUAGE c IMMUTABLE STRICT;
 */
-CREATE OR REPLACE FUNCTION _pgr_drivingDistance(sql text, source bigint, distance float8, directed boolean, has_rcost boolean,
+CREATE OR REPLACE FUNCTION _pgr_drivingDistance(sql text, start_v bigint, distance float8, directed boolean, has_rcost boolean,
        OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
   RETURNS SETOF RECORD AS
      '$libdir/librouting-2.1', 'driving_distance'
  LANGUAGE c IMMUTABLE STRICT;
 
-CREATE OR REPLACE FUNCTION _pgr_drivingDistance(sql text, source anyarray, distance float8, directed boolean, equicost boolean, has_rcost boolean,
-       OUT seq integer, OUT from_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+CREATE OR REPLACE FUNCTION _pgr_drivingDistance(sql text, start_v anyarray, distance float8, directed boolean, equicost boolean, has_rcost boolean,
+       OUT seq integer, OUT start_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
   RETURNS SETOF RECORD AS
      '$libdir/librouting-2.1', 'driving_many_to_dist'
  LANGUAGE c IMMUTABLE STRICT;
@@ -65,7 +65,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance
   ROWS 1000;
 
 
-CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance float8,
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, start_v bigint, distance float8,
        OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
@@ -74,7 +74,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance
   BEGIN
       has_rcost =_pgr_parameter_check('driving', sql, true);
       return query SELECT *
-                FROM _pgr_drivingDistance(sql, source, distance, true, has_rcost);
+                FROM _pgr_drivingDistance(sql, start_v, distance, true, has_rcost);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE
@@ -82,7 +82,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance
   ROWS 1000;
 
 
-CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance float8, directed boolean,
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, start_v bigint, distance float8, directed boolean,
        OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
@@ -91,14 +91,14 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance
   BEGIN
       has_rcost =_pgr_parameter_check('driving', sql, true);
       return query SELECT *
-                FROM _pgr_drivingDistance(sql, source, distance, directed, has_rcost);
+                FROM _pgr_drivingDistance(sql, start_v, distance, directed, has_rcost);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100
   ROWS 1000;
 
-CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source anyarray, distance float8, directed boolean default true, equicost boolean default false,
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, start_v anyarray, distance float8, directed boolean default true, equicost boolean default false,
        OUT seq integer, OUT from_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
@@ -107,7 +107,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source anyarray, distan
   BEGIN
       has_rcost =_pgr_parameter_check('driving', sql, true);
       return query SELECT *
-                FROM _pgr_drivingDistance(sql, source, distance, directed, equicost, has_rcost);
+                FROM _pgr_drivingDistance(sql, start_v, distance, directed, equicost, has_rcost);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE

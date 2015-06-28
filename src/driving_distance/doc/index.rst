@@ -24,6 +24,16 @@ Version 3.x
 
   - :ref:`pgr_driving_distance<pgr_driving_distance_v3>` - Driving Distance 
 
+
+.. _pgr_driving_distance_post:
+
+Driving Distance post-processing 
+===============================================================================
+
+  -  :ref:`pgr_alphaShape` - Alpha shape computation
+  -  :ref:`pgr_points_as_polygon` - Polygon around set of points
+
+
 .. toctree::
 	:hidden:
 

@@ -76,7 +76,7 @@ Data Types
    ../src/common/doc/types/index
 
 *******************************************************************************
-Functions reference
+Topology functions
 *******************************************************************************
 
 :ref:`topology_functions`  
@@ -87,6 +87,10 @@ Functions reference
   -  :ref:`pgr_analyze_oneway` - to analyze directionality of the edges.
   -  :ref:`pgr_node_network`  -to create nodes to a not noded edge table.
  
+*******************************************************************************
+Routing functions
+*******************************************************************************
+
 :ref:`routing_functions`  
 
   -  :ref:`pgr_apspJohnson <pgr_apsp_johnson>`- All Pairs Shortest Path, Johnson’s Algorithm
@@ -95,22 +99,57 @@ Functions reference
   -  :ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
   -  :ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path
   -  :ref:`pgr_dijkstra<pgr_dijkstra>` - Shortest Path Dijkstra
+  -  :ref:`pgr_driving_distance<pgr_driving_distance>` - Driving Distance
   -  :ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path Dijkstra
   -  :ref:`pgr_ksp<ksp>` - K-Shortest Path
-  -  :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
   -  :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
-  -  :ref:`pgr_driving_distance<pgr_driving_distance>` - Driving Distance
+  -  :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
+
+*******************************************************************************
+Pre processing or post processing helping functions
+*******************************************************************************
+
+:ref:`pgr_driving_distance_post`
+
   -  :ref:`pgr_alphaShape` - Alpha shape computation
   -  :ref:`pgr_points_as_polygon` - Polygon around set of points
 
 :ref:`convenience_functions`
+
   -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
   -  :ref:`pgr_flip_edges` - flip the edges in an array of geometries so the connect end to end.
   -  :ref:`pgr_text_to_points` - convert a string of ``x,y;x,y;...`` locations into point geometries.
   -  :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
-  - :ref:`pgr_points_to_dmatrix` - Create a distance matrix from an array of points.
-  - :ref:`pgr_vids_to_dmatrix` - Create a distance matrix from an array of ``vertix_id``.
-  - :ref:`pgr_vids_to_dmatrix2` - Create a distance matrix from an array of ``vertix_id``.
+  -  :ref:`pgr_points_to_dmatrix` - Create a distance matrix from an array of points.
+  -  :ref:`pgr_vids_to_dmatrix` - Create a distance matrix from an array of ``vertix_id``.
+  -  :ref:`pgr_vids_to_dmatrix2` - Create a distance matrix from an array of ``vertix_id``.
+
+
+*******************************************************************************
+Unsupported functions
+*******************************************************************************
+
+.. toctree::
+	:hidden:
+
+	../src/common/doc/functions/index
+	../src/index
+	../src/common/doc/convenience/index
+	../src/common/doc/utilities/index
+
+
+.. toctree::
+	:maxdepth: 1
+
+	../src/common/doc/legacy
+	src/developer/discontinued
+
+
+*******************************************************************************
+Developer
+*******************************************************************************
+
+.. warning:: :ref:`developer_functions` documentation is going to be deleted from the pgRouting documentation and included in the doxygen documentation.
 
 :ref:`developer_functions`  
   -  :ref:`pgr_get_column_name` - to get the name of the column as is stored in the postgres administration tables.
@@ -123,25 +162,6 @@ Functions reference
   -  :ref:`pgr_versionless` - to compare two version numbers.
   -  :ref:`pgr_start_point` - to get the start point of a (multi)linestring.
   -  :ref:`pgr_end_point` - to get the end point of a (multi)linestring.
-
-.. toctree::
-	:hidden:
-
-	../src/common/doc/functions/index
-	../src/index
-	../src/common/doc/convenience/index
-	../src/common/doc/utilities/index
-
-.. toctree::
-	:maxdepth: 1
-
-	../src/common/doc/legacy
-	src/developer/discontinued
-
-
-*******************************************************************************
-Developer
-*******************************************************************************
 
 .. toctree::
     :maxdepth: 2

@@ -21,6 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define DEBUG
 #include "./dijkstra_driver.h"
 #include <sstream>
+#include <deque>
+#include <vector>
 
 extern "C" {
 #include "postgres.h"
@@ -31,66 +33,66 @@ extern "C" {
 #include "./../../common/src/postgres_connection.h"
 #include "./pgr_dijkstra.hpp"
 
-int  do_pgr_dijkstra_many_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
-                       int64_t  *start_vertex, int s_len, int64_t  *end_vertex, int e_len,
-                       bool has_reverse_cost, bool directedFlag,
-                       pgr_path_element3_t **ret_path, int *path_count,
-                       char ** err_msg) {
-    try {
-        // in c code this should this must have been checked:
-        //  1) cant check anything
-        
-        graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const int initial_size = 1;
+int do_pgr_dijkstra_many_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
+    int64_t  *start_vertex, int s_len, int64_t  *end_vertex, int e_len,
+    bool has_reverse_cost, bool directedFlag,
+    pgr_path_element3_t **ret_path, int *path_count,
+    char ** err_msg) {
+  try {
+    // in c code this should this must have been checked:
+    //  1) cant check anything
 
-        std::deque< Path >paths;
-        typedef boost::adjacency_list < boost::vecS, boost::vecS,
-            boost::undirectedS,
-            boost_vertex_t, boost_edge_t > UndirectedGraph;
-        typedef boost::adjacency_list < boost::vecS, boost::vecS,
-            boost::bidirectionalS,
-            boost_vertex_t, boost_edge_t > DirectedGraph;
+    graphType gType = directedFlag? DIRECTED: UNDIRECTED;
+    const int initial_size = 1;
 
-        Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
-        Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
-        
-        std::vector< int64_t > start_vertices(start_vertex, start_vertex + s_len);
-        std::vector< int64_t > end_vertices(end_vertex, end_vertex + e_len);
+    std::deque< Path >paths;
+    typedef boost::adjacency_list < boost::vecS, boost::vecS,
+      boost::undirectedS,
+      boost_vertex_t, boost_edge_t > UndirectedGraph;
+    typedef boost::adjacency_list < boost::vecS, boost::vecS,
+      boost::bidirectionalS,
+      boost_vertex_t, boost_edge_t > DirectedGraph;
 
-        if (directedFlag) {
-            digraph.initialize_graph(data_edges, total_tuples);
-            digraph.dijkstra(paths, start_vertices, end_vertices);
-        } else {
-            undigraph.initialize_graph(data_edges, total_tuples);
-            undigraph.dijkstra(paths, start_vertices, end_vertices);
-        }
+    Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
+    Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
 
+    std::vector< int64_t > start_vertices(start_vertex, start_vertex + s_len);
+    std::vector< int64_t > end_vertices(end_vertex, end_vertex + e_len);
 
-        if (paths.size() == 0) {
-            *err_msg = strdup(
-                "NOTICE: No paths found between any of the starting vertices and any of the Ending vertices");
-            (*path_count) = 1;
-            *ret_path = noPathFound3(-1,(*ret_path));
-            return 0;
-        }
-        
-        int count(count_tuples(paths));
-        
-        *ret_path = pgr_get_memory3(count, (*ret_path));
-        int sequence(collapse_paths(ret_path, paths));
-
-        
-      #if 1
-        *err_msg = strdup("OK");
-        #else
-        *err_msg = strdup(log.str().c_str());
-        #endif
-        *path_count = count;
-        return EXIT_SUCCESS;
-    } catch ( ... ) {
-     *err_msg = strdup("Caught unknown expection!");
-     return -1;
+    if (directedFlag) {
+      digraph.initialize_graph(data_edges, total_tuples);
+      digraph.dijkstra(paths, start_vertices, end_vertices);
+    } else {
+      undigraph.initialize_graph(data_edges, total_tuples);
+      undigraph.dijkstra(paths, start_vertices, end_vertices);
     }
+
+
+    if (paths.size() == 0) {
+      *err_msg = strdup(
+        "NOTICE: No paths found between any of the starting vertices and any of the Ending vertices");
+      (*path_count) = 1;
+      *ret_path = noPathFound3(-1, (*ret_path));
+      return 0;
+    }
+
+    int count(count_tuples(paths));
+
+    *ret_path = pgr_get_memory3(count, (*ret_path));
+    int sequence(collapse_paths(ret_path, paths));
+
+
+#if 1
+    *err_msg = strdup("OK");
+#else
+    *err_msg = strdup(log.str().c_str());
+#endif
+    *path_count = count;
+    return EXIT_SUCCESS;
+  } catch ( ... ) {
+    *err_msg = strdup("Caught unknown expection!");
+    return -1;
+  }
 }
 
 
@@ -110,69 +112,69 @@ int  do_pgr_dijkstra_many_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
 
 
 
-int  do_pgr_dijkstra_many_to_1(pgr_edge_t  *data_edges, int64_t total_tuples,
-                       int64_t  *start_vertex, int s_len, int64_t  end_vertex, 
-                       bool has_reverse_cost, bool directedFlag,
-                       pgr_path_element3_t **ret_path, int *path_count,
-                       char ** err_msg) {
-    try {
-        // in c code this should this must have been checked:
-        //  1) end_vertex is in the data_edges
-        
-        #if 0  // set to 1 if needed
-        std::ostringstream log;
-        #endif
+int  do_pgr_dijkstra_many_to_1(pgr_edge_t *data_edges, int64_t total_tuples,
+    int64_t *start_vertex, int s_len, int64_t end_vertex,
+    bool has_reverse_cost, bool directedFlag,
+    pgr_path_element3_t **ret_path, int *path_count,
+    char **err_msg) {
+  try {
+    // in c code this should this must have been checked:
+    //  1) end_vertex is in the data_edges
 
-        graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const int initial_size = 1;
+    #if 0  // set to 1 if needed
+    std::ostringstream log;
+    #endif
 
-        std::deque< Path >paths;
-        typedef boost::adjacency_list < boost::vecS, boost::vecS,
-            boost::undirectedS,
-            boost_vertex_t, boost_edge_t > UndirectedGraph;
-        typedef boost::adjacency_list < boost::vecS, boost::vecS,
-            boost::bidirectionalS,
-            boost_vertex_t, boost_edge_t > DirectedGraph;
+    graphType gType = directedFlag? DIRECTED: UNDIRECTED;
+    const int initial_size = 1;
 
-        Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
-        Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
-        
-        std::vector< int64_t > start_vertices(start_vertex, start_vertex + s_len);
+    std::deque< Path >paths;
+    typedef boost::adjacency_list < boost::vecS, boost::vecS,
+      boost::undirectedS,
+      boost_vertex_t, boost_edge_t > UndirectedGraph;
+    typedef boost::adjacency_list < boost::vecS, boost::vecS,
+      boost::bidirectionalS,
+      boost_vertex_t, boost_edge_t > DirectedGraph;
 
-        if (directedFlag) {
-            digraph.initialize_graph(data_edges, total_tuples);
-            digraph.dijkstra(paths, start_vertices, end_vertex);
-        } else {
-            undigraph.initialize_graph(data_edges, total_tuples);
-            undigraph.dijkstra(paths, start_vertices, end_vertex);
-        }
+    Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
+    Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
 
+    std::vector< int64_t > start_vertices(start_vertex, start_vertex + s_len);
 
-        if (paths.size() == 0) {
-            *err_msg = strdup(
-                "NOTICE: No paths found between any of the starting vertices and the Ending vertex");
-            (*path_count) = 1;
-            *ret_path = noPathFound3(end_vertex,(*ret_path));
-            return 0;
-        }
-        
-        int count(count_tuples(paths));
-        
-        *ret_path = pgr_get_memory3(count, (*ret_path));
-        int sequence(collapse_paths(ret_path, paths));
-
-        
-      #if 1
-        *err_msg = strdup("OK");
-        #else
-        *err_msg = strdup(log.str().c_str());
-        #endif
-        *path_count = count;
-        return EXIT_SUCCESS;
-    } catch ( ... ) {
-     *err_msg = strdup("Caught unknown expection!");
-     return -1;
+    if (directedFlag) {
+      digraph.initialize_graph(data_edges, total_tuples);
+      digraph.dijkstra(paths, start_vertices, end_vertex);
+    } else {
+      undigraph.initialize_graph(data_edges, total_tuples);
+      undigraph.dijkstra(paths, start_vertices, end_vertex);
     }
+
+
+    if (paths.size() == 0) {
+      *err_msg = strdup(
+        "NOTICE: No paths found between any of the starting vertices and the Ending vertex");
+      (*path_count) = 1;
+      *ret_path = noPathFound3(end_vertex, (*ret_path));
+      return 0;
+    }
+
+    int count(count_tuples(paths));
+
+    *ret_path = pgr_get_memory3(count, (*ret_path));
+    int sequence(collapse_paths(ret_path, paths));
+
+
+    #if 1
+    *err_msg = strdup("OK");
+    #else
+    *err_msg = strdup(log.str().c_str());
+    #endif
+    *path_count = count;
+    return EXIT_SUCCESS;
+  } catch ( ... ) {
+    *err_msg = strdup("Caught unknown expection!");
+    return -1;
+  }
 }
 
 
@@ -186,66 +188,66 @@ int  do_pgr_dijkstra_many_to_1(pgr_edge_t  *data_edges, int64_t total_tuples,
 
 
 
-int  do_pgr_dijkstra_1_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
-                       int64_t  start_vertex, int64_t  *end_vertex, int e_len,
-                       bool has_reverse_cost, bool directedFlag,
-                       pgr_path_element3_t **ret_path, int *path_count,
-                       char ** err_msg) {
-    try {
-        // in c code this should this must have been checked:
-        //  1) start_vertex is in the data_edges
+int do_pgr_dijkstra_1_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
+    int64_t start_vertex, int64_t *end_vertex, int e_len,
+    bool has_reverse_cost, bool directedFlag,
+    pgr_path_element3_t **ret_path, int *path_count,
+    char **err_msg) {
+  try {
+    // in c code this should this must have been checked:
+    //  1) start_vertex is in the data_edges
 
-        graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const int initial_size = 1;
+    graphType gType = directedFlag? DIRECTED: UNDIRECTED;
+    const int initial_size = 1;
 
-        std::deque< Path >paths;
-        typedef boost::adjacency_list < boost::vecS, boost::vecS,
-            boost::undirectedS,
-            boost_vertex_t, boost_edge_t > UndirectedGraph;
-        typedef boost::adjacency_list < boost::vecS, boost::vecS,
-            boost::bidirectionalS,
-            boost_vertex_t, boost_edge_t > DirectedGraph;
+    std::deque< Path >paths;
+    typedef boost::adjacency_list < boost::vecS, boost::vecS,
+      boost::undirectedS,
+      boost_vertex_t, boost_edge_t > UndirectedGraph;
+    typedef boost::adjacency_list < boost::vecS, boost::vecS,
+      boost::bidirectionalS,
+      boost_vertex_t, boost_edge_t > DirectedGraph;
 
-        Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
-        Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
+    Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
+    Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
 
 
-        std::vector< int64_t > end_vertices(end_vertex, end_vertex + e_len);
+    std::vector< int64_t > end_vertices(end_vertex, end_vertex + e_len);
 
-        if (directedFlag) {
-            digraph.initialize_graph(data_edges, total_tuples);
-            digraph.dijkstra(paths, start_vertex, end_vertices);
-        } else {
-            undigraph.initialize_graph(data_edges, total_tuples);
-            undigraph.dijkstra(paths, start_vertex, end_vertices);
-        }
-
-        if (paths.size() == 0) {
-            *err_msg = strdup(
-                "NOTICE: No paths found between Starting and any of the Ending vertices");
-            (*path_count) = 0;
-            *ret_path = noPathFound3(start_vertex,(*ret_path));
-            return -1;
-        }
-
-        int count(count_tuples(paths));
-
-        // get the space required to store all the paths
-        *ret_path = pgr_get_memory3(count, (*ret_path));
-        int sequence(collapse_paths(ret_path, paths));
-      
-        #if 1
-            *err_msg = strdup("OK");
-        #else
-            *err_msg = strdup(log.str().c_str());
-        #endif
-
-        *path_count = count;
-        return EXIT_SUCCESS;
-    } catch ( ... ) {
-     *err_msg = strdup("Caught unknown expection!");
-     return -1;
+    if (directedFlag) {
+      digraph.initialize_graph(data_edges, total_tuples);
+      digraph.dijkstra(paths, start_vertex, end_vertices);
+    } else {
+      undigraph.initialize_graph(data_edges, total_tuples);
+      undigraph.dijkstra(paths, start_vertex, end_vertices);
     }
+
+    if (paths.size() == 0) {
+      *err_msg = strdup(
+        "NOTICE: No paths found between Starting and any of the Ending vertices");
+      (*path_count) = 0;
+      *ret_path = noPathFound3(start_vertex, (*ret_path));
+      return -1;
+    }
+
+    int count(count_tuples(paths));
+
+    // get the space required to store all the paths
+    *ret_path = pgr_get_memory3(count, (*ret_path));
+    int sequence(collapse_paths(ret_path, paths));
+
+    #if 1
+      *err_msg = strdup("OK");
+    #else
+      *err_msg = strdup(log.str().c_str());
+    #endif
+
+    *path_count = count;
+    return EXIT_SUCCESS;
+  } catch ( ... ) {
+    *err_msg = strdup("Caught unknown expection!");
+    return -1;
+  }
 }
 
 
@@ -259,80 +261,80 @@ int  do_pgr_dijkstra_1_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
 
 
 int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
-                       int64_t  start_vertex, int64_t  end_vertex,
-                       bool has_reverse_cost, bool directedFlag,
-                       pgr_path_element3_t **ret_path, int *path_count,
-                       char ** err_msg) {
-    try {
-        // in c code this should have been checked:
-        //  1) start_vertex is in the data_edges  DONE
-        //  2) end_vertex is in the data_edges    DONE
-        //  3) start and end_vertex are different DONE
-        
-
-        graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const int initial_size = 1;
-
-        Path paths;
-        typedef boost::adjacency_list < boost::vecS, boost::vecS,
-            boost::undirectedS,
-            boost_vertex_t, boost_edge_t > UndirectedGraph;
-        typedef boost::adjacency_list < boost::vecS, boost::vecS,
-            boost::bidirectionalS,
-            boost_vertex_t, boost_edge_t > DirectedGraph;
-
-        Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
-        Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
-
-        if (directedFlag) {
-            digraph.initialize_graph(data_edges, total_tuples);
-            digraph.dijkstra(paths, start_vertex, end_vertex);
-        } else {
-            undigraph.initialize_graph(data_edges, total_tuples);
-            undigraph.dijkstra(paths, start_vertex, end_vertex);
-        }
-
-        if (paths.path.size() == 0) {
-            *err_msg = strdup(
-                "NOTICE: No path found between Starting and Ending vertices");
-            (*path_count) = 1;
-            *ret_path = noPathFound3(start_vertex, (*ret_path));
-            return 0;
-        }
-
-      
-        int count = paths.path.size();
-        int seq = 0;
+    int64_t  start_vertex, int64_t  end_vertex,
+    bool has_reverse_cost, bool directedFlag,
+    pgr_path_element3_t **ret_path, int *path_count,
+    char **err_msg) {
+  try {
+    // in c code this should have been checked:
+    //  1) start_vertex is in the data_edges  DONE
+    //  2) end_vertex is in the data_edges  DONE
+    //  3) start and end_vertex are different DONE
 
 
-        // get the space required to store all the paths
-        *ret_path = NULL;
-        *ret_path = pgr_get_memory3(count, (*ret_path));
+    graphType gType = directedFlag? DIRECTED: UNDIRECTED;
+    const int initial_size = 1;
 
-        int sequence = 0;
-        paths.dpPrint(ret_path, sequence);
+    Path paths;
+    typedef boost::adjacency_list < boost::vecS, boost::vecS,
+      boost::undirectedS,
+      boost_vertex_t, boost_edge_t > UndirectedGraph;
+    typedef boost::adjacency_list < boost::vecS, boost::vecS,
+      boost::bidirectionalS,
+      boost_vertex_t, boost_edge_t > DirectedGraph;
 
-        #if 1
-        *err_msg = strdup("OK");
-        #else
-        *err_msg = strdup(log.str().c_str());
-        #endif
-        *path_count = count;
-        return EXIT_SUCCESS;
-    } catch ( ... ) {
-     *err_msg = strdup("Caught unknown expection!");
-     return -1;
+    Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
+    Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
+
+    if (directedFlag) {
+      digraph.initialize_graph(data_edges, total_tuples);
+      digraph.dijkstra(paths, start_vertex, end_vertex);
+    } else {
+      undigraph.initialize_graph(data_edges, total_tuples);
+      undigraph.dijkstra(paths, start_vertex, end_vertex);
     }
+
+    if (paths.path.size() == 0) {
+      *err_msg = strdup(
+        "NOTICE: No path found between Starting and Ending vertices");
+      (*path_count) = 1;
+      *ret_path = noPathFound3(start_vertex, (*ret_path));
+      return 0;
+    }
+
+
+    int count = paths.path.size();
+    int seq = 0;
+
+
+    // get the space required to store all the paths
+    *ret_path = NULL;
+    *ret_path = pgr_get_memory3(count, (*ret_path));
+
+    int sequence = 0;
+    paths.dpPrint(ret_path, sequence);
+
+    #if 1
+    *err_msg = strdup("OK");
+    #else
+    *err_msg = strdup(log.str().c_str());
+    #endif
+    *path_count = count;
+    return EXIT_SUCCESS;
+  } catch ( ... ) {
+    *err_msg = strdup("Caught unknown expection!");
+    return -1;
+  }
 }
 
 #if 0  // used for debugging
 std::ostringstream log;
 // move around this lines to force a return with an empty path and the log msg
 // cool for debugging
-if 0        
+if 0
 *err_msg = strdup(log.str().c_str());
 (*path_count) = 1;
-*ret_path = noPathFound3(start_vertex,(*ret_path));
+*ret_path = noPathFound3(start_vertex, (*ret_path));
 return -1;
-#endif        
+#endif
 
