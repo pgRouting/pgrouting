@@ -83,7 +83,7 @@ Examples: Directed
 
          seq | node | edge | cost 
         -----+------+------+------
-           0 |    2 |   -1 |    0
+           0 |   -1 |   -1 |    0
         (1 rows)
 
 
