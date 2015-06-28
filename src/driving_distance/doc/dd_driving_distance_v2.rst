@@ -74,18 +74,16 @@ Examples
 	SELECT seq, id1 AS node, cost 
 		FROM pgr_drivingDistance(
 			'SELECT id, source, target, cost FROM edge_table',
-			7, 1.5, false, false
+			6, 1.5, false, false
 		);
-
-	 seq | node | cost 
-	-----+------+------
-	   0 |    2 |    1
-	   1 |    6 |    1
-	   2 |    7 |    0
-	   3 |    8 |    1
-	   4 |   10 |    1
-	(5 rows)
-
+         seq | node | cost 
+        -----+------+------
+           0 |    3 |    1
+           1 |    5 |    1
+           2 |    6 |    0
+           3 |   11 |    1
+           4 |    9 |    1
+        (5 rows)
 
 * With ``reverse_cost``
 
@@ -96,15 +94,14 @@ Examples
 			'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 			7, 1.5, true, true
 		);
+         seq | node | cost 
+        -----+------+------
+           0 |    5 |    1
+           1 |    6 |    0
+           2 |   11 |    1
+           3 |    9 |    1
+        (4 rows)
 
-	 seq | node | cost 
-	-----+------+------
-	   0 |    2 |    1
-	   1 |    6 |    1
-	   2 |    7 |    0
-	   3 |    8 |    1
-	   4 |   10 |    1
-	(5 rows)
 
 
 The queries use the :ref:`sampledata` network.

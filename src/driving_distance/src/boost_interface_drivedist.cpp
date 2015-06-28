@@ -76,13 +76,11 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
 
         if (paths.size() == 0) {
             *err_msg = strdup(
-                "NOTICE: No paths found between any of the starting vertices and the Ending vertex");
+                "NOTICE: No return values was found");
             (*path_count) = 1;
             *ret_path = noPathFound3(-1, (*ret_path));
             return 0;
         }
-        
-        
         
         
         if (equiCostFlag == false) {
@@ -96,7 +94,8 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
             Path path = equi_cost(paths); 
             size_t count(path.size());
             int trueCount = 0;
-            path.dpPrint(ret_path, trueCount, 0);
+            *ret_path = pgr_get_memory3(count, (*ret_path));
+            path.dpPrint(ret_path, trueCount);
             *path_count = count;
             // assert (count == trueCount);
             

@@ -99,7 +99,5 @@ void process_drivingDistance(G &graph, const std::vector<std::string> &tokens) {
           path.print_path();
         }
       }
-       
-  
 }
 
