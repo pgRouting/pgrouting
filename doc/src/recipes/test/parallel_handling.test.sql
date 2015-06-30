@@ -24,6 +24,7 @@
 -- rubric:: Data
 
 -- code-block:: sql
+set client_min_messages = warning;
 
   drop table if exists parallel;
   CREATE TABLE parallel (

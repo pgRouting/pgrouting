@@ -230,7 +230,8 @@ sub run_test {
         elsif (length($r)) {
             $res{"$dir/$x.test.sql"} = "FAILED: $r";
             $stats{z_fail}++;
-        }
+        } 
+# TODO missing when the result file does not exist
         else {
             $res{"$dir/$x.test.sql"} = "Passed";
             $stats{z_pass}++;
