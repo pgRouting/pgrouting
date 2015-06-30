@@ -23,20 +23,14 @@ Use an issue tracker (see :ref:`support`) with a title containing: *Proposing a 
 
 Any contact with the author will be done using the developers mailing list. The pgRouting team will evaluate the recipe and will be included it in this section when approved.
 
-Comparing topology of a unnoded network with a noded network
--------------------------------------------------------------
+Recipes list
+===============================================================================
 
 
-:Author: pgRouting team.
+.. toctree:: 
+         
+   ./example_recipe.rst
+   ./parallel_handling.rst
 
-This recipe uses the :ref:`sampledata` network.
-
-.. code-block:: sql
-
-	SELECT pgr_createTopology('edge_table', 0.001);
-	SELECT pgr_analyzegraph('edge_table', 0.001);
-	SELECT pgr_nodeNetwork('edge_table', 0.001);
-	SELECT pgr_createTopology('edge_table_noded', 0.001);
-	SELECT pgr_analyzegraph('edge_table_noded', 0.001); 
 
 *No more contributions*

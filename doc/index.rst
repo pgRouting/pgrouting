@@ -47,8 +47,8 @@ Tutorial
   - :ref:`custom_query` that is used in the routing algorithms.
   - :ref:`performance` to improve your performance.
   - :ref:`custom_wrapper` to colaborate with a wrapper.
-  - :ref:`recipes` to colaborate with a recipe.
   - :ref:`sampledata` that is used in the examples of this manual.
+  - :ref:`recipes`
 
 
 
@@ -57,6 +57,7 @@ Tutorial
 
    src/tutorial/index
    src/developer/sampledata
+   src/recipes/index
 
 For a more complete introduction how to build a routing application read the `pgRouting Workshop <http://workshop.pgrouting.org>`_.
 

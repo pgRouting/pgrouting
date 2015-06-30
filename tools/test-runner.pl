@@ -42,7 +42,7 @@ print "RUNNING: test-runner.pl " . join(" ", @ARGV) . "\n";
 
 my ($vpg, $vpgis, $vpgr, $psql);
 my $alg = '';
-my @testpath = ("doc/", "src/");
+my @testpath = ("doc/", "src/", "doc/src/recipes");
 my $clean;
 my $ignore;
 
@@ -63,10 +63,11 @@ while (my $a = shift @ARGV) {
         $alg = shift @ARGV || Usage();
         if ($alg eq 'doc') {
             @testpath = ($alg);
-        }
-        else {
+        } elsif ($alg eq 'recipes') {
+            @testpath = ("doc/src/$alg");
+        } else {
             @testpath = ("src/$alg");
-        }
+        } 
     }
     elsif ($a eq '-psql') {
         $psql = shift @ARGV || Usage();
@@ -187,13 +188,13 @@ sub run_test {
     for my $x (@{$t->{tests}}) {
         print "Processing test: $x\n";
         my $t0 = [gettimeofday];
-        open(TIN, "$dir/$x.test") || do {
-            $res{"$dir/$x.test"} = "FAILED: could not open '$dir/$x.test' : $!";
+        open(TIN, "$dir/$x.test.sql") || do {
+            $res{"$dir/$x.test.sql"} = "FAILED: could not open '$dir/$x.test.sql' : $!";
             $stats{z_fail}++;
             next;
         };
         open(PSQL, "|$psql -U $DBUSER -h $DBHOST -p $DBPORT -A -t -q $DBNAME > $TMP 2>\&1 ") || do {
-            $res{"$dir/$x.test"} = "FAILED: could not open connection to db : $!";
+            $res{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
             $stats{z_fail}++;
             next;
         };
@@ -210,28 +211,28 @@ sub run_test {
             $dfile2 = $TMP2;
             mysystem("grep -v NOTICE '$TMP' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile2");
             $dfile = $TMP3;
-            mysystem("grep -v NOTICE '$dir/$x.rest' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile");
+            mysystem("grep -v NOTICE '$dir/$x.result' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile");
         }
         else {
-            $dfile = "$dir/$x.rest";
+            $dfile = "$dir/$x.result";
             $dfile2 = $TMP;
         }
         # use diff -w to ignore white space differences like \r vs \r\n
         my $r = `diff -w '$dfile' '$dfile2' `;
         $r =~ s/^\s*|\s*$//g;
         if ($r =~ /connection to server was lost/) {
-            $res{"$dir/$x.test"} = "CRASHED SERVER: $r";
+            $res{"$dir/$x.test.sql"} = "CRASHED SERVER: $r";
             $stats{z_crash}++;
             # allow the server some time to recover from the crash
-            warn "CRASHED SERVER: '$dir/$x.test', sleeping 5 ...\n";
+            warn "CRASHED SERVER: '$dir/$x.test.sql', sleeping 5 ...\n";
             sleep 5;
         }
         elsif (length($r)) {
-            $res{"$dir/$x.test"} = "FAILED: $r";
+            $res{"$dir/$x.test.sql"} = "FAILED: $r";
             $stats{z_fail}++;
         }
         else {
-            $res{"$dir/$x.test"} = "Passed";
+            $res{"$dir/$x.test.sql"} = "Passed";
             $stats{z_pass}++;
         }
         print "    test run time: " . tv_interval($t0, [gettimeofday]) . "\n";
