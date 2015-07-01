@@ -69,7 +69,7 @@ To use doxygen:
 
 .. code::
 
-  cd /tools/doxygen/
+  cd tools/doxygen/
   make
 
 The code's documentation can be found in:
