@@ -51,7 +51,7 @@ if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	rm -rf build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 	mkdir build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 	cd build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
-	cmake -G "MSYS Makefiles" -DWITH_DD=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DBOOST_ROOT:PATH=${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE} -DCGAL_ROOT:PATH=${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE} -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include"  ../branches/${PGROUTING_VER}
+	cmake -G "MSYS Makefiles"  -DCMAKE_VERBOSE_MAKEFILE=ON -DBOOST_ROOT:PATH=${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE} -DCGAL_ROOT:PATH=${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE} -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include"  ../branches/${PGROUTING_VER}
 else 
 	#alias cmake="/c/ming${OS_BUILD}/cmake-2.8.10.2-win32-x86/bin/cmake"
 	export PostgreSQL_ROOT=${PGPATH}
@@ -70,7 +70,7 @@ else
 	rm -rf build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 	mkdir build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 	cd build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
-	cmake -G "MSYS Makefiles" -DWITH_DD=ON ../branches/${PGROUTING_VER}
+	cmake -G "MSYS Makefiles"  ../branches/${PGROUTING_VER}
 fi
 #cmake -G "MSYS Makefiles" -DWITH_DD=ON ..
 #first delete old pgrouting files from installed folder before we reinstall
@@ -88,7 +88,7 @@ cp lib/*.control ${PGPATHEDB}/share/extension/
 
 cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
 
-perl tools/test-runner.pl  -pgport "${PGPORT}"  -clean
+perl tools/test-runner.pl   -pgver ${PG_VER} -pgport "${PGPORT}"  -clean
 perl tools/test-runner.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}" -ignorenotice -clean
 #perl tools/test-runner.pl  -pgver "${PG_VER}" -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -clean -v -alg dijkstra
 

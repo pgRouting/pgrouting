@@ -292,11 +292,11 @@ sub createTestDB {
     }
 
     # next we install pgrouting into the new database
-    if (version_greater_eq($dbver, '9.1') &&
+    if (version_greater_eq($vpg, '9.1') &&
             -f "$dbshare/extension/postgis.control") {
         my $myver = '';
         if ($vpgr) {
-            $myver = " VERSION '$vpgr'";
+            $myver = " PGROUTING VERSION '$vpgr'";
         }
         print "-- Trying to install pgrouting extension $myver\n" if $DEBUG;
         mysystem("$psql -U $DBUSER -h $DBHOST -p $DBPORT -c \"create extension pgrouting $myver\" $DBNAME");
