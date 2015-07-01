@@ -87,7 +87,7 @@ int do_pgr_dijkstra_many_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
 #else
     *err_msg = strdup(log.str().c_str());
 #endif
-    *path_count = count;
+    *path_count = sequence;
     return EXIT_SUCCESS;
   } catch ( ... ) {
     *err_msg = strdup("Caught unknown expection!");
@@ -170,7 +170,7 @@ int  do_pgr_dijkstra_many_to_1(pgr_edge_t *data_edges, int64_t total_tuples,
     #else
     *err_msg = strdup(log.str().c_str());
     #endif
-    *path_count = count;
+    *path_count = sequence;
     return EXIT_SUCCESS;
   } catch ( ... ) {
     *err_msg = strdup("Caught unknown expection!");
