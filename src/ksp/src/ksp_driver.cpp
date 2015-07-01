@@ -25,16 +25,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 
 extern "C" {
+#if 0
 #include "postgres.h"
 #include "./ksp.h"
+#include "./../../common/src/pgr_types.h"
+#endif
+#include "./../../common/src/postgres_connection.h"
 }
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 
 #include "./pgr_ksp.hpp"
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
 
 
 
