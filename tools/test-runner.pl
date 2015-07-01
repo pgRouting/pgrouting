@@ -42,7 +42,7 @@ print "RUNNING: test-runner.pl " . join(" ", @ARGV) . "\n";
 
 my ($vpg, $vpgis, $vpgr, $psql);
 my $alg = '';
-my @testpath = ("doc/", "src/", "doc/src/recipes");
+my @testpath = ("doc/", "src/");
 my $clean;
 my $ignore;
 
@@ -62,9 +62,9 @@ while (my $a = shift @ARGV) {
     elsif ($a eq '-alg') {
         $alg = shift @ARGV || Usage();
         if ($alg eq 'doc') {
-            @testpath = ($alg);
+            @testpath = ('doc');
         } elsif ($alg eq 'recipes') {
-            @testpath = ("doc/src/$alg");
+            @testpath = ("doc/src/recipes");
         } else {
             @testpath = ("src/$alg");
         } 

@@ -21,6 +21,7 @@
 
 --.. code-block:: sql
 set client_min_messages = warning;
+
 	SELECT pgr_createTopology('edge_table', 0.001);
 	SELECT pgr_analyzegraph('edge_table', 0.001);
 	SELECT pgr_nodeNetwork('edge_table', 0.001);
