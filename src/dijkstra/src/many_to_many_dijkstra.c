@@ -133,8 +133,8 @@ dijkstra_many_to_many(PG_FUNCTION_ARGS) {
                PG_GETARG_BOOL(3),
                PG_GETARG_BOOL(4), &ret_path, &path_count);
 
-      free(sourcesArr);
-      free(targetsArr);
+      // free(sourcesArr);
+      // free(targetsArr);
 
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;
@@ -161,8 +161,8 @@ dijkstra_many_to_many(PG_FUNCTION_ARGS) {
       Datum *values;
       char* nulls;
 
-      values = palloc(6 * sizeof(Datum));
-      nulls = palloc(6 * sizeof(char));
+      values = palloc(7 * sizeof(Datum));
+      nulls = palloc(7 * sizeof(char));
       // id, start_v, node, edge, cost, tot_cost
       values[0] = Int32GetDatum(call_cntr);
       nulls[0] = ' ';

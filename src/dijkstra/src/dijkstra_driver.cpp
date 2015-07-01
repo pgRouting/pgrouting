@@ -91,7 +91,6 @@ log << "sequence" << sequence;
     *err_msg = strdup("OK");
 #else
     *err_msg = strdup(log.str().c_str());
-    return -1;
 #endif
     *path_count = sequence;
     return EXIT_SUCCESS;
