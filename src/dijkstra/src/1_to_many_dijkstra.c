@@ -139,7 +139,7 @@ dijkstra_1_to_many(PG_FUNCTION_ARGS) {
                PG_GETARG_BOOL(3),
                PG_GETARG_BOOL(4), &ret_path, &path_count);
 
-      free(targetsArr);
+      // free(targetsArr);
 
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;
