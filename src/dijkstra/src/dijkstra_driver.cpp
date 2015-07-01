@@ -26,11 +26,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 extern "C" {
 #include "postgres.h"
+#include "./../../common/src/pgr_types.h"
+#include "./../../common/src/postgres_connection.h"
 }
 
 
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
+// #include "./../../common/src/pgr_types.h"
+// #include "./../../common/src/postgres_connection.h"
 #include "./pgr_dijkstra.hpp"
 
 int do_pgr_dijkstra_many_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
@@ -42,6 +44,7 @@ int do_pgr_dijkstra_many_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
     // in c code this should this must have been checked:
     //  1) cant check anything
 
+std::ostringstream log;
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
     const int initial_size = 1;
 
@@ -69,6 +72,7 @@ int do_pgr_dijkstra_many_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
 
     int count(count_tuples(paths));
 
+log << "count" << count;
     if (count == 0) {
       *err_msg = strdup(
         "NOTICE: No paths found between any of the starting vertices and any of the Ending vertices");
@@ -81,11 +85,13 @@ int do_pgr_dijkstra_many_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
     *ret_path = pgr_get_memory3(count, (*ret_path));
     int sequence(collapse_paths(ret_path, paths));
 
+log << "sequence" << sequence;
 
-#if 1
+#if 0
     *err_msg = strdup("OK");
 #else
     *err_msg = strdup(log.str().c_str());
+    return -1;
 #endif
     *path_count = sequence;
     return EXIT_SUCCESS;
