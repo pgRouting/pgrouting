@@ -299,6 +299,7 @@ install(TARGETS routing-2.1 DESTINATION ${LIBRARY_INSTALL_PATH})
 #add_library(routing_vrp
 #add_library(routing_bd
 #add_library(routing_dd
+#add_library(routing
 
 
 if(APPLE)
