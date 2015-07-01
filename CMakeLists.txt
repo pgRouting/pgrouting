@@ -202,7 +202,7 @@ set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
     ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
     ${PGROUTING_SOURCE_DIR}/src/kdijkstra/src
-    ${PGROUTING_SOURCE_DIR}/src/ksp/src
+#    ${PGROUTING_SOURCE_DIR}/src/ksp/src
     ${PGROUTING_SOURCE_DIR}/src/trsp/src
     ${PGROUTING_SOURCE_DIR}/src/tsp/src
     ${PGROUTING_SOURCE_DIR}/src/vrp_basic/src
@@ -271,6 +271,9 @@ endif(APPLE)
 
 
 LINK_LIBRARIES(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
+if(WIN32)
+    include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
+endif(WIN32)
 
 # libraries listed in alphabetical order.
 add_library(routing-2.1
@@ -284,7 +287,7 @@ add_library(routing-2.1
     $<TARGET_OBJECTS:dijkstra>
     $<TARGET_OBJECTS:driving_distance>
     $<TARGET_OBJECTS:kdijkstra>
-    $<TARGET_OBJECTS:ksp>
+#    $<TARGET_OBJECTS:ksp>
     $<TARGET_OBJECTS:trsp>
     $<TARGET_OBJECTS:tsp>
     $<TARGET_OBJECTS:vrp_basic>
@@ -308,19 +311,9 @@ if(APPLE)
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)
 
-#include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
-#if(WIN32)
-#    include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
-#endif(WIN32)
-#add_subdirectory(src/tsp)
-#list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
-
 
 file(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
 "-- pgRouting version '${PGROUTING_VERSION_STRING}' extension for postgresql\n")
-
-#file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-#"-- built WITH_DD = ${WITH_DD}\n")
 
 if(USE_PG_EXTENSION)
     file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
