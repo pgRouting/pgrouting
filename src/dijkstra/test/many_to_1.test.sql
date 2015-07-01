@@ -9,45 +9,45 @@
 
     SELECT * FROM pgr_dijkstra(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            2, array[3]
+            array[2], 3
         );
 
 
     SELECT * FROM pgr_dijkstra(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            2, array[3], false
+            array[2], 3, false
         );
 
     SELECT * FROM pgr_dijkstra(
             'SELECT id, source, target, cost FROM edge_table',
-            2, array[3]
+            array[2], 3
         );
 
     SELECT * FROM pgr_dijkstra(
             'SELECT id, source, target, cost FROM edge_table',
-            2, array[3], false
+            array[2], 3, false
         );
 
 
     SELECT * FROM pgr_dijkstra(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            2, array[3,5]
+            array[2,11], 3
         );
 
 
     SELECT * FROM pgr_dijkstra(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            2, array[3,5], false
+            array[2,11], 3, false
         );
 
     SELECT * FROM pgr_dijkstra(
             'SELECT id, source, target, cost FROM edge_table',
-            2, array[3,5]
+            array[2,11], 3
         );
 
     SELECT * FROM pgr_dijkstra(
             'SELECT id, source, target, cost FROM edge_table',
-            2, array[3,5], false
+            array[2,11], 3, false
         );
 
 
