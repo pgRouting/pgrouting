@@ -20,6 +20,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 
+// #define DEBUG 1
+// #include <unistd.h>
+
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -30,8 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "./../../common/src/pgr_types.h"
-// #define DEBUG 1
-#undef DEBUG
 #include "./../../common/src/postgres_connection.h"
 #include "./ksp.h"
 #include "./ksp_driver.h"
@@ -43,11 +44,9 @@ PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
 #endif  // _MSC_VER
 
 
-
 #ifndef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif
-
 
 PG_FUNCTION_INFO_V1(kshortest_path);
 #ifndef _MSC_VER

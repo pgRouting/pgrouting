@@ -23,11 +23,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef SRC_KSP_SRC_KSP_H_
 #define SRC_KSP_SRC_KSP_H_
 
-#define TUPLIMIT 1000
-#define PATH_ALLOC_TOTAL 5
+// #define TUPLIMIT 1000
+// #define PATH_ALLOC_TOTAL 5
 
-#include <unistd.h>
-#include "postgres.h"
+// #include <unistd.h>
+// #include "postgres.h"
 
 #ifdef __cplusplus
 extern "C" {
