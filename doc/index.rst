@@ -62,6 +62,12 @@ Tutorial
 For a more complete introduction how to build a routing application read the `pgRouting Workshop <http://workshop.pgrouting.org>`_.
 
 *******************************************************************************
+Version
+*******************************************************************************
+
+:ref:`pgr_version` - to get pgRouting's version information.
+
+*******************************************************************************
 Data Types
 *******************************************************************************
 
@@ -159,7 +165,6 @@ Developer
   -  :ref:`pgr_is_column_in_table` - to check only for the existance of the column.
   -  :ref:`pgr_point_to_id` -to insert/get the id of the inserted point in a vertices table.
   -  :ref:`pgr_quote_ident` - to quotes the input text to be used as an identifier in an SQL statement string.
-  -  :ref:`pgr_version` - to get pgRouting's version information.
   -  :ref:`pgr_versionless` - to compare two version numbers.
   -  :ref:`pgr_start_point` - to get the start point of a (multi)linestring.
   -  :ref:`pgr_end_point` - to get the end point of a (multi)linestring.
