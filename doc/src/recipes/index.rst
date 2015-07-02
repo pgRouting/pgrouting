@@ -44,6 +44,7 @@ How to contribute.
 
 .. rubric:: To add a recipie or a wrapper
 
+The first steps are:
 
   - Fork the repository 
   - Create a branch for your recipe or wrapper

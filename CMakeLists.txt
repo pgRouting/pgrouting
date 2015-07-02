@@ -200,9 +200,9 @@ set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/bd_dijkstra/src
     ${PGROUTING_SOURCE_DIR}/src/common/src
     ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
-#    ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
+    ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
     ${PGROUTING_SOURCE_DIR}/src/kdijkstra/src
-#    ${PGROUTING_SOURCE_DIR}/src/ksp/src
+    ${PGROUTING_SOURCE_DIR}/src/ksp/src
     ${PGROUTING_SOURCE_DIR}/src/trsp/src
     ${PGROUTING_SOURCE_DIR}/src/tsp/src
     ${PGROUTING_SOURCE_DIR}/src/vrp_basic/src
@@ -238,17 +238,17 @@ if(APPLE)
   if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -frounding-math -Wno-deprecated")
   else()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -std=c++11 -g -Wno-deprecated")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -std=c++0x -g -Wno-deprecated")
   endif()
 
 elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGWIN)
   set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -frounding-math")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -std=c++11 -frounding-math -Wno-deprecated")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -std=c++0x -frounding-math -Wno-deprecated")
 
 elseif(WIN32)
   # currently, support MinGW only
   set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -std=c++11 -frounding-math -Wno-deprecated")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -std=c++0x -frounding-math -Wno-deprecated")
 endif()
 
 # List variable to collect module SQL file names
@@ -285,9 +285,9 @@ add_library(routing-2.1
     $<TARGET_OBJECTS:bd_dijkstra>
     $<TARGET_OBJECTS:common>
     $<TARGET_OBJECTS:dijkstra>
-#    $<TARGET_OBJECTS:driving_distance>
+    $<TARGET_OBJECTS:driving_distance>
     $<TARGET_OBJECTS:kdijkstra>
-#    $<TARGET_OBJECTS:ksp>
+    $<TARGET_OBJECTS:ksp>
     $<TARGET_OBJECTS:trsp>
     $<TARGET_OBJECTS:tsp>
     $<TARGET_OBJECTS:vrp_basic>
