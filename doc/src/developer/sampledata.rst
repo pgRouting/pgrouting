@@ -99,8 +99,9 @@ This table is used in some of our examples
 
     Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost`` columns are used
 
-  - Blue colored lines with line arrows, represent the ``cost`` of the edge table.
-  - Green colored lines with filled arrows, represent the ``reverse_cost`` of the edge table.
+Blue colored lines with line arrows, represent the ``cost`` of the edge table.
+Green colored lines with filled arrows, represent the ``reverse_cost`` of the edge table.
+
 
 .. rubric:: Network for queries marked as ``undirected`` and ``cost`` and ``reverse_cost`` columns are used:
 

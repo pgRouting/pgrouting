@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _example_recipe:
+.. _parallel_handling:
 
 Handling parallels after getting a path (pgr_ksp focus)
 -------------------------------------------------------

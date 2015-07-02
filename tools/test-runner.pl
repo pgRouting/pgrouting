@@ -67,7 +67,7 @@ while (my $a = shift @ARGV) {
             @testpath = ("doc/src/recipes");
         } else {
             @testpath = ("src/$alg");
-        } 
+        }
     }
     elsif ($a eq '-psql') {
         $psql = shift @ARGV || Usage();
@@ -230,7 +230,7 @@ sub run_test {
         elsif (length($r)) {
             $res{"$dir/$x.test.sql"} = "FAILED: $r";
             $stats{z_fail}++;
-        } 
+        }
 # TODO missing when the result file does not exist
         else {
             $res{"$dir/$x.test.sql"} = "Passed";
@@ -247,7 +247,7 @@ sub createTestDB {
         if dbExists($DBNAME);
 
     my $template;
-    
+
     my $dbver = getServerVersion();
     my $dbshare = getSharePath($dbver);
 
@@ -292,7 +292,7 @@ sub createTestDB {
     }
 
     # next we install pgrouting into the new database
-    if (version_greater_eq($vpg, '9.1') &&
+    if (version_greater_eq($dbver, '9.1') &&
             -f "$dbshare/extension/postgis.control") {
         my $myver = '';
         if ($vpgr) {
@@ -381,7 +381,7 @@ sub findPsql {
 
 # getSharePath is complicated by the fact that on Debian we can have multiple
 # versions installed in a cluster. So we get the DB version by connectiong
-# to the port for the server we want. Then we get the share path for the 
+# to the port for the server we want. Then we get the share path for the
 # newest version od pg installed on the cluster. And finally we change the
 # in the path to the version of the server.
 

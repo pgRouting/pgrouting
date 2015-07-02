@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _changelog_2_1_develop:
+.. _changelog_2_1_0:
 
 pgRouting devlop Release Notes
 ===============================================================================
