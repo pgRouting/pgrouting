@@ -322,8 +322,9 @@ if(USE_PG_EXTENSION)
     #    "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
 endif(USE_PG_EXTENSION)
 
-cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
+cat("${PGROUTING_SOURCE_DIR}/src/common/sql/types.sql"
     "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
+#cat("${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 
 
 foreach(PACKAGE_SQL_FILE ${L_PACKAGE_SQL_FILES})

@@ -20,18 +20,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 #include "./boost_interface_drivedist.h"
+#include "./../../dijkstra/src/pgr_dijkstra.hpp"
+#include "unistd.h"
 #include <sstream>
 #include <deque>
 #include <vector>
 
 extern "C" {
 #include "postgres.h"
+#include "./../../common/src/pgr_types.h"
+#include "./../../common/src/postgres_connection.h"
 }
 
 
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
-#include "./../../dijkstra/src/pgr_dijkstra.hpp"
 
 
 

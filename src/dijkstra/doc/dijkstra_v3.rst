@@ -21,6 +21,11 @@ Name
 
 ``pgr_dijkstra`` — Returns the shortest path form a single source to a single target using Dijkstra algorithm.
 
+.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+   :target: http://www.boost.org/doc/libs/1_58_0/libs/graph/doc/index.html
+
+   Boost Graph Inside
+
 
 Synopsis
 -------------------------------------------------------------------------------

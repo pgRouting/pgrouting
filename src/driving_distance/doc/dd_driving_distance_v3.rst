@@ -22,6 +22,11 @@ Name
 ``pgr_drivingDistance`` - Returns the driving distance from a start node.
 
 
+.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+   :target: http://www.boost.org/doc/libs/1_58_0/libs/graph/doc/index.html
+
+   Boost Graph Inside
+
 Synopsis
 -------------------------------------------------------------------------------
 
@@ -428,6 +433,7 @@ Examples for :ref:`fig4-undirect-Cost`
 
 
 The queries use the :ref:`sampledata` network.
+
 
 
 .. rubric:: History

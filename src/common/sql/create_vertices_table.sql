@@ -1,4 +1,4 @@
-/*
+/* PGR
 
 create_vertices_table.sql
 This function should not be used directly. Use assign_vertex_id instead

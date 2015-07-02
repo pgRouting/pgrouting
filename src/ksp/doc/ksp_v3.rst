@@ -22,6 +22,12 @@ Name
 ``pgr_ksp`` — Returns the "K" shortest paths.
 
 
+.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+   :target: http://www.boost.org/doc/libs/1_58_0/libs/graph/doc/index.html
+
+   Boost Graph Inside
+
+
 Synopsis
 -------------------------------------------------------------------------------
 
