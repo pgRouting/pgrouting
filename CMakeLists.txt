@@ -343,8 +343,8 @@ configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
 # We will copy the pgrouting_legacy.sql, but not install it as part of 
 # the extension. TODO: we might want to also include a 
 # pgrouting_legacy_uninstall.sql file or add it to the extension
-configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting_legacy.sql"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql" COPYONLY)
+#configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting_legacy.sql"
+#    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql" COPYONLY)
 
 # this will create the commands in the makefile under the install target
 if(UNIX)

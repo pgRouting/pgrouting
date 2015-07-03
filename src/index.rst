@@ -18,7 +18,7 @@ Routing Functions
   -  :ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
   -  :ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path
   -  :ref:`pgr_dijkstra<pgr_dijkstra>` - Shortest Path Dijkstra
-  -  :ref:`pgr_drivingDistance<pgr_drivingdistance>` - Driving distamce
+  -  :ref:`pgr_drivingDistance<pgr_driving_distance>` - Driving distamce
   -  :ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path Dijkstra
   -  :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
   -  :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
