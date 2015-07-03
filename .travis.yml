@@ -18,7 +18,7 @@ branches:
   only:
     - master
     - develop
-    - dd-develop
+    - develop_2_1_0
     - feature-travis
 
 services:
