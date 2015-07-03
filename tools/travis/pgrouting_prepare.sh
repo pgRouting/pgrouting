@@ -37,6 +37,10 @@ sudo /etc/init.d/postgresql restart
 # Disable password (better: create new user)
 sudo -u $DBUSER psql -c "ALTER ROLE postgres WITH PASSWORD '';"
 
+exit $ERROR
+
+# WE ARE NOT USING TEMPLATE DATABASES SO DON'T GO BELOW HERE
+
 # ------------------------------------------------------------------------------
 # Create database templates
 # ------------------------------------------------------------------------------
