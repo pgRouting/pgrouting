@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -64,7 +64,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
                               dir = CASE WHEN (cost>0 and reverse_cost>0) THEN 'B'   -- both ways
                                          WHEN (cost>0 and reverse_cost<0) THEN 'FT'  -- direction of the LINESSTRING
                                          WHEN (cost<0 and reverse_cost>0) THEN 'TF'  -- reverse direction of the LINESTRING
-                                         ELSE '' END;                                -- unknown  
+                                         ELSE '' END;                                -- unknown
 
 
 Before you test a routing function use this query to fill the source and target columns.
@@ -86,10 +86,51 @@ This table is used in some of our examples
 
 .. code-block:: sql
 
-	INSERT INTO vertex_table VALUES 
+	INSERT INTO vertex_table VALUES
 		(1,2,0), (2,2,1), (3,3,1), (4,4,1), (5,0,2), (6,1,2), (7,2,2),
 		(8,3,2), (9,4,2), (10,2,3), (11,3,3), (12,4,3), (13,2,4);
 
-.. rubric:: The network created in *edge_table*
 
-.. image:: ../../../src/common/doc/functions/images/before_node_net.png
+.. rubric:: Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost`` columns are used:
+
+.. _fig1-direct-Cost-Reverse:
+
+.. figure:: ../../../src/common/doc/functions/images/Fig1-originalData.png
+
+    Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost`` columns are used
+
+Blue colored lines with line arrows, represent the ``cost`` of the edge table.
+Green colored lines with filled arrows, represent the ``reverse_cost`` of the edge table.
+
+
+.. rubric:: Network for queries marked as ``undirected`` and ``cost`` and ``reverse_cost`` columns are used:
+
+.. _fig2-undirect-Cost-Reverse:
+
+.. figure:: ../../../src/common/doc/functions/images/Fig6-undirected.png
+
+   Network for queries marked as ``undirected`` and ``cost`` and ``reverse_cost`` columns are used
+
+
+
+
+
+.. rubric:: Network for queries marked as ``directed`` and only ``cost`` column is used:
+
+.. _fig3-direct-Cost:
+
+.. figure:: ../../../src/common/doc/functions/images/Fig2-cost.png
+
+   Network for queries marked as ``directed`` and only ``cost`` column is used
+
+
+
+.. rubric:: Network for queries marked as ``undirected`` and only ``cost`` column is used:
+
+.. _fig4-undirect-Cost:
+
+.. figure:: ../../../src/common/doc/functions/images/Fig4-costUndirected.png
+
+   Network for queries marked as ``undirected`` and only ``cost`` column is used
+
+

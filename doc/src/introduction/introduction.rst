@@ -58,6 +58,15 @@ These are corporate entities that have contributed developer time, hosting, or d
 	Camptocamp, CSIS (University of Tokyo), Georepublic, Google Summer of Code, iMaptools, Orkney, Paragon Corporation
 
 
+Inside
+------
+
+.. _boost-inside:
+
+.. figure:: ./images/boost-inside.jpeg
+   :target: http://www.boost.org/doc/libs/1_58_0/libs/graph/doc/index.html
+
+
 More Information
 -------------------------------------------------------------------------------
 

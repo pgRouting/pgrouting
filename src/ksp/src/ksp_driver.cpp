@@ -21,20 +21,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./ksp_driver.h"
 
-extern "C" {
-#include "postgres.h"
-#include "./ksp.h"
-}
-
 #include <deque>
 #include <sstream>
+
+extern "C" {
+#if 0
+#include "postgres.h"
+#include "./ksp.h"
+#include "./../../common/src/pgr_types.h"
+#endif
+#include "./../../common/src/postgres_connection.h"
+}
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 
 #include "./pgr_ksp.hpp"
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
 
 
 
@@ -73,21 +75,16 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
             paths = undigraph.Yen(start_vertex, end_vertex, no_paths);
         }
 
-        if (paths.size() == 0) {
-            *err_msg = strdup("NOTICE: No path found between Starting and Ending vertices");
+
+        int count(count_tuples(paths));
+
+        if (count == 0) {
+            *err_msg = strdup(
+               "NOTICE: No path found between Starting and Ending vertices");
             (*path_count) = 1;
-            *ksp_path = noPathFound3(start_vertex);
+            *ksp_path = noPathFound3(-1, (*ksp_path));
             return 0;
         }
-
-        log << "NOTICE: Calculating the number of tuples \n";
-        int count = 0;
-        int seq = 0;
-        for (unsigned int i = 0; i < paths.size(); ++i) {
-           if (paths[i].path.size() > 0)  // don't count empty routes
-              count += paths[i].path.size();
-        }
-        log << "NOTICE Count: " << count << " tuples\n";
 
         // get the space required to store all the paths
         *ksp_path = NULL;

@@ -20,6 +20,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 
+// #define DEBUG 1
+#include <unistd.h>
+
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -30,8 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "./../../common/src/pgr_types.h"
-//#define DEBUG 1
-#undef DEBUG
 #include "./../../common/src/postgres_connection.h"
 #include "./ksp.h"
 #include "./ksp_driver.h"
@@ -43,14 +44,9 @@ PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
 #endif  // _MSC_VER
 
 
-
-
-
-
-#ifdef PG_MODULE_MAGIC
+#ifndef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif
-
 
 PG_FUNCTION_INFO_V1(kshortest_path);
 #ifndef _MSC_VER
@@ -97,7 +93,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
       funcctx->user_fctx = path;
 
       funcctx->tuple_desc =
-        BlessTupleDesc(RelationNameGetTupleDesc("pgr_costResult3Big"));
+        BlessTupleDesc(RelationNameGetTupleDesc("__pgr_3b2f"));
 
       MemoryContextSwitchTo(oldcontext);
     }
@@ -120,24 +116,26 @@ kshortest_path(PG_FUNCTION_ARGS) {
       Datum *values;
       bool* nulls;
 
-      values = (Datum *)palloc(5 * sizeof(Datum));
-      nulls = (bool *) palloc(5 * sizeof(bool));
+      values = (Datum *)palloc(6 * sizeof(Datum));
+      nulls = (bool *) palloc(6 * sizeof(bool));
 
       values[0] = Int32GetDatum(call_cntr);
       nulls[0] = false;
 
-      values[1] = Int32GetDatum(path[call_cntr].route_id);
+      values[1] = Int64GetDatum(path[call_cntr].from);
       nulls[1] = false;
 
-      values[2] = Int64GetDatum(path[call_cntr].vertex_id);
+      values[2] = Int64GetDatum(path[call_cntr].vertex);
       nulls[2] = false;
 
-      values[3] = Int64GetDatum(path[call_cntr].edge_id);
+      values[3] = Int64GetDatum(path[call_cntr].edge);
       nulls[3] = false;
 
       values[4] = Float8GetDatum(path[call_cntr].cost);
       nulls[4] = false;
 
+      values[5] = Float8GetDatum(path[call_cntr].tot_cost);
+      nulls[5] = false;
 
       tuple = heap_form_tuple(tuple_desc, values, nulls);
 
@@ -181,28 +179,20 @@ int compute(char* sql, int64_t start_vertex,
   bool sourceFound = false;
   bool targetFound = false;
   SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
-               start_vertex, end_vertex); // , &sourceFound, &targetFound);
+               start_vertex, end_vertex);
   if (SPIcode == -1) {
     PGR_DBG("Error getting data\n");
     return SPIcode;
-  } 
+  }
 
   PGR_DBG("Total %ld tuples in query:", total_tuples);
-#if 0
-  if (!sourceFound) {
-      elog(ERROR, "Starting Vertex does not exist in the data");
-      return -1;
-  }
-  if (!targetFound) {
-      elog(ERROR, "Ending Vertex does not exist in the data");
-      return -1;
-  }
-#endif
   PGR_DBG("Calling do_pgr_ksp\n");
+
   ret = do_pgr_ksp(edges, total_tuples,
             start_vertex, end_vertex,
                        no_paths, has_rcost, directed,
                        ksp_path, path_count, &err_msg);
+
   PGR_DBG("total tuples found %i\n", *path_count);
   PGR_DBG("Exist Status = %i\n", ret);
   PGR_DBG("Returned message = %s\n", err_msg);
