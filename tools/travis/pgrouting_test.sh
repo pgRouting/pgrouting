@@ -60,7 +60,7 @@ then
     IGNORE=-ignorenotice
 fi
 
-if [ "$POSTGRESQL_VERSION" == "9.2" ] || [ "$POSTGRESQL_VERSION" == "9.3" ]
+if [ "$POSTGRESQL_VERSION" == "9.2" ] || [ "$POSTGRESQL_VERSION" == "9.3" ] || [ "$POSTGRESQL_VERSION" == "9.4" ]
 then
     run_psql -U $DBUSER -d $DBNAME -c "CREATE EXTENSION postgis;"
     run_psql -U $DBUSER -d $DBNAME -c "CREATE EXTENSION pgrouting;"
