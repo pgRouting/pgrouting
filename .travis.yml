@@ -18,6 +18,7 @@ branches:
   only:
     - master
     - develop
+    - dd-develop
     - feature-travis
 
 services:
@@ -38,6 +39,7 @@ env:
     - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
     - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
     - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
+    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.1
 
 install:
   - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION

@@ -62,9 +62,10 @@ while (my $a = shift @ARGV) {
     elsif ($a eq '-alg') {
         $alg = shift @ARGV || Usage();
         if ($alg eq 'doc') {
-            @testpath = ($alg);
-        }
-        else {
+            @testpath = ('doc');
+        } elsif ($alg eq 'recipes') {
+            @testpath = ("doc/src/recipes");
+        } else {
             @testpath = ("src/$alg");
         }
     }
@@ -187,13 +188,13 @@ sub run_test {
     for my $x (@{$t->{tests}}) {
         print "Processing test: $x\n";
         my $t0 = [gettimeofday];
-        open(TIN, "$dir/$x.test") || do {
-            $res{"$dir/$x.test"} = "FAILED: could not open '$dir/$x.test' : $!";
+        open(TIN, "$dir/$x.test.sql") || do {
+            $res{"$dir/$x.test.sql"} = "FAILED: could not open '$dir/$x.test.sql' : $!";
             $stats{z_fail}++;
             next;
         };
         open(PSQL, "|$psql -U $DBUSER -h $DBHOST -p $DBPORT -A -t -q $DBNAME > $TMP 2>\&1 ") || do {
-            $res{"$dir/$x.test"} = "FAILED: could not open connection to db : $!";
+            $res{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
             $stats{z_fail}++;
             next;
         };
@@ -210,28 +211,29 @@ sub run_test {
             $dfile2 = $TMP2;
             mysystem("grep -v NOTICE '$TMP' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile2");
             $dfile = $TMP3;
-            mysystem("grep -v NOTICE '$dir/$x.rest' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile");
+            mysystem("grep -v NOTICE '$dir/$x.result' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile");
         }
         else {
-            $dfile = "$dir/$x.rest";
+            $dfile = "$dir/$x.result";
             $dfile2 = $TMP;
         }
         # use diff -w to ignore white space differences like \r vs \r\n
         my $r = `diff -w '$dfile' '$dfile2' `;
         $r =~ s/^\s*|\s*$//g;
         if ($r =~ /connection to server was lost/) {
-            $res{"$dir/$x.test"} = "CRASHED SERVER: $r";
+            $res{"$dir/$x.test.sql"} = "CRASHED SERVER: $r";
             $stats{z_crash}++;
             # allow the server some time to recover from the crash
-            warn "CRASHED SERVER: '$dir/$x.test', sleeping 5 ...\n";
+            warn "CRASHED SERVER: '$dir/$x.test.sql', sleeping 5 ...\n";
             sleep 5;
         }
         elsif (length($r)) {
-            $res{"$dir/$x.test"} = "FAILED: $r";
+            $res{"$dir/$x.test.sql"} = "FAILED: $r";
             $stats{z_fail}++;
         }
+# TODO missing when the result file does not exist
         else {
-            $res{"$dir/$x.test"} = "Passed";
+            $res{"$dir/$x.test.sql"} = "Passed";
             $stats{z_pass}++;
         }
         print "    test run time: " . tv_interval($t0, [gettimeofday]) . "\n";
@@ -245,7 +247,7 @@ sub createTestDB {
         if dbExists($DBNAME);
 
     my $template;
-    
+
     my $dbver = getServerVersion();
     my $dbshare = getSharePath($dbver);
 
@@ -294,7 +296,7 @@ sub createTestDB {
             -f "$dbshare/extension/postgis.control") {
         my $myver = '';
         if ($vpgr) {
-            $myver = " VERSION '$vpgr'";
+            $myver = " PGROUTING VERSION '$vpgr'";
         }
         print "-- Trying to install pgrouting extension $myver\n" if $DEBUG;
         mysystem("$psql -U $DBUSER -h $DBHOST -p $DBPORT -c \"create extension pgrouting $myver\" $DBNAME");
@@ -379,7 +381,7 @@ sub findPsql {
 
 # getSharePath is complicated by the fact that on Debian we can have multiple
 # versions installed in a cluster. So we get the DB version by connectiong
-# to the port for the server we want. Then we get the share path for the 
+# to the port for the server we want. Then we get the share path for the
 # newest version od pg installed on the cluster. And finally we change the
 # in the path to the version of the server.
 

@@ -12,73 +12,116 @@
 Developer's Guide
 ===============================================================================
 
-.. note:: 
-	All documentation should be in reStructuredText format.
-	See: <http://docutils.sf.net/rst.html> for introductory docs.
 
 Source Tree Layout
 -------------------------------------------------------------------------------
 
-cmake/
+*cmake/*
     cmake scripts used as part of our build system.
 
-src/
-    This is the algorithm source tree. Each algorithm should be contained
-    in its on sub-tree with doc, sql, src, and test sub-directories.
-    This might get renamed to "algorithms" at some point.
+*src/*
+    This is the algorithm source tree. Each algorithm is to be contained
+    in its on sub-tree with /doc, /sql, /src, and /test sub-directories.
 
-src/astar/
-    This is an implementation of A* Search based on using Boost Graph
-    libraries for its implementation. This is a Dijkstra shortest path
-    implementation with a Euclidean Heuristic.
+For example:
 
-src/common/
-    At the moment this does not have an core in "src", but does have a lot
-    of SQL wrapper code and topology code in the "sql" directory. *Algorithm
-    specific wrappers should get move to the algorithm tree and appropriate
-    tests should get added to validate the wrappers.*
+  - ``src/dijkstra``  Main direcotry for dijkstra algorithm.
+  - ``src/dijkstra/doc``  Dijkstra's documentation directory.
+  - ``src/dijkstra/src``  Dijkstra's C and/or C++ code.
+  - ``src/dijkstra/sql``  Dijkstra's sql code.
+  - ``src/dijkstra/test``  Dijkstra's tests.
 
-src/dijkstra/
-    This is an implementation of Dikjstra's shortest path solution using
-    Boost Graph libraries for the implementation.
 
-src/driving_distance/
-    This optional package creates driving distance polygons based on
-    solving a Dijkstra shortest path solution, then creating polygons
-    based on equal cost distances from the start point.
-    This optional package requires CGAL libraries to be installed.
+Tools
+-------------------------------------------------------------------------------
 
-src/shooting_star/
-    *DEPRECATED and DOES NOT WORK and IS BEING REMOVED*
-    This is an edge based shortest path algorithm that supports turn
-    restrictions. It is based on Boost Graph.
-    Do *NOT* use this algorithm as it is broken, instead use *trsp*
-    which has the same functionality and is faster and give correct results.
-
-src/trsp/
-    This is a turn restricted shortest path algorithm. It has some nice
-    features like you can specify the start and end points as a percentage
-    along an edge. Restrictions are stored in a separate table from the
-    graph edges and this make it easier to manage the data.
-
-src/tsp/
-    This optional package provides the ability to compute traveling
-    salesman problem solutions and compute the resulting route.
-    This optional package requires GAUL libaries to be installed.
-
-tools/
+*tools/*
     Miscellaneous scripts and tools.
 
-lib/
-    This is the output directory where compiled libraries and installation
-    targets are staged before installation.
+pre-commit
+**********
 
+To keep version/branch/commit up to date install pelase do the following:
+
+.. code::
+
+  cp tools/pre-commit .git/hooks/pre-commit
+
+After each commit a the file **VERSION** will remain. (The hash number will be one behind)
+
+
+tester
+******
+
+The tester is executed from the top level of the tree layout:
+
+.. code::
+
+  tools/test-runner.pl --help
+
+doxygen
+*******
+
+.. warning:: :ref:`developer_functions` documentation is going to be deleted from the pgRouting documentation and included in the doxygen documentation.
+
+To use doxygen:
+
+
+.. code::
+
+  cd tools/doxygen/
+  make
+
+The code's documentation can be found in:
+
+
+.. code::
+
+  build/doxy/html/index.html
+
+
+cpplint
+*******
+
+We try to follow the following guidelines for C++ coding:
+
+https://google-styleguide.googlecode.com/svn/trunk/cppguide.html
+
+Sample use:
+
+.. code::
+
+ python cpplint.py ../src/dijkstra/src/dijkstra_driver.h
+  ../src/dijkstra/src/dijkstra_driver.h:34:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+  ../src/dijkstra/src/dijkstra_driver.h:40:  Line ends in whitespace.  Consider deleting these extra spaces.  [whitespace/end_of_line] [4]
+  Done processing ../src/dijkstra/src/dijkstra_driver.h
+  Total errors found: 2
+
+
+- Maybe line 34 is a very complicated calculation so you can just ignore the message
+- Delete whitespace at end of line is easy fix.
+- Use your judgement!!!
+
+Some files like ``postgres.h`` are system dependant so don't include the directory.
+
+
+Other tools
+***********
+
+Tools like:
+ - doit
+ - winnie
+ - publish_doc.sh
+
+are very specific for the deployment of new versions, so please ask first!
 
 Documentation Layout
 -------------------------------------------------------------------------------
 
-*As noted above all documentation should be done using reStructuredText
-formated files.*
+.. note:: 
+	All documentation should be in reStructuredText format.
+	See: <http://docutils.sf.net/rst.html> for introductory docs.
+
 
 Documentation is distributed into the source tree. This top level "doc"
 directory is intended for high level documentation cover subjects like:
