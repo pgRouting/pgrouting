@@ -91,9 +91,11 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
         *ksp_path = pgr_get_memory3(count, (*ksp_path));
 
         int sequence = 0;
-        for (unsigned int route_id = 0; route_id < paths.size(); route_id++) {
-          if (paths[route_id].path.size() > 0)
-               paths[route_id].dpPrint(ksp_path, sequence, route_id);
+        int route_id = 0;
+        for (const auto &path : paths) {
+            if (path.path.size() > 0)
+               path.dpPrint(ksp_path, sequence, route_id);
+            ++route_id;
         }
 
         log << "NOTICE Sequence: " << sequence << "\n";

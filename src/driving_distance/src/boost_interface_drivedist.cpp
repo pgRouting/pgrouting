@@ -87,7 +87,7 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
             }
             *ret_path = pgr_get_memory3(count, (*ret_path));
             int trueCount(collapse_paths(ret_path, paths));
-            *path_count = count;
+            *path_count = trueCount;
             // assert (count == trueCount);
 
         } else {
@@ -102,7 +102,7 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
             int trueCount = 0;
             *ret_path = pgr_get_memory3(count, (*ret_path));
             path.dpPrint(ret_path, trueCount);
-            *path_count = count;
+            *path_count = trueCount;
             // assert (count == trueCount);
         }
 
@@ -168,7 +168,6 @@ int  do_pgr_driving_distance(pgr_edge_t  *data_edges, int64_t total_tuples,
 
         log << "NOTICE: Calculating the number of tuples \n";
         int count = paths.path.size();
-        int seq = 0;
 
         log << "NOTICE Count: " << count << " tuples\n";
 

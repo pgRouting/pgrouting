@@ -249,7 +249,7 @@ int do_pgr_dijkstra_1_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
       *err_msg = strdup(log.str().c_str());
     #endif
 
-    *path_count = count;
+    *path_count = sequence;
     return EXIT_SUCCESS;
   } catch ( ... ) {
     *err_msg = strdup("Caught unknown expection!");
@@ -312,9 +312,7 @@ int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
     }
 
 
-    int seq = 0;
-
-
+  
     // get the space required to store all the paths
     *ret_path = NULL;
     *ret_path = pgr_get_memory3(count, (*ret_path));
