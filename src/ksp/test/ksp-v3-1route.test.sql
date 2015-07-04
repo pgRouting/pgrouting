@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
---              PGR_ksp V3
+--              PGR_ksp V3 only
 --------------------------------------------------------------------------------
 
 
@@ -12,10 +12,9 @@
    SELECT * FROM pgr_ksp(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 1, 
-      true   -- takes the (V2.0) signature (has_rcost = true and works on directed graph)
+      true   
    );
 
-/*
    SELECT * FROM pgr_ksp(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 1,
@@ -28,6 +27,7 @@
    );
 
 
+/*
 
 --Examples using :ref:`fig1-direct-Cost-Reverse`
 -------------------------------------------------------------------------------
