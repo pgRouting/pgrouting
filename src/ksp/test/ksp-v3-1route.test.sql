@@ -15,7 +15,7 @@
       true   -- takes the (V2.0) signature (has_rcost = true and works on directed graph)
    );
 
-
+/*
    SELECT * FROM pgr_ksp(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 1,
@@ -114,4 +114,4 @@
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 1, false, true
    );
-
+*/
