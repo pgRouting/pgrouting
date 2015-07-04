@@ -27,7 +27,7 @@ else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
         PATHS
         /usr/lib/postgresql/${PG_VERSION}/bin/
         )
-    message(STATUS "PG_VERSION in FindPostgreSQL.cmake is "${PG_VERSION} ) 
+    message(STATUS "PG_VERSION in FindPostgreSQL.cmake is " ${PG_VERSION} ) 
     message(STATUS "POSTGRESQL_EXECUTABLE is " ${POSTGRESQL_EXECUTABLE})
 
 # Checking POSTGRESQL_PG_CONFIG 
