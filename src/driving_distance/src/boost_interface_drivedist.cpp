@@ -81,8 +81,7 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
             int count(count_tuples(paths));
             if (count == 0) {
               *err_msg = strdup("NOTICE: No return values was found");
-              (*path_count) = 1;
-              *ret_path = noPathFound3(-1, (*ret_path));
+              *ret_path = noPathFound3(-1, path_count, (*ret_path));
               return 0;
             }
             *ret_path = pgr_get_memory3(count, (*ret_path));
@@ -95,8 +94,7 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
             size_t count(path.size());
             if (count == 0) {
               *err_msg = strdup("NOTICE: No return values was found");
-              (*path_count) = 1;
-              *ret_path = noPathFound3(-1, (*ret_path));
+              *ret_path = noPathFound3(-1, path_count, (*ret_path));
               return 0;
             }
             int trueCount = 0;
@@ -161,8 +159,7 @@ int  do_pgr_driving_distance(pgr_edge_t  *data_edges, int64_t total_tuples,
         if (paths.path.size() == 0) {
             *err_msg = strdup(
                 "NOTICE: No driving distance node found");
-            (*path_count) = 1;
-            *ret_path = noPathFound3(-1, (*ret_path));
+            *ret_path = noPathFound3(-1, path_count, (*ret_path));
             return 0;
         }
 

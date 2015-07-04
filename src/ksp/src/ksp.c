@@ -60,7 +60,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
   int                  max_calls;
   TupleDesc            tuple_desc;
   pgr_path_element3_t      *path;
-  void * toDel;
+//  void * toDel;
 
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL()) {
@@ -85,9 +85,10 @@ kshortest_path(PG_FUNCTION_ARGS) {
               PG_GETARG_BOOL(5),    /* directed */
               &path,
               &path_count);
-      toDel = path;
+//      toDel = path;
 
       PGR_DBG("Total number of tuples to be returned %i ", path_count);
+      PGR_DBG("Return value %i", ret);
 
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;
@@ -149,7 +150,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
 
       SRF_RETURN_NEXT(funcctx, result);
   } else {   /* do when there is no more left */
-    free(path);
+    if (path == (pgr_path_element3_t *)NULL) free(path);
     SRF_RETURN_DONE(funcctx);
   }
 }
@@ -167,23 +168,26 @@ int compute(char* sql, int64_t start_vertex,
   int ntuples;
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
+  int readCode = 0;
 
   char *err_msg = (char *)"";
   int ret = -1;
 
   if (start_vertex == end_vertex) {
-      elog(ERROR, "Starting vertex and Ending Vertex are equal");
-      return -1;
+    (*path_count) = 0;
+    *ksp_path = NULL;
+    return  0;
   }
 
   PGR_DBG("Load data");
-  bool sourceFound = false;
-  bool targetFound = false;
-  SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
+  readCode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
                start_vertex, end_vertex);
-  if (SPIcode == -1) {
-    PGR_DBG("Error getting data\n");
-    return SPIcode;
+  if (readCode == -1) {
+    (*path_count) = 0;
+    *ksp_path = NULL;
+    pfree(edges);
+    PGR_DBG("Source or vertex not found from Load data\n");
+    return pgr_finish(SPIcode, ret);
   }
 
   PGR_DBG("Total %ld tuples in query:", total_tuples);

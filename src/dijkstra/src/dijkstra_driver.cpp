@@ -18,7 +18,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
-#define DEBUG
+// #define DEBUG
 #include "./dijkstra_driver.h"
 #include <sstream>
 #include <deque>
@@ -76,8 +76,7 @@ log << "count" << count;
     if (count == 0) {
       *err_msg = strdup(
         "NOTICE: No paths found between any of the starting vertices and any of the Ending vertices");
-      (*path_count) = 1;
-      *ret_path = noPathFound3(-1, (*ret_path));
+      *ret_path = noPathFound3(-1, path_count, (*ret_path));
       return 0;
     }
 
@@ -160,8 +159,7 @@ int  do_pgr_dijkstra_many_to_1(pgr_edge_t *data_edges, int64_t total_tuples,
     if (count == 0) {
       *err_msg = strdup(
         "NOTICE: No paths found between any of the starting vertices and the Ending vertex");
-      (*path_count) = 1;
-      *ret_path = noPathFound3(-1, (*ret_path));
+      *ret_path = noPathFound3(-1, path_count,  (*ret_path));
       return 0;
     }
 
@@ -233,8 +231,7 @@ int do_pgr_dijkstra_1_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
     if (count == 0) {
       *err_msg = strdup(
         "NOTICE: No paths found between Starting and any of the Ending vertices");
-      (*path_count) = 1;
-      *ret_path = noPathFound3(-1, (*ret_path));
+      *ret_path = noPathFound3(-1, path_count, (*ret_path));
       return 0;
     }
 
@@ -306,8 +303,7 @@ int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
     if (count == 0) {
       *err_msg = strdup(
         "NOTICE: No path found between Starting and Ending vertices");
-      (*path_count) = 1;
-      *ret_path = noPathFound3(-1, (*ret_path));
+      *ret_path = noPathFound3(-1, path_count, (*ret_path));
       return 0;
     }
 

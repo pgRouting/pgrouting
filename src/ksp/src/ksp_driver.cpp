@@ -82,13 +82,12 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
         if (count == 0) {
             *err_msg = strdup(
                "NOTICE: No path found between Starting and Ending vertices");
-            (*path_count) = 0;
-            *ksp_path = NULL; // noPathFound3(-1, (*ksp_path));
+            *ksp_path = noPathFound3(-1, path_count, (*ksp_path));
             return 0;
         }
 
         // get the space required to store all the paths
-        // *ksp_path = NULL;
+        *ksp_path = NULL;
         *ksp_path = pgr_get_memory3(count, (*ksp_path));
 
         int sequence = 0;

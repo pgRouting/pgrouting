@@ -354,13 +354,13 @@ int pgr_get_data(
 
   
   if (!sourceFound) {
-      elog(ERROR, "Starting Vertex does not exist in the data");
-          return pgr_finish(SPIcode, ret);	  
+      elog(NOTICE, "Starting Vertex does not exist in the data");
+      // return pgr_finish(SPIcode, ret);	  
       return -1;
   }
   if (!targetFound) {
-      elog(ERROR, "Ending Vertex does not exist in the data");
-          return pgr_finish(SPIcode, ret);	  
+      elog(NOTICE, "Ending Vertex does not exist in the data");
+      // return pgr_finish(SPIcode, ret);	  
       return -1;
   }
 
@@ -378,16 +378,22 @@ pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path){
 }
 
 
-pgr_path_element3_t* noPathFound3(int64_t start_id, pgr_path_element3_t *no_path) {
+pgr_path_element3_t* noPathFound3(int64_t fill_value, int *count, pgr_path_element3_t *no_path) {
+#if 0        
+        (*count) = 1;
         no_path = pgr_get_memory3(1, no_path);
         no_path[0].seq  = 0;
-        no_path[0].from  = start_id;
-        no_path[0].to  = start_id;
-        no_path[0].vertex = start_id;
+        no_path[0].from  = fill_value;
+        no_path[0].to  = fill_value;
+        no_path[0].vertex = fill_value;
         no_path[0].edge = -1;
         no_path[0].cost = 0;
         no_path[0].tot_cost = 0;
         return no_path;
+#else
+   count = 0;
+   return NULL;
+#endif
 }
 
 
