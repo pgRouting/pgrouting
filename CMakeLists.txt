@@ -36,6 +36,7 @@ set(PGROUTING_VERSION_PATCH "0")
 set(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
 
 set(POSTGRESQL_MINIMUM_VERSION "9.1.0")
+set(POSTGIS_MINIMUM_VERSION "2.0.0")
 
 file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 
@@ -94,28 +95,6 @@ if(WIN32)
   message(STATUS "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}")
 endif(WIN32)
 
-# Check if source contains .git directory
-#if(EXISTS "${PGROUTING_SOURCE_DIR}/.git")
-#  # Find Git to collect version information
-#  find_package(Git QUIET)
-#  if(GIT_FOUND)
-#    GIT_WC_INFO(${PGROUTING_SOURCE_DIR} PGROUTING)
-#    set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_WC_REVISION_NAME}")
-#    set(PGROUTING_VERSION_REVISION_HASH "${PGROUTING_WC_REVISION_HASH}")
-#  else()
-#    message(STATUS "Could NOT find GIT (optional)")
-#    set(PGROUTING_VERSION_REVISION_NAME "")
-#    set(PGROUTING_VERSION_REVISION_HASH "")
-#  endif()
-#else()
-#  message(STATUS "Source is not a GIT repository")
-#  set(PGROUTING_VERSION_REVISION_NAME "")
-#  set(PGROUTING_VERSION_REVISION_HASH "")
-#endif()
-
-#macro_optional_find_package(PostgreSQL)
-#  POSTGRESQL_INCLUDE_DIR, where to find POSTGRESQL.h
-#  POSTGRESQL_LIBRARIES, the libraries needed to use POSTGRESQL.
 
 
 find_package(PostgreSQL)
@@ -145,17 +124,16 @@ string(SUBSTRING "${POSTGRESQL_VERSION_STRING}" 11 -1 POSTGRESQL_VERSION)
 message(STATUS "POSTGRESQL_VERSION is ${POSTGRESQL_VERSION}")
 string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQL_VERSION})
 message(STATUS "PGSQL_VERSION is ${PGSQL_VERSION}")
+
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
 
 if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
   message(FATAL_ERROR " PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
 endif("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
 
-if("${POSTGRESQL_VERSION}" VERSION_LESS "9.1")
-  set(USE_PG_EXTENSION FALSE)
-else("${POSTGRESQL_VERSION}" VERSION_LESS "9.1")
-  set(USE_PG_EXTENSION TRUE)
-endif("${POSTGRESQL_VERSION}" VERSION_LESS "9.1")
+#allways installing with extension
+set(USE_PG_EXTENSION TRUE)
+
 
 execute_process(
   COMMAND ${POSTGRESQL_PG_CONFIG} --pkglibdir
@@ -180,13 +158,10 @@ if(SHARE_DIR)
   set(CONTRIB_DIR "${SHARE_DIR}/contrib/pgrouting-${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
   message(STATUS "Contrib directory for SQL files is set to ${CONTRIB_DIR}")
 
-  # Install as extension if supported by the version of PostgreSQL
-  if(USE_PG_EXTENSION)
-    set(SHARE_DIR "${SHARE_DIR}/extension")
-    message(STATUS "Extension directory for SQL files is set to ${SHARE_DIR}")
-  #else(USE_PG_EXTENSION)
-  #  set(SHARE_DIR "/usr/share/pgrouting")
-  endif(USE_PG_EXTENSION)
+  # Always Install as extension 
+  set(SHARE_DIR "${SHARE_DIR}/extension")
+  message(STATUS "Extension directory for SQL files is set to ${SHARE_DIR}")
+
 else(SHARE_DIR)
   message(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
 endif(SHARE_DIR)
@@ -274,9 +249,6 @@ endif(APPLE)
 
 
 LINK_LIBRARIES(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
-if(WIN32)
-    include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
-endif(WIN32)
 
 # libraries listed in alphabetical order.
 add_library(routing-2.1
