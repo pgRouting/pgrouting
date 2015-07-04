@@ -66,6 +66,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       int path_count = 0;
+      path = NULL;
       int ret;
 
       /* create a function context for cross-call persistence */
