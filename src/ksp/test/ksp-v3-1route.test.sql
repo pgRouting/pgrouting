@@ -95,7 +95,6 @@
       2, 12, 1, true, true
    );
 
-/*
 --Examples for :ref:`fig4-undirect-Cost` 
 -------------------------------------------------------------------------------
 
@@ -114,4 +113,3 @@
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 1, false, true
    );
-*/
