@@ -27,7 +27,7 @@ CREATE OR REPLACE FUNCTION _pgr_ksp(sql text, source_id bigint, target_id bigint
     LANGUAGE c IMMUTABLE STRICT;
 
 
-
+/*
 -- V2 the graph is directed and there are no heap paths 
 CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id integer, target_id integer, no_paths integer, has_rcost boolean)
   RETURNS SETOF pgr_costresult3 AS
@@ -50,12 +50,12 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id integer, target_id intege
   LANGUAGE plpgsql VOLATILE
   COST 100
   ROWS 1000;
-
+*/
 
 --V3 DEFAULTS directed:=true heap_paths:=false
 CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id bigint, target_id bigint, no_paths integer,
   directed boolean default true, heap_paths boolean default false,
-  OUT seq integer, OUT route bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+  OUT seq integer, OUT route bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT sum_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
