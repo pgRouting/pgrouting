@@ -14,6 +14,12 @@ POSTGIS_VERSION="$2"
 
 POSTGRESQL_DIRECTORY="/usr/share/postgresql/$POSTGRESQL_VERSION"
 
+echo "POSTGRESQL_VERSION=$POSTGRESQL_VERSION"
+echo "POSTGIS_VERSION=$POSTGIS_VERSION"
+echo "POSTGRESQL_DIRECTORY=/usr/share/postgresql/$POSTGRESQL_VERSION"
+ls $POSTGRESQL_DIRECTORY/extension/postgis--*
+ls /usr/lib/postgresql/$POSTGRESQL_VERSION/lib/postgis-*.so
+
 # exit script on error
 set -e 
 ERROR=0
@@ -36,6 +42,10 @@ sudo /etc/init.d/postgresql restart
 
 # Disable password (better: create new user)
 sudo -u $DBUSER psql -c "ALTER ROLE postgres WITH PASSWORD '';"
+
+exit $ERROR
+
+# WE ARE NOT USING TEMPLATE DATABASES SO DON'T GO BELOW HERE
 
 # ------------------------------------------------------------------------------
 # Create database templates
