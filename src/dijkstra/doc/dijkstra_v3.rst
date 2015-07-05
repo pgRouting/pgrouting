@@ -344,8 +344,7 @@ Examples for :ref:`fig3-direct-Cost`
                 );
          seq | node | edge | cost | tot_cost 
         -----+------+------+------+----------
-           0 |   -1 |   -1 |    0 |        0
-        (1 row)
+        (0 row)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost FROM edge_table',
@@ -363,8 +362,7 @@ Examples for :ref:`fig3-direct-Cost`
                 );
          seq | node | edge | cost | tot_cost 
         -----+------+------+------+----------
-           0 |   -1 |   -1 |    0 |        0
-        (1 row)
+        (0 row)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost FROM edge_table',
@@ -372,8 +370,7 @@ Examples for :ref:`fig3-direct-Cost`
                 );
          seq | node | edge | cost | tot_cost 
         -----+------+------+------+----------
-           0 |   -1 |   -1 |    0 |        0
-        (1 row)
+        (0 row)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost FROM edge_table',

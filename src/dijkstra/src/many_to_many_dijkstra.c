@@ -56,15 +56,13 @@ static int dijkstra_many_to_many_driver(
   char *err_msg = (char *)"";
   int ret = -1;
 
+  int readCode = pgr_get_data(sql, &edges, &total_tuples, has_rcost, -1, -1);
 
-  bool sourceFound = false;
-  bool targetFound = false;
-  SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost, -1, -1);
-
-  if (SPIcode == -1) {
+/*
+  if (readCode == -1) {
     return SPIcode;
   }
-
+*/
   ret = do_pgr_dijkstra_many_to_many(edges, total_tuples,
                         start_vertex, s_len, end_vertex, e_len,
                         has_rcost, directed,
@@ -74,11 +72,6 @@ static int dijkstra_many_to_many_driver(
       ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
         errmsg("Error computing path: %s", err_msg)));
   }
-
-  if (ret < 0) {
-      ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
-      errmsg("Error computing path: %s", err_msg)));
-    }
 
   pfree(edges);
   return pgr_finish(SPIcode, ret);

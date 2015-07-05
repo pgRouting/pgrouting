@@ -83,8 +83,7 @@ Examples: Directed
 
          seq | node | edge | cost 
         -----+------+------+------
-           0 |   -1 |   -1 |    0
-        (1 rows)
+        (0 rows)
 
 
 * With ``reverse_cost``
