@@ -4,9 +4,6 @@
 -------------------------------------------------------------------------------
 
 
-     
-
-
     SELECT * FROM pgr_dijkstra(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table',
             array[2], array[3]
