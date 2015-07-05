@@ -114,11 +114,9 @@ class Pgr_dijkstra
       std::set< V > v_targets;
       for (unsigned int i = 0; i < end_vertex.size(); i++) {
           V v_target;
-          if (!this->get_gVertex(end_vertex[i], v_target)) {
-            // paths.clear();
-            return;
+          if (this->get_gVertex(end_vertex[i], v_target)) {
+            v_targets.insert(v_target);
           }
-          v_targets.insert(v_target);
       }
 
       // perform the algorithm
