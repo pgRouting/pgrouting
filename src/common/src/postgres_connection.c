@@ -355,13 +355,11 @@ int pgr_get_data(
   
   if (!sourceFound) {
       elog(NOTICE, "Starting Vertex does not exist in the data");
-      // return pgr_finish(SPIcode, ret);	  
-      return -1;
+      return 0;
   }
   if (!targetFound) {
       elog(NOTICE, "Ending Vertex does not exist in the data");
-      // return pgr_finish(SPIcode, ret);	  
-      return -1;
+      return 0;
   }
 
   (*totalTuples) = total_tuples;

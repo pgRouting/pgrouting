@@ -56,18 +56,19 @@ static int compute_shortest_path(char* sql, int64_t start_vertex,
   int ret = -1;
 
   if (start_vertex == end_vertex) {
-      elog(ERROR, "Starting vertex and Ending Vertex are equal");
-      return -1;
+      elog(NOTICE, "Starting vertex and Ending Vertex are equal");
+      *path = noPathFound3(-1, path_count, (*path));
+      return 0;
   }
 
   PGR_DBG("Load data");
-  bool sourceFound = false;
-  bool targetFound = false;
-  SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
-               start_vertex, end_vertex);  //  , &sourceFound, &targetFound);
-  if (SPIcode == -1) {
-    PGR_DBG("Error getting data\n");
-    return SPIcode;
+
+  int readCode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
+               start_vertex, end_vertex);
+
+  if (readCode == -1) {
+    *path = noPathFound3(-1, path_count, (*path));
+    return 0;
   }
 
   PGR_DBG("Total %ld tuples in query:", total_tuples);
@@ -85,13 +86,6 @@ static int compute_shortest_path(char* sql, int64_t start_vertex,
   PGR_DBG("total tuples found %i\n", *path_count);
   PGR_DBG("Exist Status = %i\n", ret);
   PGR_DBG("Returned message = %s\n", err_msg);
-
-
-
-  if (ret < 0) {
-      ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
-      errmsg("Error computing path: %s", err_msg)));
-    }
 
   pfree(edges);
   return pgr_finish(SPIcode, ret);

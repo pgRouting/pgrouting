@@ -86,7 +86,7 @@ log << "count" << count;
 
 log << "sequence" << sequence;
 
-#if 0
+#if 1
     *err_msg = strdup("OK");
 #else
     *err_msg = strdup(log.str().c_str());
