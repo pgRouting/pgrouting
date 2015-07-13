@@ -29,6 +29,11 @@
 
 #undef DEBUG
 //#define DEBUG
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
 
 #ifdef DEBUG
 #include <stdio.h>

@@ -21,6 +21,12 @@
 
 #include <boost/lexical_cast.hpp>
 #include <boost/config.hpp>
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
+
 //#include <iostream>
 //#include <fstream>
 
@@ -28,6 +34,7 @@
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/floyd_warshall_shortest.hpp>
 //#include <boost/graph/johnson_all_pairs_shortest_paths.hpp>
+
 #include "string"
 #include "apsp.h"
 #include "set"

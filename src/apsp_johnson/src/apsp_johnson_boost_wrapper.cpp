@@ -21,6 +21,11 @@
 
 #include <boost/config.hpp>
 #include <boost/version.hpp>
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
 
 #if BOOST_VERSION > 103900
 #include <boost/property_map/property_map.hpp>

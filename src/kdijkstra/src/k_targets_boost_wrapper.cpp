@@ -23,6 +23,11 @@
 #include <vector>
 #include <sstream>
 #include <boost/config.hpp>
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
 
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>

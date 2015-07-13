@@ -21,6 +21,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./boost_interface_drivedist.h"
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
+
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
 #include "unistd.h"
 #include <sstream>
 #include <deque>
