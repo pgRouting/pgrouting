@@ -21,25 +21,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(sql text, source_id bigint, target_id bigint, directed boolean, has_rcost boolean,
-  OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+  OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
  '$libdir/librouting-2.1', 'shortest_path'
     LANGUAGE c IMMUTABLE STRICT;
 
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(sql text, source_id bigint, target_id anyarray, directed boolean, has_rcost boolean,
-  OUT seq integer, OUT end_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+  OUT seq integer, OUT end_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
  '$libdir/librouting-2.1', 'dijkstra_1_to_many'
     LANGUAGE c IMMUTABLE STRICT;
 
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(sql text, source_id anyarray, target_id bigint, directed boolean, has_rcost boolean,
-  OUT seq integer, OUT start_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+  OUT seq integer, OUT start_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
  '$libdir/librouting-2.1', 'dijkstra_many_to_1'
     LANGUAGE c IMMUTABLE STRICT;
 
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(sql text, source_id anyarray, target_id anyarray, directed boolean, has_rcost boolean,
-  OUT seq integer, OUT start_v bigint, OUT end_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+  OUT seq integer, OUT start_v bigint, OUT end_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
  '$libdir/librouting-2.1', 'dijkstra_many_to_many'
     LANGUAGE c IMMUTABLE STRICT;
@@ -70,7 +70,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bi
 
 -- V3 signature
 CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bigint,
-  OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+  OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
@@ -89,7 +89,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bi
 
 -- V3 signature
 CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bigint, directed boolean,
-  OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+  OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
@@ -107,7 +107,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bi
 
 -- V3 signature for 1 to many
 CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source bigint, target anyarray, directed boolean default true,
-  OUT seq integer, OUT end_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+  OUT seq integer, OUT end_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
@@ -125,7 +125,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source bigint, target anyarray
 
 -- V3 signature for many to 1
 CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source anyarray, target bigint, directed boolean default true,
-  OUT seq integer, OUT start_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+  OUT seq integer, OUT start_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
@@ -143,7 +143,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source anyarray, target bigint
 
 -- V3 signature for many to many
 CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source anyarray, target anyarray, directed boolean default true,
-  OUT seq integer, OUT start_v bigint, OUT end_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+  OUT seq integer, OUT start_v bigint, OUT end_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
   DECLARE

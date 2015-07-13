@@ -35,15 +35,92 @@ Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1
 It is a graph search algorithm that solves the shortest path problem for
 a graph with non-negative edge path costs, producing a shortest path from 
 a starting vertex (``start_v``) to an ending vertex (``end_v``).
+This implementation can be used with a directed graph and an undirected graph.
 
 .. rubric:: Minimal signature
+
+The minimal signature is for a **directed** graph from one ``start_v`` to one ``end_v``:
 
 .. code-block:: sql
 
       pgr_dijkstra(text sql, bigint start_v, bigint end_v)
        	 RETURNS SET OF (seq, node, edge, cost, agg_cost) or EMPTY SET
 
-The weighted directed graph, ``G(V,E)``, is definied by:
+
+.. rubric:: Dijkstra 1 to 1
+
+This signature performs a Dijkstra from one ``start_v`` to one ``end_v``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+.. code-block:: sql
+
+      pgr_dijkstra(text sql, bigint start_v, bigint end_v,
+	                 boolean directed:=true);
+       	 RETURNS SET OF (seq, node, edge, cost, agg_cost) or EMPTY SET
+
+
+.. rubric:: Dijkstra many to 1:
+
+This signature performs a Dijkstra from many ``start_v`` to one ``end_v``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+Using this signature, will load once the graph and perform several 1 to 1 Dijkstra
+where the ending vertex is fixed.
+
+The extra ``start_v`` in the result is used to distinguish to which path it belongs.
+
+.. code-block:: sql
+
+      pgr_dijkstra(text sql, array[ANY_INTEGER] start_v, bigint end_v,
+	                 boolean directed:=true);
+       	 RETURNS SET OF (seq, start_v, node, edge, cost, agg_cost) or EMPTY SET
+
+.. rubric:: Dijkstra 1 to many:
+
+This signature performs a Dijkstra from many ``start_v`` to one ``end_v``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+Using this signature, will load once the graph and perform several 1 to 1 Dijkstra
+where the starting vertex is fixed.
+
+The extra ``end_v`` in the result is used to distinguish to which path it belongs.
+
+.. code-block:: sql
+
+       pgr_dijkstra(text sql, bigint start_v, array[ANY_INTEGER] end_v,
+	                 boolean directed:=true);
+       	 RETURNS SET OF (seq, end_v, node, edge, cost, agg_cost) or EMPTY SET
+
+.. rubric:: Dijkstra many to many:
+
+
+This signature performs a Dijkstra from many ``start_v`` to one ``end_v``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+Using this signature, will load once the graph and perform all combinations 
+for starting vertices and ending vertices.
+
+The extra ``start_v`` and ``end_v`` in the result is used to distinguish to which path it belongs.
+
+.. code-block:: sql
+
+       pgr_dijkstra(text sql, array[ANY_INTEGER] start_v, array[ANY_INTEGER] end_v,
+	                 boolean directed:=true);
+       	 RETURNS SET OF (seq, start_v, end_v, node, edge, cost, agg_cost) or EMPTY SET
+
+
+The problem definition
+======================
+
+The graphs are defined as follows:
+
+.. rubric:: Directed graph
+
+The weighted directed graph, ``G_d(V,E)``, is definied by:
   - the set of vertices 
     ``V`` = ``source`` Union ``target`` Union ``{start_v}`` Union ``{end_v}``
   - the set of edges
@@ -54,77 +131,43 @@ The weighted directed graph, ``G(V,E)``, is definied by:
 
 This is done transparently using directed Boost.Graph.
 
-For the weighted graph defined by:
-  - ``G(V,E)``
+.. rubric:: Undirected graph
 
-and the starting and ending vertices:
-  - ``start_v`` and ``end_v``
-
-The algorithm returns a path, if it exists, in terms of a sequence of vertices and of edges,
-which is the shortest path using Dijsktra algorithm between ``start_v`` and ``end_v``, in a
-set form where ``seq`` indicates the position in the path of the ``node`` / ``edge``.
-
-Aditional information like the cost (``cost``) of the edge to be used and the
-aggregate cost (``agg_cost``) from the ``start_v`` up to the ``node`` is included.
-
-If there is no path, the resulting set is empty.
-
-The minimal signature is for a directed graph from one ``start_v`` to one ``end_v``:
-
-
-.. rubric:: Dijkstra 1 to 1
-
-
-.. code-block:: sql
-
-      pgr_dijkstra(text sql, bigint start_v, bigint end_v,
-	                 boolean directed:=true);
-       	 RETURNS SET OF (seq, node, edge, cost, agg_cost) or EMPTY SET
-
-This signature performs a Dijkstra from one ``start_v`` to one ``end_v``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-When the graph is directed it acts like the minimal signature.
-
-The weighted undirected graph, ``G(V,E)``, is definied by:
+The weighted undirected graph, ``G_u(V,E)``, is definied by:
   - the set of vertices
     ``V`` = ``source`` Union ``target`` Union ``{start_v}`` Union ``{end_v}``
-
   - the set of edges
      + when ``reverse_cost`` column is used:
     ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, cost >=0)}``
       union ``{ (target, source, reverse_cost) where cost >=0 }``  union ``{ (source, target,  reverse_cost >=0)}``
-
      + when ``reverse_cost`` column is *not* used:
     ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, cost >=0)}``
 
 This is done transparently using undirected Boost.Graph.
 
+.. rubric:: The problem
 
-.. rubric:: Dijkstra many to 1:
+Given a graph:
 
-.. code-block:: sql
+  - ``G(V,E)``  where ``G(V,E) = G_d(V,E)`` or ``G(V,E) = G_u(V,E)``
 
-      pgr_dijkstra(text sql, array[ANY_INTEGER] start_v, bigint end_v,
-	                 boolean directed:=true);
-       	 RETURNS SET OF (seq, start_v, node, edge, cost, agg_cost) or EMPTY SET
+and the starting and ending vertices:
+  - ``start_v`` and ``end_v``
 
-.. rubric:: Dijkstra 1 to many:
+The algorithm returns a path, if it exists, in terms of a sequence of vertices and of edges,
+set of ``(seq, node, edge, cost, agg_cost)``
+which is the shortest path using Dijsktra algorithm between ``start_v`` and ``end_v``, in a
+where ``seq`` indicates the relative position in the path of the ``node`` / ``edge``.
 
-.. code-block:: sql
+  - When ``edge == -1`` it represents the end of the path.
 
-	SET OF (seq, end_v, node, edge, cost, tot_cost)
-	    pgr_dijkstra(text sql, bigint start_v, array[ANY_INTEGER] end_v,
-	                 boolean directed:=true);
+  - When ``node == end_v`` it represents the end of the path.
 
-.. rubric:: Dijkstra many to many:
 
-.. code-block:: sql
+If there is no path, the resulting set is empty.
 
-	SET OF (seq, start_v, end_v, node, edge, cost, tot_cost)
-	    pgr_dijkstra(text sql, array[ANY_INTEGER] start_v, array[ANY_INTEGER] end_v,
-	                 boolean directed:=true);
+Aditional information like the cost (``cost``) of the edge to be used to go to the next node
+and the aggregate cost (``agg_cost``) from the ``start_v`` up to the ``node`` is included.
 
 
 Description of the SQL query
@@ -163,7 +206,7 @@ Description of the parameters of the signatures
 Description of the return values
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq [, start_v] [, end_v] , node, edge, cost, tot_cost)``
+Returns set of ``(seq [, start_v] [, end_v] , node, edge, cost, agg_cost)``
 
 :seq: ``INT``  row sequence
 :start_v: ``BIGINT`` id of the starting vertex. Used when multiple starting vetrices are in the query.
@@ -171,7 +214,7 @@ Returns set of ``(seq [, start_v] [, end_v] , node, edge, cost, tot_cost)``
 :node: ``BIGINT`` id of the node in the path from start_v to end_v.
 :edge: ``BIGINT`` id of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path. 
 :cost: ``FLOAT`` cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
-:tot_cost:  ``FLOAT`` total cost from ``start_v`` to ``node``.
+:agg_cost:  ``FLOAT`` total cost from ``start_v`` to ``node``.
 
 
 
@@ -184,7 +227,7 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         2, 3
                 );
-         seq | node | edge | cost | tot_cost 
+         seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
            0 |    2 |    4 |    1 |        0
            1 |    5 |    8 |    1 |        1
@@ -198,7 +241,7 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         2, 5
                 );
-         seq | node | edge | cost | tot_cost 
+         seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
            0 |    2 |    4 |    1 |        0
            1 |    5 |   -1 |    0 |        1
@@ -208,7 +251,7 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         2, array[3,5]
                 );
-         seq | end_v | node | edge | cost | tot_cost 
+         seq | end_v | node | edge | cost | agg_cost 
         -----+-------+------+------+------+----------
            0 |     3 |    2 |    4 |    1 |        0
            1 |     3 |    5 |    8 |    1 |        1
@@ -224,7 +267,7 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         11, 3
                 );
-         seq | node | edge | cost | tot_cost 
+         seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
            0 |   11 |   13 |    1 |        0
            1 |   12 |   15 |    1 |        1
@@ -237,7 +280,7 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         11, 5
                 );
-         seq | node | edge | cost | tot_cost 
+         seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
            0 |   11 |   13 |    1 |        0
            1 |   12 |   15 |    1 |        1
@@ -251,7 +294,7 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         array[2,11], 5
                 );
-         seq | start_v | node | edge | cost | tot_cost 
+         seq | start_v | node | edge | cost | agg_cost 
         -----+---------+------+------+------+----------
            0 |       2 |    2 |    4 |    1 |        0
            1 |       2 |    5 |   -1 |    0 |        1
@@ -267,7 +310,7 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         array[2, 11], array[3,5]
                 );
-         seq | start_v | end_v | node | edge | cost | tot_cost 
+         seq | start_v | end_v | node | edge | cost | agg_cost 
         -----+---------+-------+------+------+------+----------
            0 |       2 |     3 |    2 |    4 |    1 |        0
            1 |       2 |     3 |    5 |    8 |    1 |        1
@@ -300,7 +343,7 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
                         2, 3,
                         false
                 );
-         seq | node | edge | cost | tot_cost 
+         seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
            0 |    2 |    2 |    1 |        0
            1 |    3 |   -1 |    0 |        1
@@ -311,7 +354,7 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
                         2, 5,
                         false
                 );
-         seq | node | edge | cost | tot_cost 
+         seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
            0 |    2 |    4 |    1 |        0
            1 |    5 |   -1 |    0 |        1
@@ -322,7 +365,7 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
                         11, 3,
                         false
                 );
-         seq | node | edge | cost | tot_cost 
+         seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
            0 |   11 |   11 |    1 |        0
            1 |    6 |    5 |    1 |        1
@@ -334,7 +377,7 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
                         11, 5,
                         false
                 );
-         seq | node | edge | cost | tot_cost 
+         seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
            0 |   11 |   11 |    1 |        0
            1 |    6 |    8 |    1 |        1
@@ -347,7 +390,7 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
                         array[2,11], 5,
                         false
                 );
-         seq | start_v | node | edge | cost | tot_cost 
+         seq | start_v | node | edge | cost | agg_cost 
         -----+---------+------+------+------+----------
            0 |       2 |    2 |    4 |    1 |        0
            1 |       2 |    5 |   -1 |    0 |        1
@@ -361,7 +404,7 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
                         2, array[3,5],
                         false
                 );
-         seq | end_v | node | edge | cost | tot_cost 
+         seq | end_v | node | edge | cost | agg_cost 
         -----+-------+------+------+------+----------
            0 |     3 |    2 |    2 |    1 |        0
            1 |     3 |    3 |   -1 |    0 |        1
@@ -374,7 +417,7 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
                         array[2, 11], array[3,5],
                         false
                 );
-         seq | start_v | end_v | node | edge | cost | tot_cost 
+         seq | start_v | end_v | node | edge | cost | agg_cost 
         -----+---------+-------+------+------+------+----------
            0 |       2 |     3 |    2 |    2 |    1 |        0
            1 |       2 |     3 |    3 |   -1 |    0 |        1
@@ -386,6 +429,7 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
            7 |      11 |     5 |   11 |   11 |    1 |        0
            8 |      11 |     5 |    6 |    8 |    1 |        1
            9 |      11 |     5 |    5 |   -1 |    0 |        2
+        (10 rows)
         
 
 Examples for :ref:`fig3-direct-Cost` 
@@ -397,16 +441,15 @@ Examples for :ref:`fig3-direct-Cost`
                         'SELECT id, source, target, cost FROM edge_table',
                         2, 3
                 );
-         seq | node | edge | cost | tot_cost 
+         seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
-           0 |   -1 |   -1 |    0 |        0
-        (1 row)
+        (0 rows)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost FROM edge_table',
                         2, 5
                 );
-         seq | node | edge | cost | tot_cost 
+         seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
            0 |    2 |    4 |    1 |        0
            1 |    5 |   -1 |    0 |        1
@@ -416,25 +459,23 @@ Examples for :ref:`fig3-direct-Cost`
                         'SELECT id, source, target, cost FROM edge_table',
                         11, 3
                 );
-         seq | node | edge | cost | tot_cost 
+         seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
-           0 |   -1 |   -1 |    0 |        0
-        (1 row)
+        (0 rows)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost FROM edge_table',
                         11, 5
                 );
-         seq | node | edge | cost | tot_cost 
+         seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
-           0 |   -1 |   -1 |    0 |        0
-        (1 row)
+        (0 rows)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost FROM edge_table',
                         array[2,11], 5
                 );
-         seq | start_v | node | edge | cost | tot_cost 
+         seq | start_v | node | edge | cost | agg_cost 
         -----+---------+------+------+------+----------
            0 |       2 |    2 |    4 |    1 |        0
            1 |       2 |    5 |   -1 |    0 |        1
@@ -444,7 +485,7 @@ Examples for :ref:`fig3-direct-Cost`
                         'SELECT id, source, target, cost FROM edge_table',
                         2, array[3,5]
                 );
-         seq | end_v | node | edge | cost | tot_cost 
+         seq | end_v | node | edge | cost | agg_cost 
         -----+-------+------+------+------+----------
            0 |     5 |    2 |    4 |    1 |        0
            1 |     5 |    5 |   -1 |    0 |        1
@@ -454,7 +495,7 @@ Examples for :ref:`fig3-direct-Cost`
                         'SELECT id, source, target, cost FROM edge_table',
                         array[2, 11], array[3,5]
                 );
-         seq | start_v | end_v | node | edge | cost | tot_cost 
+         seq | start_v | end_v | node | edge | cost | agg_cost 
         -----+---------+-------+------+------+------+----------
            0 |       2 |     5 |    2 |    4 |    1 |        0
            1 |       2 |     5 |    5 |   -1 |    0 |        1
@@ -473,7 +514,7 @@ Examples for :ref:`fig4-undirect-Cost`
 			2, 3,
                         false
 		);
-        seq | node | edge | cost | tot_cost 
+        seq | node | edge | cost | agg_cost 
        -----+------+------+------+----------
           0 |    2 |    4 |    1 |        0
           1 |    5 |    8 |    1 |        1
@@ -486,7 +527,7 @@ Examples for :ref:`fig4-undirect-Cost`
 			2, 5,
                         false
 		);
-        seq | node | edge | cost | tot_cost 
+        seq | node | edge | cost | agg_cost 
        -----+------+------+------+----------
           0 |    2 |    4 |    1 |        0
           1 |    5 |   -1 |    0 |        1
@@ -497,7 +538,7 @@ Examples for :ref:`fig4-undirect-Cost`
 			11, 3,
                         false
 		);
-        seq | node | edge | cost | tot_cost 
+        seq | node | edge | cost | agg_cost 
        -----+------+------+------+----------
           0 |   11 |   11 |    1 |        0
           1 |    6 |    5 |    1 |        1
@@ -509,7 +550,7 @@ Examples for :ref:`fig4-undirect-Cost`
 			11, 5,
                         false
 		);
-        seq | node | edge | cost | tot_cost 
+        seq | node | edge | cost | agg_cost 
        -----+------+------+------+----------
           0 |   11 |   11 |    1 |        0
           1 |    6 |    8 |    1 |        1
@@ -522,7 +563,7 @@ Examples for :ref:`fig4-undirect-Cost`
 			array[2,11], 5,
                         false
 		);
-        seq | start_v | node | edge | cost | tot_cost 
+        seq | start_v | node | edge | cost | agg_cost 
        -----+---------+------+------+------+----------
           0 |       2 |    2 |    4 |    1 |        0
           1 |       2 |    5 |   -1 |    0 |        1
@@ -536,7 +577,7 @@ Examples for :ref:`fig4-undirect-Cost`
 			2, array[3,5],
                         false
 		);
-        seq | end_v | node | edge | cost | tot_cost 
+        seq | end_v | node | edge | cost | agg_cost 
        -----+-------+------+------+------+----------
           0 |     3 |    2 |    4 |    1 |        0
           1 |     3 |    5 |    8 |    1 |        1
@@ -551,7 +592,7 @@ Examples for :ref:`fig4-undirect-Cost`
 			array[2, 11], array[3,5],
                         false
 		);
-        seq | start_v | end_v | node | edge | cost | tot_cost 
+        seq | start_v | end_v | node | edge | cost | agg_cost 
        -----+---------+-------+------+------+------+----------
           0 |       2 |     3 |    2 |    4 |    1 |        0
           1 |       2 |     3 |    5 |    8 |    1 |        1
@@ -607,7 +648,7 @@ Equivalences for :ref:`fig1-direct-Cost-Reverse`
 		2,3 
 	);
 
-       seq | node | edge | cost | tot_cost 
+       seq | node | edge | cost | agg_cost 
        -----+------+------+------+----------
           0 |    2 |    4 |    1 |        0
           1 |    5 |    8 |    1 |        1
@@ -631,7 +672,7 @@ Equivalences for :ref:`fig1-direct-Cost-Reverse`
                 2, array[3]
         );
 
-       seq | start_v | node | edge | cost | tot_cost 
+       seq | start_v | node | edge | cost | agg_cost 
        -----+---------+------+------+------+----------
           0 |       2 |    2 |    4 |    1 |        0
           1 |       2 |    5 |    8 |    1 |        1
@@ -654,7 +695,7 @@ Equivalences for :ref:`fig1-direct-Cost-Reverse`
                 array[2], array[3]
         );
 
-        seq | start_v | end_v | node | edge | cost | tot_cost 
+        seq | start_v | end_v | node | edge | cost | agg_cost 
        -----+---------+-------+------+------+------+----------
           0 |       2 |     3 |    2 |    4 |    1 |        0
           1 |       2 |     3 |    5 |    8 |    1 |        1
@@ -694,7 +735,7 @@ Equivalences for :ref:`fig2-undirect-Cost-Reverse`
                 false     -- directed flag
 	);
 
-        seq | node | edge | cost | tot_cost 
+        seq | node | edge | cost | agg_cost 
        -----+------+------+------+----------
           0 |    2 |    2 |    1 |        0
           1 |    3 |   -1 |    0 |        1
@@ -707,7 +748,7 @@ Equivalences for :ref:`fig2-undirect-Cost-Reverse`
                 2, array[3],
                 false     
         );
-        seq | end_v | node | edge | cost | tot_cost 
+        seq | end_v | node | edge | cost | agg_cost 
        -----+-------+------+------+------+----------
           0 |     3 |    2 |    2 |    1 |        0
           1 |     3 |    3 |   -1 |    0 |        1
@@ -719,7 +760,7 @@ Equivalences for :ref:`fig2-undirect-Cost-Reverse`
                 array[2], 3,
                 false
         );
-        seq | start_v | node | edge | cost | tot_cost 
+        seq | start_v | node | edge | cost | agg_cost 
        -----+---------+------+------+------+----------
           0 |       2 |    2 |    2 |    1 |        0
           1 |       2 |    3 |   -1 |    0 |        1
@@ -732,7 +773,7 @@ Equivalences for :ref:`fig2-undirect-Cost-Reverse`
                 false
         );
 
-        seq | start_v | end_v | node | edge | cost | tot_cost 
+        seq | start_v | end_v | node | edge | cost | agg_cost 
        -----+---------+-------+------+------+------+----------
           0 |       2 |     3 |    2 |    2 |    1 |        0
           1 |       2 |     3 |    3 |   -1 |    0 |        1
