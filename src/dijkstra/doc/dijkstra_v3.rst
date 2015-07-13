@@ -19,7 +19,8 @@ pgr_dijkstra (V 3.0) - Shortest Path Dijkstra
 Name
 -------------------------------------------------------------------------------
 
-``pgr_dijkstra`` — Returns the shortest path form a single source to a single target using Dijkstra algorithm.
+``pgr_dijkstra`` — Returns the shortest path(s) using Dijkstra algorithm.
+In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/doc/libs/1_58_0/libs/graph/doc/index.html
@@ -30,32 +31,86 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956. It is a graph search algorithm that solves the single-source shortest path problem for a graph with non-negative edge path costs, producing a shortest path tree.
+Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956.
+It is a graph search algorithm that solves the shortest path problem for
+a graph with non-negative edge path costs, producing a shortest path from 
+a starting vertex (``start_v``) to an ending vertex (``end_v``).
 
-The minimal use signature:
-
-.. code-block:: sql
-
-	SET OF (seq, node, edge, cost, tot_cost)
-	    pgr_dijkstra(text sql, bigint start_v, bigint target);
-
-Dijkstra 1 to 1:
+.. rubric:: Minimal signature
 
 .. code-block:: sql
 
-	SET OF (seq, node, edge, cost, tot_cost)
-	    pgr_dijkstra(text sql, bigint start_v, bigint end_v,
+      pgr_dijkstra(text sql, bigint start_v, bigint end_v)
+       	 RETURNS SET OF (seq, node, edge, cost, agg_cost) or EMPTY SET
+
+The weighted directed graph, ``G(V,E)``, is definied by:
+  - the set of vertices 
+    ``V`` = ``source`` Union ``target`` Union ``{start_v}`` Union ``{end_v}``
+  - the set of edges
+     + when ``reverse_cost`` column is used:
+    ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, reverse_cost >=0)}``
+     + when ``reverse_cost`` column is *not* used:
+    ``E`` = ``{ (source, target, cost) where cost >=0 }``
+
+This is done transparently using directed Boost.Graph.
+
+For the weighted graph defined by:
+  - ``G(V,E)``
+
+and the starting and ending vertices:
+  - ``start_v`` and ``end_v``
+
+The algorithm returns a path, if it exists, in terms of a sequence of vertices and of edges,
+which is the shortest path using Dijsktra algorithm between ``start_v`` and ``end_v``, in a
+set form where ``seq`` indicates the position in the path of the ``node`` / ``edge``.
+
+Aditional information like the cost (``cost``) of the edge to be used and the
+aggregate cost (``agg_cost``) from the ``start_v`` up to the ``node`` is included.
+
+If there is no path, the resulting set is empty.
+
+The minimal signature is for a directed graph from one ``start_v`` to one ``end_v``:
+
+
+.. rubric:: Dijkstra 1 to 1
+
+
+.. code-block:: sql
+
+      pgr_dijkstra(text sql, bigint start_v, bigint end_v,
 	                 boolean directed:=true);
+       	 RETURNS SET OF (seq, node, edge, cost, agg_cost) or EMPTY SET
 
-Dijkstra many to 1:
+This signature performs a Dijkstra from one ``start_v`` to one ``end_v``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+When the graph is directed it acts like the minimal signature.
+
+The weighted undirected graph, ``G(V,E)``, is definied by:
+  - the set of vertices
+    ``V`` = ``source`` Union ``target`` Union ``{start_v}`` Union ``{end_v}``
+
+  - the set of edges
+     + when ``reverse_cost`` column is used:
+    ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, cost >=0)}``
+      union ``{ (target, source, reverse_cost) where cost >=0 }``  union ``{ (source, target,  reverse_cost >=0)}``
+
+     + when ``reverse_cost`` column is *not* used:
+    ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, cost >=0)}``
+
+This is done transparently using undirected Boost.Graph.
+
+
+.. rubric:: Dijkstra many to 1:
 
 .. code-block:: sql
 
-	SET OF (seq, start_v, node, edge, cost, tot_cost)
-	    pgr_dijkstra(text sql, array[ANY_INTEGER] start_v, bigint end_v,
+      pgr_dijkstra(text sql, array[ANY_INTEGER] start_v, bigint end_v,
 	                 boolean directed:=true);
+       	 RETURNS SET OF (seq, start_v, node, edge, cost, agg_cost) or EMPTY SET
 
-Dijkstra 1 to many:
+.. rubric:: Dijkstra 1 to many:
 
 .. code-block:: sql
 
@@ -63,7 +118,7 @@ Dijkstra 1 to many:
 	    pgr_dijkstra(text sql, bigint start_v, array[ANY_INTEGER] end_v,
 	                 boolean directed:=true);
 
-Dijkstra many to many:
+.. rubric:: Dijkstra many to many:
 
 .. code-block:: sql
 
@@ -344,7 +399,8 @@ Examples for :ref:`fig3-direct-Cost`
                 );
          seq | node | edge | cost | tot_cost 
         -----+------+------+------+----------
-        (0 row)
+           0 |   -1 |   -1 |    0 |        0
+        (1 row)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost FROM edge_table',
@@ -362,7 +418,8 @@ Examples for :ref:`fig3-direct-Cost`
                 );
          seq | node | edge | cost | tot_cost 
         -----+------+------+------+----------
-        (0 row)
+           0 |   -1 |   -1 |    0 |        0
+        (1 row)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost FROM edge_table',
@@ -370,7 +427,8 @@ Examples for :ref:`fig3-direct-Cost`
                 );
          seq | node | edge | cost | tot_cost 
         -----+------+------+------+----------
-        (0 row)
+           0 |   -1 |   -1 |    0 |        0
+        (1 row)
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost FROM edge_table',
