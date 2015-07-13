@@ -1,6 +1,9 @@
 CREATE OR REPLACE FUNCTION pgr_brokenGraph(
                 IN schm character varying,
                 IN tbl character varying,
+                IN gid character varying,
+                IN source character varying,
+                IN target character varying,
                 IN clmn character varying
         )
         RETURNS SETOF VOID AS
@@ -18,7 +21,7 @@ BEGIN
         EXECUTE 'SELECT COUNT(*) AS count FROM information_schema.columns WHERE table_schema = ''' || quote_ident(schm) || ''' AND  table_name= ''' || quote_ident(tbl) || ''' AND column_name= ''' || quote_ident(clmn) || '''' INTO rec_count;
 
         IF (rec_count.count > 0) THEN
-                RAISE NOTICE 'Column % in the table % (schema %) already exists!', quote_ident(clmn), quote_ident(tbl), quote_ident(schm);
+                RAISE NOTICE 'Column % in table % under schema % already exists!', quote_ident(clmn), quote_ident(tbl), quote_ident(schm);
         ELSE
                 --------- Add necessary columns ----------
                 EXECUTE 'ALTER TABLE ' || quote_ident(schm) || '.' || quote_ident(tbl) || ' ADD COLUMN ' || quote_ident(clmn) || ' INTEGER DEFAULT -1';
@@ -28,8 +31,8 @@ BEGIN
                 WHILE TRUE
                         LOOP
                                 ---------- Assign the very first -1 row graph_id ----------
-                                EXECUTE 'SELECT * FROM ' || quote_ident(schm) || '.' || quote_ident(tbl) || ' WHERE ' || quote_ident(clmn) || ' = -1 LIMIT 1' INTO rec_single;
-                                EXECUTE 'UPDATE ' || quote_ident(schm) || '.' || quote_ident(tbl) || ' SET ' || quote_ident(clmn) || ' = ' || graph_id || ' WHERE gid = ' || rec_single.gid || '';
+                                EXECUTE 'SELECT ' || quote_ident(gid) || ' AS gid FROM ' || quote_ident(schm) || '.' || quote_ident(tbl) || ' WHERE ' || quote_ident(clmn) || ' = -1 LIMIT 1' INTO rec_single;
+                                EXECUTE 'UPDATE ' || quote_ident(schm) || '.' || quote_ident(tbl) || ' SET ' || quote_ident(clmn) || ' = ' || graph_id || ' WHERE ' || quote_ident(gid) || ' = ' || rec_single.gid || '';
 
                                 --------- Search other rows with that particular graph_id -----------
                                 WHILE TRUE
@@ -37,15 +40,15 @@ BEGIN
                                                 EXECUTE 'SELECT COUNT(*) FROM ' || quote_ident(schm) || '.' || quote_ident(tbl) || ' WHERE ' || quote_ident(clmn) || ' = ' || graph_id || ' AND garbage = 0' into rec_count;
                                                 ----------- The following if else will check those rows which already have entertained ------------
                                                 IF (rec_count.count > 0) THEN
-                                                        sql1 := 'SELECT * FROM ' || quote_ident(schm) || '.' || quote_ident(tbl) || ' WHERE ' || quote_ident(clmn) || ' = ' || graph_id || ' AND garbage = 0';
+                                                        sql1 := 'SELECT ' || quote_ident(gid) || ' AS gid, '|| quote_ident(source) ||' AS source, '|| quote_ident(target) ||' AS target FROM ' || quote_ident(schm) || '.' || quote_ident(tbl) || ' WHERE ' || quote_ident(clmn) || ' = ' || graph_id || ' AND garbage = 0';
                                                         FOR rec1 IN EXECUTE sql1
                                                                 LOOP
-                                                                        sql2 := 'SELECT * FROM ' || quote_ident(schm) || '.' || quote_ident(tbl) || ' WHERE source = '|| rec1.source ||' OR target = '|| rec1.source ||' OR source = '|| rec1.target ||' OR target = '|| rec1.target ||'';
+                                                                        sql2 := 'SELECT ' || quote_ident(gid) || ' AS gid, '|| quote_ident(source) ||' AS source, '|| quote_ident(target) ||' AS target FROM ' || quote_ident(schm) || '.' || quote_ident(tbl) || ' WHERE '|| quote_ident(source) ||' = '|| rec1.source ||' OR '|| quote_ident(target) ||' = '|| rec1.source ||' OR '|| quote_ident(source) ||' = '|| rec1.target ||' OR '|| quote_ident(target) ||' = '|| rec1.target ||'';
                                                                         FOR rec2 IN EXECUTE sql2
                                                                                 LOOP
-                                                                                        EXECUTE 'UPDATE ' || quote_ident(schm) || '.' || quote_ident(tbl) || ' SET ' || quote_ident(clmn) || ' = ' || graph_id || ' WHERE gid = ' || rec2.gid || '';
+                                                                                        EXECUTE 'UPDATE ' || quote_ident(schm) || '.' || quote_ident(tbl) || ' SET ' || quote_ident(clmn) || ' = ' || graph_id || ' WHERE ' || quote_ident(gid) || ' = ' || rec2.gid || '';
                                                                                 END LOOP;
-                                                                        EXECUTE 'UPDATE ' || quote_ident(schm) || '.' || quote_ident(tbl) || ' SET garbage = 1 WHERE gid = ' || rec1.gid || '';
+                                                                        EXECUTE 'UPDATE ' || quote_ident(schm) || '.' || quote_ident(tbl) || ' SET garbage = 1 WHERE ' || quote_ident(gid) || ' = ' || rec1.gid || '';
                                                                 END LOOP;
                                                 ELSE
                                                         EXIT;
@@ -74,4 +77,7 @@ $BODY$
 LANGUAGE 'plpgsql' VOLATILE STRICT;
 
 ------------ USAGE ------------
--- SELECT pgr_brokenGraph('schema_name', 'edgetable_name', 'subgraphcolumn_name')
+-- SELECT pgr_brokenGraph('schema_name', 'edgetable_name', 'gid_name', 'source_name', 'target_name', 'subgraphcolumn_name')
+------------ Example ----------
+-- If table calles in schema e03 has columns gido as gid, salida as source and destino as target. And wants to generate subgrafica column, then the corresponding SQL will be --
+-- SELECT pgr_brokenGraph('e03', 'calles', 'gido', 'salida', 'destino', 'subgrafica')
