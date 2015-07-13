@@ -1,0 +1,2 @@
+-- 'ways' is the table name and 'graph_id' is the column name one wants to generate --
+SELECT pgr_brokenGraph('ways', 'graph_id')
