@@ -1,3 +1,8 @@
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
 #include "VRP.h"
 #include "VRP_Solver.h"
 #include <exception>

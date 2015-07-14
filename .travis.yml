@@ -7,6 +7,8 @@
 
 language: c
 
+sudo: required
+
 compiler:
   - gcc
 
@@ -20,6 +22,7 @@ branches:
     - develop
     - develop_2_1_0
     - feature-travis
+    - dd-develop
 
 addons:
   postgresql: "9.2"

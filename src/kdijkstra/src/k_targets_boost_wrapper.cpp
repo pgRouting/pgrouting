@@ -19,6 +19,11 @@
  *
  */
 
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
 #include <exception>
 #include <vector>
 #include <sstream>

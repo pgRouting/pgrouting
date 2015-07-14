@@ -20,8 +20,13 @@
  */
 
 // Include C header first for windows build issue
-#include "astar.h"
 
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
+#include "astar.h"
 #include <boost/config.hpp>
 
 #include <boost/graph/graph_traits.hpp>
