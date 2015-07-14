@@ -297,7 +297,7 @@ if(USE_PG_EXTENSION)
     #    "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
 endif(USE_PG_EXTENSION)
 
-cat("${PGROUTING_SOURCE_DIR}/src/common/sql/types.sql"
+cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
     "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 #cat("${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 
@@ -328,7 +328,7 @@ else(UNIX)
     file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.dll")
 endif(UNIX)
 
-#message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
+message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
 
 install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
 

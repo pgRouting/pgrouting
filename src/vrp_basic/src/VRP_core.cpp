@@ -1,11 +1,11 @@
-#include "VRP.h"
-#include "VRP_Solver.h"
-#include <exception>
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
 #endif
 
+#include "VRP.h"
+#include "VRP_Solver.h"
+#include <exception>
 
 #undef PGR_LOGGER_ON
 #define PGR_LOGGER_LOC
