@@ -217,11 +217,11 @@ VehicleInfo Vehicle;
         {
                 S0.r.push_back(r[i]);
         }
-        printf("Size  =>>  S0.r.size=%ld\n", S0.r.size());
+        // printf("Size  =>>  S0.r.size=%ld\n", S0.r.size());
 
  
        //Starting Neighborhoods
-        printf("\nNeighborhoods From now\n");
+        // printf("\nNeighborhoods From now\n");
         int sol_count=TabuSearch();
 
  //Copying back the results 
