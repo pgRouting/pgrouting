@@ -101,6 +101,7 @@ This signature performs a Dijkstra from many ``start_v`` to one ``end_v``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
+
 Using this signature, will load once the graph and perform all combinations 
 for starting vertices and ending vertices.
 
@@ -121,27 +122,41 @@ The graphs are defined as follows:
 .. rubric:: Directed graph
 
 The weighted directed graph, ``G_d(V,E)``, is definied by:
-  - the set of vertices 
-    ``V`` = ``source`` Union ``target`` Union ``{start_v}`` Union ``{end_v}``
-  - the set of edges
-     + when ``reverse_cost`` column is used:
-    ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, reverse_cost >=0)}``
-     + when ``reverse_cost`` column is *not* used:
-    ``E`` = ``{ (source, target, cost) where cost >=0 }``
+
+* the set of vertices 
+
+  - ``V`` = ``source`` Union ``target`` Union ``{start_v}`` Union ``{end_v}``
+
+* the set of edges
+
+  - when ``reverse_cost`` column is used: 
+
+    - ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, reverse_cost >=0)}``
+
+  - when ``reverse_cost`` column is *not* used: 
+
+    - ``E`` = ``{ (source, target, cost) where cost >=0 }``
 
 This is done transparently using directed Boost.Graph.
 
 .. rubric:: Undirected graph
 
 The weighted undirected graph, ``G_u(V,E)``, is definied by:
-  - the set of vertices
-    ``V`` = ``source`` Union ``target`` Union ``{start_v}`` Union ``{end_v}``
-  - the set of edges
-     + when ``reverse_cost`` column is used:
-    ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, cost >=0)}``
+
+* the set of vertices
+
+  -  ``V`` = ``source`` Union ``target`` Union ``{start_v}`` Union ``{end_v}``
+
+* the set of edges
+
+  - when ``reverse_cost`` column is used:
+
+    - ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, cost >=0)}``  \
       union ``{ (target, source, reverse_cost) where cost >=0 }``  union ``{ (source, target,  reverse_cost >=0)}``
-     + when ``reverse_cost`` column is *not* used:
-    ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, cost >=0)}``
+
+  - when ``reverse_cost`` column is *not* used:
+
+    - ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, cost >=0)}``
 
 This is done transparently using undirected Boost.Graph.
 

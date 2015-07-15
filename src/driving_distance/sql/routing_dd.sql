@@ -28,13 +28,13 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id integer, dist
     LANGUAGE c IMMUTABLE STRICT;
 */
 CREATE OR REPLACE FUNCTION _pgr_drivingDistance(sql text, start_v bigint, distance float8, directed boolean, has_rcost boolean,
-       OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+       OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
      '$libdir/librouting-2.1', 'driving_distance'
  LANGUAGE c IMMUTABLE STRICT;
 
 CREATE OR REPLACE FUNCTION _pgr_drivingDistance(sql text, start_v anyarray, distance float8, directed boolean, equicost boolean, has_rcost boolean,
-       OUT seq integer, OUT start_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+       OUT seq integer, OUT start_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
      '$libdir/librouting-2.1', 'driving_many_to_dist'
  LANGUAGE c IMMUTABLE STRICT;
@@ -56,7 +56,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance
          end if;
       end if;
 
-      return query SELECT seq, node::integer, edge::integer, tot_cost
+      return query SELECT seq, node::integer as id1, edge::integer as id2, agg_cost as cost
                 FROM _pgr_drivingDistance(sql, source, distance, directed, has_rcost);
   END
   $BODY$
@@ -66,7 +66,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance
 
 
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, start_v bigint, distance float8,
-       OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+       OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
@@ -83,7 +83,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, start_v bigint, distanc
 
 
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, start_v bigint, distance float8, directed boolean,
-       OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+       OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
@@ -99,7 +99,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, start_v bigint, distanc
   ROWS 1000;
 
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, start_v anyarray, distance float8, directed boolean default true, equicost boolean default false,
-       OUT seq integer, OUT from_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT tot_cost float)
+       OUT seq integer, OUT from_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
   DECLARE

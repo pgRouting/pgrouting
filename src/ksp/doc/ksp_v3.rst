@@ -37,16 +37,16 @@ The minimal signature:
 
 .. code-block:: sql
 
-   SET OF (seq, route, node, edge, cost, tot_cost)
-      pgr_ksp(TEXT sql_q, BIGINT start_v, BIGINT end_v, INTEGER k);
+  pgr_ksp(TEXT sql_q, BIGINT start_v, BIGINT end_v, INTEGER k);
+    RETURNS SET OF (seq, route, node, edge, cost, agg_cost) or EMPTY SET
 
 The full signature:
 
 .. code-block:: sql
 
-   SET OF (seq, route, node, edge, cost, tot_cost)
-      pgr_ksp(TEXT sql_q, BIGINT start_v, BIGINT end_v, INTEGER k,
-               BOOLEAN directed:=true, BOOLEAN heap_paths:=false);
+  pgr_ksp(TEXT sql_q, BIGINT start_v, BIGINT end_v, INTEGER k,
+        BOOLEAN directed:=true, BOOLEAN heap_paths:=false);
+    RETURNS SET OF (seq, route, node, edge, cost, agg_cost) or EMPTY SET
 
 
 Description of the SQL query
@@ -89,14 +89,14 @@ Roughly, if the shortest path has ``N`` edges, the heap will contain about than 
 Description of the return values
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, route, node, edge, cost, tot_cost)``
+Returns set of ``(seq, route, node, edge, cost, agg_cost)``
 
 :seq: ``INTEGER``  row sequence of the output.
-:route ``BIGINT`` route id. (-1 when no route was found). The ordering of the routes follow the following:  For two routes i, j if i < j then tot_cost(i) <= tot_cost(j)
+:route ``BIGINT`` route id. (-1 when no route was found). The ordering of the routes follow the following:  For two routes i, j if i < j then agg_cost(i) <= tot_cost(j)
 :node: ``BIGINT`` id of the node in the path from start_v to end_v.
 :edge: ``BIGINT`` id of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the route.
 :cost: ``FLOAT`` cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
-:tot_cost:  ``FLOAT`` total cost from ``start_v`` to ``node``.
+:agg_cost:  ``FLOAT`` total cost from ``start_v`` to ``node``.
 
 
 .. warning:: During the transition to 3.0, because pgr_ksp version 2.0 doesn't have defined a directed flag nor a heap_path flag, when pgr_ksp is used with only one flag version 2.0 will be used.
@@ -138,7 +138,7 @@ Examples to handle the one flag to choose signatures using :ref:`fig1-direct-Cos
       2, 12, 2
    );
 
-   seq | route | node | edge | cost | tot_cost 
+   seq | route | node | edge | cost | agg_cost 
   -----+-------+------+------+------+----------
      0 |     0 |    2 |    4 |    1 |        0
      1 |     0 |    5 |    8 |    1 |        1
@@ -162,7 +162,7 @@ Examples using :ref:`fig1-direct-Cost-Reverse`
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2
    );
-   seq | route | node | edge | cost | tot_cost 
+   seq | route | node | edge | cost | agg_cost 
   -----+-------+------+------+------+----------
      0 |     0 |    2 |    4 |    1 |        0
      1 |     0 |    5 |    8 |    1 |        1
@@ -187,7 +187,7 @@ Examples using :ref:`fig1-direct-Cost-Reverse`
       2, 12, 2, true, true
    );
 
-   seq | route | node | edge | cost | tot_cost 
+   seq | route | node | edge | cost | agg_cost 
   -----+-------+------+------+------+----------
      0 |     0 |    2 |    4 |    1 |        0
      1 |     0 |    5 |    8 |    1 |        1
@@ -216,7 +216,7 @@ Example for :ref:`fig2-undirect-Cost-Reverse`
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2, directed:=false
    );
-   seq | route | node | edge | cost | tot_cost 
+   seq | route | node | edge | cost | agg_cost 
   -----+-------+------+------+------+----------
      0 |     0 |    2 |    2 |    1 |        0
      1 |     0 |    3 |    3 |    1 |        1
@@ -241,7 +241,7 @@ Example for :ref:`fig2-undirect-Cost-Reverse`
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2, false, true
    );
-   seq | route | node | edge | cost | tot_cost 
+   seq | route | node | edge | cost | agg_cost 
   -----+-------+------+------+------+----------
      0 |     0 |    2 |    2 |    1 |        0
      1 |     0 |    3 |    3 |    1 |        1
@@ -280,10 +280,9 @@ Empty path representation
      'SELECT id, source, target, cost FROM edge_table',
       2, 3, 2
    );
-   seq | route | node | edge | cost | tot_cost 
+   seq | route | node | edge | cost | agg_cost 
   -----+-------+------+------+------+----------
-     0 |   -1  |    -1 |   -1 |    0 |        0
-  (1 row)
+  (0 rows)
 
 
 .. code-block:: sql
@@ -292,7 +291,7 @@ Empty path representation
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2
    );
-   seq | route | node | edge | cost | tot_cost 
+   seq | route | node | edge | cost | agg_cost 
   -----+-------+------+------+------+----------
      0 |     0 |    2 |    4 |    1 |        0
      1 |     0 |    5 |    8 |    1 |        1
@@ -316,7 +315,7 @@ Empty path representation
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2, true, true
    );
-   seq | route | node | edge | cost | tot_cost 
+   seq | route | node | edge | cost | agg_cost 
   -----+-------+------+------+------+----------
      0 |     0 |    2 |    4 |    1 |        0
      1 |     0 |    5 |    8 |    1 |        1
@@ -346,7 +345,7 @@ Examples for :ref:`fig4-undirect-Cost`
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2, directed:=false
    );
-   seq | route | node | edge | cost | tot_cost 
+   seq | route | node | edge | cost | agg_cost 
   -----+-------+------+------+------+----------
      0 |     0 |    2 |    4 |    1 |        0
      1 |     0 |    5 |    8 |    1 |        1
@@ -369,7 +368,7 @@ Examples for :ref:`fig4-undirect-Cost`
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2, false, true
    );
-   seq | route | node | edge | cost | tot_cost 
+   seq | route | node | edge | cost | agg_cost 
   -----+-------+------+------+------+----------
      0 |     0 |    2 |    4 |    1 |        0
      1 |     0 |    5 |    8 |    1 |        1
