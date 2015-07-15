@@ -10,13 +10,13 @@ select cost, count(*) from (
 
 select agg_cost, count(*) from (
     select * from pgr_drivingdistance('select id, source, target, 1 as cost from ddnoded2', 1274, 10, false)
-) as foo group by agg_cost order by tot_cost asc;
+) as foo group by agg_cost order by agg_cost asc;
 
 --- this ones are equivalent
 select agg_cost, count(*) from (
     select * from pgr_drivingdistance('select id, source, target, 1 as cost from ddnoded2', 1274, 10, true)
-) as foo group by agg_cost order by tot_cost asc;
+) as foo group by agg_cost order by agg_cost asc;
 
 select agg_cost, count(*) from (
     select * from pgr_drivingdistance('select id, source, target, 1 as cost from ddnoded2', 1274, 10)
-) as foo group by agg_cost order by tot_cost asc;
+) as foo group by agg_cost order by agg_cost asc;
