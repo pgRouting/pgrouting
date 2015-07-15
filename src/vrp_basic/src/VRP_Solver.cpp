@@ -116,7 +116,7 @@ CSolutionInfo::~CSolutionInfo()
 
 void CSolutionInfo::replaceTour(CTourInfo curTour)
 {
-	int i;
+	unsigned int i;
 	for(i = 0; i < m_vtourAll.size(); i++)
 	{
 		if(m_vtourAll[i].getVehicleId() == curTour.getVehicleId())
@@ -130,7 +130,7 @@ void CSolutionInfo::replaceTour(CTourInfo curTour)
 
 void CSolutionInfo::replaceTourAt(int index, CTourInfo curTour)
 {
-	if(index < 0 || index >= m_vtourAll.size())
+	if(index < 0 || (unsigned int) index >= m_vtourAll.size())
 		return;
 	m_vtourAll[index] = curTour;
 }
@@ -170,7 +170,7 @@ bool CSolutionInfo::addTour(CTourInfo& tour)
 
 	m_iOrdersServed += vecOrders.size();
 
-	for(int i = 0; i < vecOrders.size(); i++)
+	for(unsigned int i = 0; i < vecOrders.size(); i++)
 	{
 		int oid = vecOrders[i];
 		it = std::find(m_vUnservedOrderId.begin(), m_vUnservedOrderId.end(), oid);
@@ -231,9 +231,10 @@ void CMoveInfo::getInitialTour(CTourInfo &tourData1, CTourInfo &tourData2)
 
 bool CMoveInfo::getModifiedTourAt(int index, CTourInfo& tourInfo)
 {
-	if(index < 0 || index >= m_vModifiedTour.size())
+	if(index < 0 || (unsigned int) index >= m_vModifiedTour.size())
 		return false;
 	tourInfo = m_vModifiedTour[index];
+        return true;
 }
 
 
@@ -258,12 +259,12 @@ bool CVRPSolver::solveVRP(std::string& strError)
 //	}
 	PGR_LOG("Inside Solve VRP");
 	std::vector<int> vecOrders, vecVehicles;
-	for(int i = 0; i < m_vOrderInfos.size(); i++)
+	for(unsigned int i = 0; i < m_vOrderInfos.size(); i++)
 	{
 		vecOrders.push_back(m_vOrderInfos[i].getOrderId());
 	}
 
-	for(int i = 0; i < m_vVehicleInfos.size(); i++)
+	for(unsigned int i = 0; i < m_vVehicleInfos.size(); i++)
 	{
 		vecVehicles.push_back(m_vVehicleInfos[i].getId());
 	}
@@ -296,12 +297,12 @@ CSolutionInfo CVRPSolver::generateInitialSolution()
 	CSolutionInfo initialSolution;
 	PGR_LOG("Inside gen ini sol");
 	std::vector<int> vecOrders, vecVehicles;
-	for(int i = 0; i < m_vOrderInfos.size(); i++)
+	for(unsigned int i = 0; i < m_vOrderInfos.size(); i++)
 	{
 		vecOrders.push_back(m_vOrderInfos[i].getOrderId());
 	}
 
-	for(int i = 0; i < m_vVehicleInfos.size(); i++)
+	for(unsigned int i = 0; i < m_vVehicleInfos.size(); i++)
 	{
 		vecVehicles.push_back(m_vVehicleInfos[i].getId());
 	}
@@ -416,7 +417,7 @@ std::pair<int,double> CVRPSolver::getPotentialInsert(CTourInfo& curTour, COrderI
 	}
 	//check if ith position insert is fisible.
 	std::vector<int> vecOrderId = curTour.getOrderVector();
-	for(int i = 0; i <= vecOrderId.size();++i)
+	for(unsigned int i = 0; i <= vecOrderId.size();++i)
 	{
 		CostPack costToOrder, costFromOrder;
 		
@@ -693,7 +694,7 @@ CostPack CVRPSolver::getOrderToDepotCost(int depotId, int orderId)
 
 bool CVRPSolver::insertOrder(CTourInfo& tourInfo, int orderId, int pos)
 {
-	if(pos < 0 || pos > tourInfo.getOrderVector().size())
+	if(pos < 0 || (unsigned int) pos > tourInfo.getOrderVector().size())
 		return false;
 
 	int orderIndex = m_mapOrderIdToIndex[orderId];
@@ -733,7 +734,7 @@ bool CVRPSolver::updateTourCosts(CTourInfo& tourInfo)
 						m_vOrderInfos[ind].getOpenTime() + m_vOrderInfos[ind].getServiceTime());
 	vecStartTimes.push_back(ceil(dTravelTime));
 
-	int i;
+	unsigned int i;
 	for(i = 1; i < vecOrderId.size(); i++)
 	{
 		cPack = getOrderToOrderCost(vecOrderId[i - 1], vecOrderId[i]);
@@ -801,7 +802,7 @@ CostPack CVRPSolver::getCostForInsert(CTourInfo& curTour, COrderInfo& curOrder, 
 	dTravelTime = max(dTravelTime + cPack.traveltime + m_vOrderInfos[ind].getServiceTime(), 
 		m_vOrderInfos[ind].getOpenTime() + m_vOrderInfos[ind].getServiceTime());
 
-	int i;
+	unsigned int i;
 	for(i = 1; i < vecOrderId.size(); i++)
 	{
 		cPack = getOrderToOrderCost(vecOrderId[i - 1], vecOrderId[i]);
@@ -861,7 +862,7 @@ void CVRPSolver::attempVehicleExchange(CSolutionInfo& solutionInfo)
 
 			int SecondTourRemainingCapacity = secondTour.getVehicleInfo().getCapacity() - firstTourLoad;
 
-			int prevFreeCapacity = max( secondTour.getRemainingCapacity(), firstTour.getRemainingCapacity() );
+			// int prevFreeCapacity = max( secondTour.getRemainingCapacity(), firstTour.getRemainingCapacity() );
 
 			int curFreeCapacity = max(FirstTourRemainingCapacity,SecondTourRemainingCapacity);
 

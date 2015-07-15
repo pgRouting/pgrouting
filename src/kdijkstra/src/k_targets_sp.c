@@ -23,6 +23,7 @@
 #include "executor/spi.h"
 #include "funcapi.h"
 #include "utils/array.h"
+#include "utils/lsyscache.h"
 #include "catalog/pg_type.h"
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
@@ -66,6 +67,7 @@ typedef struct edge_columns
 
 
 
+#if 0
 static text * charl2text(char *in, int len)
 {
       text     *out = (text *) palloc(len + VARHDRSZ);
@@ -74,12 +76,11 @@ static text * charl2text(char *in, int len)
       return out;
 }
 
-
 static text * char2text(char *in)
 {
       return charl2text(in, strlen(in));
 }
-
+#endif
 
 static char * text2char(text *in)
 {
@@ -94,7 +95,7 @@ static char * text2char(text *in)
 
 static DTYPE *get_pgarray(int *num, ArrayType *input)
 {
-    int         ndims, *dims, *lbs;
+    int         ndims, *dims; // , *lbs;
     bool       *nulls;
     Oid         i_eltype;
     int16       i_typlen;
@@ -124,7 +125,7 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
     /* get various pieces of data from the input array */
     ndims = ARR_NDIM(input);
     dims = ARR_DIMS(input);
-    lbs = ARR_LBOUND(input);
+    // lbs = ARR_LBOUND(input);
 
     if (ndims != 1) {
         elog(ERROR, "target must be integer[]");
@@ -518,10 +519,10 @@ Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
     int source_ID = PG_GETARG_INT32(1);
     int i;
 
-    HeapTuple    tuple;
-    Datum        result;
-    Datum *values;
-    char* nulls;    
+    // HeapTuple    tuple;
+    // Datum        result;
+    // Datum *values;
+    // char* nulls;    
 
     /* stuff done only on the first call of the function */
     if (SRF_IS_FIRSTCALL()) {
@@ -869,10 +870,10 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
     int *myTargets = (int *)PG_GETARG_POINTER(2);
     int i;
 
-    HeapTuple    tuple;
-    Datum        result;
-    Datum *values;
-    char* nulls;    
+    // HeapTuple    tuple;
+    // Datum        result;
+    // Datum *values;
+    // char* nulls;    
 
     /* stuff done only on the first call of the function */
     if (SRF_IS_FIRSTCALL()) {
@@ -1007,7 +1008,7 @@ static int many2many_dijkstra_dm(char *sql, int *vids, int num, bool directed,
     int v_max_id = 0;
     int v_min_id = INT_MAX;
 
-    int sumFoundVids = 0;
+    // int sumFoundVids = 0;
 
     int i, j;
     int zcnt = 0;
@@ -1180,7 +1181,7 @@ Datum manytomany_dijkstra_dmatrix(PG_FUNCTION_ARGS)
 {
     ArrayType   *result;
     Datum  *result_data;
-    Datum  *values;
+    // Datum  *values;
     bool   *nulls;
     int     i;
     int     num;

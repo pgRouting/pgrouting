@@ -39,10 +39,6 @@ static int compute_driving_distance(char* sql, int64_t start_vertex,
                                  bool has_rcost,
                                  pgr_path_element3_t **path, int *path_count) {
   int SPIcode;
-  void *SPIplan;
-  Portal SPIportal;
-  bool moredata = TRUE;
-  int ntuples;
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
 
@@ -51,10 +47,10 @@ static int compute_driving_distance(char* sql, int64_t start_vertex,
   int ret = -1;
 
   PGR_DBG("Load data");
-  bool sourceFound = false;
-  bool targetFound = false;
+
   SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
                start_vertex, start_vertex);
+
   if (SPIcode == -1) {
     PGR_DBG("Error getting data\n");
     return SPIcode;
@@ -111,7 +107,6 @@ driving_distance(PG_FUNCTION_ARGS) {
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       int path_count = 0;
-      int ret;
 
       /* create a function context for cross-call persistence */
       funcctx = SRF_FIRSTCALL_INIT();
@@ -120,7 +115,7 @@ driving_distance(PG_FUNCTION_ARGS) {
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-      ret = compute_driving_distance(pgr_text2char(
+      compute_driving_distance(pgr_text2char(
                                   PG_GETARG_TEXT_P(0)),       // sql
                                   PG_GETARG_INT64(1),         // source_id
                                   PG_GETARG_FLOAT8(2),        // distance

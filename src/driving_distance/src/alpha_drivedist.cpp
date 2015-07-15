@@ -229,7 +229,7 @@ int alpha_shape(vertex_t *vertices, unsigned int count, double alpha,
   else
   {
     std::set<int> unusedIndexes;
-    for (int i = 0; i < segments.size(); i++)
+    for (unsigned int i = 0; i < segments.size(); i++)
     {
       unusedIndexes.insert(i);
     }
@@ -242,7 +242,7 @@ int alpha_shape(vertex_t *vertices, unsigned int count, double alpha,
     find_next_edge(segments.at(0), segments, unusedIndexes, rings);
 
     int result_count = 0;
-    for (int i = 0; i < rings.size(); i++)
+    for (unsigned int i = 0; i < rings.size(); i++)
     {
       Polygon_2 ring = rings.at(i);
       result_count += ring.size();
@@ -252,7 +252,7 @@ int alpha_shape(vertex_t *vertices, unsigned int count, double alpha,
     *res_count = result_count;
 
     int idx = 0;
-    for (int i = 0; i < rings.size(); i++)
+    for (unsigned int i = 0; i < rings.size(); i++)
     {
       if (i > 0)
       {
@@ -261,7 +261,7 @@ int alpha_shape(vertex_t *vertices, unsigned int count, double alpha,
         idx++;
       }
       Polygon_2 ring = rings.at(i);
-      for(int j = 0; j < ring.size(); j++)
+      for(unsigned int j = 0; j < ring.size(); j++)
       {
         Point point = ring.vertex(j);
         (*res)[idx].x = point.x();

@@ -99,7 +99,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
     typedef adjacency_list < listS, vecS, directedS, no_property, Vertex> graph_t;
     typedef graph_traits < graph_t >::vertex_descriptor vertex_descriptor;
     typedef graph_traits < graph_t >::edge_descriptor edge_descriptor;
-    typedef std::pair<int, int> Edge;
+    // typedef std::pair<int, int> Edge;
 
     // FIXME: compute this value
     const unsigned int num_nodes = ((directed && has_reverse_cost ? 2 : 1) * count) + 100;
@@ -307,7 +307,7 @@ try {
     typedef adjacency_list < listS, vecS, directedS, no_property, Vertex> graph_t;
     typedef graph_traits < graph_t >::vertex_descriptor vertex_descriptor;
     typedef graph_traits < graph_t >::edge_descriptor edge_descriptor;
-    typedef std::pair<int, int> Edge;
+    // typedef std::pair<int, int> Edge;
 
     // FIXME: compute this value
     const unsigned int num_nodes = ((directed && has_reverse_cost ? 2 : 1) * count) + 100;

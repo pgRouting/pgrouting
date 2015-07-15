@@ -159,7 +159,8 @@ int find_vrp_solution(vrp_vehicles_t *vehicles, int vehicle_count,
 		try {
 		CSolutionInfo solution;
 		CTourInfo ctour;
-		bool bOK = solver.getSolution(solution, strError);
+		// bool bOK =
+                solver.getSolution(solution, strError);
 		int totalRoute = solution.getTourInfoVector().size();
 		int totRows = 0;
 		int i;

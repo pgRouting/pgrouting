@@ -568,7 +568,9 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       int path_count = 0;
+#ifdef DEBUG
       int ret = -1;
+#endif
       int i;
 
       // create a function context for cross-call persistence
@@ -593,7 +595,10 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 
 	  DBG("Calling compute_trsp");
 
-      ret = compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
+#ifdef DEBUG
+      ret =
+#endif
+ compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
                                    1, // do vertex
                                    PG_GETARG_INT32(1),
                                    0.5,
@@ -692,7 +697,9 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       int path_count = 0;
+#ifdef DEBUG
       int ret = -1;
+#endif
       int i;
       double s_pos;
       double e_pos;
@@ -737,7 +744,10 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 
 	  DBG("Calling compute_trsp");
 
-      ret = compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
+#ifdef DEBUG
+      ret =
+#endif
+         compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
                                    0,  //sdo edge
                                    PG_GETARG_INT32(1),
                                    s_pos,

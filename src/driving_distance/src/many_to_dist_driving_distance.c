@@ -44,10 +44,6 @@ static int driving_many_to_dist_driver(
           bool directed, bool equicost, bool has_rcost,
           pgr_path_element3_t **path, int *path_count) {
   int SPIcode;
-  // void *SPIplan;
-  // Portal SPIportal;
-  bool moredata = TRUE;
-  // int ntuples;
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
 
@@ -106,7 +102,6 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       int path_count = 0;
-      int ret;
 
       /* create a function context for cross-call persistence */
       funcctx = SRF_FIRSTCALL_INIT();
@@ -121,7 +116,7 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
       PGR_DBG("sourcesArr size %d ", num);
 
       PGR_DBG("Calling driving_many_to_dist_driver");
-      ret = driving_many_to_dist_driver(
+      driving_many_to_dist_driver(
                pgr_text2char(PG_GETARG_TEXT_P(0)),  // sql
                sourcesArr, num,                     // array of sources
                PG_GETARG_FLOAT8(2),                 // distance
