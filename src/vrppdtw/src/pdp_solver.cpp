@@ -195,7 +195,7 @@ VehicleInfo Vehicle;
 
         for(int i=1;i<=Vehicle.used_vehicles;i++){
                 printf("%d, ",i);
-                r[i].print();
+                // r[i].print();
                 sum+=r[i].dis;
                 if(r[i].dis!=0){
                         rts+=1;
