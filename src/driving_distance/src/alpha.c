@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  */
 
@@ -169,7 +169,7 @@ fetch_vertex(HeapTuple *tuple, TupleDesc *tupdesc,
   target_vertex->y = DatumGetFloat8(binval);
 }
 
-static int compute_alpha_shape(char* sql, vertex_t **res, int *res_count) 
+static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, int *res_count)
 {
 
   int SPIcode;
@@ -273,7 +273,7 @@ static int compute_alpha_shape(char* sql, vertex_t **res, int *res_count)
   profstop("extract", prof_extract);
   profstart(prof_alpha);
 
-  ret = alpha_shape(vertices, total_tuples, res, res_count, &err_msg);
+  ret = alpha_shape(vertices, total_tuples, alpha, res, res_count, &err_msg);
 
   profstop("alpha", prof_alpha);
   profstart(prof_store);
@@ -315,7 +315,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
       ret = compute_alpha_shape(text2char(PG_GETARG_TEXT_P(0)), 
-                                &res, &res_count);
+                                PG_GETARG_FLOAT8(1), &res, &res_count);
 
       /* total number of tuples to be returned */
       DBG("Conting tuples number\n");
@@ -352,6 +352,8 @@ Datum alphashape(PG_FUNCTION_ARGS)
       Datum        result;
       Datum *values;
       char* nulls;
+      double x;
+      double y;
 
       /* This will work for some compilers. If it crashes with segfault, try to change the following block with this one    
 
@@ -369,10 +371,22 @@ Datum alphashape(PG_FUNCTION_ARGS)
       values = palloc(2 * sizeof(Datum));
       nulls = palloc(2 * sizeof(char));
 
-      values[0] = Float8GetDatum(res[call_cntr].x);
-      nulls[0] = ' ';
-      values[1] = Float8GetDatum(res[call_cntr].y);
-      nulls[1] = ' ';
+      x = res[call_cntr].x;
+      y = res[call_cntr].y;
+      if (x == DBL_MAX && y == DBL_MAX)
+      {
+        values[0] = 0;
+        values[1] = 0;
+        nulls[0] = 'n';
+        nulls[1] = 'n';
+      }
+      else
+      {
+        values[0] = Float8GetDatum(x);
+        values[1] = Float8GetDatum(y);
+        nulls[0] = ' ';
+        nulls[1] = ' ';
+      }
 	
       DBG("Heap making\n");
 

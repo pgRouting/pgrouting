@@ -27,7 +27,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-These functions allow you to have a single start node and multiple destination nodes and will compute the routes to all the destinations from the source node. Returns a set of :ref:`pgr_costResult3 <type_cost_result3>` or :ref:`pgr_costResult3 <type_cost_result3>`. ``pgr_kdijkstraCost`` returns one record for each destination node and the cost is the total code of the route to that node. ``pgr_kdijkstraPath`` returns one record for every edge in that path from source to destination and the cost is to traverse that edge.
+These functions allow you to have a single start node and multiple destination nodes and will compute the routes to all the destinations from the source node. Returns a set of :ref:`pgr_costResult <type_cost_result>` or :ref:`pgr_costResult3 <type_cost_result3>`. ``pgr_kdijkstraCost`` returns one record for each destination node and the cost is the total code of the route to that node. ``pgr_kdijkstraPath`` returns one record for every edge in that path from source to destination and the cost is to traverse that edge.
 
 .. code-block:: sql
 

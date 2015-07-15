@@ -6,10 +6,11 @@
 #export PGPORT=8442
 #export PGROUTING_VER=2.0
 #export PGROUTING_MICRO_VER=0dev
+#export GIT_COMMIT=whatever
 export PGUSER=postgres
 
-export PROJECTS=/c/jenkins
-
+#this should be setup as a mapping in msys/etc/fstab to where you keep your projects
+export PROJECTS=/projects 
 export PATHOLD=$PATH
 
 #export PATHOLD=".:/bin:/include:/mingw/bin:/mingw/include:/c/Windows/system32:/c/Windows:/usr/local/bin:/c/ming64/Silksvn/bin:/c/Program Files (x86)/Git/bin"
@@ -18,7 +19,7 @@ export PATHOLD=".:/bin:/include:/mingw/bin:/mingw/include:/c/Windows/system32:/c
 export PGWINVER=${PG_VER}edb
 export PostgreSQL_ROOT=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}
 export PATH="${PATHOLD}:${PostgreSQL_ROOT}/bin:${PostgreSQL_ROOT}/lib"
-if [[ "${GCC_TYPE}" == "gcc48" ]] ; then
+if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	GMP_VER=5.1.2
 	MPFR_VER=3.1.2
 	CGAL_VER=4.2
@@ -66,14 +67,15 @@ cp -r *.control $outdir/share/extension
 cp -r *.dll $outdir/lib
 #newer gcc for some reason CGAL is not statically linked
 # so need to distribute
-if [[ "${GCC_TYPE}" == "gcc48" ]] ; then
+if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	cp ${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}/bin/libCGAL.dll $outdir/bin
 fi
 #cp extensions/postgis_topology/sql/* ${RELDIR}/${RELVERDIR}/share/extension
 #cp extensions/postgis_topology/*.control ${RELDIR}/${RELVERDIR}/share/extension
 cp -r ${RELDIR}/packaging_notes/* ${RELDIR}/${RELVERDIR}/
 
-echo "pgRouting http://pgrouting.org : ${PGROUTING_VER}.${PGROUTING_MICRO_VER}" > $verfile
+echo "The git commit is ${GIT_COMMIT}"
+echo "pgRouting http://pgrouting.org : ${PGROUTING_VER}.${PGROUTING_MICRO_VER} ${GIT_COMMIT}" > $verfile
 echo "PostgreSQL http://www.postgresql.org : ${PG_VER} ${OS_BUILD} ${GCC_TYPE}" >> $verfile
 echo "CGAL http://www.cgal.org : ${CGAL_VER}" >> $verfile
 echo "BOOST http://www.boost.org : ${BOOST_VER}" >> $verfile

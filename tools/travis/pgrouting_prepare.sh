@@ -31,7 +31,7 @@ run_psql () {
 # ------------------------------------------------------------------------------
 # Set PostgreSQL users and permissions
 # ------------------------------------------------------------------------------
-sudo cp $TRAVIS_BUILD_DIR/tools/travis/pg_hba.conf `find /etc/postgresql/*/main/pg_hba.conf`
+sudo cp $TRAVIS_BUILD_DIR/tools/travis/pg_hba.conf `find /etc/postgresql/*/*/pg_hba.conf`
 sudo /etc/init.d/postgresql restart	
 
 # Disable password (better: create new user)

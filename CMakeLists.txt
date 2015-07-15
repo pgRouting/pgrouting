@@ -29,6 +29,8 @@ option(BUILD_HTML
 option(BUILD_MAN
     "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" ON)
 
+set(PG_VERSION "*" CACHE STRING "Define the Postgres Version to build with.")
+
 #-----------------------------------------------------------------------------
 # PGROUTING version number.
 set(PGROUTING_VERSION_MAJOR "2")
@@ -55,6 +57,7 @@ message(STATUS "PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")
 message(STATUS "PGROUTING_GIT_BRANCH: ${PGROUTING_GIT_BRANCH}")
 message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
 message(STATUS "PGROUTING_VERSION_REVISION_HASH: ${PGROUTING_VERSION_REVISION_HASH}")
+message(STATUS "PG_VERSION: ${PG_VERSION}")
 
 #-----------------------------------------------------------------------------
 # CMAKE configuration
@@ -272,11 +275,22 @@ add_library(routing
 
 install(TARGETS routing DESTINATION ${LIBRARY_INSTALL_PATH})
 
+add_library(routing_vrp
+    ${LIBRARY_MODE_TARGET}
+    $<TARGET_OBJECTS:vrp_single>
+    )
+
+install(TARGETS routing_vrp DESTINATION ${LIBRARY_INSTALL_PATH})
+
+
 if(APPLE)
     set_target_properties(routing
         PROPERTIES
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
     set_target_properties(routing_bd
+        PROPERTIES
+        LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
+    set_target_properties(routing_vrp
         PROPERTIES
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)

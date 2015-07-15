@@ -276,9 +276,12 @@ static int compute_trsp(
 
   edge_t *edges = NULL;
   int total_tuples = 0;
+#ifndef _MSC_VER
   edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
                                  .cost= -1, .reverse_cost= -1};
-
+#else // _MSC_VER
+  edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
+#endif //_MSC_VER
   restrict_t *restricts = NULL;
   int total_restrict_tuples = 0;
   restrict_columns_t restrict_columns = {.target_id= -1, .via_path= -1,
