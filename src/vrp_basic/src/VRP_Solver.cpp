@@ -866,8 +866,9 @@ void CVRPSolver::attempVehicleExchange(CSolutionInfo& solutionInfo)
 
 			int curFreeCapacity = max(FirstTourRemainingCapacity,SecondTourRemainingCapacity);
 
-			if ( FirstTourRemainingCapacity > 0 && SecondTourRemainingCapacity > 0 && 
-				curFreeCapacity > curFreeCapacity && curFreeCapacity > bestFreeCapacity )
+			if ( (FirstTourRemainingCapacity > 0) && (SecondTourRemainingCapacity > 0) && 
+				// curFreeCapacity > curFreeCapacity  autological compare evaluates to false (error on MAC)
+                              (curFreeCapacity > bestFreeCapacity) )
 			{
 
 				CVehicleInfo tempVehicle = m_vVehicleInfos[firstTour.getVehicleId()];
