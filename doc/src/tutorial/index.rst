@@ -29,7 +29,6 @@ Advanced Topics
   - :ref:`analytics` for an overview of the analysis of a graph.
   - :ref:`custom_query` that is used in the routing algorithms.
   - :ref:`performance` to improve your performance.
-  - :ref:`custom_wrapper` to colaborate with a wrapper.
 
 .. toctree:: 
    :hidden: 

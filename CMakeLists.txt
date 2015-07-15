@@ -14,7 +14,7 @@ project(PGROUTING)
 
 
 option(WITH_DOC
-    "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
+    "Set ON|OFF (default=OFF) to build Documentation library tree" ON)
 
 option(BUILD_LATEX
     "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
@@ -23,9 +23,9 @@ option(BUILD_HTML
     "Set ON|OFF (default=ON) to build Documentation library tree as HTML" ON)
 
 option(BUILD_MAN
-    "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" ON)
+    "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
 
-set(PG_VERSION "*" CACHE STRING "Define the Postgres Version to build with.")
+#set(PG_VERSION "*" CACHE STRING "Define the Postgres Version to build with.")
 
 #-----------------------------------------------------------------------------
 # PGROUTING version number.
@@ -54,7 +54,7 @@ message(STATUS "PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")
 message(STATUS "PGROUTING_GIT_BRANCH: ${PGROUTING_GIT_BRANCH}")
 message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
 message(STATUS "PGROUTING_VERSION_REVISION_HASH: ${PGROUTING_VERSION_REVISION_HASH}")
-message(STATUS "PG_VERSION: ${PG_VERSION}")
+#message(STATUS "PG_VERSION: ${PG_VERSION}")
 
 #-----------------------------------------------------------------------------
 # CMAKE configuration
