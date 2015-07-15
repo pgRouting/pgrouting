@@ -131,7 +131,7 @@ VehicleInfo Vehicle;
                         p[PickupLength].Pid=c[i].id;
                 }
         }
-        printf("Pickup Length=%d \n",PickupLength);
+        // printf("Pickup Length=%d \n",PickupLength);
 
         //Sort Pickup's
         int swap;
@@ -194,7 +194,7 @@ VehicleInfo Vehicle;
         int sum=0,rts=0;
 
         for(int i=1;i<=Vehicle.used_vehicles;i++){
-                printf("%d, ",i);
+                // printf("%d, ",i);
                 // r[i].print();
                 sum+=r[i].dis;
                 if(r[i].dis!=0){
@@ -202,7 +202,7 @@ VehicleInfo Vehicle;
                 }
                 Vehicle.cost=sum;
         }
-        printf("Sum=%d  Routes=%d  Vehicle.used_vehicles=%d\n",sum,rts,Vehicle.used_vehicles);
+        // printf("Sum=%d  Routes=%d  Vehicle.used_vehicles=%d\n",sum,rts,Vehicle.used_vehicles);
 
         //Storing Initial Solution (S0 is the Initial Solution)
         for(int i=1;i<=Vehicle.used_vehicles;i++)
@@ -351,7 +351,7 @@ int n=0,maxItr=30;
 
 int TabuSearch()
 {
-        printf("TABU Called\n");
+        // printf("TABU Called\n");
         Solution S,SBest;
         double CBest;
         //Pseudo Code
@@ -403,20 +403,22 @@ int TabuSearch()
                 }   
                 else if(S.getCost() == CBest )
                 {
-                        printf("\n****************Repeated Solution****************\n");
+                        // printf("\n****************Repeated Solution****************\n");
                         int k= ((12)*maxItr)/100;
                         maxItr = maxItr-k;
-                        printf("Maxitr after repeating %d k =%d\n",maxItr,k);
+                        // printf("Maxitr after repeating %d k =%d\n",maxItr,k);
                 }
                 n++;
                 if (n > maxItr)
                         break;
         }
+#if 0
         printf("Size of Tabu=%ld &&& n=%d  maxItr=%d\n",T.size(),n,maxItr);
         for(unsigned int itr=0;itr<T.size();itr++)
         {
                 T[itr].dump();
         }
+#endif
         return T.size()-1;
 }
 
