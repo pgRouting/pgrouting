@@ -42,7 +42,7 @@ class Route
                 int HillClimbing(customer *c,depot d,Pickup p);
                 int insertOrder(customer *c,depot d,Pickup p);
                 void remove(State S);
-                void print();
+                // void print();
                 int RemoveOrder(Pickup p);
 };
 
@@ -50,7 +50,7 @@ class Route
 
 int  Route::RemoveOrder(Pickup p){
         int flag=0;
-        printf("Remove Order with Pid=%d  Did=%d\n",p.Pid,p.Did);
+        // printf("Remove Order with Pid=%d  Did=%d\n",p.Pid,p.Did);
         for(int i=0;i<path_length;i++)
         {
                 if(path[i]==p.Pid || path[i]==p.Did)
@@ -68,7 +68,7 @@ int  Route::RemoveOrder(Pickup p){
                 {
                         if(path[i]!=0)
                         {
-                                printf("path[%d]=%d \n",new_length,path[i]);
+                                 // printf("path[%d]=%d \n",new_length,path[i]);
                                 new_path[new_length]=path[i];
                                 new_order[new_length]=order[i];
                                 new_length++;
@@ -211,7 +211,7 @@ int Route::insertOrder(customer *c, depot d, Pickup p)
 
         twv=0,cv=0,dis=0;
         update(c,d);        
-        print(); 
+         // print(); 
         if(twv>0 || cv>0 || dis> d.Ltime)
         { 
                 return 1;
@@ -288,6 +288,7 @@ int Route::HillClimbing(customer *c, depot d, Pickup p)
 }
 
 
+#if 0
 void Route::print(){
         printf("%d ",dis);
         printf("%d ",twv);
@@ -308,6 +309,7 @@ void Route::print(){
         return;
 
 }
+#endif
 
 void Route::remove( State S){
         twv=S.twv;
