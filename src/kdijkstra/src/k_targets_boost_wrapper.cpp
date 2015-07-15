@@ -78,9 +78,9 @@ graph_add_edge(G &graph, E &e, int id, int source, int target, float8 cost)
   graph[e].cost = cost;
   graph[e].id = id;
 
-  typedef typename graph_traits<G>::vertex_descriptor Vertex;
-  Vertex s = vertex(source, graph);
-  Vertex t = vertex(target, graph);
+  // typedef typename graph_traits<G>::vertex_descriptor Vertex;
+  // Vertex s = vertex(source, graph);
+  // Vertex t = vertex(target, graph);
 }
 
 
@@ -245,9 +245,9 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
 
                 for (tie(out_i, out_end) = out_edges(v_src, graph); out_i != out_end; ++out_i)
                 {
-                    graph_traits < graph_t >::vertex_descriptor v, targ;
+                    graph_traits < graph_t >::vertex_descriptor targ; // v set but not used
                     e = *out_i;
-                    v = source(e, graph);
+                    // v = source(e, graph);
                     targ = target(e, graph);
 
                     if (targ == v_targ) {

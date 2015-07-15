@@ -178,7 +178,7 @@ static int pgr_fetch_edge_columns(
 static int64_t pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType) {
   Datum binval;
   bool isnull;
-  int64_t value;
+  int64_t value = 0;
   binval = SPI_getbinval(*tuple, *tupdesc, colNumber, &isnull);
   if (isnull) elog(ERROR, "Null value found");
   switch (colType) {
@@ -200,7 +200,7 @@ static int64_t pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, int colNu
 static float8 pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType) {
   Datum binval;
   bool isnull;
-  float8 value;
+  float8 value = 0.0;
   binval = SPI_getbinval(*tuple, *tupdesc, colNumber, &isnull);
   if (isnull) elog(ERROR, "Null value found");
   switch (colType) {
