@@ -66,6 +66,7 @@ void Solution::UpdateSol()
 
 //Methods in Solution
 
+#if 0
 void Solution::dump(){
         printf("Routes Length=%d   ",route_length);
         printf("Total Cost=%lf   ",cost_total);
@@ -83,6 +84,8 @@ void Solution::dump(){
         }
         return;
 }
+#endif
+
 double Solution::getCost(){
         cost_total=0;
         for(unsigned int i=0;i<r.size();i++)
