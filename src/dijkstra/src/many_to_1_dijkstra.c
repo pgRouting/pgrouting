@@ -69,11 +69,6 @@ static int dijkstra_many_to_1_driver(
         errmsg("Error computing path: %s", err_msg)));
   }
 
-  if (ret < 0) {
-      ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
-      errmsg("Error computing path: %s", err_msg)));
-    }
-
   pfree(edges);
   return pgr_finish(SPIcode, ret);
 }
@@ -124,7 +119,7 @@ dijkstra_many_to_1(PG_FUNCTION_ARGS) {
                PG_GETARG_BOOL(3),
                PG_GETARG_BOOL(4), &ret_path, &path_count);
 
-      pfree(sourcesArr);
+      free(sourcesArr);
 
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;
