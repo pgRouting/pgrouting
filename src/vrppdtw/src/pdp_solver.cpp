@@ -163,7 +163,8 @@ VehicleInfo Vehicle;
                 //          DBG("PickupID[%d]=%lf\n",p[i].id,p[i].Ddist);
         }
 
-        int flag_complete=0,checked=0;
+        // int flag_complete=0;
+        int checked=0;
         //Sequential Construction 
         for(int v=1;v<110;v++){
                 for(int i=PickupLength;i>=1;i--){
@@ -412,7 +413,7 @@ int TabuSearch()
                         break;
         }
         printf("Size of Tabu=%ld &&& n=%d  maxItr=%d\n",T.size(),n,maxItr);
-        for(int itr=0;itr<T.size();itr++)
+        for(unsigned int itr=0;itr<T.size();itr++)
         {
                 T[itr].dump();
         }

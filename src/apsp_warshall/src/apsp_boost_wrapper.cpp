@@ -87,7 +87,7 @@ try {
     float *weights = (float*) malloc(sizeof(float) * (edge_count));
 
 
-    for(int i=0;i<edge_count;i++)
+    for(unsigned int i=0;i<edge_count;i++)
     {
         weights[i] = edges[i].cost;
         vertices.insert(edges[i].source);
@@ -193,7 +193,7 @@ try {
   }
 }
 
-#ifdef JUNK
+#if 0
 /*
 void static_warshall()
 {
@@ -266,7 +266,7 @@ int main()
     typedef std::pair<int,int> Edge;
     unsigned int edge_count = 4;
     edge_t *edges = (edge_t*) malloc(sizeof(edge_t)*edge_count);
-    /*Edge edge_array[ ] =
+    Edge edge_array[ ] =
     { Edge(0,1), Edge(0,2), Edge(0,3), Edge(0,4), Edge(0,5),
     Edge(1,2), Edge(1,5), Edge(1,3), Edge(2,4), Edge(2,5),
     Edge(3,2), Edge(4,3), Edge(4,1), Edge(5,4) };

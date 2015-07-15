@@ -85,7 +85,7 @@ void Solution::dump(){
 }
 double Solution::getCost(){
         cost_total=0;
-        for(int i=0;i<r.size();i++)
+        for(unsigned int i=0;i<r.size();i++)
         {
                 cost_total+=r[i].cost();
         }
@@ -119,14 +119,14 @@ Solution Neighborhoods::BestSPI(Solution S, customer *c, depot d, Pickup *p,  in
         for(int order=1;order<=PickupLength;order++)
         {
                 //Order Find and Remove it! 
-                for(int route_remove=0;route_remove<CurrSol.r.size();route_remove++)
+                for(unsigned int route_remove=0;route_remove<CurrSol.r.size();route_remove++)
                 {                                
                         Ro_flag=CurrSol.r[route_remove].RemoveOrder(OrderRequests[order]);
                         TempSol=CurrSol;
                         if(Ro_flag==1)
                         {
                                 //Insert, Total Cost, (if it is more copy back the solution) ,  (else store best=temp, checked=2, break )          
-                                for(int route=0;route<CurrSol.r.size();route++)
+                                for(unsigned int route=0;route<CurrSol.r.size();route++)
                                 {
                                         TempState=CurrSol.r[route].append(c,OrderRequests[order],d,CustomerLength, PickupLength,TempState);
                                         Hc_flag=CurrSol.r[route].insertOrder(c,d,OrderRequests[order]);

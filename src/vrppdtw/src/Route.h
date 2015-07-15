@@ -169,7 +169,7 @@ double Route::cost()
 }
 int Route::insertOrder(customer *c, depot d, Pickup p)
 {
-        double cost1=0,cost2=0;
+        // double cost1=0,cost2=0;
         twv=0,cv=0,dis=0;
         int swap=0;
         update(c,d);
