@@ -120,7 +120,7 @@ void find_next_edge(Segment s, std::vector<Segment>& segments,
   rings.back().push_back(end);
   
   std::vector<int> nextIndexes;
-  for(int i = 0;i < segments.size(); i++)
+  for(unsigned int i = 0;i < segments.size(); i++)
   {
     if (unusedIndexes.find(i) != unusedIndexes.end())
     {
@@ -140,7 +140,7 @@ void find_next_edge(Segment s, std::vector<Segment>& segments,
   else if (nextIndexes.size() > 1)
   {
     std::vector< std::pair<double, int> > nextAngles;
-    for (int i = 0; i < nextIndexes.size(); i++)
+    for (unsigned int i = 0; i < nextIndexes.size(); i++)
     {
       int j = nextIndexes.at(i);
       Point target = segments.at(j).target();
@@ -155,7 +155,7 @@ void find_next_edge(Segment s, std::vector<Segment>& segments,
   
   if (!unusedIndexes.empty())
   {
-    for (int i = 0; i < segments.size(); i++)
+    for (unsigned int i = 0; i < segments.size(); i++)
     {
       if (unusedIndexes.find(i) != unusedIndexes.end())
       {

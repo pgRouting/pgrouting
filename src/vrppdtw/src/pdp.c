@@ -67,7 +67,7 @@ typedef struct Customer_type{
 
 
 
-
+#if 0
 static int conn(int *SPIcode)
 {
         int res = 0;
@@ -103,7 +103,7 @@ static int prepare_query(Portal *SPIportal, char* sql)
 
         return res;
 }
-
+#endif
 
 static int fetch_customer_columns(SPITupleTable *tuptable, customer_t *c , int vehicle_count , int capacity)
 {
@@ -221,7 +221,7 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
 
         char *err_msg;
         int ret = -1;
-        register int z;
+        // register int z;
 
         DBG("start shortest_path\n");
 
@@ -351,7 +351,7 @@ vrppdtw(PG_FUNCTION_ARGS)
 
         {
                 MemoryContext   oldcontext;
-                int ret;
+                // int ret;
                 int length_results_struct = 0;
 
 
@@ -374,7 +374,8 @@ vrppdtw(PG_FUNCTION_ARGS)
 
 
 
-                ret = compute_shortest_path(
+                // ret =
+                compute_shortest_path(
 
                                 text2char(PG_GETARG_TEXT_P(0)),  // customers sql
 

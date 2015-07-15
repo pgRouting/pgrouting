@@ -44,10 +44,10 @@ static int driving_many_to_dist_driver(
           bool directed, bool equicost, bool has_rcost,
           pgr_path_element3_t **path, int *path_count) {
   int SPIcode;
-  void *SPIplan;
-  Portal SPIportal;
+  // void *SPIplan;
+  // Portal SPIportal;
   bool moredata = TRUE;
-  int ntuples;
+  // int ntuples;
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
 
@@ -56,8 +56,6 @@ static int driving_many_to_dist_driver(
   int ret = -1;
 
 
-  bool sourceFound = false;
-  bool targetFound = false;
   SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost, -1, -1);
 
   if (SPIcode == -1) {

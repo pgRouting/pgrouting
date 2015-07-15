@@ -44,11 +44,7 @@ static int dijkstra_many_to_many_driver(
           int64_t *end_vertex,   int e_len,
           bool directed, bool has_rcost,
           pgr_path_element3_t **path, int *path_count) {
-  int SPIcode;
-  void *SPIplan;
-  Portal SPIportal;
-  bool moredata = TRUE;
-  int ntuples;
+  int SPIcode = 0;
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
 
@@ -56,13 +52,8 @@ static int dijkstra_many_to_many_driver(
   char *err_msg = (char *)"";
   int ret = -1;
 
-  int readCode = pgr_get_data(sql, &edges, &total_tuples, has_rcost, -1, -1);
+  pgr_get_data(sql, &edges, &total_tuples, has_rcost, -1, -1);
 
-/*
-  if (readCode == -1) {
-    return SPIcode;
-  }
-*/
   ret = do_pgr_dijkstra_many_to_many(edges, total_tuples,
                         start_vertex, s_len, end_vertex, e_len,
                         has_rcost, directed,
@@ -102,7 +93,6 @@ dijkstra_many_to_many(PG_FUNCTION_ARGS) {
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       int path_count = 0;
-      int ret;
 
       /* create a function context for cross-call persistence */
       funcctx = SRF_FIRSTCALL_INIT();
@@ -119,15 +109,15 @@ dijkstra_many_to_many(PG_FUNCTION_ARGS) {
       PGR_DBG("sourcesArr size %d ", num);
 
       PGR_DBG("Calling dijkstra_many_to_1_driver");
-      ret = dijkstra_many_to_many_driver(
+      dijkstra_many_to_many_driver(
                pgr_text2char(PG_GETARG_TEXT_P(0)),
                sourcesArr, s_len,
                targetsArr, e_len,
                PG_GETARG_BOOL(3),
                PG_GETARG_BOOL(4), &ret_path, &path_count);
 
-      // free(sourcesArr);
-      // free(targetsArr);
+      pfree(sourcesArr);
+      pfree(targetsArr);
 
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;

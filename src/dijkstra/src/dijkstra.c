@@ -43,11 +43,7 @@ static int compute_shortest_path(char* sql, int64_t start_vertex,
                                  int64_t end_vertex, bool directed,
                                  bool has_rcost,
                                  pgr_path_element3_t **path, int *path_count) {
-  int SPIcode;
-  void *SPIplan;
-  Portal SPIportal;
-  bool moredata = TRUE;
-  int ntuples;
+  int SPIcode = 0;
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
 
@@ -105,7 +101,6 @@ shortest_path(PG_FUNCTION_ARGS) {
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       int path_count = 0;
-      int ret;
 
       /* create a function context for cross-call persistence */
       funcctx = SRF_FIRSTCALL_INIT();
@@ -114,7 +109,7 @@ shortest_path(PG_FUNCTION_ARGS) {
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-      ret = compute_shortest_path(pgr_text2char(PG_GETARG_TEXT_P(0)),
+      compute_shortest_path(pgr_text2char(PG_GETARG_TEXT_P(0)),
                                   PG_GETARG_INT64(1),
                                   PG_GETARG_INT64(2),
                                   PG_GETARG_BOOL(3),

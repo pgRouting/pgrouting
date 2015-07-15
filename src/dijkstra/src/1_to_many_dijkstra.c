@@ -46,10 +46,6 @@ static int dijkstra_1_to_many_driver(
           bool directed, bool has_rcost,
           pgr_path_element3_t **path, int *path_count) {
   int SPIcode;
-  void *SPIplan;
-  Portal SPIportal;
-  bool moredata = TRUE;
-  int ntuples;
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
 
@@ -58,8 +54,6 @@ static int dijkstra_1_to_many_driver(
   int ret = -1;
 
 
-  bool sourceFound = false;
-  bool targetFound = false;
   SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
                start_vertex, start_vertex);
 
@@ -111,7 +105,6 @@ dijkstra_1_to_many(PG_FUNCTION_ARGS) {
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       int path_count = 0;
-      int ret;
 
       /* create a function context for cross-call persistence */
       funcctx = SRF_FIRSTCALL_INIT();
@@ -126,20 +119,22 @@ dijkstra_1_to_many(PG_FUNCTION_ARGS) {
       PGR_DBG("targetsArr size %d ", num);
 
 
+#ifdef DEBUG
       int i;
       for (i = 0; i < num; ++i) {
         PGR_DBG("targetsArr[%d]=%li", i, targetsArr[i]);
       }
+#endif
 
       PGR_DBG("Calling dijkstra_1_to_many_driver");
-      ret = dijkstra_1_to_many_driver(
+      dijkstra_1_to_many_driver(
                pgr_text2char(PG_GETARG_TEXT_P(0)),
                PG_GETARG_INT64(1),
                targetsArr, num,
                PG_GETARG_BOOL(3),
                PG_GETARG_BOOL(4), &ret_path, &path_count);
 
-      // free(targetsArr);
+      pfree(targetsArr);
 
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;

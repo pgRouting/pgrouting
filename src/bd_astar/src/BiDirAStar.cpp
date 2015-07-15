@@ -241,12 +241,14 @@ void BiDirAStar::explore(int cur_node, double cur_cost, int dir, MinHeap &que)
 		GraphEdgeInfo edge = m_vecEdgeVector[edge_index];
 		// Get the connected node
 		int new_node = m_vecNodeVector[cur_node].Connected_Nodes[i];
+#if 0  // mult is set but not used
 		int mult;
 		
 		if(edge.Direction == 0)
 			mult = 1;
 		else
 			mult = dir;
+#endif
 		if(cur_node == edge.StartNode)
 		{
 			// Current node is the startnode of the edge. For forward search it should use forward cost, otherwise it should use the reverse cost,
@@ -328,7 +330,7 @@ int BiDirAStar:: bidir_astar(edge_astar_t *edges, unsigned int edge_count, int m
 	m_lStartNodeId = start_vertex;
 	m_lEndNodeId = end_vertex;
 
-	int nodeCount = m_vecNodeVector.size();
+	// int nodeCount = m_vecNodeVector.size();
 	
 	MinHeap fque(maxNode + 2);
 	MinHeap rque(maxNode + 2);
@@ -350,9 +352,9 @@ int BiDirAStar:: bidir_astar(edge_astar_t *edges, unsigned int edge_count, int m
 	rque.push(std::make_pair(0.0, end_vertex));
 
 	int i;
-	int new_node;
+	// int new_node;
 	int cur_node;
-	int dir;
+	// int dir;
 /*
 	The main loop. The algorithm is as follows:
 	1. IF the sum of the current minimum of both heap is greater than so far found path, we cannot get any better, so break the loop.
@@ -473,7 +475,7 @@ bool BiDirAStar::construct_graph(edge_astar_t* edges, int edge_count, int maxNod
 
 bool BiDirAStar::addEdge(edge_astar_t edgeIn)
 {
-	long lTest;
+	// long lTest;
 	// Check if the edge is already processed.
 	Long2LongMap::iterator itMap = m_mapEdgeId2Index.find(edgeIn.id);
 	if(itMap != m_mapEdgeId2Index.end())	

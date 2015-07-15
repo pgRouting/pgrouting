@@ -21,6 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 // #define DEBUG
 #include "postgres.h"
+#include "utils/lsyscache.h"
 #include "catalog/pg_type.h"
 #include "utils/array.h"
 #include "executor/spi.h"
@@ -66,11 +67,13 @@ static int pgr_fetch_column_info(
       elog(ERROR, "Fetching column type");
       return -1;
     }
+    return 0;
   }
 
     
 int64_t* pgr_get_bigIntArray(int *arrlen, ArrayType *input) {
-    int         ndims, *lbs;
+    int         ndims;
+    // int *lbs;
     bool       *nulls;
     Oid         i_eltype;
     int16       i_typlen;
@@ -101,7 +104,7 @@ int64_t* pgr_get_bigIntArray(int *arrlen, ArrayType *input) {
     ndims = ARR_NDIM(input);
     n = (*ARR_DIMS(input));
     (*arrlen) = n;
-    lbs = ARR_LBOUND(input);
+    // lbs = ARR_LBOUND(input);
 
     if ( (ndims) != 1) {
         elog(ERROR, "One dimenton expected");
@@ -154,7 +157,7 @@ static int pgr_fetch_edge_columns(
      int (*edge_types)[5], 
      bool has_rcost) {
 
-  int i, error;
+  int error;
   error = pgr_fetch_column_info(&(*edge_columns)[0], &(*edge_types)[0], "id");
   if (error == -1) return error;
   error = pgr_fetch_column_info(&(*edge_columns)[1], &(*edge_types)[1], "source");

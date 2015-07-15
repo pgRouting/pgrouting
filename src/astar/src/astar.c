@@ -427,7 +427,9 @@ shortest_path_astar(PG_FUNCTION_ARGS)
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       int path_count = 0;
+#ifdef DEBUG
       int ret;
+#endif
 
       // XXX profiling messages are not thread safe
       profstart(prof_total);
@@ -440,7 +442,10 @@ shortest_path_astar(PG_FUNCTION_ARGS)
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-      ret = compute_shortest_path_astar(text2char(PG_GETARG_TEXT_P(0)),
+#ifdef DEBUG
+      ret =
+#endif
+ compute_shortest_path_astar(text2char(PG_GETARG_TEXT_P(0)),
                     PG_GETARG_INT32(1),
                     PG_GETARG_INT32(2),
                     PG_GETARG_BOOL(3),
