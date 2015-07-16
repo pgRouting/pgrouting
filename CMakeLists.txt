@@ -29,7 +29,6 @@ option(BUILD_HTML
 option(BUILD_MAN
     "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" ON)
 
-set(PG_VERSION "*" CACHE STRING "Define the Postgres Version to build with.")
 SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries an a non-standard location.")
 
 
@@ -59,7 +58,7 @@ message(STATUS "PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")
 message(STATUS "PGROUTING_GIT_BRANCH: ${PGROUTING_GIT_BRANCH}")
 message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
 message(STATUS "PGROUTING_VERSION_REVISION_HASH: ${PGROUTING_VERSION_REVISION_HASH}")
-message(STATUS "PG_VERSION: ${PG_VERSION}")
+message(STATUS "POSTGRESQL_BIN: ${POSTGRESQL_BIN}")
 
 #-----------------------------------------------------------------------------
 # CMAKE configuration
