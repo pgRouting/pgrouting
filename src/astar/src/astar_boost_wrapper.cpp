@@ -267,9 +267,9 @@ try {
         for (tie(out_i, out_end) = out_edges(v_src, graph); 
              out_i != out_end; ++out_i)
         {
-            graph_traits < graph_t >::vertex_descriptor v, targ;
+            graph_traits < graph_t >::vertex_descriptor targ; // v   set but not used
             e = *out_i;
-            v = source(e, graph);
+            // v = source(e, graph);
             targ = target(e, graph);
                                                                 
             if (targ == v_targ)

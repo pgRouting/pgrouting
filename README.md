@@ -3,7 +3,9 @@
 
 ## STATUS
 
-The *master* branch reflects our current 2.0.0 release. Post 2.0.0 development will happen in the *develop* branch. The 2.0 release is not backwards compatible with the 1.x releases because we have totally restructured the API and the source code to position the product for additional future growth. Once you see all the new functionality that we have added and the simplier API design we thing you will be very happy with the results.
+The *master* branch reflects our current 2.0.0 release. 
+pgRouting 2.1.0 development is in *develop_2_1_0* branch.
+*develop* branch is not up to date becuase of it is not passing the Winnie tests,
 
 ## LINKS
 
@@ -27,6 +29,11 @@ The *master* branch reflects our current 2.0.0 release. Post 2.0.0 development w
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=develop" alt="Build Status"/></td>
 		<td></td>
 	</tr>
+        <tr>
+                <td>develop</td>
+                <td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=develop_2_1_0" alt="Build Status"/></td>
+                <td></td>
+        </tr>
 	<tr>
 		<td>gh-pages</td>
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=gh-pages" alt="Build Status"/></td>
@@ -56,18 +63,18 @@ This library contains following features:
 ## REQUIREMENTS
 
 * C and C++ compilers
-* Postgresql version >= 8.4 (9.1 or higher recommended)
-* PostGIS version >= 1.5 (2.0 or higher recommended)
-* The Boost Graph Library (BGL). Version >= [TBD]
+* Postgresql version >= 9.1
+* PostGIS version >= 2.0
+* The Boost Graph Library (BGL). 
+  * Version >= 1.55 for linux
+  * Version >= 1.58 for MAC
 * CMake >= 2.8.8
-* (optional, for Driving Distance) CGAL >= [TBD] 
-* (optional, for Documentation) Sphinx >= [TBD] 
+* CGAL >= 4.4 
+* Sphinx >= 1.2 
 
 ## INSTALLATION
 
 See online documentation: http://docs.pgrouting.org/
-
-If you have multiple versions of PostgreSQL installed you can select the version you want to build with using the cmake option *-DPG_VERSION=x.y* where x.y is the major.minor version number, eg: 9.1, 9.2, 9.3, 9.4.
 
 ## COMPILATION
 
@@ -75,7 +82,7 @@ For MinGW on Windows
 
 	mkdir build
 	cd build
-	cmake -G"MSYS Makefiles" -DWITH_DD=ON ..
+	cmake -G"MSYS Makefiles" ..
 	make
 	make install
 
@@ -87,33 +94,19 @@ For Linux
 	
 	mkdir build
 	cd build
-	cmake -DWITH_DD=ON -DPG_VERSION=9.1 ..
+	cmake  ..
 	make
 	sudo make install
 
 Build with documentation (requires [Sphinx](http://sphinx-doc.org/))
 
-	cmake -DWITH_DOC=ON -DWITH_DD=ON -DPG_VERSION=9.1 ..
+	cmake -DWITH_DOC=ON ..
 
 Postgresql 9.1+
 
 	createdb mydatabase
 	psql mydatabase -c "create extension postgis"
 	psql mydatabase -c "create extension pgrouting"
-
-For older versions of postgresql
-
-	createdb -T template1 template_postgis
-	psql template_postgis -c "create language plpgsql"
-	psql template_postgis -f /usr/share/postgresql/9.0/contrib/postgis-1.5/postgis.sql
-	psql template_postgis -f /usr/share/postgresql/9.0/contrib/postgis-1.5/spatial_ref_sys.sql
-	psql template_postgis -f /usr/share/postgresql/9.0/contrib/postgis_comments.sql
-
-	createdb -T template_postgis template_pgrouting
-	psql template_pgrouting -f /usr/share/postgresql/9.0/contrib/pgrouting-2.0/pgrouting.sql
-
-	createdb -T template_pgrouting mydatabase
-
 
 ## USAGE
 
