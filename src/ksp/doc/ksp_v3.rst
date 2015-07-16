@@ -23,7 +23,7 @@ Name
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/doc/libs/1_58_0/libs/graph/doc/index.html
+   :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
 
