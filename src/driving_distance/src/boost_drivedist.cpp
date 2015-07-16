@@ -62,7 +62,6 @@ struct Edge
 struct Vertex
 {
   int id;
-  int edge_id;
 };
 
 template <class G, class E>
@@ -89,8 +88,6 @@ graph_add_edge(G &graph, int id, int source, int target, float8 cost)
   DBG("updating graph\n");
   graph[s].id = source;
   graph[t].id = target;
-  graph[s].edge_id = id;
-  graph[t].edge_id = id;
 
 }
 
@@ -165,12 +162,20 @@ try {
       path_element pe;
 
       graph_traits<graph_t>::vertex_descriptor s;
+      graph_traits<graph_t>::edge_descriptor e;
+      bool edge_exists;
 
       s = vertex(*vi, graph);
+      tie(e, edge_exists) = boost::edge(predecessors[s], s, graph);
 
       pe.vertex_id = graph[s].id;
-      pe.edge_id   = graph[s].edge_id;
       pe.cost      = distances[*vi];
+
+      if (!edge_exists) {
+        pe.edge_id = -1;
+      } else {
+        pe.edge_id = graph[e].id;
+      }
 
       DBG("adding to path_vector[%d]\n", j++);
       path_vector.push_back( pe );

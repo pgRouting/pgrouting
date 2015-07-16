@@ -1,0 +1,4 @@
+--queries for the immediate neighbors of node 2.
+--the results should be node 2 at cost 0, the nodes of the immediate neighbors at cost 1
+--the edge id for each neighbor should be the edge that connects 2 to that neighbor
+select id1, id2, cost from pgr_drivingdistance('select id, source, target, 1.0::float8 as cost from ddnoded2', 2, 1, false, false) order by cost, id1, id2;
