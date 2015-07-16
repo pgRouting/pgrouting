@@ -30,6 +30,8 @@ option(BUILD_MAN
     "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" ON)
 
 set(PG_VERSION "*" CACHE STRING "Define the Postgres Version to build with.")
+SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries an a non-standard location.")
+
 
 #-----------------------------------------------------------------------------
 # PGROUTING version number.

@@ -16,7 +16,11 @@
 
 # A check condition to see if those variables are set
 
-SET(PG_VERSION "" CACHE STRING "Some user-specified option")  #PG_VERSION is a commandline argument to specify the version.
+#PG_VERSION is a commandline argument to specify the version.
+SET(PG_VERSION "" CACHE STRING "Some user-specified option")
+
+#POSTGRESQL_BIN ia an optional commandline argument to specify a non-standard path to the postgresql program executables
+SET(POSTGRESQL_BIN "" CACHE STRING "Some user-specified option")    
 
 if(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE AND POSTGRESQL_VERSION_STRING)
     set(POSTGRESQL_FOUND TRUE)
@@ -25,6 +29,7 @@ else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
 # Checking POSTGRESQL_EXECUTABLE in all the dir (*) - implies that 
     find_program(POSTGRESQL_EXECUTABLE NAMES postgres
         PATHS
+        ${POSTGRESQL_BIN}
         /usr/lib/postgresql/${PG_VERSION}/bin/
         )
     message(STATUS "PG_VERSION in FindPostgreSQL.cmake is "${PG_VERSION} ) 
@@ -33,6 +38,7 @@ else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
 # Checking POSTGRESQL_PG_CONFIG 
     find_program(POSTGRESQL_PG_CONFIG NAMES pg_config
         PATHS
+        ${POSTGRESQL_BIN}
         /usr/lib/postgresql/${PG_VERSION}/bin/
     	NO_DEFAULT_PATH
         )
