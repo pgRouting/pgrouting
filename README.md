@@ -30,7 +30,7 @@ pgRouting 2.1.0 development is in *develop_2_1_0* branch.
 		<td></td>
 	</tr>
         <tr>
-                <td>develop</td>
+                <td>develop_2_1_0</td>
                 <td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=develop_2_1_0" alt="Build Status"/></td>
                 <td></td>
         </tr>
@@ -65,12 +65,12 @@ This library contains following features:
 * C and C++ compilers
 * Postgresql version >= 9.1
 * PostGIS version >= 2.0
-* The Boost Graph Library (BGL). 
+* The Boost Graph Library (BGL).
   * Version >= 1.55 for linux
   * Version >= 1.58 for MAC
 * CMake >= 2.8.8
-* CGAL >= 4.4 
-* Sphinx >= 1.2 
+* CGAL >= 4.4
+* Sphinx >= 1.2
 
 ## INSTALLATION
 
