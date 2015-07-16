@@ -43,11 +43,7 @@ static int compute_shortest_path(char* sql, int64_t start_vertex,
                                  int64_t end_vertex, bool directed,
                                  bool has_rcost,
                                  pgr_path_element3_t **path, int *path_count) {
-  int SPIcode;
-  void *SPIplan;
-  Portal SPIportal;
-  bool moredata = TRUE;
-  int ntuples;
+  int SPIcode = 0;
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
 
@@ -56,18 +52,19 @@ static int compute_shortest_path(char* sql, int64_t start_vertex,
   int ret = -1;
 
   if (start_vertex == end_vertex) {
-      elog(ERROR, "Starting vertex and Ending Vertex are equal");
-      return -1;
+      elog(NOTICE, "Starting vertex and Ending Vertex are equal");
+      *path = noPathFound3(-1, path_count, (*path));
+      return 0;
   }
 
   PGR_DBG("Load data");
-  bool sourceFound = false;
-  bool targetFound = false;
-  SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
-               start_vertex, end_vertex);  //  , &sourceFound, &targetFound);
-  if (SPIcode == -1) {
-    PGR_DBG("Error getting data\n");
-    return SPIcode;
+
+  int readCode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
+               start_vertex, end_vertex);
+
+  if (readCode == -1) {
+    *path = noPathFound3(-1, path_count, (*path));
+    return 0;
   }
 
   PGR_DBG("Total %ld tuples in query:", total_tuples);
@@ -85,13 +82,6 @@ static int compute_shortest_path(char* sql, int64_t start_vertex,
   PGR_DBG("total tuples found %i\n", *path_count);
   PGR_DBG("Exist Status = %i\n", ret);
   PGR_DBG("Returned message = %s\n", err_msg);
-
-
-
-  if (ret < 0) {
-      ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
-      errmsg("Error computing path: %s", err_msg)));
-    }
 
   pfree(edges);
   return pgr_finish(SPIcode, ret);
@@ -111,7 +101,6 @@ shortest_path(PG_FUNCTION_ARGS) {
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       int path_count = 0;
-      int ret;
 
       /* create a function context for cross-call persistence */
       funcctx = SRF_FIRSTCALL_INIT();
@@ -120,7 +109,7 @@ shortest_path(PG_FUNCTION_ARGS) {
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-      ret = compute_shortest_path(pgr_text2char(PG_GETARG_TEXT_P(0)),
+      compute_shortest_path(pgr_text2char(PG_GETARG_TEXT_P(0)),
                                   PG_GETARG_INT64(1),
                                   PG_GETARG_INT64(2),
                                   PG_GETARG_BOOL(3),
@@ -131,7 +120,7 @@ shortest_path(PG_FUNCTION_ARGS) {
       funcctx->user_fctx = ret_path;
 
       funcctx->tuple_desc = BlessTupleDesc(
-            RelationNameGetTupleDesc("pgr_costResultBig"));
+            RelationNameGetTupleDesc("__pgr_2b2f"));
 
       MemoryContextSwitchTo(oldcontext);
   }
@@ -151,17 +140,19 @@ shortest_path(PG_FUNCTION_ARGS) {
       Datum *values;
       char* nulls;
 
-      values = palloc(4 * sizeof(Datum));
-      nulls = palloc(4 * sizeof(char));
+      values = palloc(5 * sizeof(Datum));
+      nulls = palloc(5 * sizeof(char));
 
       values[0] = Int32GetDatum(call_cntr);
       nulls[0] = ' ';
-      values[1] = Int64GetDatum(ret_path[call_cntr].vertex_id);
+      values[1] = Int64GetDatum(ret_path[call_cntr].vertex);
       nulls[1] = ' ';
-      values[2] = Int64GetDatum(ret_path[call_cntr].edge_id);
+      values[2] = Int64GetDatum(ret_path[call_cntr].edge);
       nulls[2] = ' ';
       values[3] = Float8GetDatum(ret_path[call_cntr].cost);
       nulls[3] = ' ';
+      values[4] = Float8GetDatum(ret_path[call_cntr].tot_cost);
+      nulls[4] = ' ';
 
       tuple = heap_formtuple(tuple_desc, values, nulls);
 

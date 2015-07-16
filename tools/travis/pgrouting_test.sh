@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # ------------------------------------------------------------------------------
 # Travis CI scripts 
 # Copyright(c) pgRouting Contributors
@@ -6,8 +6,8 @@
 # Test pgRouting
 # ------------------------------------------------------------------------------
 
-DBUSER="postgres"
-DBNAME="pgrouting"
+PGUSER="postgres"
+PGDATABASE="pgrouting"
 
 POSTGRESQL_VERSION="$1"
 POSTGIS_VERSION="$2"
@@ -31,55 +31,59 @@ run_psql () {
 # ------------------------------------------------------------------------------
 # CREATE DATABASE
 # ------------------------------------------------------------------------------
-run_psql -U $DBUSER -l
-run_psql -U $DBUSER -c "CREATE DATABASE $DBNAME;"
+export PGUSER
+run_psql -l
+run_psql -c "CREATE DATABASE $PGDATABASE;"
+export PGDATABASE
 
 # ------------------------------------------------------------------------------
 # CREATE EXTENSION
 # ------------------------------------------------------------------------------
 IGNORE=-ignorenotice
-if [ "$POSTGRESQL_VERSION" == "8.4" ] || [ "$POSTGRESQL_VERSION" == "9.0" ]
-then
-    run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "postgis.sql"`
-    run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "spatial_ref_sys.sql"`
-    run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "pgrouting.sql"`
-    IGNORE=-ignorenotice
-fi
+#if [ "$POSTGRESQL_VERSION" == "8.4" ] || [ "$POSTGRESQL_VERSION" == "9.0" ]
+#then
+#    run_psql -f `find $POSTGRESQL_DIRECTORY/contrib -name "postgis.sql"`
+#    run_psql -f `find $POSTGRESQL_DIRECTORY/contrib -name "spatial_ref_sys.sql"`
+#    run_psql -f `find $POSTGRESQL_DIRECTORY/contrib -name "pgrouting.sql"`
+#    IGNORE=-ignorenotice
+#fi
 
-if [ "$POSTGRESQL_VERSION" == "9.1" ]
-then
-    if [ "$POSTGIS_VERSION" == "1.5" ]
-    then 
-        run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "postgis.sql"`
-        run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "spatial_ref_sys.sql"`
-        run_psql -U $DBUSER -d $DBNAME -f `find $POSTGRESQL_DIRECTORY/contrib -name "pgrouting.sql"`
-    else
-        run_psql -U $DBUSER -d $DBNAME -c "CREATE EXTENSION postgis;"
-        run_psql -U $DBUSER -d $DBNAME -c "CREATE EXTENSION pgrouting;"
-    fi
-    IGNORE=-ignorenotice
-fi
+#if [ "$POSTGRESQL_VERSION" == "9.1" ]
+#then
+#    if [ "$POSTGIS_VERSION" == "1.5" ]
+#    then 
+#        run_psql -f `find $POSTGRESQL_DIRECTORY/contrib -name "postgis.sql"`
+#        run_psql -f `find $POSTGRESQL_DIRECTORY/contrib -name "spatial_ref_sys.sql"`
+#        run_psql -f `find $POSTGRESQL_DIRECTORY/contrib -name "pgrouting.sql"`
+#    else
+#        run_psql -c "CREATE EXTENSION postgis;"
+#        run_psql -c "CREATE EXTENSION pgrouting;"
+#    fi
+#    IGNORE=-ignorenotice
+#fi
 
-if [ "$POSTGRESQL_VERSION" == "9.2" ] || [ "$POSTGRESQL_VERSION" == "9.3" ]
-then
-    run_psql -U $DBUSER -d $DBNAME -c "CREATE EXTENSION postgis;"
-    run_psql -U $DBUSER -d $DBNAME -c "CREATE EXTENSION pgrouting;"
-fi
+#if [ "$POSTGRESQL_VERSION" == "9.2" ] || [ "$POSTGRESQL_VERSION" == "9.3" ] || [ "$POSTGRESQL_VERSION" == "9.4" ]
+#then
+#we are allways creating extension
+    run_psql -c "CREATE EXTENSION postgis;"
+    run_psql -c "CREATE EXTENSION pgrouting;"
+#fi
 
 # ------------------------------------------------------------------------------
 # Get version information
 # ------------------------------------------------------------------------------
-run_psql -U $DBUSER -d $DBNAME -c "SELECT postgis_full_version();"    
-run_psql -U $DBUSER -d $DBNAME -c "SELECT pgr_version();"
+run_psql -c "SELECT postgis_full_version();"    
+run_psql -c "SELECT pgr_version();"
 
-PGROUTING_VERSION=`run_psql -U $DBUSER -A -t -d $DBNAME -c "SELECT version FROM pgr_version();"`
+PGROUTING_VERSION=`run_psql -A -t -c "SELECT version FROM pgr_version();"`
 
 # ------------------------------------------------------------------------------
 # Test runner
 # ------------------------------------------------------------------------------
 # use -v -v for more verbose debuging output
 # ./tools/test-runner.pl -v -v -pgver $POSTGRESQL_VERSION
-./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE
+ ./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE 
+#./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE -v -alg ksp
 if [ "$?" -ne 0 ]
 then
     ERROR=1

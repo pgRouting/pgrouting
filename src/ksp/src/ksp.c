@@ -20,6 +20,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 
+// #define DEBUG 1
+#include <unistd.h>
+
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -30,8 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "./../../common/src/pgr_types.h"
-//#define DEBUG 1
-#undef DEBUG
 #include "./../../common/src/postgres_connection.h"
 #include "./ksp.h"
 #include "./ksp_driver.h"
@@ -43,14 +44,9 @@ PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
 #endif  // _MSC_VER
 
 
-
-
-
-
-#ifdef PG_MODULE_MAGIC
+#ifndef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif
-
 
 PG_FUNCTION_INFO_V1(kshortest_path);
 #ifndef _MSC_VER
@@ -64,13 +60,13 @@ kshortest_path(PG_FUNCTION_ARGS) {
   int                  max_calls;
   TupleDesc            tuple_desc;
   pgr_path_element3_t      *path;
-  void * toDel;
+//  void * toDel;
 
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       int path_count = 0;
-      int ret;
+      path = NULL;
 
       /* create a function context for cross-call persistence */
       funcctx = SRF_FIRSTCALL_INIT();
@@ -79,7 +75,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-      ret = compute(
+      compute(
               pgr_text2char(PG_GETARG_TEXT_P(0)), /* SQL  */
               PG_GETARG_INT64(1),   /* source id */
               PG_GETARG_INT64(2),   /* target_id */
@@ -88,16 +84,17 @@ kshortest_path(PG_FUNCTION_ARGS) {
               PG_GETARG_BOOL(5),    /* directed */
               &path,
               &path_count);
-      toDel = path;
+//      toDel = path;
 
       PGR_DBG("Total number of tuples to be returned %i ", path_count);
+      PGR_DBG("Return value %i", ret);
 
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;
       funcctx->user_fctx = path;
 
       funcctx->tuple_desc =
-        BlessTupleDesc(RelationNameGetTupleDesc("pgr_costResult3Big"));
+        BlessTupleDesc(RelationNameGetTupleDesc("__pgr_3b2f"));
 
       MemoryContextSwitchTo(oldcontext);
     }
@@ -120,24 +117,26 @@ kshortest_path(PG_FUNCTION_ARGS) {
       Datum *values;
       bool* nulls;
 
-      values = (Datum *)palloc(5 * sizeof(Datum));
-      nulls = (bool *) palloc(5 * sizeof(bool));
+      values = (Datum *)palloc(6 * sizeof(Datum));
+      nulls = (bool *) palloc(6 * sizeof(bool));
 
       values[0] = Int32GetDatum(call_cntr);
       nulls[0] = false;
 
-      values[1] = Int32GetDatum(path[call_cntr].route_id);
+      values[1] = Int64GetDatum(path[call_cntr].from);
       nulls[1] = false;
 
-      values[2] = Int64GetDatum(path[call_cntr].vertex_id);
+      values[2] = Int64GetDatum(path[call_cntr].vertex);
       nulls[2] = false;
 
-      values[3] = Int64GetDatum(path[call_cntr].edge_id);
+      values[3] = Int64GetDatum(path[call_cntr].edge);
       nulls[3] = false;
 
       values[4] = Float8GetDatum(path[call_cntr].cost);
       nulls[4] = false;
 
+      values[5] = Float8GetDatum(path[call_cntr].tot_cost);
+      nulls[5] = false;
 
       tuple = heap_form_tuple(tuple_desc, values, nulls);
 
@@ -150,7 +149,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
 
       SRF_RETURN_NEXT(funcctx, result);
   } else {   /* do when there is no more left */
-    free(path);
+    if (path == (pgr_path_element3_t *)NULL) free(path);
     SRF_RETURN_DONE(funcctx);
   }
 }
@@ -161,48 +160,39 @@ int compute(char* sql, int64_t start_vertex,
          int64_t end_vertex, int no_paths,
          bool has_rcost, bool directed,
          pgr_path_element3_t **ksp_path, int *path_count) {
-  int SPIcode;
-  void *SPIplan;
-  Portal SPIportal;
-  bool moredata = TRUE;
-  int ntuples;
+  int SPIcode = 0;
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
+  int readCode = 0;
 
   char *err_msg = (char *)"";
   int ret = -1;
 
   if (start_vertex == end_vertex) {
-      elog(ERROR, "Starting vertex and Ending Vertex are equal");
-      return -1;
+    (*path_count) = 0;
+    *ksp_path = NULL;
+    return  0;
   }
 
   PGR_DBG("Load data");
-  bool sourceFound = false;
-  bool targetFound = false;
-  SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
-               start_vertex, end_vertex); // , &sourceFound, &targetFound);
-  if (SPIcode == -1) {
-    PGR_DBG("Error getting data\n");
-    return SPIcode;
-  } 
+  readCode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
+               start_vertex, end_vertex);
+  if (readCode == -1) {
+    (*path_count) = 0;
+    *ksp_path = NULL;
+    pfree(edges);
+    PGR_DBG("Source or vertex not found from Load data\n");
+    return pgr_finish(SPIcode, ret);
+  }
 
   PGR_DBG("Total %ld tuples in query:", total_tuples);
-#if 0
-  if (!sourceFound) {
-      elog(ERROR, "Starting Vertex does not exist in the data");
-      return -1;
-  }
-  if (!targetFound) {
-      elog(ERROR, "Ending Vertex does not exist in the data");
-      return -1;
-  }
-#endif
   PGR_DBG("Calling do_pgr_ksp\n");
+
   ret = do_pgr_ksp(edges, total_tuples,
             start_vertex, end_vertex,
                        no_paths, has_rcost, directed,
                        ksp_path, path_count, &err_msg);
+
   PGR_DBG("total tuples found %i\n", *path_count);
   PGR_DBG("Exist Status = %i\n", ret);
   PGR_DBG("Returned message = %s\n", err_msg);

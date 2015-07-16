@@ -47,10 +47,13 @@ typedef struct path_element
 
 typedef struct path_element3
 {
-    int route_id;
-    int64_t vertex_id;
-    int64_t edge_id;
+    int seq;
+    int64_t from;
+    int64_t to;
+    int64_t vertex;
+    int64_t edge;
     float8 cost;
+    float8 tot_cost;
 } pgr_path_element3_t;
 
 typedef struct {
@@ -78,6 +81,30 @@ struct boost_edge_t{
   int64_t source_id;
   int64_t target_id;
 };
+
+// used in kdijktra
+#if 0
+typedef struct 
+{
+   int64_t vertex_id_source;
+   int64_t edge_id_source;
+   int64_t vertex_id_target;
+   int64_t edge_id_target;
+   float8 cost;
+   float8 totcost;
+} dist_fromto_t;
+
+
+typedef struct 
+{
+  int64_t vertex_id_source;
+  int64_t edge_id_source;
+  int64_t vertex_id_target;
+  int64_t edge_id_target;
+  float8 cost;
+  char* the_way;
+} path_fromto_t;
+#endif
 
 enum graphType { UNDIRECTED= 0, DIRECTED};
 

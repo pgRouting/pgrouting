@@ -20,7 +20,7 @@
 
 #include "fmgr.h"
 
-#ifdef PG_MODULE_MAGIC
+#ifndef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif
 
@@ -43,7 +43,7 @@ PG_MODULE_MAGIC;
 
 static DTYPE *get_pgarray(int *num, ArrayType *input)
 {
-    int         ndims, *dims, *lbs;
+    int         ndims, *dims; // , *lbs;
     bool       *nulls;
     Oid         i_eltype;
     int16       i_typlen;
@@ -73,7 +73,7 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
     /* get various pieces of data from the input array */
     ndims = ARR_NDIM(input);
     dims = ARR_DIMS(input);
-    lbs = ARR_LBOUND(input);
+    // lbs = ARR_LBOUND(input);
 
     if (ndims != 2 || dims[0] != dims[1]) {
         elog(ERROR, "Error: matrix[num][num] in its definition.");
@@ -211,7 +211,7 @@ tsp_matrix(PG_FUNCTION_ARGS)
     int                  call_cntr;
     int                  max_calls;
     TupleDesc            tuple_desc;
-    AttInMetadata       *attinmeta;
+    // AttInMetadata       *attinmeta;
 
     DTYPE               *matrix;
     int                 *tsp_res;

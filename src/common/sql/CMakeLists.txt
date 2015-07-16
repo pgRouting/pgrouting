@@ -10,8 +10,12 @@ LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/pgr_parameter_check.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/utilities_pgr.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/noUnderUtilities.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/create_vertices_table.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/createIndex.sql
+
+# this one is in the main CMakelist becuse types have to go first
+#    ${CMAKE_CURRENT_SOURCE_DIR}/types.sql
 )
 
 # set in parent scope
 SET(PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}" PARENT_SCOPE)
-#MESSAGE("core/common/sql: ${PACKAGE_SQL_FILES}")

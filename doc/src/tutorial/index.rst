@@ -29,8 +29,6 @@ Advanced Topics
   - :ref:`analytics` for an overview of the analysis of a graph.
   - :ref:`custom_query` that is used in the routing algorithms.
   - :ref:`performance` to improve your performance.
-  - :ref:`custom_wrapper` to colaborate with a wrapper.
-  - :ref:`recipes` to colaborate with a recipe.
 
 .. toctree:: 
    :hidden: 
@@ -45,7 +43,6 @@ Advanced Topics
     How to write a query for the routing algorithms        <custom_query>
     How to handle performance        <performance>
     User's wrappers contributions         <custom_wrapper>
-    User's recipies contributions       <recipes>
 
 
 

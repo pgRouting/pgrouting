@@ -191,7 +191,7 @@ public:
 	
 	std::vector<int> getOrderVector(){return m_viOrderIds;}
 
-	int getStartTime(int pos){if(pos >= m_viStartTime.size()) return 0; 
+	int getStartTime(int pos){if( (unsigned int) pos >= m_viStartTime.size()) return 0; 
 								else return m_viStartTime[pos];}
 
 	friend bool operator== (const CTourInfo& cur, const CTourInfo& that);

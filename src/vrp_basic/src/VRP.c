@@ -73,7 +73,7 @@ Datum vrp(PG_FUNCTION_ARGS);
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
-#ifdef PG_MODULE_MAGIC
+#ifndef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif
 
@@ -440,7 +440,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 	Portal SPIportal_o; 
 	Portal SPIportal_v; 
 	Portal SPIportal_d; 
-	Portal SPIportal_p;
+	// Portal SPIportal_p;
 
 	bool moredata = TRUE;
 	int ntuples;
@@ -448,22 +448,22 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
     int order_num, vehicle_num, dist_num;
 
 	vrp_vehicles_t *vehicles=NULL;
-	vehicle_columns_t vehicle_columns = {vehicle_id: -1, capacity: -1};
+	vehicle_columns_t vehicle_columns = {.vehicle_id = -1, .capacity = -1};
 
 	vrp_orders_t *orders=NULL;
-	order_columns_t order_columns = {id: -1, order_unit: -1, open_time: -1, close_time: -1, service_time: -1, x: -1, y: -1};
+	order_columns_t order_columns = {.id = -1, .order_unit = -1, .open_time = -1, .close_time = -1, .service_time = -1, .x = -1, .y = -1};
 
 	vrp_cost_element_t *costs=NULL;
-	distance_columns_t distance_columns = {src_id: -1, dest_id: -1, cost: -1, distance: -1,	traveltime: -1};
+	distance_columns_t distance_columns = {.src_id = -1, .dest_id = -1, .cost = -1, .distance = -1,	.traveltime = -1};
 
 	char *err_msg = NULL;
 	int ret = -1;
 
-	int   z = 0;
+	// int   z = 0;
 
-	int    tt, cc;
-	double dx, dy;
-	float  fit=0.0;
+	// int    tt, cc;
+	// double dx, dy;
+	// float  fit=0.0;
 
 	int prep = -1, con = -1;
 
@@ -734,7 +734,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 	//ret = -1;
 	total_tuples = *path_count;
 	//elog(NOTICE, "vrp solved! ret: %d, path_count: %d", ret, *path_count);
-	int pp;
+	// int pp;
 /*
 	for(pp = 0; pp < *path_count; pp++)
 	{
@@ -757,7 +757,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 
 	//pfree(vehicles);
 	//pfree(orders);
-	finish(&SPIcode);    
+	return finish(&SPIcode);    
 }
 
 PG_FUNCTION_INFO_V1(vrp);
@@ -775,7 +775,7 @@ vrp(PG_FUNCTION_ARGS)
 	{
 		MemoryContext   oldcontext;
 		//int path_count;
-		int ret=-1;
+		// int ret=-1;
 		int path_count = 0;
 
 		// XXX profiling messages are not thread safe
@@ -794,7 +794,8 @@ vrp(PG_FUNCTION_ARGS)
 
         DBG("Calling solve_vrp ...");
 
-		ret = solve_vrp(//text2char(PG_GETARG_TEXT_P(0)), // points sql
+		// ret =
+                solve_vrp(//text2char(PG_GETARG_TEXT_P(0)), // points sql
 			text2char(PG_GETARG_TEXT_P(0)),  // orders sql
 			text2char(PG_GETARG_TEXT_P(1)),  // vehicles sql
 			text2char(PG_GETARG_TEXT_P(2)),  // distances query

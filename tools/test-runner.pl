@@ -20,14 +20,16 @@ my $DRYRUN = 0;
 my $DEBUG = 0;
 
 my $DBNAME = "pgr_test__db__test";
-my $DBUSER = 'postgres';
-my $DBHOST = 'localhost';
-my $DBPORT = '5432';
+my $DBUSER;
+my $DBHOST;
+my $DBPORT;
 
 sub Usage {
     die "Usage: test-runner.pl -pgver vpg -pgisver vpgis -psql /path/to/psql\n" .
         "       -pgver vpg          - postgresql version\n" .
-        "       -pgport port        - postgresql port to use (default: 5432)\n" .
+        "       -pghost host        - postgresql host or socket directory to use\n" .
+        "       -pgport port        - postgresql port to use\n" .
+        "       -pguser username    - postgresql user role to use\n" .
         "       -pgisver vpgis      - postgis version\n" .
         "       -pgrver vpgr        - pgrouting version\n" .
         "       -psql /path/to/psql - optional path to psql\n" .
@@ -50,8 +52,14 @@ while (my $a = shift @ARGV) {
     if ( $a eq '-pgver') {
         $vpg   = shift @ARGV || Usage();
     }
+    elsif ($a eq '-pghost') {
+        $DBHOST = shift @ARGV || Usage();
+    }
     elsif ($a eq '-pgport') {
         $DBPORT = shift @ARGV || Usage();
+    }
+    elsif ($a eq '-pguser') {
+        $DBUSER = shift @ARGV || Usage();
     }
     elsif ($a eq '-pgisver') {
         $vpgis = shift @ARGV || Usage();
@@ -62,9 +70,10 @@ while (my $a = shift @ARGV) {
     elsif ($a eq '-alg') {
         $alg = shift @ARGV || Usage();
         if ($alg eq 'doc') {
-            @testpath = ($alg);
-        }
-        else {
+            @testpath = ('doc');
+        } elsif ($alg eq 'recipes') {
+            @testpath = ("doc/src/recipes");
+        } else {
             @testpath = ("src/$alg");
         }
     }
@@ -92,7 +101,12 @@ while (my $a = shift @ARGV) {
     }
 }
 
-mysystem("dropdb -U $DBUSER -h $DBHOST -p $DBPORT $DBNAME") if $clean;
+my $connopts = "";
+$connopts .= " -U $DBUSER" if defined $DBUSER;
+$connopts .= " -h $DBHOST" if defined $DBHOST;
+$connopts .= " -p $DBPORT" if defined $DBPORT;
+
+mysystem("dropdb $connopts $DBNAME") if $clean;
 
 %main::tests = ();
 my @cfgs = ();
@@ -181,19 +195,19 @@ sub run_test {
 
     $res{comment} = $t->{comment} if $t->{comment};
     for my $x (@{$t->{data}}) {
-        mysystem("$psql -U $DBUSER -h $DBHOST -p $DBPORT -A -t -q -f '$dir/$x' $DBNAME >> $TMP2 2>\&1 ");
+        mysystem("$psql $connopts -A -t -q -f '$dir/$x' $DBNAME >> $TMP2 2>\&1 ");
     }
 
     for my $x (@{$t->{tests}}) {
         print "Processing test: $x\n";
         my $t0 = [gettimeofday];
-        open(TIN, "$dir/$x.test") || do {
-            $res{"$dir/$x.test"} = "FAILED: could not open '$dir/$x.test' : $!";
+        open(TIN, "$dir/$x.test.sql") || do {
+            $res{"$dir/$x.test.sql"} = "FAILED: could not open '$dir/$x.test.sql' : $!";
             $stats{z_fail}++;
             next;
         };
-        open(PSQL, "|$psql -U $DBUSER -h $DBHOST -p $DBPORT -A -t -q $DBNAME > $TMP 2>\&1 ") || do {
-            $res{"$dir/$x.test"} = "FAILED: could not open connection to db : $!";
+        open(PSQL, "|$psql $connopts -A -t -q $DBNAME > $TMP 2>\&1 ") || do {
+            $res{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
             $stats{z_fail}++;
             next;
         };
@@ -210,28 +224,29 @@ sub run_test {
             $dfile2 = $TMP2;
             mysystem("grep -v NOTICE '$TMP' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile2");
             $dfile = $TMP3;
-            mysystem("grep -v NOTICE '$dir/$x.rest' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile");
+            mysystem("grep -v NOTICE '$dir/$x.result' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile");
         }
         else {
-            $dfile = "$dir/$x.rest";
+            $dfile = "$dir/$x.result";
             $dfile2 = $TMP;
         }
         # use diff -w to ignore white space differences like \r vs \r\n
         my $r = `diff -w '$dfile' '$dfile2' `;
         $r =~ s/^\s*|\s*$//g;
         if ($r =~ /connection to server was lost/) {
-            $res{"$dir/$x.test"} = "CRASHED SERVER: $r";
+            $res{"$dir/$x.test.sql"} = "CRASHED SERVER: $r";
             $stats{z_crash}++;
             # allow the server some time to recover from the crash
-            warn "CRASHED SERVER: '$dir/$x.test', sleeping 5 ...\n";
+            warn "CRASHED SERVER: '$dir/$x.test.sql', sleeping 5 ...\n";
             sleep 5;
         }
         elsif (length($r)) {
-            $res{"$dir/$x.test"} = "FAILED: $r";
+            $res{"$dir/$x.test.sql"} = "FAILED: $r";
             $stats{z_fail}++;
         }
+# TODO missing when the result file does not exist
         else {
-            $res{"$dir/$x.test"} = "Passed";
+            $res{"$dir/$x.test.sql"} = "Passed";
             $stats{z_pass}++;
         }
         print "    test run time: " . tv_interval($t0, [gettimeofday]) . "\n";
@@ -245,7 +260,7 @@ sub createTestDB {
         if dbExists($DBNAME);
 
     my $template;
-    
+
     my $dbver = getServerVersion();
     my $dbshare = getSharePath($dbver);
 
@@ -257,7 +272,7 @@ sub createTestDB {
     # first create a database with postgis installed in it
     if (version_greater_eq($dbver, '9.1') &&
             -f "$dbshare/extension/postgis.control") {
-        mysystem("createdb -U $DBUSER -h $DBHOST -p $DBPORT $DBNAME");
+        mysystem("createdb $connopts $DBNAME");
         die "ERROR: Failed to create database '$DBNAME'!\n"
             unless dbExists($DBNAME);
         my $myver = '';
@@ -270,7 +285,7 @@ sub createTestDB {
             $encoding = "SET client_encoding TO 'UTF8';";
         }
         print "-- Trying to install postgis extension $myver\n" if $DEBUG;
-        mysystem("$psql -U $DBUSER -h $DBHOST -p $DBPORT -c \"$encoding create extension postgis $myver\" $DBNAME");
+        mysystem("$psql $connopts -c \"$encoding create extension postgis $myver\" $DBNAME");
     }
     else {
         if ($vpgis && dbExists("template_postgis_$vpgis")) {
@@ -283,7 +298,7 @@ sub createTestDB {
             die "ERROR: Could not find an appropriate template_postgis database!\n";
         }
         print "-- Trying to install postgis from $template\n" if $DEBUG;
-        mysystem("createdb -U $DBUSER -h $DBHOST -p $DBPORT -T $template $DBNAME");
+        mysystem("createdb $connopts -T $template $DBNAME");
         sleep(2);
         die "ERROR: Failed to create database '$DBNAME'!\n"
             if ! dbExists($DBNAME);
@@ -294,14 +309,14 @@ sub createTestDB {
             -f "$dbshare/extension/postgis.control") {
         my $myver = '';
         if ($vpgr) {
-            $myver = " VERSION '$vpgr'";
+            $myver = " PGROUTING VERSION '$vpgr'";
         }
         print "-- Trying to install pgrouting extension $myver\n" if $DEBUG;
-        mysystem("$psql -U $DBUSER -h $DBHOST -p $DBPORT -c \"create extension pgrouting $myver\" $DBNAME");
+        mysystem("$psql $connopts -c \"create extension pgrouting $myver\" $DBNAME");
     }
     elsif ($vpgr && -f "$dbshare/extension/pgrouting--$vpgr.sql") {
         print "-- Trying to install pgrouting from '$dbshare/extension/pgrouting--$vpgr.sql'\n" if $DEBUG;
-        mysystem("$psql -U $DBUSER -h $DBHOST -p $DBPORT -f '$dbshare/extension/pgrouting--$vpgr.sql' $DBNAME");
+        mysystem("$psql $connopts -f '$dbshare/extension/pgrouting--$vpgr.sql' $DBNAME");
     }
     else {
         my $find = `find "$dbshare/contrib" -name pgrouting.sql | sort -r -n `;
@@ -309,7 +324,7 @@ sub createTestDB {
         my $file = shift @found;
         if ($file && length($file)) {
             print "-- Trying to install pgrouting from '$file'\n" if $DEBUG;
-            mysystem("$psql -U $DBUSER -h $DBHOST -p $DBPORT -f '$file' $DBNAME");
+            mysystem("$psql $connopts -f '$file' $DBNAME");
         }
         else {
             mysystem("ls -alR $dbshare") if $DEBUG;
@@ -319,14 +334,14 @@ sub createTestDB {
 
     # now verify that we have pgrouting installed
 
-    my $pgrv = `$psql -U $DBUSER -h $DBHOST -p $DBPORT -c "select pgr_version()" $DBNAME`;
+    my $pgrv = `$psql $connopts -c "select pgr_version()" $DBNAME`;
     die "ERROR: failed to install pgrouting into the database!\n"
         unless $pgrv;
 
 }
 
 sub dropTestDB {
-    mysystem("dropdb -U $DBUSER -h $DBHOST -p $DBPORT $DBNAME");
+    mysystem("dropdb $connopts $DBNAME");
 }
 
 sub version_greater_eq {
@@ -353,8 +368,8 @@ sub version_greater_eq {
 
 
 sub getServerVersion {
-    my $v = `$psql -U $DBUSER -h $DBHOST -p $DBPORT -q -t -c "select version()" postgres`;
-    print "$psql -U $DBUSER -h $DBHOST -p $DBPORT -q -t -c \"select version()\" postgres\n    # RETURNED: $v\n" if $VERBOSE;
+    my $v = `$psql $connopts -q -t -c "select version()" postgres`;
+    print "$psql $connopts -q -t -c \"select version()\" postgres\n    # RETURNED: $v\n" if $VERBOSE;
     if ($v =~ m/PostgreSQL (\d+(\.\d+)?(\.\d+)?)/) {
         print "    # Got ($1)\n" if $VERBOSE;
         return $1;
@@ -365,7 +380,7 @@ sub getServerVersion {
 sub dbExists {
     my $dbname = shift;
 
-    my $isdb = `$psql -U $DBUSER -h $DBHOST -p $DBPORT -l | grep $dbname`;
+    my $isdb = `$psql $connopts -l | grep $dbname`;
     $isdb =~ s/^\s*|\s*$//g;
     return length($isdb);
 }
@@ -379,7 +394,7 @@ sub findPsql {
 
 # getSharePath is complicated by the fact that on Debian we can have multiple
 # versions installed in a cluster. So we get the DB version by connectiong
-# to the port for the server we want. Then we get the share path for the 
+# to the port for the server we want. Then we get the share path for the
 # newest version od pg installed on the cluster. And finally we change the
 # in the path to the version of the server.
 

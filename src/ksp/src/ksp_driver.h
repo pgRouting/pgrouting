@@ -19,11 +19,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
 
-#ifndef SRC_KSP_SRC_KSPDRIVER_H_
-#define SRC_KSP_SRC_KSPDRIVER_H_
+#ifndef SRC_KSP_SRC_KSP_DRIVER_H_
+#define SRC_KSP_SRC_KSP_DRIVER_H_
 
-#include <stdarg.h>
-#include <stdio.h>
+// #include <stdarg.h>
+// #include <stdio.h>
 
 #include "./../../common/src/pgr_types.h"
 
@@ -41,4 +41,4 @@ int  do_pgr_ksp(pgr_edge_t  * edges, int64_t total_tuples,
 }
 #endif
 
-#endif  // SRC_KSP_SRC_KSPDRIVER_H_
+#endif  // SRC_KSP_SRC_KSP_DRIVER_H_

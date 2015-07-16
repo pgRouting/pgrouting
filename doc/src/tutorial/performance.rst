@@ -12,7 +12,14 @@
 Performance Tips
 ===============================================================================
 
+For the Routing functions:
+--------------------------
 
+.. Note:: To get faster results bound your queries to the area of interest of routing to have, for example, no more than one million rows.
+
+
+For the topology functions:
+---------------------------
 When "you know" that you are going to remove a set of edges from the edges table, and without those edges you are going to use a routing function you can do the following:
 
 Analize the new topology based on the actual topology:

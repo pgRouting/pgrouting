@@ -20,8 +20,13 @@
  */
 
 // Include C header first for windows build issue
-#include "astar.h"
 
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
+#include "astar.h"
 #include <boost/config.hpp>
 
 #include <boost/graph/graph_traits.hpp>
@@ -262,9 +267,9 @@ try {
         for (tie(out_i, out_end) = out_edges(v_src, graph); 
              out_i != out_end; ++out_i)
         {
-            graph_traits < graph_t >::vertex_descriptor v, targ;
+            graph_traits < graph_t >::vertex_descriptor targ; // v   set but not used
             e = *out_i;
-            v = source(e, graph);
+            // v = source(e, graph);
             targ = target(e, graph);
                                                                 
             if (targ == v_targ)
@@ -287,6 +292,7 @@ try {
     *err_msg = (char *) "Unknown exception caught!";
     return -1;
  }
- return -1;
+ *err_msg = (char *) "No path found";
+ return 0;
 }
 

@@ -24,6 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "postgres.h"
 #include "executor/spi.h"
+#include "utils/array.h"
+
 
 #include "./pgr_types.h"
 #include "./postgres_connection.h"
@@ -42,12 +44,14 @@ extern "C" {
 
   char * pgr_text2char(text *in);
   int pgr_finish(int code, int ret);
-
+  int64_t* pgr_get_bigIntArray(int *arrlen, ArrayType *input);
+/*
   int pgr_fetch_edge_columns(SPITupleTable *tuptable, int (*edge_columns)[5],
                    bool has_reverse_cost);
   void pgr_fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
            int (*edge_columns)[5], pgr_edge_t *target_edge,
            bool has_rcost);
+*/
 
   /*!
    Signature 1:
@@ -68,7 +72,8 @@ extern "C" {
 
   // output corresponding to costResult3Big
   pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path);
-  pgr_path_element3_t * noPathFound3(int64_t start_id);
+  // pgr_path_element3_t * noPathFound3(int64_t start_id);
+  pgr_path_element3_t* noPathFound3(int64_t fill_value, int *count, pgr_path_element3_t *no_path);
 
 
 #ifdef __cplusplus
