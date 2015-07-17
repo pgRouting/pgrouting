@@ -42,3 +42,5 @@ Release Notes
    - pgr_ksp
    - pgr_drivingDistance
 
+ - Some Bug fixes in other functions
+

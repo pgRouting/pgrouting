@@ -19,6 +19,7 @@ Changes for 2.1.0
    - pgr_ksp
    - pgr_drivingDistance
 
+ - Some bug fixes in other functions
 
 Changes for 2.0.0
 -------------------------------------------------------------------------------
