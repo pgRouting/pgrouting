@@ -1,0 +1,112 @@
+
+Changes for 2.1.0
+-------------------------------------------------------------------------------
+
+ - A library for developing functions was created
+
+   - encapsulates postgreSQL related functions
+   - encapsulates Boost.Graph graphs
+
+     - Directed Boost.Graph 
+     - Undirected Boost.graph.
+
+   - allow any-integer in the id's
+   - allow any-numerical on the cost/reverse_cost columns
+
+ - Three Functions where completly re-factored using the library and were added functionality
+
+   - pgr_dijkstra
+   - pgr_ksp
+   - pgr_drivingDistance
+
+
+Changes for 2.0.0
+-------------------------------------------------------------------------------
+
+* Graph Analytics - tools for detecting and fixing connection some problems in a graph
+* A collection of useful utility functions
+* Two new All Pairs Short Path algorithms (pgr_apspJohnson, pgr_apspWarshall)
+* Bi-directional Dijkstra and A-star search algorithms (pgr_bdAstar, pgr_bdDijkstra)
+* One to many nodes search (pgr_kDijkstra)
+* K alternate paths shortest path (pgr_ksp)
+* New TSP solver that simplifies the code and the build process (pgr_tsp), dropped "Gaul Library" dependency
+* Turn Restricted shortest path (pgr_trsp) that replaces Shooting Star
+* Dropped support for Shooting Star
+* Built a test infrastructure that is run before major code changes are checked in
+* Tested and fixed most all of the outstanding bugs reported against 1.x that existing in the 2.0-dev code base.
+* Improved build process for Windows
+* Automated testing on Linux and Windows platforms trigger by every commit
+* Modular library design
+* Compatibility with PostgreSQL 9.1 or newer 
+* Compatibility with PostGIS 2.0 or newer 
+* Installs as PostgreSQL EXTENSION
+* Return types refactored and unified
+* Support for table SCHEMA in function parameters
+* Support for ``st_`` PostGIS function prefix
+* Added ``pgr_`` prefix to functions and types
+* Better documentation: http://docs.pgrouting.org
+
+
+Changes for release 1.05
+-------------------------------------------------------------------------------
+
+* Bugfixes
+
+
+Changes for release 1.03
+-------------------------------------------------------------------------------
+
+* Much faster topology creation
+* Bugfixes
+
+
+Changes for release 1.02
+-------------------------------------------------------------------------------
+
+* Shooting* bugfixes
+* Compilation problems solved
+
+
+Changes for release 1.01
+-------------------------------------------------------------------------------
+
+* Shooting* bugfixes
+
+
+Changes for release 1.0
+-------------------------------------------------------------------------------
+
+* Core and extra functions are separated
+* Cmake build process
+* Bugfixes
+
+
+Changes for release 1.0.0b
+-------------------------------------------------------------------------------
+
+* Additional SQL file with more simple names for wrapper functions
+* Bugfixes
+
+
+Changes for release 1.0.0a
+-------------------------------------------------------------------------------
+
+* Shooting* shortest path algorithm for real road networks
+* Several SQL bugs were fixed
+
+
+Changes for release 0.9.9
+-------------------------------------------------------------------------------
+
+* PostgreSQL 8.2 support
+* Shortest path functions return empty result if they couldn’t find any path
+
+
+Changes for release 0.9.8
+-------------------------------------------------------------------------------
+
+* Renumbering scheme was added to shortest path functions
+* Directed shortest path functions were added
+* routing_postgis.sql was modified to use dijkstra in TSP search
+
+
