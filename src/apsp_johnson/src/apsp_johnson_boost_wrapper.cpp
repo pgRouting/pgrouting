@@ -54,7 +54,7 @@ static void graph_add_edge(G &graph, int source, int target, float cost) {
   if (cost < 0.0f) // edges are not inserted in the graph if cost is negative
     return;
 
-  tie(e, inserted) = add_edge(source, target, graph);
+  boost::tie(e, inserted) = add_edge(source, target, graph);
   graph[e].source = source;
   graph[e].target = target;
   graph[e].cost = cost;
@@ -93,7 +93,7 @@ try {
   std::vector<float> d(V, (std::numeric_limits<float>::max)());
 
   graph_traits<graph_t>::edge_iterator ei, eend;
-  for (tie(ei, eend) = boost::edges(graph); ei != eend; ei++) {
+  for (boost::tie(ei, eend) = boost::edges(graph); ei != eend; ei++) {
     dbg("Input Edge %d -> %d cost = %f", graph[*ei].source, graph[*ei].target,
         graph[*ei].cost);
   }

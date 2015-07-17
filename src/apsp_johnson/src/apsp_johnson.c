@@ -32,17 +32,26 @@
 
 //-------------------------------------------------------------------------
 
-Datum apsp_johnson(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum apsp_johnson(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
 
+#ifndef _MSC_VER
 #ifdef DEBUG
 #define DBG(format, arg...)                     \
     elog(NOTICE, format , ## arg)
 #else
 #define DBG(format, arg...) do { ; } while (0)
 #endif
+#else // _MSC_VER
+#ifdef DEBUG
+#define DBG(format, ...) \
+  pgr_dbg(format, ##__VA_ARGS__)
+#else
+#define DBG(format, ...) do { ; } while (0)
+#endif
+#endif // _MSC_VER
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
@@ -129,7 +138,11 @@ int compute_apsp_johnson(char* sql, edge_apsp_johnson_t **output_edges,
   int v_max_id = 0;
   int v_min_id = INT_MAX;
 
+#ifndef _MSC_VER
   edge_apsp_johnson_t edge_columns = { .source= -1, .target= -1, .cost= -1 };
+#else // _MSC_VER
+  edge_apsp_johnson_t edge_columns = { -1, -1, -1 };
+#endif // _MSC_VER
   char *err_msg;
   int ret = -1;
   register int z;
@@ -254,7 +267,7 @@ int compute_apsp_johnson(char* sql, edge_apsp_johnson_t **output_edges,
 }
 
 PG_FUNCTION_INFO_V1(apsp_johnson);
-Datum apsp_johnson(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum apsp_johnson(PG_FUNCTION_ARGS) {
   FuncCallContext *funcctx;
   int call_cntr;
   int max_calls;

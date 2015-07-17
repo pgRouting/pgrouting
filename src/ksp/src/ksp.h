@@ -68,7 +68,7 @@ ksp_path_element_t * get_ksp_memory(int,ksp_path_element_t *path);
 /*int ksp_finish(int code, int ret);*/
 
 #ifdef _MSC_VER
-  void DBG(const char* format, ...);
+  void pgr_dbg(const char* format, ...);
 #endif // _MSC_VER
 #ifdef __cplusplus
 }

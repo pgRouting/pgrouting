@@ -67,12 +67,21 @@
 #undef DEBUG
 //#define DEBUG 1
 
+#ifndef _MSC_VER
 #ifdef DEBUG
 #define DBG(format, arg...)                     \
     elog(NOTICE, format , ## arg)
 #else
 #define DBG(format, arg...) do { ; } while (0)
 #endif
+#else // _MSC_VER
+#ifdef DEBUG
+#define DBG(format, ...) \
+  pgr_dbg(format, ##__VA_ARGS__)
+#else
+#define DBG(format, ...) do { ; } while (0)
+#endif
+#endif // _MSC_VER
 
 
 #define T_INIT                        100

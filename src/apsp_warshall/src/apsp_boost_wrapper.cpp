@@ -35,6 +35,10 @@
 using namespace std;
 using namespace boost;
 
+#ifdef _MSC_VER
+#undef max;
+#endif // _MSC_VER
+
 /*
 //    FIXME: use this to avoid heap allocation ?
 
@@ -157,12 +161,12 @@ try {
 
     graph_traits<Graph>::vertex_iterator vi1, vi_end1, vi2, vi_end2;
 
-    tie(vi1,vi_end1)= boost::vertices(g);
+    boost::tie(vi1,vi_end1)= boost::vertices(g);
 
     for(int i = 0; vi1 != vi_end1; vi1++,i++)
     {
 
-        tie(vi2,vi_end2) = boost::vertices(g);
+        boost::tie(vi2,vi_end2) = boost::vertices(g);
         for(int j = 0; vi2 != vi_end2; vi2++,j++)
         {
             // *SEW* added the follow if to skip over these values

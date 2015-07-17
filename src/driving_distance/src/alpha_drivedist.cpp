@@ -30,7 +30,7 @@
 Takes a list of points and returns a list of segments 
 corresponding to the Alpha shape.
 ************************************************************************/
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
