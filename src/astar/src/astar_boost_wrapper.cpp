@@ -177,10 +177,10 @@ try {
                edges[j].target, 
                edges[j].source, 
                cost, 
-               edges[j].s_x, 
-               edges[j].s_y, 
                edges[j].t_x, 
-               edges[j].t_y);
+               edges[j].t_y, 
+               edges[j].s_x, 
+               edges[j].s_y);
         }
   }
 
