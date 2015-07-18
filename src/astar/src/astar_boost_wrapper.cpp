@@ -20,7 +20,9 @@
  */
 
 // Include C header first for windows build issue
+#ifndef _MSC_VER
 #include "astar.h"
+#endif // _MSC_VER
 
 #include <boost/config.hpp>
 
@@ -29,6 +31,13 @@
 #include <boost/graph/astar_search.hpp>
 
 #include <cmath>    // for sqrt
+
+#ifdef _MSC_VER
+#if _MSC_VER < 1600
+#define ELOG_H
+#endif
+#include "astar.h"
+#endif // _MSC_VER
 
 using namespace std;
 using namespace boost;

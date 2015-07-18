@@ -21,7 +21,7 @@
  
 #define _ALPHA_H
 
-#ifdef __MINGW64__
+#if defined(__MINGW64__) || (defined(_MSC_VER) && _MSC_VER < 1600)
 #define ELOG_H
 #endif
 #include "postgres.h"

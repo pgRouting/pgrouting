@@ -46,7 +46,9 @@ namespace boost {
 #include <vector>
 #include <list>
 
+#ifndef _MSC_VER
 #include "alpha.h"
+#endif // _MSC_VER
 
 #include <CGAL/Delaunay_triangulation_2.h>
 #include <CGAL/Triangulation_2.h>
@@ -57,6 +59,10 @@ namespace boost {
 #include <CGAL/Alpha_shape_2.h>
 #include <CGAL/Alpha_shape_face_base_2.h>
 #include <CGAL/Alpha_shape_vertex_base_2.h>
+
+#ifdef _MSC_VER
+#include "alpha.h"
+#endif // _MSC_VER
 
 typedef double coord_type;
 

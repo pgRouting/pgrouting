@@ -24,6 +24,9 @@
 
 #define MAX_RULE_LENGTH 5
 
+#if defined(_MSC_VER) && _MSC_VER < 1600
+#define ELOG_H
+#endif
 #include "postgres.h"
 
 typedef struct edge

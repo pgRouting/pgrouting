@@ -7,6 +7,9 @@
 #include <string>
 #include <stdlib.h>
 #include <iostream>
+#if defined(_MSC_VER) && _MSC_VER >= 1700
+#include <functional>
+#endif
 #include "trsp.h"
 
 typedef std::vector<long> LongVector;

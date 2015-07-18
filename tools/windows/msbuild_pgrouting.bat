@@ -135,7 +135,7 @@ set BOOST_THREAD_LIB=%COMMON_INSTALL_DIR%\lib\libboost_thread-vc%MSVC_VER:.=%-mt
 set BOOST_SYSTEM_LIB=%COMMON_INSTALL_DIR%\lib\libboost_system-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
 set BOOST_WILDCARD_LIB=%COMMON_INSTALL_DIR%\lib\libboost_*-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.libs
 
-if not exist "b2.exe" (
+if not exist "%BOOST_SRC_DIR%\b2.exe" (
 	pushd %BOOST_SRC_DIR%
 	call "bootstrap.bat"
 	popd

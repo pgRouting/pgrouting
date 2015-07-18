@@ -12,6 +12,9 @@
 #include "Graph.h"
 #include "YenTopKShortestPathsAlg.h"
 extern "C" {
+#if defined(_MSC_VER) && _MSC_VER < 1600
+#define ELOG_H
+#endif
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"

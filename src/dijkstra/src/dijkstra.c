@@ -342,7 +342,7 @@ static int compute_shortest_path(char* sql, int start_vertex,
 
 
 PG_FUNCTION_INFO_V1(shortest_path);
-Datum
+PGDLLEXPORT Datum
 shortest_path(PG_FUNCTION_ARGS)
 {
   FuncCallContext     *funcctx;

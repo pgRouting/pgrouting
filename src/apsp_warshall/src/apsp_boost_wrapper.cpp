@@ -19,6 +19,9 @@
  *
  */
 
+#if defined(_MSC_VER) && _MSC_VER < 1600
+#define ELOG_H
+#endif
 #include <boost/lexical_cast.hpp>
 #include <boost/config.hpp>
 //#include <iostream>

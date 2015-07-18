@@ -22,6 +22,9 @@
 #ifndef _DIJKSTRA_H
 #define _DIJKSTRA_H
 
+#if defined(_MSC_VER) && _MSC_VER < 1600
+#define ELOG_H
+#endif
 #include "postgres.h"
 
 typedef struct edge 

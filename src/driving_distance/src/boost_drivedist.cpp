@@ -26,13 +26,19 @@
 // Include C header first for windows build issue
 #include <exception>
 #include <math.h>
+#ifndef _MSC_VER
 #include "drivedist.h"
+#endif // _MSC_VER
 
 #include <boost/config.hpp>
 
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
+
+#ifdef _MSC_VER
+#include "drivedist.h"
+#endif // _MSC_VER
 
 using namespace std;
 using namespace boost;

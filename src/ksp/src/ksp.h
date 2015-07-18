@@ -25,6 +25,9 @@
 #define TUPLIMIT 1000
 #define PATH_ALLOC_TOTAL 5
 
+#if defined(_MSC_VER) && _MSC_VER < 1600
+#define ELOG_H
+#endif
 #include "postgres.h"
 
 #ifdef __cplusplus

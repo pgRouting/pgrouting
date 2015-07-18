@@ -19,6 +19,8 @@
 
 #include "fmgr.h"
 
+PGDLLEXPORT Datum tsp_matrix(PG_FUNCTION_ARGS);
+
 #ifdef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif

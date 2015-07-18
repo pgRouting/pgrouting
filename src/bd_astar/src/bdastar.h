@@ -21,6 +21,9 @@
 #ifndef _BDASTAR_H
 #define _BDASTAR_H
 
+#if defined(_MSC_VER) && _MSC_VER < 1600
+#define ELOG_H
+#endif
 #include "postgres.h"
 
 

@@ -20,7 +20,10 @@
  */
 
 // Include C header first for windows build issue
+#ifndef _MSC_VER
 #include "dijkstra.h"
+#endif // _MSC_VER
+
 #include <cfloat>
 
 #include <boost/config.hpp>
@@ -28,6 +31,10 @@
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
+
+#ifdef _MSC_VER
+#include "dijkstra.h"
+#endif // _MSC_VER
 
 using namespace std;
 using namespace boost;
