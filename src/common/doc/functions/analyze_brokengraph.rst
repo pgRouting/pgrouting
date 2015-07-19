@@ -174,4 +174,4 @@ Examples Output pane Messages
 See Also
 -------------------------------------------------------------------------------
 
-* `pgr_createTopology <https://github.com/Zia-/pgrouting/blob/develop/src/common/sql/pgrouting_topology.sql>` to create the topology of a table based on its geometry and tolerance value.
+* `pgr_createTopology <https://github.com/Zia-/pgrouting/blob/develop/src/common/sql/pgrouting_topology.sql>`_ to create the topology of a table based on its geometry and tolerance value.
