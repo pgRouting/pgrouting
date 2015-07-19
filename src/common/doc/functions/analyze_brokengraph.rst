@@ -47,10 +47,10 @@ Description
 
 A network behind any routing query may consist of sub-networks completely isolated from each other. Possible reasons could be:
 
-1. An island with no bridge connecting to the mainland.
-2. An edge or mesh of edges failed to connect to other networks because of human negligence during data generation.
-3. The data is not properly noded.
-4. Topology creation failed to succeed. 
+- An island with no bridge connecting to the mainland.
+- An edge or mesh of edges failed to connect to other networks because of human negligence during data generation.
+- The data is not properly noded.
+- Topology creation failed to succeed. 
 
 pgr_brokenGraph() will create an integer column (with the name provided by the user) and will assign same integer values to all those edges in the network which are connected topologically. Thus better analysis regarding network structure is possible. In case of ``rows_where`` condition, non participating rows will have -1 integer values.
 
@@ -72,7 +72,9 @@ Function accepts the following parameters:
 Possible Usage
 -------------------------------------------------------------------------------
 -- The following should be OK
+
 .. code-block:: sql
+
   select pgr_brokenGraph('ways');
   select pgr_brokenGraph('Ways');
   select pgr_brokenGraph('ways', 'id');
@@ -82,7 +84,9 @@ Possible Usage
   select pgr_brokenGraph('ways', 'id', 'source', 'target', 'subgraph', 'id<100');
 
   -- When table located in another schema e03
+
 .. code-block:: sql
+
   select pgr_brokenGraph('e03.ways');
   select pgr_brokenGraph('e03.Ways');
   select pgr_brokenGraph('e03.ways', 'id');
@@ -92,19 +96,25 @@ Possible Usage
   select pgr_brokenGraph('e03.ways', 'id', 'source', 'target', 'subgraph', 'id<100');
 
   -- When using the named notation
+
 .. code-block:: sql
+
   select pgr_brokenGraph('e03.calles', target:='destino', subgraph:='subgraph', id:='gido', source:='salida');
   select pgr_brokenGraph('e03.calles', rows_where:='gido<100', id:='gido', source:='salida', target:='destino', subgraph:='subgraph');
 
 -- The following should FAIL
+
 .. code-block:: sql 
+
   select pgr_brokenGraph('id', 'ways');
   select pgr_brokenGraph('ways', 'id', 'sourc', 'target');
   select pgr_brokenGraph('ways', 'id', 'source', 'Target');
   select pgr_brokenGraph('ways', 'id', 'source', 'target', 'subgraph', 'id<');
 
   -- When table located in another schema e03
+
 .. code-block:: sql
+
   select pgr_brokenGraph('e03.calles');
   select pgr_brokenGraph('e03.Calles');
   select pgr_brokenGraph('id', 'e03.calles');
@@ -114,13 +124,17 @@ Possible Usage
   select pgr_brokenGraph('e03.calles', 'gid', 'salida', 'destino', 'subgraph', 'id<10 AND id>100');
 
   -- When using the named notation
+
 .. code-block:: sql
+
   select pgr_brokenGraph('e03.calles', target:='destino', subgraph:='subgraph', id:='gido');
   select pgr_brokenGraph('e03.calles', target:='destino', subgraph:='subgraph', id:='gido', source:='salido');
   select pgr_brokenGraph(rows_where:='gido<100', id:='gido', source:='salida', 'e03.calles', target:='destino', subgraph:='subgraph');
 
 -- The following should return "rows_where condition generated 0 rows"
+
 .. code-block:: sql
+
   select pgr_brokenGraph('ways', 'id', 'source', 'target', 'subgraph', 'id<10 AND id>100');
   select pgr_brokenGraph('e03.calles', id:='gido', rows_where:='gido<100 AND gido>200', source:='salida', target:='destino', subgraph:='subgraph');
 
@@ -131,6 +145,7 @@ Examples Output pane Messages
 -------------------------------------------------------------------------------
 
 .. code-block:: sql
+
   NOTICE:  Processing:
   NOTICE:  pgr_brokenGraph('ways','id','source','target','subgraph','true')
   NOTICE:  Performing initial checks, please hold on ...
@@ -152,6 +167,7 @@ Examples Output pane Messages
   --------------------
   OK
   (1 row)
+
 
 
 
