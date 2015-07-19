@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_pointsToVids &mdash; pgRouting Manual (2.1.0)</title>
+    
+    <link rel="stylesheet" href="../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '2.1.0 (36f41ae develop_2_1_0)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.1.0)" href="../../../../doc/index.html" />
+    <link rel="up" title="Convenience Functions" href="index.html" />
+    <link rel="next" title="pgr_pointsToDMatrix" href="points_to_dmatrix.html" />
+    <link rel="prev" title="pgr_textToPoints" href="text_to_points.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+          <span>pgRouting Manual (2.1.0)</span></a></h1>
+        <h2 class="heading"><span>pgr_pointsToVids</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="text_to_points.html">pgr_textToPoints</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="points_to_dmatrix.html">pgr_pointsToDMatrix</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-pointstovids">
+<span id="pgr-points-to-vids"></span><h1>pgr_pointsToVids<a class="headerlink" href="#pgr-pointstovids" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">pgr_pointsToVids</span></code> - Converts an array of point geometries into vertex ids.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Given an array of point geometries and an edge table and a max search tol distance the function converts points into vertex ids using pgr_pointtoedgenode().</p>
+<p>The function returns:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">integer[]</span></code> - An array of <code class="docutils literal"><span class="pre">vertex_id</span></code>.</li>
+</ul>
+</div></blockquote>
+<div class="highlight-sql"><div class="highlight"><pre><span class="nb">integer</span><span class="p">[]</span> <span class="n">pgr_pointsToVids</span><span class="p">(</span><span class="n">pnts</span> <span class="n">geometry</span><span class="p">[],</span> <span class="n">edges</span> <span class="nb">text</span><span class="p">,</span> <span class="n">tol</span> <span class="n">float8</span> <span class="k">DEFAULT</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Paramters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">pnts:</th><td class="field-body"><code class="docutils literal"><span class="pre">geometry[]</span></code> - An array of point geometries.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">edges:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> - The edge table to be used for the conversion.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">tol:</th><td class="field-body"><code class="docutils literal"><span class="pre">float8</span></code> - The maximum search distance for locating the closest edge.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You need to check the results for any vids=-1 which indicates if failed to locate an edge.</p>
+</div>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>New in version 2.1.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre>select * from pgr_pointstovids(
+    pgr_texttopoints(&#39;2,0;2,1;3,1;2,2;4,1;4,2;2,3;3,2&#39;, 0),
+    &#39;edge_table&#39;
+    -- tol is not specified, so we use the default of 0.01
+);
+  pgr_pointstovids
+--------------------
+ {1,2,3,5,4,9,10,6}
+(1 row)
+</pre></div>
+</div>
+<p>This example uses the <a class="reference internal" href="../../../../doc/src/developer/sampledata.html#sampledata"><span>Sample Data</span></a> network.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="point_to_edgenode.html#pgr-point-to-edgenode"><span>pgr_pointToEdgeNode</span></a> - convert a point geometry to the closest vertex_id of an edge..</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="text_to_points.html">pgr_textToPoints</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="points_to_dmatrix.html">pgr_pointsToDMatrix</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright pgRouting Contributors - Version 2.1.0 (36f41ae develop_2_1_0).
+      Last updated on Jul 19, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
