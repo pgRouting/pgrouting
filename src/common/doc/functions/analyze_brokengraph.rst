@@ -83,7 +83,7 @@ Possible Usage
   select pgr_brokenGraph('ways', 'id', 'source', 'target', 'subgraph');
   select pgr_brokenGraph('ways', 'id', 'source', 'target', 'subgraph', 'id<100');
 
-  -- When table located in another schema e03
+-- When table located in another schema e03
 
 .. code-block:: sql
 
@@ -95,7 +95,7 @@ Possible Usage
   select pgr_brokenGraph('e03.ways', 'id', 'source', 'target', 'subgraph');
   select pgr_brokenGraph('e03.ways', 'id', 'source', 'target', 'subgraph', 'id<100');
 
-  -- When using the named notation
+-- When using the named notation
 
 .. code-block:: sql
 
@@ -111,7 +111,7 @@ Possible Usage
   select pgr_brokenGraph('ways', 'id', 'source', 'Target');
   select pgr_brokenGraph('ways', 'id', 'source', 'target', 'subgraph', 'id<');
 
-  -- When table located in another schema e03
+-- When table located in another schema e03
 
 .. code-block:: sql
 
@@ -123,7 +123,7 @@ Possible Usage
   select pgr_brokenGraph('e03.calles', 'gid', 'salida', 'target', 'subgraph', 'id<10');
   select pgr_brokenGraph('e03.calles', 'gid', 'salida', 'destino', 'subgraph', 'id<10 AND id>100');
 
-  -- When using the named notation
+-- When using the named notation
 
 .. code-block:: sql
 
@@ -174,4 +174,4 @@ Examples Output pane Messages
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_createTopology` to create the topology of a table based on its geometry and tolerance value.
+* :ref:`pgr_createTopology <http://example.com/link.url.html>`_ to create the topology of a table based on its geometry and tolerance value.
