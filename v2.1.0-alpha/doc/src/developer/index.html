@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Developer’s Guide &mdash; pgRouting Manual (2.1.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.1.0 (36f41ae develop_2_1_0)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.1.0)" href="../../index.html" />
+    <link rel="next" title="Release Notes" href="../changelog/index.html" />
+    <link rel="prev" title="Discontinued Functions" href="discontinued.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.1.0)</span></a></h1>
+        <h2 class="heading"><span>Developer’s Guide</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="discontinued.html">Discontinued Functions</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../changelog/index.html">Release Notes</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="developer-s-guide">
+<span id="developer"></span><h1>Developer&#8217;s Guide<a class="headerlink" href="#developer-s-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="source-tree-layout">
+<h2>Source Tree Layout<a class="headerlink" href="#source-tree-layout" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><em>cmake/</em></dt>
+<dd>cmake scripts used as part of our build system.</dd>
+<dt><em>src/</em></dt>
+<dd>This is the algorithm source tree. Each algorithm is to be contained
+in its on sub-tree with /doc, /sql, /src, and /test sub-directories.</dd>
+</dl>
+<p>For example:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">src/dijkstra</span></code>  Main direcotry for dijkstra algorithm.</li>
+<li><code class="docutils literal"><span class="pre">src/dijkstra/doc</span></code>  Dijkstra&#8217;s documentation directory.</li>
+<li><code class="docutils literal"><span class="pre">src/dijkstra/src</span></code>  Dijkstra&#8217;s C and/or C++ code.</li>
+<li><code class="docutils literal"><span class="pre">src/dijkstra/sql</span></code>  Dijkstra&#8217;s sql code.</li>
+<li><code class="docutils literal"><span class="pre">src/dijkstra/test</span></code>  Dijkstra&#8217;s tests.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="tools">
+<h2>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><em>tools/</em></dt>
+<dd>Miscellaneous scripts and tools.</dd>
+</dl>
+<div class="section" id="pre-commit">
+<h3>pre-commit<a class="headerlink" href="#pre-commit" title="Permalink to this headline">¶</a></h3>
+<p>To keep version/branch/commit up to date install pelase do the following:</p>
+<div class="code highlight-python"><div class="highlight"><pre>cp tools/pre-commit .git/hooks/pre-commit
+</pre></div>
+</div>
+<p>After each commit a the file <strong>VERSION</strong> will remain. (The hash number will be one behind)</p>
+</div>
+<div class="section" id="tester">
+<h3>tester<a class="headerlink" href="#tester" title="Permalink to this headline">¶</a></h3>
+<p>The tester is executed from the top level of the tree layout:</p>
+<div class="code highlight-python"><div class="highlight"><pre><span class="n">tools</span><span class="o">/</span><span class="n">test</span><span class="o">-</span><span class="n">runner</span><span class="o">.</span><span class="n">pl</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="doxygen">
+<h3>doxygen<a class="headerlink" href="#doxygen" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><a class="reference internal" href="../../../src/common/doc/utilities/index.html#developer-functions"><span>Developers&#8217;s Functions</span></a> documentation is going to be deleted from the pgRouting documentation and included in the doxygen documentation.</p>
+</div>
+<p>To use doxygen:</p>
+<div class="code highlight-python"><div class="highlight"><pre>cd tools/doxygen/
+make
+</pre></div>
+</div>
+<p>The code&#8217;s documentation can be found in:</p>
+<div class="code highlight-python"><div class="highlight"><pre><span class="n">build</span><span class="o">/</span><span class="n">doxy</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cpplint">
+<h3>cpplint<a class="headerlink" href="#cpplint" title="Permalink to this headline">¶</a></h3>
+<p>We try to follow the following guidelines for C++ coding:</p>
+<p><a class="reference external" href="https://google-styleguide.googlecode.com/svn/trunk/cppguide.html">https://google-styleguide.googlecode.com/svn/trunk/cppguide.html</a></p>
+<p>Sample use:</p>
+<div class="code highlight-python"><div class="highlight"><pre>python cpplint.py ../src/dijkstra/src/dijkstra_driver.h
+ ../src/dijkstra/src/dijkstra_driver.h:34:  Lines should be &lt;= 80 characters long  [whitespace/line_length] [2]
+ ../src/dijkstra/src/dijkstra_driver.h:40:  Line ends in whitespace.  Consider deleting these extra spaces.  [whitespace/end_of_line] [4]
+ Done processing ../src/dijkstra/src/dijkstra_driver.h
+ Total errors found: 2
+</pre></div>
+</div>
+<ul class="simple">
+<li>Maybe line 34 is a very complicated calculation so you can just ignore the message</li>
+<li>Delete whitespace at end of line is easy fix.</li>
+<li>Use your judgement!!!</li>
+</ul>
+<p>Some files like <code class="docutils literal"><span class="pre">postgres.h</span></code> are system dependant so don&#8217;t include the directory.</p>
+</div>
+<div class="section" id="other-tools">
+<h3>Other tools<a class="headerlink" href="#other-tools" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Tools like:</dt>
+<dd><ul class="first last simple">
+<li>doit</li>
+<li>winnie</li>
+<li>publish_doc.sh</li>
+</ul>
+</dd>
+</dl>
+<p>are very specific for the deployment of new versions, so please ask first!</p>
+</div>
+</div>
+<div class="section" id="documentation-layout">
+<h2>Documentation Layout<a class="headerlink" href="#documentation-layout" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All documentation should be in reStructuredText format.
+See: &lt;<a class="reference external" href="http://docutils.sf.net/rst.html">http://docutils.sf.net/rst.html</a>&gt; for introductory docs.</p>
+</div>
+<p>Documentation is distributed into the source tree. This top level &#8220;doc&#8221;
+directory is intended for high level documentation cover subjects like:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Compiling and testing</li>
+<li>Installation</li>
+<li>Tutorials</li>
+<li>Users&#8217; Guide front materials</li>
+<li>Reference Manual front materials</li>
+<li>etc</li>
+</ul>
+</div></blockquote>
+<p>Since the algorithm specific documentation is contained in the source
+tree with the algorithm specific files, the process of building the
+documentation and publishing it will need to assemble the details with
+the front material as needed.</p>
+<p>Also, to keep the &#8220;doc&#8221; directory from getting cluttered, each major book
+like those listed above, should be contained in a separate directory under
+&#8220;doc&#8221;. Any images or other materials related to the book should also be kept
+in that directory.</p>
+</div>
+<div class="section" id="testing-infrastructure">
+<h2>Testing Infrastructure<a class="headerlink" href="#testing-infrastructure" title="Permalink to this headline">¶</a></h2>
+<p>There is a very basic testing infrastructure put in place. Here are the
+basics of how it works. We need more test cases. Longer term we should
+probably get someone to setup travis-ci or jenkins testing frameworks.</p>
+<p>Here is the graph for the TRSP tests.</p>
+<img alt="../../../_images/trsp-test-image.png" src="../../../_images/trsp-test-image.png" />
+<p>Tests are run via the script at the top level tools/test-runner.pl and it runs
+all the test configured tests and at the moment just dumps the results
+structure of the test. This can be prettied up later.</p>
+<blockquote>
+<div>It also assumes that you have installed the libraries as it tests
+using the installed postgresql. This probably needs to be made
+smarter so we can test out of the build tree. I&#8217;ll need to think
+about that.</div></blockquote>
+<p>Basically each .../test/ directory should include one <em>test.conf</em> file that
+is a perl script fragment that defines what data files to load and what
+tests to run. I have built in some mechanisms to allow test and data to
+be pg version and postgis version specific, but I&#8217;m not using that yet.
+So for example, <em>core/trsp/test/test-any-00.data</em> is a sql plain text dump
+that will load and needed data for a set of tests. This is also the graph
+in the image above. You can specify multiple files to load, but as a
+group they need to have unique names.</p>
+<p>core/trsp/test/test-any-00.test is a sql command to be run. It will get
+run as:</p>
+<div class="highlight-bash"><div class="highlight"><pre>psql ... -A -t -q -f file.test dbname &gt; tmpfile
+diff -w file.rest tmpfile
+</pre></div>
+</div>
+<p>Then if there is a difference then an test failure is reported.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="discontinued.html">Discontinued Functions</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../changelog/index.html">Release Notes</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright pgRouting Contributors - Version 2.1.0 (36f41ae develop_2_1_0).
+      Last updated on Jul 19, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

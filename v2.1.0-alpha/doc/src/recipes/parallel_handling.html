@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Handling parallels after getting a path (pgr_ksp focus) &mdash; pgRouting Manual (2.1.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.1.0 (36f41ae develop_2_1_0)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.1.0)" href="../../index.html" />
+    <link rel="up" title="User’s Recipes List" href="index.html" />
+    <link rel="next" title="Convenience Functions" href="../../../src/common/doc/convenience/index.html" />
+    <link rel="prev" title="Comparing topology of a unnoded network with a noded network" href="example_recipe.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.1.0)</span></a></h1>
+        <h2 class="heading"><span>Handling parallels after getting a path (pgr_ksp focus)</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="example_recipe.html">Comparing topology of a unnoded network with a noded network</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../../src/common/doc/convenience/index.html">Convenience Functions</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="handling-parallels-after-getting-a-path-pgr-ksp-focus">
+<span id="parallel-handling"></span><h1>Handling parallels after getting a path (pgr_ksp focus)<a class="headerlink" href="#handling-parallels-after-getting-a-path-pgr-ksp-focus" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">pgRouting team.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Licence:</th><td class="field-body">Open Source</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">The graph</p>
+<img alt="../../../_images/parallelImage.png" src="../../../_images/parallelImage.png" />
+<p class="rubric">Data</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">drop</span> <span class="k">table</span> <span class="n">if</span> <span class="k">exists</span> <span class="n">parallel</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">parallel</span> <span class="p">(</span>
+  <span class="n">id</span> <span class="nb">serial</span><span class="p">,</span>
+  <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span>
+  <span class="n">target</span> <span class="nb">integer</span><span class="p">,</span>
+  <span class="n">cost</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+  <span class="n">reverse_cost</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+  <span class="n">x1</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+  <span class="n">y1</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+  <span class="n">x2</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+  <span class="n">y2</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+  <span class="n">the_geom</span> <span class="n">geometry</span>
+<span class="p">);</span>
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">parallel</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
+  <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+<span class="k">UPDATE</span> <span class="n">parallel</span> <span class="k">SET</span> <span class="n">the_geom</span> <span class="o">=</span> <span class="n">ST_makeline</span><span class="p">(</span><span class="n">ST_point</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">),</span><span class="n">ST_point</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">));</span>
+<span class="k">UPDATE</span> <span class="n">parallel</span> <span class="k">SET</span> <span class="n">the_geom</span> <span class="o">=</span> <span class="n">ST_makeline</span><span class="p">(</span><span class="nb">ARRAY</span><span class="p">[</span><span class="n">ST_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">ST_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">ST_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)])</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="k">UPDATE</span> <span class="n">parallel</span> <span class="k">SET</span> <span class="n">the_geom</span> <span class="o">=</span> <span class="n">ST_makeline</span><span class="p">(</span><span class="nb">ARRAY</span><span class="p">[</span><span class="n">ST_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">ST_point</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">ST_point</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">ST_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)])</span>
+                              <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="k">UPDATE</span> <span class="n">parallel</span> <span class="k">SET</span> <span class="n">cost</span> <span class="o">=</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">the_geom</span><span class="p">),</span> <span class="n">reverse_cost</span> <span class="o">=</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">the_geom</span><span class="p">);</span>
+<span class="k">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;parallel&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
+</pre></div>
+</div>
+<p class="rubric">pgr_ksp results</p>
+<p>We ignore the costs because we want all the parallels</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span> <span class="k">as</span> <span class="n">route</span><span class="p">,</span> <span class="n">id2</span> <span class="k">as</span> <span class="n">node</span><span class="p">,</span> <span class="n">id3</span> <span class="k">as</span> <span class="n">edge</span> <span class="k">into</span> <span class="n">routes</span>
+  <span class="k">from</span> <span class="n">pgr_ksp</span><span class="p">(</span><span class="s1">&#39;select id, source, target, cost, reverse_cost from parallel&#39;</span><span class="p">,</span>
+  <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">routes</span><span class="p">;</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">route</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span>
+<span class="c1">-----+-------+------+------</span>
+   <span class="mi">0</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">1</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">2</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span>
+   <span class="mi">3</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">5</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">6</span>
+   <span class="mi">6</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">7</span>
+   <span class="mi">7</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">8</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span>
+   <span class="mi">9</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">10</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">We need an aggregate function:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">AGGREGATE</span> <span class="n">array_accum</span> <span class="p">(</span><span class="n">anyelement</span><span class="p">)</span>
+<span class="p">(</span>
+  <span class="n">sfunc</span> <span class="o">=</span> <span class="n">array_append</span><span class="p">,</span>
+  <span class="k">stype</span> <span class="o">=</span> <span class="n">anyarray</span><span class="p">,</span>
+  <span class="n">initcond</span> <span class="o">=</span> <span class="s1">&#39;{}&#39;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p class="rubric">Now lets generate a table with the parallel edges.</p>
+<div class="highlight-sql"><div class="highlight"><pre>select distinct seq,route,source,target, array_accum(id) as edges into paths
+  from (select seq, route, source, target
+        from parallel, routes where id = edge) as r
+     join parallel using (source, target)
+  group by seq,route,source,target order by seq;
+
+ksp_test=# select * from paths;
+ seq | route | source | target |  edges
+-----+-------+--------+--------+---------
+   0 |     0 |      1 |      2 | {1}
+   1 |     0 |      2 |      3 | {2,3,4}
+   2 |     0 |      3 |      4 | {5}
+   4 |     1 |      1 |      2 | {1}
+   5 |     1 |      2 |      5 | {6}
+   6 |     1 |      5 |      6 | {7}
+   7 |     1 |      6 |      3 | {8}
+   8 |     1 |      3 |      4 | {5}
+</pre></div>
+</div>
+<p class="rubric">Some more aggregate functions</p>
+<p>To generate a table with all the combinations for parallel routes, we need some more aggregates</p>
+<div class="highlight-sql"><div class="highlight"><pre>create or replace function multiply( integer, integer )
+returns integer as
+$$
+  select $1 * $2;
+$$
+language sql stable;
+
+create aggregate prod(integer)
+(
+  sfunc = multiply,
+  stype = integer,
+  initcond = 1
+);
+</pre></div>
+</div>
+<p class="rubric">And a function that &#8220;Expands&#8221; the table</p>
+<div class="highlight-sql"><div class="highlight"><pre>CREATE OR REPLACE function   expand_parallel_edge_paths(tab text)
+  returns TABLE (
+                seq    INTEGER,
+                route  INTEGER,
+                source INTEGER, target INTEGER, -- this ones are not really needed
+                edge   INTEGER ) AS
+ $body$
+ DECLARE
+ nroutes   INTEGER;
+ newroutes INTEGER;
+ rec   record;
+ seq2 INTEGER := 1;
+ rnum INTEGER := 0;
+
+ BEGIN     -- get the number of distinct routes
+   execute &#39;select count(DISTINCT route) from &#39; || tab INTO nroutes;
+   FOR i IN 0..nroutes-1
+   LOOP
+       -- compute the number of new routes this route will expand into
+       -- this is the product of the lengths of the edges array for each route
+       execute &#39;select prod(array_length(edges, 1))-1 from &#39;
+       ||       quote_ident(tab) || &#39; where route=&#39;    || i INTO newroutes;
+       -- now we generate the number of new routes for this route
+       -- by repeatedly listing the route and swapping out the parallel edges
+       FOR j IN 0..newroutes
+       LOOP
+           -- query the specific route
+           FOR rec IN execute &#39;select * from &#39; || quote_ident(tab) ||&#39; where route=&#39; || i
+                       || &#39; order by seq&#39;
+           LOOP
+               seq := seq2;
+               route := rnum;
+               source := rec.source;
+               target := rec.target;
+               -- using module arithmetic iterate through the various edge choices
+               edge := rec.edges[(j % (array_length(rec.edges, 1)))+1];
+               -- return a new record
+               RETURN next;
+               seq2 := seq2 + 1;    -- increment the record count
+            END LOOP;
+            seq := seq2;
+            route := rnum;
+            source := rec.target;
+            target := -1;
+            edge := -1;
+            RETURN next;  -- Insert the ending record of the route
+            seq2 := seq2 + 1;
+
+            rnum := rnum + 1;  -- increment the route count
+        END LOOP;
+     END LOOP;
+ END;
+ $body$
+ language plpgsql volatile strict   cost 100 rows 100;
+</pre></div>
+</div>
+<p class="rubric">Test it</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">expand_parallel_edge_paths</span><span class="p">(</span> <span class="s1">&#39;paths&#39;</span> <span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">route</span> <span class="o">|</span> <span class="k">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">edge</span>
+<span class="c1">-----+-------+--------+--------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">3</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span>
+   <span class="mi">4</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">5</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">6</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span>
+   <span class="mi">7</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span>
+   <span class="mi">8</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">9</span> <span class="o">|</span>     <span class="mi">2</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">10</span> <span class="o">|</span>     <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">4</span>
+  <span class="mi">11</span> <span class="o">|</span>     <span class="mi">2</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span>
+  <span class="mi">12</span> <span class="o">|</span>     <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+  <span class="mi">13</span> <span class="o">|</span>     <span class="mi">3</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span>
+  <span class="mi">14</span> <span class="o">|</span>     <span class="mi">3</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>    <span class="mi">6</span>
+  <span class="mi">15</span> <span class="o">|</span>     <span class="mi">3</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>    <span class="mi">7</span>
+  <span class="mi">16</span> <span class="o">|</span>     <span class="mi">3</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">8</span>
+  <span class="mi">17</span> <span class="o">|</span>     <span class="mi">3</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span>
+  <span class="mi">18</span> <span class="o">|</span>     <span class="mi">3</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">18</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="example_recipe.html">Comparing topology of a unnoded network with a noded network</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../../src/common/doc/convenience/index.html">Convenience Functions</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright pgRouting Contributors - Version 2.1.0 (36f41ae develop_2_1_0).
+      Last updated on Jul 19, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
