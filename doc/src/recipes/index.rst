@@ -19,8 +19,11 @@ User's Recipes List
    ./parallel_handling.rst
 
 
-Unsupported Functions (to become a recipe)
+Unsupported Functions / Proposed Functions
 ===============================================================================
+
+Steve Woodbrige's proposed functions:
+
 :ref:`convenience_functions`
 
   -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.

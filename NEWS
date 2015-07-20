@@ -2,7 +2,7 @@
 Changes for 2.1.0
 -------------------------------------------------------------------------------
 
- - A library for developing functions was created
+ - A C and C++ library for developer was created
 
    - encapsulates postgreSQL related functions
    - encapsulates Boost.Graph graphs
@@ -13,11 +13,20 @@ Changes for 2.1.0
    - allow any-integer in the id's
    - allow any-numerical on the cost/reverse_cost columns
 
- - Three Functions where completly re-factored using the library and were added functionality
+ - Three Functions where completly re-factored using the developers library and functionality was added.
 
    - pgr_dijkstra
    - pgr_ksp
    - pgr_drivingDistance
+
+ - Instead of generating many libraries:
+   - All functions are encapsulated in one library
+   - The library has a the prefix 2-1-0
+
+ - Incorporated in recipes, but not officialy part of pgRouting:
+   - Classified as Convinience by the author.
+
+ - Removed the 1.x legacy functions
 
  - Some bug fixes in other functions
 
