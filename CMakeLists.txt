@@ -132,9 +132,6 @@ if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
   message(FATAL_ERROR " PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
 endif("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
 
-#allways installing with extension
-set(USE_PG_EXTENSION TRUE)
-
 
 execute_process(
   COMMAND ${POSTGRESQL_PG_CONFIG} --pkglibdir
@@ -155,14 +152,8 @@ execute_process(
   OUTPUT_VARIABLE SHARE_DIR)
 
 if(SHARE_DIR)
-  # Always install in "contrib" directory of PostgreSQL
-  set(CONTRIB_DIR "${SHARE_DIR}/contrib/pgrouting-${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
-  message(STATUS "Contrib directory for SQL files is set to ${CONTRIB_DIR}")
-
-  # Always Install as extension 
   set(SHARE_DIR "${SHARE_DIR}/extension")
   message(STATUS "Extension directory for SQL files is set to ${SHARE_DIR}")
-
 else(SHARE_DIR)
   message(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
 endif(SHARE_DIR)
@@ -293,12 +284,11 @@ endif(APPLE)
 file(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
 "-- pgRouting version '${PGROUTING_VERSION_STRING}' extension for postgresql\n")
 
-if(USE_PG_EXTENSION)
-    file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-        "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
-    #file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-    #    "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
-endif(USE_PG_EXTENSION)
+file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+  "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
+#file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+#    "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
+
 
 cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
     "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
@@ -336,19 +326,7 @@ message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
 install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
 
 install(FILES
-    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
-#    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
-    DESTINATION "${SHARE_DIR}")
-
-# The following probably could be done better
-# The idea is to also have a "pgrouting-x.x" directory in PostgreSQL contrib
-configure_file("${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting.sql" COPYONLY)
-
-install(FILES
-    "${CMAKE_BINARY_DIR}/lib/pgrouting.sql"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
-#    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
-    DESTINATION "${CONTRIB_DIR}")
-
+  "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
+  "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
+  #    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
+  DESTINATION "${SHARE_DIR}")
