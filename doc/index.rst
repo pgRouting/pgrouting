@@ -66,6 +66,13 @@ Version
 
 :ref:`pgr_version` - to get pgRouting's version information.
 
+.. toctree::
+   :hidden:
+
+   ../src/common/doc/utilities/version
+
+
+
 *******************************************************************************
 Data Types
 *******************************************************************************
@@ -93,6 +100,11 @@ Topology functions
   -  :ref:`pgr_analyze_oneway` - to analyze directionality of the edges.
   -  :ref:`pgr_node_network`  -to create nodes to a not noded edge table.
 
+.. toctree::
+	:hidden:
+
+	../src/common/doc/functions/index
+
 *******************************************************************************
 Routing functions
 *******************************************************************************
@@ -111,14 +123,63 @@ Routing functions
   -  :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
   -  :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
 
+.. toctree::
+	:hidden:
+
+	../src/index
 
 *******************************************************************************
-Experimental functions (vehicle routing problems)
+Pre processing or post processing helping functions
 *******************************************************************************
 
-The following functions are experimental, they may lack documentation, and for the moment there is
-no support for them.
+:ref:`pgr_driving_distance_post`
 
+  -  :refe`pgr_alphaShape` - Alpha shape computation
+  -  :ref:`pgr_points_as_polygon` - Polygon around set of points
+
+*******************************************************************************
+Proposed functions
+*******************************************************************************
+
+This section containes the new signatures proposed for any of the following sections:
+  - topology functions
+  - routing functions
+  - vehicle routing functions
+  - pre / post prossesing helpng functions
+
+We are including them so that the pgRouting community can evaluate them before
+including them as an official function of pgRouting.
+
+Some of them are unsupported like the GSoC functions.
+
+
+*******************************************************************************
+Proposed functions: Proposed by Steve Woodbridge
+*******************************************************************************
+
+:ref:`convenience_functions`
+  -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
+  -  :ref:`pgr_flip_edges` - flip the edges in an array of geometries so the connect end to end.
+  -  :ref:`pgr_text_to_points` - convert a string of ``x,y;x,y;...`` locations into point geometries.
+  -  :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
+  -  :ref:`pgr_points_to_dmatrix` - Create a distance matrix from an array of points.
+  -  :ref:`pgr_vids_to_dmatrix` - Create a distance matrix from an array of ``vertix_id``.
+  -  :ref:`pgr_vids_to_dmatrix2` - Create a distance matrix from an array of ``vertix_id``.
+
+.. toctree::
+	:hidden:
+
+        ../src/common/doc/convenience/index
+
+*******************************************************************************
+Proposed functions: Proposed by GSoC
+*******************************************************************************
+
+The following functions are experimental
+ - They may lack documentation,
+ - Were created by GSoC students.
+ - they are unsoported.
+ 
   -  :ref:`pgr_vrp_basic` - VRP One Depot
   -  :ref:`pgr_gsocvrppdtw` -  Pickup and Delivery problem
 
@@ -128,32 +189,19 @@ no support for them.
 	../src/vrp_basic/doc/index.rst
 	../src/vrppdtw/doc/index.rst
 
-*******************************************************************************
-Pre processing or post processing helping functions
-*******************************************************************************
-
-:ref:`pgr_driving_distance_post`
-
-  -  :ref:`pgr_alphaShape` - Alpha shape computation
-  -  :ref:`pgr_points_as_polygon` - Polygon around set of points
-
-
-*******************************************************************************
-Unsupported functions
-*******************************************************************************
 
 .. toctree::
 	:hidden:
 
-	../src/common/doc/functions/index
-	../src/index
 	../src/common/doc/utilities/index
 
+*******************************************************************************
+Discontinued Functions
+*******************************************************************************
 
 .. toctree::
 	:maxdepth: 1
 
-	../src/common/doc/legacy
 	src/developer/discontinued
 
 
@@ -161,9 +209,16 @@ Unsupported functions
 Developer
 *******************************************************************************
 
-.. warning:: :ref:`developer_functions` documentation is going to be deleted from the pgRouting documentation and included in the doxygen documentation.
 
 :ref:`developer_functions`
+
+
+.. warning:: In V3.0 This function are going to be discontinued. Use the already available underscored version instead.
+
+.. warning:: :ref:`developer_functions` documentation is going to be deleted from the pgRouting documentation in V3.0
+
+             
+The following functions are used internaly the topology functions.
   -  :ref:`pgr_get_column_name` - to get the name of the column as is stored in the postgres administration tables.
   -  :ref:`pgr_get_table_name` - to retrieve the name of the table as is stored in the postgres administration tables.
   -  :ref:`pgr_is_column_indexed` - to check if the column is indexed.

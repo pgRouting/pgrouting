@@ -55,7 +55,13 @@ Corporate Sponsors (in alphabetical order)
 
 These are corporate entities that have contributed developer time, hosting, or direct monetary funding to the pgRouting project:
 
-	Camptocamp, CSIS (University of Tokyo), Georepublic, Google Summer of Code, iMaptools, Orkney, Paragon Corporation
+ - Camptocamp
+ - CSIS (University of Tokyo)
+ - Georepublic
+ - Google Summer of Code
+ - iMaptools
+ - Orkney
+ - Paragon Corporation
 
 
 Inside

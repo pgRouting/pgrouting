@@ -19,26 +19,6 @@ User's Recipes List
    ./parallel_handling.rst
 
 
-Unsupported Functions / Proposed Functions
-===============================================================================
-
-Steve Woodbrige's proposed functions:
-
-:ref:`convenience_functions`
-
-  -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
-  -  :ref:`pgr_flip_edges` - flip the edges in an array of geometries so the connect end to end.
-  -  :ref:`pgr_text_to_points` - convert a string of ``x,y;x,y;...`` locations into point geometries.
-  -  :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
-  -  :ref:`pgr_points_to_dmatrix` - Create a distance matrix from an array of points.
-  -  :ref:`pgr_vids_to_dmatrix` - Create a distance matrix from an array of ``vertix_id``.
-  -  :ref:`pgr_vids_to_dmatrix2` - Create a distance matrix from an array of ``vertix_id``.
-
-.. toctree:: 
-   :hidden:
-      
-   ../../../src/common/doc/convenience/index
-
 *No more contributions*
 
 
