@@ -23,8 +23,10 @@ Changes for 2.1.0
    - All functions are encapsulated in one library
    - The library has a the prefix 2-1-0
 
- - Incorporated in recipes, but not officialy part of pgRouting:
+ - Added proposed functions to be evaluated:
    - Classified as Convinience by the author.
+
+ - Added proposed functions from GSoc Projects:
 
  - Removed the 1.x legacy functions
 
