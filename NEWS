@@ -24,9 +24,17 @@ Changes for 2.1.0
    - The library has a the prefix 2-1-0
 
  - Added proposed functions to be evaluated:
-   - Classified as Convinience by the author.
+   - Proposed functions from Steve Woodbridge, (Classified as Convinience by the author.)
+      - pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge.
+      - pgr_flipEdges - flip the edges in an array of geometries so the connect end to end.
+      - pgr_textToPoints - convert a string of x,y;x,y;... locations into point geometries.
+      - pgr_pointsToVids - convert an array of point geometries into vertex ids.
+      - pgr_pointsToDMatrix - Create a distance matrix from an array of points.
+      - pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id.
+      - pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id.
 
- - Added proposed functions from GSoc Projects:
+   - Added proposed functions from GSoc Projects:
+      - pgr_vrppdtw
 
  - Removed the 1.x legacy functions
 
