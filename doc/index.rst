@@ -134,7 +134,7 @@ Pre processing or post processing helping functions
 
 :ref:`pgr_driving_distance_post`
 
-  -  :refe`pgr_alphaShape` - Alpha shape computation
+  -  :ref:`pgr_alphaShape` - Alpha shape computation
   -  :ref:`pgr_points_as_polygon` - Polygon around set of points
 
 *******************************************************************************
