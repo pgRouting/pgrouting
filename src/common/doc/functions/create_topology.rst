@@ -54,7 +54,7 @@ The topology creation function accepts the following parameters:
 :target: ``text``  Target column name of the network table.  Default value is ``target``. 
 :rows_where: ``text``   Condition to SELECT a subset or rows.  Default value is ``true`` to indicate
  all rows that where ``source`` or ``target`` have a null value, otherwise the condition is used.
-:clean ``boolean`` Clean any previous topology.  Default value is ``false``.
+:clean: ``boolean`` Clean any previous topology.  Default value is ``false``.
 
 .. warning::
 

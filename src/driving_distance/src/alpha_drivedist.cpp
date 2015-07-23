@@ -60,6 +60,7 @@ namespace boost {
 #include <CGAL/Alpha_shape_face_base_2.h>
 #include <CGAL/Alpha_shape_vertex_base_2.h>
 
+
 typedef double coord_type;
 
 typedef CGAL::Simple_cartesian<coord_type>  SC;
@@ -90,13 +91,14 @@ typedef Alpha_shape_2::Alpha_shape_edges_iterator Alpha_shape_edges_iterator;
 
 double get_angle(Point p, Point q, Point r)
 {
+  double m_pi(3.14159265358979323846);
   Vector v1(q, p);
   Vector v2(q, r);
   double cross = v1.x() * v2.y() - v1.y() * v2.x();
   double dot = v1.x() * v2.x() + v1.y() * v2.y();
   double angle = atan2(cross, dot);
   if (angle < 0.0) {
-    angle += 2 * M_PI;
+    angle += 2 * m_pi;
   }
   return angle;
 }
@@ -118,7 +120,7 @@ void find_next_edge(Segment s, std::vector<Segment>& segments,
   rings.back().push_back(end);
   
   std::vector<int> nextIndexes;
-  for(int i = 0;i < segments.size(); i++)
+  for(unsigned int i = 0;i < segments.size(); i++)
   {
     if (unusedIndexes.find(i) != unusedIndexes.end())
     {
@@ -138,7 +140,7 @@ void find_next_edge(Segment s, std::vector<Segment>& segments,
   else if (nextIndexes.size() > 1)
   {
     std::vector< std::pair<double, int> > nextAngles;
-    for (int i = 0; i < nextIndexes.size(); i++)
+    for (unsigned int i = 0; i < nextIndexes.size(); i++)
     {
       int j = nextIndexes.at(i);
       Point target = segments.at(j).target();
@@ -153,7 +155,7 @@ void find_next_edge(Segment s, std::vector<Segment>& segments,
   
   if (!unusedIndexes.empty())
   {
-    for (int i = 0; i < segments.size(); i++)
+    for (unsigned int i = 0; i < segments.size(); i++)
     {
       if (unusedIndexes.find(i) != unusedIndexes.end())
       {
@@ -227,7 +229,7 @@ int alpha_shape(vertex_t *vertices, unsigned int count, double alpha,
   else
   {
     std::set<int> unusedIndexes;
-    for (int i = 0; i < segments.size(); i++)
+    for (unsigned int i = 0; i < segments.size(); i++)
     {
       unusedIndexes.insert(i);
     }
@@ -240,7 +242,7 @@ int alpha_shape(vertex_t *vertices, unsigned int count, double alpha,
     find_next_edge(segments.at(0), segments, unusedIndexes, rings);
 
     int result_count = 0;
-    for (int i = 0; i < rings.size(); i++)
+    for (unsigned int i = 0; i < rings.size(); i++)
     {
       Polygon_2 ring = rings.at(i);
       result_count += ring.size();
@@ -250,7 +252,7 @@ int alpha_shape(vertex_t *vertices, unsigned int count, double alpha,
     *res_count = result_count;
 
     int idx = 0;
-    for (int i = 0; i < rings.size(); i++)
+    for (unsigned int i = 0; i < rings.size(); i++)
     {
       if (i > 0)
       {
@@ -259,7 +261,7 @@ int alpha_shape(vertex_t *vertices, unsigned int count, double alpha,
         idx++;
       }
       Polygon_2 ring = rings.at(i);
-      for(int j = 0; j < ring.size(); j++)
+      for(unsigned int j = 0; j < ring.size(); j++)
       {
         Point point = ring.vertex(j);
         (*res)[idx].x = point.x();

@@ -16,28 +16,57 @@
 
 # A check condition to see if those variables are set
 
-SET(PG_VERSION "" CACHE STRING "Some user-specified option")  #PG_VERSION is a commandline argument to specify the version.
+#POSTGRESQL_BIN ia an optional commandline argument to specify a non-standard path to the postgresql program executables
+SET(POSTGRESQL_BIN "" CACHE STRING "Some user-specified option")    
 
 if(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE AND POSTGRESQL_VERSION_STRING)
     set(POSTGRESQL_FOUND TRUE)
 else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
 
-# Checking POSTGRESQL_EXECUTABLE in all the dir (*) - implies that 
-    find_program(POSTGRESQL_EXECUTABLE NAMES postgres
-        PATHS
-        /usr/lib/postgresql/${PG_VERSION}/bin/
-        )
-    message(STATUS "PG_VERSION in FindPostgreSQL.cmake is "${PG_VERSION} ) 
-    message(STATUS "POSTGRESQL_EXECUTABLE is " ${POSTGRESQL_EXECUTABLE})
-
-# Checking POSTGRESQL_PG_CONFIG 
-    find_program(POSTGRESQL_PG_CONFIG NAMES pg_config
-        PATHS
-        /usr/lib/postgresql/${PG_VERSION}/bin/
-    	NO_DEFAULT_PATH
-        )
+    if(NOT "${POSTGRESQL_BIN}" STREQUAL "")
+        # Checking POSTGRESQL_PG_CONFIG 
+        find_program(POSTGRESQL_PG_CONFIG NAMES pg_config
+            PATHS
+            ${POSTGRESQL_BIN}
+            NO_DEFAULT_PATH
+            )
+    else(NOT "${POSTGRESQL_BIN}" STREQUAL "")
+        # Checking POSTGRESQL_PG_CONFIG 
+        find_program(POSTGRESQL_PG_CONFIG NAMES pg_config
+            PATHS
+            /usr/lib/postgresql/*/bin/
+            )
+    endif(NOT "${POSTGRESQL_BIN}" STREQUAL "")
 
     message(STATUS "POSTGRESQL_PG_CONFIG is " ${POSTGRESQL_PG_CONFIG})
+
+    if(POSTGRESQL_PG_CONFIG)
+        execute_process(
+            COMMAND ${POSTGRESQL_PG_CONFIG} --bindir
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+            OUTPUT_VARIABLE T_POSTGRESQL_BIN)
+    endif(POSTGRESQL_PG_CONFIG)
+
+
+    # Checking POSTGRESQL_EXECUTABLE in all the dir (*) - implies that 
+    find_program(POSTGRESQL_EXECUTABLE NAMES postgres
+        PATHS
+        ${T_POSTGRESQL_BIN}
+        )
+    message(STATUS "POSTGRESQL_EXECUTABLE is " ${POSTGRESQL_EXECUTABLE})
+
+
+#    find_program(POSTGRESQL_EXECUTABLE NAMES postgres
+#        PATHS
+#        /usr/lib/postgresql/*/bin/
+#        )
+#    message(STATUS "POSTGRESQL_EXECUTABLE is " ${POSTGRESQL_EXECUTABLE})
+
+#    find_program(POSTGRESQL_PG_CONFIG NAMES pg_config
+#        PATHS
+#        /usr/lib/postgresql/*/bin/
+#        )
+#    message(STATUS "POSTGRESQL_PG_CONFIG is " ${POSTGRESQL_PG_CONFIG})
 
     if(POSTGRESQL_PG_CONFIG)
         execute_process(
@@ -45,6 +74,8 @@ else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
             OUTPUT_STRIP_TRAILING_WHITESPACE
             OUTPUT_VARIABLE POSTGRESQL_VERSION_STRING)
     endif(POSTGRESQL_PG_CONFIG)
+
+    message(STATUS "POSTGRESQL_VERSION_STRING in FindPostgreSQL.cmake is " ${POSTGRESQL_VERSION_STRING})
 
     if(POSTGRESQL_PG_CONFIG)
         execute_process(
@@ -55,15 +86,16 @@ else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
 
     find_path(POSTGRESQL_INCLUDE_DIR postgres.h
         ${T_POSTGRESQL_INCLUDE_DIR}
+
         /usr/include/server
         /usr/include/pgsql/server
         /usr/local/include/pgsql/server
         /usr/include/postgresql/server
-        /usr/include/postgresql/${PG_VERSION}/server
+        /usr/include/postgresql/*/server
         /usr/local/include/postgresql/server
-        /usr/local/include/postgresql/${PG_VERSION}/server
-        $ENV{ProgramFiles}/PostgreSQL/${PG_VERSION}/include/server
-        $ENV{SystemDrive}/PostgreSQL/${PG_VERSION}/include/server
+        /usr/local/include/postgresql/*/server
+        $ENV{ProgramFiles}/PostgreSQL/*/include/server
+        $ENV{SystemDrive}/PostgreSQL/*/include/server
         )
 
     if(POSTGRESQL_PG_CONFIG)
@@ -86,3 +118,4 @@ else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
     mark_as_advanced(POSTGRESQL_INCLUDE_DIR POSTGRESQL_LIBRARIES)
 
 endif(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE AND POSTGRESQL_VERSION_STRING)
+

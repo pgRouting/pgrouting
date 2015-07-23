@@ -7,7 +7,7 @@
 #export PGHOST=localhost
 #export PGPORT=8442
 export PGUSER=postgres
-#export PGROUTING_VER=2.0
+#export PGROUTING_VER=2.1
 #POSTGIS_VER=2.1.0SVN
 #GCC_TYPE=
 #export POSTIGS_VER=2.1.0beta3
@@ -51,7 +51,7 @@ if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	rm -rf build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 	mkdir build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 	cd build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
-	cmake -G "MSYS Makefiles" -DWITH_DD=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DBOOST_ROOT:PATH=${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE} -DCGAL_ROOT:PATH=${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE} -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include"  ../branches/${PGROUTING_VER}
+	cmake -G "MSYS Makefiles"  -DCMAKE_VERBOSE_MAKEFILE=ON -DBOOST_ROOT:PATH=${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE} -DCGAL_ROOT:PATH=${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE} -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include"  ../branches/${PGROUTING_VER}
 else 
 	#alias cmake="/c/ming${OS_BUILD}/cmake-2.8.10.2-win32-x86/bin/cmake"
 	export PostgreSQL_ROOT=${PGPATH}
@@ -70,7 +70,7 @@ else
 	rm -rf build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 	mkdir build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 	cd build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
-	cmake -G "MSYS Makefiles" -DWITH_DD=ON ../branches/${PGROUTING_VER}
+	cmake -G "MSYS Makefiles"  ../branches/${PGROUTING_VER}
 fi
 #cmake -G "MSYS Makefiles" -DWITH_DD=ON ..
 #first delete old pgrouting files from installed folder before we reinstall
@@ -87,7 +87,11 @@ cp lib/*.sql ${PGPATHEDB}/share/extension/
 cp lib/*.control ${PGPATHEDB}/share/extension/
 
 cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
-perl tools/test-runner.pl -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}" -ignorenotice
+
+#perl tools/test-runner.pl   -pgver ${PG_VER} -pgport "${PGPORT}"  -clean
+perl tools/test-runner.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}" -ignorenotice -clean
+#perl tools/test-runner.pl  -pgver "${PG_VER}" -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -clean -v -alg ksp
+
 
 cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib
 strip *.dll

@@ -194,6 +194,7 @@ int findEulerianPath(TSP *tsp)
     }
     //DBG("findEulerianPath: 1");
 
+    k = -1;
     j = -1;
     d = maxd;
     dis[0] = -1;
@@ -271,7 +272,7 @@ int findEulerianPath(TSP *tsp)
 
 DTYPE pathLength (TSP *tsp)
 {
-    int i, j, k;
+    unsigned int i;
     DTYPE len = 0;
 
     int *iorder = tsp->iorder;
@@ -368,7 +369,7 @@ DTYPE getReverseCost (TSP *tsp, Path p)
 
 void doReverse(TSP *tsp, Path p)
 {
-    int i, j, nswaps, first, last, tmp;
+    int i, nswaps, first, last, tmp;
     int *iorder = tsp->iorder;
     int n       = tsp->n;
     

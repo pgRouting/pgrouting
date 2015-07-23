@@ -20,7 +20,6 @@ Functions to help you develop a wrapper or a recipe
    -  :ref:`pgr_is_column_in_table` - to check only for the existance of the column.
    -  :ref:`pgr_point_to_id` -to insert/get the id of the inserted point in a vertices table.
    -  :ref:`pgr_quote_ident` - to quotes the input text to be used as an identifier in an SQL statement string.
-   -  :ref:`pgr_version` - to get pgRouting's version information. 
    -  :ref:`pgr_versionless` - to compare two version numbers.
    -  :ref:`pgr_start_point` - to get the start point of a (multi)linestring.
    -  :ref:`pgr_end_point` - to get the end point of a (multi)linestring.
@@ -34,7 +33,6 @@ Functions to help you develop a wrapper or a recipe
 	pgr_isColumnInTable - to check only for the existance of the column.<is_column_in_table> 
 	pgr_pointToId -to insert/get the id of the inserted point in a vertices table.<point_to_id>
 	pgr_quote_ident - to quotes the input text to be used as an identifier in an SQL statement string.<quote_ident>
-    pgr_version - to get pgRouting's version information.  <version>
 	pgr_versionless - to compare two version numbers<versionless>
 	pgr_startPoint - to get the start point of a (multi)linestring<start_point>
 	pgr_endPoint - to get the end point of a (multi)linestring<end_point>

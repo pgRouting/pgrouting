@@ -140,6 +140,7 @@ class Pgr_base_graph {
   //@{
   std::vector<V> predecessors;
   std::vector<float8> distances;
+  std::deque<V> nodesInDistance;
   //@}
 
   //! @name The Graph
@@ -276,6 +277,10 @@ class Pgr_base_graph {
             }
             std::cout << std::endl;
         }
+        std::cout << "\n i, distance, predecesor\n"; 
+        for (unsigned int i = 0; i < distances.size(); i++) {
+            std::cout << i+1 << ", " << distances[i] << ", " << predecessors[i] << "\n";
+        }
     }
   //@}
 
@@ -292,7 +297,33 @@ class Pgr_base_graph {
 
 
  public:
-    void get_path(std::deque< Path > &paths, V source, std::set< V > targets) {
+    void get_nodesInDistance(Path &path, V source, float8 distance) {
+      path.clear();
+      int seq = 0;
+      float8 cost;
+      int64_t edge_id;
+      for (V i = 0; i < distances.size(); ++i) {
+        if (distances[i] <= distance ) {
+          cost = distances[i] - distances[predecessors[i]];
+          edge_id = get_edge_id(graph, predecessors[i], i, cost);
+          path.push_back(seq, graph[source].id, graph[source].id, graph[i].id, edge_id, cost, distances[i]);
+          seq++;
+        }
+      }
+    }
+
+    void get_path(std::deque< Path > &paths, std::set< V > sources, V &target) const{
+      // used with multiple sources
+      Path path;
+      for (const auto source: sources) {
+        path.clear();
+        get_path(path, source, target);
+        paths.push_back(path);
+      }
+    }
+
+
+    void get_path(std::deque< Path > &paths, V source, std::set< V > &targets) {
       // used when multiple goals
       Path path;
       typename std::set< V >::iterator s_it;
@@ -306,6 +337,8 @@ class Pgr_base_graph {
     void get_path(Path &path, V source, V target) {
       // backup of the target
       V target_back = target;
+      uint64_t from(graph[source].id);
+      uint64_t to(graph[target].id);
 
       // no path was found
       if (target == predecessors[target]) {
@@ -325,7 +358,7 @@ class Pgr_base_graph {
       target = target_back;
 
       // variables that are going to be stored
-      int64_t source_id;
+      int64_t vertex_id;
       int64_t edge_id;
       float8 cost;
 
@@ -334,7 +367,7 @@ class Pgr_base_graph {
       // initialize the sequence
       int seq = result_size;
       // the last stop is the target
-      path.push_front(seq, graph[target].id, -1, 0);
+      path.push_front(seq, from, to, graph[target].id, -1, 0,  distances[target]);
 
       while (target != source) {
         // we are done when the predecesor of the target is the target
@@ -342,10 +375,10 @@ class Pgr_base_graph {
           // values to be inserted in the path
           --seq;
           cost = distances[target] - distances[predecessors[target]];
-          source_id = graph[predecessors[target]].id;
+          vertex_id = graph[predecessors[target]].id;
           edge_id = get_edge_id(graph, predecessors[target], target, cost);
 
-          path.push_front(seq, source_id, edge_id, cost);
+          path.push_front(seq, from, to, vertex_id, edge_id, cost, distances[target] - cost);
           target = predecessors[target];
       }
       return;
@@ -360,7 +393,7 @@ class Pgr_base_graph {
         EO_i out_i, out_end;
         V v_source, v_target;
         float8 minCost =  std::numeric_limits<float8>::max();
-        int64_t minEdge = -2;
+        int64_t minEdge = -1;
         for (boost::tie(out_i, out_end) = boost::out_edges(from, graph);
           out_i != out_end; ++out_i) {
               e = *out_i;
@@ -375,7 +408,7 @@ class Pgr_base_graph {
                      minEdge = graph[e].id;
               }
         }
-        distance = minCost;
+        distance = minEdge == -1? 0: minCost;
         return minEdge;
   }
 

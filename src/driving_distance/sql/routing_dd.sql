@@ -21,11 +21,102 @@
 -- Core function for driving distance.
 -- The sql should return edge and vertex ids.
 -----------------------------------------------------------------------
+/*
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id integer, distance float8, directed boolean, has_reverse_cost boolean)
-    RETURNS SETOF pgr_costResult
+    RETURNS SETOF pgr_costResultBig
     AS '$libdir/librouting_dd', 'driving_distance'
     LANGUAGE c IMMUTABLE STRICT;
-                        
+*/
+CREATE OR REPLACE FUNCTION _pgr_drivingDistance(sql text, start_v bigint, distance float8, directed boolean, has_rcost boolean,
+       OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
+  RETURNS SETOF RECORD AS
+     '$libdir/librouting-2.1', 'driving_distance'
+ LANGUAGE c IMMUTABLE STRICT;
+
+CREATE OR REPLACE FUNCTION _pgr_drivingDistance(sql text, start_v anyarray, distance float8, directed boolean, equicost boolean, has_rcost boolean,
+       OUT seq integer, OUT start_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
+  RETURNS SETOF RECORD AS
+     '$libdir/librouting-2.1', 'driving_many_to_dist'
+ LANGUAGE c IMMUTABLE STRICT;
+
+
+-- OLD SIGNATURE
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance float8, directed boolean, has_rcost boolean)
+  RETURNS SETOF pgr_costresult AS
+  $BODY$
+  DECLARE
+  has_reverse boolean;
+  BEGIN
+      -- old signature, things are int and float8 only
+      has_reverse =_pgr_parameter_check('driving', sql, false);
+
+      if (has_reverse != has_rcost) then
+         if (has_reverse) then --raise NOTICE 'has_rcost set to false but reverse_cost column found, Ignoring';
+         else raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
+         end if;
+      end if;
+
+      return query SELECT seq, node::integer as id1, edge::integer as id2, agg_cost as cost
+                FROM _pgr_drivingDistance(sql, source, distance, directed, has_rcost);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100
+  ROWS 1000;
+
+
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, start_v bigint, distance float8,
+       OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
+  RETURNS SETOF RECORD AS
+  $BODY$
+  DECLARE
+  has_rcost boolean;
+  BEGIN
+      has_rcost =_pgr_parameter_check('driving', sql, true);
+      return query SELECT *
+                FROM _pgr_drivingDistance(sql, start_v, distance, true, has_rcost);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100
+  ROWS 1000;
+
+
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, start_v bigint, distance float8, directed boolean,
+       OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
+  RETURNS SETOF RECORD AS
+  $BODY$
+  DECLARE
+  has_rcost boolean;
+  BEGIN
+      has_rcost =_pgr_parameter_check('driving', sql, true);
+      return query SELECT *
+                FROM _pgr_drivingDistance(sql, start_v, distance, directed, has_rcost);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100
+  ROWS 1000;
+
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, start_v anyarray, distance float8, directed boolean default true, equicost boolean default false,
+       OUT seq integer, OUT from_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
+  RETURNS SETOF RECORD AS
+  $BODY$
+  DECLARE
+  has_rcost boolean;
+  BEGIN
+      has_rcost =_pgr_parameter_check('driving', sql, true);
+      return query SELECT *
+                FROM _pgr_drivingDistance(sql, start_v, distance, directed, equicost, has_rcost);
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100
+  ROWS 1000;
+
+
+
+
 -----------------------------------------------------------------------
 -- Core function for alpha shape computation.
 -- The sql should return vertex ids and x,y values. Return ordered
@@ -33,7 +124,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id integer, dist
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION pgr_alphashape(sql text, alpha float8 DEFAULT 0, OUT x float8, OUT y float8)
     RETURNS SETOF record
-    AS '$libdir/librouting_dd', 'alphashape'
+    AS '$libdir/librouting-2.1', 'alphashape'
     LANGUAGE c IMMUTABLE STRICT;
 
 ----------------------------------------------------------

@@ -25,21 +25,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -----------------------------------------------------------------------
 
 -- change the default to true when all the functions will use the bigint
-CREATE OR REPLACE FUNCTION _pgr_parameter_check(sql text, big boolean default false)
+CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean default false)
   RETURNS bool AS
   $BODY$  
 
   DECLARE
   rec record;
   rec1 record;
-  has_reverse boolean;
+  has_rcost boolean;
   safesql text;
   BEGIN 
     -- checking query is executable
     BEGIN
       safesql =  'select * from ('||sql||' ) AS __a__ limit 1';
       execute safesql into rec;
-      -- execute 'select * from ('||sql||' ) AS a limit 1' into rec;
       EXCEPTION
         WHEN OTHERS THEN
             RAISE EXCEPTION 'Could not excecute query please verify sintax of: '
@@ -47,52 +46,63 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(sql text, big boolean default fa
     END;
 
     -- checking the fixed columns and data types of the integers
-    BEGIN
-      execute 'select id,source,target,cost  from ('||safesql||') as __b__' into rec;
-      -- execute 'select id,source,target,cost  from ('||sql||' ) AS a limit 1 ' into rec;
-      EXCEPTION
-        WHEN OTHERS THEN
-            RAISE EXCEPTION 'An expected column was not found in the query'
-              USING HINT = 'Please veryfy the column names: id, source, target, cost';
-    END;
-    
-    BEGIN
-    execute 'select pg_typeof(id)::text as id_type, pg_typeof(source)::text as source_type, pg_typeof(target)::text as target_type, pg_typeof(cost)::text as cost_type'
-            || ' from ('||safesql||') AS __b__ ' into rec;
-    if (big) then
-      if not (rec.id_type in ('bigint'::text, 'integer'::text, 'smallint'::text)
-         OR   not (rec.source_type in ('bigint'::text, 'integer'::text, 'smallint'::text))
-         OR   not (rec.target_type in ('bigint'::text, 'integer'::text, 'smallint'::text))
-         OR   not (rec.cost_type = 'double precision'::text)) then
-         RAISE EXCEPTION 'support for id,source,target columns only of type: BigInt, integer or smallint. Support for Cost: double precision';
-      end if;
-    else
-      if not(   (rec.id_type in ('integer'::text))
-            and (rec.source_type in ('integer'::text))
-            and (rec.target_type in ('integer'::text))
-            and (rec.cost_type = 'double precision'::text)) then
-          RAISE EXCEPTION 'support for id,source,target columns only of type: integer. Support for Cost: double precision';
-      end if;
-    end if;
-    END;
-
-    -- raise DEBUG "checking the data types of the optional reverse_cost";
-    has_reverse := false;
-    BEGIN
-      execute 'select reverse_cost  from ('||safesql||' ) AS __b__ limit 1 ' into rec1;
-      has_reverse := true;
-      EXCEPTION
-         WHEN OTHERS THEN
-            has_reverse = false;
+    IF fn IN ('driving', 'dijkstra', 'ksp') THEN
+      BEGIN
+        execute 'select id,source,target,cost  from ('||safesql||') as __b__' into rec;
+        EXCEPTION
+          WHEN OTHERS THEN
+              RAISE EXCEPTION 'An expected column was not found in the query'
+                USING HINT = 'Please veryfy the column names: id, source, target, cost';
       END;
-      if (has_reverse) then
-        execute 'select pg_typeof(reverse_cost)::text as reverse_type from ('||safesql||') AS __b__ ' into rec1;
-        if (rec1.reverse_type != 'double precision') then
-          raise EXCEPTION 'Reverse_cost is not double precision';
+    END IF;
+ 
+    IF fn IN ('driving', 'dijkstra', 'ksp') THEN
+      execute 'select pg_typeof(id)::text as id_type, pg_typeof(source)::text as source_type, pg_typeof(target)::text as target_type, pg_typeof(cost)::text as cost_type'
+            || ' from ('||safesql||') AS __b__ ' into rec;
+      if (big) then
+        if not (rec.id_type in ('bigint'::text, 'integer'::text, 'smallint'::text))
+           OR   not (rec.source_type in ('bigint'::text, 'integer'::text, 'smallint'::text))
+           OR   not (rec.target_type in ('bigint'::text, 'integer'::text, 'smallint'::text))
+           OR   not (rec.cost_type in ('bigint'::text, 'integer'::text, 'smallint'::text, 'double precision'::text, 'real'::text)) then
+           RAISE EXCEPTION 'Illegar type found in query.';
+        end if;
+      else -- Version 2.0.0 is more restrictive
+        if not(   (rec.id_type in ('integer'::text))
+              and (rec.source_type in ('integer'::text))
+              and (rec.target_type in ('integer'::text))
+              and (rec.cost_type = 'double precision'::text)) then
+            RAISE EXCEPTION 'Support for id,source,target columns only of type: integer. Support for Cost: double precision';
         end if;
       end if;
+    END IF;
 
-    return has_reverse;
+
+    -- Checking the data types of the optional reverse_cost";
+    has_rcost := false;
+    IF fn IN ('driving', 'dijkstra', 'ksp') THEN
+      BEGIN
+        execute 'select reverse_cost, pg_typeof(reverse_cost)::text as rev_type  from ('||safesql||' ) AS __b__ limit 1 ' into rec1;
+        has_rcost := true;
+        EXCEPTION
+          WHEN OTHERS THEN
+            has_rcost = false;
+            return has_rcost;  
+      END;
+      if (has_rcost) then
+        IF (big) then
+           IF  not (rec1.rev_type in ('bigint'::text, 'integer'::text, 'smallint'::text, 'double precision'::text, 'real'::text)) then
+             RAISE EXCEPTION 'Illegar type in optional parameter reverse_cost.';
+           END IF;
+        ELSE -- Version 2.0.0 is more restrictive
+           IF (rec1.rev_type != 'double precision') then
+             RAISE EXCEPTION 'Illegal type in optimal parameter reverse_cost, expected: double precision';
+           END IF;
+        END IF;
+      end if;
+      return true;
+    END IF;
+    -- just for keeps
+    return true;
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE
