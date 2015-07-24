@@ -145,7 +145,8 @@ This section containes the new signatures proposed for any of the following sect
   - topology functions
   - routing functions
   - vehicle routing functions
-  - pre / post prossesing helpng functions
+  - pre / post prossesing helping functions
+
 
 We are including them so that the pgRouting community can evaluate them before
 including them as an official function of pgRouting.
@@ -170,6 +171,17 @@ Proposed functions: Proposed by Steve Woodbridge
 	:hidden:
 
         ../src/common/doc/convenience/index
+
+*******************************************************************************
+Proposed functions: Proposed by Zia Mohammed
+*******************************************************************************
+
+  -  :ref:`pgr_brokenGraph` - analyze broken graph after pgr_createtopology
+
+.. toctree::
+  :hidden:
+
+        ../src/common/doc/functions/analyze_brokengraph.rst
 
 *******************************************************************************
 Proposed functions: Proposed by GSoC
