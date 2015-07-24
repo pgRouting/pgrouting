@@ -176,13 +176,12 @@ Proposed functions: Proposed by Steve Woodbridge
 Proposed functions: Proposed by Zia Mohammed
 *******************************************************************************
 
-author: Zia Mohammed
+About this proposal:
+  - Author: Zia Mohammed.
+  - Status: Ready to be tested.
+  - Need: Feed back on execution and on documentation from the community.
 
-status: ready to be tested
-
-Need: feed back on execution and on documentation from the community.
-
-  -  :ref:`pgr_brokenGraph` - analyze broken graph after pgr_createtopology
+  -  :ref:`pgr_brokenGraph` - Analyze broken-graph within a network after pgr_createtopology()
 
 .. toctree::
   :hidden:
@@ -197,7 +196,7 @@ Proposed functions: Proposed by GSoC
 The following functions are experimental
  - They may lack documentation,
  - Were created by GSoC students.
- - they are unsoported.
+ - they are unsupported.
  
   -  :ref:`pgr_vrp_basic` - VRP One Depot
   -  :ref:`pgr_gsocvrppdtw` -  Pickup and Delivery problem
