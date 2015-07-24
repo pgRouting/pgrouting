@@ -13,6 +13,8 @@ DECLARE
         naming record;
         schema_name text;
         table_name text;
+        garbage text;
+        incre integer;
         table_schema_name text;
         query text;
         ecnt integer;
@@ -90,11 +92,30 @@ BEGIN
         END;
         Raise Notice 'Ending - Checking rows_where condition';
 
+        garbage := 'garbage001';
+        incre := 1;
+        Raise Notice 'Starting - Checking temporary column';
+        Begin
+                raise debug 'Checking Checking temporary columns existance';
+                
+                While True
+                        Loop
+                                execute 'select * from pgr_isColumnInTable('|| quote_literal(table_schema_name) ||', '|| quote_literal(garbage) ||')' into naming;
+                                If naming.pgr_iscolumnintable = 't' THEN
+                                        incre := incre + 1;
+                                        garbage := 'garbage00'||incre||'';
+                                ELSE
+                                        EXIT;
+                                END IF;
+                        End Loop;
+        End;
+        Raise Notice 'Ending - Checking temporary column';
+
         Raise Notice 'Starting - Calculating subgraphs';
         BEGIN
                 --------- Add necessary columns ----------
                 EXECUTE 'ALTER TABLE '|| pgr_quote_ident(table_schema_name) ||' ADD COLUMN ' || pgr_quote_ident(subgraph) || ' INTEGER DEFAULT -1';
-                EXECUTE 'ALTER TABLE '|| pgr_quote_ident(table_schema_name) ||' ADD COLUMN garbage INTEGER DEFAULT 0';
+                EXECUTE 'ALTER TABLE '|| pgr_quote_ident(table_schema_name) ||' ADD COLUMN ' || pgr_quote_ident(garbage) || ' INTEGER DEFAULT 0';
                 graph_id := 1;
 
                 EXECUTE 'select count(*) as count from '|| pgr_quote_ident(table_schema_name) ||' where '|| rows_where ||'' into rec_count;
@@ -111,10 +132,10 @@ BEGIN
                                 --------- Search other rows with that particular graph_id -----------
                                 WHILE TRUE
                                         LOOP
-                                                EXECUTE 'SELECT COUNT(*) FROM '|| pgr_quote_ident(table_schema_name) ||' WHERE ' || pgr_quote_ident(subgraph) || ' = ' || graph_id || ' AND garbage = 0' into rec_count;
+                                                EXECUTE 'SELECT COUNT(*) FROM '|| pgr_quote_ident(table_schema_name) ||' WHERE ' || pgr_quote_ident(subgraph) || ' = ' || graph_id || ' AND ' || pgr_quote_ident(garbage) || ' = 0' into rec_count;
                                                 ----------- The following if else will check those rows which already have entertained ------------
                                                 IF (rec_count.count > 0) THEN
-                                                        sql1 := 'SELECT ' || pgr_quote_ident(id) || ' AS gid, ' || pgr_quote_ident(source) || ' AS source, ' || pgr_quote_ident(target) || ' AS target FROM '|| pgr_quote_ident(table_schema_name) ||' WHERE ' || pgr_quote_ident(subgraph) || ' = ' || graph_id || ' AND garbage = 0';
+                                                        sql1 := 'SELECT ' || pgr_quote_ident(id) || ' AS gid, ' || pgr_quote_ident(source) || ' AS source, ' || pgr_quote_ident(target) || ' AS target FROM '|| pgr_quote_ident(table_schema_name) ||' WHERE ' || pgr_quote_ident(subgraph) || ' = ' || graph_id || ' AND ' || pgr_quote_ident(garbage) || ' = 0';
                                                         FOR rec1 IN EXECUTE sql1
                                                                 LOOP
                                                                         sql2 := 'SELECT ' || pgr_quote_ident(id) || ' AS gid, ' || pgr_quote_ident(source) || ' AS source, ' || pgr_quote_ident(target) || ' AS target FROM '|| pgr_quote_ident(table_schema_name) ||' WHERE '|| pgr_quote_ident(source) ||' = '|| rec1.source ||' OR '|| pgr_quote_ident(target) ||' = '|| rec1.source ||' OR '|| pgr_quote_ident(source) ||' = '|| rec1.target ||' OR '|| pgr_quote_ident(target) ||' = '|| rec1.target ||'';
@@ -122,7 +143,7 @@ BEGIN
                                                                                 LOOP
                                                                                         EXECUTE 'UPDATE '|| pgr_quote_ident(table_schema_name) ||' SET ' || pgr_quote_ident(subgraph) || ' = ' || graph_id || ' WHERE ' || pgr_quote_ident(id) || ' = ' || rec2.gid || '';
                                                                                 END LOOP;
-                                                                        EXECUTE 'UPDATE '|| pgr_quote_ident(table_schema_name) ||' SET garbage = 1 WHERE ' || pgr_quote_ident(id) || ' = ' || rec1.gid || '';
+                                                                        EXECUTE 'UPDATE '|| pgr_quote_ident(table_schema_name) ||' SET ' || pgr_quote_ident(garbage) || ' = 1 WHERE ' || pgr_quote_ident(id) || ' = ' || rec1.gid || '';
                                                                 END LOOP;
                                                 ELSE
                                                         EXIT;
@@ -139,7 +160,7 @@ BEGIN
                         END LOOP;
 
                 ----------- Drop garbage column ------------
-                EXECUTE 'ALTER TABLE '|| pgr_quote_ident(table_schema_name) ||' DROP COLUMN garbage';
+                EXECUTE 'ALTER TABLE '|| pgr_quote_ident(table_schema_name) ||' DROP COLUMN ' || pgr_quote_ident(garbage) ||'';
                 Raise Notice 'Successfully complicated calculating subgraphs';
         END;
         Raise Notice 'Ending - Calculating subgraphs';
