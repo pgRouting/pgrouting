@@ -1,4 +1,7 @@
 #!/usr/bin/perl -w
+eval 'exec /usr/bin/perl -S $0 ${1+"$@"}'
+    if 0; #$running_under_some_shell
+
 use strict;
 use Data::Dumper;
 use Cwd qw(cwd chdir);
