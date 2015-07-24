@@ -176,12 +176,19 @@ Proposed functions: Proposed by Steve Woodbridge
 Proposed functions: Proposed by Zia Mohammed
 *******************************************************************************
 
+author: Zia Mohammed
+
+status: ready to be tested
+
+Need: feed back on execution and on documentation from the community.
+
   -  :ref:`pgr_brokenGraph` - analyze broken graph after pgr_createtopology
 
 .. toctree::
   :hidden:
 
         ../src/common/doc/functions/analyze_brokengraph.rst
+
 
 *******************************************************************************
 Proposed functions: Proposed by GSoC
