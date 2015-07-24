@@ -318,6 +318,18 @@ configure_file("${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.s
 configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control")
 
+# create the signature file for this release
+message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION_STRING}.sig")
+execute_process(
+  COMMAND ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file ${PGROUTING_VERSION_STRING}
+  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+  RESULT_VARIABLE SIG_RESULT
+)
+if(SIG_RESULT)
+message(FATAL_ERROR "    SIG_RESULT: ${SIG_RESULT}")
+endif(SIG_RESULT)
+
+
 # We will copy the pgrouting_legacy.sql, but not install it as part of 
 # the extension. TODO: we might want to also include a 
 # pgrouting_legacy_uninstall.sql file or add it to the extension
