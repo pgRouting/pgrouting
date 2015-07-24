@@ -134,10 +134,10 @@ sub generate_upgrade_script {
         print "$exists\t$x\n" if $DEBUG;
         if (! $exists) {
             print "ALTER EXTENSION pgrouting DROP FUNCTION $x;\n" if $DEBUG;
-            print "DROP FUNCTION IF EXISTS $x;\n" if $DEBUG;
             push @commands, "ALTER EXTENSION pgrouting DROP FUNCTION $x;\n";
-            push @commands, "DROP FUNCTION IF EXISTS $x;\n";
         }
+        print "DROP FUNCTION IF EXISTS $x;\n" if $DEBUG;
+        push @commands, "DROP FUNCTION IF EXISTS $x;\n";
     }
 
     die "ERROR: pgrouting TYPE changed! Cannot continue!\n" if $err;

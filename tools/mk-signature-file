@@ -59,12 +59,12 @@ sub parse_signatures {
     }
 
     # extract functions
-    my @funcs = $data =~ /create\s+or\s+replace\s+function\s+(\w+\s*\([^\)]+\))/igs;
+    my @funcs = $data =~ /create\s+or\s+replace\s+function\s+(\w+\s*\([^\)]+\))\s*RETURNS/igs;
     @funcs = sort @funcs;
     # clean up functions
     for (my $i=0; $i<@funcs; $i++) {
         $funcs[$i] =~ s/\s+/ /gs;
-        $funcs[$i] =~ s/\sdefault\s[^,\)]+//ig;
+        $funcs[$i] =~ s/\sdefault\s*((?:\()[^\)]+\)|[^\(\),]+)//ig;
         $funcs[$i] =~ s/(IN|OUT)\s(\w+)\s([^,\)]+)/$1 $3/ig;
         $funcs[$i] =~ s/\(\s+/(/g;
         $funcs[$i] =~ s/,\s+/,/g;
