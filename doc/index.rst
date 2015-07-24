@@ -179,7 +179,7 @@ Proposed functions: Proposed by Zia Mohammed
 About this proposal:
   - Author: Zia Mohammed.
   - Status: Ready to be tested.
-  - Need: Feed back on execution and on documentation from the community. 
+  - Need: Feed back on execution and on documentation from the community. I did not add automated test.
 
   -  :ref:`pgr_brokenGraph` - Analyze broken-graph within a network after pgr_createtopology()
 
