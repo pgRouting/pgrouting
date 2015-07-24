@@ -10,11 +10,15 @@ LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/pgr_parameter_check.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/utilities_pgr.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/noUnderUtilities.sql
+<<<<<<< HEAD
+    ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_brokenGraph.sql
+=======
     ${CMAKE_CURRENT_SOURCE_DIR}/create_vertices_table.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/createIndex.sql
 
 # this one is in the main CMakelist becuse types have to go first
 #    ${CMAKE_CURRENT_SOURCE_DIR}/types.sql
+>>>>>>> upstream/develop_2_1_0
 )
 
 # set in parent scope

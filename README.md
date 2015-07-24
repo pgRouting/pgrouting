@@ -1,11 +1,25 @@
 # pgRouting - Routing on PostgreSQL
 
+<<<<<<< HEAD
 
 ## STATUS
 
+<<<<<<< HEAD
+The *master* branch reflects our current 2.0.0 release. Post 2.0.0 development will happen in the *develop* branch. The 2.0 release is not backwards compatible with the 1.x releases because we have totally restructured the API and the source code to position the product for additional future growth. Once you see all the new functionality that we have added and the simplier API design we thing you will be very happy with the results.
+=======
+[![Join the chat at https://gitter.im/pgRouting/pgrouting](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pgRouting/pgrouting?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+## STATUS
+
+### Current Development is in the *develop* branch
+
+The *master* branch reflects our current 2.0.0 release. Post 2.0.0 development will happen in the *develop* branch. The 2.0 release is not backwards compatible with the 1.x releases because we have totally restructured the API and the source code to position the product for additional future growth. Once you see all the new functionality that we have added and the simplier API design we think you will be very happy with the results.
+>>>>>>> upstream/master
+=======
 The *master* branch reflects our current 2.0.0 release. 
 pgRouting 2.1.0 development is in *develop_2_1_0* branch.
 *develop* branch is not up to date becuase of it is not passing the Winnie tests,
+>>>>>>> upstream/develop_2_1_0
 
 ## LINKS
 
