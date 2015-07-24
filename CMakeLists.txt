@@ -326,9 +326,21 @@ execute_process(
   RESULT_VARIABLE SIG_RESULT
 )
 if(SIG_RESULT)
-message(FATAL_ERROR "    SIG_RESULT: ${SIG_RESULT}")
+    message(FATAL_ERROR "    SIG_RESULT: ${SIG_RESULT}")
 endif(SIG_RESULT)
 
+# create the extension update scripts
+execute_process(
+  COMMAND ${PGROUTING_SOURCE_DIR}/tools/build-extension-update-files ${PGROUTING_VERSION_STRING}
+  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+  RESULT_VARIABLE UPDATE_RESULT
+)
+if(UPDATE_RESULT)
+    message(FATAL_ERROR "   UPDATE_RESULT: ${UPDATE_RESULT}")
+endif(UPDATE_RESULT)
+
+# make a list of the files we need to install for version updates
+file(GLOB VERSION_UPDATE_FILES "${CMAKE_BINARY_DIR}/lib/pgrouting--*--*.sql")
 
 # We will copy the pgrouting_legacy.sql, but not install it as part of 
 # the extension. TODO: we might want to also include a 
@@ -350,6 +362,7 @@ install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
 install(FILES
     "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
+    ${VERSION_UPDATE_FILES}
 #    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
     DESTINATION "${SHARE_DIR}")
 
