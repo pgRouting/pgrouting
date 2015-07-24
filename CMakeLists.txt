@@ -98,6 +98,10 @@ if(WIN32)
 endif(WIN32)
 
 
+include(FindPerl)
+if(NOT PERL_EXECUTABLE)
+  message(FATAL_ERROR " Please check your Perl installation.")
+endif(NOT PERL_EXECUTABLE)
 
 find_package(PostgreSQL)
 if(NOT POSTGRESQL_FOUND)
@@ -322,7 +326,7 @@ configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
 # create the signature file for this release
 message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION_STRING}.sig")
 execute_process(
-  COMMAND ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file ${PGROUTING_VERSION_STRING}
+  COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file ${PGROUTING_VERSION_STRING}
   WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
   RESULT_VARIABLE SIG_RESULT
 )
@@ -332,7 +336,7 @@ endif(SIG_RESULT)
 
 # create the extension update scripts
 execute_process(
-  COMMAND ${PGROUTING_SOURCE_DIR}/tools/build-extension-update-files ${PGROUTING_VERSION_STRING}
+  COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/build-extension-update-files ${PGROUTING_VERSION_STRING}
   WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
   RESULT_VARIABLE UPDATE_RESULT
 )

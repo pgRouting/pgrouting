@@ -4,7 +4,6 @@ eval 'exec /usr/bin/perl -S $0 ${1+"$@"}'
 
 use strict;
 use Data::Dumper;
-use Cwd qw(cwd chdir);
 use File::Find ();
 
 my $DEBUG = 0;
