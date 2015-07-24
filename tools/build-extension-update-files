@@ -34,7 +34,12 @@ die "ERROR: Failed to find '$SQL'\n" unless -f $SQL;
 my @old_files = ();
 my $new_hash = read_sig_file( "lib/pgrouting--$version.sig" );
 
-File::Find::find({wanted => \&wanted}, '../tools/sigs/');
+# assume we are in the build dir, but we might be up one level
+# if we are somewhere else we will fail to find the files
+my $sig_dir = '../tools/sigs/';
+$sig_dir = 'tools/sigs/' if  -d 'tools/sigs/';
+
+File::Find::find({wanted => \&wanted}, $sig_dir);
 
 for my $old_file ( sort @old_files ) {
     my $old_hash = read_sig_file( $old_file );
