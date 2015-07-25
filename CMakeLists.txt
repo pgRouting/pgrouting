@@ -14,7 +14,7 @@ project(PGROUTING)
 
 
 option(WITH_DOC
-    "Set ON|OFF (default=OFF) to build Documentation library tree" ON)
+    "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
 
 option(BUILD_LATEX
     "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
