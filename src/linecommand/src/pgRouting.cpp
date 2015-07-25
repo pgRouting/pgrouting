@@ -254,13 +254,24 @@ void process(G graph, pgr_edge_t *data_edges, int row_count) {
 
 
 int main(int ac, char* av[]) {
-
     po::options_description od_desc("Allowed options");
     get_options_description(od_desc);
     
     po::variables_map vm;
     po::store(po::parse_command_line(ac, av, od_desc), vm);
-    po::notify(vm);
+    if (vm.count("help")) {
+       std::cout << od_desc << "\n"; 
+       return 0;
+    }
+
+    try{
+      po::notify(vm);
+    }
+    catch(...){
+	std::cout << od_desc << "\n"; 
+	return 0;	
+    } 
+
     auto ret_val = process_command_line(vm, od_desc);
     if (ret_val != 2) return ret_val;
 
