@@ -28,7 +28,21 @@ In general, the routing algorithms need an SQL query that contain one or more of
 :x2:	float8 
 :y2:	float8
 
-When the edge table has the mentioned columns, the following SQL queries can be used.
+
+
+
+.. warning:: The functions for V3.0 of pgr_dijkstra, pgr_ksp and pgr_drivingDistance use the following columns
+              - **id**: ``ANY-INTEGER`` identifier of the edge.
+              - **source**: ``ANY-INTEGER`` identifier of the source vertex of the edge.
+              - **target**: ``ANY-INTEGER`` identifier of the target vertex of the edge.
+              - **cost**: ``ANY-NUMERICAL`` value of the edge traversal cost. A negative cost will prevent the edge (``source``, ``target``) from being inserted in the graph.
+              - **reverse_cost**: ``ANY-NUMERICAL`` (optional) the value for the reverse traversal of the edge. A negative cost will prevent the edge (``target``, ``source``) from being inserted in the graph.
+
+             Where:
+
+              - **ANY-INTEGER**: smallint, int, bigint
+              - **ANY-NUMERICAL**: smallint, int, bigint, real, float
+
 
 .. code-block:: sql
 
