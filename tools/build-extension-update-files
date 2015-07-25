@@ -25,7 +25,7 @@ sub Usage {
 }
 
 my $version = shift @ARGV || Usage();
-my $src_dir = shift @ARGV || './';
+my $src_dir = shift @ARGV || '.';
 
 my $SIG = "lib/pgrouting--$version.sig";
 my $SQL = "lib/pgrouting--$version.sql";
@@ -37,8 +37,9 @@ my $new_hash = read_sig_file( "lib/pgrouting--$version.sig" );
 
 # assume we are in the build dir, but we might be up one level
 # if we are somewhere else we will fail to find the files
-my $sig_dir = '../tools/sigs/';
-$sig_dir = $src_dir . 'tools/sigs/' if  -d $src_dir . 'tools/sigs/';
+my $sig_dir = 'tools/sigs/';
+$sig_dir = '../tools/sigs/' if  -d '../tools/sigs';
+$sig_dir = $src_dir . '/tools/sigs/' if  -d $src_dir . '/tools/sigs';
 
 File::Find::find({wanted => \&wanted}, $sig_dir);
 
