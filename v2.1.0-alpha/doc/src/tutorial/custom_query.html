@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.1.0 (92246c8 develop_2_1_0)',
+        VERSION:     '2.1.0 (36f41ae develop_2_1_0)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -79,27 +79,7 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<dl class="docutils">
-<dt>The functions for V3.0 of pgr_dijkstra, pgr_ksp and pgr_drivingDistance use the following columns</dt>
-<dd><ul class="first last simple">
-<li><strong>id</strong>: <code class="docutils literal"><span class="pre">ANY-INTEGER</span></code> identifier of the edge.</li>
-<li><strong>source</strong>: <code class="docutils literal"><span class="pre">ANY-INTEGER</span></code> identifier of the source vertex of the edge.</li>
-<li><strong>target</strong>: <code class="docutils literal"><span class="pre">ANY-INTEGER</span></code> identifier of the target vertex of the edge.</li>
-<li><strong>cost</strong>: <code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code> value of the edge traversal cost. A negative cost will prevent the edge (<code class="docutils literal"><span class="pre">source</span></code>, <code class="docutils literal"><span class="pre">target</span></code>) from being inserted in the graph.</li>
-<li><strong>reverse_cost</strong>: <code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code> (optional) the value for the reverse traversal of the edge. A negative cost will prevent the edge (<code class="docutils literal"><span class="pre">target</span></code>, <code class="docutils literal"><span class="pre">source</span></code>) from being inserted in the graph.</li>
-</ul>
-</dd>
-</dl>
-<p>Where:</p>
-<blockquote class="last">
-<div><ul class="simple">
-<li><strong>ANY-INTEGER</strong>: smallint, int, bigint</li>
-<li><strong>ANY-NUMERICAL</strong>: smallint, int, bigint, real, float</li>
-</ul>
-</div></blockquote>
-</div>
+<p>When the edge table has the mentioned columns, the following SQL queries can be used.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="k">FROM</span> <span class="n">edge_table</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="k">FROM</span> <span class="n">edge_table</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="p">,</span><span class="n">reverse_cost</span> <span class="k">FROM</span> <span class="n">edge_table</span>
@@ -183,8 +163,8 @@
       </div>
 
     <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.1.0 (92246c8 develop_2_1_0).
-      Last updated on Jul 21, 2015.
+        &copy; Copyright pgRouting Contributors - Version 2.1.0 (36f41ae develop_2_1_0).
+      Last updated on Jul 25, 2015.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>

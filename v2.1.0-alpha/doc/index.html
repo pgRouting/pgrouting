@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.1.0 (92246c8 develop_2_1_0)',
+        VERSION:     '2.1.0 (36f41ae develop_2_1_0)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -47,7 +47,7 @@
   <div class="section" id="table-of-contents">
 <span id="index"></span><h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h1>
 <p>pgRouting extends the <a class="reference external" href="http://postgis.net">PostGIS</a>/<a class="reference external" href="http://postgresql.org">PostgreSQL</a> geospatial database to provide geospatial routing and other network analysis functionality.</p>
-<p>This is the manual for pgRouting 2.1.0 (92246c8 develop_2_1_0).</p>
+<p>This is the manual for pgRouting 2.1.0 (36f41ae develop_2_1_0).</p>
 <img alt="Creative Commons Attribution-Share Alike 3.0 License" class="align-left" src="../_images/ccbysa.png" />
 <p>The pgRouting Manual is licensed under a <a class="reference external" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to <a class="reference external" href="http://pgrouting.org">http://pgrouting.org</a>. For other licenses used in pgRouting see the <a class="reference internal" href="src/introduction/introduction.html#license"><span>License</span></a> page.</p>
 <div class="section" id="general">
@@ -107,8 +107,6 @@
 <div class="section" id="version">
 <h2>Version<a class="headerlink" href="#version" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="../src/common/doc/utilities/version.html#pgr-version"><span>pgr_version</span></a> - to get pgRouting&#8217;s version information.</p>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 <div class="section" id="data-types">
 <h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h2>
@@ -135,8 +133,6 @@
 <li><a class="reference internal" href="../src/common/doc/functions/node_network.html#pgr-node-network"><span>pgr_nodeNetwork</span></a>  -to create nodes to a not noded edge table.</li>
 </ul>
 </div></blockquote>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 <div class="section" id="routing-functions">
 <h2>Routing functions<a class="headerlink" href="#routing-functions" title="Permalink to this headline">¶</a></h2>
@@ -156,6 +152,17 @@
 <li><a class="reference internal" href="../src/tsp/doc/index.html#pgr-tsp"><span>pgr_tsp</span></a> - Traveling Sales Person</li>
 </ul>
 </div></blockquote>
+</div>
+<div class="section" id="experimental-functions-vehicle-routing-problems">
+<h2>Experimental functions (vehicle routing problems)<a class="headerlink" href="#experimental-functions-vehicle-routing-problems" title="Permalink to this headline">¶</a></h2>
+<p>The following functions are experimental, they may lack documentation, and for the moment there is
+no support for them.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../src/vrp_basic/doc/index.html#pgr-vrp-basic"><span>pgr_vrpOneDepot</span></a> - VRP One Depot</li>
+<li><a class="reference internal" href="../src/vrppdtw/doc/index.html#pgr-gsocvrppdtw"><span>pgr_vrppdtw - Pickup and Delivery problem</span></a> -  Pickup and Delivery problem</li>
+</ul>
+</div></blockquote>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -164,88 +171,30 @@
 <p><a class="reference internal" href="../src/driving_distance/doc/index.html#pgr-driving-distance-post"><span>Driving Distance post-processing</span></a></p>
 <blockquote>
 <div><ul class="simple">
-<li>:refe`pgr_alphaShape` - Alpha shape computation</li>
+<li><a class="reference internal" href="../src/driving_distance/doc/dd_alphashape.html#pgr-alphashape"><span>pgr_alphaShape</span></a> - Alpha shape computation</li>
 <li><a class="reference internal" href="../src/driving_distance/doc/dd_points_as_polygon.html#pgr-points-as-polygon"><span>pgr_pointsAsPolygon</span></a> - Polygon around set of points</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="proposed-functions">
-<h2>Proposed functions<a class="headerlink" href="#proposed-functions" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>This section containes the new signatures proposed for any of the following sections:</dt>
-<dd><ul class="first last simple">
-<li>topology functions</li>
-<li>routing functions</li>
-<li>vehicle routing functions</li>
-<li>pre / post prossesing helpng functions</li>
-</ul>
-</dd>
-</dl>
-<p>We are including them so that the pgRouting community can evaluate them before
-including them as an official function of pgRouting.</p>
-<p>Some of them are unsupported like the GSoC functions.</p>
-</div>
-<div class="section" id="proposed-functions-proposed-by-steve-woodbridge">
-<h2>Proposed functions: Proposed by Steve Woodbridge<a class="headerlink" href="#proposed-functions-proposed-by-steve-woodbridge" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt><a class="reference internal" href="../src/common/doc/convenience/index.html#convenience-functions"><span>Convenience Functions</span></a></dt>
-<dd><ul class="first last simple">
-<li><a class="reference internal" href="../src/common/doc/convenience/point_to_edgenode.html#pgr-point-to-edgenode"><span>pgr_pointToEdgeNode</span></a> - convert a point geometry to a <code class="docutils literal"><span class="pre">vertex_id</span></code> based on closest edge.</li>
-<li><a class="reference internal" href="../src/common/doc/convenience/flip_edges.html#pgr-flip-edges"><span>pgr_flipEdges</span></a> - flip the edges in an array of geometries so the connect end to end.</li>
-<li><a class="reference internal" href="../src/common/doc/convenience/text_to_points.html#pgr-text-to-points"><span>pgr_textToPoints</span></a> - convert a string of <code class="docutils literal"><span class="pre">x,y;x,y;...</span></code> locations into point geometries.</li>
-<li><a class="reference internal" href="../src/common/doc/convenience/points_to_vids.html#pgr-points-to-vids"><span>pgr_pointsToVids</span></a> - convert an array of point geometries into vertex ids.</li>
-<li><a class="reference internal" href="../src/common/doc/convenience/points_to_dmatrix.html#pgr-points-to-dmatrix"><span>pgr_pointsToDMatrix</span></a> - Create a distance matrix from an array of points.</li>
-<li><a class="reference internal" href="../src/common/doc/convenience/vids_to_dmatrix.html#pgr-vids-to-dmatrix"><span>pgr_vidsToDMatrix</span></a> - Create a distance matrix from an array of <code class="docutils literal"><span class="pre">vertix_id</span></code>.</li>
-<li><a class="reference internal" href="../src/common/doc/convenience/vids_to_dmatrix2.html#pgr-vids-to-dmatrix2"><span>pgr_vidsToDMatrix</span></a> - Create a distance matrix from an array of <code class="docutils literal"><span class="pre">vertix_id</span></code>.</li>
-</ul>
-</dd>
-</dl>
+<div class="section" id="unsupported-functions">
+<h2>Unsupported functions<a class="headerlink" href="#unsupported-functions" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="proposed-functions-proposed-by-gsoc">
-<h2>Proposed functions: Proposed by GSoC<a class="headerlink" href="#proposed-functions-proposed-by-gsoc" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>The following functions are experimental</dt>
-<dd><ul class="first simple">
-<li>They may lack documentation,</li>
-<li>Were created by GSoC students.</li>
-<li>they are unsoported.</li>
-</ul>
-<blockquote class="last">
-<div><ul class="simple">
-<li><a class="reference internal" href="../src/vrp_basic/doc/index.html#pgr-vrp-basic"><span>pgr_vrpOneDepot</span></a> - VRP One Depot</li>
-<li><a class="reference internal" href="../src/vrppdtw/doc/index.html#pgr-gsocvrppdtw"><span>pgr_vrppdtw - Pickup and Delivery problem</span></a> -  Pickup and Delivery problem</li>
-</ul>
-</div></blockquote>
-</dd>
-</dl>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-</div>
-<div class="section" id="discontinued-functions">
-<h2>Discontinued Functions<a class="headerlink" href="#discontinued-functions" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/legacy.html">Legacy Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="src/developer/discontinued.html">Discontinued Functions</a></li>
 </ul>
 </div>
 </div>
 <div class="section" id="developer">
 <h2>Developer<a class="headerlink" href="#developer" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../src/common/doc/utilities/index.html#developer-functions"><span>Developers&#8217;s Functions</span></a></p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">In V3.0 This function are going to be discontinued. Use the already available underscored version instead.</p>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last"><a class="reference internal" href="../src/common/doc/utilities/index.html#developer-functions"><span>Developers&#8217;s Functions</span></a> documentation is going to be deleted from the pgRouting documentation in V3.0</p>
+<p class="last"><a class="reference internal" href="../src/common/doc/utilities/index.html#developer-functions"><span>Developers&#8217;s Functions</span></a> documentation is going to be deleted from the pgRouting documentation and included in the doxygen documentation.</p>
 </div>
 <dl class="docutils">
-<dt>The following functions are used internaly the topology functions.</dt>
+<dt><a class="reference internal" href="../src/common/doc/utilities/index.html#developer-functions"><span>Developers&#8217;s Functions</span></a></dt>
 <dd><ul class="first last simple">
 <li><a class="reference internal" href="../src/common/doc/utilities/get_column_name.html#pgr-get-column-name"><span>pgr_getColumnName</span></a> - to get the name of the column as is stored in the postgres administration tables.</li>
 <li><a class="reference internal" href="../src/common/doc/utilities/get_table_name.html#pgr-get-table-name"><span>pgr_getTableName</span></a> - to retrieve the name of the table as is stored in the postgres administration tables.</li>
@@ -301,8 +250,8 @@ including them as an official function of pgRouting.</p>
       </div>
 
     <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.1.0 (92246c8 develop_2_1_0).
-      Last updated on Jul 21, 2015.
+        &copy; Copyright pgRouting Contributors - Version 2.1.0 (36f41ae develop_2_1_0).
+      Last updated on Jul 25, 2015.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
