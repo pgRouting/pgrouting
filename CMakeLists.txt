@@ -340,7 +340,7 @@ endif(SIG_RESULT)
 
 # create the extension update scripts
 execute_process(
-  COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/build-extension-update-files ${PGROUTING_VERSION_STRING}
+  COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/build-extension-update-files ${PGROUTING_VERSION_STRING} ${PGROUTING_SOURCE_DIR}
   WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
   RESULT_VARIABLE UPDATE_RESULT
 )
