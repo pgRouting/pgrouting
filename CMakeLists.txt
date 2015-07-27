@@ -187,6 +187,10 @@ set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/vrp_basic/src
     ${PGROUTING_SOURCE_DIR}/src/vrppdtw/src
 
+# not using C/C++
+    ${PGROUTING_SOURCE_DIR}/src/label_graph/src
+
+
 #not suported but directory exists
 #    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
 #    ${PGROUTING_SOURCE_DIR}/src/vrpdptw/src
@@ -272,7 +276,6 @@ add_library(routing-2.1
 
 #not supported but directory exists
 #    $<TARGET_OBJECTS:shooting_star>
-#    $<TARGET_OBJECTS:vrpdptw>
     )
 
 install(TARGETS routing-2.1 DESTINATION ${LIBRARY_INSTALL_PATH})
