@@ -114,7 +114,7 @@ HTTPS protocol (read-only):
 See :ref:`build` to build the binaries from the source.
 
 Installing in the database
--------------------------------------------------------------------------------
+--------------------------
 
 pgRouting is an extension. 
 
@@ -125,7 +125,7 @@ pgRouting is an extension.
 
 
 Upgrading the database
--------------------------------------------------------------------------------
+----------------------
 
 To upgrade pgRouting to version 2.1.0 use the following command:
 
