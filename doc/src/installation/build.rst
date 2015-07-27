@@ -67,9 +67,8 @@ Configuring with documentation
 .. note:: Most of the effort of the documentation has being on the html files.
 
 
-############
 Building
-############
+===============================================================================
 
 Using ``make`` to build the code and the docuemtnation
 
@@ -81,16 +80,15 @@ The following instructions start from *path/to/pgrouting/build*
     $ make doc      # build only the documentation
     $ make all doc  # build both the code and the documentation
 
-###############################
 Installation and reinstallation
-###############################
+===============================================================================
 
 We have tested on several plataforms, For installing or reinstalling all the steps are needed.
 
 .. warning:: The sql signatures are configured and build in the ``cmake`` command.
 
 For MinGW on Windows
-===============================================================================
+----------------------------------------------------------------
 
 .. code-block:: bash
 
@@ -102,7 +100,7 @@ For MinGW on Windows
 
 
 For Linux
-===============================================================================
+----------------------------------------------------------------
 
 The following instructions start from *path/to/pgrouting*
 

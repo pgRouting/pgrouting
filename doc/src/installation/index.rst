@@ -12,6 +12,9 @@
 Installation
 ===============================================================================
 
+Download
+--------
+
 Binary packages are provided for the current version on the following platforms:
 
 
@@ -103,6 +106,7 @@ Git develop branch       `develop.tar.gz`_       `develop.zip`_
 .. _develop.tar.gz: https://github.com/pgRouting/pgrouting/archive/develop.tar.gz
 .. _develop.zip: https://github.com/pgRouting/pgrouting/archive/develop.zip
 
+See :ref:`build` to build the binaries from the source.
 
 Using Git
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -115,9 +119,28 @@ Git protocol (read-only):
 
 
 HTTPS protocol (read-only):
+
 .. code-block:: bash
 
 	git clone https://github.com/pgRouting/pgrouting.git
 
+See :ref:`build` to build the binaries from the source.
 
-See :ref:`build` for notes on compiling from source.
+Installing in the database
+-------------------------------------------------------------------------------
+
+.. code-block:: sql
+
+  CREATE EXTENSION pgrouting;
+
+
+
+
+Upgrading the database
+-------------------------------------------------------------------------------
+
+.. code-block:: sql
+
+   ALTER EXTENSION pgrouting UPDATE TO "2.1.0";
+
+
