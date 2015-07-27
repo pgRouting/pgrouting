@@ -180,14 +180,15 @@ About this proposal:
   - Author: Zia Mohammed.
   - Status: Needs a lot of testing. I am working on that.
   - I did not add automated test.
+  - Temporary name: pgr_labelGraph
   - Need: I need feedback from the community. 
 
-  -  :ref:`pgr_brokenGraph` - Analyze broken-graph within a network after pgr_createtopology()
+  -  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
 
 .. toctree::
   :hidden:
 
-        ../src/common/doc/functions/analyze_brokengraph.rst
+  ../src/label_graph/doc/analyze_brokengraph.rst
 
 
 *******************************************************************************

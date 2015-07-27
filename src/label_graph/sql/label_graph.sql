@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION pgr_brokenGraph(
+CREATE OR REPLACE FUNCTION pgr_labelGraph(
                 edge_table text,
                 id text default 'id',
                 source text default 'source',
