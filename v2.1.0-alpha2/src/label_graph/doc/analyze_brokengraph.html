@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_labelGraph &mdash; pgRouting Manual (2.1.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.1.0 (f379041 label_graph_branch)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.1.0)" href="../../../doc/index.html" />
+    <link rel="next" title="pgr_vrpOneDepot" href="../../vrp_basic/doc/index.html" />
+    <link rel="prev" title="pgr_vidsToDMatrix" href="../../common/doc/convenience/vids_to_dmatrix2.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.1.0)</span></a></h1>
+        <h2 class="heading"><span>pgr_labelGraph</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../../common/doc/convenience/vids_to_dmatrix2.html">pgr_vidsToDMatrix</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../vrp_basic/doc/index.html">pgr_vrpOneDepot</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-labelgraph">
+<span id="id1"></span><h1>pgr_labelGraph<a class="headerlink" href="#pgr-labelgraph" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">pgr_labelGraph</span></code> — Locates and labels sub-networks within a network which are not topologically connected. Must be run after <code class="docutils literal"><span class="pre">pgr_createTopology()</span></code>. No use of <code class="docutils literal"><span class="pre">geometry</span></code> column. Only <code class="docutils literal"><span class="pre">id</span></code>, <code class="docutils literal"><span class="pre">source</span></code> and  <code class="docutils literal"><span class="pre">target</span></code> columns are required.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>The function returns:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">OK</span></code> when a column with provided name has been generated and populated successfully. All connected edges will have unique similar integer values. In case of <code class="docutils literal"><span class="pre">rows_where</span></code> condition, non participating rows will have -1 integer values.</li>
+<li><code class="docutils literal"><span class="pre">FAIL</span></code> when the processing cannot be finished due to some error. Notice will be thrown accordingly.</li>
+<li><code class="docutils literal"><span class="pre">rows_where</span> <span class="pre">condition</span> <span class="pre">generated</span> <span class="pre">0</span> <span class="pre">rows</span></code> when passed SQL condition has not been fulfilled by any row.</li>
+</ul>
+</div></blockquote>
+<div class="highlight-sql"><div class="highlight"><pre><span class="nb">varchar</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>A network behind any routing query may consist of sub-networks completely isolated from each other. Possible reasons could be:</p>
+<ul class="simple">
+<li>An island with no bridge connecting to the mainland.</li>
+<li>An edge or mesh of edges failed to connect to other networks because of human negligence during data generation.</li>
+<li>The data is not properly noded.</li>
+<li>Topology creation failed to succeed.</li>
+</ul>
+<p>pgr_labelGraph() will create an integer column (with the name provided by the user) and will assign same integer values to all those edges in the network which are connected topologically. Thus better analysis regarding network structure is possible. In case of <code class="docutils literal"><span class="pre">rows_where</span></code> condition, non participating rows will have -1 integer values.</p>
+<p>Prerequisites:
+Must run <code class="docutils literal"><span class="pre">pgr_createTopology()</span></code> in order to generate <code class="docutils literal"><span class="pre">source</span></code> and <code class="docutils literal"><span class="pre">target</span></code> columns. Primary key column <code class="docutils literal"><span class="pre">id</span></code> should also be there in the network table.</p>
+<p>Function accepts the following parameters:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edge_table:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> Network table name, with optional schema name.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> Primary key column name of the network table. Default is <code class="docutils literal"><span class="pre">id</span></code>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> Source column name generated after <code class="docutils literal"><span class="pre">pgr_createTopology()</span></code>. Default is <code class="docutils literal"><span class="pre">source</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> Target column name generated after <code class="docutils literal"><span class="pre">pgr_createTopology()</span></code>. Default is <code class="docutils literal"><span class="pre">target</span></code>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">subgraph:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> Column name which will hold the integer labels for each sub-graph. Default is <code class="docutils literal"><span class="pre">subgraph</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">rows_where:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> The SQL where condition. Default is <code class="docutils literal"><span class="pre">true</span></code>, means the processing will be done on the whole table.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="possible-usage">
+<h2>Possible Usage<a class="headerlink" href="#possible-usage" title="Permalink to this headline">¶</a></h2>
+<p>&#8211; The following should be OK</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;ways&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;Ways&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;ways&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;ways&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;ways&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;ways&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;subgraph&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;ways&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;subgraph&#39;</span><span class="p">,</span> <span class="s1">&#39;id&lt;100&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>&#8211; When table located in another schema e03</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.ways&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.Ways&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.ways&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.ways&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.ways&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.ways&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;subgraph&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.ways&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;subgraph&#39;</span><span class="p">,</span> <span class="s1">&#39;id&lt;100&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>&#8211; When using the named notation</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.calles&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;destino&#39;</span><span class="p">,</span> <span class="n">subgraph</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;subgraph&#39;</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gido&#39;</span><span class="p">,</span> <span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;salida&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.calles&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gido&lt;100&#39;</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gido&#39;</span><span class="p">,</span> <span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;salida&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;destino&#39;</span><span class="p">,</span> <span class="n">subgraph</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;subgraph&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>&#8211; The following should FAIL</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;ways&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;ways&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;sourc&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;ways&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;Target&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;ways&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;subgraph&#39;</span><span class="p">,</span> <span class="s1">&#39;id&lt;&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>&#8211; When table located in another schema e03</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.calles&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.Calles&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;e03.calles&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.calles&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;sourc&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.calles&#39;</span><span class="p">,</span> <span class="s1">&#39;gido&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;subgraph&#39;</span><span class="p">,</span> <span class="s1">&#39;id&lt;&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.calles&#39;</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;salida&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;subgraph&#39;</span><span class="p">,</span> <span class="s1">&#39;id&lt;10&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.calles&#39;</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;salida&#39;</span><span class="p">,</span> <span class="s1">&#39;destino&#39;</span><span class="p">,</span> <span class="s1">&#39;subgraph&#39;</span><span class="p">,</span> <span class="s1">&#39;id&lt;10 AND id&gt;100&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>&#8211; When using the named notation</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.calles&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;destino&#39;</span><span class="p">,</span> <span class="n">subgraph</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;subgraph&#39;</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gido&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.calles&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;destino&#39;</span><span class="p">,</span> <span class="n">subgraph</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;subgraph&#39;</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gido&#39;</span><span class="p">,</span> <span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;salido&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gido&lt;100&#39;</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gido&#39;</span><span class="p">,</span> <span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;salida&#39;</span><span class="p">,</span> <span class="s1">&#39;e03.calles&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;destino&#39;</span><span class="p">,</span> <span class="n">subgraph</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;subgraph&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>&#8211; The following should return &#8220;rows_where condition generated 0 rows&#8221;</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;ways&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;subgraph&#39;</span><span class="p">,</span> <span class="s1">&#39;id&lt;10 AND id&gt;100&#39;</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;e03.calles&#39;</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gido&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gido&lt;100 AND gido&gt;200&#39;</span><span class="p">,</span> <span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;salida&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;destino&#39;</span><span class="p">,</span> <span class="n">subgraph</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;subgraph&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples-output-pane-messages">
+<h2>Examples Output pane Messages<a class="headerlink" href="#examples-output-pane-messages" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Processing</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="s1">&#39;ways&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;subgraph&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">initial</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="k">hold</span> <span class="k">on</span> <span class="p">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Starting</span> <span class="o">-</span> <span class="n">Checking</span> <span class="k">table</span> <span class="p">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Ending</span> <span class="o">-</span> <span class="n">Checking</span> <span class="k">table</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Starting</span> <span class="o">-</span> <span class="n">Checking</span> <span class="n">columns</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Ending</span> <span class="o">-</span> <span class="n">Checking</span> <span class="n">columns</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Starting</span> <span class="o">-</span> <span class="n">Checking</span> <span class="n">rows_where</span> <span class="n">condition</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Ending</span> <span class="o">-</span> <span class="n">Checking</span> <span class="n">rows_where</span> <span class="n">condition</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Starting</span> <span class="o">-</span> <span class="n">Calculating</span> <span class="n">subgraphs</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Successfully</span> <span class="n">complicated</span> <span class="n">calculating</span> <span class="n">subgraphs</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Ending</span> <span class="o">-</span> <span class="n">Calculating</span> <span class="n">subgraphs</span>
+
+<span class="n">Total</span> <span class="n">query</span> <span class="n">runtime</span><span class="p">:</span> <span class="mi">5426</span> <span class="n">ms</span><span class="p">.</span>
+<span class="mi">1</span> <span class="k">row</span> <span class="n">retrieved</span><span class="p">.</span>
+
+<span class="n">pgr_labelgraph</span>
+<span class="nb">character</span> <span class="nb">varying</span>
+<span class="c1">--------------------</span>
+<span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/Zia-/pgrouting/blob/develop/src/common/sql/pgrouting_topology.sql">pgr_createTopology</a> to create the topology of a table based on its geometry and tolerance value.</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../../common/doc/convenience/vids_to_dmatrix2.html">pgr_vidsToDMatrix</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../vrp_basic/doc/index.html">pgr_vrpOneDepot</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright pgRouting Contributors - Version 2.1.0 (f379041 label_graph_branch).
+      Last updated on Jul 27, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
