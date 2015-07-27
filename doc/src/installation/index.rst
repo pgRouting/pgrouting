@@ -12,6 +12,12 @@
 Installation
 ===============================================================================
 
+This is a basic guide to download and install pgRouting.
+
+.. note:: additional notes can be found in `Installation Notes`_
+
+.. _Installation Notes: https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting
+
 Download
 --------
 
@@ -129,15 +135,18 @@ See :ref:`build` to build the binaries from the source.
 Installing in the database
 -------------------------------------------------------------------------------
 
+pgRouting is an extension. 
+
 .. code-block:: sql
 
+  CREATE EXTENSION postgis;
   CREATE EXTENSION pgrouting;
-
-
 
 
 Upgrading the database
 -------------------------------------------------------------------------------
+
+To upgrade pgRouting to version 2.1.0 use the following command:
 
 .. code-block:: sql
 
