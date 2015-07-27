@@ -27,7 +27,7 @@ Binary packages are provided for the current version on the following platforms:
 Windows
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Winnie Bot Experimental Builds:
+Winnie Bot Builds:
 
 * `Winnie PostgreSQL 9.2-9.5 32-bit/64-bit <http://postgis.net/windows_downloads>`_
 
