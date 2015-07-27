@@ -89,28 +89,9 @@ OS X
 Source Package
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-======================== ======================= ====================
-Git 2.0.0-rc1 release    `v2.0.0-rc1.tar.gz`_    `v2.0.0-rc1.zip`_
-Git 2.0.0-beta release   `v2.0.0-beta.tar.gz`_   `v2.0.0-beta.zip`_
-Git 2.0.0-alpha release  `v2.0.0-alpha.tar.gz`_  `v2.0.0-alpha.zip`_
-Git master branch        `master.tar.gz`_        `master.zip`_
-Git develop branch       `develop.tar.gz`_       `develop.zip`_
-======================== ======================= ====================
+You can find all the pgRouting Releases: 
 
-.. _v2.0.0-rc1.tar.gz: https://github.com/pgRouting/pgrouting/archive/v2.0.0-rc1.tar.gz
-.. _v2.0.0-rc1.zip: https://github.com/pgRouting/pgrouting/archive/v2.0.0-rc1.zip
-
-.. _v2.0.0-beta.tar.gz: https://github.com/pgRouting/pgrouting/archive/v2.0.0-beta.tar.gz
-.. _v2.0.0-beta.zip: https://github.com/pgRouting/pgrouting/archive/v2.0.0-beta.zip
-
-.. _v2.0.0-alpha.tar.gz: https://github.com/pgRouting/pgrouting/archive/v2.0.0-alpha.tar.gz
-.. _v2.0.0-alpha.zip: https://github.com/pgRouting/pgrouting/archive/v2.0.0-alpha.zip
-
-.. _master.tar.gz: https://github.com/pgRouting/pgrouting/archive/master.tar.gz
-.. _master.zip: https://github.com/pgRouting/pgrouting/archive/master.zip
-
-.. _develop.tar.gz: https://github.com/pgRouting/pgrouting/archive/develop.tar.gz
-.. _develop.zip: https://github.com/pgRouting/pgrouting/archive/develop.zip
+https://github.com/pgRouting/pgrouting/releases
 
 See :ref:`build` to build the binaries from the source.
 
