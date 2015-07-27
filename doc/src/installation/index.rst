@@ -29,7 +29,7 @@ Windows
 
 Winnie Bot Experimental Builds:
 
-* `PostgreSQL 9.2-9.4beta1 32-bit, 64-bit <http://postgis.net/windows_downloads>`_
+* `Winnie PostgreSQL 9.2-9.5 32-bit/64-bit <http://postgis.net/windows_downloads>`_
 
 Production Builds:
 
