@@ -46,14 +46,6 @@ BEGIN
     if (result is null) then  result='NULL'; end if;
    execute query into returnvalue;
    if (returnvalue is null) then returnvalue='NULL'; end if;
-   if (result = 't' and (returnvalue='false' or returnvalue='f')) then
-      return 'test #'|| testnumber || ':got '||returnvalue;
-   end if;
-
-   if (result = 'f' and (returnvalue='true' or returnvalue='t')) then 
-      return 'test #'|| testnumber || ':got '||returnvalue;
-   end if;
-
    if (returnvalue=result) then
       return 'test #'|| testnumber || ':OK';
    else
