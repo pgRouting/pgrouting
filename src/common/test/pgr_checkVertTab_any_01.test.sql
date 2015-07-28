@@ -63,20 +63,42 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE ;
 
+create or replace function make_tests_return_text(query text,result boolean,testnumber int default 0)
+RETURNS text AS
+$BODY$
+DECLARE
+    returnvalue boolean;
+    naming record;
+    err boolean;
+BEGIN
+    if (result is null) then  result='NULL'; end if;
+   execute query into returnvalue;
+   if (returnvalue is null) then returnvalue='NULL'; end if;
+
+   if (returnvalue=result) then
+      return 'test #'|| testnumber || ':OK';
+   else
+      return 'test #'|| testnumber || ':got '||returnvalue;
+   end if;
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE ;
+
+
 set client_min_messages  to notice;
 
-select * from make_tests_return_text('select * from  _pgr_isColumnInTable (''streets'',''id'')',  't',1);
-select * from make_tests_return_text('select * from  _pgr_isColumnInTable (''streets'',''cnt'')',  'f',2);
-select * from make_tests_return_text('select * from  _pgr_isColumnInTable (''streets'',''chk'')',  'f',3);
+select * from make_tests_return_text('select * from  _pgr_isColumnInTable (''streets'',''id'')',  true,1);
+select * from make_tests_return_text('select * from  _pgr_isColumnInTable (''streets'',''cnt'')',  false,2);
+select * from make_tests_return_text('select * from  _pgr_isColumnInTable (''streets'',''chk'')',  false,3);
 select * from make_tests_return_tab('select * from  _pgr_checkVertTab(''streets'', ''{"id","cnt","chk"}''::text[])','public.streets',4);
-select * from make_tests_return_text('select * from  _pgr_isColumnInTable (''streets'',''cnt'')',  't',5);
-select * from make_tests_return_text('select * from  _pgr_isColumnInTable (''streets'',''cnt'')',  't',6);
-select * from make_tests_return_text('select * from  _pgr_isColumnInTable (''streets'',''chk'')',  't',7);
+select * from make_tests_return_text('select * from  _pgr_isColumnInTable (''streets'',''cnt'')',  true,5);
+select * from make_tests_return_text('select * from  _pgr_isColumnInTable (''streets'',''cnt'')',  true,6);
+select * from make_tests_return_text('select * from  _pgr_isColumnInTable (''streets'',''chk'')',  true,7);
 
-select * from make_tests_return_text('select * from  _pgr_isColumnIndexed (''streets'',''cnt'')',  'f',8);
-select * from make_tests_return_text('select * from  _pgr_isColumnIndexed (''streets'',''chk'')',  'f',9);
+select * from make_tests_return_text('select * from  _pgr_isColumnIndexed (''streets'',''cnt'')',  false,8);
+select * from make_tests_return_text('select * from  _pgr_isColumnIndexed (''streets'',''chk'')',  false,9);
 select * from  _pgr_createIndex ('streets','chk','foo');
 select * from  _pgr_createIndex ('streets','cnt','btree');
-select * from make_tests_return_text('select * from  _pgr_isColumnIndexed (''streets'',''cnt'')',  't',10);
-select * from make_tests_return_text('select * from  _pgr_isColumnIndexed (''streets'',''chk'')',  't',11);
+select * from make_tests_return_text('select * from  _pgr_isColumnIndexed (''streets'',''cnt'')',  true,10);
+select * from make_tests_return_text('select * from  _pgr_isColumnIndexed (''streets'',''chk'')',  true,11);
 
