@@ -48,6 +48,11 @@ int do_pgr_dijkstra_many_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
   try {
     // in c code this should this must have been checked:
     //  1) cant check anything
+    if (total_tuples == 1) {
+      *ret_path = noPathFound3(-1, path_count, (*ret_path));
+      *ret_path = NULL;
+      return 0;
+    }
 
 std::ostringstream log;
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
@@ -66,7 +71,6 @@ std::ostringstream log;
 
     std::vector< int64_t > start_vertices(start_vertex, start_vertex + s_len);
     std::vector< int64_t > end_vertices(end_vertex, end_vertex + e_len);
-
     if (directedFlag) {
       digraph.initialize_graph(data_edges, total_tuples);
       digraph.dijkstra(paths, start_vertices, end_vertices);
@@ -133,6 +137,11 @@ int  do_pgr_dijkstra_many_to_1(pgr_edge_t *data_edges, int64_t total_tuples,
     #if 0  // set to 1 if needed
     std::ostringstream log;
     #endif
+    if (total_tuples == 1) {
+      *ret_path = noPathFound3(-1, path_count, (*ret_path));
+      *ret_path = NULL;
+      return 0;
+    }
 
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
     const int initial_size = 1;
@@ -206,6 +215,11 @@ int do_pgr_dijkstra_1_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
     // in c code this should this must have been checked:
     //  1) start_vertex is in the data_edges
 
+    if (total_tuples == 1) {
+      *ret_path = noPathFound3(-1, path_count, (*ret_path));
+      *ret_path = NULL;
+      return 0;
+    }
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
     const int initial_size = 1;
 
@@ -280,7 +294,11 @@ int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
     //  2) end_vertex is in the data_edges  DONE
     //  3) start and end_vertex are different DONE
 
-
+    if (total_tuples == 1) {
+      *ret_path = noPathFound3(-1, path_count, (*ret_path));
+      *ret_path = NULL;
+      return 0;
+    }
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
     const int initial_size = 1;
 

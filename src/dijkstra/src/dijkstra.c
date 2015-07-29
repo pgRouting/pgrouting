@@ -19,7 +19,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  */
-
+#define DEBUG
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -134,7 +134,7 @@ shortest_path(PG_FUNCTION_ARGS) {
   ret_path = (pgr_path_element3_t*) funcctx->user_fctx;
 
   /* do when there is more left to send */
-  if (call_cntr < max_calls) {
+  if (max_calls != 0 && call_cntr < max_calls) {
       HeapTuple    tuple;
       Datum        result;
       Datum *values;
