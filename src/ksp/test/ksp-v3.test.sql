@@ -80,18 +80,18 @@
    );
 
 
-  SELECT 11, * FROM pgr_ksp(
+  SELECT 11,  agg_cost FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2
    ) where edge = -1 order by agg_cost;
 
 
-  SELECT 12, * FROM pgr_ksp(
+  SELECT 12,  agg_cost FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2, heap_paths:=true
    ) where edge = -1 order by agg_cost;
 
-  SELECT 13, * FROM pgr_ksp(
+  SELECT 13, agg_cost FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2, true, true
    ) where edge = -1 order by agg_cost;
