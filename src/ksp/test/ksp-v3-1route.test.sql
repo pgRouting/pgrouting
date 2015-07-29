@@ -2,25 +2,27 @@
 --              PGR_ksp V3 only
 --------------------------------------------------------------------------------
 
+-- data
+SELECT id, source, target, cost, reverse_cost FROM edge_table;
 
 
 -- Examples to handle the one flag to choose signatures using :ref:`fig1-direct-Cost-Reverse`
 ------------------------------------------------------------------------------------------
 
 
-   SELECT * FROM pgr_ksp(
+   SELECT 1, * FROM pgr_ksp(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 1, 
       true   
    );
 
-   SELECT * FROM pgr_ksp(
+   SELECT 2, * FROM pgr_ksp(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 1,
       directed:=true   -- takes the new signature
    );
 
-   SELECT * FROM pgr_ksp(
+   SELECT 3, * FROM pgr_ksp(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 1
    );
@@ -31,18 +33,18 @@
 -------------------------------------------------------------------------------
 
 
-   SELECT * FROM pgr_ksp(
+   SELECT 4, * FROM pgr_ksp(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 1
    );
   
 
-   SELECT * FROM pgr_ksp(
+   SELECT 5, * FROM pgr_ksp(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 1, heap_paths:=true
    );
 
-   SELECT * FROM pgr_ksp(
+   SELECT 6, * FROM pgr_ksp(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 1, true, true
    );
@@ -51,17 +53,17 @@
 -------------------------------------------------------------------------------
 
 
-  SELECT * FROM pgr_ksp(
+  SELECT 7, * FROM pgr_ksp(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 1, directed:=false
    );
 
-  SELECT * FROM pgr_ksp(
+  SELECT 8, * FROM pgr_ksp(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 1, directed:=false, heap_paths:=true
    );
 
-  SELECT * FROM pgr_ksp(
+  SELECT 9, * FROM pgr_ksp(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 1, false, true
    );
@@ -72,24 +74,24 @@
 -------------------------------------------------------------------------------
 
 
-  SELECT * FROM pgr_ksp(
+  SELECT 10, * FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
       2, 3, 2
    );
 
 
-  SELECT * FROM pgr_ksp(
+  SELECT 11, * FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 1
    );
 
 
-  SELECT * FROM pgr_ksp(
+  SELECT 12, * FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 1, heap_paths:=true
    );
 
-  SELECT * FROM pgr_ksp(
+  SELECT 13, * FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 1, true, true
    );
@@ -98,17 +100,17 @@
 -------------------------------------------------------------------------------
 
 
-  SELECT * FROM pgr_ksp(
+  SELECT 14, * FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 1, directed:=false
    );
   
-  SELECT * FROM pgr_ksp(
+  SELECT 15, * FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 1, directed:=false, heap_paths:=true
    );
 
-  SELECT * FROM pgr_ksp(
+  SELECT 16, * FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 1, false, true
    );
