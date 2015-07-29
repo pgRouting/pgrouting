@@ -19,6 +19,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  */
+
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -51,7 +52,7 @@ static int compute_shortest_path(char* sql, int64_t start_vertex,
   int ret = -1;
 
   if (start_vertex == end_vertex) {
-      elog(NOTICE, "Starting vertex and Ending Vertex are equal");
+      PGR_DBG("Starting vertex and Ending Vertex are equal");
       *path = noPathFound3(-1, path_count, (*path));
       return 0;
   }
@@ -61,10 +62,36 @@ static int compute_shortest_path(char* sql, int64_t start_vertex,
   int readCode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
                start_vertex, end_vertex);
 
-  if (readCode == -1) {
+  if (readCode == -1 || total_tuples == 0) {
     *path = noPathFound3(-1, path_count, (*path));
-    return 0;
+    PGR_DBG("No edge tuples found");
+    pfree(edges);
+    return pgr_finish(SPIcode, ret);
   }
+
+  if (total_tuples == 1 
+     && (edges[0].cost < 0 && edges[0].reverse_cost < 0)) {
+    PGR_DBG("One edge with cost == %f and reverse_cost == %f", edges[0].cost, edges[0].reverse_cost );
+    *path = noPathFound3(-1, path_count, (*path));
+    pfree(edges);
+    return pgr_finish(SPIcode, ret);
+  }
+
+  if (total_tuples == 1) {
+    PGR_DBG("One edge with cost == %f and reverse_cost == %f", edges[0].cost, edges[0].reverse_cost );
+    PGR_DBG("The soruce == %ld and target == %ld", edges[0].source, edges[0].target);
+    if ((edges[0].cost >= 0 && edges[0].source != start_vertex &&  edges[0].target != end_vertex) 
+        ||  (edges[0].reverse_cost >= 0 && edges[0].source != end_vertex &&  edges[0].target != start_vertex)) {
+      PGR_DBG("There must be a solution or empty for undirected");
+    }
+    if (edges[0].cost >= 0 && edges[0].source == start_vertex &&  edges[0].target == end_vertex) { 
+      PGR_DBG("Solution from source to target");
+    }
+    if (edges[0].reverse_cost >= 0 && edges[0].target == start_vertex &&  edges[0].source == end_vertex) { 
+      PGR_DBG("Solution from target to source");
+    }
+  }
+
 
   PGR_DBG("Total %ld tuples in query:", total_tuples);
 
@@ -78,7 +105,7 @@ static int compute_shortest_path(char* sql, int64_t start_vertex,
         errmsg("Error computing path: %s", err_msg)));
   }
 
-  PGR_DBG("total tuples found %i\n", *path_count);
+  PGR_DBG("total records found %i\n", *path_count);
   PGR_DBG("Exist Status = %i\n", ret);
   PGR_DBG("Returned message = %s\n", err_msg);
 
@@ -133,7 +160,7 @@ shortest_path(PG_FUNCTION_ARGS) {
   ret_path = (pgr_path_element3_t*) funcctx->user_fctx;
 
   /* do when there is more left to send */
-  if (max_calls != 0 && call_cntr < max_calls) {
+  if (call_cntr < max_calls) {
       HeapTuple    tuple;
       Datum        result;
       Datum *values;

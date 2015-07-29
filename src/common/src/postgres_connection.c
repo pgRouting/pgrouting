@@ -356,13 +356,26 @@ int pgr_get_data(
   }
 
   
+#if 0
   if (!sourceFound) {
-      elog(NOTICE, "Starting Vertex does not exist in the data");
+      // elog(NOTICE, "Starting Vertex does not exist in the data");
       return 0;
   }
   if (!targetFound) {
-      elog(NOTICE, "Ending Vertex does not exist in the data");
+      // elog(NOTICE, "Ending Vertex does not exist in the data");
       return 0;
+  }
+#endif
+  if (total_tuples == 1) {
+    // for some reason it needs at least a second edge for boost.graph to work
+    // makeing a simple test and asking boost people
+    ++total_tuples;
+    (*edges) = (pgr_edge_t *)repalloc((*edges), total_tuples * sizeof(pgr_edge_t));
+    (*edges)[1].source = -1;
+    (*edges)[1].target = -1;
+    (*edges)[1].cost = 10000;
+    (*edges)[1].id = (*edges)[0].id + 1;
+    (*edges)[1].reverse_cost = -1;
   }
 
   (*totalTuples) = total_tuples;
