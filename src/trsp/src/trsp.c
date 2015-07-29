@@ -568,9 +568,10 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       int path_count = 0;
-#ifdef DEBUG
+
       int ret = -1;
-#endif
+      if (ret == -1) {}; // to avoid warning set but not used
+
       int i;
 
       // create a function context for cross-call persistence
@@ -595,9 +596,9 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 
 	  DBG("Calling compute_trsp");
 
-#ifdef DEBUG
+
       ret =
-#endif
+
  compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
                                    1, // do vertex
                                    PG_GETARG_INT32(1),
