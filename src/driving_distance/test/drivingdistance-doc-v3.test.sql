@@ -35,7 +35,7 @@ SELECT 6, node, cost, agg_cost FROM pgr_drivingDistance(
         13, 3, false
       ) order by node;
 
-SELECT 7, from_v, edge, cost, agg_cost FROM pgr_drivingDistance(
+SELECT 7, from_v, node, cost, agg_cost FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3, false
       ) order by from_v, node;
