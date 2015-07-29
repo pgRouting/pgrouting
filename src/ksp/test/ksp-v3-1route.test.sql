@@ -3,7 +3,7 @@
 --------------------------------------------------------------------------------
 
 -- data
-SELECT id, source, target, cost, reverse_cost FROM edge_table;
+SELECT id, source, target, cost, reverse_cost FROM edge_table order by id;
 
 
 -- Examples to handle the one flag to choose signatures using :ref:`fig1-direct-Cost-Reverse`
@@ -80,18 +80,18 @@ SELECT id, source, target, cost, reverse_cost FROM edge_table;
    );
 
 
-  SELECT 11, * FROM pgr_ksp(
+  SELECT 11, route, node, cost, agg_cost  FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 1
-   );
+   ) order by node;
 
 
-  SELECT 12, * FROM pgr_ksp(
+  SELECT 12, route, node, cost, agg_cost FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 1, heap_paths:=true
    );
 
-  SELECT 13, * FROM pgr_ksp(
+  SELECT 13, route, node, cost, agg_cost FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 1, true, true
    );
