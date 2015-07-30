@@ -13,6 +13,7 @@ $body$
 declare
     rr record;
     pct float;
+    debuglevel text;
     
 begin
     -- find the closest edge within tol distance
@@ -28,7 +29,10 @@ begin
         end if;
 
         -- project the point onto the linestring
+        execute 'show client_min_messages' into debuglevel;
+        SET client_min_messages='ERROR';
         pct := st_line_locate_point(rr.the_geom, pnt);
+        SET client_min_messages=debuglevel;;
 
         -- return the node we are closer to
         if pct < 0.5 then
