@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.1.0 (f379041 label_graph_branch)',
+        VERSION:     '2.1.0 (825f87f develop_2_1_0)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -61,8 +61,9 @@
 <div class="section" id="release-notes">
 <h2>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><ul class="simple">
-<li>A library for developing functions was created<ul>
+<div><ul>
+<li><p class="first">A C and C++ library for developer was created</p>
+<ul class="simple">
 <li>encapsulates postgreSQL related functions</li>
 <li>encapsulates Boost.Graph graphs<ul>
 <li>Directed Boost.Graph</li>
@@ -73,13 +74,48 @@
 <li>allow any-numerical on the cost/reverse_cost columns</li>
 </ul>
 </li>
-<li>Three Functions where completly re-factored using the library and were added functionality<ul>
+<li><p class="first">Three Functions where completly re-factored using the developers library and functionality was added.</p>
+<ul class="simple">
 <li>pgr_dijkstra</li>
 <li>pgr_ksp</li>
 <li>pgr_drivingDistance</li>
 </ul>
 </li>
-<li>Some Bug fixes in other functions</li>
+<li><p class="first">Impreved
+Alphashape function now can generate better polygons with holes and custom parameter</p>
+</li>
+<li><p class="first">Instead of generating many libraries:
+- All functions are encapsulated in one library
+- The library has a the prefix 2-1-0</p>
+</li>
+<li><p class="first">Added proposed functions to be evaluated:
+- Proposed functions from Steve Woodbridge, (Classified as Convinience by the author.)</p>
+<blockquote>
+<div><ul class="simple">
+<li>pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge.</li>
+<li>pgr_flipEdges - flip the edges in an array of geometries so the connect end to end.</li>
+<li>pgr_textToPoints - convert a string of x,y;x,y;... locations into point geometries.</li>
+<li>pgr_pointsToVids - convert an array of point geometries into vertex ids.</li>
+<li>pgr_pointsToDMatrix - Create a distance matrix from an array of points.</li>
+<li>pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id.</li>
+<li>pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id.</li>
+</ul>
+</div></blockquote>
+<ul>
+<li><dl class="first docutils">
+<dt>Added proposed functions from GSoc Projects:</dt>
+<dd><ul class="first last simple">
+<li>pgr_vrppdtw</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><p class="first">Removed the 1.x legacy functions</p>
+</li>
+<li><p class="first">Some bug fixes in other functions</p>
+</li>
 </ul>
 </div></blockquote>
 </div>
@@ -100,8 +136,8 @@
       </div>
 
     <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.1.0 (f379041 label_graph_branch).
-      Last updated on Jul 27, 2015.
+        &copy; Copyright pgRouting Contributors - Version 2.1.0 (825f87f develop_2_1_0).
+      Last updated on Jul 29, 2015.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
