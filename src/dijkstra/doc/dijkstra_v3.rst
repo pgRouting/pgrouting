@@ -37,6 +37,9 @@ a graph with non-negative edge path costs, producing a shortest path from
 a starting vertex (``start_v``) to an ending vertex (``end_v``).
 This implementation can be used with a directed graph and an undirected graph.
 
+Signatures
+===============================================================================
+
 .. rubric:: Minimal signature
 
 The minimal signature is for a **directed** graph from one ``start_v`` to one ``end_v``:
@@ -135,9 +138,9 @@ The weighted directed graph, ``G_d(V,E)``, is definied by:
 
   - when ``reverse_cost`` column is used: 
 
-    - ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, reverse_cost) where reverse_cost >=0)}  >=0)}``
+    - ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, reverse_cost) where reverse_cost >=0)}``
 
-This is done transparently using directed Boost.Graph.
+**This is done transparently using directed Boost.Graph**
 
 .. rubric:: Undirected graph
 
@@ -159,7 +162,7 @@ The weighted undirected graph, ``G_u(V,E)``, is definied by:
     - ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, cost) where cost >=0)}``  \
       union ``{ (target, source, reverse_cost) where cost >=0 }``  union ``{ (source, target,  reverse_cost) where reverse_cost >=0)}``
 
-This is done transparently using undirected Boost.Graph.
+**This is done transparently using directed Boost.Graph**
 
 .. rubric:: The problem
 
@@ -173,11 +176,10 @@ and the starting and ending vertices:
 The algorithm returns a path, if it exists, in terms of a sequence of vertices and of edges,
 set of ``(seq, node, edge, cost, agg_cost)``
 which is the shortest path using Dijsktra algorithm between ``start_v`` and ``end_v``,
-where ``seq`` indicates the relative position in the path of the ``node`` / ``edge``.
-
-  - When ``edge == -1`` it represents the end of the path.
-
-  - When ``node == end_v`` it represents the end of the path.
+where ``seq`` indicates the relative position in the path of the ``node`` or ``edge``.
+  - When ``seq = 1`` then the row represents the begining of the path.
+  - When ``edge = -1`` it represents the end of the path.
+  - When ``node = end_v`` it represents the end of the path.
 
 
 If there is no path, the resulting set is empty.
@@ -185,6 +187,10 @@ If there is no path, the resulting set is empty.
 Aditional information like the cost (``cost``) of the edge to be used to go to the next node
 and the aggregate cost (``agg_cost``) from the ``start_v`` up to the ``node`` is included.
 
+
+
+Description of the Signatures
+=============================
 
 Description of the SQL query
 -------------------------------------------------------------------------------
@@ -225,7 +231,7 @@ Description of the return values
 
 Returns set of ``(seq [, start_v] [, end_v] , node, edge, cost, agg_cost)``
 
-:seq: ``INT``  row sequence
+:seq: ``INT``  relative position in the path. Has value **1** for the begining of the path.
 :start_v: ``BIGINT`` id of the starting vertex. Used when multiple starting vetrices are in the query.
 :end_v: ``BIGINT`` id of the ending vertex. Used when multiple ending vertices are in the query.
 :node: ``BIGINT`` id of the node in the path from start_v to end_v.
@@ -234,10 +240,18 @@ Returns set of ``(seq [, start_v] [, end_v] , node, edge, cost, agg_cost)``
 :agg_cost:  ``FLOAT`` total cost from ``start_v`` to ``node``.
 
 
-// raw:: html
+Examples
+========
 
-Examples for :ref:`fig1-direct-Cost-Reverse` 
--------------------------------------------------------------------------------
+The examples of this section are based on the :ref:`sampledata` network.
+
+The examples include combinations from starting vertices 2 and 11 to ending vertices 3 and 5 in a directed and
+undirected graph with and with out reverse_cost.
+
+Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
+--------------------------------------------------------------------------------------
+
+The examples in this section use the following :ref:`fig1`
 
 .. code-block:: sql
 
@@ -247,12 +261,12 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
                 );
          seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
-           0 |    2 |    4 |    1 |        0
-           1 |    5 |    8 |    1 |        1
-           2 |    6 |    9 |    1 |        2
-           3 |    9 |   16 |    1 |        3
-           4 |    4 |    3 |    1 |        4
-           5 |    3 |   -1 |    0 |        5
+           1 |    2 |    4 |    1 |        0
+           2 |    5 |    8 |    1 |        1
+           3 |    6 |    9 |    1 |        2
+           4 |    9 |   16 |    1 |        3
+           5 |    4 |    3 |    1 |        4
+           6 |    3 |   -1 |    0 |        5
         (6 rows)
 
         SELECT * FROM pgr_dijkstra(
@@ -261,11 +275,13 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
                 );
          seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
-           0 |    2 |    4 |    1 |        0
-           1 |    5 |   -1 |    0 |        1
+           1 |    2 |    4 |    1 |        0
+           2 |    5 |   -1 |    0 |        1
         (2 rows)
 
-        -- Note how when you pass array is a combined result of the prior two examples
+When you pass an array we get a combined result:
+
+.. code-block:: sql
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -273,14 +289,14 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
                 );
          seq | end_v | node | edge | cost | agg_cost 
         -----+-------+------+------+------+----------
-           0 |     3 |    2 |    4 |    1 |        0
-           1 |     3 |    5 |    8 |    1 |        1
-           2 |     3 |    6 |    9 |    1 |        2
-           3 |     3 |    9 |   16 |    1 |        3
-           4 |     3 |    4 |    3 |    1 |        4
-           5 |     3 |    3 |   -1 |    0 |        5
-           6 |     5 |    2 |    4 |    1 |        0
-           7 |     5 |    5 |   -1 |    0 |        1
+           1 |     3 |    2 |    4 |    1 |        0
+           2 |     3 |    5 |    8 |    1 |        1
+           3 |     3 |    6 |    9 |    1 |        2
+           4 |     3 |    9 |   16 |    1 |        3
+           5 |     3 |    4 |    3 |    1 |        4
+           6 |     3 |    3 |   -1 |    0 |        5
+           1 |     5 |    2 |    4 |    1 |        0
+           2 |     5 |    5 |   -1 |    0 |        1
         (8 rows)
 
         SELECT * FROM pgr_dijkstra(
@@ -289,11 +305,11 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
                 );
          seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
-           0 |   11 |   13 |    1 |        0
-           1 |   12 |   15 |    1 |        1
-           2 |    9 |   16 |    1 |        2
-           3 |    4 |    3 |    1 |        3
-           4 |    3 |   -1 |    0 |        4
+           1 |   11 |   13 |    1 |        0
+           2 |   12 |   15 |    1 |        1
+           3 |    9 |   16 |    1 |        2
+           4 |    4 |    3 |    1 |        3
+           5 |    3 |   -1 |    0 |        4
         (5 rows)
 
         SELECT * FROM pgr_dijkstra(
@@ -302,14 +318,16 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
                 );
          seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
-           0 |   11 |   13 |    1 |        0
-           1 |   12 |   15 |    1 |        1
-           2 |    9 |    9 |    1 |        2
-           3 |    6 |    8 |    1 |        3
-           4 |    5 |   -1 |    0 |        4
+           1 |   11 |   13 |    1 |        0
+           2 |   12 |   15 |    1 |        1
+           3 |    9 |    9 |    1 |        2
+           4 |    6 |    8 |    1 |        3
+           5 |    5 |   -1 |    0 |        4
         (5 rows)
 
-        -- Some other combinations.
+Some other combinations.
+
+.. code-block:: sql
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -317,13 +335,13 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
                 );
          seq | start_v | node | edge | cost | agg_cost 
         -----+---------+------+------+------+----------
-           0 |       2 |    2 |    4 |    1 |        0
-           1 |       2 |    5 |   -1 |    0 |        1
-           2 |      11 |   11 |   13 |    1 |        0
-           3 |      11 |   12 |   15 |    1 |        1
-           4 |      11 |    9 |    9 |    1 |        2
-           5 |      11 |    6 |    8 |    1 |        3
-           6 |      11 |    5 |   -1 |    0 |        4
+           1 |       2 |    2 |    4 |    1 |        0
+           2 |       2 |    5 |   -1 |    0 |        1
+           1 |      11 |   11 |   13 |    1 |        0
+           2 |      11 |   12 |   15 |    1 |        1
+           3 |      11 |    9 |    9 |    1 |        2
+           4 |      11 |    6 |    8 |    1 |        3
+           5 |      11 |    5 |   -1 |    0 |        4
         (7 rows)
 
 
@@ -333,29 +351,31 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
                 );
          seq | start_v | end_v | node | edge | cost | agg_cost 
         -----+---------+-------+------+------+------+----------
-           0 |       2 |     3 |    2 |    4 |    1 |        0
-           1 |       2 |     3 |    5 |    8 |    1 |        1
-           2 |       2 |     3 |    6 |    9 |    1 |        2
-           3 |       2 |     3 |    9 |   16 |    1 |        3
-           4 |       2 |     3 |    4 |    3 |    1 |        4
-           5 |       2 |     3 |    3 |   -1 |    0 |        5
-           6 |       2 |     5 |    2 |    4 |    1 |        0
-           7 |       2 |     5 |    5 |   -1 |    0 |        1
-           8 |      11 |     3 |   11 |   13 |    1 |        0
-           9 |      11 |     3 |   12 |   15 |    1 |        1
-          10 |      11 |     3 |    9 |   16 |    1 |        2
-          11 |      11 |     3 |    4 |    3 |    1 |        3
-          12 |      11 |     3 |    3 |   -1 |    0 |        4
-          13 |      11 |     5 |   11 |   13 |    1 |        0
-          14 |      11 |     5 |   12 |   15 |    1 |        1
-          15 |      11 |     5 |    9 |    9 |    1 |        2
-          16 |      11 |     5 |    6 |    8 |    1 |        3
-          17 |      11 |     5 |    5 |   -1 |    0 |        4
+           1 |       2 |     3 |    2 |    4 |    1 |        0
+           2 |       2 |     3 |    5 |    8 |    1 |        1
+           3 |       2 |     3 |    6 |    9 |    1 |        2
+           4 |       2 |     3 |    9 |   16 |    1 |        3
+           5 |       2 |     3 |    4 |    3 |    1 |        4
+           6 |       2 |     3 |    3 |   -1 |    0 |        5
+           1 |       2 |     5 |    2 |    4 |    1 |        0
+           2 |       2 |     5 |    5 |   -1 |    0 |        1
+           1 |      11 |     3 |   11 |   13 |    1 |        0
+           2 |      11 |     3 |   12 |   15 |    1 |        1
+           3 |      11 |     3 |    9 |   16 |    1 |        2
+           4 |      11 |     3 |    4 |    3 |    1 |        3
+           5 |      11 |     3 |    3 |   -1 |    0 |        4
+           1 |      11 |     5 |   11 |   13 |    1 |        0
+           2 |      11 |     5 |   12 |   15 |    1 |        1
+           3 |      11 |     5 |    9 |    9 |    1 |        2
+           4 |      11 |     5 |    6 |    8 |    1 |        3
+           5 |      11 |     5 |    5 |   -1 |    0 |        4
         (18 rows)
 
 
-Examples for :ref:`fig2-undirect-Cost-Reverse` 
--------------------------------------------------------------------------------
+Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
+----------------------------------------------------------------------------------------
+
+The examples in this section use the following :ref:`fig2`
 
 .. code-block:: sql
 
@@ -366,8 +386,8 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
                 );
          seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
-           0 |    2 |    2 |    1 |        0
-           1 |    3 |   -1 |    0 |        1
+           1 |    2 |    2 |    1 |        0
+           2 |    3 |   -1 |    0 |        1
         (2 rows)
 
         SELECT * FROM pgr_dijkstra(
@@ -377,8 +397,8 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
                 );
          seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
-           0 |    2 |    4 |    1 |        0
-           1 |    5 |   -1 |    0 |        1
+           1 |    2 |    4 |    1 |        0
+           2 |    5 |   -1 |    0 |        1
         (2 rows)
 
         SELECT * FROM pgr_dijkstra(
@@ -388,9 +408,9 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
                 );
          seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
-           0 |   11 |   11 |    1 |        0
-           1 |    6 |    5 |    1 |        1
-           2 |    3 |   -1 |    0 |        2
+           1 |   11 |   11 |    1 |        0
+           2 |    6 |    5 |    1 |        1
+           3 |    3 |   -1 |    0 |        2
         (3 rows)
 
         SELECT * FROM pgr_dijkstra(
@@ -400,9 +420,9 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
                 );
          seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
-           0 |   11 |   11 |    1 |        0
-           1 |    6 |    8 |    1 |        1
-           2 |    5 |   -1 |    0 |        2
+           1 |   11 |   11 |    1 |        0
+           2 |    6 |    8 |    1 |        1
+           3 |    5 |   -1 |    0 |        2
         (3 rows)
 
        
@@ -413,11 +433,11 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
                 );
          seq | start_v | node | edge | cost | agg_cost 
         -----+---------+------+------+------+----------
-           0 |       2 |    2 |    4 |    1 |        0
-           1 |       2 |    5 |   -1 |    0 |        1
-           2 |      11 |   11 |   11 |    1 |        0
-           3 |      11 |    6 |    8 |    1 |        1
-           4 |      11 |    5 |   -1 |    0 |        2
+           1 |       2 |    2 |    4 |    1 |        0
+           2 |       2 |    5 |   -1 |    0 |        1
+           1 |      11 |   11 |   11 |    1 |        0
+           2 |      11 |    6 |    8 |    1 |        1
+           3 |      11 |    5 |   -1 |    0 |        2
         (5 rows)
 
         SELECT * FROM pgr_dijkstra(
@@ -427,10 +447,10 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
                 );
          seq | end_v | node | edge | cost | agg_cost 
         -----+-------+------+------+------+----------
-           0 |     3 |    2 |    2 |    1 |        0
-           1 |     3 |    3 |   -1 |    0 |        1
-           2 |     5 |    2 |    4 |    1 |        0
-           3 |     5 |    5 |   -1 |    0 |        1
+           1 |     3 |    2 |    2 |    1 |        0
+           2 |     3 |    3 |   -1 |    0 |        1
+           1 |     5 |    2 |    4 |    1 |        0
+           2 |     5 |    5 |   -1 |    0 |        1
         (4 rows)
 
         SELECT * FROM pgr_dijkstra(
@@ -440,21 +460,23 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
                 );
          seq | start_v | end_v | node | edge | cost | agg_cost 
         -----+---------+-------+------+------+------+----------
-           0 |       2 |     3 |    2 |    2 |    1 |        0
-           1 |       2 |     3 |    3 |   -1 |    0 |        1
-           2 |       2 |     5 |    2 |    4 |    1 |        0
-           3 |       2 |     5 |    5 |   -1 |    0 |        1
-           4 |      11 |     3 |   11 |   11 |    1 |        0
-           5 |      11 |     3 |    6 |    5 |    1 |        1
-           6 |      11 |     3 |    3 |   -1 |    0 |        2
-           7 |      11 |     5 |   11 |   11 |    1 |        0
-           8 |      11 |     5 |    6 |    8 |    1 |        1
-           9 |      11 |     5 |    5 |   -1 |    0 |        2
+           1 |       2 |     3 |    2 |    2 |    1 |        0
+           2 |       2 |     3 |    3 |   -1 |    0 |        1
+           1 |       2 |     5 |    2 |    4 |    1 |        0
+           2 |       2 |     5 |    5 |   -1 |    0 |        1
+           1 |      11 |     3 |   11 |   11 |    1 |        0
+           2 |      11 |     3 |    6 |    5 |    1 |        1
+           3 |      11 |     3 |    3 |   -1 |    0 |        2
+           1 |      11 |     5 |   11 |   11 |    1 |        0
+           2 |      11 |     5 |    6 |    8 |    1 |        1
+           3 |      11 |     5 |    5 |   -1 |    0 |        2
         (10 rows)
         
 
-Examples for :ref:`fig3-direct-Cost` 
--------------------------------------------------------------------------------
+Examples for queries marked as ``directed`` with ``cost`` column
+----------------------------------------------------------------------------------------
+
+The examples in this section use the following :ref:`fig3`
 
 .. code-block:: sql
 
@@ -472,8 +494,8 @@ Examples for :ref:`fig3-direct-Cost`
                 );
          seq | node | edge | cost | agg_cost 
         -----+------+------+------+----------
-           0 |    2 |    4 |    1 |        0
-           1 |    5 |   -1 |    0 |        1
+           1 |    2 |    4 |    1 |        0
+           2 |    5 |   -1 |    0 |        1
         (2 rows)
 
         SELECT * FROM pgr_dijkstra(
@@ -498,8 +520,8 @@ Examples for :ref:`fig3-direct-Cost`
                 );
          seq | start_v | node | edge | cost | agg_cost 
         -----+---------+------+------+------+----------
-           0 |       2 |    2 |    4 |    1 |        0
-           1 |       2 |    5 |   -1 |    0 |        1
+           1 |       2 |    2 |    4 |    1 |        0
+           2 |       2 |    5 |   -1 |    0 |        1
         (2 rows)
 
         SELECT * FROM pgr_dijkstra(
@@ -508,8 +530,8 @@ Examples for :ref:`fig3-direct-Cost`
                 );
          seq | end_v | node | edge | cost | agg_cost 
         -----+-------+------+------+------+----------
-           0 |     5 |    2 |    4 |    1 |        0
-           1 |     5 |    5 |   -1 |    0 |        1
+           1 |     5 |    2 |    4 |    1 |        0
+           2 |     5 |    5 |   -1 |    0 |        1
         (2 rows)
 
         SELECT * FROM pgr_dijkstra(
@@ -518,15 +540,17 @@ Examples for :ref:`fig3-direct-Cost`
                 );
          seq | start_v | end_v | node | edge | cost | agg_cost 
         -----+---------+-------+------+------+------+----------
-           0 |       2 |     5 |    2 |    4 |    1 |        0
-           1 |       2 |     5 |    5 |   -1 |    0 |        1
+           1 |       2 |     5 |    2 |    4 |    1 |        0
+           2 |       2 |     5 |    5 |   -1 |    0 |        1
         (2 rows)
         
 
 
 
-Examples for :ref:`fig4-undirect-Cost` 
--------------------------------------------------------------------------------
+Examples for queries marked as ``undirected`` with ``cost`` column
+----------------------------------------------------------------------------------------
+
+The examples in this section use the following :ref:`fig4`
 
 .. code-block:: sql
 
@@ -537,10 +561,10 @@ Examples for :ref:`fig4-undirect-Cost`
 		);
         seq | node | edge | cost | agg_cost 
        -----+------+------+------+----------
-          0 |    2 |    4 |    1 |        0
-          1 |    5 |    8 |    1 |        1
-          2 |    6 |    5 |    1 |        2
-          3 |    3 |   -1 |    0 |        3
+          1 |    2 |    4 |    1 |        0
+          2 |    5 |    8 |    1 |        1
+          3 |    6 |    5 |    1 |        2
+          4 |    3 |   -1 |    0 |        3
        (4 rows)
 
 	SELECT * FROM pgr_dijkstra(
@@ -550,8 +574,8 @@ Examples for :ref:`fig4-undirect-Cost`
 		);
         seq | node | edge | cost | agg_cost 
        -----+------+------+------+----------
-          0 |    2 |    4 |    1 |        0
-          1 |    5 |   -1 |    0 |        1
+          1 |    2 |    4 |    1 |        0
+          2 |    5 |   -1 |    0 |        1
        (2 rows)
 
 	SELECT * FROM pgr_dijkstra(
@@ -561,9 +585,9 @@ Examples for :ref:`fig4-undirect-Cost`
 		);
         seq | node | edge | cost | agg_cost 
        -----+------+------+------+----------
-          0 |   11 |   11 |    1 |        0
-          1 |    6 |    5 |    1 |        1
-          2 |    3 |   -1 |    0 |        2
+          1 |   11 |   11 |    1 |        0
+          2 |    6 |    5 |    1 |        1
+          3 |    3 |   -1 |    0 |        2
        (3 rows)
 
 	SELECT * FROM pgr_dijkstra(
@@ -573,9 +597,9 @@ Examples for :ref:`fig4-undirect-Cost`
 		);
         seq | node | edge | cost | agg_cost 
        -----+------+------+------+----------
-          0 |   11 |   11 |    1 |        0
-          1 |    6 |    8 |    1 |        1
-          2 |    5 |   -1 |    0 |        2
+          1 |   11 |   11 |    1 |        0
+          2 |    6 |    8 |    1 |        1
+          3 |    5 |   -1 |    0 |        2
        (3 rows)
 
        
@@ -586,11 +610,11 @@ Examples for :ref:`fig4-undirect-Cost`
 		);
         seq | start_v | node | edge | cost | agg_cost 
        -----+---------+------+------+------+----------
-          0 |       2 |    2 |    4 |    1 |        0
-          1 |       2 |    5 |   -1 |    0 |        1
-          2 |      11 |   11 |   11 |    1 |        0
-          3 |      11 |    6 |    8 |    1 |        1
-          4 |      11 |    5 |   -1 |    0 |        2
+          1 |       2 |    2 |    4 |    1 |        0
+          2 |       2 |    5 |   -1 |    0 |        1
+          1 |      11 |   11 |   11 |    1 |        0
+          2 |      11 |    6 |    8 |    1 |        1
+          3 |      11 |    5 |   -1 |    0 |        2
        (5 rows)
 
 	SELECT * FROM pgr_dijkstra(
@@ -600,12 +624,12 @@ Examples for :ref:`fig4-undirect-Cost`
 		);
         seq | end_v | node | edge | cost | agg_cost 
        -----+-------+------+------+------+----------
-          0 |     3 |    2 |    4 |    1 |        0
-          1 |     3 |    5 |    8 |    1 |        1
-          2 |     3 |    6 |    5 |    1 |        2
-          3 |     3 |    3 |   -1 |    0 |        3
-          4 |     5 |    2 |    4 |    1 |        0
-          5 |     5 |    5 |   -1 |    0 |        1
+          1 |     3 |    2 |    4 |    1 |        0
+          2 |     3 |    5 |    8 |    1 |        1
+          3 |     3 |    6 |    5 |    1 |        2
+          4 |     3 |    3 |   -1 |    0 |        3
+          1 |     5 |    2 |    4 |    1 |        0
+          2 |     5 |    5 |   -1 |    0 |        1
        (6 rows)
 
 	SELECT * FROM pgr_dijkstra(
@@ -615,25 +639,25 @@ Examples for :ref:`fig4-undirect-Cost`
 		);
         seq | start_v | end_v | node | edge | cost | agg_cost 
        -----+---------+-------+------+------+------+----------
-          0 |       2 |     3 |    2 |    4 |    1 |        0
-          1 |       2 |     3 |    5 |    8 |    1 |        1
-          2 |       2 |     3 |    6 |    5 |    1 |        2
-          3 |       2 |     3 |    3 |   -1 |    0 |        3
-          4 |       2 |     5 |    2 |    4 |    1 |        0
-          5 |       2 |     5 |    5 |   -1 |    0 |        1
-          6 |      11 |     3 |   11 |   11 |    1 |        0
-          7 |      11 |     3 |    6 |    5 |    1 |        1
-          8 |      11 |     3 |    3 |   -1 |    0 |        2
-          9 |      11 |     5 |   11 |   11 |    1 |        0
-         10 |      11 |     5 |    6 |    8 |    1 |        1
-         11 |      11 |     5 |    5 |   -1 |    0 |        2
+          1 |       2 |     3 |    2 |    4 |    1 |        0
+          2 |       2 |     3 |    5 |    8 |    1 |        1
+          3 |       2 |     3 |    6 |    5 |    1 |        2
+          4 |       2 |     3 |    3 |   -1 |    0 |        3
+          1 |       2 |     5 |    2 |    4 |    1 |        0
+          2 |       2 |     5 |    5 |   -1 |    0 |        1
+          1 |      11 |     3 |   11 |   11 |    1 |        0
+          2 |      11 |     3 |    6 |    5 |    1 |        1
+          3 |      11 |     3 |    3 |   -1 |    0 |        2
+          1 |      11 |     5 |   11 |   11 |    1 |        0
+          2 |      11 |     5 |    6 |    8 |    1 |        1
+          3 |      11 |     5 |    5 |   -1 |    0 |        2
        (12 rows)
 
 
 
 
-Equivalences for :ref:`fig1-direct-Cost-Reverse` 
--------------------------------------------------------------------------------
+Equvalences between signatures
+------------------------------
 
 .. code-block:: sql
 
@@ -671,12 +695,12 @@ Equivalences for :ref:`fig1-direct-Cost-Reverse`
 
        seq | node | edge | cost | agg_cost 
        -----+------+------+------+----------
-          0 |    2 |    4 |    1 |        0
-          1 |    5 |    8 |    1 |        1
-          2 |    6 |    9 |    1 |        2
-          3 |    9 |   16 |    1 |        3
-          4 |    4 |    3 |    1 |        4
-          5 |    3 |   -1 |    0 |        5
+          1 |    2 |    4 |    1 |        0
+          2 |    5 |    8 |    1 |        1
+          3 |    6 |    9 |    1 |        2
+          4 |    9 |   16 |    1 |        3
+          5 |    4 |    3 |    1 |        4
+          6 |    3 |   -1 |    0 |        5
        (6 rows)
 
 
@@ -695,12 +719,12 @@ Equivalences for :ref:`fig1-direct-Cost-Reverse`
 
        seq | start_v | node | edge | cost | agg_cost 
        -----+---------+------+------+------+----------
-          0 |       2 |    2 |    4 |    1 |        0
-          1 |       2 |    5 |    8 |    1 |        1
-          2 |       2 |    6 |    9 |    1 |        2
-          3 |       2 |    9 |   16 |    1 |        3
-          4 |       2 |    4 |    3 |    1 |        4
-          5 |       2 |    3 |   -1 |    0 |        5
+          1 |       2 |    2 |    4 |    1 |        0
+          2 |       2 |    5 |    8 |    1 |        1
+          3 |       2 |    6 |    9 |    1 |        2
+          4 |       2 |    9 |   16 |    1 |        3
+          5 |       2 |    4 |    3 |    1 |        4
+          6 |       2 |    3 |   -1 |    0 |        5
        (6 rows)
        
 
@@ -718,12 +742,12 @@ Equivalences for :ref:`fig1-direct-Cost-Reverse`
 
         seq | start_v | end_v | node | edge | cost | agg_cost 
        -----+---------+-------+------+------+------+----------
-          0 |       2 |     3 |    2 |    4 |    1 |        0
-          1 |       2 |     3 |    5 |    8 |    1 |        1
-          2 |       2 |     3 |    6 |    9 |    1 |        2
-          3 |       2 |     3 |    9 |   16 |    1 |        3
-          4 |       2 |     3 |    4 |    3 |    1 |        4
-          5 |       2 |     3 |    3 |   -1 |    0 |        5
+          1 |       2 |     3 |    2 |    4 |    1 |        0
+          2 |       2 |     3 |    5 |    8 |    1 |        1
+          3 |       2 |     3 |    6 |    9 |    1 |        2
+          4 |       2 |     3 |    9 |   16 |    1 |        3
+          5 |       2 |     3 |    4 |    3 |    1 |        4
+          6 |       2 |     3 |    3 |   -1 |    0 |        5
        (6 rows)
 
 
@@ -758,8 +782,8 @@ Equivalences for :ref:`fig2-undirect-Cost-Reverse`
 
         seq | node | edge | cost | agg_cost 
        -----+------+------+------+----------
-          0 |    2 |    2 |    1 |        0
-          1 |    3 |   -1 |    0 |        1
+          1 |    2 |    2 |    1 |        0
+          2 |    3 |   -1 |    0 |        1
        (2 rows)
 
 
@@ -771,8 +795,8 @@ Equivalences for :ref:`fig2-undirect-Cost-Reverse`
         );
         seq | end_v | node | edge | cost | agg_cost 
        -----+-------+------+------+------+----------
-          0 |     3 |    2 |    2 |    1 |        0
-          1 |     3 |    3 |   -1 |    0 |        1
+          1 |     3 |    2 |    2 |    1 |        0
+          2 |     3 |    3 |   -1 |    0 |        1
        (2 rows)
 
 
@@ -783,8 +807,8 @@ Equivalences for :ref:`fig2-undirect-Cost-Reverse`
         );
         seq | start_v | node | edge | cost | agg_cost 
        -----+---------+------+------+------+----------
-          0 |       2 |    2 |    2 |    1 |        0
-          1 |       2 |    3 |   -1 |    0 |        1
+          1 |       2 |    2 |    2 |    1 |        0
+          2 |       2 |    3 |   -1 |    0 |        1
        (2 rows)
 
 
@@ -796,8 +820,8 @@ Equivalences for :ref:`fig2-undirect-Cost-Reverse`
 
         seq | start_v | end_v | node | edge | cost | agg_cost 
        -----+---------+-------+------+------+------+----------
-          0 |       2 |     3 |    2 |    2 |    1 |        0
-          1 |       2 |     3 |    3 |   -1 |    0 |        1
+          1 |       2 |     3 |    2 |    2 |    1 |        0
+          2 |       2 |     3 |    3 |   -1 |    0 |        1
        (2 rows)
 
 

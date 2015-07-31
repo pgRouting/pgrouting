@@ -93,11 +93,11 @@ This table is used in some of our examples
 
 .. rubric:: Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost`` columns are used:
 
-.. _fig1-direct-Cost-Reverse:
+.. _fig1:
 
 .. figure:: ../../../src/common/doc/functions/images/Fig1-originalData.png
 
-    Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost`` columns are used
+    *Graph 1: Directed, with cost and reverse cost*
 
 Blue colored lines with line arrows, represent the ``cost`` of the edge table.
 Green colored lines with filled arrows, represent the ``reverse_cost`` of the edge table.
@@ -105,32 +105,29 @@ Green colored lines with filled arrows, represent the ``reverse_cost`` of the ed
 
 .. rubric:: Network for queries marked as ``undirected`` and ``cost`` and ``reverse_cost`` columns are used:
 
-.. _fig2-undirect-Cost-Reverse:
+.. _fig2:
 
 .. figure:: ../../../src/common/doc/functions/images/Fig6-undirected.png
 
-   Network for queries marked as ``undirected`` and ``cost`` and ``reverse_cost`` columns are used
-
-
-
+    *Graph 2: Undirected, with cost and reverse cost*
 
 
 .. rubric:: Network for queries marked as ``directed`` and only ``cost`` column is used:
 
-.. _fig3-direct-Cost:
+.. _fig3:
+
 
 .. figure:: ../../../src/common/doc/functions/images/Fig2-cost.png
 
-   Network for queries marked as ``directed`` and only ``cost`` column is used
-
+    *Graph 3: Directed, with cost*
 
 
 .. rubric:: Network for queries marked as ``undirected`` and only ``cost`` column is used:
 
-.. _fig4-undirect-Cost:
+.. _fig4:
 
 .. figure:: ../../../src/common/doc/functions/images/Fig4-costUndirected.png
 
-   Network for queries marked as ``undirected`` and only ``cost`` column is used
+    *Graph 4: Undirected, with cost*
 
 
