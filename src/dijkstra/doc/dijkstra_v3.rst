@@ -79,7 +79,7 @@ The extra ``start_v`` in the result is used to distinguish to which path it belo
 
 .. rubric:: Dijkstra 1 to many:
 
-This signature performs a Dijkstra from many ``start_v`` to one ``end_v``:
+This signature performs a Dijkstra from one ``start_v`` to many ``end_v``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
@@ -97,7 +97,7 @@ The extra ``end_v`` in the result is used to distinguish to which path it belong
 .. rubric:: Dijkstra many to many:
 
 
-This signature performs a Dijkstra from many ``start_v`` to one ``end_v``:
+This signature performs a Dijkstra from many ``start_v`` to many ``end_v``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
@@ -129,13 +129,13 @@ The weighted directed graph, ``G_d(V,E)``, is definied by:
 
 * the set of edges
 
-  - when ``reverse_cost`` column is used: 
-
-    - ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, reverse_cost >=0)}``
-
   - when ``reverse_cost`` column is *not* used: 
 
     - ``E`` = ``{ (source, target, cost) where cost >=0 }``
+
+  - when ``reverse_cost`` column is used: 
+
+    - ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, reverse_cost) where reverse_cost >=0)}  >=0)}``
 
 This is done transparently using directed Boost.Graph.
 
@@ -149,14 +149,15 @@ The weighted undirected graph, ``G_u(V,E)``, is definied by:
 
 * the set of edges
 
-  - when ``reverse_cost`` column is used:
-
-    - ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, cost >=0)}``  \
-      union ``{ (target, source, reverse_cost) where cost >=0 }``  union ``{ (source, target,  reverse_cost >=0)}``
-
   - when ``reverse_cost`` column is *not* used:
 
-    - ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, cost >=0)}``
+    - ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, cost) where cost >=0)}``
+
+
+  - when ``reverse_cost`` column is used:
+
+    - ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, cost) where cost >=0)}``  \
+      union ``{ (target, source, reverse_cost) where cost >=0 }``  union ``{ (source, target,  reverse_cost) where reverse_cost >=0)}``
 
 This is done transparently using undirected Boost.Graph.
 
@@ -171,7 +172,7 @@ and the starting and ending vertices:
 
 The algorithm returns a path, if it exists, in terms of a sequence of vertices and of edges,
 set of ``(seq, node, edge, cost, agg_cost)``
-which is the shortest path using Dijsktra algorithm between ``start_v`` and ``end_v``, in a
+which is the shortest path using Dijsktra algorithm between ``start_v`` and ``end_v``,
 where ``seq`` indicates the relative position in the path of the ``node`` / ``edge``.
 
   - When ``edge == -1`` it represents the end of the path.
@@ -188,12 +189,7 @@ and the aggregate cost (``agg_cost``) from the ``start_v`` up to the ``node`` is
 Description of the SQL query
 -------------------------------------------------------------------------------
 
-:sql: a SQL query, which should return a set of rows with the following columns:
-
-	.. code-block:: sql
-
-		SELECT id, source, target, cost [,reverse_cost] FROM edge_table
-
+:sql: an SQL query, which should return a set of rows with the following columns:
 
 	:id: ``ANY-INTEGER`` identifier of the edge.
 	:source: ``ANY-INTEGER`` identifier of the source vertex of the edge.
@@ -205,6 +201,12 @@ Where:
 
 :ANY-INTEGER: smallint, int, bigint
 :ANY-NUMERICAL: smallint, int, bigint, real, float
+
+For example:
+
+.. code-block:: sql
+
+    SELECT id, source, target, cost, reverse_cost from edge_table where geom && ST_Expand(ST_SetSRID(ST_Point(45, 34), 4326), 0.1)
 
 
 Description of the parameters of the signatures
@@ -232,6 +234,7 @@ Returns set of ``(seq [, start_v] [, end_v] , node, edge, cost, agg_cost)``
 :agg_cost:  ``FLOAT`` total cost from ``start_v`` to ``node``.
 
 
+// raw:: html
 
 Examples for :ref:`fig1-direct-Cost-Reverse` 
 -------------------------------------------------------------------------------
@@ -261,6 +264,8 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
            0 |    2 |    4 |    1 |        0
            1 |    5 |   -1 |    0 |        1
         (2 rows)
+
+        -- Note how when you pass array is a combined result of the prior two examples
 
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -304,7 +309,8 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
            4 |    5 |   -1 |    0 |        4
         (5 rows)
 
-       
+        -- Some other combinations.
+
         SELECT * FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         array[2,11], 5

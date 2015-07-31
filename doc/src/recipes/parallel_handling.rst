@@ -55,24 +55,25 @@ We ignore the costs because we want all the parallels
 
 .. code-block:: sql
 
-  select seq, id1 as route, id2 as node, id3 as edge into routes
+  select seq, route, node, edge into routes
     from pgr_ksp('select id, source, target, cost, reverse_cost from parallel',
     1, 4, 3);
 
-  select * from routes;
-   seq | route | node | edge 
-  -----+-------+------+------
-     0 |     0 |    1 |    1
-     1 |     0 |    2 |    2
-     2 |     0 |    3 |    5
-     3 |     0 |    4 |   -1
-     4 |     1 |    1 |    1
-     5 |     1 |    2 |    6
-     6 |     1 |    5 |    7
-     7 |     1 |    6 |    8
-     8 |     1 |    3 |    5
-     9 |     1 |    4 |   -1
-  (10 rows)
+  select route, node, edge from routes;
+    route | node | edge 
+   -------+------+------
+        0 |    1 |    1
+        0 |    2 |    2
+        0 |    3 |    5
+        0 |    4 |   -1
+        1 |    1 |    1
+        1 |    2 |    6
+        1 |    5 |    7
+        1 |    6 |    8
+        1 |    3 |    5
+        1 |    4 |   -1
+   (10 rows)
+
 
 .. rubric:: We need an aggregate function:
 
@@ -96,17 +97,18 @@ We ignore the costs because we want all the parallels
        join parallel using (source, target)
     group by seq,route,source,target order by seq;
 
-  ksp_test=# select * from paths;
-   seq | route | source | target |  edges  
-  -----+-------+--------+--------+---------
-     0 |     0 |      1 |      2 | {1}
-     1 |     0 |      2 |      3 | {2,3,4}
-     2 |     0 |      3 |      4 | {5}
-     4 |     1 |      1 |      2 | {1}
-     5 |     1 |      2 |      5 | {6}
-     6 |     1 |      5 |      6 | {7}
-     7 |     1 |      6 |      3 | {8}
-     8 |     1 |      3 |      4 | {5}
+   select route, source, targets, edges from paths;
+     route | source | target |  edges  
+    -------+--------+--------+---------
+         0 |      1 |      2 | {1}
+         1 |      1 |      2 | {1}
+         1 |      2 |      5 | {6}
+         0 |      2 |      3 | {2,3,4}
+         1 |      5 |      6 | {7}
+         0 |      3 |      4 | {5}
+         1 |      6 |      3 | {8}
+         1 |      3 |      4 | {5}
+    (8 rows)
 
 
 .. rubric:: Some more aggregate functions
@@ -216,3 +218,4 @@ To generate a table with all the combinations for parallel routes, we need some 
     17 |     3 |      3 |      4 |    5
     18 |     3 |      4 |     -1 |   -1
   (18 rows)
+

@@ -169,7 +169,7 @@ shortest_path(PG_FUNCTION_ARGS) {
       values = palloc(5 * sizeof(Datum));
       nulls = palloc(5 * sizeof(char));
 
-      values[0] = Int32GetDatum(call_cntr);
+      values[0] = Int32GetDatum(ret_path[call_cntr].seq);
       nulls[0] = ' ';
       values[1] = Int64GetDatum(ret_path[call_cntr].vertex);
       nulls[1] = ' ';

@@ -42,7 +42,7 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id integer, target_id intege
          end if;
       end if;
 
-      return query SELECT seq, route::integer, node::integer, edge::integer, cost 
+      return query SELECT ((row_number() over()) -1)::integer  as seq,  route::integer as id1, node::integer as id2, edge::integer as id3, cost 
             FROM _pgr_ksp(sql::text, source_id, target_id, no_paths, has_reverse, true) where route < no_paths;
   END
   $BODY$

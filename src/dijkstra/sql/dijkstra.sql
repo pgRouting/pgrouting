@@ -59,7 +59,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id bigint, target_id bi
          end if;
       end if;
 
-      return query SELECT seq, node::integer as id1, edge::integer as id2, cost
+      return query SELECT seq-1 as seq, node::integer as id1, edge::integer as id2, cost
                 FROM _pgr_dijkstra(sql, source_id, target_id, directed, has_rcost);
   END
   $BODY$

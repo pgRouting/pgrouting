@@ -1,31 +1,3 @@
-/* 
-   ****************************************************************************
-    pgRouting Manual
-    Copyright(c) pgRouting Contributors
-
-    This documentation is licensed under a Creative Commons Attribution-Share  
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
-   ****************************************************************************
-*/
--- _example_recipe:
-
--- Handling parallels after getting a path (pgr_ksp focus)
--------------------------------------------------------
-
---:Author: pgRouting team.
---:Licence: Open Source
-
-
--- rubric:: The graph
-
--- image:: ./images/parallelImage.png
-
-
--- rubric:: Data
-
--- code-block:: sql
-set client_min_messages = warning;
-
   drop table if exists parallel;
   CREATE TABLE parallel (
     id serial,
@@ -49,37 +21,14 @@ set client_min_messages = warning;
   UPDATE parallel SET cost = ST_length(the_geom), reverse_cost = ST_length(the_geom);
   SELECT pgr_createTopology('parallel',0.001);
 
--- rubric:: pgr_ksp results
 
---We ignore the costs because we want all the parallels
-
--- code-block:: sql
-  drop table if exists routes;
   select seq, route, node, edge into routes
     from pgr_ksp('select id, source, target, cost, reverse_cost from parallel',
     1, 4, 3);
-/*
-  select * from routes;
-   seq | route | node | edge 
-  -----+-------+------+------
-     0 |     0 |    1 |    1
-     1 |     0 |    2 |    2
-     2 |     0 |    3 |    5
-     3 |     0 |    4 |   -1
-     4 |     1 |    1 |    1
-     5 |     1 |    2 |    6
-     6 |     1 |    5 |    7
-     7 |     1 |    6 |    8
-     8 |     1 |    3 |    5
-     9 |     1 |    4 |   -1
-  (10 rows)
-*/
--- rubric:: We need an aggregate function:
 
--- code-block:: sql
+  select route, node, edge from routes;
 
-  DROP AGGREGATE  IF EXISTS array_accum(anyelement); 
-  CREATE AGGREGATE array_accum(anyelement)
+  CREATE AGGREGATE array_accum (anyelement)
   (
     sfunc = array_append,
     stype = anyarray,
@@ -87,45 +36,22 @@ set client_min_messages = warning;
   );
 
 
--- rubric:: Now lets generate a table with the parallel edges.
 
--- code-block:: sql
-
-  drop table if exists paths;
   select distinct seq,route,source,target, array_accum(id) as edges into paths
     from (select seq, route, source, target 
           from parallel, routes where id = edge) as r
        join parallel using (source, target)
     group by seq,route,source,target order by seq;
 
-  select * from paths;
-/*
-   seq | route | source | target |  edges  
-  -----+-------+--------+--------+---------
-     0 |     0 |      1 |      2 | {1}
-     1 |     0 |      2 |      3 | {2,3,4}
-     2 |     0 |      3 |      4 | {5}
-     4 |     1 |      1 |      2 | {1}
-     5 |     1 |      2 |      5 | {6}
-     6 |     1 |      5 |      6 | {7}
-     7 |     1 |      6 |      3 | {8}
-     8 |     1 |      3 |      4 | {5}
-*/
+  select route, source, target, edges from paths;
 
--- rubric:: Some more aggregate functions
-
--- To generate a table with all the combinations for parallel routes, we need some more aggregates
-
--- code-block:: sql
-
-  create or replace function multiply(integer, integer)
+  create or replace function multiply( integer, integer )
   returns integer as
   $$
     select $1 * $2;
   $$
   language sql stable;
 
-  DROP AGGREGATE  IF EXISTS prod(integer);
   create aggregate prod(integer)
   (
     sfunc = multiply,
@@ -133,11 +59,7 @@ set client_min_messages = warning;
     initcond = 1
   );
 
--- rubric:: And a function that "Expands" the table
 
-
-
--- code-block:: sql
 
   CREATE OR REPLACE function   expand_parallel_edge_paths(tab text)
     returns TABLE (
@@ -194,31 +116,6 @@ set client_min_messages = warning;
    $body$
    language plpgsql volatile strict   cost 100 rows 100;
 
--- rubric:: Test it
 
--- code-block:: sql
 
   select * from expand_parallel_edge_paths( 'paths' );
-/*
-   seq | route | source | target | edge 
-  -----+-------+--------+--------+------
-     1 |     0 |      1 |      2 |    1
-     2 |     0 |      2 |      3 |    2
-     3 |     0 |      3 |      4 |    5
-     4 |     0 |      4 |     -1 |   -1
-     5 |     1 |      1 |      2 |    1
-     6 |     1 |      2 |      3 |    3
-     7 |     1 |      3 |      4 |    5
-     8 |     1 |      4 |     -1 |   -1
-     9 |     2 |      1 |      2 |    1
-    10 |     2 |      2 |      3 |    4
-    11 |     2 |      3 |      4 |    5
-    12 |     2 |      4 |     -1 |   -1
-    13 |     3 |      1 |      2 |    1
-    14 |     3 |      2 |      5 |    6
-    15 |     3 |      5 |      6 |    7
-    16 |     3 |      6 |      3 |    8
-    17 |     3 |      3 |      4 |    5
-    18 |     3 |      4 |     -1 |   -1
-  (18 rows)
-*/
