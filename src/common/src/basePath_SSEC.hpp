@@ -85,6 +85,10 @@ class Path {
         int &sequence) const;
 
 
+   void ddPrint(
+        pgr_path_element3_t **ret_path,
+        int &sequence, int routeId) const;
+
    void dpPrint(
         pgr_path_element3_t **ret_path,
         int &sequence, int routeId) const;

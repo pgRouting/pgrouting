@@ -146,6 +146,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
     }
   }
 
+/* used by driving distance */
+   void Path::ddPrint(
+        pgr_path_element3_t **ret_path,
+        int &sequence, int routeId) const {
+
+    for (unsigned int i = 0; i < path.size(); i++) {
+      (*ret_path)[sequence] = path[i];
+      (*ret_path)[sequence].from = (uint64_t)routeId;
+      sequence++;
+    }
+  }
+
 /* used by ksp */
    void Path::dpPrint(
         pgr_path_element3_t **ret_path,

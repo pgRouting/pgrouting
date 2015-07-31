@@ -179,7 +179,7 @@ int  do_pgr_driving_distance(pgr_edge_t  *data_edges, int64_t total_tuples,
         *ret_path = pgr_get_memory3(count, (*ret_path));
 
         int sequence = 0;
-        paths.dpPrint(ret_path, sequence, 0);
+        paths.ddPrint(ret_path, sequence, 0);
         *path_count = count;
 
         #if 1
