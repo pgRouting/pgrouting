@@ -1,18 +1,18 @@
-..
+.. 
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share
+    This documentation is licensed under a Creative Commons Attribution-Share  
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 .. _pgr_driving_distance_v2:
 
-pgr_drivingDistance (V 2.0)
+pgr_drivingDistance 
 ===============================================================================
 
-.. index::
+.. index:: 
 	single: pgr_drivingDistance(text,integer,double precision,boolean,boolean)
 	module: driving_distance
 
@@ -35,9 +35,10 @@ This function computes a Dijkstra shortest path solution them extracts the cost 
 .. warning:: This signature will be discontinued on version 3.0, Please use it
              without the ``has_rcost`` flag instead:
 
-             ``pgr_dijkstra(text sql, integer source, integer target, boolean directed)``
+             ``pgr_drivingDistance(sql, source, target, distance, directed)``
 
-             See :ref:`pgr_dijkstra_v3`
+             See :ref:`pgr_driving_distance_v3`
+
 
 
 Description
@@ -68,7 +69,14 @@ Returns set of :ref:`type_cost_result`:
 :id2:   edge ID (this is probably not a useful item)
 :cost:  cost to get to this node ID
 
+.. warning::
 
+	You must reconnect to the database after ``CREATE EXTENSION pgrouting``. Otherwise the function will return ``Error computing path: std::bad_alloc``.
+
+
+.. rubric:: History
+
+* Renamed in version 2.0.0
 
 
 Examples
@@ -78,42 +86,37 @@ Examples
 
 .. code-block:: sql
 
-	SELECT seq, id1 AS node, cost
+	SELECT seq, id1 AS node, cost 
 		FROM pgr_drivingDistance(
 			'SELECT id, source, target, cost FROM edge_table',
-			6, 1.5, false, false
+			7, 1.5, false, false
 		);
-         seq | node | cost
-        -----+------+------
-           0 |    3 |    1
-           1 |    5 |    1
-           2 |    6 |    0
-           3 |   11 |    1
-           4 |    9 |    1
-        (5 rows)
+
+	 seq | node | cost 
+	-----+------+------
+	   0 |    7 |    0
+	   1 |    8 |    1
+	(2 rows)
+
 
 * With ``reverse_cost``
 
 .. code-block:: sql
 
-	SELECT seq, id1 AS node, cost
+	SELECT seq, id1 AS node, cost 
 		FROM pgr_drivingDistance(
 			'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 			7, 1.5, true, true
 		);
-         seq | node | cost
-        -----+------+------
-           0 |    7 |    1
-           1 |    8 |    0
-        (2 rows)
 
+	 seq | node | cost 
+	-----+------+------
+	   0 |    7 |    0
+	   1 |    8 |    1
+	(5 rows)
 
 
 The queries use the :ref:`sampledata` network.
-
-.. rubric:: History
-
-* Renamed in version 2.0.0
 
 
 See Also

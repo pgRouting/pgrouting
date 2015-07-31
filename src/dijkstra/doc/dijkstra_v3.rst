@@ -177,6 +177,7 @@ The algorithm returns a path, if it exists, in terms of a sequence of vertices a
 set of ``(seq, node, edge, cost, agg_cost)``
 which is the shortest path using Dijsktra algorithm between ``start_v`` and ``end_v``,
 where ``seq`` indicates the relative position in the path of the ``node`` or ``edge``.
+
   - When ``seq = 1`` then the row represents the begining of the path.
   - When ``edge = -1`` it represents the end of the path.
   - When ``node = end_v`` it represents the end of the path.
@@ -753,7 +754,7 @@ Equvalences between signatures
 
 
 
-Equivalences for :ref:`fig2-undirect-Cost-Reverse` 
+Equivalences  between signatures 
 -------------------------------------------------------------------------------
 
 .. code-block:: sql

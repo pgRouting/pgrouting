@@ -32,6 +32,17 @@ The K shortest path routing algorithm based on Yen's algorithm. "K" is the numbe
   pgr_costResult3[] pgr_ksp(sql text, source integer, target integer,
                            paths integer, has_rcost boolean);
 
+.. warning:: This signature will be discontinued on version 3.0, Please use it
+             without the ``has_rcost`` flag instead.
+             
+               - for undirected graph.
+                 ``pgr_ksp(sql, source, target, distance, directed:=false)``
+               - for directed graph.
+                 ``pgr_ksp(sql, source, target, distance, directed:=true)``
+
+             See :ref:`pgr_ksp_v3`
+
+
 
 Description
 -------------------------------------------------------------------------------

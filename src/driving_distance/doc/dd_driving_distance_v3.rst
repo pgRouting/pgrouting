@@ -102,8 +102,11 @@ Returns set of ``(seq [, start_v], node, edge, cost, agg_cost)``
 
 
 
-Examples for :ref:`fig1-direct-Cost-Reverse`
--------------------------------------------------------------------------------
+Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
+--------------------------------------------------------------------------------------
+
+The examples in this section use the following :ref:`fig1`
+
 
 .. code-block:: sql
 
@@ -188,8 +191,11 @@ Examples for :ref:`fig1-direct-Cost-Reverse`
 
 
 
-Examples for :ref:`fig2-undirect-Cost-Reverse`
--------------------------------------------------------------------------------
+Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
+----------------------------------------------------------------------------------------
+
+The examples in this section use the following :ref:`fig2`
+
 
 .. code-block:: sql
 
@@ -281,8 +287,11 @@ Examples for :ref:`fig2-undirect-Cost-Reverse`
 
 
 
-Examples for :ref:`fig3-direct-Cost`
--------------------------------------------------------------------------------
+Examples for queries marked as ``directed`` with ``cost`` column
+----------------------------------------------------------------------------------------
+
+The examples in this section use the following :ref:`fig3`
+
 
 .. code-block:: sql
 
@@ -343,8 +352,11 @@ Examples for :ref:`fig3-direct-Cost`
 
 
 
-Examples for :ref:`fig4-undirect-Cost`
--------------------------------------------------------------------------------
+Examples for queries marked as ``undirected`` with ``cost`` column
+----------------------------------------------------------------------------------------
+
+The examples in this section use the following :ref:`fig4`
+
 
 .. code-block:: sql
 

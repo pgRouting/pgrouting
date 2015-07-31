@@ -43,7 +43,7 @@
        join parallel using (source, target)
     group by seq,route,source,target order by seq;
 
-  select route, source, target, edges from paths;
+  -- select route, source, target, edges from paths;
 
   create or replace function multiply( integer, integer )
   returns integer as
