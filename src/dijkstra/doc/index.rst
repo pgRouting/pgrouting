@@ -12,12 +12,12 @@
 pgr_dijkstra - Shortest Path Dijkstra
 ===============================================================================
 
-Version 2.x
-------------------
+Version 2.0 (deprecated)
+------------------------
 
   -  :ref:`pgr_dijkstra<pgr_dijkstra_v2>` - Shortest Path Dijkstra
 
-Version 3.0
+Version 2.1
 ------------------
 
   -  :ref:`pgr_dijkstra<pgr_dijkstra_v3>` - Shortest Path Dijkstra

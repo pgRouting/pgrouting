@@ -13,13 +13,13 @@ Driving Distance
 ===============================================================================
 
 
-Version 2.x
-------------------
+Version 2.0 (deprecated)
+------------------------
 
   - :ref:`pgr_driving_distance<pgr_driving_distance_v2>` - Driving Distance
 
 
-Version 3.x
+Version 2.1
 ------------------
 
   - :ref:`pgr_driving_distance<pgr_driving_distance_v3>` - Driving Distance

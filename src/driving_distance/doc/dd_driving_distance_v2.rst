@@ -9,7 +9,7 @@
 
 .. _pgr_driving_distance_v2:
 
-pgr_drivingDistance 
+pgr_drivingDistance (V2.0)
 ===============================================================================
 
 .. index:: 
@@ -32,10 +32,10 @@ This function computes a Dijkstra shortest path solution them extracts the cost 
 	pgr_costResult[] pgr_drivingDistance(text sql, integer source, double precision distance,
                                       boolean directed, boolean has_rcost);
 
-.. warning:: This signature will be discontinued on version 3.0, Please use it
+.. warning:: This signature is being deprecated on version 2.1, Please use it
              without the ``has_rcost`` flag instead:
 
-             ``pgr_drivingDistance(sql, source, target, distance, directed)``
+             ``pgr_drivingDistance(sql, start_v, distance, directed)``
 
              See :ref:`pgr_driving_distance_v3`
 

@@ -9,7 +9,7 @@
 
 .. _pgr_dijkstra_v3:
 
-pgr_dijkstra (V 3.0) - Shortest Path Dijkstra
+pgr_dijkstra - Shortest Path Dijkstra
 ===============================================================================
 
 .. index:: 

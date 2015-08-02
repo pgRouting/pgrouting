@@ -9,7 +9,7 @@
 
 .. _pgr_driving_distance_v3:
 
-pgr_drivingDistance (V 3.0)
+pgr_drivingDistance
 ===============================================================================
 
 .. index::
@@ -93,7 +93,7 @@ Description of the return values
 
 Returns set of ``(seq [, start_v], node, edge, cost, agg_cost)``
 
-:seq: ``INT``  row sequence
+:seq: ``INT`` row sequence.
 :start_v: ``BIGINT`` id of the starting vertex. Used when multiple starting vetrices are in the query.
 :node: ``BIGINT`` id of the node within the limits from ``start_v``.
 :edge: ``BIGINT`` id of the edge used to arrive to ``node``. ``0`` when the ``node`` is the ``start_v``.

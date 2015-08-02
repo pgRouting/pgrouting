@@ -12,12 +12,12 @@
 pgr_ksp - Multiple shortest Paths based on Dijkstra
 ===============================================================================
 
-Version 2.x
-------------------
+Version 2.0 (deprecated)
+------------------------
 
   -  :ref:`pgr_ksp<pgr_ksp_v2>` - Multiple shortest Paths based on Dijkstra
 
-Version 3.0
+Version 2.1
 ------------------
 
   -  :ref:`pgr_ksp<pgr_ksp_v3>` - Multiple shortest Paths based on Dijkstra

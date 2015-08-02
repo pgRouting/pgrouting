@@ -32,7 +32,7 @@ Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1
 	pgr_costResult[] pgr_dijkstra(text sql, integer source, integer target, 
 	                           boolean directed, boolean has_rcost);
 
-.. warning:: This signature will be discontinued on version 3.0, Please use it
+.. warning:: This signature is being deprecated in version 2.1, Please use it
              without the ``has_rcost`` flag instead:
 
              ``pgr_dijkstra(sql, source, target, directed)``

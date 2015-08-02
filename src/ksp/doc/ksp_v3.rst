@@ -9,7 +9,7 @@
 
 .. _pgr_ksp_v3:
 
-pgr_ksp  (V 3.0) - K-Shortest Path
+pgr_ksp - K-Shortest Path
 ===============================================================================
 
 .. index:: 
@@ -102,8 +102,10 @@ Returns set of ``(seq, route, node, edge, cost, agg_cost)``
 .. warning:: During the transition to 3.0, because pgr_ksp version 2.0 doesn't have defined a directed flag nor a heap_path flag, when pgr_ksp is used with only one flag version 2.0 will be used.
 
 
-Examples to handle the one flag to choose signatures using :ref:`fig1-direct-Cost-Reverse`
+Examples to handle the one flag to choose signatures
 ------------------------------------------------------------------------------------------
+
+The examples in this section use the following :ref:`fig1`
 
 .. code-block:: sql
 
