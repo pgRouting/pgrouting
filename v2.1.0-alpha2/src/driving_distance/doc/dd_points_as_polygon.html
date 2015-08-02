@@ -56,8 +56,8 @@
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>Returns the alpha shape as polygon geometry.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">geometry</span> <span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">);</span>
+<p>Returns the alpha shape as (multi)polygon geometry.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">geometry</span> <span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span> <span class="p">[,</span> <span class="n">float8</span> <span class="n">alpha</span><span class="p">]);</span>
 </pre></div>
 </div>
 </div>
@@ -71,7 +71,7 @@
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">FROM</span> <span class="n">vertex_result</span><span class="p">;</span>
 </pre></div>
 </div>
-<table class="last docutils field-list" frame="void" rules="none">
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -85,25 +85,31 @@
 </table>
 </td>
 </tr>
+<tr class="field-even field"><th class="field-name">alpha:</th><td class="field-body"><p class="first last">(optional) <code class="docutils literal"><span class="pre">float8</span></code> alpha value. If specified alpha value equals 0 (default), then optimal alpha value is used.
+For more information, see <a class="reference external" href="http://doc.cgal.org/latest/Alpha_shapes_2/group__PkgAlphaShape2.html">CGAL - 2D Alpha Shapes</a>.</p>
+</td>
+</tr>
 </tbody>
 </table>
-<p>Returns a polygon geometry.</p>
+<p>Returns a (multi)polygon geometry (with holes).</p>
 <p class="rubric">History</p>
 <ul class="simple">
 <li>Renamed in version 2.0.0</li>
+<li>Added alpha argument with default 0 (use optimal value) in version 2.1.0</li>
+<li>Supported to return a (multi)polygon geometry (with holes) in version 2.1.0</li>
 </ul>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<p>In the following query there is not way to control which point in the polygon is the first in the list, so you may get similar but different results than the following which are also correct. Each of the pgr_pointsAsPolygon queries below is followed by one the compute the area of the polygon. This area should remain constant regardles of the order of the points making up the polygon.</p>
+<p>In the following query there is no way to control which point in the polygon is the first in the list, so you may get similar but different results than the following which are also correct. Each of the pgr_pointsAsPolygon queries below is followed by one the compute the area of the polygon. This area should remain constant regardles of the order of the points making up the polygon.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table&#39;</span><span class="p">));</span>
 
                <span class="n">st_astext</span>
 <span class="c1">----------------------------------------</span>
- <span class="n">POLYGON</span><span class="p">((</span><span class="mi">2</span> <span class="mi">0</span><span class="p">,</span><span class="mi">4</span> <span class="mi">1</span><span class="p">,</span><span class="mi">4</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">,</span><span class="mi">2</span> <span class="mi">4</span><span class="p">,</span><span class="mi">0</span> <span class="mi">2</span><span class="p">,</span><span class="mi">2</span> <span class="mi">0</span><span class="p">))</span>
+ <span class="n">POLYGON</span><span class="p">((</span><span class="mi">2</span> <span class="mi">4</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="mi">2</span><span class="p">,</span><span class="mi">2</span> <span class="mi">4</span><span class="p">))</span>
 <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 
-<span class="k">SELECT</span> <span class="n">round</span><span class="p">(</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table&#39;</span><span class="p">))::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="n">st_area</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="n">round</span><span class="p">(</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table&#39;</span><span class="p">))::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">st_area</span><span class="p">;</span>
 
  <span class="n">st_area</span>
 <span class="c1">---------</span>
@@ -111,15 +117,15 @@
 <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 
 
-<span class="k">SELECT</span> <span class="n">ST_ASText</span><span class="p">(</span><span class="n">pgr_pointsASPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id::integer, st_x(the_geom)::float as x, st_y(the_geom)::float as y</span>
+<span class="k">SELECT</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y</span>
 <span class="s1">                                      FROM edge_table_vertices_pgr&#39;</span><span class="p">));</span>
                     <span class="n">st_astext</span>
 <span class="c1">----------------------------------------------------------</span>
- <span class="n">POLYGON</span><span class="p">((</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span> <span class="mi">3</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span> <span class="mi">2</span><span class="p">,</span><span class="mi">2</span> <span class="mi">0</span><span class="p">,</span><span class="mi">4</span> <span class="mi">1</span><span class="p">,</span><span class="mi">4</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">.</span><span class="mi">5</span> <span class="mi">4</span><span class="p">,</span><span class="mi">2</span> <span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span> <span class="mi">3</span><span class="p">.</span><span class="mi">5</span><span class="p">))</span>
+ <span class="n">POLYGON</span><span class="p">((</span><span class="mi">2</span> <span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">.</span><span class="mi">5</span> <span class="mi">4</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span> <span class="mi">3</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span> <span class="mi">4</span><span class="p">))</span>
 <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 
-<span class="k">SELECT</span> <span class="n">round</span><span class="p">(</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_pointsASPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id::integer, st_x(the_geom)::float as x, st_y(the_geom)::float as y</span>
-<span class="s1">     FROM edge_table_vertices_pgr&#39;</span><span class="p">))::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="n">st_area</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="n">round</span><span class="p">(</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y</span>
+<span class="s1">     FROM edge_table_vertices_pgr&#39;</span><span class="p">))::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">st_area</span><span class="p">;</span>
 
  <span class="n">st_area</span>
 <span class="c1">---------</span>

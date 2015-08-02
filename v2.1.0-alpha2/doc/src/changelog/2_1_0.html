@@ -81,19 +81,20 @@
 <li>pgr_drivingDistance</li>
 </ul>
 </li>
-<li><p class="first">Impreved
-Alphashape function now can generate better polygons with holes and custom parameter</p>
+<li><p class="first">Improved
+- Alphashape function now can generate better (multi)polygon with holes and alpha parameter.</p>
 </li>
 <li><p class="first">Instead of generating many libraries:
 - All functions are encapsulated in one library
 - The library has a the prefix 2-1-0</p>
 </li>
-<li><p class="first">Added proposed functions to be evaluated:
-- Proposed functions from Steve Woodbridge, (Classified as Convinience by the author.)
-- pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge.
-- pgr_flipEdges - flip the edges in an array of geometries so the connect end to end.</p>
+<li><p class="first">Added proposed functions to be evaluated:</p>
+<ul>
+<li><p class="first">Proposed functions from Steve Woodbridge, (Classified as Convinience by the author.)</p>
 <blockquote>
 <div><ul class="simple">
+<li>pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge.</li>
+<li>pgr_flipEdges - flip the edges in an array of geometries so the connect end to end.</li>
 <li>pgr_textToPoints - convert a string of x,y;x,y;... locations into point geometries.</li>
 <li>pgr_pointsToVids - convert an array of point geometries into vertex ids.</li>
 <li>pgr_pointsToDMatrix - Create a distance matrix from an array of points.</li>
@@ -101,15 +102,12 @@ Alphashape function now can generate better polygons with holes and custom param
 <li>pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id.</li>
 </ul>
 </div></blockquote>
-<ul>
-<li><dl class="first docutils">
-<dt>Added proposed functions from GSoc Projects:</dt>
-<dd><ul class="first last simple">
-<li>pgr_vrppdtw</li>
-</ul>
-</dd>
-</dl>
 </li>
+</ul>
+</li>
+<li><p class="first">Added proposed functions from GSoc Projects:</p>
+<ul class="simple">
+<li>pgr_vrppdtw</li>
 </ul>
 </li>
 <li><p class="first">Removed the 1.x legacy functions</p>
