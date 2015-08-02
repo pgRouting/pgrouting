@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_ksp (V 3.0) - K-Shortest Path &mdash; pgRouting Manual (2.1.0)</title>
+    <title>pgr_ksp - K-Shortest Path &mdash; pgRouting Manual (2.1.0)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -32,7 +32,7 @@
   <body role="document">
       <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
           <span>pgRouting Manual (2.1.0)</span></a></h1>
-        <h2 class="heading"><span>pgr_ksp (V 3.0) - K-Shortest Path</span></h2>
+        <h2 class="heading"><span>pgr_ksp - K-Shortest Path</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
@@ -48,8 +48,8 @@
       <div class="content">
         
         
-  <div class="section" id="pgr-ksp-v-3-0-k-shortest-path">
-<span id="pgr-ksp-v3"></span><h1>pgr_ksp  (V 3.0) - K-Shortest Path<a class="headerlink" href="#pgr-ksp-v-3-0-k-shortest-path" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-ksp-k-shortest-path">
+<span id="pgr-ksp-v3"></span><h1>pgr_ksp - K-Shortest Path<a class="headerlink" href="#pgr-ksp-k-shortest-path" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_ksp</span></code> — Returns the &#8220;K&#8221; shortest paths.</p>
@@ -164,8 +164,9 @@
 <p class="last">During the transition to 3.0, because pgr_ksp version 2.0 doesn&#8217;t have defined a directed flag nor a heap_path flag, when pgr_ksp is used with only one flag version 2.0 will be used.</p>
 </div>
 </div>
-<div class="section" id="examples-to-handle-the-one-flag-to-choose-signatures-using-fig1-direct-cost-reverse">
-<h2>Examples to handle the one flag to choose signatures using <span class="xref std std-ref">fig1-direct-Cost-Reverse</span><a class="headerlink" href="#examples-to-handle-the-one-flag-to-choose-signatures-using-fig1-direct-cost-reverse" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="examples-to-handle-the-one-flag-to-choose-signatures">
+<h2>Examples to handle the one flag to choose signatures<a class="headerlink" href="#examples-to-handle-the-one-flag-to-choose-signatures" title="Permalink to this headline">¶</a></h2>
+<p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig1"><span>Graph 1: Directed, with cost and reverse cost</span></a></p>
 <div class="highlight-sql"><div class="highlight"><pre> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_ksp</span><span class="p">(</span>
    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>
@@ -468,7 +469,7 @@
 
     <div class="footer" role="contentinfo">
         &copy; Copyright pgRouting Contributors - Version 2.1.0 (5fa89b2 develop_2_1_0).
-      Last updated on Jul 31, 2015.
+      Last updated on Aug 02, 2015.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
