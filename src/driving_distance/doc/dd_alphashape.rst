@@ -13,7 +13,7 @@ pgr_alphaShape
 ===============================================================================
 
 .. index:: 
-	single: pgr_alphashape(text)
+	single: pgr_alphashape(text,float8)
 	module: driving_distance
 
 Name
@@ -29,7 +29,7 @@ Returns a table with (x, y) rows that describe the vertices of an alpha shape.
 
 .. code-block:: sql
 
-	table() pgr_alphashape(text sql);
+	table() pgr_alphashape(text sql [, float8 alpha]);
 
 
 Description
@@ -45,17 +45,21 @@ Description
     :x: ``float8`` x-coordinate
     :y: ``float8`` y-coordinate
 
+:alpha: (optional) ``float8`` alpha value. If specified alpha value equals 0 (default), then optimal alpha value is used.
+    For more information, see `CGAL - 2D Alpha Shapes <http://doc.cgal.org/latest/Alpha_shapes_2/group__PkgAlphaShape2.html>`_.
 
-Returns a vertex record for each row :
+Returns a vertex record for each row:
 
 :x: x-coordinate
 :y: y-coordinate
 
+If a result includes multiple outer/inner rings, return those with separator row (x=NULL and y=NULL).
 
 .. rubric:: History
 
 * Renamed in version 2.0.0
-
+* Added alpha argument with default 0 (use optimal value) in version 2.1.0
+* Supported to return multiple outer/inner ring coordinates with separator row (x=NULL and y=NULL) in version 2.1.0
 
 Examples
 -------------------------------------------------------------------------------
@@ -63,23 +67,23 @@ In the alpha shape code we have no way to control the order of the points so the
 
 .. code-block:: sql
 
-    SELECT * FROM pgr_alphashape('SELECT id, x, y FROM vertex_table');
+    SELECT * FROM pgr_alphaShape('SELECT id, x, y FROM vertex_table');
 
      x | y 
     ---+---
+     2 | 4
+     0 | 2
      2 | 0
      4 | 1
      4 | 2
      4 | 3
-     2 | 4
-     0 | 2
     (6 rows)
 
-    SELECT round(st_area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) as st_area
-    from (select st_makeline(points order by id)  as openline from
-    (SELECT st_makepoint(x,y) as points ,row_number() over() AS id 
-    FROM pgr_alphAShape('SELECT id, x, y FROM vertex_table')
-    ) as a) as foo;
+    SELECT round(ST_Area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) AS st_area
+    FROM (SELECT ST_MakeLine(points ORDER BY id) AS openline FROM
+    (SELECT ST_MakePoint(x, y) AS points, row_number() over() AS id
+    FROM pgr_alphaShape('SELECT id, x, y FROM vertex_table')
+    ) AS a) AS foo;
 
      st_area
     ---------
@@ -87,9 +91,10 @@ In the alpha shape code we have no way to control the order of the points so the
     (1 row)
 
 
-    SELECT * FROM pgr_alphAShape('SELECT id::integer, st_x(the_geom)::float as x, st_y(the_geom)::float as y  FROM edge_table_vertices_pgr');
+    SELECT * FROM pgr_alphaShape('SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y FROM edge_table_vertices_pgr');
       x  |  y  
     -----+-----
+       2 |   4
      0.5 | 3.5
        0 |   2
        2 |   0
@@ -97,18 +102,17 @@ In the alpha shape code we have no way to control the order of the points so the
        4 |   2
        4 |   3
      3.5 |   4
-       2 |   4
     (8 rows)
 
-    SELECT round(st_area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) as st_area
-    from (select st_makeline(points order by id)  as openline from
-    (SELECT st_makepoint(x,y) as points ,row_number() over() AS id 
-    FROM pgr_alphAShape('SELECT id::integer, st_x(the_geom)::float as x, st_y(the_geom)::float as y  FROM edge_table_vertices_pgr')
-    ) as a) as foo;
+    SELECT round(ST_Area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) AS st_area
+    FROM (SELECT ST_MakeLine(points ORDER BY id) AS openline FROM
+    (SELECT ST_MakePoint(x, y) AS points, row_number() over() AS id
+    FROM pgr_alphaShape('SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y FROM edge_table_vertices_pgr')
+    ) AS a) AS foo;
 
      st_area
     ---------
-       10.00
+       11.75
     (1 row)
 
  

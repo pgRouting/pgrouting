@@ -42,8 +42,8 @@ Release Notes
    - pgr_ksp
    - pgr_drivingDistance
 
- - Impreved    
-   Alphashape function now can generate better polygons with holes and custom parameter
+ - Improved
+   Alphashape function now can generate better (multi)polygon with holes and alpha parameter.
 
  - Instead of generating many libraries:
    - All functions are encapsulated in one library

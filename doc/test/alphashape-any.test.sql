@@ -1,24 +1,24 @@
 --------------------------------------------------------------------------------
---              PGR_alphAShape
+--              PGR_alphaShape
 --------------------------------------------------------------------------------
 -- testing with areas
---SELECT * FROM pgr_alphAShape('SELECT id, x, y FROM vertex_table');
---SELECT * FROM pgr_alphAShape('SELECT id::integer, st_x(the_geom)::float as x, st_y(the_geom)::float as y  FROM edge_table_vertices_pgr');
+--SELECT * FROM pgr_alphaShape('SELECT id, x, y FROM vertex_table');
+--SELECT * FROM pgr_alphaShape('SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y FROM edge_table_vertices_pgr');
 
-SELECT round(st_area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) as st_area
-from (select st_makeline(points order by id)  as openline from
-(SELECT st_makepoint(x,y) as points ,row_number() over() AS id 
+SELECT round(ST_Area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) AS st_area
+FROM (SELECT ST_MakeLine(points ORDER BY id) AS openline FROM
+(SELECT ST_MakePoint(x, y) AS points, row_number() over() AS id
 
-FROM pgr_alphAShape('SELECT id, x, y FROM vertex_table')
+FROM pgr_alphaShape('SELECT id, x, y FROM vertex_table')
 
-) as a) as foo;
+) AS a) AS foo;
 
 \echo '-----------------------------'
 
-SELECT round(st_area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) as st_area
-from (select st_makeline(points order by id)  as openline from
-(SELECT st_makepoint(x,y) as points ,row_number() over() AS id 
+SELECT round(ST_Area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) AS st_area
+FROM (SELECT ST_MakeLine(points ORDER BY id) AS openline FROM
+(SELECT ST_MakePoint(x, y) AS points, row_number() over() AS id
 
-FROM pgr_alphAShape('SELECT id::integer, st_x(the_geom)::float as x, st_y(the_geom)::float as y  FROM edge_table_vertices_pgr')
+FROM pgr_alphaShape('SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y FROM edge_table_vertices_pgr')
 
-) as a) as foo;
+) AS a) AS foo;
