@@ -26,7 +26,7 @@
 #include <windows.h>
 #endif
 
-#include "astar.h"
+
 #include <boost/config.hpp>
 
 #include <boost/graph/graph_traits.hpp>
@@ -34,6 +34,7 @@
 #include <boost/graph/astar_search.hpp>
 
 #include <cmath>    // for sqrt
+#include "astar.h"
 
 using namespace std;
 using namespace boost;

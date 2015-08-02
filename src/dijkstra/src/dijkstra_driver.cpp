@@ -24,10 +24,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#include "./dijkstra_driver.h"
+
 #include <sstream>
 #include <deque>
 #include <vector>
+#include "./pgr_dijkstra.hpp"
+#include "./dijkstra_driver.h"
 
 extern "C" {
 #include "postgres.h"
@@ -38,7 +40,7 @@ extern "C" {
 
 // #include "./../../common/src/pgr_types.h"
 // #include "./../../common/src/postgres_connection.h"
-#include "./pgr_dijkstra.hpp"
+
 
 int do_pgr_dijkstra_many_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
     int64_t  *start_vertex, int s_len, int64_t  *end_vertex, int e_len,

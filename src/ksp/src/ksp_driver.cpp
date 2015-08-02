@@ -25,12 +25,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
-#include "./ksp_driver.h"
+
 
 #include <deque>
 #include <sstream>
 
+#include <boost/config.hpp>
+#include <boost/graph/adjacency_list.hpp>
 
+#include "./ksp_driver.h"
 extern "C" {
 #if 0
 #include "postgres.h"
@@ -40,8 +43,7 @@ extern "C" {
 #include "./../../common/src/postgres_connection.h"
 }
 
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
+
 
 #include "./pgr_ksp.hpp"
 
