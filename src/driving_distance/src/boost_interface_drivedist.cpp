@@ -24,13 +24,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#include "./boost_interface_drivedist.h"
+
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
 
 #include "unistd.h"
 #include <sstream>
 #include <deque>
 #include <vector>
+
+#include "./boost_interface_drivedist.h"
 
 extern "C" {
 #include "postgres.h"
