@@ -19,7 +19,7 @@ pgr_alphaShape
 Name
 -------------------------------------------------------------------------------
 
-``pgr_alphashape`` — Core function for alpha shape computation.
+``pgr_alphaShape`` — Core function for alpha shape computation.
 
 
 Synopsis
@@ -29,7 +29,7 @@ Returns a table with (x, y) rows that describe the vertices of an alpha shape.
 
 .. code-block:: sql
 
-	table() pgr_alphashape(text sql [, float8 alpha]);
+	table() pgr_alphaShape(text sql [, float8 alpha]);
 
 
 Description
