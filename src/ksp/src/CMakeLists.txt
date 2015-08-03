@@ -24,5 +24,8 @@ if(APPLE)
     PROPERTIES
     LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)
+if(WIN32 AND MSVC)
+    set_target_properties(routing_ksp PROPERTIES PREFIX "lib")
+endif(WIN32 AND MSVC)
 
 install(TARGETS routing_ksp DESTINATION ${LIBRARY_INSTALL_PATH})

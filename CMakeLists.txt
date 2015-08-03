@@ -286,6 +286,10 @@ if(APPLE)
         PROPERTIES
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)
+if(WIN32 AND MSVC)
+    set_target_properties(routing PROPERTIES PREFIX "lib")
+    set_target_properties(routing_bd PROPERTIES PREFIX "lib")
+endif(WIN32 AND MSVC)
 
 #include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
 #if(WIN32)

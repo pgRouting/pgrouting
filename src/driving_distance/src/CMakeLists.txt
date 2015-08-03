@@ -12,5 +12,8 @@ if(APPLE)
         PROPERTIES
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)
+if(WIN32 AND MSVC)
+    set_target_properties(routing_dd PROPERTIES PREFIX "lib")
+endif(WIN32 AND MSVC)
 
 INSTALL(TARGETS routing_dd DESTINATION ${LIBRARY_INSTALL_PATH})
