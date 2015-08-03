@@ -413,7 +413,7 @@ static int compute_trsp(
     //DBG("edgeID: %i SRc:%i - %i, cost: %f", edges[z].id,edges[z].source, edges[z].target,edges[z].cost);      
     
   }
-	
+
   DBG("Min vertex id: %i , Max vid: %i",v_min_id,v_max_id);
   DBG("Total %i edge tuples", total_tuples);
 
@@ -506,6 +506,10 @@ static int compute_trsp(
 
   if (dovertex) {
       DBG("Calling trsp_node_wrapper\n");
+      /** hack always returns 0 -1 when installed on EDB VC++ 64-bit without this **/
+      #if defined(__MINGW64__) 
+        elog(NOTICE,"Calling trsp_node_wrapper\n");
+      #endif
       ret = trsp_node_wrapper(edges, total_tuples, 
                         restricts, total_restrict_tuples,
                         start_id, end_id,
