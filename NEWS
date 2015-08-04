@@ -19,7 +19,7 @@ Changes for 2.1.0
    - pgr_ksp
    - pgr_drivingDistance
 
- - Impreved
+ - Improved
    Alphashape function now can generate better polygons with holes and custom parameter
 
  - Instead of generating many libraries:
