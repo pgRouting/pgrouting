@@ -41,7 +41,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
       execute safesql into rec;
       EXCEPTION
         WHEN OTHERS THEN
-            RAISE EXCEPTION 'Could not excecute query please verify sintax of: '
+            RAISE EXCEPTION 'Could not excecute query please verify syntax of: '
               USING HINT = sql;
     END;
 
