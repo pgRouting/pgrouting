@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_pointsAsPolygon &mdash; pgRouting Manual (2.1.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.1.0 (5fa89b2 develop_2_1_0)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.1.0)" href="../../../doc/index.html" />
+    <link rel="up" title="Driving Distance" href="index.html" />
+    <link rel="next" title="pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra" href="../../kdijkstra/doc/index.html" />
+    <link rel="prev" title="pgr_alphaShape" href="dd_alphashape.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.1.0)</span></a></h1>
+        <h2 class="heading"><span>pgr_pointsAsPolygon</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="dd_alphashape.html">pgr_alphaShape</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../kdijkstra/doc/index.html">pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-pointsaspolygon">
+<span id="pgr-points-as-polygon"></span><h1>pgr_pointsAsPolygon<a class="headerlink" href="#pgr-pointsaspolygon" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">pgr_pointsAsPolygon</span></code> — Draws an alpha shape around given set of points.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Returns the alpha shape as (multi)polygon geometry.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">geometry</span> <span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span> <span class="p">[,</span> <span class="n">float8</span> <span class="n">alpha</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">text</span></code> a SQL query, which should return a set of rows with the following columns:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">FROM</span> <span class="n">vertex_result</span><span class="p">;</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal"><span class="pre">int4</span></code> identifier of the vertex</td>
+</tr>
+<tr class="field-even field"><th class="field-name">x:</th><td class="field-body"><code class="docutils literal"><span class="pre">float8</span></code> x-coordinate</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">y:</th><td class="field-body"><code class="docutils literal"><span class="pre">float8</span></code> y-coordinate</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">alpha:</th><td class="field-body"><p class="first last">(optional) <code class="docutils literal"><span class="pre">float8</span></code> alpha value. If specified alpha value equals 0 (default), then optimal alpha value is used.
+For more information, see <a class="reference external" href="http://doc.cgal.org/latest/Alpha_shapes_2/group__PkgAlphaShape2.html">CGAL - 2D Alpha Shapes</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Returns a (multi)polygon geometry (with holes).</p>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>Renamed in version 2.0.0</li>
+<li>Added alpha argument with default 0 (use optimal value) in version 2.1.0</li>
+<li>Supported to return a (multi)polygon geometry (with holes) in version 2.1.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>In the following query there is no way to control which point in the polygon is the first in the list, so you may get similar but different results than the following which are also correct. Each of the pgr_pointsAsPolygon queries below is followed by one the compute the area of the polygon. This area should remain constant regardles of the order of the points making up the polygon.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table&#39;</span><span class="p">));</span>
+
+               <span class="n">st_astext</span>
+<span class="c1">----------------------------------------</span>
+ <span class="n">POLYGON</span><span class="p">((</span><span class="mi">2</span> <span class="mi">4</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="mi">2</span><span class="p">,</span><span class="mi">2</span> <span class="mi">4</span><span class="p">))</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+<span class="k">SELECT</span> <span class="n">round</span><span class="p">(</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table&#39;</span><span class="p">))::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">st_area</span><span class="p">;</span>
+
+ <span class="n">st_area</span>
+<span class="c1">---------</span>
+   <span class="mi">10</span><span class="p">.</span><span class="mi">00</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+
+<span class="k">SELECT</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y</span>
+<span class="s1">                                      FROM edge_table_vertices_pgr&#39;</span><span class="p">));</span>
+                    <span class="n">st_astext</span>
+<span class="c1">----------------------------------------------------------</span>
+ <span class="n">POLYGON</span><span class="p">((</span><span class="mi">2</span> <span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">.</span><span class="mi">5</span> <span class="mi">4</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span> <span class="mi">3</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span> <span class="mi">4</span><span class="p">))</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+<span class="k">SELECT</span> <span class="n">round</span><span class="p">(</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_pointsAsPolygon</span><span class="p">(</span><span class="s1">&#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y</span>
+<span class="s1">     FROM edge_table_vertices_pgr&#39;</span><span class="p">))::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">st_area</span><span class="p">;</span>
+
+ <span class="n">st_area</span>
+<span class="c1">---------</span>
+   <span class="mi">11</span><span class="p">.</span><span class="mi">75</span>
+</pre></div>
+</div>
+<p>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><span>Sample Data</span></a> network.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="index.html#pgr-driving-distance"><span>Driving Distance</span></a> - Driving Distance</li>
+<li><a class="reference internal" href="dd_alphashape.html#pgr-alphashape"><span>pgr_alphaShape</span></a> - Alpha shape computation</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="dd_alphashape.html">pgr_alphaShape</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../kdijkstra/doc/index.html">pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright pgRouting Contributors - Version 2.1.0 (5fa89b2 develop_2_1_0).
+      Last updated on Aug 17, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
