@@ -60,6 +60,10 @@ For the moment I am deciding for the first one.
 vi warshall_driver.cpp
 	#include "./pgr_warshal.hpp"   (need to code this)
 
+preparing a commit
+cd ../../
+git add warshall
+git commit -a -m 'added warshall directory with connection code'
 
 
 
