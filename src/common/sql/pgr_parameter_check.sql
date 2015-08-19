@@ -46,7 +46,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
     END;
 
     -- checking the fixed columns and data types of the integers
-    IF fn IN ('driving', 'dijkstra', 'ksp') THEN
+    IF fn IN ('driving', 'dijkstra', 'ksp', 'warshall') THEN
       BEGIN
         execute 'select id,source,target,cost  from ('||safesql||') as __b__' into rec;
         EXCEPTION
@@ -56,7 +56,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
       END;
     END IF;
  
-    IF fn IN ('driving', 'dijkstra', 'ksp') THEN
+    IF fn IN ('driving', 'dijkstra', 'ksp', 'warshall') THEN
       execute 'select pg_typeof(id)::text as id_type, pg_typeof(source)::text as source_type, pg_typeof(target)::text as target_type, pg_typeof(cost)::text as cost_type'
             || ' from ('||safesql||') AS __b__ ' into rec;
       if (big) then
@@ -79,7 +79,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
 
     -- Checking the data types of the optional reverse_cost";
     has_rcost := false;
-    IF fn IN ('driving', 'dijkstra', 'ksp') THEN
+    IF fn IN ('driving', 'dijkstra', 'ksp', 'warshall') THEN
       BEGIN
         execute 'select reverse_cost, pg_typeof(reverse_cost)::text as rev_type  from ('||safesql||' ) AS __b__ limit 1 ' into rec1;
         has_rcost := true;
