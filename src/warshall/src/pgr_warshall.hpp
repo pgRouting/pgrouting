@@ -19,6 +19,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
 
+// http://www.cs.rpi.edu/~musser/archive/2005/gsd/restricted/FloydWarshall/FloydWarshall.pdf
+
 #ifndef SRC_WARSHALL_SRC_PGR_WARSHALL_H_
 #define SRC_WARSHALL_SRC_PGR_WARSHALL_H_
 
@@ -44,8 +46,6 @@ template < class G >
 class Pgr_warshall
   :public Pgr_base_graph<G> {
 
-	//BOOST_CONCEPT_ASSERT(( VertexListGraphConcept<G> ));
-	//BOOST_CONCEPT_ASSERT(( EdgeListGraphConcept<G> ));
 
  public:
     //! \brief the constructor
@@ -65,23 +65,80 @@ class Pgr_warshall
           this->graph_insert_data(data_edges, count);
     }
 
-    void
-    warshall(std::deque<Path> &paths) {
-        typedef typename boost::graph_traits < G >::vertex_descriptor V;
 
-        std::vector < float > d(boost::num_vertices(this->graph), (std::numeric_limits < float >::max)());
-        float DMatrix[boost::num_vertices(this->graph)][boost::num_vertices(this->graph)];
-        std::map< V, std::map<V, float> > Dmatrix;
-#if 1
-        floyd_warshall_all_pairs_shortest_paths(
-                     this->graph,
-                     Dmatrix
-                     );
-#endif
-      // get the results
-      // this->get_path(path, v_source, v_target);
+        /*
+         path_element_t description:
+                int64_t vertex_id; -- used here to store row vertex_id (from_id)
+                int64_t edge_id;   -- used here to store clolumn vertex_id (to_id)
+                float8 cost;       -- the distance between from_id to to_id
+	*/
+    void
+    warshall(path_element_t **result, int64_t &size) {
+	int64_t node_count = boost::num_vertices(this->graph);
+	std::vector< std::vector<double>> Dmatrix(node_count);
+        for(int i = 0; i < node_count; i++) {
+            Dmatrix[i].resize(node_count);
+	}
+
+	warshall(Dmatrix);
+        size = node_count * node_count;
+
+	// The matrix might be very very big
+	// so I will be deleting row by row from the vector
+	#if 0
+	int64_t iRows = 0;
+	int64_t i = 0;
+	while (Dmatrix.begin() != Dmatrix.end()) {
+	    // allocating enough space for the next row
+            if (result == 0) *result = (path_element_t *) malloc(node_count * sizeof(path_element_t));
+            else  *result = (path_element_t *) realloc(result, (iRows + 1) * node_count * sizeof(path_element_t));
+	    int64_t row = Dmatrix.size()-1;   // working form end to beginnig
+	    int64_t column = 0;
+            for(const auto value : Dmatrix.back()) {
+                result[i]->vertex_id = row;
+                result[i]->edge_id = column;
+                result[i]->cost = value;
+                ++column;
+		++i;
+            }
+	    Dmatrix.pop_back();  // reducing the size of the original matrix to make space
+            ++iRows;
+        }
+	#endif
       return;
     }
+
+
+    private:
+    void
+    warshall( std::vector< std::vector<double>> &Dmatrix) {
+
+
+        inf_plus<double> combine;
+	    //bool valid = 
+         boost::floyd_warshall_all_pairs_shortest_paths(
+            this->graph,
+            Dmatrix,
+		    weight_map(get(&boost_edge_t::cost, this->graph)).
+		    // distance_compare(compare).  // leaving the default
+		    distance_combine(combine).
+		    distance_inf(std::numeric_limits<double>::max()).
+		    distance_zero(0));
+
+    }
+
+
+
+
+    template <typename T>
+    struct inf_plus {
+        T operator()(const T& a, const T& b) const {
+            T inf = std::numeric_limits<T>::max();
+            if (a == inf || b == inf)
+                return inf;
+            return a + b;
+        }
+    };
 
 };
 

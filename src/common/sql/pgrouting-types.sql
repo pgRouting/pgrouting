@@ -29,6 +29,12 @@ CREATE TYPE __pgr_2b2f AS (
     tot float8
 );
 
+CREATE TYPE __pgr_2b1f AS (
+    seq integer,
+    id1 bigint,
+    id2 bigint,
+    cost float8
+);
 
 
 CREATE TYPE pgr_costResult AS

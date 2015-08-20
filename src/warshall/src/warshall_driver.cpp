@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
 
-// #define DEBUG
+#define DEBUG
 
 #ifdef __MINGW32__
 #include <winsock2.h>
@@ -46,30 +46,22 @@ int do_pgr_warshall(
     bool directedFlag,        // to choose undirected or directed
 
     // return values
-    pgr_path_element3_t **ret_path,
+    path_element_t **ret_matrix,
     int *path_count,
     char ** err_msg) {
 // function starts
+  std::ostringstream log;
   try {
-#if 0
-    // maybe there is a minimum requirement to execute the algorithm
-    if (total_tuples == 1) {
-      *ret_path = noPathFound3(-1, path_count, (*ret_path));
-      *ret_path = NULL;
-      return 0;
-    }
-#endif
 
     // for logging (usefull when developing, but useless for production)
-    std::ostringstream log;
     log << "My log message 1";
 
-    log << "My log message 2";
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
     const int initial_size = total_tuples;
+    log << "My log message 2";
 
     // where we store the results
-    std::deque< Path >paths;
+    //std::vector< path_element_t > Dmatrix;
     ////////
 
     typedef boost::adjacency_list < boost::vecS, boost::vecS,
@@ -83,54 +75,45 @@ int do_pgr_warshall(
     Pgr_warshall < DirectedGraph > digraph(gType, initial_size);
     Pgr_warshall < UndirectedGraph > undigraph(gType, initial_size);
     
-#if 0    // if the start_vertex and end vertex are arrays use this:
-    std::vector< int64_t > start_vertices(start_vertex, start_vertex + s_len);
-    std::vector< int64_t > end_vertices(end_vertex, end_vertex + e_len);
 
+    int64_t count = 0;
+#if 1
     if (directedFlag) {
       digraph.initialize_graph(data_edges, total_tuples);
-      digraph.dijkstra(paths, start_vertices, end_vertices);
+      log << "directed graph initialized";
+//      digraph.warshall(ret_matrix, count);  // not working yet
+      log << "directed finished";
     } else {
       undigraph.initialize_graph(data_edges, total_tuples);
-      undigraph.dijkstra(paths, start_vertices, end_vertices);
-    }
-    // this shows a combination
-    std::vector< int64_t > start_vertices(start_vertex, start_vertex + s_len);
-#else
-
-    if (directedFlag) {
-      digraph.initialize_graph(data_edges, total_tuples);
-      digraph.warshall(paths);
-    } else {
-      undigraph.initialize_graph(data_edges, total_tuples);
-      undigraph.warshall(paths);
+      log << "undirected graph initialized";
+//      undigraph.warshall(ret_matrix, count);
+      log << "directed finished";
     }
 #endif
 
-    int count(count_tuples(paths));
-
 
     if (count == 0) {
-      *err_msg = strdup(
-        "NOTICE: No paths found between any of the starting vertices and any of the Ending vertices");
-      *ret_path = noPathFound3(-1, path_count, (*ret_path));
-      return 0;
+      //*err_msg = strdup( "NOTICE: No Vertices found??? wiered error");
+      *err_msg = strdup(log.str().c_str());
+      *ret_matrix = NULL;
+      return -1;
     }
 
 
-    *ret_path = pgr_get_memory3(count, (*ret_path)); // getting memory to store the result
-    int sequence(collapse_paths(ret_path, paths));   // store the result
 
 
-#if 1  // change to 0 to send the log to main code
+
+#if 0  // change to 0 to send the log to main code
     *err_msg = strdup("OK");
 #else
     *err_msg = strdup(log.str().c_str());
 #endif
-    *path_count = sequence;
+
+    *path_count = count;
     return EXIT_SUCCESS;
   } catch ( ... ) {
-    *err_msg = strdup("Caught unknown expection!");
+    //*err_msg = strdup("Caught unknown expection!");
+    *err_msg = strdup(log.str().c_str());
     return -1;
   }
 }

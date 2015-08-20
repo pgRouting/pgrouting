@@ -24,20 +24,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 /* adjust to the function needs */
-CREATE OR REPLACE FUNCTION _pgr_warsahll(sql text, directed boolean, has_rcost boolean,
+CREATE OR REPLACE FUNCTION _pgr_warshall(sql text, directed boolean, has_rcost boolean,
   OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float)
   RETURNS SETOF RECORD AS
  '$libdir/librouting-2.1', 'pgr_warshall'  -- must match name in .c file
     LANGUAGE c IMMUTABLE STRICT;
-
--- unfortunately while moving to V3 delete if its new function
--- copy old functions signature or make a new signature using this one as example
--- V2 signature
--- sql: id, source, target, cost
-CREATE OR REPLACE FUNCTION pgr_apspWarshall(sql text, directed boolean, has_reverse_cost boolean)
-    RETURNS SETOF pgr_costResult
-    AS '$libdir/librouting-2.1', 'apsp_warshall'
-    LANGUAGE 'c' IMMUTABLE STRICT;
 
 -- signature
 -- sql: id, source, target, cost, reverse_cost

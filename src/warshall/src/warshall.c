@@ -34,7 +34,7 @@
 #include "./../../common/src/postgres_connection.h"
 #include "./warshall_driver.h"
 
-#ifdef PG_MODULE_MAGIC
+#ifndef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif
 
@@ -51,7 +51,8 @@ static int compute_warshall(
 	char* sql,
 	bool directed,
 	bool has_rcost, // this wil be removed
-        pgr_path_element3_t **path, int *path_count) {
+        path_element_t **matrix,
+	int *path_count) {
 
   int SPIcode = 0;
   pgr_edge_t *edges = NULL;   // id, source, target, cost, reverse_cost
@@ -67,38 +68,17 @@ static int compute_warshall(
                -1, -1);
 
   if (readCode == -1 || total_tuples == 0) {
-    *path = noPathFound3(-1, path_count, (*path));
+    *matrix = NULL;
     PGR_DBG("No edge tuples found");
     pfree(edges);
     return pgr_finish(SPIcode, ret);
   }
 
-#if 0
-  if (total_tuples == 1 
-     && (edges[0].cost < 0 && edges[0].reverse_cost < 0)) {
-    PGR_DBG("One edge with cost == %f and reverse_cost == %f", edges[0].cost, edges[0].reverse_cost );
-    *path = noPathFound3(-1, path_count, (*path));
-    pfree(edges);
-    return pgr_finish(SPIcode, ret);
-  }
-#endif
 
 
   if (total_tuples == 1) {
     PGR_DBG("One edge with cost == %f and reverse_cost == %f", edges[0].cost, edges[0].reverse_cost );
     PGR_DBG("The soruce == %ld and target == %ld", edges[0].source, edges[0].target);
-#if 0
-    if ((edges[0].cost >= 0 && edges[0].source != start_vertex &&  edges[0].target != end_vertex) 
-        ||  (edges[0].reverse_cost >= 0 && edges[0].source != end_vertex &&  edges[0].target != start_vertex)) {
-      PGR_DBG("There must be a solution or empty for undirected");
-    }
-    if (edges[0].cost >= 0 && edges[0].source == start_vertex &&  edges[0].target == end_vertex) { 
-      PGR_DBG("Solution from source to target");
-    }
-    if (edges[0].reverse_cost >= 0 && edges[0].target == start_vertex &&  edges[0].source == end_vertex) { 
-      PGR_DBG("Solution from target to source");
-    }
-#endif
   }
 
 
@@ -108,7 +88,9 @@ static int compute_warshall(
   // fix accordingly
   ret = do_pgr_warshall(edges, total_tuples,
                         directed,                    // no need for rcost flag
-                        path, path_count, &err_msg);
+                        matrix,
+			path_count,
+			&err_msg);
 
   if (ret < 0) {
       ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
@@ -127,14 +109,14 @@ static int compute_warshall(
 change where indicated
 ****/
 
-PG_FUNCTION_INFO_V1(warshall); 
+PG_FUNCTION_INFO_V1(pgr_warshall); 
 Datum
-warshall(PG_FUNCTION_ARGS) {
+pgr_warshall(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
   int                  call_cntr;
   int                  max_calls;
   TupleDesc            tuple_desc;
-  pgr_path_element3_t  *ret_path = 0;  //TODO change to appropiate type
+  path_element_t      *matrix = 0;  //TODO change to appropiate type
 
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL()) {
@@ -153,11 +135,11 @@ warshall(PG_FUNCTION_ARGS) {
       compute_warshall(pgr_text2char(PG_GETARG_TEXT_P(0)), // sql
                                   PG_GETARG_BOOL(1),       // directed
                                   PG_GETARG_BOOL(2),       // has_rcost // to be removed
-				  &ret_path, &path_count); // the return values
+				  &matrix, &path_count); // the return values
 
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;
-      funcctx->user_fctx = ret_path;
+      funcctx->user_fctx = matrix;
 
       funcctx->tuple_desc = BlessTupleDesc(
             RelationNameGetTupleDesc("__pgr_2b1f"));
@@ -171,7 +153,7 @@ warshall(PG_FUNCTION_ARGS) {
   call_cntr = funcctx->call_cntr;
   max_calls = funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
-  ret_path = (pgr_path_element3_t*) funcctx->user_fctx;
+  matrix = (path_element_t*) funcctx->user_fctx;
 
   /* do when there is more left to send */
   if (call_cntr < max_calls) {
@@ -183,13 +165,13 @@ warshall(PG_FUNCTION_ARGS) {
       values = palloc(5 * sizeof(Datum));
       nulls = palloc(5 * sizeof(char));
       //TODO  modify depending on stored values and result values
-      values[0] = Int32GetDatum(ret_path[call_cntr].seq);
+      values[0] = Int32GetDatum(call_cntr);
       nulls[0] = ' ';
-      values[1] = Int64GetDatum(ret_path[call_cntr].from);
+      values[1] = Int64GetDatum(matrix[call_cntr].vertex_id);
       nulls[1] = ' ';
-      values[2] = Int64GetDatum(ret_path[call_cntr].to);
+      values[2] = Int64GetDatum(matrix[call_cntr].edge_id);
       nulls[2] = ' ';
-      values[3] = Float8GetDatum(ret_path[call_cntr].cost);
+      values[3] = Float8GetDatum(matrix[call_cntr].cost);
       nulls[3] = ' ';
 
       tuple = heap_formtuple(tuple_desc, values, nulls);
@@ -204,7 +186,7 @@ warshall(PG_FUNCTION_ARGS) {
       SRF_RETURN_NEXT(funcctx, result);
   } else {
       /* do when there is no more left */
-      if (ret_path) free(ret_path);
+      if (matrix) free(matrix);
       SRF_RETURN_DONE(funcctx);
   }
 }
