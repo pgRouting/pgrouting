@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include "./warshall_driver.h"
-#include "./pgr_warshal.hpp"
+#include "./pgr_warshall.hpp"
 
 extern "C" {
 #include "postgres.h"
@@ -40,7 +40,7 @@ extern "C" {
 }
 
 
-static int do_pgr_warshall(
+int do_pgr_warshall(
     pgr_edge_t  *data_edges,  // array of id, source, target, cost, reverse_cost
     int64_t total_tuples,     // size of data_edges
     bool directedFlag,        // to choose undirected or directed

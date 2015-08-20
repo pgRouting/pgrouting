@@ -185,9 +185,9 @@ warshall(PG_FUNCTION_ARGS) {
       //TODO  modify depending on stored values and result values
       values[0] = Int32GetDatum(ret_path[call_cntr].seq);
       nulls[0] = ' ';
-      values[1] = Int64GetDatum(ret_path[call_cntr].start);
+      values[1] = Int64GetDatum(ret_path[call_cntr].from);
       nulls[1] = ' ';
-      values[2] = Int64GetDatum(ret_path[call_cntr].end);
+      values[2] = Int64GetDatum(ret_path[call_cntr].to);
       nulls[2] = ' ';
       values[3] = Float8GetDatum(ret_path[call_cntr].cost);
       nulls[3] = ' ';

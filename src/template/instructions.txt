@@ -66,6 +66,31 @@ git add warshall
 git commit -a -m 'added warshall directory with connection code'
 
 
+Codded pgr_warshall
+
+vi CMakelists.txt
+    changed function1 to warshall
+
+vi ../../CMakelists.txt
+   added in alphabetical order
+
+   ADD_SUBDIRECTORY(warshall)
+   LIST(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
+
+
+vi ../../../CMakelists.txt
+
+    174: in alphabetical order:
+    ${PGROUTING_SOURCE_DIR}/src/warshall/src
+
+    261: in alphabetical order
+    add_library(routing-2.1
+
+vi ../sql/CMakelists.txt
+
+
+
+
 
 after release 2.1
 #324

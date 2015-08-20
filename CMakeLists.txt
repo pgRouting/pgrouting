@@ -186,6 +186,7 @@ set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/tsp/src
     ${PGROUTING_SOURCE_DIR}/src/vrp_basic/src
     ${PGROUTING_SOURCE_DIR}/src/vrppdtw/src
+    ${PGROUTING_SOURCE_DIR}/src/warshall/src
 
 # not using C/C++
     ${PGROUTING_SOURCE_DIR}/src/label_graph/src
@@ -273,6 +274,7 @@ add_library(routing-2.1
     $<TARGET_OBJECTS:tsp>
     $<TARGET_OBJECTS:vrp_basic>
     $<TARGET_OBJECTS:vrppdtw>
+    $<TARGET_OBJECTS:warshall>
 
 #not supported but directory exists
 #    $<TARGET_OBJECTS:shooting_star>
@@ -280,10 +282,6 @@ add_library(routing-2.1
 
 install(TARGETS routing-2.1 DESTINATION ${LIBRARY_INSTALL_PATH})
 
-#add_library(routing_vrp
-#add_library(routing_bd
-#add_library(routing_dd
-#add_library(routing
 
 
 if(APPLE)
