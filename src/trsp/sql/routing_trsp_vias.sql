@@ -36,6 +36,8 @@ begin
     end loop;
 
     if lrra then
+        seq := seq + 1;
+        lrr.seq := seq;
         return next lrr;
     end if;
     return;
