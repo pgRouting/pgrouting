@@ -92,6 +92,8 @@ begin
                 if lrr.id2 = rr.id2 then
                     lrr.cost := lrr.cost + rr.cost;
                 else
+                    seq := seq + 1;
+                    lrr.seq := seq;
                     return next lrr;
                     lrr := rr;
                 end if;
@@ -99,6 +101,8 @@ begin
         end loop;
     end loop;
 
+    seq := seq + 1;
+    lrr.seq := seq;
     return next lrr;
     return;
 end;
