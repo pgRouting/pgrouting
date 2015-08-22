@@ -231,58 +231,64 @@ An example query using vertex ids and via points:
 .. code-block:: sql
 
     select * from pgr_trsp(
-        'select eid as id, source::integer, target::integer,cost,
-            reverse_cost from edges1',
-        ARRAY[1,8,13,5]::integer[],     -- array of vids
-        true,  -- directed graph?
-        true,  -- has_reverse_cost?
-        -- include the turn restrictions
-        'select to_cost, teid as target_id, feid || 
-            coalesce('',''||via,'''') as via_path from restrictions1');
+        'select id, source::integer, target::integer,cost,
+            reverse_cost from edge_table',
+        ARRAY[1,8,13,5]::integer[],     
+        true,  
+        true,  
+        
+        'select to_cost, to_edge as target_id, FROM_edge ||
+            coalesce('',''||via,'''') as via_path from restrictions');
 
-     seq | id1 | id2 | cost
+     seq | id1 | id2 | cost 
     -----+-----+-----+------
        1 |   1 |   1 |    1
        2 |   2 |   4 |    1
-       3 |   7 |   8 |    1
-       4 |   8 |   8 |    1
-       5 |   7 |  10 |    1
-       6 |  10 |  14 |    1
-       7 |  13 |  14 |    1
-       8 |  10 |  10 |    1
-       9 |   7 |   7 |    1
-      10 |   6 |   6 |    1
-       4 |   5 |  -1 |    0
-    (11 rows)
+       3 |   5 |   8 |    1
+       4 |   6 |   9 |    1
+       5 |   9 |  16 |    1
+       6 |   4 |   3 |    1
+       7 |   3 |   5 |    1
+       8 |   6 |   8 |    1
+       9 |   5 |   7 |    1
+      10 |   8 |   7 |    1
+      11 |   5 |  10 |    1
+      12 |  10 |  14 |    1
+      13 |  13 |  14 |    1
+      14 |  10 |  10 |    1
+      15 |   5 |  -1 |    0
+    (15 rows)
+
 
 An example query using edge ids and vias:
 
 .. code-block:: sql
 
     select * from pgr_trsp(
-        'select eid as id, source::integer, target::integer,cost,
-             reverse_cost from edges1',
-        ARRAY[1,11,6]::integer[],           -- array of eids
-        ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
-        true,  -- directed graph?
-        true,  -- has_reverse_cost?
-        -- include the turn restrictions
-        'select to_cost, teid as target_id, feid ||
-            coalesce('',''||via,'''') as via_path from restrictions1');
+        'select id, source::integer, target::integer,cost,
+             reverse_cost from edge_table',
+        ARRAY[1,11,6]::integer[],           
+        ARRAY[0.5, 0.5, 0.5]::float8[],     
+        true,  
+        true,  
+        
+        'select to_cost, to_edge as target_id, FROM_edge ||
+            coalesce('',''||via,'''') as via_path from restrictions');
 
-     seq | id1 | id2 | cost
-    -----+-----+-----+------
-       0 |  -1 |   1 |  0.5
-       1 |   2 |   4 |    1
-       2 |   7 |   8 |    1
-       3 |   8 |  11 |    1
-       1 |  11 |  13 |    1
-       2 |  12 |  15 |    1
-       3 |   9 |   9 |    1
-       4 |   8 |   8 |    1
-       5 |   7 |   7 |    1
-       6 |   6 |   6 |  0.5
-    (10 rows)
+      seq | id1 | id2 | cost 
+     -----+-----+-----+------
+        1 |  -1 |   1 |  0.5
+        2 |   2 |   4 |    1
+        3 |   5 |   8 |    1
+        4 |   6 |  11 |    1
+        5 |  11 |  13 |    1
+        6 |  12 |  15 |    1
+        7 |   9 |   9 |    1
+        8 |   6 |   8 |    1
+        9 |   5 |   7 |    1
+       10 |   8 |   6 |  0.5
+     (10 rows)
+
 
 
 The queries use the :ref:`sampledata` network.

@@ -125,8 +125,13 @@ dijkstra_many_to_1(PG_FUNCTION_ARGS) {
       funcctx->max_calls = path_count;
       funcctx->user_fctx = ret_path;
 
-      funcctx->tuple_desc = BlessTupleDesc(
-            RelationNameGetTupleDesc("__pgr_3b2f"));
+      if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+            ereport(ERROR,
+                    (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+                     errmsg("function returning record called in context "
+                            "that cannot accept type record")));
+
+      funcctx->tuple_desc = tuple_desc;
 
       MemoryContextSwitchTo(oldcontext);
   }
@@ -146,21 +151,23 @@ dijkstra_many_to_1(PG_FUNCTION_ARGS) {
       Datum *values;
       char* nulls;
 
-      values = palloc(6 * sizeof(Datum));
-      nulls = palloc(6 * sizeof(char));
+      values = palloc(7 * sizeof(Datum));
+      nulls = palloc(7 * sizeof(char));
       // id, start_v, node, edge, cost, tot_cost
-      values[0] = Int32GetDatum(ret_path[call_cntr].seq);
+      values[0] = Int32GetDatum(call_cntr + 1);
       nulls[0] = ' ';
-      values[1] = Int64GetDatum(ret_path[call_cntr].from);
+      values[1] = Int32GetDatum(ret_path[call_cntr].seq);
       nulls[1] = ' ';
-      values[2] = Int64GetDatum(ret_path[call_cntr].vertex);
+      values[2] = Int64GetDatum(ret_path[call_cntr].from);
       nulls[2] = ' ';
-      values[3] = Int64GetDatum(ret_path[call_cntr].edge);
+      values[3] = Int64GetDatum(ret_path[call_cntr].vertex);
       nulls[3] = ' ';
-      values[4] = Float8GetDatum(ret_path[call_cntr].cost);
+      values[4] = Int64GetDatum(ret_path[call_cntr].edge);
       nulls[4] = ' ';
-      values[5] = Float8GetDatum(ret_path[call_cntr].tot_cost);
+      values[5] = Float8GetDatum(ret_path[call_cntr].cost);
       nulls[5] = ' ';
+      values[6] = Float8GetDatum(ret_path[call_cntr].tot_cost);
+      nulls[6] = ' ';
 
       tuple = heap_formtuple(tuple_desc, values, nulls);
 
