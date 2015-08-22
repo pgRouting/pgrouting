@@ -125,8 +125,13 @@ dijkstra_many_to_1(PG_FUNCTION_ARGS) {
       funcctx->max_calls = path_count;
       funcctx->user_fctx = ret_path;
 
-      funcctx->tuple_desc = BlessTupleDesc(
-            RelationNameGetTupleDesc("__pgr_2i3b2f"));
+      if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+            ereport(ERROR,
+                    (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+                     errmsg("function returning record called in context "
+                            "that cannot accept type record")));
+
+      funcctx->tuple_desc = tuple_desc;
 
       MemoryContextSwitchTo(oldcontext);
   }
