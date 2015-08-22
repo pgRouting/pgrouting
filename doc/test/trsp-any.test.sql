@@ -31,3 +31,25 @@ INSERT INTO restrictions VALUES (3,100,9,16,null);
               FROM_edge || coalesce('','' || via, '''') AS via_path
           FROM restrictions'
            );
+
+select * from pgr_trsp(
+    'select id, source::integer, target::integer,cost,
+        reverse_cost from edge_table',
+    ARRAY[1,8,13,5]::integer[],     -- array of vids
+    true,  -- directed graph?
+    true,  -- has_reverse_cost?
+    -- include the turn restrictions
+    'select to_cost, to_edge as target_id, FROM_edge ||
+        coalesce('',''||via,'''') as via_path from restrictions');
+
+select * from pgr_trsp(
+    'select id, source::integer, target::integer,cost,
+         reverse_cost from edge_table',
+    ARRAY[1,11,6]::integer[],           -- array of eids
+    ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
+    true,  -- directed graph?
+    true,  -- has_reverse_cost?
+    -- include the turn restrictions
+    'select to_cost, to_edge as target_id, FROM_edge ||
+        coalesce('',''||via,'''') as via_path from restrictions');
+
