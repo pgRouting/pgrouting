@@ -65,7 +65,7 @@ This signature performs a Dijkstra from one ``start_v`` to one ``end_v``:
 
 .. rubric:: Dijkstra many to 1:
 
-This signature performs a Dijkstra from many ``start_v`` to one ``end_v``:
+This signature performs a Dijkstra from many ``Start_v`` to one ``end_v``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
@@ -82,7 +82,7 @@ The extra ``start_v`` in the result is used to distinguish to which path it belo
 
 .. rubric:: Dijkstra 1 to many:
 
-This signature performs a Dijkstra from one ``start_v`` to many ``end_v``:
+This signature performs a Dijkstra from one ``start_v`` to many ``End_v``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
@@ -100,7 +100,7 @@ The extra ``end_v`` in the result is used to distinguish to which path it belong
 .. rubric:: Dijkstra many to many:
 
 
-This signature performs a Dijkstra from many ``start_v`` to many ``end_v``:
+This signature performs a Dijkstra from many ``Start_v`` to many ``End_v``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
@@ -120,73 +120,90 @@ The extra ``start_v`` and ``end_v`` in the result is used to distinguish to whic
 The problem definition
 ======================
 
+
+Given the following query:
+
+
+pgr_dijkstra(:math:`sql, start_v, end_v, directed`)
+
+where  :math:`sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}`
+
+and
+
+  - :math:`source = \bigcup source_i`,
+  - :math:`target = \bigcup target_i`,
+
 The graphs are defined as follows:
 
 .. rubric:: Directed graph
 
-The weighted directed graph, ``G_d(V,E)``, is definied by:
+The weighted directed graph, :math:`G_d(V,E)`, is definied by:
 
-* the set of vertices 
+* the set of vertices  :math:`V`
 
-  - ``V`` = ``source`` Union ``target`` Union ``{start_v}`` Union ``{end_v}``
+  - :math:`V = source \cup target \cup {start_v} \cup  {end_v}`
 
-* the set of edges
+* the set of edges :math:`E`
 
-  - when ``reverse_cost`` column is *not* used: 
+  - :math:`E = \begin{cases} &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} &\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} &\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}`
 
-    - ``E`` = ``{ (source, target, cost) where cost >=0 }``
 
-  - when ``reverse_cost`` column is used: 
-
-    - ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, reverse_cost) where reverse_cost >=0)}``
-
-**This is done transparently using directed Boost.Graph**
 
 .. rubric:: Undirected graph
 
-The weighted undirected graph, ``G_u(V,E)``, is definied by:
+The weighted undirected graph, :math:`G_u(V,E)`, is definied by:
 
-* the set of vertices
+* the set of vertices  :math:`V`
 
-  -  ``V`` = ``source`` Union ``target`` Union ``{start_v}`` Union ``{end_v}``
-
-* the set of edges
-
-  - when ``reverse_cost`` column is *not* used:
-
-    - ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, cost) where cost >=0)}``
+  - :math:`V = source \cup target \cup {start_v} \cup  {end_v}`
 
 
-  - when ``reverse_cost`` column is used:
+* the set of edges :math:`E`
 
-    - ``E`` = ``{ (source, target, cost) where cost >=0 }``  union ``{ (target, source, cost) where cost >=0)}``  \
-      union ``{ (target, source, reverse_cost) where cost >=0 }``  union ``{ (source, target,  reverse_cost) where reverse_cost >=0)}``
 
-**This is done transparently using directed Boost.Graph**
+  - :math:`E = \begin{cases} &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, cost_i) \text{ when } cost >=0 \}  &\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} \\ \cup &\{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} &\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}` 
+
+
 
 .. rubric:: The problem
 
-Given a graph:
+Given:
 
-  - ``G(V,E)``  where ``G(V,E) = G_d(V,E)`` or ``G(V,E) = G_u(V,E)``
+  - :math:`start_v \in V` a starting vertex
+  - :math:`end_v \in V` an ending vertex
+  - :math:`G(V,E) = \begin{cases}  G_d(V,E) &\quad \text{ if } directed = true \\ G_u(V,E) &\quad \text{ if } directed = false \\ \end{cases}`
 
-and the starting and ending vertices:
-  - ``start_v`` and ``end_v``
+Then:
 
-The algorithm returns a path, if it exists, in terms of a sequence of vertices and of edges,
-set of ``(seq, node, edge, cost, agg_cost)``
-which is the shortest path using Dijsktra algorithm between ``start_v`` and ``end_v``,
-where ``seq`` indicates the relative position in the path of the ``node`` or ``edge``.
+.. math:: \text{pgr_dijkstra}(sql, start_v, end_v, directed) =
+  \begin{cases} 
+  \text{shortest path } \boldsymbol{\pi} \text{ between } start_v \text{and } end_v &\quad \text{if } \exists  \boldsymbol{\pi}  \\
+  \varnothing &\quad \text{otherwise} \\
+  \end{cases}
 
-  - When ``seq = 1`` then the row represents the begining of the path.
-  - When ``edge = -1`` it represents the end of the path.
-  - When ``node = end_v`` it represents the end of the path.
+:math:`\boldsymbol{\pi} = \{(seq_i, node_i, edge_i, cost_i, agg\_cost_i)\}`
+
+where:
+  - :math:`seq_i = i` 
+  - :math:`seq_{| \pi |} = | \pi |`
+  - :math:`node_i \in V`
+  - :math:`node_1 = start_v`
+  - :math:`node_{| \pi |}  = end_v`
+  - :math:`\forall i \neq | \pi |, \quad (node_i, node_{i+1}, cost_i) \in E`
+  - :math:`edge_i  = \begin{cases}  id_{(node_i, node_{i+1},cost_i)}  &\quad  \text{when } i \neq | \pi | \\ -1 &\quad  \text{when } i = | \pi | \\ \end{cases}`
+  - :math:`cost_i = cost_{(node_i, node_{i+1})}`
+  - :math:`agg\_cost_i  = \begin{cases}  0   &\quad  \text{when } i = 1  \\ \displaystyle\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &\quad  \text{when } i \neq 1 \\ \end{cases}`
+
+
+
+In other words: The algorithm returns a the shortest path between :math:`start_v` and :math:`end_v` , if it exists, in terms of a sequence of nodes  and of edges,
+  - :math:`seq` indicates the relative position in the path of the :math:`node` or :math:`edge`.
+  - :math:`cost` is the cost of the edge to be used to go to the next node.
+  - :math:`agg\_cost` is the cost from the :math:`start_v` up to the node.
 
 
 If there is no path, the resulting set is empty.
 
-Aditional information like the cost (``cost``) of the edge to be used to go to the next node
-and the aggregate cost (``agg_cost``) from the ``start_v`` up to the ``node`` is included.
 
 
 
