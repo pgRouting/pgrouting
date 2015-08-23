@@ -27,7 +27,7 @@ if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	export PATH="${PROJECTS}/rel-libiconv-1.13.1w${OS_BUILD}${GCC_TYPE}/include:${PATH}"
 	GMP_VER=5.1.2
 	MPFR_VER=3.1.2
-	CGAL_VER=4.6.1
+	CGAL_VER=4.2
 	BOOST_VER=1.59.0
 	BOOST_VER_WU=1_59_0
 	BOOST_VER_WUM=1_59
