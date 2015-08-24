@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,16 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgRouting Reference &mdash; pgRouting Manual (2.0.0-dev)</title>
+    <title>pgRouting Reference &mdash; pgRouting Manual (2.1.0)</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.0.0-dev (b0eaca0 costresult3)',
+        VERSION:     '2.1.0 (1e4b40a sequence-fix)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,16 +23,16 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/theme_extras.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.0.0-dev)" href="../index.html" /> 
+    <link rel="top" title="pgRouting Manual (2.1.0)" href="index.html" /> 
   </head>
-  <body>
-      <div class="header"><img class="rightlogo" src="../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
-          <span>pgRouting Manual (2.0.0-dev)</span></a></h1>
+  <body role="document">
+      <div class="header" role="banner"><img class="rightlogo" src="../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
+          <span>pgRouting Manual (2.1.0)</span></a></h1>
         <h2 class="heading"><span>pgRouting Reference</span></h2>
       </div>
-      <div class="topnav">
+      <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
         <a class="uplink" href="index.html">Contents</a>
@@ -50,34 +47,32 @@
 <p>pgRouting extends the <a class="reference external" href="http://postgis.net">PostGIS</a>/<a class="reference external" href="http://postgresql.org">PostgreSQL</a> geospatial database to provide geospatial routing and other network analysis functionality.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="src/introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src/introduction/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src/introduction/support.html">Support</a></li>
 </ul>
 </div>
-<p>pgRouting provides several <a class="reference internal" href="../src/common/doc/index.html#common"><em>common functions</em></a>:</p>
+<p>pgRouting provides several <a class="reference internal" href="../src/common/doc/index.html#common"><span>common functions</span></a>:</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/analyze_graph.html">pgr_analyzeGraph - Analyze a Graph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/analyze_oneway.html">pgr_analyzeOneway - Analyze One Way Streets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/create_topology.html">pgr_createTopology - Building a Network Topology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/is_column_in_table.html">pgr_isColumnInTable - Check if column exists</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/is_column_indexed.html">pgr_isColumnIndexed - Check if column is indexed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/node_network.html">pgr_nodeNetwork - Nodes an network edge table.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/point_to_id.html">pgr_pointToId - Inserts point into a vertices table</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/quote_ident.html">pgr_quote_ident - Quote table name with Schema Component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/version.html">pgr_version - Get version information</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/versionless.html">pgr_versionless - Compare version numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/analyze_graph.html">pgr_analyzeGraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/analyze_oneway.html">pgr_analyzeOneway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/create_topology.html">pgr_createTopology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/create_vert_table.html">pgr_createVerticesTable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/index.html">Topology Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/functions/node_network.html">pgr_nodeNetwork</a></li>
 </ul>
 </div>
-<p>pgRouting defines a few <a class="reference internal" href="../src/common/doc/types.html#common-types"><em>custom data types</em></a>:</p>
+<p>pgRouting defines a few <a class="reference internal" href="../src/common/doc/types/index.html#data-types"><span>custom data types</span></a>:</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/types/cost_result.html">pgr_costResult[] - Path Result with Cost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/types/cost_result.html">pgr_costResult[]</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../src/common/doc/types/cost_result.html#pgr-costresult3-multiple-path-results-with-cost">pgr_costResult3[] - Multiple Path Results with Cost</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/types/geom_result.html">pgr_geomResult[] - Path Result with Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/types/geom_result.html">pgr_geomResult[]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/common/doc/types/index.html">pgRouting Data Types</a></li>
 </ul>
 </div>
 <p>pgRouting functions in alphabetical order:</p>
@@ -90,7 +85,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../src/bd_dijkstra/doc/index.html">pgr_bdDijkstra - Bi-directional Dijkstra Shortest Path</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../src/dijkstra/doc/index.html">pgr_dijkstra - Shortest Path Dijkstra</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../src/kdijkstra/doc/index.html">pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../src/ksp/doc/index.html">pgr_ksp - K-Shortest Path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/ksp/doc/index.html">pgr_ksp - Multiple shortest Paths based on Dijkstra</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../src/tsp/doc/index.html">pgr_tsp - Traveling Sales Person</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../src/trsp/doc/index.html">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a></li>
 </ul>
@@ -98,9 +93,10 @@
 <p>If pgRouting is compiled with &#8220;Driving Distance&#8221; enabled:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../src/driving_distance/doc/dd_alphashape.html">pgr_alphashape - Alpha shape computation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../src/driving_distance/doc/index.html">pgr_drivingDistance - Driving Distance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../src/driving_distance/doc/dd_points_as_polygon.html">pgr_pointsAsPolygon - Polygon around set of points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/driving_distance/doc/dd_alphashape.html">pgr_alphaShape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/driving_distance/doc/index.html">Driving Distance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/driving_distance/doc/index.html#driving-distance-post-processing">Driving Distance post-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../src/driving_distance/doc/dd_points_as_polygon.html">pgr_pointsAsPolygon</a></li>
 </ul>
 </div>
 <p>Some functions from previous releases may have been removed.</p>
@@ -112,7 +108,8 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="src/introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src/introduction/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src/introduction/support.html">Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="src/introduction/support.html">Support</a></li>
 </ul>
 </div>
@@ -120,7 +117,7 @@
 
 
       </div>
-      <div class="bottomnav">
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
         <a class="uplink" href="index.html">Contents</a>
@@ -128,10 +125,10 @@
 
       </div>
 
-    <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (b0eaca0 costresult3).
-      Last updated on Jul 26, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    <div class="footer" role="contentinfo">
+        &copy; Copyright pgRouting Contributors - Version 2.1.0 (1e4b40a sequence-fix).
+      Last updated on Aug 23, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

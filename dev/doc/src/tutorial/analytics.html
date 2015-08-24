@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,16 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Graph Analytics &mdash; pgRouting Manual (2.0.0-dev)</title>
+    <title>Graph Analytics &mdash; pgRouting Manual (2.1.0)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/print.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.0.0-dev (b0eaca0 costresult3)',
+        VERSION:     '2.1.0 (1e4b40a sequence-fix)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,18 +23,19 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../../_static/theme_extras.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.0.0-dev)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.1.0)" href="../../index.html" />
+    <link rel="up" title="Tutorial" href="index.html" />
     <link rel="next" title="Custom Query" href="custom_query.html" />
     <link rel="prev" title="Routing Topology" href="topology.html" /> 
   </head>
-  <body>
-      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.0.0-dev)</span></a></h1>
+  <body role="document">
+      <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.1.0)</span></a></h1>
         <h2 class="heading"><span>Graph Analytics</span></h2>
       </div>
-      <div class="topnav">
+      <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
         «&#160;&#160;<a href="topology.html">Routing Topology</a>
@@ -65,35 +63,64 @@
 </table>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>It is common to find problems with graphs that have not been constructed fully noded or in graphs with zlevels at intersection that have been entered incorrectly. An other problem is oneway streets that have been entered in the wrong direction. We can not detect errors with respect to &#8220;ground&#8221; truth, but we can look for inconsistencies and some anomalies in a graph and report them for additional inspections.</p>
-<p>We do not current have any visualization tools for these problems, but I have used mapserver to render the graph and highlight potential problem areas. Someone familar with graphviz might contribute tools for generating images with that.</p>
+<p>It is common to find problems with graphs that have not been constructed fully noded or in graphs with z-levels at intersection that have been entered incorrectly. An other problem is one way streets that have been entered in the wrong direction. We can not detect errors with respect to &#8220;ground&#8221; truth, but we can look for inconsistencies and some anomalies in a graph and report them for additional inspections.</p>
+<p>We do not current have any visualization tools for these problems, but I have used mapserver to render the graph and highlight potential problem areas. Someone familiar with graphviz might contribute tools for generating images with that.</p>
 </div>
 <div class="section" id="analyze-a-graph">
 <h2>Analyze a Graph<a class="headerlink" href="#analyze-a-graph" title="Permalink to this headline">¶</a></h2>
-<p>With <a class="reference internal" href="../../../src/common/doc/functions/analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph - Analyze a Graph</em></a> the graph can be checked for errors.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000002</span><span class="p">);</span>
+<p>With <a class="reference internal" href="../../../src/common/doc/functions/analyze_graph.html#pgr-analyze-graph"><span>pgr_analyzeGraph</span></a> the graph can be checked for errors. For example for table &#8220;mytab&#8221; that has &#8220;mytab_vertices_pgr&#8221; as the vertices table:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000002</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">pelase</span> <span class="n">wait</span><span class="p">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="p">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="p">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="p">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="p">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">isolated</span> <span class="n">edges</span><span class="p">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="p">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">ring</span> <span class="n">geometries</span><span class="p">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="p">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">intersections</span><span class="p">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="p">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>              <span class="n">ANALYSIS</span> <span class="n">RESULTS</span> <span class="k">FOR</span> <span class="n">SELECTED</span> <span class="n">EDGES</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>                    <span class="n">Isolated</span> <span class="n">segments</span><span class="p">:</span> <span class="mi">158</span>
+<span class="n">NOTICE</span><span class="p">:</span>                            <span class="n">Dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">20028</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Potential</span> <span class="n">gaps</span> <span class="k">found</span> <span class="n">near</span> <span class="n">dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">527</span>
+<span class="n">NOTICE</span><span class="p">:</span>               <span class="n">Intersections</span> <span class="n">detected</span><span class="p">:</span> <span class="mi">2560</span>
+<span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">pgr_analyzeGraph</span>
+<span class="c1">----------</span>
+   <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>After the analyzing the graph, deadends are indentified by <tt class="docutils literal"><span class="pre">cnt=1</span></tt> in the &#8220;vertices_tmp&#8221; table and potential problems are identified with <tt class="docutils literal"><span class="pre">chk=1</span></tt>.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">vertices_tmp</span> <span class="k">WHERE</span> <span class="n">chk</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<p>In the vertices table &#8220;mytab_vertices_pgr&#8221;:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Deadends are indentified by <code class="docutils literal"><span class="pre">cnt=1</span></code></li>
+<li>Potencial gap problems are identified with <code class="docutils literal"><span class="pre">chk=1</span></code>.</li>
+</ul>
+</div></blockquote>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">deadends</span>  <span class="k">FROM</span> <span class="n">mytab_vertices_pgr</span> <span class="k">WHERE</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">deadends</span>
+<span class="c1">----------</span>
+    <span class="mi">20028</span>
+ <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+<span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">gaps</span>  <span class="k">FROM</span> <span class="n">mytab_vertices_pgr</span> <span class="k">WHERE</span> <span class="n">chk</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+ <span class="n">gaps</span>
+ <span class="c1">-----</span>
+   <span class="mi">527</span>
+ <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If you have isolated road segments, for example, a segment where both ends are deadends. you can find these with the following query:</p>
+<p>For isolated road segments, for example, a segment where both ends are deadends. you can find these with the following query:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span>
-    <span class="k">FROM</span> <span class="n">edge_tab</span> <span class="n">a</span><span class="p">,</span> <span class="n">vertices_tmp</span> <span class="n">b</span><span class="p">,</span> <span class="n">vertices_tmp</span> <span class="k">c</span>
+    <span class="k">FROM</span> <span class="n">mytab</span> <span class="n">a</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="n">b</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="k">c</span>
     <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="k">source</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="n">b</span><span class="p">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span> <span class="k">AND</span> <span class="n">a</span><span class="p">.</span><span class="n">target</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="k">c</span><span class="p">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>If you want to visualize these on a graphic image, then you can use something like mapserver to render the edges and the vertices and style based on <tt class="docutils literal"><span class="pre">cnt</span></tt> or if they are isolated, etc. You can also do this with a tool like graphviz, or geoserver or other similar tools.</p>
+<p>If you want to visualize these on a graphic image, then you can use something like mapserver to render the edges and the vertices and style based on <code class="docutils literal"><span class="pre">cnt</span></code> or if they are isolated, etc. You can also do this with a tool like graphviz, or geoserver or other similar tools.</p>
 </div>
 <div class="section" id="analyze-one-way-streets">
 <h2>Analyze One Way Streets<a class="headerlink" href="#analyze-one-way-streets" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../../../src/common/doc/functions/analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway - Analyze One Way Streets</em></a> analyzes oneway streets in a graph and identifies any flipped segments. Basically if you count the edges coming into a node and the edges exiting a node the number has to be greater than one.</p>
-<p>This query will add two columns to the vertices_tmp table <tt class="docutils literal"><span class="pre">ein</span> <span class="pre">int</span></tt> and <tt class="docutils literal"><span class="pre">eout</span> <span class="pre">int</span></tt> and populate it with the appropriate counts. After running this on a graph you can identify nodes with potential problems with the following query.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">vertices_tmp</span> <span class="k">WHERE</span> <span class="k">in</span><span class="o">=</span><span class="mi">0</span> <span class="k">OR</span> <span class="k">out</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>The rules are defined as an array of text strings that if match the <tt class="docutils literal"><span class="pre">col</span></tt> value would be counted as true for the source or target in or out condition.</p>
+<p><a class="reference internal" href="../../../src/common/doc/functions/analyze_oneway.html#pgr-analyze-oneway"><span>pgr_analyzeOneway</span></a> analyzes one way streets in a graph and identifies any flipped segments. Basically if you count the edges coming into a node and the edges exiting a node the number has to be greater than one.</p>
+<p>This query will add two columns to the vertices_tmp table <code class="docutils literal"><span class="pre">ein</span> <span class="pre">int</span></code> and <code class="docutils literal"><span class="pre">eout</span> <span class="pre">int</span></code> and populate it with the appropriate counts. After running this on a graph you can identify nodes with potential problems with the following query.</p>
+<p>The rules are defined as an array of text strings that if match the <code class="docutils literal"><span class="pre">col</span></code> value would be counted as true for the source or target in or out condition.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
@@ -108,38 +135,38 @@
 </ul>
 </div></blockquote>
 <p>Then we could form the following query to analyze the oneway streets for errors.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="s1">&#39;st&#39;</span><span class="p">,</span> <span class="s1">&#39;one_way&#39;</span><span class="p">,</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span>
             <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
             <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
             <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
             <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
-            <span class="k">true</span><span class="p">);</span>
+            <span class="p">);</span>
 
 <span class="c1">-- now we can see the problem nodes</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">vertices_tmp</span> <span class="k">WHERE</span> <span class="n">ein</span><span class="o">=</span><span class="mi">0</span> <span class="k">OR</span> <span class="n">eout</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">mytab_vertices_pgr</span> <span class="k">WHERE</span> <span class="n">ein</span><span class="o">=</span><span class="mi">0</span> <span class="k">OR</span> <span class="n">eout</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 
 <span class="c1">-- and the problem edges connected to those nodes</span>
-<span class="k">SELECT</span> <span class="n">gid</span> <span class="k">FROM</span> <span class="n">st</span> <span class="n">a</span><span class="p">,</span> <span class="n">vertices_tmp</span> <span class="n">b</span> <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="k">source</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="n">ein</span><span class="o">=</span><span class="mi">0</span> <span class="k">OR</span> <span class="n">eout</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">SELECT</span> <span class="n">gid</span> <span class="k">FROM</span> <span class="n">mytab</span> <span class="n">a</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="n">b</span> <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="k">source</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="n">ein</span><span class="o">=</span><span class="mi">0</span> <span class="k">OR</span> <span class="n">eout</span><span class="o">=</span><span class="mi">0</span>
 <span class="k">UNION</span>
-<span class="k">SELECT</span> <span class="n">gid</span> <span class="k">FROM</span> <span class="n">st</span> <span class="n">a</span><span class="p">,</span> <span class="n">vertices_tmp</span> <span class="n">b</span> <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">target</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="n">ein</span><span class="o">=</span><span class="mi">0</span> <span class="k">OR</span> <span class="n">eout</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="n">gid</span> <span class="k">FROM</span> <span class="n">mytab</span> <span class="n">a</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="n">b</span> <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">target</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="n">ein</span><span class="o">=</span><span class="mi">0</span> <span class="k">OR</span> <span class="n">eout</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Typically these problems are generated by a break in the network, the oneway direction set wrong, maybe an error releted to zlevels or a network that is not properly noded.</p>
-<p>The above tools do not detect all network issues, but they will identify some common problems. There are other problems that are hard to detect because they are more global in nature like multiple disconnected networks. Think of an island with a road network that is not connected to the mainland network because the bridge ot ferry routes are missing.</p>
+<p>Typically these problems are generated by a break in the network, the one way direction set wrong, maybe an error related to z-levels or a network that is not properly noded.</p>
+<p>The above tools do not detect all network issues, but they will identify some common problems. There are other problems that are hard to detect because they are more global in nature like multiple disconnected networks. Think of an island with a road network that is not connected to the mainland network because the bridge or ferry routes are missing.</p>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="../../../src/common/doc/functions/analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph - Analyze a Graph</em></a></li>
-<li><a class="reference internal" href="../../../src/common/doc/functions/analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway - Analyze One Way Streets</em></a></li>
-<li><a class="reference internal" href="../../../src/common/doc/functions/node_network.html#pgr-node-network"><em>pgr_nodeNetwork - Nodes an network edge table.</em></a></li>
+<li><a class="reference internal" href="../../../src/common/doc/functions/analyze_graph.html#pgr-analyze-graph"><span>pgr_analyzeGraph</span></a></li>
+<li><a class="reference internal" href="../../../src/common/doc/functions/analyze_oneway.html#pgr-analyze-oneway"><span>pgr_analyzeOneway</span></a></li>
+<li><a class="reference internal" href="../../../src/common/doc/functions/node_network.html#pgr-node-network"><span>pgr_nodeNetwork</span></a></li>
 </ul>
 </div>
 </div>
 
 
       </div>
-      <div class="bottomnav">
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
         «&#160;&#160;<a href="topology.html">Routing Topology</a>
@@ -151,10 +178,10 @@
 
       </div>
 
-    <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.0.0-dev (b0eaca0 costresult3).
-      Last updated on Jul 26, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    <div class="footer" role="contentinfo">
+        &copy; Copyright pgRouting Contributors - Version 2.1.0 (1e4b40a sequence-fix).
+      Last updated on Aug 23, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>
