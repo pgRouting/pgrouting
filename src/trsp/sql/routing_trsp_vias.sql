@@ -84,19 +84,41 @@ begin
     for i in 1 .. array_length(eids, 1)-1 loop
         seq2 := seq2 + 1;
         for rr in select a.seq, seq2 as id1, a.id1 as id2, a.id2 as id3, a.cost
-                    from pgr_trsp(sql, eids[i], pcts[i], eids[i+1], pcts[i+1], directed, has_reverse_cost, turn_restrict_sql) as a loop
+                    from pgr_trsp(sql,
+                                  eids[i], pcts[i],
+                                  eids[i+1], pcts[i+1],
+                                  directed,
+                                  has_reverse_cost,
+                                  turn_restrict_sql) as a loop
             -- combine intermediate via costs when cost is split across
             -- two parts of a segment because it stops it and
             -- restarts the next leg also on it
             -- we might not want to do this so we can know where the via points are in the path result
             -- but this needs more thought
+            --
+            -- there are multiple condition we have to deal with
+            -- between the end of one leg and start of the next
+            -- 1. same vertex_id. edge_id=-1; drop record with edge_id=-1
+            -- means: path ends on vertex
+            -- NOTICE:  rr: (19,1,44570022,-1,0)
+            -- NOTICE:  rr: (0,2,44570022,1768045,2.89691196717448)
+            -- 2. vertex_id=-1; sum cost components
+            -- means: path end/starts with the segment
+            -- NOTICE:  rr: (11,2,44569628,1775909,9.32885885148532)
+            -- NOTICE:  rr: (0,3,-1,1775909,0.771386350984395)
+
             --raise notice 'rr: %', rr;
             if first then
                 lrr := rr;
                 first := false;
             else
-                if lrr.id3 = rr.id3 then
+                if lrr.id3 = -1 then
+                    lrr := rr;
+                elsif lrr.id3 = rr.id3 then
                     lrr.cost := lrr.cost + rr.cost;
+                    if rr.id2 = -1 then
+                        rr.id2 := lrr.id2;
+                    end if;
                 else
                     seq := seq + 1;
                     lrr.seq := seq;
