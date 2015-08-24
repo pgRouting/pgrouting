@@ -67,12 +67,12 @@
             <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="nb">boolean</span> <span class="p">[,</span><span class="n">restrict_sql</span> <span class="nb">text</span><span class="p">]);</span>
 </pre></div>
 </div>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult3</span><span class="p">[]</span> <span class="n">pgr_trsp_vias</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">vids</span> <span class="nb">integer</span><span class="p">[],</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult3</span><span class="p">[]</span> <span class="n">pgr_trspVia</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">vids</span> <span class="nb">integer</span><span class="p">[],</span>
                 <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_reverse_cost</span> <span class="nb">boolean</span>
                 <span class="p">[,</span> <span class="n">turn_restrict_sql</span> <span class="nb">text</span><span class="p">]);</span>
 </pre></div>
 </div>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult3</span><span class="p">[]</span> <span class="n">pgr_trsp_vias</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">eids</span> <span class="nb">integer</span><span class="p">[],</span> <span class="n">pcts</span> <span class="n">float8</span><span class="p">[],</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult3</span><span class="p">[]</span> <span class="n">pgr_trspVia</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">eids</span> <span class="nb">integer</span><span class="p">[],</span> <span class="n">pcts</span> <span class="n">float8</span><span class="p">[],</span>
                <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_reverse_cost</span> <span class="nb">boolean</span>
                <span class="p">[,</span> <span class="n">turn_restrict_sql</span> <span class="nb">text</span><span class="p">]);</span>
 </pre></div>
@@ -327,15 +327,15 @@
 </pre></div>
 </div>
 <p>An example query using vertex ids and via points:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pgr_trsp_vias</span><span class="p">(</span>
-    <span class="s1">&#39;select id, source::integer, target::integer,cost,</span>
-<span class="s1">        reverse_cost from edge_table&#39;</span><span class="p">,</span>
-    <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">5</span><span class="p">]::</span><span class="nb">integer</span><span class="p">[],</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_trspVia</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source::INTEGER, target::INTEGER, cost,</span>
+<span class="s1">        reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">5</span><span class="p">]::</span><span class="nb">INTEGER</span><span class="p">[],</span>
     <span class="k">true</span><span class="p">,</span>
     <span class="k">true</span><span class="p">,</span>
 
-    <span class="s1">&#39;select to_cost, to_edge as target_id, FROM_edge ||</span>
-<span class="s1">        coalesce(&#39;&#39;,&#39;&#39;||via,&#39;&#39;&#39;&#39;) as via_path from restrictions&#39;</span><span class="p">);</span>
+    <span class="s1">&#39;SELECT to_cost, to_edge AS target_id, FROM_edge ||</span>
+<span class="s1">        coalesce(&#39;&#39;,&#39;&#39;||via,&#39;&#39;&#39;&#39;) AS via_path FROM restrictions&#39;</span><span class="p">);</span>
 
  <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span> <span class="n">id3</span> <span class="o">|</span> <span class="n">cost</span>
 <span class="c1">-----+-----+-----+-----+------</span>
@@ -358,16 +358,16 @@
 </pre></div>
 </div>
 <p>An example query using edge ids and vias:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pgr_trsp_vias</span><span class="p">(</span>
-    <span class="s1">&#39;select id, source::integer, target::integer,cost,</span>
-<span class="s1">         reverse_cost from edge_table&#39;</span><span class="p">,</span>
-    <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">6</span><span class="p">]::</span><span class="nb">integer</span><span class="p">[],</span>
-    <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">]::</span><span class="n">float8</span><span class="p">[],</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_trspVia</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source::INTEGER, target::INTEGER,cost,</span>
+<span class="s1">         reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">6</span><span class="p">]::</span><span class="nb">INTEGER</span><span class="p">[],</span>
+    <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">]::</span><span class="n">FLOAT8</span><span class="p">[],</span>
     <span class="k">true</span><span class="p">,</span>
     <span class="k">true</span><span class="p">,</span>
 
-    <span class="s1">&#39;select to_cost, to_edge as target_id, FROM_edge ||</span>
-<span class="s1">        coalesce(&#39;&#39;,&#39;&#39;||via,&#39;&#39;&#39;&#39;) as via_path from restrictions&#39;</span><span class="p">);</span>
+    <span class="s1">&#39;SELECT to_cost, to_edge AS target_id, FROM_edge ||</span>
+<span class="s1">        coalesce(&#39;&#39;,&#39;&#39;||via,&#39;&#39;&#39;&#39;) AS via_path FROM restrictions&#39;</span><span class="p">);</span>
 
  <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span> <span class="n">id3</span> <span class="o">|</span> <span class="n">cost</span>
 <span class="c1">-----+-----+-----+-----+------</span>
