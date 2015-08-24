@@ -17,8 +17,8 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 	single: pgr_trsp(text,integer,integer,boolean,boolean,text)
 	single: pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean)
 	single: pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
-    single: pgr_trsp_vias(text,integer[],boolean,boolean,text)
-    single: pgr_trsp_vias(text,integer[],float8[],boolean,boolean,text)
+    single: pgr_trspVia(text,integer[],boolean,boolean,text)
+    single: pgr_trspVia(text,integer[],float8[],boolean,boolean,text)
 	module: trsp
 
 Name
@@ -46,13 +46,13 @@ The turn restricted shorthest path (TRSP) is a shortest path algorithm that can 
 
 .. code-block:: sql
 
-    pgr_costResult3[] pgr_trsp_vias(sql text, vids integer[],
+    pgr_costResult3[] pgr_trspVia(sql text, vids integer[],
                     directed boolean, has_reverse_cost boolean
                     [, turn_restrict_sql text]);
 
 .. code-block:: sql
 
-     pgr_costResult3[] pgr_trsp_vias(sql text, eids integer[], pcts float8[],
+     pgr_costResult3[] pgr_trspVia(sql text, eids integer[], pcts float8[],
                     directed boolean, has_reverse_cost boolean
                     [, turn_restrict_sql text]);
 
@@ -231,15 +231,15 @@ An example query using vertex ids and via points:
 
 .. code-block:: sql
 
-    select * from pgr_trsp_vias(
-        'select id, source::integer, target::integer,cost,
-            reverse_cost from edge_table',
-        ARRAY[1,8,13,5]::integer[],     
+    SELECT * FROM pgr_trspVia(
+        'SELECT id, source::INTEGER, target::INTEGER, cost,
+            reverse_cost FROM edge_table',
+        ARRAY[1,8,13,5]::INTEGER[],     
         true,  
         true,  
         
-        'select to_cost, to_edge as target_id, FROM_edge ||
-            coalesce('',''||via,'''') as via_path from restrictions');
+        'SELECT to_cost, to_edge AS target_id, FROM_edge ||
+            coalesce('',''||via,'''') AS via_path FROM restrictions');
 
      seq | id1 | id2 | id3 | cost 
     -----+-----+-----+-----+------
@@ -266,16 +266,16 @@ An example query using edge ids and vias:
 
 .. code-block:: sql
 
-    select * from pgr_trsp_vias(
-        'select id, source::integer, target::integer,cost,
-             reverse_cost from edge_table',
-        ARRAY[1,11,6]::integer[],           
-        ARRAY[0.5, 0.5, 0.5]::float8[],     
+    SELECT * FROM pgr_trspVia(
+        'SELECT id, source::INTEGER, target::INTEGER,cost,
+             reverse_cost FROM edge_table',
+        ARRAY[1,11,6]::INTEGER[],           
+        ARRAY[0.5, 0.5, 0.5]::FLOAT8[],     
         true,  
         true,  
         
-        'select to_cost, to_edge as target_id, FROM_edge ||
-            coalesce('',''||via,'''') as via_path from restrictions');
+        'SELECT to_cost, to_edge AS target_id, FROM_edge ||
+            coalesce('',''||via,'''') AS via_path FROM restrictions');
 
      seq | id1 | id2 | id3 | cost 
     -----+-----+-----+-----+------

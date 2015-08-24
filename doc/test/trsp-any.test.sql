@@ -32,24 +32,25 @@ INSERT INTO restrictions VALUES (3,100,9,16,null);
           FROM restrictions'
            );
 
-select * from pgr_trsp_vias(
-    'select id, source::integer, target::integer,cost,
-        reverse_cost from edge_table',
-    ARRAY[1,8,13,5]::integer[],     -- array of vids
-    true,  -- directed graph?
-    true,  -- has_reverse_cost?
-    -- include the turn restrictions
-    'select to_cost, to_edge as target_id, FROM_edge ||
-        coalesce('',''||via,'''') as via_path from restrictions');
+    SELECT * FROM pgr_trspVia(
+        'SELECT id, source::INTEGER, target::INTEGER, cost,
+            reverse_cost FROM edge_table',
+        ARRAY[1,8,13,5]::INTEGER[],     
+        true,  
+        true,  
+        
+        'SELECT to_cost, to_edge AS target_id, FROM_edge ||
+            coalesce('',''||via,'''') AS via_path FROM restrictions');
 
-select * from pgr_trsp_vias(
-    'select id, source::integer, target::integer,cost,
-         reverse_cost from edge_table',
-    ARRAY[1,11,6]::integer[],           -- array of eids
-    ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
-    true,  -- directed graph?
-    true,  -- has_reverse_cost?
-    -- include the turn restrictions
-    'select to_cost, to_edge as target_id, FROM_edge ||
-        coalesce('',''||via,'''') as via_path from restrictions');
+
+    SELECT * FROM pgr_trspVia(
+        'SELECT id, source::INTEGER, target::INTEGER,cost,
+             reverse_cost FROM edge_table',
+        ARRAY[1,11,6]::INTEGER[],           
+        ARRAY[0.5, 0.5, 0.5]::FLOAT8[],     
+        true,  
+        true,  
+        
+        'SELECT to_cost, to_edge AS target_id, FROM_edge ||
+            coalesce('',''||via,'''') AS via_path FROM restrictions');
 
