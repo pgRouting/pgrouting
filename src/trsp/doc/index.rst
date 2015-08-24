@@ -46,13 +46,13 @@ The turn restricted shorthest path (TRSP) is a shortest path algorithm that can 
 
 .. code-block:: sql
 
-    pgr_costResult[] pgr_trsp(sql text, vids integer[],
+    pgr_costResult3[] pgr_trspVia(sql text, vids integer[],
                     directed boolean, has_reverse_cost boolean
                     [, turn_restrict_sql text]);
 
 .. code-block:: sql
 
-     pgr_costResult[] pgr_trsp(sql text, eids integer[], pcts float8[],
+     pgr_costResult3[] pgr_trspVia(sql text, eids integer[], pcts float8[],
                     directed boolean, has_reverse_cost boolean
                     [, turn_restrict_sql text]);
 
@@ -152,9 +152,10 @@ Another variant of TRSP allows to specify **EDGE id** together with a fraction t
 Returns set of :ref:`type_cost_result`:
 
 :seq:   row sequence
-:id1:   node ID
-:id2:   edge ID (``-1`` for the last row)
-:cost:  cost to traverse from ``id1`` using ``id2``
+:id1:   route ID
+:id2:   node ID
+:id3:   edge ID (``-1`` for the last row)
+:cost:  cost to traverse from ``id2`` using ``id3``
 
 
 .. rubric:: History
@@ -230,7 +231,7 @@ An example query using vertex ids and via points:
 
 .. code-block:: sql
 
-    select * from pgr_trsp(
+    select * from pgr_trspVia(
         'select id, source::integer, target::integer,cost,
             reverse_cost from edge_table',
         ARRAY[1,8,13,5]::integer[],     
@@ -240,31 +241,32 @@ An example query using vertex ids and via points:
         'select to_cost, to_edge as target_id, FROM_edge ||
             coalesce('',''||via,'''') as via_path from restrictions');
 
-     seq | id1 | id2 | cost 
-    -----+-----+-----+------
-       1 |   1 |   1 |    1
-       2 |   2 |   4 |    1
-       3 |   5 |   8 |    1
-       4 |   6 |   9 |    1
-       5 |   9 |  16 |    1
-       6 |   4 |   3 |    1
-       7 |   3 |   5 |    1
-       8 |   6 |   8 |    1
-       9 |   5 |   7 |    1
-      10 |   8 |   7 |    1
-      11 |   5 |  10 |    1
-      12 |  10 |  14 |    1
-      13 |  13 |  14 |    1
-      14 |  10 |  10 |    1
-      15 |   5 |  -1 |    0
+     seq | id1 | id2 | id3 | cost 
+    -----+-----+-----+-----+------
+       1 |   1 |   1 |   1 |    1
+       2 |   1 |   2 |   4 |    1
+       3 |   1 |   5 |   8 |    1
+       4 |   1 |   6 |   9 |    1
+       5 |   1 |   9 |  16 |    1
+       6 |   1 |   4 |   3 |    1
+       7 |   1 |   3 |   5 |    1
+       8 |   1 |   6 |   8 |    1
+       9 |   1 |   5 |   7 |    1
+      10 |   2 |   8 |   7 |    1
+      11 |   2 |   5 |  10 |    1
+      12 |   2 |  10 |  14 |    1
+      13 |   3 |  13 |  14 |    1
+      14 |   3 |  10 |  10 |    1
+      15 |   3 |   5 |  -1 |    0
     (15 rows)
+
 
 
 An example query using edge ids and vias:
 
 .. code-block:: sql
 
-    select * from pgr_trsp(
+    select * from pgr_trspVia(
         'select id, source::integer, target::integer,cost,
              reverse_cost from edge_table',
         ARRAY[1,11,6]::integer[],           
@@ -275,20 +277,19 @@ An example query using edge ids and vias:
         'select to_cost, to_edge as target_id, FROM_edge ||
             coalesce('',''||via,'''') as via_path from restrictions');
 
-      seq | id1 | id2 | cost 
-     -----+-----+-----+------
-        1 |  -1 |   1 |  0.5
-        2 |   2 |   4 |    1
-        3 |   5 |   8 |    1
-        4 |   6 |  11 |    1
-        5 |  11 |  13 |    1
-        6 |  12 |  15 |    1
-        7 |   9 |   9 |    1
-        8 |   6 |   8 |    1
-        9 |   5 |   7 |    1
-       10 |   8 |   6 |  0.5
-     (10 rows)
-
+     seq | id1 | id2 | id3 | cost 
+    -----+-----+-----+-----+------
+       1 |   1 |  -1 |   1 |  0.5
+       2 |   1 |   2 |   4 |    1
+       3 |   1 |   5 |   8 |    1
+       4 |   1 |   6 |  11 |    1
+       5 |   2 |  11 |  13 |    1
+       6 |   2 |  12 |  15 |    1
+       7 |   2 |   9 |   9 |    1
+       8 |   2 |   6 |   8 |    1
+       9 |   2 |   5 |   7 |    1
+      10 |   2 |   8 |   6 |  0.5
+    (10 rows)
 
 
 The queries use the :ref:`sampledata` network.
