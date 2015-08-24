@@ -17,8 +17,8 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 	single: pgr_trsp(text,integer,integer,boolean,boolean,text)
 	single: pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean)
 	single: pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
-    single: pgr_trsp(text,integer[],boolean,boolean,text)
-    single: pgr_trsp(text,integer[],float8[],boolean,boolean,text)
+    single: pgr_trsp_vias(text,integer[],boolean,boolean,text)
+    single: pgr_trsp_vias(text,integer[],float8[],boolean,boolean,text)
 	module: trsp
 
 Name
@@ -46,13 +46,13 @@ The turn restricted shorthest path (TRSP) is a shortest path algorithm that can 
 
 .. code-block:: sql
 
-    pgr_costResult3[] pgr_trspVia(sql text, vids integer[],
+    pgr_costResult3[] pgr_trsp_vias(sql text, vids integer[],
                     directed boolean, has_reverse_cost boolean
                     [, turn_restrict_sql text]);
 
 .. code-block:: sql
 
-     pgr_costResult3[] pgr_trspVia(sql text, eids integer[], pcts float8[],
+     pgr_costResult3[] pgr_trsp_vias(sql text, eids integer[], pcts float8[],
                     directed boolean, has_reverse_cost boolean
                     [, turn_restrict_sql text]);
 
@@ -231,7 +231,7 @@ An example query using vertex ids and via points:
 
 .. code-block:: sql
 
-    select * from pgr_trspVia(
+    select * from pgr_trsp_vias(
         'select id, source::integer, target::integer,cost,
             reverse_cost from edge_table',
         ARRAY[1,8,13,5]::integer[],     
@@ -266,7 +266,7 @@ An example query using edge ids and vias:
 
 .. code-block:: sql
 
-    select * from pgr_trspVia(
+    select * from pgr_trsp_vias(
         'select id, source::integer, target::integer,cost,
              reverse_cost from edge_table',
         ARRAY[1,11,6]::integer[],           
