@@ -22,10 +22,10 @@ export PATH="${PATHOLD}:${PostgreSQL_ROOT}/bin:${PostgreSQL_ROOT}/lib"
 if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	GMP_VER=5.1.2
 	MPFR_VER=3.1.2
-	CGAL_VER=4.2
-	BOOST_VER=1.58.0
-	BOOST_VER_WU=1_58_0
-	BOOST_VER_WUM=1_58
+	CGAL_VER=4.6.1
+	BOOST_VER=1.59.0
+	BOOST_VER_WU=1_59_0
+	BOOST_VER_WUM=1_59
 else 
   GMP_VER=5.1.2
 	MPFR_VER=3.1.2
