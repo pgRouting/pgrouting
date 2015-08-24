@@ -86,9 +86,7 @@ For MinGW on Windows
 	make
 	make install
 
-Also pre-built Windows binaries can be downloaded from:
-
-    http://www.postgis.net/windows_downloads
+Also pre-built Windows binaries can be downloaded from http://.postgis.net/windows_downloads
 
 For Linux
 	
