@@ -38,7 +38,7 @@ The minimal signature:
 .. code-block:: sql
 
   pgr_ksp(TEXT sql_q, BIGINT start_v, BIGINT end_v, INTEGER k);
-    RETURNS SET OF (seq, route, node, edge, cost, agg_cost) or EMPTY SET
+    RETURNS SET OF (seq, path_seq, route, node, edge, cost, agg_cost) or EMPTY SET
 
 The full signature:
 
@@ -46,7 +46,7 @@ The full signature:
 
   pgr_ksp(TEXT sql_q, BIGINT start_v, BIGINT end_v, INTEGER k,
         BOOLEAN directed:=true, BOOLEAN heap_paths:=false);
-    RETURNS SET OF (seq, route, node, edge, cost, agg_cost) or EMPTY SET
+    RETURNS SET OF (seq, path_seq, route, node, edge, cost, agg_cost) or EMPTY SET
 
 
 Description of the SQL query
@@ -91,7 +91,8 @@ Description of the return values
 
 Returns set of ``(seq, route, node, edge, cost, agg_cost)``
 
-:seq: ``INT`` relative position in the path. Has value **1** for the begining of the path.
+:seq: ``INT`` sequential number starting from **1**.
+:path_seq: ``INT`` relative position in the pathi of ``node`` and ``edge``. Has value **1** for the begining of a path.
 :route: ``BIGINT`` route id. The ordering of the routes: For two routes i, j if i < j then agg_cost(i) <= tot_cost(j).
 :node: ``BIGINT`` id of the node in the path from start_v to end_v.
 :edge: ``BIGINT`` id of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the route.
@@ -140,19 +141,19 @@ The examples in this section use the following :ref:`fig1`
       2, 12, 2
    );
 
-   seq | route | node | edge | cost | agg_cost 
-  -----+-------+------+------+------+----------
-     1 |     0 |    2 |    4 |    1 |        0
-     2 |     0 |    5 |    8 |    1 |        1
-     3 |     0 |    6 |    9 |    1 |        2
-     4 |     0 |    9 |   15 |    1 |        3
-     5 |     0 |   12 |   -1 |    0 |        4
-     1 |     1 |    2 |    4 |    1 |        0
-     2 |     1 |    5 |    8 |    1 |        1
-     3 |     1 |    6 |   11 |    1 |        2
-     4 |     1 |   11 |   13 |    1 |        3
-     5 |     1 |   12 |   -1 |    0 |        4
-  
+ 	seq | path_seq | route | node | edge | cost | agg_cost 
+	-----+----------+-------+------+------+------+----------
+	   1 |        1 |     0 |    2 |    4 |    1 |        0
+	   2 |        2 |     0 |    5 |    8 |    1 |        1
+	   3 |        3 |     0 |    6 |    9 |    1 |        2
+	   4 |        4 |     0 |    9 |   15 |    1 |        3
+	   5 |        5 |     0 |   12 |   -1 |    0 |        4
+	   6 |        1 |     1 |    2 |    4 |    1 |        0
+	   7 |        2 |     1 |    5 |    8 |    1 |        1
+	   8 |        3 |     1 |    6 |   11 |    1 |        2
+	   9 |        4 |     1 |   11 |   13 |    1 |        3
+	  10 |        5 |     1 |   12 |   -1 |    0 |        4
+	(10 rows)
 
 
 Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
@@ -167,19 +168,19 @@ The examples in this section use the following :ref:`fig1`
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2
    );
-   seq | route | node | edge | cost | agg_cost 
-  -----+-------+------+------+------+----------
-     1 |     0 |    2 |    4 |    1 |        0
-     2 |     0 |    5 |    8 |    1 |        1
-     3 |     0 |    6 |    9 |    1 |        2
-     4 |     0 |    9 |   15 |    1 |        3
-     5 |     0 |   12 |   -1 |    0 |        4
-     1 |     1 |    2 |    4 |    1 |        0
-     2 |     1 |    5 |    8 |    1 |        1
-     3 |     1 |    6 |   11 |    1 |        2
-     4 |     1 |   11 |   13 |    1 |        3
-     5 |     1 |   12 |   -1 |    0 |        4
-  (10 rows)
+    seq | path_seq | route | node | edge | cost | agg_cost 
+   -----+----------+-------+------+------+------+----------
+      1 |        1 |     0 |    2 |    4 |    1 |        0
+      2 |        2 |     0 |    5 |    8 |    1 |        1
+      3 |        3 |     0 |    6 |    9 |    1 |        2
+      4 |        4 |     0 |    9 |   15 |    1 |        3
+      5 |        5 |     0 |   12 |   -1 |    0 |        4
+      6 |        1 |     1 |    2 |    4 |    1 |        0
+      7 |        2 |     1 |    5 |    8 |    1 |        1
+      8 |        3 |     1 |    6 |   11 |    1 |        2
+      9 |        4 |     1 |   11 |   13 |    1 |        3
+     10 |        5 |     1 |   12 |   -1 |    0 |        4
+   (10 rows)
   
 
    SELECT * FROM pgr_ksp(
@@ -192,24 +193,24 @@ The examples in this section use the following :ref:`fig1`
       2, 12, 2, true, true
    );
 
-   seq | route | node | edge | cost | agg_cost 
-  -----+-------+------+------+------+----------
-     1 |     0 |    2 |    4 |    1 |        0
-     2 |     0 |    5 |    8 |    1 |        1
-     3 |     0 |    6 |    9 |    1 |        2
-     4 |     0 |    9 |   15 |    1 |        3
-     5 |     0 |   12 |   -1 |    0 |        4
-     1 |     1 |    2 |    4 |    1 |        0
-     2 |     1 |    5 |    8 |    1 |        1
-     3 |     1 |    6 |   11 |    1 |        2
-     4 |     1 |   11 |   13 |    1 |        3
-     5 |     1 |   12 |   -1 |    0 |        4
-     1 |     2 |    2 |    4 |    1 |        0
-     2 |     2 |    5 |   10 |    1 |        1
-     3 |     2 |   10 |   12 |    1 |        2
-     4 |     2 |   11 |   13 |    1 |        3
-     5 |     2 |   12 |   -1 |    0 |        4
-  (15 rows)
+    seq | path_seq | route | node | edge | cost | agg_cost 
+   -----+----------+-------+------+------+------+----------
+      1 |        1 |     0 |    2 |    4 |    1 |        0
+      2 |        2 |     0 |    5 |    8 |    1 |        1
+      3 |        3 |     0 |    6 |    9 |    1 |        2
+      4 |        4 |     0 |    9 |   15 |    1 |        3
+      5 |        5 |     0 |   12 |   -1 |    0 |        4
+      6 |        1 |     1 |    2 |    4 |    1 |        0
+      7 |        2 |     1 |    5 |    8 |    1 |        1
+      8 |        3 |     1 |    6 |   11 |    1 |        2
+      9 |        4 |     1 |   11 |   13 |    1 |        3
+     10 |        5 |     1 |   12 |   -1 |    0 |        4
+     11 |        1 |     2 |    2 |    4 |    1 |        0
+     12 |        2 |     2 |    5 |   10 |    1 |        1
+     13 |        3 |     2 |   10 |   12 |    1 |        2
+     14 |        4 |     2 |   11 |   13 |    1 |        3
+     15 |        5 |     2 |   12 |   -1 |    0 |        4
+   (15 rows)
 
 
 Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
@@ -224,20 +225,20 @@ The examples in this section use the following :ref:`fig2`
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2, directed:=false
    );
-   seq | route | node | edge | cost | agg_cost 
-  -----+-------+------+------+------+----------
-     1 |     0 |    2 |    2 |    1 |        0
-     2 |     0 |    3 |    3 |    1 |        1
-     3 |     0 |    4 |   16 |    1 |        2
-     4 |     0 |    9 |   15 |    1 |        3
-     5 |     0 |   12 |   -1 |    0 |        4
-     1 |     1 |    2 |    4 |    1 |        0
-     2 |     1 |    5 |    8 |    1 |        1
-     3 |     1 |    6 |    9 |    1 |        2
-     4 |     1 |    9 |   15 |    1 |        3
-     5 |     1 |   12 |   -1 |    0 |        4
-  (10 rows)
-  
+    seq | path_seq | route | node | edge | cost | agg_cost 
+   -----+----------+-------+------+------+------+----------
+      1 |        1 |     0 |    2 |    2 |    1 |        0
+      2 |        2 |     0 |    3 |    3 |    1 |        1
+      3 |        3 |     0 |    4 |   16 |    1 |        2
+      4 |        4 |     0 |    9 |   15 |    1 |        3
+      5 |        5 |     0 |   12 |   -1 |    0 |        4
+      6 |        1 |     1 |    2 |    4 |    1 |        0
+      7 |        2 |     1 |    5 |    8 |    1 |        1
+      8 |        3 |     1 |    6 |    9 |    1 |        2
+      9 |        4 |     1 |    9 |   15 |    1 |        3
+     10 |        5 |     1 |   12 |   -1 |    0 |        4
+   (10 rows)
+
 
 
   SELECT * FROM pgr_ksp(
@@ -249,31 +250,32 @@ The examples in this section use the following :ref:`fig2`
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2, false, true
    );
-   seq | route | node | edge | cost | agg_cost 
-  -----+-------+------+------+------+----------
-     1 |     0 |    2 |    2 |    1 |        0
-     2 |     0 |    3 |    3 |    1 |        1
-     3 |     0 |    4 |   16 |    1 |        2
-     4 |     0 |    9 |   15 |    1 |        3
-     5 |     0 |   12 |   -1 |    0 |        4
-     1 |     1 |    2 |    4 |    1 |        0
-     2 |     1 |    5 |    8 |    1 |        1
-     3 |     1 |    6 |    9 |    1 |        2
-     4 |     1 |    9 |   15 |    1 |        3
-     5 |     1 |   12 |   -1 |    0 |        4
-     1 |     2 |    2 |    4 |    1 |        0
-     2 |     2 |    5 |   10 |    1 |        1
-     3 |     2 |   10 |   12 |    1 |        2
-     4 |     2 |   11 |   13 |    1 |        3
-     5 |     2 |   12 |   -1 |    0 |        4
-     1 |     3 |    2 |    4 |    1 |        0
-     2 |     3 |    5 |   10 |    1 |        1
-     3 |     3 |   10 |   12 |    1 |        2
-     4 |     3 |   11 |   11 |    1 |        3
-     5 |     3 |    6 |    9 |    1 |        4
-     6 |     3 |    9 |   15 |    1 |        5
-     7 |     3 |   12 |   -1 |    0 |        6
-  (22 rows)
+    seq | path_seq | route | node | edge | cost | agg_cost 
+   -----+----------+-------+------+------+------+----------
+      1 |        1 |     0 |    2 |    2 |    1 |        0
+      2 |        2 |     0 |    3 |    3 |    1 |        1
+      3 |        3 |     0 |    4 |   16 |    1 |        2
+      4 |        4 |     0 |    9 |   15 |    1 |        3
+      5 |        5 |     0 |   12 |   -1 |    0 |        4
+      6 |        1 |     1 |    2 |    4 |    1 |        0
+      7 |        2 |     1 |    5 |    8 |    1 |        1
+      8 |        3 |     1 |    6 |    9 |    1 |        2
+      9 |        4 |     1 |    9 |   15 |    1 |        3
+     10 |        5 |     1 |   12 |   -1 |    0 |        4
+     11 |        1 |     2 |    2 |    4 |    1 |        0
+     12 |        2 |     2 |    5 |   10 |    1 |        1
+     13 |        3 |     2 |   10 |   12 |    1 |        2
+     14 |        4 |     2 |   11 |   13 |    1 |        3
+     15 |        5 |     2 |   12 |   -1 |    0 |        4
+     16 |        1 |     3 |    2 |    4 |    1 |        0
+     17 |        2 |     3 |    5 |   10 |    1 |        1
+     18 |        3 |     3 |   10 |   12 |    1 |        2
+     19 |        4 |     3 |   11 |   11 |    1 |        3
+     20 |        5 |     3 |    6 |    9 |    1 |        4
+     21 |        6 |     3 |    9 |   15 |    1 |        5
+     22 |        7 |     3 |   12 |   -1 |    0 |        6
+   (22 rows)
+
 
 
 
@@ -291,8 +293,9 @@ Empty path representation
      'SELECT id, source, target, cost FROM edge_table',
       2, 3, 2
    );
-   seq | route | node | edge | cost | agg_cost 
-  -----+-------+------+------+------+----------
+    seq | path_seq | route | node | edge | cost | agg_cost 
+   -----+----------+-------+------+------+------+----------
+
   (0 rows)
 
 
@@ -302,19 +305,20 @@ Empty path representation
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2
    );
-   seq | route | node | edge | cost | agg_cost 
-  -----+-------+------+------+------+----------
-     1 |     0 |    2 |    4 |    1 |        0
-     2 |     0 |    5 |    8 |    1 |        1
-     3 |     0 |    6 |    9 |    1 |        2
-     4 |     0 |    9 |   15 |    1 |        3
-     5 |     0 |   12 |   -1 |    0 |        4
-     1 |     1 |    2 |    4 |    1 |        0
-     2 |     1 |    5 |    8 |    1 |        1
-     3 |     1 |    6 |   11 |    1 |        2
-     4 |     1 |   11 |   13 |    1 |        3
-     5 |     1 |   12 |   -1 |    0 |        4
-  (10 rows)
+    seq | path_seq | route | node | edge | cost | agg_cost 
+   -----+----------+-------+------+------+------+----------
+      1 |        1 |     0 |    2 |    4 |    1 |        0
+      2 |        2 |     0 |    5 |    8 |    1 |        1
+      3 |        3 |     0 |    6 |    9 |    1 |        2
+      4 |        4 |     0 |    9 |   15 |    1 |        3
+      5 |        5 |     0 |   12 |   -1 |    0 |        4
+      6 |        1 |     1 |    2 |    4 |    1 |        0
+      7 |        2 |     1 |    5 |    8 |    1 |        1
+      8 |        3 |     1 |    6 |   11 |    1 |        2
+      9 |        4 |     1 |   11 |   13 |    1 |        3
+     10 |        5 |     1 |   12 |   -1 |    0 |        4
+   (10 rows)
+
 
 
   SELECT * FROM pgr_ksp(
@@ -326,24 +330,26 @@ Empty path representation
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2, true, true
    );
-   seq | route | node | edge | cost | agg_cost 
-  -----+-------+------+------+------+----------
-     1 |     0 |    2 |    4 |    1 |        0
-     2 |     0 |    5 |    8 |    1 |        1
-     3 |     0 |    6 |    9 |    1 |        2
-     4 |     0 |    9 |   15 |    1 |        3
-     5 |     0 |   12 |   -1 |    0 |        4
-     1 |     1 |    2 |    4 |    1 |        0
-     2 |     1 |    5 |    8 |    1 |        1
-     3 |     1 |    6 |   11 |    1 |        2
-     4 |     1 |   11 |   13 |    1 |        3
-     5 |     1 |   12 |   -1 |    0 |        4
-     1 |     2 |    2 |    4 |    1 |        0
-     2 |     2 |    5 |   10 |    1 |        1
-     3 |     2 |   10 |   12 |    1 |        2
-     4 |     2 |   11 |   13 |    1 |        3
-     5 |     2 |   12 |   -1 |    0 |        4
-  (15 rows)
+    seq | path_seq | route | node | edge | cost | agg_cost 
+   -----+----------+-------+------+------+------+----------
+      1 |        1 |     0 |    2 |    4 |    1 |        0
+      2 |        2 |     0 |    5 |    8 |    1 |        1
+      3 |        3 |     0 |    6 |    9 |    1 |        2
+      4 |        4 |     0 |    9 |   15 |    1 |        3
+      5 |        5 |     0 |   12 |   -1 |    0 |        4
+      6 |        1 |     1 |    2 |    4 |    1 |        0
+      7 |        2 |     1 |    5 |    8 |    1 |        1
+      8 |        3 |     1 |    6 |   11 |    1 |        2
+      9 |        4 |     1 |   11 |   13 |    1 |        3
+     10 |        5 |     1 |   12 |   -1 |    0 |        4
+     11 |        1 |     2 |    2 |    4 |    1 |        0
+     12 |        2 |     2 |    5 |   10 |    1 |        1
+     13 |        3 |     2 |   10 |   12 |    1 |        2
+     14 |        4 |     2 |   11 |   13 |    1 |        3
+     15 |        5 |     2 |   12 |   -1 |    0 |        4
+   (15 rows)
+
+
 
 
 Examples for queries marked as ``undirected`` with ``cost`` column
@@ -358,19 +364,21 @@ The examples in this section use the following :ref:`fig4`
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2, directed:=false
    );
-   seq | route | node | edge | cost | agg_cost 
-  -----+-------+------+------+------+----------
-     1 |     0 |    2 |    4 |    1 |        0
-     2 |     0 |    5 |    8 |    1 |        1
-     3 |     0 |    6 |    9 |    1 |        2
-     4 |     0 |    9 |   15 |    1 |        3
-     5 |     0 |   12 |   -1 |    0 |        4
-     1 |     1 |    2 |    4 |    1 |        0
-     2 |     1 |    5 |    8 |    1 |        1
-     3 |     1 |    6 |   11 |    1 |        2
-     4 |     1 |   11 |   13 |    1 |        3
-     5 |     1 |   12 |   -1 |    0 |        4
-  (10 rows)
+
+    seq | path_seq | route | node | edge | cost | agg_cost 
+   -----+----------+-------+------+------+------+----------
+      1 |        1 |     0 |    2 |    4 |    1 |        0
+      2 |        2 |     0 |    5 |    8 |    1 |        1
+      3 |        3 |     0 |    6 |    9 |    1 |        2
+      4 |        4 |     0 |    9 |   15 |    1 |        3
+      5 |        5 |     0 |   12 |   -1 |    0 |        4
+      6 |        1 |     1 |    2 |    4 |    1 |        0
+      7 |        2 |     1 |    5 |    8 |    1 |        1
+      8 |        3 |     1 |    6 |   11 |    1 |        2
+      9 |        4 |     1 |   11 |   13 |    1 |        3
+     10 |        5 |     1 |   12 |   -1 |    0 |        4
+   (10 rows)
+
   
   SELECT * FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
@@ -381,24 +389,26 @@ The examples in this section use the following :ref:`fig4`
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2, false, true
    );
-   seq | route | node | edge | cost | agg_cost 
-  -----+-------+------+------+------+----------
-     1 |     0 |    2 |    4 |    1 |        0
-     2 |     0 |    5 |    8 |    1 |        1
-     3 |     0 |    6 |    9 |    1 |        2
-     4 |     0 |    9 |   15 |    1 |        3
-     5 |     0 |   12 |   -1 |    0 |        4
-     1 |     1 |    2 |    4 |    1 |        0
-     2 |     1 |    5 |    8 |    1 |        1
-     3 |     1 |    6 |   11 |    1 |        2
-     4 |     1 |   11 |   13 |    1 |        3
-     5 |     1 |   12 |   -1 |    0 |        4
-     1 |     2 |    2 |    4 |    1 |        0
-     2 |     2 |    5 |   10 |    1 |        1
-     3 |     2 |   10 |   12 |    1 |        2
-     4 |     2 |   11 |   13 |    1 |        3
-     5 |     2 |   12 |   -1 |    0 |        4
-  (15 rows)
+
+    seq | path_seq | route | node | edge | cost | agg_cost 
+   -----+----------+-------+------+------+------+----------
+      1 |        1 |     0 |    2 |    4 |    1 |        0
+      2 |        2 |     0 |    5 |    8 |    1 |        1
+      3 |        3 |     0 |    6 |    9 |    1 |        2
+      4 |        4 |     0 |    9 |   15 |    1 |        3
+      5 |        5 |     0 |   12 |   -1 |    0 |        4
+      6 |        1 |     1 |    2 |    4 |    1 |        0
+      7 |        2 |     1 |    5 |    8 |    1 |        1
+      8 |        3 |     1 |    6 |   11 |    1 |        2
+      9 |        4 |     1 |   11 |   13 |    1 |        3
+     10 |        5 |     1 |   12 |   -1 |    0 |        4
+     11 |        1 |     2 |    2 |    4 |    1 |        0
+     12 |        2 |     2 |    5 |   10 |    1 |        1
+     13 |        3 |     2 |   10 |   12 |    1 |        2
+     14 |        4 |     2 |   11 |   13 |    1 |        3
+     15 |        5 |     2 |   12 |   -1 |    0 |        4
+   (15 rows)
+
 
 
 The queries use the :ref:`sampledata` network.

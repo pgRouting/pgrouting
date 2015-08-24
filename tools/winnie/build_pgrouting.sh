@@ -28,9 +28,9 @@ if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	GMP_VER=5.1.2
 	MPFR_VER=3.1.2
 	CGAL_VER=4.2
-	BOOST_VER=1.58.0
-	BOOST_VER_WU=1_58_0
-	BOOST_VER_WUM=1_58
+	BOOST_VER=1.59.0
+	BOOST_VER_WU=1_59_0
+	BOOST_VER_WUM=1_59
 	ZLIB_VER=1.2.8
 	#export PATH="/mingw/bin:/mingw/include:/c/Windows/system32"
 	#zlib
