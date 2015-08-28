@@ -15,8 +15,8 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 .. index:: 
 	single: pgr_trsp(text,integer,integer,boolean,boolean)
 	single: pgr_trsp(text,integer,integer,boolean,boolean,text)
-	single: pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean)
-	single: pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
+	single: pgr_trspViaVertices(text,integer,double precision,integer,double precision,boolean,boolean)
+	single: pgr_trspViaEdges(text,integer,double precision,integer,double precision,boolean,boolean,text)
     single: pgr_trspVia(text,integer[],boolean,boolean,text)
     single: pgr_trspVia(text,integer[],float8[],boolean,boolean,text)
 	module: trsp
@@ -46,13 +46,13 @@ The turn restricted shorthest path (TRSP) is a shortest path algorithm that can 
 
 .. code-block:: sql
 
-    pgr_costResult3[] pgr_trspVia(sql text, vids integer[],
+    pgr_costResult3[] pgr_trspViaVertices(sql text, vids integer[],
                     directed boolean, has_reverse_cost boolean
                     [, turn_restrict_sql text]);
 
 .. code-block:: sql
 
-     pgr_costResult3[] pgr_trspVia(sql text, eids integer[], pcts float8[],
+     pgr_costResult3[] pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
                     directed boolean, has_reverse_cost boolean
                     [, turn_restrict_sql text]);
 
@@ -113,6 +113,9 @@ Returns set of :ref:`type_cost_result`:
 Support for Vias
 --------------------------------------------------------------------
 
+.. warning:: The Support for Vias functions are prototypes. Not all corner cases are being considered.
+
+
 We also have support for vias where you can say generate a from A to B to C, etc. We support both methods above only you pass an array of vertices or and array of edges and percentage position along the edge in two arrays.
 
 
@@ -160,7 +163,7 @@ Returns set of :ref:`type_cost_result`:
 
 .. rubric:: History
 
-* Via Support new in version 2.1.0
+* Via Support prototypes new in version 2.1.0
 
 Examples
 -------------------------------------------------------------------------------
@@ -231,7 +234,7 @@ An example query using vertex ids and via points:
 
 .. code-block:: sql
 
-    SELECT * FROM pgr_trspVia(
+    SELECT * FROM pgr_trspViaVertices(
         'SELECT id, source::INTEGER, target::INTEGER, cost,
             reverse_cost FROM edge_table',
         ARRAY[1,8,13,5]::INTEGER[],     
@@ -266,7 +269,7 @@ An example query using edge ids and vias:
 
 .. code-block:: sql
 
-    SELECT * FROM pgr_trspVia(
+    SELECT * FROM pgr_trspViaEdges(
         'SELECT id, source::INTEGER, target::INTEGER,cost,
              reverse_cost FROM edge_table',
         ARRAY[1,11,6]::INTEGER[],           

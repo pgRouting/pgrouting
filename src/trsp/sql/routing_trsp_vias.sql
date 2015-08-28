@@ -1,4 +1,4 @@
-create or replace function pgr_trspVia(sql text, vids integer[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
+create or replace function pgr_trspViaVertices(sql text, vids integer[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
     RETURNS SETOF pgr_costresult3 AS
 $body$
 /*
@@ -55,7 +55,7 @@ $body$
 
 ----------------------------------------------------------------------------------------------------------
 
-create or replace function pgr_trspVia(sql text, eids integer[], pcts float8[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
+create or replace function pgr_trspViaEdges(sql text, eids integer[], pcts float8[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
     RETURNS SETOF pgr_costresult3 AS
 $body$
 /*
@@ -141,7 +141,8 @@ $body$
 
 
 ----------------------------------------------------------------------------------------------------------
-
+/*this via functions are not documented they will be deleted on 2.2*/
+/*
 create or replace function pgr_trsp(sql text, vids integer[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
     RETURNS SETOF pgr_costresult AS
 $body$
@@ -165,4 +166,4 @@ $body$
     language plpgsql stable
     cost 100
     rows 1000;
-
+*/

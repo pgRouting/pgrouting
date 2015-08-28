@@ -32,7 +32,7 @@ INSERT INTO restrictions VALUES (3,100,9,16,null);
           FROM restrictions'
            );
 
-    SELECT * FROM pgr_trspVia(
+    SELECT * FROM pgr_trspViaVertices(
         'SELECT id, source::INTEGER, target::INTEGER, cost,
             reverse_cost FROM edge_table',
         ARRAY[1,8,13,5]::INTEGER[],     
@@ -43,7 +43,7 @@ INSERT INTO restrictions VALUES (3,100,9,16,null);
             coalesce('',''||via,'''') AS via_path FROM restrictions');
 
 
-    SELECT * FROM pgr_trspVia(
+    SELECT * FROM pgr_trspViaEdges(
         'SELECT id, source::INTEGER, target::INTEGER,cost,
              reverse_cost FROM edge_table',
         ARRAY[1,11,6]::INTEGER[],           
