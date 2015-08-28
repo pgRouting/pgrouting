@@ -12,6 +12,9 @@
 Dictionary of columns & Custom Query
 ===============================================================================
 
+:path: a sequence of vertices/edges from A to B.
+:route: a sequence of paths. 
+
 Description of the edges_sql query
 -------------------------------------------------------------------------------
 
@@ -32,7 +35,7 @@ Where:
 Description of the parameters of the signatures
 -------------------------------------------------------------------------------
 
-:edges_sql: SQL query as decribed above.
+:edges_sql: ``TEXT`` SQL query as decribed above.
 :start_vid: ``BIGINT`` identifier of the starting vertex of the path.
 :start_vids: ``array[ANY-INTEGER]`` array of identifiers of starting vertices.
 :end_vid: ``BIGINT`` identifier of the ending vertex of the path.
@@ -45,8 +48,11 @@ Description of the return values
 
 Returns set of ``(seq [, start_vid] [, end_vid] , node, edge, cost, agg_cost)``
 
-:seq: ``INT``  isequential value starting from **1**.
-:path_seq: ``INT``  relative position in the path. Has value **1** for the begining of a path.
+:seq: ``INTEGER``  is a sequential value starting from **1**.
+:route_seq: ``INTEGER``  relative position in the route. Has value **1** for the begining of a route.
+:route_id: ``INTEGER`` id of the route.
+:path_seq: ``INTEGER``  relative position in the path. Has value **1** for the begining of a path.
+:path_id: ``INTEGER`` id of the path.
 :start_vid: ``BIGINT`` id of the starting vertex. Used when multiple starting vetrices are in the query.
 :end_vid: ``BIGINT`` id of the ending vertex. Used when multiple ending vertices are in the query.
 :node: ``BIGINT`` id of the node in the path from start_vid to end_v.

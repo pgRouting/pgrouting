@@ -55,7 +55,7 @@ We ignore the costs because we want all the parallels
 
 .. code-block:: sql
 
-  select seq, route, node, edge into routes
+  SELECT seq, path_id AS route, node, edge INTO routes
     from pgr_ksp('select id, source, target, cost, reverse_cost from parallel',
     1, 4, 3);
 
