@@ -52,11 +52,11 @@
   <div class="section" id="pgr-dijkstra-v-2-0-shortest-path-dijkstra">
 <span id="pgr-dijkstra-v2"></span><h1>pgr_dijkstra (V 2.0)- Shortest Path Dijkstra<a class="headerlink" href="#pgr-dijkstra-v-2-0-shortest-path-dijkstra" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
-<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">pgr_dijkstra</span></code> — Returns the shortest path using Dijkstra algorithm.</p>
 </div>
 <div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>Dijkstra&#8217;s algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956. It is a graph search algorithm that solves the single-source shortest path problem for a graph with non-negative edge path costs, producing a shortest path tree. Returns a set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><span>pgr_costResult</span></a> (seq, id1, id2, cost) rows, that make up a path.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">,</span> <span class="nb">integer</span> <span class="k">source</span><span class="p">,</span> <span class="nb">integer</span> <span class="n">target</span><span class="p">,</span>
                            <span class="nb">boolean</span> <span class="n">directed</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">has_rcost</span><span class="p">);</span>
@@ -229,7 +229,7 @@ without the <code class="docutils literal"><span class="pre">has_rcost</span></c
 
     <div class="footer" role="contentinfo">
         &copy; Copyright pgRouting Contributors - Version 2.1.0 (1e4b40a sequence-fix).
-      Last updated on Aug 23, 2015.
+      Last updated on Aug 28, 2015.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>

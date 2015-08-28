@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Custom Query &mdash; pgRouting Manual (2.1.0)</title>
+    <title>Dictionary of columns &amp; Custom Query &mdash; pgRouting Manual (2.1.0)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -33,7 +33,7 @@
   <body role="document">
       <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
           <span>pgRouting Manual (2.1.0)</span></a></h1>
-        <h2 class="heading"><span>Custom Query</span></h2>
+        <h2 class="heading"><span>Dictionary of columns &amp; Custom Query</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
@@ -49,8 +49,96 @@
       <div class="content">
         
         
-  <div class="section" id="custom-query">
-<span id="id1"></span><h1>Custom Query<a class="headerlink" href="#custom-query" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="dictionary-of-columns-custom-query">
+<span id="custom-query"></span><h1>Dictionary of columns &amp; Custom Query<a class="headerlink" href="#dictionary-of-columns-custom-query" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description-of-the-edges-sql-query">
+<h2>Description of the edges_sql query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body"><p class="first">an SQL query, which should return a set of rows with the following columns:</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code> identifier of the edge.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code> identifier of the first end point vertex of the edge.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body"><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code> identifier of the second end pont vertex of the edge.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body"><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code> weight of the edge <cite>(source, target)</cite>, if negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">reverse_cost:</th><td class="field-body"><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code> (optional) weight of the edge <cite>(target, source)</cite>, if negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">smallint, int, bigint</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">smallint, int, bigint, real, float</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-parameters-of-the-signatures">
+<h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">SQL query as decribed above.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">start_vid:</th><td class="field-body"><code class="docutils literal"><span class="pre">BIGINT</span></code> identifier of the starting vertex of the path.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">start_vids:</th><td class="field-body"><code class="docutils literal"><span class="pre">array[ANY-INTEGER]</span></code> array of identifiers of starting vertices.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">end_vid:</th><td class="field-body"><code class="docutils literal"><span class="pre">BIGINT</span></code> identifier of the ending vertex of the path.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">end_vids:</th><td class="field-body"><code class="docutils literal"><span class="pre">array[ANY-INTEGER]</span></code> array of identifiers of ending vertices.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">directed:</th><td class="field-body"><code class="docutils literal"><span class="pre">boolean</span></code> (optional). When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as Undirected. Default is <code class="docutils literal"><span class="pre">true</span></code> which considers the graph as Directed.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-return-values">
+<h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
+<p>Returns set of <code class="docutils literal"><span class="pre">(seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid]</span> <span class="pre">,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body"><code class="docutils literal"><span class="pre">INT</span></code>  isequential value starting from <strong>1</strong>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">path_seq:</th><td class="field-body"><code class="docutils literal"><span class="pre">INT</span></code>  relative position in the path. Has value <strong>1</strong> for the begining of a path.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">start_vid:</th><td class="field-body"><code class="docutils literal"><span class="pre">BIGINT</span></code> id of the starting vertex. Used when multiple starting vetrices are in the query.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">end_vid:</th><td class="field-body"><code class="docutils literal"><span class="pre">BIGINT</span></code> id of the ending vertex. Used when multiple ending vertices are in the query.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">node:</th><td class="field-body"><code class="docutils literal"><span class="pre">BIGINT</span></code> id of the node in the path from start_vid to end_v.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">edge:</th><td class="field-body"><code class="docutils literal"><span class="pre">BIGINT</span></code> id of the edge used to go from <code class="docutils literal"><span class="pre">node</span></code> to the next node in the path sequence. <code class="docutils literal"><span class="pre">-1</span></code> for the last node of the path.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">cost:</th><td class="field-body"><code class="docutils literal"><span class="pre">FLOAT</span></code> cost to traverse from <code class="docutils literal"><span class="pre">node</span></code> using <code class="docutils literal"><span class="pre">edge</span></code> to the next node in the path sequence.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">agg_cost:</th><td class="field-body"><code class="docutils literal"><span class="pre">FLOAT</span></code> total cost from <code class="docutils literal"><span class="pre">start_vid</span></code> to <code class="docutils literal"><span class="pre">node</span></code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="descriptions-for-version-2-0-signatures">
+<h2>Descriptions for version 2.0 signatures<a class="headerlink" href="#descriptions-for-version-2-0-signatures" title="Permalink to this headline">¶</a></h2>
 <p>In general, the routing algorithms need an SQL query that contain one or more of the following required columns with the preferred type:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -80,27 +168,6 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<dl class="docutils">
-<dt>The functions for V3.0 of pgr_dijkstra, pgr_ksp and pgr_drivingDistance use the following columns</dt>
-<dd><ul class="first last simple">
-<li><strong>id</strong>: <code class="docutils literal"><span class="pre">ANY-INTEGER</span></code> identifier of the edge.</li>
-<li><strong>source</strong>: <code class="docutils literal"><span class="pre">ANY-INTEGER</span></code> identifier of the source vertex of the edge.</li>
-<li><strong>target</strong>: <code class="docutils literal"><span class="pre">ANY-INTEGER</span></code> identifier of the target vertex of the edge.</li>
-<li><strong>cost</strong>: <code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code> value of the edge traversal cost. A negative cost will prevent the edge (<code class="docutils literal"><span class="pre">source</span></code>, <code class="docutils literal"><span class="pre">target</span></code>) from being inserted in the graph.</li>
-<li><strong>reverse_cost</strong>: <code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code> (optional) the value for the reverse traversal of the edge. A negative cost will prevent the edge (<code class="docutils literal"><span class="pre">target</span></code>, <code class="docutils literal"><span class="pre">source</span></code>) from being inserted in the graph.</li>
-</ul>
-</dd>
-</dl>
-<p>Where:</p>
-<blockquote class="last">
-<div><ul class="simple">
-<li><strong>ANY-INTEGER</strong>: smallint, int, bigint</li>
-<li><strong>ANY-NUMERICAL</strong>: smallint, int, bigint, real, float</li>
-</ul>
-</div></blockquote>
-</div>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="k">FROM</span> <span class="n">edge_table</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="k">FROM</span> <span class="n">edge_table</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="p">,</span><span class="n">reverse_cost</span> <span class="k">FROM</span> <span class="n">edge_table</span>
@@ -168,6 +235,7 @@
 </pre></div>
 </div>
 </div>
+</div>
 
 
       </div>
@@ -185,7 +253,7 @@
 
     <div class="footer" role="contentinfo">
         &copy; Copyright pgRouting Contributors - Version 2.1.0 (1e4b40a sequence-fix).
-      Last updated on Aug 23, 2015.
+      Last updated on Aug 28, 2015.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>

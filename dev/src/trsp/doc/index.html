@@ -67,12 +67,12 @@
             <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="nb">boolean</span> <span class="p">[,</span><span class="n">restrict_sql</span> <span class="nb">text</span><span class="p">]);</span>
 </pre></div>
 </div>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult3</span><span class="p">[]</span> <span class="n">pgr_trspVia</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">vids</span> <span class="nb">integer</span><span class="p">[],</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult3</span><span class="p">[]</span> <span class="n">pgr_trspViaVertices</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">vids</span> <span class="nb">integer</span><span class="p">[],</span>
                 <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_reverse_cost</span> <span class="nb">boolean</span>
                 <span class="p">[,</span> <span class="n">turn_restrict_sql</span> <span class="nb">text</span><span class="p">]);</span>
 </pre></div>
 </div>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult3</span><span class="p">[]</span> <span class="n">pgr_trspVia</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">eids</span> <span class="nb">integer</span><span class="p">[],</span> <span class="n">pcts</span> <span class="n">float8</span><span class="p">[],</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult3</span><span class="p">[]</span> <span class="n">pgr_trspViaEdges</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">eids</span> <span class="nb">integer</span><span class="p">[],</span> <span class="n">pcts</span> <span class="n">float8</span><span class="p">[],</span>
                <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_reverse_cost</span> <span class="nb">boolean</span>
                <span class="p">[,</span> <span class="n">turn_restrict_sql</span> <span class="nb">text</span><span class="p">]);</span>
 </pre></div>
@@ -177,6 +177,10 @@
 </div>
 <div class="section" id="support-for-vias">
 <h2>Support for Vias<a class="headerlink" href="#support-for-vias" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The Support for Vias functions are prototypes. Not all corner cases are being considered.</p>
+</div>
 <p>We also have support for vias where you can say generate a from A to B to C, etc. We support both methods above only you pass an array of vertices or and array of edges and percentage position along the edge in two arrays.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -263,7 +267,7 @@
 </table>
 <p class="rubric">History</p>
 <ul class="simple">
-<li>Via Support new in version 2.1.0</li>
+<li>Via Support prototypes new in version 2.1.0</li>
 </ul>
 </div>
 <div class="section" id="examples">
@@ -327,7 +331,7 @@
 </pre></div>
 </div>
 <p>An example query using vertex ids and via points:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_trspVia</span><span class="p">(</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_trspViaVertices</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source::INTEGER, target::INTEGER, cost,</span>
 <span class="s1">        reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">5</span><span class="p">]::</span><span class="nb">INTEGER</span><span class="p">[],</span>
@@ -358,7 +362,7 @@
 </pre></div>
 </div>
 <p>An example query using edge ids and vias:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_trspVia</span><span class="p">(</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_trspViaEdges</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source::INTEGER, target::INTEGER,cost,</span>
 <span class="s1">         reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">6</span><span class="p">]::</span><span class="nb">INTEGER</span><span class="p">[],</span>
@@ -410,7 +414,7 @@
 
     <div class="footer" role="contentinfo">
         &copy; Copyright pgRouting Contributors - Version 2.1.0 (1e4b40a sequence-fix).
-      Last updated on Aug 24, 2015.
+      Last updated on Aug 28, 2015.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
