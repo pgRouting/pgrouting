@@ -14,7 +14,6 @@ pgr_alphaShape
 
 .. index:: 
 	single: pgr_alphashape(text,float8)
-	module: driving_distance
 
 Name
 -------------------------------------------------------------------------------

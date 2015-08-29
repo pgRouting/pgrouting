@@ -22,7 +22,7 @@
   SELECT pgr_createTopology('parallel',0.001);
 
 
-  select seq, route, node, edge into routes
+  select seq, path_id as route, node, edge into routes
     from pgr_ksp('select id, source, target, cost, reverse_cost from parallel',
     1, 4, 3);
 

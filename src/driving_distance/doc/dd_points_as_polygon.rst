@@ -14,7 +14,6 @@ pgr_pointsAsPolygon
 
 .. index:: 
     single: pgr_pointsAsPolygon(text,float8)
-    module: driving_distance
 
 Name
 -------------------------------------------------------------------------------

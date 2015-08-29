@@ -80,18 +80,18 @@ SELECT id, source, target, cost, reverse_cost FROM edge_table order by id;
    );
 
 
-  SELECT 11, seq, route, cost, agg_cost  FROM pgr_ksp(
+  SELECT 11, seq, path_id, cost, agg_cost  FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 1
    );
 
 
-  SELECT 12, seq, route,  cost, agg_cost FROM pgr_ksp(
+  SELECT 12, seq, path_id,  cost, agg_cost FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 1, heap_paths:=true
    );
 
-  SELECT 13, seq, route,  cost, agg_cost FROM pgr_ksp(
+  SELECT 13, seq, path_id,  cost, agg_cost FROM pgr_ksp(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 1, true, true
    );

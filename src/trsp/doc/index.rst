@@ -17,8 +17,6 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 	single: pgr_trsp(text,integer,integer,boolean,boolean,text)
 	single: pgr_trspViaVertices(text,integer,double precision,integer,double precision,boolean,boolean)
 	single: pgr_trspViaEdges(text,integer,double precision,integer,double precision,boolean,boolean,text)
-    single: pgr_trspVia(text,integer[],boolean,boolean,text)
-    single: pgr_trspVia(text,integer[],float8[],boolean,boolean,text)
 	module: trsp
 
 Name

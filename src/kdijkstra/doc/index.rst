@@ -15,7 +15,6 @@ pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra
 .. index::
     single: pgr_kDijkstraCost(text,integer,integer[],boolean,boolean)
     single: pgr_kDijkstraPath(text,integer,integer[],boolean,boolean)
-    module: dijkstra
 
 Name
 -------------------------------------------------------------------------------
