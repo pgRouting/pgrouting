@@ -143,20 +143,20 @@ The examples in this section use the following :ref:`fig1`
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2
    );
- seq | path_id | path_seq | node | edge | cost | agg_cost 
------+---------+----------+------+------+------+----------
-   1 |       0 |        1 |    2 |    4 |    1 |        0
-   2 |       0 |        2 |    5 |    8 |    1 |        1
-   3 |       0 |        3 |    6 |    9 |    1 |        2
-   4 |       0 |        4 |    9 |   15 |    1 |        3
-   5 |       0 |        5 |   12 |   -1 |    0 |        4
-   6 |       1 |        1 |    2 |    4 |    1 |        0
-   7 |       1 |        2 |    5 |    8 |    1 |        1
-   8 |       1 |        3 |    6 |   11 |    1 |        2
-   9 |       1 |        4 |   11 |   13 |    1 |        3
-  10 |       1 |        5 |   12 |   -1 |    0 |        4
-(10 rows)
-
+     seq | path_id | path_seq | node | edge | cost | agg_cost 
+    -----+---------+----------+------+------+------+----------
+       1 |       0 |        1 |    2 |    4 |    1 |        0
+       2 |       0 |        2 |    5 |    8 |    1 |        1
+       3 |       0 |        3 |    6 |    9 |    1 |        2
+       4 |       0 |        4 |    9 |   15 |    1 |        3
+       5 |       0 |        5 |   12 |   -1 |    0 |        4
+       6 |       1 |        1 |    2 |    4 |    1 |        0
+       7 |       1 |        2 |    5 |    8 |    1 |        1
+       8 |       1 |        3 |    6 |   11 |    1 |        2
+       9 |       1 |        4 |   11 |   13 |    1 |        3
+      10 |       1 |        5 |   12 |   -1 |    0 |        4
+    (10 rows)
+    
 
 
 Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
@@ -297,9 +297,9 @@ Empty path representation
      'SELECT id, source, target, cost FROM edge_table',
       2, 3, 2
    );
- seq | path_id | path_seq | node | edge | cost | agg_cost 
------+---------+----------+------+------+------+----------
-(0 rows)
+     seq | path_id | path_seq | node | edge | cost | agg_cost 
+    -----+---------+----------+------+------+------+----------
+    (0 rows)
 
 
 .. code-block:: sql
