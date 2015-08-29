@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.1.0 (1fef9bd develop_2_1_0)',
+        VERSION:     '2.1.0 (e0bf548 develop_2_1_0)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -71,7 +71,7 @@
 <div class="section" id="the-problem-definition">
 <h1>The problem definition<a class="headerlink" href="#the-problem-definition" title="Permalink to this headline">¶</a></h1>
 <p>Given the following query:</p>
-<p>pgr_dijkstra(<span class="math">\(sql, start_vid, end_vid, directed\)</span>)</p>
+<p>pgr_dijkstra(<span class="math">\(sql, start_{vid}, end_{vid}, directed\)</span>)</p>
 <p>where  <span class="math">\(sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}\)</span></p>
 <p>and</p>
 <blockquote>
@@ -85,7 +85,7 @@
 <p>The weighted directed graph, <span class="math">\(G_d(V,E)\)</span>, is definied by:</p>
 <ul class="simple">
 <li>the set of vertices  <span class="math">\(V\)</span><ul>
-<li><span class="math">\(V = source \cup target \cup {start_vid} \cup  {end_vid}\)</span></li>
+<li><span class="math">\(V = source \cup target \cup {start_{vid}} \cup  {end_{vid}}\)</span></li>
 </ul>
 </li>
 <li>the set of edges <span class="math">\(E\)</span><ul>
@@ -97,7 +97,7 @@
 <p>The weighted undirected graph, <span class="math">\(G_u(V,E)\)</span>, is definied by:</p>
 <ul class="simple">
 <li>the set of vertices  <span class="math">\(V\)</span><ul>
-<li><span class="math">\(V = source \cup target \cup {start_v} \cup  {end_v}\)</span></li>
+<li><span class="math">\(V = source \cup target \cup {start_v{vid}} \cup  {end_{vid}}\)</span></li>
 </ul>
 </li>
 <li>the set of edges <span class="math">\(E\)</span><ul>
@@ -109,38 +109,38 @@
 <p>Given:</p>
 <blockquote>
 <div><ul class="simple">
-<li><span class="math">\(start_vid \in V\)</span> a starting vertex</li>
-<li><span class="math">\(end_vid \in V\)</span> an ending vertex</li>
+<li><span class="math">\(start_{vid} \in V\)</span> a starting vertex</li>
+<li><span class="math">\(end_{vid} \in V\)</span> an ending vertex</li>
 <li><span class="math">\(G(V,E) = \begin{cases}  G_d(V,E) &amp;\quad \text{ if } directed = true \\ G_u(V,E) &amp;\quad \text{ if } directed = false \\ \end{cases}\)</span></li>
 </ul>
 </div></blockquote>
 <p>Then:</p>
 <div class="math">
-\[\begin{split}\text{pgr_dijkstra}(sql, start_v, end_v, directed) =
+\[\begin{split}\text{pgr_dijkstra}(sql, start_{vid}, end_{vid}, directed) =
 \begin{cases}
-\text{shortest path } \boldsymbol{\pi} \text{ between } start_v \text{and } end_v &amp;\quad \text{if } \exists  \boldsymbol{\pi}  \\
+\text{shortest path } \boldsymbol{\pi} \text{ between } start_{vid} \text{and } end_{vid} &amp;\quad \text{if } \exists  \boldsymbol{\pi}  \\
 \varnothing &amp;\quad \text{otherwise} \\
 \end{cases}\end{split}\]</div>
-<p><span class="math">\(\boldsymbol{\pi} = \{(seq_i, node_i, edge_i, cost_i, agg\_cost_i)\}\)</span></p>
+<p><span class="math">\(\boldsymbol{\pi} = \{(path_\seq_i, node_i, edge_i, cost_i, agg\_cost_i)\}\)</span></p>
 <dl class="docutils">
 <dt>where:</dt>
 <dd><ul class="first last simple">
-<li><span class="math">\(seq_i = i\)</span></li>
-<li><span class="math">\(seq_{| \pi |} = | \pi |\)</span></li>
+<li><span class="math">\(path_\seq_i = i\)</span></li>
+<li><span class="math">\(path_\seq_{| \pi |} = | \pi |\)</span></li>
 <li><span class="math">\(node_i \in V\)</span></li>
-<li><span class="math">\(node_1 = start_vid\)</span></li>
-<li><span class="math">\(node_{| \pi |}  = end_vid\)</span></li>
+<li><span class="math">\(node_1 = start_{vid}\)</span></li>
+<li><span class="math">\(node_{| \pi |}  = end_{vid}\)</span></li>
 <li><span class="math">\(\forall i \neq | \pi |, \quad (node_i, node_{i+1}, cost_i) \in E\)</span></li>
 <li><span class="math">\(edge_i  = \begin{cases}  id_{(node_i, node_{i+1},cost_i)}  &amp;\quad  \text{when } i \neq | \pi | \\ -1 &amp;\quad  \text{when } i = | \pi | \\ \end{cases}\)</span></li>
 <li><span class="math">\(cost_i = cost_{(node_i, node_{i+1})}\)</span></li>
 <li><span class="math">\(agg\_cost_i  = \begin{cases}  0   &amp;\quad  \text{when } i = 1  \\ \displaystyle\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &amp;\quad  \text{when } i \neq 1 \\ \end{cases}\)</span></li>
 </ul>
 </dd>
-<dt>In other words: The algorithm returns a the shortest path between <span class="math">\(start_vid\)</span> and <span class="math">\(end_vid\)</span> , if it exists, in terms of a sequence of nodes  and of edges,</dt>
+<dt>In other words: The algorithm returns a the shortest path between <span class="math">\(start_{vid}\)</span> and <span class="math">\(end_{vid}\)</span> , if it exists, in terms of a sequence of nodes  and of edges,</dt>
 <dd><ul class="first last simple">
-<li><span class="math">\(seq\)</span> indicates the relative position in the path of the <span class="math">\(node\)</span> or <span class="math">\(edge\)</span>.</li>
+<li><span class="math">\(path_\seq\)</span> indicates the relative position in the path of the <span class="math">\(node\)</span> or <span class="math">\(edge\)</span>.</li>
 <li><span class="math">\(cost\)</span> is the cost of the edge to be used to go to the next node.</li>
-<li><span class="math">\(agg\_cost\)</span> is the cost from the <span class="math">\(start_vid\)</span> up to the node.</li>
+<li><span class="math">\(agg\_cost\)</span> is the cost from the <span class="math">\(start_{vid}\)</span> up to the node.</li>
 </ul>
 </dd>
 </dl>
@@ -164,7 +164,7 @@
       </div>
 
     <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.1.0 (1fef9bd develop_2_1_0).
+        &copy; Copyright pgRouting Contributors - Version 2.1.0 (e0bf548 develop_2_1_0).
       Last updated on Aug 28, 2015.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
