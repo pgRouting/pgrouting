@@ -13,8 +13,7 @@ pgr_drivingDistance (V2.0)
 ===============================================================================
 
 .. index:: 
-	single: pgr_drivingDistance(text,integer,double precision,boolean,boolean)
-	module: driving_distance
+	single: drivingDistance(text,integer,double precision,boolean,boolean) -- deprecated
 
 Name
 -------------------------------------------------------------------------------

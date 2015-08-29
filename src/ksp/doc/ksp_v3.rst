@@ -415,9 +415,15 @@ The queries use the :ref:`sampledata` network.
 .. rubric:: History
 
 * New in version 2.0.0
-* Added functionality for version 3.0.0 in version 2.1
+* Added functionality version 2.1
 
 See Also
 -------------------------------------------------------------------------------
 
 * http://en.wikipedia.org/wiki/K_shortest_path_routing
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
+

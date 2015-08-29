@@ -13,7 +13,7 @@ pgr_isColumnIndexed
 ===============================================================================
 
 .. index:: 
-	single: pgr_isColumnIndexed(text,text)
+	single: pgr_isColumnIndexed(text,text) -- deprecated
 	module: common
 
 Name
@@ -23,7 +23,7 @@ Name
 
 .. note:: This function is intended for the developer’s aid.
 
-.. warning:: This function is foing to be discontinued. 
+.. warning:: This function is  deprecated in 2.1
              Use `_pgr_isColumnIndexed` instead
 
 

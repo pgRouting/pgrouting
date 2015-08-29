@@ -13,8 +13,7 @@ pgr_startPoint
 ===============================================================================
 
 .. index:: 
-	single: pgr_startPoint(geometry)
-	module: common
+	single: pgr_startPoint(geometry) -- deprecated
 
 Name
 -------------------------------------------------------------------------------
@@ -23,7 +22,7 @@ Name
 
 .. note:: This function is intended for the developer's aid. 
 
-.. warning:: This function is foing to be discontinued. 
+.. warning:: This function is deprecated in 2.1
              Use `_pgr_startPoint` instead
 
 Synopsis
