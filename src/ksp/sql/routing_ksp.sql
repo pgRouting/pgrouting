@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 CREATE OR REPLACE FUNCTION _pgr_ksp(sql text, start_vid bigint, end_vid bigint, k integer, has_rcost boolean, directed boolean,
-  OUT seq integer, OUT path_seq integer, OUT path_id bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
+  OUT seq integer, OUT path_id integer, OUT path_seq bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
     '$libdir/librouting-2.1', 'kshortest_path'
     LANGUAGE c STABLE STRICT;
@@ -53,7 +53,7 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, start_vid integer, end_vid integer,
 --V3 DEFAULTS directed:=true heap_paths:=false
 CREATE OR REPLACE FUNCTION pgr_ksp(sql text, start_vid bigint, end_vid bigint, k integer,
   directed boolean default true, heap_paths boolean default false,
-  OUT seq integer, OUT path_seq integer, OUT path_id bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
+  OUT seq integer, OUT path_id integer, OUT path_seq bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
