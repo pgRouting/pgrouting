@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Legacy Functions &mdash; pgRouting Manual (2.1.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.1.0 (90eda7c develop)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.1.0)" href="../../../doc/index.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.1.0)</span></a></h1>
+        <h2 class="heading"><span>Legacy Functions</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="legacy-functions">
+<span id="common-legacy"></span><h1>Legacy Functions<a class="headerlink" href="#legacy-functions" title="Permalink to this headline">¶</a></h1>
+<p>pgRouting 2.0 release has total restructured the function naming and obsoleted many of the functions that were available in the 1.x releases. While we realize that this may inconvenience our existing users, we felt this was needed for the long term viability of the project to be more response to our users and to be able to add new functionality and test existing functionality.</p>
+<p>We have made a minimal effort to save most of these function and distribute with the release in a file <code class="docutils literal"><span class="pre">pgrouting_legacy.sql</span></code> that is not part of the pgrouting extension and is not supported. If you can use these functions that is great. We have not tested any of these functions so if you find issues and want to post a pull request or a patch to help other users that is fine, but it is likely this file will be removed in a future release and we strongly recommend that you convert your existing code to use the new documented and supported functions.</p>
+<p>The follow is a list of TYPEs, CASTs and FUNCTION included in the <code class="docutils literal"><span class="pre">pgrouting_legacy.sql</span></code> file. The list is provide as a convenience but these functions are deprecated, not supported, and probably will need some changes to get them to work.</p>
+<div class="section" id="types-casts">
+<h2>TYPEs &amp; CASTs<a class="headerlink" href="#types-casts" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">TYPE</span> <span class="n">vertex_result</span> <span class="k">AS</span> <span class="p">(</span> <span class="n">x</span> <span class="n">float8</span><span class="p">,</span> <span class="n">y</span> <span class="n">float8</span> <span class="p">):</span>
+<span class="k">CAST</span> <span class="p">(</span><span class="n">pgr_pathResult</span> <span class="k">AS</span> <span class="n">path_result</span><span class="p">)</span> <span class="k">WITHOUT</span> <span class="k">FUNCTION</span> <span class="k">AS</span> <span class="k">IMPLICIT</span><span class="p">;</span>
+<span class="k">CAST</span> <span class="p">(</span><span class="n">pgr_geoms</span> <span class="k">AS</span> <span class="n">geoms</span><span class="p">)</span> <span class="k">WITHOUT</span> <span class="k">FUNCTION</span> <span class="k">AS</span> <span class="k">IMPLICIT</span><span class="p">;</span>
+<span class="k">CAST</span> <span class="p">(</span><span class="n">pgr_linkPoint</span> <span class="k">AS</span> <span class="n">link_point</span><span class="p">)</span> <span class="k">WITHOUT</span> <span class="k">FUNCTION</span> <span class="k">AS</span> <span class="k">IMPLICIT</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>FUNCTIONs<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">FUNCTION</span> <span class="nb">text</span><span class="p">(</span><span class="nb">boolean</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">add_vertices_geometry</span><span class="p">(</span><span class="n">geom_table</span> <span class="nb">varchar</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">update_cost_from_distance</span><span class="p">(</span><span class="n">geom_table</span> <span class="nb">varchar</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">insert_vertex</span><span class="p">(</span><span class="n">vertices_table</span> <span class="nb">varchar</span><span class="p">,</span> <span class="n">geom_id</span> <span class="n">anyelement</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">pgr_shootingStar</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">source_id</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">target_id</span> <span class="nb">integer</span><span class="p">,</span>
+                      <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_reverse_cost</span> <span class="nb">boolean</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">shootingstar_sp</span><span class="p">(</span> <span class="nb">varchar</span><span class="p">,</span><span class="n">int4</span><span class="p">,</span> <span class="n">int4</span><span class="p">,</span> <span class="n">float8</span><span class="p">,</span> <span class="nb">varchar</span><span class="p">,</span> <span class="nb">boolean</span><span class="p">,</span> <span class="nb">boolean</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">astar_sp_delta</span><span class="p">(</span> <span class="nb">varchar</span><span class="p">,</span><span class="n">int4</span><span class="p">,</span> <span class="n">int4</span><span class="p">,</span> <span class="n">float8</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">astar_sp_delta_directed</span><span class="p">(</span> <span class="nb">varchar</span><span class="p">,</span><span class="n">int4</span><span class="p">,</span> <span class="n">int4</span><span class="p">,</span> <span class="n">float8</span><span class="p">,</span> <span class="nb">boolean</span><span class="p">,</span> <span class="nb">boolean</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">astar_sp_delta_cc</span><span class="p">(</span> <span class="nb">varchar</span><span class="p">,</span><span class="n">int4</span><span class="p">,</span> <span class="n">int4</span><span class="p">,</span> <span class="n">float8</span><span class="p">,</span> <span class="nb">varchar</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">astar_sp_delta_cc_directed</span><span class="p">(</span> <span class="nb">varchar</span><span class="p">,</span><span class="n">int4</span><span class="p">,</span> <span class="n">int4</span><span class="p">,</span> <span class="n">float8</span><span class="p">,</span> <span class="nb">varchar</span><span class="p">,</span> <span class="nb">boolean</span><span class="p">,</span> <span class="nb">boolean</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">astar_sp_bbox</span><span class="p">(</span> <span class="nb">varchar</span><span class="p">,</span><span class="n">int4</span><span class="p">,</span> <span class="n">int4</span><span class="p">,</span> <span class="n">float8</span><span class="p">,</span> <span class="n">float8</span><span class="p">,</span> <span class="n">float8</span><span class="p">,</span> <span class="n">float8</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">astar_sp_bbox_directed</span><span class="p">(</span> <span class="nb">varchar</span><span class="p">,</span><span class="n">int4</span><span class="p">,</span> <span class="n">int4</span><span class="p">,</span> <span class="n">float8</span><span class="p">,</span> <span class="n">float8</span><span class="p">,</span> <span class="n">float8</span><span class="p">,</span>
+                             <span class="n">float8</span><span class="p">,</span> <span class="nb">boolean</span><span class="p">,</span> <span class="nb">boolean</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">astar_sp</span><span class="p">(</span> <span class="n">geom_table</span> <span class="nb">varchar</span><span class="p">,</span> <span class="k">source</span> <span class="n">int4</span><span class="p">,</span> <span class="n">target</span> <span class="n">int4</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">astar_sp_directed</span><span class="p">(</span> <span class="n">geom_table</span> <span class="nb">varchar</span><span class="p">,</span> <span class="k">source</span> <span class="n">int4</span><span class="p">,</span> <span class="n">target</span> <span class="n">int4</span><span class="p">,</span>
+                        <span class="n">dir</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">rc</span> <span class="nb">boolean</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">dijkstra_sp</span><span class="p">(</span> <span class="n">geom_table</span> <span class="nb">varchar</span><span class="p">,</span> <span class="k">source</span> <span class="n">int4</span><span class="p">,</span> <span class="n">target</span> <span class="n">int4</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">dijkstra_sp_directed</span><span class="p">(</span> <span class="n">geom_table</span> <span class="nb">varchar</span><span class="p">,</span> <span class="k">source</span> <span class="n">int4</span><span class="p">,</span> <span class="n">target</span> <span class="n">int4</span><span class="p">,</span>
+                           <span class="n">dir</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">rc</span> <span class="nb">boolean</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">dijkstra_sp_delta</span><span class="p">(</span> <span class="nb">varchar</span><span class="p">,</span><span class="n">int4</span><span class="p">,</span> <span class="n">int4</span><span class="p">,</span> <span class="n">float8</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">dijkstra_sp_delta_directed</span><span class="p">(</span> <span class="nb">varchar</span><span class="p">,</span><span class="n">int4</span><span class="p">,</span> <span class="n">int4</span><span class="p">,</span> <span class="n">float8</span><span class="p">,</span> <span class="nb">boolean</span><span class="p">,</span> <span class="nb">boolean</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">tsp_astar</span><span class="p">(</span> <span class="n">geom_table</span> <span class="nb">varchar</span><span class="p">,</span><span class="n">ids</span> <span class="nb">varchar</span><span class="p">,</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">delta</span> <span class="n">double</span> <span class="k">precision</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">tsp_astar_directed</span><span class="p">(</span> <span class="n">geom_table</span> <span class="nb">varchar</span><span class="p">,</span><span class="n">ids</span> <span class="nb">varchar</span><span class="p">,</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">delta</span> <span class="n">float8</span><span class="p">,</span> <span class="n">dir</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">rc</span> <span class="nb">boolean</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">tsp_dijkstra</span><span class="p">(</span> <span class="n">geom_table</span> <span class="nb">varchar</span><span class="p">,</span><span class="n">ids</span> <span class="nb">varchar</span><span class="p">,</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">)</span>
+<span class="k">FUNCTION</span> <span class="n">tsp_dijkstra_directed</span><span class="p">(</span> <span class="n">geom_table</span> <span class="nb">varchar</span><span class="p">,</span><span class="n">ids</span> <span class="nb">varchar</span><span class="p">,</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span>
+                            <span class="n">delta</span> <span class="n">float8</span><span class="p">,</span> <span class="n">dir</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">rc</span> <span class="nb">boolean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright pgRouting Contributors - Version 2.1.0 (90eda7c develop).
+      Last updated on Aug 31, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

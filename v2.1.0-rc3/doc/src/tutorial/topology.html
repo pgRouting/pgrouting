@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Routing Topology &mdash; pgRouting Manual (2.1.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.1.0 (90eda7c develop)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.1.0)" href="../../index.html" />
+    <link rel="up" title="Tutorial" href="index.html" />
+    <link rel="next" title="Graph Analytics" href="analytics.html" />
+    <link rel="prev" title="Getting Started" href="tutorial.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.1.0)</span></a></h1>
+        <h2 class="heading"><span>Routing Topology</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="tutorial.html">Getting Started</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="analytics.html">Graph Analytics</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="routing-topology">
+<span id="topology"></span><h1>Routing Topology<a class="headerlink" href="#routing-topology" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Stephen Woodbridge &lt;<a class="reference external" href="mailto:woodbri&#37;&#52;&#48;swoodbridge&#46;com">woodbri<span>&#64;</span>swoodbridge<span>&#46;</span>com</a>&gt;</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Copyright:</th><td class="field-body">Stephen Woodbridge. The source code is released under the MIT-X license.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Typically when GIS files are loaded into the data database for use with pgRouting they do not have topology information associated with them. To create a useful topology the data needs to be &#8220;noded&#8221;. This means that where two or more roads form an intersection there it needs to be a node at the intersection and all the road segments need to be broken at the intersection, assuming that you can navigate from any of these segments to any other segment via that intersection.</p>
+<p>You can use the <a class="reference internal" href="analytics.html#analytics"><span>graph analysis functions</span></a> to help you see where you might have topology problems in your data. If you need to node your data, we also have a function <a class="reference internal" href="../../../src/common/doc/functions/node_network.html#pgr-node-network"><span>pgr_nodeNetwork()</span></a> that might work for you. This function splits ALL crossing segments and nodes them. There are some cases where this might NOT be the right thing to do.</p>
+<p>For example, when you have an overpass and underpass intersection, you do not want these noded, but pgr_nodeNetwork does not know that is the case and will node them which is not good because then the router will be able to turn off the overpass onto the underpass like it was a flat 2D intersection. To deal with this problem some data sets use z-levels at these types of intersections and other data might not node these intersection which would be ok.</p>
+<p>For those cases where topology needs to be added the following functions may be useful. One way to prep the data for pgRouting is to add the following columns to your table and then populate them as appropriate. This example makes a lot of assumption like that you original data tables already has certain columns in it like <code class="docutils literal"><span class="pre">one_way</span></code>, <code class="docutils literal"><span class="pre">fcc</span></code>, and possibly others and that they contain specific data values. This is only to give you an idea of what you can do with your data.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">edge_table</span>
+    <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span>
+    <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">target</span> <span class="nb">integer</span><span class="p">,</span>
+    <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">cost_len</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">cost_time</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">rcost_len</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">rcost_time</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">x1</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">y1</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">x2</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">y2</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">to_cost</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
+    <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="k">rule</span> <span class="nb">text</span><span class="p">,</span>
+    <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">isolated</span> <span class="nb">integer</span><span class="p">;</span>
+
+<span class="k">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The function <a class="reference internal" href="../../../src/common/doc/functions/create_topology.html#pgr-create-topology"><span>pgr_createTopology()</span></a> will create the <code class="docutils literal"><span class="pre">vertices_tmp</span></code> table and populate the <code class="docutils literal"><span class="pre">source</span></code> and <code class="docutils literal"><span class="pre">target</span></code> columns. The following example populated the remaining columns. In this example, the <code class="docutils literal"><span class="pre">fcc</span></code> column contains feature class code and the <code class="docutils literal"><span class="pre">CASE</span></code> statements converts it to an average speed.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">UPDATE</span> <span class="n">edge_table</span> <span class="k">SET</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">st_x</span><span class="p">(</span><span class="n">st_startpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
+                      <span class="n">y1</span> <span class="o">=</span> <span class="n">st_y</span><span class="p">(</span><span class="n">st_startpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
+                      <span class="n">x2</span> <span class="o">=</span> <span class="n">st_x</span><span class="p">(</span><span class="n">st_endpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
+                      <span class="n">y2</span> <span class="o">=</span> <span class="n">st_y</span><span class="p">(</span><span class="n">st_endpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
+  <span class="n">cost_len</span>  <span class="o">=</span> <span class="n">st_length_spheroid</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span> <span class="s1">&#39;SPHEROID[&quot;WGS84&quot;,6378137,298.25728]&#39;</span><span class="p">),</span>
+  <span class="n">rcost_len</span> <span class="o">=</span> <span class="n">st_length_spheroid</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span> <span class="s1">&#39;SPHEROID[&quot;WGS84&quot;,6378137,298.25728]&#39;</span><span class="p">),</span>
+  <span class="n">len_km</span> <span class="o">=</span> <span class="n">st_length_spheroid</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span> <span class="s1">&#39;SPHEROID[&quot;WGS84&quot;,6378137,298.25728]&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span>
+  <span class="n">len_miles</span> <span class="o">=</span> <span class="n">st_length_spheroid</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span> <span class="s1">&#39;SPHEROID[&quot;WGS84&quot;,6378137,298.25728]&#39;</span><span class="p">)</span>
+              <span class="o">/</span> <span class="mi">1000</span><span class="p">.</span><span class="mi">0</span> <span class="o">*</span> <span class="mi">0</span><span class="p">.</span><span class="mi">6213712</span><span class="p">,</span>
+  <span class="n">speed_mph</span> <span class="o">=</span> <span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A10&#39;</span> <span class="k">THEN</span> <span class="mi">65</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A15&#39;</span> <span class="k">THEN</span> <span class="mi">65</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A20&#39;</span> <span class="k">THEN</span> <span class="mi">55</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A25&#39;</span> <span class="k">THEN</span> <span class="mi">55</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A30&#39;</span> <span class="k">THEN</span> <span class="mi">45</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A35&#39;</span> <span class="k">THEN</span> <span class="mi">45</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A40&#39;</span> <span class="k">THEN</span> <span class="mi">35</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A45&#39;</span> <span class="k">THEN</span> <span class="mi">35</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A50&#39;</span> <span class="k">THEN</span> <span class="mi">25</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A60&#39;</span> <span class="k">THEN</span> <span class="mi">25</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A61&#39;</span> <span class="k">THEN</span> <span class="mi">25</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A62&#39;</span> <span class="k">THEN</span> <span class="mi">25</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A64&#39;</span> <span class="k">THEN</span> <span class="mi">25</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A70&#39;</span> <span class="k">THEN</span> <span class="mi">15</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A69&#39;</span> <span class="k">THEN</span> <span class="mi">10</span>
+                   <span class="k">ELSE</span> <span class="k">null</span> <span class="k">END</span><span class="p">,</span>
+  <span class="n">speed_kmh</span> <span class="o">=</span> <span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A10&#39;</span> <span class="k">THEN</span> <span class="mi">104</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A15&#39;</span> <span class="k">THEN</span> <span class="mi">104</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A20&#39;</span> <span class="k">THEN</span> <span class="mi">88</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A25&#39;</span> <span class="k">THEN</span> <span class="mi">88</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A30&#39;</span> <span class="k">THEN</span> <span class="mi">72</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A35&#39;</span> <span class="k">THEN</span> <span class="mi">72</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A40&#39;</span> <span class="k">THEN</span> <span class="mi">56</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A45&#39;</span> <span class="k">THEN</span> <span class="mi">56</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A50&#39;</span> <span class="k">THEN</span> <span class="mi">40</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A60&#39;</span> <span class="k">THEN</span> <span class="mi">50</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A61&#39;</span> <span class="k">THEN</span> <span class="mi">40</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A62&#39;</span> <span class="k">THEN</span> <span class="mi">40</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A64&#39;</span> <span class="k">THEN</span> <span class="mi">40</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A70&#39;</span> <span class="k">THEN</span> <span class="mi">25</span>
+                   <span class="k">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A69&#39;</span> <span class="k">THEN</span> <span class="mi">15</span>
+                   <span class="k">ELSE</span> <span class="k">null</span> <span class="k">END</span><span class="p">;</span>
+
+<span class="c1">-- UPDATE the cost infomation based on oneway streets</span>
+
+<span class="k">UPDATE</span> <span class="n">edge_table</span> <span class="k">SET</span>
+    <span class="n">cost_time</span> <span class="o">=</span> <span class="k">CASE</span>
+        <span class="k">WHEN</span> <span class="n">one_way</span><span class="o">=</span><span class="s1">&#39;TF&#39;</span> <span class="k">THEN</span> <span class="mi">10000</span><span class="p">.</span><span class="mi">0</span>
+        <span class="k">ELSE</span> <span class="n">cost_len</span><span class="o">/</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="n">speed_kmh</span><span class="p">::</span><span class="nb">numeric</span><span class="o">*</span><span class="mi">3600</span><span class="p">.</span><span class="mi">0</span>
+        <span class="k">END</span><span class="p">,</span>
+    <span class="n">rcost_time</span> <span class="o">=</span> <span class="k">CASE</span>
+        <span class="k">WHEN</span> <span class="n">one_way</span><span class="o">=</span><span class="s1">&#39;FT&#39;</span> <span class="k">THEN</span> <span class="mi">10000</span><span class="p">.</span><span class="mi">0</span>
+        <span class="k">ELSE</span> <span class="n">cost_len</span><span class="o">/</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="n">speed_kmh</span><span class="p">::</span><span class="nb">numeric</span><span class="o">*</span><span class="mi">3600</span><span class="p">.</span><span class="mi">0</span>
+        <span class="k">END</span><span class="p">;</span>
+
+<span class="c1">-- clean up the database because we have updated a lot of records</span>
+
+<span class="k">VACUUM</span> <span class="k">ANALYZE</span> <span class="k">VERBOSE</span> <span class="n">edge_table</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Now your database should be ready to use any (most?) of the pgRouting algorithms.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../../src/common/doc/functions/create_topology.html#pgr-create-topology"><span>pgr_createTopology</span></a></li>
+<li><a class="reference internal" href="../../../src/common/doc/functions/node_network.html#pgr-node-network"><span>pgr_nodeNetwork</span></a></li>
+<li><a class="reference internal" href="../../../src/common/doc/utilities/point_to_id.html#pgr-point-to-id"><span>pgr_pointToId</span></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="tutorial.html">Getting Started</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="analytics.html">Graph Analytics</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright pgRouting Contributors - Version 2.1.0 (90eda7c develop).
+      Last updated on Aug 31, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
