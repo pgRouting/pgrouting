@@ -56,7 +56,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source bigint, distance
          end if;
       end if;
 
-      return query SELECT seq, node::integer as id1, edge::integer as id2, agg_cost as cost
+      return query SELECT seq-1 as seq, node::integer as id1, edge::integer as id2, agg_cost as cost
                 FROM _pgr_drivingDistance(sql, source, distance, directed, has_rcost);
   END
   $BODY$

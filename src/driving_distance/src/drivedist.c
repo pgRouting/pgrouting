@@ -156,7 +156,7 @@ driving_distance(PG_FUNCTION_ARGS) {
       values = palloc(5 * sizeof(Datum));
       nulls = palloc(5 * sizeof(char));
 
-      values[0] = Int32GetDatum(ret_path[call_cntr].seq);
+      values[0] = Int32GetDatum(ret_path[call_cntr].seq + 1);
       nulls[0] = ' ';
       values[1] = Int64GetDatum(ret_path[call_cntr].vertex);
       nulls[1] = ' ';

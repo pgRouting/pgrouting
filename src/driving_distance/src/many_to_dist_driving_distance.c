@@ -159,7 +159,7 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
       values = palloc(6 * sizeof(Datum));
       nulls = palloc(6 * sizeof(char));
       // id, start_v, node, edge, cost, tot_cost
-      values[0] = Int32GetDatum(ret_path[call_cntr].seq);
+      values[0] = Int32GetDatum(call_cntr + 1);
       nulls[0] = ' ';
       values[1] = Int64GetDatum(ret_path[call_cntr].from);
       nulls[1] = ' ';
