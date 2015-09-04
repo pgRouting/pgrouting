@@ -1,6 +1,6 @@
 NOTICE:  table "parallel" does not exist, skipping
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology(\'parallel\',0.001,\'the_geom\',\'id\',\'source\',\'target\',\'true\')
+NOTICE:  pgr_createTopology('parallel',0.001,'the_geom','id','source','target','true')
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Creating Topology, Please wait...
 NOTICE:  -------------> TOPOLOGY CREATED FOR  8 edges
