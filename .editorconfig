@@ -1,0 +1,22 @@
+# top-most EditorConfig file
+root = true
+
+# Defaults if not specified later
+[*]
+indent_size = 4
+indent_style = space
+
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# C source and header files
+[*.{c,h}]
+indent_size = 4
+indent_style = space
+
+# YAML and RST files
+[*.{rst,yml}]
+indent_size = 2
+indent_style = space

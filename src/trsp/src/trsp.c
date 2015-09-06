@@ -276,9 +276,12 @@ static int compute_trsp(
 
   edge_t *edges = NULL;
   int total_tuples = 0;
+#ifndef _MSC_VER
   edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
                                  .cost= -1, .reverse_cost= -1};
-
+#else // _MSC_VER
+  edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
+#endif //_MSC_VER
   restrict_t *restricts = NULL;
   int total_restrict_tuples = 0;
   restrict_columns_t restrict_columns = {.target_id= -1, .via_path= -1,
@@ -410,7 +413,7 @@ static int compute_trsp(
     //DBG("edgeID: %i SRc:%i - %i, cost: %f", edges[z].id,edges[z].source, edges[z].target,edges[z].cost);      
     
   }
-	
+
   DBG("Min vertex id: %i , Max vid: %i",v_min_id,v_max_id);
   DBG("Total %i edge tuples", total_tuples);
 
@@ -503,6 +506,10 @@ static int compute_trsp(
 
   if (dovertex) {
       DBG("Calling trsp_node_wrapper\n");
+      /** hack always returns 0 -1 when installed on EDB VC++ 64-bit without this **/
+      #if defined(__MINGW64__) 
+        elog(NOTICE,"Calling trsp_node_wrapper\n");
+      #endif
       ret = trsp_node_wrapper(edges, total_tuples, 
                         restricts, total_restrict_tuples,
                         start_id, end_id,
@@ -565,7 +572,10 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       int path_count = 0;
+
       int ret = -1;
+      if (ret == -1) {}; // to avoid warning set but not used
+
       int i;
 
       // create a function context for cross-call persistence
@@ -590,7 +600,10 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 
 	  DBG("Calling compute_trsp");
 
-      ret = compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
+
+      ret =
+
+ compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
                                    1, // do vertex
                                    PG_GETARG_INT32(1),
                                    0.5,
@@ -689,7 +702,9 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       int path_count = 0;
+#ifdef DEBUG
       int ret = -1;
+#endif
       int i;
       double s_pos;
       double e_pos;
@@ -734,7 +749,10 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 
 	  DBG("Calling compute_trsp");
 
-      ret = compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
+#ifdef DEBUG
+      ret =
+#endif
+         compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
                                    0,  //sdo edge
                                    PG_GETARG_INT32(1),
                                    s_pos,

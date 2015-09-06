@@ -138,14 +138,14 @@ to get more information about each step in the path.
 
  * See also :ref:`type_cost_result` and :ref:`type_geom_result`.
 
-How to use other tools to view your graph and route
--------------------------------------------------------------------------------
+.. How to use other tools to view your graph and route
+.. -------------------------------------------------------------------------------
 
-TBD
+.. TBD
 
-How to create a web app
--------------------------------------------------------------------------------
+.. How to create a web app
+.. -------------------------------------------------------------------------------
 
-TBD
+.. TBD
 
 

@@ -16,59 +16,50 @@ ERROR=0
 # ------------------------------------------------------------------------------
 # Remove PostgreSQL and all its files
 # ------------------------------------------------------------------------------
-if [ "$POSTGRESQL_VERSION" != "9.1" ]; then
-	sudo service postgresql stop
-	sudo apt-get remove postgresql postgresql-common postgresql-client-common postgresql-9.1 postgresql-client-9.1 libpq-dev libpq5  -qq --purge
-fi
+sudo service postgresql stop
+sudo apt-get remove postgresql libpq-dev libpq5 postgresql-client-common postgresql-common -qq --purge -y 
+sudo rm -rf /var/lib/postgresql
 
 # Add PPA's'
 # ------------------------------------------------------------------------------
 sudo apt-add-repository -y ppa:georepublic/pgrouting-travis
 
 if [ "$POSTGIS_VERSION" == "2.0" ] || [ "$POSTGIS_VERSION" == "2.1" ]; then 
-	sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable
+	sudo apt-add-repository -y ppa:ubuntugis/ppa
 fi
 
 # Add PostgreSQL Apt repository
+# UPDATE: seems to be already available in Travis
 # ------------------------------------------------------------------------------
-if [ "$POSTGRESQL_VERSION" != "9.1" ]; then
-	echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > pgdg.list
-	sudo mv pgdg.list /etc/apt/sources.list.d/
-	wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
-fi
-
-# Reload package archive
-# ------------------------------------------------------------------------------
+# echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > pgdg.list
+# sudo mv pgdg.list /etc/apt/sources.list.d/
+# wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 sudo apt-get update -qq
 
 # ------------------------------------------------------------------------------
-# Install PostgreSQL
+# Install PostgreSQL (always install from PostgreSQL Apt repository)
 # ------------------------------------------------------------------------------
-if [ "$POSTGRESQL_VERSION" != "9.1" ]; then
-	sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" install -y -qq postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION
-fi
+sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" install -y -qq postgresql-$POSTGRESQL_VERSION postgresql-contrib-$POSTGRESQL_VERSION postgresql-server-dev-$POSTGRESQL_VERSION
 
+# Install packages
 # ------------------------------------------------------------------------------
-# Install dependecies
-# ------------------------------------------------------------------------------
-sudo apt-get install cmake libcgal-dev libboost-graph-dev libboost-thread-dev postgresql-server-dev-$POSTGRESQL_VERSION
-
-# ------------------------------------------------------------------------------
-# Install PostGIS (always build from source)
-# ------------------------------------------------------------------------------
-sudo apt-get install -y -qq build-essential libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev 
+echo "Installing packages ... this may take some time."
+sudo apt-get install -y -qq packaging-dev cmake checkinstall libcgal-dev libboost-graph-dev libboost-thread-dev libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev 
 
 if [ "$POSTGIS_VERSION" == "1.5" ]; then 
-	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-1.5.8.tar.gz | tar xzf -
+	RELEASE="1.5.8"
+	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
 fi
 
 if [ "$POSTGIS_VERSION" == "2.0" ]; then 
-	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-2.0.3.tar.gz | tar xzf -
+	RELEASE="2.0.7"
+	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
 fi
 
 if [ "$POSTGIS_VERSION" == "2.1" ]; then 
 	sudo apt-get install -y -qq libpoppler-dev libarmadillo-dev libepsilon-dev liblzma-dev libxml2-dev
-	wget --quiet -O - https://github.com/postgis/postgis/archive/svn-trunk.tar.gz | tar xzf -
+	RELEASE="2.1.7"
+	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
 fi
 
 # Build and compile

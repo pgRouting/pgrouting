@@ -5,6 +5,7 @@
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 
+drop table if exists edge_table;
 CREATE TABLE edge_table (
     id serial,
     dir character varying,
@@ -46,6 +47,7 @@ UPDATE edge_table SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2)),
 
 select pgr_createTopology('edge_table',0.001);
 
+drop table if exists vertex_table;
 CREATE TABLE vertex_table (
     id serial,
     x double precision,

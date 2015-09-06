@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  */
 
@@ -265,7 +265,9 @@ Datum apsp_johnson(PG_FUNCTION_ARGS) {
   if (SRF_IS_FIRSTCALL()) {
     MemoryContext oldcontext;
     int output_count = 0;
+#ifdef DEBUG
     int ret;
+#endif
 
     /* create a function context for cross-call persistence */
     funcctx = SRF_FIRSTCALL_INIT();
@@ -273,7 +275,10 @@ Datum apsp_johnson(PG_FUNCTION_ARGS) {
     /* switch to memory context appropriate for multiple function calls */
     oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-    ret = compute_apsp_johnson(text2char(PG_GETARG_TEXT_P(0)), &output_edges,
+#ifdef DEBUG
+    ret =
+#endif
+    compute_apsp_johnson(text2char(PG_GETARG_TEXT_P(0)), &output_edges,
         &output_count);
 
 #ifdef DEBUG

@@ -1,3 +1,10 @@
+-- -------------------------------------------------------------------
+-- pgrouting_utilities.sql
+-- AuthorL Stephen Woodbridge <woodbri@imaptools.com>
+-- Copyright 2013 Stephen Woodbridge
+-- This file is release unde an MIT-X license.
+-- -------------------------------------------------------------------
+
 CREATE OR REPLACE FUNCTION pgr_version()
 RETURNS TABLE(
 		"version" varchar, 

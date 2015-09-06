@@ -1,0 +1,20 @@
+-- 0 edges tests
+-- directed graph
+-- undirected graph
+-- 1 edges tests
+-- edge doesnt have source
+4|2|5|1
+-- directed graph
+-- undirected graph
+-- edge doesnt have target
+3|3|4|-1
+-- directed graph
+-- undirected graph
+-- edge has both
+3|3|4|-1
+-- directed graph
+-- undirected graph
+-- edge has both
+2|2|3|-1
+-- directed graph
+-- undirected graph

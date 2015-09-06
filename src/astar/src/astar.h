@@ -15,15 +15,17 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  */
  
 #define _ASTAR_H
 
+#include <unistd.h>
 #include "postgres.h"
-#include "dijkstra.h"
+#include "../../common/src/pgr_types.h"
 
+#if 0
 typedef struct edge_astar 
 {
   int id;
@@ -36,6 +38,8 @@ typedef struct edge_astar
   float8 t_x;
   float8 t_y;
 } edge_astar_t;
+#endif
+
 
 #ifdef __cplusplus
 extern "C"

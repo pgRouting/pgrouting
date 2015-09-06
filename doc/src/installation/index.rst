@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -12,15 +12,29 @@
 Installation
 ===============================================================================
 
+This is a basic guide to download and install pgRouting.
+
+.. note:: additional notes can be found in `Installation Notes`_
+
+.. _Installation Notes: https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting
+
+Download
+--------
+
 Binary packages are provided for the current version on the following platforms:
 
 
 Windows
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Winnie Bot Experimental Builds: 
+Winnie Bot Builds:
 
-* `PostgreSQL 9.2 32-bit, 64-bit <http://winnie.postgis.net/download/windows/pg92/buildbot/>`_
+* `Winnie PostgreSQL 9.2-9.5 32-bit/64-bit <http://postgis.net/windows_downloads>`_
+
+Production Builds:
+
+* Production builds are part of the Spatial Extensions/PostGIS Bundle available via Application StackBuilder
+* `Can also get PostGIS Bundle from <http://download.osgeo.org/postgis/windows/>`_
 
 
 Ubuntu/Debian
@@ -49,6 +63,17 @@ RHEL/CentOS/Fedora
 * Fedora RPM's: https://admin.fedoraproject.org/pkgdb/acls/name/pgRouting
 
 
+FreeBSD
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+pgRouting can be installed via ports:
+
+.. code-block:: bash
+
+  cd /usr/ports/databases/pgRouting
+  make install clean
+
+
 OS X
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -64,29 +89,11 @@ OS X
 Source Package
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-======================== ======================= ====================
-Git 2.0.0-rc1 release    `v2.0.0-rc1.tar.gz`_    `v2.0.0-rc1.zip`_
-Git 2.0.0-beta release   `v2.0.0-beta.tar.gz`_   `v2.0.0-beta.zip`_
-Git 2.0.0-alpha release  `v2.0.0-alpha.tar.gz`_  `v2.0.0-alpha.zip`_
-Git master branch        `master.tar.gz`_        `master.zip`_
-Git develop branch       `develop.tar.gz`_       `develop.zip`_
-======================== ======================= ====================
+You can find all the pgRouting Releases: 
 
-.. _v2.0.0-rc1.tar.gz: https://github.com/pgRouting/pgrouting/archive/v2.0.0-rc1.tar.gz
-.. _v2.0.0-rc1.zip: https://github.com/pgRouting/pgrouting/archive/v2.0.0-rc1.zip
+https://github.com/pgRouting/pgrouting/releases
 
-.. _v2.0.0-beta.tar.gz: https://github.com/pgRouting/pgrouting/archive/v2.0.0-beta.tar.gz
-.. _v2.0.0-beta.zip: https://github.com/pgRouting/pgrouting/archive/v2.0.0-beta.zip
-
-.. _v2.0.0-alpha.tar.gz: https://github.com/pgRouting/pgrouting/archive/v2.0.0-alpha.tar.gz
-.. _v2.0.0-alpha.zip: https://github.com/pgRouting/pgrouting/archive/v2.0.0-alpha.zip
-
-.. _master.tar.gz: https://github.com/pgRouting/pgrouting/archive/master.tar.gz
-.. _master.zip: https://github.com/pgRouting/pgrouting/archive/master.zip
-
-.. _develop.tar.gz: https://github.com/pgRouting/pgrouting/archive/develop.tar.gz
-.. _develop.zip: https://github.com/pgRouting/pgrouting/archive/develop.zip
-
+See :ref:`build` to build the binaries from the source.
 
 Using Git
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -99,9 +106,31 @@ Git protocol (read-only):
 
 
 HTTPS protocol (read-only):
+
 .. code-block:: bash
 
 	git clone https://github.com/pgRouting/pgrouting.git
 
+See :ref:`build` to build the binaries from the source.
 
-See :ref:`build` for notes on compiling from source.
+Installing in the database
+--------------------------
+
+pgRouting is an extension. 
+
+.. code-block:: sql
+
+  CREATE EXTENSION postgis;
+  CREATE EXTENSION pgrouting;
+
+
+Upgrading the database
+----------------------
+
+To upgrade pgRouting to version 2.1.0 use the following command:
+
+.. code-block:: sql
+
+   ALTER EXTENSION pgrouting UPDATE TO "2.1.0";
+
+

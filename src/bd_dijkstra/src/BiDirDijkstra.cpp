@@ -27,6 +27,11 @@
 
 *****************************************************************************/
 
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
 #include "BiDirDijkstra.h"
 
 #undef DEBUG
@@ -314,9 +319,9 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, unsigned int edge_count, int ma
 	rque.push(std::make_pair(0.0, end_vertex));
 
 	int i;
-	int new_node;
+	// int new_node;
 	int cur_node;
-	int dir;
+	// int dir;
 
 /*
 	The main loop. The algorithm is as follows:
@@ -445,7 +450,7 @@ bool BiDirDijkstra::construct_graph(edge_t* edges, int edge_count, int maxNode)
 
 bool BiDirDijkstra::addEdge(edge_t edgeIn)
 {
-	long lTest;
+	// long lTest;
 
 	// Check if the edge is already processed.
 	Long2LongMap::iterator itMap = m_mapEdgeId2Index.find(edgeIn.id);
