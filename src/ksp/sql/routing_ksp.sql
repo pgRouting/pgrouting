@@ -42,8 +42,8 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, start_vid integer, end_vid integer,
          end if;
       end if;
 
-      return query SELECT ((row_number() over()) -1)::integer  as seq,  path_id::integer as id1, node::integer as id2, edge::integer as id3, cost 
-            FROM _pgr_ksp(sql::text, start_vid, end_vid, k, has_reverse, true) where path_id < k;
+      return query SELECT ((row_number() over()) -1)::integer  as seq,  (path_id-1)::integer as id1, node::integer as id2, edge::integer as id3, cost 
+            FROM _pgr_ksp(sql::text, start_vid, end_vid, k, has_reverse, true) where path_id <= k;
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE
@@ -62,7 +62,7 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, start_vid bigint, end_vid bigint, k
       has_rcost =_pgr_parameter_check('ksp', sql::text, true);
       if heap_paths = false then
          return query SELECT *
-                FROM _pgr_ksp(sql::text, start_vid, end_vid, k, has_rcost, directed) a where a.path_id < k;
+                FROM _pgr_ksp(sql::text, start_vid, end_vid, k, has_rcost, directed) a where a.path_id <= k;
       else
          return query SELECT *
                 FROM _pgr_ksp(sql::text, start_vid, end_vid, k, has_rcost, directed);

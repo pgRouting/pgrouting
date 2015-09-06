@@ -129,7 +129,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
       values[0] = Int32GetDatum(call_cntr + 1);
       nulls[0] = false;
 
-      values[1] = Int32GetDatum(path[call_cntr].from);
+      values[1] = Int32GetDatum(path[call_cntr].from + 1);
       nulls[1] = false;
 
       values[2] = Int32GetDatum(path[call_cntr].seq);
