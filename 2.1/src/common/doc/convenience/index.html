@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Convenience Functions &mdash; pgRouting Manual (2.1.0)</title>
+    
+    <link rel="stylesheet" href="../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '2.1.0 (b38118a master)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.1.0)" href="../../../../doc/index.html" />
+    <link rel="next" title="pgr_pointToEdgeNode" href="point_to_edgenode.html" />
+    <link rel="prev" title="pgr_trsp - Turn Restriction Shortest Path (TRSP)" href="../../../trsp/doc/index.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+          <span>pgRouting Manual (2.1.0)</span></a></h1>
+        <h2 class="heading"><span>Convenience Functions</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../../../trsp/doc/index.html">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="point_to_edgenode.html">pgr_pointToEdgeNode</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="convenience-functions">
+<span id="id1"></span><h1>Convenience Functions<a class="headerlink" href="#convenience-functions" title="Permalink to this headline">¶</a></h1>
+<p>The following functions are general purpose convenience functions that might
+be useful when building a larger application or handling input from say an
+Ajax handler.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="point_to_edgenode.html#pgr-point-to-edgenode"><span>pgr_pointToEdgeNode</span></a> - convert a point geometry to a <code class="docutils literal"><span class="pre">vertex_id</span></code> based on closest edge.</li>
+<li><a class="reference internal" href="flip_edges.html#pgr-flip-edges"><span>pgr_flipEdges</span></a> - flip the edges in an array of geometries so the connect end to end.</li>
+<li><a class="reference internal" href="text_to_points.html#pgr-text-to-points"><span>pgr_textToPoints</span></a> - convert a string of <code class="docutils literal"><span class="pre">x,y;x,y;...</span></code> locations into point geometries.</li>
+<li><a class="reference internal" href="points_to_vids.html#pgr-points-to-vids"><span>pgr_pointsToVids</span></a> - convert an array of point geometries into vertex ids.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="distance-matrix-functions">
+<h1>Distance Matrix Functions<a class="headerlink" href="#distance-matrix-functions" title="Permalink to this headline">¶</a></h1>
+<p>These function my be helpful when you need to create or manipulate distance matricies, like for TSP or VRP related problems.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="points_to_dmatrix.html#pgr-points-to-dmatrix"><span>pgr_pointsToDMatrix</span></a> - Create a distance matrix from an array of points.</li>
+<li><a class="reference internal" href="vids_to_dmatrix.html#pgr-vids-to-dmatrix"><span>pgr_vidsToDMatrix</span></a> - Create a distance matrix from an array of <code class="docutils literal"><span class="pre">vertix_id</span></code>.</li>
+<li><a class="reference internal" href="vids_to_dmatrix2.html#pgr-vids-to-dmatrix2"><span>pgr_vidsToDMatrix</span></a> - Create a distance matrix from an array of <code class="docutils literal"><span class="pre">vertix_id</span></code>.</li>
+</ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../../../trsp/doc/index.html">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="point_to_edgenode.html">pgr_pointToEdgeNode</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright pgRouting Contributors - Version 2.1.0 (b38118a master).
+      Last updated on Sep 06, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

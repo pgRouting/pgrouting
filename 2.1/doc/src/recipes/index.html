@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>User’s Recipes List &mdash; pgRouting Manual (2.1.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.1.0 (b38118a master)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.1.0)" href="../../index.html" />
+    <link rel="next" title="Comparing topology of a unnoded network with a noded network" href="example_recipe.html" />
+    <link rel="prev" title="Sample Data" href="../developer/sampledata.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.1.0)</span></a></h1>
+        <h2 class="heading"><span>User’s Recipes List</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../developer/sampledata.html">Sample Data</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="example_recipe.html">Comparing topology of a unnoded network with a noded network</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="user-s-recipes-list">
+<span id="recipes"></span><h1>User&#8217;s Recipes List<a class="headerlink" href="#user-s-recipes-list" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="example_recipe.html">Comparing topology of a unnoded network with a noded network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel_handling.html">Handling parallels after getting a path (pgr_ksp focus)</a></li>
+</ul>
+</div>
+<p><em>No more contributions</em></p>
+</div>
+<div class="section" id="how-to-contribute">
+<h1>How to contribute.<a class="headerlink" href="#how-to-contribute" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">To add a recipie or a wrapper</p>
+<p>The first steps are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Fork the repository</li>
+<li>Create a branch for your recipe or wrapper</li>
+<li>Create your recipe file</li>
+</ul>
+</div></blockquote>
+<div class="code highlight-python"><div class="highlight"><pre>cd doc/src/recipes/
+vi myrecipe.rst
+git add myrecipe.rst
+# include the recipe in this file
+vi index.rst
+</pre></div>
+</div>
+<p class="rubric">To create the test file of your recipe</p>
+<div class="code highlight-python"><div class="highlight"><pre>cd test
+cp myrecipe.rst myrecipe.sql.test
+
+# make your test based on your recipe
+vi myrecipe.sql.test
+git add myrecipe.sql.test
+
+# create your test results file
+touch myrecipe.result
+git add myrecipe.result
+
+# add your test to the file
+vi test.conf
+</pre></div>
+</div>
+<p>Leave only the SQL code on <code class="docutils literal"><span class="pre">myrecipe.sql.test</span></code> by deleting lines or by commenting lines.</p>
+<p class="rubric">To get the results of your recipe</p>
+<p>From the root directory execute:</p>
+<div class="code highlight-python"><div class="highlight"><pre>tools/test-runner.pl -alg recipes -ignorenotice
+</pre></div>
+</div>
+<p>Copy the results of your recipe and paste them in the file <code class="docutils literal"><span class="pre">myrecipe.result</span></code>, and remove the &#8220;&gt; &#8221; from the file.</p>
+<p class="rubric">make a pull request.</p>
+<div class="code highlight-python"><div class="highlight"><pre>git commit -a -m &#39;myrecipe is for this and that&#39;
+git push
+</pre></div>
+</div>
+<p>From your fork in github make a pull request over develop</p>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../developer/sampledata.html">Sample Data</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="example_recipe.html">Comparing topology of a unnoded network with a noded network</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright pgRouting Contributors - Version 2.1.0 (b38118a master).
+      Last updated on Sep 06, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
