@@ -84,8 +84,8 @@ boost_dijkstra_dist(edge_t *edges, unsigned int count, int source_vertex_id,
   
   graph_t graph( num_nodes );
   
-  property_map<graph_t, edge_weight_t>::type weightmap = 
-    get(edge_weight, graph);
+//  property_map<graph_t, edge_weight_t>::type weightmap = 
+//    get(edge_weight, graph);
   
   for (std::size_t j = 0; j < count; ++j)
     {
