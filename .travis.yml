@@ -49,7 +49,7 @@ env:
     #- POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=1.5
 
 install:
-  #- ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+  - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 before_script:
   #-
