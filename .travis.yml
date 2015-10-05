@@ -20,10 +20,7 @@ branches:
   only:
     - master
     - develop
-    - develop_2_1_0
-    - feature-travis
-    - dd-develop
-    - zia-broken-dev-1
+    - new-travis-dev
 
 addons:
   postgresql: "9.2"
