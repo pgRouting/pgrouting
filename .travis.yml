@@ -64,7 +64,9 @@ before_script:
   #-
 
 script: 
+  - cmake --version
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+
 
 after_script: 
   - ./tools/travis/pgrouting_prepare.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
