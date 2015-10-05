@@ -31,10 +31,6 @@ addons:
       - ubuntu-toolchain-r-test
       # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
       - kubuntu-backports
-
-addons:
-  # Dependencies on linux.
-  apt:
     packages:
       - cmake
       - g++-4.8
