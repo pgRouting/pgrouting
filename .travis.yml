@@ -26,6 +26,14 @@ branches:
 addons:
   postgresql: "9.2"
 
+  # Dependencies on linux.
+  apt:
+    sources:
+      # For gcc >= 4.8
+      - ubuntu-toolchain-r-test
+      # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
+      - kubuntu-backports
+
 services:
   #- postgresql: 9.1
   #- postgresql: 9.2
