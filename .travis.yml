@@ -26,16 +26,6 @@ branches:
 addons:
   postgresql: "9.2"
 
-  # Dependencies on linux.
-  apt:
-    sources:
-      # For gcc >= 4.8
-      - ubuntu-toolchain-r-test
-      # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
-      - kubuntu-backports
-    packages:
-      - cmake
-      - g++-4.8
 
 services:
   #- postgresql: 9.1
@@ -47,6 +37,16 @@ matrix:
     - os: linux
       compiler: gcc
       env: BUILD_TOOL=cmake
+  # Dependencies on linux.
+  apt:
+    sources:
+      # For gcc >= 4.8
+      - ubuntu-toolchain-r-test
+      # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
+      - kubuntu-backports
+    packages:
+      - cmake
+      - g++-4.8
 
 
 #env:
