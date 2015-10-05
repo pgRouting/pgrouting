@@ -33,6 +33,9 @@ addons:
       - ubuntu-toolchain-r-test
       # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
       - kubuntu-backports
+    packages:
+      - cmake
+      - g++-4.8
 
 services:
   #- postgresql: 9.1
