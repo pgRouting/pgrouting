@@ -12,31 +12,35 @@ sudo: required
 compiler:
   - gcc
 
-#notifications:
-#  email:
-#    on_failure: project@pgrouting.org
+notifications:
+  email:
+    on_failure: project@pgrouting.org
 
 branches:
   only:
-    - new-travis-dev
+    - master
+    - develop
+    - develop_2_1_0
+    - feature-travis
+    - dd-develop
+    - zia-broken-dev-1
 
 addons:
   postgresql: "9.2"
-#  postgresql: "9.3"
-#  postgresql: "9.4"
+  postgresql: "9.3"
+  postgresql: "9.4"
 
-#services:
+services:
   #- postgresql: 9.1
   #- postgresql: 9.2
   #- postgresql: 9.3
-  #- postgresql: 9.4
 
 env:
   matrix:
-    #- POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.1
-    #- POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
-    #- POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
-    #- POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
+    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.1
+    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
+    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
+    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
 
     - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.0
     - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.0
