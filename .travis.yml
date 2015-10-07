@@ -71,19 +71,15 @@ matrix:
 before_install:
   - cmake --version
   - gcc-4.8 --version
-  - apt list postgresql-contrib
-  - apt list postgresql-server-dev
-
 
 install:
-  
 #  - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 before_script:
   #-
 
 script: 
-#  - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+  - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 after_script: 
 #  - ./tools/travis/pgrouting_prepare.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
