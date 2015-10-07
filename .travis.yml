@@ -22,6 +22,7 @@ branches:
 
 addons:
   postgresql: "9.2"
+
   # Dependencies on linux.
   apt:
     sources:
@@ -66,10 +67,16 @@ matrix:
     #- POSTGRESQL_VERSION=9.0 POSTGIS_VERSION=1.5
     #- POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=1.5
 
-install:
-  
+
+before_install:
   - cmake --version
   - gcc-4.8 --version
+  - apt list postgresql-contrib
+  - apt list postgresql-server-dev
+
+
+install:
+  
 #  - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 before_script:
