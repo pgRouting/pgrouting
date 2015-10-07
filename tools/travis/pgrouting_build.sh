@@ -13,6 +13,6 @@ set -e
 #cmake -DWITH_DD=ON 
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_CXX_COMPILER=g++-4.8 ..
 make
 sudo make install
