@@ -5,7 +5,7 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
-language: c
+language: cpp
 
 sudo: required
 
@@ -14,35 +14,44 @@ compiler:
 
 notifications:
   email:
-    on_failure: project@pgrouting.org
+    on_failure: vicky@georepublic.com
 
 branches:
   only:
-    - master
-    - develop
     - new-travis-dev
 
 addons:
   postgresql: "9.2"
-  postgresql: "9.3"
-  postgresql: "9.4"
+  # Dependencies on linux.
+  apt:
+    sources:
+      # For gcc >= 4.8
+      - ubuntu-toolchain-r-test
+      # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
+      - kubuntu-backports
+    packages:
+      - cmake
+      - g++-4.8
 
-services:
+#  postgresql: "9.3"
+#  postgresql: "9.4"
+
+#services:
   #- postgresql: 9.1
   #- postgresql: 9.2
   #- postgresql: 9.3
 
 env:
   matrix:
-    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.1
-    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
+#    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.1
+#    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
     - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
-    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
+#    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
 
-    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.0
-    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.0
+#    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.0
+#    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.0
     - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.0
-    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.0
+#    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.0
 
     ## We are NOT supporting these for pgrouting 2.1.0
     #- POSTGRESQL_VERSION=8.4 POSTGIS_VERSION=1.5
@@ -50,17 +59,18 @@ env:
     #- POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=1.5
 
 install:
-  - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+  - cmake --version
+#  - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 before_script:
   #-
 
 script: 
-  - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+#  - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 after_script: 
-  - ./tools/travis/pgrouting_prepare.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
-  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+#  - ./tools/travis/pgrouting_prepare.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+#  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 after_success:
   #- ./tools/travis/pgrouting_deploy.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
