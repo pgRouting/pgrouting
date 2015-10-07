@@ -46,7 +46,7 @@ matrix:
   env: BUILD_TOOL=cmake
   include:
     - os: linux
-      compiler: gcc
+      compiler: gcc-4.8
 
 
 #env:
