@@ -41,16 +41,23 @@ addons:
   #- postgresql: 9.2
   #- postgresql: 9.3
 
-env:
-  matrix:
+matrix:
+  env: BUILD_TOOL=cmake
+  include:
+    - os: linux
+      compiler: gcc
+
+
+#env:
+#  matrix:
 #    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.1
 #    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
-    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
+#    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
 #    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
 
 #    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.0
 #    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.0
-    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.0
+#    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.0
 #    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.0
 
     ## We are NOT supporting these for pgrouting 2.1.0
@@ -59,7 +66,9 @@ env:
     #- POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=1.5
 
 install:
+  
   - cmake --version
+  - gcc --version
 #  - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 before_script:
