@@ -69,7 +69,7 @@ matrix:
 install:
   
   - cmake --version
-  - gcc --version
+  - gcc-4.8 --version
 #  - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 before_script:
