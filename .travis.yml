@@ -10,7 +10,7 @@ language: cpp
 sudo: required
 
 compiler:
-  - gcc
+  - gcc-4.8
 
 notifications:
   email:
