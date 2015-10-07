@@ -11,6 +11,6 @@ set -e
 
 # build pgRouting
 #cmake -DWITH_DD=ON 
-cmake ..
+cmake 
 make
 sudo make install
