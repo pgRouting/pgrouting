@@ -8,6 +8,12 @@
 cmake_minimum_required(VERSION 2.8.8 FATAL_ERROR)
 project(PGROUTING)
 
+set(PGROUTING_VERSION_MAJOR "2")
+set(PGROUTING_VERSION_MINOR "2")
+set(PGROUTING_VERSION_PATCH "0")
+set(POSTGRESQL_MINIMUM_VERSION "9.1.0")
+set(POSTGIS_MINIMUM_VERSION "2.0.0")
+
 #set(CMAKE_VERBOSE_MAKEFILE 1)
 
 # Configure options
@@ -32,11 +38,13 @@ SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries 
 
 #- ----------------------------------------------------------------------------
 # USERS FLAGS
+
+#overriding ON flags when no documentation is asked
 if(NOT WITH_DOC)
   set(BUILD_HTML OFF) 
   set(BUILD_LATEX OFF) 
   set(BUILD_MAN OFF) 
-endif(WITH_DOC)
+endif(NOT WITH_DOC)
 
 message(STATUS "WITH_TEST: ${WITH_TEST}")
 message(STATUS "WITH_DOC: ${WITH_DOC}")
@@ -47,9 +55,6 @@ message(STATUS "BUILD_MAN: ${BUILD_MAN}")
 
 #-----------------------------------------------------------------------------
 # PGROUTING version number.
-set(PGROUTING_VERSION_MAJOR "2")
-set(PGROUTING_VERSION_MINOR "2")
-set(PGROUTING_VERSION_PATCH "0")
 
 set(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
 
@@ -60,7 +65,7 @@ file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 #string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
 #string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\1" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
 #string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
-string(SUBSTRING ${PGROUTING_BUILD_STRING} 1 7 PGROUTING_GIT_HASH)
+string(SUBSTRING ${PGROUTING_BUILD_STRING} 0 7 PGROUTING_GIT_HASH)
 string(SUBSTRING ${PGROUTING_BUILD_STRING} 8 -1 PGROUTING_GIT_BRANCH)
 
 set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_GIT_HASH} ${PGROUTING_GIT_BRANCH}")
@@ -74,13 +79,9 @@ message(STATUS "PGROUTING_GIT_BRANCH: ${PGROUTING_GIT_BRANCH}")
 message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
 message(STATUS "PGROUTING_SOURCE_DIR: ${PGROUTING_SOURCE_DIR}")
 
-message(STATUS "CMAKE_VERSION: ${CMAKE_VERSION}")
-message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
 
 #message(STATUS "PGROUTING_VERSION_REVISION_HASH: ${PGROUTING_VERSION_REVISION_HASH}")
 
-set(POSTGRESQL_MINIMUM_VERSION "9.1.0")
-set(POSTGIS_MINIMUM_VERSION "2.0.0")
 message(STATUS "POSTGRESQL_BIN: ${POSTGRESQL_BIN}")
 
 #-----------------------------------------------------------------------------
@@ -96,8 +97,18 @@ set(CMAKE_MODULE_PATH "${PGROUTING_SOURCE_DIR}/cmake")
 include(MacroLibrary)
 include(TargetDistclean)
 
+message(STATUS "CMAKE_VERSION: ${CMAKE_VERSION}")
+message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
+
+
+#-----------------------------------------------------------------------------
+# Detecting Operating System
+
 message(STATUS "UNIX=${UNIX}")
 message(STATUS "WIN32=${WIN32}")
+
+#-----------------------------------------------------------------------------
+# WIN32
 if(WIN32)
   set(OS_BUILD  $ENV{OS_BUILD})
   if(NOT OS_BUILD)
@@ -123,48 +134,81 @@ if(WIN32)
 endif(WIN32)
 
 
-#Perl is for the test environment
-if(WITH_TEST)
-  message(STATUS " TESTS are requiered, Checking perl installation.")
-  include(FindPerl)
-  if(NOT PERL_EXECUTABLE)
-    message(FATAL_ERROR " Pearl not found. Please check your perl installation.")
-  endif(NOT PERL_EXECUTABLE)
-endif(WITH_TEST)
+#-----------------------------------------------------------------------------
+# pgRouting Boost requirements
 
-find_package(PostgreSQL)
-if(NOT POSTGRESQL_FOUND)
-  message(FATAL_ERROR " Please check your PostgreSQL installation.") 
-endif(NOT POSTGRESQL_FOUND)
-
-#set(Boost_DEBUG ON)
-find_package(Boost)
+message(STATUS "* Checking pgRouting Boost requirements *")
+find_package(Boost COMPONENTS graph REQUIRED)
 if(Boost_INCLUDE_DIRS)
-  message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIR}")
+  message(STATUS "  Boost headers: ${Boost_INCLUDE_DIR}")
 else(Boost_INCLUDE_DIRS)
-  message(FATAL_ERROR " Please check your Boost installation ") 
+  message(FATAL_ERROR "  Please check your Boost installation ") 
 endif(Boost_INCLUDE_DIRS)
+message(STATUS "pgRouting Boost requirements: ...OK")
 
-find_package(CGAL)
+#-----------------------------------------------------------------------------
+# pgRouting CGAL requirements
+#CGAL is used by A shape
+
+message(STATUS "* Checking pgRouting CGAL requirements *")
+find_package(CGAL REQUIRED)
 if(NOT CGAL_FOUND)
    message(FATAL_ERROR " Please check your CGAL installation, or set correct path to CGAL_INCLUDE_DIR and CGAL_LIBRARIES.")
 endif(NOT CGAL_FOUND)
+message(STATUS "pgRouting CGAL requirements: ...OK")
+
+
+
+#-----------------------------------------------------------------------------
+# Perl is for the test environment
+
+if(WITH_TEST)
+  message(STATUS "* TESTS are requiered, Checking perl installation. *")
+  include(FindPerl)
+  if(NOT PERL_EXECUTABLE)
+    message(FATAL_ERROR " Perl not found. Please check your perl installation.")
+  endif(NOT PERL_EXECUTABLE)
+  message(STATUS "pgRouting perl requirements: ...OK")
+endif(WITH_TEST)
+
+
+#-----------------------------------------------------------------------------
+# POSTGRESQL is compulsory
+
+find_package(PostgreSQL REQUIRED)
+if(NOT POSTGRESQL_FOUND)
+  message(FATAL_ERROR "PostgreSQL: not found.") 
+else(NOT POSTGRESQL_FOUND)
+  message(STATUS "PostgreSQL: found") 
+endif(NOT POSTGRESQL_FOUND)
 
 if(NOT POSTGRESQL_VERSION_STRING)
-  message(FATAL_ERROR "pg_config was not found. Please check your PostgreSQL installation!")
+  message(FATAL_ERROR "   pg_config: not found.")
+else(NOT POSTGRESQL_VERSION_STRING)
+  message(STATUS "   pg_config: found") 
 endif(NOT POSTGRESQL_VERSION_STRING)
 
-message(STATUS "POSTGRESQL_VERSION_STRING is ${POSTGRESQL_VERSION_STRING}")
+#message(STATUS "POSTGRESQL_VERSION_STRING is ${POSTGRESQL_VERSION_STRING}")
+
 string(SUBSTRING "${POSTGRESQL_VERSION_STRING}" 11 -1 POSTGRESQL_VERSION)
-message(STATUS "POSTGRESQL_VERSION is ${POSTGRESQL_VERSION}")
+#message(STATUS "POSTGRESQL_VERSION is ${POSTGRESQL_VERSION}")
 string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQL_VERSION})
-message(STATUS "PGSQL_VERSION is ${PGSQL_VERSION}")
+#message(STATUS "PGSQL_VERSION is ${PGSQL_VERSION}")
+
+
+#set(POSTGRESQL_VERSION "8.9.0")
+if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
+  message(STATUS "   POSTGRESQL_VERSION_STRING: ${POSTGRESQL_VERSION_STRING} ...ERROR")
+  message(FATAL_ERROR "   PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
+else("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
+  message(STATUS "   POSTGRESQL_VERSION_STRING: ${POSTGRESQL_VERSION_STRING} ...OK")
+endif("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
 
-if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
-  message(FATAL_ERROR " PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
-endif("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
+#if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
+#  message(FATAL_ERROR " PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
+#endif("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
 
 
 execute_process(
@@ -192,8 +236,13 @@ else(SHARE_DIR)
   message(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
 endif(SHARE_DIR)
 
+
+#---------------------------------------------------------------------------------
 # Handles documentation
-add_subdirectory(doc)
+
+if(WITH_DOC)
+  add_subdirectory(doc)
+endif(WITH_DOC)
 
 #include directories: files in alphabetical order
 set(PGROUTING_INCLUDE_DIRECTORIES
@@ -304,11 +353,6 @@ add_library(routing-2.1
     )
 
 install(TARGETS routing-2.1 DESTINATION ${LIBRARY_INSTALL_PATH})
-
-#add_library(routing_vrp
-#add_library(routing_bd
-#add_library(routing_dd
-#add_library(routing
 
 
 if(APPLE)
