@@ -13,7 +13,7 @@ project(PGROUTING)
 # Configure options
 
 option(WITH_TEST 
-    "Set ON|OFF (default=ON) to perform the tests" ON)
+    "Set ON|OFF (default=ON) to perform the tests" OFF)
 
 option(WITH_DOC
     "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
@@ -28,6 +28,21 @@ option(BUILD_MAN
     "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
 
 SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries an a non-standard location.")
+
+
+#- ----------------------------------------------------------------------------
+# USERS FLAGS
+if(NOT WITH_DOC)
+  set(BUILD_HTML OFF) 
+  set(BUILD_LATEX OFF) 
+  set(BUILD_MAN OFF) 
+endif(WITH_DOC)
+
+message(STATUS "WITH_TEST: ${WITH_TEST}")
+message(STATUS "WITH_DOC: ${WITH_DOC}")
+message(STATUS "BUILD_LATEX: ${BUILD_LATEX}")
+message(STATUS "BUILD_HTML: ${BUILD_HTML}")
+message(STATUS "BUILD_MAN: ${BUILD_MAN}")
 
 
 #-----------------------------------------------------------------------------
@@ -110,9 +125,10 @@ endif(WIN32)
 
 #Perl is for the test environment
 if(WITH_TEST)
+  message(STATUS " TESTS are requiered, Checking perl installation.")
   include(FindPerl)
   if(NOT PERL_EXECUTABLE)
-    message(FATAL_ERROR " Please check your Perl installation.")
+    message(FATAL_ERROR " Pearl not found. Please check your perl installation.")
   endif(NOT PERL_EXECUTABLE)
 endif(WITH_TEST)
 
