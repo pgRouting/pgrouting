@@ -187,16 +187,16 @@ endif(WITH_TEST)
 
 find_package(PostgreSQL REQUIRED)
 if(NOT POSTGRESQL_FOUND)
-  message(FATAL_ERROR "PostgreSQL: not found.") 
+  message(FATAL_ERROR "... PostgreSQL: not found.") 
 else(NOT POSTGRESQL_FOUND)
   message(STATUS "PostgreSQL: found") 
 endif(NOT POSTGRESQL_FOUND)
 
-if(NOT POSTGRESQL_VERSION_STRING)
+if(NOT POSTGRESQL_PG_CONFIG)
   message(FATAL_ERROR "   pg_config: not found.")
-else(NOT POSTGRESQL_VERSION_STRING)
+else(NOT POSTGRESQL_PG_CONFIG)
   message(STATUS "   pg_config: found") 
-endif(NOT POSTGRESQL_VERSION_STRING)
+endif(NOT POSTGRESQL_PG_CONFIG)
 
 #message(STATUS "POSTGRESQL_VERSION_STRING is ${POSTGRESQL_VERSION_STRING}")
 
