@@ -20,6 +20,7 @@ branches:
   only:
     - new-travis-dev
 
+
 addons:
   postgresql: "9.2"
 
@@ -34,6 +35,9 @@ addons:
       - cmake
       - gcc-4.8
       - g++-4.8
+      - libboost-thread-dev
+      - libboost-system-dev
+      - libboost-test-dev
 
 #  postgresql: "9.3"
 #  postgresql: "9.4"
@@ -66,6 +70,7 @@ matrix:
     #- POSTGRESQL_VERSION=8.4 POSTGIS_VERSION=1.5
     #- POSTGRESQL_VERSION=9.0 POSTGIS_VERSION=1.5
     #- POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=1.5
+
 
 
 before_install:
