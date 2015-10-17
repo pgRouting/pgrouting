@@ -144,15 +144,13 @@ if ( NOT Boost_FOUND OR NOT Boost_GRAPH_FOUND )
   message(FATAL_ERROR "Package Boost or Boost.Graph  required, but not found!")
 endif ( NOT Boost_FOUND OR NOT Boost_GRAPH_FOUND )
 
-if ( NOT Boost_GRAPH_FOUND )
-  message(FATAL_ERROR "Package Boost.Graph required, but not found!")
-endif( NOT Boost_GRAPH_FOUND )
 
-if(Boost_INCLUDE_DIRS)
-  message(STATUS "  Boost headers found: ${Boost_INCLUDE_DIR}")
-else(Boost_INCLUDE_DIRS)
-  message(FATAL_ERROR "  Please check your Boost installation ") 
-endif(Boost_INCLUDE_DIRS)
+#if(Boost_INCLUDE_DIRS)
+#  message(STATUS "  Boost headers found: ${Boost_INCLUDE_DIR}")
+#else(Boost_INCLUDE_DIRS)
+#  message(FATAL_ERROR "  Please check your Boost installation ") 
+#endif(Boost_INCLUDE_DIRS)
+
 message(STATUS "pgRouting Boost requirements: ...OK")
 
 
