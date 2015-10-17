@@ -139,7 +139,7 @@ endif(WIN32)
 
 message(STATUS "* Checking pgRouting Boost requirements *")
 #set(Boost_DEBUG ON)
-find_package(Boost  COMPONENTS  graph REQUIRED)
+find_package(Boost QUIET COMPONENTS  graph REQUIRED)
 if ( NOT Boost_FOUND OR NOT Boost_GRAPH_FOUND )
   message(FATAL_ERROR "Package Boost or Boost.Graph  required, but not found!")
 endif ( NOT Boost_FOUND OR NOT Boost_GRAPH_FOUND )
@@ -160,9 +160,10 @@ message(STATUS "pgRouting Boost requirements: ...OK")
 #CGAL is used by A shape
 
 message(STATUS "* Checking pgRouting CGAL requirements *")
-find_package(CGAL REQUIRED)
+find_package(CGAL QUIET REQUIRED)
 if(NOT CGAL_FOUND)
-   message(FATAL_ERROR " Please check your CGAL installation, or set correct path to CGAL_INCLUDE_DIR and CGAL_LIBRARIES.")
+  message(FATAL_ERROR "Package CGAL required, but not found!")
+  #libcgal-dev
 endif(NOT CGAL_FOUND)
 message(STATUS "pgRouting CGAL requirements: ...OK")
 
