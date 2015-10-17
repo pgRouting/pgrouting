@@ -138,7 +138,14 @@ endif(WIN32)
 # pgRouting Boost requirements
 
 message(STATUS "* Checking pgRouting Boost requirements *")
-find_package(Boost REQUIRED COMPONENTS  graph)
+find_package(Boost  COMPONENTS  graph REQUIRED)
+if ( NOT BOOST_FOUND )
+  message(FATAL_ERROR "Package Boost required, but not found!")
+endif( NOT BOOST_FOUND )
+if ( NOT GRAPH_FOUND )
+  message(FATAL_ERROR "Package Boost.Graph required, but not found!")
+endif( NOT GRAPH_FOUND )
+
 if(Boost_INCLUDE_DIRS)
   message(STATUS "  Boost headers found: ${Boost_INCLUDE_DIR}")
 else(Boost_INCLUDE_DIRS)
