@@ -138,7 +138,7 @@ endif(WIN32)
 # pgRouting Boost requirements
 
 message(STATUS "* Checking pgRouting Boost requirements *")
-set(Boost_DEBUG ON)
+#set(Boost_DEBUG ON)
 find_package(Boost  COMPONENTS  graph REQUIRED)
 if ( NOT Boost_FOUND OR NOT Boost_GRAPH_FOUND )
   message(FATAL_ERROR "Package Boost or Boost.Graph  required, but not found!")
