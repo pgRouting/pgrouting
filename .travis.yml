@@ -35,7 +35,6 @@ addons:
       - cmake
       - gcc-4.8
       - g++-4.8
-      - libcgal10
       - libcgal-dev
       - libboost-thread-dev
 #      - libboost-system-dev
