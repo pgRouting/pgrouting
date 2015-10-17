@@ -138,13 +138,15 @@ endif(WIN32)
 # pgRouting Boost requirements
 
 message(STATUS "* Checking pgRouting Boost requirements *")
-find_package(Boost COMPONENTS graph REQUIRED)
+find_package(Boost REQUIRED COMPONENTS  graph)
 if(Boost_INCLUDE_DIRS)
-  message(STATUS "  Boost headers: ${Boost_INCLUDE_DIR}")
+  message(STATUS "  Boost headers found: ${Boost_INCLUDE_DIR}")
 else(Boost_INCLUDE_DIRS)
   message(FATAL_ERROR "  Please check your Boost installation ") 
 endif(Boost_INCLUDE_DIRS)
 message(STATUS "pgRouting Boost requirements: ...OK")
+
+
 
 #-----------------------------------------------------------------------------
 # pgRouting CGAL requirements
