@@ -40,11 +40,12 @@ addons:
 #      - libboost-thread-dev
 #      - libboost-program-options-dev
 #      - libboost1.55-dev
+      - libboost1.55-all-dev
 #      - libboost-thread1.55-dev
 #      - libboost-program-options1.55-dev
 #      - libboost-system-dev
-      - libboost-graph1.55-dev
-#      - libcgal-dev
+#      - libboost-graph1.55-dev
+      - libcgal-dev
       - postgresql-server-dev-9.4
 
 #  postgresql: "9.3"
@@ -84,7 +85,7 @@ env:
 before_install:
   - cmake --version
   - gcc-4.8 --version
-  - sudo apt-get build-dep -y install libcgal-dev libboost-dev libboost-thread-dev libboost-program-options-dev
+#  - sudo apt-get build-dep -y install libcgal-dev libboost-dev libboost-thread-dev libboost-program-options-dev
 #  - wget https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.7/CGAL-4.7.tar.gz
 #  - tar -xvf CGAL-4.7.tar.gz
 #  - cd CGAL-4.7 && cmake . && make && sudo make install 
