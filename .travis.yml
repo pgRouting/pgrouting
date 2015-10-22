@@ -7,7 +7,7 @@
 
 language: cpp
 
-sudo: false
+sudo: required
 
 compiler:
   - gcc-4.8
