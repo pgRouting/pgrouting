@@ -35,11 +35,11 @@ addons:
       - cmake
       - gcc-4.8
       - g++-4.8
-      - libcgal-dev
-      - libboost1.55-all-dev
-#      - libboost-thread1.55-dev
+      - libboost1.55-dev
+      - libboost-thread1.55-dev
 #      - libboost-system-dev
-#      - libboost-graph1.55-dev
+      - libboost-graph1.55-dev
+      - libcgal-dev
       - postgresql-server-dev-9.4
 
 #  postgresql: "9.3"
