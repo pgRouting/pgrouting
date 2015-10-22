@@ -35,7 +35,7 @@ CREATE OR REPLACE FUNCTION pgr_kdijkstracost(
     directed boolean,
     has_reverse_cost boolean)
     RETURNS SETOF pgr_costResult
-    AS '$libdir/librouting-2.2', 'onetomany_dijkstra_dist'
+    AS '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'onetomany_dijkstra_dist'
     LANGUAGE C STABLE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_kdijkstrapath(
@@ -45,11 +45,11 @@ CREATE OR REPLACE FUNCTION pgr_kdijkstrapath(
     directed boolean,
     has_reverse_cost boolean)
     RETURNS SETOF pgr_costResult3
-    AS '$libdir/librouting-2.2', 'onetomany_dijkstra_path'
+    AS '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'onetomany_dijkstra_path'
     LANGUAGE C STABLE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_vidsToDMatrix(sql text,
     vids integer[], dir bool, has_rcost bool, want_symmetric bool)
     RETURNS float8[]
-    AS '$libdir/librouting-2.2', 'manytomany_dijkstra_dmatrix'
+    AS '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'manytomany_dijkstra_dmatrix'
     LANGUAGE C STABLE STRICT;

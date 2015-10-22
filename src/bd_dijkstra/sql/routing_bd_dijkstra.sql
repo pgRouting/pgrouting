@@ -12,6 +12,6 @@ CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
         directed boolean, 
         has_reverse_cost boolean)
         RETURNS SETOF pgr_costResult
-        AS '$libdir/librouting-2.2', 'bidir_dijkstra_shortest_path'
+        AS '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'bidir_dijkstra_shortest_path'
         LANGUAGE c IMMUTABLE STRICT;
 
