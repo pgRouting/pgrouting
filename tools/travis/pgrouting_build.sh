@@ -10,7 +10,6 @@
 set -e 
 
 # build pgRouting
-#cmake -DWITH_DD=ON 
 mkdir build
 cd build
 cmake -DCMAKE_CXX_COMPILER=g++-4.8 \

@@ -86,7 +86,7 @@ endif()
 add_subdirectory(cmake)
 set(CMAKE_MODULE_PATH "${PGROUTING_SOURCE_DIR}/cmake")
 
-include(MacroLibrary)
+include(Cat)
 include(TargetDistclean)
 include(FindPackageHandleStandardArgs)
 
@@ -195,8 +195,9 @@ endif(WITH_TEST)
 
 
 message(STATUS "* Checking PostgreSQL installation. *")
+message(STATUS " POSTGRES_VERSION: ${POSTGRESQL_VERSION} ")
 
-set(PostgreSQL_ADDITIONAL_VERSIONS "9.5" "9.4" "9.3" "9.2")
+set(PostgreSQL_ADDITIONAL_VERSIONS  ${POSTGRESQL_VERSION} "9.5" "9.4" "9.3" "9.2")
 find_package(PostgreSQL)
 if(NOT PostgreSQL_FOUND)
   message(FATAL_ERROR "... PostgreSQL: not found.") 
