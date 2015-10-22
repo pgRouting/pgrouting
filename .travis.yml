@@ -22,7 +22,6 @@ branches:
 
 addons:
   postgresql: "9.4"
-  boost: "1.55"
 
   # Dependencies on linux.
   apt:
@@ -40,7 +39,8 @@ addons:
 #      - libboost-thread-dev
 #      - libboost-program-options-dev
 #      - libboost1.55-dev
-      - libboost1.55-all-dev
+#      - libboost1.55-all-dev
+      - libboost-all-dev
 #      - libboost-thread1.55-dev
 #      - libboost-program-options1.55-dev
 #      - libboost-system-dev
