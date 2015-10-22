@@ -23,6 +23,9 @@ branches:
 
 addons:
   postgresql: "9.4"
+  postgresql: "9.3"
+  postgresql: "9.2"
+  postgresql: "9.1"
 
   # Dependencies on linux.
   apt:
@@ -49,8 +52,6 @@ addons:
       - libcgal-dev
       - postgresql-server-dev-9.4
 
-#  postgresql: "9.3"
-#  postgresql: "9.4"
 
 #services:
   #- postgresql: 9.1
@@ -67,9 +68,9 @@ addons:
 env:
   matrix:
     - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.1
-#    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
-#    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
-#    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
+    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
+    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
+    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
 
 #    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.0
 #    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.0
