@@ -35,9 +35,9 @@ addons:
       - gcc-4.8
       - g++-4.8
       - libcgal-dev
-      - libboost-thread-dev-1.55
+      - libboost-thread1.55-dev
 #      - libboost-system-dev
-      - libboost-graph-dev-1.55
+      - libboost-graph1.55-dev
       - postgresql-server-dev-9.4
 
 #  postgresql: "9.3"
