@@ -136,20 +136,24 @@ endif(WIN32)
 
 #-----------------------------------------------------------------------------
 # pgRouting Boost requirements
+# -DBoost_DEBUG=On  to debug
 
 message(STATUS "* Checking pgRouting Boost requirements *")
-#set(Boost_DEBUG ON)
-find_package(Boost QUIET COMPONENTS  graph REQUIRED)
-if ( NOT Boost_FOUND OR NOT Boost_GRAPH_FOUND )
-  message(FATAL_ERROR "Package Boost or Boost.Graph  required, but not found!")
-endif ( NOT Boost_FOUND OR NOT Boost_GRAPH_FOUND )
 
+#message(STATUS "CMAKE_VERSION: ${CMAKE_VERSION}")
+if(BOOST_ROOT)
+  find_package(Boost QUIET COMPONENTS  graph REQUIRED)
+  if ( NOT Boost_FOUND OR NOT Boost_GRAPH_FOUND )
+    message(FATAL_ERROR "  Package Boost or Boost.Graph  required, but not found!")
+  endif ( NOT Boost_FOUND OR NOT Boost_GRAPH_FOUND )
+else(BOOST_ROOT)
 
-#if(Boost_INCLUDE_DIRS)
-#  message(STATUS "  Boost headers found: ${Boost_INCLUDE_DIR}")
-#else(Boost_INCLUDE_DIRS)
-#  message(FATAL_ERROR "  Please check your Boost installation ") 
-#endif(Boost_INCLUDE_DIRS)
+  find_package(Boost)
+  if(!Boost_INCLUDE_DIRS)
+    message(FATAL_ERROR "  Boost Include directory not found!!!") 
+  endif(!Boost_INCLUDE_DIRS)
+endif(BOOST_ROOT)
+
 
 message(STATUS "pgRouting Boost requirements: ...OK")
 
