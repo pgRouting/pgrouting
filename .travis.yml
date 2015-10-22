@@ -36,9 +36,9 @@ addons:
       - cmake
       - gcc-4.8
       - g++-4.8
-      - libboost-dev
-      - libboost-thread-dev
-      - libboost-program-options-dev
+#      - libboost-dev
+#      - libboost-thread-dev
+#      - libboost-program-options-dev
 #      - libboost1.55-dev
 #      - libboost-thread1.55-dev
 #      - libboost-program-options1.55-dev
