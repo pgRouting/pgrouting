@@ -35,10 +35,11 @@ addons:
       - cmake
       - gcc-4.8
       - g++-4.8
-      - libboost1.55-dev
-      - libboost-thread1.55-dev
+      - libboost-dev
+      - libboost-thread-dev
+      - libboost-program-options-dev
 #      - libboost-system-dev
-      - libboost-graph1.55-dev
+      - libboost-graph-dev
       - libcgal-dev
       - postgresql-server-dev-9.4
 
