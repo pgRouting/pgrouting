@@ -13,8 +13,7 @@ pgr_getColumnName
 ===============================================================================
 
 .. index:: 
-	single: pgr_getColumnName(text,text)
-	module: common
+	single: pgr_getColumnName(text,text) -- deprecated
 
 Name
 -------------------------------------------------------------------------------
@@ -24,7 +23,7 @@ Name
 .. note:: This function is intended for the developer’s aid.
 
 
-.. warning:: This function is foing to be discontinued. 
+.. warning:: This function is deprecated in 2.1.
              Use `_pgr_getColumnName` instead
 
 Synopsis

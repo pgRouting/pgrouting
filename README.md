@@ -1,11 +1,14 @@
 # pgRouting - Routing on PostgreSQL
 
+[![Join the chat at https://gitter.im/pgRouting/pgrouting](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pgRouting/pgrouting?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## STATUS
 
-The *master* branch reflects our current 2.0.0 release. 
-pgRouting 2.1.0 development is in *develop_2_1_0* branch.
-*develop* branch is not up to date becuase of it is not passing the Winnie tests,
+### Current Development is in the *develop* branch
+
+The *master* branch reflects our current 2.1.0 release.
+Post 2.1.0 development will happen in the *develop* branch.
+
 
 ## LINKS
 
@@ -86,9 +89,7 @@ For MinGW on Windows
 	make
 	make install
 
-Also pre-built Windows binaries can be downloaded from:
-
-    http://www.postgis.net/windows_downloads
+Also pre-built Windows binaries can be downloaded from http://.postgis.net/windows_downloads
 
 For Linux
 	

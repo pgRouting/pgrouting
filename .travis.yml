@@ -20,7 +20,6 @@ branches:
   only:
     - new-travis-dev
 
-
 addons:
   postgresql: "9.4"
 

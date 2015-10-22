@@ -12,15 +12,14 @@
 pgr_dijkstra (V 2.0)- Shortest Path Dijkstra
 ===============================================================================
 
-.. index:: 
-	single: pgr_dijkstra(text,integer,integer,boolean,boolean)
-	module: dijkstra
-
 Name
 -------------------------------------------------------------------------------
 
 ``pgr_dijkstra`` — Returns the shortest path using Dijkstra algorithm.
 
+
+.. index:: 
+	single: dijkstra(sql, source, target, directed, has_rcost) -- deprecated
 
 Synopsis
 -------------------------------------------------------------------------------

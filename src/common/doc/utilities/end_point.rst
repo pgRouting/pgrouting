@@ -13,8 +13,7 @@ pgr_endPoint
 ===============================================================================
 
 .. index:: 
-	single: pgr_endPoint(geometry)
-	module: common
+	single: pgr_endPoint(geometry) -- deprecated
 
 Name
 -------------------------------------------------------------------------------
@@ -23,7 +22,7 @@ Name
 
 .. note:: This function is intended for the developer's aid. 
 
-.. warning:: This function is foing to be discontinued. 
+.. warning:: This function is being deprecated on 2.1. 
              Use `_pgr_endPoint` instead
 
 Synopsis

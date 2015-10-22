@@ -93,9 +93,15 @@ kshortest_path(PG_FUNCTION_ARGS) {
       funcctx->max_calls = path_count;
       funcctx->user_fctx = path;
 
-      funcctx->tuple_desc =
-        BlessTupleDesc(RelationNameGetTupleDesc("__pgr_3b2f"));
+      /* Build a tuple descriptor for our result type */
+      if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+            ereport(ERROR,
+                    (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+                     errmsg("function returning record called in context "
+                            "that cannot accept type record")));
 
+     // funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("__pgr_2i3b2f"));
+      funcctx->tuple_desc = tuple_desc;
       MemoryContextSwitchTo(oldcontext);
     }
 
@@ -117,26 +123,29 @@ kshortest_path(PG_FUNCTION_ARGS) {
       Datum *values;
       bool* nulls;
 
-      values = (Datum *)palloc(6 * sizeof(Datum));
-      nulls = (bool *) palloc(6 * sizeof(bool));
+      values = (Datum *)palloc(7 * sizeof(Datum));
+      nulls = (bool *) palloc(7 * sizeof(bool));
 
-      values[0] = Int32GetDatum(path[call_cntr].seq);
+      values[0] = Int32GetDatum(call_cntr + 1);
       nulls[0] = false;
 
-      values[1] = Int64GetDatum(path[call_cntr].from);
+      values[1] = Int32GetDatum(path[call_cntr].from + 1);
       nulls[1] = false;
 
-      values[2] = Int64GetDatum(path[call_cntr].vertex);
+      values[2] = Int32GetDatum(path[call_cntr].seq);
       nulls[2] = false;
 
-      values[3] = Int64GetDatum(path[call_cntr].edge);
+      values[3] = Int64GetDatum(path[call_cntr].vertex);
       nulls[3] = false;
 
-      values[4] = Float8GetDatum(path[call_cntr].cost);
+      values[4] = Int64GetDatum(path[call_cntr].edge);
       nulls[4] = false;
 
-      values[5] = Float8GetDatum(path[call_cntr].tot_cost);
+      values[5] = Float8GetDatum(path[call_cntr].cost);
       nulls[5] = false;
+
+      values[6] = Float8GetDatum(path[call_cntr].tot_cost);
+      nulls[6] = false;
 
       tuple = heap_form_tuple(tuple_desc, values, nulls);
 
