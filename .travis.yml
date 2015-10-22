@@ -30,6 +30,7 @@ addons:
       - ubuntu-toolchain-r-test
       # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
       - kubuntu-backports
+      - boost-latest
     packages:
       - cmake
       - gcc-4.8
