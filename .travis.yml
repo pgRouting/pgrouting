@@ -83,9 +83,10 @@ env:
 before_install:
   - cmake --version
   - gcc-4.8 --version
-  - wget https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.7/CGAL-4.7.tar.gz
-  - tar -xvf CGAL-4.7.tar.gz
-  - cd CGAL-4.7 && cmake . && make && sudo make install 
+  - sudo apt-get install libcgal-dev
+#  - wget https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.7/CGAL-4.7.tar.gz
+#  - tar -xvf CGAL-4.7.tar.gz
+#  - cd CGAL-4.7 && cmake . && make && sudo make install 
 
 install:
 #  - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
