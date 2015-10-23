@@ -50,7 +50,7 @@ addons:
 #      - libboost-system-dev
       - libboost-graph-dev
       - libcgal-dev
-      - postgresql-server-dev-9.1
+      - postgresql-server-dev-all
 
 
 #services:
