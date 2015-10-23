@@ -49,7 +49,7 @@ run_psql -d $PGDATABASE -c "SELECT version();"
 run_psql -d $PGDATABASE -c "SELECT postgis_full_version();"    
 run_psql -d $PGDATABASE -c "SELECT pgr_version();"
 
-PGROUTING_VERSION=`run_psql -A -t -c "SELECT version FROM pgr_version();"`
+#PGROUTING_VERSION=`run_psql -A -t -c "SELECT version FROM pgr_version();"`
 
 # ------------------------------------------------------------------------------
 # Test runner
