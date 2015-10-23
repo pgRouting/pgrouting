@@ -40,13 +40,14 @@ run_psql -c "CREATE DATABASE $PGDATABASE;"
 # CREATE EXTENSION
 # ------------------------------------------------------------------------------
 run_psql -d $PGDATABASE -c "CREATE EXTENSION postgis;"
-run_psql -d $PGDATABASE -c "CREATE EXTENSION pgrouting;"
 
 # ------------------------------------------------------------------------------
 # Get version information
 # ------------------------------------------------------------------------------
 run_psql -d $PGDATABASE -c "SELECT version();"    
 run_psql -d $PGDATABASE -c "SELECT postgis_full_version();"    
+
+run_psql -d $PGDATABASE -c "CREATE EXTENSION pgrouting;"
 run_psql -d $PGDATABASE -c "SELECT pgr_version();"
 
 #PGROUTING_VERSION=`run_psql -A -t -c "SELECT version FROM pgr_version();"`
