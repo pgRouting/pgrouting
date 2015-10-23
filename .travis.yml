@@ -40,15 +40,15 @@ addons:
 #      - gcc-4.8
 #      - g++-4.8
 #      - libboost-dev
-#      - libboost-thread-dev
+      - libboost-thread-dev
 #      - libboost-program-options-dev
 #      - libboost1.55-dev
 #      - libboost1.55-all-dev
-      - libboost-all-dev
+#      - libboost-all-dev
 #      - libboost-thread1.55-dev
 #      - libboost-program-options1.55-dev
 #      - libboost-system-dev
-#      - libboost-graph1.55-dev
+      - libboost-graph-dev
       - libcgal-dev
       - postgresql-server-dev-9.1
 
