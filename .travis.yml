@@ -23,16 +23,15 @@ branches:
 
 addons:
   postgresql: 9.1
-
   # Dependencies on linux.
-apt:
-  sources:
+  apt:
+    sources:
       # For gcc >= 4.8
       - ubuntu-toolchain-r-test
       # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
       - kubuntu-backports
       - boost-latest
-  packages:
+    packages:
       - cmake
       - libboost-thread-dev
       - libboost-graph-dev
@@ -43,15 +42,7 @@ apt:
 
 env:
   matrix:
-#    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.1
-#    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
-#    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
     - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
-
-#    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.0
-#    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.0
-#    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.0
-#    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.0
 
 
 before_install:
