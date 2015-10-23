@@ -33,11 +33,11 @@ option(BUILD_HTML
 option(BUILD_MAN
     "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
 
-option(POSTGRESQL_VERSION
-    "Set version number for postgreSQL version" 9.4)
+set(POSTGRESQL_VERSION 9.4 CACHE STRING
+    "Set version number for postgreSQL version" )
 
-option(POSTGIS_VERSION
-    "Set version number for postGIS version" 2.1)
+set(POSTGIS_VERSION 2.1 CACHE STRING
+    "Set version number for postGIS version")
 
 option(PGR_DEBUG "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" ON)
 
