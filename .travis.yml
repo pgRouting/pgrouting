@@ -22,9 +22,9 @@ branches:
     - new-travis-dev
 
 addons:
-  postgresql: "9.4"
-  postgresql: "9.3"
-  postgresql: "9.2"
+#  postgresql: "9.4"
+#  postgresql: "9.3"
+#  postgresql: "9.2"
   postgresql: "9.1"
 
   # Dependencies on linux.
@@ -37,8 +37,8 @@ addons:
       - boost-latest
     packages:
       - cmake
-      - gcc-4.8
-      - g++-4.8
+#      - gcc-4.8
+#      - g++-4.8
 #      - libboost-dev
 #      - libboost-thread-dev
 #      - libboost-program-options-dev
@@ -50,7 +50,7 @@ addons:
 #      - libboost-system-dev
 #      - libboost-graph1.55-dev
       - libcgal-dev
-      - postgresql-server-dev-9.4
+      - postgresql-server-dev-9.1
 
 
 #services:
@@ -67,9 +67,9 @@ addons:
 
 env:
   matrix:
-    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.1
-    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
-    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
+#    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.1
+#    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
+#    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
     - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
 
 #    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.0
@@ -87,10 +87,6 @@ env:
 before_install:
   - cmake --version
   - gcc-4.8 --version
-#  - sudo apt-get build-dep -y install libcgal-dev libboost-dev libboost-thread-dev libboost-program-options-dev
-#  - wget https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.7/CGAL-4.7.tar.gz
-#  - tar -xvf CGAL-4.7.tar.gz
-#  - cd CGAL-4.7 && cmake . && make && sudo make install 
 
 install:
 #  - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
