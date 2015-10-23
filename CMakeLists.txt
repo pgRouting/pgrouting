@@ -209,9 +209,12 @@ endif(WITH_TEST)
 
 
 message(STATUS "* Checking PostgreSQL installation. *")
-message(STATUS " POSTGRES_VERSION: ${POSTGRESQL_VERSION}")
 
+message(STATUS " POSTGRESQL_VERSION: ${POSTGRESQL_VERSION}")
 set(PostgreSQL_ADDITIONAL_VERSIONS  ${POSTGRESQL_VERSION})
+
+#set(PostgreSQL_ROOT /usr/lib/postgresql/${POSTGRESQL_VERSION}
+
 find_package(PostgreSQL)
 if(NOT PostgreSQL_FOUND)
   message(FATAL_ERROR "... PostgreSQL: not found.") 
