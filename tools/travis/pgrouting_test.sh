@@ -55,8 +55,11 @@ PGROUTING_VERSION=`run_psql -A -t -c "SELECT version FROM pgr_version();"`
 # ------------------------------------------------------------------------------
 # use -v -v for more verbose debuging output
 # ./tools/test-runner.pl -v -v -pgver $POSTGRESQL_VERSION
- ./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE 
+#./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE 
 #./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE -v -alg ksp
+
+./tools/test-runner.pl -pgver $POSTGRESQL_VERSION -ignorenotice
+
 if [ "$?" -ne 0 ]
 then
     ERROR=1
