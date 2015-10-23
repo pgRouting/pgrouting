@@ -14,6 +14,8 @@ mkdir build
 cd build
 cmake -DCMAKE_CXX_COMPILER=g++-4.8 \
       -DCMAKE_C_COMPILER=gcc-4.8 \
+      -DPOSTGRESQL_VERSION=${POSTGRESQL_VERSION} \
+      -DPOSTGIS_VERSION=${POSTGIS_VERSION} \
       ..
 make
 sudo make install
