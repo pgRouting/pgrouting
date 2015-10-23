@@ -238,8 +238,8 @@ set(POSTGRESQL_PG_CONFIG /usr/lib/postgresql/${PostgreSQL_VERSION}/bin/pg_config
 string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${PostgreSQL_VERSION})
 
 
-if("${PostgreSQL_VERSION_STRING}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
-  message(FATAL_ERROR "PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required. PostgreSQL ${PostgreSQL_VERSION_STRING} found!!!")
+if("${PostgreSQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
+  message(FATAL_ERROR "PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required. PostgreSQL ${PostgreSQL_VERSION} found!!!")
 endif()
 
 execute_process(
@@ -267,7 +267,7 @@ if(PGR_DEBUG)
   message(STATUS "  PostgreSQL_FOUND ${PostgreSQL_FOUND}")
   message(STATUS "  PostgreSQL_LIBRARIES is ${PostgreSQL_LIBRARIES}")
   message(STATUS "  PostgreSQL_INCLUDE_DIRS is ${PostgreSQL_INCLUDE_DIRS}")
-  message(STATUS "  PostgreSQL_VERSION_STRING is ${PostgreSQL_VERSION_STRING}")
+#  message(STATUS "  PostgreSQL_VERSION_STRING is ${PostgreSQL_VERSION_STRING}")
   message(STATUS "  PostgreSQL_VERSION is ${PostgreSQL_VERSION}")
   message(STATUS "  POSTGRESQL_PG_CONFIG is " ${POSTGRESQL_PG_CONFIG})
   message(STATUS "  PGSQL_VERSION is ${PGSQL_VERSION}")
