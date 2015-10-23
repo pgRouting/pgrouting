@@ -25,17 +25,17 @@ addons:
 #  postgresql: "9.4"
 #  postgresql: "9.3"
 #  postgresql: "9.2"
-  postgresql: "9.1"
+  postgresql: 9.1
 
   # Dependencies on linux.
-  apt:
-    sources:
+apt:
+  sources:
       # For gcc >= 4.8
       - ubuntu-toolchain-r-test
       # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
       - kubuntu-backports
       - boost-latest
-    packages:
+  packages:
       - cmake
 #      - gcc-4.8
 #      - g++-4.8
