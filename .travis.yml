@@ -15,7 +15,9 @@ compiler:
 
 notifications:
   email:
-    on_failure: vicky@georepublic.com
+    - vicky_vergara@hotmail.com
+  on_failure: allways
+  on_success: change
 
 branches:
   only:
@@ -67,17 +69,15 @@ script:
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 after_script: 
-#  - psql --version
-#  - psql -U postgres -c "SELECT version();"
-#  - psql -U postgres -c "CREATE DATABASE routing;"
-#  - psql -d routing -U postgres -c "CREATE EXTENSION postgis;"
-  - psql -d routing -U postgres -c "SELECT postgis_full_version();"
-  - psql -d routing -U postgres -c "CREATE EXTENSION pgrouting;"
-  - psql -d routing -U postgres -c "SELECT * from pgr_version();"
-
-
-#  - ./tools/travis/pgrouting_prepare.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
-#  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+  #  - psql --version
+  #  - psql -U postgres -c "SELECT version();"
+  #  - psql -U postgres -c "CREATE DATABASE routing;"
+  #  - psql -d routing -U postgres -c "CREATE EXTENSION postgis;"
+  #  - psql -d routing -U postgres -c "SELECT postgis_full_version();"
+  #  - psql -d routing -U postgres -c "CREATE EXTENSION pgrouting;"
+  #  - psql -d routing -U postgres -c "SELECT * from pgr_version();"
+  #  - ./tools/travis/pgrouting_prepare.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 #after_success:
   #- ./tools/travis/pgrouting_deploy.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
