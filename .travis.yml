@@ -53,6 +53,7 @@ before_install:
   - cmake --version
   - gcc-4.8 --version
   - ls /usr/include/postgresql
+  - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
 
 #install:
 #  Installed using apt above
