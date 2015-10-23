@@ -24,7 +24,7 @@ branches:
     - new-travis-dev
 
 addons:
-  postgresql: 9.1
+  postgresql: 9.2
   # Dependencies on linux.
   apt:
     sources:
@@ -44,7 +44,7 @@ addons:
 
 env:
   matrix:
-    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
+    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
 
 
 before_install:
