@@ -79,10 +79,10 @@ script:
 
 after_script: 
   - psql -c 'create database routing;' -U postgres
-  - psql -c "CREATE EXTENSION postgis;"
-  - psql -c "CREATE EXTENSION pgrouting;"
-  - psql -c "SELECT postgis_full_version();"
-  - psql -c "SELECT pgr_version();"
+  - psql -c "CREATE EXTENSION postgis;" -d routing -U postgres
+  - psql -c "CREATE EXTENSION pgrouting;" -d routing -U postgres
+  - psql -c "SELECT postgis_full_version();" -d routing -U postgres
+  - psql -c "SELECT pgr_version();" -d routing -U postgres
 
 
 #  - ./tools/travis/pgrouting_prepare.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
