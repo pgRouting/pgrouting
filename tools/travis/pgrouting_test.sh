@@ -39,35 +39,8 @@ export PGDATABASE
 # ------------------------------------------------------------------------------
 # CREATE EXTENSION
 # ------------------------------------------------------------------------------
-IGNORE=-ignorenotice
-#if [ "$POSTGRESQL_VERSION" == "8.4" ] || [ "$POSTGRESQL_VERSION" == "9.0" ]
-#then
-#    run_psql -f `find $POSTGRESQL_DIRECTORY/contrib -name "postgis.sql"`
-#    run_psql -f `find $POSTGRESQL_DIRECTORY/contrib -name "spatial_ref_sys.sql"`
-#    run_psql -f `find $POSTGRESQL_DIRECTORY/contrib -name "pgrouting.sql"`
-#    IGNORE=-ignorenotice
-#fi
-
-#if [ "$POSTGRESQL_VERSION" == "9.1" ]
-#then
-#    if [ "$POSTGIS_VERSION" == "1.5" ]
-#    then 
-#        run_psql -f `find $POSTGRESQL_DIRECTORY/contrib -name "postgis.sql"`
-#        run_psql -f `find $POSTGRESQL_DIRECTORY/contrib -name "spatial_ref_sys.sql"`
-#        run_psql -f `find $POSTGRESQL_DIRECTORY/contrib -name "pgrouting.sql"`
-#    else
-#        run_psql -c "CREATE EXTENSION postgis;"
-#        run_psql -c "CREATE EXTENSION pgrouting;"
-#    fi
-#    IGNORE=-ignorenotice
-#fi
-
-#if [ "$POSTGRESQL_VERSION" == "9.2" ] || [ "$POSTGRESQL_VERSION" == "9.3" ] || [ "$POSTGRESQL_VERSION" == "9.4" ]
-#then
-#we are allways creating extension
-    run_psql -c "CREATE EXTENSION postgis;"
-    run_psql -c "CREATE EXTENSION pgrouting;"
-#fi
+run_psql -c "CREATE EXTENSION postgis;"
+run_psql -c "CREATE EXTENSION pgrouting;"
 
 # ------------------------------------------------------------------------------
 # Get version information
