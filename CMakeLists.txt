@@ -33,10 +33,10 @@ option(BUILD_HTML
 option(BUILD_MAN
     "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
 
-set(POSTGRESQL_VERSION 9.4 CACHE STRING
+set(POSTGRESQL_VERSION "" CACHE STRING
     "Set version number for postgreSQL version" )
 
-set(POSTGIS_VERSION 2.1 CACHE STRING
+set(POSTGIS_VERSION "" CACHE STRING
     "Set version number for postGIS version")
 
 option(PGR_DEBUG "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" ON)
@@ -226,7 +226,12 @@ if(NOT PostgreSQL_FOUND)
   message(FATAL_ERROR "... PostgreSQL: not found.") 
 endif(NOT PostgreSQL_FOUND)
 
-string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1.\\2" PostgreSQL_VERSION ${PostgreSQL_VERSION_STRING})
+if(POSTGRESQL_VERSION)
+  set(PostgreSQL_VERSION  ${POSTGRESQL_VERSION})
+else()
+  string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1.\\2" PostgreSQL_VERSION ${PostgreSQL_VERSION_STRING})
+endif()
+
 set(POSTGRESQL_PG_CONFIG /usr/lib/postgresql/${PostgreSQL_VERSION}/bin/pg_config)
 
 # PGSQL_VERSION is a compiler directive
