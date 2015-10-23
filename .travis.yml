@@ -69,17 +69,24 @@ before_install:
   - ls /usr/include/postgresql
 
 install:
-#  - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+#  Installed using apt above
 
 before_script:
-#  -
+#  
 
 script: 
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 after_script: 
+  - psql -c 'create database routing;' -U postgres
+  - psql -c "CREATE EXTENSION postgis;"
+  - psql -c "CREATE EXTENSION pgrouting;"
+  - psql -c "SELECT postgis_full_version();"
+  - psql -c "SELECT pgr_version();"
+
+
 #  - ./tools/travis/pgrouting_prepare.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
-  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+#  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 after_success:
   #- ./tools/travis/pgrouting_deploy.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
