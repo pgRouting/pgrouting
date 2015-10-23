@@ -74,6 +74,7 @@ string(SUBSTRING ${PGROUTING_BUILD_STRING} 0 7 PGROUTING_GIT_HASH)
 string(SUBSTRING ${PGROUTING_BUILD_STRING} 8 -1 PGROUTING_GIT_BRANCH)
 
 set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_GIT_HASH} ${PGROUTING_GIT_BRANCH}")
+set(PGROUTING_LIB_NAME "pgrouting--${PGROUTING_VERSION_STRING}")
 set(PGROUTING_LIBRARY_NAME "pgrouting--${PGROUTING_VERSION_STRING}")
 
 if(PGR_DEBUG)
@@ -82,6 +83,7 @@ if(PGR_DEBUG)
   message(STATUS "PGROUTING_GIT_BRANCH: ${PGROUTING_GIT_BRANCH}")
   message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
   message(STATUS "PGROUTING_SOURCE_DIR: ${PGROUTING_SOURCE_DIR}")
+  message(STATUS "PGROUTING_LIB_NAME: ${PGROUTING_LIB_NAME}")
   message(STATUS "PGROUTING_LIBRARY_NAME: ${PGROUTING_LIBRARY_NAME}")
 endif()
 
@@ -383,7 +385,7 @@ LINK_LIBRARIES(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
 #---------------------------------------------------------------------------------
 # libraries listed in alphabetical order.
 #add_library(routing-2.2
-add_library(${PGROUTING_LIBRARY_NAME}
+add_library(${PGROUTING_LIB_NAME}
     ${LIBRARY_MODE_TARGET}
     $<TARGET_OBJECTS:apsp_johnson>
     $<TARGET_OBJECTS:apsp_warshall>
@@ -405,12 +407,12 @@ add_library(${PGROUTING_LIBRARY_NAME}
     )
 
 #install(TARGETS routing-2.2 DESTINATION ${LIBRARY_INSTALL_PATH})
-install(TARGETS ${PGROUTING_LIBRARY_NAME} DESTINATION ${LIBRARY_INSTALL_PATH})
+install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${LIBRARY_INSTALL_PATH})
 
 
 if(APPLE)
 #    set_target_properties(routing-2.2
-    set_target_properties(${PGROUTING_LIBRARY_NAME}
+    set_target_properties(${PGROUTING_LIB_NAME}
         PROPERTIES
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)
@@ -420,37 +422,37 @@ endif(APPLE)
 # Gather in one file all the sql files
 
 #file(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-file(WRITE "${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIBRARY_NAME}.sql.in"
+file(WRITE "${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIB_NAME}.sql.in"
     "-- pgRouting version '${PGROUTING_VERSION_STRING}' extension for postgresql\n")
 
 #file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-file(APPEND "${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIBRARY_NAME}.sql.in"
+file(APPEND "${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIB_NAME}.sql.in"
      "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
 #file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
 #    "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
 
 cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
-    "${PGROUTING_BINARY_DIR}/lib/${PGROUTING_LIBRARY_NAME}.sql.in")
+    "${PGROUTING_BINARY_DIR}/lib/${PGROUTING_LIB_NAME}.sql.in")
 #   "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 
 foreach(PACKAGE_SQL_FILE ${L_PACKAGE_SQL_FILES})
 #    cat(${PACKAGE_SQL_FILE} "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
-    cat(${PACKAGE_SQL_FILE} "${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIBRARY_NAME}.sql.in")
+    cat(${PACKAGE_SQL_FILE} "${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIB_NAME}.sql.in")
 endforeach()
 
 
 # copy our temporary file into a final file
 # this extra set will allow us to place variables in the sql file
 # that will get substituted in this step before they are installed
-configure_file("${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIBRARY_NAME}.sql.in"
-    "${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIBRARY_NAME}.sql")
+configure_file("${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIB_NAME}.sql.in"
+    "${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIB_NAME}.sql")
 
 configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control")
 
 #---------------------------------------------------------------------------------
 # create the signature file for this release
-message(STATUS "Creating lib/${PGROUTING_LIBRARY_NAME}.sig")
+message(STATUS "Creating lib/${PGROUTING_LIB_NAME}.sig")
 #message(STATUS "Creating lib/${PGROUTING_VERSION_STRING}.sig")
 execute_process(
   COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file ${PGROUTING_VERSION_STRING}
@@ -485,12 +487,12 @@ else(UNIX)
     file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.dll")
 endif(UNIX)
 
-message(STATUS "LIBS_TO_INSTALL: pgrouting--${PGROUTING_VERSION_STRING}.sql")
+message(STATUS "LIBS_TO_INSTALL: ${PGROUTING_LIBRARY_NAME}")
 
 #install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
 
 install(FILES
-    "${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIBRARY_NAME}.sql"
+    "${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIB_NAME}.sql"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
     ${VERSION_UPDATE_FILES}
 #    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
