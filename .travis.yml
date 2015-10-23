@@ -73,17 +73,22 @@ install:
 
 before_script:
 #  
+  - psql --version
+  - psql -U postgres -c "SELECT version();"
+  - psql -U postgres -c "CREATE DATABASE routing;"
+  - psql -d routing -U postgres -c "CREATE EXTENSION postgis;"
+  - psql -d routing -U postgres -c "SELECT postgis_full_version();"
 
 script: 
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 after_script: 
-  - psql --version
-  - psql -U postgres -c "select version();"
-  - psql -U postgres -c "create database routing;"
-  - psql -d routing -U postgres -c "CREATE EXTENSION postgis;"
+#  - psql --version
+#  - psql -U postgres -c "SELECT version();"
+#  - psql -U postgres -c "CREATE DATABASE routing;"
+#  - psql -d routing -U postgres -c "CREATE EXTENSION postgis;"
+#  - psql -d routing -U postgres -c "SELECT postgis_full_version();"
   - psql -d routing -U postgres -c "CREATE EXTENSION pgrouting;"
-  - psql -d routing -U postgres -c "SELECT postgis_full_version();"
   - psql -d routing -U postgres -c "SELECT pgr_version();"
 
 
