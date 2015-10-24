@@ -23,7 +23,4 @@ make
 sudo make install
 cd ..
 
-psql --version
-psql -U postgres -c "SELECT version();"
-
 ./tools/test-runner.pl -pgver $POSTGRESQL_VERSION -ignorenotice
