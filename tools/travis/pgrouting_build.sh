@@ -19,3 +19,5 @@ cmake -DCMAKE_CXX_COMPILER=g++-4.8 \
       ..
 make
 sudo make install
+cd ..
+./tools/test-runner.pl -pgver $POSTGRESQL_VERSION -ignorenotice
