@@ -46,11 +46,11 @@ addons:
 
 #env:
 matrix:
-    include:
-      -  postgresql: 9.2
-         env: POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
-    include:
-      -  postgresql: 9.1
+  include:
+    - postgresql: 9.2
+      env: POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
+#    include:
+#      -  postgresql: 9.1
          env: POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
 
 #    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
