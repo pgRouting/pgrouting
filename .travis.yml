@@ -62,9 +62,7 @@ before_install:
 before_script:
 #  
   - psql --version
-  - psql -U postgres -c "CREATE DATABASE routingtest;"
-  - psql -d routingtest -U postgres -c "CREATE EXTENSION postgis;"
-#  - psql -U postgres -c "SELECT version();"
+  - psql -U postgres -c "SELECT version();"
 #  - psql -d routing -U postgres -c "SELECT postgis_full_version();"
 
 
