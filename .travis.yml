@@ -60,9 +60,10 @@ before_install:
 #  Installed using apt above
 
 before_script:
+  - ./tools/travis/before_script.sh
 #  
-  - psql --version
-  - psql -U postgres -c "SELECT version();"
+#  - psql --version
+#  - psql -U postgres -c "SELECT version();"
 #  - psql -d routing -U postgres -c "SELECT postgis_full_version();"
 
 
@@ -79,7 +80,7 @@ after_script:
   #  - psql -d routing -U postgres -c "CREATE EXTENSION pgrouting;"
   #  - psql -d routing -U postgres -c "SELECT * from pgr_version();"
   #  - ./tools/travis/pgrouting_prepare.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
-  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+  #- ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 #after_success:
   #- ./tools/travis/pgrouting_deploy.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
