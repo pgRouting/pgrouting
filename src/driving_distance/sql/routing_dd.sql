@@ -30,13 +30,13 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id integer, dist
 CREATE OR REPLACE FUNCTION _pgr_drivingDistance(sql text, start_v bigint, distance float8, directed boolean, has_rcost boolean,
        OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
-     '$libdir/librouting-2.2', 'driving_distance'
+     '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'driving_distance'
  LANGUAGE c IMMUTABLE STRICT;
 
 CREATE OR REPLACE FUNCTION _pgr_drivingDistance(sql text, start_v anyarray, distance float8, directed boolean, equicost boolean, has_rcost boolean,
        OUT seq integer, OUT start_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
-     '$libdir/librouting-2.2', 'driving_many_to_dist'
+     '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'driving_many_to_dist'
  LANGUAGE c IMMUTABLE STRICT;
 
 
@@ -124,7 +124,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, start_v anyarray, dista
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION pgr_alphashape(sql text, alpha float8 DEFAULT 0, OUT x float8, OUT y float8)
     RETURNS SETOF record
-    AS '$libdir/librouting-2.2', 'alphashape'
+    AS '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'alphashape'
     LANGUAGE c IMMUTABLE STRICT;
 
 ----------------------------------------------------------

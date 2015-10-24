@@ -17,7 +17,7 @@ create or replace function pgr_vrpOneDepot(
 	OUT tarrival integer, 
 	OUT tdepart integer)
 returns setof record as
-'$libdir/librouting-2.2', 'vrp'
+'$libdir/lib${PGROUTING_LIBRARY_NAME}', 'vrp'
 LANGUAGE c VOLATILE STRICT;
 
 
