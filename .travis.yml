@@ -23,11 +23,14 @@ branches:
   only:
     - new-travis-dev
 
+# ------------------------------------------------------------
+# for the moment the matrix doesn't work when the tests are
+# excecuted. So things have to be tested oe by one.
 addons:
-  postgresql: 9.4
-  postgresql: 9.3
+  # postgresql: 9.4
+  # postgresql: 9.3
   postgresql: 9.2
-  postgresql: 9.1
+  # postgresql: 9.1
   # Dependencies on linux.
   apt:
     sources:
@@ -46,7 +49,7 @@ addons:
 
 # ------------------------------------------------------------
 # for the moment the matrix doesn't work when the tests are
-# excecuted.
+# excecuted. So things have to be tested oe by one.
 
 env:
   matrix:
