@@ -19,5 +19,5 @@ CREATE OR REPLACE FUNCTION pgr_tsp(matrix float8[][], startpt integer, endpt int
 
 --CREATE OR REPLACE FUNCTION pgr_tsp(matrix float8[][], startpt integer, OUT seq integer, OUT id integer)
     RETURNS SETOF record
-    AS '$libdir/librouting-2.2', 'tsp_matrix'
+    AS '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'tsp_matrix'
     LANGUAGE c IMMUTABLE STRICT;
