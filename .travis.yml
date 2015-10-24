@@ -60,7 +60,7 @@ before_install:
 #  Installed using apt above
 
 before_script:
-  - ./tools/travis/before_script.sh
+#  - ./tools/travis/before_script.sh
 #  
 #  - psql --version
 #  - psql -U postgres -c "SELECT version();"
