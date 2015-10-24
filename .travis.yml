@@ -20,6 +20,7 @@ branches:
   only:
     - master
     - develop
+    - new-travis-dev-2.2
 
 addons:
   postgresql: "9.2"
