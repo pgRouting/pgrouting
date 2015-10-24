@@ -21,33 +21,12 @@ notifications:
 
 branches:
   only:
-    - master
-    - develop
     - new-travis-dev
 
-#addons:
-#  postgresql: 9.2
+addons:
+  postgresql: 9.2
 #  postgresql: 9.1
-#  # Dependencies on linux.
-#  apt:
-#    sources:
-#      # For gcc >= 4.8
-#      - ubuntu-toolchain-r-test
-#      # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
-#      - kubuntu-backports
-#      - boost-latest
-#    packages:
-#      - cmake
-#      - libboost-thread-dev
-#      - libboost-graph-dev
-#      - libcgal-dev
-#      - postgresql-server-dev-all
-#      - postgresql-common
-
-
-
-#env:
-matrix:
+  # Dependencies on linux.
   apt:
     sources:
       # For gcc >= 4.8
@@ -60,20 +39,14 @@ matrix:
       - libboost-thread-dev
       - libboost-graph-dev
       - libcgal-dev
-  include:
-    - addons:
-        postgresql: 9.2
-      apt:
-        packages:
-          - postgresql-server-dev-9.2
-          - postgresql-common
-      env: POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
+      - postgresql-server-dev-all
+      - postgresql-common
 
-#    include:
-#      -  postgresql: 9.1
-#         env: POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
 
-#    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
+
+env:
+  matrix:
+    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
 #    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
 
 
