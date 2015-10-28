@@ -130,9 +130,13 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;
       funcctx->user_fctx = ret_path;
+      if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+            ereport(ERROR,
+                    (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+                     errmsg("function returning record called in context "
+                            "that cannot accept type record")));
 
-      funcctx->tuple_desc = BlessTupleDesc(
-            RelationNameGetTupleDesc("__pgr_3b2f"));
+      funcctx->tuple_desc = tuple_desc;
 
       MemoryContextSwitchTo(oldcontext);
   }
@@ -155,7 +159,7 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
       values = palloc(6 * sizeof(Datum));
       nulls = palloc(6 * sizeof(char));
       // id, start_v, node, edge, cost, tot_cost
-      values[0] = Int32GetDatum(ret_path[call_cntr].seq);
+      values[0] = Int32GetDatum(call_cntr + 1);
       nulls[0] = ' ';
       values[1] = Int64GetDatum(ret_path[call_cntr].from);
       nulls[1] = ' ';

@@ -31,7 +31,7 @@ SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries 
 #-----------------------------------------------------------------------------
 # PGROUTING version number.
 set(PGROUTING_VERSION_MAJOR "2")
-set(PGROUTING_VERSION_MINOR "1")
+set(PGROUTING_VERSION_MINOR "2")
 set(PGROUTING_VERSION_PATCH "0")
 
 set(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
@@ -41,7 +41,8 @@ set(POSTGIS_MINIMUM_VERSION "2.0.0")
 
 file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 
-string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
+set(PGROUTING_GIT_TAG "pgrouting-2.2.0-dev")
+#string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\4" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
@@ -258,7 +259,7 @@ endif(APPLE)
 LINK_LIBRARIES(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
 
 # libraries listed in alphabetical order.
-add_library(routing-2.1
+add_library(routing-2.2
     ${LIBRARY_MODE_TARGET}
     $<TARGET_OBJECTS:apsp_johnson>
     $<TARGET_OBJECTS:apsp_warshall>
@@ -280,12 +281,12 @@ add_library(routing-2.1
 #    $<TARGET_OBJECTS:shooting_star>
     )
 
-install(TARGETS routing-2.1 DESTINATION ${LIBRARY_INSTALL_PATH})
+install(TARGETS routing-2.2 DESTINATION ${LIBRARY_INSTALL_PATH})
 
 
 
 if(APPLE)
-    set_target_properties(routing-2.1
+    set_target_properties(routing-2.2
         PROPERTIES
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)

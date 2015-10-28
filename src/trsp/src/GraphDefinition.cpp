@@ -10,8 +10,15 @@
 // -------------------------------------------------------------------------
 GraphDefinition::GraphDefinition(void)
 {
+    m_lStartEdgeId = -1;
+    m_lEndEdgeId = 0;
+    m_dStartpart = 0.0;
+    m_dEndPart = 0.0;
+    m_dCost = NULL;
     m_bIsturnRestrictOn = false;
     m_bIsGraphConstructed = false;
+    parent = NULL;
+    init();
 }
 
 // -------------------------------------------------------------------------

@@ -144,9 +144,13 @@ shortest_path(PG_FUNCTION_ARGS) {
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;
       funcctx->user_fctx = ret_path;
+      if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+            ereport(ERROR,
+                    (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+                     errmsg("function returning record called in context "
+                            "that cannot accept type record")));
 
-      funcctx->tuple_desc = BlessTupleDesc(
-            RelationNameGetTupleDesc("__pgr_2b2f"));
+      funcctx->tuple_desc = tuple_desc;
 
       MemoryContextSwitchTo(oldcontext);
   }
@@ -166,19 +170,21 @@ shortest_path(PG_FUNCTION_ARGS) {
       Datum *values;
       char* nulls;
 
-      values = palloc(5 * sizeof(Datum));
-      nulls = palloc(5 * sizeof(char));
+      values = palloc(6 * sizeof(Datum));
+      nulls = palloc(6 * sizeof(char));
 
       values[0] = Int32GetDatum(ret_path[call_cntr].seq);
       nulls[0] = ' ';
-      values[1] = Int64GetDatum(ret_path[call_cntr].vertex);
+      values[1] = Int32GetDatum(ret_path[call_cntr].seq);
       nulls[1] = ' ';
-      values[2] = Int64GetDatum(ret_path[call_cntr].edge);
+      values[2] = Int64GetDatum(ret_path[call_cntr].vertex);
       nulls[2] = ' ';
-      values[3] = Float8GetDatum(ret_path[call_cntr].cost);
+      values[3] = Int64GetDatum(ret_path[call_cntr].edge);
       nulls[3] = ' ';
-      values[4] = Float8GetDatum(ret_path[call_cntr].tot_cost);
+      values[4] = Float8GetDatum(ret_path[call_cntr].cost);
       nulls[4] = ' ';
+      values[5] = Float8GetDatum(ret_path[call_cntr].tot_cost);
+      nulls[5] = ' ';
 
       tuple = heap_formtuple(tuple_desc, values, nulls);
 

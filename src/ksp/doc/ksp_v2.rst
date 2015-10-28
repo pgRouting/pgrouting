@@ -13,8 +13,7 @@ pgr_ksp (V 2.0) - K-Shortest Path
 ===============================================================================
 
 .. index:: 
-  single: pgr_ksp(text,integer,integer,integer,boolean)
-  module: ksp
+  single: ksp(text,integer,integer,integer,boolean) -- deprecated
 
 Name
 -------------------------------------------------------------------------------

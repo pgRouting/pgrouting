@@ -35,7 +35,7 @@ create or replace function pgr_gsoc_vrppdtw(
                 OUT cost integer
                 )
 returns setof record as
-'$libdir/librouting-2.1', 'vrppdtw'
+'$libdir/librouting-2.2', 'vrppdtw'
 LANGUAGE c VOLATILE STRICT;
 
 

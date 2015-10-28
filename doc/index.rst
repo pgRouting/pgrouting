@@ -138,14 +138,14 @@ Pre processing or post processing helping functions
   -  :ref:`pgr_points_as_polygon` - Polygon around set of points
 
 *******************************************************************************
-Proposed functions
+Experimental and Proposed functions
 *******************************************************************************
 
-This section containes the new signatures proposed for any of the following sections:
+This section contains new experimental or proposed signatures for any of the following sections:
   - topology functions
   - routing functions
   - vehicle routing functions
-  - pre / post prossesing helping functions
+  - pre / post procesing helper functions
 
 
 We are including them so that the pgRouting community can evaluate them before
@@ -155,7 +155,7 @@ Some of them are unsupported like the GSoC functions.
 
 
 *******************************************************************************
-Proposed functions: Proposed by Steve Woodbridge
+Experimental functions: Proposed by Steve Woodbridge
 *******************************************************************************
 
 :ref:`convenience_functions`
@@ -173,26 +173,7 @@ Proposed functions: Proposed by Steve Woodbridge
         ../src/common/doc/convenience/index
 
 *******************************************************************************
-Proposed functions: Proposed by Zia Mohammed
-*******************************************************************************
-
-About this proposal:
-  - Author: Zia Mohammed.
-  - Status: Needs a lot of testing. I am working on that.
-  - I did not add automated test.
-  - Temporary name: pgr_labelGraph
-  - Need: I need feedback from the community. 
-
-  -  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
-
-.. toctree::
-  :hidden:
-
-  ../src/label_graph/doc/analyze_brokengraph.rst
-
-
-*******************************************************************************
-Proposed functions: Proposed by GSoC
+Experimental functions: by GSoC
 *******************************************************************************
 
 The following functions are experimental
@@ -208,6 +189,24 @@ The following functions are experimental
 
 	../src/vrp_basic/doc/index.rst
 	../src/vrppdtw/doc/index.rst
+
+*******************************************************************************
+Proposed functions: Proposed by Zia Mohammed
+*******************************************************************************
+
+About this proposal:
+  - Author: Zia Mohammed.
+  - Status: Needs a lot of testing. I am working on that.
+  - I did not add automated test.
+  - Temporary name: pgr_labelGraph
+  - Need: I need feedback from the community.
+
+  -  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
+
+.. toctree::
+  :hidden:
+
+  ../src/label_graph/doc/analyze_brokengraph.rst
 
 
 .. toctree::

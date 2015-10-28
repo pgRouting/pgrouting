@@ -12,9 +12,6 @@
 pgr_drivingDistance
 ===============================================================================
 
-.. index::
-	single: pgr_drivingDistance(text, integer, double precision, boolean, boolean)
-	module: driving_distance
 
 Name
 -------------------------------------------------------------------------------
@@ -33,28 +30,39 @@ Synopsis
 Using Dijkstra algorithm, extracts all the nodes that have costs less than or equal to the value ``distance``.
 The edges extracted will conform the corresponding spanning tree.
 
-The minimal signature:
+.. index::
+	single: drivingDistance(edges_sql, start_vid, distance)
+
+.. rubric:: The minimal signature:
 
 .. code-block:: sql
 
    pgr_drivingDistance(sql text, start_v bigint, distance float8)
      RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-Driving Distance from a single starting point:
+
+.. index::
+	single: drivingDistance(edges_sql, start_vid, distance, directed)
+
+.. rubric:: Driving Distance from a single starting point:
 
 .. code-block:: sql
 
-   pgr_drivingDistance(sql text, start_v bigint, distance float8, directed boolean)
+   pgr_drivingDistance(sql text, start_vid bigint, distance float8, directed boolean)
      RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-Driving Distance from a multiple starting points:
+
+.. index::
+	single: drivingDistance(edges_sql, start_vids, distance, directed, equiCost)
+
+.. rubric:: Driving Distance from a multiple starting points:
 
 .. code-block:: sql
 
-   pgr_drivingDistance(sql text, start_v anyarray, distance float8,
+   pgr_drivingDistance(sql text, start_vids anyarray, distance float8,
          directed boolean default true,
          equicost boolean default false)
-     RETURNS SET OF (seq, start_v, node, edge, cost, agg_cost)
+     RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)
 
 Description of the SQL query
 -------------------------------------------------------------------------------
@@ -114,79 +122,79 @@ The examples in this section use the following :ref:`fig1`
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         2, 3
       );
-     seq | node | edge | cost | agg_cost
+     seq | node | edge | cost | agg_cost 
     -----+------+------+------+----------
-       0 |    1 |    1 |    1 |        1
-       1 |    2 |   -1 |    0 |        0
-       2 |    5 |    4 |    1 |        1
-       3 |    6 |    8 |    1 |        2
-       4 |   11 |   12 |    1 |        3
-       5 |   10 |   10 |    1 |        2
-       6 |   13 |   14 |    1 |        3
-       7 |    9 |    9 |    1 |        3
-       8 |    7 |    6 |    1 |        3
-       9 |    8 |    7 |    1 |        2
+       1 |    1 |    1 |    1 |        1
+       2 |    2 |   -1 |    0 |        0
+       3 |    5 |    4 |    1 |        1
+       4 |    6 |    8 |    1 |        2
+       5 |   11 |   12 |    1 |        3
+       6 |   10 |   10 |    1 |        2
+       7 |   13 |   14 |    1 |        3
+       8 |    9 |    9 |    1 |        3
+       9 |    7 |    6 |    1 |        3
+      10 |    8 |    7 |    1 |        2
     (10 rows)
 
     SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         13, 3
       );
-     seq | node | edge | cost | agg_cost
+     seq | node | edge | cost | agg_cost 
     -----+------+------+------+----------
-       0 |    2 |    4 |    1 |        3
-       1 |    5 |   10 |    1 |        2
-       2 |    6 |    8 |    1 |        3
-       3 |   11 |   12 |    1 |        2
-       4 |   10 |   14 |    1 |        1
-       5 |   12 |   13 |    1 |        3
-       6 |   13 |   -1 |    0 |        0
-       7 |    8 |    7 |    1 |        3
+       1 |    2 |    4 |    1 |        3
+       2 |    5 |   10 |    1 |        2
+       3 |    6 |    8 |    1 |        3
+       4 |   11 |   12 |    1 |        2
+       5 |   10 |   14 |    1 |        1
+       6 |   12 |   13 |    1 |        3
+       7 |   13 |   -1 |    0 |        0
+       8 |    8 |    7 |    1 |        3
     (8 rows)
 
     SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3
       );
-     seq | start_v | node | edge | cost | agg_cost
-    -----+---------+------+------+------+----------
-       0 |       2 |    1 |    1 |    1 |        1
-       1 |       2 |    2 |   -1 |    0 |        0
-       2 |       2 |    5 |    4 |    1 |        1
-       3 |       2 |    6 |    8 |    1 |        2
-       4 |       2 |   11 |   12 |    1 |        3
-       5 |       2 |   10 |   10 |    1 |        2
-       6 |       2 |   13 |   14 |    1 |        3
-       7 |       2 |    9 |    9 |    1 |        3
-       8 |       2 |    7 |    6 |    1 |        3
-       9 |       2 |    8 |    7 |    1 |        2
-      10 |      13 |    2 |    4 |    1 |        3
-      11 |      13 |    5 |   10 |    1 |        2
-      12 |      13 |    6 |    8 |    1 |        3
-      13 |      13 |   11 |   12 |    1 |        2
-      14 |      13 |   10 |   14 |    1 |        1
-      15 |      13 |   12 |   13 |    1 |        3
-      16 |      13 |   13 |   -1 |    0 |        0
-      17 |      13 |    8 |    7 |    1 |        3
+     seq | from_v | node | edge | cost | agg_cost 
+    -----+--------+------+------+------+----------
+       1 |      2 |    1 |    1 |    1 |        1
+       2 |      2 |    2 |   -1 |    0 |        0
+       3 |      2 |    5 |    4 |    1 |        1
+       4 |      2 |    6 |    8 |    1 |        2
+       5 |      2 |   11 |   12 |    1 |        3
+       6 |      2 |   10 |   10 |    1 |        2
+       7 |      2 |   13 |   14 |    1 |        3
+       8 |      2 |    9 |    9 |    1 |        3
+       9 |      2 |    7 |    6 |    1 |        3
+      10 |      2 |    8 |    7 |    1 |        2
+      11 |     13 |    2 |    4 |    1 |        3
+      12 |     13 |    5 |   10 |    1 |        2
+      13 |     13 |    6 |    8 |    1 |        3
+      14 |     13 |   11 |   12 |    1 |        2
+      15 |     13 |   10 |   14 |    1 |        1
+      16 |     13 |   12 |   13 |    1 |        3
+      17 |     13 |   13 |   -1 |    0 |        0
+      18 |     13 |    8 |    7 |    1 |        3
     (18 rows)
 
     SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3, equicost:=true
       );
-     seq | start_v | node | edge | cost | agg_cost
-    -----+---------+------+------+------+----------
-       0 |       2 |    1 |    1 |    1 |        1
-       1 |       2 |    2 |   -1 |    0 |        0
-       2 |       2 |    5 |    4 |    1 |        1
-       3 |       2 |    6 |    8 |    1 |        2
-       4 |       2 |    7 |    6 |    1 |        3
-       5 |       2 |    8 |    7 |    1 |        2
-       6 |       2 |    9 |    9 |    1 |        3
-       7 |       2 |   10 |   10 |    1 |        2
-       8 |       2 |   11 |   12 |    1 |        3
-       9 |      13 |   13 |   -1 |    0 |        0
-      10 |      13 |   12 |   13 |    1 |        3
+     seq | from_v | node | edge | cost | agg_cost 
+    -----+--------+------+------+------+----------
+       1 |      2 |    1 |    1 |    1 |        1
+       2 |      2 |    2 |   -1 |    0 |        0
+       3 |      2 |    5 |    4 |    1 |        1
+       4 |      2 |    6 |    8 |    1 |        2
+       5 |      2 |    7 |    6 |    1 |        3
+       6 |      2 |    8 |    7 |    1 |        2
+       7 |      2 |    9 |    9 |    1 |        3
+       8 |      2 |   10 |   10 |    1 |        2
+       9 |      2 |   11 |   12 |    1 |        3
+      10 |     13 |   13 |   -1 |    0 |        0
+      11 |     13 |   12 |   13 |    1 |        3
     (11 rows)
 
 
@@ -203,85 +211,85 @@ The examples in this section use the following :ref:`fig2`
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         2, 3, false
       );
-     seq | node | edge | cost | agg_cost
+     seq | node | edge | cost | agg_cost 
     -----+------+------+------+----------
-       0 |    1 |    1 |    1 |        1
-       1 |    2 |   -1 |    0 |        0
-       2 |    3 |    2 |    1 |        1
-       3 |    4 |    3 |    1 |        2
-       4 |    5 |    4 |    1 |        1
-       5 |    6 |    8 |    1 |        2
-       6 |   11 |   12 |    1 |        3
-       7 |   10 |   10 |    1 |        2
-       8 |   13 |   14 |    1 |        3
-       9 |    9 |   16 |    1 |        3
-      10 |    7 |    6 |    1 |        3
-      11 |    8 |    7 |    1 |        2
+       1 |    1 |    1 |    1 |        1
+       2 |    2 |   -1 |    0 |        0
+       3 |    3 |    2 |    1 |        1
+       4 |    4 |    3 |    1 |        2
+       5 |    5 |    4 |    1 |        1
+       6 |    6 |    8 |    1 |        2
+       7 |   11 |   12 |    1 |        3
+       8 |   10 |   10 |    1 |        2
+       9 |   13 |   14 |    1 |        3
+      10 |    9 |   16 |    1 |        3
+      11 |    7 |    6 |    1 |        3
+      12 |    8 |    7 |    1 |        2
     (12 rows)
-
+    
     SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         13, 3, false
       );
-     seq | node | edge | cost | agg_cost
+     seq | node | edge | cost | agg_cost 
     -----+------+------+------+----------
-       0 |    2 |    4 |    1 |        3
-       1 |    5 |   10 |    1 |        2
-       2 |    6 |   11 |    1 |        3
-       3 |   11 |   12 |    1 |        2
-       4 |   10 |   14 |    1 |        1
-       5 |   12 |   13 |    1 |        3
-       6 |   13 |   -1 |    0 |        0
-       7 |    8 |    7 |    1 |        3
+       1 |    2 |    4 |    1 |        3
+       2 |    5 |   10 |    1 |        2
+       3 |    6 |   11 |    1 |        3
+       4 |   11 |   12 |    1 |        2
+       5 |   10 |   14 |    1 |        1
+       6 |   12 |   13 |    1 |        3
+       7 |   13 |   -1 |    0 |        0
+       8 |    8 |    7 |    1 |        3
     (8 rows)
-
+    
     SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3, false
       );
-     seq | start_v | node | edge | cost | agg_cost
-    -----+---------+------+------+------+----------
-       0 |       2 |    1 |    1 |    1 |        1
-       1 |       2 |    2 |   -1 |    0 |        0
-       2 |       2 |    3 |    2 |    1 |        1
-       3 |       2 |    4 |    3 |    1 |        2
-       4 |       2 |    5 |    4 |    1 |        1
-       5 |       2 |    6 |    8 |    1 |        2
-       6 |       2 |   11 |   12 |    1 |        3
-       7 |       2 |   10 |   10 |    1 |        2
-       8 |       2 |   13 |   14 |    1 |        3
-       9 |       2 |    9 |   16 |    1 |        3
-      10 |       2 |    7 |    6 |    1 |        3
-      11 |       2 |    8 |    7 |    1 |        2
-      12 |      13 |    2 |    4 |    1 |        3
-      13 |      13 |    5 |   10 |    1 |        2
-      14 |      13 |    6 |   11 |    1 |        3
-      15 |      13 |   11 |   12 |    1 |        2
-      16 |      13 |   10 |   14 |    1 |        1
-      17 |      13 |   12 |   13 |    1 |        3
-      18 |      13 |   13 |   -1 |    0 |        0
-      19 |      13 |    8 |    7 |    1 |        3
+     seq | from_v | node | edge | cost | agg_cost 
+    -----+--------+------+------+------+----------
+       1 |      2 |    1 |    1 |    1 |        1
+       2 |      2 |    2 |   -1 |    0 |        0
+       3 |      2 |    3 |    2 |    1 |        1
+       4 |      2 |    4 |    3 |    1 |        2
+       5 |      2 |    5 |    4 |    1 |        1
+       6 |      2 |    6 |    8 |    1 |        2
+       7 |      2 |   11 |   12 |    1 |        3
+       8 |      2 |   10 |   10 |    1 |        2
+       9 |      2 |   13 |   14 |    1 |        3
+      10 |      2 |    9 |   16 |    1 |        3
+      11 |      2 |    7 |    6 |    1 |        3
+      12 |      2 |    8 |    7 |    1 |        2
+      13 |     13 |    2 |    4 |    1 |        3
+      14 |     13 |    5 |   10 |    1 |        2
+      15 |     13 |    6 |   11 |    1 |        3
+      16 |     13 |   11 |   12 |    1 |        2
+      17 |     13 |   10 |   14 |    1 |        1
+      18 |     13 |   12 |   13 |    1 |        3
+      19 |     13 |   13 |   -1 |    0 |        0
+      20 |     13 |    8 |    7 |    1 |        3
     (20 rows)
 
     SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3, false, equicost:=true
       );
-     seq | start_v | node | edge | cost | agg_cost
-    -----+---------+------+------+------+----------
-       0 |       2 |    1 |    1 |    1 |        1
-       1 |       2 |    2 |   -1 |    0 |        0
-       2 |       2 |    3 |    2 |    1 |        1
-       3 |       2 |    4 |    3 |    1 |        2
-       4 |       2 |    5 |    4 |    1 |        1
-       5 |       2 |    6 |    8 |    1 |        2
-       6 |       2 |    7 |    6 |    1 |        3
-       7 |       2 |    8 |    7 |    1 |        2
-       8 |       2 |    9 |   16 |    1 |        3
-       9 |       2 |   10 |   10 |    1 |        2
-      10 |       2 |   11 |   12 |    1 |        3
-      11 |      13 |   13 |   -1 |    0 |        0
-      12 |      13 |   12 |   13 |    1 |        3
+     seq | from_v | node | edge | cost | agg_cost 
+    -----+--------+------+------+------+----------
+       1 |      2 |    1 |    1 |    1 |        1
+       2 |      2 |    2 |   -1 |    0 |        0
+       3 |      2 |    3 |    2 |    1 |        1
+       4 |      2 |    4 |    3 |    1 |        2
+       5 |      2 |    5 |    4 |    1 |        1
+       6 |      2 |    6 |    8 |    1 |        2
+       7 |      2 |    7 |    6 |    1 |        3
+       8 |      2 |    8 |    7 |    1 |        2
+       9 |      2 |    9 |   16 |    1 |        3
+      10 |      2 |   10 |   10 |    1 |        2
+      11 |      2 |   11 |   12 |    1 |        3
+      12 |     13 |   13 |   -1 |    0 |        0
+      13 |     13 |   12 |   13 |    1 |        3
     (13 rows)
 
 
@@ -299,57 +307,57 @@ The examples in this section use the following :ref:`fig3`
         'SELECT id, source, target, cost FROM edge_table',
         2, 3
       );
-     seq | node | edge | cost | agg_cost
+     seq | node | edge | cost | agg_cost 
     -----+------+------+------+----------
-       0 |    2 |   -1 |    0 |        0
-       1 |    5 |    4 |    1 |        1
-       2 |    6 |    8 |    1 |        2
-       3 |   11 |   11 |    1 |        3
-       4 |   10 |   10 |    1 |        2
-       5 |   13 |   14 |    1 |        3
-       6 |    9 |    9 |    1 |        3
+       1 |    2 |   -1 |    0 |        0
+       2 |    5 |    4 |    1 |        1
+       3 |    6 |    8 |    1 |        2
+       4 |   11 |   11 |    1 |        3
+       5 |   10 |   10 |    1 |        2
+       6 |   13 |   14 |    1 |        3
+       7 |    9 |    9 |    1 |        3
     (7 rows)
-
+    
     SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         13, 3
       );
      seq | node | edge | cost | agg_cost
     -----+------+------+------+----------
-       0 |   13 |   -1 |    0 |        0
+       1 |   13 |   -1 |    0 |        0
     (1 row)
 
     SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         array[2,13], 3
       );
-     seq | start_v | node | edge | cost | agg_cost
-    -----+---------+------+------+------+----------
-       0 |       2 |    2 |   -1 |    0 |        0
-       1 |       2 |    5 |    4 |    1 |        1
-       2 |       2 |    6 |    8 |    1 |        2
-       3 |       2 |   11 |   11 |    1 |        3
-       4 |       2 |   10 |   10 |    1 |        2
-       5 |       2 |   13 |   14 |    1 |        3
-       6 |       2 |    9 |    9 |    1 |        3
-       7 |      13 |   13 |   -1 |    0 |        0
+     seq | from_v | node | edge | cost | agg_cost 
+    -----+--------+------+------+------+----------
+       1 |      2 |    2 |   -1 |    0 |        0
+       2 |      2 |    5 |    4 |    1 |        1
+       3 |      2 |    6 |    8 |    1 |        2
+       4 |      2 |   11 |   11 |    1 |        3
+       5 |      2 |   10 |   10 |    1 |        2
+       6 |      2 |   13 |   14 |    1 |        3
+       7 |      2 |    9 |    9 |    1 |        3
+       8 |     13 |   13 |   -1 |    0 |        0
     (8 rows)
-
+    
     SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         array[2,13], 3, equicost:=true
       );
-     seq | start_v | node | edge | cost | agg_cost
-    -----+---------+------+------+------+----------
-       0 |       2 |    2 |   -1 |    0 |        0
-       1 |       2 |    5 |    4 |    1 |        1
-       2 |       2 |    6 |    8 |    1 |        2
-       3 |       2 |    9 |    9 |    1 |        3
-       4 |       2 |   10 |   10 |    1 |        2
-       5 |       2 |   11 |   11 |    1 |        3
-       6 |      13 |   13 |   -1 |    0 |        0
+     seq | from_v | node | edge | cost | agg_cost 
+    -----+--------+------+------+------+----------
+       1 |      2 |    2 |   -1 |    0 |        0
+       2 |      2 |    5 |    4 |    1 |        1
+       3 |      2 |    6 |    8 |    1 |        2
+       4 |      2 |    9 |    9 |    1 |        3
+       5 |      2 |   10 |   10 |    1 |        2
+       6 |      2 |   11 |   11 |    1 |        3
+       7 |     13 |   13 |   -1 |    0 |        0
     (7 rows)
-
+    
 
 
 Examples for queries marked as ``undirected`` with ``cost`` column
@@ -364,82 +372,82 @@ The examples in this section use the following :ref:`fig4`
         'SELECT id, source, target, cost FROM edge_table',
         2, 3, false
       );
-     seq | node | edge | cost | agg_cost
+     seq | node | edge | cost | agg_cost 
     -----+------+------+------+----------
-       0 |    1 |    1 |    1 |        1
-       1 |    2 |   -1 |    0 |        0
-       2 |    3 |    5 |    1 |        3
-       3 |    5 |    4 |    1 |        1
-       4 |    6 |    8 |    1 |        2
-       5 |   11 |   12 |    1 |        3
-       6 |   10 |   10 |    1 |        2
-       7 |   13 |   14 |    1 |        3
-       8 |    9 |    9 |    1 |        3
-       9 |    7 |    6 |    1 |        3
-      10 |    8 |    7 |    1 |        2
+       1 |    1 |    1 |    1 |        1
+       2 |    2 |   -1 |    0 |        0
+       3 |    3 |    5 |    1 |        3
+       4 |    5 |    4 |    1 |        1
+       5 |    6 |    8 |    1 |        2
+       6 |   11 |   12 |    1 |        3
+       7 |   10 |   10 |    1 |        2
+       8 |   13 |   14 |    1 |        3
+       9 |    9 |    9 |    1 |        3
+      10 |    7 |    6 |    1 |        3
+      11 |    8 |    7 |    1 |        2
     (11 rows)
-
+    
     SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         13, 3, false
       );
-     seq | node | edge | cost | agg_cost
+     seq | node | edge | cost | agg_cost 
     -----+------+------+------+----------
-       0 |    2 |    4 |    1 |        3
-       1 |    5 |   10 |    1 |        2
-       2 |    6 |   11 |    1 |        3
-       3 |   11 |   12 |    1 |        2
-       4 |   10 |   14 |    1 |        1
-       5 |   12 |   13 |    1 |        3
-       6 |   13 |   -1 |    0 |        0
-       7 |    8 |    7 |    1 |        3
+       1 |    2 |    4 |    1 |        3
+       2 |    5 |   10 |    1 |        2
+       3 |    6 |   11 |    1 |        3
+       4 |   11 |   12 |    1 |        2
+       5 |   10 |   14 |    1 |        1
+       6 |   12 |   13 |    1 |        3
+       7 |   13 |   -1 |    0 |        0
+       8 |    8 |    7 |    1 |        3
     (8 rows)
 
     SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         array[2,13], 3, false
       );
-     seq | start_v | node | edge | cost | agg_cost
-    -----+---------+------+------+------+----------
-       0 |       2 |    1 |    1 |    1 |        1
-       1 |       2 |    2 |   -1 |    0 |        0
-       2 |       2 |    3 |    5 |    1 |        3
-       3 |       2 |    5 |    4 |    1 |        1
-       4 |       2 |    6 |    8 |    1 |        2
-       5 |       2 |   11 |   12 |    1 |        3
-       6 |       2 |   10 |   10 |    1 |        2
-       7 |       2 |   13 |   14 |    1 |        3
-       8 |       2 |    9 |    9 |    1 |        3
-       9 |       2 |    7 |    6 |    1 |        3
-      10 |       2 |    8 |    7 |    1 |        2
-      11 |      13 |    2 |    4 |    1 |        3
-      12 |      13 |    5 |   10 |    1 |        2
-      13 |      13 |    6 |   11 |    1 |        3
-      14 |      13 |   11 |   12 |    1 |        2
-      15 |      13 |   10 |   14 |    1 |        1
-      16 |      13 |   12 |   13 |    1 |        3
-      17 |      13 |   13 |   -1 |    0 |        0
-      18 |      13 |    8 |    7 |    1 |        3
+     seq | from_v | node | edge | cost | agg_cost 
+    -----+--------+------+------+------+----------
+       1 |      2 |    1 |    1 |    1 |        1
+       2 |      2 |    2 |   -1 |    0 |        0
+       3 |      2 |    3 |    5 |    1 |        3
+       4 |      2 |    5 |    4 |    1 |        1
+       5 |      2 |    6 |    8 |    1 |        2
+       6 |      2 |   11 |   12 |    1 |        3
+       7 |      2 |   10 |   10 |    1 |        2
+       8 |      2 |   13 |   14 |    1 |        3
+       9 |      2 |    9 |    9 |    1 |        3
+      10 |      2 |    7 |    6 |    1 |        3
+      11 |      2 |    8 |    7 |    1 |        2
+      12 |     13 |    2 |    4 |    1 |        3
+      13 |     13 |    5 |   10 |    1 |        2
+      14 |     13 |    6 |   11 |    1 |        3
+      15 |     13 |   11 |   12 |    1 |        2
+      16 |     13 |   10 |   14 |    1 |        1
+      17 |     13 |   12 |   13 |    1 |        3
+      18 |     13 |   13 |   -1 |    0 |        0
+      19 |     13 |    8 |    7 |    1 |        3
     (19 rows)
 
     SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         array[2,13], 3, false, equicost:=true
       );
-     seq | start_v | node | edge | cost | agg_cost
-    -----+---------+------+------+------+----------
-       0 |       2 |    1 |    1 |    1 |        1
-       1 |       2 |    2 |   -1 |    0 |        0
-       2 |       2 |    3 |    5 |    1 |        3
-       3 |       2 |    5 |    4 |    1 |        1
-       4 |       2 |    6 |    8 |    1 |        2
-       5 |       2 |    7 |    6 |    1 |        3
-       6 |       2 |    8 |    7 |    1 |        2
-       7 |       2 |    9 |    9 |    1 |        3
-       8 |       2 |   10 |   10 |    1 |        2
-       9 |       2 |   11 |   12 |    1 |        3
-      10 |      13 |   13 |   -1 |    0 |        0
-      11 |      13 |   12 |   13 |    1 |        3
+     seq | from_v | node | edge | cost | agg_cost 
+    -----+--------+------+------+------+----------
+       1 |      2 |    1 |    1 |    1 |        1
+       2 |      2 |    2 |   -1 |    0 |        0
+       3 |      2 |    3 |    5 |    1 |        3
+       4 |      2 |    5 |    4 |    1 |        1
+       5 |      2 |    6 |    8 |    1 |        2
+       6 |      2 |    7 |    6 |    1 |        3
+       7 |      2 |    8 |    7 |    1 |        2
+       8 |      2 |    9 |    9 |    1 |        3
+       9 |      2 |   10 |   10 |    1 |        2
+      10 |      2 |   11 |   12 |    1 |        3
+      11 |     13 |   13 |   -1 |    0 |        0
+      12 |     13 |   12 |   13 |    1 |        3
     (12 rows)
 
 
@@ -451,7 +459,7 @@ The queries use the :ref:`sampledata` network.
 .. rubric:: History
 
 * Renamed in version 2.0.0
-* Added functionality for version 3.0.0 in version 2.1
+* Added functionality in version 2.1
 
 
 See Also
