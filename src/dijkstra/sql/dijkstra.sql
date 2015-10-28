@@ -23,25 +23,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vid bigint, end_vid bigint, directed boolean, has_rcost boolean,
   OUT seq integer, OUT path_seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
- '$libdir/librouting-2.2', 'shortest_path'
+ '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'shortest_path'
     LANGUAGE c IMMUTABLE STRICT;
 
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vid bigint, end_vids anyarray, directed boolean, has_rcost boolean,
   OUT seq integer, OUT path_seq integer, OUT end_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
- '$libdir/librouting-2.2', 'dijkstra_1_to_many'
+ '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'dijkstra_1_to_many'
     LANGUAGE c IMMUTABLE STRICT;
 
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vids anyarray, end_vids bigint, directed boolean, has_rcost boolean,
   OUT seq integer, OUT path_seq integer, OUT start_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
- '$libdir/librouting-2.2', 'dijkstra_many_to_1'
+ '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'dijkstra_many_to_1'
     LANGUAGE c IMMUTABLE STRICT;
 
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vids anyarray, end_vids anyarray, directed boolean, has_rcost boolean,
   OUT seq integer, OUT path_seq integer, OUT start_vid bigint, OUT end_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
- '$libdir/librouting-2.2', 'dijkstra_many_to_many'
+ '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'dijkstra_many_to_many'
     LANGUAGE c IMMUTABLE STRICT;
 
 -- V2 signature

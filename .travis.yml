@@ -5,62 +5,76 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
-language: c
+language: cpp
 
 sudo: required
+dist: trusty
 
 compiler:
   - gcc
 
 notifications:
   email:
-    on_failure: project@pgrouting.org
+    - vicky_vergara@hotmail.com
+  on_failure: allways
+  on_success: change
 
 branches:
   only:
     - master
     - develop
+    - new-travis-dev-2.2
 
+# ------------------------------------------------------------
+# for the moment the matrix doesn't work when the tests are
+# excecuted. So things have to be tested oe by one.
 addons:
-  postgresql: "9.2"
-  postgresql: "9.3"
-  postgresql: "9.4"
+  # postgresql: 9.4
+  # postgresql: 9.3
+  postgresql: 9.2
+  # postgresql: 9.1
+  # Dependencies on linux.
+  apt:
+    sources:
+      # For gcc >= 4.8
+      # - ubuntu-toolchain-r-test
+      # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
+      #- kubuntu-backports
+      - boost-latest
+    packages:
+      #- cmake
+      - libboost-thread-dev
+      - libboost-graph-dev
+      - libcgal-dev
+      - postgresql-server-dev-all
+      - postgresql-common
 
-services:
-  #- postgresql: 9.1
-  #- postgresql: 9.2
-  #- postgresql: 9.3
+# ------------------------------------------------------------
+# for the moment the matrix doesn't work when the tests are
+# excecuted. So things have to be tested oe by one.
 
 env:
   matrix:
-    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.1
-    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
+#    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.1
+#    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
     - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
-    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
+#    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
 
-    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.0
-    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.0
-    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.0
-    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.0
+# ------------------------------------------------------------
+# leaving the sections that are not used blank and commented
+#before_install:
 
-    ## We are NOT supporting these for pgrouting 2.1.0
-    #- POSTGRESQL_VERSION=8.4 POSTGIS_VERSION=1.5
-    #- POSTGRESQL_VERSION=9.0 POSTGIS_VERSION=1.5
-    #- POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=1.5
+#install:
 
-install:
-  - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+#before_script:
 
-before_script:
-  #-
-
+# ------------------------------------------------------------
+# leaving the tests are included in the script
 script: 
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
-after_script: 
-  - ./tools/travis/pgrouting_prepare.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
-  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+#after_script: 
 
-after_success:
-  #- ./tools/travis/pgrouting_deploy.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+#after_success:
+
 

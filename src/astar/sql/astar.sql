@@ -25,5 +25,5 @@
 -----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION pgr_astar(sql text, source_id integer, target_id integer, directed boolean, has_reverse_cost boolean)
     RETURNS SETOF pgr_costResult
-    AS '$libdir/librouting-2.2', 'shortest_path_astar'
+    AS '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'shortest_path_astar'
     LANGUAGE c IMMUTABLE STRICT; 
