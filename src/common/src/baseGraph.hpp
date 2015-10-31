@@ -120,7 +120,7 @@ class Pgr_base_graph {
   //! @name The Graph
   //@{
   G graph;                //!< The graph
-  int64_t m_numb_vertices;  //!< number of vertices
+  size_t m_numb_vertices;  //!< number of vertices
   graphType m_gType;      //!< type (DIRECTED or UNDIRECTED)
   //@}
 
@@ -417,7 +417,7 @@ class Pgr_base_graph {
   }
 
  public:
- int numb_vertices() const { return boost::num_vertices(graph); }
+ size_t numb_vertices() const { return boost::num_vertices(graph); }
 
  private:
   void

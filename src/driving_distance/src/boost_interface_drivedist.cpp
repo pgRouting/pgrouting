@@ -61,7 +61,7 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
         #endif
 
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const int initial_size = 1;
+        const int initial_size = total_tuples;
 
         std::deque< Path >paths;
         typedef boost::adjacency_list < boost::vecS, boost::vecS,
@@ -71,11 +71,22 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
             boost::bidirectionalS,
             boost_vertex_t, boost_edge_t > DirectedGraph;
 
-        Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
-        Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
-
         std::vector< int64_t > start_vertices(start_vertex, start_vertex + s_len);
 
+    if (directedFlag) {
+      Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+      Pgr_dijkstra< Pgr_base_graph< DirectedGraph > > fn_dijkstra;
+      digraph.graph_insert_data(data_edges, total_tuples);
+      fn_dijkstra.dijkstra_dd(digraph, paths, start_vertices, distance);
+    } else {
+      Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+      Pgr_dijkstra< Pgr_base_graph< UndirectedGraph > > fn_dijkstra;
+      undigraph.graph_insert_data(data_edges, total_tuples);
+      fn_dijkstra.dijkstra_dd(undigraph, paths, start_vertices, distance);
+    }
+
+
+#if 0
         if (directedFlag) {
             digraph.initialize_graph(data_edges, total_tuples);
             digraph.dijkstra_dd(paths, start_vertices, distance);
@@ -83,7 +94,7 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
             undigraph.initialize_graph(data_edges, total_tuples);
             undigraph.dijkstra_dd(paths, start_vertices, distance);
         }
-
+#endif
 
         if (equiCostFlag == false) {
             int count(count_tuples(paths));
@@ -143,7 +154,7 @@ int  do_pgr_driving_distance(pgr_edge_t  *data_edges, int64_t total_tuples,
         std::ostringstream log;
 
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const int initial_size = 1;
+        const int initial_size = total_tuples;
 
         Path paths;
         typedef boost::adjacency_list < boost::vecS, boost::vecS,
@@ -153,6 +164,19 @@ int  do_pgr_driving_distance(pgr_edge_t  *data_edges, int64_t total_tuples,
             boost::bidirectionalS,
             boost_vertex_t, boost_edge_t > DirectedGraph;
 
+
+    if (directedFlag) {
+      Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+      Pgr_dijkstra< Pgr_base_graph< DirectedGraph > > fn_dijkstra;
+      digraph.graph_insert_data(data_edges, total_tuples);
+      fn_dijkstra.dijkstra_dd(digraph, paths, start_vertex, distance);
+    } else {
+      Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+      Pgr_dijkstra< Pgr_base_graph< UndirectedGraph > > fn_dijkstra;
+      undigraph.graph_insert_data(data_edges, total_tuples);
+      fn_dijkstra.dijkstra_dd(undigraph, paths, start_vertex, distance);
+    }
+#if 0
         Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
         Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
 
@@ -163,7 +187,7 @@ int  do_pgr_driving_distance(pgr_edge_t  *data_edges, int64_t total_tuples,
             undigraph.initialize_graph(data_edges, total_tuples);
             undigraph.dijkstra_dd(paths, start_vertex, distance);
         }
-
+#endif
         if (paths.path.size() == 0) {
             *err_msg = strdup(
                 "NOTICE: No driving distance node found");

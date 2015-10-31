@@ -13,7 +13,12 @@ $(TARGET): pgRouting.o basePath_SSEC.o
 	$(CC)  -o $@ $^ $(LDFLAGS)
  
 $(TARGET).o: $(TARGET).cpp ./../../common/src/baseGraph.hpp \
-         ./../../common/src/pgr_types.h ./../../dijkstra/src/pgr_dijkstra.hpp ../../ksp/src/pgr_ksp.cpp ./../../common/src/basePath_SSEC.hpp
+         ./../../common/src/pgr_types.h \
+         ./../../common/src/basePath_SSEC.hpp \
+         ./../../dijkstra/src/pgr_dijkstra.hpp \
+         ./../../ksp/src/pgr_ksp.hpp \
+         ./../../warshall/src/pgr_warshall.hpp \
+         ./warshall.hpp
 	$(CC)  $(CCFLAGS) $(INCFLAGS) -c $<
  
 %.o: %.cpp %.h 

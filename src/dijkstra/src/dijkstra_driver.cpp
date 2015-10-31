@@ -58,7 +58,6 @@ int do_pgr_dijkstra_many_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
 
 std::ostringstream log;
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-    const int initial_size = 1;
 
     std::deque< Path >paths;
     typedef boost::adjacency_list < boost::vecS, boost::vecS,
@@ -68,17 +67,20 @@ std::ostringstream log;
       boost::bidirectionalS,
       boost_vertex_t, boost_edge_t > DirectedGraph;
 
-    Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
-    Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
+    const int initial_size = total_tuples;
 
     std::vector< int64_t > start_vertices(start_vertex, start_vertex + s_len);
     std::vector< int64_t > end_vertices(end_vertex, end_vertex + e_len);
     if (directedFlag) {
-      digraph.initialize_graph(data_edges, total_tuples);
-      digraph.dijkstra(paths, start_vertices, end_vertices);
+      Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+      Pgr_dijkstra< Pgr_base_graph< DirectedGraph > > fn_dijkstra;
+      digraph.graph_insert_data(data_edges, total_tuples);
+      fn_dijkstra.dijkstra(digraph, paths, start_vertices, end_vertices);
     } else {
-      undigraph.initialize_graph(data_edges, total_tuples);
-      undigraph.dijkstra(paths, start_vertices, end_vertices);
+      Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+      Pgr_dijkstra< Pgr_base_graph< UndirectedGraph > > fn_dijkstra;
+      undigraph.graph_insert_data(data_edges, total_tuples);
+      fn_dijkstra.dijkstra(undigraph, paths, start_vertices, end_vertices);
     }
 
     int count(count_tuples(paths));
@@ -146,7 +148,7 @@ int  do_pgr_dijkstra_many_to_1(pgr_edge_t *data_edges, int64_t total_tuples,
     }
 
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-    const int initial_size = 1;
+    const int initial_size = total_tuples;
 
     std::deque< Path >paths;
     typedef boost::adjacency_list < boost::vecS, boost::vecS,
@@ -156,17 +158,18 @@ int  do_pgr_dijkstra_many_to_1(pgr_edge_t *data_edges, int64_t total_tuples,
       boost::bidirectionalS,
       boost_vertex_t, boost_edge_t > DirectedGraph;
 
-    Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
-    Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
-
     std::vector< int64_t > start_vertices(start_vertex, start_vertex + s_len);
 
     if (directedFlag) {
-      digraph.initialize_graph(data_edges, total_tuples);
-      digraph.dijkstra(paths, start_vertices, end_vertex);
+      Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+      Pgr_dijkstra< Pgr_base_graph< DirectedGraph > > fn_dijkstra;
+      digraph.graph_insert_data(data_edges, total_tuples);
+      fn_dijkstra.dijkstra(digraph, paths, start_vertices, end_vertex);
     } else {
-      undigraph.initialize_graph(data_edges, total_tuples);
-      undigraph.dijkstra(paths, start_vertices, end_vertex);
+      Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+      Pgr_dijkstra< Pgr_base_graph< UndirectedGraph > > fn_dijkstra;
+      undigraph.graph_insert_data(data_edges, total_tuples);
+      fn_dijkstra.dijkstra(undigraph, paths, start_vertices, end_vertex);
     }
 
 
@@ -223,7 +226,7 @@ int do_pgr_dijkstra_1_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
       return 0;
     }
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-    const int initial_size = 1;
+    const int initial_size = total_tuples;
 
     std::deque< Path >paths;
     typedef boost::adjacency_list < boost::vecS, boost::vecS,
@@ -233,18 +236,20 @@ int do_pgr_dijkstra_1_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
       boost::bidirectionalS,
       boost_vertex_t, boost_edge_t > DirectedGraph;
 
-    Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
-    Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
 
 
     std::vector< int64_t > end_vertices(end_vertex, end_vertex + e_len);
 
     if (directedFlag) {
-      digraph.initialize_graph(data_edges, total_tuples);
-      digraph.dijkstra(paths, start_vertex, end_vertices);
+      Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+      Pgr_dijkstra< Pgr_base_graph< DirectedGraph > > fn_dijkstra;
+      digraph.graph_insert_data(data_edges, total_tuples);
+      fn_dijkstra.dijkstra(digraph, paths, start_vertex, end_vertices);
     } else {
-      undigraph.initialize_graph(data_edges, total_tuples);
-      undigraph.dijkstra(paths, start_vertex, end_vertices);
+      Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+      Pgr_dijkstra< Pgr_base_graph< UndirectedGraph > > fn_dijkstra;
+      undigraph.graph_insert_data(data_edges, total_tuples);
+      fn_dijkstra.dijkstra(undigraph, paths, start_vertex, end_vertices);
     }
 
     int count(count_tuples(paths));
@@ -312,15 +317,17 @@ int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
       boost::bidirectionalS,
       boost_vertex_t, boost_edge_t > DirectedGraph;
 
-    Pgr_dijkstra < DirectedGraph > digraph(gType, initial_size);
-    Pgr_dijkstra < UndirectedGraph > undigraph(gType, initial_size);
 
     if (directedFlag) {
-      digraph.initialize_graph(data_edges, total_tuples);
-      digraph.dijkstra(path, start_vertex, end_vertex);
+      Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+      Pgr_dijkstra< Pgr_base_graph< DirectedGraph > > fn_dijkstra;
+      digraph.graph_insert_data(data_edges, total_tuples);
+      fn_dijkstra.dijkstra(digraph, path, start_vertex, end_vertex);
     } else {
-      undigraph.initialize_graph(data_edges, total_tuples);
-      undigraph.dijkstra(path, start_vertex, end_vertex);
+      Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+      Pgr_dijkstra< Pgr_base_graph< UndirectedGraph > > fn_dijkstra;
+      undigraph.graph_insert_data(data_edges, total_tuples);
+      fn_dijkstra.dijkstra(undigraph, path, start_vertex, end_vertex);
     }
 
     int count(path.path.size());

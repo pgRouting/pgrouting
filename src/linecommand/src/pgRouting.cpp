@@ -41,12 +41,12 @@ namespace po = boost::program_options;
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
-//#include "./../../warshall/src/pgr_warshall.hpp"
+#include "./../../warshall/src/pgr_warshall.hpp"
 #include "./../../ksp/src/pgr_ksp.hpp"
 #include "./driving.cpp"
 #include "./dijkstra.cpp"
 #include "./ksp.cpp"
-//#include "./warshall.cpp"
+#include "./warshall.hpp"
 
 
 
@@ -231,7 +231,7 @@ void process(G &graph, pgr_edge_t *data_edges, int row_count) {
     } else if (tokens[0].compare("ksp") == 0) {
        process_ksp(graph, tokens);
     } else if (tokens[0].compare("warshall") == 0) {
-       //process_warshall(graph);
+       process_warshall(graph, tokens);
     } else {
       process_drivingDistance(graph, tokens);
     }

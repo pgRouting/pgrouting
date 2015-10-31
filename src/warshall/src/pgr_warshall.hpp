@@ -43,16 +43,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 template < class G >
-class Pgr_warshall
-  :public Pgr_base_graph<G> {
+class Pgr_warshall {
+//  :public Pgr_base_graph<G> {
+  typedef typename G::V V;
 
 
  public:
+#if 0
     //! \brief the constructor
     explicit Pgr_warshall(graphType gtype, const int initial_size)
      :Pgr_base_graph<G>(gtype, initial_size) {
 }
-
 
     /*! \brief Perfom the inizialization of the graph
      For Dijkstra  only requieres the data insertion.
@@ -65,6 +66,7 @@ class Pgr_warshall
     initialize_graph(pgr_edge_t *data_edges, int64_t count) {
           this->graph_insert_data(data_edges, count);
     }
+#endif
 
 
         /*
@@ -112,17 +114,13 @@ class Pgr_warshall
 
     public:
     void
-    warshall(std::vector< std::vector<double>> &Dmatrix) {
-
- std::cout << "ya entre";
+    warshall(G &graph, std::vector< std::vector<double>> &Dmatrix) {
 
         inf_plus<double> combine;
-	    //bool valid = 
-         boost::floyd_warshall_all_pairs_shortest_paths(
-            this->graph,
+        boost::floyd_warshall_all_pairs_shortest_paths(
+            graph.graph,
             Dmatrix,
-		    weight_map(get(&boost_edge_t::cost, this->graph)).
-		    // distance_compare(compare).  // leaving the default
+		    weight_map(get(&boost_edge_t::cost, graph.graph)).
 		    distance_combine(combine).
 		    distance_inf(std::numeric_limits<double>::max()).
 		    distance_zero(0));
