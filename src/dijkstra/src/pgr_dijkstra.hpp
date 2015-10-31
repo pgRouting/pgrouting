@@ -41,18 +41,6 @@ extern "C" {
 #include "./../../common/src/baseGraph.hpp"
 
 
-#if 0
-extern "C" {
-static General_path_element_t* get_memory(int size, General_path_element_t *postgres_rows){
-        if (postgres_rows == NULL){
-                postgres_rows = (General_path_element_t*) malloc(size * sizeof(General_path_element_t));
-        } else {
-                postgres_rows = (General_path_element_t*) realloc(postgres_rows, size * sizeof(General_path_element_t));
-        }
-        return (General_path_element_t*) postgres_rows;
-}
-}
-#endif
 
 template < class G > class Pgr_dijkstra;
 // user's functions
@@ -87,19 +75,15 @@ pgr_dijkstra(G &graph, std::deque<Path> &paths,  const std::vector< int64_t > so
 }
 
 
-// for postgres 
+// for postgres not working 
 #if 0
 template < class G >
 void
 pgr_dijkstra(G &graph, int64_t  source, int64_t target, size_t &result_tuple_count, General_path_element_t **postgres_rows) {
-     Path path;
      Pgr_dijkstra< G > fn_dijkstra;
-     fn_dijkstra.dijkstra(graph, path, source, target);
-     *postgres_rows = NULL;
-     *postgres_rows = get_memory(path.path.size(), (*postgres_rows));
-     size_t sequence;
-     path.generate_postgres_data(postgres_rows, sequence);
-     result_tuple_count = sequence;
+     fn_dijkstra.dijkstra(graph, source, target, result_tuple_count, postgres_rows);
+     if ((*postgres_rows) == NULL)      std::cout << "result_tuple_count" << result_tuple_count <<"\n";
+
 }
 #endif
 //******************************************
@@ -164,6 +148,7 @@ class Pgr_dijkstra {
       get_path(graph, v_source, v_target, path);
       return;
     }
+
 
     //! Call to Dijkstra  1 source to 1 target
     template <class B_G, class V>
@@ -462,6 +447,7 @@ class Pgr_dijkstra {
       }
       return found;
     }
+
 
  //private:
   //! @name Used by dijkstra

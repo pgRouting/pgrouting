@@ -44,7 +44,6 @@ void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
         targets.push_back(end_vertex);
       }
 
-      //Pgr_dijkstra< G > dijkstra;
       
       if (sources.size() == 1 && targets.size() == 1) {
         // one to one
@@ -56,33 +55,12 @@ void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
         path.print_path();
         path.clear();
 
-//#define TEST_POSTGRES
-#ifdef TEST_POSTGRES
-        size_t result_tuple_count;
-        General_path_element_t *postgres_rows = NULL;
-
-        pgr_dijkstra(graph, sources[0], targets[0], result_tuple_count, &postgres_rows);
-
-        std::cout << "\t\t\tTHE POSTGRESQL OPUTPUT\n";
-        std::cout << "seq\tfrom\tto\tcost\n";
-        size_t seq = 0;
-        for (size_t i = 0; i < result_tuple_count; i++) {
-            std::cout << seq++ << "\t"
-                      << postgres_rows[i].from << "\t"
-                      <<  postgres_rows[i].to << "\t" 
-                      << postgres_rows[i].vertex << "\t"
-                      << postgres_rows[i].edge << "\t"
-                      << postgres_rows[i].cost << "\t"
-                      << postgres_rows[i].tot_cost << "\n";
-        }
-#endif  // TEST_POSTGRES
 
       } else if (sources.size() == 1 && targets.size() > 1){
         // one to many
         std::deque<Path> paths;
 
         pgr_dijkstra(graph, paths, sources[0], targets);
-        //dijkstra.dijkstra(graph, paths, sources[0], targets);
 
         std::cout << "THE OPUTPUTS ---->  total outputs: " << paths.size() << "\n";
         for (unsigned int i = 0; i < paths.size(); ++i) {
@@ -93,7 +71,6 @@ void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
       } else if (sources.size() > 1 && targets.size() == 1){
         // many to 1
         std::deque<Path> paths;
-        //dijkstra.dijkstra(graph, paths, sources, targets[0]);
         pgr_dijkstra(graph, paths, sources, targets[0]);
         
 
