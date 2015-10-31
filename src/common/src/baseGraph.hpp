@@ -120,7 +120,7 @@ class Pgr_base_graph {
   //! @name The Graph
   //@{
   G graph;                //!< The graph
-  size_t m_numb_vertices;  //!< number of vertices
+  size_t m_num_vertices;  //!< number of vertices
   graphType m_gType;      //!< type (DIRECTED or UNDIRECTED)
   //@}
 
@@ -154,7 +154,7 @@ class Pgr_base_graph {
   */
   explicit Pgr_base_graph< G >(graphType gtype, const int initial_size)
      : graph(initial_size),
-       m_numb_vertices(0),
+       m_num_vertices(0),
        m_gType(gtype)
      {}
 
@@ -163,6 +163,7 @@ class Pgr_base_graph {
       for (unsigned int i = 0; i < count; ++i) {
          graph_add_edge(data_edges[i]);
       }
+      adjust_vertices();
       for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i )
          graph[i].id = gVertices_map.find(i)->second;
   }
@@ -270,7 +271,7 @@ class Pgr_base_graph {
         V_i vi;
 
         for (vi = vertices(graph).first; vi != vertices(graph).second; ++vi) {
-            if ((*vi) >= m_numb_vertices) continue;
+            if ((*vi) >= m_num_vertices) continue;
             std::cout << (*vi) << " out_edges(" << graph[(*vi)].id << "):";
             for (boost::tie(out, out_end) = out_edges(*vi, graph);
               out != out_end; ++out) {
@@ -321,7 +322,15 @@ class Pgr_base_graph {
   }
 
  public:
- size_t numb_vertices() const { return m_numb_vertices; }
+  size_t num_vertices() const { return m_num_vertices; }
+  void
+  adjust_vertices() {
+    while (boost::num_vertices(graph) != num_vertices()) {
+      if (boost::num_vertices(graph) > num_vertices()) {
+        boost::remove_vertex(boost::num_vertices(graph), graph);
+      }
+    }
+  }
 
  private:
   void
@@ -332,18 +341,16 @@ class Pgr_base_graph {
 
       vm_s = vertices_map.find(edge.source);
       if (vm_s == vertices_map.end()) {
-        vertices_map[edge.source]=  m_numb_vertices;
-        gVertices_map[m_numb_vertices] = edge.source;
+        vertices_map[edge.source]=  m_num_vertices;
+        gVertices_map[m_num_vertices++] = edge.source;
         vm_s = vertices_map.find(edge.source);
-        m_numb_vertices++;
       }
 
       vm_t = vertices_map.find(edge.target);
       if (vm_t == vertices_map.end()) {
-        vertices_map[edge.target]=  m_numb_vertices;
-        gVertices_map[m_numb_vertices] = edge.target;
+        vertices_map[edge.target]=  m_num_vertices;
+        gVertices_map[m_num_vertices++] = edge.target;
         vm_t = vertices_map.find(edge.target);
-        m_numb_vertices++;
       }
 
       if (edge.cost >= 0) {

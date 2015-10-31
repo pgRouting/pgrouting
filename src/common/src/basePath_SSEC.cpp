@@ -33,17 +33,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_types.h"
 
 
-    void Path::push_front(pgr_path_element3_t data) {
+    void Path::push_front(General_path_element_t data) {
         cost += data.cost;
         path.push_back(data);
     }
 
-    void Path::push_back(pgr_path_element3_t data) {
+    void Path::push_back(General_path_element_t data) {
         cost += data.cost;
         path.push_back(data);
     }
 
-    pgr_path_element3_t Path::set_data(
+    General_path_element_t Path::set_data(
          int d_seq, 
          int64_t d_from, 
          int64_t d_to,
@@ -51,7 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
          int64_t d_edge, 
          float8 d_cost,
          float8 d_tot_cost) {
-      pgr_path_element3_t data;
+      General_path_element_t data;
       data.seq = d_seq;
       data.from = d_from;
       data.to = d_to;
@@ -128,7 +128,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
     bool Path::isEqual(const Path &subpath) const {
         if (subpath.path.empty()) return true;
         if (subpath.path.size() >= path.size()) return false;
-        std::deque<pgr_path_element3_t>::const_iterator i, j;
+        std::deque<General_path_element_t>::const_iterator i, j;
         for (i = path.begin(),  j = subpath.path.begin();
              j != subpath.path.end();
              ++i, ++j)
@@ -147,7 +147,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
  void Path::dpPrint(
-        pgr_path_element3_t **ret_path,
+        General_path_element_t **ret_path,
         int &sequence) const {
 
     for (unsigned int i = 0; i < path.size(); i++) {
@@ -158,7 +158,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /* used by driving distance */
    void Path::ddPrint(
-        pgr_path_element3_t **ret_path,
+        General_path_element_t **ret_path,
         int &sequence, int routeId) const {
 
     for (unsigned int i = 0; i < path.size(); i++) {
@@ -170,7 +170,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /* used by ksp */
    void Path::dpPrint(
-        pgr_path_element3_t **ret_path,
+        General_path_element_t **ret_path,
         int &sequence, int routeId) const {
 
     for (unsigned int i = 0; i < path.size(); i++) {

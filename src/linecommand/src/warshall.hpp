@@ -24,26 +24,20 @@ template <typename G>
 void process_warshall(G &graph, const std::vector<std::string> &tokens) {
       std::string::size_type sz;
 
-      //Pgr_warshall< G > fn_warshall;
-      //PGR_WARSHALL;
 
       if (tokens.size() == 1) {
         std::cout << "Performing warshall\n";
         std::vector< Matrix_cell_t> matrix_rows;
-#if 0
-        std::vector< std::vector<double>> matrix;
-        matrix.resize(graph.numb_vertices());
-        for (size_t i=0; i< graph.numb_vertices(); i++)
-          matrix[i].resize(graph.numb_vertices());
-        fn_warshall.warshall(graph, matrix_rows);
-#endif
+
         pgr_warshall(graph, matrix_rows);
+
         std::cout << "\t\t\tTHE OPUTPUT\n";
         std::cout << "seq\tfrom\tto\tcost\n";
         size_t seq = 0;
         for (size_t i = 0; i < matrix_rows.size(); i++) {
             std::cout << seq++ << "\t" << matrix_rows[i].from_vid << "\t" <<  matrix_rows[i].to_vid << "\t" << matrix_rows[i].cost << "\n";
         }
+#ifdef TEST_POSTGRES
         size_t result_tuple_count;
         Matrix_cell_t *postgres_rows = NULL;
         pgr_warshall(graph, result_tuple_count, &postgres_rows);
@@ -53,8 +47,7 @@ void process_warshall(G &graph, const std::vector<std::string> &tokens) {
         for (size_t i = 0; i < result_tuple_count; i++) {
             std::cout << seq++ << "\t" << postgres_rows[i].from_vid << "\t" <<  postgres_rows[i].to_vid << "\t" << postgres_rows[i].cost << "\n";
         }
-        std::cout << "numb_edges" << graph.numb_vertices() <<"\n";
-        std::cout << "graph" << boost::num_vertices(graph.graph) <<"\n";
+#endif  // TEST_POSTGRES
         
       } else {
         std::cout << "unknown number of parameters\n";

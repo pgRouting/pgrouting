@@ -37,6 +37,49 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/baseGraph.hpp"
 #include "postgres.h"
 
+template < class G > class Pgr_dijkstra;
+// user's functions
+// for development
+
+template < class G >
+void
+pgr_dijkstra(G &graph, Path &path,  int64_t  source, int64_t target) {
+     Pgr_dijkstra< G > fn_dijkstra;
+     fn_dijkstra.dijkstra(graph, path, source, target);
+}
+
+template < class G >
+void
+pgr_dijkstra(G &graph, std::deque<Path> &paths,  int64_t  source, const std::vector< int64_t > &targets) {
+     Pgr_dijkstra< G > fn_dijkstra;
+     fn_dijkstra.dijkstra(graph, paths, source, targets);
+}
+
+template < class G >
+void
+pgr_dijkstra(G &graph, std::deque<Path> &paths,  const std::vector< int64_t > &sources, int64_t  target) {
+     Pgr_dijkstra< G > fn_dijkstra;
+     fn_dijkstra.dijkstra(graph, paths, sources, target);
+}
+
+template < class G >
+void
+pgr_dijkstra(G &graph, std::deque<Path> &paths,  const std::vector< int64_t > sources, const std::vector< int64_t > &targets) {
+     Pgr_dijkstra< G > fn_dijkstra;
+     fn_dijkstra.dijkstra(graph, paths, sources, targets);
+}
+
+
+#if 0
+// for postgres 
+template < class G >
+void
+pgr_dijkstra(G &graph, size_t &result_tuple_count, Matrix_cell_t **postgres_rows) {
+     Pgr_warshall< G > fn_warshall;
+     fn_warshall.warshall(graph, result_tuple_count, postgres_rows);
+}
+#endif
+
 template < class G >
 class Pgr_dijkstra {
  // :public Pgr_base_graph<G> {
@@ -77,8 +120,8 @@ class Pgr_dijkstra {
       clear();
 
       // adjust predecessors and distances vectors
-      predecessors.resize(graph.numb_vertices());
-      distances.resize(graph.numb_vertices());
+      predecessors.resize(graph.num_vertices());
+      distances.resize(graph.num_vertices());
 
       // get the graphs source and target
       V v_source;
@@ -132,8 +175,8 @@ class Pgr_dijkstra {
       // adjust predecessors and distances vectors
       clear();
 
-      predecessors.resize(graph.numb_vertices());
-      distances.resize(graph.numb_vertices());
+      predecessors.resize(graph.num_vertices());
+      distances.resize(graph.num_vertices());
 
       // get the graphs source and target
       V v_source;
@@ -238,8 +281,8 @@ class Pgr_dijkstra {
       clear();
 
       // adjust predecessors and distances vectors
-      predecessors.resize(graph.numb_vertices());
-      distances.resize(graph.numb_vertices());
+      predecessors.resize(graph.num_vertices());
+      distances.resize(graph.num_vertices());
 
       // get source;
       V v_source;
@@ -265,8 +308,8 @@ class Pgr_dijkstra {
       // adjust predecessors and distances vectors
       clear();
 
-      predecessors.resize(graph.numb_vertices());
-      distances.resize(graph.numb_vertices());
+      predecessors.resize(graph.num_vertices());
+      distances.resize(graph.num_vertices());
 
       // get the graph's source
       std::set< V > v_sources;

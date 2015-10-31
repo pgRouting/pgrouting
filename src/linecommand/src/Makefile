@@ -9,7 +9,7 @@ TARGET= pgRouting
  
 all: $(OBJECTS) $(TARGET) 
 
-$(TARGET): pgRouting.o basePath_SSEC.o pgr_types.o
+$(TARGET): pgRouting.o basePath_SSEC.o 
 	$(CC)  -o $@ $^ $(LDFLAGS)
  
 $(TARGET).o: $(TARGET).cpp ./../../common/src/baseGraph.hpp \

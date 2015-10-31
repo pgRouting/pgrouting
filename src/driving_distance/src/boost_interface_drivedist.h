@@ -35,13 +35,13 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  * edges, int64_t total_tuples,
                       float8 distance,
                       bool directed,
                       bool equicost,
-                      pgr_path_element3_t **ret_path, int *path_count,
+                      General_path_element_t **ret_path, int *path_count,
                       char ** err_msg);
 
 int  do_pgr_driving_distance(pgr_edge_t  * edges, int64_t total_tuples,
                       int64_t  start_vertex, float8 distance,
                       bool directed,
-                      pgr_path_element3_t **ret_path, int *path_count,
+                      General_path_element_t **ret_path, int *path_count,
                       char ** err_msg);
 
 #ifdef __cplusplus

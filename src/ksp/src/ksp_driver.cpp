@@ -52,7 +52,7 @@ extern "C" {
 int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
                        int64_t  start_vertex, int64_t  end_vertex,
                        int no_paths, bool has_reverse_cost, bool directedFlag,
-                       pgr_path_element3_t **ksp_path, int *path_count,
+                       General_path_element_t **ksp_path, int *path_count,
                        char ** err_msg) {
     try {
         // in c code this should have been checked:
@@ -100,13 +100,13 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
         if (count == 0) {
             *err_msg = strdup(
                "NOTICE: No path found between Starting and Ending vertices");
-            *ksp_path = noPathFound3(-1, path_count, (*ksp_path));
+            *ksp_path = noPathFound(path_count, (*ksp_path));
             return 0;
         }
 
         // get the space required to store all the paths
         *ksp_path = NULL;
-        *ksp_path = pgr_get_memory3(count, (*ksp_path));
+        *ksp_path = get_memory(count, (*ksp_path));
 
         int sequence = 0;
         int route_id = 0;

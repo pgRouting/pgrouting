@@ -46,14 +46,14 @@ typedef struct matrix_cell
 } Matrix_cell_t;
 
 
-typedef struct path_element
+typedef struct path_element2
 {
     int64_t vertex_id;
     int64_t edge_id;
     float8 cost;
 } path_element_t;
 
-typedef struct path_element3
+typedef struct path_element
 {
     int seq;
     int64_t from;
@@ -62,7 +62,7 @@ typedef struct path_element3
     int64_t edge;
     float8 cost;
     float8 tot_cost;
-} pgr_path_element3_t;
+} General_path_element_t;
 
 typedef struct {
   int64_t id;

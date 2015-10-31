@@ -59,7 +59,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
   int                  call_cntr;
   int                  max_calls;
   TupleDesc            tuple_desc;
-  pgr_path_element3_t      *path;
+  General_path_element_t      *path;
 //  void * toDel;
 
   /* stuff done only on the first call of the function */
@@ -112,7 +112,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
   call_cntr = funcctx->call_cntr;
   max_calls = funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
-  path = (pgr_path_element3_t*) funcctx->user_fctx;
+  path = (General_path_element_t*) funcctx->user_fctx;
 
   if (call_cntr < max_calls) {   /* do when there is more left to send */
       HeapTuple    tuple;
@@ -158,7 +158,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
 
       SRF_RETURN_NEXT(funcctx, result);
   } else {   /* do when there is no more left */
-    if (path == (pgr_path_element3_t *)NULL) free(path);
+    if (path == (General_path_element_t *)NULL) free(path);
     SRF_RETURN_DONE(funcctx);
   }
 }
@@ -168,7 +168,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
 int compute(char* sql, int64_t start_vertex,
          int64_t end_vertex, int no_paths,
          bool has_rcost, bool directed,
-         pgr_path_element3_t **ksp_path, int *path_count) {
+         General_path_element_t **ksp_path, int *path_count) {
   int SPIcode = 0;
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;

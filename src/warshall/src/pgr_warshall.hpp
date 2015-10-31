@@ -57,7 +57,26 @@ static Matrix_cell_t* pgr_get_memory( size_t size, Matrix_cell_t *matrix) {
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../common/src/baseGraph.hpp"
 
+template < class G > class Pgr_warshall; 
 
+// user's functions
+// for development
+template < class G >
+void
+pgr_warshall(G &graph, std::vector< Matrix_cell_t> &rows) {
+     Pgr_warshall< G > fn_warshall;
+     fn_warshall.warshall(graph, rows);
+}
+
+// for postgres 
+template < class G >
+void
+pgr_warshall(G &graph, size_t &result_tuple_count, Matrix_cell_t **postgres_rows) {
+     Pgr_warshall< G > fn_warshall;
+     fn_warshall.warshall(graph, result_tuple_count, postgres_rows);
+}
+
+// template class
 template < class G >
 class Pgr_warshall {
 //  typedef typename G::V V;
@@ -74,7 +93,7 @@ class Pgr_warshall {
     warshall(G &graph, size_t &result_tuple_count, Matrix_cell_t **postgres_rows) {
 
         std::vector< std::vector<double>> matrix;
-        make_matrix(boost::num_vertices(graph.graph), matrix);
+        make_matrix(graph.num_vertices(), matrix);
         inf_plus<double> combine;
         boost::floyd_warshall_all_pairs_shortest_paths(
             graph.graph,
@@ -127,8 +146,8 @@ class Pgr_warshall {
 
 
         size_t seq = 0;
-        for (size_t i = 0; i < graph.numb_vertices(); i++) {
-          for (size_t j = 0; j < graph.numb_vertices(); j++) {
+        for (size_t i = 0; i < graph.num_vertices(); i++) {
+          for (size_t j = 0; j < graph.num_vertices(); j++) {
             if (matrix[i][j] != std::numeric_limits<double>::max()) {
                 (*postgres_rows)[seq].from_vid = graph.graph[i].id;
                 (*postgres_rows)[seq].to_vid = graph.graph[j].id;
@@ -142,8 +161,8 @@ class Pgr_warshall {
     size_t
     count_rows(const G &graph, const std::vector< std::vector<double> > &matrix) const {
         size_t result_tuple_count = 0;
-        for (size_t i = 0; i < graph.numb_vertices(); i++) {
-          for (size_t j = 0; j < graph.numb_vertices(); j++) {
+        for (size_t i = 0; i < graph.num_vertices(); i++) {
+          for (size_t j = 0; j < graph.num_vertices(); j++) {
             if (matrix[i][j] != std::numeric_limits<double>::max()) {
                result_tuple_count++;
             }  //if
@@ -161,8 +180,8 @@ class Pgr_warshall {
       rows.resize(count);
       size_t seq = 0;
       
-        for (size_t i = 0; i < graph.numb_vertices(); i++) {
-          for (size_t j = 0; j < graph.numb_vertices(); j++) {
+        for (size_t i = 0; i < graph.num_vertices(); i++) {
+          for (size_t j = 0; j < graph.num_vertices(); j++) {
             if (matrix[i][j] != std::numeric_limits<double>::max()) {
                 rows[seq] = { graph.graph[i].id, graph.graph[j].id, matrix[i][j] } ;
                 seq++;
@@ -183,21 +202,5 @@ class Pgr_warshall {
     };
 
 };
-
-
-template < class G >
-void
-pgr_warshall(G &graph, std::vector< Matrix_cell_t> &rows) {
-     Pgr_warshall< G > fn_warshall;
-     fn_warshall.warshall(graph, rows);
-}
-     
-template < class G >
-void
-pgr_warshall(G &graph, size_t &result_tuple_count, Matrix_cell_t **postgres_rows) {
-     Pgr_warshall< G > fn_warshall;
-     fn_warshall.warshall(graph, result_tuple_count, postgres_rows);
-}
-
 
 #endif // SRC_WARSHALL_SRC_PGR_WARSHALL_H_

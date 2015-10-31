@@ -37,7 +37,7 @@
 static int compute_driving_distance(char* sql, int64_t start_vertex,
                                  float8 distance, bool directed,
                                  bool has_rcost,
-                                 pgr_path_element3_t **path, int *path_count) {
+                                 General_path_element_t **path, int *path_count) {
   int SPIcode;
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
@@ -101,7 +101,7 @@ driving_distance(PG_FUNCTION_ARGS) {
   int                  call_cntr;
   int                  max_calls;
   TupleDesc            tuple_desc;
-  pgr_path_element3_t  *ret_path = 0;
+  General_path_element_t  *ret_path = 0;
 
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL()) {
@@ -144,7 +144,7 @@ driving_distance(PG_FUNCTION_ARGS) {
   call_cntr = funcctx->call_cntr;
   max_calls = funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
-  ret_path = (pgr_path_element3_t*) funcctx->user_fctx;
+  ret_path = (General_path_element_t*) funcctx->user_fctx;
 
   /* do when there is more left to send */
   if (call_cntr < max_calls) {

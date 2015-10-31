@@ -383,32 +383,19 @@ int pgr_get_data(
 }
 
 
-pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path){
+General_path_element_t* get_memory(int size, General_path_element_t *path){
 	if(path ==0  ){
-		path=malloc(size * sizeof(pgr_path_element3_t));
+		path=malloc(size * sizeof(General_path_element_t));
 	} else {
-		path=realloc(path,size * sizeof(pgr_path_element3_t));
+		path=realloc(path,size * sizeof(General_path_element_t));
 	}
 	return path;
 }
 
 
-pgr_path_element3_t* noPathFound3(int64_t fill_value, int *count, pgr_path_element3_t *no_path) {
-#if 0        
-        (*count) = 1;
-        no_path = pgr_get_memory3(1, no_path);
-        no_path[0].seq  = 0;
-        no_path[0].from  = fill_value;
-        no_path[0].to  = fill_value;
-        no_path[0].vertex = fill_value;
-        no_path[0].edge = -1;
-        no_path[0].cost = 0;
-        no_path[0].tot_cost = 0;
-        return no_path;
-#else
+General_path_element_t* noPathFound(int *count, General_path_element_t *no_path) {
    count = 0;
    return NULL;
-#endif
 }
 
 

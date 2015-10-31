@@ -91,7 +91,7 @@ void import_from_file(const std::string &input_file_name, pgr_edge_t *edges, uns
 void get_options_description(po::options_description &od_desc) {
     od_desc.add_options()
         ("help", "Produce this help message.")
-        ("test,t",  po::value<bool>()->default_value(false),
+        ("test,t",  po::value<bool>()->default_value(true),
             "For testing purposes.")
         ("dbname,d", po::value<std::string>()->required(), 
             "Specifies the name of the database to connect to.")
@@ -374,10 +374,10 @@ int main(int ac, char* av[]) {
 //////////////////////  END READING DATA FROM DATABASE ///////////////////
 
     std::string directed;
-    std::cout << "Is the graph directed? default[N] [Y,y]";
+    std::cout << "Is the graph directed [N,n]? default[Y]";
     std::getline(std::cin,directed);
-    graphType gType =  (directed.compare("Y")==0 || directed.compare("y")==0)? DIRECTED: UNDIRECTED;
-    bool directedFlag =  (directed.compare("Y")==0 || directed.compare("y")==0)? true: false;
+    graphType gType =  (directed.compare("N")==0 || directed.compare("n")==0)? UNDIRECTED: DIRECTED;
+    bool directedFlag =  (directed.compare("N")==0 || directed.compare("n")==0)? false: true;
 
 
 
@@ -391,13 +391,6 @@ int main(int ac, char* av[]) {
     Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
     Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
 
-
-#if 0
-    Pgr_warshall< DirectedGraph > digraph(gType, initial_size);
-    Pgr_warshall< UndirectedGraph > undigraph(gType, initial_size);
-    Pgr_dijkstra< DirectedGraph > digraph(gType, initial_size);
-    Pgr_dijkstra< UndirectedGraph > undigraph(gType, initial_size);
-#endif
 
     if (directedFlag) {
       process(digraph, data_edges, rec_count);

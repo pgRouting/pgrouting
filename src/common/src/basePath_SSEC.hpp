@@ -31,17 +31,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 class Path {
  public:
-    std::deque< pgr_path_element3_t > path;
+    std::deque< General_path_element_t > path;
     float8 cost;
 
     Path(): cost(0) {}
     size_t size() const { return path.size();}
 
-    void push_front(pgr_path_element3_t data) ;
+    void push_front(General_path_element_t data) ;
 
-    void push_back(pgr_path_element3_t data) ;
+    void push_back(General_path_element_t data) ;
 
-    pgr_path_element3_t set_data(
+    General_path_element_t set_data(
          int d_seq, 
          int64_t d_from, 
          int64_t d_to,
@@ -85,22 +85,22 @@ class Path {
     void empty_path(unsigned int d_vertex);
 
     void dpPrint(
-        pgr_path_element3_t **ret_path,
+        General_path_element_t **ret_path,
         int &sequence) const;
 
 
    void ddPrint(
-        pgr_path_element3_t **ret_path,
+        General_path_element_t **ret_path,
         int &sequence, int routeId) const;
 
    void dpPrint(
-        pgr_path_element3_t **ret_path,
+        General_path_element_t **ret_path,
         int &sequence, int routeId) const;
 
 
 
   friend int collapse_paths(
-      pgr_path_element3_t **ret_path,
+      General_path_element_t **ret_path,
       const std::deque< Path > &paths) {
    int sequence = 0;
    for (const Path &path : paths) {
@@ -116,13 +116,13 @@ class Path {
   friend Path equi_cost(const Path &p1, const Path &p2) {
     Path result(p1);
     sort(result.path.begin(), result.path.end(), 
-      [](const pgr_path_element3_t &e1, const pgr_path_element3_t &e2)->bool { 
+      [](const General_path_element_t &e1, const General_path_element_t &e2)->bool { 
          return e1.vertex < e2.vertex; 
       });
 
     for (auto const &e : p2.path) {
       auto pos = find_if(result.path.begin(), result.path.end(),
-                 [&e](const pgr_path_element3_t &e1)->bool { 
+                 [&e](const General_path_element_t &e1)->bool { 
                    return e.vertex == e1.vertex; 
                  });
       if (pos != result.path.end()) {
