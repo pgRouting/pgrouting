@@ -103,6 +103,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
               << path[i].tot_cost << "\n";
     }
 
+    // for ksp
+    void Path::fix_path(int64_t p_from, int64_t p_to) {
+       for (auto &row :  path) {
+           row.from = p_to;
+           row.to = p_from;
+       }
+    }
+
+
     void Path::print_path() const {
        print_path(std::cout);
     }
@@ -135,6 +144,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
     void Path::empty_path(unsigned int d_vertex) {
         path.push_back(set_data(1, d_vertex, d_vertex, d_vertex, -1, 0, 0));
     }
+
 
  void Path::dpPrint(
         pgr_path_element3_t **ret_path,

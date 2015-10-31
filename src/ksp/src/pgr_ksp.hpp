@@ -28,14 +28,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
 
 template < class G >
-class Pgr_ksp: public Pgr_dijkstra< G > {
+class Pgr_ksp {
  public:
+#if 0
         explicit Pgr_ksp(graphType gtype, const int initial_size)
                 : Pgr_dijkstra <G>(gtype, initial_size)
            {}
 
         ~Pgr_ksp(void) {}
-        std::deque<Path> Yen(int64_t source, int64_t target, int K);
+#endif
+        std::deque<Path> Yen(G &graph, int64_t source, int64_t target, int K);
         void clear();
 
  private:
@@ -60,23 +62,23 @@ class Pgr_ksp: public Pgr_dijkstra< G > {
     };
 
     //! the actual algorithm
-    void executeYen(int top_k);
+    void executeYen(G &graph, int top_k);
 
     /** @name Auxiliary function for yen's algorithm */
     ///@{
 
     //! Performs the first Dijkstra of the algorithm
-    void getFirstSolution();
+    void getFirstSolution(G &graph);
     //! Performs the next cycle of the algorithm
-    void doNextCycle();
+    void doNextCycle(G &graph);
     //! stores in subPath the first i elements of path
-    void removeVertices(const Path &path);
+    void removeVertices(G &graph, const Path &path);
     ///@}
 
  private:
     /** @name members */
     ///@{
-    typedef typename boost::graph_traits < G >::vertex_descriptor V;
+    typedef typename G::V V;
     V v_source;  //!< source descriptor
     V v_target;  //!< target descriptor
     int64_t m_start;  //!< source id

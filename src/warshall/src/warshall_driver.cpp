@@ -54,15 +54,12 @@ int do_pgr_warshall(
   try {
 
     // for logging (usefull when developing, but useless for production)
-    log << "My log message 1";
+    log << "Starting the process\n";
 
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
     const int initial_size = total_tuples;
-    log << "My log message 2";
+    log << "gType:" << (gType==DIRECTED? "directed": "undirected") << "\n";
 
-    // where we store the results
-    //std::vector< path_element_t > Dmatrix;
-    ////////
 
     typedef boost::adjacency_list < boost::vecS, boost::vecS,
       boost::undirectedS,
@@ -71,7 +68,6 @@ int do_pgr_warshall(
       boost::bidirectionalS,
       boost_vertex_t, boost_edge_t > DirectedGraph;
 
-    // example using dijkstra  (must have something like src/dijkstra/src/pgr_dijkstra.hpp)
     Pgr_warshall < DirectedGraph > digraph(gType, initial_size);
     Pgr_warshall < UndirectedGraph > undigraph(gType, initial_size);
     
@@ -79,22 +75,24 @@ int do_pgr_warshall(
     int64_t count = 0;
 #if 1
     if (directedFlag) {
+
       digraph.initialize_graph(data_edges, total_tuples);
-      log << "directed graph initialized";
+      log << "directed graph initialized \n";
 //      digraph.warshall(ret_matrix, count);  // not working yet
-      log << "directed finished";
+      log << "directed not working yet \n";
     } else {
       undigraph.initialize_graph(data_edges, total_tuples);
-      log << "undirected graph initialized";
-//      undigraph.warshall(ret_matrix, count);
-      log << "directed finished";
+      log << "undirected graph initialized \n";
+      undigraph.warshall(ret_matrix, count);
+      log << "undirected not working yet \n";
     }
 #endif
 
 
     if (count == 0) {
-      //*err_msg = strdup( "NOTICE: No Vertices found??? wiered error");
-      *err_msg = strdup(log.str().c_str());
+    // if (count == 0) {
+      *err_msg = strdup( "NOTICE: No Vertices found??? wiered error");
+      // *err_msg = strdup(log.str().c_str());
       *ret_matrix = NULL;
       return -1;
     }

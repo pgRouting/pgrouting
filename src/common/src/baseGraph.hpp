@@ -120,7 +120,7 @@ class Pgr_base_graph {
   //! @name The Graph
   //@{
   G graph;                //!< The graph
-  int64_t numb_vertices;  //!< number of vertices
+  int64_t m_numb_vertices;  //!< number of vertices
   graphType m_gType;      //!< type (DIRECTED or UNDIRECTED)
   //@}
 
@@ -136,12 +136,14 @@ class Pgr_base_graph {
   std::deque<pgr_edge_t> removed_edges;
   //@}
 
+#if 0
   //! @name Used by dijkstra
   //@{
   std::vector<V> predecessors;
   std::vector<float8> distances;
   std::deque<V> nodesInDistance;
   //@}
+#endif
 
   //! @name The Graph
   //@{
@@ -152,7 +154,7 @@ class Pgr_base_graph {
   */
   explicit Pgr_base_graph< G >(graphType gtype, const int initial_size)
      : graph(initial_size),
-       numb_vertices(0),
+       m_numb_vertices(0),
        m_gType(gtype)
      {}
 
@@ -263,7 +265,7 @@ class Pgr_base_graph {
 
   //! @name only for stand by program
   //@{
-  void print_graph() {
+  void print_graph() const {
         EO_i out, out_end;
         V_i vi;
 
@@ -277,15 +279,17 @@ class Pgr_base_graph {
             }
             std::cout << std::endl;
         }
+#if 0
         std::cout << "\n i, distance, predecesor\n"; 
         for (unsigned int i = 0; i < distances.size(); i++) {
             std::cout << i+1 << ", " << distances[i] << ", " << predecessors[i] << "\n";
         }
+#endif
     }
   //@}
 
 
-  bool get_gVertex(int64_t vertex_id, V &gVertex) {
+  bool get_gVertex(int64_t vertex_id, V &gVertex) const {
       LI vertex_ptr = vertices_map.find(vertex_id);
 
       if (vertex_ptr == vertices_map.end())
@@ -295,7 +299,7 @@ class Pgr_base_graph {
       return true;
   }
 
-
+#if 0
  public:
     void get_nodesInDistance(Path &path, V source, float8 distance) {
       path.clear();
@@ -383,12 +387,12 @@ class Pgr_base_graph {
       }
       return;
     }
+#endif
 
 
-
- private:
+ public:
   int64_t
-  get_edge_id(const G &graph, V from, V to, float8 &distance) {
+  get_edge_id(V from, V to, float8 &distance) const {
         E e;
         EO_i out_i, out_end;
         V v_source, v_target;
@@ -412,6 +416,8 @@ class Pgr_base_graph {
         return minEdge;
   }
 
+ public:
+ int numb_vertices() const { return boost::num_vertices(graph); }
 
  private:
   void
@@ -422,15 +428,15 @@ class Pgr_base_graph {
 
       vm_s = vertices_map.find(edge.source);
       if (vm_s == vertices_map.end()) {
-        vertices_map[edge.source]=  numb_vertices;
-        gVertices_map[numb_vertices++] = edge.source;
+        vertices_map[edge.source]=  m_numb_vertices;
+        gVertices_map[m_numb_vertices++] = edge.source;
         vm_s = vertices_map.find(edge.source);
       }
 
       vm_t = vertices_map.find(edge.target);
       if (vm_t == vertices_map.end()) {
-        vertices_map[edge.target]=  numb_vertices;
-        gVertices_map[numb_vertices++] = edge.target;
+        vertices_map[edge.target]=  m_numb_vertices;
+        gVertices_map[m_numb_vertices++] = edge.target;
         vm_t = vertices_map.find(edge.target);
       }
 
@@ -449,5 +455,34 @@ class Pgr_base_graph {
       }
     }
 };
+
+#if 0
+  template <class V, class E>
+  int64_t
+  get_edge_id(G &graph, V from, V to, float8 &distance) {
+        G::E e;
+        EO_i out_i, out_end;
+        V v_source, v_target;
+        float8 minCost =  std::numeric_limits<float8>::max();
+        int64_t minEdge = -1;
+        for (boost::tie(out_i, out_end) = boost::out_edges(from, graph);
+          out_i != out_end; ++out_i) {
+              e = *out_i;
+              v_target = target(e, graph);
+              v_source = source(e, graph);
+              if ((from == v_source) && (to == v_target)
+                   && (distance == graph[e].cost))
+                     return graph[e].id;
+              if ((from == v_source) && (to == v_target)
+                   && (minCost > graph[e].cost)) {
+                     minCost = graph[e].cost;
+                     minEdge = graph[e].id;
+              }
+        }
+        distance = minEdge == -1? 0: minCost;
+        return minEdge;
+  }
+#endif
+
 
 #endif  // SRC_COMMON_SRC_BASE_GRAPH_HPP_

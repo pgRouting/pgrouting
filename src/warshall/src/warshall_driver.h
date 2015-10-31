@@ -36,7 +36,7 @@ int  do_pgr_warshall(
         bool directedFlag,
 
 	// return values
-        path_element_t **ret_matrix,
+        matrix_cell_t **ret_matrix,
         int *path_count,
         char ** err_msg);
 

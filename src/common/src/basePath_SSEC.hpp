@@ -70,8 +70,12 @@ class Path {
 
     void clear();
 
-    void print_path(std::ostream& log) const;
+    void print_path(std::ostream &log) const;
     void print_path() const;
+
+
+    void fix_path(int64_t from, int64_t to);
+
 
     Path  getSubpath(unsigned int j) const;
 

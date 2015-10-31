@@ -38,6 +38,13 @@ typedef struct edge_astar
 } edge_astar_t;
 
 
+typedef struct matrix_cell
+{
+    int64_t from_vid;
+    int64_t to_vid;
+    float8 cost;
+} matrix_cell_t;
+
 typedef struct path_element
 {
     int64_t vertex_id;

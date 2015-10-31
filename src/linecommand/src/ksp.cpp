@@ -1,11 +1,11 @@
 
       
 template <typename G> 
-void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
+void process_ksp(G &graph, const std::vector<std::string> &tokens) {
 
       std::string::size_type sz;
       if (tokens[1].compare("from") != 0) {
-        std::cout << "missing 'from' kewyword\n";
+        std::cout << "ksp: missing 'from' kewyword\n";
         return;
       }
 
@@ -23,18 +23,18 @@ void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
       }
 
       if (i_ptr == tokens.size() || tokens[i_ptr].compare("to") != 0) {
-        std::cout << "dijkstra: 'dist' kewyword not found\n";
+        std::cout << "ksp: 'to' kewyword not found\n";
         return;
       }
 
       if (sources.size() == 0) {
-        std::cout << "dijkstra: No start value found\n";
+        std::cout << "ksp: No start value found\n";
         return;
       }
 
       ++i_ptr;
       if (i_ptr == tokens.size()) {
-        std::cout << "dijkstra: No 'to' values found\n";
+        std::cout << "ksp: No 'to' values found\n";
         return;
       }
 
@@ -44,16 +44,23 @@ void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
         targets.push_back(end_vertex);
       }
 
-      Pgr_dijkstra< G > dijkstra;
+      Pgr_ksp< G > ksp;
       
       if (sources.size() == 1 && targets.size() == 1) {
         // one to one
-        Path path;
-        dijkstra.dijkstra(graph, path, sources[0], targets[0]);
-        std::cout << "THE OPUTPUT ---->  total cost: " << path.cost << "\n";
-        path.print_path();
-        path.clear();
-      } else if (sources.size() == 1 && targets.size() > 1){
+        std::deque< Path > paths;
+        paths = ksp.Yen(graph, sources[0], targets[0], 3); //TODO make variable
+        std::cout << "THE OPUTPUT ----" << "\n";
+        for (unsigned int i = 0; i < paths.size(); ++i) {
+           if (sizeof(paths[i]) == 0) continue; //no solution found
+           std::cout << "Path #" << i << " cost: " << paths[i].cost << "\n";
+           paths[i].print_path();
+        }
+      } else {
+	std::cout << "ksp: unknown number of arguments\n";
+      }
+#if 0 // ksp is only one to 1
+	else if (sources.size() == 1 && targets.size() > 1){
         // one to many
         std::deque<Path> paths;
         dijkstra.dijkstra(graph, paths, sources[0], targets);
@@ -87,4 +94,6 @@ void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
           paths[i].print_path();
         }
       }
+#endif
+
 }

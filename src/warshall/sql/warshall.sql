@@ -24,24 +24,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 /* adjust to the function needs */
-CREATE OR REPLACE FUNCTION _pgr_warshall(sql text, directed boolean, has_rcost boolean,
-  OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float)
+CREATE OR REPLACE FUNCTION _pgr_warshall(edges_sql TEXT, directed BOOLEAN, has_rcost BOOLEAN,
+  OUT seq INTEGER, OUT node bigint, OUT edge bigint, OUT cost float)
   RETURNS SETOF RECORD AS
- '$libdir/librouting-2.1', 'pgr_warshall'  -- must match name in .c file
+ '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'pgr_warshall'  -- must match name in .c file
     LANGUAGE c IMMUTABLE STRICT;
 
 -- signature
 -- sql: id, source, target, cost, reverse_cost
 CREATE OR REPLACE FUNCTION pgr_warshall(sql text,  directed boolean default true,
-  OUT seq integer, OUT source bigint, OUT target bigint, OUT cost float)
+  OUT seq INTEGER, OUT source bigint, OUT target bigint, OUT cost float)
   RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
-  has_rcost boolean;
+  has_rcost BOOLEAN;
+  edges_sql TEXT;
   BEGIN
-      has_rcost =_pgr_parameter_check('warshall', sql, true); -- must modify common/sql/pgr_parametercheck.sql
-      return query SELECT * 
-         FROM _pgr_warshall(sql, directed, has_rcost);
+      has_rcost =_pgr_parameter_check('warshall', sql, true); 
+      edges_sql = sql;
+      RETURN query SELECT * 
+         FROM _pgr_warshall(edges_sql, directed, has_rcost);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE

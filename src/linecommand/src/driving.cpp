@@ -71,18 +71,18 @@ void process_drivingDistance(G &graph, const std::vector<std::string> &tokens) {
       }
 
       std::cout << "found " << sources.size() << "starting locations\n";
+      Pgr_dijkstra< G > fn_dijkstra;
 
       if (sources.size() == 1) {
         std::cout << "Performing pgr_DrivingDistance for single source\n";
         Path path;
-        graph.dijkstra_dd(path, sources[0], distance);
+        fn_dijkstra.dijkstra_dd(graph, path, sources[0], distance);
         std::cout << "\t\t\tTHE OPUTPUT\n";
         std::cout << "seq\tfrom\tnode\tedge\tcost\n";
         path.print_path();
       } else {
-
         std::deque< Path >  paths;
-        graph.dijkstra_dd(paths, sources, distance);
+        fn_dijkstra.dijkstra_dd(graph, paths, sources, distance);
         if (equiCost == false) {
           std::cout << "Performing pgr_DrivingDistance for multiple sources\n";
           std::cout << "\t\t\tTHE OPUTPUT\n";

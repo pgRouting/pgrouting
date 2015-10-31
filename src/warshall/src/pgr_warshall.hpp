@@ -50,7 +50,8 @@ class Pgr_warshall
  public:
     //! \brief the constructor
     explicit Pgr_warshall(graphType gtype, const int initial_size)
-     :Pgr_base_graph<G>(gtype, initial_size) {}
+     :Pgr_base_graph<G>(gtype, initial_size) {
+}
 
 
     /*! \brief Perfom the inizialization of the graph
@@ -73,15 +74,15 @@ class Pgr_warshall
                 float8 cost;       -- the distance between from_id to to_id
 	*/
     void
-    warshall(path_element_t **result, int64_t &size) {
+    warshall(matrix_cell_t **result, int64_t &size) {
 	int64_t node_count = boost::num_vertices(this->graph);
 	std::vector< std::vector<double>> Dmatrix(node_count);
         for(int i = 0; i < node_count; i++) {
             Dmatrix[i].resize(node_count);
 	}
 
-	warshall(Dmatrix);
-        size = node_count * node_count;
+//	warshall(Dmatrix);
+//        size = node_count * node_count;
 
 	// The matrix might be very very big
 	// so I will be deleting row by row from the vector
@@ -109,10 +110,11 @@ class Pgr_warshall
     }
 
 
-    private:
+    public:
     void
-    warshall( std::vector< std::vector<double>> &Dmatrix) {
+    warshall(std::vector< std::vector<double>> &Dmatrix) {
 
+ std::cout << "ya entre";
 
         inf_plus<double> combine;
 	    //bool valid = 

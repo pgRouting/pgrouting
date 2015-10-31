@@ -51,7 +51,7 @@ static int compute_warshall(
 	char* sql,
 	bool directed,
 	bool has_rcost, // this wil be removed
-        path_element_t **matrix,
+        matrix_cell_t **matrix,
 	int *path_count) {
 
   int SPIcode = 0;
@@ -116,7 +116,7 @@ pgr_warshall(PG_FUNCTION_ARGS) {
   int                  call_cntr;
   int                  max_calls;
   TupleDesc            tuple_desc;
-  path_element_t      *matrix = 0;  //TODO change to appropiate type
+  matrix_cell_t      *matrix = 0;  //TODO change to appropiate type
 
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL()) {
@@ -141,10 +141,16 @@ pgr_warshall(PG_FUNCTION_ARGS) {
       funcctx->max_calls = path_count;
       funcctx->user_fctx = matrix;
 
-      funcctx->tuple_desc = BlessTupleDesc(
-            RelationNameGetTupleDesc("__pgr_2b1f"));
+      if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+            ereport(ERROR,
+                    (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+                     errmsg("function returning record called in context "
+                            "that cannot accept type record")));
+
+      funcctx->tuple_desc = tuple_desc;
 
       MemoryContextSwitchTo(oldcontext);
+
   }
 
   /* stuff done on every call of the function */
@@ -153,7 +159,7 @@ pgr_warshall(PG_FUNCTION_ARGS) {
   call_cntr = funcctx->call_cntr;
   max_calls = funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
-  matrix = (path_element_t*) funcctx->user_fctx;
+  matrix = (matrix_cell_t*) funcctx->user_fctx;
 
   /* do when there is more left to send */
   if (call_cntr < max_calls) {
@@ -167,9 +173,9 @@ pgr_warshall(PG_FUNCTION_ARGS) {
       //TODO  modify depending on stored values and result values
       values[0] = Int32GetDatum(call_cntr);
       nulls[0] = ' ';
-      values[1] = Int64GetDatum(matrix[call_cntr].vertex_id);
+      values[1] = Int64GetDatum(matrix[call_cntr].from_vid);
       nulls[1] = ' ';
-      values[2] = Int64GetDatum(matrix[call_cntr].edge_id);
+      values[2] = Int64GetDatum(matrix[call_cntr].to_vid);
       nulls[2] = ' ';
       values[3] = Float8GetDatum(matrix[call_cntr].cost);
       nulls[3] = ' ';
