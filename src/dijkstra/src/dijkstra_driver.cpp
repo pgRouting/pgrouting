@@ -45,7 +45,7 @@ extern "C" {
 int do_pgr_dijkstra_many_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
     int64_t  *start_vertex, int s_len, int64_t  *end_vertex, int e_len,
     bool has_reverse_cost, bool directedFlag,
-    General_path_element_t **ret_path, int *path_count,
+    General_path_element_t **ret_path, size_t *path_count,
     char ** err_msg) {
   try {
     // in c code this should this must have been checked:
@@ -131,7 +131,7 @@ log << "sequence" << sequence;
 int  do_pgr_dijkstra_many_to_1(pgr_edge_t *data_edges, int64_t total_tuples,
     int64_t *start_vertex, int s_len, int64_t end_vertex,
     bool has_reverse_cost, bool directedFlag,
-    General_path_element_t **ret_path, int *path_count,
+    General_path_element_t **ret_path, size_t *path_count,
     char **err_msg) {
   try {
     // in c code this should this must have been checked:
@@ -213,7 +213,7 @@ int  do_pgr_dijkstra_many_to_1(pgr_edge_t *data_edges, int64_t total_tuples,
 int do_pgr_dijkstra_1_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
     int64_t start_vertex, int64_t *end_vertex, int e_len,
     bool has_reverse_cost, bool directedFlag,
-    General_path_element_t **ret_path, int *path_count,
+    General_path_element_t **ret_path, size_t *path_count,
     char **err_msg) {
   try {
     // in c code this should this must have been checked:
@@ -291,7 +291,7 @@ int do_pgr_dijkstra_1_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
 int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
     int64_t  start_vertex, int64_t  end_vertex,
     bool has_reverse_cost, bool directedFlag,
-    General_path_element_t **ret_path, int *path_count,
+    General_path_element_t **ret_path, size_t *path_count,
     char **err_msg) {
   try {
     // in c code this should have been checked:
@@ -315,11 +315,12 @@ int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
       boost_vertex_t, boost_edge_t > DirectedGraph;
 
 
+    size_t count = 0;
     if (directedFlag) {
       Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
-      Pgr_dijkstra< Pgr_base_graph< DirectedGraph > > fn_dijkstra;
       digraph.graph_insert_data(data_edges, total_tuples);
-      fn_dijkstra.dijkstra(digraph, path, start_vertex, end_vertex);
+      //Pgr_dijkstra< Pgr_base_graph< DirectedGraph > > fn_dijkstra;
+      pgr_dijkstra(digraph, path, start_vertex, end_vertex);
     } else {
       Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
       Pgr_dijkstra< Pgr_base_graph< UndirectedGraph > > fn_dijkstra;
@@ -327,7 +328,7 @@ int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
       fn_dijkstra.dijkstra(undigraph, path, start_vertex, end_vertex);
     }
 
-    int count(path.path.size());
+    count = path.path.size();
 
     if (count == 0) {
       *err_msg = strdup(
@@ -342,8 +343,8 @@ int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
     *ret_path = NULL;
     *ret_path = get_memory(count, (*ret_path));
 
-    int sequence = 0;
-    path.dpPrint(ret_path, sequence);
+    size_t sequence = 0;
+    path.generate_postgres_data(ret_path, sequence);
 
     #if 1
     *err_msg = strdup("OK");

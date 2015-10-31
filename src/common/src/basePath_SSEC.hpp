@@ -83,11 +83,12 @@ class Path {
     bool isEqual(const Path &subpath) const;
     void appendPath(const Path &o_path);
     void empty_path(unsigned int d_vertex);
-
+#if 0
     void dpPrint(
         General_path_element_t **ret_path,
         int &sequence) const;
 
+#else
 
    void ddPrint(
         General_path_element_t **ret_path,
@@ -96,16 +97,32 @@ class Path {
    void dpPrint(
         General_path_element_t **ret_path,
         int &sequence, int routeId) const;
+#endif
+
+#if 1
+   void generate_postgres_data(
+        General_path_element_t **postgres_data,
+        size_t &sequence) const;
+#else
 
 
+   void generate_postgres_data(
+        General_path_element_t **postgres_data,
+        size_t &sequence, int routeId) const;
 
-  friend int collapse_paths(
+   void generate_postgres_data(
+        General_path_element_t **postgres_data,
+        size_t &sequence, int routeId) const;
+#endif
+
+
+  friend size_t collapse_paths(
       General_path_element_t **ret_path,
       const std::deque< Path > &paths) {
-   int sequence = 0;
+   size_t sequence = 0;
    for (const Path &path : paths) {
    if (path.path.size() > 0)
-        path.dpPrint(ret_path, sequence);
+        path.generate_postgres_data(ret_path, sequence);
    }
    return sequence;
   }

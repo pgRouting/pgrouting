@@ -73,7 +73,7 @@ extern "C" {
   // output corresponding to costResult3Big
   General_path_element_t* get_memory(int size, General_path_element_t *path);
   // pgr_path_element3_t * noPathFound3(int64_t start_id);
-  General_path_element_t* noPathFound(int *count, General_path_element_t *no_path);
+  General_path_element_t* noPathFound(size_t *count, General_path_element_t *no_path);
 
 
 #ifdef __cplusplus

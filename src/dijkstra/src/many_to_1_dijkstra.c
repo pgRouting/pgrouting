@@ -42,7 +42,7 @@ static int dijkstra_many_to_1_driver(
           char* sql, int64_t *start_vertex, int num,
           int64_t end_vertex,
           bool directed, bool has_rcost,
-          General_path_element_t **path, int *path_count) {
+          General_path_element_t **path, size_t *path_count) {
   int SPIcode;
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;

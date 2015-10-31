@@ -42,7 +42,7 @@ Datum shortest_path(PG_FUNCTION_ARGS);
 static int compute_shortest_path(char* sql, int64_t start_vertex,
                                  int64_t end_vertex, bool directed,
                                  bool has_rcost,
-                                 General_path_element_t **path, int *path_count) {
+                                 General_path_element_t **path, size_t *path_count) {
   int SPIcode = 0;
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
@@ -118,15 +118,15 @@ PG_FUNCTION_INFO_V1(shortest_path);
 Datum
 shortest_path(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
-  int                  call_cntr;
-  int                  max_calls;
+  size_t               call_cntr;
+  size_t               max_calls;
   TupleDesc            tuple_desc;
   General_path_element_t  *ret_path = 0;
 
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
-      int path_count = 0;
+      size_t path_count = 0;
 
       /* create a function context for cross-call persistence */
       funcctx = SRF_FIRSTCALL_INIT();

@@ -50,7 +50,7 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
                        float8 distance,
                        bool directedFlag,
                        bool equiCostFlag,
-                       General_path_element_t **ret_path, int *path_count,
+                       General_path_element_t **ret_path, size_t *path_count,
                        char ** err_msg) {
     try {
         // in c code this should this must have been checked:
@@ -97,7 +97,7 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
 #endif
 
         if (equiCostFlag == false) {
-            int count(count_tuples(paths));
+            size_t count(count_tuples(paths));
             if (count == 0) {
               *err_msg = strdup("NOTICE: No return values was found");
               *ret_path = noPathFound(path_count, (*ret_path));
@@ -116,9 +116,9 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
               *ret_path = noPathFound(path_count, (*ret_path));
               return 0;
             }
-            int trueCount = 0;
+            size_t trueCount = 0;
             *ret_path = get_memory(count, (*ret_path));
-            path.dpPrint(ret_path, trueCount);
+            path.generate_postgres_data(ret_path, trueCount);
             *path_count = trueCount;
             // assert (count == trueCount);
         }
@@ -144,7 +144,7 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
 int  do_pgr_driving_distance(pgr_edge_t  *data_edges, int64_t total_tuples,
                        int64_t  start_vertex, float8 distance,
                        bool directedFlag,
-                       General_path_element_t **ret_path, int *path_count,
+                       General_path_element_t **ret_path, size_t *path_count,
                        char ** err_msg) {
     try {
         // in c code this should have been checked:

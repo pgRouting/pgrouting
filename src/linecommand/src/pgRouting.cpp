@@ -44,7 +44,7 @@ namespace po = boost::program_options;
 #include "./../../warshall/src/pgr_warshall.hpp"
 #include "./../../ksp/src/pgr_ksp.hpp"
 #include "./driving.cpp"
-#include "./dijkstra.cpp"
+#include "./dijkstra.hpp"
 #include "./ksp.cpp"
 #include "./warshall.hpp"
 

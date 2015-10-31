@@ -146,15 +146,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
     }
 
 
- void Path::dpPrint(
-        General_path_element_t **ret_path,
-        int &sequence) const {
-
+void Path::generate_postgres_data(
+  General_path_element_t **postgres_data,
+  size_t &sequence) const{
     for (unsigned int i = 0; i < path.size(); i++) {
-      (*ret_path)[sequence] = path[i];
+      (*postgres_data)[sequence] = path[i];
       sequence++;
     }
-  }
+}
 
 /* used by driving distance */
    void Path::ddPrint(

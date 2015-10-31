@@ -33,25 +33,25 @@ extern "C" {
 int  do_pgr_dijkstra_many_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
         int64_t  *start_vertex, int s_len, int64_t  *end_vertex, int e_len,
         bool has_reverse_cost, bool directedFlag,
-        General_path_element_t **ret_path, int *path_count,
+        General_path_element_t **ret_path, size_t *path_count,
         char ** err_msg);
 
 int  do_pgr_dijkstra_many_to_1(pgr_edge_t  *data_edges, int64_t total_tuples,
         int64_t  *start_vertex, int s_len, int64_t end_vertex,
         bool has_reverse_cost, bool directedFlag,
-        General_path_element_t **ret_path, int *path_count,
+        General_path_element_t **ret_path, size_t *path_count,
         char ** err_msg);
 
 int  do_pgr_dijkstra_1_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
         int64_t  start_vertex, int64_t  *end_vertex, int n_end,
         bool has_reverse_cost, bool directedFlag,
-        General_path_element_t **ret_path, int *path_count,
+        General_path_element_t **ret_path, size_t *path_count,
         char ** err_msg);
 
 int  do_pgr_dijkstra(pgr_edge_t  * edges, int64_t total_tuples,
        int64_t  start_vertex, int64_t end_vertex,
        bool has_rcost, bool directed,
-       General_path_element_t **ret_path, int *path_count,
+       General_path_element_t **ret_path, size_t *path_count,
        char ** err_msg);
 
 #ifdef __cplusplus

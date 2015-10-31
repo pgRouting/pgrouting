@@ -34,7 +34,7 @@ extern "C" {
 int  do_pgr_ksp(pgr_edge_t  * edges, int64_t total_tuples,
                       int64_t  start_vertex, int64_t end_vertex,
                       int no_paths, bool has_reverse_cost, bool directed,
-                      General_path_element_t **ksp_path, int *path_count,
+                      General_path_element_t **ksp_path, size_t *path_count,
                       char ** err_msg);
 
 #ifdef __cplusplus

@@ -56,15 +56,24 @@ void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
         path.print_path();
         path.clear();
 
+//#define TEST_POSTGRES
 #ifdef TEST_POSTGRES
         size_t result_tuple_count;
-        Matrix_cell_t *postgres_rows = NULL;
-        pgr_warshall(graph, result_tuple_count, &postgres_rows);
+        General_path_element_t *postgres_rows = NULL;
+
+        pgr_dijkstra(graph, sources[0], targets[0], result_tuple_count, &postgres_rows);
+
         std::cout << "\t\t\tTHE POSTGRESQL OPUTPUT\n";
         std::cout << "seq\tfrom\tto\tcost\n";
-        seq = 0;
+        size_t seq = 0;
         for (size_t i = 0; i < result_tuple_count; i++) {
-            std::cout << seq++ << "\t" << postgres_rows[i].from_vid << "\t" <<  postgres_rows[i].to_vid << "\t" << postgres_rows[i].cost << "\n";
+            std::cout << seq++ << "\t"
+                      << postgres_rows[i].from << "\t"
+                      <<  postgres_rows[i].to << "\t" 
+                      << postgres_rows[i].vertex << "\t"
+                      << postgres_rows[i].edge << "\t"
+                      << postgres_rows[i].cost << "\t"
+                      << postgres_rows[i].tot_cost << "\n";
         }
 #endif  // TEST_POSTGRES
 
@@ -97,8 +106,9 @@ void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
       } else {
         //many to many
         std::deque<Path> paths;
+
         pgr_dijkstra(graph, paths, sources, targets);
-//        dijkstra.dijkstra(graph, paths, sources, targets);
+
         std::cout << "THE OPUTPUTS ---->  total outputs: " << paths.size() << "\n";
         for (unsigned int i = 0; i < paths.size(); ++i) {
           if (sizeof(paths[i]) == 0) continue; //no solution found

@@ -56,8 +56,8 @@ PGDLLEXPORT Datum
 #endif  // _MSC_VER
 kshortest_path(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
-  int                  call_cntr;
-  int                  max_calls;
+  size_t               call_cntr;
+  size_t               max_calls;
   TupleDesc            tuple_desc;
   General_path_element_t      *path;
 //  void * toDel;
@@ -65,7 +65,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
-      int path_count = 0;
+      size_t path_count = 0;
       path = NULL;
 
       /* create a function context for cross-call persistence */
@@ -168,7 +168,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
 int compute(char* sql, int64_t start_vertex,
          int64_t end_vertex, int no_paths,
          bool has_rcost, bool directed,
-         General_path_element_t **ksp_path, int *path_count) {
+         General_path_element_t **ksp_path, size_t *path_count) {
   int SPIcode = 0;
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;

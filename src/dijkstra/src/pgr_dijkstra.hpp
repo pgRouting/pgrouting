@@ -33,9 +33,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 
+extern "C" {
+#include "postgres.h"
+}
+
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../common/src/baseGraph.hpp"
-#include "postgres.h"
+
+
+#if 0
+extern "C" {
+static General_path_element_t* get_memory(int size, General_path_element_t *postgres_rows){
+        if (postgres_rows == NULL){
+                postgres_rows = (General_path_element_t*) malloc(size * sizeof(General_path_element_t));
+        } else {
+                postgres_rows = (General_path_element_t*) realloc(postgres_rows, size * sizeof(General_path_element_t));
+        }
+        return (General_path_element_t*) postgres_rows;
+}
+}
+#endif
 
 template < class G > class Pgr_dijkstra;
 // user's functions
@@ -70,15 +87,22 @@ pgr_dijkstra(G &graph, std::deque<Path> &paths,  const std::vector< int64_t > so
 }
 
 
-#if 0
 // for postgres 
+#if 0
 template < class G >
 void
-pgr_dijkstra(G &graph, size_t &result_tuple_count, Matrix_cell_t **postgres_rows) {
-     Pgr_warshall< G > fn_warshall;
-     fn_warshall.warshall(graph, result_tuple_count, postgres_rows);
+pgr_dijkstra(G &graph, int64_t  source, int64_t target, size_t &result_tuple_count, General_path_element_t **postgres_rows) {
+     Path path;
+     Pgr_dijkstra< G > fn_dijkstra;
+     fn_dijkstra.dijkstra(graph, path, source, target);
+     *postgres_rows = NULL;
+     *postgres_rows = get_memory(path.path.size(), (*postgres_rows));
+     size_t sequence;
+     path.generate_postgres_data(postgres_rows, sequence);
+     result_tuple_count = sequence;
 }
 #endif
+//******************************************
 
 template < class G >
 class Pgr_dijkstra {
