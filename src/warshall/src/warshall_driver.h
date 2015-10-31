@@ -30,15 +30,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-int  do_pgr_warshall(
-	pgr_edge_t  *data_edges, 
-	int64_t total_tuples,
-        bool directedFlag,
+int do_pgr_warshall(
+    pgr_edge_t  *data_edges,  // array of id, source, target, cost, reverse_cost
+    size_t total_tuples,     // size of data_edges
+    bool directedFlag,        // to choose undirected or directed
 
-	// return values
-        matrix_cell_t **ret_matrix,
-        int *path_count,
-        char ** err_msg);
+    // return values
+    Matrix_cell_t **ret_matrix,
+    size_t *return_tuple_count,
+    char ** err_msg); 
 
 #ifdef __cplusplus
 }

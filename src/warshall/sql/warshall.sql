@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /* adjust to the function needs */
 CREATE OR REPLACE FUNCTION _pgr_warshall(edges_sql TEXT, directed BOOLEAN, has_rcost BOOLEAN,
-  OUT seq INTEGER, OUT node bigint, OUT edge bigint, OUT cost float)
+  OUT seq INTEGER, OUT from_vid bigint, OUT to_vid bigint, OUT cost float)
   RETURNS SETOF RECORD AS
  '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'pgr_warshall'  -- must match name in .c file
     LANGUAGE c IMMUTABLE STRICT;
@@ -33,7 +33,7 @@ CREATE OR REPLACE FUNCTION _pgr_warshall(edges_sql TEXT, directed BOOLEAN, has_r
 -- signature
 -- sql: id, source, target, cost, reverse_cost
 CREATE OR REPLACE FUNCTION pgr_warshall(sql text,  directed boolean default true,
-  OUT seq INTEGER, OUT source bigint, OUT target bigint, OUT cost float)
+  OUT seq INTEGER, OUT from_vid bigint, OUT to_vid bigint, OUT cost float)
   RETURNS SETOF RECORD AS
   $BODY$
   DECLARE

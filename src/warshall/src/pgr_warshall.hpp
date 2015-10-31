@@ -37,98 +37,140 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/property_map/property_map.hpp>
 #include <boost/graph/floyd_warshall_shortest.hpp>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+static Matrix_cell_t* pgr_get_memory( size_t size, Matrix_cell_t *matrix) {
+        if (matrix == 0){
+                matrix = (Matrix_cell_t*) malloc(size * sizeof(Matrix_cell_t));
+        } else {
+                matrix = (Matrix_cell_t*) realloc(matrix, size * sizeof(Matrix_cell_t));
+        }
+        return (Matrix_cell_t*) matrix;
+}
+
+#ifdef __cplusplus
+}
+#endif
+
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../common/src/baseGraph.hpp"
-#include "postgres.h"
 
 
 template < class G >
 class Pgr_warshall {
-//  :public Pgr_base_graph<G> {
-  typedef typename G::V V;
-
-
- public:
-#if 0
-    //! \brief the constructor
-    explicit Pgr_warshall(graphType gtype, const int initial_size)
-     :Pgr_base_graph<G>(gtype, initial_size) {
-}
-
-    /*! \brief Perfom the inizialization of the graph
-     For Dijkstra  only requieres the data insertion.
-
-     Any other different initialization needs a different function.
-     \param[in] data_edges
-     \param[in] count
-    */
-    void
-    initialize_graph(pgr_edge_t *data_edges, int64_t count) {
-          this->graph_insert_data(data_edges, count);
-    }
-#endif
+//  typedef typename G::V V;
 
 
         /*
-         path_element_t description:
-                int64_t vertex_id; -- used here to store row vertex_id (from_id)
-                int64_t edge_id;   -- used here to store clolumn vertex_id (to_id)
-                float8 cost;       -- the distance between from_id to to_id
+         Matrix_cell_t description:
+                int64_t from_vid;
+                int64_t to_vid;
+                float8 cost;
 	*/
+ public:
     void
-    warshall(matrix_cell_t **result, int64_t &size) {
-	int64_t node_count = boost::num_vertices(this->graph);
-	std::vector< std::vector<double>> Dmatrix(node_count);
-        for(int i = 0; i < node_count; i++) {
-            Dmatrix[i].resize(node_count);
-	}
+    warshall(G &graph, size_t &result_tuple_count, Matrix_cell_t **postgres_rows) {
 
-//	warshall(Dmatrix);
-//        size = node_count * node_count;
+        std::vector< std::vector<double>> matrix;
+        make_matrix(boost::num_vertices(graph.graph), matrix);
+        inf_plus<double> combine;
+        boost::floyd_warshall_all_pairs_shortest_paths(
+            graph.graph,
+            matrix,
+                    weight_map(get(&boost_edge_t::cost, graph.graph)).
+                    distance_combine(combine).
+                    distance_inf(std::numeric_limits<double>::max()).
+                    distance_zero(0));
 
-	// The matrix might be very very big
-	// so I will be deleting row by row from the vector
-	#if 0
-	int64_t iRows = 0;
-	int64_t i = 0;
-	while (Dmatrix.begin() != Dmatrix.end()) {
-	    // allocating enough space for the next row
-            if (result == 0) *result = (path_element_t *) malloc(node_count * sizeof(path_element_t));
-            else  *result = (path_element_t *) realloc(result, (iRows + 1) * node_count * sizeof(path_element_t));
-	    int64_t row = Dmatrix.size()-1;   // working form end to beginnig
-	    int64_t column = 0;
-            for(const auto value : Dmatrix.back()) {
-                result[i]->vertex_id = row;
-                result[i]->edge_id = column;
-                result[i]->cost = value;
-                ++column;
-		++i;
-            }
-	    Dmatrix.pop_back();  // reducing the size of the original matrix to make space
-            ++iRows;
-        }
-	#endif
-      return;
+        make_result(graph, matrix, result_tuple_count, postgres_rows);
     }
 
 
     public:
     void
-    warshall(G &graph, std::vector< std::vector<double>> &Dmatrix) {
+    warshall(G &graph, std::vector< Matrix_cell_t> &rows) {
 
+        std::vector< std::vector<double>> matrix;
+        make_matrix(boost::num_vertices(graph.graph), matrix);
         inf_plus<double> combine;
         boost::floyd_warshall_all_pairs_shortest_paths(
             graph.graph,
-            Dmatrix,
+            matrix,
 		    weight_map(get(&boost_edge_t::cost, graph.graph)).
 		    distance_combine(combine).
 		    distance_inf(std::numeric_limits<double>::max()).
 		    distance_zero(0));
 
+        make_result(graph, matrix, rows);
     }
 
 
+ private:
+    void
+    make_matrix( size_t v_size, std::vector< std::vector<double>> &matrix) const{
+        matrix.resize(v_size);
+        for (size_t i=0; i < v_size; i++)
+          matrix[i].resize(v_size);
+    }
 
+
+    void
+    make_result(
+      const G &graph,
+      const std::vector< std::vector<double> > &matrix,
+      size_t &result_tuple_count,
+      Matrix_cell_t **postgres_rows) const{
+      result_tuple_count = count_rows(graph, matrix);
+      *postgres_rows = pgr_get_memory(result_tuple_count, (*postgres_rows));
+
+
+        size_t seq = 0;
+        for (size_t i = 0; i < graph.numb_vertices(); i++) {
+          for (size_t j = 0; j < graph.numb_vertices(); j++) {
+            if (matrix[i][j] != std::numeric_limits<double>::max()) {
+                (*postgres_rows)[seq].from_vid = graph.graph[i].id;
+                (*postgres_rows)[seq].to_vid = graph.graph[j].id;
+                (*postgres_rows)[seq].cost =  matrix[i][j];
+            seq++;
+            }  //if
+          }  // for j
+        }  //for i
+    }
+
+    size_t
+    count_rows(const G &graph, const std::vector< std::vector<double> > &matrix) const {
+        size_t result_tuple_count = 0;
+        for (size_t i = 0; i < graph.numb_vertices(); i++) {
+          for (size_t j = 0; j < graph.numb_vertices(); j++) {
+            if (matrix[i][j] != std::numeric_limits<double>::max()) {
+               result_tuple_count++;
+            }  //if
+          }  // for j
+        }  //for i
+        return result_tuple_count;
+    }
+
+    void
+    make_result(
+      G &graph,
+      std::vector< std::vector<double> > &matrix, 
+      std::vector< Matrix_cell_t> &rows) {
+      size_t count = count_rows(graph, matrix);
+      rows.resize(count);
+      size_t seq = 0;
+      
+        for (size_t i = 0; i < graph.numb_vertices(); i++) {
+          for (size_t j = 0; j < graph.numb_vertices(); j++) {
+            if (matrix[i][j] != std::numeric_limits<double>::max()) {
+                rows[seq] = { graph.graph[i].id, graph.graph[j].id, matrix[i][j] } ;
+                seq++;
+            }  //if
+          }  // for j
+        }  //for i
+    }
+    
 
     template <typename T>
     struct inf_plus {
@@ -141,5 +183,21 @@ class Pgr_warshall {
     };
 
 };
+
+
+template < class G >
+void
+pgr_warshall(G &graph, std::vector< Matrix_cell_t> &rows) {
+     Pgr_warshall< G > fn_warshall;
+     fn_warshall.warshall(graph, rows);
+}
+     
+template < class G >
+void
+pgr_warshall(G &graph, size_t &result_tuple_count, Matrix_cell_t **postgres_rows) {
+     Pgr_warshall< G > fn_warshall;
+     fn_warshall.warshall(graph, result_tuple_count, postgres_rows);
+}
+
 
 #endif // SRC_WARSHALL_SRC_PGR_WARSHALL_H_

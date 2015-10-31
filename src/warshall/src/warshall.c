@@ -48,11 +48,11 @@ USE THIS AS A GUIDE
 
 //TODO change name, parameters, according to the function its being implemented
 static int compute_warshall(
-	char* sql,
+	char *sql,
 	bool directed,
 	bool has_rcost, // this wil be removed
-        matrix_cell_t **matrix,
-	int *path_count) {
+        Matrix_cell_t **matrix,
+	size_t *result_tuple_count) {
 
   int SPIcode = 0;
   pgr_edge_t *edges = NULL;   // id, source, target, cost, reverse_cost
@@ -86,10 +86,11 @@ static int compute_warshall(
 
   // TODO the function is defined in the function1_driver.h & .cpp
   // fix accordingly
-  ret = do_pgr_warshall(edges, total_tuples,
+  ret = do_pgr_warshall(edges, 
+                        (size_t)total_tuples,
                         directed,                    // no need for rcost flag
                         matrix,
-			path_count,
+			result_tuple_count,
 			&err_msg);
 
   if (ret < 0) {
@@ -97,7 +98,7 @@ static int compute_warshall(
         errmsg("Error computing path: %s", err_msg)));
   }
 
-  PGR_DBG("total records found %i\n", *path_count);
+  PGR_DBG("total records found %i\n", *result_tuple_count);
   PGR_DBG("Exist Status = %i\n", ret);
   PGR_DBG("Returned message = %s\n", err_msg);
 
@@ -116,12 +117,12 @@ pgr_warshall(PG_FUNCTION_ARGS) {
   int                  call_cntr;
   int                  max_calls;
   TupleDesc            tuple_desc;
-  matrix_cell_t      *matrix = 0;  //TODO change to appropiate type
+  Matrix_cell_t      *matrix = 0;  //TODO change to appropiate type
 
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
-      int path_count = 0;
+      size_t result_total_count = 0;
 
       /* create a function context for cross-call persistence */
       funcctx = SRF_FIRSTCALL_INIT();
@@ -135,10 +136,10 @@ pgr_warshall(PG_FUNCTION_ARGS) {
       compute_warshall(pgr_text2char(PG_GETARG_TEXT_P(0)), // sql
                                   PG_GETARG_BOOL(1),       // directed
                                   PG_GETARG_BOOL(2),       // has_rcost // to be removed
-				  &matrix, &path_count); // the return values
+				  &matrix, &result_total_count); // the return values
 
       /* total number of tuples to be returned */
-      funcctx->max_calls = path_count;
+      funcctx->max_calls = result_total_count;
       funcctx->user_fctx = matrix;
 
       if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
@@ -159,7 +160,7 @@ pgr_warshall(PG_FUNCTION_ARGS) {
   call_cntr = funcctx->call_cntr;
   max_calls = funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
-  matrix = (matrix_cell_t*) funcctx->user_fctx;
+  matrix = (Matrix_cell_t*) funcctx->user_fctx;
 
   /* do when there is more left to send */
   if (call_cntr < max_calls) {

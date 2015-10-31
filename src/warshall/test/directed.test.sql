@@ -2,14 +2,15 @@
 
 SELECT *
     FROM _pgr_warshall(
-        'SELECT id, source, target, cost FROM edge_table WHERE id < 4 ORDER BY id',
+        'SELECT id, source, target, cost FROM edge_table ORDER BY id',
         false, false 
 );
 
+/*
 SELECT *
     FROM pgr_warshall(
         'SELECT id, source, target, cost FROM edge_table WHERE id < 4 ORDER BY id',
         false
 );
-
+*/
 

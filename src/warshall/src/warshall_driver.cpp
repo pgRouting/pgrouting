@@ -42,12 +42,12 @@ extern "C" {
 
 int do_pgr_warshall(
     pgr_edge_t  *data_edges,  // array of id, source, target, cost, reverse_cost
-    int64_t total_tuples,     // size of data_edges
+    size_t total_tuples,     // size of data_edges
     bool directedFlag,        // to choose undirected or directed
 
     // return values
-    path_element_t **ret_matrix,
-    int *path_count,
+    Matrix_cell_t **postgres_rows,
+    size_t *result_tuple_count,
     char ** err_msg) {
 // function starts
   std::ostringstream log;
@@ -57,7 +57,7 @@ int do_pgr_warshall(
     log << "Starting the process\n";
 
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-    const int initial_size = total_tuples;
+    const int initial_size = total_tuples ;
     log << "gType:" << (gType==DIRECTED? "directed": "undirected") << "\n";
 
 
@@ -68,32 +68,31 @@ int do_pgr_warshall(
       boost::bidirectionalS,
       boost_vertex_t, boost_edge_t > DirectedGraph;
 
-    Pgr_warshall < DirectedGraph > digraph(gType, initial_size);
-    Pgr_warshall < UndirectedGraph > undigraph(gType, initial_size);
     
 
-    int64_t count = 0;
-#if 1
+    //int64_t count = 0;
+
     if (directedFlag) {
 
-      digraph.initialize_graph(data_edges, total_tuples);
+      Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+      digraph.graph_insert_data(data_edges, total_tuples);
       log << "directed graph initialized \n";
-//      digraph.warshall(ret_matrix, count);  // not working yet
-      log << "directed not working yet \n";
+      pgr_warshall(digraph, *result_tuple_count, postgres_rows);
+      log << "directed working yet \n";
     } else {
-      undigraph.initialize_graph(data_edges, total_tuples);
+      Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+      undigraph.graph_insert_data(data_edges, total_tuples);
       log << "undirected graph initialized \n";
-      undigraph.warshall(ret_matrix, count);
+      pgr_warshall(undigraph, *result_tuple_count, postgres_rows);
       log << "undirected not working yet \n";
     }
-#endif
 
 
-    if (count == 0) {
+    if (result_tuple_count == 0) {
     // if (count == 0) {
       *err_msg = strdup( "NOTICE: No Vertices found??? wiered error");
       // *err_msg = strdup(log.str().c_str());
-      *ret_matrix = NULL;
+      *postgres_rows = NULL;
       return -1;
     }
 
@@ -107,7 +106,7 @@ int do_pgr_warshall(
     *err_msg = strdup(log.str().c_str());
 #endif
 
-    *path_count = count;
+    //*res = count;
     return EXIT_SUCCESS;
   } catch ( ... ) {
     //*err_msg = strdup("Caught unknown expection!");

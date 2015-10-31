@@ -382,6 +382,7 @@ int pgr_get_data(
   return 0;
 }
 
+
 pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path){
 	if(path ==0  ){
 		path=malloc(size * sizeof(pgr_path_element3_t));

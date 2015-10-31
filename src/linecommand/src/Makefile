@@ -2,14 +2,14 @@ CC= g++
 CCFLAGS=  -g -O3 -std=c++11 -Wall -pedantic  
 LDFLAGS= -lboost_program_options -lpq 
 INCFLAGS= -I /usr/include/postgresql/9.4/server/ -I /usr/include/postgresql/ 
-SOURCES= pgRouting.cpp  ./../../common/src/basePath_SSEC.cpp
+SOURCES= pgRouting.cpp  ./../../common/src/basePath_SSEC.cpp 
 
 OBJECTS= $(SOURCES:.cpp=.o)
 TARGET= pgRouting
  
 all: $(OBJECTS) $(TARGET) 
- 
-$(TARGET): pgRouting.o basePath_SSEC.o
+
+$(TARGET): pgRouting.o basePath_SSEC.o pgr_types.o
 	$(CC)  -o $@ $^ $(LDFLAGS)
  
 $(TARGET).o: $(TARGET).cpp ./../../common/src/baseGraph.hpp \
@@ -21,8 +21,8 @@ $(TARGET).o: $(TARGET).cpp ./../../common/src/baseGraph.hpp \
          ./warshall.hpp
 	$(CC)  $(CCFLAGS) $(INCFLAGS) -c $<
  
-%.o: %.cpp %.h 
-	$(CC)  $(CCFLAGS) $(INCFLAGS) -c $<
+#%.o: ./../../common/src/%.c ./../../common/src/%.h 
+#	g++  -c  $(INCFLAGS) $<
 
 %.o: %.cpp %.hpp 
 	$(CC)  $(CCFLAGS) $(INCFLAGS) -c $<
