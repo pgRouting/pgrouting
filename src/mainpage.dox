@@ -1,0 +1,240 @@
+/*! \mainpage pgRouting Developer's Documentation
+ 
+\section intro_sec Introduction
+ 
+This documentation is focused on the developer of pgRouting.
+
+A developer might want to:
+
+  - Fix a bug
+  - Add new functionality
+  - Modify the documentation
+  - Add tests
+    - regression
+    - benchmark
+ 
+The following steps are based on:
+  - [My Experience with GitHub](https://github.com/pgRouting/pgrouting/wiki/My-Experience-with-GitHub)
+wirtten by Mohamed Zia
+  - [Git Branch Model](http://nvie.com/posts/a-successful-git-branching-model)
+
+\section install_sec Installation for developing
+
+
+Step by Step processing
+
+1. Create a fork of the original pgRouting repository.
+   - If you don't have an account in Github, please [create one](https://github.com/)
+     - for purposes of this document the account name is: `acountName`
+   - Navigate to [pgRouting repository](https://github.com/pgRouting/pgrouting)
+   - In the top-right corner of the page, click Fork.
+   - Additional information can be found in [fork-a-repo](https://help.github.com/articles/fork-a-repo)
+
+2. Now create a local clone of your above created fork
+   - [set up Git](https://help.github.com/articles/set-up-git) in your computer. 
+   - clone your repo
+~~~~{.c}
+     git clone https://github.com/acountName/pgrouting pgrouting
+~~~~
+
+3. Go to your repo
+~~~~{.c}
+     cd pgrouting
+~~~~
+
+4. Seting the remote fetching connections
+   - More on remotes](https://help.github.com/categories/managing-remotes/) . 
+   - check the remote connection
+~~~~{.c}
+    git remote -v
+~~~~
+   -  Add upstream remote (ussually the main repository) 
+~~~~{.c}
+    git remote add upstream https://github.com/pgRouting/pgrouting
+~~~~
+   - check the remote connection
+~~~~{.c}
+    git remote -v
+~~~~
+   - Now you shoud have something like this:
+~~~~{.c}
+origin  https://github.com/acountName/pgrouting (fetch)
+origin  https://github.com/acountName/pgrouting (push)
+upstream        https://github.com/acountName/pgrouting (fetch)
+upstream        https://github.com/acountName/pgrouting (push)
+~~~~
+
+\section branch_model Git Branching Model
+
+We are making big efforts to start using the Git Branching Model
+So here are some basic rules about Master and develop:
+   - Pull requests against Master are almost never be accepted.
+     - For micro changes
+     - let us branch Master to a quick-fix branch
+     - Merge into the quick-fix
+     - We need to do some changes for the release numers etc...
+     - Finnaly we merge into Master
+   - To accept a pull request into develop:
+     - Its the same quick fix as for Master
+     - It has to pass the tests on travis and Jenkins (linux & Windows)
+     - Documentation must be "up to date"
+     - Say that 99.9% is complete
+     
+
+The way we want to work:
+   - If you want to work on a particular issue
+     - Let us know creating an [issue](https://github.com/pgRouting/pgrouting/issues)
+   - We will:
+     - Create a branch derived from develop in the main repo that you can use in your fork
+     - We will make the branch be checked on Travis
+     - Your pull requests will be accepted (even with failures or incomplete)
+     - We can help you with your work (remember it can have failures)
+     - Once is stable we will start making tests on Jenkins
+   - When the work is that 99.9% complete we can:
+     - Merge into develop
+     
+For the rest of the document the following branch has being created in the main repository:
+
+  dev-myFeature
+   
+
+1. To get a list of all the branches
+  - 
+~~~~{.c}
+   git branch -a
+~~~~
+
+2. To make sure you are in the correct branch
+  - 
+~~~~{.c}
+   git status
+~~~~
+
+3. When your forked before `dev-myFeature` was created
+  - fetch the main repository
+~~~~{.c}
+   git fetch upstream
+~~~~
+  - get a list of your branches you should see the branch you are going to use:
+~~~~{.c}
+    git branch -a
+    ...
+    remotes/upstream/dev-myFeature
+    ...
+~~~~
+  - go to your your local copy of the branch and push
+~~~~{.c}
+    git checkout dev-myFeature
+    git push --set-upstream origin dev-myFeature
+~~~~
+
+4. Try new ideas in local branches, commit and merge back when you feel its worth to keep:
+  - branch to a local branch
+~~~~{.c}
+    git checkout -b dev-myFeature-idea1
+~~~~
+  - Work, work, work
+  - Always make sure you are in the branch you want to commit your work
+~~~~{.c}
+    git status
+~~~~
+  - add, delete, commit changes
+~~~~{.c}
+    git add <file>
+    git remove <file>
+    git mv <oldNmae> <newName>
+    git commit -a -m '<commit message>'
+~~~~
+
+5. Merge back your ideas when you feel its worth to keep:
+~~~~{.c}
+    git checkout dev-myFeature
+    git merge dev-myFeature-idea1
+    <fix conflics if any>
+~~~~
+
+  
+\section upt_to_date Keep Fork Up to Date
+
+1. To keep your local repository up-to-date
+~~~~{.c}
+    git fetch upstream
+~~~~
+
+2. If you see changes in develop or master:
+   - Commit your work
+   - Update the branch that changed
+~~~~{.c}
+    git checkout develop
+    git pull upstream
+~~~~
+   - Update your branch to include the change
+~~~~{.c}
+    git checkout dev-myFeature
+    git merge develop
+    <fix conflics if any>
+~~~~
+
+
+
+11. How to perform run.sh test?
+
+12. The difference between run.sh test and Travis test is that in the initial one you are testing for broken package locally. Travis is more robust testing and provides all combinations of postgreSQL and postGIS versions.
+
+13. Move to a directory and add a file
+    cd /etc/label_graph/sql
+    gedit project_node_and_split_edge.sql
+
+14. In case you want to rename the above newly created file
+    mv project_node_and_split_edge project_node_and_split_edge.sql
+
+15. If git is already tracking that file (you have already done git add) then rename like this
+    git mv project_node_and_split_edge project_node_and_split_edge.sql
+
+16. Now track all the untracked files. First check untracked files
+    git status
+    git add  project_node_and_split_edge
+
+17. Check again if the untracked files are now getting tracked.
+    git status
+
+18. Git commit (-a will keep a track of all the modifications done)
+    git commit -a -m "Added a new file"
+
+19. Git push to push all the changes and new branch to your origin repo (not the remote, for remote u have to create a pull request and then the author of the remote will decide whether to merge or not)
+    git push
+    OR
+    git push --set-upstream origin pgr_projectNodeAndSplitEdge
+
+20. How to use git pull?
+
+21. One can add a new function at the following places depending upon the usage 
+    /src/common/
+    OR
+    /src
+
+22. If one is making a separate directory for his/her function then add the following files 
+    /src/myfunction/doc/myfunction.rst ---> for myfunction wiki
+    /src/myfunction/sql/myfunction.sql ---> stored function code
+    /src/myfunction/test/myfunction.data ---> sql to generate test data
+    /src/myfunction/test/myfunction.test.sql ---> all possible myfunction usage
+    /src/myfunction/test/test.conf ---> perl file to test the function
+    /src/myfunction/CMakeLists.txt ---> CMake file
+
+21. Add about your proposed function at package index.rst file
+    /doc/index.rst
+
+22. One can also add the branch name into travis file so that travis test will start running the moment there will be a push operation. Simple edit ".travis.yml" file at the root directory by adding your branch name.
+    branches:
+        only:
+            - master
+            - develop
+            - develop_2_1_0
+            - feature-travis
+            - dd-develop
+            - your-branch
+ 
+
+   
+  etc...
+*/
