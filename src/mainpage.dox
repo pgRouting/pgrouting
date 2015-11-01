@@ -154,7 +154,7 @@ For the rest of the document the following branch has being created in the main 
 ~~~~
 
   
-\section upt_to_date Keep Fork Up to Date
+\section up_to_date Keep Fork Up to Date
 
 1. To keep your local repository up-to-date
 ~~~~{.c}
@@ -176,65 +176,97 @@ For the rest of the document the following branch has being created in the main 
 ~~~~
 
 
+\section perform_tests Beware of Side Effects
 
-11. How to perform run.sh test?
+Modifications that you make should not affect other parts of the library.
+pgRouting has a testing tool, so that developers make sure of
+  - Code changes don't generate unexpected results
+  - Bug fixes actually fix the bug
+  - Expected output is generated
 
-12. The difference between run.sh test and Travis test is that in the initial one you are testing for broken package locally. Travis is more robust testing and provides all combinations of postgreSQL and postGIS versions.
+1. Move to the root directory.
 
-13. Move to a directory and add a file
-    cd /etc/label_graph/sql
-    gedit project_node_and_split_edge.sql
+2. get the help of testing tool:
+~~~~{.c}
+     tools/test-runner.pl -help
+~~~~
+3. run all the tests
+~~~~{.c}
+     tools/test-runner.pl 
+~~~~
 
-14. In case you want to rename the above newly created file
-    mv project_node_and_split_edge project_node_and_split_edge.sql
+\section automate_process Make a run.sh
 
-15. If git is already tracking that file (you have already done git add) then rename like this
-    git mv project_node_and_split_edge project_node_and_split_edge.sql
+A shell to automate the compilation and execution is usefull when developing.
 
-16. Now track all the untracked files. First check untracked files
-    git status
-    git add  project_node_and_split_edge
+1. Move to the root directory.
 
-17. Check again if the untracked files are now getting tracked.
-    git status
+2. Create your tool:
+~~~~{.c}
+   vi run.sh
+~~~~
 
-18. Git commit (-a will keep a track of all the modifications done)
-    git commit -a -m "Added a new file"
+3. Insert the usual process for creating and testing, for example:
+~~~~{.c}
+cd build/
+#make clean
+#rm -rf *
+#cmake -DBOOST_ROOT:PATH=/usr/local/boost_1_58_0 ..
+#cmake -DWITH_DOC=ON ..
+cmake ..
 
-19. Git push to push all the changes and new branch to your origin repo (not the remote, for remote u have to create a pull request and then the author of the remote will decide whether to merge or not)
-    git push
-    OR
-    git push --set-upstream origin pgr_projectNodeAndSplitEdge
+make
 
-20. How to use git pull?
+sudo make install
+#make doc
 
-21. One can add a new function at the following places depending upon the usage 
-    /src/common/
-    OR
-    /src
+cd ..
+tools/test-runner.pl -alg common -v -clean -ignorenotice
+#tools/test-runner.pl -alg dijkstra -v -clean 
+#tools/test-runner.pl -alg dijkstra_via_vertices -v -clean 
+#tools/test-runner.pl -alg doc -v -clean -ignorenotice
+~~~~
 
-22. If one is making a separate directory for his/her function then add the following files 
-    /src/myfunction/doc/myfunction.rst ---> for myfunction wiki
-    /src/myfunction/sql/myfunction.sql ---> stored function code
-    /src/myfunction/test/myfunction.data ---> sql to generate test data
-    /src/myfunction/test/myfunction.test.sql ---> all possible myfunction usage
-    /src/myfunction/test/test.conf ---> perl file to test the function
-    /src/myfunction/CMakeLists.txt ---> CMake file
+4. Comment and uncommet the file depending on your particular needs and execute it.
+~~~~{.c}
+   sh run.sh
+~~~~
 
-21. Add about your proposed function at package index.rst file
-    /doc/index.rst
+5. Don't add that file to the repository, its for your development only.
 
-22. One can also add the branch name into travis file so that travis test will start running the moment there will be a push operation. Simple edit ".travis.yml" file at the root directory by adding your branch name.
-    branches:
-        only:
-            - master
-            - develop
-            - develop_2_1_0
-            - feature-travis
-            - dd-develop
-            - your-branch
- 
 
-   
-  etc...
+\section setup_travis Setup Travis
+
+The main difference between your run.sh test and Travis test is:
+  - With run.sh you are testing locally.
+  - Travis test a matrix combination of  postgreSQL and postGIS versions
+
+To make use of travis test make sure that:
+
+1. Add your branch to  .travis.yml:
+~~~~{.c}
+branches:
+  only:
+    - master
+    - develop
+    - dev-myFeature
+~~~~
+
+2. Push your commit and navigate to [travis-ci](https://travis-ci.org)
+
+
+
+\section file_convetions File conventions
+
+Some conventions for directories and files
+~~~~{.c}
+/src/myfunction/doc/myfunction.rst ---> for myfunction wiki
+/src/myfunction/sql/myfunction.sql ---> stored function code
+/src/myfunction/test/myfunction.data ---> sql to generate test data
+/src/myfunction/test/myfunction.test.sql ---> all possible myfunction usage
+/src/myfunction/test/test.conf ---> perl file to test the function
+/src/myfunction/CMakeLists.txt ---> CMake file
+~~~~
+
+
 */
