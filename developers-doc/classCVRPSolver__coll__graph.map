@@ -1,0 +1,9 @@
+<map id="CVRPSolver" name="CVRPSolver">
+<area shape="rect" id="node3" href="$classCVehicleInfo.html" title="CVehicleInfo" alt="" coords="18,23,115,49"/>
+<area shape="rect" id="node9" href="$classCTourInfo.html" title="CTourInfo" alt="" coords="265,75,345,101"/>
+<area shape="rect" id="node5" href="$structCostPack.html" title="CostPack" alt="" coords="955,264,1035,291"/>
+<area shape="rect" id="node6" href="$classCSolutionInfo.html" title="CSolutionInfo" alt="" coords="944,139,1045,165"/>
+<area shape="rect" id="node16" href="$classCMoveInfo.html" title="CMoveInfo" alt="" coords="951,81,1038,108"/>
+<area shape="rect" id="node12" href="$classCOrderInfo.html" title="COrderInfo" alt="" coords="951,388,1038,415"/>
+<area shape="rect" id="node14" href="$classCDepotInfo.html" title="CDepotInfo" alt="" coords="950,439,1039,465"/>
+</map>

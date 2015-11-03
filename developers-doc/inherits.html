@@ -8,11 +8,24 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -24,7 +37,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.1</span>
+   &#160;<span id="projectnumber">2.2</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -40,6 +53,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -69,6 +83,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     </ul>
   </div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('hierarchy.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -93,379 +121,382 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><table border="0" cellspacing="10" cellpadding="0">
 <tr><td><img src="inherit_graph_0.png" border="0" alt="" usemap="#apsp__element"/>
 <map name="apsp__element" id="apsp__element">
-<area shape="rect" id="node1" href="df/d57/structapsp__element.html" title="apsp_element" alt="" coords="5,5,108,32"/></map>
+<area shape="rect" id="node1" href="structapsp__element.html" title="apsp_element" alt="" coords="5,5,108,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_1.png" border="0" alt="" usemap="#AssertFailedException"/>
 <map name="AssertFailedException" id="AssertFailedException">
-<area shape="rect" id="node2" href="da/d57/classAssertFailedException.html" title="Extends std::exception and is the exception that we throw if an assert fails. " alt="" coords="132,5,285,32"/><area shape="rect" id="node3" href="db/df0/classUserQuitException.html" title="UserQuitException" alt="" coords="143,56,275,83"/></map>
+<area shape="rect" id="node1" title="STL class. " alt="" coords="5,31,109,57"/><area shape="rect" id="node2" href="classAssertFailedException.html" title="Extends std::exception and is the exception that we throw if an assert fails. " alt="" coords="157,5,311,32"/><area shape="rect" id="node3" href="classUserQuitException.html" title="UserQuitException" alt="" coords="168,56,300,83"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_2.png" border="0" alt="" usemap="#astar__goal__visitor_3_01Vertex_01_4"/>
 <map name="astar__goal__visitor_3_01Vertex_01_4" id="astar__goal__visitor_3_01Vertex_01_4">
-<area shape="rect" id="node2" href="db/d7b/classastar__goal__visitor.html" title="astar_goal_visitor\l\&lt; Vertex \&gt;" alt="" coords="192,5,316,47"/></map>
+<area shape="rect" id="node2" href="classastar__goal__visitor.html" title="astar_goal_visitor\l\&lt; Vertex \&gt;" alt="" coords="192,5,316,47"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_3.png" border="0" alt="" usemap="#BiDirAStar"/>
 <map name="BiDirAStar" id="BiDirAStar">
-<area shape="rect" id="node1" href="d8/daf/classBiDirAStar.html" title="BiDirAStar" alt="" coords="5,5,89,32"/></map>
+<area shape="rect" id="node1" href="classBiDirAStar.html" title="BiDirAStar" alt="" coords="5,5,89,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_4.png" border="0" alt="" usemap="#BiDirDijkstra"/>
 <map name="BiDirDijkstra" id="BiDirDijkstra">
-<area shape="rect" id="node1" href="d9/d17/classBiDirDijkstra.html" title="BiDirDijkstra" alt="" coords="5,5,101,32"/></map>
+<area shape="rect" id="node1" href="classBiDirDijkstra.html" title="BiDirDijkstra" alt="" coords="5,5,101,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_5.png" border="0" alt="" usemap="#boost_1_1astar__heuristic_3_01Graph_00_01CostType_01_4"/>
 <map name="boost_1_1astar__heuristic_3_01Graph_00_01CostType_01_4" id="boost_1_1astar__heuristic_3_01Graph_00_01CostType_01_4">
-<area shape="rect" id="node2" href="d0/d6b/classboost_1_1astar__heuristic.html" title="boost::astar_heuristic\l\&lt; Graph, CostType \&gt;" alt="" coords="160,5,307,47"/><area shape="rect" id="node3" href="d5/da2/classdistance__heuristic.html" title="distance_heuristic\l\&lt; Graph, CostType \&gt;" alt="" coords="355,5,501,47"/></map>
+<area shape="rect" id="node2" href="classboost_1_1astar__heuristic.html" title="boost::astar_heuristic\l\&lt; Graph, CostType \&gt;" alt="" coords="160,5,307,47"/><area shape="rect" id="node3" href="classdistance__heuristic.html" title="distance_heuristic\l\&lt; Graph, CostType \&gt;" alt="" coords="355,5,501,47"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_6.png" border="0" alt="" usemap="#boost_1_1AStarHeuristicConcept_3_01Heuristic_00_01Graph_01_4"/>
 <map name="boost_1_1AStarHeuristicConcept_3_01Heuristic_00_01Graph_01_4" id="boost_1_1AStarHeuristicConcept_3_01Heuristic_00_01Graph_01_4">
-<area shape="rect" id="node1" href="d4/d1e/structboost_1_1AStarHeuristicConcept.html" title="boost::AStarHeuristicConcept\l\&lt; Heuristic, Graph \&gt;" alt="" coords="5,5,201,47"/></map>
+<area shape="rect" id="node1" href="structboost_1_1AStarHeuristicConcept.html" title="boost::AStarHeuristicConcept\l\&lt; Heuristic, Graph \&gt;" alt="" coords="5,5,201,47"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_7.png" border="0" alt="" usemap="#boost_1_1closed__plus_3_01T_01_4"/>
 <map name="boost_1_1closed__plus_3_01T_01_4" id="boost_1_1closed__plus_3_01T_01_4">
-<area shape="rect" id="node1" href="d9/ded/structboost_1_1closed__plus.html" title="boost::closed_plus\&lt; T \&gt;" alt="" coords="5,5,168,32"/></map>
+<area shape="rect" id="node1" href="structboost_1_1closed__plus.html" title="boost::closed_plus\&lt; T \&gt;" alt="" coords="5,5,168,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_8.png" border="0" alt="" usemap="#boost_1_1detail_1_1shooting__star__bfs__visitor_3_01AStarHeuristic_00_01UniformCostVisitor_00_01UpdatableQueue_00_01PredecessorMap_00_01CostMap_00_01DistanceMap_00_01WeightMap_00_01EdgeMap_00_01ColorMap_00_01EdgeColorMap_00_01BinaryFunction_00_01BinaryPredicate_01_4"/>
 <map name="boost_1_1detail_1_1shooting__star__bfs__visitor_3_01AStarHeuristic_00_01UniformCostVisitor_00_01UpdatableQueue_00_01PredecessorMap_00_01CostMap_00_01DistanceMap_00_01WeightMap_00_01EdgeMap_00_01ColorMap_00_01EdgeColorMap_00_01BinaryFunction_00_01BinaryPredicate_01_4" id="boost_1_1detail_1_1shooting__star__bfs__visitor_3_01AStarHeuristic_00_01UniformCostVisitor_00_01UpdatableQueue_00_01PredecessorMap_00_01CostMap_00_01DistanceMap_00_01WeightMap_00_01EdgeMap_00_01ColorMap_00_01EdgeColorMap_00_01BinaryFunction_00_01BinaryPredicate_01_4">
-<area shape="rect" id="node1" href="da/dfa/structboost_1_1detail_1_1shooting__star__bfs__visitor.html" title="boost::detail::shooting\l_star_bfs_visitor\&lt; AStarHeuristic,\l UniformCostVisitor, UpdatableQueue,\l PredecessorMap, CostMap, DistanceMap,\l WeightMap, EdgeMap, ColorMap, EdgeColorMap,\l BinaryFunction, BinaryPredicate \&gt;" alt="" coords="5,5,323,105"/></map>
+<area shape="rect" id="node1" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html" title="boost::detail::shooting\l_star_bfs_visitor\&lt; AStarHeuristic,\l UniformCostVisitor, UpdatableQueue,\l PredecessorMap, CostMap, DistanceMap,\l WeightMap, EdgeMap, ColorMap, EdgeColorMap,\l BinaryFunction, BinaryPredicate \&gt;" alt="" coords="5,5,323,105"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_9.png" border="0" alt="" usemap="#boost_1_1on__discover__edge"/>
 <map name="boost_1_1on__discover__edge" id="boost_1_1on__discover__edge">
-<area shape="rect" id="node1" href="d1/da7/structboost_1_1on__discover__edge.html" title="boost::on_discover_edge" alt="" coords="5,5,172,32"/></map>
+<area shape="rect" id="node1" href="structboost_1_1on__discover__edge.html" title="boost::on_discover_edge" alt="" coords="5,5,172,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_10.png" border="0" alt="" usemap="#boost_1_1on__finish__edge"/>
 <map name="boost_1_1on__finish__edge" id="boost_1_1on__finish__edge">
-<area shape="rect" id="node1" href="d8/d89/structboost_1_1on__finish__edge.html" title="boost::on_finish_edge" alt="" coords="5,5,155,32"/></map>
+<area shape="rect" id="node1" href="structboost_1_1on__finish__edge.html" title="boost::on_finish_edge" alt="" coords="5,5,155,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_11.png" border="0" alt="" usemap="#boost_1_1on__initialize__edge"/>
 <map name="boost_1_1on__initialize__edge" id="boost_1_1on__initialize__edge">
-<area shape="rect" id="node1" href="db/d7b/structboost_1_1on__initialize__edge.html" title="boost::on_initialize_edge" alt="" coords="5,5,171,32"/></map>
+<area shape="rect" id="node1" href="structboost_1_1on__initialize__edge.html" title="boost::on_initialize_edge" alt="" coords="5,5,171,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_12.png" border="0" alt="" usemap="#boost_1_1on__start__edge"/>
 <map name="boost_1_1on__start__edge" id="boost_1_1on__start__edge">
-<area shape="rect" id="node1" href="d2/dfc/structboost_1_1on__start__edge.html" title="boost::on_start_edge" alt="" coords="5,5,149,32"/></map>
+<area shape="rect" id="node1" href="structboost_1_1on__start__edge.html" title="boost::on_start_edge" alt="" coords="5,5,149,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_13.png" border="0" alt="" usemap="#boost_1_1shooting__star__visitor_3_01Visitors_01_4"/>
 <map name="boost_1_1shooting__star__visitor_3_01Visitors_01_4" id="boost_1_1shooting__star__visitor_3_01Visitors_01_4">
-<area shape="rect" id="node2" href="de/d14/classboost_1_1shooting__star__visitor.html" title="boost::shooting_star\l_visitor\&lt; Visitors \&gt;" alt="" coords="136,5,276,47"/><area shape="rect" id="node3" href="d3/d3f/classshooting__star__goal__visitor.html" title="shooting_star_goal\l_visitor\&lt; Edge \&gt;" alt="" coords="324,5,455,47"/></map>
+<area shape="rect" id="node2" href="classboost_1_1shooting__star__visitor.html" title="boost::shooting_star\l_visitor\&lt; Visitors \&gt;" alt="" coords="136,5,276,47"/><area shape="rect" id="node3" href="classshooting__star__goal__visitor.html" title="shooting_star_goal\l_visitor\&lt; Edge \&gt;" alt="" coords="324,5,455,47"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_14.png" border="0" alt="" usemap="#boost_1_1ShootingStarVisitorConcept_3_01Visitor_00_01Graph_01_4"/>
 <map name="boost_1_1ShootingStarVisitorConcept_3_01Visitor_00_01Graph_01_4" id="boost_1_1ShootingStarVisitorConcept_3_01Visitor_00_01Graph_01_4">
-<area shape="rect" id="node1" href="dc/d64/structboost_1_1ShootingStarVisitorConcept.html" title="boost::ShootingStarVisitor\lConcept\&lt; Visitor, Graph \&gt;" alt="" coords="5,5,180,47"/></map>
+<area shape="rect" id="node1" href="structboost_1_1ShootingStarVisitorConcept.html" title="boost::ShootingStarVisitor\lConcept\&lt; Visitor, Graph \&gt;" alt="" coords="5,5,180,47"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_15.png" border="0" alt="" usemap="#boost__edge__t"/>
 <map name="boost__edge__t" id="boost__edge__t">
-<area shape="rect" id="node1" href="d3/d38/structboost__edge__t.html" title="boost_edge_t" alt="" coords="5,5,105,32"/></map>
+<area shape="rect" id="node1" href="structboost__edge__t.html" title="boost_edge_t" alt="" coords="5,5,105,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_16.png" border="0" alt="" usemap="#boost__vertex__t"/>
 <map name="boost__vertex__t" id="boost__vertex__t">
-<area shape="rect" id="node1" href="d3/d1f/structboost__vertex__t.html" title="boost_vertex_t" alt="" coords="5,5,113,32"/></map>
+<area shape="rect" id="node1" href="structboost__vertex__t.html" title="boost_vertex_t" alt="" coords="5,5,113,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_17.png" border="0" alt="" usemap="#CDepotInfo"/>
 <map name="CDepotInfo" id="CDepotInfo">
-<area shape="rect" id="node1" href="d9/ddd/classCDepotInfo.html" title="CDepotInfo" alt="" coords="5,5,95,32"/></map>
+<area shape="rect" id="node1" href="classCDepotInfo.html" title="CDepotInfo" alt="" coords="5,5,95,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_18.png" border="0" alt="" usemap="#CMoveInfo"/>
 <map name="CMoveInfo" id="CMoveInfo">
-<area shape="rect" id="node1" href="d1/d47/classCMoveInfo.html" title="CMoveInfo" alt="" coords="5,5,92,32"/></map>
+<area shape="rect" id="node1" href="classCMoveInfo.html" title="CMoveInfo" alt="" coords="5,5,92,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_19.png" border="0" alt="" usemap="#COrderInfo"/>
 <map name="COrderInfo" id="COrderInfo">
-<area shape="rect" id="node1" href="de/dd9/classCOrderInfo.html" title="COrderInfo" alt="" coords="5,5,92,32"/></map>
+<area shape="rect" id="node1" href="classCOrderInfo.html" title="COrderInfo" alt="" coords="5,5,92,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_20.png" border="0" alt="" usemap="#CostHolder"/>
 <map name="CostHolder" id="CostHolder">
-<area shape="rect" id="node1" href="da/dda/structCostHolder.html" title="CostHolder" alt="" coords="5,5,93,32"/></map>
+<area shape="rect" id="node1" href="structCostHolder.html" title="CostHolder" alt="" coords="5,5,93,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_21.png" border="0" alt="" usemap="#CostPack"/>
 <map name="CostPack" id="CostPack">
-<area shape="rect" id="node1" href="df/d41/structCostPack.html" title="CostPack" alt="" coords="5,5,85,32"/></map>
+<area shape="rect" id="node1" href="structCostPack.html" title="CostPack" alt="" coords="5,5,85,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_22.png" border="0" alt="" usemap="#CSolutionInfo"/>
 <map name="CSolutionInfo" id="CSolutionInfo">
-<area shape="rect" id="node1" href="da/d12/classCSolutionInfo.html" title="CSolutionInfo" alt="" coords="5,5,107,32"/></map>
+<area shape="rect" id="node1" href="classCSolutionInfo.html" title="CSolutionInfo" alt="" coords="5,5,107,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_23.png" border="0" alt="" usemap="#CTourInfo"/>
 <map name="CTourInfo" id="CTourInfo">
-<area shape="rect" id="node1" href="de/d9e/classCTourInfo.html" title="CTourInfo" alt="" coords="5,5,85,32"/></map>
+<area shape="rect" id="node1" href="classCTourInfo.html" title="CTourInfo" alt="" coords="5,5,85,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_24.png" border="0" alt="" usemap="#Customer"/>
 <map name="Customer" id="Customer">
-<area shape="rect" id="node1" href="de/db1/structCustomer.html" title="Customer" alt="" coords="5,5,84,32"/></map>
+<area shape="rect" id="node1" href="structCustomer.html" title="Customer" alt="" coords="5,5,84,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_25.png" border="0" alt="" usemap="#Customer__type"/>
 <map name="Customer__type" id="Customer__type">
-<area shape="rect" id="node1" href="d0/d23/structCustomer__type.html" title="Customer_type" alt="" coords="5,5,116,32"/></map>
+<area shape="rect" id="node1" href="structCustomer__type.html" title="Customer_type" alt="" coords="5,5,116,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_26.png" border="0" alt="" usemap="#CVehicleInfo"/>
 <map name="CVehicleInfo" id="CVehicleInfo">
-<area shape="rect" id="node1" href="d6/d87/classCVehicleInfo.html" title="CVehicleInfo" alt="" coords="5,5,103,32"/></map>
+<area shape="rect" id="node1" href="classCVehicleInfo.html" title="CVehicleInfo" alt="" coords="5,5,103,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_27.png" border="0" alt="" usemap="#CVRPSolver"/>
 <map name="CVRPSolver" id="CVRPSolver">
-<area shape="rect" id="node1" href="d4/dc6/classCVRPSolver.html" title="CVRPSolver" alt="" coords="5,5,103,32"/></map>
+<area shape="rect" id="node1" href="classCVRPSolver.html" title="CVRPSolver" alt="" coords="5,5,103,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_28.png" border="0" alt="" usemap="#Depot"/>
 <map name="Depot" id="Depot">
-<area shape="rect" id="node1" href="d0/d3f/structDepot.html" title="Depot" alt="" coords="5,5,63,32"/></map>
+<area shape="rect" id="node1" href="structDepot.html" title="Depot" alt="" coords="5,5,63,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_29.png" border="0" alt="" usemap="#dist__fromto__t"/>
 <map name="dist__fromto__t" id="dist__fromto__t">
-<area shape="rect" id="node1" href="da/d71/structdist__fromto__t.html" title="dist_fromto_t" alt="" coords="5,5,104,32"/></map>
+<area shape="rect" id="node1" href="structdist__fromto__t.html" title="dist_fromto_t" alt="" coords="5,5,104,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_30.png" border="0" alt="" usemap="#distance__columns"/>
 <map name="distance__columns" id="distance__columns">
-<area shape="rect" id="node1" href="d9/d14/structdistance__columns.html" title="distance_columns" alt="" coords="5,5,132,32"/></map>
+<area shape="rect" id="node1" href="structdistance__columns.html" title="distance_columns" alt="" coords="5,5,132,32"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_31.png" border="0" alt="" usemap="#Edge"/>
-<map name="Edge" id="Edge">
-<area shape="rect" id="node1" href="d2/d4f/structEdge.html" title="Edge" alt="" coords="5,5,57,32"/></map>
-</td></tr>
-<tr><td><img src="inherit_graph_32.png" border="0" alt="" usemap="#edge"/>
+<tr><td><img src="inherit_graph_31.png" border="0" alt="" usemap="#edge"/>
 <map name="edge" id="edge">
-<area shape="rect" id="node1" href="d3/d3a/structedge.html" title="edge" alt="" coords="5,5,56,32"/></map>
+<area shape="rect" id="node1" href="structedge.html" title="edge" alt="" coords="5,5,56,32"/></map>
+</td></tr>
+<tr><td><img src="inherit_graph_32.png" border="0" alt="" usemap="#Edge"/>
+<map name="Edge" id="Edge">
+<area shape="rect" id="node1" href="structEdge.html" title="Edge" alt="" coords="5,5,57,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_33.png" border="0" alt="" usemap="#edge__apsp__johnson__t"/>
 <map name="edge__apsp__johnson__t" id="edge__apsp__johnson__t">
-<area shape="rect" id="node1" href="d8/d39/structedge__apsp__johnson__t.html" title="edge_apsp_johnson_t" alt="" coords="5,5,153,32"/></map>
+<area shape="rect" id="node1" href="structedge__apsp__johnson__t.html" title="edge_apsp_johnson_t" alt="" coords="5,5,153,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_34.png" border="0" alt="" usemap="#edge__astar"/>
 <map name="edge__astar" id="edge__astar">
-<area shape="rect" id="node1" href="de/da4/structedge__astar.html" title="edge_astar" alt="" coords="5,5,92,32"/></map>
+<area shape="rect" id="node1" href="structedge__astar.html" title="edge_astar" alt="" coords="5,5,92,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_35.png" border="0" alt="" usemap="#edge__astar__columns"/>
 <map name="edge__astar__columns" id="edge__astar__columns">
-<area shape="rect" id="node1" href="d6/d47/structedge__astar__columns.html" title="edge_astar_columns" alt="" coords="5,5,148,32"/></map>
+<area shape="rect" id="node1" href="structedge__astar__columns.html" title="edge_astar_columns" alt="" coords="5,5,148,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_36.png" border="0" alt="" usemap="#edge__columns"/>
 <map name="edge__columns" id="edge__columns">
-<area shape="rect" id="node1" href="d5/d48/structedge__columns.html" title="edge_columns" alt="" coords="5,5,112,32"/></map>
+<area shape="rect" id="node1" href="structedge__columns.html" title="edge_columns" alt="" coords="5,5,112,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_37.png" border="0" alt="" usemap="#edge__queue_3_01Edge_00_01Container_00_01Cmp_01_4"/>
 <map name="edge__queue_3_01Edge_00_01Container_00_01Cmp_01_4" id="edge__queue_3_01Edge_00_01Container_00_01Cmp_01_4">
-<area shape="rect" id="node2" href="d9/d4b/classedge__queue.html" title="edge_queue\&lt; Edge, Container,\l Cmp \&gt;" alt="" coords="156,5,359,47"/></map>
+<area shape="rect" id="node1" title="STL class. " alt="" coords="5,13,167,39"/><area shape="rect" id="node2" href="classedge__queue.html" title="edge_queue\&lt; Edge, Container,\l Cmp \&gt;" alt="" coords="215,5,417,47"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_38.png" border="0" alt="" usemap="#edge__shooting__star"/>
 <map name="edge__shooting__star" id="edge__shooting__star">
-<area shape="rect" id="node1" href="df/de4/structedge__shooting__star.html" title="edge_shooting_star" alt="" coords="5,5,140,32"/></map>
+<area shape="rect" id="node1" href="structedge__shooting__star.html" title="edge_shooting_star" alt="" coords="5,5,140,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_39.png" border="0" alt="" usemap="#edge__shooting__star__columns"/>
 <map name="edge__shooting__star__columns" id="edge__shooting__star__columns">
-<area shape="rect" id="node1" href="d2/ddf/structedge__shooting__star__columns.html" title="edge_shooting_star\l_columns" alt="" coords="5,5,140,47"/></map>
+<area shape="rect" id="node1" href="structedge__shooting__star__columns.html" title="edge_shooting_star\l_columns" alt="" coords="5,5,140,47"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_40.png" border="0" alt="" usemap="#EdgeRankCompare_3_01Edge_01_4"/>
 <map name="EdgeRankCompare_3_01Edge_01_4" id="EdgeRankCompare_3_01Edge_01_4">
-<area shape="rect" id="node1" href="da/df7/structEdgeRankCompare.html" title="EdgeRankCompare\&lt; Edge \&gt;" alt="" coords="5,5,196,32"/></map>
+<area shape="rect" id="node1" href="structEdgeRankCompare.html" title="EdgeRankCompare\&lt; Edge \&gt;" alt="" coords="5,5,196,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_41.png" border="0" alt="" usemap="#EventHandler"/>
 <map name="EventHandler" id="EventHandler">
-<area shape="rect" id="node1" href="d9/dca/classEventHandler.html" title="EventHandler" alt="" coords="5,31,107,57"/><area shape="rect" id="node2" href="d0/d6d/classSIGINT__Handler.html" title="SIGINT_Handler" alt="" coords="160,5,279,32"/><area shape="rect" id="node3" href="d5/de1/classSIGQUIT__Handler.html" title="SIGQUIT_Handler" alt="" coords="155,56,284,83"/></map>
+<area shape="rect" id="node1" href="classEventHandler.html" title="EventHandler" alt="" coords="5,31,107,57"/><area shape="rect" id="node2" href="classSIGINT__Handler.html" title="SIGINT_Handler" alt="" coords="160,5,279,32"/><area shape="rect" id="node3" href="classSIGQUIT__Handler.html" title="SIGQUIT_Handler" alt="" coords="155,56,284,83"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_42.png" border="0" alt="" usemap="#found__goal_3_01Edge_01_4"/>
 <map name="found__goal_3_01Edge_01_4" id="found__goal_3_01Edge_01_4">
-<area shape="rect" id="node1" href="d2/d33/structfound__goal.html" title="found_goal\&lt; Edge \&gt;" alt="" coords="5,5,144,32"/></map>
+<area shape="rect" id="node1" href="structfound__goal.html" title="found_goal\&lt; Edge \&gt;" alt="" coords="5,5,144,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_43.png" border="0" alt="" usemap="#GraphDefinition"/>
 <map name="GraphDefinition" id="GraphDefinition">
-<area shape="rect" id="node1" href="d4/dc2/classGraphDefinition.html" title="GraphDefinition" alt="" coords="5,5,117,32"/></map>
+<area shape="rect" id="node1" href="classGraphDefinition.html" title="GraphDefinition" alt="" coords="5,5,117,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_44.png" border="0" alt="" usemap="#GraphEdgeInfo"/>
 <map name="GraphEdgeInfo" id="GraphEdgeInfo">
-<area shape="rect" id="node1" href="d5/d98/structGraphEdgeInfo.html" title="GraphEdgeInfo" alt="" coords="5,5,115,32"/></map>
+<area shape="rect" id="node1" href="structGraphEdgeInfo.html" title="GraphEdgeInfo" alt="" coords="5,5,115,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_45.png" border="0" alt="" usemap="#GraphNodeInfo"/>
 <map name="GraphNodeInfo" id="GraphNodeInfo">
-<area shape="rect" id="node1" href="db/df4/structGraphNodeInfo.html" title="GraphNodeInfo" alt="" coords="5,5,116,32"/></map>
+<area shape="rect" id="node1" href="structGraphNodeInfo.html" title="GraphNodeInfo" alt="" coords="5,5,116,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_46.png" border="0" alt="" usemap="#matrix__cell"/>
 <map name="matrix__cell" id="matrix__cell">
-<area shape="rect" id="node1" href="da/d49/structmatrix__cell.html" title="matrix_cell" alt="" coords="5,5,91,32"/></map>
+<area shape="rect" id="node1" href="structmatrix__cell.html" title="matrix_cell" alt="" coords="5,5,91,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_47.png" border="0" alt="" usemap="#MinHeap"/>
 <map name="MinHeap" id="MinHeap">
-<area shape="rect" id="node1" href="dc/d1f/classMinHeap.html" title="MinHeap" alt="" coords="5,5,80,32"/></map>
+<area shape="rect" id="node1" href="classMinHeap.html" title="MinHeap" alt="" coords="5,5,80,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_48.png" border="0" alt="" usemap="#Neighborhoods"/>
 <map name="Neighborhoods" id="Neighborhoods">
-<area shape="rect" id="node1" href="df/d4f/classNeighborhoods.html" title="Neighborhoods" alt="" coords="5,5,115,32"/></map>
+<area shape="rect" id="node1" href="classNeighborhoods.html" title="Neighborhoods" alt="" coords="5,5,115,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_49.png" border="0" alt="" usemap="#order__columns"/>
 <map name="order__columns" id="order__columns">
-<area shape="rect" id="node1" href="db/df5/structorder__columns.html" title="order_columns" alt="" coords="5,5,112,32"/></map>
+<area shape="rect" id="node1" href="structorder__columns.html" title="order_columns" alt="" coords="5,5,112,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_50.png" border="0" alt="" usemap="#PARENT__PATH"/>
 <map name="PARENT__PATH" id="PARENT__PATH">
-<area shape="rect" id="node1" href="dd/dee/structPARENT__PATH.html" title="PARENT_PATH" alt="" coords="5,5,125,32"/></map>
+<area shape="rect" id="node1" href="structPARENT__PATH.html" title="PARENT_PATH" alt="" coords="5,5,125,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_51.png" border="0" alt="" usemap="#Path"/>
 <map name="Path" id="Path">
-<area shape="rect" id="node1" href="db/dc7/classPath.html" title="Path" alt="" coords="5,5,55,32"/></map>
+<area shape="rect" id="node1" href="classPath.html" title="Path" alt="" coords="5,5,55,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_52.png" border="0" alt="" usemap="#path__element"/>
 <map name="path__element" id="path__element">
-<area shape="rect" id="node1" href="d5/d34/structpath__element.html" title="path_element" alt="" coords="5,5,105,32"/></map>
+<area shape="rect" id="node1" href="structpath__element.html" title="path_element" alt="" coords="5,5,105,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_53.png" border="0" alt="" usemap="#path__element2"/>
 <map name="path__element2" id="path__element2">
-<area shape="rect" id="node1" href="df/db3/structpath__element2.html" title="path_element2" alt="" coords="5,5,112,32"/></map>
+<area shape="rect" id="node1" href="structpath__element2.html" title="path_element2" alt="" coords="5,5,112,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_54.png" border="0" alt="" usemap="#path__element__t"/>
 <map name="path__element__t" id="path__element__t">
-<area shape="rect" id="node1" href="dd/d62/structpath__element__t.html" title="path_element_t" alt="" coords="5,5,116,32"/></map>
+<area shape="rect" id="node1" href="structpath__element__t.html" title="path_element_t" alt="" coords="5,5,116,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_55.png" border="0" alt="" usemap="#path__fromto__t"/>
 <map name="path__fromto__t" id="path__fromto__t">
-<area shape="rect" id="node1" href="da/db0/structpath__fromto__t.html" title="path_fromto_t" alt="" coords="5,5,108,32"/></map>
+<area shape="rect" id="node1" href="structpath__fromto__t.html" title="path_fromto_t" alt="" coords="5,5,108,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_56.png" border="0" alt="" usemap="#PathElement"/>
 <map name="PathElement" id="PathElement">
-<area shape="rect" id="node1" href="d0/dbd/structPathElement.html" title="PathElement" alt="" coords="5,5,103,32"/></map>
+<area shape="rect" id="node1" href="structPathElement.html" title="PathElement" alt="" coords="5,5,103,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_57.png" border="0" alt="" usemap="#Pgr__base__graph_3_01G_01_4"/>
 <map name="Pgr__base__graph_3_01G_01_4" id="Pgr__base__graph_3_01G_01_4">
-<area shape="rect" id="node1" href="d1/d13/classPgr__base__graph.html" title="boost::graph simplified to pgRouting needs " alt="" coords="5,5,156,32"/></map>
+<area shape="rect" id="node1" href="classPgr__base__graph.html" title="boost::graph simplified to pgRouting needs " alt="" coords="5,5,156,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_58.png" border="0" alt="" usemap="#pgr__cost3__t"/>
 <map name="pgr__cost3__t" id="pgr__cost3__t">
-<area shape="rect" id="node1" href="d4/d95/structpgr__cost3__t.html" title="pgr_cost3_t" alt="" coords="5,5,96,32"/></map>
+<area shape="rect" id="node1" href="structpgr__cost3__t.html" title="pgr_cost3_t" alt="" coords="5,5,96,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_59.png" border="0" alt="" usemap="#pgr__cost__t"/>
 <map name="pgr__cost__t" id="pgr__cost__t">
-<area shape="rect" id="node1" href="d1/d4b/structpgr__cost__t.html" title="pgr_cost_t" alt="" coords="5,5,88,32"/></map>
+<area shape="rect" id="node1" href="structpgr__cost__t.html" title="pgr_cost_t" alt="" coords="5,5,88,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_60.png" border="0" alt="" usemap="#Pgr__dijkstra_3_01G_01_4"/>
 <map name="Pgr__dijkstra_3_01G_01_4" id="Pgr__dijkstra_3_01G_01_4">
-<area shape="rect" id="node1" href="d1/d21/singletonPgr__dijkstra.html" title="Pgr_dijkstra\&lt; G \&gt;" alt="" coords="5,5,131,32"/></map>
+<area shape="rect" id="node1" href="singletonPgr__dijkstra.html" title="Pgr_dijkstra\&lt; G \&gt;" alt="" coords="5,5,131,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_61.png" border="0" alt="" usemap="#Pgr__dijkstra_3_01G_01_4_1_1dijkstra__distance__visitor_3_01Vertex_01_4"/>
 <map name="Pgr__dijkstra_3_01G_01_4_1_1dijkstra__distance__visitor_3_01Vertex_01_4" id="Pgr__dijkstra_3_01G_01_4_1_1dijkstra__distance__visitor_3_01Vertex_01_4">
-<area shape="rect" id="node2" href="d0/d03/classPgr__dijkstra_1_1dijkstra__distance__visitor.html" title="class for stopping when a distance/cost has being surpassed " alt="" coords="229,5,391,61"/><area shape="rect" id="node3" href="d5/d78/classPgr__dijkstra_1_1dijkstra__many__goal__visitor.html" title="class for stopping when all targets are found " alt="" coords="205,85,415,126"/><area shape="rect" id="node4" href="d3/ddd/classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html" title="class for stopping when 1 target is found " alt="" coords="211,150,409,191"/></map>
+<area shape="rect" id="node2" href="classPgr__dijkstra_1_1dijkstra__distance__visitor.html" title="class for stopping when a distance/cost has being surpassed " alt="" coords="229,5,391,61"/><area shape="rect" id="node3" href="classPgr__dijkstra_1_1dijkstra__many__goal__visitor.html" title="class for stopping when all targets are found " alt="" coords="205,85,415,126"/><area shape="rect" id="node4" href="classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html" title="class for stopping when 1 target is found " alt="" coords="211,150,409,191"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_62.png" border="0" alt="" usemap="#Pgr__dijkstra_3_01G_01_4_1_1found__goals"/>
 <map name="Pgr__dijkstra_3_01G_01_4_1_1found__goals" id="Pgr__dijkstra_3_01G_01_4_1_1found__goals">
-<area shape="rect" id="node1" href="d1/dfd/structPgr__dijkstra_1_1found__goals.html" title="exception for termination " alt="" coords="5,5,139,47"/></map>
+<area shape="rect" id="node1" href="structPgr__dijkstra_1_1found__goals.html" title="exception for termination " alt="" coords="5,5,139,47"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_63.png" border="0" alt="" usemap="#pgr__edge__t"/>
 <map name="pgr__edge__t" id="pgr__edge__t">
-<area shape="rect" id="node1" href="dd/de6/structpgr__edge__t.html" title="pgr_edge_t" alt="" coords="5,5,92,32"/></map>
+<area shape="rect" id="node1" href="structpgr__edge__t.html" title="pgr_edge_t" alt="" coords="5,5,92,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_64.png" border="0" alt="" usemap="#Pgr__ksp_3_01G_01_4"/>
 <map name="Pgr__ksp_3_01G_01_4" id="Pgr__ksp_3_01G_01_4">
-<area shape="rect" id="node1" href="df/d0f/classPgr__ksp.html" title="Pgr_ksp\&lt; G \&gt;" alt="" coords="5,5,109,32"/></map>
+<area shape="rect" id="node1" href="classPgr__ksp.html" title="Pgr_ksp\&lt; G \&gt;" alt="" coords="5,5,109,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_65.png" border="0" alt="" usemap="#Pgr__ksp_3_01G_01_4_1_1compPaths"/>
 <map name="Pgr__ksp_3_01G_01_4_1_1compPaths" id="Pgr__ksp_3_01G_01_4_1_1compPaths">
-<area shape="rect" id="node1" href="d2/ddd/classPgr__ksp_1_1compPaths.html" title="Pgr_ksp\&lt; G \&gt;::compPaths" alt="" coords="5,5,184,32"/></map>
+<area shape="rect" id="node1" href="classPgr__ksp_1_1compPaths.html" title="Pgr_ksp\&lt; G \&gt;::compPaths" alt="" coords="5,5,184,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_66.png" border="0" alt="" usemap="#pgr__path__t"/>
 <map name="pgr__path__t" id="pgr__path__t">
-<area shape="rect" id="node1" href="d4/daa/structpgr__path__t.html" title="pgr_path_t" alt="" coords="5,5,88,32"/></map>
+<area shape="rect" id="node1" href="structpgr__path__t.html" title="pgr_path_t" alt="" coords="5,5,88,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_67.png" border="0" alt="" usemap="#Pgr__warshall_3_01G_01_4"/>
 <map name="Pgr__warshall_3_01G_01_4" id="Pgr__warshall_3_01G_01_4">
-<area shape="rect" id="node1" href="d0/d66/singletonPgr__warshall.html" title="Pgr_warshall\&lt; G \&gt;" alt="" coords="5,5,136,32"/></map>
+<area shape="rect" id="node1" href="singletonPgr__warshall.html" title="Pgr_warshall\&lt; G \&gt;" alt="" coords="5,5,136,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_68.png" border="0" alt="" usemap="#Pgr__warshall_3_01G_01_4_1_1inf__plus_3_01T_01_4"/>
 <map name="Pgr__warshall_3_01G_01_4_1_1inf__plus_3_01T_01_4" id="Pgr__warshall_3_01G_01_4_1_1inf__plus_3_01T_01_4">
-<area shape="rect" id="node1" href="de/d74/structPgr__warshall_1_1inf__plus.html" title="Pgr_warshall\&lt; G \&gt;::\linf_plus\&lt; T \&gt;" alt="" coords="5,5,144,47"/></map>
+<area shape="rect" id="node1" href="structPgr__warshall_1_1inf__plus.html" title="Pgr_warshall\&lt; G \&gt;::\linf_plus\&lt; T \&gt;" alt="" coords="5,5,144,47"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_69.png" border="0" alt="" usemap="#Pickup"/>
 <map name="Pickup" id="Pickup">
-<area shape="rect" id="node1" href="db/dca/structPickup.html" title="Pickup" alt="" coords="5,5,68,32"/></map>
+<area shape="rect" id="node1" href="structPickup.html" title="Pickup" alt="" coords="5,5,68,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_70.png" border="0" alt="" usemap="#point"/>
 <map name="point" id="point">
-<area shape="rect" id="node1" href="d8/dae/structpoint.html" title="point" alt="" coords="5,5,56,32"/></map>
+<area shape="rect" id="node1" href="structpoint.html" title="point" alt="" coords="5,5,56,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_71.png" border="0" alt="" usemap="#Point"/>
 <map name="Point" id="Point">
-<area shape="rect" id="node1" href="d8/d43/structPoint.html" title="Point" alt="" coords="5,5,57,32"/></map>
+<area shape="rect" id="node1" href="structPoint.html" title="Point" alt="" coords="5,5,57,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_72.png" border="0" alt="" usemap="#point__columns"/>
 <map name="point__columns" id="point__columns">
-<area shape="rect" id="node1" href="d7/d32/structpoint__columns.html" title="point_columns" alt="" coords="5,5,112,32"/></map>
+<area shape="rect" id="node1" href="structpoint__columns.html" title="point_columns" alt="" coords="5,5,112,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_73.png" border="0" alt="" usemap="#restrict__columns"/>
 <map name="restrict__columns" id="restrict__columns">
-<area shape="rect" id="node1" href="de/dd6/structrestrict__columns.html" title="restrict_columns" alt="" coords="5,5,124,32"/></map>
+<area shape="rect" id="node1" href="structrestrict__columns.html" title="restrict_columns" alt="" coords="5,5,124,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_74.png" border="0" alt="" usemap="#restrict__struct"/>
 <map name="restrict__struct" id="restrict__struct">
-<area shape="rect" id="node1" href="dd/d17/structrestrict__struct.html" title="restrict_struct" alt="" coords="5,5,108,32"/></map>
+<area shape="rect" id="node1" href="structrestrict__struct.html" title="restrict_struct" alt="" coords="5,5,108,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_75.png" border="0" alt="" usemap="#Route"/>
 <map name="Route" id="Route">
-<area shape="rect" id="node1" href="de/df8/classRoute.html" title="Route" alt="" coords="5,5,63,32"/></map>
+<area shape="rect" id="node1" href="classRoute.html" title="Route" alt="" coords="5,5,63,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_76.png" border="0" alt="" usemap="#Rule"/>
 <map name="Rule" id="Rule">
-<area shape="rect" id="node1" href="dc/d7a/structRule.html" title="Rule" alt="" coords="5,5,55,32"/></map>
+<area shape="rect" id="node1" href="structRule.html" title="Rule" alt="" coords="5,5,55,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_77.png" border="0" alt="" usemap="#SignalHandler"/>
 <map name="SignalHandler" id="SignalHandler">
-<area shape="rect" id="node1" href="df/dc9/classSignalHandler.html" title="SignalHandler" alt="" coords="5,5,108,32"/></map>
+<area shape="rect" id="node1" href="classSignalHandler.html" title="SignalHandler" alt="" coords="5,5,108,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_78.png" border="0" alt="" usemap="#Solution"/>
 <map name="Solution" id="Solution">
-<area shape="rect" id="node1" href="d4/d13/classSolution.html" title="Solution" alt="" coords="5,5,75,32"/></map>
+<area shape="rect" id="node1" href="classSolution.html" title="Solution" alt="" coords="5,5,75,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_79.png" border="0" alt="" usemap="#statesave"/>
 <map name="statesave" id="statesave">
-<area shape="rect" id="node1" href="db/de8/structstatesave.html" title="statesave" alt="" coords="5,5,84,32"/></map>
+<area shape="rect" id="node1" href="structstatesave.html" title="statesave" alt="" coords="5,5,84,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_80.png" border="0" alt="" usemap="#StringOperation"/>
 <map name="StringOperation" id="StringOperation">
-<area shape="rect" id="node1" href="dd/d69/classStringOperation.html" title="StringOperation" alt="" coords="5,5,117,32"/></map>
+<area shape="rect" id="node1" href="classStringOperation.html" title="StringOperation" alt="" coords="5,5,117,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_81.png" border="0" alt="" usemap="#StringTokenizer"/>
 <map name="StringTokenizer" id="StringTokenizer">
-<area shape="rect" id="node1" href="d9/d1e/classStringTokenizer.html" title="StringTokenizer" alt="" coords="5,5,119,32"/></map>
+<area shape="rect" id="node1" href="classStringTokenizer.html" title="StringTokenizer" alt="" coords="5,5,119,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_82.png" border="0" alt="" usemap="#tspstruct"/>
 <map name="tspstruct" id="tspstruct">
-<area shape="rect" id="node1" href="dd/d4f/structtspstruct.html" title="tspstruct" alt="" coords="5,5,79,32"/></map>
+<area shape="rect" id="node1" href="structtspstruct.html" title="tspstruct" alt="" coords="5,5,79,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_83.png" border="0" alt="" usemap="#Vehicle"/>
 <map name="Vehicle" id="Vehicle">
-<area shape="rect" id="node1" href="d0/dba/structVehicle.html" title="Vehicle" alt="" coords="5,5,71,32"/></map>
+<area shape="rect" id="node1" href="structVehicle.html" title="Vehicle" alt="" coords="5,5,71,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_84.png" border="0" alt="" usemap="#vehicle__columns"/>
 <map name="vehicle__columns" id="vehicle__columns">
-<area shape="rect" id="node1" href="da/d5e/structvehicle__columns.html" title="vehicle_columns" alt="" coords="5,5,124,32"/></map>
+<area shape="rect" id="node1" href="structvehicle__columns.html" title="vehicle_columns" alt="" coords="5,5,124,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_85.png" border="0" alt="" usemap="#Vertex"/>
 <map name="Vertex" id="Vertex">
-<area shape="rect" id="node1" href="df/dd0/structVertex.html" title="Vertex" alt="" coords="5,5,65,32"/></map>
+<area shape="rect" id="node1" href="structVertex.html" title="Vertex" alt="" coords="5,5,65,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_86.png" border="0" alt="" usemap="#vertex"/>
 <map name="vertex" id="vertex">
-<area shape="rect" id="node1" href="db/d7c/structvertex.html" title="vertex" alt="" coords="5,5,64,32"/></map>
+<area shape="rect" id="node1" href="structvertex.html" title="vertex" alt="" coords="5,5,64,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_87.png" border="0" alt="" usemap="#vertex__columns"/>
 <map name="vertex__columns" id="vertex__columns">
-<area shape="rect" id="node1" href="d9/d4d/structvertex__columns.html" title="vertex_columns" alt="" coords="5,5,120,32"/></map>
+<area shape="rect" id="node1" href="structvertex__columns.html" title="vertex_columns" alt="" coords="5,5,120,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_88.png" border="0" alt="" usemap="#vrp__cost__element"/>
 <map name="vrp__cost__element" id="vrp__cost__element">
-<area shape="rect" id="node1" href="d6/d51/structvrp__cost__element.html" title="vrp_cost_element" alt="" coords="5,5,131,32"/></map>
+<area shape="rect" id="node1" href="structvrp__cost__element.html" title="vrp_cost_element" alt="" coords="5,5,131,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_89.png" border="0" alt="" usemap="#vrp__orders"/>
 <map name="vrp__orders" id="vrp__orders">
-<area shape="rect" id="node1" href="d7/d0a/structvrp__orders.html" title="vrp_orders" alt="" coords="5,5,88,32"/></map>
+<area shape="rect" id="node1" href="structvrp__orders.html" title="vrp_orders" alt="" coords="5,5,88,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_90.png" border="0" alt="" usemap="#vrp__result__element"/>
 <map name="vrp__result__element" id="vrp__result__element">
-<area shape="rect" id="node1" href="d9/d55/structvrp__result__element.html" title="vrp_result_element" alt="" coords="5,5,137,32"/></map>
+<area shape="rect" id="node1" href="structvrp__result__element.html" title="vrp_result_element" alt="" coords="5,5,137,32"/></map>
 </td></tr>
 <tr><td><img src="inherit_graph_91.png" border="0" alt="" usemap="#vrp__vehicles"/>
 <map name="vrp__vehicles" id="vrp__vehicles">
-<area shape="rect" id="node1" href="de/d70/structvrp__vehicles.html" title="vrp_vehicles" alt="" coords="5,5,100,32"/></map>
+<area shape="rect" id="node1" href="structvrp__vehicles.html" title="vrp_vehicles" alt="" coords="5,5,100,32"/></map>
 </td></tr>
 </table>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 31 2015 21:10:54 for pgRouting by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Mon Nov 2 2015 20:03:58 for pgRouting by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
+  </ul>
+</div>
 </body>
 </html>

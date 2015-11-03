@@ -1,0 +1,117 @@
+var hierarchy =
+[
+    [ "apsp_element", "structapsp__element.html", null ],
+    [ "bfs_visitor", null, [
+      [ "boost::shooting_star_visitor< Visitors >", "classboost_1_1shooting__star__visitor.html", [
+        [ "shooting_star_goal_visitor< Edge >", "classshooting__star__goal__visitor.html", null ]
+      ] ]
+    ] ],
+    [ "BiDirAStar", "classBiDirAStar.html", null ],
+    [ "BiDirDijkstra", "classBiDirDijkstra.html", null ],
+    [ "boost::AStarHeuristicConcept< Heuristic, Graph >", "structboost_1_1AStarHeuristicConcept.html", null ],
+    [ "boost::closed_plus< T >", "structboost_1_1closed__plus.html", null ],
+    [ "default_astar_visitor", null, [
+      [ "astar_goal_visitor< Vertex >", "classastar__goal__visitor.html", null ]
+    ] ],
+    [ "default_dijkstra_visitor", null, [
+      [ "Pgr_dijkstra< G >::dijkstra_distance_visitor< Vertex >", "classPgr__dijkstra_1_1dijkstra__distance__visitor.html", null ],
+      [ "Pgr_dijkstra< G >::dijkstra_many_goal_visitor< V >", "classPgr__dijkstra_1_1dijkstra__many__goal__visitor.html", null ],
+      [ "Pgr_dijkstra< G >::dijkstra_one_goal_visitor< V >", "classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html", null ]
+    ] ],
+    [ "boost::detail::shooting_star_bfs_visitor< AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate >", "structboost_1_1detail_1_1shooting__star__bfs__visitor.html", null ],
+    [ "boost::on_discover_edge", "structboost_1_1on__discover__edge.html", null ],
+    [ "boost::on_finish_edge", "structboost_1_1on__finish__edge.html", null ],
+    [ "boost::on_initialize_edge", "structboost_1_1on__initialize__edge.html", null ],
+    [ "boost::on_start_edge", "structboost_1_1on__start__edge.html", null ],
+    [ "boost::ShootingStarVisitorConcept< Visitor, Graph >", "structboost_1_1ShootingStarVisitorConcept.html", null ],
+    [ "boost_edge_t", "structboost__edge__t.html", null ],
+    [ "boost_vertex_t", "structboost__vertex__t.html", null ],
+    [ "CDepotInfo", "classCDepotInfo.html", null ],
+    [ "CMoveInfo", "classCMoveInfo.html", null ],
+    [ "COrderInfo", "classCOrderInfo.html", null ],
+    [ "CostHolder", "structCostHolder.html", null ],
+    [ "CostPack", "structCostPack.html", null ],
+    [ "CSolutionInfo", "classCSolutionInfo.html", null ],
+    [ "CTourInfo", "classCTourInfo.html", null ],
+    [ "Customer", "structCustomer.html", null ],
+    [ "Customer_type", "structCustomer__type.html", null ],
+    [ "CVehicleInfo", "classCVehicleInfo.html", null ],
+    [ "CVRPSolver", "classCVRPSolver.html", null ],
+    [ "Depot", "structDepot.html", null ],
+    [ "dist_fromto_t", "structdist__fromto__t.html", null ],
+    [ "distance_columns", "structdistance__columns.html", null ],
+    [ "edge", "structedge.html", null ],
+    [ "Edge", "structEdge.html", null ],
+    [ "edge_apsp_johnson_t", "structedge__apsp__johnson__t.html", null ],
+    [ "edge_astar", "structedge__astar.html", null ],
+    [ "edge_astar_columns", "structedge__astar__columns.html", null ],
+    [ "edge_columns", "structedge__columns.html", null ],
+    [ "edge_shooting_star", "structedge__shooting__star.html", null ],
+    [ "edge_shooting_star_columns", "structedge__shooting__star__columns.html", null ],
+    [ "EdgeRankCompare< Edge >", "structEdgeRankCompare.html", null ],
+    [ "EventHandler", "classEventHandler.html", [
+      [ "SIGINT_Handler", "classSIGINT__Handler.html", null ],
+      [ "SIGQUIT_Handler", "classSIGQUIT__Handler.html", null ]
+    ] ],
+    [ "found_goal< Edge >", "structfound__goal.html", null ],
+    [ "GraphDefinition", "classGraphDefinition.html", null ],
+    [ "GraphEdgeInfo", "structGraphEdgeInfo.html", null ],
+    [ "GraphNodeInfo", "structGraphNodeInfo.html", null ],
+    [ "matrix_cell", "structmatrix__cell.html", null ],
+    [ "MinHeap", "classMinHeap.html", null ],
+    [ "Neighborhoods", "classNeighborhoods.html", null ],
+    [ "order_columns", "structorder__columns.html", null ],
+    [ "PARENT_PATH", "structPARENT__PATH.html", null ],
+    [ "Path", "classPath.html", null ],
+    [ "path_element", "structpath__element.html", null ],
+    [ "path_element2", "structpath__element2.html", null ],
+    [ "path_element_t", "structpath__element__t.html", null ],
+    [ "path_fromto_t", "structpath__fromto__t.html", null ],
+    [ "PathElement", "structPathElement.html", null ],
+    [ "Pgr_base_graph< G >", "classPgr__base__graph.html", null ],
+    [ "pgr_cost3_t", "structpgr__cost3__t.html", null ],
+    [ "pgr_cost_t", "structpgr__cost__t.html", null ],
+    [ "Pgr_dijkstra< G >", "singletonPgr__dijkstra.html", null ],
+    [ "Pgr_dijkstra< G >::found_goals", "structPgr__dijkstra_1_1found__goals.html", null ],
+    [ "pgr_edge_t", "structpgr__edge__t.html", null ],
+    [ "Pgr_ksp< G >", "classPgr__ksp.html", null ],
+    [ "Pgr_ksp< G >::compPaths", "classPgr__ksp_1_1compPaths.html", null ],
+    [ "pgr_path_t", "structpgr__path__t.html", null ],
+    [ "Pgr_warshall< G >", "singletonPgr__warshall.html", null ],
+    [ "Pgr_warshall< G >::inf_plus< T >", "structPgr__warshall_1_1inf__plus.html", null ],
+    [ "Pickup", "structPickup.html", null ],
+    [ "point", "structpoint.html", null ],
+    [ "Point", "structPoint.html", null ],
+    [ "point_columns", "structpoint__columns.html", null ],
+    [ "restrict_columns", "structrestrict__columns.html", null ],
+    [ "restrict_struct", "structrestrict__struct.html", null ],
+    [ "Route", "classRoute.html", null ],
+    [ "Rule", "structRule.html", null ],
+    [ "SignalHandler", "classSignalHandler.html", null ],
+    [ "Solution", "classSolution.html", null ],
+    [ "statesave", "structstatesave.html", null ],
+    [ "std::exception", null, [
+      [ "AssertFailedException", "classAssertFailedException.html", null ],
+      [ "UserQuitException", "classUserQuitException.html", null ]
+    ] ],
+    [ "std::priority_queue< T >", null, [
+      [ "edge_queue< Edge, Container, Cmp >", "classedge__queue.html", null ]
+    ] ],
+    [ "unary_function", null, [
+      [ "boost::astar_heuristic< Graph, CostType >", "classboost_1_1astar__heuristic.html", [
+        [ "distance_heuristic< Graph, CostType >", "classdistance__heuristic.html", null ]
+      ] ]
+    ] ],
+    [ "StringOperation", "classStringOperation.html", null ],
+    [ "StringTokenizer", "classStringTokenizer.html", null ],
+    [ "tspstruct", "structtspstruct.html", null ],
+    [ "Vehicle", "structVehicle.html", null ],
+    [ "vehicle_columns", "structvehicle__columns.html", null ],
+    [ "Vertex", "structVertex.html", null ],
+    [ "vertex", "structvertex.html", null ],
+    [ "vertex_columns", "structvertex__columns.html", null ],
+    [ "vrp_cost_element", "structvrp__cost__element.html", null ],
+    [ "vrp_orders", "structvrp__orders.html", null ],
+    [ "vrp_result_element", "structvrp__result__element.html", null ],
+    [ "vrp_vehicles", "structvrp__vehicles.html", null ]
+];

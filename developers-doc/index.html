@@ -8,11 +8,24 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -24,7 +37,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.1</span>
+   &#160;<span id="projectnumber">2.2</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -40,6 +53,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -61,6 +75,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     </ul>
   </div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('index.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -80,191 +108,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">pgRouting Developer's Documentation </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
-Introduction</h1>
-<p>This documentation is focused on the developer of pgRouting.</p>
-<p>A developer might want to:</p>
+<div class="textblock"><h1><a class="anchor" id="usersDoc"></a>
+User's Documenation</h1>
 <ul>
-<li>Fix a bug</li>
-<li>Add new functionality</li>
-<li>Modify the documentation</li>
-<li>Add tests<ul>
-<li>regression</li>
-<li>benchmark</li>
+<li>Section <a class="el" href="dijkstraIndex.html">pgr_dijkstra - Shortest Path Dijkstra</a></li>
 </ul>
-</li>
+<h1><a class="anchor" id="developersDoc"></a>
+Developer's Documenation</h1>
+<ul>
+<li>Section <a class="el" href="installation.html">Installing pgRouting for developing</a></li>
 </ul>
-<p>The following steps are based on:</p><ul>
-<li><a href="https://github.com/pgRouting/pgrouting/wiki/My-Experience-with-GitHub">My Experience with GitHub</a> wirtten by Mohamed Zia</li>
-<li><a href="http://nvie.com/posts/a-successful-git-branching-model">Git Branch Model</a></li>
-</ul>
-<h1><a class="anchor" id="install_sec"></a>
-Installation for developing</h1>
-<p>Step by Step processing</p>
-<ol type="1">
-<li>Create a fork of the original pgRouting repository.<ul>
-<li>If you don't have an account in Github, please <a href="https://github.com/">create one</a><ul>
-<li>for purposes of this document the account name is: <code>acountName</code></li>
-</ul>
-</li>
-<li>Navigate to <a href="https://github.com/pgRouting/pgrouting">pgRouting repository</a></li>
-<li>In the top-right corner of the page, click Fork.</li>
-<li>Additional information can be found in <a href="https://help.github.com/articles/fork-a-repo">fork-a-repo</a></li>
-</ul>
-</li>
-<li>Now create a local clone of your above created fork<ul>
-<li><a href="https://help.github.com/articles/set-up-git">set up Git</a> in your computer.</li>
-<li>clone your repo <div class="fragment"><div class="line">git clone https:<span class="comment">//github.com/acountName/pgrouting pgrouting</span></div>
-</div><!-- fragment --></li>
-</ul>
-</li>
-<li>Go to your repo <div class="fragment"><div class="line">cd pgrouting</div>
-</div><!-- fragment --></li>
-<li>Seting the remote fetching connections<ul>
-<li>More on remotes](<a href="https://help.github.com/categories/managing-remotes/">https://help.github.com/categories/managing-remotes/</a>) .</li>
-<li>check the remote connection <div class="fragment"><div class="line">git remote -v</div>
-</div><!-- fragment --></li>
-<li>Add upstream remote (ussually the main repository) <div class="fragment"><div class="line">git remote add upstream https:<span class="comment">//github.com/pgRouting/pgrouting</span></div>
-</div><!-- fragment --></li>
-<li>check the remote connection <div class="fragment"><div class="line">git remote -v</div>
-</div><!-- fragment --></li>
-<li>Now you shoud have something like this: <div class="fragment"><div class="line">origin  https:<span class="comment">//github.com/acountName/pgrouting (fetch)</span></div>
-<div class="line">origin  https:<span class="comment">//github.com/acountName/pgrouting (push)</span></div>
-<div class="line">upstream        https:<span class="comment">//github.com/acountName/pgrouting (fetch)</span></div>
-<div class="line">upstream        https:<span class="comment">//github.com/acountName/pgrouting (push)</span></div>
-</div><!-- fragment --></li>
-</ul>
-</li>
-</ol>
-<h1><a class="anchor" id="branch_model"></a>
-Git Branching Model</h1>
-<p>We are making big efforts to start using the Git Branching Model So here are some basic rules about Master and develop:</p><ul>
-<li>Pull requests against Master are almost never be accepted.<ul>
-<li>For micro changes</li>
-<li>let us branch Master to a quick-fix branch</li>
-<li>Merge into the quick-fix</li>
-<li>We need to do some changes for the release numers etc...</li>
-<li>Finnaly we merge into Master</li>
-</ul>
-</li>
-<li>To accept a pull request into develop:<ul>
-<li>Its the same quick fix as for Master</li>
-<li>It has to pass the tests on travis and Jenkins (linux &amp; Windows)</li>
-<li>Documentation must be "up to date"</li>
-<li>Say that 99.9% is complete</li>
-</ul>
-</li>
-</ul>
-<p>The way we want to work:</p><ul>
-<li>If you want to work on a particular issue<ul>
-<li>Let us know creating an <a href="https://github.com/pgRouting/pgrouting/issues">issue</a></li>
-</ul>
-</li>
-<li>We will:<ul>
-<li>Create a branch derived from develop in the main repo that you can use in your fork</li>
-<li>We will make the branch be checked on Travis</li>
-<li>Your pull requests will be accepted (even with failures or incomplete)</li>
-<li>We can help you with your work (remember it can have failures)</li>
-<li>Once is stable we will start making tests on Jenkins</li>
-</ul>
-</li>
-<li>When the work is that 99.9% complete we can:<ul>
-<li>Merge into develop</li>
-</ul>
-</li>
-</ul>
-<p>For the rest of the document the following branch has being created in the main repository:</p>
-<p>dev-myFeature</p>
-<ol type="1">
-<li>To get a list of all the branches<ul>
-<li><div class="fragment"><div class="line">git branch -a</div>
-</div><!-- fragment --></li>
-</ul>
-</li>
-<li>To make sure you are in the correct branch<ul>
-<li><div class="fragment"><div class="line">git status</div>
-</div><!-- fragment --></li>
-</ul>
-</li>
-<li>When your forked before <code>dev-myFeature</code> was created<ul>
-<li>fetch the main repository <div class="fragment"><div class="line">git fetch upstream</div>
-</div><!-- fragment --></li>
-<li>get a list of your branches you should see the branch you are going to use: <div class="fragment"><div class="line">git branch -a</div>
-<div class="line">...</div>
-<div class="line">remotes/upstream/dev-myFeature</div>
-<div class="line">...</div>
-</div><!-- fragment --></li>
-<li>go to your your local copy of the branch and push <div class="fragment"><div class="line">git checkout dev-myFeature</div>
-<div class="line">git push --set-upstream origin dev-myFeature</div>
-</div><!-- fragment --></li>
-</ul>
-</li>
-<li>Try new ideas in local branches, commit and merge back when you feel its worth to keep:<ul>
-<li>branch to a local branch <div class="fragment"><div class="line">git checkout -b dev-myFeature-idea1</div>
-</div><!-- fragment --></li>
-<li>Work, work, work</li>
-<li>Always make sure you are in the branch you want to commit your work <div class="fragment"><div class="line">git status</div>
-</div><!-- fragment --></li>
-<li>add, delete, commit changes <div class="fragment"><div class="line">git add &lt;file&gt;</div>
-<div class="line">git remove &lt;file&gt;</div>
-<div class="line">git mv &lt;oldNmae&gt; &lt;newName&gt;</div>
-<div class="line">git commit -a -m <span class="stringliteral">&#39;&lt;commit message&gt;&#39;</span></div>
-</div><!-- fragment --></li>
-</ul>
-</li>
-<li>Merge back your ideas when you feel its worth to keep: <div class="fragment"><div class="line">git checkout dev-myFeature</div>
-<div class="line">git merge dev-myFeature-idea1</div>
-<div class="line">&lt;fix conflics <span class="keywordflow">if</span> any&gt;</div>
-</div><!-- fragment --></li>
-</ol>
-<h1><a class="anchor" id="upt_to_date"></a>
-Keep Fork Up to Date</h1>
-<ol type="1">
-<li>To keep your local repository up-to-date <div class="fragment"><div class="line">git fetch upstream</div>
-</div><!-- fragment --></li>
-<li>If you see changes in develop or master:<ul>
-<li>Commit your work</li>
-<li>Update the branch that changed <div class="fragment"><div class="line">git checkout develop</div>
-<div class="line">git pull upstream</div>
-</div><!-- fragment --></li>
-<li>Update your branch to include the change <div class="fragment"><div class="line">git checkout dev-myFeature</div>
-<div class="line">git merge develop</div>
-<div class="line">&lt;fix conflics <span class="keywordflow">if</span> any&gt;</div>
-</div><!-- fragment --></li>
-</ul>
-</li>
-<li>How to perform run.sh test?</li>
-<li>The difference between run.sh test and Travis test is that in the initial one you are testing for broken package locally. Travis is more robust testing and provides all combinations of postgreSQL and postGIS versions.</li>
-<li>Move to a directory and add a file cd /etc/label_graph/sql gedit project_node_and_split_edge.sql</li>
-<li>In case you want to rename the above newly created file mv project_node_and_split_edge project_node_and_split_edge.sql</li>
-<li>If git is already tracking that file (you have already done git add) then rename like this git mv project_node_and_split_edge project_node_and_split_edge.sql</li>
-<li>Now track all the untracked files. First check untracked files git status git add project_node_and_split_edge</li>
-<li>Check again if the untracked files are now getting tracked. git status</li>
-<li>Git commit (-a will keep a track of all the modifications done) git commit -a -m "Added a new file"</li>
-<li>Git push to push all the changes and new branch to your origin repo (not the remote, for remote u have to create a pull request and then the author of the remote will decide whether to merge or not) git push OR git push &ndash;set-upstream origin pgr_projectNodeAndSplitEdge</li>
-<li>How to use git pull?</li>
-<li>One can add a new function at the following places depending upon the usage /src/common/ OR /src</li>
-<li>If one is making a separate directory for his/her function then add the following files /src/myfunction/doc/myfunction.rst &mdash;&gt; for myfunction wiki /src/myfunction/sql/myfunction.sql &mdash;&gt; stored function code /src/myfunction/test/myfunction.data &mdash;&gt; sql to generate test data /src/myfunction/test/myfunction.test.sql &mdash;&gt; all possible myfunction usage /src/myfunction/test/test.conf &mdash;&gt; perl file to test the function /src/myfunction/CMakeLists.txt &mdash;&gt; CMake file</li>
-</ol>
-<ol type="1">
-<li>Add about your proposed function at package index.rst file /doc/index.rst</li>
-<li><p class="startli">One can also add the branch name into travis file so that travis test will start running the moment there will be a push operation. Simple edit ".travis.yml" file at the root directory by adding your branch name. branches: only:</p><ul>
-<li>master</li>
-<li>develop</li>
-<li>develop_2_1_0</li>
-<li>feature-travis</li>
-<li>dd-develop</li>
-<li>your-branch</li>
-</ul>
-<p class="startli">etc... </p>
-</li>
-</ol>
+<h1><a class="anchor" id="licences"></a>
+Documentation License</h1>
+<dl class="section copyright"><dt>Copyright</dt><dd><pre class="fragment">pgRouting Manual
+Copyright(c) pgRouting Contributors
+
+This documentation is licensed under a Creative Commons Attribution-Share
+Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</pre> </dd></dl>
 </div></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 31 2015 21:10:54 for pgRouting by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Mon Nov 2 2015 20:03:58 for pgRouting by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
+  </ul>
+</div>
 </body>
 </html>

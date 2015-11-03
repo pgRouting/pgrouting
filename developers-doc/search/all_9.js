@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['neighborhoods',['Neighborhoods',['../df/d4f/classNeighborhoods.html',1,'']]]
+  ['neighborhoods',['Neighborhoods',['../classNeighborhoods.html',1,'']]]
 ];

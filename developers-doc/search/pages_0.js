@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pgrouting_20developer_27s_20documentation',['pgRouting Developer&apos;s Documentation',['../index.html',1,'']]]
+  ['installing_20pgrouting_20for_20developing',['Installing pgRouting for developing',['../installation.html',1,'']]]
 ];

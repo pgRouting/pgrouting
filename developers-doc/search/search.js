@@ -11,7 +11,7 @@ var indexSectionsWithContent =
   1: "abcdefgimnoprstuv",
   2: "degpr",
   3: "cgmprsv",
-  4: "p"
+  4: "ip"
 };
 
 var indexSectionNames =
