@@ -5,7 +5,7 @@
 
 
 CREATE OR REPLACE FUNCTION pgr_nodeNetwork(edge_table text, tolerance double precision, 
-			id text default 'id', the_geom text default 'the_geom', table_ending text default 'noded') RETURNS text AS
+			id text default 'id', the_geom text default 'the_geom', table_ending text default 'noded', rows_where text DEFAULT NULL) RETURNS text AS
 $BODY$
 DECLARE
 	/*
@@ -35,7 +35,7 @@ DECLARE
 
 BEGIN
   raise notice 'PROCESSING:'; 
-  raise notice 'pgr_nodeNetwork(''%'',%,''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,table_ending;
+  raise notice 'pgr_nodeNetwork(''%'',%,''%'',''%'',''%'')',edge_table,tolerance,id,the_geom,table_ending;
   raise notice 'Performing checks, please wait .....';
   execute 'show client_min_messages' into debuglevel;
 
@@ -54,7 +54,6 @@ BEGIN
     intab=sname||'.'||tname;
     outname=tname||'_'||table_ending;
     outtab= sname||'.'||outname;
-    --rows_where = ' AND ('||rows_where||')'; 
   END;
 
   BEGIN 
@@ -166,8 +165,8 @@ BEGIN
 	       _pgr_startpoint(l2.' || quote_ident(n_geom) || ') as source,
 	       _pgr_endpoint(l2.' || quote_ident(n_geom) || ') as target,
                st_intersection(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ') as geom 
-        from ' || _pgr_quote_ident(intab) || ' l1 
-             join ' || _pgr_quote_ident(intab) || ' l2 
+        from (SELECT * FROM ' || _pgr_quote_ident(intab) || CASE WHEN length(rows_where) > 1 THEN ' WHERE (' || rows_where || ')' END || ') as l1 
+             join (SELECT * FROM ' || _pgr_quote_ident(intab) || CASE WHEN length(rows_where) > 1 THEN ' WHERE (' || rows_where || ')' END || ') as l2 
              on (st_dwithin(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ', ' || tolerance || '))'||
         'where l1.' || quote_ident(n_pkey) || ' <> l2.' || quote_ident(n_pkey)||' and 
 	st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false and 
