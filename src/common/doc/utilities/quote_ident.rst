@@ -13,8 +13,7 @@ pgr_quote_ident
 ===============================================================================
 
 .. index:: 
-	single: pgr_quote_ident(text)
-	module: common
+	single: pgr_quote_ident(text) -- deprecated
 
 Name
 -------------------------------------------------------------------------------
@@ -22,6 +21,9 @@ Name
 ``pgr_quote_ident`` — Quotes the input text to be used as an identifier in an SQL statement string.
 
 .. note:: This function is intended for the developer's aid. 
+
+.. warning:: This function is deprecated in 2.1
+             Use `_pgr_quote_ident` instead
 
 
 Synopsis

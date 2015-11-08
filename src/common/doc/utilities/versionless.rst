@@ -13,8 +13,7 @@ pgr_versionless
 ===============================================================================
 
 .. index:: 
-	single: pgr_versionless(text,text)
-	module: utilities
+	single: pgr_versionless(text,text) -- deprecated
 
 Name
 -------------------------------------------------------------------------------
@@ -22,6 +21,9 @@ Name
 ``pgr_versionless`` — Compare two version numbers.
 
 .. note:: This function is intended for the developer’s aid.
+
+.. warning:: This function is deprecated in 2.1.
+             Use `_pgr_versionless` instead
 
 Synopsis
 -------------------------------------------------------------------------------

@@ -34,4 +34,16 @@ sed s/psql:routweb-any-01.test:[0-9]*:// <routweb-any-01.aaa >routweb-any-01.res
 psql  -U postgres -h localhost -A -t -q -f topoweb-any-01.test pgr_test &> topoweb-any-01.aaa
 sed s/psql:topoweb-any-01.test:[0-9]*:// <topoweb-any-01.aaa >topoweb-any-01.rest
 
+psql  -U postgres -h localhost -A -t -q -f pgr_getColumnName_any_01.test pgr_test &> pgr_getColumnName_any_01.test.aaa
+sed s/psql:pgr_getColumnName_any_01.test:[0-9]*:// <pgr_getColumnName_any_01.test.aaa >pgr_getColumnName_any_01.rest
+
+psql  -U postgres -h localhost -A -t -q -f pgr_getColumnType_any_01.test pgr_test &> pgr_getColumnType_any_01.aaa
+sed s/psql:pgr_getColumnType_any_01.test:[0-9]*:// <pgr_getColumnType_any_01.aaa >pgr_getColumnType_any_01.rest
+
+psql  -U postgres -h localhost -A -t -q -f pgr_checkVertTab_any_01.test pgr_test &> pgr_checkVertTab_any_01.aaa
+sed s/psql:pgr_checkVertTab_any_01.test:[0-9]*:// <pgr_checkVertTab_any_01.aaa >pgr_checkVertTab_any_01.rest
+
+psql  -U postgres -h localhost -A -t -q -f incrementalCreateTopology_any_01.test  pgr_test &> incrementalCreateTopology_any_01.aaa
+sed s/psql:incrementalCreateTopology_any_01.test:[0-9]*:// <incrementalCreateTopology_any_01.aaa >incrementalCreateTopology_any_01.rest 
+
 rm *.aaa

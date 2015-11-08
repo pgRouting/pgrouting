@@ -1,0 +1,44 @@
+-- 0 edges tests
+-- directed graph
+-- undirected graph
+-- 1 edges tests
+-- edge doesnt have source
+4|2|5|1|1
+-- directed graph
+-- undirected graph
+-- edge doesnt have target
+3|3|4|-1|1
+-- directed graph
+-- undirected graph
+-- edge has both
+3|3|4|-1|1
+-- directed graph
+1|1|3|2|1|0
+2|2|2|-1|0|1
+1|1|3|3|2|1|0
+2|2|3|2|-1|0|1
+1|1|3|2|3|2|1|0
+2|2|3|2|2|-1|0|1
+1|1|2|3|2|1|0
+2|2|2|2|-1|0|1
+-- undirected graph
+1|1|3|2|1|0
+2|2|2|-1|0|1
+1|1|3|3|2|1|0
+2|2|3|2|-1|0|1
+1|1|3|2|3|2|1|0
+2|2|3|2|2|-1|0|1
+1|1|2|3|2|1|0
+2|2|2|2|-1|0|1
+-- edge has both
+3|3|4|-1|1
+-- directed graph
+-- undirected graph
+1|1|2|2|1|0
+2|2|3|-1|0|1
+1|1|2|2|2|1|0
+2|2|2|3|-1|0|1
+1|1|2|3|2|2|1|0
+2|2|2|3|3|-1|0|1
+1|1|3|2|2|1|0
+2|2|3|3|-1|0|1

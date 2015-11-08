@@ -15,9 +15,14 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  */
+
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
 
 #include <exception>
 #include <vector>
@@ -73,9 +78,9 @@ graph_add_edge(G &graph, E &e, int id, int source, int target, float8 cost)
   graph[e].cost = cost;
   graph[e].id = id;
 
-  typedef typename graph_traits<G>::vertex_descriptor Vertex;
-  Vertex s = vertex(source, graph);
-  Vertex t = vertex(target, graph);
+  // typedef typename graph_traits<G>::vertex_descriptor Vertex;
+  // Vertex s = vertex(source, graph);
+  // Vertex t = vertex(target, graph);
 }
 
 
@@ -94,7 +99,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
     typedef adjacency_list < listS, vecS, directedS, no_property, Vertex> graph_t;
     typedef graph_traits < graph_t >::vertex_descriptor vertex_descriptor;
     typedef graph_traits < graph_t >::edge_descriptor edge_descriptor;
-    typedef std::pair<int, int> Edge;
+    // typedef std::pair<int, int> Edge;
 
     // FIXME: compute this value
     const unsigned int num_nodes = ((directed && has_reverse_cost ? 2 : 1) * count) + 100;
@@ -240,9 +245,9 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
 
                 for (tie(out_i, out_end) = out_edges(v_src, graph); out_i != out_end; ++out_i)
                 {
-                    graph_traits < graph_t >::vertex_descriptor v, targ;
+                    graph_traits < graph_t >::vertex_descriptor targ; // v set but not used
                     e = *out_i;
-                    v = source(e, graph);
+                    // v = source(e, graph);
                     targ = target(e, graph);
 
                     if (targ == v_targ) {
@@ -302,7 +307,7 @@ try {
     typedef adjacency_list < listS, vecS, directedS, no_property, Vertex> graph_t;
     typedef graph_traits < graph_t >::vertex_descriptor vertex_descriptor;
     typedef graph_traits < graph_t >::edge_descriptor edge_descriptor;
-    typedef std::pair<int, int> Edge;
+    // typedef std::pair<int, int> Edge;
 
     // FIXME: compute this value
     const unsigned int num_nodes = ((directed && has_reverse_cost ? 2 : 1) * count) + 100;

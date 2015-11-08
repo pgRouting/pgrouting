@@ -39,7 +39,7 @@ pgRouting defines a few :ref:`custom data types <data_types>`:
 	:maxdepth: 1
 	:hidden:
 
-	../src/common/doc/types
+	../src/common/doc/types/index
 
 .. toctree::
 	:maxdepth: 1

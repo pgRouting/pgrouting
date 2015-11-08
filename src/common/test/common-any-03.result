@@ -1,0 +1,21 @@
+ NOTICE:  PROCESSING:
+ NOTICE:  pgr_createTopology('edges2',1e-05,'the_geom','eid','source','target','true')
+ NOTICE:  Performing checks, please wait .....
+ NOTICE:  Creating Topology, Please wait...
+ NOTICE:  -------------> TOPOLOGY CREATED FOR  23 edges
+ NOTICE:  Rows with NULL geometry or NULL id: 0
+ NOTICE:  Vertices table for table public.edges2 is: public.edges2_vertices_pgr
+ NOTICE:  ----------------------------------------------
+OK
+ NOTICE:  PROCESSING:
+ NOTICE:  pgr_analyzeOneway('edges2','{"",B,TF}','{"",B,FT}','{"",B,FT}','{"",B,TF}','dir','source','target',t)
+ NOTICE:  Analyzing graph for one way street errors.
+ NOTICE:  Analysis 25% complete ...
+ NOTICE:  Analysis 50% complete ...
+ NOTICE:  Analysis 75% complete ...
+ NOTICE:  Analysis 100% complete ...
+ NOTICE:  Found 3 potential problems in directionality
+OK
+17|||2|0|POINT(1 1.5)
+15|||2|0|POINT(2 0.5)
+14|||0|2|POINT(1 0.5)
