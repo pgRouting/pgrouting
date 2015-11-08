@@ -14,12 +14,13 @@ compiler:
 
 notifications:
   email:
-    on_failure: project@pgrouting.org
+    on_failure: vicky_vergara@hotmail.com
 
 branches:
   only:
     - master
     - develop
+    - develop-2.2-old-travis
 
 addons:
   postgresql: "9.2"
