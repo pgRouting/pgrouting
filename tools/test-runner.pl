@@ -148,7 +148,7 @@ File::Find::find({wanted => \&want_tests}, @testpath);
 
 die "Error: no test files found. Run this command from the top level pgRouting directory!\n" unless @cfgs;
 
-#createTestDB();
+createTestDB($DBNAME);
 
 $vpg = '' if ! $vpg;
 $vpgis = '' if ! $vpgis;
@@ -177,7 +177,7 @@ for my $c (@cfgs) {
     }
 }
 
-#dropTestDB();
+dropTestDB();
 
 print Data::Dumper->Dump([\%stats], ['stats']);
 
@@ -204,38 +204,45 @@ sub run_test {
     $res{comment} = $t->{comment} if $t->{comment};
     #t->{data}  referencing the key data of the data files
 
-    createTestDB($DBNAME);
+    my $singleDB = "____pgr___single_test___";
+    for my $testName (@{$t->{singleTest}}) {
+        createTestDB($singleDB);
+        for my $x (@{$t->{data}}) {
+           mysystem("$psql $connopts -A -t -q -f '$dir/$x' $singleDB >> $TMP2 2>\&1 ");
+        }
+        process_single_test($testName, $dir, $singleDB,\%res);
+        mysystem("dropdb $connopts $singleDB");
+    }
+
     for my $x (@{$t->{data}}) {
        mysystem("$psql $connopts -A -t -q -f '$dir/$x' $DBNAME >> $TMP2 2>\&1 ");
     }
 
     for my $x (@{$t->{tests}}) {
-        push(%res, process_single_test($x, $dir))
+        process_single_test($x, $dir,, $DBNAME, \%res)
     }
 
-    mysystem("dropdb $connopts $DBNAME");
     return \%res;
 }
 
 sub process_single_test{
     my $x = shift;
     my $dir = shift;
-    my %res = ();
+    my $database = shift;
+    my $res = shift;
         #each tests will use clean data
-
-
 
         print "Processing test: $x\n";
         my $t0 = [gettimeofday];
         #TIN = test_input_file
         open(TIN, "$dir/$x.test.sql") || do {
-            $res{"$dir/$x.test.sql"} = "FAILED: could not open '$dir/$x.test.sql' : $!";
+            $res->{"$dir/$x.test.sql"} = "FAILED: could not open '$dir/$x.test.sql' : $!";
             $stats{z_fail}++;
             next;
         };
         #reason of opening conection is because the set client_mim_messages to warning;
-        open(PSQL, "|$psql $connopts -A -t -q $DBNAME > $TMP 2>\&1 ") || do {
-            $res{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
+        open(PSQL, "|$psql $connopts -A -t -q $database > $TMP 2>\&1 ") || do {
+            $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
             $stats{z_fail}++;
             next;
         };
@@ -259,7 +266,7 @@ sub process_single_test{
             $dfile2 = $TMP;
         }
         if (! -f "$dir/$x.result") {
-            $res{"$dir/$x.test.sql"} = "\nFAILED: result file missing : $!";
+            $res->{"$dir/$x.test.sql"} = "\nFAILED: result file missing : $!";
             $stats{z_fail}++;            
             next;
         }
@@ -272,7 +279,7 @@ sub process_single_test{
         #looks for removing leading blanks and trailing blanks
         $r =~ s/^\s*|\s*$//g;
         if ($r =~ /connection to server was lost/) {
-            $res{"$dir/$x.test.sql"} = "CRASHED SERVER: $r";
+            $res->{"$dir/$x.test.sql"} = "CRASHED SERVER: $r";
             $stats{z_crash}++;
             # allow the server some time to recover from the crash
             warn "CRASHED SERVER: '$dir/$x.test.sql', sleeping 5 ...\n";
@@ -280,16 +287,14 @@ sub process_single_test{
         }
         #if the diff has 0 length then everything was the same, so here we detect changes
         elsif (length($r)) {
-            $res{"$dir/$x.test.sql"} = "FAILED: $r";
+            $res->{"$dir/$x.test.sql"} = "FAILED: $r";
             $stats{z_fail}++;
         }
         else {
-            $res{"$dir/$x.test.sql"} = "Passed";
+            $res->{"$dir/$x.test.sql"} = "Passed";
             $stats{z_pass}++;
         }
         print "    test run time: " . tv_interval($t0, [gettimeofday]) . "\n";
-    return \%res;
-
 }
 
 sub createTestDB {
