@@ -51,8 +51,8 @@ extern "C" {
 
 int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
                        int64_t  start_vertex, int64_t  end_vertex,
-                       int no_paths, bool has_reverse_cost, bool directedFlag,
-                       pgr_path_element3_t **ksp_path, int *path_count,
+                       int k, bool directedFlag, bool heap_paths,
+                       General_path_element_t **ksp_path, size_t *path_count,
                        char ** err_msg) {
     try {
         // in c code this should have been checked:
@@ -62,7 +62,7 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
         std::ostringstream log;
 
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const int initial_size = 1;
+        const int initial_size = total_tuples;
 
         std::deque< Path > paths;
         typedef boost::adjacency_list < boost::vecS, boost::vecS,
@@ -72,9 +72,20 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
             boost::bidirectionalS,
             boost_vertex_t, boost_edge_t > DirectedGraph;
 
-        Pgr_ksp < DirectedGraph > digraph(gType, initial_size);
-        Pgr_ksp < UndirectedGraph > undigraph(gType, initial_size);
 
+    if (directedFlag) {
+      Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+      Pgr_ksp< Pgr_base_graph< DirectedGraph > > fn_yen;
+      digraph.graph_insert_data(data_edges, initial_size);
+      paths = fn_yen.Yen(digraph, start_vertex, end_vertex, k, heap_paths);
+    } else {
+      Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+      Pgr_ksp< Pgr_base_graph< UndirectedGraph > > fn_yen;
+      undigraph.graph_insert_data(data_edges, initial_size);
+      paths = fn_yen.Yen(undigraph, start_vertex, end_vertex, k, heap_paths);
+    }
+
+#if 0
         if (directedFlag) {
             digraph.initialize_graph(data_edges, total_tuples);
             paths = digraph.Yen(start_vertex, end_vertex, no_paths);
@@ -83,20 +94,20 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
             undigraph.initialize_graph(data_edges, total_tuples);
             paths = undigraph.Yen(start_vertex, end_vertex, no_paths);
         }
-
+#endif
 
         int count(count_tuples(paths));
 
         if (count == 0) {
             *err_msg = strdup(
-               "NOTICE: No path found between Starting and Ending vertices");
-            *ksp_path = noPathFound3(-1, path_count, (*ksp_path));
+               "NOTICE: No paths found between Starting and Ending vertices");
+            *ksp_path = noPathFound(path_count, (*ksp_path));
             return 0;
         }
 
         // get the space required to store all the paths
         *ksp_path = NULL;
-        *ksp_path = pgr_get_memory3(count, (*ksp_path));
+        *ksp_path = get_memory(count, (*ksp_path));
 
         int sequence = 0;
         int route_id = 0;

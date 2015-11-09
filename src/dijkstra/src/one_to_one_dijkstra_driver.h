@@ -1,7 +1,12 @@
 /*PGR
+File: one_to_one_dijkstra.c
 
+Generated with Template by:
+Copyright (c) 2015 pgRouting developers
+
+Function's developer: 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,11 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
 
-#ifndef SRC_KSP_SRC_KSP_DRIVER_H_
-#define SRC_KSP_SRC_KSP_DRIVER_H_
-
-// #include <stdarg.h>
-// #include <stdio.h>
+#ifndef SRC_ONE_TO_ONE_DIJKSTRA_SRC_ONE_TO_ONE_DIJKSTRA_DRIVER_H_
+#define SRC_ONE_TO_ONE_DIJKSTRA_SRC_ONE_TO_ONE_DIJKSTRA_DRIVER_H_
 
 #include "./../../common/src/pgr_types.h"
 
@@ -31,14 +33,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-int  do_pgr_ksp(pgr_edge_t  * edges, int64_t total_tuples,
-                      int64_t  start_vertex, int64_t end_vertex,
-                      int no_paths, bool directed, bool heap_paths,
-                      General_path_element_t **ksp_path, size_t *path_count,
-                      char ** err_msg);
+//  CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, start_vids BIGINT, end_vid BIGINT, directed BOOLEAN default true,
+void
+do_pgr_one_to_one_dijkstra(
+        pgr_edge_t  *data_edges,
+        size_t total_tuples,
+        int64_t start_vid,
+        int64_t end_vid,
+        bool directed,
+        General_path_element_t **return_tuples,
+        size_t *return_count,
+        char ** err_msg);
+
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // SRC_KSP_SRC_KSP_DRIVER_H_
+#endif  // SRC_ONE_TO_ONE_DIJKSTRA_SRC_ONE_TO_ONE_DIJKSTRA_DRIVER_H_

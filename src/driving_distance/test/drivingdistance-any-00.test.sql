@@ -1,6 +1,8 @@
 -- each ring will increas by 4 because it is on a square grid
 -- to find the start node number
 -- select *, st_distance(st_makepoint(25,25), the_geom) from vertices_tmp where st_dwithin(st_makepoint(25,25), the_geom, 1.0) order by st_distance(st_makepoint(25,25), the_geom) limit 1;
+set client_min_messages to NOTICE;
+
 
 
 --this are equivalent

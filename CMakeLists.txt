@@ -49,6 +49,9 @@ string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\4" PGROUTING_GIT_BRA
 
 set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_GIT_HASH} ${PGROUTING_GIT_BRANCH}")
 set(PGROUTING_VERSION_REVISION_HASH "${PGROUTING_GIT_HASH}")
+set(PGROUTING_LIB_NAME "pgrouting--${PGROUTING_VERSION_STRING}")
+set(PGROUTING_LIBRARY_NAME "libpgrouting--${PGROUTING_VERSION_STRING}")
+
 
 message(STATUS "CMAKE_VERSION: ${CMAKE_VERSION}")
 message(STATUS "PGROUTING_GIT_TAG: ${PGROUTING_GIT_TAG}")
@@ -173,8 +176,8 @@ add_subdirectory(doc)
 
 #include directories: files in alphabetical order
 set(PGROUTING_INCLUDE_DIRECTORIES
-    ${PGROUTING_SOURCE_DIR}/src/apsp_johnson/src
-    ${PGROUTING_SOURCE_DIR}/src/apsp_warshall/src
+    ${PGROUTING_SOURCE_DIR}/src/johnson/src
+    ${PGROUTING_SOURCE_DIR}/src/floydWarshall/src
     ${PGROUTING_SOURCE_DIR}/src/astar/src
     ${PGROUTING_SOURCE_DIR}/src/bd_astar/src
     ${PGROUTING_SOURCE_DIR}/src/bd_dijkstra/src
@@ -258,10 +261,10 @@ endif(APPLE)
 LINK_LIBRARIES(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
 
 # libraries listed in alphabetical order.
-add_library(routing-2.2
+add_library(${PGROUTING_LIB_NAME}
     ${LIBRARY_MODE_TARGET}
-    $<TARGET_OBJECTS:apsp_johnson>
-    $<TARGET_OBJECTS:apsp_warshall>
+    $<TARGET_OBJECTS:johnson>
+    $<TARGET_OBJECTS:floydWarshall>
     $<TARGET_OBJECTS:astar>
     $<TARGET_OBJECTS:bd_astar>
     $<TARGET_OBJECTS:bd_dijkstra>
@@ -279,7 +282,8 @@ add_library(routing-2.2
 #    $<TARGET_OBJECTS:shooting_star>
     )
 
-install(TARGETS routing-2.2 DESTINATION ${LIBRARY_INSTALL_PATH})
+#install(TARGETS routing-2.2 DESTINATION ${LIBRARY_INSTALL_PATH})
+install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${LIBRARY_INSTALL_PATH})
 
 #add_library(routing_vrp
 #add_library(routing_bd
@@ -357,13 +361,16 @@ if(UNIX)
 else(UNIX)
     file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.dll")
 endif(UNIX)
+ 
+ 
+ 
 
-message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
 
-install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
+message(STATUS "LIBS_TO_INSTALL=${PGROUTING_LIBRARY_NAME}")
+
 
 install(FILES
-    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
+    "${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIB_NAME}.sql"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
     ${VERSION_UPDATE_FILES}
 #    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"

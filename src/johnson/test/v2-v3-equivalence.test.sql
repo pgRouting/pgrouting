@@ -15,7 +15,7 @@ SELECT * INTO TEMP query1
 
 SELECT count(*) = 69 FROM query1 ;
 SELECT count(*) = :vertices_cant  FROM query1 WHERE agg_cost = 0;
-SELECT count(*) = :vertices_cant  FROM query1 WHERE from_vid = to_vid;
+SELECT count(*) = :vertices_cant  FROM query1 WHERE start_vid = end_vid;
 
 
 --\echo directed, both costs

@@ -20,28 +20,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vid bigint, end_vid bigint, directed boolean, has_rcost boolean,
+CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vid bigint, end_vid bigint, directed boolean,
   OUT seq integer, OUT path_seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
- '$libdir/librouting-2.2', 'shortest_path'
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_one_dijkstra'
     LANGUAGE c IMMUTABLE STRICT;
 
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vid bigint, end_vids anyarray, directed boolean, has_rcost boolean,
+CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vid bigint, end_vids anyarray, directed boolean default true,
   OUT seq integer, OUT path_seq integer, OUT end_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
- '$libdir/librouting-2.2', 'dijkstra_1_to_many'
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_many_dijkstra'
     LANGUAGE c IMMUTABLE STRICT;
 
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vids anyarray, end_vids bigint, directed boolean, has_rcost boolean,
+CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vids anyarray, end_vid bigint, directed boolean default true,
   OUT seq integer, OUT path_seq integer, OUT start_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
- '$libdir/librouting-2.2', 'dijkstra_many_to_1'
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'many_to_one_dijkstra'
     LANGUAGE c IMMUTABLE STRICT;
 
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vids anyarray, end_vids anyarray, directed boolean, has_rcost boolean,
+CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vids anyarray, end_vids anyarray, directed boolean default true,
   OUT seq integer, OUT path_seq integer, OUT start_vid bigint, OUT end_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
- '$libdir/librouting-2.2', 'dijkstra_many_to_many'
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'many_to_many_dijkstra'
     LANGUAGE c IMMUTABLE STRICT;
 
 -- V2 signature
@@ -50,17 +50,20 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vid bigint, end_vi
   $BODY$
   DECLARE
   has_reverse boolean;
+  sql TEXT;
   BEGIN
-      -- raise notice 'This function signature will no longer be supported in V3';
+      RAISE NOTICE 'Deprecated function';
       has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
+      sql = edges_sql;
       if (has_reverse != has_rcost) then
-         if (has_reverse) then -- raise NOTICE 'has_rcost set to false but reverse_cost column found, Ignoring';
+         if (has_reverse) then
+           sql = 'SELECT id, source, target, cost FROM (' || edges_sql || ') a'; 
          else raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
          end if;
       end if;
 
       return query SELECT seq-1 as seq, node::integer as id1, edge::integer as id2, cost
-                FROM _pgr_dijkstra(edges_sql, start_vid, end_vid, directed, has_rcost);
+                FROM _pgr_dijkstra(sql, start_vid, end_vid, directed);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE
@@ -68,18 +71,15 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vid bigint, end_vi
   ROWS 1000;
 
 
--- V3 signature
+-- V3 signature 1 to 1
 CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vid bigint, end_vid bigint,
   OUT seq integer,  OUT path_seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
-  has_rcost boolean;
   BEGIN
-      -- raise notice 'This function signature belongs to  V3';
-      has_rcost =_pgr_parameter_check('dijkstra', edges_sql, true);
-      return query SELECT *
-         FROM _pgr_dijkstra(edges_sql, start_vid, end_vid, true, has_rcost);
+    RETURN query 
+      SELECT * FROM _pgr_dijkstra(edges_sql, start_vid, end_vid, true);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE
@@ -87,73 +87,18 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vid bigint, end_vi
   ROWS 1000;
 
 
--- V3 signature
+-- V3 signature 1 to 1
 CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vid bigint, end_vid bigint, directed boolean,
   OUT seq integer,  OUT path_seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
   $BODY$
   DECLARE
-  has_rcost boolean;
   BEGIN
-      -- raise notice 'This function signature belongs to  V3';
-      has_rcost =_pgr_parameter_check('dijkstra', edges_sql, true);
       return query SELECT *
-         FROM _pgr_dijkstra(edges_sql, start_vid, end_vid, directed, has_rcost) a;
+         FROM _pgr_dijkstra(edges_sql, start_vid, end_vid, directed) a;
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100
   ROWS 1000;
 
--- V3 signature for 1 to many
-CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vid bigint, end_vids anyarray, directed boolean default true,
-  OUT seq integer, OUT path_seq integer, OUT end_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
-  RETURNS SETOF RECORD AS
-  $BODY$
-  DECLARE
-  has_rcost boolean;
-  BEGIN
-      has_rcost =_pgr_parameter_check('dijkstra', edges_sql, true);
-      return query SELECT *
-         FROM _pgr_dijkstra(edges_sql, start_vid, end_vids, directed, has_rcost);
-  END
-  $BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100
-  ROWS 1000;
-
-
--- V3 signature for many to 1
-CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vids anyarray, end_vid bigint, directed boolean default true,
-  OUT seq integer, OUT path_seq integer, OUT start_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
-  RETURNS SETOF RECORD AS
-  $BODY$
-  DECLARE
-  has_rcost boolean;
-  BEGIN
-      has_rcost =_pgr_parameter_check('dijkstra', edges_sql, true);
-      return query SELECT * 
-         FROM _pgr_dijkstra(edges_sql, start_vids, end_vid, directed, has_rcost);
-  END
-  $BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100
-  ROWS 1000;
-
-
--- V3 signature for many to many
-CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vids anyarray, end_vids anyarray, directed boolean default true,
-  OUT seq integer, OUT path_seq integer, OUT start_vid bigint, OUT end_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
-  RETURNS SETOF RECORD AS
-  $BODY$
-  DECLARE
-  has_rcost boolean;
-  BEGIN
-      has_rcost =_pgr_parameter_check('dijkstra', edges_sql, true);
-      return query SELECT * 
-         FROM _pgr_dijkstra(edges_sql, start_vids, end_vids, directed, has_rcost);
-  END
-  $BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100
-  ROWS 1000;

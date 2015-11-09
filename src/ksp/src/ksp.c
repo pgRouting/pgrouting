@@ -34,19 +34,58 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
-#include "./ksp.h"
 #include "./ksp_driver.h"
 
-#ifndef _MSC_VER
-Datum kshortest_path(PG_FUNCTION_ARGS);
-#else  // _MSC_VER
-PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
-#endif  // _MSC_VER
 
 
-#ifndef PG_MODULE_MAGIC
-PG_MODULE_MAGIC;
-#endif
+
+static
+void compute(char* sql, int64_t start_vertex,
+         int64_t end_vertex, int k,
+         bool directed,
+         bool heap_paths,
+         General_path_element_t **ksp_path, size_t *path_count) {
+  pgr_SPI_connect();
+  pgr_edge_t *edges = NULL;
+  int64_t total_tuples = 0;
+
+  char *err_msg = (char *)"";
+  int ret = -1;
+
+  if (start_vertex == end_vertex) {
+    (*path_count) = 0;
+    *ksp_path = NULL;
+    pgr_SPI_finish();
+    return;
+  }
+
+  PGR_DBG("Load data");
+  pgr_get_data_5_columns(sql, &edges, &total_tuples);
+
+  PGR_DBG("Total %ld tuples in query:", total_tuples);
+  PGR_DBG("Calling do_pgr_ksp\n");
+  PGR_DBG("heap_paths = %i\n", heap_paths);
+
+  ret = do_pgr_ksp(edges, total_tuples,
+            start_vertex, end_vertex,
+            k, directed, heap_paths,
+            ksp_path, path_count, &err_msg);
+
+  PGR_DBG("total tuples found %ld\n", *path_count);
+  PGR_DBG("Exist Status = %i\n", ret);
+  PGR_DBG("Returned message = %s\n", err_msg);
+
+
+
+  if (ret < 0) {
+      ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
+      errmsg("Error computing paths: %s \n", err_msg)));
+    }
+
+  pfree(edges);
+  pgr_SPI_finish();
+}
+
 
 PG_FUNCTION_INFO_V1(kshortest_path);
 #ifndef _MSC_VER
@@ -56,16 +95,16 @@ PGDLLEXPORT Datum
 #endif  // _MSC_VER
 kshortest_path(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
-  int                  call_cntr;
-  int                  max_calls;
+  size_t               call_cntr;
+  size_t               max_calls;
   TupleDesc            tuple_desc;
-  pgr_path_element3_t      *path;
+  General_path_element_t      *path;
 //  void * toDel;
 
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
-      int path_count = 0;
+      size_t path_count = 0;
       path = NULL;
 
       /* create a function context for cross-call persistence */
@@ -75,19 +114,19 @@ kshortest_path(PG_FUNCTION_ARGS) {
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
+      // CREATE OR REPLACE FUNCTION _pgr_ksp(sql text, start_vid bigint, end_vid bigint, k integer, directed boolean, heap_paths boolean...
       compute(
               pgr_text2char(PG_GETARG_TEXT_P(0)), /* SQL  */
-              PG_GETARG_INT64(1),   /* source id */
-              PG_GETARG_INT64(2),   /* target_id */
-              PG_GETARG_INT32(3),   /* number of paths */
-              PG_GETARG_BOOL(4),    /* has reverse_cost */
-              PG_GETARG_BOOL(5),    /* directed */
+              PG_GETARG_INT64(1),   /* start_vid */
+              PG_GETARG_INT64(2),   /* end_vid */
+              PG_GETARG_INT32(3),   /* k */
+              PG_GETARG_BOOL(4),    /* directed */
+              PG_GETARG_BOOL(5),    /* heap_paths */
               &path,
               &path_count);
 //      toDel = path;
 
-      PGR_DBG("Total number of tuples to be returned %i ", path_count);
-      PGR_DBG("Return value %i", ret);
+      PGR_DBG("Total number of tuples to be returned %ld \n", path_count);
 
       /* total number of tuples to be returned */
       funcctx->max_calls = path_count;
@@ -98,7 +137,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
-                            "that cannot accept type record")));
+                            "that cannot accept type record\n")));
 
      // funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("__pgr_2i3b2f"));
       funcctx->tuple_desc = tuple_desc;
@@ -112,9 +151,10 @@ kshortest_path(PG_FUNCTION_ARGS) {
   call_cntr = funcctx->call_cntr;
   max_calls = funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
-  path = (pgr_path_element3_t*) funcctx->user_fctx;
+  path = (General_path_element_t*) funcctx->user_fctx;
 
   if (call_cntr < max_calls) {   /* do when there is more left to send */
+      PGR_DBG("returning %ld \n", call_cntr);
       HeapTuple    tuple;
       Datum        result;
      /* //Datum values[4];
@@ -158,63 +198,9 @@ kshortest_path(PG_FUNCTION_ARGS) {
 
       SRF_RETURN_NEXT(funcctx, result);
   } else {   /* do when there is no more left */
-    if (path == (pgr_path_element3_t *)NULL) free(path);
+    if (path == (General_path_element_t *) NULL) free(path);
     SRF_RETURN_DONE(funcctx);
   }
-}
-
-
-
-int compute(char* sql, int64_t start_vertex,
-         int64_t end_vertex, int no_paths,
-         bool has_rcost, bool directed,
-         pgr_path_element3_t **ksp_path, int *path_count) {
-  int SPIcode = 0;
-  pgr_edge_t *edges = NULL;
-  int64_t total_tuples = 0;
-  int readCode = 0;
-
-  char *err_msg = (char *)"";
-  int ret = -1;
-
-  if (start_vertex == end_vertex) {
-    (*path_count) = 0;
-    *ksp_path = NULL;
-    return  0;
-  }
-
-  PGR_DBG("Load data");
-  readCode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
-               start_vertex, end_vertex);
-  if (readCode == -1) {
-    (*path_count) = 0;
-    *ksp_path = NULL;
-    pfree(edges);
-    PGR_DBG("Source or vertex not found from Load data\n");
-    return pgr_finish(SPIcode, ret);
-  }
-
-  PGR_DBG("Total %ld tuples in query:", total_tuples);
-  PGR_DBG("Calling do_pgr_ksp\n");
-
-  ret = do_pgr_ksp(edges, total_tuples,
-            start_vertex, end_vertex,
-                       no_paths, has_rcost, directed,
-                       ksp_path, path_count, &err_msg);
-
-  PGR_DBG("total tuples found %i\n", *path_count);
-  PGR_DBG("Exist Status = %i\n", ret);
-  PGR_DBG("Returned message = %s\n", err_msg);
-
-
-
-  if (ret < 0) {
-      ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
-      errmsg("Error computing path: %s", err_msg)));
-    }
-
-  pfree(edges);
-  return pgr_finish(SPIcode, ret);
 }
 
 

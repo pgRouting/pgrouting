@@ -1,3 +1,3 @@
-ADD_LIBRARY(warshall OBJECT 
+ADD_LIBRARY(floydWarshall OBJECT 
     floydWarshall.c 
     floydWarshall_driver.cpp)

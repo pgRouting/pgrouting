@@ -15,7 +15,7 @@ SELECT * INTO TEMP query1
 
 SELECT count(*) = 69 FROM query1 ;
 SELECT count(*) = :vertices_cant  FROM query1 WHERE agg_cost = 0;
-SELECT count(*) = :vertices_cant  FROM query1 WHERE from_vid = to_vid;
+SELECT count(*) = :vertices_cant  FROM query1 WHERE start_vid = end_vid;
 
 
 --\echo directed, both costs
@@ -31,7 +31,7 @@ SELECT * INTO TEMP query2
 
 SELECT count(*) = 177 FROM query2 ;
 SELECT count(*) = :vertices_cant  FROM query2 WHERE agg_cost = 0;
-SELECT count(*) = :vertices_cant  FROM query2 WHERE from_vid = to_vid;
+SELECT count(*) = :vertices_cant  FROM query2 WHERE start_vid = end_vid;
 
 
 --\echo undirected, only cost
@@ -45,7 +45,7 @@ SELECT * INTO TEMP query3
 
 SELECT count(*) = 177 FROM query3 ;
 SELECT count(*) = :vertices_cant  FROM query3 WHERE agg_cost = 0;
-SELECT count(*) = :vertices_cant  FROM query3 WHERE from_vid = to_vid;
+SELECT count(*) = :vertices_cant  FROM query3 WHERE start_vid = end_vid;
 
 --\echo undirected, both costs
 
@@ -59,5 +59,5 @@ SELECT * INTO TEMP query4
 
 SELECT count(*) = 177 FROM query4 ;
 SELECT count(*) = :vertices_cant  FROM query4 WHERE agg_cost = 0;
-SELECT count(*) = :vertices_cant  FROM query4 WHERE from_vid = to_vid;
+SELECT count(*) = :vertices_cant  FROM query4 WHERE start_vid = end_vid;
 

@@ -111,12 +111,12 @@ Routing functions
 
 :ref:`routing_functions`
 
-  -  :ref:`pgr_apspJohnson <pgr_apsp_johnson>`- All Pairs Shortest Path, Johnson’s Algorithm
-  -  :ref:`pgr_apspWarshall<pgr_apsp_warshall>` - All Pairs Shortest Path, Floyd-Warshall Algorithm
+  -  :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
+  -  :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
   -  :ref:`pgr_astar<pgr_astar>` - Shortest Path A*
   -  :ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
   -  :ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path
-  -  :ref:`pgr_dijkstra<pgr_dijkstra>` - Shortest Path Dijkstra
+  -  :ref:`pgr_dijkstra<pgr_dijkstra>` - Dijkstra family functions
   -  :ref:`pgr_driving_distance<pgr_driving_distance>` - Driving Distance
   -  :ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path Dijkstra
   -  :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
@@ -126,6 +126,8 @@ Routing functions
 .. toctree::
 	:hidden:
 
+        ../src/johnson/doc/johnson.rst
+        ../src/floydWarshall/doc/floydWarshall.rst
 	../src/index
 
 *******************************************************************************

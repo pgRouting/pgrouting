@@ -32,7 +32,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <limits>
 
-#include "postgres.h"
 #include "./pgr_types.h"
 
 /*! \brief boost::graph simplified to pgRouting needs
@@ -79,6 +78,15 @@ usage by inheritance:
 
 */
 
+typedef typename boost::adjacency_list < boost::vecS, boost::vecS,
+            boost::undirectedS,
+            boost_vertex_t, boost_edge_t > UndirectedGraph;
+
+typedef typename boost::adjacency_list < boost::vecS, boost::vecS,
+            boost::bidirectionalS,
+            boost_vertex_t, boost_edge_t > DirectedGraph;
+
+
 template <class G>
 class Pgr_base_graph {
  public:
@@ -120,7 +128,7 @@ class Pgr_base_graph {
   //! @name The Graph
   //@{
   G graph;                //!< The graph
-  int64_t numb_vertices;  //!< number of vertices
+  size_t m_num_vertices;  //!< number of vertices
   graphType m_gType;      //!< type (DIRECTED or UNDIRECTED)
   //@}
 
@@ -136,12 +144,14 @@ class Pgr_base_graph {
   std::deque<pgr_edge_t> removed_edges;
   //@}
 
+#if 0
   //! @name Used by dijkstra
   //@{
   std::vector<V> predecessors;
   std::vector<float8> distances;
   std::deque<V> nodesInDistance;
   //@}
+#endif
 
   //! @name The Graph
   //@{
@@ -152,7 +162,7 @@ class Pgr_base_graph {
   */
   explicit Pgr_base_graph< G >(graphType gtype, const int initial_size)
      : graph(initial_size),
-       numb_vertices(0),
+       m_num_vertices(0),
        m_gType(gtype)
      {}
 
@@ -161,6 +171,7 @@ class Pgr_base_graph {
       for (unsigned int i = 0; i < count; ++i) {
          graph_add_edge(data_edges[i]);
       }
+      adjust_vertices();
       for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i )
          graph[i].id = gVertices_map.find(i)->second;
   }
@@ -263,11 +274,12 @@ class Pgr_base_graph {
 
   //! @name only for stand by program
   //@{
-  void print_graph() {
+  void print_graph() const {
         EO_i out, out_end;
         V_i vi;
 
         for (vi = vertices(graph).first; vi != vertices(graph).second; ++vi) {
+            if ((*vi) >= m_num_vertices) continue;
             std::cout << (*vi) << " out_edges(" << graph[(*vi)].id << "):";
             for (boost::tie(out, out_end) = out_edges(*vi, graph);
               out != out_end; ++out) {
@@ -277,15 +289,11 @@ class Pgr_base_graph {
             }
             std::cout << std::endl;
         }
-        std::cout << "\n i, distance, predecesor\n"; 
-        for (unsigned int i = 0; i < distances.size(); i++) {
-            std::cout << i+1 << ", " << distances[i] << ", " << predecessors[i] << "\n";
-        }
     }
   //@}
 
 
-  bool get_gVertex(int64_t vertex_id, V &gVertex) {
+  bool get_gVertex(int64_t vertex_id, V &gVertex) const {
       LI vertex_ptr = vertices_map.find(vertex_id);
 
       if (vertex_ptr == vertices_map.end())
@@ -295,100 +303,9 @@ class Pgr_base_graph {
       return true;
   }
 
-
  public:
-    void get_nodesInDistance(Path &path, V source, float8 distance) {
-      path.clear();
-      int seq = 0;
-      float8 cost;
-      int64_t edge_id;
-      for (V i = 0; i < distances.size(); ++i) {
-        if (distances[i] <= distance ) {
-          cost = distances[i] - distances[predecessors[i]];
-          edge_id = get_edge_id(graph, predecessors[i], i, cost);
-          path.push_back(seq, graph[source].id, graph[source].id, graph[i].id, edge_id, cost, distances[i]);
-          seq++;
-        }
-      }
-    }
-
-    void get_path(std::deque< Path > &paths, std::set< V > sources, V &target) const{
-      // used with multiple sources
-      Path path;
-      for (const auto source: sources) {
-        path.clear();
-        get_path(path, source, target);
-        paths.push_back(path);
-      }
-    }
-
-
-    void get_path(std::deque< Path > &paths, V source, std::set< V > &targets) {
-      // used when multiple goals
-      Path path;
-      typename std::set< V >::iterator s_it;
-      for (s_it = targets.begin(); s_it != targets.end(); ++s_it) {
-        path.clear();
-        get_path(path, source, *s_it);
-        paths.push_back(path);
-      }
-    }
-
-    void get_path(Path &path, V source, V target) {
-      // backup of the target
-      V target_back = target;
-      uint64_t from(graph[source].id);
-      uint64_t to(graph[target].id);
-
-      // no path was found
-      if (target == predecessors[target]) {
-          path.clear();
-          return;
-      }
-
-      // findout how large is the path
-      int64_t result_size = 1;
-      while (target != source) {
-          if (target == predecessors[target]) break;
-          result_size++;
-          target = predecessors[target];
-      }
-
-      // recover the target
-      target = target_back;
-
-      // variables that are going to be stored
-      int64_t vertex_id;
-      int64_t edge_id;
-      float8 cost;
-
-      // working from the last to the beginning
-
-      // initialize the sequence
-      int seq = result_size;
-      // the last stop is the target
-      path.push_front(seq, from, to, graph[target].id, -1, 0,  distances[target]);
-
-      while (target != source) {
-        // we are done when the predecesor of the target is the target
-        if (target == predecessors[target]) break;
-          // values to be inserted in the path
-          --seq;
-          cost = distances[target] - distances[predecessors[target]];
-          vertex_id = graph[predecessors[target]].id;
-          edge_id = get_edge_id(graph, predecessors[target], target, cost);
-
-          path.push_front(seq, from, to, vertex_id, edge_id, cost, distances[target] - cost);
-          target = predecessors[target];
-      }
-      return;
-    }
-
-
-
- private:
   int64_t
-  get_edge_id(const G &graph, V from, V to, float8 &distance) {
+  get_edge_id(V from, V to, float8 &distance) const {
         E e;
         EO_i out_i, out_end;
         V v_source, v_target;
@@ -412,6 +329,16 @@ class Pgr_base_graph {
         return minEdge;
   }
 
+ public:
+  size_t num_vertices() const { return m_num_vertices; }
+  void
+  adjust_vertices() {
+    while (boost::num_vertices(graph) != num_vertices()) {
+      if (boost::num_vertices(graph) > num_vertices()) {
+        boost::remove_vertex(boost::num_vertices(graph), graph);
+      }
+    }
+  }
 
  private:
   void
@@ -422,15 +349,15 @@ class Pgr_base_graph {
 
       vm_s = vertices_map.find(edge.source);
       if (vm_s == vertices_map.end()) {
-        vertices_map[edge.source]=  numb_vertices;
-        gVertices_map[numb_vertices++] = edge.source;
+        vertices_map[edge.source]=  m_num_vertices;
+        gVertices_map[m_num_vertices++] = edge.source;
         vm_s = vertices_map.find(edge.source);
       }
 
       vm_t = vertices_map.find(edge.target);
       if (vm_t == vertices_map.end()) {
-        vertices_map[edge.target]=  numb_vertices;
-        gVertices_map[numb_vertices++] = edge.target;
+        vertices_map[edge.target]=  m_num_vertices;
+        gVertices_map[m_num_vertices++] = edge.target;
         vm_t = vertices_map.find(edge.target);
       }
 
@@ -449,5 +376,6 @@ class Pgr_base_graph {
       }
     }
 };
+
 
 #endif  // SRC_COMMON_SRC_BASE_GRAPH_HPP_

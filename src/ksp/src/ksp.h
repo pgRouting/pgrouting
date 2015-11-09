@@ -39,7 +39,7 @@ extern "C" {
 int compute(char* sql, int64_t start_vertex,
             int64_t end_vertex, int no_paths,
             bool has_reverse_cost, bool directedFlag,
-            pgr_path_element3_t **path, int *ksp_path_count);
+            General_path_element_t **path, size_t *ksp_path_count);
 
 #ifdef __cplusplus
 }

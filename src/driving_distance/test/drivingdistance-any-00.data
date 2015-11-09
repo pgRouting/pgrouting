@@ -1,10 +1,15 @@
 -- create 50x50 grid of overlapping lines horizontal and vertical
 
+DROP TABLE IF EXISTS ddunnoded;
+DROP TABLE IF EXISTS ddunnoded_vertices_pgr;
+
 create table ddunnoded (
   id serial not null primary key
 );
-select addgeometrycolumn('ddunnoded', 'the_geom', ST_SRID('POINT(0 0)'::geometry), 'LINESTRING', 2);
-insert into ddunnoded (the_geom)
+
+SELECT  addgeometrycolumn('ddunnoded', 'the_geom', ST_SRID('POINT(0 0)'::geometry), 'LINESTRING', 2);
+
+INSERT into ddunnoded (the_geom)
 select st_astext(st_makeline(st_makepoint(0,s1), st_makepoint(51,s1))) from (select generate_series(1,50) as s1) as foo
 union all
 select st_astext(st_makeline(st_makepoint(s1,0), st_makepoint(s1,51))) from (select generate_series(1,50) as s1) as foo;
@@ -14,6 +19,10 @@ select pgr_nodenetwork('ddunnoded',0.000001);
 
 -- copy the noded table into a table we can use for a graph
 -- and add the required columns
+
+DROP TABLE IF EXISTS ddnoded2;
+DROP TABLE IF EXISTS ddnoded2_vertices_pgr;
+
 create table ddnoded2 (
   gid serial not null primary key,
   id integer,
@@ -21,6 +30,7 @@ create table ddnoded2 (
   target integer,
   cost float8
 );
+
 select addgeometrycolumn('ddnoded2', 'the_geom', ST_SRID('POINT(0 0)'::geometry), 'LINESTRING', 2);
 
 insert into ddnoded2 (id, cost, the_geom)
