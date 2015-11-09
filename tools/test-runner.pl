@@ -148,7 +148,7 @@ File::Find::find({wanted => \&want_tests}, @testpath);
 
 die "Error: no test files found. Run this command from the top level pgRouting directory!\n" unless @cfgs;
 
-createTestDB();
+#createTestDB();
 
 $vpg = '' if ! $vpg;
 $vpgis = '' if ! $vpgis;
@@ -177,7 +177,7 @@ for my $c (@cfgs) {
     }
 }
 
-dropTestDB();
+#dropTestDB();
 
 print Data::Dumper->Dump([\%stats], ['stats']);
 
@@ -204,11 +204,16 @@ sub run_test {
     $res{comment} = $t->{comment} if $t->{comment};
     #t->{data}  referencing the key data of the data files
 
+    for my $x (@{$t->{tests}}) {
         #each tests will use clean data
+
+        createTestDB();
+
+
         for my $x (@{$t->{data}}) {
            mysystem("$psql $connopts -A -t -q -f '$dir/$x' $DBNAME >> $TMP2 2>\&1 ");
         }
-    for my $x (@{$t->{tests}}) {
+
         print "Processing test: $x\n";
         my $t0 = [gettimeofday];
         #TIN = test_input_file
@@ -243,8 +248,9 @@ sub run_test {
             $dfile2 = $TMP;
         }
         if (! -f "$dir/$x.result") {
-            $res{"$dir/$x.test.sql"} = "FAILED: result file missing";
+            $res{"$dir/$x.test.sql"} = "\nFAILED: result file missing : $!";
             $stats{z_fail}++;            
+            next;
         }
 
         # use diff -w to ignore white space differences like \r vs \r\n
@@ -266,20 +272,21 @@ sub run_test {
             $res{"$dir/$x.test.sql"} = "FAILED: $r";
             $stats{z_fail}++;
         }
-# TODO missing when the result file does not exist
         else {
             $res{"$dir/$x.test.sql"} = "Passed";
             $stats{z_pass}++;
         }
         print "    test run time: " . tv_interval($t0, [gettimeofday]) . "\n";
+#HERE
+        mysystem("dropdb $connopts $DBNAME");
+
     }
 
     return \%res;
 }
 
 sub createTestDB {
-    die "ERROR: test database '$DBNAME' exists, you must drop or rename it!\n"
-        if dbExists($DBNAME);
+    dropTestDB() if dbExists($DBNAME);
 
     my $template;
 
