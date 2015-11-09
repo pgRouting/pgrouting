@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_dijkstra - Shortest Path Dijkstra &mdash; pgRouting Manual (2.1.0)</title>
+    <title>pgr_dijkstra - Shortest Path Dijkstra &mdash; pgRouting Manual (2.2.0)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.1.0 (90eda7c develop)',
+        VERSION:     '2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.1.0)" href="../../../doc/index.html" />
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../doc/index.html" />
     <link rel="up" title="pgr_dijkstra - Shortest Path Dijkstra" href="index.html" />
     <link rel="next" title="Driving Distance" href="../../driving_distance/doc/index.html" />
     <link rel="prev" title="pgr_dijkstra (V 2.0)- Shortest Path Dijkstra" href="dijkstra_v2.html" /> 
   </head>
   <body role="document">
       <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.1.0)</span></a></h1>
+          <span>pgRouting Manual (2.2.0)</span></a></h1>
         <h2 class="heading"><span>pgr_dijkstra - Shortest Path Dijkstra</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -54,7 +54,7 @@
 <p><code class="docutils literal"><span class="pre">pgr_dijkstra</span></code> — Returns the shortest path(s) using Dijkstra algorithm.
 In particular, the Dijkstra algorithm implemented by Boost.Graph.</p>
 <div class="figure" id="id1">
-<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside1.jpeg" src="../../../_images/boost-inside1.jpeg" /></a>
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="../../../_images/boost-inside1.jpeg" src="../../../_images/boost-inside1.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
 <div class="section" id="synopsis">
@@ -70,7 +70,7 @@ This implementation can be used with a directed graph and an undirected graph.</
 <h1>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h1>
 <p class="rubric" id="index-0">Minimal signature</p>
 <p>The minimal signature is for a <strong>directed</strong> graph from one <code class="docutils literal"><span class="pre">start_vid</span></code> to one <code class="docutils literal"><span class="pre">end_vid</span></code>:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_dijkstra</span><span class="p">(</span><span class="nb">text</span> <span class="n">edges_sql</span><span class="p">,</span> <span class="nb">bigint</span> <span class="n">start_vid</span><span class="p">,</span> <span class="nb">bigint</span> <span class="n">end_vid</span><span class="p">)</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_dijkstra</span><span class="p">(</span><span class="nb">text</span> <span class="n">edges_sql</span><span class="p">,</span> <span class="nb">BIGINT</span> <span class="n">start_vid</span><span class="p">,</span> <span class="nb">BIGINT</span> <span class="n">end_vid</span><span class="p">)</span>
    <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span> <span class="k">or</span> <span class="n">EMPTY</span> <span class="k">SET</span>
 </pre></div>
 </div>
@@ -83,14 +83,14 @@ This implementation can be used with a directed graph and an undirected graph.</
 </ul>
 </dd>
 </dl>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_dijkstra</span><span class="p">(</span><span class="nb">text</span> <span class="n">edges_sql</span><span class="p">,</span> <span class="nb">bigint</span> <span class="n">start_vid</span><span class="p">,</span> <span class="nb">bigint</span> <span class="n">end_vid</span><span class="p">,</span>
-                   <span class="nb">boolean</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="k">true</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_dijkstra</span><span class="p">(</span><span class="nb">text</span> <span class="n">edges_sql</span><span class="p">,</span> <span class="nb">BIGINT</span> <span class="n">start_vid</span><span class="p">,</span> <span class="nb">BIGINT</span> <span class="n">end_vid</span><span class="p">,</span>
+                   <span class="nb">BOOLEAN</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="k">true</span><span class="p">);</span>
    <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span> <span class="k">or</span> <span class="n">EMPTY</span> <span class="k">SET</span>
 </pre></div>
 </div>
 <p class="rubric" id="index-2">Dijkstra many to 1:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_dijkstra</span><span class="p">(</span><span class="nb">text</span> <span class="n">edges_sql</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="n">ANY_INTEGER</span><span class="p">]</span> <span class="n">start_vids</span><span class="p">,</span> <span class="nb">bigint</span> <span class="n">end_vid</span><span class="p">,</span>
-                   <span class="nb">boolean</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="k">true</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_dijkstra</span><span class="p">(</span><span class="nb">text</span> <span class="n">edges_sql</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="n">ANY_INTEGER</span><span class="p">]</span> <span class="n">start_vids</span><span class="p">,</span> <span class="nb">BIGINT</span> <span class="n">end_vid</span><span class="p">,</span>
+                   <span class="nb">BOOLEAN</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="k">true</span><span class="p">);</span>
    <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span> <span class="k">or</span> <span class="n">EMPTY</span> <span class="k">SET</span>
 </pre></div>
 </div>
@@ -107,8 +107,8 @@ where the ending vertex is fixed.
 The result is the union of the results of the one to one dijkstra.</p>
 <p>The extra <code class="docutils literal"><span class="pre">start_vid</span></code> in the result is used to distinguish to which path it belongs.</p>
 <p class="rubric" id="index-3">Dijkstra 1 to many:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_dijkstra</span><span class="p">(</span><span class="nb">text</span> <span class="n">edges_sql</span><span class="p">,</span> <span class="nb">bigint</span> <span class="n">start_vid</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="n">ANY_INTEGER</span><span class="p">]</span> <span class="n">end_vids</span><span class="p">,</span>
-                  <span class="nb">boolean</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="k">true</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_dijkstra</span><span class="p">(</span><span class="nb">text</span> <span class="n">edges_sql</span><span class="p">,</span> <span class="nb">BIGINT</span> <span class="n">start_vid</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="n">ANY_INTEGER</span><span class="p">]</span> <span class="n">end_vids</span><span class="p">,</span>
+                  <span class="nb">BOOLEAN</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="k">true</span><span class="p">);</span>
   <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">end_vid</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span> <span class="k">or</span> <span class="n">EMPTY</span> <span class="k">SET</span>
 </pre></div>
 </div>
@@ -126,7 +126,7 @@ The result is the union of the results of the one to one dijkstra.</p>
 <p>The extra <code class="docutils literal"><span class="pre">end_vid</span></code> in the result is used to distinguish to which path it belongs.</p>
 <p class="rubric" id="index-4">Dijkstra many to many:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_dijkstra</span><span class="p">(</span><span class="nb">text</span> <span class="n">edges_sql</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="n">ANY_INTEGER</span><span class="p">]</span> <span class="n">start_vids</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="n">ANY_INTEGER</span><span class="p">]</span> <span class="n">end_vids</span><span class="p">,</span>
-                  <span class="nb">boolean</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="k">true</span><span class="p">);</span>
+                  <span class="nb">BOOLEAN</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="k">true</span><span class="p">);</span>
   <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">end_vid</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span> <span class="k">or</span> <span class="n">EMPTY</span> <span class="k">SET</span>
 </pre></div>
 </div>
@@ -176,9 +176,9 @@ for starting vertices and ending vertices.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">smallint, int, bigint</td>
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
 </tr>
-<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">smallint, int, bigint, real, float</td>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, real, float</td>
 </tr>
 </tbody>
 </table>
@@ -203,7 +203,7 @@ for starting vertices and ending vertices.</p>
 </tr>
 <tr class="field-odd field"><th class="field-name">end_vids:</th><td class="field-body"><code class="docutils literal"><span class="pre">array[ANY-INTEGER]</span></code> array of identifiers of ending vertices.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">directed:</th><td class="field-body"><code class="docutils literal"><span class="pre">boolean</span></code> (optional). When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as Undirected. Default is <code class="docutils literal"><span class="pre">true</span></code> which considers the graph as Directed.</td>
+<tr class="field-even field"><th class="field-name">directed:</th><td class="field-body"><code class="docutils literal"><span class="pre">BOOLEAN</span></code> (optional). When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as Undirected. Default is <code class="docutils literal"><span class="pre">true</span></code> which considers the graph as Directed.</td>
 </tr>
 </tbody>
 </table>
@@ -838,8 +838,8 @@ undirected graph with and with out reverse_cost.</p>
       </div>
 
     <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.1.0 (90eda7c develop).
-      Last updated on Aug 31, 2015.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis).
+      Last updated on Nov 09, 2015.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>

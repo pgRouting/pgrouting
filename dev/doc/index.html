@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Table of Contents &mdash; pgRouting Manual (2.1.0)</title>
+    <title>Table of Contents &mdash; pgRouting Manual (2.2.0)</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.1.0 (90eda7c develop)',
+        VERSION:     '2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,12 +25,12 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.1.0)" href="#" />
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="#" />
     <link rel="next" title="Introduction" href="src/introduction/introduction.html" /> 
   </head>
   <body role="document">
       <div class="header" role="banner"><img class="rightlogo" src="../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
-          <span>pgRouting Manual (2.1.0)</span></a></h1>
+          <span>pgRouting Manual (2.2.0)</span></a></h1>
         <h2 class="heading"><span>Table of Contents</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -48,7 +48,7 @@
   <div class="section" id="table-of-contents">
 <span id="index"></span><h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h1>
 <p>pgRouting extends the <a class="reference external" href="http://postgis.net">PostGIS</a>/<a class="reference external" href="http://postgresql.org">PostgreSQL</a> geospatial database to provide geospatial routing and other network analysis functionality.</p>
-<p>This is the manual for pgRouting 2.1.0 (90eda7c develop).</p>
+<p>This is the manual for pgRouting 2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis).</p>
 <img alt="Creative Commons Attribution-Share Alike 3.0 License" class="align-left" src="../_images/ccbysa.png" />
 <p>The pgRouting Manual is licensed under a <a class="reference external" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to <a class="reference external" href="http://pgrouting.org">http://pgrouting.org</a>. For other licenses used in pgRouting see the <a class="reference internal" href="src/introduction/introduction.html#license"><span>License</span></a> page.</p>
 <div class="section" id="general">
@@ -141,12 +141,12 @@
 <p><a class="reference internal" href="../src/index.html#routing-functions"><span>Routing Functions</span></a></p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="../src/apsp_johnson/doc/index.html#pgr-apsp-johnson"><span>pgr_apspJohnson</span></a>- All Pairs Shortest Path, Johnson’s Algorithm</li>
-<li><a class="reference internal" href="../src/apsp_warshall/doc/index.html#pgr-apsp-warshall"><span>pgr_apspWarshall</span></a> - All Pairs Shortest Path, Floyd-Warshall Algorithm</li>
+<li><a class="reference internal" href="../src/johnson/doc/johnson.html#pgr-johnson"><span>pgr_johnson</span></a>- Johnson’s Algorithm</li>
+<li><a class="reference internal" href="../src/floydWarshall/doc/floydWarshall.html#pgr-floydwarshall"><span>pgr_floydWarshall</span></a> - Floyd-Warshall&#8217;s Algorithm</li>
 <li><a class="reference internal" href="../src/astar/doc/index.html#pgr-astar"><span>pgr_astar</span></a> - Shortest Path A*</li>
 <li><a class="reference internal" href="../src/bd_astar/doc/index.html#bd-astar"><span>pgr_bdAstar</span></a> - Bi-directional A* Shortest Path</li>
 <li><a class="reference internal" href="../src/bd_dijkstra/doc/index.html#bd-dijkstra"><span>pgr_bdDijkstra</span></a> - Bi-directional Dijkstra Shortest Path</li>
-<li><a class="reference internal" href="../src/dijkstra/doc/index.html#pgr-dijkstra"><span>pgr_dijkstra</span></a> - Shortest Path Dijkstra</li>
+<li><a class="reference internal" href="../src/dijkstra/doc/index.html#pgr-dijkstra"><span>pgr_dijkstra</span></a> - Dijkstra family functions</li>
 <li><a class="reference internal" href="../src/driving_distance/doc/index.html#pgr-driving-distance"><span>pgr_driving_distance</span></a> - Driving Distance</li>
 <li><a class="reference internal" href="../src/kdijkstra/doc/index.html#pgr-kdijkstra"><span>pgr_kDijkstra</span></a> - Mutliple destination Shortest Path Dijkstra</li>
 <li><a class="reference internal" href="../src/ksp/doc/index.html#pgr-ksp"><span>pgr_ksp</span></a> - K-Shortest Path</li>
@@ -316,8 +316,8 @@ including them as an official function of pgRouting.</p>
       </div>
 
     <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.1.0 (90eda7c develop).
-      Last updated on Aug 31, 2015.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis).
+      Last updated on Nov 09, 2015.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
