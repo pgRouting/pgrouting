@@ -204,15 +204,26 @@ sub run_test {
     $res{comment} = $t->{comment} if $t->{comment};
     #t->{data}  referencing the key data of the data files
 
+    createTestDB($DBNAME);
+    for my $x (@{$t->{data}}) {
+       mysystem("$psql $connopts -A -t -q -f '$dir/$x' $DBNAME >> $TMP2 2>\&1 ");
+    }
+
     for my $x (@{$t->{tests}}) {
+        push(%res, process_single_test($x, $dir))
+    }
+
+    mysystem("dropdb $connopts $DBNAME");
+    return \%res;
+}
+
+sub process_single_test{
+    my $x = shift;
+    my $dir = shift;
+    my %res = ();
         #each tests will use clean data
 
-        createTestDB();
 
-
-        for my $x (@{$t->{data}}) {
-           mysystem("$psql $connopts -A -t -q -f '$dir/$x' $DBNAME >> $TMP2 2>\&1 ");
-        }
 
         print "Processing test: $x\n";
         my $t0 = [gettimeofday];
@@ -277,16 +288,13 @@ sub run_test {
             $stats{z_pass}++;
         }
         print "    test run time: " . tv_interval($t0, [gettimeofday]) . "\n";
-#HERE
-        mysystem("dropdb $connopts $DBNAME");
-
-    }
-
     return \%res;
+
 }
 
 sub createTestDB {
-    dropTestDB() if dbExists($DBNAME);
+    my $databaseName = shift;
+    dropTestDB() if dbExists($databaseName);
 
     my $template;
 
@@ -301,9 +309,9 @@ sub createTestDB {
     # first create a database with postgis installed in it
     if (version_greater_eq($dbver, '9.1') &&
             -f "$dbshare/extension/postgis.control") {
-        mysystem("createdb $connopts $DBNAME");
-        die "ERROR: Failed to create database '$DBNAME'!\n"
-            unless dbExists($DBNAME);
+        mysystem("createdb $connopts $databaseName");
+        die "ERROR: Failed to create database '$databaseName'!\n"
+            unless dbExists($databaseName);
         my $myver = '';
         if ($vpgis) {
             $myver = " VERSION '$vpgis'";
@@ -314,7 +322,7 @@ sub createTestDB {
             $encoding = "SET client_encoding TO 'UTF8';";
         }
         print "-- Trying to install postgis extension $myver\n" if $DEBUG;
-        mysystem("$psql $connopts -c \"$encoding create extension postgis $myver\" $DBNAME");
+        mysystem("$psql $connopts -c \"$encoding create extension postgis $myver\" $databaseName");
     }
     else {
         if ($vpgis && dbExists("template_postgis_$vpgis")) {
@@ -327,10 +335,10 @@ sub createTestDB {
             die "ERROR: Could not find an appropriate template_postgis database!\n";
         }
         print "-- Trying to install postgis from $template\n" if $DEBUG;
-        mysystem("createdb $connopts -T $template $DBNAME");
+        mysystem("createdb $connopts -T $template $databaseName");
         sleep(2);
-        die "ERROR: Failed to create database '$DBNAME'!\n"
-            if ! dbExists($DBNAME);
+        die "ERROR: Failed to create database '$databaseName'!\n"
+            if ! dbExists($databaseName);
     }
 
     # next we install pgrouting into the new database
@@ -341,11 +349,11 @@ sub createTestDB {
             $myver = " PGROUTING VERSION '$vpgr'";
         }
         print "-- Trying to install pgrouting extension $myver\n" if $DEBUG;
-        mysystem("$psql $connopts -c \"create extension pgrouting $myver\" $DBNAME");
+        mysystem("$psql $connopts -c \"create extension pgrouting $myver\" $databaseName");
     }
     elsif ($vpgr && -f "$dbshare/extension/pgrouting--$vpgr.sql") {
         print "-- Trying to install pgrouting from '$dbshare/extension/pgrouting--$vpgr.sql'\n" if $DEBUG;
-        mysystem("$psql $connopts -f '$dbshare/extension/pgrouting--$vpgr.sql' $DBNAME");
+        mysystem("$psql $connopts -f '$dbshare/extension/pgrouting--$vpgr.sql' $databaseName");
     }
     else {
         my $find = `find "$dbshare/contrib" -name pgrouting.sql | sort -r -n `;
@@ -353,7 +361,7 @@ sub createTestDB {
         my $file = shift @found;
         if ($file && length($file)) {
             print "-- Trying to install pgrouting from '$file'\n" if $DEBUG;
-            mysystem("$psql $connopts -f '$file' $DBNAME");
+            mysystem("$psql $connopts -f '$file' $databaseName");
         }
         else {
             mysystem("ls -alR $dbshare") if $DEBUG;
@@ -363,7 +371,7 @@ sub createTestDB {
 
     # now verify that we have pgrouting installed
 
-    my $pgrv = `$psql $connopts -c "select pgr_version()" $DBNAME`;
+    my $pgrv = `$psql $connopts -c "select pgr_version()" $databaseName`;
     die "ERROR: failed to install pgrouting into the database!\n"
         unless $pgrv;
 

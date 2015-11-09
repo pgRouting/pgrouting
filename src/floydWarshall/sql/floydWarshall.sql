@@ -47,7 +47,7 @@ CREATE OR REPLACE FUNCTION pgr_apspWarshall(edges_sql text, directed boolean, ha
       END IF;
 
       RETURN query
-         SELECT row_number() over ()::integer as seq, start_vid::integer AS id1, end_vid::integer AS id2, agg_cost AS cost
+         SELECT (row_number() over () -1)::integer as seq, start_vid::integer AS id1, end_vid::integer AS id2, agg_cost AS cost
          FROM  pgr_floydWarshall(sql, directed);
   END
   $BODY$

@@ -1,3 +1,4 @@
+BEGIN;
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 --              PGR_pgr_trsp
@@ -53,4 +54,4 @@ INSERT INTO restrictions VALUES (3,100,9,16,null);
         
         'SELECT to_cost, to_edge AS target_id, FROM_edge ||
             coalesce('',''||via,'''') AS via_path FROM restrictions');
-
+ROLLBACK;

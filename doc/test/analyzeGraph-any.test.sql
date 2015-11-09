@@ -1,4 +1,5 @@
 
+BEGIN;
 
 
 ------------------------------------------------------------------------------------------------------
@@ -48,4 +49,4 @@
 	-- Simulate removal of edges
 	SELECT pgr_createTopology('edge_table', 0.001,rows_where:='id <17');
 	SELECT pgr_analyzeGraph('edge_table', 0.001);
-
+ROLLBACK;

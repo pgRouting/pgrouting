@@ -1,3 +1,4 @@
+BEGIN;
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 --              PGR_apspJohnson
@@ -7,3 +8,4 @@ SELECT seq, id1 AS FROM, id2 AS to, cost
     FROM pgr_apspJohnson(
         'SELECT source, target, cost FROM edge_table'
     ) limit 10; 
+ROLLBACK;
