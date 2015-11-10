@@ -252,8 +252,8 @@ add_subdirectory(doc)
 
 #include directories: files in alphabetical order
 set(PGROUTING_INCLUDE_DIRECTORIES
-    ${PGROUTING_SOURCE_DIR}/src/johnson/src
-    ${PGROUTING_SOURCE_DIR}/src/floydWarshall/src
+    #    ${PGROUTING_SOURCE_DIR}/src/johnson/src
+    #${PGROUTING_SOURCE_DIR}/src/floydWarshall/src
     ${PGROUTING_SOURCE_DIR}/src/astar/src
     ${PGROUTING_SOURCE_DIR}/src/bd_astar/src
     ${PGROUTING_SOURCE_DIR}/src/bd_dijkstra/src
@@ -339,8 +339,8 @@ LINK_LIBRARIES(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
 # libraries listed in alphabetical order.
 add_library(${PGROUTING_LIB_NAME}
     ${LIBRARY_MODE_TARGET}
-    $<TARGET_OBJECTS:johnson>
-    $<TARGET_OBJECTS:floydWarshall>
+    #    $<TARGET_OBJECTS:johnson>
+    #$<TARGET_OBJECTS:floydWarshall>
     $<TARGET_OBJECTS:astar>
     $<TARGET_OBJECTS:bd_astar>
     $<TARGET_OBJECTS:bd_dijkstra>
