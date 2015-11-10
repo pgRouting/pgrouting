@@ -1,3 +1,4 @@
+BEGIN;
 set client_min_messages to warning;
 SET search_path TO public;
 
@@ -144,3 +145,4 @@ SET search_path TO public;
 drop table if exists "Edges2";
 drop table if exists "Edges2_vertices_pgr";
 drop schema if exists "myschema" cascade;
+ROLLBACK;

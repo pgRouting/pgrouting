@@ -1,3 +1,4 @@
+BEGIN;
 set client_min_messages  to warning;
 
 drop table if exists streets;
@@ -100,4 +101,4 @@ drop schema if exists s2 cascade;
 drop schema if exists "S2" cascade; 
 drop schema if exists s3 cascade; 
 
-
+ROLLBACK;

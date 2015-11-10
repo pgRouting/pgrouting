@@ -1,3 +1,4 @@
+BEGIN;
 
 set client_min_messages to notice;
 select 1, sname = 'public' and tname = 'edges2' from pgr_getTableName('EDGes2');
@@ -25,4 +26,4 @@ select 16, pgr_quote_ident('idname.text') = 'idname.text';
 select 17, pgr_startPoint(the_geom) = '010100000000000000000000400000000000000000' from edges2 where eid = 1;
 select 18, pgr_endPoint(the_geom) = '01010000000000000000000040000000000000F03F'  from edges2 where eid = 1;
 
-
+ROLLBACK;

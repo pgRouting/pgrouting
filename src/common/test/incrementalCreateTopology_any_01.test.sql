@@ -1,3 +1,4 @@
+BEGIN;
 set client_min_messages  to warning;
 drop table  if exists edge_table;
 drop table if exists edge_table_vertices_pgr ;
@@ -73,3 +74,4 @@ select * from edge_table order by id;
 --12 edges have 'B' the rest is untouched
 select * from pgr_createTopology('edge_table',0.0001,rows_where:='dir=''B''',clean:=false); 
 select * from edge_table order by id;
+ROLLBACK;

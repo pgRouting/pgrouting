@@ -1,3 +1,4 @@
+BEGIN;
 
 set client_min_messages  to warning;
 SET search_path TO "$user", public;
@@ -73,4 +74,4 @@ drop table if exists streets;
 drop table if exists "Streets";
 drop schema if exists s1 cascade;
 drop function make_tests_return_text(text,text,int);
-
+ROLLBACK;

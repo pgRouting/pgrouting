@@ -328,23 +328,26 @@ sub createTestDB {
         }
         print "-- Trying to install postgis extension $myver\n" if $DEBUG;
         mysystem("$psql $connopts -c \"$encoding create extension postgis $myver\" $databaseName");
+        print "-- Trying to install pgTap extension \n" if $DEBUG;
+        mysystem("$psql $connopts -c \"$encoding create extension pgtap   $myver\" $databaseName");
     }
-    else {
-        if ($vpgis && dbExists("template_postgis_$vpgis")) {
-            $template = "template_postgis_$vpgis";
-        }
-        elsif (dbExists('template_postgis')) {
-            $template = "template_postgis";
-        }
-        else {
-            die "ERROR: Could not find an appropriate template_postgis database!\n";
-        }
-        print "-- Trying to install postgis from $template\n" if $DEBUG;
-        mysystem("createdb $connopts -T $template $databaseName");
-        sleep(2);
-        die "ERROR: Failed to create database '$databaseName'!\n"
-            if ! dbExists($databaseName);
-    }
+#
+#    else {
+#        if ($vpgis && dbExists("template_postgis_$vpgis")) {
+#            $template = "template_postgis_$vpgis";
+#        }
+#        elsif (dbExists('template_postgis')) {
+#            $template = "template_postgis";
+#        }
+#        else {
+#            die "ERROR: Could not find an appropriate template_postgis database!\n";
+#        }
+#        print "-- Trying to install postgis from $template\n" if $DEBUG;
+#        mysystem("createdb $connopts -T $template $databaseName");
+#        sleep(2);
+#        die "ERROR: Failed to create database '$databaseName'!\n"
+#            if ! dbExists($databaseName);
+#    }
 
     # next we install pgrouting into the new database
     if (version_greater_eq($dbver, '9.1') &&
