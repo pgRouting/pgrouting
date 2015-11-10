@@ -76,11 +76,9 @@ if [ "$POSTGIS_VERSION" != "1.5" ]; then
 fi
 
 
-wget https://github.com/theory/pgtap/archive/master.zip pgtap-master.zip
-unzip pgtap-master.zip 
-cd pgtap-master
-make
-make install
+wget https://github.com/theory/pgtap/archive/master.zip
+unzip master.zip 
+cd master & make & make install
 
 # ------------------------------------------------------------------------------
 # Restart once
