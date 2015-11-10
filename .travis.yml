@@ -20,7 +20,7 @@ branches:
   only:
     - master
     - develop
-    - develop-2.2-old-travis
+    - pgTap-test
 
 addons:
   postgresql: "9.2"
