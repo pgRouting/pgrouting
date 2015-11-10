@@ -31,11 +31,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <boost/config.hpp>
 
-//#include <boost/concept_check.hpp>
-//#include <boost/concept/assert.hpp> 
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/property_map/property_map.hpp>
 #include <boost/graph/floyd_warshall_shortest.hpp>
+
+extern "C" {
+#include "postgres.h"
+#include "./../../common/src/pgr_types.h"
+#include "./../../common/src/postgres_connection.h"
+}
+
 
 #ifdef __cplusplus
 extern "C" {
