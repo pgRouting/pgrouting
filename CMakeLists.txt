@@ -5,7 +5,6 @@
 # (http://www.cmake.org/cmake/help/v2.8.10/cmake.html)
 #
 
-cmake_minimum_required(VERSION 2.8.8 FATAL_ERROR)
 project(PGROUTING)
 
 #set(CMAKE_VERBOSE_MAKEFILE 1)
@@ -166,9 +165,29 @@ message(STATUS ".....OK")
 ##########################################################
 
 #add_subdirectory(cmake) -- I dont think this is needed
+
+cmake_minimum_required(VERSION 2.8.8 FATAL_ERROR)
+
 set(CMAKE_MODULE_PATH "${PGROUTING_SOURCE_DIR}/cmake")
 
-include(MacroLibrary)
+INCLUDE(Cat)
+#INCLUDE(MacroOptionalFindPackage)
+#INCLUDE(MacroAdditionalCleanFiles)
+#INCLUDE(MacroAddFileDependencies)
+#INCLUDE(MacroAddCompileFlags)
+#INCLUDE(MacroAddLinkFlags)
+#INCLUDE(MacroEnsureOutOfSourceBuild)
+#INCLUDE(MacroBoolTo01)
+#INCLUDE(MacroPushRequiredVars)
+#INCLUDE(MacroLogFeature)
+
+#INCLUDE(MacroCreateLibtoolFile)
+
+#INCLUDE(CheckCCompilerFlag)
+
+#include(MacroLibrary)
+
+# Should leave only the files that were in the distribution.
 include(TargetDistclean)
 
 message(STATUS "PGROUTING_SOURCE_DIR: ${PGROUTING_SOURCE_DIR}")
