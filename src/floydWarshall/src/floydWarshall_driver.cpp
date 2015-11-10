@@ -30,8 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
-#include "./floydWarshall_driver.h"
 #include "./pgr_floydWarshall.hpp"
+#include "./floydWarshall_driver.h"
 
 extern "C" {
 #include "postgres.h"
