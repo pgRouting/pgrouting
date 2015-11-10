@@ -82,6 +82,10 @@ endif()
 # PGROUTING version handling.
 #-----------------------------------------------------------------------------
 
+if (CDEBUG)
+    message(STATUS "Building the Version")
+endif()
+
 #----------------------
 # PGROUTING version
 #----------------------
@@ -107,20 +111,28 @@ string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\4" PGROUTING_GIT_BRA
 
 string(COMPARE NOTEQUAL ${PGROUTING_GIT_BRANCH}  "master" PGROUTING_DEVELOP)
 if(PGROUTING_DEVELOP)
-    set(PGROUTING_GIT_TAG "pgrouting-${PGROUTING_VERSION_STRING}dev")
+    set(PGROUTING_GIT_TAG "pgrouting-${PGROUTING_VERSION_STRING}-dev")
 endif()
 
 if (CDEBUG)
-    message(STATUS "PGROUTING_GIT_TAG: ${PGROUTING_GIT_TAG}")
-    message(STATUS "PGROUTING_GIT_BUILD: ${PGROUTING_GIT_BUILD}")
-    message(STATUS "PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")
-    message(STATUS "PGROUTING_GIT_BRANCH: ${PGROUTING_GIT_BRANCH}")
+    message(STATUS "  PGROUTING_GIT_TAG: ${PGROUTING_GIT_TAG}")
+    message(STATUS "  PGROUTING_GIT_BUILD: ${PGROUTING_GIT_BUILD}")
+    message(STATUS "  PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")
+    message(STATUS "  PGROUTING_GIT_BRANCH: ${PGROUTING_GIT_BRANCH}")
 endif()
 
+message(STATUS ".....OK")
 
+#-----------------------------------------------------------------------------
+# PGROUTING Library names
+#-----------------------------------------------------------------------------
+
+if (CDEBUG)
+    message(STATUS "Building the library names")
+endif()
 
 #----------------------
-# PGROUTING pgr_version gets filled with this variables
+# PGROUTING installation files names have the following name
 #----------------------
 set(PGROUTING_LIB_NAME "pgrouting--${PGROUTING_VERSION_STRING}")
 
@@ -132,28 +144,35 @@ set(PGROUTING_LIB_NAME "pgrouting--${PGROUTING_VERSION_STRING}")
 set(PGROUTING_LIBRARY_NAME "libpgrouting--${PGROUTING_VERSION_STRING}")
 
 
+if (CDEBUG)
+    message(STATUS "  PGROUTING_LIB_NAME: ${PGROUTING_LIB_NAME}")
+    message(STATUS "  PGROUTING_LIBRARY_NAME: ${PGROUTING_LIBRARY_NAME}")
+endif()
+
+message(STATUS ".....OK")
 
 
 
-
-
-message(STATUS "PGROUTING_SOURCE_DIR: ${PGROUTING_SOURCE_DIR}")
-message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
-
-message(STATUS "POSTGRESQL_BIN: ${POSTGRESQL_BIN}")
 
 #-----------------------------------------------------------------------------
 # CMAKE configuration
-# This is for my mingw64 environment, it should go away
-set(CMAKE_PREFIX_PATH /usr:/usr/local)
-set(CMAKE_INCLUDE_PATH /usr:/usr/local)
-set(CMAKE_LIBRARY_PATH /usr:/usr/local)
+#-----------------------------------------------------------------------------
 
-add_subdirectory(cmake)
+##########################################################
+# This is for my mingw64 environment, it should go away
+#set(CMAKE_PREFIX_PATH /usr:/usr/local)
+#set(CMAKE_INCLUDE_PATH /usr:/usr/local)
+#set(CMAKE_LIBRARY_PATH /usr:/usr/local)
+##########################################################
+
+#add_subdirectory(cmake) -- I dont think this is needed
 set(CMAKE_MODULE_PATH "${PGROUTING_SOURCE_DIR}/cmake")
 
 include(MacroLibrary)
 include(TargetDistclean)
+
+message(STATUS "PGROUTING_SOURCE_DIR: ${PGROUTING_SOURCE_DIR}")
+message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
 
 message(STATUS "UNIX=${UNIX}")
 message(STATUS "WIN32=${WIN32}")
@@ -222,6 +241,7 @@ if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
 endif("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
 
 
+message(STATUS "POSTGRESQL_BIN: ${POSTGRESQL_BIN}")
 execute_process(
   COMMAND ${POSTGRESQL_PG_CONFIG} --pkglibdir
   OUTPUT_STRIP_TRAILING_WHITESPACE
@@ -248,11 +268,12 @@ else(SHARE_DIR)
 endif(SHARE_DIR)
 
 # Handles documentation
+message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
 add_subdirectory(doc)
 
 #include directories: files in alphabetical order
 set(PGROUTING_INCLUDE_DIRECTORIES
-    #    ${PGROUTING_SOURCE_DIR}/src/johnson/src
+    ${PGROUTING_SOURCE_DIR}/src/johnson/src
     ${PGROUTING_SOURCE_DIR}/src/floydWarshall/src
     ${PGROUTING_SOURCE_DIR}/src/astar/src
     ${PGROUTING_SOURCE_DIR}/src/bd_astar/src
@@ -339,7 +360,7 @@ LINK_LIBRARIES(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
 # libraries listed in alphabetical order.
 add_library(${PGROUTING_LIB_NAME}
     ${LIBRARY_MODE_TARGET}
-    #    $<TARGET_OBJECTS:johnson>
+    $<TARGET_OBJECTS:johnson>
     $<TARGET_OBJECTS:floydWarshall>
     $<TARGET_OBJECTS:astar>
     $<TARGET_OBJECTS:bd_astar>

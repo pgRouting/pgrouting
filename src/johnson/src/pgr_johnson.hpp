@@ -21,8 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 // http://www.cs.rpi.edu/~musser/archive/2005/gsd/restricted/FloydWarshall/FloydWarshall.pdf
 
-#ifndef SRC_WARSHALL_SRC_PGR_WARSHALL_H_
-#define SRC_WARSHALL_SRC_PGR_WARSHALL_H_
+#ifndef SRC_JOHNSON_SRC_PGR_JOHNSON_H_
+#define SRC_JOHNSON_SRC_PGR_JOHNSON_H_
 
 
 #include <deque>
@@ -31,11 +31,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <boost/config.hpp>
 
-//#include <boost/concept_check.hpp>
-//#include <boost/concept/assert.hpp> 
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/property_map/property_map.hpp>
 #include <boost/graph/johnson_all_pairs_shortest.hpp>
+
+extern "C" {
+#include "./../../common/src/pgr_types.h"
+}
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -202,4 +205,4 @@ class Pgr_johnson {
 
 };
 
-#endif // SRC_WARSHALL_SRC_PGR_WARSHALL_H_
+#endif  //  SRC_JOHNSON_SRC_PGR_JOHNSON_H_
