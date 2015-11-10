@@ -49,7 +49,9 @@ sudo apt-get install -y -qq packaging-dev cmake checkinstall libcgal-dev libboos
 pwd
 wget https://github.com/theory/pgtap/archive/master.zip
 unzip master.zip
-cd pgtap-master & make & sudo make install
+cd pgtap-master
+make
+sudo make install
 pwd
 
 
