@@ -77,8 +77,8 @@ fi
 
 
 wget https://github.com/theory/pgtap/archive/master.zip pgtap-master.zip
-unzip pgtap-master.zip -d pgtap
-cd pgtap
+unzip pgtap-master.zip 
+cd pgtap-master.zip
 make
 make install
 
