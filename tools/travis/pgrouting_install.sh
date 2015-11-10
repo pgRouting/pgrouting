@@ -47,7 +47,8 @@ echo "Installing packages ... this may take some time."
 sudo apt-get install -y -qq packaging-dev cmake checkinstall libcgal-dev libboost-graph-dev libboost-thread-dev libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev 
 
 pwd
-wget https://github.com/theory/pgtap/archive/master.zip | unzip
+wget https://github.com/theory/pgtap/archive/master.zip
+unzip master.zip
 cd pgtap-master & make & sudo make install
 pwd
 
