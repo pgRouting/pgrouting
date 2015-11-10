@@ -25,27 +25,89 @@ option(BUILD_HTML
 option(BUILD_MAN
     "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
 
+#TODO change to OFF when debuging is finished
+option(CDEBUG
+    "Set ON|OFF (default=OFF) to build the test infrastucture" ON)
+
+#TODO change to OFF when debuging is finished
+option(WITH_TEST
+    "Set ON|OFF (default=OFF) to build the test infrastucture" ON)
+
+
 SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries an a non-standard location.")
 
 
 #-----------------------------------------------------------------------------
-# PGROUTING version number.
+# PGROUTING Minimum requirements
+#-----------------------------------------------------------------------------
+
+#----------------------
+# Build requirements 
+#----------------------
+
+set(POSTGRESQL_MINIMUM_VERSION "9.1.0")
+
+message(STATUS "CMAKE_VERSION: ${CMAKE_VERSION}")
+message(STATUS "POSTGRESQL_MINIMUM_VERSION: ${POSTGRESQL_MINIMUM_VERSION}")
+
+if (CDEBUG)
+endif()
+
+#----------------------
+# Documentation requirements 
+#----------------------
+if(WITH_DOC)
+
+    if (CDEBUG)
+    endif()
+
+endif()
+
+#----------------------
+# Tests requirements 
+#----------------------
+
+if(WITH_TEST)
+
+    set(POSTGIS_MINIMUM_VERSION "2.0.0")
+    message(STATUS "POSTGIS_MINIMUM_VERSION: ${POSTGIS_MINIMUM_VERSION}")
+
+    if (CDEBUG)
+    endif()
+
+endif()
+
+
+#-----------------------------------------------------------------------------
+# PGROUTING version handling.
+#-----------------------------------------------------------------------------
+
+#----------------------
+# PGROUTING version
+#----------------------
 set(PGROUTING_VERSION_MAJOR "2")
 set(PGROUTING_VERSION_MINOR "2")
 set(PGROUTING_VERSION_PATCH "0")
 
+IF (DEVELOP)
+    set(PGROUTING_VERSION_DEV "dev")
+endif()
+
+#----------------------
+# PGROUTING version string
+#----------------------
 set(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
 
-set(POSTGRESQL_MINIMUM_VERSION "9.1.0")
-set(POSTGIS_MINIMUM_VERSION "2.0.0")
 
 file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 
 set(PGROUTING_GIT_TAG "pgrouting-2.2.0-dev")
-#string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
+string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\4" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
+string(SUBSTRING ${PGROUTING_BUILD_STRING} 0 7 PGROUTING_GIT_HASH)
+string(SUBSTRING ${PGROUTING_BUILD_STRING} 8 -1 PGROUTING_GIT_BRANCH)
 
 set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_GIT_HASH} ${PGROUTING_GIT_BRANCH}")
 set(PGROUTING_VERSION_REVISION_HASH "${PGROUTING_GIT_HASH}")
@@ -53,7 +115,6 @@ set(PGROUTING_LIB_NAME "pgrouting--${PGROUTING_VERSION_STRING}")
 set(PGROUTING_LIBRARY_NAME "libpgrouting--${PGROUTING_VERSION_STRING}")
 
 
-message(STATUS "CMAKE_VERSION: ${CMAKE_VERSION}")
 message(STATUS "PGROUTING_GIT_TAG: ${PGROUTING_GIT_TAG}")
 message(STATUS "PGROUTING_GIT_BUILD: ${PGROUTING_GIT_BUILD}")
 message(STATUS "PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")
