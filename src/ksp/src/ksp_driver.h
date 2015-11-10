@@ -22,8 +22,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef SRC_KSP_SRC_KSP_DRIVER_H_
 #define SRC_KSP_SRC_KSP_DRIVER_H_
 
-// #include <stdarg.h>
-// #include <stdio.h>
 
 #include "./../../common/src/pgr_types.h"
 

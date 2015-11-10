@@ -34,12 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 
 #include "./ksp_driver.h"
+
 extern "C" {
-#if 0
-#include "postgres.h"
-#include "./ksp.h"
-#include "./../../common/src/pgr_types.h"
-#endif
 #include "./../../common/src/postgres_connection.h"
 }
 
