@@ -37,7 +37,7 @@ SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries 
 
 
 #-----------------------------------------------------------------------------
-# PGROUTING Minimum requirements
+# PGROUTING Setting the Minimum requirements
 #-----------------------------------------------------------------------------
 
 #----------------------
@@ -45,11 +45,11 @@ SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries 
 #----------------------
 
 set(POSTGRESQL_MINIMUM_VERSION "9.1.0")
-
-message(STATUS "CMAKE_VERSION: ${CMAKE_VERSION}")
-message(STATUS "POSTGRESQL_MINIMUM_VERSION: ${POSTGRESQL_MINIMUM_VERSION}")
+set(CMAKE_MINIMUM_VERSION "2.8.8")
 
 if (CDEBUG)
+    message(STATUS "CMAKE_MINIMUM_VERSION: ${CMAKE_MINIMUM_VERSION:}")
+    message(STATUS "POSTGRESQL_MINIMUM_VERSION: ${POSTGRESQL_MINIMUM_VERSION}")
 endif()
 
 #----------------------
@@ -69,9 +69,9 @@ endif()
 if(WITH_TEST)
 
     set(POSTGIS_MINIMUM_VERSION "2.0.0")
-    message(STATUS "POSTGIS_MINIMUM_VERSION: ${POSTGIS_MINIMUM_VERSION}")
 
     if (CDEBUG)
+        message(STATUS "POSTGIS_MINIMUM_VERSION: ${POSTGIS_MINIMUM_VERSION}")
     endif()
 
 endif()
@@ -81,9 +81,7 @@ endif()
 # PGROUTING version handling.
 #-----------------------------------------------------------------------------
 
-if (CDEBUG)
-    message(STATUS "Building the Version")
-endif()
+message(STATUS "Building the Version")
 
 #----------------------
 # PGROUTING version
@@ -122,13 +120,14 @@ endif()
 
 message(STATUS ".....OK")
 
+
+
+
 #-----------------------------------------------------------------------------
 # PGROUTING Library names
 #-----------------------------------------------------------------------------
 
-if (CDEBUG)
-    message(STATUS "Building the library names")
-endif()
+message(STATUS "Building the library names")
 
 #----------------------
 # PGROUTING installation files names have the following name
@@ -157,68 +156,100 @@ message(STATUS ".....OK")
 # CMAKE configuration
 #-----------------------------------------------------------------------------
 
-##########################################################
-# This is for my mingw64 environment, it should go away
-#set(CMAKE_PREFIX_PATH /usr:/usr/local)
-#set(CMAKE_INCLUDE_PATH /usr:/usr/local)
-#set(CMAKE_LIBRARY_PATH /usr:/usr/local)
-##########################################################
+message(STATUS "Checking the cmake configuration")
 
-#add_subdirectory(cmake) -- I dont think this is needed
+cmake_minimum_required(VERSION ${POSTGRESQL_MINIMUM_VERSION} FATAL_ERROR)
 
-cmake_minimum_required(VERSION 2.8.8 FATAL_ERROR)
-
+#----------------------
+# Extra modules location
+#----------------------
 set(CMAKE_MODULE_PATH "${PGROUTING_SOURCE_DIR}/cmake")
 
-INCLUDE(Cat)
-#INCLUDE(MacroOptionalFindPackage)
-#INCLUDE(MacroAdditionalCleanFiles)
-#INCLUDE(MacroAddFileDependencies)
-#INCLUDE(MacroAddCompileFlags)
-#INCLUDE(MacroAddLinkFlags)
-#INCLUDE(MacroEnsureOutOfSourceBuild)
-#INCLUDE(MacroBoolTo01)
-#INCLUDE(MacroPushRequiredVars)
-#INCLUDE(MacroLogFeature)
 
-#INCLUDE(MacroCreateLibtoolFile)
+#----------------------
+# For concatenation
+#----------------------
+include(Cat)
 
-#INCLUDE(CheckCCompilerFlag)
-
-#include(MacroLibrary)
-
+#----------------------
 # Should leave only the files that were in the distribution.
+#----------------------
 include(TargetDistclean)
 
-message(STATUS "PGROUTING_SOURCE_DIR: ${PGROUTING_SOURCE_DIR}")
-message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
 
-message(STATUS "UNIX=${UNIX}")
-message(STATUS "WIN32=${WIN32}")
+#----------------------
+# Should leave only the files that were in the distribution.
+#----------------------
+if (CDEBUG)
+    message(STATUS "  CMAKE_VERSION: ${CMAKE_VERSION}")
+    message(STATUS "  PGROUTING_SOURCE_DIR: ${PGROUTING_SOURCE_DIR}")
+    message(STATUS "  CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
+endif()
+
+message(STATUS ".....OK")
+
+
+
+
+#-----------------------------------------------------------------------------
+# Operating system
+#-----------------------------------------------------------------------------
+
+message(STATUS "Detecting Operating System")
+
+
+# TODO In V3.0 we are going to store this in pgr_version
+if(APPLE)
+    message(STATUS "  found: APPLE")
+elseif(UNIX)
+    message(STATUS "  found: UNIX")
+elseif(WIN32)
+    message(STATUS "  found: WIN32")
+endif()
+
+
+message(STATUS ".....OK")
+
+
+
+
+
+#-----------------------------------------------------------------------------
+# WIN32 
+#-----------------------------------------------------------------------------
+# TODO  Nagase san need to check
 if(WIN32)
-  set(OS_BUILD  $ENV{OS_BUILD})
-  if(NOT OS_BUILD)
-    set(OS_BUILD "64")
-  endif(NOT OS_BUILD)
-  set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH}:/c/ming${OS_BUILD}/projects/pgx${OS_BUILD}/pg92)
-  if (NOT BOOST_ROOT)
-    set(BOOST_ROOT c:/ming${OS_BUILD}/msys/local)
-  endif(NOT BOOST_ROOT)
+
+    set(OS_BUILD  $ENV{OS_BUILD})
+    if(NOT OS_BUILD)
+        set(OS_BUILD "64")
+    endif(NOT OS_BUILD)
+
+    set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH}:/c/ming${OS_BUILD}/projects/pgx${OS_BUILD}/pg92)
+
+    if (NOT BOOST_ROOT)
+        set(BOOST_ROOT c:/ming${OS_BUILD}/msys/local)
+    endif(NOT BOOST_ROOT)
    
-  if (NOT CGAL_ROOT)
-    set(CGAL_ROOT c:/ming${OS_BUILD}/msys/local)
-  endif(NOT CGAL_ROOT)
+    if (NOT CGAL_ROOT)
+        set(CGAL_ROOT c:/ming${OS_BUILD}/msys/local)
+    endif(NOT CGAL_ROOT)
   
-  if (NOT GMP_ROOT)
-    set(GMP_ROOT c:/ming${OS_BUILD}/mingw${OS_BUILD})
-  endif(NOT GMP_ROOT)
-  message(STATUS "OS_BUILD=${OS_BUILD}")
-  message(STATUS "CGAL_ROOT=${CGAL_ROOT}")
-  message(STATUS "GMP_ROOT=${GMP_ROOT}")
-  message(STATUS "BOOST_ROOT=${BOOST_ROOT}")
-  message(STATUS "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}")
+    if (NOT GMP_ROOT)
+        set(GMP_ROOT c:/ming${OS_BUILD}/mingw${OS_BUILD})
+    endif(NOT GMP_ROOT)
+
+    if (CDEBUG)
+        message(STATUS "OS_BUILD=${OS_BUILD}")
+        message(STATUS "CGAL_ROOT=${CGAL_ROOT}")
+        message(STATUS "GMP_ROOT=${GMP_ROOT}")
+        message(STATUS "BOOST_ROOT=${BOOST_ROOT}")
+        message(STATUS "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}")
+    endif()
+
 endif(WIN32)
 
+#-----------------------------------------------------------------------------
 
 include(FindPerl)
 if(NOT PERL_EXECUTABLE)
