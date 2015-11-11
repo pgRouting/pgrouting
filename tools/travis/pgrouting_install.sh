@@ -68,6 +68,7 @@ cd postgis-*
 ./configure 
 make
 sudo make install
+make doc
 sudo ldconfig
 
 # Build extension for PostGIS > 2.0

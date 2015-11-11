@@ -32,6 +32,9 @@ option(CDEBUG
 option(WITH_TEST
     "Set ON|OFF (default=OFF) to build the test infrastucture" ON)
 
+option(WITH_DEV_DOC
+    "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
+
 
 SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries an a non-standard location.")
 
@@ -46,10 +49,12 @@ SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries 
 
 set(POSTGRESQL_MINIMUM_VERSION "9.1.0")
 set(CMAKE_MINIMUM_VERSION "2.8.8")
+set(BOOST_MINIMUM_VERSION "1.55.0")
 
 if (CDEBUG)
-    message(STATUS "CMAKE_MINIMUM_VERSION: ${CMAKE_MINIMUM_VERSION:}")
+    message(STATUS "CMAKE_MINIMUM_VERSION: ${CMAKE_MINIMUM_VERSION}")
     message(STATUS "POSTGRESQL_MINIMUM_VERSION: ${POSTGRESQL_MINIMUM_VERSION}")
+    message(STATUS "BOOST_MINIMUM_VERSION: ${BOOST_MINIMUM_VERSION}")
 endif()
 
 #----------------------
@@ -68,6 +73,33 @@ if(WITH_DOC)
     if (CDEBUG)
     endif()
 
+endif()
+
+#----------------------
+# Devlopers Documentation requirements 
+#----------------------
+
+if(WITH_DEV_DOC)
+
+    set(DOXYGEN_MINIMUM_VERSION "1.8.7")
+
+    if (CDEBUG)
+        message(STATUS "DOXYGEN_MINIMUM_VERSION: ${DOXYGEN_MINIMUM_VERSION}")
+    endif()
+
+endif()
+
+#----------------------
+# Tests requirements 
+#----------------------
+
+if(WITH_TEST)
+
+    set(POSTGIS_MINIMUM_VERSION "2.0.0")
+
+    if (CDEBUG)
+        message(STATUS "POSTGIS_MINIMUM_VERSION: ${POSTGIS_MINIMUM_VERSION}")
+    endif()
 endif()
 
 #----------------------
@@ -263,31 +295,17 @@ endif(WIN32)
 
 
 #-----------------------------------------------------------------------------
-# CHECKING BUILD REQUIREMENTS 
+# Checking BUILD requierments 
 #-----------------------------------------------------------------------------
 
-include(FindPerl)
-if(NOT PERL_EXECUTABLE)
-  message(FATAL_ERROR " Please check your Perl installation.")
-endif(NOT PERL_EXECUTABLE)
+#----------------------
+# PostgreSQL
+#----------------------
 
 find_package(PostgreSQL)
 if(NOT POSTGRESQL_FOUND)
   message(FATAL_ERROR " Please check your PostgreSQL installation.") 
 endif(NOT POSTGRESQL_FOUND)
-
-#set(Boost_DEBUG ON)
-find_package(Boost)
-if(Boost_INCLUDE_DIRS)
-  message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIR}")
-else(Boost_INCLUDE_DIRS)
-  message(FATAL_ERROR " Please check your Boost installation ") 
-endif(Boost_INCLUDE_DIRS)
-
-find_package(CGAL)
-if(NOT CGAL_FOUND)
-   message(FATAL_ERROR " Please check your CGAL installation, or set correct path to CGAL_INCLUDE_DIR and CGAL_LIBRARIES.")
-endif(NOT CGAL_FOUND)
 
 if(NOT POSTGRESQL_VERSION_STRING)
   message(FATAL_ERROR "pg_config was not found. Please check your PostgreSQL installation!")
@@ -305,12 +323,82 @@ if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
   message(FATAL_ERROR " PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
 endif("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
 
-
 message(STATUS "POSTGRESQL_BIN: ${POSTGRESQL_BIN}")
 execute_process(
   COMMAND ${POSTGRESQL_PG_CONFIG} --pkglibdir
   OUTPUT_STRIP_TRAILING_WHITESPACE
   OUTPUT_VARIABLE LIB_DIR)
+
+
+#----------------------
+# Boost
+#----------------------
+
+#set(Boost_DEBUG ON)
+find_package(Boost)
+if(Boost_INCLUDE_DIRS)
+  message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIR}")
+else(Boost_INCLUDE_DIRS)
+  message(FATAL_ERROR " Please check your Boost installation ") 
+endif(Boost_INCLUDE_DIRS)
+
+#----------------------
+# CGAL
+#----------------------
+find_package(CGAL)
+if(NOT CGAL_FOUND)
+   message(FATAL_ERROR " Please check your CGAL installation, or set correct path to CGAL_INCLUDE_DIR and CGAL_LIBRARIES.")
+endif(NOT CGAL_FOUND)
+
+
+
+
+
+
+#-----------------------------------------------------------------------------
+# Checking optional requierments 
+#-----------------------------------------------------------------------------
+
+#-----------------------------------------------------------------------------
+# Checking DOCUMENTATION requierments 
+#-----------------------------------------------------------------------------
+
+
+#----------------------
+# Perl
+#----------------------
+
+#-----------------------------------------------------------------------------
+# Checking DEVELOPRES DOCUMENTATION requierments 
+#-----------------------------------------------------------------------------
+
+if(WITH_DEV_DOC)
+    message(STATUS "Checking Developers Documentation Requierments")
+
+#----------------------
+# Doxygen
+#----------------------
+    message(STATUS "Doxygen")
+    message(STATUS "MISSING CODE")
+
+
+endif()
+
+
+#-----------------------------------------------------------------------------
+# Checking TEST requierments 
+#-----------------------------------------------------------------------------
+
+#----------------------
+# Perl
+#----------------------
+
+include(FindPerl)
+if(NOT PERL_EXECUTABLE)
+  message(FATAL_ERROR " Please check your Perl installation.")
+endif(NOT PERL_EXECUTABLE)
+
+#-----------------------------------------------------------------------------
 
 if(LIB_DIR)
   message(STATUS "Install directory for libraries is set to ${LIB_DIR}")
