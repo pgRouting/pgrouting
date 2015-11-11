@@ -60,6 +60,8 @@ endif()
 #----------------------
 # Documentation requirements 
 #----------------------
+# if the requirement is not found WITH_DOC will be set to OFF
+# but build will continue
 
 #overriding ON flags when no documentation is asked
 if(NOT WITH_DOC)
@@ -70,7 +72,10 @@ endif(NOT WITH_DOC)
       
 if(WITH_DOC)
 
+    set(SPHINX_MINIMUM_VERSION "1.0")
+
     if (CDEBUG)
+        message(STATUS "SPHINX_MINIMUM_VERSION: ${SPHINX_MINIMUM_VERSION}")
     endif()
 
 endif()
@@ -89,18 +94,6 @@ if(WITH_DEV_DOC)
 
 endif()
 
-#----------------------
-# Tests requirements 
-#----------------------
-
-if(WITH_TEST)
-
-    set(POSTGIS_MINIMUM_VERSION "2.0.0")
-
-    if (CDEBUG)
-        message(STATUS "POSTGIS_MINIMUM_VERSION: ${POSTGIS_MINIMUM_VERSION}")
-    endif()
-endif()
 
 #----------------------
 # Tests requirements 
@@ -223,7 +216,7 @@ include(TargetDistclean)
 if (CDEBUG)
     message(STATUS "  CMAKE_VERSION: ${CMAKE_VERSION}")
     message(STATUS "  PGROUTING_SOURCE_DIR: ${PGROUTING_SOURCE_DIR}")
-    message(STATUS "  CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
+    message(STATUS "  PGROUTING_BINARY_DIR: ${PGROUTING_BINARY_DIR}")
 endif()
 
 message(STATUS ".....OK")
@@ -363,10 +356,57 @@ endif(NOT CGAL_FOUND)
 # Checking DOCUMENTATION requierments 
 #-----------------------------------------------------------------------------
 
+if(WITH_DOC)
+    message(STATUS "Checking Documentation Requierments")
 
 #----------------------
-# Perl
+# Sphinx
 #----------------------
+    find_package(Sphinx)
+
+    if (NOT SPHINX_FOUND)
+        message(WARNING "   -- Sphinx not found. Cannot generate documentation!")
+        set(WITH_DOC OFF)
+    else()
+
+        if (SPHINX_VERSION VERSION_LESS ${SPHINX_MINIMUM_VERSION})
+            message(WARNING "Your Sphinx version is too old!
+            This project requires Sphinx v1.0 or above to produce
+            poper documentation (you have v${SPHINX_VERSION}).
+            You will get output but it will have errors.")
+        endif()
+
+        if (BUILD_LATEX)
+            find_package(LATEX)
+
+            if (NOT PDFLATEX_COMPILER OR NOT LATEX_COMPILER)
+                message(WARNING "Couldn't find Latex, can't build latex docs using Sphinx")
+                set(BUILD_LATEX OFF)
+            endif()
+        endif()
+                                                                                                                                    
+        set(SPHINX_THEME "haiku")
+        set(SPHINX_BINARY_BUILD_DIR "${PGROUTING_BINARY_DIR}/doc/_build")
+        set(SPHINX_CACHE_DIR "${PGROUTING_BINARY_DIR}/doc/_doctrees")
+
+
+        if (CDEBUG)
+            message(STATUS "  SPHINX_VERSION=${SPHINX_VERSION}")
+            message(STATUS "  SPHINX_THEME=${SPHINX_THEME}")
+            message(STATUS "  SPHINX_BINARY_BUILD_DIR = ${SPHINX_BINARY_BUILD_DIR}")
+            message(STATUS "  SPHINX_CACHE_DIR = ${SPHINX_CACHE_DIR}")
+            if (BUILD_LATEX)
+                message(STATUS "  PDFLATEX_COMPILER = ${PDFLATEX_COMPILER}")
+                message(STATUS "  LATEX_COMPILER = ${LATEX_COMPILER}")
+            endif()
+        endif()
+
+    endif()
+
+    message(STATUS ".....OK")
+
+endif()
+
 
 #-----------------------------------------------------------------------------
 # Checking DEVELOPRES DOCUMENTATION requierments 
@@ -420,9 +460,6 @@ else(SHARE_DIR)
   message(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
 endif(SHARE_DIR)
 
-# Handles documentation
-message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
-add_subdirectory(doc)
 
 #include directories: files in alphabetical order
 set(PGROUTING_INCLUDE_DIRECTORIES
@@ -626,3 +663,12 @@ install(FILES
 #    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
     DESTINATION "${SHARE_DIR}")
 
+
+#-----------------------------------------------------------------------------
+# Handles documentation
+#-----------------------------------------------------------------------------
+
+if (WITH_DOC)
+    message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
+    add_subdirectory(doc)
+endif()
