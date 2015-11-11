@@ -55,6 +55,14 @@ endif()
 #----------------------
 # Documentation requirements 
 #----------------------
+
+#overriding ON flags when no documentation is asked
+if(NOT WITH_DOC)
+    set(BUILD_HTML OFF) 
+    set(BUILD_LATEX OFF) 
+    set(BUILD_MAN OFF) 
+endif(NOT WITH_DOC)
+      
 if(WITH_DOC)
 
     if (CDEBUG)
@@ -158,7 +166,7 @@ message(STATUS ".....OK")
 
 message(STATUS "Checking the cmake configuration")
 
-cmake_minimum_required(VERSION ${POSTGRESQL_MINIMUM_VERSION} FATAL_ERROR)
+cmake_minimum_required(VERSION ${CMAKE_MINIMUM_VERSION} FATAL_ERROR)
 
 #----------------------
 # Extra modules location
@@ -221,6 +229,7 @@ message(STATUS ".....OK")
 if(WIN32)
 
     set(OS_BUILD  $ENV{OS_BUILD})
+
     if(NOT OS_BUILD)
         set(OS_BUILD "64")
     endif(NOT OS_BUILD)
@@ -248,7 +257,13 @@ if(WIN32)
     endif()
 
 endif(WIN32)
+#-----------------------------------------------------------------------------
 
+
+
+
+#-----------------------------------------------------------------------------
+# CHECKING BUILD REQUIREMENTS 
 #-----------------------------------------------------------------------------
 
 include(FindPerl)
