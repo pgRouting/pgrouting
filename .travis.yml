@@ -20,6 +20,7 @@ branches:
   only:
     - master
     - develop
+    - nodeNet-dev-2.2
 
 addons:
   postgresql: "9.2"
