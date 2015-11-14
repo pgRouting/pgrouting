@@ -1,3 +1,4 @@
+#=============================================================================
 # - Find the PostgreSQL installation.
 # In Windows, we make the assumption that, if the PostgreSQL files are installed, the default directory
 # will be C:\Program Files\PostgreSQL.
@@ -6,6 +7,11 @@
 #  PostgreSQL_LIBRARIES - the PostgreSQL libraries needed for linking
 #  PostgreSQL_INCLUDE_DIRS - the directories of the PostgreSQL headers
 #  PostgreSQL_VERSION_STRING - the version of PostgreSQL found (since CMake 2.8.8)
+
+#=============================================================================
+# Copyright 2015 pgRouting contributors
+#
+# - Find the PostgreSQL installation needed for pgRouting.
 
 #=============================================================================
 # Copyright 2004-2009 Kitware, Inc.
@@ -87,7 +93,6 @@ endif()
 set( PostgreSQL_ROOT_DIRECTORIES
    ENV PostgreSQL_ROOT
    ${PostgreSQL_ROOT}
-   ${PostgreSQL_ADDITIONAL_SEARCH_PATHS}
 )
 
 #
@@ -106,15 +111,17 @@ find_path(PostgreSQL_INCLUDE_DIR
   DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
 )
 
-message(STATUS "PostgreSQL_INCLUDE_DIR= ${PostgreSQL_INCLUDE_DIR}")
-message(STATUS "PostgreSQL_KNOWN_VERSIONS = ${PostgreSQL_KNOWN_VERSIONS} ")
-message(STATUS "PostgreSQL_ADDITIONAL_SEARCH_PATHS = ${PostgreSQL_ADDITIONAL_SEARCH_PATHS} ")
-message(STATUS "PostgreSQL_ROOT_DIRECTORIES= ${PostgreSQL_ROOT_DIRECTORIES}")
+if ( UNIX )
+  foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
+      set(PostgreSQL_ADDITIONAL_SEARCH_PATHS ${PostgreSQL_ADDITIONAL_SEARCH_PATHS} "${PostgreSQL_INCLUDE_DIR}/${suffix}/server" )
+  endforeach()
+endif()
 
 find_path(PostgreSQL_TYPE_INCLUDE_DIR
   NAMES catalog/pg_type.h
   PATHS
    # Look in other places.
+   ${PostgreSQL_ADDITIONAL_SEARCH_PATHS}
    ${PostgreSQL_ROOT_DIRECTORIES}
   PATH_SUFFIXES
     postgresql
@@ -125,14 +132,23 @@ find_path(PostgreSQL_TYPE_INCLUDE_DIR
   DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
 )
 
+
 # The PostgreSQL library.
 set (PostgreSQL_LIBRARY_TO_FIND pq)
+
 # Setting some more prefixes for the library
 set (PostgreSQL_LIB_PREFIX "")
 if ( WIN32 )
   set (PostgreSQL_LIB_PREFIX ${PostgreSQL_LIB_PREFIX} "lib")
   set ( PostgreSQL_LIBRARY_TO_FIND ${PostgreSQL_LIB_PREFIX}${PostgreSQL_LIBRARY_TO_FIND})
 endif()
+
+message(STATUS "PostgreSQL_INCLUDE_DIR= ${PostgreSQL_INCLUDE_DIR}")
+message(STATUS "PostgreSQL_TYPE_INCLUDE_DIR= ${PostgreSQL_TYPE_INCLUDE_DIR}")
+message(STATUS "PostgreSQL_KNOWN_VERSIONS = ${PostgreSQL_KNOWN_VERSIONS} ")
+message(STATUS "PostgreSQL_ADDITIONAL_SEARCH_PATHS = ${PostgreSQL_ADDITIONAL_SEARCH_PATHS} ")
+message(STATUS "PostgreSQL_ROOT_DIRECTORIES= ${PostgreSQL_ROOT_DIRECTORIES}")
+
 
 find_library( PostgreSQL_LIBRARY
  NAMES ${PostgreSQL_LIBRARY_TO_FIND}
@@ -143,7 +159,7 @@ find_library( PostgreSQL_LIBRARY
 )
 get_filename_component(PostgreSQL_LIBRARY_DIR ${PostgreSQL_LIBRARY} PATH)
 
-if (PostgreSQL_INCLUDE_DIR AND EXISTS "${PostgreSQL_INCLUDE_DIR}/pg_config.h")
+if (PostgreSQL_INCLUDE_DIR AND EXISTS "${PostgreSQL_TYPE_INCLUDE_DIR}/pg_config.h")
   file(STRINGS "${PostgreSQL_INCLUDE_DIR}/pg_config.h" pgsql_version_str
        REGEX "^#define[\t ]+PG_VERSION[\t ]+\".*\"")
 
@@ -162,13 +178,13 @@ set( PostgreSQL_FOUND  ${POSTGRESQL_FOUND})
 # Now try to get the include and library path.
 if(PostgreSQL_FOUND)
 
-  set(PostgreSQL_INCLUDE_DIRS ${PostgreSQL_INCLUDE_DIR} ${PostgreSQL_TYPE_INCLUDE_DIR} )
+  set(PostgreSQL_INCLUDE_DIRS ${PostgreSQL_TYPE_INCLUDE_DIR} )
   set(PostgreSQL_LIBRARY_DIRS ${PostgreSQL_LIBRARY_DIR} )
   set(PostgreSQL_LIBRARIES ${PostgreSQL_LIBRARY_TO_FIND})
 
-  #message("Final PostgreSQL include dir: ${PostgreSQL_INCLUDE_DIRS}")
-  #message("Final PostgreSQL library dir: ${PostgreSQL_LIBRARY_DIRS}")
-  #message("Final PostgreSQL libraries:   ${PostgreSQL_LIBRARIES}")
+  message("Final PostgreSQL include dir: ${PostgreSQL_INCLUDE_DIRS}")
+  message("Final PostgreSQL library dir: ${PostgreSQL_LIBRARY_DIRS}")
+  message("Final PostgreSQL libraries:   ${PostgreSQL_LIBRARIES}")
 endif()
 
 mark_as_advanced(PostgreSQL_INCLUDE_DIR PostgreSQL_TYPE_INCLUDE_DIR PostgreSQL_LIBRARY )

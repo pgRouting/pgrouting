@@ -407,36 +407,29 @@ message(".....OK")
 
 message("Detecting Postgresql requirements")
 
-message(STATUS "CMAKE_CURRENT_LIST_DIR= ${CMAKE_CURRENT_LIST_DIR}")
 include(FindPackageHandleStandardArgs)
 set(PostgreSQL_ADDITIONAL_VERSIONS "9.4" "9.3" "9.2" "9.1")
 
-find_package(PostgreSQL)
-if(NOT POSTGRESQL_FOUND)
+find_package(PostgreSQL ${POSTGRESQL_MINIMUM_VERSION})
+if (NOT POSTGRESQL_FOUND)
     message(FATAL_ERROR " Please check your PostgreSQL installation.") 
-endif(NOT POSTGRESQL_FOUND)
+endif ()
 
-if(NOT POSTGRESQL_VERSION_STRING)
-    message(FATAL_ERROR "pg_config was not found. Please check your PostgreSQL installation!")
-endif(NOT POSTGRESQL_VERSION_STRING)
 
-message(STATUS "POSTGRESQL_VERSION_STRING is ${POSTGRESQL_VERSION_STRING}")
-string(SUBSTRING "${POSTGRESQL_VERSION_STRING}" 11 -1 POSTGRESQL_VERSION)
-message(STATUS "POSTGRESQL_VERSION is ${POSTGRESQL_VERSION}")
-string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQL_VERSION})
-message(STATUS "PGSQL_VERSION is ${PGSQL_VERSION}")
-
+string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1.\\2" PGSQL_VERSION ${PostgreSQL_VERSION_STRING})
+set(PostgreSQL_LIBRARY_INSTALLATION "/usr/lib/postgresql/${PGSQL_VERSION}/lib")
+set(PostgreSQL_EXTENSION_INSTALLATION "/usr/share/postgresql/${PGSQL_VERSION}/extension")
+string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${PostgreSQL_VERSION_STRING})
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
 
-if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
-    message(FATAL_ERROR " PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
-endif("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
-
-message(STATUS "POSTGRESQL_BIN: ${POSTGRESQL_BIN}")
-execute_process(
-    COMMAND ${POSTGRESQL_PG_CONFIG} --pkglibdir
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-    OUTPUT_VARIABLE LIB_DIR)
+if (CDEBUG)
+    message(STATUS "pg_config.h is found in: ${PostgreSQL_INCLUDE_DIRS}")
+    message(STATUS "pg_type.h is found in: ${PostgreSQL_INCLUDE_DIRS}/catalog")
+    message(STATUS "Extension directory to install in: ${PostgreSQL_EXTENSION_INSTALLATION}")
+    message(STATUS "iLibrary directory to install in: ${PostgreSQL_LIBRARY_INSTALLATION}")
+    message(STATUS "PostgreSQL_VERSION_STRING is ${PostgreSQL_VERSION_STRING}")
+    message(STATUS "C flag: PGSQL_VERSION is ${PGSQL_VERSION}")
+endif()
 
 
 message(".....OK")
@@ -470,6 +463,16 @@ endif()
 # Checking TEST requierments 
 #-----------------------------------------------------------------------------
 
+include(FindPostGIS)
+find_package(PostGIS ${POSTGIS_MINIMUM_VERSION})
+
+if(NOT PostGIS_FOUND)
+    set(WITH_TEST False)
+    message(STATUS " postGIS not Found.
+    Please check your postGIS installation.")
+endif()
+
+
 #----------------------
 # Perl
 #----------------------
@@ -481,25 +484,7 @@ endif(NOT PERL_EXECUTABLE)
 
 #-----------------------------------------------------------------------------
 
-if(LIB_DIR)
-    message(STATUS "Install directory for libraries is set to ${LIB_DIR}")
-else(LIB_DIR)
-    message(FATAL_ERROR "pg_config --pkglibdir failed to return a value. Please check your PostgreSQL installation!")
-endif(LIB_DIR)
 
-set(LIBRARY_INSTALL_PATH ${LIB_DIR})
-
-execute_process(
-    COMMAND ${POSTGRESQL_PG_CONFIG} --sharedir
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-    OUTPUT_VARIABLE SHARE_DIR)
-
-if(SHARE_DIR)
-    set(SHARE_DIR "${SHARE_DIR}/extension")
-    message(STATUS "Extension directory for SQL files is set to ${SHARE_DIR}")
-else(SHARE_DIR)
-    message(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
-endif(SHARE_DIR)
 
 
 #include directories: files in alphabetical order
@@ -528,7 +513,7 @@ set(PGROUTING_INCLUDE_DIRECTORIES
     #    ${PGROUTING_SOURCE_DIR}/src/vrpdptw/src
     )
 
-include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
+include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${PostgreSQL_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 
 
 if(WIN32)
@@ -538,7 +523,7 @@ endif(WIN32)
 # we need link libpostgres.a on win32 env
 if(WIN32)
     message(STATUS "LINK_DIRECTORIES = ${POSTGRESQL_LIBRARIES}")
-    link_directories(${POSTGRESQL_LIBRARIES} ${LIB_DIR})
+    link_directories(${POSTGRESQL_LIBRARIES} ${PostgreSQL_LIBRARY_INSTALLATION})
     link_libraries(postgres)
 endif(WIN32)
 
@@ -611,7 +596,7 @@ add_library(${PGROUTING_LIB_NAME}
     )
 
 #install(TARGETS routing-2.2 DESTINATION ${LIBRARY_INSTALL_PATH})
-install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${LIBRARY_INSTALL_PATH})
+install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${PostgreSQL_LIBRARY_INSTALLATION})
 
 #add_library(routing_vrp
 #add_library(routing_bd
@@ -702,14 +687,6 @@ install(FILES
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
     ${VERSION_UPDATE_FILES}
     #    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
-    DESTINATION "${SHARE_DIR}")
+    DESTINATION "${PostgreSQL_EXTENSION_INSTALLATION}")
 
 
-#-----------------------------------------------------------------------------
-# Handles documentation
-#-----------------------------------------------------------------------------
-
-if (WITH_DOC)
-    message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
-    add_subdirectory(doc)
-endif()
