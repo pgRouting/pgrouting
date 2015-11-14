@@ -36,7 +36,9 @@ option(WITH_DEV_DOC
     "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
 
 
-SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries an a non-standard location.")
+option(POSTGRESQL_VERSION " To set the version" "")
+option(POSTGRESQL_LIBRARY_INSTALLATION " To set to strange library locaton" "")
+option(POSTGRESQL_EXTENSION_INSTALLATION " To override the installation location" "")
 
 
 #-----------------------------------------------------------------------------
@@ -408,18 +410,40 @@ message(".....OK")
 message("Detecting Postgresql requirements")
 
 include(FindPackageHandleStandardArgs)
-set(PostgreSQL_ADDITIONAL_VERSIONS "9.4" "9.3" "9.2" "9.1")
 
-find_package(PostgreSQL ${POSTGRESQL_MINIMUM_VERSION})
-if (NOT POSTGRESQL_FOUND)
-    message(FATAL_ERROR " Please check your PostgreSQL installation.") 
-endif ()
+if (POSTGRESQL_VERSION)
+    set(PostgreSQL_VERSION_STRING  "${POSTGRESQL_VERSION}.0")
+
+    if (NOT POSTGRES_INCLUDE_DIRS)
+        set(PostgreSQL_INCLUDE_DIRS  "/usr/include/postgresql/${POSTGRESQL_VERSION}/server")
+    endif()
 
 
-string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1.\\2" PGSQL_VERSION ${PostgreSQL_VERSION_STRING})
-set(PostgreSQL_LIBRARY_INSTALLATION "/usr/lib/postgresql/${PGSQL_VERSION}/lib")
-set(PostgreSQL_EXTENSION_INSTALLATION "/usr/share/postgresql/${PGSQL_VERSION}/extension")
+else()
+    set(PostgreSQL_ADDITIONAL_VERSIONS "9.4" "9.3" "9.2" "9.1")
+
+    find_package(PostgreSQL ${POSTGRESQL_MINIMUM_VERSION})
+    if (NOT POSTGRESQL_FOUND)
+        message(FATAL_ERROR " Please check your PostgreSQL installation.") 
+    endif ()
+
+    string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1.\\2" POSTGRESQL_VERSION ${PostgreSQL_VERSION_STRING})
+
+endif()
+
 string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${PostgreSQL_VERSION_STRING})
+
+if(NOT POSTGRESQL_LIBRARY_INSTALLATION)
+    set(PostgreSQL_LIBRARY_INSTALLATION "/usr/lib/postgresql/${POSTGRESQL_VERSION}/lib")
+endif()
+
+if(NOT POSTGRESQL_EXTENSION_INSTALLATION)
+    set(PostgreSQL_EXTENSION_INSTALLATION "/usr/share/postgresql/${POSTGRESQL_VERSION}/extension")
+endif()
+
+
+
+
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
 
 if (CDEBUG)
