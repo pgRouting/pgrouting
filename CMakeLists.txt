@@ -43,17 +43,20 @@ SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries 
 # PGROUTING Setting the Minimum requirements
 #-----------------------------------------------------------------------------
 
+message("Setting the minimum requirements")
 #----------------------
 # Build requirements 
 #----------------------
+
+# compiler with c++0x or c++11
 
 set(POSTGRESQL_MINIMUM_VERSION "9.1.0")
 set(CMAKE_MINIMUM_VERSION "2.8.8")
 set(BOOST_MINIMUM_VERSION "1.55.0")
 
 if (CDEBUG)
-    message(STATUS "CMAKE_MINIMUM_VERSION: ${CMAKE_MINIMUM_VERSION}")
     message(STATUS "POSTGRESQL_MINIMUM_VERSION: ${POSTGRESQL_MINIMUM_VERSION}")
+    message(STATUS "CMAKE_MINIMUM_VERSION: ${CMAKE_MINIMUM_VERSION}")
     message(STATUS "BOOST_MINIMUM_VERSION: ${BOOST_MINIMUM_VERSION}")
 endif()
 
@@ -69,7 +72,7 @@ if(NOT WITH_DOC)
     set(BUILD_LATEX OFF) 
     set(BUILD_MAN OFF) 
 endif(NOT WITH_DOC)
-      
+
 if(WITH_DOC)
 
     set(SPHINX_MINIMUM_VERSION "1.0")
@@ -109,12 +112,15 @@ if(WITH_TEST)
 
 endif()
 
+message(".....OK")
+
+
 
 #-----------------------------------------------------------------------------
 # PGROUTING version handling.
 #-----------------------------------------------------------------------------
 
-message(STATUS "Building the Version")
+message("Building the Version")
 
 #----------------------
 # PGROUTING version
@@ -139,7 +145,11 @@ string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUI
 string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\4" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
 
+
 string(COMPARE NOTEQUAL ${PGROUTING_GIT_BRANCH}  "master" PGROUTING_DEVELOP)
+
+set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_GIT_HASH} ${PGROUTING_GIT_BRANCH}")
+
 if(PGROUTING_DEVELOP)
     set(PGROUTING_GIT_TAG "pgrouting-${PGROUTING_VERSION_STRING}-dev")
 endif()
@@ -149,9 +159,10 @@ if (CDEBUG)
     message(STATUS "  PGROUTING_GIT_BUILD: ${PGROUTING_GIT_BUILD}")
     message(STATUS "  PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")
     message(STATUS "  PGROUTING_GIT_BRANCH: ${PGROUTING_GIT_BRANCH}")
+    message(STATUS "  PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
 endif()
 
-message(STATUS ".....OK")
+message(".....OK")
 
 
 
@@ -160,7 +171,7 @@ message(STATUS ".....OK")
 # PGROUTING Library names
 #-----------------------------------------------------------------------------
 
-message(STATUS "Building the library names")
+message("Building the library names")
 
 #----------------------
 # PGROUTING installation files names have the following name
@@ -180,7 +191,7 @@ if (CDEBUG)
     message(STATUS "  PGROUTING_LIBRARY_NAME: ${PGROUTING_LIBRARY_NAME}")
 endif()
 
-message(STATUS ".....OK")
+message(".....OK")
 
 
 
@@ -189,7 +200,7 @@ message(STATUS ".....OK")
 # CMAKE configuration
 #-----------------------------------------------------------------------------
 
-message(STATUS "Checking the cmake configuration")
+message("Checking the cmake configuration")
 
 cmake_minimum_required(VERSION ${CMAKE_MINIMUM_VERSION} FATAL_ERROR)
 
@@ -203,6 +214,7 @@ set(CMAKE_MODULE_PATH "${PGROUTING_SOURCE_DIR}/cmake")
 # For concatenation
 #----------------------
 include(Cat)
+include(FindPackageHandleStandardArgs)
 
 #----------------------
 # Should leave only the files that were in the distribution.
@@ -219,7 +231,7 @@ if (CDEBUG)
     message(STATUS "  PGROUTING_BINARY_DIR: ${PGROUTING_BINARY_DIR}")
 endif()
 
-message(STATUS ".....OK")
+message(".....OK")
 
 
 
@@ -228,7 +240,7 @@ message(STATUS ".....OK")
 # Operating system
 #-----------------------------------------------------------------------------
 
-message(STATUS "Detecting Operating System")
+message("Detecting Operating System")
 
 
 # TODO In V3.0 we are going to store this in pgr_version
@@ -241,7 +253,7 @@ elseif(WIN32)
 endif()
 
 
-message(STATUS ".....OK")
+message(".....OK")
 
 
 
@@ -264,11 +276,11 @@ if(WIN32)
     if (NOT BOOST_ROOT)
         set(BOOST_ROOT c:/ming${OS_BUILD}/msys/local)
     endif(NOT BOOST_ROOT)
-   
+
     if (NOT CGAL_ROOT)
         set(CGAL_ROOT c:/ming${OS_BUILD}/msys/local)
     endif(NOT CGAL_ROOT)
-  
+
     if (NOT GMP_ROOT)
         set(GMP_ROOT c:/ming${OS_BUILD}/mingw${OS_BUILD})
     endif(NOT GMP_ROOT)
@@ -286,22 +298,126 @@ endif(WIN32)
 
 
 
+#-----------------------------------------------------------------------------
+# Handles documentation
+# checks for requirements
+# process the documentation
+#-----------------------------------------------------------------------------
+
+if (WITH_DOC)
+    message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
+    add_subdirectory(doc)
+endif()
 
 #-----------------------------------------------------------------------------
 # Checking BUILD requierments 
 #-----------------------------------------------------------------------------
 
 #----------------------
+# Detecting C compiler
+#----------------------
+
+message("Detecting Compilers")
+
+include(CheckCXXCompilerFlag)
+CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
+
+message(STATUS "CMAKE_CXX_COMPILER= ${CMAKE_CXX_COMPILER}")
+
+
+if(COMPILER_SUPPORTS_CXX0X)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+elseif(COMPILER_SUPPORTS_CXX11)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+else()
+    message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++0x nor C++11 support.
+    Please use a different C++ compiler.")
+endif()
+
+if (CDEBUG)
+    message(STATUS "  CMAKE_C_COMPILER: ${CMAKE_C_COMPILER}")
+    message(STATUS "  CMAKE_C_FLAGS: ${CMAKE_C_FLAGS}")
+    message(STATUS "  CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}")
+    message(STATUS "  CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
+endif()
+
+message(".....OK")
+
+
+#----------------------
+# Boost
+#----------------------
+
+message("Checking Boost graph header only")
+
+
+set(Boost_USE_MULTITHREADED off)
+find_package(Boost COMPONENTS graph REQUIRED) 
+
+
+if(NOT Boost_INCLUDE_DIRS)
+    message(FATAL_ERROR " Include directory was not found.
+    Please check your Boost installation ") 
+endif()
+
+if(NOT Boost_GRAPH_FOUND)
+    message(FATAL_ERROR " Boost Graph component was not found. 
+    Please check your Boost installation ") 
+endif()
+
+#BOOST_MINIMUM_VERSION
+
+
+if (CDEBUG)
+    message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIR}")
+endif()
+
+message(".....OK")
+
+
+#----------------------
+# CGAL
+#----------------------
+
+message("Checking CGAL requirements")
+
+set(Boost_DEBUG OFF)
+
+find_package(CGAL)
+
+if(NOT CGAL_FOUND)
+    message(FATAL_ERROR " CGAL installation not found
+    Please check your CGAL installation ") 
+endif(NOT CGAL_FOUND)
+
+if (CDEBUG)
+    message(STATUS "CGAL_INCLUDE_DIR=${CGAL_INCLUDE_DIR}")
+    message(STATUS "CGAL_LIBRARIES=${CGAL_LIBRARIES}")
+    message(STATUS "BOOST_THREAD_LIBRARIES=${BOOST_THREAD_LIBRARIES}")
+    message(STATUS "GMP_LIBRARIES=${GMP_LIBRARIES}")
+endif()
+
+message(".....OK")
+
+
+#----------------------
 # PostgreSQL
 #----------------------
 
+message("Detecting Postgresql requirements")
+
+message(STATUS "CMAKE_CURRENT_LIST_DIR= ${CMAKE_CURRENT_LIST_DIR}")
+include(FindPackageHandleStandardArgs)
+set(PostgreSQL_ADDITIONAL_VERSIONS "9.4" "9.3" "9.2" "9.1")
+
 find_package(PostgreSQL)
 if(NOT POSTGRESQL_FOUND)
-  message(FATAL_ERROR " Please check your PostgreSQL installation.") 
+    message(FATAL_ERROR " Please check your PostgreSQL installation.") 
 endif(NOT POSTGRESQL_FOUND)
 
 if(NOT POSTGRESQL_VERSION_STRING)
-  message(FATAL_ERROR "pg_config was not found. Please check your PostgreSQL installation!")
+    message(FATAL_ERROR "pg_config was not found. Please check your PostgreSQL installation!")
 endif(NOT POSTGRESQL_VERSION_STRING)
 
 message(STATUS "POSTGRESQL_VERSION_STRING is ${POSTGRESQL_VERSION_STRING}")
@@ -313,37 +429,17 @@ message(STATUS "PGSQL_VERSION is ${PGSQL_VERSION}")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
 
 if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
-  message(FATAL_ERROR " PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
+    message(FATAL_ERROR " PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
 endif("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
 
 message(STATUS "POSTGRESQL_BIN: ${POSTGRESQL_BIN}")
 execute_process(
-  COMMAND ${POSTGRESQL_PG_CONFIG} --pkglibdir
-  OUTPUT_STRIP_TRAILING_WHITESPACE
-  OUTPUT_VARIABLE LIB_DIR)
+    COMMAND ${POSTGRESQL_PG_CONFIG} --pkglibdir
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+    OUTPUT_VARIABLE LIB_DIR)
 
 
-#----------------------
-# Boost
-#----------------------
-
-#set(Boost_DEBUG ON)
-find_package(Boost)
-if(Boost_INCLUDE_DIRS)
-  message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIR}")
-else(Boost_INCLUDE_DIRS)
-  message(FATAL_ERROR " Please check your Boost installation ") 
-endif(Boost_INCLUDE_DIRS)
-
-#----------------------
-# CGAL
-#----------------------
-find_package(CGAL)
-if(NOT CGAL_FOUND)
-   message(FATAL_ERROR " Please check your CGAL installation, or set correct path to CGAL_INCLUDE_DIR and CGAL_LIBRARIES.")
-endif(NOT CGAL_FOUND)
-
-
+message(".....OK")
 
 
 
@@ -351,61 +447,6 @@ endif(NOT CGAL_FOUND)
 #-----------------------------------------------------------------------------
 # Checking optional requierments 
 #-----------------------------------------------------------------------------
-
-#-----------------------------------------------------------------------------
-# Checking DOCUMENTATION requierments 
-#-----------------------------------------------------------------------------
-
-if(WITH_DOC)
-    message(STATUS "Checking Documentation Requierments")
-
-#----------------------
-# Sphinx
-#----------------------
-    find_package(Sphinx)
-
-    if (NOT SPHINX_FOUND)
-        message(WARNING "   -- Sphinx not found. Cannot generate documentation!")
-        set(WITH_DOC OFF)
-    else()
-
-        if (SPHINX_VERSION VERSION_LESS ${SPHINX_MINIMUM_VERSION})
-            message(WARNING "Your Sphinx version is too old!
-            This project requires Sphinx v1.0 or above to produce
-            poper documentation (you have v${SPHINX_VERSION}).
-            You will get output but it will have errors.")
-        endif()
-
-        if (BUILD_LATEX)
-            find_package(LATEX)
-
-            if (NOT PDFLATEX_COMPILER OR NOT LATEX_COMPILER)
-                message(WARNING "Couldn't find Latex, can't build latex docs using Sphinx")
-                set(BUILD_LATEX OFF)
-            endif()
-        endif()
-                                                                                                                                    
-        set(SPHINX_THEME "haiku")
-        set(SPHINX_BINARY_BUILD_DIR "${PGROUTING_BINARY_DIR}/doc/_build")
-        set(SPHINX_CACHE_DIR "${PGROUTING_BINARY_DIR}/doc/_doctrees")
-
-
-        if (CDEBUG)
-            message(STATUS "  SPHINX_VERSION=${SPHINX_VERSION}")
-            message(STATUS "  SPHINX_THEME=${SPHINX_THEME}")
-            message(STATUS "  SPHINX_BINARY_BUILD_DIR = ${SPHINX_BINARY_BUILD_DIR}")
-            message(STATUS "  SPHINX_CACHE_DIR = ${SPHINX_CACHE_DIR}")
-            if (BUILD_LATEX)
-                message(STATUS "  PDFLATEX_COMPILER = ${PDFLATEX_COMPILER}")
-                message(STATUS "  LATEX_COMPILER = ${LATEX_COMPILER}")
-            endif()
-        endif()
-
-    endif()
-
-    message(STATUS ".....OK")
-
-endif()
 
 
 #-----------------------------------------------------------------------------
@@ -415,9 +456,9 @@ endif()
 if(WITH_DEV_DOC)
     message(STATUS "Checking Developers Documentation Requierments")
 
-#----------------------
-# Doxygen
-#----------------------
+    #----------------------
+    # Doxygen
+    #----------------------
     message(STATUS "Doxygen")
     message(STATUS "MISSING CODE")
 
@@ -435,29 +476,29 @@ endif()
 
 include(FindPerl)
 if(NOT PERL_EXECUTABLE)
-  message(FATAL_ERROR " Please check your Perl installation.")
+    message(FATAL_ERROR " Please check your Perl installation.")
 endif(NOT PERL_EXECUTABLE)
 
 #-----------------------------------------------------------------------------
 
 if(LIB_DIR)
-  message(STATUS "Install directory for libraries is set to ${LIB_DIR}")
+    message(STATUS "Install directory for libraries is set to ${LIB_DIR}")
 else(LIB_DIR)
-  message(FATAL_ERROR "pg_config --pkglibdir failed to return a value. Please check your PostgreSQL installation!")
+    message(FATAL_ERROR "pg_config --pkglibdir failed to return a value. Please check your PostgreSQL installation!")
 endif(LIB_DIR)
 
 set(LIBRARY_INSTALL_PATH ${LIB_DIR})
 
 execute_process(
-  COMMAND ${POSTGRESQL_PG_CONFIG} --sharedir
-  OUTPUT_STRIP_TRAILING_WHITESPACE
-  OUTPUT_VARIABLE SHARE_DIR)
+    COMMAND ${POSTGRESQL_PG_CONFIG} --sharedir
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+    OUTPUT_VARIABLE SHARE_DIR)
 
 if(SHARE_DIR)
-  set(SHARE_DIR "${SHARE_DIR}/extension")
-  message(STATUS "Extension directory for SQL files is set to ${SHARE_DIR}")
+    set(SHARE_DIR "${SHARE_DIR}/extension")
+    message(STATUS "Extension directory for SQL files is set to ${SHARE_DIR}")
 else(SHARE_DIR)
-  message(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
+    message(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
 endif(SHARE_DIR)
 
 
@@ -478,52 +519,52 @@ set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/vrp_basic/src
     ${PGROUTING_SOURCE_DIR}/src/vrppdtw/src
 
-# not using C/C++
+    # not using C/C++
     ${PGROUTING_SOURCE_DIR}/src/label_graph/src
 
 
-#not suported but directory exists
-#    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
-#    ${PGROUTING_SOURCE_DIR}/src/vrpdptw/src
+    #not suported but directory exists
+    #    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
+    #    ${PGROUTING_SOURCE_DIR}/src/vrpdptw/src
     )
 
 include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
 
 
 if(WIN32)
-  include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
+    include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
 endif(WIN32)
 
 # we need link libpostgres.a on win32 env
 if(WIN32)
-  message(STATUS "LINK_DIRECTORIES = ${POSTGRESQL_LIBRARIES}")
-  link_directories(${POSTGRESQL_LIBRARIES} ${LIB_DIR})
-  link_libraries(postgres)
+    message(STATUS "LINK_DIRECTORIES = ${POSTGRESQL_LIBRARIES}")
+    link_directories(${POSTGRESQL_LIBRARIES} ${LIB_DIR})
+    link_libraries(postgres)
 endif(WIN32)
 
 
 #compiler directives
 if(APPLE)
-  # support GNU(Xcode<4) and Clang(Xcode>=4)
-  if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -frounding-math")
-  else()
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g")
-  endif()
-  if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -frounding-math -Wno-deprecated")
-  else()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -std=c++0x -g -Wno-deprecated")
-  endif()
+    # support GNU(Xcode<4) and Clang(Xcode>=4)
+    if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
+        set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -frounding-math")
+    else()
+        set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g")
+    endif()
+    if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -frounding-math -Wno-deprecated")
+    else()
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -std=c++0x -g -Wno-deprecated")
+    endif()
 
 elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGWIN)
-  set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -Wall -frounding-math")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -Wall -std=c++0x -frounding-math -Wno-deprecated")
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -Wall -frounding-math")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -Wall -std=c++0x -frounding-math -Wno-deprecated")
 
 elseif(WIN32)
-  # currently, support MinGW only
-  set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -Wall -frounding-math")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g  -std=c++0x -frounding-math -Wno-deprecated")
+    # currently, support MinGW only
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -Wall -frounding-math")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g  -std=c++0x -frounding-math -Wno-deprecated")
 endif()
 
 # List variable to collect module SQL file names
@@ -565,8 +606,8 @@ add_library(${PGROUTING_LIB_NAME}
     $<TARGET_OBJECTS:vrp_basic>
     $<TARGET_OBJECTS:vrppdtw>
 
-#not supported but directory exists
-#    $<TARGET_OBJECTS:shooting_star>
+    #not supported but directory exists
+    #    $<TARGET_OBJECTS:shooting_star>
     )
 
 #install(TARGETS routing-2.2 DESTINATION ${LIBRARY_INSTALL_PATH})
@@ -586,10 +627,10 @@ endif(APPLE)
 
 
 file(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-"-- pgRouting version '${PGROUTING_VERSION_STRING}' extension for postgresql\n")
+    "-- pgRouting version '${PGROUTING_VERSION_STRING}' extension for postgresql\n")
 
 file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-  "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
+    "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
 #file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
 #    "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
 
@@ -615,20 +656,20 @@ configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
 # create the signature file for this release
 message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION_STRING}.sig")
 execute_process(
-  COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file ${PGROUTING_VERSION_STRING}
-  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-  RESULT_VARIABLE SIG_RESULT
-)
+    COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file ${PGROUTING_VERSION_STRING}
+    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+    RESULT_VARIABLE SIG_RESULT
+    )
 if(SIG_RESULT)
     message(FATAL_ERROR "    SIG_RESULT: ${SIG_RESULT}")
 endif(SIG_RESULT)
 
 # create the extension update scripts
 execute_process(
-  COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/build-extension-update-files ${PGROUTING_VERSION_STRING} ${PGROUTING_SOURCE_DIR}
-  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-  RESULT_VARIABLE UPDATE_RESULT
-)
+    COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/build-extension-update-files ${PGROUTING_VERSION_STRING} ${PGROUTING_SOURCE_DIR}
+    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+    RESULT_VARIABLE UPDATE_RESULT
+    )
 if(UPDATE_RESULT)
     message(FATAL_ERROR "   UPDATE_RESULT: ${UPDATE_RESULT}")
 endif(UPDATE_RESULT)
@@ -648,9 +689,9 @@ if(UNIX)
 else(UNIX)
     file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.dll")
 endif(UNIX)
- 
- 
- 
+
+
+
 
 
 message(STATUS "LIBS_TO_INSTALL=${PGROUTING_LIBRARY_NAME}")
@@ -660,7 +701,7 @@ install(FILES
     "${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIB_NAME}.sql"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
     ${VERSION_UPDATE_FILES}
-#    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
+    #    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
     DESTINATION "${SHARE_DIR}")
 
 
