@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
 
-#include "./postgres.h"
+#include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
 #include "catalog/pg_type.h"
