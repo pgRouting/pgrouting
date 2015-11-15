@@ -55,7 +55,7 @@ BEGIN
     intab=sname||'.'||tname;
     outname=tname||'_'||table_ending;
     outtab= sname||'.'||outname;
-    rows_where = CASE WHEN length(node_where) > 2 and outall THEN ' AND (' || node_where || ')' ELSE '' END;
+    rows_where = CASE WHEN length(node_where) > 2 and not outall THEN ' AND (' || node_where || ')' ELSE '' END;
     node_where = CASE WHEN length(node_where) > 2 THEN ' WHERE (' || node_where || ')' ELSE '' END;
   END;
 
