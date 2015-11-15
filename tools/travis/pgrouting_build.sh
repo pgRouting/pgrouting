@@ -10,7 +10,7 @@
 set -e 
 
 # build pgRouting
-cmake -DWITH_DD=ON 
+cmake -DWITH_DD=ON -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION
 #cmake
 make
 sudo make install
