@@ -304,16 +304,6 @@ endif(WIN32)
 
 
 
-#-----------------------------------------------------------------------------
-# Handles documentation
-# checks for requirements
-# process the documentation
-#-----------------------------------------------------------------------------
-
-if (WITH_DOC)
-    message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
-    add_subdirectory(doc)
-endif()
 
 #-----------------------------------------------------------------------------
 # Checking BUILD requierments 
@@ -359,10 +349,12 @@ message("Pgrouting uses: Boost graph header only")
 message("CGAL uses: Boost thread library")
 
 
-set(Boost_USE_MULTITHREADED off)
+#set(Boost_USE_MULTITHREADED off)
 set(Boost_DEBUG ON)
 
 # pg routing doesnt need thread, but CGAL does
+set (Boost_ADDITIONAL_VERSIONS "1.60" "1.59" "1.58" "1.57")
+
 find_package(Boost 1.54 COMPONENTS thread REQUIRED) 
 
 
@@ -381,6 +373,7 @@ endif()
 
 if (CDEBUG)
     message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIR}")
+    message(STATUS "BOOST_THREAD_LIBRARIES=${BOOST_THREAD_LIBRARIES}")
 endif()
 
 message(".....OK")
@@ -403,7 +396,6 @@ endif(NOT CGAL_FOUND)
 if (CDEBUG)
     message(STATUS "CGAL_INCLUDE_DIR=${CGAL_INCLUDE_DIR}")
     message(STATUS "CGAL_LIBRARIES=${CGAL_LIBRARIES}")
-    message(STATUS "BOOST_THREAD_LIBRARIES=${BOOST_THREAD_LIBRARIES}")
     message(STATUS "GMP_LIBRARIES=${GMP_LIBRARIES}")
 endif()
 
@@ -467,54 +459,6 @@ endif()
 message(".....OK")
 
 
-
-
-#-----------------------------------------------------------------------------
-# Checking optional requierments 
-#-----------------------------------------------------------------------------
-
-
-#-----------------------------------------------------------------------------
-# Checking DEVELOPRES DOCUMENTATION requierments 
-#-----------------------------------------------------------------------------
-
-if(WITH_DEV_DOC)
-    message(STATUS "Checking Developers Documentation Requierments")
-
-    #----------------------
-    # Doxygen
-    #----------------------
-    message(STATUS "Doxygen")
-    message(STATUS "MISSING CODE")
-
-
-endif()
-
-
-#-----------------------------------------------------------------------------
-# Checking TEST requierments 
-#-----------------------------------------------------------------------------
-
-include(FindPostGIS)
-find_package(PostGIS ${POSTGIS_MINIMUM_VERSION})
-
-if(NOT PostGIS_FOUND)
-    set(WITH_TEST False)
-    message(STATUS " postGIS not Found.
-    Please check your postGIS installation.")
-endif()
-
-
-#----------------------
-# Perl
-#----------------------
-
-include(FindPerl)
-if(NOT PERL_EXECUTABLE)
-    message(FATAL_ERROR " Please check your Perl installation.")
-endif(NOT PERL_EXECUTABLE)
-
-#-----------------------------------------------------------------------------
 
 
 
@@ -727,4 +671,64 @@ install(FILES
     #    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
     DESTINATION "${PostgreSQL_EXTENSION_INSTALLATION}")
 
+#=============================================================================
+# Checking optional requierments 
+#=============================================================================
 
+#-----------------------------------------------------------------------------
+# Checking DEVELOPRES DOCUMENTATION requierments 
+#-----------------------------------------------------------------------------
+
+if(WITH_DEV_DOC)
+    message(STATUS "Checking Developers Documentation Requierments")
+    message(STATUS "NO chcking for the moment")
+
+    #----------------------
+    # Doxygen
+    #----------------------
+    message(STATUS "   Doxygen")
+    message(STATUS "MISSING CODE")
+
+
+endif()
+
+
+#-----------------------------------------------------------------------------
+# Checking TEST requierments 
+#-----------------------------------------------------------------------------
+
+if(WITH_TEST)
+    include(FindPostGIS)
+    find_package(PostGIS ${POSTGIS_MINIMUM_VERSION})
+
+    if(NOT PostGIS_FOUND)
+        set(WITH_TEST False)
+        message(STATUS " postGIS not Found.
+        Please check your postGIS installation.")
+    endif()
+endif()
+
+
+#----------------------
+# Perl
+#----------------------
+
+include(FindPerl)
+if(NOT PERL_EXECUTABLE)
+    message(FATAL_ERROR " Please check your Perl installation.")
+endif(NOT PERL_EXECUTABLE)
+
+#-----------------------------------------------------------------------------
+
+
+
+#-----------------------------------------------------------------------------
+# Handles documentation
+#  - checks for requirements
+#  - process the documentation
+#-----------------------------------------------------------------------------
+
+if (WITH_DOC)
+    message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
+    add_subdirectory(doc)
+endif()
