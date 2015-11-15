@@ -359,6 +359,8 @@ message("Checking Boost graph header only")
 
 
 set(Boost_USE_MULTITHREADED off)
+set(Boost_DEBUG ON)
+
 find_package(Boost COMPONENTS graph REQUIRED) 
 
 
@@ -388,7 +390,6 @@ message(".....OK")
 
 message("Checking CGAL requirements")
 
-set(Boost_DEBUG OFF)
 
 find_package(CGAL)
 
