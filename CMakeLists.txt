@@ -5,6 +5,10 @@
 # (http://www.cmake.org/cmake/help/v2.8.10/cmake.html)
 #
 
+#TODO Handle developers documentation  to be used by: make dev-doc
+#TODO Handle tests to be used by: make test
+#TODO some todo around before moving to develop
+
 project(PGROUTING)
 
 #set(CMAKE_VERBOSE_MAKEFILE 1)
@@ -541,20 +545,21 @@ set(PGROUTING_INCLUDE_DIRECTORIES
 include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${PostgreSQL_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 
 
+# TODO Ask REGINA
 if(WIN32)
     include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
-endif(WIN32)
-
 # we need link libpostgres.a on win32 env
-if(WIN32)
     message(STATUS "LINK_DIRECTORIES = ${POSTGRESQL_LIBRARIES}")
     link_directories(${POSTGRESQL_LIBRARIES} ${PostgreSQL_LIBRARY_INSTALLATION})
     link_libraries(postgres)
 endif(WIN32)
 
 
-#compiler directives
+#-----------------------------------------------------------------------------
+# Compiler directives
+#-----------------------------------------------------------------------------
 if(APPLE)
+
     # support GNU(Xcode<4) and Clang(Xcode>=4)
     if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
         set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -frounding-math")
@@ -569,7 +574,7 @@ if(APPLE)
 
 elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGWIN)
     set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -Wall -frounding-math")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -Wall -std=c++0x -frounding-math -Wno-deprecated")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -Wall -frounding-math -Wno-deprecated")
 
 elseif(WIN32)
     # currently, support MinGW only
@@ -577,13 +582,25 @@ elseif(WIN32)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g  -std=c++0x -frounding-math -Wno-deprecated")
 endif()
 
+
+#-----------------------------------------------------------------------------
 # List variable to collect module SQL file names
+#-----------------------------------------------------------------------------
+
+
 set(PACKAGE_SQL_FILES "")
 set(L_PACKAGE_SQL_FILES "")
 
 # Recurse into the subdirectories.
 add_subdirectory(src)
 list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
+#-----------------------------------------------------------------------------
+
+
+
+
+#TODO Make pretty from her to the end of the file
+
 
 # assemble the object files from the src functions into
 # a single library librouting.so
@@ -620,13 +637,8 @@ add_library(${PGROUTING_LIB_NAME}
     #    $<TARGET_OBJECTS:shooting_star>
     )
 
-#install(TARGETS routing-2.2 DESTINATION ${LIBRARY_INSTALL_PATH})
 install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${PostgreSQL_LIBRARY_INSTALLATION})
 
-#add_library(routing_vrp
-#add_library(routing_bd
-#add_library(routing_dd
-#add_library(routing
 
 
 if(APPLE)
@@ -641,13 +653,10 @@ file(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.i
 
 file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
     "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
-#file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-#    "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
 
 
 cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
     "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
-#cat("${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 
 
 foreach(PACKAGE_SQL_FILE ${L_PACKAGE_SQL_FILES})
@@ -686,12 +695,6 @@ endif(UPDATE_RESULT)
 
 # make a list of the files we need to install for version updates
 file(GLOB VERSION_UPDATE_FILES "${CMAKE_BINARY_DIR}/lib/pgrouting--*--*.sql")
-
-# We will copy the pgrouting_legacy.sql, but not install it as part of 
-# the extension. TODO: we might want to also include a 
-# pgrouting_legacy_uninstall.sql file or add it to the extension
-#configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting_legacy.sql"
-#    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql" COPYONLY)
 
 # this will create the commands in the makefile under the install target
 if(UNIX)

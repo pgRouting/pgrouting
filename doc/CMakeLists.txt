@@ -99,27 +99,16 @@ if (WITH_DOC)
         endif()
     endif()
 
-    #option(BUILD_LATEX "Create a target for building latex docs (to create PDF)." ON)
 
     if (BUILD_LATEX)
-        #            find_package(LATEX)
-
-        #if (NOT LATEX_COMPILER)
-        #   message("Couldn't find Latex, can't build latex docs using Sphinx")
-        #lse()
-        #  message(STATUS "LATEX_COMPILER = ${LATEX_COMPILER}")
         list(APPEND DOC_TARGETS latex)
-        #endif()
     endif()
 
     # The doc target will build all documentation targets.
     add_custom_target(doc #ALL
         COMMENT "Building documentation with Sphinx")
-    # add_custom_target(doc)
 
     # Localization output directory
-    #set(SPHINX_I18N_DIR "${CMAKE_CURRENT_SOURCE_DIR}/i18n/pot")
-
     configure_file(
         "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
         "${SPHINX_BINARY_BUILD_DIR}/conf.py"
@@ -129,8 +118,8 @@ if (WITH_DOC)
         add_custom_command(
             TARGET doc POST_BUILD
             COMMAND ${SPHINX_EXECUTABLE} 
-            # -q   # Enable for quiet mode 
-            # -Q  # Enable for even more quiet mode
+            -q   # Enable for quiet mode 
+            -Q  # Enable for even more quiet mode
             -b ${DOC_TARGET}
             -E  # don't use a saved environment, always read all file
             -a  # write all files; default is to only write new and changed files
@@ -142,7 +131,6 @@ if (WITH_DOC)
     endforeach()
 
     if(BUILD_LATEX)
-        #if(LATEX_COMPILER)
         add_custom_command(
             TARGET doc POST_BUILD
             COMMAND ${LATEX_COMPILER} 
@@ -152,11 +140,9 @@ if (WITH_DOC)
             COMMENT "Converting Latex to PDF format")
 
         list(APPEND DOC_TARGETS pdf)
-        #endif()
     endif()
 
     message("-- Building documentation enabled for: ${DOC_TARGETS}")
-    #    endif()
 
     message(".....OK")
 
