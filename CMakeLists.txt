@@ -36,9 +36,9 @@ option(WITH_DEV_DOC
     "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
 
 
-option(POSTGRESQL_VERSION " To set the version" "")
-option(POSTGRESQL_LIBRARY_INSTALLATION " To set to strange library locaton" "")
-option(POSTGRESQL_EXTENSION_INSTALLATION " To override the installation location" "")
+option(POSTGRESQL_VERSION " To set the version")
+option(POSTGRESQL_LIBRARY_INSTALLATION " To set to strange library locaton")
+option(POSTGRESQL_EXTENSION_INSTALLATION " To override the installation location")
 
 
 #-----------------------------------------------------------------------------
@@ -412,6 +412,7 @@ message("Detecting Postgresql requirements")
 include(FindPackageHandleStandardArgs)
 
 if (POSTGRESQL_VERSION)
+    message("Setting to user setup")
     set(PostgreSQL_VERSION_STRING  "${POSTGRESQL_VERSION}.0")
 
     if (NOT POSTGRES_INCLUDE_DIRS)
