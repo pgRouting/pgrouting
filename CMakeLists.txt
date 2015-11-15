@@ -355,13 +355,15 @@ message(".....OK")
 # Boost
 #----------------------
 
-message("Checking Boost graph header only")
+message("Pgrouting uses: Boost graph header only")
+message("CGAL uses: Boost thread library")
 
 
 set(Boost_USE_MULTITHREADED off)
 set(Boost_DEBUG ON)
 
-find_package(Boost 1.45) 
+# pg routing doesnt need thread, but CGAL does
+find_package(Boost 1.54 COMPONENTS thread REQUIRED) 
 
 
 if(NOT Boost_INCLUDE_DIRS)

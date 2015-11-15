@@ -35,8 +35,8 @@ else()
         $ENV{SystemDrive}/CGAL/*/lib
         )
 
-    #  set(Boost_DEBUG ON)
     set(Boost_USE_MULTITHREADED off)
+    set(Boost_DETAILED_FAILURE_MSG ON)
 
     find_package(Boost COMPONENTS thread)
     if(Boost_FOUND)
