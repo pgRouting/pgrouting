@@ -263,7 +263,6 @@ $BODY$
     LANGUAGE 'plpgsql' VOLATILE STRICT COST 100;
 
 
-COMMENT ON FUNCTION pgr_nodeNetwork(text,tolerance double precision, 
-                        text,  text ,  text )
+COMMENT ON FUNCTION pgr_nodeNetwork(text, double precision, text, text, text, text, boolean )
  IS  'edge_table, tolerance, id:=''id'', the_geom:=''the_geom'', table_ending:=''noded'' ';
 
