@@ -434,11 +434,11 @@ endif()
 string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${PostgreSQL_VERSION_STRING})
 
 if(NOT POSTGRESQL_LIBRARY_INSTALLATION)
-    set(PostgreSQL_LIBRARY_INSTALLATION "/usr/lib/postgresql/${POSTGRESQL_VERSION}/lib")
+    set(PostgreSQL_LIBRARY_INSTALLATION "/usr/lib/postgresql/${PostgreSQL_VERSION_STRING}/lib")
 endif()
 
 if(NOT POSTGRESQL_EXTENSION_INSTALLATION)
-    set(PostgreSQL_EXTENSION_INSTALLATION "/usr/share/postgresql/${POSTGRESQL_VERSION}/extension")
+    set(PostgreSQL_EXTENSION_INSTALLATION "/usr/share/postgresql/${PostgreSQL_VERSION_STRING}/extension")
 endif()
 
 
