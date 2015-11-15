@@ -361,7 +361,7 @@ message("Checking Boost graph header only")
 set(Boost_USE_MULTITHREADED off)
 set(Boost_DEBUG ON)
 
-find_package(Boost COMPONENTS graph REQUIRED) 
+find_package(Boost) 
 
 
 if(NOT Boost_INCLUDE_DIRS)
@@ -369,10 +369,10 @@ if(NOT Boost_INCLUDE_DIRS)
     Please check your Boost installation ") 
 endif()
 
-if(NOT Boost_GRAPH_FOUND)
-    message(FATAL_ERROR " Boost Graph component was not found. 
-    Please check your Boost installation ") 
-endif()
+#if(NOT Boost_GRAPH_FOUND)
+#    message(FATAL_ERROR " Boost Graph component was not found. 
+#    Please check your Boost installation ") 
+#endif()
 
 #BOOST_MINIMUM_VERSION
 
