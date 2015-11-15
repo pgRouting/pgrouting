@@ -361,7 +361,7 @@ message("Checking Boost graph header only")
 set(Boost_USE_MULTITHREADED off)
 set(Boost_DEBUG ON)
 
-find_package(Boost) 
+find_package(Boost 1.45) 
 
 
 if(NOT Boost_INCLUDE_DIRS)
@@ -426,7 +426,7 @@ if (POSTGRESQL_VERSION)
 
 
 else()
-    set(PostgreSQL_ADDITIONAL_VERSIONS "9.4" "9.3" "9.2" "9.1")
+    set(PostgreSQL_ADDITIONAL_VERSIONS "9.5" "9.4" "9.3" "9.2" "9.1")
 
     find_package(PostgreSQL ${POSTGRESQL_MINIMUM_VERSION})
     if (NOT POSTGRESQL_FOUND)
@@ -546,10 +546,14 @@ set(PGROUTING_INCLUDE_DIRECTORIES
 include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${PostgreSQL_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 
 
-# TODO Ask REGINA
+#-----------------------------------------------------------------------------
+# WIN32
+#   location of the include directories
+#   location of the linking directories
+#   Libraries to be linked
+#-----------------------------------------------------------------------------
 if(WIN32)
     include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
-# we need link libpostgres.a on win32 env
     message(STATUS "LINK_DIRECTORIES = ${POSTGRESQL_LIBRARIES}")
     link_directories(${POSTGRESQL_LIBRARIES} ${PostgreSQL_LIBRARY_INSTALLATION})
     link_libraries(postgres)
@@ -605,8 +609,11 @@ list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 
 # assemble the object files from the src functions into
 # a single library librouting.so
-set(LIBRARY_OUTPUT_PATH lib)
+#set(LIBRARY_OUTPUT_PATH lib)
 
+#-----------------------------------------------------------------------------
+# Type of lybrary
+#-----------------------------------------------------------------------------
 if(APPLE)
     set(LIBRARY_MODE_TARGET "MODULE")
 else(APPLE)
@@ -614,7 +621,7 @@ else(APPLE)
 endif(APPLE)
 
 
-LINK_LIBRARIES(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
+link_libraries(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
 
 # libraries listed in alphabetical order.
 add_library(${PGROUTING_LIB_NAME}

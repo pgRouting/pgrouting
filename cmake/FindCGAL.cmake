@@ -38,7 +38,7 @@ else()
     #  set(Boost_DEBUG ON)
     set(Boost_USE_MULTITHREADED off)
 
-    find_package(Boost COMPONENTS thread REQUIRED)
+    find_package(Boost COMPONENTS thread)
     if(Boost_FOUND)
         set(BOOST_THREAD_LIBRARIES ${Boost_LIBRARIES})
     endif(Boost_FOUND)
