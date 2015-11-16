@@ -268,7 +268,6 @@ message(".....OK")
 #-----------------------------------------------------------------------------
 # WIN32 
 #-----------------------------------------------------------------------------
-# TODO  Nagase san need to check
 if(WIN32)
 
     set(OS_BUILD  $ENV{OS_BUILD})
@@ -428,6 +427,9 @@ else()
     endif ()
 
     string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1.\\2" POSTGRESQL_VERSION ${PostgreSQL_VERSION_STRING})
+    message("PostgreSQL_LIBRARIES= ${PostgreSQL_LIBRARIES}")
+    set(PostgreSQL_LIBRARY_INSTALLATION "/usr/lib/postgresql/${POSTGRESQL_VERSION}/lib")
+    set(PostgreSQL_EXTENSION_INSTALLATION "/usr/share/postgresql/${POSTGRESQL_VERSION}/extension")
 
 endif()
 
