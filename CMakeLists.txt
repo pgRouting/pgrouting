@@ -551,29 +551,8 @@ set(PgRouting_SOURCE_NAMES
      ${LIBRARY_MODE_TARGET}
      ${PGROUTING_OBJECTS})
 
- # libraries listed in alphabetical order.
- #add_library(${PGROUTING_LIB_NAME}
- #${LIBRARY_MODE_TARGET}
- #$<TARGET_OBJECTS:johnson>
- #$<TARGET_OBJECTS:floydWarshall>
- #$<TARGET_OBJECTS:astar>
- #$<TARGET_OBJECTS:bd_astar>
- #$<TARGET_OBJECTS:bd_dijkstra>
- #$<TARGET_OBJECTS:common>
- #$<TARGET_OBJECTS:dijkstra>
- #$<TARGET_OBJECTS:driving_distance>
- #$<TARGET_OBJECTS:kdijkstra>
- #$<TARGET_OBJECTS:ksp>
- #$<TARGET_OBJECTS:trsp>
- #$<TARGET_OBJECTS:tsp>
- #$<TARGET_OBJECTS:vrp_basic>
- #$<TARGET_OBJECTS:vrppdtw>
 
-     #not supported but directory exists
-     #    $<TARGET_OBJECTS:shooting_star>
-     #)
-
- install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${PostgreSQL_LIBRARY_DIRS})
+install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${PostgreSQL_EXTENSION_LIBRARY_DIRS})
 
 
 
