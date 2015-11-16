@@ -71,9 +71,9 @@ set(PostgreSQL_LIBRARY_PATH_DESCRIPTION "top-level directory containing the Post
 set(PostgreSQL_LIBRARY_DIR_MESSAGE "Set the PostgreSQL_LIBRARY_DIR cmake cache entry to the ${PostgreSQL_LIBRARY_PATH_DESCRIPTION}")
 set(PostgreSQL_ROOT_DIR_MESSAGE "Set the PostgreSQL_ROOT system variable to where PostgreSQL is found on the machine E.g C:/Program Files/PostgreSQL/8.4")
 
-
+# Only versions with extensions
 set(PostgreSQL_KNOWN_VERSIONS ${PostgreSQL_ADDITIONAL_VERSIONS}
-    "9.5" "9.4" "9.3" "9.2" "9.1" "9.0" "8.4" "8.3" "8.2" "8.1" "8.0")
+    "9.5" "9.4" "9.3" "9.2" "9.1")
 
 #set(PostgreSQL_ROOT_DIRECTORIES ENV ${PostgreSQL_ROOT})
 set( PostgreSQL_ROOT_DIRECTORIES
@@ -102,47 +102,48 @@ set( PostgreSQL_ROOT_DIRECTORIES
 #
 # Look for an installation.
 #
-find_path(PostgreSQL_INCLUDE_DIR
-    NAMES libpq-fe.h
-    PATHS
-    # Look in other places.
-    ${PostgreSQL_ROOT_DIRECTORIES}
-    PATH_SUFFIXES
-    pgsql
-    postgresql
-    include
-    # Help the user find it if we cannot.
-    DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
-    )
-
-
-#if ( UNIX )
-    foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
-        set(PostgreSQL_ADDITIONAL_SEARCH_PATHS ${PostgreSQL_ADDITIONAL_SEARCH_PATHS} "${PostgreSQL_INCLUDE_DIR}/${suffix}/server" )
-    endforeach()
-
-    #
-    # Look for THE installation.
-    #
-    find_path(PostgreSQL_TYPE_INCLUDE_DIR
-        NAMES catalog/pg_type.h
+if (NOT (EXISTS PostgreSQL_INCLUDE_DIR))
+    find_path(PostgreSQL_INCLUDE_DIR
+        NAMES libpq-fe.h
         PATHS
         # Look in other places.
-        ${PostgreSQL_ADDITIONAL_SEARCH_PATHS}
         ${PostgreSQL_ROOT_DIRECTORIES}
         PATH_SUFFIXES
+        pgsql
         postgresql
-        pgsql/server
-        postgresql/server
-        include/server
+        include
         # Help the user find it if we cannot.
         DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
         )
 
-    #endif()
 
-message("PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}")
-message("PostgreSQL_TYPE_INCLUDE_DIR: ${PostgreSQL_TYPE_INCLUDE_DIR}")
+    # find where the includes fliles are installed for the particular version os postgreSQL
+    if ( UNIX )
+        foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
+            set(PostgreSQL_ADDITIONAL_SEARCH_PATHS ${PostgreSQL_ADDITIONAL_SEARCH_PATHS} "${PostgreSQL_INCLUDE_DIR}/${suffix}/server" )
+        endforeach()
+
+        #
+        # Look for THE installation.
+        #
+        find_path(PostgreSQL_TYPE_INCLUDE_DIR
+            NAMES catalog/pg_type.h
+            PATHS
+            # Look in other places.
+            ${PostgreSQL_ADDITIONAL_SEARCH_PATHS}
+            ${PostgreSQL_ROOT_DIRECTORIES}
+            PATH_SUFFIXES
+            postgresql
+            pgsql/server
+            postgresql/server
+            include/server
+            # Help the user find it if we cannot.
+            DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
+            )
+
+    endif()
+endif()
+
 
 # The PostgreSQL library.
 set (PostgreSQL_LIBRARY_TO_FIND "pq")
@@ -161,71 +162,114 @@ find_library( PostgreSQL_LIBRARY
     lib
     )
 
-get_filename_component(PostgreSQL_LIBRARY_DIR ${PostgreSQL_LIBRARY} PATH)
-
-message("Look for A library")
-message("PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
-
-
-if ( UNIX )
-    foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
-        set(PostgreSQL_LIB_ADDITIONAL_SEARCH_PATHS ${PostgreSQL_LIB_ADDITIONAL_SEARCH_PATHS} "${PostgreSQL_LIBRARY_DIR}/${suffix}/server" )
-    endforeach()
-
-    find_library( PostgreSQL_LIBRARY
-        NAMES ${PostgreSQL_LIBRARY_TO_FIND}
-        PATHS
-        ${PostgreSQL_LIB_ADDITIONAL_SEARCH_PATHS}
-        ${PostgreSQL_ROOT_DIRECTORIES}
-        PATH_SUFFIXES
-        lib
-        )
-
+if (NOT (EXISTS PostgreSQL_LIBRARY_DIR))
     get_filename_component(PostgreSQL_LIBRARY_DIR ${PostgreSQL_LIBRARY} PATH)
 
+
+
+    # find where the libraries are installed for the particular version os postgreSQL
+    if ( UNIX )
+        foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
+            set(PostgreSQL_LIB_ADDITIONAL_SEARCH_PATHS ${PostgreSQL_LIB_ADDITIONAL_SEARCH_PATHS} "${PostgreSQL_LIBRARY_DIR}/postgresql/${suffix}" )
+        endforeach()
+
+        find_library( PostgreSQL_NEW_LIBRARY
+            NAMES "plpgsql.so"
+            PATHS
+            ${PostgreSQL_LIB_ADDITIONAL_SEARCH_PATHS}
+            ${PostgreSQL_ROOT_DIRECTORIES}
+            PATH_SUFFIXES
+            lib
+            )
+
+        get_filename_component(PostgreSQL_LIBRARY_DIR ${PostgreSQL_NEW_LIBRARY} PATH)
+        message("Look for THE library directory")
+
+    endif()
+endif()
+
+if (NOT (EXISTS PostgreSQL_EXTENSION_DIR))
+    # find where the extensions are installed for the particular version os postgreSQL
+    if ( UNIX )
+
+        foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
+            set(PostgreSQL_EXT_ADDITIONAL_SEARCH_PATHS ${PostgreSQL_EXT_ADDITIONAL_SEARCH_PATHS} "/usr/share/postgresql/${suffix}" )
+        endforeach()
+
+        message("PostgreSQL_EXT_ADDITIONAL_SEARCH_PATHS: ${PostgreSQL_EXT_ADDITIONAL_SEARCH_PATHS}")
+
+        find_path(PostgreSQL_EXTENSION_DIR
+            NAMES extension/plpgsql.control
+            PATHS
+            # Look in other places.
+            ${PostgreSQL_EXT_ADDITIONAL_SEARCH_PATHS}
+            ${PostgreSQL_ROOT_DIRECTORIES}
+            PATH_SUFFIXES
+            extension
+            )
+    endif()
 endif()
 
 
 
 
-# Did we find anything?
-set( PostgreSQL_FOUND 0 )
-if ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND EXISTS "${PostgreSQL_LIBRARY_DIR}" )
-    set( PostgreSQL_FOUND 1 )
-else ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND EXISTS "${PostgreSQL_LIBRARY_DIR}" )
-    if ( POSTGRES_REQUIRED )
-        message( FATAL_ERROR "PostgreSQL is required. ${PostgreSQL_ROOT_DIR_MESSAGE}" )
-    endif ( POSTGRES_REQUIRED )
-endif (EXISTS "${PostgreSQL_INCLUDE_DIR}" AND EXISTS "${PostgreSQL_LIBRARY_DIR}" )
+# Did we find the things needed for pgRouting?
+if (UNIX)
+    set( PostgreSQL_FOUND FALSE )
+    if ( EXISTS ${PostgreSQL_TYPE_INCLUDE_DIR} AND
+            EXISTS ${PostgreSQL_LIBRARY} AND
+            EXISTS ${PostgreSQL_LIBRARY_DIR} AND
+            EXISTS ${PostgreSQL_EXTENSION_DIR} )
+        set( PostgreSQL_FOUND TRUE )
+        set( PostgreSQL_INCLUDE_DIRS ${PostgreSQL_TYPE_INCLUDE_DIR})
+        set( PostgreSQL_LIBRARY_DIRS ${PostgreSQL_LIBRARY_DIR})
+        set( PostgreSQL_EXTENSION_DIRS ${PostgreSQL_EXTENSION_DIR})
+    else()
+        set( PostgreSQL_FOUND TRUE )
+    endif()
 
-# Now try to get the include and library path.
-if(PostgreSQL_FOUND)
+    if(CDEBUG)
+        message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIR}")
+        message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIR}")
+        message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIR}")
+        message("PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
+    endif()
 
-    if(EXISTS "${PostgreSQL_INCLUDE_DIR}")
-        set(PostgreSQL_INCLUDE_DIRS
-            ${PostgreSQL_INCLUDE_DIR}
-            )
-    endif(EXISTS "${PostgreSQL_INCLUDE_DIR}")
+else(UNIX)
+    set( PostgreSQL_FOUND FALSE )
+    if ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND EXISTS "${PostgreSQL_LIBRARY_DIR}" )
+        set( PostgreSQL_FOUND TRUE )
+    else ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND EXISTS "${PostgreSQL_LIBRARY_DIR}" )
+        if ( POSTGRES_REQUIRED )
+            message( FATAL_ERROR "PostgreSQL is required. ${PostgreSQL_ROOT_DIR_MESSAGE}" )
+        endif ( POSTGRES_REQUIRED )
+    endif (EXISTS "${PostgreSQL_INCLUDE_DIR}" AND EXISTS "${PostgreSQL_LIBRARY_DIR}" )
+    # Now try to get the include and library path.
+    if(PostgreSQL_FOUND)
 
-    if(EXISTS "${PostgreSQL_LIBRARY_DIR}")
-        set(PostgreSQL_LIBRARY_DIRS
-            ${PostgreSQL_LIBRARY_DIR}
-            )
-        set(PostgreSQL_LIBRARIES ${PostgreSQL_LIBRARY_TO_FIND})
-    endif(EXISTS "${PostgreSQL_LIBRARY_DIR}")
+        if(EXISTS "${PostgreSQL_INCLUDE_DIR}")
+            set(PostgreSQL_INCLUDE_DIRS
+                ${PostgreSQL_INCLUDE_DIR}
+                )
+        endif(EXISTS "${PostgreSQL_INCLUDE_DIR}")
 
-    message("Final PostgreSQL include dir: ${PostgreSQL_INCLUDE_DIRS}")
-    message("Final PostgreSQL library dir: ${PostgreSQL_LIBRARY_DIRS}")
-    message("Final PostgreSQL libraries:   ${PostgreSQL_LIBRARIES}")
-endif(PostgreSQL_FOUND)
+        if(EXISTS "${PostgreSQL_LIBRARY_DIR}")
+            set(PostgreSQL_LIBRARY_DIRS
+                ${PostgreSQL_LIBRARY_DIR}
+                )
+            set(PostgreSQL_LIBRARIES ${PostgreSQL_LIBRARY_TO_FIND})
+        endif(EXISTS "${PostgreSQL_LIBRARY_DIR}")
 
-if(NOT PostgreSQL_FOUND)
-    if(NOT PostgreSQL_FIND_QUIETLY)
-        message(STATUS "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}")
-    else(NOT PostgreSQL_FIND_QUIETLY)
-        if(PostgreSQL_FIND_REQUIRED)
-            message(FATAL_ERROR "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}")
-        endif(PostgreSQL_FIND_REQUIRED)
-    endif(NOT PostgreSQL_FIND_QUIETLY)
-endif(NOT PostgreSQL_FOUND)
+        message("Final PostgreSQL include dir: ${PostgreSQL_INCLUDE_DIRS}")
+        message("Final PostgreSQL library dir: ${PostgreSQL_LIBRARY_DIRS}")
+    else(PostgreSQL_FOUND)
 
+        if(CDEBUG)
+            message(STATUS "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}")
+        else()
+            if(PostgreSQL_FIND_REQUIRED)
+                message(FATAL_ERROR "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}")
+            endif(PostgreSQL_FIND_REQUIRED)
+        endif()
+    endif(NOT PostgreSQL_FOUND)
+endif(UNIX)
