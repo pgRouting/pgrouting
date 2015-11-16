@@ -222,9 +222,9 @@ endif()
 if (UNIX)
     set( PostgreSQL_FOUND FALSE )
     if (
-            EXISTS ${PostgreSQL_INCLUDE_DIR} AND
-            EXISTS ${PostgreSQL_LIBRARY_DIR} AND
-            EXISTS ${PostgreSQL_EXTENSION_DIR} )
+            EXISTS "${PostgreSQL_INCLUDE_DIR}" AND
+            EXISTS "${PostgreSQL_LIBRARY_DIR}" AND
+            EXISTS "${PostgreSQL_EXTENSION_DIR}" )
         set( PostgreSQL_FOUND TRUE )
         set( PostgreSQL_INCLUDE_DIRS ${PostgreSQL_TYPE_INCLUDE_DIR})
         set( PostgreSQL_LIBRARY_DIRS ${PostgreSQL_LIBRARY_DIR})

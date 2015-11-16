@@ -359,13 +359,6 @@ if(NOT Boost_INCLUDE_DIRS)
     Please check your Boost installation ") 
 endif()
 
-#if(NOT Boost_GRAPH_FOUND)
-#    message(FATAL_ERROR " Boost Graph component was not found. 
-#    Please check your Boost installation ") 
-#endif()
-
-#BOOST_MINIMUM_VERSION
-
 
 if (CDEBUG)
     message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIR}")
