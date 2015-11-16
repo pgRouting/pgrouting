@@ -116,7 +116,7 @@ if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
     # find where the includes fliles are installed for the particular version os postgreSQL
     if ( UNIX )
         foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
-            set(PostgreSQL_ADDITIONAL_SEARCH_PATHS ${PostgreSQL_ADDITIONAL_SEARCH_PATHS} "${PostgreSQL_INCLUDE_DIR}/${suffix}/server" )
+            set(postgresql_additional_search_paths ${postgresql_additional_search_paths} "${PostgreSQL_INCLUDE_DIR}/${suffix}/server" )
         endforeach()
 
         #
@@ -126,7 +126,7 @@ if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
             NAMES catalog/pg_type.h
             PATHS
             # Look in other places.
-            ${PostgreSQL_ADDITIONAL_SEARCH_PATHS}
+            ${postgresql_additional_search_paths}
             ${PostgreSQL_ROOT_DIRECTORIES}
             PATH_SUFFIXES
             postgresql
@@ -137,6 +137,7 @@ if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
             DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
             )
         set (PostgreSQL_INCLUDE_DIR ${PostgreSQL_TYPE_INCLUDE_DIR})
+        unset(postgresql_additional_search_paths)
 
     endif()
 endif()
@@ -170,19 +171,22 @@ if (NOT EXISTS "$(PostgreSQL_LIBRARY_DIR}")
     # find where the libraries are installed for the particular version os postgreSQL
     if ( UNIX )
         foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
-            set(PostgreSQL_LIB_ADDITIONAL_SEARCH_PATHS ${PostgreSQL_LIB_ADDITIONAL_SEARCH_PATHS} "${PostgreSQL_LIBRARY_DIR}/postgresql/${suffix}" )
+            set(postgresql_lib_additional_search_paths ${postgresql_lib_additional_search_paths} "${PostgreSQL_LIBRARY_DIR}/postgresql/${suffix}" )
         endforeach()
 
-        find_library( PostgreSQL_NEW_LIBRARY
-            NAMES "plpgsql.so"
+        find_library( postgresql_new_library
+            NAMES "worker_spi.so"
             PATHS
-            ${PostgreSQL_LIB_ADDITIONAL_SEARCH_PATHS}
+            ${postgresql_lib_additional_search_paths}
             ${PostgreSQL_ROOT_DIRECTORIES}
             PATH_SUFFIXES
             lib
             )
 
-        get_filename_component(PostgreSQL_LIBRARY_DIR ${PostgreSQL_NEW_LIBRARY} PATH)
+        get_filename_component(PostgreSQL_LIBRARY_DIR ${postgresql_new_library} PATH)
+
+        unset (postgresql_lib_additional_search_paths)
+        unset (postgresql_new_library)
 
     endif()
 endif()
