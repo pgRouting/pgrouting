@@ -182,38 +182,17 @@ if (NOT EXISTS "${PostgreSQL_LIBRARY_DIR}")
 
 
     # find where the extension libraries are installed for the particular version os postgreSQL
-    if ( UNIX )
+    #if ( UNIX )
 
-            message("PostgreSQL_EXTENSION_LIBRARY_DIR: ${PostgreSQL_EXTENSION_LIBRARY_DIR}")
         if (NOT EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}")
             set(PostgreSQL_EXTENSION_LIBRARY_DIR "${PostgreSQL_LIBRARY_DIR}/postgresql/${PostgreSQL_VERSION}/lib")
             if (NOT EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}")
-              set(PostgreSQL_EXTENSION_LIBRARY_DIR "/usr/lib/postgresql/${PostgreSQL_VERSION}/lib")
+                set(PostgreSQL_EXTENSION_LIBRARY_DIR "/usr/lib/postgresql/${PostgreSQL_VERSION}/lib")
+            endif()
         endif()
-        endif()
-            message("PostgreSQL_EXTENSION_LIBRARY_DIR: ${PostgreSQL_EXTENSION_LIBRARY_DIR}")
 
+        #endif()
 
-        #foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
-        #set(postgresql_lib_additional_search_paths ${postgresql_lib_additional_search_paths} "${PostgreSQL_LIBRARY_DIR}/postgresql/${suffix}" )
-        #endforeach()
-        #
-        #find_library( postgresql_new_library
-        #NAMES "postgis.so"
-        #PATHS
-        #${postgresql_lib_additional_search_paths}
-        #${PostgreSQL_ROOT_DIRECTORIES}
-        #PATH_SUFFIXES
-        #lib
-        #)
-        #message("postgresql_new_library ${postgresql_new_library}")
-
-        #get_filename_component(PostgreSQL_LIBRARY_DIR ${postgresql_new_library} PATH)
-        #
-        #unset (postgresql_lib_additional_search_paths)
-        #unset (postgresql_new_library)
-
-    endif()
 endif()
 
 

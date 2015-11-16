@@ -42,6 +42,52 @@ option(WITH_DEV_DOC
 
 option(POSTGRESQL_VERSION " To set the version")
 
+
+#=============================================================================
+#
+# PGROUTING Setting of the directories to be processed
+#
+# The following directories exist but are not being processed
+#   shooting_star
+#   vrpdptw
+#=============================================================================
+
+#==========================
+#  PgRouting_SOURCE_NAMES
+#==========================
+#
+#
+#  Some ordering is here:
+#  First Group
+#    Line 1: V 2.1
+#    Line 2: V 2.2
+#
+#  Middle group: V 2.0
+#
+#  Last group: proposed functions
+#  That is directories that didnt exist on V 2.0 but do exist in V 2.1
+#  but classification is as proposed (so that bug fixes are not as urgent as
+#  for the Middle group
+#-----------------------------------------------------------------------------
+
+set(PgRouting_SOURCE_NAMES
+    "common" "dijkstra" "driving_distance" "ksp"
+    "johnson" "floydWarshall"
+
+    "astar" "bd_astar"
+    "bd_dijkstra" "kdijkstra"
+    "trsp" "tsp"
+
+    "vrp_basic" "vrppdtw"
+    )
+
+set(PgRouting_INCLUDE_DIRECTORIES ${PgRouting_SOURCE_NAMES})
+set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES} 
+    "label_graph")
+set(PgRouting_TEST_DIRECTORIES ${PgRouting_SOURCE_NAMES} 
+    "apsp_warshall" "apsp_johnson"
+    )
+
 #-----------------------------------------------------------------------------
 # PGROUTING Setting the Minimum requirements
 #-----------------------------------------------------------------------------
@@ -436,260 +482,240 @@ message(".....OK")
 
 
 
-set(PgRouting_SOURCE_NAMES
-     "common" "dijkstra" "driving_distance" "ksp"
-     "johnson" "floydWarshall"
 
-     "astar" "bd_astar"
-     "bd_dijkstra" "kdijkstra"
-     "trsp" "tsp"
+foreach (subdir ${PgRouting_SOURCE_NAMES} )
+    set(PGROUTING_INCLUDE_DIRECTORIES ${PGROUTING_INCLUDE_DIRECTORIES} "${PGROUTING_SOURCE_DIR}/src/${subdir}/src")
+endforeach()
 
-     "vrp_basic" "vrppdtw"
-     )
- # Not used YET
- # shooting_star vrpdptw
-
- set(PgRouting_INCLUDE_DIRECTORIES ${PgRouting_SOURCE_NAMES})
- set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES} 
-     "label_graph")
- set(PgRouting_TEST_DIRECTORIES ${PgRouting_SOURCE_NAMES} 
-     "apsp_warshall" "apsp_johnson"
-     )
-
-
- foreach (subdir ${PgRouting_SOURCE_NAMES} )
-     set(PGROUTING_INCLUDE_DIRECTORIES ${PGROUTING_INCLUDE_DIRECTORIES} "${PGROUTING_SOURCE_DIR}/src/${subdir}/src")
- endforeach()
-
- foreach (subdir ${PgRouting_SOURCE_NAMES} )
-     set(PGROUTING_OBJECTS ${PGROUTING_OBJECTS} "$<TARGET_OBJECTS:${subdir}>")
- endforeach()
+foreach (subdir ${PgRouting_SOURCE_NAMES} )
+    set(PGROUTING_OBJECTS ${PGROUTING_OBJECTS} "$<TARGET_OBJECTS:${subdir}>")
+endforeach()
 
 
 
- include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${PostgreSQL_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${PostgreSQL_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 
 
- #-----------------------------------------------------------------------------
- # WIN32
- #   location of the include directories
- #   location of the linking directories
- #   Libraries to be linked
- #-----------------------------------------------------------------------------
- if(WIN32)
-     include_directories(${PostgreSQL_INCLUDE_DIRS}/port/win32)
-     message(STATUS "LINK_DIRECTORIES = ${POSTGRESQL_LIBRARIES}")
-     link_directories(${POSTGRESQL_LIBRARIES} ${PostgreSQL_LIBRARY_DIRS})
-     link_libraries(postgres)
- endif(WIN32)
+#-----------------------------------------------------------------------------
+# WIN32
+#   location of the include directories
+#   location of the linking directories
+#   Libraries to be linked
+#-----------------------------------------------------------------------------
+if(WIN32)
+    include_directories(${PostgreSQL_INCLUDE_DIRS}/port/win32)
+    message(STATUS "LINK_DIRECTORIES = ${postgreSQL_LIBRARIES} ${PostgreSQL_LIBRARY_DIRS}")
+    link_directories(${PostgreSQL_LIBRARIES} ${PostgreSQL_LIBRARY_DIRS})
+    link_libraries(postgres)
+endif(WIN32)
 
 
- #-----------------------------------------------------------------------------
- # Compiler directives
- #-----------------------------------------------------------------------------
- if(APPLE)
+#-----------------------------------------------------------------------------
+# Compiler directives
+#-----------------------------------------------------------------------------
+if(APPLE)
 
-     # support GNU(Xcode<4) and Clang(Xcode>=4)
-     if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
-         set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -frounding-math")
-     else()
-         set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g")
-     endif()
-     if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -frounding-math -Wno-deprecated")
-     else()
-         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -std=c++0x -g -Wno-deprecated")
-     endif()
+    # support GNU(Xcode<4) and Clang(Xcode>=4)
+    if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
+        set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -frounding-math")
+    else()
+        set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g")
+    endif()
+    if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -frounding-math -Wno-deprecated")
+    else()
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -std=c++0x -g -Wno-deprecated")
+    endif()
 
- elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGWIN)
-     set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -Wall -frounding-math")
-     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -Wall -frounding-math -Wno-deprecated")
+elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGWIN)
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -Wall -frounding-math")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -Wall -frounding-math -Wno-deprecated")
 
- elseif(WIN32)
-     # currently, support MinGW only
-     set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -Wall -frounding-math")
-     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g  -std=c++0x -frounding-math -Wno-deprecated")
- endif()
-
-
- #-----------------------------------------------------------------------------
- # List variable to collect module SQL file names
- #-----------------------------------------------------------------------------
+elseif(WIN32)
+    # currently, support MinGW only
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -Wall -frounding-math")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g  -std=c++0x -frounding-math -Wno-deprecated")
+endif()
 
 
- set(PACKAGE_SQL_FILES "")
- set(L_PACKAGE_SQL_FILES "")
+#-----------------------------------------------------------------------------
+# List variable to collect module SQL file names
+#-----------------------------------------------------------------------------
 
- # Recurse into the subdirectories.
- add_subdirectory(src)
- list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
- #-----------------------------------------------------------------------------
+
+set(PACKAGE_SQL_FILES "")
+set(L_PACKAGE_SQL_FILES "")
+
+# Recurse into the subdirectories.
+add_subdirectory(src)
+list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
+#-----------------------------------------------------------------------------
 
 
 
 
- #TODO Make pretty from her to the end of the file
+#TODO Make pretty from her to the end of the file
 
 
- # assemble the object files from the src functions into
- # a single library librouting.so
- #set(LIBRARY_OUTPUT_PATH lib)
+# assemble the object files from the src functions into
+# a single library librouting.so
+#set(LIBRARY_OUTPUT_PATH lib)
 
- #-----------------------------------------------------------------------------
- # Type of lybrary
- #-----------------------------------------------------------------------------
- if(APPLE)
-     set(LIBRARY_MODE_TARGET "MODULE")
- else(APPLE)
-     set(LIBRARY_MODE_TARGET "SHARED")
- endif(APPLE)
+#-----------------------------------------------------------------------------
+# Type of lybrary
+#-----------------------------------------------------------------------------
+if(APPLE)
+    set(LIBRARY_MODE_TARGET "MODULE")
+else(APPLE)
+    set(LIBRARY_MODE_TARGET "SHARED")
+endif(APPLE)
 
 
- link_libraries(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
+link_libraries(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
 
- add_library(${PGROUTING_LIB_NAME}
-     ${LIBRARY_MODE_TARGET}
-     ${PGROUTING_OBJECTS})
+add_library(${PGROUTING_LIB_NAME}
+    ${LIBRARY_MODE_TARGET}
+    ${PGROUTING_OBJECTS})
 
 
 install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${PostgreSQL_EXTENSION_LIBRARY_DIRS})
 
 
 
- if(APPLE)
-     set_target_properties(routing-2.2
-         PROPERTIES
-         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
- endif(APPLE)
+if(APPLE)
+    set_target_properties(routing-2.2
+        PROPERTIES
+        LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
+endif(APPLE)
 
 
- file(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-     "-- pgRouting version '${PGROUTING_VERSION_STRING}' extension for postgresql\n")
+file(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+    "-- pgRouting version '${PGROUTING_VERSION_STRING}' extension for postgresql\n")
 
- file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-     "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
-
-
- cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
-     "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
+file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+    "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
 
 
- foreach(PACKAGE_SQL_FILE ${L_PACKAGE_SQL_FILES})
-     cat(${PACKAGE_SQL_FILE} "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
- endforeach()
-
- # copy our temporary file into a final file
- # this extra set will allow us to place variables in the sql file
- # that will get substituted in this step before they are installed
- configure_file("${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-     "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql")
-
- configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
-     "${CMAKE_BINARY_DIR}/lib/pgrouting.control")
-
- # create the signature file for this release
- message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION_STRING}.sig")
- execute_process(
-     COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file ${PGROUTING_VERSION_STRING}
-     WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-     RESULT_VARIABLE SIG_RESULT
-     )
- if(SIG_RESULT)
-     message(FATAL_ERROR "    SIG_RESULT: ${SIG_RESULT}")
- endif(SIG_RESULT)
-
- # create the extension update scripts
- execute_process(
-     COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/build-extension-update-files ${PGROUTING_VERSION_STRING} ${PGROUTING_SOURCE_DIR}
-     WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-     RESULT_VARIABLE UPDATE_RESULT
-     )
- if(UPDATE_RESULT)
-     message(FATAL_ERROR "   UPDATE_RESULT: ${UPDATE_RESULT}")
- endif(UPDATE_RESULT)
-
- # make a list of the files we need to install for version updates
- file(GLOB VERSION_UPDATE_FILES "${CMAKE_BINARY_DIR}/lib/pgrouting--*--*.sql")
-
- # this will create the commands in the makefile under the install target
- if(UNIX)
-     file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.so")
- else(UNIX)
-     file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.dll")
- endif(UNIX)
+cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
+    "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 
 
+foreach(PACKAGE_SQL_FILE ${L_PACKAGE_SQL_FILES})
+    cat(${PACKAGE_SQL_FILE} "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
+endforeach()
 
+# copy our temporary file into a final file
+# this extra set will allow us to place variables in the sql file
+# that will get substituted in this step before they are installed
+configure_file("${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql")
 
+configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
+    "${CMAKE_BINARY_DIR}/lib/pgrouting.control")
 
- message(STATUS "LIBS_TO_INSTALL=${PGROUTING_LIBRARY_NAME}")
+# create the signature file for this release
+message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION_STRING}.sig")
+execute_process(
+    COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file ${PGROUTING_VERSION_STRING}
+    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+    RESULT_VARIABLE SIG_RESULT
+    )
+if(SIG_RESULT)
+    message(FATAL_ERROR "    SIG_RESULT: ${SIG_RESULT}")
+endif(SIG_RESULT)
 
+# create the extension update scripts
+execute_process(
+    COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/build-extension-update-files ${PGROUTING_VERSION_STRING} ${PGROUTING_SOURCE_DIR}
+    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+    RESULT_VARIABLE UPDATE_RESULT
+    )
+if(UPDATE_RESULT)
+    message(FATAL_ERROR "   UPDATE_RESULT: ${UPDATE_RESULT}")
+endif(UPDATE_RESULT)
 
- install(FILES
-     "${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIB_NAME}.sql"
-     "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
-     ${VERSION_UPDATE_FILES}
-     #    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
-     DESTINATION "${PostgreSQL_EXTENSION_DIRS}")
+# make a list of the files we need to install for version updates
+file(GLOB VERSION_UPDATE_FILES "${CMAKE_BINARY_DIR}/lib/pgrouting--*--*.sql")
 
- #=============================================================================
- # Checking optional requierments 
- #=============================================================================
-
- #-----------------------------------------------------------------------------
- # Checking DEVELOPRES DOCUMENTATION requierments 
- #-----------------------------------------------------------------------------
-
- if(WITH_DEV_DOC)
-     message(STATUS "Checking Developers Documentation Requierments")
-     message(STATUS "NO chcking for the moment")
-
-     #----------------------
-     # Doxygen
-     #----------------------
-     message(STATUS "   Doxygen")
-     message(STATUS "MISSING CODE")
-
-
- endif()
-
-
- #-----------------------------------------------------------------------------
- # Checking TEST requierments 
- #-----------------------------------------------------------------------------
-
- if(WITH_TEST)
-     include(FindPostGIS)
-     find_package(PostGIS ${POSTGIS_MINIMUM_VERSION})
-
-     if(NOT PostGIS_FOUND)
-         set(WITH_TEST False)
-         message(STATUS " postGIS not Found.
-         Please check your postGIS installation.")
-     endif()
- endif()
-
-
- #----------------------
- # Perl
- #----------------------
-
- include(FindPerl)
- if(NOT PERL_EXECUTABLE)
-     message(FATAL_ERROR " Please check your Perl installation.")
- endif(NOT PERL_EXECUTABLE)
-
- #-----------------------------------------------------------------------------
+# this will create the commands in the makefile under the install target
+if(UNIX)
+    file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.so")
+else(UNIX)
+    file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.dll")
+endif(UNIX)
 
 
 
- #-----------------------------------------------------------------------------
- # Handles documentation
- #  - checks for requirements
- #  - process the documentation
- #-----------------------------------------------------------------------------
 
- if (WITH_DOC)
-     message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
-     add_subdirectory(doc)
- endif()
+
+message(STATUS "LIBS_TO_INSTALL=${PGROUTING_LIBRARY_NAME}")
+
+
+install(FILES
+    "${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIB_NAME}.sql"
+    "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
+    ${VERSION_UPDATE_FILES}
+    #    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
+    DESTINATION "${PostgreSQL_EXTENSION_DIRS}")
+
+#=============================================================================
+# Checking optional requierments 
+#=============================================================================
+
+#-----------------------------------------------------------------------------
+# Checking DEVELOPRES DOCUMENTATION requierments 
+#-----------------------------------------------------------------------------
+
+if(WITH_DEV_DOC)
+    message(STATUS "Checking Developers Documentation Requierments")
+    message(STATUS "NO chcking for the moment")
+
+    #----------------------
+    # Doxygen
+    #----------------------
+    message(STATUS "   Doxygen")
+    message(STATUS "MISSING CODE")
+
+
+endif()
+
+
+#-----------------------------------------------------------------------------
+# Checking TEST requierments 
+#-----------------------------------------------------------------------------
+
+if(WITH_TEST)
+    include(FindPostGIS)
+    find_package(PostGIS ${POSTGIS_MINIMUM_VERSION})
+
+    if(NOT PostGIS_FOUND)
+        set(WITH_TEST False)
+        message(STATUS " postGIS not Found.
+        Please check your postGIS installation.")
+    endif()
+endif()
+
+
+#----------------------
+# Perl
+#----------------------
+
+include(FindPerl)
+if(NOT PERL_EXECUTABLE)
+    message(FATAL_ERROR " Please check your Perl installation.")
+endif(NOT PERL_EXECUTABLE)
+
+#-----------------------------------------------------------------------------
+
+
+
+#-----------------------------------------------------------------------------
+# Handles documentation
+#  - checks for requirements
+#  - process the documentation
+#-----------------------------------------------------------------------------
+
+if (WITH_DOC)
+    message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
+    add_subdirectory(doc)
+endif()
