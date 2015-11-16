@@ -351,7 +351,7 @@ set(Boost_DEBUG ON)
 # pg routing doesnt need thread, but CGAL does
 set (Boost_ADDITIONAL_VERSIONS "1.60" "1.59" "1.58" "1.57")
 
-find_package(Boost 1.54 COMPONENTS thread REQUIRED) 
+find_package(Boost ${BOOST_MINIMUM_VERSION} COMPONENTS thread REQUIRED) 
 
 
 if(NOT Boost_INCLUDE_DIRS)
