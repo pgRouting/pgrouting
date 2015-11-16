@@ -75,15 +75,10 @@ set(PostgreSQL_ROOT_DIR_MESSAGE "Set the PostgreSQL_ROOT system variable to wher
 set(PostgreSQL_KNOWN_VERSIONS ${PostgreSQL_ADDITIONAL_VERSIONS}
     "9.5" "9.4" "9.3" "9.2" "9.1")
 
-#set(PostgreSQL_ROOT_DIRECTORIES ENV ${PostgreSQL_ROOT})
-set( PostgreSQL_ROOT_DIRECTORIES
+set(PostgreSQL_ROOT_DIRECTORIES
     ENV PostgreSQL_ROOT
-    #    ${PostgreSQL_ROOT}
+    ${PostgreSQL_ROOT}
     )
-
-#if(PostgreSQL_ROOT_DIRECTORIES)
-#    file(TO_CMAKE_PATH ${PostgreSQL_ROOT_DIRECTORIES} PostgreSQL_ROOT_DIRECTORIES)
-#endif(PostgreSQL_ROOT_DIRECTORIES)
 
 
 # Define additional search paths for root directories.
@@ -99,10 +94,11 @@ set( PostgreSQL_ROOT_DIRECTORIES
     ${PostgreSQL_ROOT}
     )
 
+
 #
 # Look for an installation.
 #
-if (NOT (EXISTS PostgreSQL_INCLUDE_DIR))
+if (NOT EXISTS PostgreSQL_INCLUDE_DIR)
     find_path(PostgreSQL_INCLUDE_DIR
         NAMES libpq-fe.h
         PATHS
@@ -140,6 +136,7 @@ if (NOT (EXISTS PostgreSQL_INCLUDE_DIR))
             # Help the user find it if we cannot.
             DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
             )
+        set (PostgreSQL_INCLUDE_DIR ${PostgreSQL_TYPE_INCLUDE_DIR})
 
     endif()
 endif()
@@ -154,15 +151,16 @@ if ( WIN32 )
     set ( PostgreSQL_LIBRARY_TO_FIND ${PostgreSQL_LIB_PREFIX}${PostgreSQL_LIBRARY_TO_FIND})
 endif()
 
-find_library( PostgreSQL_LIBRARY
-    NAMES ${PostgreSQL_LIBRARY_TO_FIND}
-    PATHS
-    ${PostgreSQL_ROOT_DIRECTORIES}
-    PATH_SUFFIXES
-    lib
-    )
+if (NOT EXISTS PostgreSQL_LIBRARY_DIR)
 
-if (NOT (EXISTS PostgreSQL_LIBRARY_DIR))
+    find_library( PostgreSQL_LIBRARY
+        NAMES ${PostgreSQL_LIBRARY_TO_FIND}
+        PATHS
+        ${PostgreSQL_ROOT_DIRECTORIES}
+        PATH_SUFFIXES
+        lib
+        )
+
     get_filename_component(PostgreSQL_LIBRARY_DIR ${PostgreSQL_LIBRARY} PATH)
 
 
@@ -183,36 +181,34 @@ if (NOT (EXISTS PostgreSQL_LIBRARY_DIR))
             )
 
         get_filename_component(PostgreSQL_LIBRARY_DIR ${PostgreSQL_NEW_LIBRARY} PATH)
-        message("Look for THE library directory")
 
     endif()
 endif()
 
-if (NOT (EXISTS PostgreSQL_EXTENSION_DIR))
+
+if (NOT EXISTS PostgreSQL_EXTENSION_DIR)
     # find where the extensions are installed for the particular version os postgreSQL
     if ( UNIX )
-        message("LOOKING       PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}")
 
         foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
             set(PostgreSQL_EXT_ADDITIONAL_SEARCH_PATHS ${PostgreSQL_EXT_ADDITIONAL_SEARCH_PATHS} "/usr/share/postgresql/${suffix}" )
         endforeach()
 
-        message("PostgreSQL_EXT_ADDITIONAL_SEARCH_PATHS: ${PostgreSQL_EXT_ADDITIONAL_SEARCH_PATHS}")
-
         find_path(PostgreSQL_EXTENSION_DIR
-            NAMES extension/plpgsql.control
+            NAMES plpgsql.control
             PATHS
             # Look in other places.
             ${PostgreSQL_EXT_ADDITIONAL_SEARCH_PATHS}
-            ${PostgreSQL_ROOT_DIRECTORIES}
+            #            ${PostgreSQL_ROOT_DIRECTORIES}
             PATH_SUFFIXES
             extension
             )
-        message("LOOKING       PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}")
     endif()
 endif()
 
-if (PostgreSQL_INCLUDE_DIR AND EXISTS "${PostgreSQL_TYPE_INCLUDE_DIR}/pg_config.h")
+
+
+if (EXISTS ${PostgreSQL_INCLUDE_DIR} AND EXISTS "${PostgreSQL_INCLUDE_DIR}/pg_config.h")
     file(STRINGS "${PostgreSQL_INCLUDE_DIR}/pg_config.h" pgsql_version_str
         REGEX "^#define[\t ]+PG_VERSION[\t ]+\".*\"")
 
@@ -222,12 +218,11 @@ if (PostgreSQL_INCLUDE_DIR AND EXISTS "${PostgreSQL_TYPE_INCLUDE_DIR}/pg_config.
 endif()
 
 
-
 # Did we find the things needed for pgRouting?
 if (UNIX)
     set( PostgreSQL_FOUND FALSE )
-    if ( EXISTS ${PostgreSQL_TYPE_INCLUDE_DIR} AND
-            EXISTS ${PostgreSQL_LIBRARY} AND
+    if (
+            EXISTS ${PostgreSQL_INCLUDE_DIR} AND
             EXISTS ${PostgreSQL_LIBRARY_DIR} AND
             EXISTS ${PostgreSQL_EXTENSION_DIR} )
         set( PostgreSQL_FOUND TRUE )
@@ -250,7 +245,6 @@ if (UNIX)
         PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
         PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}
         PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
-
     endif()
 
 else(UNIX)

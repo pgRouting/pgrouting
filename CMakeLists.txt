@@ -41,9 +41,6 @@ option(WITH_DEV_DOC
 
 
 option(POSTGRESQL_VERSION " To set the version")
-option(POSTGRESQL_LIBRARY_DIR " To set to strange library locaton")
-option(POSTGRESQL_EXTENSION_DIR " To override the installation location")
-
 
 #-----------------------------------------------------------------------------
 # PGROUTING Setting the Minimum requirements
@@ -413,9 +410,6 @@ if (POSTGRESQL_VERSION)
     message("Setting to user setup")
     set(PostgreSQL_VERSION_STRING  "${POSTGRESQL_VERSION}.0")
     set(PostgreSQL_ADDITIONAL_VERSIONS ${POSTGRESQL_VERSION})
-
-else()
-    set(PostgreSQL_ADDITIONAL_VERSIONS "9.5" "9.4" "9.3" "9.2" "9.1")
 endif()
 
 find_package(PostgreSQL ${POSTGRESQL_MINIMUM_VERSION})
@@ -425,31 +419,15 @@ if (NOT PostgreSQL_FOUND)
 endif ()
 
 if(CDEBUG)
-    message("PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}")
-    message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIR}")
-    message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIR}")
-    message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIR}")
-    message("PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
+    message("  PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}")
+    message("  PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIR}")
+    message("  PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIR}")
+    message("  PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIR}")
 endif()
 
 
 string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1.\\2" POSTGRESQL_VERSION ${PostgreSQL_VERSION_STRING})
-message("PostgreSQL_LIBRARIES= ${PostgreSQL_LIBRARIES}")
-set(PostgreSQL_LIBRARY_INSTALLATION "/usr/lib/postgresql/${POSTGRESQL_VERSION}/lib")
-set(PostgreSQL_EXTENSION_INSTALLATION "/usr/share/postgresql/${POSTGRESQL_VERSION}/extension")
-
-
 string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQL_VERSION})
-
-if(NOT POSTGRESQL_LIBRARY_INSTALLATION)
-    set(PostgreSQL_LIBRARY_INSTALLATION "/usr/lib/postgresql/${POSTGRESQL_VERSION}/lib")
-endif()
-
-if(NOT POSTGRESQL_EXTENSION_INSTALLATION)
-    set(PostgreSQL_EXTENSION_INSTALLATION "/usr/share/postgresql/${POSTGRESQL_VERSION}/extension")
-endif()
-
-
 
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
