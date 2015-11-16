@@ -41,8 +41,8 @@ option(WITH_DEV_DOC
 
 
 option(POSTGRESQL_VERSION " To set the version")
-option(POSTGRESQL_LIBRARY_INSTALLATION " To set to strange library locaton")
-option(POSTGRESQL_EXTENSION_INSTALLATION " To override the installation location")
+option(POSTGRESQL_LIBRARY_DIR " To set to strange library locaton")
+option(POSTGRESQL_EXTENSION_DIR " To override the installation location")
 
 
 #-----------------------------------------------------------------------------
@@ -412,26 +412,32 @@ include(FindPackageHandleStandardArgs)
 if (POSTGRESQL_VERSION)
     message("Setting to user setup")
     set(PostgreSQL_VERSION_STRING  "${POSTGRESQL_VERSION}.0")
-
-    if (NOT POSTGRES_INCLUDE_DIRS)
-        set(PostgreSQL_INCLUDE_DIRS  "/usr/include/postgresql/${POSTGRESQL_VERSION}/server")
-    endif()
-
+    set(PostgreSQL_ADDITIONAL_VERSIONS ${POSTGRESQL_VERSION})
 
 else()
     set(PostgreSQL_ADDITIONAL_VERSIONS "9.5" "9.4" "9.3" "9.2" "9.1")
-
-    find_package(PostgreSQL ${POSTGRESQL_MINIMUM_VERSION})
-    if (NOT POSTGRESQL_FOUND)
-        message(FATAL_ERROR " Please check your PostgreSQL installation.") 
-    endif ()
-
-    string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1.\\2" POSTGRESQL_VERSION ${PostgreSQL_VERSION_STRING})
-    message("PostgreSQL_LIBRARIES= ${PostgreSQL_LIBRARIES}")
-    set(PostgreSQL_LIBRARY_INSTALLATION "/usr/lib/postgresql/${POSTGRESQL_VERSION}/lib")
-    set(PostgreSQL_EXTENSION_INSTALLATION "/usr/share/postgresql/${POSTGRESQL_VERSION}/extension")
-
 endif()
+
+find_package(PostgreSQL ${POSTGRESQL_MINIMUM_VERSION})
+
+if (NOT PostgreSQL_FOUND)
+    message(FATAL_ERROR " Please check your PostgreSQL installation.") 
+endif ()
+
+if(CDEBUG)
+    message("PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}")
+    message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIR}")
+    message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIR}")
+    message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIR}")
+    message("PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
+endif()
+
+
+string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1.\\2" POSTGRESQL_VERSION ${PostgreSQL_VERSION_STRING})
+message("PostgreSQL_LIBRARIES= ${PostgreSQL_LIBRARIES}")
+set(PostgreSQL_LIBRARY_INSTALLATION "/usr/lib/postgresql/${POSTGRESQL_VERSION}/lib")
+set(PostgreSQL_EXTENSION_INSTALLATION "/usr/share/postgresql/${POSTGRESQL_VERSION}/extension")
+
 
 string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQL_VERSION})
 
@@ -451,8 +457,8 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
 if (CDEBUG)
     message(STATUS "pg_config.h is found in: ${PostgreSQL_INCLUDE_DIRS}")
     message(STATUS "pg_type.h is found in: ${PostgreSQL_INCLUDE_DIRS}/catalog")
-    message(STATUS "Extension directory to install in: ${PostgreSQL_EXTENSION_INSTALLATION}")
-    message(STATUS "iLibrary directory to install in: ${PostgreSQL_LIBRARY_INSTALLATION}")
+    message(STATUS "Extension directory to install in: ${PostgreSQL_EXTENSION_DIRS}")
+    message(STATUS "iLibrary directory to install in: ${PostgreSQL_LIBRARY_DIRS}")
     message(STATUS "PostgreSQL_VERSION_STRING is ${PostgreSQL_VERSION_STRING}")
     message(STATUS "C flag: PGSQL_VERSION is ${PGSQL_VERSION}")
 endif()
@@ -503,7 +509,7 @@ include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${PostgreSQL_INCLUDE_DIRS} 
 if(WIN32)
     include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
     message(STATUS "LINK_DIRECTORIES = ${POSTGRESQL_LIBRARIES}")
-    link_directories(${POSTGRESQL_LIBRARIES} ${PostgreSQL_LIBRARY_INSTALLATION})
+    link_directories(${POSTGRESQL_LIBRARIES} ${PostgreSQL_LIBRARY_DIRS})
     link_libraries(postgres)
 endif(WIN32)
 
@@ -593,7 +599,7 @@ add_library(${PGROUTING_LIB_NAME}
     #    $<TARGET_OBJECTS:shooting_star>
     )
 
-install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${PostgreSQL_LIBRARY_INSTALLATION})
+install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${PostgreSQL_LIBRARY_DIRS})
 
 
 
@@ -671,7 +677,7 @@ install(FILES
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
     ${VERSION_UPDATE_FILES}
     #    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
-    DESTINATION "${PostgreSQL_EXTENSION_INSTALLATION}")
+    DESTINATION "${PostgreSQL_EXTENSION_DIRS}")
 
 #=============================================================================
 # Checking optional requierments 

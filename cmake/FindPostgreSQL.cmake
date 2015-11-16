@@ -191,6 +191,7 @@ endif()
 if (NOT (EXISTS PostgreSQL_EXTENSION_DIR))
     # find where the extensions are installed for the particular version os postgreSQL
     if ( UNIX )
+        message("LOOKING       PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}")
 
         foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
             set(PostgreSQL_EXT_ADDITIONAL_SEARCH_PATHS ${PostgreSQL_EXT_ADDITIONAL_SEARCH_PATHS} "/usr/share/postgresql/${suffix}" )
@@ -207,9 +208,18 @@ if (NOT (EXISTS PostgreSQL_EXTENSION_DIR))
             PATH_SUFFIXES
             extension
             )
+        message("LOOKING       PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}")
     endif()
 endif()
 
+if (PostgreSQL_INCLUDE_DIR AND EXISTS "${PostgreSQL_TYPE_INCLUDE_DIR}/pg_config.h")
+    file(STRINGS "${PostgreSQL_INCLUDE_DIR}/pg_config.h" pgsql_version_str
+        REGEX "^#define[\t ]+PG_VERSION[\t ]+\".*\"")
+
+    string(REGEX REPLACE "^#define[\t ]+PG_VERSION[\t ]+\"([^\"]*)\".*" "\\1"
+        PostgreSQL_VERSION_STRING "${pgsql_version_str}")
+    unset(pgsql_version_str)
+endif()
 
 
 
@@ -224,15 +234,23 @@ if (UNIX)
         set( PostgreSQL_INCLUDE_DIRS ${PostgreSQL_TYPE_INCLUDE_DIR})
         set( PostgreSQL_LIBRARY_DIRS ${PostgreSQL_LIBRARY_DIR})
         set( PostgreSQL_EXTENSION_DIRS ${PostgreSQL_EXTENSION_DIR})
-    else()
-        set( PostgreSQL_FOUND TRUE )
-    endif()
 
-    if(CDEBUG)
-        message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIR}")
-        message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIR}")
-        message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIR}")
-        message("PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
+        if(PostgreSQL_DEBUG)
+            message("PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}")
+            message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIRS}")
+            message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIRS}")
+            message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIRS}")
+            message("PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
+        endif()
+
+    else()
+        message(FATAL_ERROR "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}
+        PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
+        PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
+        PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
+        PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}
+        PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
+
     endif()
 
 else(UNIX)
@@ -260,24 +278,21 @@ else(UNIX)
             set(PostgreSQL_LIBRARIES ${PostgreSQL_LIBRARY_TO_FIND})
         endif(EXISTS "${PostgreSQL_LIBRARY_DIR}")
 
-        if(CDEBUG)
-            message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIR}")
-            message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIR}")
-            message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIR}")
+        if(PostgreSQL_DEBUG)
+            message("PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}")
+            message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIRS}")
+            message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIRS}")
+            message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIRS}")
             message("PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
         endif()
 
 
     else(PostgreSQL_FOUND)
-
-        if(CDEBUG)
-            message(STATUS "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}")
-        else()
-            message(FATAL_ERROR "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}
-            PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIR}
-            PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIR}
-            PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIR}
-            PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
-        endif()
-    endif(NOT PostgreSQL_FOUND)
+        message(FATAL_ERROR "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}
+        PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
+        PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
+        PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
+        PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}
+        PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
+    endif()
 endif(UNIX)
