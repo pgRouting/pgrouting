@@ -420,13 +420,14 @@ string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQ
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
 
 if (CDEBUG)
-    message(STATUS "pg_config.h is found in: ${PostgreSQL_INCLUDE_DIRS}")
-    message(STATUS "pg_type.h is found in: ${PostgreSQL_INCLUDE_DIRS}/catalog")
-    message(STATUS "Extension directory to install in: ${PostgreSQL_EXTENSION_DIRS}")
-    message(STATUS "Library: ${PostgreSQL_LIBRARY}")
-    message(STATUS "Library directory to install in: ${PostgreSQL_LIBRARY_DIRS}")
-    message(STATUS "PostgreSQL_VERSION_STRING is ${PostgreSQL_VERSION_STRING}")
-    message(STATUS "C flag: PGSQL_VERSION is ${PGSQL_VERSION}")
+    message(STATUS "  pg_config.h is found in: ${PostgreSQL_INCLUDE_DIRS}")
+    message(STATUS "  pg_type.h is found in: ${PostgreSQL_INCLUDE_DIRS}/catalog")
+    message(STATUS "  Extension directory to install in: ${PostgreSQL_EXTENSION_DIRS}")
+    message(STATUS "  Library: ${PostgreSQL_LIBRARY}")
+    message(STATUS "  Libraries: ${PostgreSQL_LIBRARIES}")
+    message(STATUS "  Library directory to install in: ${PostgreSQL_LIBRARY_DIRS}")
+    message(STATUS "  PostgreSQL_VERSION_STRING is ${PostgreSQL_VERSION_STRING}")
+    message(STATUS "  C flag: PGSQL_VERSION is ${PGSQL_VERSION}")
 endif()
 
 
@@ -448,9 +449,11 @@ set(PgRouting_SOURCE_NAMES
  # Not used YET
  # shooting_star vrpdptw
 
- set(PgRouting_INCLUDE_DIRECTORIES ${PgRouting_SOURCE_DIRECTORIES})
-
- set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_DIRECTORIES})
+ set(PgRouting_INCLUDE_DIRECTORIES ${PgRouting_SOURCE_NAMES})
+ set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES})
+ set(PgRouting_TEST_DIRECTORIES ${PgRouting_SOURCE_NAMES} 
+     "apsp_warshall" "apsp_johnson"
+     )
 
 
  foreach (subdir ${PgRouting_SOURCE_NAMES} )
@@ -459,31 +462,6 @@ set(PgRouting_SOURCE_NAMES
 
 
 
- #include directories: files in alphabetical order
- # set(PGROUTING_INCLUDE_DIRECTORIES
- #    ${PGROUTING_SOURCE_DIR}/src/johnson/src
- #    ${PGROUTING_SOURCE_DIR}/src/floydWarshall/src
- #    ${PGROUTING_SOURCE_DIR}/src/astar/src
- #     ${PGROUTING_SOURCE_DIR}/src/bd_astar/src
- #    ${PGROUTING_SOURCE_DIR}/src/bd_dijkstra/src
- #    ${PGROUTING_SOURCE_DIR}/src/common/src
- #    ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
- #    ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
- #    ${PGROUTING_SOURCE_DIR}/src/kdijkstra/src
- #    ${PGROUTING_SOURCE_DIR}/src/ksp/src
- #    ${PGROUTING_SOURCE_DIR}/src/trsp/src
- #    ${PGROUTING_SOURCE_DIR}/src/tsp/src
- #    ${PGROUTING_SOURCE_DIR}/src/vrp_basic/src
- #    ${PGROUTING_SOURCE_DIR}/src/vrppdtw/src
-
-     # not using C/C++
-     #    ${PGROUTING_SOURCE_DIR}/src/label_graph/src
-
-
-     #not suported but directory exists
-     #    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
-     #    ${PGROUTING_SOURCE_DIR}/src/vrpdptw/src
-     #)
 
  include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${PostgreSQL_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 
@@ -495,7 +473,7 @@ set(PgRouting_SOURCE_NAMES
  #   Libraries to be linked
  #-----------------------------------------------------------------------------
  if(WIN32)
-     include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
+     include_directories(${PostgreSQL_INCLUDE_DIRS}/port/win32)
      message(STATUS "LINK_DIRECTORIES = ${POSTGRESQL_LIBRARIES}")
      link_directories(${POSTGRESQL_LIBRARIES} ${PostgreSQL_LIBRARY_DIRS})
      link_libraries(postgres)

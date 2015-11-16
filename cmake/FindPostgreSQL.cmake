@@ -147,13 +147,14 @@ endif()
 set (PostgreSQL_LIBRARY_TO_FIND "pq")
 
 # Setting some more prefixes for the library
-set (PostgreSQL_LIB_PREFIX "")
+#set (PostgreSQL_LIB_PREFIX "lib")
 
 if ( WIN32 )
     set (PostgreSQL_LIB_PREFIX ${PostgreSQL_LIB_PREFIX} "lib")
     set ( PostgreSQL_LIBRARY_TO_FIND ${PostgreSQL_LIB_PREFIX}${PostgreSQL_LIBRARY_TO_FIND})
 endif()
 
+message("PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}")
 if (NOT EXISTS "$(PostgreSQL_LIBRARY_DIR}")
 
     find_library( PostgreSQL_LIBRARY
@@ -182,6 +183,7 @@ if (NOT EXISTS "$(PostgreSQL_LIBRARY_DIR}")
             PATH_SUFFIXES
             lib
             )
+        message("postgresql_new_library ${ostgresql_new_library}")
 
         get_filename_component(PostgreSQL_LIBRARY_DIR ${postgresql_new_library} PATH)
 
@@ -241,7 +243,7 @@ if (UNIX)
             message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIRS}")
             message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIRS}")
             message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIRS}")
-            message("PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
+            message("PostgreSQL_LIBRARIES: ${PostgreSQL_LIBRARY}")
         endif()
 
     else()
@@ -283,7 +285,7 @@ else(UNIX)
             message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIRS}")
             message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIRS}")
             message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIRS}")
-            message("PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
+            message("PostgreSQL_LIBRARIES: ${PostgreSQL_LIBRARIES}")
         endif()
 
 
