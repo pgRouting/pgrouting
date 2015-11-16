@@ -423,6 +423,7 @@ if (CDEBUG)
     message(STATUS "pg_config.h is found in: ${PostgreSQL_INCLUDE_DIRS}")
     message(STATUS "pg_type.h is found in: ${PostgreSQL_INCLUDE_DIRS}/catalog")
     message(STATUS "Extension directory to install in: ${PostgreSQL_EXTENSION_DIRS}")
+    message(STATUS "Library: ${PostgreSQL_LIBRARY}")
     message(STATUS "Library directory to install in: ${PostgreSQL_LIBRARY_DIRS}")
     message(STATUS "PostgreSQL_VERSION_STRING is ${PostgreSQL_VERSION_STRING}")
     message(STATUS "C flag: PGSQL_VERSION is ${PGSQL_VERSION}")
@@ -444,11 +445,12 @@ set(PgRouting_SOURCE_NAMES
      "vrp_basic" "vrppdtw"
      "label_graph"
      )
+ # Not used YET
+ # shooting_star vrpdptw
 
  set(PgRouting_INCLUDE_DIRECTORIES ${PgRouting_SOURCE_DIRECTORIES})
 
- set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_DIRECTORIES}
-     )
+ set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_DIRECTORIES})
 
 
  foreach (subdir ${PgRouting_SOURCE_NAMES} )
@@ -458,30 +460,30 @@ set(PgRouting_SOURCE_NAMES
 
 
  #include directories: files in alphabetical order
- set(PGROUTING_INCLUDE_DIRECTORIES
-     ${PGROUTING_SOURCE_DIR}/src/johnson/src
-     ${PGROUTING_SOURCE_DIR}/src/floydWarshall/src
-     ${PGROUTING_SOURCE_DIR}/src/astar/src
-     ${PGROUTING_SOURCE_DIR}/src/bd_astar/src
-     ${PGROUTING_SOURCE_DIR}/src/bd_dijkstra/src
-     ${PGROUTING_SOURCE_DIR}/src/common/src
-     ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
-     ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
-     ${PGROUTING_SOURCE_DIR}/src/kdijkstra/src
-     ${PGROUTING_SOURCE_DIR}/src/ksp/src
-     ${PGROUTING_SOURCE_DIR}/src/trsp/src
-     ${PGROUTING_SOURCE_DIR}/src/tsp/src
-     ${PGROUTING_SOURCE_DIR}/src/vrp_basic/src
-     ${PGROUTING_SOURCE_DIR}/src/vrppdtw/src
+ # set(PGROUTING_INCLUDE_DIRECTORIES
+ #    ${PGROUTING_SOURCE_DIR}/src/johnson/src
+ #    ${PGROUTING_SOURCE_DIR}/src/floydWarshall/src
+ #    ${PGROUTING_SOURCE_DIR}/src/astar/src
+ #     ${PGROUTING_SOURCE_DIR}/src/bd_astar/src
+ #    ${PGROUTING_SOURCE_DIR}/src/bd_dijkstra/src
+ #    ${PGROUTING_SOURCE_DIR}/src/common/src
+ #    ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
+ #    ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
+ #    ${PGROUTING_SOURCE_DIR}/src/kdijkstra/src
+ #    ${PGROUTING_SOURCE_DIR}/src/ksp/src
+ #    ${PGROUTING_SOURCE_DIR}/src/trsp/src
+ #    ${PGROUTING_SOURCE_DIR}/src/tsp/src
+ #    ${PGROUTING_SOURCE_DIR}/src/vrp_basic/src
+ #    ${PGROUTING_SOURCE_DIR}/src/vrppdtw/src
 
      # not using C/C++
-     ${PGROUTING_SOURCE_DIR}/src/label_graph/src
+     #    ${PGROUTING_SOURCE_DIR}/src/label_graph/src
 
 
      #not suported but directory exists
      #    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
      #    ${PGROUTING_SOURCE_DIR}/src/vrpdptw/src
-     )
+     #)
 
  include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${PostgreSQL_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 

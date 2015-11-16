@@ -144,8 +144,10 @@ endif()
 
 # The PostgreSQL library.
 set (PostgreSQL_LIBRARY_TO_FIND "pq")
+
 # Setting some more prefixes for the library
 set (PostgreSQL_LIB_PREFIX "")
+
 if ( WIN32 )
     set (PostgreSQL_LIB_PREFIX ${PostgreSQL_LIB_PREFIX} "lib")
     set ( PostgreSQL_LIBRARY_TO_FIND ${PostgreSQL_LIB_PREFIX}${PostgreSQL_LIBRARY_TO_FIND})
