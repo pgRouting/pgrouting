@@ -143,6 +143,18 @@ if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
 endif()
 
 
+if (EXISTS ${PostgreSQL_INCLUDE_DIR} AND EXISTS "${PostgreSQL_INCLUDE_DIR}/pg_config.h")
+    file(STRINGS "${PostgreSQL_INCLUDE_DIR}/pg_config.h" pgsql_version_str
+        REGEX "^#define[\t ]+PG_VERSION[\t ]+\".*\"")
+
+    string(REGEX REPLACE "^#define[\t ]+PG_VERSION[\t ]+\"([^\"]*)\".*" "\\1"
+        PostgreSQL_VERSION_STRING "${pgsql_version_str}")
+    unset(pgsql_version_str)
+endif()
+string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1.\\2" PostgreSQL_VERSION ${PostgreSQL_VERSION_STRING})
+
+
+
 # The PostgreSQL library.
 set (PostgreSQL_LIBRARY_TO_FIND "pq")
 
@@ -155,7 +167,7 @@ if ( WIN32 )
 endif()
 
 message("PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}")
-if (NOT EXISTS "$(PostgreSQL_LIBRARY_DIR}")
+if (NOT EXISTS "${PostgreSQL_LIBRARY_DIR}")
 
     find_library( PostgreSQL_LIBRARY
         NAMES ${PostgreSQL_LIBRARY_TO_FIND}
@@ -169,26 +181,34 @@ if (NOT EXISTS "$(PostgreSQL_LIBRARY_DIR}")
 
 
 
-    # find where the libraries are installed for the particular version os postgreSQL
+    # find where the extension libraries are installed for the particular version os postgreSQL
     if ( UNIX )
-        foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
-            set(postgresql_lib_additional_search_paths ${postgresql_lib_additional_search_paths} "${PostgreSQL_LIBRARY_DIR}/postgresql/${suffix}" )
-        endforeach()
 
-        find_library( postgresql_new_library
-            NAMES "worker_spi.so"
-            PATHS
-            ${postgresql_lib_additional_search_paths}
-            ${PostgreSQL_ROOT_DIRECTORIES}
-            PATH_SUFFIXES
-            lib
-            )
-        message("postgresql_new_library ${postgresql_new_library}")
+            message("PostgreSQL_EXTENSION_LIBRARY_DIR: ${PostgreSQL_EXTENSION_LIBRARY_DIR}")
+        if (NOT EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}")
+            set(PostgreSQL_EXTENSION_LIBRARY_DIR "${PostgreSQL_LIBRARY_DIR}/postgresql/${PostgreSQL_VERSION}/lib")
+        endif()
+            message("PostgreSQL_EXTENSION_LIBRARY_DIR: ${PostgreSQL_EXTENSION_LIBRARY_DIR}")
 
-        get_filename_component(PostgreSQL_LIBRARY_DIR ${postgresql_new_library} PATH)
 
-        unset (postgresql_lib_additional_search_paths)
-        unset (postgresql_new_library)
+        #foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
+        #set(postgresql_lib_additional_search_paths ${postgresql_lib_additional_search_paths} "${PostgreSQL_LIBRARY_DIR}/postgresql/${suffix}" )
+        #endforeach()
+        #
+        #find_library( postgresql_new_library
+        #NAMES "postgis.so"
+        #PATHS
+        #${postgresql_lib_additional_search_paths}
+        #${PostgreSQL_ROOT_DIRECTORIES}
+        #PATH_SUFFIXES
+        #lib
+        #)
+        #message("postgresql_new_library ${postgresql_new_library}")
+
+        #get_filename_component(PostgreSQL_LIBRARY_DIR ${postgresql_new_library} PATH)
+        #
+        #unset (postgresql_lib_additional_search_paths)
+        #unset (postgresql_new_library)
 
     endif()
 endif()
@@ -216,40 +236,34 @@ endif()
 
 
 
-if (EXISTS ${PostgreSQL_INCLUDE_DIR} AND EXISTS "${PostgreSQL_INCLUDE_DIR}/pg_config.h")
-    file(STRINGS "${PostgreSQL_INCLUDE_DIR}/pg_config.h" pgsql_version_str
-        REGEX "^#define[\t ]+PG_VERSION[\t ]+\".*\"")
-
-    string(REGEX REPLACE "^#define[\t ]+PG_VERSION[\t ]+\"([^\"]*)\".*" "\\1"
-        PostgreSQL_VERSION_STRING "${pgsql_version_str}")
-    unset(pgsql_version_str)
-endif()
-
-
 # Did we find the things needed for pgRouting?
 if (UNIX)
     set( PostgreSQL_FOUND FALSE )
     if (
             EXISTS "${PostgreSQL_INCLUDE_DIR}" AND
             EXISTS "${PostgreSQL_LIBRARY_DIR}" AND
+            EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}" AND
             EXISTS "${PostgreSQL_EXTENSION_DIR}" )
         set( PostgreSQL_FOUND TRUE )
         set( PostgreSQL_INCLUDE_DIRS ${PostgreSQL_TYPE_INCLUDE_DIR})
         set( PostgreSQL_LIBRARY_DIRS ${PostgreSQL_LIBRARY_DIR})
+        set( PostgreSQL_EXTENSION_LIBRARY_DIRS ${PostgreSQL_LIBRARY_DIR})
         set( PostgreSQL_EXTENSION_DIRS ${PostgreSQL_EXTENSION_DIR})
 
-        if(PostgreSQL_DEBUG)
+        if(PostgreSQL_DEBUG OR CDEBUG)
             message("PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}")
             message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIRS}")
             message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIRS}")
+            message("PostgreSQL_EXTENSION_LIBRARY_DIRS: ${PostgreSQL_EXTENSION_LIBRARY_DIRS}")
             message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIRS}")
-            message("PostgreSQL_LIBRARIES: ${PostgreSQL_LIBRARY}")
+            message("PostgreSQL_LIBRARIES: ${PostgreSQL_LIBRARIES} ${PostgreSQL_EXTENSION_LIBRARY_DIRS}")
         endif()
 
     else()
         message(FATAL_ERROR "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}
         PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
         PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
+        PostgreSQL_EXTENSION_LIBRARY_DIR: ${PostgreSQL_EXTENSION_LIBRARY_DIR}
         PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
         PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}
         PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
