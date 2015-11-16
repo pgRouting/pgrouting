@@ -98,7 +98,7 @@ set( PostgreSQL_ROOT_DIRECTORIES
 #
 # Look for an installation.
 #
-if (NOT EXISTS PostgreSQL_INCLUDE_DIR)
+if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
     find_path(PostgreSQL_INCLUDE_DIR
         NAMES libpq-fe.h
         PATHS
@@ -151,7 +151,7 @@ if ( WIN32 )
     set ( PostgreSQL_LIBRARY_TO_FIND ${PostgreSQL_LIB_PREFIX}${PostgreSQL_LIBRARY_TO_FIND})
 endif()
 
-if (NOT EXISTS PostgreSQL_LIBRARY_DIR)
+if (NOT EXISTS "$(PostgreSQL_LIBRARY_DIR}")
 
     find_library( PostgreSQL_LIBRARY
         NAMES ${PostgreSQL_LIBRARY_TO_FIND}
