@@ -260,16 +260,24 @@ else(UNIX)
             set(PostgreSQL_LIBRARIES ${PostgreSQL_LIBRARY_TO_FIND})
         endif(EXISTS "${PostgreSQL_LIBRARY_DIR}")
 
-        message("Final PostgreSQL include dir: ${PostgreSQL_INCLUDE_DIRS}")
-        message("Final PostgreSQL library dir: ${PostgreSQL_LIBRARY_DIRS}")
+        if(CDEBUG)
+            message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIR}")
+            message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIR}")
+            message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIR}")
+            message("PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
+        endif()
+
+
     else(PostgreSQL_FOUND)
 
         if(CDEBUG)
             message(STATUS "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}")
         else()
-            if(PostgreSQL_FIND_REQUIRED)
-                message(FATAL_ERROR "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}")
-            endif(PostgreSQL_FIND_REQUIRED)
+            message(FATAL_ERROR "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}
+            PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIR}
+            PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIR}
+            PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIR}
+            PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
         endif()
     endif(NOT PostgreSQL_FOUND)
 endif(UNIX)
