@@ -183,7 +183,7 @@ if (NOT EXISTS "$(PostgreSQL_LIBRARY_DIR}")
             PATH_SUFFIXES
             lib
             )
-        message("postgresql_new_library ${ostgresql_new_library}")
+        message("postgresql_new_library ${postgresql_new_library}")
 
         get_filename_component(PostgreSQL_LIBRARY_DIR ${postgresql_new_library} PATH)
 
