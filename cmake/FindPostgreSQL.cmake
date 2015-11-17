@@ -114,7 +114,7 @@ if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
 
 
     if ( UNIX )
-    # find where the includes fliles are installed for the particular version os postgreSQL
+        # find where the includes fliles are installed for the particular version os postgreSQL
         foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
             set(postgresql_additional_search_paths ${postgresql_additional_search_paths} "${PostgreSQL_INCLUDE_DIR}/${suffix}/server" )
         endforeach()
@@ -156,47 +156,48 @@ string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1.\\2" PostgreSQL_VERSION ${Pos
 
 
 
-# The PostgreSQL library.
-set (PostgreSQL_LIBRARY_TO_FIND "pq")
-
-# Setting some more prefixes for the library
-#set (PostgreSQL_LIB_PREFIX "lib")
 
 if ( WIN32 )
     if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
-        find_path(PostgreSQL_INCLUDE_DIR
-            NAMES include/libpq-fe.h
-            PATHS
-            # Look in other places.
-            ${PostgreSQL_ROOT_DIRECTORIES}
-            PATH_SUFFIXES
-            pgsql
-            postgresql
-            # Help the user find it if we cannot.
-            DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
-            )
+        #        find_path(PostgreSQL_INCLUDE_DIR
+        #    NAMES libpq-fe.h
+        #    PATHS
+        # Look in other places.
+        #   ${PostgreSQL_ROOT_DIRECTORIES}
+        # PATH_SUFFIXES
+        #pgsql
+        #postgresql
+        #include
+        # Help the user find it if we cannot.
+        #DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
+        #)
+
+        #need to remove the word include
+        string(REGEX REPLACE "/include" ""
+            striped_word_include "${PostgreSQL_INCLUDE_DIR}")
 
         #-- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/share/extension/pgrouting.control
         if (NOT EXISTS "${PostgreSQL_EXTENSION_DIR}")
-            set(PostgreSQL_EXTENSION_DIR "${PostgreSQL_INCLUDE_DIR}/share/extension")
+            set(PostgreSQL_EXTENSION_DIR "${striped_word_include}/share/extension")
         endif()
 
         #- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/lib/libpgrouting--2.2.0.dll.a
         if (NOT EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}")
-            set(PostgreSQL_EXTENSION_LIBRARY_DIR "${PostgreSQL_INCLUDE_DIR}/lib")
+            set(PostgreSQL_EXTENSION_LIBRARY_DIR "${striped_word_include}/lib")
         endif()
 
         #--   Where all library are: e:/jenkins/postgresql/rel/pg9.5w64gcc48/bin
         if (NOT EXISTS "${PostgreSQL_LIBRARY_DIR}")
-            set(PostgreSQL_LIBRARY_DIR "${PostgreSQL_INCLUDE_DIR}/bin")
+            set(PostgreSQL_LIBRARY_DIR "${striped_word_include}/bin")
         endif()
 
         #--   Library: e:/jenkins/postgresql/rel/pg9.5w64gcc48/bin/libpq.dll
         if (NOT EXISTS "${PostgreSQL_LIBRARY}")
-            set(PostgreSQL_LIBRARY "${PostgreSQL_INCLUDE_DIR}/bin/libpq.dll")
+            set(PostgreSQL_LIBRARY "${striped_word_include}/bin/libpq.dll")
         endif()
 
         message("
+        PostgreSQL_VERSION: ${PostgreSQL_VERSION}
         PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
         PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}
         PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
@@ -208,56 +209,44 @@ if ( WIN32 )
         #set (PostgreSQL_LIB_PREFIX ${PostgreSQL_LIB_PREFIX} "lib")
         #set ( PostgreSQL_LIBRARY_TO_FIND ${PostgreSQL_LIB_PREFIX}${PostgreSQL_LIBRARY_TO_FIND})
     endif()
-endif()
-
-message("PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}")
-if (NOT EXISTS "${PostgreSQL_LIBRARY_DIR}")
-
-    find_library( PostgreSQL_LIBRARY
-        NAMES ${PostgreSQL_LIBRARY_TO_FIND}
-        PATHS
-        ${PostgreSQL_ROOT_DIRECTORIES}
-        PATH_SUFFIXES
-        lib
-        )
-
-    get_filename_component(PostgreSQL_LIBRARY_DIR ${PostgreSQL_LIBRARY} PATH)
-
-
-
-    # find where the extension libraries are installed for the particular version os postgreSQL
-    #if ( UNIX )
-
-    if (NOT EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}")
-        set(PostgreSQL_EXTENSION_LIBRARY_DIR "${PostgreSQL_LIBRARY_DIR}/postgresql/${PostgreSQL_VERSION}/lib")
-        if (NOT EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}")
-            set(PostgreSQL_EXTENSION_LIBRARY_DIR "/usr/lib/postgresql/${PostgreSQL_VERSION}/lib")
-        endif()
-    endif()
-
+    unset(strip_word_include)
 endif()
 
 
-if (NOT EXISTS PostgreSQL_EXTENSION_DIR)
-    # find where the extensions are installed for the particular version os postgreSQL
-    if ( UNIX )
+if (UNIX)
+    if (NOT EXISTS "${PostgreSQL_LIBRARY_DIR}")
 
-        foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
-            set(PostgreSQL_EXT_ADDITIONAL_SEARCH_PATHS ${PostgreSQL_EXT_ADDITIONAL_SEARCH_PATHS} "/usr/share/postgresql/${suffix}" )
-        endforeach()
+        set (PostgreSQL_LIBRARY_TO_FIND "pq")
 
-        find_path(PostgreSQL_EXTENSION_DIR
-            NAMES plpgsql.control
+        find_library( PostgreSQL_LIBRARY
+            NAMES ${PostgreSQL_LIBRARY_TO_FIND}
             PATHS
-            # Look in other places.
-            ${PostgreSQL_EXT_ADDITIONAL_SEARCH_PATHS}
-            #            ${PostgreSQL_ROOT_DIRECTORIES}
+            ${PostgreSQL_ROOT_DIRECTORIES}
             PATH_SUFFIXES
-            extension
+            lib
             )
-    endif()
-endif()
 
+        get_filename_component(PostgreSQL_LIBRARY_DIR ${PostgreSQL_LIBRARY} PATH)
+
+        set(PostgreSQL_EXTENSION_LIBRARY_DIR "${PostgreSQL_LIBRARY_DIR}/postgresql/${PostgreSQL_VERSION}/lib")
+
+    endif()
+
+
+    if (NOT EXISTS PostgreSQL_EXTENSION_DIR)
+        set(PostgreSQL_EXTENSION_DIR "/usr/share/postgresql/${PostgreSQL_VERSION}/extension")
+    endif()
+
+    message("
+    PostgreSQL_VERSION: ${PostgreSQL_VERSION}
+    PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
+    PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}
+    PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
+    PostgreSQL_EXTENSION_LIBRARY_DIR: ${PostgreSQL_EXTENSION_LIBRARY_DIR}
+    PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
+    PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}")
+
+endif()
 
 
 # Did we find the things needed for pgRouting?
