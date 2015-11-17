@@ -741,10 +741,12 @@ endif()
 # Perl
 #----------------------
 
-include(FindPerl)
-if(NOT PERL_EXECUTABLE)
-    message(FATAL_ERROR " Please check your Perl installation.")
-endif(NOT PERL_EXECUTABLE)
+if(WITH_TEST1)
+    include(FindPerl)
+    if(NOT PERL_EXECUTABLE)
+        message(FATAL_ERROR " Please check your Perl installation.")
+    endif(NOT PERL_EXECUTABLE)
+endif()
 
 #-----------------------------------------------------------------------------
 
