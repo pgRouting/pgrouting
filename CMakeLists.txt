@@ -522,30 +522,26 @@ message(".....OK")
 
 
 
+#-----------------------------------------------------------------------------
+# The INCLUDE directories
+#-----------------------------------------------------------------------------
+
+#-------------------
+# Generate pgRouting's
+#-------------------
 foreach (subdir ${PgRouting_SOURCE_NAMES} )
     set(PGROUTING_INCLUDE_DIRECTORIES ${PGROUTING_INCLUDE_DIRECTORIES} "${PGROUTING_SOURCE_DIR}/src/${subdir}/src")
 endforeach()
 
-foreach (subdir ${PgRouting_SOURCE_NAMES} )
-    set(PGROUTING_OBJECTS ${PGROUTING_OBJECTS} "$<TARGET_OBJECTS:${subdir}>")
-endforeach()
+
+include_directories(
+    ${PGROUTING_INCLUDE_DIRECTORIES} 
+    ${PostgreSQL_INCLUDE_DIRS} 
+    ${Boost_INCLUDE_DIRS})
 
 
-
-include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${PostgreSQL_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
-
-
-#-----------------------------------------------------------------------------
-# WIN32
-#   location of the include directories
-#   location of the linking directories
-#   Libraries to be linked
-#-----------------------------------------------------------------------------
 if(WIN32)
     include_directories(${PostgreSQL_INCLUDE_DIRS}/port/win32)
-    message(STATUS "LINK_DIRECTORIES = ${postgreSQL_LIBRARIES} ${PostgreSQL_LIBRARY_DIRS}")
-    link_directories(${PostgreSQL_LIBRARIES} ${PostgreSQL_LIBRARY_DIRS})
-    link_libraries(postgres)
 endif(WIN32)
 
 
@@ -577,9 +573,6 @@ elseif(WIN32)
 endif()
 
 
-#-----------------------------------------------------------------------------
-# List variable to collect module SQL file names
-#-----------------------------------------------------------------------------
 
 #-----------------------------------------------------------------------------
 # add the subdirectories that have the C/C++ code 
@@ -589,59 +582,43 @@ foreach (subdir ${PgRouting_SOURCE_NAMES})
     add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/src")
 endforeach()
 
-#-----------------------------------------------------------------------------
-# List variable to collect module SQL file names
-#-----------------------------------------------------------------------------
-
-set(PACKAGE_SQL_FILES "")
-set(LIST_PACKAGE_SQL_FILES "${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql")
-
-foreach (subdir ${PgRouting_SQL_DIRECTORIES})
-    add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/sql")
-    list(APPEND LIST_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
-endforeach()
-
-if (FULLDEBUG)
-    message("LIST_PACKAGE_SQL_FILES= ${LIST_PACKAGE_SQL_FILES}")
-endif()
 
 
-#set(PACKAGE_SQL_FILES "")
-#set(L_PACKAGE_SQL_FILES "")
 
-# Recurse into the subdirectories.
-#add_subdirectory(src)
+link_libraries(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${Boost_THREAD_LIBRARIES})
 
-#list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
-
+if(WIN32)
+    message(STATUS "LINK_DIRECTORIES = ${postgreSQL_LIBRARIES} ${PostgreSQL_LIBRARY_DIRS}")
+    link_directories(${PostgreSQL_LIBRARIES} ${PostgreSQL_LIBRARY_DIRS})
+    link_libraries(postgres)
+endif(WIN32)
 
 #-----------------------------------------------------------------------------
-
-
-
-
-#TODO Make pretty from her to the end of the file
-
-
 # assemble the object files from the src functions into
 # a single library librouting.so
-#set(LIBRARY_OUTPUT_PATH lib)
+#-----------------------------------------------------------------------------
 
-#-----------------------------------------------------------------------------
-# Type of lybrary
-#-----------------------------------------------------------------------------
+#-------------------
+# Type of library
+#-------------------
+
 if(APPLE)
     set(LIBRARY_MODE_TARGET "MODULE")
 else(APPLE)
     set(LIBRARY_MODE_TARGET "SHARED")
 endif(APPLE)
 
-
-link_libraries(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${Boost_THREAD_LIBRARIES})
+#-------------------
+# pgRouting objects to be linked
+#-------------------
+foreach (subdir ${PgRouting_SOURCE_NAMES} )
+    set(PGROUTING_OBJECTS ${PGROUTING_OBJECTS} "$<TARGET_OBJECTS:${subdir}>")
+endforeach()
 
 add_library(${PGROUTING_LIB_NAME}
     ${LIBRARY_MODE_TARGET}
     ${PGROUTING_OBJECTS})
+#-----------------------------------------------------------------------------
 
 
 install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${PostgreSQL_EXTENSION_LIBRARY_DIRS})
@@ -660,6 +637,22 @@ file(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.i
 
 file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
     "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
+
+#-----------------------------------------------------------------------------
+# List variable to collect module SQL file names
+#-----------------------------------------------------------------------------
+
+set(PACKAGE_SQL_FILES "")
+set(LIST_PACKAGE_SQL_FILES "${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql")
+
+foreach (subdir ${PgRouting_SQL_DIRECTORIES})
+    add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/sql")
+    list(APPEND LIST_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
+endforeach()
+
+if (FULLDEBUG)
+    message("LIST_PACKAGE_SQL_FILES= ${LIST_PACKAGE_SQL_FILES}")
+endif()
 
 
 #cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
