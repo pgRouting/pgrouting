@@ -163,8 +163,51 @@ set (PostgreSQL_LIBRARY_TO_FIND "pq")
 #set (PostgreSQL_LIB_PREFIX "lib")
 
 if ( WIN32 )
-    set (PostgreSQL_LIB_PREFIX ${PostgreSQL_LIB_PREFIX} "lib")
-    set ( PostgreSQL_LIBRARY_TO_FIND ${PostgreSQL_LIB_PREFIX}${PostgreSQL_LIBRARY_TO_FIND})
+    if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
+        find_path(PostgreSQL_INCLUDE_DIR
+            NAMES include/libpq-fe.h
+            PATHS
+            # Look in other places.
+            ${PostgreSQL_ROOT_DIRECTORIES}
+            PATH_SUFFIXES
+            pgsql
+            postgresql
+            # Help the user find it if we cannot.
+            DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
+            )
+
+        #-- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/share/extension/pgrouting.control
+        if (NOT EXISTS "${PostgreSQL_EXTENSION_DIR}")
+            set(PostgreSQL_EXTENSION_DIR "${PostgreSQL_INCLUDE_DIR}/share/extension")
+        endif()
+
+        #- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/lib/libpgrouting--2.2.0.dll.a
+        if (NOT EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}")
+            set(PostgreSQL_EXTENSION_LIBRARY_DIR "${PostgreSQL_INCLUDE_DIR}/lib")
+        endif()
+
+        #--   Where all library are: e:/jenkins/postgresql/rel/pg9.5w64gcc48/bin
+        if (NOT EXISTS "${PostgreSQL_LIBRARY_DIR}")
+            set(PostgreSQL_LIBRARY_DIR "${PostgreSQL_INCLUDE_DIR}/bin")
+        endif()
+
+        #--   Library: e:/jenkins/postgresql/rel/pg9.5w64gcc48/bin/libpq.dll
+        if (NOT EXISTS "${PostgreSQL_LIBRARY}")
+            set(PostgreSQL_LIBRARY "${PostgreSQL_INCLUDE_DIR}/bin/libpq.dll")
+        endif()
+
+        message("
+        PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
+        PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}
+        PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
+        PostgreSQL_EXTENSION_LIBRARY_DIR: ${PostgreSQL_EXTENSION_LIBRARY_DIR}
+        PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
+        PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}")
+
+
+        #set (PostgreSQL_LIB_PREFIX ${PostgreSQL_LIB_PREFIX} "lib")
+        #set ( PostgreSQL_LIBRARY_TO_FIND ${PostgreSQL_LIB_PREFIX}${PostgreSQL_LIBRARY_TO_FIND})
+    endif()
 endif()
 
 message("PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}")
@@ -185,34 +228,12 @@ if (NOT EXISTS "${PostgreSQL_LIBRARY_DIR}")
     # find where the extension libraries are installed for the particular version os postgreSQL
     #if ( UNIX )
 
+    if (NOT EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}")
+        set(PostgreSQL_EXTENSION_LIBRARY_DIR "${PostgreSQL_LIBRARY_DIR}/postgresql/${PostgreSQL_VERSION}/lib")
         if (NOT EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}")
-            set(PostgreSQL_EXTENSION_LIBRARY_DIR "${PostgreSQL_LIBRARY_DIR}/postgresql/${PostgreSQL_VERSION}/lib")
-            if (NOT EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}")
-                set(PostgreSQL_EXTENSION_LIBRARY_DIR "/usr/lib/postgresql/${PostgreSQL_VERSION}/lib")
-            endif()
+            set(PostgreSQL_EXTENSION_LIBRARY_DIR "/usr/lib/postgresql/${PostgreSQL_VERSION}/lib")
         endif()
-
-        #endif()
-        #--   pg_config.h is found in: e:/jenkins/postgresql/rel/pg9.5w64gcc48/include
-        #--   pg_type.h is found in: e:/jenkins/postgresql/rel/pg9.5w64gcc48/include/catalog
-        #--   Extension directory to install in: 
-        #--   Library: e:/jenkins/postgresql/rel/pg9.5w64gcc48/bin/libpq.dll
-        #--   Libraries: libpq
-        #--   Library directory to install in: 
-        #--   Where all library are: e:/jenkins/postgresql/rel/pg9.5w64gcc48/bin
-        #--   PostgreSQL_VERSION_STRING is 9.5beta2
-        #--   C flag: PGSQL_VERSION is 95
-
-        #- Install directory for libraries is set to e:/jenkins/postgresql/rel/pg9.5w64gcc48/lib
-        #-- Extension directory for SQL files is set to e:/jenkins/postgresql/rel/pg9.5w64gcc48/share/extension
-        #-- LINK_DIRECTORIES = e:/jenkins/postgresql/rel/pg9.5w64gcc48/lib
-
-        #- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/lib/libpgrouting--2.2.0.dll.a
-        #-- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/lib/libpgrouting--2.2.0.dll
-        #-- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/share/extension/pgrouting--2.2.0.sql
-        #-- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/share/extension/pgrouting.control
-        #-- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/share/extension/pgrouting--2.0.0--2.2.0.sql
-        #-- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/share/extension/pgrouting--2.1.0--2.2.0.sql
+    endif()
 
 endif()
 
@@ -241,78 +262,78 @@ endif()
 
 # Did we find the things needed for pgRouting?
 #if (UNIX)
-    set( PostgreSQL_FOUND FALSE )
-    if (
-            EXISTS "${PostgreSQL_INCLUDE_DIR}" AND
-            EXISTS "${PostgreSQL_LIBRARY_DIR}" AND
-            EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}" AND
-            EXISTS "${PostgreSQL_EXTENSION_DIR}" )
-        set( PostgreSQL_FOUND TRUE )
-        set( PostgreSQL_INCLUDE_DIRS ${PostgreSQL_TYPE_INCLUDE_DIR})
-        set( PostgreSQL_LIBRARY_DIRS ${PostgreSQL_LIBRARY_DIR})
-        set( PostgreSQL_LIBRARIES ${PostgreSQL_LIBRARY})
-        set( PostgreSQL_EXTENSION_LIBRARY_DIRS ${PostgreSQL_EXTENSION_LIBRARY_DIR})
-        set( PostgreSQL_EXTENSION_DIRS ${PostgreSQL_EXTENSION_DIR})
+set( PostgreSQL_FOUND FALSE )
+if (
+        EXISTS "${PostgreSQL_INCLUDE_DIR}" AND
+        EXISTS "${PostgreSQL_LIBRARY_DIR}" AND
+        EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}" AND
+        EXISTS "${PostgreSQL_EXTENSION_DIR}" )
+    set( PostgreSQL_FOUND TRUE )
+    set( PostgreSQL_INCLUDE_DIRS ${PostgreSQL_TYPE_INCLUDE_DIR})
+    set( PostgreSQL_LIBRARY_DIRS ${PostgreSQL_LIBRARY_DIR})
+    set( PostgreSQL_LIBRARIES ${PostgreSQL_LIBRARY})
+    set( PostgreSQL_EXTENSION_LIBRARY_DIRS ${PostgreSQL_EXTENSION_LIBRARY_DIR})
+    set( PostgreSQL_EXTENSION_DIRS ${PostgreSQL_EXTENSION_DIR})
 
-        if(PostgreSQL_DEBUG OR CDEBUG)
-            message("PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}")
-            message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIRS}")
-            message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIRS}")
-            message("PostgreSQL_EXTENSION_LIBRARY_DIRS: ${PostgreSQL_EXTENSION_LIBRARY_DIRS}")
-            message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIRS}")
-            message("PostgreSQL_LIBRARIES: ${PostgreSQL_LIBRARIES} ")
-        endif()
-
-    else()
-        message(FATAL_ERROR "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}
-        PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
-        PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
-        PostgreSQL_EXTENSION_LIBRARY_DIR: ${PostgreSQL_EXTENSION_LIBRARY_DIR}
-        PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
-        PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}
-        PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
+    if(PostgreSQL_DEBUG OR CDEBUG)
+        message("PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}")
+        message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIRS}")
+        message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIRS}")
+        message("PostgreSQL_EXTENSION_LIBRARY_DIRS: ${PostgreSQL_EXTENSION_LIBRARY_DIRS}")
+        message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIRS}")
+        message("PostgreSQL_LIBRARIES: ${PostgreSQL_LIBRARIES} ")
     endif()
 
-    #else(UNIX)
-    #set( PostgreSQL_FOUND FALSE )
-    #if ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND EXISTS "${PostgreSQL_LIBRARY_DIR}" )
-    #set( PostgreSQL_FOUND TRUE )
-    #else ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND EXISTS "${PostgreSQL_LIBRARY_DIR}" )
-    #if ( POSTGRES_REQUIRED )
-    #message( FATAL_ERROR "PostgreSQL is required. ${PostgreSQL_ROOT_DIR_MESSAGE}" )
-    #endif ( POSTGRES_REQUIRED )
-    #endif (EXISTS "${PostgreSQL_INCLUDE_DIR}" AND EXISTS "${PostgreSQL_LIBRARY_DIR}" )
-    ## Now try to get the include and library path.
-    #if(PostgreSQL_FOUND)
-    #
-    #if(EXISTS "${PostgreSQL_INCLUDE_DIR}")
-    #set(PostgreSQL_INCLUDE_DIRS
-    #${PostgreSQL_INCLUDE_DIR}
-    #)
-    #endif(EXISTS "${PostgreSQL_INCLUDE_DIR}")
-    #
-    #if(EXISTS "${PostgreSQL_LIBRARY_DIR}")
-    #set(PostgreSQL_LIBRARY_DIRS
-    #${PostgreSQL_LIBRARY_DIR}
-    #)
-    #set(PostgreSQL_LIBRARIES ${PostgreSQL_LIBRARY_TO_FIND})
-    #endif(EXISTS "${PostgreSQL_LIBRARY_DIR}")
-    #
-    #if(PostgreSQL_DEBUG)
-    #message("PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}")
-    #message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIRS}")
-    #message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIRS}")
-    #message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIRS}")
-    #message("PostgreSQL_LIBRARIES: ${PostgreSQL_LIBRARIES}")
-    #endif()
-    #
-    #
-    #else(PostgreSQL_FOUND)
-    #message(FATAL_ERROR "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}
-    #PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
-    #PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
-    #PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
-    #PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}
-    #PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
-    ##endif()
-    #endif(UNIX)
+else()
+    message(FATAL_ERROR "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}
+    PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
+    PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
+    PostgreSQL_EXTENSION_LIBRARY_DIR: ${PostgreSQL_EXTENSION_LIBRARY_DIR}
+    PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
+    PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}
+    PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
+endif()
+
+#else(UNIX)
+#set( PostgreSQL_FOUND FALSE )
+#if ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND EXISTS "${PostgreSQL_LIBRARY_DIR}" )
+#set( PostgreSQL_FOUND TRUE )
+#else ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND EXISTS "${PostgreSQL_LIBRARY_DIR}" )
+#if ( POSTGRES_REQUIRED )
+#message( FATAL_ERROR "PostgreSQL is required. ${PostgreSQL_ROOT_DIR_MESSAGE}" )
+#endif ( POSTGRES_REQUIRED )
+#endif (EXISTS "${PostgreSQL_INCLUDE_DIR}" AND EXISTS "${PostgreSQL_LIBRARY_DIR}" )
+## Now try to get the include and library path.
+#if(PostgreSQL_FOUND)
+#
+#if(EXISTS "${PostgreSQL_INCLUDE_DIR}")
+#set(PostgreSQL_INCLUDE_DIRS
+#${PostgreSQL_INCLUDE_DIR}
+#)
+#endif(EXISTS "${PostgreSQL_INCLUDE_DIR}")
+#
+#if(EXISTS "${PostgreSQL_LIBRARY_DIR}")
+#set(PostgreSQL_LIBRARY_DIRS
+#${PostgreSQL_LIBRARY_DIR}
+#)
+#set(PostgreSQL_LIBRARIES ${PostgreSQL_LIBRARY_TO_FIND})
+#endif(EXISTS "${PostgreSQL_LIBRARY_DIR}")
+#
+#if(PostgreSQL_DEBUG)
+#message("PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}")
+#message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIRS}")
+#message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIRS}")
+#message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIRS}")
+#message("PostgreSQL_LIBRARIES: ${PostgreSQL_LIBRARIES}")
+#endif()
+#
+#
+#else(PostgreSQL_FOUND)
+#message(FATAL_ERROR "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}
+#PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
+#PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
+#PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
+#PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}
+#PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
+##endif()
+#endif(UNIX)
