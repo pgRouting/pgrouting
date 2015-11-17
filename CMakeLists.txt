@@ -581,13 +581,38 @@ endif()
 # List variable to collect module SQL file names
 #-----------------------------------------------------------------------------
 
+#-----------------------------------------------------------------------------
+# add the subdirectories that have the C/C++ code 
+#-----------------------------------------------------------------------------
+
+foreach (subdir ${PgRouting_SOURCE_NAMES})
+    add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/src")
+endforeach()
+
+#-----------------------------------------------------------------------------
+# List variable to collect module SQL file names
+#-----------------------------------------------------------------------------
+
 set(PACKAGE_SQL_FILES "")
-set(L_PACKAGE_SQL_FILES "")
+set(LIST_PACKAGE_SQL_FILES "${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql")
+
+foreach (subdir ${PgRouting_SQL_DIRECTORIES})
+    add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/sql")
+    list(APPEND LIST_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
+endforeach()
+
+if (FULLDEBUG)
+    message("LIST_PACKAGE_SQL_FILES= ${LIST_PACKAGE_SQL_FILES}")
+endif()
+
+
+#set(PACKAGE_SQL_FILES "")
+#set(L_PACKAGE_SQL_FILES "")
 
 # Recurse into the subdirectories.
-add_subdirectory(src)
+#add_subdirectory(src)
 
-list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
+#list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 
 
 #-----------------------------------------------------------------------------
@@ -637,11 +662,11 @@ file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.
     "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
 
 
-cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
-    "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
+#cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
+#    "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 
 
-foreach(PACKAGE_SQL_FILE ${L_PACKAGE_SQL_FILES})
+foreach(PACKAGE_SQL_FILE ${LIST_PACKAGE_SQL_FILES})
     cat(${PACKAGE_SQL_FILE} "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 endforeach()
 
