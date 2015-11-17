@@ -1,5 +1,7 @@
 #!/bin/sh.exe
 
+set -e
+
 # CHANGE THESE TO SUIT YOUR PROJECT
 #all these get passed in by jenkins
 #export OS_BUILD=64 
