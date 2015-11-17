@@ -158,57 +158,43 @@ string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1.\\2" PostgreSQL_VERSION ${Pos
 
 
 if ( WIN32 )
-    if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
-        #        find_path(PostgreSQL_INCLUDE_DIR
-        #    NAMES libpq-fe.h
-        #    PATHS
-        # Look in other places.
-        #   ${PostgreSQL_ROOT_DIRECTORIES}
-        # PATH_SUFFIXES
-        #pgsql
-        #postgresql
-        #include
-        # Help the user find it if we cannot.
-        #DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
-        #)
 
-        #need to remove the word include
-        string(REGEX REPLACE "/include" ""
-            striped_word_include "${PostgreSQL_INCLUDE_DIR}")
+    #need to remove the word include
+    string(REGEX REPLACE "/include" ""
+        striped_word_include "${PostgreSQL_INCLUDE_DIR}")
 
-        #-- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/share/extension/pgrouting.control
-        if (NOT EXISTS "${PostgreSQL_EXTENSION_DIR}")
-            set(PostgreSQL_EXTENSION_DIR "${striped_word_include}/share/extension")
-        endif()
-
-        #- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/lib/libpgrouting--2.2.0.dll.a
-        if (NOT EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}")
-            set(PostgreSQL_EXTENSION_LIBRARY_DIR "${striped_word_include}/lib")
-        endif()
-
-        #--   Where all library are: e:/jenkins/postgresql/rel/pg9.5w64gcc48/bin
-        if (NOT EXISTS "${PostgreSQL_LIBRARY_DIR}")
-            set(PostgreSQL_LIBRARY_DIR "${striped_word_include}/bin")
-        endif()
-
-        #--   Library: e:/jenkins/postgresql/rel/pg9.5w64gcc48/bin/libpq.dll
-        if (NOT EXISTS "${PostgreSQL_LIBRARY}")
-            set(PostgreSQL_LIBRARY "${striped_word_include}/bin/libpq.dll")
-        endif()
-
-        message("
-        PostgreSQL_VERSION: ${PostgreSQL_VERSION}
-        PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
-        PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}
-        PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
-        PostgreSQL_EXTENSION_LIBRARY_DIR: ${PostgreSQL_EXTENSION_LIBRARY_DIR}
-        PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
-        PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}")
-
-
-        #set (PostgreSQL_LIB_PREFIX ${PostgreSQL_LIB_PREFIX} "lib")
-        #set ( PostgreSQL_LIBRARY_TO_FIND ${PostgreSQL_LIB_PREFIX}${PostgreSQL_LIBRARY_TO_FIND})
+    #-- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/share/extension/pgrouting.control
+    if (NOT EXISTS "${PostgreSQL_EXTENSION_DIR}")
+        set(PostgreSQL_EXTENSION_DIR "${striped_word_include}/share/extension")
     endif()
+
+    #- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/lib/libpgrouting--2.2.0.dll.a
+    if (NOT EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}")
+        set(PostgreSQL_EXTENSION_LIBRARY_DIR "${striped_word_include}/lib")
+    endif()
+
+    #--   Where all library are: e:/jenkins/postgresql/rel/pg9.5w64gcc48/bin
+    if (NOT EXISTS "${PostgreSQL_LIBRARY_DIR}")
+        set(PostgreSQL_LIBRARY_DIR "${striped_word_include}/bin")
+    endif()
+
+    #--   Library: e:/jenkins/postgresql/rel/pg9.5w64gcc48/bin/libpq.dll
+    if (NOT EXISTS "${PostgreSQL_LIBRARY}")
+        set(PostgreSQL_LIBRARY "${striped_word_include}/bin/libpq.dll")
+    endif()
+
+    message("
+    PostgreSQL_VERSION: ${PostgreSQL_VERSION}
+    PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
+    PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}
+    PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
+    PostgreSQL_EXTENSION_LIBRARY_DIR: ${PostgreSQL_EXTENSION_LIBRARY_DIR}
+    PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
+    PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}")
+
+
+    #set (PostgreSQL_LIB_PREFIX ${PostgreSQL_LIB_PREFIX} "lib")
+    #set ( PostgreSQL_LIBRARY_TO_FIND ${PostgreSQL_LIB_PREFIX}${PostgreSQL_LIBRARY_TO_FIND})
     unset(strip_word_include)
 endif()
 
@@ -227,11 +213,11 @@ if (UNIX)
             )
 
         get_filename_component(PostgreSQL_LIBRARY_DIR ${PostgreSQL_LIBRARY} PATH)
-
-        set(PostgreSQL_EXTENSION_LIBRARY_DIR "${PostgreSQL_LIBRARY_DIR}/postgresql/${PostgreSQL_VERSION}/lib")
-
     endif()
 
+    if (NOT EXISTS PostgreSQL_EXTENSION_LIBRARY_DIR)
+        set(PostgreSQL_EXTENSION_LIBRARY_DIR "/usr/lib/postgresql/${PostgreSQL_VERSION}/lib")
+    endif()
 
     if (NOT EXISTS PostgreSQL_EXTENSION_DIR)
         set(PostgreSQL_EXTENSION_DIR "/usr/share/postgresql/${PostgreSQL_VERSION}/extension")
