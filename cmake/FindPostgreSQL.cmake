@@ -192,9 +192,6 @@ if ( WIN32 )
     PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
     PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}")
 
-
-    #set (PostgreSQL_LIB_PREFIX ${PostgreSQL_LIB_PREFIX} "lib")
-    #set ( PostgreSQL_LIBRARY_TO_FIND ${PostgreSQL_LIB_PREFIX}${PostgreSQL_LIBRARY_TO_FIND})
     unset(strip_word_include)
 endif()
 

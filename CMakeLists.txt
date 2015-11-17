@@ -443,7 +443,7 @@ endif()
 
 if (CDEBUG)
     message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIR}")
-    message(STATUS "BOOST_THREAD_LIBRARIES=${BOOST_THREAD_LIBRARIES}")
+    message(STATUS "Boost_THREAD_LIBRARIES=${Boost_THREAD_LIBRARIES}")
 endif()
 
 message(".....OK")
@@ -486,6 +486,7 @@ if (POSTGRESQL_VERSION)
     set(PostgreSQL_ADDITIONAL_VERSIONS ${POSTGRESQL_VERSION})
 endif()
 
+set (PostgreSQL_DEBUG ON)
 find_package(PostgreSQL ${POSTGRESQL_MINIMUM_VERSION})
 
 if (NOT PostgreSQL_FOUND)
@@ -606,7 +607,7 @@ else(APPLE)
 endif(APPLE)
 
 
-link_libraries(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
+link_libraries(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${Boost_THREAD_LIBRARIES})
 
 add_library(${PGROUTING_LIB_NAME}
     ${LIBRARY_MODE_TARGET}
