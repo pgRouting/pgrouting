@@ -443,7 +443,10 @@ endif()
 
 if (CDEBUG)
     message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIR}")
+    message(STATUS "Boost_THREAD_FOUND=${Boost_THREAD_FOUND}")
+    message(STATUS "Boost_THREAD_LIBRARY=${Boost_THREAD_LIBRARY}")
     message(STATUS "Boost_THREAD_LIBRARIES=${Boost_THREAD_LIBRARIES}")
+    message(STATUS "Boost_LIB_DIAGNOSTIC_DEFINITIONS=${Boost_LIB_DIAGNOSTIC_DEFINITIONS}")
 endif()
 
 message(".....OK")
@@ -578,13 +581,15 @@ endif()
 # List variable to collect module SQL file names
 #-----------------------------------------------------------------------------
 
-
 set(PACKAGE_SQL_FILES "")
 set(L_PACKAGE_SQL_FILES "")
 
 # Recurse into the subdirectories.
 add_subdirectory(src)
+
 list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
+
+
 #-----------------------------------------------------------------------------
 
 
