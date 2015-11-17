@@ -129,6 +129,7 @@ if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
             ${postgresql_additional_search_paths}
             ${PostgreSQL_ROOT_DIRECTORIES}
             PATH_SUFFIXES
+            include
             postgresql
             pgsql/server
             postgresql/server
@@ -192,6 +193,26 @@ if (NOT EXISTS "${PostgreSQL_LIBRARY_DIR}")
         endif()
 
         #endif()
+        #--   pg_config.h is found in: e:/jenkins/postgresql/rel/pg9.5w64gcc48/include
+        #--   pg_type.h is found in: e:/jenkins/postgresql/rel/pg9.5w64gcc48/include/catalog
+        #--   Extension directory to install in: 
+        #--   Library: e:/jenkins/postgresql/rel/pg9.5w64gcc48/bin/libpq.dll
+        #--   Libraries: libpq
+        #--   Library directory to install in: 
+        #--   Where all library are: e:/jenkins/postgresql/rel/pg9.5w64gcc48/bin
+        #--   PostgreSQL_VERSION_STRING is 9.5beta2
+        #--   C flag: PGSQL_VERSION is 95
+
+        #- Install directory for libraries is set to e:/jenkins/postgresql/rel/pg9.5w64gcc48/lib
+        #-- Extension directory for SQL files is set to e:/jenkins/postgresql/rel/pg9.5w64gcc48/share/extension
+        #-- LINK_DIRECTORIES = e:/jenkins/postgresql/rel/pg9.5w64gcc48/lib
+
+        #- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/lib/libpgrouting--2.2.0.dll.a
+        #-- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/lib/libpgrouting--2.2.0.dll
+        #-- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/share/extension/pgrouting--2.2.0.sql
+        #-- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/share/extension/pgrouting.control
+        #-- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/share/extension/pgrouting--2.0.0--2.2.0.sql
+        #-- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/share/extension/pgrouting--2.1.0--2.2.0.sql
 
 endif()
 

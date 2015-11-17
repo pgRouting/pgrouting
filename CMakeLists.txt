@@ -81,12 +81,46 @@ set(PgRouting_SOURCE_NAMES
     "vrp_basic" "vrppdtw"
     )
 
+#==========================
+#  PgRouting_INCLUDE_DIRECTORIES
+#==========================
+#
+# The names of the directories that have C/C++ code
+#
+#-----------------------------------------------------------------------------
+
 set(PgRouting_INCLUDE_DIRECTORIES ${PgRouting_SOURCE_NAMES})
+
+#==========================
+#  PgRouting_SQL_DIRECTORIES
+#==========================
+#
+# The names of the directories that have SQL
+#
+#   - Add names of directories that don't use C/C++ code
+#
+#-----------------------------------------------------------------------------
+
 set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES} 
     "label_graph")
+
+
+#==========================
+#  PgRouting_SOURCE_NAMES
+#==========================
+#
+# The names of the deprecated directories
+#   - but the test must work
+#
+#-----------------------------------------------------------------------------
 set(PgRouting_TEST_DIRECTORIES ${PgRouting_SOURCE_NAMES} 
     "apsp_warshall" "apsp_johnson"
     )
+
+
+
+
+
 
 #-----------------------------------------------------------------------------
 # PGROUTING Setting the Minimum requirements
@@ -468,13 +502,13 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
 if (CDEBUG)
     message(STATUS "  pg_config.h is found in: ${PostgreSQL_INCLUDE_DIRS}")
     message(STATUS "  pg_type.h is found in: ${PostgreSQL_INCLUDE_DIRS}/catalog")
-    message(STATUS "  Extension directory to install in: ${PostgreSQL_EXTENSION_DIRS}")
     message(STATUS "  Library: ${PostgreSQL_LIBRARY}")
     message(STATUS "  Libraries: ${PostgreSQL_LIBRARIES}")
-    message(STATUS "  Library directory to install in: ${PostgreSQL_EXTENSION_LIBRARY_DIRS}")
     message(STATUS "  Where all library are: ${PostgreSQL_LIBRARY_DIRS}")
     message(STATUS "  PostgreSQL_VERSION_STRING is ${PostgreSQL_VERSION_STRING}")
     message(STATUS "  C flag: PGSQL_VERSION is ${PGSQL_VERSION}")
+    message(STATUS "  Extension directory to install in: ${PostgreSQL_EXTENSION_DIRS}")
+    message(STATUS "  Directory to install the extension: ${PostgreSQL_EXTENSION_LIBRARY_DIRS}")
 endif()
 
 
