@@ -161,7 +161,7 @@ if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
         )
 
     if (UNIX)
-        set (PostgreSQL_INCLUDE_DIRS ${PostgreSQL_TYPE_INCLUDE_DIR})
+        set (PostgreSQL_INCLUDE_DIR ${PostgreSQL_TYPE_INCLUDE_DIR})
     endif()
 
     # pgRouting does not use libpq-fe so we can ignore its directory
@@ -235,6 +235,7 @@ if ( UNIX )
             )
 
         get_filename_component(PostgreSQL_LIBRARY_DIR ${PostgreSQL_LIBRARY} PATH)
+        if (NOT EXISTS PostgreSQL_EXTENSION_LIBRARY_DIR)
     endif()
 
     if (NOT EXISTS PostgreSQL_EXTENSION_LIBRARY_DIR)
