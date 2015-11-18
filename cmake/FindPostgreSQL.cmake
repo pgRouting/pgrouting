@@ -222,19 +222,6 @@ endif()
 
 
 if ( UNIX )
-    #if (NOT EXISTS "${PostgreSQL_LIBRARY_DIR}")
-
-    #set (PostgreSQL_LIBRARY_TO_FIND "pq")
-
-    #find_library( PostgreSQL_LIBRARY
-    #    NAMES ${PostgreSQL_LIBRARY_TO_FIND}
-    #    PATHS
-    #    ${PostgreSQL_ROOT_DIRECTORIES}
-    #    PATH_SUFFIXES
-    #    lib
-    #    )
-
-    #get_filename_component(PostgreSQL_LIBRARY_DIR ${PostgreSQL_LIBRARY} PATH)
     if (NOT EXISTS "${PostgreSQL_LIBRARY}")
         set(PostgreSQL_LIBRARY "/usr/lib/libpq.so")
     endif()
