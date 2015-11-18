@@ -595,16 +595,14 @@ link_libraries(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${Boost_THREAD_LIBRARIES})
 
 if(WIN32)
     message(STATUS "LINK_DIRECTORIES =
-    ${PostgreSQL_LIBRARIES}
     ${PostgreSQL_LIBRARY_DIRS}")
     message(STATUS "LINK_LIBRARIES =
     ${CGAL_LIBRARIES}
     ${GMP_LIBRARIES}
     ${Boost_THREAD_LIBRARIES}
-    ${PostgreSQL_LIBRARIES}
-    ${PostgreSQL_LIBRARY_DIRS}")
+    ${PostgreSQL_LIBRARIES}")
 
-    link_directories(${PostgreSQL_LIBRARIES} ${PostgreSQL_LIBRARY_DIRS})
+    link_directories(${PostgreSQL_LIBRARY_DIRS})
     link_libraries(postgres)
 endif(WIN32)
 
