@@ -134,35 +134,40 @@ if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
         )
 
 
-    if ( UNIX )
-        # find where the includes fliles are installed for the particular version os postgreSQL
-        foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
-            set(postgresql_additional_search_paths ${postgresql_additional_search_paths} "${PostgreSQL_INCLUDE_DIR}/${suffix}/server" )
-        endforeach()
+    #if ( UNIX )
+    # find where the includes fliles are installed for the particular version os postgreSQL
+    foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
+        set(postgresql_additional_search_paths ${postgresql_additional_search_paths} "${PostgreSQL_INCLUDE_DIR}/${suffix}/server" )
+    endforeach()
 
-        #
-        # Look for THE installation.
-        #
-        find_path(PostgreSQL_TYPE_INCLUDE_DIR
-            NAMES catalog/pg_type.h
-            PATHS
-            # Look in other places.
-            ${postgresql_additional_search_paths}
-            ${PostgreSQL_ROOT_DIRECTORIES}
-            PATH_SUFFIXES
-            include
-            postgresql
-            pgsql/server
-            postgresql/server
-            include/server
-            # Help the user find it if we cannot.
-            DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
-            )
+    #
+    # Look for THE installation.
+    #
+    find_path(PostgreSQL_TYPE_INCLUDE_DIR
+        NAMES catalog/pg_type.h
+        PATHS
+        # Look in other places.
+        ${postgresql_additional_search_paths}
+        ${PostgreSQL_ROOT_DIRECTORIES}
+        PATH_SUFFIXES
+        include
+        postgresql
+        pgsql/server
+        postgresql/server
+        include/server
+        # Help the user find it if we cannot.
+        DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
+        )
 
-        # pgRouting does not use libpq-fe so we can ignore its directory
+    # pgRouting does not use libpq-fe so we can ignore its directory
+    if (UNIX)
         set (PostgreSQL_INCLUDE_DIR ${PostgreSQL_TYPE_INCLUDE_DIR})
-        unset(postgresql_additional_search_paths)
     endif()
+    if (WIN32)
+        list (APPEND PostgreSQL_INCLUDE_DIR ${PostgreSQL_TYPE_INCLUDE_DIR})
+    endif()
+    unset(postgresql_additional_search_paths)
+    #endif()
 
 endif()
 
