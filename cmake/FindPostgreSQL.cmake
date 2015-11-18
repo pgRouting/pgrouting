@@ -1,11 +1,28 @@
-# Find the PostgreSQL installation.
+
+#-----------------------------------------------------------------------------
+# Find the PostgreSQL installation for PGROUTING.
+#
+#  (c) 2015 pgRouting contributors
+#
+# Limitations: Doesn't work for postgrSQL 9.0 and 8.X
+# Currently, the following version numbers are known to this module:
+#    "9.5" "9.4" "9.3" "9.2" "9.1"
+#
+# Benefits:
+#  - works only for postgreSQL versions that have
+#    CREATE EXTENSION
+#  - Code grouped by OS
+#  
+# Note: postgreSQL gets installed in some regular places, so this is based on that
+# regularity
 #
 # ----------------------------------------------------------------------------
 # Usage:
+# ----------------------------------------------------------------------------
 # In your CMakeLists.txt file do something like this:
 # ...
 # # PostgreSQL
-# FIND_PACKAGE(PostgreSQL)
+# FIND_PACKAGE(PostgreSQL 9.1)
 # ...
 # if( PostgreSQL_FOUND )
 #   include_directories(${PostgreSQL_INCLUDE_DIRS})
@@ -15,53 +32,57 @@
 # Remember to include ${PostgreSQL_LIBRARIES} in the target_link_libraries() statement.
 #
 #
-# In Windows, we make the assumption that, if the PostgreSQL files are installed, the default directory
-# will be C:\Program Files\PostgreSQL.
+#  
+# ----------------------------------------------------------------------------
+# The following variables are set if PostgreSQL is found:
+# ----------------------------------------------------------------------------
+#
+#   PostgreSQL_FOUND                    - Set to true when PostgreSQL is found.
+#
+#   PostgreSQL_VERSION                  - (mayor.minor) version
+#   PostgreSQL_VERSION_STRING           - Full Version 
+#
+#   PostgreSQL_INCLUDE_DIRS             - List of Direcotries where the *.h are
+#
+#   PostgreSQL_LIBRARY_DIRS             - List of Directories where the *.so are
+#   PostgreSQL_LIBRARIES                - List of *.so to be linked
+#
+#   PostgreSQL_EXTENSION_LIBRARY_DIRS   - Directory where the extension's *.so are installed
+#   PostgreSQL_EXTENSION_DIRS           - Directory where the *.sql and control are installed
+#
+#
 #
 # ----------------------------------------------------------------------------
 # History:
 # This module is derived from the module originally found in the VTK source tree.
 #
 # ----------------------------------------------------------------------------
-# Note:
-# PostgreSQL_ADDITIONAL_VERSIONS is a variable that can be used to set the
-# version mumber of the implementation of PostgreSQL.
-# In Windows the default installation of PostgreSQL uses that as part of the path.
-# E.g C:\Program Files\PostgreSQL\8.4.
-# Currently, the following version numbers are known to this module:
-# "9.1" "9.0" "8.4" "8.3" "8.2" "8.1" "8.0"
+# Notes:
+# - It looks for the most recent installation of postgreSQL
 #
-# To use this variable just do something like this:
-# set(PostgreSQL_ADDITIONAL_VERSIONS "9.2" "8.4.4")
-# before calling FIND_PACKAGE(PostgreSQL) in your CMakeLists.txt file.
-# This will mean that the versions you set here will be found first in the order
-# specified before the default ones are searched.
+# - To look for a particular (mayor.minor) <version>
+#    set(PostgreSQL_ADDITIONAL_VERSIONS <version1> <version2>)
+#   before calling FIND_PACKAGE(PostgreSQL) in your CMakeLists.txt file.
 #
-# ----------------------------------------------------------------------------
-# You may need to manually set:
-#  PostgreSQL_INCLUDE_DIR  - the path to where the PostgreSQL include files are.
-#  PostgreSQL_LIBRARY_DIR  - The path to where the PostgreSQL library files are.
-# If FindPostgreSQL.cmake cannot find the include files or the library files.
-#
-# ----------------------------------------------------------------------------
-# The following variables are set if PostgreSQL is found:
-#  PostgreSQL_FOUND         - Set to true when PostgreSQL is found.
-#  PostgreSQL_INCLUDE_DIRS  - Include directories for PostgreSQL
-#  PostgreSQL_LIBRARY_DIRS  - Link directories for PostgreSQL libraries
-#  PostgreSQL_LIBRARIES     - The PostgreSQL libraries.
+#   This will mean that the versions you set here will be found first in the order
+#   specified before the default ones are searched.
+#  
+#   set(PostgreSQL_DEBUG ON)            - for printing what was found (in case of success)
 #
 # ----------------------------------------------------------------------------
 # If you have installed PostgreSQL in a non-standard location.
-# (Please note that in the following comments, it is assumed that <Your Path>
-# points to the root directory of the include directory of PostgreSQL.)
-# Then you have three options.
-# 1) After CMake runs, set PostgreSQL_INCLUDE_DIR to <Your Path>/include and
-#    PostgreSQL_LIBRARY_DIR to wherever the library pq (or libpq in windows) is
-# 2) Use CMAKE_INCLUDE_PATH to set a path to <Your Path>/PostgreSQL<-version>. This will allow find_path()
-#    to locate PostgreSQL_INCLUDE_DIR by utilizing the PATH_SUFFIXES option. e.g. In your CMakeLists.txt file
-#    SET(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} "<Your Path>/include")
-# 3) Set an environment variable called ${PostgreSQL_ROOT} that points to the root of where you have
-#    installed PostgreSQL, e.g. <Your Path>.
+# ----------------------------------------------------------------------------
+# You can manually set: (-Dflagname=value)
+#
+#   PostgreSQL_INCLUDE_DIR             - List of Direcotries where the *.h are
+#
+#   PostgreSQL_LIBRARY_DIR             - List of Directories where the *.so are
+#   PostgreSQL_LIBRARY                - List of *.so to be linked
+#
+#   PostgreSQL_EXTENSION_LIBRARY_DIR   - Directory where the extension's *.so are installed
+#   PostgreSQL_EXTENSION_DIR           - Directory where the *.sql and control are installed
+#
+# it will check if the information given is valid
 #
 # ----------------------------------------------------------------------------
 
@@ -137,10 +158,12 @@ if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
             # Help the user find it if we cannot.
             DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
             )
+
+        # pgRouting does not use libpq-fe so we can ignore its directory
         set (PostgreSQL_INCLUDE_DIR ${PostgreSQL_TYPE_INCLUDE_DIR})
         unset(postgresql_additional_search_paths)
-
     endif()
+
 endif()
 
 
@@ -156,6 +179,12 @@ string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1.\\2" PostgreSQL_VERSION ${Pos
 
 
 
+
+if ( APPLE )
+
+    # TODO Fill for APPLE
+
+endif()
 
 if ( WIN32 )
 
@@ -183,20 +212,11 @@ if ( WIN32 )
         set(PostgreSQL_LIBRARY "${striped_word_include}/bin/libpq.dll")
     endif()
 
-    message("
-    PostgreSQL_VERSION: ${PostgreSQL_VERSION}
-    PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
-    PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}
-    PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
-    PostgreSQL_EXTENSION_LIBRARY_DIR: ${PostgreSQL_EXTENSION_LIBRARY_DIR}
-    PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
-    PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}")
-
     unset(strip_word_include)
 endif()
 
 
-if (UNIX)
+if ( UNIX )
     if (NOT EXISTS "${PostgreSQL_LIBRARY_DIR}")
 
         set (PostgreSQL_LIBRARY_TO_FIND "pq")
@@ -220,23 +240,12 @@ if (UNIX)
         set(PostgreSQL_EXTENSION_DIR "/usr/share/postgresql/${PostgreSQL_VERSION}/extension")
     endif()
 
-    message("
-    PostgreSQL_VERSION: ${PostgreSQL_VERSION}
-    PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
-    PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}
-    PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
-    PostgreSQL_EXTENSION_LIBRARY_DIR: ${PostgreSQL_EXTENSION_LIBRARY_DIR}
-    PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
-    PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}")
-
 endif()
 
 
 # Did we find the things needed for pgRouting?
-#if (UNIX)
 set( PostgreSQL_FOUND FALSE )
-if (
-        EXISTS "${PostgreSQL_INCLUDE_DIR}" AND
+if ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND
         EXISTS "${PostgreSQL_LIBRARY_DIR}" AND
         EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}" AND
         EXISTS "${PostgreSQL_EXTENSION_DIR}" )
@@ -247,7 +256,8 @@ if (
     set( PostgreSQL_EXTENSION_LIBRARY_DIRS ${PostgreSQL_EXTENSION_LIBRARY_DIR})
     set( PostgreSQL_EXTENSION_DIRS ${PostgreSQL_EXTENSION_DIR})
 
-    if(PostgreSQL_DEBUG OR CDEBUG)
+    if(PostgreSQL_DEBUG)
+        message("PostgreSQL_VERSION: ${PostgreSQL_VERSION}")
         message("PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}")
         message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIRS}")
         message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIRS}")
@@ -266,46 +276,3 @@ else()
     PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
 endif()
 
-#else(UNIX)
-#set( PostgreSQL_FOUND FALSE )
-#if ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND EXISTS "${PostgreSQL_LIBRARY_DIR}" )
-#set( PostgreSQL_FOUND TRUE )
-#else ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND EXISTS "${PostgreSQL_LIBRARY_DIR}" )
-#if ( POSTGRES_REQUIRED )
-#message( FATAL_ERROR "PostgreSQL is required. ${PostgreSQL_ROOT_DIR_MESSAGE}" )
-#endif ( POSTGRES_REQUIRED )
-#endif (EXISTS "${PostgreSQL_INCLUDE_DIR}" AND EXISTS "${PostgreSQL_LIBRARY_DIR}" )
-## Now try to get the include and library path.
-#if(PostgreSQL_FOUND)
-#
-#if(EXISTS "${PostgreSQL_INCLUDE_DIR}")
-#set(PostgreSQL_INCLUDE_DIRS
-#${PostgreSQL_INCLUDE_DIR}
-#)
-#endif(EXISTS "${PostgreSQL_INCLUDE_DIR}")
-#
-#if(EXISTS "${PostgreSQL_LIBRARY_DIR}")
-#set(PostgreSQL_LIBRARY_DIRS
-#${PostgreSQL_LIBRARY_DIR}
-#)
-#set(PostgreSQL_LIBRARIES ${PostgreSQL_LIBRARY_TO_FIND})
-#endif(EXISTS "${PostgreSQL_LIBRARY_DIR}")
-#
-#if(PostgreSQL_DEBUG)
-#message("PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}")
-#message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIRS}")
-#message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIRS}")
-#message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIRS}")
-#message("PostgreSQL_LIBRARIES: ${PostgreSQL_LIBRARIES}")
-#endif()
-#
-#
-#else(PostgreSQL_FOUND)
-#message(FATAL_ERROR "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}
-#PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
-#PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
-#PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
-#PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}
-#PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
-##endif()
-#endif(UNIX)

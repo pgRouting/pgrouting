@@ -638,6 +638,9 @@ file(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.i
 file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
     "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
 
+#file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
+#    "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
+
 #-----------------------------------------------------------------------------
 # List variable to collect module SQL file names
 #-----------------------------------------------------------------------------
