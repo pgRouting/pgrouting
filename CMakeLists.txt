@@ -658,8 +658,6 @@ if (FULLDEBUG)
 endif()
 
 
-#cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
-#    "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 
 
 foreach(PACKAGE_SQL_FILE ${LIST_PACKAGE_SQL_FILES})
@@ -674,6 +672,12 @@ configure_file("${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.s
 
 configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control")
+
+include(FindPerl)
+if(NOT PERL_EXECUTABLE)
+    message(FATAL_ERROR " Please check your Perl installation.")
+endif(NOT PERL_EXECUTABLE)
+
 
 # create the signature file for this release
 message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION_STRING}.sig")
