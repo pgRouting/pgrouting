@@ -160,6 +160,10 @@ if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
         DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
         )
 
+    if (UNIX)
+        set (PostgreSQL_INCLUDE_DIRS ${PostgreSQL_TYPE_INCLUDE_DIR})
+    endif()
+
     # pgRouting does not use libpq-fe so we can ignore its directory
     unset(postgresql_additional_search_paths)
     #endif()
@@ -252,9 +256,6 @@ if ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND
         EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}" AND
         EXISTS "${PostgreSQL_EXTENSION_DIR}" )
     set( PostgreSQL_FOUND TRUE )
-    if (UNIX)
-        set (PostgreSQL_INCLUDE_DIRS ${PostgreSQL_TYPE_INCLUDE_DIR})
-    endif()
     if (WIN32)
         set (PostgreSQL_INCLUDE_DIRS
             "${PostgreSQL_TYPE_INCLUDE_DIR}" "${PostgreSQL_INCLUDE_DIR}"
