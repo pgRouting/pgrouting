@@ -605,7 +605,7 @@ if(WIN32)
     ${PostgreSQL_LIBRARY_DIRS}")
 
     link_directories(${PostgreSQL_LIBRARIES} ${PostgreSQL_LIBRARY_DIRS})
-    #    link_libraries(postgres)
+    link_libraries(postgres)
 endif(WIN32)
 
 #-------------------
