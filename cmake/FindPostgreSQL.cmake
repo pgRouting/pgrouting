@@ -222,20 +222,25 @@ endif()
 
 
 if ( UNIX )
-    if (NOT EXISTS "${PostgreSQL_LIBRARY_DIR}")
+    #if (NOT EXISTS "${PostgreSQL_LIBRARY_DIR}")
 
-        set (PostgreSQL_LIBRARY_TO_FIND "pq")
+    #set (PostgreSQL_LIBRARY_TO_FIND "pq")
 
-        find_library( PostgreSQL_LIBRARY
-            NAMES ${PostgreSQL_LIBRARY_TO_FIND}
-            PATHS
-            ${PostgreSQL_ROOT_DIRECTORIES}
-            PATH_SUFFIXES
-            lib
-            )
+    #find_library( PostgreSQL_LIBRARY
+    #    NAMES ${PostgreSQL_LIBRARY_TO_FIND}
+    #    PATHS
+    #    ${PostgreSQL_ROOT_DIRECTORIES}
+    #    PATH_SUFFIXES
+    #    lib
+    #    )
 
-        get_filename_component(PostgreSQL_LIBRARY_DIR ${PostgreSQL_LIBRARY} PATH)
-        if (NOT EXISTS PostgreSQL_EXTENSION_LIBRARY_DIR)
+    #get_filename_component(PostgreSQL_LIBRARY_DIR ${PostgreSQL_LIBRARY} PATH)
+    if (NOT EXISTS "${PostgreSQL_LIBRARY}")
+        set(PostgreSQL_LIBRARY "/usr/lib/libpq.so")
+    endif()
+
+    if (NOT EXISTS PostgreSQL_LIBRARY_DIR)
+        set(PostgreSQL_LIBRARY_DIR "/usr/lib/postgresql")
     endif()
 
     if (NOT EXISTS PostgreSQL_EXTENSION_LIBRARY_DIR)
@@ -261,8 +266,9 @@ if ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND
         set (PostgreSQL_INCLUDE_DIRS
             "${PostgreSQL_TYPE_INCLUDE_DIR}" "${PostgreSQL_INCLUDE_DIR}"
             "${PostgreSQL_TYPE_INCLUDE_DIR}/port/win32" "${PostgreSQL_INCLUDE_DIR}/port/win32")
+    else()
+        set( PostgreSQL_INCLUDE_DIRS ${PostgreSQL_INCLUDE_DIR})
     endif()
-    #set( PostgreSQL_INCLUDE_DIRS ${PostgreSQL_INCLUDE_DIR})
     set( PostgreSQL_LIBRARY_DIRS ${PostgreSQL_LIBRARY_DIR})
     set( PostgreSQL_LIBRARIES ${PostgreSQL_LIBRARY})
     set( PostgreSQL_EXTENSION_LIBRARY_DIRS ${PostgreSQL_EXTENSION_LIBRARY_DIR})
@@ -272,8 +278,8 @@ if ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND
         message("
         PostgreSQL_VERSION: ${PostgreSQL_VERSION}
         PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
-            PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
-            PostgreSQL_TYPE_INCLUDE_DIR: ${PostgreSQL_TYPE_INCLUDE_DIR}
+        PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
+        PostgreSQL_TYPE_INCLUDE_DIR: ${PostgreSQL_TYPE_INCLUDE_DIR}
         PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIRS}
         PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIRS}
         PostgreSQL_EXTENSION_LIBRARY_DIRS: ${PostgreSQL_EXTENSION_LIBRARY_DIRS}
