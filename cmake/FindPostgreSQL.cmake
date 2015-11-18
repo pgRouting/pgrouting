@@ -250,7 +250,7 @@ if ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND
         EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}" AND
         EXISTS "${PostgreSQL_EXTENSION_DIR}" )
     set( PostgreSQL_FOUND TRUE )
-    set( PostgreSQL_INCLUDE_DIRS ${PostgreSQL_TYPE_INCLUDE_DIR})
+    set( PostgreSQL_INCLUDE_DIRS ${PostgreSQL_INCLUDE_DIR})
     set( PostgreSQL_LIBRARY_DIRS ${PostgreSQL_LIBRARY_DIR})
     set( PostgreSQL_LIBRARIES ${PostgreSQL_LIBRARY})
     set( PostgreSQL_EXTENSION_LIBRARY_DIRS ${PostgreSQL_EXTENSION_LIBRARY_DIR})
