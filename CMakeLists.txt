@@ -717,7 +717,6 @@ install(FILES
     "${CMAKE_BINARY_DIR}/lib/${PGROUTING_LIB_NAME}.sql"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
     ${VERSION_UPDATE_FILES}
-    #    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
     DESTINATION "${PostgreSQL_EXTENSION_DIRS}")
 
 #=============================================================================
