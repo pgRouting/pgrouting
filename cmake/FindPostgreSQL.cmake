@@ -267,19 +267,23 @@ if ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND
     set( PostgreSQL_EXTENSION_DIRS ${PostgreSQL_EXTENSION_DIR})
 
     if(PostgreSQL_DEBUG)
-        message("PostgreSQL_VERSION: ${PostgreSQL_VERSION}")
-        message("PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}")
-        message("PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIRS}")
-        message("PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIRS}")
-        message("PostgreSQL_EXTENSION_LIBRARY_DIRS: ${PostgreSQL_EXTENSION_LIBRARY_DIRS}")
-        message("PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIRS}")
-        message("PostgreSQL_LIBRARIES: ${PostgreSQL_LIBRARIES} ")
+        message("
+        PostgreSQL_VERSION: ${PostgreSQL_VERSION}
+        PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
+            PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
+            PostgreSQL_TYPE_INCLUDE_DIR: ${PostgreSQL_TYPE_INCLUDE_DIR}
+        PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIRS}
+        PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIRS}
+        PostgreSQL_EXTENSION_LIBRARY_DIRS: ${PostgreSQL_EXTENSION_LIBRARY_DIRS}
+        PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIRS}
+        PostgreSQL_LIBRARIES: ${PostgreSQL_LIBRARIES}")
     endif()
 
 else()
     message(FATAL_ERROR "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}
     PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
     PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
+    PostgreSQL_TYPE_INCLUDE_DIR: ${PostgreSQL_TYPE_INCLUDE_DIR}
     PostgreSQL_EXTENSION_LIBRARY_DIR: ${PostgreSQL_EXTENSION_LIBRARY_DIR}
     PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
     PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}

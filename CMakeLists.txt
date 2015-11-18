@@ -71,7 +71,7 @@ option(POSTGRESQL_VERSION " To set the version")
 #-----------------------------------------------------------------------------
 
 set(PgRouting_SOURCE_NAMES
-    "common" "dijkstra" "driving_distance" "ksp"
+    "common" "dijkstra" #"driving_distance" "ksp"
     "johnson" "floydWarshall"
 
     "astar" "bd_astar"
