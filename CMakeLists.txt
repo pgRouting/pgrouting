@@ -545,7 +545,7 @@ include_directories(
 
 
 if(WIN32)
-    include_directories(${PostgreSQL_INCLUDE_DIRS}/port/win32)
+    #include_directories(${PostgreSQL_INCLUDE_DIRS}/port/win32)
 endif(WIN32)
 
 

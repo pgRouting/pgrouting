@@ -134,11 +134,12 @@ if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
         )
 
 
-    #if ( UNIX )
-    # find where the includes fliles are installed for the particular version os postgreSQL
-    foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
-        set(postgresql_additional_search_paths ${postgresql_additional_search_paths} "${PostgreSQL_INCLUDE_DIR}/${suffix}/server" )
-    endforeach()
+    if ( UNIX )
+        # find where the includes fliles are installed for the particular version os postgreSQL
+        foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
+            set(postgresql_additional_search_paths ${postgresql_additional_search_paths} "${PostgreSQL_INCLUDE_DIR}/${suffix}/server" )
+        endforeach()
+    endif()
 
     #
     # Look for THE installation.
@@ -160,12 +161,6 @@ if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
         )
 
     # pgRouting does not use libpq-fe so we can ignore its directory
-    if (UNIX)
-        set (PostgreSQL_INCLUDE_DIR ${PostgreSQL_TYPE_INCLUDE_DIR})
-    endif()
-    if (WIN32)
-        list (APPEND PostgreSQL_INCLUDE_DIR ${PostgreSQL_TYPE_INCLUDE_DIR})
-    endif()
     unset(postgresql_additional_search_paths)
     #endif()
 
@@ -251,11 +246,20 @@ endif()
 # Did we find the things needed for pgRouting?
 set( PostgreSQL_FOUND FALSE )
 if ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND
+        EXISTS "${PostgreSQL_TYPE_INCLUDE_DIR}" AND
         EXISTS "${PostgreSQL_LIBRARY_DIR}" AND
         EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}" AND
         EXISTS "${PostgreSQL_EXTENSION_DIR}" )
     set( PostgreSQL_FOUND TRUE )
-    set( PostgreSQL_INCLUDE_DIRS ${PostgreSQL_INCLUDE_DIR})
+    if (UNIX)
+        set (PostgreSQL_INCLUDE_DIRS ${PostgreSQL_TYPE_INCLUDE_DIR})
+    endif()
+    if (WIN32)
+        set (APPEND PostgreSQL_INCLUDE_DIRS
+            ${PostgreSQL_TYPE_INCLUDE_DIR} ${PostgreSQL_INCLUDE_DIR}
+            "${PostgreSQL_TYPE_INCLUDE_DIR}/port/win32" "${PostgreSQL_INCLUDE_DIR}/port/win32")
+    endif()
+    #set( PostgreSQL_INCLUDE_DIRS ${PostgreSQL_INCLUDE_DIR})
     set( PostgreSQL_LIBRARY_DIRS ${PostgreSQL_LIBRARY_DIR})
     set( PostgreSQL_LIBRARIES ${PostgreSQL_LIBRARY})
     set( PostgreSQL_EXTENSION_LIBRARY_DIRS ${PostgreSQL_EXTENSION_LIBRARY_DIR})
