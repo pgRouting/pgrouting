@@ -212,6 +212,7 @@ if ( WIN32 )
         set(PostgreSQL_LIBRARY "${striped_word_include}/bin/libpq.dll")
     endif()
 
+    set(PostgreSQL_INCLUDE_DIR "${striped_word_include}/include")
     unset(strip_word_include)
 endif()
 
@@ -255,8 +256,8 @@ if ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND
         set (PostgreSQL_INCLUDE_DIRS ${PostgreSQL_TYPE_INCLUDE_DIR})
     endif()
     if (WIN32)
-        set (APPEND PostgreSQL_INCLUDE_DIRS
-            ${PostgreSQL_TYPE_INCLUDE_DIR} ${PostgreSQL_INCLUDE_DIR}
+        set (PostgreSQL_INCLUDE_DIRS
+            "${PostgreSQL_TYPE_INCLUDE_DIR}" "${PostgreSQL_INCLUDE_DIR}"
             "${PostgreSQL_TYPE_INCLUDE_DIR}/port/win32" "${PostgreSQL_INCLUDE_DIR}/port/win32")
     endif()
     #set( PostgreSQL_INCLUDE_DIRS ${PostgreSQL_INCLUDE_DIR})
