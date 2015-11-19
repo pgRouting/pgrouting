@@ -254,7 +254,7 @@ if ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND
             "${PostgreSQL_TYPE_INCLUDE_DIR}" "${PostgreSQL_INCLUDE_DIR}"
             "${PostgreSQL_TYPE_INCLUDE_DIR}/port/win32" "${PostgreSQL_INCLUDE_DIR}/port/win32")
     else()
-        set( PostgreSQL_INCLUDE_DIRS ${PostgreSQL_INCLUDE_DIR})
+        set( PostgreSQL_INCLUDE_DIRS ${PostgreSQL_TYPE_INCLUDE_DIR})
     endif()
     set( PostgreSQL_LIBRARY_DIRS ${PostgreSQL_LIBRARY_DIR})
     set( PostgreSQL_LIBRARIES ${PostgreSQL_LIBRARY})

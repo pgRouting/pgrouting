@@ -118,8 +118,8 @@ if (WITH_DOC)
         add_custom_command(
             TARGET doc POST_BUILD
             COMMAND ${SPHINX_EXECUTABLE} 
-            -q   # Enable for quiet mode 
-            -Q  # Enable for even more quiet mode
+            #-q   # Enable for quiet mode 
+            #-Q  # Enable for even more quiet mode
             -b ${DOC_TARGET}
             -E  # don't use a saved environment, always read all file
             -a  # write all files; default is to only write new and changed files

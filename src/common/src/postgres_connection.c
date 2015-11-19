@@ -447,6 +447,7 @@ pgr_get_data_4_columns(
 }
 
 
+// TODO make this one a template
 General_path_element_t* get_memory(int size, General_path_element_t *path){
 	if(path ==0  ){
 		path=malloc(size * sizeof(General_path_element_t));

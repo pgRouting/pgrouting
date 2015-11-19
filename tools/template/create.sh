@@ -1,15 +1,17 @@
 #!/bin/bash
 
 
-MY_FUNCTION_NAME="funnyDijkstra"
+#dont put pgr_ on MY_FUNCTION_NAME that is done automatically
+MY_FUNCTION_NAME="dijkstraViaVertex"
 DEVELOPER_NAME="Celia Virginia Vergara Castillo"
 DEVELOPER_EMAIL="vicky_vergara@hotmail.com" 
 YEAR="2015"
 
-MY_QUERY_LINE1="CREATE OR REPLACE FUNCTION pgr_johnson(edges_sql TEXT, directed BOOLEAN,"
-MY_QUERY_LINE2="OUT seq BIGINT, OUT from_vid BIGINT, OUT to_vid BIGINT, OUT cost float)"
+MY_QUERY_LINE1="CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertices(sql text, vertices anyarray, directed boolean default true,"
+MY_QUERY_LINE2="   OUT seq BIGINT, OUT path_id BIGINT, OUT path_seq BIGINT, OUT start_vid BIGINT, OUT end_vid BIGINT, OUT node BIGINT, OUT edge BIGINT, OUT cost FLOAT, OUT agg_cost FLOAT, OUT route_agg_cost FLOAT)"
 
-MY_RETURN_VALUE_TYPE="Matrix_cell_t" 
+
+MY_RETURN_VALUE_TYPE="Routes_t" 
 MY_FUNCTION_NAME_UPPER=$(echo $MY_FUNCTION_NAME | tr 'a-z' 'A-Z')
 
 #the above variables must be defined
