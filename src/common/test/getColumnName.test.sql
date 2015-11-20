@@ -6,6 +6,7 @@
 \pset format unaligned
 \pset tuples_only true
 \pset pager
+\set VERBOSITY terse
 
 -- Revert all changes on failure.
 \set ON_ERROR_ROLLBACK true
@@ -24,6 +25,7 @@ BEGIN;
     CREATE TABLE s1.streets ("ID" SERIAL PRIMARY KEY,sour INTEGER,targ INTEGER);
     CREATE TABLE s1."Streets" ("ID" SERIAL PRIMARY KEY,"SOURCE" INTEGER,"Target" INTEGER);
 
+    set client_min_messages  to notice;
     SELECT  results_eq('SELECT _pgr_getColumnName (''streets'',''id''), 1', 'SELECT ''id''::TEXT, 1');  
     SELECT  results_eq('SELECT _pgr_getColumnName (''streets'',''ID''), 2', 'SELECT ''id''::TEXT,2');  
     SELECT  results_eq('SELECT _pgr_getColumnName (''Streets'',''gid''), 3', 'SELECT ''gid''::TEXT,3');  
