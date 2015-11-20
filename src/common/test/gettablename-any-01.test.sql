@@ -1,3 +1,4 @@
+BEGIN;
 set client_min_messages  to warning;
 
 SET search_path TO "$user", public;
@@ -79,5 +80,5 @@ drop schema if exists s1 cascade;
 drop schema if exists s2 cascade;
 drop schema if exists "S2" cascade; 
 drop schema if exists s3 cascade; 
-
+ROLLBACK;
 

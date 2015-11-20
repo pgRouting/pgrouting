@@ -1,3 +1,4 @@
+BEGIN;
 
 set client_min_messages  to warning;
 SET search_path TO "$user", public;
@@ -93,4 +94,4 @@ select * from  _pgr_createIndex ('streets','chk','foo');
 select * from  _pgr_createIndex ('streets','cnt','btree');
 select * from make_tests_return_text('select * from  _pgr_isColumnIndexed (''streets'',''cnt'')',  true,10);
 select * from make_tests_return_text('select * from  _pgr_isColumnIndexed (''streets'',''chk'')',  true,11);
-
+ROLLBACK;

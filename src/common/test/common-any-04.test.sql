@@ -1,3 +1,4 @@
+BEGIN;
 -- node the network
 
 select count(*) from unnoded limit 1;
@@ -79,4 +80,4 @@ select pgr_createtopology('noded3', 0.000001, id:= 'gid');
 \echo '---------------------------------'
 
 select * from noded3_vertices_pgr order by id;
-
+ROLLBACK;

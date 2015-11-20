@@ -1,3 +1,4 @@
+BEGIN;
 \echo '---- pgr_pointstodmatrix ----'
 select * from pgr_pointstodmatrix(pgr_texttopoints('2,0;2,1;3,1;2,2;4,1;4,2;2,3;3,2', 0));
 
@@ -13,4 +14,4 @@ select * from pgr_tsp(
     ),
     1
 );
-
+ROLLBACK;

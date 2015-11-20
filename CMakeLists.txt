@@ -765,6 +765,15 @@ endif()
 #-----------------------------------------------------------------------------
 
 if(WITH_TEST)
+
+    find_path(PGTAP pgtap.control
+        PATHS ${PostgreSQL_EXTENSION_DIRS})
+    if (EXISTS PGTAP)
+        message(STATUS "PGTAP ${PGTAP}")
+    else()
+        message(STATUS "PGTAP not found. 
+        Please check your pgTap installation.")
+    endif()
     include(FindPostGIS)
     find_package(PostGIS ${POSTGIS_MINIMUM_VERSION})
 
