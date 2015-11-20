@@ -17,21 +17,19 @@
 BEGIN;
     SELECT plan(56);
 
-    create schema s1;
-    create schema s2;
-    create schema "S2";
-    create schema s3;
-    create table streets (id serial PRIMARY KEY,source integer,target integer);
-    create table "Streets" (ID serial PRIMARY KEY,SOURCE integer,TARGET integer);
-    create table s1.streets ("ID" serial PRIMARY KEY,sour integer,targ integer);
-    create table s1."Streets" ("ID" serial PRIMARY KEY,"SOURCE" integer,"Target" integer);
-    create table s2."Streets" (id serial ,source integer,target integer);
-    create table "S2".streets (id serial ,source integer,target integer);
-    create table s3."Streets" (id serial ,source integer,target integer);
-    create table s3."sTreets" (id serial ,source integer,target integer);
-    create table s3."StrEets" (id serial ,source integer,target integer);
-
---    set client_min_messages to warning;
+    CREATE SCHEMA s1;
+    CREATE SCHEMA s2;
+    CREATE SCHEMA "S2";
+    CREATE SCHEMA s3;
+    CREATE TABLE streets (id SERIAL PRIMARY KEY,source INTEGER,target INTEGER);
+    CREATE TABLE "Streets" (ID SERIAL PRIMARY KEY,SOURCE INTEGER,TARGET INTEGER);
+    CREATE TABLE s1.streets ("ID" SERIAL PRIMARY KEY,sour INTEGER,targ INTEGER);
+    CREATE TABLE s1."Streets" ("ID" SERIAL PRIMARY KEY,"SOURCE" INTEGER,"Target" INTEGER);
+    CREATE TABLE s2."Streets" (id SERIAL ,source INTEGER,target INTEGER);
+    CREATE TABLE "S2".streets (id SERIAL ,source INTEGER,target INTEGER);
+    CREATE TABLE s3."Streets" (id SERIAL ,source INTEGER,target INTEGER);
+    CREATE TABLE s3."sTreets" (id SERIAL ,source INTEGER,target INTEGER);
+    CREATE TABLE s3."StrEets" (id SERIAL ,source INTEGER,target INTEGER);
 
 
     SELECT  results_eq('SELECT 1,   _pgr_isColumnInTable(''streets'', ''id'')',       'SELECT 1, true');
