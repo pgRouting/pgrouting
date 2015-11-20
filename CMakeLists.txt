@@ -105,6 +105,7 @@ set(PgRouting_INCLUDE_DIRECTORIES ${PgRouting_SOURCE_NAMES})
 #-----------------------------------------------------------------------------
 
 set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES} 
+    "topology"
     "label_graph")
 
 
