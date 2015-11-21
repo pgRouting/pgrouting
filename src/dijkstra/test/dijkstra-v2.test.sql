@@ -28,4 +28,3 @@ SELECT seq, id1 AS node, id2 AS edge, cost
                  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                  2, 3, false, true
          );
-
