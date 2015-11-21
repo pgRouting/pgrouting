@@ -126,7 +126,7 @@ one_to_many_dijkstra(PG_FUNCTION_ARGS) {
       int64_t* end_vidsArr;
       size_t size_end_vidsArr;
       end_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_end_vidsArr, PG_GETARG_ARRAYTYPE_P(2));
-      PGR_DBG("targetsArr size %d ", size_end_vidsArr);
+      PGR_DBG("targetsArr size %ld ", size_end_vidsArr);
 
       PGR_DBG("Calling process");
       process(

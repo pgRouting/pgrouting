@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./one_to_one_dijkstra_driver.h"
 
-// #define DEBUG
+#define DEBUG
 
 extern "C" {
 #include "postgres.h"
@@ -58,7 +58,7 @@ do_pgr_one_to_one_dijkstra(
         char ** err_msg){
   std::ostringstream log;
   try {
-
+#if 0
     if (total_tuples == 1) {
       log << "Requiered: more than one tuple\n";
       (*return_tuples) = NULL;
@@ -66,6 +66,12 @@ do_pgr_one_to_one_dijkstra(
       *err_msg = strdup(log.str().c_str());
       return;
     }
+#endif
+#ifdef DEBUG
+    log << "From" << start_vid;
+    log << "Destination" << end_vid;
+#endif
+
 
     graphType gType = directed? DIRECTED: UNDIRECTED;
     const int initial_size = total_tuples;
@@ -73,26 +79,32 @@ do_pgr_one_to_one_dijkstra(
     Path path;
 
     if (directed) {
-      log << "Working with directed Graph\n";
-      Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
-      digraph.graph_insert_data(data_edges, total_tuples);
-      pgr_dijkstra(digraph, path, start_vid, end_vid);
+        log << "Working with directed Graph\n";
+        Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+        digraph.graph_insert_data(data_edges, total_tuples);
+#ifdef DEBUG
+        digraph.print_graph(log);
+#endif
+        pgr_dijkstra(digraph, path, start_vid, end_vid);
     } else {
-      log << "Working with Undirected Graph\n";
-      Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
-      undigraph.graph_insert_data(data_edges, total_tuples);
-      pgr_dijkstra(undigraph, path, start_vid, end_vid);
+        log << "Working with Undirected Graph\n";
+        Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+        undigraph.graph_insert_data(data_edges, total_tuples);
+#ifdef DEBUG
+        undigraph.print_graph(log);
+#endif
+        pgr_dijkstra(undigraph, path, start_vid, end_vid);
     }
 
     size_t count(path.size());
 
     if (count == 0) {
-      (*return_tuples) = NULL;
-      (*return_count) = 0;
-      log << 
-        "No paths found between Starting and any of the Ending vertices\n";
-      *err_msg = strdup(log.str().c_str());
-      return;
+        (*return_tuples) = NULL;
+        (*return_count) = 0;
+        log << 
+            "No paths found between Starting and any of the Ending vertices\n";
+        *err_msg = strdup(log.str().c_str());
+        return;
     }
 
     // get the space required to store all the paths
@@ -102,17 +114,17 @@ do_pgr_one_to_one_dijkstra(
     path.generate_postgres_data(return_tuples, sequence);
     (*return_count) = sequence;
 
-    #ifndef DEBUG
-      *err_msg = strdup("OK");
-    #else
-      *err_msg = strdup(log.str().c_str());
-    #endif
+#ifndef DEBUG
+    *err_msg = strdup("OK");
+#else
+    *err_msg = strdup(log.str().c_str());
+#endif
 
     return;
   } catch ( ... ) {
-    log << "Caught unknown expection!\n";
-    *err_msg = strdup(log.str().c_str());
-    return;
+      log << "Caught unknown expection!\n";
+      *err_msg = strdup(log.str().c_str());
+      return;
   }
 }
 

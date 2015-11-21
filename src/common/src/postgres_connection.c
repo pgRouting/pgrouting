@@ -408,6 +408,7 @@ get_data_5_columns(
     return;
   }
   
+#if 0
   if (total_tuples == 1) {
     // for some reason it needs at least a second edge for boost.graph to work
     // makeing a simple test and asking boost people
@@ -419,6 +420,7 @@ get_data_5_columns(
     (*edges)[1].id = (*edges)[0].id + 1;
     (*edges)[1].reverse_cost = -1;
   }
+#endif
 
   (*totalTuples) = total_tuples;
   PGR_DBG("finish processing");

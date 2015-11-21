@@ -16,7 +16,7 @@
 \set QUIET 1
 
 BEGIN;
-    SELECT plan(11);
+    SELECT plan(3);
 
     PREPARE q1 AS
     SELECT * FROM pgr_dijkstra( 'select id, source, target, cost from edge_table',
