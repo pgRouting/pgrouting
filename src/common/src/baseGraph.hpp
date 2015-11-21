@@ -274,20 +274,20 @@ class Pgr_base_graph {
 
   //! @name only for stand by program
   //@{
-  void print_graph() const {
+  void print_graph(std::ostream &log = std::cout) const {
         EO_i out, out_end;
         V_i vi;
 
         for (vi = vertices(graph).first; vi != vertices(graph).second; ++vi) {
             if ((*vi) >= m_num_vertices) continue;
-            std::cout << (*vi) << " out_edges(" << graph[(*vi)].id << "):";
+            log << (*vi) << " out_edges(" << graph[(*vi)].id << "):";
             for (boost::tie(out, out_end) = out_edges(*vi, graph);
               out != out_end; ++out) {
-              std::cout << ' ' << *out << "=(" << graph[source(*out, graph)].id
+              log << ' ' << *out << "=(" << graph[source(*out, graph)].id
                         << ", " << graph[target(*out, graph)].id << ") = "
                         <<  graph[*out].cost <<"\t";
             }
-            std::cout << std::endl;
+            log << std::endl;
         }
     }
   //@}

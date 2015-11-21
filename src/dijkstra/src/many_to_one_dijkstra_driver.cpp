@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./many_to_one_dijkstra_driver.h"
 
-// #define DEBUG
+//#define DEBUG
 
 extern "C" {
 #include "postgres.h"
@@ -57,64 +57,74 @@ do_pgr_many_to_one_dijkstra(
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** err_msg){
-  std::ostringstream log;
-  try {
+    std::ostringstream log;
+    try {
+        /*
+           if (total_tuples == 1) {
+           log << "Requiered: more than one tuple\n";
+           (*return_tuples) = NULL;
+           (*return_count) = 0;
+         *err_msg = strdup(log.str().c_str());
+         return;
+         }
+         */
+        graphType gType = directed? DIRECTED: UNDIRECTED;
+        const int initial_size = total_tuples;
 
-    if (total_tuples == 1) {
-      log << "Requiered: more than one tuple\n";
-      (*return_tuples) = NULL;
-      (*return_count) = 0;
-      *err_msg = strdup(log.str().c_str());
-      return;
+        std::deque< Path >paths;
+        log << "Inserting vertices into a c++ vector structure\n";
+        std::vector< int64_t > start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
+#ifdef DEBUG
+        for (const auto &vid : start_vertices) log << vid <<"\n";
+        log << "Destination" << end_vid;
+#endif
+
+        if (directed) {
+            log << "Working with directed Graph\n";
+            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            digraph.graph_insert_data(data_edges, total_tuples);
+#ifdef DEBUG
+            digraph.print_graph(log);
+#endif
+            pgr_dijkstra(digraph, paths, start_vertices, end_vid);
+        } else {
+            log << "Working with Undirected Graph\n";
+            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            undigraph.graph_insert_data(data_edges, total_tuples);
+#ifdef DEBUG
+            undigraph.print_graph(log);
+#endif
+            pgr_dijkstra(undigraph, paths, start_vertices, end_vid);
+        }
+
+        size_t count(count_tuples(paths));
+
+        if (count == 0) {
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            log << 
+                "No paths found between Starting and any of the Ending vertices\n";
+            *err_msg = strdup(log.str().c_str());
+            return;
+        }
+
+        // get the space required to store all the paths
+        (*return_tuples) = get_memory(count, (*return_tuples));
+        log << "Converting a set of paths into the tuples\n";
+        (*return_count) = (collapse_paths(return_tuples, paths));
+
+#ifndef DEBUG
+        *err_msg = strdup("OK");
+#else
+        *err_msg = strdup(log.str().c_str());
+#endif
+
+        return;
+    } catch ( ... ) {
+        log << "Caught unknown expection!\n";
+        *err_msg = strdup("Caught unknown expection!\n");
+        return;
     }
-
-    graphType gType = directed? DIRECTED: UNDIRECTED;
-    const int initial_size = total_tuples;
-
-    std::deque< Path >paths;
-    log << "Inserting vertices into a c++ vector structure\n";
-    std::vector< int64_t > start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
-
-    if (directed) {
-      log << "Working with directed Graph\n";
-      Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
-      digraph.graph_insert_data(data_edges, total_tuples);
-      pgr_dijkstra(digraph, paths, start_vertices, end_vid);
-    } else {
-      log << "Working with Undirected Graph\n";
-      Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
-      undigraph.graph_insert_data(data_edges, total_tuples);
-      pgr_dijkstra(undigraph, paths, start_vertices, end_vid);
-    }
-
-    size_t count(count_tuples(paths));
-
-    if (count == 0) {
-      (*return_tuples) = NULL;
-      (*return_count) = 0;
-      log << 
-        "No paths found between Starting and any of the Ending vertices\n";
-      *err_msg = strdup(log.str().c_str());
-      return;
-    }
-
-    // get the space required to store all the paths
-    (*return_tuples) = get_memory(count, (*return_tuples));
-    log << "Converting a set of paths into the tuples\n";
-    (*return_count) = (collapse_paths(return_tuples, paths));
-
-    #ifndef DEBUG
-      *err_msg = strdup("OK");
-    #else
-      *err_msg = strdup(log.str().c_str());
-    #endif
-
-    return;
-  } catch ( ... ) {
-    log << "Caught unknown expection!\n";
-    *err_msg = strdup("Caught unknown expection!\n");
-    return;
-  }
 }
 
 

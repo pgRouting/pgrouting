@@ -68,6 +68,7 @@ process( char* edges_sql,
     pgr_SPI_finish();
     return;
   }
+
   PGR_DBG("Total %ld tuples in query:", total_tuples);
 
   PGR_DBG("Starting processing");
@@ -126,7 +127,7 @@ many_to_one_dijkstra(PG_FUNCTION_ARGS) {
       int64_t* start_vidsArr;
       size_t size_start_vidsArr;
       start_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_start_vidsArr, PG_GETARG_ARRAYTYPE_P(1));
-      PGR_DBG("targetsArr size %d ", size_end_vidsArr);
+      PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
 
       PGR_DBG("Calling process");
       process(
