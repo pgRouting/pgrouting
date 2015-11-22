@@ -37,10 +37,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./one_to_one_dijkstra_driver.h"
 
-#define DEBUG
+//#define DEBUG
 
+#include "../../common/src/memory_func.hpp"
 extern "C" {
-#include "postgres.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 }
@@ -58,18 +58,10 @@ do_pgr_one_to_one_dijkstra(
         char ** err_msg){
   std::ostringstream log;
   try {
-#if 0
-    if (total_tuples == 1) {
-      log << "Requiered: more than one tuple\n";
-      (*return_tuples) = NULL;
-      (*return_count) = 0;
-      *err_msg = strdup(log.str().c_str());
-      return;
-    }
-#endif
+
 #ifdef DEBUG
-    log << "From" << start_vid;
-    log << "Destination" << end_vid;
+    log << "From" << start_vid << "\n";
+    log << "Destination" << end_vid << "\n";
 #endif
 
 

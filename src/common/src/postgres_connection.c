@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "executor/spi.h"
 
 
-// #define DEBUG
+//#define DEBUG
 #include "pgr_types.h"
 #include "postgres_connection.h"
 
@@ -165,7 +165,7 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     if (!data) {
         elog(ERROR, "Error: Out of memory!");
     }
-    PGR_DBG("array size %d", (*arrlen));
+    PGR_DBG("array size %ld", (*arrlen));
 
     for (i=0; i<(*arrlen); i++) {
         if (nulls[i]) {
@@ -303,7 +303,8 @@ void pgr_fetch_edge(
    int (*edge_types)[5],
    pgr_edge_t *target_edge,
    bool has_rcost,
-   bool ignore_id) {
+   bool ignore_id,
+   int64_t *valid_edges) {
 
   if (ignore_id) {
     target_edge->id = -1;
@@ -322,6 +323,8 @@ void pgr_fetch_edge(
   }
   PGR_DBG("id: %li\t source: %li\ttarget: %li\tcost: %f\t,reverse: %f\n",
           target_edge->id,  target_edge->source,  target_edge->target,  target_edge->cost,  target_edge->reverse_cost);
+  *valid_edges = target_edge->cost < 0? *valid_edges: *valid_edges + 1;
+  *valid_edges = target_edge->reverse_cost < 0? *valid_edges: *valid_edges + 1;
 }
 
 static
@@ -339,6 +342,7 @@ get_data_5_columns(
 
   int ntuples;
   int64_t total_tuples;
+  int64_t valid_edges;
 
   int edge_columns[5];
   int edge_types[5];
@@ -357,7 +361,7 @@ get_data_5_columns(
 
 
   bool moredata = TRUE;
-  (*totalTuples) = total_tuples = 0;
+  (*totalTuples) = total_tuples = valid_edges = 0;
 
   /*  on the first tuple get the column numbers */
 
@@ -391,17 +395,17 @@ get_data_5_columns(
               HeapTuple tuple = tuptable->vals[t];
               pgr_fetch_edge(&tuple, &tupdesc, &edge_columns, &edge_types,
                          &(*edges)[total_tuples - ntuples + t], has_rcost,
-                         ignore_id);
-           }
-           SPI_freetuptable(tuptable);
+                         ignore_id, &valid_edges);
+          }
+          SPI_freetuptable(tuptable);
       } else {
           moredata = FALSE;
       }
   }
 
   //  0 edges then abort
-  if (total_tuples == 0) {
-    (*totalTuples) = total_tuples;
+  if (total_tuples == 0 || valid_edges == 0) {
+    (*totalTuples) = 0;
     PGR_DBG("NO edges");
     // pgr_SPI_finish();
     PGR_DBG("closed");
@@ -423,7 +427,7 @@ get_data_5_columns(
 #endif
 
   (*totalTuples) = total_tuples;
-  PGR_DBG("finish processing");
+  PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*totalTuples));
   // pgr_SPI_finish();
   PGR_DBG("closed");
 }
@@ -450,6 +454,7 @@ pgr_get_data_4_columns(
 
 
 // TODO make this one a template
+#if 0
 General_path_element_t* get_memory(int size, General_path_element_t *path){
 	if(path ==0  ){
 		path=malloc(size * sizeof(General_path_element_t));
@@ -458,13 +463,13 @@ General_path_element_t* get_memory(int size, General_path_element_t *path){
 	}
 	return path;
 }
+#endif
 
 
 General_path_element_t* noPathFound(size_t *count, General_path_element_t *no_path) {
    count = 0;
    return NULL;
 }
-
 
 
 

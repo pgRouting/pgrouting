@@ -56,6 +56,10 @@ pgr_drivingDistance(G &graph, Path &path,  int64_t  source, double distance) {
 template < class G >
 void
 pgr_dijkstra(G &graph, Path &path,  int64_t  source, int64_t target) {
+     if (num_edges(graph.graph) == 0) {
+         path.clear();
+         return;
+     }
      Pgr_dijkstra< G > fn_dijkstra;
      fn_dijkstra.dijkstra(graph, path, source, target);
 }

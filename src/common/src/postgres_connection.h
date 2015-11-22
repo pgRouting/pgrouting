@@ -80,11 +80,12 @@ extern "C" {
 
 
   char * pgr_text2char(text *in);
+#if 0
   // output corresponding to costResult3Big
   General_path_element_t* get_memory(int size, General_path_element_t *path);
+#endif
   // pgr_path_element3_t * noPathFound3(int64_t start_id);
   General_path_element_t* noPathFound(size_t *count, General_path_element_t *no_path);
-
 
 #ifdef __cplusplus
 }
