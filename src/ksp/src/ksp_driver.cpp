@@ -36,10 +36,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./ksp_driver.h"
 
 #include "../../common/src/memory_func.hpp"
+#if 0
 extern "C" {
 #include "./../../common/src/postgres_connection.h"
 }
-
+#endif
 
 
 #include "./pgr_ksp.hpp"
@@ -98,7 +99,7 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
         if (count == 0) {
             *err_msg = strdup(
                "NOTICE: No paths found between Starting and Ending vertices");
-            *ksp_path = noPathFound(path_count, (*ksp_path));
+            *ksp_path = noResult(path_count, (*ksp_path));
             return 0;
         }
 

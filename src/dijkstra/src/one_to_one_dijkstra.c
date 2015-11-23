@@ -45,6 +45,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 PG_MODULE_MAGIC;
 
+PG_FUNCTION_INFO_V1(one_to_one_dijkstra);
+#ifndef _MSC_VER
+Datum
+#else  // _MSC_VER
+PGDLLEXPORT Datum
+#endif
+one_to_one_dijkstra(PG_FUNCTION_ARGS);
 
 /*******************************************************************************/
 /*                          MODIFY AS NEEDED                                   */
@@ -93,7 +100,6 @@ process( char* edges_sql,
 /*                                                                             */
 /*******************************************************************************/
 
-PG_FUNCTION_INFO_V1(one_to_one_dijkstra);
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER

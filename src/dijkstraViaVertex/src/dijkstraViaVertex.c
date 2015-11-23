@@ -43,6 +43,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/postgres_connection.h"
 #include "./dijkstraViaVertex_driver.h"
 
+PG_FUNCTION_INFO_V1(dijkstraViaVertex);
+#ifndef _MSC_VER
+Datum
+#else  // _MSC_VER
+PGDLLEXPORT Datum
+#endif
+dijkstraViaVertex(PG_FUNCTION_ARGS);
+
 /*******************************************************************************/
 /*                          MODIFY AS NEEDED                                   */
 static
@@ -56,8 +64,10 @@ process( char* edges_sql,
   pgr_SPI_connect();
 
   PGR_DBG("Load data");
-  pgr_edge_t *edges = NULL;
-  int64_t total_tuples = 0;
+  pgr_edge_t *edges;
+  edges = NULL;
+  int64_t total_tuples;
+  total_tuples = 0;
   pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
 
   if (total_tuples == 0) {
@@ -90,7 +100,6 @@ process( char* edges_sql,
 /*                                                                             */
 /*******************************************************************************/
 
-PG_FUNCTION_INFO_V1(dijkstraViaVertex);
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER

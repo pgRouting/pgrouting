@@ -56,7 +56,8 @@ void driving_many_to_dist_driver(
 
   if (total_tuples == 0) {
     PGR_DBG("No edges found");
-    *path = noPathFound(path_count, (*path));
+    (*path_count) = 0;
+    *path = NULL;
     return;
   }
 

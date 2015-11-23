@@ -43,6 +43,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/postgres_connection.h"
 #include "./many_to_many_dijkstra_driver.h"
 
+PG_FUNCTION_INFO_V1(many_to_many_dijkstra);
+#ifndef _MSC_VER
+Datum
+#else  // _MSC_VER
+PGDLLEXPORT Datum
+#endif
+many_to_many_dijkstra(PG_FUNCTION_ARGS);
+
+
 /*******************************************************************************/
 /*                          MODIFY AS NEEDED                                   */
 static
@@ -94,7 +103,6 @@ process( char* edges_sql,
 /*                                                                             */
 /*******************************************************************************/
 
-PG_FUNCTION_INFO_V1(many_to_many_dijkstra);
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER

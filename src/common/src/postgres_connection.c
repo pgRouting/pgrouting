@@ -43,7 +43,7 @@ pgr_text2char(text *in)
 
 // http://www.postgresql.org/docs/9.4/static/spi-spi-finish.html
 void
- pgr_SPI_finish() {
+pgr_SPI_finish(void) {
   PGR_DBG("Disconnecting SPI");
   int code = SPI_OK_FINISH;
   code = SPI_finish();
@@ -53,7 +53,7 @@ void
 }
 
 void
- pgr_SPI_connect() {
+ pgr_SPI_connect(void) {
   PGR_DBG("Connecting to SPI");
   int SPIcode;
   SPIcode = SPI_connect();
@@ -440,11 +440,12 @@ pgr_get_data_4_columns(
 
 
 
+#if 0
 General_path_element_t* noPathFound(size_t *count, General_path_element_t *no_path) {
    count = 0;
    return NULL;
 }
-
+#endif
 
 
 static

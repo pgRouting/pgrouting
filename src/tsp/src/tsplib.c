@@ -91,8 +91,10 @@ static int a;
 static int b;
 static int arr[55];
 
-int Rand();
+static
+int Rand(void);
 
+static
 void initRand (int seed)
 {
     int i, ii;
@@ -117,6 +119,7 @@ void initRand (int seed)
         last = Rand ();
 }
 
+static
 int Rand (void)
 {
     int t;
@@ -169,6 +172,7 @@ typedef struct tspstruct {
  * Prim's approximated TSP tour
  * See also [Cristophides'92]
  */
+static
 int findEulerianPath(TSP *tsp)
 {
     int *mst, *arc;    
@@ -270,6 +274,7 @@ int findEulerianPath(TSP *tsp)
     return 0;
 }
 
+static
 DTYPE pathLength (TSP *tsp)
 {
     unsigned int i;
@@ -295,6 +300,7 @@ DTYPE pathLength (TSP *tsp)
  *  ./     \.        .       .
  *  c       f        c-------f
  */
+static
 DTYPE getThreeWayCost (TSP *tsp, Path p)
 {
     int a, b, c, d, e, f;
@@ -313,6 +319,7 @@ DTYPE getThreeWayCost (TSP *tsp, Path p)
         /* add cost between d and e if non symetric TSP */ 
 }
 
+static
 void doThreeWay (TSP *tsp, Path p)
 {
     int i, count, m1, m2, m3, a, b, c, d, e, f;
@@ -351,6 +358,7 @@ void doThreeWay (TSP *tsp, Path p)
  *    /\        |  |
  *   a  d       a  d
  */
+static
 DTYPE getReverseCost (TSP *tsp, Path p)
 {
     int a, b, c, d;
@@ -366,7 +374,7 @@ DTYPE getReverseCost (TSP *tsp, Path p)
     return (D(d,b) + D(c,a) - D(a,b) - D(c,d));
     /* add cost between c and b if non symetric TSP */ 
 }
-
+static
 void doReverse(TSP *tsp, Path p)
 {
     int i, nswaps, first, last, tmp;
@@ -386,6 +394,7 @@ void doReverse(TSP *tsp, Path p)
     }
 }
 
+static
 void annealing(TSP *tsp)
 {
     Path   p;
@@ -448,6 +457,7 @@ void annealing(TSP *tsp)
 }
 
 
+static
 void reverse(int num, int *ids)
 {
     int i, j, t;

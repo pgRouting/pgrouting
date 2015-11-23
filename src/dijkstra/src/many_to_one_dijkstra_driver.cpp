@@ -42,7 +42,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "../../common/src/memory_func.hpp"
 extern "C" {
 #include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
 }
 
 // CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, start_vids anyarray, end_vid BIGINT, directed BOOLEAN default true,

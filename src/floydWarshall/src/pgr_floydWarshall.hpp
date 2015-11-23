@@ -36,29 +36,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/floyd_warshall_shortest.hpp>
 
 extern "C" {
-#include "postgres.h"
 #include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
 }
 
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-//TODO use palloc
-static Matrix_cell_t* pgr_get_memory( size_t size, Matrix_cell_t *matrix) {
-        if (matrix == 0){
-                matrix = (Matrix_cell_t*) malloc(size * sizeof(Matrix_cell_t));
-        } else {
-                matrix = (Matrix_cell_t*) realloc(matrix, size * sizeof(Matrix_cell_t));
-        }
-        return (Matrix_cell_t*) matrix;
-}
-
-#ifdef __cplusplus
-}
-#endif
+#include "../../common/src/memory_func.hpp"
 
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../common/src/baseGraph.hpp"
@@ -146,7 +127,7 @@ class Pgr_floydWarshall {
       size_t &result_tuple_count,
       Matrix_cell_t **postgres_rows) const{
       result_tuple_count = count_rows(graph, matrix);
-      *postgres_rows = pgr_get_memory(result_tuple_count, (*postgres_rows));
+      *postgres_rows = get_memory(result_tuple_count, (*postgres_rows));
 
 
         size_t seq = 0;

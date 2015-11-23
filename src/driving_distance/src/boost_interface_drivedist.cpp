@@ -34,9 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./boost_interface_drivedist.h"
 
 extern "C" {
-//#include "postgres.h"
 #include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
 }
 
 
@@ -85,7 +83,7 @@ do_pgr_driving_many_to_dist(
             size_t count(count_tuples(paths));
             if (count == 0) {
               *err_msg = strdup("NOTICE: No return values was found");
-              *ret_path = noPathFound(path_count, (*ret_path));
+              *ret_path = noResult(path_count, (*ret_path));
               return;
             }
             *ret_path = get_memory(count, (*ret_path));
@@ -98,7 +96,7 @@ do_pgr_driving_many_to_dist(
             size_t count(path.size());
             if (count == 0) {
               *err_msg = strdup("NOTICE: No return values was found");
-              *ret_path = noPathFound(path_count, (*ret_path));
+              *ret_path = noResult(path_count, (*ret_path));
               return ;
             }
             size_t trueCount = 0;
@@ -117,7 +115,7 @@ do_pgr_driving_many_to_dist(
 
     } catch ( ... ) {
      *err_msg = strdup("Caught unknown expection!");
-     *ret_path = noPathFound(path_count, (*ret_path));
+     *ret_path = noResult(path_count, (*ret_path));
      return;
     }
 }
@@ -176,7 +174,7 @@ do_pgr_driving_distance(
         if (path.path.size() == 0) {
             log << "NOTICE: it shoud have at least the one for it self";
             *err_msg = strdup(log.str().c_str());
-            *ret_path = noPathFound(path_count, (*ret_path));
+            *ret_path = noResult(path_count, (*ret_path));
             return;
         }
 
@@ -202,16 +200,8 @@ do_pgr_driving_distance(
     } catch ( ... ) {
       log << "NOTICE: unknown exception cought";
       *err_msg = strdup(log.str().c_str());
-      *ret_path = noPathFound(path_count, (*ret_path));
+      *ret_path = noResult(path_count, (*ret_path));
       return;
     }
 }
 
-#if 0
-// move around this lines to force a return with an empty path and the log msg
-// cool for debugging
-*err_msg = strdup(log.str().c_str());
-(*path_count) = 1;
-*path = noPathFound(start_vertex);
-return -1;
-#endif

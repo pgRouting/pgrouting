@@ -44,6 +44,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/postgres_connection.h"
 #include "./johnson_driver.h"
 
+PG_FUNCTION_INFO_V1(johnson);
+#ifndef _MSC_VER
+Datum
+#else  // _MSC_VER
+PGDLLEXPORT Datum
+#endif
+johnson(PG_FUNCTION_ARGS);
+
 /*******************************************************************************/
 /*                          MODIFY AS NEEDED                                   */
 static
@@ -87,7 +95,6 @@ process( char* edges_sql,
 /*                                                                             */
 /*******************************************************************************/
 
-PG_FUNCTION_INFO_V1(johnson);
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER

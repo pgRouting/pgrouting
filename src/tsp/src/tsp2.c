@@ -41,6 +41,10 @@ PG_MODULE_MAGIC;
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
+PG_FUNCTION_INFO_V1(tsp_matrix);
+Datum
+tsp_matrix(PG_FUNCTION_ARGS);
+
 static DTYPE *get_pgarray(int *num, ArrayType *input)
 {
     int         ndims, *dims; // , *lbs;
@@ -203,7 +207,6 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
  *                             OUT seq int, OUT id int);
 */
 
-PG_FUNCTION_INFO_V1(tsp_matrix);
 Datum
 tsp_matrix(PG_FUNCTION_ARGS)
 {

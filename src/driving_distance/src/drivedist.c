@@ -35,6 +35,13 @@
 #include "./../../common/src/postgres_connection.h"
 #include "./boost_interface_drivedist.h"
 
+PG_FUNCTION_INFO_V1(driving_distance);
+#ifndef _MSC_VER
+Datum
+#else  // _MSC_VER
+PGDLLEXPORT Datum
+#endif
+driving_distance(PG_FUNCTION_ARGS); 
 
 static
 void compute_driving_distance(
@@ -57,7 +64,8 @@ void compute_driving_distance(
 
   if (total_edges == 0) {
     PGR_DBG("No edges found");
-    *path = noPathFound(path_count, (*path));
+    *path = NULL;
+    (*path_count) = 0;
     pgr_SPI_finish();
     return;
   }
@@ -77,7 +85,6 @@ void compute_driving_distance(
 }
 
 
-PG_FUNCTION_INFO_V1(driving_distance);
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER

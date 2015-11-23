@@ -37,6 +37,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./ksp_driver.h"
 
 
+PG_FUNCTION_INFO_V1(kshortest_path);
+#ifndef _MSC_VER
+Datum
+#else  // _MSC_VER
+PGDLLEXPORT Datum
+#endif  // _MSC_VER
+kshortest_path(PG_FUNCTION_ARGS);
 
 
 static
@@ -87,7 +94,6 @@ void compute(char* sql, int64_t start_vertex,
 }
 
 
-PG_FUNCTION_INFO_V1(kshortest_path);
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER

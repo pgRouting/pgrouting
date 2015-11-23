@@ -36,6 +36,13 @@
 #include "./../../common/src/postgres_connection.h"
 #include "./floydWarshall_driver.h"
 
+PG_FUNCTION_INFO_V1(floydWarshall);
+#ifndef _MSC_VER
+Datum
+#else  // _MSC_VER
+PGDLLEXPORT Datum
+#endif
+floydWarshall(PG_FUNCTION_ARGS);
 
 static
 void
@@ -77,7 +84,6 @@ process( char* edges_sql,
 }
 
 
-PG_FUNCTION_INFO_V1(floydWarshall);
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER

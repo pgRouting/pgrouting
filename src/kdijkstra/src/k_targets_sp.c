@@ -35,6 +35,7 @@
 
 Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS);
 Datum onetomany_dijkstra_path(PG_FUNCTION_ARGS);
+Datum manytomany_dijkstra_dmatrix(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1

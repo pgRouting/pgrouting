@@ -28,7 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "./pgr_types.h"
-#include "./postgres_connection.h"
 
 #ifdef DEBUG
 #define PGR_DBG(format, arg...) \
@@ -38,12 +37,10 @@ elog(NOTICE, format , ## arg)
 #endif
 
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
-  void pgr_SPI_finish();
-  void pgr_SPI_connect();
+  void pgr_SPI_finish(void);
+  void pgr_SPI_connect(void);
+
   int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input);
 /*
   int pgr_fetch_edge_columns(SPITupleTable *tuptable, int (*edge_columns)[5],
@@ -87,10 +84,7 @@ extern "C" {
   char * pgr_text2char(text *in);
 
   // TODO make template
-  General_path_element_t* noPathFound(size_t *count, General_path_element_t *no_path);
+  //General_path_element_t* noPathFound(size_t *count, General_path_element_t *no_path);
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif  // SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
