@@ -26,13 +26,7 @@ PG_MODULE_MAGIC;
 
 #undef DEBUG
 //#define DEBUG 1
-
-#ifdef DEBUG
-#define DBG(format, arg...)                     \
-    elog(NOTICE, format , ## arg)
-#else
-#define DBG(format, arg...) do { ; } while (0)
-#endif
+#include "../../common/src/debug_macro.h"
 
 #ifndef INFINITY
 #define INFINITY (1.0/0.0)
@@ -87,11 +81,11 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
     deconstruct_array(input, i_eltype, i_typlen, i_typbyval, i_typalign,
 &i_data, &nulls, &n);
 
-    DBG("get_pgarray: ndims=%d, n=%d", ndims, n);
+    PGR_DBG("get_pgarray: ndims=%d, n=%d", ndims, n);
 
 #ifdef DEBUG
     for (i=0; i<ndims; i++) {
-        DBG("   dims[%d]=%d, lbs[%d]=%d", i, dims[i], i, lbs[i]);
+        PGR_DBG("   dims[%d]=%d, lbs[%d]=%d", i, dims[i], i, lbs[i]);
     }
 #endif
 
@@ -129,7 +123,7 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
             if (data[i] < 0)
                 data[i] = INFINITY;
         }
-        DBG("    data[%d]=%.4f", i, data[i]);
+        PGR_DBG("    data[%d]=%.4f", i, data[i]);
     }
 
     pfree(nulls);
@@ -152,7 +146,7 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
     DTYPE fit;
     char *err_msg = NULL;
 
-    DBG("In solve_tsp: num: %d, start: %d, end: %d", num, start, end);
+    PGR_DBG("In solve_tsp: num: %d, start: %d, end: %d", num, start, end);
 
     if (num < 4)
         elog(ERROR, "Error TSP requires four or more locations to optimize. Only %d were supplied.", num);
@@ -172,12 +166,12 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
        basically set D(start,end)=INFINITY and D(end,start)=0.0
     */
     if (end >= 0) {
-        DBG("Updating start end costs");
+        PGR_DBG("Updating start end costs");
         D(start,end)=0.0;
         D(end,start)=0.0;
     }
 
-    DBG("Alloc ids");
+    PGR_DBG("Alloc ids");
 
     ids = (int *) malloc(num * sizeof(int));
     if (!ids) {
@@ -188,7 +182,7 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
         ids[i] = i;
     }
 
-    DBG("Calling find_tsp_solution");
+    PGR_DBG("Calling find_tsp_solution");
 
 // int find_tsp_solution(int num, DTYPE *dist, int *p_ids, int source, DTYPE *fit, char* err_msg);
     ret = find_tsp_solution(num, matrix, ids, start, end, &fit, err_msg);
@@ -196,7 +190,7 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
         elog(ERROR, "Error solving TSP, %s", err_msg);
     }
 
-    DBG("TSP solved, Score: %f", fit);
+    PGR_DBG("TSP solved, Score: %f", fit);
 
     *results = ids;
     return ret;
@@ -274,8 +268,8 @@ tsp_matrix(PG_FUNCTION_ARGS)
     tuple_desc = funcctx->tuple_desc;
     tsp_res    = funcctx->user_fctx;
 
-    DBG("Trying to allocate some memory");
-    DBG("call_cntr = %i, max_calls = %i", call_cntr, max_calls);
+    PGR_DBG("Trying to allocate some memory");
+    PGR_DBG("call_cntr = %i, max_calls = %i", call_cntr, max_calls);
 
     if (call_cntr < max_calls) {   /* do when there is more left to send */
         HeapTuple    tuple;
@@ -291,19 +285,19 @@ tsp_matrix(PG_FUNCTION_ARGS)
         values[1] = Int32GetDatum(tsp_res[call_cntr]);
         nulls[1] = ' ';
 
-        DBG("RESULT: %d, %d", call_cntr, tsp_res[call_cntr]);
+        PGR_DBG("RESULT: %d, %d", call_cntr, tsp_res[call_cntr]);
 
-        DBG("Heap making");
+        PGR_DBG("Heap making");
 
         tuple = heap_formtuple(tuple_desc, values, nulls);
 
-        DBG("Datum making");
+        PGR_DBG("Datum making");
 
         /* make the tuple into a datum */
         result = HeapTupleGetDatum(tuple);
 
-        DBG("RESULT: seq:%d, id:%d", call_cntr, tsp_res[call_cntr]);
-        DBG("Trying to free some memory");
+        PGR_DBG("RESULT: seq:%d, id:%d", call_cntr, tsp_res[call_cntr]);
+        PGR_DBG("Trying to free some memory");
 
         /* clean up (this is not really necessary) */
         pfree(values);
@@ -313,10 +307,10 @@ tsp_matrix(PG_FUNCTION_ARGS)
         SRF_RETURN_NEXT(funcctx, result);
     }
     else {   /* do when there is no more left */
-        DBG("Freeing tsp_res");
+        PGR_DBG("Freeing tsp_res");
         free(tsp_res);
 
-        DBG("Ending function");
+        PGR_DBG("Ending function");
         SRF_RETURN_DONE(funcctx);
     }
 }

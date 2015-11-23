@@ -32,6 +32,7 @@
 //#define DEBUG
 
 #include "fmgr.h"
+#include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./floydWarshall_driver.h"

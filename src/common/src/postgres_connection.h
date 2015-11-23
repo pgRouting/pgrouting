@@ -29,13 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./pgr_types.h"
 
-#ifdef DEBUG
-#define PGR_DBG(format, arg...) \
-elog(NOTICE, format , ## arg)
-#else
-#define PGR_DBG(format, arg...) do { ; } while (0)
-#endif
-
 
 
   void pgr_SPI_finish(void);

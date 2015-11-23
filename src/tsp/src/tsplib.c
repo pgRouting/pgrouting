@@ -66,13 +66,8 @@
 
 #undef DEBUG
 //#define DEBUG 1
+#include "../../common/src/debug_macro.h"
 
-#ifdef DEBUG
-#define DBG(format, arg...)                     \
-    elog(NOTICE, format , ## arg)
-#else
-#define DBG(format, arg...) do { ; } while (0)
-#endif
 
 
 #define T_INIT                        100
@@ -196,7 +191,7 @@ int findEulerianPath(TSP *tsp)
         elog(ERROR, "Failed to allocate memory!");
         return -1;
     }
-    //DBG("findEulerianPath: 1");
+    //PGR_DBG("findEulerianPath: 1");
 
     k = -1;
     j = -1;
@@ -212,7 +207,7 @@ int findEulerianPath(TSP *tsp)
             j = i;
         }
     }
-    //DBG("findEulerianPath: j=%d", j);
+    //PGR_DBG("findEulerianPath: j=%d", j);
 
     if (j == -1)
         elog(ERROR, "Error TSP fail to findEulerianPath, check your distance matrix is valid.");
@@ -244,7 +239,7 @@ int findEulerianPath(TSP *tsp)
         }
         j = k;
     }
-    //DBG("findEulerianPath: 3");
+    //PGR_DBG("findEulerianPath: 3");
 
     /*
      * Preorder Tour of MST
@@ -269,7 +264,7 @@ int findEulerianPath(TSP *tsp)
             }    
         }
     }
-    //DBG("findEulerianPath: 4");
+    //PGR_DBG("findEulerianPath: 4");
 
     return 0;
 }
@@ -451,7 +446,7 @@ void annealing(TSP *tsp)
             }
             if (pathchg > IMPROVED_PATH_PER_T) break; /* finish early */
         }   
-        DBG("T:%f L:%f B:%f C:%d", T, pathlen, tsp->bestlen, pathchg);
+        PGR_DBG("T:%f L:%f B:%f C:%d", T, pathlen, tsp->bestlen, pathchg);
         if (pathchg == 0) break;   /* if no change then quit */
     }
 }
@@ -481,21 +476,21 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     long  seed = -314159L;
     DTYPE blength;
 
-    DBG("sizeof(long)=%d", (int)sizeof(long));
+    PGR_DBG("sizeof(long)=%d", (int)sizeof(long));
 
     initRand (seed);
 
 #ifdef DEBUG
     char bufff[2048];
     int nnn;
-    DBG("---------- Matrix[%d][%d] ---------------------\n", num, num);
+    PGR_DBG("---------- Matrix[%d][%d] ---------------------\n", num, num);
     for (i=0; i<num; i++) {
         sprintf(bufff, "%d:", i);
         nnn = 0;
         for (j=0; j<num; j++) {
             nnn += sprintf(bufff+nnn, "\t%.4f", cost[i*num+j]);
         }
-        DBG("%s", bufff);
+        PGR_DBG("%s", bufff);
     }
 #endif
 
@@ -525,7 +520,7 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     tsp.bestlen = pathLength(&tsp);
     for (i = 0; i < tsp.n; i++) tsp.border[i] = tsp.iorder[i];
 
-    DBG("Initial Path Length: %.4f", tsp.bestlen);
+    PGR_DBG("Initial Path Length: %.4f", tsp.bestlen);
 
     /*
      * Set up first eulerian path iorder to be improved by
@@ -540,22 +535,22 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
         for (i = 0; i < tsp.n; i++) tsp.border[i] = tsp.iorder[i];
     }
 
-    DBG("Approximated Path Length: %.4f", blength);
+    PGR_DBG("Approximated Path Length: %.4f", blength);
 
     annealing(&tsp);
 
     *total_len = pathLength(&tsp);
-    DBG("Final Path Length: %.4f", *total_len);
+    PGR_DBG("Final Path Length: %.4f", *total_len);
 
     *total_len = tsp.bestlen;
     for (i=0; i<tsp.n; i++) tsp.iorder[i] = tsp.border[i];
-    DBG("Best Path Length: %.4f", *total_len);
+    PGR_DBG("Best Path Length: %.4f", *total_len);
 
     // reorder ids[] with start as first
 
 #ifdef DEBUG
     for (i=0; i<tsp.n; i++) {
-        DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d, jo[io[i]]: %d",
+        PGR_DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d, jo[io[i]]: %d",
             i, ids[i], tsp.iorder[i], tsp.jorder[i], tsp.jorder[tsp.iorder[i]]);
     }
 #endif
@@ -565,14 +560,14 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
         if (ids[i] == start) istart = i;
         if (ids[i] == end)   iend = i;
     }
-    DBG("istart: %d, iend: %d", istart, iend);
+    PGR_DBG("istart: %d, iend: %d", istart, iend);
 
     // get the idex of start in iorder
     for (i=0; i < tsp.n; i++) {
         if (tsp.iorder[i] == istart) jstart = i;
         if (tsp.iorder[i] == iend)   jend = i;
     }
-    DBG("jstart: %d, jend: %d", jstart, jend);
+    PGR_DBG("jstart: %d, jend: %d", jstart, jend);
 
     /*
      * If the end is specified and the end point and it follow start
@@ -584,7 +579,7 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
         jend = jstart;
         jstart = tmp;
         rev = 1;
-        DBG("reversed start and end: jstart: %d, jend: %d", jstart, jend);
+        PGR_DBG("reversed start and end: jstart: %d, jend: %d", jstart, jend);
     }
 
     // copy ids to tsp.jorder so we can rewrite ids
@@ -607,14 +602,14 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     }
 
 #ifdef DEBUG
-    DBG("ids getting returned!");
+    PGR_DBG("ids getting returned!");
     for (i=0; i<tsp.n; i++) {
-        DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d",
+        PGR_DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d",
             i, ids[i], tsp.iorder[i], tsp.jorder[i]);
     }
 #endif
 
-    DBG("tsplib: jstart=%d, jend=%d, n=%d, j=%d", jstart, jend, tsp.n, j);
+    PGR_DBG("tsplib: jstart=%d, jend=%d, n=%d, j=%d", jstart, jend, tsp.n, j);
 
     return 0;
 }

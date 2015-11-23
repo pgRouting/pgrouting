@@ -78,13 +78,7 @@ Datum alphashape(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
-
-#ifdef DEBUG
-#define DBG(format, arg...)                     \
-    elog(NOTICE, format , ## arg)
-#else
-#define DBG(format, arg...) do { ; } while (0)
-#endif
+#include "../../common/src/debug_macro.h"
     
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
@@ -183,7 +177,7 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, int *res
   char *err_msg;
   int ret = -1;
 
-  DBG("start alpha_shape\n");
+  PGR_DBG("start alpha_shape\n");
         
   SPIcode = SPI_connect();
   if (SPIcode  != SPI_OK_CONNECT)
@@ -268,7 +262,7 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, int *res
     return finish(SPIcode, ret);
   }
 
-  DBG("Calling CGAL alpha-shape\n");
+  PGR_DBG("Calling CGAL alpha-shape\n");
         
   profstop("extract", prof_extract);
   profstart(prof_alpha);
@@ -317,11 +311,11 @@ Datum alphashape(PG_FUNCTION_ARGS)
                                 PG_GETARG_FLOAT8(1), &res, &res_count);
 
       /* total number of tuples to be returned */
-      DBG("Conting tuples number\n");
+      PGR_DBG("Conting tuples number\n");
       funcctx->max_calls = res_count;
       funcctx->user_fctx = res;
 
-      DBG("Total count %i", res_count);
+      PGR_DBG("Total count %i", res_count);
 
       if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
         ereport(ERROR,
@@ -335,7 +329,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
     }
 
   /* stuff done on every call of the function */
-  DBG("Strange stuff doing\n");
+  PGR_DBG("Strange stuff doing\n");
   funcctx = SRF_PERCALL_SETUP();
 
   call_cntr = funcctx->call_cntr;
@@ -343,7 +337,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
   tuple_desc = funcctx->tuple_desc;
   res = (vertex_t*) funcctx->user_fctx;
 
-  DBG("Trying to allocate some memory\n");
+  PGR_DBG("Trying to allocate some memory\n");
 
   if (call_cntr < max_calls)    /* do when there is more left to send */
     {
@@ -387,16 +381,16 @@ Datum alphashape(PG_FUNCTION_ARGS)
         nulls[1] = ' ';
       }
 	
-      DBG("Heap making\n");
+      PGR_DBG("Heap making\n");
 
       tuple = heap_formtuple(tuple_desc, values, nulls);
 
-      DBG("Datum making\n");
+      PGR_DBG("Datum making\n");
 
       /* make the tuple into a datum */
       result = HeapTupleGetDatum(tuple);
 
-      DBG("Trying to free some memory\n");
+      PGR_DBG("Trying to free some memory\n");
 
       /* clean up (this is not really necessary) */
       pfree(values);

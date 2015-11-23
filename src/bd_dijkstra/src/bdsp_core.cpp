@@ -43,14 +43,14 @@
 #ifdef DEBUG
 #include <stdio.h>
 static FILE *dbg;
-#define DBG(format, arg...) \
+#define DBG(...) \
     dbg = fopen("/tmp/sew-debug", "a"); \
     if (dbg) { \
-        fprintf(dbg, format,  ## arg); \
+        fprintf(dbg, __VA_ARGS__); \
         fclose(dbg); \
     }
 #else
-#define DBG(format, arg...) do { ; } while (0)
+#define DBG(...) do { ; } while (0)
 #endif
 
 int bidirsp_wrapper(

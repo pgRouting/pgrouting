@@ -39,9 +39,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //#define DEBUG
 
 #include "fmgr.h"
+#include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./MY_FUNCTION_NAME_driver.h"
+
+PG_FUNCTION_INFO_V1(MY_FUNCTION_NAME);
+#ifndef _MSC_VER
+Datum
+#else  // _MSC_VER
+PGDLLEXPORT Datum
+#endif
+MY_FUNCTION_NAME(PG_FUNCTION_ARGS);
+
 
 /*******************************************************************************/
 /*                          MODIFY AS NEEDED                                   */
@@ -92,7 +102,6 @@ process( char* edges_sql,
 /*                                                                             */
 /*******************************************************************************/
 
-PG_FUNCTION_INFO_V1(MY_FUNCTION_NAME);
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER
