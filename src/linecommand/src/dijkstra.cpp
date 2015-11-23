@@ -48,14 +48,14 @@ void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
       if (sources.size() == 1 && targets.size() == 1) {
         // one to one
         Path path;
-        graph.dijkstra(path, sources[0], targets[0]);
+        pgr_dijkstra(graph, path, sources[0], targets[0]);
         std::cout << "THE OPUTPUT ---->  total cost: " << path.cost << "\n";
         path.print_path();
         path.clear();
       } else if (sources.size() == 1 && targets.size() > 1){
         std::deque<Path> paths;
         // one to many
-        graph.dijkstra(paths, sources[0], targets);
+        pgr_dijkstra(graph, paths, sources[0], targets);
 
         std::cout << "THE OPUTPUTS ---->  total outputs: " << paths.size() << "\n";
         for (unsigned int i = 0; i < paths.size(); ++i) {
@@ -66,7 +66,7 @@ void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
       } else if (sources.size() > 1 && targets.size() == 1){
         // many to 1
         std::deque<Path> paths;
-        graph.dijkstra(paths, sources, targets[0]);
+        pgr_dijkstra(graph, paths, sources, targets[0]);
         
 
         std::cout << "THE OPUTPUTS ---->  total outputs: " << paths.size() << "\n";
@@ -78,7 +78,7 @@ void process_dijkstra(G &graph, const std::vector<std::string> &tokens) {
       } else {
         //many to many
         std::deque<Path> paths;
-        graph.dijkstra(paths, sources, targets);
+        pgr_dijkstra(graph, paths, sources, targets);
 
         std::cout << "THE OPUTPUTS ---->  total outputs: " << paths.size() << "\n";
         for (unsigned int i = 0; i < paths.size(); ++i) {

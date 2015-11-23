@@ -74,13 +74,11 @@ do_pgr_driving_many_to_dist(
     if (directedFlag) {
       Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
       digraph.graph_insert_data(data_edges, total_tuples);
-      Pgr_dijkstra< Pgr_base_graph< DirectedGraph > > fn_dijkstra;
-      fn_dijkstra.dijkstra_dd(digraph, paths, start_vertices, distance);
+      pgr_drivingDistance(digraph, paths, start_vertices, distance);
     } else {
       Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
       Pgr_dijkstra< Pgr_base_graph< UndirectedGraph > > fn_dijkstra;
-      undigraph.graph_insert_data(data_edges, total_tuples);
-      fn_dijkstra.dijkstra_dd(undigraph, paths, start_vertices, distance);
+      pgr_drivingDistance(undigraph, paths, start_vertices, distance);
     }
 
         if (equiCostFlag == false) {

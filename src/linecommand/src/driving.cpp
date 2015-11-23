@@ -75,14 +75,14 @@ void process_drivingDistance(G &graph, const std::vector<std::string> &tokens) {
       if (sources.size() == 1) {
         std::cout << "Performing pgr_DrivingDistance for single source\n";
         Path path;
-        graph.dijkstra_dd(path, sources[0], distance);
+        pgr_drivingDistance(graph, path, sources[0], distance);
         std::cout << "\t\t\tTHE OPUTPUT\n";
         std::cout << "seq\tfrom\tnode\tedge\tcost\n";
         path.print_path();
       } else {
 
         std::deque< Path >  paths;
-        graph.dijkstra_dd(paths, sources, distance);
+        pgr_drivingDistance(graph, paths, sources, distance);
         if (equiCost == false) {
           std::cout << "Performing pgr_DrivingDistance for multiple sources\n";
           std::cout << "\t\t\tTHE OPUTPUT\n";

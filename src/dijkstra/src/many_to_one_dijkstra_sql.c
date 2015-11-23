@@ -1,5 +1,5 @@
 /*PGR
-File: many_to_many_dijkstra.c
+File: one_to_many_dijkstra.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -41,17 +41,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "fmgr.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
-#include "./many_to_many_dijkstra_driver.h"
+#include "./many_to_one_dijkstra_driver.h"
 
 /*******************************************************************************/
 /*                          MODIFY AS NEEDED                                   */
 static
 void
 process( char* edges_sql,
-        int64_t *start_vidsArr,
-        size_t size_start_vidsArr,
-        int64_t *end_vidsArr,
-        size_t size_end_vidsArr,
+        char * start_vids_sql,
+        int64_t end_vid,
         bool directed,
         General_path_element_t **result_tuples,
         size_t *result_count) {
@@ -60,26 +58,31 @@ process( char* edges_sql,
   PGR_DBG("Load data");
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
-  pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
 
-  if (total_tuples == 0) {
-    PGR_DBG("No edges found");
+  int64_t *start_vidsArr = NULL;
+  size_t size_start_vidsArr;
+
+  pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+  pgr_select_bigint(start_vids_sql, &start_vidsArr, &size_start_vidsArr);
+
+  if (total_tuples == 0 || size_start_vidsArr == 0) {
+    PGR_DBG("No edges found or no starting locations found");
     (*result_count) = 0;
     (*result_tuples) = NULL;
     pgr_SPI_finish();
     return;
   }
+
   PGR_DBG("Total %ld tuples in query:", total_tuples);
 
   PGR_DBG("Starting processing");
   char *err_msg = (char *)"";
-  do_pgr_many_to_many_dijkstra(
+  do_pgr_many_to_one_dijkstra(
         edges,
         total_tuples,
         start_vidsArr,
         size_start_vidsArr,
-        end_vidsArr,
-        size_end_vidsArr,
+        end_vid,
         directed,
         result_tuples,
         result_count,
@@ -94,13 +97,13 @@ process( char* edges_sql,
 /*                                                                             */
 /*******************************************************************************/
 
-PG_FUNCTION_INFO_V1(many_to_many_dijkstra);
+PG_FUNCTION_INFO_V1(many_to_one_dijkstra_sql);
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-many_to_many_dijkstra(PG_FUNCTION_ARGS) {
+many_to_one_dijkstra_sql(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
   size_t              call_cntr;
   size_t               max_calls;
@@ -122,31 +125,19 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
 
   /*******************************************************************************/
   /*                          MODIFY AS NEEDED                                   */
-      // CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, start_vids anyarray, end_vids anyarray, directed boolean default true,
+      // CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, start_vids_sql TEXT, end_vid BIGINT, directed boolean default true,
 
-      PGR_DBG("Initializing arrays");
-      int64_t* start_vidsArr;
-      size_t size_start_vidsArr;
-      start_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_start_vidsArr, PG_GETARG_ARRAYTYPE_P(1));
-      PGR_DBG("start_vidsArr size %d ", size_start_vidsArr);
-
-      int64_t* end_vidsArr;
-      size_t size_end_vidsArr;
-      end_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_end_vidsArr, PG_GETARG_ARRAYTYPE_P(2));
-      PGR_DBG("end_vidsArr size %d ", size_end_vidsArr);
 
       PGR_DBG("Calling process");
       process(
          pgr_text2char(PG_GETARG_TEXT_P(0)),
-         start_vidsArr, size_start_vidsArr,
-         end_vidsArr, size_end_vidsArr,
+         pgr_text2char(PG_GETARG_TEXT_P(1)),
+         PG_GETARG_INT64(2),
          PG_GETARG_BOOL(3),
          &result_tuples,
          &result_count);
 
       PGR_DBG("Cleaning arrays");
-      free(end_vidsArr);
-      free(start_vidsArr);
   /*                                                                             */
   /*******************************************************************************/
 
@@ -176,27 +167,26 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
 
   /*******************************************************************************/
   /*                          MODIFY AS NEEDED                                   */
-      // OUT seq integer, OUT path_seq INTEGER, OUT start_vid, OUT end_vid BIGINT, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
+      // OUT seq integer, OUT path_seq INTEGER, OUT end_vid BIGINT, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
 
-      values = palloc(8 * sizeof(Datum));
-      nulls = palloc(8 * sizeof(char));
+      values = palloc(7 * sizeof(Datum));
+      nulls = palloc(7 * sizeof(char));
 
+      // postgres starts counting from 1
       values[0] = Int32GetDatum(call_cntr + 1);
       nulls[0] = ' ';
       values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
       nulls[1] = ' ';
       values[2] = Int64GetDatum(result_tuples[call_cntr].from);
       nulls[2] = ' ';
-      values[3] = Int64GetDatum(result_tuples[call_cntr].to);
+      values[3] = Int64GetDatum(result_tuples[call_cntr].vertex);
       nulls[3] = ' ';
-      values[4] = Int64GetDatum(result_tuples[call_cntr].vertex);
+      values[4] = Int64GetDatum(result_tuples[call_cntr].edge);
       nulls[4] = ' ';
-      values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
+      values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
       nulls[5] = ' ';
-      values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
+      values[6] = Float8GetDatum(result_tuples[call_cntr].tot_cost);
       nulls[6] = ' ';
-      values[7] = Float8GetDatum(result_tuples[call_cntr].tot_cost);
-      nulls[7] = ' ';
   /*******************************************************************************/
 
       tuple = heap_formtuple(tuple_desc, values, nulls);

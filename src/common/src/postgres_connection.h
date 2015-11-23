@@ -78,13 +78,15 @@ extern "C" {
       pgr_edge_t **edges,  //!< \param [OUT] edges retrieved edges
       int64_t *total_tuples);  //!< \param [OUT] total_tuples Total edges retrived
 
+  void
+      pgr_select_bigint(
+              char *sql,
+              int64 **columnValues,
+              size_t *totalTuples);
 
   char * pgr_text2char(text *in);
-#if 0
-  // output corresponding to costResult3Big
-  General_path_element_t* get_memory(int size, General_path_element_t *path);
-#endif
-  // pgr_path_element3_t * noPathFound3(int64_t start_id);
+
+  // TODO make template
   General_path_element_t* noPathFound(size_t *count, General_path_element_t *no_path);
 
 #ifdef __cplusplus

@@ -164,7 +164,7 @@ exit_nicely(PGconn *conn)
 
 template <typename G> 
 void process(G graph, pgr_edge_t *data_edges, int row_count) {
-  graph.initialize_graph(data_edges, row_count);
+  graph.graph_insert_data(data_edges, row_count);
   std::vector<int64_t> targets;
   std::string::size_type sz;
 
@@ -303,7 +303,8 @@ int main(int ac, char* av[]) {
 
    std::string data_sql;
    if (test) {
-     data_sql = "select id, source, target, cost, reverse_cost from edge_table order by id";
+     data_sql = "select id, source, target, cost, -1 as reverse_cost  from table1 order by id";
+     // data_sql = "select id, source, target, cost, reverse_cost from edge_table order by id";
    } else {
      std::cout << "Input data query: ";
      std::getline (std::cin,data_sql);
@@ -393,17 +394,11 @@ int main(int ac, char* av[]) {
     bool directedFlag =  (directed.compare("Y")==0 || directed.compare("y")==0)? true: false;
 
 
-
-    typedef boost::adjacency_list < boost::vecS, boost::vecS, boost::undirectedS,
-        boost_vertex_t, boost_edge_t > UndirectedGraph;
-    typedef boost::adjacency_list < boost::vecS, boost::vecS, boost::bidirectionalS,
-        boost_vertex_t, boost_edge_t > DirectedGraph;
-
-    const int initial_size = 1;
+    const int initial_size = rec_count;
 
     
-    Pgr_dijkstra< DirectedGraph > digraph(gType, initial_size);
-    Pgr_dijkstra< UndirectedGraph > undigraph(gType, initial_size);
+    Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+    Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
     
     if (directedFlag) {
       process(digraph, data_edges, rec_count);

@@ -26,16 +26,40 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vid bigint, end_v
  '$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_one_dijkstra'
     LANGUAGE c IMMUTABLE STRICT;
 
+    -- One to many
+
+CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vid bigint, end_vids_sql TEXT, directed boolean default true,
+  OUT seq integer, OUT path_seq integer, OUT end_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
+  RETURNS SETOF RECORD AS
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_many_dijkstra_sql'
+    LANGUAGE c IMMUTABLE STRICT;
+
 CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vid bigint, end_vids anyarray, directed boolean default true,
   OUT seq integer, OUT path_seq integer, OUT end_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
  '$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_many_dijkstra'
     LANGUAGE c IMMUTABLE STRICT;
 
+    --  many to one
+
+CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vids_sql TEXT, end_vid bigint, directed boolean default true,
+  OUT seq integer, OUT path_seq integer, OUT start_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
+  RETURNS SETOF RECORD AS
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'many_to_one_dijkstra_sql'
+    LANGUAGE c IMMUTABLE STRICT;
+
 CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vids anyarray, end_vid bigint, directed boolean default true,
   OUT seq integer, OUT path_seq integer, OUT start_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
  '$libdir/${PGROUTING_LIBRARY_NAME}', 'many_to_one_dijkstra'
+    LANGUAGE c IMMUTABLE STRICT;
+
+    --  many to many
+
+CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vids_sql TEXT, end_vids_sql TEXT, directed boolean default true,
+  OUT seq integer, OUT path_seq integer, OUT start_vid bigint, OUT end_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
+  RETURNS SETOF RECORD AS
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'many_to_many_dijkstra_sql'
     LANGUAGE c IMMUTABLE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vids anyarray, end_vids anyarray, directed boolean default true,

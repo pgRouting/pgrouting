@@ -327,6 +327,10 @@ void pgr_fetch_edge(
   *valid_edges = target_edge->reverse_cost < 0? *valid_edges: *valid_edges + 1;
 }
 
+
+
+
+
 static
 void
 get_data_5_columns(
@@ -351,8 +355,6 @@ get_data_5_columns(
   for (i = 0; i < 5; ++i) edge_types[i] = -1;
 
         
-  // pgr_SPI_connect();
-
   void *SPIplan;
   SPIplan = pgr_SPI_prepare(sql);
 
@@ -403,32 +405,16 @@ get_data_5_columns(
       }
   }
 
-  //  0 edges then abort
   if (total_tuples == 0 || valid_edges == 0) {
     (*totalTuples) = 0;
     PGR_DBG("NO edges");
-    // pgr_SPI_finish();
     PGR_DBG("closed");
     return;
   }
   
-#if 0
-  if (total_tuples == 1) {
-    // for some reason it needs at least a second edge for boost.graph to work
-    // makeing a simple test and asking boost people
-    ++total_tuples;
-    (*edges) = (pgr_edge_t *)repalloc((*edges), total_tuples * sizeof(pgr_edge_t));
-    (*edges)[1].source = -1;
-    (*edges)[1].target = -1;
-    (*edges)[1].cost = 10000;
-    (*edges)[1].id = (*edges)[0].id + 1;
-    (*edges)[1].reverse_cost = -1;
-  }
-#endif
 
   (*totalTuples) = total_tuples;
   PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*totalTuples));
-  // pgr_SPI_finish();
   PGR_DBG("closed");
 }
 
@@ -453,23 +439,101 @@ pgr_get_data_4_columns(
 }
 
 
-// TODO make this one a template
-#if 0
-General_path_element_t* get_memory(int size, General_path_element_t *path){
-	if(path ==0  ){
-		path=malloc(size * sizeof(General_path_element_t));
-	} else {
-		path=realloc(path,size * sizeof(General_path_element_t));
-	}
-	return path;
-}
-#endif
-
 
 General_path_element_t* noPathFound(size_t *count, General_path_element_t *no_path) {
    count = 0;
    return NULL;
 }
 
+
+
+static
+void fetch_select_bigint_info(
+        TupleDesc tupledesc,
+        int *type_id) {
+    PGR_DBG("Fetching bigint column info\n");
+    *type_id = SPI_gettypeid(tupledesc, 1);
+    pgr_check_any_integer_type("$1", *type_id); 
+    PGR_DBG("Found has_rcost %i\n", *has_rcost);
+}
+
+
+
+
+void
+pgr_select_bigint(
+        char *sql,
+        int64 **columnValues,
+        size_t *totalTuples) {
+
+    const int tuple_limit = 1000000;
+
+    PGR_DBG("Entering select_bigint");
+
+    int64_t ntuples;
+    int64_t total_tuples;
+
+    int type_id = 0;
+
+    void *SPIplan;
+    SPIplan = pgr_SPI_prepare(sql);
+
+    Portal SPIportal;
+    SPIportal = pgr_SPI_cursor_open(SPIplan);
+
+
+    bool moredata = TRUE;
+    (*totalTuples) = total_tuples = 0;
+
+    /*  on the first tuple get the column numbers */
+
+    PGR_DBG("Starting Cycle");
+    while (moredata == TRUE) {
+        SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
+        SPITupleTable *tuptable = SPI_tuptable;
+        TupleDesc tupdesc = SPI_tuptable->tupdesc;
+        if (total_tuples == 0)
+            fetch_select_bigint_info(tupdesc, &type_id);
+
+        ntuples = SPI_processed;
+        total_tuples += ntuples;
+
+        if (ntuples > 0) {
+            PGR_DBG("Getting Memory");
+            if ((*columnValues) == NULL)
+                (*columnValues) = (int64_t *)palloc0(total_tuples * sizeof(int64_t));
+            else
+                (*columnValues) = (int64_t *)repalloc((*columnValues), total_tuples * sizeof(int64_t));
+            PGR_DBG("Got Memory");
+
+            if ((*columnValues) == NULL) {
+                elog(ERROR, "Out of memory"); 
+            }
+
+            int t;
+            PGR_DBG("processing %d", ntuples);
+            for (t = 0; t < ntuples; t++) {
+                PGR_DBG("   processing %d", t);
+                HeapTuple tuple = tuptable->vals[t];
+                int target_row = total_tuples - ntuples + t;
+                (*columnValues)[target_row] =
+                    pgr_SPI_getBigInt(&tuple, &tupdesc, 1 , type_id);
+            }
+            SPI_freetuptable(tuptable);
+        } else {
+            moredata = FALSE;
+        }
+    }
+
+    if (total_tuples == 0) {
+        (*totalTuples) = 0;
+        PGR_DBG("NO values");
+        return;
+    }
+
+
+    (*totalTuples) = total_tuples;
+    PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*totalTuples));
+}
 
 
