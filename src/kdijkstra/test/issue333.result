@@ -1,0 +1,7 @@
+1..3
+NOTICE:  Deprecated function: Use pgr_dijkstra instead
+ok 1 - 1
+NOTICE:  Deprecated function: Use pgr_dijkstra instead
+ok 2 - 2
+NOTICE:  Deprecated function: Use pgr_dijkstra instead
+ok 3 - 3
