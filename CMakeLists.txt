@@ -77,7 +77,8 @@ set(PgRouting_SOURCE_NAMES
     "dijkstraViaVertex"
     
     "astar" "bd_astar"
-    "bd_dijkstra" "kdijkstra"
+    "bd_dijkstra" 
+    "kdijkstra"
     "trsp" "tsp"
 
     "vrp_basic" "vrppdtw"

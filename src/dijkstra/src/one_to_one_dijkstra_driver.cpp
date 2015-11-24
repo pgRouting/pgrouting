@@ -52,17 +52,12 @@ do_pgr_one_to_one_dijkstra(
         int64_t start_vid,
         int64_t end_vid,
         bool directed,
+        bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** err_msg){
   std::ostringstream log;
   try {
-
-#ifdef DEBUG
-    log << "From" << start_vid << "\n";
-    log << "Destination" << end_vid << "\n";
-#endif
-
 
     graphType gType = directed? DIRECTED: UNDIRECTED;
     const int initial_size = total_tuples;
@@ -73,37 +68,42 @@ do_pgr_one_to_one_dijkstra(
         log << "Working with directed Graph\n";
         Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
         digraph.graph_insert_data(data_edges, total_tuples);
-#ifdef DEBUG
-        digraph.print_graph(log);
-#endif
         pgr_dijkstra(digraph, path, start_vid, end_vid);
     } else {
         log << "Working with Undirected Graph\n";
         Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
         undigraph.graph_insert_data(data_edges, total_tuples);
-#ifdef DEBUG
-        undigraph.print_graph(log);
-#endif
         pgr_dijkstra(undigraph, path, start_vid, end_vid);
     }
 
-    size_t count(path.size());
+    size_t count(0);
+
+    if (only_cost) {
+            if ( !path.path.empty() ) count++;
+    } else {            
+        count = path.path.size();
+    }                                   
 
     if (count == 0) {
         (*return_tuples) = NULL;
         (*return_count) = 0;
-        log << 
+        log <<
             "No paths found between Starting and any of the Ending vertices\n";
         *err_msg = strdup(log.str().c_str());
         return;
     }
 
-    // get the space required to store all the paths
     (*return_tuples) = get_memory(count, (*return_tuples));
-    log << "Converting a set of paths into the tuples\n";
-    size_t sequence = 0;
-    path.generate_postgres_data(return_tuples, sequence);
-    (*return_count) = sequence;
+    if (only_cost) {
+        if  ( !path.path.empty() ) {
+            (*return_tuples)[0] = path.path[ path.path.size() - 1 ];
+        }
+        (*return_count) = count;
+    } else {
+        size_t sequence = 0;
+        path.generate_postgres_data(return_tuples, sequence);
+        (*return_count) = sequence;
+    }
 
 #ifndef DEBUG
     *err_msg = strdup("OK");

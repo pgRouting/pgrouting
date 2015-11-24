@@ -53,6 +53,7 @@ do_pgr_many_to_one_dijkstra(
         size_t size_start_vidsArr,
         int64_t end_vid,
         bool directed,
+        bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** err_msg){
@@ -96,7 +97,16 @@ do_pgr_many_to_one_dijkstra(
             pgr_dijkstra(undigraph, paths, start_vertices, end_vid);
         }
 
-        size_t count(count_tuples(paths));
+
+        size_t count(0);
+        if (only_cost) {
+            for (const auto &path : paths) {
+                if ( !path.path.empty() ) count++;
+            }
+        } else {
+            count = count_tuples(paths);
+        }
+
 
         if (count == 0) {
             (*return_tuples) = NULL;
@@ -107,10 +117,22 @@ do_pgr_many_to_one_dijkstra(
             return;
         }
 
-        // get the space required to store all the paths
         (*return_tuples) = get_memory(count, (*return_tuples));
-        log << "Converting a set of paths into the tuples\n";
-        (*return_count) = (collapse_paths(return_tuples, paths));
+
+        if (only_cost) {
+            int i = 0;
+            for (const auto &path : paths) {
+                if  ( !path.path.empty() ) {
+                    (*return_tuples)[i] = path.path[ path.path.size() - 1 ];
+                    i++;
+                }
+            }
+            (*return_count) = count;
+        } else {
+            log << "Converting a set of paths into the tuples\n";
+            (*return_count) = (collapse_paths(return_tuples, paths));
+        }
+
 
 #ifndef DEBUG
         *err_msg = strdup("OK");

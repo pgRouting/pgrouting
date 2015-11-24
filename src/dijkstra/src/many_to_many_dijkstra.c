@@ -63,6 +63,7 @@ process( char* edges_sql,
         int64_t *end_vidsArr,
         size_t size_end_vidsArr,
         bool directed,
+        bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
   pgr_SPI_connect();
@@ -91,6 +92,7 @@ process( char* edges_sql,
         end_vidsArr,
         size_end_vidsArr,
         directed,
+        only_cost,
         result_tuples,
         result_count,
         &err_msg);
@@ -150,6 +152,7 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
          start_vidsArr, size_start_vidsArr,
          end_vidsArr, size_end_vidsArr,
          PG_GETARG_BOOL(3),
+         PG_GETARG_BOOL(4),
          &result_tuples,
          &result_count);
 

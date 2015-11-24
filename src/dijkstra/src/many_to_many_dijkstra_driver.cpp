@@ -54,21 +54,13 @@ do_pgr_many_to_many_dijkstra(
         int64_t  *end_vidsArr,
         size_t size_end_vidsArr,
         bool directed,
+        bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** err_msg){
   std::ostringstream log;
   try {
 
-/*
-    if (total_tuples == 1) {
-      log << "Requiered: more than one tuple\n";
-      (*return_tuples) = NULL;
-      (*return_count) = 0;
-      *err_msg = strdup(log.str().c_str());
-      return;
-    }
-*/
     graphType gType = directed? DIRECTED: UNDIRECTED;
     const int initial_size = total_tuples;
 
@@ -89,33 +81,53 @@ do_pgr_many_to_many_dijkstra(
       pgr_dijkstra(undigraph, paths, start_vertices, end_vertices);
     }
 
-    size_t count(count_tuples(paths));
 
-    if (count == 0) {
-      (*return_tuples) = NULL;
-      (*return_count) = 0;
-      log << 
-        "No paths found between Starting and any of the Ending vertices\n";
-      *err_msg = strdup(log.str().c_str());
-      return;
+    size_t count(0);
+
+    if (only_cost) {
+        for (const auto &path : paths) {
+            if ( !path.path.empty() ) count++;
+        }
+    } else {
+        count = count_tuples(paths);
     }
 
-    // get the space required to store all the paths
-    (*return_tuples) = get_memory(count, (*return_tuples));
-    log << "Converting a set of paths into the tuples\n";
-    (*return_count) = (collapse_paths(return_tuples, paths));
+    if (count == 0) {
+        (*return_tuples) = NULL;
+        (*return_count) = 0;
+        log <<
+            "No paths found between Starting and any of the Ending vertices\n";
+        *err_msg = strdup(log.str().c_str());
+        return;
+    }
 
-    #ifndef DEBUG
-      *err_msg = strdup("OK");
-    #else
-      *err_msg = strdup(log.str().c_str());
-    #endif
+    (*return_tuples) = get_memory(count, (*return_tuples));
+    if (only_cost) {
+        int i = 0;
+        for (const auto &path : paths) {
+            if  ( !path.path.empty() ) {
+                (*return_tuples)[i] = path.path[ path.path.size() - 1 ];
+                i++;
+            }
+        }
+        (*return_count) = count;
+    } else {
+        log << "Converting a set of paths into the tuples\n";
+        (*return_count) = (collapse_paths(return_tuples, paths));
+    }
+
+
+#ifndef DEBUG
+    *err_msg = strdup("OK");
+#else
+    *err_msg = strdup(log.str().c_str());
+#endif
 
     return;
   } catch ( ... ) {
-    log << "Caught unknown expection!\n";
-    *err_msg = strdup("Caught unknown expection!\n");
-    return;
+      log << "Caught unknown expection!\n";
+      *err_msg = strdup("Caught unknown expection!\n");
+      return;
   }
 }
 

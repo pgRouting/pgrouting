@@ -75,7 +75,7 @@ do_pgr_driving_many_to_dist(
       pgr_drivingDistance(digraph, paths, start_vertices, distance);
     } else {
       Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
-      Pgr_dijkstra< Pgr_base_graph< UndirectedGraph > > fn_dijkstra;
+      undigraph.graph_insert_data(data_edges, total_tuples);
       pgr_drivingDistance(undigraph, paths, start_vertices, distance);
     }
 

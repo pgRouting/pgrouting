@@ -99,7 +99,7 @@ begin
           from (select generate_series as id from generate_series(i, nn)) as foo;
 
         -- compute kdijkstra() for this row
-        for rr in execute 'select * from pgr_kdijkstracost($1, $2, $3, false, false)'
+        for rr in execute 'select * from pgr_dijkstracost($1, $2, $3, false)'
                   using 'select id, source, target, cost from ' || edges || 
                         ' where the_geom && ''' || bbox::text || '''::geometry'::text, vids[i], vids[i+1:nn] loop
 
@@ -108,9 +108,9 @@ begin
 
             -- populate the matrix with the cost values, remember this is symmetric
             j := j + 1;
-            -- raise notice 'cost(%,%)=%', i, j, rr.cost;
-            dmatrix[i][j] := rr.cost;
-            dmatrix[j][i] := rr.cost;
+            -- raise notice 'cost(%,%)=%', i, j, rr.agg_cost;
+            dmatrix[i][j] := rr.agg_cost;
+            dmatrix[j][i] := rr.agg_cost;
         end loop;
     end loop;
 

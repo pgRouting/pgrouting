@@ -52,21 +52,13 @@ do_pgr_one_to_many_dijkstra(
         int64_t  *end_vidsArr,
         int size_end_vidsArr,
         bool directed,
+        bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** err_msg){
   std::ostringstream log;
   try {
 
-#if 0
-    if (total_tuples == 1) {
-      log << "Requiered: more than one tuple\n";
-      (*return_tuples) = NULL;
-      (*return_count) = 0;
-      *err_msg = strdup(log.str().c_str());
-      return;
-    }
-#endif
 
     graphType gType = directed? DIRECTED: UNDIRECTED;
     const int initial_size = total_tuples;
@@ -74,31 +66,29 @@ do_pgr_one_to_many_dijkstra(
     std::deque< Path >paths;
     log << "Inserting vertices into a c++ vector structure\n";
     std::vector< int64_t > end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
-#ifdef DEBUG
-    for (const auto &vid : end_vertices) log << vid <<"\n";
-    log << "Destination" << start_vid;
-#endif
 
 
     if (directed) {
         log << "Working with directed Graph\n";
         Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
         digraph.graph_insert_data(data_edges, total_tuples);
-#ifdef DEBUG
-        digraph.print_graph(log);
-#endif
         pgr_dijkstra(digraph, paths, start_vid, end_vertices);
     } else {
         log << "Working with Undirected Graph\n";
         Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
         undigraph.graph_insert_data(data_edges, total_tuples);
-#ifdef DEBUG
-        undigraph.print_graph(log);
-#endif
         pgr_dijkstra(undigraph, paths, start_vid, end_vertices);
     }
 
-    size_t count(count_tuples(paths));
+    size_t count(0);
+    if (only_cost) {
+        for (const auto &path : paths) {
+            if ( !path.path.empty() ) count++;
+        }
+    } else {
+        count = count_tuples(paths);
+    }
+
 
     if (count == 0) {
         (*return_tuples) = NULL;
@@ -109,10 +99,20 @@ do_pgr_one_to_many_dijkstra(
         return;
     }
 
-    // get the space required to store all the paths
     (*return_tuples) = get_memory(count, (*return_tuples));
-    log << "Converting a set of paths into the tuples\n";
-    (*return_count) = (collapse_paths(return_tuples, paths));
+    if (only_cost) {
+        int i = 0;
+        for (const auto &path : paths) {
+            if  ( !path.path.empty() ) {
+                (*return_tuples)[i] = path.path[ path.path.size() - 1 ];
+                i++;
+            }
+        }
+         (*return_count) = count;
+    } else {
+        log << "Converting a set of paths into the tuples\n";
+        (*return_count) = (collapse_paths(return_tuples, paths));
+    }
 
 #ifndef DEBUG
     *err_msg = strdup("OK");

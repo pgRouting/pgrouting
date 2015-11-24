@@ -40,10 +40,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // #define DEBUG
 
 extern "C" {
-#include "postgres.h"
 #include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
 }
+
+#include "./../../common/src/memory_func.hpp"
 
 // MY_QUERY_LINE1
 void

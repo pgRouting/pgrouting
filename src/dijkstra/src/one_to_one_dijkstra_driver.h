@@ -41,6 +41,7 @@ do_pgr_one_to_one_dijkstra(
         int64_t start_vid,
         int64_t end_vid,
         bool directed,
+        bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** err_msg);

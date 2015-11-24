@@ -135,7 +135,7 @@ MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
       int64_t* end_vidsArr;
       size_t size_end_vidsArr;
       end_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_end_vidsArr, PG_GETARG_ARRAYTYPE_P(2));
-      PGR_DBG("targetsArr size %d ", size_end_vidsArr);
+      PGR_DBG("targetsArr size %ld ", size_end_vidsArr);
 
       PGR_DBG("Calling process");
       process(
@@ -179,25 +179,25 @@ MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
   /*                          MODIFY AS NEEDED                                   */
       // MY_QUERY_LINE2
 
+      
       values = palloc(7 * sizeof(Datum));
       nulls = palloc(7 * sizeof(char));
 
+      size_t i;
+      for(i = 0; i < 7; ++i) {
+          nulls[i] = ' ';
+      }
+
+
       // postgres starts counting from 1
       values[0] = Int32GetDatum(call_cntr + 1);
-      nulls[0] = ' ';
       values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
-      nulls[1] = ' ';
       values[2] = Int64GetDatum(result_tuples[call_cntr].to);
-      nulls[2] = ' ';
       values[3] = Int64GetDatum(result_tuples[call_cntr].vertex);
-      nulls[3] = ' ';
       values[4] = Int64GetDatum(result_tuples[call_cntr].edge);
-      nulls[4] = ' ';
       values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
-      nulls[5] = ' ';
       values[6] = Float8GetDatum(result_tuples[call_cntr].tot_cost);
-      nulls[6] = ' ';
-  /*******************************************************************************/
+      /*******************************************************************************/
 
       tuple = heap_formtuple(tuple_desc, values, nulls);
       result = HeapTupleGetDatum(tuple);

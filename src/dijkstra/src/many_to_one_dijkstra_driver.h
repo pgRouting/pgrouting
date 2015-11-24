@@ -42,6 +42,7 @@ do_pgr_many_to_one_dijkstra(
         size_t size_start_vidsArr,
         int64_t end_vid,
         bool directed,
+        bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** err_msg);

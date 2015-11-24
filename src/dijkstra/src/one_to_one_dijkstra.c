@@ -62,6 +62,7 @@ process( char* edges_sql,
         int64_t start_vid,
         int64_t end_vid,
         bool directed,
+        bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
   pgr_SPI_connect();
@@ -88,6 +89,7 @@ process( char* edges_sql,
         start_vid,
         end_vid,
         directed,
+        only_cost,
         result_tuples,
         result_count,
         &err_msg);
@@ -136,6 +138,7 @@ one_to_one_dijkstra(PG_FUNCTION_ARGS) {
          PG_GETARG_INT64(1),
          PG_GETARG_INT64(2),
          PG_GETARG_BOOL(3),
+         PG_GETARG_BOOL(4),
          &result_tuples,
          &result_count);
 
@@ -173,20 +176,20 @@ one_to_one_dijkstra(PG_FUNCTION_ARGS) {
       values = palloc(6 * sizeof(Datum));
       nulls = palloc(6 * sizeof(char));
 
+
+      size_t i;
+      for(i = 0; i < 6; ++i) { 
+          nulls[i] = ' ';       
+      }                               
+
       // postgres starts counting from 1
       values[0] = Int32GetDatum(call_cntr + 1);
-      nulls[0] = ' ';
       values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
-      nulls[1] = ' ';
       values[2] = Int64GetDatum(result_tuples[call_cntr].vertex);
-      nulls[2] = ' ';
       values[3] = Int64GetDatum(result_tuples[call_cntr].edge);
-      nulls[3] = ' ';
       values[4] = Float8GetDatum(result_tuples[call_cntr].cost);
-      nulls[4] = ' ';
       values[5] = Float8GetDatum(result_tuples[call_cntr].tot_cost);
-      nulls[5] = ' ';
-  /*******************************************************************************/
+      /*******************************************************************************/
 
       tuple = heap_formtuple(tuple_desc, values, nulls);
       result = HeapTupleGetDatum(tuple);
