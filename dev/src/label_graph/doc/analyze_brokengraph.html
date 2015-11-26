@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis)',
+        VERSION:     '2.2.0 (3cf3396 cmake-improve-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,19 +25,19 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../doc/index.html" />
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../index.html" />
     <link rel="next" title="Developers’s Functions" href="../../common/doc/utilities/index.html" />
-    <link rel="prev" title="pgr_vrppdtw - Pickup and Delivery problem" href="../../vrppdtw/doc/index.html" /> 
+    <link rel="prev" title="pgr_dijkstra - Shortest Path Dijkstra" href="../../dijkstra/doc/dijkstra_sql_version.html" /> 
   </head>
-  <body role="document">
-      <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
           <span>pgRouting Manual (2.2.0)</span></a></h1>
         <h2 class="heading"><span>pgr_labelGraph</span></h2>
       </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
+      <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="../../vrppdtw/doc/index.html">pgr_vrppdtw - Pickup and Delivery problem</a>
+        «&#160;&#160;<a href="../../dijkstra/doc/dijkstra_sql_version.html">pgr_dijkstra - Shortest Path Dijkstra</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -52,16 +52,16 @@
 <span id="id1"></span><h1>pgr_labelGraph<a class="headerlink" href="#pgr-labelgraph" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">pgr_labelGraph</span></code> — Locates and labels sub-networks within a network which are not topologically connected. Must be run after <code class="docutils literal"><span class="pre">pgr_createTopology()</span></code>. No use of <code class="docutils literal"><span class="pre">geometry</span></code> column. Only <code class="docutils literal"><span class="pre">id</span></code>, <code class="docutils literal"><span class="pre">source</span></code> and  <code class="docutils literal"><span class="pre">target</span></code> columns are required.</p>
+<p><tt class="docutils literal"><span class="pre">pgr_labelGraph</span></tt> — Locates and labels sub-networks within a network which are not topologically connected. Must be run after <tt class="docutils literal"><span class="pre">pgr_createTopology()</span></tt>. No use of <tt class="docutils literal"><span class="pre">geometry</span></tt> column. Only <tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="docutils literal"><span class="pre">source</span></tt> and  <tt class="docutils literal"><span class="pre">target</span></tt> columns are required.</p>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>The function returns:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">OK</span></code> when a column with provided name has been generated and populated successfully. All connected edges will have unique similar integer values. In case of <code class="docutils literal"><span class="pre">rows_where</span></code> condition, non participating rows will have -1 integer values.</li>
-<li><code class="docutils literal"><span class="pre">FAIL</span></code> when the processing cannot be finished due to some error. Notice will be thrown accordingly.</li>
-<li><code class="docutils literal"><span class="pre">rows_where</span> <span class="pre">condition</span> <span class="pre">generated</span> <span class="pre">0</span> <span class="pre">rows</span></code> when passed SQL condition has not been fulfilled by any row.</li>
+<li><tt class="docutils literal"><span class="pre">OK</span></tt> when a column with provided name has been generated and populated successfully. All connected edges will have unique similar integer values. In case of <tt class="docutils literal"><span class="pre">rows_where</span></tt> condition, non participating rows will have -1 integer values.</li>
+<li><tt class="docutils literal"><span class="pre">FAIL</span></tt> when the processing cannot be finished due to some error. Notice will be thrown accordingly.</li>
+<li><tt class="docutils literal"><span class="pre">rows_where</span> <span class="pre">condition</span> <span class="pre">generated</span> <span class="pre">0</span> <span class="pre">rows</span></tt> when passed SQL condition has not been fulfilled by any row.</li>
 </ul>
 </div></blockquote>
 <div class="highlight-sql"><div class="highlight"><pre><span class="nb">varchar</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">)</span>
@@ -77,25 +77,25 @@
 <li>The data is not properly noded.</li>
 <li>Topology creation failed to succeed.</li>
 </ul>
-<p>pgr_labelGraph() will create an integer column (with the name provided by the user) and will assign same integer values to all those edges in the network which are connected topologically. Thus better analysis regarding network structure is possible. In case of <code class="docutils literal"><span class="pre">rows_where</span></code> condition, non participating rows will have -1 integer values.</p>
+<p>pgr_labelGraph() will create an integer column (with the name provided by the user) and will assign same integer values to all those edges in the network which are connected topologically. Thus better analysis regarding network structure is possible. In case of <tt class="docutils literal"><span class="pre">rows_where</span></tt> condition, non participating rows will have -1 integer values.</p>
 <p>Prerequisites:
-Must run <code class="docutils literal"><span class="pre">pgr_createTopology()</span></code> in order to generate <code class="docutils literal"><span class="pre">source</span></code> and <code class="docutils literal"><span class="pre">target</span></code> columns. Primary key column <code class="docutils literal"><span class="pre">id</span></code> should also be there in the network table.</p>
+Must run <tt class="docutils literal"><span class="pre">pgr_createTopology()</span></tt> in order to generate <tt class="docutils literal"><span class="pre">source</span></tt> and <tt class="docutils literal"><span class="pre">target</span></tt> columns. Primary key column <tt class="docutils literal"><span class="pre">id</span></tt> should also be there in the network table.</p>
 <p>Function accepts the following parameters:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edge_table:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> Network table name, with optional schema name.</td>
+<tr class="field-odd field"><th class="field-name">edge_table:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> Network table name, with optional schema name.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> Primary key column name of the network table. Default is <code class="docutils literal"><span class="pre">id</span></code>.</td>
+<tr class="field-even field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> Primary key column name of the network table. Default is <tt class="docutils literal"><span class="pre">id</span></tt>.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> Source column name generated after <code class="docutils literal"><span class="pre">pgr_createTopology()</span></code>. Default is <code class="docutils literal"><span class="pre">source</span></code>.</td>
+<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> Source column name generated after <tt class="docutils literal"><span class="pre">pgr_createTopology()</span></tt>. Default is <tt class="docutils literal"><span class="pre">source</span></tt>.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> Target column name generated after <code class="docutils literal"><span class="pre">pgr_createTopology()</span></code>. Default is <code class="docutils literal"><span class="pre">target</span></code>.</td>
+<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> Target column name generated after <tt class="docutils literal"><span class="pre">pgr_createTopology()</span></tt>. Default is <tt class="docutils literal"><span class="pre">target</span></tt>.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">subgraph:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> Column name which will hold the integer labels for each sub-graph. Default is <code class="docutils literal"><span class="pre">subgraph</span></code>.</td>
+<tr class="field-odd field"><th class="field-name">subgraph:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> Column name which will hold the integer labels for each sub-graph. Default is <tt class="docutils literal"><span class="pre">subgraph</span></tt>.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">rows_where:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> The SQL where condition. Default is <code class="docutils literal"><span class="pre">true</span></code>, means the processing will be done on the whole table.</td>
+<tr class="field-even field"><th class="field-name">rows_where:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> The SQL where condition. Default is <tt class="docutils literal"><span class="pre">true</span></tt>, means the processing will be done on the whole table.</td>
 </tr>
 </tbody>
 </table>
@@ -192,10 +192,10 @@ Must run <code class="docutils literal"><span class="pre">pgr_createTopology()</
 
 
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="../../vrppdtw/doc/index.html">pgr_vrppdtw - Pickup and Delivery problem</a>
+        «&#160;&#160;<a href="../../dijkstra/doc/dijkstra_sql_version.html">pgr_dijkstra - Shortest Path Dijkstra</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -204,10 +204,10 @@ Must run <code class="docutils literal"><span class="pre">pgr_createTopology()</
 
       </div>
 
-    <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis).
-      Last updated on Nov 09, 2015.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (3cf3396 cmake-improve-2.2).
+      Last updated on Nov 25, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

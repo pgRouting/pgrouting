@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis)',
+        VERSION:     '2.2.0 (3cf3396 cmake-improve-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,17 +25,17 @@
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../../doc/index.html" />
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../../index.html" />
     <link rel="up" title="Convenience Functions" href="index.html" />
     <link rel="next" title="pgr_pointsToDMatrix" href="points_to_dmatrix.html" />
     <link rel="prev" title="pgr_textToPoints" href="text_to_points.html" /> 
   </head>
-  <body role="document">
-      <div class="header" role="banner"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
           <span>pgRouting Manual (2.2.0)</span></a></h1>
         <h2 class="heading"><span>pgr_pointsToVids</span></h2>
       </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
+      <div class="topnav">
       
         <p>
         «&#160;&#160;<a href="text_to_points.html">pgr_textToPoints</a>
@@ -53,7 +53,7 @@
 <span id="pgr-points-to-vids"></span><h1>pgr_pointsToVids<a class="headerlink" href="#pgr-pointstovids" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">pgr_pointsToVids</span></code> - Converts an array of point geometries into vertex ids.</p>
+<p><tt class="docutils literal"><span class="pre">pgr_pointsToVids</span></tt> - Converts an array of point geometries into vertex ids.</p>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
@@ -61,7 +61,7 @@
 <p>The function returns:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">integer[]</span></code> - An array of <code class="docutils literal"><span class="pre">vertex_id</span></code>.</li>
+<li><tt class="docutils literal"><span class="pre">integer[]</span></tt> - An array of <tt class="docutils literal"><span class="pre">vertex_id</span></tt>.</li>
 </ul>
 </div></blockquote>
 <div class="highlight-sql"><div class="highlight"><pre><span class="nb">integer</span><span class="p">[]</span> <span class="n">pgr_pointsToVids</span><span class="p">(</span><span class="n">pnts</span> <span class="n">geometry</span><span class="p">[],</span> <span class="n">edges</span> <span class="nb">text</span><span class="p">,</span> <span class="n">tol</span> <span class="n">float8</span> <span class="k">DEFAULT</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span><span class="p">))</span>
@@ -75,11 +75,11 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">pnts:</th><td class="field-body"><code class="docutils literal"><span class="pre">geometry[]</span></code> - An array of point geometries.</td>
+<tr class="field-odd field"><th class="field-name">pnts:</th><td class="field-body"><tt class="docutils literal"><span class="pre">geometry[]</span></tt> - An array of point geometries.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">edges:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> - The edge table to be used for the conversion.</td>
+<tr class="field-even field"><th class="field-name">edges:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> - The edge table to be used for the conversion.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">tol:</th><td class="field-body"><code class="docutils literal"><span class="pre">float8</span></code> - The maximum search distance for locating the closest edge.</td>
+<tr class="field-odd field"><th class="field-name">tol:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> - The maximum search distance for locating the closest edge.</td>
 </tr>
 </tbody>
 </table>
@@ -105,19 +105,19 @@
 (1 row)
 </pre></div>
 </div>
-<p>This example uses the <a class="reference internal" href="../../../../doc/src/developer/sampledata.html#sampledata"><span>Sample Data</span></a> network.</p>
+<p>This example uses the <a class="reference internal" href="../../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="point_to_edgenode.html#pgr-point-to-edgenode"><span>pgr_pointToEdgeNode</span></a> - convert a point geometry to the closest vertex_id of an edge..</li>
+<li><a class="reference internal" href="point_to_edgenode.html#pgr-point-to-edgenode"><em>pgr_pointToEdgeNode</em></a> - convert a point geometry to the closest vertex_id of an edge..</li>
 </ul>
 </div>
 </div>
 
 
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      <div class="bottomnav">
       
         <p>
         «&#160;&#160;<a href="text_to_points.html">pgr_textToPoints</a>
@@ -129,10 +129,10 @@
 
       </div>
 
-    <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis).
-      Last updated on Nov 09, 2015.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (3cf3396 cmake-improve-2.2).
+      Last updated on Nov 25, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

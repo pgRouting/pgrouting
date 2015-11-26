@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dependencies Installation &mdash; pgRouting Manual (2.2.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0 (3cf3396 cmake-improve-2.2)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../index.html" />
+    <link rel="next" title="Support" href="../introduction/support.html" />
+    <link rel="prev" title="Build Guide" href="build.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.2.0)</span></a></h1>
+        <h2 class="heading"><span>Dependencies Installation</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="build.html">Build Guide</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../introduction/support.html">Support</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="dependencies-installation">
+<span id="dependencies"></span><h1>Dependencies Installation<a class="headerlink" href="#dependencies-installation" title="Permalink to this headline">¶</a></h1>
+<p>This guide was made while making a fresh ubuntu desktop 14.04.02 installation.
+Make the neceszry adjustments to fit your operative system.</p>
+<div class="section" id="id1">
+<h2>Dependencies<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>To be able to compile pgRouting make sure that the following dependencies are met:</p>
+<ul class="simple">
+<li>C and C++0x compilers</li>
+<li>Postgresql version &gt;= 9.1</li>
+<li>PostGIS version &gt;= 2.0</li>
+<li>The Boost Graph Library (BGL). Version &gt;= 1.55</li>
+<li>CMake &gt;= 2.8.8</li>
+<li>CGAL &gt;=  4.2</li>
+<li>(optional, for Documentation) Sphinx &gt;= 1.1</li>
+<li>(optional, for Documentation as PDF) Latex &gt;= [TBD]</li>
+</ul>
+<p>Before starting, on a terminal window:</p>
+<p>sudo apt-get update</p>
+<div class="section" id="cmake-2-8-8">
+<h3>CMake &gt;= 2.8.8<a class="headerlink" href="#cmake-2-8-8" title="Permalink to this headline">¶</a></h3>
+<p>trusty provides: 2.8.8</p>
+<div class="highlight-none"><div class="highlight"><pre>sudo apt-get install cmake
+</pre></div>
+</div>
+</div>
+<div class="section" id="c-and-c-0x-or-c-11-compilers">
+<h3>C and (C++0x or c++11) compilers<a class="headerlink" href="#c-and-c-0x-or-c-11-compilers" title="Permalink to this headline">¶</a></h3>
+<p>trusty provides: 4.8</p>
+<div class="highlight-none"><div class="highlight"><pre>sudo apt-get install g++
+</pre></div>
+</div>
+</div>
+<div class="section" id="postgresql-version-9-1">
+<h3>Postgresql version &gt;= 9.1<a class="headerlink" href="#postgresql-version-9-1" title="Permalink to this headline">¶</a></h3>
+<p>For example in trusty 9.3 is provided:</p>
+<div class="highlight-none"><div class="highlight"><pre>sudo apt-get install postgreSQL
+sudo apt-get install postgresql-server-dev-9.3
+</pre></div>
+</div>
+</div>
+<div class="section" id="postgis-version-2-0">
+<h3>PostGIS version &gt;= 2.0<a class="headerlink" href="#postgis-version-2-0" title="Permalink to this headline">¶</a></h3>
+<p>For example in trusty 2.1 is provided:</p>
+<div class="highlight-none"><div class="highlight"><pre>sudo apt-get install postgresql-9.3-postgis-2.1
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-boost-graph-library-bgl-version-1-54">
+<h3>The Boost Graph Library (BGL). Version &gt;= 1.54<a class="headerlink" href="#the-boost-graph-library-bgl-version-1-54" title="Permalink to this headline">¶</a></h3>
+<p>trusty provides: 1.54.0</p>
+<div class="highlight-none"><div class="highlight"><pre>sudo apt-get install libboost-graph-dev
+</pre></div>
+</div>
+</div>
+<div class="section" id="cgal-4-2">
+<h3>CGAL &gt;=  4.2<a class="headerlink" href="#cgal-4-2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>sudo apt-get install libcgal-dev
+</pre></div>
+</div>
+</div>
+<div class="section" id="optional-for-documentation-sphinx-1-1">
+<h3>(optional, for Documentation) Sphinx &gt;= 1.1<a class="headerlink" href="#optional-for-documentation-sphinx-1-1" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://sphinx-doc.org/latest/install.html">http://sphinx-doc.org/latest/install.html</a></p>
+<p>trusty provides: 1.2.2</p>
+<div class="highlight-none"><div class="highlight"><pre>sudo apt-get install python-sphinx
+</pre></div>
+</div>
+</div>
+<div class="section" id="optional-for-documentation-as-pdf-latex-tbd">
+<h3>(optional, for Documentation as PDF) Latex &gt;= [TBD]<a class="headerlink" href="#optional-for-documentation-as-pdf-latex-tbd" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://latex-project.org/ftp.html">https://latex-project.org/ftp.html</a></p>
+<p>trusty provides: 1.2.2</p>
+<div class="highlight-none"><div class="highlight"><pre>sudo apt-get install texlive
+</pre></div>
+</div>
+</div>
+<div class="section" id="pgtap-for-tests">
+<h3>pgTap for tests<a class="headerlink" href="#pgtap-for-tests" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>wget https://github.com/theory/pgtap/archive/master.zip
+unzip master.zip
+cd pgtap-master
+make
+sudo make install
+sudo ldconfig
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="../../../search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="build.html">Build Guide</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../introduction/support.html">Support</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (3cf3396 cmake-improve-2.2).
+      Last updated on Nov 25, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

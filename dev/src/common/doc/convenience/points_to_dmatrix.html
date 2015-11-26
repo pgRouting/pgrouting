@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis)',
+        VERSION:     '2.2.0 (3cf3396 cmake-improve-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,17 +25,17 @@
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../../doc/index.html" />
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../../index.html" />
     <link rel="up" title="Convenience Functions" href="index.html" />
     <link rel="next" title="pgr_vidsToDMatrix" href="vids_to_dmatrix.html" />
     <link rel="prev" title="pgr_pointsToVids" href="points_to_vids.html" /> 
   </head>
-  <body role="document">
-      <div class="header" role="banner"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
           <span>pgRouting Manual (2.2.0)</span></a></h1>
         <h2 class="heading"><span>pgr_pointsToDMatrix</span></h2>
       </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
+      <div class="topnav">
       
         <p>
         «&#160;&#160;<a href="points_to_vids.html">pgr_pointsToVids</a>
@@ -53,7 +53,7 @@
 <span id="pgr-points-to-dmatrix"></span><h1>pgr_pointsToDMatrix<a class="headerlink" href="#pgr-pointstodmatrix" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">pgr_pointsToDMatrix</span></code> - Creates a distance matrix from an array of points.</p>
+<p><tt class="docutils literal"><span class="pre">pgr_pointsToDMatrix</span></tt> - Creates a distance matrix from an array of points.</p>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
@@ -62,13 +62,13 @@
 <blockquote>
 <div><ul>
 <li><dl class="first docutils">
-<dt><code class="docutils literal"><span class="pre">record</span></code> - with two fields as describe here</dt>
+<dt><tt class="docutils literal"><span class="pre">record</span></tt> - with two fields as describe here</dt>
 <dd><ul class="first last">
 <li><table class="first docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">dmatrix:</th><td class="field-body"><code class="docutils literal"><span class="pre">float8[]</span></code> - the distance matrix suitable to pass to pgrTSP() function.</td>
+<tr class="field-odd field"><th class="field-name">dmatrix:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8[]</span></tt> - the distance matrix suitable to pass to pgrTSP() function.</td>
 </tr>
 </tbody>
 </table>
@@ -77,7 +77,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ids:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer[]</span></code> - an array of ids for the distance matrix.</td>
+<tr class="field-odd field"><th class="field-name">ids:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer[]</span></tt> - an array of ids for the distance matrix.</td>
 </tr>
 </tbody>
 </table>
@@ -99,7 +99,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">pnts:</th><td class="field-body"><code class="docutils literal"><span class="pre">geometry[]</span></code> - An array of point geometries.</td>
+<tr class="field-odd field"><th class="field-name">pnts:</th><td class="field-body"><tt class="docutils literal"><span class="pre">geometry[]</span></tt> - An array of point geometries.</td>
 </tr>
 </tbody>
 </table>
@@ -142,15 +142,15 @@ select ids from pgr_pointstodmatrix(
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="vids_to_dmatrix.html#pgr-vids-to-dmatrix"><span>pgr_vidsToDMatrix</span></a> - convert a point geometry to the closest vertex_id of an edge..</li>
-<li><a class="reference internal" href="../../../tsp/doc/index.html#pgr-tsp"><span>pgr_tsp</span></a> - Traveling Sales Person</li>
+<li><a class="reference internal" href="vids_to_dmatrix.html#pgr-vids-to-dmatrix"><em>pgr_vidsToDMatrix</em></a> - convert a point geometry to the closest vertex_id of an edge..</li>
+<li><a class="reference internal" href="../../../tsp/doc/index.html#pgr-tsp"><em>pgr_tsp</em></a> - Traveling Sales Person</li>
 </ul>
 </div>
 </div>
 
 
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      <div class="bottomnav">
       
         <p>
         «&#160;&#160;<a href="points_to_vids.html">pgr_pointsToVids</a>
@@ -162,10 +162,10 @@ select ids from pgr_pointstodmatrix(
 
       </div>
 
-    <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis).
-      Last updated on Nov 09, 2015.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (3cf3396 cmake-improve-2.2).
+      Last updated on Nov 25, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

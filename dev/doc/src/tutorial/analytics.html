@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis)',
+        VERSION:     '2.2.0 (3cf3396 cmake-improve-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,17 +25,17 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../index.html" />
     <link rel="up" title="Tutorial" href="index.html" />
     <link rel="next" title="Dictionary of columns &amp; Custom Query" href="custom_query.html" />
     <link rel="prev" title="Routing Topology" href="topology.html" /> 
   </head>
-  <body role="document">
-      <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
           <span>pgRouting Manual (2.2.0)</span></a></h1>
         <h2 class="heading"><span>Graph Analytics</span></h2>
       </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
+      <div class="topnav">
       
         <p>
         «&#160;&#160;<a href="topology.html">Routing Topology</a>
@@ -68,7 +68,7 @@
 </div>
 <div class="section" id="analyze-a-graph">
 <h2>Analyze a Graph<a class="headerlink" href="#analyze-a-graph" title="Permalink to this headline">¶</a></h2>
-<p>With <a class="reference internal" href="../../../src/common/doc/functions/analyze_graph.html#pgr-analyze-graph"><span>pgr_analyzeGraph</span></a> the graph can be checked for errors. For example for table &#8220;mytab&#8221; that has &#8220;mytab_vertices_pgr&#8221; as the vertices table:</p>
+<p>With <a class="reference internal" href="../../../src/common/doc/functions/analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a> the graph can be checked for errors. For example for table &#8220;mytab&#8221; that has &#8220;mytab_vertices_pgr&#8221; as the vertices table:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000002</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">pelase</span> <span class="n">wait</span><span class="p">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="p">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="p">...</span>
@@ -91,8 +91,8 @@
 <p>In the vertices table &#8220;mytab_vertices_pgr&#8221;:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Deadends are indentified by <code class="docutils literal"><span class="pre">cnt=1</span></code></li>
-<li>Potencial gap problems are identified with <code class="docutils literal"><span class="pre">chk=1</span></code>.</li>
+<li>Deadends are indentified by <tt class="docutils literal"><span class="pre">cnt=1</span></tt></li>
+<li>Potencial gap problems are identified with <tt class="docutils literal"><span class="pre">chk=1</span></tt>.</li>
 </ul>
 </div></blockquote>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">deadends</span>  <span class="k">FROM</span> <span class="n">mytab_vertices_pgr</span> <span class="k">WHERE</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -114,13 +114,13 @@
     <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="k">source</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="n">b</span><span class="p">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span> <span class="k">AND</span> <span class="n">a</span><span class="p">.</span><span class="n">target</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="k">c</span><span class="p">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>If you want to visualize these on a graphic image, then you can use something like mapserver to render the edges and the vertices and style based on <code class="docutils literal"><span class="pre">cnt</span></code> or if they are isolated, etc. You can also do this with a tool like graphviz, or geoserver or other similar tools.</p>
+<p>If you want to visualize these on a graphic image, then you can use something like mapserver to render the edges and the vertices and style based on <tt class="docutils literal"><span class="pre">cnt</span></tt> or if they are isolated, etc. You can also do this with a tool like graphviz, or geoserver or other similar tools.</p>
 </div>
 <div class="section" id="analyze-one-way-streets">
 <h2>Analyze One Way Streets<a class="headerlink" href="#analyze-one-way-streets" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../../../src/common/doc/functions/analyze_oneway.html#pgr-analyze-oneway"><span>pgr_analyzeOneway</span></a> analyzes one way streets in a graph and identifies any flipped segments. Basically if you count the edges coming into a node and the edges exiting a node the number has to be greater than one.</p>
-<p>This query will add two columns to the vertices_tmp table <code class="docutils literal"><span class="pre">ein</span> <span class="pre">int</span></code> and <code class="docutils literal"><span class="pre">eout</span> <span class="pre">int</span></code> and populate it with the appropriate counts. After running this on a graph you can identify nodes with potential problems with the following query.</p>
-<p>The rules are defined as an array of text strings that if match the <code class="docutils literal"><span class="pre">col</span></code> value would be counted as true for the source or target in or out condition.</p>
+<p><a class="reference internal" href="../../../src/common/doc/functions/analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a> analyzes one way streets in a graph and identifies any flipped segments. Basically if you count the edges coming into a node and the edges exiting a node the number has to be greater than one.</p>
+<p>This query will add two columns to the vertices_tmp table <tt class="docutils literal"><span class="pre">ein</span> <span class="pre">int</span></tt> and <tt class="docutils literal"><span class="pre">eout</span> <span class="pre">int</span></tt> and populate it with the appropriate counts. After running this on a graph you can identify nodes with potential problems with the following query.</p>
+<p>The rules are defined as an array of text strings that if match the <tt class="docutils literal"><span class="pre">col</span></tt> value would be counted as true for the source or target in or out condition.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
@@ -157,16 +157,16 @@
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="../../../src/common/doc/functions/analyze_graph.html#pgr-analyze-graph"><span>pgr_analyzeGraph</span></a></li>
-<li><a class="reference internal" href="../../../src/common/doc/functions/analyze_oneway.html#pgr-analyze-oneway"><span>pgr_analyzeOneway</span></a></li>
-<li><a class="reference internal" href="../../../src/common/doc/functions/node_network.html#pgr-node-network"><span>pgr_nodeNetwork</span></a></li>
+<li><a class="reference internal" href="../../../src/common/doc/functions/analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a></li>
+<li><a class="reference internal" href="../../../src/common/doc/functions/analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a></li>
+<li><a class="reference internal" href="../../../src/common/doc/functions/node_network.html#pgr-node-network"><em>pgr_nodeNetwork</em></a></li>
 </ul>
 </div>
 </div>
 
 
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      <div class="bottomnav">
       
         <p>
         «&#160;&#160;<a href="topology.html">Routing Topology</a>
@@ -178,10 +178,10 @@
 
       </div>
 
-    <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis).
-      Last updated on Nov 09, 2015.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (3cf3396 cmake-improve-2.2).
+      Last updated on Nov 25, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

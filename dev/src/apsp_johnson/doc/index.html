@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis)',
+        VERSION:     '2.2.0 (3cf3396 cmake-improve-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,17 +25,17 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../doc/index.html" />
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../index.html" />
     <link rel="up" title="Routing Functions" href="../../index.html" />
     <link rel="next" title="pgr_apspWarshall - All Pairs Shortest Path, Floyd-Warshall Algorithm" href="../../apsp_warshall/doc/index.html" />
     <link rel="prev" title="Routing Functions" href="../../index.html" /> 
   </head>
-  <body role="document">
-      <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
           <span>pgRouting Manual (2.2.0)</span></a></h1>
         <h2 class="heading"><span>pgr_apspJohnson - All Pairs Shortest Path, Johnson’s Algorithm</span></h2>
       </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
+      <div class="topnav">
       
         <p>
         «&#160;&#160;<a href="../../index.html">Routing Functions</a>
@@ -53,11 +53,11 @@
 <span id="pgr-apsp-johnson"></span><h1>pgr_apspJohnson - All Pairs Shortest Path, Johnson&#8217;s Algorithm<a class="headerlink" href="#pgr-apspjohnson-all-pairs-shortest-path-johnson-s-algorithm" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">pgr_apspJohnson</span></code> - Returns all costs for each pair of nodes in the graph.</p>
+<p><tt class="docutils literal"><span class="pre">pgr_apspJohnson</span></tt> - Returns all costs for each pair of nodes in the graph.</p>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>Johnson&#8217;s algorithm is a way to find the shortest paths between all pairs of vertices in a sparse, edge weighted, directed graph. Returns a set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><span>pgr_costResult</span></a> (seq, id1, id2, cost) rows for every pair of nodes in the graph.</p>
+<p>Johnson&#8217;s algorithm is a way to find the shortest paths between all pairs of vertices in a sparse, edge weighted, directed graph. Returns a set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a> (seq, id1, id2, cost) rows for every pair of nodes in the graph.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_apspJohnson</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -76,11 +76,11 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><code class="docutils literal"><span class="pre">int4</span></code> identifier of the source vertex for this edge</td>
+<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the source vertex for this edge</td>
 </tr>
-<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><code class="docutils literal"><span class="pre">int4</span></code> identifier of the target vertex for this edge</td>
+<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the target vertex for this edge</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">cost:</th><td class="field-body"><code class="docutils literal"><span class="pre">float8</span></code> a positive value for the cost to traverse this edge</td>
+<tr class="field-odd field"><th class="field-name">cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> a positive value for the cost to traverse this edge</td>
 </tr>
 </tbody>
 </table>
@@ -88,7 +88,7 @@
 </tr>
 </tbody>
 </table>
-<p>Returns set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><span>pgr_costResult[]</span></a>:</p>
+<p>Returns set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a>:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -99,7 +99,7 @@
 </tr>
 <tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">target node ID</td>
 </tr>
-<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body">cost to traverse from <code class="docutils literal"><span class="pre">id1</span></code> to <code class="docutils literal"><span class="pre">id2</span></code></td>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body">cost to traverse from <tt class="docutils literal"><span class="pre">id1</span></tt> to <tt class="docutils literal"><span class="pre">id2</span></tt></td>
 </tr>
 </tbody>
 </table>
@@ -124,13 +124,13 @@
 <span class="p">[...]</span>
 </pre></div>
 </div>
-<p>The query uses the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><span>Sample Data</span></a> network.</p>
+<p>The query uses the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><span>pgr_costResult[]</span></a></li>
-<li><a class="reference internal" href="../../apsp_warshall/doc/index.html#pgr-apsp-warshall"><span>pgr_apspWarshall - All Pairs Shortest Path, Floyd-Warshall Algorithm</span></a></li>
+<li><a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a></li>
+<li><a class="reference internal" href="../../apsp_warshall/doc/index.html#pgr-apsp-warshall"><em>pgr_apspWarshall - All Pairs Shortest Path, Floyd-Warshall Algorithm</em></a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Johnson%27s_algorithm">http://en.wikipedia.org/wiki/Johnson%27s_algorithm</a></li>
 </ul>
 </div>
@@ -138,7 +138,7 @@
 
 
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      <div class="bottomnav">
       
         <p>
         «&#160;&#160;<a href="../../index.html">Routing Functions</a>
@@ -150,10 +150,10 @@
 
       </div>
 
-    <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis).
-      Last updated on Nov 09, 2015.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (3cf3396 cmake-improve-2.2).
+      Last updated on Nov 25, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis)',
+        VERSION:     '2.2.0 (3cf3396 cmake-improve-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,16 +25,16 @@
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../../doc/index.html" />
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../../index.html" />
     <link rel="next" title="pgr_pointToEdgeNode" href="point_to_edgenode.html" />
     <link rel="prev" title="pgr_trsp - Turn Restriction Shortest Path (TRSP)" href="../../../trsp/doc/index.html" /> 
   </head>
-  <body role="document">
-      <div class="header" role="banner"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
           <span>pgRouting Manual (2.2.0)</span></a></h1>
         <h2 class="heading"><span>Convenience Functions</span></h2>
       </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
+      <div class="topnav">
       
         <p>
         «&#160;&#160;<a href="../../../trsp/doc/index.html">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a>
@@ -55,10 +55,10 @@ be useful when building a larger application or handling input from say an
 Ajax handler.</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="point_to_edgenode.html#pgr-point-to-edgenode"><span>pgr_pointToEdgeNode</span></a> - convert a point geometry to a <code class="docutils literal"><span class="pre">vertex_id</span></code> based on closest edge.</li>
-<li><a class="reference internal" href="flip_edges.html#pgr-flip-edges"><span>pgr_flipEdges</span></a> - flip the edges in an array of geometries so the connect end to end.</li>
-<li><a class="reference internal" href="text_to_points.html#pgr-text-to-points"><span>pgr_textToPoints</span></a> - convert a string of <code class="docutils literal"><span class="pre">x,y;x,y;...</span></code> locations into point geometries.</li>
-<li><a class="reference internal" href="points_to_vids.html#pgr-points-to-vids"><span>pgr_pointsToVids</span></a> - convert an array of point geometries into vertex ids.</li>
+<li><a class="reference internal" href="point_to_edgenode.html#pgr-point-to-edgenode"><em>pgr_pointToEdgeNode</em></a> - convert a point geometry to a <tt class="docutils literal"><span class="pre">vertex_id</span></tt> based on closest edge.</li>
+<li><a class="reference internal" href="flip_edges.html#pgr-flip-edges"><em>pgr_flipEdges</em></a> - flip the edges in an array of geometries so the connect end to end.</li>
+<li><a class="reference internal" href="text_to_points.html#pgr-text-to-points"><em>pgr_textToPoints</em></a> - convert a string of <tt class="docutils literal"><span class="pre">x,y;x,y;...</span></tt> locations into point geometries.</li>
+<li><a class="reference internal" href="points_to_vids.html#pgr-points-to-vids"><em>pgr_pointsToVids</em></a> - convert an array of point geometries into vertex ids.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -67,9 +67,9 @@ Ajax handler.</p>
 <p>These function my be helpful when you need to create or manipulate distance matricies, like for TSP or VRP related problems.</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="points_to_dmatrix.html#pgr-points-to-dmatrix"><span>pgr_pointsToDMatrix</span></a> - Create a distance matrix from an array of points.</li>
-<li><a class="reference internal" href="vids_to_dmatrix.html#pgr-vids-to-dmatrix"><span>pgr_vidsToDMatrix</span></a> - Create a distance matrix from an array of <code class="docutils literal"><span class="pre">vertix_id</span></code>.</li>
-<li><a class="reference internal" href="vids_to_dmatrix2.html#pgr-vids-to-dmatrix2"><span>pgr_vidsToDMatrix</span></a> - Create a distance matrix from an array of <code class="docutils literal"><span class="pre">vertix_id</span></code>.</li>
+<li><a class="reference internal" href="points_to_dmatrix.html#pgr-points-to-dmatrix"><em>pgr_pointsToDMatrix</em></a> - Create a distance matrix from an array of points.</li>
+<li><a class="reference internal" href="vids_to_dmatrix.html#pgr-vids-to-dmatrix"><em>pgr_vidsToDMatrix</em></a> - Create a distance matrix from an array of <tt class="docutils literal"><span class="pre">vertix_id</span></tt>.</li>
+<li><a class="reference internal" href="vids_to_dmatrix2.html#pgr-vids-to-dmatrix2"><em>pgr_vidsToDMatrix</em></a> - Create a distance matrix from an array of <tt class="docutils literal"><span class="pre">vertix_id</span></tt>.</li>
 </ul>
 </div></blockquote>
 <div class="toctree-wrapper compound">
@@ -78,7 +78,7 @@ Ajax handler.</p>
 
 
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      <div class="bottomnav">
       
         <p>
         «&#160;&#160;<a href="../../../trsp/doc/index.html">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a>
@@ -90,10 +90,10 @@ Ajax handler.</p>
 
       </div>
 
-    <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis).
-      Last updated on Nov 09, 2015.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (3cf3396 cmake-improve-2.2).
+      Last updated on Nov 25, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis)',
+        VERSION:     '2.2.0 (3cf3396 cmake-improve-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,17 +25,17 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../index.html" />
     <link rel="up" title="Tutorial" href="index.html" />
     <link rel="next" title="Performance Tips" href="performance.html" />
     <link rel="prev" title="Graph Analytics" href="analytics.html" /> 
   </head>
-  <body role="document">
-      <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
           <span>pgRouting Manual (2.2.0)</span></a></h1>
         <h2 class="heading"><span>Dictionary of columns &amp; Custom Query</span></h2>
       </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
+      <div class="topnav">
       
         <p>
         «&#160;&#160;<a href="analytics.html">Graph Analytics</a>
@@ -72,15 +72,15 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code> identifier of the edge.</td>
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt> identifier of the edge.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code> identifier of the first end point vertex of the edge.</td>
+<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt> identifier of the first end point vertex of the edge.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body"><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code> identifier of the second end pont vertex of the edge.</td>
+<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt> identifier of the second end pont vertex of the edge.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body"><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code> weight of the edge <cite>(source, target)</cite>, if negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt> weight of the edge <cite>(source, target)</cite>, if negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">reverse_cost:</th><td class="field-body"><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code> (optional) weight of the edge <cite>(target, source)</cite>, if negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
+<tr class="field-odd field"><th class="field-name">reverse_cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt> (optional) weight of the edge <cite>(target, source)</cite>, if negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
 </tr>
 </tbody>
 </table>
@@ -106,49 +106,49 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body"><code class="docutils literal"><span class="pre">TEXT</span></code> SQL query as decribed above.</td>
+<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body"><tt class="docutils literal"><span class="pre">TEXT</span></tt> SQL query as decribed above.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">start_vid:</th><td class="field-body"><code class="docutils literal"><span class="pre">BIGINT</span></code> identifier of the starting vertex of the path.</td>
+<tr class="field-even field"><th class="field-name">start_vid:</th><td class="field-body"><tt class="docutils literal"><span class="pre">BIGINT</span></tt> identifier of the starting vertex of the path.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">start_vids:</th><td class="field-body"><code class="docutils literal"><span class="pre">array[ANY-INTEGER]</span></code> array of identifiers of starting vertices.</td>
+<tr class="field-odd field"><th class="field-name">start_vids:</th><td class="field-body"><tt class="docutils literal"><span class="pre">array[ANY-INTEGER]</span></tt> array of identifiers of starting vertices.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">end_vid:</th><td class="field-body"><code class="docutils literal"><span class="pre">BIGINT</span></code> identifier of the ending vertex of the path.</td>
+<tr class="field-even field"><th class="field-name">end_vid:</th><td class="field-body"><tt class="docutils literal"><span class="pre">BIGINT</span></tt> identifier of the ending vertex of the path.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">end_vids:</th><td class="field-body"><code class="docutils literal"><span class="pre">array[ANY-INTEGER]</span></code> array of identifiers of ending vertices.</td>
+<tr class="field-odd field"><th class="field-name">end_vids:</th><td class="field-body"><tt class="docutils literal"><span class="pre">array[ANY-INTEGER]</span></tt> array of identifiers of ending vertices.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">directed:</th><td class="field-body"><code class="docutils literal"><span class="pre">boolean</span></code> (optional). When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as Undirected. Default is <code class="docutils literal"><span class="pre">true</span></code> which considers the graph as Directed.</td>
+<tr class="field-even field"><th class="field-name">directed:</th><td class="field-body"><tt class="docutils literal"><span class="pre">boolean</span></tt> (optional). When <tt class="docutils literal"><span class="pre">false</span></tt> the graph is considered as Undirected. Default is <tt class="docutils literal"><span class="pre">true</span></tt> which considers the graph as Directed.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="description-of-the-return-values">
 <h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
-<p>Returns set of <code class="docutils literal"><span class="pre">(seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid]</span> <span class="pre">,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>Returns set of <tt class="docutils literal"><span class="pre">(seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid]</span> <span class="pre">,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></tt></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body"><code class="docutils literal"><span class="pre">INTEGER</span></code>  is a sequential value starting from <strong>1</strong>.</td>
+<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body"><tt class="docutils literal"><span class="pre">INTEGER</span></tt>  is a sequential value starting from <strong>1</strong>.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">route_seq:</th><td class="field-body"><code class="docutils literal"><span class="pre">INTEGER</span></code>  relative position in the route. Has value <strong>1</strong> for the begining of a route.</td>
+<tr class="field-even field"><th class="field-name">route_seq:</th><td class="field-body"><tt class="docutils literal"><span class="pre">INTEGER</span></tt>  relative position in the route. Has value <strong>1</strong> for the begining of a route.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">route_id:</th><td class="field-body"><code class="docutils literal"><span class="pre">INTEGER</span></code> id of the route.</td>
+<tr class="field-odd field"><th class="field-name">route_id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">INTEGER</span></tt> id of the route.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">path_seq:</th><td class="field-body"><code class="docutils literal"><span class="pre">INTEGER</span></code>  relative position in the path. Has value <strong>1</strong> for the begining of a path.</td>
+<tr class="field-even field"><th class="field-name">path_seq:</th><td class="field-body"><tt class="docutils literal"><span class="pre">INTEGER</span></tt>  relative position in the path. Has value <strong>1</strong> for the begining of a path.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">path_id:</th><td class="field-body"><code class="docutils literal"><span class="pre">INTEGER</span></code> id of the path.</td>
+<tr class="field-odd field"><th class="field-name">path_id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">INTEGER</span></tt> id of the path.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">start_vid:</th><td class="field-body"><code class="docutils literal"><span class="pre">BIGINT</span></code> id of the starting vertex. Used when multiple starting vetrices are in the query.</td>
+<tr class="field-even field"><th class="field-name">start_vid:</th><td class="field-body"><tt class="docutils literal"><span class="pre">BIGINT</span></tt> id of the starting vertex. Used when multiple starting vetrices are in the query.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">end_vid:</th><td class="field-body"><code class="docutils literal"><span class="pre">BIGINT</span></code> id of the ending vertex. Used when multiple ending vertices are in the query.</td>
+<tr class="field-odd field"><th class="field-name">end_vid:</th><td class="field-body"><tt class="docutils literal"><span class="pre">BIGINT</span></tt> id of the ending vertex. Used when multiple ending vertices are in the query.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">node:</th><td class="field-body"><code class="docutils literal"><span class="pre">BIGINT</span></code> id of the node in the path from start_vid to end_v.</td>
+<tr class="field-even field"><th class="field-name">node:</th><td class="field-body"><tt class="docutils literal"><span class="pre">BIGINT</span></tt> id of the node in the path from start_vid to end_v.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">edge:</th><td class="field-body"><code class="docutils literal"><span class="pre">BIGINT</span></code> id of the edge used to go from <code class="docutils literal"><span class="pre">node</span></code> to the next node in the path sequence. <code class="docutils literal"><span class="pre">-1</span></code> for the last node of the path.</td>
+<tr class="field-odd field"><th class="field-name">edge:</th><td class="field-body"><tt class="docutils literal"><span class="pre">BIGINT</span></tt> id of the edge used to go from <tt class="docutils literal"><span class="pre">node</span></tt> to the next node in the path sequence. <tt class="docutils literal"><span class="pre">-1</span></tt> for the last node of the path.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body"><code class="docutils literal"><span class="pre">FLOAT</span></code> cost to traverse from <code class="docutils literal"><span class="pre">node</span></code> using <code class="docutils literal"><span class="pre">edge</span></code> to the next node in the path sequence.</td>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">FLOAT</span></tt> cost to traverse from <tt class="docutils literal"><span class="pre">node</span></tt> using <tt class="docutils literal"><span class="pre">edge</span></tt> to the next node in the path sequence.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">agg_cost:</th><td class="field-body"><code class="docutils literal"><span class="pre">FLOAT</span></code> total cost from <code class="docutils literal"><span class="pre">start_vid</span></code> to <code class="docutils literal"><span class="pre">node</span></code>.</td>
+<tr class="field-odd field"><th class="field-name">agg_cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">FLOAT</span></tt> total cost from <tt class="docutils literal"><span class="pre">start_vid</span></tt> to <tt class="docutils literal"><span class="pre">node</span></tt>.</td>
 </tr>
 </tbody>
 </table>
@@ -196,22 +196,22 @@
        <span class="k">FROM</span> <span class="n">othertable</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>The topology functions use the same names for <code class="docutils literal"><span class="pre">id</span></code>, <code class="docutils literal"><span class="pre">source</span></code> and <code class="docutils literal"><span class="pre">target</span></code> columns of the edge table, The fowllowing parameters have as default value:</p>
+<p>The topology functions use the same names for <tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="docutils literal"><span class="pre">source</span></tt> and <tt class="docutils literal"><span class="pre">target</span></tt> columns of the edge table, The fowllowing parameters have as default value:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body">int4 Default <code class="docutils literal"><span class="pre">id</span></code></td>
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body">int4 Default <tt class="docutils literal"><span class="pre">id</span></tt></td>
 </tr>
-<tr class="field-even field"><th class="field-name">source:</th><td class="field-body">int4 Default <code class="docutils literal"><span class="pre">source</span></code></td>
+<tr class="field-even field"><th class="field-name">source:</th><td class="field-body">int4 Default <tt class="docutils literal"><span class="pre">source</span></tt></td>
 </tr>
-<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body">int4 Default <code class="docutils literal"><span class="pre">target</span></code></td>
+<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body">int4 Default <tt class="docutils literal"><span class="pre">target</span></tt></td>
 </tr>
-<tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body">text Default <code class="docutils literal"><span class="pre">the_geom</span></code></td>
+<tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body">text Default <tt class="docutils literal"><span class="pre">the_geom</span></tt></td>
 </tr>
-<tr class="field-odd field"><th class="field-name">oneway:</th><td class="field-body">text Default <code class="docutils literal"><span class="pre">oneway</span></code></td>
+<tr class="field-odd field"><th class="field-name">oneway:</th><td class="field-body">text Default <tt class="docutils literal"><span class="pre">oneway</span></tt></td>
 </tr>
-<tr class="field-even field"><th class="field-name">rows_where:</th><td class="field-body">text Default <code class="docutils literal"><span class="pre">true</span></code> to indicate all rows (this is not a column)</td>
+<tr class="field-even field"><th class="field-name">rows_where:</th><td class="field-body">text Default <tt class="docutils literal"><span class="pre">true</span></tt> to indicate all rows (this is not a column)</td>
 </tr>
 </tbody>
 </table>
@@ -255,7 +255,7 @@
 
 
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      <div class="bottomnav">
       
         <p>
         «&#160;&#160;<a href="analytics.html">Graph Analytics</a>
@@ -267,10 +267,10 @@
 
       </div>
 
-    <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis).
-      Last updated on Nov 09, 2015.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (3cf3396 cmake-improve-2.2).
+      Last updated on Nov 25, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

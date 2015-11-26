@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis)',
+        VERSION:     '2.2.0 (3cf3396 cmake-improve-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,17 +25,17 @@
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../../doc/index.html" />
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../../index.html" />
     <link rel="up" title="Convenience Functions" href="index.html" />
     <link rel="next" title="pgr_flipEdges" href="flip_edges.html" />
     <link rel="prev" title="Convenience Functions" href="index.html" /> 
   </head>
-  <body role="document">
-      <div class="header" role="banner"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
           <span>pgRouting Manual (2.2.0)</span></a></h1>
         <h2 class="heading"><span>pgr_pointToEdgeNode</span></h2>
       </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
+      <div class="topnav">
       
         <p>
         «&#160;&#160;<a href="index.html">Convenience Functions</a>
@@ -53,14 +53,14 @@
 <span id="pgr-point-to-edgenode"></span><h1>pgr_pointToEdgeNode<a class="headerlink" href="#pgr-pointtoedgenode" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">pgr_pointToEdgeNode</span></code> - Converts a point to a <code class="docutils literal"><span class="pre">vertex_id</span></code> based on closest edge.</p>
+<p><tt class="docutils literal"><span class="pre">pgr_pointToEdgeNode</span></tt> - Converts a point to a <tt class="docutils literal"><span class="pre">vertex_id</span></tt> based on closest edge.</p>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>The function returns:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">integer</span></code> that is the vertex id of the closest edge in the <code class="docutils literal"><span class="pre">edges</span></code> table within the <code class="docutils literal"><span class="pre">tol</span></code> tolerance of <code class="docutils literal"><span class="pre">pnt</span></code>. The vertex is selected by projection the <code class="docutils literal"><span class="pre">pnt</span></code> onto the edge and selecting which vertex is closer along the edge.</li>
+<li><tt class="docutils literal"><span class="pre">integer</span></tt> that is the vertex id of the closest edge in the <tt class="docutils literal"><span class="pre">edges</span></tt> table within the <tt class="docutils literal"><span class="pre">tol</span></tt> tolerance of <tt class="docutils literal"><span class="pre">pnt</span></tt>. The vertex is selected by projection the <tt class="docutils literal"><span class="pre">pnt</span></tt> onto the edge and selecting which vertex is closer along the edge.</li>
 </ul>
 </div></blockquote>
 <div class="highlight-sql"><div class="highlight"><pre><span class="nb">integer</span> <span class="n">pgr_pointToEdgeNode</span><span class="p">(</span><span class="n">edges</span> <span class="nb">text</span><span class="p">,</span> <span class="n">pnt</span> <span class="n">geometry</span><span class="p">,</span> <span class="n">tol</span> <span class="n">float8</span><span class="p">)</span>
@@ -69,18 +69,18 @@
 </div>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>Given an table <code class="docutils literal"><span class="pre">edges</span></code> with a spatial index on <code class="docutils literal"><span class="pre">the_geom</span></code> and a point geometry search for the closest edge within <code class="docutils literal"><span class="pre">tol</span></code> distance to the edges then compute the projection of the point onto the line segment and select source or target based on whether the projected point is closer to the respective end and return the source or target value.</p>
+<p>Given an table <tt class="docutils literal"><span class="pre">edges</span></tt> with a spatial index on <tt class="docutils literal"><span class="pre">the_geom</span></tt> and a point geometry search for the closest edge within <tt class="docutils literal"><span class="pre">tol</span></tt> distance to the edges then compute the projection of the point onto the line segment and select source or target based on whether the projected point is closer to the respective end and return the source or target value.</p>
 <p class="rubric">Parameters</p>
 <p>The function accepts the following parameters:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edges:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> The name of the edge table or view. (may contain the schema name AS well).</td>
+<tr class="field-odd field"><th class="field-name">edges:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> The name of the edge table or view. (may contain the schema name AS well).</td>
 </tr>
-<tr class="field-even field"><th class="field-name">pnt:</th><td class="field-body"><code class="docutils literal"><span class="pre">geometry</span></code> A point geometry object in the same SRID as <code class="docutils literal"><span class="pre">edges</span></code>.</td>
+<tr class="field-even field"><th class="field-name">pnt:</th><td class="field-body"><tt class="docutils literal"><span class="pre">geometry</span></tt> A point geometry object in the same SRID as <tt class="docutils literal"><span class="pre">edges</span></tt>.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">tol:</th><td class="field-body"><code class="docutils literal"><span class="pre">float8</span></code> The maximum search distance for an edge.</td>
+<tr class="field-odd field"><th class="field-name">tol:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> The maximum search distance for an edge.</td>
 </tr>
 </tbody>
 </table>
@@ -88,12 +88,12 @@
 <p class="first admonition-title">Warning</p>
 <p class="last">If no edge is within tol distance then return -1</p>
 </div>
-<p>The <code class="docutils literal"><span class="pre">edges</span></code> table must have the following columns:</p>
+<p>The <tt class="docutils literal"><span class="pre">edges</span></tt> table must have the following columns:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">source</span></code></li>
-<li><code class="docutils literal"><span class="pre">target</span></code></li>
-<li><code class="docutils literal"><span class="pre">the_geom</span></code></li>
+<li><tt class="docutils literal"><span class="pre">source</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">target</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">the_geom</span></tt></li>
 </ul>
 </div></blockquote>
 <p class="rubric">History</p>
@@ -110,19 +110,19 @@
 <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The example uses the <a class="reference internal" href="../../../../doc/src/developer/sampledata.html#sampledata"><span>Sample Data</span></a> network.</p>
+<p>The example uses the <a class="reference internal" href="../../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="points_to_vids.html#pgr-points-to-vids"><span>pgr_pointsToVids</span></a> - convert an array of point geometries into vertex ids.</li>
+<li><a class="reference internal" href="points_to_vids.html#pgr-points-to-vids"><em>pgr_pointsToVids</em></a> - convert an array of point geometries into vertex ids.</li>
 </ul>
 </div>
 </div>
 
 
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      <div class="bottomnav">
       
         <p>
         «&#160;&#160;<a href="index.html">Convenience Functions</a>
@@ -134,10 +134,10 @@
 
       </div>
 
-    <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis).
-      Last updated on Nov 09, 2015.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (3cf3396 cmake-improve-2.2).
+      Last updated on Nov 25, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

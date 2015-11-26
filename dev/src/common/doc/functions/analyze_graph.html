@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis)',
+        VERSION:     '2.2.0 (3cf3396 cmake-improve-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,17 +25,17 @@
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../../doc/index.html" />
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../../index.html" />
     <link rel="up" title="Topology Functions" href="index.html" />
     <link rel="next" title="pgr_analyzeOneway" href="analyze_oneway.html" />
     <link rel="prev" title="pgr_createVerticesTable" href="create_vert_table.html" /> 
   </head>
-  <body role="document">
-      <div class="header" role="banner"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
           <span>pgRouting Manual (2.2.0)</span></a></h1>
         <h2 class="heading"><span>pgr_analyzeGraph</span></h2>
       </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
+      <div class="topnav">
       
         <p>
         «&#160;&#160;<a href="create_vert_table.html">pgr_createVerticesTable</a>
@@ -53,15 +53,15 @@
 <span id="pgr-analyze-graph"></span><h1>pgr_analyzeGraph<a class="headerlink" href="#pgr-analyzegraph" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">pgr_anlizeGraph</span></code> — Analyzes the network topology.</p>
+<p><tt class="docutils literal"><span class="pre">pgr_anlizeGraph</span></tt> — Analyzes the network topology.</p>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>The function returns:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">OK</span></code> after the analysis has finished.</li>
-<li><code class="docutils literal"><span class="pre">FAIL</span></code> when the analysis was not completed due to an error.</li>
+<li><tt class="docutils literal"><span class="pre">OK</span></tt> after the analysis has finished.</li>
+<li><tt class="docutils literal"><span class="pre">FAIL</span></tt> when the analysis was not completed due to an error.</li>
 </ul>
 </div></blockquote>
 <div class="highlight-sql"><div class="highlight"><pre><span class="nb">varchar</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="nb">text</span> <span class="n">edge_table</span><span class="p">,</span> <span class="n">double</span> <span class="k">precision</span> <span class="n">tolerance</span><span class="p">,</span>
@@ -76,8 +76,8 @@
 <p>The  edge table to be analyzed must contain a source column and a target column filled with id&#8217;s of the vertices of the segments and the corresponding vertices table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
 <blockquote>
 <div><ul class="simple">
-<li>Use <a class="reference internal" href="create_vert_table.html#pgr-create-vert-table"><span>pgr_createVerticesTable</span></a> to create the vertices table.</li>
-<li>Use <a class="reference internal" href="create_topology.html#pgr-create-topology"><span>pgr_createTopology</span></a> to create the topology and the vertices table.</li>
+<li>Use <a class="reference internal" href="create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> to create the vertices table.</li>
+<li>Use <a class="reference internal" href="create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> to create the topology and the vertices table.</li>
 </ul>
 </div></blockquote>
 <p class="rubric">Parameters</p>
@@ -86,32 +86,32 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edge_table:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> Network table name. (may contain the schema name as well)</td>
+<tr class="field-odd field"><th class="field-name">edge_table:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> Network table name. (may contain the schema name as well)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">tolerance:</th><td class="field-body"><code class="docutils literal"><span class="pre">float8</span></code> Snapping tolerance of disconnected edges. (in projection unit)</td>
+<tr class="field-even field"><th class="field-name">tolerance:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> Snapping tolerance of disconnected edges. (in projection unit)</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">the_geom:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code>  Geometry column name of the network table. Default value is <code class="docutils literal"><span class="pre">the_geom</span></code>.</td>
+<tr class="field-odd field"><th class="field-name">the_geom:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt>  Geometry column name of the network table. Default value is <tt class="docutils literal"><span class="pre">the_geom</span></tt>.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code>  Primary key column name of the network table. Default value is <code class="docutils literal"><span class="pre">id</span></code>.</td>
+<tr class="field-even field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt>  Primary key column name of the network table. Default value is <tt class="docutils literal"><span class="pre">id</span></tt>.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> Source column name of the network table. Default value is <code class="docutils literal"><span class="pre">source</span></code>.</td>
+<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> Source column name of the network table. Default value is <tt class="docutils literal"><span class="pre">source</span></tt>.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code>  Target column name of the network table.  Default value is <code class="docutils literal"><span class="pre">target</span></code>.</td>
+<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt>  Target column name of the network table.  Default value is <tt class="docutils literal"><span class="pre">target</span></tt>.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">rows_where:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code>   Condition to select  a subset or rows.  Default value is <code class="docutils literal"><span class="pre">true</span></code> to indicate all rows.</td>
+<tr class="field-odd field"><th class="field-name">rows_where:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt>   Condition to select  a subset or rows.  Default value is <tt class="docutils literal"><span class="pre">true</span></tt> to indicate all rows.</td>
 </tr>
 </tbody>
 </table>
 <p>The function returns:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">OK</span></code> after the analysis has finished.<ul>
+<li><tt class="docutils literal"><span class="pre">OK</span></tt> after the analysis has finished.<ul>
 <li>Uses the vertices table: &lt;edge_table&gt;_vertices_pgr.</li>
-<li>Fills completly the <code class="docutils literal"><span class="pre">cnt</span></code> and <code class="docutils literal"><span class="pre">chk</span></code> columns of the vertices table.</li>
-<li>Returns the analysis of the section of the network defined by  <code class="docutils literal"><span class="pre">rows_where</span></code></li>
+<li>Fills completly the <tt class="docutils literal"><span class="pre">cnt</span></tt> and <tt class="docutils literal"><span class="pre">chk</span></tt> columns of the vertices table.</li>
+<li>Returns the analysis of the section of the network defined by  <tt class="docutils literal"><span class="pre">rows_where</span></tt></li>
 </ul>
 </li>
-<li><code class="docutils literal"><span class="pre">FAIL</span></code> when the analysis was not completed due to an error.<ul>
+<li><tt class="docutils literal"><span class="pre">FAIL</span></tt> when the analysis was not completed due to an error.<ul>
 <li>The vertices table is not found.</li>
 <li>A required column of the Network table is not found or is not of the appropriate type.</li>
 <li>The condition is not well formed.</li>
@@ -122,23 +122,23 @@
 </ul>
 </div></blockquote>
 <p class="rubric">The Vertices Table</p>
-<p>The vertices table can be created with <a class="reference internal" href="create_vert_table.html#pgr-create-vert-table"><span>pgr_createVerticesTable</span></a> or <a class="reference internal" href="create_topology.html#pgr-create-topology"><span>pgr_createTopology</span></a></p>
+<p>The vertices table can be created with <a class="reference internal" href="create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> or <a class="reference internal" href="create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a></p>
 <p>The structure of the vertices table is:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal"><span class="pre">bigint</span></code> Identifier of the vertex.</td>
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">bigint</span></tt> Identifier of the vertex.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">cnt:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex.</td>
+<tr class="field-even field"><th class="field-name">cnt:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Number of vertices in the edge_table that reference this vertex.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">chk:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code>  Indicator that the vertex might have a problem.</td>
+<tr class="field-odd field"><th class="field-name">chk:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt>  Indicator that the vertex might have a problem.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">ein:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex as incoming. See <a class="reference internal" href="analyze_oneway.html#pgr-analyze-oneway"><span>pgr_analyzeOneway</span></a>.</td>
+<tr class="field-even field"><th class="field-name">ein:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Number of vertices in the edge_table that reference this vertex as incoming. See <a class="reference internal" href="analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a>.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">eout:</th><td class="field-body"><code class="docutils literal"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex as outgoing. See <a class="reference internal" href="analyze_oneway.html#pgr-analyze-oneway"><span>pgr_analyzeOneway</span></a>.</td>
+<tr class="field-odd field"><th class="field-name">eout:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Number of vertices in the edge_table that reference this vertex as outgoing. See <a class="reference internal" href="analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a>.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body"><code class="docutils literal"><span class="pre">geometry</span></code> Point geometry of the vertex.</td>
+<tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body"><tt class="docutils literal"><span class="pre">geometry</span></tt> Point geometry of the vertex.</td>
 </tr>
 </tbody>
 </table>
@@ -162,8 +162,8 @@
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <div class="last line-block">
-<div class="line">An error would occur when the arguments are not given in the appropriate order: In this example, the column <code class="docutils literal"><span class="pre">id</span></code> of the table <code class="docutils literal"><span class="pre">mytable</span></code> is passed to the function as the geometry column, and the geometry column <code class="docutils literal"><span class="pre">the_geom</span></code> is passed to the function as the id column.</div>
-<div class="line"><code class="docutils literal"><span class="pre">SELECT</span>&nbsp; <span class="pre">pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target');</span></code></div>
+<div class="line">An error would occur when the arguments are not given in the appropriate order: In this example, the column <tt class="docutils literal"><span class="pre">id</span></tt> of the table <tt class="docutils literal"><span class="pre">mytable</span></tt> is passed to the function as the geometry column, and the geometry column <tt class="docutils literal"><span class="pre">the_geom</span></tt> is passed to the function as the id column.</div>
+<div class="line"><tt class="docutils literal"><span class="pre">SELECT</span>&nbsp; <span class="pre">pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target');</span></tt></div>
 <div class="line">ERROR: Can not determine the srid of the geometry &#8220;id&#8221; in table public.edge_table</div>
 </div>
 </div>
@@ -184,11 +184,11 @@
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Selecting the rows where the geometry is near the geometry of row with <code class="docutils literal"><span class="pre">id</span></code> =5 .</p>
+<p>Selecting the rows where the geometry is near the geometry of row with <tt class="docutils literal"><span class="pre">id</span></tt> =5 .</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(the_geom,0.05) FROM edge_table WHERE id=5)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Selecting the rows where the geometry is near the geometry of the row with <code class="docutils literal"><span class="pre">gid</span></code> =100 of the table <code class="docutils literal"><span class="pre">othertable</span></code>.</p>
+<p>Selecting the rows where the geometry is near the geometry of the row with <tt class="docutils literal"><span class="pre">gid</span></tt> =100 of the table <tt class="docutils literal"><span class="pre">othertable</span></tt>.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="n">otherTable</span><span class="p">;</span>
 <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">otherTable</span> <span class="k">AS</span>  <span class="p">(</span><span class="k">SELECT</span> <span class="mi">100</span> <span class="k">AS</span> <span class="n">gid</span><span class="p">,</span> <span class="n">st_point</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">.</span><span class="mi">5</span><span class="p">)</span> <span class="k">AS</span> <span class="n">other_geom</span><span class="p">)</span> <span class="p">;</span>
 <span class="k">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(other_geom,1) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
@@ -211,8 +211,8 @@
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <div class="last line-block">
-<div class="line">An error would occur when the arguments are not given in the appropriate order: In this example, the column <code class="docutils literal"><span class="pre">gid</span></code> of the table <code class="docutils literal"><span class="pre">mytable</span></code> is passed to the function as the geometry column, and the geometry column <code class="docutils literal"><span class="pre">mygeom</span></code> is passed to the function as the id column.</div>
-<div class="line"><code class="docutils literal"><span class="pre">SELECT</span>&nbsp; <span class="pre">pgr_analyzeGraph('mytable',0.001,'gid','mygeom','src','tgt');</span></code></div>
+<div class="line">An error would occur when the arguments are not given in the appropriate order: In this example, the column <tt class="docutils literal"><span class="pre">gid</span></tt> of the table <tt class="docutils literal"><span class="pre">mytable</span></tt> is passed to the function as the geometry column, and the geometry column <tt class="docutils literal"><span class="pre">mygeom</span></tt> is passed to the function as the id column.</div>
+<div class="line"><tt class="docutils literal"><span class="pre">SELECT</span>&nbsp; <span class="pre">pgr_analyzeGraph('mytable',0.001,'gid','mygeom','src','tgt');</span></tt></div>
 <div class="line">ERROR: Can not determine the srid of the geometry &#8220;gid&#8221; in table public.mytable</div>
 </div>
 </div>
@@ -233,7 +233,7 @@
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Selecting the rows WHERE the geometry is near the geometry of row with <code class="docutils literal"><span class="pre">id</span></code> =5 .</p>
+<p>Selecting the rows WHERE the geometry is near the geometry of row with <tt class="docutils literal"><span class="pre">id</span></tt> =5 .</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
                            <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)&#39;</span><span class="p">);</span>
 </pre></div>
@@ -242,7 +242,7 @@
                            <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Selecting the rows WHERE the geometry is near the place=&#8217;myhouse&#8217; of the table <code class="docutils literal"><span class="pre">othertable</span></code>. (note the use of quote_literal)</p>
+<p>Selecting the rows WHERE the geometry is near the place=&#8217;myhouse&#8217; of the table <tt class="docutils literal"><span class="pre">othertable</span></tt>. (note the use of quote_literal)</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="n">otherTable</span><span class="p">;</span>
 <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">otherTable</span> <span class="k">AS</span>  <span class="p">(</span><span class="k">SELECT</span> <span class="s1">&#39;myhouse&#39;</span><span class="p">::</span><span class="nb">text</span> <span class="k">AS</span> <span class="n">place</span><span class="p">,</span> <span class="n">st_point</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">.</span><span class="mi">5</span><span class="p">)</span> <span class="k">AS</span> <span class="n">other_geom</span><span class="p">)</span> <span class="p">;</span>
 <span class="k">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
@@ -379,22 +379,22 @@
     <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The examples use the <a class="reference internal" href="../../../../doc/src/developer/sampledata.html#sampledata"><span>Sample Data</span></a> network.</p>
+<p>The examples use the <a class="reference internal" href="../../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="../../../../doc/src/tutorial/topology.html#topology"><span>Routing Topology</span></a>  for an overview of a topology for routing algorithms.</li>
-<li><a class="reference internal" href="analyze_oneway.html#pgr-analyze-oneway"><span>pgr_analyzeOneway</span></a> to analyze directionality of the edges.</li>
-<li><a class="reference internal" href="create_vert_table.html#pgr-create-vert-table"><span>pgr_createVerticesTable</span></a> to reconstruct the vertices table based on the source and target information.</li>
-<li><a class="reference internal" href="node_network.html#pgr-node-network"><span>pgr_nodeNetwork</span></a> to create nodes to a not noded edge table.</li>
+<li><a class="reference internal" href="../../../../doc/src/tutorial/topology.html#topology"><em>Routing Topology</em></a>  for an overview of a topology for routing algorithms.</li>
+<li><a class="reference internal" href="analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a> to analyze directionality of the edges.</li>
+<li><a class="reference internal" href="create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> to reconstruct the vertices table based on the source and target information.</li>
+<li><a class="reference internal" href="node_network.html#pgr-node-network"><em>pgr_nodeNetwork</em></a> to create nodes to a not noded edge table.</li>
 </ul>
 </div>
 </div>
 
 
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      <div class="bottomnav">
       
         <p>
         «&#160;&#160;<a href="create_vert_table.html">pgr_createVerticesTable</a>
@@ -406,10 +406,10 @@
 
       </div>
 
-    <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis).
-      Last updated on Nov 09, 2015.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (3cf3396 cmake-improve-2.2).
+      Last updated on Nov 25, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

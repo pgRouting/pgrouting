@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis)',
+        VERSION:     '2.2.0 (3cf3396 cmake-improve-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,17 +25,17 @@
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../../doc/index.html" />
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../../index.html" />
     <link rel="up" title="Developers’s Functions" href="index.html" />
     <link rel="next" title="pgr_versionless" href="versionless.html" />
     <link rel="prev" title="pgr_pointToId" href="point_to_id.html" /> 
   </head>
-  <body role="document">
-      <div class="header" role="banner"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
           <span>pgRouting Manual (2.2.0)</span></a></h1>
         <h2 class="heading"><span>pgr_quote_ident</span></h2>
       </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
+      <div class="topnav">
       
         <p>
         «&#160;&#160;<a href="point_to_id.html">pgr_pointToId</a>
@@ -53,7 +53,7 @@
 <span id="id1"></span><h1>pgr_quote_ident<a class="headerlink" href="#pgr-quote-ident" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">pgr_quote_ident</span></code> — Quotes the input text to be used as an identifier in an SQL statement string.</p>
+<p><tt class="docutils literal"><span class="pre">pgr_quote_ident</span></tt> — Quotes the input text to be used as an identifier in an SQL statement string.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This function is intended for the developer&#8217;s aid.</p>
@@ -66,7 +66,7 @@ Use <cite>_pgr_quote_ident</cite> instead</p>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>Returns the given identifier <code class="docutils literal"><span class="pre">idname</span></code> suitably quoted to be used as an identifier in an SQL statement string.</p>
+<p>Returns the given identifier <tt class="docutils literal"><span class="pre">idname</span></tt> suitably quoted to be used as an identifier in an SQL statement string.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="nb">text</span> <span class="n">pgr_quote_ident</span><span class="p">(</span><span class="nb">text</span> <span class="n">idname</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -78,14 +78,14 @@ Use <cite>_pgr_quote_ident</cite> instead</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">idname:</th><td class="field-body"><code class="docutils literal"><span class="pre">text</span></code> Name of an SQL identifier. Can include <code class="docutils literal"><span class="pre">.</span></code> dot notation for schemas.table identifiers</td>
+<tr class="field-odd field"><th class="field-name">idname:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> Name of an SQL identifier. Can include <tt class="docutils literal"><span class="pre">.</span></tt> dot notation for schemas.table identifiers</td>
 </tr>
 </tbody>
 </table>
 <p>Returns the given string suitably quoted to be used as an identifier in an SQL statement string.</p>
 <blockquote>
 <div><ul class="simple">
-<li>When the identifier <code class="docutils literal"><span class="pre">idname</span></code> contains on or more <code class="docutils literal"><span class="pre">.</span></code> separators, each component is suitably quoted to be used in an SQL string.</li>
+<li>When the identifier <tt class="docutils literal"><span class="pre">idname</span></tt> contains on or more <tt class="docutils literal"><span class="pre">.</span></tt> separators, each component is suitably quoted to be used in an SQL string.</li>
 </ul>
 </div></blockquote>
 <p class="rubric">History</p>
@@ -137,7 +137,7 @@ Use <cite>_pgr_quote_ident</cite> instead</p>
 <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Ignores extra <code class="docutils literal"><span class="pre">.</span></code> separators.</p>
+<p>Ignores extra <tt class="docutils literal"><span class="pre">.</span></tt> separators.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_quote_ident</span><span class="p">(</span><span class="s1">&#39;Myschema...edge_table&#39;</span><span class="p">);</span>
 
    <span class="n">pgr_quote_ident</span>
@@ -150,15 +150,15 @@ Use <cite>_pgr_quote_ident</cite> instead</p>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="../../../../doc/src/developer/index.html#developer"><span>Developer&#8217;s Guide</span></a> for the tree layout of the project.</li>
-<li><a class="reference internal" href="get_table_name.html#pgr-get-table-name"><span>pgr_getTableName</span></a> to get the name of the table as is stored in the postgres administration tables.</li>
+<li><a class="reference internal" href="../../../../doc/src/developer/index.html#developer"><em>Developer&#8217;s Guide</em></a> for the tree layout of the project.</li>
+<li><a class="reference internal" href="get_table_name.html#pgr-get-table-name"><em>pgr_getTableName</em></a> to get the name of the table as is stored in the postgres administration tables.</li>
 </ul>
 </div>
 </div>
 
 
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      <div class="bottomnav">
       
         <p>
         «&#160;&#160;<a href="point_to_id.html">pgr_pointToId</a>
@@ -170,10 +170,10 @@ Use <cite>_pgr_quote_ident</cite> instead</p>
 
       </div>
 
-    <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis).
-      Last updated on Nov 09, 2015.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (3cf3396 cmake-improve-2.2).
+      Last updated on Nov 25, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

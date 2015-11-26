@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis)',
+        VERSION:     '2.2.0 (3cf3396 cmake-improve-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,23 +25,23 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../doc/index.html" />
-    <link rel="next" title="pgr_labelGraph" href="../../label_graph/doc/analyze_brokengraph.html" />
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../index.html" />
+    <link rel="next" title="pgr_dijkstraViaVertex - Shortest paths via vertices using dijkstra" href="../../dijkstraViaVertex/doc/dijkstraViaVertex.html" />
     <link rel="prev" title="pgr_vrpOneDepot" href="../../vrp_basic/doc/index.html" /> 
   </head>
-  <body role="document">
-      <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
           <span>pgRouting Manual (2.2.0)</span></a></h1>
         <h2 class="heading"><span>pgr_vrppdtw - Pickup and Delivery problem</span></h2>
       </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
+      <div class="topnav">
       
         <p>
         «&#160;&#160;<a href="../../vrp_basic/doc/index.html">pgr_vrpOneDepot</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../label_graph/doc/analyze_brokengraph.html">pgr_labelGraph</a>&#160;&#160;»
+        <a href="../../dijkstraViaVertex/doc/dijkstraViaVertex.html">pgr_dijkstraViaVertex - Shortest paths via vertices using dijkstra</a>&#160;&#160;»
         </p>
 
       </div>
@@ -52,7 +52,7 @@
 <span id="pgr-gsocvrppdtw"></span><h1>pgr_vrppdtw - Pickup and Delivery problem<a class="headerlink" href="#pgr-vrppdtw-pickup-and-delivery-problem" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">pgr_gsoc_vrppdtw</span></code> — Returns optimized  solution</p>
+<p><tt class="docutils literal"><span class="pre">pgr_gsoc_vrppdtw</span></tt> — Returns optimized  solution</p>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
@@ -77,7 +77,7 @@
 </tr>
 </tbody>
 </table>
-<p>Returns set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><span>pgr_costResult[]</span></a>:</p>
+<p>Returns set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a>:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -86,9 +86,9 @@
 </tr>
 <tr class="field-even field"><th class="field-name">rid:</th><td class="field-body">route ID</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">nid:</th><td class="field-body">node ID (<code class="docutils literal"><span class="pre">-1</span></code> for the last row)</td>
+<tr class="field-odd field"><th class="field-name">nid:</th><td class="field-body">node ID (<tt class="docutils literal"><span class="pre">-1</span></tt> for the last row)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body">cost to traverse to <code class="docutils literal"><span class="pre">seq</span></code></td>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body">cost to traverse to <tt class="docutils literal"><span class="pre">seq</span></tt></td>
 </tr>
 </tbody>
 </table>
@@ -116,7 +116,7 @@
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><span>pgr_costResult[]</span></a></li>
+<li><a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Vehicle_routing_problem">http://en.wikipedia.org/wiki/Vehicle_routing_problem</a></li>
 </ul>
 </div>
@@ -124,22 +124,22 @@
 
 
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      <div class="bottomnav">
       
         <p>
         «&#160;&#160;<a href="../../vrp_basic/doc/index.html">pgr_vrpOneDepot</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../label_graph/doc/analyze_brokengraph.html">pgr_labelGraph</a>&#160;&#160;»
+        <a href="../../dijkstraViaVertex/doc/dijkstraViaVertex.html">pgr_dijkstraViaVertex - Shortest paths via vertices using dijkstra</a>&#160;&#160;»
         </p>
 
       </div>
 
-    <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis).
-      Last updated on Nov 09, 2015.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (3cf3396 cmake-improve-2.2).
+      Last updated on Nov 25, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

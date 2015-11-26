@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis)',
+        VERSION:     '2.2.0 (3cf3396 cmake-improve-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,17 +25,17 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../index.html" />
     <link rel="up" title="Tutorial" href="index.html" />
     <link rel="next" title="Routing Topology" href="topology.html" />
     <link rel="prev" title="Tutorial" href="index.html" /> 
   </head>
-  <body role="document">
-      <div class="header" role="banner"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
           <span>pgRouting Manual (2.2.0)</span></a></h1>
         <h2 class="heading"><span>Getting Started</span></h2>
       </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
+      <div class="topnav">
       
         <p>
         «&#160;&#160;<a href="index.html">Tutorial</a>
@@ -131,7 +131,7 @@ used for routing with pgrouting. We provide a tools the will help with this:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>See <a class="reference internal" href="../../../src/common/doc/functions/create_topology.html#pgr-create-topology"><span>pgr_createTopology</span></a> for more information.</p>
+<p>See <a class="reference internal" href="../../../src/common/doc/functions/create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> for more information.</p>
 </div>
 <div class="section" id="how-to-check-your-graph-for-errors">
 <h2>How to check your graph for errors<a class="headerlink" href="#how-to-check-your-graph-for-errors" title="Permalink to this headline">¶</a></h2>
@@ -150,9 +150,9 @@ but we have some basic tools that might help.</p>
                                      <span class="n">direction</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See <a class="reference internal" href="analytics.html#analytics"><span>Graph Analytics</span></a> for more information.</p>
+<p>See <a class="reference internal" href="analytics.html#analytics"><em>Graph Analytics</em></a> for more information.</p>
 <p>If your data needs to be <em>NODED</em>, we have a tool that can help for that also.</p>
-<p>See <a class="reference internal" href="../../../src/common/doc/functions/node_network.html#pgr-node-network"><span>pgr_nodeNetwork</span></a> for more information.</p>
+<p>See <a class="reference internal" href="../../../src/common/doc/functions/node_network.html#pgr-node-network"><em>pgr_nodeNetwork</em></a> for more information.</p>
 </div>
 <div class="section" id="how-to-compute-a-route">
 <h2>How to compute a route<a class="headerlink" href="#how-to-compute-a-route" title="Permalink to this headline">¶</a></h2>
@@ -164,14 +164,14 @@ road network. The general form of a route query is:</p>
 </div>
 <p>As you can see this is fairly straight forward and you can look and the
 specific algorithms for the details on how to use them. What you get as a
-result from these queries will be a set of record of type <a class="reference internal" href="../../../src/common/doc/types/cost_result.html#type-cost-result"><span>pgr_costResult[]</span></a>
-or <a class="reference internal" href="../../../src/common/doc/types/geom_result.html#type-geom-result"><span>pgr_geomResult[]</span></a>. These results have information like edge id and/or the
+result from these queries will be a set of record of type <a class="reference internal" href="../../../src/common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a>
+or <a class="reference internal" href="../../../src/common/doc/types/geom_result.html#type-geom-result"><em>pgr_geomResult[]</em></a>. These results have information like edge id and/or the
 node id along with the cost or geometry for the step in the path from <em>start</em>
 to <em>end</em>. Using the ids you can join these result back to your edge table
 to get more information about each step in the path.</p>
 <blockquote>
 <div><ul class="simple">
-<li>See also <a class="reference internal" href="../../../src/common/doc/types/cost_result.html#type-cost-result"><span>pgr_costResult[]</span></a> and <a class="reference internal" href="../../../src/common/doc/types/geom_result.html#type-geom-result"><span>pgr_geomResult[]</span></a>.</li>
+<li>See also <a class="reference internal" href="../../../src/common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a> and <a class="reference internal" href="../../../src/common/doc/types/geom_result.html#type-geom-result"><em>pgr_geomResult[]</em></a>.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -179,7 +179,7 @@ to get more information about each step in the path.</p>
 
 
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      <div class="bottomnav">
       
         <p>
         «&#160;&#160;<a href="index.html">Tutorial</a>
@@ -191,10 +191,10 @@ to get more information about each step in the path.</p>
 
       </div>
 
-    <div class="footer" role="contentinfo">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (b8c8411 develop-2.2-old-travis b8c8411 develop-2.2-old-travis).
-      Last updated on Nov 09, 2015.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (3cf3396 cmake-improve-2.2).
+      Last updated on Nov 25, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>
