@@ -32,6 +32,7 @@ General
     src/introduction/introduction
     src/installation/index
     src/installation/build
+    src/installation/install-dependencies
     src/introduction/support
 
 
@@ -126,8 +127,8 @@ Routing functions
 .. toctree::
 	:hidden:
 
-        ../src/johnson/doc/johnson.rst
-        ../src/floydWarshall/doc/floydWarshall.rst
+        ../src/allpairs/doc/johnson.rst
+        ../src/allpairs/doc/floydWarshall.rst
 	../src/index
 
 *******************************************************************************
@@ -191,6 +192,42 @@ The following functions are experimental
 
 	../src/vrp_basic/doc/index.rst
 	../src/vrppdtw/doc/index.rst
+
+*******************************************************************************
+Proposed functions: Proposed by Vicky Vergara
+*******************************************************************************
+
+:pgr_dijkstraViaVertex:
+
+About this proposal:
+  - Author: Vicky Vergara
+  - Status: developing
+  - Temporary name: pgr_dijkstraViaVertex
+
+  -  :ref:`pgr_dijkstraViaVertex` - Use pgr_dijkstra to make a route via Vetices 
+
+.. toctree::
+    :hidden:
+
+    ../src/dijkstraViaVertex/doc/dijkstraViaVertex
+
+:pgr_dijkstra:
+
+About this proposal:
+  - Author: Vicky Vergara
+  - Status: developed, tested
+  - Name: pgr_dijkstra
+  - Functionality: same as existing pgr_dijktra but instead of arrays for the `start_vids` and
+    `end_vids` use sql queries.
+
+  -  :ref:`pgr_dijkstra_sql_version` - Use pgr_dijkstra to make a route via Vetices
+
+.. toctree::
+    :hidden:
+
+    ../src/dijkstra/doc/dijkstra_sql_version
+
+
 
 *******************************************************************************
 Proposed functions: Proposed by Zia Mohammed

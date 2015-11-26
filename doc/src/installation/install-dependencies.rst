@@ -7,11 +7,11 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _build:
+.. _dependencies:
 
-###########
+##########################
 Dependencies Installation
-###########
+##########################
 
 This guide was made while making a fresh ubuntu desktop 14.04.02 installation.
 Make the neceszry adjustments to fit your operative system.
@@ -45,7 +45,8 @@ trusty provides: 2.8.8
 
     sudo apt-get install cmake
 
-* C and (C++0x or c++11) compilers
+
+C and (C++0x or c++11) compilers
 ----------------------------------
 
 trusty provides: 4.8
@@ -58,14 +59,18 @@ trusty provides: 4.8
 Postgresql version >= 9.1 
 --------------------------
 
+For example in trusty 9.3 is provided:
 
 .. code-block:: none
 
     sudo apt-get install postgreSQL
     sudo apt-get install postgresql-server-dev-9.3
 
+
 PostGIS version >= 2.0 
 -----------------------
+
+For example in trusty 2.1 is provided:
 
 .. code-block:: none
 
@@ -73,7 +78,7 @@ PostGIS version >= 2.0
 
 
 
-The Boost Graph Library (BGL). Version >= 1.55
+The Boost Graph Library (BGL). Version >= 1.54
 ----------------------------------------------
 
 trusty provides: 1.54.0
@@ -81,6 +86,7 @@ trusty provides: 1.54.0
 .. code-block:: none
 
     sudo apt-get install libboost-graph-dev
+
 
 CGAL >=  4.2
 ---------------------
@@ -112,10 +118,12 @@ trusty provides: 1.2.2
 
     sudo apt-get install texlive
 
+
 pgTap for tests 
 ---------------------
 
 .. code-block:: none
+
     wget https://github.com/theory/pgtap/archive/master.zip
     unzip master.zip
     cd pgtap-master
@@ -124,8 +132,8 @@ pgTap for tests
     sudo ldconfig
 
 
- See Also
- -------------------------------------------------------------------------------
+See Also
+-------------------------------------------------------------------------------
 
 .. rubric:: Indices and tables
 
