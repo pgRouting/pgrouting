@@ -220,7 +220,7 @@ About this proposal:
   - Functionality: same as existing pgr_dijktra but instead of arrays for the `start_vids` and
     `end_vids` use sql queries.
 
-  -  :ref:`pgr_dijkstra_sql_version` - Use pgr_dijkstra to make a route via Vetices
+  -  :ref:`pgr_dijkstra_sql_version` - More functions for the pgr_dijkstra family functions
 
 .. toctree::
     :hidden:
