@@ -55,7 +55,6 @@ pgr_floydWarshall(G &graph, std::vector< Matrix_cell_t> &rows) {
      fn_floydWarshall.floydWarshall(graph, rows);
 }
 
-// for postgres 
 template < class G >
 void
 pgr_floydWarshall(G &graph, size_t &result_tuple_count, Matrix_cell_t **postgres_rows) {

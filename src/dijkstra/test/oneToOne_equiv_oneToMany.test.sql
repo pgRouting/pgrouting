@@ -20,10 +20,10 @@ one to many dijkstra
 \set QUIET 1
 
 BEGIN;
-    SELECT plan(18);
+    SELECT plan(36);
 
 
-    create or REPLACE FUNCTION foo(cant INTEGER default 18 )
+    create or REPLACE FUNCTION foo(cant INTEGER default 18, flag boolean default true )
     RETURNS SETOF TEXT AS
     $BODY$
     DECLARE
@@ -46,14 +46,14 @@ BEGIN;
         '( SELECT seq, ' || i || 'as start_vid, ' || j || 'as end_vid, node, edge, cost, agg_cost  FROM pgr_dijkstra(
                 ''SELECT id, source, target, cost, reverse_cost FROM edge_table'', '
                 || i || ', ' || j ||
-                ') )';
+                ', ' || flag || ' ) )';
         sql_OneToMany := sql_OneToMany || j ; 
     END LOOP;
     sql_OneToMany := 
     ' SELECT path_seq, ' || i || ' as start_vid,  end_vid, node, edge, cost, agg_cost FROM pgr_dijkstra(
         ''SELECT id, source, target, cost, reverse_cost FROM edge_table'', '
         || i || ', ARRAY[' || sql_OneToMany ||
-        '] ) ';
+        '], ' || flag || ' ) ';
 
     sql_OneToOne := 'select * from ( ' || sql_OneToOne ||') AS a';
 
@@ -65,7 +65,8 @@ END
 $BODY$
 language plpgsql;
 
-select * from foo();
+select * from foo(18, true);
+select * from foo(18, false);
 
 
 -- Finish the tests and clean up.
