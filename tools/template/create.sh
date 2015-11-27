@@ -2,12 +2,12 @@
 
 
 #dont put pgr_ on MY_FUNCTION_NAME that is done automatically
-MY_FUNCTION_NAME="dijkstraCost_one_to_many"
+MY_FUNCTION_NAME="travelingSalesPerson"
 DEVELOPER_NAME="Celia Virginia Vergara Castillo"
 DEVELOPER_EMAIL="vicky_vergara@hotmail.com" 
 YEAR="2015"
 
-MY_QUERY_LINE1="CREATE OR REPLACE FUNCTION pgr_dijkstraCost(sql TEXT, start_vid BIGINT, end_vids ANYARRAY, directed BOOLEAN DEFAULT true,"
+MY_QUERY_LINE1="CREATE OR REPLACE FUNCTION pgr_travelingSalesPerson(sql TEXT, start_vid BIGINT, end_vids ANYARRAY, directed BOOLEAN DEFAULT true,"
 MY_QUERY_LINE2="   OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost FLOAT)"
 
 

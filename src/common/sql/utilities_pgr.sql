@@ -273,6 +273,37 @@ END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
+/************************************************************************
+.. function:: _pgr_get_statement( sql ) returns the original statement if its a prepared statement
+
+    Returns:
+          sname,vname  registered schemaname, vertices table name 
+    
+          
+ Examples:  
+    select * from _pgr_dijkstra(_pgr_get_statament($1),$2,$3,$4);
+
+   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
+
+  HISTORY
+     Created: 2014/JUL/27 
+************************************************************************/
+CREATE OR REPLACE FUNCTION _pgr_get_statement(o_sql text)
+RETURNS text AS
+$BODY$
+DECLARE
+sql TEXT;
+BEGIN
+    EXECUTE 'SELECT statement FROM pg_prepared_statements WHERE name ='  || quote_literal(o_sql) || ' limit 1 ' INTO sql;
+    IF (sql IS NULL) THEN
+      RETURN   o_sql;
+    ELSE
+      RETURN  regexp_replace(sql, '(.)* as ', '', 'i');
+    END IF;
+END
+$BODY$
+LANGUAGE plpgsql STABLE STRICT;
+
 
 /************************************************************************
 .. function:: _pgr_checkVertTab(vertname,columnsArr,reportErrs) returns record of sname,vname

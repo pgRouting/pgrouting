@@ -113,9 +113,11 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vid bigint, end_vi
 RETURNS SETOF RECORD AS
 $BODY$
 DECLARE
+ statement_txt record;
+ sql text;
 BEGIN
     RETURN query 
-    SELECT * FROM _pgr_dijkstra(edges_sql, start_vid, end_vid, true, false);
+    SELECT * FROM _pgr_dijkstra(_pgr_get_statement($1), start_vid, end_vid, true, false);
   END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -131,7 +133,7 @@ $BODY$
 DECLARE
 BEGIN
     return query SELECT *
-    FROM _pgr_dijkstra(edges_sql, start_vid, end_vid, directed, false) a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), start_vid, end_vid, directed, false) a;
   END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -154,7 +156,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT *
-    FROM _pgr_dijkstra($1, $2, $3, $4, false) a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2, _pgr_get_statement($3), $4, false) a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -167,7 +169,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT *
-    FROM _pgr_dijkstra($1, $2, $3, $4, false) a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2, $3, $4, false) a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -185,7 +187,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT *
-    FROM _pgr_dijkstra($1, $2, $3, $4, false) a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, false) a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -198,7 +200,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT *
-    FROM _pgr_dijkstra($1, $2, $3, $4, false) a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2, $3, $4, false) a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -216,7 +218,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT *
-    FROM _pgr_dijkstra($1, $2, $3, $4, false) a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), _pgr_get_statement($2), _pgr_get_statement($3), $4, false) a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -229,7 +231,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT *
-    FROM _pgr_dijkstra($1, $2, $3, $4, false) a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2, $3, $4, false) a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -274,7 +276,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT $2 , a.end_vid, a.agg_cost
-    FROM _pgr_dijkstra($1, $2, $3, $4, true) a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2, _pgr_get_statement($3), $4, true) a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -287,7 +289,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT $2, a.end_vid, a.agg_cost
-    FROM _pgr_dijkstra($1, $2, $3, $4, true) a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2, $3, $4, true) a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -304,7 +306,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT a.start_vid, $3, a.agg_cost
-    FROM _pgr_dijkstra($1, $2, $3, $4, true) a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, true) a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -317,7 +319,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT a.start_vid, $3, a.agg_cost
-    FROM _pgr_dijkstra($1, $2, $3, $4, true) a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2, $3, $4, true) a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -335,7 +337,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_dijkstra($1, $2, $3, $4, true) a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), _pgr_get_statement($2), _pgr_get_statement($3), $4, true) a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -348,7 +350,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_dijkstra($1, $2, $3, $4, true) a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2, $3, $4, true) a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE

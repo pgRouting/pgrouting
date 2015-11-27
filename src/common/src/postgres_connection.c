@@ -456,7 +456,6 @@ void fetch_select_bigint_info(
     PGR_DBG("Fetching bigint column info\n");
     *type_id = SPI_gettypeid(tupledesc, 1);
     pgr_check_any_integer_type("$1", *type_id); 
-    PGR_DBG("Found has_rcost %i\n", *has_rcost);
 }
 
 
@@ -513,7 +512,7 @@ pgr_select_bigint(
             }
 
             int t;
-            PGR_DBG("processing %d", ntuples);
+            PGR_DBG("processing %ld", ntuples);
             for (t = 0; t < ntuples; t++) {
                 PGR_DBG("   processing %d", t);
                 HeapTuple tuple = tuptable->vals[t];
