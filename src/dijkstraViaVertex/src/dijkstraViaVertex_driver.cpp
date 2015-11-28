@@ -49,19 +49,37 @@ void
 pgr_dijkstraViaVertex(
         G &graph,
         const std::vector< int64_t > via_vertices,
-        std::deque< Path > &paths) {
+        std::deque< Path > &paths,
+        bool with_U_turns = true) { // true = u turns are allowed between paths
 
     paths.clear();
     for (size_t i = 0; i < via_vertices.size() - 1; ++i) {
         Path path;
         pgr_dijkstra(graph, path, via_vertices[i], via_vertices[i+1]);
         paths.push_back(path);
+
+        // Any deleted edges are restored
+        graph.restore_graph();
+
+        // Delete uTurn edges
+        if (!with_U_turns) {
+
+            // we can only delete if there is a path, that is at least one edge
+            if (path.path.size() > 1) {
+                // Delete from the graph the last edge if its outgoing also
+                // edge to be removed = second to last edge path[i].edge;
+                int64_t edge_to_be_removed = path.path[path.path.size() - 2].edge;
+                int64_t last_vertex_of_path = path.path[path.path.size() - 1].vertex;
+                graph.disconnect_out_going_edge(last_vertex_of_path, edge_to_be_removed);
+            }
+
+        }
     }
 }
 
 static
 void
-generate_postgres_data(
+get_path(
         int64_t route_id,
         int64_t path_id,
         const Path &path,
@@ -88,7 +106,7 @@ generate_postgres_data(
 
 static
 size_t
-collapse_paths(
+get_route(
         Routes_t **ret_path,
         const std::deque< Path > &paths) {
     size_t sequence = 0;    //arrys index
@@ -97,7 +115,7 @@ collapse_paths(
     double route_cost = 0;  // routes_agg_cost
     for (const Path &path : paths) {
         if (path.path.size() > 0)
-            generate_postgres_data(route_id, path_id, path, ret_path, route_cost, sequence);
+            get_path(route_id, path_id, path, ret_path, route_cost, sequence);
         ++path_id;
     }
     return sequence;
@@ -123,6 +141,7 @@ do_pgr_dijkstraViaVertex(
         int64_t  *via_vidsArr,
         int size_via_vidsArr,
         bool directed,
+        bool with_U_turns,
         Routes_t **return_tuples,
         size_t *return_count,
         char ** err_msg){
@@ -148,12 +167,12 @@ do_pgr_dijkstraViaVertex(
             log << "Working with directed Graph\n";
             Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
             digraph.graph_insert_data(data_edges, total_tuples);
-            pgr_dijkstraViaVertex(digraph, via_vertices, paths);
+            pgr_dijkstraViaVertex(digraph, via_vertices, paths, with_U_turns);
         } else {
             log << "Working with Undirected Graph\n";
             Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data(data_edges, total_tuples);
-            pgr_dijkstraViaVertex(undigraph, via_vertices, paths);
+            pgr_dijkstraViaVertex(undigraph, via_vertices, paths, with_U_turns);
         }
 
         size_t count(count_tuples(paths));
@@ -170,7 +189,7 @@ do_pgr_dijkstraViaVertex(
         // get the space required to store all the paths
         (*return_tuples) = get_memory(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
-        (*return_count) = (collapse_paths(return_tuples, paths));
+        (*return_count) = (get_route(return_tuples, paths));
         (*return_tuples)[count - 1].edge = -2;
 
 #ifndef DEBUG

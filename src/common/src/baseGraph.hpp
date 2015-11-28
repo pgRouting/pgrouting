@@ -212,12 +212,52 @@ class Pgr_base_graph {
       boost::remove_edge(g_from, g_to, graph);
   }
 
+  //! \brief structure to compare edge's id
+  struct edge_has_id {
+      edge_has_id(int64_t edge_id_, G& g_) : edge_id(edge_id), g(g_) { }
+      bool operator()(E e) {
+          return g[e].id == edge_id;
+      }
+      int64_t edge_id;
+      G& g;
+  };
+
+  //! \brief Disconnects the outgoing edges with a particular original id from a vertex
+  /*!
+    - No edge is disconnected if it doesn't exist in the graph
+    - Removed edges are stored for future reinsertion
+
+    @param [IN] *edge_id* original edge id
+  */
+  void disconnect_out_going_edge(int64_t vertex_id, int64_t edge_id) {
+      V v_from;
+      pgr_edge_t d_edge;
+      // nothing to do, the vertex doesnt exist
+      if (!get_gVertex(vertex_id, v_from)) return;
+
+      EO_i out, out_end;
+      // store the edges that are going to be removed
+      for (boost::tie(out, out_end) = out_edges(v_from, graph);
+              out != out_end; ++out) {
+          if (graph[*out].id  == edge_id) {
+              d_edge.id = graph[*out].id;
+              d_edge.source = graph[source(*out, graph)].id;
+              d_edge.target = graph[target(*out, graph)].id;
+              d_edge.cost = graph[*out].cost;
+              d_edge.reverse_cost = -1;
+              removed_edges.push_back(d_edge);
+          }
+      }
+      // the actual removal
+      boost::remove_out_edge_if(v_from, edge_has_id(edge_id, graph), graph);
+  }
+
 
   //! \brief Disconnects all incomming and outgoing edges from the vertex
   /*!
     boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
     simulated by disconnecting the vertex from the graph
-    
+
     - No edge is disconnected if the vertices id's do not exist in the graph
     - All removed edges are stored for future reinsertion
     - All parallel edges are disconnected (automatically by boost)
@@ -226,7 +266,7 @@ class Pgr_base_graph {
     ![disconnect_vertex(2) on a DIRECTED graph](disconnectVertexDirected.png)
 
     @param [IN] *p_vertex* original vertex id of the starting point of the edge
-  */
+    */
   void disconnect_vertex(int64_t p_vertex) {
       V g_vertex;
       pgr_edge_t d_edge;
@@ -235,26 +275,26 @@ class Pgr_base_graph {
       EO_i out, out_end;
       // store the edges that are going to be removed
       for (boost::tie(out, out_end) = out_edges(g_vertex, graph);
-        out != out_end; ++out) {
-            d_edge.id = graph[*out].id;
-            d_edge.source = graph[source(*out, graph)].id;
-            d_edge.target = graph[target(*out, graph)].id;
-            d_edge.cost = graph[*out].cost;
-            d_edge.reverse_cost = -1;
-            removed_edges.push_back(d_edge);
+              out != out_end; ++out) {
+          d_edge.id = graph[*out].id;
+          d_edge.source = graph[source(*out, graph)].id;
+          d_edge.target = graph[target(*out, graph)].id;
+          d_edge.cost = graph[*out].cost;
+          d_edge.reverse_cost = -1;
+          removed_edges.push_back(d_edge);
       }
 
       // special case
       if (m_gType == DIRECTED) {
           EI_i in, in_end;
           for (boost::tie(in, in_end) = in_edges(g_vertex, graph);
-            in != in_end; ++in) {
-                d_edge.id = graph[*in].id;
-                d_edge.source = graph[source(*in, graph)].id;
-                d_edge.target = graph[target(*in, graph)].id;
-                d_edge.cost = graph[*in].cost;
-                d_edge.reverse_cost = -1;
-                removed_edges.push_back(d_edge);
+                  in != in_end; ++in) {
+              d_edge.id = graph[*in].id;
+              d_edge.source = graph[source(*in, graph)].id;
+              d_edge.target = graph[target(*in, graph)].id;
+              d_edge.cost = graph[*in].cost;
+              d_edge.reverse_cost = -1;
+              removed_edges.push_back(d_edge);
           }
       }
 
@@ -264,32 +304,32 @@ class Pgr_base_graph {
   }
 
   //! \brief Reconnects all edges that were removed
-    void restore_graph() {
-        while (removed_edges.size() != 0) {
-            graph_add_edge(removed_edges[0]);
-            removed_edges.pop_front();
-        }
-    }
+  void restore_graph() {
+      while (removed_edges.size() != 0) {
+          graph_add_edge(removed_edges[0]);
+          removed_edges.pop_front();
+      }
+  }
   //@}
 
   //! @name only for stand by program
   //@{
   void print_graph(std::ostream &log = std::cout) const {
-        EO_i out, out_end;
-        V_i vi;
+      EO_i out, out_end;
+      V_i vi;
 
-        for (vi = vertices(graph).first; vi != vertices(graph).second; ++vi) {
-            if ((*vi) >= m_num_vertices) continue;
-            log << (*vi) << " out_edges(" << graph[(*vi)].id << "):";
-            for (boost::tie(out, out_end) = out_edges(*vi, graph);
-              out != out_end; ++out) {
+      for (vi = vertices(graph).first; vi != vertices(graph).second; ++vi) {
+          if ((*vi) >= m_num_vertices) continue;
+          log << (*vi) << " out_edges(" << graph[(*vi)].id << "):";
+          for (boost::tie(out, out_end) = out_edges(*vi, graph);
+                  out != out_end; ++out) {
               log << ' ' << *out << "=(" << graph[source(*out, graph)].id
-                        << ", " << graph[target(*out, graph)].id << ") = "
-                        <<  graph[*out].cost <<"\t";
-            }
-            log << std::endl;
-        }
-    }
+                  << ", " << graph[target(*out, graph)].id << ") = "
+                  <<  graph[*out].cost <<"\t";
+          }
+          log << std::endl;
+      }
+  }
   //@}
 
 
@@ -303,78 +343,78 @@ class Pgr_base_graph {
       return true;
   }
 
- public:
+    public:
   int64_t
-  get_edge_id(V from, V to, float8 &distance) const {
-        E e;
-        EO_i out_i, out_end;
-        V v_source, v_target;
-        float8 minCost =  std::numeric_limits<float8>::max();
-        int64_t minEdge = -1;
-        for (boost::tie(out_i, out_end) = boost::out_edges(from, graph);
-          out_i != out_end; ++out_i) {
+      get_edge_id(V from, V to, float8 &distance) const {
+          E e;
+          EO_i out_i, out_end;
+          V v_source, v_target;
+          float8 minCost =  std::numeric_limits<float8>::max();
+          int64_t minEdge = -1;
+          for (boost::tie(out_i, out_end) = boost::out_edges(from, graph);
+                  out_i != out_end; ++out_i) {
               e = *out_i;
               v_target = target(e, graph);
               v_source = source(e, graph);
               if ((from == v_source) && (to == v_target)
-                   && (distance == graph[e].cost))
-                     return graph[e].id;
+                      && (distance == graph[e].cost))
+                  return graph[e].id;
               if ((from == v_source) && (to == v_target)
-                   && (minCost > graph[e].cost)) {
-                     minCost = graph[e].cost;
-                     minEdge = graph[e].id;
+                      && (minCost > graph[e].cost)) {
+                  minCost = graph[e].cost;
+                  minEdge = graph[e].id;
               }
-        }
-        distance = minEdge == -1? 0: minCost;
-        return minEdge;
-  }
+          }
+          distance = minEdge == -1? 0: minCost;
+          return minEdge;
+      }
 
- public:
+    public:
   size_t num_vertices() const { return m_num_vertices; }
   void
-  adjust_vertices() {
-    while (boost::num_vertices(graph) != num_vertices()) {
-      if (boost::num_vertices(graph) > num_vertices()) {
-        boost::remove_vertex(boost::num_vertices(graph), graph);
+      adjust_vertices() {
+          while (boost::num_vertices(graph) != num_vertices()) {
+              if (boost::num_vertices(graph) > num_vertices()) {
+                  boost::remove_vertex(boost::num_vertices(graph), graph);
+              }
+          }
       }
-    }
-  }
 
- private:
+    private:
   void
-  graph_add_edge(const pgr_edge_t &edge ) {
-      bool inserted;
-      LI vm_s, vm_t;
-      E e;
+      graph_add_edge(const pgr_edge_t &edge ) {
+          bool inserted;
+          LI vm_s, vm_t;
+          E e;
 
-      vm_s = vertices_map.find(edge.source);
-      if (vm_s == vertices_map.end()) {
-        vertices_map[edge.source]=  m_num_vertices;
-        gVertices_map[m_num_vertices++] = edge.source;
-        vm_s = vertices_map.find(edge.source);
-      }
+          vm_s = vertices_map.find(edge.source);
+          if (vm_s == vertices_map.end()) {
+              vertices_map[edge.source]=  m_num_vertices;
+              gVertices_map[m_num_vertices++] = edge.source;
+              vm_s = vertices_map.find(edge.source);
+          }
 
-      vm_t = vertices_map.find(edge.target);
-      if (vm_t == vertices_map.end()) {
-        vertices_map[edge.target]=  m_num_vertices;
-        gVertices_map[m_num_vertices++] = edge.target;
-        vm_t = vertices_map.find(edge.target);
-      }
+          vm_t = vertices_map.find(edge.target);
+          if (vm_t == vertices_map.end()) {
+              vertices_map[edge.target]=  m_num_vertices;
+              gVertices_map[m_num_vertices++] = edge.target;
+              vm_t = vertices_map.find(edge.target);
+          }
 
-      if (edge.cost >= 0) {
-        boost::tie(e, inserted) =
-          boost::add_edge(vm_s->second, vm_t->second, graph);
-        graph[e].cost = edge.cost;
-        graph[e].id = edge.id;
-      }
+          if (edge.cost >= 0) {
+              boost::tie(e, inserted) =
+                  boost::add_edge(vm_s->second, vm_t->second, graph);
+              graph[e].cost = edge.cost;
+              graph[e].id = edge.id;
+          }
 
-      if (edge.reverse_cost >= 0) {
-        boost::tie(e, inserted) =
-          boost::add_edge(vm_t->second, vm_s->second, graph);
-        graph[e].cost = edge.reverse_cost;
-        graph[e].id = edge.id;
+          if (edge.reverse_cost >= 0) {
+              boost::tie(e, inserted) =
+                  boost::add_edge(vm_t->second, vm_s->second, graph);
+              graph[e].cost = edge.reverse_cost;
+              graph[e].id = edge.id;
+          }
       }
-    }
 };
 
 

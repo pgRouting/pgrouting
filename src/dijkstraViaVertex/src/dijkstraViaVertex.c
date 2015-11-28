@@ -60,6 +60,7 @@ process( char* edges_sql,
         int64_t *via_vidsArr,
         size_t size_via_vidsArr,
         bool directed,
+        bool with_U_turns,
         Routes_t **result_tuples,
         size_t *result_count) {
   pgr_SPI_connect();
@@ -88,6 +89,7 @@ process( char* edges_sql,
         via_vidsArr,
         size_via_vidsArr,
         directed,
+        with_U_turns,
         result_tuples,
         result_count,
         &err_msg);
@@ -141,6 +143,7 @@ dijkstraViaVertex(PG_FUNCTION_ARGS) {
          pgr_text2char(PG_GETARG_TEXT_P(0)),
          via_vidsArr, size_via_vidsArr,
          PG_GETARG_BOOL(2),
+         PG_GETARG_BOOL(3),
          &result_tuples,
          &result_count);
 

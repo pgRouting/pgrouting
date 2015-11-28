@@ -1,5 +1,5 @@
-/* PGR GNU *****************************************************************
-File: MY_FUNCTION_NAME_driver.h
+/*PGR-GNU*****************************************************************
+File: MY_FUNCTION_NAME.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -23,7 +23,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR GNU*/
+********************************************************************PGR-GNU*/
 
 #ifndef SRC_MY_FUNCTION_NAME_UPPER_SRC_MY_FUNCTION_NAME_UPPER_DRIVER_H_
 #define SRC_MY_FUNCTION_NAME_UPPER_SRC_MY_FUNCTION_NAME_UPPER_DRIVER_H_

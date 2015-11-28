@@ -24,8 +24,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
 
-CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertex(sql text, vertices anyarray, directed boolean default true,
-     OUT seq BIGINT, OUT path_id BIGINT, OUT path_seq BIGINT, OUT start_vid BIGINT, OUT end_vid BIGINT, OUT node BIGINT, OUT edge BIGINT, OUT cost FLOAT, OUT agg_cost FLOAT, OUT route_agg_cost FLOAT)
+CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertex(
+    sql TEXT,
+    vertices ANYARRAY,
+    directed BOOLEAN DEFAULT TRUE,
+    with_U_turns BOOLEAN DEFAULT TRUE,
+
+
+    OUT seq BIGINT,
+    OUT path_id BIGINT,
+    OUT path_seq BIGINT,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT,
+    OUT route_agg_cost FLOAT)
+
   RETURNS SETOF RECORD AS
  '$libdir/${PGROUTING_LIBRARY_NAME}', 'dijkstraViaVertex'
     LANGUAGE c IMMUTABLE STRICT;
