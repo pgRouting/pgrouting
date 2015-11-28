@@ -4,9 +4,6 @@ ADD_LIBRARY(dijkstra OBJECT
         many_to_one_dijkstra.c
         many_to_many_dijkstra.c
 
-        one_to_many_dijkstra_sql.c
-        many_to_one_dijkstra_sql.c
-        many_to_many_dijkstra_sql.c
 
         one_to_one_dijkstra_driver.cpp
         one_to_many_dijkstra_driver.cpp
