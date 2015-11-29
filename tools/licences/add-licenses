@@ -30,12 +30,12 @@ my %exclude = (
 my $gnu_license = "GNU_license.txt";
 my @GNU_LICENSE = loadLicense($gnu_license);
 my @GNU_BODY = @GNU_LICENSE;
-splice @GNU_BODY, 0, 5;
+splice @GNU_BODY, 0, 6;
 
 my $mit_license = "MIT_license.txt";
 my @MIT_LICENSE = loadLicense($mit_license);
 my @MIT_BODY = @MIT_LICENSE;
-splice @MIT_BODY, 0, 5;
+splice @MIT_BODY, 0, 6;
 
 my $ccm_license = "CCM_license.txt";
 my @CCM_LICENSE = loadLicense($ccm_license);
@@ -134,8 +134,12 @@ sub get_task{
 
     #The license is found but the body is different
     for (my $i = 0; $i < @LICENSE_BODY; $i++) {
+
         $line = <IN>;
         if ($LICENSE_BODY[$i] ne $line) {
+        print "I '$i'\n";
+        print "LINE:'$line'\n";
+        print "LIC:'$LICENSE_BODY[$i]'\n";
             close(IN);
             return 2;
         }
@@ -162,11 +166,9 @@ sub update_license {
     close(IN);
 
     my $license_type = 0;
-    if ($file[0] eq $GNU_LICENSE[0])  {
-        $license_type = 1;
-        @LICENSE = @GNU_LICENSE;
-        @LICENSE_BODY = @GNU_BODY;
-    } elsif ($file[0] eq  $MIT_LICENSE[0])  {
+    @LICENSE = @GNU_LICENSE;
+    @LICENSE_BODY = @GNU_BODY;
+    if ($file[0] eq  $MIT_LICENSE[0])  {
         $license_type = 2;
         @LICENSE = @MIT_LICENSE;
         @LICENSE_BODY = @MIT_BODY;

@@ -1,7 +1,9 @@
-/*PGR
+/*PGR-GNU*****************************************************************
+File: ksp.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky_vergara@hotmail.com
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,17 +19,11 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
-
+********************************************************************PGR-GNU*/
 
 #ifndef SRC_KSP_SRC_KSP_H_
 #define SRC_KSP_SRC_KSP_H_
 
-// #define TUPLIMIT 1000
-// #define PATH_ALLOC_TOTAL 5
-
-// #include <unistd.h>
-// #include "postgres.h"
 
 #ifdef __cplusplus
 extern "C" {
