@@ -1,0 +1,182 @@
+#! /usr/bin/perl -w
+    eval 'exec /usr/bin/perl -S $0 ${1+"$@"}'
+        if 0; #$running_under_some_shell
+
+use strict;
+use File::Find ();
+use File::Basename;
+
+# Set the variable $File::Find::dont_use_nlink if you're using AFS,
+# since AFS cheats.
+
+# for the convenience of &wanted calls, including -eval statements:
+use vars qw/*name *dir *prune/;
+*name   = *File::Find::name;
+*dir    = *File::Find::dir;
+*prune  = *File::Find::prune;
+
+#sub wanted;
+
+sub Usage {
+    die "Usage: add-licenses dir [exclude.txt]\n";
+}
+
+my $DOUPDATES = 1;
+
+my @files = ();
+my %exclude = (
+);
+
+my @GNU_LICENSE = ();
+my $gnu_license = "GNU_license.txt";
+my @GNU_BODY = ();
+
+loadHeader($gnu_license);
+
+@GNU_BODY = @GNU_LICENSE;
+splice @GNU_BODY, 0, 10;
+
+my $dir    = shift @ARGV || Usage();
+my $xfile  = shift @ARGV;
+
+if ($xfile) {
+    open(IN, $xfile) || die "Failed to open '$xfile' : $!\n";
+    while (my $x = <IN>) {
+        chomp($x);
+        $exclude{$x} = 1;
+    }
+    close(IN);
+}
+
+# Traverse desired filesystems
+File::Find::find({wanted => \&wanted}, $dir);
+
+for my $file (sort @files) {
+
+    my $f = basename($file);
+    next if $exclude{$f};
+    my $task = get_task($file);
+    next if $task == 0;
+    print "\n\n PROCESSING '$file'\n";
+    updateheader($task, $file) if $DOUPDATES;
+}
+
+exit;
+
+
+sub wanted {
+    /^.*\.(h|cpp|c|sql|hpp)\z/s &&
+    push @files, $name;
+}
+
+sub loadHeader {
+    my $f = shift;
+    open(IN, $f) || die "Failed to open '$f' : $!\n";
+    @GNU_LICENSE = <IN>;
+    close(IN);
+}
+
+# When the first line is not equal it doesnt have the
+# generated license.
+# The generated license has to be added
+# And Manually fixed.
+# 
+# When the first line is equal, then we skip up to find
+# The "-------" line in both files
+# The rest of the license must be equal
+#
+sub get_task{
+    my $f = shift;
+
+    open(IN, $f) || return 0;
+
+    my $x = <IN>;
+    my $mit = "/*PGR-MIT******************************************************************\n";
+
+    #print "MIT  '$mit'\n";
+    #print "LINE '$x'\n";
+
+    # Other licence found
+    if ($x eq $mit) {
+        close(IN);
+        return 0;
+    }
+
+    #The license is not found
+    if ($GNU_LICENSE[0] ne $x) {
+        close(IN);
+        return 1;
+    }
+
+    while ($x and ($x ne $GNU_LICENSE[5])) {
+        $x = <IN>;
+    }
+
+    #The dividing line is not found
+    if (!$x) {
+        close(IN);
+        return 1;
+    }
+
+
+    #The license is found but the body is different
+    for (my $i = 6; $i < @GNU_LICENSE; $i++) {
+        my $x = <IN>;
+        if ($GNU_LICENSE[$i] ne $x) {
+            close(IN);
+            return 2;
+        }
+    }
+
+    close(IN);
+    #print "License up to date\n";
+    return 0;
+}
+
+# task = 0 Do nothing
+# task = 1 Insert complete license
+# task = 2 Update license body 
+sub updateheader {
+    my $task = shift;
+    my $f = shift;
+
+    return if $task == 0; 
+
+    # read the file
+    my @file = ();
+    open(IN, $f) || die "Failed to read '$f' : $!\n";
+    @file = <IN>;
+    close(IN);
+
+    if ($task == 1) {
+        print "  Adding full license\n";
+        print "     --> Please remove old license and update names if needed\n";
+        @file = (@GNU_LICENSE, @file);
+
+    } else {
+        print "  Changing Body of license\n";
+        #task = 2
+
+        # Find the dividing line
+        my $first = 0;
+        my $last = 0;
+        while ($file[$first] ne $GNU_LICENSE[5]) {
+            $first++;
+        }
+
+        $last = $first;
+
+        # Find the last line
+        while ($file[$last] ne $GNU_LICENSE[20]) {
+            $last++;
+        }
+
+        splice @file, $first, $last-$first+1, @GNU_BODY;
+
+    }
+    open(OUT, ">$f") || die "Failed to rewrite '$f' : $!\n";
+    print OUT @file;
+    close(OUT);
+
+}
+
