@@ -1,13 +1,14 @@
 /*PGR-GNU*****************************************************************
-File: MY_FUNCTION_NAME.c
+File: MY_FUNCTION_NAME_driver.h
 
-Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer: 
 Copyright (c) YEAR DEVELOPER_NAME
 Mail: DEVELOPER_EMAIL
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
