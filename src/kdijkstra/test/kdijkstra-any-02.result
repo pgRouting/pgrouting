@@ -1,4 +1,3 @@
-NOTICE:  Deprecated function: Use pgr_dijkstra instead
 0|1|288|863|1
 1|1|263|838|1
 2|1|238|813|1

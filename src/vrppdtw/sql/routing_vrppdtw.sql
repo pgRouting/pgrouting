@@ -1,7 +1,9 @@
-/*PGR
+/*PGR-GNU*****************************************************************
 
 Copyright (c) 2014 Manikata Kondeti
 mani.iiit123@gmail.com
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,7 +19,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
+********************************************************************PGR-GNU*/
 
 -----------------------------------------------------------------------
 -- Core function for vrp with sigle depot computation
@@ -26,14 +28,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --
 --
 create or replace function pgr_gsoc_vrppdtw(
-                sql text,
-                vehicle_num integer,
-                capacity integer,
-                OUT seq integer,
-                OUT rid integer,
-                OUT nid integer,
-                OUT cost integer
-                )
+    sql text,
+    vehicle_num integer,
+    capacity integer,
+    OUT seq integer,
+    OUT rid integer,
+    OUT nid integer,
+    OUT cost integer
+)
 returns setof record as
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'vrppdtw'
 LANGUAGE c VOLATILE STRICT;

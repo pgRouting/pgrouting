@@ -198,6 +198,7 @@ sub update_license {
             $first = 2;
         }
 
+        $first++;
         $last = $first;
 
         # Find the last line

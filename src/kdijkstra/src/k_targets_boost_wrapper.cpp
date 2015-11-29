@@ -278,7 +278,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
       *err_msg = (char *) "Unknown exception caught!";
       return -1;
   }
-}
+};
 
 template <class T>
 string toString( T argument){
@@ -287,7 +287,7 @@ string toString( T argument){
     s << argument;
     r = s.str();
     return r;
-}
+};
 
 int 
 onetomany_dijkstra_boostpath(edge_t *edges, unsigned int count,
