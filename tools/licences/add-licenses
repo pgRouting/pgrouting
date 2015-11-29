@@ -27,14 +27,23 @@ my @files = ();
 my %exclude = (
 );
 
-my @GNU_LICENSE = ();
 my $gnu_license = "GNU_license.txt";
-my @GNU_BODY = ();
+my @GNU_LICENSE = loadLicense($gnu_license);
+my @GNU_BODY = @GNU_LICENSE;
+splice @GNU_BODY, 0, 5;
 
-loadHeader($gnu_license);
+my $mit_license = "MIT_license.txt";
+my @MIT_LICENSE = loadLicense($mit_license);
+my @MIT_BODY = @MIT_LICENSE;
+splice @MIT_BODY, 0, 5;
 
-@GNU_BODY = @GNU_LICENSE;
-splice @GNU_BODY, 0, 10;
+my $ccm_license = "CCM_license.txt";
+my @CCM_LICENSE = loadLicense($ccm_license);
+my @CCM_BODY = @CCM_LICENSE;
+splice @CCM_BODY, 0, 1;
+
+my @LICENSE = ();
+my @LICENSE_BODY = ();
 
 my $dir    = shift @ARGV || Usage();
 my $xfile  = shift @ARGV;
@@ -58,22 +67,24 @@ for my $file (sort @files) {
     my $task = get_task($file);
     next if $task == 0;
     print "\n\n PROCESSING '$file'\n";
-    updateheader($task, $file) if $DOUPDATES;
+    update_license($task, $file) if $DOUPDATES;
 }
 
 exit;
 
 
 sub wanted {
-    /^.*\.(h|cpp|c|sql|hpp)\z/s &&
+    /^.*\.(h|cpp|c|sql|hpp|rst)\z/s &&
     push @files, $name;
 }
 
-sub loadHeader {
-    my $f = shift;
-    open(IN, $f) || die "Failed to open '$f' : $!\n";
-    @GNU_LICENSE = <IN>;
+sub loadLicense {
+    my $file_name = shift;
+    my @file_storage;
+    open(IN, $file_name) || die "Failed to open '$file_name' : $!\n";
+    @file_storage = <IN>;
     close(IN);
+    return @file_storage;
 }
 
 # When the first line is not equal it doesnt have the
@@ -90,39 +101,41 @@ sub get_task{
 
     open(IN, $f) || return 0;
 
-    my $x = <IN>;
-    my $mit = "/*PGR-MIT******************************************************************\n";
+    my $line = <IN>;
 
-    #print "MIT  '$mit'\n";
-    #print "LINE '$x'\n";
-
-    # Other licence found
-    if ($x eq $mit) {
-        close(IN);
-        return 0;
-    }
+    my $license_type = 0;
+    $license_type = 1 if $GNU_LICENSE[0] eq $line;
+    $license_type = 2 if $MIT_LICENSE[0] eq $line;
+    $license_type = 3 if $CCM_LICENSE[0] eq $line;
 
     #The license is not found
-    if ($GNU_LICENSE[0] ne $x) {
+    if ($license_type == 0) {
         close(IN);
         return 1;
     }
 
-    while ($x and ($x ne $GNU_LICENSE[5])) {
-        $x = <IN>;
+    # look for the dividing line
+    if ($license_type != 3) {
+        while ($line and ($line ne "------\n")) {
+            $line = <IN>;
+        }
+
+        #The dividing line is not found
+        if (!$line) {
+            close(IN);
+            return 1;
+        }
     }
 
-    #The dividing line is not found
-    if (!$x) {
-        close(IN);
-        return 1;
-    }
+    @LICENSE_BODY = @GNU_BODY if $license_type == 1;
+    @LICENSE_BODY = @MIT_BODY if $license_type == 2;
+    @LICENSE_BODY = @CCM_BODY if $license_type == 3;
 
 
     #The license is found but the body is different
-    for (my $i = 6; $i < @GNU_LICENSE; $i++) {
-        my $x = <IN>;
-        if ($GNU_LICENSE[$i] ne $x) {
+    for (my $i = 0; $i < @LICENSE_BODY; $i++) {
+        $line = <IN>;
+        if ($LICENSE_BODY[$i] ne $line) {
             close(IN);
             return 2;
         }
@@ -136,45 +149,67 @@ sub get_task{
 # task = 0 Do nothing
 # task = 1 Insert complete license
 # task = 2 Update license body 
-sub updateheader {
+sub update_license {
     my $task = shift;
-    my $f = shift;
+    my $file_name = shift;
 
     return if $task == 0; 
 
     # read the file
     my @file = ();
-    open(IN, $f) || die "Failed to read '$f' : $!\n";
+    open(IN, $file_name) || die "Failed to read '$file_name' : $!\n";
     @file = <IN>;
     close(IN);
+
+    my $license_type = 0;
+    if ($file[0] eq $GNU_LICENSE[0])  {
+        $license_type = 1;
+        @LICENSE = @GNU_LICENSE;
+        @LICENSE_BODY = @GNU_BODY;
+    } elsif ($file[0] eq  $MIT_LICENSE[0])  {
+        $license_type = 2;
+        @LICENSE = @MIT_LICENSE;
+        @LICENSE_BODY = @MIT_BODY;
+    } elsif ($file[0] eq  $CCM_LICENSE[0])  {
+        $license_type = 3;
+        @LICENSE = @CCM_LICENSE;
+        @LICENSE_BODY = @CCM_BODY;
+    } 
+
+
 
     if ($task == 1) {
         print "  Adding full license\n";
         print "     --> Please remove old license and update names if needed\n";
-        @file = (@GNU_LICENSE, @file);
+        @file = (@LICENSE, @file);
 
     } else {
         print "  Changing Body of license\n";
         #task = 2
 
+
         # Find the dividing line
         my $first = 0;
         my $last = 0;
-        while ($file[$first] ne $GNU_LICENSE[5]) {
-            $first++;
+        if ($license_type !=3) {
+            while ($file[$first] ne "------\n") {
+                $first++;
+            }
+        } else {
+            $first = 2;
         }
 
         $last = $first;
 
         # Find the last line
-        while ($file[$last] ne $GNU_LICENSE[20]) {
+        while ($file[$last] ne $LICENSE[$#LICENSE]) {
             $last++;
         }
 
-        splice @file, $first, $last-$first+1, @GNU_BODY;
+        splice @file, $first, $last-$first+1, @LICENSE_BODY;
 
     }
-    open(OUT, ">$f") || die "Failed to rewrite '$f' : $!\n";
+    open(OUT, ">$file_name") || die "Failed to rewrite '$file_name' : $!\n";
     print OUT @file;
     close(OUT);
 
