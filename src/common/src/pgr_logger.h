@@ -1,9 +1,18 @@
-/*
-    pgr_logger.h
-
+/*PGR-MIT******************************************************************
+ *
+ * file pgr_logger.h
+ *
     Author: Stephen Woodbridge
     Date: 2014-05-04
     License: MIT-X
+ *      
+ * This is free software; you can redistribute and/or modify it under
+ * the terms of the MIT License. Please file MIT-LICENSE for details.
+ *  
+ *****************************************************************PGR-MIT*/
+
+/*
+    pgr_logger.h
 
     A simple logging mechanism the can be disabled for production
     and should work in C or C++ code.

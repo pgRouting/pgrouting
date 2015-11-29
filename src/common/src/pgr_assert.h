@@ -1,14 +1,16 @@
-/*PGR*********************************************************************
+/*PGR-MIT******************************************************************
  *
  * file pgr_assert.h
  *
  * Copyright 2014 Stephen Woodbridge <woodbri@imaptools.com>
  * Copyright 2014 Vicky Vergara <vicky_vergara@hotmail.com>
- *
+ *      
  * This is free software; you can redistribute and/or modify it under
- * the terms of the MIT License. Please file LICENSE for details.
- *
- ********************************************************************PGR*/
+ * the terms of the MIT License. Please file MIT-LICENSE for details.
+ *  
+ *****************************************************************PGR-MIT*/
+
+
 
 /*! \file vrp_assert.h
  * \brief An assert functionality that uses C++ throw().

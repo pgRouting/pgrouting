@@ -1,4 +1,4 @@
-/*PGR*********************************************************************
+/*PGR-MIT******************************************************************
  *
  * file signalhandler.h
  *
@@ -6,9 +6,10 @@
  * Copyright 2014 Vicky Vergara <vicky_vergara@hotmail.com>
  *
  * This is free software; you can redistribute and/or modify it under
- * the terms of the MIT License. Please file LICENSE for details.
+ * the terms of the MIT License. Please file MIT-LICENSE for details.
  *
- ********************************************************************PGR*/
+ *****************************************************************PGR-MIT*/
+
 #ifndef SRC_COMMON_SRC_SIGNALHANDLER_H_
 #define SRC_COMMON_SRC_SIGNALHANDLER_H_
 
