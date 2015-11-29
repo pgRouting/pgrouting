@@ -137,9 +137,6 @@ sub get_task{
 
         $line = <IN>;
         if ($LICENSE_BODY[$i] ne $line) {
-        print "I '$i'\n";
-        print "LINE:'$line'\n";
-        print "LIC:'$LICENSE_BODY[$i]'\n";
             close(IN);
             return 2;
         }
