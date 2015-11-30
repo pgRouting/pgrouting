@@ -211,21 +211,6 @@ About this proposal:
 
     ../src/dijkstraViaVertex/doc/dijkstraViaVertex
 
-:pgr_dijkstra:
-
-About this proposal:
-  - Author: Vicky Vergara
-  - Status: developed, tested
-  - Name: pgr_dijkstra
-  - Functionality: same as existing pgr_dijktra but instead of arrays for the `start_vids` and
-    `end_vids` use sql queries.
-
-  -  :ref:`pgr_dijkstra_sql_version` - More functions for the pgr_dijkstra family functions
-
-.. toctree::
-    :hidden:
-
-    ../src/dijkstra/doc/dijkstra_sql_version
 
 
 
