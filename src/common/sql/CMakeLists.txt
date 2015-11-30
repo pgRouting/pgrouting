@@ -1,5 +1,6 @@
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting-types.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_version.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_utilities.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_node_network.sql
@@ -10,8 +11,6 @@ LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/noUnderUtilities.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/createIndex.sql
     
-# this one is in the main CMakelist becuse types have to go first
-#    ${CMAKE_CURRENT_SOURCE_DIR}/types.sql
 )
 
 # set in parent scope

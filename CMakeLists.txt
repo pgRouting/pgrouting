@@ -665,15 +665,18 @@ file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.
 #-----------------------------------------------------------------------------
 
 set(PACKAGE_SQL_FILES "")
-set(LIST_PACKAGE_SQL_FILES "${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql")
+set(LIST_PACKAGE_SQL_FILES "")
 
 foreach (subdir ${PgRouting_SQL_DIRECTORIES})
     add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/sql")
-    list(APPEND LIST_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 endforeach()
 
-if (FULLDEBUG)
-    message("LIST_PACKAGE_SQL_FILES= ${LIST_PACKAGE_SQL_FILES}")
+    list(APPEND LIST_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
+
+if (CDEBUG)
+    foreach (files ${LIST_PACKAGE_SQL_FILES})
+        message("${files}")
+    endforeach()
 endif()
 
 
