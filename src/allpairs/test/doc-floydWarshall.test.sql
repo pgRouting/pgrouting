@@ -21,6 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 -- documentation queries
+
 \echo -- q1
 SELECT * FROM pgr_floydWarshall(
     'SELECT id, source, target, cost FROM edge_table where id < 5'

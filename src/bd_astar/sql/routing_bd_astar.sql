@@ -1,6 +1,8 @@
 /*PGR-GNU*****************************************************************
 
-Copyright (c) 2015 pgRouting developers
+Bi Directional A* Shortest path algorithm for PostgreSQL
+
+Copyright (c) 2006 Anton A. Patrushev, Orkney, Inc.
 Mail: project@pgrouting.org
 
 ------

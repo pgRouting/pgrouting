@@ -34,29 +34,3 @@ CREATE OR REPLACE FUNCTION pgr_floydWarshall(edges_sql TEXT, directed BOOLEAN DE
  '$libdir/${PGROUTING_LIBRARY_NAME}', 'floydWarshall'  
     LANGUAGE c IMMUTABLE STRICT;
 
-CREATE OR REPLACE FUNCTION pgr_apspWarshall(edges_sql text, directed boolean, has_rcost boolean)
-    RETURNS SETOF pgr_costResult AS
-  $BODY$
-  DECLARE
-  has_reverse boolean;
-  sql TEXT;
-  BEGIN
-      RAISE NOTICE 'Deprecated function: Use pgr_floydWarshall instead';
-      has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
-      sql = edges_sql;
-      IF (has_reverse != has_rcost) THEN
-         IF (has_reverse) THEN
-           sql = 'SELECT id, source, target, cost FROM (' || edges_sql || ') a';
-         ELSE raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
-         END IF;
-      END IF;
-
-      RETURN query
-         SELECT (row_number() over () -1)::integer as seq, start_vid::integer AS id1, end_vid::integer AS id2, agg_cost AS cost
-         FROM  pgr_floydWarshall(sql, directed);
-  END
-  $BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100
-  ROWS 1000;
-
