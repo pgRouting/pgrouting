@@ -1,6 +1,6 @@
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/dijkstraVia.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/withPoints.sql
 )
 
 # set in parent scope
