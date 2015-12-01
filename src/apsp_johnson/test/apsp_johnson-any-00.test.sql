@@ -20,6 +20,38 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+
+\set ECHO none
+\set QUIET 1
+-- Turn off echo and keep things quiet.
+
+-- Format the output for nice TAP.
+\pset format unaligned
+\pset tuples_only true
+\pset pager
+\set VERBOSITY terse
+
+-- Revert all changes on failure.
+\set ON_ERROR_ROLLBACK true
+\set ON_ERROR_STOP true
+\set QUIET 1
+
 BEGIN;
-select seq, id1, id2, round(cost::numeric, 2) as cost from pgr_apspJohnson('select source, target, cost from apspj');
-ROLLBACK;
+    SELECT plan(1);
+
+    PREPARE q1 AS
+    SELECT id1, id2, round(cost::numeric, 2) as cost
+    FROM pgr_apspJohnson('select id, source, target, cost from apspj');
+
+
+    PREPARE q11 AS
+    SELECT start_vid::INTEGER AS id1, end_vid::INTEGER AS id2, round(agg_cost::numeric, 2) as cost
+    FROM pgr_johnson('select id, source, target, cost from apspj', TRUE);
+
+
+    SELECT set_eq('q1', 'q11','1: With directed: Compare with pgr_johnson -> must give the same results');
+
+    -- Finish the tests and clean up.
+    SELECT * FROM finish();
+    ROLLBACK;
+
