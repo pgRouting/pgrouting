@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_dijkstraViaEdges - Shortest paths via points in edges using dijkstra &mdash; pgRouting Manual (2.2.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0 (85ff8d6 cmake-improve-2.2)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../index.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.2.0)</span></a></h1>
+        <h2 class="heading"><span>pgr_dijkstraViaEdges - Shortest paths via points in edges using dijkstra</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-dijkstraviaedges-shortest-paths-via-points-in-edges-using-dijkstra">
+<h1>pgr_dijkstraViaEdges - Shortest paths via points in edges using dijkstra<a class="headerlink" href="#pgr-dijkstraviaedges-shortest-paths-via-points-in-edges-using-dijkstra" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_dijkstraViaEdges</span></tt> — Using dijkstra algorithm, it finds the route that goes through
+a list of points in edges.</p>
+<div class="figure">
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside7.jpeg" src="../../../_images/boost-inside7.jpeg" /></a>
+<p class="caption">Boost Graph Inside</p>
+</div>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Given a graph and a list of positional vertices given as list of edges and the corresponding
+relative position of the vertex given as a fraction, this function finds the route that goes
+Thru all the positional vertices.
+this function is equivalent to finding the shortest path between $p_vertex_i$ and $p_vertex_{i+1}$</p>
+</div>
+</div>
+<div class="section" id="signatures">
+<h1>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">pgr_dijkstraViaEdges Minimal signature</p>
+<p>The minimal signature is for a <strong>directed</strong> graph.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_dijkstraViaEdges</span><span class="p">(</span><span class="n">sql_q</span> <span class="nb">text</span><span class="p">,</span> <span class="n">via_edge</span> <span class="nb">array</span><span class="p">[</span><span class="n">ANY_INTEGER</span><span class="p">],</span> <span class="n">via_pos</span> <span class="n">arra</span><span class="p">[</span><span class="n">FLOAT8</span><span class="p">])</span>
+   <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">start_v</span><span class="p">,</span> <span class="n">end_v</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span> <span class="k">or</span> <span class="n">EMPTY</span> <span class="k">SET</span>
+</pre></div>
+</div>
+<p class="rubric">pgr_dijkstraViaEdges complete signature</p>
+<dl class="docutils">
+<dt>This signature works:</dt>
+<dd><ul class="first last simple">
+<li>on a <strong>directed</strong> graph when <tt class="docutils literal"><span class="pre">directed</span></tt> flag is missing or is set to <tt class="docutils literal"><span class="pre">true</span></tt>.</li>
+<li>on an <strong>undirected</strong> graph when <tt class="docutils literal"><span class="pre">directed</span></tt> flag is set to <tt class="docutils literal"><span class="pre">false</span></tt>.</li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_dijkstraViaEdges</span><span class="p">(</span><span class="n">sql_q</span> <span class="nb">text</span><span class="p">,</span> <span class="n">via_edge</span> <span class="nb">array</span><span class="p">[</span><span class="n">ANY_INTEGER</span><span class="p">],</span> <span class="n">via_pos</span> <span class="n">arra</span><span class="p">[</span><span class="n">FLOAT8</span><span class="p">])</span>
+           <span class="nb">boolean</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="k">true</span><span class="p">);</span>
+   <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">start_v</span><span class="p">,</span> <span class="n">end_v</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span> <span class="k">or</span> <span class="n">EMPTY</span> <span class="k">SET</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description-of-the-signatures">
+<h1>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description-of-the-sql-query">
+<h2>Description of the SQL query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first">an SQL query, which should return a set of rows with the following columns:</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt> identifier of the edge.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt> identifier of the source vertex of the edge.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt> identifier of the target vertex of the edge.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt> value of the edge traversal cost. A negative cost will prevent the edge (<tt class="docutils literal"><span class="pre">source</span></tt>, <tt class="docutils literal"><span class="pre">target</span></tt>) from being inserted in the graph.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">reverse_cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt> (optional) the value for the reverse traversal of the edge. A negative cost will prevent the edge (<tt class="docutils literal"><span class="pre">target</span></tt>, <tt class="docutils literal"><span class="pre">source</span></tt>) from being inserted in the graph.</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">smallint, int, bigint</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">smallint, int, bigint, real, float</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span> <span class="k">from</span> <span class="n">edge_table</span> <span class="k">where</span> <span class="n">geom</span> <span class="o">&amp;&amp;</span> <span class="n">ST_Expand</span><span class="p">(</span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mi">34</span><span class="p">),</span> <span class="mi">4326</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description-of-the-parameters-of-the-signatures">
+<h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body">SQL query as decribed above.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">via_vertex:</th><td class="field-body"><tt class="docutils literal"><span class="pre">array[ANY-INTEGER]</span></tt> array of id of the vertices in the via.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">directed:</th><td class="field-body"><tt class="docutils literal"><span class="pre">boolean</span></tt> (optional). When <tt class="docutils literal"><span class="pre">false</span></tt> the graph is considered as Undirected. Default is <tt class="docutils literal"><span class="pre">true</span></tt> which considers the graph as Directed.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-return-values">
+<h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
+<p>Returns set of <tt class="docutils literal"><span class="pre">(seq</span> <span class="pre">,</span> <span class="pre">start_v,</span> <span class="pre">end_v</span> <span class="pre">,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></tt></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body"><tt class="docutils literal"><span class="pre">INT</span></tt>  relative position in the route. Has value <strong>1</strong> for the begining of the route.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">start_v:</th><td class="field-body"><tt class="docutils literal"><span class="pre">BIGINT</span></tt> id of the via vertex from where the section starts.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">end_v:</th><td class="field-body"><tt class="docutils literal"><span class="pre">BIGINT</span></tt> id of the via vertex from where the section ends.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">node:</th><td class="field-body"><tt class="docutils literal"><span class="pre">BIGINT</span></tt> id of the node in the path from start_v to end_v.
+When <tt class="docutils literal"><span class="pre">node</span> <span class="pre">=</span> <span class="pre">start_v</span></tt> a section of the route starts. (starting via point)
+When <tt class="docutils literal"><span class="pre">node</span> <span class="pre">=</span> <span class="pre">end_v</span></tt> a section of the route ends (via point has being reached).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">edge:</th><td class="field-body"><tt class="docutils literal"><span class="pre">BIGINT</span></tt> id of the edge used to go from <tt class="docutils literal"><span class="pre">node</span></tt> to the next node in the section. <tt class="docutils literal"><span class="pre">-1</span></tt> a via point has being reached.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">FLOAT</span></tt> cost to traverse from <tt class="docutils literal"><span class="pre">node</span></tt> using <tt class="docutils literal"><span class="pre">edge</span></tt> to the next node in the iroute.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">agg_cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">FLOAT</span></tt> total cost from the first node in the via_vertex to <tt class="docutils literal"><span class="pre">node</span></tt>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p>The examples of this section are based on the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
+<p>The examples include combinations from starting vertices 2 and 11 to ending vertices 3 and 5 in a directed and
+undirected graph with and with out reverse_cost.</p>
+<div class="section" id="examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns">
+<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h2>
+<p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig1"><em>Graph 1: Directed, with cost and reverse cost</em></a></p>
+<div class="highlight-sql"><div class="highlight"><pre>    <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_dijkstraViaEdges</span><span class="p">(</span>
+              <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+                    <span class="nb">array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="nb">array</span><span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">85</span><span class="p">]</span>
+            <span class="p">);</span>
+
+    <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_dijkstraViaEdges</span><span class="p">(</span>
+              <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+                    <span class="nb">array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="nb">array</span><span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">85</span><span class="p">]</span>
+              <span class="k">true</span>
+    <span class="p">);</span>
+
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">start_v</span> <span class="o">|</span> <span class="n">end_v</span> <span class="o">|</span> <span class="n">vertex</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="c1">-----+---------+-------+--------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mi">0</span><span class="p">.</span><span class="mi">9</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span><span class="p">.</span><span class="mi">9</span>
+   <span class="mi">3</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span><span class="p">.</span><span class="mi">9</span>
+   <span class="mi">4</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span><span class="p">.</span><span class="mi">9</span>
+   <span class="mi">5</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span><span class="p">.</span><span class="mi">9</span>
+   <span class="mi">6</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>  <span class="mi">0</span><span class="p">.</span><span class="mi">5</span> <span class="o">|</span>      <span class="mi">4</span><span class="p">.</span><span class="mi">9</span>
+   <span class="mi">7</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>      <span class="mi">5</span><span class="p">.</span><span class="mi">4</span>
+   <span class="mi">8</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>  <span class="mi">0</span><span class="p">.</span><span class="mi">5</span> <span class="o">|</span>      <span class="mi">5</span><span class="p">.</span><span class="mi">4</span>
+   <span class="mi">9</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mi">5</span><span class="p">.</span><span class="mi">9</span>
+  <span class="mi">10</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">85</span> <span class="o">|</span>      <span class="mi">6</span><span class="p">.</span><span class="mi">9</span>
+  <span class="mi">11</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>     <span class="mi">7</span><span class="p">.</span><span class="mi">75</span>
+<span class="p">(</span><span class="mi">11</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns">
+<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">undirected</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h2>
+<p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig2"><em>Graph 2: Undirected, with cost and reverse cost</em></a></p>
+<div class="highlight-sql"><div class="highlight"><pre>    <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_dijkstraViaEdges</span><span class="p">(</span>
+                <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+                    <span class="nb">array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="nb">array</span><span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">85</span><span class="p">],</span>
+                <span class="k">false</span>
+           <span class="p">);</span>
+
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">start_v</span> <span class="o">|</span> <span class="n">end_v</span> <span class="o">|</span> <span class="n">vertex</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="c1">-----+---------+-------+--------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mi">0</span><span class="p">.</span><span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mi">0</span><span class="p">.</span><span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>  <span class="mi">0</span><span class="p">.</span><span class="mi">5</span> <span class="o">|</span>      <span class="mi">1</span><span class="p">.</span><span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>      <span class="mi">1</span><span class="p">.</span><span class="mi">6</span>
+   <span class="mi">5</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>  <span class="mi">0</span><span class="p">.</span><span class="mi">5</span> <span class="o">|</span>      <span class="mi">1</span><span class="p">.</span><span class="mi">6</span>
+   <span class="mi">6</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span><span class="p">.</span><span class="mi">1</span>
+   <span class="mi">7</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">85</span> <span class="o">|</span>      <span class="mi">3</span><span class="p">.</span><span class="mi">1</span>
+   <span class="mi">8</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>     <span class="mi">3</span><span class="p">.</span><span class="mi">95</span>
+<span class="p">(</span><span class="mi">8</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples-for-queries-marked-as-directed-with-cost-column">
+<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> column<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-column" title="Permalink to this headline">¶</a></h2>
+<p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig3"><em>Graph 3: Directed, with cost</em></a></p>
+<p>In this example there is no route because there is no path from 1 to 3.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_dijkstraViaEdges</span><span class="p">(</span>
+                <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+                <span class="nb">array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="nb">array</span><span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">85</span><span class="p">]</span>
+        <span class="p">);</span>
+
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_dijkstraViaEdges</span><span class="p">(</span>
+                <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+                <span class="nb">array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="nb">array</span><span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">85</span><span class="p">],</span>
+                 <span class="k">true</span>
+        <span class="p">);</span>
+
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">start_v</span> <span class="o">|</span> <span class="n">end_v</span> <span class="o">|</span> <span class="n">vertex</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="c1">----+---------+-------+--------+------+------+----------</span>
+<span class="p">(</span><span class="mi">0</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples-for-queries-marked-as-undirected-with-cost-column">
+<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">undirected</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> column<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-column" title="Permalink to this headline">¶</a></h2>
+<p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig4"><em>Graph 4: Undirected, with cost</em></a></p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_dijkstraViaEdges</span><span class="p">(</span>
+                <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
+                <span class="nb">array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="nb">array</span><span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">85</span><span class="p">],</span>
+                <span class="k">false</span>
+        <span class="p">);</span>
+
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">start_v</span> <span class="o">|</span> <span class="n">end_v</span> <span class="o">|</span> <span class="n">vertex</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="c1">-----+---------+-------+--------+------+------+----------</span>
+<span class="p">(</span><span class="mi">0</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>Renamed in version 2.0.0</li>
+<li>Added functionality for version 3.0.0 in version 2.1</li>
+</ul>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (85ff8d6 cmake-improve-2.2).
+      Last updated on Dec 01, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
