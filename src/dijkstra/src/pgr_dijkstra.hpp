@@ -69,30 +69,30 @@ pgr_drivingDistance(G &graph, Path &path,  int64_t  source, double distance) {
 
 template < class G >
 void
-pgr_dijkstra(G &graph, Path &path,  int64_t  source, int64_t target) {
+pgr_dijkstra(G &graph, Path &path,  int64_t  source, int64_t target, bool only_cost = false) {
     Pgr_dijkstra< G > fn_dijkstra;
-    fn_dijkstra.dijkstra(graph, path, source, target);
+    fn_dijkstra.dijkstra(graph, path, source, target, only_cost);
 }
 
 template < class G >
 void
-pgr_dijkstra(G &graph, std::deque<Path> &paths,  int64_t  source, const std::vector< int64_t > &targets) {
+pgr_dijkstra(G &graph, std::deque<Path> &paths,  int64_t  source, const std::vector< int64_t > &targets, bool only_cost = false) {
     Pgr_dijkstra< G > fn_dijkstra;
-    fn_dijkstra.dijkstra(graph, paths, source, targets);
+    fn_dijkstra.dijkstra(graph, paths, source, targets, only_cost);
 }
 
 template < class G >
 void
-pgr_dijkstra(G &graph, std::deque<Path> &paths,  const std::vector< int64_t > &sources, int64_t  target) {
+pgr_dijkstra(G &graph, std::deque<Path> &paths,  const std::vector< int64_t > &sources, int64_t  target, bool only_cost = false) {
     Pgr_dijkstra< G > fn_dijkstra;
-    fn_dijkstra.dijkstra(graph, paths, sources, target);
+    fn_dijkstra.dijkstra(graph, paths, sources, target, only_cost);
 }
 
 template < class G >
 void
-pgr_dijkstra(G &graph, std::deque<Path> &paths,  const std::vector< int64_t > sources, const std::vector< int64_t > &targets) {
+pgr_dijkstra(G &graph, std::deque<Path> &paths,  const std::vector< int64_t > sources, const std::vector< int64_t > &targets, bool only_cost = false) {
     Pgr_dijkstra< G > fn_dijkstra;
-    fn_dijkstra.dijkstra(graph, paths, sources, targets);
+    fn_dijkstra.dijkstra(graph, paths, sources, targets, only_cost);
 }
 
 
@@ -135,7 +135,7 @@ class Pgr_dijkstra {
     public:
         void
             //dijkstra(Path &path, int64_t start_vertex, int64_t end_vertex) {
-            dijkstra(G &graph, Path &path, int64_t start_vertex, int64_t end_vertex) {
+            dijkstra(G &graph, Path &path, int64_t start_vertex, int64_t end_vertex, bool only_cost = false) {
                 clear();
 
                 // adjust predecessors and distances vectors
@@ -156,7 +156,11 @@ class Pgr_dijkstra {
                 dijkstra_1_to_1(graph.graph, v_source, v_target);
 
                 // get the results
-                get_path(graph, v_source, v_target, path);
+                if (only_cost) {
+                    get_cost(graph, v_source, v_target, path);
+                } else {
+                    get_path(graph, v_source, v_target, path);
+                }
                 return;
             }
 
@@ -190,7 +194,7 @@ class Pgr_dijkstra {
         void
             dijkstra(G &graph, std::deque< Path > &paths,
                     int64_t start_vertex,
-                    const std::vector< int64_t > &end_vertex) {
+                    const std::vector< int64_t > &end_vertex, bool only_cost = false) {
 
                 // adjust predecessors and distances vectors
                 clear();
@@ -217,7 +221,11 @@ class Pgr_dijkstra {
                 dijkstra_1_to_many(graph.graph, v_source, v_targets);
 
                 // get the results // route id are the targets
-                get_path(graph, paths, v_source, v_targets);
+                if (only_cost) {
+                    get_cost(graph, paths, v_source, v_targets);
+                } else {
+                    get_path(graph, paths, v_source, v_targets);
+                }
                 return;
             }
 
@@ -268,12 +276,12 @@ class Pgr_dijkstra {
             // preparation for many to 1
             dijkstra(G &graph, std::deque< Path > &paths,
                     const std::vector < int64_t > &start_vertex,
-                    int64_t end_vertex) {
+                    int64_t end_vertex, bool only_cost = false) {
                 // perform the algorithm // a call for each of the sources
                 for (const auto &start : start_vertex) {
                     Path path;
                     // each call cleans the local structures
-                    dijkstra(graph, path, start, end_vertex);
+                    dijkstra(graph, path, start, end_vertex, only_cost);
                     paths.push_back(path);
                 }
                 return;
@@ -284,10 +292,10 @@ class Pgr_dijkstra {
         void
             dijkstra(G &graph, std::deque< Path > &paths,
                     const std::vector< int64_t > &start_vertex,
-                    const std::vector< int64_t > &end_vertex) {
+                    const std::vector< int64_t > &end_vertex, bool only_cost = false) {
                 // a call to 1 to many is faster for each of the sources
                 for (const auto &start : start_vertex) {
-                    dijkstra(graph, paths, start, end_vertex);
+                    dijkstra(graph, paths, start, end_vertex, only_cost);
                 }
                 return;
             }
@@ -427,6 +435,13 @@ class Pgr_dijkstra {
             }
         }
 
+    public:
+        void clear() {
+            predecessors.clear();
+            distances.clear();
+            nodesInDistance.clear();
+        }
+
 
     private:
         template <class V>
@@ -441,14 +456,6 @@ class Pgr_dijkstra {
                 }
             }
 
-    public:
-        void clear() {
-            predecessors.clear();
-            distances.clear();
-            nodesInDistance.clear();
-        }
-
-    private:
         template <class V>
             void get_path(
                     const G &graph, V source, V target,
@@ -501,6 +508,39 @@ class Pgr_dijkstra {
                     target = predecessors[target];
                 }
                 return;
+            }
+
+        template <class V>
+            void get_cost(const G &graph, std::deque< Path > &paths, V source, std::set< V > &targets) const{
+                // used when multiple goals
+                Path path;
+                typename std::set< V >::iterator s_it;
+                for (s_it = targets.begin(); s_it != targets.end(); ++s_it) {
+                    path.clear();
+                    get_cost(graph, source, *s_it, path);
+                    paths.push_back(path);
+                }
+            }
+
+        template <class V>
+            void get_cost(
+                    const G &graph, V source, V target,
+                    Path &path) const{
+
+                // backup of the target
+                uint64_t from(graph.graph[source].id);
+                uint64_t to(graph.graph[target].id);
+
+                // no path was found
+                if (target == predecessors[target]) {
+                    if (from == to ) {
+                        path.push_front(1, from, to, graph.graph[target].id, -1, 0, 0);
+                    } else {
+                        path.clear();
+                    }
+                } else {
+                    path.push_front(1, from, to, graph.graph[target].id, -1, 0,  distances[target]);
+                }
             }
 
 };

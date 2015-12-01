@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vid bigint, end_vid bigint, directed boolean,
-    only_cost boolean default false,
+CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql TEXT, start_vid bigint, end_vid bigint, directed BOOLEAN,
+    only_cost BOOLEAN DEFAULT false,
   OUT seq integer, OUT path_seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
  '$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_one_dijkstra'
@@ -35,8 +35,8 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vid bigint, end_v
     -- One to many
 
 
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vid bigint, end_vids anyarray, directed boolean default true,
-    only_cost boolean default false,
+CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql TEXT, start_vid bigint, end_vids anyarray, directed BOOLEAN DEFAULT true,
+    only_cost BOOLEAN DEFAULT false,
   OUT seq integer, OUT path_seq integer, OUT end_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
  '$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_many_dijkstra'
@@ -46,8 +46,8 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vid bigint, end_v
 --  many to one
 
 
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vids anyarray, end_vid bigint, directed boolean default true,
-    only_cost boolean default false,
+CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql TEXT, start_vids anyarray, end_vid bigint, directed BOOLEAN DEFAULT true,
+    only_cost BOOLEAN DEFAULT false,
     OUT seq integer, OUT path_seq integer, OUT start_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
 RETURNS SETOF RECORD AS
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'many_to_one_dijkstra'
@@ -56,8 +56,8 @@ LANGUAGE c IMMUTABLE STRICT;
 --  many to many
 
 
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vids anyarray, end_vids anyarray, directed boolean default true,
-    only_cost boolean default false,
+CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql TEXT, start_vids anyarray, end_vids anyarray, directed BOOLEAN DEFAULT true,
+    only_cost BOOLEAN DEFAULT false,
     OUT seq integer, OUT path_seq integer, OUT start_vid bigint, OUT end_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
 RETURNS SETOF RECORD AS
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'many_to_many_dijkstra'
@@ -68,11 +68,11 @@ LANGUAGE c IMMUTABLE STRICT;
 
 
 -- V2 signature
-CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vid bigint, end_vid bigint, directed boolean, has_rcost boolean)
+CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql TEXT, start_vid bigint, end_vid bigint, directed BOOLEAN, has_rcost boolean)
 RETURNS SETOF pgr_costresult AS
 $BODY$
 DECLARE
-has_reverse boolean;
+has_reverse BOOLEAN;
 sql TEXT;
 BEGIN
     RAISE NOTICE 'Deprecated function';
@@ -95,13 +95,13 @@ ROWS 1000;
 
 
 -- V3 signature 1 to 1
-CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vid bigint, end_vid bigint,
+CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql TEXT, start_vid bigint, end_vid bigint,
     OUT seq integer,  OUT path_seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
 DECLARE
  statement_txt record;
- sql text;
+ sql TEXT;
 BEGIN
     RETURN query 
     SELECT * FROM _pgr_dijkstra(_pgr_get_statement($1), start_vid, end_vid, true, false);
@@ -113,7 +113,7 @@ ROWS 1000;
 
 
 -- V3 signature 1 to 1
-CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vid bigint, end_vid bigint, directed boolean,
+CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql TEXT, start_vid bigint, end_vid bigint, directed BOOLEAN,
     OUT seq integer,  OUT path_seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
@@ -138,7 +138,7 @@ ROWS 1000;
         ONE TO MANY
 ***********************************/
 
-CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vid bigint, end_vids anyarray, directed boolean default true,
+CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql TEXT, start_vid bigint, end_vids anyarray, directed BOOLEAN DEFAULT true,
   OUT seq integer, OUT path_seq integer, OUT end_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
@@ -157,7 +157,7 @@ ROWS 1000;
         MANY TO ONE
 ***********************************/
 
-CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vids ANYARRAY, end_vid BIGINT, directed boolean default true,
+CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql TEXT, start_vids ANYARRAY, end_vid BIGINT, directed BOOLEAN DEFAULT true,
   OUT seq integer, OUT path_seq integer, OUT start_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
@@ -176,7 +176,7 @@ ROWS 1000;
         MANY TO MANY
 ***********************************/
 
-CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql text, start_vids ANYARRAY, end_vids ANYARRAY, directed boolean default true,
+CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql TEXT, start_vids ANYARRAY, end_vids ANYARRAY, directed BOOLEAN DEFAULT true,
     OUT seq integer, OUT path_seq integer, OUT start_vid bigint, OUT end_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
@@ -203,7 +203,7 @@ ROWS 1000;
 /***********************************
         ONE TO ONE
 ***********************************/
-CREATE OR REPLACE FUNCTION pgr_dijkstraCost(edges_sql text, BIGINT, BIGINT, directed boolean,
+CREATE OR REPLACE FUNCTION pgr_dijkstraCost(edges_sql TEXT, BIGINT, BIGINT, directed BOOLEAN DEFAULT true,
     OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
@@ -222,7 +222,7 @@ ROWS 1000;
 ***********************************/
 
 
-CREATE OR REPLACE FUNCTION pgr_dijkstraCost(edges_sql text, BIGINT, end_vids anyarray, directed boolean default true,
+CREATE OR REPLACE FUNCTION pgr_dijkstraCost(edges_sql TEXT, BIGINT, end_vids anyarray, directed BOOLEAN DEFAULT true,
     OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
@@ -240,7 +240,7 @@ ROWS 1000;
         MANY TO ONE
 ***********************************/
 
-CREATE OR REPLACE FUNCTION pgr_dijkstraCost(edges_sql text, start_vids ANYARRAY, BIGINT, directed boolean default true,
+CREATE OR REPLACE FUNCTION pgr_dijkstraCost(edges_sql TEXT, start_vids ANYARRAY, BIGINT, directed BOOLEAN DEFAULT true,
     OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
@@ -259,7 +259,7 @@ ROWS 1000;
         MANY TO MANY
 ***********************************/
 
-CREATE OR REPLACE FUNCTION pgr_dijkstraCost(edges_sql text, start_vids ANYARRAY, end_vids ANYARRAY, directed boolean default true,
+CREATE OR REPLACE FUNCTION pgr_dijkstraCost(edges_sql TEXT, start_vids ANYARRAY, end_vids ANYARRAY, directed BOOLEAN DEFAULT true,
     OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$

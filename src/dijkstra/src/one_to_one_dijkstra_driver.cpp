@@ -61,59 +61,49 @@ do_pgr_one_to_one_dijkstra(
   std::ostringstream log;
   try {
 
-    graphType gType = directed? DIRECTED: UNDIRECTED;
-    const int initial_size = total_tuples;
+      graphType gType = directed? DIRECTED: UNDIRECTED;
+      const int initial_size = total_tuples;
 
-    Path path;
+      Path path;
 
-    if (directed) {
-        log << "Working with directed Graph\n";
-        Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
-        digraph.graph_insert_data(data_edges, total_tuples);
-        pgr_dijkstra(digraph, path, start_vid, end_vid);
-    } else {
-        log << "Working with Undirected Graph\n";
-        Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
-        undigraph.graph_insert_data(data_edges, total_tuples);
-        pgr_dijkstra(undigraph, path, start_vid, end_vid);
-    }
+      if (directed) {
+          log << "Working with directed Graph\n";
+          Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+          digraph.graph_insert_data(data_edges, total_tuples);
+          pgr_dijkstra(digraph, path, start_vid, end_vid, only_cost);
+      } else {
+          log << "Working with Undirected Graph\n";
+          Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+          undigraph.graph_insert_data(data_edges, total_tuples);
+          pgr_dijkstra(undigraph, path, start_vid, end_vid, only_cost);
+      }
 
-    size_t count(0);
+      size_t count(0);
 
-    if (only_cost) {
-            if ( !path.path.empty() ) count++;
-    } else {            
-        count = path.path.size();
-    }                                   
+      count = path.path.size();
 
-    if (count == 0) {
-        (*return_tuples) = NULL;
-        (*return_count) = 0;
-        log <<
-            "No paths found between Starting and any of the Ending vertices\n";
-        *err_msg = strdup(log.str().c_str());
-        return;
-    }
+      if (count == 0) {
+          (*return_tuples) = NULL;
+          (*return_count) = 0;
+          log <<
+              "No paths found between Starting and any of the Ending vertices\n";
+          *err_msg = strdup(log.str().c_str());
+          return;
+      }
 
-    (*return_tuples) = get_memory(count, (*return_tuples));
-    if (only_cost) {
-        if  ( !path.path.empty() ) {
-            (*return_tuples)[0] = path.path[ path.path.size() - 1 ];
-        }
-        (*return_count) = count;
-    } else {
-        size_t sequence = 0;
-        path.generate_postgres_data(return_tuples, sequence);
-        (*return_count) = sequence;
-    }
+      (*return_tuples) = get_memory(count, (*return_tuples));
+      size_t sequence = 0;
+      path.generate_postgres_data(return_tuples, sequence);
+      (*return_count) = sequence;
+      //
 
 #ifndef DEBUG
-    *err_msg = strdup("OK");
+      *err_msg = strdup("OK");
 #else
-    *err_msg = strdup(log.str().c_str());
+      *err_msg = strdup(log.str().c_str());
 #endif
 
-    return;
+      return;
   } catch ( ... ) {
       log << "Caught unknown expection!\n";
       *err_msg = strdup(log.str().c_str());

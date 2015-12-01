@@ -76,6 +76,8 @@ set(PgRouting_SOURCE_NAMES
     #    "dijkstra_via_vertices"
     "dijkstraViaVertex"
     
+    "apsp_johnson"  #V2.0
+    "apsp_warshall" #V2.0
     "astar" "bd_astar"
     "bd_dijkstra" 
     "kdijkstra"
@@ -107,8 +109,6 @@ set(PgRouting_INCLUDE_DIRECTORIES ${PgRouting_SOURCE_NAMES})
 
 set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES} 
     "topology"
-    "apsp_johnson"  #V2.0
-    "apsp_warshall" #V2.0
     "label_graph")
 
 

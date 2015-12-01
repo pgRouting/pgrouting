@@ -13,7 +13,6 @@ pgr_dijkstra - Shortest Path Dijkstra
 ===============================================================================
 
   -  :ref:`pgr_dijkstra<pgr_dijkstra_v3>` - Dijkstra - get the shortest paths.
-  -  :ref:`pgr_dijkstraCost<pgr_dijkstraCost>` - Dijkstra- get the aggregate cost of the paths.
 
 
 

@@ -75,24 +75,18 @@ do_pgr_many_to_many_dijkstra(
             log << "Working with directed Graph\n";
             Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
             digraph.graph_insert_data(data_edges, total_tuples);
-            pgr_dijkstra(digraph, paths, start_vertices, end_vertices);
+            pgr_dijkstra(digraph, paths, start_vertices, end_vertices, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data(data_edges, total_tuples);
-            pgr_dijkstra(undigraph, paths, start_vertices, end_vertices);
+            pgr_dijkstra(undigraph, paths, start_vertices, end_vertices, only_cost);
         }
 
 
         size_t count(0);
 
-        if (only_cost) {
-            for (const auto &path : paths) {
-                if ( !path.path.empty() ) count++;
-            }
-        } else {
-            count = count_tuples(paths);
-        }
+        count = count_tuples(paths);
 
         if (count == 0) {
             (*return_tuples) = NULL;
@@ -104,19 +98,8 @@ do_pgr_many_to_many_dijkstra(
         }
 
         (*return_tuples) = get_memory(count, (*return_tuples));
-        if (only_cost) {
-            int i = 0;
-            for (const auto &path : paths) {
-                if  ( !path.path.empty() ) {
-                    (*return_tuples)[i] = path.path[ path.path.size() - 1 ];
-                    i++;
-                }
-            }
-            (*return_count) = count;
-        } else {
-            log << "Converting a set of paths into the tuples\n";
-            (*return_count) = (collapse_paths(return_tuples, paths));
-        }
+        log << "Converting a set of paths into the tuples\n";
+        (*return_count) = (collapse_paths(return_tuples, paths));
 
 
 #ifndef DEBUG
