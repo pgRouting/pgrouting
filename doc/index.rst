@@ -187,7 +187,7 @@ About this proposal:
   -  :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
 
 
-:pgr_johnson:
+:pgr_floydWarshall
 
 About this proposal:
   - Author: Vicky Vergara

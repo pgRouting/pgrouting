@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
         SELECT plan(1);
 
-
+        
 SELECT set_eq(
 'SELECT *
 FROM pgr_kdijkstraPath(
