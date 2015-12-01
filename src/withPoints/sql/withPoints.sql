@@ -54,7 +54,8 @@ CREATE OR REPLACE FUNCTION  pgr_withPointsVia(
   sql_safe text;
   new_edges text;
   BEGIN
-      has_rcost =_pgr_parameter_check('dijkstra', sql, true);
+      has_rcost =_pgr_parameter_check('dijkstra', sql, false);
+
       IF array_length(via_edges, 1) != array_length(fraction, 1) then
         RAISE EXCEPTION 'The length of via_edges is different of length of via_edges';
       END IF;
@@ -93,7 +94,6 @@ CREATE OR REPLACE FUNCTION  pgr_withPointsVia(
           END IF;
           END IF;
      END LOOP;
-
 
      IF sql_new_vertices = ' ' THEN
          new_edges := sql; 
@@ -145,7 +145,7 @@ CREATE OR REPLACE FUNCTION  pgr_withPointsVia(
  -- raise notice '%', new_edges;
      sql_new_vertices := sql_new_vertices || v_union || ' (' || sql || ')';
      RETURN query SELECT *
-         FROM _pgr_dijkstraViaVertices(new_edges, via_vertices, directed, has_rcost);
+         FROM pgr_dijkstraViaVertex(new_edges, via_vertices, directed, has_rcost);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE

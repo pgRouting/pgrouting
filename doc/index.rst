@@ -173,7 +173,7 @@ About this proposal:
     - many to many
 
 
-  -  :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to make calculate only the 
+  - :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to make calculate only the 
     aggregate cost of the shortest path. 
 
 :pgr_johnson:
@@ -183,20 +183,17 @@ About this proposal:
   - Status: testing
   - Name: pgr_johnson
   - Deprecate pgr_apspJohnson in favor of pgr_johnson
+  - :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
 
-  -  :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
 
-
-:pgr_floydWarshall
+:pgr_floydWarshall:
 
 About this proposal:
   - Author: Vicky Vergara
   - Status: testing
   - Name: pgr_floydWarshall
   - Deprecate pgr_apspWarshall in favor of pgr_floydWarshall
-
-
-  -  :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
+  - :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
 
 
 :pgr_dijkstraViaVertex:
@@ -205,8 +202,19 @@ About this proposal:
   - Author: Vicky Vergara
   - Status: developing, testing
   - Temporary name: pgr_dijkstraViaVertex
+  - :ref:`pgr_dijkstraViaVertex` - Use pgr_dijkstra to make a route via Vetices 
 
-  -  :ref:`pgr_dijkstraViaVertex` - Use pgr_dijkstra to make a route via Vetices 
+
+:pgr_dijkstraViaVertex:
+
+About this proposal:
+  - Author: Vicky Vergara
+  - Status: developing, testing
+  - Temporary name: pgr_withPointsVia
+  - :ref:`pgr_withPointsVia` - Use pgr_dijkstraViaVertes to make the route
+     via temporary vertices. 
+
+
 
 .. toctree::
     :hidden:
@@ -215,6 +223,7 @@ About this proposal:
     ../src/allpairs/doc/johnson.rst
     ../src/allpairs/doc/floydWarshall.rst
     ../src/dijkstraViaVertex/doc/dijkstraViaVertex
+    ../src/withPoints/doc/withPointsVia
 
 *******************************************************************************
 Experimental functions: Proposed by Steve Woodbridge

@@ -73,7 +73,6 @@ option(POSTGRESQL_VERSION " To set the version")
 set(PgRouting_SOURCE_NAMES
     "common" "dijkstra" "driving_distance" "ksp"
     "allpairs"
-    #    "dijkstra_via_vertices"
     "dijkstraViaVertex"
     
     "apsp_johnson"  #V2.0
@@ -109,6 +108,7 @@ set(PgRouting_INCLUDE_DIRECTORIES ${PgRouting_SOURCE_NAMES})
 
 set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES} 
     "topology"
+    "withPoints"
     "label_graph")
 
 

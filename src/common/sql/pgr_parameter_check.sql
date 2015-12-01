@@ -104,7 +104,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
 
     -- Checking the data types of the optional reverse_cost";
     has_rcost := false;
-    IF fn IN ('johnson') THEN
+    IF fn IN ('johnson','dijkstra') THEN
       BEGIN
         execute 'select reverse_cost, pg_typeof(reverse_cost)::text as rev_type  from ('||safesql||' ) AS __b__ limit 1 ' into rec1;
         has_rcost := true;
