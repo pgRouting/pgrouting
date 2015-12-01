@@ -59,29 +59,29 @@ sudo ldconfig
 #	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
 #fi
 
-#if [ "$POSTGIS_VERSION" == "2.0" ]; then 
-#	RELEASE="2.0.7"
-#	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
-#fi
-#
-#if [ "$POSTGIS_VERSION" == "2.1" ]; then 
-#	sudo apt-get install -y -qq libpoppler-dev libarmadillo-dev libepsilon-dev liblzma-dev libxml2-dev
-#	RELEASE="2.1.7"
-#	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
-#fi
+if [ "$POSTGIS_VERSION" == "2.0" ]; then 
+	RELEASE="2.0.7"
+	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
+fi
+
+if [ "$POSTGIS_VERSION" == "2.1" ]; then 
+	sudo apt-get install -y -qq libpoppler-dev libarmadillo-dev libepsilon-dev liblzma-dev libxml2-dev
+	RELEASE="2.1.7"
+	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
+fi
 
 # Build and compile
-#cd postgis-*
-#./autogen.sh
-#./configure 
-#make
-#sudo make install
-#sudo ldconfig
+cd postgis-*
+./autogen.sh
+./configure 
+make
+sudo make install
+sudo ldconfig
 
 # Build extension for PostGIS > 2.0
-if [ "$POSTGIS_VERSION" != "1.5" ]; then 
+#if [ "$POSTGIS_VERSION" != "1.5" ]; then 
 	cd extensions && make && sudo make install
-fi
+#fi
 
 
 # ------------------------------------------------------------------------------
