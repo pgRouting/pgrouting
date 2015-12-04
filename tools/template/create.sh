@@ -2,16 +2,16 @@
 
 
 #dont put pgr_ on MY_FUNCTION_NAME that is done automatically
-MY_FUNCTION_NAME="travelingSalesPerson"
+MY_FUNCTION_NAME="turnRestricted"
 DEVELOPER_NAME="Celia Virginia Vergara Castillo"
 DEVELOPER_EMAIL="vicky_vergara@hotmail.com" 
 YEAR="2015"
 
-MY_QUERY_LINE1="CREATE OR REPLACE FUNCTION pgr_travelingSalesPerson(sql TEXT, start_vid BIGINT, end_vids ANYARRAY, directed BOOLEAN DEFAULT true,"
-MY_QUERY_LINE2="   OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost FLOAT)"
+MY_QUERY_LINE1="CREATE OR REPLACE FUNCTION pgr_turnRestriction(edges_sql TEXT, start_vid BIGINT, end_vid BIGINT, restrictions_sql TEXT DEFAULT 'No restrictions', directed BOOLEAN DEFAULT true,"
+MY_QUERY_LINE2="OUT seq BIGINT, OUT path_seq, OUT node BIGINT, OUT edge BIGINT, OUT cost FLOAT, OUT agg_cost FLOAT)"
 
 
-MY_RETURN_VALUE_TYPE="Matrix_cell_t" 
+MY_RETURN_VALUE_TYPE="General_path_element_t" 
 MY_FUNCTION_NAME_UPPER=$(echo $MY_FUNCTION_NAME | tr 'a-z' 'A-Z')
 
 #the above variables must be defined

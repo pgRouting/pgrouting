@@ -97,6 +97,21 @@ typedef struct {
     float8 cost;
 } pgr_path_t;
 
+// Restrictions used in pgr_turnRestrictions
+
+#define  MAX_RULE_LENGTH 5
+typedef struct 
+{
+    int64_t target_id;
+    float8 to_cost;
+    int64_t via[MAX_RULE_LENGTH];
+    char *via_path;
+}
+Restrict_t;
+
+
+
+
 struct boost_vertex_t {
     int64_t id;
 };

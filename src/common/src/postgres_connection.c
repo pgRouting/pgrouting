@@ -66,8 +66,8 @@ void
   }
 }
 
-static
-SPIPlanPtr pgr_SPI_prepare(char* sql) {
+SPIPlanPtr
+pgr_SPI_prepare(char* sql) {
   PGR_DBG("Preparing Plan");
   SPIPlanPtr SPIplan;
   SPIplan = SPI_prepare(sql, 0, NULL);
@@ -77,8 +77,8 @@ SPIPlanPtr pgr_SPI_prepare(char* sql) {
   return SPIplan;
 }
 
-static
-Portal pgr_SPI_cursor_open(SPIPlanPtr SPIplan) {
+Portal
+pgr_SPI_cursor_open(SPIPlanPtr SPIplan) {
   PGR_DBG("Opening Portal");
   Portal SPIportal;
   SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true);
@@ -88,8 +88,8 @@ Portal pgr_SPI_cursor_open(SPIPlanPtr SPIplan) {
   return SPIportal;
 }
 
-static
-void pgr_fetch_column_info(
+void
+pgr_fetch_column_info(
   int *colNumber,
   int *coltype,
   char *colName) {
@@ -197,8 +197,15 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     return (int64_t*)data;
 }
 
-static
-void pgr_check_any_integer_type(char* colName, int type) {
+void
+pgr_check_text_type(char* colName, int type) {
+  if (!(type == TEXTOID)) {
+    elog(ERROR, "Unexpected Column '%s' type. Expected TEXT", colName);
+  }
+}
+
+void
+pgr_check_any_integer_type(char* colName, int type) {
   if (!(type == INT2OID 
       || type == INT4OID
       || type == INT8OID)){
@@ -206,7 +213,6 @@ void pgr_check_any_integer_type(char* colName, int type) {
   }
 }
 
-static
 void pgr_check_any_numerical_type(char* colName, int type) {
   if (!(type == INT2OID
       || type == INT4OID
@@ -219,8 +225,8 @@ void pgr_check_any_numerical_type(char* colName, int type) {
 
 
 
-static 
-int64_t pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType) {
+int64_t
+pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType) {
   Datum binval;
   bool isnull;
   int64_t value = 0;
@@ -242,7 +248,8 @@ int64_t pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, i
   return value;
 }
 
-static float8 pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType) {
+float8
+pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType) {
   Datum binval;
   bool isnull;
   float8 value = 0.0;
@@ -269,6 +276,17 @@ static float8 pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, int colNum
   }
   return value;
 }
+
+char*
+pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType) {
+  char* value = NULL;
+  char* val = NULL;
+  val = SPI_getvalue(*tuple, *tupdesc, colNumber);
+  value = DatumGetCString(&val);
+  pfree(val);
+  return value;
+}
+
 
 /********************
 Functions for pgr_foo with sql:

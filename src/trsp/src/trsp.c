@@ -34,7 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
 Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 
-#undef DEBUG
 //#define DEBUG 1
 #include "../../common/src/debug_macro.h"
 
@@ -42,9 +41,6 @@ Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
-//#ifdef PG_MODULE_MAGIC
-//PG_MODULE_MAGIC;
-//#endif
 
 typedef struct edge_columns
 {
