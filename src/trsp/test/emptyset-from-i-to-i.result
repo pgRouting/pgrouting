@@ -1,0 +1,145 @@
+1..144
+ok 1 - 1 Directed, with reverse_cost and saying we use it: from 1 to 1
+ok 2 - 2 Directed, with reverse_cost and saying we dont use it: from 1 to 1
+ok 3 - 3 Directed, No reverse_cost and saying we dont use it: from 1 to 1
+ok 4 - 4 Directed, No reverse_cost and saying we use it: from 1 to 1
+ok 5 - 5 Directed, with reverse_cost and saying we use it: from 2 to 2
+ok 6 - 6 Directed, with reverse_cost and saying we dont use it: from 2 to 2
+ok 7 - 7 Directed, No reverse_cost and saying we dont use it: from 2 to 2
+ok 8 - 8 Directed, No reverse_cost and saying we use it: from 2 to 2
+ok 9 - 9 Directed, with reverse_cost and saying we use it: from 3 to 3
+ok 10 - 10 Directed, with reverse_cost and saying we dont use it: from 3 to 3
+ok 11 - 11 Directed, No reverse_cost and saying we dont use it: from 3 to 3
+ok 12 - 12 Directed, No reverse_cost and saying we use it: from 3 to 3
+ok 13 - 13 Directed, with reverse_cost and saying we use it: from 4 to 4
+ok 14 - 14 Directed, with reverse_cost and saying we dont use it: from 4 to 4
+ok 15 - 15 Directed, No reverse_cost and saying we dont use it: from 4 to 4
+ok 16 - 16 Directed, No reverse_cost and saying we use it: from 4 to 4
+ok 17 - 17 Directed, with reverse_cost and saying we use it: from 5 to 5
+ok 18 - 18 Directed, with reverse_cost and saying we dont use it: from 5 to 5
+ok 19 - 19 Directed, No reverse_cost and saying we dont use it: from 5 to 5
+ok 20 - 20 Directed, No reverse_cost and saying we use it: from 5 to 5
+ok 21 - 21 Directed, with reverse_cost and saying we use it: from 6 to 6
+ok 22 - 22 Directed, with reverse_cost and saying we dont use it: from 6 to 6
+ok 23 - 23 Directed, No reverse_cost and saying we dont use it: from 6 to 6
+ok 24 - 24 Directed, No reverse_cost and saying we use it: from 6 to 6
+ok 25 - 25 Directed, with reverse_cost and saying we use it: from 7 to 7
+ok 26 - 26 Directed, with reverse_cost and saying we dont use it: from 7 to 7
+ok 27 - 27 Directed, No reverse_cost and saying we dont use it: from 7 to 7
+ok 28 - 28 Directed, No reverse_cost and saying we use it: from 7 to 7
+ok 29 - 29 Directed, with reverse_cost and saying we use it: from 8 to 8
+ok 30 - 30 Directed, with reverse_cost and saying we dont use it: from 8 to 8
+ok 31 - 31 Directed, No reverse_cost and saying we dont use it: from 8 to 8
+ok 32 - 32 Directed, No reverse_cost and saying we use it: from 8 to 8
+ok 33 - 33 Directed, with reverse_cost and saying we use it: from 9 to 9
+ok 34 - 34 Directed, with reverse_cost and saying we dont use it: from 9 to 9
+ok 35 - 35 Directed, No reverse_cost and saying we dont use it: from 9 to 9
+ok 36 - 36 Directed, No reverse_cost and saying we use it: from 9 to 9
+ok 37 - 37 Directed, with reverse_cost and saying we use it: from 10 to 10
+ok 38 - 38 Directed, with reverse_cost and saying we dont use it: from 10 to 10
+ok 39 - 39 Directed, No reverse_cost and saying we dont use it: from 10 to 10
+ok 40 - 40 Directed, No reverse_cost and saying we use it: from 10 to 10
+ok 41 - 41 Directed, with reverse_cost and saying we use it: from 11 to 11
+ok 42 - 42 Directed, with reverse_cost and saying we dont use it: from 11 to 11
+ok 43 - 43 Directed, No reverse_cost and saying we dont use it: from 11 to 11
+ok 44 - 44 Directed, No reverse_cost and saying we use it: from 11 to 11
+ok 45 - 45 Directed, with reverse_cost and saying we use it: from 12 to 12
+ok 46 - 46 Directed, with reverse_cost and saying we dont use it: from 12 to 12
+ok 47 - 47 Directed, No reverse_cost and saying we dont use it: from 12 to 12
+ok 48 - 48 Directed, No reverse_cost and saying we use it: from 12 to 12
+ok 49 - 49 Directed, with reverse_cost and saying we use it: from 13 to 13
+ok 50 - 50 Directed, with reverse_cost and saying we dont use it: from 13 to 13
+ok 51 - 51 Directed, No reverse_cost and saying we dont use it: from 13 to 13
+ok 52 - 52 Directed, No reverse_cost and saying we use it: from 13 to 13
+ok 53 - 53 Directed, with reverse_cost and saying we use it: from 14 to 14
+ok 54 - 54 Directed, with reverse_cost and saying we dont use it: from 14 to 14
+ok 55 - 55 Directed, No reverse_cost and saying we dont use it: from 14 to 14
+ok 56 - 56 Directed, No reverse_cost and saying we use it: from 14 to 14
+ok 57 - 57 Directed, with reverse_cost and saying we use it: from 15 to 15
+ok 58 - 58 Directed, with reverse_cost and saying we dont use it: from 15 to 15
+ok 59 - 59 Directed, No reverse_cost and saying we dont use it: from 15 to 15
+ok 60 - 60 Directed, No reverse_cost and saying we use it: from 15 to 15
+ok 61 - 61 Directed, with reverse_cost and saying we use it: from 16 to 16
+ok 62 - 62 Directed, with reverse_cost and saying we dont use it: from 16 to 16
+ok 63 - 63 Directed, No reverse_cost and saying we dont use it: from 16 to 16
+ok 64 - 64 Directed, No reverse_cost and saying we use it: from 16 to 16
+ok 65 - 65 Directed, with reverse_cost and saying we use it: from 17 to 17
+ok 66 - 66 Directed, with reverse_cost and saying we dont use it: from 17 to 17
+ok 67 - 67 Directed, No reverse_cost and saying we dont use it: from 17 to 17
+ok 68 - 68 Directed, No reverse_cost and saying we use it: from 17 to 17
+ok 69 - 69 Directed, with reverse_cost and saying we use it: from 18 to 18
+ok 70 - 70 Directed, with reverse_cost and saying we dont use it: from 18 to 18
+ok 71 - 71 Directed, No reverse_cost and saying we dont use it: from 18 to 18
+ok 72 - 72 Directed, No reverse_cost and saying we use it: from 18 to 18
+ok 73 - 1 Undirected, with reverse_cost and saying we use it: from 1 to 1
+ok 74 - 2 Undirected, with reverse_cost and saying we dont use it: from 1 to 1
+ok 75 - 3 Undirected, No reverse_cost and saying we dont use it: from 1 to 1
+ok 76 - 4 Undirected, No reverse_cost and saying we use it: from 1 to 1
+ok 77 - 5 Undirected, with reverse_cost and saying we use it: from 2 to 2
+ok 78 - 6 Undirected, with reverse_cost and saying we dont use it: from 2 to 2
+ok 79 - 7 Undirected, No reverse_cost and saying we dont use it: from 2 to 2
+ok 80 - 8 Undirected, No reverse_cost and saying we use it: from 2 to 2
+ok 81 - 9 Undirected, with reverse_cost and saying we use it: from 3 to 3
+ok 82 - 10 Undirected, with reverse_cost and saying we dont use it: from 3 to 3
+ok 83 - 11 Undirected, No reverse_cost and saying we dont use it: from 3 to 3
+ok 84 - 12 Undirected, No reverse_cost and saying we use it: from 3 to 3
+ok 85 - 13 Undirected, with reverse_cost and saying we use it: from 4 to 4
+ok 86 - 14 Undirected, with reverse_cost and saying we dont use it: from 4 to 4
+ok 87 - 15 Undirected, No reverse_cost and saying we dont use it: from 4 to 4
+ok 88 - 16 Undirected, No reverse_cost and saying we use it: from 4 to 4
+ok 89 - 17 Undirected, with reverse_cost and saying we use it: from 5 to 5
+ok 90 - 18 Undirected, with reverse_cost and saying we dont use it: from 5 to 5
+ok 91 - 19 Undirected, No reverse_cost and saying we dont use it: from 5 to 5
+ok 92 - 20 Undirected, No reverse_cost and saying we use it: from 5 to 5
+ok 93 - 21 Undirected, with reverse_cost and saying we use it: from 6 to 6
+ok 94 - 22 Undirected, with reverse_cost and saying we dont use it: from 6 to 6
+ok 95 - 23 Undirected, No reverse_cost and saying we dont use it: from 6 to 6
+ok 96 - 24 Undirected, No reverse_cost and saying we use it: from 6 to 6
+ok 97 - 25 Undirected, with reverse_cost and saying we use it: from 7 to 7
+ok 98 - 26 Undirected, with reverse_cost and saying we dont use it: from 7 to 7
+ok 99 - 27 Undirected, No reverse_cost and saying we dont use it: from 7 to 7
+ok 100 - 28 Undirected, No reverse_cost and saying we use it: from 7 to 7
+ok 101 - 29 Undirected, with reverse_cost and saying we use it: from 8 to 8
+ok 102 - 30 Undirected, with reverse_cost and saying we dont use it: from 8 to 8
+ok 103 - 31 Undirected, No reverse_cost and saying we dont use it: from 8 to 8
+ok 104 - 32 Undirected, No reverse_cost and saying we use it: from 8 to 8
+ok 105 - 33 Undirected, with reverse_cost and saying we use it: from 9 to 9
+ok 106 - 34 Undirected, with reverse_cost and saying we dont use it: from 9 to 9
+ok 107 - 35 Undirected, No reverse_cost and saying we dont use it: from 9 to 9
+ok 108 - 36 Undirected, No reverse_cost and saying we use it: from 9 to 9
+ok 109 - 37 Undirected, with reverse_cost and saying we use it: from 10 to 10
+ok 110 - 38 Undirected, with reverse_cost and saying we dont use it: from 10 to 10
+ok 111 - 39 Undirected, No reverse_cost and saying we dont use it: from 10 to 10
+ok 112 - 40 Undirected, No reverse_cost and saying we use it: from 10 to 10
+ok 113 - 41 Undirected, with reverse_cost and saying we use it: from 11 to 11
+ok 114 - 42 Undirected, with reverse_cost and saying we dont use it: from 11 to 11
+ok 115 - 43 Undirected, No reverse_cost and saying we dont use it: from 11 to 11
+ok 116 - 44 Undirected, No reverse_cost and saying we use it: from 11 to 11
+ok 117 - 45 Undirected, with reverse_cost and saying we use it: from 12 to 12
+ok 118 - 46 Undirected, with reverse_cost and saying we dont use it: from 12 to 12
+ok 119 - 47 Undirected, No reverse_cost and saying we dont use it: from 12 to 12
+ok 120 - 48 Undirected, No reverse_cost and saying we use it: from 12 to 12
+ok 121 - 49 Undirected, with reverse_cost and saying we use it: from 13 to 13
+ok 122 - 50 Undirected, with reverse_cost and saying we dont use it: from 13 to 13
+ok 123 - 51 Undirected, No reverse_cost and saying we dont use it: from 13 to 13
+ok 124 - 52 Undirected, No reverse_cost and saying we use it: from 13 to 13
+ok 125 - 53 Undirected, with reverse_cost and saying we use it: from 14 to 14
+ok 126 - 54 Undirected, with reverse_cost and saying we dont use it: from 14 to 14
+ok 127 - 55 Undirected, No reverse_cost and saying we dont use it: from 14 to 14
+ok 128 - 56 Undirected, No reverse_cost and saying we use it: from 14 to 14
+ok 129 - 57 Undirected, with reverse_cost and saying we use it: from 15 to 15
+ok 130 - 58 Undirected, with reverse_cost and saying we dont use it: from 15 to 15
+ok 131 - 59 Undirected, No reverse_cost and saying we dont use it: from 15 to 15
+ok 132 - 60 Undirected, No reverse_cost and saying we use it: from 15 to 15
+ok 133 - 61 Undirected, with reverse_cost and saying we use it: from 16 to 16
+ok 134 - 62 Undirected, with reverse_cost and saying we dont use it: from 16 to 16
+ok 135 - 63 Undirected, No reverse_cost and saying we dont use it: from 16 to 16
+ok 136 - 64 Undirected, No reverse_cost and saying we use it: from 16 to 16
+ok 137 - 65 Undirected, with reverse_cost and saying we use it: from 17 to 17
+ok 138 - 66 Undirected, with reverse_cost and saying we dont use it: from 17 to 17
+ok 139 - 67 Undirected, No reverse_cost and saying we dont use it: from 17 to 17
+ok 140 - 68 Undirected, No reverse_cost and saying we use it: from 17 to 17
+ok 141 - 69 Undirected, with reverse_cost and saying we use it: from 18 to 18
+ok 142 - 70 Undirected, with reverse_cost and saying we dont use it: from 18 to 18
+ok 143 - 71 Undirected, No reverse_cost and saying we dont use it: from 18 to 18
+ok 144 - 72 Undirected, No reverse_cost and saying we use it: from 18 to 18
