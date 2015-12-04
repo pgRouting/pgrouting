@@ -1,7 +1,10 @@
-/*PGR
+/*PGR-GNU*****************************************************************
+File: pgr_ksp.hpp
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky_vergara@hotmail.com
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,7 +20,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
+********************************************************************PGR-GNU*/
 
 #ifndef SRC_KSP_SRC_PGR_KSP_HPP_
 #define SRC_KSP_SRC_PGR_KSP_HPP_
@@ -37,7 +40,7 @@ class Pgr_ksp {
 
         ~Pgr_ksp(void) {}
 #endif
-        std::deque<Path> Yen(G &graph, int64_t source, int64_t target, int K);
+        std::deque<Path> Yen(G &graph, int64_t source, int64_t target, int K, bool heap_paths);
         void clear();
 
  private:
@@ -96,3 +99,4 @@ class Pgr_ksp {
 #include "./pgr_ksp.cpp"
 
 #endif  // SRC_KSP_SRC_PGR_KSP_HPP_
+>>>>>>> cmake-improve-2.2

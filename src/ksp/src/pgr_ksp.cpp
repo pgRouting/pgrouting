@@ -1,7 +1,10 @@
-/*PGR
+/*PGR-GNU*****************************************************************
+File: pgr_ksp.cpp
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky_vergara@hotmail.com
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -16,7 +19,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-*/
+
+********************************************************************PGR-GNU*/
 
 #include <deque>
 #include "./../../common/src/basePath_SSEC.hpp"
@@ -41,7 +45,9 @@ void Pgr_ksp< G >::getFirstSolution(G &graph) {
 template < class G>
 std::deque<Path>
 Pgr_ksp< G >::Yen(G &graph, 
-  int64_t  start_vertex, int64_t end_vertex, int K) {
+  int64_t  start_vertex, int64_t end_vertex, int K, bool heap_paths) {
+    m_ResultSet.clear();
+    m_Heap.clear();
     std::deque<Path> l_ResultList;
     if ((start_vertex != end_vertex) && (K > 0)) {
         if   (!graph.get_gVertex(start_vertex, v_source)
@@ -53,15 +59,18 @@ Pgr_ksp< G >::Yen(G &graph,
         executeYen(graph, K);
     }
 
-    while (m_Heap.size()) {
-         curr_result_path = *m_Heap.begin();
-         m_ResultSet.insert(curr_result_path);
-         m_Heap.erase(m_Heap.begin());
+    while (!m_Heap.empty()) {
+        Path curr_result_path = *m_Heap.begin();
+        m_ResultSet.insert(curr_result_path);
+        m_Heap.erase(m_Heap.begin());
     }
 
-    while (m_ResultSet.size()) {
+    int i = 0;
+    while (!m_ResultSet.empty()) {
          l_ResultList.push_back((*m_ResultSet.begin()));
          m_ResultSet.erase(m_ResultSet.begin());
+         ++i;
+         if (!heap_paths && (i == K)) break;
     }
     return l_ResultList;
 }
@@ -125,9 +134,10 @@ void Pgr_ksp< G >::executeYen(G &graph, int K) {
 
           while ( m_ResultSet.size() < (unsigned int) K ) {
                 doNextCycle(graph);
-                if ( m_Heap.size() == 0 ) break;
+                if ( m_Heap.empty() ) break;
                 curr_result_path = *m_Heap.begin();
                 m_ResultSet.insert(curr_result_path);
                 m_Heap.erase(m_Heap.begin());
           }
 }
+>>>>>>> cmake-improve-2.2

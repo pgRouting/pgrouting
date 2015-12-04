@@ -77,7 +77,6 @@ Some functions from previous releases may have been removed.
 .. toctree::
 	:maxdepth: 1
 
-	../src/common/doc/legacy
 	src/developer/discontinued
 
 .. toctree::

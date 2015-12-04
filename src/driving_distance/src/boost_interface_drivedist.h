@@ -1,9 +1,10 @@
-/*PGR
-
-file: KSPDriver.h
+/*PGR-GNU*****************************************************************
+File: boost_interface_drivedist.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,7 +20,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
+********************************************************************PGR-GNU*/
 
 #ifndef SRC_DRIVING_DISTANCE_SRC_BOOST_INTERFACE_DRIVEDIST_H_
 #define SRC_DRIVING_DISTANCE_SRC_BOOST_INTERFACE_DRIVEDIST_H_
@@ -30,7 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-int  do_pgr_driving_many_to_dist(pgr_edge_t  * edges, int64_t total_tuples,
+void
+do_pgr_driving_many_to_dist(pgr_edge_t  * edges, int64_t total_tuples,
                       int64_t  *start_vertex, int s_len,
                       float8 distance,
                       bool directed,
@@ -38,7 +40,8 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  * edges, int64_t total_tuples,
                       General_path_element_t **ret_path, size_t *path_count,
                       char ** err_msg);
 
-int  do_pgr_driving_distance(pgr_edge_t  * edges, int64_t total_tuples,
+void
+do_pgr_driving_distance(pgr_edge_t  * edges, int64_t total_tuples,
                       int64_t  start_vertex, float8 distance,
                       bool directed,
                       General_path_element_t **ret_path, size_t *path_count,

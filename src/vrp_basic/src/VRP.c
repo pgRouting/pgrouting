@@ -1,7 +1,9 @@
-/*PGR
+/*PGR-GNU*****************************************************************
 
 Copyright (c) 2013 Khondoker Md. Razequl Islam
 ziboncsedu@gmail.com
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,7 +19,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
+********************************************************************PGR-GNU*/
 
 #include "VRP.h"
 
@@ -82,13 +84,8 @@ Datum vrp(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
+#include "../../common/src/debug_macro.h"
 
-#ifdef DEBUG
-#define DBG(format, arg...)                     \
-    elog(NOTICE, format , ## arg)
-#else
-#define DBG(format, arg...) do { ; } while (0)
-#endif
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
@@ -157,7 +154,7 @@ finish(int *code)
 static int
 fetch_distance_columns(SPITupleTable *tuptable, distance_columns_t *distance_columns)
 {
-	DBG("Fetching distance");
+	PGR_DBG("Fetching distance");
 
 	distance_columns->src_id = SPI_fnumber(SPI_tuptable->tupdesc, "src_id");
 	distance_columns->dest_id = SPI_fnumber(SPI_tuptable->tupdesc, "dest_id");
@@ -186,20 +183,20 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
 	Datum binval;
 	bool isnull;
 
-	DBG("fetch_distance: src_id col:%i", distance_columns->src_id);
+	PGR_DBG("fetch_distance: src_id col:%i", distance_columns->src_id);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, distance_columns->src_id, &isnull);
 
-    DBG("back from SPI_getbinval for src_id");
-    DBG("binval=%i", binval);
+    PGR_DBG("back from SPI_getbinval for src_id");
+    PGR_DBG("binval=%i", binval);
 
 	if (isnull)
 		elog(ERROR, "src_id contains a null value");
 
 	dist->src_id = DatumGetInt32(binval);
 
-    DBG("back from DatumGetInt32");
-	DBG("src_id=%i", dist->src_id);
+    PGR_DBG("back from DatumGetInt32");
+	PGR_DBG("src_id=%i", dist->src_id);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, distance_columns->dest_id, &isnull);
 	if (isnull)
@@ -207,7 +204,7 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	dist->dest_id = DatumGetInt32(binval);
 
-	DBG("dest_id=%i", dist->dest_id);
+	PGR_DBG("dest_id=%i", dist->dest_id);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, distance_columns->cost, &isnull);
 
@@ -216,7 +213,7 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	dist->cost = DatumGetFloat8(binval);
 
-	DBG("cost=%lf", dist->cost);
+	PGR_DBG("cost=%lf", dist->cost);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, distance_columns->distance, &isnull);
 	if (isnull)
@@ -224,7 +221,7 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	dist->distance = DatumGetFloat8(binval);
 
-	DBG("distance=%lf", dist->distance);
+	PGR_DBG("distance=%lf", dist->distance);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, distance_columns->traveltime, &isnull);
 
@@ -233,19 +230,19 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	dist->traveltime = DatumGetFloat8(binval);
 
-	DBG("traveltime=%lf", dist->traveltime);
+	PGR_DBG("traveltime=%lf", dist->traveltime);
 
-	//DBG("dist[%i][%i] = %f\n", from_point, to_point, value);
+	//PGR_DBG("dist[%i][%i] = %f\n", from_point, to_point, value);
 
 	
-	//DBG("dist[%i(%i:%i)][%i(%i:%i)] = %f\n", from, from_order, from_point, to, to_order, to_point, *(dist + (num_rows * from) + to));
+	//PGR_DBG("dist[%i(%i:%i)][%i(%i:%i)] = %f\n", from, from_order, from_point, to, to_order, to_point, *(dist + (num_rows * from) + to));
 
 }
 
 static int
 fetch_order_columns(SPITupleTable *tuptable, order_columns_t *order_columns)
 {
-	DBG("Fetching order");
+	PGR_DBG("Fetching order");
 
 	//order_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
 	order_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
@@ -283,11 +280,11 @@ fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
 	Datum binval;
 	bool isnull;
 
-	DBG("inside fetch_order\n");
+	PGR_DBG("inside fetch_order\n");
 
 	//binval = SPI_getbinval(*tuple, *tupdesc, order_columns->id, &isnull);
 	//
-	//  DBG("got binval\n");
+	//  PGR_DBG("got binval\n");
 	//
 	//if (isnull)
 	//  elog(ERROR, "id contains a null value");
@@ -295,7 +292,7 @@ fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
 	//order->id = DatumGetInt32(binval);
 	order->id = t+1;
 
-	DBG("id = %i\n", order->id);
+	PGR_DBG("id = %i\n", order->id);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, order_columns->id, &isnull);
 	if (isnull)
@@ -303,7 +300,7 @@ fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	order->id = DatumGetInt32(binval);
 
-	DBG("order_id = %i\n", order->id);  
+	PGR_DBG("order_id = %i\n", order->id);  
 
 
 	binval = SPI_getbinval(*tuple, *tupdesc, order_columns->order_unit, &isnull);
@@ -312,7 +309,7 @@ fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	order->order_unit = DatumGetInt32(binval);
 
-	DBG("order_unit = %i\n", order->order_unit);
+	PGR_DBG("order_unit = %i\n", order->order_unit);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, order_columns->open_time, &isnull);
 	if (isnull)
@@ -320,7 +317,7 @@ fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	order->open_time = DatumGetInt32(binval);
 
-	DBG("open_time = %i\n", order->open_time);
+	PGR_DBG("open_time = %i\n", order->open_time);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, order_columns->close_time, &isnull);
 	if (isnull)
@@ -328,7 +325,7 @@ fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	order->close_time = DatumGetInt32(binval);
 
-	DBG("close_time = %d\n", order->close_time);
+	PGR_DBG("close_time = %d\n", order->close_time);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, order_columns->service_time, &isnull);
 	if (isnull)
@@ -336,7 +333,7 @@ fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	order->service_time = DatumGetInt32(binval);
 
-	DBG("service_time = %d\n", order->service_time);
+	PGR_DBG("service_time = %d\n", order->service_time);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, order_columns->x, &isnull);
 	if (isnull)
@@ -344,7 +341,7 @@ fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	order->x = DatumGetFloat8(binval);
 
-	DBG("x = %f\n", order->x);
+	PGR_DBG("x = %f\n", order->x);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, order_columns->y, &isnull);
 	if (isnull)
@@ -352,14 +349,14 @@ fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	order->y = DatumGetFloat8(binval);
 
-	DBG("doUT = %f\n", order->y);
+	PGR_DBG("doUT = %f\n", order->y);
 
 }
 
 static int
 fetch_vehicle_columns(SPITupleTable *tuptable, vehicle_columns_t *vehicle_columns)
 {
-	DBG("Fetching order");
+	PGR_DBG("Fetching order");
 
 	vehicle_columns->vehicle_id = SPI_fnumber(SPI_tuptable->tupdesc, "vehicle_id");
 	vehicle_columns->capacity = SPI_fnumber(SPI_tuptable->tupdesc, "capacity");
@@ -383,10 +380,10 @@ fetch_vehicle(HeapTuple *tuple, TupleDesc *tupdesc,
 	Datum binval;
 	bool isnull;
 
-	DBG("inside fetch_vehicle\n");
+	PGR_DBG("inside fetch_vehicle\n");
 
 	//binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->id, &isnull);
-	//DBG("Got id\n");
+	//PGR_DBG("Got id\n");
 	//
 	//if (isnull)
 	//  elog(ERROR, "id contains a null value");
@@ -395,14 +392,14 @@ fetch_vehicle(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	
 	binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->vehicle_id, &isnull);
-	DBG("Got vehicle_id\n");
+	PGR_DBG("Got vehicle_id\n");
 
 	if (isnull)
 		elog(ERROR, "vehicle_id contains a null value");
 
 	vehicle->id = DatumGetInt32(binval);
 
-	DBG("vehicle_id = %i\n", vehicle->id);
+	PGR_DBG("vehicle_id = %i\n", vehicle->id);
 
 	binval = SPI_getbinval(*tuple, *tupdesc, vehicle_columns->capacity, &isnull);
 	if (isnull)
@@ -410,7 +407,7 @@ fetch_vehicle(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	vehicle->capacity = DatumGetInt32(binval);
 
-	DBG("capacity = %f\n", vehicle->capacity);
+	PGR_DBG("capacity = %f\n", vehicle->capacity);
 
 }
 
@@ -492,7 +489,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 	order_num = 0;
 	vehicle_num = 0;
 
-	DBG("start solve_vrp\n");
+	PGR_DBG("start solve_vrp\n");
 
 	//vrp_orders_t depot_ord = {id:0, order_id:depot, from:depot_point, to:depot_point};
 	//orders = palloc(1 * sizeof(vrp_orders_t));
@@ -506,23 +503,23 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 
 	// Fetching orders
 
-    DBG("calling prepare_query for orders_sql");
+    PGR_DBG("calling prepare_query for orders_sql");
 
 	prep = prepare_query(&SPIportal_o, orders_sql);
 
 	if (prep < 0)
 		return ret;
 
-	DBG("Query: %s\n",orders_sql);
-	DBG("Query executed\n");
+	PGR_DBG("Query: %s\n",orders_sql);
+	PGR_DBG("Query executed\n");
 
-	DBG("Orders before: %i\n", order_num);
+	PGR_DBG("Orders before: %i\n", order_num);
 
 	while (moredata == TRUE)  
 	{
 		SPI_cursor_fetch(SPIportal_o, TRUE, TUPLIMIT);
 
-		DBG("cursor fetched\n");
+		PGR_DBG("cursor fetched\n");
 
 		if (order_columns.id == -1)
 		{
@@ -534,7 +531,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 
 		order_num += ntuples;
 
-		DBG("Tuples: %i\n", order_num);
+		PGR_DBG("Tuples: %i\n", order_num);
 
 		if (!orders)
 		  	orders = palloc(order_num * sizeof(vrp_orders_t));
@@ -553,17 +550,17 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 			SPITupleTable *tuptable = SPI_tuptable;
 			TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
-			DBG("Got tuple desc\n");
+			PGR_DBG("Got tuple desc\n");
 
 			for (t = 0; t < ntuples; t++)
 			{
 				HeapTuple tuple = tuptable->vals[t];
-				//DBG("Before order fetched [%i]\n", order_num - ntuples + t);
+				//PGR_DBG("Before order fetched [%i]\n", order_num - ntuples + t);
 				fetch_order(&tuple, &tupdesc, &order_columns,
 					&orders[order_num - ntuples + t], t);
 
 				//&orders[t+1], t);
-				DBG("Order fetched\n");
+				PGR_DBG("Order fetched\n");
 			}
 
 			SPI_freetuptable(tuptable);
@@ -581,7 +578,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 		elog(NOTICE, "ORDERS[%i] = {id=%i, open=%i, close=%i, service=%i}", o, orders[o].id, orders[o].open_time, orders[o].close_time, orders[o].service_time);
 	}
 */
-	DBG ("order_num = %i", order_num); 
+	PGR_DBG ("order_num = %i", order_num); 
 
 	//qsort (orders, order_num+1, sizeof (vrp_orders_t), order_cmp);
 
@@ -594,8 +591,8 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 	if (prep < 0)
 		return ret;
 
-	DBG("Query: %s\n",vehicles_sql);
-	DBG("Query executed\n");
+	PGR_DBG("Query: %s\n",vehicles_sql);
+	PGR_DBG("Query executed\n");
 
 
 	while (moredata == TRUE)
@@ -613,7 +610,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 
 		vehicle_num += ntuples;
 
-		DBG("Tuples: %i\n", vehicle_num);
+		PGR_DBG("Tuples: %i\n", vehicle_num);
 
 		if (!vehicles)
 			vehicles = palloc(vehicle_num * sizeof(vrp_vehicles_t));
@@ -632,15 +629,15 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 			SPITupleTable *tuptable = SPI_tuptable;
 			TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
-			DBG("Got tuple desc\n");
+			PGR_DBG("Got tuple desc\n");
 
 			for (t = 0; t < ntuples; t++)
 			{
 				HeapTuple tuple = tuptable->vals[t];
-				DBG("Before vehicle fetched\n");
+				PGR_DBG("Before vehicle fetched\n");
 				fetch_vehicle(&tuple, &tupdesc, &vehicle_columns,
 					&vehicles[vehicle_num - ntuples + t], t);
-				DBG("Vehicle fetched\n");
+				PGR_DBG("Vehicle fetched\n");
 			}
 
 			SPI_freetuptable(tuptable);
@@ -663,8 +660,8 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 	if (prep < 0)
 		return ret;
 
-	DBG("Query: %s\n",dist_sql);
-	DBG("Query executed\n");
+	PGR_DBG("Query: %s\n",dist_sql);
+	PGR_DBG("Query executed\n");
 
 	while (moredata == TRUE)
 	{
@@ -679,7 +676,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 		ntuples = SPI_processed;
 		dist_num += ntuples;
 
-		DBG("Tuples: %i\n", vehicle_num);
+		PGR_DBG("Tuples: %i\n", vehicle_num);
 
 		if (!costs)
 			costs = palloc(dist_num * sizeof(vrp_cost_element_t));
@@ -698,15 +695,15 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 			SPITupleTable *tuptable = SPI_tuptable;
 			TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
-			DBG("Got tuple desc\n");
+			PGR_DBG("Got tuple desc\n");
 
 			for (t = 0; t < ntuples; t++)
 			{
 				HeapTuple tuple = tuptable->vals[t];
-				DBG("Before distance fetched\n");
+				PGR_DBG("Before distance fetched\n");
 				fetch_distance(&tuple, &tupdesc, &distance_columns,
 					&costs[dist_num - ntuples + t], t);
-				DBG("Distance fetched\n");
+				PGR_DBG("Distance fetched\n");
 			}
 
 			SPI_freetuptable(tuptable);
@@ -718,13 +715,13 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 	}// end of fetching distances
 
 
-	DBG("Calling vrp\n");
+	PGR_DBG("Calling vrp\n");
 
 	profstop("extract", prof_extract);
 	profstart(prof_vrp);
 
-	DBG("Total orders: %i\n", order_num);
-	DBG("Total vehicles: %i\n", vehicle_num);
+	PGR_DBG("Total orders: %i\n", order_num);
+	PGR_DBG("Total vehicles: %i\n", vehicle_num);
 
 
 	//qsort (orders, order_num+1, sizeof (vrp_orders_t), order_cmp_asc);
@@ -734,7 +731,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 	int o;
 	for(o=0; o<order_num+1;++o)
 	{
-		DBG("ORDERS[%i] = {id=%i, open=%i, close=%i, service=%i}", o, orders[o].id, orders[o].open_time, orders[o].close_time, orders[o].service_time);
+		PGR_DBG("ORDERS[%i] = {id=%i, open=%i, close=%i, service=%i}", o, orders[o].id, orders[o].open_time, orders[o].close_time, orders[o].service_time);
 	}
 #endif
 	
@@ -742,7 +739,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 
 	//itinerary = (vrp_result_element_t *)palloc(sizeof(vrp_result_element_t)*(order_num*2-1)*vehicle_num);
 
-	DBG("Calling vrp solver\n");
+	PGR_DBG("Calling vrp solver\n");
     //elog(NOTICE, "Calling find_vrp_solution: vehicles: %i, orders: %i, dists: %i, depot: %i", vehicle_num, order_num, dist_num, depot);
 
 	ret = find_vrp_solution(vehicles, vehicle_num,
@@ -761,13 +758,13 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 		elog(NOTICE, "Row: %d: %d %d %d %d %d", pp, (*path)[pp].order_id, (*path)[pp].order_pos, (*path)[pp].vehicle_id, (*path)[pp].arrival_time, (*path)[pp].depart_time);
 	}
 */
-	DBG("vrp solved! ret: %d, path_count: %d", ret, path_count);
-	//DBG("Score: %f\n", fit);
+	PGR_DBG("vrp solved! ret: %d, path_count: %d", ret, path_count);
+	//PGR_DBG("Score: %f\n", fit);
 
 	profstop("vrp", prof_vrp);
 	profstart(prof_store);
 
-	DBG("Profile changed and ret is %i", ret);
+	PGR_DBG("Profile changed and ret is %i", ret);
 
 	if (ret < 0)
 	{
@@ -812,7 +809,7 @@ vrp(PG_FUNCTION_ARGS)
 		//path = (vrp_result_element_t *)palloc(sizeof(vrp_result_element_t)*(MAX_ORDERS-1)*2*MAX_VEHICLES);
 
 
-        DBG("Calling solve_vrp ...");
+        PGR_DBG("Calling solve_vrp ...");
 
 		// ret =
                 solve_vrp(//text2char(PG_GETARG_TEXT_P(0)), // points sql
@@ -822,11 +819,11 @@ vrp(PG_FUNCTION_ARGS)
 			PG_GETARG_INT32(3),  // depot id
 			&path, &path_count);
 
-		DBG("Back from solve_vrp, path_count:%d", path_count);
+		PGR_DBG("Back from solve_vrp, path_count:%d", path_count);
 		//elog(NOTICE, "Back from solve_vrp, path_count:%d", path_count);
         
         /* total number of tuples to be returned */
-		//DBG("Counting tuples number\n");
+		//PGR_DBG("Counting tuples number\n");
 
 		funcctx->max_calls = total_tuples;
 
@@ -862,8 +859,8 @@ vrp(PG_FUNCTION_ARGS)
 	path = (vrp_result_element_t *)funcctx->user_fctx;
 
 	//elog(NOTICE, "Point 1");
-	//DBG("Trying to allocate some memory\n");
-	//DBG("call_cntr = %i, max_calls = %i\n", call_cntr, max_calls);
+	//PGR_DBG("Trying to allocate some memory\n");
+	//PGR_DBG("call_cntr = %i, max_calls = %i\n", call_cntr, max_calls);
 
 	if (call_cntr < max_calls)    /* do when there is more left to send */
 	{
@@ -887,16 +884,16 @@ vrp(PG_FUNCTION_ARGS)
 		values[4] = Int32GetDatum(path[call_cntr].depart_time);  // departure time
 		nulls[4] = ' ';
 
-		// DBG("Heap making\n");
+		// PGR_DBG("Heap making\n");
 		//elog(NOTICE,"Result %d %d %d", call_cntr, path[call_cntr].order_id, max_calls);
 		tuple = heap_formtuple(tuple_desc, values, nulls);
 
-		//DBG("Datum making\n");
+		//PGR_DBG("Datum making\n");
 
 		/* make the tuple into a datum */
 		result = HeapTupleGetDatum(tuple);
 
-		//DBG("Trying to free some memory\n");
+		//PGR_DBG("Trying to free some memory\n");
 
 		/* clean up */
 		pfree(values);
@@ -908,14 +905,14 @@ vrp(PG_FUNCTION_ARGS)
 	else    /* do when there is no more left */
 	{
 		
-		DBG("Ending function\n");
+		PGR_DBG("Ending function\n");
 		profstop("store", prof_store);
 		profstop("total", prof_total);
-		DBG("Profiles stopped\n");
+		PGR_DBG("Profiles stopped\n");
 
 		free(path);
 		
-		DBG("Itinerary cleared\n");
+		PGR_DBG("Itinerary cleared\n");
 
 		SRF_RETURN_DONE(funcctx);
 	}

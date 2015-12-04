@@ -1,4 +1,5 @@
 
+BEGIN;
 
 
 ------------------------------------------------------------------------------------------------------
@@ -16,10 +17,8 @@
 	 SELECT  pgr_analyzeGraph('edge_table',0.001,source:='source');
 	 SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='id < 10');
 	 SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='the_geom && (SELECT st_buffer(the_geom,0.05) FROM edge_table WHERE id=5)');
-        DROP TABLE IF EXISTS otherTable;
 	CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ;
 	SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='the_geom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE gid=100)');
-	DROP TABLE IF EXISTS mytable;
 	CREATE TABLE mytable AS (SELECT id AS gid, source AS src ,target AS tgt , the_geom AS mygeom FROM edge_table);
 	SELECT pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt');
 	 SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt');
@@ -49,3 +48,4 @@
 	SELECT pgr_createTopology('edge_table', 0.001,rows_where:='id <17');
 	SELECT pgr_analyzeGraph('edge_table', 0.001);
 
+ROLLBACK;

@@ -30,12 +30,9 @@ Datum apsp_warshall(PG_FUNCTION_ARGS);
 #undef DEBUG
 //#define DEBUG 1
 
-#ifdef DEBUG
-#define DBG(format, arg...)                     \
-    elog(NOTICE, format , ## arg)
-#else
-#define DBG(format, arg...) do { ; } while (0)
-#endif
+#include "../../common/src/debug_macro.h"
+
+
 
 
 // The number of tuples to fetch from the SPI cursor at each iteration
@@ -105,7 +102,7 @@ fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns,
       return -1;
     }
 
-  DBG("columns: id %i source %i target %i cost %i", edge_columns->id, edge_columns->source, edge_columns->target, edge_columns->cost);
+  PGR_DBG("columns: id %i source %i target %i cost %i", edge_columns->id, edge_columns->source, edge_columns->target, edge_columns->cost);
 
   if (has_reverse_cost)
     {
@@ -126,7 +123,7 @@ fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns,
           return -1;
         }
 
-      DBG("columns: reverse_cost cost %i", edge_columns->reverse_cost);
+      PGR_DBG("columns: reverse_cost cost %i", edge_columns->reverse_cost);
     }
     
   return 0;
@@ -168,7 +165,7 @@ fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
         elog(ERROR, "reverse_cost contains a null value");
       target_edge->reverse_cost =  DatumGetFloat8(binval);
     }
-    //DBG("Fetched Edge.  id: %d \tsource: %i\ttarget: %f\tcost: %i",target_edge->id,target_edge->source,target_edge->target,target_edge->cost);
+    //PGR_DBG("Fetched Edge.  id: %d \tsource: %i\ttarget: %f\tcost: %i",target_edge->id,target_edge->source,target_edge->target,target_edge->cost);
 }
 
 
@@ -199,7 +196,7 @@ static int compute_apsp_warshall(char* sql, bool directed,
 
 //  set<int> vertices;
   
-  DBG("start compute_apsp_warshall\n");
+  PGR_DBG("start compute_apsp_warshall\n");
         
   SPIcode = SPI_connect();
   if (SPIcode  != SPI_OK_CONNECT)
@@ -245,7 +242,7 @@ static int compute_apsp_warshall(char* sql, bool directed,
 	    return finish(SPIcode, ret);	  
         }
 
-      DBG("Number of tuples fetched: %i",ntuples);
+      PGR_DBG("Number of tuples fetched: %i",ntuples);
       
       if (ntuples > 0) 
         {
@@ -275,15 +272,15 @@ static int compute_apsp_warshall(char* sql, bool directed,
           
           for (i = 0; i < total_tuples; i++) 
             {
-              DBG("Step %i src_vertex_id  %i ", i, edges[i].source);
-              DBG("        dest_vertex_id    %i ", edges[i].target);
-              DBG("        cost       %f ", edges[i].cost);
+              PGR_DBG("Step %i src_vertex_id  %i ", i, edges[i].source);
+              PGR_DBG("        dest_vertex_id    %i ", edges[i].target);
+              PGR_DBG("        cost       %f ", edges[i].cost);
             }
       
 #endif
     
 
-  DBG("Calling boost_apsp\n");
+  PGR_DBG("Calling boost_apsp\n");
         
   //start_vertex -= v_min_id;
   //end_vertex   -= v_min_id;
@@ -291,23 +288,23 @@ static int compute_apsp_warshall(char* sql, bool directed,
   ret = boost_apsp(edges, total_tuples, 0,                        //vertices.size()
                        directed, has_reverse_cost,
                        pair, pair_count, &err_msg);
-  DBG("Boost message: \n%s",err_msg);
-  DBG("SIZE %i\n",*pair_count);
+  PGR_DBG("Boost message: \n%s",err_msg);
+  PGR_DBG("SIZE %i\n",*pair_count);
 
 /*  //::::::::::::::::::::::::::::::::
   //:: restoring original vertex id
   //::::::::::::::::::::::::::::::::
   for(z=0;z<*path_count;z++)
   {
-    //DBG("vetex %i\n",(*path)[z].vertex_id);
+    //PGR_DBG("vetex %i\n",(*path)[z].vertex_id);
     (*path)[z].vertex_id+=v_min_id;
   }
 
-  DBG("ret = %i\n", ret);
+  PGR_DBG("ret = %i\n", ret);
 
-  DBG("*path_count = %i\n", *path_count);
+  PGR_DBG("*path_count = %i\n", *path_count);
 
-  DBG("ret = %i\n", ret);
+  PGR_DBG("ret = %i\n", ret);
   */
   if (ret < 0)
     {
@@ -353,13 +350,13 @@ apsp_warshall(PG_FUNCTION_ARGS)
                                   PG_GETARG_BOOL(1),
                                   PG_GETARG_BOOL(2), &pair, &pair_count);                  
 #ifdef DEBUG
-      DBG("Ret is %i", ret);
+      PGR_DBG("Ret is %i", ret);
       if (ret >= 0) 
         {
           int i;
           for (i = 0; i < pair_count; i++) 
             {
-              DBG("Step: %i, source_id: %i, target_id: %i, cost: %f ", i, pair[i].src_vertex_id, pair[i].dest_vertex_id, pair[i].cost);
+              PGR_DBG("Step: %i, source_id: %i, target_id: %i, cost: %f ", i, pair[i].src_vertex_id, pair[i].dest_vertex_id, pair[i].cost);
             }
         }
 #endif

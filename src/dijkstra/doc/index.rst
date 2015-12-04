@@ -12,15 +12,9 @@
 pgr_dijkstra - Shortest Path Dijkstra
 ===============================================================================
 
-Version 2.0 (deprecated)
-------------------------
+  -  :ref:`pgr_dijkstra<pgr_dijkstra_v3>` - Dijkstra - get the shortest paths.
 
-  -  :ref:`pgr_dijkstra<pgr_dijkstra_v2>` - Shortest Path Dijkstra
 
-Version 2.1
-------------------
-
-  -  :ref:`pgr_dijkstra<pgr_dijkstra_v3>` - Shortest Path Dijkstra
 
 The problem definition
 ======================
@@ -117,4 +111,5 @@ If there is no path, the resulting set is empty.
 
         ./dijkstra_v2
         ./dijkstra_v3
+        ./dijkstraCost
 

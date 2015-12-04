@@ -1,3 +1,4 @@
+BEGIN;
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 --              PGR_apspWarshall
@@ -5,7 +6,7 @@
 ------------------------------------------------------------------------------------------------------
 SELECT seq, id1 AS FROM, id2 AS to, cost
     FROM pgr_apspWarshall(
-        'SELECT id, source, target, cost FROM edge_table',
+        'SELECT id, source, target, cost FROM edge_table ORDER BY id',
         false, false
     ) limit 10;
-
+ROLLBACK;

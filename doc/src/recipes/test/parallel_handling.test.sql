@@ -1,3 +1,4 @@
+BEGIN;
   drop table if exists parallel;
   CREATE TABLE parallel (
     id serial,
@@ -119,3 +120,4 @@
 
 
   select * from expand_parallel_edge_paths( 'paths' );
+ROLLBACK;

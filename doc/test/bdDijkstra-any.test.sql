@@ -1,3 +1,4 @@
+BEGIN;
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 --              PGR_bdDijkstra
@@ -12,3 +13,4 @@ SELECT seq, id1 AS node, id2 AS edge, cost
     FROM pgr_bdDijkstra(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         7, 12, true, true);
+ROLLBACK;

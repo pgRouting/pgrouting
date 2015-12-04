@@ -44,11 +44,9 @@ run_psql () {
 # ------------------------------------------------------------------------------
 # Get version information
 # ------------------------------------------------------------------------------
-#run_psql -d $PGDATABASE -c "SELECT version();"    
-#run_psql -d $PGDATABASE -c "SELECT postgis_full_version();"    
-
-#run_psql -d $PGDATABASE -c "CREATE EXTENSION pgrouting;"
-#run_psql -d $PGDATABASE -c "SELECT pgr_version();"
+run_psql -c "SELECT version();"    
+run_psql -c "SELECT postgis_full_version();"    
+run_psql -c "SELECT pgr_version();"
 
 #PGROUTING_VERSION=`run_psql -A -t -c "SELECT version FROM pgr_version();"`
 

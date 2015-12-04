@@ -1,7 +1,10 @@
-/*PGR
+/*PGR-GNU*****************************************************************
+File: basePath_SSEC.cpp
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,7 +20,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
+********************************************************************PGR-GNU*/
 
 #ifdef __MINGW32__
 #include <winsock2.h>
@@ -181,60 +184,3 @@ void Path::generate_postgres_data(
     }
   }
 
-#if 0
-  friend int collapse_paths(
-      pgr_path_element3_t **ret_path,
-      const std::deque< Path > &paths) {
-   int sequence = 0;
-   for (const Path &path : paths) {
-   if (path.path.size() > 0)
-        path.dpPrint(ret_path, sequence);
-   }
-   return sequence;
-  }
-
-
-
-  
-  friend Path equi_cost(const Path &p1, const Path &p2) {
-    Path result(p1);
-    sort(result.path.begin(), result.path.end(), 
-      [](const pgr_path_element3_t &e1, const pgr_path_element3_t &e2)->bool { 
-         return e1.vertex < e2.vertex; 
-      });
-
-    for (auto const &e : p2.path) {
-      auto pos = find_if(result.path.begin(), result.path.end(),
-                 [&e](const pgr_path_element3_t &e1)->bool { 
-                   return e.vertex == e1.vertex; 
-                 });
-      if (pos != result.path.end()) {
-        if (pos->cost > e.cost) {
-           (*pos) = e;
-        }  
-      } else {
-        result.push_back(e);
-      }
-    }
-    return result;
-  }
-
-  friend Path equi_cost(const std::deque< Path > &paths) {
-    Path result;
-    for (const auto &p1 : paths) {
-      result = equi_cost(result, p1);
-    }
-    return result;
-  }
- 
-  friend int count_tuples(const std::deque< Path > &paths) {
-    int count(0);
-    for (const Path &e : paths) {
-       count += e.path.size();
-    }
-    return count;
-  }
-
-};
-
-#endif // 0

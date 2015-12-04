@@ -36,13 +36,8 @@ Datum apsp_johnson(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
+#include "../../common/src/debug_macro.h"
 
-#ifdef DEBUG
-#define DBG(format, arg...)                     \
-    elog(NOTICE, format , ## arg)
-#else
-#define DBG(format, arg...) do { ; } while (0)
-#endif
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
@@ -89,7 +84,7 @@ static int fetch_edge_apsp_columns(SPITupleTable *tuptable,
     return -1;
   }
 
-  DBG("columns: source %i target %i cost %lf",
+  PGR_DBG("columns: source %i target %i cost %lf",
       edge_columns->source, edge_columns->target, edge_columns->cost);
   return 0;
 }
@@ -134,7 +129,7 @@ int compute_apsp_johnson(char* sql, edge_apsp_johnson_t **output_edges,
   int ret = -1;
   register int z;
 
-  DBG("start apsp-johnson\n");
+  PGR_DBG("start apsp-johnson\n");
 
   SPIcode = SPI_connect();
   if (SPIcode != SPI_OK_CONNECT)
@@ -194,7 +189,7 @@ int compute_apsp_johnson(char* sql, edge_apsp_johnson_t **output_edges,
 
   //defining min and max vertex id
 
-  DBG("Total %i tuples", total_tuples);
+  PGR_DBG("Total %i tuples", total_tuples);
 
   for (z = 0; z < total_tuples; z++) {
     if (edges[z].source < v_min_id)
@@ -209,7 +204,7 @@ int compute_apsp_johnson(char* sql, edge_apsp_johnson_t **output_edges,
     if (edges[z].target > v_max_id)
       v_max_id = edges[z].target;
 
-    DBG("%i <-> %i", v_min_id, v_max_id);
+    PGR_DBG("%i <-> %i", v_min_id, v_max_id);
 
   }
 
@@ -220,26 +215,26 @@ int compute_apsp_johnson(char* sql, edge_apsp_johnson_t **output_edges,
 
     edges[z].source -= v_min_id;
     edges[z].target -= v_min_id;
-    DBG("%i - %i", edges[z].source, edges[z].target);
+    PGR_DBG("%i - %i", edges[z].source, edges[z].target);
   }
 
-  DBG("Total %i tuples", total_tuples);
+  PGR_DBG("Total %i tuples", total_tuples);
 
-  DBG("Calling boost_apsp_johnson <%i>\n", total_tuples);
+  PGR_DBG("Calling boost_apsp_johnson <%i>\n", total_tuples);
 
   // calling C++ apsp_johnson function
   ret = boost_apsp_johnson(edges, total_tuples, output_edges, output_count,
       &err_msg);
 
-  DBG("SIZE %i\n", *output_count);
+  PGR_DBG("SIZE %i\n", *output_count);
 
-  DBG("ret =  %i\n", ret);
+  PGR_DBG("ret =  %i\n", ret);
 
   //::::::::::::::::::::::::::::::::
   //:: restoring original vertex id
   //::::::::::::::::::::::::::::::::
   for (z = 0; z < *output_count; z++) {
-    //DBG("vertex %i\n",(*path)[z].vertex_id);
+    //PGR_DBG("vertex %i\n",(*path)[z].vertex_id);
     (*output_edges)[z].source += v_min_id;
     (*output_edges)[z].target += v_min_id;
   }
@@ -282,23 +277,23 @@ Datum apsp_johnson(PG_FUNCTION_ARGS) {
         &output_count);
 
 #ifdef DEBUG
-    DBG("Ret is %i", ret);
+    PGR_DBG("Ret is %i", ret);
     if (ret >= 0) {
       int i;
       for (i = 0; i < output_count; i++) {
-        DBG("Step # %i source  %i ", i, output_edges[i].source);
-        DBG("        target    %i ", output_edges[i].target);
-        DBG("        cost       %f ", output_edges[i].cost);
+        PGR_DBG("Step # %i source  %i ", i, output_edges[i].source);
+        PGR_DBG("        target    %i ", output_edges[i].target);
+        PGR_DBG("        cost       %f ", output_edges[i].cost);
       }
     }
 #endif
 
     /* total number of tuples to be returned */
-    DBG("Conting tuples number\n");
+    PGR_DBG("Conting tuples number\n");
     funcctx->max_calls = output_count;
     funcctx->user_fctx = output_edges;
 
-    DBG("Output count %i", output_count);
+    PGR_DBG("Output count %i", output_count);
 
     funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("pgr_costResult"));
 
@@ -306,7 +301,7 @@ Datum apsp_johnson(PG_FUNCTION_ARGS) {
   }
 
   /* stuff done on every call of the function */
-  DBG("Strange stuff doing\n");
+  PGR_DBG("Strange stuff doing\n");
 
   funcctx = SRF_PERCALL_SETUP();
 
@@ -315,7 +310,7 @@ Datum apsp_johnson(PG_FUNCTION_ARGS) {
   tuple_desc = funcctx->tuple_desc;
   output_edges = (edge_apsp_johnson_t*) funcctx->user_fctx;
 
-  DBG("Trying to allocate some memory\n");
+  PGR_DBG("Trying to allocate some memory\n");
 
   if (call_cntr < max_calls) /* do when there is more left to send */
   {
@@ -336,16 +331,16 @@ Datum apsp_johnson(PG_FUNCTION_ARGS) {
     values[3] = Float8GetDatum(output_edges[call_cntr].cost);
     nulls[3] = ' ';
 
-    DBG("Heap making\n");
+    PGR_DBG("Heap making\n");
 
     tuple = heap_formtuple(tuple_desc, values, nulls);
 
-    DBG("Datum making\n");
+    PGR_DBG("Datum making\n");
 
     /* make the tuple into a datum */
     result = HeapTupleGetDatum(tuple);
 
-    DBG("Trying to free some memory\n");
+    PGR_DBG("Trying to free some memory\n");
 
     /* clean up (this is not really necessary) */
     pfree(values);

@@ -1,7 +1,9 @@
-/*PGR
+/*PGR-GNU*****************************************************************
 
 Copyright (c) 2014 Manikata Kondeti
 mani.iiit123@gmail.com
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,9 +19,8 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
-
-#include "./postgres.h"
+********************************************************************PGR-GNU*/
+#include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
 #include "catalog/pg_type.h"
@@ -34,15 +35,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 Datum vrppdtw(PG_FUNCTION_ARGS);
 
 
-#undef DEBUG
 //#define DEBUG 1
+#include "../../common/src/debug_macro.h"
 
-#ifdef DEBUG
-#define DBG(format, arg...)                     \
-        elog(NOTICE, format , ## arg)
-#else
-#define DBG(format, arg...) do { ; } while (0)
-#endif
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
@@ -128,26 +123,26 @@ static int prepare_query(Portal *SPIportal, char* sql)
 
 static int fetch_customer_columns(SPITupleTable *tuptable, customer_t *c , int vehicle_count , int capacity)
 {
-        DBG("Customer Data");
+        PGR_DBG("Customer Data",NULL);
 
         c->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
-        DBG(" id done ");
+        PGR_DBG(" id done ",NULL);
         c->x = SPI_fnumber(SPI_tuptable->tupdesc, "x");
-        DBG("x done");
+        PGR_DBG("x done",NULL);
         c->y = SPI_fnumber(SPI_tuptable->tupdesc, "y");
-        DBG("y done");
+        PGR_DBG("y done",NULL);
         c->demand = SPI_fnumber(SPI_tuptable->tupdesc, "demand");
-        DBG("demand done");
+        PGR_DBG("demand done",NULL);
         c->Etime = SPI_fnumber(SPI_tuptable->tupdesc, "etime");
-        DBG("etime done");
+        PGR_DBG("etime done",NULL);
         c->Ltime = SPI_fnumber(SPI_tuptable->tupdesc, "ltime");
-        DBG("ltime done");
+        PGR_DBG("ltime done",NULL);
         c->Stime = SPI_fnumber(SPI_tuptable->tupdesc, "stime");
-        DBG("stime done");
+        PGR_DBG("stime done",NULL);
         c->Pindex = SPI_fnumber(SPI_tuptable->tupdesc, "pindex");
-        DBG("pindex done");
+        PGR_DBG("pindex done",NULL);
         c->Dindex = SPI_fnumber(SPI_tuptable->tupdesc, "dindex");
-        DBG("dindex done");
+        PGR_DBG("dindex done",NULL);
         if (c->id == SPI_ERROR_NOATTRIBUTE ||
                         c->x == SPI_ERROR_NOATTRIBUTE ||
                         c->y == SPI_ERROR_NOATTRIBUTE ||
@@ -163,7 +158,7 @@ static int fetch_customer_columns(SPITupleTable *tuptable, customer_t *c , int v
                 return -1;
         }
 
-        DBG("Returned from here  ");
+        PGR_DBG("Returned from here  ");
         return 0;
 }
 
@@ -172,16 +167,16 @@ static void fetch_customer(HeapTuple *tuple, TupleDesc *tupdesc, customer_t *c_a
 {
         Datum binval;
         bool isnull;
-        DBG("Hey baby in fetch_customer");
+        PGR_DBG("Hey baby in fetch_customer", NULL);
 
         binval = SPI_getbinval(*tuple, *tupdesc, c_all->id, &isnull);
-        DBG("fetching first thing");
+        PGR_DBG("fetching first thing");
         if (isnull) elog(ERROR, "id contains a null value");
         c_single->id = DatumGetInt32(binval);
-        DBG("id =  %d", c_single->id);
+        PGR_DBG("id =  %d", c_single->id);
 
 
-        DBG("fetching second  thing");
+        PGR_DBG("fetching second  thing", NULL);
         binval = SPI_getbinval(*tuple, *tupdesc, c_all->x, &isnull);
         if (isnull) 
                 elog(ERROR, "x contains a null value");
@@ -244,7 +239,7 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
         int ret = -1;
         // register int z;
 
-        DBG("start shortest_path\n");
+        PGR_DBG("start shortest_path\n");
 
         SPIcode = SPI_connect();
         if (SPIcode  != SPI_OK_CONNECT) {
@@ -266,19 +261,19 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
         while (moredata == TRUE) {
                 SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
 
-                DBG("Checking ");
+                PGR_DBG("Checking ");
 
                 if (customer_all.id == -1) {
                         if (fetch_customer_columns(SPI_tuptable, &customer_all,vehicle_count, capacity) == -1)
                         {
                                return finish(SPIcode, ret);
                         }
-                        DBG("Here I am ");
+                        PGR_DBG("Here I am ");
                 }
 
                 ntuples = SPI_processed;
                 total_tuples += ntuples;
-                DBG("Calculated total_tuples  ntuples=%d   total_tuples =%d ", ntuples, total_tuples);
+                PGR_DBG("Calculated total_tuples  ntuples=%d   total_tuples =%d ", ntuples, total_tuples);
                 
                    if (customer_single==NULL)
                    customer_single = palloc(total_tuples * sizeof(customer));
@@ -286,7 +281,7 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
                    customer_single = repalloc(customer_single, total_tuples * sizeof(customer));
 
 
-                DBG("Error here ");
+                PGR_DBG("Error here ");
                     if (customer_single == NULL) {
                                  elog(ERROR, "Out of memory");
                                           return finish(SPIcode, ret);
@@ -295,17 +290,17 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
 
 
                 if (ntuples > 0) {
-                        DBG("Check here ");
+                        PGR_DBG("Check here ");
                         int t;
                         SPITupleTable *tuptable = SPI_tuptable;
                         TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
                         for (t = 0; t < ntuples; t++) {
-                                DBG("In for loop ");
+                                PGR_DBG("In for loop ");
                                 HeapTuple tuple = tuptable->vals[t];
-                                DBG("Manikanta ");
+                                PGR_DBG("Manikanta ");
                                 fetch_customer(&tuple, &tupdesc, &customer_all , &customer_single[total_tuples - ntuples + t]);
-                                DBG("After Function call");
+                                PGR_DBG("After Function call");
                         }
                         SPI_freetuptable(tuptable);
                 } 
@@ -317,10 +312,10 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
         int k;
         for(k=0;k<total_tuples;k++)
         {
-                DBG("%d     %d     %d     %d     %d     %d     %d     %d     %d" , customer_single[k].id, customer_single[k].x , customer_single[k].y , customer_single[k].demand , customer_single[k].Etime ,customer_single[k].Ltime ,customer_single[k].Stime, customer_single[k].Pindex,  customer_single[k].Dindex);
+                PGR_DBG("%d     %d     %d     %d     %d     %d     %d     %d     %d" , customer_single[k].id, customer_single[k].x , customer_single[k].y , customer_single[k].demand , customer_single[k].Etime ,customer_single[k].Ltime ,customer_single[k].Stime, customer_single[k].Pindex,  customer_single[k].Dindex);
         }
 
-        DBG("Calling Solver Instance\n");
+        PGR_DBG("Calling Solver Instance\n");
 
 
         ret = Solver(customer_single, total_tuples, vehicle_count, capacity , &err_msg,results, length_results_struct);
@@ -332,9 +327,9 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
         } 
 
 
-        DBG("*length_results_count  = %i\n", *length_results_struct);
+        PGR_DBG("*length_results_count  = %i\n", *length_results_struct);
 
-        DBG("ret = %i\n", ret);
+        PGR_DBG("ret = %i\n", ret);
 
 
 
@@ -342,13 +337,13 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
         int vb;
         for(vb=1;vb<*length_results_struct;vb++)
         {
-                DBG("results[%d].seq=%d  ",vb, (*results)[vb].seq);
-                DBG("results[%d].rid=%d  ",vb, (*results)[vb].rid);
-                DBG("results[%d].nid=%d \n",vb, (*results)[vb].nid);
+                PGR_DBG("results[%d].seq=%d  ",vb, (*results)[vb].seq);
+                PGR_DBG("results[%d].rid=%d  ",vb, (*results)[vb].rid);
+                PGR_DBG("results[%d].nid=%d \n",vb, (*results)[vb].nid);
         }
 
         pfree(customer_single);
-        DBG("Working till here ");
+        PGR_DBG("Working till here ");
         return finish(SPIcode, ret);
 
 }
@@ -391,7 +386,7 @@ vrppdtw(PG_FUNCTION_ARGS)
 
                 results = (path_element *)palloc(sizeof(path_element)*((length_results_struct)+1));
 
-                DBG("Calling compute_shortes_path");
+                PGR_DBG("Calling compute_shortes_path");
 
 
 
@@ -407,7 +402,7 @@ vrppdtw(PG_FUNCTION_ARGS)
                                 &results, &length_results_struct
                                 );
 
-                DBG("Back from solve_vrp, length_results: %d", length_results_struct);
+                PGR_DBG("Back from solve_vrp, length_results: %d", length_results_struct);
 
                 /* total number of tuples to be returned */
                 funcctx->max_calls = length_results_struct;
@@ -440,7 +435,7 @@ vrppdtw(PG_FUNCTION_ARGS)
                 Datum *values;
                 char* nulls;
 
-                DBG("Till hereee ");
+                PGR_DBG("Till hereee ",NULL);
                 values = palloc(4 * sizeof(Datum));
                 nulls = palloc(4 * sizeof(char));
 
@@ -465,10 +460,10 @@ vrppdtw(PG_FUNCTION_ARGS)
         }
         /* do when there is no more left */
         else {
-                DBG("Ending function\n");
+                PGR_DBG("Ending function\n",NULL);
 
                 free(results);
-                DBG("Itinerary cleared\n");
+                PGR_DBG("Itinerary cleared\n",NULL);
 
 
                 SRF_RETURN_DONE(funcctx);

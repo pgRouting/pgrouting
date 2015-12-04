@@ -1,7 +1,9 @@
-/*PGR
+/*PGR-GNU*****************************************************************
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,7 +19,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
+********************************************************************PGR-GNU*/
 
 /************************************************************************/
 /* $Id: MainP.cpp 65 2010-09-08 06:48:36Z yan.qi.asu $                                                                 */
@@ -165,13 +167,9 @@ exit_nicely(PGconn *conn)
 
 
 
-template <class G> 
-void process(G &graph, pgr_edge_t *data_edges, int row_count) {
-  // grpah initialization
+template <typename G> 
+void process(G graph, pgr_edge_t *data_edges, int row_count) {
   graph.graph_insert_data(data_edges, row_count);
-  graph.print_graph();
-
-  // some local variables
   std::vector<int64_t> targets;
   std::string::size_type sz;
 
@@ -290,7 +288,8 @@ int main(int ac, char* av[]) {
 
    std::string data_sql;
    if (test) {
-     data_sql = "select id, source, target, cost, reverse_cost from edge_table order by id";
+     data_sql = "select id, source, target, cost, -1 as reverse_cost  from table1 order by id";
+     // data_sql = "select id, source, target, cost, reverse_cost from edge_table order by id";
    } else {
      std::cout << "Input data query: ";
      std::getline (std::cin,data_sql);
@@ -380,18 +379,12 @@ int main(int ac, char* av[]) {
     bool directedFlag =  (directed.compare("N")==0 || directed.compare("n")==0)? false: true;
 
 
-
-    typedef boost::adjacency_list < boost::vecS, boost::vecS, boost::undirectedS,
-        boost_vertex_t, boost_edge_t > UndirectedGraph;
-    typedef boost::adjacency_list < boost::vecS, boost::vecS, boost::bidirectionalS,
-        boost_vertex_t, boost_edge_t > DirectedGraph;
-
     const int initial_size = rec_count;
 
+    
     Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
     Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
-
-
+    
     if (directedFlag) {
       process(digraph, data_edges, rec_count);
     } else {

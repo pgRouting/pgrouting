@@ -23,7 +23,7 @@ branches:
   only:
     - master
     - develop
-    - new-travis-dev-2.2
+    - dev-2.2
 
 # ------------------------------------------------------------
 # for the moment the matrix doesn't work when the tests are

@@ -1,44 +1,80 @@
--- 0 edges tests
--- directed graph
--- undirected graph
--- 1 edges tests
--- edge doesnt have source
-4|2|5|1|1
--- directed graph
--- undirected graph
--- edge doesnt have target
-3|3|4|-1|1
--- directed graph
--- undirected graph
--- edge has both
-3|3|4|-1|1
--- directed graph
-1|1|3|2|1|0
-2|2|2|-1|0|1
-1|1|3|3|2|1|0
-2|2|3|2|-1|0|1
-1|1|3|2|3|2|1|0
-2|2|3|2|2|-1|0|1
-1|1|2|3|2|1|0
-2|2|2|2|-1|0|1
--- undirected graph
-1|1|3|2|1|0
-2|2|2|-1|0|1
-1|1|3|3|2|1|0
-2|2|3|2|-1|0|1
-1|1|3|2|3|2|1|0
-2|2|3|2|2|-1|0|1
-1|1|2|3|2|1|0
-2|2|2|2|-1|0|1
--- edge has both
-3|3|4|-1|1
--- directed graph
--- undirected graph
-1|1|2|2|1|0
-2|2|3|-1|0|1
-1|1|2|2|2|1|0
-2|2|2|3|-1|0|1
-1|1|2|3|2|2|1|0
-2|2|2|3|3|-1|0|1
-1|1|3|2|2|1|0
-2|2|3|3|-1|0|1
+1..79
+ok 1 - 1
+ok 2 - 2
+ok 3 - 3
+ok 4 - 4
+ok 5 - 5
+ok 6 - 6
+ok 7 - 7
+ok 8 - 8
+ok 9 - 9
+ok 10 - 10: Edge does not have start_vid = 5 but has end_vid = 6
+ok 11 - 11
+ok 12 - 12
+ok 13 - 13
+ok 14 - 14
+ok 15 - 15
+ok 16 - 16
+ok 17 - 17
+ok 18 - 18
+ok 19 - 19: Edge doesnt have end_vid = 6 but has start_vid = 5
+ok 20 - 20
+ok 21 - 21
+ok 22 - 22
+ok 23 - 23
+ok 24 - 24
+ok 25 - 25
+ok 26 - 26
+ok 27 - 27
+ok 28 -  28: Edge has start_vid 6 and end_vid 5
+ok 29 - 29
+ok 30 - 30
+ok 31 - 31
+ok 32 - 32
+ok 33 - 33
+ok 34 - 34
+ok 35 - 35
+ok 36 - 36
+ok 37 - 37: has only vid = 6 but really only one edge is inserted the first one
+ok 38 - 38
+ok 39 - 39
+ok 40 - 40
+ok 41 - 41
+ok 42 - 42
+ok 43 - 43
+ok 44 - 44
+ok 45 - 45
+ok 46 - 46
+ok 47 - 47
+ok 48 - 48
+ok 49 - 49
+ok 50 - 50
+ok 51 - 51
+ok 52 - 52
+ok 53 - 53
+ok 54 - 54: only answer is from 4 to 3
+ok 55 - 55
+ok 56 - 56
+ok 57 - 57
+ok 58 - 58
+ok 59 - 59
+ok 60 - 60
+ok 61 - 61
+ok 62 - 62
+ok 63 - 63
+ok 64 - 64
+ok 65 - 65
+ok 66 - 66
+ok 67 - 67
+ok 68 - 68
+ok 69 - 69
+ok 70 - 70
+ok 71 - 71: The edge doesnt have any of them
+ok 72 - 72
+ok 73 - 73
+ok 74 - 74
+ok 75 - 75
+ok 76 - 76
+ok 77 - 77
+ok 78 - 78
+ok 79 - 79

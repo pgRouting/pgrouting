@@ -1,23 +1,27 @@
-/*pgRouting
- *
- * File: many_to_1_dijkstra.c
- * Copyright (c) 2015 Celia Virginia Vergara Castillo
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- */
+/*PGR-GNU*****************************************************************
+File: many_to_dist_driving_distance.c
+
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+Mail: vicky_Vergara@hotmail.com
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-GNU*/
+
 // #define DEBUG
 #include "postgres.h"
 #include "executor/spi.h"
@@ -29,6 +33,7 @@
 #endif
 
 #include "fmgr.h"
+#include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./boost_interface_drivedist.h"
@@ -38,43 +43,36 @@ PG_MODULE_MAGIC;
 #endif
 
 
-static int driving_many_to_dist_driver(
+static 
+void driving_many_to_dist_driver(
           char* sql, int64_t *start_vertex, int num,
           float8 distance,
-          bool directed, bool equicost, bool has_rcost,
+          bool directed, bool equicost, 
           General_path_element_t **path, size_t *path_count) {
-  int SPIcode;
+  pgr_SPI_connect();
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
 
 
   char *err_msg = (char *)"";
-  int ret = -1;
 
 
-  SPIcode = pgr_get_data(sql, &edges, &total_tuples, has_rcost, -1, -1);
+  pgr_get_data_5_columns(sql, &edges, &total_tuples);
 
-  if (SPIcode == -1) {
-    return SPIcode;
+  if (total_tuples == 0) {
+    PGR_DBG("No edges found");
+    (*path_count) = 0;
+    *path = NULL;
+    return;
   }
 
-  ret = do_pgr_driving_many_to_dist(edges, total_tuples,
+  do_pgr_driving_many_to_dist(edges, total_tuples,
                         start_vertex, num, distance,
                         directed, equicost,
                         path, path_count, &err_msg);
 
-  if (ret < 0) {
-      ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
-        errmsg("Error computing path: %s", err_msg)));
-  }
-
-  if (ret < 0) {
-      ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
-      errmsg("Error computing path: %s", err_msg)));
-    }
-
   pfree(edges);
-  return pgr_finish(SPIcode, ret);
+  pgr_SPI_finish(); 
 }
 
 
@@ -110,7 +108,7 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
       int64_t* sourcesArr;
-      int num;
+      size_t num;
 
       sourcesArr = (int64_t*) pgr_get_bigIntArray(&num, PG_GETARG_ARRAYTYPE_P(1));
       PGR_DBG("sourcesArr size %d ", num);
@@ -122,7 +120,6 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
                PG_GETARG_FLOAT8(2),                 // distance
                PG_GETARG_BOOL(3),                   // directed
                PG_GETARG_BOOL(4),                   // equicost
-               PG_GETARG_BOOL(5),                   // has_rcost
                &ret_path, &path_count);
 
       free(sourcesArr);

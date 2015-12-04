@@ -1,23 +1,27 @@
-/*
+/*PGR-GNU*****************************************************************
+
  * Shortest path algorithm for PostgreSQL
  *
  * Copyright (c) 2005 Sylvain Pasche
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- */
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-GNU*/
 
 #include "postgres.h"
 #include "executor/spi.h"
@@ -38,13 +42,8 @@ Datum onetomany_dijkstra_path(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
+#include "../../common/src/debug_macro.h"
 
-#ifdef DEBUG
-#define DBG(format, arg...)                     \
-    elog(NOTICE, format , ## arg)
-#else
-#define DBG(format, arg...) do { ; } while (0)
-#endif
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
@@ -135,11 +134,11 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
     deconstruct_array(input, i_eltype, i_typlen, i_typbyval, i_typalign,
 &i_data, &nulls, &n);
 
-    DBG("get_pgarray: ndims=%d, n=%d", ndims, n);
+    PGR_DBG("get_pgarray: ndims=%d, n=%d", ndims, n);
 
 #ifdef DEBUG
     for (i=0; i<ndims; i++) {
-        DBG("   dims[%d]=%d, lbs[%d]=%d", i, dims[i], i, lbs[i]);
+        PGR_DBG("   dims[%d]=%d, lbs[%d]=%d", i, dims[i], i, lbs[i]);
     }
 #endif
 
@@ -169,7 +168,7 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
                     break;
             }
         }
-        DBG("    data[%d]=%.4f", i, data[i]);
+        PGR_DBG("    data[%d]=%.4f", i, data[i]);
     }
 
     pfree(nulls);
@@ -184,7 +183,7 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
 static int
 finish(int code, int ret)
 {  
-  DBG("In finish, trying to disconnect from spi %d",ret);
+  PGR_DBG("In finish, trying to disconnect from spi %d",ret);
 
   code = SPI_finish();
   if (code  != SPI_OK_FINISH )
@@ -223,7 +222,7 @@ static int fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_colu
         return -1;
     }
 
-    DBG("columns: id %i source %i target %i cost %i", 
+    PGR_DBG("columns: id %i source %i target %i cost %i", 
         edge_columns->id, edge_columns->source, 
         edge_columns->target, edge_columns->cost);
 
@@ -246,7 +245,7 @@ static int fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_colu
             return -1;
         }
 
-        DBG("columns: reverse_cost cost %i", edge_columns->reverse_cost);
+        PGR_DBG("columns: reverse_cost cost %i", edge_columns->reverse_cost);
     }
 
     return 0;
@@ -324,7 +323,7 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
     int zcnt = 0;
 
 
-    DBG("start shortest_path\n");
+    PGR_DBG("start shortest_path\n");
 
     SPIcode = SPI_connect();
     if (SPIcode  != SPI_OK_CONNECT) {
@@ -343,7 +342,7 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
         return -1;
     }
 
-    DBG("Maybe there is moredata...\n");
+    PGR_DBG("Maybe there is moredata...\n");
 
     while (moredata == TRUE) {
         SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
@@ -386,7 +385,7 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
 
     //defining min and max vertex id
 
-    DBG("Total %i tuples", total_tuples);
+    PGR_DBG("Total %i tuples", total_tuples);
 
     for(z=0; z<total_tuples; z++) {
         if(edges[z].source<v_min_id)
@@ -401,7 +400,7 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
         if(edges[z].target>v_max_id)
             v_max_id=edges[z].target;      
 
-        // DBG("%i <-> %i", v_min_id, v_max_id);
+        // PGR_DBG("%i <-> %i", v_min_id, v_max_id);
 
     }
 
@@ -427,10 +426,10 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
         }
         edges[z].source-=v_min_id;
         edges[z].target-=v_min_id;
-        //  DBG("%i - %i", edges[z].source, edges[z].target);      
+        //  PGR_DBG("%i - %i", edges[z].source, edges[z].target);      
     }
 
-    DBG("Total %i tuples", total_tuples);
+    PGR_DBG("Total %i tuples", total_tuples);
 
     if(s_count == 0) {
         elog(ERROR, "Start vertex was not found.");
@@ -439,7 +438,7 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
 
     for (numTarget = 0; numTarget < nb_targets; numTarget++) {
         if(t_count[numTarget] == 0) zcnt++;
-        DBG("t_count[%d] = %d", end_vertices[numTarget], t_count[numTarget]);
+        PGR_DBG("t_count[%d] = %d", end_vertices[numTarget], t_count[numTarget]);
     }
     if (zcnt > 0) {
         elog(ERROR, "One of the target vertices was not found or several targets are the same.");
@@ -450,7 +449,7 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
         return -1;
     }
 
-    DBG("Calling boost_dijkstra\n");
+    PGR_DBG("Calling boost_dijkstra\n");
 
     start_vertex -= v_min_id;
     for (numTarget = 0; numTarget < nb_targets; numTarget++) {
@@ -461,7 +460,7 @@ static int tomanysp_dijkstra_dist(char* sql, int start_vertex,
                 end_vertices, nb_targets, directed, has_reverse_cost,
                 dists, &err_msg);
 
-    DBG("ret = %i\n", ret);
+    PGR_DBG("ret = %i\n", ret);
 
     if (ret < 0) {
         //elog(ERROR, "Error computing path: %s", err_msg);
@@ -532,7 +531,7 @@ Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
         int num;
         int *myTargets;
 
-        DBG("source_ID = %d ", source_ID);   
+        PGR_DBG("source_ID = %d ", source_ID);   
 
         /* create a function context for cross-call persistence */
         funcctx = SRF_FIRSTCALL_INIT();
@@ -542,9 +541,9 @@ Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
 
         myTargets = get_pgarray(&num, PG_GETARG_ARRAYTYPE_P(2));
 
-        DBG("There are %d targets : \n", num);
+        PGR_DBG("There are %d targets : \n", num);
         for (i = 0; i < num; i++)
-            DBG("%d => %d\t", i+1, myTargets[i]);
+            PGR_DBG("%d => %d\t", i+1, myTargets[i]);
 
         ret = tomanysp_dijkstra_dist(sql, source_ID, myTargets,
                 num, PG_GETARG_BOOL(3), PG_GETARG_BOOL(4),
@@ -555,11 +554,11 @@ Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
             elog(ERROR, "Error computing paths!");
         }
 
-        DBG("max_calls: %d", path_count);
+        PGR_DBG("max_calls: %d", path_count);
         funcctx->max_calls = path_count;
         funcctx->user_fctx = dist;
 
-        DBG("tuple_desc");
+        PGR_DBG("tuple_desc");
 #ifdef PGR_MERGE
         funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("pgr_costresult"));
 #else
@@ -588,7 +587,7 @@ Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
         Datum       *values;
         char        *nulls;
 
-        DBG("INIT values && nulls");
+        PGR_DBG("INIT values && nulls");
 #ifdef PGR_MERGE
         values = palloc(4 * sizeof(Datum));
         nulls = palloc(4 * sizeof(char));
@@ -617,25 +616,25 @@ Datum onetomany_dijkstra_dist(PG_FUNCTION_ARGS)
         nulls[4] = ' ';
 #endif
 
-        DBG("Create the tuple");
+        PGR_DBG("Create the tuple");
         tuple = heap_formtuple(tuple_desc, values, nulls);
 
         /* make the tuple into a datum */
 
-        DBG("HeapTupleGetDatum");
+        PGR_DBG("HeapTupleGetDatum");
         result = HeapTupleGetDatum(tuple);
 
         /* clean up (this is not really necessary) */
 
-        DBG("pfree");
+        PGR_DBG("pfree");
         pfree(values);
         pfree(nulls);
 
-        DBG("return next");
+        PGR_DBG("return next");
         SRF_RETURN_NEXT(funcctx, result);
     }
 
-    DBG("freeing dist");
+    PGR_DBG("freeing dist");
     free(dist);
 
     SRF_RETURN_DONE(funcctx);
@@ -694,7 +693,7 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
       return -1;
     }
 
-    DBG("Maybe there is moredata...\n");
+    PGR_DBG("Maybe there is moredata...\n");
 
     while (moredata == TRUE) {
         SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
@@ -736,7 +735,7 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
 
     //defining min and max vertex id
 
-    DBG("Total %i tuples", total_tuples);
+    PGR_DBG("Total %i tuples", total_tuples);
 
     for(z=0; z<total_tuples; z++) {
         if(edges[z].source<v_min_id)
@@ -751,7 +750,7 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
         if(edges[z].target>v_max_id)
             v_max_id=edges[z].target;      
 
-        //DBG("%i <-> %i", v_min_id, v_max_id);                    
+        //PGR_DBG("%i <-> %i", v_min_id, v_max_id);                    
     }
 
     //::::::::::::::::::::::::::::::::::::  
@@ -775,10 +774,10 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
         }
         edges[z].source-=v_min_id;
         edges[z].target-=v_min_id;
-        //DBG("%i - %i", edges[z].source, edges[z].target);      
+        //PGR_DBG("%i - %i", edges[z].source, edges[z].target);      
     }
 
-    DBG("Total %i tuples", total_tuples);
+    PGR_DBG("Total %i tuples", total_tuples);
 
     if(s_count == 0) {
         elog(ERROR, "Start vertex was not found.");
@@ -795,14 +794,14 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
         return -1;
     }
 
-    DBG("modifying vertices' idz..\n");
+    PGR_DBG("modifying vertices' idz..\n");
 
     start_vertex -= v_min_id;
     for (numTarget = 0; numTarget < nb_targets; numTarget++) {
         end_vertices[numTarget] -= v_min_id;
     }
 
-    DBG("Calling boost_dijkstra\n");
+    PGR_DBG("Calling boost_dijkstra\n");
 
 
     ret = onetomany_dijkstra_boostpath (edges, total_tuples, start_vertex,
@@ -814,7 +813,7 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
 #endif
             &err_msg);
 
-    DBG("ret = %i\n", ret);
+    PGR_DBG("ret = %i\n", ret);
 
     if (ret < 0) {
         ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED), 
@@ -837,11 +836,11 @@ static int tomanysp_dijkstra_ways(char* sql, int start_vertex,
         (*distpaths)[z].vertex_id_source += v_min_id;
         (*distpaths)[z].vertex_id_target += v_min_id;
 
-        DBG("(*distpaths)[z].cost = %f)", (*distpaths)[z].cost);
+        PGR_DBG("(*distpaths)[z].cost = %f)", (*distpaths)[z].cost);
     }
 #endif
 
-    DBG("*path_count = %i\n", *path_count);
+    PGR_DBG("*path_count = %i\n", *path_count);
 
     return finish(SPIcode, ret);
 }
@@ -882,10 +881,10 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
         int ret;
 
 
-        DBG("source_ID = %d \n", source_ID);   
-        DBG("There may be %d targets : \n", myTargets[4]);
+        PGR_DBG("source_ID = %d \n", source_ID);   
+        PGR_DBG("There may be %d targets : \n", myTargets[4]);
         for (i = 0; i < myTargets[4]; i++)
-            DBG("%d => %d\t", i+1, myTargets[6+i]);
+            PGR_DBG("%d => %d\t", i+1, myTargets[6+i]);
 
         /* create a function context for cross-call persistence */
         funcctx = SRF_FIRSTCALL_INIT();
@@ -902,11 +901,11 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
         }
 
         /*  Building the whole linestrings in the_way */
-        DBG("max_calls: %d", path_count);
+        PGR_DBG("max_calls: %d", path_count);
         funcctx->max_calls = path_count;
         funcctx->user_fctx = path_res;
 
-        DBG("tuple_desc");
+        PGR_DBG("tuple_desc");
 #ifdef PGR_MERGE
         funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("pgr_costresult3"));
 #else
@@ -936,7 +935,7 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
         Datum       *values;
         char        *nulls;
 
-        DBG("INIT values && nulls");
+        PGR_DBG("INIT values && nulls");
 #ifdef PGR_MERGE
         values = palloc(5 * sizeof(Datum));
         nulls = palloc(5 * sizeof(char));
@@ -969,26 +968,26 @@ onetomany_dijkstra_path(PG_FUNCTION_ARGS)
         nulls[5] = ' ';
 #endif
 
-        DBG("Create the tuple");
+        PGR_DBG("Create the tuple");
         tuple = heap_formtuple(tuple_desc, values, nulls);
 
         /* make the tuple into a datum */
-        DBG("HeapTupleGetDatum");
+        PGR_DBG("HeapTupleGetDatum");
         result = HeapTupleGetDatum(tuple);
 
         /* clean up (this is not really necessary) */
-        DBG("pfree");
+        PGR_DBG("pfree");
         pfree(values);
         pfree(nulls);
 
-        DBG("return next");
+        PGR_DBG("return next");
         SRF_RETURN_NEXT(funcctx, result);
     }
 
-    DBG("freeing path_res");
+    PGR_DBG("freeing path_res");
     free(path_res);
 
-    DBG("return done");
+    PGR_DBG("return done");
     SRF_RETURN_DONE(funcctx);    
 }
 
@@ -1023,7 +1022,7 @@ static int many2many_dijkstra_dm(char *sql, int *vids, int num, bool directed,
 
     pgr_cost_t *dists;
 
-    DBG("start many2many_dijkstra_dm");
+    PGR_DBG("start many2many_dijkstra_dm");
 
     SPIcode = SPI_connect();
     if (SPIcode != SPI_OK_CONNECT) {
@@ -1031,24 +1030,24 @@ static int many2many_dijkstra_dm(char *sql, int *vids, int num, bool directed,
         return -1;
     }
 
-    DBG("Calling SPI_prepare");
+    PGR_DBG("Calling SPI_prepare");
     SPIplan = SPI_prepare(sql, 0, NULL);
     if (SPIplan == NULL) {
         elog(ERROR, "many2many_dijkstra_dm: SPI_prepare failed for (%s)", sql);
         return -1;
     }
 
-    DBG("Calling SPI_cursor_open");
+    PGR_DBG("Calling SPI_cursor_open");
     SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true);
     if (SPIportal == NULL) {
         elog(ERROR, "many2many_dijkstra_dm: SPI_cursor_open(%s) failed!", sql);
         return -1;
     }
 
-    DBG("Starting while loop to collect edges ...");
+    PGR_DBG("Starting while loop to collect edges ...");
 
     while (moredata == TRUE) {
-        DBG("Calling SPI_cursor_fetch");
+        PGR_DBG("Calling SPI_cursor_fetch");
         SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
 
         if (fetch_edge_columns(SPI_tuptable, &edge_columns,
@@ -1057,7 +1056,7 @@ static int many2many_dijkstra_dm(char *sql, int *vids, int num, bool directed,
         }
 
         ntuples = SPI_processed;
-        DBG("ntuples=%d", ntuples);
+        PGR_DBG("ntuples=%d", ntuples);
         if (ntuples > 0) {
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
@@ -1086,7 +1085,7 @@ static int many2many_dijkstra_dm(char *sql, int *vids, int num, bool directed,
             moredata = FALSE;
         }
     }
-    DBG("Total %d edges!", total_tuples);
+    PGR_DBG("Total %d edges!", total_tuples);
 
     // find min and max vertex ids
 
@@ -1096,7 +1095,7 @@ static int many2many_dijkstra_dm(char *sql, int *vids, int num, bool directed,
         if (edges[i].target < v_min_id) v_min_id = edges[i].target;
         if (edges[i].target > v_max_id) v_max_id = edges[i].target;
     }
-    DBG("v_min_id: %d, v_max_id: %d", v_min_id, v_max_id);
+    PGR_DBG("v_min_id: %d, v_max_id: %d", v_min_id, v_max_id);
 
     // renumber vertices
 
@@ -1112,7 +1111,7 @@ static int many2many_dijkstra_dm(char *sql, int *vids, int num, bool directed,
 
     for (j=0; j< num; j++) {
         if (v_count[j] == 0) zcnt++;
-        DBG("vids[%d]: %d, cnt: %d", j, vids[j], v_count[j]);
+        PGR_DBG("vids[%d]: %d, cnt: %d", j, vids[j], v_count[j]);
         vvids[j] = vids[j] - v_min_id;
     }
 
@@ -1121,10 +1120,10 @@ static int many2many_dijkstra_dm(char *sql, int *vids, int num, bool directed,
         return -1;
     }
 
-    DBG("Starting loop to build dmatrix!");
+    PGR_DBG("Starting loop to build dmatrix!");
 
     for (j=0; j<num; j++) {
-        DBG("Calling onetomany_dijkstra_boostdist j=%d", j);
+        PGR_DBG("Calling onetomany_dijkstra_boostdist j=%d", j);
 
         ret = onetomany_dijkstra_boostdist(edges, total_tuples, vvids[j],
                 vvids, num, directed, has_reverse_cost, &dists, &err_msg);
@@ -1142,7 +1141,7 @@ static int many2many_dijkstra_dm(char *sql, int *vids, int num, bool directed,
         dists = NULL;
     }
     
-    DBG("Making the matrix symmertic if requested!");
+    PGR_DBG("Making the matrix symmertic if requested!");
 
     // if symmetric requsted, then average cells to make it symmetric
 
@@ -1162,7 +1161,7 @@ static int many2many_dijkstra_dm(char *sql, int *vids, int num, bool directed,
         }
     }
 
-    DBG("Leaving many2many_dijkstra_dm");
+    PGR_DBG("Leaving many2many_dijkstra_dm");
 
     return finish(SPIcode, ret);
 }

@@ -1,0 +1,14 @@
+1..12
+ok 1 - 1
+ok 2 - 2
+ok 3
+ok 4 - 4
+ok 5 - 5
+ok 6 - 6
+ok 7 - 7
+ok 8 - 8
+ok 9
+ok 10 - 10
+ok 11 - 11
+NOTICE:  ----> PGR ERROR in _pgr_checkVertTab: Vertex Table: no_table not found
+ok 12 - 12

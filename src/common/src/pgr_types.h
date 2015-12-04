@@ -1,7 +1,10 @@
-/*PGR
+/*PGR-GNU*****************************************************************
+File: pgr_types.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky_vergara@hotmail.com
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,7 +20,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
+********************************************************************PGR-GNU*/
 
 #ifndef PGR_TYPES_H
 #define PGR_TYPES_H
@@ -64,55 +67,62 @@ typedef struct path_element
     float8 tot_cost;
 } General_path_element_t;
 
+typedef struct Routes_element
+{
+    int64_t route_id;
+    int64_t path_id;
+    int64_t path_seq;
+    int64_t start_vid;
+    int64_t end_vid;
+    int64_t node;
+    int64_t edge;
+    float8 cost;
+    float8 agg_cost;
+    float8 route_agg_cost;
+} Routes_t;
+
+
 typedef struct {
-  int64_t id;
-  int64_t source;
-  int64_t target;
-  float8 cost;
-  float8 reverse_cost;
+    int64_t id;
+    int64_t source;
+    int64_t target;
+    float8 cost;
+    float8 reverse_cost;
 } pgr_edge_t;
 
 typedef struct {
-  int seq;
-  int64_t source;
-  int64_t edge;
-  float8 cost;
+    int seq;
+    int64_t source;
+    int64_t edge;
+    float8 cost;
 } pgr_path_t;
 
+// Restrictions used in pgr_turnRestrictions
+
+#define  MAX_RULE_LENGTH 5
+typedef struct 
+{
+    int64_t target_id;
+    float8 to_cost;
+    int64_t via[MAX_RULE_LENGTH];
+    char *via_path;
+}
+Restrict_t;
+
+
+
+
 struct boost_vertex_t {
-  int64_t id;
+    int64_t id;
 };
 
 struct boost_edge_t{
-  int64_t id;
-  float8 cost;
-  int64_t source_id;
-  int64_t target_id;
+    int64_t id;
+    float8 cost;
+    int64_t source_id;
+    int64_t target_id;
 };
 
-// used in kdijktra
-#if 0
-typedef struct 
-{
-   int64_t vertex_id_source;
-   int64_t edge_id_source;
-   int64_t vertex_id_target;
-   int64_t edge_id_target;
-   float8 cost;
-   float8 totcost;
-} dist_fromto_t;
-
-
-typedef struct 
-{
-  int64_t vertex_id_source;
-  int64_t edge_id_source;
-  int64_t vertex_id_target;
-  int64_t edge_id_target;
-  float8 cost;
-  char* the_way;
-} path_fromto_t;
-#endif
 
 enum graphType { UNDIRECTED= 0, DIRECTED};
 

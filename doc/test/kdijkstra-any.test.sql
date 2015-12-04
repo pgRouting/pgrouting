@@ -1,3 +1,4 @@
+BEGIN;
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 --              PGR_kdijkstraPath
@@ -20,3 +21,4 @@ SELECT id1 AS path, st_AStext(st_linemerge(st_union(b.the_geom))) AS the_geom
 WHERE a.id3=b.id
 GROUP by id1
 ORDER by id1;
+ROLLBACK;

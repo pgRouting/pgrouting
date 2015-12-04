@@ -32,6 +32,7 @@ General
     src/introduction/introduction
     src/installation/index
     src/installation/build
+    src/installation/install-dependencies
     src/introduction/support
 
 
@@ -111,12 +112,12 @@ Routing functions
 
 :ref:`routing_functions`
 
-  -  :ref:`pgr_apspJohnson <pgr_apsp_johnson>`- All Pairs Shortest Path, Johnson’s Algorithm
+  -  :ref:`pgr_apspJohnson<pgr_apsp_johnson>` - All Pairs Shortest Path, Johnson’s Algorithm
   -  :ref:`pgr_apspWarshall<pgr_apsp_warshall>` - All Pairs Shortest Path, Floyd-Warshall Algorithm
   -  :ref:`pgr_astar<pgr_astar>` - Shortest Path A*
   -  :ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
   -  :ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path
-  -  :ref:`pgr_dijkstra<pgr_dijkstra>` - Shortest Path Dijkstra
+  -  :ref:`pgr_dijkstra<pgr_dijkstra>` - Dijkstra family functions
   -  :ref:`pgr_driving_distance<pgr_driving_distance>` - Driving Distance
   -  :ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path Dijkstra
   -  :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
@@ -155,6 +156,76 @@ Some of them are unsupported like the GSoC functions.
 
 
 *******************************************************************************
+Proposed functions: Proposed by Vicky Vergara
+*******************************************************************************
+
+:pgr_dijkstraCost:
+
+About this proposal:
+  - Author: Vicky Vergara
+  - Status: testing
+  - Name: pgr_dijkstraCost
+  - Overloading to:
+
+    - one to one
+    - many to one
+    - one to many  - Can replace kdijkstraCost
+    - many to many
+
+
+  - :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to make calculate only the 
+    aggregate cost of the shortest path. 
+
+:pgr_johnson:
+
+About this proposal:
+  - Author: Vicky Vergara
+  - Status: testing
+  - Name: pgr_johnson
+  - Deprecate pgr_apspJohnson in favor of pgr_johnson
+  - :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
+
+
+:pgr_floydWarshall:
+
+About this proposal:
+  - Author: Vicky Vergara
+  - Status: testing
+  - Name: pgr_floydWarshall
+  - Deprecate pgr_apspWarshall in favor of pgr_floydWarshall
+  - :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
+
+
+:pgr_dijkstraViaVertex:
+
+About this proposal:
+  - Author: Vicky Vergara
+  - Status: developing, testing
+  - Temporary name: pgr_dijkstraViaVertex
+  - :ref:`pgr_dijkstraViaVertex` - Use pgr_dijkstra to make a route via Vetices 
+
+
+:pgr_dijkstraViaVertex:
+
+About this proposal:
+  - Author: Vicky Vergara
+  - Status: developing, testing
+  - Temporary name: pgr_withPointsVia
+  - :ref:`pgr_withPointsVia` - Use pgr_dijkstraViaVertes to make the route
+     via temporary vertices. 
+
+
+
+.. toctree::
+    :hidden:
+
+    ../src/dijkstra/doc/dijkstraCost
+    ../src/allpairs/doc/johnson.rst
+    ../src/allpairs/doc/floydWarshall.rst
+    ../src/dijkstraViaVertex/doc/dijkstraViaVertex
+    ../src/withPoints/doc/withPointsVia
+
+*******************************************************************************
 Experimental functions: Proposed by Steve Woodbridge
 *******************************************************************************
 
@@ -190,6 +261,7 @@ The following functions are experimental
 	../src/vrp_basic/doc/index.rst
 	../src/vrppdtw/doc/index.rst
 
+
 *******************************************************************************
 Proposed functions: Proposed by Zia Mohammed
 *******************************************************************************
@@ -224,20 +296,14 @@ Discontinued Functions
 	src/developer/discontinued
 
 
-*******************************************************************************
-Developer
-*******************************************************************************
-
-
-:ref:`developer_functions`
-
-
-.. warning:: In V3.0 This function are going to be discontinued. Use the already available underscored version instead.
-
 .. warning:: :ref:`developer_functions` documentation is going to be deleted from the pgRouting documentation in V3.0
 
              
-The following functions are used internaly the topology functions.
+*******************************************************************************
+Deprecated Functions
+*******************************************************************************
+
+
   -  :ref:`pgr_get_column_name` - to get the name of the column as is stored in the postgres administration tables.
   -  :ref:`pgr_get_table_name` - to retrieve the name of the table as is stored in the postgres administration tables.
   -  :ref:`pgr_is_column_indexed` - to check if the column is indexed.

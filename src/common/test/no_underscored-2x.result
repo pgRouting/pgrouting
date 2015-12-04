@@ -1,36 +1,37 @@
- NOTICE:  pgr_getTableName: This function will no longer be soported
-1|t
- NOTICE:  pgr_getTableName: This function will no longer be soported
-2|t
- NOTICE:  pgr_getColumnName: This function will no longer be soported
-3|t
- NOTICE:  pgr_getColumnName: This function will no longer be soported
-4|t
- NOTICE:  pgr_getColumnName: This function will no longer be soported
-5|t
- NOTICE:  pgr_getColumnName: This function will no longer be soported
-6|t
- NOTICE:  pgr_isColumnInTable: This function will no longer be soported
-7|t
- NOTICE:  pgr_isColumnInTable: This function will no longer be soported
-8|f
- NOTICE:  pgr_isColumnInTable: This function will no longer be soported
-9|f
- NOTICE:  pgr_isColumnInTable: This function will no longer be soported
-10|f
- NOTICE:  pgr_isColumnIndexed: This function will no longer be soported
-11|t
- NOTICE:  pgr_isColumnIndexed: This function will no longer be soported
-12|f
- NOTICE:  pgr_versionless: This function will no longer be soported
-13|t
- NOTICE:  pgr_versionless: This function will no longer be soported
-14|t
- NOTICE:  pgr_versionless: This function will no longer be soported
-15|t
- NOTICE:  pgr_isColumnInTable: This function will no longer be soported
-16|t
- NOTICE:  pgr_startPoint: This function will no longer be soported
-17|t
- NOTICE:  pgr_endPoint: This function will no longer be soported
-18|t
+1..18
+NOTICE:  pgr_getTableName: This function will no longer be soported
+ok 1
+NOTICE:  pgr_getTableName: This function will no longer be soported
+ok 2
+NOTICE:  pgr_getColumnName: This function will no longer be soported
+ok 3
+NOTICE:  pgr_getColumnName: This function will no longer be soported
+ok 4
+NOTICE:  pgr_getColumnName: This function will no longer be soported
+ok 5
+NOTICE:  pgr_getColumnName: This function will no longer be soported
+ok 6
+NOTICE:  pgr_isColumnInTable: This function will no longer be soported
+ok 7
+NOTICE:  pgr_isColumnInTable: This function will no longer be soported
+ok 8
+NOTICE:  pgr_isColumnInTable: This function will no longer be soported
+ok 9
+NOTICE:  pgr_isColumnInTable: This function will no longer be soported
+ok 10
+NOTICE:  pgr_isColumnIndexed: This function will no longer be soported
+ok 11
+NOTICE:  pgr_isColumnIndexed: This function will no longer be soported
+ok 12
+NOTICE:  pgr_versionless: This function will no longer be soported
+ok 13
+NOTICE:  pgr_versionless: This function will no longer be soported
+ok 14
+NOTICE:  pgr_versionless: This function will no longer be soported
+ok 15
+NOTICE:  pgr_isColumnInTable: This function will no longer be soported
+ok 16
+NOTICE:  pgr_startPoint: This function will no longer be soported
+ok 17
+NOTICE:  pgr_endPoint: This function will no longer be soported
+ok 18

@@ -3,7 +3,7 @@
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -16,7 +16,7 @@ pgr_dijkstra - Shortest Path Dijkstra
 In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph
+   :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
 
    Boost Graph Inside
 
@@ -42,7 +42,7 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 
 .. code-block:: sql
 
-      pgr_dijkstra(text edges_sql, bigint start_vid, bigint end_vid)
+      pgr_dijkstra(text edges_sql, BIGINT start_vid, BIGINT end_vid)
 	 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 
@@ -60,8 +60,8 @@ This signature performs a Dijkstra from one ``start_vid`` to one ``end_vid``:
 
 .. code-block:: sql
 
-      pgr_dijkstra(text edges_sql, bigint start_vid, bigint end_vid,
-			 boolean directed:=true);
+      pgr_dijkstra(text edges_sql, BIGINT start_vid, BIGINT end_vid,
+			 BOOLEAN directed:=true);
 	 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 
@@ -74,8 +74,8 @@ This signature performs a Dijkstra from one ``start_vid`` to one ``end_vid``:
 
 .. code-block:: sql
 
-      pgr_dijkstra(text edges_sql, array[ANY_INTEGER] start_vids, bigint end_vid,
-			 boolean directed:=true);
+      pgr_dijkstra(text edges_sql, array[ANY_INTEGER] start_vids, BIGINT end_vid,
+			 BOOLEAN directed:=true);
 	 RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
@@ -99,8 +99,8 @@ The extra ``start_vid`` in the result is used to distinguish to which path it be
 
 .. code-block:: sql
 
-       pgr_dijkstra(text edges_sql, bigint start_vid, array[ANY_INTEGER] end_vids,
-			 boolean directed:=true);
+       pgr_dijkstra(text edges_sql, BIGINT start_vid, array[ANY_INTEGER] end_vids,
+			 BOOLEAN directed:=true);
 	 RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature performs a Dijkstra from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
@@ -123,7 +123,7 @@ The extra ``end_vid`` in the result is used to distinguish to which path it belo
 .. code-block:: sql
 
        pgr_dijkstra(text edges_sql, array[ANY_INTEGER] start_vids, array[ANY_INTEGER] end_vids,
-			 boolean directed:=true);
+			 BOOLEAN directed:=true);
 	 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
@@ -153,8 +153,8 @@ Description of the SQL query
 
 Where:
 
-:ANY-INTEGER: smallint, int, bigint
-:ANY-NUMERICAL: smallint, int, bigint, real, float
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, real, float
 
 For example:
 
@@ -171,7 +171,7 @@ Description of the parameters of the signatures
 :start_vids: ``array[ANY-INTEGER]`` array of identifiers of starting vertices.
 :end_vid: ``BIGINT`` identifier of the ending vertex of the path.
 :end_vids: ``array[ANY-INTEGER]`` array of identifiers of ending vertices.
-:directed: ``boolean`` (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
+:directed: ``BOOLEAN`` (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
 
 
 Description of the return values

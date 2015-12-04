@@ -1,7 +1,9 @@
-/*PGR
+/*PGR-GNU*****************************************************************
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,9 +19,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
-
-template <typename G> 
+********************************************************************PGR-GNU*/
 void process_drivingDistance(G &graph, const std::vector<std::string> &tokens) {
 
       std::string::size_type sz;
@@ -76,13 +76,13 @@ void process_drivingDistance(G &graph, const std::vector<std::string> &tokens) {
       if (sources.size() == 1) {
         std::cout << "Performing pgr_DrivingDistance for single source\n";
         Path path;
-        fn_dijkstra.dijkstra_dd(graph, path, sources[0], distance);
+        pgr_drivingDistance(graph, path, sources[0], distance);
         std::cout << "\t\t\tTHE OPUTPUT\n";
         std::cout << "seq\tfrom\tnode\tedge\tcost\n";
         path.print_path();
       } else {
         std::deque< Path >  paths;
-        fn_dijkstra.dijkstra_dd(graph, paths, sources, distance);
+        pgr_drivingDistance(graph, paths, sources, distance);
         if (equiCost == false) {
           std::cout << "Performing pgr_DrivingDistance for multiple sources\n";
           std::cout << "\t\t\tTHE OPUTPUT\n";

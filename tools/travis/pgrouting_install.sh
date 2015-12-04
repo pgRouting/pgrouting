@@ -46,6 +46,14 @@ ERROR=0
 echo "Installing packages ... this may take some time."
 #sudo apt-get install -y -qq packaging-dev cmake checkinstall libcgal-dev libboost-graph-dev libboost-thread-dev libxml2-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml libgeos-dev libgdal1-dev 
 
+wget https://github.com/theory/pgtap/archive/master.zip
+unzip master.zip
+cd pgtap-master
+make
+sudo make install
+sudo ldconfig
+
+
 #if [ "$POSTGIS_VERSION" == "1.5" ]; then 
 #	RELEASE="1.5.8"
 #	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
@@ -72,8 +80,9 @@ echo "Installing packages ... this may take some time."
 
 # Build extension for PostGIS > 2.0
 #if [ "$POSTGIS_VERSION" != "1.5" ]; then 
-#	cd extensions && make && sudo make install
+	cd extensions && make && sudo make install
 #fi
+
 
 # ------------------------------------------------------------------------------
 # Restart once

@@ -1,3 +1,25 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-GNU*/
 create or replace function pgr_pointstodmatrix(pnts geometry[], mode integer default (0), OUT dmatrix double precision[], OUT ids integer[])
     returns record as
 $body$
@@ -99,7 +121,7 @@ begin
           from (select generate_series as id from generate_series(i, nn)) as foo;
 
         -- compute kdijkstra() for this row
-        for rr in execute 'select * from pgr_kdijkstracost($1, $2, $3, false, false)'
+        for rr in execute 'select * from pgr_dijkstracost($1, $2, $3, false)'
                   using 'select id, source, target, cost from ' || edges || 
                         ' where the_geom && ''' || bbox::text || '''::geometry'::text, vids[i], vids[i+1:nn] loop
 
@@ -108,9 +130,9 @@ begin
 
             -- populate the matrix with the cost values, remember this is symmetric
             j := j + 1;
-            -- raise notice 'cost(%,%)=%', i, j, rr.cost;
-            dmatrix[i][j] := rr.cost;
-            dmatrix[j][i] := rr.cost;
+            -- raise notice 'cost(%,%)=%', i, j, rr.agg_cost;
+            dmatrix[i][j] := rr.agg_cost;
+            dmatrix[j][i] := rr.agg_cost;
         end loop;
     end loop;
 

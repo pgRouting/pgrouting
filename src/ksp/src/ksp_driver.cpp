@@ -1,7 +1,10 @@
-/*PGR
+/*PGR-GNU*****************************************************************
+File: ksp_driver.cpp
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,7 +20,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
+********************************************************************PGR-GNU*/
 
 #ifdef __MINGW32__
 #include <winsock2.h>
@@ -34,15 +37,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 
 #include "./ksp_driver.h"
-extern "C" {
+
+#include "../../common/src/memory_func.hpp"
 #if 0
-#include "postgres.h"
-#include "./ksp.h"
-#include "./../../common/src/pgr_types.h"
-#endif
+extern "C" {
 #include "./../../common/src/postgres_connection.h"
 }
-
+#endif
 
 
 #include "./pgr_ksp.hpp"
@@ -51,7 +52,7 @@ extern "C" {
 
 int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
                        int64_t  start_vertex, int64_t  end_vertex,
-                       int no_paths, bool has_reverse_cost, bool directedFlag,
+                       int k, bool directedFlag, bool heap_paths,
                        General_path_element_t **ksp_path, size_t *path_count,
                        char ** err_msg) {
     try {
@@ -77,13 +78,14 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
       Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
       Pgr_ksp< Pgr_base_graph< DirectedGraph > > fn_yen;
       digraph.graph_insert_data(data_edges, initial_size);
-      paths = fn_yen.Yen(digraph, start_vertex, end_vertex, no_paths);
+      paths = fn_yen.Yen(digraph, start_vertex, end_vertex, k, heap_paths);
     } else {
       Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
       Pgr_ksp< Pgr_base_graph< UndirectedGraph > > fn_yen;
       undigraph.graph_insert_data(data_edges, initial_size);
-      paths = fn_yen.Yen(undigraph, start_vertex, end_vertex, no_paths);
+      paths = fn_yen.Yen(undigraph, start_vertex, end_vertex, k, heap_paths);
     }
+
 #if 0
         if (directedFlag) {
             digraph.initialize_graph(data_edges, total_tuples);
@@ -99,8 +101,8 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
 
         if (count == 0) {
             *err_msg = strdup(
-               "NOTICE: No path found between Starting and Ending vertices");
-            *ksp_path = noPathFound(path_count, (*ksp_path));
+               "NOTICE: No paths found between Starting and Ending vertices");
+            *ksp_path = noResult(path_count, (*ksp_path));
             return 0;
         }
 
