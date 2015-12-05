@@ -86,7 +86,6 @@ BEGIN;
                     -- This should happen allways even when its being corrected
                     RETURN query SELECT set_eq(turnRestricted_sql, dijkstra_sql, msg);
                     EXCEPTION WHEN OTHERS THEN
-                        msg := k || '-1 ' || directed || ', with reverse_cost, marked as being used: from '  || i || ' to ' || j || '... Exception found';
                         RETURN query SELECT is_empty(dijkstra_sql, msg);
                 END;
 
@@ -122,7 +121,6 @@ BEGIN;
                     RETURN query SELECT set_eq(turnRestricted_sql, dijkstra_sql, msg);
 
                     EXCEPTION WHEN OTHERS THEN
-                        msg := k || '-3 ' || directed || ', NO reverse_cost, marked as NOT being used: from '  || i || ' to ' || j || '... Exception found';
                         RETURN query SELECT is_empty(dijkstra_sql, msg);
                 END;
 
