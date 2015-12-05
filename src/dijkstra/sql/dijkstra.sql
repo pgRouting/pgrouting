@@ -29,11 +29,7 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql TEXT, start_vid bigint, end_v
     only_cost BOOLEAN DEFAULT false,
   OUT seq integer, OUT path_seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
-<<<<<<< HEAD
- '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'shortest_path'
-=======
  '$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_one_dijkstra'
->>>>>>> cmake-improve-2.2
     LANGUAGE c IMMUTABLE STRICT;
 
     -- One to many
@@ -43,22 +39,6 @@ CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql TEXT, start_vid bigint, end_v
     only_cost BOOLEAN DEFAULT false,
   OUT seq integer, OUT path_seq integer, OUT end_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
-<<<<<<< HEAD
- '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'dijkstra_1_to_many'
-    LANGUAGE c IMMUTABLE STRICT;
-
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vids anyarray, end_vids bigint, directed boolean, has_rcost boolean,
-  OUT seq integer, OUT path_seq integer, OUT start_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
-  RETURNS SETOF RECORD AS
- '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'dijkstra_many_to_1'
-    LANGUAGE c IMMUTABLE STRICT;
-
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql text, start_vids anyarray, end_vids anyarray, directed boolean, has_rcost boolean,
-  OUT seq integer, OUT path_seq integer, OUT start_vid bigint, OUT end_vid bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
-  RETURNS SETOF RECORD AS
- '$libdir/lib${PGROUTING_LIBRARY_NAME}', 'dijkstra_many_to_many'
-    LANGUAGE c IMMUTABLE STRICT;
-=======
  '$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_many_dijkstra'
     LANGUAGE c IMMUTABLE STRICT;
 
@@ -86,7 +66,6 @@ LANGUAGE c IMMUTABLE STRICT;
 
 
 
->>>>>>> cmake-improve-2.2
 
 -- V2 signature
 CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql TEXT, start_vid bigint, end_vid bigint, directed BOOLEAN, has_rcost boolean)

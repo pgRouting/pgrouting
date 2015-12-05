@@ -99,4 +99,3 @@ class Pgr_ksp {
 #include "./pgr_ksp.cpp"
 
 #endif  // SRC_KSP_SRC_PGR_KSP_HPP_
->>>>>>> cmake-improve-2.2

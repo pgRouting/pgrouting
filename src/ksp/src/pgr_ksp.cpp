@@ -140,4 +140,3 @@ void Pgr_ksp< G >::executeYen(G &graph, int K) {
                 m_Heap.erase(m_Heap.begin());
           }
 }
->>>>>>> cmake-improve-2.2
