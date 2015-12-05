@@ -20,12 +20,47 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-select * from pgr_trsp(
-    'select eid as id, source::integer, target::integer, cost, reverse_cost from edges1',
-    1,     -- edge_id for start
-    0.5,   -- midpoint of edge
-    6,     -- edge_id of route end
-    0.5,   -- midpoint of edge
-    true,  -- directed graph?
-    true,  -- has_reverse_cost?
-    null); -- no turn restrictions
+
+\set ECHO none
+\set QUIET 1
+-- Turn off echo and keep things quiet.
+
+-- Format the output for nice TAP.
+\pset format unaligned
+\pset tuples_only true
+\pset pager
+\set VERBOSITY terse
+
+-- Revert all changes on failure.
+\set ON_ERROR_ROLLBACK true
+\set ON_ERROR_STOP true
+\set QUIET 1
+
+BEGIN;
+    SELECT plan(1);
+
+    PREPARE q1 AS
+    SELECT seq, id1, id2, cost::TEXT FROM pgr_trsp(
+        'select eid as id, source::integer, target::integer, cost, reverse_cost from edges1',
+        1,     -- edge_id for start
+        0.5,   -- midpoint of edge
+        6,     -- edge_id of route end
+        0.5,   -- midpoint of edge
+        true,  -- directed graph?
+        true,  -- has_reverse_cost?
+        null); -- no turn restrictions
+
+
+    PREPARE q1 AS
+    SELECT seq-1, node, edge, cost::TEXT FROM pgr_withPointsVia(
+        'select eid as id, source::integer, target::integer, cost, reverse_cost from edges1',
+        ARRAY[1, 6],
+        ARRAY[0.5, 0.5]) WHERE edge != -2;
+
+    SELECT set_eq('q2', 'q1', 'No turn restriction from 1 to 5 returns same as pgr_withPointsVia');
+
+            -- Finish the tests and clean up.
+    SELECT * FROM finish();
+        ROLLBACK;
+
+
