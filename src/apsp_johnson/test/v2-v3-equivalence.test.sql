@@ -87,7 +87,7 @@ BEGIN;
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id'
         );
 
-        SELECT set_ne('q10', 'q11', '5: Results of with reverse_cost must be different of the one without it');
+        SELECT set_eq('q10', 'q11', '5: Results of with reverse_cost must be equal because documentation says it does not receive reverse_cost');
         
         PREPARE q20 AS
         SELECT  start_vid::integer AS id1, end_vid::integer AS id2, agg_cost AS cost
@@ -106,7 +106,7 @@ BEGIN;
         );
 
         SELECT set_eq('q10', 'q20','6: With Out reverse_cost: Compare with (directed) pgr_dijkstraCost -> must give the same results');
-        SELECT set_eq('q11', 'q21','7: With reverse_cost: Compare with (directed) pgr_dijkstraCost -> must give the same results');
+        SELECT set_ne('q11', 'q21','7: With reverse_cost: Compare with (directed) pgr_dijkstraCost -> must give different results (pgr_apspJohnson only works without reverse_cost');
 
 
         PREPARE q30 AS
@@ -123,7 +123,7 @@ BEGIN;
         );
 
         SELECT set_eq('q10', 'q30','8: With Out reverse_cost: Compare with (directed) pgr_johnson -> must give the same results');
-        SELECT set_eq('q11', 'q31','9: With reverse_cost: Compare with (directed) pgr_johnson -> must give the same results');
+        SELECT set_ne('q11', 'q31','9: With reverse_cost: Compare with (directed) pgr_johnson -> must give different results (pgr_apspJohnson only works without reverse_cost');
 
 
         PREPARE q40 AS
@@ -140,7 +140,7 @@ BEGIN;
         );
 
         SELECT set_eq('q10', 'q40','10: With Out reverse_cost: Compare with (directed) pgr_floydWarshall -> must give the same results');
-        SELECT set_eq('q11', 'q41','11: With reverse_cost: Compare with (directed) pgr_floydWarshall -> must give the same results');
+        SELECT set_ne('q11', 'q41','11: With reverse_cost: Compare with (directed) pgr_floydWarshall ->  must give different results (pgr_apspJohnson only works without reverse_cost');
 
         PREPARE q50 AS
         SELECT  id1, id2, cost
@@ -157,7 +157,7 @@ BEGIN;
         );
 
         SELECT set_eq('q10', 'q50','12: With Out reverse_cost: Compare with (directed) pgr_apspWarshall -> must give the same results');
-        SELECT set_eq('q11', 'q51','13: With reverse_cost: Compare with (directed) pgr_apspWarshall -> must give the same results');
+        SELECT set_ne('q11', 'q51','13: With reverse_cost: Compare with (directed) pgr_apspWarshall -> must give different results (pgr_apspJohnson only works without reverse_cost');
 
         -- errors:
 

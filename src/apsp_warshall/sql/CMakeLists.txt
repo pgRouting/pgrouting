@@ -1,6 +1,6 @@
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/apsp_warshall.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/apsp_warshall_v2.2.sql
     )
 
 # set in parent scope

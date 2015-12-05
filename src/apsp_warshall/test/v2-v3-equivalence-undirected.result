@@ -1,4 +1,4 @@
-1..16
+1..11
 ok 1 - 1: No cost can be negative
 ok 2 - 2: No cost can be negative
 ok 3 - 3: No cost can be negative
@@ -10,8 +10,3 @@ ok 8 - 8: With Out reverse_cost: Compare with (directed) pgr_johnson -> must giv
 ok 9 - 9: With reverse_cost: Compare with (directed) pgr_johnson -> must give the same results
 ok 10 - 10: With Out reverse_cost: Compare with (directed) pgr_floydWarshall -> must give the same results
 ok 11 - 11: With reverse_cost: Compare with (directed) pgr_floydWarshall -> must give the same results
-ok 12 - 12: With Out reverse_cost: Compare with pgr_apspJohnson -> must give the same results
-ok 13 - 13: With reverse_cost: Compare with pgr_apspJohnson -> must give the same results
-ok 14 - 14: Documentation says it does needs 2 flags
-ok 15 - 15: Documentation says it does needs 2 flags
-ok 16 - 16: Documentation says it does have a Directed & has_rcost flags
