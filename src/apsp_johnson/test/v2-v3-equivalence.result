@@ -1,16 +1,16 @@
 1..15
-ok 1 - 1
-ok 2 - 2
-ok 3 - 3
-ok 4 - 4
-ok 5 - 5: Results of with reverse_cost must be different of the one without it
+ok 1 - 1: All values are positive
+ok 2 - 2: All values are positive
+ok 3 - 3: All values are positive
+ok 4 - 4: All values are positiv: All values are positivee
+ok 5 - 5: Results of with reverse_cost must be equal because documentation says it does not receive reverse_cost
 ok 6 - 6: With Out reverse_cost: Compare with (directed) pgr_dijkstraCost -> must give the same results
-ok 7 - 7: With reverse_cost: Compare with (directed) pgr_dijkstraCost -> must give the same results
+ok 7 - 7: With reverse_cost: Compare with (directed) pgr_dijkstraCost -> must give different results (pgr_apspJohnson only works without reverse_cost
 ok 8 - 8: With Out reverse_cost: Compare with (directed) pgr_johnson -> must give the same results
-ok 9 - 9: With reverse_cost: Compare with (directed) pgr_johnson -> must give the same results
+ok 9 - 9: With reverse_cost: Compare with (directed) pgr_johnson -> must give different results (pgr_apspJohnson only works without reverse_cost
 ok 10 - 10: With Out reverse_cost: Compare with (directed) pgr_floydWarshall -> must give the same results
-ok 11 - 11: With reverse_cost: Compare with (directed) pgr_floydWarshall -> must give the same results
+ok 11 - 11: With reverse_cost: Compare with (directed) pgr_floydWarshall ->  must give different results (pgr_apspJohnson only works without reverse_cost
 ok 12 - 12: With Out reverse_cost: Compare with (directed) pgr_apspWarshall -> must give the same results
-ok 13 - 13: With reverse_cost: Compare with (directed) pgr_apspWarshall -> must give the same results
+ok 13 - 13: With reverse_cost: Compare with (directed) pgr_apspWarshall -> must give different results (pgr_apspJohnson only works without reverse_cost
 ok 14 - 14: Documentation says it does not have a Directed flag
 ok 15 - 14: Documentation says it does not have a Directed & has_rcost flags

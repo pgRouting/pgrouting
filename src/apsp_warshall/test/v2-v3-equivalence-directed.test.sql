@@ -161,7 +161,7 @@ BEGIN;
         );
 
         SELECT set_eq('q10', 'q50','12: With Out reverse_cost: Compare with pgr_apspJohnson -> must give the same results');
-        SELECT set_eq('q11', 'q51','13: With reverse_cost: Compare with pgr_apspJohnson -> must give the same results');
+        SELECT set_ne('q11', 'q51','13: With reverse_cost: Compare with pgr_apspJohnson -> Results must be different (pgr_apspJohnson only workds without reverse_cost');
 
         -- errors:
 

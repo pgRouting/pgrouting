@@ -108,8 +108,8 @@ set(PgRouting_INCLUDE_DIRECTORIES ${PgRouting_SOURCE_NAMES})
 #-----------------------------------------------------------------------------
 
 set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES} 
-    "apsp_warshall" #V2.0
     "apsp_johnson"  #V2.0
+    "apsp_warshall" #V2.0
     "topology"
     "withPoints"
     "label_graph")

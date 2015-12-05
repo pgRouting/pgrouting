@@ -11,7 +11,7 @@ ok 9 - 9: With reverse_cost: Compare with (directed) pgr_johnson -> must give th
 ok 10 - 10: With Out reverse_cost: Compare with (directed) pgr_floydWarshall -> must give the same results
 ok 11 - 11: With reverse_cost: Compare with (directed) pgr_floydWarshall -> must give the same results
 ok 12 - 12: With Out reverse_cost: Compare with pgr_apspJohnson -> must give the same results
-ok 13 - 13: With reverse_cost: Compare with pgr_apspJohnson -> must give the same results
+ok 13 - 13: With reverse_cost: Compare with pgr_apspJohnson -> Results must be different (pgr_apspJohnson only workds without reverse_cost
 ok 14 - 14: Documentation says it does needs 2 flags
 ok 15 - 15: Documentation says it does needs 2 flags
 ok 16 - 16: Documentation says it does have a Directed & has_rcost flags

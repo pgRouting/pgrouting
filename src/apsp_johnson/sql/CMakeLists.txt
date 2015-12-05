@@ -1,6 +1,7 @@
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/apsp_johnson_v2.2.sql
+    #${CMAKE_CURRENT_SOURCE_DIR}/apsp_johnson.sql
     )
 
 # set in parent scope

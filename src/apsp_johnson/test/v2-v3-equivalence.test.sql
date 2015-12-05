@@ -70,10 +70,10 @@ BEGIN;
         ) WHERE cost < 0;
 
 
-        SELECT is_empty('q1', '1');
-        SELECT is_empty('q2', '2');
-        SELECT is_empty('q3', '3');
-        SELECT is_empty('q4', '4');
+        SELECT is_empty('q1', '1: All values are positive');
+        SELECT is_empty('q2', '2: All values are positive');
+        SELECT is_empty('q3', '3: All values are positive');
+        SELECT is_empty('q4', '4: All values are positiv: All values are positivee');
 
         PREPARE q10 AS
         SELECT id1, id2, cost 
