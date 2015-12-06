@@ -51,7 +51,7 @@ BEGIN;
         null); -- no turn restrictions
 
 
-    PREPARE q1 AS
+    PREPARE q2 AS
     SELECT seq-1, node, edge, cost::TEXT FROM pgr_withPointsVia(
         'select eid as id, source::integer, target::integer, cost, reverse_cost from edges1',
         ARRAY[1, 6],
