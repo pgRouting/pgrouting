@@ -23,7 +23,7 @@ Name
 
 .. note:: This function is intended for the developer’s aid.
 
-.. warning:: This function is  deprecated in 2.1
+.. warning:: This function is deprecated in 2.1
              Use `_pgr_isColumnIndexed` instead
 
 

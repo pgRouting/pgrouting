@@ -53,49 +53,15 @@ LANGUAGE 'c' IMMUTABLE;
 
 
 
-/*
-Wrapper when no restrictions are given then call to pgr_dijkstra is made
-*/
-CREATE OR REPLACE FUNCTION pgr_trsp(
-    edges_sql TEXT,
-    start_vid INTEGER,
-    end_vid INTEGER,
-    directed BOOLEAN,
-    has_rcost BOOLEAN)
-RETURNS SETOF pgr_costResult AS 
-$BODY$
-DECLARE
-has_reverse BOOLEAN;
-new_sql TEXT;
-BEGIN
-    has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
 
-    new_sql := edges_sql;
-    IF (has_reverse != has_rcost) THEN  -- user contradiction
-        IF (has_reverse) THEN  -- it has reverse_cost but user don't want it.
-            new_sql := 
-               'WITH old_sql AS (' || edges_sql || ')' ||
-                '   SELECT id, source, target, cost FROM old_sql';
-        ELSE -- it does not have reverse_cost but user want's it
-            RAISE EXCEPTION 'Error, reverse_cost is used, but query did''t return ''reverse_cost'' column'
-            USING ERRCODE := 'XX000';
-        END IF;
-    END IF;
+/*  pgr_trsp    VERTEX
 
-    RETURN query SELECT seq-1 AS seq, node::integer AS id1, edge::integer AS id2, cost
-        FROM pgr_dijkstra(new_sql, start_vid, end_vid, directed);
-END
-$BODY$
-LANGUAGE plpgsql VOLATILE
-COST 100
-ROWS 1000;
+ - if size of restrictions_sql  is Zero or no restrictions_sql are given
+     then call to pgr_dijkstra is made
 
-
-/*
-Wrapper when restrictions are given
- - if size of restrictions is Zero then call to pgr_dijkstra is made
- - if its different from zero, because it reads the data wrong:
-   - put all data costs in one column
+ - because it reads the data wrong, when there is a reverse_cost column:
+   - put all data costs in one cost column and
+   - a call is made to trsp without only the positive values
 */
 CREATE OR REPLACE FUNCTION pgr_trsp(
     edges_sql TEXT,
@@ -103,7 +69,7 @@ CREATE OR REPLACE FUNCTION pgr_trsp(
     end_vid INTEGER,
     directed BOOLEAN,
     has_rcost BOOLEAN,
-    restrictions_sql TEXT)
+    restrictions_sql TEXT DEFAULT NULL)
 RETURNS SETOF pgr_costResult AS 
 $BODY$
 DECLARE
@@ -126,29 +92,15 @@ BEGIN
         END IF;
     END IF;
 
-    IF (length(restrictions_sql) = 0) THEN
+    IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
         -- no restrictions then its a dijkstra
         RETURN query SELECT seq-1 AS seq, node::integer AS id1, edge::integer AS id2, cost
         FROM pgr_dijkstra(new_sql, start_vid, end_vid, directed);
-
-    ELSE
-        -- otherwise its a trsp
-        -- we dont have contradictions now
-        IF (has_rcost) THEN -- modify sql to get only one column of costs with positive values
-            trsp_sql := 
-            'WITH old_sql AS (' || edges_sql || '),' ||
-            '     cost_sql AS (SELECT id, source, target, cost FROM old_sql where cost >=0), 
-                 reverse_sql as (select id, target AS source, source AS target, reverse_cost FROM old_sql WHERE reverse_cost>=0)
-                 the_union AS ((SELECT * FROM cost_sql) UNION (SELECT * from reverse_sql))
-            SELECT * from the_union';
-        ELSE
-            trsp_sql := new_sql || ' WHERE cost >= 0' 
-            'WITH old_sql AS (' || edges_sql || ')' ||
-            '   SELECT id, source, target, cost FROM old_sql WHERE cost >= 0';
-        END IF;
-
-        RETURN query SELECT * FROM _pgr_trsp(trsp_sql, start_vid, end_vid, directed, FALSE, restrictions_sql);
+        RETURN;
     END IF;
+
+    -- make the call without contradiction from part of the user
+    RETURN query SELECT * FROM _pgr_trsp(new_sql, start_vid, end_vid, directed, has_rcost, restrictions_sql);
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -156,20 +108,27 @@ COST 100
 ROWS 1000;
 
 
-/*
-Wrapper for via vertex no restrictions are given
-A call to pgr_dijKstraViaVertex is done
+/* pgr_trspVia Vertices
+ - if size of restrictions_sql  is Zero or no restrictions_sql are given
+     then call to pgr_dijkstra is made
+
+ - because it reads the data wrong, when there is a reverse_cost column:
+   - put all data costs in one cost column and
+   - a call is made to trspViaVertices without only the positive values
 */
 CREATE OR REPLACE FUNCTION pgr_trspViaVertices(
     edges_sql TEXT,
     via_vids ANYARRAY,
     directed BOOLEAN,
-    has_rcost BOOLEAN)
-RETURNS SETOF pgr_costResult AS 
+    has_rcost BOOLEAN,
+    restrictions_sql TEXT DEFAULT NULL)
+RETURNS SETOF pgr_costResult3 AS 
 $BODY$
 DECLARE
 has_reverse BOOLEAN;
+new_sql TEXT;
 BEGIN
+
     has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
 
     new_sql := edges_sql;
@@ -184,9 +143,16 @@ BEGIN
         END IF;
     END IF;
 
-    RETURN query SELECT (row_number() over())::INTEGER, path_id:: INTEGER, node::INTEGER,
-        (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost
-        FROM pgr_dijkstraViaVertex(new_sql, via_vids, directed) WHERE edge != -1;
+    IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
+        RETURN query SELECT (row_number() over())::INTEGER, path_id:: INTEGER, node::INTEGER,
+            (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost
+            FROM pgr_dijkstraViaVertex(new_sql, via_vids, directed, strict:=true) WHERE edge != -1;
+        RETURN;
+    END IF;
+   
+
+    -- make the call without contradiction from part of the user
+    RETURN query SELECT * FROM _pgr_trspViaVertices(new_sql, via_vids, directed, has_rcost, restrictions_sql);
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE

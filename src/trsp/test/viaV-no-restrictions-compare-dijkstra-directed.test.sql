@@ -44,7 +44,7 @@ for : directed version
 \set QUIET 1
 
 BEGIN;
-    SELECT plan(1296);
+    SELECT plan(1156);
 
     UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
@@ -118,7 +118,7 @@ BEGIN;
                 -- test when there is NO reverse cost and its marked  AS being used
                 -- Uncomparable with dijkstraViaVertexViaVertex because dijstra uses what is given as input
                 trsp_sql := 'SELECT * from pgr_trsp( ' || inner_sql2 || ', ' || i || ', ' || j || ', ' || flag || ', TRUE)';
-                msg := k || '-4 ' || directed || ', NO reverse_cost, marked as NOT being used: from '  || i || ' to ' || j;
+                msg := k || '-4 ' || directed || ', NO reverse_cost, marked as NOT being used: from 1 to '  || i || ' to ' || j;
                 RETURN query SELECT throws_ok(trsp_sql,'XX000','Error, reverse_cost is used, but query did''t return ''reverse_cost'' column', msg);
 
                 k := k + 1;
@@ -129,7 +129,7 @@ BEGIN;
 $BODY$
 language plpgsql;
 
-SELECT * from foo(18, true);
+SELECT * from foo(17, true);
 --SELECT * from foo(18, false);
 
 

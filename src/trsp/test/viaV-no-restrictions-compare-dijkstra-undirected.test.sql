@@ -44,7 +44,7 @@ for : directed version
 \set QUIET 1
 
 BEGIN;
-    SELECT plan(1296);
+    SELECT plan(1156);
 
     UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
@@ -68,17 +68,18 @@ BEGIN;
         inner_sql2 = quote_literal('SELECT id, source, target, cost from edge_table ORDER BY id');
         FOR i IN 1.. cant LOOP
             FOR j IN 1..cant LOOP
+                
 
                 -- test when there is reverse cost and its marked as being used
                 -- VS dijkstraViaVertex autodetected has reverse cost
                 dijkstraViaVertex_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER, 
                     (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text
-                    FROM pgr_dijkstraViaVertex( ' || inner_sql1 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
+                    FROM pgr_dijkstraViaVertex( ' || inner_sql1 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', strict:=TRUE) WHERE edge != -1';
                 trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspViaVertices( ' || inner_sql1 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE)';
 
                 msg := k || '-1 ' || directed || ', with reverse_cost, marked as being used: from 1 to '  || i || ' to ' || j;
                 BEGIN
-                    EXECUTE trsp_sql;
+                    PERFORM trsp_sql;
 
                     -- This should happen allways even when its being corrected
                     RETURN query SELECT set_eq(trsp_sql, dijkstraViaVertex_sql, msg);
@@ -90,7 +91,7 @@ BEGIN;
                 -- VS dijkstraViaVertex autodetected DOES NOT have reverse cost
                 dijkstraViaVertex_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER, 
                     (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text
-                    FROM pgr_dijkstraViaVertex( ' || inner_sql2 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
+                    FROM pgr_dijkstraViaVertex( ' || inner_sql2 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', strict:=TRUE) WHERE edge != -1';
                 trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspViaVertices( ' || inner_sql1 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', FALSE)';
                 msg := k || '-2 ' || directed || ', with reverse_cost, marked as NOT being used: from 1 to '  || i || ' to ' || j;
                 BEGIN
@@ -102,6 +103,7 @@ BEGIN;
                         RETURN query SELECT is_empty(dijkstraViaVertex_sql, msg);
                 END;
 
+                
                 -- test when there is NO reverse cost and its marked NOT being used
                 -- VS dijkstraViaVertex autodetected DOES NOT have reverse cost (same as previous)
                 trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspViaVertices( ' || inner_sql2 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', FALSE)';
@@ -115,11 +117,14 @@ BEGIN;
                     EXCEPTION WHEN OTHERS THEN
                         RETURN query SELECT is_empty(dijkstraViaVertex_sql, msg);
                 END;
+
+                
                 -- test when there is NO reverse cost and its marked  AS being used
                 -- Uncomparable with dijkstraViaVertexViaVertex because dijstra uses what is given as input
-                trsp_sql := 'SELECT * from pgr_trsp( ' || inner_sql2 || ', ' || i || ', ' || j || ', ' || flag || ', TRUE)';
-                msg := k || '-4 ' || directed || ', NO reverse_cost, marked as NOT being used: from '  || i || ' to ' || j;
+                trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspViaVertices( ' || inner_sql2 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE)';
+                msg := k || '-4 ' || directed || ', NO reverse_cost, marked as NOT being used: from 1 to '  || i || ' to ' || j;
                 RETURN query SELECT throws_ok(trsp_sql,'XX000','Error, reverse_cost is used, but query did''t return ''reverse_cost'' column', msg);
+                
 
                 k := k + 1;
 
@@ -129,7 +134,7 @@ BEGIN;
 $BODY$
 language plpgsql;
 
-SELECT * from foo(18, false);
+SELECT * from foo(17, false);
 
 
 -- Finish the tests and clean up.

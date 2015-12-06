@@ -20,6 +20,12 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+
+
+
+
+
+
 set log_min_messages='NOTICE';  /** hack to force EDB to log so uses hack elog for test **/
 select * from pgr_trsp(
     'select eid as id, source::integer, target::integer,cost, reverse_cost from edges1',

@@ -13,14 +13,15 @@ pgr_apspJohnson - All Pairs Shortest Path, Johnson's Algorithm
 ===============================================================================
 
 .. index::
-    single: pgr_apspJohnson(text)
-    module: apsp
+    single: pgr_apspJohnson(text) -- deprecated
 
 Name
 -------------------------------------------------------------------------------
 
 ``pgr_apspJohnson`` - Returns all costs for each pair of nodes in the graph.
 
+.. warning:: This function is deprecated in version 2.2
+             Use :ref:`pgr_johnsons` instead
 
 Synopsis
 -------------------------------------------------------------------------------

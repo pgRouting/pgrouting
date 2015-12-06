@@ -13,13 +13,17 @@ pgr_apspWarshall - All Pairs Shortest Path, Floyd-Warshall Algorithm
 ===============================================================================
 
 .. index::
-    single: pgr_apspWarshall(text, boolean, boolean)
+    single: pgr_apspWarshall(text, boolean, boolean) -- deprecated
     module: apsp
 
 Name
 -------------------------------------------------------------------------------
 
 ``pgr_apspWarshall`` - Returns all costs for each pair of nodes in the graph.
+
+.. warning:: This function is deprecated in version 2.2
+             Use :ref:`pgr_floydWarshall` instead
+
 
 
 Synopsis
@@ -78,7 +82,7 @@ Examples
        0 |    1 |  1 |    0
        1 |    1 |  2 |    1
        2 |    1 |  3 |    0
-       3 |    1 |  4 |   -1
+
     [...]
 
 The query uses the :ref:`sampledata` network.
