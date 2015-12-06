@@ -1,0 +1,1297 @@
+1..1296
+ok 1 - 1-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 1
+ok 2 - 1-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 1
+ok 3 - 1-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 1
+ok 4 - 1-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1
+ok 5 - 2-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 2
+ok 6 - 2-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 2
+ok 7 - 2-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 2
+ok 8 - 2-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2
+ok 9 - 3-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 3
+ok 10 - 3-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 3
+ok 11 - 3-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 3
+ok 12 - 3-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3
+ok 13 - 4-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 4
+ok 14 - 4-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 4
+ok 15 - 4-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 4
+ok 16 - 4-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4
+ok 17 - 5-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 5
+ok 18 - 5-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 5
+ok 19 - 5-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 5
+ok 20 - 5-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5
+ok 21 - 6-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 6
+ok 22 - 6-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 6
+ok 23 - 6-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 6
+ok 24 - 6-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6
+ok 25 - 7-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 7
+ok 26 - 7-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 7
+ok 27 - 7-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 7
+ok 28 - 7-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7
+ok 29 - 8-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 8
+ok 30 - 8-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 8
+ok 31 - 8-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 8
+ok 32 - 8-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8
+ok 33 - 9-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 9
+ok 34 - 9-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 9
+ok 35 - 9-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 9
+ok 36 - 9-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9
+ok 37 - 10-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 10
+ok 38 - 10-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 10
+ok 39 - 10-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 10
+ok 40 - 10-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10
+ok 41 - 11-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 11
+ok 42 - 11-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 11
+ok 43 - 11-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 11
+ok 44 - 11-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11
+ok 45 - 12-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 12
+ok 46 - 12-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 12
+ok 47 - 12-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 12
+ok 48 - 12-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12
+ok 49 - 13-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 13
+ok 50 - 13-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 13
+ok 51 - 13-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 13
+ok 52 - 13-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13
+ok 53 - 14-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 14
+ok 54 - 14-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 14
+ok 55 - 14-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 14
+ok 56 - 14-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14
+ok 57 - 15-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 15
+ok 58 - 15-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 15
+ok 59 - 15-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 15
+ok 60 - 15-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15
+ok 61 - 16-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 16
+ok 62 - 16-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 16
+ok 63 - 16-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 16
+ok 64 - 16-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16
+ok 65 - 17-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 17
+ok 66 - 17-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 17
+ok 67 - 17-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 17
+ok 68 - 17-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17
+ok 69 - 18-1 Undirected, with reverse_cost, marked as being used: from 1 to 1 to 18
+ok 70 - 18-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 1 to 18
+ok 71 - 18-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 1 to 18
+ok 72 - 18-4 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18
+ok 73 - 19-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 1
+ok 74 - 19-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 1
+ok 75 - 19-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 1
+ok 76 - 19-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 1
+ok 77 - 20-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 2
+ok 78 - 20-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 2
+ok 79 - 20-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 2
+ok 80 - 20-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 2
+ok 81 - 21-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 3
+ok 82 - 21-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 3
+ok 83 - 21-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 3
+ok 84 - 21-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 3
+ok 85 - 22-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 4
+ok 86 - 22-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 4
+ok 87 - 22-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 4
+ok 88 - 22-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 4
+ok 89 - 23-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 5
+ok 90 - 23-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 5
+ok 91 - 23-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 5
+ok 92 - 23-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 5
+ok 93 - 24-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 6
+ok 94 - 24-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 6
+ok 95 - 24-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 6
+ok 96 - 24-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 6
+ok 97 - 25-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 7
+ok 98 - 25-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 7
+ok 99 - 25-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 7
+ok 100 - 25-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 7
+ok 101 - 26-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 8
+ok 102 - 26-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 8
+ok 103 - 26-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 8
+ok 104 - 26-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 8
+ok 105 - 27-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 9
+ok 106 - 27-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 9
+ok 107 - 27-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 9
+ok 108 - 27-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 9
+ok 109 - 28-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 10
+ok 110 - 28-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 10
+ok 111 - 28-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 10
+ok 112 - 28-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 10
+ok 113 - 29-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 11
+ok 114 - 29-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 11
+ok 115 - 29-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 11
+ok 116 - 29-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 11
+ok 117 - 30-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 12
+ok 118 - 30-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 12
+ok 119 - 30-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 12
+ok 120 - 30-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 12
+ok 121 - 31-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 13
+ok 122 - 31-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 13
+ok 123 - 31-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 13
+ok 124 - 31-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 13
+ok 125 - 32-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 14
+ok 126 - 32-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 14
+ok 127 - 32-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 14
+ok 128 - 32-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 14
+ok 129 - 33-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 15
+ok 130 - 33-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 15
+ok 131 - 33-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 15
+ok 132 - 33-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 15
+ok 133 - 34-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 16
+ok 134 - 34-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 16
+ok 135 - 34-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 16
+ok 136 - 34-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 16
+ok 137 - 35-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 17
+ok 138 - 35-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 17
+ok 139 - 35-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 17
+ok 140 - 35-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 17
+ok 141 - 36-1 Undirected, with reverse_cost, marked as being used: from 1 to 2 to 18
+ok 142 - 36-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 2 to 18
+ok 143 - 36-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 2 to 18
+ok 144 - 36-4 Undirected, NO reverse_cost, marked as NOT being used: from 2 to 18
+ok 145 - 37-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 1
+ok 146 - 37-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 1
+ok 147 - 37-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 1
+ok 148 - 37-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 1
+ok 149 - 38-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 2
+ok 150 - 38-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 2
+ok 151 - 38-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 2
+ok 152 - 38-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 2
+ok 153 - 39-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 3
+ok 154 - 39-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 3
+ok 155 - 39-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 3
+ok 156 - 39-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 3
+ok 157 - 40-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 4
+ok 158 - 40-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 4
+ok 159 - 40-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 4
+ok 160 - 40-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 4
+ok 161 - 41-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 5
+ok 162 - 41-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 5
+ok 163 - 41-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 5
+ok 164 - 41-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 5
+ok 165 - 42-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 6
+ok 166 - 42-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 6
+ok 167 - 42-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 6
+ok 168 - 42-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 6
+ok 169 - 43-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 7
+ok 170 - 43-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 7
+ok 171 - 43-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 7
+ok 172 - 43-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 7
+ok 173 - 44-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 8
+ok 174 - 44-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 8
+ok 175 - 44-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 8
+ok 176 - 44-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 8
+ok 177 - 45-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 9
+ok 178 - 45-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 9
+ok 179 - 45-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 9
+ok 180 - 45-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 9
+ok 181 - 46-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 10
+ok 182 - 46-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 10
+ok 183 - 46-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 10
+ok 184 - 46-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 10
+ok 185 - 47-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 11
+ok 186 - 47-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 11
+ok 187 - 47-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 11
+ok 188 - 47-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 11
+ok 189 - 48-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 12
+ok 190 - 48-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 12
+ok 191 - 48-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 12
+ok 192 - 48-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 12
+ok 193 - 49-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 13
+ok 194 - 49-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 13
+ok 195 - 49-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 13
+ok 196 - 49-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 13
+ok 197 - 50-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 14
+ok 198 - 50-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 14
+ok 199 - 50-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 14
+ok 200 - 50-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 14
+ok 201 - 51-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 15
+ok 202 - 51-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 15
+ok 203 - 51-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 15
+ok 204 - 51-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 15
+ok 205 - 52-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 16
+ok 206 - 52-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 16
+ok 207 - 52-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 16
+ok 208 - 52-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 16
+ok 209 - 53-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 17
+ok 210 - 53-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 17
+ok 211 - 53-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 17
+ok 212 - 53-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 17
+ok 213 - 54-1 Undirected, with reverse_cost, marked as being used: from 1 to 3 to 18
+ok 214 - 54-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 3 to 18
+ok 215 - 54-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 3 to 18
+ok 216 - 54-4 Undirected, NO reverse_cost, marked as NOT being used: from 3 to 18
+ok 217 - 55-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 1
+ok 218 - 55-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 1
+ok 219 - 55-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 1
+ok 220 - 55-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 1
+ok 221 - 56-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 2
+ok 222 - 56-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 2
+ok 223 - 56-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 2
+ok 224 - 56-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 2
+ok 225 - 57-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 3
+ok 226 - 57-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 3
+ok 227 - 57-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 3
+ok 228 - 57-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 3
+ok 229 - 58-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 4
+ok 230 - 58-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 4
+ok 231 - 58-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 4
+ok 232 - 58-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 4
+ok 233 - 59-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 5
+ok 234 - 59-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 5
+ok 235 - 59-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 5
+ok 236 - 59-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 5
+ok 237 - 60-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 6
+ok 238 - 60-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 6
+ok 239 - 60-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 6
+ok 240 - 60-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 6
+ok 241 - 61-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 7
+ok 242 - 61-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 7
+ok 243 - 61-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 7
+ok 244 - 61-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 7
+ok 245 - 62-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 8
+ok 246 - 62-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 8
+ok 247 - 62-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 8
+ok 248 - 62-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 8
+ok 249 - 63-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 9
+ok 250 - 63-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 9
+ok 251 - 63-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 9
+ok 252 - 63-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 9
+ok 253 - 64-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 10
+ok 254 - 64-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 10
+ok 255 - 64-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 10
+ok 256 - 64-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 10
+ok 257 - 65-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 11
+ok 258 - 65-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 11
+ok 259 - 65-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 11
+ok 260 - 65-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 11
+ok 261 - 66-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 12
+ok 262 - 66-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 12
+ok 263 - 66-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 12
+ok 264 - 66-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 12
+ok 265 - 67-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 13
+ok 266 - 67-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 13
+ok 267 - 67-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 13
+ok 268 - 67-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 13
+ok 269 - 68-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 14
+ok 270 - 68-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 14
+ok 271 - 68-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 14
+ok 272 - 68-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 14
+ok 273 - 69-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 15
+ok 274 - 69-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 15
+ok 275 - 69-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 15
+ok 276 - 69-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 15
+ok 277 - 70-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 16
+ok 278 - 70-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 16
+ok 279 - 70-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 16
+ok 280 - 70-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 16
+ok 281 - 71-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 17
+ok 282 - 71-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 17
+ok 283 - 71-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 17
+ok 284 - 71-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 17
+ok 285 - 72-1 Undirected, with reverse_cost, marked as being used: from 1 to 4 to 18
+ok 286 - 72-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 4 to 18
+ok 287 - 72-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 4 to 18
+ok 288 - 72-4 Undirected, NO reverse_cost, marked as NOT being used: from 4 to 18
+ok 289 - 73-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 1
+ok 290 - 73-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 1
+ok 291 - 73-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 1
+ok 292 - 73-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 1
+ok 293 - 74-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 2
+ok 294 - 74-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 2
+ok 295 - 74-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 2
+ok 296 - 74-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 2
+ok 297 - 75-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 3
+ok 298 - 75-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 3
+ok 299 - 75-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 3
+ok 300 - 75-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 3
+ok 301 - 76-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 4
+ok 302 - 76-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 4
+ok 303 - 76-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 4
+ok 304 - 76-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 4
+ok 305 - 77-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 5
+ok 306 - 77-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 5
+ok 307 - 77-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 5
+ok 308 - 77-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 5
+ok 309 - 78-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 6
+ok 310 - 78-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 6
+ok 311 - 78-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 6
+ok 312 - 78-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 6
+ok 313 - 79-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 7
+ok 314 - 79-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 7
+ok 315 - 79-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 7
+ok 316 - 79-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 7
+ok 317 - 80-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 8
+ok 318 - 80-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 8
+ok 319 - 80-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 8
+ok 320 - 80-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 8
+ok 321 - 81-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 9
+ok 322 - 81-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 9
+ok 323 - 81-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 9
+ok 324 - 81-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 9
+ok 325 - 82-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 10
+ok 326 - 82-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 10
+ok 327 - 82-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 10
+ok 328 - 82-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 10
+ok 329 - 83-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 11
+ok 330 - 83-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 11
+ok 331 - 83-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 11
+ok 332 - 83-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 11
+ok 333 - 84-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 12
+ok 334 - 84-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 12
+ok 335 - 84-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 12
+ok 336 - 84-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 12
+ok 337 - 85-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 13
+ok 338 - 85-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 13
+ok 339 - 85-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 13
+ok 340 - 85-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 13
+ok 341 - 86-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 14
+ok 342 - 86-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 14
+ok 343 - 86-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 14
+ok 344 - 86-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 14
+ok 345 - 87-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 15
+ok 346 - 87-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 15
+ok 347 - 87-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 15
+ok 348 - 87-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 15
+ok 349 - 88-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 16
+ok 350 - 88-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 16
+ok 351 - 88-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 16
+ok 352 - 88-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 16
+ok 353 - 89-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 17
+ok 354 - 89-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 17
+ok 355 - 89-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 17
+ok 356 - 89-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 17
+ok 357 - 90-1 Undirected, with reverse_cost, marked as being used: from 1 to 5 to 18
+ok 358 - 90-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 5 to 18
+ok 359 - 90-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 5 to 18
+ok 360 - 90-4 Undirected, NO reverse_cost, marked as NOT being used: from 5 to 18
+ok 361 - 91-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 1
+ok 362 - 91-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 1
+ok 363 - 91-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 1
+ok 364 - 91-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 1
+ok 365 - 92-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 2
+ok 366 - 92-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 2
+ok 367 - 92-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 2
+ok 368 - 92-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 2
+ok 369 - 93-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 3
+ok 370 - 93-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 3
+ok 371 - 93-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 3
+ok 372 - 93-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 3
+ok 373 - 94-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 4
+ok 374 - 94-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 4
+ok 375 - 94-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 4
+ok 376 - 94-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 4
+ok 377 - 95-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 5
+ok 378 - 95-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 5
+ok 379 - 95-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 5
+ok 380 - 95-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 5
+ok 381 - 96-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 6
+ok 382 - 96-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 6
+ok 383 - 96-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 6
+ok 384 - 96-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 6
+ok 385 - 97-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 7
+ok 386 - 97-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 7
+ok 387 - 97-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 7
+ok 388 - 97-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 7
+ok 389 - 98-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 8
+ok 390 - 98-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 8
+ok 391 - 98-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 8
+ok 392 - 98-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 8
+ok 393 - 99-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 9
+ok 394 - 99-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 9
+ok 395 - 99-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 9
+ok 396 - 99-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 9
+ok 397 - 100-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 10
+ok 398 - 100-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 10
+ok 399 - 100-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 10
+ok 400 - 100-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 10
+ok 401 - 101-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 11
+ok 402 - 101-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 11
+ok 403 - 101-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 11
+ok 404 - 101-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 11
+ok 405 - 102-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 12
+ok 406 - 102-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 12
+ok 407 - 102-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 12
+ok 408 - 102-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 12
+ok 409 - 103-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 13
+ok 410 - 103-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 13
+ok 411 - 103-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 13
+ok 412 - 103-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 13
+ok 413 - 104-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 14
+ok 414 - 104-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 14
+ok 415 - 104-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 14
+ok 416 - 104-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 14
+ok 417 - 105-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 15
+ok 418 - 105-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 15
+ok 419 - 105-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 15
+ok 420 - 105-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 15
+ok 421 - 106-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 16
+ok 422 - 106-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 16
+ok 423 - 106-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 16
+ok 424 - 106-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 16
+ok 425 - 107-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 17
+ok 426 - 107-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 17
+ok 427 - 107-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 17
+ok 428 - 107-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 17
+ok 429 - 108-1 Undirected, with reverse_cost, marked as being used: from 1 to 6 to 18
+ok 430 - 108-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 6 to 18
+ok 431 - 108-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 6 to 18
+ok 432 - 108-4 Undirected, NO reverse_cost, marked as NOT being used: from 6 to 18
+ok 433 - 109-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 1
+ok 434 - 109-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 1
+ok 435 - 109-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 1
+ok 436 - 109-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 1
+ok 437 - 110-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 2
+ok 438 - 110-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 2
+ok 439 - 110-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 2
+ok 440 - 110-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 2
+ok 441 - 111-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 3
+ok 442 - 111-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 3
+ok 443 - 111-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 3
+ok 444 - 111-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 3
+ok 445 - 112-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 4
+ok 446 - 112-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 4
+ok 447 - 112-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 4
+ok 448 - 112-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 4
+ok 449 - 113-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 5
+ok 450 - 113-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 5
+ok 451 - 113-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 5
+ok 452 - 113-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 5
+ok 453 - 114-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 6
+ok 454 - 114-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 6
+ok 455 - 114-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 6
+ok 456 - 114-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 6
+ok 457 - 115-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 7
+ok 458 - 115-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 7
+ok 459 - 115-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 7
+ok 460 - 115-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 7
+ok 461 - 116-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 8
+ok 462 - 116-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 8
+ok 463 - 116-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 8
+ok 464 - 116-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 8
+ok 465 - 117-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 9
+ok 466 - 117-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 9
+ok 467 - 117-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 9
+ok 468 - 117-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 9
+ok 469 - 118-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 10
+ok 470 - 118-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 10
+ok 471 - 118-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 10
+ok 472 - 118-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 10
+ok 473 - 119-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 11
+ok 474 - 119-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 11
+ok 475 - 119-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 11
+ok 476 - 119-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 11
+ok 477 - 120-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 12
+ok 478 - 120-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 12
+ok 479 - 120-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 12
+ok 480 - 120-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 12
+ok 481 - 121-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 13
+ok 482 - 121-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 13
+ok 483 - 121-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 13
+ok 484 - 121-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 13
+ok 485 - 122-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 14
+ok 486 - 122-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 14
+ok 487 - 122-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 14
+ok 488 - 122-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 14
+ok 489 - 123-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 15
+ok 490 - 123-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 15
+ok 491 - 123-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 15
+ok 492 - 123-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 15
+ok 493 - 124-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 16
+ok 494 - 124-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 16
+ok 495 - 124-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 16
+ok 496 - 124-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 16
+ok 497 - 125-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 17
+ok 498 - 125-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 17
+ok 499 - 125-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 17
+ok 500 - 125-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 17
+ok 501 - 126-1 Undirected, with reverse_cost, marked as being used: from 1 to 7 to 18
+ok 502 - 126-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 7 to 18
+ok 503 - 126-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 7 to 18
+ok 504 - 126-4 Undirected, NO reverse_cost, marked as NOT being used: from 7 to 18
+ok 505 - 127-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 1
+ok 506 - 127-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 1
+ok 507 - 127-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 1
+ok 508 - 127-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 1
+ok 509 - 128-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 2
+ok 510 - 128-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 2
+ok 511 - 128-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 2
+ok 512 - 128-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 2
+ok 513 - 129-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 3
+ok 514 - 129-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 3
+ok 515 - 129-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 3
+ok 516 - 129-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 3
+ok 517 - 130-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 4
+ok 518 - 130-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 4
+ok 519 - 130-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 4
+ok 520 - 130-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 4
+ok 521 - 131-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 5
+ok 522 - 131-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 5
+ok 523 - 131-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 5
+ok 524 - 131-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 5
+ok 525 - 132-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 6
+ok 526 - 132-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 6
+ok 527 - 132-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 6
+ok 528 - 132-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 6
+ok 529 - 133-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 7
+ok 530 - 133-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 7
+ok 531 - 133-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 7
+ok 532 - 133-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 7
+ok 533 - 134-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 8
+ok 534 - 134-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 8
+ok 535 - 134-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 8
+ok 536 - 134-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 8
+ok 537 - 135-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 9
+ok 538 - 135-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 9
+ok 539 - 135-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 9
+ok 540 - 135-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 9
+ok 541 - 136-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 10
+ok 542 - 136-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 10
+ok 543 - 136-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 10
+ok 544 - 136-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 10
+ok 545 - 137-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 11
+ok 546 - 137-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 11
+ok 547 - 137-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 11
+ok 548 - 137-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 11
+ok 549 - 138-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 12
+ok 550 - 138-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 12
+ok 551 - 138-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 12
+ok 552 - 138-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 12
+ok 553 - 139-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 13
+ok 554 - 139-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 13
+ok 555 - 139-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 13
+ok 556 - 139-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 13
+ok 557 - 140-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 14
+ok 558 - 140-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 14
+ok 559 - 140-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 14
+ok 560 - 140-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 14
+ok 561 - 141-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 15
+ok 562 - 141-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 15
+ok 563 - 141-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 15
+ok 564 - 141-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 15
+ok 565 - 142-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 16
+ok 566 - 142-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 16
+ok 567 - 142-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 16
+ok 568 - 142-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 16
+ok 569 - 143-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 17
+ok 570 - 143-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 17
+ok 571 - 143-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 17
+ok 572 - 143-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 17
+ok 573 - 144-1 Undirected, with reverse_cost, marked as being used: from 1 to 8 to 18
+ok 574 - 144-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 8 to 18
+ok 575 - 144-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 8 to 18
+ok 576 - 144-4 Undirected, NO reverse_cost, marked as NOT being used: from 8 to 18
+ok 577 - 145-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 1
+ok 578 - 145-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 1
+ok 579 - 145-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 1
+ok 580 - 145-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 1
+ok 581 - 146-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 2
+ok 582 - 146-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 2
+ok 583 - 146-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 2
+ok 584 - 146-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 2
+ok 585 - 147-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 3
+ok 586 - 147-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 3
+ok 587 - 147-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 3
+ok 588 - 147-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 3
+ok 589 - 148-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 4
+ok 590 - 148-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 4
+ok 591 - 148-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 4
+ok 592 - 148-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 4
+ok 593 - 149-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 5
+ok 594 - 149-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 5
+ok 595 - 149-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 5
+ok 596 - 149-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 5
+ok 597 - 150-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 6
+ok 598 - 150-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 6
+ok 599 - 150-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 6
+ok 600 - 150-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 6
+ok 601 - 151-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 7
+ok 602 - 151-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 7
+ok 603 - 151-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 7
+ok 604 - 151-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 7
+ok 605 - 152-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 8
+ok 606 - 152-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 8
+ok 607 - 152-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 8
+ok 608 - 152-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 8
+ok 609 - 153-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 9
+ok 610 - 153-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 9
+ok 611 - 153-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 9
+ok 612 - 153-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 9
+ok 613 - 154-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 10
+ok 614 - 154-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 10
+ok 615 - 154-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 10
+ok 616 - 154-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 10
+ok 617 - 155-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 11
+ok 618 - 155-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 11
+ok 619 - 155-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 11
+ok 620 - 155-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 11
+ok 621 - 156-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 12
+ok 622 - 156-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 12
+ok 623 - 156-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 12
+ok 624 - 156-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 12
+ok 625 - 157-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 13
+ok 626 - 157-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 13
+ok 627 - 157-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 13
+ok 628 - 157-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 13
+ok 629 - 158-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 14
+ok 630 - 158-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 14
+ok 631 - 158-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 14
+ok 632 - 158-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 14
+ok 633 - 159-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 15
+ok 634 - 159-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 15
+ok 635 - 159-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 15
+ok 636 - 159-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 15
+ok 637 - 160-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 16
+ok 638 - 160-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 16
+ok 639 - 160-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 16
+ok 640 - 160-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 16
+ok 641 - 161-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 17
+ok 642 - 161-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 17
+ok 643 - 161-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 17
+ok 644 - 161-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 17
+ok 645 - 162-1 Undirected, with reverse_cost, marked as being used: from 1 to 9 to 18
+ok 646 - 162-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 9 to 18
+ok 647 - 162-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 9 to 18
+ok 648 - 162-4 Undirected, NO reverse_cost, marked as NOT being used: from 9 to 18
+ok 649 - 163-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 1
+ok 650 - 163-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 1
+ok 651 - 163-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 1
+ok 652 - 163-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 1
+ok 653 - 164-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 2
+ok 654 - 164-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 2
+ok 655 - 164-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 2
+ok 656 - 164-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 2
+ok 657 - 165-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 3
+ok 658 - 165-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 3
+ok 659 - 165-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 3
+ok 660 - 165-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 3
+ok 661 - 166-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 4
+ok 662 - 166-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 4
+ok 663 - 166-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 4
+ok 664 - 166-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 4
+ok 665 - 167-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 5
+ok 666 - 167-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 5
+ok 667 - 167-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 5
+ok 668 - 167-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 5
+ok 669 - 168-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 6
+ok 670 - 168-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 6
+ok 671 - 168-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 6
+ok 672 - 168-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 6
+ok 673 - 169-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 7
+ok 674 - 169-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 7
+ok 675 - 169-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 7
+ok 676 - 169-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 7
+ok 677 - 170-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 8
+ok 678 - 170-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 8
+ok 679 - 170-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 8
+ok 680 - 170-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 8
+ok 681 - 171-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 9
+ok 682 - 171-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 9
+ok 683 - 171-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 9
+ok 684 - 171-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 9
+ok 685 - 172-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 10
+ok 686 - 172-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 10
+ok 687 - 172-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 10
+ok 688 - 172-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 10
+ok 689 - 173-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 11
+ok 690 - 173-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 11
+ok 691 - 173-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 11
+ok 692 - 173-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 11
+ok 693 - 174-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 12
+ok 694 - 174-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 12
+ok 695 - 174-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 12
+ok 696 - 174-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 12
+ok 697 - 175-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 13
+ok 698 - 175-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 13
+ok 699 - 175-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 13
+ok 700 - 175-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 13
+ok 701 - 176-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 14
+ok 702 - 176-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 14
+ok 703 - 176-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 14
+ok 704 - 176-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 14
+ok 705 - 177-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 15
+ok 706 - 177-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 15
+ok 707 - 177-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 15
+ok 708 - 177-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 15
+ok 709 - 178-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 16
+ok 710 - 178-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 16
+ok 711 - 178-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 16
+ok 712 - 178-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 16
+ok 713 - 179-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 17
+ok 714 - 179-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 17
+ok 715 - 179-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 17
+ok 716 - 179-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 17
+ok 717 - 180-1 Undirected, with reverse_cost, marked as being used: from 1 to 10 to 18
+ok 718 - 180-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 10 to 18
+ok 719 - 180-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 10 to 18
+ok 720 - 180-4 Undirected, NO reverse_cost, marked as NOT being used: from 10 to 18
+ok 721 - 181-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 1
+ok 722 - 181-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 1
+ok 723 - 181-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 1
+ok 724 - 181-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 1
+ok 725 - 182-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 2
+ok 726 - 182-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 2
+ok 727 - 182-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 2
+ok 728 - 182-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 2
+ok 729 - 183-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 3
+ok 730 - 183-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 3
+ok 731 - 183-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 3
+ok 732 - 183-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 3
+ok 733 - 184-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 4
+ok 734 - 184-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 4
+ok 735 - 184-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 4
+ok 736 - 184-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 4
+ok 737 - 185-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 5
+ok 738 - 185-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 5
+ok 739 - 185-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 5
+ok 740 - 185-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 5
+ok 741 - 186-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 6
+ok 742 - 186-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 6
+ok 743 - 186-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 6
+ok 744 - 186-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 6
+ok 745 - 187-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 7
+ok 746 - 187-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 7
+ok 747 - 187-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 7
+ok 748 - 187-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 7
+ok 749 - 188-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 8
+ok 750 - 188-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 8
+ok 751 - 188-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 8
+ok 752 - 188-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 8
+ok 753 - 189-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 9
+ok 754 - 189-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 9
+ok 755 - 189-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 9
+ok 756 - 189-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 9
+ok 757 - 190-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 10
+ok 758 - 190-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 10
+ok 759 - 190-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 10
+ok 760 - 190-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 10
+ok 761 - 191-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 11
+ok 762 - 191-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 11
+ok 763 - 191-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 11
+ok 764 - 191-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 11
+ok 765 - 192-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 12
+ok 766 - 192-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 12
+ok 767 - 192-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 12
+ok 768 - 192-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 12
+ok 769 - 193-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 13
+ok 770 - 193-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 13
+ok 771 - 193-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 13
+ok 772 - 193-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 13
+ok 773 - 194-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 14
+ok 774 - 194-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 14
+ok 775 - 194-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 14
+ok 776 - 194-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 14
+ok 777 - 195-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 15
+ok 778 - 195-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 15
+ok 779 - 195-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 15
+ok 780 - 195-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 15
+ok 781 - 196-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 16
+ok 782 - 196-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 16
+ok 783 - 196-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 16
+ok 784 - 196-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 16
+ok 785 - 197-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 17
+ok 786 - 197-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 17
+ok 787 - 197-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 17
+ok 788 - 197-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 17
+ok 789 - 198-1 Undirected, with reverse_cost, marked as being used: from 1 to 11 to 18
+ok 790 - 198-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 11 to 18
+ok 791 - 198-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 11 to 18
+ok 792 - 198-4 Undirected, NO reverse_cost, marked as NOT being used: from 11 to 18
+ok 793 - 199-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 1
+ok 794 - 199-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 1
+ok 795 - 199-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 1
+ok 796 - 199-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 1
+ok 797 - 200-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 2
+ok 798 - 200-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 2
+ok 799 - 200-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 2
+ok 800 - 200-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 2
+ok 801 - 201-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 3
+ok 802 - 201-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 3
+ok 803 - 201-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 3
+ok 804 - 201-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 3
+ok 805 - 202-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 4
+ok 806 - 202-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 4
+ok 807 - 202-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 4
+ok 808 - 202-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 4
+ok 809 - 203-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 5
+ok 810 - 203-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 5
+ok 811 - 203-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 5
+ok 812 - 203-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 5
+ok 813 - 204-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 6
+ok 814 - 204-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 6
+ok 815 - 204-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 6
+ok 816 - 204-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 6
+ok 817 - 205-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 7
+ok 818 - 205-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 7
+ok 819 - 205-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 7
+ok 820 - 205-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 7
+ok 821 - 206-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 8
+ok 822 - 206-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 8
+ok 823 - 206-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 8
+ok 824 - 206-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 8
+ok 825 - 207-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 9
+ok 826 - 207-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 9
+ok 827 - 207-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 9
+ok 828 - 207-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 9
+ok 829 - 208-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 10
+ok 830 - 208-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 10
+ok 831 - 208-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 10
+ok 832 - 208-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 10
+ok 833 - 209-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 11
+ok 834 - 209-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 11
+ok 835 - 209-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 11
+ok 836 - 209-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 11
+ok 837 - 210-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 12
+ok 838 - 210-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 12
+ok 839 - 210-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 12
+ok 840 - 210-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 12
+ok 841 - 211-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 13
+ok 842 - 211-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 13
+ok 843 - 211-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 13
+ok 844 - 211-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 13
+ok 845 - 212-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 14
+ok 846 - 212-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 14
+ok 847 - 212-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 14
+ok 848 - 212-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 14
+ok 849 - 213-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 15
+ok 850 - 213-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 15
+ok 851 - 213-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 15
+ok 852 - 213-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 15
+ok 853 - 214-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 16
+ok 854 - 214-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 16
+ok 855 - 214-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 16
+ok 856 - 214-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 16
+ok 857 - 215-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 17
+ok 858 - 215-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 17
+ok 859 - 215-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 17
+ok 860 - 215-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 17
+ok 861 - 216-1 Undirected, with reverse_cost, marked as being used: from 1 to 12 to 18
+ok 862 - 216-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 12 to 18
+ok 863 - 216-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 12 to 18
+ok 864 - 216-4 Undirected, NO reverse_cost, marked as NOT being used: from 12 to 18
+ok 865 - 217-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 1
+ok 866 - 217-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 1
+ok 867 - 217-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 1
+ok 868 - 217-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 1
+ok 869 - 218-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 2
+ok 870 - 218-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 2
+ok 871 - 218-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 2
+ok 872 - 218-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 2
+ok 873 - 219-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 3
+ok 874 - 219-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 3
+ok 875 - 219-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 3
+ok 876 - 219-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 3
+ok 877 - 220-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 4
+ok 878 - 220-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 4
+ok 879 - 220-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 4
+ok 880 - 220-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 4
+ok 881 - 221-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 5
+ok 882 - 221-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 5
+ok 883 - 221-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 5
+ok 884 - 221-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 5
+ok 885 - 222-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 6
+ok 886 - 222-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 6
+ok 887 - 222-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 6
+ok 888 - 222-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 6
+ok 889 - 223-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 7
+ok 890 - 223-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 7
+ok 891 - 223-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 7
+ok 892 - 223-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 7
+ok 893 - 224-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 8
+ok 894 - 224-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 8
+ok 895 - 224-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 8
+ok 896 - 224-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 8
+ok 897 - 225-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 9
+ok 898 - 225-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 9
+ok 899 - 225-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 9
+ok 900 - 225-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 9
+ok 901 - 226-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 10
+ok 902 - 226-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 10
+ok 903 - 226-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 10
+ok 904 - 226-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 10
+ok 905 - 227-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 11
+ok 906 - 227-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 11
+ok 907 - 227-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 11
+ok 908 - 227-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 11
+ok 909 - 228-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 12
+ok 910 - 228-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 12
+ok 911 - 228-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 12
+ok 912 - 228-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 12
+ok 913 - 229-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 13
+ok 914 - 229-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 13
+ok 915 - 229-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 13
+ok 916 - 229-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 13
+ok 917 - 230-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 14
+ok 918 - 230-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 14
+ok 919 - 230-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 14
+ok 920 - 230-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 14
+ok 921 - 231-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 15
+ok 922 - 231-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 15
+ok 923 - 231-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 15
+ok 924 - 231-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 15
+ok 925 - 232-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 16
+ok 926 - 232-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 16
+ok 927 - 232-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 16
+ok 928 - 232-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 16
+ok 929 - 233-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 17
+ok 930 - 233-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 17
+ok 931 - 233-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 17
+ok 932 - 233-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 17
+ok 933 - 234-1 Undirected, with reverse_cost, marked as being used: from 1 to 13 to 18
+ok 934 - 234-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 13 to 18
+ok 935 - 234-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 13 to 18
+ok 936 - 234-4 Undirected, NO reverse_cost, marked as NOT being used: from 13 to 18
+ok 937 - 235-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 1
+ok 938 - 235-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 1
+ok 939 - 235-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 1
+ok 940 - 235-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 1
+ok 941 - 236-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 2
+ok 942 - 236-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 2
+ok 943 - 236-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 2
+ok 944 - 236-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 2
+ok 945 - 237-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 3
+ok 946 - 237-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 3
+ok 947 - 237-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 3
+ok 948 - 237-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 3
+ok 949 - 238-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 4
+ok 950 - 238-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 4
+ok 951 - 238-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 4
+ok 952 - 238-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 4
+ok 953 - 239-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 5
+ok 954 - 239-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 5
+ok 955 - 239-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 5
+ok 956 - 239-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 5
+ok 957 - 240-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 6
+ok 958 - 240-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 6
+ok 959 - 240-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 6
+ok 960 - 240-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 6
+ok 961 - 241-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 7
+ok 962 - 241-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 7
+ok 963 - 241-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 7
+ok 964 - 241-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 7
+ok 965 - 242-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 8
+ok 966 - 242-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 8
+ok 967 - 242-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 8
+ok 968 - 242-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 8
+ok 969 - 243-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 9
+ok 970 - 243-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 9
+ok 971 - 243-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 9
+ok 972 - 243-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 9
+ok 973 - 244-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 10
+ok 974 - 244-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 10
+ok 975 - 244-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 10
+ok 976 - 244-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 10
+ok 977 - 245-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 11
+ok 978 - 245-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 11
+ok 979 - 245-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 11
+ok 980 - 245-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 11
+ok 981 - 246-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 12
+ok 982 - 246-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 12
+ok 983 - 246-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 12
+ok 984 - 246-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 12
+ok 985 - 247-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 13
+ok 986 - 247-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 13
+ok 987 - 247-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 13
+ok 988 - 247-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 13
+ok 989 - 248-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 14
+ok 990 - 248-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 14
+ok 991 - 248-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 14
+ok 992 - 248-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 14
+ok 993 - 249-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 15
+ok 994 - 249-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 15
+ok 995 - 249-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 15
+ok 996 - 249-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 15
+ok 997 - 250-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 16
+ok 998 - 250-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 16
+ok 999 - 250-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 16
+ok 1000 - 250-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 16
+ok 1001 - 251-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 17
+ok 1002 - 251-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 17
+ok 1003 - 251-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 17
+ok 1004 - 251-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 17
+ok 1005 - 252-1 Undirected, with reverse_cost, marked as being used: from 1 to 14 to 18
+ok 1006 - 252-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 14 to 18
+ok 1007 - 252-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 14 to 18
+ok 1008 - 252-4 Undirected, NO reverse_cost, marked as NOT being used: from 14 to 18
+ok 1009 - 253-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 1
+ok 1010 - 253-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 1
+ok 1011 - 253-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 1
+ok 1012 - 253-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 1
+ok 1013 - 254-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 2
+ok 1014 - 254-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 2
+ok 1015 - 254-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 2
+ok 1016 - 254-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 2
+ok 1017 - 255-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 3
+ok 1018 - 255-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 3
+ok 1019 - 255-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 3
+ok 1020 - 255-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 3
+ok 1021 - 256-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 4
+ok 1022 - 256-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 4
+ok 1023 - 256-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 4
+ok 1024 - 256-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 4
+ok 1025 - 257-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 5
+ok 1026 - 257-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 5
+ok 1027 - 257-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 5
+ok 1028 - 257-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 5
+ok 1029 - 258-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 6
+ok 1030 - 258-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 6
+ok 1031 - 258-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 6
+ok 1032 - 258-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 6
+ok 1033 - 259-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 7
+ok 1034 - 259-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 7
+ok 1035 - 259-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 7
+ok 1036 - 259-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 7
+ok 1037 - 260-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 8
+ok 1038 - 260-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 8
+ok 1039 - 260-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 8
+ok 1040 - 260-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 8
+ok 1041 - 261-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 9
+ok 1042 - 261-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 9
+ok 1043 - 261-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 9
+ok 1044 - 261-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 9
+ok 1045 - 262-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 10
+ok 1046 - 262-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 10
+ok 1047 - 262-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 10
+ok 1048 - 262-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 10
+ok 1049 - 263-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 11
+ok 1050 - 263-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 11
+ok 1051 - 263-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 11
+ok 1052 - 263-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 11
+ok 1053 - 264-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 12
+ok 1054 - 264-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 12
+ok 1055 - 264-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 12
+ok 1056 - 264-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 12
+ok 1057 - 265-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 13
+ok 1058 - 265-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 13
+ok 1059 - 265-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 13
+ok 1060 - 265-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 13
+ok 1061 - 266-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 14
+ok 1062 - 266-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 14
+ok 1063 - 266-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 14
+ok 1064 - 266-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 14
+ok 1065 - 267-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 15
+ok 1066 - 267-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 15
+ok 1067 - 267-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 15
+ok 1068 - 267-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 15
+ok 1069 - 268-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 16
+ok 1070 - 268-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 16
+ok 1071 - 268-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 16
+ok 1072 - 268-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 16
+ok 1073 - 269-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 17
+ok 1074 - 269-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 17
+ok 1075 - 269-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 17
+ok 1076 - 269-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 17
+ok 1077 - 270-1 Undirected, with reverse_cost, marked as being used: from 1 to 15 to 18
+ok 1078 - 270-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 15 to 18
+ok 1079 - 270-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 15 to 18
+ok 1080 - 270-4 Undirected, NO reverse_cost, marked as NOT being used: from 15 to 18
+ok 1081 - 271-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 1
+ok 1082 - 271-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 1
+ok 1083 - 271-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 1
+ok 1084 - 271-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 1
+ok 1085 - 272-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 2
+ok 1086 - 272-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 2
+ok 1087 - 272-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 2
+ok 1088 - 272-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 2
+ok 1089 - 273-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 3
+ok 1090 - 273-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 3
+ok 1091 - 273-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 3
+ok 1092 - 273-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 3
+ok 1093 - 274-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 4
+ok 1094 - 274-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 4
+ok 1095 - 274-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 4
+ok 1096 - 274-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 4
+ok 1097 - 275-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 5
+ok 1098 - 275-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 5
+ok 1099 - 275-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 5
+ok 1100 - 275-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 5
+ok 1101 - 276-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 6
+ok 1102 - 276-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 6
+ok 1103 - 276-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 6
+ok 1104 - 276-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 6
+ok 1105 - 277-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 7
+ok 1106 - 277-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 7
+ok 1107 - 277-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 7
+ok 1108 - 277-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 7
+ok 1109 - 278-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 8
+ok 1110 - 278-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 8
+ok 1111 - 278-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 8
+ok 1112 - 278-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 8
+ok 1113 - 279-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 9
+ok 1114 - 279-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 9
+ok 1115 - 279-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 9
+ok 1116 - 279-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 9
+ok 1117 - 280-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 10
+ok 1118 - 280-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 10
+ok 1119 - 280-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 10
+ok 1120 - 280-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 10
+ok 1121 - 281-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 11
+ok 1122 - 281-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 11
+ok 1123 - 281-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 11
+ok 1124 - 281-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 11
+ok 1125 - 282-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 12
+ok 1126 - 282-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 12
+ok 1127 - 282-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 12
+ok 1128 - 282-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 12
+ok 1129 - 283-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 13
+ok 1130 - 283-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 13
+ok 1131 - 283-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 13
+ok 1132 - 283-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 13
+ok 1133 - 284-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 14
+ok 1134 - 284-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 14
+ok 1135 - 284-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 14
+ok 1136 - 284-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 14
+ok 1137 - 285-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 15
+ok 1138 - 285-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 15
+ok 1139 - 285-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 15
+ok 1140 - 285-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 15
+ok 1141 - 286-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 16
+ok 1142 - 286-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 16
+ok 1143 - 286-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 16
+ok 1144 - 286-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 16
+ok 1145 - 287-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 17
+ok 1146 - 287-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 17
+ok 1147 - 287-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 17
+ok 1148 - 287-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 17
+ok 1149 - 288-1 Undirected, with reverse_cost, marked as being used: from 1 to 16 to 18
+ok 1150 - 288-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 16 to 18
+ok 1151 - 288-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 16 to 18
+ok 1152 - 288-4 Undirected, NO reverse_cost, marked as NOT being used: from 16 to 18
+ok 1153 - 289-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 1
+ok 1154 - 289-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 1
+ok 1155 - 289-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 1
+ok 1156 - 289-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 1
+ok 1157 - 290-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 2
+ok 1158 - 290-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 2
+ok 1159 - 290-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 2
+ok 1160 - 290-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 2
+ok 1161 - 291-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 3
+ok 1162 - 291-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 3
+ok 1163 - 291-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 3
+ok 1164 - 291-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 3
+ok 1165 - 292-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 4
+ok 1166 - 292-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 4
+ok 1167 - 292-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 4
+ok 1168 - 292-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 4
+ok 1169 - 293-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 5
+ok 1170 - 293-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 5
+ok 1171 - 293-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 5
+ok 1172 - 293-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 5
+ok 1173 - 294-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 6
+ok 1174 - 294-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 6
+ok 1175 - 294-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 6
+ok 1176 - 294-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 6
+ok 1177 - 295-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 7
+ok 1178 - 295-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 7
+ok 1179 - 295-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 7
+ok 1180 - 295-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 7
+ok 1181 - 296-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 8
+ok 1182 - 296-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 8
+ok 1183 - 296-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 8
+ok 1184 - 296-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 8
+ok 1185 - 297-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 9
+ok 1186 - 297-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 9
+ok 1187 - 297-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 9
+ok 1188 - 297-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 9
+ok 1189 - 298-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 10
+ok 1190 - 298-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 10
+ok 1191 - 298-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 10
+ok 1192 - 298-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 10
+ok 1193 - 299-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 11
+ok 1194 - 299-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 11
+ok 1195 - 299-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 11
+ok 1196 - 299-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 11
+ok 1197 - 300-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 12
+ok 1198 - 300-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 12
+ok 1199 - 300-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 12
+ok 1200 - 300-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 12
+ok 1201 - 301-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 13
+ok 1202 - 301-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 13
+ok 1203 - 301-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 13
+ok 1204 - 301-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 13
+ok 1205 - 302-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 14
+ok 1206 - 302-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 14
+ok 1207 - 302-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 14
+ok 1208 - 302-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 14
+ok 1209 - 303-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 15
+ok 1210 - 303-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 15
+ok 1211 - 303-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 15
+ok 1212 - 303-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 15
+ok 1213 - 304-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 16
+ok 1214 - 304-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 16
+ok 1215 - 304-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 16
+ok 1216 - 304-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 16
+ok 1217 - 305-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 17
+ok 1218 - 305-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 17
+ok 1219 - 305-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 17
+ok 1220 - 305-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 17
+ok 1221 - 306-1 Undirected, with reverse_cost, marked as being used: from 1 to 17 to 18
+ok 1222 - 306-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 17 to 18
+ok 1223 - 306-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 17 to 18
+ok 1224 - 306-4 Undirected, NO reverse_cost, marked as NOT being used: from 17 to 18
+ok 1225 - 307-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 1
+ok 1226 - 307-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 1
+ok 1227 - 307-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 1
+ok 1228 - 307-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 1
+ok 1229 - 308-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 2
+ok 1230 - 308-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 2
+ok 1231 - 308-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 2
+ok 1232 - 308-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 2
+ok 1233 - 309-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 3
+ok 1234 - 309-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 3
+ok 1235 - 309-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 3
+ok 1236 - 309-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 3
+ok 1237 - 310-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 4
+ok 1238 - 310-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 4
+ok 1239 - 310-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 4
+ok 1240 - 310-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 4
+ok 1241 - 311-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 5
+ok 1242 - 311-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 5
+ok 1243 - 311-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 5
+ok 1244 - 311-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 5
+ok 1245 - 312-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 6
+ok 1246 - 312-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 6
+ok 1247 - 312-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 6
+ok 1248 - 312-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 6
+ok 1249 - 313-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 7
+ok 1250 - 313-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 7
+ok 1251 - 313-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 7
+ok 1252 - 313-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 7
+ok 1253 - 314-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 8
+ok 1254 - 314-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 8
+ok 1255 - 314-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 8
+ok 1256 - 314-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 8
+ok 1257 - 315-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 9
+ok 1258 - 315-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 9
+ok 1259 - 315-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 9
+ok 1260 - 315-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 9
+ok 1261 - 316-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 10
+ok 1262 - 316-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 10
+ok 1263 - 316-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 10
+ok 1264 - 316-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 10
+ok 1265 - 317-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 11
+ok 1266 - 317-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 11
+ok 1267 - 317-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 11
+ok 1268 - 317-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 11
+ok 1269 - 318-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 12
+ok 1270 - 318-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 12
+ok 1271 - 318-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 12
+ok 1272 - 318-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 12
+ok 1273 - 319-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 13
+ok 1274 - 319-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 13
+ok 1275 - 319-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 13
+ok 1276 - 319-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 13
+ok 1277 - 320-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 14
+ok 1278 - 320-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 14
+ok 1279 - 320-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 14
+ok 1280 - 320-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 14
+ok 1281 - 321-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 15
+ok 1282 - 321-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 15
+ok 1283 - 321-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 15
+ok 1284 - 321-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 15
+ok 1285 - 322-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 16
+ok 1286 - 322-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 16
+ok 1287 - 322-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 16
+ok 1288 - 322-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 16
+ok 1289 - 323-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 17
+ok 1290 - 323-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 17
+ok 1291 - 323-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 17
+ok 1292 - 323-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 17
+ok 1293 - 324-1 Undirected, with reverse_cost, marked as being used: from 1 to 18 to 18
+ok 1294 - 324-2 Undirected, with reverse_cost, marked as NOT being used: from 1 to 18 to 18
+ok 1295 - 324-3 Undirected, NO reverse_cost, marked as NOT being used: from 1 to 18 to 18
+ok 1296 - 324-4 Undirected, NO reverse_cost, marked as NOT being used: from 18 to 18
