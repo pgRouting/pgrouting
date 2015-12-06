@@ -29,6 +29,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertex(
     sql TEXT,
     vertices ANYARRAY,
     directed BOOLEAN DEFAULT TRUE,
+    strict BOOLEAN DEFAULT FALSE,
     with_U_turns BOOLEAN DEFAULT TRUE,
 
 

@@ -156,3 +156,39 @@ COST 100
 ROWS 1000;
 
 
+/*
+Wrapper for via vertex no restrictions are given
+A call to pgr_dijKstraViaVertex is done
+*/
+CREATE OR REPLACE FUNCTION pgr_trspViaVertices(
+    edges_sql TEXT,
+    via_vids ANYARRAY,
+    directed BOOLEAN,
+    has_rcost BOOLEAN)
+RETURNS SETOF pgr_costResult AS 
+$BODY$
+DECLARE
+has_reverse BOOLEAN;
+BEGIN
+    has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
+
+    new_sql := edges_sql;
+    IF (has_reverse != has_rcost) THEN  -- user contradiction
+        IF (has_reverse) THEN  -- it has reverse_cost but user don't want it.
+            new_sql := 
+               'WITH old_sql AS (' || edges_sql || ')' ||
+                '   SELECT id, source, target, cost FROM old_sql';
+        ELSE -- it does not have reverse_cost but user want's it
+            RAISE EXCEPTION 'Error, reverse_cost is used, but query did''t return ''reverse_cost'' column'
+            USING ERRCODE := 'XX000';
+        END IF;
+    END IF;
+
+    RETURN query SELECT (row_number() over())::INTEGER, path_id:: INTEGER, node::INTEGER,
+        (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost
+        FROM pgr_dijkstraViaVertex(new_sql, via_vids, directed) WHERE edge != -1;
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE
+COST 100
+ROWS 1000;

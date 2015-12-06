@@ -82,6 +82,7 @@ process( char* edges_sql,
         int64_t *via_vidsArr,
         size_t size_via_vidsArr,
         bool directed,
+        bool strict,
         bool with_U_turns,
         Routes_t **result_tuples,
         size_t *result_count) {
@@ -112,6 +113,7 @@ process( char* edges_sql,
         size_via_vidsArr,
         directed,
         with_U_turns,
+        strict,
         result_tuples,
         result_count,
         &err_msg);
@@ -166,6 +168,7 @@ dijkstraViaVertex(PG_FUNCTION_ARGS) {
          via_vidsArr, size_via_vidsArr,
          PG_GETARG_BOOL(2),
          PG_GETARG_BOOL(3),
+         PG_GETARG_BOOL(4),
          &result_tuples,
          &result_count);
 

@@ -1,7 +1,11 @@
 /*PGR-GNU*****************************************************************
+File: dijkstraViaVertex_driver.cpp
 
+Generated with Template by:
 Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
+
+Function's developer: 
+Copyright (c) 2015 Celia Virginia Vergara Castillo
 
 ------
 
@@ -20,31 +24,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-/*PGR
-File: dijkstraViaVertex_driver.cpp
-
-Generated with Template by:
-Copyright (c) 2015 pgRouting developers
-
-Function's developer: 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
-*/
 
 
 #ifdef __MINGW32__
@@ -72,12 +51,17 @@ pgr_dijkstraViaVertex(
         G &graph,
         const std::vector< int64_t > via_vertices,
         std::deque< Path > &paths,
-        bool with_U_turns = true) { // true = u turns are allowed between paths
+        bool with_U_turns = true, // true = u turns are allowed between paths
+        bool strict = false) { 
 
     paths.clear();
     for (size_t i = 0; i < via_vertices.size() - 1; ++i) {
         Path path;
         pgr_dijkstra(graph, path, via_vertices[i], via_vertices[i+1]);
+        if (strict && path.path.empty()) {
+            paths.clear();
+            return;
+        }
         paths.push_back(path);
 
         // Any deleted edges are restored
@@ -120,7 +104,7 @@ get_path(
             path.path[i].cost,
             path.path[i].tot_cost,
             route_cost};
-        route_cost += path.path[i].tot_cost;
+        route_cost += path.path[i].cost;
         sequence++;
     }
 }
@@ -164,6 +148,7 @@ do_pgr_dijkstraViaVertex(
         int size_via_vidsArr,
         bool directed,
         bool with_U_turns,
+        bool strict,
         Routes_t **return_tuples,
         size_t *return_count,
         char ** err_msg){
@@ -189,12 +174,12 @@ do_pgr_dijkstraViaVertex(
             log << "Working with directed Graph\n";
             Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
             digraph.graph_insert_data(data_edges, total_tuples);
-            pgr_dijkstraViaVertex(digraph, via_vertices, paths, with_U_turns);
+            pgr_dijkstraViaVertex(digraph, via_vertices, paths, with_U_turns, strict);
         } else {
             log << "Working with Undirected Graph\n";
             Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data(data_edges, total_tuples);
-            pgr_dijkstraViaVertex(undigraph, via_vertices, paths, with_U_turns);
+            pgr_dijkstraViaVertex(undigraph, via_vertices, paths, with_U_turns, strict);
         }
 
         size_t count(count_tuples(paths));

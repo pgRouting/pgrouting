@@ -64,6 +64,7 @@ extern "C" {
                 int size_via_vidsArr,
                 bool directed,
                 bool with_U_turns,
+                bool strict,
                 Routes_t **return_tuples,
                 size_t *return_count,
                 char ** err_msg);
