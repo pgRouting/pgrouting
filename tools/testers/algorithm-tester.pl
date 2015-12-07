@@ -25,7 +25,7 @@ my $DBHOST;
 my $DBPORT;
 
 sub Usage {
-    die "Usage: test-runner.pl -pgver vpg -pgisver vpgis -psql /path/to/psql\n" .
+    die "Usage: algorithm-tester.pl -pgver vpg -pgisver vpgis -psql /path/to/psql\n" .
         "       -pgver vpg          - postgresql version\n" .
         "       -pghost host        - postgresql host or socket directory to use\n" .
         "       -pgport port        - postgresql port to use\n" .
@@ -41,7 +41,7 @@ sub Usage {
         "       -h                  - help\n";
 }
 
-print "RUNNING: test-runner.pl " . join(" ", @ARGV) . "\n";
+print "RUNNING: algorithm-tester.pl " . join(" ", @ARGV) . "\n";
 
 my ($vpg, $vpgis, $vpgr, $psql);
 my $alg = '';

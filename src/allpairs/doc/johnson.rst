@@ -24,7 +24,7 @@ pair of nodes in the graph using Johnson's algorithm.
    Boost Graph Inside
 
 
-The Floyd-Warshall algorithm, is a good choice to calculate the sum of the costs
+The Johnson algorithm, is a good choice to calculate the sum of the costs
 of the shortest path for each pair of nodes in the graph, for *sparce graphs*.
 We make use of the  Boost's implementation which runs in :math:`O(V E \log V)` time,
 
@@ -39,7 +39,7 @@ Signature
 .. code-block:: none
    
     pgr_johnson(edges_sql, directed:=true)
-         RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
+         RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 
 Example
 -------

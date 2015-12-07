@@ -51,8 +51,8 @@ pgr_dijkstraViaVertex(
         G &graph,
         const std::vector< int64_t > via_vertices,
         std::deque< Path > &paths,
-        bool with_U_turns = true, // true = u turns are allowed between paths
-        bool strict = false) { 
+        bool strict,
+        bool with_U_turns) {    // true = u turns are allowed between paths
 
     paths.clear();
     for (size_t i = 0; i < via_vertices.size() - 1; ++i) {
@@ -70,7 +70,7 @@ pgr_dijkstraViaVertex(
         // Delete uTurn edges
         if (!with_U_turns) {
 
-            // we can only delete if there is a path, that is at least one edge
+            // we can only delete if there is was a path, that is at least one edge
             if (path.path.size() > 1) {
                 // Delete from the graph the last edge if its outgoing also
                 // edge to be removed = second to last edge path[i].edge;
@@ -147,8 +147,8 @@ do_pgr_dijkstraViaVertex(
         int64_t  *via_vidsArr,
         int size_via_vidsArr,
         bool directed,
-        bool with_U_turns,
         bool strict,
+        bool with_U_turns,
         Routes_t **return_tuples,
         size_t *return_count,
         char ** err_msg){
@@ -174,12 +174,12 @@ do_pgr_dijkstraViaVertex(
             log << "Working with directed Graph\n";
             Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
             digraph.graph_insert_data(data_edges, total_tuples);
-            pgr_dijkstraViaVertex(digraph, via_vertices, paths, with_U_turns, strict);
+            pgr_dijkstraViaVertex(digraph, via_vertices, paths, strict, with_U_turns);
         } else {
             log << "Working with Undirected Graph\n";
             Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data(data_edges, total_tuples);
-            pgr_dijkstraViaVertex(undigraph, via_vertices, paths, with_U_turns, strict);
+            pgr_dijkstraViaVertex(undigraph, via_vertices, paths, strict, with_U_turns);
         }
 
         size_t count(count_tuples(paths));

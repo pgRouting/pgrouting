@@ -13,8 +13,7 @@ pgr_apspWarshall - All Pairs Shortest Path, Floyd-Warshall Algorithm
 ===============================================================================
 
 .. index::
-    single: pgr_apspWarshall(text, boolean, boolean) -- deprecated
-    module: apsp
+    single: apspWarshall(text, boolean, boolean) -- deprecated
 
 Name
 -------------------------------------------------------------------------------

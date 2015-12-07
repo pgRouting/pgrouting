@@ -1,6 +1,5 @@
 .. 
    ****************************************************************************
-   ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
@@ -13,9 +12,6 @@
 pgr_dijkstraViaVertex - Shortest paths via vertices using dijkstra 
 ===============================================================================
 
-.. index:: 
-	single: pgr_pgr_dijkstraViaVertex(text,array,boolean)
-	module: dijkstra
 
 Name
 -------------------------------------------------------------------------------
@@ -34,7 +30,7 @@ Synopsis
 -------------------------------------------------------------------------------
 
 Given a list of vertices and a graph, this function is equivalent to finding the
-shortest path between $vertex_i$ and $vertex_{i+1}$ for all i.
+shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all :math:`i < size\_of(vertex_via)`.
 The paths represents the sections of the route.
 
 
@@ -45,9 +41,12 @@ Signatures
 
 The minimal signature is for a **directed** graph.
 
+.. index:: 
+	single: pgr_dijkstraViaVertex(edges_sql, vertex_via)
+
 .. code-block:: sql
 
-      pgr_dijkstraViaVertices(sql_q text, array[ANY_INTEGER] via_vertex)
+      pgr_dijkstraViaVertex(edges_sql, vertex_via)
        	 RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
                          node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
 
@@ -58,10 +57,12 @@ This signature works:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
+.. index:: 
+	single: pgr_dijkstraViaVertex(edges_sql, vertex_via, directed)
 
 .. code-block:: sql
 
-      pgr_dijkstraViaVertices(sql_q text, array[ANY_INTEGER] via_vertex
+      pgr_dijkstraViaVertex(sql_q text, array[ANY_INTEGER] vertex_via
                  boolean directed:=true);
        	 RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
                          node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
@@ -106,7 +107,7 @@ Recives  ``(edges_sql, via_vertex, directed)``
 Parameter      Type                   Description
 ============== ====================== =================================================
 **edges_sql**  ``TEXT``               SQL query as decribed above.
-**via_vertex** ``ARRAY[ANY-INTEGER]`` Array of vertices identifiers
+**vertex_via** ``ARRAY[ANY-INTEGER]`` Array of vertices identifiers
 **directed**   ``BOOLEAN``            (optional) Default is true (is directed). When set to false the graph is considered as Undirected
 ============== ====================== =================================================
 
@@ -147,9 +148,7 @@ Examples
     :start-after: -- q2
     :end-before: -- q3
 
-:2.1: What's the aggregate cost of the route at the end of each path? Show also the visited node.
-
-:2.2: What's the aggregate cost of the route at the end of the third path?
+:2: What's the aggregate cost of the route at the end of the third path?
 
 .. literalinclude:: ../test/dijkstraViaVertex.doc.result
     :start-after: -- q3
@@ -178,11 +177,16 @@ The queries use the :ref:`sampledata` network.
 
 .. rubric:: History
 
-* Renamed in version 2.0.0 
-* Added functionality for version 3.0.0 in version 2.1
+* Proposed in version 2.2
 
 
 See Also
 -------------------------------------------------------------------------------
 
 * http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
+

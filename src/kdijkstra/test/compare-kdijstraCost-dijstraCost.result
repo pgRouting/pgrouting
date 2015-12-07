@@ -101,4 +101,3 @@ ok 99 - 48: Undirected No reverse cost start:16 test 3
 ok 100 - 49: Undirected: Directed with reverse cost start:17 test 1
 ok 101 - 50: Undirected with reverse cost but dont want reverse cost start: 17 test 2
 ok 102 - 51: Undirected No reverse cost start:17 test 3
-
