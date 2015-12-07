@@ -207,6 +207,7 @@ sub run_test {
     my $singleDB = "____pgr___single_test___";
     for my $testName (@{$t->{singleTest}}) {
         createTestDB($singleDB);
+        mysystem("$psql $connopts -A -t -q -f tools/testers/sampledata.sql' $singleDB >> $TMP2 2>\&1 ");
         for my $x (@{$t->{data}}) {
            mysystem("$psql $connopts -A -t -q -f '$dir/$x' $singleDB >> $TMP2 2>\&1 ");
         }
@@ -214,6 +215,7 @@ sub run_test {
         mysystem("dropdb $connopts $singleDB");
     }
 
+    mysystem("$psql $connopts -A -t -q -f tools/testers/sampledata.sql $DBNAME >> $TMP2 2>\&1 ");
     for my $x (@{$t->{data}}) {
        mysystem("$psql $connopts -A -t -q -f '$dir/$x' $DBNAME >> $TMP2 2>\&1 ");
     }
@@ -232,7 +234,7 @@ sub process_single_test{
     my $res = shift;
         #each tests will use clean data
 
-        print "Processing test: $x\n";
+        print "Processing test: $dir/$x\n";
         my $t0 = [gettimeofday];
         #TIN = test_input_file
         open(TIN, "$dir/$x.test.sql") || do {

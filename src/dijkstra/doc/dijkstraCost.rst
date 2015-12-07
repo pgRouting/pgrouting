@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -39,13 +39,13 @@ The main Characteristics are:
   - It does not return a path.
   - Returns the sum of the costs of the shortest path for pair combination of nodes in the graph.
   - Process is done only on edges with positive costs.
-  - When the starting vertex and ending vertex are the same, there is no path, but the aggregate cost 
+  - When the starting vertex and ending vertex are the same, there is no path, but the aggregate cost
     is `0`, that value is returned.
 
     - `(v, v, 0)`
 
   - When there is no path then the aggregate cost is infinity, and the combination is not returned.
-    
+
     - We return only the non infinity values in form of a set of `(start_vid, end_vid, agg_cost)`.
 
   - Let be the case the values returned are stored in a table, so the unique index would be the pair:
@@ -75,7 +75,7 @@ Signature Summary
 Signatures
 ===============================================================================
 
-.. index:: 
+.. index::
 	single: dijkstraCost(edges_sql, start_vid, end_vid)
 
 Minimal signature
@@ -97,7 +97,7 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 
 
 
-.. index:: 
+.. index::
 	single: dijkstraCost(edges_sql, start_vid, end_vid, directed)
 
 pgr_dijkstraCost One to One
@@ -122,7 +122,7 @@ This signature performs a Dijkstra from one ``start_vid`` to one ``end_vid``:
 
 
 
-.. index:: 
+.. index::
 	single: dijkstraCost(edges_sql, start_vids, end_vid, directed)
 
 pgr_dijkstraCost Many to One
@@ -148,7 +148,7 @@ This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to
 
 
 
-.. index:: 
+.. index::
 	single: dijkstraCost(edges_sql, start_vid, end_vids, directed)
 
 pgr_dijkstraCost One to Many
@@ -175,7 +175,7 @@ This signature performs a Dijkstra from one ``start_vid`` to each ``end_vid`` in
 
 
 
-.. index:: 
+.. index::
 	single: dijkstraCost(edges_sql, start_vids, end_vids, directed)
 
 .. rubric:: pgr_dijkstraCost Many to Many
@@ -269,7 +269,7 @@ The queries use the :ref:`sampledata` network.
 
 .. rubric:: History
 
-* Renamed in version 2.0.0 
+* Renamed in version 2.0.0
 * Added functionality in version 2.1.0
 
 

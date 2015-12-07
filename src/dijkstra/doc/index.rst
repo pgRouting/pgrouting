@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -74,7 +74,7 @@ Given:
 Then:
 
 .. math:: \text{pgr_dijkstra}(sql, start_{vid}, end_{vid}, directed) =
-  \begin{cases} 
+  \begin{cases}
   \text{shortest path } \boldsymbol{\pi} \text{ between } start_{vid} \text{and } end_{vid} &\quad \text{if } \exists  \boldsymbol{\pi}  \\
   \varnothing &\quad \text{otherwise} \\
   \end{cases}
@@ -107,7 +107,7 @@ If there is no path, the resulting set is empty.
 
 
 .. toctree::
-        :hidden: 
+        :hidden:
 
         ./dijkstra_v2
         ./dijkstra_v3

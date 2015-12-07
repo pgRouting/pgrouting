@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -26,116 +26,161 @@ Synopsis
 
 Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956.
 It is a graph search algorithm that solves the shortest path problem for
-a graph with non-negative edge path costs, producing a shortest path from 
+a graph with non-negative edge path costs, producing a shortest path from
 a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
 This implementation can be used with a directed graph and an undirected graph.
+
+Signature Summary
+-----------------
+
+.. code-block:: none
+
+    pgr_dijkstra(edges_sql, start_vid,  end_vid)
+    pgr_dijkstra(edges_sql, start_vid,  end_vid,  directed:=true)
+    pgr_dijkstra(edges_sql, start_vid,  end_vids, directed:=true)
+    pgr_dijkstra(edges_sql, start_vids, end_vid,  directed:=true)
+    pgr_dijkstra(edges_sql, start_vids, end_vids, directed:=true)
+
+    RETURNS SET OF (seq ,path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+        OR EMPTY SET
+
 
 Signatures
 ===============================================================================
 
-.. index:: 
-	single: dijkstra(edges_sql, start_vid, end_vid)
+.. index::
+    single: dijkstra(edges_sql, start_vid, end_vid)
 
-.. rubric:: Minimal signature
+Minimal signature
+-----------------
+
+.. code-block:: none
+
+    pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
 
-.. code-block:: sql
+:example:
 
-      pgr_dijkstra(text edges_sql, BIGINT start_vid, BIGINT end_vid)
-	 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
-
-
-
-
-.. index:: 
-	single: dijkstra(edges_sql, start_vid, end_vid, directed)
-
-.. rubric:: Dijkstra 1 to 1
+.. literalinclude:: ../test/doc-dijkstra-v3.doc.result
+   :start-after: -- q1
+   :end-before: -- q2
 
 
-This signature performs a Dijkstra from one ``start_vid`` to one ``end_vid``:
+.. index::
+    single: dijkstra(edges_sql, start_vid, end_vid, directed:=TRUE)
+
+Dijkstra One to One
+-------------------
+
+.. code-block:: none
+
+    pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
+        BOOLEAN directed:=true);
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+
+This signature finds the shortest path from one ``start_vid`` to one ``end_vid``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
-.. code-block:: sql
+:Example:
 
-      pgr_dijkstra(text edges_sql, BIGINT start_vid, BIGINT end_vid,
-			 BOOLEAN directed:=true);
-	 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
-
-
+.. literalinclude:: ../test/doc-dijkstra-v3.doc.result
+   :start-after: -- q2
+   :end-before: -- q3
 
 
-.. index:: 
-	single: dijkstra(edges_sql, start_vids, end_vid, directed)
+.. index::
+    single: dijkstra(edges_sql, start_vid, end_vids, directed:=TRUE)
 
-.. rubric:: Dijkstra many to 1:
+Dijkstra One to many
+--------------------
 
-.. code-block:: sql
+.. code-block:: none
 
-      pgr_dijkstra(text edges_sql, array[ANY_INTEGER] start_vids, BIGINT end_vid,
-			 BOOLEAN directed:=true);
-	 RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids,
+        BOOLEAN directed:=true);
+    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
-This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
+This signature finds the shortest path from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
-Using this signature, will load once the graph and perform several one to one Dijkstra
+Using this signature, will load once the graph and perform a one to one `pgr_dijkstra`
+where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
+
+  - The result is equivalent to the union of the results of the one to one `pgr_dijkstra`.
+  - The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
+
+:Example:
+
+.. literalinclude:: ../test/doc-dijkstra-v3.doc.result
+   :start-after: -- q3
+   :end-before: -- q4
+
+
+
+
+.. index::
+    single: dijkstra(edges_sql, start_vids, end_vid, directed)
+
+Dijkstra Many to One
+--------------------
+
+.. code-block:: none
+
+    pgr_dijkstra(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid,
+        BOOLEAN directed:=true);
+    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
+
+This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+Using this signature, will load once the graph and perform several one to one `pgr_dijkstra`
 where the ending vertex is fixed.
-The result is the union of the results of the one to one dijkstra.
 
-The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+  - The result is the union of the results of the one to one `pgr_dijkstra`.
+  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+
+:Example:
+
+.. literalinclude:: ../test/doc-dijkstra-v3.doc.result
+   :start-after: -- q4
+   :end-before: -- q5
 
 
 
+.. index::
+    single: dijkstra(edges_sql, start_vids, end_vids, directed)
 
+Dijkstra Many to Many
+---------------------
 
-.. index:: 
-	single: dijkstra(edges_sql, start_vid, end_vids, directed)
+.. code-block:: none
 
-.. rubric:: Dijkstra 1 to many:
+    pgr_dijkstra(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids,
+        BOOLEAN directed:=true);
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
-.. code-block:: sql
-
-       pgr_dijkstra(text edges_sql, BIGINT start_vid, array[ANY_INTEGER] end_vids,
-			 BOOLEAN directed:=true);
-	 RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
-
-This signature performs a Dijkstra from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
+This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
-Using this signature, will load once the graph and perform several 1 to 1 Dijkstra
-where the starting vertex is fixed.
-The result is the union of the results of the one to one dijkstra.
+Using this signature, will load once the graph and perform several one to Many `pgr_dijkstra`
+for all ``start_vids``.
 
-The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
-
-
-
-.. index:: 
-	single: dijkstra(edges_sql, start_vids, end_vids, directed)
-
-.. rubric:: Dijkstra many to many:
-
-.. code-block:: sql
-
-       pgr_dijkstra(text edges_sql, array[ANY_INTEGER] start_vids, array[ANY_INTEGER] end_vids,
-			 BOOLEAN directed:=true);
-	 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
-
-This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-
-Using this signature, will load once the graph and perform all combinations 
-for starting vertices and ending vertices.
+  - The result is the union of the results of the one to one `pgr_dijkstra`.
+  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
 
 The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
 
+:Example:
+
+.. literalinclude:: ../test/doc-dijkstra-v3.doc.result
+   :start-after: -- q5
+   :end-before: -- q6
 
 Description of the Signatures
 =============================
@@ -145,48 +190,55 @@ Description of the SQL query
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 
-	:id: ``ANY-INTEGER`` identifier of the edge.
-	:source: ``ANY-INTEGER`` identifier of the first end point vertex of the edge.
-	:target: ``ANY-INTEGER`` identifier of the second end pont vertex of the edge.
-	:cost: ``ANY-NUMERICAL`` weight of the edge `(source, target)`, if negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-	:reverse_cost: ``ANY-NUMERICAL`` (optional) weight of the edge `(target, source)`, if negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+================  ===================   =================================================
+Column            Type                  Description
+================  ===================   =================================================
+**id**            ``ANY-INTEGER``       Identifier of the edge.
+**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
+**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
+**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, If negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, If negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+================  ===================   =================================================
+
 
 Where:
 
 :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, real, float
-
-For example:
-
-.. code-block:: sql
-
-    SELECT id, source, target, cost, reverse_cost from edge_table where geom && ST_Expand(ST_SetSRID(ST_Point(45, 34), 4326), 0.1)
+:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
 
 Description of the parameters of the signatures
 -------------------------------------------------------------------------------
 
-:sql: SQL query as decribed above.
-:start_vid: ``BIGINT`` identifier of the starting vertex of the path.
-:start_vids: ``array[ANY-INTEGER]`` array of identifiers of starting vertices.
-:end_vid: ``BIGINT`` identifier of the ending vertex of the path.
-:end_vids: ``array[ANY-INTEGER]`` array of identifiers of ending vertices.
-:directed: ``BOOLEAN`` (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
+============== ====================== =================================================
+Column         Type                   Description
+============== ====================== =================================================
+**sql**        ``TEXT``               SQL query as decribed above.
+**start_vid**  ``BIGINT``             Identifier of the starting vertex of the path.
+**start_vids** ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices.
+**end_vid**    ``BIGINT``             Identifier of the ending vertex of the path.
+**end_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of ending vertices.
+**directed**   ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
+============== ====================== =================================================
 
 
 Description of the return values
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq [, start_vid] [, end_vid] , node, edge, cost, agg_cost)``
+Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)``
 
-:seq: ``INT``  isequential value starting from **1**.
-:path_seq: ``INT``  relative position in the path. Has value **1** for the begining of a path.
-:start_vid: ``BIGINT`` id of the starting vertex. Used when multiple starting vetrices are in the query.
-:end_vid: ``BIGINT`` id of the ending vertex. Used when multiple ending vertices are in the query.
-:node: ``BIGINT`` id of the node in the path from start_vid to end_v.
-:edge: ``BIGINT`` id of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path. 
-:cost: ``FLOAT`` cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
-:agg_cost:  ``FLOAT`` total cost from ``start_v`` to ``node``.
+============== ========== =================================================
+Column         Type       Description
+============== ========== =================================================
+**seq**        ``INT``    Sequential value starting from **1**.
+**path_seq**   ``INT``    Relative position in the path. Has value **1** for the begining of a path.
+**start_vid**  ``BIGINT`` Identifier of the starting vertex. Used when multiple starting vetrices are in the query.
+**end_vid**    ``BIGINT`` Identifier of the ending vertex. Used when multiple ending vertices are in the query.
+**node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
+**edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
+**cost**       ``FLOAT``  Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
+**agg_cost**   ``FLOAT``  Aggregate cost from ``start_v`` to ``node``.
+============== ========== =================================================
 
 
 Examples
@@ -202,130 +254,9 @@ Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` c
 
 The examples in this section use the following :ref:`fig1`
 
-.. code-block:: sql
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            2, 3
-    );
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-       1 |        1 |    2 |    4 |    1 |        0
-       2 |        2 |    5 |    8 |    1 |        1
-       3 |        3 |    6 |    9 |    1 |        2
-       4 |        4 |    9 |   16 |    1 |        3
-       5 |        5 |    4 |    3 |    1 |        4
-       6 |        6 |    3 |   -1 |    0 |        5
-    (6 rows)
-
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            2, 5
-    );
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-       1 |        1 |    2 |    4 |    1 |        0
-       2 |        2 |    5 |   -1 |    0 |        1
-    (2 rows)
-
-When you pass an array we get a combined result:
-
-.. code-block:: sql
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            2, array[3,5]
-    );
-
-    seq | path_seq | end_vid | node | edge | cost | agg_cost 
-   -----+----------+---------+------+------+------+----------
-      1 |        1 |       3 |    2 |    4 |    1 |        0
-      2 |        2 |       3 |    5 |    8 |    1 |        1
-      3 |        3 |       3 |    6 |    9 |    1 |        2
-      4 |        4 |       3 |    9 |   16 |    1 |        3
-      5 |        5 |       3 |    4 |    3 |    1 |        4
-      6 |        6 |       3 |    3 |   -1 |    0 |        5
-      7 |        1 |       5 |    2 |    4 |    1 |        0
-      8 |        2 |       5 |    5 |   -1 |    0 |        1
-   (8 rows)
-
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            11, 3
-    );
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-       1 |        1 |   11 |   13 |    1 |        0
-       2 |        2 |   12 |   15 |    1 |        1
-       3 |        3 |    9 |   16 |    1 |        2
-       4 |        4 |    4 |    3 |    1 |        3
-       5 |        5 |    3 |   -1 |    0 |        4
-    (5 rows)
-
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            11, 5
-            );
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-       1 |        1 |   11 |   13 |    1 |        0
-       2 |        2 |   12 |   15 |    1 |        1
-       3 |        3 |    9 |    9 |    1 |        2
-       4 |        4 |    6 |    8 |    1 |        3
-       5 |        5 |    5 |   -1 |    0 |        4
-    (5 rows)
-
-Some other combinations.
-
-.. code-block:: sql
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            array[2,11], 5
-    );
-
-    seq | path_seq | start_vid | node | edge | cost | agg_cost 
-   -----+----------+---------+------+------+------+----------
-      1 |        1 |         2 |    2 |    4 |    1 |        0
-      2 |        2 |         2 |    5 |   -1 |    0 |        1
-      3 |        1 |        11 |   11 |   13 |    1 |        0
-      4 |        2 |        11 |   12 |   15 |    1 |        1
-      5 |        3 |        11 |    9 |    9 |    1 |        2
-      6 |        4 |        11 |    6 |    8 |    1 |        3
-      7 |        5 |        11 |    5 |   -1 |    0 |        4
-   (7 rows)
-
-
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            array[2, 11], array[3,5]
-    );
-    seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost 
-   -----+----------+---------+-------+------+------+------+----------
-      1 |        1 |         2 |     3 |    2 |    4 |    1 |        0
-      2 |        2 |         2 |     3 |    5 |    8 |    1 |        1
-      3 |        3 |         2 |     3 |    6 |    9 |    1 |        2
-      4 |        4 |         2 |     3 |    9 |   16 |    1 |        3
-      5 |        5 |         2 |     3 |    4 |    3 |    1 |        4
-      6 |        6 |         2 |     3 |    3 |   -1 |    0 |        5
-      7 |        1 |         2 |     5 |    2 |    4 |    1 |        0
-      8 |        2 |         2 |     5 |    5 |   -1 |    0 |        1
-      9 |        1 |        11 |     3 |   11 |   13 |    1 |        0
-     10 |        2 |        11 |     3 |   12 |   15 |    1 |        1
-     11 |        3 |        11 |     3 |    9 |   16 |    1 |        2
-     12 |        4 |        11 |     3 |    4 |    3 |    1 |        3
-     13 |        5 |        11 |     3 |    3 |   -1 |    0 |        4
-     14 |        1 |        11 |     5 |   11 |   13 |    1 |        0
-     15 |        2 |        11 |     5 |   12 |   15 |    1 |        1
-     16 |        3 |        11 |     5 |    9 |    9 |    1 |        2
-     17 |        4 |        11 |     5 |    6 |    8 |    1 |        3
-     18 |        5 |        11 |     5 |    5 |   -1 |    0 |        4
-   (18 rows)
-
+.. literalinclude:: ../test/doc-dijkstra-v3.doc.result
+   :start-after: -- q7
+   :end-before: -- q8
 
 
 
@@ -334,468 +265,58 @@ Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost``
 
 The examples in this section use the following :ref:`fig2`
 
-.. code-block:: sql
+.. literalinclude:: ../test/doc-dijkstra-v3.doc.result
+   :start-after: -- q9
+   :end-before: -- q10
 
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            2, 3,
-            false
-    );
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-       1 |        1 |    2 |    2 |    1 |        0
-       2 |        2 |    3 |   -1 |    0 |        1
-    (2 rows)
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            2, 5,
-            false
-    );
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-       1 |        1 |    2 |    4 |    1 |        0
-       2 |        2 |    5 |   -1 |    0 |        1
-    (2 rows)
-
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            11, 3,
-            false
-    );
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-       1 |        1 |   11 |   11 |    1 |        0
-       2 |        2 |    6 |    5 |    1 |        1
-       3 |        3 |    3 |   -1 |    0 |        2
-    (3 rows)
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            11, 5,
-            false
-    );
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-       1 |        1 |   11 |   11 |    1 |        0
-       2 |        2 |    6 |    8 |    1 |        1
-       3 |        3 |    5 |   -1 |    0 |        2
-    (3 rows)
-
-
-       
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            array[2,11], 5,
-            false
-            );
-    seq | path_seq | start_vid | node | edge | cost | agg_cost 
-   -----+----------+---------+------+------+------+----------
-      1 |        1 |         2 |    2 |    4 |    1 |        0
-      2 |        2 |         2 |    5 |   -1 |    0 |        1
-      3 |        1 |        11 |   11 |   11 |    1 |        0
-      4 |        2 |        11 |    6 |    8 |    1 |        1
-      5 |        3 |        11 |    5 |   -1 |    0 |        2
-   (5 rows)
-
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            2, array[3,5],
-            false
-    );
-    seq | path_seq | end_vid | node | edge | cost | agg_cost 
-   -----+----------+-------+------+------+------+----------
-      1 |        1 |       3 |    2 |    2 |    1 |        0
-      2 |        2 |       3 |    3 |   -1 |    0 |        1
-      3 |        1 |       5 |    2 |    4 |    1 |        0
-      4 |        2 |       5 |    5 |   -1 |    0 |        1
-   (4 rows)
-
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            array[2, 11], array[3,5],
-            false
-    );
-    seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost 
-   -----+----------+---------+-------+------+------+------+----------
-      1 |        1 |         2 |       3 |    2 |    2 |    1 |        0
-      2 |        2 |         2 |       3 |    3 |   -1 |    0 |        1
-      3 |        1 |         2 |       5 |    2 |    4 |    1 |        0
-      4 |        2 |         2 |       5 |    5 |   -1 |    0 |        1
-      5 |        1 |        11 |       3 |   11 |   11 |    1 |        0
-      6 |        2 |        11 |       3 |    6 |    5 |    1 |        1
-      7 |        3 |        11 |       3 |    3 |   -1 |    0 |        2
-      8 |        1 |        11 |       5 |   11 |   11 |    1 |        0
-      9 |        2 |        11 |       5 |    6 |    8 |    1 |        1
-     10 |        3 |        11 |       5 |    5 |   -1 |    0 |        2
-   (10 rows)
-
-    
 
 Examples for queries marked as ``directed`` with ``cost`` column
 ----------------------------------------------------------------------------------------
 
 The examples in this section use the following :ref:`fig3`
 
-.. code-block:: sql
+.. literalinclude:: ../test/doc-dijkstra-v3.doc.result
+   :start-after: -- q11
+   :end-before: -- q12
 
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost FROM edge_table',
-            2, 3
-    );
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-    (0 rows)
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost FROM edge_table',
-            2, 5
-    );
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-       1 |        1 |    2 |    4 |    1 |        0
-       2 |        2 |    5 |   -1 |    0 |        1
-    (2 rows)
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost FROM edge_table',
-            11, 3
-    );
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-    (0 rows)
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost FROM edge_table',
-            11, 5
-    );
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-    (0 rows)
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost FROM edge_table',
-            array[2,11], 5
-    );
-     seq | path_seq | start_vid | node | edge | cost | agg_cost 
-    -----+----------+---------+------+------+------+----------
-       1 |        1 |         2 |    2 |    4 |    1 |        0
-       2 |        2 |         2 |    5 |   -1 |    0 |        1
-    (2 rows)
-   
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost FROM edge_table',
-            2, array[3,5]
-    );
-     seq | path_seq | end_vid | node | edge | cost | agg_cost 
-    -----+----------+-------+------+------+------+----------
-       1 |        1 |       5 |    2 |    4 |    1 |        0
-       2 |        2 |       5 |    5 |   -1 |    0 |        1
-      (2 rows)
-   
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost FROM edge_table',
-            array[2, 11], array[3,5]
-    );
-     seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost 
-    -----+----------+---------+-------+------+------+------+----------
-       1 |        1 |         2 |       5 |    2 |    4 |    1 |        0
-       2 |        2 |         2 |       5 |    5 |   -1 |    0 |        1
-    (2 rows)
-
-    
 
 Examples for queries marked as ``undirected`` with ``cost`` column
 ----------------------------------------------------------------------------------------
 
 The examples in this section use the following :ref:`fig4`
 
-.. code-block:: sql
-
-    SELECT * FROM pgr_dijkstra(
-		'SELECT id, source, target, cost FROM edge_table',
-		2, 3,
-        false
-    );
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-       1 |        1 |    2 |    4 |    1 |        0
-       2 |        2 |    5 |    8 |    1 |        1
-       3 |        3 |    6 |    5 |    1 |        2
-       4 |        4 |    3 |   -1 |    0 |        3
-    (4 rows)
-
-	SELECT * FROM pgr_dijkstra(
-			'SELECT id, source, target, cost FROM edge_table',
-			2, 5,
-                    false
-	);
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-       1 |        1 |    2 |    4 |    1 |        0
-       2 |        2 |    5 |   -1 |    0 |        1
-    (2 rows)
-
-
-	SELECT * FROM pgr_dijkstra(
-			'SELECT id, source, target, cost FROM edge_table',
-			11, 3,
-                    false
-		);
-	 seq | path_seq | node | edge | cost | agg_cost 
-	-----+----------+------+------+------+----------
-       1 |        1 |   11 |   11 |    1 |        0
-       2 |        2 |    6 |    5 |    1 |        1
-       3 |        3 |    3 |   -1 |    0 |        2
-    (3 rows)
-
-
-	SELECT * FROM pgr_dijkstra(
-			'SELECT id, source, target, cost FROM edge_table',
-			11, 5,
-                    false
-		);
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-       1 |        1 |   11 |   11 |    1 |        0
-       2 |        2 |    6 |    8 |    1 |        1
-       3 |        3 |    5 |   -1 |    0 |        2
-    (3 rows)
-
-       
-	SELECT * FROM pgr_dijkstra(
-			'SELECT id, source, target, cost FROM edge_table',
-			array[2,11], 5,
-            false
-	);
-    seq | path_seq | start_vid | node | edge | cost | agg_cost 
-   -----+----------+---------+------+------+------+----------
-      1 |        1 |         2 |    2 |    4 |    1 |        0
-      2 |        2 |         2 |    5 |   -1 |    0 |        1
-      3 |        1 |        11 |   11 |   11 |    1 |        0
-      4 |        2 |        11 |    6 |    8 |    1 |        1
-      5 |        3 |        11 |    5 |   -1 |    0 |        2
-   (5 rows)
-
-	SELECT * FROM pgr_dijkstra(
-			'SELECT id, source, target, cost FROM edge_table',
-			2, array[3,5],
-            false
-	);
-    seq | path_seq | end_vid | node | edge | cost | agg_cost 
-   -----+----------+-------+------+------+------+----------
-      1 |        1 |       3 |    2 |    4 |    1 |        0
-      2 |        2 |       3 |    5 |    8 |    1 |        1
-      3 |        3 |       3 |    6 |    5 |    1 |        2
-      4 |        4 |       3 |    3 |   -1 |    0 |        3
-      5 |        1 |       5 |    2 |    4 |    1 |        0
-      6 |        2 |       5 |    5 |   -1 |    0 |        1
-   (6 rows)
-
-
-	SELECT * FROM pgr_dijkstra(
-			'SELECT id, source, target, cost FROM edge_table',
-			array[2, 11], array[3,5],
-            false
-	);
-    seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost 
-   -----+----------+---------+-------+------+------+------+----------
-      1 |        1 |         2 |       3 |    2 |    4 |    1 |        0
-      2 |        2 |         2 |       3 |    5 |    8 |    1 |        1
-      3 |        3 |         2 |       3 |    6 |    5 |    1 |        2
-      4 |        4 |         2 |       3 |    3 |   -1 |    0 |        3
-      5 |        1 |         2 |       5 |    2 |    4 |    1 |        0
-      6 |        2 |         2 |       5 |    5 |   -1 |    0 |        1
-      7 |        1 |        11 |       3 |   11 |   11 |    1 |        0
-      8 |        2 |        11 |       3 |    6 |    5 |    1 |        1
-      9 |        3 |        11 |       3 |    3 |   -1 |    0 |        2
-     10 |        1 |        11 |       5 |   11 |   11 |    1 |        0
-     11 |        2 |        11 |       5 |    6 |    8 |    1 |        1
-     12 |        3 |        11 |       5 |    5 |   -1 |    0 |        2
-   (12 rows)
-
-
+.. literalinclude:: ../test/doc-dijkstra-v3.doc.result
+   :start-after: -- q13
+   :end-before: -- q14
 
 
 Equvalences between signatures
 ------------------------------
 
-.. code-block:: sql
+Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
+The examples in this section use the following :ref:`fig1`
 
-    -- V2
-	SELECT * FROM pgr_dijkstra(
-		'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-		2, 3,
-        true,    -- directed flag
-        true      -- has_rcost
-	);
-
-     seq | id1 | id2 | cost 
-    -----+-----+-----+------
-       0 |   2 |   4 |    1
-       1 |   5 |   8 |    1
-       2 |   6 |   9 |    1
-       3 |   9 |  16 |    1
-       4 |   4 |   3 |    1
-       5 |   3 |  -1 |    0
-      (6 rows)
+.. literalinclude:: ../test/doc-dijkstra-v3.doc.result
+   :start-after: -- q15
+   :end-before: -- q16
 
 
-    -- V3
-	SELECT * FROM pgr_dijkstra(
-           'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-		2, 3,
-        true     -- directed flag
-	);
+Equvalences between signatures
+------------------------------
 
+Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
+The examples in this section use the following :ref:`fig2`
 
-	SELECT * FROM pgr_dijkstra(
-		'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-		2,3 
-	);
-
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-       1 |        1 |    2 |    4 |    1 |        0
-       2 |        2 |    5 |    8 |    1 |        1
-       3 |        3 |    6 |    9 |    1 |        2
-       4 |        4 |    9 |   16 |    1 |        3
-       5 |        5 |    4 |    3 |    1 |        4
-       6 |        6 |    3 |   -1 |    0 |        5
-    (6 rows)
-
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            2, array[3],
-            true     
-    );
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            2, array[3]
-    );
-
-    seq | path_seq | end_vid | node | edge | cost | agg_cost 
-   -----+----------+-------+------+------+------+----------
-      1 |        1 |       3 |    2 |    4 |    1 |        0
-      2 |        2 |       3 |    5 |    8 |    1 |        1
-      3 |        3 |       3 |    6 |    9 |    1 |        2
-      4 |        4 |       3 |    9 |   16 |    1 |        3
-      5 |        5 |       3 |    4 |    3 |    1 |        4
-      6 |        6 |       3 |    3 |   -1 |    0 |        5
-   (6 rows)
-
-       
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            array[2], array[3],
-            true
-    );
-
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            array[2], array[3]
-    );
-    seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost 
-   -----+----------+---------+-------+------+------+------+----------
-      1 |        1 |         2 |     3 |    2 |    4 |    1 |        0
-      2 |        2 |         2 |     3 |    5 |    8 |    1 |        1
-      3 |        3 |         2 |     3 |    6 |    9 |    1 |        2
-      4 |        4 |         2 |     3 |    9 |   16 |    1 |        3
-      5 |        5 |         2 |     3 |    4 |    3 |    1 |        4
-      6 |        6 |         2 |     3 |    3 |   -1 |    0 |        5
-   (6 rows)
-
-
-
-
-
-Equivalences  between signatures 
--------------------------------------------------------------------------------
-
-.. code-block:: sql
-
-    -- V2
-	SELECT * FROM pgr_dijkstra(
-		'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-		2, 3,
-            false,    -- directed flag
-            true      -- has_rcost
-	);
-
-     seq | id1 | id2 | cost 
-    -----+-----+-----+------
-       0 |   2 |   2 |    1
-       1 |   3 |  -1 |    0
-    (2 rows)
-
-
-    -- V3
-	SELECT * FROM pgr_dijkstra(
-           'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-		2, 3,
-            false     -- directed flag
-	);
-
-     seq | path_seq | node | edge | cost | agg_cost 
-    -----+----------+------+------+------+----------
-       1 |        1 |    2 |    2 |    1 |        0
-       2 |        2 |    3 |   -1 |    0 |        1
-    (2 rows)
-
-
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            2, array[3],
-            false     
-    );
-    seq | path_seq | end_vid | node | edge | cost | agg_cost 
-   -----+----------+-------+------+------+------+----------
-      1 |        1 |       3 |    2 |    2 |    1 |        0
-      2 |        2 |       3 |    3 |   -1 |    0 |        1
-   (2 rows)
-
-
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            array[2], 3,
-            false
-    );
-    seq | path_seq | start_vid | node | edge | cost | agg_cost 
-   -----+----------+---------+------+------+------+----------
-      1 |        1 |         2 |    2 |    2 |    1 |        0
-      2 |        2 |         2 |    3 |   -1 |    0 |        1
-   (2 rows)
-   
-
-    SELECT * FROM pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-            array[2], array[3],
-            false
-    );
-    seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost 
-   -----+----------+---------+-------+------+------+------+----------
-      1 |        1 |         2 |       3 |    2 |    2 |    1 |        0
-      2 |        2 |         2 |       3 |    3 |   -1 |    0 |        1
-   (2 rows)
-
+.. literalinclude:: ../test/doc-dijkstra-v3.doc.result
+   :start-after: -- q17
+   :end-before: -- q18
 
 
 The queries use the :ref:`sampledata` network.
 
 .. rubric:: History
 
-* Renamed in version 2.0.0 
+* Renamed in version 2.0.0
 * Added functionality in version 2.1.0
 
 
