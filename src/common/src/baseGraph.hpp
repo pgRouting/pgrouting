@@ -146,14 +146,6 @@ class Pgr_base_graph {
   std::deque<pgr_edge_t> removed_edges;
   //@}
 
-#if 0
-  //! @name Used by dijkstra
-  //@{
-  std::vector<V> predecessors;
-  std::vector<float8> distances;
-  std::deque<V> nodesInDistance;
-  //@}
-#endif
 
   //! @name The Graph
   //@{
@@ -381,6 +373,11 @@ class Pgr_base_graph {
               }
           }
       }
+
+
+  boost_vertex_t operator[](V v) const {
+      return graph[v];
+  }
 
     private:
   void

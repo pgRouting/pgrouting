@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./one_to_many_dijkstra_driver.h"
 
-//#define DEBUG
+// #define DEBUG
 #include "../../common/src/memory_func.hpp"
 extern "C" {
 #include "./../../common/src/pgr_types.h"
@@ -57,11 +57,9 @@ do_pgr_one_to_many_dijkstra(
         bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
-        char ** err_msg){
+        char ** err_msg) {
   std::ostringstream log;
   try {
-
-
     graphType gType = directed? DIRECTED: UNDIRECTED;
     const int initial_size = total_tuples;
 
@@ -89,7 +87,7 @@ do_pgr_one_to_many_dijkstra(
     if (count == 0) {
         (*return_tuples) = NULL;
         (*return_count) = 0;
-        log << 
+        log <<
             "No paths found between Starting and any of the Ending vertices\n";
         *err_msg = strdup(log.str().c_str());
         return;

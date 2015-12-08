@@ -28,8 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_MANY_TO_MANY_DIJKSTRA_SRC_MANY_TO_MANY_DIJKSTRA_DRIVER_H_
-#define SRC_MANY_TO_MANY_DIJKSTRA_SRC_MANY_TO_MANY_DIJKSTRA_DRIVER_H_
+#ifndef SRC_DIJKSTRA_SRC_MANY_TO_MANY_DIJKSTRA_DRIVER_H_
+#define SRC_DIJKSTRA_SRC_MANY_TO_MANY_DIJKSTRA_DRIVER_H_
 
 #include "./../../common/src/pgr_types.h"
 
@@ -37,24 +37,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-//  CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, start_vids anyarray, end_vids anyarray, directed boolean default true,
-void
-do_pgr_many_to_many_dijkstra(
-        pgr_edge_t  *data_edges,
-        size_t total_tuples,
-        int64_t  *start_vidsArr,
-        size_t size_start_vidsArr,
-        int64_t  *end_vidsArr,
-        size_t size_end_vidsArr,
-        bool directed,
-        bool only_cost,
-        General_path_element_t **return_tuples,
-        size_t *return_count,
-        char ** err_msg);
+    //  CREATE OR REPLACE FUNCTION pgr_dijkstra(
+    //  sql text,
+    //  start_vids anyarray,
+    //  end_vids anyarray,
+    //  directed boolean default true,
+    void
+        do_pgr_many_to_many_dijkstra(
+                pgr_edge_t  *data_edges,
+                size_t total_tuples,
+                int64_t  *start_vidsArr,
+                size_t size_start_vidsArr,
+                int64_t  *end_vidsArr,
+                size_t size_end_vidsArr,
+                bool directed,
+                bool only_cost,
+                General_path_element_t **return_tuples,
+                size_t *return_count,
+                char ** err_msg);
 
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // SRC_MANY_TO_MANY_DIJKSTRA_SRC_MANY_TO_MANY_DIJKSTRA_DRIVER_H_
+#endif  // SRC_DIJKSTRA_SRC_MANY_TO_MANY_DIJKSTRA_DRIVER_H_

@@ -57,10 +57,9 @@ do_pgr_one_to_one_dijkstra(
         bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
-        char ** err_msg){
+        char ** err_msg) {
   std::ostringstream log;
   try {
-
       graphType gType = directed? DIRECTED: UNDIRECTED;
       const int initial_size = total_tuples;
 
@@ -95,7 +94,6 @@ do_pgr_one_to_one_dijkstra(
       size_t sequence = 0;
       path.generate_postgres_data(return_tuples, sequence);
       (*return_count) = sequence;
-      //
 
 #ifndef DEBUG
       *err_msg = strdup("OK");

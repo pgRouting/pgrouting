@@ -41,14 +41,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./many_to_one_dijkstra_driver.h"
 
-//#define DEBUG
+// #define DEBUG
 
 #include "../../common/src/memory_func.hpp"
 extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
 
-// CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, start_vids anyarray, end_vid BIGINT, directed BOOLEAN default true,
+// CREATE OR REPLACE FUNCTION pgr_dijkstra(
+// sql text,
+// start_vids anyarray,
+// end_vid BIGINT,
+// directed BOOLEAN default true,
 void
 do_pgr_many_to_one_dijkstra(
         pgr_edge_t  *data_edges,
@@ -60,7 +64,7 @@ do_pgr_many_to_one_dijkstra(
         bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
     try {
         /*
@@ -99,7 +103,7 @@ do_pgr_many_to_one_dijkstra(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            log << 
+            log <<
                 "No paths found between Starting and any of the Ending vertices\n";
             *err_msg = strdup(log.str().c_str());
             return;
@@ -119,7 +123,7 @@ do_pgr_many_to_one_dijkstra(
         return;
     } catch ( ... ) {
         log << "Caught unknown expection!\n";
-        *err_msg = strdup("Caught unknown expection!\n");
+        *err_msg = strdup(log.str().c_str());
         return;
     }
 }

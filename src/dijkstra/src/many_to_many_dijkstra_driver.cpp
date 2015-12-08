@@ -42,11 +42,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // #define DEBUG
 
 #include "../../common/src/memory_func.hpp"
+
 extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
 
-// CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, start_vids anyarray, end_vids anyarray, directed boolean default true,
+// CREATE OR REPLACE FUNCTION pgr_dijkstra(
+// sql text,
+// start_vids anyarray,
+// end_vids anyarray,
+// directed boolean default true,
 void
 do_pgr_many_to_many_dijkstra(
         pgr_edge_t  *data_edges,
@@ -59,17 +64,18 @@ do_pgr_many_to_many_dijkstra(
         bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
     try {
-
         graphType gType = directed? DIRECTED: UNDIRECTED;
         const int initial_size = total_tuples;
 
         std::deque< Path >paths;
         log << "Inserting vertices into a c++ vector structure\n";
-        std::vector< int64_t > start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
-        std::vector< int64_t > end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+        std::vector< int64_t >
+            start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
+        std::vector< int64_t >
+            end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
 
         if (directed) {
             log << "Working with directed Graph\n";
@@ -111,7 +117,7 @@ do_pgr_many_to_many_dijkstra(
         return;
     } catch ( ... ) {
         log << "Caught unknown expection!\n";
-        *err_msg = strdup("Caught unknown expection!\n");
+        *err_msg = strdup(log.str().c_str());
         return;
     }
 }
