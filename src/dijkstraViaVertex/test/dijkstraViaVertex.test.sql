@@ -82,4 +82,3 @@ FROM  pgr_dijkstraViaVertex(
     ARRAY[1, 5, 3, 9, 4])
 WHERE node = 9 and (agg_cost  <> 0 or seq = 1);
 
-

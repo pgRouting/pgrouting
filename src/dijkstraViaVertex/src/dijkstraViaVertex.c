@@ -195,7 +195,7 @@ dijkstraViaVertex(PG_FUNCTION_ARGS) {
       // postgres starts counting from 1
       values[0] = Int64GetDatum(call_cntr + 1);
       values[1] = Int64GetDatum(result_tuples[call_cntr].path_id);
-      values[2] = Int64GetDatum(result_tuples[call_cntr].path_seq);
+      values[2] = Int64GetDatum(result_tuples[call_cntr].path_seq + 1);
       values[3] = Int64GetDatum(result_tuples[call_cntr].start_vid);
       values[4] = Int64GetDatum(result_tuples[call_cntr].end_vid);
       values[5] = Int64GetDatum(result_tuples[call_cntr].node);

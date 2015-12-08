@@ -6,7 +6,7 @@ Mail: project@pgrouting.org
 ------
 
 This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
+it under the terms of the GNU General Public License AS published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
 
@@ -21,139 +21,222 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-\echo --Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
-\echo ----------------------------------------------------------------------------------------
+\set ECHO none
+\set QUIET 1
+-- Turn off echo and keep things quiet.
 
-        SELECT * FROM pgr_dijkstra(
-                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-                        ARRAY[1], ARRAY[3]
-                );
-\echo ------
+-- Format the output for nice TAP.
+\pset format unaligned
+\pset tuples_only true
+\pset pager
+\set VERBOSITY terse
 
-        SELECT * FROM pgr_dijkstra(
-                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-                        ARRAY[3], ARRAY[11]
-                );
-\echo ------
+-- Revert all changes on failure.
+\set ON_ERROR_ROLLBACK true
+\set ON_ERROR_STOP true
+\set QUIET 1
 
-        SELECT * FROM pgr_dijkstraViaVertices(
-                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-                        array[1, 3, 11]
-                );
-\echo ------
-
-        SELECT * FROM pgr_dijkstraViaVertices(
-                  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-                  array[1, 3, 11],
-                  true
-                );
+BEGIN;
+    SELECT plan(8);
 
 
 
-\echo -- Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
-\echo ----------------------------------------------------------------------------------------
+    --Examples for queries marked AS ``directed`` with ``cost`` and ``reverse_cost`` columns
+    ----------------------------------------------------------------------------------------
+    PREPARE q1 AS
+    WITH
+    union_data AS (
+        (SELECT 1 AS path_id,* FROM pgr_dijkstra(
+                'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                ARRAY[1], ARRAY[3]))
 
+        UNION
 
-        SELECT * FROM pgr_dijkstra(
-                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-                        ARRAY[1], ARRAY[3],
-		false
-                );
-\echo ------
+        (SELECT 2 AS path_id,* FROM pgr_dijkstra(
+                'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+                ARRAY[3], ARRAY[11]
+    ))),
+data AS (SELECT * FROM union_data ORDER BY path_id, path_seq)
 
-        SELECT * FROM pgr_dijkstra(
-                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-                        ARRAY[3], ARRAY[11],
-		false
-                );
-\echo ------
+SELECT ((row_number() over())) AS seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+FROM data ORDER BY path_id, path_seq;
 
+PREPARE q2 AS
+SELECT seq, path_id, path_seq, start_vid, end_vid, node,
+CASE WHEN edge = -2 THEN -1 ELSE edge END,
+    cost, agg_cost FROM pgr_dijkstraViaVertex(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    array[1, 3, 11]
+);
 
-        SELECT * FROM pgr_dijkstraViaVertices(
-                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-                        array[1, 3, 11],
-			 false
-                );
+PREPARE q3 AS
+SELECT seq, path_id, path_seq, start_vid, end_vid, node,
+CASE WHEN edge = -2 THEN -1 ELSE edge END,
+cost, agg_cost FROM pgr_dijkstraViaVertex(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    array[1, 3, 11],
+    TRUE
+);
 
-
-
-\echo -- Examples for queries marked as ``directed`` with ``cost`` column
-\echo ----------------------------------------------------------------------------------------
-
-        SELECT * FROM pgr_dijkstra(
-                        'SELECT id, source, target, cost FROM edge_table',
-                        ARRAY[1], ARRAY[3]
-                );
-\echo ------
-
-        SELECT * FROM pgr_dijkstra(
-                        'SELECT id, source, target, cost FROM edge_table',
-                        ARRAY[3], ARRAY[11]
-                );
-\echo ------
-
-
-
-        SELECT * FROM pgr_dijkstraViaVertices(
-                        'SELECT id, source, target, cost FROM edge_table',
-                        array[1, 3, 11]
-                );
-\echo ------
-
-        SELECT * FROM pgr_dijkstraViaVertices(
-                        'SELECT id, source, target, cost FROM edge_table',
-                        array[1, 3, 11],
-			 true
-                );
+SELECT set_eq('q1', 'q2', '1: union of dijkstra is the same AS pgr_dijkstraViaVertex');
+SELECT set_eq('q2', 'q3', '2: with directed:=TRUE is the same AS no flag');
 
 
 
+-- Examples for queries marked AS ``undirected`` with ``cost`` and ``reverse_cost`` columns
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+PREPARE q11 AS
+WITH
+union_data AS (
+    (SELECT 1 AS path_id, * FROM pgr_dijkstra(
+            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+            ARRAY[1], ARRAY[3],
+            FALSE))
 
-\echo -- Examples for queries marked as ``undirected`` with ``cost`` column
-\echo ----------------------------------------------------------------------------------------
-        SELECT * FROM pgr_dijkstra(
-                        'SELECT id, source, target, cost FROM edge_table',
-                        ARRAY[1], ARRAY[3],
-			 false
-                );
-\echo ------
+UNION
 
-        SELECT * FROM pgr_dijkstra(
-                        'SELECT id, source, target, cost FROM edge_table',
-                        ARRAY[3], ARRAY[11],
-			 false
-                );
-\echo ------
+(SELECT 2 AS path_id, * FROM pgr_dijkstra(
+        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+        ARRAY[3], ARRAY[11],
+        FALSE))),
+data AS (SELECT * FROM union_data ORDER BY path_id, path_seq)
 
-
-        SELECT * FROM pgr_dijkstraViaVertices(
-                        'SELECT id, source, target, cost FROM edge_table',
-                        array[1, 3, 11],
-                        false
-		);
+SELECT ((row_number() over())) AS seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+FROM data ORDER BY path_id, path_seq;
 
 
-\echo -- Equvalences between signatures
-\echo ------------------------------
+PREPARE q12 AS
+SELECT seq, path_id, path_seq, start_vid, end_vid, node,
+CASE WHEN edge = -2 THEN -1 ELSE edge END,
+cost, agg_cost FROM pgr_dijkstraViaVertex(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    array[1, 3, 11],
+    FALSE
+);
+
+SELECT set_eq('q11','q12', '3: union of dijkstra is the same AS pgr_dijkstraViaVertex');
 
 
-	SELECT * FROM pgr_dijkstra(
-               'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-		array[1], array[3]
-	);
-\echo ------
+-- Examples for queries marked AS ``directed`` with ``cost`` column
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+PREPARE q21 AS
+WITH
+union_data AS (
+    (SELECT 1 AS path_id, * FROM pgr_dijkstra(
+            'SELECT id, source, target, cost FROM edge_table',
+            ARRAY[1], ARRAY[3]))
+UNION
+
+(SELECT 2 AS path_id, * FROM pgr_dijkstra(
+    'SELECT id, source, target, cost FROM edge_table',
+    ARRAY[3], ARRAY[11]))),
+data AS (SELECT * FROM union_data ORDER BY path_id, path_seq)
+
+SELECT ((row_number() over())) AS seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+FROM data ORDER BY path_id, path_seq;
 
 
-	SELECT * FROM pgr_dijkstra(
-		'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-		array[3], array[11] 
-	);
-\echo ------
+
+PREPARE q22 AS
+SELECT seq, path_id, path_seq, start_vid, end_vid, node,
+CASE WHEN edge = -2 THEN -1 ELSE edge END,
+cost, agg_cost FROM pgr_dijkstraViaVertex(
+    'SELECT id, source, target, cost FROM edge_table',
+    array[1, 3, 11]
+);
+
+PREPARE q23 AS
+SELECT seq, path_id, path_seq, start_vid, end_vid, node,
+CASE WHEN edge = -2 THEN -1 ELSE edge END,
+cost, agg_cost FROM pgr_dijkstraViaVertex(
+    'SELECT id, source, target, cost FROM edge_table',
+    array[1, 3, 11],
+    TRUE
+);
 
 
-	SELECT * FROM pgr_dijkstraViaVertices(
-                  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-                  array[1, 3, 11],
-                  true
-                );
+SELECT set_eq('q21','q22', '4: union of dijkstra is the same AS pgr_dijkstraViaVertex');
+SELECT set_eq('q22','q23', '5: with directed:=TRUE is the same AS no flag');
+
+
+-- Examples for queries marked AS ``undirected`` with ``cost`` column
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+PREPARE q31 AS
+WITH
+union_data AS (
+    (SELECT 1 AS path_id, * FROM pgr_dijkstra(
+            'SELECT id, source, target, cost FROM edge_table',
+            ARRAY[1], ARRAY[3],
+            FALSE))
+
+UNION
+
+(SELECT 2 AS path_id, * FROM pgr_dijkstra(
+        'SELECT id, source, target, cost FROM edge_table',
+        ARRAY[3], ARRAY[11],
+        FALSE))),
+data AS (SELECT * FROM union_data ORDER BY path_id, path_seq)
+
+SELECT ((row_number() over())) AS seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+FROM data ORDER BY path_id, path_seq;
+
+
+PREPARE q32 AS
+SELECT seq, path_id, path_seq, start_vid, end_vid, node,
+CASE WHEN edge = -2 THEN -1 ELSE edge END,
+cost, agg_cost
+FROM pgr_dijkstraViaVertex(
+    'SELECT id, source, target, cost FROM edge_table',
+    array[1, 3, 11],
+    FALSE
+);
+
+SELECT set_eq('q31','q32', '6: union of dijkstra is the same AS pgr_dijkstraViaVertex');
+
+-- Equvalences between signatures
+------------------------------
+----------------------------------------------------------------------------------------
+PREPARE q41 AS
+WITH
+union_data AS (
+    (SELECT 1 AS path_id, * FROM pgr_dijkstra(
+            'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+            array[1], array[3]))
+    UNION
+    (SELECT 2 AS path_id, * FROM pgr_dijkstra(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    array[3], array[11] ))),
+data AS (SELECT * FROM union_data ORDER BY path_id, path_seq)
+
+SELECT ((row_number() over())) AS seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+FROM data ORDER BY path_id, path_seq;
+
+
+PREPARE q42 AS
+SELECT seq, path_id, path_seq, start_vid, end_vid, node,
+CASE WHEN edge = -2 THEN -1 ELSE edge END,
+cost, agg_cost
+FROM pgr_dijkstraViaVertex(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    array[1, 3, 11]
+);
+PREPARE q43 AS
+SELECT seq, path_id, path_seq, start_vid, end_vid, node,
+CASE WHEN edge = -2 THEN -1 ELSE edge END,
+cost, agg_cost
+FROM pgr_dijkstraViaVertex(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    array[1, 3, 11],
+    TRUE
+);
+
+SELECT set_eq('q41','q42', '7: union of dijkstra is the same AS pgr_dijkstraViaVertex');
+SELECT set_eq('q42','q43', '8: with directed:=TRUE is the same AS no flag');
+
+-- Finish the tests and clean up.
+SELECT * FROM finish();
+ROLLBACK;
 
