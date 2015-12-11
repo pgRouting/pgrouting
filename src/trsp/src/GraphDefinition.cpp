@@ -777,22 +777,47 @@ bool GraphDefinition::get_single_cost(double total_cost, path_element_t **path, 
 
 
 // -------------------------------------------------------------------------
-bool GraphDefinition::construct_graph(edge_t* edges, int edge_count, bool has_reverse_cost, bool directed)
-{
+bool GraphDefinition::construct_graph(edge_t* edges, int edge_count, bool has_reverse_cost, bool directed) {
     int i;
-    for(i = 0; i < edge_count; i++)
-    {
-        if(!has_reverse_cost)
-        {
-        if(directed)
-        {
+    for(i = 0; i < edge_count; i++) {
+
+        /*
+         *  has_reverse_cost but cost is negative
+         *    - flip the record
+         *    - After this: cost is positive unless reverse_cost was also negative
+         */
+        if (has_reverse_cost) {
+            if (edges[i].cost < 0) {
+                int tmp_v;
+                tmp_v = edges[i].source;
+                edges[i].source = edges[i].target;
+                edges[i].target = tmp_v;
+                edges[i].cost = edges[i].reverse_cost;
+                edges[i].reverse_cost = -1.0;
+            }
+        }
+
+        /*
+         * all data in the reverse_cost column must be ignored
+         */
+        if (!has_reverse_cost) {
             edges[i].reverse_cost = -1.0;
         }
-        else
-        {
+        
+        /* 
+         * when the graph is undirected:
+         * both colummns must have the same smallest positive value
+         */
+        if (!directed && !has_reverse_cost) {
             edges[i].reverse_cost = edges[i].cost;
+        } else if (!directed && has_reverse_cost) {
+            if (edges[i].reverse_cost < 0) {
+                edges[i].reverse_cost = edges[i].cost;
+            } else {
+                edges[i].reverse_cost = std::min(edges[i].reverse_cost, edges[i].cost);
+            }
         }
-        }
+
         addEdge(edges[i]);
     }
     m_bIsGraphConstructed = true;
@@ -846,7 +871,7 @@ bool GraphDefinition::addEdge(edge_t edgeIn)
     if(itMap != m_mapEdgeId2Index.end())    
         return false;
 
-    
+
     GraphEdgeInfo* newEdge = new GraphEdgeInfo();
     newEdge->m_vecStartConnectedEdge.clear();
     newEdge->m_vecEndConnedtedEdge.clear();

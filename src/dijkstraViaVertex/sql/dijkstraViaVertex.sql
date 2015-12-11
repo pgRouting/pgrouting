@@ -30,7 +30,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertex(
     vertices ANYARRAY,
     directed BOOLEAN DEFAULT TRUE,
     strict BOOLEAN DEFAULT FALSE,
-    with_U_turns BOOLEAN DEFAULT TRUE,
+    U_turn_on_edge BOOLEAN DEFAULT TRUE,
 
 
     OUT seq BIGINT,

@@ -75,7 +75,8 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
               AND (rec.source_type in ('integer'::text))
               AND (rec.target_type in ('integer'::text))
               AND (rec.cost_type = 'double precision'::text)) THEN
-            RAISE EXCEPTION 'Support for id, source, target columns only of type: integer. Support for Cost: double precision';
+            RAISE EXCEPTION 'Error, columns ''source'', ''target'' must be of type int4, ''cost'' must be of type float8'
+            USING ERRCODE = 'XX000';
         END IF;
     END IF;
  

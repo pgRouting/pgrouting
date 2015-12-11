@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./dijkstraViaVertex_driver.h"
 
-//#define DEBUG
+#define DEBUG
 
 extern "C" {
 #include "./../../common/src/pgr_types.h"
@@ -52,34 +52,72 @@ pgr_dijkstraViaVertex(
         const std::vector< int64_t > via_vertices,
         std::deque< Path > &paths,
         bool strict,
-        bool with_U_turns) {    // true = u turns are allowed between paths
+        bool U_turn_on_edge,  //! true = u turns are allowed between paths
+        std::ostringstream &log) {    
+
+    if (via_vertices.size() == 0) {
+        return;
+    }
 
     paths.clear();
-    for (size_t i = 0; i < via_vertices.size() - 1; ++i) {
-        Path path;
-        pgr_dijkstra(graph, path, via_vertices[i], via_vertices[i+1]);
+    int64_t prev_vertex = via_vertices[0];
+    Path path;
+    
+    //for (size_t i = 0; i < via_vertices.size() - 1; ++i) {
+    int64_t i = 0;
+    for (const auto &vertex : via_vertices) {
+        if (i == 0) {
+            prev_vertex = vertex; ++i;
+            continue;
+        }
+
+        // Delete uTurn edges only valid for paths that are not the first path
+        if (!U_turn_on_edge && i > 1) {
+
+            // we can only delete if there is was a path, that is at least one edge size
+            if (path.path.size() > 1) {
+                // Delete from the graph the last edge if its outgoing also
+                // edge to be removed = second to last edge path[i].edge;
+                int64_t edge_to_be_removed = path.path[path.path.size() - 2].edge;
+                int64_t last_vertex_of_path = prev_vertex;
+               // path.path[path.path.size() - 1].vertex;
+
+                // and the current vertex is not a dead end
+                if (graph.out_degree(last_vertex_of_path) > 1) {
+                log << "departing from " << last_vertex_of_path
+                    << " deleting edge " << edge_to_be_removed << "\n";
+                    graph.disconnect_out_going_edge(last_vertex_of_path, edge_to_be_removed);
+                }
+            }
+        }
+
+        path.clear();
+
+        log << "from " << prev_vertex << " to " << vertex << "\n";
+        pgr_dijkstra(graph, path, prev_vertex, vertex);
+
+        if (!U_turn_on_edge && i > 1) {
+            graph.restore_graph();
+            if (path.path.empty()) { 
+                /*
+                 *  no path was found with the deleted edge
+                 *  try with the edge back in the graph
+                 */
+                log << "WAS empty so again from " << prev_vertex << " to " << vertex << "\n";
+                pgr_dijkstra(graph, path, prev_vertex, vertex);
+            }
+        }
+
         if (strict && path.path.empty()) {
             paths.clear();
             return;
         }
         paths.push_back(path);
 
-        // Any deleted edges are restored
-        graph.restore_graph();
-
-        // Delete uTurn edges
-        if (!with_U_turns) {
-
-            // we can only delete if there is was a path, that is at least one edge
-            if (path.path.size() > 1) {
-                // Delete from the graph the last edge if its outgoing also
-                // edge to be removed = second to last edge path[i].edge;
-                int64_t edge_to_be_removed = path.path[path.path.size() - 2].edge;
-                int64_t last_vertex_of_path = path.path[path.path.size() - 1].vertex;
-                graph.disconnect_out_going_edge(last_vertex_of_path, edge_to_be_removed);
-            }
-
-        }
+        /*
+         * got to the next
+         */
+        prev_vertex = vertex; ++i;
     }
 }
 
@@ -148,7 +186,7 @@ do_pgr_dijkstraViaVertex(
         int size_via_vidsArr,
         bool directed,
         bool strict,
-        bool with_U_turns,
+        bool U_turn_on_edge,
         Routes_t **return_tuples,
         size_t *return_count,
         char ** err_msg){
@@ -174,12 +212,12 @@ do_pgr_dijkstraViaVertex(
             log << "Working with directed Graph\n";
             Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
             digraph.graph_insert_data(data_edges, total_tuples);
-            pgr_dijkstraViaVertex(digraph, via_vertices, paths, strict, with_U_turns);
+            pgr_dijkstraViaVertex(digraph, via_vertices, paths, strict, U_turn_on_edge, log);
         } else {
             log << "Working with Undirected Graph\n";
             Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data(data_edges, total_tuples);
-            pgr_dijkstraViaVertex(undigraph, via_vertices, paths, strict, with_U_turns);
+            pgr_dijkstraViaVertex(undigraph, via_vertices, paths, strict, U_turn_on_edge, log);
         }
 
         size_t count(count_tuples(paths));

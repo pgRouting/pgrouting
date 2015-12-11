@@ -169,7 +169,7 @@ create or replace function pgr_trsp(sql text, vids integer[], directed boolean, 
     RETURNS SETOF pgr_costresult AS
 $body$
 begin
-    return query select seq, id2 as id1, id3 as id2, cost from pgr_trspVia( sql, vids, directed, has_reverse_cost, turn_restrict_sql);
+    return query select seq, id2 as id1, id3 as id2, cost from pgr_trspViaVertices( sql, vids, directed, has_reverse_cost, turn_restrict_sql);
 end;
 $body$
     language plpgsql stable
@@ -182,7 +182,7 @@ create or replace function pgr_trsp(sql text, eids integer[], pcts float8[], dir
     RETURNS SETOF pgr_costresult AS
 $body$
 begin
-    return query select seq, id2 as id1, id3 as id2, cost from pgr_trspVia(sql, eids, pcts, directed, has_reverse_cost, turn_restrict_sql);
+    return query select seq, id2 as id1, id3 as id2, cost from pgr_trspViaEdges(sql, eids, pcts, directed, has_reverse_cost, turn_restrict_sql);
 end;
 $body$
     language plpgsql stable

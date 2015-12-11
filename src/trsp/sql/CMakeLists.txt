@@ -1,9 +1,9 @@
 # Append in local scope
 list(APPEND PACKAGE_SQL_FILES
-    #${CMAKE_CURRENT_SOURCE_DIR}/routing_trsp.sql
-    #${CMAKE_CURRENT_SOURCE_DIR}/routing_trsp_vias.sql
-    ${CMAKE_CURRENT_SOURCE_DIR}/vias_trsp_V2.2.sql
-    ${CMAKE_CURRENT_SOURCE_DIR}/trsp_V2.2.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/routing_trsp.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/routing_trsp_vias.sql
+    #${CMAKE_CURRENT_SOURCE_DIR}/vias_trsp_V2.2.sql
+    #${CMAKE_CURRENT_SOURCE_DIR}/trsp_V2.2.sql
     )
 
 # set in parent scope

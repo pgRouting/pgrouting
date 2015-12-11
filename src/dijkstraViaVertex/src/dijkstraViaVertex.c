@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
   Uncomment when needed
 */
-//#define DEBUG
+#define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
@@ -62,7 +62,7 @@ process( char* edges_sql,
         size_t size_via_vidsArr,
         bool directed,
         bool strict,
-        bool with_U_turns,
+        bool U_turn_on_edge,
         Routes_t **result_tuples,
         size_t *result_count) {
   pgr_SPI_connect();
@@ -82,7 +82,11 @@ process( char* edges_sql,
     return;
   }
   PGR_DBG("Total %ld tuples in query:", total_tuples);
+  PGR_DBG("directed: %d", directed);
+  PGR_DBG("strict: %d", strict);
+  PGR_DBG("U_turn_on_edge: %d", U_turn_on_edge);
 
+  
   PGR_DBG("Starting processing");
   char *err_msg = (char *)"";
   do_pgr_dijkstraViaVertex(
@@ -92,7 +96,7 @@ process( char* edges_sql,
         size_via_vidsArr,
         directed,
         strict,
-        with_U_turns,
+        U_turn_on_edge,
         result_tuples,
         result_count,
         &err_msg);
@@ -133,7 +137,7 @@ dijkstraViaVertex(PG_FUNCTION_ARGS) {
 
   /*******************************************************************************/
   /*                          MODIFY AS NEEDED                                   */
-      // CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertices(sql text, vertices anyarray, directed boolean default true, strict boolean default false, with_U_turns boolean default false
+      // CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertices(sql text, vertices anyarray, directed boolean default true, strict boolean default false, U_turn_on_edge boolean default false
 
       PGR_DBG("Initializing arrays");
       int64_t* via_vidsArr;
