@@ -312,6 +312,12 @@ static int compute_trsp(
 
   PGR_DBG("start turn_restrict_shortest_path\n");
         
+  if (start_id == end_id) {
+      PGR_DBG("Starting vertex and Ending Vertex are equal");
+      *path = NULL;
+      return 0;
+  }
+
   SPIcode = SPI_connect();
   if (SPIcode  != SPI_OK_CONNECT) {
       elog(ERROR, "turn_restrict_shortest_path: couldn't open a connection to SPI");
