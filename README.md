@@ -54,4 +54,10 @@ $ psql > select my_dijkstra('SELECT * from ways',start_vid,end_vid);
  - Testing the query for different cases
 
 
+### Testing
+
+ - The functionality of Graph contraction class is defined in graphMinimizer.hpp
+ - Its functionality can be tested using the test.cpp file. 
+
+
 
