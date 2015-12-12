@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC  -fPIC -O2 -g -Wall -std=c++0x -frounding-math -Wno-deprecated   -shared -Wl,-soname,libmyrouting_library.so -o libmyrouting_library.so src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o 

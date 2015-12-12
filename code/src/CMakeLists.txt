@@ -1,0 +1,3 @@
+add_subdirectory(mydijkstra)
+SET(PACKAGE_SQL_FILES "")
+SET(PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}" PARENT_SCOPE)
