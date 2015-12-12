@@ -11,9 +11,12 @@ void check(Edge *edges,int num_vertices,int num_edges)
 	typedef Graph_Minimizer<G> Graph;
 	Graph g(UNDIRECTED,num_vertices);
 	g.initialize_graph(edges,num_edges);
-	g.print_graph();
-	g.print_Vertex_Degree();
-	g.print_Degree_Vertices();
+	g.reduced_graph->print_graph();
+	//g.print_Vertex_Degree();
+	//g.print_Degree_Vertices();
+	//g.remove_vertex(0);
+	g.remove_1_degree_vertices();
+	g.reduced_graph->print_graph();
 }
 
 int main(int argc, char const *argv[])
@@ -33,5 +36,6 @@ int main(int argc, char const *argv[])
 	edges[1].cost=4;
 	edges[1].revcost=-1;
 	check(edges,num_vertices,num_edges);
+
 	return 0;
 }

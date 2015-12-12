@@ -56,11 +56,21 @@ public:
 
   // Inserts edges of in the form of struct "Edge" into the graph
   void insert_data(const Edge *data_edges, int64_t count) {
-  	for (unsigned int i = 0; i < count; ++i) {
+  	int64_t vcount=0;
+    for (unsigned int i = 0; i < count; ++i) {
   		graph_add_edge(data_edges[i]);
   	}
-  	for ( int64_t i = 0; (unsigned int) i < V_id_map.size(); ++i )
-  		graph[i].id = V_id_map.find(i)->second;
+    calculateDegrees();
+    /*for ( int64_t i = 0; (unsigned int) i < V_id_map.size(); ++i )
+    {
+      graph[i].id = V_id_map.find(i)->second;
+      graph[i].contractions=0;
+    }*/
+      V_i vi;
+    for (vi = vertices(graph).first; vi != vertices(graph).second; ++vi) {
+          graph[(*vi)].id=vcount++;
+          graph[(*vi)].contractions=0;
+    }
   }
 
 
@@ -167,19 +177,14 @@ public:
   void print_graph() {
         EO_i out, out_end;
         V_i vi;
-        int count;
         for (vi = vertices(graph).first; vi != vertices(graph).second; ++vi) {
-            count=0;
-            std::cout << (*vi) << " out_edges(" << graph[(*vi)].id << "):";
+            std::cout << "vdesc:- " << (*vi) << " out_edges(" << graph[(*vi)].id << ") " << "degree:- " << graph[(*vi)].degree << " contractions:- " << graph[(*vi)].contractions << endl ;
             for (boost::tie(out, out_end) = out_edges(*vi, graph);
               out != out_end; ++out) {
-              count++;
               std::cout << ' ' << *out << "=(" << graph[source(*out, graph)].id
                         << ", " << graph[target(*out, graph)].id << ") = "
                         <<  graph[*out].cost <<"\t";
             }
-            graph[(*vi)].degree=count;
-            degree_to_V_map[count].push_back(*vi);
             std::cout << std::endl;
         }
         /*std::cout << "\n i, distance, predecesor\n"; 
@@ -188,6 +193,22 @@ public:
         }*/
     }
 
+
+    void calculateDegrees()
+    {
+      EO_i out, out_end;
+        V_i vi;
+        int count;
+        for (vi = vertices(graph).first; vi != vertices(graph).second; ++vi) {
+            count=0;
+            for (boost::tie(out, out_end) = out_edges(*vi, graph);
+              out != out_end; ++out) {
+              count++;
+            }
+            graph[(*vi)].degree=count;
+            degree_to_V_map[count].push_back(*vi);
+        }
+    }
     void print_Vertex_Degree()
     {
       cout << "Printing V_degree map" << endl;

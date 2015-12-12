@@ -13,6 +13,7 @@ typedef struct
 {
 	int id;
 	int degree;
+	int contractions;
 } Vertex;
 
 //represents an edge
