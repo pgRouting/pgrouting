@@ -39,7 +39,13 @@ $ cmake ..
 $ make
 $ sudo make install
 ```
+### Usage
 
+This query gives the shortest path between two vertices in the OSM data.
+
+```sh
+$ psql > select my_dijkstra('SELECT * from ways',start_vid,end_vid);
+```
 
 ### Todos
 
