@@ -47,14 +47,10 @@ public:
 	void remove_1_degree_vertices()
 	{
 		EO_i out,out_end;
-
-		vector<V> onedv;
-		typename vector<V>::iterator it;
-		onedv=reduced_graph->degree_to_V_map[1];
-		while (reduced_graph->degree_to_V_map[1].size()>1)
+		V front=reduced_graph->degree_to_V_map[1].front();
+		while (reduced_graph->graph[front].degree==1)
 		{
-			V temp=reduced_graph->degree_to_V_map[1].front();
-			for (boost::tie(out, out_end) = out_edges(temp, reduced_graph->graph);
+			for (boost::tie(out, out_end) = out_edges(front, reduced_graph->graph);
 				out != out_end; ++out) 
 			{
 				V s=source(*out, reduced_graph->graph);
@@ -69,6 +65,7 @@ public:
 				reduced_graph->degree_to_V_map[final_target_degree].push_back(t);
 				removedVertices[t].push(s);
 			}
+			front=reduced_graph->degree_to_V_map[1].front();
 		}
 	}
 
