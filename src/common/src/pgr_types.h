@@ -109,7 +109,13 @@ typedef struct
 }
 Restrict_t;
 
-
+typedef struct {
+    int64_t point_id;
+    int64_t edge_id;
+    bool right;  // true when the point is on the right of the edge
+    float8 fraction;
+    int64_t vertex_id; // number is negative
+} Point_on_edge;
 
 
 struct boost_vertex_t {
@@ -119,8 +125,9 @@ struct boost_vertex_t {
 struct boost_edge_t{
     int64_t id;
     float8 cost;
-    int64_t source_id;
-    int64_t target_id;
+    int64_t source;
+    int64_t target;
+    bool first;  // true (source, target) false (target, source)
 };
 
 

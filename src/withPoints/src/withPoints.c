@@ -1,7 +1,13 @@
 /*PGR-GNU*****************************************************************
+File: withPoints.c
 
+Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
+
+Function's developer: 
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+Mail: 
 
 ------
 
@@ -21,170 +27,135 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-
-
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
+#include "utils/array.h"
 #include "catalog/pg_type.h"
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
 
+/*
+  Uncomment when needed
+*/
+//#define DEBUG
+
 #include "fmgr.h"
+#include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
-#include "./dijkstraViaVertices_driver.h"
+#include "./withPoints_driver.h"
 
-#ifndef PG_MODULE_MAGIC
-PG_MODULE_MAGIC;
+PG_FUNCTION_INFO_V1(withPoints);
+#ifndef _MSC_VER
+Datum
+#else  // _MSC_VER
+PGDLLEXPORT Datum
 #endif
+withPoints(PG_FUNCTION_ARGS);
 
 
-/*******
-
-USE THIS AS A GUIDE
-
-*****/
-
-//TODO change name, parameters, according to the function its being implemented
-static int compute_pgr_dijkstra_via_vertices (
-	char* sql,
-	int64_t *via_vertex,
-	int v_len,
+/*******************************************************************************/
+/*                          MODIFY AS NEEDED                                   */
+static
+void
+process( char* edges_sql,
+        int64_t start_vid,
+        int64_t *end_vidsArr,
+        size_t size_end_vidsArr,
         bool directed,
-        bool has_rcost,
-        pgr_path_element3_t **path,
-	int *path_count) {
+        General_path_element_t **result_tuples,
+        size_t *result_count) {
+  pgr_SPI_connect();
 
-  int SPIcode = 0;
+  PGR_DBG("Load data");
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
+  pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
 
+  if (total_tuples == 0) {
+    PGR_DBG("No edges found");
+    (*result_count) = 0;
+    (*result_tuples) = NULL;
+    pgr_SPI_finish();
+    return;
+  }
+  PGR_DBG("Total %ld tuples in query:", total_tuples);
 
+  PGR_DBG("Starting processing");
   char *err_msg = (char *)"";
-  int ret = -1;
-
-  PGR_DBG("Load edges");
-  int readCode = pgr_get_data(sql, &edges, &total_tuples, has_rcost,
-               -1, -1);
-
-  if (readCode == -1 || total_tuples == 0) {
-    *path = noPathFound(path_count, (*path));
-    PGR_DBG("No edge tuples found");
-    pfree(edges);
-    return pgr_finish(SPIcode, ret);
-  }
-
-  if (total_tuples == 1 
-     && (edges[0].cost < 0 && edges[0].reverse_cost < 0)) {
-    PGR_DBG("One edge with cost == %f and reverse_cost == %f", edges[0].cost, edges[0].reverse_cost );
-    *path = noPathFound(path_count, (*path));
-    pfree(edges);
-    return pgr_finish(SPIcode, ret);
-  }
-
-  if (total_tuples == 1) {
-    PGR_DBG("One edge with cost == %f and reverse_cost == %f", edges[0].cost, edges[0].reverse_cost );
-    PGR_DBG("The soruce == %ld and target == %ld", edges[0].source, edges[0].target);
-#if 0
-    if ((edges[0].cost >= 0 && edges[0].source != start_vertex &&  edges[0].target != end_vertex) 
-        ||  (edges[0].reverse_cost >= 0 && edges[0].source != end_vertex &&  edges[0].target != start_vertex)) {
-      PGR_DBG("There must be a solution or empty for undirected");
-    }
-    if (edges[0].cost >= 0 && edges[0].source == start_vertex &&  edges[0].target == end_vertex) { 
-      PGR_DBG("Solution from source to target");
-    }
-    if (edges[0].reverse_cost >= 0 && edges[0].target == start_vertex &&  edges[0].source == end_vertex) { 
-      PGR_DBG("Solution from target to source");
-    }
-#endif
-  }
-
-
-  PGR_DBG("Total %ld edges in query:", total_tuples);
-
-  ret = do_pgr_dijkstra_via_vertices(
-	edges, total_tuples,
-        via_vertex, v_len,
+  do_pgr_withPoints(
+        edges,
+        total_tuples,
+        start_vid,
+        end_vidsArr,
+        size_end_vidsArr,
         directed,
-	//return data
-        path, path_count, &err_msg);
-
-  if (ret < 0) {
-      ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
-        errmsg("Error computing path: %s", err_msg)));
-  }
-
-  PGR_DBG("total records found %i\n", *path_count);
-  PGR_DBG("Exist Status = %i\n", ret);
+        result_tuples,
+        result_count,
+        &err_msg);
+  PGR_DBG("Returning %ld tuples\n", *result_count);
   PGR_DBG("Returned message = %s\n", err_msg);
 
+  free(err_msg);
   pfree(edges);
-  return pgr_finish(SPIcode, ret);
+  pgr_SPI_finish();
 }
-
-/****
-change where indicated
-****/
-
-
-#ifndef _MSC_VER
-Datum pgr_dijkstra_via_vertices(PG_FUNCTION_ARGS);
-#else  // _MSC_VER
-PGDLLEXPORT Datum pgr_dijkstra_via_vertices(PG_FUNCTION_ARGS);
-#endif  // _MSC_VER
-
-
-PG_FUNCTION_INFO_V1(pgr_dijkstra_via_vertices);
-
+/*                                                                             */
+/*******************************************************************************/
 
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-pgr_dijkstra_via_vertices(PG_FUNCTION_ARGS) {
+withPoints(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
-  size_t               call_cntr;
+  size_t              call_cntr;
   size_t               max_calls;
   TupleDesc            tuple_desc;
-  General_path_element_t  *ret_path = 0;
 
-  /* stuff done only on the first call of the function */
+  /*******************************************************************************/
+  /*                          MODIFY AS NEEDED                                   */
+  /*                                                                             */
+  General_path_element_t  *result_tuples = 0;
+  size_t result_count = 0;
+  /*                                                                             */
+  /*******************************************************************************/
+
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
-      size_t path_count = 0;
-
-      /* create a function context for cross-call persistence */
       funcctx = SRF_FIRSTCALL_INIT();
-
-      /* switch to memory context appropriate for multiple function calls */
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-      int64_t* verticesArr;
-      int num;
 
-      PGR_DBG("Load array of via vertices");
-      verticesArr = (int64_t*) pgr_get_bigIntArray(&num, PG_GETARG_ARRAYTYPE_P(1));
-      PGR_DBG("verticesArr size %d ", num);
+  /*******************************************************************************/
+  /*                          MODIFY AS NEEDED                                   */
+      // CREATE OR REPLACE FUNCTION pgr_withPoint(edges_sql TEXT, points_sql TEXT, start_pid BIGINT, end_pid BIGINT, directed BOOLEAN DEFAULT true, strict BOOLEAN default false, U_turn_on_edge BOOLEAN default true
 
-      /* TODO change the name to match the one above
-         the types of the parameters
-      */
-      compute_pgr_dijkstra_via_vertices(pgr_text2char(
-				 PG_GETARG_TEXT_P(0)), //the sql
-				 verticesArr, num,
-                                 PG_GETARG_BOOL(2),    // directed
-                                 PG_GETARG_BOOL(3),   // has_rcost
-				 // the return values  and count
-				 &ret_path,
-				 &path_count);
+      PGR_DBG("Initializing arrays");
+      int64_t* end_vidsArr;
+      size_t size_end_vidsArr;
+      end_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_end_vidsArr, PG_GETARG_ARRAYTYPE_P(2));
+      PGR_DBG("targetsArr size %ld ", size_end_vidsArr);
 
-      /* total number of tuples to be returned */
-      funcctx->max_calls = path_count;
-      funcctx->user_fctx = ret_path;
+      PGR_DBG("Calling process");
+      process(
+         pgr_text2char(PG_GETARG_TEXT_P(0)),
+         PG_GETARG_INT64(1),
+         end_vidsArr, size_end_vidsArr,
+         PG_GETARG_BOOL(3),
+         &result_tuples,
+         &result_count);
 
+      PGR_DBG("Cleaning arrays");
+      free(end_vidsArr);
+  /*                                                                             */
+  /*******************************************************************************/
+
+      funcctx->max_calls = result_count;
+      funcctx->user_fctx = result_tuples;
       if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
@@ -192,56 +163,52 @@ pgr_dijkstra_via_vertices(PG_FUNCTION_ARGS) {
                             "that cannot accept type record")));
 
       funcctx->tuple_desc = tuple_desc;
-
       MemoryContextSwitchTo(oldcontext);
   }
 
-  /* stuff done on every call of the function */
   funcctx = SRF_PERCALL_SETUP();
-
   call_cntr = funcctx->call_cntr;
   max_calls = funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
-  ret_path = (General_path_element_t*) funcctx->user_fctx;
+  result_tuples = (General_path_element_t*) funcctx->user_fctx;
 
-  /* do when there is more left to send */
   if (call_cntr < max_calls) {
       HeapTuple    tuple;
       Datum        result;
-      Datum *values;
-      char* nulls;
+      Datum        *values;
+      char*        nulls;
+
+  /*******************************************************************************/
+  /*                          MODIFY AS NEEDED                                   */
+      // OUT seq BIGINT, OUT path_seq, OUT node BIGINT, OUT edge BIGINT, OUT cost FLOAT, OUT agg_cost FLOAT)
+
+      
       values = palloc(7 * sizeof(Datum));
       nulls = palloc(7 * sizeof(char));
-      // route_id, seq, from, to cost 
-      values[0] = Int32GetDatum(ret_path[call_cntr].seq);
-      nulls[0] = ' ';
-      values[1] = Int64GetDatum(ret_path[call_cntr].from);
-      nulls[1] = ' ';
-      values[2] = Int64GetDatum(ret_path[call_cntr].to);
-      nulls[2] = ' ';
-      values[3] = Int64GetDatum(ret_path[call_cntr].vertex);
-      nulls[3] = ' ';
-      values[4] = Int64GetDatum(ret_path[call_cntr].edge);
-      nulls[4] = ' ';
-      values[5] = Float8GetDatum(ret_path[call_cntr].cost);
-      nulls[5] = ' ';
-      values[6] = Float8GetDatum(ret_path[call_cntr].tot_cost);
-      nulls[6] = ' ';
 
+      size_t i;
+      for(i = 0; i < 7; ++i) {
+          nulls[i] = ' ';
+      }
+
+
+      // postgres starts counting from 1
+      values[0] = Int32GetDatum(call_cntr + 1);
+      values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
+      values[2] = Int64GetDatum(result_tuples[call_cntr].to);
+      values[3] = Int64GetDatum(result_tuples[call_cntr].vertex);
+      values[4] = Int64GetDatum(result_tuples[call_cntr].edge);
+      values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
+      values[6] = Float8GetDatum(result_tuples[call_cntr].tot_cost);
+      /*******************************************************************************/
 
       tuple = heap_formtuple(tuple_desc, values, nulls);
-
-      /* make the tuple into a datum */
       result = HeapTupleGetDatum(tuple);
-
-      /* clean up (this is not really necessary) */
-      pfree(values);
-      pfree(nulls);
-
       SRF_RETURN_NEXT(funcctx, result);
   } else {
-      /* do when there is no more left */
-      if (ret_path) free(ret_path);
+      // cleanup
+      if (result_tuples) free(result_tuples);
+
       SRF_RETURN_DONE(funcctx);
   }
 }

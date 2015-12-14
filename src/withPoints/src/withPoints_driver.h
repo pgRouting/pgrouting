@@ -1,7 +1,12 @@
 /*PGR-GNU*****************************************************************
+File: withPoints_driver.h
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
+
+Function's developer: 
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+Mail: 
 
 ------
 
@@ -20,30 +25,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-/*PGR
 
-file: dijkstra_driver.h
-
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
-*/
-#ifndef SRC_TEMPLATE_SRC_DIJKSTRAVIAVERTICES_DRIVER_H_
-#define SRC_TEMPLATE_SRC_DIJKSTRAVIAVERTICES_DRIVER_H_
+#ifndef SRC_WITHPOINTS_SRC_WITHPOINTS_DRIVER_H_
+#define SRC_WITHPOINTS_SRC_WITHPOINTS_DRIVER_H_
 
 #include "./../../common/src/pgr_types.h"
 
@@ -51,17 +35,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-// see details for definition in the function1_driver.cpp
-int  do_pgr_dijkstra_via_vertices(
-	pgr_edge_t  *data_edges, int64_t total_tuples,
-        int64_t  *via_vertices, int v_len,
-        bool directedFlag,
-	// return values
-        pgr_path_element3_t **ret_path, int *path_count,
+//  CREATE OR REPLACE FUNCTION pgr_withPoint(edges_sql TEXT, points_sql TEXT, start_pid BIGINT, end_pid BIGINT, directed BOOLEAN DEFAULT true, strict BOOLEAN default false, U_turn_on_edge BOOLEAN default true
+void
+do_pgr_withPoints(
+        pgr_edge_t  *data_edges,
+        size_t total_tuples,
+        int64_t start_vid,
+        int64_t  *end_vidsArr,
+        int size_end_vidsArr,
+        bool directed,
+        General_path_element_t **return_tuples,
+        size_t *return_count,
         char ** err_msg);
+
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif   // SRC_TEMPLATE_SRC_DIJKSTRAVIAVERTICES_DRIVER_H_
+#endif  // SRC_WITHPOINTS_SRC_WITHPOINTS_DRIVER_H_

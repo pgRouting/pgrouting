@@ -2,12 +2,12 @@
 
 
 #dont put pgr_ on MY_FUNCTION_NAME that is done automatically
-MY_FUNCTION_NAME="turnRestricted"
+MY_FUNCTION_NAME="withPoints"
 DEVELOPER_NAME="Celia Virginia Vergara Castillo"
 DEVELOPER_EMAIL="vicky_vergara@hotmail.com" 
 YEAR="2015"
 
-MY_QUERY_LINE1="CREATE OR REPLACE FUNCTION pgr_turnRestriction(edges_sql TEXT, start_vid BIGINT, end_vid BIGINT, restrictions_sql TEXT DEFAULT 'No restrictions', directed BOOLEAN DEFAULT true,"
+MY_QUERY_LINE1="CREATE OR REPLACE FUNCTION pgr_withPoint(edges_sql TEXT, points_sql TEXT, start_pid BIGINT, end_pid BIGINT, directed BOOLEAN DEFAULT true, strict BOOLEAN default false, U_turn_on_edge BOOLEAN default true"
 MY_QUERY_LINE2="OUT seq BIGINT, OUT path_seq, OUT node BIGINT, OUT edge BIGINT, OUT cost FLOAT, OUT agg_cost FLOAT)"
 
 

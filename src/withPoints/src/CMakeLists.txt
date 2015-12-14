@@ -1,5 +1,3 @@
-ADD_LIBRARY(
-    withPoints OBJECT 
-    withPoints.c 
-    withPoints.cpp 
-)
+ADD_LIBRARY(withPoints OBJECT 
+                            withPoints.c 
+                            withPoints_driver.cpp)

@@ -88,7 +88,6 @@ BEGIN;
     SELECT set_eq('q21','q22','3: Directed: without retrictions returns the same as pgr_dijkstra');
     SELECT set_eq('q31','q32','4: Directed: with retrictions returns expected path');
 
-    -- Finish the tests and clean up.
 
 
 

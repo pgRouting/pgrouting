@@ -148,8 +148,77 @@ class Pgr_base_graph {
      //! @name Graph Modification
      //@{
      //! Used for storing the removed_edges
-     std::deque<pgr_edge_t> removed_edges;
+     std::deque<boost_edge_t> removed_edges;
+
+     //! Used for storing modified edges because of adding points
+     // TODO
+#if 0
+     std::deque<boost_edge_t> modified_edges;
+     std::deque< Point_on_edge > points;
+     // map to get wich boost edge was modified
+     std::map < int64_t, int64_t >;
+#endif
      //@}
+
+#if 0
+     void add_point(Point_on_edge &point, int driving) {
+         // we have:
+         // point.point_id
+         // point.edge_id
+         // point.fraction
+         // Look for the edge in modified edges
+         //
+         // Driving: 0: doesnt matter (both), 1) right, 2) left
+         bool found = false;
+         int64_t edge_to_modify = 0;
+         for (const auto &edge : modified_edges) {
+             if (point.edge_id == edge.id) {
+                 found = true;
+                 break;
+             }
+             ++edge_to_modify;
+         }
+
+         //was not there so look for it in the graph
+         if (!found) {
+             E_i edge_ptr, edges_end;
+             for (boost::tie(edge_ptr, edges_end) = edges(graph);
+                     edge_ptr != edges_end; ++edge_ptr) {
+                 if (point.edge_id == edge_ptr->id) {
+                     modified_edges.push_back(*edge_ptr);
+                     boost::remove_edge(edge_ptr, graph);
+                     //delete the edge from the graph
+                     found = true;
+                     break;
+                 }
+             }
+         }
+
+         // add the point
+         int64_t vertex_id = -(points.size() + 1);
+         point.vertex_id = vertex_id;
+         points.push_back(point);
+
+         // add the vertex
+         LI vm_s;
+         vm_s = vertices_map.find(vertex_id);
+         if (vm_s == vertices_map.end()) {
+             vertices_map[vertex_id]=  m_num_vertices;
+             gVertices_map[m_num_vertices++] = vertex_id;
+             vm_s = vertices_map.find(vertex_id);
+         }
+
+         if (!found) {
+             // the vertex remains disconnected
+             // because the edge was not found
+             return;
+         }
+         
+     }
+#endif
+
+
+
 
 
      //! @name The Graph
@@ -190,7 +259,7 @@ class Pgr_base_graph {
      void disconnect_edge(int64_t p_from, int64_t p_to) {
          V g_from;
          V g_to;
-         pgr_edge_t d_edge;
+         boost_edge_t d_edge;
          // nothing to do, the vertex doesnt exist
          if (!get_gVertex(p_from, g_from)) return;
          if (!get_gVertex(p_to, g_to)) return;
@@ -203,7 +272,7 @@ class Pgr_base_graph {
                  d_edge.source = graph[source(*out, graph)].id;
                  d_edge.target = graph[target(*out, graph)].id;
                  d_edge.cost = graph[*out].cost;
-                 d_edge.reverse_cost = -1;
+                 //        d_edge.reverse_cost = -1;
                  removed_edges.push_back(d_edge);
              }
          }
@@ -219,8 +288,8 @@ class Pgr_base_graph {
        \returns 0: The out degree of a vertex that its not in the graph
 
        @param [IN] *vertex_id* original vertex id
-     */
-       
+       */
+
 
      degree_size_type out_degree(int64_t vertex_id) const{
          V v_from;
@@ -234,7 +303,7 @@ class Pgr_base_graph {
          return boost::out_degree(v, graph);
      }
      //@}
-     
+
 
      //! \brief Disconnects the outgoing edges with a particular original id from a vertex
      /*!
@@ -247,7 +316,7 @@ class Pgr_base_graph {
        */
      void disconnect_out_going_edge(int64_t vertex_id, int64_t edge_id) {
          V v_from;
-         pgr_edge_t d_edge;
+         boost_edge_t d_edge;
 
          // nothing to do, the vertex doesnt exist
          if (!get_gVertex(vertex_id, v_from)) {
@@ -266,7 +335,7 @@ class Pgr_base_graph {
                      d_edge.source = graph[source(*out, graph)].id;
                      d_edge.target = graph[target(*out, graph)].id;
                      d_edge.cost = graph[*out].cost;
-                     d_edge.reverse_cost = -1;
+                     //        d_edge.reverse_cost = -1;
                      removed_edges.push_back(d_edge);
                      boost::remove_edge((*out), graph);
                      change = true;
@@ -294,7 +363,7 @@ class Pgr_base_graph {
        */
      void disconnect_vertex(int64_t p_vertex) {
          V g_vertex;
-         pgr_edge_t d_edge;
+         boost_edge_t d_edge;
          // nothing to do, the vertex doesnt exist
          if (!get_gVertex(p_vertex, g_vertex)) return;
          EO_i out, out_end;
@@ -305,7 +374,7 @@ class Pgr_base_graph {
              d_edge.source = graph[source(*out, graph)].id;
              d_edge.target = graph[target(*out, graph)].id;
              d_edge.cost = graph[*out].cost;
-             d_edge.reverse_cost = -1;
+             //        d_edge.reverse_cost = -1;
              removed_edges.push_back(d_edge);
          }
 
@@ -318,7 +387,7 @@ class Pgr_base_graph {
                  d_edge.source = graph[source(*in, graph)].id;
                  d_edge.target = graph[target(*in, graph)].id;
                  d_edge.cost = graph[*in].cost;
-                 d_edge.reverse_cost = -1;
+                 //           d_edge.reverse_cost = -1;
                  removed_edges.push_back(d_edge);
              }
          }
@@ -411,6 +480,38 @@ class Pgr_base_graph {
      }
 
  private:
+
+
+     void
+         graph_add_edge(const boost_edge_t &edge ) {
+             bool inserted;
+             LI vm_s, vm_t;
+             E e;
+
+             vm_s = vertices_map.find(edge.source);
+             if (vm_s == vertices_map.end()) {
+                 vertices_map[edge.source]=  m_num_vertices;
+                 gVertices_map[m_num_vertices++] = edge.source;
+                 vm_s = vertices_map.find(edge.source);
+             }
+
+             vm_t = vertices_map.find(edge.target);
+             if (vm_t == vertices_map.end()) {
+                 vertices_map[edge.target]=  m_num_vertices;
+                 gVertices_map[m_num_vertices++] = edge.target;
+                 vm_t = vertices_map.find(edge.target);
+             }
+
+             if (edge.cost >= 0) {
+                 boost::tie(e, inserted) =
+                     boost::add_edge(vm_s->second, vm_t->second, graph);
+                 graph[e].cost = edge.cost;
+                 graph[e].id = edge.id;
+                 graph[e].first = edge.first;
+             }
+
+         }
+
      void
          graph_add_edge(const pgr_edge_t &edge ) {
              bool inserted;
@@ -436,6 +537,7 @@ class Pgr_base_graph {
                      boost::add_edge(vm_s->second, vm_t->second, graph);
                  graph[e].cost = edge.cost;
                  graph[e].id = edge.id;
+                 graph[e].first = true;
              }
 
              if (edge.reverse_cost >= 0) {
@@ -443,6 +545,7 @@ class Pgr_base_graph {
                      boost::add_edge(vm_t->second, vm_s->second, graph);
                  graph[e].cost = edge.reverse_cost;
                  graph[e].id = edge.id;
+                 graph[e].first = false;
              }
          }
 };
