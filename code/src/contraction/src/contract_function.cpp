@@ -12,7 +12,7 @@ int compute_contracted_graph(Edge *edges,int num_vertices,int num_edges,int leve
 {
 	int final_edge_count=0;
 	typedef Graph_Minimizer<G> Graph;
-	Graph g(DIRECTED,num_vertices);
+	Graph g(UNDIRECTED,num_vertices);
 	g.initialize_graph(edges,num_edges);
 	g.contract_to_level(level);
 	final_edge_count=g.getreducedGraph(final_edges);

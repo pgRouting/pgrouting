@@ -11,6 +11,10 @@
 #endif
 #include "utils/builtins.h"
 
+#ifdef PG_MODULE_MAGIC
+PG_MODULE_MAGIC;
+#endif
+
 Datum contract_graph(PG_FUNCTION_ARGS);
 
 
@@ -38,6 +42,8 @@ contract_graph(PG_FUNCTION_ARGS) {
 		final_num_edges=initial_num_edges;
 		level=PG_GETARG_INT64(1);
 		elog(INFO, "INITIAL EDGE COUNT: %d", initial_num_edges);
+		elog(INFO, "INITIAL VERTEX COUNT: %d", num_vertices);
+		elog(INFO, "LEVEL: %d", level);
 		//prints the path if the number of edges > 0
 		if (initial_num_edges>0)
 		{

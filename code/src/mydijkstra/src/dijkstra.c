@@ -10,9 +10,8 @@
 #include "access/htup_details.h"
 #endif
 #include "utils/builtins.h"
-#ifdef PG_MODULE_MAGIC
-PG_MODULE_MAGIC;
-#endif
+
+
 
 Datum shortest_path(PG_FUNCTION_ARGS);
 
@@ -40,6 +39,7 @@ shortest_path(PG_FUNCTION_ARGS) {
 		num_edges=fetch_data(text2char(PG_GETARG_TEXT_P(0)),&edges,&num_vertices);
 		int source=PG_GETARG_INT64(1),target=PG_GETARG_INT64(2);
 		elog(INFO, "EDGE COUNT: %d", num_edges);
+		elog(INFO, "VERTEX COUNT: %d", num_vertices);
 		//prints the path if the number of edges > 0
 		if (num_edges>0)
 		{

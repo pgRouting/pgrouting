@@ -50,7 +50,28 @@ public:
 	{
 		EO_i out,out_end;
 		V front=reduced_graph->degree_to_V_map[1].front();
-		while (reduced_graph->graph[front].degree==1)
+		std::vector<V> one_degree_vertices=reduced_graph->degree_to_V_map[1];
+		degree_to_V_i it;
+		/*for (it=1_degree_vertices.begin(); it!=1_degree_vertices.end(); ++it)
+        {
+           cout << *it << ", ";
+           for (boost::tie(out, out_end) = out_edges(*it, reduced_graph->graph);
+				out != out_end; ++out) 
+			{
+				V s=source(*out, reduced_graph->graph);
+				V t=target(*out, reduced_graph->graph);
+				reduced_graph->remove_vertex(s);
+				reduced_graph->degree_to_V_map[1].erase(reduced_graph->degree_to_V_map[1].begin(),
+				reduced_graph->degree_to_V_map[1].begin()+1);
+				reduced_graph->graph[t].contractions++;
+				int prev_target_degree=reduced_graph->graph[t].degree;
+				reduced_graph->graph[t].degree--;
+				int final_target_degree=prev_target_degree-1;
+				//reduced_graph->degree_to_V_map[final_target_degree].push_back(t);
+				removedVertices[t].push(s);
+			}
+        }*/
+		while (reduced_graph->degree_to_V_map[1].size()>0)
 		{
 			for (boost::tie(out, out_end) = out_edges(front, reduced_graph->graph);
 				out != out_end; ++out) 
@@ -59,16 +80,17 @@ public:
 				V t=target(*out, reduced_graph->graph);
 				reduced_graph->remove_vertex(s);
 				reduced_graph->degree_to_V_map[1].erase(reduced_graph->degree_to_V_map[1].begin(),
-					reduced_graph->degree_to_V_map[1].begin()+1);
+				reduced_graph->degree_to_V_map[1].begin()+1);
 				reduced_graph->graph[t].contractions++;
 				int prev_target_degree=reduced_graph->graph[t].degree;
 				reduced_graph->graph[t].degree--;
 				int final_target_degree=prev_target_degree-1;
-				reduced_graph->degree_to_V_map[final_target_degree].push_back(t);
+				//reduced_graph->degree_to_V_map[final_target_degree].push_back(t);
 				removedVertices[t].push(s);
 			}
 			front=reduced_graph->degree_to_V_map[1].front();
 		}
+
 	}
 
 	int getreducedGraph(Edge **reduced_list)
