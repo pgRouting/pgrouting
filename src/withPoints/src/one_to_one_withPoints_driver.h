@@ -1,7 +1,6 @@
 /*PGR-GNU*****************************************************************
-File: withPoints.sql
+File: withPoints_driver.h
 
-Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
@@ -27,26 +26,39 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/*
-ONE TO ONE
-*/
+#ifndef SRC_WITHPOINTS_SRC_WITHPOINTS_DRIVER_H_
+#define SRC_WITHPOINTS_SRC_WITHPOINTS_DRIVER_H_
 
-CREATE OR REPLACE FUNCTION pgr_withPoints(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pid BIGINT,
-    end_pid BIGINT,
-    driving_side CHAR DEFAULT 'r', -- 'r'/'l'/'b'/NULL
-    directed BOOLEAN DEFAULT true,
+#include "./../../common/src/pgr_types.h"
 
-    OUT seq BIGINT,
-    OUT path_seq BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-  RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_one_withPoints'
-    LANGUAGE c IMMUTABLE STRICT;
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+//  CREATE OR REPLACE FUNCTION pgr_withPoint(
+//  edges_sql TEXT,
+//  points_sql TEXT,
+//  start_pid BIGINT,
+//  end_pid BIGINT,
+//  directed BOOLEAN DEFAULT true,
+void
+do_pgr_withPoints(
+        pgr_edge_t  *edges,
+        size_t total_edges,
+        Point_on_edge_t  *points,
+        size_t total_points,
+        pgr_edge_t  *edges_of_points,
+        size_t total_edges_of_points,
+        int64_t start_pid,
+        int64_t end_pid,
+        bool directed,
+        General_path_element_t **return_tuples,
+        size_t *return_count,
+        char ** err_msg);
 
 
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // SRC_WITHPOINTS_SRC_WITHPOINTS_DRIVER_H_

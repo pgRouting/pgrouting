@@ -110,11 +110,11 @@ typedef struct
 Restrict_t;
 
 typedef struct {
-    int64_t point_id;
+    int64_t pid;
     int64_t edge_id;
-    bool right;  // true when the point is on the right of the edge
+    char side;  // 'r', 'l', 'b' (default is both)
     float8 fraction;
-    int64_t vertex_id; // number is negative
+    int64_t vertex_id; // number is negative and is used for processing
 } Point_on_edge_t;
 
 

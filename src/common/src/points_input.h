@@ -1,13 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: withPoints.sql
+File: restrictions_input.h
 
-Generated with Template by:
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
-
-Function's developer: 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+vicky_vergara@hotmail.com
 
 ------
 
@@ -27,26 +22,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/*
-ONE TO ONE
-*/
+#ifndef SRC_COMMON_SRC_RESTRICTIONS_INPUT_H_
+#define SRC_COMMON_SRC_RESTRICTIONS_INPUT_H_
 
-CREATE OR REPLACE FUNCTION pgr_withPoints(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pid BIGINT,
-    end_pid BIGINT,
-    driving_side CHAR DEFAULT 'r', -- 'r'/'l'/'b'/NULL
-    directed BOOLEAN DEFAULT true,
+#include "./pgr_types.h"
 
-    OUT seq BIGINT,
-    OUT path_seq BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-  RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_one_withPoints'
-    LANGUAGE c IMMUTABLE STRICT;
+void pgr_get_points(
+        char *points_sql,        //!< \param [IN]  sql from where we get the data
+        Point_on_edge_t **points,  //!< \param [OUT]  retrieved points
+        int64_t *total_points);  //!< \param [OUT] total_points Total points retrived
 
+#endif  // SRC_COMMON_SRC_RESTRICTIONS_INPUT_H_
 
