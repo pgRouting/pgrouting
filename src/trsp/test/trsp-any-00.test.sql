@@ -38,10 +38,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
     SELECT plan(1);
+    UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
     PREPARE q1 AS
     SELECT seq, id1, id2, cost::TEXT FROM pgr_trsp(
-        'select eid as id, source::integer, target::integer, cost, reverse_cost from edges1',
+        'select id, source::integer, target::integer, cost, reverse_cost from edge_table',
         1,     -- edge_id for start
         0.5,   -- midpoint of edge
         6,     -- edge_id of route end
@@ -53,7 +54,7 @@ BEGIN;
 
     PREPARE q2 AS
     SELECT seq-1, node, edge, cost::TEXT FROM pgr_withPointsVia(
-        'select eid as id, source::integer, target::integer, cost, reverse_cost from edges1',
+        'select id, source::integer, target::integer, cost, reverse_cost from edge_table',
         ARRAY[1, 6],
         ARRAY[0.5, 0.5]) WHERE edge != -2;
 

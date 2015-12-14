@@ -133,8 +133,8 @@ SELECT seq, id1, id2, cost FROM pgr_dijkstra(
     11, 5, false, true);
 
 SELECT throws_ok('q50',
-    'P0001',
-    'Support for id, source, target columns only of type: integer. Support for Cost: double precision',
+    'XX000',
+    'Error, columns ''source'', ''target'' must be of type int4, ''cost'' must be of type float8',
     '10');
 
     -- Finish the tests and clean up.
