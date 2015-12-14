@@ -1,7 +1,7 @@
 #ifndef DIJKSTRA_FUNCTION_H_
 #define DIJKSTRA_FUNCTION_H_
 
-#include "../../common/structs.h"
+#include "../../common/src/structs.h"
 
 #ifdef __cplusplus
 extern "C" {

@@ -70,6 +70,8 @@ execute_process(
 #set(LIB_DIR "${MYROUTING_SOURCE_DIR}/lib")
 
 set(MYROUTING_INCLUDE_DIRECTORIES ${MYROUTING_SOURCE_DIR}/src/mydijkstra/src)
+set(MYROUTING_INCLUDE_DIRECTORIES ${MYROUTING_SOURCE_DIR}/src/contraction/src)
+set(MYROUTING_INCLUDE_DIRECTORIES ${MYROUTING_SOURCE_DIR}/src/common/src)
 
 #including these directories for the compiler
 include_directories(${MYROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
@@ -88,13 +90,18 @@ SET(PACKAGE_SQL_FILES "")
 SET(PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 
 
-add_library( myrouting_library ${LIBRARY_MODE_TARGET} $<TARGET_OBJECTS:mydijkstra>)
+add_library( myrouting_library 
+${LIBRARY_MODE_TARGET} 
+$<TARGET_OBJECTS:mydijkstra>
+$<TARGET_OBJECTS:contraction>
+$<TARGET_OBJECTS:common>
+)
 install(TARGETS myrouting_library DESTINATION ${LIB_DIR} )
 
 
 
 install(FILES
-    "${MYROUTING_SOURCE_DIR}/src/mydijkstra/sql/myrouting--0.0.0.sql"
+    "${MYROUTING_SOURCE_DIR}/lib/myrouting--0.0.0.sql"
    "${MYROUTING_SOURCE_DIR}/lib/myrouting.control"
     DESTINATION ${SHARE_DIR}/extension)
 

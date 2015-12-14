@@ -21,6 +21,11 @@ SET(CMAKE_MAKEFILE_DEPENDS
   "../cmake/MacroOptionalFindPackage.cmake"
   "../cmake/TargetDistclean.cmake"
   "../src/CMakeLists.txt"
+  "../src/common/CMakeLists.txt"
+  "../src/common/src/CMakeLists.txt"
+  "../src/contraction/CMakeLists.txt"
+  "../src/contraction/sql/CMakeLists.txt"
+  "../src/contraction/src/CMakeLists.txt"
   "../src/mydijkstra/CMakeLists.txt"
   "../src/mydijkstra/sql/CMakeLists.txt"
   "../src/mydijkstra/src/CMakeLists.txt"
@@ -55,6 +60,11 @@ SET(CMAKE_MAKEFILE_PRODUCTS
   "src/mydijkstra/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/mydijkstra/src/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/mydijkstra/sql/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/contraction/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/contraction/src/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/contraction/sql/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/common/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/common/src/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -62,4 +72,6 @@ SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/distclean.dir/DependInfo.cmake"
   "CMakeFiles/myrouting_library.dir/DependInfo.cmake"
   "src/mydijkstra/src/CMakeFiles/mydijkstra.dir/DependInfo.cmake"
+  "src/contraction/src/CMakeFiles/contraction.dir/DependInfo.cmake"
+  "src/common/src/CMakeFiles/common.dir/DependInfo.cmake"
   )

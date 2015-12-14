@@ -181,6 +181,32 @@ mydijkstra/fast:
 	$(MAKE) -f src/mydijkstra/src/CMakeFiles/mydijkstra.dir/build.make src/mydijkstra/src/CMakeFiles/mydijkstra.dir/build
 .PHONY : mydijkstra/fast
 
+#=============================================================================
+# Target rules for targets named contraction
+
+# Build rule for target.
+contraction: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 contraction
+.PHONY : contraction
+
+# fast build rule for target.
+contraction/fast:
+	$(MAKE) -f src/contraction/src/CMakeFiles/contraction.dir/build.make src/contraction/src/CMakeFiles/contraction.dir/build
+.PHONY : contraction/fast
+
+#=============================================================================
+# Target rules for targets named common
+
+# Build rule for target.
+common: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 common
+.PHONY : common
+
+# fast build rule for target.
+common/fast:
+	$(MAKE) -f src/common/src/CMakeFiles/common.dir/build.make src/common/src/CMakeFiles/common.dir/build
+.PHONY : common/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -196,6 +222,8 @@ help:
 	@echo "... myrouting_library"
 	@echo "... rebuild_cache"
 	@echo "... mydijkstra"
+	@echo "... contraction"
+	@echo "... common"
 .PHONY : help
 
 

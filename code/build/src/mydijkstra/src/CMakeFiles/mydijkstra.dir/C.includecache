@@ -6,27 +6,43 @@
 
 #IncludeRegexTransform: 
 
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/structs.h
-
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/connection.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/./connection.h
 postgres.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/postgres.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/./postgres.h
 executor/spi.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/executor/spi.h
-catalog/pg_type.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/catalog/pg_type.h
-utils/builtins.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/utils/builtins.h
-../../common/structs.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/./executor/spi.h
+utils/array.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/./utils/array.h
+./structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/././structs.h
+./connection.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/././connection.h
+
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/./structs.h
+
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/connection.h
+postgres.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/postgres.h
+executor/spi.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/executor/spi.h
+utils/array.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/utils/array.h
+./structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/./structs.h
+./connection.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/./connection.h
+
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/structs.h
 
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/dijkstra.c
 postgres.h
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/postgres.h
 executor/spi.h
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/executor/spi.h
-connection.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/connection.h
+../../common/src/connection.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/connection.h
+../../common/src/structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/structs.h
 dijkstra_function.h
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/dijkstra_function.h
 funcapi.h
@@ -41,8 +57,8 @@ utils/builtins.h
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/utils/builtins.h
 
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/dijkstra_function.h
-../../common/structs.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/structs.h
+../../common/src/structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/structs.h
 
 /usr/include/postgresql/9.3/server/access/attnum.h
 
@@ -363,6 +379,10 @@ utils/hsearch.h
 /usr/include/postgresql/9.3/server/tcop/dest.h
 executor/tuptable.h
 /usr/include/postgresql/9.3/server/tcop/executor/tuptable.h
+
+/usr/include/postgresql/9.3/server/utils/array.h
+fmgr.h
+/usr/include/postgresql/9.3/server/utils/fmgr.h
 
 /usr/include/postgresql/9.3/server/utils/builtins.h
 fmgr.h

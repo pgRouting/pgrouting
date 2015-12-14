@@ -1,6 +1,7 @@
 #include "postgres.h"
 #include "executor/spi.h"
-#include "connection.h"
+#include "../../common/src/connection.h"
+#include "../../common/src/structs.h"
 #include "dijkstra_function.h"
 #include "funcapi.h"
 #include "utils/lsyscache.h"
@@ -9,27 +10,19 @@
 #include "access/htup_details.h"
 #endif
 #include "utils/builtins.h"
-/*#ifdef PG_MODULE_MAGIC
+#ifdef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
-#endif*/
+#endif
 
 Datum shortest_path(PG_FUNCTION_ARGS);
 
-char *
-text2char(text *in)
-{
-  char *out = palloc(VARSIZE(in));
 
-  memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
-  out[VARSIZE(in) - VARHDRSZ] = '\0';
-  return out;
-}
 
 PG_FUNCTION_INFO_V1(shortest_path);
 Datum
 shortest_path(PG_FUNCTION_ARGS) {
 
- int SPIcode = 0;
+ //int SPIcode = 0;
 	Edge *edges=NULL;
 	Edge *path=NULL;
 	int num_edges,num_vertices,path_size=0;

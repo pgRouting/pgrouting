@@ -91,6 +91,8 @@ clean: CMakeFiles/distclean.dir/clean
 
 # All Build rule for target.
 CMakeFiles/myrouting_library.dir/all: src/mydijkstra/src/CMakeFiles/mydijkstra.dir/all
+CMakeFiles/myrouting_library.dir/all: src/contraction/src/CMakeFiles/contraction.dir/all
+CMakeFiles/myrouting_library.dir/all: src/common/src/CMakeFiles/common.dir/all
 	$(MAKE) -f CMakeFiles/myrouting_library.dir/build.make CMakeFiles/myrouting_library.dir/depend
 	$(MAKE) -f CMakeFiles/myrouting_library.dir/build.make CMakeFiles/myrouting_library.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 
@@ -103,7 +105,7 @@ all: CMakeFiles/myrouting_library.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/myrouting_library.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/myrouting_library.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 0
 .PHONY : CMakeFiles/myrouting_library.dir/rule
@@ -141,14 +143,20 @@ cmake/preinstall:
 
 # Convenience name for "all" pass in the directory.
 src/all: src/mydijkstra/all
+src/all: src/contraction/all
+src/all: src/common/all
 .PHONY : src/all
 
 # Convenience name for "clean" pass in the directory.
 src/clean: src/mydijkstra/clean
+src/clean: src/contraction/clean
+src/clean: src/common/clean
 .PHONY : src/clean
 
 # Convenience name for "preinstall" pass in the directory.
 src/preinstall: src/mydijkstra/preinstall
+src/preinstall: src/contraction/preinstall
+src/preinstall: src/common/preinstall
 .PHONY : src/preinstall
 
 #=============================================================================
@@ -191,7 +199,7 @@ src/mydijkstra/src/preinstall:
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/all:
 	$(MAKE) -f src/mydijkstra/src/CMakeFiles/mydijkstra.dir/build.make src/mydijkstra/src/CMakeFiles/mydijkstra.dir/depend
 	$(MAKE) -f src/mydijkstra/src/CMakeFiles/mydijkstra.dir/build.make src/mydijkstra/src/CMakeFiles/mydijkstra.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles  1 2
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles  4 5
 	@echo "Built target mydijkstra"
 .PHONY : src/mydijkstra/src/CMakeFiles/mydijkstra.dir/all
 
@@ -233,6 +241,154 @@ src/mydijkstra/sql/clean:
 # Convenience name for "preinstall" pass in the directory.
 src/mydijkstra/sql/preinstall:
 .PHONY : src/mydijkstra/sql/preinstall
+
+#=============================================================================
+# Directory level rules for directory src/contraction
+
+# Convenience name for "all" pass in the directory.
+src/contraction/all: src/contraction/src/all
+src/contraction/all: src/contraction/sql/all
+.PHONY : src/contraction/all
+
+# Convenience name for "clean" pass in the directory.
+src/contraction/clean: src/contraction/src/clean
+src/contraction/clean: src/contraction/sql/clean
+.PHONY : src/contraction/clean
+
+# Convenience name for "preinstall" pass in the directory.
+src/contraction/preinstall: src/contraction/src/preinstall
+src/contraction/preinstall: src/contraction/sql/preinstall
+.PHONY : src/contraction/preinstall
+
+#=============================================================================
+# Directory level rules for directory src/contraction/src
+
+# Convenience name for "all" pass in the directory.
+src/contraction/src/all: src/contraction/src/CMakeFiles/contraction.dir/all
+.PHONY : src/contraction/src/all
+
+# Convenience name for "clean" pass in the directory.
+src/contraction/src/clean: src/contraction/src/CMakeFiles/contraction.dir/clean
+.PHONY : src/contraction/src/clean
+
+# Convenience name for "preinstall" pass in the directory.
+src/contraction/src/preinstall:
+.PHONY : src/contraction/src/preinstall
+
+#=============================================================================
+# Target rules for target src/contraction/src/CMakeFiles/contraction.dir
+
+# All Build rule for target.
+src/contraction/src/CMakeFiles/contraction.dir/all:
+	$(MAKE) -f src/contraction/src/CMakeFiles/contraction.dir/build.make src/contraction/src/CMakeFiles/contraction.dir/depend
+	$(MAKE) -f src/contraction/src/CMakeFiles/contraction.dir/build.make src/contraction/src/CMakeFiles/contraction.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles  2 3
+	@echo "Built target contraction"
+.PHONY : src/contraction/src/CMakeFiles/contraction.dir/all
+
+# Include target in all.
+all: src/contraction/src/CMakeFiles/contraction.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+src/contraction/src/CMakeFiles/contraction.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 src/contraction/src/CMakeFiles/contraction.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 0
+.PHONY : src/contraction/src/CMakeFiles/contraction.dir/rule
+
+# Convenience name for target.
+contraction: src/contraction/src/CMakeFiles/contraction.dir/rule
+.PHONY : contraction
+
+# clean rule for target.
+src/contraction/src/CMakeFiles/contraction.dir/clean:
+	$(MAKE) -f src/contraction/src/CMakeFiles/contraction.dir/build.make src/contraction/src/CMakeFiles/contraction.dir/clean
+.PHONY : src/contraction/src/CMakeFiles/contraction.dir/clean
+
+# clean rule for target.
+clean: src/contraction/src/CMakeFiles/contraction.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory src/contraction/sql
+
+# Convenience name for "all" pass in the directory.
+src/contraction/sql/all:
+.PHONY : src/contraction/sql/all
+
+# Convenience name for "clean" pass in the directory.
+src/contraction/sql/clean:
+.PHONY : src/contraction/sql/clean
+
+# Convenience name for "preinstall" pass in the directory.
+src/contraction/sql/preinstall:
+.PHONY : src/contraction/sql/preinstall
+
+#=============================================================================
+# Directory level rules for directory src/common
+
+# Convenience name for "all" pass in the directory.
+src/common/all: src/common/src/all
+.PHONY : src/common/all
+
+# Convenience name for "clean" pass in the directory.
+src/common/clean: src/common/src/clean
+.PHONY : src/common/clean
+
+# Convenience name for "preinstall" pass in the directory.
+src/common/preinstall: src/common/src/preinstall
+.PHONY : src/common/preinstall
+
+#=============================================================================
+# Directory level rules for directory src/common/src
+
+# Convenience name for "all" pass in the directory.
+src/common/src/all: src/common/src/CMakeFiles/common.dir/all
+.PHONY : src/common/src/all
+
+# Convenience name for "clean" pass in the directory.
+src/common/src/clean: src/common/src/CMakeFiles/common.dir/clean
+.PHONY : src/common/src/clean
+
+# Convenience name for "preinstall" pass in the directory.
+src/common/src/preinstall:
+.PHONY : src/common/src/preinstall
+
+#=============================================================================
+# Target rules for target src/common/src/CMakeFiles/common.dir
+
+# All Build rule for target.
+src/common/src/CMakeFiles/common.dir/all:
+	$(MAKE) -f src/common/src/CMakeFiles/common.dir/build.make src/common/src/CMakeFiles/common.dir/depend
+	$(MAKE) -f src/common/src/CMakeFiles/common.dir/build.make src/common/src/CMakeFiles/common.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles  1
+	@echo "Built target common"
+.PHONY : src/common/src/CMakeFiles/common.dir/all
+
+# Include target in all.
+all: src/common/src/CMakeFiles/common.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+src/common/src/CMakeFiles/common.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 src/common/src/CMakeFiles/common.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 0
+.PHONY : src/common/src/CMakeFiles/common.dir/rule
+
+# Convenience name for target.
+common: src/common/src/CMakeFiles/common.dir/rule
+.PHONY : common
+
+# clean rule for target.
+src/common/src/CMakeFiles/common.dir/clean:
+	$(MAKE) -f src/common/src/CMakeFiles/common.dir/build.make src/common/src/CMakeFiles/common.dir/clean
+.PHONY : src/common/src/CMakeFiles/common.dir/clean
+
+# clean rule for target.
+clean: src/common/src/CMakeFiles/common.dir/clean
+.PHONY : clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

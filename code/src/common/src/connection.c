@@ -1,18 +1,10 @@
-#ifndef CONNECTION_H_
-#define CONNECTION_H_
+
 #include "postgres.h"
 #include "executor/spi.h"
 #include "catalog/pg_type.h"
 #include "utils/builtins.h"
-#include "../../common/structs.h"
-
-// ensures compatibility of binary modules between major versions
-#ifdef PG_MODULE_MAGIC
-PG_MODULE_MAGIC;
-#endif
-
-//declaring the function
-int get_data(char *sql, Edge **edges,int *count);
+#include "structs.h"
+#include "connection.h"
 #define TUPLIMIT 1000
 
 
@@ -27,6 +19,15 @@ int finish(int code, int ret)
   return ret;
 }
 
+char *
+text2char(text *in)
+{
+  char *out = palloc(VARSIZE(in));
+
+  memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
+  out[VARSIZE(in) - VARHDRSZ] = '\0';
+  return out;
+}
 
 static int64_t SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType) {
   Datum binval;
@@ -98,7 +99,7 @@ static int fetch_column_info(
 Functions for pgr_foo with sql:
  id, source, target, cost, revcost(optional) 
 ************/
-static int fetch_edge_columns(int (*edge_columns)[5],int (*edge_types)[5], bool has_rcost) 
+ int fetch_edge_columns(int (*edge_columns)[5],int (*edge_types)[5], bool has_rcost) 
 {
 
   int error;
@@ -118,6 +119,7 @@ static int fetch_edge_columns(int (*edge_columns)[5],int (*edge_types)[5], bool 
  return 0;
 
 }
+
 void fetch_edge(
    HeapTuple *tuple,
    TupleDesc *tupdesc, 
@@ -160,8 +162,7 @@ fetch_data(char *sql, Edge **edges,int *count)
 
 
     // Connecting to SPI;
-        int SPIcode;
-        SPIcode = SPI_connect();
+        int SPIcode = SPI_connect();
         if (SPIcode  != SPI_OK_CONNECT) 
         {
           elog(ERROR, "Couldn't open a connection to SPI");
@@ -244,7 +245,7 @@ SPI_freetuptable(tuptable);
 }
 
 
-#if 0
+/*#if 0
   if (!sourceFound) {
       // elog(NOTICE, "Starting Vertex does not exist in the data");
       return 0;
@@ -253,7 +254,7 @@ SPI_freetuptable(tuptable);
       // elog(NOTICE, "Ending Vertex does not exist in the data");
       return 0;
   }
-#endif
+#endif*/
   if (total_tuples == 1) {
     // for some reason it needs at least a second edge for boost.graph to work
     // makeing a simple test and asking boost people
@@ -285,4 +286,3 @@ int add_one(int a)
 {
     return a+1;
 }
-#endif

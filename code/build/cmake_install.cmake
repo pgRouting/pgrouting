@@ -66,7 +66,7 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   ENDIF (CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
 FILE(INSTALL DESTINATION "/usr/share/postgresql/9.3/extension" TYPE FILE FILES
-    "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/sql/myrouting--0.0.0.sql"
+    "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/lib/myrouting--0.0.0.sql"
     "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/lib/myrouting.control"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")

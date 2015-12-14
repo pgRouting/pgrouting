@@ -58,10 +58,16 @@ myrouting_library_OBJECTS =
 # External object files for target myrouting_library
 myrouting_library_EXTERNAL_OBJECTS = \
 "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o" \
-"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o"
+"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o" \
+"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/contraction/src/CMakeFiles/contraction.dir/contraction.c.o" \
+"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o" \
+"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/common/src/CMakeFiles/common.dir/connection.c.o"
 
 libmyrouting_library.so: src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o
 libmyrouting_library.so: src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o
+libmyrouting_library.so: src/contraction/src/CMakeFiles/contraction.dir/contraction.c.o
+libmyrouting_library.so: src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o
+libmyrouting_library.so: src/common/src/CMakeFiles/common.dir/connection.c.o
 libmyrouting_library.so: CMakeFiles/myrouting_library.dir/build.make
 libmyrouting_library.so: CMakeFiles/myrouting_library.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX shared library libmyrouting_library.so"

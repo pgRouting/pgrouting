@@ -11,8 +11,8 @@
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
-#include "../../common/myGraph.hpp"
-#include "../../common/structs.h"
+#include "../../common/src/myGraph.hpp"
+#include "../../common/src/structs.h"
 using namespace std;
 using namespace boost;
 template < class G >
@@ -27,6 +27,8 @@ public:
 	}
 	typedef typename boost::graph_traits < G >::vertex_descriptor V;
 	typedef typename boost::graph_traits < G >::edge_descriptor E;
+	typedef typename boost::graph_traits < G >::vertex_iterator V_i;
+
   //typedef typename std::map<V,E> removed_edges;
 	typedef typename std::map<V,stack<V> > removed_vertices;
 	typedef typename std::map< int64_t, std::vector<V> > degree_to_V;
@@ -69,6 +71,38 @@ public:
 		}
 	}
 
+	int getreducedGraph(Edge **reduced_list)
+	{
+		int reduced_size=(int)num_edges(reduced_graph->graph);
+		*reduced_list=(Edge *)malloc(sizeof(Edge)*reduced_size);
+		V_i vi;
+		EO_i out,out_end;
+		int count=0;
+		for (vi = vertices(reduced_graph->graph).first; vi != vertices(reduced_graph->graph).second; ++vi) {
+			for (boost::tie(out, out_end) = out_edges(*vi, reduced_graph->graph);
+				out != out_end; ++out) {
+				(*reduced_list)[count].id=reduced_graph->graph[*out].id;
+			(*reduced_list)[count].source=reduced_graph->graph[source(*out, reduced_graph->graph)].id;
+			(*reduced_list)[count].target=reduced_graph->graph[target(*out, reduced_graph->graph)].id;
+			(*reduced_list)[count].cost=reduced_graph->graph[*out].cost;
+			count++;
+		}
+	}
+	return count;
+}
+
+void contract_to_level(int level)
+{
+	switch(level)
+	{
+		case 0 :
+		this->remove_1_degree_vertices(); 
+		break;
+		default :
+		//	do nothing;
+		break;
+	}
+}
 
 };
 #endif
