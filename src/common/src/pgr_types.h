@@ -115,7 +115,7 @@ typedef struct {
     bool right;  // true when the point is on the right of the edge
     float8 fraction;
     int64_t vertex_id; // number is negative
-} Point_on_edge;
+} Point_on_edge_t;
 
 
 struct boost_vertex_t {

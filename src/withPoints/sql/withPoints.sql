@@ -27,10 +27,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_withPoint(edges_sql TEXT, points_sql TEXT, start_pid BIGINT, end_pid BIGINT, directed BOOLEAN DEFAULT true, strict BOOLEAN default false, U_turn_on_edge BOOLEAN default true
-  OUT seq BIGINT, OUT path_seq, OUT node BIGINT, OUT edge BIGINT, OUT cost FLOAT, OUT agg_cost FLOAT)
+/*
+ONE TO ONE
+*/
+
+CREATE OR REPLACE FUNCTION pgr_withPoints(
+    edges_sql TEXT,
+    points_sql TEXT,
+    start_pid BIGINT,
+    end_pid BIGINT,
+    directed BOOLEAN DEFAULT true,
+
+    OUT seq BIGINT,
+    OUT path_seq BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
   RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'withPoints'
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_one_withPoints'
     LANGUAGE c IMMUTABLE STRICT;
 
 

@@ -1,3 +1,3 @@
 ADD_LIBRARY(withPoints OBJECT 
-                            withPoints.c 
-                            withPoints_driver.cpp)
+                            one_to_one_withPoints.c 
+                            one_to_one_withPoints_driver.cpp)
