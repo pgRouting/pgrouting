@@ -45,6 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
+#include "./../../common/src/points_input.h"
 #include "./one_to_one_withPoints_driver.h"
 
 PG_FUNCTION_INFO_V1(one_to_one_withPoints);
@@ -81,11 +82,12 @@ process(
     PGR_DBG("load the points");
     Point_on_edge_t *points = NULL;
     int64_t total_points = 0;
+    pgr_get_points(points_sql, &points, &total_points);
 
 #ifdef DEBUG
     int i = 0;
     for (i = 0; i < total_points; i ++) {
-       PGR_DBG("%ld\t%ld\t%f\t%d",points[i].pid, points[i].edge_id, points[i].fraction, points[i].side);
+       PGR_DBG("%ld\t%ld\t%f\t%c",points[i].pid, points[i].edge_id, points[i].fraction, points[i].side);
     }
 #endif
 

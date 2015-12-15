@@ -48,7 +48,10 @@ pgr_fetch_column_info(
 void pgr_check_any_integer_type(char* colName, int type);
 void pgr_check_any_numerical_type(char* colName, int type);
 void pgr_check_text_type(char* colName, int type);
+void pgr_check_char_type(char* colName, int type);
 
+char
+pgr_SPI_getChar(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType, bool strict, char default_value);
 int64_t pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType);
 float8 pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType);
 char* pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType);
@@ -93,7 +96,8 @@ pgr_select_bigint(
         int64 **columnValues,
         size_t *totalTuples);
 
-char * pgr_text2char(text *in);
+char* pgr_text2char(text *in);
+char* pgr_stradd(const char *a, const char *b);
 
 
 

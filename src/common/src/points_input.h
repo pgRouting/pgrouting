@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_COMMON_SRC_RESTRICTIONS_INPUT_H_
-#define SRC_COMMON_SRC_RESTRICTIONS_INPUT_H_
+#ifndef SRC_COMMON_SRC_POINTS_INPUT_H_
+#define SRC_COMMON_SRC_POINTS_INPUT_H_
 
 #include "./pgr_types.h"
 
@@ -32,5 +32,5 @@ void pgr_get_points(
         Point_on_edge_t **points,  //!< \param [OUT]  retrieved points
         int64_t *total_points);  //!< \param [OUT] total_points Total points retrived
 
-#endif  // SRC_COMMON_SRC_RESTRICTIONS_INPUT_H_
+#endif  // SRC_COMMON_SRC_POINTS_INPUT_H_
 

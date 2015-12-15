@@ -33,11 +33,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_findClosestEdge(
     edges_sql text,
     point_geom geometry,
-    tolerance float8 DEFAULT 0,
+    tolerance float8,
 
     OUT edge_id BIGINT,
     OUT fraction FLOAT,
-    OUT right_side BOOLEAN)
+    OUT side CHAR)
     returns SETOF RECORD AS
 $body$
 DECLARE
@@ -85,7 +85,9 @@ BEGIN
         (ST_length(ST_GeometryN(st_split(line, blade),1))/ST_length(line))::FLOAT AS fraction,
         (line << ' || quote_literal(point_geom::TEXT) || '::geometry) as rightSide
         FROM third_q)
-    SELECT id::BIGINT, fraction::FLOAT, rightSide::BOOLEAN FROM dump_values';
+    SELECT id::BIGINT,
+           fraction::FLOAT,
+           (CASE WHEN rightSide THEN ''r'' ELSE ''l'' END)::char FROM dump_values';
 
     RETURN query EXECUTE sql;
 

@@ -35,42 +35,81 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "postgres_connection.h"
 #include "points_input.h"
 
+static
+bool
+column_found(int colNumber) {
+    return !(colNumber == SPI_ERROR_NOATTRIBUTE);
+}
+
+static
+bool
+fetch_column_info(
+        int *colNumber,
+        int *coltype,
+        char *colName,
+        bool strict) {
+    PGR_DBG("Fetching column info of %s", colName);
+    (*colNumber) =  SPI_fnumber(SPI_tuptable->tupdesc, colName);
+    if (strict && !column_found(*colNumber)) {
+        elog(ERROR, "Column '%s' not Found", colName);
+    }
+    if (column_found(*colNumber)) {
+        (*coltype) = SPI_gettypeid(SPI_tuptable->tupdesc, (*colNumber));
+        if (SPI_result == SPI_ERROR_NOATTRIBUTE) {
+            elog(ERROR, "Type of column '%s' not Found", colName);
+        }
+        PGR_DBG("Column found");
+        return true;
+    }
+    PGR_DBG("Column not found");
+    return false;
+}
 
 
 
 static
 void fetch_points_column_info(
-     int (*columns)[4], 
-     int (*types)[4]) { 
+        int columns[4], 
+        int types[4]) { 
 
-  PGR_DBG("Entering Fetch_points_column_info\n");
+    PGR_DBG("Entering Fetch_points_column_info\n");
 
-  pgr_fetch_column_info(&(*columns)[0], &(*types)[0], "pid");
-  pgr_check_any_integer_type("pid", (*types)[0]);
+    if (fetch_column_info(&columns[0], &types[0], "pid", false)) {
+        pgr_check_any_integer_type("pid", types[0]);
+    }
 
-  pgr_fetch_column_info(&(*columns)[0], &(*types)[0], "edge_id");
-  pgr_check_any_integer_type("edge_id", (*types)[0]);
+    fetch_column_info(&columns[1], &types[1], "edge_id", true);
+    pgr_check_any_integer_type("edge_id", types[1]);
 
-  pgr_fetch_column_info(&(*columns)[1], &(*types)[1], "fraction");
-  pgr_check_any_numerical_type("fraction", (*types)[1]);
+    fetch_column_info(&columns[2], &types[2], "fraction", true);
+    pgr_check_any_numerical_type("fraction", types[2]);
 
-  pgr_fetch_column_info(&(*columns)[2], &(*types)[2], "side");
-  pgr_check_text_type("side", (*types)[2]);
-
+    if (fetch_column_info(&columns[3], &types[3], "side", false)) {
+        pgr_check_char_type("side", types[3]);
+    }
 }
 
 static
 void fetch_point(
-   HeapTuple *tuple,
-   TupleDesc *tupdesc, 
-   int (*columns)[4],
-   int (*types)[4],
-   Point_on_edge_t *point) {
-
-  point->pid = pgr_SPI_getBigInt(tuple, tupdesc, (*columns)[0], (*types)[0]);
-  point->edge_id = pgr_SPI_getBigInt(tuple, tupdesc, (*columns)[1], (*types)[1]);
-  point->fraction = pgr_SPI_getFloat8(tuple, tupdesc, (*columns)[2], (*types)[2]);
-  point->side = (char)pgr_SPI_getBigInt(tuple, tupdesc, (*columns)[3], (*types)[3]);
+        HeapTuple *tuple,
+        TupleDesc *tupdesc, 
+        int columns[4],
+        int types[4],
+        int64_t default_pid,
+        char default_side,
+        Point_on_edge_t *point) {
+    if (column_found(columns[0])) {
+        point->pid = pgr_SPI_getBigInt(tuple, tupdesc, columns[0], types[0]);
+    } else {
+        point->pid = default_pid;
+    }
+    point->edge_id = pgr_SPI_getBigInt(tuple, tupdesc, columns[1], types[1]);
+    point->fraction = pgr_SPI_getFloat8(tuple, tupdesc, columns[2], types[2]);
+    if (column_found(columns[3])) {
+        point->side = (char)pgr_SPI_getChar(tuple, tupdesc, columns[3], types[3], false, default_side);
+    } else {
+        point->side = default_side;
+    }
 
 }
 
@@ -82,79 +121,92 @@ pgr_get_points(
         Point_on_edge_t **points,
         int64_t *total_points) {
 
-  const int tuple_limit = 1000000;
+    const int tuple_limit = 1000000;
 
-  PGR_DBG("Entering pgr_get_restriction_data");
+    PGR_DBG("Entering pgr_get_get_points");
 
-  int64_t ntuples;
-  int64_t total_tuples;
+    int64_t ntuples;
+    int64_t total_tuples;
 
-  int columns[4];
-  int types[4];
-  int i;
-  for (i = 0; i < 4; ++i) columns[i] = -1;
-  for (i = 0; i < 4; ++i) types[i] = -1;
+    int columns[4];
+    int types[4];
+    int i;
+    for (i = 0; i < 4; ++i) columns[i] = -1;
+    for (i = 0; i < 4; ++i) types[i] = -1;
 
-        
-  void *SPIplan;
-  SPIplan = pgr_SPI_prepare(points_sql);
 
-  Portal SPIportal;
-  SPIportal = pgr_SPI_cursor_open(SPIplan);
+    void *SPIplan;
+    SPIplan = pgr_SPI_prepare(points_sql);
 
-  bool moredata = TRUE;
-  (*total_points) = total_tuples = 0;
+    Portal SPIportal;
+    SPIportal = pgr_SPI_cursor_open(SPIplan);
 
-  /*  on the first tuple get the column numbers */
+    bool moredata = TRUE;
+    (*total_points) = total_tuples = 0;
 
-  PGR_DBG("Starting Cycle");
-  while (moredata == TRUE) {
-      SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
-      if (total_tuples == 0)
-         fetch_points_column_info(&columns, &types);
+    int64_t default_pid = 0;
+    char default_side = 'b';
 
-      ntuples = SPI_processed;
-      total_tuples += ntuples;
+    PGR_DBG("Starting Cycle");
+    while (moredata == TRUE) {
+        SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
+        if (total_tuples == 0) {
+            /* on the first tuple get the column information */
+            fetch_points_column_info(columns, types);
+#ifdef DEBUG
+            int i;
+            PGR_DBG("i\tcolumns\types");
+            for (i = 0; i < 4; i++) {
+                PGR_DBG("i=%d\t%d\t%d", i, columns[i], types[i]);
+            }   
+#endif
 
-      if (ntuples > 0) {
-          PGR_DBG("Getting Memory");
-          if ((*points) == NULL)
-            (*points) = (Point_on_edge_t *)palloc0(total_tuples * sizeof(Point_on_edge_t));
-          else
-            (*points) = (Point_on_edge_t *)repalloc((*points), total_tuples * sizeof(Point_on_edge_t));
-          PGR_DBG("Got Memory");
+        }
 
-          if ((*points) == NULL) {
-           elog(ERROR, "Out of memory"); 
-          }
+        ntuples = SPI_processed;
+        total_tuples += ntuples;
 
-          int64_t t;
-          SPITupleTable *tuptable = SPI_tuptable;
-          TupleDesc tupdesc = SPI_tuptable->tupdesc;
-          PGR_DBG("processing %ld", ntuples);
-          for (t = 0; t < ntuples; t++) {
-              PGR_DBG("   processing %ld", t);
-              HeapTuple tuple = tuptable->vals[t];
-              fetch_point(&tuple, &tupdesc, &columns, &types,
-                         &(*points)[total_tuples - ntuples + t]);
-          }
-          SPI_freetuptable(tuptable);
-      } else {
-          moredata = FALSE;
-      }
-  }
+        if (ntuples > 0) {
+            PGR_DBG("Getting Memory");
+            if ((*points) == NULL)
+                (*points) = (Point_on_edge_t *)palloc0(total_tuples * sizeof(Point_on_edge_t));
+            else
+                (*points) = (Point_on_edge_t *)repalloc((*points), total_tuples * sizeof(Point_on_edge_t));
+            PGR_DBG("Got Memory");
 
-  if (total_tuples == 0) {
-    (*total_points) = 0;
-    PGR_DBG("NO points");
+            if ((*points) == NULL) {
+                elog(ERROR, "Out of memory"); 
+            }
+
+            int64_t t;
+            SPITupleTable *tuptable = SPI_tuptable;
+            TupleDesc tupdesc = SPI_tuptable->tupdesc;
+            PGR_DBG("processing total points:%ld", ntuples);
+            for (t = 0; t < ntuples; t++) {
+                PGR_DBG("   processing point #%ld", t);
+                HeapTuple tuple = tuptable->vals[t];
+                fetch_point(&tuple, &tupdesc,
+                        columns, types,
+                        default_pid, default_side,
+                        &(*points)[total_tuples - ntuples + t]);
+            }
+            SPI_freetuptable(tuptable);
+        } else {
+            moredata = FALSE;
+        }
+    }
+
+    if (total_tuples == 0) {
+        (*total_points) = 0;
+        PGR_DBG("NO points");
+        PGR_DBG("closed");
+        return;
+    }
+
+
+    (*total_points) = total_tuples;
+    PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*total_points));
     PGR_DBG("closed");
-    return;
-  }
-  
-
-  (*total_points) = total_tuples;
-  PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*total_points));
-  PGR_DBG("closed");
 }
 
 
