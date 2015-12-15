@@ -112,7 +112,7 @@ Functions for pgr_foo with sql:
   error = fetch_column_info(&(*edge_columns)[3], &(*edge_types)[3], "cost");
   if (error == -1) return error;
   if (has_rcost) {
-    error = fetch_column_info(&(*edge_columns)[4], &(*edge_types)[4], "reverse_cost");
+    error = fetch_column_info(&(*edge_columns)[4], &(*edge_types)[4], "revcost");
     if (error == -1) return error;
   }
 

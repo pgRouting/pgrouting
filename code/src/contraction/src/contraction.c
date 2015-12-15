@@ -10,7 +10,8 @@
 #include "access/htup_details.h"
 #endif
 #include "utils/builtins.h"
-
+#include <stdlib.h>
+#include <stdio.h>
 #ifdef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif
@@ -22,13 +23,15 @@ PG_FUNCTION_INFO_V1(contract_graph);
 Datum
 contract_graph(PG_FUNCTION_ARGS) {
 	// (query,level)
-	//int SPIcode = 0;
+	int SPIcode = 0;
 	Edge *edges=NULL,*final_edges=NULL;
 	int initial_num_edges,final_num_edges,num_vertices;
 	FuncCallContext *funcctx;
 	int call_cntr;
 	int max_calls;
 	int level;
+	FILE *fp;
+	fp=fopen("contracted_ways.txt","w+");
 	TupleDesc tuple_desc;
 	PathElement *ret_path = 0;
 	//first call of the function
@@ -41,11 +44,11 @@ contract_graph(PG_FUNCTION_ARGS) {
 		initial_num_edges=fetch_data(text2char(PG_GETARG_TEXT_P(0)),&edges,&num_vertices);
 		final_num_edges=initial_num_edges;
 		level=PG_GETARG_INT64(1);
-		num_vertices=17;
+		num_vertices=3000;
 		elog(INFO, "INITIAL EDGE COUNT: %d", initial_num_edges);
 		elog(INFO, "INITIAL VERTEX COUNT: %d", num_vertices);
 		elog(INFO, "LEVEL: %d", level);
-		//prints the path if the number of edges > 0
+		//prints the reduced number of edges > 0
 		if (initial_num_edges>0)
 		{
 			int i;
@@ -55,9 +58,13 @@ contract_graph(PG_FUNCTION_ARGS) {
 			elog(INFO,"id	|	source	|	target	|	cost	");
 			for (i = 0; i < final_num_edges; ++i)
 			{
+				fprintf(fp, "%d,%d,%d,%f\n"
+					,final_edges[i].id,final_edges[i].source,final_edges[i].target,final_edges[i].cost);
 				elog(INFO,"%d	|	%d	|	%d	|	%f"
 					,final_edges[i].id,final_edges[i].source,final_edges[i].target,final_edges[i].cost);
+
 			}
+			elog(INFO, "FINAL EDGE COUNT: %d", final_num_edges);
 				//printing it as a buffer
 	 			//elog(INFO, "EDGES: %s", buf);
 		}
@@ -65,7 +72,7 @@ contract_graph(PG_FUNCTION_ARGS) {
 		{
 			elog(INFO,"ERROR: %s","No tuples found.");
 		}
-
+		fclose(fp);
 		/* total number of tuples to be returned */
 		funcctx->max_calls = final_num_edges;
 		funcctx->user_fctx = final_edges;

@@ -1,7 +1,7 @@
-#include "graphMinimizer.hpp"
+#include "../graphMinimizer.hpp"
 #include <iostream>
 #include <boost/graph/adjacency_list.hpp>
-
+#include "./fetch.hpp"
 using namespace std;
 using namespace boost;
 typedef adjacency_list<vecS, vecS, undirectedS, Vertex,Edge> G;
@@ -33,7 +33,41 @@ int main(int argc, char const *argv[])
 	int num_edges=18;
 	int num_vertices=17;
 	edges=(Edge*)malloc(sizeof(Edge)*num_edges);
-	edges[0].id=0;
+	loadGraph("ways.txt",&edges);
+	//check(edges,num_vertices,num_edges);
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*edges[0].id=0;
 	edges[0].source=1;
 	edges[0].target=2;
 	edges[0].cost=0.625;
@@ -138,10 +172,6 @@ int main(int argc, char const *argv[])
 	edges[17].source=11;
 	edges[17].target=6;
 	edges[17].cost=4;
-	edges[17].revcost=-1;
+	edges[17].revcost=-1;*/
 	
 	
-	check(edges,num_vertices,num_edges);
-
-	return 0;
-}

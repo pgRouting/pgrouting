@@ -58,6 +58,7 @@ public:
   void insert_data(const Edge *data_edges, int64_t count) {
   	int64_t vcount=0;
     for (unsigned int i = 0; i < count; ++i) {
+      //cout << data_edges[i].source << ", " << data_edges[i].target << endl;
   		graph_add_edge(data_edges[i]);
   	}
     calculateDegrees();

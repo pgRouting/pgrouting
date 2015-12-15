@@ -90,8 +90,8 @@ clean: CMakeFiles/distclean.dir/clean
 # Target rules for target CMakeFiles/myrouting_library.dir
 
 # All Build rule for target.
-CMakeFiles/myrouting_library.dir/all: src/contraction/src/CMakeFiles/contraction.dir/all
 CMakeFiles/myrouting_library.dir/all: src/mydijkstra/src/CMakeFiles/mydijkstra.dir/all
+CMakeFiles/myrouting_library.dir/all: src/contraction/src/CMakeFiles/contraction.dir/all
 CMakeFiles/myrouting_library.dir/all: src/common/src/CMakeFiles/common.dir/all
 	$(MAKE) -f CMakeFiles/myrouting_library.dir/build.make CMakeFiles/myrouting_library.dir/depend
 	$(MAKE) -f CMakeFiles/myrouting_library.dir/build.make CMakeFiles/myrouting_library.dir/build
