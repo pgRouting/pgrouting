@@ -49,7 +49,7 @@ BEGIN;
         side = a.side
     FROM (SELECT pid, (pgr_findClosestEdge('SELECT id, the_geom FROM edge_table', the_geom, 1)).* FROM points) a WHERE (a.pid = points.pid);
 
-    SELECT * FROM points;
+--    SELECT * FROM points;
 
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
