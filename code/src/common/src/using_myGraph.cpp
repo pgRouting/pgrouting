@@ -3,12 +3,12 @@
 #include <boost/graph/adjacency_list.hpp>
 using namespace std;
 using namespace boost;
-typedef adjacency_list<vecS, vecS, bidirectionalS, Vertex,Edge> G;
+typedef adjacency_list<vecS, vecS, undirectedS, Vertex,Edge> G;
 int main(int argc, char const *argv[])
 {
 	/* code */
 	typedef My_base_graph<G> Graph;
-	Graph g(DIRECTED,3);
+	Graph g(UNDIRECTED,3);
 	Edge *edges=NULL;
 	edges=(Edge*)malloc(2*sizeof(Edge));
 	edges[0].id=0;
@@ -23,7 +23,7 @@ int main(int argc, char const *argv[])
 	edges[1].cost=4;
 	edges[1].revcost=-1;
 	g.insert_data(edges,2);
-	g.remove_vertex(0);
+	//g.remove_vertex(0);
 	g.print_graph();
 	return 0;
 }

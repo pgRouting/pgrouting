@@ -41,6 +41,7 @@ contract_graph(PG_FUNCTION_ARGS) {
 		initial_num_edges=fetch_data(text2char(PG_GETARG_TEXT_P(0)),&edges,&num_vertices);
 		final_num_edges=initial_num_edges;
 		level=PG_GETARG_INT64(1);
+		num_vertices=17;
 		elog(INFO, "INITIAL EDGE COUNT: %d", initial_num_edges);
 		elog(INFO, "INITIAL VERTEX COUNT: %d", num_vertices);
 		elog(INFO, "LEVEL: %d", level);
@@ -49,8 +50,9 @@ contract_graph(PG_FUNCTION_ARGS) {
 		{
 			int i;
 			final_num_edges=compute_contracted_graph(edges,num_vertices,initial_num_edges,level,&final_edges);
+			//final_edges=edges;
 			elog(INFO, "FINAL EDGE COUNT: %d", final_num_edges);
-			elog(INFO,"id	|	source	|	target	|	cost	|");
+			elog(INFO,"id	|	source	|	target	|	cost	");
 			for (i = 0; i < final_num_edges; ++i)
 			{
 				elog(INFO,"%d	|	%d	|	%d	|	%f"

@@ -52,35 +52,19 @@ public:
 		V front=reduced_graph->degree_to_V_map[1].front();
 		std::vector<V> one_degree_vertices=reduced_graph->degree_to_V_map[1];
 		degree_to_V_i it;
-		/*for (it=1_degree_vertices.begin(); it!=1_degree_vertices.end(); ++it)
-        {
-           cout << *it << ", ";
-           for (boost::tie(out, out_end) = out_edges(*it, reduced_graph->graph);
-				out != out_end; ++out) 
-			{
-				V s=source(*out, reduced_graph->graph);
-				V t=target(*out, reduced_graph->graph);
-				reduced_graph->remove_vertex(s);
-				reduced_graph->degree_to_V_map[1].erase(reduced_graph->degree_to_V_map[1].begin(),
-				reduced_graph->degree_to_V_map[1].begin()+1);
-				reduced_graph->graph[t].contractions++;
-				int prev_target_degree=reduced_graph->graph[t].degree;
-				reduced_graph->graph[t].degree--;
-				int final_target_degree=prev_target_degree-1;
-				//reduced_graph->degree_to_V_map[final_target_degree].push_back(t);
-				removedVertices[t].push(s);
-			}
-        }*/
 		while (reduced_graph->degree_to_V_map[1].size()>0)
 		{
+			cout << "Front " << reduced_graph->graph[front].id << endl;
 			for (boost::tie(out, out_end) = out_edges(front, reduced_graph->graph);
 				out != out_end; ++out) 
 			{
 				V s=source(*out, reduced_graph->graph);
 				V t=target(*out, reduced_graph->graph);
-				reduced_graph->remove_vertex(s);
-				reduced_graph->degree_to_V_map[1].erase(reduced_graph->degree_to_V_map[1].begin(),
-				reduced_graph->degree_to_V_map[1].begin()+1);
+				int source_id=reduced_graph->graph[s].id;
+				int target_id=reduced_graph->graph[t].id;
+				reduced_graph->remove_vertex(source_id);
+				//cout << "Removing " << source_id  << endl;
+				//cout << "Neighbor" << target_id << endl;
 				reduced_graph->graph[t].contractions++;
 				int prev_target_degree=reduced_graph->graph[t].degree;
 				reduced_graph->graph[t].degree--;
@@ -88,6 +72,8 @@ public:
 				//reduced_graph->degree_to_V_map[final_target_degree].push_back(t);
 				removedVertices[t].push(s);
 			}
+			reduced_graph->degree_to_V_map[1].erase(reduced_graph->degree_to_V_map[1].begin(),
+					reduced_graph->degree_to_V_map[1].begin()+1);
 			front=reduced_graph->degree_to_V_map[1].front();
 		}
 
@@ -96,35 +82,45 @@ public:
 	int getreducedGraph(Edge **reduced_list)
 	{
 		int reduced_size=(int)num_edges(reduced_graph->graph);
-		*reduced_list=(Edge *)malloc(sizeof(Edge)*reduced_size);
+		(*reduced_list)=(Edge *)malloc(sizeof(Edge)*reduced_size);
 		V_i vi;
 		EO_i out,out_end;
 		int count=0;
 		for (vi = vertices(reduced_graph->graph).first; vi != vertices(reduced_graph->graph).second; ++vi) {
 			for (boost::tie(out, out_end) = out_edges(*vi, reduced_graph->graph);
-				out != out_end; ++out) {
-				(*reduced_list)[count].id=reduced_graph->graph[*out].id;
-			(*reduced_list)[count].source=reduced_graph->graph[source(*out, reduced_graph->graph)].id;
-			(*reduced_list)[count].target=reduced_graph->graph[target(*out, reduced_graph->graph)].id;
-			(*reduced_list)[count].cost=reduced_graph->graph[*out].cost;
-			count++;
+				out != out_end; ++out)
+			{
+				V source_desc=source(*out, reduced_graph->graph);
+				V target_desc=target(*out, reduced_graph->graph);
+				int source_id=reduced_graph->graph[source_desc].id;
+				int target_id=reduced_graph->graph[target_desc].id;
+				
+				if (target_desc>source_desc)
+				{
+					(*reduced_list)[count].id=reduced_graph->graph[*out].id;
+					(*reduced_list)[count].source=source_id;
+					(*reduced_list)[count].target=target_id;
+					(*reduced_list)[count].cost=reduced_graph->graph[*out].cost;
+					count++;
+				}
+				
+			}
+		}
+		return count;
+	}
+
+	void contract_to_level(int level)
+	{
+		switch(level)
+		{
+			case 0 :
+			this->remove_1_degree_vertices(); 
+			break;
+			default :
+		//	do nothing;
+			break;
 		}
 	}
-	return count;
-}
-
-void contract_to_level(int level)
-{
-	switch(level)
-	{
-		case 0 :
-		this->remove_1_degree_vertices(); 
-		break;
-		default :
-		//	do nothing;
-		break;
-	}
-}
 
 };
 #endif

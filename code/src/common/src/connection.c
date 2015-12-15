@@ -112,7 +112,7 @@ Functions for pgr_foo with sql:
   error = fetch_column_info(&(*edge_columns)[3], &(*edge_types)[3], "cost");
   if (error == -1) return error;
   if (has_rcost) {
-    error = fetch_column_info(&(*edge_columns)[4], &(*edge_types)[4], "revcost");
+    error = fetch_column_info(&(*edge_columns)[4], &(*edge_types)[4], "reverse_cost");
     if (error == -1) return error;
   }
 
@@ -142,11 +142,11 @@ void fetch_edge(
     //      target_edge->id,  target_edge->source,  target_edge->target,  target_edge->cost,  target_edge->revcost);
 }
 
-int fetchVertexCount(char *sql,int *count)
+/*int fetchVertexCount(char *sql,int *count)
 {
   int edge_columns[1];
         int edge_types[1];
-        int i;
+        int i,t;
         for (i = 0; i < 1; ++i) edge_columns[i] = -1;
           for (i = 0; i < 1; ++i) edge_types[i] = -1;
 // Connecting to SPI;
@@ -179,7 +179,7 @@ int fetchVertexCount(char *sql,int *count)
   {
     SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
 
-            /*  on the first tuple get the column numbers */
+            // on the first tuple get the column numbers 
     if (edge_columns[0] == -1)
     {
             // Fetching column numbers
@@ -204,7 +204,7 @@ int fetchVertexCount(char *sql,int *count)
   }
 }
 
-}
+}*/
 int
 fetch_data(char *sql, Edge **edges,int *count)
 {
@@ -220,7 +220,7 @@ fetch_data(char *sql, Edge **edges,int *count)
 
 
         strcpy(vertex_query,"select count(*) from test_ways_vertices");
-        fetchVertexCount(vertex_query,count);
+        //fetchVertexCount(vertex_query,count);
         int edge_columns[5];
         int edge_types[5];
         int i;
