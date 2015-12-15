@@ -36,7 +36,8 @@ CREATE OR REPLACE FUNCTION pgr_withPoints(
     points_sql TEXT,
     start_pid BIGINT,
     end_pid BIGINT,
-    driving_side CHAR DEFAULT 'r', -- 'r'/'l'/'b'/NULL
+    driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
+    strict BOOLEAN DEFAULT false,
     directed BOOLEAN DEFAULT true,
 
     OUT seq BIGINT,

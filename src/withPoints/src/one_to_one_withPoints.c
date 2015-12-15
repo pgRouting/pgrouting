@@ -67,6 +67,7 @@ process(
         int64_t start_pid,
         int64_t end_pid,
         char driving_side,
+        bool strict,
         bool directed,
         General_path_element_t **result_tuples,
         size_t *result_count) {
@@ -91,42 +92,100 @@ process(
     }
 #endif
 
+    /*
+     * TODO move this code to c++
+     */
+    PGR_DBG("  -- change the query");
+    char *edges_of_points_query = NULL;
+    char *edges_no_points_query = NULL;
+    size_t  query_size_0 = 0;
+    size_t  query_size_1 = 0;
+    size_t  query_size_2 = 0;
+    char number[33];
+
+    if (strict) {
+        query_size_0 = strlen("WITH edges AS (") 
+            + strlen(edges_sql)
+            + strlen("), points AS (")
+            + strlen(points_sql)
+            + strlen(") strict AS (SELECT edge_id FROM points WHERE pid IN (")
+            + sprintf(number, "%ld",start_pid)
+            + 1
+            + sprintf(number, "%ld",end_pid)
+            + strlen("))");
+        query_size_1 = query_size_0 + strlen(" SELECT DISTINCT edges.* FROM edges JOIN strict ON (id = edge_id)"); 
+        query_size_2 = query_size_0 + strlen(" SELECT edges.* FROM edges WHERE NOT EXISTS (SELECT edge_id FROM strict WHERE id = edge_id)");
+
+        edges_of_points_query = (char*) malloc (query_size_1 + 1);
+        edges_no_points_query = (char*) malloc (query_size_2 + 1);
+
+        sprintf(edges_of_points_query, "WITH edges AS (%s), points AS (%s), strict AS (SELECT edge_id FROM points where pid in (%ld,%ld)) SELECT DISTINCT edges.* FROM edges JOIN strict ON (id = edge_id)",
+                edges_sql, points_sql,
+                start_pid, end_pid);
+        sprintf(edges_no_points_query, "WITH edges AS (%s), points AS (%s), strict AS (SELECT edge_id FROM points where pid in (%ld,%ld)) SELECT edges.* FROM edges WHERE NOT EXISTS (SELECT edge_id FROM strict WHERE id = edge_id)",
+                edges_sql, points_sql,
+                start_pid, end_pid);
+        PGR_DBG("STRICT QUERY 1 \n%s", edges_of_points_query);
+        PGR_DBG("STRICT QUERY 2 \n%s", edges_no_points_query);
+    } else {
+        query_size_0 = strlen("WITH edges AS (") 
+            + strlen(edges_sql) 
+            + strlen("), points AS (")
+            + strlen(points_sql)
+            + strlen(")");
+
+        query_size_1 = query_size_0 + strlen(" SELECT DISTINCT edges.* FROM edges JOIN points ON (id = edge_id)"); 
+        query_size_2 = query_size_0 + strlen(" SELECT edges.* FROM edges WHERE NOT EXISTS (SELECT edge_id FROM points WHERE id = edge_id)");
+
+        edges_of_points_query = (char*) malloc (query_size_1 + 1);
+        edges_no_points_query = (char*) malloc (query_size_2 + 1);
+
+        sprintf(edges_of_points_query, "WITH edges AS (%s), points AS (%s) SELECT DISTINCT edges.* FROM edges JOIN points ON (id = edge_id)", edges_sql, points_sql);
+        sprintf(edges_no_points_query, "WITH edges AS (%s), points AS (%s) SELECT edges.* FROM edges WHERE NOT EXISTS (SELECT edge_id FROM points WHERE id = edge_id)", edges_sql, points_sql);
+        PGR_DBG("ALL POINTS QUERY 1\n%s", edges_of_points_query);
+        PGR_DBG("ALL POINTS QUERY 2\n%s", edges_no_points_query);
+    }
+    /* finish code to modify */
+
     PGR_DBG("load the edges that match the points");
     pgr_edge_t *edges_of_points = NULL;
     int64_t total_edges_of_points = 0;
-    PGR_DBG("  -- change the query");
-    char *edges_of_points_query = NULL;
+    pgr_get_data_5_columns(edges_of_points_query, &edges_of_points, &total_edges_of_points);
+
+    PGR_DBG("Total %ld edges in query:", total_edges_of_points);
 #ifdef DEBUG
     for (i = 0; i < total_edges_of_points; i ++) {
-       PGR_DBG("%ld\t%ld\t%ld\t%f\t%f",
-               edges_of_points[i].id,
-               edges_of_points[i].source,
-               edges_of_points[i].target,
-               edges_of_points[i].cost,
-               edges_of_points[i].reverse_cost);
+        PGR_DBG("%ld\t%ld\t%ld\t%f\t%f",
+                edges_of_points[i].id,
+                edges_of_points[i].source,
+                edges_of_points[i].target,
+                edges_of_points[i].cost,
+                edges_of_points[i].reverse_cost);
     }
 #endif
 
-    PGR_DBG("load the edges that match the points");
-    PGR_DBG("Total %ld edges in query:", total_edges_of_points);
+
 
     PGR_DBG("load the edges that dont match the points");
     pgr_edge_t *edges = NULL;
     int64_t total_edges = 0;
-    PGR_DBG("  -- change the query");
-    char *edges_no_points = NULL;
-    pgr_get_data_5_columns(edges_sql, &edges, &total_edges);
+    pgr_get_data_5_columns(edges_no_points_query, &edges, &total_edges);
+
+    PGR_DBG("Total %ld edges in query:", total_edges);
 #ifdef DEBUG
     for (i = 0; i < total_edges; i ++) {
-       PGR_DBG("%ld\t%ld\t%ld\t%f\t%f",
-               edges[i].id,
-               edges[i].source,
-               edges[i].target,
-               edges[i].cost,
-               edges[i].reverse_cost);
+        PGR_DBG("%ld\t%ld\t%ld\t%f\t%f",
+                edges[i].id,
+                edges[i].source,
+                edges[i].target,
+                edges[i].cost,
+                edges[i].reverse_cost);
     }
 #endif
-    PGR_DBG("Total %ld edges in query:", total_edges);
+
+    PGR_DBG("freeing allocated memory not used anymore");
+    free(edges_of_points_query);
+    free(edges_no_points_query);
 
     if ( (total_edges + total_edges_of_points) == 0) {
         PGR_DBG("No edges found");
@@ -194,6 +253,7 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
         // start_pid BIGINT,
         // end_pid BIGINT,
         // driving_side CHAR DEFAULT 'b',
+        // strict BOOLEAN DEFAULT false,
         // directed BOOLEAN DEFAULT true,
 
         PGR_DBG("Calling process");
@@ -204,6 +264,7 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
                 PG_GETARG_INT64(3),
                 PG_GETARG_CHAR(4),
                 PG_GETARG_BOOL(5),
+                PG_GETARG_BOOL(6),
                 &result_tuples,
                 &result_count);
 
