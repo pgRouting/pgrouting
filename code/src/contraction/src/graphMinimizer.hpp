@@ -73,7 +73,7 @@ public:
 				removedVertices[t].push(s);
 			}
 			reduced_graph->degree_to_V_map[1].erase(reduced_graph->degree_to_V_map[1].begin(),
-					reduced_graph->degree_to_V_map[1].begin()+1);
+				reduced_graph->degree_to_V_map[1].begin()+1);
 			front=reduced_graph->degree_to_V_map[1].front();
 		}
 
@@ -83,12 +83,32 @@ public:
 	void remove_2_degree_vertices()
 	{
 		EO_i out,out_end;
-		V front=reduced_graph->degree_to_V_map[2].front();
-		std::vector<V> one_degree_vertices=reduced_graph->degree_to_V_map[2];
-		degree_to_V_i it;
-		while (reduced_graph->degree_to_V_map[2].size()>0)
+		
+		std::vector<V> two_degree_vertices=reduced_graph->degree_to_V_map[2];
+		std::vector<V> two_degree_vertices_0;
+		for (Q_i it = two_degree_vertices.begin() ; it != two_degree_vertices.end(); ++it)
 		{
+			if (reduced_graph->graph[*it].contractions==0)
+			{
+				cout << reduced_graph->graph[*it].id << endl;
+				two_degree_vertices_0.push_back(*it);
+			}
+		}
+		degree_to_V_i it;
+		if (two_degree_vertices_0.size()==0)
+		{
+			return;
+		}
+		V front=two_degree_vertices_0.front();
+		while (two_degree_vertices_0.size()>0)
+		{
+			//cout << "Edge count" << num_edges(reduced_graph->graph) << endl;
 			//cout << "Front " << reduced_graph->graph[front].id << endl;
+			
+			front=two_degree_vertices_0.front();
+			int count=0;
+			int tid1,tid2;
+			
 			for (boost::tie(out, out_end) = out_edges(front, reduced_graph->graph);
 				out != out_end; ++out) 
 			{
@@ -96,16 +116,34 @@ public:
 				V t=target(*out, reduced_graph->graph);
 				int source_id=reduced_graph->graph[s].id;
 				int target_id=reduced_graph->graph[t].id;
+
 				reduced_graph->remove_vertex(source_id);
 				//cout << "Removing " << source_id  << endl;
 				//cout << "Neighbor" << target_id << endl;
 				reduced_graph->graph[t].contractions++;
 				int prev_target_degree=reduced_graph->graph[t].degree;
 				removedVertices[t].push(s);
+				if (count==0)
+				{
+					tid1=target_id;
+					count++;
+				}
+				else
+				{
+					tid2=target_id;
+				}
 			}
-			reduced_graph->degree_to_V_map[2].erase(reduced_graph->degree_to_V_map[2].begin(),
-					reduced_graph->degree_to_V_map[2].begin()+1);
-			front=reduced_graph->degree_to_V_map[2].front();
+			Edge shortcut;
+			shortcut.id=num_edges(reduced_graph->graph)+10000;
+			shortcut.source=tid1;
+			shortcut.target=tid2;
+			shortcut.type=1;
+			reduced_graph->graph_add_edge(shortcut);
+				//reduced_graph->degree_to_V_map[2].erase(reduced_graph->degree_to_V_map[2].begin(),
+				//	reduced_graph->degree_to_V_map[2].begin()+1);
+			two_degree_vertices_0.erase(two_degree_vertices_0.begin(),
+				two_degree_vertices_0.begin()+1);
+
 		}
 	}
 
@@ -117,7 +155,7 @@ public:
 		if ((*reduced_list)==NULL)
 			(*reduced_list)=(Edge *)malloc(sizeof(Edge)*reduced_size);
 		else
-		(*reduced_list)=(Edge *)realloc((*reduced_list),sizeof(Edge)*reduced_size);
+			(*reduced_list)=(Edge *)realloc((*reduced_list),sizeof(Edge)*reduced_size);
 		V_i vi;
 		EO_i out,out_end;
 		int count=0;

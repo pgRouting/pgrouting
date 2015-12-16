@@ -94,6 +94,7 @@ public:
   		boost::add_edge(vm_s->second, vm_t->second, graph);
   		graph[e].cost = edge.cost;
   		graph[e].id = edge.id;
+      graph[e].type=edge.type;
   	//}
 
   	/*if (edge.revcost >= 0) {

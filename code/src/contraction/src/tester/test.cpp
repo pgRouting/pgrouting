@@ -66,11 +66,11 @@ typedef adjacency_list<vecS, vecS, undirectedS, Vertex,Edge> G;
 void check(Edge *edges,int num_vertices,int num_edges)
 {
 	FILE *fp;
-	fp=fopen("/home/rohith/contracted_ways.txt","w+");
+	fp=fopen("/home/rohith/contracted_ways_1.txt","w+");
 	typedef Graph_Minimizer<G> Graph;
 	Graph g(UNDIRECTED,num_vertices);
 	g.initialize_graph(edges,num_edges);
-	g.reduced_graph->print_graph();
+	//g.reduced_graph->print_graph();
 	//g.print_Vertex_Degree();
 	//g.print_Degree_Vertices();
 	//g.remove_vertex(0);
