@@ -35,12 +35,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "postgres_connection.h"
 #include "points_input.h"
 
+enum expectType {
+    ANY_INTEGER,
+    ANY_NUMERICAL,
+    TEXT,
+    CHAR
+};
 
+typedef
 struct {
-    int column;
+    int colNumber;
     int type;
-    strict bool;
+    bool strict;
     char *name;
+    expectType eType;
+    
 } Column_info_t;
 
 static
@@ -52,19 +61,23 @@ column_found(int colNumber) {
 static
 bool
 fetch_column_info(
+        Column_info_t *info) {
+    /*
         int *colNumber,
         int *coltype,
         char *colName,
         bool strict) {
-    PGR_DBG("Fetching column info of %s", colName);
-    (*colNumber) =  SPI_fnumber(SPI_tuptable->tupdesc, colName);
-    if (strict && !column_found(*colNumber)) {
-        elog(ERROR, "Column '%s' not Found", colName);
+        */
+
+    PGR_DBG("Fetching column info of %s", info->name);
+    info->colNumber =  SPI_fnumber(SPI_tuptable->tupdesc, info->name);
+    if (info->strict && !column_found(info->colNumber)) {
+        elog(ERROR, "Column '%s' not Found", info->name);
     }
-    if (column_found(*colNumber)) {
-        (*coltype) = SPI_gettypeid(SPI_tuptable->tupdesc, (*colNumber));
+    if (column_found(info->colNumber)) {
+        (info->type) = SPI_gettypeid(SPI_tuptable->tupdesc, (info->colNumber));
         if (SPI_result == SPI_ERROR_NOATTRIBUTE) {
-            elog(ERROR, "Type of column '%s' not Found", colName);
+            elog(ERROR, "Type of column '%s' not Found", info->name);
         }
         PGR_DBG("Column found");
         return true;
@@ -77,15 +90,35 @@ fetch_column_info(
 
 static
 void fetch_points_column_info(
+        Column_info_t info[4]) {
+    /*
         int columns[4], 
         int types[4]) { 
+        */
 
     PGR_DBG("Entering Fetch_points_column_info\n");
 
-    if (fetch_column_info(&columns[0], &types[0], "pid", false)) {
-        pgr_check_any_integer_type("pid", types[0]);
+    if (fetch_column_info(&info[0])) {
+        int name = info[0].name;
+        int type = info[0].type;
+        switch (info[0].eType) {
+            case ANY_INTEGER:
+                pgr_check_any_integer_type(name,type);
+                break;
+            case ANY_NUMERICAL:
+                pgr_check_any_numerical_type(name,type);
+                break;
+            case TEXT:
+                pgr_check_text_type(name,type);
+                break;
+            case ANY_INTEGER:
+                pgr_check_char_type(name,type);
+                break;
+            default:
+                elog(ERROR, "Unknown type");
+        }
     }
-
+/*
     fetch_column_info(&columns[1], &types[1], "edge_id", true);
     pgr_check_any_integer_type("edge_id", types[1]);
 
@@ -95,6 +128,7 @@ void fetch_points_column_info(
     if (fetch_column_info(&columns[3], &types[3], "side", false)) {
         pgr_check_char_type("side", types[3]);
     }
+    */
 }
 
 static
@@ -145,6 +179,7 @@ pgr_get_points(
         info[i].column = -1;
         info[i].type = -1;
         info[i].strict = true;
+        info[i].eType = ANY_INTEGER;
     }
     info[0].name = strdup("pid");
     info[1].name = strdup("edge_id");
@@ -152,6 +187,8 @@ pgr_get_points(
     info[3].name = strdup("side");
     info[0].strict = false;
     info[4].strict = false;
+    info[3].eType = ANY_NUMERICAL;
+    info[4].eType = ANY_NUMERICAL;
 
     for (i = 0; i < 4; ++i) columns[i] = -1;
     for (i = 0; i < 4; ++i) types[i] = -1;
@@ -174,7 +211,7 @@ pgr_get_points(
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
         if (total_tuples == 0) {
             /* on the first tuple get the column information */
-            fetch_points_column_info(columns, types);
+            fetch_points_column_info(info);
 #ifdef DEBUG
             int i;
             PGR_DBG("i\tcolumns\types");
