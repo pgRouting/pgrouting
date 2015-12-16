@@ -49,19 +49,50 @@ BEGIN;
         side = a.side
     FROM (SELECT pid, (pgr_findClosestEdge('SELECT id, the_geom FROM edge_table', the_geom, 1)).* FROM points) a WHERE (a.pid = points.pid);
 
+    UPDATE edge_table SET reverse_cost = reverse_cost * 2;
+
 --    SELECT * FROM points;
 
+/*
+\echo -- 1 to 2
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from points',
-        1, 3, strict := true);
+        1, 2, 
+        driving_side := 'b',
+        strict := true);
+*/
+\echo -- 1 to 3
 
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from points',
-        1, 3, strict := false);
-
+        1, 3, 
+        driving_side := 'b',
+        strict := false);
     /*
+\echo -- 1 to 4
+    SELECT * FROM pgr_withPoints(
+        'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+        'SELECT pid, edge_id, fraction, side from points',
+        1, 4, 
+        driving_side := 'b',
+        strict := true);
+\echo -- 1 to 5
+    SELECT * FROM pgr_withPoints(
+        'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+        'SELECT pid, edge_id, fraction, side from points',
+        1, 5, 
+        driving_side := 'b',
+        strict := true);
+\echo -- 1 to 6
+    SELECT * FROM pgr_withPoints(
+        'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+        'SELECT pid, edge_id, fraction, side from points',
+        1, 6, 
+        driving_side := 'b',
+        strict := true);
+
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side, right_side from points',

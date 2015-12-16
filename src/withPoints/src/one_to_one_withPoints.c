@@ -167,6 +167,7 @@ process(
             total_edges_of_points,
             start_pid,
             end_pid,
+            driving_side,
             directed,
             result_tuples,
             result_count,
@@ -278,10 +279,10 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
         // postgres starts counting from 1
         values[0] = Int64GetDatum(call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].seq + 1);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].vertex);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].edge);
-        values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[6] = Float8GetDatum(result_tuples[call_cntr].tot_cost);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].vertex);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[4] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[5] = Float8GetDatum(result_tuples[call_cntr].tot_cost);
         /*******************************************************************************/
 
         tuple = heap_formtuple(tuple_desc, values, nulls);

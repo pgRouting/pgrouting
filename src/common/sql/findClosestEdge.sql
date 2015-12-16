@@ -29,7 +29,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *  then compute the projection of the point onto the line segment and select source or target
  *  based on whether the projected point is closer to the respective end and return source or target.
  *  If no edge is within tol distance then return -1
+  IF az > pi()/2 AND az < pi() OR az > 3 * pi()/2 THEN - then to the right
 */
+
 CREATE OR REPLACE FUNCTION pgr_findClosestEdge(
     edges_sql text,
     point_geom geometry,

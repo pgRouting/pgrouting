@@ -50,6 +50,7 @@ extern "C" {
             size_t total_edges_of_points,
             int64_t start_pid,
             int64_t end_pid,
+            char driving_side,
             bool directed,
             General_path_element_t **return_tuples,
             size_t *return_count,

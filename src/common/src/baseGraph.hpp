@@ -244,6 +244,15 @@ class Pgr_base_graph {
              graph[i].id = gVertices_map.find(i)->second;
      }
 
+     void graph_insert_data( const std::vector <pgr_edge_t > &data_edges) {
+         for (const auto edge : data_edges) {
+             graph_add_edge(edge);
+         }
+         adjust_vertices();
+         for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i )
+             graph[i].id = gVertices_map.find(i)->second;
+     }
+
      //! \brief Disconnects all edges from p_from to p_to
      /*!
        - No edge is disconnected if the vertices id's do not exist in the graph
