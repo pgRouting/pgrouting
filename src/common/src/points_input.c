@@ -35,6 +35,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "postgres_connection.h"
 #include "points_input.h"
 
+
+struct {
+    int column;
+    int type;
+    strict bool;
+    char *name;
+} Column_info_t;
+
 static
 bool
 column_found(int colNumber) {
@@ -128,9 +136,23 @@ pgr_get_points(
     int64_t ntuples;
     int64_t total_tuples;
 
+    Column_info_t info[4];
+
     int columns[4];
     int types[4];
     int i;
+    for (i = 0; i < 4; ++i) {
+        info[i].column = -1;
+        info[i].type = -1;
+        info[i].strict = true;
+    }
+    info[0].name = strdup("pid");
+    info[1].name = strdup("edge_id");
+    info[2].name = strdup("fraction");
+    info[3].name = strdup("side");
+    info[0].strict = false;
+    info[4].strict = false;
+
     for (i = 0; i < 4; ++i) columns[i] = -1;
     for (i = 0; i < 4; ++i) types[i] = -1;
 
