@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./one_to_one_withPoints_driver.h"
 
-// #define DEBUG
+ #define DEBUG
 
 extern "C" {
 #include "./../../common/src/pgr_types.h"
@@ -54,6 +54,7 @@ extern "C" {
 // start_pid BIGINT,
 // end_pid BIGINT,
 // directed BOOLEAN DEFAULT true
+
 
 void
 do_pgr_withPoints(
@@ -136,6 +137,47 @@ do_pgr_withPoints(
 }
 
 
+void
+get_new_queries(
+        char *edges_sql,
+        char *points_sql,
+        int64_t start_pid,
+        int64_t end_pid,
+        bool strict,
+        char **edges_of_points_query,
+        char **edges_no_points_query) {
+
+    std::ostringstream edges_of_points_sql;
+    std::ostringstream edges_no_points_sql;
+
+    if (strict) {
+        edges_of_points_sql << "WITH "
+            << " edges AS (" << edges_sql << "),"
+            << " points AS (" << points_sql << "),"
+            << " strict AS (SELECT edge_id FROM points WHERE pid IN (" << start_pid << ", " << end_pid << ")) "
+            << " SELECT DISTINCT edges.* FROM edges JOIN strict ON (id = edge_id)";
+        *edges_of_points_query = strdup(edges_of_points_sql.str().c_str());
+
+        edges_no_points_sql << "WITH "
+            << " edges AS (" << edges_sql << "),"
+            << " points AS (" << points_sql << "),"
+            << " strict AS (SELECT edge_id FROM points WHERE pid IN (" << start_pid << ", " << end_pid << ")) "
+            << " SELECT edges.* FROM edges WHERE NOT EXISTS (SELECT edge_id FROM strict WHERE id = edge_id)";
+        *edges_no_points_query = strdup(edges_no_points_sql.str().c_str());
+    } else {
+        edges_of_points_sql << "WITH "
+            << " edges AS (" << edges_sql << "),"
+            << " points AS (" << points_sql << ")"
+            << " SELECT DISTINCT edges.* FROM edges JOIN points ON (id = edge_id)";
+        *edges_of_points_query = strdup(edges_of_points_sql.str().c_str());
+
+        edges_no_points_sql << "WITH "
+            << " edges AS (" << edges_sql << "),"
+            << " points AS (" << points_sql << ")"
+            << " SELECT edges.* FROM edges WHERE NOT EXISTS (SELECT edge_id FROM points WHERE id = edge_id)";
+        *edges_no_points_query = strdup(edges_no_points_sql.str().c_str());
+    }
+}
 
 
 

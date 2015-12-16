@@ -41,20 +41,28 @@ extern "C" {
 //  start_pid BIGINT,
 //  end_pid BIGINT,
 //  directed BOOLEAN DEFAULT true,
-void
-do_pgr_withPoints(
-        pgr_edge_t  *edges,
-        size_t total_edges,
-        Point_on_edge_t  *points,
-        size_t total_points,
-        pgr_edge_t  *edges_of_points,
-        size_t total_edges_of_points,
-        int64_t start_pid,
-        int64_t end_pid,
-        bool directed,
-        General_path_element_t **return_tuples,
-        size_t *return_count,
-        char ** err_msg);
+    void do_pgr_withPoints(
+            pgr_edge_t  *edges,
+            size_t total_edges,
+            Point_on_edge_t  *points,
+            size_t total_points,
+            pgr_edge_t  *edges_of_points,
+            size_t total_edges_of_points,
+            int64_t start_pid,
+            int64_t end_pid,
+            bool directed,
+            General_path_element_t **return_tuples,
+            size_t *return_count,
+            char ** err_msg);
+
+    void get_new_queries(
+            char *edges_sql,
+            char *points_sql, 
+            int64_t start_pid,
+            int64_t end_pid,
+            bool strict,
+            char **edges_of_points_query,
+            char **edges_no_points_query);
 
 
 #ifdef __cplusplus

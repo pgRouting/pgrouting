@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
   Uncomment when needed
 */
-// #define DEBUG
+ #define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
@@ -98,54 +98,15 @@ process(
     PGR_DBG("  -- change the query");
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
-    size_t  query_size_0 = 0;
-    size_t  query_size_1 = 0;
-    size_t  query_size_2 = 0;
-    char number[33];
-
-    if (strict) {
-        query_size_0 = strlen("WITH edges AS (") 
-            + strlen(edges_sql)
-            + strlen("), points AS (")
-            + strlen(points_sql)
-            + strlen(") strict AS (SELECT edge_id FROM points WHERE pid IN (")
-            + sprintf(number, "%ld",start_pid)
-            + 1
-            + sprintf(number, "%ld",end_pid)
-            + strlen("))");
-        query_size_1 = query_size_0 + strlen(" SELECT DISTINCT edges.* FROM edges JOIN strict ON (id = edge_id)"); 
-        query_size_2 = query_size_0 + strlen(" SELECT edges.* FROM edges WHERE NOT EXISTS (SELECT edge_id FROM strict WHERE id = edge_id)");
-
-        edges_of_points_query = (char*) malloc (query_size_1 + 1);
-        edges_no_points_query = (char*) malloc (query_size_2 + 1);
-
-        sprintf(edges_of_points_query, "WITH edges AS (%s), points AS (%s), strict AS (SELECT edge_id FROM points where pid in (%ld,%ld)) SELECT DISTINCT edges.* FROM edges JOIN strict ON (id = edge_id)",
+        get_new_queries(
                 edges_sql, points_sql,
-                start_pid, end_pid);
-        sprintf(edges_no_points_query, "WITH edges AS (%s), points AS (%s), strict AS (SELECT edge_id FROM points where pid in (%ld,%ld)) SELECT edges.* FROM edges WHERE NOT EXISTS (SELECT edge_id FROM strict WHERE id = edge_id)",
-                edges_sql, points_sql,
-                start_pid, end_pid);
-        PGR_DBG("STRICT QUERY 1 \n%s", edges_of_points_query);
-        PGR_DBG("STRICT QUERY 2 \n%s", edges_no_points_query);
-    } else {
-        query_size_0 = strlen("WITH edges AS (") 
-            + strlen(edges_sql) 
-            + strlen("), points AS (")
-            + strlen(points_sql)
-            + strlen(")");
+                start_pid, end_pid,
+                strict,
+                &edges_of_points_query,
+                &edges_no_points_query);
 
-        query_size_1 = query_size_0 + strlen(" SELECT DISTINCT edges.* FROM edges JOIN points ON (id = edge_id)"); 
-        query_size_2 = query_size_0 + strlen(" SELECT edges.* FROM edges WHERE NOT EXISTS (SELECT edge_id FROM points WHERE id = edge_id)");
-
-        edges_of_points_query = (char*) malloc (query_size_1 + 1);
-        edges_no_points_query = (char*) malloc (query_size_2 + 1);
-
-        sprintf(edges_of_points_query, "WITH edges AS (%s), points AS (%s) SELECT DISTINCT edges.* FROM edges JOIN points ON (id = edge_id)", edges_sql, points_sql);
-        sprintf(edges_no_points_query, "WITH edges AS (%s), points AS (%s) SELECT edges.* FROM edges WHERE NOT EXISTS (SELECT edge_id FROM points WHERE id = edge_id)", edges_sql, points_sql);
-        PGR_DBG("ALL POINTS QUERY 1\n%s", edges_of_points_query);
-        PGR_DBG("ALL POINTS QUERY 2\n%s", edges_no_points_query);
-    }
-    /* finish code to modify */
+    PGR_DBG("edges_of_points_query:\n%s", edges_of_points_query);
+    PGR_DBG("edges_no_points_query:\n%s", edges_no_points_query);
 
     PGR_DBG("load the edges that match the points");
     pgr_edge_t *edges_of_points = NULL;
