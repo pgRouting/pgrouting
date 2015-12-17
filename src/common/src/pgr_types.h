@@ -117,7 +117,26 @@ typedef struct {
     int64_t vertex_id; // number is negative and is used for processing
 } Point_on_edge_t;
 
+// used for getting the data
+typedef
+enum {
+    ANY_INTEGER,
+    ANY_NUMERICAL,
+    TEXT,
+    CHAR
+} expectType;
 
+typedef
+struct {
+    int colNumber;
+    int type;
+    bool strict;
+    char *name;
+    expectType eType;
+
+} Column_info_t;
+
+// used in boost
 struct boost_vertex_t {
     int64_t id;
 };
@@ -127,7 +146,7 @@ struct boost_edge_t{
     float8 cost;
     int64_t source;
     int64_t target;
-    bool first;  // true (source, target) false (target, source)
+    bool first;  // originally was true (source, target) false (target, source)
 };
 
 

@@ -31,9 +31,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 //#define DEBUG
 #include "./debug_macro.h"
-#include "pgr_types.h"
-#include "postgres_connection.h"
-#include "restrictions_input.h"
+#include "./pgr_types.h"
+#include "./postgres_connection.h"
+#include "./get_check_data.h"
+#include "./restrictions_input.h"
 
 
 

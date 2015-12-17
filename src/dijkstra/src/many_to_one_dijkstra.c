@@ -47,6 +47,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
+#include "./../../common/src/edges_input.h"
+#include "./../../common/src/arrays_input.h"
 #include "./many_to_one_dijkstra_driver.h"
 
 PG_FUNCTION_INFO_V1(many_to_one_dijkstra);

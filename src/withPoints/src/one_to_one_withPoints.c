@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: withPoints.c
+File: one_to_one_withPoints.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -39,12 +39,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
   Uncomment when needed
 */
- #define DEBUG
+// #define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
+#include "./../../common/src/edges_input.h"
 #include "./../../common/src/points_input.h"
 #include "./one_to_one_withPoints_driver.h"
 

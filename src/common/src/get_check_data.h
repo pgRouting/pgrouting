@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: postgres_connection.h
+File: get_check_data.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
-#define SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
+#ifndef SRC_COMMON_SRC_GET_CHECK_DATA_H_
+#define SRC_COMMON_SRC_GET_CHECK_DATA_H_
 
 #include "postgres.h"
 #include "executor/spi.h"
@@ -33,14 +33,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_types.h"
 
 
-
+#if 0
 void pgr_SPI_finish(void);
 void pgr_SPI_connect(void);
 SPIPlanPtr pgr_SPI_prepare(char* sql);
 Portal pgr_SPI_cursor_open(SPIPlanPtr SPIplan);
-char* pgr_text2char(text *in);
+#endif
 
-#if 0
 void 
 pgr_fetch_column_info(
         int *colNumber,
@@ -52,14 +51,16 @@ void pgr_check_any_numerical_type(char* colName, int type);
 void pgr_check_text_type(char* colName, int type);
 void pgr_check_char_type(char* colName, int type);
 
-char pgr_SPI_getChar(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType, bool strict, char default_value);
+char
+pgr_SPI_getChar(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType, bool strict, char default_value);
 int64_t pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType);
 float8 pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType);
 char* pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType);
 
 int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input);
+// char* pgr_text2char(text *in);
 char* pgr_stradd(const char *a, const char *b);
-#endif
 
 
-#endif  // SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
+
+#endif  // SRC_COMMON_SRC_GET_CHECK_DATA_H_

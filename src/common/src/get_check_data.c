@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: postgres_connection.c
+File: get_check_data.c
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
@@ -31,9 +31,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 // #define DEBUG
 #include "./debug_macro.h"
-#include "pgr_types.h"
-#include "postgres_connection.h"
+#include "./pgr_types.h"
+#include "./postgres_connection.h"
+#include "./get_check_data.h"
 
+#if 0
 char *
 pgr_text2char(text *in)
 {
@@ -43,16 +45,14 @@ pgr_text2char(text *in)
   out[VARSIZE(in) - VARHDRSZ] = '\0';
   return out;
 }
-
-#if 0
+#endif
 char* pgr_stradd(const char* a, const char* b){
     size_t len = strlen(a) + strlen(b);
     char *ret = (char*)malloc(len * sizeof(char) + 1);
     *ret = '\0';
     return strcat(strcat(ret, a) ,b);
 }
-#endif
-
+#if 0
 // http://www.postgresql.org/docs/9.4/static/spi-spi-finish.html
 void
 pgr_SPI_finish(void) {
@@ -95,7 +95,8 @@ pgr_SPI_cursor_open(SPIPlanPtr SPIplan) {
     }
     return SPIportal;
 }
-#if 0
+#endif
+
 void
 pgr_fetch_column_info(
         int *colNumber,
@@ -113,7 +114,7 @@ pgr_fetch_column_info(
 }
 
 
-
+#if 0
 int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     int         ndims;
     // int *lbs;
@@ -190,6 +191,7 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
 
     return (int64_t*)data;
 }
+#endif
 
 void
 pgr_check_char_type(char* colName, int type) {
@@ -197,7 +199,6 @@ pgr_check_char_type(char* colName, int type) {
         elog(ERROR, "Unexpected Column '%s' type. Expected CHAR; type: %d found", colName, type);
     }
 }
-
 void
 pgr_check_text_type(char* colName, int type) {
     if (!(type == TEXTOID)) {
@@ -312,4 +313,4 @@ pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType
     pfree(val);
     return value;
 }
-#endif
+

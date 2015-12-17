@@ -33,24 +33,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./debug_macro.h"
 #include "pgr_types.h"
 #include "postgres_connection.h"
+#include "get_check_data.h"
 #include "points_input.h"
 
-enum expectType {
-    ANY_INTEGER,
-    ANY_NUMERICAL,
-    TEXT,
-    CHAR
-};
-
-typedef
-struct {
-    int colNumber;
-    int type;
-    bool strict;
-    char *name;
-    expectType eType;
-    
-} Column_info_t;
 
 static
 bool
@@ -62,12 +47,6 @@ static
 bool
 fetch_column_info(
         Column_info_t *info) {
-    /*
-        int *colNumber,
-        int *coltype,
-        char *colName,
-        bool strict) {
-        */
 
     PGR_DBG("Fetching column info of %s", info->name);
     info->colNumber =  SPI_fnumber(SPI_tuptable->tupdesc, info->name);
@@ -90,65 +69,53 @@ fetch_column_info(
 
 static
 void fetch_points_column_info(
-        Column_info_t info[4]) {
-    /*
-        int columns[4], 
-        int types[4]) { 
-        */
-
+        Column_info_t info[],
+        int info_size) {
     PGR_DBG("Entering Fetch_points_column_info\n");
 
-    if (fetch_column_info(&info[0])) {
-        int name = info[0].name;
-        int type = info[0].type;
-        switch (info[0].eType) {
-            case ANY_INTEGER:
-                pgr_check_any_integer_type(name,type);
-                break;
-            case ANY_NUMERICAL:
-                pgr_check_any_numerical_type(name,type);
-                break;
-            case TEXT:
-                pgr_check_text_type(name,type);
-                break;
-            case ANY_INTEGER:
-                pgr_check_char_type(name,type);
-                break;
-            default:
-                elog(ERROR, "Unknown type");
+    int i;
+    for ( i = 0; i < info_size; ++i) {
+        if (fetch_column_info(&info[i])) {
+            switch (info[i].eType) {
+                case ANY_INTEGER:
+                    pgr_check_any_integer_type(info[i].name, info[i].type);
+                    break;
+                case ANY_NUMERICAL:
+                    pgr_check_any_numerical_type(info[i].name, info[i].type);
+                    break;
+                case TEXT:
+                    pgr_check_text_type(info[i].name, info[i].type);
+                    break;
+                case CHAR:
+                    pgr_check_char_type(info[i].name, info[i].type);
+                    break;
+                default:
+                    elog(ERROR, "Unknown type");
+            }
         }
     }
-/*
-    fetch_column_info(&columns[1], &types[1], "edge_id", true);
-    pgr_check_any_integer_type("edge_id", types[1]);
-
-    fetch_column_info(&columns[2], &types[2], "fraction", true);
-    pgr_check_any_numerical_type("fraction", types[2]);
-
-    if (fetch_column_info(&columns[3], &types[3], "side", false)) {
-        pgr_check_char_type("side", types[3]);
-    }
-    */
 }
 
 static
 void fetch_point(
         HeapTuple *tuple,
         TupleDesc *tupdesc, 
-        int columns[4],
-        int types[4],
-        int64_t default_pid,
+        Column_info_t info[4],
+        int64_t *default_pid,
         char default_side,
         Point_on_edge_t *point) {
-    if (column_found(columns[0])) {
-        point->pid = pgr_SPI_getBigInt(tuple, tupdesc, columns[0], types[0]);
+    if (column_found(info[0].colNumber)) {
+        point->pid = pgr_SPI_getBigInt(tuple, tupdesc, info[0].colNumber, info[0].type);
     } else {
-        point->pid = default_pid;
+        point->pid = *default_pid;
+        ++(*default_pid);
     }
-    point->edge_id = pgr_SPI_getBigInt(tuple, tupdesc, columns[1], types[1]);
-    point->fraction = pgr_SPI_getFloat8(tuple, tupdesc, columns[2], types[2]);
-    if (column_found(columns[3])) {
-        point->side = (char)pgr_SPI_getChar(tuple, tupdesc, columns[3], types[3], false, default_side);
+
+    point->edge_id = pgr_SPI_getBigInt(tuple, tupdesc, info[1].colNumber, info[1].type);
+    point->fraction = pgr_SPI_getFloat8(tuple, tupdesc, info[2].colNumber, info[2].type);
+
+    if (column_found(info[3].colNumber)) {
+        point->side = (char)pgr_SPI_getChar(tuple, tupdesc, info[3].colNumber, info[3].type, false, default_side);
     } else {
         point->side = default_side;
     }
@@ -172,11 +139,9 @@ pgr_get_points(
 
     Column_info_t info[4];
 
-    int columns[4];
-    int types[4];
     int i;
     for (i = 0; i < 4; ++i) {
-        info[i].column = -1;
+        info[i].colNumber = -1;
         info[i].type = -1;
         info[i].strict = true;
         info[i].eType = ANY_INTEGER;
@@ -185,13 +150,12 @@ pgr_get_points(
     info[1].name = strdup("edge_id");
     info[2].name = strdup("fraction");
     info[3].name = strdup("side");
-    info[0].strict = false;
-    info[4].strict = false;
-    info[3].eType = ANY_NUMERICAL;
-    info[4].eType = ANY_NUMERICAL;
 
-    for (i = 0; i < 4; ++i) columns[i] = -1;
-    for (i = 0; i < 4; ++i) types[i] = -1;
+    info[0].strict = false;
+    info[3].strict = false;
+    info[2].eType = ANY_NUMERICAL;
+    info[3].eType = CHAR;
+
 
 
     void *SPIplan;
@@ -211,15 +175,7 @@ pgr_get_points(
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
         if (total_tuples == 0) {
             /* on the first tuple get the column information */
-            fetch_points_column_info(info);
-#ifdef DEBUG
-            int i;
-            PGR_DBG("i\tcolumns\types");
-            for (i = 0; i < 4; i++) {
-                PGR_DBG("i=%d\t%d\t%d", i, columns[i], types[i]);
-            }   
-#endif
-
+            fetch_points_column_info(info, 4);
         }
 
         ntuples = SPI_processed;
@@ -244,9 +200,8 @@ pgr_get_points(
             for (t = 0; t < ntuples; t++) {
                 PGR_DBG("   processing point #%ld", t);
                 HeapTuple tuple = tuptable->vals[t];
-                fetch_point(&tuple, &tupdesc,
-                        columns, types,
-                        default_pid, default_side,
+                fetch_point(&tuple, &tupdesc, info,
+                        &default_pid, default_side,
                         &(*points)[total_tuples - ntuples + t]);
             }
             SPI_freetuptable(tuptable);

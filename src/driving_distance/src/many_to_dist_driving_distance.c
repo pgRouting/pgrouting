@@ -36,6 +36,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
+#include "./../../common/src/edges_input.h"
+#include "./../../common/src/arrays_input.h"
 #include "./boost_interface_drivedist.h"
 
 #ifndef PG_MODULE_MAGIC
