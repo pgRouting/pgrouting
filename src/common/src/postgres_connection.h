@@ -22,44 +22,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
-#define SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
+#pragma once
 
 #include "postgres.h"
 #include "executor/spi.h"
-#include "utils/array.h"
 
 
 #include "./pgr_types.h"
-
-
 
 void pgr_SPI_finish(void);
 void pgr_SPI_connect(void);
 SPIPlanPtr pgr_SPI_prepare(char* sql);
 Portal pgr_SPI_cursor_open(SPIPlanPtr SPIplan);
 char* pgr_text2char(text *in);
-
-#if 0
-void 
-pgr_fetch_column_info(
-        int *colNumber,
-        int *coltype,
-        char *colName);
-
-void pgr_check_any_integer_type(char* colName, int type);
-void pgr_check_any_numerical_type(char* colName, int type);
-void pgr_check_text_type(char* colName, int type);
-void pgr_check_char_type(char* colName, int type);
-
-char pgr_SPI_getChar(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType, bool strict, char default_value);
-int64_t pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType);
-float8 pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType);
-char* pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType);
-
-int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input);
-char* pgr_stradd(const char *a, const char *b);
-#endif
-
-
-#endif  // SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
