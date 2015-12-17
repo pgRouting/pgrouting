@@ -27,6 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_types.h"
 
 void pgr_get_points(
-        char *points_sql,        //!< \param [IN]  sql from where we get the data
-        Point_on_edge_t **points,  //!< \param [OUT]  retrieved points
-        int64_t *total_points);  //!< \param [OUT] total_points Total points retrived
+        char *points_sql,
+        Point_on_edge_t **points,
+        int64_t *total_points);

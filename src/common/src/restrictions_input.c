@@ -22,9 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
-
-//#define DEBUG
+// #define DEBUG
 #include "./debug_macro.h"
 #include "./pgr_types.h"
 #include "./postgres_connection.h"
@@ -35,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 static
 void fetch_restriction(
         HeapTuple *tuple,
-        TupleDesc *tupdesc, 
+        TupleDesc *tupdesc,
         Column_info_t info[4],
         Restrict_t *restriction) {
     restriction->target_id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
@@ -49,10 +47,7 @@ pgr_get_restriction_data(
         char *restrictions_sql,
         Restrict_t **restrictions,
         int64_t *total_restrictions) {
-
     const int tuple_limit = 1000000;
-
-    PGR_DBG("Entering pgr_get_restriction_data");
 
     Column_info_t info[3];
 
@@ -73,13 +68,6 @@ pgr_get_restriction_data(
 
     int64_t ntuples;
     int64_t total_tuples;
-#if 0
-    int columns[3];
-    int types[3];
-    int i;
-    for (i = 0; i < 3; ++i) columns[i] = -1;
-    for (i = 0; i < 3; ++i) types[i] = -1;
-#endif
 
     void *SPIplan;
     SPIplan = pgr_SPI_prepare(restrictions_sql);
@@ -92,7 +80,6 @@ pgr_get_restriction_data(
 
     /*  on the first tuple get the column numbers */
 
-    PGR_DBG("Starting Cycle");
     while (moredata == TRUE) {
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
         if (total_tuples == 0)
@@ -102,15 +89,13 @@ pgr_get_restriction_data(
         total_tuples += ntuples;
 
         if (ntuples > 0) {
-            PGR_DBG("Getting Memory");
             if ((*restrictions) == NULL)
                 (*restrictions) = (Restrict_t *)palloc0(total_tuples * sizeof(Restrict_t));
             else
                 (*restrictions) = (Restrict_t *)repalloc((*restrictions), total_tuples * sizeof(Restrict_t));
-            PGR_DBG("Got Memory");
 
             if ((*restrictions) == NULL) {
-                elog(ERROR, "Out of memory"); 
+                elog(ERROR, "Out of memory");
             }
 
             int64_t t;
@@ -118,7 +103,6 @@ pgr_get_restriction_data(
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
             PGR_DBG("processing %ld", ntuples);
             for (t = 0; t < ntuples; t++) {
-                PGR_DBG("   processing %ld", t);
                 HeapTuple tuple = tuptable->vals[t];
                 fetch_restriction(&tuple, &tupdesc, info,
                         &(*restrictions)[total_tuples - ntuples + t]);
@@ -132,12 +116,10 @@ pgr_get_restriction_data(
     if (total_tuples == 0) {
         (*total_restrictions) = 0;
         PGR_DBG("NO restrictions");
-        PGR_DBG("closed");
         return;
     }
 
 
     (*total_restrictions) = total_tuples;
     PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*totalTuples));
-    PGR_DBG("closed");
 }

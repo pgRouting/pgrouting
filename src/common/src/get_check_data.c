@@ -33,11 +33,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./get_check_data.h"
 
 char*
-pgr_stradd(const char* a, const char* b){
+pgr_stradd(const char* a, const char* b) {
     size_t len = strlen(a) + strlen(b);
     char *ret = (char*)malloc(len * sizeof(char) + 1);
     *ret = '\0';
-    return strcat(strcat(ret, a) ,b);
+    return strcat(strcat(ret, a), b);
 }
 
 bool
@@ -70,9 +70,8 @@ fetch_column_info(
 void pgr_fetch_column_info(
         Column_info_t info[],
         int info_size) {
-    PGR_DBG("Entering Fetch_points_column_info\n");
     int i;
-    for ( i = 0; i < info_size; ++i) {
+    for (i = 0; i < info_size; ++i) {
         if (fetch_column_info(&info[i])) {
             switch (info[i].eType) {
                 case ANY_INTEGER:
@@ -111,10 +110,12 @@ pgr_check_text_type(Column_info_t info) {
 
 void
 pgr_check_any_integer_type(Column_info_t info) {
-    if (!(info.type == INT2OID 
+    if (!(info.type == INT2OID
                 || info.type == INT4OID
-                || info.type == INT8OID)){
-        elog(ERROR, "Unexpected Column '%s' type. Expected ANY-INTEGER", info.name);
+                || info.type == INT8OID)) {
+        elog(ERROR,
+                "Unexpected Column '%s' type. Expected ANY-INTEGER",
+                info.name);
     }
 }
 
@@ -123,8 +124,10 @@ void pgr_check_any_numerical_type(Column_info_t info) {
                 || info.type == INT4OID
                 || info.type == INT8OID
                 || info.type == FLOAT4OID
-                || info.type == FLOAT8OID)){
-        elog(ERROR, "Unexpected Column '%s' type. Expected ANY-NUMERICAL", info.name);
+                || info.type == FLOAT8OID)) {
+        elog(ERROR,
+                "Unexpected Column '%s' type. Expected ANY-NUMERICAL",
+                info.name);
     }
 }
 
@@ -133,7 +136,9 @@ void pgr_check_any_numerical_type(Column_info_t info) {
  * http://doxygen.postgresql.org/include_2catalog_2pg__type_8h.html;
  */
 char
-pgr_SPI_getChar(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info, bool strict, char default_value) {
+pgr_SPI_getChar(
+        HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info,
+        bool strict, char default_value) {
     Datum binval;
     bool isNull;
     char value = default_value;
@@ -153,15 +158,13 @@ pgr_SPI_getChar(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info, bool s
     return value;
 }
 
-
-
 int64_t
 pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
     Datum binval;
     bool isnull;
     int64_t value = 0;
     binval = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &isnull);
-    if (isnull) 
+    if (isnull)
         elog(ERROR, "Unexpected Null value in column %s", info.name);
     switch (info.type) {
         case INT2OID:
@@ -174,7 +177,9 @@ pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
             value = DatumGetInt64(binval);
             break;
         default:
-            elog(ERROR, "Unexpected Column type of %s. Expected ANY-INTEGER", info.name);
+            elog(ERROR,
+                    "Unexpected Column type of %s. Expected ANY-INTEGER",
+                    info.name);
     }
     return value;
 }
@@ -185,7 +190,7 @@ pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
     bool isnull;
     float8 value = 0.0;
     binval = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &isnull);
-    if (isnull) 
+    if (isnull)
         elog(ERROR, "Unexpected Null value in column %s", info.name);
 
     switch (info.type) {
@@ -205,7 +210,9 @@ pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
             value = DatumGetFloat8(binval);
             break;
         default:
-            elog(ERROR, "Unexpected Column type of %s. Expected ANY-NUMERICAL", info.name);
+            elog(ERROR,
+                    "Unexpected Column type of %s. Expected ANY-NUMERICAL",
+                    info.name);
     }
     return value;
 }
@@ -219,4 +226,3 @@ pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc,  Column_info_t info) {
     pfree(val);
     return value;
 }
-

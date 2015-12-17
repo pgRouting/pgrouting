@@ -36,8 +36,8 @@ get_memory(size_t size, T *ptr){
 template <typename T>
 T*
 noResult(size_t *count, T *ptr) {
-    count = 0;
-    if( ptr )
+    (*count) = 0;
+    if (ptr)
         free(ptr);
     return NULL;
 }

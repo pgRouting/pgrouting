@@ -22,8 +22,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
-
 // #define DEBUG
 #include "./debug_macro.h"
 #include "pgr_types.h"
@@ -35,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 static
 void fetch_point(
         HeapTuple *tuple,
-        TupleDesc *tupdesc, 
+        TupleDesc *tupdesc,
         Column_info_t info[4],
         int64_t *default_pid,
         char default_side,
@@ -51,28 +49,24 @@ void fetch_point(
     point->fraction = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
 
     if (column_found(info[3].colNumber)) {
-        point->side = (char)pgr_SPI_getChar(tuple, tupdesc, info[3], false, default_side);
+        point->side =
+            (char)pgr_SPI_getChar(tuple, tupdesc, info[3], false, default_side);
     } else {
         point->side = default_side;
     }
-
 }
 
 
-// pid, edge_id, fraction, [side] 
+// pid, edge_id, fraction, [side]
 void
 pgr_get_points(
         char *points_sql,
         Point_on_edge_t **points,
         int64_t *total_points) {
-
-    const int tuple_limit = 1000000;
-
-    PGR_DBG("Entering pgr_get_get_points");
+    const int tuple_limit = 1000;
 
     int64_t ntuples;
     int64_t total_tuples;
-
     Column_info_t info[4];
 
     int i;
@@ -82,6 +76,7 @@ pgr_get_points(
         info[i].strict = true;
         info[i].eType = ANY_INTEGER;
     }
+
     info[0].name = strdup("pid");
     info[1].name = strdup("edge_id");
     info[2].name = strdup("fraction");
@@ -91,7 +86,6 @@ pgr_get_points(
     info[3].strict = false;
     info[2].eType = ANY_NUMERICAL;
     info[3].eType = CHAR;
-
 
 
     void *SPIplan;
@@ -106,7 +100,6 @@ pgr_get_points(
     int64_t default_pid = 0;
     char default_side = 'b';
 
-    PGR_DBG("Starting Cycle");
     while (moredata == TRUE) {
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
         if (total_tuples == 0) {
@@ -118,23 +111,21 @@ pgr_get_points(
         total_tuples += ntuples;
 
         if (ntuples > 0) {
-            PGR_DBG("Getting Memory");
             if ((*points) == NULL)
                 (*points) = (Point_on_edge_t *)palloc0(total_tuples * sizeof(Point_on_edge_t));
             else
                 (*points) = (Point_on_edge_t *)repalloc((*points), total_tuples * sizeof(Point_on_edge_t));
-            PGR_DBG("Got Memory");
 
             if ((*points) == NULL) {
-                elog(ERROR, "Out of memory"); 
+                elog(ERROR, "Out of memory");
             }
 
-            int64_t t;
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
-            PGR_DBG("processing total points:%ld", ntuples);
+            int64_t t;
+
+            PGR_DBG("processing %ld points tuples", ntuples);
             for (t = 0; t < ntuples; t++) {
-                PGR_DBG("   processing point #%ld", t);
                 HeapTuple tuple = tuptable->vals[t];
                 fetch_point(&tuple, &tupdesc, info,
                         &default_pid, default_side,
@@ -149,14 +140,9 @@ pgr_get_points(
     if (total_tuples == 0) {
         (*total_points) = 0;
         PGR_DBG("NO points");
-        PGR_DBG("closed");
         return;
     }
 
-
     (*total_points) = total_tuples;
-    PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*total_points));
-    PGR_DBG("closed");
+    PGR_DBG("Finish reading %ld points, %ld", total_tuples, (*total_points));
 }
-
-

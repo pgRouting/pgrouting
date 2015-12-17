@@ -31,14 +31,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./debug_macro.h"
 #include "./postgres_connection.h"
 
-char *
-pgr_text2char(text *in)
-{
-  char *out = palloc(VARSIZE(in));
+char*
+pgr_text2char(text *in) {
+    char *out = palloc(VARSIZE(in));
 
-  memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
-  out[VARSIZE(in) - VARHDRSZ] = '\0';
-  return out;
+    memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
+    out[VARSIZE(in) - VARHDRSZ] = '\0';
+    return out;
 }
 
 
@@ -48,9 +47,9 @@ pgr_SPI_finish(void) {
     PGR_DBG("Disconnecting SPI");
     int code = SPI_OK_FINISH;
     code = SPI_finish();
-    if (code != SPI_OK_FINISH ) {  // SPI_ERROR_UNCONNECTED
-        elog(ERROR,"There was no connection to SPI");
-    }			
+    if (code != SPI_OK_FINISH) {  // SPI_ERROR_UNCONNECTED
+        elog(ERROR, "There was no connection to SPI");
+    }
 }
 
 void

@@ -22,8 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef PGR_TYPES_H
-#define PGR_TYPES_H
+#pragma once
 
 #include "postgres.h"
 
@@ -152,4 +151,3 @@ struct boost_edge_t{
 
 enum graphType { UNDIRECTED= 0, DIRECTED};
 
-#endif // PGR_TYPES_H
