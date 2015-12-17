@@ -22,15 +22,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_COMMON_SRC_RESTRICTIONS_INPUT_H_
-#define SRC_COMMON_SRC_RESTRICTIONS_INPUT_H_
+#pragma once
 
 #include "./pgr_types.h"
 
 void pgr_get_restriction_data(
-        char *restrictions_sql,        //!< \param [IN]  sql from where we get the data
-        Restrict_t **restructions,  //!< \param [OUT] edges retrieved edges
-        int64_t *total_restrictions);  //!< \param [OUT] total_tuples Total edges retrived
-
-#endif  // SRC_COMMON_SRC_RESTRICTIONS_INPUT_H_
-
+        char *restrictions_sql,
+        Restrict_t **restructions,
+        int64_t *total_restrictions);

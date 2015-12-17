@@ -23,11 +23,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "postgres.h"
-#include "utils/lsyscache.h"
-#include "catalog/pg_type.h"
-#include "utils/array.h"
-#include "executor/spi.h"
-
 
 // #define DEBUG
 #include "./debug_macro.h"
@@ -38,65 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 static
-bool
-column_found(int colNumber) {
-    return !(colNumber == SPI_ERROR_NOATTRIBUTE);
-}
-
-static
-bool
-fetch_column_info(
-        Column_info_t *info) {
-
-    PGR_DBG("Fetching column info of %s", info->name);
-    info->colNumber =  SPI_fnumber(SPI_tuptable->tupdesc, info->name);
-    if (info->strict && !column_found(info->colNumber)) {
-        elog(ERROR, "Column '%s' not Found", info->name);
-    }
-    if (column_found(info->colNumber)) {
-        (info->type) = SPI_gettypeid(SPI_tuptable->tupdesc, (info->colNumber));
-        if (SPI_result == SPI_ERROR_NOATTRIBUTE) {
-            elog(ERROR, "Type of column '%s' not Found", info->name);
-        }
-        PGR_DBG("Column found");
-        return true;
-    }
-    PGR_DBG("Column not found");
-    return false;
-}
-
-
-
-static
-void fetch_points_column_info(
-        Column_info_t info[],
-        int info_size) {
-    PGR_DBG("Entering Fetch_points_column_info\n");
-
-    int i;
-    for ( i = 0; i < info_size; ++i) {
-        if (fetch_column_info(&info[i])) {
-            switch (info[i].eType) {
-                case ANY_INTEGER:
-                    pgr_check_any_integer_type(info[i].name, info[i].type);
-                    break;
-                case ANY_NUMERICAL:
-                    pgr_check_any_numerical_type(info[i].name, info[i].type);
-                    break;
-                case TEXT:
-                    pgr_check_text_type(info[i].name, info[i].type);
-                    break;
-                case CHAR:
-                    pgr_check_char_type(info[i].name, info[i].type);
-                    break;
-                default:
-                    elog(ERROR, "Unknown type");
-            }
-        }
-    }
-}
-
-static
 void fetch_point(
         HeapTuple *tuple,
         TupleDesc *tupdesc, 
@@ -105,17 +41,17 @@ void fetch_point(
         char default_side,
         Point_on_edge_t *point) {
     if (column_found(info[0].colNumber)) {
-        point->pid = pgr_SPI_getBigInt(tuple, tupdesc, info[0].colNumber, info[0].type);
+        point->pid = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     } else {
         point->pid = *default_pid;
         ++(*default_pid);
     }
 
-    point->edge_id = pgr_SPI_getBigInt(tuple, tupdesc, info[1].colNumber, info[1].type);
-    point->fraction = pgr_SPI_getFloat8(tuple, tupdesc, info[2].colNumber, info[2].type);
+    point->edge_id = pgr_SPI_getBigInt(tuple, tupdesc, info[1]);
+    point->fraction = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
 
     if (column_found(info[3].colNumber)) {
-        point->side = (char)pgr_SPI_getChar(tuple, tupdesc, info[3].colNumber, info[3].type, false, default_side);
+        point->side = (char)pgr_SPI_getChar(tuple, tupdesc, info[3], false, default_side);
     } else {
         point->side = default_side;
     }
@@ -175,7 +111,7 @@ pgr_get_points(
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
         if (total_tuples == 0) {
             /* on the first tuple get the column information */
-            fetch_points_column_info(info, 4);
+            pgr_fetch_column_info(info, 4);
         }
 
         ntuples = SPI_processed;

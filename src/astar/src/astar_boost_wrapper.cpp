@@ -73,6 +73,7 @@ class astar_goal_visitor : public boost::default_astar_visitor
       void examine_vertex(Vertex u, Graph& g) {
         if(u == m_goal)
           throw found_goal();
+        num_vertices(g); 
       }
     private:
       Vertex m_goal;

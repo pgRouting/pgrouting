@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: postgres_connection.h
+File: edges_input.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
@@ -22,17 +22,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_COMMON_SRC_EDGES_INPUT_H
-#define SRC_COMMON_SRC_EDGES_INPUT_H
-
-#include "postgres.h"
-#include "executor/spi.h"
-#include "utils/array.h"
-
+#pragma once
 
 #include "./pgr_types.h"
-
-
 
 /*!
   Signature 1:
@@ -58,7 +50,3 @@ void pgr_get_data_5_columns(
         char *sql,           //!< \param [IN]  sql from where we get the data
         pgr_edge_t **edges,  //!< \param [OUT] edges retrieved edges
         int64_t *total_tuples);  //!< \param [OUT] total_tuples Total edges retrived
-
-
-
-#endif  // SRC_COMMON_SRC_EDGES_INPUT_H

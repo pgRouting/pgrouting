@@ -23,227 +23,130 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "postgres.h"
-#include "utils/lsyscache.h"
 #include "catalog/pg_type.h"
-#include "utils/array.h"
 #include "executor/spi.h"
 
 
 // #define DEBUG
 #include "./debug_macro.h"
 #include "./pgr_types.h"
-#include "./postgres_connection.h"
 #include "./get_check_data.h"
 
-#if 0
-char *
-pgr_text2char(text *in)
-{
-  char *out = palloc(VARSIZE(in));
-
-  memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
-  out[VARSIZE(in) - VARHDRSZ] = '\0';
-  return out;
-}
-#endif
-char* pgr_stradd(const char* a, const char* b){
+char*
+pgr_stradd(const char* a, const char* b){
     size_t len = strlen(a) + strlen(b);
     char *ret = (char*)malloc(len * sizeof(char) + 1);
     *ret = '\0';
     return strcat(strcat(ret, a) ,b);
 }
-#if 0
-// http://www.postgresql.org/docs/9.4/static/spi-spi-finish.html
-void
-pgr_SPI_finish(void) {
-    PGR_DBG("Disconnecting SPI");
-    int code = SPI_OK_FINISH;
-    code = SPI_finish();
-    if (code != SPI_OK_FINISH ) {  // SPI_ERROR_UNCONNECTED
-        elog(ERROR,"There was no connection to SPI");
-    }			
+
+bool
+column_found(int colNumber) {
+    return !(colNumber == SPI_ERROR_NOATTRIBUTE);
 }
 
-void
-pgr_SPI_connect(void) {
-    PGR_DBG("Connecting to SPI");
-    int SPIcode;
-    SPIcode = SPI_connect();
-    if (SPIcode  != SPI_OK_CONNECT) {
-        elog(ERROR, "Couldn't open a connection to SPI");
+static
+bool
+fetch_column_info(
+        Column_info_t *info) {
+    PGR_DBG("Fetching column info of %s", info->name);
+    info->colNumber =  SPI_fnumber(SPI_tuptable->tupdesc, info->name);
+    if (info->strict && !column_found(info->colNumber)) {
+        elog(ERROR, "Column '%s' not Found", info->name);
     }
-}
-
-SPIPlanPtr
-pgr_SPI_prepare(char* sql) {
-    PGR_DBG("Preparing Plan");
-    SPIPlanPtr SPIplan;
-    SPIplan = SPI_prepare(sql, 0, NULL);
-    if (SPIplan  == NULL) {
-        elog(ERROR, "Couldn't create query plan via SPI");
-    }
-    return SPIplan;
-}
-
-Portal
-pgr_SPI_cursor_open(SPIPlanPtr SPIplan) {
-    PGR_DBG("Opening Portal");
-    Portal SPIportal;
-    SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true);
-    if (SPIportal == NULL) {
-        elog(ERROR, "SPI_cursor_open returns NULL");
-    }
-    return SPIportal;
-}
-#endif
-
-void
-pgr_fetch_column_info(
-        int *colNumber,
-        int *coltype,
-        char *colName) {
-    PGR_DBG("Fetching column info");
-    (*colNumber) =  SPI_fnumber(SPI_tuptable->tupdesc, colName);
-    if ((*colNumber) == SPI_ERROR_NOATTRIBUTE) {
-        elog(ERROR, "Column '%s' not Found", colName);
-    }
-    (*coltype) = SPI_gettypeid(SPI_tuptable->tupdesc, (*colNumber));
-    if (SPI_result == SPI_ERROR_NOATTRIBUTE) {
-        elog(ERROR, "Type of column '%s' not Found", colName);
-    }
-}
-
-
-#if 0
-int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
-    int         ndims;
-    // int *lbs;
-    bool       *nulls;
-    Oid         i_eltype;
-    int16       i_typlen;
-    bool        i_typbyval;
-    char        i_typalign;
-    Datum      *i_data;
-    int         i, n;
-    int64_t      *data;
-
-    PGR_DBG("Geting integer array");
-    /* get input array element type */
-    i_eltype = ARR_ELEMTYPE(input);
-    get_typlenbyvalalign(i_eltype, &i_typlen, &i_typbyval, &i_typalign);
-
-
-    /* validate input data type */
-    switch(i_eltype){
-        case INT2OID:
-        case INT4OID:
-        case INT8OID:
-            break;
-        default:
-            elog(ERROR, "Expected array of any-integer");
-            return (int64_t*) NULL;  
-            break;
-    }
-
-    /* get various pieces of data from the input array */
-    ndims = ARR_NDIM(input);
-    n = (*ARR_DIMS(input));
-    (*arrlen) = n;
-    // lbs = ARR_LBOUND(input);
-
-    if ( (ndims) != 1) {
-        elog(ERROR, "One dimenton expected");
-    }
-
-    /* get src data */
-    deconstruct_array(input, i_eltype, i_typlen, i_typbyval, i_typalign,
-            &i_data, &nulls, &n);
-
-    /* construct a C array */
-    data = (int64_t *) malloc((*arrlen) * sizeof(int64_t));
-    if (!data) {
-        elog(ERROR, "Error: Out of memory!");
-    }
-    PGR_DBG("array size %ld", (*arrlen));
-
-    for (i=0; i<(*arrlen); i++) {
-        if (nulls[i]) {
-            data[i] = -1;
+    if (column_found(info->colNumber)) {
+        (info->type) = SPI_gettypeid(SPI_tuptable->tupdesc, (info->colNumber));
+        if (SPI_result == SPI_ERROR_NOATTRIBUTE) {
+            elog(ERROR, "Type of column '%s' not Found", info->name);
         }
-        else {
-            switch(i_eltype){
-                case INT2OID:
-                    data[i] = (int64_t) DatumGetInt16(i_data[i]);
+        PGR_DBG("Column %s found", info->name);
+        return true;
+    }
+    PGR_DBG("Column %s not found", info->name);
+    return false;
+}
+
+
+void pgr_fetch_column_info(
+        Column_info_t info[],
+        int info_size) {
+    PGR_DBG("Entering Fetch_points_column_info\n");
+    int i;
+    for ( i = 0; i < info_size; ++i) {
+        if (fetch_column_info(&info[i])) {
+            switch (info[i].eType) {
+                case ANY_INTEGER:
+                    pgr_check_any_integer_type(info[i]);
                     break;
-                case INT4OID:
-                    data[i] = (int64_t) DatumGetInt32(i_data[i]);
+                case ANY_NUMERICAL:
+                    pgr_check_any_numerical_type(info[i]);
                     break;
-                case INT8OID:
-                    data[i] = DatumGetInt64(i_data[i]);
+                case TEXT:
+                    pgr_check_text_type(info[i]);
                     break;
+                case CHAR:
+                    pgr_check_char_type(info[i]);
+                    break;
+                default:
+                    elog(ERROR, "Unknown type of column %s", info[i].name);
             }
         }
-        PGR_DBG("    data[%d]=%li", i, data[i]);
-    }
-
-    pfree(nulls);
-    pfree(i_data);
-
-    return (int64_t*)data;
-}
-#endif
-
-void
-pgr_check_char_type(char* colName, int type) {
-    if (!(type == BPCHAROID)) {
-        elog(ERROR, "Unexpected Column '%s' type. Expected CHAR; type: %d found", colName, type);
     }
 }
+
+
 void
-pgr_check_text_type(char* colName, int type) {
-    if (!(type == TEXTOID)) {
-        elog(ERROR, "Unexpected Column '%s' type. Expected TEXT", colName);
+pgr_check_char_type(Column_info_t info) {
+    if (!(info.type == BPCHAROID)) {
+        elog(ERROR, "Unexpected Column '%s' type. Expected CHAR", info.name);
     }
 }
 
 void
-pgr_check_any_integer_type(char* colName, int type) {
-    if (!(type == INT2OID 
-                || type == INT4OID
-                || type == INT8OID)){
-        elog(ERROR, "Unexpected Column '%s' type. Expected ANY-INTEGER", colName);
+pgr_check_text_type(Column_info_t info) {
+    if (!(info.type == TEXTOID)) {
+        elog(ERROR, "Unexpected Column '%s' type. Expected TEXT", info.name);
     }
 }
 
-void pgr_check_any_numerical_type(char* colName, int type) {
-    if (!(type == INT2OID
-                || type == INT4OID
-                || type == INT8OID
-                || type == FLOAT4OID
-                || type == FLOAT8OID)){
-        elog(ERROR, "Unexpected Column '%s' type. Expected ANY-NUMERICAL", colName);
+void
+pgr_check_any_integer_type(Column_info_t info) {
+    if (!(info.type == INT2OID 
+                || info.type == INT4OID
+                || info.type == INT8OID)){
+        elog(ERROR, "Unexpected Column '%s' type. Expected ANY-INTEGER", info.name);
+    }
+}
+
+void pgr_check_any_numerical_type(Column_info_t info) {
+    if (!(info.type == INT2OID
+                || info.type == INT4OID
+                || info.type == INT8OID
+                || info.type == FLOAT4OID
+                || info.type == FLOAT8OID)){
+        elog(ERROR, "Unexpected Column '%s' type. Expected ANY-NUMERICAL", info.name);
     }
 }
 
 
+/*
+ * http://doxygen.postgresql.org/include_2catalog_2pg__type_8h.html;
+ */
 char
-pgr_SPI_getChar(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType, bool strict, char default_value) {
+pgr_SPI_getChar(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info, bool strict, char default_value) {
     Datum binval;
     bool isNull;
     char value = default_value;
 
-    binval = SPI_getbinval(*tuple, *tupdesc, colNumber, &isNull);
-    if (!(colType == BPCHAROID)) {
-        /*
-         * http://doxygen.postgresql.org/include_2catalog_2pg__type_8h.html;
-         */
-        elog(ERROR, "pgr_SPI_getChar: type CHAR expected; Type %d found.", colType);
+    binval = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &isNull);
+    if (!(info.type == BPCHAROID)) {
+        elog(ERROR, "Unexpected Column type of %s. Expected CHAR", info.name);
     }
     if (!isNull) {
-        value =  ((char*)binval)[1]; // DatumGetChar(binval);
+        value =  ((char*)binval)[1];
     } else {
         if (strict) {
-            elog(ERROR, "pgr_SPI_getChar: Unexpected Null value");
+            elog(ERROR, "Unexpected Null value in column %s", info.name);
         }
         value = default_value;
     }
@@ -253,13 +156,14 @@ pgr_SPI_getChar(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType
 
 
 int64_t
-pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType) {
+pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
     Datum binval;
     bool isnull;
     int64_t value = 0;
-    binval = SPI_getbinval(*tuple, *tupdesc, colNumber, &isnull);
-    if (isnull) elog(ERROR, "Null value found");
-    switch (colType) {
+    binval = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &isnull);
+    if (isnull) 
+        elog(ERROR, "Unexpected Null value in column %s", info.name);
+    switch (info.type) {
         case INT2OID:
             value = (int64_t) DatumGetInt16(binval);
             break;
@@ -270,19 +174,21 @@ pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colTy
             value = DatumGetInt64(binval);
             break;
         default:
-            elog(ERROR, "Unexpected Column type. Expected ANY-INTEGER");
+            elog(ERROR, "Unexpected Column type of %s. Expected ANY-INTEGER", info.name);
     }
     return value;
 }
 
 float8
-pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType) {
+pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
     Datum binval;
     bool isnull;
     float8 value = 0.0;
-    binval = SPI_getbinval(*tuple, *tupdesc, colNumber, &isnull);
-    if (isnull) elog(ERROR, "Null value found");
-    switch (colType) {
+    binval = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &isnull);
+    if (isnull) 
+        elog(ERROR, "Unexpected Null value in column %s", info.name);
+
+    switch (info.type) {
         case INT2OID:
             value = (float8) DatumGetInt16(binval);
             break;
@@ -299,16 +205,16 @@ pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colTy
             value = DatumGetFloat8(binval);
             break;
         default:
-            elog(ERROR, "BigInt, int, SmallInt, real  expected");
+            elog(ERROR, "Unexpected Column type of %s. Expected ANY-NUMERICAL", info.name);
     }
     return value;
 }
 
 char*
-pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType) {
+pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc,  Column_info_t info) {
     char* value = NULL;
     char* val = NULL;
-    val = SPI_getvalue(*tuple, *tupdesc, colNumber);
+    val = SPI_getvalue(*tuple, *tupdesc, info.colNumber);
     value = DatumGetCString(&val);
     pfree(val);
     return value;

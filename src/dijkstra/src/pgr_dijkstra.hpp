@@ -254,6 +254,7 @@ class Pgr_dijkstra {
           template <class B_G>
               void examine_vertex(V &u, B_G &g) {
                   if (u == m_goal) throw found_goals();
+                  num_edges(g);
               }
       private:
           V m_goal;
@@ -272,6 +273,7 @@ class Pgr_dijkstra {
                   // we found one more goal
                   m_goals.erase(s_it);
                   if (m_goals.size() == 0) throw found_goals();
+                  num_edges(g);
               }
       private:
           std::set< V > m_goals;
@@ -291,6 +293,7 @@ class Pgr_dijkstra {
               void examine_vertex(V u, B_G &g) {
                   m_nodes.push_back(u);
                   if (m_dist[u] >= m_distance_goal) throw found_goals();
+                  num_edges(g);
               }
       private:
           float8 m_distance_goal;

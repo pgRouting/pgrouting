@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./edges_input.h"
 
 
+#if 0
 static
 bool has_reverse_cost() {
     PGR_DBG("Checking for has_rcost");
@@ -50,13 +51,14 @@ bool has_reverse_cost() {
         return true;
     }
 }
-
+#endif
 
 
 /********************
   Functions for pgr_foo with sql:
   id, source, target, cost, reverse_cost(optional) 
  ************/
+#if 0
 static
 void pgr_fetch_edge_5_columns_info(
         int (*edge_columns)[5], 
@@ -81,37 +83,40 @@ void pgr_fetch_edge_5_columns_info(
     }
     PGR_DBG("Found has_rcost %i\n", *has_rcost);
 }
+#endif
 
 static
 void pgr_fetch_edge(
         HeapTuple *tuple,
         TupleDesc *tupdesc, 
-        int (*edge_columns)[5],
-        int (*edge_types)[5],
-        pgr_edge_t *target_edge,
-        bool has_rcost,
-        bool ignore_id,
+        Column_info_t info[5],
+        int64_t *default_id,
+        float8 default_rcost,
+        pgr_edge_t *edge,
         int64_t *valid_edges) {
 
-    if (ignore_id) {
-        target_edge->id = -1;
+    if (column_found(info[0].colNumber)) {
+        edge->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     } else {
-        target_edge->id = pgr_SPI_getBigInt(tuple, tupdesc, (*edge_columns)[0], (*edge_types)[0]);
+        edge->id = *default_id;
+        ++(*default_id);
     }
-    target_edge->source = pgr_SPI_getBigInt(tuple, tupdesc, (*edge_columns)[1], (*edge_types)[1]);
-    target_edge->target = pgr_SPI_getBigInt(tuple, tupdesc, (*edge_columns)[2], (*edge_types)[2]);
-    target_edge->cost = pgr_SPI_getFloat8(tuple, tupdesc, (*edge_columns)[3], (*edge_types)[3]);
 
-    PGR_DBG("has_rcost %i\n", has_rcost);
-    if (has_rcost) {
-        target_edge->reverse_cost = pgr_SPI_getFloat8(tuple, tupdesc, (*edge_columns)[4], (*edge_types)[4]);
+    edge->source = pgr_SPI_getBigInt(tuple, tupdesc,  info[1]);
+    edge->target = pgr_SPI_getBigInt(tuple, tupdesc, info[2]);
+    edge->cost = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
+
+    if (column_found(info[4].colNumber)) {
+        PGR_DBG("has_rcost");
+        edge->reverse_cost = pgr_SPI_getFloat8(tuple, tupdesc, info[4]);
     } else {
-        target_edge->reverse_cost = -1.0;
+        edge->reverse_cost = default_rcost;
+        ++(*default_id);
     }
     PGR_DBG("id: %li\t source: %li\ttarget: %li\tcost: %f\t,reverse: %f\n",
-            target_edge->id,  target_edge->source,  target_edge->target,  target_edge->cost,  target_edge->reverse_cost);
-    *valid_edges = target_edge->cost < 0? *valid_edges: *valid_edges + 1;
-    *valid_edges = target_edge->reverse_cost < 0? *valid_edges: *valid_edges + 1;
+            edge->id,  edge->source,  edge->target,  edge->cost,  edge->reverse_cost);
+    *valid_edges = edge->cost < 0? *valid_edges: *valid_edges + 1;
+    *valid_edges = edge->reverse_cost < 0? *valid_edges: *valid_edges + 1;
 }
 
 
@@ -127,7 +132,8 @@ get_data_5_columns(
         bool ignore_id) {
 
     const int tuple_limit = 1000000;
-    bool has_rcost = false;
+//    bool has_rcost = false;
+
 
     PGR_DBG("Entering pgr_get_data");
 
@@ -135,12 +141,34 @@ get_data_5_columns(
     int64_t total_tuples;
     int64_t valid_edges;
 
+    Column_info_t info[5];
+
+    int i;
+    for (i = 0; i < 5; ++i) {
+        info[i].colNumber = -1;
+        info[i].type = -1;
+        info[i].strict = true;
+        info[i].eType = ANY_INTEGER;
+    }
+    info[0].name = strdup("id");
+    info[1].name = strdup("source");
+    info[2].name = strdup("target");
+    info[3].name = strdup("cost");
+    info[4].name = strdup("reverse_cost");
+
+    info[0].strict = !ignore_id;
+    info[4].strict = false;
+
+    info[3].eType = ANY_NUMERICAL;
+    info[4].eType = ANY_NUMERICAL;
+
+#if 0
     int edge_columns[5];
     int edge_types[5];
     int i;
     for (i = 0; i < 5; ++i) edge_columns[i] = -1;
     for (i = 0; i < 5; ++i) edge_types[i] = -1;
-
+#endif
 
     void *SPIplan;
     SPIplan = pgr_SPI_prepare(sql);
@@ -154,11 +182,12 @@ get_data_5_columns(
 
     /*  on the first tuple get the column numbers */
 
+    int64_t default_id = 0;
     PGR_DBG("Starting Cycle");
     while (moredata == TRUE) {
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
         if (total_tuples == 0)
-            pgr_fetch_edge_5_columns_info(&edge_columns, &edge_types, &has_rcost, ignore_id);
+            pgr_fetch_column_info(info, 5);
 
         ntuples = SPI_processed;
         total_tuples += ntuples;
@@ -182,9 +211,10 @@ get_data_5_columns(
             for (t = 0; t < ntuples; t++) {
                 PGR_DBG("   processing %d", t);
                 HeapTuple tuple = tuptable->vals[t];
-                pgr_fetch_edge(&tuple, &tupdesc, &edge_columns, &edge_types,
-                        &(*edges)[total_tuples - ntuples + t], has_rcost,
-                        ignore_id, &valid_edges);
+                pgr_fetch_edge(&tuple, &tupdesc, info,
+                        &default_id, -1,
+                        &(*edges)[total_tuples - ntuples + t],
+                        &valid_edges);
             }
             SPI_freetuptable(tuptable);
         } else {
