@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_WARSHALL_SRC_WARSHALL_DRIVER_H_
-#define SRC_WARSHALL_SRC_WARSHALL_DRIVER_H_
+#ifndef SRC_ALLPAIRS_SRC_FLOYDWARSHALL_DRIVER_H_
+#define SRC_ALLPAIRS_SRC_FLOYDWARSHALL_DRIVER_H_
 
 #include "./../../common/src/pgr_types.h"
 
@@ -38,9 +38,9 @@ extern "C" {
 
 void
 do_pgr_floydWarshall(
-    pgr_edge_t  *data_edges,  // array of id, source, target, cost, reverse_cost
-    size_t total_tuples,     // size of data_edges
-    bool directedFlag,        // to choose undirected or directed
+    pgr_edge_t  *data_edges,
+    size_t total_tuples,
+    bool directedFlag,
 
     // return values
     Matrix_cell_t **ret_matrix,
@@ -51,5 +51,4 @@ do_pgr_floydWarshall(
 }
 #endif
 
-
-#endif  // SRC_WARSHALL_SRC_WARSHALL_DRIVER_H_
+#endif  // SRC_ALLPAIRS_SRC_FLOYDWARSHALL_DRIVER_H_

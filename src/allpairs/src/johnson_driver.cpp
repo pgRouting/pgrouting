@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_allpairs.hpp"
 #include "./johnson_driver.h"
 
-//#define DEBUG
+// #define DEBUG
 
 extern "C" {
 #include "./../../common/src/pgr_types.h"
@@ -53,10 +53,9 @@ do_pgr_johnson(
         bool directed,
         Matrix_cell_t **return_tuples,
         size_t *return_count,
-        char ** err_msg){
+        char **err_msg) {
   std::ostringstream log;
   try {
-
     if (total_tuples == 1) {
       log << "Requiered: more than one tuple\n";
       (*return_tuples) = NULL;
@@ -87,16 +86,14 @@ do_pgr_johnson(
       *err_msg = strdup(log.str().c_str());
       (*return_tuples) = NULL;
       (*return_count) = 0;
-      return ;
+      return;
     }
-
 
     #ifndef DEBUG
       *err_msg = strdup("OK");
     #else
       *err_msg = strdup(log.str().c_str());
     #endif
-
   } catch ( ... ) {
     log << "Caught unknown expection!\n";
     *err_msg = strdup(log.str().c_str());

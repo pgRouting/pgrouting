@@ -27,8 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_JOHNSON_SRC_JOHNSON_DRIVER_H_
-#define SRC_JOHNSON_SRC_JOHNSON_DRIVER_H_
+#pragma once
 
 #include "./../../common/src/pgr_types.h"
 
@@ -50,5 +49,3 @@ do_pgr_johnson(
 #ifdef __cplusplus
 }
 #endif
-
-#endif  // SRC_JOHNSON_SRC_JOHNSON_DRIVER_H_
