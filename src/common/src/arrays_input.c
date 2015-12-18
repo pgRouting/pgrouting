@@ -69,7 +69,7 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     (*arrlen) = n;
 
     if (ndims != 1) {
-        elog(ERROR, "Expected one dimention expected");
+        elog(ERROR, "One dimention expected");
     }
 
     /* get src data */
@@ -80,7 +80,7 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     data = (int64_t *) malloc((*arrlen) * sizeof(int64_t));
 
     if (!data) {
-        elog(ERROR, "Error: Out of memory!");
+        elog(ERROR, "Out of memory!");
     }
 
     PGR_DBG("array size %ld", (*arrlen));

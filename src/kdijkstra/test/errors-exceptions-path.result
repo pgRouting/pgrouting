@@ -1,0 +1,30 @@
+1..29
+ok 1 - From 2 to 3 returns the same result as pgr_dijkstra(one to many)
+ok 2 - Gives a record when no path is found from v to v
+ok 3 - It is the union
+ok 4 - Gives a record when no path is found from u to v
+ok 5 - Only ONE target is found: Code link: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L790
+ok 6 - Several targets are the same: Code link: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L790
+ok 7 - None of the targets are found Code link: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L794
+ok 8 - Start vertex does exist in the edges: Code Link: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L784
+ok 9 - id is not int
+ok 10 - source is int
+ok 11 - target is int
+ok 12 - cost is float
+ok 13 - reverse_cost is float
+ok 14 - Throws because an array was not given
+ok 15 - Throws because a NOT int was was given as starting vertex
+ok 16 - Throws because the array has data that is integer
+ok 17 - Throws because its not a 1 dimention array: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L131
+ok 18 - Throws because its missing id: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L214
+ok 19 - Throws because its missing source: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L214
+ok 20 - Throws because its missing target: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L214
+ok 21 - Throws because its missing cost: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L214
+ok 22 - Throws because the arrays are of big int
+ok 23 - Throws because unsalvable contradiction: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L237
+ok 24 - Does throw when salvable contradiction
+ok 25 - Throws because source has a null: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L267
+ok 26 - Throws because id has a null: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L267
+ok 27 - Throws because target has a null: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L272
+ok 28 - Throws because cost has a null: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L277
+ok 29 - Throws because reverse_cost has a null: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L285

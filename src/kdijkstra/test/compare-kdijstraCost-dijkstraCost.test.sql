@@ -20,12 +20,14 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+
 /*
 This test is for the equivalence of 
 pgr_ kdijstraCost with pgr_dijkstraCost one to many
 with
 one to many dijkstra
 */
+
 \set ECHO none
 \set QUIET 1
 -- Turn off echo and keep things quiet.
