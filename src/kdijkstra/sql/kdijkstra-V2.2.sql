@@ -21,26 +21,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/*
-CREATE OR REPLACE FUNCTION pgr_kdijkstrapath(
-    sql text,
-    source_vid integer,
-    target_vid integer array,
-    directed boolean,
-    has_reverse_cost boolean)
-    RETURNS SETOF pgr_costResult3
-    AS '$libdir/${PGROUTING_LIBRARY_NAME}', 'onetomany_dijkstra_path'
-    LANGUAGE C STABLE STRICT;
-CREATE OR REPLACE FUNCTION pgr_kdijkstracost(
-    sql text,
-    source_vid integer,
-    target_vid integer array,
-    directed boolean,
-    has_reverse_cost boolean)
-    RETURNS SETOF pgr_costResult
-    AS '$libdir/${PGROUTING_LIBRARY_NAME}', 'onetomany_dijkstra_dist'
-    LANGUAGE C STABLE STRICT;
-*/
 
 CREATE OR REPLACE FUNCTION pgr_kdijkstraPath(
     sql text,
@@ -80,10 +60,7 @@ CREATE OR REPLACE FUNCTION pgr_kdijkstraPath(
         FOR result IN 
             SELECT seq, a.end_vid::INTEGER AS id1, a.node::INTEGER AS i2, a.edge::INTEGER AS id3, cost
             FROM pgr_dijkstra(new_sql, source, targets, directed) a ORDER BY a.end_vid, seq LOOP
-            --raise notice 'id1:%     id2:% id3:% cost:%',  result.id1, result.id2, result.id3, result.cost;
             WHILE (result.id1 != targets[i]) LOOP
-                --raise notice 'we didnt find the target so need to put the record for no path found';
-                --raise notice '%: targets:% result: id1%', i, targets[i], result.id1;
                 tmp.seq = sseq;
                 tmp.id1 = targets[i];
                 IF (targets[i] = source) THEN
@@ -99,14 +76,12 @@ CREATE OR REPLACE FUNCTION pgr_kdijkstraPath(
                 sseq = sseq + 1;
             END LOOP;
         IF (result.id1 = targets[i] AND result.id3 != -1) THEN
-            --raise notice 'we are working on %', targets[i];
             result.seq = sseq;
             RETURN next result;
             sseq = sseq + 1;
             CONTINUE;
         END IF;
         IF (result.id1 = targets[i] AND result.id3 = -1) THEN
-            --raise notice 'we are working on the last record of %', targets[i];
             result.seq = sseq;
             RETURN next result;
             i = i + 1;
@@ -115,8 +90,6 @@ CREATE OR REPLACE FUNCTION pgr_kdijkstraPath(
         END IF;
     END LOOP;
     WHILE (i <= array_length(targets,1)) LOOP
-        -- we didnt find the target so need to put the record for no path found
-        --raise notice '%: not found targets:%', i, targets[i];
         tmp.seq = sseq;
         tmp.id1 = targets[i];
         IF (targets[i] = source) THEN
@@ -179,10 +152,7 @@ BEGIN
     FOR result IN 
         SELECT ((row_number() over()) -1)::INTEGER, a.start_vid::INTEGER, a.end_vid::INTEGER, agg_cost
         FROM pgr_dijkstraCost(new_sql, source, targets, directed) a ORDER BY end_vid LOOP
-        -- raise notice 'id1:%     id2:% cost:%',  result.id1, result.id2, result.cost;
         WHILE (result.id2 != targets[i]) LOOP
-            -- raise notice 'we didnt find the target so need to put the record for no path found';
-            -- raise notice '%: targets:% result: id1%', i, targets[i], result.id2;
             tmp.seq = sseq;
             tmp.id1 = source;
             tmp.id2 = targets[i];
@@ -196,7 +166,6 @@ BEGIN
             sseq = sseq + 1;
         END LOOP;
         IF (result.id2 = targets[i]) THEN
-            -- raise notice 'we are working on %', targets[i];
             result.seq = sseq;
             RETURN next result;
             i = i + 1;
@@ -204,8 +173,6 @@ BEGIN
         END IF;
     END LOOP;
     WHILE (i <= array_length(targets,1)) LOOP
-        -- raise notice 'we didnt find the target so need to put the record for no path found';
-        -- raise notice '%: targets:% result: id1%', i, targets[i], result.id1;
         tmp.seq = sseq;
         tmp.id1 = source;
         tmp.id2 = targets[i];
