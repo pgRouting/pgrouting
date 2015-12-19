@@ -372,7 +372,8 @@ int GraphDefinition::my_dijkstra(int start_vertex, int end_vertex, unsigned int 
     {
     *err_msg = (char *)"Path Not Found";
     deleteall();
-    return -1;
+    //return -1;
+    return 0;
     }
     else
     {
@@ -664,8 +665,11 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
             }
         }
         *err_msg = (char *)"Path Not Found";
+        *path=NULL;
+        path_count=0;
         deleteall();
-        return -1;
+       // return -1; previous
+        return 0;
     }
     else
     {

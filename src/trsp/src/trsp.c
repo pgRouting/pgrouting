@@ -521,6 +521,8 @@ static int compute_trsp(
                         start_id, end_id,
                         directed, has_reverse_cost,
                         path, path_count, &err_msg);
+
+
   }
   else {
       DBG("Calling trsp_edge_wrapper\n");
@@ -555,7 +557,13 @@ static int compute_trsp(
       ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED), 
         errmsg("Error computing path: %s", err_msg)));
     } 
-    
+    else 
+    {
+      if (strcmp(err_msg,"Path Not Found")==0)
+      {
+        elog(NOTICE,"Path Not Found\n");
+      }
+    }
   return finish(SPIcode, ret);
 }
 
