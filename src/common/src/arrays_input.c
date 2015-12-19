@@ -69,7 +69,7 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     (*arrlen) = n;
 
     if (ndims != 1) {
-        elog(ERROR, "One dimention expected");
+        elog(ERROR, "One dimension expected");
     }
 
     /* get src data */

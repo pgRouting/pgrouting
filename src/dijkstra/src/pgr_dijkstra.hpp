@@ -447,11 +447,11 @@ Pgr_dijkstra< G >::get_cost(
 
     // no path was found
     if (target == predecessors[target]) {
-        if (from == to) {
-            path.push_front(1, from, to, graph.graph[target].id, -1, 0, 0);
-        } else {
+        //if (from == to) {
+        //    path.push_front(1, from, to, graph.graph[target].id, -1, 0, 0);
+        //} else {
             path.clear();
-        }
+        //}
     } else {
         path.push_front(
                 1,

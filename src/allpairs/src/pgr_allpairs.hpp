@@ -279,6 +279,7 @@ Pgr_allpairs< G >::make_result(
     size_t seq = 0;
     for (size_t i = 0; i < graph.num_vertices(); i++) {
         for (size_t j = 0; j < graph.num_vertices(); j++) {
+            if (i == j) continue;
             if (matrix[i][j] != std::numeric_limits<double>::max()) {
                 (*postgres_rows)[seq].from_vid = graph.graph[i].id;
                 (*postgres_rows)[seq].to_vid = graph.graph[j].id;

@@ -67,6 +67,11 @@ do_pgr_one_to_many_dijkstra(
     log << "Inserting vertices into a c++ vector structure\n";
     std::vector< int64_t > end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
 
+#ifdef DEBUG
+    for (auto vid : end_vertices) {
+        log << vid << ",";
+    }
+#endif
 
     if (directed) {
         log << "Working with directed Graph\n";
@@ -83,6 +88,11 @@ do_pgr_one_to_many_dijkstra(
     size_t count(0);
     count = count_tuples(paths);
 
+#ifdef DEBUG
+    for (auto path : paths) {
+        path.print_path(log);
+    }
+#endif
 
     if (count == 0) {
         (*return_tuples) = NULL;

@@ -66,7 +66,8 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
           EXCEPTION
             WHEN OTHERS THEN
                 RAISE EXCEPTION 'An expected column was not found in the query'
-                  USING HINT = 'Please veryfy the column names: id, source, target, cost';
+                  USING ERRCODE = 'XX000',
+                   HINT = 'Please veryfy the column names: id, source, target, cost';
         END;
         execute 'select pg_typeof(id)::text as id_type, pg_typeof(source)::text as source_type, pg_typeof(target)::text as target_type, pg_typeof(cost)::text as cost_type'
             || ' from ('||safesql||') AS __b__ ' into rec;
@@ -89,7 +90,8 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
           EXCEPTION
             WHEN OTHERS THEN
                 RAISE EXCEPTION 'An expected column was not found in the query'
-                  USING HINT = 'Please veryfy the column names: id, source, target, cost';
+                  USING HINT = 'Please veryfy the column names: id, source, target, cost',
+                         ERRCODE = 'XX000';
         END;
 
         execute 'select pg_typeof(source)::text as source_type, pg_typeof(target)::text as target_type, pg_typeof(cost)::text as cost_type'
@@ -98,7 +100,8 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
         IF NOT(   (rec.source_type in ('integer'::text))
               AND (rec.target_type in ('integer'::text))
               AND (rec.cost_type = 'double precision'::text)) THEN
-            RAISE EXCEPTION 'Support for source,target columns only of type: integer. Support for Cost: double precision';
+            RAISE EXCEPTION 'Support for source,target columns only of type: integer. Support for Cost: double precision'
+            USING ERRCODE = 'XX000';
         END IF;
     END IF;
 
@@ -117,11 +120,13 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
       if (has_rcost) then
         IF (big) then
            IF  not (rec1.rev_type in ('bigint'::text, 'integer'::text, 'smallint'::text, 'double precision'::text, 'real'::text)) then
-             RAISE EXCEPTION 'Illegar type in optional parameter reverse_cost.';
+             RAISE EXCEPTION 'Illegar type in optional parameter reverse_cost.'
+             USING ERRCODE = 'XX000';
            END IF;
         ELSE -- Version 2.0.0 is more restrictive
            IF (rec1.rev_type != 'double precision') then
-             RAISE EXCEPTION 'Illegal type in optimal parameter reverse_cost, expected: double precision';
+             RAISE EXCEPTION 'Illegal type in optional parameter reverse_cost, expected: double precision'
+             USING ERRCODE = 'XX000';
            END IF;
         END IF;
       end if;

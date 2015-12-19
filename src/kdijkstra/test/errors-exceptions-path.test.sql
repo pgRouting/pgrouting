@@ -56,7 +56,7 @@ BEGIN;
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY ID',
             2, ARRAY[3], true, true);
         PREPARE q2 AS
-        SELECT  seq, end_vid, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
+        SELECT seq-1,  end_vid::INTEGER, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY ID',
             2, ARRAY[3], true);
 
@@ -68,7 +68,7 @@ BEGIN;
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY ID',
             2, ARRAY[2], true, true);
         PREPARE q4 AS
-        SELECT 0::INTEGER AS seq, 2::INTEGER AS id1, 2::INTEGER as id2, -1::INTEGER as id3, 0::FLOAT as cost;
+        SELECT 0::INTEGER AS seq, 2::INTEGER AS id1, 2::INTEGER as id2, -1::INTEGER as id3, -1::FLOAT as cost;
         SELECT set_eq('q3', 'q4','Gives a record when no path is found from v to v');
 
         PREPARE q5 AS
@@ -81,7 +81,7 @@ BEGIN;
                     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY ID',
                     2, ARRAY[3], true, true))
             UNION ALL
-            (SELECT 0::INTEGER AS seq, 2::INTEGER AS id1, 2::INTEGER as id2, -1::INTEGER as id3, 0::FLOAT as cost))
+            (SELECT 0::INTEGER AS seq, 2::INTEGER AS id1, 2::INTEGER as id2, -1::INTEGER as id3, -1::FLOAT as cost))
         SELECT id1,id2,id3,cost FROM the_union;
         SELECT set_eq('q5', 'q6','It is the union');
 
@@ -101,50 +101,49 @@ BEGIN;
 
         -- BASED ON THE CODE'S INTENTIONS
 
+        --  Code link: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L790');
         PREPARE q9 AS
         SELECT * FROM pgr_kdijkstraPath(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY ID',
             2, ARRAY[2, 18, 3], true, true);
-        SELECT throws_ok('q9','XX000',
-            'One of the target vertices was not found or several targets are the same.',
-            'Only ONE target is not found: Code link: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L790');
+        SELECT lives_ok('q9',
+            'Not documented: When a target is not found there is no path, So returns -1 in cost');
 
+        -- Code link: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L790');
         PREPARE q10 AS
         SELECT * FROM pgr_kdijkstraPath(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY ID',
             18, ARRAY[2, 7, 5, 7], true, true);
-        SELECT throws_ok('q10','XX000',
-            'One of the target vertices was not found or several targets are the same.',
-            'Several targets are the same: Code link: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L790');
+        SELECT lives_ok('q10',
+            'Several targets are the same: returns all values');
 
+        -- Code link: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L794');
         PREPARE q11 AS
         SELECT * FROM pgr_kdijkstraPath(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY ID',
-            2, ARRAY[18, 19, 20], true, true);
-        SELECT throws_ok('q11','XX000',
-            'None of the target vertices has been found; aborting!',
-            'None of the targets are found Code link: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L794');
+            2, ARRAY[18, 19, 20, 2], true, true);
+        SELECT lives_ok('q11',
+            'None of the target vertices has been found; all costs must have a -1 (except for v,v)');
 
+        -- Code Link: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L784');
         PREPARE q12 AS
         SELECT * FROM pgr_kdijkstraPath(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY ID',
             18, ARRAY[2], true, true);
-        SELECT throws_ok('q12','XX000',
-            'Start vertex was not found.',
-            'Start vertex does not exist in the edges: Code Link: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L784');
+        SELECT lives_ok('q12',
+            'Start vertex does not exist in the edges: all cost must have a -1');
 
 
 
 
          
         -- BASED ON THE DOCUMENTATION
+        --Throws because id is not int');
         PREPARE doc11 AS
         SELECT * FROM pgr_kdijkstraPath(
             'SELECT id::BIGINT, source, target, cost, reverse_cost FROM edge_table ORDER BY ID',
             2, ARRAY[3], true, true);
-        SELECT throws_ok('doc11','XX000',
-            'Column id must be of type int4',
-            'id is not int');
+        SELECT throws_ok('doc11', 'XX000');
 
         PREPARE doc12 AS
         SELECT * FROM pgr_kdijkstraPath(
@@ -152,7 +151,7 @@ BEGIN;
             2, ARRAY[3], true, true);
         SELECT throws_ok('doc12','XX000',
             'Error, columns ''source'', ''target'' must be of type int4, ''cost'' must be of type float8',
-            'source is not int');
+            '10: Throws when source is not int');
 
         PREPARE doc13 AS
         SELECT * FROM pgr_kdijkstraPath(
@@ -160,7 +159,7 @@ BEGIN;
             2, ARRAY[3], true, true);
         SELECT throws_ok('doc13','XX000',
             'Error, columns ''source'', ''target'' must be of type int4, ''cost'' must be of type float8',
-            'target is not int');
+            '11: Throws when target is not int');
 
         PREPARE doc14 AS
         SELECT * FROM pgr_kdijkstraPath(
@@ -168,15 +167,13 @@ BEGIN;
             2, ARRAY[3], true, true);
         SELECT throws_ok('doc14','XX000',
             'Error, columns ''source'', ''target'' must be of type int4, ''cost'' must be of type float8',
-            'cost is not float');
+            '12: Throws when cost is not float');
 
         PREPARE doc15 AS
         SELECT * FROM pgr_kdijkstraPath(
             'SELECT id, source, target, cost, reverse_cost::INTEGER FROM edge_table ORDER BY ID',
             2, ARRAY[3], true, true);
-        SELECT throws_ok('doc15','XX000',
-            'Error, columns ''reverse_cost'' must be of type float8',
-            'reverse_cost is not float');
+        SELECT throws_ok('doc15','XX000');
 
 
         SELECT throws_ok(
@@ -184,9 +181,9 @@ BEGIN;
             SELECT * FROM pgr_kdijkstraPath(
                 ''SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id'',
                 2, 3, true, true);
-            '
+            ',
             '42883','function pgr_kdijkstrapath(unknown, integer, integer, boolean, boolean) does not exist',
-            'Throws because an array was not given');
+            '14: Throws because an array was not given');
 
         SELECT throws_ok(
             '
@@ -195,7 +192,7 @@ BEGIN;
                 2::BIGINT, ARRAY[3], true, true);
             ',
             '42883','function pgr_kdijkstrapath(unknown, bigint, integer[], boolean, boolean) does not exist',
-            'Throws because a NOT int was was given as starting vertex');
+            '15: Throws because a NOT int was was given as starting vertex');
 
         -- BASED ON THE CODE'S INTENTIONS
 
@@ -208,52 +205,51 @@ BEGIN;
                 2, ARRAY[3::BIGINT], true, true);
             ',
             '42883','function pgr_kdijkstrapath(unknown, integer, bigint[], boolean, boolean) does not exist',
-            'Throws because the array has data that is not integer');
+            '16: Throws because the array has data that is not integer');
 
+        -- Throws because its not a 1 dimension array: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L131');
         SELECT throws_ok(
             '
             SELECT * FROM pgr_kdijkstraPath(
                 ''SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id'',
                 2, ARRAY[[1,2],[3,4]], true, true);
-            ',
-            'XX000','target must be integer[]',
-            'Throws because its not a 1 dimention array: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L131');
+            ', 'XX000');
 
+        --   'Throws because its missing id: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L214');
         SELECT throws_ok(
             '
             SELECT * FROM pgr_kdijkstraPath(
                 ''SELECT source, target, cost, reverse_cost FROM edge_table ORDER BY id'',
                 2, ARRAY[3], true, true);
             ',
-            'XX000','Error, query must return columns ''id'', ''source'', ''target'' and ''cost''',
-            'Throws because its missing id: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L214');
+            'XX000');
 
+        --    'Throws because its missing source: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L214');
         SELECT throws_ok(
             '
             SELECT * FROM pgr_kdijkstraPath(
                 ''SELECT id, target, cost, reverse_cost FROM edge_table ORDER BY id'',
                 2, ARRAY[3], true, true);
             ',
-            'XX000','Error, query must return columns ''id'', ''source'', ''target'' and ''cost''',
-            'Throws because its missing source: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L214');
+            'XX000');
 
+        --    'Throws because its missing target: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L214');
         SELECT throws_ok(
             '
             SELECT * FROM pgr_kdijkstraPath(
                 ''SELECT id, source, cost, reverse_cost FROM edge_table ORDER BY id'',
                 2, ARRAY[3], true, true);
             ',
-            'XX000','Error, query must return columns ''id'', ''source'', ''target'' and ''cost''',
-            'Throws because its missing target: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L214');
+            'XX000');
 
+        --    'Throws because its missing cost: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L214');
         SELECT throws_ok(
             '
             SELECT * FROM pgr_kdijkstraPath(
                 ''SELECT id, target, source, reverse_cost FROM edge_table ORDER BY id'',
                 2, ARRAY[3], true, true);
             ',
-            'XX000','Error, query must return columns ''id'', ''source'', ''target'' and ''cost''',
-            'Throws because its missing cost: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L214');
+            'XX000');
 
 
         SELECT throws_ok(
@@ -263,7 +259,7 @@ BEGIN;
                 2, ARRAY[3]::BIGINT[], true, true);
             ',
             '42883','function pgr_kdijkstrapath(unknown, integer, bigint[], boolean, boolean) does not exist',
-            'Throws because the arrays are of big int');
+            '22: Throws because the arrays are of big int');
 
         SELECT throws_ok(
             '
@@ -271,8 +267,8 @@ BEGIN;
                 ''SELECT id, source, target, cost FROM edge_table ORDER BY id'',
                 2, ARRAY[3], true, true);
             ',
-            '42883','Error, reverse_cost is used, but query did''t return ''reverse_cost'' column',
-            'Throws because unsalvable contradiction: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L237');
+            'XX000','Error, reverse_cost is used, but query did''t return ''reverse_cost'' column',
+            '23: Throws because unsalvable contradiction: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L237');
 
         SELECT lives_ok(
             '
@@ -280,9 +276,11 @@ BEGIN;
                 ''SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id'',
                 2, ARRAY[3], true, false);
             ',
-            'Does not throw when salvable contradiction');
+            '24: Does not throw when salvable contradiction');
 
 
+        -- TROWS because of null values
+        -- https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L285');
         UPDATE edge_table SET source = NULL WHERE id = 1;
 
         SELECT throws_ok(
@@ -291,8 +289,7 @@ BEGIN;
                 ''SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id'',
                 2, ARRAY[3], true, true);
             ',
-            'XX000','source contains a null value',
-            'Throws because source has a null: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L267');
+            'XX000');
 
         SELECT throws_ok(
             '
@@ -300,8 +297,7 @@ BEGIN;
                 ''SELECT source AS id, source, target, cost, reverse_cost FROM edge_table ORDER BY id'',
                 2, ARRAY[3], true, true);
             ',
-            'XX000','id contains a null value',
-            'Throws because id has a null: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L267');
+            'XX000');
 
 
 
@@ -313,8 +309,7 @@ BEGIN;
                 ''SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id'',
                 2, ARRAY[3], true, true);
             ',
-            'XX000','target contains a null value',
-            'Throws because target has a null: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L272');
+            'XX000');
 
 
 
@@ -326,8 +321,7 @@ BEGIN;
                 ''SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id'',
                 2, ARRAY[3], true, true);
             ',
-            'XX000','cost contains a null value',
-            'Throws because cost has a null: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L277');
+            'XX000');
 
 
 
@@ -339,8 +333,7 @@ BEGIN;
                 ''SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id'',
                 2, ARRAY[3], true, true);
             ',
-            'XX000','reverse_cost contains a null value',
-            'Throws because reverse_cost has a null: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L285');
+            'XX000');
 
         UPDATE edge_table SET reverse_cost = 1 WHERE id = 1;
 
