@@ -256,6 +256,7 @@ Pgr_allpairs< G >::count_rows(
     size_t result_tuple_count = 0;
     for (size_t i = 0; i < graph.num_vertices(); i++) {
         for (size_t j = 0; j < graph.num_vertices(); j++) {
+            if (i == j) continue;
             if (matrix[i][j] != std::numeric_limits<double>::max()) {
                 result_tuple_count++;
             }  // if

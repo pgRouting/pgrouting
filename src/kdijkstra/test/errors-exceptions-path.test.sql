@@ -68,7 +68,7 @@ BEGIN;
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY ID',
             2, ARRAY[2], true, true);
         PREPARE q4 AS
-        SELECT 0::INTEGER AS seq, 2::INTEGER AS id1, 2::INTEGER as id2, -1::INTEGER as id3, -1::FLOAT as cost;
+        SELECT 0::INTEGER AS seq, 2::INTEGER AS id1, 2::INTEGER as id2, -1::INTEGER as id3, 0::FLOAT as cost;
         SELECT set_eq('q3', 'q4','Gives a record when no path is found from v to v');
 
         PREPARE q5 AS
@@ -81,7 +81,7 @@ BEGIN;
                     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY ID',
                     2, ARRAY[3], true, true))
             UNION ALL
-            (SELECT 0::INTEGER AS seq, 2::INTEGER AS id1, 2::INTEGER as id2, -1::INTEGER as id3, -1::FLOAT as cost))
+            (SELECT 0::INTEGER AS seq, 2::INTEGER AS id1, 2::INTEGER as id2, -1::INTEGER as id3, 0::FLOAT as cost))
         SELECT id1,id2,id3,cost FROM the_union;
         SELECT set_eq('q5', 'q6','It is the union');
 

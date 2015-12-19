@@ -70,31 +70,31 @@ BEGIN;
         FOR i IN 1.. cant LOOP
                 inner_sql := 'select id, source, target, cost, reverse_cost from edge_table';
                 sql_kdc := 'SELECT id1, id2, cost from pgr_kdijkstraCost(' || quote_literal(inner_sql) || ', '
-                    || i || ', ' || arrayData || ', ' ||  directed || ', ' || TRUE || ') where cost >= 0';
+                    || i || ', ' || arrayData || ', ' ||  directed || ', ' || TRUE || ')';
 
                 sql_dc := 'SELECT start_vid::INTEGER, end_vid::INTEGER, agg_cost from pgr_dijkstraCost(' || quote_literal(inner_sql) || ', '
                     || i || ', ' || arrayData || ', ' ||  directed || ')';
 
                 msg:= count || gtype || ': Directed with reverse cost start:' || i || ' test 1' ;
-                RETURN query SELECT set_eq(sql_kdc, sql_dc, msg);
+                RETURN query SELECT set_has(sql_kdc, sql_dc, msg);
                 count := count + 1;
 
                 sql_kdc := 'SELECT id1, id2, cost from pgr_kdijkstraCost(' || quote_literal(inner_sql) || ', '
-                    || i || ', ' || arrayData || ', ' ||  directed || ', ' || FALSE || ') where cost >= 0';
+                    || i || ', ' || arrayData || ', ' ||  directed || ', ' || FALSE || ')';
 
                 inner_sql := 'select id, source, target, cost from edge_table';
                 sql_dc := 'SELECT start_vid::INTEGER, end_vid::INTEGER, agg_cost from pgr_dijkstraCost(' || quote_literal(inner_sql) || ', '
                     || i || ', ' || arrayData || ', ' ||  directed || ')';
 
                 msg:= count || gtype || ' with reverse cost but dont want reverse cost start: ' || i || ' test 2' ;
-                RETURN query SELECT set_eq( sql_kdc, sql_dc, msg);
+                RETURN query SELECT set_has( sql_kdc, sql_dc, msg);
                 count := count + 1;
 
                 sql_kdc := 'SELECT id1, id2, cost from pgr_kdijkstraCost(' || quote_literal(inner_sql) || ', '
-                    || i || ', ' || arrayData || ', ' ||  directed || ', ' || FALSE || ') where cost >= 0';
+                    || i || ', ' || arrayData || ', ' ||  directed || ', ' || FALSE || ')';
 
                 msg:= count || gtype ||' No reverse cost start:'  || i || ' test 3' ;
-                RETURN query SELECT set_eq( sql_kdc, sql_dc, msg);
+                RETURN query SELECT set_has( sql_kdc, sql_dc, msg);
                 count := count + 1;
 
     END LOOP;
