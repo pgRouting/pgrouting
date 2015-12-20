@@ -52,74 +52,58 @@ do_pgr_driving_many_to_dist(
         General_path_element_t **ret_path, size_t *path_count,
         char ** err_msg) {
     try {
-        // in c code this should this must have been checked:
-        //  1) end_vertex is in the data_edges
-
-        #if 0  // set to 1 if needed
-        std::ostringstream log;
-        #endif
-
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
         const int initial_size = total_tuples;
 
         std::deque< Path >paths;
-        typedef boost::adjacency_list < boost::vecS, boost::vecS,
-            boost::undirectedS,
-            boost_vertex_t, boost_edge_t > UndirectedGraph;
-        typedef boost::adjacency_list < boost::vecS, boost::vecS,
-            boost::bidirectionalS,
-            boost_vertex_t, boost_edge_t > DirectedGraph;
+        std::set< int64_t > start_vertices(start_vertex, start_vertex + s_len);
 
-        std::vector< int64_t > start_vertices(start_vertex, start_vertex + s_len);
-
-    if (directedFlag) {
-      Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
-      digraph.graph_insert_data(data_edges, total_tuples);
-      pgr_drivingDistance(digraph, paths, start_vertices, distance);
-    } else {
-      Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
-      undigraph.graph_insert_data(data_edges, total_tuples);
-      pgr_drivingDistance(undigraph, paths, start_vertices, distance);
-    }
+        if (directedFlag) {
+            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            digraph.graph_insert_data(data_edges, total_tuples);
+            pgr_drivingDistance(digraph, paths, start_vertices, distance);
+        } else {
+            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            undigraph.graph_insert_data(data_edges, total_tuples);
+            pgr_drivingDistance(undigraph, paths, start_vertices, distance);
+        }
 
         if (equiCostFlag == false) {
             size_t count(count_tuples(paths));
             if (count == 0) {
-              *err_msg = strdup("NOTICE: No return values was found");
-              *ret_path = noResult(path_count, (*ret_path));
-              return;
+                *err_msg = strdup("NOTICE: No return values was found");
+                *ret_path = noResult(path_count, (*ret_path));
+                return;
             }
             *ret_path = get_memory(count, (*ret_path));
             int trueCount(collapse_paths(ret_path, paths));
             *path_count = trueCount;
-            // assert (count == trueCount);
 
         } else {
             Path path = equi_cost(paths);
             size_t count(path.size());
             if (count == 0) {
-              *err_msg = strdup("NOTICE: No return values was found");
-              *ret_path = noResult(path_count, (*ret_path));
-              return ;
+                *err_msg = strdup("NOTICE: No return values was found");
+                *ret_path = noResult(path_count, (*ret_path));
+                return ;
             }
             size_t trueCount = 0;
             *ret_path = get_memory(count, (*ret_path));
             path.generate_postgres_data(ret_path, trueCount);
             *path_count = trueCount;
-            // assert (count == trueCount);
         }
 
-      #if 1
+#ifndef DEBUG
         *err_msg = strdup("OK");
-        #else
+#else
         *err_msg = strdup(log.str().c_str());
-        #endif
+#endif
         return;
 
     } catch ( ... ) {
-     *err_msg = strdup("Caught unknown expection!");
-     *ret_path = noResult(path_count, (*ret_path));
-     return;
+        *err_msg = strdup("Caught unknown expection!");
+        *ret_path = noResult(path_count, (*ret_path));
+        return;
     }
 }
 
@@ -131,14 +115,14 @@ do_pgr_driving_many_to_dist(
 
 void
 do_pgr_driving_distance(
-  pgr_edge_t  *data_edges,
-  int64_t     total_edges,
-  int64_t     start_vertex,
-  float8      distance,
-  bool        directedFlag,
-  General_path_element_t **ret_path,
-  size_t                  *path_count,
-  char                   **err_msg) {
+        pgr_edge_t  *data_edges,
+        int64_t     total_edges,
+        int64_t     start_vertex,
+        float8      distance,
+        bool        directedFlag,
+        General_path_element_t **ret_path,
+        size_t                  *path_count,
+        char                   **err_msg) {
     std::ostringstream log;
     try {
         // if it already has values there will be a leak
@@ -156,15 +140,15 @@ do_pgr_driving_distance(
 
 
         if (directedFlag) {
-          log << "NOTICE: Processing Directed graph\n";
-          Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
-          digraph.graph_insert_data(data_edges, total_edges);
-          pgr_drivingDistance(digraph, path, start_vertex, distance);
+            log << "NOTICE: Processing Directed graph\n";
+            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            digraph.graph_insert_data(data_edges, total_edges);
+            pgr_drivingDistance(digraph, path, start_vertex, distance);
         } else {
-          log << "NOTICE: Processing Undirected graph\n";
-          Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
-          undigraph.graph_insert_data(data_edges, total_edges);
-          pgr_drivingDistance(undigraph, path, start_vertex, distance);
+            log << "NOTICE: Processing Undirected graph\n";
+            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            undigraph.graph_insert_data(data_edges, total_edges);
+            pgr_drivingDistance(undigraph, path, start_vertex, distance);
         }
 
         log << "Returning number of tuples" << path.path.size() << "\n";
@@ -179,26 +163,25 @@ do_pgr_driving_distance(
         int count = path.path.size();
 
         log << "NOTICE Count: " << count << " tuples\n";
-    
-        // get the space required to store all the paths
+
         *ret_path = get_memory(count, (*ret_path));
 
         int sequence = 0;
         path.ddPrint(ret_path, sequence, 0);
         *path_count = count;
 
-        #if 0
-            *err_msg = strdup("OK");
-        #else
-            *err_msg = strdup(log.str().c_str());
-        #endif
+#ifndef DEBUG
+        *err_msg = strdup("OK");
+#else
+        *err_msg = strdup(log.str().c_str());
+#endif
 
         return;
     } catch ( ... ) {
-      log << "NOTICE: unknown exception cought";
-      *err_msg = strdup(log.str().c_str());
-      *ret_path = noResult(path_count, (*ret_path));
-      return;
+        log << "NOTICE: unknown exception cought";
+        *err_msg = strdup(log.str().c_str());
+        *ret_path = noResult(path_count, (*ret_path));
+        return;
     }
 }
 

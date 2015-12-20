@@ -142,8 +142,7 @@ These queries uses the :ref:`sampledata` network.
 
 .. rubric:: History
 
-* New in version 2.0.0
-* Rewritten in Version 2.2
+* New in version 2.2.0
 
 See Also
 -------------------------------------------------------------------------------

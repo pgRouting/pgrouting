@@ -9,7 +9,7 @@
 
 .. _pgr_dijkstra_v3:
 
-pgr_dijkstra - Shortest Path Dijkstra
+pgr_dijkstra
 ===============================================================================
 
 ``pgr_dijkstra`` — Returns the shortest path(s) using Dijkstra algorithm.
@@ -30,6 +30,32 @@ a graph with non-negative edge path costs, producing a shortest path from
 a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
 This implementation can be used with a directed graph and an undirected graph.
 
+Characteristics:
+----------------
+
+The main Characteristics are:
+  - Process is done only on edges with positive costs.
+  - Values are returned when there is a path.
+
+    - When the starting vertex and ending vertex are the same, there is no path.
+
+      - The `agg_cost` the non included values `(v, v)` is `0`
+
+    - When the starting vertex and ending vertex are the different and there is no path:
+
+      - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
+
+  - For optimization purposes, any duplicated value in the `start_vids` or `end_vids` is ignored.
+
+  - The returned values are ordered:
+
+    - `start_vid` ascending
+    - `end_vid` ascending
+
+
+  - Runing time: :math:`O(| start\_vids | * (V \log V + E))`
+
+
 Signature Summary
 -----------------
 
@@ -41,7 +67,7 @@ Signature Summary
     pgr_dijkstra(edges_sql, start_vids, end_vid,  directed:=true)
     pgr_dijkstra(edges_sql, start_vids, end_vids, directed:=true)
 
-    RETURNS SET OF (seq ,path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
         OR EMPTY SET
 
 

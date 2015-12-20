@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include "./pgr_dijkstra.hpp"
-#include "./dijkstraViaVertex_driver.h"
+#include "./dijkstraVia_driver.h"
 
 #define DEBUG
 

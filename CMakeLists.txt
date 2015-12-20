@@ -74,7 +74,7 @@ set(PgRouting_SOURCE_NAMES
     "common" "dijkstra"
     "driving_distance" "ksp"
     "allpairs"
-    "dijkstraViaVertex"
+    #    "dijkstraViaVertex"
     "withPoints"
     
     "astar" "bd_astar"

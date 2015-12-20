@@ -67,21 +67,12 @@ do_pgr_many_to_one_dijkstra(
         char ** err_msg) {
     std::ostringstream log;
     try {
-        /*
-           if (total_tuples == 1) {
-           log << "Requiered: more than one tuple\n";
-           (*return_tuples) = NULL;
-           (*return_count) = 0;
-         *err_msg = strdup(log.str().c_str());
-         return;
-         }
-         */
         graphType gType = directed? DIRECTED: UNDIRECTED;
         const int initial_size = total_tuples;
 
         std::deque< Path >paths;
         log << "Inserting vertices into a c++ vector structure\n";
-        std::vector< int64_t > start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
+        std::set< int64_t > start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
 
         if (directed) {
             log << "Working with directed Graph\n";

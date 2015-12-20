@@ -9,9 +9,8 @@
 
 .. _pgr_dijkstraCost:
 
-pgr_dijkstraCost - Cost of Shortest Path Dijkstra
+pgr_dijkstraCost 
 ===============================================================================
-
 
 
 Synopsis
@@ -20,7 +19,7 @@ Synopsis
 ``pgr_dijkstraCost``
 
 Using Dijkstra algorithm implemented by Boost.Graph, and extract only the
-aggregate cost of the shortest path(s) found, for the combination of pairs of vertices given.
+aggregate cost of the shortest path(s) found, for the combination of vertices given.
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
@@ -39,14 +38,17 @@ The main Characteristics are:
   - It does not return a path.
   - Returns the sum of the costs of the shortest path for pair combination of nodes in the graph.
   - Process is done only on edges with positive costs.
-  - When the starting vertex and ending vertex are the same, there is no path, but the aggregate cost
-    is `0`, that value is returned.
+  - Values are returned when there is a path.
 
-    - `(v, v, 0)`
+    - When the starting vertex and ending vertex are the same, there is no path.
 
-  - When there is no path then the aggregate cost is infinity, and the combination is not returned.
+      - The `agg_cost` the non included values `(v, v)` is `0`
 
-    - We return only the non infinity values in form of a set of `(start_vid, end_vid, agg_cost)`.
+    - When the starting vertex and ending vertex are the different and there is no path.
+
+      - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
+
+    - The returned values are in the form of a set of `(start_vid, end_vid, agg_cost)`.
 
   - Let be the case the values returned are stored in a table, so the unique index would be the pair:
     `(start_vid, end_vid)`.
@@ -54,6 +56,13 @@ The main Characteristics are:
   - For undirected graphs, the results are symetric.
 
     - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
+
+  - Any duplicated value in the `start_vids` or `end_vids` is ignored.
+
+  - The returned values are ordered:
+
+    - `start_vid` ascending
+    - `end_vid` ascending
 
   - Runing time: :math:`O(| start\_vids | * (V \log V + E))`
 
@@ -108,17 +117,17 @@ This signature performs a Dijkstra from one ``start_vid`` to one ``end_vid``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
-.. code-block:: sql
+.. code-block:: none
 
-      pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
+    pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
 			 BOOLEAN directed:=true);
-	 RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+	RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 
 .. rubric:: Example
 
 .. literalinclude:: ../test/doc-dijkstraCost.doc.result
-   :start-after: --q2
-   :end-before: --q3
+    :start-after: --q2
+    :end-before: --q3
 
 
 
@@ -130,9 +139,9 @@ pgr_dijkstraCost Many to One
 
 .. code-block:: none
 
-      pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, BIGINT end_vid,
+    pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, BIGINT end_vid,
 			 BOOLEAN directed:=true);
-	 RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+	RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 
 This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
@@ -142,23 +151,23 @@ This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to
 .. rubric:: Example
 
 .. literalinclude:: ../test/doc-dijkstraCost.doc.result
-   :start-after: --q3
-   :end-before: --q4
+    :start-after: --q3
+    :end-before: --q4
 
 
 
 
 .. index::
-	single: dijkstraCost(edges_sql, start_vid, end_vids, directed)
+    single: dijkstraCost(edges_sql, start_vid, end_vids, directed)
 
 pgr_dijkstraCost One to Many
 --------------------------------
 
 .. code-block:: none
 
-       pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, array[ANY_INTEGER] end_vids,
-			 BOOLEAN directed:=true);
-	 RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+    pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, array[ANY_INTEGER] end_vids,
+	    BOOLEAN directed:=true);
+	RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 
 This signature performs a Dijkstra from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
@@ -182,9 +191,9 @@ This signature performs a Dijkstra from one ``start_vid`` to each ``end_vid`` in
 
 .. code-block:: none
 
-       pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, array[ANY_INTEGER] end_vids,
-			 BOOLEAN directed:=true);
-	 RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+    pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, array[ANY_INTEGER] end_vids,
+	    BOOLEAN directed:=true);
+	RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 
 This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
@@ -256,21 +265,28 @@ Column        Type          Description
 Examples
 ========
 
-The examples of this section are based on the :ref:`sampledata` network.
+:Example 1:
+
+Repeated values are ignored, and arrays are sorted
 
 .. literalinclude:: ../test/doc-dijkstraCost.doc.result
-   :start-after: --q6
-   :end-before: --q7
+    :start-after: --q6
+    :end-before: --q7
 
+:Example 2:
 
+`start_vids` are the same as `end_vids`
+
+.. literalinclude:: ../test/doc-dijkstraCost.doc.result
+    :start-after: --q7
+    :end-before: --q8
 
 
 The queries use the :ref:`sampledata` network.
 
 .. rubric:: History
 
-* Renamed in version 2.0.0
-* Added functionality in version 2.1.0
+* New in version  2.2.0
 
 
 See Also

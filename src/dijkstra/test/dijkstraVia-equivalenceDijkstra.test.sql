@@ -64,7 +64,7 @@ FROM data ORDER BY path_id, path_seq;
 PREPARE q2 AS
 SELECT seq, path_id, path_seq, start_vid, end_vid, node,
 CASE WHEN edge = -2 THEN -1 ELSE edge END,
-    cost, agg_cost FROM pgr_dijkstraViaVertex(
+    cost, agg_cost FROM pgr_dijkstraVia(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     array[1, 3, 11]
 );
@@ -72,13 +72,13 @@ CASE WHEN edge = -2 THEN -1 ELSE edge END,
 PREPARE q3 AS
 SELECT seq, path_id, path_seq, start_vid, end_vid, node,
 CASE WHEN edge = -2 THEN -1 ELSE edge END,
-cost, agg_cost FROM pgr_dijkstraViaVertex(
+cost, agg_cost FROM pgr_dijkstraVia(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     array[1, 3, 11],
     TRUE
 );
 
-SELECT set_eq('q1', 'q2', '1: union of dijkstra is the same AS pgr_dijkstraViaVertex');
+SELECT set_eq('q1', 'q2', '1: union of dijkstra is the same AS pgr_dijkstraVia');
 SELECT set_eq('q2', 'q3', '2: with directed:=TRUE is the same AS no flag');
 
 
@@ -109,13 +109,13 @@ FROM data ORDER BY path_id, path_seq;
 PREPARE q12 AS
 SELECT seq, path_id, path_seq, start_vid, end_vid, node,
 CASE WHEN edge = -2 THEN -1 ELSE edge END,
-cost, agg_cost FROM pgr_dijkstraViaVertex(
+cost, agg_cost FROM pgr_dijkstraVia(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     array[1, 3, 11],
     FALSE
 );
 
-SELECT set_eq('q11','q12', '3: union of dijkstra is the same AS pgr_dijkstraViaVertex');
+SELECT set_eq('q11','q12', '3: union of dijkstra is the same AS pgr_dijkstraVia');
 
 
 -- Examples for queries marked AS ``directed`` with ``cost`` column
@@ -142,7 +142,7 @@ FROM data ORDER BY path_id, path_seq;
 PREPARE q22 AS
 SELECT seq, path_id, path_seq, start_vid, end_vid, node,
 CASE WHEN edge = -2 THEN -1 ELSE edge END,
-cost, agg_cost FROM pgr_dijkstraViaVertex(
+cost, agg_cost FROM pgr_dijkstraVia(
     'SELECT id, source, target, cost FROM edge_table',
     array[1, 3, 11]
 );
@@ -150,14 +150,14 @@ cost, agg_cost FROM pgr_dijkstraViaVertex(
 PREPARE q23 AS
 SELECT seq, path_id, path_seq, start_vid, end_vid, node,
 CASE WHEN edge = -2 THEN -1 ELSE edge END,
-cost, agg_cost FROM pgr_dijkstraViaVertex(
+cost, agg_cost FROM pgr_dijkstraVia(
     'SELECT id, source, target, cost FROM edge_table',
     array[1, 3, 11],
     TRUE
 );
 
 
-SELECT set_eq('q21','q22', '4: union of dijkstra is the same AS pgr_dijkstraViaVertex');
+SELECT set_eq('q21','q22', '4: union of dijkstra is the same AS pgr_dijkstraVia');
 SELECT set_eq('q22','q23', '5: with directed:=TRUE is the same AS no flag');
 
 
@@ -188,13 +188,13 @@ PREPARE q32 AS
 SELECT seq, path_id, path_seq, start_vid, end_vid, node,
 CASE WHEN edge = -2 THEN -1 ELSE edge END,
 cost, agg_cost
-FROM pgr_dijkstraViaVertex(
+FROM pgr_dijkstraVia(
     'SELECT id, source, target, cost FROM edge_table',
     array[1, 3, 11],
     FALSE
 );
 
-SELECT set_eq('q31','q32', '6: union of dijkstra is the same AS pgr_dijkstraViaVertex');
+SELECT set_eq('q31','q32', '6: union of dijkstra is the same AS pgr_dijkstraVia');
 
 -- Equvalences between signatures
 ------------------------------
@@ -219,7 +219,7 @@ PREPARE q42 AS
 SELECT seq, path_id, path_seq, start_vid, end_vid, node,
 CASE WHEN edge = -2 THEN -1 ELSE edge END,
 cost, agg_cost
-FROM pgr_dijkstraViaVertex(
+FROM pgr_dijkstraVia(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     array[1, 3, 11]
 );
@@ -227,13 +227,13 @@ PREPARE q43 AS
 SELECT seq, path_id, path_seq, start_vid, end_vid, node,
 CASE WHEN edge = -2 THEN -1 ELSE edge END,
 cost, agg_cost
-FROM pgr_dijkstraViaVertex(
+FROM pgr_dijkstraVia(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     array[1, 3, 11],
     TRUE
 );
 
-SELECT set_eq('q41','q42', '7: union of dijkstra is the same AS pgr_dijkstraViaVertex');
+SELECT set_eq('q41','q42', '7: union of dijkstra is the same AS pgr_dijkstraVia');
 SELECT set_eq('q42','q43', '8: with directed:=TRUE is the same AS no flag');
 
 -- Finish the tests and clean up.

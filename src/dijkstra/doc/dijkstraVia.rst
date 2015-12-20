@@ -7,9 +7,9 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_dijkstraViaVertex:
+.. _pgr_dijkstraVia:
 
-pgr_dijkstraViaVertex - Shortest paths via vertices using dijkstra 
+pgr_dijkstraVia - Shortest paths via vertices using dijkstra 
 ===============================================================================
 
 
@@ -37,32 +37,32 @@ The paths represents the sections of the route.
 Signatures
 ===============================================================================
 
-.. rubric:: pgr_dijkstraViaVertex Minimal signature
+.. rubric:: pgr_dijkstraVia Minimal signature
 
 The minimal signature is for a **directed** graph.
 
 .. index:: 
-	single: pgr_dijkstraViaVertex(edges_sql, vertex_via)
+	single: pgr_dijkstraVia(edges_sql, vertex_via)
 
 .. code-block:: sql
 
-      pgr_dijkstraViaVertex(edges_sql, vertex_via)
+      pgr_dijkstraVia(edges_sql, vertex_via)
        	 RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
                          node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
 
 
-.. rubric:: pgr_dijkstraViaVertex complete signature
+.. rubric:: pgr_dijkstraVia complete signature
 
 This signature works: 
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
 .. index:: 
-	single: pgr_dijkstraViaVertex(edges_sql, vertex_via, directed)
+	single: pgr_dijkstraVia(edges_sql, vertex_via, directed)
 
 .. code-block:: sql
 
-      pgr_dijkstraViaVertex(sql_q text, array[ANY_INTEGER] vertex_via
+      pgr_dijkstraVia(sql_q text, array[ANY_INTEGER] vertex_via
                  boolean directed:=true);
        	 RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
                          node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
@@ -70,7 +70,7 @@ This signature works:
 
 :Example: Find the route that visits the vertices 1 3 9  in that order
 
-.. literalinclude:: ../test/dijkstraViaVertex.doc.result
+.. literalinclude:: ../test/doc-dijkstraVia.doc.result
     :start-after: -- q0
     :end-before: -- q1
 
@@ -138,37 +138,37 @@ Examples
 
 :Example: Find the route that visits the vertices 1 5 3 9 4 in that order
 
-.. literalinclude:: ../test/dijkstraViaVertex.doc.result
+.. literalinclude:: ../test/doc-dijkstraVia.doc.result
     :start-after: -- q1
     :end-before: -- q2
 
 :1: What's the aggregate cost of the third path?
 
-.. literalinclude:: ../test/dijkstraViaVertex.doc.result
+.. literalinclude:: ../test/doc-dijkstraVia.doc.result
     :start-after: -- q2
     :end-before: -- q3
 
 :2: What's the aggregate cost of the route at the end of the third path?
 
-.. literalinclude:: ../test/dijkstraViaVertex.doc.result
+.. literalinclude:: ../test/doc-dijkstraVia.doc.result
     :start-after: -- q3
     :end-before: -- q4
 
 :3: How are the nodes visited in the route?
 
-.. literalinclude:: ../test/dijkstraViaVertex.doc.result
+.. literalinclude:: ../test/doc-dijkstraVia.doc.result
     :start-after: -- q4
     :end-before: -- q5
 
 :4: What are the aggregate costs of the route when the visited vertices are reached?
 
-.. literalinclude:: ../test/dijkstraViaVertex.doc.result
+.. literalinclude:: ../test/doc-dijkstraVia.doc.result
     :start-after: -- q5
     :end-before: -- q6
 
 :5: show the route's seq and aggregate cost and a status of if passes in front or visits node 9
 
-.. literalinclude:: ../test/dijkstraViaVertex.doc.result
+.. literalinclude:: ../test/doc-dijkstraVia.doc.result
     :start-after: -- q6
 
 

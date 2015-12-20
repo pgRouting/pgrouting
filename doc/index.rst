@@ -112,22 +112,34 @@ Routing functions
 
 :ref:`routing_functions`
 
-  -  :ref:`pgr_apspJohnson<pgr_apsp_johnson>` - All Pairs Shortest Path, Johnson’s Algorithm
-  -  :ref:`pgr_apspWarshall<pgr_apsp_warshall>` - All Pairs Shortest Path, Floyd-Warshall Algorithm
-  -  :ref:`pgr_astar<pgr_astar>` - Shortest Path A*
-  -  :ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
-  -  :ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path
-  -  :ref:`pgr_dijkstra<pgr_dijkstra>` - Dijkstra family functions
-  -  :ref:`pgr_driving_distance<pgr_driving_distance>` - Driving Distance
-  -  :ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path Dijkstra
-  -  :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
-  -  :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
-  -  :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
+  - :ref:`pgr_astar<pgr_astar>` - Shortest Path A*
+  - :ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
+  - :ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path
+  - :ref:`pgr_dijkstra<pgr_dijkstra>` - Dijkstra family functions
+
+    - :ref:`pgr_dijkstra_v3` - Dijkstra's shortest path algorithm.
+    - :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to calculate the costs of the shortest paths.
+    - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via Vetices 
+
+  - :ref:`pgr_driving_distance<pgr_driving_distance>` - Driving Distance
+  - :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
+  - :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
+  - :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
+  - :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
+  - :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
 
 .. toctree::
 	:hidden:
 
 	../src/index
+
+*******************************************************************************
+Deprecated Routing Functions
+*******************************************************************************
+
+  - :ref:`pgr_apspJohnson<pgr_apsp_johnson>` - All Pairs Shortest Path, Johnson’s Algorithm
+  - :ref:`pgr_apspWarshall<pgr_apsp_warshall>` - All Pairs Shortest Path, Floyd-Warshall Algorithm
+  - :ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path Dijkstra
 
 *******************************************************************************
 Pre processing or post processing helping functions
@@ -159,23 +171,6 @@ Some of them are unsupported like the GSoC functions.
 Proposed functions: Proposed by Vicky Vergara
 *******************************************************************************
 
-:pgr_dijkstraCost:
-
-About this proposal:
-  - Author: Vicky Vergara
-  - Status: testing
-  - Name: pgr_dijkstraCost
-  - Overloading to:
-
-    - one to one
-    - many to one
-    - one to many  - Can replace kdijkstraCost
-    - many to many
-
-
-  - :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to make calculate only the 
-    aggregate cost of the shortest path. 
-
 :pgr_johnson:
 
 About this proposal:
@@ -183,7 +178,6 @@ About this proposal:
   - Status: testing
   - Name: pgr_johnson
   - Deprecate pgr_apspJohnson in favor of pgr_johnson
-  - :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
 
 
 :pgr_floydWarshall:
@@ -193,7 +187,6 @@ About this proposal:
   - Status: testing
   - Name: pgr_floydWarshall
   - Deprecate pgr_apspWarshall in favor of pgr_floydWarshall
-  - :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
 
 
 :pgr_dijkstraViaVertex:
@@ -202,7 +195,6 @@ About this proposal:
   - Author: Vicky Vergara
   - Status: developing, testing
   - Temporary name: pgr_dijkstraViaVertex
-  - :ref:`pgr_dijkstraViaVertex` - Use pgr_dijkstra to make a route via Vetices 
 
 
 :pgr_dijkstraViaVertex:
@@ -219,7 +211,6 @@ About this proposal:
 .. toctree::
     :hidden:
 
-    ../src/dijkstra/doc/dijkstraCost
     ../src/allpairs/doc/johnson.rst
     ../src/allpairs/doc/floydWarshall.rst
     ../src/dijkstraViaVertex/doc/dijkstraViaVertex
@@ -303,6 +294,8 @@ Discontinued Functions
 Deprecated Functions
 *******************************************************************************
 
+  - :ref:`pgr_apspJohnson<pgr_apsp_johnson>` - All Pairs Shortest Path, Johnson’s Algorithm
+  - :ref:`pgr_apspWarshall<pgr_apsp_warshall>` - All Pairs Shortest Path, Floyd-Warshall Algorithm
 
   -  :ref:`pgr_get_column_name` - to get the name of the column as is stored in the postgres administration tables.
   -  :ref:`pgr_get_table_name` - to retrieve the name of the table as is stored in the postgres administration tables.

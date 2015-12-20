@@ -1,9 +1,0 @@
-1..8
-ok 1 - 1: union of dijkstra is the same AS pgr_dijkstraViaVertex
-ok 2 - 2: with directed:=TRUE is the same AS no flag
-ok 3 - 3: union of dijkstra is the same AS pgr_dijkstraViaVertex
-ok 4 - 4: union of dijkstra is the same AS pgr_dijkstraViaVertex
-ok 5 - 5: with directed:=TRUE is the same AS no flag
-ok 6 - 6: union of dijkstra is the same AS pgr_dijkstraViaVertex
-ok 7 - 7: union of dijkstra is the same AS pgr_dijkstraViaVertex
-ok 8 - 8: with directed:=TRUE is the same AS no flag

@@ -12,7 +12,9 @@
 pgr_dijkstra - Shortest Path Dijkstra
 ===============================================================================
 
-  -  :ref:`pgr_dijkstra<pgr_dijkstra_v3>` - Dijkstra - get the shortest paths.
+  - :ref:`pgr_dijkstra_v3` - Dijkstra's algorithm for the shortest paths.
+  - :ref:`pgr_dijkstraCost` -Get the aggregate cost of the shortest paths.
+  - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via Vetices
 
 
 
@@ -112,4 +114,4 @@ If there is no path, the resulting set is empty.
         ./dijkstra_v2
         ./dijkstra_v3
         ./dijkstraCost
-
+        ./dijkstraVia
