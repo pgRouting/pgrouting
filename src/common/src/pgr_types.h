@@ -39,17 +39,11 @@ typedef struct edge_astar
   float8 t_y;
 } edge_astar_t;
 
-typedef struct matrix_cell
-{
-    int64_t from_vid;
-    int64_t to_vid;
-    double cost;
-} Matrix_cell_t;
 
 
 typedef struct {
-    int64_t vertex_id;
-    int64_t edge_id;
+    int vertex_id;
+    int edge_id;
     float8 cost;
 } path_element_t;
 
@@ -91,6 +85,12 @@ typedef struct {
     int64_t edge;
     float8 cost;
 } pgr_path_t;
+
+typedef struct matrix_cell {
+    int64_t from_vid;
+    int64_t to_vid;
+    double cost;
+} Matrix_cell_t;
 
 // Restrictions used in pgr_turnRestrictions
 
