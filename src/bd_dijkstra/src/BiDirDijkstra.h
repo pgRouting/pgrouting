@@ -32,12 +32,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <map>
 #include <queue>
-#include <string>
-#include <stdlib.h>
-#include <iostream>
-#include <stdio.h>
-#include <string.h>
+#include <utility>
+#include <functional>
 
+#include "../../common/src/pgr_types.h"
 #include "bdsp.h"
 
 #define INF 1e15
@@ -46,48 +44,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 typedef std::vector<long> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
-//typedef std::pair<int, bool> PIB;
 typedef std::pair<double, int> PDI;
-//typedef std::pair<double, std::vector<int> > PDVI;
-/*
-typedef struct edge 
-{
-	int id;
-	int source;
-	int target;
-	double cost;
-	double reverse_cost;
-} edge_t;
-
-typedef struct path_element 
-{
-	int vertex_id;
-	int edge_id;
-	double cost;
-}path_element_t;
-*/
 
 typedef struct{
-	int par_Node;
-	int par_Edge;
+    int par_Node;
+    int par_Edge;
 }PARENT_PATH;
 
 typedef struct{
-	int NodeID;
-	std::vector<int> Connected_Nodes;
-	std::vector<int> Connected_Edges_Index;
+    int NodeID;
+    std::vector<int> Connected_Nodes;
+    std::vector<int> Connected_Edges_Index;
 }GraphNodeInfo;
 
 struct GraphEdgeInfo
 {
 public:
-	int EdgeID;
-	int EdgeIndex;
-	int Direction;
-	double Cost;
-	double ReverseCost;
-	int StartNode;
-	int EndNode;
+    int EdgeID;
+    int EdgeIndex;
+    int Direction;
+    double Cost;
+    double ReverseCost;
+    int StartNode;
+    int EndNode;
 };
 
 typedef std::vector<GraphEdgeInfo> GraphEdgeVector;
@@ -99,44 +78,44 @@ typedef std::vector<GraphNodeInfo*> GraphNodeVector;
 class BiDirDijkstra
 {
 public:
-	BiDirDijkstra(void);
-	~BiDirDijkstra(void);
-	
-	int bidir_dijkstra(edge_t *edges, unsigned int edge_count, int maxNode, int start_vertex, int end_vertex,
-		path_element_t **path, int *path_count, char **err_msg);
-	
+    BiDirDijkstra(void);
+    ~BiDirDijkstra(void);
+    
+    int bidir_dijkstra(edge_t *edges, unsigned int edge_count, int maxNode, int start_vertex, int end_vertex,
+        path_element_t **path, int *path_count, char **err_msg);
+    
 
 private:
-	bool construct_graph(edge_t *edges, int edge_count, int maxNode);
-	void fconstruct_path(int node_id);
-	void rconstruct_path(int node_id);
-	bool addEdge(edge edgeIn);
-	bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
-	void init();
-	void initall(int maxNode);
-	void deleteall();
-	void explore(int cur_node, double cur_cost, int dir, std::priority_queue<PDI, std::vector<PDI>, std::greater<PDI> > &que);
-	double getcost(int node_id, int dir);
-	void setcost(int node_id, int dir, double c);
-	void setparent(int node_id, int dir, int parnode, int paredge);
+    bool construct_graph(edge_t *edges, int edge_count, int maxNode);
+    void fconstruct_path(int node_id);
+    void rconstruct_path(int node_id);
+    bool addEdge(edge_t edgeIn);
+    bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
+    void init();
+    void initall(int maxNode);
+    void deleteall();
+    void explore(int cur_node, double cur_cost, int dir, std::priority_queue<PDI, std::vector<PDI>, std::greater<PDI> > &que);
+    double getcost(int node_id, int dir);
+    void setcost(int node_id, int dir, double c);
+    void setparent(int node_id, int dir, int parnode, int paredge);
 
 private:
-	GraphEdgeVector m_vecEdgeVector;
-	Long2LongMap m_mapEdgeId2Index;
-	Long2LongVectorMap m_mapNodeId2Edge;
-	GraphNodeVector m_vecNodeVector;
-	int max_node_id;
-	int max_edge_id;
-	int m_lStartNodeId;
-	int m_lEndNodeId;
+    GraphEdgeVector m_vecEdgeVector;
+    Long2LongMap m_mapEdgeId2Index;
+    Long2LongVectorMap m_mapNodeId2Edge;
+    GraphNodeVector m_vecNodeVector;
+    int max_node_id;
+    int max_edge_id;
+    int m_lStartNodeId;
+    int m_lEndNodeId;
 
-	double m_MinCost;
-	int m_MidNode;
-	std::vector <path_element_t> m_vecPath;
-	PARENT_PATH *m_pFParent;
-	PARENT_PATH *m_pRParent;
-	double *m_pFCost;
-	double *m_pRCost;
+    double m_MinCost;
+    int m_MidNode;
+    std::vector <path_element_t> m_vecPath;
+    PARENT_PATH *m_pFParent;
+    PARENT_PATH *m_pRParent;
+    double *m_pFCost;
+    double *m_pRCost;
 };
 
 #endif
