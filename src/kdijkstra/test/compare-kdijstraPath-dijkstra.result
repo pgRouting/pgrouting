@@ -1,0 +1,103 @@
+1..102
+ok 1 - 1: Directed: with reverse cost start:1 test 1
+ok 2 - 1: Directed with reverse cost but dont want reverse cost start: 1 test 2
+ok 3 - 1: Directed No reverse cost start:1 test 3
+ok 4 - 2: Directed: with reverse cost start:2 test 1
+ok 5 - 2: Directed with reverse cost but dont want reverse cost start: 2 test 2
+ok 6 - 2: Directed No reverse cost start:2 test 3
+ok 7 - 3: Directed: with reverse cost start:3 test 1
+ok 8 - 3: Directed with reverse cost but dont want reverse cost start: 3 test 2
+ok 9 - 3: Directed No reverse cost start:3 test 3
+ok 10 - 4: Directed: with reverse cost start:4 test 1
+ok 11 - 4: Directed with reverse cost but dont want reverse cost start: 4 test 2
+ok 12 - 4: Directed No reverse cost start:4 test 3
+ok 13 - 5: Directed: with reverse cost start:5 test 1
+ok 14 - 5: Directed with reverse cost but dont want reverse cost start: 5 test 2
+ok 15 - 5: Directed No reverse cost start:5 test 3
+ok 16 - 6: Directed: with reverse cost start:6 test 1
+ok 17 - 6: Directed with reverse cost but dont want reverse cost start: 6 test 2
+ok 18 - 6: Directed No reverse cost start:6 test 3
+ok 19 - 7: Directed: with reverse cost start:7 test 1
+ok 20 - 7: Directed with reverse cost but dont want reverse cost start: 7 test 2
+ok 21 - 7: Directed No reverse cost start:7 test 3
+ok 22 - 8: Directed: with reverse cost start:8 test 1
+ok 23 - 8: Directed with reverse cost but dont want reverse cost start: 8 test 2
+ok 24 - 8: Directed No reverse cost start:8 test 3
+ok 25 - 9: Directed: with reverse cost start:9 test 1
+ok 26 - 9: Directed with reverse cost but dont want reverse cost start: 9 test 2
+ok 27 - 9: Directed No reverse cost start:9 test 3
+ok 28 - 10: Directed: with reverse cost start:10 test 1
+ok 29 - 10: Directed with reverse cost but dont want reverse cost start: 10 test 2
+ok 30 - 10: Directed No reverse cost start:10 test 3
+ok 31 - 11: Directed: with reverse cost start:11 test 1
+ok 32 - 11: Directed with reverse cost but dont want reverse cost start: 11 test 2
+ok 33 - 11: Directed No reverse cost start:11 test 3
+ok 34 - 12: Directed: with reverse cost start:12 test 1
+ok 35 - 12: Directed with reverse cost but dont want reverse cost start: 12 test 2
+ok 36 - 12: Directed No reverse cost start:12 test 3
+ok 37 - 13: Directed: with reverse cost start:13 test 1
+ok 38 - 13: Directed with reverse cost but dont want reverse cost start: 13 test 2
+ok 39 - 13: Directed No reverse cost start:13 test 3
+ok 40 - 14: Directed: with reverse cost start:14 test 1
+ok 41 - 14: Directed with reverse cost but dont want reverse cost start: 14 test 2
+ok 42 - 14: Directed No reverse cost start:14 test 3
+ok 43 - 15: Directed: with reverse cost start:15 test 1
+ok 44 - 15: Directed with reverse cost but dont want reverse cost start: 15 test 2
+ok 45 - 15: Directed No reverse cost start:15 test 3
+ok 46 - 16: Directed: with reverse cost start:16 test 1
+ok 47 - 16: Directed with reverse cost but dont want reverse cost start: 16 test 2
+ok 48 - 16: Directed No reverse cost start:16 test 3
+ok 49 - 17: Directed: with reverse cost start:17 test 1
+ok 50 - 17: Directed with reverse cost but dont want reverse cost start: 17 test 2
+ok 51 - 17: Directed No reverse cost start:17 test 3
+ok 52 - 1: Undirected: with reverse cost start:1 test 1
+ok 53 - 1: Undirected with reverse cost but dont want reverse cost start: 1 test 2
+ok 54 - 1: Undirected No reverse cost start:1 test 3
+ok 55 - 2: Undirected: with reverse cost start:2 test 1
+ok 56 - 2: Undirected with reverse cost but dont want reverse cost start: 2 test 2
+ok 57 - 2: Undirected No reverse cost start:2 test 3
+ok 58 - 3: Undirected: with reverse cost start:3 test 1
+ok 59 - 3: Undirected with reverse cost but dont want reverse cost start: 3 test 2
+ok 60 - 3: Undirected No reverse cost start:3 test 3
+ok 61 - 4: Undirected: with reverse cost start:4 test 1
+ok 62 - 4: Undirected with reverse cost but dont want reverse cost start: 4 test 2
+ok 63 - 4: Undirected No reverse cost start:4 test 3
+ok 64 - 5: Undirected: with reverse cost start:5 test 1
+ok 65 - 5: Undirected with reverse cost but dont want reverse cost start: 5 test 2
+ok 66 - 5: Undirected No reverse cost start:5 test 3
+ok 67 - 6: Undirected: with reverse cost start:6 test 1
+ok 68 - 6: Undirected with reverse cost but dont want reverse cost start: 6 test 2
+ok 69 - 6: Undirected No reverse cost start:6 test 3
+ok 70 - 7: Undirected: with reverse cost start:7 test 1
+ok 71 - 7: Undirected with reverse cost but dont want reverse cost start: 7 test 2
+ok 72 - 7: Undirected No reverse cost start:7 test 3
+ok 73 - 8: Undirected: with reverse cost start:8 test 1
+ok 74 - 8: Undirected with reverse cost but dont want reverse cost start: 8 test 2
+ok 75 - 8: Undirected No reverse cost start:8 test 3
+ok 76 - 9: Undirected: with reverse cost start:9 test 1
+ok 77 - 9: Undirected with reverse cost but dont want reverse cost start: 9 test 2
+ok 78 - 9: Undirected No reverse cost start:9 test 3
+ok 79 - 10: Undirected: with reverse cost start:10 test 1
+ok 80 - 10: Undirected with reverse cost but dont want reverse cost start: 10 test 2
+ok 81 - 10: Undirected No reverse cost start:10 test 3
+ok 82 - 11: Undirected: with reverse cost start:11 test 1
+ok 83 - 11: Undirected with reverse cost but dont want reverse cost start: 11 test 2
+ok 84 - 11: Undirected No reverse cost start:11 test 3
+ok 85 - 12: Undirected: with reverse cost start:12 test 1
+ok 86 - 12: Undirected with reverse cost but dont want reverse cost start: 12 test 2
+ok 87 - 12: Undirected No reverse cost start:12 test 3
+ok 88 - 13: Undirected: with reverse cost start:13 test 1
+ok 89 - 13: Undirected with reverse cost but dont want reverse cost start: 13 test 2
+ok 90 - 13: Undirected No reverse cost start:13 test 3
+ok 91 - 14: Undirected: with reverse cost start:14 test 1
+ok 92 - 14: Undirected with reverse cost but dont want reverse cost start: 14 test 2
+ok 93 - 14: Undirected No reverse cost start:14 test 3
+ok 94 - 15: Undirected: with reverse cost start:15 test 1
+ok 95 - 15: Undirected with reverse cost but dont want reverse cost start: 15 test 2
+ok 96 - 15: Undirected No reverse cost start:15 test 3
+ok 97 - 16: Undirected: with reverse cost start:16 test 1
+ok 98 - 16: Undirected with reverse cost but dont want reverse cost start: 16 test 2
+ok 99 - 16: Undirected No reverse cost start:16 test 3
+ok 100 - 17: Undirected: with reverse cost start:17 test 1
+ok 101 - 17: Undirected with reverse cost but dont want reverse cost start: 17 test 2
+ok 102 - 17: Undirected No reverse cost start:17 test 3

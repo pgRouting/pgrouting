@@ -1,0 +1,30 @@
+1..29
+ok 1 - 1: From 2 to 3 returns the same result as pgr_dijkstraCost(one to many)
+ok 2 - 2: Gives a record when no path is found from v to v
+ok 3 - 3: It is the union
+ok 4 - 4: Gives a record when no path is found from u to v
+ok 5 - 5: When a target is not found there is no path, So returns -1 in cost
+ok 6 - 6: repeated targets are accepted (returned once)
+ok 7 - 7: None of the target vertices has been found; therefore no path is found So all costs must have a -1
+ok 8 - 8: Start vertex does not exist in the edges: all cost must have a -1
+ok 9 - threw XX000
+ok 10 - 10: Throws when source is not int
+ok 11 - 11: Throws when target is not int
+ok 12 - 12: Throws when cost is not float
+ok 13 - threw XX000
+ok 14 - 14: Throws because an array was not given
+ok 15 - 15: Throws because a NOT int was was given as starting vertex
+ok 16 - 16: Throws because the array has data that is not integer
+ok 17 - threw XX000
+ok 18 - threw XX000
+ok 19 - threw XX000
+ok 20 - threw XX000
+ok 21 - threw XX000
+ok 22 - 22: Throws because the arrays are of big int
+ok 23 - 23: Throws because unsalvable contradiction: https://github.com/pgRouting/pgrouting/blob/master/src/kdijkstra/src/k_targets_sp.c#L237
+ok 24 - 24: Does not throw when salvable contradiction
+ok 25 - threw XX000
+ok 26 - threw XX000
+ok 27 - threw XX000
+ok 28 - threw XX000
+ok 29 - threw XX000
