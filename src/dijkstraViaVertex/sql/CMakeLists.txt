@@ -1,6 +1,0 @@
-# Append in local scope
-LIST(APPEND PACKAGE_SQL_FILES
-)
-
-# set in parent scope
-SET(PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}" PARENT_SCOPE)
