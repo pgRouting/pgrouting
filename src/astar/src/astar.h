@@ -29,21 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "postgres.h"
 #include "../../common/src/pgr_types.h"
 
-#if 0
-typedef struct edge_astar 
-{
-  int id;
-  int source;
-  int target;
-  float8 cost;
-  float8 reverse_cost;
-  float8 s_x;
-  float8 s_y;
-  float8 t_x;
-  float8 t_y;
-} edge_astar_t;
-#endif
-
 
 #ifdef __cplusplus
 extern "C"

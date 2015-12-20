@@ -78,32 +78,11 @@ Datum shortest_path_astar(PG_FUNCTION_ARGS);
 #undef DEBUG
 //#define DEBUG 1
 #include "../../common/src/debug_macro.h"
+#include "../../common/src/pgr_types.h"
+#include "../../common/src/postgres_connection.h"
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
-
-static char *
-text2char(text *in)
-{
-  char *out = palloc(VARSIZE(in));
-
-  memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
-  out[VARSIZE(in) - VARHDRSZ] = '\0';
-  return out;
-}
-
-static int 
-finish(int code, int ret)
-{
-  code = SPI_finish();
-  if (code  != SPI_OK_FINISH )
-    {
-      elog(ERROR,"couldn't disconnect from SPI");
-      return -1 ;
-    }
-
-  return ret;
-}
 
 typedef struct edge_astar_columns 
 {
@@ -249,7 +228,6 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
                        path_element_t **path, int *path_count) 
 {
 
-  int SPIcode;
   void *SPIplan;
   Portal SPIportal;
   bool moredata = TRUE;
@@ -278,31 +256,20 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
 
   PGR_DBG("start shortest_path_astar\n");
 
-  SPIcode = SPI_connect();
-  if (SPIcode  != SPI_OK_CONNECT) {
-      elog(ERROR, "shortest_path_astar: couldn't open a connection to SPI");
-      return -1;
-  }
+  pgr_SPI_connect();
+  SPIplan = pgr_SPI_prepare(sql);
+  SPIportal = pgr_SPI_cursor_open(SPIplan);
 
-  SPIplan = SPI_prepare(sql, 0, NULL);
-  if (SPIplan  == NULL) {
-      elog(ERROR, "shortest_path_astar: couldn't create query plan via SPI");
-      return -1;
-  }
-
-  if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
-      elog(ERROR, "shortest_path_astar: SPI_cursor_open('%s') returns NULL", 
-       sql);
-      return -1;
-  }
 
   while (moredata == TRUE) {
       SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
 
       if (edge_columns.id == -1) {
           if (fetch_edge_astar_columns(SPI_tuptable, &edge_columns, 
-                           has_reverse_cost) == -1)
-              return finish(SPIcode, ret);
+                           has_reverse_cost) == -1) {
+              pgr_SPI_finish();
+              return -1;
+          }
       }
 
       ntuples = SPI_processed;
@@ -314,7 +281,8 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
 
       if (edges == NULL) {
           elog(ERROR, "Out of memory");
-          return finish(SPIcode, ret);
+              pgr_SPI_finish();
+              return -1;
       }
 
       if (ntuples > 0) {
@@ -407,7 +375,9 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
   profstop("astar", prof_astar);
   profstart(prof_store);
 
-  return finish(SPIcode, ret);
+  pgr_SPI_finish();
+  return 0;
+
 }
 
 
@@ -443,7 +413,7 @@ shortest_path_astar(PG_FUNCTION_ARGS)
 #ifdef DEBUG
       ret =
 #endif
- compute_shortest_path_astar(text2char(PG_GETARG_TEXT_P(0)),
+ compute_shortest_path_astar(pgr_text2char(PG_GETARG_TEXT_P(0)),
                     PG_GETARG_INT32(1),
                     PG_GETARG_INT32(2),
                     PG_GETARG_BOOL(3),
