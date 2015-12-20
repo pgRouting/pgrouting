@@ -9,7 +9,7 @@
     <layer-tree-layer expanded="1" checked="Qt::Checked" id="sample_contracted_ways20151216123755396" name="sample_contracted_ways">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" checked="Qt::Checked" id="sample_ways20151216124414645" name="sample_ways">
+    <layer-tree-layer expanded="1" checked="Qt::Unchecked" id="sample_ways20151216124414645" name="sample_ways">
       <customproperties/>
     </layer-tree-layer>
     <layer-tree-layer expanded="1" checked="Qt::Unchecked" id="ways20151215190645158" name="ways">
@@ -21,7 +21,7 @@
     <layer-tree-layer expanded="1" checked="Qt::Unchecked" id="final_contracted_ways20151215190450013" name="final_contracted_ways">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" checked="Qt::Unchecked" id="test_vertices_ways20151214144437984" name="test_vertices_ways">
+    <layer-tree-layer expanded="1" checked="Qt::Checked" id="test_vertices_ways20151214144437984" name="test_vertices_ways">
       <customproperties/>
     </layer-tree-layer>
   </layer-tree-group>
@@ -29,10 +29,10 @@
   <mapcanvas>
     <units>degrees</units>
     <extent>
-      <xmin>4.8279949101558195</xmin>
-      <ymin>45.69464390673647358</ymin>
-      <xmax>4.87427943115441664</xmax>
-      <ymax>45.73092711665640309</ymax>
+      <xmin>4.85482009196726683</xmin>
+      <ymin>45.68751697579270399</ymin>
+      <xmax>4.86060565709209147</xmax>
+      <ymax>45.69205237703269518</ymax>
     </extent>
     <rotation>0</rotation>
     <projections>0</projections>
@@ -73,9 +73,9 @@
         <legendlayerfile isInOverview="0" layerid="sample_contracted_ways20151216123755396" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="sample_ways" showFeatureCount="0">
+    <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="sample_ways" showFeatureCount="0">
       <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="sample_ways20151216124414645" visible="1"/>
+        <legendlayerfile isInOverview="0" layerid="sample_ways20151216124414645" visible="0"/>
       </filegroup>
     </legendlayer>
     <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="ways" showFeatureCount="0">
@@ -93,9 +93,9 @@
         <legendlayerfile isInOverview="0" layerid="final_contracted_ways20151215190450013" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="test_vertices_ways" showFeatureCount="0">
+    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="test_vertices_ways" showFeatureCount="0">
       <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="test_vertices_ways20151214144437984" visible="0"/>
+        <legendlayerfile isInOverview="0" layerid="test_vertices_ways20151214144437984" visible="1"/>
       </filegroup>
     </legendlayer>
   </legend>
@@ -911,10 +911,10 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform></editform>
+      <editform>.</editform>
       <editforminit/>
       <featformsuppress>0</featformsuppress>
-      <annotationform></annotationform>
+      <annotationform>.</annotationform>
       <editorlayout>generatedlayout</editorlayout>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
@@ -1193,10 +1193,10 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform></editform>
+      <editform>.</editform>
       <editforminit/>
       <featformsuppress>0</featformsuppress>
-      <annotationform></annotationform>
+      <annotationform>.</annotationform>
       <editorlayout>generatedlayout</editorlayout>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
@@ -1475,10 +1475,10 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform></editform>
+      <editform>.</editform>
       <editforminit/>
       <featformsuppress>0</featformsuppress>
-      <annotationform></annotationform>
+      <annotationform>.</annotationform>
       <editorlayout>generatedlayout</editorlayout>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>

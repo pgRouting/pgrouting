@@ -231,6 +231,30 @@ public:
       }
     }
 
+    void remove_edge(int64_t p_from, int64_t p_to) {
+      V g_from;
+      V g_to;
+      Edge d_edge;
+      // nothing to do, the vertex doesnt exist
+      if (!get_vertex_descriptor(p_from, g_from)) return;
+      if (!get_vertex_descriptor(p_to, g_to)) return;
+      EO_i out, out_end;
+      // store the edges that are going to be removed
+      for (boost::tie(out, out_end) = out_edges(g_from, graph);
+           out != out_end; ++out) {
+            if (target(*out, graph) == g_to) {
+                d_edge.id = graph[*out].id;
+                d_edge.source = graph[source(*out, graph)].id;
+                d_edge.target = graph[target(*out, graph)].id;
+                d_edge.cost = graph[*out].cost;
+                d_edge.revcost = -1;
+                removed_edges.push_back(d_edge);
+            }
+      }
+      // the actual removal
+      boost::remove_edge(g_from, g_to, graph);
+  }
+
 
 };
 
