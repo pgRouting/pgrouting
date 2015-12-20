@@ -39,7 +39,6 @@ typedef struct edge_astar
   float8 t_y;
 } edge_astar_t;
 
-
 typedef struct matrix_cell
 {
     int64_t from_vid;
@@ -48,15 +47,13 @@ typedef struct matrix_cell
 } Matrix_cell_t;
 
 
-typedef struct path_element2
-{
+typedef struct {
     int64_t vertex_id;
     int64_t edge_id;
     float8 cost;
 } path_element_t;
 
-typedef struct path_element
-{
+typedef struct {
     int seq;
     int64_t from;
     int64_t to;
@@ -66,8 +63,7 @@ typedef struct path_element
     float8 tot_cost;
 } General_path_element_t;
 
-typedef struct Routes_element
-{
+typedef struct{
     int64_t route_id;
     int64_t path_id;
     int64_t path_seq;

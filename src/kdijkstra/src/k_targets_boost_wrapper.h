@@ -29,26 +29,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //#include "MyWrapper.h"
 
 #include "postgres.h"
+#include "../../common/src/pgr_types.h"
 
-typedef struct edge
-{
-    int id;
-    int source;
-    int target;
-    float8 cost;
-    float8 reverse_cost;
-} edge_t;
+typedef pgr_edge_t edge_t;
 
-
-typedef struct 
-{
-    int vertex_id;
-    int edge_id;
-    float8 cost;
-} path_element_t;
-
-#define PGR_MERGE
-#ifdef PGR_MERGE
 typedef struct
 {
     int seq;
@@ -65,7 +49,7 @@ typedef struct
     int id3;
     float8 cost;
 } pgr_cost3_t;
-#endif
+
 
 typedef struct 
 {
@@ -88,39 +72,20 @@ typedef struct
 } path_fromto_t;
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif
+
 
 int onetomany_dijkstra_boostdist(
         edge_t *edges, unsigned int count, int start_vertex,
         int *end_vertices, int nb_targets,
 	    bool directed, bool has_reverse_cost,
-#ifdef PGR_MERGE
 	    pgr_cost_t **dists,
-#else
-	    dist_fromto_t **dists,
-#endif
         char **err_msg );
     
-  
+
 #ifdef __cplusplus
-extern "C"
+}
 #endif
 
-int onetomany_dijkstra_boostpath(
-        edge_t *edges, unsigned int count, int start_vertex,
-        int *end_vertices, int nb_targets,
-	    bool directed, bool has_reverse_cost,
-#ifdef PGR_MERGE
-	    pgr_cost3_t **dists,
-        int *path_count,
-#else
-	    path_fromto_t **pathdists,
-#endif
-        char **err_msg );
-
-#endif
-
-
-
-
+#endif // _TOMANYSP_H
