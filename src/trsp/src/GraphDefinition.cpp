@@ -60,8 +60,8 @@ void GraphDefinition::init()
 
 
 // -------------------------------------------------------------------------
-void GraphDefinition::deleteall()
-{
+
+void GraphDefinition::deleteall() {
     std::vector<GraphEdgeInfo*>::iterator it;
     for(it  = m_vecEdgeVector.begin(); it != m_vecEdgeVector.end(); it++){
         delete *it;
@@ -71,6 +71,8 @@ void GraphDefinition::deleteall()
     delete [] parent;
     delete [] m_dCost;
 }
+
+
 
 
 // -------------------------------------------------------------------------

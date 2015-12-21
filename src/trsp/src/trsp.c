@@ -42,109 +42,6 @@ Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 #include "../../common/src/restrictions_input.h"
 
 
-// The number of tuples to fetch from the SPI cursor at each iteration
-#define TUPLIMIT 1000
-
-
-typedef struct edge_columns
-{
-  int id;
-  int source;
-  int target;
-  int cost;
-  int reverse_cost;
-} edge_columns_t;
-
-typedef struct restrict_columns
-{
-  int target_id;
-  int via_path;
-  int to_cost;
-} restrict_columns_t;
-
-
-
-#define __FUNC 
-#ifndef __FUNC 
-/*
- * This function fetches the resturction columns from an SPITupleTable..
- *
-*/
-static int
-fetch_restrict_columns(SPITupleTable *tuptable,
-                       restrict_columns_t *restrict_columns)
-{
-  restrict_columns->target_id = SPI_fnumber(SPI_tuptable->tupdesc, "target_id");
-  restrict_columns->via_path = SPI_fnumber(SPI_tuptable->tupdesc, "via_path");
-  restrict_columns->to_cost =  SPI_fnumber(SPI_tuptable->tupdesc, "to_cost");
-  if (restrict_columns->target_id == SPI_ERROR_NOATTRIBUTE ||
-      restrict_columns->via_path == SPI_ERROR_NOATTRIBUTE ||
-      restrict_columns->to_cost == SPI_ERROR_NOATTRIBUTE) {
-    elog(ERROR, "Error, restriction query must return columns "
-        "'target_id', 'via_path' and 'to_cost'");
-    return -1;
-  }
-
-  if (SPI_gettypeid(SPI_tuptable->tupdesc, restrict_columns->target_id) != INT4OID ||
-      SPI_gettypeid(SPI_tuptable->tupdesc, restrict_columns->via_path) != TEXTOID ||
-      SPI_gettypeid(SPI_tuptable->tupdesc, restrict_columns->to_cost) != FLOAT8OID) {
-    elog(ERROR, "Error, restriction columns 'target_id' must be of type int4, 'via_path' must be of type text, 'to_cost' must be of type float8");
-    return -1;
-  }
-
-  return 0;
-}
-
-
-
-/*
- * To fetch a restirction from Tuple.
- * 
- */
- 
-static void
-fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc, 
-           restrict_columns_t *restrict_columns, restrict_t *rest)
-{
-  Datum binval;
-  bool isnull;
-  int t;
-
-  for(t=0; t<MAX_RULE_LENGTH;++t)
-    rest->via[t] = -1;
-
-  binval = SPI_getbinval(*tuple, *tupdesc, restrict_columns->target_id, &isnull);
-  if (isnull)
-    elog(ERROR, "target_id contains a null value");
-  rest->target_id = DatumGetInt32(binval);
-
-  binval = SPI_getbinval(*tuple, *tupdesc, restrict_columns->to_cost, &isnull);
-  if (isnull)
-    elog(ERROR, "to_cost contains a null value");
-  rest->to_cost = DatumGetFloat8(binval);
-  char *str = DatumGetCString(SPI_getvalue(*tuple, *tupdesc, restrict_columns->via_path));
-
-  //PGR_DBG("restriction: %f, %i, %s", rest->to_cost, rest->target_id, str);
-
-  if (str != NULL) {
-    char* pch = NULL;
-    int ci = 0;
-
-    pch = (char *)strtok(str," ,");
-
-    while (pch != NULL && ci < MAX_RULE_LENGTH)
-    {
-      rest->via[ci] = atoi(pch);
-      //PGR_DBG("    rest->via[%i]=%i", ci, rest->via[ci]);
-      ci++;
-      pch = (char *)strtok (NULL, " ,");
-    }
-  }
-
-}
-#endif
-
-
 static int compute_trsp(
         char* edges_sql,
         int dovertex,
@@ -163,17 +60,16 @@ static int compute_trsp(
     pgr_edge_t *edges = NULL;
     int64_t total_tuples = 0;
     pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+    PGR_DBG("Total %ld edges", total_tuples);
 
     PGR_DBG("Load restrictions");
     restrict_t *restricts = NULL;
     int64_t total_restrict_tuples = 0;
-#ifdef __FUNC 
     if (restrict_sql == NULL) {
         PGR_DBG("Sql for restrictions is null.");
     } else {
         pgr_get_restriction_data(restrict_sql, &restricts, &total_restrict_tuples);
     }
-#endif
 #ifdef DEBUG
     int t1;
     for (t1=0; t1<total_restrict_tuples; t1++) {
@@ -181,20 +77,10 @@ static int compute_trsp(
                 restricts[t1].target_id, restricts[t1].via[0], restricts[t1].via[1], restricts[t1].via[2], restricts[t1].via[3], restricts[t1].via[4]);
     }
 #endif
-
     PGR_DBG("Total %ld restriction", total_restrict_tuples);
 
 
 
-#ifndef __FUNC 
-    SPIPlanPtr SPIplan;
-    Portal SPIportal;
-    bool moredata = TRUE;
-    int ntuples;
-
-    restrict_columns_t restrict_columns = {.target_id= -1, .via_path= -1,
-        .to_cost= -1};
-#endif
     int v_max_id=0;
     int v_min_id=INT_MAX;
 
@@ -279,80 +165,6 @@ static int compute_trsp(
         end_id   -= v_min_id;
     }
 
-#ifndef __FUNC 
-    PGR_DBG("Fetching restriction tuples\n");
-
-    if (restrict_sql == NULL) {
-        PGR_DBG("Sql for restrictions is null.");
-    }
-    else {
-        SPIplan = SPI_prepare(restrict_sql, 0, NULL);
-        if (SPIplan  == NULL) {
-            elog(ERROR, "turn_restrict_shortest_path: couldn't create query plan via SPI");
-            return -1;
-        }
-
-        if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
-            elog(ERROR, "turn_restrict_shortest_path: SPI_cursor_open('%s') returns NULL", restrict_sql);
-            return -1;
-        }
-
-        moredata = TRUE;
-        while (moredata == TRUE) {
-            SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
-
-            if (restrict_columns.target_id == -1) {
-                if (fetch_restrict_columns(SPI_tuptable, &restrict_columns) == -1) {
-                    PGR_DBG("fetch_restrict_columns failed!");
-                    pgr_SPI_finish();
-                    return -1;
-                }
-            }
-
-            ntuples = SPI_processed;
-            total_restrict_tuples += ntuples;
-
-            PGR_DBG("Reading Restrictions: %i", total_restrict_tuples);
-
-            if (ntuples > 0) {
-                if (!restricts)
-                    restricts = palloc(total_restrict_tuples * sizeof(restrict_t));
-                else
-                    restricts = repalloc(restricts, total_restrict_tuples * sizeof(restrict_t));
-
-                if (restricts == NULL) {
-                    elog(ERROR, "Out of memory");
-                    pgr_SPI_finish();
-                    return -1;
-                }
-
-                int t;
-                SPITupleTable *tuptable = SPI_tuptable;
-                TupleDesc tupdesc = SPI_tuptable->tupdesc;
-
-                for (t = 0; t < ntuples; t++) {
-                    HeapTuple tuple = tuptable->vals[t];
-                    fetch_restrict(&tuple, &tupdesc, &restrict_columns,
-                            &restricts[total_restrict_tuples - ntuples + t]);
-                }
-                SPI_freetuptable(tuptable);
-            }
-            else {
-                moredata = FALSE;
-            }
-        }
-        SPI_cursor_close(SPIportal);
-
-    }
-#ifdef DEBUG
-    int t;
-    for (t=0; t<total_restrict_tuples; t++) {
-        PGR_DBG("restricts: %.2f, %ld, %ld, %ld, %ld, %ld, %ld", restricts[t].to_cost, restricts[t].target_id, restricts[t].via[0], restricts[t].via[1], restricts[t].via[2], restricts[t].via[3], restricts[t].via[4]);
-    }
-#endif
-
-    PGR_DBG("Total %ld restriction tuples", total_restrict_tuples);
-#endif
 
     if (dovertex) {
         PGR_DBG("Calling trsp_node_wrapper\n");

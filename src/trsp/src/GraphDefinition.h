@@ -32,7 +32,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "trsp.h"
 
-//using namespace std;
 
 typedef std::vector<long> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
@@ -40,23 +39,6 @@ typedef std::pair<int, bool> PIB;
 typedef std::pair<double, PIB> PDP;
 typedef std::pair<double, std::vector<int> > PDVI;
 
-/*
-typedef struct edge 
-{
-    int id;
-    int source;
-    int target;
-    double cost;
-    double reverse_cost;
-} edge_t;
-
-typedef struct path_element 
-{
-    int vertex_id;
-    int edge_id;
-    double cost;
-}path_element_t;
-*/
 
 typedef struct{
     int ed_ind[2];
@@ -76,8 +58,7 @@ typedef std::map<int, std::vector<Rule> > RuleTable;
 
 
 
-class GraphEdgeInfo
-{
+class GraphEdgeInfo {
 public:
     long m_lEdgeID;
     long m_lEdgeIndex;
@@ -93,8 +74,6 @@ public:
     long m_lStartNode;
     long m_lEndNode;
 };
-
-
 
 
 typedef std::vector<GraphEdgeInfo*> GraphEdgeVector;
@@ -169,8 +148,8 @@ private:
     bool isEndVirtual;
     
     std::vector <path_element_t> m_vecPath;
-    PARENT_PATH *parent;
-    CostHolder *m_dCost;
+    std::vector < PARENT_PATH > parent;
+    std::vector < CostHolder > m_dCost;
     RuleTable m_ruleTable;
     bool m_bIsturnRestrictOn;
     bool m_bIsGraphConstructed;
