@@ -35,7 +35,6 @@ GraphDefinition::GraphDefinition(
         unsigned int edge_count,
         bool directed,
         bool has_rcost,
-        std::ostream &log,
         std::vector<PDVI> &ruleList) :
 
     m_lStartEdgeId(-1),

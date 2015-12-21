@@ -99,7 +99,6 @@ class GraphDefinition {
             unsigned int edge_count,
             bool directed, 
             bool has_rcost, 
-            std::ostream &log,
             std::vector<PDVI> &ruleList);
 
     int my_dijkstra(int start_vertex, int end_vertex,
@@ -136,6 +135,7 @@ class GraphDefinition {
     bool construct_graph(
             edge_t *edges,
             int edge_count,
+            bool has_rcost,
             bool directed);
 
 
