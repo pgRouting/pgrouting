@@ -61,19 +61,30 @@ typedef std::map<int, std::vector<Rule> > RuleTable;
 
 class GraphEdgeInfo {
 public:
+    GraphEdgeInfo() = default;
+    GraphEdgeInfo(int64_t eid, int64_t index, int64_t node1, int64_t node2, int64_t cost, int64_t reverse_cost) :
+        m_lEdgeID(eid), m_lEdgeIndex(index), m_lStartNode(node1), m_lEndNode(node2),
+        m_dCost(cost), m_dReverseCost(reverse_cost) {
+            m_vecStartConnectedEdge.clear();
+            m_vecEndConnedtedEdge.clear();
+            m_vecRestrictedEdge.clear();
+        }
+
+
+public:
     long m_lEdgeID;
     long m_lEdgeIndex;
-    short m_sDirection;
+    long m_lStartNode;
+    long m_lEndNode;
     double m_dCost;
     double m_dReverseCost;
+    short m_sDirection;
     LongVector m_vecStartConnectedEdge;
     LongVector m_vecEndConnedtedEdge;
     //LongVector m_vecConnectedNode;
     bool m_bIsLeadingRestrictedEdge;
     VectorOfLongVector m_vecRestrictedEdge;
 
-    long m_lStartNode;
-    long m_lEndNode;
 };
 
 
@@ -126,9 +137,9 @@ public:
 private:
     double construct_path(int ed_id, int v_pos);
     void explore(int cur_node, GraphEdgeInfo& cur_edge, bool isStart, LongVector &vecIndex, std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > &que);
-    double getRestrictionCost(int cur_node, GraphEdgeInfo& new_edge, bool isStart);
+    double getRestrictionCost(int cur_node, GraphEdgeInfo &new_edge, bool isStart);
     bool addEdge(edge_t edgeIn);
-    bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
+    bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo &secondEdge, bool bIsStartNodeSame);
     bool get_single_cost(double total_cost, path_element_t **path, int *path_count);
     void init();
     void deleteall();
