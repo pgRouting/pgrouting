@@ -148,7 +148,7 @@ BEGIN
     IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
         RETURN query SELECT (row_number() over())::INTEGER, path_id:: INTEGER, node::INTEGER,
             (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost
-            FROM pgr_dijkstraViaVertex(new_sql, via_vids, directed, strict:=true) WHERE edge != -1;
+            FROM pgr_dijkstraVia(new_sql, via_vids, directed, strict:=true) WHERE edge != -1;
         RETURN;
     END IF;
    

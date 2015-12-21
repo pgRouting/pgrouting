@@ -145,7 +145,7 @@ CREATE OR REPLACE FUNCTION  pgr_withPointsVia(
  -- raise notice '%', new_edges;
      sql_new_vertices := sql_new_vertices || v_union || ' (' || sql || ')';
      RETURN query SELECT *
-         FROM pgr_dijkstraViaVertex(new_edges, via_vertices, directed, has_rcost);
+         FROM pgr_dijkstraVia(new_edges, via_vertices, directed, has_rcost);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE

@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 This test is for the equivalence pgr_trspViaVertices when:
 - no restrictions are given 
 
-With pgr_dijkstraViaVertexViaVertex 
+With pgr_dijkstraViaViaVertex 
 for : directed version
 */
 
@@ -53,7 +53,7 @@ BEGIN;
     RETURNS SETOF TEXT AS
     $BODY$
     DECLARE
-    dijkstraViaVertex_sql TEXT;
+    dijkstraVia_sql TEXT;
     trsp_sql TEXT;
     inner_sql1 TEXT;
     inner_sql2 TEXT;
@@ -70,10 +70,10 @@ BEGIN;
             FOR j IN 1..cant LOOP
 
                 -- test when there is reverse cost and its marked as being used
-                -- VS dijkstraViaVertex autodetected has reverse cost
-                dijkstraViaVertex_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER, 
+                -- VS dijkstraVia autodetected has reverse cost
+                dijkstraVia_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER, 
                     (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text
-                    FROM pgr_dijkstraViaVertex( ' || inner_sql1 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
+                    FROM pgr_dijkstraVia( ' || inner_sql1 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
                 trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspViaVertices( ' || inner_sql1 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE)';
 
                 msg := k || '-1 ' || directed || ', with reverse_cost, marked as being used: from 1 to '  || i || ' to ' || j;
@@ -81,42 +81,42 @@ BEGIN;
                     EXECUTE trsp_sql;
 
                     -- This should happen allways even when its being corrected
-                    RETURN query SELECT set_eq(trsp_sql, dijkstraViaVertex_sql, msg);
+                    RETURN query SELECT set_eq(trsp_sql, dijkstraVia_sql, msg);
                     EXCEPTION WHEN OTHERS THEN
-                        RETURN query SELECT is_empty(dijkstraViaVertex_sql, msg);
+                        RETURN query SELECT is_empty(dijkstraVia_sql, msg);
                 END;
 
                 -- test when there is reverse cost and its marked NOT being used
-                -- VS dijkstraViaVertex autodetected DOES NOT have reverse cost
-                dijkstraViaVertex_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER, 
+                -- VS dijkstraVia autodetected DOES NOT have reverse cost
+                dijkstraVia_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER, 
                     (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text
-                    FROM pgr_dijkstraViaVertex( ' || inner_sql2 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
+                    FROM pgr_dijkstraVia( ' || inner_sql2 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
                 trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspViaVertices( ' || inner_sql1 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', FALSE)';
                 msg := k || '-2 ' || directed || ', with reverse_cost, marked as NOT being used: from 1 to '  || i || ' to ' || j;
                 BEGIN
                     EXECUTE trsp_sql;
 
                     -- This should happen allways even when its being corrected
-                    RETURN query SELECT set_eq(trsp_sql, dijkstraViaVertex_sql, msg);
+                    RETURN query SELECT set_eq(trsp_sql, dijkstraVia_sql, msg);
                     EXCEPTION WHEN OTHERS THEN
-                        RETURN query SELECT is_empty(dijkstraViaVertex_sql, msg);
+                        RETURN query SELECT is_empty(dijkstraVia_sql, msg);
                 END;
 
                 -- test when there is NO reverse cost and its marked NOT being used
-                -- VS dijkstraViaVertex autodetected DOES NOT have reverse cost (same as previous)
+                -- VS dijkstraVia autodetected DOES NOT have reverse cost (same as previous)
                 trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspViaVertices( ' || inner_sql2 || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', FALSE)';
                 msg := k || '-3 ' || directed || ', NO reverse_cost, marked as NOT being used: from 1 to '  || i || ' to ' || j;
                 BEGIN
                     EXECUTE trsp_sql;
 
                     -- This should happen allways even when its being corrected
-                    RETURN query SELECT set_eq(trsp_sql, dijkstraViaVertex_sql, msg);
+                    RETURN query SELECT set_eq(trsp_sql, dijkstraVia_sql, msg);
 
                     EXCEPTION WHEN OTHERS THEN
-                        RETURN query SELECT is_empty(dijkstraViaVertex_sql, msg);
+                        RETURN query SELECT is_empty(dijkstraVia_sql, msg);
                 END;
                 -- test when there is NO reverse cost and its marked  AS being used
-                -- Uncomparable with dijkstraViaVertexViaVertex because dijstra uses what is given as input
+                -- Uncomparable with dijkstraViaViaVertex because dijstra uses what is given as input
                 trsp_sql := 'SELECT * from pgr_trsp( ' || inner_sql2 || ', ' || i || ', ' || j || ', ' || flag || ', TRUE)';
                 msg := k || '-4 ' || directed || ', NO reverse_cost, marked as NOT being used: from 1 to '  || i || ' to ' || j;
                 RETURN query SELECT throws_ok(trsp_sql,'XX000','Error, reverse_cost is used, but query did''t return ''reverse_cost'' column', msg);

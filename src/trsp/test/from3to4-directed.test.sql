@@ -69,7 +69,7 @@ BEGIN;
     PREPARE q32 AS
     SELECT (row_number() over() -1)::INTEGER, node::INTEGER, 
                         (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text
-        FROM pgr_dijkstraViaVertex(
+        FROM pgr_dijkstraVia(
         'select id as id, source::integer, target::integer,cost, reverse_cost from edge_table',
         ARRAY[3, 2, 4],
         true) where edge != -1;

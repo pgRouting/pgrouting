@@ -34,8 +34,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
 Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 
-//#define DEBUG 1
+#undef DEBUG 
 #include "../../common/src/debug_macro.h"
+#include "../../common/src/pgr_types.h"
+#include "../../common/src/postgres_connection.h"
 
 
 // The number of tuples to fetch from the SPI cursor at each iteration
@@ -60,6 +62,7 @@ typedef struct restrict_columns
 
 
 
+#if 0
 static char *
 text2char(text *in)
 {
@@ -82,6 +85,7 @@ finish(int code, int ret)
   }			
   return ret;
 }
+#endif
 
 /*
  * This function fetches the resturction columns from an SPITupleTable..
@@ -268,7 +272,7 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
 
 
 static int compute_trsp(
-    char* sql,
+    char* edges_sql,
     int dovertex,
     int start_id,
     double start_pos,
@@ -281,7 +285,6 @@ static int compute_trsp(
     int *path_count) 
 {
 
-  int SPIcode;
   SPIPlanPtr SPIplan;
   Portal SPIportal;
   bool moredata = TRUE;
@@ -318,22 +321,9 @@ static int compute_trsp(
       return 0;
   }
 
-  SPIcode = SPI_connect();
-  if (SPIcode  != SPI_OK_CONNECT) {
-      elog(ERROR, "turn_restrict_shortest_path: couldn't open a connection to SPI");
-      return -1;
-  }
-
-  SPIplan = SPI_prepare(sql, 0, NULL);
-  if (SPIplan  == NULL) {
-      elog(ERROR, "turn_restrict_shortest_path: couldn't create query plan via SPI");
-      return -1;
-  }
-
-  if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
-      elog(ERROR, "turn_restrict_shortest_path: SPI_cursor_open('%s') returns NULL", sql);
-      return -1;
-  }
+  pgr_SPI_connect();
+  SPIplan = pgr_SPI_prepare(edges_sql);
+  SPIportal = pgr_SPI_cursor_open(SPIplan);
 
   while (moredata == TRUE) {
       //PGR_DBG("calling SPI_cursor_fetch");
@@ -341,13 +331,16 @@ static int compute_trsp(
 
       if (SPI_tuptable == NULL) {
           elog(ERROR, "SPI_tuptable is NULL");
-          return finish(SPIcode, -1);
+          pgr_SPI_finish();
+          return -1;
       }
 
       if (edge_columns.id == -1) {
           if (fetch_edge_columns(SPI_tuptable, &edge_columns, 
-                                 has_reverse_cost) == -1)
-	        return finish(SPIcode, ret);
+                                 has_reverse_cost) == -1) {
+            pgr_SPI_finish();
+             return -1;
+          }
       }
 
       ntuples = SPI_processed;
@@ -364,7 +357,8 @@ static int compute_trsp(
 
           if (edges == NULL) {
               elog(ERROR, "Out of memory");
-              return finish(SPIcode, ret);	  
+              pgr_SPI_finish();
+              return -1;
           }
 
           int t;
@@ -475,7 +469,8 @@ static int compute_trsp(
           if (restrict_columns.target_id == -1) {
               if (fetch_restrict_columns(SPI_tuptable, &restrict_columns) == -1) {
                 PGR_DBG("fetch_restrict_columns failed!");
-                return finish(SPIcode, ret);
+                pgr_SPI_finish();
+                return -1;
               }
           }
 
@@ -492,7 +487,8 @@ static int compute_trsp(
 
               if (restricts == NULL) {
                   elog(ERROR, "Out of memory");
-                  return finish(SPIcode, ret);
+                  pgr_SPI_finish();
+                  return -1;
               }
 
               int t;
@@ -569,7 +565,8 @@ static int compute_trsp(
         errmsg("Error computing path: %s", err_msg)));
     } 
     
-  return finish(SPIcode, ret);
+  pgr_SPI_finish();
+  return 0;
 }
 
 
@@ -612,7 +609,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
       if (PG_ARGISNULL(5))
         sql = NULL;
       else {
-        sql = text2char(PG_GETARG_TEXT_P(5));
+        sql = pgr_text2char(PG_GETARG_TEXT_P(5));
         if (strlen(sql) == 0)
             sql = NULL;
       }
@@ -622,7 +619,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 
       ret =
 
- compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
+ compute_trsp(pgr_text2char(PG_GETARG_TEXT_P(0)),
                                    1, // do vertex
                                    PG_GETARG_INT32(1),
                                    0.5,
@@ -761,7 +758,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
       if (PG_ARGISNULL(7))
         sql = NULL;
       else {
-        sql = text2char(PG_GETARG_TEXT_P(7));
+        sql = pgr_text2char(PG_GETARG_TEXT_P(7));
         if (strlen(sql) == 0)
             sql = NULL;
       }
@@ -771,7 +768,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 #ifdef DEBUG
       ret =
 #endif
-         compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
+         compute_trsp(pgr_text2char(PG_GETARG_TEXT_P(0)),
                                    0,  //sdo edge
                                    PG_GETARG_INT32(1),
                                    s_pos,
