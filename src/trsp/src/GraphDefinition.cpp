@@ -53,8 +53,7 @@ GraphDefinition::~GraphDefinition(void) { }
 
 
 // -------------------------------------------------------------------------
-void GraphDefinition::init()
-{
+void GraphDefinition::init() {
     max_edge_id = 0;
     max_node_id = 0;
     isStartVirtual = false;
@@ -75,19 +74,14 @@ void GraphDefinition::deleteall() {
 
 
 // -------------------------------------------------------------------------
-double GraphDefinition::construct_path(int ed_id, int v_pos)
-{
-    if(parent[ed_id].ed_ind[v_pos] == -1)
-    {
+double GraphDefinition::construct_path(int ed_id, int v_pos) {
+    if(parent[ed_id].ed_ind[v_pos] == -1) {
         path_element_t pelement;
         GraphEdgeInfo* cur_edge = &m_vecEdgeVector[ed_id];
-        if(v_pos == 0)
-        {
+        if(v_pos == 0) {
             pelement.vertex_id = cur_edge->m_lStartNode;
             pelement.cost = cur_edge->m_dCost;
-        }
-        else
-        {
+        } else {
             pelement.vertex_id = cur_edge->m_lEndNode;
             pelement.cost = cur_edge->m_dReverseCost;
         }
@@ -99,14 +93,11 @@ double GraphDefinition::construct_path(int ed_id, int v_pos)
     double ret = construct_path(parent[ed_id].ed_ind[v_pos], parent[ed_id].v_pos[v_pos]);
     path_element_t pelement;
     GraphEdgeInfo* cur_edge = &m_vecEdgeVector[ed_id];
-    if(v_pos == 0)
-    {
+    if(v_pos == 0) {
         pelement.vertex_id = cur_edge->m_lStartNode;
         pelement.cost = m_dCost[ed_id].endCost - ret;// cur_edge.m_dCost;
         ret = m_dCost[ed_id].endCost;
-    }
-    else
-    {
+    } else {
         pelement.vertex_id = cur_edge->m_lEndNode;
         pelement.cost = m_dCost[ed_id].startCost - ret;
         ret = m_dCost[ed_id].startCost;
@@ -172,15 +163,13 @@ void GraphDefinition::explore(
         bool isStart,
         LongVector &vecIndex,
         std::priority_queue<PDP, std::vector<PDP>,
-        std::greater<PDP> > &que)
-{
+        std::greater<PDP> > &que) {
     unsigned int i;
     double extCost = 0.0;
     GraphEdgeInfo new_edge;
     // int new_node;
     double totalCost;
-    for(i = 0; i < vecIndex.size(); i++)
-    {
+    for(i = 0; i < vecIndex.size(); i++) {
         new_edge = m_vecEdgeVector[vecIndex[i]];
         extCost = 0.0;
         if(m_bIsturnRestrictOn)
@@ -205,9 +194,7 @@ void GraphDefinition::explore(
                     que.push(std::make_pair(totalCost, std::make_pair(new_edge.m_lEdgeIndex, true)));
                 }
             }
-        }
-        else
-        {
+        } else {
             if(new_edge.m_dReverseCost >= 0.0)
             {
                 // new_node = new_edge->m_lStartNode;
@@ -230,7 +217,7 @@ void GraphDefinition::explore(
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition::my_dijkstra(edge_t *edges, unsigned int edge_count, int start_edge_id, double start_part, int end_edge_id, double end_part, bool directed, bool has_reverse_cost,
+int GraphDefinition::my_dijkstra(unsigned int edge_count, int start_edge_id, double start_part, int end_edge_id, double end_part,
         path_element_t **path, int *path_count, char **err_msg, std::vector<PDVI> &ruleList)
 {
     GraphEdgeInfo *start_edge_info = &m_vecEdgeVector[m_mapEdgeId2Index[start_edge_id]];
@@ -315,12 +302,12 @@ int GraphDefinition::my_dijkstra(edge_t *edges, unsigned int edge_count, int sta
         }
     }
 
-    return(my_dijkstra(edges, edge_count, start_vertex, end_vertex, directed, has_reverse_cost, path, path_count, err_msg, ruleList));
+    return(my_dijkstra(edge_count, start_vertex, end_vertex, path, path_count, err_msg, ruleList));
 }
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int start_vertex, int end_vertex, bool directed, bool has_reverse_cost,
+int GraphDefinition:: my_dijkstra(unsigned int edge_count, int start_vertex, int end_vertex,
         path_element_t **path, int *path_count, char **err_msg, std::vector<PDVI> &ruleList)
 {
     m_ruleTable.clear();
@@ -378,12 +365,12 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
         }
     }
     m_bIsturnRestrictOn = true;
-    return(my_dijkstra(edges, edge_count, start_vertex, end_vertex, directed, has_reverse_cost, path, path_count, err_msg));
+    return my_dijkstra(edge_count, start_vertex, end_vertex, path, path_count, err_msg);
 }
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int start_vertex, int end_vertex, bool directed, bool has_reverse_cost,
+int GraphDefinition:: my_dijkstra(unsigned int edge_count, int start_vertex, int end_vertex,
         path_element_t **path, int *path_count, char **err_msg)
 {
 

@@ -101,23 +101,20 @@ class GraphDefinition {
             bool has_rcost);
 
 
-    int my_dijkstra(edge_t *edges, unsigned int edge_count,
+    int my_dijkstra(unsigned int edge_count,
             int start_vertex, int end_vertex,
-            bool directed, bool has_reverse_cost,
             path_element_t **path, int *path_count,
             char **err_msg);
 
-    int my_dijkstra(edge_t *edges, unsigned int edge_count,
+    int my_dijkstra(unsigned int edge_count,
             int start_vertex, int end_vertex,
-            bool directed, bool has_reverse_cost,
             path_element_t **path, int *path_count,
             char **err_msg,
             std::vector<PDVI> &ruleList);
 
-    int my_dijkstra(edge_t *edges, unsigned int edge_count,
+    int my_dijkstra(unsigned int edge_count,
             int start_edge, double start_part,
             int end_edge, double end_part,
-            bool directed, bool has_reverse_cost,
             path_element_t **path, int *path_count,
             char **err_msg,
             std::vector<PDVI> &ruleList);
