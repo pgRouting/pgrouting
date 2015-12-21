@@ -26,9 +26,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <map>
 #include <queue>
-//#include <string>
-//#include <stdlib.h>
-//#include <iostream>
 
 #include "trsp.h"
 
@@ -96,8 +93,14 @@ class GraphDefinition {
 
 
  public:
-    GraphDefinition(void);
     ~GraphDefinition(void);
+    GraphDefinition(
+            edge_t *edges,
+            unsigned int edge_count,
+            bool directed, 
+            bool has_rcost, 
+            std::ostream &log,
+            std::vector<PDVI> &ruleList);
 
     int my_dijkstra(int start_vertex, int end_vertex,
             unsigned int edge_count, char** err_msg);
@@ -130,8 +133,10 @@ class GraphDefinition {
             char **err_msg,
             std::vector<PDVI> &ruleList);
 
-    bool construct_graph(edge_t *edges, int edge_count,
-            bool has_reverse_cost, bool directed);
+    bool construct_graph(
+            edge_t *edges,
+            int edge_count,
+            bool directed);
 
 
  private:

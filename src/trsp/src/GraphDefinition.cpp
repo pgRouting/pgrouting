@@ -30,7 +30,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "GraphDefinition.h"
 
 // -------------------------------------------------------------------------
-GraphDefinition::GraphDefinition(void) :
+GraphDefinition::GraphDefinition(
+        edge_t *edges,
+        unsigned int edge_count,
+        bool directed,
+        bool has_rcost,
+        std::ostream &log,
+        std::vector<PDVI> &ruleList) :
+
     m_lStartEdgeId(-1),
     m_lEndEdgeId(0),
     m_dStartpart(0.0),
