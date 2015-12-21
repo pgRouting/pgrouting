@@ -22,7 +22,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-// #define DEBUG
+#undef DEBUG
+#include "postgres.h"
+#include "executor/spi.h"
+
 #include "./debug_macro.h"
 #include "./pgr_types.h"
 #include "./postgres_connection.h"
@@ -38,7 +41,26 @@ void fetch_restriction(
         Restrict_t *restriction) {
     restriction->target_id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     restriction->to_cost = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
-    restriction->via_path = pgr_SPI_getText(tuple, tupdesc,  info[2]);
+    char *str = DatumGetCString(SPI_getvalue(*tuple, *tupdesc, info[2].colNumber));
+// TODO because its  text, there is no garanee that the text read is correct
+// move this code to c++ to tokenize the integers.
+
+    int i = 0;
+    for(i = 0; i < MAX_RULE_LENGTH; ++i) restriction->via[i] = -1;
+
+    if (str != NULL) {
+        char *token = NULL;
+        int i = 0;
+
+        token = (char *)strtok(str," ,");
+
+        while (token != NULL && i < MAX_RULE_LENGTH)
+        {
+            restriction->via[i] = atoi(token);
+            i++;
+            token = (char *)strtok(NULL, " ,");
+        }
+    }
 }
 
 
@@ -48,6 +70,9 @@ pgr_get_restriction_data(
         Restrict_t **restrictions,
         int64_t *total_restrictions) {
     const int tuple_limit = 1000000;
+
+    PGR_DBG("pgr_get_restriction_data");
+    PGR_DBG("%s", restrictions_sql);
 
     Column_info_t info[3];
 
@@ -71,7 +96,6 @@ pgr_get_restriction_data(
 
     void *SPIplan;
     SPIplan = pgr_SPI_prepare(restrictions_sql);
-
     Portal SPIportal;
     SPIportal = pgr_SPI_cursor_open(SPIplan);
 
@@ -82,12 +106,12 @@ pgr_get_restriction_data(
 
     while (moredata == TRUE) {
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
-        if (total_tuples == 0)
+        if (total_tuples == 0) {
             pgr_fetch_column_info(info, 3);
-
+        }
         ntuples = SPI_processed;
         total_tuples += ntuples;
-
+        PGR_DBG("SPI_processed %ld", ntuples);
         if (ntuples > 0) {
             if ((*restrictions) == NULL)
                 (*restrictions) = (Restrict_t *)palloc0(total_tuples * sizeof(Restrict_t));
@@ -119,7 +143,6 @@ pgr_get_restriction_data(
         return;
     }
 
-
     (*total_restrictions) = total_tuples;
-    PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*totalTuples));
+    PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*total_restrictions));
 }

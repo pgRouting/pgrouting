@@ -136,6 +136,8 @@ pgr_get_points(
             moredata = FALSE;
         }
     }
+    SPI_cursor_close(SPIportal);
+
 
     if (total_tuples == 0) {
         (*total_points) = 0;

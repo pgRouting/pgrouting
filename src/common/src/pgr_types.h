@@ -100,7 +100,6 @@ typedef struct
     int64_t target_id;
     float8 to_cost;
     int64_t via[MAX_RULE_LENGTH];
-    char *via_path;
 }
 Restrict_t;
 

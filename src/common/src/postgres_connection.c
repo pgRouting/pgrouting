@@ -68,7 +68,7 @@ pgr_SPI_prepare(char* sql) {
     SPIPlanPtr SPIplan;
     SPIplan = SPI_prepare(sql, 0, NULL);
     if (SPIplan  == NULL) {
-        elog(ERROR, "Couldn't create query plan via SPI");
+        elog(ERROR, "Couldn't create query plan via SPI: %s", sql);
     }
     return SPIplan;
 }

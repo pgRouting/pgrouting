@@ -144,6 +144,7 @@ get_data_5_columns(
         }
     }
 
+
     if (total_tuples == 0 || valid_edges == 0) {
         (*totalTuples) = 0;
         PGR_DBG("NO edges");
