@@ -59,7 +59,7 @@ int trsp_node_wrapper(
             ruleTable.push_back(make_pair(restricts[i].to_cost, seq));
         }
 
-        GraphDefinition gdef(edges, edge_count, directed, has_reverse_cost, ruleTable);
+        GraphDefinition gdef(edges, edge_count, directed, has_reverse_cost);
         int res = gdef.my_dijkstra(edges, edge_count, start_vertex, end_vertex, directed, has_reverse_cost, path, path_count, err_msg, ruleTable);
 
 
@@ -111,7 +111,7 @@ int trsp_edge_wrapper(
             ruleTable.push_back(make_pair(restricts[i].to_cost, seq));
         }
 
-        GraphDefinition gdef(edges, edge_count, directed, has_reverse_cost, ruleTable);
+        GraphDefinition gdef(edges, edge_count, directed, has_reverse_cost);
         int res = gdef.my_dijkstra(edges, edge_count, start_edge, start_pos, end_edge, end_pos, directed, has_reverse_cost, path, path_count, err_msg, ruleTable);
 
 

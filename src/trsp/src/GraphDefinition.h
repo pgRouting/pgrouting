@@ -98,8 +98,7 @@ class GraphDefinition {
             edge_t *edges,
             unsigned int edge_count,
             bool directed, 
-            bool has_rcost, 
-            std::vector<PDVI> &ruleList);
+            bool has_rcost);
 
 
     int my_dijkstra(edge_t *edges, unsigned int edge_count,

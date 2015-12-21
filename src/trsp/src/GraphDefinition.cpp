@@ -34,9 +34,7 @@ GraphDefinition::GraphDefinition(
         edge_t *edges,
         unsigned int edge_count,
         bool directed,
-        bool has_rcost,
-        std::vector<PDVI> &ruleList) :
-
+        bool has_rcost) :
     m_lStartEdgeId(-1),
     m_lEndEdgeId(0),
     m_dStartpart(0.0),
@@ -46,6 +44,8 @@ GraphDefinition::GraphDefinition(
         m_dCost.clear();
         parent.clear();
         init();
+        construct_graph(edges, edge_count, has_rcost, directed);
+        m_bIsGraphConstructed = true;
     }
 
 // -------------------------------------------------------------------------
@@ -233,12 +233,6 @@ void GraphDefinition::explore(
 int GraphDefinition::my_dijkstra(edge_t *edges, unsigned int edge_count, int start_edge_id, double start_part, int end_edge_id, double end_part, bool directed, bool has_reverse_cost,
         path_element_t **path, int *path_count, char **err_msg, std::vector<PDVI> &ruleList)
 {
-    if(!m_bIsGraphConstructed)
-    {
-        init();
-        construct_graph(edges, edge_count, has_reverse_cost, directed);
-        m_bIsGraphConstructed = true;
-    }
     GraphEdgeInfo *start_edge_info = &m_vecEdgeVector[m_mapEdgeId2Index[start_edge_id]];
     edge_t start_edge;
     int start_vertex, end_vertex;
@@ -392,12 +386,6 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
 int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int start_vertex, int end_vertex, bool directed, bool has_reverse_cost,
         path_element_t **path, int *path_count, char **err_msg)
 {
-    if(!m_bIsGraphConstructed)
-    {
-        init();
-        construct_graph(edges, edge_count, has_reverse_cost, directed);
-        m_bIsGraphConstructed = true;
-    }
 
     std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > que;
     parent.resize(edge_count + 1);
