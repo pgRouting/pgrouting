@@ -101,8 +101,6 @@ class GraphDefinition {
             bool has_rcost, 
             std::vector<PDVI> &ruleList);
 
-    int my_dijkstra(int start_vertex, int end_vertex,
-            unsigned int edge_count, char** err_msg);
 
     int my_dijkstra(edge_t *edges, unsigned int edge_count,
             int start_vertex, int end_vertex,
@@ -125,12 +123,6 @@ class GraphDefinition {
             char **err_msg,
             std::vector<PDVI> &ruleList);
 
-    int multi_dijkstra(edge_t *edges, unsigned int edge_count,
-            std::vector<int> vertices,
-            bool directed, bool has_reverse_cost,
-            path_element_t **path, int *path_count,
-            char **err_msg,
-            std::vector<PDVI> &ruleList);
 
     bool construct_graph(
             edge_t *edges,
