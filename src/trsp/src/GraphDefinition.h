@@ -33,13 +33,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "trsp.h"
 
 
+typedef std::pair<double, std::vector<int> > PDVI;
+
+
+class GraphDefinition {
 typedef std::vector<long> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
 typedef std::pair<int, bool> PIB;
 typedef std::pair<double, PIB> PDP;
-typedef std::pair<double, std::vector<int> > PDVI;
-
-
 typedef struct{
     int ed_ind[2];
     int v_pos[2];
@@ -83,8 +84,6 @@ typedef std::map<long,long> Long2LongMap;
 
 
 
-class GraphDefinition
-{
 public:
     GraphDefinition(void);
     ~GraphDefinition(void);
