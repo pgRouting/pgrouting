@@ -16,4 +16,4 @@ make
 sudo make install
 cd ..
 
-./tools/test-runner.pl -pgver $POSTGRESQL_VERSION -ignorenotice
+./testers/algorithm-tester.pl -pgver $POSTGRESQL_VERSION -ignorenotice
