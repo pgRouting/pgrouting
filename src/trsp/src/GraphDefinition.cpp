@@ -383,7 +383,6 @@ int GraphDefinition:: my_dijkstra(int start_vertex, int end_vertex,
     m_dCost.resize(m_edge_count + 1);
     m_vecPath.clear();
 
-    unsigned int i;
     for (auto &dcost : m_dCost) {
         dcost.startCost = 1e15;
         dcost.endCost = 1e15;
