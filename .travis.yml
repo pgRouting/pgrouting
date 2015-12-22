@@ -76,5 +76,6 @@ script:
 #after_script: 
 
 #after_success:
+  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 
