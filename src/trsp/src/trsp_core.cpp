@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
+#include <sstream>
 #include "GraphDefinition.h"
 
 
@@ -39,9 +40,9 @@ int trsp_node_wrapper(
     bool has_reverse_cost,
     path_element_t **path,
     int *path_count,
-    char **err_msg
-    )
-{
+    char **err_msg) {
+
+    std::ostringstream log;
     try {
 
         std::vector<PDVI> ruleTable;
@@ -61,7 +62,7 @@ int trsp_node_wrapper(
 
         GraphDefinition gdef(edges, edge_count, directed, has_reverse_cost);
         gdef.set_restrictions(start_vertex, end_vertex, ruleTable);
-        int res = gdef.my_dijkstra(start_vertex, end_vertex, path, path_count, err_msg);
+        int res = gdef.my_dijkstra(start_vertex, end_vertex, path, path_count, log);
 
 
         if (res < 0)
@@ -70,11 +71,13 @@ int trsp_node_wrapper(
             return EXIT_SUCCESS;
     }
     catch(std::exception& e) {
-        *err_msg = (char *) e.what();
+        log << e.what();
+        *err_msg = strdup(log.str().c_str());
         return -1;
     }
     catch(...) {
-        *err_msg = (char *) "Caught unknown exception!";
+        log << "Caught unknown exception!";
+        *err_msg = strdup(log.str().c_str());
         return -1;
     }
 }
@@ -92,9 +95,8 @@ int trsp_edge_wrapper(
     bool has_reverse_cost,
     path_element_t **path,
     int *path_count,
-    char **err_msg
-    )
-{
+    char **err_msg) {
+    std::ostringstream log;
     try {
 
         std::vector<PDVI> ruleTable;
@@ -122,7 +124,7 @@ int trsp_edge_wrapper(
                 start_vertex, end_vertex);
 
         gdef.set_restrictions(start_vertex, end_vertex, ruleTable);
-        int res = gdef.my_dijkstra(start_vertex, end_vertex, path, path_count, err_msg);
+        int res = gdef.my_dijkstra(start_vertex, end_vertex, path, path_count, log);
 
 
         if (res < 0)
@@ -131,11 +133,13 @@ int trsp_edge_wrapper(
             return EXIT_SUCCESS;
     }
     catch(std::exception& e) {
-        *err_msg = (char *) e.what();
+        log << e.what();
+        *err_msg = strdup(log.str().c_str());
         return -1;
     }
     catch(...) {
-        *err_msg = (char *) "Caught unknown exception!";
+        log << "Caught unknown exception!";
+        *err_msg = strdup(log.str().c_str());
         return -1;
     }
 }

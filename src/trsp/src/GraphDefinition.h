@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <queue>
 
+#include <sstream>
 #include "trsp.h"
 
 
@@ -104,7 +105,7 @@ class GraphDefinition {
     int my_dijkstra(
             int start_vertex, int end_vertex,
             path_element_t **path, int *path_count,
-            char **err_msg);
+            std::ostringstream &log);
 
     void set_restrictions(
             int start_vertex,

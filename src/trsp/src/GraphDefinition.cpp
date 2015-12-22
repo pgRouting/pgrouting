@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
+#include <sstream>
 #include "GraphDefinition.h"
 
 // -------------------------------------------------------------------------
@@ -369,14 +370,13 @@ GraphDefinition::set_restrictions(
         }
     }
     m_bIsturnRestrictOn = true;
-    //return my_dijkstra(edge_count, start_vertex, end_vertex, path, path_count, err_msg);
 }
 
 // THIS ONE IS THE DIJKSTRA
 // -------------------------------------------------------------------------
 int GraphDefinition:: my_dijkstra(int start_vertex, int end_vertex,
-        path_element_t **path, int *path_count, char **err_msg)
-{
+        path_element_t **path, int *path_count,
+        std::ostringstream &log) {
 
     std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > que;
     parent.resize(m_edge_count + 1);
@@ -384,23 +384,20 @@ int GraphDefinition:: my_dijkstra(int start_vertex, int end_vertex,
     m_vecPath.clear();
 
     unsigned int i;
-    for(i = 0; i <= m_edge_count; i++)
-    {
-        m_dCost[i].startCost = 1e15;
-        m_dCost[i].endCost = 1e15;
+    for (auto &dcost : m_dCost) {
+        dcost.startCost = 1e15;
+        dcost.endCost = 1e15;
     }
 
     if(m_mapNodeId2Edge.find(start_vertex) == m_mapNodeId2Edge.end())
     {
-        *err_msg = (char *)"Source Not Found";
-        deleteall();
+        log << "Source Not Found";
         return -1;
     }
 
     if(m_mapNodeId2Edge.find(end_vertex) == m_mapNodeId2Edge.end())
     {
-        *err_msg = (char *)"Destination Not Found";
-        deleteall();
+        log << "Destination Not Found";
         return -1;
     }
 
@@ -431,11 +428,7 @@ int GraphDefinition:: my_dijkstra(int start_vertex, int end_vertex,
             }
         }
     }
-    //parent[start_vertex].v_id = -1;
-    //parent[start_vertex].ed_id = -1;
-    //m_dCost[start_vertex] = 0.0;
 
-    // int new_node;
     int cur_node = -1;
 
     while(!que.empty())
@@ -444,7 +437,6 @@ int GraphDefinition:: my_dijkstra(int start_vertex, int end_vertex,
         que.pop();
         int cured_index = cur_pos.second.first;
         cur_edge = &m_vecEdgeVector[cured_index];
-        //GraphEdgeInfo* new_edge;
 
         if(cur_pos.second.second)      // explore edges connected to end node
         {
@@ -474,8 +466,7 @@ int GraphDefinition:: my_dijkstra(int start_vertex, int end_vertex,
                 return 0;
             }
         }
-        *err_msg = (char *)"Path Not Found";
-        deleteall();
+        log << "Path Not Found";
         return -1;
     }
     else
@@ -525,7 +516,6 @@ int GraphDefinition:: my_dijkstra(int start_vertex, int end_vertex,
             (*path)[*path_count - 1].edge_id = m_lEndEdgeId;
         }
     }
-    deleteall();
     return 0;
 }
 
