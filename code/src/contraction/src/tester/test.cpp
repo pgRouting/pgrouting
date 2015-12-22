@@ -69,13 +69,13 @@ void check(Edge *edges,int num_vertices,int num_edges,int level)
 	string path="/home/rohith/mystuff/labwork/3-1/codes/data/txt/contracted_ways_";
 	path += boost::lexical_cast<std::string>(level);
 	path+=".txt";
-	fp=fopen(path.c_str(),"w+");
+	//fp=fopen(path.c_str(),"w+");
 	typedef Graph_Minimizer<G> Graph;
 	Graph g(UNDIRECTED,num_vertices);
 	g.initialize_graph(edges,num_edges);
 	cout << "Contracting...." << endl;
 	g.contract_to_level(level);
-	Edge *reduced=NULL;
+	/*Edge *reduced=NULL;
 	int final_edges=g.getreducedGraph(&reduced);
 	cout << "final_edges " << final_edges << endl;
 	for (int i = 0; i < final_edges && reduced[i].id>0; ++i)
@@ -84,8 +84,9 @@ void check(Edge *edges,int num_vertices,int num_edges,int level)
 		fprintf(fp, "%d,%d,%d,%f\n"
 					,reduced[i].id,reduced[i].source,reduced[i].target,reduced[i].cost);
 
-	}
-//g.reduced_graph->print_graph();
+	}*/
+	g.print_removed_vertices();
+	g.print_psuedo_edges();
 }
 
 int main(int argc, char const *argv[])
@@ -94,13 +95,14 @@ int main(int argc, char const *argv[])
 	//int num_edges=18;
 	int num_vertices=1251;
 	//edges=(Edge*)malloc(sizeof(Edge)*num_edges);
-	string filename="/home/rohith/mystuff/labwork/3-1/codes/data/txt/berlin.txt";
-	//string filename="ways.txt";
+	//string filename="/home/rohith/mystuff/labwork/3-1/codes/data/txt/berlin.txt";
+	string filename="ways.txt";
 	cout << "file " << filename << endl;
 	int num_edges=loadGraph(filename,&edges);
- 	check(edges,num_vertices,num_edges,0);
- 	check(edges,num_vertices,num_edges,1);
+ 	//check(edges,num_vertices,num_edges,0);
+ 	//check(edges,num_vertices,num_edges,1);
  	check(edges,num_vertices,num_edges,2);
+
 	return 0;
 }
 

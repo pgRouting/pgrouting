@@ -1,6 +1,15 @@
 #ifndef GRAPH_MINIMIZER_H_
 #define GRAPH_MINIMIZER_H_
 
+/*
+
+Edge types:
+
+0: Normal edge
+1: Updated Edge
+2: New Edge
+
+*/
 #include <deque>
 #include <vector>
 #include <set>
@@ -29,14 +38,19 @@ public:
 	typedef typename boost::graph_traits < G >::vertex_iterator V_i;
 
   //typedef typename std::map<V,E> removed_edges;
-	typedef typename std::map<V,stack<V> > removed_vertices;
+	typedef typename std::map<V,deque<Edge> > removed_V;
+	typedef  std::deque<Edge>::iterator removed_E_i;
 	typedef typename std::map< int64_t, std::vector<V> > degree_to_V;
 	typedef typename std::map< int64_t, std::vector<V> >::iterator degree_to_V_i;
 	typedef typename std::vector<V>::iterator Q_i;
 	typedef typename boost::graph_traits < G >::out_edge_iterator EO_i;
+	typedef typename std::map<V,deque<Edge> >::iterator removed_V_i;
+	typedef typename std::map<int64_t , pair<int64_t,int64_t> > psuedo_E;
+	typedef typename std::map<int64_t , pair<int64_t,int64_t> >::iterator psuedo_E_i;
 	int64_t last_edge_id;
 
-	removed_vertices removedVertices;
+	removed_V removedVertices;
+	psuedo_E psuedoEdges;
 
   //initializes the graph with the given edges
 	void
@@ -52,6 +66,7 @@ public:
 	{
 		EO_i out,out_end;
 		V front=reduced_graph->degree_to_V_map[1].front();
+
 		std::vector<V> one_degree_vertices=reduced_graph->degree_to_V_map[1];
 		degree_to_V_i it;
 		cout << "1 degree vertices " << one_degree_vertices.size()  << endl;
@@ -73,7 +88,9 @@ public:
 				reduced_graph->graph[t].degree--;
 				int final_target_degree=prev_target_degree-1;
 				//reduced_graph->degree_to_V_map[final_target_degree].push_back(t);
-				removedVertices[t].push(s);
+				Edge removed_edge=reduced_graph->graph[*out];
+				//cout << "removing" << " (" << removed_edge.source<< ", " << removed_edge.target << ")" << endl;
+				removedVertices[front].push_front(removed_edge);
 			}
 			reduced_graph->degree_to_V_map[1].erase(reduced_graph->degree_to_V_map[1].begin(),
 				reduced_graph->degree_to_V_map[1].begin()+1);
@@ -125,7 +142,7 @@ public:
 				min_distance+=reduced_graph->graph[*out].cost;
 				reduced_graph->graph[t].contractions++;
 				neighbors_desc.push_back(t);
-				removedVertices[t].push(front);
+				//removedVertices[t].push(front);
 				count++;
 			}
 			if (count==2)
@@ -136,11 +153,15 @@ public:
 				tdesc2=neighbors_desc[1];
 				reduced_graph->get_vertex_id(tdesc1,tid1);
 				reduced_graph->get_vertex_id(tdesc2,tid2);
+				int64_t eid1=reduced_graph->graph[edge(tdesc1, front,reduced_graph->graph).first].id;
+				int64_t eid2=reduced_graph->graph[edge(front, tdesc2,reduced_graph->graph).first].id;
+				int64_t eid;
 				bool b1=edge(tdesc1, tdesc2,reduced_graph->graph).second;
 				bool b2=edge(tdesc2, tdesc1,reduced_graph->graph).second;
 				//cout << b1 << "," << b2 << endl;
 				if ( b1 || b2)
 				{
+					eid=reduced_graph->graph[edge(tdesc1, tdesc2,reduced_graph->graph).first].id;
 					float dist=reduced_graph->graph[edge(tdesc1, tdesc2,reduced_graph->graph).first].cost;
 					if (fabs(min_distance-dist)>=0.000001)
 					{
@@ -149,19 +170,30 @@ public:
 					else
 					{
 						reduced_graph->graph[edge(tdesc1, tdesc2,reduced_graph->graph).first].cost=min_distance;
+						reduced_graph->graph[edge(tdesc1, tdesc2,reduced_graph->graph).first].type=1;
 					}
 				}
 				else
 				{
 					shortcut.id=++last_edge_id;
+					eid=shortcut.id;
 					shortcut.source=tid1;
 					shortcut.target=tid2;
 					shortcut.cost=min_distance;
-					shortcut.type=1;
+					shortcut.type=2;
 					reduced_graph->graph_add_edge(shortcut);
+				}
+				psuedoEdges[eid]=make_pair(eid1,eid2);
+				Edge removed_edge;
+				for (int i = 0; i < 2; ++i)
+				{
+					V t=neighbors_desc[i];
+					removed_edge=reduced_graph->graph[edge(front, t,reduced_graph->graph).first];
+					removedVertices[front].push_front(removed_edge);
 				}
 				reduced_graph->remove_vertex(front_id);
 			}
+			
 			two_degree_vertices_0.erase(two_degree_vertices_0.begin(),
 				two_degree_vertices_0.begin()+1);
 
@@ -211,7 +243,6 @@ public:
 				V t=target(*out, reduced_graph->graph);
 				reduced_graph->graph[t].contractions++;
 				neighbors_desc.push_back(t);
-				removedVertices[t].push(front);
 				count++;
 			}
 			if (count==3)
@@ -229,6 +260,9 @@ public:
 						Edge shortcut;
 						float dist1=reduced_graph->graph[edge(front, tdesc2,reduced_graph->graph).first].cost;
 						float dist2=reduced_graph->graph[edge(front, tdesc1,reduced_graph->graph).first].cost;
+						int64_t eid1=reduced_graph->graph[edge(tdesc1, front,reduced_graph->graph).first].id;
+						int64_t eid2=reduced_graph->graph[edge(front, tdesc2,reduced_graph->graph).first].id;
+						int64_t eid;
 						min_distance=dist1+dist2;
 						bool b1=edge(tdesc1, tdesc2,reduced_graph->graph).second;
 						bool b2=edge(tdesc2, tdesc1,reduced_graph->graph).second;
@@ -242,6 +276,8 @@ public:
 							else
 							{
 								reduced_graph->graph[edge(tdesc1, tdesc2,reduced_graph->graph).first].cost=min_distance;
+								reduced_graph->graph[edge(tdesc1, tdesc2,reduced_graph->graph).first].type=1;
+								eid=reduced_graph->graph[edge(tdesc1, tdesc2,reduced_graph->graph).first].id;
 							}
 						}
 						else
@@ -249,14 +285,22 @@ public:
 							reduced_graph->get_vertex_id(tdesc1,tid1);
 							reduced_graph->get_vertex_id(tdesc2,tid2);
 							shortcut.id=++last_edge_id;
+							eid=shortcut.id;
 							shortcut.source=tid1;
 							shortcut.target=tid2;
 							shortcut.cost=min_distance;
-							shortcut.type=1;
+							shortcut.type=2;
 							reduced_graph->graph_add_edge(shortcut);
 						}
-
+						psuedoEdges[eid]=make_pair(eid1,eid2);
 					}
+				}
+				Edge removed_edge;
+				for (int i = 0; i < 3; ++i)
+				{
+					V t=neighbors_desc[i];
+					removed_edge=reduced_graph->graph[edge(front, t,reduced_graph->graph).first];
+					removedVertices[front].push_front(removed_edge);
 				}
 				reduced_graph->remove_vertex(front_id);
 			}
@@ -318,6 +362,32 @@ public:
 			default :
 		//	do nothing;
 			break;
+		}
+	}
+
+
+	void print_removed_vertices()
+	{
+
+		for (removed_V_i iter = removedVertices.begin(); iter != removedVertices.end(); iter++)
+		{
+			cout << "id: " << reduced_graph->graph[iter->first].id << endl;
+
+			for (removed_E_i edge_iter = iter->second.begin(); edge_iter != iter->second.end(); edge_iter++)
+			{
+				Edge temp=*edge_iter ;
+				cout << "(" << temp.source<< ", " << temp.target << "), ";
+			}
+			cout << endl;
+		}
+	}
+
+	void print_psuedo_edges()
+	{
+
+		for (psuedo_E_i iter = psuedoEdges.begin(); iter != psuedoEdges.end(); iter++)
+		{
+			cout << "e1: " << iter->second.first << ",e: "<< iter->first << ",e2: " << iter->second.second << endl;
 		}
 	}
 
