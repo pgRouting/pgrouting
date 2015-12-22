@@ -39,12 +39,13 @@ GraphDefinition::GraphDefinition(
     m_lEndEdgeId(0),
     m_dStartpart(0.0),
     m_dEndPart(0.0),
+    m_edge_count(edge_count),
     m_bIsturnRestrictOn(false),
     m_bIsGraphConstructed(false) {
         m_dCost.clear();
         parent.clear();
         init();
-        construct_graph(edges, edge_count, has_rcost, directed);
+        construct_graph(edges, has_rcost, directed);
         m_bIsGraphConstructed = true;
     }
 
@@ -218,7 +219,7 @@ void GraphDefinition::explore(
 
 // -------------------------------------------------------------------------
 void
-GraphDefinition::add_virtual_vertices(unsigned int &edge_count, int start_edge_id, double start_part, int end_edge_id, double end_part,
+GraphDefinition::add_virtual_vertices(int start_edge_id, double start_part, int end_edge_id, double end_part,
         int64_t &start_vertex, int64_t &end_vertex)
 {
     GraphEdgeInfo *start_edge_info = &m_vecEdgeVector[m_mapEdgeId2Index[start_edge_id]];
@@ -252,7 +253,7 @@ GraphDefinition::add_virtual_vertices(unsigned int &edge_count, int start_edge_i
             start_edge.target = start_edge_info->m_lEndNode;
             start_edge.cost = (1.0 - start_part) * start_edge_info->m_dCost;
             addEdge(start_edge);
-            edge_count++;
+            m_edge_count++;
         }
         if(start_edge_info->m_dReverseCost >= 0.0)
         {
@@ -261,7 +262,7 @@ GraphDefinition::add_virtual_vertices(unsigned int &edge_count, int start_edge_i
             start_edge.target = start_edge_info->m_lStartNode;
             start_edge.cost = start_part * start_edge_info->m_dReverseCost;
             addEdge(start_edge);
-            edge_count++;
+            m_edge_count++;
         }
     }
 
@@ -291,7 +292,7 @@ GraphDefinition::add_virtual_vertices(unsigned int &edge_count, int start_edge_i
             end_edge.source = end_edge_info->m_lStartNode;
             end_edge.cost = end_part * end_edge_info->m_dCost;
             addEdge(end_edge);
-            edge_count++;
+            m_edge_count++;
         }
         if(end_edge_info->m_dReverseCost >= 0.0)
         {
@@ -299,9 +300,10 @@ GraphDefinition::add_virtual_vertices(unsigned int &edge_count, int start_edge_i
             end_edge.id = max_edge_id + 1;
             end_edge.cost = (1.0 - end_part) * end_edge_info->m_dReverseCost;
             addEdge(end_edge);
-            edge_count++;
+            m_edge_count++;
         }
     }
+    //edge_count = m_edge_count;
 }
 
 
@@ -372,17 +374,17 @@ GraphDefinition::set_restrictions(
 
 // THIS ONE IS THE DIJKSTRA
 // -------------------------------------------------------------------------
-int GraphDefinition:: my_dijkstra(unsigned int edge_count, int start_vertex, int end_vertex,
+int GraphDefinition:: my_dijkstra(int start_vertex, int end_vertex,
         path_element_t **path, int *path_count, char **err_msg)
 {
 
     std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > que;
-    parent.resize(edge_count + 1);
-    m_dCost.resize(edge_count + 1);
+    parent.resize(m_edge_count + 1);
+    m_dCost.resize(m_edge_count + 1);
     m_vecPath.clear();
 
     unsigned int i;
-    for(i = 0; i <= edge_count; i++)
+    for(i = 0; i <= m_edge_count; i++)
     {
         m_dCost[i].startCost = 1e15;
         m_dCost[i].endCost = 1e15;
@@ -564,9 +566,9 @@ bool GraphDefinition::get_single_cost(double total_cost, path_element_t **path, 
 
 
 // -------------------------------------------------------------------------
-bool GraphDefinition::construct_graph(edge_t* edges, int edge_count, bool has_reverse_cost, bool directed) {
-    int i;
-    for(i = 0; i < edge_count; i++) {
+bool GraphDefinition::construct_graph(edge_t* edges, bool has_reverse_cost, bool directed) {
+    unsigned int i;
+    for(i = 0; i < m_edge_count; i++) {
 
         /*
          *  has_reverse_cost but cost is negative

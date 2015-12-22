@@ -102,7 +102,6 @@ class GraphDefinition {
 
 
     int my_dijkstra(
-            unsigned int edge_count,
             int start_vertex, int end_vertex,
             path_element_t **path, int *path_count,
             char **err_msg);
@@ -112,7 +111,7 @@ class GraphDefinition {
             int end_vertex,
             std::vector<PDVI> &ruleList);
 
-    void add_virtual_vertices(unsigned int &edge_count,
+    void add_virtual_vertices(
             int start_edge, double start_part,
             int end_edge, double end_part,
             int64_t &start_vertex, int64_t &end_vertex);
@@ -120,7 +119,6 @@ class GraphDefinition {
 
     bool construct_graph(
             edge_t *edges,
-            int edge_count,
             bool has_rcost,
             bool directed);
 
@@ -147,6 +145,8 @@ class GraphDefinition {
     double m_dEndPart;
     bool isStartVirtual;
     bool isEndVirtual;
+
+    unsigned int m_edge_count;
 
     std::vector <path_element_t> m_vecPath;
     std::vector < PARENT_PATH > parent;
