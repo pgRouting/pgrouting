@@ -101,23 +101,21 @@ class GraphDefinition {
             bool has_rcost);
 
 
-    int my_dijkstra(unsigned int edge_count,
+    int my_dijkstra(
+            unsigned int edge_count,
             int start_vertex, int end_vertex,
             path_element_t **path, int *path_count,
             char **err_msg);
 
-    int set_restrictions(unsigned int edge_count,
-            int start_vertex, int end_vertex,
-            path_element_t **path, int *path_count,
-            char **err_msg,
+    void set_restrictions(
+            int start_vertex,
+            int end_vertex,
             std::vector<PDVI> &ruleList);
 
-    int my_dijkstra(unsigned int edge_count,
+    void add_virtual_vertices(unsigned int &edge_count,
             int start_edge, double start_part,
             int end_edge, double end_part,
-            path_element_t **path, int *path_count,
-            char **err_msg,
-            std::vector<PDVI> &ruleList);
+            int64_t &start_vertex, int64_t &end_vertex);
 
 
     bool construct_graph(

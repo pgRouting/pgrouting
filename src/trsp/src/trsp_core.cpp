@@ -60,7 +60,7 @@ int trsp_node_wrapper(
         }
 
         GraphDefinition gdef(edges, edge_count, directed, has_reverse_cost);
-        gdef.set_restrictions(edge_count, start_vertex, end_vertex, path, path_count, err_msg, ruleTable);
+        gdef.set_restrictions(start_vertex, end_vertex, ruleTable);
         int res = gdef.my_dijkstra(edge_count, start_vertex, end_vertex, path, path_count, err_msg);
 
 
@@ -113,7 +113,14 @@ int trsp_edge_wrapper(
         }
 
         GraphDefinition gdef(edges, edge_count, directed, has_reverse_cost);
-        int res = gdef.my_dijkstra(edge_count, start_edge, start_pos, end_edge, end_pos, path, path_count, err_msg, ruleTable);
+
+        int64_t start_vertex = 0;
+        int64_t end_vertex = 0;
+        gdef.add_virtual_vertices(edge_count, start_edge, start_pos, end_edge, end_pos,
+                start_vertex, end_vertex);
+
+        gdef.set_restrictions(start_vertex, end_vertex, ruleTable);
+        int res = gdef.my_dijkstra(edge_count, start_vertex, end_vertex, path, path_count, err_msg);
 
 
         if (res < 0)

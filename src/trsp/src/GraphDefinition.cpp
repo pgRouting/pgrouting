@@ -217,12 +217,13 @@ void GraphDefinition::explore(
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition::my_dijkstra(unsigned int edge_count, int start_edge_id, double start_part, int end_edge_id, double end_part,
-        path_element_t **path, int *path_count, char **err_msg, std::vector<PDVI> &ruleList)
+void
+GraphDefinition::add_virtual_vertices(unsigned int &edge_count, int start_edge_id, double start_part, int end_edge_id, double end_part,
+        int64_t &start_vertex, int64_t &end_vertex)
 {
     GraphEdgeInfo *start_edge_info = &m_vecEdgeVector[m_mapEdgeId2Index[start_edge_id]];
     edge_t start_edge;
-    int start_vertex, end_vertex;
+    //int start_vertex, end_vertex;
     m_dStartpart = start_part;
     m_dEndPart = end_part;
     m_lStartEdgeId = start_edge_id;
@@ -301,15 +302,15 @@ int GraphDefinition::my_dijkstra(unsigned int edge_count, int start_edge_id, dou
             edge_count++;
         }
     }
-
-    set_restrictions(edge_count, start_vertex, end_vertex, path, path_count, err_msg, ruleList);
-    return my_dijkstra(edge_count, start_vertex, end_vertex, path, path_count, err_msg);
 }
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition::set_restrictions(unsigned int edge_count, int start_vertex, int end_vertex,
-        path_element_t **path, int *path_count, char **err_msg, std::vector<PDVI> &ruleList)
+void
+GraphDefinition::set_restrictions(
+        int start_vertex,
+        int end_vertex,
+        std::vector<PDVI> &ruleList)
 {
     m_ruleTable.clear();
     int total_rule = ruleList.size();
