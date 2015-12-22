@@ -302,12 +302,13 @@ int GraphDefinition::my_dijkstra(unsigned int edge_count, int start_edge_id, dou
         }
     }
 
-    return(my_dijkstra(edge_count, start_vertex, end_vertex, path, path_count, err_msg, ruleList));
+    set_restrictions(edge_count, start_vertex, end_vertex, path, path_count, err_msg, ruleList);
+    return my_dijkstra(edge_count, start_vertex, end_vertex, path, path_count, err_msg);
 }
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition:: my_dijkstra(unsigned int edge_count, int start_vertex, int end_vertex,
+int GraphDefinition::set_restrictions(unsigned int edge_count, int start_vertex, int end_vertex,
         path_element_t **path, int *path_count, char **err_msg, std::vector<PDVI> &ruleList)
 {
     m_ruleTable.clear();
@@ -365,10 +366,10 @@ int GraphDefinition:: my_dijkstra(unsigned int edge_count, int start_vertex, int
         }
     }
     m_bIsturnRestrictOn = true;
-    return my_dijkstra(edge_count, start_vertex, end_vertex, path, path_count, err_msg);
+    //return my_dijkstra(edge_count, start_vertex, end_vertex, path, path_count, err_msg);
 }
 
-
+// THIS ONE IS THE DIJKSTRA
 // -------------------------------------------------------------------------
 int GraphDefinition:: my_dijkstra(unsigned int edge_count, int start_vertex, int end_vertex,
         path_element_t **path, int *path_count, char **err_msg)

@@ -106,7 +106,7 @@ class GraphDefinition {
             path_element_t **path, int *path_count,
             char **err_msg);
 
-    int my_dijkstra(unsigned int edge_count,
+    int set_restrictions(unsigned int edge_count,
             int start_vertex, int end_vertex,
             path_element_t **path, int *path_count,
             char **err_msg,
