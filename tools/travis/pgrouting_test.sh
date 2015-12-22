@@ -58,7 +58,7 @@ run_psql -c "SELECT pgr_version();"
 #./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE 
 #./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE -v -alg ksp
 
-./tools/test-runner.pl -pgver $POSTGRESQL_VERSION -ignorenotice
+./tools/testers/algorithm-tester.pl  -pgver $POSTGRESQL_VERSION -ignorenotice
 
 if [ "$?" -ne 0 ]
 then
