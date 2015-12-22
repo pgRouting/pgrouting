@@ -404,9 +404,9 @@ int GraphDefinition:: my_dijkstra(int start_vertex, int end_vertex,
     LongVector vecsource = m_mapNodeId2Edge[start_vertex];
     GraphEdgeInfo *cur_edge = NULL;
 
-    for(i = 0; i < vecsource.size(); i++)
+    for (auto &s : vecsource)
     {
-        cur_edge = &m_vecEdgeVector[vecsource[i]];
+        GraphEdgeInfo *cur_edge = &m_vecEdgeVector[s];
         if(cur_edge->m_lStartNode == start_vertex)
         {
             if(cur_edge->m_dCost >= 0.0)
@@ -416,9 +416,7 @@ int GraphDefinition:: my_dijkstra(int start_vertex, int end_vertex,
                 parent[cur_edge->m_lEdgeIndex].ed_ind[0] = -1;
                 que.push(std::make_pair(cur_edge->m_dCost, std::make_pair(cur_edge->m_lEdgeIndex, true)));
             }
-        }
-        else
-        {
+        } else {
             if(cur_edge->m_dReverseCost >= 0.0)
             {
                 m_dCost[cur_edge->m_lEdgeIndex].startCost = cur_edge->m_dReverseCost;
