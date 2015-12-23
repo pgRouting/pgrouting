@@ -76,5 +76,6 @@ script:
 #after_script: 
 
 #after_success:
+  - ./tools/testers/algorithm-tester.pl -pgver $POSTGRESQL_VERSION -ignorenotice
 
 
