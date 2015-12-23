@@ -63,6 +63,7 @@ env:
 # ------------------------------------------------------------
 # leaving the sections that are not used blank and commented
 #before_install:
+  - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 #install:
 
