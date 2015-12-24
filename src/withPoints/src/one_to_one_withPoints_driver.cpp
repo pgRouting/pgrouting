@@ -47,6 +47,27 @@ extern "C" {
 }
 
 #include "./../../common/src/memory_func.hpp"
+
+
+static
+void
+eliminate_details(
+    Path &path) {
+    Path newPath;
+    for (const auto &pathstop :  path.path) {
+        if ((pathstop.vertex == path.path.front().vertex) 
+         || (pathstop.vertex == path.path.back().vertex)
+         || (pathstop.vertex >~ 0)) {
+            newPath.push_back(pathstop);
+        }
+    }
+    for (i = 0; i < newPath.path.size() - 1) {
+        newPath.path[i].cost = newPath.path[i + 1].tot_cost - newPath.path[i].tot_cost;
+    } 
+    path = newPath;
+}
+
+
 void
 adjust_pids(const std::vector< Point_on_edge_t > &points,
         Path &path,
@@ -235,6 +256,7 @@ do_pgr_withPoints(
         int64_t start_pid,
         int64_t end_pid,
         char driving_side,
+        bool details,
         bool directed,
         General_path_element_t **return_tuples,
         size_t *return_count,
@@ -297,13 +319,14 @@ do_pgr_withPoints(
             pgr_dijkstra(undigraph, path, start_vid, end_vid);
         }
 
-        size_t count(path.path.size());
         path.print_path(log);
         adjust_pids(points, path, start_pid, end_pid);
         path.print_path(log);
+        if (!details) {
+            eliminate_details(path);
+        }
 
-
-
+        size_t count(path.path.size());
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
@@ -350,40 +373,23 @@ get_new_queries(
         char *points_sql,
         int64_t start_pid,
         int64_t end_pid,
-        bool strict,
         char **edges_of_points_query,
         char **edges_no_points_query) {
 
     std::ostringstream edges_of_points_sql;
     std::ostringstream edges_no_points_sql;
 
-    if (strict) {
-        edges_of_points_sql << "WITH "
-            << " edges AS (" << edges_sql << "),"
-            << " points AS (" << points_sql << "),"
-            << " strict AS (SELECT edge_id FROM points WHERE pid IN (" << start_pid << ", " << end_pid << ")) "
-            << " SELECT DISTINCT edges.* FROM edges JOIN strict ON (id = edge_id)";
-        *edges_of_points_query = strdup(edges_of_points_sql.str().c_str());
+    edges_of_points_sql << "WITH "
+        << " edges AS (" << edges_sql << "),"
+        << " points AS (" << points_sql << ")"
+        << " SELECT DISTINCT edges.* FROM edges JOIN points ON (id = edge_id)";
+    *edges_of_points_query = strdup(edges_of_points_sql.str().c_str());
 
-        edges_no_points_sql << "WITH "
-            << " edges AS (" << edges_sql << "),"
-            << " points AS (" << points_sql << "),"
-            << " strict AS (SELECT edge_id FROM points WHERE pid IN (" << start_pid << ", " << end_pid << ")) "
-            << " SELECT edges.* FROM edges WHERE NOT EXISTS (SELECT edge_id FROM strict WHERE id = edge_id)";
-        *edges_no_points_query = strdup(edges_no_points_sql.str().c_str());
-    } else {
-        edges_of_points_sql << "WITH "
-            << " edges AS (" << edges_sql << "),"
-            << " points AS (" << points_sql << ")"
-            << " SELECT DISTINCT edges.* FROM edges JOIN points ON (id = edge_id)";
-        *edges_of_points_query = strdup(edges_of_points_sql.str().c_str());
-
-        edges_no_points_sql << "WITH "
-            << " edges AS (" << edges_sql << "),"
-            << " points AS (" << points_sql << ")"
-            << " SELECT edges.* FROM edges WHERE NOT EXISTS (SELECT edge_id FROM points WHERE id = edge_id)";
-        *edges_no_points_query = strdup(edges_no_points_sql.str().c_str());
-    }
+    edges_no_points_sql << "WITH "
+        << " edges AS (" << edges_sql << "),"
+        << " points AS (" << points_sql << ")"
+        << " SELECT edges.* FROM edges WHERE NOT EXISTS (SELECT edge_id FROM points WHERE id = edge_id)";
+    *edges_no_points_query = strdup(edges_no_points_sql.str().c_str());
 }
 
 

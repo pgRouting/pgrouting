@@ -68,7 +68,7 @@ process(
         int64_t start_pid,
         int64_t end_pid,
         char driving_side,
-        bool strict,
+        bool details,
         bool directed,
         General_path_element_t **result_tuples,
         size_t *result_count) {
@@ -102,7 +102,6 @@ process(
         get_new_queries(
                 edges_sql, points_sql,
                 start_pid, end_pid,
-                strict,
                 &edges_of_points_query,
                 &edges_no_points_query);
 
@@ -158,7 +157,7 @@ process(
     }
 
     PGR_DBG("Starting processing");
-    char *err_msg = (char *)"";
+    char *err_msg = NULL;
     do_pgr_withPoints(
             edges,
             total_edges,
@@ -169,6 +168,7 @@ process(
             start_pid,
             end_pid,
             driving_side,
+            details,
             directed,
             result_tuples,
             result_count,
@@ -176,7 +176,7 @@ process(
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);
 
-    free(err_msg);
+    if (!err_msg) free(err_msg);
     pfree(edges);
     pgr_SPI_finish();
 }

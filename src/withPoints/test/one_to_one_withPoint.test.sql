@@ -60,7 +60,7 @@ BEGIN;
         'SELECT pid, edge_id, fraction, side from points',
         1, 2, 
         driving_side := 'b',
-        strict := true);
+        details := true);
 */
 \echo -- 1 to 3
 
@@ -69,7 +69,14 @@ BEGIN;
         'SELECT pid, edge_id, fraction, side from points',
         1, 3, 
         driving_side := 'b',
-        strict := false);
+        details := true);
+
+    SELECT * FROM pgr_withPoints(
+        'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+        'SELECT pid, edge_id, fraction, side from points',
+        1, 3, 
+        driving_side := 'b',
+        details := false);
     /*
 \echo -- 1 to 4
     SELECT * FROM pgr_withPoints(
@@ -77,21 +84,21 @@ BEGIN;
         'SELECT pid, edge_id, fraction, side from points',
         1, 4, 
         driving_side := 'b',
-        strict := true);
+        details := true);
 \echo -- 1 to 5
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from points',
         1, 5, 
         driving_side := 'b',
-        strict := true);
+        details := true);
 \echo -- 1 to 6
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from points',
         1, 6, 
         driving_side := 'b',
-        strict := true);
+        detailsdetails:= true);
 
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',

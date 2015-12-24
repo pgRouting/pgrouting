@@ -51,6 +51,7 @@ extern "C" {
             int64_t start_pid,
             int64_t end_pid,
             char driving_side,
+            bool details,
             bool directed,
             General_path_element_t **return_tuples,
             size_t *return_count,
@@ -61,7 +62,6 @@ extern "C" {
             char *points_sql, 
             int64_t start_pid,
             int64_t end_pid,
-            bool strict,
             char **edges_of_points_query,
             char **edges_no_points_query);
 
