@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./one_to_one_withPoints_driver.h"
 
-// #define DEBUG
+#define DEBUG
 
 extern "C" {
 #include "./../../common/src/pgr_types.h"
@@ -61,7 +61,7 @@ eliminate_details(
             newPath.push_back(pathstop);
         }
     }
-    for (i = 0; i < newPath.path.size() - 1) {
+    for (unsigned int i = 0; i < newPath.path.size() - 1; ++i) {
         newPath.path[i].cost = newPath.path[i + 1].tot_cost - newPath.path[i].tot_cost;
     } 
     path = newPath;
@@ -146,7 +146,7 @@ create_new_edges(
 
         for (auto &point : the_points) {
 
-            log << "\n" << point.pid << "\t" << point.fraction << "\t" << point.side << "\n";
+            log << "\npid" << point.pid << "\teid" << point.edge_id << "/t" << point.fraction << "\t" << point.side << "\n";
             if (point.fraction < 0 || point.fraction > 1) {
                 log << "For some reason an invalid fraction was accepted, must be an error\n";
                 return false;
@@ -170,13 +170,17 @@ create_new_edges(
             }
             new_points.push_back(point);
 
-            if ((edge.cost < 0 or edge.reverse_cost < 0) || driving_side == 'b') {
+            if ((edge.cost < 0 or edge.reverse_cost < 0) || driving_side == 'b' || point.side == 'b') {
+                log << "Edge is one way or driving side is both or point side is both\n";
+                log << "Edge is one way: " << (edge.cost < 0 or edge.reverse_cost < 0) << "\n";
+                log << "driving side: " << driving_side << "\n";
+                log << "point side: " << point.side << "\n";
                 if (point.fraction > 0 && point.fraction < 1) {
                     last_cost = (point.fraction - prev_fraction) * edge.cost;
                     last_rcost = (point.fraction - prev_fraction) * edge.reverse_cost;
                     pgr_edge_t new_edge = {edge.id , prev_target, point.vertex_id, last_cost, last_rcost};
                     new_edges.push_back(new_edge);
-#if 0
+#if 1
                     log << "new_edge: (id,source,target,cost,reverse_cost) = ("
                         << new_edge.id << "\t"
                         << new_edge.source << "\t"
@@ -191,26 +195,43 @@ create_new_edges(
                 agg_rcost += last_rcost;
                 continue;
             }
-            if ((edge.cost > 0 && edge.reverse_cost > 0) && driving_side == 'r') {
-                log << "Edge is two way and driving side is Right\n";
+            if ((edge.cost > 0 && edge.reverse_cost > 0) && driving_side ==  point.side) {
+                log << "Edge is two way and driving side is the same as the side of the point\n";
                 if (point.fraction > 0 && point.fraction < 1) {
                     last_cost = (point.fraction - prev_fraction) * edge.cost;
-                    last_rcost = (point.fraction - prev_fraction) * edge.reverse_cost;
+                    pgr_edge_t new_edge = {edge.id , prev_target, point.vertex_id, last_cost, -1};
+                    new_edges.push_back(new_edge);
                     log << "new_edge: (id,source,target,cost,reverse_cost) = ("
-                        << edge.id << "\t"
-                        << prev_target << "\t"
-                        << point.vertex_id << "\t"
-                        << last_cost << "\t"
-                        << last_rcost << ")\n";
+                        << new_edge.id << "\t"
+                        << new_edge.source << "\t"
+                        << new_edge.target << "\t"
+                        << new_edge.cost << "\t"
+                        << new_edge.reverse_cost << ")\n";
                 }
                 prev_target = point.vertex_id;
                 prev_fraction = point.fraction;
                 agg_cost += last_cost;
+                continue;
+            } else {
+                log << "Edge is two way and driving side is different than the side of the point\n";
+                if (point.fraction > 0 && point.fraction < 1) {
+                    last_rcost = (point.fraction - prev_fraction) * edge.reverse_cost;
+                    pgr_edge_t new_edge = {edge.id , prev_target, point.vertex_id, -1, last_rcost};
+                    new_edges.push_back(new_edge);
+                    log << "new_edge: (id,source,target,cost,reverse_cost) = ("
+                        << new_edge.id << "\t"
+                        << new_edge.source << "\t"
+                        << new_edge.target << "\t"
+                        << new_edge.cost << "\t"
+                        << new_edge.reverse_cost << ")\n";
+                }
+                prev_target = point.vertex_id;
+                prev_fraction = point.fraction;
                 agg_rcost += last_rcost;
             }
-
         }
-        {
+
+        { // the last edge
             pgr_edge_t new_edge = {edge.id , prev_target, edge.target,
                 (edge.cost - agg_cost), (edge.reverse_cost - agg_rcost)};
             new_edges.push_back(new_edge);

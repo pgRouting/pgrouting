@@ -12,7 +12,7 @@ BEGIN;
         newPoint geometry
     );
 
-    insert into points (x,y) values (2.3, 1.4);
+    insert into points (x,y) values (1.7, 1.4);
     insert into points (x,y) values (2.7, 1.4);
     insert into points (x,y) values (2.7, 1.6);
     insert into points (x,y) values (2.3, 1.6);
@@ -67,17 +67,27 @@ BEGIN;
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from points',
-        1, 3, 
-        driving_side := 'b',
+        3, 1, 
+        driving_side := 'r',
+        directed := true,
         details := true);
 
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from points',
-        1, 3, 
-        driving_side := 'b',
-        details := false);
+        3, 4, 
+        driving_side := 'r',
+        directed := true,
+        details := true);
+
     /*
+    SELECT * FROM pgr_withPoints(
+        'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+        'SELECT pid, edge_id, fraction, side from points',
+        3, 1, 
+        directed := true,
+        driving_side := 'b',
+        details := true);
 \echo -- 1 to 4
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',

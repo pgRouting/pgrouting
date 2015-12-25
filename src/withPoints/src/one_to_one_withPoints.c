@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
   Uncomment when needed
 */
-// #define DEBUG
+#define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
@@ -67,17 +67,19 @@ process(
         char* points_sql,
         int64_t start_pid,
         int64_t end_pid,
-        char driving_side,
+        char *driving_side,
         bool details,
         bool directed,
         General_path_element_t **result_tuples,
         size_t *result_count) {
 
-    driving_side = tolower(driving_side);
-    if (! ((driving_side == 'r')
-                || (driving_side == 'l'))) {
-        driving_side = 'b'; 
+    driving_side[0] = tolower(driving_side[0]);
+    PGR_DBG("driving side:%c",driving_side[0]);
+    if (! ((driving_side[0] == 'r')
+                || (driving_side[0] == 'l'))) {
+        driving_side[0] = 'b'; 
     }
+    PGR_DBG("estimated driving side:%c",driving_side[0]);
 
     pgr_SPI_connect();
 
@@ -167,7 +169,7 @@ process(
             total_edges_of_points,
             start_pid,
             end_pid,
-            driving_side,
+            driving_side[0],
             details,
             directed,
             result_tuples,
@@ -220,12 +222,14 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
         // directed BOOLEAN DEFAULT true,
 
         PGR_DBG("Calling process");
+        PGR_DBG("initial driving side:%s", pgr_text2char(PG_GETARG_TEXT_P(4)));
+        // DatumGetBpCharP(4)->vl_dat[0]);
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 pgr_text2char(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_INT64(2),
                 PG_GETARG_INT64(3),
-                PG_GETARG_CHAR(4),
+                pgr_text2char(PG_GETARG_TEXT_P(4)),
                 PG_GETARG_BOOL(5),
                 PG_GETARG_BOOL(6),
                 &result_tuples,
