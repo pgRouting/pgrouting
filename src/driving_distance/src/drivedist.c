@@ -160,16 +160,16 @@ driving_distance(PG_FUNCTION_ARGS) {
 
       // TODO version 3.0 change to 
       // values[0] = Int64GetDatum(ret_path[call_cntr].seq + 1);
-      values[0] = Int32GetDatum(ret_path[call_cntr].seq + 1);
       nulls[0] = ' ';
-      values[1] = Int64GetDatum(ret_path[call_cntr].vertex);
       nulls[1] = ' ';
-      values[2] = Int64GetDatum(ret_path[call_cntr].edge);
       nulls[2] = ' ';
-      values[3] = Float8GetDatum(ret_path[call_cntr].cost);
       nulls[3] = ' ';
-      values[4] = Float8GetDatum(ret_path[call_cntr].tot_cost);
       nulls[4] = ' ';
+      values[0] = Int32GetDatum(ret_path[call_cntr].seq + 1);
+      values[1] = Int64GetDatum(ret_path[call_cntr].node);
+      values[2] = Int64GetDatum(ret_path[call_cntr].edge);
+      values[3] = Float8GetDatum(ret_path[call_cntr].cost);
+      values[4] = Float8GetDatum(ret_path[call_cntr].agg_cost);
 
       tuple = heap_formtuple(tuple_desc, values, nulls);
 

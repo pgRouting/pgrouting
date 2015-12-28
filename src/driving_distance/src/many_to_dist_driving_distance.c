@@ -158,18 +158,18 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
       values = palloc(6 * sizeof(Datum));
       nulls = palloc(6 * sizeof(char));
       // id, start_v, node, edge, cost, tot_cost
-      values[0] = Int32GetDatum(call_cntr + 1);
       nulls[0] = ' ';
-      values[1] = Int64GetDatum(ret_path[call_cntr].from);
       nulls[1] = ' ';
-      values[2] = Int64GetDatum(ret_path[call_cntr].vertex);
       nulls[2] = ' ';
-      values[3] = Int64GetDatum(ret_path[call_cntr].edge);
       nulls[3] = ' ';
-      values[4] = Float8GetDatum(ret_path[call_cntr].cost);
       nulls[4] = ' ';
-      values[5] = Float8GetDatum(ret_path[call_cntr].tot_cost);
       nulls[5] = ' ';
+      values[0] = Int32GetDatum(call_cntr + 1);
+      values[1] = Int64GetDatum(ret_path[call_cntr].start_id);
+      values[2] = Int64GetDatum(ret_path[call_cntr].node);
+      values[3] = Int64GetDatum(ret_path[call_cntr].edge);
+      values[4] = Float8GetDatum(ret_path[call_cntr].cost);
+      values[5] = Float8GetDatum(ret_path[call_cntr].agg_cost);
 
       tuple = heap_formtuple(tuple_desc, values, nulls);
 

@@ -177,26 +177,21 @@ kshortest_path(PG_FUNCTION_ARGS) {
       values = (Datum *)palloc(7 * sizeof(Datum));
       nulls = (bool *) palloc(7 * sizeof(bool));
 
-      values[0] = Int32GetDatum(call_cntr + 1);
       nulls[0] = false;
-
-      values[1] = Int32GetDatum(path[call_cntr].from + 1);
       nulls[1] = false;
-
-      values[2] = Int32GetDatum(path[call_cntr].seq);
       nulls[2] = false;
-
-      values[3] = Int64GetDatum(path[call_cntr].vertex);
       nulls[3] = false;
-
-      values[4] = Int64GetDatum(path[call_cntr].edge);
       nulls[4] = false;
-
-      values[5] = Float8GetDatum(path[call_cntr].cost);
       nulls[5] = false;
-
-      values[6] = Float8GetDatum(path[call_cntr].tot_cost);
       nulls[6] = false;
+
+      values[0] = Int32GetDatum(call_cntr + 1);
+      values[1] = Int32GetDatum(path[call_cntr].start_id + 1);
+      values[2] = Int32GetDatum(path[call_cntr].seq);
+      values[3] = Int64GetDatum(path[call_cntr].node);
+      values[4] = Int64GetDatum(path[call_cntr].edge);
+      values[5] = Float8GetDatum(path[call_cntr].cost);
+      values[6] = Float8GetDatum(path[call_cntr].agg_cost);
 
       tuple = heap_form_tuple(tuple_desc, values, nulls);
 

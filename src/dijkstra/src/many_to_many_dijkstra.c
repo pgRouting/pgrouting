@@ -223,12 +223,12 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
 
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].from);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].to);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].vertex);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].node);
         values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[7] = Float8GetDatum(result_tuples[call_cntr].tot_cost);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         /*********************************************************************/
 
         tuple = heap_formtuple(tuple_desc, values, nulls);

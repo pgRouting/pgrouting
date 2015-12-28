@@ -68,30 +68,19 @@ do_pgr_driving_many_to_dist(
             pgr_drivingDistance(undigraph, paths, start_vertices, distance);
         }
 
-        if (equiCostFlag == false) {
-            size_t count(count_tuples(paths));
-            if (count == 0) {
-                *err_msg = strdup("NOTICE: No return values was found");
-                *ret_path = noResult(path_count, (*ret_path));
-                return;
-            }
-            *ret_path = get_memory(count, (*ret_path));
-            int trueCount(collapse_paths(ret_path, paths));
-            *path_count = trueCount;
-
-        } else {
-            Path path = equi_cost(paths);
-            size_t count(path.size());
-            if (count == 0) {
-                *err_msg = strdup("NOTICE: No return values was found");
-                *ret_path = noResult(path_count, (*ret_path));
-                return ;
-            }
-            size_t trueCount = 0;
-            *ret_path = get_memory(count, (*ret_path));
-            path.generate_postgres_data(ret_path, trueCount);
-            *path_count = trueCount;
+        if (equiCostFlag) {
+            equi_cost(paths);
         }
+        size_t count(count_tuples(paths));
+        if (count == 0) {
+            *err_msg = strdup("NOTICE: No return values was found");
+            *ret_path = noResult(path_count, (*ret_path));
+            return;
+        }
+        *ret_path = get_memory(count, (*ret_path));
+        int trueCount(collapse_paths(ret_path, paths));
+        *path_count = trueCount;
+
 
 #ifndef DEBUG
         *err_msg = strdup("OK");
@@ -151,8 +140,8 @@ do_pgr_driving_distance(
             pgr_drivingDistance(undigraph, path, start_vertex, distance);
         }
 
-        log << "Returning number of tuples" << path.path.size() << "\n";
-        if (path.path.size() == 0) {
+        log << "Returning number of tuples" << path.size() << "\n";
+        if (path.empty()) {
             log << "NOTICE: it shoud have at least the one for it self";
             *err_msg = strdup(log.str().c_str());
             *ret_path = noResult(path_count, (*ret_path));
@@ -160,14 +149,14 @@ do_pgr_driving_distance(
         }
 
         log << "NOTICE: Calculating the number of tuples \n";
-        int count = path.path.size();
+        int count = path.size();
 
         log << "NOTICE Count: " << count << " tuples\n";
 
         *ret_path = get_memory(count, (*ret_path));
 
         int sequence = 0;
-        path.ddPrint(ret_path, sequence, 0);
+        path.get_pg_dd_path(ret_path, sequence);
         *path_count = count;
 
 #ifndef DEBUG

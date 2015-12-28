@@ -75,10 +75,10 @@ pgr_dijkstraViaVertex(
         if (!U_turn_on_edge && i > 1) {
 
             // we can only delete if there is was a path, that is at least one edge size
-            if (path.path.size() > 1) {
+            if (path.size() > 1) {
                 // Delete from the graph the last edge if its outgoing also
                 // edge to be removed = second to last edge path[i].edge;
-                int64_t edge_to_be_removed = path.path[path.path.size() - 2].edge;
+                int64_t edge_to_be_removed = path[path.size() - 2].edge;
                 int64_t last_vertex_of_path = prev_vertex;
                // path.path[path.path.size() - 1].vertex;
 
@@ -98,7 +98,7 @@ pgr_dijkstraViaVertex(
 
         if (!U_turn_on_edge && i > 1) {
             graph.restore_graph();
-            if (path.path.empty()) { 
+            if (path.empty()) { 
                 /*
                  *  no path was found with the deleted edge
                  *  try with the edge back in the graph
@@ -108,7 +108,7 @@ pgr_dijkstraViaVertex(
             }
         }
 
-        if (strict && path.path.empty()) {
+        if (strict && path.empty()) {
             paths.clear();
             return;
         }
@@ -130,20 +130,29 @@ get_path(
         Routes_t **postgres_data,
         double &route_cost,
         size_t &sequence) {
-    for (unsigned int i = 0; i < path.size(); i++) {
+    int64_t i = 0;
+    //for (size_t i = 0; i < path.size(); i++) {
+    for (const auto e : path) {
         (*postgres_data)[sequence] = {
             route_id,
             path_id,
             i,
-            path.path[i].from,
-            path.path[i].to,
-            path.path[i].vertex,
-            path.path[i].edge,
-            path.path[i].cost,
-            path.path[i].tot_cost,
+            path.start_id(),
+            path.end_id(),
+#if 0
+            path[i].node,
+            path[i].edge,
+            path[i].cost,
+            path[i].agg_cost,
+#endif
+            e.node,
+            e.edge,
+            e.cost,
+            e.agg_cost,
             route_cost};
-        route_cost += path.path[i].cost;
-        sequence++;
+        route_cost += path[i].cost;
+        ++i;
+        ++sequence;
     }
 }
 
@@ -158,7 +167,7 @@ get_route(
     int64_t route_id = 1;   
     double route_cost = 0;  // routes_agg_cost
     for (const Path &path : paths) {
-        if (path.path.size() > 0)
+        if (path.size() > 0)
             get_path(route_id, path_id, path, ret_path, route_cost, sequence);
         ++path_id;
     }

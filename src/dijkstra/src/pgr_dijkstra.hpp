@@ -24,9 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_DIJKSTRA_SRC_PGR_DIJKSTRA_H_
-#define SRC_DIJKSTRA_SRC_PGR_DIJKSTRA_H_
-
+#pragma once
 
 #include <deque>
 #include <vector>
@@ -317,23 +315,20 @@ Pgr_dijkstra< G >::get_nodesInDistance(
         V source,
         float8 distance) {
     path.clear();
-    int seq = 0;
     float8 cost;
     int64_t edge_id;
+    Path r_path(graph[source].id, graph[source].id);
     for (V i = 0; i < distances.size(); ++i) {
         if (distances[i] <= distance) {
             cost = distances[i] - distances[predecessors[i]];
             edge_id = graph.get_edge_id(predecessors[i], i, cost);
-            path.push_back(
-                    seq,
-                    graph[source].id,
-                    graph[source].id,
-                    graph[i].id,
+            r_path.push_back(
+                    {graph[i].id,
                     edge_id, cost,
-                    distances[i]);
-            seq++;
+                    distances[i]});
         }
     }
+    path = r_path;
 }
 
 
@@ -359,7 +354,7 @@ Pgr_dijkstra< G >::get_path(
         const G &graph,
         V source,
         V target,
-        Path &path) const {
+        Path &r_path) const {
     // backup of the target
     V target_back = target;
     uint64_t from(graph.graph[source].id);
@@ -367,7 +362,7 @@ Pgr_dijkstra< G >::get_path(
 
     // no path was found
     if (target == predecessors[target]) {
-        path.clear();
+        r_path.clear();
         return;
     }
 
@@ -392,11 +387,10 @@ Pgr_dijkstra< G >::get_path(
     // initialize the sequence
     int seq = result_size;
     // the last stop is the target
+    Path path(from, to);
     path.push_front(
-            seq,
-            from, to,
-            graph.graph[target].id, -1,
-            0,  distances[target]);
+            {graph.graph[target].id, -1,
+            0,  distances[target]});
 
     while (target != source) {
         // we are done when the predecesor of the target is the target
@@ -407,13 +401,11 @@ Pgr_dijkstra< G >::get_path(
         vertex_id = graph.graph[predecessors[target]].id;
         edge_id = graph.get_edge_id(predecessors[target], target, cost);
 
-        path.push_front(
-                seq,
-                from, to,
-                vertex_id, edge_id,
-                cost, distances[target] - cost);
+        path.push_front({vertex_id, edge_id,
+                cost, (distances[target] - cost)});
         target = predecessors[target];
     }
+    r_path = path;
     return;
 }
 
@@ -440,25 +432,19 @@ Pgr_dijkstra< G >::get_cost(
         const G &graph,
         V source,
         V target,
-        Path &path) const {
+        Path &r_path) const {
     // backup of the target
-    uint64_t from(graph.graph[source].id);
-    uint64_t to(graph.graph[target].id);
+    int64_t from(graph.graph[source].id);
+    int64_t to(graph.graph[target].id);
 
     // no path was found
     if (target == predecessors[target]) {
-        //if (from == to) {
-        //    path.push_front(1, from, to, graph.graph[target].id, -1, 0, 0);
-        //} else {
-            path.clear();
-        //}
+            r_path.clear();
     } else {
+        Path path(from, to);
         path.push_front(
-                1,
-                from, to,
-                graph[target].id,
-                -1,
-                0,  distances[target]);
+            {to, -1, distances[target], distances[target]});
+        r_path = path;
     }
 }
 
@@ -526,6 +512,7 @@ Pgr_dijkstra< G >::drivingDistance(
     return;
 }
 
+//! Dijkstra 1 to 1
 template < class G >
 void
 Pgr_dijkstra< G >::dijkstra(
@@ -561,6 +548,7 @@ Pgr_dijkstra< G >::dijkstra(
     }
     return;
 }
+
 //! Dijkstra 1 to many
 template < class G >
 void
@@ -703,4 +691,3 @@ Pgr_dijkstra< G >::dijkstra_1_to_many(
     return found;
 }
 
-#endif  // SRC_DIJKSTRA_SRC_PGR_DIJKSTRA_H_

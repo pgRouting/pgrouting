@@ -84,7 +84,7 @@ do_pgr_one_to_one_dijkstra(
 
       size_t count(0);
 
-      count = path.path.size();
+      count = path.size();
 
       if (count == 0) {
           (*return_tuples) = NULL;

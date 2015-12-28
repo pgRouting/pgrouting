@@ -200,10 +200,10 @@ one_to_one_dijkstra(PG_FUNCTION_ARGS) {
         // postgres starts counting from 1
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].vertex);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].node);
         values[3] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[4] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[call_cntr].tot_cost);
+        values[5] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_formtuple(tuple_desc, values, nulls);

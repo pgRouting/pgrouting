@@ -151,7 +151,7 @@ do_pgr_withPoints(
             eliminate_details(path);
         }
 
-        size_t count(path.path.size());
+        size_t count(path.size());
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
@@ -166,19 +166,6 @@ do_pgr_withPoints(
         size_t sequence = 0;
         path.generate_postgres_data(return_tuples, sequence);
         (*return_count) = sequence;
-#ifdef DEBUG
-        log << "returning tuples:\n";
-        for (size_t i = 0; i < sequence; ++i) {
-            log << (*return_tuples)[i].seq << "\t"
-                << (*return_tuples)[i].from << "\t"
-                << (*return_tuples)[i].to << "\t"
-                << (*return_tuples)[i].vertex << "\t"
-                << (*return_tuples)[i].edge << "\t"
-                << (*return_tuples)[i].cost << "\t"
-                << (*return_tuples)[i].tot_cost << "\n";
-        }
-#endif 
-
 
 #ifndef DEBUG
         *err_msg = strdup("OK");
