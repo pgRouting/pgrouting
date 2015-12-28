@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./pgr_types.h"
 
+void pgr_send_error(int errcode);
 void pgr_SPI_finish(void);
 void pgr_SPI_connect(void);
 SPIPlanPtr pgr_SPI_prepare(char* sql);

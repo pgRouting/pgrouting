@@ -37,7 +37,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <cassert>
 #include "./pgr_dijkstra.hpp"
+#include "./pgr_withPoints.h"
 #include "./one_to_one_withPoints_driver.h"
 
 #define DEBUG
@@ -49,215 +51,6 @@ extern "C" {
 #include "./../../common/src/memory_func.hpp"
 
 
-static
-void
-eliminate_details(
-    Path &path) {
-    Path newPath;
-    for (const auto &pathstop :  path.path) {
-        if ((pathstop.vertex == path.path.front().vertex) 
-         || (pathstop.vertex == path.path.back().vertex)
-         || (pathstop.vertex >~ 0)) {
-            newPath.push_back(pathstop);
-        }
-    }
-    for (unsigned int i = 0; i < newPath.path.size() - 1; ++i) {
-        newPath.path[i].cost = newPath.path[i + 1].tot_cost - newPath.path[i].tot_cost;
-    } 
-    path = newPath;
-}
-
-
-void
-adjust_pids(const std::vector< Point_on_edge_t > &points,
-        Path &path,
-        int64_t start_pid,
-        int64_t end_pid) {
-    for (auto &path_stop : path.path) {
-        path_stop.from = -start_pid;
-        path_stop.to = -end_pid;
-
-        for (const auto point: points) {
-            if (point.vertex_id == path_stop.vertex) {
-                path_stop.vertex = -point.pid;
-                break;
-            }
-        }
-    }
-}
-
-struct pointCompare {
-    bool operator() (const Point_on_edge_t& lhs, const Point_on_edge_t& rhs) const
-    { return lhs.fraction < rhs.fraction? true : lhs.pid < rhs.pid;}
-};
-
-static 
-bool
-create_new_edges(
-        std::vector< Point_on_edge_t >  &points,
-        const std::vector< pgr_edge_t > edges,
-        char driving_side,
-        bool directed,
-        std::vector< pgr_edge_t > &new_edges,
-        std::ostringstream &log) {
-    for (const auto &point : points){
-        log << "point: " 
-            << point.pid <<"\t"
-            << point.edge_id <<"\t"
-            << point.fraction <<"\t"
-            << point.side <<"\t"
-            << point.vertex_id <<"\n";
-    }
-
-    int64_t vertex_id = 1;
-    std::vector< Point_on_edge_t >  new_points;
-    for (const auto edge : edges) {
-        std::set< Point_on_edge_t, pointCompare> points_on_edge;
-        for (const auto point : points) {
-            if (edge.id == point.edge_id) {
-                points_on_edge.insert(point);
-                log << "working points: " 
-                    << point.pid <<"\t"
-                    << point.edge_id <<"\t"
-                    << point.fraction <<"\t"
-                    << point.side <<"\t"
-                    << point.vertex_id <<"\n";
-            }
-        }
-        if (points_on_edge.empty()) {
-            log << "For some reason we didnt find a point belonging to the edge, must be an error\n";
-            return false;
-        }
-#if 0
-        log << "breaking:  \n"
-            << edge.id << "\t" 
-            << edge.source << "\t" 
-            << edge.target << "\t" 
-            << edge.cost << "\t"
-            << edge.reverse_cost << "\n";
-#endif
-        int64_t prev_target = edge.source;
-        double prev_fraction = 0;
-        double agg_cost = 0;
-        double agg_rcost = 0;
-        double  last_cost = 0;
-        double  last_rcost = 0;
-        std::vector< Point_on_edge_t> the_points(points_on_edge.begin(), points_on_edge.end());
-
-        for (auto &point : the_points) {
-
-            log << "\npid" << point.pid << "\teid" << point.edge_id << "/t" << point.fraction << "\t" << point.side << "\n";
-            if (point.fraction < 0 || point.fraction > 1) {
-                log << "For some reason an invalid fraction was accepted, must be an error\n";
-                return false;
-            }
-            if (point.fraction == prev_fraction) {
-                point.vertex_id = prev_target;
-                log << "By equal fraction: vertex_id of the point is " <<  point.vertex_id << "\n";
-            }
-            if (point.fraction == 0) {
-                log << "vertex_id of the point is " << edge.source << "\n";
-                point.vertex_id = edge.source;
-            }
-            if (point.fraction == 1) {
-                log << "vertex_id of the point is " << edge.target << "\n";
-                point.vertex_id = edge.target;
-            }
-            if (point.fraction > 0 && point.fraction < 1) {
-                log << "vertex_id of the point is " << - vertex_id << "\n";
-                point.vertex_id = -vertex_id;
-                ++vertex_id;
-            }
-            new_points.push_back(point);
-
-            if ((edge.cost < 0 or edge.reverse_cost < 0) || driving_side == 'b' || point.side == 'b') {
-                log << "Edge is one way or driving side is both or point side is both\n";
-                log << "Edge is one way: " << (edge.cost < 0 or edge.reverse_cost < 0) << "\n";
-                log << "driving side: " << driving_side << "\n";
-                log << "point side: " << point.side << "\n";
-                if (point.fraction > 0 && point.fraction < 1) {
-                    last_cost = (point.fraction - prev_fraction) * edge.cost;
-                    last_rcost = (point.fraction - prev_fraction) * edge.reverse_cost;
-                    pgr_edge_t new_edge = {edge.id , prev_target, point.vertex_id, last_cost, last_rcost};
-                    new_edges.push_back(new_edge);
-#if 1
-                    log << "new_edge: (id,source,target,cost,reverse_cost) = ("
-                        << new_edge.id << "\t"
-                        << new_edge.source << "\t"
-                        << new_edge.target << "\t"
-                        << new_edge.cost << "\t"
-                        << new_edge.reverse_cost << ")\n";
-#endif
-                }
-                prev_target = point.vertex_id;
-                prev_fraction = point.fraction;
-                agg_cost += last_cost;
-                agg_rcost += last_rcost;
-                continue;
-            }
-            if ((edge.cost > 0 && edge.reverse_cost > 0) && driving_side ==  point.side) {
-                log << "Edge is two way and driving side is the same as the side of the point\n";
-                if (point.fraction > 0 && point.fraction < 1) {
-                    last_cost = (point.fraction - prev_fraction) * edge.cost;
-                    pgr_edge_t new_edge = {edge.id , prev_target, point.vertex_id, last_cost, -1};
-                    new_edges.push_back(new_edge);
-                    log << "new_edge: (id,source,target,cost,reverse_cost) = ("
-                        << new_edge.id << "\t"
-                        << new_edge.source << "\t"
-                        << new_edge.target << "\t"
-                        << new_edge.cost << "\t"
-                        << new_edge.reverse_cost << ")\n";
-                }
-                prev_target = point.vertex_id;
-                prev_fraction = point.fraction;
-                agg_cost += last_cost;
-                continue;
-            } else {
-                log << "Edge is two way and driving side is different than the side of the point\n";
-                if (point.fraction > 0 && point.fraction < 1) {
-                    last_rcost = (point.fraction - prev_fraction) * edge.reverse_cost;
-                    pgr_edge_t new_edge = {edge.id , prev_target, point.vertex_id, -1, last_rcost};
-                    new_edges.push_back(new_edge);
-                    log << "new_edge: (id,source,target,cost,reverse_cost) = ("
-                        << new_edge.id << "\t"
-                        << new_edge.source << "\t"
-                        << new_edge.target << "\t"
-                        << new_edge.cost << "\t"
-                        << new_edge.reverse_cost << ")\n";
-                }
-                prev_target = point.vertex_id;
-                prev_fraction = point.fraction;
-                agg_rcost += last_rcost;
-            }
-        }
-
-        { // the last edge
-            pgr_edge_t new_edge = {edge.id , prev_target, edge.target,
-                (edge.cost - agg_cost), (edge.reverse_cost - agg_rcost)};
-            new_edges.push_back(new_edge);
-            log << "last edge: (id,source,target,cost,reverse_cost) = ("
-                << new_edge.id << "\t"
-                << new_edge.source << "\t"
-                << new_edge.target << "\t"
-                << new_edge.cost << "\t"
-                << new_edge.reverse_cost << ")\n";
-        }
-
-    }
-    points = new_points;
-    for (const auto &point : points){
-        log << "point: " 
-            << point.pid <<"\t"
-            << point.edge_id <<"\t"
-            << point.fraction <<"\t"
-            << point.side <<"\t"
-            << point.vertex_id <<"\n";
-    }
-    return true;
-
-}
-
-
 // CREATE OR REPLACE FUNCTION pgr_withPoint(
 // edges_sql TEXT,
 // points_sql TEXT,
@@ -266,7 +59,7 @@ create_new_edges(
 // directed BOOLEAN DEFAULT true
 
 
-void
+int
 do_pgr_withPoints(
         pgr_edge_t  *edges,
         size_t total_edges,
@@ -279,6 +72,7 @@ do_pgr_withPoints(
         char driving_side,
         bool details,
         bool directed,
+        bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** err_msg){
@@ -286,6 +80,17 @@ do_pgr_withPoints(
     try {
         std::vector< Point_on_edge_t >
             points(points_p, points_p + total_points);
+
+        int errcode = check_points(points, log);
+        if (errcode) {
+            log << "Point(s) with same pid but different edge/fraction/side combination found";
+            *err_msg = strdup(log.str().c_str());
+            return errcode;
+        }
+
+
+
+
         std::vector< pgr_edge_t >
             edges_to_modify(edges_of_points, edges_of_points + total_edges_of_points);
 
@@ -297,7 +102,6 @@ do_pgr_withPoints(
                 points,
                 edges_to_modify,
                 driving_side,
-                directed,
                 new_edges,
                 log);
 
@@ -328,7 +132,7 @@ do_pgr_withPoints(
 #ifdef DEBUG
             digraph.print_graph(log);
 #endif
-            pgr_dijkstra(digraph, path, start_vid, end_vid);
+            pgr_dijkstra(digraph, path, start_vid, end_vid, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
@@ -337,11 +141,11 @@ do_pgr_withPoints(
 #ifdef DEBUG
             undigraph.print_graph(log);
 #endif
-            pgr_dijkstra(undigraph, path, start_vid, end_vid);
+            pgr_dijkstra(undigraph, path, start_vid, end_vid, only_cost);
         }
 
         path.print_path(log);
-        adjust_pids(points, path, start_pid, end_pid);
+        adjust_pids(points, path);
         path.print_path(log);
         if (!details) {
             eliminate_details(path);
@@ -354,7 +158,7 @@ do_pgr_withPoints(
             log <<
                 "No paths found between Starting and any of the Ending vertices\n";
             *err_msg = strdup(log.str().c_str());
-            return;
+            return 0;
         }
 
 
@@ -381,37 +185,10 @@ do_pgr_withPoints(
 #else
         *err_msg = strdup(log.str().c_str());
 #endif
+        return 0;
     } catch ( ... ) {
         log << "Caught unknown expection!\n";
         *err_msg = strdup(log.str().c_str());
     }
+    return 1000;
 }
-
-
-void
-get_new_queries(
-        char *edges_sql,
-        char *points_sql,
-        int64_t start_pid,
-        int64_t end_pid,
-        char **edges_of_points_query,
-        char **edges_no_points_query) {
-
-    std::ostringstream edges_of_points_sql;
-    std::ostringstream edges_no_points_sql;
-
-    edges_of_points_sql << "WITH "
-        << " edges AS (" << edges_sql << "),"
-        << " points AS (" << points_sql << ")"
-        << " SELECT DISTINCT edges.* FROM edges JOIN points ON (id = edge_id)";
-    *edges_of_points_query = strdup(edges_of_points_sql.str().c_str());
-
-    edges_no_points_sql << "WITH "
-        << " edges AS (" << edges_sql << "),"
-        << " points AS (" << points_sql << ")"
-        << " SELECT edges.* FROM edges WHERE NOT EXISTS (SELECT edge_id FROM points WHERE id = edge_id)";
-    *edges_no_points_query = strdup(edges_no_points_sql.str().c_str());
-}
-
-
-

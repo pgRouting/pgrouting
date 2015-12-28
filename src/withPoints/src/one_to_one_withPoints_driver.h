@@ -41,7 +41,7 @@ extern "C" {
 //  start_pid BIGINT,
 //  end_pid BIGINT,
 //  directed BOOLEAN DEFAULT true,
-    void do_pgr_withPoints(
+    int do_pgr_withPoints(
             pgr_edge_t  *edges,
             size_t total_edges,
             Point_on_edge_t  *points,
@@ -53,18 +53,18 @@ extern "C" {
             char driving_side,
             bool details,
             bool directed,
+            bool only_cost,
             General_path_element_t **return_tuples,
             size_t *return_count,
             char ** err_msg);
 
+#if 0
     void get_new_queries(
             char *edges_sql,
             char *points_sql, 
-            int64_t start_pid,
-            int64_t end_pid,
             char **edges_of_points_query,
             char **edges_no_points_query);
-
+#endif
 
 #ifdef __cplusplus
 }

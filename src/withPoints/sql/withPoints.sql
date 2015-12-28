@@ -31,6 +31,120 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ONE TO ONE
 */
 
+CREATE OR REPLACE FUNCTION _pgr_withPoints(
+    edges_sql TEXT,
+    points_sql TEXT,
+    start_pid BIGINT,
+    end_pid BIGINT,
+    driving_side CHAR,
+    details BOOLEAN,
+    directed BOOLEAN,
+
+    only_cost BOOLEAN DEFAULT false, -- gets path
+
+
+    OUT seq BIGINT,
+    OUT path_seq BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_one_withPoints'
+LANGUAGE c IMMUTABLE STRICT;
+
+/*
+ONE TO MANY
+*/
+
+CREATE OR REPLACE FUNCTION _pgr_withPoints(
+    edges_sql TEXT,
+    points_sql TEXT,
+    start_pid BIGINT,
+    end_pids ANYARRAY,
+    driving_side CHAR,
+    details BOOLEAN,
+    directed BOOLEAN,
+
+    only_cost BOOLEAN DEFAULT false, -- gets path
+
+
+    OUT seq BIGINT,
+    OUT path_seq BIGINT,
+    OUT end_pid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_many_withPoints'
+LANGUAGE c IMMUTABLE STRICT;
+
+
+/*
+MANY TO ONE
+*/
+
+CREATE OR REPLACE FUNCTION _pgr_withPoints(
+    edges_sql TEXT,
+    points_sql TEXT,
+    start_pids ANYARRAY,
+    end_pid BIGINT,
+    driving_side CHAR,
+    details BOOLEAN,
+    directed BOOLEAN,
+
+    only_cost BOOLEAN DEFAULT false, -- gets path
+
+
+    OUT seq BIGINT,
+    OUT path_seq BIGINT,
+    OUT start_pid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'$libdir/${PGROUTING_LIBRARY_NAME}', 'many_to_one_withPoints'
+LANGUAGE c IMMUTABLE STRICT;
+
+
+
+
+/*
+MANY TO MANY
+*/
+
+CREATE OR REPLACE FUNCTION _pgr_withPoints(
+    edges_sql TEXT,
+    points_sql TEXT,
+    start_pids ANYARRAY,
+    end_pids ANYARRAY,
+    driving_side CHAR,
+    details BOOLEAN,
+    directed BOOLEAN,
+
+    only_cost BOOLEAN DEFAULT false, -- gets path
+
+
+    OUT seq BIGINT,
+    OUT path_seq BIGINT,
+    OUT start_pid BIGINT,
+    OUT end_pid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'$libdir/${PGROUTING_LIBRARY_NAME}', 'many_to_many_withPoints'
+LANGUAGE c IMMUTABLE STRICT;
+
+
+
+
+/*
+ONE TO ONE
+*/
 CREATE OR REPLACE FUNCTION pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
@@ -46,8 +160,105 @@ CREATE OR REPLACE FUNCTION pgr_withPoints(
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
-  RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'one_to_one_withPoints'
-    LANGUAGE c IMMUTABLE STRICT;
+RETURNS SETOF RECORD AS
+$BODY$
+BEGIN
+    RETURN query SELECT *
+    FROM _pgr_withPoints($1, $2, $3, $4, driving_side,  details, directed);
+    END
+    $BODY$
+    LANGUAGE plpgsql VOLATILE
+    COST 100
+    ROWS 1000;
 
 
+/*
+ONE TO MANY
+*/
+CREATE OR REPLACE FUNCTION pgr_withPoints(
+    edges_sql TEXT,
+    points_sql TEXT,
+    start_pid BIGINT,
+    end_pids ANYARRAY,
+    driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
+    details BOOLEAN DEFAULT false,
+    directed BOOLEAN DEFAULT true,
+
+    OUT seq BIGINT,
+    OUT path_seq BIGINT,
+    OUT end_pid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+BEGIN
+    RETURN query SELECT *
+    FROM _pgr_withPoints($1, $2, $3, $4, driving_side, details, directed);
+    END
+    $BODY$
+    LANGUAGE plpgsql VOLATILE
+    COST 100
+    ROWS 1000;
+
+/*
+MANY TO ONE
+*/
+CREATE OR REPLACE FUNCTION pgr_withPoints(
+    edges_sql TEXT,
+    points_sql TEXT,
+    start_pids ANYARRAY,
+    end_pid BIGINT,
+    driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
+    details BOOLEAN DEFAULT false,
+    directed BOOLEAN DEFAULT true,
+
+    OUT seq BIGINT,
+    OUT path_seq BIGINT,
+    OUT start_pid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+BEGIN
+    RETURN query SELECT *
+    FROM _pgr_withPoints($1, $2, $3, $4, driving_side, details, directed);
+    END
+    $BODY$
+    LANGUAGE plpgsql VOLATILE
+    COST 100
+    ROWS 1000;
+
+/*
+MANY TO MANY
+*/
+CREATE OR REPLACE FUNCTION pgr_withPoints(
+    edges_sql TEXT,
+    points_sql TEXT,
+    start_pids ANYARRAY,
+    end_pids ANYARRAY,
+    driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
+    details BOOLEAN DEFAULT false,
+    directed BOOLEAN DEFAULT true,
+
+    OUT seq BIGINT,
+    OUT path_seq BIGINT,
+    OUT start_pid BIGINT,
+    OUT end_pid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+BEGIN
+    RETURN query SELECT *
+    FROM _pgr_withPoints($1, $2, $3, $4, driving_side, details, directed);
+    END
+    $BODY$
+    LANGUAGE plpgsql VOLATILE
+    COST 100
+    ROWS 1000;

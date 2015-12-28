@@ -36,10 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 
-/*
-  Uncomment when needed
-*/
-#define DEBUG
+// #define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
@@ -47,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/points_input.h"
+#include "./get_new_queries.h"
 #include "./one_to_one_withPoints_driver.h"
 
 PG_FUNCTION_INFO_V1(one_to_one_withPoints);
@@ -70,6 +68,7 @@ process(
         char *driving_side,
         bool details,
         bool directed,
+        bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
 
@@ -103,7 +102,6 @@ process(
     char *edges_no_points_query = NULL;
         get_new_queries(
                 edges_sql, points_sql,
-                start_pid, end_pid,
                 &edges_of_points_query,
                 &edges_no_points_query);
 
@@ -160,7 +158,7 @@ process(
 
     PGR_DBG("Starting processing");
     char *err_msg = NULL;
-    do_pgr_withPoints(
+    int errcode = do_pgr_withPoints(
             edges,
             total_edges,
             points,
@@ -172,6 +170,7 @@ process(
             driving_side[0],
             details,
             directed,
+            only_cost,
             result_tuples,
             result_count,
             &err_msg);
@@ -181,6 +180,11 @@ process(
     if (!err_msg) free(err_msg);
     pfree(edges);
     pgr_SPI_finish();
+
+    if (errcode) {
+        pgr_send_error(errcode);
+    }
+
 }
 /*                                                                             */
 /*******************************************************************************/
@@ -217,13 +221,13 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
         // points_sql TEXT,
         // start_pid BIGINT,
         // end_pid BIGINT,
-        // driving_side CHAR DEFAULT 'b',
-        // strict BOOLEAN DEFAULT false,
-        // directed BOOLEAN DEFAULT true,
+        // driving_side CHAR -- DEFAULT 'b',
+        // details BOOLEAN -- DEFAULT false,
+        // directed BOOLEAN -- DEFAULT true,
+        // only_cost BOOLEAN DEFAULT false,
 
         PGR_DBG("Calling process");
         PGR_DBG("initial driving side:%s", pgr_text2char(PG_GETARG_TEXT_P(4)));
-        // DatumGetBpCharP(4)->vl_dat[0]);
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 pgr_text2char(PG_GETARG_TEXT_P(1)),
@@ -232,6 +236,7 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
                 pgr_text2char(PG_GETARG_TEXT_P(4)),
                 PG_GETARG_BOOL(5),
                 PG_GETARG_BOOL(6),
+                PG_GETARG_BOOL(7),
                 &result_tuples,
                 &result_count);
 
@@ -283,7 +288,7 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
 
         // postgres starts counting from 1
         values[0] = Int64GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].seq + 1);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].vertex);
         values[3] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[4] = Float8GetDatum(result_tuples[call_cntr].cost);

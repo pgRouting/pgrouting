@@ -47,6 +47,12 @@ typedef struct {
     float8 cost;
 } path_element_t;
 
+
+
+/*
+ * This one is for returning the info to postgres
+ */
+
 typedef struct {
     int seq;
     int64_t from;
@@ -56,6 +62,17 @@ typedef struct {
     float8 cost;
     float8 tot_cost;
 } General_path_element_t;
+
+/*
+ * This one is for processing
+ */
+typedef struct {
+    int64_t node;
+    int64_t edge;
+    float8 cost;
+} Path_t;
+
+
 
 typedef struct{
     int64_t route_id;

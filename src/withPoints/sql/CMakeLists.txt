@@ -1,6 +1,7 @@
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/withPoints.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/withPointsCost.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/withPointsVia.sql
 )
 

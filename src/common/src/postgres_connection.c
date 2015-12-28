@@ -31,6 +31,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./debug_macro.h"
 #include "./postgres_connection.h"
 
+void
+pgr_send_error(int errcode) {
+    switch (errcode) {
+        case 1:
+            elog(ERROR, "Unexpected point(s) with same pid but different edge/fraction/side combination found.");
+            break;
+        default:
+            elog(ERROR, "Unknown exception");
+    }
+}
+
+
 char*
 pgr_text2char(text *in) {
     char *out = palloc(VARSIZE(in));

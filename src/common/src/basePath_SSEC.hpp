@@ -35,6 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 class Path {
  public:
     std::deque< General_path_element_t > path;
+    int64_t start_id;
+    int64_t end_id;
     float8 cost;
 
     Path(): cost(0) {}
@@ -86,12 +88,6 @@ class Path {
     bool isEqual(const Path &subpath) const;
     void appendPath(const Path &o_path);
     void empty_path(unsigned int d_vertex);
-#if 0
-    void dpPrint(
-        General_path_element_t **ret_path,
-        int &sequence) const;
-
-#else
 
    void ddPrint(
         General_path_element_t **ret_path,
@@ -100,24 +96,10 @@ class Path {
    void dpPrint(
         General_path_element_t **ret_path,
         int &sequence, int routeId) const;
-#endif
 
-#if 1
    void generate_postgres_data(
         General_path_element_t **postgres_data,
         size_t &sequence) const;
-#else
-
-
-   void generate_postgres_data(
-        General_path_element_t **postgres_data,
-        size_t &sequence, int routeId) const;
-
-   void generate_postgres_data(
-        General_path_element_t **postgres_data,
-        size_t &sequence, int routeId) const;
-#endif
-
 
   friend size_t collapse_paths(
       General_path_element_t **ret_path,
