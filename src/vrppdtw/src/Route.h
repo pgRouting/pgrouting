@@ -125,7 +125,7 @@ void
 Route::update(const std::vector<Customer> &c, const Depot &d)  {
     dis = 0, twv = 0, cv = 0;
     int load = 0;
-    for (int i = -1; i < static_cast<int>path.size(); i++) {
+    for (int i = -1; i < static_cast<int>(path.size()); i++) {
         // Depot to first Customer
         if (i == -1) {
             dis += distance(d.x, d.y, c[path[i+1]].x, c[path[i+1]].y);
