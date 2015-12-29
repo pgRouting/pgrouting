@@ -37,17 +37,14 @@ Datum vrppdtw(PG_FUNCTION_ARGS);
 
 //#define DEBUG 1
 #include "../../common/src/debug_macro.h"
+#include "../../common/src/postgres_connection.h"
 
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
-#ifndef PG_MODULE_MAGIC
-PG_MODULE_MAGIC;
-#endif
 
-
-
+#if 0
 static char *text2char(text *in)
 {
         char *out = (char*)palloc(VARSIZE(in));
@@ -67,7 +64,7 @@ static char *text2char(text *in)
                                             }
                           return ret;
                            }
- 
+#endif
 
 typedef struct Customer_type{
         int id;
@@ -266,7 +263,8 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
                 if (customer_all.id == -1) {
                         if (fetch_customer_columns(SPI_tuptable, &customer_all,vehicle_count, capacity) == -1)
                         {
-                               return finish(SPIcode, ret);
+                               pgr_SPI_finish();
+                               return -1;
                         }
                         PGR_DBG("Here I am ");
                 }
@@ -282,37 +280,38 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
 
 
                 PGR_DBG("Error here ");
-                    if (customer_single == NULL) {
-                                 elog(ERROR, "Out of memory");
-                                          return finish(SPIcode, ret);
-                                           }
+                if (customer_single == NULL) {
+                    elog(ERROR, "Out of memory");
+                    pgr_SPI_finish();
+                    return -1;
+                }
 
 
 
                 if (ntuples > 0) {
-                        PGR_DBG("Check here ");
-                        int t;
-                        SPITupleTable *tuptable = SPI_tuptable;
-                        TupleDesc tupdesc = SPI_tuptable->tupdesc;
+                    PGR_DBG("Check here ");
+                    int t;
+                    SPITupleTable *tuptable = SPI_tuptable;
+                    TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
-                        for (t = 0; t < ntuples; t++) {
-                                PGR_DBG("In for loop ");
-                                HeapTuple tuple = tuptable->vals[t];
-                                PGR_DBG("Manikanta ");
-                                fetch_customer(&tuple, &tupdesc, &customer_all , &customer_single[total_tuples - ntuples + t]);
-                                PGR_DBG("After Function call");
-                        }
-                        SPI_freetuptable(tuptable);
+                    for (t = 0; t < ntuples; t++) {
+                        PGR_DBG("In for loop ");
+                        HeapTuple tuple = tuptable->vals[t];
+                        PGR_DBG("Manikanta ");
+                        fetch_customer(&tuple, &tupdesc, &customer_all , &customer_single[total_tuples - ntuples + t]);
+                        PGR_DBG("After Function call");
+                    }
+                    SPI_freetuptable(tuptable);
                 } 
                 else {
-                        moredata = FALSE;
+                    moredata = FALSE;
                 }
         }
 
         int k;
         for(k=0;k<total_tuples;k++)
         {
-                PGR_DBG("%d     %d     %d     %d     %d     %d     %d     %d     %d" , customer_single[k].id, customer_single[k].x , customer_single[k].y , customer_single[k].demand , customer_single[k].Etime ,customer_single[k].Ltime ,customer_single[k].Stime, customer_single[k].Pindex,  customer_single[k].Dindex);
+            PGR_DBG("%d     %d     %d     %d     %d     %d     %d     %d     %d" , customer_single[k].id, customer_single[k].x , customer_single[k].y , customer_single[k].demand , customer_single[k].Etime ,customer_single[k].Ltime ,customer_single[k].Stime, customer_single[k].Pindex,  customer_single[k].Dindex);
         }
 
         PGR_DBG("Calling Solver Instance\n");
@@ -321,9 +320,9 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
         ret = Solver(customer_single, total_tuples, vehicle_count, capacity , &err_msg,results, length_results_struct);
 
         if (ret < -2) {
-                //elog(ERROR, "Error computing path: %s", err_msg);
-                ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED), 
-                                        errmsg("Error computing path: %s", err_msg)));
+            //elog(ERROR, "Error computing path: %s", err_msg);
+            ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED), 
+                        errmsg("Error computing path: %s", err_msg)));
         } 
 
 
@@ -337,137 +336,138 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
         int vb;
         for(vb=1;vb<*length_results_struct;vb++)
         {
-                PGR_DBG("results[%d].seq=%d  ",vb, (*results)[vb].seq);
-                PGR_DBG("results[%d].rid=%d  ",vb, (*results)[vb].rid);
-                PGR_DBG("results[%d].nid=%d \n",vb, (*results)[vb].nid);
+            PGR_DBG("results[%d].seq=%d  ",vb, (*results)[vb].seq);
+            PGR_DBG("results[%d].rid=%d  ",vb, (*results)[vb].rid);
+            PGR_DBG("results[%d].nid=%d \n",vb, (*results)[vb].nid);
         }
 
         pfree(customer_single);
         PGR_DBG("Working till here ");
-        return finish(SPIcode, ret);
+        pgr_SPI_finish();
+        return 0;
 
 }
 
 
 
 PG_FUNCTION_INFO_V1(vrppdtw);
-        Datum
+    Datum
 vrppdtw(PG_FUNCTION_ARGS)
 {
-        FuncCallContext     *funcctx;
-        int                  call_cntr;
-        int                  max_calls;
-        TupleDesc            tuple_desc;
-        path_element     *results = 0;
+    FuncCallContext     *funcctx;
+    int                  call_cntr;
+    int                  max_calls;
+    TupleDesc            tuple_desc;
+    path_element     *results = 0;
 
 
-        /* stuff done only on the first call of the function */
+    /* stuff done only on the first call of the function */
 
-        if (SRF_IS_FIRSTCALL())
+    if (SRF_IS_FIRSTCALL())
 
-        {
-                MemoryContext   oldcontext;
-                // int ret;
-                int length_results_struct = 0;
-
-
-
-
-                /* create a function context for cross-call persistence */
-
-                funcctx = SRF_FIRSTCALL_INIT();
+    {
+        MemoryContext   oldcontext;
+        // int ret;
+        int length_results_struct = 0;
 
 
 
-                /* switch to memory context appropriate for multiple function calls */
 
-                oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
+        /* create a function context for cross-call persistence */
 
-
-                results = (path_element *)palloc(sizeof(path_element)*((length_results_struct)+1));
-
-                PGR_DBG("Calling compute_shortes_path");
+        funcctx = SRF_FIRSTCALL_INIT();
 
 
 
-                // ret =
-                compute_shortest_path(
+        /* switch to memory context appropriate for multiple function calls */
 
-                                text2char(PG_GETARG_TEXT_P(0)),  // customers sql
-
-                                PG_GETARG_INT32(1),  // vehicles  count
-
-                                PG_GETARG_INT32(2),  // capacity count
-
-                                &results, &length_results_struct
-                                );
-
-                PGR_DBG("Back from solve_vrp, length_results: %d", length_results_struct);
-
-                /* total number of tuples to be returned */
-                funcctx->max_calls = length_results_struct;
-                funcctx->user_fctx = results;
-
-                /* Build a tuple descriptor for our result type */
-                if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
-                        ereport(ERROR,
-                                        (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-                                         errmsg("function returning record called in context "
-                                                 "that cannot accept type record")));
-
-                funcctx->tuple_desc = BlessTupleDesc(tuple_desc);
-
-                MemoryContextSwitchTo(oldcontext);
-        }
-
-        /* stuff done on every call of the function */
-        funcctx = SRF_PERCALL_SETUP();
-
-        call_cntr = funcctx->call_cntr;
-        max_calls = funcctx->max_calls;
-        tuple_desc = funcctx->tuple_desc;
-        results = (path_element *) funcctx->user_fctx;
-
-        /* do when there is more left to send */
-        if (call_cntr < max_calls) {
-                HeapTuple    tuple;
-                Datum        result;
-                Datum *values;
-                char* nulls;
-
-                PGR_DBG("Till hereee ",NULL);
-                values = palloc(4 * sizeof(Datum));
-                nulls = palloc(4 * sizeof(char));
-
-                values[0] = Int32GetDatum(results[call_cntr].seq);
-                nulls[0] = ' ';
-                values[1] = Int32GetDatum(results[call_cntr].rid);
-                nulls[1] = ' ';
-                values[2] = Int32GetDatum(results[call_cntr].nid);
-                nulls[2] = ' ';
-                values[3] = Int32GetDatum(results[call_cntr].cost);
-                nulls[3] = ' ';
-                tuple = heap_formtuple(tuple_desc, values, nulls);
-
-                /* make the tuple into a datum */
-                result = HeapTupleGetDatum(tuple);
-
-                /* clean up (this is not really necessary) */
-                pfree(values);
-                pfree(nulls);
-
-                SRF_RETURN_NEXT(funcctx, result);
-        }
-        /* do when there is no more left */
-        else {
-                PGR_DBG("Ending function\n",NULL);
-
-                free(results);
-                PGR_DBG("Itinerary cleared\n",NULL);
+        oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-                SRF_RETURN_DONE(funcctx);
-        }
+        results = (path_element *)palloc(sizeof(path_element)*((length_results_struct)+1));
+
+        PGR_DBG("Calling compute_shortes_path");
+
+
+
+        // ret =
+        compute_shortest_path(
+
+                pgr_text2char(PG_GETARG_TEXT_P(0)),  // customers sql
+
+                PG_GETARG_INT32(1),  // vehicles  count
+
+                PG_GETARG_INT32(2),  // capacity count
+
+                &results, &length_results_struct
+                );
+
+        PGR_DBG("Back from solve_vrp, length_results: %d", length_results_struct);
+
+        /* total number of tuples to be returned */
+        funcctx->max_calls = length_results_struct;
+        funcctx->user_fctx = results;
+
+        /* Build a tuple descriptor for our result type */
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+            ereport(ERROR,
+                    (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+                     errmsg("function returning record called in context "
+                         "that cannot accept type record")));
+
+        funcctx->tuple_desc = BlessTupleDesc(tuple_desc);
+
+        MemoryContextSwitchTo(oldcontext);
+    }
+
+    /* stuff done on every call of the function */
+    funcctx = SRF_PERCALL_SETUP();
+
+    call_cntr = funcctx->call_cntr;
+    max_calls = funcctx->max_calls;
+    tuple_desc = funcctx->tuple_desc;
+    results = (path_element *) funcctx->user_fctx;
+
+    /* do when there is more left to send */
+    if (call_cntr < max_calls) {
+        HeapTuple    tuple;
+        Datum        result;
+        Datum *values;
+        char* nulls;
+
+        PGR_DBG("Till hereee ",NULL);
+        values = palloc(4 * sizeof(Datum));
+        nulls = palloc(4 * sizeof(char));
+
+        values[0] = Int32GetDatum(results[call_cntr].seq);
+        nulls[0] = ' ';
+        values[1] = Int32GetDatum(results[call_cntr].rid);
+        nulls[1] = ' ';
+        values[2] = Int32GetDatum(results[call_cntr].nid);
+        nulls[2] = ' ';
+        values[3] = Int32GetDatum(results[call_cntr].cost);
+        nulls[3] = ' ';
+        tuple = heap_formtuple(tuple_desc, values, nulls);
+
+        /* make the tuple into a datum */
+        result = HeapTupleGetDatum(tuple);
+
+        /* clean up (this is not really necessary) */
+        pfree(values);
+        pfree(nulls);
+
+        SRF_RETURN_NEXT(funcctx, result);
+    }
+    /* do when there is no more left */
+    else {
+        PGR_DBG("Ending function\n",NULL);
+
+        free(results);
+        PGR_DBG("Itinerary cleared\n",NULL);
+
+
+        SRF_RETURN_DONE(funcctx);
+    }
 
 
 }
