@@ -53,7 +53,7 @@ class Solution{
      //Methods
      void dump();
      double getCost();
-     Solution getBestofNeighborhood(Solution S, std::vector<customer> &c, depot &d, std::vector<Pickup> &p, /* int CustomerLength,*/ int PickupLength);
+     Solution getBestofNeighborhood(Solution S, std::vector<Customer> &c, Depot &d, std::vector<Pickup> &p /* int CustomerLength, int PickupLength*/);
      void UpdateSol();
 
 };
@@ -61,7 +61,7 @@ class Solution{
 class Neighborhoods{
  public:
      Neighborhoods(){}
-     Solution BestSPI(Solution S, std::vector<customer> &c, depot &d, std::vector<Pickup> &p, /*int CustomerLength,*/ int PickupLength);                
+     Solution BestSPI(Solution S, std::vector<Customer> &c, Depot &d, std::vector<Pickup> &p /*int CustomerLength, int PickupLength*/);   
 };
 
 
@@ -118,17 +118,17 @@ Solution::getCost(){
 }
 
 Solution
-Solution::getBestofNeighborhood(Solution S, std::vector<customer> &c, depot &d, std::vector<Pickup> &p, /* int CustomerLength,*/ int PickupLength) {
+Solution::getBestofNeighborhood(Solution S, std::vector<Customer> &c, Depot &d, std::vector<Pickup> &p /* int CustomerLength, int PickupLength*/) {
     //    printf("twv_total=%lf\n",S.cost_total);
     Neighborhoods N;
     Solution S1;
-    S1 = N.BestSPI(S,c,d,p, /*CustomerLength,*/ PickupLength);
+    S1 = N.BestSPI(S,c,d,p /*CustomerLength, PickupLength*/);
     return S1;
 }
 
 
 Solution
-Neighborhoods::BestSPI(Solution S, std::vector<customer> &c, depot &d, std::vector<Pickup> &p, /*int CustomerLength,*/ int PickupLength){
+Neighborhoods::BestSPI(Solution S, std::vector<Customer> &c, Depot &d, std::vector<Pickup> &p /*int CustomerLength, int PickupLength*/){
 
 
     Solution CurrSol,BestSol,TempSol;
@@ -138,13 +138,13 @@ Neighborhoods::BestSPI(Solution S, std::vector<customer> &c, depot &d, std::vect
     int Ro_flag,Hc_flag;
     State TempState;
     //Copy Order requests from pickup's
-    for(int order=1;order<=PickupLength;order++)
+    for(size_t order=1;order<=p.size();order++)
     {
         OrderRequests[order]=p[order];
     }
 
     //Main SPI
-    for(int order=1;order<=PickupLength;order++)
+    for(size_t order=1;order<=p.size();order++)
     {
         //Order Find and Remove it! 
         for(unsigned int route_remove=0;route_remove<CurrSol.r.size();route_remove++)

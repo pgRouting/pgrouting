@@ -22,8 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-#ifndef _ROUTE_H
-#define _ROUTE_H
+#pragma once
 
 #include  <vector> 
 #include  <map> 
@@ -44,33 +43,35 @@ class Route {
      int dis;
      std::vector < int >  path;
      std::vector < int >  order;
+     int capacity;
 
 #if 0
      int path_length;
 #endif
 
-     Route() :
+     Route(int _capacity) :
          twv(0),
          cv(0),
-         dis(0) {
+         dis(0),
+         capacity(_capacity) {
              path.clear();
              order.clear();
          }
      State append(
-             /*customer *c,*/
+             /*Customer *c,*/
              Pickup p,
-            /* depot d,  int CustomerLength, int PickupLength,*/
+            /* Depot d,  int CustomerLength, int PickupLength,*/
              State S);
-     void update(std::vector<customer> &c, depot &d);
-     double cost();
-     int HillClimbing(std::vector<customer> &c, depot &d
+     void update(std::vector<Customer> &c, Depot &d);
+     double cost() const;
+     int HillClimbing(std::vector<Customer> &c, Depot &d
              /*,Pickup p*/);
-     int insertOrder(std::vector<customer> &c, depot &d
+     int insertOrder(std::vector<Customer> &c, Depot &d
              /*,Pickup p*/);
      void remove(State S);
      // void print();
-     int RemoveOrder(Pickup p);
-     double distance(double x1, double y1, double x2, double y2);
+     int RemoveOrder(const Pickup &p);
+     double distance(double x1, double y1, double x2, double y2) const;
 };
 
 
@@ -80,7 +81,7 @@ class Route {
  * 0 - When the order was not found
  */
 int
-Route::RemoveOrder(Pickup p){
+Route::RemoveOrder(const Pickup &p){
 
     auto Pickup_pos = find(path.begin(), path.end(),p.Pid);
 
@@ -141,9 +142,9 @@ Route::RemoveOrder(Pickup p){
 
 State
 Route::append(
-        /*customer *c,*/
+        /*Customer *c,*/
         Pickup p,
-        /* depot d, int CustomerLength, int PickupLength,*/
+        /* Depot d, int CustomerLength, int PickupLength,*/
         State S){
 
     //Save State;
@@ -179,19 +180,19 @@ Route::append(
 }
 
 double
-Route::distance(double x1, double y1, double x2, double y2) {
+Route::distance(double x1, double y1, double x2, double y2) const {
     double delta_x = x1 - x2;
     double delta_y = y1 - y2;
     return sqrt(delta_x * delta_x + delta_y * delta_y);
 }
 
 void
-Route::update(std::vector<customer> &c, depot &d) {
+Route::update(std::vector<Customer> &c, Depot &d) {
     dis = 0, twv=0, cv=0;
     int load = 0;
     for (int i = -1; i  <  (int)path.size(); i++)
     {
-        //depot to first customer
+        //Depot to first Customer
         if (i ==-1)
         {
 #if 0
@@ -209,7 +210,7 @@ Route::update(std::vector<customer> &c, depot &d) {
             dis += c[path[i+1]].Stime;
             load += c[path[i+1]].demand;
         }
-        //Last cusotmer to depot 
+        //Last cusotmer to Depot 
         if (i == (int)(path.size() - 1)) {
 #if 0
             dis += sqrt(((d.x-c[path[i]].x)*(d.x-c[path[i]].x))+((d.y-c[path[i]].y)*(d.y-c[path[i]].y)));
@@ -220,7 +221,7 @@ Route::update(std::vector<customer> &c, depot &d) {
                 twv += 1;
             }
         }
-        //Middle customers
+        //Middle Customers
         if (i  >= 0 && i  <  (int)(path.size() - 1))
         {
 #if 0
@@ -250,12 +251,12 @@ Route::update(std::vector<customer> &c, depot &d) {
 }
 
 double
-Route::cost() {
+Route::cost() const {
     return (0.3*dis)+(0.5*twv)+(0.2*cv);
 }
 
 int
-Route::insertOrder(std::vector<customer> &c, depot &d
+Route::insertOrder(std::vector<Customer> &c, Depot &d
         /*, Pickup p*/) {
     // double cost1 = 0,cost2=0;
     twv = 0, cv=0, dis=0;
@@ -322,7 +323,7 @@ Route::insertOrder(std::vector<customer> &c, depot &d
 #endif
 }
 
-int Route::HillClimbing(std::vector<customer> &c, depot &d
+int Route::HillClimbing(std::vector<Customer> &c, Depot &d
         /*, Pickup p*/)
 {
     double cost1 = 0,cost2=0;
@@ -455,4 +456,3 @@ int Route::HillClimbing(std::vector<customer> &c, depot &d
     }
 
 
-#endif

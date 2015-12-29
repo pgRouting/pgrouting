@@ -66,6 +66,7 @@ static char *text2char(text *in)
                            }
 #endif
 
+#if 0
 typedef struct Customer_type{
         int id;
         int x;
@@ -77,7 +78,7 @@ typedef struct Customer_type{
         int Pindex;
         int Dindex;
 }customer_t;
-
+#endif
 
 
 #if 0
@@ -118,7 +119,7 @@ static int prepare_query(Portal *SPIportal, char* sql)
 }
 #endif
 
-static int fetch_customer_columns(SPITupleTable *tuptable, customer_t *c , int vehicle_count , int capacity)
+static int fetch_customer_columns(SPITupleTable *tuptable, Customer *c , int vehicle_count , int capacity)
 {
         PGR_DBG("Customer Data",NULL);
 
@@ -160,7 +161,7 @@ static int fetch_customer_columns(SPITupleTable *tuptable, customer_t *c , int v
 }
 
 
-static void fetch_customer(HeapTuple *tuple, TupleDesc *tupdesc, customer_t *c_all, customer *c_single)
+static void fetch_customer(HeapTuple *tuple, TupleDesc *tupdesc, Customer *c_all, Customer *c_single)
 {
         Datum binval;
         bool isnull;
@@ -228,9 +229,9 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
         Portal SPIportal;
         bool moredata = TRUE;
         int ntuples;
-        customer *customer_single=NULL;
+        Customer *customer_single=NULL;
         int total_tuples = 0;
-        customer_t customer_all = {.id= -1, .x=-1, .y=-1 , .demand=-1 , .Etime=-1, .Ltime=-1 , .Stime=-1 , .Pindex=-1 , .Dindex=-1 };   // write this 
+        Customer customer_all = {-1, -1, -1 ,-1 , -1, -1 , -1 , -1 , -1, -1, -1, 0};   // write this 
 
         char *err_msg;
         int ret = -1;
@@ -274,9 +275,9 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
                 PGR_DBG("Calculated total_tuples  ntuples=%d   total_tuples =%d ", ntuples, total_tuples);
                 
                    if (customer_single==NULL)
-                   customer_single = palloc(total_tuples * sizeof(customer));
+                   customer_single = palloc(total_tuples * sizeof(Customer));
                    else
-                   customer_single = repalloc(customer_single, total_tuples * sizeof(customer));
+                   customer_single = repalloc(customer_single, total_tuples * sizeof(Customer));
 
 
                 PGR_DBG("Error here ");

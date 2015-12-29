@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 // Structures and variables which help us in storing the data
 
-typedef struct Depot{
+typedef struct {
         int id;
         int x;
         int y;
@@ -42,11 +42,11 @@ typedef struct Depot{
         int Stime;
         int Pindex;
         int Dindex;
-}depot;
+} Depot;
 
 
 
-typedef struct Customer{
+typedef struct {
         int id;
         int x;
         int y;
@@ -59,19 +59,19 @@ typedef struct Customer{
         double Ddist;
         int P;
         int D;
-}customer;
+} Customer;
 
 
-typedef struct Pickup{
+typedef struct {
         int id;
         int Pid;
         double Ddist;
         int Did;
         int checked;
-}pickup; 
+} Pickup; 
 
 
-
+#if 0
 typedef struct Vehicle{
         int capacity;
         int used_vehicles;
@@ -79,7 +79,7 @@ typedef struct Vehicle{
         int speed;
         int cost;
 }VehicleInfo;
-
+#endif
 
 // A module which calculates distance 
 double CalculateDistance(int x1,int y1,int x2,int y2);
@@ -88,7 +88,7 @@ double CalculateDistance(int x1,int y1,int x2,int y2)
         return sqrt(((x2-x1)*(x2-x1))+((y2-y1)*(y2-y1)));
 }
 
-/*
+#if 0
 // DEPOT:  With id=0
 depot ScanDepot(depot d)
 {
@@ -142,9 +142,8 @@ Vehicle.used_vehicles=0;
 return Vehicle;
 
 }
+#endif
 
-
- */
 
 
 // Part of code: It is used to save some variables and helps if we need to revisit previous state.
@@ -173,7 +172,7 @@ typedef struct PathElement {
 #ifdef __cplusplus
 extern "C"
 #endif
-int Solver(customer *c, int total_tuples, int vehicle_count, int capacity , char **msg, path_element **results, int *length_results);
+int Solver(Customer *c, int total_tuples, int vehicle_count, int capacity , char **msg, path_element **results, int *length_results);
 
 #ifdef __cplusplus
 extern "C"
