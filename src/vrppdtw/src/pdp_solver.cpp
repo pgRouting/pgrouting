@@ -93,24 +93,28 @@ int TabuSearch( std::vector<Customer> &c, Depot &d , std::vector<Pickup> &p);
 Solution S0;
 
 void result_struct();
-int Solver(Customer *c1,int total_tuples, int VehicleLength, int capacity , char **msg, path_element **results, int *length_results_struct)
+int Solver(Customer *c1, int total_tuples, int VehicleLength, int capacity , char **msg, path_element **results, int *length_results_struct)
 {
 /*
  * capacity is not being used
  */
 
-    std::vector<Customer> c(c1 + 1, c1 + total_tuples);
-    std::vector<Pickup> p;
-    std::vector<Route> r;
-    Depot d;
+    std::vector<Customer> customers(c1 + 1, c1 + total_tuples);
+    std::vector<Pickup> pickups;
+    std::vector<Route> routes;
+    Depot depot({c1[0].id, c1[0].x, c1[0].y,
+            c1[0].demand,
+            c1[0].Etime, c1[0].Ltime, c1[0].Stime,
+            c1[0].Pindex, c1[0].Dindex
+            });
 #if 0
     CustomerLength  =  total_tuples-1;
 
     c  =  (Customer *)malloc((CustomerLength+5)*sizeof(customer));
     p  =  (Pickup *)malloc((CustomerLength+5)*sizeof(pickup));
     r  =  (Route *)malloc((CustomerLength+5)*sizeof(Route));
-#endif
     //Depot Data
+
     d.id  =  c1[0].id;
     d.x  =  c1[0].x;
     d.y  =  c1[0].y;
@@ -120,19 +124,20 @@ int Solver(Customer *c1,int total_tuples, int VehicleLength, int capacity , char
     d.Stime  =  c1[0].Stime;
     d.Pindex  =  c1[0].Pindex;
     d.Dindex  =  c1[0].Dindex;
+#endif
 
 
 
     //Customer Data 
-    for (auto cust : c) {
-        cust.Ddist =  CalculateDistance(cust.x, cust.y ,d.x, d.y);                        
-        if (cust.Pindex  == 0){
-            cust.P = 1;
-            cust.D = 0;
+    for (auto c : customers) {
+        c.Ddist =  CalculateDistance(c.x, c.y ,depot.x, depot.y);                        
+        if (c.Pindex  == 0){
+            c.P = 1;
+            c.D = 0;
         }
-        if (cust.Dindex  == 0){
-            cust.D = 1;
-            cust.P = 0;
+        if (c.Dindex  == 0){
+            c.D = 1;
+            c.P = 0;
         }
     }
 
@@ -163,7 +168,7 @@ int Solver(Customer *c1,int total_tuples, int VehicleLength, int capacity , char
     //Vehicle Data 
 
 #if 0
-// warning: variable ‘Vehicle’ set but not used [-Wunused-but-set-variable]
+    // warning: variable ‘Vehicle’ set but not used [-Wunused-but-set-variable]
     VehicleInfo Vehicle;
     Vehicle.given_vehicles = VehicleLength;
     Vehicle.capacity  =  capacity;
@@ -178,10 +183,10 @@ int Solver(Customer *c1,int total_tuples, int VehicleLength, int capacity , char
     for (int i = 1;i<=CustomerLength;i++){
 #endif
         int i  =  1;
-        for (auto cust : c) {
-            if (cust.P  == 1){
-                Pickup new_pickup({i, cust.id, cust.Ddist, cust.Dindex, 0});
-                p.push_back(new_pickup);
+        for (auto c : customers) {
+            if (c.P  == 1){
+                Pickup pickup({i, c.id, c.Ddist, c.Dindex, 0});
+                pickups.push_back(pickup);
                 ++i;
 #if 0
                 PickupLength+= 1;
@@ -197,13 +202,14 @@ int Solver(Customer *c1,int total_tuples, int VehicleLength, int capacity , char
         /* Sort Pickup's 
          * The sequential construction inserts from largest distance to smallest
          */
-        std::sort(p.begin(), p.end(),
+        std::sort(pickups.begin(), pickups.end(),
                 [] (const Pickup &p1, const Pickup &p2)
                 {return p1.Ddist > p2.Ddist;}
                 );
         i  =  1;
-        for (auto &p1 : p) {
-            p1.id  =  i;
+        for (auto &p : pickups) {
+            p.id  =  i;
+            ++i;
         }
 #if 0
         int swap;
@@ -243,22 +249,25 @@ int Solver(Customer *c1,int total_tuples, int VehicleLength, int capacity , char
         size_t v = 0;
         State S;
         Route route(capacity);
-        r.push_back(route);
-        for (auto &p1 : p) {
-            S = r[v].append(/*c,*/ p1, /*d,CustomerLength,PickupLength,*/ S);
-            int flag = r[v].HillClimbing(c, d /*,p[i]*/);
+        routes.push_back(route);
+        for (auto &p : pickups) {
+            S = r[v].append(/*c,*/ p, /*d,CustomerLength,PickupLength,*/ S);
+            int flag = r[v].HillClimbing(customers, depot /*,p[i]*/);
             if (flag == 0){
-                p[i].checked = 1;
+                p.checked = 1;
             }
             r[v].remove(S);
             /* in a new vehicle*/
             ++v;
             {
                 Route route(capacity);
-                r.push_back(route);
+                routes.push_back(route);
             }
-            S = r[v].append(/*c,*/ p1, /*d,CustomerLength,PickupLength,*/ S);
-            flag = r[v].HillClimbing(c, d /*,p[i]*/);
+            S = r[v].append(/*c,*/ p, /*d,CustomerLength,PickupLength,*/ S);
+            flag = r[v].HillClimbing(customers, depot /*,p[i]*/);
+            if (flag == 0){
+                p.checked = 1;
+            }
         }
 #if 0
         Vehicle.used_vehicles = r.size();
@@ -296,9 +305,9 @@ int Solver(Customer *c1,int total_tuples, int VehicleLength, int capacity , char
 
         int sum = 0, rts=0;
 
-        for (const auto &r1 : r) {
-            sum += r1.dis;
-            if (r1.dis != 0){
+        for (const auto &r : routes) {
+            sum += r.dis;
+            if (r.dis != 0){
                 rts+= 1;
             }
         }
@@ -321,12 +330,13 @@ int Solver(Customer *c1,int total_tuples, int VehicleLength, int capacity , char
 
 
         //Storing Initial Solution (S0 is the Initial Solution)
-        for (const auto &r1: r) {
-            S0.cost_total+= r1.cost();
-            S0.dis_total+= r1.dis;
-            S0.twv_total+= r1.twv;
-            S0.cv_total+= r1.cv;
+        for (const auto &r: routes) {
+            S0.cost_total+= r.cost();
+            S0.dis_total+= r.dis;
+            S0.twv_total+= r.twv;
+            S0.cv_total+= r.cv;
         }
+        S0.routes = routes;
 #if 0
         //Storing Initial Solution (S0 is the Initial Solution)
         for (int i = 1;i<=Vehicle.used_vehicles;i++)
@@ -336,13 +346,7 @@ int Solver(Customer *c1,int total_tuples, int VehicleLength, int capacity , char
             S0.twv_total+= r[i].twv;
             S0.cv_total+= r[i].cv;
         }
-#endif
 
-        S0.route_length = r.size();
-        for (const auto &r1 : r) {
-            S0.r.push_back(r1);
-        }
-#if 0
         S0.route_length = Vehicle.used_vehicles;
         for (int i = 1;i<=Vehicle.used_vehicles;i++)
         {
@@ -353,41 +357,58 @@ int Solver(Customer *c1,int total_tuples, int VehicleLength, int capacity , char
 
         //Starting Neighborhoods
         // printf("\nNeighborhoods From now\n");
-        int sol_count = TabuSearch(c, d, p);
+        int sol_count = TabuSearch(customers, depot, pickups);
 
         //Copying back the results 
         // path_element->results , path_length   {  we need to send (results, length_results) backk ; 
         int nodes_count;
-        nodes_count =  c.size();
+        nodes_count =  customers.size();
         *results  =  (path_element *) malloc(sizeof(path_element) * (nodes_count + 5*VehicleLength));
         int length_results = 0;
 
 
 
+#if 0
         int *cost, *cost_nodes;
         cost  =  (int *)malloc(1000*sizeof(int));
         cost_nodes  =  (int *)malloc(1000*sizeof(int));
+#endif
+        /*
+         * cost holds id's of customers and depot
+         */
+        std::vector< int > cost;
+        std::vector< int > cost_nodes;
+        cost.reserve(1000);
+        cost_nodes.reserve(1000);
         //Cost Calculation 
 
+        for (const auto &route : T[sol_count].routes) {
+            cost.push_back(depot.id);
+            for (const auto &node : route.path) {
+                cost.push_back(node);
+            }
+            cost.push_back(depot.id);
+        }
+
+#if 0
         int copy_length = 0;
         // TAKE AN ARRAY EMBED EVERYTHING 
         for (size_t itr_route = 0; itr_route < T[sol_count].route_length; itr_route++)
         {
-            cost[copy_length] = d.id;
+            cost[copy_length] = depot.id;
             copy_length++;
             for (size_t itr_node  =  0; itr_node < T[sol_count].r[itr_route].path.size(); itr_node++)
             {
                 cost[copy_length] = T[sol_count].r[itr_route].path[itr_node];
                 copy_length++;
             }
-            cost[copy_length] = d.id;
+            cost[copy_length] = depot.id;
             copy_length++;
         }
-
         copy_length -= 1;
-        int temp_dis = 0;
-        for (int i = 0;i<copy_length;i++)
-        {                
+#endif
+        double temp_dis = 0;
+        for (size_t i = 0; i < cost.size(); i++) {                
             if (i ==0)
             {
                 cost_nodes[0] = 0;
@@ -396,38 +417,54 @@ int Solver(Customer *c1,int total_tuples, int VehicleLength, int capacity , char
             else 
             {
                 //Depot to first node 
-                if (cost[i-1] ==d.id && cost[i]!=d.id )
+                if (cost[i-1] ==depot.id && cost[i]!=depot.id )
                 {
                     temp_dis = 0;
+                    temp_dis += CalculateDistance(customers[cost[i]].x, customers[cost[i]].y, depot.x, depot.y);
+                    if (temp_dis < customers[cost[i]].Etime) {
+                        temp_dis = customers[cost[i]].Etime;
+                    }
+#if 0
                     temp_dis+= sqrt(((c[cost[i]].x-d.x)*(c[cost[i]].x-d.x))+((c[cost[i]].y-d.y)*(c[cost[i]].y-d.y)));
                     if (temp_dis < c[cost[i]].Etime)
                     {
                         temp_dis = c[cost[i]].Etime;
                     }
+#endif
 
                     cost_nodes[i] = temp_dis;
                 }
 
                 //Between nodes 
-                else if (cost[i-1] != d.id && cost[i]!=d.id)
+                else if (cost[i-1] != depot.id && cost[i]!=depot.id)
                 {
-                    temp_dis+= sqrt(((c[cost[i]].x-c[cost[i-1]].x)*(c[cost[i]].x-c[cost[i-1]].x))+((c[cost[i]].y-c[cost[i-1]].y)*(c[cost[i]].y-c    [cost[i-1]].y)));
+                    temp_dis += CalculateDistance(customers[cost[i]].x, customers[cost[i]].y, customers[cost[i-1]].x, customers[cost[i-1]].y);
+                    if (temp_dis < customers[cost[i]].Etime) {
+                        temp_dis = customers[cost[i]].Etime;
+                    }
+                    temp_dis += customers[cost[i-1]].Stime;
 
+#if 0
+                    temp_dis+= sqrt(((c[cost[i]].x-c[cost[i-1]].x)*(c[cost[i]].x-c[cost[i-1]].x))+((c[cost[i]].y-c[cost[i-1]].y)*(c[cost[i]].y-c    [cost[i-1]].y)));
                     if (temp_dis < c[cost[i]].Etime)
                     {
                         temp_dis = c[cost[i]].Etime;
                     }
 
                     temp_dis+= c[cost[i-1]].Stime;
+#endif
                     cost_nodes[i] = temp_dis;
                 }
-                else if (cost[i] ==d.id && cost[i-1]!=d.id)
+                else if (cost[i] ==depot.id && cost[i-1] != depot.id)
                 {
+#if 0
                     temp_dis+= sqrt(((d.x-c[cost[i-1]].x)*(d.x-c[cost[i-1]].x))+((d.y-c[cost[i-1]].y)*(d.y-c[cost[i-1]].y)));
+#endif
+                    temp_dis += CalculateDistance(customers[cost[i-1]].x, customers[cost[i-1]].y, depot.x, depot.y);
                     cost_nodes[i] = temp_dis;
                     temp_dis = 0;
                 }
-                else if (cost[i] ==d.id && cost[i-1]==d.id)
+                else if (cost[i] == depot.id && cost[i-1] == depot.id)
                 {
                     cost_nodes[i] = 0;
                     temp_dis = 0;
@@ -438,31 +475,35 @@ int Solver(Customer *c1,int total_tuples, int VehicleLength, int capacity , char
 
         //Done cost calculation 
 
-
-        for (size_t itr_route = 0; itr_route<T[sol_count].route_length; itr_route++)
+#if 0
+        //for (size_t itr_route = 0; itr_route<T[sol_count].route_length; itr_route++)
+#endif
+        int itr_route = 0;
+        for (const auto &route : T[sol_count].routes)
         {
             (*results)[length_results].seq  =  length_results;
-            (*results)[length_results].rid  =  itr_route+1;
-            (*results)[length_results].nid  =  d.id;
+            (*results)[length_results].rid  =  itr_route + 1;
+            (*results)[length_results].nid  =  depot.id;
             (*results)[length_results].cost  =  cost_nodes[length_results];
             length_results++;
 
             //Loop for path elements.
+#if 0
             for (size_t itr_node = 0; itr_node < T[sol_count].r[itr_route].path.size(); itr_node++)
-            {
-                (*results)[length_results].seq  =  length_results;
-                (*results)[length_results].rid  =  itr_route+1;
-                (*results)[length_results].nid  =  T[sol_count].r[itr_route].path[itr_node];
-                (*results)[length_results].cost  =  cost_nodes[length_results];
-                length_results++;
-            }
+#endif
+                for (const auto &node : route.path) {
+                    (*results)[length_results].seq  =  length_results;
+                    (*results)[length_results].rid  =  itr_route + 1;
+                    (*results)[length_results].nid  =  node;
+                    (*results)[length_results].cost  =  cost_nodes[length_results];
+                    length_results++;
+                }
 
             (*results)[length_results].seq  =  length_results;
-            (*results)[length_results].rid  =  itr_route+1;
-            (*results)[length_results].nid  =  d.id;
+            (*results)[length_results].rid  =  itr_route + 1;
+            (*results)[length_results].nid  =  depot.id;
             (*results)[length_results].cost  =  cost_nodes[length_results];
             length_results++;
-
         }
 
         *length_results_struct  =  length_results;
@@ -482,7 +523,7 @@ int Solver(Customer *c1,int total_tuples, int VehicleLength, int capacity , char
 
     /* TABU search helps us to store the solutions after every different move. The overview of TABU search will be a list containing list of solutions*/
 
-    int TabuSearch(std::vector<Customer> &c, Depot &d, std::vector<Pickup> &p)
+    int TabuSearch(const std::vector<Customer> &customers, const Depot &depot, const std::vector<Pickup> &pickups)
     {
         // printf("TABU Called\n");
         Solution S,SBest;
@@ -526,7 +567,7 @@ int Solver(Customer *c1,int total_tuples, int VehicleLength, int capacity , char
         T.push_back(S0);
         while(1)
         {
-            S  =  S.getBestofNeighborhood(S,c,d,p /*CustomerLength, PickupLength*/);
+            S  =  S.getBestofNeighborhood(S, customers, depot ,pickups /*CustomerLength, PickupLength*/);
             if (S.getCost() == 0)
                 break;
             if (S.getCost() < CBest){

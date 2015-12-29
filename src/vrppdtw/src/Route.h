@@ -59,14 +59,14 @@ class Route {
          }
      State append(
              /*Customer *c,*/
-             Pickup p,
+             const Pickup &p,
             /* Depot d,  int CustomerLength, int PickupLength,*/
              State S);
-     void update(std::vector<Customer> &c, Depot &d);
+     void update(const std::vector<Customer> &c, const Depot &d);
      double cost() const;
-     int HillClimbing(std::vector<Customer> &c, Depot &d
+     int HillClimbing(const std::vector<Customer> &c, const Depot &d
              /*,Pickup p*/);
-     int insertOrder(std::vector<Customer> &c, Depot &d
+     int insertOrder(const std::vector<Customer> &c, const Depot &d
              /*,Pickup p*/);
      void remove(State S);
      // void print();
@@ -143,7 +143,7 @@ Route::RemoveOrder(const Pickup &p){
 State
 Route::append(
         /*Customer *c,*/
-        Pickup p,
+        const Pickup &p,
         /* Depot d, int CustomerLength, int PickupLength,*/
         State S){
 
@@ -187,7 +187,7 @@ Route::distance(double x1, double y1, double x2, double y2) const {
 }
 
 void
-Route::update(std::vector<Customer> &c, Depot &d) {
+Route::update(const std::vector<Customer> &c, const Depot &d) {
     dis = 0, twv=0, cv=0;
     int load = 0;
     for (int i = -1; i  <  (int)path.size(); i++)
@@ -256,7 +256,7 @@ Route::cost() const {
 }
 
 int
-Route::insertOrder(std::vector<Customer> &c, Depot &d
+Route::insertOrder(const std::vector<Customer> &c, const Depot &d
         /*, Pickup p*/) {
     // double cost1 = 0,cost2=0;
     twv = 0, cv=0, dis=0;
@@ -323,7 +323,7 @@ Route::insertOrder(std::vector<Customer> &c, Depot &d
 #endif
 }
 
-int Route::HillClimbing(std::vector<Customer> &c, Depot &d
+int Route::HillClimbing(const std::vector<Customer> &c, const Depot &d
         /*, Pickup p*/)
 {
     double cost1 = 0,cost2=0;
