@@ -205,6 +205,9 @@ public:
               out != out_end; ++out) {
               count++;
             }
+            int64_t id;
+            get_vertex_id(*vi,id);
+           //cout <<  id << "  " << count << endl; 
             graph[(*vi)].degree=count;
             degree_to_V_map[count].push_back(*vi);
         }
@@ -232,6 +235,13 @@ public:
         }
         cout << endl;
       }
+    }
+
+    void get_degree(int64_t vid,int deg)
+    {
+      V v;
+      get_vertex_descriptor(vid,v);
+      deg=graph[v].degree;
     }
 
     void remove_edge(int64_t p_from, int64_t p_to) {
