@@ -81,15 +81,15 @@ do_pgr_withPoints(
         std::vector< Point_on_edge_t >
             points(points_p, points_p + total_points);
 
+        /*
+         * This test is easier in C++
+         */
         int errcode = check_points(points, log);
         if (errcode) {
             log << "Point(s) with same pid but different edge/fraction/side combination found";
             *err_msg = strdup(log.str().c_str());
             return errcode;
         }
-
-
-
 
         std::vector< pgr_edge_t >
             edges_to_modify(edges_of_points, edges_of_points + total_edges_of_points);

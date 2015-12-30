@@ -230,7 +230,7 @@ static int compute_shortest_path(
 
     PGR_DBG("*length_results_count  = %i\n", *length_results_struct);
     PGR_DBG("ret = %i\n", ret);
-#if def DEBUG
+#ifdef DEBUG
     int vb;
     for (vb=1; vb < *length_results_struct; vb++) {
         PGR_DBG("results[%d].seq=%d  ", vb, (*results)[vb].seq);

@@ -61,8 +61,7 @@ void compute(char* sql, int64_t start_vertex,
   pgr_edge_t *edges = NULL;
   int64_t total_tuples = 0;
 
-  char *err_msg = (char *)"";
-  int ret = -1;
+  char *err_msg = NULL;
 
   if (start_vertex == end_vertex) {
     (*path_count) = 0;
@@ -78,7 +77,7 @@ void compute(char* sql, int64_t start_vertex,
   PGR_DBG("Calling do_pgr_ksp\n");
   PGR_DBG("heap_paths = %i\n", heap_paths);
 
-  ret = do_pgr_ksp(edges, total_tuples,
+  int errcode = do_pgr_ksp(edges, total_tuples,
             start_vertex, end_vertex,
             k, directed, heap_paths,
             ksp_path, path_count, &err_msg);
@@ -88,14 +87,13 @@ void compute(char* sql, int64_t start_vertex,
   PGR_DBG("Returned message = %s\n", err_msg);
 
 
-
-  if (ret < 0) {
-      ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
-      errmsg("Error computing paths: %s \n", err_msg)));
-    }
-
+  if (err_msg) free(err_msg);
   pfree(edges);
   pgr_SPI_finish();
+
+  if (errcode) {
+      pgr_send_error(errcode);
+  }
 }
 
 
@@ -105,108 +103,108 @@ Datum
 PGDLLEXPORT Datum
 #endif  // _MSC_VER
 kshortest_path(PG_FUNCTION_ARGS) {
-  FuncCallContext     *funcctx;
-  size_t               call_cntr;
-  size_t               max_calls;
-  TupleDesc            tuple_desc;
-  General_path_element_t      *path;
-//  void * toDel;
+    FuncCallContext     *funcctx;
+    size_t               call_cntr;
+    size_t               max_calls;
+    TupleDesc            tuple_desc;
+    General_path_element_t      *path;
+    //  void * toDel;
 
-  /* stuff done only on the first call of the function */
-  if (SRF_IS_FIRSTCALL()) {
-      MemoryContext   oldcontext;
-      size_t path_count = 0;
-      path = NULL;
+    /* stuff done only on the first call of the function */
+    if (SRF_IS_FIRSTCALL()) {
+        MemoryContext   oldcontext;
+        size_t path_count = 0;
+        path = NULL;
 
-      /* create a function context for cross-call persistence */
-      funcctx = SRF_FIRSTCALL_INIT();
+        /* create a function context for cross-call persistence */
+        funcctx = SRF_FIRSTCALL_INIT();
 
-      /* switch to memory context appropriate for multiple function calls */
-      oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
+        /* switch to memory context appropriate for multiple function calls */
+        oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-      // CREATE OR REPLACE FUNCTION _pgr_ksp(sql text, start_vid bigint, end_vid bigint, k integer, directed boolean, heap_paths boolean...
-      compute(
-              pgr_text2char(PG_GETARG_TEXT_P(0)), /* SQL  */
-              PG_GETARG_INT64(1),   /* start_vid */
-              PG_GETARG_INT64(2),   /* end_vid */
-              PG_GETARG_INT32(3),   /* k */
-              PG_GETARG_BOOL(4),    /* directed */
-              PG_GETARG_BOOL(5),    /* heap_paths */
-              &path,
-              &path_count);
-//      toDel = path;
+        // CREATE OR REPLACE FUNCTION _pgr_ksp(sql text, start_vid bigint, end_vid bigint, k integer, directed boolean, heap_paths boolean...
+        compute(
+                pgr_text2char(PG_GETARG_TEXT_P(0)), /* SQL  */
+                PG_GETARG_INT64(1),   /* start_vid */
+                PG_GETARG_INT64(2),   /* end_vid */
+                PG_GETARG_INT32(3),   /* k */
+                PG_GETARG_BOOL(4),    /* directed */
+                PG_GETARG_BOOL(5),    /* heap_paths */
+                &path,
+                &path_count);
+        //      toDel = path;
 
-      PGR_DBG("Total number of tuples to be returned %ld \n", path_count);
+        PGR_DBG("Total number of tuples to be returned %ld \n", path_count);
 
-      /* total number of tuples to be returned */
-      funcctx->max_calls = path_count;
-      funcctx->user_fctx = path;
+        /* total number of tuples to be returned */
+        funcctx->max_calls = path_count;
+        funcctx->user_fctx = path;
 
-      /* Build a tuple descriptor for our result type */
-      if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+        /* Build a tuple descriptor for our result type */
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
-                            "that cannot accept type record\n")));
+                         "that cannot accept type record\n")));
 
-     // funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("__pgr_2i3b2f"));
-      funcctx->tuple_desc = tuple_desc;
-      MemoryContextSwitchTo(oldcontext);
+        // funcctx->tuple_desc = BlessTupleDesc(RelationNameGetTupleDesc("__pgr_2i3b2f"));
+        funcctx->tuple_desc = tuple_desc;
+        MemoryContextSwitchTo(oldcontext);
     }
 
 
-  /* stuff done on every call of the function */
-  funcctx = SRF_PERCALL_SETUP();
+    /* stuff done on every call of the function */
+    funcctx = SRF_PERCALL_SETUP();
 
-  call_cntr = funcctx->call_cntr;
-  max_calls = funcctx->max_calls;
-  tuple_desc = funcctx->tuple_desc;
-  path = (General_path_element_t*) funcctx->user_fctx;
+    call_cntr = funcctx->call_cntr;
+    max_calls = funcctx->max_calls;
+    tuple_desc = funcctx->tuple_desc;
+    path = (General_path_element_t*) funcctx->user_fctx;
 
-  if (call_cntr < max_calls) {   /* do when there is more left to send */
-      PGR_DBG("returning %ld \n", call_cntr);
-      HeapTuple    tuple;
-      Datum        result;
-     /* //Datum values[4];
-      //bool nulls[4]; */
+    if (call_cntr < max_calls) {   /* do when there is more left to send */
+        PGR_DBG("returning %ld \n", call_cntr);
+        HeapTuple    tuple;
+        Datum        result;
+        /* //Datum values[4];
+        //bool nulls[4]; */
 
-      Datum *values;
-      bool* nulls;
+        Datum *values;
+        bool* nulls;
 
-      values = (Datum *)palloc(7 * sizeof(Datum));
-      nulls = (bool *) palloc(7 * sizeof(bool));
+        values = (Datum *)palloc(7 * sizeof(Datum));
+        nulls = (bool *) palloc(7 * sizeof(bool));
 
-      nulls[0] = false;
-      nulls[1] = false;
-      nulls[2] = false;
-      nulls[3] = false;
-      nulls[4] = false;
-      nulls[5] = false;
-      nulls[6] = false;
+        nulls[0] = false;
+        nulls[1] = false;
+        nulls[2] = false;
+        nulls[3] = false;
+        nulls[4] = false;
+        nulls[5] = false;
+        nulls[6] = false;
 
-      values[0] = Int32GetDatum(call_cntr + 1);
-      values[1] = Int32GetDatum(path[call_cntr].start_id + 1);
-      values[2] = Int32GetDatum(path[call_cntr].seq);
-      values[3] = Int64GetDatum(path[call_cntr].node);
-      values[4] = Int64GetDatum(path[call_cntr].edge);
-      values[5] = Float8GetDatum(path[call_cntr].cost);
-      values[6] = Float8GetDatum(path[call_cntr].agg_cost);
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int32GetDatum(path[call_cntr].start_id + 1);
+        values[2] = Int32GetDatum(path[call_cntr].seq);
+        values[3] = Int64GetDatum(path[call_cntr].node);
+        values[4] = Int64GetDatum(path[call_cntr].edge);
+        values[5] = Float8GetDatum(path[call_cntr].cost);
+        values[6] = Float8GetDatum(path[call_cntr].agg_cost);
 
-      tuple = heap_form_tuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
 
-      /* make the tuple into a datum */
-      result = HeapTupleGetDatum(tuple);
+        /* make the tuple into a datum */
+        result = HeapTupleGetDatum(tuple);
 
-      /* clean up (this is not really necessary) */
-      pfree(values);
-      pfree(nulls);
+        /* clean up (this is not really necessary) */
+        pfree(values);
+        pfree(nulls);
 
-      SRF_RETURN_NEXT(funcctx, result);
-  } else {   /* do when there is no more left */
-    if (path == (General_path_element_t *) NULL) free(path);
-    SRF_RETURN_DONE(funcctx);
-  }
+        SRF_RETURN_NEXT(funcctx, result);
+    } else {   /* do when there is no more left */
+        if (path == (General_path_element_t *) NULL) free(path);
+        SRF_RETURN_DONE(funcctx);
+    }
 }
 
 

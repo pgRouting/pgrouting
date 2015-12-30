@@ -28,8 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
-
-
 #include <deque>
 #include <sstream>
 
@@ -37,10 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 
 #include "./ksp_driver.h"
-
 #include "../../common/src/memory_func.hpp"
-
-
 #include "./pgr_ksp.hpp"
 
 
@@ -57,13 +52,14 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
         const int initial_size = total_tuples;
 
         std::deque< Path > paths;
+#if 0
         typedef boost::adjacency_list < boost::vecS, boost::vecS,
             boost::undirectedS,
             boost_vertex_t, boost_edge_t > UndirectedGraph;
         typedef boost::adjacency_list < boost::vecS, boost::vecS,
             boost::bidirectionalS,
             boost_vertex_t, boost_edge_t > DirectedGraph;
-
+#endif
 
         if (directedFlag) {
             Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
@@ -99,21 +95,17 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
             ++route_id;
         }
 
-        log << "NOTICE Sequence: " << sequence << "\n";
-        if (count != sequence) {
-            log << "ERROR: Internal count and real count are different. \n"
-                << "ERROR: This should not happen: Please report in GitHub:"
-                << " pgrouting issues.";
-            *err_msg = strdup(log.str().c_str());
-            return -1;
-        }
+        if (count != sequence) {                                
+            *err_msg = NULL;
+            return 2;
+        }                                                                                                       
+        *path_count = count;
 
 #if 1
         *err_msg = strdup("OK");
 #else
         *err_msg = strdup(log.str().c_str());
 #endif
-        *path_count = count;
         return EXIT_SUCCESS;
     } catch ( ... ) {
         *err_msg = strdup("Caught unknown expection!");
