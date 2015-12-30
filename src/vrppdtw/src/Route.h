@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <algorithm>
+#include "pdp.hpp"
 
 class Route  {
  public:
@@ -45,18 +46,13 @@ class Route  {
              order.clear();
          }
      State append(
-             /*Customer *c, */
              const Pickup &p,
-             /* Depot d,  int CustomerLength, int PickupLength,*/
              State S);
      void update(const std::vector<Customer> &c, const Depot &d);
      double cost() const;
-     int HillClimbing(const std::vector<Customer> &c, const Depot &d
-             /*, Pickup p*/);
-     int insertOrder(const std::vector<Customer> &c, const Depot &d
-             /*, Pickup p*/);
-     void remove(State S);
-     //  void print();
+     int HillClimbing(const std::vector<Customer> &c, const Depot &d);
+     int insertOrder(const std::vector<Customer> &c, const Depot &d);
+     void remove(const State &S);
      int RemoveOrder(const Pickup &p);
      double distance(double x1, double y1, double x2, double y2) const;
 };
@@ -114,12 +110,6 @@ Route::append(
     return S;
 }
 
-double
-Route::distance(double x1, double y1, double x2, double y2) const  {
-    double delta_x = x1 - x2;
-    double delta_y = y1 - y2;
-    return sqrt(delta_x * delta_x + delta_y * delta_y);
-}
 
 void
 Route::update(const std::vector<Customer> &c, const Depot &d)  {
@@ -128,7 +118,7 @@ Route::update(const std::vector<Customer> &c, const Depot &d)  {
     for (int i = -1; i < static_cast<int>(path.size()); i++) {
         // Depot to first Customer
         if (i == -1) {
-            dis += distance(d.x, d.y, c[path[i+1]].x, c[path[i+1]].y);
+            dis += CalculateDistance(c[path[i+1]], d);
             if (dis < c[path[i+1]].Etime) {
                 dis = c[path[i+1]].Etime;
             } else if (dis > c[path[i+1]].Ltime) {
@@ -139,14 +129,14 @@ Route::update(const std::vector<Customer> &c, const Depot &d)  {
         }
         // Last cusotmer to Depot
         if (i ==  static_cast<int>(path.size() - 1))  {
-            dis += distance(d.x, d.y, c[path[i]].x, c[path[i]].y);
+            dis += CalculateDistance(c[path[i]], d);
             if (dis > d.Ltime) {
                 twv += 1;
             }
         }
         // Middle Customers
         if (i >= 0 && i < static_cast<int>(path.size() - 1)) {
-            dis += distance(c[path[i]].x, c[path[i]].y, c[path[i+1]].x, c[path[i+1]].y);
+            dis += CalculateDistance(c[path[i]], c[path[i + 1]]);
             if (dis < c[path[i+1]].Etime) {
                 dis = c[path[i+1]].Etime;
             } else if (dis > c[path[i+1]].Ltime) {
@@ -236,8 +226,7 @@ int Route::HillClimbing(const std::vector<Customer> &c, const Depot &d
     return twv > 0 || cv > 0 || dis > d.Ltime;
 }
 
-
-void Route::remove(State S)  {
+void Route::remove(const State &S)  {
     twv = S.twv;
     cv = S.cv;
     dis = S.dis;

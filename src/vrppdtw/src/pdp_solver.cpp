@@ -54,6 +54,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 
 #include "./pdp.h"
+#include "./pdp.hpp"
 #include "./Solution.h"
 #include "./Route.h"
 
@@ -92,7 +93,7 @@ int Solver(Customer *c1,
 
     // Customer Data
     for (auto c : customers) {
-        c.Ddist = CalculateDistance(c.x, c.y , depot.x, depot.y);
+        c.Ddist = CalculateDistance(c, depot);
         if (c.Pindex == 0) {
             c.P = 1;
             c.D = 0;
@@ -213,21 +214,21 @@ int Solver(Customer *c1,
         // Depot to first node
         if (cost[i-1] == depot.id && cost[i] != depot.id) {
             temp_dis = 0;
-            temp_dis += CalculateDistance(customers[cost[i]].x, customers[cost[i]].y, depot.x, depot.y);
+            temp_dis += CalculateDistance(customers[cost[i]], depot);
             if (temp_dis < customers[cost[i]].Etime) {
                 temp_dis = customers[cost[i]].Etime;
             }
             cost_nodes[i] = temp_dis;
         } else if (cost[i-1] != depot.id && cost[i] != depot.id) {
             // Between nodes
-            temp_dis += CalculateDistance(customers[cost[i]].x, customers[cost[i]].y, customers[cost[i-1]].x, customers[cost[i-1]].y);
+            temp_dis += CalculateDistance(customers[cost[i]], customers[cost[i - 1]]);
             if (temp_dis < customers[cost[i]].Etime) {
                 temp_dis = customers[cost[i]].Etime;
             }
             temp_dis += customers[cost[i-1]].Stime;
             cost_nodes[i] = temp_dis;
         } else if (cost[i] ==depot.id && cost[i-1] != depot.id) {
-            temp_dis += CalculateDistance(customers[cost[i-1]].x, customers[cost[i-1]].y, depot.x, depot.y);
+            temp_dis += CalculateDistance(customers[cost[i-1]], depot);
             cost_nodes[i] = temp_dis;
             temp_dis = 0;
         } else if (cost[i] == depot.id && cost[i-1] == depot.id) {
