@@ -128,6 +128,15 @@ Routing functions
   - :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
   - :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
 
+  - :ref:`pgr_withPoints<withPoints>` - withPoints family functions
+
+    - :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
+    - :ref:`pgr_withPointsCost` - Costs of the shortest paths.
+    - :ref:`pgr_withPointsVia` - Make a route via points.
+    - :ref:`pgr_withPointsKSP` - K shortest paths.
+    - :ref:`pgr_withPointsDD` - Driving distance (departing).
+
+
 .. toctree::
 	:hidden:
 
@@ -213,8 +222,6 @@ About this proposal:
 
     ../src/allpairs/doc/johnson.rst
     ../src/allpairs/doc/floydWarshall.rst
-    ../src/dijkstraViaVertex/doc/dijkstraViaVertex
-    ../src/withPoints/doc/withPointsVia
 
 *******************************************************************************
 Experimental functions: Proposed by Steve Woodbridge
