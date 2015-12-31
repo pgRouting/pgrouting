@@ -128,19 +128,22 @@ Routing functions
   - :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
   - :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
 
+
+
   - :ref:`pgr_withPoints<withPoints>` - withPoints family functions
 
     - :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
     - :ref:`pgr_withPointsCost` - Costs of the shortest paths.
     - :ref:`pgr_withPointsVia` - Make a route via points.
-    - :ref:`pgr_withPointsKSP` - K shortest paths.
-    - :ref:`pgr_withPointsDD` - Driving distance (departing).
+    - :ref:`pgr_withPointsKSP<pgr_withPointsKSP>` - K shortest paths.
+    - :ref:`pgr_withPointsDD<pgr_withPointsDD>` - Driving distance (departing).
 
 
 .. toctree::
 	:hidden:
 
 	../src/index
+
 
 *******************************************************************************
 Deprecated Routing Functions

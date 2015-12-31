@@ -29,5 +29,5 @@ When points are given as input:
         ./pgr_withPoints
         ./pgr_withPointsCost
         ./pgr_withPointsVia
-        ./pgr_withPointsKSP
-        ./pgr_withPointsDD
+        ./../../ksp/doc/pgr_withPoints_ksp
+        ./../../driving_distance/doc/pgr_withPoints_dd
