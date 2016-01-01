@@ -20,6 +20,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-select * from pgr_gsoc_vrppdtw(
+select seq, route_id, node_id, round(cost::numeric, 0) from pgr_gsoc_vrppdtw(
     'select * from customer order by id'::text, 25,200
-);
+)

@@ -1,7 +1,8 @@
 /*PGR-GNU*****************************************************************
+File: edges_input.h
 
-Copyright (c) 2014 Manikata Kondeti
-mani.iiit123@gmail.com
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+vicky_vergara@hotmail.com
 
 ------
 
@@ -21,23 +22,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
------------------------------------------------------------------------
--- Core function for vrp with sigle depot computation
--- See README for description
------------------------------------------------------------------------
---
---
-create or replace function pgr_gsoc_vrppdtw(
-    sql text,
-    vehicle_num INTEGER,
-    capacity FLOAT,
-    OUT seq integer,
-    OUT route_id BIGINT,
-    OUT node_id BIGINT,
-    OUT cost FLOAT
-)
-returns setof record as
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'vrppdtw'
-LANGUAGE c VOLATILE STRICT;
+#pragma once
+
+#include "./pgr_types.h"
+#include "./pdp.h"
 
 
+/*!
+  int64_t id;
+  double x;
+  double y;
+  double demand;
+  double Etime;
+  double Ltime;
+  double Stime;
+  int64_t Pindex;
+  int64_t Dindex;
+  double Ddist;
+*/
+void pgr_get_customers(
+        char *sql,
+        Customer **customers,
+        size_t *total_customers);

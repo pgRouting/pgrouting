@@ -31,26 +31,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // For C and C++ inclusion
 
 typedef struct {
-        int id;
-        int x;
-        int y;
-        int demand;
-        int Etime;
-        int Ltime;
-        int Stime;
-        int Pindex;
-        int Dindex;
+        int64_t id;
+        double x;
+        double y;
+        double demand;
+        double Etime;
+        double Ltime;
+        double Stime;
+        int64_t Pindex;
+        int64_t Dindex;
         double Ddist;
-        int P;
-        int D;
 } Customer;
 
 typedef struct  {
-         int seq;
-         int rid;
-         int nid;
-         int nseq;
-         int cost;
+         int64_t seq;
+         int64_t rid;
+         int64_t nid;
+         double cost;
 } path_element;
 
 
@@ -58,13 +55,13 @@ typedef struct  {
 #ifdef __cplusplus
 extern "C"
 #endif
-int Solver(Customer *c,
-        int total_tuples,
-        int vehicle_count,
-        int capacity ,
+int64_t Solver(Customer *c,
+        size_t total_tuples,
+        int64_t vehicle_count,
+        int64_t capacity ,
         char **msg,
         path_element **results,
-        int *length_results);
+        size_t *length_results);
 
 #ifdef __cplusplus
 extern "C"

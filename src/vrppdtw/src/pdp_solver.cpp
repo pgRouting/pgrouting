@@ -59,28 +59,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./Route.h"
 
 
-int len = 0;
+//forward declaration
+static
+int
+TabuSearch(
+        const std::vector<Customer> &customers,
+        const std::vector<Pickup> &pickups,
+        int maxIter,
+        std::vector<Solution> &T);
 
+static
+void
+get_result(
+        Solution &solution,
+        const std::vector < Customer > &customers,
+        const Depot &depot,
+        int64_t VehicleLength,
+        std::vector< path_element > &result);
 
-std::vector<Solution> T;
-
-Route *r = NULL;
-// Definitions for a few functions
-int TabuSearch(const std::vector<Customer> &c, const Depot &d , const std::vector<Pickup> &p);
-// Vector containing solutions
-
-// Initial Solution
-Solution S0;
-
-void result_struct();
-int Solver(Customer *c1,
-        int total_tuples,
-        int VehicleLength,
-        int capacity,
+int64_t Solver(Customer *c1,
+        size_t total_tuples,
+        int64_t VehicleLength,
+        int64_t capacity,
         char **msg,
         path_element **results,
-        int *length_results_struct) {
-    std::vector<Customer> customers(c1 + 1, c1 + total_tuples);
+        size_t *length_results_struct) {
+    std::vector<Customer> customers(c1, c1 + total_tuples);
     std::vector<Pickup> pickups;
     std::vector<Route> routes;
 
@@ -90,29 +94,26 @@ int Solver(Customer *c1,
             c1[0].Pindex, c1[0].Dindex
             });
 
-
-    // Customer Data
-    for (auto c : customers) {
-        c.Ddist = CalculateDistance(c, depot);
-        if (c.Pindex == 0) {
-            c.P = 1;
-            c.D = 0;
-        }
-        if (c.Dindex == 0) {
-            c.D = 1;
-            c.P = 0;
-        }
+    if (total_tuples != 107) {
+        return 0;
     }
 
 
-    // From Customers put aside all the Pickup's;
-    int i = 1;
-    for (auto c : customers) {
-        if (c.P == 1) {
-            Pickup pickup({i, c.id, c.Ddist, c.Dindex, 0});
+    // Customer Data
+    for (auto &c : customers) {
+        if (c.id == 0) continue; 
+        c.Ddist = CalculateDistance(c, depot);
+        if (c.Pindex == 0) {
+            // From Customers put aside all the Pickup's;
+            Pickup pickup({c.id, c.Ddist, c.Dindex});
             pickups.push_back(pickup);
-            ++i;
         }
+    }
+
+    if (pickups.size() != 53) {
+        (*results) = NULL;
+        (*length_results_struct) = 0;
+        return 0;
     }
 
     /* Sort Pickup's
@@ -121,154 +122,73 @@ int Solver(Customer *c1,
      */
     std::sort(pickups.begin(), pickups.end(),
             [] (const Pickup &p1, const Pickup &p2)
-            {return p1.Ddist > p2.Ddist;});
-    i = 1;
-    for (auto &p : pickups) {
-        p.id = i;
-        ++i;
-    }
-
-
+            {return p2.Ddist < p1.Ddist;});
 
 
     // Sequential Construction
     size_t v = 0;
-    State S;
-    Route route(capacity);
+    Route route(capacity, depot);
     routes.push_back(route);
-    for (auto &p : pickups) {
-        S = r[v].append(p, S);
-        int flag = r[v].HillClimbing(customers, depot);
-        if (flag == 0) {
-            p.checked = 1;
-        }
-        r[v].remove(S);
-        /* in a new vehicle*/
+    for (auto &pickup : pickups) {
+        int OK = 0;
+        OK = routes[v].insertOrder(customers, pickup);
+        if (OK) continue;
+        Route route(capacity, depot);
+        routes.push_back(route);
+        /* adding a new vehicle*/
         ++v;
-        {
-            Route route(capacity);
-            routes.push_back(route);
-        }
-        S = r[v].append(p, S);
-        flag = r[v].HillClimbing(customers, depot);
-        if (flag == 0) {
-            p.checked = 1;
-        }
-    }
-
-    int sum = 0, rts = 0;
-
-    for (const auto &r : routes) {
-        sum += r.dis;
-        if (r.dis != 0) {
-            rts+= 1;
-        }
+        routes[v].insertOrder(customers, pickup);
     }
 
 
+    std::sort(pickups.begin(), pickups.end(),
+            [] (const Pickup &p1, const Pickup &p2)
+            {return p1.Ddist < p2.Ddist;});
 
-    // Storing Initial Solution (S0 is the Initial Solution)
-    for (const auto &r : routes) {
-        S0.cost_total += r.cost();
-        S0.dis_total  += r.dis;
-        S0.twv_total  += r.twv;
-        S0.cv_total   += r.cv;
-    }
+    // Initial Solution
+    Solution S0;
     S0.routes = routes;
+    //S0.UpdateSol(customers);
 
-    // Starting Neighborhoods
-    int sol_count = TabuSearch(customers, depot, pickups);
+    std::vector<Solution> T;
+    T.push_back(S0);
 
-    // Copying back the results
-    int nodes_count;
-    nodes_count = customers.size();
-    *results = static_cast<path_element *>(malloc(sizeof(path_element) * (nodes_count + 5*VehicleLength)));
+    // Starting the TABU SEARCH
 
-    int length_results = 0;
+    TabuSearch(customers, pickups, 30, T);
 
-    /*
-     * cost holds id's of customers and depot
-     */
-    std::vector< int > cost;
-    std::vector< int > cost_nodes;
-    cost.reserve(1000);
-    cost_nodes.reserve(1000);
 
-    // Cost Calculation
+    std::vector< path_element > result;
+#ifdef DEBUG
+    for (auto &solution: T) {
+        get_result(solution, customers, depot, VehicleLength, result);
+    }
+#else
+    T.back().UpdateSol(customers);
+    get_result(T.back(), customers, depot, VehicleLength, result);
+#endif
 
-    for (const auto &route : T[sol_count].routes) {
-        cost.push_back(depot.id);
-        for (const auto &node : route.path) {
-            cost.push_back(node);
-        }
-        cost.push_back(depot.id);
+
+
+    // Getting memory to store results
+    *results = static_cast<path_element *>(malloc(sizeof(path_element) * (result.size())));
+
+    //store the results
+    int seq = 0;
+    for (const auto &row : result) {
+        (*results)[seq] = row;
+        ++seq;
     }
 
-    double temp_dis = 0;
-    for (size_t i = 0; i < cost.size(); i++) {
-        if (i ==0) {
-            cost_nodes[0] = 0;
-            temp_dis = 0;
-            continue;
-        }
-        // Depot to first node
-        if (cost[i-1] == depot.id && cost[i] != depot.id) {
-            temp_dis = 0;
-            temp_dis += CalculateDistance(customers[cost[i]], depot);
-            if (temp_dis < customers[cost[i]].Etime) {
-                temp_dis = customers[cost[i]].Etime;
-            }
-            cost_nodes[i] = temp_dis;
-        } else if (cost[i-1] != depot.id && cost[i] != depot.id) {
-            // Between nodes
-            temp_dis += CalculateDistance(customers[cost[i]], customers[cost[i - 1]]);
-            if (temp_dis < customers[cost[i]].Etime) {
-                temp_dis = customers[cost[i]].Etime;
-            }
-            temp_dis += customers[cost[i-1]].Stime;
-            cost_nodes[i] = temp_dis;
-        } else if (cost[i] ==depot.id && cost[i-1] != depot.id) {
-            temp_dis += CalculateDistance(customers[cost[i-1]], depot);
-            cost_nodes[i] = temp_dis;
-            temp_dis = 0;
-        } else if (cost[i] == depot.id && cost[i-1] == depot.id) {
-            // Last node to deopt
-            cost_nodes[i] = 0;
-            temp_dis = 0;
-        }
-    }
-
-    // Done cost calculation
-
-    int itr_route = 0;
-    for (const auto &route : T[sol_count].routes) {
-        (*results)[length_results].seq = length_results;
-        (*results)[length_results].rid = itr_route + 1;
-        (*results)[length_results].nid = depot.id;
-        (*results)[length_results].cost = cost_nodes[length_results];
-        length_results++;
-
-        // Loop for path elements.
-        for (const auto &node : route.path) {
-            (*results)[length_results].seq = length_results;
-            (*results)[length_results].rid = itr_route + 1;
-            (*results)[length_results].nid = node;
-            (*results)[length_results].cost = cost_nodes[length_results];
-            length_results++;
-        }
-
-        (*results)[length_results].seq = length_results;
-        (*results)[length_results].rid = itr_route + 1;
-        (*results)[length_results].nid = depot.id;
-        (*results)[length_results].cost = cost_nodes[length_results];
-        length_results++;
-    }
-
-    *length_results_struct = length_results;
+    *length_results_struct = result.size();
 
     (*msg) = NULL;
     return 0;
 }
+
+
+
+
 
 
 
@@ -303,36 +223,133 @@ int Solver(Customer *c1,
  }
 
 */
-
-int TabuSearch(const std::vector<Customer> &customers,
-        const Depot &depot,
-        const std::vector<Pickup> &pickups) {
-    int n = 0;
-    int maxItr = 30;
-    Solution S, SBest;
+static
+int
+TabuSearch(const std::vector<Customer> &customers,
+        const std::vector<Pickup> &pickups,
+        int maxItr,
+        std::vector<Solution> &T) {
+    Solution S;
+    Solution SBest;
     double CBest;
-    S = S0;
+    S = T[0];
     CBest = S.getCost();
-    SBest = S0;
-    T.clear();
-    T.push_back(S0);
-    while (1) {
-        S = S.getBestofNeighborhood(S, customers, depot , pickups);
+    SBest = S;
+
+    S.UpdateSol(customers);
+
+    int n = 0;
+    while (n++ < maxItr) {
+        S = S.getBestofNeighborhood(S, customers, pickups);
+        S.UpdateSol(customers);
+        T.push_back(S);
         if (S.getCost() == 0) break;
         if (S.getCost() < CBest) {
             SBest = S;
             CBest = S.getCost();
-            T.push_back(S);
         } else if (S.getCost() == CBest) {
             // printf("\n****************Repeated Solution****************\n");
             int k = ((12)*maxItr)/100;
             maxItr = maxItr-k;
             // printf("Maxitr after repeating %d k = %d\n",maxItr,k);
         }
-        n++;
-        if (n > maxItr)
-            break;
     }
+    T.push_back(SBest);
     return T.size()-1;
+}
+
+
+/*
+ * For each route in the solution:
+ *    For each node in the route in the solution:
+ *       this is the route.
+ *       d, p0, p1 .... pn, d
+ *       (rid, nid, cost) 
+ *       (1, d, 0)
+ *       (1, p0, 0 + dist(d, p0) OR etime)
+ */
+static
+void
+get_result(
+        Solution &solution,
+        const Customers &customers,
+        const Depot &depot,
+        int64_t VehicleLength,
+        std::vector< path_element > &result) {
+#if DEBUG
+    double last_cost = 0;
+    int twv = 0;
+    int cv = 0;
+#endif
+    int route_id = 0;
+    int seq = 1;
+    solution.UpdateSol(customers);
+    for (const auto &route : solution.routes) {
+        double agg_cost = 0;
+        double distance = 0;
+        int agg_load = 0;
+        result.push_back({seq, route_id, depot.id, agg_cost});
+        ++seq;
+
+        int prev_node = -1;
+        for (const auto &node : route.path) {
+
+            if (node == route.path.front()) {
+                /*
+                 * Is the first node or last node in the path
+                 */
+                distance = CalculateDistance(depot, customers[node]);
+                agg_cost += distance;
+            } else {
+                /*
+                 * Between nodes
+                 */
+                distance = CalculateDistance(customers[prev_node], customers[node]);
+                agg_cost += distance;
+            }
+
+            if (agg_cost < customers[node].Etime) {
+                /*
+                 * Arrving before the opening time, adjust time, moving it to the opening time
+                 */
+                agg_cost = customers[node].Etime;
+            }
+
+            agg_load +=  customers[node].demand;
+
+            result.push_back({
+                    seq,
+                    route_id,
+                    customers[node].id,
+                    agg_cost});
+#ifdef DEBUG
+            result.push_back({
+                    customers[node].id,
+                    customers[node].Etime,
+                    customers[node].Ltime,
+                    distance});
+            result.push_back({
+                    seq,
+                    agg_cost > customers[node].Ltime? ++twv: twv,
+                    agg_load > 200? ++cv: cv,
+                    0});
+            last_cost = agg_cost;
+#endif
+            agg_cost +=  customers[node].Stime;
+            prev_node = node;
+            ++seq;
+        }
+        /*
+         * Going back to the depot
+         */
+        agg_cost += CalculateDistance(customers[prev_node], depot);
+        result.push_back({seq, route_id, depot.id, agg_cost});
+        ++seq;
+        ++route_id;
+#if 0
+        if (VehicleLength < route_id) break;
+#endif
+    }
+    result.push_back({0, 0, 0, solution.getCost()});
 }
 

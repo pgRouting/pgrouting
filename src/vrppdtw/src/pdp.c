@@ -38,188 +38,30 @@ Datum vrppdtw(PG_FUNCTION_ARGS);
 // #define DEBUG 1
 #include "../../common/src/debug_macro.h"
 #include "../../common/src/postgres_connection.h"
+#include "./customers_input.h"
 
 
-// The number of tuples to fetch from the SPI cursor at each iteration
-#define TUPLIMIT 1000
 
 
 static
-int
-fetch_customer_columns(SPITupleTable *tuptable, Customer *c , int vehicle_count , int capacity) {
-    PGR_DBG("Customer Data", NULL);
-
-    c->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
-    PGR_DBG(" id done ", NULL);
-    c->x = SPI_fnumber(SPI_tuptable->tupdesc, "x");
-    PGR_DBG("x done", NULL);
-    c->y = SPI_fnumber(SPI_tuptable->tupdesc, "y");
-    PGR_DBG("y done", NULL);
-    c->demand = SPI_fnumber(SPI_tuptable->tupdesc, "demand");
-    PGR_DBG("demand done", NULL);
-    c->Etime = SPI_fnumber(SPI_tuptable->tupdesc, "etime");
-    PGR_DBG("etime done", NULL);
-    c->Ltime = SPI_fnumber(SPI_tuptable->tupdesc, "ltime");
-    PGR_DBG("ltime done", NULL);
-    c->Stime = SPI_fnumber(SPI_tuptable->tupdesc, "stime");
-    PGR_DBG("stime done", NULL);
-    c->Pindex = SPI_fnumber(SPI_tuptable->tupdesc, "pindex");
-    PGR_DBG("pindex done", NULL);
-    c->Dindex = SPI_fnumber(SPI_tuptable->tupdesc, "dindex");
-    PGR_DBG("dindex done", NULL);
-    if (c->id == SPI_ERROR_NOATTRIBUTE ||
-            c->x == SPI_ERROR_NOATTRIBUTE ||
-            c->y == SPI_ERROR_NOATTRIBUTE ||
-            c->demand == SPI_ERROR_NOATTRIBUTE ||
-            c->Ltime == SPI_ERROR_NOATTRIBUTE ||
-            c->Stime == SPI_ERROR_NOATTRIBUTE ||
-            c->Pindex == SPI_ERROR_NOATTRIBUTE ||
-            c->Dindex == SPI_ERROR_NOATTRIBUTE ||
-            c->Etime == SPI_ERROR_NOATTRIBUTE) {
-        elog(ERROR, "Error, query must return columns "
-                "'id', 'x','y','demand', 'Etime',  'Ltime', 'Stime', 'Pindex',  and 'Dindex'");
-        return -1;
-    }
-
-    PGR_DBG("Returned from here  ");
-    return 0;
-}
-
-
-static
-void fetch_customer(HeapTuple *tuple, TupleDesc *tupdesc, Customer *c_all, Customer *c_single) {
-    Datum binval;
-    bool isnull;
-    PGR_DBG("Hey baby in fetch_customer", NULL);
-
-    binval = SPI_getbinval(*tuple, *tupdesc, c_all->id, &isnull);
-    PGR_DBG("fetching first thing");
-    if (isnull) elog(ERROR, "id contains a null value");
-    c_single->id = DatumGetInt32(binval);
-    PGR_DBG("id =  %d", c_single->id);
-
-
-    PGR_DBG("fetching second  thing", NULL);
-    binval = SPI_getbinval(*tuple, *tupdesc, c_all->x, &isnull);
-    if (isnull)
-        elog(ERROR, "x contains a null value");
-    c_single->x = DatumGetInt32(binval);
-
-    binval = SPI_getbinval(*tuple, *tupdesc, c_all->y, &isnull);
-    if (isnull) elog(ERROR, "y contains a null value");
-    c_single->y = DatumGetInt32(binval);
-
-
-    binval = SPI_getbinval(*tuple, *tupdesc, c_all->demand, &isnull);
-    if (isnull) elog(ERROR, "demand contains a null value");
-    c_single->demand = DatumGetInt32(binval);
-
-
-    binval = SPI_getbinval(*tuple, *tupdesc, c_all->Etime, &isnull);
-    if (isnull) elog(ERROR, "Etime contains a null value");
-    c_single->Etime = DatumGetInt32(binval);
-
-
-    binval = SPI_getbinval(*tuple, *tupdesc, c_all->Ltime, &isnull);
-    if (isnull) elog(ERROR, "Ltime contains a null value");
-    c_single->Ltime = DatumGetInt32(binval);
-
-
-    binval = SPI_getbinval(*tuple, *tupdesc, c_all->Stime, &isnull);
-    if (isnull) elog(ERROR, "Stime contains a null value");
-    c_single->Stime = DatumGetInt32(binval);
-
-
-    binval = SPI_getbinval(*tuple, *tupdesc, c_all->Pindex, &isnull);
-    if (isnull) elog(ERROR, "pindex contains a null value");
-    c_single->Pindex = DatumGetInt32(binval);
-
-    binval = SPI_getbinval(*tuple, *tupdesc, c_all->Dindex, &isnull);
-    if (isnull) elog(ERROR, "dindex contains a null value");
-    c_single->Dindex = DatumGetInt32(binval);
-
-    return;
-}
-
-
-
-
-// Note:: edge_colums = total , //ly customer_t = total ....
-
-static int compute_shortest_path(
+int compute_shortest_path(
         char* sql,
-        int  vehicle_count,
-        int capacity ,
+        int64_t vehicle_count,
+        double capacity,
         path_element **results,
-        int *length_results_struct) {
-    void *SPIplan;
-    Portal SPIportal;
-    bool moredata = TRUE;
-    int ntuples;
-    Customer *customer_single = NULL;
-    int total_tuples = 0;
-    Customer customer_all = {-1, -1, -1, -1 , -1, -1, -1 , -1 , -1, -1, -1, 0};
-
-    char *err_msg;
-    int ret = -1;
-    // register int z;
-
+        size_t *length_results_struct) {
     PGR_DBG("start shortest_path\n");
 
     pgr_SPI_connect();
-    SPIplan = pgr_SPI_prepare(sql);
-    SPIportal = pgr_SPI_cursor_open(SPIplan);
-
-    while (moredata == TRUE) {
-        SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
-
-        PGR_DBG("Checking ");
-
-        if (customer_all.id == -1) {
-            if (fetch_customer_columns(SPI_tuptable, &customer_all,
-                        vehicle_count, capacity) == -1) {
-                pgr_SPI_finish();
-                return -1;
-            }
-        }
-
-        ntuples = SPI_processed;
-        total_tuples += ntuples;
-        PGR_DBG("Calculated total_tuples  ntuples=%d   total_tuples =%d ", ntuples, total_tuples);
-
-        if (customer_single == NULL)
-            customer_single = palloc(total_tuples * sizeof(Customer));
-        else
-            customer_single = repalloc(customer_single, total_tuples * sizeof(Customer));
-
-        if (customer_single == NULL) {
-            elog(ERROR, "Out of memory");
-            pgr_SPI_finish();
-            return -1;
-        }
-
-
-        if (ntuples > 0) {
-            int t;
-            SPITupleTable *tuptable = SPI_tuptable;
-            TupleDesc tupdesc = SPI_tuptable->tupdesc;
-
-            for (t = 0; t < ntuples; t++) {
-                HeapTuple tuple = tuptable->vals[t];
-                fetch_customer(&tuple, &tupdesc,
-                        &customer_all,
-                        &customer_single[total_tuples - ntuples + t]);
-            }
-            SPI_freetuptable(tuptable);
-        } else {
-            moredata = FALSE;
-        }
-    }
+    char *err_msg = NULL;
+    size_t total_customers = 0;
+    Customer *customers = NULL;
+    pgr_get_customers(sql, &customers, &total_customers);
 
 
     PGR_DBG("Calling Solver Instance\n");
 
-    ret = Solver(customer_single, total_tuples, vehicle_count,
+    int ret = Solver(customers, total_customers, vehicle_count,
             capacity, &err_msg, results, length_results_struct);
 
     if (ret < -2) {
@@ -230,16 +72,8 @@ static int compute_shortest_path(
 
     PGR_DBG("*length_results_count  = %i\n", *length_results_struct);
     PGR_DBG("ret = %i\n", ret);
-#ifdef DEBUG
-    int vb;
-    for (vb=1; vb < *length_results_struct; vb++) {
-        PGR_DBG("results[%d].seq=%d  ", vb, (*results)[vb].seq);
-        PGR_DBG("results[%d].rid=%d  ", vb, (*results)[vb].rid);
-        PGR_DBG("results[%d].nid=%d \n", vb, (*results)[vb].nid);
-    }
-#endif
 
-    pfree(customer_single);
+    pfree(customers);
     free(err_msg);
     pgr_SPI_finish();
     return 0;
@@ -261,7 +95,7 @@ vrppdtw(PG_FUNCTION_ARGS) {
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
-        int length_results_struct = 0;
+        size_t length_results_struct = 0;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
         results = (path_element *)palloc(sizeof(path_element)*((length_results_struct) + 1));
@@ -270,8 +104,8 @@ vrppdtw(PG_FUNCTION_ARGS) {
 
         compute_shortest_path(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),  // customers sql
-                PG_GETARG_INT32(1),  // vehicles  count
-                PG_GETARG_INT32(2),  // capacity count
+                PG_GETARG_INT64(1),  // vehicles  count
+                PG_GETARG_FLOAT8(2),  // capacity 
                 &results, &length_results_struct);
 
         PGR_DBG("Back from solve_vrp, length_results: %d", length_results_struct);
@@ -315,9 +149,9 @@ vrppdtw(PG_FUNCTION_ARGS) {
         nulls[2] = ' ';
         nulls[3] = ' ';
         values[0] = Int32GetDatum(results[call_cntr].seq);
-        values[1] = Int32GetDatum(results[call_cntr].rid);
-        values[2] = Int32GetDatum(results[call_cntr].nid);
-        values[3] = Int32GetDatum(results[call_cntr].cost);
+        values[1] = Int64GetDatum(results[call_cntr].rid);
+        values[2] = Int64GetDatum(results[call_cntr].nid);
+        values[3] = Float8GetDatum(results[call_cntr].cost);
         tuple = heap_formtuple(tuple_desc, values, nulls);
 
         /* make the tuple into a datum */

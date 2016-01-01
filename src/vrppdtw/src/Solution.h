@@ -43,9 +43,8 @@ class Solution {
      double getCost() const;
      Solution getBestofNeighborhood(const Solution S,
              const std::vector<Customer> &c,
-             const Depot &d,
              const std::vector<Pickup> &p) const;
-     void UpdateSol();
+     void UpdateSol(const Customers &customers);
 };
 
 class Neighborhoods {
@@ -53,18 +52,18 @@ class Neighborhoods {
      Neighborhoods() {}
      Solution BestSPI(const Solution S,
              const std::vector<Customer> &customers,
-             const Depot &depot,
              const std::vector<Pickup> &pickups) const;
 };
 
 void
-Solution::UpdateSol() {
+Solution::UpdateSol(const Customers &customers) {
     cost_total = 0, twv_total = 0, cv_total = 0, dis_total = 0;
     routes.erase(std::remove_if(routes.begin(), routes.end(),
                 [] (const Route &r)
                 {return r.path.empty();}),
             routes.end());
-    for  (const auto &r : routes) {
+    for (auto &r : routes) {
+        r.update(customers);
         twv_total += r.twv;
         dis_total += r.dis;
         cv_total  += r.cv;
@@ -88,61 +87,54 @@ Solution::getCost() const {
 Solution
 Solution::getBestofNeighborhood(const Solution S,
         const std::vector<Customer> &customers,
-        const Depot &depot,
         const std::vector<Pickup> &pickups) const {
     Neighborhoods N;
     Solution S1;
-    S1 = N.BestSPI(S, customers, depot, pickups);
+    S1 = N.BestSPI(S, customers, pickups);
     return S1;
 }
 
 
 Solution
 Neighborhoods::BestSPI(const Solution S,
-        const std::vector<Customer> &customers,
-        const Depot &depot,
-        const std::vector<Pickup> &pickups) const {
+        const Customers &customers,
+        const Pickups &pickups) const {
     Solution CurrSol, BestSol, TempSol;
     CurrSol = BestSol = S;
     std::vector<Pickup> OrderRequests = pickups;
-    int Ro_flag, Hc_flag;
     State TempState;
 
+    BestSol.UpdateSol(customers);
     // Main SPI
-    for (size_t order = 1; order <= pickups.size(); order++) {
+    for (const auto &order : OrderRequests) {
         // Order Find and Remove it!
+        CurrSol = BestSol;
         for (unsigned int route_remove = 0;
                 route_remove < CurrSol.routes.size();
                 route_remove++) {
-            Ro_flag = CurrSol.routes[route_remove].RemoveOrder(OrderRequests[order]);
+
+            int OK = CurrSol.routes[route_remove].RemoveOrder(customers,order);
+
+            if  (OK != 1) continue;
             TempSol = CurrSol;
-            if  (Ro_flag != 1) continue;
+            TempSol.UpdateSol(customers);
 
-            // Insert, Total Cost,
-            //   (if it is more copy back the solution) ,
-            //   (else store best = temp, checked = 2, break)
-
-            for (auto &route : CurrSol.routes) {
-                TempState = route.append(OrderRequests[order], TempState);
-                Hc_flag = route.insertOrder(customers, depot);
-                // Hc flag tells us about insertion
-                if  (Hc_flag == 0) {
-                    if  (route.cost() <= BestSol.routes[&route-&CurrSol.routes[0]].cost()) {
-                        CurrSol.UpdateSol();
-                        BestSol = CurrSol;
-                    }
+            for (auto &route : TempSol.routes) {
+                int OK = route.insertOrder(customers, order);
+                if (!OK) continue;
+                TempSol.UpdateSol(customers);
+                if (TempSol.getCost() < BestSol.getCost()) {
+                    BestSol = TempSol;
+                    CurrSol = TempSol;
+                    break;
                 }
-                TempSol.UpdateSol();
-                CurrSol = TempSol;
+                /*
+                 * the order was inserted but the distance was not best
+                 */
+                route.RemoveOrder(customers, order);
             }
-            BestSol.UpdateSol();
-            CurrSol = BestSol;
-            break;
         }
     }
-    BestSol.UpdateSol();
+
     return BestSol;
 }
-
-
-

@@ -29,38 +29,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // Exclusive for c++ inclusion
 
 typedef struct {
-        int id;
-        int x;
-        int y;
-        int demand;
-        int Etime;
-        int Ltime;
-        int Stime;
-        int Pindex;
-        int Dindex;
+        int64_t id;
+        int64_t x;
+        int64_t y;
+        int64_t demand;
+        double Etime;
+        double Ltime;
+        double Stime;
+        int64_t Pindex;
+        int64_t Dindex;
 } Depot;
 
 
 typedef struct {
-        int id;
-        int Pid;
+        int64_t Pid;
         double Ddist;
-        int Did;
-        int checked;
+        int64_t Did;
 } Pickup;
 
+typedef std::vector< Customer > Customers;
+typedef std::vector< Pickup > Pickups;
 
 
 // It is used to save some variables and helps if we need to revisit
 // previous state.
 
 typedef struct {
-        int twv;
-        int cv;
-        int dis;
-        std::vector< int > path;
-        std::vector< int > order;
-        int path_length;
+        int64_t twv;
+        int64_t cv;
+        int64_t dis;
+        std::vector< int64_t > path;
 } State;
 
 template <class T1, class T2>

@@ -32,209 +32,226 @@ class Route  {
  public:
      int twv;
      int cv;
-     int dis;
-     std::vector < int > path;
-     std::vector < int > order;
-     int capacity;
+     double dis;
+     std::vector < int64_t > path;
+     double capacity;
+     Depot depot;
 
-     explicit Route(int _capacity) :
+     Route(int _capacity, const Depot &_depot) :
          twv(0),
          cv(0),
          dis(0),
-         capacity(_capacity)  {
+         capacity(_capacity),
+         depot(_depot) {
              path.clear();
-             order.clear();
          }
-     State append(
-             const Pickup &p,
-             State S);
-     void update(const std::vector<Customer> &c, const Depot &d);
+     void update(const Customers &c);
      double cost() const;
-     int HillClimbing(const std::vector<Customer> &c, const Depot &d);
-     int insertOrder(const std::vector<Customer> &c, const Depot &d);
+     bool insertOrder(const Customers &c, const Pickup &order);
+     void append(const Customers &c, const Pickup &order);
      void remove(const State &S);
-     int RemoveOrder(const Pickup &p);
-     double distance(double x1, double y1, double x2, double y2) const;
+     int RemoveOrder(
+             const Customers &customers,
+             const Pickup &p);
+     bool has_violation(const Customers &customers);
+     bool has_twv(const Customers &customers);
 };
 
 
 /*
  * Returns:
- * 1 - when the order was found
+ * 1 - when the order was found and removed
  * 0 - When the order was not found
  */
 int
-Route::RemoveOrder(const Pickup &pickup) {
-    auto Pickup_pos = find(path.begin(), path.end(), pickup.Pid);
+Route::RemoveOrder(
+        const Customers &customers,
+        const Pickup &pickup) {
+    Route oldRoute = *this;
+    oldRoute.update(customers);
 
-    if (Pickup_pos != path.end())  {
-        path.erase(Pickup_pos);
-        order.erase(Pickup_pos);
-    } else  {
+
+    auto pickup_pos = find(path.begin(), path.end(), pickup.Pid);
+
+    if (pickup_pos != path.end())  {
+        path.erase(pickup_pos);
+        auto delivery_pos = find(path.begin(), path.end(), pickup.Did);
+        path.erase(delivery_pos);
+
+        update(customers);
+        return ((dis < depot.Ltime)
+                && (twv < oldRoute.twv || cv < oldRoute.cv || dis < oldRoute.dis))? 1: 2;
+    } else {
         return 0;
     }
-
-    auto Delivery_pos = find(path.begin(), path.end(), pickup.Did);
-
-    if (Delivery_pos !=  path.end())  {
-        path.erase(Delivery_pos);
-        order.erase(Delivery_pos);
-    }
-    return 1;
 }
 
-State
-Route::append(
-        /*Customer *c, */
-        const Pickup &p,
-        /* Depot d, int CustomerLength, int PickupLength,*/
-        State S) {
-    // Save State;
-    S.twv = twv;
-    S.cv = cv;
-    S.dis = dis;
-    S.path_length = path.size();
-
-    for (size_t i = 0; i < path.size(); i++) {
-        S.path[i] = path[i];
-        S.order[i] = order[i];
-    }
-
-    //  Insert Order
-
-    path.push_back(p.Pid);
-    path.push_back(p.Did);
-
-    order.push_back(p.id);
-    order.push_back(p.id);
-    return S;
+void
+Route::append(const Customers &customers,
+        const Pickup &pickup) {
+    path.push_back(pickup.Pid);
+    path.push_back(pickup.Did);
+    update(customers);
 }
 
 
 void
-Route::update(const std::vector<Customer> &c, const Depot &d)  {
-    dis = 0, twv = 0, cv = 0;
+Route::update(const Customers &customers)  {
+    dis = 0;
+    twv = 0;
+    cv = 0;
     int load = 0;
-    for (int i = -1; i < static_cast<int>(path.size()); i++) {
-        // Depot to first Customer
-        if (i == -1) {
-            dis += CalculateDistance(c[path[i+1]], d);
-            if (dis < c[path[i+1]].Etime) {
-                dis = c[path[i+1]].Etime;
-            } else if (dis > c[path[i+1]].Ltime) {
-                twv += 1;
-            }
-            dis += c[path[i+1]].Stime;
-            load += c[path[i+1]].demand;
-        }
-        // Last cusotmer to Depot
-        if (i ==  static_cast<int>(path.size() - 1))  {
-            dis += CalculateDistance(c[path[i]], d);
-            if (dis > d.Ltime) {
-                twv += 1;
-            }
-        }
-        // Middle Customers
-        if (i >= 0 && i < static_cast<int>(path.size() - 1)) {
-            dis += CalculateDistance(c[path[i]], c[path[i + 1]]);
-            if (dis < c[path[i+1]].Etime) {
-                dis = c[path[i+1]].Etime;
-            } else if (dis > c[path[i+1]].Ltime) {
-                twv += 1;
-            }
-            dis += c[path[i+1]].Stime;
-            load += c[path[i+1]].demand;
-        }
-
+    double agg_cost = 0;
+    int prev_node = 0;
+    for (const auto &node : path) {
         /*
-         * works only with 200 load
+         * Between nodes
          */
-        if (load > 200 || load < 0)  {
-            cv += 1;
+        agg_cost += CalculateDistance(customers[prev_node], customers[node]);
+
+        if (agg_cost < customers[node].Etime) {
+            /*
+             * Arrving before the opening time, adjust time, moving it to the opening time
+             */
+            agg_cost = customers[node].Etime;
         }
+        if (customers[node].Ltime < agg_cost) {
+            /*
+             * arrived after closing time
+             */
+            ++twv;
+        }
+        agg_cost += customers[node].Stime;
+        load += customers[node].demand;
+        if (load > capacity || load < 0) {
+            ++cv;
+        }
+        prev_node = node;
     }
+    /*
+     * Going back to the depot
+     */
+    agg_cost += CalculateDistance(customers[prev_node], depot);
+    if (depot.Ltime < agg_cost) {
+        ++twv;
+    }
+
+    if (load != 0)  {
+        ++cv;
+    }
+    dis = agg_cost;
     return;
 }
+
 
 double
 Route::cost() const  {
     return (0.3*dis)+(0.5*twv)+(0.2*cv);
 }
 
-int
-Route::insertOrder(const std::vector<Customer> &c, const Depot &d
-        /*, Pickup p*/)  {
-    twv = 0, cv = 0, dis = 0;
-
-
-    update(c, d);
-    if (twv == 0 && cv == 0 && dis < d.Ltime)
-        return 0;
-
-    for (size_t i = 0; i < path.size(); i++)  {
-        for (size_t j = 0; j < path.size(); j++)  {
-            if ((c[path[i]].Ltime > c[path[j]].Ltime)) {
-                std::swap(path[i], path[j]);
-                std::swap(order[i], order[j]);
-            }
-        }
-    }
-
-    std::reverse(path.begin(), path.end());
-    std::reverse(order.begin(), order.end());
-
-
-    twv = 0, cv = 0, dis = 0;
-    update(c, d);
-
-    return twv > 0 || cv > 0 || dis > d.Ltime;
+bool
+Route::has_violation(const Customers &customers) {
+    update(customers);
+    return (twv > 0 || cv > 0);
 }
 
-int Route::HillClimbing(const std::vector<Customer> &c, const Depot &d
-        /*, Pickup p*/) {
-    double cost1 = 0, cost2 = 0;
-    twv = 0, cv = 0, dis = 0;
-    update(c, d);
-    cost1 = cost();
-    if (twv == 0 && cv == 0 && dis < d.Ltime)
-        return 0;
+bool
+Route::has_twv(const Customers &customers) {
+    update(customers);
+    return (twv > 0);
+}
 
-    for (size_t i = 0; i < path.size(); i++) {
-        for (size_t j = 0; j < path.size(); j++) {
-            int swap_flag = 0, count_flag = 0;
-            if ((c[path[i]].Ltime > c[path[j]].Ltime) && (count_flag == 0)) {
-                swap_flag = 1;
-                count_flag = 1;
-                std::swap(path[i], path[j]);
-                std::swap(order[i], order[j]);
-            }
-            update(c, d);
-            cost2 = cost();
-            if (cost2 > cost1 && swap_flag == 1)  {
-                std::swap(path[i], path[j]);
-                std::swap(order[i], order[j]);
+
+bool
+Route::insertOrder(const Customers &customers, const Pickup &order) {
+    /*
+     *  inserting only on a route that does not have twv or cv
+     */
+    if (has_violation(customers)) return false;
+
+
+    path.insert(path.begin(), order.Pid);
+    /*
+     * The pickup is in:
+     */
+    int Ppos = 0;
+    int i;
+    for (i = 1; i < (int)path.size(); i++)  {
+        /*
+         * Inserting without creating violation
+         */
+        if (!has_twv(customers)) break;
+        std::swap(path[Ppos], path[i]);
+        Ppos = i;
+    }
+
+    path.push_back(order.Did);
+    /*
+     * The delivery is in:
+     */
+    int Dpos = path.size() - 1;
+
+    int j;
+    for (j = Dpos; Ppos < j; --j)  {
+        if (!has_violation(customers)) break;
+        std::swap(path[j], path[Dpos]);
+        Dpos = j;
+    }
+
+    /*
+     * Here 2 thngs can happen
+     * We inserted succesfully without violation
+     * Inserting created a violation
+     */
+
+
+    if (has_violation(customers)) {
+        RemoveOrder(customers, order);
+        return false;
+    }
+
+    /* 
+     * ....  Ppos a b c d Dpos ....
+     *
+     * The current route
+     */
+    update(customers);
+    Route bestRoute = *this;
+    Route currRoute = *this;
+
+    for (i = Ppos; i < Dpos; i++) {
+        *this = currRoute;
+        /* 
+         * ....  Ppos a b c d Dpos ....
+         */
+        std::swap(path[Ppos], path[i]);
+        Ppos = i;
+        currRoute = *this;
+
+        /*
+         * for the same position of Ppos
+         * - move the D
+         * - keep track of the best
+         */
+        for (j = Dpos; Ppos < j; j--) {
+            std::swap(path[j], path[Dpos]);
+            Dpos = j;
+            if (!has_violation(customers)
+                    && dis < bestRoute.dis) {
+                bestRoute = *this;
+                bestRoute.update(customers);
             }
         }
     }
 
-    std::reverse(path.begin(), path.end());
-    std::reverse(order.begin(), order.end());
+    *this = bestRoute;
 
-    twv = 0, cv = 0, dis = 0;
-    update(c, d);
-
-    return twv > 0 || cv > 0 || dis > d.Ltime;
+    return true;
 }
 
 void Route::remove(const State &S)  {
     twv = S.twv;
     cv = S.cv;
     dis = S.dis;
-
-    path.clear();
-    order.clear();
-    for (int i = 0; i < S.path_length; i++)  {
-        path[i] = S.path[i];
-        order[i] = S.order[i];
-    }
+    path  = S.path;
 }
