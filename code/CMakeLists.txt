@@ -68,9 +68,9 @@ execute_process(
   OUTPUT_VARIABLE SHARE_DIR)
 
 #set(LIB_DIR "${MYROUTING_SOURCE_DIR}/lib")
-
 set(MYROUTING_INCLUDE_DIRECTORIES ${MYROUTING_SOURCE_DIR}/src/mydijkstra/src)
 set(MYROUTING_INCLUDE_DIRECTORIES ${MYROUTING_SOURCE_DIR}/src/contraction/src)
+set(MYROUTING_INCLUDE_DIRECTORIES ${MYROUTING_SOURCE_DIR}/src/myastar/src)
 set(MYROUTING_INCLUDE_DIRECTORIES ${MYROUTING_SOURCE_DIR}/src/common/src)
 
 #including these directories for the compiler
@@ -94,8 +94,10 @@ add_library( myrouting_library
 ${LIBRARY_MODE_TARGET} 
 $<TARGET_OBJECTS:mydijkstra>
 $<TARGET_OBJECTS:contraction>
+$<TARGET_OBJECTS:myastar>
 $<TARGET_OBJECTS:common>
 )
+
 install(TARGETS myrouting_library DESTINATION ${LIB_DIR} )
 
 

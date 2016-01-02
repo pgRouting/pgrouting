@@ -26,6 +26,9 @@ SET(CMAKE_MAKEFILE_DEPENDS
   "../src/contraction/CMakeLists.txt"
   "../src/contraction/sql/CMakeLists.txt"
   "../src/contraction/src/CMakeLists.txt"
+  "../src/myastar/CMakeLists.txt"
+  "../src/myastar/sql/CMakeLists.txt"
+  "../src/myastar/src/CMakeLists.txt"
   "../src/mydijkstra/CMakeLists.txt"
   "../src/mydijkstra/sql/CMakeLists.txt"
   "../src/mydijkstra/src/CMakeLists.txt"
@@ -63,6 +66,9 @@ SET(CMAKE_MAKEFILE_PRODUCTS
   "src/contraction/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/contraction/src/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/contraction/sql/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/myastar/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/myastar/src/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/myastar/sql/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/common/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/common/src/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
@@ -73,5 +79,6 @@ SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/myrouting_library.dir/DependInfo.cmake"
   "src/mydijkstra/src/CMakeFiles/mydijkstra.dir/DependInfo.cmake"
   "src/contraction/src/CMakeFiles/contraction.dir/DependInfo.cmake"
+  "src/myastar/src/CMakeFiles/myastar.dir/DependInfo.cmake"
   "src/common/src/CMakeFiles/common.dir/DependInfo.cmake"
   )

@@ -36,6 +36,7 @@ IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   INCLUDE("/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/mydijkstra/cmake_install.cmake")
   INCLUDE("/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/contraction/cmake_install.cmake")
+  INCLUDE("/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/myastar/cmake_install.cmake")
   INCLUDE("/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/common/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)

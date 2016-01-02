@@ -56,7 +56,7 @@ public:
 
   // Inserts edges of in the form of struct "Edge" into the graph
   void insert_data(const Edge *data_edges, int64_t count) {
-  	int64_t vcount=0;
+  	//int64_t vcount=0;
     for (unsigned int i = 0; i < count; ++i) {
       //cout << data_edges[i].source << ", " << data_edges[i].target << endl;
   		graph_add_edge(data_edges[i]);
@@ -89,7 +89,7 @@ public:
   	 graph[vm_t->second].contractions=0;
     }
 
-  	//if (edge.cost >= 0) {
+  	if (edge.cost >= 0) {
   		boost::tie(e, inserted) =
   		boost::add_edge(vm_s->second, vm_t->second, graph);
   		graph[e].cost = edge.cost;
@@ -98,14 +98,14 @@ public:
       graph[e].target=edge.target;
       //graph[e].type=edge.type;
       graph[e].type=0;
-  	//}
+  	}
 
-  	/*if (edge.revcost >= 0) {
+  	if (edge.revcost >= 0) {
   		boost::tie(e, inserted) =
   		boost::add_edge(vm_t->second, vm_s->second, graph);
   		graph[e].cost = edge.revcost;
   		graph[e].id = edge.id;
-  	}*/
+  	}
   }
 
 

@@ -68,10 +68,11 @@ public:
 	{
 		EO_i out,out_end;
 		V front=reduced_graph->degree_to_V_map[1].front();
-
+		int64_t frontid=-1;
+		reduced_graph->get_vertex_id(front,frontid);
 		std::vector<V> one_degree_vertices=reduced_graph->degree_to_V_map[1];
 		degree_to_V_i it;
-		//cout << "1 degree vertices " << one_degree_vertices.size()  << endl;
+		cout << "1 degree vertices " << one_degree_vertices.size()  << endl;
 		while (reduced_graph->degree_to_V_map[1].size()>0)
 		{
 			//cout << "Front " << reduced_graph->graph[front].id << endl;
@@ -81,7 +82,7 @@ public:
 				V s=source(*out, reduced_graph->graph);
 				V t=target(*out, reduced_graph->graph);
 				int source_id=reduced_graph->graph[s].id;
-				int target_id=reduced_graph->graph[t].id;
+				//int target_id=reduced_graph->graph[t].id;
 				reduced_graph->remove_vertex(source_id);
 				//cout << "Removing " << source_id  << endl;
 				//cout << "Neighbor" << target_id << endl;
@@ -92,11 +93,12 @@ public:
 				reduced_graph->degree_to_V_map[final_target_degree].push_back(t);
 				Edge removed_edge=reduced_graph->graph[*out];
 				//cout << "removing" << " (" << removed_edge.source<< ", " << removed_edge.target << ")" << endl;
-				removedVertices[front].push_front(removed_edge);
+				removedVertices[frontid].push_front(removed_edge);
 			}
 			reduced_graph->degree_to_V_map[1].erase(reduced_graph->degree_to_V_map[1].begin(),
 				reduced_graph->degree_to_V_map[1].begin()+1);
 			front=reduced_graph->degree_to_V_map[1].front();
+			reduced_graph->get_vertex_id(front,frontid);
 		}
 
 	}
@@ -125,10 +127,10 @@ public:
 		}
 		
 		V front=two_degree_vertices_0.front();
-		int64_t front_id;
+		int64_t front_id=-1;
 		while (two_degree_vertices_0.size()>0)
 		{
-			//cout << "2 degree vertices " << two_degree_vertices_0.size()  << endl;
+			cout << "2 degree vertices " << two_degree_vertices_0.size()  << endl;
 			//cout << "Edge count" << num_edges(reduced_graph->graph) << endl;
 			//cout << "Front " << reduced_graph->graph[front].id << endl;
 			neighbors_desc.clear();
@@ -139,8 +141,8 @@ public:
 				/* code */
 				
 				int count=0;
-				int64_t tid1,tid2;
-				V  tdesc1,tdesc2;
+				int64_t tid1=-1,tid2=-1;
+				V  tdesc1=-1,tdesc2=-1;
 				float min_distance=0.00000;
 				for (boost::tie(out, out_end) = out_edges(front, reduced_graph->graph);
 					out != out_end; ++out) 
@@ -231,7 +233,7 @@ public:
 		}
 		cout << "3 degree vertices " << three_degree_vertices_0.size()  << endl;
 		V front=three_degree_vertices_0.front();
-		int64_t front_id;
+		int64_t front_id=-1;
 		while (three_degree_vertices_0.size()>0)
 		{
 			//cout << "2 degree vertices " << two_degree_vertices_0.size()  << endl;
@@ -241,8 +243,8 @@ public:
 			neighbors_desc.clear();
 			reduced_graph->get_vertex_id(front,front_id);
 			int count=0;
-			int64_t tid1,tid2;
-			V  tdesc1,tdesc2;
+			int64_t tid1=-1,tid2=-1;
+			V  tdesc1=-1,tdesc2=-1;
 			float min_distance=0.00000;
 			for (boost::tie(out, out_end) = out_edges(front, reduced_graph->graph);
 				out != out_end; ++out) 
@@ -378,7 +380,7 @@ public:
 
 		for (removed_V_i iter = removedVertices.begin(); iter != removedVertices.end(); iter++)
 		{
-			cout << "id: " << reduced_graph->graph[iter->first].id << endl;
+			cout << "id: " << iter->first << endl;
 
 			for (removed_E_i edge_iter = iter->second.begin(); edge_iter != iter->second.end(); edge_iter++)
 			{
@@ -401,61 +403,63 @@ public:
 
 	void find_source_vertex(int64_t origId,int64_t &compId,unpackedPath &unpack)
 	{
-		V orig,comp;
-		reduced_graph->get_vertex_descriptor(origId,orig);
-		reduced_graph->get_vertex_descriptor(compId,comp);
-		V temp=orig;
-		while(!(removedVertices.find(temp) == removedVertices.end()))
+		//reduced_graph->get_vertex_descriptor(compId,comp);
+		int64_t tempid=origId;
+		while(!(removedVertices.find(tempid) == removedVertices.end()))
 		{
-			Edge first=removedVertices[temp].front();
-			if (first.source==origId)
+			Edge first=removedVertices[tempid].front();
+			if (first.source==tempid)
 			{
-				//cout << "source" << endl;
-				reduced_graph->get_vertex_descriptor(first.target,temp);
+				cout << "source" << endl;
+				tempid=first.target;
+				//reduced_graph->get_vertex_descriptor(first.target,temp);
 				unpack.push_back(first);
 			}
-			else if (first.target==origId)
+			else if (first.target==tempid)
 			{
 				//cout << "target" << endl;
-				reduced_graph->get_vertex_descriptor(first.source,temp);
+				tempid=first.source;
+				//reduced_graph->get_vertex_descriptor(first.source,temp);
 				unpack.push_back(first);
 			}
 
 		}
-		reduced_graph->get_vertex_id(temp,compId);
+		//reduced_graph->get_vertex_id(temp,compId);
+		compId=tempid;
 		return;
 	}
 	void find_target_vertex(int64_t origId,int64_t &compId,unpackedPath &unpack)
 	{
-		V orig,comp;
-		reduced_graph->get_vertex_descriptor(origId,orig);
-		reduced_graph->get_vertex_descriptor(compId,comp);
-		V temp=orig;
-		while(!(removedVertices.find(temp) == removedVertices.end()))
+		int64_t tempid=origId;
+		while(!(removedVertices.find(tempid) == removedVertices.end()))
 		{
-			Edge first=removedVertices[temp].front();
-			if (first.source==origId)
+			cout << "initial temp " << tempid << endl;
+			Edge first=removedVertices[tempid].front();
+			if (first.source==tempid)
 			{
-				//cout << "source" << endl;
-				reduced_graph->get_vertex_descriptor(first.target,temp);
+				cout << "source" << endl;
+				tempid=first.target;
+				//reduced_graph->get_vertex_descriptor(first.target,temp);
 				unpack.push_front(first);
 			}
-			else if (first.target==origId)
+			else if (first.target==tempid)
 			{
-				//cout << "target" << endl;
-				reduced_graph->get_vertex_descriptor(first.source,temp);
+				cout << "target" << endl;
+				tempid=first.source;
+				//reduced_graph->get_vertex_descriptor(first.source,temp);
 				unpack.push_front(first);
 			}
-
+			cout << "final temp " << tempid << endl;
 		}
-		reduced_graph->get_vertex_id(temp,compId);
+		//reduced_graph->get_vertex_id(temp,compId);
+		compId=tempid;
 		return;
 	}
 
 
-	void dijkstra_on_contracted(int64_t src,int64_t dest,Edge **path,int &size)
+	void dijkstra_on_contracted(int64_t src,int64_t dest,Edge **path,int64_t &size)
 	{
-		Edge **mainPath=NULL;
+		Edge *mainPath=NULL;
 		unpackedPath srcPath,targetPath;
 		int64_t closest_src,closest_target;
 		int src_size,target_size;
@@ -463,36 +467,40 @@ public:
 		find_target_vertex(dest,closest_target,targetPath);
 		src_size=srcPath.size();
 		target_size=targetPath.size();
-
-		reduced_graph->perform_dijkstra(closest_src,closest_target,mainPath,size);
+		cout << "source:- " << closest_src << ", target:- " << closest_target << endl;
+		reduced_graph->perform_dijkstra(closest_src,closest_target,&mainPath,size);
 
 		int total_size=size+src_size+target_size;
+		cout << "total path size is " << total_size << endl;
 		*path=(Edge*)malloc(total_size*sizeof(Edge));
+		int temp_size=0;
 		for (int i = 0; i < src_size; ++i)
 		{
-			(*path)[i].id=srcPath[i].id;
-			(*path)[i].source=srcPath[i].source;
-			(*path)[i].target=srcPath[i].target;
-			(*path)[i].cost=srcPath[i].cost;
+			(*path)[i].id=srcPath[i-temp_size].id;
+			(*path)[i].source=srcPath[i-temp_size].source;
+			(*path)[i].target=srcPath[i-temp_size].target;
+			(*path)[i].cost=srcPath[i-temp_size].cost;
 		}
+		temp_size=src_size;
 		for (int i = src_size; i < src_size+size; ++i)
 		{
-			(*path)[i].id=(*mainPath)[i-src_size].id;
-			(*path)[i].source=(*mainPath)[i-src_size].source;
-			(*path)[i].target=(*mainPath)[i-src_size].target;
-			(*path)[i].cost=(*mainPath)[i-src_size].cost;
+			(*path)[i].id=(mainPath)[i-temp_size].id;
+			(*path)[i].source=(mainPath)[i-temp_size].source;
+			(*path)[i].target=(mainPath)[i-temp_size].target;
+			(*path)[i].cost=(mainPath)[i-temp_size].cost;
 		}
+		temp_size=src_size+size;
 		for (int i = src_size+size; i < total_size; ++i)
 		{
-			(*path)[i].id=targetPath[i-src_size-size].id;
-			(*path)[i].source=targetPath[i-src_size-size].source;
-			(*path)[i].target=targetPath[i-src_size-size].target;
-			(*path)[i].cost=targetPath[i-src_size-size].cost;
+			(*path)[i].id=targetPath[i-temp_size].id;
+			(*path)[i].source=targetPath[i-temp_size].source;
+			(*path)[i].target=targetPath[i-temp_size].target;
+			(*path)[i].cost=targetPath[i-temp_size].cost;
 		}
 		size=total_size;
 	}
 
-	void print_path(Edge **path,int size)
+	void print_path(Edge **path,int64_t size)
 	{
 		cout << "Path for dijkstra......" << endl; 
 		for (int i = 0; i < size; ++i)

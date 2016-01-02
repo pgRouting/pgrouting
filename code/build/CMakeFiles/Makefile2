@@ -92,6 +92,7 @@ clean: CMakeFiles/distclean.dir/clean
 # All Build rule for target.
 CMakeFiles/myrouting_library.dir/all: src/mydijkstra/src/CMakeFiles/mydijkstra.dir/all
 CMakeFiles/myrouting_library.dir/all: src/contraction/src/CMakeFiles/contraction.dir/all
+CMakeFiles/myrouting_library.dir/all: src/myastar/src/CMakeFiles/myastar.dir/all
 CMakeFiles/myrouting_library.dir/all: src/common/src/CMakeFiles/common.dir/all
 	$(MAKE) -f CMakeFiles/myrouting_library.dir/build.make CMakeFiles/myrouting_library.dir/depend
 	$(MAKE) -f CMakeFiles/myrouting_library.dir/build.make CMakeFiles/myrouting_library.dir/build
@@ -105,7 +106,7 @@ all: CMakeFiles/myrouting_library.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/myrouting_library.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/myrouting_library.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 0
 .PHONY : CMakeFiles/myrouting_library.dir/rule
@@ -144,18 +145,21 @@ cmake/preinstall:
 # Convenience name for "all" pass in the directory.
 src/all: src/mydijkstra/all
 src/all: src/contraction/all
+src/all: src/myastar/all
 src/all: src/common/all
 .PHONY : src/all
 
 # Convenience name for "clean" pass in the directory.
 src/clean: src/mydijkstra/clean
 src/clean: src/contraction/clean
+src/clean: src/myastar/clean
 src/clean: src/common/clean
 .PHONY : src/clean
 
 # Convenience name for "preinstall" pass in the directory.
 src/preinstall: src/mydijkstra/preinstall
 src/preinstall: src/contraction/preinstall
+src/preinstall: src/myastar/preinstall
 src/preinstall: src/common/preinstall
 .PHONY : src/preinstall
 
@@ -199,7 +203,7 @@ src/mydijkstra/src/preinstall:
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/all:
 	$(MAKE) -f src/mydijkstra/src/CMakeFiles/mydijkstra.dir/build.make src/mydijkstra/src/CMakeFiles/mydijkstra.dir/depend
 	$(MAKE) -f src/mydijkstra/src/CMakeFiles/mydijkstra.dir/build.make src/mydijkstra/src/CMakeFiles/mydijkstra.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles  4 5
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles  6 7
 	@echo "Built target mydijkstra"
 .PHONY : src/mydijkstra/src/CMakeFiles/mydijkstra.dir/all
 
@@ -324,6 +328,89 @@ src/contraction/sql/clean:
 # Convenience name for "preinstall" pass in the directory.
 src/contraction/sql/preinstall:
 .PHONY : src/contraction/sql/preinstall
+
+#=============================================================================
+# Directory level rules for directory src/myastar
+
+# Convenience name for "all" pass in the directory.
+src/myastar/all: src/myastar/src/all
+src/myastar/all: src/myastar/sql/all
+.PHONY : src/myastar/all
+
+# Convenience name for "clean" pass in the directory.
+src/myastar/clean: src/myastar/src/clean
+src/myastar/clean: src/myastar/sql/clean
+.PHONY : src/myastar/clean
+
+# Convenience name for "preinstall" pass in the directory.
+src/myastar/preinstall: src/myastar/src/preinstall
+src/myastar/preinstall: src/myastar/sql/preinstall
+.PHONY : src/myastar/preinstall
+
+#=============================================================================
+# Directory level rules for directory src/myastar/src
+
+# Convenience name for "all" pass in the directory.
+src/myastar/src/all: src/myastar/src/CMakeFiles/myastar.dir/all
+.PHONY : src/myastar/src/all
+
+# Convenience name for "clean" pass in the directory.
+src/myastar/src/clean: src/myastar/src/CMakeFiles/myastar.dir/clean
+.PHONY : src/myastar/src/clean
+
+# Convenience name for "preinstall" pass in the directory.
+src/myastar/src/preinstall:
+.PHONY : src/myastar/src/preinstall
+
+#=============================================================================
+# Target rules for target src/myastar/src/CMakeFiles/myastar.dir
+
+# All Build rule for target.
+src/myastar/src/CMakeFiles/myastar.dir/all:
+	$(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/depend
+	$(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles  4 5
+	@echo "Built target myastar"
+.PHONY : src/myastar/src/CMakeFiles/myastar.dir/all
+
+# Include target in all.
+all: src/myastar/src/CMakeFiles/myastar.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+src/myastar/src/CMakeFiles/myastar.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 src/myastar/src/CMakeFiles/myastar.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 0
+.PHONY : src/myastar/src/CMakeFiles/myastar.dir/rule
+
+# Convenience name for target.
+myastar: src/myastar/src/CMakeFiles/myastar.dir/rule
+.PHONY : myastar
+
+# clean rule for target.
+src/myastar/src/CMakeFiles/myastar.dir/clean:
+	$(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/clean
+.PHONY : src/myastar/src/CMakeFiles/myastar.dir/clean
+
+# clean rule for target.
+clean: src/myastar/src/CMakeFiles/myastar.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory src/myastar/sql
+
+# Convenience name for "all" pass in the directory.
+src/myastar/sql/all:
+.PHONY : src/myastar/sql/all
+
+# Convenience name for "clean" pass in the directory.
+src/myastar/sql/clean:
+.PHONY : src/myastar/sql/clean
+
+# Convenience name for "preinstall" pass in the directory.
+src/myastar/sql/preinstall:
+.PHONY : src/myastar/sql/preinstall
 
 #=============================================================================
 # Directory level rules for directory src/common

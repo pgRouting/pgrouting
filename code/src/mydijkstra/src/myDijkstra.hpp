@@ -29,7 +29,7 @@ public:
   }
 
   // call the dijkstra algorithm and returns the path and its size
-  void perform_dijkstra(int src,int dest,Edge **path,int& size)
+  void perform_dijkstra(int64_t src,int64_t dest,Edge **path,int64_t& size)
   {
     this->predecessors.clear();
     this->distances.clear();
@@ -85,9 +85,10 @@ public:
 
   //creates a linked list of edges in an order along with the cost
   typedef typename boost::graph_traits < G >::vertex_descriptor V;
-  void get_path(V source,V target,Edge **path,int &size)
+  void get_path(V source,V target,Edge **path,int64_t &size)
   {
-    int path_size=0;
+    int64_t path_size=0;
+
     if (this->predecessors[target]==target)
     {
       return;
@@ -101,7 +102,8 @@ public:
         temp=this->predecessors[temp];
       }
       size=path_size;
-      *path=(Edge*)malloc(path_size*sizeof(Edge));
+      cout << "Path is of size " << path_size << endl;
+      (*path)=(Edge *)malloc(sizeof(Edge)*path_size);
       int temp_size=path_size-1;
       temp=target;
       int64_t sid=-1,tid=-1;

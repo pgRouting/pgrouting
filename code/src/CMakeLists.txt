@@ -1,5 +1,7 @@
+
 add_subdirectory(mydijkstra)
 add_subdirectory(contraction)
+add_subdirectory(myastar)
 add_subdirectory(common)
 SET(PACKAGE_SQL_FILES "")
 SET(PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}" PARENT_SCOPE)

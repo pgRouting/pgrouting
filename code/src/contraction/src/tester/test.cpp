@@ -38,13 +38,13 @@ int loadGraph(string edgeFile,Edge **edges)
 				case 0:
 				(*edges)[count].id=atoi(cell.c_str());
 				break;
-				case 2:
+				case 1:
 				(*edges)[count].source=atoi(cell.c_str());
 				break;
-				case 3:
+				case 2:
 				(*edges)[count].target=atoi(cell.c_str());
 				break;
-				case 1:
+				case 3:
 				(*edges)[count].cost=atof(cell.c_str());
 				break;
 				case 4:
@@ -66,16 +66,17 @@ typedef adjacency_list<vecS, vecS, undirectedS, Vertex,Edge> G;
 void check(Edge *edges,int num_vertices,int num_edges,int level)
 {
 	FILE *fp;
-	string path="./contracted_ways";
+	//string path="./contracted_ways";
 	//path += boost::lexical_cast<std::string>(level);
-	path+=".txt";
-	fp=fopen(path.c_str(),"w+");
+	//path+=".txt";
+	//fp=fopen(path.c_str(),"w+");
 	typedef Graph_Minimizer<G> Graph;
 	Graph g(UNDIRECTED,num_vertices);
 	g.initialize_graph(edges,num_edges);
-	//g.print_Degree_Vertices();
+	g.print_Degree_Vertices();
 	//cout << "Contracting...." << endl;
 	g.contract_to_level(level);
+	g.print_removed_vertices();
 	int deg;
 	//g.get_degree(144,deg);
 	//cout << "degree of 144 is " << deg << endl;
@@ -101,25 +102,25 @@ void check(Edge *edges,int num_vertices,int num_edges,int level)
 		cout << "id:- " << e.id << ", " << "source:- " << e.source << ", target:- " << e.target << endl;
 		ids.pop_front();
 	}*/
-	//Edge **path=NULL;
-	//int path_size=0;
-	//g.dijkstra_on_contracted(6,10,path,path_size);
-	//g.print_path(path,path_size);
+	Edge *path=NULL;
+	int64_t path_size=0;
+	g.dijkstra_on_contracted(6,10,&path,path_size);
+	g.print_path(&path,path_size);
 }
 
 int main(int argc, char const *argv[])
 {
 	Edge* edges;
 	//int num_edges=18;
-	int num_vertices=1251;
+	int num_vertices=11;
 	//edges=(Edge*)malloc(sizeof(Edge)*num_edges);
 	//string filename="/home/rohith/mystuff/labwork/3-1/codes/data/txt/berlin.txt";
-	string filename="berlin.txt";
+	string filename="ways.txt";
 	cout << "file " << filename << endl;
 	int num_edges=loadGraph(filename,&edges);
  	//check(edges,num_vertices,num_edges,0);
  	//check(edges,num_vertices,num_edges,1);
- 	check(edges,num_vertices,num_edges,1);
+ 	check(edges,num_vertices,num_edges,0);
 
 	return 0;
 }

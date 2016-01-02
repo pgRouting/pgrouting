@@ -6,6 +6,7 @@ typedef struct
 {
 	int source,target,id,type;
 	float cost, revcost;
+	float s_x,s_y,t_x,t_y;
 } Edge;
 
 //represents an vertex
@@ -14,6 +15,8 @@ typedef struct
 	int id;
 	int degree;
 	int contractions;
+	float x;
+	float y;
 } Vertex;
 
 //represents an edge

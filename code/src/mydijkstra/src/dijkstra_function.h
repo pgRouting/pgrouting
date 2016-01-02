@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 
-int compute_dijkstra(int source,int target,Edge *edges,int num_vertices,int num_edges,Edge **path);
+int compute_dijkstra(int64_t source,int64_t target,Edge *edges,int64_t num_vertices,int64_t num_edges,Edge **path);
 
 
 #ifdef __cplusplus

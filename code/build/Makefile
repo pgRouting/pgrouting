@@ -195,6 +195,19 @@ contraction/fast:
 .PHONY : contraction/fast
 
 #=============================================================================
+# Target rules for targets named myastar
+
+# Build rule for target.
+myastar: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 myastar
+.PHONY : myastar
+
+# fast build rule for target.
+myastar/fast:
+	$(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/build
+.PHONY : myastar/fast
+
+#=============================================================================
 # Target rules for targets named common
 
 # Build rule for target.
@@ -223,6 +236,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... mydijkstra"
 	@echo "... contraction"
+	@echo "... myastar"
 	@echo "... common"
 .PHONY : help
 

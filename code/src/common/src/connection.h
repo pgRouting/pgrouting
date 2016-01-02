@@ -48,11 +48,13 @@ extern "C" {
 
   int fetch_edge_columns(int (*edge_columns)[5],int (*edge_types)[5],
                    bool has_reverse_cost);
+  int fetch_astar_edge_columns(int (*edge_columns)[9],int (*edge_types)[9], bool has_rcost);
   void fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
            int (*edge_columns)[5], int (*edge_types)[5],Edge *target_edge,
            bool has_rcost);
-
-
+void fetch_astar_edge(HeapTuple *tuple,TupleDesc *tupdesc, 
+ int (*edge_columns)[9],int (*edge_types)[9],Edge *target_edge,
+ bool has_rcost);
   /*!
    Signature 1:
       bigint id,
@@ -63,7 +65,8 @@ extern "C" {
   */
   int fetch_data(
       char *sql, Edge **edges,int *count);   //!< \param [IN] end_vertex index to look for
-
+int
+fetch_astar_data(char *sql, Edge **edges,int *count);
 
   /* output corresponding to costResult3Big
   pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path);
