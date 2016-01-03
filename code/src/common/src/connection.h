@@ -64,9 +64,9 @@ void fetch_astar_edge(HeapTuple *tuple,TupleDesc *tupdesc,
       float reverse_cost
   */
   int fetch_data(
-      char *sql, Edge **edges,int *count);   //!< \param [IN] end_vertex index to look for
+      char *sql, Edge **edges,int *count,bool has_rcost);   //!< \param [IN] end_vertex index to look for
 int
-fetch_astar_data(char *sql, Edge **edges,int *count);
+fetch_astar_data(char *sql, Edge **edges,int *count,bool has_rcost);
 
   /* output corresponding to costResult3Big
   pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path);

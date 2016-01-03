@@ -257,11 +257,15 @@ void fetch_astar_edge(
 
 }*/
 int
-fetch_data(char *sql, Edge **edges,int *count)
+fetch_data(char *sql, Edge **edges,int *count,bool rcost)
 {
     //bool sourceFound = false;
     //bool targetFound = false;
   bool has_rcost=false;
+  if (rcost)
+  {
+    has_rcost=rcost;
+  }
     /*if (start_vertex == -1 && end_vertex == -1) {
         sourceFound = targetFound = true;
     }*/
@@ -391,11 +395,15 @@ fetch_data(char *sql, Edge **edges,int *count)
 }
 
 int
-fetch_astar_data(char *sql, Edge **edges,int *count)
+fetch_astar_data(char *sql, Edge **edges,int *count,bool rcost)
 {
     //bool sourceFound = false;
     //bool targetFound = false;
   bool has_rcost=false;
+  if (rcost)
+  {
+    has_rcost=rcost;
+  }
     /*if (start_vertex == -1 && end_vertex == -1) {
         sourceFound = targetFound = true;
     }*/

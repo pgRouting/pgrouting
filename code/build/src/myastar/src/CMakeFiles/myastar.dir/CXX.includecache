@@ -28,6 +28,30 @@ structs.h
 
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/structs.h
 
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/contraction/src/graphMinimizer.hpp
+deque
+-
+vector
+-
+set
+-
+stack
+-
+map
+-
+iostream
+-
+boost/config.hpp
+-
+boost/graph/adjacency_list.hpp
+-
+boost/graph/dijkstra_shortest_paths.hpp
+-
+../../common/src/myGraph.hpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/myGraph.hpp
+../../common/src/structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/structs.h
+
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/myastar/src/myAstar.hpp
 deque
 -
@@ -45,6 +69,8 @@ boost/graph/adjacency_list.hpp
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/myGraph.hpp
 ../../common/src/structs.h
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/structs.h
+../../contraction/src/graphMinimizer.hpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/contraction/src/graphMinimizer.hpp
 boost/graph/astar_search.hpp
 -
 cmath

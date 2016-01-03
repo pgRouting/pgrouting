@@ -39,9 +39,10 @@ contract_graph(PG_FUNCTION_ARGS) {
 		MemoryContext   oldcontext;
 		funcctx = SRF_FIRSTCALL_INIT();
 		oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-		
+		bool has_rcost=false;
+    has_rcost=PG_GETARG_BOOL(3);
 		//fetch the edges and construct the graph
-		initial_num_edges=fetch_data(text2char(PG_GETARG_TEXT_P(0)),&edges,&num_vertices);
+		initial_num_edges=fetch_data(text2char(PG_GETARG_TEXT_P(0)),&edges,&num_vertices,has_rcost);
 		final_num_edges=initial_num_edges;
 		level=PG_GETARG_INT64(1);
 		num_vertices=3000;

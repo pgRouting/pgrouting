@@ -79,6 +79,7 @@ src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.o
 src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o
  /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/myGraph.hpp
  /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/structs.h
+ /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/contraction/src/graphMinimizer.hpp
  /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/myastar/src/myAstar.hpp
  /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/myastar/src/my_astar.h
  /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/myastar/src/my_astar_wrapper.cpp

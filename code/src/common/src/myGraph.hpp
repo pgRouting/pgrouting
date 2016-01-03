@@ -100,10 +100,12 @@ public:
       graph[e].type=0;
   	}
 
-  	if (edge.revcost >= 0) {
+  	if (edge.revcost > 0) {
   		boost::tie(e, inserted) =
   		boost::add_edge(vm_t->second, vm_s->second, graph);
   		graph[e].cost = edge.revcost;
+      graph[e].source=edge.target;
+      graph[e].target=edge.source;
   		graph[e].id = edge.id;
   	}
   }

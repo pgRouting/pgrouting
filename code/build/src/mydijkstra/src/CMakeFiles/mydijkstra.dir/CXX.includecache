@@ -28,6 +28,30 @@ structs.h
 
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/structs.h
 
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/contraction/src/graphMinimizer.hpp
+deque
+-
+vector
+-
+set
+-
+stack
+-
+map
+-
+iostream
+-
+boost/config.hpp
+-
+boost/graph/adjacency_list.hpp
+-
+boost/graph/dijkstra_shortest_paths.hpp
+-
+../../common/src/myGraph.hpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/myGraph.hpp
+../../common/src/structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/structs.h
+
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/dijkstra_function.cpp
 myDijkstra.hpp
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/myDijkstra.hpp
@@ -61,4 +85,6 @@ boost/graph/dijkstra_shortest_paths.hpp
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/myGraph.hpp
 ../../common/src/structs.h
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/structs.h
+../../contraction/src/graphMinimizer.hpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/contraction/src/graphMinimizer.hpp
 

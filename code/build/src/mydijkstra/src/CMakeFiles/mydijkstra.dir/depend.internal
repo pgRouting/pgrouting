@@ -79,6 +79,7 @@ src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o
  /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/myGraph.hpp
  /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/structs.h
+ /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/contraction/src/graphMinimizer.hpp
  /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/dijkstra_function.cpp
  /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/dijkstra_function.h
  /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/mydijkstra/src/myDijkstra.hpp

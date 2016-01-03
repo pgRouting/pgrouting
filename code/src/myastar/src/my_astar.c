@@ -39,8 +39,10 @@ shortest_path_astar(PG_FUNCTION_ARGS) {
     MemoryContext   oldcontext;
     funcctx = SRF_FIRSTCALL_INIT();
     oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
+    bool has_rcost=false;
+    has_rcost=PG_GETARG_BOOL(3);
     //fetch the edges and construct the graph
-    num_edges=fetch_astar_data(text2char(PG_GETARG_TEXT_P(0)),&edges,&num_vertices);
+    num_edges=fetch_astar_data(text2char(PG_GETARG_TEXT_P(0)),&edges,&num_vertices,has_rcost);
     int source=PG_GETARG_INT64(1),target=PG_GETARG_INT64(2);
     elog(INFO, "EDGE COUNT: %d", num_edges);
     elog(INFO, "VERTEX COUNT: %d", num_vertices);

@@ -78,6 +78,7 @@ src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o: /usr/include/postgres
 
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: ../src/common/src/myGraph.hpp
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: ../src/common/src/structs.h
+src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: ../src/contraction/src/graphMinimizer.hpp
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: ../src/mydijkstra/src/dijkstra_function.cpp
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: ../src/mydijkstra/src/dijkstra_function.h
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: ../src/mydijkstra/src/myDijkstra.hpp
