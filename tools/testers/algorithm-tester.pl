@@ -326,9 +326,13 @@ sub createTestDB {
         print "-- Trying to install postgis extension $postgis_ver\n" if $DEBUG;
         mysystem("$psql $connopts -c \"$encoding create extension postgis $postgis_ver \" $databaseName");
         print "-- Trying to install pgTap extension \n" if $DEBUG;
-        mysystem("$psql $connopts -c \"$encoding create extension pgtap \" $databaseName");
+        system("$psql $connopts -c \"$encoding create extension pgtap \" $databaseName");
+        if ($? != 0) {
+            print "Failed: create extension pgtap\n" if $VERBOSE || $DRYRUN;
+            die;
+        }
     }
-#
+    #
 #    else {
 #        if ($vpgis && dbExists("template_postgis_$vpgis")) {
 #            $template = "template_postgis_$vpgis";
@@ -348,7 +352,7 @@ sub createTestDB {
 
     # next we install pgrouting into the new database
     if (version_greater_eq($dbver, '9.1') &&
-            -f "$dbshare/extension/postgis.control") {
+        -f "$dbshare/extension/postgis.control") {
         my $myver = '';
         if ($vpgr) {
             $myver = " PGROUTING VERSION '$vpgr'";
@@ -378,7 +382,7 @@ sub createTestDB {
 
     my $pgrv = `$psql $connopts -c "select pgr_version()" $databaseName`;
     die "ERROR: failed to install pgrouting into the database!\n"
-        unless $pgrv;
+    unless $pgrv;
 
 }
 
