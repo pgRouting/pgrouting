@@ -144,7 +144,8 @@ message("Setting the minimum requirements")
 # compiler with c++0x or c++11
 
 set(POSTGRESQL_MINIMUM_VERSION "9.1.0")
-set(CMAKE_MINIMUM_VERSION "2.8.8")
+#travis has 2.8.7
+set(CMAKE_MINIMUM_VERSION "2.8.7")
 set(BOOST_MINIMUM_VERSION "1.46.0")
 
 if (CDEBUG)
