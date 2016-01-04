@@ -66,6 +66,8 @@ shortest_path_astar(PG_FUNCTION_ARGS) {
         {
           elog(INFO,"%d | %d  | %d  | %f",path[i].id,path[i].source,path[i].target,path[i].cost);
         }
+        free(edges);
+        free(path);
         //printing it as a buffer
         //elog(INFO, "EDGES: %s", buf);
       }

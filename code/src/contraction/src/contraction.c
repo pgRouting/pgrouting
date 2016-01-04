@@ -59,19 +59,22 @@ contract_graph(PG_FUNCTION_ARGS) {
 			elog(INFO,"id	|	source	|	target	|	cost	");
 			for (i = 0; i < final_num_edges; ++i)
 			{
-				fprintf(fp, "%d,%d,%d,%f\n"
-					,final_edges[i].id,final_edges[i].source,final_edges[i].target,final_edges[i].cost);
+				//fprintf(fp, "%d,%d,%d,%f\n"
+				//	,final_edges[i].id,final_edges[i].source,final_edges[i].target,final_edges[i].cost);
 				elog(INFO,"%d	|	%d	|	%d	|	%f"
 					,final_edges[i].id,final_edges[i].source,final_edges[i].target,final_edges[i].cost);
 
 			}
 			elog(INFO, "FINAL EDGE COUNT: %d", final_num_edges);
+			free(edges);
+			free(final_edges);
 				//printing it as a buffer
 	 			//elog(INFO, "EDGES: %s", buf);
 		}
 		else
 		{
 			elog(INFO,"ERROR: %s","No tuples found.");
+			free(edges);
 		}
 		fclose(fp);
 		/* total number of tuples to be returned */
@@ -85,7 +88,7 @@ contract_graph(PG_FUNCTION_ARGS) {
 
 		funcctx->tuple_desc = tuple_desc;
 		MemoryContextSwitchTo(oldcontext);
-
+		
 	}
 /* stuff done on every call of the function */
 	funcctx = SRF_PERCALL_SETUP();

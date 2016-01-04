@@ -163,24 +163,27 @@ public:
 					tdesc2=neighbors_desc[1];
 					reduced_graph->get_vertex_id(tdesc1,tid1);
 					reduced_graph->get_vertex_id(tdesc2,tid2);
-					int64_t eid1=reduced_graph->graph[edge(tdesc1, front,reduced_graph->graph).first].id;
-					int64_t eid2=reduced_graph->graph[edge(front, tdesc2,reduced_graph->graph).first].id;
+					E edesc1=edge(tdesc1, front,reduced_graph->graph).first;
+					E edesc2=edge(front, tdesc2,reduced_graph->graph).first;
+					int64_t eid1=reduced_graph->graph[edesc1].id;
+					int64_t eid2=reduced_graph->graph[edesc2].id;
 					int64_t eid;
 					bool b1=edge(tdesc1, tdesc2,reduced_graph->graph).second;
 					bool b2=edge(tdesc2, tdesc1,reduced_graph->graph).second;
 				//cout << b1 << "," << b2 << endl;
 					if ( b1 || b2)
 					{
-						eid=reduced_graph->graph[edge(tdesc1, tdesc2,reduced_graph->graph).first].id;
-						float dist=reduced_graph->graph[edge(tdesc1, tdesc2,reduced_graph->graph).first].cost;
+						E edesc=edge(tdesc1, tdesc2,reduced_graph->graph).first;
+						eid=reduced_graph->graph[edesc].id;
+						float dist=reduced_graph->graph[edesc].cost;
 						if (fabs(min_distance-dist)>=0.000001)
 						{
 							min_distance=dist;
 						}
 						else
 						{
-							reduced_graph->graph[edge(tdesc1, tdesc2,reduced_graph->graph).first].cost=min_distance;
-							reduced_graph->graph[edge(tdesc1, tdesc2,reduced_graph->graph).first].type=1;
+							reduced_graph->graph[edesc].cost=min_distance;
+							reduced_graph->graph[edesc].type=1;
 						}
 					}
 					else
@@ -193,7 +196,7 @@ public:
 						shortcut.type=2;
 						reduced_graph->graph_add_edge(shortcut);
 					}
-					psuedoEdges[eid]=make_pair(eid1,eid2);
+					psuedoEdges[eid]=make_pair(edesc1,edesc2);
 					Edge removed_edge;
 					for (int i = 0; i < 2; ++i)
 					{
@@ -268,26 +271,29 @@ public:
 					//cout << "tdesc2 " << reduced_graph->graph[tdesc2].id << endl;
 					//cout << tdesc1 << "," << tdesc2 << endl;
 						Edge shortcut;
-						float dist1=reduced_graph->graph[edge(front, tdesc2,reduced_graph->graph).first].cost;
-						float dist2=reduced_graph->graph[edge(front, tdesc1,reduced_graph->graph).first].cost;
-						int64_t eid1=reduced_graph->graph[edge(tdesc1, front,reduced_graph->graph).first].id;
-						int64_t eid2=reduced_graph->graph[edge(front, tdesc2,reduced_graph->graph).first].id;
+						E edesc1=edge(front, tdesc1,reduced_graph->graph).first;
+						E edesc2=edge(front, tdesc2,reduced_graph->graph).first;
+						float dist2=reduced_graph->graph[edesc2].cost;
+						float dist1=reduced_graph->graph[edesc1].cost;
+						int64_t eid1=reduced_graph->graph[edesc1].id;
+						int64_t eid2=reduced_graph->graph[edesc2].id;
 						int64_t eid;
 						min_distance=dist1+dist2;
 						bool b1=edge(tdesc1, tdesc2,reduced_graph->graph).second;
 						bool b2=edge(tdesc2, tdesc1,reduced_graph->graph).second;
 						if ( b1 || b2)
 						{
-							float dist=reduced_graph->graph[edge(tdesc1, tdesc2,reduced_graph->graph).first].cost;
+							E edesc=edge(tdesc1, tdesc2,reduced_graph->graph).first;
+							float dist=reduced_graph->graph[edesc].cost;
 							if (fabs(min_distance-dist)>=0.000001)
 							{
 								min_distance=dist;
 							}
 							else
 							{
-								reduced_graph->graph[edge(tdesc1, tdesc2,reduced_graph->graph).first].cost=min_distance;
-								reduced_graph->graph[edge(tdesc1, tdesc2,reduced_graph->graph).first].type=1;
-								eid=reduced_graph->graph[edge(tdesc1, tdesc2,reduced_graph->graph).first].id;
+								reduced_graph->graph[edesc].cost=min_distance;
+								reduced_graph->graph[edesc].type=1;
+								eid=reduced_graph->graph[edesc].id;
 							}
 						}
 						else
@@ -302,7 +308,7 @@ public:
 							shortcut.type=2;
 							reduced_graph->graph_add_edge(shortcut);
 						}
-						psuedoEdges[eid]=make_pair(eid1,eid2);
+						psuedoEdges[eid]=make_pair(edesc1,edesc2);
 					}
 				}
 				Edge removed_edge;
