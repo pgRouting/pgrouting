@@ -346,7 +346,7 @@ get_result(
         result.push_back({seq, route_id, depot.id, agg_cost});
         ++seq;
         ++route_id;
-#if 0
+#if 1
         if (VehicleLength < route_id) break;
 #endif
     }

@@ -311,6 +311,7 @@ bool CVRPSolver::solveVRP(std::string& strError)
 		}
 	}
 	m_bIsSolutionReady = true;
+    strError += " ";
 	return true;
 
 }

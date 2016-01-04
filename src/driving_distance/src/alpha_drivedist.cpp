@@ -274,6 +274,7 @@ int alpha_shape(vertex_t *vertices, unsigned int count, double alpha,
       }
     }
   }
+  *err_msg = NULL;
 
   return EXIT_SUCCESS;
 }

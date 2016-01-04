@@ -57,6 +57,10 @@ int bidirsp_wrapper(
         BiDirDijkstra bddijkstra;
         // DBG("BiDirDijkstra initialized\n");
         res = bddijkstra.bidir_dijkstra(edges, edge_count, maxNode, start_vertex, end_vertex, path, path_count, err_msg);
+        // TODO  this are an unused parameters have to be used
+        if (has_reverse_cost) {};
+        if (directed) {};
+
     }
     catch(std::exception& e) {
         // DBG("catch(std::exception e.what: %s\n", e.what());
@@ -73,6 +77,6 @@ int bidirsp_wrapper(
     if (res < 0)
         return res;
     else
-	    return EXIT_SUCCESS;
+        return EXIT_SUCCESS;
 }
 

@@ -30,9 +30,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 typedef struct {
         int64_t id;
-        int64_t x;
-        int64_t y;
-        int64_t demand;
+        double x;
+        double y;
+        double demand;
         double Etime;
         double Ltime;
         double Stime;

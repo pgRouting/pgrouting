@@ -132,7 +132,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
         return -1;
     }
 
-    vertex_descriptor _target[nb_targets];
+    std::vector < vertex_descriptor > _target(nb_targets);
     for (int i = 0; i < nb_targets; i++)
     {
         _target[i] = vertex(end_vertices[i], graph);
@@ -158,7 +158,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
 
     int index_of_last_path_vertex = 0;
     int sum_path_sizes = 0, i = 0, j = 0;
-    bool no_path[nb_targets];
+    std::vector < bool > no_path(nb_targets);
     for (i = 0; i < nb_targets; i++)
     {
         no_path[i] = false;
