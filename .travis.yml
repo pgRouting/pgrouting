@@ -41,14 +41,10 @@ env:
   - POSTGRESQL_VERSION=9.1
   - POSTGRESQL_VERSION=9.2
   - POSTGRESQL_VERSION=9.3
+  - POSTGRESQL_VERSION=9.4
 
 # excecuted. So things have to be tested oe by one.
 addons:
-  # postgresql: 9.4
-  # postgresql: 9.3
-  postgresql: 9.2
-  # postgresql: 9.1
-  # Dependencies on linux.
   apt:
     sources:
       # For gcc >= 4.8
