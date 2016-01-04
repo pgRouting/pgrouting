@@ -331,7 +331,7 @@ sub createTestDB {
         print "-- Trying to install postgis extension $myver\n" if $DEBUG;
         mysystem("$psql $connopts -c \"$encoding create extension postgis $myver\" $databaseName");
         print "-- Trying to install pgTap extension \n" if $DEBUG;
-        mysystem("$psql $connopts -c \"$encoding create extension pgtap   $myver\" $databaseName");
+        mysystem("$psql $connopts -c \"$encoding create extension pgtap \" $databaseName");
     }
 #
 #    else {
