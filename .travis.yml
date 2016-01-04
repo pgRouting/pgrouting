@@ -57,13 +57,14 @@ addons:
       - libboost-thread-dev
       - libboost-graph-dev
       - libcgal-dev
+      - postgresql-server-dev-$POSTGRESQL_VERSION
 
 
 before_script:
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH     # Add our chosen PG version to the path
   - sudo /etc/init.d/postgresql stop                         # Stop whichever version of PG that travis started
   - sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION             # Start the version of PG that we want to test
-  - sudo apt-get install postgresql-server-dev-$POSTGRESQL_VERSION    # Required for PGXS
+  #- sudo apt-get install postgresql-server-dev-$POSTGRESQL_VERSION    # Required for PGXS
   - sudo apt-get install postgresql-common                   # Required for extension support files
   #- createdb hll_regress                                     # Create the test database
 
