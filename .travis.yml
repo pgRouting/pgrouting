@@ -57,7 +57,7 @@ addons:
       - libboost-thread-dev
       - libboost-graph-dev
       - libcgal-dev
-      - postgresql-server-dev-$POSTGRESQL_VERSION
+      - postgresql-server-dev-all
 
 
 before_script:
