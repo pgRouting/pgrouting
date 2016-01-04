@@ -43,11 +43,13 @@ sub Usage {
 
 print "RUNNING: algorithm-tester.pl " . join(" ", @ARGV) . "\n";
 
-my ($vpg, $vpgis, $vpgr, $psql);
+my ($vpg, $postgis_ver, $vpgr, $psql);
 my $alg = '';
 my @testpath = ("doc/", "src/");
 my $clean;
 my $ignore;
+
+$postgis_ver = '';
 
 while (my $a = shift @ARGV) {
     if ( $a eq '-pgver') {
@@ -63,7 +65,8 @@ while (my $a = shift @ARGV) {
         $DBUSER = shift @ARGV || Usage();
     }
     elsif ($a eq '-pgisver') {
-        $vpgis = shift @ARGV || Usage();
+        $postgis_ver = shift @ARGV || Usage();
+        $postgis_ver = " VERSION '$postgis_ver'";
     }
     elsif ($a eq '-pgrver') {
         $vpgr = shift @ARGV || Usage();
@@ -151,7 +154,7 @@ die "Error: no test files found. Run this command from the top level pgRouting d
 createTestDB($DBNAME);
 
 $vpg = '' if ! $vpg;
-$vpgis = '' if ! $vpgis;
+$postgis_ver = '' if ! $postgis_ver;
 
 # cfgs = SET of configuration file names
 # c  one file in cfgs
@@ -168,12 +171,8 @@ for my $c (@cfgs) {
         push @{$stats{$c}}, run_test($c, $main::tests{any});
         $found++;
     }
-    if ($main::tests{"$vpg-$vpgis"}) {
-        push @{$stats{$c}}, run_test($c, $main::tests{"$vpg-$vpgis"});
-        $found++;
-    }
     if (! $found) {
-        $stats{$c} = "No tests were found for '$vpg-$vpgis'!";
+        $stats{$c} = "No tests were found for '$vpg-$postgis_ver'!";
     }
 }
 
@@ -319,17 +318,13 @@ sub createTestDB {
         mysystem("createdb $connopts $databaseName");
         die "ERROR: Failed to create database '$databaseName'!\n"
             unless dbExists($databaseName);
-        my $myver = '';
-        if ($vpgis) {
-            $myver = " VERSION '$vpgis'";
-        }
         my $encoding = '';
         if ($OS =~ /msys/
             || $OS =~ /MSWin/) {
             $encoding = "SET client_encoding TO 'UTF8';";
         }
-        print "-- Trying to install postgis extension $myver\n" if $DEBUG;
-        mysystem("$psql $connopts -c \"$encoding create extension postgis $myver\" $databaseName");
+        print "-- Trying to install postgis extension $postgis_ver\n" if $DEBUG;
+        mysystem("$psql $connopts -c \"$encoding create extension postgis $postgis_ver \" $databaseName");
         print "-- Trying to install pgTap extension \n" if $DEBUG;
         mysystem("$psql $connopts -c \"$encoding create extension pgtap \" $databaseName");
     }
