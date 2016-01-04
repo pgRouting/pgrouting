@@ -33,20 +33,20 @@ run_psql () {
 # ------------------------------------------------------------------------------
 #export PGUSER
 #run_psql -l
-#run_psql -c "CREATE DATABASE $PGDATABASE;"
+run_psql -c "CREATE DATABASE ____tmp_pgdb______;"
 #export PGDATABASE
 
 # ------------------------------------------------------------------------------
 # CREATE EXTENSION
 # ------------------------------------------------------------------------------
-#run_psql -d $PGDATABASE -c "CREATE EXTENSION postgis;"
+run_psql -d  ____tmp_pgdb______ -c "CREATE EXTENSION postgis;"
 
 # ------------------------------------------------------------------------------
 # Get version information
 # ------------------------------------------------------------------------------
-run_psql -c "SELECT version();"    
-run_psql -c "SELECT postgis_full_version();"    
-run_psql -c "SELECT pgr_version();"
+run_psql -d  ____tmp_pgdb______ -c "SELECT version();"    
+run_psql -d  ____tmp_pgdb______ -c "SELECT postgis_full_version();"    
+run_psql -d  ____tmp_pgdb______ -c "SELECT pgr_version();"
 
 #PGROUTING_VERSION=`run_psql -A -t -c "SELECT version FROM pgr_version();"`
 
