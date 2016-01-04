@@ -46,8 +46,8 @@ public:
 	typedef typename std::vector<V>::iterator Q_i;
 	typedef typename boost::graph_traits < G >::out_edge_iterator EO_i;
 	typedef typename std::map<V,deque<Edge> >::iterator removed_V_i;
-	typedef typename std::map<int64_t , pair<int64_t,int64_t> > psuedo_E;
-	typedef typename std::map<int64_t , pair<int64_t,int64_t> >::iterator psuedo_E_i;
+	typedef typename std::map<int64_t , pair<E,E> > psuedo_E;
+	typedef typename std::map<int64_t , pair<E,E> >::iterator psuedo_E_i;
 	int64_t last_edge_id;
 	typedef deque<Edge> unpackedPath;
 	unpackedPath source_un_p,target_un_p;
