@@ -40,6 +40,7 @@ run_psql -c "CREATE DATABASE ____tmp_pgdb______;"
 # CREATE EXTENSION
 # ------------------------------------------------------------------------------
 run_psql -d  ____tmp_pgdb______ -c "CREATE EXTENSION postgis;"
+run_psql -d  ____tmp_pgdb______ -c "CREATE EXTENSION pgrouting;"
 
 # ------------------------------------------------------------------------------
 # Get version information
