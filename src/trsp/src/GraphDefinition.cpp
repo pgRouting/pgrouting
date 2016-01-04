@@ -464,7 +464,9 @@ int GraphDefinition:: my_dijkstra(int start_vertex, int end_vertex,
             }
         }
         log << "Path Not Found";
-        return -1;
+        *path=NULL;
+        path_count=0;
+        return 0;
     }
     else
     {
@@ -659,7 +661,6 @@ bool GraphDefinition::addEdge(edge_t edgeIn)
     newEdge.m_lEndNode = edgeIn.target;
     newEdge.m_dCost = edgeIn.cost;
     newEdge.m_dReverseCost = edgeIn.reverse_cost;
-
     if(edgeIn.id > max_edge_id)
     {
         max_edge_id = edgeIn.id;
