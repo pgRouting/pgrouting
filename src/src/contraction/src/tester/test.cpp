@@ -72,7 +72,7 @@ void check(Edge *edges,int num_vertices,int num_edges,int level)
 	//fp=fopen(path.c_str(),"w+");
 	typedef Graph_Minimizer<G> Graph;
 	Graph g(UNDIRECTED,num_vertices);
-	g.initialize_graph(edges,num_edges);
+	g.initialize_graph_minimizer(edges,num_edges);
 	g.print_Degree_Vertices();
 	//cout << "Contracting...." << endl;
 	g.contract_to_level(level);
@@ -85,27 +85,15 @@ void check(Edge *edges,int num_vertices,int num_edges,int level)
 	//cout << "final_edges " << final_edges << endl;
 	for (int i = 0; i < final_edges && reduced[i].id>0; ++i)
 	{
-		//cout << "id:- " << reduced[i].id << ", " << "source:- " << reduced[i].source << ", target:- " << reduced[i].target << endl;
+		cout << "id:- " << reduced[i].id << ", " << "source:- " << reduced[i].source << ", target:- " << reduced[i].target << endl;
 		//fprintf(fp, "%d,%d,%d,%f\n"
 		//			,reduced[i].id,reduced[i].source,reduced[i].target,reduced[i].cost);
 
 	}
-	//g.print_removed_vertices();
+	g.print_removed_vertices();
 	//g.print_psuedo_edges();
 	long int close_id;
 	deque<Edge> ids;
-	/*g.find_closest_vertex(5,close_id,ids);
-	cout << "closest Vertex " << close_id << endl;
-	while(!ids.empty())
-	{
-		Edge e=ids.front();
-		cout << "id:- " << e.id << ", " << "source:- " << e.source << ", target:- " << e.target << endl;
-		ids.pop_front();
-	}*/
-	Edge *path=NULL;
-	int64_t path_size=0;
-	g.dijkstra_on_contracted(6,10,&path,path_size);
-	g.print_path(&path,path_size);
 }
 
 int main(int argc, char const *argv[])
