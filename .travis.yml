@@ -65,6 +65,10 @@ before_script:
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH     # Add our chosen PG version to the path
   - sudo /etc/init.d/postgresql stop                         # Stop whichever version of PG that travis started
   - sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION             # Start the version of PG that we want to test
+  - ./tools/travis/install_pgtap.sh 
+  - createdb pgr_test__db__test
+  - psql -c "CREATE EXTENSION pgtap" pgr_test__db__test
+  - psql .c "SELECT pgtap_version()"
 
 #env:
   #matrix:
@@ -84,7 +88,6 @@ before_script:
     #- POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=1.5
 
 before_install:
-  - ./tools/travis/install_pgtap.sh 
 
 before_script:
   #-
