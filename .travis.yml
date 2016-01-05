@@ -70,26 +70,10 @@ before_script:
   - psql -c "CREATE EXTENSION pgtap" pgr_test__db__test
   - psql .c "SELECT pgtap_version()"
 
-#env:
-  #matrix:
-    #- POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.1
-    #- POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
-    #- POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
-    #- POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
 
-    #- POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.0
-    #- POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.0
-    #- POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.0
-    #- POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.0
+#before_install:
 
-    ## We are NOT supporting these for pgrouting 2.1.0
-    #- POSTGRESQL_VERSION=8.4 POSTGIS_VERSION=1.5
-    #- POSTGRESQL_VERSION=9.0 POSTGIS_VERSION=1.5
-    #- POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=1.5
-
-before_install:
-
-before_script:
+#before_script:
   #-
 
 script: 
