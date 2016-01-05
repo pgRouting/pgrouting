@@ -19,5 +19,8 @@ cd pgtap-master
 make
 make installcheck
 sudo make install
-sudo ldconfig
-
+cd ..
+createdb pgr_test__db__test
+psql -c "SELECT version()" pgr_test__db__test
+psql -c "CREATE EXTENSION pgtap" pgr_test__db__test
+psql -c "SELECT pgtap_version()"
