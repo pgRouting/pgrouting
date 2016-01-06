@@ -21,6 +21,16 @@ make installcheck
 sudo make install
 cd ..
 createdb pgr_test__db__test
-psql -c "SELECT version()" pgr_test__db__test
-psql -c "CREATE EXTENSION pgtap" pgr_test__db__test
-psql -c "SELECT pgtap_version()"
+# Define alias function for psql command
+run_psql () {
+    PGOPTIONS='--client-min-messages=warning' psql -U $PGUSER  -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
+    if [ "$?" -ne 0 ]
+    then
+        echo "Test query failed: $@"
+        ERROR=1
+    fi
+}
+
+run_psql -c "SELECT version()" pgr_test__db__test
+run_psql -c "CREATE EXTENSION pgtap" pgr_test__db__test
+run_psql -c "SELECT pgtap_version()"
