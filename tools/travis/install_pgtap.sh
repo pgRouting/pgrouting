@@ -19,7 +19,9 @@ PGUSER="postgres"
 wget https://github.com/theory/pgtap/archive/master.zip
 unzip master.zip
 cd pgtap-master
-make -DPG_CONFIG=/usr/lib/postgresql/$1/bin/pg_config
+PG_CONFIG=/usr/lib/postgresql/$1/bin/pg_config
+export PG_CONFIG
+make
 make installcheck
 sudo make install
 
