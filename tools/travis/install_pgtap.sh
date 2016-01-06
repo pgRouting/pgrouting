@@ -19,46 +19,8 @@ sudo cp /usr/lib/postgresql/$1/bin/pg_config /usr/bin/pg_config
 wget https://github.com/theory/pgtap/archive/master.zip
 unzip master.zip
 cd pgtap-master
-#PG_CONFIG=/usr/lib/postgresql/$1/bin/pg_config
-#export PG_CONFIG
 make
 make installcheck
 sudo make install
 
-#installing manually
-#sudo cp pgtap.control /usr/share/postgresql/$1/extension/pgtap.control
-#sudo cp sql/pgtap--0.95.0.sql /usr/share/postgresql/$1/extension/pgtap--0.95.0.sql
-#sudo cp sql/pgtap-core--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap-core--0.95.0.sql
-#sudo cp sql/pgtap-schema--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap-schema--0.95.0.sql
-#sudo cp sql/pgtap--0.90.0--0.91.0.sql /usr/share/postgresql/$1/extension/pgtap--0.90.0--0.91.0.sql
-#sudo cp sql/pgtap--0.91.0--0.92.0.sql /usr/share/postgresql/$1/extension/pgtap--0.91.0--0.92.0.sql
-#sudo cp sql/pgtap--0.92.0--0.93.0.sql /usr/share/postgresql/$1/extension/pgtap--0.92.0--0.93.0.sql
-#sudo cp sql/pgtap--0.93.0--0.94.0.sql /usr/share/postgresql/$1/extension/pgtap--0.93.0--0.94.0.sql
-#sudo cp sql/pgtap--0.94.0--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap--0.94.0--0.95.0.sql
-#sudo cp sql/pgtap--0.95.0--0.96.0.sql  /usr/share/postgresql/$1/extension/pgtap--0.95.0--0.96.0.sql
-#sudo cp sql/pgtap--unpackaged--0.91.0.sql  /usr/share/postgresql/$1/extension/pgtap--unpackaged--0.91.0.sql
-
-
-sudo updatedb
-echo "locate pgtap"
-locate pgtap
-  
-
-
-cd ..
-createdb pgr_test__db__test
-# Define alias function for psql command
-run_psql () {
-    PGOPTIONS='--client-min-messages=warning' psql -U $PGUSER  -e -X -v ON_ERROR_STOP=1 --pset pager=off "$@" -d pgr_test__db__test
-    if [ "$?" -ne 0 ]
-    then
-        echo "Test query failed: $@"
-        ERROR=1
-    fi
-}
-
-run_psql -c "SELECT version()" 
-run_psql -c "CREATE EXTENSION pgtap" 
-run_psql -c "\dx"
-run_psql -c "\dx+ pgtap"
-run_psql -c "SELECT pgtap_version()"
+#sh test_pgtap.sh

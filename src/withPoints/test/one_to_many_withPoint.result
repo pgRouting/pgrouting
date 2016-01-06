@@ -1,0 +1,9 @@
+1..8
+ok 1 - 1: From point 3 to 1 and 5 the union vs 1,5 order
+ok 2 - 2: From point 3 to 1 and 5 the union vs 5,1 order
+ok 3 - 2: From point 3 to 1 and 5 the union vs 5,1 eliminate repetitions
+ok 4 - 2: From point 3 to 1 and 5 the 1,5 vs 5,1 order
+ok 5 - 2: From point 3 to 1 and 5 the 1,5 vs 5,1 eliminate repetitions
+ok 6
+ok 7 - Same id with different data throws
+ok 8 - Same id with different data throws

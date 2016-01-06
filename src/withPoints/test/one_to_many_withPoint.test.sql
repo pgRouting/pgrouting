@@ -1,7 +1,7 @@
 \set VERBOSITY terse
 
 BEGIN;
-    SELECT PLAN(100);
+    SELECT PLAN(8);
 
     CREATE table points(
         pid SERIAL,
