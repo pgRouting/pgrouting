@@ -14,7 +14,7 @@ set -e
 echo "Installing pgtap ... this may take some time."
 PGUSER="postgres"
 
-#sudo cp /usr/lib/postgresql/$1/bin/pg_config /usr/bin/pg_config
+sudo cp /usr/lib/postgresql/$1/bin/pg_config /usr/bin/pg_config
 
 wget https://github.com/theory/pgtap/archive/master.zip
 unzip master.zip
@@ -23,20 +23,20 @@ cd pgtap-master
 #export PG_CONFIG
 make
 make installcheck
-#sudo make install
+sudo make install
 
 #installing manually
-sudo cp pgtap.control /usr/share/postgresql/$1/extension/pgtap.control
-sudo cp sql/pgtap--0.95.0.sql /usr/share/postgresql/$1/extension/pgtap--0.95.0.sql
-sudo cp sql/pgtap-core--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap-core--0.95.0.sql
-sudo cp sql/pgtap-schema--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap-schema--0.95.0.sql
-sudo cp sql/pgtap--0.90.0--0.91.0.sql /usr/share/postgresql/$1/extension/pgtap--0.90.0--0.91.0.sql
-sudo cp sql/pgtap--0.91.0--0.92.0.sql /usr/share/postgresql/$1/extension/pgtap--0.91.0--0.92.0.sql
-sudo cp sql/pgtap--0.92.0--0.93.0.sql /usr/share/postgresql/$1/extension/pgtap--0.92.0--0.93.0.sql
-sudo cp sql/pgtap--0.93.0--0.94.0.sql /usr/share/postgresql/$1/extension/pgtap--0.93.0--0.94.0.sql
-sudo cp sql/pgtap--0.94.0--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap--0.94.0--0.95.0.sql
-sudo cp sql/pgtap--0.95.0--0.96.0.sql  /usr/share/postgresql/$1/extension/pgtap--0.95.0--0.96.0.sql
-sudo cp sql/pgtap--unpackaged--0.91.0.sql  /usr/share/postgresql/$1/extension/pgtap--unpackaged--0.91.0.sql
+#sudo cp pgtap.control /usr/share/postgresql/$1/extension/pgtap.control
+#sudo cp sql/pgtap--0.95.0.sql /usr/share/postgresql/$1/extension/pgtap--0.95.0.sql
+#sudo cp sql/pgtap-core--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap-core--0.95.0.sql
+#sudo cp sql/pgtap-schema--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap-schema--0.95.0.sql
+#sudo cp sql/pgtap--0.90.0--0.91.0.sql /usr/share/postgresql/$1/extension/pgtap--0.90.0--0.91.0.sql
+#sudo cp sql/pgtap--0.91.0--0.92.0.sql /usr/share/postgresql/$1/extension/pgtap--0.91.0--0.92.0.sql
+#sudo cp sql/pgtap--0.92.0--0.93.0.sql /usr/share/postgresql/$1/extension/pgtap--0.92.0--0.93.0.sql
+#sudo cp sql/pgtap--0.93.0--0.94.0.sql /usr/share/postgresql/$1/extension/pgtap--0.93.0--0.94.0.sql
+#sudo cp sql/pgtap--0.94.0--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap--0.94.0--0.95.0.sql
+#sudo cp sql/pgtap--0.95.0--0.96.0.sql  /usr/share/postgresql/$1/extension/pgtap--0.95.0--0.96.0.sql
+#sudo cp sql/pgtap--unpackaged--0.91.0.sql  /usr/share/postgresql/$1/extension/pgtap--unpackaged--0.91.0.sql
 sudo updatedb
 echo "locate pgtap"
 locate pgtap
