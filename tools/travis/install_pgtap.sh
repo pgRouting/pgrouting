@@ -37,7 +37,7 @@ cd ..
 createdb pgr_test__db__test
 # Define alias function for psql command
 run_psql () {
-    PGOPTIONS='--client-min-messages=warning' psql -U $PGUSER  -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
+    PGOPTIONS='--client-min-messages=warning' psql -U $PGUSER  -e -X -v ON_ERROR_STOP=1 --pset pager=off "$@"
     if [ "$?" -ne 0 ]
     then
         echo "Test query failed: $@"
