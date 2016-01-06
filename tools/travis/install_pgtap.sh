@@ -24,10 +24,10 @@ make installcheck
 #sudo make install
 
 #installing manually
-sudo cp pgtap.control /usr/share/postgresql/$1/extension/pgtap.control
-sudo cp sql/pgtap--0.95.0.sql /usr/share/postgresql/$1/extension/pgtap--0.95.0.sql
-sudo cp sql/pgtap-core--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap-core--0.95.0.sql
-sudo cp sql/pgtap-schema--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap-schema--0.95.0.sql
+#sudo cp pgtap.control /usr/share/postgresql/$1/extension/pgtap.control
+#sudo cp sql/pgtap--0.95.0.sql /usr/share/postgresql/$1/extension/pgtap--0.95.0.sql
+#sudo cp sql/pgtap-core--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap-core--0.95.0.sql
+#sudo cp sql/pgtap-schema--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap-schema--0.95.0.sql
   
 
 
