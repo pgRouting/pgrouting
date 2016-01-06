@@ -37,6 +37,8 @@ sudo make install
 #sudo cp sql/pgtap--0.94.0--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap--0.94.0--0.95.0.sql
 #sudo cp sql/pgtap--0.95.0--0.96.0.sql  /usr/share/postgresql/$1/extension/pgtap--0.95.0--0.96.0.sql
 #sudo cp sql/pgtap--unpackaged--0.91.0.sql  /usr/share/postgresql/$1/extension/pgtap--unpackaged--0.91.0.sql
+
+
 sudo updatedb
 echo "locate pgtap"
 locate pgtap
@@ -57,4 +59,6 @@ run_psql () {
 
 run_psql -c "SELECT version()" pgr_test__db__test
 run_psql -c "CREATE EXTENSION pgtap" pgr_test__db__test
+run_psql -c "\dx"
+run_psql -c "\dx+ pgtap"
 run_psql -c "SELECT pgtap_version()"
