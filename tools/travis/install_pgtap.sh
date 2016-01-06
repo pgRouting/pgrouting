@@ -12,6 +12,7 @@ POSTGRESQL_VERSION="$1"
 set -e 
 
 echo "Installing pgtap ... this may take some time."
+PGUSER="postgres"
 
 #sudo cp /usr/lib/postgresql/$1/bin/pg_config /usr/bin/pg_config
 
