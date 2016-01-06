@@ -71,6 +71,9 @@ The main Characteristics are:
 
   - When  `start_vid` = `end_vid`, the `agg_cost` = 0.
 
+  - **Recomended, use a bounding box of no more than 3500 edges.**
+
+
 
 Description of the Signature
 ============================

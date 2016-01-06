@@ -13,6 +13,8 @@ set -e
 
 echo "Installing pgtap ... this may take some time."
 
+sudo cp /usr/lib/postgresql/$1/bin/pg_config /usr/bin/pg_config
+
 wget https://github.com/theory/pgtap/archive/master.zip
 unzip master.zip
 cd pgtap-master
