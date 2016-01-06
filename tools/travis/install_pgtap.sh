@@ -49,7 +49,7 @@ cd ..
 createdb pgr_test__db__test
 # Define alias function for psql command
 run_psql () {
-    PGOPTIONS='--client-min-messages=warning' psql -U $PGUSER  -e -X -v ON_ERROR_STOP=1 --pset pager=off "$@"
+    PGOPTIONS='--client-min-messages=warning' psql -U $PGUSER  -e -X -v ON_ERROR_STOP=1 --pset pager=off "$@" -d pgr_test__db__test
     if [ "$?" -ne 0 ]
     then
         echo "Test query failed: $@"
@@ -57,8 +57,8 @@ run_psql () {
     fi
 }
 
-run_psql -c "SELECT version()" pgr_test__db__test
-run_psql -c "CREATE EXTENSION pgtap" pgr_test__db__test
+run_psql -c "SELECT version()" 
+run_psql -c "CREATE EXTENSION pgtap" 
 run_psql -c "\dx"
 run_psql -c "\dx+ pgtap"
 run_psql -c "SELECT pgtap_version()"
