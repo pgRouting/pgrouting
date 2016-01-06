@@ -19,17 +19,17 @@ PGUSER="postgres"
 wget https://github.com/theory/pgtap/archive/master.zip
 unzip master.zip
 cd pgtap-master
-PG_CONFIG=/usr/lib/postgresql/$1/bin/pg_config
-export PG_CONFIG
+#PG_CONFIG=/usr/lib/postgresql/$1/bin/pg_config
+#export PG_CONFIG
 make
 make installcheck
-sudo make install
+#sudo make install
 
 #installing manually
-#sudo cp pgtap.control /usr/share/postgresql/$1/extension/pgtap.control
-#sudo cp sql/pgtap--0.95.0.sql /usr/share/postgresql/$1/extension/pgtap--0.95.0.sql
-#sudo cp sql/pgtap-core--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap-core--0.95.0.sql
-#sudo cp sql/pgtap-schema--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap-schema--0.95.0.sql
+sudo cp pgtap.control /usr/share/postgresql/$1/extension/pgtap.control
+sudo cp sql/pgtap--0.95.0.sql /usr/share/postgresql/$1/extension/pgtap--0.95.0.sql
+sudo cp sql/pgtap-core--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap-core--0.95.0.sql
+sudo cp sql/pgtap-schema--0.95.0.sql  /usr/share/postgresql/$1/extension/pgtap-schema--0.95.0.sql
   
 
 
