@@ -41,7 +41,7 @@ env:
     - POSTGRESQL_VERSION=9.1
     #- POSTGRESQL_VERSION=9.2
     #- POSTGRESQL_VERSION=9.3
-    - POSTGRESQL_VERSION=9.4
+    #- POSTGRESQL_VERSION=9.4
 
 # excecuted. So things have to be tested oe by one.
 addons:
@@ -66,6 +66,7 @@ before_script:
   - sudo /etc/init.d/postgresql stop                         # Stop whichever version of PG that travis started
   - sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION             # Start the version of PG that we want to test
   - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION
+  - sudo apt-get install libtap-parser-sourcehandler-pgtap-perl
 
 
 #before_install:
