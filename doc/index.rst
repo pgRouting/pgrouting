@@ -112,38 +112,40 @@ Routing functions
 
 :ref:`routing_functions`
 
-  - :ref:`pgr_astar<pgr_astar>` - Shortest Path A*
-  - :ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
-  - :ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path
-  - :ref:`pgr_dijkstra<pgr_dijkstra>` - Dijkstra family functions
+    - :ref:`pgr_astar<pgr_astar>` - Shortest Path A*
+    - :ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
+    - :ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path
+    - :ref:`pgr_dijkstra<pgr_dijkstra>` - Dijkstra family functions
 
-    - :ref:`pgr_dijkstra_v3` - Dijkstra's shortest path algorithm.
-    - :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to calculate the costs of the shortest paths.
-    - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via Vetices 
+        - :ref:`pgr_dijkstra_v3` - Dijkstra's shortest path algorithm.
+        - :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to calculate the costs of the shortest paths.
+        - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via Vetices 
 
-  - :ref:`pgr_driving_distance<pgr_driving_distance>` - Driving Distance
-  - :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
-  - :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
-  - :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
-  - :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
-  - :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
+    - :ref:`pgr_driving_distance<pgr_driving_distance>` - Driving Distance
+    - :ref:`All pairs<all_pairs>` - All pair of vertices.
+
+        - :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
+        - :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
+
+    - :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
+    - :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
+    - :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
 
 
 
-  - :ref:`pgr_withPoints<withPoints>` - withPoints family functions
+    - :ref:`pgr_withPoints<withPoints>` - withPoints family functions
 
-    - :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
-    - :ref:`pgr_withPointsCost` - Costs of the shortest paths.
-    - :ref:`pgr_withPointsVia` - Make a route via points.
-    - :ref:`pgr_withPointsKSP<pgr_withPointsKSP>` - K shortest paths.
-    - :ref:`pgr_withPointsDD<pgr_withPointsDD>` - Driving distance (departing).
+        - :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
+        - :ref:`pgr_withPointsCost` - Costs of the shortest paths.
+        - :ref:`pgr_withPointsVia` - Make a route via points.
+        - :ref:`pgr_withPointsKSP<pgr_withPointsKSP>` - K shortest paths.
+        - :ref:`pgr_withPointsDD<pgr_withPointsDD>` - Driving distance (departing).
 
 
 .. toctree::
 	:hidden:
 
 	../src/index
-
 
 *******************************************************************************
 Deprecated Routing Functions

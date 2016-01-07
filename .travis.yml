@@ -67,7 +67,7 @@ before_script:
   - sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION             # Start the version of PG that we want to test
   - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION
   - sudo apt-get install libtap-parser-sourcehandler-pgtap-perl
-  - create database  ___pgr___test___
+  - createdb  ___pgr___test___
 
 
 #before_install:
