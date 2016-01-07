@@ -60,6 +60,12 @@ run_psql () {
 #./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE 
 #./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE -v -alg ksp
 
+cd ./tools/testers/
+psql -f setup_db.sql
+pg_prove ../../src/trsp/test/pgtap/*
+dropdb ___pgr___test___
+cd ../../
+
 ./tools/testers/algorithm-tester.pl  -pgver $POSTGRESQL_VERSION -ignorenotice
 
 if [ "$?" -ne 0 ]
