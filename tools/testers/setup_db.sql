@@ -11,7 +11,6 @@
 \set ON_ERROR_ROLLBACK 1
 \set ON_ERROR_STOP true
 
-CREATE DATABASE ___pgr___test___;
 \c ___pgr___test___;
 
 
