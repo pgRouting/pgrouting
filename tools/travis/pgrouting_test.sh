@@ -66,7 +66,7 @@ pg_prove ../../src/trsp/test/pgtap/*
 dropdb ___pgr___test___
 cd ../../
 
-./tools/testers/algorithm-tester.pl  -pgver $POSTGRESQL_VERSION -ignorenotice
+#./tools/testers/algorithm-tester.pl  -pgver $POSTGRESQL_VERSION -ignorenotice
 
 if [ "$?" -ne 0 ]
 then

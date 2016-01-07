@@ -146,6 +146,8 @@ Routing functions
 	:hidden:
 
 	../src/index
+	../src/allpairs/doc/all_pairs
+	../src/withPoints/doc/withPoints
 
 *******************************************************************************
 Deprecated Routing Functions
