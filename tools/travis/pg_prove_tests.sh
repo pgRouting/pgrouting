@@ -22,6 +22,7 @@ run_psql () {
 }
 
 
+
 echo "cd ./tools/testers/"
 cd ./tools/testers/
 echo "psql -f setup_db.sql"
