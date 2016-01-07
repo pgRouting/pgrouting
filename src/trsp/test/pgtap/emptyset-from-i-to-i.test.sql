@@ -1,50 +1,5 @@
-/*PGR-GNU*****************************************************************
+\i setup.sql
 
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
-
-------
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
-********************************************************************PGR-GNU*/
-/*
-This test is to check that empty set when going from i to i
-- empty set in the new version
-- exception in the old version
-
-for both: directed and undirected versions
-
-*/
-
-\set ECHO none
-\set QUIET 1
--- Turn off echo and keep things quiet.
-
--- Format the output for nice TAP.
-\pset format unaligned
-\pset tuples_only true
-\pset pager
-\set VERBOSITY terse
-
--- Revert all changes on failure.
-\set ON_ERROR_ROLLBACK true
-\set ON_ERROR_STOP true
-\set QUIET 1
-
-BEGIN;
     SELECT plan(144);
 
 

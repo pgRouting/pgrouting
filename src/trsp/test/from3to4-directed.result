@@ -1,4 +1,0 @@
-1..3
-ok 1 - 1: No path from 1 to 1
-ok 2 - 2: without retrictions returns the same as pgr_dijkstra
-ok 3 - 3: with retrictions returns expected path

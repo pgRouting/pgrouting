@@ -1,8 +1,0 @@
-1..7
-ok 1 - 1: Directed: No path from 1 to 1
-ok 2 - 2: Directed: No path from 1 to 1
-ok 3 - 3: Directed: without retrictions returns the same as pgr_dijkstra
-ok 4 - 4: Directed: with retrictions returns expected path
-ok 5 - 5: Undirected: No path from 1 to 1
-ok 6 - 6: Undirected: without retrictions returns the same as pgr_dijkstra
-ok 7 - 7: Undirected: with retrictions returns expected path
