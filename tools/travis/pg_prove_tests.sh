@@ -8,7 +8,7 @@
 
 set -e 
 
-PGUSER="postgres"
+PGUSER=$1
 PGDATABASE="___pgr___test___"
 
 # Define alias function for psql command
