@@ -76,10 +76,11 @@ before_script:
   #-
 
 script: 
-  - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
-  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION
+    - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+    #- ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION
 
 after_script: 
+    - ./tools/travis/pg_prove_tests.sh
   #- ./tools/travis/pgrouting_prepare.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 after_success:
