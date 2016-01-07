@@ -12,7 +12,6 @@
 -- Revert all changes on failure.
 \set ON_ERROR_ROLLBACK 1
 \set ON_ERROR_STOP true
-\c ___pgr___test___;
 
 BEGIN;
 
