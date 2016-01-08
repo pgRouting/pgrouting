@@ -1,5 +1,11 @@
+BEGIN;
 BEGIN
-SET
+--q1
+SELECT seq, id1 AS node, id2 AS edge, cost
+    FROM pgr_trsp(
+        'SELECT id, source, target, cost FROM edge_table',
+        7, 12, false, false
+    );
  seq | node | edge | cost 
 -----+------+------+------
    0 |    7 |    6 |    1
@@ -10,10 +16,26 @@ SET
    5 |   12 |   -1 |    0
 (6 rows)
 
-CREATE TABLE
-INSERT 0 1
-INSERT 0 1
-INSERT 0 1
+--q2
+CREATE TABLE restrictions (
+        rid serial,
+        to_cost double precision,
+        to_edge integer,
+        FROM_edge integer,
+        via text
+    );
+INSERT INTO restrictions VALUES (1,100,7,4,null);
+INSERT INTO restrictions VALUES (2,4,8,3,5);
+INSERT INTO restrictions VALUES (3,100,9,16,null);
+--q3
+SELECT seq, id1 AS node, id2 AS edge, cost
+    FROM pgr_trsp(
+        'SELECT id, source, target, cost FROM edge_table',
+        7, 12, false, false,
+        'SELECT to_cost, to_edge AS target_id,
+        FROM_edge || coalesce('','' || via, '''') AS via_path
+        FROM restrictions'
+    );
  seq | node | edge | cost 
 -----+------+------+------
    0 |    7 |    6 |    1
@@ -24,6 +46,15 @@ INSERT 0 1
    5 |   12 |   -1 |    0
 (6 rows)
 
+--q4
+SELECT * FROM pgr_trspViaVertices(
+        'SELECT id, source::INTEGER, target::INTEGER, cost,
+        reverse_cost FROM edge_table',
+        ARRAY[1,8,13,5]::INTEGER[],     
+        true,  
+        true,  
+        'SELECT to_cost, to_edge AS target_id, FROM_edge ||
+        coalesce('',''||via,'''') AS via_path FROM restrictions');
  seq | id1 | id2 | id3 | cost 
 -----+-----+-----+-----+------
    1 |   1 |   1 |   1 |    1
@@ -43,6 +74,16 @@ INSERT 0 1
   15 |   3 |   5 |  -1 |    0
 (15 rows)
 
+--q5
+SELECT * FROM pgr_trspViaEdges(
+        'SELECT id, source::INTEGER, target::INTEGER,cost,
+        reverse_cost FROM edge_table',
+        ARRAY[1,11,6]::INTEGER[],           
+        ARRAY[0.5, 0.5, 0.5]::FLOAT8[],     
+        true,  
+        true,  
+        'SELECT to_cost, to_edge AS target_id, FROM_edge ||
+        coalesce('',''||via,'''') AS via_path FROM restrictions');
  seq | id1 | id2 | id3 | cost 
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
@@ -57,4 +98,6 @@ INSERT 0 1
   10 |   2 |   8 |   6 |  0.5
 (10 rows)
 
+--q6
+ROLLBACK;
 ROLLBACK

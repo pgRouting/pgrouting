@@ -166,131 +166,41 @@ Returns set of :ref:`type_cost_result`:
 Examples
 -------------------------------------------------------------------------------
 
-* Without turn restrictions
+**Without turn restrictions**
 
-.. code-block:: sql
-
-	SELECT seq, id1 AS node, id2 AS edge, cost 
-		FROM pgr_trsp(
-			'SELECT id, source, target, cost FROM edge_table',
-			7, 12, false, false
-		);
-
-	seq | node | edge | cost 
-	----+------+------+------
-	  0 |    7 |    6 |    1
-	  1 |    8 |    7 |    1
-	  2 |    5 |    8 |    1
-	  3 |    6 |   11 |    1
-	  4 |   11 |   13 |    1
-	  5 |   12 |   -1 |    0
-	(6 rows)
+.. literalinclude:: doc-trsp.result
+   :start-after: --q1
+   :end-before: --q2
 
 
-* With turn restrictions
+**With turn restrictions**
   
 Turn restrictions require additional information, which can be stored in a separate table:
 
-.. code-block:: sql
+.. literalinclude:: doc-trsp.result
+   :start-after: --q2
+   :end-before: --q3
 
-	CREATE TABLE restrictions (
-	    rid serial,
-	    to_cost double precision,
-	    to_edge integer,
-	    from_edge integer,
-	    via text
-	);
-
-	INSERT INTO restrictions VALUES (1,100,7,4,null);
-	INSERT INTO restrictions VALUES (2,4,8,3,5);
-	INSERT INTO restrictions VALUES (3,100,9,16,null);
 
 Then a query with turn restrictions is created as:
 
-.. code-block:: sql
+.. literalinclude:: doc-trsp.result
+   :start-after: --q3
+   :end-before: --q4
 
-	SELECT seq, id1 AS node, id2 AS edge, cost 
-		FROM pgr_trsp(
-			'SELECT id, source, target, cost FROM edge_table',
-			7, 12, false, false, 
-			'SELECT to_cost, to_edge AS target_id,
-                   from_edge || coalesce('','' || via, '''') AS via_path
-               FROM restrictions'
-		);
-
-	 seq | node | edge | cost 
-	-----+------+------+------
-	   0 |    7 |    6 |    1
-	   1 |    8 |    7 |    1
-	   2 |    5 |    8 |    1
-	   3 |    6 |   11 |    1
-	   4 |   11 |   13 |    1
-	   5 |   12 |   -1 |    0
-	(6 rows)
 
 An example query using vertex ids and via points:
 
-.. code-block:: sql
-
-    SELECT * FROM pgr_trspViaVertices(
-        'SELECT id, source::INTEGER, target::INTEGER, cost,
-            reverse_cost FROM edge_table',
-        ARRAY[1,8,13,5]::INTEGER[],     
-        true,  
-        true,  
-        
-        'SELECT to_cost, to_edge AS target_id, FROM_edge ||
-            coalesce('',''||via,'''') AS via_path FROM restrictions');
-
-     seq | id1 | id2 | id3 | cost 
-    -----+-----+-----+-----+------
-       1 |   1 |   1 |   1 |    1
-       2 |   1 |   2 |   4 |    1
-       3 |   1 |   5 |   8 |    1
-       4 |   1 |   6 |   9 |    1
-       5 |   1 |   9 |  16 |    1
-       6 |   1 |   4 |   3 |    1
-       7 |   1 |   3 |   5 |    1
-       8 |   1 |   6 |   8 |    1
-       9 |   1 |   5 |   7 |    1
-      10 |   2 |   8 |   7 |    1
-      11 |   2 |   5 |  10 |    1
-      12 |   2 |  10 |  14 |    1
-      13 |   3 |  13 |  14 |    1
-      14 |   3 |  10 |  10 |    1
-      15 |   3 |   5 |  -1 |    0
-    (15 rows)
-
+.. literalinclude:: doc-trsp.result
+   :start-after: --q4
+   :end-before: --q5
 
 
 An example query using edge ids and vias:
 
-.. code-block:: sql
-
-    SELECT * FROM pgr_trspViaEdges(
-        'SELECT id, source::INTEGER, target::INTEGER,cost,
-             reverse_cost FROM edge_table',
-        ARRAY[1,11,6]::INTEGER[],           
-        ARRAY[0.5, 0.5, 0.5]::FLOAT8[],     
-        true,  
-        true,  
-        
-        'SELECT to_cost, to_edge AS target_id, FROM_edge ||
-            coalesce('',''||via,'''') AS via_path FROM restrictions');
-
-     seq | id1 | id2 | id3 | cost 
-    -----+-----+-----+-----+------
-       1 |   1 |  -1 |   1 |  0.5
-       2 |   1 |   2 |   4 |    1
-       3 |   1 |   5 |   8 |    1
-       4 |   1 |   6 |  11 |    1
-       5 |   2 |  11 |  13 |    1
-       6 |   2 |  12 |  15 |    1
-       7 |   2 |   9 |   9 |    1
-       8 |   2 |   6 |   8 |    1
-       9 |   2 |   5 |   7 |    1
-      10 |   2 |   8 |   6 |  0.5
-    (10 rows)
+.. literalinclude:: doc-trsp.result
+   :start-after: --q5
+   :end-before: --q6
 
 
 The queries use the :ref:`sampledata` network.

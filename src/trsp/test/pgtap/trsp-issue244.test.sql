@@ -41,24 +41,26 @@ WHEN (cost>0 and reverse_cost<0) THEN 'FT' -- direction of the LINESSTRING
 WHEN (cost<0 and reverse_cost>0) THEN 'TF' -- reverse direction
 ELSE '' END;
 
-    SELECT pgr_createTopology('edge_table_i244',0.001);
+SET client_min_messages TO WARNING;
+SELECT pgr_createTopology('edge_table_i244',0.001);
+SET client_min_messages TO NOTICE;
 
 
-    SELECT plan(1);
+SELECT plan(1);
 
-    PREPARE q1 AS
-    SELECT seq, id1, id2, cost::text FROM pgr_trsp('SELECT id, source, target, cost FROM edge_table_i244',7, 12, FALSE, false);
+PREPARE q1 AS
+SELECT seq, id1, id2, cost::text FROM pgr_trsp('SELECT id, source, target, cost FROM edge_table_i244',7, 12, FALSE, false);
 
-    PREPARE q2 AS
-    (SELECT seq-1, node::INTEGER, edge::INTEGER, cost::text
-        FROM pgr_dijkstra('SELECT id, source, target, cost FROM edge_table_i244 order by id',7, 12, FALSE))
-    UNION ALL
-    (SELECT seq-1, node::INTEGER, edge::INTEGER, cost::text
-        FROM pgr_dijkstra('SELECT id, source, target, cost FROM edge_table_i244 order by source',7, 12, FALSE));
+PREPARE q2 AS
+(SELECT seq-1, node::INTEGER, edge::INTEGER, cost::text
+    FROM pgr_dijkstra('SELECT id, source, target, cost FROM edge_table_i244 order by id',7, 12, FALSE))
+UNION ALL
+(SELECT seq-1, node::INTEGER, edge::INTEGER, cost::text
+    FROM pgr_dijkstra('SELECT id, source, target, cost FROM edge_table_i244 order by source',7, 12, FALSE));
 
-    SELECT bag_has('q2', 'q1', 'path found');
+SELECT bag_has('q2', 'q1', 'path found');
 
-    -- Finish the tests and clean up.
-    SELECT * FROM finish();
-    ROLLBACK;
+-- Finish the tests and clean up.
+SELECT * FROM finish();
+ROLLBACK;
 
