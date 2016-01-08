@@ -1,7 +1,6 @@
 -- q1
-SELECT * FROM pgr_johnson(
-    'SELECT source, target, cost FROM edge_table WHERE id < 5
-         ORDER BY id'
+SELECT * FROM pgr_floydWarshall(
+    'SELECT id, source, target, cost FROM edge_table where id < 5'
 );
  start_vid | end_vid | agg_cost 
 -----------+---------+----------
@@ -11,9 +10,8 @@ SELECT * FROM pgr_johnson(
 (3 rows)
 
 -- q2
-SELECT * FROM pgr_johnson(
-    'SELECT source, target, cost FROM edge_table WHERE id < 5
-         ORDER BY id',
+SELECT * FROM pgr_floydWarshall(
+    'SELECT id, source, target, cost FROM edge_table where id < 5',
     false
 );
  start_vid | end_vid | agg_cost 

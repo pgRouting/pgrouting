@@ -9,7 +9,7 @@
 
 .. _pgr_apsp_warshall:
 
-pgr_apspWarshall - All Pairs Shortest Path, Floyd-Warshall Algorithm
+pgr_apspWarshall
 ===============================================================================
 
 .. index::
@@ -68,7 +68,7 @@ Returns set of :ref:`type_cost_result`:
 Examples
 -------------------------------------------------------------------------------
 
-.. literalinclude:: apspWarshall.result
+.. literalinclude:: doc-apspWarshall.result
    :start-after: --q1
    :end-before: --q2
 

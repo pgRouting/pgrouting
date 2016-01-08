@@ -9,7 +9,7 @@
 
 .. _pgr_apsp_johnson:
 
-pgr_apspJohnson - All Pairs Shortest Path, Johnson's Algorithm
+pgr_apspJohnson
 ===============================================================================
 
 .. index::
@@ -61,7 +61,7 @@ Returns set of :ref:`type_cost_result`:
 Examples
 -------------------------------------------------------------------------------
 
-.. literalinclude:: apspJohnson-any.result
+.. literalinclude:: doc-apspJohnson.result
    :start-after: --q1
    :end-before: --q2
 
