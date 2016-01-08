@@ -1,42 +1,8 @@
-/*PGR-GNU*****************************************************************
 
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
+\i setup.sql
+SET client_min_messages=WARNING;
 
-------
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
-********************************************************************PGR-GNU*/
-\set ECHO none
-\set QUIET 1
--- Turn off echo and keep things quiet.
-
--- Format the output for nice TAP.
-\pset format unaligned
-\pset tuples_only true
-\pset pager
-\set VERBOSITY terse
-
--- Revert all changes on failure.
-\set ON_ERROR_ROLLBACK true
-\set ON_ERROR_STOP true
-\set QUIET 1
-
-BEGIN;
-     SELECT plan(11);
+SELECT plan(11);
 
 -- all this queries are equivalent (give the same results)
 PREPARE q00 AS
@@ -44,28 +10,28 @@ SELECT  id2 FROM pgr_dijkstra(
     'SELECT id AS id, source::int4, target::int4,
     CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost
     FROM edge_table ORDER BY id',
-    7, 11, false, false);
+    7, 11, true, false);
 
 PREPARE q0 AS
 SELECT  id1 FROM pgr_dijkstra(
     'SELECT id AS id, source::int4, target::int4,
     CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost
     FROM edge_table ORDER BY id',
-    7, 11, false, false);
+    7, 11, true, false);
 
 PREPARE q1 AS
 SELECT seq, id1, id2, cost FROM pgr_dijkstra(
     'SELECT id AS id, source::int4, target::int4,
     CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost
     FROM edge_table ORDER BY id',
-    7, 11, false, false);
+    7, 11, true, false);
 
 PREPARE q2 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
     'SELECT id AS id, source::int4, target::int4, 
     CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost 
     FROM edge_table ORDER BY id', 
-    7, 11, false);
+    7, 11, true);
 
 
 PREPARE q3 AS
@@ -73,13 +39,13 @@ SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
     'SELECT id AS id, source::int4, target::int4, 
     CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost 
     FROM edge_table ORDER BY id', 
-    7, 11, false);
+    7, 11);
 
 PREPARE q4 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
         'SELECT id, source, target, cost 
         FROM edge_table ORDER BY id', 
-        7, 11, false);
+        7, 11);
 
 
 PREPARE q5 AS
@@ -87,37 +53,37 @@ SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
         'SELECT id, source, target, cost,
         -1 as reverse_cost
         FROM edge_table ORDER BY id', 
-        7, 11, false);
+        7, 11);
 
 PREPARE q6 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
         'SELECT id, source, target, cost 
         FROM edge_table ORDER BY id', 
-        ARRAY[7], 11, false);
+        ARRAY[7], 11);
 
 PREPARE q7 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
         'SELECT id, source, target, cost 
         FROM edge_table ORDER BY id', 
-        7, ARRAY[11], false);
+        7, ARRAY[11]);
 
 PREPARE q8 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
         'SELECT id, source, target, cost 
         FROM edge_table ORDER BY id', 
-        ARRAY[7], ARRAY[11], false);
+        ARRAY[7], ARRAY[11]);
 
 PREPARE q9 AS
 SELECT seq, id1, id2, cost FROM pgr_dijkstra(
     'SELECT id AS id, source::int4, target::int4,
     cost
     FROM edge_table ORDER BY id',
-    7, 11, false, false);
+    7, 11, true, false);
 
 
 
-    SELECT set_eq( 'q0', ARRAY[7, 8, 5, 10, 11], '1');
-    SELECT set_eq( 'q00', ARRAY[6, 7, 10, 12, -1], '2');
+    SELECT set_eq( 'q0', ARRAY[7, 8, 5, 6, 11], '1');
+    SELECT set_eq( 'q00', ARRAY[6, 7, 8, 11, -1], '2');
     SELECT set_eq( 'q1', 'q2', '3');
     SELECT set_eq( 'q1', 'q3', '4');
     SELECT set_eq( 'q1', 'q4', '5');
@@ -132,7 +98,7 @@ SELECT seq, id1, id2, cost FROM pgr_dijkstra(
     'SELECT id AS id, source::BIGINT, target::BIGINT,
     CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost
     FROM edge_table ORDER BY id',
-    7, 11, false, false);
+    7, 11, true, false);
 
 SELECT throws_ok('q50',
     'XX000',

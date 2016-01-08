@@ -13,7 +13,7 @@ pgr_apspWarshall - All Pairs Shortest Path, Floyd-Warshall Algorithm
 ===============================================================================
 
 .. index::
-    single: apspWarshall(text, boolean, boolean) -- deprecated
+    single: pgr_apspWarshall(text, boolean, boolean) -- deprecated
 
 Name
 -------------------------------------------------------------------------------
@@ -68,21 +68,9 @@ Returns set of :ref:`type_cost_result`:
 Examples
 -------------------------------------------------------------------------------
 
-.. code-block:: sql
-
-    SELECT seq, id1 AS from, id2 AS to, cost 
-        FROM pgr_apspWarshall(
-            'SELECT id, source, target, cost FROM edge_table',
-            false, false
-        );
-
-     seq | from | to | cost 
-    -----+------+----+------
-       0 |    1 |  1 |    0
-       1 |    1 |  2 |    1
-       2 |    1 |  3 |    0
-
-    [...]
+.. literalinclude:: apspWarshall.result
+   :start-after: --q1
+   :end-before: --q2
 
 The query uses the :ref:`sampledata` network.
 
@@ -91,5 +79,5 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`type_cost_result`
-* :ref:`pgr_apsp_johnson`
+* :ref:`pgr_floydWarshall`
 * http://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm
