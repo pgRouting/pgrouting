@@ -176,8 +176,8 @@ for my $c (@cfgs) {
         push @{$stats{$c}}, run_test($c, $main::tests{any});
         $found++;
     }
-    elsif ($main::tests{documentation} && $DOCUMENTATION) {
-        push @{$stats{$c}}, run_test($c, $main::tests{documentation});
+    elsif ($main::tests{any}{documentation} && $DOCUMENTATION) {
+        push @{$stats{$c}}, run_test($c, $main::tests{any});
         $found++;
     }
 
@@ -229,8 +229,15 @@ sub run_test {
        mysystem("$psql $connopts -A -t -q -f '$dir/$x' $DBNAME >> $TMP2 2>\&1 ");
     }
 
-    for my $x (@{$t->{tests}}) {
-        process_single_test($x, $dir,, $DBNAME, \%res)
+    if ($DOCUMENTATION) {
+        for my $x (@{$t->{documentation}}) {
+            process_single_test($x, $dir,, $DBNAME, \%res)
+        }
+    }
+    else {
+        for my $x (@{$t->{tests}}) {
+            process_single_test($x, $dir,, $DBNAME, \%res)
+        }
     }
 
     return \%res;
