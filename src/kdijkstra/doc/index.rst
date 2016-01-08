@@ -95,19 +95,19 @@ Examples
 * Returning a ``cost`` result
 
 
-.. literalinclude:: ../test/doc-kdijkstra-any.doc.result
+.. literalinclude:: doc-kdijkstra.result
    :start-after: -- q1
    :end-before: -- q2
 
 
-.. literalinclude:: ../test/doc-kdijkstra-any.doc.result
+.. literalinclude:: doc-kdijkstra.result
    :start-after: -- q2
    :end-before: -- q3
 
 
 * Returning a ``path`` result
 
-.. literalinclude:: ../test/doc-kdijkstra-any.doc.result
+.. literalinclude:: doc-kdijkstra.result
    :start-after: -- q3
    :end-before: -- q4
 

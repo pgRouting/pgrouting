@@ -27,12 +27,13 @@ echo "cd ./tools/testers/"
 cd ./tools/testers/
 echo "psql -f setup_db.sql"
 run_psql -f setup_db.sql
-echo "pg_prove ../../src/trsp/test/pgtap/*"
-pg_prove ../../src/trsp/test/pgtap/* -d $PGDATABASE
-pg_prove ../../src/allpairs/test/pgtap/* -d $PGDATABASE
-pg_prove ../../src/apsp_johnson/test/pgtap/* -d $PGDATABASE
-pg_prove ../../src/apsp_warshall/test/pgtap/* -d $PGDATABASE
-pg_prove ../../src/dijkstra/test/pgtap/* -d $PGDATABASE
+#pg_prove ../../src/trsp/test/pgtap/* -d $PGDATABASE
+#pg_prove ../../src/allpairs/test/pgtap/* -d $PGDATABASE
+#pg_prove ../../src/apsp_johnson/test/pgtap/* -d $PGDATABASE
+#pg_prove ../../src/apsp_warshall/test/pgtap/* -d $PGDATABASE
+#pg_prove ../../src/dijkstra/test/pgtap/* -d $PGDATABASE
+#pg_prove ../../src/kdijkstra/test/pgtap/* -d $PGDATABASE
+pg_prove ../../src/ksp/test/pgtap/* -d $PGDATABASE
 
 if [ "$?" -ne 0 ]
 then
