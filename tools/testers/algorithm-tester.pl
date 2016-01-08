@@ -281,6 +281,8 @@ sub process_single_test{
         close(PSQL); #executes everything
         close(TIN); #closes the input file  /TIN = test input
 
+        return if $DOCUMENTATION;
+
         my $dfile;
         my $dfile2;
         if ($ignore) { #decide how to compare results, if ignoring or not ignoring
