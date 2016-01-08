@@ -127,13 +127,13 @@ Examples
 
 :Example 1: On a directed graph.
 
-.. literalinclude:: ../test/doc-johnson.doc.result
+.. literalinclude:: doc-johnson.result
    :start-after: -- q1
    :end-before: -- q2
 
 :Example 2: On an undirected graph.
 
-.. literalinclude:: ../test/doc-johnson.doc.result
+.. literalinclude:: doc-johnson.result
    :start-after: -- q2
 
 
@@ -142,7 +142,7 @@ These queries uses the :ref:`sampledata` network.
 
 .. rubric:: History
 
-* New in version 2.2.0
+* Re-design of pgr_apspJohnson in version 2.2.0
 
 See Also
 -------------------------------------------------------------------------------

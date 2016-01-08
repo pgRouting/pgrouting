@@ -131,13 +131,13 @@ Examples
 
 :Example 1: On a directed graph.
 
-.. literalinclude:: ../test/doc-floydWarshall.doc.result
+.. literalinclude:: doc-floydWarshall.result
    :start-after: -- q1
    :end-before: -- q2
 
 :Example 2: On an undirected graph.
 
-.. literalinclude:: ../test/doc-floydWarshall.doc.result
+.. literalinclude:: doc-floydWarshall.result
    :start-after: -- q2
 
 
@@ -146,8 +146,7 @@ These queries uses the :ref:`sampledata` network.
 
 .. rubric:: History
 
-* New in version 2.0.0
-* Rewritten in Version 2.2
+* Re-design of pgr_apspWarshall in Version 2.2.0
 
 See Also
 -------------------------------------------------------------------------------

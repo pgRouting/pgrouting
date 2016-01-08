@@ -149,6 +149,7 @@ Routing functions
 	../src/allpairs/doc/all_pairs
 	../src/withPoints/doc/withPoints
 
+
 *******************************************************************************
 Deprecated Routing Functions
 *******************************************************************************
@@ -187,24 +188,6 @@ Some of them are unsupported like the GSoC functions.
 Proposed functions: Proposed by Vicky Vergara
 *******************************************************************************
 
-:pgr_johnson:
-
-About this proposal:
-  - Author: Vicky Vergara
-  - Status: testing
-  - Name: pgr_johnson
-  - Deprecate pgr_apspJohnson in favor of pgr_johnson
-
-
-:pgr_floydWarshall:
-
-About this proposal:
-  - Author: Vicky Vergara
-  - Status: testing
-  - Name: pgr_floydWarshall
-  - Deprecate pgr_apspWarshall in favor of pgr_floydWarshall
-
-
 :pgr_dijkstraViaVertex:
 
 About this proposal:
@@ -223,12 +206,6 @@ About this proposal:
      via temporary vertices. 
 
 
-
-.. toctree::
-    :hidden:
-
-    ../src/allpairs/doc/johnson.rst
-    ../src/allpairs/doc/floydWarshall.rst
 
 *******************************************************************************
 Experimental functions: Proposed by Steve Woodbridge

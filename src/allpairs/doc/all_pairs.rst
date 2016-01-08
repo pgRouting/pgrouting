@@ -18,15 +18,12 @@ The following functions work an all vertices pair combinations
     - :ref:`pgr_floydWarshall` - Floyd-Warshall's algorithm.
     - :ref:`pgr_johnson` - Johnson's algorithm
 
+     
 .. toctree::
-    :hidden:
+    :hidden: 
 
-    floydWarshall
-    johnson
-     
-     
-
-
+    ./floydWarshall
+    ./johnson
 
 
 Performance
