@@ -15,6 +15,7 @@ use vars qw/*name *dir *prune/;
 *dir    = *File::Find::dir;
 *prune  = *File::Find::prune;
 
+my $DOCUMENTATION = 0;
 my $VERBOSE = 0;
 my $DRYRUN = 0;
 my $DEBUG = 0;
@@ -38,6 +39,7 @@ sub Usage {
         "       -clean              - dropdb pgr_test__db__test\n" .
         "       -ignorenotice       - ignore NOTICE statements when reporting failures\n" .
         "       -alg 'dir'          - directory to select which algorithm subdirs to test\n" .
+        "       -documentation      - ONLY generate documentation examples\n" .
         "       -h                  - help\n";
 }
 
@@ -101,6 +103,9 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a =~ /^-v/i) {
         $VERBOSE = 1;
+    }
+    elsif ($a =~ /^-doc(umentation)?/i) {
+        $DOCUMENTATION = 1;
     }
     else {
         warn "Error: unknown option '$a'\n";
@@ -167,10 +172,15 @@ for my $c (@cfgs) {
     print "test.conf = $c\n" if $VERBOSE;
     print Data::Dumper->Dump([\%main::tests],['test']) if $VERBOSE;
 
-    if ($main::tests{any}) {
+    if ($main::tests{any} && !$DOCUMENTATION) {
         push @{$stats{$c}}, run_test($c, $main::tests{any});
         $found++;
     }
+    elsif ($main::tests{documentation} && $DOCUMENTATION) {
+        push @{$stats{$c}}, run_test($c, $main::tests{documentation});
+        $found++;
+    }
+
     if (! $found) {
         $stats{$c} = "No tests were found for '$vpg-$postgis_ver'!";
     }
@@ -242,11 +252,21 @@ sub process_single_test{
             next;
         };
         #reason of opening conection is because the set client_mim_messages to warning;
-        open(PSQL, "|$psql $connopts -A -t -q $database > $TMP 2>\&1 ") || do {
-            $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
-            $stats{z_fail}++;
-            next;
-        };
+        if ($DOCUMENTATION) {
+            mysystem("mkdir -p '$dir/../doc' "); # insure the directory exists
+            open(PSQL, "|$psql $connopts -e $database > $dir/../doc/$x.result 2>\&1 ") || do {
+                $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
+                $stats{z_fail}++;
+                next;
+            };
+        }
+        else {
+            open(PSQL, "|$psql $connopts -A -t -q $database > $TMP 2>\&1 ") || do {
+                $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
+                $stats{z_fail}++;
+                next;
+            };
+        }
         print PSQL "set client_min_messages to WARNING;\n" if $ignore;
         my @d = ();
         @d = <TIN>; #reads the whole file into the array @d 
