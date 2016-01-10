@@ -33,7 +33,8 @@ run_psql -f setup_db.sql
 #pg_prove ../../src/apsp_warshall/test/pgtap/* -d $PGDATABASE
 #pg_prove ../../src/dijkstra/test/pgtap/* -d $PGDATABASE
 #pg_prove ../../src/kdijkstra/test/pgtap/* -d $PGDATABASE
-pg_prove ../../src/ksp/test/pgtap/* -d $PGDATABASE
+#pg_prove ../../src/ksp/test/pgtap/* -d $PGDATABASE
+pg_prove ../../src/topology/test/pgtap/* -d $PGDATABASE
 
 if [ "$?" -ne 0 ]
 then

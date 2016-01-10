@@ -11,8 +11,7 @@
 \set ON_ERROR_ROLLBACK 1
 \set ON_ERROR_STOP true
 
-\c ___pgr___test___;
-
+SET client_min_messages = DEBUG1;
 
 CREATE EXTENSION postgis;
 CREATE EXTENSION pgtap;
@@ -66,7 +65,7 @@ BEGIN;
                WHEN (cost<0 and reverse_cost>0) THEN 'TF'  -- reverse direction of the LINESTRING
                ELSE '' END;                                -- unknown
 
-    SELECT  pgr_createTopology('edge_table',0.001);
+    SELECT pgr_createTopology('edge_table',0.001);
 
     DROP table if exists vertex_table;
     CREATE TABLE vertex_table (
