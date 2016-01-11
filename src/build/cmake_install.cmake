@@ -1,4 +1,4 @@
-# Install script for directory: /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code
+# Install script for directory: /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -47,7 +47,7 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
   IF (CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   ENDIF (CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
-FILE(INSTALL DESTINATION "/usr/lib/postgresql/9.3/lib" TYPE SHARED_LIBRARY FILES "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/libmyrouting_library.so")
+FILE(INSTALL DESTINATION "/usr/lib/postgresql/9.3/lib" TYPE SHARED_LIBRARY FILES "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/libmyrouting_library.so")
   IF(EXISTS "$ENV{DESTDIR}/usr/lib/postgresql/9.3/lib/libmyrouting_library.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}/usr/lib/postgresql/9.3/lib/libmyrouting_library.so")
     IF(CMAKE_INSTALL_DO_STRIP)
@@ -66,15 +66,15 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   ENDIF (CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
 FILE(INSTALL DESTINATION "/usr/share/postgresql/9.3/extension" TYPE FILE FILES
-    "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/lib/myrouting--0.0.0.sql"
-    "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/lib/myrouting.control"
+    "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/sql/myrouting--0.0.0.sql"
+    "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/sql/myrouting.control"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/cmake/cmake_install.cmake")
-  INCLUDE("/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/cmake_install.cmake")
+  INCLUDE("/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/cmake/cmake_install.cmake")
+  INCLUDE("/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
@@ -84,7 +84,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

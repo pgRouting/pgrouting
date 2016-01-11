@@ -103,7 +103,7 @@ install(TARGETS myrouting_library DESTINATION ${LIB_DIR} )
 
 
 install(FILES
-    "${MYROUTING_SOURCE_DIR}/lib/myrouting--0.0.0.sql"
-   "${MYROUTING_SOURCE_DIR}/lib/myrouting.control"
+    "${MYROUTING_SOURCE_DIR}/sql/myrouting--0.0.0.sql"
+   "${MYROUTING_SOURCE_DIR}/sql/myrouting.control"
     DESTINATION ${SHARE_DIR}/extension)
 

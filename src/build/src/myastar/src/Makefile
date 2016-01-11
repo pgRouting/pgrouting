@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code
+CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build
+CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -113,14 +113,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/myastar/src/CMakeFiles/progress.marks
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build && $(MAKE) -f CMakeFiles/Makefile2 src/myastar/src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 0
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/myastar/src/CMakeFiles/progress.marks
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f CMakeFiles/Makefile2 src/myastar/src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build && $(MAKE) -f CMakeFiles/Makefile2 src/myastar/src/clean
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f CMakeFiles/Makefile2 src/myastar/src/clean
 .PHONY : clean
 
 # The main clean target
@@ -129,22 +129,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build && $(MAKE) -f CMakeFiles/Makefile2 src/myastar/src/preinstall
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f CMakeFiles/Makefile2 src/myastar/src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build && $(MAKE) -f CMakeFiles/Makefile2 src/myastar/src/preinstall
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f CMakeFiles/Makefile2 src/myastar/src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/myastar/src/CMakeFiles/myastar.dir/rule:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build && $(MAKE) -f CMakeFiles/Makefile2 src/myastar/src/CMakeFiles/myastar.dir/rule
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f CMakeFiles/Makefile2 src/myastar/src/CMakeFiles/myastar.dir/rule
 .PHONY : src/myastar/src/CMakeFiles/myastar.dir/rule
 
 # Convenience name for target.
@@ -153,7 +153,7 @@ myastar: src/myastar/src/CMakeFiles/myastar.dir/rule
 
 # fast build rule for target.
 myastar/fast:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build && $(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/build
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/build
 .PHONY : myastar/fast
 
 my_astar.o: my_astar.c.o
@@ -161,7 +161,7 @@ my_astar.o: my_astar.c.o
 
 # target to build an object file
 my_astar.c.o:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build && $(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.o
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.o
 .PHONY : my_astar.c.o
 
 my_astar.i: my_astar.c.i
@@ -169,7 +169,7 @@ my_astar.i: my_astar.c.i
 
 # target to preprocess a source file
 my_astar.c.i:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build && $(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.i
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.i
 .PHONY : my_astar.c.i
 
 my_astar.s: my_astar.c.s
@@ -177,7 +177,7 @@ my_astar.s: my_astar.c.s
 
 # target to generate assembly for a file
 my_astar.c.s:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build && $(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.s
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.s
 .PHONY : my_astar.c.s
 
 my_astar_wrapper.o: my_astar_wrapper.cpp.o
@@ -185,7 +185,7 @@ my_astar_wrapper.o: my_astar_wrapper.cpp.o
 
 # target to build an object file
 my_astar_wrapper.cpp.o:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build && $(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o
 .PHONY : my_astar_wrapper.cpp.o
 
 my_astar_wrapper.i: my_astar_wrapper.cpp.i
@@ -193,7 +193,7 @@ my_astar_wrapper.i: my_astar_wrapper.cpp.i
 
 # target to preprocess a source file
 my_astar_wrapper.cpp.i:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build && $(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.i
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.i
 .PHONY : my_astar_wrapper.cpp.i
 
 my_astar_wrapper.s: my_astar_wrapper.cpp.s
@@ -201,7 +201,7 @@ my_astar_wrapper.s: my_astar_wrapper.cpp.s
 
 # target to generate assembly for a file
 my_astar_wrapper.cpp.s:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build && $(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.s
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.s
 .PHONY : my_astar_wrapper.cpp.s
 
 # Help Target
@@ -234,6 +234,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

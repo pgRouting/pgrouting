@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_C
-  "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/connection.c" "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/common/src/CMakeFiles/common.dir/connection.c.o"
+  "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/connection.c" "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/common/src/CMakeFiles/common.dir/connection.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 

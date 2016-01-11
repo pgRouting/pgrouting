@@ -76,9 +76,21 @@ src/contraction/src/CMakeFiles/contraction.dir/contraction.c.o: /usr/include/pos
 src/contraction/src/CMakeFiles/contraction.dir/contraction.c.o: /usr/include/postgresql/9.3/server/utils/sortsupport.h
 src/contraction/src/CMakeFiles/contraction.dir/contraction.c.o: /usr/include/postgresql/9.3/server/utils/tuplestore.h
 
-src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: ../src/common/src/myGraph.hpp
+src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: ../src/common/src/./structs.h
+src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: ../src/common/src/baseGraph.hpp
 src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: ../src/common/src/structs.h
 src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: ../src/contraction/src/contract_function.cpp
 src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: ../src/contraction/src/contract_function.h
 src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: ../src/contraction/src/graphMinimizer.hpp
+src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: /usr/include/postgresql/9.3/server/c.h
+src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: /usr/include/postgresql/9.3/server/pg_config.h
+src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: /usr/include/postgresql/9.3/server/pg_config_ext.h
+src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: /usr/include/postgresql/9.3/server/pg_config_manual.h
+src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: /usr/include/postgresql/9.3/server/pg_config_os.h
+src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: /usr/include/postgresql/9.3/server/port.h
+src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: /usr/include/postgresql/9.3/server/postgres.h
+src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: /usr/include/postgresql/9.3/server/postgres_ext.h
+src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: /usr/include/postgresql/9.3/server/utils/elog.h
+src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: /usr/include/postgresql/9.3/server/utils/errcodes.h
+src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: /usr/include/postgresql/9.3/server/utils/palloc.h
 

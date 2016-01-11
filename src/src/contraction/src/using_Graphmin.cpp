@@ -1,5 +1,5 @@
-#include "structs.h"
-#include "baseGraph.hpp"
+#include "../../common/src/structs.h"
+#include "graphMinimizer.hpp"
 #include <iostream>
 #include <boost/graph/adjacency_list.hpp>
 using namespace std;
@@ -8,7 +8,7 @@ typedef adjacency_list<vecS, vecS, undirectedS, Vertex,Edge> G;
 int main(int argc, char const *argv[])
 {
 	/* code */
-	typedef Pgr_base_graph<G> Graph;
+	typedef Graph_Minimizer<G> Graph;
 	Graph g(UNDIRECTED,0);
 	Edge *edges=NULL;
 	edges=(Edge*)malloc(2*sizeof(Edge));
@@ -23,7 +23,16 @@ int main(int argc, char const *argv[])
 	edges[1].target=2;
 	edges[1].cost=4;
 	edges[1].revcost=-1;
-	g.graph_insert_data(edges,2);
+	g.initialize_graph_minimizer(edges,2);
+	cout << "final vertices " << g.reduced_graph->numb_vertices << endl;
+	g.contract_to_level(0);
+	cout << "final contracted vertices " << g.reduced_graph->numb_vertices << endl;
+	g.print_removed_vertices();
+	char *name;
+	g.getGraphName(&name,0);
+	cout << "Name: " << name << endl;
+	g.getEdgeString(&edges,2,&name);
+	cout << "Edge String: " << name << endl;
 	//g.remove_vertex(0);
 	g.print_graph();
 	return 0;

@@ -27,6 +27,11 @@ typedef struct
 
 } PathElement;
 
+typedef struct 
+{
+	char *my_contracted_graph_name;
+	char *contracted_blob;
+} pgr_contracted_blob;
 //represents the type of graph
 enum graphType { UNDIRECTED= 0, DIRECTED};
 

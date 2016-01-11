@@ -76,6 +76,8 @@ src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.o: /usr/include/postgresql/9.3
 src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.o: /usr/include/postgresql/9.3/server/utils/sortsupport.h
 src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.o: /usr/include/postgresql/9.3/server/utils/tuplestore.h
 
+src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o: ../src/common/src/./structs.h
+src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o: ../src/common/src/baseGraph.hpp
 src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o: ../src/common/src/myGraph.hpp
 src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o: ../src/common/src/structs.h
 src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o: ../src/contraction/src/graphMinimizer.hpp

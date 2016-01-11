@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code
+CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build
+CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build
 
 # Include any dependencies generated for this target.
 include src/common/src/CMakeFiles/common.dir/depend.make
@@ -54,17 +54,17 @@ include src/common/src/CMakeFiles/common.dir/flags.make
 
 src/common/src/CMakeFiles/common.dir/connection.c.o: src/common/src/CMakeFiles/common.dir/flags.make
 src/common/src/CMakeFiles/common.dir/connection.c.o: ../src/common/src/connection.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object src/common/src/CMakeFiles/common.dir/connection.c.o"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/common/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/common.dir/connection.c.o   -c /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/connection.c
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/common/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/common.dir/connection.c.o   -c /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/connection.c
 
 src/common/src/CMakeFiles/common.dir/connection.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/common.dir/connection.c.i"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/common/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/connection.c > CMakeFiles/common.dir/connection.c.i
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/common/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/connection.c > CMakeFiles/common.dir/connection.c.i
 
 src/common/src/CMakeFiles/common.dir/connection.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/common.dir/connection.c.s"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/common/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/connection.c -o CMakeFiles/common.dir/connection.c.s
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/common/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/connection.c -o CMakeFiles/common.dir/connection.c.s
 
 src/common/src/CMakeFiles/common.dir/connection.c.o.requires:
 .PHONY : src/common/src/CMakeFiles/common.dir/connection.c.o.requires
@@ -87,10 +87,10 @@ src/common/src/CMakeFiles/common.dir/requires: src/common/src/CMakeFiles/common.
 .PHONY : src/common/src/CMakeFiles/common.dir/requires
 
 src/common/src/CMakeFiles/common.dir/clean:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/common/src && $(CMAKE_COMMAND) -P CMakeFiles/common.dir/cmake_clean.cmake
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/common/src && $(CMAKE_COMMAND) -P CMakeFiles/common.dir/cmake_clean.cmake
 .PHONY : src/common/src/CMakeFiles/common.dir/clean
 
 src/common/src/CMakeFiles/common.dir/depend:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/common/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/common/src/CMakeFiles/common.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/common/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/common/src/CMakeFiles/common.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/common/src/CMakeFiles/common.dir/depend
 

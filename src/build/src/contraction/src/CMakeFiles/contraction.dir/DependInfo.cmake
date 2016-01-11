@@ -5,11 +5,11 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_C
-  "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/contraction/src/contraction.c" "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/contraction/src/CMakeFiles/contraction.dir/contraction.c.o"
+  "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src/contraction.c" "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/contraction/src/CMakeFiles/contraction.dir/contraction.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/contraction/src/contract_function.cpp" "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o"
+  "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src/contract_function.cpp" "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

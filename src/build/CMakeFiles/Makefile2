@@ -50,10 +50,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code
+CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build
+CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/distclean.dir
@@ -62,15 +62,15 @@ CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/bu
 CMakeFiles/distclean.dir/all:
 	$(MAKE) -f CMakeFiles/distclean.dir/build.make CMakeFiles/distclean.dir/depend
 	$(MAKE) -f CMakeFiles/distclean.dir/build.make CMakeFiles/distclean.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles 
 	@echo "Built target distclean"
 .PHONY : CMakeFiles/distclean.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/distclean.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/distclean.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles 0
 .PHONY : CMakeFiles/distclean.dir/rule
 
 # Convenience name for target.
@@ -96,7 +96,7 @@ CMakeFiles/myrouting_library.dir/all: src/myastar/src/CMakeFiles/myastar.dir/all
 CMakeFiles/myrouting_library.dir/all: src/common/src/CMakeFiles/common.dir/all
 	$(MAKE) -f CMakeFiles/myrouting_library.dir/build.make CMakeFiles/myrouting_library.dir/depend
 	$(MAKE) -f CMakeFiles/myrouting_library.dir/build.make CMakeFiles/myrouting_library.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles 
 	@echo "Built target myrouting_library"
 .PHONY : CMakeFiles/myrouting_library.dir/all
 
@@ -106,9 +106,9 @@ all: CMakeFiles/myrouting_library.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/myrouting_library.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/myrouting_library.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles 0
 .PHONY : CMakeFiles/myrouting_library.dir/rule
 
 # Convenience name for target.
@@ -203,7 +203,7 @@ src/mydijkstra/src/preinstall:
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/all:
 	$(MAKE) -f src/mydijkstra/src/CMakeFiles/mydijkstra.dir/build.make src/mydijkstra/src/CMakeFiles/mydijkstra.dir/depend
 	$(MAKE) -f src/mydijkstra/src/CMakeFiles/mydijkstra.dir/build.make src/mydijkstra/src/CMakeFiles/mydijkstra.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles  6 7
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles  6 7
 	@echo "Built target mydijkstra"
 .PHONY : src/mydijkstra/src/CMakeFiles/mydijkstra.dir/all
 
@@ -213,9 +213,9 @@ all: src/mydijkstra/src/CMakeFiles/mydijkstra.dir/all
 
 # Build rule for subdir invocation for target.
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles 0
 .PHONY : src/mydijkstra/src/CMakeFiles/mydijkstra.dir/rule
 
 # Convenience name for target.
@@ -286,7 +286,7 @@ src/contraction/src/preinstall:
 src/contraction/src/CMakeFiles/contraction.dir/all:
 	$(MAKE) -f src/contraction/src/CMakeFiles/contraction.dir/build.make src/contraction/src/CMakeFiles/contraction.dir/depend
 	$(MAKE) -f src/contraction/src/CMakeFiles/contraction.dir/build.make src/contraction/src/CMakeFiles/contraction.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles  2 3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles  2 3
 	@echo "Built target contraction"
 .PHONY : src/contraction/src/CMakeFiles/contraction.dir/all
 
@@ -296,9 +296,9 @@ all: src/contraction/src/CMakeFiles/contraction.dir/all
 
 # Build rule for subdir invocation for target.
 src/contraction/src/CMakeFiles/contraction.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 src/contraction/src/CMakeFiles/contraction.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles 0
 .PHONY : src/contraction/src/CMakeFiles/contraction.dir/rule
 
 # Convenience name for target.
@@ -369,7 +369,7 @@ src/myastar/src/preinstall:
 src/myastar/src/CMakeFiles/myastar.dir/all:
 	$(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/depend
 	$(MAKE) -f src/myastar/src/CMakeFiles/myastar.dir/build.make src/myastar/src/CMakeFiles/myastar.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles  4 5
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles  4 5
 	@echo "Built target myastar"
 .PHONY : src/myastar/src/CMakeFiles/myastar.dir/all
 
@@ -379,9 +379,9 @@ all: src/myastar/src/CMakeFiles/myastar.dir/all
 
 # Build rule for subdir invocation for target.
 src/myastar/src/CMakeFiles/myastar.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 src/myastar/src/CMakeFiles/myastar.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles 0
 .PHONY : src/myastar/src/CMakeFiles/myastar.dir/rule
 
 # Convenience name for target.
@@ -449,7 +449,7 @@ src/common/src/preinstall:
 src/common/src/CMakeFiles/common.dir/all:
 	$(MAKE) -f src/common/src/CMakeFiles/common.dir/build.make src/common/src/CMakeFiles/common.dir/depend
 	$(MAKE) -f src/common/src/CMakeFiles/common.dir/build.make src/common/src/CMakeFiles/common.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles  1
 	@echo "Built target common"
 .PHONY : src/common/src/CMakeFiles/common.dir/all
 
@@ -459,9 +459,9 @@ all: src/common/src/CMakeFiles/common.dir/all
 
 # Build rule for subdir invocation for target.
 src/common/src/CMakeFiles/common.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 src/common/src/CMakeFiles/common.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles 0
 .PHONY : src/common/src/CMakeFiles/common.dir/rule
 
 # Convenience name for target.

@@ -6,7 +6,31 @@
 
 #IncludeRegexTransform: 
 
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/myGraph.hpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/./structs.h
+
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/baseGraph.hpp
+boost/config.hpp
+-
+boost/graph/adjacency_list.hpp
+-
+boost/graph/graph_utility.hpp
+-
+deque
+-
+vector
+-
+set
+-
+map
+-
+limits
+-
+postgres.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/postgres.h
+./structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/./structs.h
+
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/myGraph.hpp
 boost/config.hpp
 -
 boost/graph/adjacency_list.hpp
@@ -24,11 +48,11 @@ map
 limits
 -
 structs.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/structs.h
 
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/structs.h
 
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/contraction/src/graphMinimizer.hpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src/graphMinimizer.hpp
 deque
 -
 vector
@@ -47,12 +71,12 @@ boost/graph/adjacency_list.hpp
 -
 boost/graph/dijkstra_shortest_paths.hpp
 -
-../../common/src/myGraph.hpp
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/myGraph.hpp
+../../common/src/baseGraph.hpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/baseGraph.hpp
 ../../common/src/structs.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/structs.h
 
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/myastar/src/myAstar.hpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar/src/myAstar.hpp
 deque
 -
 vector
@@ -66,33 +90,33 @@ boost/config.hpp
 boost/graph/adjacency_list.hpp
 -
 ../../common/src/myGraph.hpp
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/myGraph.hpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/myGraph.hpp
 ../../common/src/structs.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/structs.h
 ../../contraction/src/graphMinimizer.hpp
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/contraction/src/graphMinimizer.hpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src/graphMinimizer.hpp
 boost/graph/astar_search.hpp
 -
 cmath
 -
 
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/myastar/src/my_astar.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar/src/my_astar.h
 unistd.h
 -
 postgres.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/myastar/src/postgres.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar/src/postgres.h
 ../../common/src/structs.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/common/src/structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/structs.h
 
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/myastar/src/my_astar_wrapper.cpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar/src/my_astar_wrapper.cpp
 myAstar.hpp
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/myastar/src/myAstar.hpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar/src/myAstar.hpp
 iostream
 -
 boost/graph/adjacency_list.hpp
 -
 my_astar.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/code/src/myastar/src/my_astar.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar/src/my_astar.h
 
 /usr/include/postgresql/9.3/server/c.h
 postgres_ext.h

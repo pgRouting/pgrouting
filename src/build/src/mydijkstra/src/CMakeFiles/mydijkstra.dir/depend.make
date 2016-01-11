@@ -76,10 +76,22 @@ src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o: /usr/include/postgres
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o: /usr/include/postgresql/9.3/server/utils/sortsupport.h
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o: /usr/include/postgresql/9.3/server/utils/tuplestore.h
 
-src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: ../src/common/src/myGraph.hpp
+src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: ../src/common/src/./structs.h
+src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: ../src/common/src/baseGraph.hpp
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: ../src/common/src/structs.h
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: ../src/contraction/src/graphMinimizer.hpp
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: ../src/mydijkstra/src/dijkstra_function.cpp
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: ../src/mydijkstra/src/dijkstra_function.h
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: ../src/mydijkstra/src/myDijkstra.hpp
+src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: /usr/include/postgresql/9.3/server/c.h
+src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: /usr/include/postgresql/9.3/server/pg_config.h
+src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: /usr/include/postgresql/9.3/server/pg_config_ext.h
+src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: /usr/include/postgresql/9.3/server/pg_config_manual.h
+src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: /usr/include/postgresql/9.3/server/pg_config_os.h
+src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: /usr/include/postgresql/9.3/server/port.h
+src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: /usr/include/postgresql/9.3/server/postgres.h
+src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: /usr/include/postgresql/9.3/server/postgres_ext.h
+src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: /usr/include/postgresql/9.3/server/utils/elog.h
+src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: /usr/include/postgresql/9.3/server/utils/errcodes.h
+src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: /usr/include/postgresql/9.3/server/utils/palloc.h
 
