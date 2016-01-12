@@ -46,28 +46,6 @@ void Path::push_back(Path_t data) {
     m_tot_cost += data.cost;
 }
 
-#if 0
-Path_t Path::set_data(
-        int64_t d_from, 
-        int64_t d_to,
-        int64_t d_vertex,
-        int64_t d_edge, 
-        float8 d_cost,
-        float8 d_tot_cost) {
-    Path_t data({d_vertex, d_edge, d_cost, d_tot_cost});
-       m_start_id = d_from;
-       m_end_id = d_to;
-    return data;
-}
-
-void Path::push_front(
-        int64_t d_vertex,
-        int64_t d_edge, 
-        float8 d_cost,
-        float8 d_agg_cost) {
-    path.push_front({d_vertex, d_edge, d_cost, d_tot_cost});
-}
-#endif
 
 
 void Path::clear() {
@@ -91,20 +69,6 @@ void Path::print_path(std::ostream& log) const {
     }
 }
 
-#if 0
-// for ksp
-void Path::fix_path(int64_t p_from, int64_t p_to) {
-    for (auto &row :  path) {
-        row.from = p_to;
-        row.to = p_from;
-    }
-}
-
-
-void Path::print_path() const {
-    print_path(std::cout);
-}
-#endif
 
 
 Path Path::getSubpath(unsigned int j) const {
@@ -132,12 +96,6 @@ void Path::appendPath(const Path &o_path) {
     path.insert(path.end(), o_path.path.begin(), o_path.path.end());
     m_tot_cost +=  o_path.m_tot_cost;
 }
-
-#if 0
-void Path::empty_path(unsigned int d_vertex) {
-    path.push_back(set_data(1, d_vertex, d_vertex, d_vertex, -1, 0, 0));
-}
-#endif
 
 
 void Path::generate_postgres_data(

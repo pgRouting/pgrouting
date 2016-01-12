@@ -460,23 +460,11 @@ Pgr_dijkstra< G >::drivingDistance(G &graph, std::deque< Path > &paths,
     predecessors.resize(graph.num_vertices());
     distances.resize(graph.num_vertices());
 
-    // get the graph's source
-    std::set< V > v_sources;
-    //for (unsigned int i = 0; i < start_vertex.size(); i++) {
-    for( const auto &vertex : start_vertex) {
-        V v_source;
-        if (!graph.get_gVertex(vertex, v_source)) {
-            paths.clear();
-            return;
-        }
-        v_sources.insert(v_source);
-    }
 
     // perform the algorithm
-    for (const auto &v_source : v_sources) {
-        dijkstra_1_to_distance(graph, v_source, distance);
+    for( const auto &vertex : start_vertex) {
         Path path;
-        get_nodesInDistance(graph, path, v_source, distance);
+        drivingDistance(graph, path, vertex, distance);
         paths.push_back(path);
     }
 
@@ -498,17 +486,19 @@ Pgr_dijkstra< G >::drivingDistance(
     // get source;
     V v_source;
     if (!graph.get_gVertex(start_vertex, v_source)) {
-        path.clear();
+        /* The node has to be in the path*/
+        path.push_back({start_vertex, -1, 0, 0});
         return;
     }
 
     // perform the algorithm
-    if (dijkstra_1_to_distance(graph, v_source, distance)) {
+    //if (dijkstra_1_to_distance(graph, v_source, distance)) {
+    dijkstra_1_to_distance(graph, v_source, distance); 
         // get the results
         get_nodesInDistance(graph, path, v_source, distance);
-    } else {
-        path.clear();
-    }
+    //} else {
+    //    path.push_back({start_vertex, -1, 0, 0});
+    //}
     return;
 }
 

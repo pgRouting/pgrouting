@@ -154,9 +154,22 @@ Routing functions
 Deprecated Routing Functions
 *******************************************************************************
 
-  - :ref:`pgr_apspJohnson<pgr_apsp_johnson>` - All Pairs Shortest Path, Johnson’s Algorithm
-  - :ref:`pgr_apspWarshall<pgr_apsp_warshall>` - All Pairs Shortest Path, Floyd-Warshall Algorithm
-  - :ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path Dijkstra
+    - :ref:`pgr_apspJohnson<pgr_apsp_johnson>` - All Pairs Shortest Path, Johnson’s Algorithm
+    - :ref:`pgr_apspWarshall<pgr_apsp_warshall>` - All Pairs Shortest Path, Floyd-Warshall Algorithm
+    - :ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path Dijkstra
+    - :ref:`pgr_drivingDistance<pgr_driving_distance_v2>` - Driving Distance (V2.0 signature)
+
+
+.. toctree::
+	:hidden:
+
+	../src/apsp_johnson/doc/index
+	../src/apsp_warshall/doc/index
+	../src/kdijkstra/doc/index
+	../src/driving_distance/doc/dd_driving_distance_v2
+
+
+
 
 *******************************************************************************
 Pre processing or post processing helping functions

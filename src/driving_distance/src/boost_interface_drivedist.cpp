@@ -71,7 +71,16 @@ do_pgr_driving_many_to_dist(
         if (equiCostFlag) {
             equi_cost(paths);
         }
+
+        for (auto &path : paths) {
+            /* order by agg_cost , edge */
+            std::sort(path.begin(), path.end(),
+                    [](const Path_t &l, const  Path_t &r)
+                    { return l.agg_cost < r.agg_cost? true : l.node < r.node;});
+        }
         size_t count(count_tuples(paths));
+
+
         if (count == 0) {
             *err_msg = strdup("NOTICE: No return values was found");
             *ret_path = noResult(path_count, (*ret_path));
@@ -147,6 +156,11 @@ do_pgr_driving_distance(
             *ret_path = noResult(path_count, (*ret_path));
             return;
         }
+        /* order by agg_cost , edge */
+        std::sort(path.begin(), path.end(),
+                [](const Path_t &l, const  Path_t &r) 
+                { return l.agg_cost < r.agg_cost? true : l.node < r.node;});
+
 
         log << "NOTICE: Calculating the number of tuples \n";
         int count = path.size();

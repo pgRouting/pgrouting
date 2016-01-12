@@ -36,7 +36,7 @@ This function computes a Dijkstra shortest path solution them extracts the cost 
 
              ``pgr_drivingDistance(sql, start_v, distance, directed)``
 
-             See :ref:`pgr_driving_distance_v3`
+             See :ref:`pgr_drivingDistance`
 
 
 

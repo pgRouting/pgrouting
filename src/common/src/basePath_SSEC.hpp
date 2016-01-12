@@ -62,31 +62,21 @@ class Path {
     void erase(pthIt pos) {path.erase(pos);}
     ConstpthIt begin() const {return path.begin();}
     ConstpthIt end() const {return path.end();}
-    
+
 
     Path_t set_data(
-         int64_t d_from, 
-         int64_t d_to,
-         int64_t d_vertex,
-         int64_t d_edge, 
-         float8 d_cost,
-         float8 d_tot_cost);
+            int64_t d_from, 
+            int64_t d_to,
+            int64_t d_vertex,
+            int64_t d_edge, 
+            float8 d_cost,
+            float8 d_tot_cost);
 
     void push_front(
-         int64_t d_vertex,
-         int64_t d_edge, 
-         float8 d_cost,
-         float8 d_tot_cost);
-#if 0
-    void push_back(
-         int d_seq, 
-         int64_t d_from, 
-         int64_t d_to,
-         int64_t d_vertex,
-         int64_t d_edge, 
-         float8 d_cost,
-         float8 d_tot_cost);
-#endif
+            int64_t d_vertex,
+            int64_t d_edge, 
+            float8 d_cost,
+            float8 d_tot_cost);
     void clear();
 
     void print_path(std::ostream &log) const;
@@ -103,118 +93,94 @@ class Path {
     void appendPath(const Path &o_path);
     void empty_path(unsigned int d_vertex);
 
-   void get_pg_dd_path(
-        General_path_element_t **ret_path,
-        int &sequence) const;
+    void get_pg_dd_path(
+            General_path_element_t **ret_path,
+            int &sequence) const;
 
-   void get_pg_ksp_path(
-        General_path_element_t **ret_path,
-        int &sequence, int routeId) const;
+    void get_pg_ksp_path(
+            General_path_element_t **ret_path,
+            int &sequence, int routeId) const;
 
-   void generate_postgres_data(
-        General_path_element_t **postgres_data,
-        size_t &sequence) const;
+    void generate_postgres_data(
+            General_path_element_t **postgres_data,
+            size_t &sequence) const;
 
-  friend size_t collapse_paths(
-      General_path_element_t **ret_path,
-      const std::deque< Path > &paths) {
-   size_t sequence = 0;
-   for (const Path &path : paths) {
-   if (path.path.size() > 0)
-        path.generate_postgres_data(ret_path, sequence);
-   }
-   return sequence;
-  }
-
-
-
-#if 0
-  /*
-   * p1, has the previous results
-   */
-
-  friend Path equi_cost(const Path &p1, const Path &p2) {
-    Path result(p1);
-    std::sort(result.begin(), result.end(), 
-      [](const Path_t &e1, const Path_t &e2)->bool { 
-         return e1.node < e2.node; 
-      });
-    return result;
-
-    for (auto const &e : p2.path) {
-      auto pos = find_if(result.begin(), result.end(),
-                 [&e](const Path_t &e1)->bool { 
-                   return e.node == e1.node; 
-                 });
-      if (pos != result.end()) {
-        if (pos->cost > e.cost) {
-           (*pos) = e;
-        }  
-      } else {
-        result.push_back(e);
-      }
+    friend size_t collapse_paths(
+            General_path_element_t **ret_path,
+            const std::deque< Path > &paths) {
+        size_t sequence = 0;
+        for (const Path &path : paths) {
+            if (path.path.size() > 0)
+                path.generate_postgres_data(ret_path, sequence);
+        }
+        return sequence;
     }
-    return result;
-  }
-#endif
 
 
-  /*
-   * sort the paths by size from greater to smaller
-   *        and sort each path by node 
-   * all the nodes on p2 are going to be compared
-   * with the nodes of p1
-   *
-   * When both paths reach the node and p1.agg_cost > p2.agg_cost
-   *    erase the node of p1 
-   *    (cant erase from p2 because we loose the iterators
-   *     so in a future cycle it will be deleted)
-   *
-   * sort the paths by start_id, 
-   */
 
-  friend void equi_cost(std::deque< Path > &paths) {
+    /*
+     * sort the paths by size from greater to smaller
+     *        and sort each path by node 
+     * all the nodes on p2 are going to be compared
+     * with the nodes of p1
+     *
+     * When both paths reach the node and p1.agg_cost > p2.agg_cost
+     *    erase the node of p1 
+     *    (cant erase from p2 because we loose the iterators
+     *     so in a future cycle it will be deleted)
+     *
+     * sort the paths by start_id, 
+     */
 
-      std::sort(paths.begin(), paths.end(), 
-              [](const Path &e1, const Path &e2)->bool { 
-              return e1.size() > e2.size(); 
-              });
+    friend void equi_cost(std::deque< Path > &paths) {
 
-      for (auto &p : paths) {
-          std::sort(p.begin(), p.end(), 
-                  [](const Path_t &e1, const Path_t &e2)->bool { 
-                  return e1.node < e2.node; 
-                  });
-      }
+        /* sort paths by size */
+        std::sort(paths.begin(), paths.end(), 
+                [](const Path &e1, const Path &e2)->bool { 
+                return e1.size() > e2.size(); 
+                });
 
-      for (auto &p1 : paths) {
-          for (auto &p2 : paths) {
-              if (p1.start_id() == p2.start_id()) continue;
-              for (const auto &e : p2.path) {
-                  auto pos = find_if(p1.begin(), p1.end(),
-                          [&e](const Path_t &e1)->bool { 
-                          return e.node == e1.node; 
-                          });
-                  if (pos != p2.end() && pos->agg_cost > e.agg_cost) {
-                      p1.erase(pos);
-                  }
-              }
-          }
-      }
+        /* sort each path by node */
+        for (auto &p : paths) {
+            std::sort(p.begin(), p.end(), 
+                    [](const Path_t &e1, const Path_t &e2)->bool { 
+                    return e1.node < e2.node; 
+                    });
+        }
 
-      std::sort(paths.begin(), paths.end(), 
-              [](const Path &e1, const Path &e2)->bool { 
-              return e1.start_id() < e2.start_id(); 
-              });
-  }
+        for (auto &p1 : paths) {
+            for (const auto &p2 : paths) {
+                if (p1.start_id() == p2.start_id()) continue;
+                for (const auto &stop : p2.path) {
+                    /* find the node of p2 in p1 */
+                    auto pos = find_if(p1.begin(), p1.end(),
+                            [&stop](const Path_t &stop1)->bool { 
+                            return stop.node == stop1.node; 
+                            });
+                    if (pos != p1.end() && stop.agg_cost < pos->agg_cost) {
+                        /* both share the same node &
+                         * the second path has the smallest
+                         *  So erasing from the first path */
+                        p1.erase(pos);
+                    }
+                }
+            }
+        }
 
-  friend int count_tuples(const std::deque< Path > &paths) {
-      int count(0);
-      for (const Path &e : paths) {
-          count += e.path.size();
-      }
-      return count;
-  }
+        /* sort paths by start_id */
+        std::sort(paths.begin(), paths.end(), 
+                [](const Path &e1, const Path &e2)->bool { 
+                return e1.start_id() < e2.start_id(); 
+                });
+    }
+
+    friend int count_tuples(const std::deque< Path > &paths) {
+        int count(0);
+        for (const Path &e : paths) {
+            count += e.path.size();
+        }
+        return count;
+    }
 };
 
 

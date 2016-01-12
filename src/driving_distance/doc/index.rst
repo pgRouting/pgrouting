@@ -14,16 +14,8 @@ Driving Distance
 ===============================================================================
 
 
-Version 2.0 (deprecated)
-------------------------
 
-  - :ref:`pgr_driving_distance<pgr_driving_distance_v2>` - Driving Distance
-
-
-Version 2.1
-------------------
-
-  - :ref:`pgr_driving_distance<pgr_driving_distance_v3>` - Driving Distance
+  - :ref:`pgr_drivingDistance<pgr_drivingDistance>` - Driving Distance
 
 
 .. _pgr_driving_distance_post:
@@ -38,8 +30,7 @@ Driving Distance post-processing
 .. toctree::
 	:hidden:
 
-	./dd_driving_distance_v2.rst
-	./dd_driving_distance_v3.rst
+	pgr_drivingDistance
 	./dd_alphashape.rst
 	./dd_points_as_polygon.rst
 
