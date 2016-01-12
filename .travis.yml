@@ -60,7 +60,6 @@ addons:
       - libcgal-dev
       - postgresql-server-dev-all
       - postgresql-common
-      - postgresql-contrib-9.4
 
 
 before_script:
@@ -69,6 +68,7 @@ before_script:
   - sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION             # Start the version of PG that we want to test
   - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION
   - sudo apt-get install libtap-parser-sourcehandler-pgtap-perl
+  - sudo apt-get install postgresql-contrib-9.4
   - createdb  ___pgr___test___
   - createdb  pgr_test__db__test
   - ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___

@@ -1,5 +1,8 @@
+public.ddunnoded.the_geom SRID:0 TYPE:LINESTRING DIMS:2 
+OK
+public.ddnoded2.the_geom SRID:0 TYPE:LINESTRING DIMS:2 
+OK
 NOTICE:  Deprecated function
-NOTICE:  Contradiction found: has_rcost set to false but reverse_cost column found
 0|1
 1|4
 2|8
