@@ -98,7 +98,7 @@ Finds the driving distance depending on the optional parameters setup.
 Description of the Signatures
 =============================
 
-Description of the SQL query
+Description of the Edges SQL query
 -------------------------------------------------------------------------------
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
@@ -114,18 +114,20 @@ Column            Type                  Description
 ================  ===================   =================================================
 
 
-:sql: a SQL query, which should return a set of rows with the following columns:
+Description of the Points SQL query
+-------------------------------------------------------------------------------
 
-        .. code-block:: sql
+:points_sql: an SQL query, which should return a set of rows with the following columns:
 
-                SELECT id, source, target, cost [,reverse_cost] FROM edge_table
+================  ===================   =================================================
+Column            Type                  Description
+================  ===================   =================================================
+**pid**           ``ANY-INTEGER``       (optional) Identifier of the point. Can not be NULL. If column not present, a sequential identifier will be given automatically.
+**eid**           ``ANY-INTEGER``       Identifier of the "closest" edge to the point.
+**fraction**      ``ANY-NUMERICAL``     Value in [0,1] that indicates the relative postition from the first end point of the edge.
+**side**          ``CHAR``              (optional) Value in ['b', 'r', 'l', NULL] indicating if the ppoint is in the right, left of the edge or if it doesn't matter with both or NULL. Can be in any upper or lower case, If column not present 'b' is considered.
+================  ===================   =================================================
 
-
-        :id: ``ANY-INTEGER`` identifier of the edge.
-        :source: ``ANY-INTEGER`` identifier of the source vertex of the edge.
-        :target: ``ANY-INTEGER`` identifier of the target vertex of the edge.
-        :cost: ``ANY-NUMERICAL`` value of the edge traversal cost. A negative cost will prevent the edge (``source``, ``target``) from being inserted in the graph.
-        :reverse_cost: ``ANY-NUMERICAL`` (optional) the value for the reverse traversal of the edge. A negative cost will prevent the edge (``target``, ``source``) from being inserted in the graph.
 
 Where:
 
