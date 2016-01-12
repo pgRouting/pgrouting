@@ -31,7 +31,7 @@ pgRouting provides several :ref:`common functions <common>`:
 	:maxdepth: 1
 	:glob: 
 
-	../src/common/doc/functions/*
+	../src/topology/doc/topology
 
 pgRouting defines a few :ref:`custom data types <data_types>`:
 

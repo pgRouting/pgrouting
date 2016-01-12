@@ -87,7 +87,7 @@ BEGIN
     msgKind = 1; -- notice
     fnName = 'pgr_createTopology';
     raise notice 'PROCESSING:'; 
-    raise notice 'pgr_createTopology(''%'',%,''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where;
+    raise notice 'pgr_createTopology(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,tolerance,the_geom,id,source,target,rows_where, clean;
     execute 'show client_min_messages' into debuglevel;
 
 

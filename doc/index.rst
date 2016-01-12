@@ -102,9 +102,9 @@ Topology functions
   -  :ref:`pgr_node_network`  -to create nodes to a not noded edge table.
 
 .. toctree::
-	:hidden:
+   :hidden:
 
-	../src/common/doc/functions/index
+   ../src/topology/doc/topology
 
 *******************************************************************************
 Routing functions

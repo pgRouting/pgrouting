@@ -25,7 +25,7 @@ We also provide a function to node an unoded network.
 .. toctree::
   :hidden: 
 
-  pgr_createTopology to create a topology based on the geometry. <create_topology>
+  pgr_createTopology to create a topology based on the geometry. <pgr_createtopology>
   pgr_createVerticesTable -to reconstruct the vertices table based on the source and target information. <create_vert_table>
   pgr_analyzeGraph - to analyze the edges and vertices of the edge table. <analyze_graph>
   pgr_analyzeOneway to analyze directionality of the edges. <analyze_oneway>

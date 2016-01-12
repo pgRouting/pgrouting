@@ -1,12 +1,3 @@
-NOTICE:  table "parallel" does not exist, skipping
-NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('parallel',0.001,'the_geom','id','source','target','true')
-NOTICE:  Performing checks, please wait .....
-NOTICE:  Creating Topology, Please wait...
-NOTICE:  -------------> TOPOLOGY CREATED FOR  8 edges
-NOTICE:  Rows with NULL geometry or NULL id: 0
-NOTICE:  Vertices table for table public.parallel is: public.parallel_vertices_pgr
-NOTICE:  ----------------------------------------------
 OK
 1|1|1
 1|2|2

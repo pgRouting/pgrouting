@@ -17,5 +17,4 @@ Common Functions
 
    convenience/index
    utilities/index
-   functions/index
    types/index

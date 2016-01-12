@@ -261,7 +261,7 @@ sub process_single_test{
         #reason of opening conection is because the set client_mim_messages to warning;
         if ($DOCUMENTATION) {
             mysystem("mkdir -p '$dir/../doc' "); # insure the directory exists
-            open(PSQL, "|$psql $connopts -e $database > $dir/../doc/$x.result 2>\&1 ") || do {
+            open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/../doc/$x.result 2>\&1 ") || do {
                 $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
                 $stats{z_fail}++;
                 next;
@@ -354,12 +354,12 @@ sub createTestDB {
         }
         print "-- Trying to install postgis extension $postgis_ver\n" if $DEBUG;
         mysystem("$psql $connopts -c \"$encoding create extension postgis $postgis_ver \" $databaseName");
-        print "-- Trying to install pgTap extension \n" if $DEBUG;
-        system("$psql $connopts -c \"$encoding create extension pgtap \" $databaseName");
-        if ($? != 0) {
-            print "Failed: create extension pgtap\n" if $VERBOSE || $DRYRUN;
-            die;
-        }
+#        print "-- Trying to install pgTap extension \n" if $DEBUG;
+#        system("$psql $connopts -c \"$encoding create extension pgtap \" $databaseName");
+#        if ($? != 0) {
+#            print "Failed: create extension pgtap\n" if $VERBOSE || $DRYRUN;
+#            die;
+#        }
     }
     #
 #    else {

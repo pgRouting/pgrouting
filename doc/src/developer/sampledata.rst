@@ -95,7 +95,7 @@ This table is used in some of our examples
 
 .. _fig1:
 
-.. figure:: ../../../src/common/doc/functions/images/Fig1-originalData.png
+.. figure:: images/Fig1-originalData.png
 
     *Graph 1: Directed, with cost and reverse cost*
 
@@ -107,7 +107,7 @@ Green colored lines with filled arrows, represent the ``reverse_cost`` of the ed
 
 .. _fig2:
 
-.. figure:: ../../../src/common/doc/functions/images/Fig6-undirected.png
+.. figure:: images/Fig6-undirected.png
 
     *Graph 2: Undirected, with cost and reverse cost*
 
@@ -117,7 +117,7 @@ Green colored lines with filled arrows, represent the ``reverse_cost`` of the ed
 .. _fig3:
 
 
-.. figure:: ../../../src/common/doc/functions/images/Fig2-cost.png
+.. figure:: images/Fig2-cost.png
 
     *Graph 3: Directed, with cost*
 
@@ -126,7 +126,7 @@ Green colored lines with filled arrows, represent the ``reverse_cost`` of the ed
 
 .. _fig4:
 
-.. figure:: ../../../src/common/doc/functions/images/Fig4-costUndirected.png
+.. figure:: images/Fig4-costUndirected.png
 
     *Graph 4: Undirected, with cost*
 
