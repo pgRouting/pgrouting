@@ -19,10 +19,10 @@ Name
 ``pgr_withPointsDD`` - Returns the driving distance from a starting point.
 
 .. warning:: This is a proposed function!!!
-    | Proposed functions that are not officially in the release:
-    |   - name can change
-    |   - Signature can change
-    |   - Functionality can change
+ | Proposed functions that are not officially in the release:
+ |   - name can change
+ |   - Signature can change
+ |   - Functionality can change
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -119,14 +119,18 @@ Description of the Points SQL query
 
 :points_sql: an SQL query, which should return a set of rows with the following columns:
 
-================  ===================   =================================================
-Column            Type                  Description
-================  ===================   =================================================
-**pid**           ``ANY-INTEGER``       (optional) Identifier of the point. Can not be NULL. If column not present, a sequential identifier will be given automatically.
-**eid**           ``ANY-INTEGER``       Identifier of the "closest" edge to the point.
-**fraction**      ``ANY-NUMERICAL``     Value in [0,1] that indicates the relative postition from the first end point of the edge.
-**side**          ``CHAR``              (optional) Value in ['b', 'r', 'l', NULL] indicating if the ppoint is in the right, left of the edge or if it doesn't matter with both or NULL. Can be in any upper or lower case, If column not present 'b' is considered.
-================  ===================   =================================================
+============ ================= =================================================
+Column            Type              Description
+============ ================= =================================================
+**pid**      ``ANY-INTEGER``   (optional) Identifier of the point. Can not be NULL. If column not present, a sequential identifier will be given automatically.
+**eid**      ``ANY-INTEGER``   Identifier of the "closest" edge to the point.
+**fraction** ``ANY-NUMERICAL`` Value in [0,1] that indicates the relative postition from the first end point of the edge.
+**side**     ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the ppoint is:
+                               - In the right, left of the edge or
+                               - If it doesn't matter with 'b' or NULL.
+                               - If column not present 'b' is considered.
+                               Can be in any upper or lower case.
+============ ================= =================================================
 
 
 Where:

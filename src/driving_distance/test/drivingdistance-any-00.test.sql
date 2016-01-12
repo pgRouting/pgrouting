@@ -48,21 +48,13 @@ BEGIN;
 
     SET client_min_messages TO NOTICE;
     --this are equivalent
-    select cost, count(*) from (
-        select * from pgr_drivingdistance('select id, source, target, 1.0::float8 as cost from ddnoded2', 1274, 10, false, false)
-    ) as foo group by cost order by cost asc;
+    select seq, id1, id2, round(cost::numeric, 2) from pgr_drivingdistance('select id, source, target, 1.0::float8 as cost from ddnoded2', 1274, 10, false, false);
+    select seq, node, edge, round(cost::numeric, 2), round(agg_cost::numeric,2) from pgr_drivingdistance('select id, source, target, 1.0::float8 as cost from ddnoded2', 1274, 10, false);
 
-    select agg_cost, count(*) from (
-        select * from pgr_drivingdistance('select id, source, target, 1 as cost from ddnoded2', 1274, 10, false)
-    ) as foo group by agg_cost order by agg_cost asc;
 
     --- this ones are equivalent
-    select agg_cost, count(*) from (
-        select * from pgr_drivingdistance('select id, source, target, 1 as cost from ddnoded2', 1274, 10, true)
-    ) as foo group by agg_cost order by agg_cost asc;
+    select seq, node, edge, round(cost::numeric, 2), round(agg_cost::numeric,2) from pgr_drivingdistance('select id, source, target, 1.0::float8 as cost from ddnoded2', 1274, 10, true);
+    select seq, node, edge, round(cost::numeric, 2), round(agg_cost::numeric,2) from pgr_drivingdistance('select id, source, target, 1.0::float8 as cost from ddnoded2', 1274, 10);
 
-    select agg_cost, count(*) from (
-        select * from pgr_drivingdistance('select id, source, target, 1 as cost from ddnoded2', 1274, 10)
-    ) as foo group by agg_cost order by agg_cost asc;
 
     ROLLBACK;
