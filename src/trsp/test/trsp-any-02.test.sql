@@ -1,6 +1,6 @@
 BEGIN;
 
-CREATE TABLE restrictions1 (
+CREATE TABLE restrictions2 (
     rid integer NOT NULL,
     to_cost double precision,
     teid integer,
@@ -8,7 +8,7 @@ CREATE TABLE restrictions1 (
     via text
 );
 
-COPY restrictions1 (rid, to_cost, teid, feid, via) FROM stdin WITH NULL '__NULL__' DELIMITER ',';
+COPY restrictions2 (rid, to_cost, teid, feid, via) FROM stdin WITH NULL '__NULL__' DELIMITER ',';
 1,100,7,4,__NULL__
 2,4,8,3,5
 3,100,9,16,__NULL__
@@ -25,6 +25,6 @@ select * from pgr_trsp(
     true, -- directed graph?
     true, -- has_reverse_cost?
     -- include the turn restrictions
-    'select to_cost, teid as target_id, feid||coalesce('',''||via,'''') as via_path from restrictions1');
+    'select to_cost, teid as target_id, feid||coalesce('',''||via,'''') as via_path from restrictions2');
 
 ROLLBACK;
