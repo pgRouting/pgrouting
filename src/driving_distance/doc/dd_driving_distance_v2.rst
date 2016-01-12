@@ -82,37 +82,11 @@ Examples
 -------------------------------------------------------------------------------
 
 * Without ``reverse_cost``
-
-.. code-block:: sql
-
-	SELECT seq, id1 AS node, cost 
-		FROM pgr_drivingDistance(
-			'SELECT id, source, target, cost FROM edge_table',
-			7, 1.5, false, false
-		);
-
-	 seq | node | cost 
-	-----+------+------
-	   0 |    7 |    0
-	   1 |    8 |    1
-	(2 rows)
-
-
 * With ``reverse_cost``
 
-.. code-block:: sql
-
-	SELECT seq, id1 AS node, cost 
-		FROM pgr_drivingDistance(
-			'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-			7, 1.5, true, true
-		);
-
-	 seq | node | cost 
-	-----+------+------
-	   0 |    7 |    0
-	   1 |    8 |    1
-	(5 rows)
+.. literalinclude:: doc-pgr_drivingdistance-v2.result
+   :start-after: --q1
+   :end-before: --q2
 
 
 The queries use the :ref:`sampledata` network.

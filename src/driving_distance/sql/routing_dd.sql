@@ -47,7 +47,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source bigint, di
   BEGIN
       RAISE NOTICE 'Deprecated function';
 
-      has_reverse =_pgr_parameter_check('driving', edges_sql, FALSE);
+      has_reverse =_pgr_parameter_check('dijkstra', edges_sql, FALSE);
 
       sql = edges_sql;
       IF (has_reverse != has_rcost) THEN
