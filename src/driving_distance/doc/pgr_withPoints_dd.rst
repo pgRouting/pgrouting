@@ -16,7 +16,7 @@ pgr_withPointsDD
 Name
 -------------------------------------------------------------------------------
 
-``pgr_drivingDistance`` - Returns the driving distance from a start node.
+``pgr_withPointsDD`` - Returns the driving distance from a start node.
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -27,17 +27,18 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Using Dijkstra algorithm, extracts all the nodes that have costs less than or equal to the value ``distance``.
+Modify the graph to include points and 
+using Dijkstra algorithm, extracts all the nodes that have costs less than or equal to the value ``distance``.
 The edges extracted will conform the corresponding spanning tree.
 
 .. index::
-	single: drivingDistance(edges_sql, start_vid, distance)
+	single: withPointsDD(edges_sql, points_sql, start_vid, distance)
 
 .. rubric:: The minimal signature:
 
 .. code-block:: sql
 
-   pgr_drivingDistance(sql text, start_v bigint, distance float8)
+   pgr_withPointsDD(sql text, start_v bigint, distance float8)
      RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
@@ -48,7 +49,7 @@ The edges extracted will conform the corresponding spanning tree.
 
 .. code-block:: sql
 
-   pgr_drivingDistance(sql text, start_vid bigint, distance float8, directed boolean)
+   pgr_withPointsDD(sql text, start_vid bigint, distance float8, directed boolean)
      RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
@@ -59,7 +60,7 @@ The edges extracted will conform the corresponding spanning tree.
 
 .. code-block:: sql
 
-   pgr_drivingDistance(sql text, start_vids anyarray, distance float8,
+   pgr_withPointsDD(sql text, start_vids anyarray, distance float8,
          directed boolean default true,
          equicost boolean default false)
      RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)
@@ -118,7 +119,7 @@ The examples in this section use the following :ref:`fig1`
 
 .. code-block:: sql
 
-    SELECT * FROM pgr_drivingDistance(
+    SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         2, 3
       );
@@ -136,7 +137,7 @@ The examples in this section use the following :ref:`fig1`
       10 |    8 |    7 |    1 |        2
     (10 rows)
 
-    SELECT * FROM pgr_drivingDistance(
+    SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         13, 3
       );
@@ -152,7 +153,7 @@ The examples in this section use the following :ref:`fig1`
        8 |    8 |    7 |    1 |        3
     (8 rows)
 
-    SELECT * FROM pgr_drivingDistance(
+    SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3
       );
@@ -178,7 +179,7 @@ The examples in this section use the following :ref:`fig1`
       18 |     13 |    8 |    7 |    1 |        3
     (18 rows)
 
-    SELECT * FROM pgr_drivingDistance(
+    SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3, equicost:=true
       );
@@ -207,7 +208,7 @@ The examples in this section use the following :ref:`fig2`
 
 .. code-block:: sql
 
-    SELECT * FROM pgr_drivingDistance(
+    SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         2, 3, false
       );
@@ -227,7 +228,7 @@ The examples in this section use the following :ref:`fig2`
       12 |    8 |    7 |    1 |        2
     (12 rows)
     
-    SELECT * FROM pgr_drivingDistance(
+    SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         13, 3, false
       );
@@ -243,7 +244,7 @@ The examples in this section use the following :ref:`fig2`
        8 |    8 |    7 |    1 |        3
     (8 rows)
     
-    SELECT * FROM pgr_drivingDistance(
+    SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3, false
       );
@@ -271,7 +272,7 @@ The examples in this section use the following :ref:`fig2`
       20 |     13 |    8 |    7 |    1 |        3
     (20 rows)
 
-    SELECT * FROM pgr_drivingDistance(
+    SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         array[2,13], 3, false, equicost:=true
       );
@@ -303,7 +304,7 @@ The examples in this section use the following :ref:`fig3`
 
 .. code-block:: sql
 
-    SELECT * FROM pgr_drivingDistance(
+    SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost FROM edge_table',
         2, 3
       );
@@ -318,7 +319,7 @@ The examples in this section use the following :ref:`fig3`
        7 |    9 |    9 |    1 |        3
     (7 rows)
     
-    SELECT * FROM pgr_drivingDistance(
+    SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost FROM edge_table',
         13, 3
       );
@@ -327,7 +328,7 @@ The examples in this section use the following :ref:`fig3`
        1 |   13 |   -1 |    0 |        0
     (1 row)
 
-    SELECT * FROM pgr_drivingDistance(
+    SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost FROM edge_table',
         array[2,13], 3
       );
@@ -343,7 +344,7 @@ The examples in this section use the following :ref:`fig3`
        8 |     13 |   13 |   -1 |    0 |        0
     (8 rows)
     
-    SELECT * FROM pgr_drivingDistance(
+    SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost FROM edge_table',
         array[2,13], 3, equicost:=true
       );
@@ -368,7 +369,7 @@ The examples in this section use the following :ref:`fig4`
 
 .. code-block:: sql
 
-    SELECT * FROM pgr_drivingDistance(
+    SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost FROM edge_table',
         2, 3, false
       );
@@ -387,7 +388,7 @@ The examples in this section use the following :ref:`fig4`
       11 |    8 |    7 |    1 |        2
     (11 rows)
     
-    SELECT * FROM pgr_drivingDistance(
+    SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost FROM edge_table',
         13, 3, false
       );
@@ -403,7 +404,7 @@ The examples in this section use the following :ref:`fig4`
        8 |    8 |    7 |    1 |        3
     (8 rows)
 
-    SELECT * FROM pgr_drivingDistance(
+    SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost FROM edge_table',
         array[2,13], 3, false
       );
@@ -430,7 +431,7 @@ The examples in this section use the following :ref:`fig4`
       19 |     13 |    8 |    7 |    1 |        3
     (19 rows)
 
-    SELECT * FROM pgr_drivingDistance(
+    SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost FROM edge_table',
         array[2,13], 3, false, equicost:=true
       );

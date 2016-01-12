@@ -16,6 +16,7 @@ Driving Distance
 
 
   - :ref:`pgr_drivingDistance<pgr_drivingDistance>` - Driving Distance
+  - :ref:`pgr_withPointsDD` - Driving Distance
 
 
 .. _pgr_driving_distance_post:
@@ -31,6 +32,7 @@ Driving Distance post-processing
 	:hidden:
 
 	pgr_drivingDistance
+    pgr_withPoints_dd
 	./dd_alphashape.rst
 	./dd_points_as_polygon.rst
 
