@@ -9,7 +9,7 @@
 set -e
 
 POSTGRESQL_VERSION="$1"
-DATABASE='$2'
+DATABASE="$2"
 PGUSER=postgres
 
 sudo updatedb
