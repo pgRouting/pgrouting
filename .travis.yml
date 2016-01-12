@@ -60,6 +60,7 @@ addons:
       - libcgal-dev
       - postgresql-server-dev-all
       - postgresql-common
+      - postgresql-contrib-9.4
 
 
 before_script:
