@@ -40,15 +40,15 @@ run_psql () {
 # ------------------------------------------------------------------------------
 # CREATE EXTENSION
 # ------------------------------------------------------------------------------
-#run_psql -d  ____tmp_pgdb______ -c "CREATE EXTENSION postgis;"
-#run_psql -d  ____tmp_pgdb______ -c "CREATE EXTENSION pgrouting;"
+run_psql -d  pgr_test__db__test -c "CREATE EXTENSION postgis;"
+run_psql -d  pgr_test__db__test -c "CREATE EXTENSION pgrouting;"
 
 # ------------------------------------------------------------------------------
 # Get version information
 # ------------------------------------------------------------------------------
-#run_psql -d  ____tmp_pgdb______ -c "SELECT version();"    
-#run_psql -d  ____tmp_pgdb______ -c "SELECT postgis_full_version();"    
-#run_psql -d  ____tmp_pgdb______ -c "SELECT pgr_version();"
+run_psql -d  pgr_test__db__test -c "SELECT version();"    
+run_psql -d  pgr_test__db__test -c "SELECT postgis_full_version();"    
+run_psql -d  pgr_test__db__test -c "SELECT pgr_version();"
 
 #PGROUTING_VERSION=`run_psql -A -t -c "SELECT version FROM pgr_version();"`
 
@@ -60,13 +60,13 @@ run_psql () {
 #./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE 
 #./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE -v -alg ksp
 
-cd ./tools/testers/
-psql -f setup_db.sql
-pg_prove ../../src/trsp/test/pgtap/*
-dropdb ___pgr___test___
-cd ../../
+#cd ./tools/testers/
+#psql -f setup_db.sql
+#pg_prove ../../src/trsp/test/pgtap/*
+#dropdb ___pgr___test___
+#cd ../../
 
-#./tools/testers/algorithm-tester.pl  -pgver $POSTGRESQL_VERSION -ignorenotice
+./tools/testers/algorithm-tester.pl  -pgver $POSTGRESQL_VERSION -ignorenotice
 
 if [ "$?" -ne 0 ]
 then
