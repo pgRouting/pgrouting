@@ -70,6 +70,7 @@ before_script:
   - sudo apt-get install libtap-parser-sourcehandler-pgtap-perl
   - createdb  ___pgr___test___
   - createdb  pgr_test__db__test
+  - ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___
 
 
 #before_install:
