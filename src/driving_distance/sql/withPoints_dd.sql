@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-CREATE OR REPLACE FUNCTION pgr_withPointsDrivingDistanceFrom(
+CREATE OR REPLACE FUNCTION pgr_withPointsDD(
     edges_sql TEXT,
     points_sql TEXT,
     start_pid BIGINT,
@@ -33,7 +33,8 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDrivingDistanceFrom(
     driving_side CHAR DEFAULT 'b', 
     details BOOLEAN DEFAULT FALSE, 
 
-    OUT seq INTEGER, OUT node BIGINT,
+    OUT seq INTEGER,
+    OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)

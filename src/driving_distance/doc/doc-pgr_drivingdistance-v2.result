@@ -6,13 +6,23 @@ SELECT * FROM pgr_drivingDistance(
     7, 1.5, false, false
 ) ;
 NOTICE:  Deprecated function
-ERROR:  Unexpected Null value in column source
-CONTEXT:  PL/pgSQL function pgr_drivingdistance(text,bigint,double precision,boolean,boolean) line 24 at RETURN QUERY
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   7 |  -1 |    0
+   1 |   8 |   6 |    1
+(2 rows)
+
 SELECT * FROM pgr_drivingDistance(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     7, 1.5, true, true
 ) ;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
+NOTICE:  Deprecated function
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   7 |  -1 |    0
+   1 |   8 |   6 |    1
+(2 rows)
+
 --q2
 ROLLBACK;
 ROLLBACK

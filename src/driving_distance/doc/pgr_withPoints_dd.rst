@@ -16,7 +16,13 @@ pgr_withPointsDD
 Name
 -------------------------------------------------------------------------------
 
-``pgr_withPointsDD`` - Returns the driving distance from a start node.
+``pgr_withPointsDD`` - Returns the driving distance from a starting point.
+
+.. warning:: This is a proposed function!!!
+    | Proposed functions that are not officially in the release:
+    |   - name can change
+    |   - Signature can change
+    |   - Functionality can change
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -28,45 +34,85 @@ Synopsis
 -------------------------------------------------------------------------------
 
 Modify the graph to include points and 
-using Dijkstra algorithm, extracts all the nodes that have costs less than or equal to the value ``distance``.
+using Dijkstra algorithm, extracts all the nodes and points that have costs less
+than or equal to the value ``distance`` from the starting point.
 The edges extracted will conform the corresponding spanning tree.
 
-.. index::
-	single: withPointsDD(edges_sql, points_sql, start_vid, distance)
 
-.. rubric:: The minimal signature:
+Signature Summary
+-----------------
 
-.. code-block:: sql
+.. code-block:: none
 
-   pgr_withPointsDD(sql text, start_v bigint, distance float8)
-     RETURNS SET OF (seq, node, edge, cost, agg_cost)
+	withPointsDD(edges_sql, points_sql, start_pid, distance)
+	withPointsDD(edges_sql, points_sql, start_pid, distance, directed, driving_side, details)
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-
-.. index::
-	single: drivingDistance(edges_sql, start_vid, distance, directed)
-
-.. rubric:: Driving Distance from a single starting point:
-
-.. code-block:: sql
-
-   pgr_withPointsDD(sql text, start_vid bigint, distance float8, directed boolean)
-     RETURNS SET OF (seq, node, edge, cost, agg_cost)
-
+Signatures
+==========
 
 .. index::
-	single: drivingDistance(edges_sql, start_vids, distance, directed, equiCost)
+	single: withPointsDD(edges_sql, points_sql, start_pid, distance)
 
-.. rubric:: Driving Distance from a multiple starting points:
+Minimal signature
+-----------------
 
-.. code-block:: sql
+The minimal signature:
+    - Is for a **directed** graph.
+    - The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
+    - No **details** are given about distance of other points of the query.
 
-   pgr_withPointsDD(sql text, start_vids anyarray, distance float8,
-         directed boolean default true,
-         equicost boolean default false)
-     RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)
+.. code-block:: none
+
+	withPointsDD(edges_sql, points_sql, start_pid, distance)
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+
+
+:Example:
+
+.. literalinclude:: doc-pgr_withPointsDD.result
+   :start-after: -- q1
+   :end-before: -- q2
+
+.. index::
+	single: withPointsDD(edges_sql, points_sql, start_pid, distance, directed, driving_side, details)
+
+Driving distance from a single point
+------------------------------------
+
+Finds the driving distance depending on the optional parameters setup.
+
+.. code-block:: none
+
+	pgr_withPointsDD(edges_sql, points_sql, start_pid, distance,
+        directed := true, driving_side := 'b', details := false)
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+
+
+:Example:
+
+.. literalinclude:: doc-pgr_withPointsDD.result
+   :start-after: -- q2
+   :end-before: -- q3
+
+Description of the Signatures
+=============================
 
 Description of the SQL query
 -------------------------------------------------------------------------------
+
+:edges_sql: an SQL query, which should return a set of rows with the following columns:
+
+================  ===================   =================================================
+Column            Type                  Description
+================  ===================   =================================================
+**id**            ``ANY-INTEGER``       Identifier of the edge.
+**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
+**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
+**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, If negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, If negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+================  ===================   =================================================
+
 
 :sql: a SQL query, which should return a set of rows with the following columns:
 

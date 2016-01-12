@@ -87,7 +87,7 @@ Minimal signature
 
 The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
 
-:example:
+:Example:
 
 .. literalinclude:: ../test/doc-dijkstra-v3.doc.result
    :start-after: -- q1
