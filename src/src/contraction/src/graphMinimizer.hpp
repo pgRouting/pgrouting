@@ -372,6 +372,38 @@ public:
 		return count;
 	}
 
+	int getreducedGraph_string(char **estring)
+	{
+		int reduced_size=(int)num_edges(reduced_graph->graph);
+		V_i vi;
+		EO_i out,out_end;
+		int count=0;
+		string restring="";
+		for (vi = vertices(reduced_graph->graph).first; vi != vertices(reduced_graph->graph).second; ++vi) {
+			for (boost::tie(out, out_end) = out_edges(*vi, reduced_graph->graph);
+				out != out_end; ++out)
+			{
+				V source_desc=source(*out, reduced_graph->graph);
+				V target_desc=target(*out, reduced_graph->graph);
+				int source_id=reduced_graph->graph[source_desc].id;
+				int target_id=reduced_graph->graph[target_desc].id;
+				
+				if (target_desc>source_desc)
+				{
+					string id=patch::to_string(reduced_graph->graph[*out].id);
+					string source=patch::to_string(source_id);
+					string target=patch::to_string(target_id);
+					string cost=patch::to_string(reduced_graph->graph[*out].cost);
+					string reverse_cost=patch::to_string(reduced_graph->graph[*out].revcost);
+					restring+=id+","+source+","+target+","+cost+","+reverse_cost+"$";
+					count++;
+				}
+				
+			}
+		}
+		(*estring)=strdup(restring.c_str());
+		return count;
+	}
 
 
 	void contract_to_level(int level)
@@ -507,7 +539,20 @@ public:
 		string gname="contracted_graph_"+patch::to_string(level);
 		(*name)=strdup(gname.c_str());
 	}
-
+	void getRemovedE_string(char **estring)
+	{
+		string rmstring="";
+		for (int i =0; i<this->removed_edges.size(); i++)
+		{
+			string id=patch::to_string(this->removed_edges[i].id);
+			string source=patch::to_string(this->removed_edges[i].source);
+			string target=patch::to_string(this->removed_edges[i].target);
+			string cost=patch::to_string(this->removed_edges[i].cost);
+			string reverse_cost=patch::to_string(this->removed_edges[i].revcost);
+			rmstring+=id+","+source+","+target+","+cost+","+reverse_cost+"$";
+		}
+		(*estring)=strdup(rmstring.c_str());
+	}
 	void getEdgeString(Edge **edges,int num_edges,char **estring)
 	{
 		string edgestring="";
@@ -521,6 +566,45 @@ public:
 			edgestring+=id+","+source+","+target+","+cost+","+reverse_cost+"$";
 		}
 		(*estring)=strdup(edgestring.c_str());
+	}
+
+
+	void getRemovedV_string(char **vstring)
+	{
+		string vertex_string="";
+		for (removed_V_i iter = removedVertices.begin(); iter != removedVertices.end(); iter++)
+		{
+			cout << "id: " << iter->first << endl;
+			string vid=patch::to_string(iter->first);
+			for (removed_E_i edge_iter = iter->second.begin(); edge_iter != iter->second.end(); edge_iter++)
+			{
+				Edge temp=*edge_iter ;
+				//cout << "(" << temp.source<< ", " << temp.target << "), ";
+				string eid=patch::to_string(temp.id);
+				string source=patch::to_string(temp.source);
+				string target=patch::to_string(temp.target);
+				string cost=patch::to_string(temp.cost);
+				string reverse_cost=patch::to_string(temp.revcost);
+				vertex_string+=vid+"$"+eid+","+source+","+target+","+cost+","+reverse_cost+"$";
+			}
+			cout << endl;
+		}		
+		(*vstring)=strdup(vertex_string.c_str());
+
+	}
+
+	void getPsuedoE_string(char **pstring)
+	{
+		string ps_string="";
+		for (psuedo_E_i iter = psuedoEdges.begin(); iter != psuedoEdges.end(); iter++)
+		{
+			//cout << "e1: " << iter->second.first << ",e: "<< iter->first << ",e2: " << iter->second.second << endl;
+			string eid=patch::to_string(iter->first);
+			string eid1=patch::to_string(iter->second.first);
+			string eid2=patch::to_string(iter->second.second);
+			ps_string+=eid+","+eid1+","+eid2+"$";
+		}
+		(*pstring)=strdup(ps_string.c_str());
 	}
 };
 #endif

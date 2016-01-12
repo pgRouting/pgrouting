@@ -29,8 +29,11 @@ typedef struct
 
 typedef struct 
 {
-	char *my_contracted_graph_name;
-	char *contracted_blob;
+	char *contracted_graph_name;
+	char *contracted_graph_blob;
+	char *removedVertices;
+	char *removedEdges;
+	char *psuedoEdges;
 } pgr_contracted_blob;
 //represents the type of graph
 enum graphType { UNDIRECTED= 0, DIRECTED};

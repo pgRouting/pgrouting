@@ -9,8 +9,9 @@ extern "C" {
 
 int fetch_contracted_graph(Edge *edges,int *initial_num_vertices,
 							int *final_num_vertices,int initial_num_edges,
-							int *final_num_edges,int level,Edge **final_edges,
-							char **graphName,char **edgeString);
+							int *final_num_edges,int level,char **graphName,
+							char **edgeString,char **psuedoEString,
+							char **removedVString,char **removedEString);
 
 
 #ifdef __cplusplus

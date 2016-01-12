@@ -1,7 +1,12 @@
+ 
+DROP TYPE IF EXISTS pgr_contracted_blob;
  CREATE TYPE pgr_contracted_blob AS
  (
- 	my_contracted_graph_name text,
- 	contracted_blob text
+ 	contracted_graph_name text,
+ 	contracted_graph_blob text,
+ 	removedVertices text,
+ 	removedEdges text,
+ 	psuedoEdges text
  );
 
 CREATE OR REPLACE FUNCTION my_dijkstra(edges_sql text, start_vid bigint, end_vid bigint,has_rcost boolean)
