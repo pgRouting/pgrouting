@@ -22,8 +22,8 @@ The following functions work an all vertices pair combinations
 .. toctree::
     :hidden: 
 
-    ./floydWarshall
-    ./johnson
+    ./pgr_floydWarshall
+    ./pgr_johnson
 
 
 Performance

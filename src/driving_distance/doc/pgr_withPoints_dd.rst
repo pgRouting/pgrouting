@@ -18,11 +18,12 @@ Name
 
 ``pgr_withPointsDD`` - Returns the driving distance from a starting point.
 
-.. warning:: This is a proposed function!!!
- | Proposed functions that are not officially in the release:
- |   - name can change
- |   - Signature can change
- |   - Functionality can change
+.. note::  This is a proposed function for version 2.3.
+
+     - Is not officially in the version 2.2 release.
+     - Name could change.
+     - Signature could change.
+     - Functionality will remain.
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -52,7 +53,7 @@ Signatures
 ==========
 
 .. index::
-	single: withPointsDD(edges_sql, points_sql, start_pid, distance)
+	single: withPointsDD(edges_sql, points_sql, start_pid, distance) -- proposed
 
 Minimal signature
 -----------------
@@ -75,7 +76,7 @@ The minimal signature:
    :end-before: --q2
 
 .. index::
-	single: withPointsDD(edges_sql, points_sql, start_pid, distance, directed, driving_side, details)
+	single: withPointsDD(edges_sql, points_sql, start_pid, distance, directed, driving_side, details) -- proposed
 
 Driving distance from a single point
 ------------------------------------
@@ -204,15 +205,15 @@ The queries use the :ref:`sampledata` network.
 
 .. rubric:: History
 
-* Renamed in version 2.0.0
-* Added functionality in version 2.1
+* Proposed in version 2.2
 
 
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_alphashape` - Alpha shape computation
-* :ref:`pgr_points_as_polygon` - Polygon around set of points
+* :ref:`pgr_drivingDistance` - Driving distance using dijkstra.
+* :ref:`pgr_alphashape` - Alpha shape computation.
+* :ref:`pgr_points_as_polygon` - Polygon around set of points.
 
 .. rubric:: Indices and tables
 

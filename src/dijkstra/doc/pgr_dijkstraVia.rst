@@ -9,7 +9,7 @@
 
 .. _pgr_dijkstraVia:
 
-pgr_dijkstraVia - Shortest paths via vertices using dijkstra 
+pgr_dijkstraVia
 ===============================================================================
 
 

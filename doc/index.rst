@@ -17,8 +17,8 @@ pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgr
 This is the manual for pgRouting |release|.
 
 .. image:: static/images/ccbysa.png
-	:align: left
-	:alt: Creative Commons Attribution-Share Alike 3.0 License
+    :align: left
+    :alt: Creative Commons Attribution-Share Alike 3.0 License
 
 The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/>`_. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to http://pgrouting.org. For other licenses used in pgRouting see the :ref:`license` page.
 
@@ -29,6 +29,7 @@ General
 .. toctree::
     :maxdepth: 2
 
+    src/introduction/index
     src/introduction/introduction
     src/installation/index
     src/installation/build
@@ -56,6 +57,7 @@ Tutorial
    :hidden:
 
    src/tutorial/index
+   src/developer/index
    src/developer/sampledata
    src/recipes/index
 
@@ -112,63 +114,28 @@ Routing functions
 
 :ref:`routing_functions`
 
-    - :ref:`pgr_astar<pgr_astar>` - Shortest Path A*
-    - :ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
-    - :ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path
-    - :ref:`pgr_dijkstra<pgr_dijkstra>` - Dijkstra family functions
+  * :ref:`All pairs<all_pairs>` - All pair of vertices.
 
-        - :ref:`pgr_dijkstra_v3` - Dijkstra's shortest path algorithm.
-        - :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to calculate the costs of the shortest paths.
-        - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via Vetices 
+    * :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
+    * :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
 
-    - :ref:`pgr_driving_distance<pgr_driving_distance>` - Driving Distance
-    - :ref:`All pairs<all_pairs>` - All pair of vertices.
+  * :ref:`pgr_astar<pgr_astar>` - Shortest Path A*
+  * :ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
+  * :ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path
+  * :ref:`pgr_dijkstra<pgr_dijkstra>` - Dijkstra family functions
 
-        - :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
-        - :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
+    * :ref:`pgr_dijkstra_v3` - Dijkstra's shortest path algorithm.
+    * :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to calculate the costs of the shortest paths.
 
-    - :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
-    - :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
-    - :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
-
-
-
-    - :ref:`pgr_withPoints<withPoints>` - withPoints family functions
-
-        - :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
-        - :ref:`pgr_withPointsCost` - Costs of the shortest paths.
-        - :ref:`pgr_withPointsVia` - Make a route via points.
-        - :ref:`pgr_withPointsKSP<pgr_withPointsKSP>` - K shortest paths.
-        - :ref:`pgr_withPointsDD<pgr_withPointsDD>` - Driving distance (departing).
-
+  * :ref:`pgr_driving_distance<pgr_driving_distance>` - Driving Distance
+  * :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
+  * :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
+  * :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
 
 .. toctree::
-	:hidden:
+   :hidden:
 
-	../src/index
-	../src/allpairs/doc/all_pairs
-	../src/withPoints/doc/withPoints
-
-
-*******************************************************************************
-Deprecated Routing Functions
-*******************************************************************************
-
-    - :ref:`pgr_apspJohnson<pgr_apsp_johnson>` - All Pairs Shortest Path, Johnson’s Algorithm
-    - :ref:`pgr_apspWarshall<pgr_apsp_warshall>` - All Pairs Shortest Path, Floyd-Warshall Algorithm
-    - :ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path Dijkstra
-    - :ref:`pgr_drivingDistance<pgr_driving_distance_v2>` - Driving Distance (V2.0 signature)
-
-
-.. toctree::
-	:hidden:
-
-	../src/apsp_johnson/doc/index
-	../src/apsp_warshall/doc/index
-	../src/kdijkstra/doc/index
-	../src/driving_distance/doc/dd_driving_distance_v2
-
-
+   ../src/routingFunctions
 
 
 *******************************************************************************
@@ -179,6 +146,33 @@ Pre processing or post processing helping functions
 
   -  :ref:`pgr_alphaShape` - Alpha shape computation
   -  :ref:`pgr_points_as_polygon` - Polygon around set of points
+
+
+*******************************************************************************
+Proposed Functions for version 2.3
+*******************************************************************************
+
+  - As part of Dijkstra Family of functions
+
+    - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices 
+
+  - :ref:`pgr_withPoints<withPoints>` - withPoints family functions
+
+    - :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
+    - :ref:`pgr_withPointsCost` - Costs of the shortest paths.
+    - :ref:`pgr_withPointsKSP<pgr_withPointsKSP>` - K shortest paths with points.
+    - :ref:`pgr_withPointsDD<pgr_withPointsDD>` - Driving distance.
+
+
+.. toctree::
+    :hidden:
+
+    ../src/proposedNext
+
+
+
+
+
 
 *******************************************************************************
 Experimental and Proposed functions
@@ -234,9 +228,9 @@ Experimental functions: Proposed by Steve Woodbridge
   -  :ref:`pgr_vids_to_dmatrix2` - Create a distance matrix from an array of ``vertix_id``.
 
 .. toctree::
-	:hidden:
+   :hidden:
 
-        ../src/common/doc/convenience/index
+   ../src/convinience/doc/index
 
 *******************************************************************************
 Experimental functions: by GSoC
@@ -251,10 +245,10 @@ The following functions are experimental
   -  :ref:`pgr_gsocvrppdtw` -  Pickup and Delivery problem
 
 .. toctree::
-	:hidden:
+    :hidden:
 
-	../src/vrp_basic/doc/index.rst
-	../src/vrppdtw/doc/index.rst
+    ../src/vrp_basic/doc/index.rst
+    ../src/vrppdtw/doc/index.rst
 
 
 *******************************************************************************
@@ -277,44 +271,29 @@ About this proposal:
 
 
 .. toctree::
-	:hidden:
+    :hidden:
 
-	../src/common/doc/utilities/index
+    ../src/common/doc/utilities/index
 
 *******************************************************************************
-Discontinued Functions
+Discontinued & Deprecated Functions
 *******************************************************************************
+
+  - :ref:`discontinued`
+  - :ref:`deprecated`
 
 .. toctree::
-	:maxdepth: 1
+   :hidden:
 
-	src/developer/discontinued
+   src/developer/discontinued
+   ../src/deprecated
 
 
-.. warning:: :ref:`developer_functions` documentation is going to be deleted from the pgRouting documentation in V3.0
 
-             
+
 *******************************************************************************
-Deprecated Functions
+Change Log
 *******************************************************************************
-
-  - :ref:`pgr_apspJohnson<pgr_apsp_johnson>` - All Pairs Shortest Path, Johnson’s Algorithm
-  - :ref:`pgr_apspWarshall<pgr_apsp_warshall>` - All Pairs Shortest Path, Floyd-Warshall Algorithm
-
-  -  :ref:`pgr_get_column_name` - to get the name of the column as is stored in the postgres administration tables.
-  -  :ref:`pgr_get_table_name` - to retrieve the name of the table as is stored in the postgres administration tables.
-  -  :ref:`pgr_is_column_indexed` - to check if the column is indexed.
-  -  :ref:`pgr_is_column_in_table` - to check only for the existance of the column.
-  -  :ref:`pgr_point_to_id` -to insert/get the id of the inserted point in a vertices table.
-  -  :ref:`pgr_quote_ident` - to quotes the input text to be used as an identifier in an SQL statement string.
-  -  :ref:`pgr_versionless` - to compare two version numbers.
-  -  :ref:`pgr_start_point` - to get the start point of a (multi)linestring.
-  -  :ref:`pgr_end_point` - to get the end point of a (multi)linestring.
-
-.. toctree::
-    :maxdepth: 2
-
-    src/developer/index
 
 :ref:`change_log`
 

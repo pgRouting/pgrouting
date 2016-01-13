@@ -15,6 +15,4 @@ Common Functions
 .. toctree::
    :maxdepth: 1
 
-   convenience/index
-   utilities/index
    types/index

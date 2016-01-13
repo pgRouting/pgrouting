@@ -12,11 +12,18 @@
 pgr_dijkstra - Shortest Path Dijkstra
 ===============================================================================
 
-  - :ref:`pgr_dijkstra_v3` - Dijkstra's algorithm for the shortest paths.
+  - :ref:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths.
   - :ref:`pgr_dijkstraCost` -Get the aggregate cost of the shortest paths.
   - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via Vetices
 
 
+.. toctree::
+        :hidden:
+
+        ./dijkstra_v2
+        ./pgr_dijkstra
+        ./pgr_dijkstraCost
+        ./pgr_dijkstraVia
 
 The problem definition
 ======================
@@ -108,10 +115,3 @@ If there is no path, the resulting set is empty.
 
 
 
-.. toctree::
-        :hidden:
-
-        ./dijkstra_v2
-        ./dijkstra_v3
-        ./dijkstraCost
-        ./dijkstraVia
