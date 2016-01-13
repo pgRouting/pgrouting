@@ -77,6 +77,10 @@ do_pgr_withPointsDD(
         char ** err_msg){
     std::ostringstream log;
     try {
+        log << "Starting process\n";
+        log << "returning";
+        *err_msg = strdup(log.str().c_str());
+        return 0;
         /*
          * This is the original state
          */
@@ -113,6 +117,8 @@ do_pgr_withPointsDD(
                 start_vid = point.vertex_id;
             }
         }
+        log << "start_vid = " << start_vid << "\n";
+
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
         const int initial_size = total_edges;

@@ -27,7 +27,7 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDD(
     edges_sql TEXT,
     points_sql TEXT,
     start_pid BIGINT,
-    distance float8,
+    distance FLOAT,
 
     directed BOOLEAN DEFAULT TRUE,
     driving_side CHAR DEFAULT 'b', 
