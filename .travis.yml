@@ -60,20 +60,23 @@ addons:
       - libcgal-dev
       - postgresql-server-dev-all
       - postgresql-common
+      - postgresql-9.5
+      - postgresql-contrib-9.5
+      - postgresql-server-dev-9.5
 
 
 before_script:
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH # Add our chosen PG version to the path
   - sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
-  - wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add 
-  - sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main 9.5" >> /etc/apt/sources.list.d/postgresql.list'
+    #- wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add 
+    #- sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main 9.5" >> /etc/apt/sources.list.d/postgresql.list'
   - sudo apt-get update
-  - sudo apt-get install -y postgresql-9.5 postgresql-9.5-postgis-2.2 postgresql-9.4-postgis-2.1 libtap-parser-sourcehandler-pgtap-perl
+    #- sudo apt-get install -y postgresql-9.5 postgresql-9.5-postgis-2.2 postgresql-9.4-postgis-2.1 libtap-parser-sourcehandler-pgtap-perl
     #- sudo apt-get install -y postgresql-9.5-postgis-2.2
-    #- sudo apt-get install -y postgresql-9.4-postgis-2.1
+  - sudo apt-get install -y postgresql-9.4-postgis-2.1
   - sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION # Start the version of PG that we want to test
   - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION   # pgtap has to be installed after postgres has started
-    #  - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
+  - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
   - createdb  ___pgr___test___
   - createdb  pgr_test__db__test
   - ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___
