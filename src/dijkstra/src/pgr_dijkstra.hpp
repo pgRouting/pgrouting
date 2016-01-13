@@ -54,9 +54,10 @@ void pgr_drivingDistance(
         G &graph,
         std::deque< Path > &paths,
         std::set< int64_t > start_vids,
-        double distance) {
+        double distance,
+        bool equiCostFlag) {
     Pgr_dijkstra< G > fn_dijkstra;
-    fn_dijkstra.drivingDistance(graph, paths, start_vids, distance);
+    fn_dijkstra.drivingDistance(graph, paths, start_vids, distance, equiCostFlag);
 }
 
 template < class G >
@@ -139,7 +140,8 @@ class Pgr_dijkstra {
      void drivingDistance(
              G &graph, std::deque< Path > &paths,
              std::set< int64_t > start_vertex,
-             float8 distance);
+             float8 distance,
+             bool equiCostFlag);
      //@}
 
      //! @name Dijkstra
@@ -453,8 +455,8 @@ template < class G >
 void
 Pgr_dijkstra< G >::drivingDistance(G &graph, std::deque< Path > &paths,
         std::set< int64_t > start_vertex,
-        float8 distance) {
-    // adjust predecessors and distances vectors
+        float8 distance,
+        bool equiCostFlag) {
     clear();
 
     predecessors.resize(graph.num_vertices());
@@ -467,7 +469,9 @@ Pgr_dijkstra< G >::drivingDistance(G &graph, std::deque< Path > &paths,
         drivingDistance(graph, path, vertex, distance);
         paths.push_back(path);
     }
-
+    if (equiCostFlag) {
+        equi_cost(paths);
+    }
     return;
 }
 
@@ -491,14 +495,11 @@ Pgr_dijkstra< G >::drivingDistance(
         return;
     }
 
-    // perform the algorithm
-    //if (dijkstra_1_to_distance(graph, v_source, distance)) {
     dijkstra_1_to_distance(graph, v_source, distance); 
-        // get the results
-        get_nodesInDistance(graph, path, v_source, distance);
-    //} else {
-    //    path.push_back({start_vertex, -1, 0, 0});
-    //}
+    get_nodesInDistance(graph, path, v_source, distance);
+    std::sort(path.begin(), path.end(),
+            [](const Path_t &l, const  Path_t &r)
+            { return l.agg_cost < r.agg_cost? true : l.node < r.node;});
     return;
 }
 

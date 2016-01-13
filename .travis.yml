@@ -65,8 +65,8 @@ addons:
 before_script:
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH # Add our chosen PG version to the path
   - sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
-  - wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-  - sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main 9.5" >> /etc/apt/sources.list.d/postgresql.list'
+  - wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add 
+  - sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main 9.5" >> /etc/apt/sources.list.d/postgresql.list'
   - sudo apt-get update
   - sudo apt-get install -y postgresql-9.5 postgresql-9.5-postgis-2.2 postgresql-9.4-postgis-2.1 libtap-parser-sourcehandler-pgtap-perl
     #- sudo apt-get install -y postgresql-9.5-postgis-2.2

@@ -61,23 +61,13 @@ do_pgr_driving_many_to_dist(
         if (directedFlag) {
             Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
             digraph.graph_insert_data(data_edges, total_tuples);
-            pgr_drivingDistance(digraph, paths, start_vertices, distance);
+            pgr_drivingDistance(digraph, paths, start_vertices, distance, equiCostFlag);
         } else {
             Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data(data_edges, total_tuples);
-            pgr_drivingDistance(undigraph, paths, start_vertices, distance);
+            pgr_drivingDistance(undigraph, paths, start_vertices, distance, equiCostFlag);
         }
 
-        if (equiCostFlag) {
-            equi_cost(paths);
-        }
-
-        for (auto &path : paths) {
-            /* order by agg_cost , edge */
-            std::sort(path.begin(), path.end(),
-                    [](const Path_t &l, const  Path_t &r)
-                    { return l.agg_cost < r.agg_cost? true : l.node < r.node;});
-        }
         size_t count(count_tuples(paths));
 
 

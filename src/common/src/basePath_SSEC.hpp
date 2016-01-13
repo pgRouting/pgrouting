@@ -172,6 +172,15 @@ class Path {
                 [](const Path &e1, const Path &e2)->bool { 
                 return e1.start_id() < e2.start_id(); 
                 });
+
+        /* sort each path by agg_cost, node */
+        for (auto &path : paths) {
+            /* order by agg_cost , edge */
+            std::sort(path.begin(), path.end(),
+                    [](const Path_t &l, const  Path_t &r)   
+                    { return l.agg_cost < r.agg_cost? true : l.node < r.node;});
+        }                               
+
     }
 
     friend int count_tuples(const std::deque< Path > &paths) {
