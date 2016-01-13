@@ -170,10 +170,6 @@ Proposed Functions for version 2.3
     ../src/proposedNext
 
 
-
-
-
-
 *******************************************************************************
 Experimental and Proposed functions
 *******************************************************************************
@@ -185,37 +181,17 @@ This section contains new experimental or proposed signatures for any of the fol
   - pre / post procesing helper functions
 
 
-We are including them so that the pgRouting community can evaluate them before
-including them as an official function of pgRouting.
-
-Some of them are unsupported like the GSoC functions.
-
 
 *******************************************************************************
 Proposed functions: Proposed by Vicky Vergara
 *******************************************************************************
 
-:pgr_dijkstraViaVertex:
-
-About this proposal:
-  - Author: Vicky Vergara
-  - Status: developing, testing
-  - Temporary name: pgr_dijkstraViaVertex
-
-
-:pgr_dijkstraViaVertex:
-
-About this proposal:
-  - Author: Vicky Vergara
-  - Status: developing, testing
-  - Temporary name: pgr_withPointsVia
-  - :ref:`pgr_withPointsVia` - Use pgr_dijkstraViaVertes to make the route
-     via temporary vertices. 
-
+  - :ref:`pgr_withPointsVia` - Use pgr_dijkstraVia (proposed for 2.3) make the route
+     via points.
 
 
 *******************************************************************************
-Experimental functions: Proposed by Steve Woodbridge
+Proposed functions: Proposed by Steve Woodbridge
 *******************************************************************************
 
 :ref:`convenience_functions`
@@ -239,7 +215,7 @@ Experimental functions: by GSoC
 The following functions are experimental
  - They may lack documentation,
  - Were created by GSoC students.
- - they are unsupported.
+ - Currently they are unsupported.
  
   -  :ref:`pgr_vrp_basic` - VRP One Depot
   -  :ref:`pgr_gsocvrppdtw` -  Pickup and Delivery problem
