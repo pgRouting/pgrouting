@@ -125,11 +125,12 @@ Column            Type              Description
 **pid**      ``ANY-INTEGER``   (optional) Identifier of the point. Can not be NULL. If column not present, a sequential identifier will be given automatically.
 **eid**      ``ANY-INTEGER``   Identifier of the "closest" edge to the point.
 **fraction** ``ANY-NUMERICAL`` Value in [0,1] that indicates the relative postition from the first end point of the edge.
-**side**     ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the ppoint is:
-                               - In the right, left of the edge or
-                               - If it doesn't matter with 'b' or NULL.
-                               - If column not present 'b' is considered.
-                               Can be in any upper or lower case.
+**side**     ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the point is:
+                                 - In the right, left of the edge or
+                                 - If it doesn't matter with 'b' or NULL.
+                                 - If column not present 'b' is considered.
+
+                               Can be in upper or lower case.
 ============ ================= =================================================
 
 
@@ -141,25 +142,39 @@ Where:
 Description of the parameters of the signatures
 -------------------------------------------------------------------------------
 
-:sql: SQL query as decribed above.
-:start_v: ``BIGINT`` id of the starting vertex.
-:start_v: ``array[ANY-INTEGER]`` array of id of starting vertices.
-:distance: ``FLOAT`` Upper limit for the inclusion of the node in the result.
-:directed: ``boolean`` (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-:equicost: ``boolean`` (optional). When ``true`` the node will only appear in the closest ``start_v`` list.  Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrarely.
+
+================ ================= =================================================
+Parameter        Type              Description
+================ ================= =================================================
+**edges_sql**    ``TEXT``          Edges SQL query as decribed above.
+**points_sql**   ``TEXT``          Points SQL query as decribed above.
+**start_pid**    ``ANY-INTEGER``   Starting point id
+**distance**     ``ANY_NUMERICAL`` Distance from the start_pid
+**directed**     ``BOOLEAN``       (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
+**driving_side** ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
+                                     - In the right or left or
+                                     - If it doesn't matter with 'b' or NULL.
+                                     - If column not present 'b' is considered.
+
+**details**      ``BOOLEAN``       (optional). When ``true`` the results will include the driving distance to the points with in Distance.
+                                   Default is ``false`` which ignores other points of the points_sql.
+================ ================= =================================================
 
 
 Description of the return values
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq [, start_v], node, edge, cost, agg_cost)``
+Returns set of ``(seq, node, edge, cost, agg_cost)``
 
-:seq: ``INT`` row sequence.
-:start_v: ``BIGINT`` id of the starting vertex. Used when multiple starting vetrices are in the query.
-:node: ``BIGINT`` id of the node within the limits from ``start_v``.
-:edge: ``BIGINT`` id of the edge used to arrive to ``node``. ``0`` when the ``node`` is the ``start_v``.
-:cost: ``FLOAT`` cost to traverse ``edge``.
-:agg_cost:  ``FLOAT`` total cost from ``start_v`` to ``node``.
+============ =========== =================================================
+Column           Type              Description
+============ =========== =================================================
+**seq**      ``INT``     row sequence.
+**node**     ``BIGINT``  Identifier of the node within the Distance from ``start_pid``. If ``details =: true`` a negative value is the identifier of a point.
+**edge**     ``BIGINT``  Identifier of the edge used to arrive to ``node``. ``0`` when the ``node`` is the ``start_vid``.
+**cost**     ``FLOAT``   Cost to traverse ``edge``.  If ``details =: true`` the corresponding fraction of the cost of the edge will be used.
+**agg_cost** ``FLOAT``   Aggregate cost from ``start_pid`` to ``node``.
+============ =========== =================================================
 
 
 
