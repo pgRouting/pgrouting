@@ -85,7 +85,7 @@ pgr_get_points(
     info[0].strict = false;
     info[3].strict = false;
     info[2].eType = ANY_NUMERICAL;
-    info[3].eType = CHAR;
+    info[3].eType = CHAR1;
 
 
     void *SPIplan;

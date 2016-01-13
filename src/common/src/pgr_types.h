@@ -132,7 +132,7 @@ enum {
     ANY_INTEGER,
     ANY_NUMERICAL,
     TEXT,
-    CHAR
+    CHAR1
 } expectType;
 
 typedef

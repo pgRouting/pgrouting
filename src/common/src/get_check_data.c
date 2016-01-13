@@ -83,7 +83,7 @@ void pgr_fetch_column_info(
                 case TEXT:
                     pgr_check_text_type(info[i]);
                     break;
-                case CHAR:
+                case CHAR1:
                     pgr_check_char_type(info[i]);
                     break;
                 default:
