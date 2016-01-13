@@ -193,8 +193,3 @@ COST 100
 ROWS 1000;
 
 
-CREATE OR REPLACE FUNCTION pgr_vidsToDMatrix(sql text,
-    vids integer[], dir bool, has_rcost bool, want_symmetric bool)
-RETURNS float8[]
-AS '$libdir/${PGROUTING_LIBRARY_NAME}', 'manytomany_dijkstra_dmatrix'
-LANGUAGE C STABLE STRICT;
