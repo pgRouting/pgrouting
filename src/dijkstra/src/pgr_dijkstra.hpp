@@ -60,6 +60,7 @@ void pgr_drivingDistance(
     fn_dijkstra.drivingDistance(graph, paths, start_vids, distance, equiCostFlag);
 }
 
+
 template < class G >
 void
 pgr_drivingDistance(
@@ -70,6 +71,7 @@ pgr_drivingDistance(
     Pgr_dijkstra< G > fn_dijkstra;
     fn_dijkstra.drivingDistance(graph, path, source, distance);
 }
+
 
 template < class G >
 void
@@ -441,11 +443,11 @@ Pgr_dijkstra< G >::get_cost(
 
     // no path was found
     if (target == predecessors[target]) {
-            r_path.clear();
+        r_path.clear();
     } else {
         Path path(from, to);
         path.push_front(
-            {to, -1, distances[target], distances[target]});
+                {to, -1, distances[target], distances[target]});
         r_path = path;
     }
 }
@@ -482,6 +484,8 @@ Pgr_dijkstra< G >::drivingDistance(
         Path &path,
         int64_t start_vertex,
         float8 distance) {
+
+
     clear();
 
     predecessors.resize(graph.num_vertices());
@@ -499,7 +503,10 @@ Pgr_dijkstra< G >::drivingDistance(
     get_nodesInDistance(graph, path, v_source, distance);
     std::sort(path.begin(), path.end(),
             [](const Path_t &l, const  Path_t &r)
-            { return l.agg_cost < r.agg_cost? true : l.node < r.node;});
+            {return l.node < r.node;});
+    std::stable_sort(path.begin(), path.end(),
+            [](const Path_t &l, const  Path_t &r)
+            {return l.agg_cost < r.agg_cost;});
     return;
 }
 

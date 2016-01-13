@@ -77,10 +77,6 @@ do_pgr_withPointsDD(
         char ** err_msg){
     std::ostringstream log;
     try {
-        log << "Starting process\n";
-        log << "returning";
-        *err_msg = strdup(log.str().c_str());
-        return 0;
         /*
          * This is the original state
          */
@@ -117,7 +113,6 @@ do_pgr_withPointsDD(
                 start_vid = point.vertex_id;
             }
         }
-        log << "start_vid = " << start_vid << "\n";
 
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
@@ -145,6 +140,13 @@ do_pgr_withPointsDD(
         if (!details) {
             eliminate_details(path);
         }
+        std::sort(path.begin(), path.end(),
+                [](const Path_t &l, const  Path_t &r)
+                {return l.node < r.node;});
+        std::stable_sort(path.begin(), path.end(),
+                [](const Path_t &l, const  Path_t &r)
+                {return l.agg_cost < r.agg_cost;});
+
 
         int count(path.size());
 
