@@ -51,13 +51,145 @@ extern "C" {
 #include "./../../common/src/memory_func.hpp"
 
 
+/*******************************************************************************/
+// CREATE OR REPLACE FUNCTION pgr_withPointsDD(
+// edges_sql TEXT,
+// points_sql TEXT,
+// start_pids anyarray,
+// distance FLOAT,
+//
+// equicost BOOLEAN -- DEFAULT false,
+// driving_side CHAR -- DEFAULT 'b',
+// details BOOLEAN -- DEFAULT false,
+// directed BOOLEAN -- DEFAULT true,
+
+
+void
+do_pgr_driving_many_to_dist(
+        pgr_edge_t      *edges,             size_t total_edges,
+        Point_on_edge_t *points_p,          size_t total_points,
+        pgr_edge_t      *edges_of_points,   size_t total_edges_of_points,
+
+        int64_t  *start_pids_arr,    int s_len,
+        float8 distance,
+
+        bool equiCost,
+        char driving_side,
+        bool details,
+        bool directed,
+
+        General_path_element_t **return_tuples, size_t *return_count,
+        char ** err_msg) {
+    std::ostringstream log;
+    try {
+        /*
+         * This is the original state
+         */
+        if (*err_msg) free(err_msg);
+        if (*return_tuples) free(return_tuples);
+        (*return_count) = 0;
+
+        std::vector< Point_on_edge_t >
+            points(points_p, points_p + total_points);
+
+        /*
+         * checking here is easier than on the C code
+         */
+        int errcode = check_points(points, log);
+        if (errcode) {
+            return errcode;
+        }
+
+        std::vector< pgr_edge_t >
+            edges_to_modify(edges_of_points, edges_of_points + total_edges_of_points);
+
+        std::vector< pgr_edge_t > new_edges;
+        create_new_edges(
+                points,
+                edges_to_modify,
+                driving_side,
+                new_edges,
+                log);
+
+        std::vector< int64_t > start_pids(start_pids_arr, start_pids_arr + s_len);
+        std::vector< int64_t > start_vids;
+
+        for (const auto start_pid : start_pids) {
+            int64_t start_vid = 0;
+            for (const auto point : points) {
+                if (point.pid == start_pid) {
+                    start_vids.push_back(point.vertex_id);
+                    break;
+                }
+                start_vids.push_back(0);
+            }
+        }
+
+
+
+        graphType gType = directedFlag? DIRECTED: UNDIRECTED;
+        const int initial_size = total_tuples;
+
+        std::deque< Path >paths;
+
+        if (directedFlag) {
+            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            digraph.graph_insert_data(edges, total_edges);
+            digraph.graph_insert_data(new_edges);
+            pgr_drivingDistance(digraph, paths, start_vids, distance, equiCost);
+        } else {
+            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            undigraph.graph_insert_data(edges, total_edges);
+            undigraph.graph_insert_data(new_edges);
+            pgr_drivingDistance(undigraph, paths, start_vids, distance, equiCost);
+        }
+
+        for (auto &path : paths) {
+            adjust_pids(points, path);
+
+            if (!details) {
+                eliminate_details(path);
+            }
+            std::sort(path.begin(), path.end(),
+                    [](const Path_t &l, const  Path_t &r)
+                    {return l.node < r.node;});
+            std::stable_sort(path.begin(), path.end(),
+                    [](const Path_t &l, const  Path_t &r)
+                    {return l.agg_cost < r.agg_cost;});
+        }
+
+        size_t count(count_tuples(paths));
+
+
+        if (count == 0) {
+            *err_msg = strdup("NOTICE: No return values was found");
+            return;
+        }
+        *return_tuples = get_memory(count, (*return_tuples));
+        *return_count = collapse_paths(ret_path, paths);
+
+#ifndef DEBUG
+        *err_msg = strdup("OK");
+#else
+        *err_msg = strdup(log.str().c_str());
+#endif
+        return;
+
+    } catch ( ... ) {
+        *err_msg = strdup("Caught unknown expection!");
+        *ret_path = noResult(path_count, (*ret_path));
+        return;
+    }
+
+}
+
+
 // CREATE OR REPLACE FUNCTION pgr_withPoint(
 // edges_sql TEXT,
 // points_sql TEXT,
 // start_pid BIGINT,
 // end_pid BIGINT,
 // directed BOOLEAN DEFAULT true
-
 
 int
 do_pgr_withPointsDD(
