@@ -1,6 +1,6 @@
 ADD_LIBRARY(driving_distance OBJECT
-    alpha.c
-    alpha_drivedist.cpp
+    #alpha.c
+    #alpha_drivedist.cpp
 
 
     drivedist.c
