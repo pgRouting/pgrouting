@@ -67,7 +67,7 @@ before_script:
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH # Add our chosen PG version to the path
   - sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
   - sudo apt-get install -y postgresql-9.5
-  - sudo apt-get install -y postgresql-9.5-postgis-2.2
+  - sudo apt-get install -y postgresql-9.5-postgis-2.1
     #- sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
     #- sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION # Start the version of PG that we want to test
   - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION   # pgtap has to be installed after postgres has started
