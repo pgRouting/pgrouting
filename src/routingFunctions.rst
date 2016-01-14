@@ -10,7 +10,8 @@
 .. _routing_functions:
 
 Routing Functions
-------------------
+=================
+
 
 :ref:`routing_functions`
 
@@ -28,7 +29,15 @@ Routing Functions
     - :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to calculate the costs of the shortest paths.
     - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via Vetices
         
-  - :ref:`pgr_drivingDistance<pgr_drivingDistance>` - Driving Distance
+  - :ref:`Driving Distance<drivingDistance>` - Driving Distance
+
+    - :ref:`pgr_drivingDistance<pgr_drivingDistance>` - Driving Distance
+
+    - Post processing
+
+      - :ref:`pgr_alphaShape` - Alpha shape computation
+      - :ref:`pgr_points_as_polygon` - Polygon around set of points
+
   - :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
   - :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
   - :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
@@ -43,7 +52,7 @@ Routing Functions
 	bd_dijkstra/doc/index
 	dijkstra/doc/dijkstra
 	driving_distance/doc/drivingDistance
-	ksp/doc/index
+	ksp/doc/ksp
 	tsp/doc/index
 	trsp/doc/index
 

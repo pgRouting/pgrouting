@@ -13,14 +13,21 @@ pgr_vidsToDMatrix
 ==============================================================================
 
 .. index::
-        single: pgr_vidsToDMatrix(IN vids integer[], IN pnts geometry[], IN edges text, tol float8 DEFAULT(0.1), OUT dmatrix double precision[], OUT ids integer[])
-        module: common
+        single: pgr_vidsToDMatrix(IN vids integer[], IN pnts geometry[], IN edges text, tol float8 DEFAULT(0.1), OUT dmatrix double precision[], OUT ids integer[]) --proposed
 
 
 Name
 ------------------------------------------------------------------------------
 
 ``pgr_vidsToDMatrix`` - Creates a distances matrix from an array of ``vertex_id``.
+
+.. note::  This is a proposed function
+
+     - Is not officially in the release.
+     - Name could change.
+     - Signature could change.
+     - Needs testing.
+     - Functionality could change.
 
 
 Synopsis

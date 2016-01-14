@@ -13,7 +13,7 @@ pgr_flipEdges
 ==============================================================================
 
 .. index::
-        single: pgr_flipEdges(ga geometry[])
+        single: pgr_flipEdges(ga geometry[]) --proposed
         module: common
 
 
@@ -22,6 +22,13 @@ Name
 
 ``pgr_flipEdges`` - 
 
+.. warning::  This is a proposed function
+
+     - Is not officially in the release.
+     - Name could change.
+     - Signature could change.
+     - Needs testing.
+     - Functionality could change.
 
 Synopsis
 ------------------------------------------------------------------------------

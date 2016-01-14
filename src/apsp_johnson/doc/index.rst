@@ -61,7 +61,7 @@ Returns set of :ref:`type_cost_result`:
 Examples
 -------------------------------------------------------------------------------
 
-.. literalinclude:: doc-apspJohnson.result
+.. literalinclude:: doc-apspJohnson.queries
    :start-after: --q1
    :end-before: --q2
 

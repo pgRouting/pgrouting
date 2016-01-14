@@ -13,8 +13,7 @@ pgr_textToPoints
 ==============================================================================
 
 .. index::
-        single: pgr_textToPoints(pnts text, srid integer DEFAULT(4326))
-        module: common
+        single: pgr_textToPoints(pnts text, srid integer DEFAULT(4326)) --proposed
 
 
 Name
@@ -22,6 +21,13 @@ Name
 
 ``pgr_textToPoints`` - Converts a text string of the format "x,y;x,y;x,y;..." into and array of point geometries.
 
+.. warning::  This is a proposed function
+
+     - Is not officially in the release.
+     - Name could change.
+     - Signature could change.
+     - Needs testing.
+     - Functionality could change.
 
 Synopsis
 ------------------------------------------------------------------------------

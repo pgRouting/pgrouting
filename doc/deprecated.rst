@@ -26,10 +26,24 @@ Deprecated on version 2.2
   - :ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path Dijkstra
   - :ref:`pgr_drivingDistance<pgr_driving_distance_v2>` - Driving Distance (V2.0 signature)
 
+.. toctree::
+   :hidden: 
+
+   ../src/apsp_johnson/doc/index
+   ../src/apsp_warshall/doc/index
+   ../src/kdijkstra/doc/index
+   ../src/driving_distance/doc/dd_driving_distance_v2
+
 Deprecated on version 2.1
 
-  - :ref:`pgr_dijkstra<pgr_dijkstra_v2>` - Mutliple destination Shortest Path Dijkstra (V2.0 signature)
+ - :ref:`pgr_dijkstra<pgr_dijkstra_v2>` - Mutliple destination Shortest Path Dijkstra (V2.0 signature)
+ - :ref:`pgr_ksp<pgr_ksp_v2>` - K shortest paths (V2.0 signature)
 
+.. toctree::
+   :hidden: 
+
+   ../src/dijkstra/doc/dijkstra_v2
+   ../src/ksp/doc/ksp_v2
 
 Deprecated Developer's Auxiliary Functions
 ------------------------------------------
@@ -52,10 +66,5 @@ Deprecated on version 2.1
 .. toctree::
    :hidden: 
 
-   driving_distance/doc/dd_driving_distance_v2
-   apsp_johnson/doc/index
-   apsp_warshall/doc/index
-   dijkstra/doc/dijkstra_v2
-   kdijkstra/doc/index
-   common/doc/utilities/index
+   ../src/common/doc/utilities/index
 

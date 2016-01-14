@@ -17,9 +17,9 @@ When points are given as input:
 
     - :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
     - :ref:`pgr_withPointsCost` - Costs of the shortest paths.
-    - :ref:`pgr_withPointsVia` - Make a route via points.
     - :ref:`pgr_withPointsKSP` - K shortest paths.
-    - :ref:`pgr_withPointsDD` - Driving distance (departing).
+    - :ref:`pgr_withPointsDD` - Driving distance.
+
 
 
 
@@ -28,6 +28,5 @@ When points are given as input:
 
         ./pgr_withPoints
         ./pgr_withPointsCost
-        ./pgr_withPointsVia
-        ./../../ksp/doc/pgr_withPoints_ksp
+        ./../../ksp/doc/pgr_withPointsKSP
         ./../../driving_distance/doc/pgr_withPoints_dd

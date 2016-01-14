@@ -13,14 +13,21 @@ pgr_vidsToDMatrix
 ==============================================================================
 
 .. index::
-        single: pgr_vidsToDMatrix(IN sql text, IN vids integer[], IN directed boolean, IN has_reverse_cost boolean, IN want_symmetric boolean, OUT dmatrix double precision[])
-        module: kdijkstra
+        single: pgr_vidsToDMatrix(IN sql text, IN vids integer[], IN directed boolean, IN has_reverse_cost boolean, IN want_symmetric boolean, OUT dmatrix double precision[]) --proposed
 
 
 Name
 ------------------------------------------------------------------------------
 
 ``pgr_vidsToDMatrix`` - Creates a distances matrix from an array of ``vertex_id``.
+
+.. warning::  This is a proposed function
+
+     - Is not officially in the release.
+     - Name could change.
+     - Signature could change.
+     - Needs testing.
+     - Functionality could change.
 
 
 Synopsis

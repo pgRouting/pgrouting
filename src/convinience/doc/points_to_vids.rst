@@ -13,8 +13,7 @@ pgr_pointsToVids
 ==============================================================================
 
 .. index::
-        single: pgr_pointsToVids(pnts geometry[], edges text, tol float8 DEFAULT(0.01))
-        module: common
+        single: pgr_pointsToVids(pnts geometry[], edges text, tol float8 DEFAULT(0.01)) --proposed
 
 
 Name
@@ -22,6 +21,13 @@ Name
 
 ``pgr_pointsToVids`` - Converts an array of point geometries into vertex ids.
 
+.. warning::  This is a proposed function
+
+     - Is not officially in the release.
+     - Name could change.
+     - Signature could change.
+     - Needs testing.
+     - Functionality could change.
 
 Synopsis
 ------------------------------------------------------------------------------

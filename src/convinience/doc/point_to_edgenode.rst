@@ -13,14 +13,21 @@ pgr_pointToEdgeNode
 ==============================================================================
 
 .. index::
-        single: pgr_pointToEdgeNode(edges text, pnt geometry, tol float8)
-        module: common
+        single: pgr_pointToEdgeNode(edges text, pnt geometry, tol float8) --proposed
 
 
 Name
 ------------------------------------------------------------------------------
 
 ``pgr_pointToEdgeNode`` - Converts a point to a ``vertex_id`` based on closest edge.
+
+.. warning::  This is a proposed function
+
+     - Is not officially in the release.
+     - Name could change.
+     - Signature could change.
+     - Needs testing.
+     - Functionality could change.
 
 
 Synopsis

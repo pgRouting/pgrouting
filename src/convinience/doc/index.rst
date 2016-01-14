@@ -12,6 +12,14 @@
 Convenience Functions
 ===============================================================================
 
+.. warning::  This are proposed function
+
+     - Is not officially in the release.
+     - Name could change.
+     - Signature could change.
+     - Needs testing.
+     - Functionality could change.
+
 The following functions are general purpose convenience functions that might
 be useful when building a larger application or handling input from say an
 Ajax handler.

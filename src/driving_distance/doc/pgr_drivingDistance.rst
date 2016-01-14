@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_drivingdistance:
+.. _pgr_drivingDistance:
 
 pgr_drivingDistance
 ===============================================================================
@@ -115,7 +115,7 @@ Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` c
 
 The examples in this section use the following :ref:`fig1`
 
-.. literalinclude:: doc-pgr_drivingDistance.result
+.. literalinclude:: doc-pgr_drivingDistance.queries
    :start-after: --q1
    :end-before: --q2
 
@@ -125,7 +125,7 @@ Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost``
 The examples in this section use the following :ref:`fig2`
 
 
-.. literalinclude:: doc-pgr_drivingDistance.result
+.. literalinclude:: doc-pgr_drivingDistance.queries
    :start-after: --q2
    :end-before: --q3
 
@@ -134,7 +134,7 @@ Examples for queries marked as ``directed`` with ``cost`` column
 
 The examples in this section use the following :ref:`fig3`
 
-.. literalinclude:: doc-pgr_drivingDistance.result
+.. literalinclude:: doc-pgr_drivingDistance.queries
    :start-after: --q3
    :end-before: --q4
 
@@ -145,7 +145,7 @@ Examples for queries marked as ``undirected`` with ``cost`` column
 
 The examples in this section use the following :ref:`fig4`
 
-.. literalinclude:: doc-pgr_drivingDistance.result
+.. literalinclude:: doc-pgr_drivingDistance.queries
    :start-after: --q4
    :end-before: --q5
 

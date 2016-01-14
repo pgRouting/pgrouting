@@ -68,7 +68,7 @@ Returns set of :ref:`type_cost_result`:
 Examples
 -------------------------------------------------------------------------------
 
-.. literalinclude:: doc-apspWarshall.result
+.. literalinclude:: doc-apspWarshall.queries
    :start-after: --q1
    :end-before: --q2
 

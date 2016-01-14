@@ -13,14 +13,21 @@ pgr_pointsToDMatrix
 ==============================================================================
 
 .. index::
-        single: pgr_pointsToDMatrix(pnts geometry[], OUT dmatrix double precision[], OUT ids integer[])
-        module: common
+        single: pgr_pointsToDMatrix(pnts geometry[], OUT dmatrix double precision[], OUT ids integer[]) --proposed
 
 
 Name
 ------------------------------------------------------------------------------
 
 ``pgr_pointsToDMatrix`` - Creates a distance matrix from an array of points.
+
+.. warning::  This is a proposed function
+
+     - Is not officially in the release.
+     - Name could change.
+     - Signature could change.
+     - Needs testing.
+     - Functionality could change.
 
 
 Synopsis

@@ -177,7 +177,7 @@ Examples
 
 Edges: 4, 5, and 14 are used in this examples.
 
-.. literalinclude:: doc-withPointsVia.result
+.. literalinclude:: doc-withPointsVia.queries
    :start-after: -- q0
    :end-before: -- q1
 
@@ -186,14 +186,14 @@ With reverse_cost
 
 :Example 1: Directed graph with and without flag.
 
-.. literalinclude:: doc-withPointsVia.result
+.. literalinclude:: doc-withPointsVia.queries
    :start-after: -- q1
    :end-before: -- q2
 
 
 :Example 2: Undirected graph has a flag.
 
-.. literalinclude:: doc-withPointsVia.result
+.. literalinclude:: doc-withPointsVia.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -202,14 +202,14 @@ Only cost is used
 
 :Example 3: Directed graph.
 
-.. literalinclude:: doc-withPointsVia.result
+.. literalinclude:: doc-withPointsVia.queries
    :start-after: -- q3
    :end-before: -- q4
 
 
 :Example 4: Undirected graph.
 
-.. literalinclude:: doc-withPointsVia.result
+.. literalinclude:: doc-withPointsVia.queries
    :start-after: -- q4
    :end-before: -- q5
 

@@ -9,8 +9,9 @@
 
 .. _index:
 
+*******************************************************************************
 Table of Contents
-===============================================================================
+*******************************************************************************
 
 pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgresql.org>`_ geospatial database to provide geospatial routing and other network analysis functionality.
 
@@ -64,21 +65,24 @@ Tutorial
 For a more complete introduction how to build a routing application read the `pgRouting Workshop <http://workshop.pgrouting.org>`_.
 
 *******************************************************************************
-Version
+Functions
 *******************************************************************************
+
+Version
+===============================================================================
 
 :ref:`pgr_version` - to get pgRouting's version information.
 
 .. toctree::
    :hidden:
 
-   ../src/common/doc/utilities/version
+   ../src/common/doc/version
 
 
 
-*******************************************************************************
+
 Data Types
-*******************************************************************************
+===============================================================================
 
 :ref:`data_types`
 
@@ -91,9 +95,9 @@ Data Types
 
    ../src/common/doc/types/index
 
-*******************************************************************************
+
 Topology functions
-*******************************************************************************
+===============================================================================
 
 :ref:`topology_functions`
 
@@ -108,148 +112,34 @@ Topology functions
 
    ../src/topology/doc/topology
 
-*******************************************************************************
-Routing functions
-*******************************************************************************
-
-:ref:`routing_functions`
-
-  * :ref:`All pairs<all_pairs>` - All pair of vertices.
-
-    * :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
-    * :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
-
-  * :ref:`pgr_astar<pgr_astar>` - Shortest Path A*
-  * :ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
-  * :ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path
-  * :ref:`pgr_dijkstra<pgr_dijkstra>` - Dijkstra family functions
-
-    * :ref:`pgr_dijkstra_v3` - Dijkstra's shortest path algorithm.
-    * :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to calculate the costs of the shortest paths.
-
-  * :ref:`pgr_driving_distance<pgr_driving_distance>` - Driving Distance
-  * :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
-  * :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
-  * :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
+..
+    ROUTING FUNCTIONS SECTION
 
 .. toctree::
    :hidden:
+   :maxdepth: 0
 
    ../src/routingFunctions
 
 
-*******************************************************************************
-Pre processing or post processing helping functions
-*******************************************************************************
-
-:ref:`pgr_driving_distance_post`
-
-  -  :ref:`pgr_alphaShape` - Alpha shape computation
-  -  :ref:`pgr_points_as_polygon` - Polygon around set of points
+.. include:: ../src/routingFunctions.rst
 
 
 *******************************************************************************
-Proposed Functions for version 2.3
+Available Functions but not official pgRouting functions
 *******************************************************************************
 
-  - As part of Dijkstra Family of functions
-
-    - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices 
-
-  - :ref:`pgr_withPoints<withPoints>` - withPoints family functions
-
-    - :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
-    - :ref:`pgr_withPointsCost` - Costs of the shortest paths.
-    - :ref:`pgr_withPointsKSP<pgr_withPointsKSP>` - K shortest paths with points.
-    - :ref:`pgr_withPointsDD<pgr_withPointsDD>` - Driving distance.
-
+  - :ref:`proposedNext`
+  - :ref:`proposed`
 
 .. toctree::
     :hidden:
 
     ../src/proposedNext
-
-
-*******************************************************************************
-Experimental and Proposed functions
-*******************************************************************************
-
-This section contains new experimental or proposed signatures for any of the following sections:
-  - topology functions
-  - routing functions
-  - vehicle routing functions
-  - pre / post procesing helper functions
+    ../src/proposed
 
 
 
-*******************************************************************************
-Proposed functions: Proposed by Vicky Vergara
-*******************************************************************************
-
-  - :ref:`pgr_withPointsVia` - Use pgr_dijkstraVia (proposed for 2.3) make the route
-     via points.
-
-
-*******************************************************************************
-Proposed functions: Proposed by Steve Woodbridge
-*******************************************************************************
-
-:ref:`convenience_functions`
-  -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
-  -  :ref:`pgr_flip_edges` - flip the edges in an array of geometries so the connect end to end.
-  -  :ref:`pgr_text_to_points` - convert a string of ``x,y;x,y;...`` locations into point geometries.
-  -  :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
-  -  :ref:`pgr_points_to_dmatrix` - Create a distance matrix from an array of points.
-  -  :ref:`pgr_vids_to_dmatrix` - Create a distance matrix from an array of ``vertix_id``.
-  -  :ref:`pgr_vids_to_dmatrix2` - Create a distance matrix from an array of ``vertix_id``.
-
-.. toctree::
-   :hidden:
-
-   ../src/convinience/doc/index
-
-*******************************************************************************
-Experimental functions: by GSoC
-*******************************************************************************
-
-The following functions are experimental
- - They may lack documentation,
- - Were created by GSoC students.
- - Currently they are unsupported.
- 
-  -  :ref:`pgr_vrp_basic` - VRP One Depot
-  -  :ref:`pgr_gsocvrppdtw` -  Pickup and Delivery problem
-
-.. toctree::
-    :hidden:
-
-    ../src/vrp_basic/doc/index.rst
-    ../src/vrppdtw/doc/index.rst
-
-
-*******************************************************************************
-Proposed functions: Proposed by Zia Mohammed
-*******************************************************************************
-
-About this proposal:
-  - Author: Zia Mohammed.
-  - Status: Needs a lot of testing. I am working on that.
-  - I did not add automated test.
-  - Temporary name: pgr_labelGraph
-  - Need: I need feedback from the community.
-
-  -  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
-
-.. toctree::
-  :hidden:
-
-  ../src/label_graph/doc/analyze_brokengraph.rst
-
-
-.. toctree::
-    :hidden:
-
-    ../src/common/doc/utilities/index
 
 *******************************************************************************
 Discontinued & Deprecated Functions
@@ -262,7 +152,7 @@ Discontinued & Deprecated Functions
    :hidden:
 
    src/developer/discontinued
-   ../src/deprecated
+   deprecated
 
 
 

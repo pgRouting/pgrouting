@@ -84,7 +84,7 @@ Examples
 * Without ``reverse_cost``
 * With ``reverse_cost``
 
-.. literalinclude:: doc-pgr_drivingdistance-v2.result
+.. literalinclude:: doc-pgr_drivingdistance-v2.queries
    :start-after: --q1
    :end-before: --q2
 

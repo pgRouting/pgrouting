@@ -95,19 +95,19 @@ Examples
 * Returning a ``cost`` result
 
 
-.. literalinclude:: doc-kdijkstra.result
+.. literalinclude:: doc-kdijkstra.queries
    :start-after: -- q1
    :end-before: -- q2
 
 
-.. literalinclude:: doc-kdijkstra.result
+.. literalinclude:: doc-kdijkstra.queries
    :start-after: -- q2
    :end-before: -- q3
 
 
 * Returning a ``path`` result
 
-.. literalinclude:: doc-kdijkstra.result
+.. literalinclude:: doc-kdijkstra.queries
    :start-after: -- q3
    :end-before: -- q4
 

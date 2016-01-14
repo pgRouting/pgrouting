@@ -127,13 +127,13 @@ Examples
 
 :Example 1: On a directed graph.
 
-.. literalinclude:: doc-johnson.result
+.. literalinclude:: doc-johnson.queries
    :start-after: -- q1
    :end-before: -- q2
 
 :Example 2: On an undirected graph.
 
-.. literalinclude:: doc-johnson.result
+.. literalinclude:: doc-johnson.queries
    :start-after: -- q2
 
 

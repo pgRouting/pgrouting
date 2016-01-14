@@ -71,7 +71,7 @@ The minimal signature:
 
 :Example:
 
-.. literalinclude:: doc-pgr_withPointsDD.result
+.. literalinclude:: doc-pgr_withPointsDD.queries
    :start-after: --q1
    :end-before: --q2
 
@@ -92,7 +92,7 @@ Finds the driving distance depending on the optional parameters setup.
 
 :Example: Right side driving topology
 
-.. literalinclude:: doc-pgr_withPointsDD.result
+.. literalinclude:: doc-pgr_withPointsDD.queries
    :start-after: --q2
    :end-before: --q3
 
@@ -186,13 +186,13 @@ The examples in this section use the following :ref:`fig1`
 
 :Example: Left side driving topology
 
-.. literalinclude:: doc-pgr_withPointsDD.result
+.. literalinclude:: doc-pgr_withPointsDD.queries
    :start-after: --q3
    :end-before: --q4
 
 :Example: Does not matter driving side.
 
-.. literalinclude:: doc-pgr_withPointsDD.result
+.. literalinclude:: doc-pgr_withPointsDD.queries
    :start-after: --q4
    :end-before: --q5
 

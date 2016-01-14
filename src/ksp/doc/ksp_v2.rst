@@ -9,7 +9,7 @@
 
 .. _pgr_ksp_v2:
 
-pgr_ksp (V 2.0) - K-Shortest Path
+pgr_ksp (V 2.0) 
 ===============================================================================
 
 .. index:: 
@@ -39,7 +39,7 @@ The K shortest path routing algorithm based on Yen's algorithm. "K" is the numbe
                - for directed graph.
                  ``pgr_ksp(sql, source, target, distance, directed:=true)``
 
-             See :ref:`pgr_ksp_v3`
+             See :ref:`pgr_ksp`
 
 
 
@@ -85,14 +85,14 @@ Examples
 
 * Without ``reverse_cost``
 
-.. literalinclude:: doc-ksp.result
+.. literalinclude:: doc-ksp-v2.queries
     :start-after: --q1
     :end-before: --q2
 
 
 * With ``reverse_cost``
 
-.. literalinclude:: doc-ksp.result
+.. literalinclude:: doc-ksp-v2.queries
     :start-after: --q2
     :end-before: --q3
 

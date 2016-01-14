@@ -260,8 +260,8 @@ sub process_single_test{
         };
         #reason of opening conection is because the set client_mim_messages to warning;
         if ($DOCUMENTATION) {
-            mysystem("mkdir -p '$dir/../doc' "); # insure the directory exists
-            open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/../doc/$x.result 2>\&1 ") || do {
+            mysystem("mkdir -p '$dir/../doc' "); # make sure the directory exists
+            open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/../doc/$x.queries 2>\&1 ") || do {
                 $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
                 $stats{z_fail}++;
                 next;

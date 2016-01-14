@@ -70,7 +70,7 @@ This signature works:
 
 :Example: Find the route that visits the vertices 1 3 9  in that order
 
-.. literalinclude:: ../test/doc-dijkstraVia.doc.result
+.. literalinclude:: doc-dijkstraVia.queries
     :start-after: -- q0
     :end-before: -- q1
 
@@ -138,37 +138,37 @@ Examples
 
 :Example: Find the route that visits the vertices 1 5 3 9 4 in that order
 
-.. literalinclude:: ../test/doc-dijkstraVia.doc.result
+.. literalinclude:: doc-dijkstraVia.queries
     :start-after: -- q1
     :end-before: -- q2
 
 :1: What's the aggregate cost of the third path?
 
-.. literalinclude:: ../test/doc-dijkstraVia.doc.result
+.. literalinclude:: doc-dijkstraVia.queries
     :start-after: -- q2
     :end-before: -- q3
 
 :2: What's the aggregate cost of the route at the end of the third path?
 
-.. literalinclude:: ../test/doc-dijkstraVia.doc.result
+.. literalinclude:: doc-dijkstraVia.queries
     :start-after: -- q3
     :end-before: -- q4
 
 :3: How are the nodes visited in the route?
 
-.. literalinclude:: ../test/doc-dijkstraVia.doc.result
+.. literalinclude:: doc-dijkstraVia.queries
     :start-after: -- q4
     :end-before: -- q5
 
 :4: What are the aggregate costs of the route when the visited vertices are reached?
 
-.. literalinclude:: ../test/doc-dijkstraVia.doc.result
+.. literalinclude:: doc-dijkstraVia.queries
     :start-after: -- q5
     :end-before: -- q6
 
 :5: show the route's seq and aggregate cost and a status of if passes in front or visits node 9
 
-.. literalinclude:: ../test/doc-dijkstraVia.doc.result
+.. literalinclude:: doc-dijkstraVia.queries
     :start-after: -- q6
 
 
