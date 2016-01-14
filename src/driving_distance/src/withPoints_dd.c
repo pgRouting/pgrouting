@@ -66,9 +66,9 @@ process(
         int64_t start_pid,
         double distance,
 
-        bool directed,
         char *driving_side,
         bool details,
+        bool directed,
 
         General_path_element_t **result_tuples,
         size_t *result_count) {
@@ -123,9 +123,9 @@ process(
             start_pid,
             distance,
 
-            directed,
             driving_side[0],
             details,
+            directed,
 
             result_tuples,
             result_count,
@@ -185,9 +185,9 @@ withPoints_dd(PG_FUNCTION_ARGS) {
         // start_pid BIGINT,
         // distance FLOAT,
         //
-        // directed BOOLEAN -- DEFAULT true,
         // driving_side CHAR -- DEFAULT 'b',
         // details BOOLEAN -- DEFAULT false,
+        // directed BOOLEAN -- DEFAULT true,
 
         PGR_DBG("Calling process");
         process(
@@ -196,8 +196,8 @@ withPoints_dd(PG_FUNCTION_ARGS) {
                 PG_GETARG_INT64(2),
                 PG_GETARG_FLOAT8(3),
 
-                PG_GETARG_BOOL(4),
-                pgr_text2char(PG_GETARG_TEXT_P(5)),
+                pgr_text2char(PG_GETARG_TEXT_P(4)),
+                PG_GETARG_BOOL(5),
                 PG_GETARG_BOOL(6),
                 &result_tuples,
                 &result_count);

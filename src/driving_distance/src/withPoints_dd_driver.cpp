@@ -58,14 +58,14 @@ extern "C" {
 // start_pids anyarray,
 // distance FLOAT,
 //
-// equicost BOOLEAN -- DEFAULT false,
 // driving_side CHAR -- DEFAULT 'b',
 // details BOOLEAN -- DEFAULT false,
 // directed BOOLEAN -- DEFAULT true,
+// equicost BOOLEAN -- DEFAULT false,
 
 
-void
-do_pgr_driving_many_to_dist(
+int
+do_pgr_many_withPointsDD(
         pgr_edge_t      *edges,             size_t total_edges,
         Point_on_edge_t *points_p,          size_t total_points,
         pgr_edge_t      *edges_of_points,   size_t total_edges_of_points,
@@ -73,10 +73,10 @@ do_pgr_driving_many_to_dist(
         int64_t  *start_pids_arr,    int s_len,
         float8 distance,
 
-        bool equiCost,
         char driving_side,
         bool details,
         bool directed,
+        bool equiCost,
 
         General_path_element_t **return_tuples, size_t *return_count,
         char ** err_msg) {
@@ -112,27 +112,25 @@ do_pgr_driving_many_to_dist(
                 log);
 
         std::vector< int64_t > start_pids(start_pids_arr, start_pids_arr + s_len);
-        std::vector< int64_t > start_vids;
+        std::set< int64_t > start_vids;
 
         for (const auto start_pid : start_pids) {
-            int64_t start_vid = 0;
             for (const auto point : points) {
                 if (point.pid == start_pid) {
-                    start_vids.push_back(point.vertex_id);
+                    start_vids.insert(point.vertex_id);
                     break;
                 }
-                start_vids.push_back(0);
             }
         }
 
 
 
-        graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const int initial_size = total_tuples;
+        graphType gType = directed? DIRECTED: UNDIRECTED;
+        const int initial_size = total_edges;
 
         std::deque< Path >paths;
 
-        if (directedFlag) {
+        if (directed) {
             Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
@@ -163,33 +161,36 @@ do_pgr_driving_many_to_dist(
 
         if (count == 0) {
             *err_msg = strdup("NOTICE: No return values was found");
-            return;
+            return 0;
         }
         *return_tuples = get_memory(count, (*return_tuples));
-        *return_count = collapse_paths(ret_path, paths);
+        *return_count = collapse_paths(return_tuples, paths);
 
 #ifndef DEBUG
         *err_msg = strdup("OK");
 #else
         *err_msg = strdup(log.str().c_str());
 #endif
-        return;
+        return 0;
 
     } catch ( ... ) {
         *err_msg = strdup("Caught unknown expection!");
-        *ret_path = noResult(path_count, (*ret_path));
-        return;
+        return 1000;
     }
 
 }
 
 
-// CREATE OR REPLACE FUNCTION pgr_withPoint(
+// CREATE OR REPLACE FUNCTION pgr_withPointsDD(
 // edges_sql TEXT,
 // points_sql TEXT,
 // start_pid BIGINT,
 // end_pid BIGINT,
-// directed BOOLEAN DEFAULT true
+//
+// driving_side CHAR -- DEFAULT 'b',
+// details BOOLEAN -- DEFAULT false,
+// directed BOOLEAN -- DEFAULT true,
+// equicost BOOLEAN -- DEFAULT false,
 
 int
 do_pgr_withPointsDD(
@@ -200,9 +201,9 @@ do_pgr_withPointsDD(
         int64_t start_pid,
         float8      distance,
 
-        bool directed,
         char driving_side,
         bool details,
+        bool directed,
 
         General_path_element_t **return_tuples,
         size_t *return_count,
