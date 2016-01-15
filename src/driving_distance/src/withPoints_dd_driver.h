@@ -35,8 +35,7 @@ extern "C" {
 #endif
 
 
-    int
-    do_pgr_many_withPointsDD(
+    int do_pgr_many_withPointsDD(
             pgr_edge_t      *edges,             size_t total_edges,
             Point_on_edge_t *points_p,          size_t total_points,
             pgr_edge_t      *edges_of_points,   size_t total_edges_of_points,
@@ -44,38 +43,38 @@ extern "C" {
             int64_t  *start_pids_arr,    int s_len,
             float8 distance,
 
-            bool equiCost,
             char driving_side,
             bool details,
             bool directed,
+            bool equiCost,
 
             General_path_element_t **return_tuples, size_t *return_count,
             char ** err_msg);
 
 
-        //  CREATE OR REPLACE FUNCTION pgr_withPointKsp(
-        //  edges_sql TEXT,
-        //  points_sql TEXT,
-        //  start_pid BIGINT,
-        //  end_pid BIGINT,
-        //  directed BOOLEAN DEFAULT true,
-        int do_pgr_withPointsDD(
-                pgr_edge_t  *edges,             size_t total_edges,
-                Point_on_edge_t  *points,       size_t total_points,
-                pgr_edge_t  *edges_of_points,   size_t total_edges_of_points,
+    //  CREATE OR REPLACE FUNCTION pgr_withPointKsp(
+    //  edges_sql TEXT,
+    //  points_sql TEXT,
+    //  start_pid BIGINT,
+    //  end_pid BIGINT,
+    //  directed BOOLEAN DEFAULT true,
+    int do_pgr_withPointsDD(
+            pgr_edge_t  *edges,             size_t total_edges,
+            Point_on_edge_t  *points,       size_t total_points,
+            pgr_edge_t  *edges_of_points,   size_t total_edges_of_points,
 
-                int64_t start_pid,
-                double  distance,
+            int64_t start_pid,
+            double  distance,
 
-                bool directed,
-                char driving_side,
-                bool details,
+            char driving_side,
+            bool details,
+            bool directed,
 
-                General_path_element_t **return_tuples,
-                size_t *return_count,
-                char ** err_msg);
+            General_path_element_t **return_tuples,
+            size_t *return_count,
+            char ** err_msg);
 
 #ifdef __cplusplus
-    }
+}
 #endif
 

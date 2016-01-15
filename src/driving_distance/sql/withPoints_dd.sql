@@ -59,6 +59,6 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDD(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
   RETURNS SETOF RECORD AS
-     '$libdir/${PGROUTING_LIBRARY_NAME}', 'many_withPoints_dd'
+     '$libdir/${PGROUTING_LIBRARY_NAME}', 'many_withPointsDD'
  LANGUAGE c IMMUTABLE STRICT;
 
