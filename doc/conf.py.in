@@ -67,7 +67,13 @@ gettext_compact = False
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['doc/build','src/shooting_star/doc/index.rst']
+exclude_patterns = [
+    'doc/build',
+    'src/shooting_star/doc/index.rst',
+    'src/travelingSalesPerson',
+    'src/turnRestricted',
+    'tools/template'
+    ]
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
@@ -106,7 +112,7 @@ html_theme_path = ['@SPHINX_THEME_DIR@']
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = "pgRouting Manual (@PGROUTING_VERSION_STRING@)"
+html_title = "pgRouting Manual (@PGROUTING_VERSION_STRING@-dev)"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None

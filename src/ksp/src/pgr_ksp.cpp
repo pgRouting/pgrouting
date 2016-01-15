@@ -1,7 +1,10 @@
-/*PGR
+/*PGR-GNU*****************************************************************
+File: pgr_ksp.cpp
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky_vergara@hotmail.com
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -16,9 +19,11 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-*/
+
+********************************************************************PGR-GNU*/
 
 #include <deque>
+#include <set>
 #include "./../../common/src/basePath_SSEC.hpp"
 
 template < class G >
@@ -27,52 +32,53 @@ void Pgr_ksp< G >::clear() {
 }
 
 template < class G >
-void Pgr_ksp< G >::getFirstSolution() {
+void Pgr_ksp< G >::getFirstSolution(G &graph) {
      Path path;
 
-     this->dijkstra(path, m_start, m_end);
+     Pgr_dijkstra< G > fn_dijkstra;
+     fn_dijkstra.dijkstra(graph, path, m_start, m_end);
 
-     if (path.path.size() <= 1 ) return;
+     if (path.empty()) return;
      curr_result_path = path;
      m_ResultSet.insert(curr_result_path);
 }
 
 template < class G>
-std::deque<Path> Pgr_ksp< G >::Yen(
-  int64_t  start_vertex, int64_t end_vertex, int K) {
-    std::deque<Path> l_ResultList;
+std::deque<Path>
+Pgr_ksp< G >::Yen(G &graph, 
+  int64_t  start_vertex, int64_t end_vertex, int K, bool heap_paths) {
+    m_ResultSet.clear();
+    m_Heap.clear();
     if ((start_vertex != end_vertex) && (K > 0)) {
-        if   (!this->get_gVertex(start_vertex, v_source)
-           || !this->get_gVertex(end_vertex, v_target)) {
+        if   (!graph.get_gVertex(start_vertex, v_source)
+           || !graph.get_gVertex(end_vertex, v_target)) {
+             std::deque<Path> l_ResultList;
              return l_ResultList;
         }
         m_start = start_vertex;
         m_end = end_vertex;
-        executeYen(K);
+        executeYen(graph, K);
     }
 
-    while (m_Heap.size()) {
-         curr_result_path = *m_Heap.begin();
-         m_ResultSet.insert(curr_result_path);
-         m_Heap.erase(m_Heap.begin());
+    while (!m_ResultSet.empty()) {
+        m_Heap.insert(*m_ResultSet.begin());
+        m_ResultSet.erase(m_ResultSet.begin());
     }
-
-    while (m_ResultSet.size()) {
-         l_ResultList.push_back((*m_ResultSet.begin()));
-         m_ResultSet.erase(m_ResultSet.begin());
-    }
+    std::deque<Path> l_ResultList(m_Heap.begin(), m_Heap.end());
+    if (!heap_paths && l_ResultList.size() > K)
+        l_ResultList.resize(K);
     return l_ResultList;
 }
 
 
 template < class G >
-void Pgr_ksp< G >::removeVertices(const Path &subpath) {
-    for (unsigned int i = 0; i < subpath.path.size(); i++)
-       this->disconnect_vertex(subpath.path[i].vertex);
+void Pgr_ksp< G >::removeVertices(G &graph, const Path &subpath) {
+    for (const auto &e : subpath)
+        graph.disconnect_vertex(e.node);
 }
 
 template < class G >
-void Pgr_ksp< G >::doNextCycle() {
+void Pgr_ksp< G >::doNextCycle(G &graph) {
     // REG_SIGINT
 
 
@@ -80,50 +86,49 @@ void Pgr_ksp< G >::doNextCycle() {
     Path rootPath;
     Path spurPath;
 
-    for (unsigned int i = 0; i < curr_result_path.path.size() ; ++i) {
-        // int64_t  spurEdge = curr_result_path.path[i].edge;
-        spurNodeId = curr_result_path.path[i].vertex;
+    for (unsigned int i = 0; i < curr_result_path.size() ; ++i) {
+        spurNodeId = curr_result_path[i].node;
 
         rootPath = curr_result_path.getSubpath(i);
 
-        for (pIt = m_ResultSet.begin(); pIt != m_ResultSet.end(); ++pIt) {
-           if ((*pIt).isEqual(rootPath)) {
-              // edge to be removed = (*pIt).path[i].edge;
-              this->disconnect_edge((*pIt).path[i].vertex,     // from
-                                    (*pIt).path[i+1].vertex);  // to
-           }
+        for (const auto &path : m_ResultSet) {
+            if (path.isEqual(rootPath)) {
+                graph.disconnect_edge(path[i].node,     // from
+                        path[i + 1].node);  // to
+            }
         }
-        removeVertices(rootPath);
+        removeVertices(graph, rootPath);
 
-        // int spurPathSize;
 
         // THROW_ON_SIGINT
-        this->dijkstra(spurPath, spurNodeId , m_end);
+        Pgr_dijkstra< G > fn_dijkstra;
+        fn_dijkstra.dijkstra(graph, spurPath, spurNodeId, m_end);
+        //this->dijkstra(spurPath, spurNodeId , m_end);
         // THROW_ON_SIGINT
 
-        if (spurPath.path.size() > 0) {
+        if (spurPath.size() > 0) {
             rootPath.appendPath(spurPath);
             m_Heap.insert(rootPath);
         }
 
-        this->restore_graph();
+        graph.restore_graph();
         rootPath.clear();
         spurPath.clear();
     }
 }
 
 template < class G >
-void Pgr_ksp< G >::executeYen(int K) {
-          clear();
-          getFirstSolution();
+void Pgr_ksp< G >::executeYen(G &graph, int K) {
+    clear();
+    getFirstSolution(graph);
 
-          if (m_ResultSet.size() == 0) return;  // no path found
+    if (m_ResultSet.size() == 0) return;  // no path found
 
-          while ( m_ResultSet.size() < (unsigned int) K ) {
-                doNextCycle();
-                if ( m_Heap.size() == 0 ) break;
-                curr_result_path = *m_Heap.begin();
-                m_ResultSet.insert(curr_result_path);
-                m_Heap.erase(m_Heap.begin());
-          }
+    while ( m_ResultSet.size() < (unsigned int) K ) {
+        doNextCycle(graph);
+        if ( m_Heap.empty() ) break;
+        curr_result_path = *m_Heap.begin();
+        m_ResultSet.insert(curr_result_path);
+        m_Heap.erase(m_Heap.begin());
+    }
 }

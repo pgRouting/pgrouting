@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _history:
+.. _discontinued:
 
 Discontinued Functions
 ===============================================================================
@@ -21,6 +21,6 @@ Functionality that has been discontinued will be listed here.
 Shooting Star algorithm
 ********************************************************************************
 
-:Version:	Removed with 2.0.0
+:Version:	Discontinued on 2.0.0
 :Reasons:	Unresolved bugs, no maintainer, replaced with :ref:`trsp`
-:Comment:	Please :ref:`contact us <support>` if you're interested to sponsor or maintain this algorithm. The function signature is still available in :ref:`common_legacy` but it is just a wrapper that throws an error. We have not included any of the old code for this in this release.
+:Comment:	Please :ref:`contact us <support>` if you're interested to sponsor or maintain this algorithm.

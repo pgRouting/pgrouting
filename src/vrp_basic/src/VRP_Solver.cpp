@@ -1,7 +1,9 @@
-/*PGR
+/*PGR-GNU*****************************************************************
 
 Copyright (c) 2013 Khondoker Md. Razequl Islam
 ziboncsedu@gmail.com
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,7 +19,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
+********************************************************************PGR-GNU*/
 
 #include "VRP_Solver.h"
 #ifdef __MINGW32__
@@ -309,6 +311,7 @@ bool CVRPSolver::solveVRP(std::string& strError)
 		}
 	}
 	m_bIsSolutionReady = true;
+    strError += " ";
 	return true;
 
 }

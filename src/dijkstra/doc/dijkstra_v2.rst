@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -18,7 +18,7 @@ Name
 ``pgr_dijkstra`` — Returns the shortest path using Dijkstra algorithm.
 
 
-.. index:: 
+.. index::
 	single: dijkstra(sql, source, target, directed, has_rcost) -- deprecated
 
 Synopsis
@@ -28,7 +28,7 @@ Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1
 
 .. code-block:: sql
 
-	pgr_costResult[] pgr_dijkstra(text sql, integer source, integer target, 
+	pgr_costResult[] pgr_dijkstra(text sql, integer source, integer target,
 	                           boolean directed, boolean has_rcost);
 
 .. warning:: This signature is being deprecated in version 2.1, Please use it
@@ -36,7 +36,7 @@ Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1
 
              ``pgr_dijkstra(sql, source, target, directed)``
 
-             See :ref:`pgr_dijkstra_v3`
+             See :ref:`pgr_dijkstra`
 
 Description
 -------------------------------------------------------------------------------
@@ -79,13 +79,13 @@ Examples: Directed
 
 .. code-block:: sql
 
-        SELECT seq, id1 AS node, id2 AS edge, cost 
+        SELECT seq, id1 AS node, id2 AS edge, cost
                 FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         2,3, true, false
                 );
 
-         seq | node | edge | cost 
+         seq | node | edge | cost
         -----+------+------+------
         (0 rows)
 
@@ -94,12 +94,12 @@ Examples: Directed
 
 .. code-block:: sql
 
-        SELECT seq, id1 AS node, id2 AS edge, cost 
+        SELECT seq, id1 AS node, id2 AS edge, cost
                 FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         2,3, true, true
                 );
-         seq | node | edge | cost 
+         seq | node | edge | cost
         -----+------+------+------
            0 |    2 |    4 |    1
            1 |    5 |    8 |    1
@@ -120,12 +120,12 @@ Examples: Undirected
 
 .. code-block:: sql
 
-       SELECT seq, id1 AS node, id2 AS edge, cost 
+       SELECT seq, id1 AS node, id2 AS edge, cost
                 FROM pgr_dijkstra(
                         'SELECT id, source, target, cost FROM edge_table',
                         2, 3, false, false
                 );
-        seq | node | edge | cost 
+        seq | node | edge | cost
        -----+------+------+------
           0 |    2 |    4 |    1
           1 |    5 |    8 |    1
@@ -138,12 +138,12 @@ Examples: Undirected
 
 .. code-block:: sql
 
-       SELECT seq, id1 AS node, id2 AS edge, cost 
+       SELECT seq, id1 AS node, id2 AS edge, cost
                 FROM pgr_dijkstra(
                         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
                         2, 3, false, true
                 );
-        seq | node | edge | cost 
+        seq | node | edge | cost
        -----+------+------+------
           0 |    2 |    2 |    1
           1 |    3 |   -1 |    0

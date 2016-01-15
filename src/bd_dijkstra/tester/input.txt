@@ -1,7 +1,0 @@
-ways.txt 5700 6733 bdd1.txt ans1.txt
-ways.txt 6585 8247 bdd2.txt ans2.txt
-ways.txt 9426 3606 bdd3.txt ans3.txt
-ways.txt 3606 9426 bdd4.txt ans4.txt
-ways.txt 6733 5700 bdd5.txt ans5.txt
-ways.txt 8247 6585 bdd6.txt ans6.txt
-

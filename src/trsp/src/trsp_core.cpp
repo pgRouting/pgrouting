@@ -1,10 +1,32 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-GNU*/
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
 #endif
 
+#include <sstream>
 #include "GraphDefinition.h"
-#include "utils.h"
 
 
 int trsp_node_wrapper(
@@ -18,9 +40,9 @@ int trsp_node_wrapper(
     bool has_reverse_cost,
     path_element_t **path,
     int *path_count,
-    char **err_msg
-    )
-{
+    char **err_msg) {
+
+    std::ostringstream log;
     try {
 
         std::vector<PDVI> ruleTable;
@@ -38,8 +60,9 @@ int trsp_node_wrapper(
             ruleTable.push_back(make_pair(restricts[i].to_cost, seq));
         }
 
-        GraphDefinition gdef;
-        int res = gdef.my_dijkstra(edges, edge_count, start_vertex, end_vertex, directed, has_reverse_cost, path, path_count, err_msg, ruleTable);
+        GraphDefinition gdef(edges, edge_count, directed, has_reverse_cost);
+        gdef.set_restrictions(start_vertex, end_vertex, ruleTable);
+        int res = gdef.my_dijkstra(start_vertex, end_vertex, path, path_count, log);
 
 
         if (res < 0)
@@ -48,11 +71,13 @@ int trsp_node_wrapper(
             return EXIT_SUCCESS;
     }
     catch(std::exception& e) {
-        *err_msg = (char *) e.what();
+        log << e.what();
+        *err_msg = strdup(log.str().c_str());
         return -1;
     }
     catch(...) {
-        *err_msg = (char *) "Caught unknown exception!";
+        log << "Caught unknown exception!";
+        *err_msg = strdup(log.str().c_str());
         return -1;
     }
 }
@@ -70,9 +95,8 @@ int trsp_edge_wrapper(
     bool has_reverse_cost,
     path_element_t **path,
     int *path_count,
-    char **err_msg
-    )
-{
+    char **err_msg) {
+    std::ostringstream log;
     try {
 
         std::vector<PDVI> ruleTable;
@@ -90,8 +114,17 @@ int trsp_edge_wrapper(
             ruleTable.push_back(make_pair(restricts[i].to_cost, seq));
         }
 
-        GraphDefinition gdef;
-        int res = gdef.my_dijkstra(edges, edge_count, start_edge, start_pos, end_edge, end_pos, directed, has_reverse_cost, path, path_count, err_msg, ruleTable);
+        GraphDefinition gdef(edges, edge_count, directed, has_reverse_cost);
+
+        int64_t start_vertex = 0;
+        int64_t end_vertex = 0;
+        gdef.add_virtual_vertices(
+                start_edge, start_pos,
+                end_edge, end_pos,
+                start_vertex, end_vertex);
+
+        gdef.set_restrictions(start_vertex, end_vertex, ruleTable);
+        int res = gdef.my_dijkstra(start_vertex, end_vertex, path, path_count, log);
 
 
         if (res < 0)
@@ -100,11 +133,13 @@ int trsp_edge_wrapper(
             return EXIT_SUCCESS;
     }
     catch(std::exception& e) {
-        *err_msg = (char *) e.what();
+        log << e.what();
+        *err_msg = strdup(log.str().c_str());
         return -1;
     }
     catch(...) {
-        *err_msg = (char *) "Caught unknown exception!";
+        log << "Caught unknown exception!";
+        *err_msg = strdup(log.str().c_str());
         return -1;
     }
 }
