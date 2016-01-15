@@ -20,6 +20,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+BEGIN;
 \echo --q1
 SELECT * FROM pgr_dijkstraCost(
     'select id, source, target, cost, reverse_cost from edge_table',
@@ -48,11 +49,12 @@ SELECT * FROM pgr_dijkstraCost(
 \echo --q6
 SELECT * FROM pgr_dijkstraCost(
         'select id, source, target, cost, reverse_cost from edge_table',
-            ARRAY[2, 3, 5], ARRAY[2, 3, 5]);
+            ARRAY[5, 3, 4, 3, 3, 4], ARRAY[3, 5, 3, 4]);
 
 \echo --q7
 SELECT * FROM pgr_dijkstraCost(
         'select id, source, target, cost, reverse_cost from edge_table',
-            ARRAY[2, 16, 17], ARRAY[2, 16, 17]);
+            ARRAY[5, 3, 4], ARRAY[5, 3, 4]);
 
 \echo --q8
+ROLLBACK

@@ -99,5 +99,5 @@ The queries use the :ref:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_driving_distance` - Driving Distance
+* :ref:`pgr_drivingDistance` - Driving Distance
 * :ref:`pgr_alphashape` - Alpha shape computation

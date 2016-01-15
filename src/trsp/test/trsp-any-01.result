@@ -1,2 +1,0 @@
-1..1
-ok 1 - No turn restriction from 1 to 5 returns same as dijkstra

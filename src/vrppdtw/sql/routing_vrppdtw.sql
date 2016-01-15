@@ -29,12 +29,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --
 create or replace function pgr_gsoc_vrppdtw(
     sql text,
-    vehicle_num integer,
-    capacity integer,
+    vehicle_num INTEGER,
+    capacity FLOAT,
     OUT seq integer,
-    OUT rid integer,
-    OUT nid integer,
-    OUT cost integer
+    OUT route_id BIGINT,
+    OUT node_id BIGINT,
+    OUT cost FLOAT
 )
 returns setof record as
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'vrppdtw'

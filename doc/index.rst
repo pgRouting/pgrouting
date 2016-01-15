@@ -9,16 +9,17 @@
 
 .. _index:
 
+*******************************************************************************
 Table of Contents
-===============================================================================
+*******************************************************************************
 
 pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgresql.org>`_ geospatial database to provide geospatial routing and other network analysis functionality.
 
 This is the manual for pgRouting |release|.
 
 .. image:: static/images/ccbysa.png
-	:align: left
-	:alt: Creative Commons Attribution-Share Alike 3.0 License
+    :align: left
+    :alt: Creative Commons Attribution-Share Alike 3.0 License
 
 The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/>`_. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to http://pgrouting.org. For other licenses used in pgRouting see the :ref:`license` page.
 
@@ -29,6 +30,7 @@ General
 .. toctree::
     :maxdepth: 2
 
+    src/introduction/index
     src/introduction/introduction
     src/installation/index
     src/installation/build
@@ -56,27 +58,31 @@ Tutorial
    :hidden:
 
    src/tutorial/index
+   src/developer/index
    src/developer/sampledata
    src/recipes/index
 
 For a more complete introduction how to build a routing application read the `pgRouting Workshop <http://workshop.pgrouting.org>`_.
 
 *******************************************************************************
-Version
+Functions
 *******************************************************************************
+
+Version
+===============================================================================
 
 :ref:`pgr_version` - to get pgRouting's version information.
 
 .. toctree::
    :hidden:
 
-   ../src/common/doc/utilities/version
+   ../src/common/doc/version
 
 
 
-*******************************************************************************
+
 Data Types
-*******************************************************************************
+===============================================================================
 
 :ref:`data_types`
 
@@ -89,9 +95,9 @@ Data Types
 
    ../src/common/doc/types/index
 
-*******************************************************************************
+
 Topology functions
-*******************************************************************************
+===============================================================================
 
 :ref:`topology_functions`
 
@@ -102,222 +108,58 @@ Topology functions
   -  :ref:`pgr_node_network`  -to create nodes to a not noded edge table.
 
 .. toctree::
-	:hidden:
+   :hidden:
 
-	../src/common/doc/functions/index
+   ../src/topology/doc/topology
 
-*******************************************************************************
-Routing functions
-*******************************************************************************
-
-:ref:`routing_functions`
-
-  -  :ref:`pgr_apspJohnson<pgr_apsp_johnson>` - All Pairs Shortest Path, Johnson’s Algorithm
-  -  :ref:`pgr_apspWarshall<pgr_apsp_warshall>` - All Pairs Shortest Path, Floyd-Warshall Algorithm
-  -  :ref:`pgr_astar<pgr_astar>` - Shortest Path A*
-  -  :ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
-  -  :ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path
-  -  :ref:`pgr_dijkstra<pgr_dijkstra>` - Dijkstra family functions
-  -  :ref:`pgr_driving_distance<pgr_driving_distance>` - Driving Distance
-  -  :ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path Dijkstra
-  -  :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
-  -  :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
-  -  :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
+..
+    ROUTING FUNCTIONS SECTION
 
 .. toctree::
-	:hidden:
+   :hidden:
+   :maxdepth: 0
 
-	../src/index
-
-*******************************************************************************
-Pre processing or post processing helping functions
-*******************************************************************************
-
-:ref:`pgr_driving_distance_post`
-
-  -  :ref:`pgr_alphaShape` - Alpha shape computation
-  -  :ref:`pgr_points_as_polygon` - Polygon around set of points
-
-*******************************************************************************
-Experimental and Proposed functions
-*******************************************************************************
-
-This section contains new experimental or proposed signatures for any of the following sections:
-  - topology functions
-  - routing functions
-  - vehicle routing functions
-  - pre / post procesing helper functions
+   ../src/routingFunctions
 
 
-We are including them so that the pgRouting community can evaluate them before
-including them as an official function of pgRouting.
-
-Some of them are unsupported like the GSoC functions.
+.. include:: ../src/routingFunctions.rst
 
 
 *******************************************************************************
-Proposed functions: Proposed by Vicky Vergara
+Available Functions but not official pgRouting functions
 *******************************************************************************
 
-:pgr_dijkstraCost:
-
-About this proposal:
-  - Author: Vicky Vergara
-  - Status: testing
-  - Name: pgr_dijkstraCost
-  - Overloading to:
-
-    - one to one
-    - many to one
-    - one to many  - Can replace kdijkstraCost
-    - many to many
-
-
-  - :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to make calculate only the 
-    aggregate cost of the shortest path. 
-
-:pgr_johnson:
-
-About this proposal:
-  - Author: Vicky Vergara
-  - Status: testing
-  - Name: pgr_johnson
-  - Deprecate pgr_apspJohnson in favor of pgr_johnson
-  - :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
-
-
-:pgr_floydWarshall:
-
-About this proposal:
-  - Author: Vicky Vergara
-  - Status: testing
-  - Name: pgr_floydWarshall
-  - Deprecate pgr_apspWarshall in favor of pgr_floydWarshall
-  - :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
-
-
-:pgr_dijkstraViaVertex:
-
-About this proposal:
-  - Author: Vicky Vergara
-  - Status: developing, testing
-  - Temporary name: pgr_dijkstraViaVertex
-  - :ref:`pgr_dijkstraViaVertex` - Use pgr_dijkstra to make a route via Vetices 
-
-
-:pgr_dijkstraViaVertex:
-
-About this proposal:
-  - Author: Vicky Vergara
-  - Status: developing, testing
-  - Temporary name: pgr_withPointsVia
-  - :ref:`pgr_withPointsVia` - Use pgr_dijkstraViaVertes to make the route
-     via temporary vertices. 
-
-
+  - :ref:`proposedNext`
+  - :ref:`proposed`
 
 .. toctree::
     :hidden:
 
-    ../src/dijkstra/doc/dijkstraCost
-    ../src/allpairs/doc/johnson.rst
-    ../src/allpairs/doc/floydWarshall.rst
-    ../src/dijkstraViaVertex/doc/dijkstraViaVertex
-    ../src/withPoints/doc/withPointsVia
+    ../src/proposedNext
+    ../src/proposed
+
+
+
 
 *******************************************************************************
-Experimental functions: Proposed by Steve Woodbridge
+Discontinued & Deprecated Functions
 *******************************************************************************
 
-:ref:`convenience_functions`
-  -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
-  -  :ref:`pgr_flip_edges` - flip the edges in an array of geometries so the connect end to end.
-  -  :ref:`pgr_text_to_points` - convert a string of ``x,y;x,y;...`` locations into point geometries.
-  -  :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
-  -  :ref:`pgr_points_to_dmatrix` - Create a distance matrix from an array of points.
-  -  :ref:`pgr_vids_to_dmatrix` - Create a distance matrix from an array of ``vertix_id``.
-  -  :ref:`pgr_vids_to_dmatrix2` - Create a distance matrix from an array of ``vertix_id``.
+  - :ref:`discontinued`
+  - :ref:`deprecated`
 
 .. toctree::
-	:hidden:
+   :hidden:
 
-        ../src/common/doc/convenience/index
+   src/developer/discontinued
+   deprecated
 
-*******************************************************************************
-Experimental functions: by GSoC
-*******************************************************************************
 
-The following functions are experimental
- - They may lack documentation,
- - Were created by GSoC students.
- - they are unsupported.
- 
-  -  :ref:`pgr_vrp_basic` - VRP One Depot
-  -  :ref:`pgr_gsocvrppdtw` -  Pickup and Delivery problem
-
-.. toctree::
-	:hidden:
-
-	../src/vrp_basic/doc/index.rst
-	../src/vrppdtw/doc/index.rst
 
 
 *******************************************************************************
-Proposed functions: Proposed by Zia Mohammed
+Change Log
 *******************************************************************************
-
-About this proposal:
-  - Author: Zia Mohammed.
-  - Status: Needs a lot of testing. I am working on that.
-  - I did not add automated test.
-  - Temporary name: pgr_labelGraph
-  - Need: I need feedback from the community.
-
-  -  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
-
-.. toctree::
-  :hidden:
-
-  ../src/label_graph/doc/analyze_brokengraph.rst
-
-
-.. toctree::
-	:hidden:
-
-	../src/common/doc/utilities/index
-
-*******************************************************************************
-Discontinued Functions
-*******************************************************************************
-
-.. toctree::
-	:maxdepth: 1
-
-	src/developer/discontinued
-
-
-.. warning:: :ref:`developer_functions` documentation is going to be deleted from the pgRouting documentation in V3.0
-
-             
-*******************************************************************************
-Deprecated Functions
-*******************************************************************************
-
-
-  -  :ref:`pgr_get_column_name` - to get the name of the column as is stored in the postgres administration tables.
-  -  :ref:`pgr_get_table_name` - to retrieve the name of the table as is stored in the postgres administration tables.
-  -  :ref:`pgr_is_column_indexed` - to check if the column is indexed.
-  -  :ref:`pgr_is_column_in_table` - to check only for the existance of the column.
-  -  :ref:`pgr_point_to_id` -to insert/get the id of the inserted point in a vertices table.
-  -  :ref:`pgr_quote_ident` - to quotes the input text to be used as an identifier in an SQL statement string.
-  -  :ref:`pgr_versionless` - to compare two version numbers.
-  -  :ref:`pgr_start_point` - to get the start point of a (multi)linestring.
-  -  :ref:`pgr_end_point` - to get the end point of a (multi)linestring.
-
-.. toctree::
-    :maxdepth: 2
-
-    src/developer/index
 
 :ref:`change_log`
 

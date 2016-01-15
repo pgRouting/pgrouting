@@ -34,23 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <exception>
 #include "BiDirDijkstra.h"
 #include "bdsp.h"
-#include "utils.h"
 
-#undef DEBUG
-//#define DEBUG
 
-#ifdef DEBUG
-#include <stdio.h>
-static FILE *dbg;
-#define DBG(...) \
-    dbg = fopen("/tmp/sew-debug", "a"); \
-    if (dbg) { \
-        fprintf(dbg, __VA_ARGS__); \
-        fclose(dbg); \
-    }
-#else
-#define DBG(...) do { ; } while (0)
-#endif
 
 int bidirsp_wrapper(
     edge_t *edges,
@@ -68,26 +53,30 @@ int bidirsp_wrapper(
     int res;
 
     try {
-        DBG("Calling BiDirDijkstra initializer.\n");
+        // DBG("Calling BiDirDijkstra initializer.\n");
         BiDirDijkstra bddijkstra;
-        DBG("BiDirDijkstra initialized\n");
+        // DBG("BiDirDijkstra initialized\n");
         res = bddijkstra.bidir_dijkstra(edges, edge_count, maxNode, start_vertex, end_vertex, path, path_count, err_msg);
+        // TODO  this are an unused parameters have to be used
+        if (has_reverse_cost) {};
+        if (directed) {};
+
     }
     catch(std::exception& e) {
-        DBG("catch(std::exception e.what: %s\n", e.what());
+        // DBG("catch(std::exception e.what: %s\n", e.what());
         *err_msg = (char *) e.what();
         return -1;
     }
     catch(...) {
-        DBG("catch(...\n");
+        // DBG("catch(...\n");
         *err_msg = (char *) "Caught unknown exception!";
         return -1;
     }
 
-    DBG("Back from bddijkstra.bidir_dijkstra()\n");
+    // DBG("Back from bddijkstra.bidir_dijkstra()\n");
     if (res < 0)
         return res;
     else
-	    return EXIT_SUCCESS;
+        return EXIT_SUCCESS;
 }
 

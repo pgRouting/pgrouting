@@ -1,5 +1,5 @@
  NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edge_table',0.001,'the_geom','id','source','target','true')
+ NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := t)
  NOTICE:  Performing checks, please wait.....
  NOTICE:  Creating Topology, Please wait...
  NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
@@ -134,7 +134,7 @@ OK
  NOTICE:                      Ring geometries: 0
 OK
  NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt','true')
+ NOTICE:  pgr_createTopology('mytable', 0.001, 'mygeom', 'gid', 'src', 'tgt', rows_where := 'true', clean := t)
  NOTICE:  Performing checks, please wait .....
  NOTICE:  Creating Topology, Please wait...
  NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
@@ -284,7 +284,7 @@ OK
  NOTICE:                      Ring geometries: 0
 OK
  NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edge_table',0.001,'the_geom','id','source','target','true')
+ NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := t)
  NOTICE:  Performing checks, please wait .....
  NOTICE:  Creating Topology, Please wait...
  NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
@@ -353,7 +353,7 @@ OK
  NOTICE:                      Ring geometries: 0
 OK
  NOTICE:  PROCESSING:
- NOTICE:  pgr_createTopology('edge_table',0.001,'the_geom','id','source','target','id <17')
+ NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'id <17', clean := t)
  NOTICE:  Performing checks, please wait .....
  NOTICE:  Creating Topology, Please wait...
  NOTICE:  -------------> TOPOLOGY CREATED FOR  16 edges

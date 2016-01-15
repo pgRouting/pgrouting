@@ -1,7 +1,0 @@
-NOTICE:  Deprecated function
-NOTICE:  Contradiction found: has_rcost set to false but reverse_cost column found
-7|0
-8|1
-NOTICE:  Deprecated function
-7|0
-8|1

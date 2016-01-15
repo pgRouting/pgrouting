@@ -45,7 +45,7 @@ begin
     for i in 1 .. array_length(vids, 1)-1 loop
         seq2 := seq2 + 1;
         for rr in select a.seq, seq2 as id1, a.id1 as id2, a.id2 as id3, a.cost
-                    from _pgr_trsp(sql, vids[i], vids[i+1], directed, has_reverse_cost, turn_restrict_sql) as a loop
+                    from pgr_trsp(sql, vids[i], vids[i+1], directed, has_reverse_cost, turn_restrict_sql) as a loop
             -- filter out the individual path ends except the last one
             -- we might not want to do this so we can know where the via points are in the path result
             -- but this needs more thought

@@ -14,14 +14,21 @@ pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra
 ===============================================================================
 
 .. index::
-    single: pgr_kDijkstraCost(text,integer,integer[],boolean,boolean)
-    single: pgr_kDijkstraPath(text,integer,integer[],boolean,boolean)
+    single: pgr_kDijkstraCost(text,integer,integer[],boolean,boolean) -- deprecated 
+    single: pgr_kDijkstraPath(text,integer,integer[],boolean,boolean) -- deprecated
 
 Name
 -------------------------------------------------------------------------------
 
 * ``pgr_kdijkstraCost`` - Returns the costs for K shortest paths using Dijkstra algorithm.
+
+.. warning:: This functions is deprecated in 2.2.
+    Use :ref:`pgr_dijkstraCost` instead.
+
 * ``pgr_kdijkstraPath`` - Returns the paths for K shortest paths using Dijkstra algorithm.
+
+.. warning:: This function is deprecated in 2.2.
+    Use :ref:`pgr_dijkstra` instead.
 
 
 Synopsis
@@ -87,59 +94,22 @@ Examples
 
 * Returning a ``cost`` result
 
-.. code-block:: sql
 
-    SELECT seq, id1 AS source, id2 AS target, cost FROM pgr_kdijkstraCost(
-        'SELECT id, source, target, cost FROM edge_table',
-        10, array[4,12], false, false
-    );
-
-     seq | source | target | cost 
-    -----+--------+--------+------
-       0 |     10 |      4 |    4
-       1 |     10 |     12 |    2
+.. literalinclude:: doc-kdijkstra.queries
+   :start-after: -- q1
+   :end-before: -- q2
 
 
-.. code-block:: sql
+.. literalinclude:: doc-kdijkstra.queries
+   :start-after: -- q2
+   :end-before: -- q3
 
-    SELECT seq, id1 AS path, id2 AS node, id3 AS edge, cost
-      FROM pgr_kdijkstraPath(
-          'SELECT id, source, target, cost FROM edge_table',
-          10, array[4,12], false, false
-    );
-
-     seq | path | node | edge | cost
-    -----+------+------+------+------
-       0 |    4 |   10 |   12 |    1
-       1 |    4 |   11 |   13 |    1
-       2 |    4 |   12 |   15 |    1
-       3 |    4 |    9 |   16 |    1
-       4 |    4 |    4 |   -1 |    0
-       5 |   12 |   10 |   12 |    1
-       6 |   12 |   11 |   13 |    1
-       7 |   12 |   12 |   -1 |    0
-    (8 rows)
 
 * Returning a ``path`` result
 
-.. code-block:: sql
-
-    SELECT id1 as path, st_astext(st_linemerge(st_union(b.the_geom))) as the_geom
-      FROM pgr_kdijkstraPath(
-                      'SELECT id, source, target, cost FROM edge_table',
-                      10, array[4,12], false, false
-                ) a,
-                edge_table b
-    WHERE a.id3=b.id
-    GROUP by id1
-    ORDER by id1;
-
-    path |            the_geom
-    ------+---------------------------------
-        4 | LINESTRING(2 3,3 3,4 3,4 2,4 1)
-       12 | LINESTRING(2 3,3 3,4 3)
-    (2 rows)
-
+.. literalinclude:: doc-kdijkstra.queries
+   :start-after: -- q3
+   :end-before: -- q4
 
 There is no assurance that the result above will be ordered in the direction
 of flow of the route, ie: it might be reversed. You will need to check if

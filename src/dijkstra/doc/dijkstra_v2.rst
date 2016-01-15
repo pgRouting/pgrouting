@@ -36,7 +36,7 @@ Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1
 
              ``pgr_dijkstra(sql, source, target, directed)``
 
-             See :ref:`pgr_dijkstra_v3`
+             See :ref:`pgr_dijkstra`
 
 Description
 -------------------------------------------------------------------------------

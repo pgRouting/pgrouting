@@ -94,13 +94,15 @@ BEGIN
 
     IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
         -- no restrictions then its a dijkstra
-        RETURN query SELECT seq-1 AS seq, node::integer AS id1, edge::integer AS id2, cost
+        RETURN query SELECT seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
         FROM pgr_dijkstra(new_sql, start_vid, end_vid, directed);
         RETURN;
     END IF;
 
-    -- make the call without contradiction from part of the user
     RETURN query SELECT * FROM _pgr_trsp(new_sql, start_vid, end_vid, directed, has_rcost, restrictions_sql);
+    RETURN;
+
+
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -146,7 +148,7 @@ BEGIN
     IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
         RETURN query SELECT (row_number() over())::INTEGER, path_id:: INTEGER, node::INTEGER,
             (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost
-            FROM pgr_dijkstraViaVertex(new_sql, via_vids, directed, strict:=true) WHERE edge != -1;
+            FROM pgr_dijkstraVia(new_sql, via_vids, directed, strict:=true) WHERE edge != -1;
         RETURN;
     END IF;
    

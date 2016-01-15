@@ -34,22 +34,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "fmgr.h"
-#include "bdsp.h"
 
 Datum bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS);
 
 
 #undef DEBUG
-//#define DEBUG 1
 #include "../../common/src/debug_macro.h"
+#include "../../common/src/pgr_types.h"
+#include "../../common/src/postgres_connection.h"
 
+#include "bdsp.h"
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
-//#ifdef PG_MODULE_MAGIC
-//PG_MODULE_MAGIC;
-//#endif
 
 typedef struct edge_columns
 {
@@ -61,27 +59,6 @@ typedef struct edge_columns
 } edge_columns_t;
 
 
-static char *
-text2char(text *in)
-{
-  char *out = palloc(VARSIZE(in));
-
-  memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
-  out[VARSIZE(in) - VARHDRSZ] = '\0';
-  return out;
-}
-
-static int
-finish(int code, int ret)
-{
-  PGR_DBG("In finish, trying to disconnect from spi %d",ret);
-  code = SPI_finish();
-  if (code  != SPI_OK_FINISH ) {
-    elog(ERROR,"couldn't disconnect from SPI");
-    return -1 ;
-  }            
-  return ret;
-}
 
 /*
  * This function fetches the edge columns from the SPITupleTable.
@@ -181,7 +158,6 @@ static int compute_bidirsp(char* sql, int start_vertex,
                                  bool has_reverse_cost, 
                                  path_element_t **path, int *path_count) 
 {
-  int SPIcode;
   void *SPIplan;
   Portal SPIportal;
   bool moredata = TRUE;
@@ -202,30 +178,19 @@ static int compute_bidirsp(char* sql, int start_vertex,
 
   PGR_DBG("start shortest_path\n");
 
-  SPIcode = SPI_connect();
-  if (SPIcode  != SPI_OK_CONNECT) {
-      elog(ERROR, "shortest_path: couldn't open a connection to SPI");
-      return -1;
-  }
-
-  SPIplan = SPI_prepare(sql, 0, NULL);
-  if (SPIplan  == NULL) {
-      elog(ERROR, "shortest_path: couldn't create query plan via SPI");
-      return -1;
-  }
-
-  if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
-      elog(ERROR, "shortest_path: SPI_cursor_open('%s') returns NULL", sql);
-      return -1;
-  }
+  pgr_SPI_connect();
+  SPIplan = pgr_SPI_prepare(sql);
+  SPIportal = pgr_SPI_cursor_open(SPIplan);
 
   while (moredata == TRUE) {
       SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
 
       if (edge_columns.id == -1) {
           if (fetch_edge_columns(SPI_tuptable, &edge_columns, 
-                                 has_reverse_cost) == -1)
-            return finish(SPIcode, ret);
+                                 has_reverse_cost) == -1) {
+            pgr_SPI_finish();
+            return -1;
+          }
       }
 
       ntuples = SPI_processed;
@@ -237,7 +202,8 @@ static int compute_bidirsp(char* sql, int start_vertex,
 
       if (edges == NULL) {
           elog(ERROR, "Out of memory");
-          return finish(SPIcode, ret);      
+            pgr_SPI_finish();
+            return -1;
       }
 
       if (ntuples > 0) {
@@ -326,7 +292,8 @@ static int compute_bidirsp(char* sql, int start_vertex,
 
   PGR_DBG("ret = %i\n", ret);
 
-  return finish(SPIcode, ret);
+  pgr_SPI_finish();
+  return 0;
 }
 
 
@@ -369,7 +336,7 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
 #ifdef DEBUG
       ret =
 #endif
-        compute_bidirsp(text2char(PG_GETARG_TEXT_P(0)),
+        compute_bidirsp(pgr_text2char(PG_GETARG_TEXT_P(0)),
                                    PG_GETARG_INT32(1),
                                    PG_GETARG_INT32(2),
                                    PG_GETARG_BOOL(3),

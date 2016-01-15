@@ -27,24 +27,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define _BDSP_H
 
 
-#include "postgres.h"
+#include "../../common/src/pgr_types.h"
 
-typedef struct edge
-{
-    int id;
-    int source;
-    int target;
-    float8 cost;
-    float8 reverse_cost;
-} edge_t;
-
-
-typedef struct 
-{
-    int vertex_id;
-    int edge_id;
-    float8 cost;
-} path_element_t;
+typedef pgr_edge_t edge_t;
 
 #ifdef __cplusplus
 extern "C"

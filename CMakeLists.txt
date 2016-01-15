@@ -72,15 +72,18 @@ option(POSTGRESQL_VERSION " To set the version")
 
 set(PgRouting_SOURCE_NAMES
     "common" "dijkstra"
-    "driving_distance" "ksp"
+    "driving_distance"
+    "ksp"
     "allpairs"
-    "dijkstraViaVertex"
+    "withPoints"
+
+    #"funnyDijkstra"
     
     "astar" "bd_astar"
     "bd_dijkstra" 
     "kdijkstra"
     "trsp" #2.0
-    "turnRestricted"
+    #"turnRestricted"
     "tsp"
 
     "vrp_basic" "vrppdtw"
@@ -110,8 +113,8 @@ set(PgRouting_INCLUDE_DIRECTORIES ${PgRouting_SOURCE_NAMES})
 set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES} 
     "apsp_johnson"  #V2.0
     "apsp_warshall" #V2.0
+    "convinience"
     "topology"
-    "withPoints"
     "label_graph")
 
 
@@ -144,7 +147,8 @@ message("Setting the minimum requirements")
 # compiler with c++0x or c++11
 
 set(POSTGRESQL_MINIMUM_VERSION "9.1.0")
-set(CMAKE_MINIMUM_VERSION "2.8.8")
+#travis has 2.8.7
+set(CMAKE_MINIMUM_VERSION "2.8.7")
 set(BOOST_MINIMUM_VERSION "1.46.0")
 
 if (CDEBUG)
@@ -576,8 +580,8 @@ if(APPLE)
     endif()
 
 elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGWIN)
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -std=gnu99 -fPIC -O2 -g -Wall -pedantic -Wmissing-prototypes -frounding-math")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -Wall -pedantic -frounding-math -Wno-deprecated")
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -std=gnu99 -fPIC -O2 -g -Wall  -pedantic   -fmax-errors=10 -Werror -Wmissing-prototypes -frounding-math")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -Wall -pedantic  -fmax-errors=10 -Wextra -Werror -frounding-math -Wno-deprecated")
 
 elseif(WIN32)
     # currently, support MinGW only

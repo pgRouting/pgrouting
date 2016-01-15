@@ -10,9 +10,10 @@ PGUSER="postgres"
 PGDATABASE="pgrouting"
 
 POSTGRESQL_VERSION="$1"
-POSTGIS_VERSION="$2"
+#POSTGIS_VERSION="$2"
 
 POSTGRESQL_DIRECTORY="/usr/share/postgresql/$POSTGRESQL_VERSION"
+echo "POSTGRESQL_VERSION $POSTGRESQL_VERSION"
 
 # exit script on error
 set -e 
@@ -33,20 +34,21 @@ run_psql () {
 # ------------------------------------------------------------------------------
 #export PGUSER
 #run_psql -l
-#run_psql -c "CREATE DATABASE $PGDATABASE;"
+#run_psql -c "CREATE DATABASE ____tmp_pgdb______;"
 #export PGDATABASE
 
 # ------------------------------------------------------------------------------
 # CREATE EXTENSION
 # ------------------------------------------------------------------------------
-#run_psql -d $PGDATABASE -c "CREATE EXTENSION postgis;"
+run_psql -d  pgr_test__db__test -c "CREATE EXTENSION postgis;"
+run_psql -d  pgr_test__db__test -c "CREATE EXTENSION pgrouting;"
 
 # ------------------------------------------------------------------------------
 # Get version information
 # ------------------------------------------------------------------------------
-run_psql -c "SELECT version();"    
-run_psql -c "SELECT postgis_full_version();"    
-run_psql -c "SELECT pgr_version();"
+run_psql -d  pgr_test__db__test -c "SELECT version();"    
+run_psql -d  pgr_test__db__test -c "SELECT postgis_full_version();"    
+run_psql -d  pgr_test__db__test -c "SELECT pgr_version();"
 
 #PGROUTING_VERSION=`run_psql -A -t -c "SELECT version FROM pgr_version();"`
 
@@ -58,7 +60,13 @@ run_psql -c "SELECT pgr_version();"
 #./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE 
 #./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE -v -alg ksp
 
-./tools/test-runner.pl -pgver $POSTGRESQL_VERSION -ignorenotice
+#cd ./tools/testers/
+#psql -f setup_db.sql
+#pg_prove ../../src/trsp/test/pgtap/*
+#dropdb ___pgr___test___
+#cd ../../
+
+./tools/testers/algorithm-tester.pl  -pgver $POSTGRESQL_VERSION -ignorenotice
 
 if [ "$?" -ne 0 ]
 then

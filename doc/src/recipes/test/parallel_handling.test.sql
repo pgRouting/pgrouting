@@ -1,4 +1,5 @@
 BEGIN;
+  SET client_min_messages = WARNING;
   drop table if exists parallel;
   CREATE TABLE parallel (
     id serial,

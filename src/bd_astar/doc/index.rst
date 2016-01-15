@@ -14,7 +14,6 @@ pgr_bdAstar - Bi-directional A* Shortest Path
 
 .. index:: 
 	single: pgr_bdAstar(text, integer, integer, boolean, boolean)
-	module: bidirectional, astar
 
 Name
 -------------------------------------------------------------------------------

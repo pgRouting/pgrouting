@@ -15,6 +15,7 @@ use vars qw/*name *dir *prune/;
 *dir    = *File::Find::dir;
 *prune  = *File::Find::prune;
 
+my $DOCUMENTATION = 0;
 my $VERBOSE = 0;
 my $DRYRUN = 0;
 my $DEBUG = 0;
@@ -38,16 +39,19 @@ sub Usage {
         "       -clean              - dropdb pgr_test__db__test\n" .
         "       -ignorenotice       - ignore NOTICE statements when reporting failures\n" .
         "       -alg 'dir'          - directory to select which algorithm subdirs to test\n" .
+        "       -documentation      - ONLY generate documentation examples\n" .
         "       -h                  - help\n";
 }
 
 print "RUNNING: algorithm-tester.pl " . join(" ", @ARGV) . "\n";
 
-my ($vpg, $vpgis, $vpgr, $psql);
+my ($vpg, $postgis_ver, $vpgr, $psql);
 my $alg = '';
 my @testpath = ("doc/", "src/");
 my $clean;
 my $ignore;
+
+$postgis_ver = '';
 
 while (my $a = shift @ARGV) {
     if ( $a eq '-pgver') {
@@ -63,7 +67,8 @@ while (my $a = shift @ARGV) {
         $DBUSER = shift @ARGV || Usage();
     }
     elsif ($a eq '-pgisver') {
-        $vpgis = shift @ARGV || Usage();
+        $postgis_ver = shift @ARGV || Usage();
+        $postgis_ver = " VERSION '$postgis_ver'";
     }
     elsif ($a eq '-pgrver') {
         $vpgr = shift @ARGV || Usage();
@@ -98,6 +103,9 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a =~ /^-v/i) {
         $VERBOSE = 1;
+    }
+    elsif ($a =~ /^-doc(umentation)?/i) {
+        $DOCUMENTATION = 1;
     }
     else {
         warn "Error: unknown option '$a'\n";
@@ -151,7 +159,7 @@ die "Error: no test files found. Run this command from the top level pgRouting d
 createTestDB($DBNAME);
 
 $vpg = '' if ! $vpg;
-$vpgis = '' if ! $vpgis;
+$postgis_ver = '' if ! $postgis_ver;
 
 # cfgs = SET of configuration file names
 # c  one file in cfgs
@@ -164,16 +172,17 @@ for my $c (@cfgs) {
     print "test.conf = $c\n" if $VERBOSE;
     print Data::Dumper->Dump([\%main::tests],['test']) if $VERBOSE;
 
-    if ($main::tests{any}) {
+    if ($main::tests{any} && !$DOCUMENTATION) {
         push @{$stats{$c}}, run_test($c, $main::tests{any});
         $found++;
     }
-    if ($main::tests{"$vpg-$vpgis"}) {
-        push @{$stats{$c}}, run_test($c, $main::tests{"$vpg-$vpgis"});
+    elsif ($main::tests{any}{documentation} && $DOCUMENTATION) {
+        push @{$stats{$c}}, run_test($c, $main::tests{any});
         $found++;
     }
+
     if (! $found) {
-        $stats{$c} = "No tests were found for '$vpg-$vpgis'!";
+        $stats{$c} = "No tests were found for '$vpg-$postgis_ver'!";
     }
 }
 
@@ -220,8 +229,15 @@ sub run_test {
        mysystem("$psql $connopts -A -t -q -f '$dir/$x' $DBNAME >> $TMP2 2>\&1 ");
     }
 
-    for my $x (@{$t->{tests}}) {
-        process_single_test($x, $dir,, $DBNAME, \%res)
+    if ($DOCUMENTATION) {
+        for my $x (@{$t->{documentation}}) {
+            process_single_test($x, $dir,, $DBNAME, \%res)
+        }
+    }
+    else {
+        for my $x (@{$t->{tests}}) {
+            process_single_test($x, $dir,, $DBNAME, \%res)
+        }
     }
 
     return \%res;
@@ -243,17 +259,29 @@ sub process_single_test{
             next;
         };
         #reason of opening conection is because the set client_mim_messages to warning;
-        open(PSQL, "|$psql $connopts -A -t -q $database > $TMP 2>\&1 ") || do {
-            $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
-            $stats{z_fail}++;
-            next;
-        };
+        if ($DOCUMENTATION) {
+            mysystem("mkdir -p '$dir/../doc' "); # make sure the directory exists
+            open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/../doc/$x.queries 2>\&1 ") || do {
+                $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
+                $stats{z_fail}++;
+                next;
+            };
+        }
+        else {
+            open(PSQL, "|$psql $connopts -A -t -q $database > $TMP 2>\&1 ") || do {
+                $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
+                $stats{z_fail}++;
+                next;
+            };
+        }
         print PSQL "set client_min_messages to WARNING;\n" if $ignore;
         my @d = ();
         @d = <TIN>; #reads the whole file into the array @d 
         print PSQL @d; #prints the whole fle stored in @d
         close(PSQL); #executes everything
         close(TIN); #closes the input file  /TIN = test input
+
+        return if $DOCUMENTATION;
 
         my $dfile;
         my $dfile2;
@@ -319,21 +347,21 @@ sub createTestDB {
         mysystem("createdb $connopts $databaseName");
         die "ERROR: Failed to create database '$databaseName'!\n"
             unless dbExists($databaseName);
-        my $myver = '';
-        if ($vpgis) {
-            $myver = " VERSION '$vpgis'";
-        }
         my $encoding = '';
         if ($OS =~ /msys/
             || $OS =~ /MSWin/) {
             $encoding = "SET client_encoding TO 'UTF8';";
         }
-        print "-- Trying to install postgis extension $myver\n" if $DEBUG;
-        mysystem("$psql $connopts -c \"$encoding create extension postgis $myver\" $databaseName");
-        print "-- Trying to install pgTap extension \n" if $DEBUG;
-        mysystem("$psql $connopts -c \"$encoding create extension pgtap   $myver\" $databaseName");
+        print "-- Trying to install postgis extension $postgis_ver\n" if $DEBUG;
+        mysystem("$psql $connopts -c \"$encoding create extension postgis $postgis_ver \" $databaseName");
+#        print "-- Trying to install pgTap extension \n" if $DEBUG;
+#        system("$psql $connopts -c \"$encoding create extension pgtap \" $databaseName");
+#        if ($? != 0) {
+#            print "Failed: create extension pgtap\n" if $VERBOSE || $DRYRUN;
+#            die;
+#        }
     }
-#
+    #
 #    else {
 #        if ($vpgis && dbExists("template_postgis_$vpgis")) {
 #            $template = "template_postgis_$vpgis";
@@ -353,7 +381,7 @@ sub createTestDB {
 
     # next we install pgrouting into the new database
     if (version_greater_eq($dbver, '9.1') &&
-            -f "$dbshare/extension/postgis.control") {
+        -f "$dbshare/extension/postgis.control") {
         my $myver = '';
         if ($vpgr) {
             $myver = " PGROUTING VERSION '$vpgr'";
@@ -383,7 +411,7 @@ sub createTestDB {
 
     my $pgrv = `$psql $connopts -c "select pgr_version()" $databaseName`;
     die "ERROR: failed to install pgrouting into the database!\n"
-        unless $pgrv;
+    unless $pgrv;
 
 }
 

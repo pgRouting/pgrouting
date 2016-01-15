@@ -50,6 +50,7 @@ wget https://github.com/theory/pgtap/archive/master.zip
 unzip master.zip
 cd pgtap-master
 make
+make installcheck
 sudo make install
 sudo ldconfig
 

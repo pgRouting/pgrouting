@@ -27,28 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef _BDASTAR_H
 #define _BDASTAR_H
 
-#include "postgres.h"
-
-
-typedef struct edge_astar 
-{
-  int id;
-  int source;
-  int target;
-  float8 cost;
-  float8 reverse_cost;
-  float8 s_x;
-  float8 s_y;
-  float8 t_x;
-  float8 t_y;
-} edge_astar_t;
-
-typedef struct path_element 
-{
-    int vertex_id;
-    int edge_id;
-    float8 cost;
-} path_element_t;
+#include "../../common/src/pgr_types.h"
 
 
 #ifdef __cplusplus

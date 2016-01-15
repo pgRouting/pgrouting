@@ -46,7 +46,12 @@ extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
 
-// CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, start_vids BIGINT, end_vid BIGINT, directed BOOLEAN default true,
+// CREATE OR REPLACE FUNCTION pgr_dijkstra(
+// sql text,
+// start_vids BIGINT,
+// end_vid BIGINT,
+//  directed BOOLEAN default true,
+
 void
 do_pgr_one_to_one_dijkstra(
         pgr_edge_t  *data_edges,
@@ -79,7 +84,7 @@ do_pgr_one_to_one_dijkstra(
 
       size_t count(0);
 
-      count = path.path.size();
+      count = path.size();
 
       if (count == 0) {
           (*return_tuples) = NULL;

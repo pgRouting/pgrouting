@@ -47,6 +47,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
+#include "./../../common/src/edges_input.h"
+#include "./../../common/src/arrays_input.h"
 #include "./many_to_one_dijkstra_driver.h"
 
 PG_FUNCTION_INFO_V1(many_to_one_dijkstra);
@@ -212,11 +214,11 @@ many_to_one_dijkstra(PG_FUNCTION_ARGS) {
         // postgres starts counting from 1
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].from);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].vertex);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].node);
         values[4] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[6] = Float8GetDatum(result_tuples[call_cntr].tot_cost);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         /*********************************************************************/
 
         tuple = heap_formtuple(tuple_desc, values, nulls);

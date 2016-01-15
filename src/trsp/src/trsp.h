@@ -25,17 +25,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #define MAX_RULE_LENGTH 5
 
-#include "postgres.h"
+#include "../../common/src/pgr_types.h"
+typedef pgr_edge_t edge_t;
+typedef Restrict_t restrict_t;
 
-typedef struct edge
-{
-    int id;
-    int source;
-    int target;
-    float8 cost;
-    float8 reverse_cost;
-} edge_t;
-
+#if 0
 typedef struct restrict_struct
 {
 		int target_id;
@@ -43,16 +37,10 @@ typedef struct restrict_struct
         int via[MAX_RULE_LENGTH];
 } 
 restrict_t;
-
-typedef struct path_element 
-{
-    int vertex_id;
-    int edge_id;
-    float8 cost;
-} path_element_t;
+#endif
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif
 
 int trsp_node_wrapper(
@@ -69,9 +57,6 @@ int trsp_node_wrapper(
             char **err_msg
             );
 
-#ifdef __cplusplus
-extern "C"
-#endif
 
 int trsp_edge_wrapper(
 			edge_t *edges, 
@@ -88,5 +73,8 @@ int trsp_edge_wrapper(
             int *path_count, 
             char **err_msg
             );
+#ifdef __cplusplus
+}
+#endif
 
 #endif

@@ -24,9 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_DIJKSTRA_SRC_PGR_DIJKSTRA_H_
-#define SRC_DIJKSTRA_SRC_PGR_DIJKSTRA_H_
-
+#pragma once
 
 #include <deque>
 #include <vector>
@@ -55,11 +53,13 @@ template < class G >
 void pgr_drivingDistance(
         G &graph,
         std::deque< Path > &paths,
-        std::vector< int64_t > start_vids,
-        double distance) {
+        std::set< int64_t > start_vids,
+        double distance,
+        bool equiCostFlag) {
     Pgr_dijkstra< G > fn_dijkstra;
-    fn_dijkstra.drivingDistance(graph, paths, start_vids, distance);
+    fn_dijkstra.drivingDistance(graph, paths, start_vids, distance, equiCostFlag);
 }
+
 
 template < class G >
 void
@@ -71,6 +71,7 @@ pgr_drivingDistance(
     Pgr_dijkstra< G > fn_dijkstra;
     fn_dijkstra.drivingDistance(graph, path, source, distance);
 }
+
 
 template < class G >
 void
@@ -90,7 +91,7 @@ pgr_dijkstra(
         G &graph,
         std::deque<Path> &paths,
         int64_t  source,
-        const std::vector< int64_t > &targets,
+        const std::set< int64_t > &targets,
         bool only_cost = false) {
     Pgr_dijkstra< G > fn_dijkstra;
     fn_dijkstra.dijkstra(graph, paths, source, targets, only_cost);
@@ -100,7 +101,7 @@ template < class G >
 void
 pgr_dijkstra(G &graph,
         std::deque<Path> &paths,
-        const std::vector< int64_t > &sources,
+        const std::set< int64_t > &sources,
         int64_t  target,
         bool only_cost = false) {
     Pgr_dijkstra< G > fn_dijkstra;
@@ -111,8 +112,8 @@ template < class G >
 void
 pgr_dijkstra(
         G &graph, std::deque<Path> &paths,
-        const std::vector< int64_t > sources,
-        const std::vector< int64_t > &targets,
+        const std::set< int64_t > sources,
+        const std::set< int64_t > &targets,
         bool only_cost = false) {
     Pgr_dijkstra< G > fn_dijkstra;
     fn_dijkstra.dijkstra(graph, paths, sources, targets, only_cost);
@@ -140,8 +141,9 @@ class Pgr_dijkstra {
      //! many to distance
      void drivingDistance(
              G &graph, std::deque< Path > &paths,
-             std::vector< int64_t > start_vertex,
-             float8 distance);
+             std::set< int64_t > start_vertex,
+             float8 distance,
+             bool equiCostFlag);
      //@}
 
      //! @name Dijkstra
@@ -158,7 +160,7 @@ class Pgr_dijkstra {
      void dijkstra(
              G &graph,
              std::deque< Path > &paths,
-             const std::vector < int64_t > &start_vertex,
+             const std::set < int64_t > &start_vertex,
              int64_t end_vertex,
              bool only_cost = false);
 
@@ -166,8 +168,8 @@ class Pgr_dijkstra {
      void dijkstra(
              G &graph,
              std::deque< Path > &paths,
-             const std::vector< int64_t > &start_vertex,
-             const std::vector< int64_t > &end_vertex,
+             const std::set< int64_t > &start_vertex,
+             const std::set< int64_t > &end_vertex,
              bool only_cost = false);
 
      //! one to Many
@@ -175,7 +177,7 @@ class Pgr_dijkstra {
              G &graph,
              std::deque< Path > &paths,
              int64_t start_vertex,
-             const std::vector< int64_t > &end_vertex,
+             const std::set< int64_t > &end_vertex,
              bool only_cost = false);
      //@}
 
@@ -254,6 +256,7 @@ class Pgr_dijkstra {
           template <class B_G>
               void examine_vertex(V &u, B_G &g) {
                   if (u == m_goal) throw found_goals();
+                  num_edges(g);
               }
       private:
           V m_goal;
@@ -272,6 +275,7 @@ class Pgr_dijkstra {
                   // we found one more goal
                   m_goals.erase(s_it);
                   if (m_goals.size() == 0) throw found_goals();
+                  num_edges(g);
               }
       private:
           std::set< V > m_goals;
@@ -291,6 +295,7 @@ class Pgr_dijkstra {
               void examine_vertex(V u, B_G &g) {
                   m_nodes.push_back(u);
                   if (m_dist[u] >= m_distance_goal) throw found_goals();
+                  num_edges(g);
               }
       private:
           float8 m_distance_goal;
@@ -314,23 +319,20 @@ Pgr_dijkstra< G >::get_nodesInDistance(
         V source,
         float8 distance) {
     path.clear();
-    int seq = 0;
     float8 cost;
     int64_t edge_id;
+    Path r_path(graph[source].id, graph[source].id);
     for (V i = 0; i < distances.size(); ++i) {
         if (distances[i] <= distance) {
             cost = distances[i] - distances[predecessors[i]];
             edge_id = graph.get_edge_id(predecessors[i], i, cost);
-            path.push_back(
-                    seq,
-                    graph[source].id,
-                    graph[source].id,
-                    graph[i].id,
+            r_path.push_back(
+                    {graph[i].id,
                     edge_id, cost,
-                    distances[i]);
-            seq++;
+                    distances[i]});
         }
     }
+    path = r_path;
 }
 
 
@@ -356,7 +358,7 @@ Pgr_dijkstra< G >::get_path(
         const G &graph,
         V source,
         V target,
-        Path &path) const {
+        Path &r_path) const {
     // backup of the target
     V target_back = target;
     uint64_t from(graph.graph[source].id);
@@ -364,7 +366,7 @@ Pgr_dijkstra< G >::get_path(
 
     // no path was found
     if (target == predecessors[target]) {
-        path.clear();
+        r_path.clear();
         return;
     }
 
@@ -389,11 +391,10 @@ Pgr_dijkstra< G >::get_path(
     // initialize the sequence
     int seq = result_size;
     // the last stop is the target
+    Path path(from, to);
     path.push_front(
-            seq,
-            from, to,
-            graph.graph[target].id, -1,
-            0,  distances[target]);
+            {graph.graph[target].id, -1,
+            0,  distances[target]});
 
     while (target != source) {
         // we are done when the predecesor of the target is the target
@@ -404,13 +405,11 @@ Pgr_dijkstra< G >::get_path(
         vertex_id = graph.graph[predecessors[target]].id;
         edge_id = graph.get_edge_id(predecessors[target], target, cost);
 
-        path.push_front(
-                seq,
-                from, to,
-                vertex_id, edge_id,
-                cost, distances[target] - cost);
+        path.push_front({vertex_id, edge_id,
+                cost, (distances[target] - cost)});
         target = predecessors[target];
     }
+    r_path = path;
     return;
 }
 
@@ -437,25 +436,19 @@ Pgr_dijkstra< G >::get_cost(
         const G &graph,
         V source,
         V target,
-        Path &path) const {
+        Path &r_path) const {
     // backup of the target
-    uint64_t from(graph.graph[source].id);
-    uint64_t to(graph.graph[target].id);
+    int64_t from(graph.graph[source].id);
+    int64_t to(graph.graph[target].id);
 
     // no path was found
     if (target == predecessors[target]) {
-        if (from == to) {
-            path.push_front(1, from, to, graph.graph[target].id, -1, 0, 0);
-        } else {
-            path.clear();
-        }
+        r_path.clear();
     } else {
+        Path path(from, to);
         path.push_front(
-                1,
-                from, to,
-                graph[target].id,
-                -1,
-                0,  distances[target]);
+                {to, -1, distances[target], distances[target]});
+        r_path = path;
     }
 }
 
@@ -463,33 +456,24 @@ template < class G >
 // preparation for many to distance
 void
 Pgr_dijkstra< G >::drivingDistance(G &graph, std::deque< Path > &paths,
-        std::vector< int64_t > start_vertex,
-        float8 distance) {
-    // adjust predecessors and distances vectors
+        std::set< int64_t > start_vertex,
+        float8 distance,
+        bool equiCostFlag) {
     clear();
 
     predecessors.resize(graph.num_vertices());
     distances.resize(graph.num_vertices());
 
-    // get the graph's source
-    std::set< V > v_sources;
-    for (unsigned int i = 0; i < start_vertex.size(); i++) {
-        V v_source;
-        if (!graph.get_gVertex(start_vertex[i], v_source)) {
-            paths.clear();
-            return;
-        }
-        v_sources.insert(v_source);
-    }
 
     // perform the algorithm
-    for (const auto &v_source : v_sources) {
-        dijkstra_1_to_distance(graph, v_source, distance);
+    for( const auto &vertex : start_vertex) {
         Path path;
-        get_nodesInDistance(graph, path, v_source, distance);
+        drivingDistance(graph, path, vertex, distance);
         paths.push_back(path);
     }
-
+    if (equiCostFlag) {
+        equi_cost(paths);
+    }
     return;
 }
 
@@ -500,6 +484,8 @@ Pgr_dijkstra< G >::drivingDistance(
         Path &path,
         int64_t start_vertex,
         float8 distance) {
+
+
     clear();
 
     predecessors.resize(graph.num_vertices());
@@ -508,20 +494,23 @@ Pgr_dijkstra< G >::drivingDistance(
     // get source;
     V v_source;
     if (!graph.get_gVertex(start_vertex, v_source)) {
-        path.clear();
+        /* The node has to be in the path*/
+        path.push_back({start_vertex, -1, 0, 0});
         return;
     }
 
-    // perform the algorithm
-    if (dijkstra_1_to_distance(graph, v_source, distance)) {
-        // get the results
-        get_nodesInDistance(graph, path, v_source, distance);
-    } else {
-        path.clear();
-    }
+    dijkstra_1_to_distance(graph, v_source, distance); 
+    get_nodesInDistance(graph, path, v_source, distance);
+    std::sort(path.begin(), path.end(),
+            [](const Path_t &l, const  Path_t &r)
+            {return l.node < r.node;});
+    std::stable_sort(path.begin(), path.end(),
+            [](const Path_t &l, const  Path_t &r)
+            {return l.agg_cost < r.agg_cost;});
     return;
 }
 
+//! Dijkstra 1 to 1
 template < class G >
 void
 Pgr_dijkstra< G >::dijkstra(
@@ -557,6 +546,7 @@ Pgr_dijkstra< G >::dijkstra(
     }
     return;
 }
+
 //! Dijkstra 1 to many
 template < class G >
 void
@@ -564,7 +554,7 @@ Pgr_dijkstra< G >::dijkstra(
         G &graph,
         std::deque< Path > &paths,
         int64_t start_vertex,
-        const std::vector< int64_t > &end_vertex,
+        const std::set< int64_t > &end_vertex,
         bool only_cost) {
     // adjust predecessors and distances vectors
     clear();
@@ -580,9 +570,10 @@ Pgr_dijkstra< G >::dijkstra(
     }
 
     std::set< V > v_targets;
-    for (unsigned int i = 0; i < end_vertex.size(); i++) {
+    //for (unsigned int i = 0; i < end_vertex.size(); i++) {
+    for (const auto &vertex : end_vertex) {    
         V v_target;
-        if (graph.get_gVertex(end_vertex[i], v_target)) {
+        if (graph.get_gVertex(vertex, v_target)) {
             v_targets.insert(v_target);
         }
     }
@@ -604,7 +595,7 @@ template < class G >
 void
 Pgr_dijkstra< G >::dijkstra(
         G &graph, std::deque< Path > &paths,
-        const std::vector < int64_t > &start_vertex,
+        const std::set < int64_t > &start_vertex,
         int64_t end_vertex,
         bool only_cost) {
     // perform the algorithm // a call for each of the sources
@@ -623,8 +614,8 @@ template < class G >
 void
 Pgr_dijkstra< G >::dijkstra(
         G &graph, std::deque< Path > &paths,
-        const std::vector< int64_t > &start_vertex,
-        const std::vector< int64_t > &end_vertex,
+        const std::set< int64_t > &start_vertex,
+        const std::set< int64_t > &end_vertex,
         bool only_cost) {
     // a call to 1 to many is faster for each of the sources
     for (const auto &start : start_vertex) {
@@ -698,4 +689,3 @@ Pgr_dijkstra< G >::dijkstra_1_to_many(
     return found;
 }
 
-#endif  // SRC_DIJKSTRA_SRC_PGR_DIJKSTRA_H_

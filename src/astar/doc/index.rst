@@ -13,8 +13,7 @@ pgr_astar - Shortest Path A*
 ===============================================================================
 
 .. index:: 
-	single: pgr_astar(text,integer,integer,boolean,boolean)
-	module: astar
+	single: pgr_astar(text, integer, integer, boolean, boolean)
 
 Name
 -------------------------------------------------------------------------------

@@ -22,54 +22,46 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#undef DEBUG
 #include "postgres.h"
-#include "utils/lsyscache.h"
-#include "catalog/pg_type.h"
-#include "utils/array.h"
 #include "executor/spi.h"
 
-
-//#define DEBUG
 #include "./debug_macro.h"
-#include "pgr_types.h"
-#include "postgres_connection.h"
-#include "restrictions_input.h"
+#include "./pgr_types.h"
+#include "./postgres_connection.h"
+#include "./get_check_data.h"
+#include "./restrictions_input.h"
 
-
-
-
-static
-void fetch_restrictions_column_info(
-     int (*columns)[3], 
-     int (*types)[3]) { 
-
-  PGR_DBG("Entering Fetch_restrictions_column_info\n");
-
-  pgr_fetch_column_info(&(*columns)[0], &(*types)[0], "target_id");
-  pgr_check_any_integer_type("target_id", (*types)[0]);
-
-  pgr_fetch_column_info(&(*columns)[1], &(*types)[1], "to_cost");
-  pgr_check_any_numerical_type("to_cost", (*types)[1]);
-
-  pgr_fetch_column_info(&(*columns)[2], &(*types)[2], "via_path");
-  pgr_check_text_type("via_path", (*types)[2]);
-
-}
 
 static
 void fetch_restriction(
-   HeapTuple *tuple,
-   TupleDesc *tupdesc, 
-   int (*columns)[3],
-   int (*types)[3],
-   Restrict_t *restriction) {
+        HeapTuple *tuple,
+        TupleDesc *tupdesc,
+        Column_info_t info[4],
+        Restrict_t *restriction) {
+    restriction->target_id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
+    restriction->to_cost = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
+    char *str = DatumGetCString(SPI_getvalue(*tuple, *tupdesc, info[2].colNumber));
+// TODO because its  text, there is no garanee that the text read is correct
+// move this code to c++ to tokenize the integers.
 
-  restriction->target_id = pgr_SPI_getBigInt(tuple, tupdesc, (*columns)[0], (*types)[0]);
-  restriction->to_cost = pgr_SPI_getFloat8(tuple, tupdesc, (*columns)[1], (*types)[1]);
-  restriction->via_path = pgr_SPI_getText(tuple, tupdesc, (*columns)[1], (*types)[1]);
+    int i = 0;
+    for(i = 0; i < MAX_RULE_LENGTH; ++i) restriction->via[i] = -1;
 
+    if (str != NULL) {
+        char *token = NULL;
+        int i = 0;
+
+        token = (char *)strtok(str," ,");
+
+        while (token != NULL && i < MAX_RULE_LENGTH)
+        {
+            restriction->via[i] = atoi(token);
+            i++;
+            token = (char *)strtok(NULL, " ,");
+        }
+    }
 }
-
 
 
 void
@@ -77,80 +69,80 @@ pgr_get_restriction_data(
         char *restrictions_sql,
         Restrict_t **restrictions,
         int64_t *total_restrictions) {
+    const int tuple_limit = 1000000;
 
-  const int tuple_limit = 1000000;
+    PGR_DBG("pgr_get_restriction_data");
+    PGR_DBG("%s", restrictions_sql);
 
-  PGR_DBG("Entering pgr_get_restriction_data");
+    Column_info_t info[3];
 
-  int64_t ntuples;
-  int64_t total_tuples;
+    int i;
+    for (i = 0; i < 3; ++i) {
+        info[i].colNumber = -1;
+        info[i].type = -1;
+        info[i].strict = true;
+        info[i].eType = ANY_INTEGER;
+    }
+    info[0].name = strdup("target_id");
+    info[1].name = strdup("to_cost");
+    info[2].name = strdup("via_path");
 
-  int columns[3];
-  int types[3];
-  int i;
-  for (i = 0; i < 3; ++i) columns[i] = -1;
-  for (i = 0; i < 3; ++i) types[i] = -1;
+    info[1].eType = ANY_NUMERICAL;
+    info[2].eType = TEXT;
 
-        
-  void *SPIplan;
-  SPIplan = pgr_SPI_prepare(restrictions_sql);
 
-  Portal SPIportal;
-  SPIportal = pgr_SPI_cursor_open(SPIplan);
+    int64_t ntuples;
+    int64_t total_tuples;
 
-  bool moredata = TRUE;
-  (*total_restrictions) = total_tuples = 0;
+    void *SPIplan;
+    SPIplan = pgr_SPI_prepare(restrictions_sql);
+    Portal SPIportal;
+    SPIportal = pgr_SPI_cursor_open(SPIplan);
 
-  /*  on the first tuple get the column numbers */
+    bool moredata = TRUE;
+    (*total_restrictions) = total_tuples = 0;
 
-  PGR_DBG("Starting Cycle");
-  while (moredata == TRUE) {
-      SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
-      if (total_tuples == 0)
-         fetch_restrictions_column_info(&columns, &types);
+    /*  on the first tuple get the column numbers */
 
-      ntuples = SPI_processed;
-      total_tuples += ntuples;
+    while (moredata == TRUE) {
+        SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
+        if (total_tuples == 0) {
+            pgr_fetch_column_info(info, 3);
+        }
+        ntuples = SPI_processed;
+        total_tuples += ntuples;
+        PGR_DBG("SPI_processed %ld", ntuples);
+        if (ntuples > 0) {
+            if ((*restrictions) == NULL)
+                (*restrictions) = (Restrict_t *)palloc0(total_tuples * sizeof(Restrict_t));
+            else
+                (*restrictions) = (Restrict_t *)repalloc((*restrictions), total_tuples * sizeof(Restrict_t));
 
-      if (ntuples > 0) {
-          PGR_DBG("Getting Memory");
-          if ((*restrictions) == NULL)
-            (*restrictions) = (Restrict_t *)palloc0(total_tuples * sizeof(Restrict_t));
-          else
-            (*restrictions) = (Restrict_t *)repalloc((*restrictions), total_tuples * sizeof(Restrict_t));
-          PGR_DBG("Got Memory");
+            if ((*restrictions) == NULL) {
+                elog(ERROR, "Out of memory");
+            }
 
-          if ((*restrictions) == NULL) {
-           elog(ERROR, "Out of memory"); 
-          }
+            int64_t t;
+            SPITupleTable *tuptable = SPI_tuptable;
+            TupleDesc tupdesc = SPI_tuptable->tupdesc;
+            PGR_DBG("processing %ld", ntuples);
+            for (t = 0; t < ntuples; t++) {
+                HeapTuple tuple = tuptable->vals[t];
+                fetch_restriction(&tuple, &tupdesc, info,
+                        &(*restrictions)[total_tuples - ntuples + t]);
+            }
+            SPI_freetuptable(tuptable);
+        } else {
+            moredata = FALSE;
+        }
+    }
 
-          int64_t t;
-          SPITupleTable *tuptable = SPI_tuptable;
-          TupleDesc tupdesc = SPI_tuptable->tupdesc;
-          PGR_DBG("processing %ld", ntuples);
-          for (t = 0; t < ntuples; t++) {
-              PGR_DBG("   processing %ld", t);
-              HeapTuple tuple = tuptable->vals[t];
-              fetch_restriction(&tuple, &tupdesc, &columns, &types,
-                         &(*restrictions)[total_tuples - ntuples + t]);
-          }
-          SPI_freetuptable(tuptable);
-      } else {
-          moredata = FALSE;
-      }
-  }
+    if (total_tuples == 0) {
+        (*total_restrictions) = 0;
+        PGR_DBG("NO restrictions");
+        return;
+    }
 
-  if (total_tuples == 0) {
-    (*total_restrictions) = 0;
-    PGR_DBG("NO restrictions");
-    PGR_DBG("closed");
-    return;
-  }
-  
-
-  (*total_restrictions) = total_tuples;
-  PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*totalTuples));
-  PGR_DBG("closed");
+    (*total_restrictions) = total_tuples;
+    PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*total_restrictions));
 }
-
-

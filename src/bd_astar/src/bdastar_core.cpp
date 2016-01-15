@@ -52,6 +52,9 @@ int bdastar_wrapper(edge_astar_t *edges, unsigned int edge_count, int maxnode,
     try {
 	    BiDirAStar bdastar;
 	    res = bdastar.bidir_astar(edges, edge_count, maxnode, source_vertex_id, target_vertex_id, path, path_count, err_msg);
+        // TODO  this are an unused parameters have to be used
+        if (has_reverse_cost) {};
+        if (directed) {};
     }
     catch(std::exception& e) {
         *err_msg = (char *) e.what();

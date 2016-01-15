@@ -48,7 +48,9 @@ extern "C" {
 
 #include "./../../common/src/memory_func.hpp"
 
-// MY_QUERY_LINE1
+/************************************************************
+  MY_QUERY_LINE1
+ ***********************************************************/
 void
 do_pgr_MY_FUNCTION_NAME(
         pgr_edge_t  *data_edges,
@@ -76,7 +78,7 @@ do_pgr_MY_FUNCTION_NAME(
 
         std::deque< Path >paths;
         log << "Inserting vertices into a c++ vector structure\n";
-        std::vector< int64_t > end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+        std::set< int64_t > end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
 #ifdef DEBUG
         for (const auto &vid : end_vertices) log << vid <<"\n";
         log << "Destination" << start_vid;
@@ -88,7 +90,7 @@ do_pgr_MY_FUNCTION_NAME(
 #ifdef DEBUG
             digraph.print_graph(log);
 #endif
-            pgr_dijkstra(digraph, paths, start_vid, end_vertices);
+            pgr_dijkstra(digraph, paths, start_vid, end_vertices, false);
         } else {
             log << "Working with Undirected Graph\n";
             Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
@@ -96,7 +98,7 @@ do_pgr_MY_FUNCTION_NAME(
 #ifdef DEBUG
             undigraph.print_graph(log);
 #endif
-            pgr_dijkstra(undigraph, paths, start_vid, end_vertices);
+            pgr_dijkstra(undigraph, paths, start_vid, end_vertices, false);
         }
 
         size_t count(count_tuples(paths));

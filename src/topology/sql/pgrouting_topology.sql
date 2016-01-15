@@ -23,54 +23,13 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-/*
-.. function:: _pgr_pointToId(point geometry, tolerance double precision,vname text,srid integer)
-
-This function should not be used directly. Use assign_vertex_id instead
-Inserts a point into the vertices tablei "vname" with the srid "srid", and return an id
-of a new point or an existing point. Tolerance is the minimal distance
-between existing points and the new point to create a new point.
-
-Last changes: 2013-03-22
-
-HISTORY
-Last changes: 2013-03-22
-2013-08-19: handling schemas
-*/
-
-CREATE OR REPLACE FUNCTION _pgr_pointToId(point geometry, tolerance double precision,vertname text,srid integer)
-  RETURNS bigint AS
-$BODY$
-DECLARE
-    rec record;
-    pid bigint;
-
-BEGIN
-    execute 'SELECT ST_Distance(the_geom,ST_GeomFromText(st_astext('||quote_literal(point::text)||'),'||srid||')) AS d, id, the_geom
-FROM '||_pgr_quote_ident(vertname)||'
-WHERE ST_DWithin(the_geom, ST_GeomFromText(st_astext('||quote_literal(point::text)||'),'||srid||'),'|| tolerance||')
-ORDER BY d
-LIMIT 1' INTO rec ;
-    IF rec.id is not null THEN
-        pid := rec.id;
-    ELSE
-        execute 'INSERT INTO '||_pgr_quote_ident(vertname)||' (the_geom) VALUES ('||quote_literal(point::text)||')';
-        pid := lastval();
-    END IF;
-
-    RETURN pid;
-
-END;
-$BODY$
-  LANGUAGE plpgsql VOLATILE STRICT;
-COMMENT ON FUNCTION _pgr_pointToId(geometry,double precision, text,integer) IS 'args: point geometry,tolerance,verticesTable,srid - inserts the point into the vertices table using tolerance to determine if its an existing point and returns the id assigned to it' ;
-
 
 /*
 .. function:: _pgr_createtopology(edge_table, tolerance,the_geom,id,source,target,rows_where)
 
-Fill the source and target column for all lines. All line ends
-with a distance less than tolerance, are assigned the same id
+Based on the geometry:
+Fill the source and target column for all lines.
+All line end points within a distance less than tolerance, are assigned the same id
 
 Author: Christian Gonzalez <christian.gonzalez@sigis.com.ve>
 Author: Stephen Woodbridge <woodbri@imaptools.com>
@@ -85,7 +44,7 @@ Last changes: 2013-03-22
 CREATE OR REPLACE FUNCTION pgr_createtopology(edge_table text, tolerance double precision, 
 		   the_geom text default 'the_geom', id text default 'id',
 		   source text default 'source', target text default 'target',rows_where text default 'true',
-		   clean boolean default true)
+		   clean boolean default FALSE)
 RETURNS VARCHAR AS
 $BODY$
 
@@ -122,13 +81,13 @@ DECLARE
     fnName text;
     err bool;
     msgKind int;
+    emptied BOOLEAN;
 
 BEGIN
     msgKind = 1; -- notice
     fnName = 'pgr_createTopology';
     raise notice 'PROCESSING:'; 
-    raise notice 'pgr_createTopology(''%'',%,''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where;
-    -- raise notice 'pgr_createTopology(''%'',%,''%'',''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where,clean;
+    raise notice 'pgr_createTopology(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,tolerance,the_geom,id,source,target,rows_where, clean;
     execute 'show client_min_messages' into debuglevel;
 
 
@@ -244,28 +203,30 @@ BEGIN
     END;    
 
     BEGIN
-        if clean then 
-             raise DEBUG 'initializing %',vertname;
-             execute 'select * from _pgr_getTableName('||quote_literal(vertname)
+         raise DEBUG 'initializing %',vertname;
+         execute 'select * from _pgr_getTableName('||quote_literal(vertname)
                                                   || ',0,' || quote_literal(fnName) ||' )' into naming;
-             set client_min_messages  to warning;
-             IF sname=naming.sname  AND vname=naming.tname  THEN
-                   execute 'TRUNCATE TABLE '||_pgr_quote_ident(vertname)||' RESTART IDENTITY';
-                   execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
-             ELSE
-                   execute 'CREATE TABLE '||_pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)';
-             END IF;
+         emptied = false;
+         set client_min_messages  to warning;
+         IF sname=naming.sname AND vname=naming.tname  THEN
+            if clean then 
+                execute 'TRUNCATE TABLE '||_pgr_quote_ident(vertname)||' RESTART IDENTITY';
+                execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
+                emptied = true;
+            end if;
+         ELSE -- table doesnt exist
+            execute 'CREATE TABLE '||_pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)';
+            emptied = true;
+         END IF;
+         IF (emptied) THEN
              execute 'select addGeometryColumn('||quote_literal(sname)||','||quote_literal(vname)||','||
-	     quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
-
+	         quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
              perform _pgr_createIndex(vertname , 'the_geom'::text , 'gist'::text);
-
-             execute 'set client_min_messages  to '|| debuglevel;
-        else  
-             execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id"}''::text[])' into naming;
-        end if;
-        raise DEBUG  '  ------>OK'; 
-        EXCEPTION WHEN OTHERS THEN  
+         END IF;
+         execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id"}''::text[])' into naming;
+         execute 'set client_min_messages  to '|| debuglevel;
+         raise DEBUG  '  ------>OK'; 
+         EXCEPTION WHEN OTHERS THEN  
              RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
              RAISE NOTICE 'ERROR: something went wrong when initializing the verties table';
              RETURN 'FAIL'; 

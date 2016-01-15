@@ -65,7 +65,7 @@ do_pgr_one_to_many_dijkstra(
 
     std::deque< Path >paths;
     log << "Inserting vertices into a c++ vector structure\n";
-    std::vector< int64_t > end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+    std::set< int64_t > end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
 
 
     if (directed) {

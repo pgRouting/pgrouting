@@ -48,9 +48,9 @@ extern "C" {
 
 void
 do_pgr_floydWarshall(
-    pgr_edge_t  *data_edges,  // array of id, source, target, cost, reverse_cost
-    size_t total_tuples,     // size of data_edges
-    bool directedFlag,        // to choose undirected or directed
+    pgr_edge_t  *data_edges,
+    size_t total_tuples,
+    bool directedFlag,
 
     // return values
     Matrix_cell_t **postgres_rows,
@@ -59,25 +59,9 @@ do_pgr_floydWarshall(
 // function starts
   std::ostringstream log;
   try {
-
-    // for logging (usefull when developing, but useless for production)
-    log << "Starting the process\n";
-
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-    const int initial_size = total_tuples ;
-    log << "gType:" << (gType==DIRECTED? "directed": "undirected") << "\n";
+    const int initial_size = total_tuples;
 
-
-    typedef boost::adjacency_list < boost::vecS, boost::vecS,
-      boost::undirectedS,
-      boost_vertex_t, boost_edge_t > UndirectedGraph;
-    typedef boost::adjacency_list < boost::vecS, boost::vecS,
-      boost::bidirectionalS,
-      boost_vertex_t, boost_edge_t > DirectedGraph;
-
-    
-
-    //int64_t count = 0;
 
     if (directedFlag) {
       log << "Processing Directed graph\n";
@@ -97,15 +81,14 @@ do_pgr_floydWarshall(
       *err_msg = strdup(log.str().c_str());
       *postgres_rows = NULL;
       *result_tuple_count = 0;
-      return ;
+      return;
     }
-#ifndef DEBUG  // change to 0 to send the log to main code
+#ifndef DEBUG
     *err_msg = strdup("OK");
 #else
     *err_msg = strdup(log.str().c_str());
 #endif
     return;
-
   } catch ( ... ) {
     log << "Caught unknown expection!\n";
     *err_msg = strdup(log.str().c_str());
