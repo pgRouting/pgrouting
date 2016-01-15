@@ -28,7 +28,7 @@ Name
 * ``pgr_kdijkstraPath`` - Returns the paths for K shortest paths using Dijkstra algorithm.
 
 .. warning:: This function is deprecated in 2.2.
-    Use :ref:`pgr_dijkstra_v3` instead.
+    Use :ref:`pgr_dijkstra` instead.
 
 
 Synopsis

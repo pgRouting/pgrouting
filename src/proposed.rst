@@ -82,9 +82,16 @@ Experimental functions: by GSoC Students
   -  :ref:`pgr_vrp_basic` - VRP One Depot
   -  :ref:`pgr_gsocvrppdtw` -  Pickup and Delivery problem
 
+
+The template
+------------
+
+  - :ref:`pgr_funnyDijkstra`
+
 .. toctree::
     :hidden:
 
     ../src/vrp_basic/doc/index.rst
     ../src/vrppdtw/doc/index.rst
+    ../src/funnyDijkstra/doc/pgr_funnyDijkstra.rst
 

@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_dijkstra_v3:
+.. _pgr_dijkstra:
 
 pgr_dijkstra
 ===============================================================================
@@ -45,13 +45,12 @@ The main Characteristics are:
 
       - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
 
-  - For optimization purposes, any duplicated value in the `start_vids` or `end_vids` is ignored.
+  - For optimization purposes, any duplicated value in the `start_vids` or `end_vids` are ignored.
 
   - The returned values are ordered:
 
     - `start_vid` ascending
     - `end_vid` ascending
-
 
   - Runing time: :math:`O(| start\_vids | * (V \log V + E))`
 

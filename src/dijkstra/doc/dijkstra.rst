@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_dijkstra:
+.. _dijkstra:
 
 pgr_dijkstra - Shortest Path Dijkstra
 ===============================================================================

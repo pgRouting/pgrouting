@@ -27,6 +27,8 @@ echo "cd ./tools/testers/"
 cd ./tools/testers/
 echo "psql -f setup_db.sql"
 run_psql -f setup_db.sql
+#pg_prove ../../src/funnyDijkstra/test/pgtap/* -d $PGDATABASE
+
 pg_prove ../../src/trsp/test/pgtap/* -d $PGDATABASE
 pg_prove ../../src/allpairs/test/pgtap/* -d $PGDATABASE
 pg_prove ../../src/apsp_johnson/test/pgtap/* -d $PGDATABASE

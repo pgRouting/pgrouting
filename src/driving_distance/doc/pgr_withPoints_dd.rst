@@ -21,9 +21,6 @@ Name
 .. note::  This is a proposed function for version 2.3.
 
      - Is not officially in the version 2.2 release.
-     - Name could change.
-     - Signature could change.
-     - Functionality will remain.
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg

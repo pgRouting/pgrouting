@@ -35,18 +35,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-//  MY_QUERY_LINE1
-void
-do_pgr_MY_FUNCTION_NAME(
-        pgr_edge_t  *data_edges,
-        size_t total_tuples,
-        int64_t start_vid,
-        int64_t  *end_vidsArr,
-        int size_end_vidsArr,
-        bool directed,
-        MY_RETURN_VALUE_TYPE **return_tuples,
-        size_t *return_count,
-        char ** err_msg);
+    /*********************************************************
+      MY_QUERY_LINE1
+     ********************************************************/
+    void
+        do_pgr_MY_FUNCTION_NAME(
+                pgr_edge_t  *data_edges,
+                size_t total_tuples,
+                int64_t start_vid,
+                int64_t  *end_vidsArr,
+                int size_end_vidsArr,
+                bool directed,
+                MY_RETURN_VALUE_TYPE **return_tuples,
+                size_t *return_count,
+                char ** err_msg);
 
 
 #ifdef __cplusplus

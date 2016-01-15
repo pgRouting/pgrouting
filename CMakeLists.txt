@@ -76,6 +76,8 @@ set(PgRouting_SOURCE_NAMES
     "ksp"
     "allpairs"
     "withPoints"
+
+    "funnyDijkstra"
     
     "astar" "bd_astar"
     "bd_dijkstra" 
