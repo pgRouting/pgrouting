@@ -1,26 +1,44 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _dd_index:
+.. _pgr_driving_distance:
 
-With Driving Distance Enabled
+Driving Distance
 ===============================================================================
 
-Driving distance related Functions
 
-  - :ref:`pgr_driving_distance` - Driving Distance 
-  - :ref:`pgr_alphaShape` - Alpha shape computation
-  - :ref:`pgr_points_as_polygon` - Polygon around set of points 
-    
+Version 2.0 (deprecated)
+------------------------
+
+  - :ref:`pgr_driving_distance<pgr_driving_distance_v2>` - Driving Distance
+
+
+Version 2.1
+------------------
+
+  - :ref:`pgr_driving_distance<pgr_driving_distance_v3>` - Driving Distance
+
+
+.. _pgr_driving_distance_post:
+
+Driving Distance post-processing
+===============================================================================
+
+  -  :ref:`pgr_alphaShape` - Alpha shape computation
+  -  :ref:`pgr_points_as_polygon` - Polygon around set of points
+
+
 .. toctree::
 	:hidden:
 
-	pgr_drivingDistance - Driving Distance <dd_driving_distance>
-	pgr_alphaShape - Alpha shape computation <dd_alphashape>
-	pgr_pointsAsPolygon - Polygon around set of points <dd_points_as_polygon>
+	./dd_driving_distance_v2.rst
+	./dd_driving_distance_v3.rst
+	./dd_alphashape.rst
+	./dd_points_as_polygon.rst
+

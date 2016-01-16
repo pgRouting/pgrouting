@@ -52,13 +52,13 @@ if [ "$POSTGIS_VERSION" == "1.5" ]; then
 fi
 
 if [ "$POSTGIS_VERSION" == "2.0" ]; then 
-	RELEASE="2.0.4"
+	RELEASE="2.0.7"
 	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
 fi
 
 if [ "$POSTGIS_VERSION" == "2.1" ]; then 
 	sudo apt-get install -y -qq libpoppler-dev libarmadillo-dev libepsilon-dev liblzma-dev libxml2-dev
-	RELEASE="2.1.1"
+	RELEASE="2.1.7"
 	wget --quiet -O - http://download.osgeo.org/postgis/source/postgis-${RELEASE}.tar.gz | tar xzf -
 fi
 

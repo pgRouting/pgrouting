@@ -177,7 +177,7 @@ static int compute_apsp_warshall(char* sql, bool directed,
                                  bool has_reverse_cost, 
                                  apsp_element_t **pair, int *pair_count) 
 {
-  int i;
+  // int i;
   int SPIcode;
   void *SPIplan;
   Portal SPIportal;
@@ -187,15 +187,15 @@ static int compute_apsp_warshall(char* sql, bool directed,
   int total_tuples = 0;
   edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
                                  .cost= -1, .reverse_cost= -1};
-  int v_max_id=0;
-  int v_min_id=INT_MAX;
+  // int v_max_id=0;
+  // int v_min_id=INT_MAX;
 
-  int s_count = 0;
-  int t_count = 0;
+  // int s_count = 0;
+  // int t_count = 0;
 
   char *err_msg;
   int ret = -1;
-  register int z;
+  // register int z;
 
 //  set<int> vertices;
   
@@ -335,7 +335,9 @@ apsp_warshall(PG_FUNCTION_ARGS)
     {
       MemoryContext   oldcontext;
       int pair_count = 0;  
+#ifdef DEBUG
       int ret;
+#endif
 
       /* create a function context for cross-call persistence */
       funcctx = SRF_FIRSTCALL_INIT();
@@ -344,7 +346,10 @@ apsp_warshall(PG_FUNCTION_ARGS)
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-      ret = compute_apsp_warshall(text2char(PG_GETARG_TEXT_P(0)),
+#ifdef DEBUG
+      ret =
+#endif
+       compute_apsp_warshall(text2char(PG_GETARG_TEXT_P(0)),
                                   PG_GETARG_BOOL(1),
                                   PG_GETARG_BOOL(2), &pair, &pair_count);                  
 #ifdef DEBUG

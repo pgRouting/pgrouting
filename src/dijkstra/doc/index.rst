@@ -3,7 +3,7 @@
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -12,106 +12,109 @@
 pgr_dijkstra - Shortest Path Dijkstra
 ===============================================================================
 
-.. index:: 
-	single: pgr_dijkstra(text,integer,integer,boolean,boolean)
-	module: dijkstra
+Version 2.0 (deprecated)
+------------------------
 
-Name
--------------------------------------------------------------------------------
+  -  :ref:`pgr_dijkstra<pgr_dijkstra_v2>` - Shortest Path Dijkstra
 
-``pgr_dijkstra`` — Returns the shortest path using Dijkstra algorithm.
+Version 2.1
+------------------
 
+  -  :ref:`pgr_dijkstra<pgr_dijkstra_v3>` - Shortest Path Dijkstra
 
-Synopsis
--------------------------------------------------------------------------------
-
-Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956. It is a graph search algorithm that solves the single-source shortest path problem for a graph with non-negative edge path costs, producing a shortest path tree. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
-
-.. code-block:: sql
-
-	pgr_costResult[] pgr_dijkstra(text sql, integer source, integer target, 
-	                           boolean directed, boolean has_rcost);
+The problem definition
+======================
 
 
-Description
--------------------------------------------------------------------------------
-
-:sql: a SQL query, which should return a set of rows with the following columns:
-
-	.. code-block:: sql
-
-		SELECT id, source, target, cost [,reverse_cost] FROM edge_table
+Given the following query:
 
 
-	:id: ``int4`` identifier of the edge
-	:source: ``int4`` identifier of the source vertex
-	:target: ``int4`` identifier of the target vertex
-	:cost: ``float8`` value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph.
-	:reverse_cost: ``float8`` (optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs).
+pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)
 
-:source: ``int4`` id of the start point
-:target: ``int4`` id of the end point
-:directed: ``true`` if the graph is directed
-:has_rcost: if ``true``, the ``reverse_cost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.
+where  :math:`sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}`
 
-Returns set of :ref:`type_cost_result`:
+and
 
-:seq:   row sequence
-:id1:   node ID
-:id2:   edge ID (``-1`` for the last row)
-:cost:  cost to traverse from ``id1`` using ``id2``
+  - :math:`source = \bigcup source_i`,
+  - :math:`target = \bigcup target_i`,
 
+The graphs are defined as follows:
 
-.. rubric:: History
+.. rubric:: Directed graph
 
-* Renamed in version 2.0.0
+The weighted directed graph, :math:`G_d(V,E)`, is definied by:
 
+* the set of vertices  :math:`V`
 
-Examples
--------------------------------------------------------------------------------
+  - :math:`V = source \cup target \cup {start_{vid}} \cup  {end_{vid}}`
 
-* Without ``reverse_cost``
+* the set of edges :math:`E`
 
-.. code-block:: sql
-
-	SELECT seq, id1 AS node, id2 AS edge, cost 
-		FROM pgr_dijkstra(
-			'SELECT id, source, target, cost FROM edge_table',
-			7, 12, false, false
-		);
-
-	 seq | node | edge | cost 
-	-----+------+------+------
-	   0 |    7 |    8 |    1
-	   1 |    8 |    9 |    1
-	   2 |    9 |   15 |    1
-	   3 |   12 |   -1 |    0
-	(4 rows)
+  - :math:`E = \begin{cases} &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} &\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} &\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}`
 
 
-* With ``reverse_cost``
 
-.. code-block:: sql
+.. rubric:: Undirected graph
 
-	SELECT seq, id1 AS node, id2 AS edge, cost 
-		FROM pgr_dijkstra(
-			'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-			7, 12, true, true
-		);
+The weighted undirected graph, :math:`G_u(V,E)`, is definied by:
 
-	 seq | node | edge | cost 
-	-----+------+------+------
-	   0 |    7 |    8 |    1
-	   1 |    8 |    9 |    1
-	   2 |    9 |   15 |    1
-	   3 |   12 |   -1 |    0
-	(4 rows)
+* the set of vertices  :math:`V`
 
-The queries use the :ref:`sampledata` network.
+  - :math:`V = source \cup target \cup {start_v{vid}} \cup  {end_{vid}}`
 
 
-See Also
--------------------------------------------------------------------------------
+* the set of edges :math:`E`
 
-* :ref:`type_cost_result`
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+  - :math:`E = \begin{cases} &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, cost_i) \text{ when } cost >=0 \}  &\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &\{(source_i, target_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, cost_i) \text{ when } cost >=0 \} \\ \cup &\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} \\ \cup &\{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} &\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}`
+
+
+
+.. rubric:: The problem
+
+Given:
+
+  - :math:`start_{vid} \in V` a starting vertex
+  - :math:`end_{vid} \in V` an ending vertex
+  - :math:`G(V,E) = \begin{cases}  G_d(V,E) &\quad \text{ if } directed = true \\ G_u(V,E) &\quad \text{ if } directed = false \\ \end{cases}`
+
+Then:
+
+.. math:: \text{pgr_dijkstra}(sql, start_{vid}, end_{vid}, directed) =
+  \begin{cases} 
+  \text{shortest path } \boldsymbol{\pi} \text{ between } start_{vid} \text{and } end_{vid} &\quad \text{if } \exists  \boldsymbol{\pi}  \\
+  \varnothing &\quad \text{otherwise} \\
+  \end{cases}
+
+:math:`\boldsymbol{\pi} = \{(path_\seq_i, node_i, edge_i, cost_i, agg\_cost_i)\}`
+
+where:
+  - :math:`path_\seq_i = i`
+  - :math:`path_\seq_{| \pi |} = | \pi |`
+  - :math:`node_i \in V`
+  - :math:`node_1 = start_{vid}`
+  - :math:`node_{| \pi |}  = end_{vid}`
+  - :math:`\forall i \neq | \pi |, \quad (node_i, node_{i+1}, cost_i) \in E`
+  - :math:`edge_i  = \begin{cases}  id_{(node_i, node_{i+1},cost_i)}  &\quad  \text{when } i \neq | \pi | \\ -1 &\quad  \text{when } i = | \pi | \\ \end{cases}`
+  - :math:`cost_i = cost_{(node_i, node_{i+1})}`
+  - :math:`agg\_cost_i  = \begin{cases}  0   &\quad  \text{when } i = 1  \\ \displaystyle\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &\quad  \text{when } i \neq 1 \\ \end{cases}`
+
+
+
+In other words: The algorithm returns a the shortest path between :math:`start_{vid}` and :math:`end_{vid}` , if it exists, in terms of a sequence of nodes  and of edges,
+  - :math:`path_\seq` indicates the relative position in the path of the :math:`node` or :math:`edge`.
+  - :math:`cost` is the cost of the edge to be used to go to the next node.
+  - :math:`agg\_cost` is the cost from the :math:`start_{vid}` up to the node.
+
+
+If there is no path, the resulting set is empty.
+
+
+
+
+
+.. toctree::
+        :hidden: 
+
+        ./dijkstra_v2
+        ./dijkstra_v3
+

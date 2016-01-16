@@ -21,6 +21,11 @@
 
 #include <boost/config.hpp>
 #include <boost/version.hpp>
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
 
 #if BOOST_VERSION > 103900
 #include <boost/property_map/property_map.hpp>
@@ -72,13 +77,13 @@ try {
   // FIXME: use a template for the directedS parameters
   typedef adjacency_list<vecS, vecS, directedS, no_property, Edge> graph_t;
 
-  typedef graph_traits<graph_t>::vertex_descriptor vertex_descriptor;
+  // typedef graph_traits<graph_t>::vertex_descriptor vertex_descriptor;
   typedef graph_traits<graph_t>::edge_descriptor edge_descriptor;
-  typedef graph_traits<graph_t>::edge_iterator edge_iterator;
+  // typedef graph_traits<graph_t>::edge_iterator edge_iterator;
 
   graph_t graph;
 
-  for (std::size_t j = 0; j < count; ++j) {
+  for (int j = 0; j < count; ++j) {
 
     graph_add_edge<graph_t, edge_descriptor>(graph, edges[j].source,
         edges[j].target, edges[j].cost);

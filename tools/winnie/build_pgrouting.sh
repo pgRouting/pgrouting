@@ -7,29 +7,30 @@
 #export PGHOST=localhost
 #export PGPORT=8442
 export PGUSER=postgres
-#export PGROUTING_VER=2.0
+#export PGROUTING_VER=2.1
 #POSTGIS_VER=2.1.0SVN
 #GCC_TYPE=
 #export POSTIGS_VER=2.1.0beta3
-
+#export GIT_COMMIT=whatever
+export PROJECTS=/projects
+export PGPATHEDB=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}edb  #this is so winnie know's where to copy the dlls for vc++ edb compiled postgresql testing
+export PATHOLD=$PATH
+export PGPATH=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}
 
 #export PROJECTS=/c/ming${OS_BUILD}/projects
-if [[ "${GCC_TYPE}" == "gcc48" ]] ; then
-	export PROJECTS=/projects
-	export PATHOLD=$PATH
-	export PGPATH=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}
+if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	export PostgreSQL_ROOT=${PGPATH}
 	
 	export PATHOLD="/mingw/bin:/mingw/include:/c/Windows/system32:/c/Windows"
 	export PGWINVER=${PG_VER}w${OS_BUILD}${GCC_TYPE}edb
 	export PATH="${PATHOLD}:${PGPATH}/bin:${PGPATH}/lib:${PGPATH}/include"
-	export PATH="${PROJECTS}/rel-libiconv-1.13.1w${OS_BUILD}/include:${PATH}"
+	export PATH="${PROJECTS}/rel-libiconv-1.13.1w${OS_BUILD}${GCC_TYPE}/include:${PATH}"
 	GMP_VER=5.1.2
 	MPFR_VER=3.1.2
 	CGAL_VER=4.2
-	BOOST_VER=1.53.0
-	BOOST_VER_WU=1_53_0
-	BOOST_VER_WUM=1_53
+	BOOST_VER=1.59.0
+	BOOST_VER_WU=1_59_0
+	BOOST_VER_WUM=1_59
 	ZLIB_VER=1.2.8
 	#export PATH="/mingw/bin:/mingw/include:/c/Windows/system32"
 	#zlib
@@ -50,12 +51,9 @@ if [[ "${GCC_TYPE}" == "gcc48" ]] ; then
 	rm -rf build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 	mkdir build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 	cd build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
-	cmake -G "MSYS Makefiles" -DWITH_DD=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DBOOST_ROOT:PATH=${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE} -DCGAL_ROOT:PATH=${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE} -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include"  ../branches/${PGROUTING_VER}
+	cmake -G "MSYS Makefiles"  -DCMAKE_VERBOSE_MAKEFILE=ON -DBOOST_ROOT:PATH=${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE} -DCGAL_ROOT:PATH=${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE} -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include"  ../branches/${PGROUTING_VER}
 else 
-	export PROJECTS=/projects
 	#alias cmake="/c/ming${OS_BUILD}/cmake-2.8.10.2-win32-x86/bin/cmake"
-	
-	export PGPATH=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}
 	export PostgreSQL_ROOT=${PGPATH}
 	export PATHOLD=$PATH
 	
@@ -72,13 +70,29 @@ else
 	rm -rf build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 	mkdir build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 	cd build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
-	cmake -G "MSYS Makefiles" -DWITH_DD=ON ../branches/${PGROUTING_VER}
+	cmake -G "MSYS Makefiles"  ../branches/${PGROUTING_VER}
 fi
 #cmake -G "MSYS Makefiles" -DWITH_DD=ON ..
+#first delete old pgrouting files from installed folder before we reinstall
+echo "The git commit is ${GIT_COMMIT}"
+rm ${PGPATH}/lib/librouting*
+rm ${PGPATH}/share/extension/pgrouting*
 make && make install
 
+#we need uninstall and reinstall copy to VC++ EDB instance if we want to test on standard Windows installed versions
+rm ${PGPATHEDB}/lib/librouting*
+cp lib/*.dll ${PGPATHEDB}/lib/
+rm ${PGPATHEDB}/share/extension/pgrouting*
+cp lib/*.sql ${PGPATHEDB}/share/extension/
+cp lib/*.control ${PGPATHEDB}/share/extension/
+
 cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
-perl tools/test-runner.pl -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}" -ignorenotice
+
+#perl tools/test-runner.pl   -pgver ${PG_VER} -pgport "${PGPORT}"  -clean
+perl tools/test-runner.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}" -ignorenotice -clean
+#perl tools/test-runner.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}" 
+#perl tools/test-runner.pl  -pgver "${PG_VER}" -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -clean -v -alg ksp
+
 
 cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib
 strip *.dll

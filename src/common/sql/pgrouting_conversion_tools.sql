@@ -13,10 +13,11 @@ $body$
 declare
     rr record;
     pct float;
+    debuglevel text;
     
 begin
     -- find the closest edge within tol distance
-    execute 'select * from ' || pgr_quote_ident(edges) || 
+    execute 'select * from ' || _pgr_quote_ident(edges) || 
             ' where st_dwithin(''' || pnt::text ||
             '''::geometry, the_geom, ' || tol || ') order by st_distance(''' || pnt::text ||
             '''::geometry, the_geom) asc limit 1' into rr;
@@ -28,7 +29,10 @@ begin
         end if;
 
         -- project the point onto the linestring
+        execute 'show client_min_messages' into debuglevel;
+        SET client_min_messages='ERROR';
         pct := st_line_locate_point(rr.the_geom, pnt);
+        execute 'set client_min_messages  to '|| debuglevel;
 
         -- return the node we are closer to
         if pct < 0.5 then
@@ -73,21 +77,21 @@ begin
     end if;
 
     -- determine if first needs to be flipped
-    g := pgr_startpoint(ga[1]);
+    g := _pgr_startpoint(ga[1]);
 
     -- if the start of the first is connected to the second then it needs to be flipped
-    if pgr_startpoint(ga[2])=g or pgr_endpoint(ga[2])=g then
+    if _pgr_startpoint(ga[2])=g or _pgr_endpoint(ga[2])=g then
         ga[1] := st_reverse(ga[1]);
     end if;
-    g := pgr_endpoint(ga[1]);
+    g := _pgr_endpoint(ga[1]);
 
     -- now if  the end of the last edge matchs the end of the current edge we need to flip it
     for i in 2 .. nn loop
-        if pgr_endpoint(ga[i])=g then
+        if _pgr_endpoint(ga[i])=g then
             ga[i] := st_reverse(ga[i]);
         end if;
         -- save the end of this edge into the last end for the next cycle
-        g := pgr_endpoint(ga[i]);
+        g := _pgr_endpoint(ga[i]);
     end loop;
 
     return ga;

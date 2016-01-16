@@ -25,7 +25,7 @@
 #define ELOG_H
 #endif
 #include "postgres.h"
-#include "dijkstra.h"
+#include "../../common/src/pgr_types.h"
 
 typedef struct vertex
 {

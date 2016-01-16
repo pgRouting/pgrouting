@@ -33,7 +33,7 @@
 #include "fmgr.h"
 
 
-#ifdef PG_MODULE_MAGIC
+#ifndef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
 #endif
 
@@ -302,7 +302,6 @@ Datum alphashape(PG_FUNCTION_ARGS)
     {
       MemoryContext   oldcontext;
       int res_count;
-      int ret;
                             
       // XXX profiling messages are not thread safe
       profstart(prof_total);
@@ -314,7 +313,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
       /* switch to memory context appropriate for multiple function calls */
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-      ret = compute_alpha_shape(text2char(PG_GETARG_TEXT_P(0)), 
+      compute_alpha_shape(text2char(PG_GETARG_TEXT_P(0)), 
                                 PG_GETARG_FLOAT8(1), &res, &res_count);
 
       /* total number of tuples to be returned */

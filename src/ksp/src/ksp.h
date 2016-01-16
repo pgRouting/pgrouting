@@ -1,77 +1,48 @@
-/*
- * KShortest path algorithm for PostgreSQL
- *
- * Copyright (c) 2012 Dave Potts
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- */
- 
-#ifndef _KSP_H
-#define _KSP_H
+/*PGR
 
-#define TUPLIMIT 1000
-#define PATH_ALLOC_TOTAL 5
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+vicky_vergara@hotmail.com
 
-#include "postgres.h"
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+*/
+
+
+#ifndef SRC_KSP_SRC_KSP_H_
+#define SRC_KSP_SRC_KSP_H_
+
+// #define TUPLIMIT 1000
+// #define PATH_ALLOC_TOTAL 5
+
+// #include <unistd.h>
+// #include "postgres.h"
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
-typedef struct ksp_edge 
-{
-    int id;
-    int source;
-    int target;
-    float8 cost;
-    float8 reverse_cost;
-} ksp_edge_t;
 
-typedef struct ksp_path_element 
-{
-    int route_id;
-    int vertex_id;
-    int edge_id;
-    float8 cost;
-} ksp_path_element_t;
+#include "./../../common/src/pgr_types.h"
 
-typedef struct ksp_edge_columns 
-{
-  int id;
-  int source;
-  int target;
-  float8  cost;
-  float8  reverse_cost;
-} ksp_edge_columns_t;
+int compute(char* sql, int64_t start_vertex,
+            int64_t end_vertex, int no_paths,
+            bool has_reverse_cost, bool directedFlag,
+            pgr_path_element3_t **path, int *ksp_path_count);
 
-
-int compute_kshortest_path(char* sql, int start_vertex, 
-                                 int end_vertex, int no_paths, 
-                                 bool has_reverse_cost, 
-                                 ksp_path_element_t **path, int *ksp_path_count) ;
-
-ksp_path_element_t * get_ksp_memory(int,ksp_path_element_t *path);
-/*int ksp_finish(int code, int ret);*/
-
-#ifdef _MSC_VER
-  void DBG(const char* format, ...);
-#endif // _MSC_VER
 #ifdef __cplusplus
 }
 #endif
 
-#endif // _KSP_H
+#endif  // SRC_KSP_SRC_KSP_H_

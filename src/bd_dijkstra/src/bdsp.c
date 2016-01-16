@@ -347,14 +347,16 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
   int                  max_calls;
   TupleDesc            tuple_desc;
   path_element_t      *path;
-  char *               sql;
+  // char *               sql;
 
 
   // stuff done only on the first call of the function 
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       int path_count = 0;
+#ifdef DEBUG
       int ret = -1;
+#endif
       int i;
 
       // create a function context for cross-call persistence
@@ -371,7 +373,10 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
 
       DBG("Calling compute_bidirsp");
 
-      ret = compute_bidirsp(text2char(PG_GETARG_TEXT_P(0)),
+#ifdef DEBUG
+      ret =
+#endif
+        compute_bidirsp(text2char(PG_GETARG_TEXT_P(0)),
                                    PG_GETARG_INT32(1),
                                    PG_GETARG_INT32(2),
                                    PG_GETARG_BOOL(3),

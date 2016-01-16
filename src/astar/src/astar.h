@@ -21,9 +21,11 @@
  
 #define _ASTAR_H
 
+#include <unistd.h>
 #include "postgres.h"
-#include "dijkstra.h"
+#include "../../common/src/pgr_types.h"
 
+#if 0
 typedef struct edge_astar 
 {
   int id;
@@ -36,6 +38,8 @@ typedef struct edge_astar
   float8 t_x;
   float8 t_y;
 } edge_astar_t;
+#endif
+
 
 #ifdef __cplusplus
 extern "C"

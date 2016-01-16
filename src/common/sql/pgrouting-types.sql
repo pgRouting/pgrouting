@@ -2,6 +2,8 @@
 --  pgRouting 2.0 types
 
 
+
+
 CREATE TYPE pgr_costResult AS
 (
     seq integer,
@@ -9,6 +11,8 @@ CREATE TYPE pgr_costResult AS
     id2 integer,
     cost float8
 );
+
+
 
 CREATE TYPE pgr_costResult3 AS
 (

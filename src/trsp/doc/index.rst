@@ -15,10 +15,8 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 .. index:: 
 	single: pgr_trsp(text,integer,integer,boolean,boolean)
 	single: pgr_trsp(text,integer,integer,boolean,boolean,text)
-	single: pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean)
-	single: pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
-    single: pgr_trsp(text,integer[],boolean,boolean,text)
-    single: pgr_trsp(text,integer[],float8[],boolean,boolean,text)
+	single: pgr_trspViaVertices(text,integer,double precision,integer,double precision,boolean,boolean)
+	single: pgr_trspViaEdges(text,integer,double precision,integer,double precision,boolean,boolean,text)
 	module: trsp
 
 Name
@@ -46,13 +44,13 @@ The turn restricted shorthest path (TRSP) is a shortest path algorithm that can 
 
 .. code-block:: sql
 
-    pgr_costResult[] pgr_trsp(sql text, vids integer[],
+    pgr_costResult3[] pgr_trspViaVertices(sql text, vids integer[],
                     directed boolean, has_reverse_cost boolean
                     [, turn_restrict_sql text]);
 
 .. code-block:: sql
 
-     pgr_costResult[] pgr_trsp(sql text, eids integer[], pcts float8[],
+     pgr_costResult3[] pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
                     directed boolean, has_reverse_cost boolean
                     [, turn_restrict_sql text]);
 
@@ -113,6 +111,9 @@ Returns set of :ref:`type_cost_result`:
 Support for Vias
 --------------------------------------------------------------------
 
+.. warning:: The Support for Vias functions are prototypes. Not all corner cases are being considered.
+
+
 We also have support for vias where you can say generate a from A to B to C, etc. We support both methods above only you pass an array of vertices or and array of edges and percentage position along the edge in two arrays.
 
 
@@ -152,14 +153,15 @@ Another variant of TRSP allows to specify **EDGE id** together with a fraction t
 Returns set of :ref:`type_cost_result`:
 
 :seq:   row sequence
-:id1:   node ID
-:id2:   edge ID (``-1`` for the last row)
-:cost:  cost to traverse from ``id1`` using ``id2``
+:id1:   route ID
+:id2:   node ID
+:id3:   edge ID (``-1`` for the last row)
+:cost:  cost to traverse from ``id2`` using ``id3``
 
 
 .. rubric:: History
 
-* Via Support new in version 2.1.0
+* Via Support prototypes new in version 2.1.0
 
 Examples
 -------------------------------------------------------------------------------
@@ -230,58 +232,64 @@ An example query using vertex ids and via points:
 
 .. code-block:: sql
 
-    select * from pgr_trsp(
-        'select eid as id, source::integer, target::integer,cost,
-            reverse_cost from edges1',
-        ARRAY[1,8,13,5]::integer[],     -- array of vids
-        true,  -- directed graph?
-        true,  -- has_reverse_cost?
-        -- include the turn restrictions
-        'select to_cost, teid as target_id, feid || 
-            coalesce('',''||via,'''') as via_path from restrictions1');
+    SELECT * FROM pgr_trspViaVertices(
+        'SELECT id, source::INTEGER, target::INTEGER, cost,
+            reverse_cost FROM edge_table',
+        ARRAY[1,8,13,5]::INTEGER[],     
+        true,  
+        true,  
+        
+        'SELECT to_cost, to_edge AS target_id, FROM_edge ||
+            coalesce('',''||via,'''') AS via_path FROM restrictions');
 
-     seq | id1 | id2 | cost
-    -----+-----+-----+------
-       1 |   1 |   1 |    1
-       2 |   2 |   4 |    1
-       3 |   7 |   8 |    1
-       4 |   8 |   8 |    1
-       5 |   7 |  10 |    1
-       6 |  10 |  14 |    1
-       7 |  13 |  14 |    1
-       8 |  10 |  10 |    1
-       9 |   7 |   7 |    1
-      10 |   6 |   6 |    1
-       4 |   5 |  -1 |    0
-    (11 rows)
+     seq | id1 | id2 | id3 | cost 
+    -----+-----+-----+-----+------
+       1 |   1 |   1 |   1 |    1
+       2 |   1 |   2 |   4 |    1
+       3 |   1 |   5 |   8 |    1
+       4 |   1 |   6 |   9 |    1
+       5 |   1 |   9 |  16 |    1
+       6 |   1 |   4 |   3 |    1
+       7 |   1 |   3 |   5 |    1
+       8 |   1 |   6 |   8 |    1
+       9 |   1 |   5 |   7 |    1
+      10 |   2 |   8 |   7 |    1
+      11 |   2 |   5 |  10 |    1
+      12 |   2 |  10 |  14 |    1
+      13 |   3 |  13 |  14 |    1
+      14 |   3 |  10 |  10 |    1
+      15 |   3 |   5 |  -1 |    0
+    (15 rows)
+
+
 
 An example query using edge ids and vias:
 
 .. code-block:: sql
 
-    select * from pgr_trsp(
-        'select eid as id, source::integer, target::integer,cost,
-             reverse_cost from edges1',
-        ARRAY[1,11,6]::integer[],           -- array of eids
-        ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
-        true,  -- directed graph?
-        true,  -- has_reverse_cost?
-        -- include the turn restrictions
-        'select to_cost, teid as target_id, feid ||
-            coalesce('',''||via,'''') as via_path from restrictions1');
+    SELECT * FROM pgr_trspViaEdges(
+        'SELECT id, source::INTEGER, target::INTEGER,cost,
+             reverse_cost FROM edge_table',
+        ARRAY[1,11,6]::INTEGER[],           
+        ARRAY[0.5, 0.5, 0.5]::FLOAT8[],     
+        true,  
+        true,  
+        
+        'SELECT to_cost, to_edge AS target_id, FROM_edge ||
+            coalesce('',''||via,'''') AS via_path FROM restrictions');
 
-     seq | id1 | id2 | cost
-    -----+-----+-----+------
-       0 |  -1 |   1 |  0.5
-       1 |   2 |   4 |    1
-       2 |   7 |   8 |    1
-       3 |   8 |  11 |    1
-       1 |  11 |  13 |    1
-       2 |  12 |  15 |    1
-       3 |   9 |   9 |    1
-       4 |   8 |   8 |    1
-       5 |   7 |   7 |    1
-       6 |   6 |   6 |  0.5
+     seq | id1 | id2 | id3 | cost 
+    -----+-----+-----+-----+------
+       1 |   1 |  -1 |   1 |  0.5
+       2 |   1 |   2 |   4 |    1
+       3 |   1 |   5 |   8 |    1
+       4 |   1 |   6 |  11 |    1
+       5 |   2 |  11 |  13 |    1
+       6 |   2 |  12 |  15 |    1
+       7 |   2 |   9 |   9 |    1
+       8 |   2 |   6 |   8 |    1
+       9 |   2 |   5 |   7 |    1
+      10 |   2 |   8 |   6 |  0.5
     (10 rows)
 
 

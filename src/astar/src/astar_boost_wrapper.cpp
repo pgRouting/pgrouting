@@ -20,7 +20,12 @@
  */
 
 // Include C header first for windows build issue
-#include "astar.h"
+
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
 
 #include <boost/config.hpp>
 
@@ -29,6 +34,7 @@
 #include <boost/graph/astar_search.hpp>
 
 #include <cmath>    // for sqrt
+#include "astar.h"
 
 using namespace std;
 using namespace boost;
@@ -172,10 +178,10 @@ try {
                edges[j].target, 
                edges[j].source, 
                cost, 
-               edges[j].s_x, 
-               edges[j].s_y, 
                edges[j].t_x, 
-               edges[j].t_y);
+               edges[j].t_y, 
+               edges[j].s_x, 
+               edges[j].s_y);
         }
   }
 
@@ -262,9 +268,9 @@ try {
         for (tie(out_i, out_end) = out_edges(v_src, graph); 
              out_i != out_end; ++out_i)
         {
-            graph_traits < graph_t >::vertex_descriptor v, targ;
+            graph_traits < graph_t >::vertex_descriptor targ; // v   set but not used
             e = *out_i;
-            v = source(e, graph);
+            // v = source(e, graph);
             targ = target(e, graph);
                                                                 
             if (targ == v_targ)
@@ -287,6 +293,7 @@ try {
     *err_msg = (char *) "Unknown exception caught!";
     return -1;
  }
- return -1;
+ *err_msg = (char *) "No path found";
+ return 0;
 }
 

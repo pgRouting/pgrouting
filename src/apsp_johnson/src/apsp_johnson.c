@@ -265,7 +265,9 @@ Datum apsp_johnson(PG_FUNCTION_ARGS) {
   if (SRF_IS_FIRSTCALL()) {
     MemoryContext oldcontext;
     int output_count = 0;
+#ifdef DEBUG
     int ret;
+#endif
 
     /* create a function context for cross-call persistence */
     funcctx = SRF_FIRSTCALL_INIT();
@@ -273,7 +275,10 @@ Datum apsp_johnson(PG_FUNCTION_ARGS) {
     /* switch to memory context appropriate for multiple function calls */
     oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-    ret = compute_apsp_johnson(text2char(PG_GETARG_TEXT_P(0)), &output_edges,
+#ifdef DEBUG
+    ret =
+#endif
+    compute_apsp_johnson(text2char(PG_GETARG_TEXT_P(0)), &output_edges,
         &output_count);
 
 #ifdef DEBUG

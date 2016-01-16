@@ -5,3 +5,5 @@ build
 issues
 tools/vagrant/packaging.sh
 *.mo
+.directory
+notUsed
