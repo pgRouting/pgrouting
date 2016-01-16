@@ -1,7 +1,10 @@
-/*PGR
+/*PGR-GNU*****************************************************************
+File: pgr_ksp.hpp
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky_vergara@hotmail.com
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,7 +20,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
+********************************************************************PGR-GNU*/
 
 #ifndef SRC_KSP_SRC_PGR_KSP_HPP_
 #define SRC_KSP_SRC_PGR_KSP_HPP_
@@ -28,67 +31,62 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
 
 template < class G >
-class Pgr_ksp: public Pgr_dijkstra< G > {
+class Pgr_ksp {
  public:
-        explicit Pgr_ksp(graphType gtype, const int initial_size)
-                : Pgr_dijkstra <G>(gtype, initial_size)
-           {}
-
-        ~Pgr_ksp(void) {}
-        std::deque<Path> Yen(int64_t source, int64_t target, int K);
-        void clear();
+     std::deque<Path> Yen(G &graph, int64_t source, int64_t target, int K, bool heap_paths);
+     void clear();
 
  private:
-    class compPaths {
-     public:
-        bool operator()(const Path &p1, const Path  &p2) const {
-          if (p1.cost < p2.cost) return true;
-          if (p1.cost > p2.cost) return false;
+     class compPaths {
+      public:
+          bool operator()(const Path &p1, const Path &p2) const {
+              if (p1.tot_cost() != p2.tot_cost())
+                  return  (p1.tot_cost() < p2.tot_cost());
 
-          // paths costs are equal now we check by length
-          if (p1.path.size()  < p2.path.size()) return true;
-          if (p1.path.size()  > p2.path.size()) return false;
+              // paths costs are equal now we check by length
+              if (p1.size() < p2.size())
+                  return (p1.size() < p2.size());
 
-          // paths weights & lengths are equal now we check by ID
-          unsigned int i;
-          for ( i = 0; i < p1.path.size() ; i++)
-               if ( p1.path[i].vertex < p2.path[i].vertex) return true;
+              // paths weights & lengths are equal now we check by ID
+              unsigned int i;
+              for (i = 0; i < p1.size(); i++) {
+                  if (p1[i].node != p2[i].node)
+                      return (p1[i].node < p2[i].node);
+              }
 
-          // we got here and everything is equal
-          return false;
-       }
-    };
+              // we got here and everything is equal
+              return false;
+          }
+     };
 
-    //! the actual algorithm
-    void executeYen(int top_k);
+     //! the actual algorithm
+     void executeYen(G &graph, int top_k);
 
-    /** @name Auxiliary function for yen's algorithm */
-    ///@{
+     /** @name Auxiliary function for yen's algorithm */
+     ///@{
 
-    //! Performs the first Dijkstra of the algorithm
-    void getFirstSolution();
-    //! Performs the next cycle of the algorithm
-    void doNextCycle();
-    //! stores in subPath the first i elements of path
-    void removeVertices(const Path &path);
-    ///@}
+     //! Performs the first Dijkstra of the algorithm
+     void getFirstSolution(G &graph);
+     //! Performs the next cycle of the algorithm
+     void doNextCycle(G &graph);
+     //! stores in subPath the first i elements of path
+     void removeVertices(G &graph, const Path &path);
+     ///@}
 
  private:
-    /** @name members */
-    ///@{
-    typedef typename boost::graph_traits < G >::vertex_descriptor V;
-    V v_source;  //!< source descriptor
-    V v_target;  //!< target descriptor
-    int64_t m_start;  //!< source id
-    int64_t m_end;   //!< target id
+     /** @name members */
+     ///@{
+     typedef typename G::V V;
+     V v_source;  //!< source descriptor
+     V v_target;  //!< target descriptor
+     int64_t m_start;  //!< source id
+     int64_t m_end;   //!< target id
 
-    Path curr_result_path;  //!< storage for the current result
+     Path curr_result_path;  //!< storage for the current result
 
-    typedef typename  std::set<Path, compPaths> pSet;
-    typedef typename  std::set<Path, compPaths>::iterator pSet_i;
-    pSet m_ResultSet;  //!< ordered set of shortest paths
-    pSet m_Heap;  //!< the heap
-    pSet_i pIt;   //!< iterator for heap and result set
+     typedef typename  std::set<Path, compPaths> pSet;
+     pSet m_ResultSet;  //!< ordered set of shortest paths
+     pSet m_Heap;  //!< the heap
 };
 
 #include "./pgr_ksp.cpp"

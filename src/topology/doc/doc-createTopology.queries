@@ -1,0 +1,37 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+DROP TABLE edge_table_vertices_pgr;
+DROP TABLE
+UPDATE edge_table SET source = NULL,  target = NULL;
+UPDATE 18
+--q1
+SELECT  pgr_createTopology('edge_table', 0.001);
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Creating Topology, Please wait...
+NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
+NOTICE:  Rows with NULL geometry or NULL id: 0
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+
+--q1.1
+DROP TABLE edge_table_vertices_pgr;
+DROP TABLE
+UPDATE edge_table SET source = NULL,  target = NULL;
+UPDATE 18
+--q2
+SELECT  pgr_createTopology('edge_table', 0.001,
+        'the_geom', 'id', 'source', 'target');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Creating Topology, Please wait...
+Cancel request sent
+ERROR:  canceling statement due to user request

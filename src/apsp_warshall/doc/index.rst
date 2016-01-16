@@ -3,23 +3,26 @@
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 .. _pgr_apsp_warshall:
 
-pgr_apspWarshall - All Pairs Shortest Path, Floyd-Warshall Algorithm
+pgr_apspWarshall
 ===============================================================================
 
 .. index::
-    single: pgr_apspWarshall(text, boolean, boolean)
-    module: apsp
+    single: pgr_apspWarshall(text, boolean, boolean) -- deprecated
 
 Name
 -------------------------------------------------------------------------------
 
 ``pgr_apspWarshall`` - Returns all costs for each pair of nodes in the graph.
+
+.. warning:: This function is deprecated in version 2.2
+             Use :ref:`pgr_floydWarshall` instead
+
 
 
 Synopsis
@@ -65,21 +68,9 @@ Returns set of :ref:`type_cost_result`:
 Examples
 -------------------------------------------------------------------------------
 
-.. code-block:: sql
-
-    SELECT seq, id1 AS from, id2 AS to, cost 
-        FROM pgr_apspWarshall(
-            'SELECT id, source, target, cost FROM edge_table',
-            false, false
-        );
-
-     seq | from | to | cost 
-    -----+------+----+------
-       0 |    1 |  1 |    0
-       1 |    1 |  2 |    1
-       2 |    1 |  3 |    0
-       3 |    1 |  4 |   -1
-    [...]
+.. literalinclude:: doc-apspWarshall.queries
+   :start-after: --q1
+   :end-before: --q2
 
 The query uses the :ref:`sampledata` network.
 
@@ -88,5 +79,5 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`type_cost_result`
-* :ref:`pgr_apsp_johnson`
+* :ref:`pgr_floydWarshall`
 * http://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm

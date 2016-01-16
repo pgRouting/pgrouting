@@ -1,24 +1,27 @@
-/*PGR
+/*PGR-GNU*****************************************************************
+
  utilities_pgr.sql
 
- Copyright (c) 2015 Celia Virginia Vergara Castillo
+ Copyright (c) 2014 Celia Virginia Vergara Castillo
  vicky_vergara@hotmail.com
 
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.
+------
 
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- GNU General Public License for more details.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
 
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
 
-*/
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-GNU*/
 
 
 /************************************************************************
@@ -35,7 +38,7 @@
                      'Two columns share the same name');
 	*	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
                      'Two columns share the same name', 'Idname and gname must be different');
-        *	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
+    *	preforn _pgr_onError( idname=gname, 2, 'pgr_createToplogy',
                      'Two columns share the same name', 'Idname and gname must be different',
                      'Column names are OK');
 
@@ -272,6 +275,37 @@ END;
 
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
+
+/************************************************************************
+.. function:: _pgr_get_statement( sql ) returns the original statement if its a prepared statement
+
+    Returns:
+          sname,vname  registered schemaname, vertices table name 
+    
+          
+ Examples:  
+    select * from _pgr_dijkstra(_pgr_get_statament($1),$2,$3,$4);
+
+   Author: Vicky Vergara <vicky_vergara@hotmail.com>>
+
+  HISTORY
+     Created: 2014/JUL/27 
+************************************************************************/
+CREATE OR REPLACE FUNCTION _pgr_get_statement(o_sql text)
+RETURNS text AS
+$BODY$
+DECLARE
+sql TEXT;
+BEGIN
+    EXECUTE 'SELECT statement FROM pg_prepared_statements WHERE name ='  || quote_literal(o_sql) || ' limit 1 ' INTO sql;
+    IF (sql IS NULL) THEN
+      RETURN   o_sql;
+    ELSE
+      RETURN  regexp_replace(sql, '(.)* as ', '', 'i');
+    END IF;
+END
+$BODY$
+LANGUAGE plpgsql STABLE STRICT;
 
 
 /************************************************************************

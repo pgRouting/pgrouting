@@ -1,31 +1,29 @@
-/******************************************************************************
+/*PGR-MIT*****************************************************************
+
 * $Id$
 *
 * Project:  pgRouting bdsp and bdastar algorithms
 * Purpose:
 * Author:   Razequl Islam <ziboncsedu@gmail.com>
-*
+Copyright (c) 2015 pgRouting developers
 
-******************************************************************************
-* Permission is hereby granted, free of charge, to any person obtaining a
-* copy of this software and associated documentation files (the "Software"),
-* to deal in the Software without restriction, including without limitation
-* the rights to use, copy, modify, merge, publish, distribute, sublicense,
-* and/or sell copies of the Software, and to permit persons to whom the
-* Software is furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies of this Software or works derived from this Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-* OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-* THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-* DEALINGS IN THE SOFTWARE.
+------
 
-*****************************************************************************/
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-MIT*/
 
 #include "postgres.h"
 #include "executor/spi.h"
@@ -36,27 +34,20 @@
 #endif
 
 #include "fmgr.h"
-#include "bdsp.h"
 
 Datum bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS);
 
 
 #undef DEBUG
-//#define DEBUG 1
+#include "../../common/src/debug_macro.h"
+#include "../../common/src/pgr_types.h"
+#include "../../common/src/postgres_connection.h"
 
-#ifdef DEBUG
-#define DBG(format, arg...)                     \
-    elog(NOTICE, format , ## arg)
-#else
-#define DBG(format, arg...) do { ; } while (0)
-#endif
+#include "bdsp.h"
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
-//#ifdef PG_MODULE_MAGIC
-//PG_MODULE_MAGIC;
-//#endif
 
 typedef struct edge_columns
 {
@@ -68,27 +59,6 @@ typedef struct edge_columns
 } edge_columns_t;
 
 
-static char *
-text2char(text *in)
-{
-  char *out = palloc(VARSIZE(in));
-
-  memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
-  out[VARSIZE(in) - VARHDRSZ] = '\0';
-  return out;
-}
-
-static int
-finish(int code, int ret)
-{
-  DBG("In finish, trying to disconnect from spi %d",ret);
-  code = SPI_finish();
-  if (code  != SPI_OK_FINISH ) {
-    elog(ERROR,"couldn't disconnect from SPI");
-    return -1 ;
-  }            
-  return ret;
-}
 
 /*
  * This function fetches the edge columns from the SPITupleTable.
@@ -121,7 +91,7 @@ fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns,
       return -1;
   }
 
-  DBG("columns: id %i source %i target %i cost %i", 
+  PGR_DBG("columns: id %i source %i target %i cost %i", 
       edge_columns->id, edge_columns->source, 
       edge_columns->target, edge_columns->cost);
 
@@ -141,7 +111,7 @@ fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns,
           return -1;
       }
 
-      DBG("columns: reverse_cost cost %i", edge_columns->reverse_cost);
+      PGR_DBG("columns: reverse_cost cost %i", edge_columns->reverse_cost);
   }
 
   return 0;
@@ -188,7 +158,6 @@ static int compute_bidirsp(char* sql, int start_vertex,
                                  bool has_reverse_cost, 
                                  path_element_t **path, int *path_count) 
 {
-  int SPIcode;
   void *SPIplan;
   Portal SPIportal;
   bool moredata = TRUE;
@@ -207,32 +176,21 @@ static int compute_bidirsp(char* sql, int start_vertex,
   int ret = -1;
   register int z;
 
-  DBG("start shortest_path\n");
+  PGR_DBG("start shortest_path\n");
 
-  SPIcode = SPI_connect();
-  if (SPIcode  != SPI_OK_CONNECT) {
-      elog(ERROR, "shortest_path: couldn't open a connection to SPI");
-      return -1;
-  }
-
-  SPIplan = SPI_prepare(sql, 0, NULL);
-  if (SPIplan  == NULL) {
-      elog(ERROR, "shortest_path: couldn't create query plan via SPI");
-      return -1;
-  }
-
-  if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
-      elog(ERROR, "shortest_path: SPI_cursor_open('%s') returns NULL", sql);
-      return -1;
-  }
+  pgr_SPI_connect();
+  SPIplan = pgr_SPI_prepare(sql);
+  SPIportal = pgr_SPI_cursor_open(SPIplan);
 
   while (moredata == TRUE) {
       SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
 
       if (edge_columns.id == -1) {
           if (fetch_edge_columns(SPI_tuptable, &edge_columns, 
-                                 has_reverse_cost) == -1)
-            return finish(SPIcode, ret);
+                                 has_reverse_cost) == -1) {
+            pgr_SPI_finish();
+            return -1;
+          }
       }
 
       ntuples = SPI_processed;
@@ -244,7 +202,8 @@ static int compute_bidirsp(char* sql, int start_vertex,
 
       if (edges == NULL) {
           elog(ERROR, "Out of memory");
-          return finish(SPIcode, ret);      
+            pgr_SPI_finish();
+            return -1;
       }
 
       if (ntuples > 0) {
@@ -266,14 +225,14 @@ static int compute_bidirsp(char* sql, int start_vertex,
 
   //defining min and max vertex id
 
-  DBG("Total %i tuples", total_tuples);
+  PGR_DBG("Total %i tuples", total_tuples);
 
   for(z=0; z<total_tuples; z++) {
     if(edges[z].source<v_min_id) v_min_id=edges[z].source;
     if(edges[z].source>v_max_id) v_max_id=edges[z].source;
     if(edges[z].target<v_min_id) v_min_id=edges[z].target;
     if(edges[z].target>v_max_id) v_max_id=edges[z].target; 
-    //DBG("%i <-> %i", v_min_id, v_max_id);
+    //PGR_DBG("%i <-> %i", v_min_id, v_max_id);
   }
 
   //::::::::::::::::::::::::::::::::::::  
@@ -288,10 +247,10 @@ static int compute_bidirsp(char* sql, int start_vertex,
 
     edges[z].source -= v_min_id;
     edges[z].target -= v_min_id;
-    //DBG("%i - %i", edges[z].source, edges[z].target);      
+    //PGR_DBG("%i - %i", edges[z].source, edges[z].target);      
   }
 
-  DBG("Total %i tuples", total_tuples);
+  PGR_DBG("Total %i tuples", total_tuples);
 
   if(s_count == 0) {
     elog(ERROR, "Start vertex was not found.");
@@ -308,7 +267,7 @@ static int compute_bidirsp(char* sql, int start_vertex,
 
   //v_max_id -= v_min_id;
 
-  DBG("Calling bidirsp_wrapper(edges, %d, %d, %d, %d, %d, %d, ...)\n",
+  PGR_DBG("Calling bidirsp_wrapper(edges, %d, %d, %d, %d, %d, %d, ...)\n",
         total_tuples, v_max_id + 2, start_vertex, end_vertex,
         directed, has_reverse_cost);
 
@@ -316,24 +275,25 @@ static int compute_bidirsp(char* sql, int start_vertex,
                        directed, has_reverse_cost,
                        path, path_count, &err_msg);
 
-  DBG("Back from bidirsp_wrapper() ret: %d", ret);
+  PGR_DBG("Back from bidirsp_wrapper() ret: %d", ret);
   if (ret < 0) {
       elog(ERROR, "Error computing path: %s", err_msg);
   } 
 
-  DBG("*path_count = %i\n", *path_count);
+  PGR_DBG("*path_count = %i\n", *path_count);
 
   //::::::::::::::::::::::::::::::::
   //:: restoring original vertex id
   //::::::::::::::::::::::::::::::::
   for(z=0; z<*path_count; z++) {
-    //DBG("vetex %i\n",(*path)[z].vertex_id);
+    //PGR_DBG("vetex %i\n",(*path)[z].vertex_id);
     (*path)[z].vertex_id+=v_min_id;
   }
 
-  DBG("ret = %i\n", ret);
+  PGR_DBG("ret = %i\n", ret);
 
-  return finish(SPIcode, ret);
+  pgr_SPI_finish();
+  return 0;
 }
 
 
@@ -371,12 +331,12 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
             elog(ERROR, "bidir_dijkstra_shortest_path(): Argument %i may not be NULL", i+1);
         }
 
-      DBG("Calling compute_bidirsp");
+      PGR_DBG("Calling compute_bidirsp");
 
 #ifdef DEBUG
       ret =
 #endif
-        compute_bidirsp(text2char(PG_GETARG_TEXT_P(0)),
+        compute_bidirsp(pgr_text2char(PG_GETARG_TEXT_P(0)),
                                    PG_GETARG_INT32(1),
                                    PG_GETARG_INT32(2),
                                    PG_GETARG_BOOL(3),
@@ -384,17 +344,17 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
                                    &path, &path_count);
 #ifdef DEBUG
     double total_cost = 0;
-      DBG("Ret is %i", ret);
+      PGR_DBG("Ret is %i", ret);
       if (ret >= 0) {
           int i;
           for (i = 0; i < path_count; i++) {
-             // DBG("Step %i vertex_id  %i ", i, path[i].vertex_id);
-             // DBG("        edge_id    %i ", path[i].edge_id);
-             // DBG("        cost       %f ", path[i].cost);
+             // PGR_DBG("Step %i vertex_id  %i ", i, path[i].vertex_id);
+             // PGR_DBG("        edge_id    %i ", path[i].edge_id);
+             // PGR_DBG("        cost       %f ", path[i].cost);
               total_cost+=path[i].cost;
             }
         }
-        DBG("Total cost is: %f",total_cost);
+        PGR_DBG("Total cost is: %f",total_cost);
 #endif
 
       // total number of tuples to be returned 
@@ -445,7 +405,7 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
       SRF_RETURN_NEXT(funcctx, result);
   }
   else {   // do when there is no more left 
-      DBG("Going to free path");
+      PGR_DBG("Going to free path");
       if (path) free(path);
       SRF_RETURN_DONE(funcctx);
   }

@@ -1,31 +1,30 @@
-/******************************************************************************
+/*PGR-MIT*****************************************************************
+
 * $Id$
 *
 * Project:  pgRouting bdsp and bdastar algorithms
 * Purpose:
 * Author:   Razequl Islam <ziboncsedu@gmail.com>
-*
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
 
-******************************************************************************
-* Permission is hereby granted, free of charge, to any person obtaining a
-* copy of this software and associated documentation files (the "Software"),
-* to deal in the Software without restriction, including without limitation
-* the rights to use, copy, modify, merge, publish, distribute, sublicense,
-* and/or sell copies of the Software, and to permit persons to whom the
-* Software is furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies of this Software or works derived from this Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-* OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-* THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-* DEALINGS IN THE SOFTWARE.
+------
 
-*****************************************************************************/
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-MIT*/
 
 #ifdef __MINGW32__
 #include <winsock2.h>
@@ -34,21 +33,6 @@
 
 #include "BiDirDijkstra.h"
 
-#undef DEBUG
-//#define DEBUG
-
-#ifdef DEBUG
-#include <stdio.h>
-static FILE *dbg;
-#define DBG(format, arg...) \
-    dbg = fopen("/tmp/sew-debug", "a"); \
-    if (dbg) { \
-        fprintf(dbg, format,  ## arg); \
-        fclose(dbg); \
-    }
-#else
-#define DBG(format, arg...) do { ; } while (0)
-#endif
 
 
 BiDirDijkstra::BiDirDijkstra(void)
@@ -73,15 +57,15 @@ void BiDirDijkstra::initall(int maxNode)
 {
 	int i;
 	m_vecPath.clear();
-    DBG("BiDirDijkstra::initall: allocating m_pFParent, m_pRParent maxNode: %d\n", maxNode+1);
+    // DBG("BiDirDijkstra::initall: allocating m_pFParent, m_pRParent maxNode: %d\n", maxNode+1);
 	m_pFParent = new PARENT_PATH[maxNode + 1];
 	m_pRParent = new PARENT_PATH[maxNode + 1];
-    DBG("BiDirDijkstra::initall: allocated m_pFParent, m_pRParent\n");
+    // DBG("BiDirDijkstra::initall: allocated m_pFParent, m_pRParent\n");
 
-    DBG("BiDirDijkstra::initall: allocating m_pFCost, m_pRCost maxNode: %d\n", maxNode+1);
+    // DBG("BiDirDijkstra::initall: allocating m_pFCost, m_pRCost maxNode: %d\n", maxNode+1);
 	m_pFCost = new double[maxNode + 1];
 	m_pRCost = new double[maxNode + 1];
-    DBG("BiDirDijkstra::initall: allocated m_pFCost, m_pRCost\n");
+    // DBG("BiDirDijkstra::initall: allocated m_pFCost, m_pRCost\n");
 
 	for(i = 0; i <= maxNode; i++)
 	{
@@ -94,10 +78,10 @@ void BiDirDijkstra::initall(int maxNode)
 	m_MinCost = INF;
 	m_MidNode = -1;
 
-    DBG("BiDirDijkstra::initall: m_vecNodeVector.reserve(%d)\n", maxNode + 1);
+    // DBG("BiDirDijkstra::initall: m_vecNodeVector.reserve(%d)\n", maxNode + 1);
     // reserve space for nodes
     m_vecNodeVector.reserve(maxNode + 1);
-    DBG("           space reserved!\n");
+    // DBG("           space reserved!\n");
 }
 
 /*
@@ -290,20 +274,20 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, unsigned int edge_count, int ma
 	max_edge_id = -1;
 	
 	// Allocate memory for local storage like cost and parent holder
-    DBG("calling initall(maxNode=%d)\n", maxNode);
+    // DBG("calling initall(maxNode=%d)\n", maxNode);
 	initall(maxNode);
 
 	// construct the graph from the edge list, i.e. populate node and edge data structures
-    DBG("Calling construct_graph\n");
+    // DBG("Calling construct_graph\n");
 	construct_graph(edges, edge_count, maxNode);
 	
 
 	//int nodeCount = m_vecNodeVector.size();
-	DBG("Setting up std::priority_queue\n");
+	// DBG("Setting up std::priority_queue\n");
 	std::priority_queue<PDI, std::vector<PDI>, std::greater<PDI> > fque;
 	std::priority_queue<PDI, std::vector<PDI>, std::greater<PDI> > rque;
 	
-    DBG("calling m_vecPath.clear()\n");
+    // DBG("calling m_vecPath.clear()\n");
 	m_vecPath.clear();
 
 	// Initialize the forward search
@@ -379,10 +363,10 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, unsigned int edge_count, int ma
 
 		// Transfer data path to path_element_t format and allocate memory and populate the pointer
 
-        DBG("BiDirDijkstra::bidir_dijkstra: allocating path m_vecPath.size=%d\n", m_vecPath.size() + 1);
+        // DBG("BiDirDijkstra::bidir_dijkstra: allocating path m_vecPath.size=%d\n", m_vecPath.size() + 1);
 		*path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
 		*path_count = m_vecPath.size();
-        DBG("BiDirDijkstra::bidir_dijkstra: allocated path\n");
+        // DBG("BiDirDijkstra::bidir_dijkstra: allocated path\n");
 
 		for(i = 0; i < *path_count; i++)
 		{
@@ -392,9 +376,9 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, unsigned int edge_count, int ma
 		}
 		
 	}
-    DBG("calling deleteall\n");
+    // DBG("calling deleteall\n");
 	deleteall();
-    DBG("back from deleteall\n");
+    // DBG("back from deleteall\n");
 	return 0;
 }
 
@@ -419,7 +403,7 @@ bool BiDirDijkstra::construct_graph(edge_t* edges, int edge_count, int maxNode)
 
 	// Insert the dummy node into the node list. This acts as place holder. Also change the nodeId so that nodeId and node index in the vector are same.
 	// There may be some nodes here that does not appear in the edge list. The size of the list is upto maxNode which is equal to maximum node id.
-    DBG("m_vecNodeVector.push_back for 0 - %d\n", maxNode);
+    // DBG("m_vecNodeVector.push_back for 0 - %d\n", maxNode);
 	for(i = 0; i <= maxNode; i++)
 	{
 		// Create a dummy node
@@ -432,9 +416,9 @@ bool BiDirDijkstra::construct_graph(edge_t* edges, int edge_count, int maxNode)
 	}
 
 	// Process each edge from the edge list and update the member data structures accordingly.
-    DBG("reserving space for m_vecEdgeVector.reserve(%d)\n", edge_count);
+    // DBG("reserving space for m_vecEdgeVector.reserve(%d)\n", edge_count);
     m_vecEdgeVector.reserve(edge_count);
-    DBG("calling addEdge in a loop\n");
+    // DBG("calling addEdge in a loop\n");
 	for(i = 0; i < edge_count; i++)
 	{
 		addEdge(edges[i]);

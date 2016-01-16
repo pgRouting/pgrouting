@@ -1,3 +1,4 @@
+BEGIN;
 /*.. 
    ****************************************************************************
     pgRouting Manual
@@ -27,4 +28,4 @@ set client_min_messages = warning;
 	SELECT pgr_nodeNetwork('edge_table', 0.001);
 	SELECT pgr_createTopology('edge_table_noded', 0.001);
 	SELECT pgr_analyzegraph('edge_table_noded', 0.001); 
-
+ROLLBACK;

@@ -1,4 +1,15 @@
 
+Changes for 2.2.0
+-------------------------------------------------------------------------------
+
+The following changes are preliminary and contain the TODO
+ - travis:
+   - setting travis to work with trusty
+   - TODO
+
+     - Make it work for matrix for postgreSQL 9.1 9.2 9.3 9.4
+     - Make it work for OSX if possible
+
 Changes for 2.1.0
 -------------------------------------------------------------------------------
 
