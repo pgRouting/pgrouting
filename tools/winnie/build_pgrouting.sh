@@ -1,5 +1,7 @@
 #!/bin/sh.exe
 
+set -e
+
 # CHANGE THESE TO SUIT YOUR PROJECT
 #all these get passed in by jenkins
 #export OS_BUILD=64 
@@ -75,8 +77,8 @@ fi
 #cmake -G "MSYS Makefiles" -DWITH_DD=ON ..
 #first delete old pgrouting files from installed folder before we reinstall
 echo "The git commit is ${GIT_COMMIT}"
-rm ${PGPATH}/lib/librouting*
-rm ${PGPATH}/share/extension/pgrouting*
+rm -f ${PGPATH}/lib/librouting*
+rm -f ${PGPATH}/share/extension/pgrouting*
 make && make install
 
 #we need uninstall and reinstall copy to VC++ EDB instance if we want to test on standard Windows installed versions

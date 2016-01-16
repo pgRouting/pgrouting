@@ -3,24 +3,25 @@
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 .. _pgr_apsp_johnson:
 
-pgr_apspJohnson - All Pairs Shortest Path, Johnson's Algorithm
+pgr_apspJohnson
 ===============================================================================
 
 .. index::
-    single: pgr_apspJohnson(text)
-    module: apsp
+    single: pgr_apspJohnson(text) -- deprecated
 
 Name
 -------------------------------------------------------------------------------
 
 ``pgr_apspJohnson`` - Returns all costs for each pair of nodes in the graph.
 
+.. warning:: This function is deprecated in version 2.2
+             Use :ref:`pgr_johnson` instead
 
 Synopsis
 -------------------------------------------------------------------------------
@@ -60,20 +61,9 @@ Returns set of :ref:`type_cost_result`:
 Examples
 -------------------------------------------------------------------------------
 
-.. code-block:: sql
-
-    SELECT seq, id1 AS from, id2 AS to, cost 
-        FROM pgr_apspJohnson(
-            'SELECT source, target, cost FROM edge_table'
-        );
-
-     seq | from | to | cost 
-    -----+------+----+------
-       0 |    1 |  1 |    0
-       1 |    1 |  2 |    1
-       2 |    1 |  5 |    2
-       3 |    1 |  6 |    3
-    [...]
+.. literalinclude:: doc-apspJohnson.queries
+   :start-after: --q1
+   :end-before: --q2
 
 The query uses the :ref:`sampledata` network.
 
@@ -82,5 +72,5 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`type_cost_result`
-* :ref:`pgr_apsp_warshall`
+* :ref:`pgr_johnson`
 * http://en.wikipedia.org/wiki/Johnson%27s_algorithm

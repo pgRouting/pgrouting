@@ -1,7 +1,10 @@
-/*PGR
+/*PGR-GNU*****************************************************************
+File: pgr_types.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky_vergara@hotmail.com
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,10 +20,9 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
+********************************************************************PGR-GNU*/
 
-#ifndef PGR_TYPES_H
-#define PGR_TYPES_H
+#pragma once
 
 #include "postgres.h"
 
@@ -38,74 +40,124 @@ typedef struct edge_astar
 } edge_astar_t;
 
 
-typedef struct path_element
-{
-    int64_t vertex_id;
-    int64_t edge_id;
+
+typedef struct {
+    int vertex_id;
+    int edge_id;
     float8 cost;
 } path_element_t;
 
-typedef struct path_element3
-{
-    int seq;
-    int64_t from;
-    int64_t to;
-    int64_t vertex;
+/*
+ * This one is for processing
+ */
+typedef struct {
+    int64_t node;
     int64_t edge;
     float8 cost;
-    float8 tot_cost;
-} pgr_path_element3_t;
+    float8 agg_cost;
+} Path_t;
+
+/*
+ * This ones are for returning the info to postgres
+ */
 
 typedef struct {
-  int64_t id;
-  int64_t source;
-  int64_t target;
-  float8 cost;
-  float8 reverse_cost;
+    int64_t seq;
+    int64_t start_id;
+    int64_t end_id;
+    int64_t node;
+    int64_t edge;
+    float8 cost;
+    float8 agg_cost;
+} General_path_element_t;
+
+
+typedef struct{
+    int64_t route_id;
+    int64_t path_id;
+    int64_t path_seq;
+    int64_t start_vid;
+    int64_t end_vid;
+    int64_t node;
+    int64_t edge;
+    float8 cost;
+    float8 agg_cost;
+    float8 route_agg_cost;
+} Routes_t;
+
+
+typedef struct {
+    int64_t id;
+    int64_t source;
+    int64_t target;
+    float8 cost;
+    float8 reverse_cost;
 } pgr_edge_t;
 
 typedef struct {
-  int seq;
-  int64_t source;
-  int64_t edge;
-  float8 cost;
+    int seq;
+    int64_t source;
+    int64_t edge;
+    float8 cost;
 } pgr_path_t;
 
+typedef struct matrix_cell {
+    int64_t from_vid;
+    int64_t to_vid;
+    double cost;
+} Matrix_cell_t;
+
+// Restrictions used in pgr_turnRestrictions
+
+#define  MAX_RULE_LENGTH 5
+typedef struct 
+{
+    int64_t target_id;
+    float8 to_cost;
+    int64_t via[MAX_RULE_LENGTH];
+}
+Restrict_t;
+
+typedef struct {
+    int64_t pid;
+    int64_t edge_id;
+    char side;  // 'r', 'l', 'b' (default is both)
+    float8 fraction;
+    int64_t vertex_id; // number is negative and is used for processing
+} Point_on_edge_t;
+
+// used for getting the data
+typedef
+enum {
+    ANY_INTEGER,
+    ANY_NUMERICAL,
+    TEXT,
+    CHAR1
+} expectType;
+
+typedef
+struct {
+    int colNumber;
+    int type;
+    bool strict;
+    char *name;
+    expectType eType;
+
+} Column_info_t;
+
+// used in boost
 struct boost_vertex_t {
-  int64_t id;
+    int64_t id;
 };
 
 struct boost_edge_t{
-  int64_t id;
-  float8 cost;
-  int64_t source_id;
-  int64_t target_id;
+    int64_t id;
+    float8 cost;
+    int64_t source;
+    int64_t target;
+    bool first;  // originally was true (source, target) false (target, source)
 };
 
-// used in kdijktra
-#if 0
-typedef struct 
-{
-   int64_t vertex_id_source;
-   int64_t edge_id_source;
-   int64_t vertex_id_target;
-   int64_t edge_id_target;
-   float8 cost;
-   float8 totcost;
-} dist_fromto_t;
-
-
-typedef struct 
-{
-  int64_t vertex_id_source;
-  int64_t edge_id_source;
-  int64_t vertex_id_target;
-  int64_t edge_id_target;
-  float8 cost;
-  char* the_way;
-} path_fromto_t;
-#endif
 
 enum graphType { UNDIRECTED= 0, DIRECTED};
 
-#endif // PGR_TYPES_H

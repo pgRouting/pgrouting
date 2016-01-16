@@ -3,7 +3,7 @@
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -23,7 +23,7 @@ Name
 
 .. note:: This function is intended for the developer’s aid.
 
-.. warning:: This function is  deprecated in 2.1
+.. warning:: This function is deprecated in 2.1
              Use `_pgr_isColumnIndexed` instead
 
 

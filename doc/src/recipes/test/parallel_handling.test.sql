@@ -1,3 +1,5 @@
+BEGIN;
+  SET client_min_messages = WARNING;
   drop table if exists parallel;
   CREATE TABLE parallel (
     id serial,
@@ -119,3 +121,4 @@
 
 
   select * from expand_parallel_edge_paths( 'paths' );
+ROLLBACK;

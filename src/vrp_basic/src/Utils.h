@@ -34,6 +34,31 @@ typedef std::vector<int> IntVector;
 typedef std::vector<double> DoubleVector;
 typedef std::vector<std::string> StringVector;
 
+class tokenizer
+{
+    std::string s, delim;
+    std::string::size_type pos;
+
+public:
+
+    tokenizer( std::string xs, std::string xdelim ) : s(xs), delim(xdelim)
+    {
+        pos = s.find_first_not_of( delim );
+    }
+
+    bool has_more_tokens()
+    {
+        return pos != std::string::npos;
+    }
+
+    std::string next_token()
+    {
+        std::string::size_type end_pos = s.find_first_of( delim, pos );
+        std::string token = s.substr( pos, end_pos-pos );
+        pos = s.find_first_not_of( delim, end_pos );
+        return token;
+    }
+};
 
 class StringOperation
 {
@@ -67,12 +92,10 @@ public:
 
 	bool parse(std::string strInput, std::string chDelim)
 	{
-		char *ptr = strtok((char *)strInput.c_str(), chDelim.c_str());
-		while(ptr != NULL)
+        tokenizer t( strInput, chDelim );
+		while(t.has_more_tokens())
 		{
-			std::string str = ptr;
-			vecTokens.push_back(str);
-			ptr = strtok(NULL, chDelim.c_str());
+			vecTokens.push_back(t.next_token());
 		}
 		return true;
 	}
@@ -105,4 +128,3 @@ private:
 
 };
 
-#endif

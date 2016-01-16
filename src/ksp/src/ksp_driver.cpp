@@ -1,7 +1,10 @@
-/*PGR
+/*PGR-GNU*****************************************************************
+File: ksp_driver.cpp
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,14 +20,12 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
+********************************************************************PGR-GNU*/
 
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
 #endif
-
-
 
 
 #include <deque>
@@ -34,54 +35,42 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 
 #include "./ksp_driver.h"
-extern "C" {
-#if 0
-#include "postgres.h"
-#include "./ksp.h"
-#include "./../../common/src/pgr_types.h"
-#endif
-#include "./../../common/src/postgres_connection.h"
-}
-
-
-
+#include "../../common/src/memory_func.hpp"
 #include "./pgr_ksp.hpp"
 
 
 
 int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
                        int64_t  start_vertex, int64_t  end_vertex,
-                       int no_paths, bool has_reverse_cost, bool directedFlag,
-                       pgr_path_element3_t **ksp_path, int *path_count,
+                       int k, bool directedFlag, bool heap_paths,
+                       General_path_element_t **ksp_path, size_t *path_count,
                        char ** err_msg) {
     try {
-        // in c code this should have been checked:
-        //  1) start_vertex is in the data_edges  DONE
-        //  2) end_vertex is in the data_edges    DONE
-        //  3) start and end_vertex are different DONE
         std::ostringstream log;
 
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const int initial_size = 1;
+        const int initial_size = total_tuples;
 
         std::deque< Path > paths;
+#if 0
         typedef boost::adjacency_list < boost::vecS, boost::vecS,
             boost::undirectedS,
             boost_vertex_t, boost_edge_t > UndirectedGraph;
         typedef boost::adjacency_list < boost::vecS, boost::vecS,
             boost::bidirectionalS,
             boost_vertex_t, boost_edge_t > DirectedGraph;
-
-        Pgr_ksp < DirectedGraph > digraph(gType, initial_size);
-        Pgr_ksp < UndirectedGraph > undigraph(gType, initial_size);
+#endif
 
         if (directedFlag) {
-            digraph.initialize_graph(data_edges, total_tuples);
-            paths = digraph.Yen(start_vertex, end_vertex, no_paths);
-            digraph.clear();
+            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            Pgr_ksp< Pgr_base_graph< DirectedGraph > > fn_yen;
+            digraph.graph_insert_data(data_edges, initial_size);
+            paths = fn_yen.Yen(digraph, start_vertex, end_vertex, k, heap_paths);
         } else {
-            undigraph.initialize_graph(data_edges, total_tuples);
-            paths = undigraph.Yen(start_vertex, end_vertex, no_paths);
+            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            Pgr_ksp< Pgr_base_graph< UndirectedGraph > > fn_yen;
+            undigraph.graph_insert_data(data_edges, initial_size);
+            paths = fn_yen.Yen(undigraph, start_vertex, end_vertex, k, heap_paths);
         }
 
 
@@ -89,50 +78,38 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
 
         if (count == 0) {
             *err_msg = strdup(
-               "NOTICE: No path found between Starting and Ending vertices");
-            *ksp_path = noPathFound3(-1, path_count, (*ksp_path));
+                    "NOTICE: No paths found between Starting and Ending vertices");
+            *ksp_path = noResult(path_count, (*ksp_path));
             return 0;
         }
 
         // get the space required to store all the paths
         *ksp_path = NULL;
-        *ksp_path = pgr_get_memory3(count, (*ksp_path));
+        *ksp_path = get_memory(count, (*ksp_path));
 
         int sequence = 0;
         int route_id = 0;
         for (const auto &path : paths) {
-            if (path.path.size() > 0)
-               path.dpPrint(ksp_path, sequence, route_id);
+            if (path.size() > 0)
+                path.get_pg_ksp_path(ksp_path, sequence, route_id);
             ++route_id;
         }
 
-        log << "NOTICE Sequence: " << sequence << "\n";
-        if (count != sequence) {
-            log << "ERROR: Internal count and real count are different. \n"
-                << "ERROR: This should not happen: Please report in GitHub:"
-                << " pgrouting issues.";
-            *err_msg = strdup(log.str().c_str());
-            return -1;
-        }
-        #if 1
-        *err_msg = strdup("OK");
-        #else
-        *err_msg = strdup(log.str().c_str());
-        #endif
+        if (count != sequence) {                                
+            *err_msg = NULL;
+            return 2;
+        }                                                                                                       
         *path_count = count;
+
+#if 1
+        *err_msg = strdup("OK");
+#else
+        *err_msg = strdup(log.str().c_str());
+#endif
         return EXIT_SUCCESS;
     } catch ( ... ) {
-     *err_msg = strdup("Caught unknown expection!");
-     return -1;
+        *err_msg = strdup("Caught unknown expection!");
+        return -1;
     }
 }
 
-
-#if 0
-// move around this lines to force a return with an empty path and the log msg
-// cool for debugging
-*err_msg = strdup(log.str().c_str());
-(*path_count) = 1;
-*path = noPathFound(start_vertex);
-return -1;
-#endif

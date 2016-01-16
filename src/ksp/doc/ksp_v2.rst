@@ -3,13 +3,13 @@
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 .. _pgr_ksp_v2:
 
-pgr_ksp (V 2.0) - K-Shortest Path
+pgr_ksp (V 2.0) 
 ===============================================================================
 
 .. index:: 
@@ -39,7 +39,7 @@ The K shortest path routing algorithm based on Yen's algorithm. "K" is the numbe
                - for directed graph.
                  ``pgr_ksp(sql, source, target, distance, directed:=true)``
 
-             See :ref:`pgr_ksp_v3`
+             See :ref:`pgr_ksp`
 
 
 
@@ -85,55 +85,16 @@ Examples
 
 * Without ``reverse_cost``
 
-.. code-block:: sql
-
-   SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost
-    FROM pgr_ksp(
-      'SELECT id, source, target, cost FROM edge_table',
-      7, 12, 2, false
-    );
-   seq | route | node | edge | cost 
-  -----+-------+------+------+------
-     0 |     0 |    7 |    6 |    1
-     1 |     0 |    8 |    7 |    1
-     2 |     0 |    5 |    8 |    1
-     3 |     0 |    6 |    9 |    1
-     4 |     0 |    9 |   15 |    1
-     5 |     0 |   12 |   -1 |    0
-     6 |     1 |    7 |    6 |    1
-     7 |     1 |    8 |    7 |    1
-     8 |     1 |    5 |    8 |    1
-     9 |     1 |    6 |   11 |    1
-    10 |     1 |   11 |   13 |    1
-    11 |     1 |   12 |   -1 |    0
-  (12 rows)
-
+.. literalinclude:: doc-ksp-v2.queries
+    :start-after: --q1
+    :end-before: --q2
 
 
 * With ``reverse_cost``
 
-.. code-block:: sql
-
-   SELECT seq, id1 AS route, id2 AS node, id3 AS edge, cost
-    FROM pgr_ksp(
-      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-      7, 12, 2, true
-    );
-   seq | route | node | edge | cost 
-  -----+-------+------+------+------
-     0 |     0 |    7 |    6 |    1
-     1 |     0 |    8 |    7 |    1
-     2 |     0 |    5 |    8 |    1
-     3 |     0 |    6 |    9 |    1
-     4 |     0 |    9 |   15 |    1
-     5 |     0 |   12 |   -1 |    0
-     6 |     1 |    7 |    6 |    1
-     7 |     1 |    8 |    7 |    1
-     8 |     1 |    5 |    8 |    1
-     9 |     1 |    6 |   11 |    1
-    10 |     1 |   11 |   13 |    1
-    11 |     1 |   12 |   -1 |    0
-  (12 rows)
+.. literalinclude:: doc-ksp-v2.queries
+    :start-after: --q2
+    :end-before: --q3
 
 
 The queries use the :ref:`sampledata` network.
