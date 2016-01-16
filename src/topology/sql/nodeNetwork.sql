@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION pgr_nodeNetwork(edge_table text, tolerance double precision, 
-			id text default 'id', the_geom text default 'the_geom', table_ending text default 'noded') RETURNS text AS
+			id text default 'id', the_geom text default 'the_geom', table_ending text default 'noded', node_where text DEFAULT ''::text, outall boolean DEFAULT false) RETURNS text AS
 $BODY$
 DECLARE
 	/*
@@ -50,11 +50,12 @@ DECLARE
     untouched bigint;
     geomtype text;
     debuglevel text;
+    rows_where text;
    
 
 BEGIN
   raise notice 'PROCESSING:'; 
-  raise notice 'pgr_nodeNetwork(''%'',%,''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,table_ending;
+  raise notice 'pgr_nodeNetwork(''%'',%,''%'',''%'',''%'',''%'')',edge_table,tolerance,id,the_geom,table_ending,node_where;
   raise notice 'Performing checks, please wait .....';
   execute 'show client_min_messages' into debuglevel;
 
@@ -73,7 +74,8 @@ BEGIN
     intab=sname||'.'||tname;
     outname=tname||'_'||table_ending;
     outtab= sname||'.'||outname;
-    --rows_where = ' AND ('||rows_where||')'; 
+    rows_where = CASE WHEN length(node_where) > 2 and not outall THEN ' AND (' || node_where || ')' ELSE '' END;
+    node_where = CASE WHEN length(node_where) > 2 THEN ' WHERE (' || node_where || ')' ELSE '' END;
   END;
 
   BEGIN 
@@ -185,8 +187,8 @@ BEGIN
 	       _pgr_startpoint(l2.' || quote_ident(n_geom) || ') as source,
 	       _pgr_endpoint(l2.' || quote_ident(n_geom) || ') as target,
                st_intersection(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ') as geom 
-        from ' || _pgr_quote_ident(intab) || ' l1 
-             join ' || _pgr_quote_ident(intab) || ' l2 
+        from (SELECT * FROM ' || _pgr_quote_ident(intab) || node_where || ') as l1 
+             join (SELECT * FROM ' || _pgr_quote_ident(intab) || node_where || ') as l2 
              on (st_dwithin(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ', ' || tolerance || '))'||
         'where l1.' || quote_ident(n_pkey) || ' <> l2.' || quote_ident(n_pkey)||' and 
 	st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false and 
@@ -260,7 +262,7 @@ BEGIN
 	EXECUTE 'insert into ' || _pgr_quote_ident(outtab) || ' (old_id , sub_id, ' || quote_ident(n_geom) || ')
                 ( with used as (select distinct old_id from '|| _pgr_quote_ident(outtab)||')
 		select ' ||  quote_ident(n_pkey) || ', 1 as sub_id, ' ||  quote_ident(n_geom) ||
-		' from '|| _pgr_quote_ident(intab) ||' where  '||quote_ident(n_pkey)||' not in (select * from used))';
+		' from '|| _pgr_quote_ident(intab) ||' where  '||quote_ident(n_pkey)||' not in (select * from used)' || rows_where || ')';
 	GET DIAGNOSTICS untouched = ROW_COUNT;
 
 	raise NOTICE '  Splitted Edges: %', touched;
@@ -280,7 +282,6 @@ $BODY$
     LANGUAGE 'plpgsql' VOLATILE STRICT COST 100;
 
 
-COMMENT ON FUNCTION pgr_nodeNetwork(text,tolerance double precision, 
-                        text,  text ,  text )
+COMMENT ON FUNCTION pgr_nodeNetwork(text, double precision, text, text, text, text, boolean )
  IS  'edge_table, tolerance, id:=''id'', the_geom:=''the_geom'', table_ending:=''noded'' ';
 

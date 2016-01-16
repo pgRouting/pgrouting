@@ -3,6 +3,7 @@
 FILE: pgrouting_utilities.sql
 
 Copyright (c) 2015 Celia Vriginia Vergara Castillo
+Copyright (c) 2015 REgina Obe
 Mail: vicky_vergara@hotmail.com
 
 ------
@@ -40,8 +41,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
            (NULL,NULL) when schema was not found.
 
    Author: Vicky Vergara <vicky_vergara@hotmail.com>>
-
+  
   HISTORY
+     2015/11/01 Changed to handle views and refactored
      Created: 2013/08/19  for handling schemas
 
 */
@@ -49,15 +51,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION _pgr_getTableName(IN tab text, IN reportErrs int default 0, IN fnName text default '_pgr_getTableName', OUT sname text,OUT tname text)
   RETURNS RECORD AS
-$BODY$
+$$
 DECLARE
         naming record;
         i integer;
         query text;
-        sn text;
-        tn text;
+        sn text; -- schema name
+        tn text; -- table name
+        ttype text; --table type for future use
         err boolean;
         debuglevel text;
+        var_types text[] = ARRAY['BASE TABLE', 'VIEW'];
 BEGIN
 
     execute 'show client_min_messages' into debuglevel;
@@ -66,56 +70,63 @@ BEGIN
     perform _pgr_msg( 0, fnName, 'Checking table ' || tab || ' exists');
     --RAISE DEBUG 'Checking % exists',tab;
 
-    execute 'select strpos('||quote_literal(tab)||','||quote_literal('.')||')' into i;
-    if (i!=0) then
-        execute 'select substr('||quote_literal(tab)||',1,strpos('||quote_literal(tab)||','||quote_literal('.')||')-1)' into sn;
-        execute 'select substr('||quote_literal(tab)||',strpos('||quote_literal(tab)||','||quote_literal('.')||')+1),length('||quote_literal(tab)||')' into tn;
-    else
-        execute 'select current_schema' into sn;
-        tn =tab;
-    end if;
+    i := strpos(tab,'.');
+    IF (i <> 0) THEN
+        sn := split_part(tab, '.',1); 
+        tn := split_part(tab, '.',2);
+    ELSE
+        sn := current_schema;
+        tn := tab;
+    END IF;
 
 
-    EXECUTE 'SELECT schema_name FROM information_schema.schemata WHERE schema_name = '||quote_literal(sn) into naming;
-    sname=naming.schema_name;
+   SELECT schema_name INTO sname 
+   FROM information_schema.schemata WHERE schema_name = sn;
 
-    if sname is NOT NULL THEN -- found schema (as is)
-            EXECUTE 'select table_name from information_schema.tables where
-                table_type='||quote_literal('BASE TABLE')||' and
-                table_schema='||quote_literal(sname)||' and
-                table_name='||quote_literal(tn) INTO  naming;
-        tname=naming.table_name;
+    IF sname IS NOT NULL THEN -- found schema (as is)
+       SELECT table_name, table_type INTO tname, ttype 
+       FROM information_schema.tables 
+       WHERE
+                table_type = ANY(var_types) and
+                table_schema = sname and
+                table_name = tn ;
         IF tname is NULL THEN
-           EXECUTE 'select table_name from information_schema.tables where
-                table_type='||quote_literal('BASE TABLE')||' and
-                table_schema='||quote_literal(sname)||' and
-                table_name='||quote_literal(lower(tn))||'order by table_name' INTO naming;
-           tname=naming.table_name;
+            SELECT table_name, table_type INTO tname, ttype 
+            FROM information_schema.tables 
+            WHERE
+                table_type  = ANY(var_types) and
+                table_schema = sname and
+                table_name = lower(tn) ORDER BY table_name;
         END IF;
     END IF;
-    IF sname is NULL or tname is NULL THEN         --schema not found or table in schema was not found
-        EXECUTE 'SELECT schema_name FROM information_schema.schemata WHERE schema_name = '||quote_literal(lower(sn)) into naming;
-        sname=naming.schema_name;
-        if sname is NOT NULL THEN -- found schema (with lower caps)
-           EXECUTE 'select table_name from information_schema.tables where
-                table_type='||quote_literal('BASE TABLE')||' and
-                table_schema='||quote_literal(sname)||' and
-                table_name='||quote_literal(tn) INTO  naming;
-           tname=naming.table_name;
-           IF tname is NULL THEN
-                EXECUTE 'select table_name from information_schema.tables where
-                table_type='||quote_literal('BASE TABLE')||' and
-                table_schema='||quote_literal(sname)||' and
-                table_name='||quote_literal(lower(tn))||'order by table_name' INTO naming;
-                tname=naming.table_name;
+    IF sname is NULL or tname is NULL THEN --schema not found or table not found
+        SELECT schema_name INTO sname 
+        FROM information_schema.schemata 
+        WHERE schema_name = lower(sn) ;
+
+        IF sname IS NOT NULL THEN -- found schema (with lower caps)
+            SELECT table_name, table_type INTO tname, ttype 
+            FROM information_schema.tables 
+            WHERE
+                table_type  =  ANY(var_types) and
+                table_schema = sname and
+                table_name= tn ;
+                
+           IF tname IS NULL THEN
+                SELECT table_name, table_type INTO tname, ttype 
+                FROM information_schema.tables 
+                WHERE
+                    table_type  =  ANY(var_types) and
+                    table_schema = sname and
+                    table_name= lower(tn) ;
            END IF;
         END IF;
     END IF;
-   err = case when sname IS NULL OR tname IS NULL then true else false end;
+   err = (sname IS NULL OR tname IS NULL);
    perform _pgr_onError(err, reportErrs, fnName, 'Table ' || tab ||' not found',' Check your table name', 'Table '|| tab || ' found');
 
 END;
-$BODY$
+$$
 LANGUAGE plpgsql VOLATILE STRICT;
 
 
