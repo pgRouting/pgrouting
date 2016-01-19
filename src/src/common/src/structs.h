@@ -22,8 +22,11 @@ typedef struct
 //represents an edge
 typedef struct
 {
-	int source,target,id;
-	float cost;
+	int seq;
+    int source;
+    int target;
+    float cost;
+    float tot_cost;
 
 } PathElement;
 

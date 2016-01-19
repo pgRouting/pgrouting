@@ -25,18 +25,16 @@ PG_MODULE_MAGIC;
 static int compute_contracted_graph(char* sql,int level, 
 	int *final_edge_count,char **graphName,
 	char **edgeString,char **psuedoEString,
-	char **removedVString,char **removedEString) {
+	char **removedVString,char **removedEString,bool has_rcost) {
 	int SPIcode = 0;
 	Edge *edges = NULL;
 	int initial_num_edges = 0;
-
-	bool has_rcost=false;
 	char *err_msg = (char *)"";
 	int ret = -1;
 	int initial_num_vertices=0,final_num_vertices=0;
 
 	PGR_DBG("Load data");
-	elog(INFO,"Loading data1.....");
+	elog(INFO,"Loading data.....");
 	int readCode = fetch_data(sql, &edges, &initial_num_edges, has_rcost);
 
 	if (readCode == -1 || initial_num_edges == 0) {
@@ -85,6 +83,8 @@ pgr_contractgraph(PG_FUNCTION_ARGS) {
 	char *psuedoEString;
 	char *removedVString;
 	char *removedEString;
+	bool has_rcost=false;
+	bool directed =false;
 	//first call of the function
 	if (SRF_IS_FIRSTCALL()) {
 		MemoryContext   oldcontext;
@@ -92,9 +92,11 @@ pgr_contractgraph(PG_FUNCTION_ARGS) {
 		oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 		//fetch the edges and construct the graph
 		level=PG_GETARG_INT64(1);
+		has_rcost=PG_GETARG_BOOL(2);
+		//directed=PG_GETARG_BOOL(3);
 		elog(INFO,"level of contraction : %d",level);
 		compute_contracted_graph(text2char(PG_GETARG_TEXT_P(0)),level,&final_num_edges,
-			&graphName,&edgeString,&psuedoEString,&removedVString,&removedEString);
+			&graphName,&edgeString,&psuedoEString,&removedVString,&removedEString,has_rcost);
 		elog(INFO,"graph name : %s",graphName);
 		elog(INFO,"Final edge count : %d",final_num_edges);
 		//elog(INFO,"edge string %s",edgeString);
@@ -104,10 +106,10 @@ pgr_contractgraph(PG_FUNCTION_ARGS) {
 		ret_value->removedVertices=removedVString;
 		ret_value->removedEdges=removedEString;
 		ret_value->psuedoEdges=psuedoEString;
-		elog(INFO,"graphname:- %s,blob:- %s",ret_value->contracted_graph_name,ret_value->contracted_graph_blob);
-		elog(INFO,"removededges: %s",ret_value->removedEdges);
-		elog(INFO,"removedvertices: %s",ret_value->removedVertices);
-		elog(INFO,"psuedoedges: %s",ret_value->psuedoEdges);
+		//elog(INFO,"graphname:- %s,blob:- %s",ret_value->contracted_graph_name,ret_value->contracted_graph_blob);
+		//elog(INFO,"removededges: %s",ret_value->removedEdges);
+		//elog(INFO,"removedvertices: %s",ret_value->removedVertices);
+		//elog(INFO,"psuedoedges: %s",ret_value->removedEdges);
 		//char 
 		//total_tuples=execq(text2char(PG_GETARG_TEXT_P(0)),limit);
 		
@@ -160,9 +162,9 @@ pgr_contractgraph(PG_FUNCTION_ARGS) {
 		//values[1]=CStringGetDatum(ret_value->contracted_blob);
 		values[0] = ret_value->contracted_graph_name   ? pstrdup(ret_value->contracted_graph_name) : NULL;
 		values[1] = ret_value->contracted_graph_blob  ? pstrdup(ret_value->contracted_graph_blob) : NULL;
-      	values[3] = ret_value->removedVertices ? pstrdup(ret_value->removedVertices) : NULL;
-      	values[4] = ret_value->removedEdges ? pstrdup(ret_value->removedEdges) : NULL;
-      	values[5] = ret_value->psuedoEdges ? pstrdup(ret_value->psuedoEdges) : NULL;
+      	values[2] = ret_value->removedVertices ? pstrdup(ret_value->removedVertices) : NULL;
+      	values[3] = ret_value->removedEdges ? pstrdup(ret_value->removedEdges) : NULL;
+      	values[4] = ret_value->psuedoEdges ? pstrdup(ret_value->psuedoEdges) : NULL;
 
 
       //int l1=ret_value->len1;

@@ -30,6 +30,26 @@ postgres.h
 ./structs.h
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/./structs.h
 
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/myGraph.hpp
+boost/config.hpp
+-
+boost/graph/adjacency_list.hpp
+-
+boost/graph/graph_utility.hpp
+-
+deque
+-
+vector
+-
+set
+-
+map
+-
+limits
+-
+structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/structs.h
+
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/structs.h
 
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src/graphMinimizer.hpp
@@ -85,8 +105,8 @@ boost/graph/adjacency_list.hpp
 -
 boost/graph/dijkstra_shortest_paths.hpp
 -
-../../common/src/baseGraph.hpp
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/baseGraph.hpp
+../../common/src/myGraph.hpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/myGraph.hpp
 ../../common/src/structs.h
 /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/structs.h
 ../../contraction/src/graphMinimizer.hpp

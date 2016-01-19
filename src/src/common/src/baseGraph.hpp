@@ -449,18 +449,24 @@ void remove_vertex(int64_t p_vertex) {
       }
 
       if (edge.cost >= 0) {
-        boost::tie(e, inserted) =
-          boost::add_edge(vm_s->second, vm_t->second, graph);
-        graph[e].cost = edge.cost;
-        graph[e].id = edge.id;
-      }
+      boost::tie(e, inserted) =
+      boost::add_edge(vm_s->second, vm_t->second, graph);
+      graph[e].cost = edge.cost;
+      graph[e].id = edge.id;
+      graph[e].source=edge.source;
+      graph[e].target=edge.target;
+      //graph[e].type=edge.type;
+      graph[e].type=0;
+    }
 
-      if (edge.revcost >= 0) {
-        boost::tie(e, inserted) =
-          boost::add_edge(vm_t->second, vm_s->second, graph);
-        graph[e].cost = edge.revcost;
-        graph[e].id = edge.id;
-      }
+    if (edge.revcost > 0) {
+      boost::tie(e, inserted) =
+      boost::add_edge(vm_t->second, vm_s->second, graph);
+      graph[e].cost = edge.revcost;
+      graph[e].source=edge.target;
+      graph[e].target=edge.source;
+      graph[e].id = edge.id;
+    }
     }
 };
 

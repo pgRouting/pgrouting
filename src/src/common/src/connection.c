@@ -6,7 +6,6 @@
 #include "connection.h"
 #define TUPLIMIT 1000
 
-
 int finish(int code, int ret)
 {
   code = SPI_finish();
@@ -77,6 +76,28 @@ static float8 SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber,
   }
   return value;
 }
+
+static char* SPI_getString(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType) {
+  //Datum binval;
+  //bool isnull;
+  char *value =NULL;
+  //binval = SPI_getbinval(*tuple, *tupdesc, colNumber, &isnull);
+  //if (isnull) elog(ERROR, "Null value found");
+  switch (colType) {
+    case TEXTOID:
+    //elog(INFO,"TEXTOID");
+    value = SPI_getvalue(*tuple,*tupdesc,colNumber);
+    //elog(INFO,"value is %s",value);
+    break;
+    case CSTRINGOID:
+    //elog(INFO,"CSTRINGOID");
+    value = SPI_getvalue(*tuple,*tupdesc,colNumber);
+    break;
+    default:
+    elog(ERROR, "text/varchar expected");
+  }
+  return value;
+}
 static int fetch_column_info(
   int *colNumber,
   int *coltype,
@@ -93,6 +114,9 @@ static int fetch_column_info(
   }
   return 0;
 }
+
+
+
 
 /********************
 Functions for pgr_foo with sql:
@@ -115,6 +139,28 @@ Functions for pgr_foo with sql:
     if (error == -1) return error;
   }
 
+  return 0;
+
+}
+int fetch_contracted_graph_columns(int (*edge_columns)[5],int (*edge_types)[5]) 
+{
+
+  int error;
+  error = fetch_column_info(&(*edge_columns)[0], &(*edge_types)[0], "contracted_graph_name");
+  if (error == -1) return error;
+  //elog(INFO,"fetched name info" );
+  error = fetch_column_info(&(*edge_columns)[1], &(*edge_types)[1], "contracted_graph_blob");
+  if (error == -1) return error;
+  //elog(INFO,"fetched graph info" );
+  error = fetch_column_info(&(*edge_columns)[2], &(*edge_types)[2], "removedvertices");
+  if (error == -1) return error;
+  //elog(INFO,"fetched rv info" );
+  error = fetch_column_info(&(*edge_columns)[3], &(*edge_types)[3], "removededges");
+  if (error == -1) return error;
+  //elog(INFO,"fetched re info" );
+  error = fetch_column_info(&(*edge_columns)[4], &(*edge_types)[4], "psuedoedges");
+  if (error == -1) return error;
+  //elog(INFO,"fetched pe info" );
   return 0;
 
 }
@@ -192,63 +238,116 @@ void fetch_astar_edge(
   //PGR_DBG("id: %li\t source: %li\ttarget: %li\tcost: %f\t,reverse: %f\n",
     //      target_edge->id,  target_edge->source,  target_edge->target,  target_edge->cost,  target_edge->revcost);
 }
-/*int fetchVertexCount(char *sql,int *count)
-{
-  int edge_columns[1];
-        int edge_types[1];
-        int i,t;
-        for (i = 0; i < 1; ++i) edge_columns[i] = -1;
-          for (i = 0; i < 1; ++i) edge_types[i] = -1;
-// Connecting to SPI;
-  int SPIcode = SPI_connect();
-  if (SPIcode  != SPI_OK_CONNECT) 
-  {
-    elog(ERROR, "Couldn't open a connection to SPI");
-    return -1;
-  }
-      // Preparing Plan
-  void *SPIplan;
-  SPIplan = SPI_prepare(sql, 0, NULL);
-  if (SPIplan  == NULL) {
-    elog(ERROR, "Couldn't create query plan via SPI");
-    return -1;
-  }
-      // Opening Portal
-  Portal SPIportal;
-  if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
-    elog(ERROR, "SPI_cursor_open('%s') returns NULL", sql);
-    return -1;
-  }
-      // Starting Cycle;
-  bool moredata = TRUE;
-      //(*totalTuples) = total_tuples = 0;
-  while (moredata == TRUE) 
-  {
-    SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
-            // on the first tuple get the column numbers 
-    if (edge_columns[0] == -1)
-    {
-            // Fetching column numbers
-      if (fetch_edge_columns(&edge_columns, &edge_types,has_rcost) == -1)
-       return finish(SPIcode, ret);
-            // Finished fetching column numbers
-   }
-   ntuples = SPI_processed;
-   if (ntuples==1)
-   {
-     SPITupleTable *tuptable = SPI_tuptable;
-     TupleDesc tupdesc = SPI_tuptable->tupdesc;
-      //PGR_DBG("processing %d", ntuples);
-     for (t = 0; t < ntuples; t++) {
-      HeapTuple tuple = tuptable->vals[t];
-    }
-    SPI_freetuptable(tuptable);
-  }
-  else {
-    moredata = FALSE;
-  }
+void fetch_contracted_info(
+ HeapTuple *tuple,
+ TupleDesc *tupdesc, 
+ int (*graph_columns)[5],
+ int (*graph_types)[5],
+ pgr_contracted_blob *graphInfo) {
+
+  graphInfo->contracted_graph_name = SPI_getString(tuple, tupdesc, (*graph_columns)[0], (*graph_types)[0]);
+  graphInfo->contracted_graph_blob = SPI_getString(tuple, tupdesc, (*graph_columns)[1], (*graph_types)[1]);
+  graphInfo->removedVertices = SPI_getString(tuple, tupdesc, (*graph_columns)[2], (*graph_types)[2]);
+  graphInfo->removedEdges = SPI_getString(tuple, tupdesc, (*graph_columns)[3], (*graph_types)[3]);
+  graphInfo->psuedoEdges = SPI_getString(tuple, tupdesc, (*graph_columns)[4], (*graph_types)[4]);
+  
 }
-}*/
+int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
+{
+  int ntuples;
+  int64_t total_tuples=0;
+  int graph_columns[5];
+  int graph_types[5];
+  int i;
+  for (i = 0; i < 5; ++i) graph_columns[i] = -1;
+    for (i = 0; i < 5; ++i) graph_types[i] = -1;
+      int ret = -1;
+
+
+    // Connecting to SPI;
+    int SPIcode = SPI_connect();
+    if (SPIcode  != SPI_OK_CONNECT) 
+    {
+      elog(ERROR, "Couldn't open a connection to SPI");
+      return -1;
+    }
+
+      // Preparing Plan
+    void *SPIplan;
+    SPIplan = SPI_prepare(sql, 0, NULL);
+    if (SPIplan  == NULL) {
+      elog(ERROR, "Couldn't create query plan via SPI");
+      return -1;
+    }
+
+      // Opening Portal
+    Portal SPIportal;
+    if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
+      elog(ERROR, "SPI_cursor_open('%s') returns NULL", sql);
+      return -1;
+    }
+
+
+      // Starting Cycle;
+    bool moredata = TRUE;
+      //(*totalTuples) = total_tuples = 0;
+    while (moredata == TRUE) 
+    {
+      SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
+
+            /*  on the first tuple get the column numbers */
+      if (graph_columns[0] == -1)
+      {
+            // Fetching column numbers
+        if (fetch_contracted_graph_columns(&graph_columns, &graph_types) == -1)
+         return finish(SPIcode, ret);
+            // Finished fetching column numbers
+     }
+
+     ntuples = SPI_processed;
+     total_tuples += ntuples;   
+        // Getting Memory
+     if ((*graphInfo) == NULL)
+      (*graphInfo) = (pgr_contracted_blob *)palloc(total_tuples * sizeof(pgr_contracted_blob));
+    else
+      (*graphInfo) = (pgr_contracted_blob *)repalloc((*graphInfo), total_tuples * sizeof(pgr_contracted_blob));
+        // Got Memory 
+
+    if ((*graphInfo) == NULL) {
+      elog(ERROR, "Out of memory");
+      return finish(SPIcode, ret);    
+    }
+    if (ntuples > 0)
+    {
+
+      int t;
+      //elog(INFO, "processing tuples");
+      SPITupleTable *tuptable = SPI_tuptable;
+      TupleDesc tupdesc = SPI_tuptable->tupdesc;
+      //PGR_DBG("processing %d", ntuples);
+      for (t = 0; t < ntuples; t++) 
+      {
+        HeapTuple tuple = tuptable->vals[t];
+        fetch_contracted_info(&tuple, &tupdesc, &graph_columns, &graph_types,
+         &(*graphInfo)[total_tuples - ntuples + t]);
+      }
+      SPI_freetuptable(tuptable);
+    }
+
+    else {
+      moredata = FALSE;
+    }
+  }
+  return 0;
+}
+
+
+
+
+
+
+
+
 int
 fetch_data(char *sql, Edge **edges,int *edge_count,bool rcost)
 {
@@ -355,7 +454,7 @@ fetch_data(char *sql, Edge **edges,int *edge_count,bool rcost)
 }*/
       }
 
-             
+
       SPI_freetuptable(tuptable);
     }
     else {
@@ -387,7 +486,7 @@ fetch_data(char *sql, Edge **edges,int *edge_count,bool rcost)
   }
 
 //(*totalTuples) = total_tuples;
-   *edge_count=total_tuples;
+  *edge_count=total_tuples;
   return 0;
 }
 
@@ -566,7 +665,7 @@ int execq(char *sql,int cnt)
   }
 
   SPI_finish();
-return (proc);
+  return (proc);
   
 
 }

@@ -98,7 +98,8 @@ public:
 				int final_target_degree=prev_target_degree-1;
 				reduced_graph->degree_to_V_map[final_target_degree].push_back(t);
 				Edge removed_edge=reduced_graph->graph[*out];
-				//cout << "removing" << " (" << removed_edge.source<< ", " << removed_edge.target << ")" << endl;
+				cout << "removing" << " (" << removed_edge.id << ", " <<  removed_edge.source<< ", " << removed_edge.target << 
+					", " << removed_edge.cost << ", " << removed_edge.revcost <<")" << endl;
 				removedVertices[frontid].push_front(removed_edge);
 				reduced_graph->remove_vertex(source_id);
 				reduced_graph->numb_vertices--;
