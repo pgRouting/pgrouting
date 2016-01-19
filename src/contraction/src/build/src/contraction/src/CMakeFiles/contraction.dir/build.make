@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src
+CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build
+CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build
 
 # Include any dependencies generated for this target.
 include src/contraction/src/CMakeFiles/contraction.dir/depend.make
@@ -54,17 +54,17 @@ include src/contraction/src/CMakeFiles/contraction.dir/flags.make
 
 src/contraction/src/CMakeFiles/contraction.dir/contraction.c.o: src/contraction/src/CMakeFiles/contraction.dir/flags.make
 src/contraction/src/CMakeFiles/contraction.dir/contraction.c.o: ../src/contraction/src/contraction.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object src/contraction/src/CMakeFiles/contraction.dir/contraction.c.o"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/contraction/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/contraction.dir/contraction.c.o   -c /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src/contraction.c
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/contraction/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/contraction.dir/contraction.c.o   -c /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/contraction/src/contraction.c
 
 src/contraction/src/CMakeFiles/contraction.dir/contraction.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/contraction.dir/contraction.c.i"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/contraction/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src/contraction.c > CMakeFiles/contraction.dir/contraction.c.i
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/contraction/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/contraction/src/contraction.c > CMakeFiles/contraction.dir/contraction.c.i
 
 src/contraction/src/CMakeFiles/contraction.dir/contraction.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/contraction.dir/contraction.c.s"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/contraction/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src/contraction.c -o CMakeFiles/contraction.dir/contraction.c.s
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/contraction/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/contraction/src/contraction.c -o CMakeFiles/contraction.dir/contraction.c.s
 
 src/contraction/src/CMakeFiles/contraction.dir/contraction.c.o.requires:
 .PHONY : src/contraction/src/CMakeFiles/contraction.dir/contraction.c.o.requires
@@ -77,17 +77,17 @@ src/contraction/src/CMakeFiles/contraction.dir/contraction.c.o.provides.build: s
 
 src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: src/contraction/src/CMakeFiles/contraction.dir/flags.make
 src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o: ../src/contraction/src/contract_function.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/contraction/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/contraction.dir/contract_function.cpp.o -c /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src/contract_function.cpp
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/contraction/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/contraction.dir/contract_function.cpp.o -c /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/contraction/src/contract_function.cpp
 
 src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/contraction.dir/contract_function.cpp.i"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/contraction/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src/contract_function.cpp > CMakeFiles/contraction.dir/contract_function.cpp.i
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/contraction/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/contraction/src/contract_function.cpp > CMakeFiles/contraction.dir/contract_function.cpp.i
 
 src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/contraction.dir/contract_function.cpp.s"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/contraction/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src/contract_function.cpp -o CMakeFiles/contraction.dir/contract_function.cpp.s
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/contraction/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/contraction/src/contract_function.cpp -o CMakeFiles/contraction.dir/contract_function.cpp.s
 
 src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o.requires:
 .PHONY : src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o.requires
@@ -112,10 +112,10 @@ src/contraction/src/CMakeFiles/contraction.dir/requires: src/contraction/src/CMa
 .PHONY : src/contraction/src/CMakeFiles/contraction.dir/requires
 
 src/contraction/src/CMakeFiles/contraction.dir/clean:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/contraction/src && $(CMAKE_COMMAND) -P CMakeFiles/contraction.dir/cmake_clean.cmake
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/contraction/src && $(CMAKE_COMMAND) -P CMakeFiles/contraction.dir/cmake_clean.cmake
 .PHONY : src/contraction/src/CMakeFiles/contraction.dir/clean
 
 src/contraction/src/CMakeFiles/contraction.dir/depend:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/contraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/contraction/src/CMakeFiles/contraction.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/contraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/contraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/contraction/src/CMakeFiles/contraction.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/contraction/src/CMakeFiles/contraction.dir/depend
 

@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src
+CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build
+CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build
 
 # Utility rule file for distclean.
 
@@ -66,6 +66,6 @@ CMakeFiles/distclean.dir/clean:
 .PHONY : CMakeFiles/distclean.dir/clean
 
 CMakeFiles/distclean.dir/depend:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles/distclean.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/CMakeFiles/distclean.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/distclean.dir/depend
 

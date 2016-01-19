@@ -1,4 +1,4 @@
-# Install script for directory: /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar/sql
+# Install script for directory: /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/myastar/sql
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

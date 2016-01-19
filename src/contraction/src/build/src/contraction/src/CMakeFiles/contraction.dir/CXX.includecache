@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/./structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/common/src/./structs.h
 
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/baseGraph.hpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/common/src/baseGraph.hpp
 boost/config.hpp
 -
 boost/graph/adjacency_list.hpp
@@ -26,27 +26,27 @@ map
 limits
 -
 postgres.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/postgres.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/common/src/postgres.h
 ./structs.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/./structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/common/src/./structs.h
 
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/common/src/structs.h
 
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src/contract_function.cpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/contraction/src/contract_function.cpp
 graphMinimizer.hpp
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src/graphMinimizer.hpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/contraction/src/graphMinimizer.hpp
 iostream
 -
 boost/graph/adjacency_list.hpp
 -
 contract_function.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src/contract_function.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/contraction/src/contract_function.h
 
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src/contract_function.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/contraction/src/contract_function.h
 ../../common/src/structs.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/common/src/structs.h
 
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/contraction/src/graphMinimizer.hpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/contraction/src/graphMinimizer.hpp
 deque
 -
 vector
@@ -66,9 +66,9 @@ boost/graph/adjacency_list.hpp
 boost/graph/dijkstra_shortest_paths.hpp
 -
 ../../common/src/baseGraph.hpp
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/baseGraph.hpp
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/common/src/baseGraph.hpp
 ../../common/src/structs.h
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/common/src/structs.h
+/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/common/src/structs.h
 
 /usr/include/postgresql/9.3/server/c.h
 postgres_ext.h

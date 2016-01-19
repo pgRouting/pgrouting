@@ -5,11 +5,11 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_C
-  "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar/src/my_astar.c" "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.o"
+  "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/myastar/src/my_astar.c" "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar/src/my_astar_wrapper.cpp" "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o"
+  "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/myastar/src/my_astar_wrapper.cpp" "/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

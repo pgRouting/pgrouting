@@ -1,4 +1,4 @@
-# Install script for directory: /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar
+# Install script for directory: /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/myastar
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,8 +34,8 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/myastar/src/cmake_install.cmake")
-  INCLUDE("/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/myastar/sql/cmake_install.cmake")
+  INCLUDE("/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/myastar/src/cmake_install.cmake")
+  INCLUDE("/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/myastar/sql/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

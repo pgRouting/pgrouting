@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src
+CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build
+CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -113,14 +113,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/common/src/CMakeFiles/progress.marks
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f CMakeFiles/Makefile2 src/common/src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles 0
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/CMakeFiles /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/common/src/CMakeFiles/progress.marks
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(MAKE) -f CMakeFiles/Makefile2 src/common/src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f CMakeFiles/Makefile2 src/common/src/clean
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(MAKE) -f CMakeFiles/Makefile2 src/common/src/clean
 .PHONY : clean
 
 # The main clean target
@@ -129,22 +129,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f CMakeFiles/Makefile2 src/common/src/preinstall
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(MAKE) -f CMakeFiles/Makefile2 src/common/src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f CMakeFiles/Makefile2 src/common/src/preinstall
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(MAKE) -f CMakeFiles/Makefile2 src/common/src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/common/src/CMakeFiles/common.dir/rule:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f CMakeFiles/Makefile2 src/common/src/CMakeFiles/common.dir/rule
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(MAKE) -f CMakeFiles/Makefile2 src/common/src/CMakeFiles/common.dir/rule
 .PHONY : src/common/src/CMakeFiles/common.dir/rule
 
 # Convenience name for target.
@@ -153,7 +153,7 @@ common: src/common/src/CMakeFiles/common.dir/rule
 
 # fast build rule for target.
 common/fast:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f src/common/src/CMakeFiles/common.dir/build.make src/common/src/CMakeFiles/common.dir/build
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(MAKE) -f src/common/src/CMakeFiles/common.dir/build.make src/common/src/CMakeFiles/common.dir/build
 .PHONY : common/fast
 
 connection.o: connection.c.o
@@ -161,7 +161,7 @@ connection.o: connection.c.o
 
 # target to build an object file
 connection.c.o:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f src/common/src/CMakeFiles/common.dir/build.make src/common/src/CMakeFiles/common.dir/connection.c.o
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(MAKE) -f src/common/src/CMakeFiles/common.dir/build.make src/common/src/CMakeFiles/common.dir/connection.c.o
 .PHONY : connection.c.o
 
 connection.i: connection.c.i
@@ -169,7 +169,7 @@ connection.i: connection.c.i
 
 # target to preprocess a source file
 connection.c.i:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f src/common/src/CMakeFiles/common.dir/build.make src/common/src/CMakeFiles/common.dir/connection.c.i
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(MAKE) -f src/common/src/CMakeFiles/common.dir/build.make src/common/src/CMakeFiles/common.dir/connection.c.i
 .PHONY : connection.c.i
 
 connection.s: connection.c.s
@@ -177,7 +177,7 @@ connection.s: connection.c.s
 
 # target to generate assembly for a file
 connection.c.s:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(MAKE) -f src/common/src/CMakeFiles/common.dir/build.make src/common/src/CMakeFiles/common.dir/connection.c.s
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(MAKE) -f src/common/src/CMakeFiles/common.dir/build.make src/common/src/CMakeFiles/common.dir/connection.c.s
 .PHONY : connection.c.s
 
 # Help Target
@@ -207,6 +207,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
