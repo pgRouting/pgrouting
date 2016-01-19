@@ -4,10 +4,10 @@
 
 ## STATUS
 
-### Current Development is in the *develop* branch
+### Current Development is in the *dev-2.2* branch
 
 The *master* branch reflects our current 2.1.0 release.
-Post 2.1.0 development will happen in the *develop* branch.
+
 
 
 ## LINKS
