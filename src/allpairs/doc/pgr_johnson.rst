@@ -25,7 +25,7 @@ pair of nodes in the graph using Johnson's algorithm.
 
 
 The Johnson algorithm, is a good choice to calculate the sum of the costs
-of the shortest path for each pair of nodes in the graph, for *sparce graphs*.
+of the shortest path for each pair of nodes in the graph, for *sparse graphs*.
 We make use of the  Boost's implementation which runs in :math:`O(V E \log V)` time,
 
     
