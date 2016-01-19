@@ -140,7 +140,7 @@ The tested queries
 
 The results of this tests are presented as:
 
-:SIZE: is the number of edges given as input.
+:SIZE: is the size of the bounding box.
 :EDGES: is the total number of records in the query.
 :DENSITY: is the density of the data :math:`\dfrac{E}{V \times (V-1)}`.
 :OUT ROWS: is the number of records returned by the queries.

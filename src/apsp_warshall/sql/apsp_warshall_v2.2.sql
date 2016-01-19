@@ -37,7 +37,7 @@ CREATE OR REPLACE FUNCTION pgr_apspWarshall(edges_sql text, directed boolean, ha
   BEGIN
       RAISE NOTICE 'Deprecated function: Use pgr_floydWarshall instead';
       has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
-      sql = edges_sql;
+      sql := edges_sql;
       IF (has_reverse != has_rcost) THEN
          IF (has_reverse) THEN
            sql = 'SELECT id, source, target, cost FROM (' || edges_sql || ') a';
