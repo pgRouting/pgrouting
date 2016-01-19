@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Table of Contents &mdash; pgRouting Manual (2.2.0)</title>
+    <title>Table of Contents &mdash; pgRouting Manual (2.2.0-dev)</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.2.0 (85ff8d6 cmake-improve-2.2)',
+        VERSION:     '2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,12 +25,12 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../index.html" />
-    <link rel="next" title="Introduction" href="src/introduction/introduction.html" /> 
+    <link rel="top" title="pgRouting Manual (2.2.0-dev)" href="../index.html" />
+    <link rel="next" title="&lt;no title&gt;" href="src/introduction/index.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
-          <span>pgRouting Manual (2.2.0)</span></a></h1>
+          <span>pgRouting Manual (2.2.0-dev)</span></a></h1>
         <h2 class="heading"><span>Table of Contents</span></h2>
       </div>
       <div class="topnav">
@@ -38,7 +38,7 @@
         <p>
         <a class="uplink" href="#">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="src/introduction/introduction.html">Introduction</a>&#160;&#160;»
+        <a href="src/introduction/index.html">&lt;no title&gt;</a>&#160;&#160;»
         </p>
 
       </div>
@@ -48,13 +48,27 @@
   <div class="section" id="table-of-contents">
 <span id="index"></span><h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h1>
 <p>pgRouting extends the <a class="reference external" href="http://postgis.net">PostGIS</a>/<a class="reference external" href="http://postgresql.org">PostgreSQL</a> geospatial database to provide geospatial routing and other network analysis functionality.</p>
-<p>This is the manual for pgRouting 2.2.0 (85ff8d6 cmake-improve-2.2).</p>
+<p>This is the manual for pgRouting 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).</p>
 <img alt="Creative Commons Attribution-Share Alike 3.0 License" class="align-left" src="../_images/ccbysa.png" />
 <p>The pgRouting Manual is licensed under a <a class="reference external" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to <a class="reference external" href="http://pgrouting.org">http://pgrouting.org</a>. For other licenses used in pgRouting see the <a class="reference internal" href="src/introduction/introduction.html#license"><em>License</em></a> page.</p>
+</div>
 <div class="section" id="general">
-<h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<h1>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="src/introduction/introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src/introduction/introduction.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/introduction/introduction.html#contributors">Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/introduction/introduction.html#inside">Inside</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/introduction/introduction.html#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src/introduction/support.html">Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src/introduction/support.html#reporting-problems">Reporting Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/introduction/support.html#mailing-list-and-gis-stackexchange">Mailing List and GIS StackExchange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/introduction/support.html#commercial-support">Commercial Support</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="src/introduction/introduction.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="src/introduction/introduction.html#license">License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/introduction/introduction.html#contributors">Contributors</a></li>
@@ -89,7 +103,7 @@
 </div>
 </div>
 <div class="section" id="tutorial">
-<h2>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h2>
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="src/tutorial/index.html#tutorial1"><em>Tutorial</em></a></p>
 <blockquote>
 <div><ul class="simple">
@@ -106,9 +120,11 @@
 </div>
 <p>For a more complete introduction how to build a routing application read the <a class="reference external" href="http://workshop.pgrouting.org">pgRouting Workshop</a>.</p>
 </div>
+<div class="section" id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="version">
 <h2>Version<a class="headerlink" href="#version" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../src/common/doc/utilities/version.html#pgr-version"><em>pgr_version</em></a> - to get pgRouting&#8217;s version information.</p>
+<p><a class="reference internal" href="../src/common/doc/version.html#pgr-version"><em>pgr_version</em></a> - to get pgRouting&#8217;s version information.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -127,33 +143,50 @@
 </div>
 <div class="section" id="topology-functions">
 <h2>Topology functions<a class="headerlink" href="#topology-functions" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../src/common/doc/functions/index.html#topology-functions"><em>Topology Functions</em></a></p>
+<p><a class="reference internal" href="../src/topology/doc/topology.html#topology-functions"><em>Topology Functions</em></a></p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="../src/common/doc/functions/create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> -  to create a topology based on the geometry.</li>
-<li><a class="reference internal" href="../src/common/doc/functions/create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> - to reconstruct the vertices table based on the source and target information.</li>
-<li><a class="reference internal" href="../src/common/doc/functions/analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a>  - to analyze the edges and vertices of the edge table.</li>
-<li><a class="reference internal" href="../src/common/doc/functions/analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a> - to analyze directionality of the edges.</li>
-<li><a class="reference internal" href="../src/common/doc/functions/node_network.html#pgr-node-network"><em>pgr_nodeNetwork</em></a>  -to create nodes to a not noded edge table.</li>
+<li><a class="reference internal" href="../src/topology/doc/pgr_createtopology.html#pgr-create-topology"><em>pgr_createTopology</em></a> -  to create a topology based on the geometry.</li>
+<li><a class="reference internal" href="../src/topology/doc/create_vert_table.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> - to reconstruct the vertices table based on the source and target information.</li>
+<li><a class="reference internal" href="../src/topology/doc/analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a>  - to analyze the edges and vertices of the edge table.</li>
+<li><a class="reference internal" href="../src/topology/doc/analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a> - to analyze directionality of the edges.</li>
+<li><a class="reference internal" href="../src/topology/doc/node_network.html#pgr-node-network"><em>pgr_nodeNetwork</em></a>  -to create nodes to a not noded edge table.</li>
 </ul>
 </div></blockquote>
 <div class="toctree-wrapper compound">
 </div>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 <div class="section" id="routing-functions">
-<h2>Routing functions<a class="headerlink" href="#routing-functions" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../src/index.html#routing-functions"><em>Routing Functions</em></a></p>
+<span id="id1"></span><h2>Routing Functions<a class="headerlink" href="#routing-functions" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../src/routingFunctions.html#routing-functions"><em>Routing Functions</em></a></p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="../src/apsp_johnson/doc/index.html#pgr-apsp-johnson"><em>pgr_apspJohnson</em></a> - All Pairs Shortest Path, Johnson’s Algorithm</li>
-<li><a class="reference internal" href="../src/apsp_warshall/doc/index.html#pgr-apsp-warshall"><em>pgr_apspWarshall</em></a> - All Pairs Shortest Path, Floyd-Warshall Algorithm</li>
+<li><a class="reference internal" href="../src/allpairs/doc/allpairs.html#all-pairs"><em>All pairs</em></a> - All pair of vertices.<ul>
+<li><a class="reference internal" href="../src/allpairs/doc/pgr_floydWarshall.html#pgr-floydwarshall"><em>pgr_floydWarshall</em></a> - Floyd-Warshall&#8217;s Algorithm</li>
+<li><a class="reference internal" href="../src/allpairs/doc/pgr_johnson.html#pgr-johnson"><em>pgr_johnson</em></a>- Johnson’s Algorithm</li>
+</ul>
+</li>
 <li><a class="reference internal" href="../src/astar/doc/index.html#pgr-astar"><em>pgr_astar</em></a> - Shortest Path A*</li>
 <li><a class="reference internal" href="../src/bd_astar/doc/index.html#bd-astar"><em>pgr_bdAstar</em></a> - Bi-directional A* Shortest Path</li>
 <li><a class="reference internal" href="../src/bd_dijkstra/doc/index.html#bd-dijkstra"><em>pgr_bdDijkstra</em></a> - Bi-directional Dijkstra Shortest Path</li>
-<li><a class="reference internal" href="../src/dijkstra/doc/index.html#pgr-dijkstra"><em>pgr_dijkstra</em></a> - Dijkstra family functions</li>
-<li><a class="reference internal" href="../src/driving_distance/doc/index.html#pgr-driving-distance"><em>pgr_driving_distance</em></a> - Driving Distance</li>
-<li><a class="reference internal" href="../src/kdijkstra/doc/index.html#pgr-kdijkstra"><em>pgr_kDijkstra</em></a> - Mutliple destination Shortest Path Dijkstra</li>
-<li><a class="reference internal" href="../src/ksp/doc/index.html#pgr-ksp"><em>pgr_ksp</em></a> - K-Shortest Path</li>
+<li><a class="reference internal" href="../src/dijkstra/doc/dijkstra.html#dijkstra"><em>dijkstra</em></a> - Dijkstra family functions<ul>
+<li><a class="reference internal" href="../src/dijkstra/doc/pgr_dijkstra.html#pgr-dijkstra"><em>pgr_dijkstra</em></a> - Dijkstra&#8217;s shortest path algorithm.</li>
+<li><a class="reference internal" href="../src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost"><em>pgr_dijkstraCost</em></a> - Use pgr_dijkstra to calculate the costs of the shortest paths.</li>
+<li><a class="reference internal" href="../src/dijkstra/doc/pgr_dijkstraVia.html#pgr-dijkstravia"><em>pgr_dijkstraVia</em></a> - Use pgr_dijkstra to make a route via Vetices</li>
+</ul>
+</li>
+<li><a class="reference internal" href="../src/driving_distance/doc/drivingDistance.html#drivingdistance"><em>Driving Distance</em></a> - Driving Distance<ul>
+<li><a class="reference internal" href="../src/driving_distance/doc/pgr_drivingDistance.html#pgr-drivingdistance"><em>pgr_drivingDistance</em></a> - Driving Distance</li>
+<li>Post processing<ul>
+<li><a class="reference internal" href="../src/driving_distance/doc/dd_alphashape.html#pgr-alphashape"><em>pgr_alphaShape</em></a> - Alpha shape computation</li>
+<li><a class="reference internal" href="../src/driving_distance/doc/dd_points_as_polygon.html#pgr-points-as-polygon"><em>pgr_pointsAsPolygon</em></a> - Polygon around set of points</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="../src/ksp/doc/pgr_ksp.html#pgr-ksp"><em>pgr_ksp</em></a> - K-Shortest Path</li>
 <li><a class="reference internal" href="../src/trsp/doc/index.html#trsp"><em>pgr_trsp</em></a> - Turn Restriction Shortest Path (TRSP)</li>
 <li><a class="reference internal" href="../src/tsp/doc/index.html#pgr-tsp"><em>pgr_tsp</em></a> - Traveling Sales Person</li>
 </ul>
@@ -161,244 +194,31 @@
 <div class="toctree-wrapper compound">
 </div>
 </div>
-<div class="section" id="pre-processing-or-post-processing-helping-functions">
-<h2>Pre processing or post processing helping functions<a class="headerlink" href="#pre-processing-or-post-processing-helping-functions" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../src/driving_distance/doc/index.html#pgr-driving-distance-post"><em>Driving Distance post-processing</em></a></p>
+</div>
+<div class="section" id="available-functions-but-not-official-pgrouting-functions">
+<h1>Available Functions but not official pgRouting functions<a class="headerlink" href="#available-functions-but-not-official-pgrouting-functions" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="../src/driving_distance/doc/dd_alphashape.html#pgr-alphashape"><em>pgr_alphaShape</em></a> - Alpha shape computation</li>
-<li><a class="reference internal" href="../src/driving_distance/doc/dd_points_as_polygon.html#pgr-points-as-polygon"><em>pgr_pointsAsPolygon</em></a> - Polygon around set of points</li>
+<li><a class="reference internal" href="../src/proposedNext.html#proposednext"><em>Proposed Functions for version 2.3</em></a></li>
+<li><a class="reference internal" href="../src/proposed.html#proposed"><em>Experimental and Proposed functions</em></a></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="experimental-and-proposed-functions">
-<h2>Experimental and Proposed functions<a class="headerlink" href="#experimental-and-proposed-functions" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>This section contains new experimental or proposed signatures for any of the following sections:</dt>
-<dd><ul class="first last simple">
-<li>topology functions</li>
-<li>routing functions</li>
-<li>vehicle routing functions</li>
-<li>pre / post procesing helper functions</li>
-</ul>
-</dd>
-</dl>
-<p>We are including them so that the pgRouting community can evaluate them before
-including them as an official function of pgRouting.</p>
-<p>Some of them are unsupported like the GSoC functions.</p>
-</div>
-<div class="section" id="proposed-functions-proposed-by-vicky-vergara">
-<h2>Proposed functions: Proposed by Vicky Vergara<a class="headerlink" href="#proposed-functions-proposed-by-vicky-vergara" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">pgr_dijkstraCost:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>About this proposal:</dt>
-<dd><ul class="first last simple">
-<li>Author: Vicky Vergara</li>
-<li>Status: testing</li>
-<li>Name: pgr_dijkstraCost</li>
-<li>Overloading to:<ul>
-<li>one to one</li>
-<li>many to one</li>
-<li>one to many  - Can replace kdijkstraCost</li>
-<li>many to many</li>
-</ul>
-</li>
-<li><a class="reference internal" href="../src/dijkstra/doc/dijkstraCost.html#pgr-dijkstracost"><em>pgr_dijkstraCost - Cost of Shortest Path Dijkstra</em></a> - Use pgr_dijkstra to make calculate only the
-aggregate cost of the shortest path.</li>
-</ul>
-</dd>
-</dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">pgr_johnson:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>About this proposal:</dt>
-<dd><ul class="first last simple">
-<li>Author: Vicky Vergara</li>
-<li>Status: testing</li>
-<li>Name: pgr_johnson</li>
-<li>Deprecate pgr_apspJohnson in favor of pgr_johnson</li>
-<li><a class="reference internal" href="../src/allpairs/doc/johnson.html#pgr-johnson"><em>pgr_johnson</em></a>- Johnson’s Algorithm</li>
-</ul>
-</dd>
-</dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">pgr_floydWarshall:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>About this proposal:</dt>
-<dd><ul class="first last simple">
-<li>Author: Vicky Vergara</li>
-<li>Status: testing</li>
-<li>Name: pgr_floydWarshall</li>
-<li>Deprecate pgr_apspWarshall in favor of pgr_floydWarshall</li>
-<li><a class="reference internal" href="../src/allpairs/doc/floydWarshall.html#pgr-floydwarshall"><em>pgr_floydWarshall</em></a> - Floyd-Warshall&#8217;s Algorithm</li>
-</ul>
-</dd>
-</dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">pgr_dijkstraViaVertex:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>About this proposal:</dt>
-<dd><ul class="first last simple">
-<li>Author: Vicky Vergara</li>
-<li>Status: developing, testing</li>
-<li>Temporary name: pgr_dijkstraViaVertex</li>
-<li><a class="reference internal" href="../src/dijkstraViaVertex/doc/dijkstraViaVertex.html#pgr-dijkstraviavertex"><em>pgr_dijkstraViaVertex - Shortest paths via vertices using dijkstra</em></a> - Use pgr_dijkstra to make a route via Vetices</li>
-</ul>
-</dd>
-</dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">pgr_dijkstraViaVertex:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>About this proposal:</dt>
-<dd><ul class="first last">
-<li><p class="first">Author: Vicky Vergara</p>
-</li>
-<li><p class="first">Status: developing, testing</p>
-</li>
-<li><p class="first">Temporary name: pgr_withPointsVia</p>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference internal" href="../src/withPoints/doc/withPointsVia.html#pgr-withpointsvia"><em>pgr_withPointsVia</em></a> - Use pgr_dijkstraViaVertes to make the route</dt>
-<dd><p class="first last">via temporary vertices.</p>
-</dd>
-</dl>
-</li>
-</ul>
-</dd>
-</dl>
 <div class="toctree-wrapper compound">
 </div>
 </div>
-<div class="section" id="experimental-functions-proposed-by-steve-woodbridge">
-<h2>Experimental functions: Proposed by Steve Woodbridge<a class="headerlink" href="#experimental-functions-proposed-by-steve-woodbridge" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt><a class="reference internal" href="../src/common/doc/convenience/index.html#convenience-functions"><em>Convenience Functions</em></a></dt>
-<dd><ul class="first last simple">
-<li><a class="reference internal" href="../src/common/doc/convenience/point_to_edgenode.html#pgr-point-to-edgenode"><em>pgr_pointToEdgeNode</em></a> - convert a point geometry to a <tt class="docutils literal"><span class="pre">vertex_id</span></tt> based on closest edge.</li>
-<li><a class="reference internal" href="../src/common/doc/convenience/flip_edges.html#pgr-flip-edges"><em>pgr_flipEdges</em></a> - flip the edges in an array of geometries so the connect end to end.</li>
-<li><a class="reference internal" href="../src/common/doc/convenience/text_to_points.html#pgr-text-to-points"><em>pgr_textToPoints</em></a> - convert a string of <tt class="docutils literal"><span class="pre">x,y;x,y;...</span></tt> locations into point geometries.</li>
-<li><a class="reference internal" href="../src/common/doc/convenience/points_to_vids.html#pgr-points-to-vids"><em>pgr_pointsToVids</em></a> - convert an array of point geometries into vertex ids.</li>
-<li><a class="reference internal" href="../src/common/doc/convenience/points_to_dmatrix.html#pgr-points-to-dmatrix"><em>pgr_pointsToDMatrix</em></a> - Create a distance matrix from an array of points.</li>
-<li><a class="reference internal" href="../src/common/doc/convenience/vids_to_dmatrix.html#pgr-vids-to-dmatrix"><em>pgr_vidsToDMatrix</em></a> - Create a distance matrix from an array of <tt class="docutils literal"><span class="pre">vertix_id</span></tt>.</li>
-<li><a class="reference internal" href="../src/common/doc/convenience/vids_to_dmatrix2.html#pgr-vids-to-dmatrix2"><em>pgr_vidsToDMatrix</em></a> - Create a distance matrix from an array of <tt class="docutils literal"><span class="pre">vertix_id</span></tt>.</li>
-</ul>
-</dd>
-</dl>
-<div class="toctree-wrapper compound">
-</div>
-</div>
-<div class="section" id="experimental-functions-by-gsoc">
-<h2>Experimental functions: by GSoC<a class="headerlink" href="#experimental-functions-by-gsoc" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>The following functions are experimental</dt>
-<dd><ul class="first simple">
-<li>They may lack documentation,</li>
-<li>Were created by GSoC students.</li>
-<li>they are unsupported.</li>
-</ul>
-<blockquote class="last">
-<div><ul class="simple">
-<li><a class="reference internal" href="../src/vrp_basic/doc/index.html#pgr-vrp-basic"><em>pgr_vrpOneDepot</em></a> - VRP One Depot</li>
-<li><a class="reference internal" href="../src/vrppdtw/doc/index.html#pgr-gsocvrppdtw"><em>pgr_vrppdtw - Pickup and Delivery problem</em></a> -  Pickup and Delivery problem</li>
-</ul>
-</div></blockquote>
-</dd>
-</dl>
-<div class="toctree-wrapper compound">
-</div>
-</div>
-<div class="section" id="proposed-functions-proposed-by-zia-mohammed">
-<h2>Proposed functions: Proposed by Zia Mohammed<a class="headerlink" href="#proposed-functions-proposed-by-zia-mohammed" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>About this proposal:</dt>
-<dd><ul class="first last simple">
-<li>Author: Zia Mohammed.</li>
-<li>Status: Needs a lot of testing. I am working on that.</li>
-<li>I did not add automated test.</li>
-<li>Temporary name: pgr_labelGraph</li>
-<li>Need: I need feedback from the community.</li>
-<li><a class="reference internal" href="../src/label_graph/doc/analyze_brokengraph.html#pgr-labelgraph"><em>pgr_labelGraph</em></a> - Analyze / label  subgraphs within a network</li>
-</ul>
-</dd>
-</dl>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-</div>
-<div class="section" id="discontinued-functions">
-<h2>Discontinued Functions<a class="headerlink" href="#discontinued-functions" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="src/developer/discontinued.html">Discontinued Functions</a></li>
-</ul>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last"><a class="reference internal" href="../src/common/doc/utilities/index.html#developer-functions"><em>Developers&#8217;s Functions</em></a> documentation is going to be deleted from the pgRouting documentation in V3.0</p>
-</div>
-</div>
-<div class="section" id="deprecated-functions">
-<h2>Deprecated Functions<a class="headerlink" href="#deprecated-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="discontinued-deprecated-functions">
+<h1>Discontinued &amp; Deprecated Functions<a class="headerlink" href="#discontinued-deprecated-functions" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="../src/common/doc/utilities/get_column_name.html#pgr-get-column-name"><em>pgr_getColumnName</em></a> - to get the name of the column as is stored in the postgres administration tables.</li>
-<li><a class="reference internal" href="../src/common/doc/utilities/get_table_name.html#pgr-get-table-name"><em>pgr_getTableName</em></a> - to retrieve the name of the table as is stored in the postgres administration tables.</li>
-<li><a class="reference internal" href="../src/common/doc/utilities/is_column_indexed.html#pgr-is-column-indexed"><em>pgr_isColumnIndexed</em></a> - to check if the column is indexed.</li>
-<li><a class="reference internal" href="../src/common/doc/utilities/is_column_in_table.html#pgr-is-column-in-table"><em>pgr_isColumnInTable</em></a> - to check only for the existance of the column.</li>
-<li><a class="reference internal" href="../src/common/doc/utilities/point_to_id.html#pgr-point-to-id"><em>pgr_pointToId</em></a> -to insert/get the id of the inserted point in a vertices table.</li>
-<li><a class="reference internal" href="../src/common/doc/utilities/quote_ident.html#pgr-quote-ident"><em>pgr_quote_ident</em></a> - to quotes the input text to be used as an identifier in an SQL statement string.</li>
-<li><a class="reference internal" href="../src/common/doc/utilities/versionless.html#pgr-versionless"><em>pgr_versionless</em></a> - to compare two version numbers.</li>
-<li><a class="reference internal" href="../src/common/doc/utilities/start_point.html#pgr-start-point"><em>pgr_startPoint</em></a> - to get the start point of a (multi)linestring.</li>
-<li><a class="reference internal" href="../src/common/doc/utilities/end_point.html#pgr-end-point"><em>pgr_endPoint</em></a> - to get the end point of a (multi)linestring.</li>
+<li><a class="reference internal" href="src/developer/discontinued.html#discontinued"><em>Discontinued Functions</em></a></li>
+<li><a class="reference internal" href="deprecated.html#deprecated"><em>Deprecated Functions</em></a></li>
 </ul>
 </div></blockquote>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="src/developer/index.html">Developer&#8217;s Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="src/developer/index.html#source-tree-layout">Source Tree Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/developer/index.html#tools">Tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/developer/index.html#documentation-layout">Documentation Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/developer/index.html#testing-infrastructure">Testing Infrastructure</a></li>
-</ul>
-</li>
-</ul>
 </div>
+</div>
+<div class="section" id="change-log">
+<h1>Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="src/changelog/index.html#change-log"><em>Release Notes</em></a></p>
 <blockquote>
 <div><ul class="simple">
@@ -415,7 +235,6 @@ aggregate cost of the shortest path.</li>
 <li><a class="reference internal" href="../search.html"><em>Search Page</em></a></li>
 </ul>
 </div>
-</div>
 
 
       </div>
@@ -424,14 +243,14 @@ aggregate cost of the shortest path.</li>
         <p>
         <a class="uplink" href="#">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="src/introduction/introduction.html">Introduction</a>&#160;&#160;»
+        <a href="src/introduction/index.html">&lt;no title&gt;</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (85ff8d6 cmake-improve-2.2).
-      Last updated on Dec 01, 2015.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).
+      Last updated on Jan 18, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

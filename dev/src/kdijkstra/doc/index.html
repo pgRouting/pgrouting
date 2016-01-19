@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra &mdash; pgRouting Manual (2.2.0)</title>
+    <title>pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra &mdash; pgRouting Manual (2.2.0-dev)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (85ff8d6 cmake-improve-2.2)',
+        VERSION:     '2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,24 +25,24 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../index.html" />
-    <link rel="up" title="Routing Functions" href="../../index.html" />
-    <link rel="next" title="pgr_ksp - Multiple shortest Paths based on Dijkstra" href="../../ksp/doc/index.html" />
-    <link rel="prev" title="pgr_pointsAsPolygon" href="../../driving_distance/doc/dd_points_as_polygon.html" /> 
+    <link rel="top" title="pgRouting Manual (2.2.0-dev)" href="../../../index.html" />
+    <link rel="up" title="Deprecated Functions" href="../../../doc/deprecated.html" />
+    <link rel="next" title="pgr_drivingDistance (V2.0)" href="../../driving_distance/doc/dd_driving_distance_v2.html" />
+    <link rel="prev" title="pgr_apspWarshall" href="../../apsp_warshall/doc/index.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.2.0)</span></a></h1>
+          <span>pgRouting Manual (2.2.0-dev)</span></a></h1>
         <h2 class="heading"><span>pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="../../driving_distance/doc/dd_points_as_polygon.html">pgr_pointsAsPolygon</a>
+        «&#160;&#160;<a href="../../apsp_warshall/doc/index.html">pgr_apspWarshall</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../ksp/doc/index.html">pgr_ksp - Multiple shortest Paths based on Dijkstra</a>&#160;&#160;»
+        <a href="../../driving_distance/doc/dd_driving_distance_v2.html">pgr_drivingDistance (V2.0)</a>&#160;&#160;»
         </p>
 
       </div>
@@ -55,8 +55,20 @@
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">pgr_kdijkstraCost</span></tt> - Returns the costs for K shortest paths using Dijkstra algorithm.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This functions is deprecated in 2.2.
+Use <a class="reference internal" href="../../dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost"><em>pgr_dijkstraCost</em></a> instead.</p>
+</div>
+<ul class="simple">
 <li><tt class="docutils literal"><span class="pre">pgr_kdijkstraPath</span></tt> - Returns the paths for K shortest paths using Dijkstra algorithm.</li>
 </ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This function is deprecated in 2.2.
+Use <a class="reference internal" href="../../dijkstra/doc/pgr_dijkstra.html#pgr-dijkstra"><em>pgr_dijkstra</em></a> instead.</p>
+</div>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
@@ -153,54 +165,53 @@
 <ul class="simple">
 <li>Returning a <tt class="docutils literal"><span class="pre">cost</span></tt> result</li>
 </ul>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span> <span class="k">AS</span> <span class="k">source</span><span class="p">,</span> <span class="n">id2</span> <span class="k">AS</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="k">FROM</span> <span class="n">pgr_kdijkstraCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="mi">10</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="k">false</span><span class="p">,</span> <span class="k">false</span>
-<span class="p">);</span>
-
- <span class="n">seq</span> <span class="o">|</span> <span class="k">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span>
-<span class="c1">-----+--------+--------+------</span>
-   <span class="mi">0</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">4</span>
-   <span class="mi">1</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">2</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT seq, id1 AS source, id2 AS target, cost FROM pgr_kdijkstraCost(
+    &#39;SELECT id, source, target, cost FROM edge_table&#39;,
+    10, array[4,12], false, false);
+NOTICE:  Deprecated function. Use pgr_dijkstraCost instead.
+ seq | source | target | cost 
+-----+--------+--------+------
+   0 |     10 |      4 |    4
+   1 |     10 |     12 |    2
+(2 rows)
 </pre></div>
 </div>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span> <span class="k">AS</span> <span class="n">path</span><span class="p">,</span> <span class="n">id2</span> <span class="k">AS</span> <span class="n">node</span><span class="p">,</span> <span class="n">id3</span> <span class="k">AS</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span>
-  <span class="k">FROM</span> <span class="n">pgr_kdijkstraPath</span><span class="p">(</span>
-      <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-      <span class="mi">10</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="k">false</span><span class="p">,</span> <span class="k">false</span>
-<span class="p">);</span>
-
- <span class="n">seq</span> <span class="o">|</span> <span class="n">path</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span>
-<span class="c1">-----+------+------+------+------</span>
-   <span class="mi">0</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
-   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
-<span class="p">(</span><span class="mi">8</span> <span class="k">rows</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT seq, id1 AS path, id2 AS node, id3 AS edge, cost
+  FROM pgr_kdijkstraPath(
+      &#39;SELECT id, source, target, cost FROM edge_table&#39;,
+      10, array[4,12], false, false);
+NOTICE:  Deprecated function: Use pgr_dijkstra instead.
+ seq | path | node | edge | cost 
+-----+------+------+------+------
+   0 |    4 |   10 |   12 |    1
+   1 |    4 |   11 |   13 |    1
+   2 |    4 |   12 |   15 |    1
+   3 |    4 |    9 |   16 |    1
+   4 |    4 |    4 |   -1 |    0
+   5 |   12 |   10 |   12 |    1
+   6 |   12 |   11 |   13 |    1
+   7 |   12 |   12 |   -1 |    0
+(8 rows)
 </pre></div>
 </div>
 <ul class="simple">
 <li>Returning a <tt class="docutils literal"><span class="pre">path</span></tt> result</li>
 </ul>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id1</span> <span class="k">as</span> <span class="n">path</span><span class="p">,</span> <span class="n">st_astext</span><span class="p">(</span><span class="n">st_linemerge</span><span class="p">(</span><span class="n">st_union</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)))</span> <span class="k">as</span> <span class="n">the_geom</span>
-  <span class="k">FROM</span> <span class="n">pgr_kdijkstraPath</span><span class="p">(</span>
-                  <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-                  <span class="mi">10</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="k">false</span><span class="p">,</span> <span class="k">false</span>
-            <span class="p">)</span> <span class="n">a</span><span class="p">,</span>
-            <span class="n">edge_table</span> <span class="n">b</span>
-<span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">id3</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span>
-<span class="k">GROUP</span> <span class="k">by</span> <span class="n">id1</span>
-<span class="k">ORDER</span> <span class="k">by</span> <span class="n">id1</span><span class="p">;</span>
-
-<span class="n">path</span> <span class="o">|</span>            <span class="n">the_geom</span>
-<span class="c1">------+---------------------------------</span>
-    <span class="mi">4</span> <span class="o">|</span> <span class="n">LINESTRING</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">,</span><span class="mi">3</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span> <span class="mi">1</span><span class="p">)</span>
-   <span class="mi">12</span> <span class="o">|</span> <span class="n">LINESTRING</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">,</span><span class="mi">3</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">)</span>
-<span class="p">(</span><span class="mi">2</span> <span class="k">rows</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT id1 AS path, st_AStext(st_linemerge(st_union(b.the_geom))) AS the_geom
+  FROM pgr_kdijkstraPath(
+                  &#39;SELECT id, source, target, cost FROM edge_table&#39;,
+                  10, array[4,12], false, false
+            ) a,
+            edge_table b
+WHERE a.id3=b.id
+GROUP by id1
+ORDER by id1;
+NOTICE:  Deprecated function: Use pgr_dijkstra instead.
+ path |            the_geom             
+------+---------------------------------
+    4 | LINESTRING(2 3,3 3,4 3,4 2,4 1)
+   12 | LINESTRING(2 3,3 3,4 3)
+(2 rows)
 </pre></div>
 </div>
 <p>There is no assurance that the result above will be ordered in the direction
@@ -224,18 +235,18 @@ This behavior is a function of PostGIS functions <tt class="docutils literal"><s
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="../../driving_distance/doc/dd_points_as_polygon.html">pgr_pointsAsPolygon</a>
+        «&#160;&#160;<a href="../../apsp_warshall/doc/index.html">pgr_apspWarshall</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../ksp/doc/index.html">pgr_ksp - Multiple shortest Paths based on Dijkstra</a>&#160;&#160;»
+        <a href="../../driving_distance/doc/dd_driving_distance_v2.html">pgr_drivingDistance (V2.0)</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (85ff8d6 cmake-improve-2.2).
-      Last updated on Dec 01, 2015.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).
+      Last updated on Jan 18, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_trsp - Turn Restriction Shortest Path (TRSP) &mdash; pgRouting Manual (2.2.0)</title>
+    <title>pgr_trsp - Turn Restriction Shortest Path (TRSP) &mdash; pgRouting Manual (2.2.0-dev)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (85ff8d6 cmake-improve-2.2)',
+        VERSION:     '2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../index.html" />
-    <link rel="up" title="Routing Functions" href="../../index.html" />
-    <link rel="next" title="pgr_dijkstraCost - Cost of Shortest Path Dijkstra" href="../../dijkstra/doc/dijkstraCost.html" />
+    <link rel="top" title="pgRouting Manual (2.2.0-dev)" href="../../../index.html" />
+    <link rel="up" title="Routing Functions" href="../../routingFunctions.html" />
+    <link rel="next" title="Proposed Functions for version 2.3" href="../../proposedNext.html" />
     <link rel="prev" title="pgr_tsp - Traveling Sales Person" href="../../tsp/doc/index.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.2.0)</span></a></h1>
+          <span>pgRouting Manual (2.2.0-dev)</span></a></h1>
         <h2 class="heading"><span>pgr_trsp - Turn Restriction Shortest Path (TRSP)</span></h2>
       </div>
       <div class="topnav">
@@ -42,7 +42,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../dijkstra/doc/dijkstraCost.html">pgr_dijkstraCost - Cost of Shortest Path Dijkstra</a>&#160;&#160;»
+        <a href="../../proposedNext.html">Proposed Functions for version 2.3</a>&#160;&#160;»
         </p>
 
       </div>
@@ -81,7 +81,7 @@
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The Turn Restricted Shortest Path algorithm (TRSP) is similar to the <a class="reference internal" href="../../../doc/src/developer/discontinued.html#shooting-star"><em>Shooting Star algorithm</em></a> in that you can specify turn restrictions.</p>
-<p>The TRSP setup is mostly the same as <a class="reference internal" href="../../dijkstra/doc/index.html#pgr-dijkstra"><em>Dijkstra shortest path</em></a> with the addition of an optional turn restriction table. This provides an easy way of adding turn restrictions to a road network by placing them in a separate table.</p>
+<p>The TRSP setup is mostly the same as <a class="reference internal" href="../../dijkstra/doc/pgr_dijkstra.html#pgr-dijkstra"><em>Dijkstra shortest path</em></a> with the addition of an optional turn restriction table. This provides an easy way of adding turn restrictions to a road network by placing them in a separate table.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -272,120 +272,109 @@
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Without turn restrictions</li>
-</ul>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span> <span class="k">AS</span> <span class="n">node</span><span class="p">,</span> <span class="n">id2</span> <span class="k">AS</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span>
-        <span class="k">FROM</span> <span class="n">pgr_trsp</span><span class="p">(</span>
-                <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-                <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">false</span>
-        <span class="p">);</span>
-
-<span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span>
-<span class="c1">----+------+------+------</span>
-  <span class="mi">0</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span>
-  <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
-  <span class="mi">2</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
-  <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
-  <span class="mi">4</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
-  <span class="mi">5</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
-<span class="p">(</span><span class="mi">6</span> <span class="k">rows</span><span class="p">)</span>
+<p><strong>Without turn restrictions</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT seq, id1 AS node, id2 AS edge, cost
+    FROM pgr_trsp(
+        &#39;SELECT id, source, target, cost FROM edge_table&#39;,
+        7, 12, false, false
+    );
+ seq | node | edge | cost 
+-----+------+------+------
+   0 |    7 |    6 |    1
+   1 |    8 |    7 |    1
+   2 |    5 |    8 |    1
+   3 |    6 |    9 |    1
+   4 |    9 |   15 |    1
+   5 |   12 |   -1 |    0
+(6 rows)
 </pre></div>
 </div>
-<ul class="simple">
-<li>With turn restrictions</li>
-</ul>
+<p><strong>With turn restrictions</strong></p>
 <p>Turn restrictions require additional information, which can be stored in a separate table:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">restrictions</span> <span class="p">(</span>
-    <span class="n">rid</span> <span class="nb">serial</span><span class="p">,</span>
-    <span class="n">to_cost</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
-    <span class="n">to_edge</span> <span class="nb">integer</span><span class="p">,</span>
-    <span class="n">from_edge</span> <span class="nb">integer</span><span class="p">,</span>
-    <span class="n">via</span> <span class="nb">text</span>
-<span class="p">);</span>
-
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">restrictions</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="k">null</span><span class="p">);</span>
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">restrictions</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">restrictions</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="k">null</span><span class="p">);</span>
+<div class="highlight-python"><div class="highlight"><pre>CREATE TABLE restrictions (
+        rid serial,
+        to_cost double precision,
+        to_edge integer,
+        FROM_edge integer,
+        via text
+    );
+INSERT INTO restrictions VALUES (1,100,7,4,null);
+INSERT INTO restrictions VALUES (2,4,8,3,5);
+INSERT INTO restrictions VALUES (3,100,9,16,null);
 </pre></div>
 </div>
 <p>Then a query with turn restrictions is created as:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">id1</span> <span class="k">AS</span> <span class="n">node</span><span class="p">,</span> <span class="n">id2</span> <span class="k">AS</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span>
-        <span class="k">FROM</span> <span class="n">pgr_trsp</span><span class="p">(</span>
-                <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-                <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span>
-                <span class="s1">&#39;SELECT to_cost, to_edge AS target_id,</span>
-<span class="s1">           from_edge || coalesce(&#39;&#39;,&#39;&#39; || via, &#39;&#39;&#39;&#39;) AS via_path</span>
-<span class="s1">       FROM restrictions&#39;</span>
-        <span class="p">);</span>
-
- <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span>
-<span class="c1">-----+------+------+------</span>
-   <span class="mi">0</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
-<span class="p">(</span><span class="mi">6</span> <span class="k">rows</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT seq, id1 AS node, id2 AS edge, cost
+    FROM pgr_trsp(
+        &#39;SELECT id, source, target, cost FROM edge_table&#39;,
+        7, 12, false, false,
+        &#39;SELECT to_cost, to_edge AS target_id,
+        FROM_edge || coalesce(&#39;&#39;,&#39;&#39; || via, &#39;&#39;&#39;&#39;) AS via_path
+        FROM restrictions&#39;
+    );
+ seq | node | edge | cost 
+-----+------+------+------
+   0 |    7 |    6 |    1
+   1 |    8 |    7 |    1
+   2 |    5 |    8 |    1
+   3 |    6 |   11 |    1
+   4 |   11 |   13 |    1
+   5 |   12 |   -1 |    0
+(6 rows)
 </pre></div>
 </div>
 <p>An example query using vertex ids and via points:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_trspViaVertices</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source::INTEGER, target::INTEGER, cost,</span>
-<span class="s1">        reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">5</span><span class="p">]::</span><span class="nb">INTEGER</span><span class="p">[],</span>
-    <span class="k">true</span><span class="p">,</span>
-    <span class="k">true</span><span class="p">,</span>
-
-    <span class="s1">&#39;SELECT to_cost, to_edge AS target_id, FROM_edge ||</span>
-<span class="s1">        coalesce(&#39;&#39;,&#39;&#39;||via,&#39;&#39;&#39;&#39;) AS via_path FROM restrictions&#39;</span><span class="p">);</span>
-
- <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span> <span class="n">id3</span> <span class="o">|</span> <span class="n">cost</span>
-<span class="c1">-----+-----+-----+-----+------</span>
-   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
-  <span class="mi">10</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
-  <span class="mi">11</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span>
-  <span class="mi">12</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>  <span class="mi">10</span> <span class="o">|</span>  <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span>
-  <span class="mi">13</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>  <span class="mi">13</span> <span class="o">|</span>  <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span>
-  <span class="mi">14</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>  <span class="mi">10</span> <span class="o">|</span>  <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span>
-  <span class="mi">15</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
-<span class="p">(</span><span class="mi">15</span> <span class="k">rows</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_trspViaVertices(
+        &#39;SELECT id, source::INTEGER, target::INTEGER, cost,
+        reverse_cost FROM edge_table&#39;,
+        ARRAY[1,8,13,5]::INTEGER[],     
+        true,  
+        true,  
+        &#39;SELECT to_cost, to_edge AS target_id, FROM_edge ||
+        coalesce(&#39;&#39;,&#39;&#39;||via,&#39;&#39;&#39;&#39;) AS via_path FROM restrictions&#39;);
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   1 |   1 |   1 |    1
+   2 |   1 |   2 |   4 |    1
+   3 |   1 |   5 |   8 |    1
+   4 |   1 |   6 |   9 |    1
+   5 |   1 |   9 |  16 |    1
+   6 |   1 |   4 |   3 |    1
+   7 |   1 |   3 |   5 |    1
+   8 |   1 |   6 |   8 |    1
+   9 |   1 |   5 |   7 |    1
+  10 |   2 |   8 |   7 |    1
+  11 |   2 |   5 |  10 |    1
+  12 |   2 |  10 |  14 |    1
+  13 |   3 |  13 |  14 |    1
+  14 |   3 |  10 |  10 |    1
+  15 |   3 |   5 |  -1 |    0
+(15 rows)
 </pre></div>
 </div>
 <p>An example query using edge ids and vias:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_trspViaEdges</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source::INTEGER, target::INTEGER,cost,</span>
-<span class="s1">         reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">6</span><span class="p">]::</span><span class="nb">INTEGER</span><span class="p">[],</span>
-    <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">]::</span><span class="n">FLOAT8</span><span class="p">[],</span>
-    <span class="k">true</span><span class="p">,</span>
-    <span class="k">true</span><span class="p">,</span>
-
-    <span class="s1">&#39;SELECT to_cost, to_edge AS target_id, FROM_edge ||</span>
-<span class="s1">        coalesce(&#39;&#39;,&#39;&#39;||via,&#39;&#39;&#39;&#39;) AS via_path FROM restrictions&#39;</span><span class="p">);</span>
-
- <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span> <span class="n">id3</span> <span class="o">|</span> <span class="n">cost</span>
-<span class="c1">-----+-----+-----+-----+------</span>
-   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">0</span><span class="p">.</span><span class="mi">5</span>
-   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span>  <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>  <span class="mi">12</span> <span class="o">|</span>  <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
-  <span class="mi">10</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>  <span class="mi">0</span><span class="p">.</span><span class="mi">5</span>
-<span class="p">(</span><span class="mi">10</span> <span class="k">rows</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_trspViaEdges(
+        &#39;SELECT id, source::INTEGER, target::INTEGER,cost,
+        reverse_cost FROM edge_table&#39;,
+        ARRAY[1,11,6]::INTEGER[],           
+        ARRAY[0.5, 0.5, 0.5]::FLOAT8[],     
+        true,  
+        true,  
+        &#39;SELECT to_cost, to_edge AS target_id, FROM_edge ||
+        coalesce(&#39;&#39;,&#39;&#39;||via,&#39;&#39;&#39;&#39;) AS via_path FROM restrictions&#39;);
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   1 |  0.5
+   2 |   1 |   2 |   4 |    1
+   3 |   1 |   5 |   8 |    1
+   4 |   1 |   6 |  11 |    1
+   5 |   2 |  11 |  13 |    1
+   6 |   2 |  12 |  15 |    1
+   7 |   2 |   9 |   9 |    1
+   8 |   2 |   6 |   8 |    1
+   9 |   2 |   5 |   7 |    1
+  10 |   2 |   8 |   6 |  0.5
+(10 rows)
 </pre></div>
 </div>
 <p>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
@@ -407,14 +396,14 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../dijkstra/doc/dijkstraCost.html">pgr_dijkstraCost - Cost of Shortest Path Dijkstra</a>&#160;&#160;»
+        <a href="../../proposedNext.html">Proposed Functions for version 2.3</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (85ff8d6 cmake-improve-2.2).
-      Last updated on Dec 01, 2015.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).
+      Last updated on Jan 18, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

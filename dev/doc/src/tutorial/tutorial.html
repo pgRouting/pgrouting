@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started &mdash; pgRouting Manual (2.2.0)</title>
+    <title>Getting Started &mdash; pgRouting Manual (2.2.0-dev)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (85ff8d6 cmake-improve-2.2)',
+        VERSION:     '2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.2.0-dev)" href="../../../index.html" />
     <link rel="up" title="Tutorial" href="index.html" />
     <link rel="next" title="Routing Topology" href="topology.html" />
     <link rel="prev" title="Tutorial" href="index.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.2.0)</span></a></h1>
+          <span>pgRouting Manual (2.2.0-dev)</span></a></h1>
         <h2 class="heading"><span>Getting Started</span></h2>
       </div>
       <div class="topnav">
@@ -131,7 +131,7 @@ used for routing with pgrouting. We provide a tools the will help with this:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>See <a class="reference internal" href="../../../src/common/doc/functions/create_topology.html#pgr-create-topology"><em>pgr_createTopology</em></a> for more information.</p>
+<p>See <a class="reference internal" href="../../../src/topology/doc/pgr_createtopology.html#pgr-create-topology"><em>pgr_createTopology</em></a> for more information.</p>
 </div>
 <div class="section" id="how-to-check-your-graph-for-errors">
 <h2>How to check your graph for errors<a class="headerlink" href="#how-to-check-your-graph-for-errors" title="Permalink to this headline">¶</a></h2>
@@ -152,7 +152,7 @@ but we have some basic tools that might help.</p>
 </div>
 <p>See <a class="reference internal" href="analytics.html#analytics"><em>Graph Analytics</em></a> for more information.</p>
 <p>If your data needs to be <em>NODED</em>, we have a tool that can help for that also.</p>
-<p>See <a class="reference internal" href="../../../src/common/doc/functions/node_network.html#pgr-node-network"><em>pgr_nodeNetwork</em></a> for more information.</p>
+<p>See <a class="reference internal" href="../../../src/topology/doc/node_network.html#pgr-node-network"><em>pgr_nodeNetwork</em></a> for more information.</p>
 </div>
 <div class="section" id="how-to-compute-a-route">
 <h2>How to compute a route<a class="headerlink" href="#how-to-compute-a-route" title="Permalink to this headline">¶</a></h2>
@@ -192,8 +192,8 @@ to get more information about each step in the path.</p>
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (85ff8d6 cmake-improve-2.2).
-      Last updated on Dec 01, 2015.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).
+      Last updated on Jan 18, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
