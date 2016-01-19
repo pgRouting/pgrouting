@@ -22,26 +22,30 @@ class CH_dijkstra
 public:
   typedef deque<Edge> unpackedPath;
   typedef typename boost::graph_traits < G >::edge_descriptor E;
+  int64_t edge_count;
   //constrictor for this class which inherits the base graph
   explicit CH_dijkstra(graphType gtype, const int initial_size)
   :Graph_Minimizer<G>(gtype, initial_size) {}
-
   //initializes the graph with the given edges
   void
-  initialize_CH(string edges,string rvertices,string redges,string pedges,int64_t count) 
+  initialize_CH(string edges,string rvertices,string redges,string pedges) 
   {
     Edge *data_edges;
-    string_to_edges(edges,&data_edges);
-    this->initialize_graph_minimizer(data_edges, count);
-    
+    string_to_edges(edges,&data_edges,&edge_count);
+    this->initialize_graph_minimizer(data_edges, edge_count);
+    string_to_redges(redges);
+    string_to_rvertices(rvertices);
+    string_to_psuedoEdges(pedges);
   }
   
-  void string_to_edges(string edges,Edge **data_edges)
+  void string_to_edges(string edges,Edge **data_edges,int64_t *ecount)
   {
     std::vector<string> str_edges;
     std::vector<string> str_edge;
     boost::split(str_edges, edges, boost::is_any_of("$"));
     int count=str_edges.size();
+    count--;
+    *ecount=count;
     *data_edges=(Edge*)malloc(count*sizeof(Edge));
     for (int i = 0; i < count; ++i)
     {
@@ -75,17 +79,110 @@ public:
 
 void string_to_redges(string edges)
 {
+  std::vector<string> str_edges;
+  std::vector<string> str_edge;
+  boost::split(str_edges, edges, boost::is_any_of("$"));
+  int count=str_edges.size();
+  count--;
+  Edge temp;
+  for (int i = 0; i < count; ++i)
+  {
+    boost::split(str_edge,str_edges[i], boost::is_any_of(","));
 
+    for (int j = 0; j < 5; ++j)
+    {
+     switch(j)
+     {
+      case 0:
+      temp.id=atoi(str_edge[j].c_str());
+      break;
+      case 1:
+      temp.source=atoi(str_edge[j].c_str());
+      break;
+      case 2:
+      temp.target=atoi(str_edge[j].c_str());
+      break;
+      case 3:
+      temp.cost=atof(str_edge[j].c_str());
+      break;
+      case 4:
+      temp.revcost=atof(str_edge[j].c_str());
+      break;
+    }
+  }
+  this->removed_edges[temp.id]=temp;     
+}
 }
 
 void string_to_rvertices(string edges)
 {
+  std::vector<string> str_edges;
+  std::vector<string> str_edge;
+  boost::split(str_edges, edges, boost::is_any_of("$"));
+  int count=str_edges.size();
+  count--;
+  int vid;
+  Edge temp;
+  for (int i = 0; i < count; ++i)
+  {
+    boost::split(str_edge,str_edges[i], boost::is_any_of(","));
 
+    for (int j = 0; j < 6; ++j)
+    {
+     switch(j)
+     {
+      case 0:
+      vid=atoi(str_edge[j].c_str());
+      case 1:
+      temp.id=atoi(str_edge[j].c_str());
+      break;
+      case 2:
+      temp.source=atoi(str_edge[j].c_str());
+      break;
+      case 3:
+      temp.target=atoi(str_edge[j].c_str());
+      break;
+      case 4:
+      temp.cost=atof(str_edge[j].c_str());
+      break;
+      case 5:
+      temp.revcost=atof(str_edge[j].c_str());
+      break;
+    }
+  }
+  this->removedVertices[temp.id].push_back(temp);     
+}
 }
 
 void string_to_psuedoEdges(string edges)
 {
+  std::vector<string> str_edges;
+  std::vector<string> str_edge;
+  boost::split(str_edges, edges, boost::is_any_of("$"));
+  int count=str_edges.size();
+  count--;
+  int64_t eid,eid1,eid2;
+  for (int i = 0; i < count; ++i)
+  {
+    boost::split(str_edge,str_edges[i], boost::is_any_of(","));
 
+    for (int j = 0; j < 5; ++j)
+    {
+     switch(j)
+     {
+      case 0:
+      eid=atoi(str_edge[j].c_str());
+      break;
+      case 1:
+      eid1=atoi(str_edge[j].c_str());
+      break;
+      case 2:
+      eid2=atoi(str_edge[j].c_str());
+      break;
+    }
+  }
+  this->psuedoEdges[eid]=make_pair(eid1,eid2);     
+}
 }
 
 
