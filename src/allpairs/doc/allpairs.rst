@@ -34,7 +34,7 @@ The following tests:
  - with AMD 64 CPU
  - 4M memory
  - trusty
- - posgresql version 9.3
+ - posgreSQL version 9.3
 
 data
 ----
@@ -47,7 +47,7 @@ The following data was used
     wget --progress=dot:mega -O "sampledata.osm" "http://www.overpass-api.de/api/xapi?*[bbox=${BBOX}][@meta]"
 
 
-Data procesing was done with osm2pgrouting-alpha
+Data processing was done with osm2pgrouting-alpha
 
 .. code-block:: none
 
@@ -66,7 +66,7 @@ Test One
 .........
 
 This test is not with a bounding box
-The density of the passed graph is extremly low.
+The density of the passed graph is extremely low.
 For each <SIZE> 30 tests were executed to get the average
 The tested query is:
 
@@ -85,15 +85,14 @@ The results of this tests are presented as:
 :DENSITY: is the density of the data :math:`\dfrac{E}{V \times (V-1)}`. 
 :OUT ROWS: is the number of records returned by the queries.
 :Floyd-Warshall: is the average execution time in seconds of pgr_floydWarshall.
-:johnson: is the average execution time in seconds of pgr_johnson.
-
+:Johnson: is the average execution time in seconds of pgr_johnson.  
 
 Results
 +++++++
 
-====== ======  ========== ======== ============= =============
- SIZE  EDGES    DENSITY   OUT ROWS Flyd-Warshall  Johnson
-====== ======  ========== ======== ============= =============
+====== ======  ========== ======== ============== =============
+ SIZE  EDGES    DENSITY   OUT ROWS Floyd-Warshall  Johnson
+====== ======  ========== ======== ============== =============
    500    500     0.18E-7     1346   0.14         0.13
   1000   1000     0.36E-7     2655   0.23         0.18
   1500   1500     0.55E-7     4110   0.37         0.34
@@ -145,15 +144,15 @@ The results of this tests are presented as:
 :DENSITY: is the density of the data :math:`\dfrac{E}{V \times (V-1)}`.
 :OUT ROWS: is the number of records returned by the queries.
 :Floyd-Warshall: is the average execution time in seconds of pgr_floydWarshall.
-:johnson: is the average execution time in seconds of pgr_johnson.
+:Johnson: is the average execution time in seconds of pgr_johnson.
 
 
 Results
 +++++++
 
-====== =====  ======== ======== ============= =============
- SIZE  EDGES   DENSITY OUT ROWS Flyd-Warshall  Johnson
-====== =====  ======== ======== ============= =============
+====== =====  ======== ======== ============== =============
+ SIZE  EDGES   DENSITY OUT ROWS Floyd-Warshall  Johnson
+====== =====  ======== ======== ============== =============
  0.001    44  0.0608       1197     0.10       0.10
  0.002    99  0.0251       4330     0.10       0.10
  0.003   223  0.0122      18849     0.12       0.12

@@ -58,14 +58,14 @@ The main Characteristics are:
   - Returns the sum of the costs of the shortest path for each pair of nodes in the graph.
   - Process is done only on edges with positive costs.
   - Boost returns a :math:`V \times V` matrix, where the infinity values.
-    represent the distance between vertices for which there is no path.
+    Represent the distance between vertices for which there is no path.
 
     - We return only the non infinity values in form of a set of `(start_vid, end_vid, agg_cost)`.
 
   - Let be the case the values returned are stored in a table, so the unique index would be the pair:
     `(start_vid, end_vid)`.
 
-  - For the undirected graph, the results are symetric.
+  - For the undirected graph, the results are symmetric.
 
     - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
 
@@ -101,12 +101,12 @@ Where:
 Description of the parameters of the signatures
 -------------------------------------------------------------------------------
 
-Recives  ``(edges_sql, directed)``
+Receives  ``(edges_sql, directed)``
 
 ============= ============= =================================================
 Parameter     Type          Description
 ============= ============= =================================================
-**edges_sql** ``TEXT``      SQL query as decribed above.
+**edges_sql** ``TEXT``      SQL query as described above.
 **directed**  ``BOOLEAN``   (optional) Default is true (is directed). When set to false the graph is considered as Undirected
 ============= ============= =================================================
 
