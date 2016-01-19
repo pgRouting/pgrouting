@@ -102,17 +102,33 @@ Let us consider the edge table of a sample graph,and generate a contracted versi
 To contract a graph:
 
 Level 0:
-.. code-block:: sql
 
 	SELECT * FROM pgr_contractgraph('SELECT id, source, target, cost, 
 		     reverse_cost as revcost FROM edges',0,false);
 
 .. code-block:: sql
 
-	contracted_graph_name | contracted_graph_blob           | removedvertices                      | removededges | psuedoedges 
-	----------------------+---------------------------------+--------------------------------------+--------------+-------------
- 	 contracted_graph_0    | 2,2,3,2,0$3,2,4,1,0$4,3,4,3,0$ | 1$1,1,2,1,0$5$5,4,5,1,0$6$6,5,6,4,0$ |              | 
+	contracted_graph_name | contracted_graph_blob           | removedvertices                      |           removededges             | psuedoedges 
+	----------------------+---------------------------------+--------------------------------------+------------------------------------+-------------
+ 	 contracted_graph_0   | 2,2,3,2,0$3,2,4,1,0$4,3,4,3,0$  | 1,1,1,2,1,0$5,5,4,5,1,0$6,6,5,6,4,0$ |  1,1,2,1,-1$5,5,4,1,-1$6,6,5,4,-1$ | 
 
 	(1 row)
+
+
+Level 1:
+
+	SELECT * FROM pgr_contractgraph('SELECT id, source, target, cost, 
+		     reverse_cost as revcost FROM edges',1,false);
+
+.. code-block:: sql
+
+	contracted_graph_name | contracted_graph_blob           | removedvertices                                              |         removededges                                     | psuedoedges 
+	----------------------+---------------------------------+--------------------------------------------------------------+----------------------------------------------------------+---------------------
+ 	 contracted_graph_1   |           3,2,4,1,0$            | 1,1,1,2,1,0$2,4,3,4,3,0$2,2,2,3,2,0$5,5,4,5,1,0$6,6,5,6,4,0$ |  1,1,2,1,-1$2,3,2,2,-1$4,3,4,3,-1$5,5,4,1,-1$6,6,5,4,-1$ | $3,2,4
+
+
+	(1 row)
+
+
 
 

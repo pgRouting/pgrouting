@@ -270,6 +270,11 @@ public:
       boost::remove_edge(g_from, g_to, graph);
   }
 
+  void add_removed_edge(Edge e)
+  {
+    removed_edges.push_back(e);
+  }
+
 
 };
 

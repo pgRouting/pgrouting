@@ -81,7 +81,7 @@ public:
 		cout << "1 degree vertices " << one_degree_vertices.size()  << endl;
 		while (reduced_graph->degree_to_V_map[1].size()>0)
 		{
-			//cout << "Front " << reduced_graph->graph[front].id << endl;
+			cout << "Front " << reduced_graph->graph[front].id << endl;
 			for (boost::tie(out, out_end) = out_edges(front, reduced_graph->graph);
 				out != out_end; ++out) 
 			{
@@ -98,8 +98,8 @@ public:
 				int final_target_degree=prev_target_degree-1;
 				reduced_graph->degree_to_V_map[final_target_degree].push_back(t);
 				Edge removed_edge=reduced_graph->graph[*out];
-				cout << "removing" << " (" << removed_edge.id << ", " <<  removed_edge.source<< ", " << removed_edge.target << 
-					", " << removed_edge.cost << ", " << removed_edge.revcost <<")" << endl;
+				//cout << "removing" << " (" << removed_edge.id << ", " <<  removed_edge.source<< ", " << removed_edge.target << 
+				//	", " << removed_edge.cost << ", " << removed_edge.revcost <<")" << endl;
 				removedVertices[frontid].push_front(removed_edge);
 				reduced_graph->remove_vertex(source_id);
 				reduced_graph->numb_vertices--;
@@ -122,15 +122,17 @@ public:
 		std::vector<V> two_degree_vertices_0;
 		for (Q_i it = two_degree_vertices.begin() ; it != two_degree_vertices.end(); ++it)
 		{
+			//cout << "id" << reduced_graph->graph[*it].id << endl;
+			//cout << "contractions" << reduced_graph->graph[*it].contractions << endl;
 			if (reduced_graph->graph[*it].contractions==0)
 			{
-				//cout << reduced_graph->graph[*it].id << endl;
+				
 				
 				two_degree_vertices_0.push_back(*it);
 			}
 		}
 		degree_to_V_i it;
-		//cout << "2 degree vertices " << two_degree_vertices_0.size()  << endl;
+		cout << "2 degree vertices " << two_degree_vertices_0.size()  << endl;
 		if (two_degree_vertices_0.size()==0)
 		{
 			return;
@@ -140,9 +142,9 @@ public:
 		int64_t front_id=-1;
 		while (two_degree_vertices_0.size()>0)
 		{
-			cout << "2 degree vertices " << two_degree_vertices_0.size()  << endl;
+			//cout << "2 degree vertices " << two_degree_vertices_0.size()  << endl;
 			//cout << "Edge count" << num_edges(reduced_graph->graph) << endl;
-			//cout << "Front " << reduced_graph->graph[front].id << endl;
+			cout << "Front " << reduced_graph->graph[front].id << endl;
 			neighbors_desc.clear();
 			front=two_degree_vertices_0.front();
 			reduced_graph->get_vertex_id(front,front_id);
@@ -193,7 +195,7 @@ public:
 						}
 						else
 						{
-							//cout << "Updating shortcut " << "(" << eid1 << ", " << eid2 << ")" << " with " << min_distance << endl;
+							cout << "Updating shortcut " << "(" << eid1 << ", " << eid2 << ")" << " with " << min_distance << endl;
 							reduced_graph->graph[edesc].cost=min_distance;
 							reduced_graph->graph[edesc].type=1;
 						}
@@ -215,7 +217,7 @@ public:
 					{
 						V t=neighbors_desc[i];
 						removed_edge=reduced_graph->graph[edge(front, t,reduced_graph->graph).first];
-						removedVertices[front].push_front(removed_edge);
+						removedVertices[front_id].push_front(removed_edge);
 					}
 					reduced_graph->remove_vertex(front_id);
 					reduced_graph->numb_vertices--;
@@ -431,7 +433,7 @@ public:
 
 	void print_removed_vertices()
 	{
-
+		cout << "Printing removed vertices ......" << endl;
 		for (removed_V_i iter = removedVertices.begin(); iter != removedVertices.end(); iter++)
 		{
 			cout << "id: " << iter->first << endl;
@@ -449,7 +451,7 @@ public:
 
 	void print_psuedo_edges()
 	{
-
+		cout << "Printing psuedo edges ......" << endl;
 		for (psuedo_E_i iter = psuedoEdges.begin(); iter != psuedoEdges.end(); iter++)
 		{
 			cout << "e1: " << iter->second.first << ",e: "<< iter->first << ",e2: " << iter->second.second << endl;
@@ -543,14 +545,18 @@ public:
 	void getRemovedE_string(char **estring)
 	{
 		string rmstring="";
-		for (int i =0; i<this->removed_edges.size(); i++)
+		//cout<< "Printing removed_edges of size " << this->reduced_graph->removed_edges.size() << endl;
+		for (map<int64_t,Edge>::iterator iter = this->reduced_graph->removed_edges.begin(); iter != this->reduced_graph->removed_edges.end(); iter++)
 		{
-			string id=patch::to_string(this->removed_edges[i].id);
-			string source=patch::to_string(this->removed_edges[i].source);
-			string target=patch::to_string(this->removed_edges[i].target);
-			string cost=patch::to_string(this->removed_edges[i].cost);
-			string reverse_cost=patch::to_string(this->removed_edges[i].revcost);
+			//cout << "id: " << iter->first << endl;
+			Edge temp=iter->second ;
+			string id=patch::to_string(temp.id);
+			string source=patch::to_string(temp.source);
+			string target=patch::to_string(temp.target);
+			string cost=patch::to_string(temp.cost);
+			string reverse_cost=patch::to_string(temp.revcost);
 			rmstring+=id+","+source+","+target+","+cost+","+reverse_cost+"$";
+			cout << endl;
 		}
 		(*estring)=strdup(rmstring.c_str());
 	}
@@ -586,7 +592,7 @@ public:
 				string target=patch::to_string(temp.target);
 				string cost=patch::to_string(temp.cost);
 				string reverse_cost=patch::to_string(temp.revcost);
-				vertex_string+=vid+"$"+eid+","+source+","+target+","+cost+","+reverse_cost+"$";
+				vertex_string+=vid+","+eid+","+source+","+target+","+cost+","+reverse_cost+"$";
 			}
 			cout << endl;
 		}		
@@ -603,7 +609,7 @@ public:
 			string eid=patch::to_string(iter->first);
 			string eid1=patch::to_string(iter->second.first);
 			string eid2=patch::to_string(iter->second.second);
-			ps_string+=eid+","+eid1+","+eid2+"$";
+			ps_string+="$"+eid+","+eid1+","+eid2;
 		}
 		(*pstring)=strdup(ps_string.c_str());
 	}

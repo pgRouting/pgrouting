@@ -137,7 +137,7 @@ class Pgr_base_graph {
   //! @name Graph Modification
   //@{
   //! Used for storing the removed_edges
-  std::deque<Edge> removed_edges;
+   map<int64_t,Edge> removed_edges;
   //@}
 
   //! @name Used by dijkstra
@@ -166,7 +166,10 @@ class Pgr_base_graph {
          graph_add_edge(data_edges[i]);
       }
       for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i )
+      {
          graph[i].id = gVertices_map.find(i)->second;
+         graph[i].contractions=0;
+      }
         calculateDegrees();
   }
 
@@ -199,7 +202,7 @@ class Pgr_base_graph {
                 d_edge.target = graph[target(*out, graph)].id;
                 d_edge.cost = graph[*out].cost;
                 d_edge.revcost = -1;
-                removed_edges.push_back(d_edge);
+                removed_edges[d_edge.id]=d_edge;
             }
       }
       // the actual removal
@@ -220,7 +223,7 @@ void remove_vertex(int64_t p_vertex) {
             d_edge.target = graph[target(*out, graph)].id;
             d_edge.cost = graph[*out].cost;
             d_edge.revcost = -1;
-            removed_edges.push_back(d_edge);
+            removed_edges[d_edge.id]=d_edge;
       }
 
       // special case
@@ -233,7 +236,7 @@ void remove_vertex(int64_t p_vertex) {
                 d_edge.target = graph[target(*in, graph)].id;
                 d_edge.cost = graph[*in].cost;
                 d_edge.revcost = -1;
-                removed_edges.push_back(d_edge);
+                removed_edges[d_edge.id]=d_edge;
           }
       }
 
@@ -269,7 +272,7 @@ void remove_vertex(int64_t p_vertex) {
             d_edge.target = graph[target(*out, graph)].id;
             d_edge.cost = graph[*out].cost;
             d_edge.revcost = -1;
-            removed_edges.push_back(d_edge);
+            removed_edges[d_edge.id]=d_edge;
       }
 
       // special case
@@ -282,7 +285,7 @@ void remove_vertex(int64_t p_vertex) {
                 d_edge.target = graph[target(*in, graph)].id;
                 d_edge.cost = graph[*in].cost;
                 d_edge.revcost = -1;
-                removed_edges.push_back(d_edge);
+                removed_edges[d_edge.id]=d_edge;
           }
       }
 
@@ -344,12 +347,12 @@ void remove_vertex(int64_t p_vertex) {
     }
 
   //! \brief Reconnects all edges that were removed
-    void restore_graph() {
+   /* void restore_graph() {
         while (removed_edges.size() != 0) {
             graph_add_edge(removed_edges[0]);
             removed_edges.pop_front();
         }
-    }
+    }*/
   //@}
 
   //! @name only for stand by program
