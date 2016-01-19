@@ -1,0 +1,6 @@
+# myRouting Extension
+comment = 'myRouting Extension'
+default_version = '0.0.0'
+relocatable = true
+requires = 'plpgsql'
+requires = 'postgis'
