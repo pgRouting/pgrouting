@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2)',
+        VERSION:     '2.2.0 (4f96cd4 dev-2.2 4f96cd4 dev-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -88,13 +88,13 @@ implementation which runs in <span class="math">\(\Theta(V^3)\)</span> time,</p>
 <li>Returns the sum of the costs of the shortest path for each pair of nodes in the graph.</li>
 <li>Process is done only on edges with positive costs.</li>
 <li>Boost returns a <span class="math">\(V \times V\)</span> matrix, where the infinity values.
-represent the distance between vertices for which there is no path.<ul>
+Represent the distance between vertices for which there is no path.<ul>
 <li>We return only the non infinity values in form of a set of <cite>(start_vid, end_vid, agg_cost)</cite>.</li>
 </ul>
 </li>
 <li>Let be the case the values returned are stored in a table, so the unique index would be the pair:
 <cite>(start_vid, end_vid)</cite>.</li>
-<li>For the undirected graph, the results are symetric.<ul>
+<li>For the undirected graph, the results are symmetric.<ul>
 <li>The  <cite>agg_cost</cite> of <cite>(u, v)</cite> is the same as for <cite>(v, u)</cite>.</li>
 </ul>
 </li>
@@ -162,7 +162,7 @@ represent the distance between vertices for which there is no path.<ul>
 </div>
 <div class="section" id="description-of-the-parameters-of-the-signatures">
 <h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
-<p>Recives  <tt class="docutils literal"><span class="pre">(edges_sql,</span> <span class="pre">directed)</span></tt></p>
+<p>Receives  <tt class="docutils literal"><span class="pre">(edges_sql,</span> <span class="pre">directed)</span></tt></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="11%" />
@@ -178,7 +178,7 @@ represent the distance between vertices for which there is no path.<ul>
 <tbody valign="top">
 <tr class="row-even"><td><strong>edges_sql</strong></td>
 <td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
-<td>SQL query as decribed above.</td>
+<td>SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>directed</strong></td>
 <td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
@@ -297,8 +297,8 @@ represent the distance between vertices for which there is no path.<ul>
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).
-      Last updated on Jan 18, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (4f96cd4 dev-2.2 4f96cd4 dev-2.2).
+      Last updated on Jan 19, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
