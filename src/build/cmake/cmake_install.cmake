@@ -1,4 +1,4 @@
-# Install script for directory: /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/cmake
+# Install script for directory: /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/cmake
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

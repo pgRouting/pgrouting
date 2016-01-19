@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src
+CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build
+CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build
 
 # Include any dependencies generated for this target.
 include src/myastar/src/CMakeFiles/myastar.dir/depend.make
@@ -54,17 +54,17 @@ include src/myastar/src/CMakeFiles/myastar.dir/flags.make
 
 src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.o: src/myastar/src/CMakeFiles/myastar.dir/flags.make
 src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.o: ../src/myastar/src/my_astar.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.o"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/myastar/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/myastar.dir/my_astar.c.o   -c /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar/src/my_astar.c
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/myastar/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/myastar.dir/my_astar.c.o   -c /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/myastar/src/my_astar.c
 
 src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/myastar.dir/my_astar.c.i"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/myastar/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar/src/my_astar.c > CMakeFiles/myastar.dir/my_astar.c.i
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/myastar/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/myastar/src/my_astar.c > CMakeFiles/myastar.dir/my_astar.c.i
 
 src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/myastar.dir/my_astar.c.s"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/myastar/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar/src/my_astar.c -o CMakeFiles/myastar.dir/my_astar.c.s
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/myastar/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/myastar/src/my_astar.c -o CMakeFiles/myastar.dir/my_astar.c.s
 
 src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.o.requires:
 .PHONY : src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.o.requires
@@ -77,17 +77,17 @@ src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.o.provides.build: src/myastar/
 
 src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o: src/myastar/src/CMakeFiles/myastar.dir/flags.make
 src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o: ../src/myastar/src/my_astar_wrapper.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/myastar/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o -c /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar/src/my_astar_wrapper.cpp
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/myastar/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o -c /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/myastar/src/my_astar_wrapper.cpp
 
 src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myastar.dir/my_astar_wrapper.cpp.i"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/myastar/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar/src/my_astar_wrapper.cpp > CMakeFiles/myastar.dir/my_astar_wrapper.cpp.i
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/myastar/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/myastar/src/my_astar_wrapper.cpp > CMakeFiles/myastar.dir/my_astar_wrapper.cpp.i
 
 src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myastar.dir/my_astar_wrapper.cpp.s"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/myastar/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar/src/my_astar_wrapper.cpp -o CMakeFiles/myastar.dir/my_astar_wrapper.cpp.s
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/myastar/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/myastar/src/my_astar_wrapper.cpp -o CMakeFiles/myastar.dir/my_astar_wrapper.cpp.s
 
 src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o.requires:
 .PHONY : src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o.requires
@@ -112,10 +112,10 @@ src/myastar/src/CMakeFiles/myastar.dir/requires: src/myastar/src/CMakeFiles/myas
 .PHONY : src/myastar/src/CMakeFiles/myastar.dir/requires
 
 src/myastar/src/CMakeFiles/myastar.dir/clean:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/myastar/src && $(CMAKE_COMMAND) -P CMakeFiles/myastar.dir/cmake_clean.cmake
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/myastar/src && $(CMAKE_COMMAND) -P CMakeFiles/myastar.dir/cmake_clean.cmake
 .PHONY : src/myastar/src/CMakeFiles/myastar.dir/clean
 
 src/myastar/src/CMakeFiles/myastar.dir/depend:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/myastar/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/myastar/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/myastar/src/CMakeFiles/myastar.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/myastar/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/myastar/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/myastar/src/CMakeFiles/myastar.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/myastar/src/CMakeFiles/myastar.dir/depend
 

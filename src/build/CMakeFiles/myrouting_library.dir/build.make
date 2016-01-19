@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src
+CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build
+CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/myrouting_library.dir/depend.make
@@ -57,13 +57,13 @@ myrouting_library_OBJECTS =
 
 # External object files for target myrouting_library
 myrouting_library_EXTERNAL_OBJECTS = \
-"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o" \
-"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o" \
-"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/contraction/src/CMakeFiles/contraction.dir/contraction.c.o" \
-"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o" \
-"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.o" \
-"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o" \
-"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/common/src/CMakeFiles/common.dir/connection.c.o"
+"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o" \
+"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o" \
+"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/contraction/src/CMakeFiles/contraction.dir/contraction.c.o" \
+"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/contraction/src/CMakeFiles/contraction.dir/contract_function.cpp.o" \
+"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/myastar/src/CMakeFiles/myastar.dir/my_astar.c.o" \
+"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/myastar/src/CMakeFiles/myastar.dir/my_astar_wrapper.cpp.o" \
+"/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/common/src/CMakeFiles/common.dir/connection.c.o"
 
 libmyrouting_library.so: src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o
 libmyrouting_library.so: src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o
@@ -89,6 +89,6 @@ CMakeFiles/myrouting_library.dir/clean:
 .PHONY : CMakeFiles/myrouting_library.dir/clean
 
 CMakeFiles/myrouting_library.dir/depend:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles/myrouting_library.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/CMakeFiles/myrouting_library.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/myrouting_library.dir/depend
 

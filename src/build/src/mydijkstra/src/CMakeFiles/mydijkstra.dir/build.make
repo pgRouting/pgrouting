@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src
+CMAKE_SOURCE_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build
+CMAKE_BINARY_DIR = /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build
 
 # Include any dependencies generated for this target.
 include src/mydijkstra/src/CMakeFiles/mydijkstra.dir/depend.make
@@ -54,17 +54,17 @@ include src/mydijkstra/src/CMakeFiles/mydijkstra.dir/flags.make
 
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o: src/mydijkstra/src/CMakeFiles/mydijkstra.dir/flags.make
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o: ../src/mydijkstra/src/dijkstra.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/mydijkstra/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/mydijkstra.dir/dijkstra.c.o   -c /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/mydijkstra/src/dijkstra.c
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/mydijkstra/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/mydijkstra.dir/dijkstra.c.o   -c /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/mydijkstra/src/dijkstra.c
 
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mydijkstra.dir/dijkstra.c.i"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/mydijkstra/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/mydijkstra/src/dijkstra.c > CMakeFiles/mydijkstra.dir/dijkstra.c.i
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/mydijkstra/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/mydijkstra/src/dijkstra.c > CMakeFiles/mydijkstra.dir/dijkstra.c.i
 
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mydijkstra.dir/dijkstra.c.s"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/mydijkstra/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/mydijkstra/src/dijkstra.c -o CMakeFiles/mydijkstra.dir/dijkstra.c.s
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/mydijkstra/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/mydijkstra/src/dijkstra.c -o CMakeFiles/mydijkstra.dir/dijkstra.c.s
 
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o.requires:
 .PHONY : src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o.requires
@@ -77,17 +77,17 @@ src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra.c.o.provides.build: src/my
 
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: src/mydijkstra/src/CMakeFiles/mydijkstra.dir/flags.make
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o: ../src/mydijkstra/src/dijkstra_function.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/mydijkstra/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o -c /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/mydijkstra/src/dijkstra_function.cpp
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/mydijkstra/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o -c /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/mydijkstra/src/dijkstra_function.cpp
 
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.i"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/mydijkstra/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/mydijkstra/src/dijkstra_function.cpp > CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.i
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/mydijkstra/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/mydijkstra/src/dijkstra_function.cpp > CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.i
 
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.s"
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/mydijkstra/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/mydijkstra/src/dijkstra_function.cpp -o CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.s
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/mydijkstra/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/mydijkstra/src/dijkstra_function.cpp -o CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.s
 
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o.requires:
 .PHONY : src/mydijkstra/src/CMakeFiles/mydijkstra.dir/dijkstra_function.cpp.o.requires
@@ -112,10 +112,10 @@ src/mydijkstra/src/CMakeFiles/mydijkstra.dir/requires: src/mydijkstra/src/CMakeF
 .PHONY : src/mydijkstra/src/CMakeFiles/mydijkstra.dir/requires
 
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/clean:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/mydijkstra/src && $(CMAKE_COMMAND) -P CMakeFiles/mydijkstra.dir/cmake_clean.cmake
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/mydijkstra/src && $(CMAKE_COMMAND) -P CMakeFiles/mydijkstra.dir/cmake_clean.cmake
 .PHONY : src/mydijkstra/src/CMakeFiles/mydijkstra.dir/clean
 
 src/mydijkstra/src/CMakeFiles/mydijkstra.dir/depend:
-	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/src/mydijkstra/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/mydijkstra/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/build/src/mydijkstra/src/CMakeFiles/mydijkstra.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/src/mydijkstra/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/mydijkstra/src /home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/mydijkstra/src/CMakeFiles/mydijkstra.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/mydijkstra/src/CMakeFiles/mydijkstra.dir/depend
 
