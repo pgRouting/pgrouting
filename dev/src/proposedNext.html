@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Proposed Functions for version 2.3 &mdash; pgRouting Manual (2.2.0-dev)</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0-dev)" href="../index.html" />
+    <link rel="next" title="pgr_dijkstraVia" href="dijkstra/doc/pgr_dijkstraVia.html" />
+    <link rel="prev" title="pgr_trsp - Turn Restriction Shortest Path (TRSP)" href="trsp/doc/index.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
+          <span>pgRouting Manual (2.2.0-dev)</span></a></h1>
+        <h2 class="heading"><span>Proposed Functions for version 2.3</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="trsp/doc/index.html">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="dijkstra/doc/pgr_dijkstraVia.html">pgr_dijkstraVia</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="proposed-functions-for-version-2-3">
+<span id="proposednext"></span><h1>Proposed Functions for version 2.3<a class="headerlink" href="#proposed-functions-for-version-2-3" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#proposednext"><em>Proposed Functions for version 2.3</em></a></p>
+<p>This are proposed functions for version 2.3.</p>
+<blockquote>
+<div><ul class="simple">
+<li>They are not officially in the version 2.2 release.</li>
+<li>They will likely officialy be part of the version 2.3 release:<ul>
+<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might not change.</li>
+<li>Signature might not  change.</li>
+<li>Functionality might not change.</li>
+<li>pgTap tests have being done.</li>
+<li>Needs feedback from the comunity.</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<div class="section" id="proposed-routing-functions">
+<h2>Proposed Routing Functions<a class="headerlink" href="#proposed-routing-functions" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body"><p class="first">Vicky Vergara</p>
+<ul class="last simple">
+<li>As part of Dijkstra Family of functions<ul>
+<li><a class="reference internal" href="dijkstra/doc/pgr_dijkstraVia.html#pgr-dijkstravia"><em>pgr_dijkstraVia</em></a> - Use pgr_dijkstra to make a route via vertices.</li>
+</ul>
+</li>
+<li><a class="reference internal" href="withPoints/doc/withPoints.html#withpoints"><em>pgr_withPoints</em></a> - withPoints family functions<ul>
+<li><a class="reference internal" href="withPoints/doc/pgr_withPoints.html#pgr-withpoints"><em>pgr_withPoints</em></a> - Route from/to points anywhere on the graph.</li>
+<li><a class="reference internal" href="withPoints/doc/pgr_withPointsCost.html#pgr-withpointscost"><em>pgr_withPointsCost</em></a> - Costs of the shortest paths.</li>
+<li><a class="reference internal" href="ksp/doc/pgr_withPointsKSP.html#pgr-withpointsksp"><em>pgr_withPointsKSP</em></a> - K shortest paths with points.</li>
+<li><a class="reference internal" href="driving_distance/doc/pgr_withPoints_dd.html#pgr-withpointsdd"><em>pgr_withPointsDD</em></a> - Driving distance.</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="trsp/doc/index.html">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="dijkstra/doc/pgr_dijkstraVia.html">pgr_dijkstraVia</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).
+      Last updated on Jan 18, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
