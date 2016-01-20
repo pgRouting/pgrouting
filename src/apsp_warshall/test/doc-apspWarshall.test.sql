@@ -4,9 +4,8 @@
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 \echo --q1
-SELECT seq, id1 AS FROM, id2 AS to, cost
-    FROM pgr_apspWarshall(
-        'SELECT id, source, target, cost FROM edge_table WHERE id < 5 ORDER BY id',
+SELECT * FROM pgr_apspWarshall(
+        'SELECT id, source, target, cost FROM edge_table WHERE id < 5',
         false, false
     );
 

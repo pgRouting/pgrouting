@@ -1,6 +1,5 @@
 --q1
-SELECT *
-    FROM pgr_apspJohnson(
+SELECT * FROM pgr_apspJohnson(
         'SELECT source, target, cost FROM edge_table WHERE id < 5'
     );
 NOTICE:  Deprecated function: Use pgr_johnson instead

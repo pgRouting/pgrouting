@@ -48,9 +48,10 @@ Description
     :source: ``int4`` identifier of the source vertex for this edge
     :target: ``int4`` identifier of the target vertex for this edge
     :cost: ``float8`` a positive value for the cost to traverse this edge
+    :reverse_cost: ``float8`` (optional) a positive value for the reverse cost to traverse this edge
 
 :directed: ``true`` if the graph is directed
-:reverse_cost: if ``true``, the ``reverse_cost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.
+:has_rcost: if ``true``, the ``reverse_cost`` column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.
 
 Returns set of :ref:`type_cost_result`:
 
