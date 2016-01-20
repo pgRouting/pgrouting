@@ -1,5 +1,6 @@
 # default build directory
 build
+src/turnRestricted
 .DS_Store
 .vagrant
 issues
