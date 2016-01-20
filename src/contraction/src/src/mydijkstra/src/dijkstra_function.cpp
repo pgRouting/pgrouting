@@ -1,5 +1,6 @@
 
 #include "myDijkstra.hpp"
+#include "CHdijkstra.hpp"
 #include <iostream>
 #include <boost/graph/adjacency_list.hpp>
 #include "dijkstra_function.h"
@@ -20,10 +21,19 @@ int compute_dijkstra(int64_t source,int64_t target,Edge *edges,int64_t num_verti
 
 
 int dijkstra_on_contracted(int64_t source,int64_t target,
-	pgr_contracted_blob **graphInfo,bool has_rcost)
+	pgr_contracted_blob **graphInfo,bool has_rcost,Edge **path)
 {
-	//int64_t path_size=0;
-	//typedef My_dijkstra<G> Graph;
-	//Graph g(DIRECTED,num_vertices);
+	int64_t num_vertices=1;
+	int64_t path_size=0;
+	typedef CH_dijkstra<G> Graph;
+	Graph g(DIRECTED,num_vertices);
+	string edges=(*graphInfo)->contracted_graph_blob;
+	string rvertices=(*graphInfo)->removedVertices;
+	string redges=(*graphInfo)->removedEdges;
+	string pedges=(*graphInfo)->psuedoEdges;
+	g.initialize_CH(edges,rvertices,redges,pedges);
+	g.dijkstra_on_contracted(source,target,&path,path_size);
+	return path_size;
 	//fetch edges,removed vertices,removed edges,psuedo edges from string
+
 }

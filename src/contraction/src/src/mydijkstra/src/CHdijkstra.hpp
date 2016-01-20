@@ -313,7 +313,6 @@ void get_reduced_path(V source,V target,Edge **path,int64_t &size)
       V v2=temp;
       this->reduced_graph->get_vertex_id(this->reduced_graph->predecessors[temp],sid);
       this->reduced_graph->get_vertex_id(temp,tid);
-
       if (edge(v1, v2,this->reduced_graph->graph).second)
       {
         E e=edge(v2, v1,this->reduced_graph->graph).first;
@@ -325,9 +324,12 @@ void get_reduced_path(V source,V target,Edge **path,int64_t &size)
       (*path)[temp_size].id=eid;
       (*path)[temp_size].source=sid;
       (*path)[temp_size].target=tid;
-      (*path)[temp_size].cost=this->reduced_graph->distances[temp]-this->reduced_graph->distances[this->predecessors[temp]];
+
+      (*path)[temp_size].cost=this->reduced_graph->distances[v2]-this->reduced_graph->distances[v1];
+      
+      cout << "s: " << sid << ",t: " << tid  << endl;
       (*path)[temp_size].type=etype;
-       //cout <<"yo," << "id:- " << e1.id << " src:- " << e1.source << " dest:- " << e1.target << " cost " << e1.cost << " type "<< e1.type << endl;
+       cout <<"yo," << "id:- " << eid << " src:- " << sid << " dest:- " << tid << " cost " << (*path)[temp_size].cost<< " type "<< (*path)[temp_size].type << endl;
       temp_size--;
       temp=this->reduced_graph->predecessors[temp];
     }
