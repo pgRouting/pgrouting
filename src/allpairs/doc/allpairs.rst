@@ -32,11 +32,11 @@ Performance
 The following tests:
  - non server computer
  - with AMD 64 CPU
- - 4M memory
+ - 4G memory
  - trusty
  - posgreSQL version 9.3
 
-data
+Data
 ----
 
 The following data was used
@@ -87,8 +87,6 @@ The results of this tests are presented as:
 :Floyd-Warshall: is the average execution time in seconds of pgr_floydWarshall.
 :Johnson: is the average execution time in seconds of pgr_johnson.  
 
-Results
-+++++++
 
 ====== ======  ========== ======== ============== =============
  SIZE  EDGES    DENSITY   OUT ROWS Floyd-Warshall  Johnson
@@ -113,7 +111,7 @@ Results
   9000   9000     3.17E-7    33879  19.19         5.34
   9500   9500     3.35E-7    36287  20.77         6.24
  10000  10000     3.52E-7    38491  23.26         6.51
-====== ======  ========== ======== ============= =============
+====== ======  ========== ======== ============== =============
 
 Test Two
 .........
@@ -147,9 +145,6 @@ The results of this tests are presented as:
 :Johnson: is the average execution time in seconds of pgr_johnson.
 
 
-Results
-+++++++
-
 ====== =====  ======== ======== ============== =============
  SIZE  EDGES   DENSITY OUT ROWS Floyd-Warshall  Johnson
 ====== =====  ======== ======== ============== =============
@@ -170,7 +165,7 @@ Results
  0.015  2588  0.0015    3156007    10.28       2.80
  0.016  2958  0.0013    4090618    14.67       3.76
  0.017  3247  0.0012    4868919    18.12       4.48
-====== =====  ======== ======== ============= =============
+====== =====  ======== ======== ============== =============
 
 
 See Also
