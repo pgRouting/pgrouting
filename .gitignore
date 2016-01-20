@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # default build directory
 build
 src/turnRestricted
@@ -8,3 +9,36 @@ tools/vagrant/packaging.sh
 *.mo
 .directory
 notUsed
+=======
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+osm
+qgis
+>>>>>>> aea359f36032a4fb2841d4d6abdc5d0886759c39
