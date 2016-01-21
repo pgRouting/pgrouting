@@ -1,6 +1,6 @@
 \set QUIET 1
 
-SET client_min_messages = NOTICE;
+SET client_min_messages = WARNING;
 
 
     ------------------------------------------------------------------------------------------------------

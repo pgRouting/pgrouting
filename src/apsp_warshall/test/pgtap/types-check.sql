@@ -22,40 +22,41 @@ SELECT * FROM pgr_apspWarshall(
 SELECT lives_ok('q1', '1: edges query accepts INTEGER & FLOAT');
 SELECT throws_ok(
     'SELECT * FROM pgr_apspWarshall(
-        ''SELECT source, target, cost, reverse_cost FROM edge_table'',
+        ''SELECT source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edge_table'',
         true, true)',
     'XX000','An expected column was not found in the query',
     'without id fails');
 SELECT throws_ok(
     'SELECT * FROM pgr_apspWarshall(
-        ''SELECT id, target, cost, reverse_cost FROM edge_table'',
+        ''SELECT id::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edge_table'',
         true, true)',
     'XX000','An expected column was not found in the query',
-    'without id fails');
+    'without source fails');
 SELECT throws_ok(
     'SELECT * FROM pgr_apspWarshall(
-        ''SELECT id, source, cost, reverse_cost FROM edge_table'',
+        ''SELECT id::INTEGER, source::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edge_table'',
         true, true)',
     'XX000','An expected column was not found in the query',
-    'without id fails');
+    'without target fails');
 SELECT throws_ok(
     'SELECT * FROM pgr_apspWarshall(
         ''SELECT id, source, target, reverse_cost FROM edge_table'',
         true, true)',
     'XX000','An expected column was not found in the query',
-    'without id fails');
+    'without cost fails');
+
 SELECT lives_ok(
     'SELECT * FROM pgr_apspWarshall(
-        ''SELECT id, source, target, cost FROM edge_table'',
+        ''SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table'',
          true, false)', '6: Without reverse_cost works');
 SELECT lives_ok(
     'SELECT * FROM pgr_apspWarshall(
-        ''SELECT id, source, target, cost, reverse_cost FROM edge_table'',
+        ''SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table'',
          true, false)',
     '7: Contradiction works');
 SELECT throws_ok(
     'SELECT * FROM pgr_apspWarshall(
-        ''SELECT id, source, target, cost FROM edge_table'',
+        ''SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table'',
          true, true)',
     'P0001','has_rcost set to true but reverse_cost not found',
     '8: Contradiction fails');
@@ -63,13 +64,13 @@ SELECT throws_ok(
 
 SELECT throws_ok(
     'SELECT * FROM pgr_apspWarshall(
-        ''SELECT source, target, cost, reverse_cost FROM edge_table'',
+        ''SELECT source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table'',
          false)',
     '42883','function pgr_apspwarshall(unknown, boolean) does not exist',
     'One flag fails');
 SELECT throws_ok(
     'SELECT * FROM pgr_apspWarshall(
-        ''SELECT source, target, cost, reverse_cost FROM edge_table'',
+        ''SELECT source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table'',
          true)',
     '42883','function pgr_apspwarshall(unknown, boolean) does not exist',
     'One flag fails');

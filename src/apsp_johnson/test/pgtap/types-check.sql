@@ -12,7 +12,7 @@ SELECT * FROM pgr_apspJohnson(
 
 PREPARE q2 AS
 SELECT * FROM pgr_apspJohnson(
-    'SELECT source, target, cost, reverse_cost FROM edge_table'
+    'SELECT source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edge_table'
 );
 
 
@@ -21,13 +21,13 @@ SELECT lives_ok('q1', 'edges query accepts INTEGER & FLOAT');
 SELECT lives_ok('q2', 'without id it works');
 SELECT throws_ok(
     'SELECT * FROM pgr_apspJohnson(
-        ''SELECT source, target, cost, reverse_cost FROM edge_table'',
+        ''SELECT source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table'',
          false)',
     '42883','function pgr_apspjohnson(unknown, boolean) does not exist',
     'directed flag fails with false');
 SELECT throws_ok(
     'SELECT * FROM pgr_apspJohnson(
-        ''SELECT source, target, cost, reverse_cost FROM edge_table'',
+        ''SELECT source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table'',
          true)',
     '42883','function pgr_apspjohnson(unknown, boolean) does not exist',
     'directed flag fails with true');
@@ -35,12 +35,12 @@ SELECT throws_ok(
 
 PREPARE q10 AS
 SELECT * FROM pgr_apspJohnson(
-    'SELECT id::FLOAT, source, target, cost, reverse_cost FROM edge_table'
+    'SELECT id::FLOAT, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table'
 );
 
 PREPARE q11 AS
 SELECT * FROM pgr_apspJohnson(
-    'SELECT id::REAL, source, target, cost, reverse_cost FROM edge_table'
+    'SELECT id::REAL, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table'
 );
 
 SELECT lives_ok('q10', 'id is ignored FLOAT');
@@ -64,12 +64,12 @@ SELECT throws_ok('q13', 'XX000', 'Support for source,target columns only of type
 
 PREPARE q14 AS
 SELECT * FROM pgr_apspJohnson(
-    'SELECT id, source, target::FLOAT, cost, reverse_cost FROM edge_table'
+    'SELECT id, source::INTEGER, target::INTEGER::FLOAT, cost, reverse_cost FROM edge_table'
 );
 
 PREPARE q15 AS
 SELECT * FROM pgr_apspJohnson(
-    'SELECT id, source, target::REAL, cost, reverse_cost FROM edge_table'
+    'SELECT id, source::INTEGER, target::INTEGER::REAL, cost, reverse_cost FROM edge_table'
 );
 
 SELECT throws_ok('q14', 'XX000', 'Support for source,target columns only of type: integer. Support for Cost: double precision',
@@ -79,22 +79,22 @@ SELECT throws_ok('q15', 'XX000', 'Support for source,target columns only of type
 
 PREPARE q16 AS
 SELECT * FROM pgr_apspJohnson(
-    'SELECT id, source, target, cost::SMALLINT, reverse_cost FROM edge_table'
+    'SELECT id, source::INTEGER, target::INTEGER, cost::SMALLINT, reverse_cost FROM edge_table'
 );
 
 PREPARE q17 AS
 SELECT * FROM pgr_apspJohnson(
-    'SELECT id, source, target, cost::INTEGER, reverse_cost FROM edge_table'
+    'SELECT id, source::INTEGER, target::INTEGER, cost::INTEGER, reverse_cost FROM edge_table'
 );
 
 PREPARE q18 AS
 SELECT * FROM pgr_apspJohnson(
-    'SELECT id, source, target, cost::BIGINT, reverse_cost FROM edge_table'
+    'SELECT id, source::INTEGER, target::INTEGER, cost::BIGINT, reverse_cost FROM edge_table'
 );
 
 PREPARE q19 AS
 SELECT * FROM pgr_apspJohnson(
-    'SELECT id, source, target, cost::REAL, reverse_cost FROM edge_table'
+    'SELECT id, source::INTEGER, target::INTEGER, cost::REAL, reverse_cost FROM edge_table'
 );
 
 

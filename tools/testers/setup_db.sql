@@ -11,7 +11,7 @@
 \set ON_ERROR_ROLLBACK 1
 \set ON_ERROR_STOP true
 
-SET client_min_messages = DEBUG1;
+SET client_min_messages = WARNING;
 
 CREATE EXTENSION postgis;
 CREATE EXTENSION pgtap;
@@ -19,6 +19,9 @@ CREATE EXTENSION pgrouting;
 
 BEGIN;
 
+    \i sampledata.sql
+
+    /*
     ------------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------------
     --              SAMPLE DATA                
@@ -128,5 +131,6 @@ BEGIN;
     fraction = a.fraction,
     side = a.side
     FROM (SELECT pid, (pgr_findClosestEdge('SELECT id, the_geom FROM edge_table', the_geom, 1)).* FROM points) a WHERE (a.pid = pointsOfInterest.pid);
+*/
 
 END;
