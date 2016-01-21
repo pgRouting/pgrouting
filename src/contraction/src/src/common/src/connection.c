@@ -6,6 +6,8 @@
 #include "connection.h"
 #define TUPLIMIT 1000
 
+#include "../../../../../common/src/postgres_connection.h"
+#if 0
 int finish(int code, int ret)
 {
   code = SPI_finish();
@@ -27,6 +29,7 @@ text2char(text *in)
   return out;
 }
 
+#endif
 static int64_t SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType) {
   Datum binval;
   bool isnull;
@@ -300,7 +303,9 @@ int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
       {
             // Fetching column numbers
         if (fetch_contracted_graph_columns(&graph_columns, &graph_types) == -1)
-         return finish(SPIcode, ret);
+         //return finish(SPIcode, ret);
+          pgr_SPI_finish();
+          return -1;
             // Finished fetching column numbers
      }
 
@@ -315,7 +320,9 @@ int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
 
     if ((*graphInfo) == NULL) {
       elog(ERROR, "Out of memory");
-      return finish(SPIcode, ret);    
+      //return finish(SPIcode, ret);
+      pgr_SPI_finish();
+          return -1;    
     }
     if (ntuples > 0)
     {
@@ -412,7 +419,9 @@ fetch_data(char *sql, Edge **edges,int *edge_count,bool rcost)
             {
             // Fetching column numbers
               if (fetch_edge_columns(&edge_columns, &edge_types,has_rcost) == -1)
-               return finish(SPIcode, ret);
+               //return finish(SPIcode, ret);
+               pgr_SPI_finish();
+          return -1;  
             // Finished fetching column numbers
            }
 

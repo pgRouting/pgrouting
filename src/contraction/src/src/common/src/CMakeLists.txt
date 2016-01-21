@@ -1,3 +1,3 @@
-ADD_LIBRARY(common OBJECT 
+ADD_LIBRARY(mycommon OBJECT 
                connection.c
            )

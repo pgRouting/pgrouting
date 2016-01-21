@@ -39,6 +39,7 @@ typedef struct
 	char *psuedoEdges;
 } pgr_contracted_blob;
 //represents the type of graph
-enum graphType { UNDIRECTED= 0, DIRECTED};
+// already defined in postgres_connection.h
+//enum graphType { UNDIRECTED= 0, DIRECTED};
 
 #endif

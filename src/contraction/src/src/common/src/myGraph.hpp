@@ -10,7 +10,7 @@
 #include <map>
 #include <limits>
 #include "structs.h"
-
+#include "../../../../../common/src/pgr_types.h"
 using namespace std;
 
 template <class G>

@@ -73,6 +73,7 @@ set(MYROUTING_INCLUDE_DIRECTORIES ${MYROUTING_SOURCE_DIR}/src/mydijkstra/src)
 set(MYROUTING_INCLUDE_DIRECTORIES ${MYROUTING_SOURCE_DIR}/src/contraction/src)
 set(MYROUTING_INCLUDE_DIRECTORIES ${MYROUTING_SOURCE_DIR}/src/myastar/src)
 set(MYROUTING_INCLUDE_DIRECTORIES ${MYROUTING_SOURCE_DIR}/src/common/src)
+set(MYROUTING_INCLUDE_DIRECTORIES ${MYROUTING_SOURCE_DIR}/../../common/src)
 
 #including these directories for the compiler
 include_directories(${MYROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
@@ -96,7 +97,9 @@ ${LIBRARY_MODE_TARGET}
 $<TARGET_OBJECTS:mydijkstra>
 $<TARGET_OBJECTS:contraction>
 $<TARGET_OBJECTS:myastar>
+$<TARGET_OBJECTS:mycommon>
 $<TARGET_OBJECTS:common>
+
 )
 
 install(TARGETS myrouting_library DESTINATION ${LIB_DIR} )
