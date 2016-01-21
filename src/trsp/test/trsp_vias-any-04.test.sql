@@ -6,7 +6,7 @@ Mail: project@pgrouting.org
 ------
 
 This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
+it under the terms of the GNU General Public License AS published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
 
@@ -24,40 +24,40 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 
-    select * from pgr_trspViaVertices(
-        'select id, source::integer, target::integer,cost, reverse_cost from edge_table',
-        ARRAY[1,8,13,5]::integer[],     -- array of vids
+    SELECT * FROM pgr_trspViaVertices(
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
+        ARRAY[2, 7, 11]::INTEGER[],     -- array of vids
         true,  -- directed graph?
         true,  -- has_reverse_cost?
         -- include the turn restrictions
-        'select to_cost, target_id, feid||coalesce('',''||via,'''') as via_path from restrictions');
+        'SELECT to_cost, target_id, from_edge||coalesce('',''||via,'''') AS via_path FROM restrictions');
 
     \echo '---------------------------'
-    select * from pgr_trspViaEdges(
-        'select id, source::integer, target::integer,cost, reverse_cost from edge_table',
-        ARRAY[1,11,6]::integer[],           -- array of eids
+    SELECT * FROM pgr_trspViaEdges(
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
+        ARRAY[4,6,11]::INTEGER[],           -- array of eids
         ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
         true,  -- directed graph?
         true,  -- has_reverse_cost?
         -- include the turn restrictions
-        'select to_cost, target_id, feid||coalesce('',''||via,'''') as via_path from restrictions');
+        'SELECT to_cost, target_id, from_edge||coalesce('',''||via,'''') AS via_path FROM restrictions');
     \echo '---------------------------'
-    select * from pgr_trspViaEdges(
-        'select id, source::integer, target::integer,cost, reverse_cost from edge_table',
-        ARRAY[1,11,6]::integer[],           -- array of eids
+    SELECT * FROM pgr_trspViaEdges(
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
+        ARRAY[1,11,6]::INTEGER[],           -- array of eids
         ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
         true,  -- directed graph?
         true,  -- has_reverse_cost?
         -- include the turn restrictions
-        'select to_cost, target_id, feid||coalesce('',''||via,'''') as via_path from restrictions');
+        'SELECT to_cost, target_id, from_edge||coalesce('',''||via,'''') AS via_path FROM restrictions');
     \echo '---------------------------'
-    select * from pgr_trspViaEdges(
-        'select id, source::integer, target::integer,cost, reverse_cost from edge_table',
-        ARRAY[1,11,6]::integer[],           -- array of eids
+    SELECT * FROM pgr_trspViaEdges(
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
+        ARRAY[1,11,6]::INTEGER[],           -- array of eids
         ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
         true,  -- directed graph?
         true,  -- has_reverse_cost?
         -- include the turn restrictions
-        'select to_cost, target_id, feid||coalesce('',''||via,'''') as via_path from restrictions');
+        'SELECT to_cost, target_id, from_edge||coalesce('',''||via,'''') AS via_path FROM restrictions');
     \echo '---------------------------'
     ROLLBACK;

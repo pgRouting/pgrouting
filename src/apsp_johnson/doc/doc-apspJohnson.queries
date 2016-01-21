@@ -1,8 +1,13 @@
 --q1
 SELECT * FROM pgr_apspJohnson(
-        'SELECT source, target, cost FROM edge_table WHERE id < 5'
+        'SELECT source::INTEGER, target::INTEGER, cost FROM edge_table WHERE id < 5'
     );
 NOTICE:  Deprecated function: Use pgr_johnson instead
-ERROR:  Support for source,target columns only of type: integer. Support for Cost: double precision
-CONTEXT:  PL/pgSQL function pgr_apspjohnson(text) line 7 at assignment
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   1 |   2 |    1
+   1 |   1 |   5 |    2
+   2 |   2 |   5 |    1
+(3 rows)
+
 --q2

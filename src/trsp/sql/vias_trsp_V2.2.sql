@@ -91,7 +91,7 @@ $body$
 
 ----------------------------------------------------------------------------------------------------------
 
-create or replace function pgr_trspViaEdges(sql text, eids integer[], pcts float8[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
+create or replace function pgr_trspViaEdges(sql text, eids integer[], pcts float8[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL::text)
     RETURNS SETOF pgr_costresult3 AS
 $body$
 /*
@@ -136,7 +136,7 @@ begin
                                   eids[i], pcts[i],
                                   eids[i+1], pcts[i+1],
                                   directed,
-                                  has_reverse_cost,
+                                  has_reverse,
                                   turn_restrict_sql) as a loop
             -- combine intermediate via costs when cost is split across
             -- two parts of a segment because it stops it and
