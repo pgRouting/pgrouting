@@ -1,16 +1,18 @@
 BEGIN;
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
---              PGR_bdDijkstra
+--              PGR_pgr_bdAStar
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
-
-SELECT seq, id1 AS node, id2 AS edge, round(cost) as cost
-    FROM pgr_bdDijkstra(
-        'SELECT id, source, target, cost FROM edge_table order by id',
-        7, 12, false, false);
-SELECT seq, id1 AS node, id2 AS edge, cost
-    FROM pgr_bdDijkstra(
-        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-        7, 12, true, true);
+\echo --q1
+SELECT * FROM pgr_bdAStar(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, x1, y1, x2, y2
+     FROM edge_table',
+    4, 10, false, false);
+\echo --q2
+SELECT * FROM pgr_bdAStar(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, x1, y1, x2, y2, reverse_cost
+     FROM edge_table ',
+    4, 10, true, true);
+\echo --q3
 ROLLBACK;
