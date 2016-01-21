@@ -23,7 +23,7 @@ NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
 OK
 NOTICE:  PROCESSING:
-NOTICE:  pgr_nodeNetwork('edge_table',0.001,'the_geom','id','noded')
+NOTICE:  pgr_nodeNetwork('edge_table',0.001,'id','the_geom','noded','')
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Processing, please wait .....
 NOTICE:    Splitted Edges: 2
