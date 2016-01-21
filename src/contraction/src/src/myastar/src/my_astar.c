@@ -1,6 +1,7 @@
 #include "postgres.h"
 #include "executor/spi.h"
 #include "../../common/src/connection.h"
+#include "../../../../../common/src/postgres_connection.h"
 #include "../../common/src/structs.h"
 #include "my_astar.h"
 #include "funcapi.h"

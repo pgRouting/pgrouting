@@ -1,6 +1,7 @@
 #include "postgres.h"
 #include "executor/spi.h"
 #include "../../common/src/connection.h"
+#include "../../../../../common/src/postgres_connection.h"
 #include "../../common/src/structs.h"
 #include "dijkstra_function.h"
 #include "funcapi.h"
@@ -28,7 +29,9 @@ static int compute_shortest_path(char* sql,int source,int target,
 	int readCode = get_contracted_graph(sql,&graphInfo);
 	if (readCode == -1) {
 		pfree(graphInfo);
-		return finish(SPIcode, ret);
+		//return finish(SPIcode, ret);
+		pgr_SPI_finish();
+          return -1;
 	}
 	elog(INFO,"graphName: %s",graphInfo->contracted_graph_name);
 	elog(INFO,"graphBlob: %s",graphInfo->contracted_graph_blob);
@@ -43,7 +46,9 @@ static int compute_shortest_path(char* sql,int source,int target,
 	}*/
 
 	pfree(graphInfo);
-	return finish(SPIcode, ret);
+	//return finish(SPIcode, ret);
+	pgr_SPI_finish();
+          return -1;
 }
 
 
@@ -79,7 +84,7 @@ shortest_path_c(PG_FUNCTION_ARGS) {
 		bool has_rcost=false;
 		has_rcost=PG_GETARG_BOOL(3);
 		int source=PG_GETARG_INT64(1),target=PG_GETARG_INT64(2);
-		compute_shortest_path(text2char(PG_GETARG_TEXT_P(0)),source,target,
+		compute_shortest_path(pgr_text2char(PG_GETARG_TEXT_P(0)),source,target,
 			&edges,&path_size,has_rcost);
 		
 		//prints the path if the number of edges > 0

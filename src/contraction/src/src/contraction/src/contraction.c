@@ -2,6 +2,7 @@
 #include "postgres.h"
 #include "executor/spi.h"
 #include "../../common/src/connection.h"
+#include "../../../../../common/src/postgres_connection.h"
 #include "../../common/src/structs.h"
 #include "contract_function.h"
 #include "funcapi.h"
@@ -39,7 +40,9 @@ static int compute_contracted_graph(char* sql,int level,
 
 	if (readCode == -1 || initial_num_edges == 0) {
 		pfree(edges);
-		return finish(SPIcode, ret);
+		//return finish(SPIcode, ret);
+		pgr_SPI_finish();
+          return -1;
 	}
 	elog(INFO,"Contracting.....");
 	ret = fetch_contracted_graph(edges, &initial_num_vertices,
@@ -57,7 +60,9 @@ static int compute_contracted_graph(char* sql,int level,
 	PGR_DBG("Returned message = %s\n", err_msg);
 
 	pfree(edges);
-	return finish(SPIcode, ret);
+	//return finish(SPIcode, ret);
+	pgr_SPI_finish();
+          return -1;
 }
 
 Datum pgr_contractgraph(PG_FUNCTION_ARGS);
