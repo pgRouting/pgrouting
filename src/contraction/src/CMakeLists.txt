@@ -1,3 +1,4 @@
+
 cmake_minimum_required(VERSION 2.8.8 FATAL_ERROR)
 project(MYROUTING)
 message(STATUS "MYROUTING_SOURCE_DIR: ${MYROUTING_SOURCE_DIR}")

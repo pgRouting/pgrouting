@@ -32,7 +32,7 @@ int dijkstra_on_contracted(int64_t source,int64_t target,
 	string redges=(*graphInfo)->removedEdges;
 	string pedges=(*graphInfo)->psuedoEdges;
 	g.initialize_CH(edges,rvertices,redges,pedges);
-	g.dijkstra_on_contracted(source,target,&path,path_size);
+	g.dijkstra_on_contracted(source,target,path,path_size);
 	return path_size;
 	//fetch edges,removed vertices,removed edges,psuedo edges from string
 
