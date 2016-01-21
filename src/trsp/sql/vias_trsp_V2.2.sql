@@ -20,7 +20,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-create or replace function _pgr_trspViaVertices(sql text, vids integer[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
+create or replace function _pgr_trspViaVertices(sql text, vids integer[], directed boolean, has_rcost boolean, turn_restrict_sql text DEFAULT NULL::text)
     RETURNS SETOF pgr_costresult3 AS
 $body$
 /*
@@ -38,14 +38,27 @@ declare
     lrra boolean := false;
     seq integer := 0;
     seq2 integer := 0;
+    has_reverse BOOLEAN;
+    edges_sql TEXT;
 
 begin
+    has_reverse =_pgr_parameter_check('dijkstra', sql, false);
+    edges_sql = sql;
+    IF (has_reverse != has_rcost) THEN
+        IF (has_reverse) THEN
+            edges_sql = 'SELECT id, source, target, cost FROM (' || sql || ') a';
+        ELSE
+            raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
+        END IF;
+    END IF;
+
+
 
     -- loop through each pair of vids and compute the path
     for i in 1 .. array_length(vids, 1)-1 loop
         seq2 := seq2 + 1;
         for rr in select a.seq, seq2 as id1, a.id1 as id2, a.id2 as id3, a.cost
-                    from pgr_trsp(sql, vids[i], vids[i+1], directed, has_reverse_cost, turn_restrict_sql) as a loop
+                    from pgr_trsp(edges_sql, vids[i], vids[i+1], directed, has_rcost, turn_restrict_sql) as a loop
             -- filter out the individual path ends except the last one
             -- we might not want to do this so we can know where the via points are in the path result
             -- but this needs more thought
@@ -97,8 +110,20 @@ declare
     first boolean := true;
     seq integer := 0;
     seq2 integer :=0;
+    has_reverse BOOLEAN;
+    edges_sql TEXT;
 
 begin
+    has_reverse =_pgr_parameter_check('dijkstra', sql, false);
+    edges_sql = sql;
+    IF (has_reverse != has_rcost) THEN
+        IF (has_reverse) THEN
+            edges_sql = 'SELECT id, source, target, cost FROM (' || sql || ') a';
+        ELSE
+            raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
+        END IF;
+    END IF;
+
     if array_length(eids, 1) != array_length(pcts, 1) then
         raise exception 'The length of arrays eids and pcts must be the same!';
     end if;
@@ -107,7 +132,7 @@ begin
     for i in 1 .. array_length(eids, 1)-1 loop
         seq2 := seq2 + 1;
         for rr in select a.seq, seq2 as id1, a.id1 as id2, a.id2 as id3, a.cost
-                    from pgr_trsp(sql,
+                    from pgr_trsp(edges_sql,
                                   eids[i], pcts[i],
                                   eids[i+1], pcts[i+1],
                                   directed,

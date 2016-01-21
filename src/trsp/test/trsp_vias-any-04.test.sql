@@ -23,22 +23,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
 
-    CREATE TABLE restrictions3 (
-        rid integer NOT NULL,
-        to_cost double precision,
-        target_id integer,
-        feid integer,
-        via text
-    );
-
-    COPY restrictions3 (rid, to_cost, target_id, feid, via) FROM stdin WITH NULL '__NULL__' DELIMITER ',';
-1,100,7,4,__NULL__
-2,4,8,3,5
-3,100,9,16,__NULL__
-\.
-
-    -- UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
-
 
     select * from pgr_trspViaVertices(
         'select id, source::integer, target::integer,cost, reverse_cost from edge_table',
@@ -46,7 +30,7 @@ BEGIN;
         true,  -- directed graph?
         true,  -- has_reverse_cost?
         -- include the turn restrictions
-        'select to_cost, target_id, feid||coalesce('',''||via,'''') as via_path from restrictions3');
+        'select to_cost, target_id, feid||coalesce('',''||via,'''') as via_path from restrictions');
 
     \echo '---------------------------'
     select * from pgr_trspViaEdges(
@@ -56,7 +40,7 @@ BEGIN;
         true,  -- directed graph?
         true,  -- has_reverse_cost?
         -- include the turn restrictions
-        'select to_cost, target_id, feid||coalesce('',''||via,'''') as via_path from restrictions3');
+        'select to_cost, target_id, feid||coalesce('',''||via,'''') as via_path from restrictions');
     \echo '---------------------------'
     select * from pgr_trspViaEdges(
         'select id, source::integer, target::integer,cost, reverse_cost from edge_table',
@@ -65,7 +49,7 @@ BEGIN;
         true,  -- directed graph?
         true,  -- has_reverse_cost?
         -- include the turn restrictions
-        'select to_cost, target_id, feid||coalesce('',''||via,'''') as via_path from restrictions3');
+        'select to_cost, target_id, feid||coalesce('',''||via,'''') as via_path from restrictions');
     \echo '---------------------------'
     select * from pgr_trspViaEdges(
         'select id, source::integer, target::integer,cost, reverse_cost from edge_table',
@@ -74,6 +58,6 @@ BEGIN;
         true,  -- directed graph?
         true,  -- has_reverse_cost?
         -- include the turn restrictions
-        'select to_cost, target_id, feid||coalesce('',''||via,'''') as via_path from restrictions3');
+        'select to_cost, target_id, feid||coalesce('',''||via,'''') as via_path from restrictions');
     \echo '---------------------------'
     ROLLBACK;

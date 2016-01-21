@@ -243,7 +243,7 @@ SELECT * FROM pgr_dijkstra(
 );
 -- Version 2.0
 SELECT * FROM pgr_dijkstra(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     2, 3,
     TRUE,    -- directed flag
     TRUE      -- has_rcost
@@ -279,7 +279,7 @@ SELECT * FROM pgr_dijkstra(
 );
 -- Version 2.0
 SELECT * FROM pgr_dijkstra(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     2, 3,
     FALSE,    -- directed flag
     TRUE      -- has_rcost

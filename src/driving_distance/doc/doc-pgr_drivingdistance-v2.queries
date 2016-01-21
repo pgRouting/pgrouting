@@ -6,23 +6,13 @@ SELECT * FROM pgr_drivingDistance(
     7, 1.5, false, false
 ) ;
 NOTICE:  Deprecated function
- seq | id1 | id2 | cost 
------+-----+-----+------
-   0 |   7 |  -1 |    0
-   1 |   8 |   6 |    1
-(2 rows)
-
+ERROR:  Error, columns 'source', 'target' must be of type int4, 'cost' must be of type float8
+CONTEXT:  PL/pgSQL function pgr_drivingdistance(text,bigint,double precision,boolean,boolean) line 8 at assignment
 SELECT * FROM pgr_drivingDistance(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     7, 1.5, true, true
 ) ;
-NOTICE:  Deprecated function
- seq | id1 | id2 | cost 
------+-----+-----+------
-   0 |   7 |  -1 |    0
-   1 |   8 |   6 |    1
-(2 rows)
-
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 --q2
 ROLLBACK;
 ROLLBACK
