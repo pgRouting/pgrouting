@@ -119,7 +119,7 @@ trusty provides: 1.2.2
     sudo apt-get install texlive
 
 
-pgTap for tests 
+pgTap & pg_prove for tests 
 ---------------------
 
 .. code-block:: none
@@ -130,7 +130,7 @@ pgTap for tests
     make
     sudo make install
     sudo ldconfig
-
+    sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
 
 See Also
 -------------------------------------------------------------------------------
