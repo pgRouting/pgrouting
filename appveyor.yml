@@ -20,7 +20,6 @@ branches:
     - dev-2.2
 
     
-language: c
 
 compiler:
   - gcc
