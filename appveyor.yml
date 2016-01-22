@@ -21,9 +21,6 @@ branches:
 
     
 
-compiler:
-  - gcc
-
 services:
   - postgresql
 
