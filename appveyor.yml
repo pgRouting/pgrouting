@@ -46,17 +46,17 @@ environment:
 
 
 before_script:
-  - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH # Add our chosen PG version to the path
-  - sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
-    #- sudo apt-get install -y postgresql-9.5
-    #- sudo apt-get install -y postgresql-9.5-postgis
-    #- sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
-  - sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION # Start the version of PG that we want to test
+  #- export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH # Add our chosen PG version to the path
+  #- sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
+  #- sudo apt-get install -y postgresql-9.5
+  #- sudo apt-get install -y postgresql-9.5-postgis
+  #- sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
+  #- sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION # Start the version of PG that we want to test
   - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION   # pgtap has to be installed after postgres has started
-  - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
-  - createdb  ___pgr___test___
-  - createdb  pgr_test__db__test
-  - ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___
+  #- sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
+  #- createdb  ___pgr___test___
+  #- createdb  pgr_test__db__test
+  #- ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___
 
 
 #before_install:
