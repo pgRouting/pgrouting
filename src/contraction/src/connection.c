@@ -437,7 +437,8 @@ fetch_data(char *sql, Edge **edges,int *edge_count,bool rcost)
 
           if ((*edges) == NULL) {
             elog(ERROR, "Out of memory");
-            return finish(SPIcode, ret);    
+            pgr_SPI_finish();
+          return -1;  
           }
 
           if (ntuples > 0) {
@@ -562,7 +563,8 @@ fetch_astar_data(char *sql, Edge **edges,int *count,bool rcost)
             {
             // Fetching column numbers
               if (fetch_astar_edge_columns(&edge_columns, &edge_types,has_rcost) == -1)
-               return finish(SPIcode, ret);
+               pgr_SPI_finish();
+          return -1;
             // Finished fetching column numbers
            }
 
@@ -578,7 +580,8 @@ fetch_astar_data(char *sql, Edge **edges,int *count,bool rcost)
 
           if ((*edges) == NULL) {
             elog(ERROR, "Out of memory");
-            return finish(SPIcode, ret);    
+            pgr_SPI_finish();
+          return -1;   
           }
 
           if (ntuples > 0) {
@@ -629,7 +632,8 @@ void print_data(char buf[8192])
    // ret = SPI_connect();
  SPI_connect();
  elog(INFO, "OUTPUT: %s", buf);
- SPI_finish();
+ pgr_SPI_finish();
+         // return -1;
 }
 
 //function used for testing purpose
@@ -673,7 +677,8 @@ int execq(char *sql,int cnt)
     }
   }
 
-  SPI_finish();
+  pgr_SPI_finish();
+          //return -1;
   return (proc);
   
 

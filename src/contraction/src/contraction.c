@@ -100,7 +100,7 @@ pgr_contractgraph(PG_FUNCTION_ARGS) {
 		has_rcost=PG_GETARG_BOOL(2);
 		//directed=PG_GETARG_BOOL(3);
 		elog(INFO,"level of contraction : %d",level);
-		compute_contracted_graph(text2char(PG_GETARG_TEXT_P(0)),level,&final_num_edges,
+		compute_contracted_graph(pgr_text2char(PG_GETARG_TEXT_P(0)),level,&final_num_edges,
 			&graphName,&edgeString,&psuedoEString,&removedVString,&removedEString,has_rcost);
 		elog(INFO,"graph name : %s",graphName);
 		elog(INFO,"Final edge count : %d",final_num_edges);
