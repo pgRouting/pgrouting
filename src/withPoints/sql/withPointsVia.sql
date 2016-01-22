@@ -58,7 +58,7 @@ CREATE OR REPLACE FUNCTION  pgr_withPointsVia(
      BEGIN
         sql_safe = 'SELECT id, source, target, cost, reverse_cost FROM ('|| sql || ') AS __a';
 
-        execute 'select reverse_cost, pg_typeof(reverse_cost)::text as rev_type  from ('||sql_safe||' ) AS __b__ limit 1 ' into rec1;
+        EXECUTE 'select reverse_cost, pg_typeof(reverse_cost)::text as rev_type  from ('||sql_safe||' ) AS __b__ limit 1 ' INTO rec1;
         has_rcost := true;
         EXCEPTION
           WHEN OTHERS THEN
@@ -74,11 +74,11 @@ CREATE OR REPLACE FUNCTION  pgr_withPointsVia(
       LOOP
           IF fraction[i] = 0 THEN
               sql_on_vertex := 'SELECT source FROM ('|| sql || ') __a where id = ' || via_edges[i];
-              execute sql_on_vertex into dummyrec; 
+              EXECUTE sql_on_vertex into dummyrec; 
               via_vertices[i] = dummyrec.source;
           ELSE IF fraction[i] = 1 THEN
               sql_on_vertex := 'SELECT target FROM ('|| sql || ') __a where id = ' || via_edges[i];
-              execute sql_on_vertex into dummyrec; 
+              EXECUTE sql_on_vertex into dummyrec; 
               via_vertices[i] = dummyrec.target;
           ELSE
               via_vertices[i] = -i;

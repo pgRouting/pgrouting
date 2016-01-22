@@ -47,7 +47,7 @@ Routing Functions
 	:hidden: 
 
 	allpairs/doc/allpairs
-	astar/doc/index
+	astar/doc/pgr_astar
 	bd_astar/doc/index
 	bd_dijkstra/doc/index
 	dijkstra/doc/dijkstra
