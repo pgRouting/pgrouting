@@ -5,11 +5,8 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
-group: edge
 
-dist: trusty
 
-sudo: required
 
 
 notifications:
