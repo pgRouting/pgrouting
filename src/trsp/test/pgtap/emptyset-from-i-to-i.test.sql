@@ -17,8 +17,8 @@
         directed = 'Undirected';
         IF flag THEN directed = 'Directed'; END IF;
         k := 1;
-        inner_sql1 = quote_literal('SELECT id, source, target, cost, reverse_cost from edge_table ORDER BY id');
-        inner_sql2 = quote_literal('SELECT id, source, target, cost from edge_table ORDER BY id');
+        inner_sql1 = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table ORDER BY id');
+        inner_sql2 = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost from edge_table ORDER BY id');
         FOR i IN 1.. cant LOOP
                 trsp_sql := 'SELECT * from pgr_trsp( ' || inner_sql1 || ', ' || i || ', ' || i || ', ' || flag || ', true)';
                 msg := k || ' ' || directed || ', with reverse_cost and saying we use it: from '  || i || ' to ' || i;

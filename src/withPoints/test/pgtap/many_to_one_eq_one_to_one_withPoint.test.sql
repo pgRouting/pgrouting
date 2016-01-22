@@ -7,7 +7,7 @@ SELECT PLAN(6);
 PREPARE q1 AS
 SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    'SELECT pid, edge_id, fraction, side from points',
+    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[3], 1, 
     driving_side := 'r',
     directed := true,
@@ -16,7 +16,7 @@ SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
 PREPARE q2 AS
 SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    'SELECT pid, edge_id, fraction, side from points',
+    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[3], 1, 
     driving_side := 'r',
     directed := true,
@@ -28,7 +28,7 @@ SELECT set_eq('q1', 'q2', '1: Right: from point ARRAY[3] to 1 it does not pass i
 PREPARE q3 AS
 SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    'SELECT pid, edge_id, fraction, side from points',
+    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[3], 4, 
     driving_side := 'r',
     directed := true,
@@ -39,7 +39,7 @@ SELECT set_has('q3','q2','2: Right: from 3 to 4 it passes in front of point 1');
 PREPARE q4 AS
 SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    'SELECT pid, edge_id, fraction, side from points',
+    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[3], 4,
     driving_side := 'l',
     directed := true,
@@ -48,7 +48,7 @@ SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
 PREPARE q5 AS
 SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    'SELECT pid, edge_id, fraction, side from points',
+    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[3], 4,
     driving_side := 'l',
     directed := true,
@@ -60,7 +60,7 @@ SELECT set_eq('q4', 'q5', '3: Left: from point 3 to 4 it does not pass in front 
 PREPARE q6 AS
 SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    'SELECT pid, edge_id, fraction, side from points',
+    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[3], 1, 
     driving_side := 'l',
     directed := true,
@@ -72,7 +72,7 @@ SELECT set_has('q6','q5','4: Left: from ARRAY[3] to 1 it passes in front of poin
 PREPARE q7 AS
 SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    'SELECT pid, edge_id, fraction, side from points',
+    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[3], 1,
     driving_side := 'b',
     directed := true,
@@ -81,7 +81,7 @@ SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
 PREPARE q8 AS
 SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    'SELECT pid, edge_id, fraction, side from points',
+    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[3], 4,
     driving_side := 'b',
     directed := true,
@@ -92,7 +92,7 @@ SELECT set_has('q7','q8','Both: from ARRAY[3] to 1 it passes in front of point 4
 PREPARE q9 AS
 SELECT  -3 AS start_vid, -1 AS end_vid,  agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    'SELECT pid, edge_id, fraction, side from points',
+    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[3], 1,
     driving_side := 'r',
     directed := true,
@@ -102,7 +102,7 @@ SELECT  -3 AS start_vid, -1 AS end_vid,  agg_cost FROM pgr_withPoints(
 PREPARE q10 AS
 SELECT *  FROM pgr_withPointsCost(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    'SELECT pid, edge_id, fraction, side from points',
+    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[3], 1,
     driving_side := 'r',
     directed := true,
