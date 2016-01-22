@@ -28,21 +28,21 @@ environment:
     - POSTGRESQL_VERSION: 9.4
 
 # excecuted. So things have to be tested oe by one.
-addons:
-  apt:
-    sources:
-      # For gcc >= 4.8
-      # - ubuntu-toolchain-r-test
-      # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
-      #- kubuntu-backports
-      - boost-latest
-    packages:
-      #- cmake
-      - libboost-thread-dev
-      - libboost-graph-dev
-      - libcgal-dev
-      - postgresql-server-dev-all
-      - postgresql-common
+#addons:
+#  apt:
+#    sources:
+# For gcc >= 4.8
+# - ubuntu-toolchain-r-test
+# For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
+#- kubuntu-backports
+#      - boost-latest
+#    packages:
+#- cmake
+#      - libboost-thread-dev
+#- libboost-graph-dev
+#- libcgal-dev
+#- postgresql-server-dev-all
+#- postgresql-common
 
 
 before_script:
