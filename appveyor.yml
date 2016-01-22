@@ -51,7 +51,7 @@ environment:
 #- sudo apt-get install -y postgresql-9.5-postgis
 #- sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
 #- sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION # Start the version of PG that we want to test
-before_script:
+#before_script:
     
 # - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION   # pgtap has to be installed after postgres has started
 #- sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
@@ -64,13 +64,13 @@ before_script:
 
 #before_script:
 
-script: 
+#script: 
 
 #- ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 #- ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION
 
-after_script: 
+#after_script: 
 
 #- ./tools/travis/pg_prove_tests.sh postgres
 
-after_success:
+#after_success:
