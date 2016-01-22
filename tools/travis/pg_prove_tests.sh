@@ -40,7 +40,8 @@ run_psql -f setup_db.sql
 #pg_prove ../../src/withPoints/test/pgtap/* -d $PGDATABASE
 #pg_prove ../../src/trsp/test/pgtap/* -d $PGDATABASE
 
-pg_prove ../../src/astar/test/pgtap/* -d $PGDATABASE
+#pg_prove ../../src/astar/test/pgtap/* -d $PGDATABASE
+pg_prove ../../src/bd_astar/test/pgtap/* -d $PGDATABASE
 
 if [ "$?" -ne 0 ]
 then

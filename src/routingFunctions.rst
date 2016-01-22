@@ -48,8 +48,8 @@ Routing Functions
 
 	allpairs/doc/allpairs
 	astar/doc/pgr_astar
-	bd_astar/doc/index
-	bd_dijkstra/doc/index
+	bd_astar/doc/pgr_bdAstar
+	bd_dijkstra/doc/pgr_bdDijkstra
 	dijkstra/doc/dijkstra
 	driving_distance/doc/drivingDistance
 	ksp/doc/ksp
