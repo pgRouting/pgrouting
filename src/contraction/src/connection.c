@@ -6,8 +6,31 @@
 #include "connection.h"
 #define TUPLIMIT 1000
 
-#include "../../common/src/debug_macro.h"
-#include "../../common/src/postgres_connection.h"
+<<<<<<< HEAD
+#include "./../../common/src/debug_macro.h"
+#include "./../../common/src/postgres_connection.h"
+#if 0
+int finish(int code, int ret)
+{
+  code = SPI_finish();
+  if (code  != SPI_OK_FINISH )
+  {
+    elog(ERROR,"couldn't disconnect from SPI");
+    return -1 ;
+  }         
+  return ret;
+}
+
+char *
+text2char(text *in)
+{
+  char *out = palloc(VARSIZE(in));
+
+  memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
+  out[VARSIZE(in) - VARHDRSZ] = '\0';
+  return out;
+}
+#endif
 
 static int64_t SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType) {
   Datum binval;

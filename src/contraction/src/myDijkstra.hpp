@@ -9,9 +9,9 @@
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
-#include "../../common/src/myGraph.hpp"
-#include "../../common/src/structs.h"
-#include "../../contraction/src/graphMinimizer.hpp"
+#include "./myGraph.hpp"
+#include "./structs.h"
+#include "./graphMinimizer.hpp"
 using namespace std;
 using namespace boost;
 
