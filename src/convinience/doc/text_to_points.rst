@@ -13,7 +13,7 @@ pgr_textToPoints
 ==============================================================================
 
 .. index::
-        single: pgr_textToPoints(pnts text, srid integer DEFAULT(4326)) --proposed
+        single: textToPoints(pnts text, srid integer DEFAULT(4326)) --proposed
 
 
 Name
@@ -69,3 +69,9 @@ See Also
 
 * :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``node_id`` based on closest edge.
 * :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
+

@@ -38,6 +38,15 @@ These function my be helpful when you need to create or manipulate distance matr
  - :ref:`pgr_vids_to_dmatrix` - Create a distance matrix from an array of ``vertix_id``.
  - :ref:`pgr_vids_to_dmatrix2` - Create a distance matrix from an array of ``vertix_id``.
 
+See also
+--------
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
+
+
 .. toctree::
   :hidden:
 

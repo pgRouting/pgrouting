@@ -13,7 +13,7 @@ pgr_pointToEdgeNode
 ==============================================================================
 
 .. index::
-        single: pgr_pointToEdgeNode(edges text, pnt geometry, tol float8) --proposed
+        single: pointToEdgeNode(edges text, pnt geometry, tol float8) --proposed
 
 
 Name
@@ -77,18 +77,16 @@ Examples
    :start-after: --q1
    :end-before: --q2
 
-.. code-block:: sql
-
-        select pgr_pointtoedgenode('edge_table', 'POINT(2 0)'::geometry, 0.02);
-        pgr_pointtoedgenode
-        -------------------
-                         1
-        (1 row)
-
 The example uses the :ref:`sampledata` network.
 
 See Also
 -----------------------------------------------------------------------------
 
 * :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
+
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
 

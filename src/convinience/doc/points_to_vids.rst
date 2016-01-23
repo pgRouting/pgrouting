@@ -13,7 +13,7 @@ pgr_pointsToVids
 ==============================================================================
 
 .. index::
-        single: pgr_pointsToVids(pnts geometry[], edges text, tol float8 DEFAULT(0.01)) --proposed
+        single: pointsToVids(pnts geometry[], edges text, tol float8 DEFAULT(0.01)) --proposed
 
 
 Name
@@ -76,4 +76,10 @@ See Also
 -----------------------------------------------------------------------------
 
 * :ref:`pgr_point_to_edgenode` - convert a point geometry to the closest vertex_id of an edge..
+
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
 

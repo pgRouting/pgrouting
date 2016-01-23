@@ -13,8 +13,7 @@ pgr_flipEdges
 ==============================================================================
 
 .. index::
-        single: pgr_flipEdges(ga geometry[]) --proposed
-        module: common
+        single: flipEdges(ga geometry[]) --proposed
 
 
 Name
@@ -68,3 +67,12 @@ Examples
 .. literalinclude:: doc-conversion.queries
    :start-after: --q2
    :end-before: --q3
+
+See also
+--------
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
+

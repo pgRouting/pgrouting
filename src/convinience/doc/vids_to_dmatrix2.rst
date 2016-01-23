@@ -13,7 +13,7 @@ pgr_vidsToDMatrix
 ==============================================================================
 
 .. index::
-        single: pgr_vidsToDMatrix(IN sql text, IN vids integer[], IN directed boolean, IN has_reverse_cost boolean, IN want_symmetric boolean, OUT dmatrix double precision[]) --proposed
+        single: vidsToDMatrix(IN sql text, IN vids integer[], IN directed boolean, IN has_reverse_cost boolean, IN want_symmetric boolean, OUT dmatrix double precision[]) --proposed
 
 
 Name
@@ -71,36 +71,16 @@ Examples
 -----------------------------------------------------------------------------
 
 .. literalinclude:: doc-matrix.queries
-   :start-after: --q2
-   :end-before: --q3
+   :start-after: --q3
+   :end-before: --q4
 
 
-This example shows how this can be used in the context of feeding the results into pgr_tsp() function. We convert a text string of ``x,y;x,y;...`` into and array of points, then convert that into an array ``vertex_id``, then create a distance matrix that gets feed into ``pgr_tsp()`` that returns the final result.
+This example shows how this can be used in the context of feeding the results into pgr_tsp() function.
 
-.. code-block:: sql
+.. literalinclude:: doc-matrix.queries
+   :start-after: --q4
+   :end-before: --q5
 
-    select * from pgr_tsp(
-        (select dmatrix::float8[]
-           from pgr_vidstodmatrix(
-                    'select id, source, target, cost, reverse_cost from edge_table',
-                    pgr_pointstovids(
-                        pgr_texttopoints('2,0;2,1;3,1;2,2;4,1;4,2;2,3;3,2', 0),
-                        'edge_table'),
-                    true, true, true) as dmatrix
-        ),
-        1
-    );
-     seq | id
-    -----+----
-       0 |  1
-       1 |  0
-       2 |  6
-       3 |  3
-       4 |  7
-       5 |  5
-       6 |  4
-       7 |  2
-    (8 rows)
 
 This example uses the :ref:`sampledata` network.
 
@@ -112,3 +92,7 @@ See Also
 * :ref:`pgr_text_to_points` - Create an array of points from a text string.
 * :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
 
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
