@@ -1,4 +1,4 @@
-#include "../../common/src/structs.h"
+#include "./structs.h"
 #include "graphMinimizer.hpp"
 #include <iostream>
 #include <boost/graph/adjacency_list.hpp>

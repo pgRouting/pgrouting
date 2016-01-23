@@ -4,7 +4,7 @@
 
 #include <unistd.h>
 #include "postgres.h"
-#include "../../common/src/structs.h"
+#include "./structs.h"
 
 
 #ifdef __cplusplus

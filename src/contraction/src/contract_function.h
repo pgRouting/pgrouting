@@ -1,7 +1,7 @@
 #ifndef CONTRACT_FUNCTION_H_
 #define CONTRACT_FUNCTION_H_
 
-#include "../../common/src/structs.h"
+#include "./structs.h"
 
 #ifdef __cplusplus
 extern "C" {
