@@ -40,15 +40,15 @@ The main Characteristics are:
   - Process is done only on edges with positive costs.
   - Values are returned when there is a path.
 
+    - The returned values are in the form of a set of `(start_vid, end_vid, agg_cost)`.
+
     - When the starting vertex and ending vertex are the same, there is no path.
 
-      - The `agg_cost` the non included values `(v, v)` is `0`
+      - The `agg_cost` int the non included values `(v, v)` is `0`
 
     - When the starting vertex and ending vertex are the different and there is no path.
 
-      - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
-
-    - The returned values are in the form of a set of `(start_vid, end_vid, agg_cost)`.
+      - The `agg_cost` in the non included values `(u, v)` is :math:`\infty`
 
   - Let be the case the values returned are stored in a table, so the unique index would be the pair:
     `(start_vid, end_vid)`.
@@ -239,7 +239,7 @@ Description of the parameters of the signatures
 ================  ====================== =================================================
 Column            Type                   Description
 ================  ====================== =================================================
-**sql**           ``TEXT``               SQL query as decribed above.
+**edges_sql**           ``TEXT``               SQL query as decribed above.
 **start_vid**     ``BIGINT``             Identifier of the starting vertex of the path.
 **end_vid**       ``BIGINT``             Identifier of the ending vertex of the path.
 **start_vids**    ``array[ANY-INTEGER]`` Array of identifiers of starting vertices.
