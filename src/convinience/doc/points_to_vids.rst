@@ -69,21 +69,6 @@ Examples
    :end-before: --q5
 
 
-Examples
------------------------------------------------------------------------------
-
-.. code-block:: sql
-
-        select * from pgr_pointstovids(
-            pgr_texttopoints('2,0;2,1;3,1;2,2;4,1;4,2;2,3;3,2', 0),
-            'edge_table'
-            -- tol is not specified, so we use the default of 0.01
-        );
-          pgr_pointstovids
-        --------------------
-         {1,2,3,5,4,9,10,6}
-        (1 row)
-
 This example uses the :ref:`sampledata` network.
 
 
