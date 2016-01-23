@@ -16,9 +16,9 @@ Edge types:
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
-#include "../../common/src/baseGraph.hpp"
+#include "./baseGraph.hpp"
 
-#include "../../common/src/structs.h"
+#include "./structs.h"
 using namespace std;
 using namespace boost;
 namespace patch

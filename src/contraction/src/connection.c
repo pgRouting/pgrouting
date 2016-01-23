@@ -6,7 +6,8 @@
 #include "connection.h"
 #define TUPLIMIT 1000
 
-#include "../../../../../common/src/postgres_connection.h"
+#include "./../../common/src/debug_macro.h"
+#include "./../../common/src/postgres_connection.h"
 #if 0
 int finish(int code, int ret)
 {
