@@ -29,13 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./structs.h"
 #include "./connection.h"
 
-#ifdef DEBUG
-#define PGR_DBG(format, arg...) \
-elog(NOTICE, format , ## arg)
-#else
-#define PGR_DBG(format, arg...) do { ; } while (0)
-#endif
-
 //tells the compiler to treat the functions as C functions without mangling
 #ifdef __cplusplus
 extern "C" {

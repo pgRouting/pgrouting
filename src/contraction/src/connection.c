@@ -6,6 +6,7 @@
 #include "connection.h"
 #define TUPLIMIT 1000
 
+<<<<<<< HEAD
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/postgres_connection.h"
 #if 0
@@ -29,8 +30,8 @@ text2char(text *in)
   out[VARSIZE(in) - VARHDRSZ] = '\0';
   return out;
 }
-
 #endif
+
 static int64_t SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, int colType) {
   Datum binval;
   bool isnull;
@@ -146,6 +147,7 @@ Functions for pgr_foo with sql:
   return 0;
 
 }
+static
 int fetch_contracted_graph_columns(int (*edge_columns)[5],int (*edge_types)[5]) 
 {
 
@@ -196,6 +198,7 @@ int fetch_astar_edge_columns(int (*edge_columns)[9],int (*edge_types)[9], bool h
   return 0;
 
 }
+static
 void fetch_edge(
  HeapTuple *tuple,
  TupleDesc *tupdesc, 
@@ -242,6 +245,8 @@ void fetch_astar_edge(
   //PGR_DBG("id: %li\t source: %li\ttarget: %li\tcost: %f\t,reverse: %f\n",
     //      target_edge->id,  target_edge->source,  target_edge->target,  target_edge->cost,  target_edge->revcost);
 }
+
+static
 void fetch_contracted_info(
  HeapTuple *tuple,
  TupleDesc *tupdesc, 
@@ -256,6 +261,7 @@ void fetch_contracted_info(
   graphInfo->psuedoEdges = SPI_getString(tuple, tupdesc, (*graph_columns)[4], (*graph_types)[4]);
   
 }
+static
 int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
 {
   int ntuples;
@@ -265,8 +271,10 @@ int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
   int i;
   for (i = 0; i < 5; ++i) graph_columns[i] = -1;
     for (i = 0; i < 5; ++i) graph_types[i] = -1;
+#if 0
+    // unused variable
       int ret = -1;
-
+#endif
 
     // Connecting to SPI;
     int SPIcode = SPI_connect();
@@ -355,7 +363,7 @@ int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
 
 
 
-
+static
 int
 fetch_data(char *sql, Edge **edges,int *edge_count,bool rcost)
 {
@@ -381,7 +389,10 @@ fetch_data(char *sql, Edge **edges,int *edge_count,bool rcost)
         int i;
         for (i = 0; i < 5; ++i) edge_columns[i] = -1;
           for (i = 0; i < 5; ++i) edge_types[i] = -1;
+#if 0
+          //unused variable
             int ret = -1;
+#endif
 
 
     // Connecting to SPI;
@@ -525,7 +536,10 @@ fetch_astar_data(char *sql, Edge **edges,int *count,bool rcost)
         int i;
         for (i = 0; i < 9; ++i) edge_columns[i] = -1;
           for (i = 0; i < 9; ++i) edge_types[i] = -1;
+#if 0
+          //unused variable
             int ret = -1;
+#endif
 
 
     // Connecting to SPI;
@@ -628,6 +642,7 @@ fetch_astar_data(char *sql, Edge **edges,int *count,bool rcost)
   return total_tuples;
 }
 //printing data in the buf
+static
 void print_data(char buf[8192])
 {
    // ret = SPI_connect();
@@ -638,6 +653,7 @@ void print_data(char buf[8192])
 }
 
 //function used for testing purpose
+static
 int add_one(int a)
 {
   return a+1;
@@ -645,6 +661,7 @@ int add_one(int a)
 
 
 //function used to insert
+static
 int execq(char *sql,int cnt)
 {
   int ret;
