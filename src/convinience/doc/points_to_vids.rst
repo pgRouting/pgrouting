@@ -56,10 +56,17 @@ Description
 
     You need to check the results for any vids=-1 which indicates if failed to locate an edge.
 
-
 .. rubric:: History
 
-* New in version 2.1.0
+* Proposed in version 2.1.0
+
+
+Examples
+-----------------------------------------------------------------------------
+
+.. literalinclude:: doc-conversion.queries
+   :start-after: --q1
+   :end-before: --q2
 
 
 Examples

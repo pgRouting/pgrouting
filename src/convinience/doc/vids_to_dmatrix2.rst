@@ -61,13 +61,19 @@ Description
     * kdijkstra() can fail to find a path between some of the vertex ids. We to not detect this other than the cost might get set to -1.0, so the dmatrix shoule be checked for this as it makes it invalid for TSP
 
 
+
 .. rubric:: History
 
-* New in version 2.1.0
+* Proposed in version 2.1.0
 
 
 Examples
 -----------------------------------------------------------------------------
+
+.. literalinclude:: doc-matrix.queries
+   :start-after: --q2
+   :end-before: --q3
+
 
 This example shows how this can be used in the context of feeding the results into pgr_tsp() function. We convert a text string of ``x,y;x,y;...`` into and array of points, then convert that into an array ``vertex_id``, then create a distance matrix that gets feed into ``pgr_tsp()`` that returns the final result.
 

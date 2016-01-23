@@ -53,7 +53,15 @@ Description
 
 .. rubric:: History
 
-* New in version 2.1.0
+* Proposed in version 2.1.0
+
+
+Examples
+-----------------------------------------------------------------------------
+
+.. literalinclude:: doc-conversion.queries
+   :start-after: --q2
+   :end-before: --q3
 
 
 Examples

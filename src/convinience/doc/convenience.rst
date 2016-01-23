@@ -42,7 +42,7 @@ These function my be helpful when you need to create or manipulate distance matr
   :hidden:
 
   pgr_pointToEdgeNode - convert a point geometry to a ``vertex_id`` based on closest edge. <point_to_edgenode>
-  pgr_flipEdges - flip the edges in an array of geometries so the connect end to end. <flip_edges>
+  pgr_flipEdges
   pgr_textToPoints - convert a string of ``x,y;x,y;...`` locations into point geometries. <text_to_points>
   pgr_pointsToVids - convert an array of point geometries into ``node_id``s. <points_to_vids>
 

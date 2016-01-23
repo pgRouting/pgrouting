@@ -21,7 +21,7 @@ Name
 
 ``pgr_vidsToDMatrix`` - Creates a distances matrix from an array of ``vertex_id``.
 
-.. note::  This is a proposed function
+.. warning::  This is a proposed function
 
      - Is not officially in the release.
      - Name could change.
@@ -62,10 +62,17 @@ Description
     * we compute a symmetric matrix because TSP requires that so the distances are better the Euclidean but but are not perfect
     * kdijkstra() can fail to find a path between some of the vertex ids. We to not detect this other than the cost might get set to -1.0, so the dmatrix shoule be checked for this as it makes it invalid for TSP
 
-
 .. rubric:: History
 
-* New in version 2.1.0
+* Proposed in version 2.1.0
+
+
+Examples
+-----------------------------------------------------------------------------
+
+.. literalinclude:: doc-matrix.queries
+   :start-after: --q3
+   :end-before: --q4
 
 
 Examples

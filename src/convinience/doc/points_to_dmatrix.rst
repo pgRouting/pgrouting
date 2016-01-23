@@ -57,10 +57,17 @@ Description
 
     The generated matrix will be symmetric as required for pgr_TSP.
 
-
 .. rubric:: History
 
-* New in version 2.1.0
+* Proposed in version 2.1.0
+
+
+Examples
+-----------------------------------------------------------------------------
+
+.. literalinclude:: doc-matrix.queries
+   :start-after: --q1
+   :end-before: --q2
 
 
 Examples
