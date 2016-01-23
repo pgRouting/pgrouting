@@ -65,8 +65,8 @@ Examples
 -----------------------------------------------------------------------------
 
 .. literalinclude:: doc-conversion.queries
-   :start-after: --q1
-   :end-before: --q2
+   :start-after: --q4
+   :end-before: --q5
 
 
 Examples
