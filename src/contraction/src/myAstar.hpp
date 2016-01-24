@@ -30,7 +30,7 @@ public:
   my_astar_goal_visitor(Vertex goal) : m_goal(goal) {}
       template <class Graph>
   void examine_vertex(Vertex u, Graph& g) {
-    if(u == m_goal)
+    if(g[u].id ==g[m_goal].id)
       throw found_goal();
   }
 private:
@@ -234,7 +234,7 @@ void get_path(V source,V target,Edge **path,int64_t &size)
 {
   int64_t path_size=0;
 
-  if (this->predecessors[target]==target)
+  if (source==target)
   {
     return;
   }

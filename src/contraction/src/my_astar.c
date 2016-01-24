@@ -20,13 +20,13 @@ Functions for with sql:
  id, source, target,x1,y1,x2,y2 cost, revcost(optional) 
 ************/
 
-Datum shortest_path_astar(PG_FUNCTION_ARGS);
+Datum shortest_path_Astar(PG_FUNCTION_ARGS);
 
 
 
-PG_FUNCTION_INFO_V1(shortest_path_astar);
+PG_FUNCTION_INFO_V1(shortest_path_Astar);
 Datum
-shortest_path_astar(PG_FUNCTION_ARGS) {
+shortest_path_Astar(PG_FUNCTION_ARGS) {
 
  //int SPIcode = 0;
   Edge *edges=NULL;
@@ -105,7 +105,34 @@ shortest_path_astar(PG_FUNCTION_ARGS) {
   if (call_cntr < max_calls) {
 
       /* clean up (this is not really necessary) */
+HeapTuple    tuple;
+      Datum        result;
+      Datum *values;
+      char* nulls;
+      values = palloc(4 * sizeof(Datum));
+      nulls = palloc(4 * sizeof(char));
 
+      values[0] = Int32GetDatum(ret_path[call_cntr].seq);
+      nulls[0] = ' ';
+      values[1] = Int64GetDatum(ret_path[call_cntr].source);
+      nulls[1] = ' ';
+      values[2] = Int64GetDatum(ret_path[call_cntr].target);
+      nulls[2] = ' ';
+      values[3] = Float8GetDatum(ret_path[call_cntr].cost);
+      nulls[3] = ' ';
+      //values[4] = Float8GetDatum(ret_path[call_cntr].tot_cost);
+      //nulls[4] = ' ';
+
+      tuple = heap_formtuple(tuple_desc, values, nulls);
+
+      /* make the tuple into a datum */
+      result = HeapTupleGetDatum(tuple);
+
+      /* clean up (this is not really necessary) */
+      pfree(values);
+      pfree(nulls);
+
+      SRF_RETURN_NEXT(funcctx, result);
       //SRF_RETURN_NEXT(funcctx, result);
   } else {
       /* do when there is no more left */

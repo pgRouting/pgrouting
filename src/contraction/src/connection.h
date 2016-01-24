@@ -66,7 +66,10 @@ void fetch_astar_edge(HeapTuple *tuple,TupleDesc *tupdesc,
 #endif
 int
 fetch_astar_data(char *sql, Edge **edges,int *count,bool has_rcost);
+int
+fetch_data(char *sql, Edge **edges,int *edge_count,bool rcost);
 
+int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo);
   /* output corresponding to costResult3Big
   pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path);
   // pgr_path_element3_t * noPathFound3(int64_t start_id);

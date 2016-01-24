@@ -6,7 +6,6 @@
 #include "connection.h"
 #define TUPLIMIT 1000
 
-<<<<<<< HEAD
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/postgres_connection.h"
 #if 0
@@ -261,7 +260,8 @@ void fetch_contracted_info(
   graphInfo->psuedoEdges = SPI_getString(tuple, tupdesc, (*graph_columns)[4], (*graph_types)[4]);
   
 }
-static
+
+
 int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
 {
   int ntuples;
@@ -356,14 +356,6 @@ int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
   }
   return 0;
 }
-
-
-
-
-
-
-
-static
 int
 fetch_data(char *sql, Edge **edges,int *edge_count,bool rcost)
 {
@@ -641,6 +633,7 @@ fetch_astar_data(char *sql, Edge **edges,int *count,bool rcost)
 //(*totalTuples) = total_tuples;
   return total_tuples;
 }
+#if 0 
 //printing data in the buf
 static
 void print_data(char buf[8192])
@@ -701,3 +694,5 @@ int execq(char *sql,int cnt)
   
 
 }
+
+#endif

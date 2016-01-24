@@ -9,9 +9,9 @@
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
-#include "../../common/src/myGraph.hpp"
-#include "../../common/src/structs.h"
-#include "../../contraction/src/graphMinimizer.hpp"
+#include "./myGraph.hpp"
+#include "./structs.h"
+#include "./graphMinimizer.hpp"
 #include <boost/algorithm/string.hpp>
 using namespace std;
 using namespace boost;
@@ -121,7 +121,7 @@ void string_to_rvertices(string edges)
   boost::split(str_edges, edges, boost::is_any_of("$"));
   int count=str_edges.size();
   count--;
-  int vid;
+  int vid=-1;
   Edge temp;
   for (int i = 0; i < count; ++i)
   {
@@ -150,7 +150,7 @@ void string_to_rvertices(string edges)
       break;
     }
   }
-  this->removedVertices[temp.id].push_back(temp);     
+  this->removedVertices[vid].push_back(temp);     
 }
 }
 
@@ -287,7 +287,7 @@ void get_reduced_path(V source,V target,Edge **path,int64_t &size)
 {
   int64_t path_size=0;
 
-  if (this->reduced_graph->predecessors[target]==target)
+  if (source==target)
   {
 
     cout << "No path" << endl;
@@ -409,8 +409,8 @@ void dijkstra_on_contracted(int64_t src,int64_t dest,Edge **path,int64_t &size)
     }
     else
     {
-      int64_t sid=(mainPath)[ind].source;
-      int64_t tid=(mainPath)[ind].target;
+      //int64_t sid=(mainPath)[ind].source;
+      //int64_t tid=(mainPath)[ind].target;
       int64_t id=(mainPath)[ind].id;
     //cout << "id:- " << id << endl;
       pair<int64_t,int64_t> pedges=this->psuedoEdges[id];

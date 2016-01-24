@@ -377,7 +377,7 @@ public:
 
 	int getreducedGraph_string(char **estring)
 	{
-		int reduced_size=(int)num_edges(reduced_graph->graph);
+		//int reduced_size=(int)num_edges(reduced_graph->graph);
 		V_i vi;
 		EO_i out,out_end;
 		int count=0;

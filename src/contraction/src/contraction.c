@@ -1,8 +1,9 @@
 
 #include "postgres.h"
 #include "executor/spi.h"
-#include "../../common/src/connection.h"
+#include "./connection.h"
 #include "./../../common/src/postgres_connection.h"
+#include "./../../common/src/debug_macro.h"
 #include "./structs.h"
 #include "contract_function.h"
 #include "funcapi.h"
@@ -16,18 +17,13 @@
 #include <stdio.h>
 #include <string.h>
 
-/*#include "pagc_api.h"
-#include "pagc_std_api.h"
-#include "std_pg_hash.h"*/
-#ifdef PG_MODULE_MAGIC
-PG_MODULE_MAGIC;
-#endif
+
 
 static int compute_contracted_graph(char* sql,int level, 
 	int *final_edge_count,char **graphName,
 	char **edgeString,char **psuedoEString,
 	char **removedVString,char **removedEString,bool has_rcost) {
-	int SPIcode = 0;
+	//int SPIcode = 0;
 	Edge *edges = NULL;
 	int initial_num_edges = 0;
 	char *err_msg = (char *)"";
@@ -55,7 +51,7 @@ static int compute_contracted_graph(char* sql,int level,
 			errmsg("Error contracting the graph: %s", err_msg)));
 	}
 
-	PGR_DBG("Final records found %d\n", final_num_edges);
+	PGR_DBG("Final records found %d\n", final_edge_count);
 	PGR_DBG("Exist Status = %i\n", ret);
 	PGR_DBG("Returned message = %s\n", err_msg);
 
@@ -75,7 +71,7 @@ pgr_contractgraph(PG_FUNCTION_ARGS) {
  //int SPIcode = 0;
 	//Edge *final_edges=NULL;
 	 AttInMetadata       *attinmeta;
-	int num_vertices,level=-1;
+	int level=-1;
 	FuncCallContext     *funcctx;
 	int                  call_cntr;
 	int                  max_calls;
@@ -89,7 +85,7 @@ pgr_contractgraph(PG_FUNCTION_ARGS) {
 	char *removedVString;
 	char *removedEString;
 	bool has_rcost=false;
-	bool directed =false;
+	//bool directed =false;
 	//first call of the function
 	if (SRF_IS_FIRSTCALL()) {
 		MemoryContext   oldcontext;

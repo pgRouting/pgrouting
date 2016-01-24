@@ -26,6 +26,10 @@ int dijkstra_on_contracted(int64_t source,int64_t target,
 	int64_t num_vertices=1;
 	int64_t path_size=0;
 	typedef CH_dijkstra<G> Graph;
+	if (has_rcost)
+	{
+		cout << "Implemented for undirected";
+	}
 	Graph g(DIRECTED,num_vertices);
 	string edges=(*graphInfo)->contracted_graph_blob;
 	string rvertices=(*graphInfo)->removedVertices;
