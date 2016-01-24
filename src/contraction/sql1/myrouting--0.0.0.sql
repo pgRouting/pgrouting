@@ -20,8 +20,8 @@ DROP TYPE IF EXISTS pathElement;
  );
 
 CREATE OR REPLACE FUNCTION my_astar(edges_sql text, start_vid bigint, end_vid bigint,has_rcost boolean)
-  RETURNS SETOF RECORD AS
- '$libdir/libmyrouting_library', 'shortest_path_astar'
+  RETURNS SETOF pathElement AS
+ '$libdir/libmyrouting_library', 'shortest_path_Astar'
     LANGUAGE c IMMUTABLE STRICT;
     
 CREATE OR REPLACE FUNCTION pgr_contractgraph(query text,level bigint,

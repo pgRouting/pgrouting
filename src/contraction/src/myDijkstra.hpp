@@ -96,7 +96,7 @@ void get_path(V source,V target,Edge **path,int64_t &size)
 {
   int64_t path_size=0;
 
-  if (this->predecessors[target]==target)
+  if (source==target)
   {
     return;
   }

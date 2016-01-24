@@ -18,13 +18,13 @@
 
 static int compute_shortest_path(char* sql,int source,int target,
 	Edge** path,int *path_count,bool has_rcost) {
-	int SPIcode = 0;
+	//int SPIcode = 0;
 	pgr_contracted_blob *graphInfo = NULL;
 	//int initial_num_edges = 0;
 
 	has_rcost=false;
-	char *err_msg = (char *)"";
-	int ret = -1;
+	//char *err_msg = (char *)"";
+	//int ret = -1;
 
 	PGR_DBG("Load data");
 	elog(INFO,"Fetching contracted graph.....");
