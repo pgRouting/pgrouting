@@ -36,16 +36,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 
-// #define DEBUG
 
 #include "fmgr.h"
-#include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/points_input.h"
 #include "./get_new_queries.h"
 #include "./one_to_one_withPoints_driver.h"
+// #define DEBUG
+#include "./../../common/src/debug_macro.h"
 
 PG_FUNCTION_INFO_V1(one_to_one_withPoints);
 #ifndef _MSC_VER
@@ -54,7 +54,6 @@ Datum
 PGDLLEXPORT Datum
 #endif
 one_to_one_withPoints(PG_FUNCTION_ARGS);
-
 
 /*******************************************************************************/
 /*                          MODIFY AS NEEDED                                   */
@@ -164,9 +163,9 @@ process(
             total_edges_of_points,
             start_pid,
             end_pid,
+            directed,
             driving_side[0],
             details,
-            directed,
             only_cost,
             result_tuples,
             result_count,
@@ -183,6 +182,7 @@ process(
     }
 
 }
+
 /*                                                                             */
 /*******************************************************************************/
 
@@ -200,7 +200,7 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
     /*******************************************************************************/
     /*                          MODIFY AS NEEDED                                   */
     /*                                                                             */
-    General_path_element_t  *result_tuples = 0;
+    General_path_element_t  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                             */
     /*******************************************************************************/
@@ -218,13 +218,13 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
         // points_sql TEXT,
         // start_pid BIGINT,
         // end_pid BIGINT,
-        // driving_side CHAR -- DEFAULT 'b',
-        // details BOOLEAN -- DEFAULT false,
         // directed BOOLEAN -- DEFAULT true,
+        // driving_side CHAR -- DEFAULT 'b',
+        // details BOOLEAN -- DEFAULT true,
         // only_cost BOOLEAN DEFAULT false,
 
         PGR_DBG("Calling process");
-        PGR_DBG("initial driving side:%s", pgr_text2char(PG_GETARG_TEXT_P(4)));
+        PGR_DBG("initial driving side:%s", pgr_text2char(PG_GETARG_TEXT_P(5)));
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 pgr_text2char(PG_GETARG_TEXT_P(1)),
@@ -236,7 +236,6 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(7),
                 &result_tuples,
                 &result_count);
-
         /*                                                                             */
         /*******************************************************************************/
 

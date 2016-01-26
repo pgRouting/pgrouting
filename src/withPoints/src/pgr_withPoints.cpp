@@ -44,7 +44,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./msg_logger.hpp"
 
 
-
 extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
@@ -97,9 +96,35 @@ int check_points(std::vector< Point_on_edge_t > &points,
 
 
 void
+eliminate_details_dd(
+        Path &path) {
+    /* 
+     *  There is no path nothing to do
+     */
+    if (path.empty()) return;
+
+    Path newPath(path.start_id(), path.end_id());
+    for (const auto &pathstop :  path) {
+        if ((pathstop.node == path.start_id()) 
+                || (pathstop.node == path.end_id())
+                || (pathstop.node > 0)) {
+            newPath.push_back(pathstop);
+        }
+    }
+
+    path = newPath;
+}
+
+
+void
 eliminate_details(
         Path &path,
         const std::vector< pgr_edge_t > &point_edges) {
+    /* 
+     *  There is no path nothing to do
+     */
+    if (path.empty()) return;
+
     Path newPath(path.start_id(), path.end_id());
     double cost = 0.0;
     for (const auto &pathstop :  path) {
@@ -142,6 +167,7 @@ adjust_pids(
         const int64_t &start_pid,
         const int64_t &end_pid,
         Path &path) {
+    if (path.empty()) return;
     path.start_id(start_pid);
     path.end_id(end_pid);
 
@@ -160,8 +186,8 @@ adjust_pids(
         const std::vector< Point_on_edge_t > &points,
         Path &path) {
     /* 
-     *      *  There is no path nothing to do
-     *           */
+     *  There is no path nothing to do
+     */
     if (path.empty()) return;
     /* from, to:
      *      *  are constant along the path

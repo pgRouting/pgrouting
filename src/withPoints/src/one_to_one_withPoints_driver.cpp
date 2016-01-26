@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_withPoints.h"
 #include "./one_to_one_withPoints_driver.h"
 
-#define DEBUG
+// #define DEBUG
 
 extern "C" {
 #include "./../../common/src/pgr_types.h"
@@ -69,17 +69,20 @@ do_pgr_withPoints(
         size_t total_edges_of_points,
         int64_t start_pid,
         int64_t end_pid,
+        bool directed,
         char driving_side,
         bool details,
-        bool directed,
         bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** err_msg){
     std::ostringstream log;
     try {
+        log << "Entering do_pgr_withPoints\n";
         std::vector< Point_on_edge_t >
             points(points_p, points_p + total_points);
+        
+        log << "total points" << points.size() << "\n";
 
         /*
          * This test is easier in C++
@@ -147,9 +150,6 @@ do_pgr_withPoints(
         path.print_path(log);
         adjust_pids(points, path);
         path.print_path(log);
-        if (!details) {
-            eliminate_details(path, edges_to_modify);
-        }
 
         size_t count(path.size());
         if (count == 0) {
@@ -161,6 +161,9 @@ do_pgr_withPoints(
             return 0;
         }
 
+        if (!details) {
+            eliminate_details(path, edges_to_modify);
+        }
 
         (*return_tuples) = get_memory(count, (*return_tuples));
         size_t sequence = 0;
