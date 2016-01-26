@@ -146,7 +146,7 @@ do_pgr_many_withPointsDD(
             adjust_pids(points, path);
 
             if (!details) {
-                eliminate_details(path);
+                eliminate_details(path, edges_to_modify);
             }
             std::sort(path.begin(), path.end(),
                     [](const Path_t &l, const  Path_t &r)
@@ -271,7 +271,7 @@ do_pgr_withPointsDD(
         adjust_pids(points, path);
 
         if (!details) {
-            eliminate_details(path);
+            eliminate_details(path, edges_to_modify);
         }
         std::sort(path.begin(), path.end(),
                 [](const Path_t &l, const  Path_t &r)

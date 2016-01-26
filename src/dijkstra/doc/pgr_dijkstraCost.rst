@@ -100,7 +100,7 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 
 .. rubric:: Example
 
-.. literalinclude:: doc-dijkstraCost.queries
+.. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: --q1
    :end-before: --q2
 
@@ -125,7 +125,7 @@ This signature performs a Dijkstra from one ``start_vid`` to one ``end_vid``:
 
 .. rubric:: Example
 
-.. literalinclude:: doc-dijkstraCost.queries
+.. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q2
     :end-before: --q3
 
@@ -150,7 +150,7 @@ This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to
 
 .. rubric:: Example
 
-.. literalinclude:: doc-dijkstraCost.queries
+.. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q3
     :end-before: --q4
 
@@ -176,7 +176,7 @@ This signature performs a Dijkstra from one ``start_vid`` to each ``end_vid`` in
 
 .. rubric:: Example
 
-.. literalinclude:: doc-dijkstraCost.queries
+.. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: --q4
    :end-before: --q5
 
@@ -202,7 +202,7 @@ This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to
 Example
 -------
 
-.. literalinclude:: doc-dijkstraCost.queries
+.. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: --q5
    :end-before: --q6
 
@@ -269,7 +269,7 @@ Examples
 
 Repeated values are ignored, and arrays are sorted
 
-.. literalinclude:: doc-dijkstraCost.queries
+.. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q6
     :end-before: --q7
 
@@ -277,7 +277,7 @@ Repeated values are ignored, and arrays are sorted
 
 `start_vids` are the same as `end_vids`
 
-.. literalinclude:: doc-dijkstraCost.queries
+.. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q7
     :end-before: --q8
 

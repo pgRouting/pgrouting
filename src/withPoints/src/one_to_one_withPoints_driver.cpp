@@ -148,7 +148,7 @@ do_pgr_withPoints(
         adjust_pids(points, path);
         path.print_path(log);
         if (!details) {
-            eliminate_details(path);
+            eliminate_details(path, edges_to_modify);
         }
 
         size_t count(path.size());

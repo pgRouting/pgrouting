@@ -105,8 +105,7 @@ SELECT *  FROM pgr_withPointsCost(
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     3, ARRAY[1],
     driving_side := 'r',
-    directed := true,
-    details := true);
+    directed := true);
 
 SELECT set_eq('q10','q9','Right, directed: Cost is the last row');
 

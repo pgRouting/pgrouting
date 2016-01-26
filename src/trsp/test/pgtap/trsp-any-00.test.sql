@@ -16,7 +16,7 @@ SELECT seq, id1, id2, cost::TEXT FROM pgr_trsp(
 
 
 PREPARE q2 AS
-SELECT seq-1, node, edge, cost::TEXT FROM pgr_withPointsVia(
+SELECT seq-1, node::INTEGER, edge::INTEGER, cost::TEXT FROM pgr_withPointsVia(
     'select id, source, target, cost, reverse_cost from edge_table',
     ARRAY[1, 6],
     ARRAY[0.5, 0.5]) WHERE edge != -2;

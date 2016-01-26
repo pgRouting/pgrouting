@@ -31,9 +31,9 @@ CREATE OR REPLACE FUNCTION  pgr_withPointsVia(
     fraction float[], 
     directed BOOLEAN DEFAULT TRUE,
 
-    OUT seq BIGINT,
-    OUT path_id BIGINT,
-    OUT path_seq BIGINT,
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,

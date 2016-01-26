@@ -124,13 +124,13 @@ pgr_dijkstraViaVertex(
 static
 void
 get_path(
-        int64_t route_id,
-        int64_t path_id,
+        int route_id,
+        int path_id,
         const Path &path,
         Routes_t **postgres_data,
         double &route_cost,
         size_t &sequence) {
-    int64_t i = 0;
+    int i = 0;
     //for (size_t i = 0; i < path.size(); i++) {
     for (const auto e : path) {
         (*postgres_data)[sequence] = {

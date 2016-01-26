@@ -62,6 +62,10 @@ class Path {
     void erase(pthIt pos) {path.erase(pos);}
     ConstpthIt begin() const {return path.begin();}
     ConstpthIt end() const {return path.end();}
+    const Path_t& back() const {return path.back();};
+    Path_t& back() {return path.back();};
+    const Path_t& front() const {return path.front();};
+    Path_t& front() {return path.front();};
 
 
     Path_t set_data(

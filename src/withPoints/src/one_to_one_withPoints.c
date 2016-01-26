@@ -65,9 +65,9 @@ process(
         char* points_sql,
         int64_t start_pid,
         int64_t end_pid,
+        bool directed,
         char *driving_side,
         bool details,
-        bool directed,
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
@@ -94,9 +94,6 @@ process(
     }
 #endif
 
-    /*
-     * TODO move this code to c++
-     */
     PGR_DBG("  -- change the query");
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
@@ -233,8 +230,8 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
                 pgr_text2char(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_INT64(2),
                 PG_GETARG_INT64(3),
-                pgr_text2char(PG_GETARG_TEXT_P(4)),
-                PG_GETARG_BOOL(5),
+                PG_GETARG_BOOL(4),
+                pgr_text2char(PG_GETARG_TEXT_P(5)),
                 PG_GETARG_BOOL(6),
                 PG_GETARG_BOOL(7),
                 &result_tuples,
@@ -287,8 +284,8 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
 
 
         // postgres starts counting from 1
-        values[0] = Int64GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].seq);
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].node);
         values[3] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[4] = Float8GetDatum(result_tuples[call_cntr].cost);

@@ -27,7 +27,6 @@ Routing Functions
 
     - :ref:`pgr_dijkstra` - Dijkstra's shortest path algorithm.
     - :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to calculate the costs of the shortest paths.
-    - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via Vetices
         
   - :ref:`Driving Distance<drivingDistance>` - Driving Distance
 

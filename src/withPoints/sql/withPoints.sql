@@ -36,15 +36,15 @@ CREATE OR REPLACE FUNCTION _pgr_withPoints(
     points_sql TEXT,
     start_pid BIGINT,
     end_pid BIGINT,
+    directed BOOLEAN,
     driving_side CHAR,
     details BOOLEAN,
-    directed BOOLEAN,
 
     only_cost BOOLEAN DEFAULT false, -- gets path
 
 
-    OUT seq BIGINT,
-    OUT path_seq BIGINT,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
@@ -62,15 +62,15 @@ CREATE OR REPLACE FUNCTION _pgr_withPoints(
     points_sql TEXT,
     start_pid BIGINT,
     end_pids ANYARRAY,
+    directed BOOLEAN,
     driving_side CHAR,
     details BOOLEAN,
-    directed BOOLEAN,
 
     only_cost BOOLEAN DEFAULT false, -- gets path
 
 
-    OUT seq BIGINT,
-    OUT path_seq BIGINT,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT end_pid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -90,15 +90,15 @@ CREATE OR REPLACE FUNCTION _pgr_withPoints(
     points_sql TEXT,
     start_pids ANYARRAY,
     end_pid BIGINT,
+    directed BOOLEAN,
     driving_side CHAR,
     details BOOLEAN,
-    directed BOOLEAN,
 
     only_cost BOOLEAN DEFAULT false, -- gets path
 
 
-    OUT seq BIGINT,
-    OUT path_seq BIGINT,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT start_pid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -120,15 +120,15 @@ CREATE OR REPLACE FUNCTION _pgr_withPoints(
     points_sql TEXT,
     start_pids ANYARRAY,
     end_pids ANYARRAY,
+    directed BOOLEAN,
     driving_side CHAR,
     details BOOLEAN,
-    directed BOOLEAN,
 
     only_cost BOOLEAN DEFAULT false, -- gets path
 
 
-    OUT seq BIGINT,
-    OUT path_seq BIGINT,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT start_pid BIGINT,
     OUT end_pid BIGINT,
     OUT node BIGINT,
@@ -150,12 +150,12 @@ CREATE OR REPLACE FUNCTION pgr_withPoints(
     points_sql TEXT,
     start_pid BIGINT,
     end_pid BIGINT,
+    directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
     details BOOLEAN DEFAULT false,
-    directed BOOLEAN DEFAULT true,
 
-    OUT seq BIGINT,
-    OUT path_seq BIGINT,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
@@ -164,7 +164,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT *
-    FROM _pgr_withPoints($1, $2, $3, $4, driving_side,  details, directed);
+        FROM _pgr_withPoints($1, $2, $3, $4, $5, $6, $7);
     END
     $BODY$
     LANGUAGE plpgsql VOLATILE
@@ -180,12 +180,12 @@ CREATE OR REPLACE FUNCTION pgr_withPoints(
     points_sql TEXT,
     start_pid BIGINT,
     end_pids ANYARRAY,
+    directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
     details BOOLEAN DEFAULT false,
-    directed BOOLEAN DEFAULT true,
 
-    OUT seq BIGINT,
-    OUT path_seq BIGINT,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT end_pid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -195,7 +195,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT *
-    FROM _pgr_withPoints($1, $2, $3, $4, driving_side, details, directed);
+        FROM _pgr_withPoints($1, $2, $3, $4, $5, $6, $7);
     END
     $BODY$
     LANGUAGE plpgsql VOLATILE
@@ -210,12 +210,12 @@ CREATE OR REPLACE FUNCTION pgr_withPoints(
     points_sql TEXT,
     start_pids ANYARRAY,
     end_pid BIGINT,
+    directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
     details BOOLEAN DEFAULT false,
-    directed BOOLEAN DEFAULT true,
 
-    OUT seq BIGINT,
-    OUT path_seq BIGINT,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT start_pid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -225,7 +225,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT *
-    FROM _pgr_withPoints($1, $2, $3, $4, driving_side, details, directed);
+        FROM _pgr_withPoints($1, $2, $3, $4, $5, $6, $7);
     END
     $BODY$
     LANGUAGE plpgsql VOLATILE
@@ -240,12 +240,12 @@ CREATE OR REPLACE FUNCTION pgr_withPoints(
     points_sql TEXT,
     start_pids ANYARRAY,
     end_pids ANYARRAY,
+    directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
     details BOOLEAN DEFAULT false,
-    directed BOOLEAN DEFAULT true,
 
-    OUT seq BIGINT,
-    OUT path_seq BIGINT,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT start_pid BIGINT,
     OUT end_pid BIGINT,
     OUT node BIGINT,
@@ -256,7 +256,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT *
-    FROM _pgr_withPoints($1, $2, $3, $4, driving_side, details, directed);
+        FROM _pgr_withPoints($1, $2, $3, $4, $5, $6, $7);
     END
     $BODY$
     LANGUAGE plpgsql VOLATILE

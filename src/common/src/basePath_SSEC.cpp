@@ -101,7 +101,7 @@ void Path::appendPath(const Path &o_path) {
 void Path::generate_postgres_data(
         General_path_element_t **postgres_data,
         size_t &sequence) const{
-    int64_t i = 1;
+    int i = 1;
     for (const auto e : path) {
         (*postgres_data)[sequence] = 
             {i, start_id(), end_id(), e.node, e.edge, e.cost, e.agg_cost};
@@ -134,7 +134,7 @@ void Path::get_pg_ksp_path(
 
     for (unsigned int i = 0; i < path.size(); i++) {
         (*ret_path)[sequence].seq = i + 1;
-        (*ret_path)[sequence].start_id = (uint64_t)routeId;
+        (*ret_path)[sequence].start_id = routeId;
         (*ret_path)[sequence].end_id = end_id();
         (*ret_path)[sequence].node = path[i].node;
         (*ret_path)[sequence].edge = path[i].edge;

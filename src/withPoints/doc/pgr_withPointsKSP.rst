@@ -12,10 +12,15 @@
 pgr_withPointsKSP
 ===============================================================================
 
+
 Name
 -------------------------------------------------------------------------------
 
-``pgr_ksp`` — Returns the "K" shortest paths.
+``pgr_withPointsKSP`` - Returns the driving distance from a starting point.
+
+.. note::  This is a proposed function for version 2.3.
+
+     - Is not officially in the version 2.2 release.
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -23,140 +28,152 @@ Name
 
    Boost Graph Inside
 
-
 Synopsis
 -------------------------------------------------------------------------------
 
-The K shortest path routing algorithm based on Yen's algorithm. "K" is the number of shortest paths desired.
-
-.. index:: 
-  single: ksp(edges_sql, start_vid, end_vid, k)
-
-.. rubric:: The minimal signature:
-
-.. code-block:: sql
-
-  pgr_ksp(TEXT sql_q, BIGINT start_vid, BIGINT end_vid, INTEGER k);
-    RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+Modify the graph to include points and 
+using Dijkstra algorithm, extracts all the nodes and points that have costs less
+than or equal to the value ``distance`` from the starting point.
+The edges extracted will conform the corresponding spanning tree.
 
 
-.. index:: 
-  single: ksp(edges_sql, start_vid, end_vid, k, directed, heap_paths)
+Signature Summary
+-----------------
 
-.. rubric:: The full signature:
+.. code-block:: none
 
-.. code-block:: sql
+	withPointsKSP(edges_sql, points_sql, start_pid, distance)
+	withPointsKSP(edges_sql, points_sql, start_pid, distance, directed, driving_side, details)
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-  pgr_ksp(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid, INTEGER k,
-        BOOLEAN directed:=true, BOOLEAN heap_paths:=false);
-    RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+Signatures
+==========
+
+.. index::
+	single: withPointsKSP(edges_sql, points_sql, start_pid, distance) -- proposed
+
+Minimal signature
+-----------------
+
+The minimal signature:
+    - Is for a **directed** graph.
+    - The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
+    - No **details** are given about distance of other points of the query.
+
+.. code-block:: none
+
+	withPointsKSP(edges_sql, points_sql, start_pid, distance)
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
-Description of the SQL query
+:Example:
+
+.. literalinclude:: doc-pgr_withPointsKSP.queries
+   :start-after: --q1
+   :end-before: --q2
+
+.. index::
+	single: withPointsKSP(edges_sql, points_sql, start_pid, distance, directed, driving_side, details) -- proposed
+
+Driving distance from a single point
+------------------------------------
+
+Finds the driving distance depending on the optional parameters setup.
+
+.. code-block:: none
+
+	pgr_withPointsKSP(edges_sql, points_sql, start_pid, distance,
+        directed := true, driving_side := 'b', details := false)
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+
+
+:Example: Right side driving topology
+
+.. literalinclude:: doc-pgr_withPointsKSP.queries
+   :start-after: --q2
+   :end-before: --q3
+
+Description of the Signatures
+=============================
+
+Description of the Edges SQL query
 -------------------------------------------------------------------------------
 
-General description of the ``edges_sql``
+:edges_sql: an SQL query, which should return a set of rows with the following columns:
 
-.. code-block:: sql
+================  ===================   =================================================
+Column            Type                  Description
+================  ===================   =================================================
+**id**            ``ANY-INTEGER``       Identifier of the edge.
+**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
+**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
+**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, If negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, If negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+================  ===================   =================================================
 
-    SELECT id, source, target, cost [,reverse_cost] FROM ...
 
-:sql_q: a SQL query, which returns a set of rows with the following columns:
+Description of the Points SQL query
+-------------------------------------------------------------------------------
 
-        :id: ``ANY-INTEGER`` identifier of the edge.
-        :source: ``ANY-INTEGER`` identifier of the source vertex of the edge.
-        :target: ``ANY-INTEGER`` identifier of the target vertex of the edge.
-        :cost: ``ANY-NUMERICAL`` value of the edge traversal cost. A negative cost will prevent the edge (``source``, ``target``) from being inserted in the graph.
-        :reverse_cost: ``ANY-NUMERICAL`` (optional) the value for the reverse traversal of the edge. A negative cost will prevent the edge (``target``, ``source``) from being inserted in the graph.
+:points_sql: an SQL query, which should return a set of rows with the following columns:
+
+============ ================= =================================================
+Column            Type              Description
+============ ================= =================================================
+**pid**      ``ANY-INTEGER``   (optional) Identifier of the point. Can not be NULL. If column not present, a sequential identifier will be given automatically.
+**eid**      ``ANY-INTEGER``   Identifier of the "closest" edge to the point.
+**fraction** ``ANY-NUMERICAL`` Value in [0,1] that indicates the relative postition from the first end point of the edge.
+**side**     ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the point is:
+                                 - In the right, left of the edge or
+                                 - If it doesn't matter with 'b' or NULL.
+                                 - If column not present 'b' is considered.
+
+                               Can be in upper or lower case.
+============ ================= =================================================
+
 
 Where:
 
 :ANY-INTEGER: smallint, int, bigint
 :ANY-NUMERICAL: smallint, int, bigint, real, float
 
-
 Description of the parameters of the signatures
 -------------------------------------------------------------------------------
 
-:sql_q: ``TEXT`` SQL query as decribed above.
-:start_vid: ``BIGINT`` id of the starting vertex.
-:end_vid: ``BIGINT`` id of the ending vertex.
-:k: ``INTEGER`` The desiered number of paths.
-:directed: ``BOOLEAN`` (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-:heap_paths: ``BOOLEAN`` (optional). When ``true`` returns all the paths stored in the process heap. Default is ``false`` which only returns ``k`` pahts. 
 
-Roughly, if the shortest path has ``N`` edges, the heap will contain about than ``N * k`` paths for small value of ``k`` and ``k > 1``.
+================ ================= =================================================
+Parameter        Type              Description
+================ ================= =================================================
+**edges_sql**    ``TEXT``          Edges SQL query as decribed above.
+**points_sql**   ``TEXT``          Points SQL query as decribed above.
+**start_pid**    ``ANY-INTEGER``   Starting point id
+**distance**     ``ANY_NUMERICAL`` Distance from the start_pid
+**directed**     ``BOOLEAN``       (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
+**driving_side** ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
+                                     - In the right or left or
+                                     - If it doesn't matter with 'b' or NULL.
+                                     - If column not present 'b' is considered.
 
+**details**      ``BOOLEAN``       (optional). When ``true`` the results will include the driving distance to the points with in Distance.
+                                   Default is ``false`` which ignores other points of the points_sql.
+================ ================= =================================================
 
 
 Description of the return values
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, path_seq, path_id, node, edge, cost, agg_cost)``
+Returns set of ``(seq, node, edge, cost, agg_cost)``
 
-:seq: ``INT`` sequential number starting from **1**.
-:path_seq: ``INT`` relative position in the pathi of ``node`` and ``edge``. Has value **1** for the begining of a path.
-:path_id: ``BIGINT`` path identifier. The ordering of the paths For two paths i, j if i < j then agg_cost(i) <= agg_cost(j).
-:node: ``BIGINT`` id of the node in the path.
-:edge: ``BIGINT`` id of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the route.
-:cost: ``FLOAT`` cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
-:agg_cost:  ``FLOAT`` total cost from ``start_vid`` to ``node``.
+============ =========== =================================================
+Column           Type              Description
+============ =========== =================================================
+**seq**      ``INT``     row sequence.
+**node**     ``BIGINT``  Identifier of the node within the Distance from ``start_pid``. If ``details =: true`` a negative value is the identifier of a point.
+**edge**     ``BIGINT``  Identifier of the edge used to arrive to ``node``. ``0`` when the ``node`` is the ``start_vid``.
+**cost**     ``FLOAT``   Cost to traverse ``edge``.  If ``details =: true`` the corresponding fraction of the cost of the edge will be used.
+**agg_cost** ``FLOAT``   Aggregate cost from ``start_pid`` to ``node``.
+============ =========== =================================================
 
-
-.. warning:: During the transition to 3.0, because pgr_ksp version 2.0 doesn't have defined a directed flag nor a heap_path flag, when pgr_ksp is used with only one flag version 2.0 will be used.
-
-
-Examples to handle the one flag to choose signatures
-------------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig1`
-
-.. code-block:: sql
-
-   SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-      2, 12, 2, 
-      true   -- takes the (V2.0) signature (has_rcost = true and works on directed graph)
-   );
-   seq | id1 | id2 | id3 | cost 
-  -----+-----+-----+-----+------
-     0 |   0 |   2 |   4 |    1
-     1 |   0 |   5 |   8 |    1
-     2 |   0 |   6 |   9 |    1
-     3 |   0 |   9 |  15 |    1
-     4 |   0 |  12 |  -1 |    0
-     5 |   1 |   2 |   4 |    1
-     6 |   1 |   5 |   8 |    1
-     7 |   1 |   6 |  11 |    1
-     8 |   1 |  11 |  13 |    1
-     9 |   1 |  12 |  -1 |    0
-  (10 rows)
-
-
-   SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-      2, 12, 2,
-      directed:=true   -- takes the new signature
-   );
-
-   SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-      2, 12, 2
-   );
-     seq | path_id | path_seq | node | edge | cost | agg_cost 
-    -----+---------+----------+------+------+------+----------
-       1 |       0 |        1 |    2 |    4 |    1 |        0
-       2 |       0 |        2 |    5 |    8 |    1 |        1
-       3 |       0 |        3 |    6 |    9 |    1 |        2
-       4 |       0 |        4 |    9 |   15 |    1 |        3
-       5 |       0 |        5 |   12 |   -1 |    0 |        4
-       6 |       1 |        1 |    2 |    4 |    1 |        0
-       7 |       1 |        2 |    5 |    8 |    1 |        1
-       8 |       1 |        3 |    6 |   11 |    1 |        2
-       9 |       1 |        4 |   11 |   13 |    1 |        3
-      10 |       1 |        5 |   12 |   -1 |    0 |        4
-    (10 rows)
-    
 
 
 Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
@@ -164,250 +181,19 @@ Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` c
 
 The examples in this section use the following :ref:`fig1`
 
+:Example: Left side driving topology
 
-.. code-block:: sql
+.. literalinclude:: doc-pgr_withPointsKSP.queries
+   :start-after: --q3
+   :end-before: --q4
 
-   SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-      2, 12, 2
-   );
-     seq | path_id | path_seq | node | edge | cost | agg_cost 
-    -----+---------+----------+------+------+------+----------
-       1 |       1 |        1 |    2 |    4 |    1 |        0
-       2 |       1 |        2 |    5 |    8 |    1 |        1
-       3 |       1 |        3 |    6 |    9 |    1 |        2
-       4 |       1 |        4 |    9 |   15 |    1 |        3
-       5 |       1 |        5 |   12 |   -1 |    0 |        4
-       6 |       2 |        1 |    2 |    4 |    1 |        0
-       7 |       2 |        2 |    5 |    8 |    1 |        1
-       8 |       2 |        3 |    6 |   11 |    1 |        2
-       9 |       2 |        4 |   11 |   13 |    1 |        3
-      10 |       2 |        5 |   12 |   -1 |    0 |        4
-    (10 rows)
+:Example: Does not matter driving side.
+
+.. literalinclude:: doc-pgr_withPointsKSP.queries
+   :start-after: --q4
+   :end-before: --q5
 
 
-  
-
-   SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-      2, 12, 2, heap_paths:=true
-   );
-
-   SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-      2, 12, 2, true, true
-   );
-     seq | path_id | path_seq | node | edge | cost | agg_cost 
-    -----+---------+----------+------+------+------+----------
-       1 |       1 |        1 |    2 |    4 |    1 |        0
-       2 |       1 |        2 |    5 |    8 |    1 |        1
-       3 |       1 |        3 |    6 |    9 |    1 |        2
-       4 |       1 |        4 |    9 |   15 |    1 |        3
-       5 |       1 |        5 |   12 |   -1 |    0 |        4
-       6 |       2 |        1 |    2 |    4 |    1 |        0
-       7 |       2 |        2 |    5 |    8 |    1 |        1
-       8 |       2 |        3 |    6 |   11 |    1 |        2
-       9 |       2 |        4 |   11 |   13 |    1 |        3
-      10 |       2 |        5 |   12 |   -1 |    0 |        4
-      11 |       3 |        1 |    2 |    4 |    1 |        0
-      12 |       3 |        2 |    5 |   10 |    1 |        1
-      13 |       3 |        3 |   10 |   12 |    1 |        2
-      14 |       3 |        4 |   11 |   13 |    1 |        3
-      15 |       3 |        5 |   12 |   -1 |    0 |        4
-    (15 rows)
-    
-
-
-
-Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
-----------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig2`
-
-
-.. code-block:: sql
-
-  SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-      2, 12, 2, directed:=false
-   );
-     seq | path_id | path_seq | node | edge | cost | agg_cost 
-    -----+---------+----------+------+------+------+----------
-       1 |       1 |        1 |    2 |    2 |    1 |        0
-       2 |       1 |        2 |    3 |    3 |    1 |        1
-       3 |       1 |        3 |    4 |   16 |    1 |        2
-       4 |       1 |        4 |    9 |   15 |    1 |        3
-       5 |       1 |        5 |   12 |   -1 |    0 |        4
-       6 |       2 |        1 |    2 |    4 |    1 |        0
-       7 |       2 |        2 |    5 |    8 |    1 |        1
-       8 |       2 |        3 |    6 |    9 |    1 |        2
-       9 |       2 |        4 |    9 |   15 |    1 |        3
-      10 |       2 |        5 |   12 |   -1 |    0 |        4
-    (10 rows)
-
-
-  SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-      2, 12, 2, directed:=false, heap_paths:=true
-   );
-
-  SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-      2, 12, 2, false, true
-   );
-     seq | path_id | path_seq | node | edge | cost | agg_cost 
-    -----+---------+----------+------+------+------+----------
-       1 |       1 |        1 |    2 |    2 |    1 |        0
-       2 |       1 |        2 |    3 |    3 |    1 |        1
-       3 |       1 |        3 |    4 |   16 |    1 |        2
-       4 |       1 |        4 |    9 |   15 |    1 |        3
-       5 |       1 |        5 |   12 |   -1 |    0 |        4
-       6 |       2 |        1 |    2 |    4 |    1 |        0
-       7 |       2 |        2 |    5 |    8 |    1 |        1
-       8 |       2 |        3 |    6 |    9 |    1 |        2
-       9 |       2 |        4 |    9 |   15 |    1 |        3
-      10 |       2 |        5 |   12 |   -1 |    0 |        4
-      11 |       3 |        1 |    2 |    4 |    1 |        0
-      12 |       3 |        2 |    5 |   10 |    1 |        1
-      13 |       3 |        3 |   10 |   12 |    1 |        2
-      14 |       3 |        4 |   11 |   13 |    1 |        3
-      15 |       3 |        5 |   12 |   -1 |    0 |        4
-      16 |       4 |        1 |    2 |    4 |    1 |        0
-      17 |       4 |        2 |    5 |   10 |    1 |        1
-      18 |       4 |        3 |   10 |   12 |    1 |        2
-      19 |       4 |        4 |   11 |   11 |    1 |        3
-      20 |       4 |        5 |    6 |    9 |    1 |        4
-      21 |       4 |        6 |    9 |   15 |    1 |        5
-      22 |       4 |        7 |   12 |   -1 |    0 |        6
-    (22 rows)
-
-
-
-Examples for queries marked as ``directed`` with ``cost`` column
-----------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig3`
-
-
-Empty path representation
-
-.. code-block:: sql
-
-  SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost FROM edge_table',
-      2, 3, 2
-   );
-     seq | path_id | path_seq | node | edge | cost | agg_cost 
-    -----+---------+----------+------+------+------+----------
-    (0 rows)
-
-
-.. code-block:: sql
-
-  SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost FROM edge_table',
-      2, 12, 2
-   );
-     seq | path_id | path_seq | node | edge | cost | agg_cost 
-    -----+---------+----------+------+------+------+----------
-       1 |       1 |        1 |    2 |    4 |    1 |        0
-       2 |       1 |        2 |    5 |    8 |    1 |        1
-       3 |       1 |        3 |    6 |    9 |    1 |        2
-       4 |       1 |        4 |    9 |   15 |    1 |        3
-       5 |       1 |        5 |   12 |   -1 |    0 |        4
-       6 |       2 |        1 |    2 |    4 |    1 |        0
-       7 |       2 |        2 |    5 |    8 |    1 |        1
-       8 |       2 |        3 |    6 |   11 |    1 |        2
-       9 |       2 |        4 |   11 |   13 |    1 |        3
-      10 |       2 |        5 |   12 |   -1 |    0 |        4
-    (10 rows)
-
-
-
-  SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost FROM edge_table',
-      2, 12, 2, heap_paths:=true
-   );
-
-  SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost FROM edge_table',
-      2, 12, 2, true, true
-   );
-     seq | path_id | path_seq | node | edge | cost | agg_cost 
-    -----+---------+----------+------+------+------+----------
-       1 |       1 |        1 |    2 |    4 |    1 |        0
-       2 |       1 |        2 |    5 |    8 |    1 |        1
-       3 |       1 |        3 |    6 |    9 |    1 |        2
-       4 |       1 |        4 |    9 |   15 |    1 |        3
-       5 |       1 |        5 |   12 |   -1 |    0 |        4
-       6 |       2 |        1 |    2 |    4 |    1 |        0
-       7 |       2 |        2 |    5 |    8 |    1 |        1
-       8 |       2 |        3 |    6 |   11 |    1 |        2
-       9 |       2 |        4 |   11 |   13 |    1 |        3
-      10 |       2 |        5 |   12 |   -1 |    0 |        4
-      11 |       3 |        1 |    2 |    4 |    1 |        0
-      12 |       3 |        2 |    5 |   10 |    1 |        1
-      13 |       3 |        3 |   10 |   12 |    1 |        2
-      14 |       3 |        4 |   11 |   13 |    1 |        3
-      15 |       3 |        5 |   12 |   -1 |    0 |        4
-    (15 rows)
-
-    
-
-Examples for queries marked as ``undirected`` with ``cost`` column
-----------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig4`
-
-
-.. code-block:: sql
-
-  SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost FROM edge_table',
-      2, 12, 2, directed:=false
-   );
-     seq | path_id | path_seq | node | edge | cost | agg_cost 
-    -----+---------+----------+------+------+------+----------
-       1 |       1 |        1 |    2 |    4 |    1 |        0
-       2 |       1 |        2 |    5 |    8 |    1 |        1
-       3 |       1 |        3 |    6 |    9 |    1 |        2
-       4 |       1 |        4 |    9 |   15 |    1 |        3
-       5 |       1 |        5 |   12 |   -1 |    0 |        4
-       6 |       2 |        1 |    2 |    4 |    1 |        0
-       7 |       2 |        2 |    5 |    8 |    1 |        1
-       8 |       2 |        3 |    6 |   11 |    1 |        2
-       9 |       2 |        4 |   11 |   13 |    1 |        3
-      10 |       2 |        5 |   12 |   -1 |    0 |        4
-    (10 rows)
-
-  
-  SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost FROM edge_table',
-      2, 12, 2, directed:=false, heap_paths:=true
-   );
-
-  SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost FROM edge_table',
-      2, 12, 2, false, true
-   );
-     seq | path_id | path_seq | node | edge | cost | agg_cost 
-    -----+---------+----------+------+------+------+----------
-       1 |       1 |        1 |    2 |    4 |    1 |        0
-       2 |       1 |        2 |    5 |    8 |    1 |        1
-       3 |       1 |        3 |    6 |    9 |    1 |        2
-       4 |       1 |        4 |    9 |   15 |    1 |        3
-       5 |       1 |        5 |   12 |   -1 |    0 |        4
-       6 |       2 |        1 |    2 |    4 |    1 |        0
-       7 |       2 |        2 |    5 |    8 |    1 |        1
-       8 |       2 |        3 |    6 |   11 |    1 |        2
-       9 |       2 |        4 |   11 |   13 |    1 |        3
-      10 |       2 |        5 |   12 |   -1 |    0 |        4
-      11 |       3 |        1 |    2 |    4 |    1 |        0
-      12 |       3 |        2 |    5 |   10 |    1 |        1
-      13 |       3 |        3 |   10 |   12 |    1 |        2
-      14 |       3 |        4 |   11 |   13 |    1 |        3
-      15 |       3 |        5 |   12 |   -1 |    0 |        4
-    (15 rows)
 
 
 The queries use the :ref:`sampledata` network.
@@ -416,13 +202,15 @@ The queries use the :ref:`sampledata` network.
 
 .. rubric:: History
 
-* New in version 2.0.0
-* Added functionality version 2.1
+* Proposed in version 2.2
+
 
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/K_shortest_path_routing
+* :ref:`pgr_drivingDistance` - Driving distance using dijkstra.
+* :ref:`pgr_alphashape` - Alpha shape computation.
+* :ref:`pgr_points_as_polygon` - Polygon around set of points.
 
 .. rubric:: Indices and tables
 

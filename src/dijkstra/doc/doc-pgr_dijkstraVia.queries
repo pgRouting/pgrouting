@@ -1,27 +1,4 @@
--- q0
-/*PGR-GNU*****************************************************************
-
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
-
-------
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
-********************************************************************PGR-GNU*/
-
+--q00
 SELECT * FROM pgr_dijkstraVia(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table order by id',
     ARRAY[1, 3, 9]
@@ -39,6 +16,21 @@ SELECT * FROM pgr_dijkstraVia(
    9 |       2 |        2 |         3 |       9 |    6 |    9 |    1 |        1 |              7
   10 |       2 |        3 |         3 |       9 |    9 |   -2 |    0 |        2 |              8
 (10 rows)
+
+-- q0
+SELECT * FROM pgr_dijkstraVia(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table order by id',
+    ARRAY[1, 3, 9], false, strict:=true, U_turn_on_edge:=false
+);
+ seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost 
+-----+---------+----------+-----------+---------+------+------+------+----------+----------------
+   1 |       1 |        1 |         1 |       3 |    1 |    1 |    1 |        0 |              0
+   2 |       1 |        2 |         1 |       3 |    2 |    2 |    1 |        1 |              1
+   3 |       1 |        3 |         1 |       3 |    3 |   -1 |    0 |        2 |              2
+   4 |       2 |        1 |         3 |       9 |    3 |    3 |    1 |        0 |              2
+   5 |       2 |        2 |         3 |       9 |    4 |   16 |    1 |        1 |              3
+   6 |       2 |        3 |         3 |       9 |    9 |   -2 |    0 |        2 |              4
+(6 rows)
 
 -- q1
 SELECT * FROM pgr_dijkstraVia(
@@ -74,27 +66,15 @@ WHERE path_id = 3 AND edge <0;
 (1 row)
 
 -- q3
-SELECT path_id, node, route_agg_cost FROM  pgr_dijkstraVia(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table order by id',
-    ARRAY[1, 5, 3, 9, 4]
-) 
-WHERE  edge < 0;
- path_id | node | route_agg_cost 
----------+------+----------------
-       1 |    5 |              2
-       2 |    3 |              6
-       3 |    9 |              8
-       4 |    4 |              9
-(4 rows)
-
 SELECT route_agg_cost FROM  pgr_dijkstraVia(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table order by id',
     ARRAY[1, 5, 3, 9, 4]
 )
-WHERE path_id = 3 AND edge < -1;
+WHERE path_id = 3 AND edge < 0;
  route_agg_cost 
 ----------------
-(0 rows)
+              8
+(1 row)
 
 -- q4
 SELECT row_number() over () as node_seq, node 
