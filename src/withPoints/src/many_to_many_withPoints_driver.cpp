@@ -41,15 +41,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #define DEBUG
 
+#include "./pgr_dijkstra.hpp"
+#include "./pgr_withPoints.h"
+#include "./many_to_many_withPoints_driver.h"
+
 extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
 
 #include "./../../common/src/memory_func.hpp"
-
-#include "./pgr_dijkstra.hpp"
-#include "./pgr_withPoints.h"
-#include "./many_to_many_withPoints_driver.h"
 
 
 // CREATE OR REPLACE FUNCTION pgr_withPoint(
