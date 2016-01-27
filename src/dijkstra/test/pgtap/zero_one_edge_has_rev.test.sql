@@ -32,7 +32,7 @@ SELECT * from pgr_dijkstra(''SELECT id, source, target, cost, reverse_cost  from
 -- edge doesnt have start_vid = 5 but has end_vid = 6
 SELECT results_eq('
 SELECT id, source, target, cost > 0, reverse_cost > 0  from edge_table where id = 9',
-'SELECT 9, 6, 9, true, true',
+'SELECT 9::BIGINT, 6::BIGINT, 9::BIGINT, true, true',
 '10: Edge does not have start_vid = 5 but has end_vid = 6');
 
 -- directed graph
@@ -59,7 +59,7 @@ SELECT * from pgr_dijkstra(''SELECT id, source, target, cost, reverse_cost  from
 -- edge doesnt have end_vid = 6 but has start_vid = 5
 SELECT results_eq(
 'SELECT id, source, target, cost > 0, reverse_cost > 0 from edge_table where id = 4',
-'SELECT 4, 2, 5, true, true',
+'SELECT 4::BIGINT, 2::BIGINT, 5::BIGINT, true, true',
 '19: Edge doesnt have end_vid = 6 but has start_vid = 5');
 
 
@@ -87,7 +87,7 @@ SELECT * from pgr_dijkstra(''SELECT id, source, target, cost, reverse_cost  from
 
 SELECT results_eq('
 SELECT id, source, target, cost > 0, reverse_cost > 0 from edge_table where id = 8',
-'SELECT 8, 5, 6, true, true',
+'SELECT 8::BIGINT, 5::BIGINT, 6::BIGINT, true, true',
 ' 28: Edge has start_vid 6 and end_vid 5');
 
 SELECT isnt_empty('
@@ -113,7 +113,7 @@ SELECT * from pgr_dijkstra(''SELECT id, source, target, cost, reverse_cost  from
 -- edge has only vid = 6 but really only one edge is inserted the first one
 SELECT results_eq('
 SELECT id, source, target, cost > 0, reverse_cost > 0  from edge_table where id = 5',
-'SELECT 5, 3, 6, true, false',
+'SELECT 5::BIGINT, 3::BIGINT, 6::BIGINT, true, false',
 '37: has only vid = 6 but really only one edge is inserted the first one');
 
 
@@ -160,7 +160,7 @@ SELECT is_empty('
 -- only answer is from 4 to 3
 SELECT results_eq('
 SELECT id, source, target, cost > 0, reverse_cost > 0  from edge_table where id = 3',
-'SELECT 3, 3, 4, false, true',
+'SELECT 3::BIGINT, 3::BIGINT, 4::BIGINT, false, true',
 '54: only answer is from 4 to 3');
 
 -- directed graph THIS doesnt get an answer
@@ -204,7 +204,7 @@ SELECT isnt_empty('
 -- The edge doesnt have any of them
 SELECT results_eq('
 SELECT id, source, target, cost > 0, reverse_cost > 0  from edge_table where id = 3',
-'SELECT 3, 3, 4, false, true',
+'SELECT 3::BIGINT, 3::BIGINT, 4::BIGINT, false, true',
 '71: The edge doesnt have any of them');
 
 

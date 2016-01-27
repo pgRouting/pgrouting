@@ -71,9 +71,9 @@ process(
         int64_t *end_pidsArr,
         size_t size_end_pidsArr,
 
+        bool directed,
         char *driving_side,
         bool details,
-        bool directed,
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
@@ -200,8 +200,8 @@ many_to_many_withPoints(PG_FUNCTION_ARGS) {
                 pgr_text2char(PG_GETARG_TEXT_P(1)),
                 start_pidsArr, size_start_pidsArr,
                 end_pidsArr, size_end_pidsArr,
-                pgr_text2char(PG_GETARG_TEXT_P(4)),
-                PG_GETARG_BOOL(5),
+                PG_GETARG_BOOL(4),
+                pgr_text2char(PG_GETARG_TEXT_P(5)),
                 PG_GETARG_BOOL(6),
                 PG_GETARG_BOOL(7),
                 &result_tuples,
@@ -256,8 +256,8 @@ many_to_many_withPoints(PG_FUNCTION_ARGS) {
 
 
         // postgres starts counting from 1
-        values[0] = Int64GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].seq);
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
         values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
         values[4] = Int64GetDatum(result_tuples[call_cntr].node);

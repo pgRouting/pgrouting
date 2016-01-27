@@ -93,14 +93,14 @@ SELECT throws_ok('
 SELECT * FROM pgr_MY_FUNCTION_NAME(
     ''SELECT id, source, target, cost, reverse_cost FROM edge_table'',
     2::FLOAT, ARRAY[5,3]);',
-    '42883', 'function pgr_funnydijkstra(unknown, double precision, integer[]) does not exist',
+    '42883', 'function pgr_MY_FUNCTION_NAME(unknown, double precision, integer[]) does not exist',
     'Throws because start_vid is FLOAT');
 
 SELECT throws_ok('
 SELECT * FROM pgr_MY_FUNCTION_NAME(
     ''SELECT id, source, target, cost, reverse_cost FROM edge_table'',
     2::REAL, ARRAY[5,3]);',
-    '42883', 'function pgr_funnydijkstra(unknown, real, integer[]) does not exist',
+    '42883', 'function pgr_MY_FUNCTION_NAME(unknown, real, integer[]) does not exist',
     'Throws because start_vid is REAL');
 
 

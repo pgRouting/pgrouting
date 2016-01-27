@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 --q1
 SELECT * FROM pgr_drivingDistance(
-    'SELECT id, source, target, cost FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
     7, 1.5, false, false
 ) ;
 NOTICE:  Deprecated function
@@ -13,7 +13,7 @@ NOTICE:  Deprecated function
 (2 rows)
 
 SELECT * FROM pgr_drivingDistance(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     7, 1.5, true, true
 ) ;
 NOTICE:  Deprecated function

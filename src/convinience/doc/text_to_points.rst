@@ -13,7 +13,7 @@ pgr_textToPoints
 ==============================================================================
 
 .. index::
-        single: pgr_textToPoints(pnts text, srid integer DEFAULT(4326)) --proposed
+        single: textToPoints(pnts text, srid integer DEFAULT(4326)) --proposed
 
 
 Name
@@ -53,31 +53,15 @@ Description
 
 .. rubric:: History
 
-* New in version 2.1.0
+* Proposed in version 2.1.0
 
 
 Examples
 -----------------------------------------------------------------------------
 
-.. code-block:: sql
-
-        select st_astext(g) from (
-            select unnest(
-                pgr_texttopoints('0,0;1,1;1,0;0,1;1,4;1,5;0,4;0,5', 0)
-            ) as g
-        ) as foo;
-          st_astext
-         ------------
-          POINT(0 0)
-          POINT(1 1)
-          POINT(1 0)
-          POINT(0 1)
-          POINT(1 4)
-          POINT(1 5)
-          POINT(0 4)
-          POINT(0 5)
-         (8 rows)
-                  
+.. literalinclude:: doc-conversion.queries
+   :start-after: --q3
+   :end-before: --q4
 
 
 See Also
@@ -85,3 +69,9 @@ See Also
 
 * :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``node_id`` based on closest edge.
 * :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
+

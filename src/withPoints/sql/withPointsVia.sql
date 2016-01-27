@@ -31,9 +31,9 @@ CREATE OR REPLACE FUNCTION  pgr_withPointsVia(
     fraction float[], 
     directed BOOLEAN DEFAULT TRUE,
 
-    OUT seq BIGINT,
-    OUT path_id BIGINT,
-    OUT path_seq BIGINT,
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,
@@ -50,25 +50,35 @@ CREATE OR REPLACE FUNCTION  pgr_withPointsVia(
   sql_on_vertex text;
   v_union text := ' ';
   dummyrec record;
+  rec1 record;
   via_vertices int[];
   sql_safe text;
   new_edges text;
   BEGIN
-      has_rcost =_pgr_parameter_check('dijkstra', sql, false);
+     BEGIN
+        sql_safe = 'SELECT id, source, target, cost, reverse_cost FROM ('|| sql || ') AS __a';
+
+        EXECUTE 'select reverse_cost, pg_typeof(reverse_cost)::text as rev_type  from ('||sql_safe||' ) AS __b__ limit 1 ' INTO rec1;
+        has_rcost := true;
+        EXCEPTION
+          WHEN OTHERS THEN
+            has_rcost = false;
+     END;
+ 
 
       IF array_length(via_edges, 1) != array_length(fraction, 1) then
         RAISE EXCEPTION 'The length of via_edges is different of length of via_edges';
       END IF;
-      sql_safe = 'SELECT id, source, target, cost, reverse_cost FROM ('|| sql || ') AS __a';
+
       FOR i IN 1 .. array_length(via_edges, 1)
       LOOP
           IF fraction[i] = 0 THEN
               sql_on_vertex := 'SELECT source FROM ('|| sql || ') __a where id = ' || via_edges[i];
-              execute sql_on_vertex into dummyrec; 
+              EXECUTE sql_on_vertex into dummyrec; 
               via_vertices[i] = dummyrec.source;
           ELSE IF fraction[i] = 1 THEN
               sql_on_vertex := 'SELECT target FROM ('|| sql || ') __a where id = ' || via_edges[i];
-              execute sql_on_vertex into dummyrec; 
+              EXECUTE sql_on_vertex into dummyrec; 
               via_vertices[i] = dummyrec.target;
           ELSE
               via_vertices[i] = -i;

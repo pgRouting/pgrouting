@@ -135,14 +135,14 @@ class Pgr_dijkstra {
              G &graph,
              Path &path,
              int64_t start_vertex,
-             float8 distance);
+             double distance);
 
 
      //! many to distance
      void drivingDistance(
              G &graph, std::deque< Path > &paths,
              std::set< int64_t > start_vertex,
-             float8 distance,
+             double distance,
              bool equiCostFlag);
      //@}
 
@@ -192,7 +192,7 @@ class Pgr_dijkstra {
      bool dijkstra_1_to_distance(
              G &graph,
              V source,
-             float8 distance);
+             double distance);
 
      //! Call to Dijkstra  1 source to many targets
      bool dijkstra_1_to_many(
@@ -204,7 +204,7 @@ class Pgr_dijkstra {
              G &graph,
              Path &path,
              V source,
-             float8 distance);
+             double distance);
 
      void clear() {
          predecessors.clear();
@@ -243,7 +243,7 @@ class Pgr_dijkstra {
      //@{
      struct found_goals{};  //!< exception for termination
      std::vector< V > predecessors;
-     std::vector< float8 > distances;
+     std::vector< double > distances;
      std::deque< V > nodesInDistance;
      //@}
 
@@ -285,9 +285,9 @@ class Pgr_dijkstra {
      //! class for stopping when a distance/cost has being surpassed
      class dijkstra_distance_visitor : public boost::default_dijkstra_visitor {
       public:
-          explicit dijkstra_distance_visitor(float8 distance_goal,
+          explicit dijkstra_distance_visitor(double distance_goal,
                   std::deque< V > &nodesInDistance,
-                  std::vector< float8 > &distances) :
+                  std::vector< double > &distances) :
               m_distance_goal(distance_goal),
               m_nodes(nodesInDistance),
               m_dist(distances) {}
@@ -298,9 +298,9 @@ class Pgr_dijkstra {
                   num_edges(g);
               }
       private:
-          float8 m_distance_goal;
+          double m_distance_goal;
           std::deque< V > &m_nodes;
-          std::vector< float8 > &m_dist;
+          std::vector< double > &m_dist;
      };
 
 
@@ -317,9 +317,9 @@ Pgr_dijkstra< G >::get_nodesInDistance(
         G &graph,
         Path &path,
         V source,
-        float8 distance) {
+        double distance) {
     path.clear();
-    float8 cost;
+    double cost;
     int64_t edge_id;
     Path r_path(graph[source].id, graph[source].id);
     for (V i = 0; i < distances.size(); ++i) {
@@ -384,7 +384,7 @@ Pgr_dijkstra< G >::get_path(
     // variables that are going to be stored
     int64_t vertex_id;
     int64_t edge_id;
-    float8 cost;
+    double cost;
 
     // working from the last to the beginning
 
@@ -457,7 +457,7 @@ template < class G >
 void
 Pgr_dijkstra< G >::drivingDistance(G &graph, std::deque< Path > &paths,
         std::set< int64_t > start_vertex,
-        float8 distance,
+        double distance,
         bool equiCostFlag) {
     clear();
 
@@ -483,7 +483,7 @@ Pgr_dijkstra< G >::drivingDistance(
         G &graph,
         Path &path,
         int64_t start_vertex,
-        float8 distance) {
+        double distance) {
 
 
     clear();
@@ -650,7 +650,7 @@ Pgr_dijkstra< G >::dijkstra_1_to_1(
 //! Call to Dijkstra  1 source to distance
 template < class G >
 bool
-Pgr_dijkstra< G >::dijkstra_1_to_distance(G &graph, V source, float8 distance) {
+Pgr_dijkstra< G >::dijkstra_1_to_distance(G &graph, V source, double distance) {
     bool found = false;
     try {
         boost::dijkstra_shortest_paths(graph.graph, source,

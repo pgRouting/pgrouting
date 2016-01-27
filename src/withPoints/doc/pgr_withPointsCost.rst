@@ -1,4 +1,4 @@
-..
+.. 
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -9,290 +9,268 @@
 
 .. _pgr_withPointsCost:
 
-pgr_withPointsCost 
+pgr_withPointsCost
 ===============================================================================
 
+
+Name
+-------------------------------------------------------------------------------
+
+``pgr_withPointsCost`` - Returns the driving distance from a starting point.
+
+.. note::  This is a proposed function for version 2.3.
+
+     - Is not officially in the version 2.2 release.
+
+
+.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+   :target: http://www.boost.org/libs/graph
+
+   Boost Graph Inside
 
 Synopsis
 -------------------------------------------------------------------------------
 
-``pgr_dijkstraCost``
+Modify the graph to include points and 
+using Dijkstra algorithm, extracts all the nodes and points that have costs less
+than or equal to the value ``distance`` from the starting point.
+The edges extracted will conform the corresponding spanning tree.
 
-Using Dijkstra algorithm implemented by Boost.Graph, and extract only the
-aggregate cost of the shortest path(s) found, for the combination of vertices given.
-
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
-
-   Boost Graph Inside
-
-The ``pgr_dijkstraCost`` algorithm, is a good choice to calculate the sum of the costs
-of the shortest path for a subset of pairs of nodes of the graph.
-We make use of the Boost's implementation of dijkstra which runs in
-:math:`O(V \log V + E)` time.
-
-Characteristics:
-----------------
-
-The main Characteristics are:
-  - It does not return a path.
-  - Returns the sum of the costs of the shortest path for pair combination of nodes in the graph.
-  - Process is done only on edges with positive costs.
-  - Values are returned when there is a path.
-
-    - When the starting vertex and ending vertex are the same, there is no path.
-
-      - The `agg_cost` the non included values `(v, v)` is `0`
-
-    - When the starting vertex and ending vertex are the different and there is no path.
-
-      - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
-
-    - The returned values are in the form of a set of `(start_vid, end_vid, agg_cost)`.
-
-  - Let be the case the values returned are stored in a table, so the unique index would be the pair:
-    `(start_vid, end_vid)`.
-
-  - For undirected graphs, the results are symetric.
-
-    - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
-
-  - Any duplicated value in the `start_vids` or `end_vids` is ignored.
-
-  - The returned values are ordered:
-
-    - `start_vid` ascending
-    - `end_vid` ascending
-
-  - Runing time: :math:`O(| start\_vids | * (V \log V + E))`
 
 Signature Summary
 -----------------
 
 .. code-block:: none
 
-     pgr_dijkstraCost(edges_sql, start_vid, end_vid);
-     pgr_dijkstraCost(edges_sql, start_vid, end_vid, directed);
-     pgr_dijkstraCost(edges_sql, start_vids, end_vid, directed);
-     pgr_dijkstraCost(edges_sql, start_vid, end_vids, directed);
-     pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
-
-	 RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
-
+    pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pid)
+    pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pid, directed, driving_side)
+    pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pids, directed, driving_side)
+    pgr_withPointsCost(edges_sql, points_sql, start_pids, end_pid, directed, driving_side)
+    pgr_withPointsCost(edges_sql, points_sql, start_pids, end_pids, directed, driving_side)
+    RETURNS SET OF (start_pid, end_pid, agg_cost)
 
 
 Signatures
-===============================================================================
+==========
 
 .. index::
-	single: dijkstraCost(edges_sql, start_vid, end_vid)
+    single: withPoints(edges_sql, points_sql, start_pid, end_pid) -- proposed
 
 Minimal signature
 -----------------
 
-The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
+The minimal signature:
+    - Is for a **directed** graph.
+    - The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
+    - No **details** are given about distance of other points of the query.
 
 .. code-block:: none
 
-     pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
-	 RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+    pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pid)
+    RETURNS SET OF (start_pid, end_pid, agg_cost)
 
 
-.. rubric:: Example
+:Example:
 
-.. literalinclude:: ../test/doc-dijkstraCost.doc.result
-   :start-after: --q1
+.. literalinclude:: doc-pgr_withPointsCost.queries
+   :start-after: --e1
+   :end-before: --e2
+
+.. index::
+    single: withPoints(edges_sql, points_sql, start_pid, end_pid, directed, driving_side) -- proposed
+
+One to One
+----------
+
+
+.. code-block:: none
+
+    pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pid, directed, driving_side)
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+
+
+:Example:
+
+.. literalinclude:: doc-pgr_withPointsCost.queries
+   :start-after: --e2
+   :end-before: --e3
+
+.. index::
+    single: withPoints(edges_sql, points_sql, start_pid, end_pids, directed, driving_side) -- proposed
+
+One to Many
+-----------
+
+
+.. code-block:: none
+
+    pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pid, directed, driving_side)
+    RETURNS SET OF (start_pid, end_pid, agg_cost)
+
+
+:Example:
+
+.. literalinclude:: doc-pgr_withPointsCost.queries
+   :start-after: --e3
+   :end-before: --e4
+
+.. index::
+    single: withPoints(edges_sql, points_sql, start_pids, end_pid, directed, driving_side) -- proposed
+
+Many to One
+-----------
+
+
+.. code-block:: none
+
+    pgr_withPointsCost(edges_sql, points_sql, start_pids, end_pid, directed, driving_side)
+    RETURNS SET OF (start_pid, end_pid, agg_cost)
+
+
+:Example:
+
+.. literalinclude:: doc-pgr_withPointsCost.queries
+   :start-after: --e4
+   :end-before: --e5
+
+.. index::
+    single: withPoints(edges_sql, points_sql, start_pid, end_pid, directed, driving_side) -- proposed
+
+Many to Many
+------------
+
+
+.. code-block:: none
+
+    pgr_withPointsCost(edges_sql, points_sql, start_pids, end_pids, directed, driving_side)
+    RETURNS SET OF (start_pid, end_pid, agg_cost)
+
+
+:Example:
+
+.. literalinclude:: doc-pgr_withPointsCost.queries
+   :start-after: --e5
    :end-before: --q2
 
-
-
-.. index::
-	single: dijkstraCost(edges_sql, start_vid, end_vid, directed)
-
-pgr_dijkstraCost One to One
---------------------------------
-
-
-This signature performs a Dijkstra from one ``start_vid`` to one ``end_vid``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-.. code-block:: none
-
-    pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
-			 BOOLEAN directed:=true);
-	RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
-
-.. rubric:: Example
-
-.. literalinclude:: ../test/doc-dijkstraCost.doc.result
-    :start-after: --q2
-    :end-before: --q3
-
-
-
-.. index::
-	single: dijkstraCost(edges_sql, start_vids, end_vid, directed)
-
-pgr_dijkstraCost Many to One
---------------------------------
-
-.. code-block:: none
-
-    pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, BIGINT end_vid,
-			 BOOLEAN directed:=true);
-	RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
-
-This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-
-.. rubric:: Example
-
-.. literalinclude:: ../test/doc-dijkstraCost.doc.result
-    :start-after: --q3
-    :end-before: --q4
-
-
-
-
-.. index::
-    single: dijkstraCost(edges_sql, start_vid, end_vids, directed)
-
-pgr_dijkstraCost One to Many
---------------------------------
-
-.. code-block:: none
-
-    pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, array[ANY_INTEGER] end_vids,
-	    BOOLEAN directed:=true);
-	RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
-
-This signature performs a Dijkstra from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-
-.. rubric:: Example
-
-.. literalinclude:: ../test/doc-dijkstraCost.doc.result
-   :start-after: --q4
-   :end-before: --q5
-
-
-
-
-
-.. index::
-	single: dijkstraCost(edges_sql, start_vids, end_vids, directed)
-
-.. rubric:: pgr_dijkstraCost Many to Many
-
-.. code-block:: none
-
-    pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, array[ANY_INTEGER] end_vids,
-	    BOOLEAN directed:=true);
-	RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
-
-This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-Example
--------
-
-.. literalinclude:: ../test/doc-dijkstraCost.doc.result
-   :start-after: --q5
-   :end-before: --q6
 
 
 
 Description of the Signatures
 =============================
 
-Description of the edge's SQL query
------------------------------------
+Description of the Edges SQL query
+-------------------------------------------------------------------------------
 
-:edges_sql: is a ``TEXT`` that containes an SQL query, which should return a set of rows with the following columns:
+:edges_sql: an SQL query, which should return a set of rows with the following columns:
 
 ================  ===================   =================================================
-Column            Type                      Description
+Column            Type                  Description
 ================  ===================   =================================================
 **id**            ``ANY-INTEGER``       Identifier of the edge.
 **source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
 **target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, if negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, if negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, If negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, If negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
 ================  ===================   =================================================
+
+
+Description of the Points SQL query
+-------------------------------------------------------------------------------
+
+:points_sql: an SQL query, which should return a set of rows with the following columns:
+
+============ ================= =================================================
+Column            Type              Description
+============ ================= =================================================
+**pid**      ``ANY-INTEGER``   (optional) Identifier of the point. Can not be NULL. If column not present, a sequential identifier will be given automatically.
+**eid**      ``ANY-INTEGER``   Identifier of the "closest" edge to the point.
+**fraction** ``ANY-NUMERICAL`` Value in [0,1] that indicates the relative postition from the first end point of the edge.
+**side**     ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the point is:
+                                 - In the right, left of the edge or
+                                 - If it doesn't matter with 'b' or NULL.
+                                 - If column not present 'b' is considered.
+
+                               Can be in upper or lower case.
+============ ================= =================================================
 
 
 Where:
 
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, real, float
-
+:ANY-INTEGER: smallint, int, bigint
+:ANY-NUMERICAL: smallint, int, bigint, real, float
 
 Description of the parameters of the signatures
 -------------------------------------------------------------------------------
 
-================  ====================== =================================================
-Column            Type                   Description
-================  ====================== =================================================
-**sql**           ``TEXT``               SQL query as decribed above.
-**start_vid**     ``BIGINT``             Identifier of the starting vertex of the path.
-**end_vid**       ``BIGINT``             Identifier of the ending vertex of the path.
-**start_vids**    ``array[ANY-INTEGER]`` Array of identifiers of starting vertices.
-**end_vids**      ``array[ANY-INTEGER]`` Array of identifiers of ending vertices.
-**directed**      ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-================  ====================== =================================================
+
+================ ====================== =================================================
+Parameter        Type                   Description
+================ ====================== =================================================
+**edges_sql**    ``TEXT``               Edges SQL query as decribed above.
+**points_sql**   ``TEXT``               Points SQL query as decribed above.
+**start_pid**    ``ANY-INTEGER``        Starting point identifier.
+**end_pid**      ``ANY-INTEGER``        Ending point identifier.
+**start_pids**   ``ARRAY[ANY-INTEGER]`` Array of starting points identifiers.
+**end_pids**     ``ARRAY[ANY-INTEGER]`` Array of ending points identifiers.
+**directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
+**driving_side** ``CHAR``               (optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
+                                          - In the right or left or
+                                          - If it doesn't matter with 'b' or NULL.
+                                          - If column not present 'b' is considered.
+
+================ ====================== =================================================
 
 
 Description of the return values
 -------------------------------------------------------------------------------
 
-Returns set of ``(start_vid, end_vid, agg_cost)``
+Returns set of ``(start_pid, end_pid, agg_cost)``
 
-============= ============= =================================================
-Column        Type          Description
-============= ============= =================================================
-**start_vid** ``BIGINT``    Identifier of the starting vertex.
-**end_vid**   ``BIGINT``    Identifier of the ending vertex.
-**agg_cost**  ``FLOAT``     Aggregate cost of the shortest path from ``start_vid`` to ``end_vid``.
-============= ============= =================================================
+============= =========== =================================================
+Column           Type              Description
+============= =========== =================================================
+**start_pid** ``BIGINT``  Identifier of the starting point of the path.
+**end_pid**   ``BIGINT``  Identifier of the ending point of the path.
+**agg_cost**  ``FLOAT``   Aggregate cost from ``start_pid`` to ``node``.
+============= =========== =================================================
+
 
 
 Examples
-========
+--------------------------------------------------------------------------------------
 
-:Example 1:
+:Example: Which path (if any) passes in front of point 4 or vertex 4 with **right** side driving topology.
 
-Repeated values are ignored, and arrays are sorted
+.. literalinclude:: doc-pgr_withPointsCost.queries
+   :start-after: --q2
+   :end-before: --q3
 
-.. literalinclude:: ../test/doc-dijkstraCost.doc.result
-    :start-after: --q6
-    :end-before: --q7
+:Example: Which path (if any) passes in front of point 4 or vertex 4 with **left** side driving topology.
 
-:Example 2:
+.. literalinclude:: doc-pgr_withPointsCost.queries
+   :start-after: --q3
+   :end-before: --q4
 
-`start_vids` are the same as `end_vids`
+:Example: Many to many example with a twist: on undirected graph and showing details.
 
-.. literalinclude:: ../test/doc-dijkstraCost.doc.result
-    :start-after: --q7
-    :end-before: --q8
+.. literalinclude:: doc-pgr_withPointsCost.queries
+   :start-after: --q4
+   :end-before: --q5
 
 
 The queries use the :ref:`sampledata` network.
 
+
+
 .. rubric:: History
 
-* New in version  2.2.0
+* Proposed in version 2.2
 
 
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* :ref:`withPoints`
 
 .. rubric:: Indices and tables
 

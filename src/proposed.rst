@@ -74,7 +74,7 @@ Proposed functions: Proposed by Zia Mohammed
 .. toctree::
    :hidden:
 
-   ../src/convinience/doc/index
+   ../src/convinience/doc/convenience
 
 Experimental functions: by GSoC Students
 ----------------------------------------

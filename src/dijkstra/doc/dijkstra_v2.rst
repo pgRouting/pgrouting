@@ -77,39 +77,16 @@ Examples: Directed
 
 * Without ``reverse_cost``
 
-.. code-block:: sql
-
-        SELECT seq, id1 AS node, id2 AS edge, cost
-                FROM pgr_dijkstra(
-                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-                        2,3, true, false
-                );
-
-         seq | node | edge | cost
-        -----+------+------+------
-        (0 rows)
+.. literalinclude:: dijkstra-v2.queries
+   :start-after: --q1
+   :end-before: --q2
 
 
 * With ``reverse_cost``
 
-.. code-block:: sql
-
-        SELECT seq, id1 AS node, id2 AS edge, cost
-                FROM pgr_dijkstra(
-                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-                        2,3, true, true
-                );
-         seq | node | edge | cost
-        -----+------+------+------
-           0 |    2 |    4 |    1
-           1 |    5 |    8 |    1
-           2 |    6 |    9 |    1
-           3 |    9 |   16 |    1
-           4 |    4 |    3 |    1
-           5 |    3 |   -1 |    0
-        (6 rows)
-
-
+.. literalinclude:: dijkstra-v2.queries
+   :start-after: --q2
+   :end-before: --q3
 
 
 
@@ -118,36 +95,16 @@ Examples: Undirected
 
 * Without ``reverse_cost``
 
-.. code-block:: sql
-
-       SELECT seq, id1 AS node, id2 AS edge, cost
-                FROM pgr_dijkstra(
-                        'SELECT id, source, target, cost FROM edge_table',
-                        2, 3, false, false
-                );
-        seq | node | edge | cost
-       -----+------+------+------
-          0 |    2 |    4 |    1
-          1 |    5 |    8 |    1
-          2 |    6 |    5 |    1
-          3 |    3 |   -1 |    0
-       (4 rows)
+.. literalinclude:: dijkstra-v2.queries
+   :start-after: --q3
+   :end-before: --q4
 
 
 * With ``reverse_cost``
 
-.. code-block:: sql
-
-       SELECT seq, id1 AS node, id2 AS edge, cost
-                FROM pgr_dijkstra(
-                        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-                        2, 3, false, true
-                );
-        seq | node | edge | cost
-       -----+------+------+------
-          0 |    2 |    2 |    1
-          1 |    3 |   -1 |    0
-       (2 rows)
+.. literalinclude:: dijkstra-v2.queries
+   :start-after: --q4
+   :end-before: --q5
 
 
 The queries use the :ref:`sampledata` network.

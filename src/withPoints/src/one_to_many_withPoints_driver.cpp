@@ -169,7 +169,7 @@ do_pgr_one_to_many_withPoints(
 
         if (!details) {
             for (auto &path :paths) {
-                eliminate_details(path);
+                eliminate_details(path, edges_to_modify);
             }
         }
         /*

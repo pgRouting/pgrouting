@@ -88,7 +88,7 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 
 :Example:
 
-.. literalinclude:: doc-dijkstra-v3.queries
+.. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -111,7 +111,7 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
 
 :Example:
 
-.. literalinclude:: doc-dijkstra-v3.queries
+.. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -140,7 +140,7 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 
 :Example:
 
-.. literalinclude:: doc-dijkstra-v3.queries
+.. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q3
    :end-before: -- q4
 
@@ -171,7 +171,7 @@ where the ending vertex is fixed.
 
 :Example:
 
-.. literalinclude:: doc-dijkstra-v3.queries
+.. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q4
    :end-before: -- q5
 
@@ -203,7 +203,7 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
 
 :Example:
 
-.. literalinclude:: doc-dijkstra-v3.queries
+.. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q5
    :end-before: -- q6
 
@@ -279,7 +279,7 @@ Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` c
 
 The examples in this section use the following :ref:`fig1`
 
-.. literalinclude:: doc-dijkstra-v3.queries
+.. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q7
    :end-before: -- q8
 
@@ -290,7 +290,7 @@ Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost``
 
 The examples in this section use the following :ref:`fig2`
 
-.. literalinclude:: doc-dijkstra-v3.queries
+.. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q9
    :end-before: -- q10
 
@@ -300,7 +300,7 @@ Examples for queries marked as ``directed`` with ``cost`` column
 
 The examples in this section use the following :ref:`fig3`
 
-.. literalinclude:: doc-dijkstra-v3.queries
+.. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q11
    :end-before: -- q12
 
@@ -310,7 +310,7 @@ Examples for queries marked as ``undirected`` with ``cost`` column
 
 The examples in this section use the following :ref:`fig4`
 
-.. literalinclude:: doc-dijkstra-v3.queries
+.. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q13
    :end-before: -- q14
 
@@ -321,7 +321,7 @@ Equvalences between signatures
 Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
 The examples in this section use the following :ref:`fig1`
 
-.. literalinclude:: doc-dijkstra-v3.queries
+.. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q15
    :end-before: -- q16
 
@@ -332,7 +332,7 @@ Equvalences between signatures
 Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
 The examples in this section use the following :ref:`fig2`
 
-.. literalinclude:: doc-dijkstra-v3.queries
+.. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q17
    :end-before: -- q18
 

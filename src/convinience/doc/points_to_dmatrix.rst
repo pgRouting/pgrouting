@@ -13,7 +13,7 @@ pgr_pointsToDMatrix
 ==============================================================================
 
 .. index::
-        single: pgr_pointsToDMatrix(pnts geometry[], OUT dmatrix double precision[], OUT ids integer[]) --proposed
+        single: pointsToDMatrix(pnts geometry[], OUT dmatrix double precision[], OUT ids integer[]) --proposed
 
 
 Name
@@ -57,40 +57,23 @@ Description
 
     The generated matrix will be symmetric as required for pgr_TSP.
 
-
 .. rubric:: History
 
-* New in version 2.1.0
+* Proposed in version 2.1.0
 
 
 Examples
 -----------------------------------------------------------------------------
 
-.. code-block:: sql
+.. literalinclude:: doc-matrix.queries
+   :start-after: --q1
+   :end-before: --q1.1
 
-        select unnest(dmatrix) from pgr_pointsToDMatrix(
-            pgr_texttopoints('2,0;2,1;3,1;2,2;4,1;4,2;2,3;3,2', 0)
-        ) limit 8;
-              unnest
-        ------------------
-                        0
-                        1
-          1.4142135623731
-                        2
-         2.23606797749979
-         2.82842712474619
-                        3
-         2.23606797749979
-        (8 rows)
+This example shows how this can be used in the context of feeding the results into pgr_tsp() function.
 
-        select ids from pgr_pointstodmatrix(
-            pgr_texttopoints('2,0;2,1;3,1;2,2;4,1;4,2;2,3;3,2', 0)
-        );
-                ids
-        -------------------
-         {1,2,3,4,5,6,7,8}
-        (1 row)
-
+.. literalinclude:: doc-matrix.queries
+   :start-after: --q1.1
+   :end-before: --q2
 
 
 See Also
@@ -98,4 +81,10 @@ See Also
 
 * :ref:`pgr_vids_to_dmatrix` - convert a point geometry to the closest vertex_id of an edge..
 * :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
+
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
 

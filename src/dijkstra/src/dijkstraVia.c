@@ -138,8 +138,13 @@ dijkstraVia(PG_FUNCTION_ARGS) {
 
 
   /*******************************************************************************/
-  /*                          MODIFY AS NEEDED                                   */
-      // CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertices(sql text, vertices anyarray, directed boolean default true, strict boolean default false, U_turn_on_edge boolean default false
+  /*                          MODIFY AS NEEDED                                   
+   * pgr_dijkstraVia(edges_sql text,
+   *   vertices anyarray,
+   *   directed boolean default true,
+   *   strict boolean default false,
+   *   U_turn_on_edge boolean default false,
+   *******************************************************************************/
 
       PGR_DBG("Initializing arrays");
       int64_t* via_vidsArr;
@@ -199,9 +204,9 @@ dijkstraVia(PG_FUNCTION_ARGS) {
       }
 
       // postgres starts counting from 1
-      values[0] = Int64GetDatum(call_cntr + 1);
-      values[1] = Int64GetDatum(result_tuples[call_cntr].path_id);
-      values[2] = Int64GetDatum(result_tuples[call_cntr].path_seq + 1);
+      values[0] = Int32GetDatum(call_cntr + 1);
+      values[1] = Int32GetDatum(result_tuples[call_cntr].path_id);
+      values[2] = Int32GetDatum(result_tuples[call_cntr].path_seq + 1);
       values[3] = Int64GetDatum(result_tuples[call_cntr].start_vid);
       values[4] = Int64GetDatum(result_tuples[call_cntr].end_vid);
       values[5] = Int64GetDatum(result_tuples[call_cntr].node);
@@ -222,4 +227,3 @@ dijkstraVia(PG_FUNCTION_ARGS) {
       SRF_RETURN_DONE(funcctx);
   }
 }
-

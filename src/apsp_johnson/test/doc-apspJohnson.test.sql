@@ -4,8 +4,7 @@
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 \echo --q1
-SELECT *
-    FROM pgr_apspJohnson(
-        'SELECT source, target, cost FROM edge_table WHERE id < 5'
+SELECT * FROM pgr_apspJohnson(
+        'SELECT source::INTEGER, target::INTEGER, cost FROM edge_table WHERE id < 5'
     ); 
 \echo --q2

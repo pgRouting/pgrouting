@@ -71,7 +71,7 @@ exclude_patterns = [
     'doc/build',
     'src/shooting_star/doc/index.rst',
     'src/travelingSalesPerson',
-    'src/turnRestricted',
+    '*/notUsed',
     'tools/template'
     ]
 

@@ -21,6 +21,4 @@ pgr_ksp - Multiple shortest Paths based on Dijkstra
         :hidden: 
 
         ./pgr_ksp
-        ./pgr_withPointsKSP
-
 

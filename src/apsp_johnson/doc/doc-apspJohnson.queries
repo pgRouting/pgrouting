@@ -1,7 +1,6 @@
 --q1
-SELECT *
-    FROM pgr_apspJohnson(
-        'SELECT source, target, cost FROM edge_table WHERE id < 5'
+SELECT * FROM pgr_apspJohnson(
+        'SELECT source::INTEGER, target::INTEGER, cost FROM edge_table WHERE id < 5'
     );
 NOTICE:  Deprecated function: Use pgr_johnson instead
  seq | id1 | id2 | cost 

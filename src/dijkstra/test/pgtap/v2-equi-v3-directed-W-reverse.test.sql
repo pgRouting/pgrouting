@@ -7,7 +7,7 @@ SELECT plan(11);
 -- all this queries are equivalent (give the same results)
 PREPARE q00 AS
 SELECT  id2 FROM pgr_dijkstra(
-    'SELECT id AS id, source::int4, target::int4,
+    'SELECT  id::INTEGER, source::INTEGER, target::INTEGER,
     CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost,
     CASE WHEN reverse_cost<=0 THEN 999 ELSE reverse_cost END AS reverse_cost
     FROM edge_table ORDER BY id',
@@ -15,7 +15,7 @@ SELECT  id2 FROM pgr_dijkstra(
 
 PREPARE q0 AS
 SELECT  id1 FROM pgr_dijkstra(
-    'SELECT id AS id, source::int4, target::int4,
+    'SELECT  id::INTEGER, source::INTEGER, target::INTEGER,
     CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost,
     CASE WHEN reverse_cost<=0 THEN 999 ELSE reverse_cost END AS reverse_cost
     FROM edge_table ORDER BY id',
@@ -23,7 +23,7 @@ SELECT  id1 FROM pgr_dijkstra(
 
 PREPARE q1 AS
 SELECT seq, id1, id2, cost FROM pgr_dijkstra(
-    'SELECT id AS id, source::int4, target::int4,
+    'SELECT  id::INTEGER, source::INTEGER, target::INTEGER,
     CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost,
     CASE WHEN reverse_cost<=0 THEN 999 ELSE reverse_cost END AS reverse_cost
     FROM edge_table ORDER BY id',
@@ -31,7 +31,7 @@ SELECT seq, id1, id2, cost FROM pgr_dijkstra(
 
 PREPARE q2 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
-    'SELECT id AS id, source::int4, target::int4, 
+    'SELECT  id, source, target, 
     CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost, 
     CASE WHEN reverse_cost<=0 THEN 999 ELSE reverse_cost END AS reverse_cost 
     FROM edge_table ORDER BY id', 
@@ -40,7 +40,7 @@ SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
 
 PREPARE q3 AS
 SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
-    'SELECT id AS id, source::int4, target::int4, 
+    'SELECT  id, source, target, 
     CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost, 
     CASE WHEN reverse_cost<=0 THEN 999 ELSE reverse_cost END AS reverse_cost 
     FROM edge_table ORDER BY id', 
@@ -81,7 +81,7 @@ SELECT seq - 1, node::INTEGER, edge::INTEGER, cost FROM pgr_dijkstra(
 
 PREPARE q9 AS
 SELECT seq, id1, id2, cost FROM pgr_dijkstra(
-    'SELECT id AS id, source::int4, target::int4,
+    'SELECT  id::INTEGER, source::INTEGER, target::INTEGER,
     cost, reverse_cost
     FROM edge_table ORDER BY id',
     11, 5, true, true);
@@ -101,7 +101,7 @@ SELECT seq, id1, id2, cost FROM pgr_dijkstra(
 
 PREPARE q50 AS
 SELECT seq, id1, id2, cost FROM pgr_dijkstra(
-    'SELECT id AS id, source::BIGINT, target::BIGINT,
+    'SELECT  id::BIGINT, source::BIGINT, target::BIGINT,
     CASE WHEN cost<=0 THEN 999 ELSE cost END AS cost,
     CASE WHEN reverse_cost<=0 THEN 999 ELSE reverse_cost END AS reverse_cost
     FROM edge_table ORDER BY id',

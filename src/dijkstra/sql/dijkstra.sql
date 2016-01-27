@@ -68,7 +68,7 @@ LANGUAGE c IMMUTABLE STRICT;
 
 
 -- V2 signature
-CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql TEXT, start_vid BIGINT, end_vid BIGINT, directed BOOLEAN, has_rcost boolean)
+CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql TEXT, start_vid INTEGER, end_vid INTEGER, directed BOOLEAN, has_rcost boolean)
 RETURNS SETOF pgr_costresult AS
 $BODY$
 DECLARE

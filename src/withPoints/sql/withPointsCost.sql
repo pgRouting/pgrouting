@@ -36,9 +36,8 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     points_sql TEXT,
     BIGINT,
     BIGINT,
-    driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
-    details BOOLEAN DEFAULT false,
     directed BOOLEAN DEFAULT true,
+    driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
 
     OUT start_pid BIGINT,
     OUT end_pid BIGINT,
@@ -47,7 +46,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT -$3, -$4, a.agg_cost
-    FROM _pgr_withPoints($1, $2, $3, $4, driving_side,  details, directed, true) AS a;
+        FROM _pgr_withPoints($1, $2, $3, $4, $5, $6, TRUE, TRUE) AS a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -63,9 +62,8 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     points_sql TEXT,
     BIGINT,
     end_pids ANYARRAY,
-    driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
-    details BOOLEAN DEFAULT false,
     directed BOOLEAN DEFAULT true,
+    driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
 
     OUT start_pid BIGINT,
     OUT end_pid BIGINT,
@@ -74,7 +72,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT -$3, a.end_pid, a.agg_cost
-    FROM _pgr_withPoints($1, $2, $3, $4, driving_side,  TRUE, directed, TRUE) AS a;
+        FROM _pgr_withPoints($1, $2, $3, $4, $5,  $6, TRUE, TRUE) AS a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -90,9 +88,8 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     points_sql TEXT,
     start_pids ANYARRAY,
     BIGINT,
-    driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
-    details BOOLEAN DEFAULT false,
     directed BOOLEAN DEFAULT true,
+    driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
 
     OUT start_pid BIGINT,
     OUT end_pid BIGINT,
@@ -101,7 +98,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT a.start_pid, -$4, a.agg_cost
-    FROM _pgr_withPoints($1, $2, $3, $4, driving_side,  TRUE, directed, TRUE) AS a;
+        FROM _pgr_withPoints($1, $2, $3, $4, $5,  $6, TRUE, TRUE) AS a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -117,9 +114,8 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
     points_sql TEXT,
     start_pids ANYARRAY,
     end_pids ANYARRAY,
-    driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
-    details BOOLEAN DEFAULT false,
     directed BOOLEAN DEFAULT true,
+    driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
 
     OUT start_pid BIGINT,
     OUT end_pid BIGINT,
@@ -128,7 +124,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT a.start_pid, a.end_pid, a.agg_cost
-    FROM _pgr_withPoints($1, $2, $3, $4, driving_side,  TRUE, directed, TRUE) AS a;
+        FROM _pgr_withPoints($1, $2, $3, $4, $5,  $6, TRUE, TRUE) AS a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE

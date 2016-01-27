@@ -45,13 +45,13 @@ The turn restricted shorthest path (TRSP) is a shortest path algorithm that can 
 .. code-block:: sql
 
     pgr_costResult3[] pgr_trspViaVertices(sql text, vids integer[],
-                    directed boolean, has_reverse_cost boolean
+                    directed boolean, has_rcost boolean
                     [, turn_restrict_sql text]);
 
 .. code-block:: sql
 
      pgr_costResult3[] pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
-                    directed boolean, has_reverse_cost boolean
+                    directed boolean, has_rcost boolean
                     [, turn_restrict_sql text]);
 
 Description
@@ -168,37 +168,30 @@ Examples
 
 **Without turn restrictions**
 
-.. literalinclude:: doc-trsp.result
+.. literalinclude:: doc-trsp.queries
    :start-after: --q1
    :end-before: --q2
 
 
 **With turn restrictions**
-  
-Turn restrictions require additional information, which can be stored in a separate table:
-
-.. literalinclude:: doc-trsp.result
-   :start-after: --q2
-   :end-before: --q3
-
 
 Then a query with turn restrictions is created as:
 
-.. literalinclude:: doc-trsp.result
+.. literalinclude:: doc-trsp.queries
    :start-after: --q3
    :end-before: --q4
 
 
 An example query using vertex ids and via points:
 
-.. literalinclude:: doc-trsp.result
+.. literalinclude:: doc-trsp.queries
    :start-after: --q4
    :end-before: --q5
 
 
 An example query using edge ids and vias:
 
-.. literalinclude:: doc-trsp.result
+.. literalinclude:: doc-trsp.queries
    :start-after: --q5
    :end-before: --q6
 

@@ -13,7 +13,7 @@ pgr_vidsToDMatrix
 ==============================================================================
 
 .. index::
-        single: pgr_vidsToDMatrix(IN vids integer[], IN pnts geometry[], IN edges text, tol float8 DEFAULT(0.1), OUT dmatrix double precision[], OUT ids integer[]) --proposed
+        single: vidsToDMatrix(IN vids integer[], IN pnts geometry[], IN edges text, tol float8 DEFAULT(0.1), OUT dmatrix double precision[], OUT ids integer[]) --proposed
 
 
 Name
@@ -21,7 +21,7 @@ Name
 
 ``pgr_vidsToDMatrix`` - Creates a distances matrix from an array of ``vertex_id``.
 
-.. note::  This is a proposed function
+.. warning::  This is a proposed function
 
      - Is not officially in the release.
      - Name could change.
@@ -62,41 +62,35 @@ Description
     * we compute a symmetric matrix because TSP requires that so the distances are better the Euclidean but but are not perfect
     * kdijkstra() can fail to find a path between some of the vertex ids. We to not detect this other than the cost might get set to -1.0, so the dmatrix shoule be checked for this as it makes it invalid for TSP
 
-
 .. rubric:: History
 
-* New in version 2.1.0
+* Proposed in version 2.1.0
 
 
 Examples
 -----------------------------------------------------------------------------
 
-This example shows how this can be used in the context of feeding the results into pgr_tsp() function. We convert a text string of ``x,y;x,y;...`` into and array of points, then convert that into an array ``vertex_id``, then create a distance matrix that gets feed into ``pgr_tsp()`` that returns the final result.
+This example uses existing data of points.
 
-.. code-block:: sql
+.. literalinclude:: doc-matrix.queries
+   :start-after: --q2
+   :end-before: --q2.1
 
-    select * from pgr_tsp(
-        (select dmatrix::float8[]
-           from pgr_vidstodmatrix(
-                    pgr_pointstovids(
-                        pgr_texttopoints('2,0;2,1;3,1;2,2;4,1;4,2;2,3;3,2', 0),
-                        'edge_table'),
-                    pgr_texttopoints('2,0;2,1;3,1;2,2;4,1;4,2;2,3;3,2', 0),
-                    'edge_table')
-        ),
-        1
-    );
-     seq | id
-    -----+----
-       0 |  1
-       1 |  3
-       2 |  7
-       3 |  5
-       4 |  4
-       5 |  2
-       6 |  6
-       7 |  0
-    (8 rows)
+This example uses points that are not part of the graph.
+    - :ref:`pgr_text_to_points` - is used to convert the locations into point geometries.
+    - :ref:`pgr_points_to_vids` - to convert the array of point geometries into vertex ids.
+
+
+.. literalinclude:: doc-matrix.queries
+   :start-after: --q2.1
+   :end-before: --q2.2
+
+
+This example shows how this can be used in the context of feeding the results into pgr_tsp() function.
+
+.. literalinclude:: doc-matrix.queries
+   :start-after: --q2.2
+   :end-before: --q3
 
 This example uses the :ref:`sampledata` network.
 
@@ -107,3 +101,7 @@ See Also
 * :ref:`pgr_text_to_points` - Create an array of points from a text string.
 * :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
 
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
