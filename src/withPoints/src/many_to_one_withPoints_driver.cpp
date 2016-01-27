@@ -175,7 +175,7 @@ do_pgr_many_to_one_withPoints(
         (*return_count) = (collapse_paths(return_tuples, paths));
 
 #ifndef DEBUG
-        *err_msg = "OK";
+        *err_msg = (char *)"OK";
 #else
         *err_msg = strdup(log.str().c_str());
 #endif
