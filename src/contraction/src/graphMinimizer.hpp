@@ -563,7 +563,16 @@ public:
 	void getEdgeString(Edge **edges,int num_edges,char **estring)
 	{
 		string edgestring="";
-		for (int i = 0; i < num_edges; ++i)
+		for (Edge edge:*edges)
+		{
+			string id=patch::to_string(edge.id);
+			string source=patch::to_string(edge.source);
+			string target=patch::to_string(edge.target);
+			string cost=patch::to_string(edge.cost);
+			string reverse_cost=patch::to_string(edge.revcost);
+			edgestring+=id+","+source+","+target+","+cost+","+reverse_cost+"$";
+		}
+		/*for (int i = 0; i < num_edges; ++i)
 		{
 			string id=patch::to_string((*edges)[i].id);
 			string source=patch::to_string((*edges)[i].source);
@@ -571,7 +580,7 @@ public:
 			string cost=patch::to_string((*edges)[i].cost);
 			string reverse_cost=patch::to_string((*edges)[i].revcost);
 			edgestring+=id+","+source+","+target+","+cost+","+reverse_cost+"$";
-		}
+		}*/
 		(*estring)=strdup(edgestring.c_str());
 	}
 
