@@ -38,7 +38,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <cassert>
-#include "./pgr_ksp.hpp"
 
 #include "./pgr_withPoints.h"
 #include "./withPoints_ksp_driver.h"
@@ -47,10 +46,9 @@ extern "C" {
 }
 
 
-#define DEBUG
-
-
+// #define DEBUG
 #include "./../../common/src/memory_func.hpp"
+#include "./pgr_ksp.hpp"
 
 
 // CREATE OR REPLACE FUNCTION pgr_withPoint(
