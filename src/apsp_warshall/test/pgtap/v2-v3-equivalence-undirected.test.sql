@@ -10,28 +10,28 @@ SELECT plan(11);
 PREPARE q1 AS
 SELECT *
 FROM pgr_apspWarshall(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table ORDER BY id',
     FALSE, TRUE
 ) WHERE cost < 0;
 
 PREPARE q2 AS
 SELECT *
 FROM pgr_apspWarshall(
-    'SELECT id, source, target, cost FROM edge_table ORDER BY id',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table ORDER BY id',
     FALSE, FALSE
 ) WHERE cost < 0;
 
 PREPARE q3 AS
 SELECT *
 FROM pgr_apspWarshall(
-    'SELECT id, source, target, cost, -1::float as reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, -1::float as reverse_cost FROM edge_table ORDER BY id',
     FALSE, TRUE
 ) WHERE cost < 0;
 
 PREPARE q4 AS
 SELECT *
 FROM pgr_apspWarshall(
-    'SELECT id, source, target, -1::float as cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, -1::float as cost, reverse_cost FROM edge_table ORDER BY id',
     FALSE, TRUE
 ) WHERE cost < 0;
 
@@ -44,14 +44,14 @@ SELECT is_empty('q4', '4: No cost can be negative');
 PREPARE q10 AS
 SELECT id1, id2, cost 
 FROM pgr_apspWarshall(
-    'SELECT id, source, target, cost FROM edge_table ORDER BY id',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table ORDER BY id',
     FALSE, FALSE
 );
 
 PREPARE q11 AS
 SELECT id1, id2, cost 
 FROM pgr_apspWarshall(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table ORDER BY id',
     FALSE, TRUE
 );
 

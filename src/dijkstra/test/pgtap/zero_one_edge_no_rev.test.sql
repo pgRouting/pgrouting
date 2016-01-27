@@ -32,7 +32,7 @@ SELECT * from pgr_dijkstra(''SELECT id, source, target, cost  from edge_table wh
 -- edge doesnt have start_vid = 5 but has end_vid = 6
 SELECT results_eq('
 SELECT id, source, target, cost > 0  from edge_table where id = 9',
-'SELECT 9, 6, 9, true',
+'SELECT 9::BIGINT, 6::BIGINT, 9::BIGINT, true',
 '10: Edge does not have start_vid = 5 but has end_vid = 6');
 
 -- directed graph
@@ -59,7 +59,7 @@ SELECT * from pgr_dijkstra(''SELECT id, source, target, cost  from edge_table wh
 -- edge doesnt have end_vid = 6 but has start_vid = 5
 SELECT results_eq(
 'SELECT id, source, target, cost > 0 from edge_table where id = 4',
-'SELECT 4, 2, 5, true',
+'SELECT 4::BIGINT, 2::BIGINT, 5::BIGINT, true',
 '19: Edge doesnt have end_vid = 6 but has start_vid = 5');
 
 
@@ -87,7 +87,7 @@ SELECT * from pgr_dijkstra(''SELECT id, source, target, cost  from edge_table wh
 
 SELECT results_eq('
 SELECT id, source, target, cost > 0 from edge_table where id = 8',
-'SELECT 8, 5, 6, true',
+'SELECT 8::BIGINT, 5::BIGINT, 6::BIGINT, true',
 ' 28: Edge has start_vid 6 and end_vid 5');
 
 SELECT isnt_empty('
@@ -113,7 +113,7 @@ SELECT * from pgr_dijkstra(''SELECT id, source, target, cost  from edge_table wh
 -- edge has only vid = 6 but really only one edge is inserted the first one
 SELECT results_eq('
 SELECT id, source, target, cost > 0  from edge_table where id = 5',
-'SELECT 5, 3, 6, true',
+'SELECT 5::BIGINT, 3::BIGINT, 6::BIGINT, true',
 '37: has only vid = 6 but really only one edge is inserted the first one');
 
 
@@ -160,7 +160,7 @@ SELECT is_empty('
 -- only answer never has answer becuase cost < 0
 SELECT results_eq('
 SELECT id, source, target, cost > 0  from edge_table where id = 3',
-'SELECT 3, 3, 4, false',
+'SELECT 3::BIGINT, 3::BIGINT, 4::BIGINT, false',
 '54: only answer is from 4 to 3');
 
 -- directed graph doesnt get an answer
@@ -204,7 +204,7 @@ SELECT is_empty('
 -- The edge doesnt have any of them
 SELECT results_eq('
 SELECT id, source, target, cost > 0  from edge_table where id = 3',
-'SELECT 3, 3, 4, false',
+'SELECT 3::BIGINT, 3::BIGINT, 4::BIGINT, false',
 '71: The edge doesnt have any of them');
 
 

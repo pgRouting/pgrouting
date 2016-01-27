@@ -1,7 +1,9 @@
 -- q1
+NOTICE:  Deprecated function. Use pgr_dijkstraCost instead.
 0|10|4|4
 1|10|12|2
 -- q2
+NOTICE:  Deprecated function: Use pgr_dijkstra instead.
 0|4|10|12|1
 1|4|11|13|1
 2|4|12|15|1
@@ -11,6 +13,7 @@
 6|12|11|13|1
 7|12|12|-1|0
 -- q3
+NOTICE:  Deprecated function: Use pgr_dijkstra instead.
 4|LINESTRING(2 3,3 3,4 3,4 2,4 1)
 12|LINESTRING(2 3,3 3,4 3)
 -- q4

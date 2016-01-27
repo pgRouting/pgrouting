@@ -8,62 +8,48 @@ BEGIN;
     ------------------------------------------------------------------------------------------------------
 
 \echo --q1
-    SELECT seq, id1 AS node, id2 AS edge, cost
-    FROM pgr_trsp(
-        'SELECT id, source, target, cost FROM edge_table',
+    SELECT * FROM pgr_trsp(
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
         7, 12, false, false
     );
 
 \echo --q2
 
-\set QUIET 1
-
-    CREATE TABLE restrictions (
-        rid serial,
-        to_cost double precision,
-        to_edge integer,
-        FROM_edge integer,
-        via text
-    );
-
-    INSERT INTO restrictions VALUES (1,100,7,4,null);
-    INSERT INTO restrictions VALUES (2,4,8,3,5);
-    INSERT INTO restrictions VALUES (3,100,9,16,null);
-\set QUIET 0
-
-
 \echo --q3
-    SELECT seq, id1 AS node, id2 AS edge, cost
-    FROM pgr_trsp(
-        'SELECT id, source, target, cost FROM edge_table',
-        7, 12, false, false,
-        'SELECT to_cost, to_edge AS target_id,
-        FROM_edge || coalesce('','' || via, '''') AS via_path
+    SELECT * FROM pgr_trsp(
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
+        2, 7, false, false,
+        'SELECT to_cost, target_id,
+        from_edge || coalesce('','' || via, '''') AS via_path
+        FROM restrictions'
+    );
+    SELECT * FROM pgr_trsp(
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
+        7, 11, false, false,
+        'SELECT to_cost, target_id,
+        from_edge || coalesce('','' || via, '''') AS via_path
         FROM restrictions'
     );
 
+
 \echo --q4
     SELECT * FROM pgr_trspViaVertices(
-        'SELECT id, source::INTEGER, target::INTEGER, cost,
-        reverse_cost FROM edge_table',
-        ARRAY[1,8,13,5]::INTEGER[],     
-        true,  
-        true,  
-
-        'SELECT to_cost, to_edge AS target_id, FROM_edge ||
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
+        ARRAY[2,7,11]::INTEGER[],     
+        false,  false,  
+        'SELECT to_cost, target_id, from_edge ||
         coalesce('',''||via,'''') AS via_path FROM restrictions');
 
 
 \echo --q5
     SELECT * FROM pgr_trspViaEdges(
-        'SELECT id, source::INTEGER, target::INTEGER,cost,
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost,
         reverse_cost FROM edge_table',
-        ARRAY[1,11,6]::INTEGER[],           
-        ARRAY[0.5, 0.5, 0.5]::FLOAT8[],     
+        ARRAY[2,7,11]::INTEGER[],           
+        ARRAY[0.5, 0.5, 0.5]::FLOAT[],     
         true,  
         true,  
-
-        'SELECT to_cost, to_edge AS target_id, FROM_edge ||
+        'SELECT to_cost, target_id, FROM_edge ||
         coalesce('',''||via,'''') AS via_path FROM restrictions');
     
 \echo --q6

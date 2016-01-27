@@ -36,16 +36,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 
-// #define DEBUG
 
 #include "fmgr.h"
-#include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/points_input.h"
 #include "./get_new_queries.h"
 #include "./one_to_one_withPoints_driver.h"
+// #define DEBUG
+#include "./../../common/src/debug_macro.h"
 
 PG_FUNCTION_INFO_V1(one_to_one_withPoints);
 #ifndef _MSC_VER
@@ -54,7 +54,6 @@ Datum
 PGDLLEXPORT Datum
 #endif
 one_to_one_withPoints(PG_FUNCTION_ARGS);
-
 
 /*******************************************************************************/
 /*                          MODIFY AS NEEDED                                   */
@@ -65,9 +64,9 @@ process(
         char* points_sql,
         int64_t start_pid,
         int64_t end_pid,
+        bool directed,
         char *driving_side,
         bool details,
-        bool directed,
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
@@ -94,9 +93,6 @@ process(
     }
 #endif
 
-    /*
-     * TODO move this code to c++
-     */
     PGR_DBG("  -- change the query");
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
@@ -167,9 +163,9 @@ process(
             total_edges_of_points,
             start_pid,
             end_pid,
+            directed,
             driving_side[0],
             details,
-            directed,
             only_cost,
             result_tuples,
             result_count,
@@ -186,6 +182,7 @@ process(
     }
 
 }
+
 /*                                                                             */
 /*******************************************************************************/
 
@@ -203,7 +200,7 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
     /*******************************************************************************/
     /*                          MODIFY AS NEEDED                                   */
     /*                                                                             */
-    General_path_element_t  *result_tuples = 0;
+    General_path_element_t  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                             */
     /*******************************************************************************/
@@ -221,25 +218,24 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
         // points_sql TEXT,
         // start_pid BIGINT,
         // end_pid BIGINT,
-        // driving_side CHAR -- DEFAULT 'b',
-        // details BOOLEAN -- DEFAULT false,
         // directed BOOLEAN -- DEFAULT true,
+        // driving_side CHAR -- DEFAULT 'b',
+        // details BOOLEAN -- DEFAULT true,
         // only_cost BOOLEAN DEFAULT false,
 
         PGR_DBG("Calling process");
-        PGR_DBG("initial driving side:%s", pgr_text2char(PG_GETARG_TEXT_P(4)));
+        PGR_DBG("initial driving side:%s", pgr_text2char(PG_GETARG_TEXT_P(5)));
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 pgr_text2char(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_INT64(2),
                 PG_GETARG_INT64(3),
-                pgr_text2char(PG_GETARG_TEXT_P(4)),
-                PG_GETARG_BOOL(5),
+                PG_GETARG_BOOL(4),
+                pgr_text2char(PG_GETARG_TEXT_P(5)),
                 PG_GETARG_BOOL(6),
                 PG_GETARG_BOOL(7),
                 &result_tuples,
                 &result_count);
-
         /*                                                                             */
         /*******************************************************************************/
 
@@ -287,8 +283,8 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
 
 
         // postgres starts counting from 1
-        values[0] = Int64GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].seq);
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].node);
         values[3] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[4] = Float8GetDatum(result_tuples[call_cntr].cost);

@@ -26,16 +26,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
-    sql TEXT,
-    vertices ANYARRAY,
+    edges_sql TEXT,
+    via_vertices ANYARRAY,
     directed BOOLEAN DEFAULT TRUE,
     strict BOOLEAN DEFAULT FALSE,
     U_turn_on_edge BOOLEAN DEFAULT TRUE,
 
 
-    OUT seq BIGINT,
-    OUT path_id BIGINT,
-    OUT path_seq BIGINT,
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,

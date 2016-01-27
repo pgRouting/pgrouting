@@ -40,15 +40,15 @@ The main Characteristics are:
   - Process is done only on edges with positive costs.
   - Values are returned when there is a path.
 
+    - The returned values are in the form of a set of `(start_vid, end_vid, agg_cost)`.
+
     - When the starting vertex and ending vertex are the same, there is no path.
 
-      - The `agg_cost` the non included values `(v, v)` is `0`
+      - The `agg_cost` int the non included values `(v, v)` is `0`
 
     - When the starting vertex and ending vertex are the different and there is no path.
 
-      - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
-
-    - The returned values are in the form of a set of `(start_vid, end_vid, agg_cost)`.
+      - The `agg_cost` in the non included values `(u, v)` is :math:`\infty`
 
   - Let be the case the values returned are stored in a table, so the unique index would be the pair:
     `(start_vid, end_vid)`.
@@ -100,7 +100,7 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 
 .. rubric:: Example
 
-.. literalinclude:: doc-dijkstraCost.queries
+.. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: --q1
    :end-before: --q2
 
@@ -125,7 +125,7 @@ This signature performs a Dijkstra from one ``start_vid`` to one ``end_vid``:
 
 .. rubric:: Example
 
-.. literalinclude:: doc-dijkstraCost.queries
+.. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q2
     :end-before: --q3
 
@@ -150,7 +150,7 @@ This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to
 
 .. rubric:: Example
 
-.. literalinclude:: doc-dijkstraCost.queries
+.. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q3
     :end-before: --q4
 
@@ -176,7 +176,7 @@ This signature performs a Dijkstra from one ``start_vid`` to each ``end_vid`` in
 
 .. rubric:: Example
 
-.. literalinclude:: doc-dijkstraCost.queries
+.. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: --q4
    :end-before: --q5
 
@@ -202,7 +202,7 @@ This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to
 Example
 -------
 
-.. literalinclude:: doc-dijkstraCost.queries
+.. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: --q5
    :end-before: --q6
 
@@ -239,7 +239,7 @@ Description of the parameters of the signatures
 ================  ====================== =================================================
 Column            Type                   Description
 ================  ====================== =================================================
-**sql**           ``TEXT``               SQL query as decribed above.
+**edges_sql**           ``TEXT``               SQL query as decribed above.
 **start_vid**     ``BIGINT``             Identifier of the starting vertex of the path.
 **end_vid**       ``BIGINT``             Identifier of the ending vertex of the path.
 **start_vids**    ``array[ANY-INTEGER]`` Array of identifiers of starting vertices.
@@ -269,7 +269,7 @@ Examples
 
 Repeated values are ignored, and arrays are sorted
 
-.. literalinclude:: doc-dijkstraCost.queries
+.. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q6
     :end-before: --q7
 
@@ -277,7 +277,7 @@ Repeated values are ignored, and arrays are sorted
 
 `start_vids` are the same as `end_vids`
 
-.. literalinclude:: doc-dijkstraCost.queries
+.. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q7
     :end-before: --q8
 

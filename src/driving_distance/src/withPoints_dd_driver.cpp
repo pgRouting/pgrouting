@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../withPoints/src/pgr_withPoints.h"
 #include "./withPoints_dd_driver.h"
 
-#define DEBUG
+// #define DEBUG
 
 extern "C" {
 #include "./../../common/src/pgr_types.h"
@@ -143,17 +143,22 @@ do_pgr_many_withPointsDD(
         }
 
         for (auto &path : paths) {
+            path.print_path(log);
+
             adjust_pids(points, path);
+            path.print_path(log);
 
             if (!details) {
-                eliminate_details(path);
+                eliminate_details_dd(path);
             }
+            path.print_path(log);
             std::sort(path.begin(), path.end(),
                     [](const Path_t &l, const  Path_t &r)
                     {return l.node < r.node;});
             std::stable_sort(path.begin(), path.end(),
                     [](const Path_t &l, const  Path_t &r)
                     {return l.agg_cost < r.agg_cost;});
+            path.print_path(log);
         }
 
         size_t count(count_tuples(paths));
@@ -268,10 +273,12 @@ do_pgr_withPointsDD(
         }
 
 
+        path.print_path(log);
         adjust_pids(points, path);
+        path.print_path(log);
 
         if (!details) {
-            eliminate_details(path);
+            eliminate_details_dd(path);
         }
         std::sort(path.begin(), path.end(),
                 [](const Path_t &l, const  Path_t &r)

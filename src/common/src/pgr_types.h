@@ -31,12 +31,12 @@ typedef struct edge_astar
   int id;
   int source;
   int target;
-  float8 cost;
-  float8 reverse_cost;
-  float8 s_x;
-  float8 s_y;
-  float8 t_x;
-  float8 t_y;
+  double cost;
+  double reverse_cost;
+  double s_x;
+  double s_y;
+  double t_x;
+  double t_y;
 } edge_astar_t;
 
 
@@ -44,7 +44,7 @@ typedef struct edge_astar
 typedef struct {
     int vertex_id;
     int edge_id;
-    float8 cost;
+    double cost;
 } path_element_t;
 
 /*
@@ -53,8 +53,8 @@ typedef struct {
 typedef struct {
     int64_t node;
     int64_t edge;
-    float8 cost;
-    float8 agg_cost;
+    double cost;
+    double agg_cost;
 } Path_t;
 
 /*
@@ -62,27 +62,27 @@ typedef struct {
  */
 
 typedef struct {
-    int64_t seq;
+    int seq;
     int64_t start_id;
     int64_t end_id;
     int64_t node;
     int64_t edge;
-    float8 cost;
-    float8 agg_cost;
+    double cost;
+    double agg_cost;
 } General_path_element_t;
 
 
 typedef struct{
-    int64_t route_id;
-    int64_t path_id;
-    int64_t path_seq;
+    int route_id;
+    int path_id;
+    int path_seq;
     int64_t start_vid;
     int64_t end_vid;
     int64_t node;
     int64_t edge;
-    float8 cost;
-    float8 agg_cost;
-    float8 route_agg_cost;
+    double cost;
+    double agg_cost;
+    double route_agg_cost;
 } Routes_t;
 
 
@@ -90,15 +90,15 @@ typedef struct {
     int64_t id;
     int64_t source;
     int64_t target;
-    float8 cost;
-    float8 reverse_cost;
+    double cost;
+    double reverse_cost;
 } pgr_edge_t;
 
 typedef struct {
     int seq;
     int64_t source;
     int64_t edge;
-    float8 cost;
+    double cost;
 } pgr_path_t;
 
 typedef struct matrix_cell {
@@ -113,7 +113,7 @@ typedef struct matrix_cell {
 typedef struct 
 {
     int64_t target_id;
-    float8 to_cost;
+    double to_cost;
     int64_t via[MAX_RULE_LENGTH];
 }
 Restrict_t;
@@ -122,7 +122,7 @@ typedef struct {
     int64_t pid;
     int64_t edge_id;
     char side;  // 'r', 'l', 'b' (default is both)
-    float8 fraction;
+    double fraction;
     int64_t vertex_id; // number is negative and is used for processing
 } Point_on_edge_t;
 
@@ -152,7 +152,7 @@ struct boost_vertex_t {
 
 struct boost_edge_t{
     int64_t id;
-    float8 cost;
+    double cost;
     int64_t source;
     int64_t target;
     bool first;  // originally was true (source, target) false (target, source)

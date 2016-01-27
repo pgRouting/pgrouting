@@ -5,7 +5,7 @@
 
     prepare q1 AS
     SELECT seq, id1, id2, cost::TEXT FROM pgr_trsp(
-        'select id, source::integer, target::integer, cost, reverse_cost from edge_table',
+        'select id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table',
         1,     -- node_id of start
         5,     -- node_id of end
         true,  -- directed graph?
@@ -14,7 +14,7 @@
 
     prepare q2 AS 
     SELECT seq-1, node::INTEGER, edge::INTEGER, cost::TEXT FROM pgr_dijkstra(
-        'select id, source::integer, target::integer, cost, reverse_cost from edge_table',
+        'select id, source, target, cost, reverse_cost from edge_table',
         1, 5);
 
     SELECT set_eq('q2', 'q1', 'No turn restriction from 1 to 5 returns same as dijkstra');

@@ -12,17 +12,15 @@
 pgr_withPoints
 ===============================================================================
 
-.. index:: 
-    single: pgr_pgr_withPointsVia(text, ARRAY[BIGINT], ARRAY[FLOAT], boolean)
 
 Name
 -------------------------------------------------------------------------------
 
-.. warning::
-    This is a proposed function, signature can change at any time without notice. 
+``pgr_withPoints`` - Returns the driving distance from a starting point.
 
-``pgr_withPointsVia`` — Using dijkstra algorithm, it finds the route that goes through
-a list of points in edges.
+.. note::  This is a proposed function for version 2.3.
+
+     - Is not officially in the version 2.2 release.
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -30,199 +28,260 @@ a list of points in edges.
 
    Boost Graph Inside
 
-
 Synopsis
 -------------------------------------------------------------------------------
 
-Given a graph and a list of positional vertices given as list of edges and the corresponding
-relative position of the vertex on the edge given as a fraction, this function finds the route that goes
-Thru all the positional vertices.
-This function is equivalent to finding the shortest path between temporary vertices.
+Modify the graph to include points and 
+using Dijkstra algorithm, extracts all the nodes and points that have costs less
+than or equal to the value ``distance`` from the starting point.
+The edges extracted will conform the corresponding spanning tree.
 
 
-Summary of signatures
--------------------------------------------------------------------------------
+Signature Summary
+-----------------
 
 .. code-block:: none
 
-    pgr_withPointsVia(edges_sql, eids, positions)
-    pgr_withPointsVia(edges_sql, eids, positions, directed)
-    RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-        node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
-
-
-Characteristics:
-----------------
-
-The main Characteristics are:
-  - For the moment code is in plpsql.
-  - Uses the also proposed function:
-
-    - pgr_dijstraViaVertex
-
-  - Process is done only on edges with positive costs.
-  
-  - Temporary Vertices are created as follows:
-
-    - The Temporary vertex is assigned an identifier:
-
-      - For the row ``i`` of the array, the identifier will be ``-i``.
-      - The reason for this is to make sure it doesn't get the same internal
-        idetifier of a vertex that already exists.
-      - In the results any negative value representing a vertex identifier means
-        that its a temporary vertex.
-      - Except the case where the vertex position is 0 or 1 then no new vertex is
-        added and the original vertex's id is used
-
-  - For processing temporary edges are inserted in the graph as follows
-
-    - substituing the original edge by two edges.
-    - That is done for the "going" and "coming" edges if they exist.
-           
-
+    pgr_withPoints(edges_sql, points_sql, start_pid, end_pid)
+    pgr_withPoints(edges_sql, points_sql, start_pid, end_pid, directed, driving_side, details)
+    pgr_withPoints(edges_sql, points_sql, start_pid, end_pids, directed, driving_side, details)
+    pgr_withPoints(edges_sql, points_sql, start_pids, end_pid, directed, driving_side, details)
+    pgr_withPoints(edges_sql, points_sql, start_pids, end_pids, directed, driving_side, details)
+    RETURNS SET OF (seq, [path_seq,] [start_pid,] [end_pid,] node, edge, cost, agg_cost)
 
 
 Signatures
-===============================================================================
+==========
 
-.. rubric:: pgr_withPointsVia Minimal signature
+.. index::
+    single: withPoints(edges_sql, points_sql, start_pid, end_pid) -- proposed
 
-The minimal signature is for a **directed** graph.
+Minimal signature
+-----------------
 
-.. code-block:: none
-
-    pgr_withPointsVia(edges_sql text, eid array[ANY_INTEGER], position array[FLOAT8])
-    RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-        node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
-
-
-.. rubric:: pgr_withPointsVia complete signature
-
-This signature works: 
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
+The minimal signature:
+    - Is for a **directed** graph.
+    - The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
+    - No **details** are given about distance of other points of the query.
 
 .. code-block:: none
 
-    pgr_withPointsVia(edges_sql text, eid array[ANY_INTEGER], position array[FLOAT8],
-        directed BOOLEAN)
-    RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-        node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
+    pgr_withPoints(edges_sql, points_sql, start_pid, end_pid)
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+
+
+:Example:
+
+.. literalinclude:: doc-pgr_withPoints.queries
+   :start-after: --e1
+   :end-before: --e2
+
+.. index::
+    single: withPoints(edges_sql, points_sql, start_pid, end_pid, directed, driving_side, details) -- proposed
+
+One to One
+----------
+
+
+.. code-block:: none
+
+    pgr_withPoints(edges_sql, points_sql, start_pid, end_pid, directed, driving_side, details)
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+
+
+:Example:
+
+.. literalinclude:: doc-pgr_withPoints.queries
+   :start-after: --e2
+   :end-before: --e3
+
+.. index::
+    single: withPoints(edges_sql, points_sql, start_pid, end_pids, directed, driving_side, details) -- proposed
+
+One to Many
+-----------
+
+
+.. code-block:: none
+
+    pgr_withPoints(edges_sql, points_sql, start_pid, end_pid, directed, driving_side, details)
+    RETURNS SET OF (seq, path_seq, end_pid, node, edge, cost, agg_cost)
+
+
+:Example:
+
+.. literalinclude:: doc-pgr_withPoints.queries
+   :start-after: --e3
+   :end-before: --e4
+
+.. index::
+    single: withPoints(edges_sql, points_sql, start_pids, end_pid, directed, driving_side, details) -- proposed
+
+Many to One
+-----------
+
+
+.. code-block:: none
+
+    pgr_withPoints(edges_sql, points_sql, start_pids, end_pid, directed, driving_side, details)
+    RETURNS SET OF (seq, path_seq, start_pid, node, edge, cost, agg_cost)
+
+
+:Example:
+
+.. literalinclude:: doc-pgr_withPoints.queries
+   :start-after: --e4
+   :end-before: --e5
+
+.. index::
+    single: withPoints(edges_sql, points_sql, start_pid, end_pid, directed, driving_side, details) -- proposed
+
+Many to Many
+------------
+
+
+.. code-block:: none
+
+    pgr_withPoints(edges_sql, points_sql, start_pids, end_pids, directed, driving_side, details)
+    RETURNS SET OF (seq, path_seq, start_pid, end_pid, node, edge, cost, agg_cost)
+
+
+:Example:
+
+.. literalinclude:: doc-pgr_withPoints.queries
+   :start-after: --e5
+   :end-before: --q2
+
+
 
 
 Description of the Signatures
 =============================
 
-Description of the SQL query
+Description of the Edges SQL query
 -------------------------------------------------------------------------------
 
-:edges_sql: is an SQL query, which should return a set of rows with the following columns:
+:edges_sql: an SQL query, which should return a set of rows with the following columns:
 
 ================  ===================   =================================================
-Column            Type                      Description
+Column            Type                  Description
 ================  ===================   =================================================
+**id**            ``ANY-INTEGER``       Identifier of the edge.
 **source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
 **target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, if negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, if negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, If negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, If negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
 ================  ===================   =================================================
+
+
+Description of the Points SQL query
+-------------------------------------------------------------------------------
+
+:points_sql: an SQL query, which should return a set of rows with the following columns:
+
+============ ================= =================================================
+Column            Type              Description
+============ ================= =================================================
+**pid**      ``ANY-INTEGER``   (optional) Identifier of the point. Can not be NULL. If column not present, a sequential identifier will be given automatically.
+**eid**      ``ANY-INTEGER``   Identifier of the "closest" edge to the point.
+**fraction** ``ANY-NUMERICAL`` Value in [0,1] that indicates the relative postition from the first end point of the edge.
+**side**     ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the point is:
+                                 - In the right, left of the edge or
+                                 - If it doesn't matter with 'b' or NULL.
+                                 - If column not present 'b' is considered.
+============ ================= =================================================
+
 
 Where:
 
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
-
+:ANY-INTEGER: smallint, int, bigint
+:ANY-NUMERICAL: smallint, int, bigint, real, float
 
 Description of the parameters of the signatures
 -------------------------------------------------------------------------------
 
-Recives  ``(edges_sql, eid, position, directed)``
 
-============== ====================== =================================================
-Parameter      Type                   Description
-============== ====================== =================================================
-**edges_sql**  ``TEXT``               SQL query as decribed above.
-**eid**        ``ARRAY[ANY-INTEGER]`` Array of edges identifiers. Where the temprary verties are going to be placed
-**position**   ``ARRAY[FLOAT]``       Array relative position on the corresponding edge ``eid`` of the temporary vertex
-**directed**   ``BOOLEAN``            (optional) Default is true (is directed). When set to false the graph is considered as Undirected
-============== ====================== =================================================
+================ ====================== =================================================
+Parameter        Type                   Description
+================ ====================== =================================================
+**edges_sql**    ``TEXT``               Edges SQL query as decribed above.
+**points_sql**   ``TEXT``               Points SQL query as decribed above.
+**start_pid**    ``ANY-INTEGER``        Starting point identifier.
+**end_pid**      ``ANY-INTEGER``        Ending point identifier.
+**start_pids**   ``ARRAY[ANY-INTEGER]`` Array of starting points identifiers.
+**end_pids**     ``ARRAY[ANY-INTEGER]`` Array of ending points identifiers.
+**directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
+**driving_side** ``CHAR``               (optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
+                                          - In the right or left or
+                                          - If it doesn't matter with 'b' or NULL.
+                                          - If column not present 'b' is considered.
 
+**details**      ``BOOLEAN``            (optional). When ``true`` the results will include the points in points_sql that are in the path.
+                                        Default is ``false`` which ignores other points of the points_sql.
+================ ====================== =================================================
 
 
 Description of the return values
 -------------------------------------------------------------------------------
 
-Returns set of ``(start_vid, end_vid, agg_cost)``
+Returns set of ``(seq, [path_seq,] [start_pid,] [end_pid,] node, edge, cost, agg_cost)``
 
-================== ============= =================================================
-Column             Type          Description
-================== ============= =================================================
-**seq**            ``BIGINT``    Sequential value starting from 1.
-**path_pid**       ``BIGINT``    Identifier of the path.
-**path_seq**       ``BIGINT``    Sequential value starting from 1 for the path.
-**start_vid**      ``BIGINT``    Identifier of the starting vertex of the path.
-**end_vid**        ``BIGINT``    Identifier of the ending vertex of the path.
-**node**           ``BIGINT``    Identifier of the node in the path from start_vid to end_vid.
-**edge**           ``BIGINT``    Identifier of the edge used to go from node to the next node in the path sequence. -1 for the last node of the path. -2 for the last node of the route.
-**cost**           ``FLOAT``     Cost to traverse from ``node`` using ``edge`` to the next node in the route sequence.
-**agg_cost**       ``FLOAT``     Total cost from ``start_vid`` to ``end_vid`` of the path.
-**route_agg_cost** ``FLOAT``     Total cost from ``start_vid`` of ``path_pid = 1`` to ``end_vid`` of the current ``path_pid`` .
-================== ============= =================================================
+============= =========== =================================================
+Column           Type              Description
+============= =========== =================================================
+**seq**       ``INTEGER`` Row sequence.
+**path_seq**  ``INTEGER`` Path sequence that indicates the relative position on the path.
+**start_pid** ``BIGINT``  Identifier of the starting point. The negative value of the original point's pid is given.
+**end_pid**   ``BIGINT``  Identifier of the ending point. The negative value of the original point's pid is given.
+**node**      ``BIGINT``  Identifier of the node:
+                            - A positive value indicates the node is a vertex of edges_sql.
+                            - A negative value indicates the node is a point  of points_sql.
+
+**edge**      ``BIGINT``  Identifier of the edge used to arrive to ``node``. ``0`` when the ``node`` is the ``start_vid``.
+**cost**      ``FLOAT``   Cost to traverse ``edge``.  from ``node`` to the next   node on the path sequence. -1 for the last row of the path sequence.
+**agg_cost**  ``FLOAT``   Aggregate cost from ``start_pid`` to ``node``.
+============= =========== =================================================
 
 
 
 Examples
-========
+--------------------------------------------------------------------------------------
 
-Edges: 4, 5, and 14 are used in this examples.
+:Example: Which path (if any) passes in front of point 4 or vertex 4 with **right** side driving topology.
 
-.. literalinclude:: doc-withPointsVia.queries
-   :start-after: -- q0
-   :end-before: -- q1
+.. literalinclude:: doc-pgr_withPoints.queries
+   :start-after: --q2
+   :end-before: --q3
 
-With reverse_cost
------------------
+:Example: Which path (if any) passes in front of point 4 or vertex 4 with **left** side driving topology.
 
-:Example 1: Directed graph with and without flag.
+.. literalinclude:: doc-pgr_withPoints.queries
+   :start-after: --q3
+   :end-before: --q4
 
-.. literalinclude:: doc-withPointsVia.queries
-   :start-after: -- q1
-   :end-before: -- q2
+:Example: Many to many example with a twist: on undirected graph and showing details.
 
-
-:Example 2: Undirected graph has a flag.
-
-.. literalinclude:: doc-withPointsVia.queries
-   :start-after: -- q2
-   :end-before: -- q3
-
-Only cost is used
------------------
-
-:Example 3: Directed graph.
-
-.. literalinclude:: doc-withPointsVia.queries
-   :start-after: -- q3
-   :end-before: -- q4
-
-
-:Example 4: Undirected graph.
-
-.. literalinclude:: doc-withPointsVia.queries
-   :start-after: -- q4
-   :end-before: -- q5
+.. literalinclude:: doc-pgr_withPoints.queries
+   :start-after: --q4
+   :end-before: --q5
 
 
 The queries use the :ref:`sampledata` network.
 
+
+
 .. rubric:: History
 
-* Renamed in version 2.0.0 
-* Added functionality for version 3.0.0 in version 2.1
+* Proposed in version 2.2
 
 
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* :ref:`withPoints`
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
+

@@ -55,6 +55,7 @@ Returns set of :ref:`type_cost_result`:
 
 .. rubric:: History
 
+* Deprecated in version 2.2.0
 * New in version 2.0.0
 
 

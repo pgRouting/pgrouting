@@ -27,7 +27,6 @@ Routing Functions
 
     - :ref:`pgr_dijkstra` - Dijkstra's shortest path algorithm.
     - :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to calculate the costs of the shortest paths.
-    - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via Vetices
         
   - :ref:`Driving Distance<drivingDistance>` - Driving Distance
 
@@ -47,9 +46,9 @@ Routing Functions
 	:hidden: 
 
 	allpairs/doc/allpairs
-	astar/doc/index
-	bd_astar/doc/index
-	bd_dijkstra/doc/index
+	astar/doc/pgr_astar
+	bd_astar/doc/pgr_bdAstar
+	bd_dijkstra/doc/pgr_bdDijkstra
 	dijkstra/doc/dijkstra
 	driving_distance/doc/drivingDistance
 	ksp/doc/ksp

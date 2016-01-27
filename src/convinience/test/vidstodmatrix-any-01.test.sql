@@ -23,12 +23,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
     select * from pgr_vidsToDMatrix(
-        'select id, source, target, cost, reverse_cost from edge_table',
+        'select id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table',
         array[1,5,13,11,12,4],
         true, true, false);
 
     select * from pgr_vidsToDMatrix(
-        'select id, source, target, cost, reverse_cost from edge_table',
+        'select id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table',
         array[1,5,13,11,12,4],
         true, true, true);
     ROLLBACK

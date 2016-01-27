@@ -20,5 +20,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-select * from pgr_astar('select eid as id, source::int4, target::int4, case when cost<=0 then 999 else cost end as cost, case when reverse_cost<=0 then 999 else reverse_cost end as reverse_cost, x1, y1, x2, y2 from edges1', 11, 5, false, true);
+select * from pgr_astar('select id::INTEGER, source::INTEGER, target::INTEGER,
+    case when cost<=0 then 999 else cost end as cost,
+    case when reverse_cost<=0 then 999 else reverse_cost end as reverse_cost,
+     x1, y1, x2, y2 from edge_table', 11, 5, false, true);
 

@@ -33,7 +33,7 @@ BEGIN
     END IF;
 
     FOR i IN 1.. cant LOOP
-        inner_sql := 'select id, source, target, cost, reverse_cost from edge_table';
+        inner_sql := 'select id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table';
         sql_kdc := 'SELECT id1, id2, cost from pgr_kdijkstraCost(' || quote_literal(inner_sql) || ', '
             || i || ', ' || arrayData || ', ' ||  directed || ', ' || TRUE || ')';
 
@@ -47,7 +47,7 @@ BEGIN
         sql_kdc := 'SELECT id1, id2, cost from pgr_kdijkstraCost(' || quote_literal(inner_sql) || ', '
             || i || ', ' || arrayData || ', ' ||  directed || ', ' || FALSE || ')';
 
-        inner_sql := 'select id, source, target, cost from edge_table';
+        inner_sql := 'select id::INTEGER, source::INTEGER, target::INTEGER, cost from edge_table';
         sql_dc := 'SELECT start_vid::INTEGER, end_vid::INTEGER, agg_cost from pgr_dijkstraCost(' || quote_literal(inner_sql) || ', '
             || i || ', ' || arrayData || ', ' ||  directed || ')';
 

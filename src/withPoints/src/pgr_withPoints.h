@@ -36,8 +36,13 @@ check_points(std::vector< Point_on_edge_t > &points,
                 std::ostringstream  &log);
 
 void
-eliminate_details(
+eliminate_details_dd(
         Path &path);
+
+void
+eliminate_details(
+        Path &path,
+        const std::vector< pgr_edge_t > &point_edges);
 
 void
 adjust_pids(
@@ -48,14 +53,14 @@ adjust_pids(
 bool
 create_new_edges(
         std::vector< Point_on_edge_t >  &points,
-        const std::vector< pgr_edge_t > edges,
+        const std::vector< pgr_edge_t > &edges,
         char driving_side,
         std::vector< pgr_edge_t > &new_edges);
 
 bool
 create_new_edges(
         std::vector< Point_on_edge_t >  &points,
-        const std::vector< pgr_edge_t > edges,
+        const std::vector< pgr_edge_t > &edges,
         char driving_side,
         std::vector< pgr_edge_t > &new_edges,
         std::ostringstream &log);

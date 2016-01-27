@@ -13,7 +13,7 @@ pgr_pointsToVids
 ==============================================================================
 
 .. index::
-        single: pgr_pointsToVids(pnts geometry[], edges text, tol float8 DEFAULT(0.01)) --proposed
+        single: pointsToVids(pnts geometry[], edges text, tol float8 DEFAULT(0.01)) --proposed
 
 
 Name
@@ -56,26 +56,18 @@ Description
 
     You need to check the results for any vids=-1 which indicates if failed to locate an edge.
 
-
 .. rubric:: History
 
-* New in version 2.1.0
+* Proposed in version 2.1.0
 
 
 Examples
 -----------------------------------------------------------------------------
 
-.. code-block:: sql
+.. literalinclude:: doc-conversion.queries
+   :start-after: --q4
+   :end-before: --q5
 
-        select * from pgr_pointstovids(
-            pgr_texttopoints('2,0;2,1;3,1;2,2;4,1;4,2;2,3;3,2', 0),
-            'edge_table'
-            -- tol is not specified, so we use the default of 0.01
-        );
-          pgr_pointstovids
-        --------------------
-         {1,2,3,5,4,9,10,6}
-        (1 row)
 
 This example uses the :ref:`sampledata` network.
 
@@ -84,4 +76,10 @@ See Also
 -----------------------------------------------------------------------------
 
 * :ref:`pgr_point_to_edgenode` - convert a point geometry to the closest vertex_id of an edge..
+
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
 
