@@ -33,15 +33,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
+#if 0
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
+
+#include <deque>
+#include <sstream>
+
+
+#include "./ksp_driver.h"
+#include "../../common/src/memory_func.hpp"
+#include "./pgr_ksp.hpp"
+#endif
 
 #include <sstream>
 #include <deque>
 #include <vector>
 
+#include "./../../withPoints/src/pgr_withPoints.hpp"
 #include "./../../common/src/memory_func.hpp"
-#include "./pgr_ksp.hpp"
-#include "./../../withPoints/src/pgr_withPoints.h"
 #include "./withPoints_ksp_driver.h"
+#include "./pgr_ksp.hpp"
 
 // #define DEBUG
 

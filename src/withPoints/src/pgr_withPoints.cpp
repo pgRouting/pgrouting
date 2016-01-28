@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: withPoints_driver.cpp
+File: pgr_withPoints.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <vector>
 #include <cassert>
-#include "./pgr_withPoints.h"
+#include "./pgr_withPoints.hpp"
 // #define DEBUG
 #include "./msg_logger.hpp"
 

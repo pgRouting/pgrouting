@@ -31,8 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <sstream>
 
-// #include <boost/config.hpp>
-// #include <boost/graph/adjacency_list.hpp>
 
 #include "./ksp_driver.h"
 #include "../../common/src/memory_func.hpp"

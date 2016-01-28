@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // #define DEBUG
 
 #include "./pgr_dijkstra.hpp"
-#include "./pgr_withPoints.h"
+#include "./pgr_withPoints.hpp"
 #include "./many_to_many_withPoints_driver.h"
 
 extern "C" {

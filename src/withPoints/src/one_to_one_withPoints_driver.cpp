@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <cassert>
 #include "./pgr_dijkstra.hpp"
-#include "./pgr_withPoints.h"
+#include "./pgr_withPoints.hpp"
 #include "./one_to_one_withPoints_driver.h"
 
 // #define DEBUG
