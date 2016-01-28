@@ -38,10 +38,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "./withPoints_ksp_driver.h"
 #include "./../../common/src/memory_func.hpp"
 #include "./pgr_ksp.hpp"
 #include "./../../withPoints/src/pgr_withPoints.h"
+#include "./withPoints_ksp_driver.h"
 
 // #define DEBUG
 

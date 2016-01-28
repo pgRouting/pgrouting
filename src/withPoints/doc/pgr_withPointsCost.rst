@@ -250,7 +250,7 @@ Examples
    :start-after: --q3
    :end-before: --q4
 
-:Example: Many to many example with a twist: on undirected graph and showing details.
+:Example: Many to many example with a twist: on undirected graph.
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
    :start-after: --q4
