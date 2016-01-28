@@ -21,9 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_KSP_SRC_KSP_H_
-#define SRC_KSP_SRC_KSP_H_
-
+#pragma once
 
 #ifdef __cplusplus
 extern "C" {
@@ -32,7 +30,7 @@ extern "C" {
 
 #include "./../../common/src/pgr_types.h"
 
-int compute(char* sql, int64_t start_vertex,
+    int compute(char* sql, int64_t start_vertex,
             int64_t end_vertex, int no_paths,
             bool has_reverse_cost, bool directedFlag,
             General_path_element_t **path, size_t *ksp_path_count);
@@ -41,4 +39,3 @@ int compute(char* sql, int64_t start_vertex,
 }
 #endif
 
-#endif  // SRC_KSP_SRC_KSP_H_
