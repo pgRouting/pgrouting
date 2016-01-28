@@ -44,7 +44,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/points_input.h"
 #include "./../../withPoints/src/get_new_queries.h"
 #include "./withPoints_ksp_driver.h"
-#define DEBUG
 #include "./../../common/src/debug_macro.h"
 
 PG_FUNCTION_INFO_V1(withPoints_ksp);
@@ -137,7 +136,6 @@ process(
             result_tuples,
             result_count,
             &err_msg);
-    PGR_DBG("Returning %ld tuples\n", (int64_t)(*result_count));
     PGR_DBG("Returned message = %s\n", err_msg);
 
     if (!err_msg) free(err_msg);

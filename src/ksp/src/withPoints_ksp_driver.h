@@ -28,14 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
-#ifdef __MINGW32__
-#include <winsock2.h>
-#include <windows.h>
-#ifdef unlink
-#undef unlink
-#endif
-#endif
-
 #ifdef __cplusplus
 extern "C" {
 #endif
