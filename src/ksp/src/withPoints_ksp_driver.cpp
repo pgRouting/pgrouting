@@ -28,6 +28,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#ifdef unlink
+#undef unlink
+#endif
+#endif
+
 
 #if 0
 #ifdef __MINGW32__
@@ -45,6 +53,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_ksp.hpp"
 #endif
 
+#define DEBUG
+
+#include "./withPoints_ksp_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -55,7 +66,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/memory_func.hpp"
 #include "./pgr_ksp.hpp"
 
-#include "./withPoints_ksp_driver.h"
 
 // #define DEBUG
 
@@ -133,27 +143,31 @@ do_pgr_withPointsKsp(
         if (directed) {
             log << "Working with directed Graph\n";
             Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
-            Pgr_ksp< Pgr_base_graph< DirectedGraph > > fn_yen;
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
+            Pgr_ksp< Pgr_base_graph< DirectedGraph > > fn_yen;
             paths = fn_yen.Yen(digraph, start_vid, end_vid, k, heap_paths);
         } else {
             log << "Working with undirected Graph\n";
             Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
-            Pgr_ksp< Pgr_base_graph< UndirectedGraph > > fn_yen;
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
+            Pgr_ksp< Pgr_base_graph< UndirectedGraph > > fn_yen;
             paths = fn_yen.Yen(undigraph, start_vid, end_vid, k, heap_paths);
         }
 
 
         for (auto &path : paths) {
+            path.print_path(log);
             adjust_pids(points, path);
+            path.print_path(log);
         }
 
         if (!details) {
             for (auto &path : paths) {
+                path.print_path(log);
                 eliminate_details(path, edges_to_modify);
+                path.print_path(log);
             }
         }
 

@@ -36,16 +36,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 
-// #define DEBUG
 
 #include "fmgr.h"
-#include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/points_input.h"
 #include "./../../withPoints/src/get_new_queries.h"
 #include "./withPoints_ksp_driver.h"
+#define DEBUG
+#include "./../../common/src/debug_macro.h"
 
 PG_FUNCTION_INFO_V1(withPoints_ksp);
 #ifndef _MSC_VER
@@ -199,7 +199,7 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
         // details BOOLEAN -- DEFAULT false,
 
         PGR_DBG("Calling process");
-        PGR_DBG("initial driving side:%s", pgr_text2char(PG_GETARG_TEXT_P(4)));
+        PGR_DBG("initial driving side:%s", pgr_text2char(PG_GETARG_TEXT_P(7)));
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 pgr_text2char(PG_GETARG_TEXT_P(1)),
@@ -258,17 +258,24 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
             nulls[i] = ' ';
         }
 
+        /*
+           OUT seq INTEGER, OUT path_id INTEGER, OUT path_seq INTEGER,
+           OUT node BIGINT, OUT edge BIGINT,
+           OUT cost FLOAT, OUT agg_cost FLOAT)
+        */
+
 
         // postgres starts counting from 1
-        values[0] = Int64GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].node);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].edge);
-        values[4] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
+        values[2] = Int32GetDatum(result_tuples[call_cntr].seq);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         /*******************************************************************************/
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple =heap_formtuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
