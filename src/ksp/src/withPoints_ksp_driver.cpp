@@ -49,7 +49,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_ksp.hpp"
 #endif
 
-#include "./withPoints_ksp_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -59,6 +58,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../withPoints/src/pgr_withPoints.hpp"
 #include "./../../common/src/memory_func.hpp"
 #include "./pgr_ksp.hpp"
+
+#include "./withPoints_ksp_driver.h"
 
 // #define DEBUG
 
