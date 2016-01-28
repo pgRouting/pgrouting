@@ -185,7 +185,11 @@ do_pgr_many_to_many_withPoints(
         (*return_count) = (collapse_paths(return_tuples, paths));
 
 #ifndef DEBUG
-        *err_msg = "OK";
+        {
+            std::ostringstream log;
+            log << "OK";
+            *err_msg = strdup(log.str().c_str());
+        }
 #else
         *err_msg = strdup(log.str().c_str());
 #endif

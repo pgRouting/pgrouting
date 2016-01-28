@@ -35,7 +35,6 @@ PGR_LOG_POINTS(
         std::ostringstream &log,
         const std::vector< Point_on_edge_t > &points,
         const std::string &title) {
-#ifdef DEBUG
     log << title << "\n";
     for (const auto &p : points) {
         log << p.pid << "\t"
@@ -43,5 +42,4 @@ PGR_LOG_POINTS(
             << p.fraction << "\t"
             << p.side << "\n";
     }
-#endif
 }

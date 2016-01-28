@@ -171,7 +171,12 @@ do_pgr_withPoints(
         (*return_count) = sequence;
 
 #ifndef DEBUG
-        *err_msg = strdup("OK");
+        {
+            std::ostringstream log;
+            log << "OK";
+            *err_msg = strdup(log.str().c_str());
+        }
+
 #else
         *err_msg = strdup(log.str().c_str());
 #endif

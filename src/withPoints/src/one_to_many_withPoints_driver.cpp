@@ -198,7 +198,12 @@ do_pgr_one_to_many_withPoints(
 
 
 #ifndef DEBUG
-        *err_msg = NULL;
+        {
+            std::ostringstream log;
+            log << "OK";
+            *err_msg = strdup(log.str().c_str());
+        }
+
 #else
         *err_msg = strdup(log.str().c_str());
 #endif

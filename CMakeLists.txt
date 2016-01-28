@@ -72,13 +72,15 @@ option(POSTGRESQL_VERSION " To set the version")
 
 set(PgRouting_SOURCE_NAMES
     "common" "dijkstra"
-    #"driving_distance"
-    #"ksp"
+    "driving_distance"
+    "ksp"
     "allpairs"
     "withPoints"
 
     #"funnyDijkstra"
     
+    "alpha_shape"
+
     "astar" "bd_astar"
     "bd_dijkstra" 
     "kdijkstra"
