@@ -4,82 +4,56 @@ BEGIN
 SELECT * FROM pgr_withPointsKSP(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        2, 3, 2);
+        1, 3, 2, directed:=false);
  seq | path_id | path_seq | node |        edge         | cost |       agg_cost        
 -----+---------+----------+------+---------------------+------+-----------------------
-   1 |       1 |       -2 |    5 | 4596373779694328224 |    0 | 3.46340017734714e-321
-   2 |       2 |       -3 |   -1 |                   0 |  0.2 | 3.46340017734714e-321
-(2 rows)
+   1 |       1 |       -1 |    4 | 4603579539098121012 |    0 | 3.46340017734714e-321
+   2 |       2 |        5 |    8 | 4607182418800017408 |  0.6 | 3.46340017734714e-321
+   3 |       3 |        6 |    5 | 4600877379321698712 |  1.6 | 3.46340017734714e-321
+   4 |       4 |       -3 |   -1 |                   0 |    2 | 3.46340017734714e-321
+   5 |       1 |       -1 |    4 | 4608983858650965606 |    0 | 3.46340017734714e-321
+   6 |       2 |        3 |    5 | 4603579539098121012 |  1.4 | 3.46340017734714e-321
+   7 |       3 |       -3 |   -1 |                   0 |    2 | 3.46340017734714e-321
+(7 rows)
 
 --q2
-SELECT * FROM pgr_withPointsDD(
+SELECT * FROM pgr_withPointsKSP(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        3, 3.0,
-        driving_side := 'r',
-        details := true);
- seq | node | edge | cost | agg_cost 
------+------+------+------+----------
-   1 |   -3 |   -1 |    0 |        0
-   2 |    6 |    5 |  0.4 |      0.4
-   3 |    5 |    8 |    1 |      1.4
-   4 |    9 |    9 |    1 |      1.4
-   5 |   11 |   11 |    1 |      1.4
-   6 |   -1 |    4 |  0.6 |        2
-   7 |   -6 |    4 |  0.4 |      2.4
-   8 |    4 |   16 |    1 |      2.4
-   9 |    8 |    7 |    1 |      2.4
-  10 |   10 |   10 |    1 |      2.4
-  11 |   12 |   13 |    1 |      2.4
-  12 |   -4 |    4 |  0.6 |        3
-(12 rows)
+        1, 3, 2, directed:=false);
+ seq | path_id | path_seq | node |        edge         | cost |       agg_cost        
+-----+---------+----------+------+---------------------+------+-----------------------
+   1 |       1 |       -1 |    4 | 4603579539098121012 |    0 | 6.92952797624008e-310
+   2 |       2 |        5 |    8 | 4607182418800017408 |  0.6 | 6.92952797624008e-310
+   3 |       3 |        6 |    5 | 4600877379321698712 |  1.6 | 6.92952797624008e-310
+   4 |       4 |       -3 |   -1 |                   0 |    2 | 6.92952797624008e-310
+   5 |       1 |       -1 |    4 | 4608983858650965606 |    0 | 6.92952797624008e-310
+   6 |       2 |        3 |    5 | 4603579539098121012 |  1.4 | 6.92952797624008e-310
+   7 |       3 |       -3 |   -1 |                   0 |    2 | 6.92952797624008e-310
+(7 rows)
 
 --q3
-SELECT * FROM pgr_withPointsDD(
+SELECT * FROM pgr_withPointsKSP(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        3, 3.0,
-        driving_side := 'l',
-        details := true);
- seq | node | edge | cost | agg_cost 
------+------+------+------+----------
-   1 |   -3 |   -1 |    0 |        0
-   2 |    6 |    5 |  0.4 |      0.4
-   3 |    5 |    8 |    1 |      1.4
-   4 |    9 |    9 |    1 |      1.4
-   5 |   11 |   11 |    1 |      1.4
-   6 |   -4 |    4 |  0.4 |      1.8
-   7 |   -6 |    4 |  0.6 |      2.4
-   8 |    4 |   16 |    1 |      2.4
-   9 |    8 |    7 |    1 |      2.4
-  10 |   10 |   10 |    1 |      2.4
-  11 |   12 |   13 |    1 |      2.4
-  12 |   -1 |    4 |  0.4 |      2.8
-(12 rows)
-
+        1, 3, 2, directed:=false
+        driving_side := 'l', details := true);
+ERROR:  syntax error at or near "driving_side"
+LINE 5:         driving_side := 'l', details := true);
+                ^
 --q4
-SELECT * FROM pgr_withPointsDD(
+SELECT * FROM pgr_withPointsKSP(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        3, 3.0,
-        driving_side := 'b',
-        details := true);
- seq | node | edge | cost | agg_cost 
------+------+------+------+----------
-   1 |   -3 |   -1 |    0 |        0
-   2 |    6 |    5 |  0.4 |      0.4
-   3 |    5 |    8 |    1 |      1.4
-   4 |    9 |    9 |    1 |      1.4
-   5 |   11 |   11 |    1 |      1.4
-   6 |   -4 |    4 |  0.4 |      1.8
-   7 |   -1 |    4 |  0.2 |        2
-   8 |   -6 |    4 |  0.4 |      2.4
-   9 |    4 |   16 |    1 |      2.4
-  10 |    8 |    7 |    1 |      2.4
-  11 |   10 |   10 |    1 |      2.4
-  12 |   12 |   13 |    1 |      2.4
-(12 rows)
-
+        1, 3, 2, directed:=false
+        driving_side := 'r', details := true);
+ERROR:  syntax error at or near "driving_side"
+LINE 5:         driving_side := 'r', details := true);
+                ^
+details := true);
+ERROR:  syntax error at or near "details"
+LINE 1: details := true);
+        ^
 --q5
 ROLLBACK;
 ROLLBACK
