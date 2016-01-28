@@ -28,25 +28,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
-#include "./../../common/src/pgr_types.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-//  CREATE OR REPLACE FUNCTION pgr_withPointKsp(
-//  edges_sql TEXT,
-//  points_sql TEXT,
-//  start_pid BIGINT,
-//  end_pid BIGINT,
-//  directed BOOLEAN DEFAULT true,
+#include "./../../common/src/pgr_types.h"
+
+    //  CREATE OR REPLACE FUNCTION pgr_withPointKsp(
+    //  edges_sql TEXT,
+    //  points_sql TEXT,
+    //  start_pid BIGINT,
+    //  end_pid BIGINT,
+    //  directed BOOLEAN DEFAULT true,
     int do_pgr_withPointsKsp(
-            pgr_edge_t  *edges,
-            size_t total_edges,
-            Point_on_edge_t  *points,
-            size_t total_points,
-            pgr_edge_t  *edges_of_points,
-            size_t total_edges_of_points,
+            pgr_edge_t  *edges,             size_t total_edges,
+            Point_on_edge_t  *points,       size_t total_points,
+            pgr_edge_t  *edges_of_points,   size_t total_edges_of_points,
             int64_t start_pid,
             int64_t end_pid,
             int64_t k,
