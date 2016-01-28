@@ -16,7 +16,7 @@ pgr_withPointsCost
 Name
 -------------------------------------------------------------------------------
 
-``pgr_withPointsCost`` - Returns the driving distance from a starting point.
+``pgr_withPointsCost`` - Calculates the shortest path and returns only the aggregate cost of the shortest path(s) found, for the combination of points given.
 
 .. note::  This is a proposed function for version 2.3.
 
@@ -31,10 +31,9 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Modify the graph to include points and 
-using Dijkstra algorithm, extracts all the nodes and points that have costs less
-than or equal to the value ``distance`` from the starting point.
-The edges extracted will conform the corresponding spanning tree.
+For the combination of points given,
+modify the graph to include points and 
+using Dijkstra algorithm, returns only the aggregate cost of the shortest path(s) found.
 
 
 Signature Summary

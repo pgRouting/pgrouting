@@ -31,8 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <sstream>
 
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
+// #include <boost/config.hpp>
+// #include <boost/graph/adjacency_list.hpp>
 
 #include "./ksp_driver.h"
 #include "../../common/src/memory_func.hpp"
@@ -52,14 +52,6 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
         const int initial_size = total_tuples;
 
         std::deque< Path > paths;
-#if 0
-        typedef boost::adjacency_list < boost::vecS, boost::vecS,
-            boost::undirectedS,
-            boost_vertex_t, boost_edge_t > UndirectedGraph;
-        typedef boost::adjacency_list < boost::vecS, boost::vecS,
-            boost::bidirectionalS,
-            boost_vertex_t, boost_edge_t > DirectedGraph;
-#endif
 
         if (directedFlag) {
             Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);

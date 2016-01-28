@@ -22,8 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_KSP_SRC_PGR_KSP_HPP_
-#define SRC_KSP_SRC_PGR_KSP_HPP_
+#pragma once
 
 #include <deque>
 #include <set>
@@ -91,4 +90,3 @@ class Pgr_ksp {
 
 #include "./pgr_ksp.cpp"
 
-#endif  // SRC_KSP_SRC_PGR_KSP_HPP_

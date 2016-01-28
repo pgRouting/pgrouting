@@ -37,16 +37,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
-#include <cassert>
 
+#include "./withPoints_ksp_driver.h"
 #include "./../../common/src/memory_func.hpp"
 #include "./pgr_ksp.hpp"
-#include "./pgr_withPoints.h"
-#include "./withPoints_ksp_driver.h"
-
-extern "C" {
-#include "./../../common/src/pgr_types.h"
-}
+#include "./../../withPoints/src/pgr_withPoints.h"
 
 // #define DEBUG
 
