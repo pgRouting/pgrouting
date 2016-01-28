@@ -23,7 +23,6 @@ BEGIN;
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
         1, 3, 2, directed:=false,
         driving_side := 'r', details := true);
-        details := true);
     \echo --q5
 
 

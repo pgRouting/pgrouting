@@ -137,7 +137,7 @@ process(
             result_tuples,
             result_count,
             &err_msg);
-    PGR_DBG("Returning %ld tuples\n", *result_count);
+    PGR_DBG("Returning %ld tuples\n", (int64_t)(*result_count));
     PGR_DBG("Returned message = %s\n", err_msg);
 
     if (!err_msg) free(err_msg);
@@ -267,7 +267,7 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].start_id + 1);
         values[2] = Int32GetDatum(result_tuples[call_cntr].seq);
         values[3] = Int64GetDatum(result_tuples[call_cntr].node);
         values[4] = Int64GetDatum(result_tuples[call_cntr].edge);
