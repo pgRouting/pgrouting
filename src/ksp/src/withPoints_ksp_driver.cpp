@@ -49,18 +49,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_ksp.hpp"
 #endif
 
+#include "./withPoints_ksp_driver.h"
+
 #include <sstream>
 #include <deque>
 #include <vector>
 
+
 #include "./../../withPoints/src/pgr_withPoints.hpp"
 #include "./../../common/src/memory_func.hpp"
-#include "./withPoints_ksp_driver.h"
 #include "./pgr_ksp.hpp"
 
 // #define DEBUG
 
-// CREATE OR REPLACE FUNCTION pgr_withPoint(
+// CREATE OR REPLACE FUNCTION pgr_withPointsKSP(
 // edges_sql TEXT,
 // points_sql TEXT,
 // start_pid BIGINT,
