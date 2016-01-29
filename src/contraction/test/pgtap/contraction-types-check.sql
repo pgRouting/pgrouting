@@ -2,7 +2,7 @@
 
 SET client_min_messages TO WARNING;
 
-SELECT plan(2);
+SELECT plan(3);
 
 SELECT can(ARRAY['pgr_contractgraph']);
 
