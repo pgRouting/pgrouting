@@ -40,7 +40,7 @@ SELECT pg_typeof(contracted_graph_name)::text AS t1,
        pg_typeof(removedEdges)::text AS t4,
        pg_typeof(psuedoEdges)::text AS t5
     FROM ( 
-        SELECT * FROM pgr_dijkstra(
+        SELECT * FROM pgr_contractgraph(
             'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT AS revcost FROM edge_table',
             1, false) ) AS a
     limit 1
