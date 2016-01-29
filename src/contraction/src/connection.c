@@ -314,58 +314,58 @@ int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
         if (fetch_contracted_graph_columns(&graph_columns, &graph_types) == -1)
          //return finish(SPIcode, ret);
           pgr_SPI_finish();
-          return -1;
+        return -1;
             // Finished fetching column numbers
-     }
+      }
 
-     ntuples = SPI_processed;
-     total_tuples += ntuples;   
+      ntuples = SPI_processed;
+      total_tuples += ntuples;   
         // Getting Memory
-     if ((*graphInfo) == NULL)
-      (*graphInfo) = (pgr_contracted_blob *)palloc(total_tuples * sizeof(pgr_contracted_blob));
-    else
-      (*graphInfo) = (pgr_contracted_blob *)repalloc((*graphInfo), total_tuples * sizeof(pgr_contracted_blob));
+      if ((*graphInfo) == NULL)
+        (*graphInfo) = (pgr_contracted_blob *)palloc(total_tuples * sizeof(pgr_contracted_blob));
+      else
+        (*graphInfo) = (pgr_contracted_blob *)repalloc((*graphInfo), total_tuples * sizeof(pgr_contracted_blob));
         // Got Memory 
 
-    if ((*graphInfo) == NULL) {
-      elog(ERROR, "Out of memory");
+      if ((*graphInfo) == NULL) {
+        elog(ERROR, "Out of memory");
       //return finish(SPIcode, ret);
-      pgr_SPI_finish();
-          return -1;    
-    }
-    if (ntuples > 0)
-    {
-
-      int t;
-      //elog(INFO, "processing tuples");
-      SPITupleTable *tuptable = SPI_tuptable;
-      TupleDesc tupdesc = SPI_tuptable->tupdesc;
-      //PGR_DBG("processing %d", ntuples);
-      for (t = 0; t < ntuples; t++) 
-      {
-        HeapTuple tuple = tuptable->vals[t];
-        fetch_contracted_info(&tuple, &tupdesc, &graph_columns, &graph_types,
-         &(*graphInfo)[total_tuples - ntuples + t]);
+        pgr_SPI_finish();
+        return -1;    
       }
-      SPI_freetuptable(tuptable);
-    }
+      if (ntuples > 0)
+      {
 
-    else {
-      moredata = FALSE;
+        int t;
+      //elog(INFO, "processing tuples");
+        SPITupleTable *tuptable = SPI_tuptable;
+        TupleDesc tupdesc = SPI_tuptable->tupdesc;
+      //PGR_DBG("processing %d", ntuples);
+        for (t = 0; t < ntuples; t++) 
+        {
+          HeapTuple tuple = tuptable->vals[t];
+          fetch_contracted_info(&tuple, &tupdesc, &graph_columns, &graph_types,
+           &(*graphInfo)[total_tuples - ntuples + t]);
+        }
+        SPI_freetuptable(tuptable);
+      }
+
+      else {
+        moredata = FALSE;
+      }
     }
+    return 0;
   }
-  return 0;
-}
-int
-fetch_data(char *sql, Edge **edges,int *edge_count,bool rcost)
-{
+  int
+  fetch_data(char *sql, Edge **edges,int *edge_count,bool rcost)
+  {
     //bool sourceFound = false;
     //bool targetFound = false;
-  bool has_rcost=false;
-  if (rcost)
-  {
-    has_rcost=rcost;
-  }
+    bool has_rcost=false;
+    if (rcost)
+    {
+      has_rcost=rcost;
+    }
     /*if (start_vertex == -1 && end_vertex == -1) {
         sourceFound = targetFound = true;
     }*/
@@ -386,7 +386,7 @@ fetch_data(char *sql, Edge **edges,int *edge_count,bool rcost)
             int ret = -1;
 #endif
 
-
+          //elog(INFO,"Initializing columns and types");
     // Connecting to SPI;
           int SPIcode = SPI_connect();
           if (SPIcode  != SPI_OK_CONNECT) 
@@ -409,7 +409,7 @@ fetch_data(char *sql, Edge **edges,int *edge_count,bool rcost)
             elog(ERROR, "SPI_cursor_open('%s') returns NULL", sql);
             return -1;
           }
-
+          //elog(INFO,"Cursor opened");
 
       // Starting Cycle;
           bool moredata = TRUE;
@@ -421,40 +421,45 @@ fetch_data(char *sql, Edge **edges,int *edge_count,bool rcost)
             /*  on the first tuple get the column numbers */
             if (edge_columns[0] == -1)
             {
+              //elog(INFO,"Fetching edge columns");
             // Fetching column numbers
               if (fetch_edge_columns(&edge_columns, &edge_types,has_rcost) == -1)
+              {
                //return finish(SPIcode, ret);
-               pgr_SPI_finish();
-          return -1;  
+                elog(ERROR,"Error fetching edge columns");
+                pgr_SPI_finish();
+                return -1;
+              }  
             // Finished fetching column numbers
-           }
+            }
 
-           ntuples = SPI_processed;
-           total_tuples += ntuples;
+            ntuples = SPI_processed;
+            total_tuples += ntuples;
+
 
         // Getting Memory
-           if ((*edges) == NULL)
-            (*edges) = (Edge *)palloc(total_tuples * sizeof(Edge));
-          else
-            (*edges) = (Edge *)repalloc((*edges), total_tuples * sizeof(Edge));
+            if ((*edges) == NULL)
+              (*edges) = (Edge *)palloc(total_tuples * sizeof(Edge));
+            else
+              (*edges) = (Edge *)repalloc((*edges), total_tuples * sizeof(Edge));
         // Got Memory 
 
-          if ((*edges) == NULL) {
-            elog(ERROR, "Out of memory");
-            pgr_SPI_finish();
-          return -1;  
-          }
+            if ((*edges) == NULL) {
+              elog(ERROR, "Out of memory");
+              pgr_SPI_finish();
+              return -1;  
+            }
 
-          if (ntuples > 0) {
-            int t;
+            if (ntuples > 0) {
+              int t;
       //elog(INFO, "processing tuples");
-            SPITupleTable *tuptable = SPI_tuptable;
-            TupleDesc tupdesc = SPI_tuptable->tupdesc;
+              SPITupleTable *tuptable = SPI_tuptable;
+              TupleDesc tupdesc = SPI_tuptable->tupdesc;
       //PGR_DBG("processing %d", ntuples);
-            for (t = 0; t < ntuples; t++) {
-              HeapTuple tuple = tuptable->vals[t];
-              fetch_edge(&tuple, &tupdesc, &edge_columns, &edge_types,
-               &(*edges)[total_tuples - ntuples + t], has_rcost);
+              for (t = 0; t < ntuples; t++) {
+                HeapTuple tuple = tuptable->vals[t];
+                fetch_edge(&tuple, &tupdesc, &edge_columns, &edge_types,
+                 &(*edges)[total_tuples - ntuples + t], has_rcost);
 
 
           /*if (!sourceFound
@@ -571,7 +576,7 @@ fetch_astar_data(char *sql, Edge **edges,int *count,bool rcost)
             // Fetching column numbers
               if (fetch_astar_edge_columns(&edge_columns, &edge_types,has_rcost) == -1)
                pgr_SPI_finish();
-          return -1;
+             return -1;
             // Finished fetching column numbers
            }
 
@@ -588,7 +593,7 @@ fetch_astar_data(char *sql, Edge **edges,int *count,bool rcost)
           if ((*edges) == NULL) {
             elog(ERROR, "Out of memory");
             pgr_SPI_finish();
-          return -1;   
+            return -1;   
           }
 
           if (ntuples > 0) {
