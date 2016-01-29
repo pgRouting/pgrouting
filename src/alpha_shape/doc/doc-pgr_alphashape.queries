@@ -5,16 +5,21 @@ FROM (SELECT ST_MakeLine(points ORDER BY id) AS openline FROM
 (SELECT ST_MakePoint(x, y) AS points, row_number() over() AS id
 FROM pgr_alphaShape('SELECT id, x, y FROM vertex_table')
 ) AS a) AS foo;
-ERROR:  function pgr_alphashape(unknown) does not exist
-LINE 4: FROM pgr_alphaShape('SELECT id, x, y FROM vertex_table')
-             ^
-HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+ st_area 
+---------
+   10.00
+(1 row)
+
 -----------------------------
 SELECT round(ST_Area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) AS st_area
 FROM (SELECT ST_MakeLine(points ORDER BY id) AS openline FROM
 (SELECT ST_MakePoint(x, y) AS points, row_number() over() AS id
 FROM pgr_alphaShape('SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y FROM edge_table_vertices_pgr')
 ) AS a) AS foo;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
+ st_area 
+---------
+   11.75
+(1 row)
+
 ROLLBACK;
 ROLLBACK

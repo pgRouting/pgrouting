@@ -14,7 +14,7 @@ if(CGAL_INCLUDE_DIR AND CGAL_LIBRARIES AND BOOST_THREAD_LIBRARIES AND GMP_LIBRAR
     set(CGAL_FOUND TRUE)
 else()
 
-    find_path(CGAL_INCLUDE_DIR CGAL/basic.h
+    find_path(CGAL_INCLUDE_DIR CGAL/Simple_cartesian.h
         ${CGAL_ROOT}/include
         /usr/include
         /usr/local/include
