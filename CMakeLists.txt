@@ -79,7 +79,7 @@ set(PgRouting_SOURCE_NAMES
 
     #"funnyDijkstra"
     
-    #"alpha_shape"
+    "alpha_shape"
 
     "astar" "bd_astar"
     "bd_dijkstra" 
