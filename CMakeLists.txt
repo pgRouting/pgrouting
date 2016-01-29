@@ -71,23 +71,24 @@ option(POSTGRESQL_VERSION " To set the version")
 #-----------------------------------------------------------------------------
 
 set(PgRouting_SOURCE_NAMES
-    "common" "dijkstra"
-    "driving_distance"
-    "ksp"
-    "allpairs"
-    "withPoints"
+    "common" 
+    #"dijkstra"
+    #"driving_distance"
+    #"ksp"
+    #"allpairs"
+    #"withPoints"
 
     #"funnyDijkstra"
     
     "alpha_shape"
 
-    "astar" "bd_astar"
-    "bd_dijkstra" 
-    "kdijkstra"
-    "trsp" #2.0
-    "tsp"
+#    "astar" "bd_astar"
+#    "bd_dijkstra" 
+#    "kdijkstra"
+#    "trsp" #2.0
+#    "tsp"
 
-    "vrp_basic" "vrppdtw"
+#    "vrp_basic" "vrppdtw"
     )
 
 #==========================
@@ -552,9 +553,11 @@ foreach (subdir ${PgRouting_SOURCE_NAMES} )
 endforeach()
 
 
+
 include_directories(
     ${PGROUTING_INCLUDE_DIRECTORIES} 
     ${PostgreSQL_INCLUDE_DIRS} 
+    ${CGAL_INCLUDE_DIR}
     ${Boost_INCLUDE_DIRS})
 
 

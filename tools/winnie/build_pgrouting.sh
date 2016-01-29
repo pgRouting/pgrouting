@@ -29,6 +29,7 @@ if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	export PATH="${PROJECTS}/rel-libiconv-1.13.1w${OS_BUILD}${GCC_TYPE}/include:${PATH}"
 	GMP_VER=5.1.2
 	MPFR_VER=3.1.2
+
 	CGAL_VER=4.2
 	BOOST_VER=1.59.0
 	BOOST_VER_WU=1_59_0
@@ -45,7 +46,9 @@ if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	#boost
 	PATH="${PATH}:${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE}/lib"
 	#cgal
+    #location of CGAL: e:/jenkins/CGAL/rel-cgal-4.2w64gcc48/include/CGAL/Simple_cartesian.h
 	PATH="${PATH}:${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}/include:${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}/lib"
+	PATH="${PATH}:e:/jenkins/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}/include"
 	#cmake
 	export PATH="${PATH}:/cmake/bin"
 	export PATH="${PATH}:.:/bin:/include"
