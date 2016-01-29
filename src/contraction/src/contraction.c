@@ -31,21 +31,22 @@ static int compute_contracted_graph(char* sql,int level,
 	int initial_num_vertices=0,final_num_vertices=0;
 
 	PGR_DBG("Load data");
-	elog(INFO,"Loading data.....");
+	//elog(INFO,"Loading data.....");
 	int readCode = fetch_data(sql, &edges, &initial_num_edges, has_rcost);
 
 	if (readCode == -1 || initial_num_edges == 0) {
 		pfree(edges);
 		//return finish(SPIcode, ret);
+		elog(ERROR,"Error fetching data");
 		pgr_SPI_finish();
           return -1;
 	}
-	elog(INFO,"Contracting.....");
+	//elog(INFO,"Contracting.....");
 	ret = fetch_contracted_graph(edges, &initial_num_vertices,
 		&final_num_vertices,initial_num_edges,final_edge_count,
 		level,graphName,edgeString,psuedoEString,removedVString,removedEString);
-	elog(INFO,"Initial edge count %d",initial_num_edges);
-	elog(INFO,"Initial vertex count %d",initial_num_vertices);
+	//elog(INFO,"Initial edge count %d",initial_num_edges);
+	//elog(INFO,"Initial vertex count %d",initial_num_vertices);
 	if (ret < 0) {
 		ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
 			errmsg("Error contracting the graph: %s", err_msg)));
@@ -95,11 +96,11 @@ pgr_contractgraph(PG_FUNCTION_ARGS) {
 		level=PG_GETARG_INT64(1);
 		has_rcost=PG_GETARG_BOOL(2);
 		//directed=PG_GETARG_BOOL(3);
-		elog(INFO,"level of contraction : %d",level);
+		//elog(INFO,"level of contraction : %d",level);
 		compute_contracted_graph(pgr_text2char(PG_GETARG_TEXT_P(0)),level,&final_num_edges,
 			&graphName,&edgeString,&psuedoEString,&removedVString,&removedEString,has_rcost);
-		elog(INFO,"graph name : %s",graphName);
-		elog(INFO,"Final edge count : %d",final_num_edges);
+		//elog(INFO,"graph name : %s",graphName);
+		//elog(INFO,"Final edge count : %d",final_num_edges);
 		//elog(INFO,"edge string %s",edgeString);
 		ret_value=(pgr_contracted_blob*)malloc(sizeof(pgr_contracted_blob));
 		ret_value->contracted_graph_name=graphName;
