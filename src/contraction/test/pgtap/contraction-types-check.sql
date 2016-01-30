@@ -2,16 +2,21 @@
 
 SET client_min_messages TO WARNING;
 
-SELECT plan(3);
+SELECT plan(4);
 
 SELECT can(ARRAY['pgr_contractgraph']);
 
+SELECT  todo_start('Remove the type pgr_contracted_blob');
+
+SELECT function_returns('pgr_contractgraph',  ARRAY['text','bigint','boolean'], 'setof record');
+
+SELECT todo_end();
 
 
 --V2.1+
 SELECT has_function('pgr_contractgraph', ARRAY['text','bigint','boolean']);
 
-SELECT function_returns('pgr_contractgraph', ARRAY['text','text','text','text','text'],'setof record');
+SELECT function_returns('pgr_contractgraph', ARRAY['text','bigint','boolean'],'setof pgr_contracted_blob');
 
 -- testing for the 2 signatures that they return the correct names & columns
 -- Preparing
