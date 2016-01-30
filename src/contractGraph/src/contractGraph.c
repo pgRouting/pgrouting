@@ -35,6 +35,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
+// TODO remove if not needed
+#include "utils/lsyscache.h"
+#include "utils/builtins.h"
 
 /*
   Uncomment when needed
@@ -46,9 +49,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
-#include "./../../common/src/arrays_input.h"
 
-#include "./contractGraph_driver.h"
+#include "./structs.h"
+#include "contract_function.h"
+#include "./connection.h"
 
 PG_FUNCTION_INFO_V1(contractGraph);
 #ifndef _MSC_VER
@@ -64,9 +68,7 @@ contractGraph(PG_FUNCTION_ARGS);
 static
 void
 process( char* edges_sql,
-        int64_t start_vid,
-        int64_t *end_vidsArr,
-        size_t size_end_vidsArr,
+        int64_t level,
         bool directed,
         pgr_contracted_blob **result_tuples,
         size_t *result_count) {
@@ -91,9 +93,7 @@ process( char* edges_sql,
     do_pgr_contractGraph(
             edges,
             total_tuples,
-            start_vid,
-            end_vidsArr,
-            size_end_vidsArr,
+            level,
             directed,
             result_tuples,
             result_count,
@@ -122,7 +122,7 @@ contractGraph(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    pgr_contracted_blob  *result_tuples = 0;
+    pgr_contracted_blob  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -141,23 +141,16 @@ contractGraph(PG_FUNCTION_ARGS) {
     directed BOOLEAN DEFAULT true
          **********************************************************************/
 
-        PGR_DBG("Initializing arrays");
-        int64_t* end_vidsArr;
-        size_t size_end_vidsArr;
-        end_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_end_vidsArr, PG_GETARG_ARRAYTYPE_P(2));
-        PGR_DBG("targetsArr size %ld ", size_end_vidsArr);
+        
 
         PGR_DBG("Calling process");
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
-                end_vidsArr, size_end_vidsArr,
                 PG_GETARG_BOOL(3),
                 &result_tuples,
                 &result_count);
 
-        PGR_DBG("Cleaning arrays");
-        free(end_vidsArr);
         /*                                                                             */
         /*******************************************************************************/
 
@@ -197,24 +190,21 @@ contractGraph(PG_FUNCTION_ARGS) {
         ********************************************************************************/
 
 
-        values = palloc(8 * sizeof(Datum));
-        nulls = palloc(8 * sizeof(char));
+        values = palloc(5 * sizeof(Datum));
+        nulls = palloc(5 * sizeof(char));
 
         size_t i;
-        for(i = 0; i < 8; ++i) {
+        for(i = 0; i < 5; ++i) {
             nulls[i] = ' ';
         }
 
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].node);
-        values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
-        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+        values[0] = result_tuples->contracted_graph_name   ? pstrdup(result_tuples->contracted_graph_name) : NULL;
+        values[1] = result_tuples->contracted_graph_blob  ? pstrdup(result_tuples->contracted_graph_blob) : NULL;
+        values[2] = result_tuples->removedVertices ? pstrdup(result_tuples->removedVertices) : NULL;
+        values[3] = result_tuples->removedEdges ? pstrdup(result_tuples->removedEdges) : NULL;
+        values[4] = result_tuples->psuedoEdges ? pstrdup(result_tuples->psuedoEdges) : NULL;
         /*******************************************************************************/
 
         tuple = heap_formtuple(tuple_desc, values, nulls);
