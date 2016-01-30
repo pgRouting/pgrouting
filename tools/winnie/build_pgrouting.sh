@@ -48,7 +48,7 @@ if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
     #cgal
     #location of CGAL: e:/jenkins/CGAL/rel-cgal-4.2w64gcc48/include/CGAL/Simple_cartesian.h
     PATH="${PATH}:${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}/include:${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}/lib"
-    PATH="${PATH}:e:/jenkins/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}/include"
+    PATH="${PATH}:/jenkins/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}/include"
     #cmake
     export PATH="${PATH}:/cmake/bin"
     export PATH="${PATH}:.:/bin:/include"
@@ -63,7 +63,7 @@ if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
         -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} \
         -DBoost_USE_STATIC_LIBS=ON \
         -DBoost_USE_MULTITHREADED=ON \
-        -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include" \
+        -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include -Ie:/jenkins/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}/include" \
         ../branches/${PGROUTING_VER}
 
 else 
