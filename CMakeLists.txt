@@ -12,6 +12,7 @@
 project(PGROUTING)
 
 #set(CMAKE_VERBOSE_MAKEFILE 1)
+#set(Boost_DEBUG ON)
 
 # Configure options
 
@@ -440,11 +441,10 @@ message(".....OK")
 message("Pgrouting uses: Boost graph header only")
 message("CGAL uses: Boost thread library")
 
-
-#set(Boost_DEBUG ON)
-
-# pg routing doesnt need thread, but CGAL does
-set (Boost_ADDITIONAL_VERSIONS "1.60" "1.59" "1.58" "1.57")
+# pgRouting directly doesnt need thread, but CGAL does
+set(Boost_ADDITIONAL_VERSIONS "1.60" "1.59" "1.58" "1.57")
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_MULTITHREADED ON)
 
 find_package(Boost ${BOOST_MINIMUM_VERSION} COMPONENTS thread REQUIRED) 
 

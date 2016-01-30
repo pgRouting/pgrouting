@@ -61,7 +61,10 @@ if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
         -DBOOST_ROOT:PATH=${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE} \
         -DCGAL_ROOT:PATH=${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE} \
         -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} \
-        -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include"  ../branches/${PGROUTING_VER}
+        -DBoost_USE_STATIC_LIBS=ON \
+        -DBoost_USE_MULTITHREADED=ON \
+        -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include" \
+        ../branches/${PGROUTING_VER}
 else 
     #alias cmake="/c/ming${OS_BUILD}/cmake-2.8.10.2-win32-x86/bin/cmake"
     export PostgreSQL_ROOT=${PGPATH}
