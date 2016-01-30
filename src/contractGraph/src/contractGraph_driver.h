@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_CONTRACTGRAPH_SRC_CONTRACTGRAPH_DRIVER_H_
 
 #include "./../../common/src/pgr_types.h"
-
+#include "./structs.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -44,9 +44,7 @@ extern "C" {
         do_pgr_contractGraph(
                 pgr_edge_t  *data_edges,
                 size_t total_tuples,
-                int64_t start_vid,
-                int64_t  *end_vidsArr,
-                int size_end_vidsArr,
+                int64_t level,
                 bool directed,
                 pgr_contracted_blob **return_tuples,
                 size_t *return_count,
