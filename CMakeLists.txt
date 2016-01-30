@@ -441,8 +441,7 @@ message("Pgrouting uses: Boost graph header only")
 message("CGAL uses: Boost thread library")
 
 
-#set(Boost_USE_MULTITHREADED off)
-set(Boost_DEBUG ON)
+#set(Boost_DEBUG ON)
 
 # pg routing doesnt need thread, but CGAL does
 set (Boost_ADDITIONAL_VERSIONS "1.60" "1.59" "1.58" "1.57")
@@ -562,7 +561,7 @@ include_directories(
 
 
 if(WIN32)
-    #include_directories(${PostgreSQL_INCLUDE_DIRS}/port/win32)
+    include_directories(${PostgreSQL_INCLUDE_DIRS}/port/win32)
 endif(WIN32)
 
 
@@ -611,8 +610,7 @@ endforeach()
 link_libraries(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${Boost_THREAD_LIBRARIES})
 
 if(WIN32)
-    message(STATUS "LINK_DIRECTORIES =
-    ${PostgreSQL_LIBRARY_DIRS}")
+    message(STATUS "LINK_DIRECTORIES = ${PostgreSQL_LIBRARY_DIRS}")
     message(STATUS "LINK_LIBRARIES =
     ${CGAL_LIBRARIES}
     ${GMP_LIBRARIES}
@@ -682,13 +680,13 @@ foreach (subdir ${PgRouting_SQL_DIRECTORIES})
     add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/sql")
 endforeach()
 
-    list(APPEND LIST_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
+list(APPEND LIST_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 
-if (CDEBUG)
-    foreach (files ${LIST_PACKAGE_SQL_FILES})
-        message("${files}")
-    endforeach()
-endif()
+#if (CDEBUG)
+#    foreach (files ${LIST_PACKAGE_SQL_FILES})
+#        message("${files}")
+#    endforeach()
+#endif()
 
 
 
