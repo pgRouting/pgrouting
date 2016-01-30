@@ -35,6 +35,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
+// TODO remove if not needed
+#include "utils/lsyscache.h"
+#include "utils/builtins.h"
 
 /*
   Uncomment when needed
@@ -47,8 +50,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 
-
-#include "./contractGraph_driver.h"
+#include "./structs.h"
+#include "contract_function.h"
+#include "./connection.h"
 
 PG_FUNCTION_INFO_V1(contractGraph);
 #ifndef _MSC_VER
@@ -64,9 +68,7 @@ contractGraph(PG_FUNCTION_ARGS);
 static
 void
 process( char* edges_sql,
-        int64_t start_vid,
-        int64_t *end_vidsArr,
-        size_t size_end_vidsArr,
+        int64_t level,
         bool directed,
         pgr_contracted_blob **result_tuples,
         size_t *result_count) {
@@ -91,9 +93,7 @@ process( char* edges_sql,
     do_pgr_contractGraph(
             edges,
             total_tuples,
-            start_vid,
-            end_vidsArr,
-            size_end_vidsArr,
+            level,
             directed,
             result_tuples,
             result_count,
