@@ -99,7 +99,6 @@ set(PgRouting_SOURCE_NAMES
 #
 #-----------------------------------------------------------------------------
 
-#set(PgRouting_INCLUDE_DIRECTORIES ${PgRouting_SOURCE_NAMES})
 set(PgRouting_INCLUDE_DIRECTORIES ${PgRouting_SOURCE_NAMES})
 
 #==========================
@@ -219,7 +218,7 @@ message(".....OK")
 # PGROUTING version handling.
 #-----------------------------------------------------------------------------
 
-message("Building the Version")
+message("Building the Version Name")
 
 #----------------------
 # PGROUTING version
@@ -247,11 +246,12 @@ string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\4" PGROUTING_GIT_BRA
 
 string(COMPARE NOTEQUAL ${PGROUTING_GIT_BRANCH}  "master" PGROUTING_DEVELOP)
 
-set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_GIT_HASH} ${PGROUTING_GIT_BRANCH}")
 
 if(PGROUTING_DEVELOP)
     set(PGROUTING_GIT_TAG "pgrouting-${PGROUTING_VERSION_STRING}-dev")
 endif()
+
+set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_GIT_HASH} ${PGROUTING_GIT_BRANCH}")
 
 if (CDEBUG)
     message(STATUS "  PGROUTING_GIT_TAG: ${PGROUTING_GIT_TAG}")
