@@ -16,8 +16,8 @@
 
 
 
-static int compute_shortest_path(char* sql,int source,int target,
-	Edge** path,int *path_count,bool has_rcost) {
+static int64_t compute_shortest_path(char* sql,int64_t source,int64_t target,
+	Edge** path,int64_t *path_count,bool has_rcost) {
 	//int SPIcode = 0;
 	pgr_contracted_blob *graphInfo = NULL;
 	//int initial_num_edges = 0;
@@ -71,7 +71,7 @@ shortest_path_c(PG_FUNCTION_ARGS) {
  //int SPIcode = 0;
 	Edge *edges=NULL;
 	Edge *path=NULL;
-	int path_size=0;
+	int64_t path_size=0;
 	FuncCallContext     *funcctx;
 	int                  call_cntr;
 	int                  max_calls;
@@ -85,18 +85,18 @@ shortest_path_c(PG_FUNCTION_ARGS) {
 		//fetch the edges and construct the graph
 		bool has_rcost=false;
 		has_rcost=PG_GETARG_BOOL(3);
-		int source=PG_GETARG_INT64(1),target=PG_GETARG_INT64(2);
+		int64_t source=PG_GETARG_INT64(1),target=PG_GETARG_INT64(2);
 		compute_shortest_path(pgr_text2char(PG_GETARG_TEXT_P(0)),source,target,
 			&edges,&path_size,has_rcost);
 		
 		//prints the path if the number of edges > 0
 		if (path_size>0)
 		{
-			elog(INFO,"Path Length %d",path_size);
-			int i;
+			elog(INFO,"Path Length %ld",path_size);
+			int64_t i;
 			for (i = 0; i < path_size; ++i)
 			{
-				elog(INFO,"%d	|	%d	|	%d	|	%f",path[i].id,path[i].source,path[i].target,path[i].cost);
+				elog(INFO,"%ld	|	%ld	|	%ld	|	%f",path[i].id,path[i].source,path[i].target,path[i].cost);
 			}
 			free(edges);
 			free(path);

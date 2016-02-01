@@ -40,9 +40,9 @@ extern "C" {
   //int64_t* pgr_get_bigIntArray(int *arrlen, ArrayType *input);
 
 #endif
-  int fetch_edge_columns(int (*edge_columns)[5],int (*edge_types)[5],
+  int64_t fetch_edge_columns(int (*edge_columns)[5],int (*edge_types)[5],
                    bool has_reverse_cost);
-  int fetch_astar_edge_columns(int (*edge_columns)[9],int (*edge_types)[9], bool has_rcost);
+  int64_t fetch_astar_edge_columns(int (*edge_columns)[9],int (*edge_types)[9], bool has_rcost);
  
 #if 0
   void fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
@@ -64,12 +64,12 @@ void fetch_astar_edge(HeapTuple *tuple,TupleDesc *tupdesc,
   int fetch_data(
       char *sql, Edge **edges,int *count,bool has_rcost);   //!< \param [IN] end_vertex index to look for
 #endif
-int
-fetch_astar_data(char *sql, Edge **edges,int *count,bool has_rcost);
-int
-fetch_data(char *sql, Edge **edges,int *edge_count,bool rcost);
+int64_t
+fetch_astar_data(char *sql, Edge **edges,int64_t *count,bool has_rcost);
+int64_t
+fetch_data(char *sql, Edge **edges,int64_t *edge_count,bool rcost);
 
-int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo);
+int64_t get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo);
   /* output corresponding to costResult3Big
   pgr_path_element3_t* pgr_get_memory3(int size, pgr_path_element3_t *path);
   // pgr_path_element3_t * noPathFound3(int64_t start_id);

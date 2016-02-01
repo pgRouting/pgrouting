@@ -96,7 +96,7 @@ public:
   typedef typename id_to_V::const_iterator LI;
   typedef typename V_to_id::const_iterator RI;
   //constrictor for this class which inherits the base graph
-  explicit My_Astar(graphType gtype, const int initial_size)
+  explicit My_Astar(graphType gtype, const int64_t initial_size)
   :Graph_Minimizer<G>(gtype, initial_size) {}
 
   //initializes the graph with the given edges
@@ -150,10 +150,10 @@ public:
       this->graph[e].type=0;
     }
 
-    if (edge.revcost >= 0) {
+    if (edge.reverse_cost >= 0) {
       boost::tie(e, inserted) =
       boost::add_edge(vm_t->second, vm_s->second, this->graph);
-      this->graph[e].cost = edge.revcost;
+      this->graph[e].cost = edge.reverse_cost;
       this->graph[e].id = edge.id;
       this->graph[e].source=edge.target;
       this->graph[e].target=edge.source;
@@ -210,7 +210,7 @@ void print_predecessors()
 {
     //typedef typename boost::graph_traits < G >::vertex_descriptor V;
   std::cout << "predecessors :" << endl;
-  for (int i = 0; i < this->predecessors.size(); ++i)
+  for (int64_t i = 0; i < this->predecessors.size(); ++i)
   {
     cout << i << " ---> " << this->predecessors[i] << endl;
   }
@@ -221,7 +221,7 @@ void print_predecessors()
 void print_distances()
 {
   std::cout << "distances :" << endl;
-  for (int i = 0; i < this->distances.size(); ++i)
+  for (int64_t i = 0; i < this->distances.size(); ++i)
   {
     cout << i << " ---> " << this->distances[i] << endl;
   }
@@ -249,7 +249,7 @@ void get_path(V source,V target,Edge **path,int64_t &size)
     size=path_size;
     cout << "Path is of size " << path_size << endl;
     (*path)=(Edge *)malloc(sizeof(Edge)*path_size);
-    int temp_size=path_size-1;
+    int64_t temp_size=path_size-1;
     temp=target;
     int64_t sid=-1,tid=-1;
     while(this->predecessors[temp]!=temp)
@@ -288,7 +288,7 @@ void get_reduced_path(V source,V target,Edge **path,int64_t &size)
     size=path_size;
     cout << "Path is of size " << path_size << endl;
     (*path)=(Edge *)malloc(sizeof(Edge)*path_size);
-    int temp_size=path_size-1;
+    int64_t temp_size=path_size-1;
     temp=target;
     int64_t sid=-1,tid=-1;
     while(this->reduced_graph->predecessors[temp]!=temp)
@@ -310,7 +310,7 @@ void astar_on_contracted(int64_t src,int64_t dest,Edge **path,int64_t &size)
   Edge *mainPath=NULL;
   unpackedPath srcPath,targetPath;
   int64_t closest_src,closest_target;
-  int src_size,target_size;
+  int64_t src_size,target_size;
   this->find_source_vertex(src,closest_src,srcPath);
   this->find_target_vertex(dest,closest_target,targetPath);
   src_size=srcPath.size();
@@ -347,11 +347,11 @@ void astar_on_contracted(int64_t src,int64_t dest,Edge **path,int64_t &size)
   }
     catch(found_goal fg) { // found a path to the goal
       get_reduced_path(source,target,&mainPath,size);  
-      int total_size=size+src_size+target_size;
+      int64_t total_size=size+src_size+target_size;
       cout << "total path size is " << total_size << endl;
       *path=(Edge*)malloc(total_size*sizeof(Edge));
-      int temp_size=0;
-      for (int i = 0; i < src_size; ++i)
+      int64_t temp_size=0;
+      for (int64_t i = 0; i < src_size; ++i)
       {
         (*path)[i].id=srcPath[i-temp_size].id;
         (*path)[i].source=srcPath[i-temp_size].source;
@@ -359,7 +359,7 @@ void astar_on_contracted(int64_t src,int64_t dest,Edge **path,int64_t &size)
         (*path)[i].cost=srcPath[i-temp_size].cost;
       }
       temp_size=src_size;
-      for (int i = src_size; i < src_size+size; ++i)
+      for (int64_t i = src_size; i < src_size+size; ++i)
       {
         (*path)[i].id=(mainPath)[i-temp_size].id;
         (*path)[i].source=(mainPath)[i-temp_size].source;
@@ -367,7 +367,7 @@ void astar_on_contracted(int64_t src,int64_t dest,Edge **path,int64_t &size)
         (*path)[i].cost=(mainPath)[i-temp_size].cost;
       }
       temp_size=src_size+size;
-      for (int i = src_size+size; i < total_size; ++i)
+      for (int64_t i = src_size+size; i < total_size; ++i)
       {
         (*path)[i].id=targetPath[i-temp_size].id;
         (*path)[i].source=targetPath[i-temp_size].source;
@@ -386,7 +386,7 @@ void astar_on_contracted(int64_t src,int64_t dest,Edge **path,int64_t &size)
   void print_path(Edge **path,int64_t size)
   {
     cout << "Path for astar......" << endl; 
-    for (int i = 0; i < size; ++i)
+    for (int64_t i = 0; i < size; ++i)
     {
       cout << "id:- " << (*path)[i].id << " src:- " << (*path)[i].source << " dest:- " << (*path)[i].target << " cost " << (*path)[i].cost << endl;
     }

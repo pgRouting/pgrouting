@@ -102,7 +102,7 @@ static char* SPI_getString(HeapTuple *tuple, TupleDesc *tupdesc, int colNumber, 
   }
   return value;
 }
-static int fetch_column_info(
+static int64_t fetch_column_info(
   int *colNumber,
   int *coltype,
   char *colName) {
@@ -124,12 +124,12 @@ static int fetch_column_info(
 
 /********************
 Functions for pgr_foo with sql:
- id, source, target, cost, revcost(optional) 
+ id, source, target, cost, reverse_cost(optional) 
 ************/
- int fetch_edge_columns(int (*edge_columns)[5],int (*edge_types)[5], bool has_rcost) 
+ int64_t fetch_edge_columns(int (*edge_columns)[5],int (*edge_types)[5], bool has_rcost) 
  {
 
-  int error;
+  int64_t error;
   error = fetch_column_info(&(*edge_columns)[0], &(*edge_types)[0], "id");
   if (error == -1) return error;
   error = fetch_column_info(&(*edge_columns)[1], &(*edge_types)[1], "source");
@@ -139,7 +139,7 @@ Functions for pgr_foo with sql:
   error = fetch_column_info(&(*edge_columns)[3], &(*edge_types)[3], "cost");
   if (error == -1) return error;
   if (has_rcost) {
-    error = fetch_column_info(&(*edge_columns)[4], &(*edge_types)[4], "revcost");
+    error = fetch_column_info(&(*edge_columns)[4], &(*edge_types)[4], "reverse_cost");
     if (error == -1) return error;
   }
 
@@ -147,10 +147,10 @@ Functions for pgr_foo with sql:
 
 }
 static
-int fetch_contracted_graph_columns(int (*edge_columns)[5],int (*edge_types)[5]) 
+int64_t fetch_contracted_graph_columns(int (*edge_columns)[5],int (*edge_types)[5]) 
 {
 
-  int error;
+  int64_t error;
   error = fetch_column_info(&(*edge_columns)[0], &(*edge_types)[0], "contracted_graph_name");
   if (error == -1) return error;
   //elog(INFO,"fetched name info" );
@@ -169,10 +169,10 @@ int fetch_contracted_graph_columns(int (*edge_columns)[5],int (*edge_types)[5])
   return 0;
 
 }
-int fetch_astar_edge_columns(int (*edge_columns)[9],int (*edge_types)[9], bool has_rcost) 
+int64_t fetch_astar_edge_columns(int (*edge_columns)[9],int (*edge_types)[9], bool has_rcost) 
 {
 
-  int error;
+  int64_t error;
   error = fetch_column_info(&(*edge_columns)[0], &(*edge_types)[0], "id");
   if (error == -1) return error;
   error = fetch_column_info(&(*edge_columns)[1], &(*edge_types)[1], "source");
@@ -190,7 +190,7 @@ int fetch_astar_edge_columns(int (*edge_columns)[9],int (*edge_types)[9], bool h
   error = fetch_column_info(&(*edge_columns)[7], &(*edge_types)[7], "cost");
   if (error == -1) return error;
   if (has_rcost) {
-    error = fetch_column_info(&(*edge_columns)[8], &(*edge_types)[8], "revcost");
+    error = fetch_column_info(&(*edge_columns)[8], &(*edge_types)[8], "reverse_cost");
     if (error == -1) return error;
   }
 
@@ -212,12 +212,12 @@ void fetch_edge(
   target_edge->cost = SPI_getFloat8(tuple, tupdesc, (*edge_columns)[3], (*edge_types)[3]);
 
   if (has_rcost) {
-    target_edge->revcost = SPI_getFloat8(tuple, tupdesc, (*edge_columns)[4], (*edge_types)[4]);
+    target_edge->reverse_cost = SPI_getFloat8(tuple, tupdesc, (*edge_columns)[4], (*edge_types)[4]);
   } else {
-    target_edge->revcost = -1.0;
+    target_edge->reverse_cost = -1.0;
   }
   //PGR_DBG("id: %li\t source: %li\ttarget: %li\tcost: %f\t,reverse: %f\n",
-    //      target_edge->id,  target_edge->source,  target_edge->target,  target_edge->cost,  target_edge->revcost);
+    //      target_edge->id,  target_edge->source,  target_edge->target,  target_edge->cost,  target_edge->reverse_cost);
 }
 void fetch_astar_edge(
  HeapTuple *tuple,
@@ -237,12 +237,12 @@ void fetch_astar_edge(
   target_edge->cost = SPI_getFloat8(tuple, tupdesc, (*edge_columns)[7], (*edge_types)[7]);
 
   if (has_rcost) {
-    target_edge->revcost = SPI_getFloat8(tuple, tupdesc, (*edge_columns)[8], (*edge_types)[8]);
+    target_edge->reverse_cost = SPI_getFloat8(tuple, tupdesc, (*edge_columns)[8], (*edge_types)[8]);
   } else {
-    target_edge->revcost = -1.0;
+    target_edge->reverse_cost = -1.0;
   }
   //PGR_DBG("id: %li\t source: %li\ttarget: %li\tcost: %f\t,reverse: %f\n",
-    //      target_edge->id,  target_edge->source,  target_edge->target,  target_edge->cost,  target_edge->revcost);
+    //      target_edge->id,  target_edge->source,  target_edge->target,  target_edge->cost,  target_edge->reverse_cost);
 }
 
 static
@@ -262,13 +262,13 @@ void fetch_contracted_info(
 }
 
 
-int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
+int64_t get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
 {
-  int ntuples;
+  int64_t ntuples;
   int64_t total_tuples=0;
   int graph_columns[5];
   int graph_types[5];
-  int i;
+  int64_t i;
   for (i = 0; i < 5; ++i) graph_columns[i] = -1;
     for (i = 0; i < 5; ++i) graph_types[i] = -1;
 #if 0
@@ -336,7 +336,7 @@ int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
       if (ntuples > 0)
       {
 
-        int t;
+       int64_t t;
       //elog(INFO, "processing tuples");
         SPITupleTable *tuptable = SPI_tuptable;
         TupleDesc tupdesc = SPI_tuptable->tupdesc;
@@ -356,8 +356,8 @@ int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
     }
     return 0;
   }
-  int
-  fetch_data(char *sql, Edge **edges,int *edge_count,bool rcost)
+  int64_t
+  fetch_data(char *sql, Edge **edges,int64_t *edge_count,bool rcost)
   {
     //bool sourceFound = false;
     //bool targetFound = false;
@@ -369,7 +369,7 @@ int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
     /*if (start_vertex == -1 && end_vertex == -1) {
         sourceFound = targetFound = true;
     }*/
-        int ntuples;
+        int64_t ntuples;
         int64_t total_tuples=0;
         char vertex_query[300]=""; 
 
@@ -451,7 +451,7 @@ int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
             }
 
             if (ntuples > 0) {
-              int t;
+              int64_t t;
       //elog(INFO, "processing tuples");
               SPITupleTable *tuptable = SPI_tuptable;
               TupleDesc tupdesc = SPI_tuptable->tupdesc;
@@ -501,7 +501,7 @@ int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
     (*edges)[1].target = -1;
     (*edges)[1].cost = 10000;
     (*edges)[1].id = (*edges)[0].id + 1;
-    (*edges)[1].revcost = -1;
+    (*edges)[1].reverse_cost = -1;
   }
 
 //(*totalTuples) = total_tuples;
@@ -509,8 +509,8 @@ int get_contracted_graph(char *sql,pgr_contracted_blob **graphInfo)
   return 0;
 }
 
-int
-fetch_astar_data(char *sql, Edge **edges,int *count,bool rcost)
+int64_t
+fetch_astar_data(char *sql, Edge **edges,int64_t *count,bool rcost)
 {
     //bool sourceFound = false;
     //bool targetFound = false;
@@ -522,7 +522,7 @@ fetch_astar_data(char *sql, Edge **edges,int *count,bool rcost)
     /*if (start_vertex == -1 && end_vertex == -1) {
         sourceFound = targetFound = true;
     }*/
-        int ntuples;
+        int64_t ntuples;
         int64_t total_tuples=0;
 
 
@@ -530,7 +530,7 @@ fetch_astar_data(char *sql, Edge **edges,int *count,bool rcost)
         //fetchVertexCount(vertex_query,count);
         int edge_columns[9];
         int edge_types[9];
-        int i;
+        int64_t i;
         for (i = 0; i < 9; ++i) edge_columns[i] = -1;
           for (i = 0; i < 9; ++i) edge_types[i] = -1;
 #if 0
@@ -597,7 +597,7 @@ fetch_astar_data(char *sql, Edge **edges,int *count,bool rcost)
           }
 
           if (ntuples > 0) {
-            int t;
+            int64_t t;
       //elog(INFO, "processing tuples");
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
@@ -632,7 +632,7 @@ fetch_astar_data(char *sql, Edge **edges,int *count,bool rcost)
     (*edges)[1].target = -1;
     (*edges)[1].cost = 10000;
     (*edges)[1].id = (*edges)[0].id + 1;
-    (*edges)[1].revcost = -1;
+    (*edges)[1].reverse_cost = -1;
   }
 
 //(*totalTuples) = total_tuples;

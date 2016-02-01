@@ -99,7 +99,7 @@ public:
 				reduced_graph->degree_to_V_map[final_target_degree].push_back(t);
 				Edge removed_edge=reduced_graph->graph[*out];
 				//cout << "removing" << " (" << removed_edge.id << ", " <<  removed_edge.source<< ", " << removed_edge.target << 
-				//	", " << removed_edge.cost << ", " << removed_edge.revcost <<")" << endl;
+				//	", " << removed_edge.cost << ", " << removed_edge.reverse_cost <<")" << endl;
 				removedVertices[frontid].push_front(removed_edge);
 				reduced_graph->remove_vertex(source_id);
 				reduced_graph->numb_vertices--;
@@ -397,7 +397,7 @@ public:
 					string source=patch::to_string(source_id);
 					string target=patch::to_string(target_id);
 					string cost=patch::to_string(reduced_graph->graph[*out].cost);
-					string reverse_cost=patch::to_string(reduced_graph->graph[*out].revcost);
+					string reverse_cost=patch::to_string(reduced_graph->graph[*out].reverse_cost);
 					restring+=id+","+source+","+target+","+cost+","+reverse_cost+"$";
 					count++;
 				}
@@ -554,7 +554,7 @@ public:
 			string source=patch::to_string(temp.source);
 			string target=patch::to_string(temp.target);
 			string cost=patch::to_string(temp.cost);
-			string reverse_cost=patch::to_string(temp.revcost);
+			string reverse_cost=patch::to_string(temp.reverse_cost);
 			rmstring+=id+","+source+","+target+","+cost+","+reverse_cost+"$";
 			cout << endl;
 		}
@@ -569,7 +569,7 @@ public:
 			string source=patch::to_string(edge.source);
 			string target=patch::to_string(edge.target);
 			string cost=patch::to_string(edge.cost);
-			string reverse_cost=patch::to_string(edge.revcost);
+			string reverse_cost=patch::to_string(edge.reverse_cost);
 			edgestring+=id+","+source+","+target+","+cost+","+reverse_cost+"$";
 		}
 		/*for (int i = 0; i < num_edges; ++i)
@@ -578,7 +578,7 @@ public:
 			string source=patch::to_string((*edges)[i].source);
 			string target=patch::to_string((*edges)[i].target);
 			string cost=patch::to_string((*edges)[i].cost);
-			string reverse_cost=patch::to_string((*edges)[i].revcost);
+			string reverse_cost=patch::to_string((*edges)[i].reverse_cost);
 			edgestring+=id+","+source+","+target+","+cost+","+reverse_cost+"$";
 		}*/
 		(*estring)=strdup(edgestring.c_str());
@@ -600,7 +600,7 @@ public:
 				string source=patch::to_string(temp.source);
 				string target=patch::to_string(temp.target);
 				string cost=patch::to_string(temp.cost);
-				string reverse_cost=patch::to_string(temp.revcost);
+				string reverse_cost=patch::to_string(temp.reverse_cost);
 				vertex_string+=vid+","+eid+","+source+","+target+","+cost+","+reverse_cost+"$";
 			}
 			cout << endl;

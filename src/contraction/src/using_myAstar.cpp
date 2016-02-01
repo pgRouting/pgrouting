@@ -15,13 +15,13 @@ int main(int argc, char const *argv[])
 	edges[0].source=0;
 	edges[0].target=1;
 	edges[0].cost=5;
-	edges[0].revcost=-1;
+	edges[0].reverse_cost=-1;
 
 	edges[1].id=1;
 	edges[1].source=1;
 	edges[1].target=2;
 	edges[1].cost=4;
-	edges[1].revcost=-1;
+	edges[1].reverse_cost=-1;
 	g.initialize_graph(edges,2);
 	//g.remove_vertex(0);
 	Edge *path=NULL;

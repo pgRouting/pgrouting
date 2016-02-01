@@ -155,7 +155,7 @@ class Pgr_base_graph {
     Prepares the _graph_ to be of type _gtype_ with the
     aproximate number of vertices its coing to have as *initial_size*
   */
-  explicit Pgr_base_graph< G >(graphType gtype, const int initial_size)
+  explicit Pgr_base_graph< G >(graphType gtype, const int64_t initial_size)
      : graph(initial_size),
        numb_vertices(0),
        m_gType(gtype)
@@ -202,7 +202,7 @@ class Pgr_base_graph {
                 d_edge.source = graph[source(*out, graph)].id;
                 d_edge.target = graph[target(*out, graph)].id;
                 d_edge.cost = graph[*out].cost;
-                d_edge.revcost = -1;
+                d_edge.reverse_cost = -1;
                 removed_edges[d_edge.id]=d_edge;
             }
       }
@@ -223,7 +223,7 @@ void remove_vertex(int64_t p_vertex) {
             d_edge.source = graph[source(*out, graph)].id;
             d_edge.target = graph[target(*out, graph)].id;
             d_edge.cost = graph[*out].cost;
-            d_edge.revcost = -1;
+            d_edge.reverse_cost = -1;
             removed_edges[d_edge.id]=d_edge;
       }
 
@@ -236,7 +236,7 @@ void remove_vertex(int64_t p_vertex) {
                 d_edge.source = graph[source(*in, graph)].id;
                 d_edge.target = graph[target(*in, graph)].id;
                 d_edge.cost = graph[*in].cost;
-                d_edge.revcost = -1;
+                d_edge.reverse_cost = -1;
                 removed_edges[d_edge.id]=d_edge;
           }
       }
@@ -272,7 +272,7 @@ void remove_vertex(int64_t p_vertex) {
             d_edge.source = graph[source(*out, graph)].id;
             d_edge.target = graph[target(*out, graph)].id;
             d_edge.cost = graph[*out].cost;
-            d_edge.revcost = -1;
+            d_edge.reverse_cost = -1;
             removed_edges[d_edge.id]=d_edge;
       }
 
@@ -285,7 +285,7 @@ void remove_vertex(int64_t p_vertex) {
                 d_edge.source = graph[source(*in, graph)].id;
                 d_edge.target = graph[target(*in, graph)].id;
                 d_edge.cost = graph[*in].cost;
-                d_edge.revcost = -1;
+                d_edge.reverse_cost = -1;
                 removed_edges[d_edge.id]=d_edge;
           }
       }
@@ -298,7 +298,7 @@ void remove_vertex(int64_t p_vertex) {
     {
       EO_i out, out_end;
         V_i vi;
-        int count;
+        int64_t count;
         for (vi = vertices(graph).first; vi != vertices(graph).second; ++vi) {
             count=0;
             for (boost::tie(out, out_end) = out_edges(*vi, graph);
@@ -340,7 +340,7 @@ void remove_vertex(int64_t p_vertex) {
       }
     }
 
-    void get_degree(int64_t vid,int deg)
+    void get_degree(int64_t vid,int64_t deg)
     {
       V v;
       get_vertex_descriptor(vid,v);
@@ -463,10 +463,10 @@ void remove_vertex(int64_t p_vertex) {
       graph[e].type=0;
     }
 
-    if (edge.revcost > 0) {
+    if (edge.reverse_cost > 0) {
       boost::tie(e, inserted) =
       boost::add_edge(vm_t->second, vm_s->second, graph);
-      graph[e].cost = edge.revcost;
+      graph[e].cost = edge.reverse_cost;
       graph[e].source=edge.target;
       graph[e].target=edge.source;
       graph[e].id = edge.id;

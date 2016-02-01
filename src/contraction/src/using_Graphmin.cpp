@@ -39,7 +39,7 @@ void string_to_edges(string edges,Edge **data_edges,int *count)
 					(*data_edges)[i].cost=atof(str_edge[j].c_str());
 					break;
 					case 4:
-					(*data_edges)[i].revcost=atof(str_edge[j].c_str());
+					(*data_edges)[i].reverse_cost=atof(str_edge[j].c_str());
 					break;
 				}
 			}  
@@ -54,7 +54,7 @@ void print_edges(Edge *data_edges,int count)
 	{
 		cout << "(" << data_edges[i].id << ", "<< data_edges[i].source << ", "
 			<< data_edges[i].target << ", "<< data_edges[i].cost 
-			<< ", "<< data_edges[i].revcost << ", "  << " )" << endl;
+			<< ", "<< data_edges[i].reverse_cost << ", "  << " )" << endl;
 }
 }
 int main(int argc, char const *argv[])
@@ -72,37 +72,37 @@ int main(int argc, char const *argv[])
 	edges[0].source=1;
 	edges[0].target=2;
 	edges[0].cost=1;
-	edges[0].revcost=-1;
+	edges[0].reverse_cost=-1;
 
 	edges[1].id=2;
 	edges[1].source=2;
 	edges[1].target=3;
 	edges[1].cost=2;
-	edges[1].revcost=-3;
+	edges[1].reverse_cost=-3;
 
 	edges[2].id=3;
 	edges[2].source=2;
 	edges[2].target=4;
 	edges[2].cost=1;
-	edges[2].revcost=-1;
+	edges[2].reverse_cost=-1;
 
 	edges[3].id=4;
 	edges[3].source=3;
 	edges[3].target=4;
 	edges[3].cost=3;
-	edges[3].revcost=-1;
+	edges[3].reverse_cost=-1;
 
 	edges[4].id=5;
 	edges[4].source=4;
 	edges[4].target=5;
 	edges[4].cost=1;
-	edges[4].revcost=-2;
+	edges[4].reverse_cost=-2;
 
 	edges[5].id=6;
 	edges[5].source=5;
 	edges[5].target=6;
 	edges[5].cost=4;
-	edges[5].revcost=-1;
+	edges[5].reverse_cost=-1;
 	g.initialize_graph_minimizer(edges,edge_count);
 	//g.print_graph();
 	cout << "initial vertices " << g.reduced_graph->numb_vertices << endl;

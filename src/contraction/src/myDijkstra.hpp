@@ -22,7 +22,7 @@ class My_dijkstra
   typedef deque<Edge> unpackedPath;
   typedef typename boost::graph_traits < G >::edge_descriptor E;
   //constrictor for this class which inherits the base graph
-  explicit My_dijkstra(graphType gtype, const int initial_size)
+  explicit My_dijkstra(graphType gtype, const int64_t initial_size)
   :Graph_Minimizer<G>(gtype, initial_size) {}
 
   //initializes the graph with the given edges
@@ -68,7 +68,7 @@ void print_predecessors()
 {
   //typedef typename boost::graph_traits < G >::vertex_descriptor V;
   std::cout << "predecessors :" << endl;
-  for (int i = 0; i < this->predecessors.size(); ++i)
+  for (int64_t i = 0; i < this->predecessors.size(); ++i)
   {
     int64_t src,dest;
     this->get_vertex_id(i,src);
@@ -82,7 +82,7 @@ void print_predecessors()
 void print_distances()
 {
   std::cout << "distances :" << endl;
-  for (int i = 0; i < this->distances.size(); ++i)
+  for (int64_t i = 0; i < this->distances.size(); ++i)
   {
     cout << i << " ---> " << this->distances[i] << endl;
   }
@@ -111,7 +111,7 @@ void get_path(V source,V target,Edge **path,int64_t &size)
     size=path_size;
     cout << "Path is of size " << path_size << endl;
     (*path)=(Edge *)malloc(sizeof(Edge)*path_size);
-    int temp_size=path_size-1;
+    int64_t temp_size=path_size-1;
     temp=target;
     int64_t sid=-1,tid=-1;
     while(this->predecessors[temp]!=temp)
@@ -150,7 +150,7 @@ void get_reduced_path(V source,V target,Edge **path,int64_t &size)
     size=path_size;
     cout << "Path is of size " << path_size << endl;
     (*path)=(Edge *)malloc(sizeof(Edge)*path_size);
-    int temp_size=path_size-1;
+    int64_t temp_size=path_size-1;
     temp=target;
     int64_t sid=-1,tid=-1,etype=0,eid=-1;
     while(this->reduced_graph->predecessors[temp]!=temp)
@@ -179,10 +179,10 @@ void get_reduced_path(V source,V target,Edge **path,int64_t &size)
     }
   }
 }
-int get_psuedo_edge_count(Edge **path,int64_t size)
+int64_t get_psuedo_edge_count(Edge **path,int64_t size)
 {
-  int count=0;
-  for (int i = 0; i < size; ++i)
+  int64_t count=0;
+  for (int64_t i = 0; i < size; ++i)
   {
     if ((*path)[i].type!=0)
     count++;
@@ -194,7 +194,7 @@ void dijkstra_on_contracted(int64_t src,int64_t dest,Edge **path,int64_t &size)
   Edge *mainPath=NULL;
   unpackedPath srcPath,targetPath;
   int64_t closest_src,closest_target;
-  int src_size,target_size;
+  int64_t src_size,target_size;
   this->find_source_vertex(src,closest_src,srcPath);
   this->find_target_vertex(dest,closest_target,targetPath);
   src_size=srcPath.size();
@@ -226,14 +226,14 @@ void dijkstra_on_contracted(int64_t src,int64_t dest,Edge **path,int64_t &size)
     .distance_map(&this->reduced_graph->distances[0]));
 
 get_reduced_path(source,target,&mainPath,size);
-int num_psuedo_edges=get_psuedo_edge_count(&mainPath,size);
+int64_t num_psuedo_edges=get_psuedo_edge_count(&mainPath,size);
 
-int total_size=size+src_size+target_size+num_psuedo_edges;
+int64_t total_size=size+src_size+target_size+num_psuedo_edges;
 cout << "total path size is " << total_size << endl;
 *path=(Edge*)malloc(total_size*sizeof(Edge));
 
-int temp_size=0;
-for (int i = 0; i < src_size; ++i)
+int64_t temp_size=0;
+for (int64_t i = 0; i < src_size; ++i)
 {
   (*path)[i].id=srcPath[i-temp_size].id;
   (*path)[i].source=srcPath[i-temp_size].source;
@@ -241,8 +241,8 @@ for (int i = 0; i < src_size; ++i)
   (*path)[i].cost=srcPath[i-temp_size].cost;
 }
 temp_size=src_size;
-int ind=src_size;
-for (int i = src_size; i < src_size+size; ++i)
+int64_t ind=src_size;
+for (int64_t i = src_size; i < src_size+size; ++i)
 {
   if ((mainPath)[ind].type==0)
   {
@@ -277,7 +277,7 @@ for (int i = src_size; i < src_size+size; ++i)
   }
 }
 temp_size=src_size+size;
-for (int i = src_size+size; i < total_size-num_psuedo_edges; ++i)
+for (int64_t i = src_size+size; i < total_size-num_psuedo_edges; ++i)
 {
   (*path)[ind].id=targetPath[i-temp_size].id;
   (*path)[ind].source=targetPath[i-temp_size].source;
@@ -291,7 +291,7 @@ void print_reduced_predecessors()
 {
   //typedef typename boost::graph_traits < G >::vertex_descriptor V;
   std::cout << "reduced predecessors :" << endl;
-  for (int i = 0; i < this->reduced_graph->predecessors.size(); ++i)
+  for (int64_t i = 0; i < this->reduced_graph->predecessors.size(); ++i)
   {
     int64_t src,dest;
     this->reduced_graph->get_vertex_id(i,src);

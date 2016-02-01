@@ -31,7 +31,7 @@ shortest_path_Astar(PG_FUNCTION_ARGS) {
  //int SPIcode = 0;
   Edge *edges=NULL;
   Edge *path=NULL;
-  int num_edges,num_vertices,path_size=0;
+  int64_t num_edges,num_vertices,path_size=0;
     FuncCallContext     *funcctx;
     int                  call_cntr;
   int                  max_calls;
@@ -46,16 +46,16 @@ shortest_path_Astar(PG_FUNCTION_ARGS) {
     has_rcost=PG_GETARG_BOOL(3);
     //fetch the edges and construct the graph
     num_edges=fetch_astar_data(pgr_text2char(PG_GETARG_TEXT_P(0)),&edges,&num_vertices,has_rcost);
-    int source=PG_GETARG_INT64(1),target=PG_GETARG_INT64(2);
-    elog(INFO, "EDGE COUNT: %d", num_edges);
-    elog(INFO, "VERTEX COUNT: %d", num_vertices);
+    int64_t source=PG_GETARG_INT64(1),target=PG_GETARG_INT64(2);
+    elog(INFO, "EDGE COUNT: %ld", num_edges);
+    elog(INFO, "VERTEX COUNT: %ld", num_vertices);
     //prints the path if the number of edges > 0
     if (num_edges>0)
     {
       //char buf[8192];
       //buf[0] = 0;
       //elog(INFO, "COUNT: %d", num_edges);
-      int i;
+      int64_t i;
       /*for (i = 0; i < num_edges; ++i)
       {
       //stroing it in a buffer
@@ -63,11 +63,11 @@ shortest_path_Astar(PG_FUNCTION_ARGS) {
         //elog(INFO, "EDGES: %d %d", edges[i].source,edges[i].target);
       }*/
         path_size=compute_astar(source,target,edges,num_vertices,num_edges,&path);
-        elog(INFO,"Path Length %d",path_size);
+        elog(INFO,"Path Length %ld",path_size);
         elog(INFO,"seq  | source  | target  | cost");
         for (i = 0; i < path_size; ++i)
         {
-          elog(INFO,"%d | %d  | %d  | %f",path[i].id,path[i].source,path[i].target,path[i].cost);
+          elog(INFO,"%ld | %ld  | %ld  | %f",path[i].id,path[i].source,path[i].target,path[i].cost);
         }
         free(edges);
         free(path);

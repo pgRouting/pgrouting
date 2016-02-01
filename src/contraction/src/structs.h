@@ -4,17 +4,17 @@
 //represents an edge
 typedef struct
 {
-	int source,target,id,type;
-	float cost, revcost;
+	int64_t source,target,id,type;
+	float cost, reverse_cost;
 	float s_x,s_y,t_x,t_y;
 } Edge;
 
 //represents an vertex
 typedef struct
 {
-	int id;
-	int degree;
-	int contractions;
+	int64_t id;
+	int64_t degree;
+	int64_t contractions;
 	float x;
 	float y;
 } Vertex;
@@ -22,9 +22,9 @@ typedef struct
 //represents an edge
 typedef struct
 {
-	int seq;
-    int source;
-    int target;
+	int64_t seq;
+    int64_t source;
+    int64_t target;
     float cost;
     float tot_cost;
 

@@ -19,16 +19,16 @@
 
 
 
-static int compute_contracted_graph(char* sql,int level, 
-	int *final_edge_count,char **graphName,
+static int64_t compute_contracted_graph(char* sql,int64_t level, 
+	int64_t *final_edge_count,char **graphName,
 	char **edgeString,char **psuedoEString,
 	char **removedVString,char **removedEString,bool has_rcost) {
 	//int SPIcode = 0;
 	Edge *edges = NULL;
-	int initial_num_edges = 0;
+	int64_t initial_num_edges = 0;
 	char *err_msg = (char *)"";
-	int ret = -1;
-	int initial_num_vertices=0,final_num_vertices=0;
+	int64_t ret = -1;
+	int64_t initial_num_vertices=0,final_num_vertices=0;
 
 	PGR_DBG("Load data");
 	//elog(INFO,"Loading data.....");
@@ -72,14 +72,14 @@ pgr_contractgraph(PG_FUNCTION_ARGS) {
  //int SPIcode = 0;
 	//Edge *final_edges=NULL;
 	 AttInMetadata       *attinmeta;
-	int level=-1;
+	int64_t level=-1;
 	FuncCallContext     *funcctx;
 	int                  call_cntr;
 	int                  max_calls;
 	TupleDesc            tuple_desc;
 	pgr_contracted_blob *ret_value;
    	//Lens *ret_value=NULL;
-	int final_num_edges;
+	int64_t final_num_edges;
 	char *graphName;
 	char *edgeString;
 	char *psuedoEString;
@@ -153,7 +153,7 @@ pgr_contractgraph(PG_FUNCTION_ARGS) {
 		char  **values;
 		char *nulls;
       //values = palloc(2*sizeof(Datum));
-		int k;
+		int64_t k;
 		values = (char **) palloc(5 * sizeof(char *));
 		nulls = palloc(5*sizeof(char));
 		for (k=0; k<5; k++) {
