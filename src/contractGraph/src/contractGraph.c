@@ -51,8 +51,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/edges_input.h"
 #include "./../../contraction/src/structs.h"
 
+#include "./../../contraction/src/structs.h"
 #include "./contractGraph_driver.h"
-
 //#include "contract_function.h"
 //#include "./connection.h"
 
