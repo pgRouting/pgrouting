@@ -70,6 +70,7 @@ gettext_compact = False
 exclude_patterns = [
     'doc/build',
     'src/shooting_star/doc/index.rst',
+    'src/withPoints/doc/pgr_withPointsVia.rst',
     'src/travelingSalesPerson',
     '*/notUsed',
     'tools/template'

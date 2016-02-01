@@ -443,8 +443,8 @@ message("CGAL uses: Boost thread library")
 
 # pgRouting directly doesnt need thread, but CGAL does
 set(Boost_ADDITIONAL_VERSIONS "1.60" "1.59" "1.58" "1.57")
-set(Boost_USE_STATIC_LIBS ON)
-set(Boost_USE_MULTITHREADED ON)
+#set(Boost_USE_STATIC_LIBS ON)
+#set(Boost_USE_MULTITHREADED ON)
 
 find_package(Boost ${BOOST_MINIMUM_VERSION} COMPONENTS thread REQUIRED) 
 

@@ -33,22 +33,6 @@ This are proposed functions
     - Might need a deprecated function of pgRouting
 
 
-
-Proposed functions: Proposed by Vicky Vergara
----------------------------------------------
-
-:ref:`pgr_withPointsVia` - Use pgr_dijkstraVia make the route via points.
-
-Needs:
-    - pgr_dijkstraVia be official function of pgRouting
-    - To be c/c++ coded
-
-.. toctree::
-  :hidden:
-
-  ../src/withPoints/doc/pgr_withPointsVia
-
-
 Proposed functions: Proposed by Steve Woodbridge
 ------------------------------------------------
 

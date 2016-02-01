@@ -29,5 +29,4 @@ When points are given as input:
         ./pgr_withPoints
         ./pgr_withPointsCost
         ./pgr_withPointsKSP
-        ./pgr_withPointsVia
         ./pgr_withPointsDD
