@@ -50,9 +50,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 
-#include "./structs.h"
-#include "contract_function.h"
-#include "./connection.h"
+#include "./../../contraction/src/structs.h"
+#include "./contractGraph_driver.h"
+//#include "contract_function.h"
+//#include "./connection.h"
 
 PG_FUNCTION_INFO_V1(contractGraph);
 #ifndef _MSC_VER
