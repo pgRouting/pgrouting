@@ -108,10 +108,14 @@ do_pgr_contractGraph(
             return;
         }
 
+        (*return_tuples) = NULL;
+        (*return_count) = 0;
+#if 0
         // get the space required to store all the paths
         (*return_tuples) = get_memory(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
+#endif
 
 #ifndef DEBUG
         *err_msg = strdup("OK");
