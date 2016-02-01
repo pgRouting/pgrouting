@@ -36,8 +36,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 // TODO remove if not needed
-#include "utils/lsyscache.h"
-#include "utils/builtins.h"
+// #include "utils/lsyscache.h"
+// #include "utils/builtins.h"
 
 /*
   Uncomment when needed
@@ -49,10 +49,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
+#include "./../../contraction/src/structs.h"
 
-#include "./structs.h"
-#include "contract_function.h"
-#include "./connection.h"
+#include "./contractGraph_driver.h"
+
+//#include "contract_function.h"
+//#include "./connection.h"
 
 PG_FUNCTION_INFO_V1(contractGraph);
 #ifndef _MSC_VER
@@ -173,10 +175,10 @@ contractGraph(PG_FUNCTION_ARGS) {
     result_tuples = (pgr_contracted_blob*) funcctx->user_fctx;
 
     if (call_cntr < max_calls) {
-        HeapTuple    tuple;
-        Datum        result;
-        Datum        *values;
-        char*        nulls;
+        HeapTuple   tuple;
+        Datum       result;
+        Datum       *values;
+        char        *nulls;
 
         /*******************************************************************************/
         /*                          MODIFY!!!!!                                        */
@@ -191,6 +193,7 @@ contractGraph(PG_FUNCTION_ARGS) {
 
 
         values = palloc(5 * sizeof(Datum));
+        //values = (char **) palloc(5 * sizeof(char *));
         nulls = palloc(5 * sizeof(char));
 
         size_t i;
@@ -200,11 +203,11 @@ contractGraph(PG_FUNCTION_ARGS) {
 
 
         // postgres starts counting from 1
-        values[0] = result_tuples->contracted_graph_name   ? pstrdup(result_tuples->contracted_graph_name) : NULL;
-        values[1] = result_tuples->contracted_graph_blob  ? pstrdup(result_tuples->contracted_graph_blob) : NULL;
-        values[2] = result_tuples->removedVertices ? pstrdup(result_tuples->removedVertices) : NULL;
-        values[3] = result_tuples->removedEdges ? pstrdup(result_tuples->removedEdges) : NULL;
-        values[4] = result_tuples->psuedoEdges ? pstrdup(result_tuples->psuedoEdges) : NULL;
+        values[0] =  CStringGetDatum(result_tuples->contracted_graph_name);
+        values[1] = CStringGetDatum(result_tuples->contracted_graph_blob);
+        values[2] = CStringGetDatum(result_tuples->removedVertices);
+        values[3] = CStringGetDatum(result_tuples->removedEdges);
+        values[4] = CStringGetDatum(result_tuples->psuedoEdges);
         /*******************************************************************************/
 
         tuple = heap_formtuple(tuple_desc, values, nulls);
@@ -212,7 +215,19 @@ contractGraph(PG_FUNCTION_ARGS) {
         SRF_RETURN_NEXT(funcctx, result);
     } else {
         // cleanup
-        if (result_tuples) free(result_tuples);
+        if (result_tuples) {
+            if (result_tuples->contracted_graph_name) 
+                free(result_tuples->contracted_graph_name);
+            if (result_tuples->contracted_graph_blob) 
+                free(result_tuples->contracted_graph_blob);
+            if (result_tuples->removedVertices) 
+                free(result_tuples->removedVertices);
+            if (result_tuples->removedEdges) 
+                free(result_tuples->removedEdges);
+            if (result_tuples->psuedoEdges) 
+                free(result_tuples->psuedoEdges);
+            free(result_tuples);
+        }
 
         SRF_RETURN_DONE(funcctx);
     }
