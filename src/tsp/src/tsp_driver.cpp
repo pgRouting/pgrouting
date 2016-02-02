@@ -32,12 +32,14 @@
 #include <math.h>      /* exp    */
 #endif
 
+#include "./tsp_driver.h"
+
 #include <vector>
 #include <algorithm>
 
+
 #include "./Dmatrix.hpp"
 #include "./pgr_tsp.hpp"
-#include "./tsp_driver.h"
 /*
  * Defs
  */

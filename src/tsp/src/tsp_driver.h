@@ -29,12 +29,12 @@
 
 #pragma once
 
-#include "../../common/src/pgr_types.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#include "../../common/src/pgr_types.h"
 
 int 
 do_pgr_tsp(

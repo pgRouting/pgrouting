@@ -1,8 +1,19 @@
 
 #pragma once
 
-#include <vector>
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "../../common/src/pgr_types.h"
+
+#ifdef __cplusplus
+}
+#endif
+
+
+#include <vector>
+
 
 
 class Dmatrix {
