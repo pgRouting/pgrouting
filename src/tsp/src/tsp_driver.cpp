@@ -27,9 +27,9 @@
  *
  *  ******************************************************************** PGR-GNU*/
 
-#if 0
-#include <string.h>    /* memcpy */
-#include <math.h>      /* exp    */
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
 #endif
 
 #include "./tsp_driver.h"
