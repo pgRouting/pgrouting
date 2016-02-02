@@ -175,6 +175,7 @@ add_subdirectory(doc)
 set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/apsp_johnson/src
     ${PGROUTING_SOURCE_DIR}/src/apsp_warshall/src
+    ${PGROUTING_SOURCE_DIR}/src/allpairs/src
     ${PGROUTING_SOURCE_DIR}/src/astar/src
     ${PGROUTING_SOURCE_DIR}/src/bd_astar/src
     ${PGROUTING_SOURCE_DIR}/src/bd_dijkstra/src
@@ -241,8 +242,83 @@ set(PACKAGE_SQL_FILES "")
 set(L_PACKAGE_SQL_FILES "")
 
 # Recurse into the subdirectories.
-add_subdirectory(src)
-list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
+#==========================
+#  PgRouting_SOURCE_NAMES
+#==========================
+#
+#
+#  Some ordering is here:
+#  First Group
+#    Line 1: V 2.1
+#    Line 2: V 2.2
+#
+#  Middle group: V 2.0
+#
+#  Last group: proposed functions
+#  That is directories that didnt exist on V 2.0 but do exist in V 2.1
+#  but classification is as proposed (so that bug fixes are not as urgent as
+#  for the Middle group
+#-----------------------------------------------------------------------------
+
+set(PgRouting_SOURCE_NAMES
+    "common"
+    "dijkstra"
+    "driving_distance"
+    "ksp"
+    "allpairs"
+    "withPoints"
+
+    #"funnyDijkstra"
+
+    "alpha_shape"
+
+    "astar" "bd_astar"
+    "bd_dijkstra"
+    "kdijkstra"
+    "trsp" #2.0
+    "tsp"
+
+    "vrp_basic" "vrppdtw"
+    )
+
+#-------------------
+# add the subdirectories that have the C/C++ code 
+#-------------------
+
+foreach (subdir ${PgRouting_SOURCE_NAMES})
+    add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/src")
+endforeach()
+
+#-----------------------------------------------------------------------------
+# List variable to collect module SQL file names
+#-----------------------------------------------------------------------------
+set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES}
+    "apsp_johnson"  #V2.0
+    "apsp_warshall" #V2.0
+    "convinience"
+    "topology"
+    "label_graph")
+
+
+set(PACKAGE_SQL_FILES "")
+set(LIST_PACKAGE_SQL_FILES "")
+
+foreach (subdir ${PgRouting_SQL_DIRECTORIES})
+    add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/sql")
+endforeach()
+
+list(APPEND LIST_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
+
+if (CDEBUG)
+    foreach (files ${LIST_PACKAGE_SQL_FILES})
+        message("${files}")
+    endforeach()
+endif()
+
+
+#add_subdirectory(src)
+#list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
+
 
 # assemble the object files from the src functions into
 # a single library librouting.so
@@ -257,29 +333,60 @@ endif(APPLE)
 
 LINK_LIBRARIES(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
 
-# libraries listed in alphabetical order.
-add_library(routing-2.2
+#-------------------
+# pgRouting objects to be linked
+#-------------------
+foreach (subdir ${PgRouting_SOURCE_NAMES} )
+    set(PGROUTING_OBJECTS ${PGROUTING_OBJECTS} "$<TARGET_OBJECTS:${subdir}>")
+endforeach()
+
+
+#-----------------------------------------------------------------------------
+# PGROUTING Library names
+#-----------------------------------------------------------------------------
+
+message("Building the library names")
+
+#----------------------
+# PGROUTING installation files names have the following name
+#----------------------
+set(PGROUTING_LIB_NAME "pgrouting--${PGROUTING_VERSION_STRING}")
+
+
+#----------------------
+# PGROUTING library name used in the pgr_functions
+#  '$libdir/${PGROUTING_LIBRARY_NAME}'
+#----------------------
+set(PGROUTING_LIBRARY_NAME "libpgrouting--${PGROUTING_VERSION_STRING}")
+
+add_library(${PGROUTING_LIB_NAME}
     ${LIBRARY_MODE_TARGET}
-    $<TARGET_OBJECTS:apsp_johnson>
-    $<TARGET_OBJECTS:apsp_warshall>
-    $<TARGET_OBJECTS:astar>
-    $<TARGET_OBJECTS:bd_astar>
-    $<TARGET_OBJECTS:bd_dijkstra>
-    $<TARGET_OBJECTS:common>
-    $<TARGET_OBJECTS:dijkstra>
-    $<TARGET_OBJECTS:driving_distance>
-    $<TARGET_OBJECTS:kdijkstra>
-    $<TARGET_OBJECTS:ksp>
-    $<TARGET_OBJECTS:trsp>
-    $<TARGET_OBJECTS:tsp>
-    $<TARGET_OBJECTS:vrp_basic>
-    $<TARGET_OBJECTS:vrppdtw>
+    ${PGROUTING_OBJECTS})
+
+# libraries listed in alphabetical order.
+#add_library(routing-2.2
+#${LIBRARY_MODE_TARGET}
+#$<TARGET_OBJECTS:apsp_johnson>
+#$<TARGET_OBJECTS:apsp_warshall>
+#$<TARGET_OBJECTS:astar>
+#$<TARGET_OBJECTS:allpairs>
+#$<TARGET_OBJECTS:bd_astar>
+#$<TARGET_OBJECTS:bd_dijkstra>
+#$<TARGET_OBJECTS:common>
+#$<TARGET_OBJECTS:dijkstra>
+#$<TARGET_OBJECTS:driving_distance>
+#$<TARGET_OBJECTS:kdijkstra>
+#$<TARGET_OBJECTS:ksp>
+#$<TARGET_OBJECTS:trsp>
+#$<TARGET_OBJECTS:tsp>
+#$<TARGET_OBJECTS:vrp_basic>
+#$<TARGET_OBJECTS:vrppdtw>
 
 #not supported but directory exists
 #    $<TARGET_OBJECTS:shooting_star>
-    )
+#    )
 
-install(TARGETS routing-2.2 DESTINATION ${LIBRARY_INSTALL_PATH})
+install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${LIBRARY_INSTALL_PATH})
 
 #add_library(routing_vrp
 #add_library(routing_bd
@@ -287,28 +394,30 @@ install(TARGETS routing-2.2 DESTINATION ${LIBRARY_INSTALL_PATH})
 #add_library(routing
 
 
+
+
 if(APPLE)
-    set_target_properties(routing-2.2
+    set_target_properties(${PGROUTING_LIB_NAME}
         PROPERTIES
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)
 
 
 file(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-"-- pgRouting version '${PGROUTING_VERSION_STRING}' extension for postgresql\n")
+    "-- pgRouting version '${PGROUTING_VERSION_STRING}' extension for postgresql\n")
 
 file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-  "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
+    "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
 #file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
 #    "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
 
 
-cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
-    "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
+#cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
+#    "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 #cat("${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 
 
-foreach(PACKAGE_SQL_FILE ${L_PACKAGE_SQL_FILES})
+foreach(PACKAGE_SQL_FILE ${LIST_PACKAGE_SQL_FILES})
     cat(${PACKAGE_SQL_FILE} "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 endforeach()
 
@@ -324,20 +433,20 @@ configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
 # create the signature file for this release
 message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION_STRING}.sig")
 execute_process(
-  COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file ${PGROUTING_VERSION_STRING}
-  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-  RESULT_VARIABLE SIG_RESULT
-)
+    COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file ${PGROUTING_VERSION_STRING}
+    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+    RESULT_VARIABLE SIG_RESULT
+    )
 if(SIG_RESULT)
     message(FATAL_ERROR "    SIG_RESULT: ${SIG_RESULT}")
 endif(SIG_RESULT)
 
 # create the extension update scripts
 execute_process(
-  COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/build-extension-update-files ${PGROUTING_VERSION_STRING} ${PGROUTING_SOURCE_DIR}
-  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-  RESULT_VARIABLE UPDATE_RESULT
-)
+    COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/build-extension-update-files ${PGROUTING_VERSION_STRING} ${PGROUTING_SOURCE_DIR}
+    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+    RESULT_VARIABLE UPDATE_RESULT
+    )
 if(UPDATE_RESULT)
     message(FATAL_ERROR "   UPDATE_RESULT: ${UPDATE_RESULT}")
 endif(UPDATE_RESULT)
@@ -366,6 +475,6 @@ install(FILES
     "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
     ${VERSION_UPDATE_FILES}
-#    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
+    #    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
     DESTINATION "${SHARE_DIR}")
 
