@@ -1,286 +1,121 @@
-#-----------------------------------------------------------------------------
-# Find the PostgreSQL installation for PGROUTING.
+# - Find PostgreSQL
+# Find the PostgreSQL includes and client library
+# This module defines
+#  POSTGRESQL_INCLUDE_DIR, where to find POSTGRESQL.h
+#  POSTGRESQL_LIBRARIES, the libraries needed to use POSTGRESQL.
+#  POSTGRESQL_FOUND, If false, do not try to use PostgreSQL.
+#  POSTGRESQL_EXECUTABLE
+#  POSTGRESQL_VERSION_STRING
 #
-#  (c) 2015 pgRouting contributors
+# Copyright (c) 2006, Jaroslaw Staniek, <js@iidea.pl>
 #
-# Limitations: Doesn't work for postgrSQL 9.0 and 8.X
-# Currently, the following version numbers are known to this module:
-#    "9.5" "9.4" "9.3" "9.2" "9.1"
-#
-# Benefits:
-#  - works only for postgreSQL versions that have
-#    CREATE EXTENSION
-#  - Code grouped by OS
-#  
-# Note: postgreSQL gets installed in some regular places, so this is based on that
-# regularity
-#
-# ----------------------------------------------------------------------------
-# Usage:
-# ----------------------------------------------------------------------------
-# In your CMakeLists.txt file do something like this:
-# ...
-# # PostgreSQL
-# FIND_PACKAGE(PostgreSQL 9.1)
-# ...
-# if( PostgreSQL_FOUND )
-#   include_directories(${PostgreSQL_INCLUDE_DIRS})
-#   link_directories(${PostgreSQL_LIBRARY_DIRS})
-# endif( PostgreSQL_FOUND )
-# ...
-# Remember to include ${PostgreSQL_LIBRARIES} in the target_link_libraries() statement.
-#
-#
-#  
-# ----------------------------------------------------------------------------
-# The following variables are set if PostgreSQL is found:
-# ----------------------------------------------------------------------------
-#
-#   PostgreSQL_FOUND                    - Set to true when PostgreSQL is found.
-#
-#   PostgreSQL_VERSION                  - (mayor.minor) version
-#   PostgreSQL_VERSION_STRING           - Full Version 
-#
-#   PostgreSQL_INCLUDE_DIRS             - List of Direcotries where the *.h are
-#
-#   PostgreSQL_LIBRARY_DIRS             - List of Directories where the *.so are
-#   PostgreSQL_LIBRARIES                - List of *.so to be linked
-#
-#   PostgreSQL_EXTENSION_LIBRARY_DIRS   - Directory where the extension's *.so are installed
-#   PostgreSQL_EXTENSION_DIRS           - Directory where the *.sql and control are installed
-#
-#
-#
-# ----------------------------------------------------------------------------
-# History:
-# This module is derived from the module originally found in the VTK source tree.
-#
-# ----------------------------------------------------------------------------
-# Notes:
-# - It looks for the most recent installation of postgreSQL
-#
-# - To look for a particular (mayor.minor) <version>
-#    set(PostgreSQL_ADDITIONAL_VERSIONS <version1> <version2>)
-#   before calling FIND_PACKAGE(PostgreSQL) in your CMakeLists.txt file.
-#
-#   This will mean that the versions you set here will be found first in the order
-#   specified before the default ones are searched.
-#  
-#   set(PostgreSQL_DEBUG ON)            - for printing what was found (in case of success)
-#
-# ----------------------------------------------------------------------------
-# If you have installed PostgreSQL in a non-standard location.
-# ----------------------------------------------------------------------------
-# You can manually set: (-Dflagname=value)
-#
-#   PostgreSQL_INCLUDE_DIR             - List of Direcotries where the *.h are
-#
-#   PostgreSQL_LIBRARY_DIR             - List of Directories where the *.so are
-#   PostgreSQL_LIBRARY                - List of *.so to be linked
-#
-#   PostgreSQL_EXTENSION_LIBRARY_DIR   - Directory where the extension's *.so are installed
-#   PostgreSQL_EXTENSION_DIR           - Directory where the *.sql and control are installed
-#
-# it will check if the information given is valid
-#
-# ----------------------------------------------------------------------------
+# Redistribution and use is allowed according to the terms of the BSD license.
+# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
-set(PostgreSQL_INCLUDE_PATH_DESCRIPTION "top-level directory containing the PostgreSQL include directories. E.g /usr/local/include/PostgreSQL/8.4 or C:/Program Files/PostgreSQL/8.4/include")
-set(PostgreSQL_INCLUDE_DIR_MESSAGE "Set the PostgreSQL_INCLUDE_DIR cmake cache entry to the ${PostgreSQL_INCLUDE_PATH_DESCRIPTION}")
-set(PostgreSQL_LIBRARY_PATH_DESCRIPTION "top-level directory containing the PostgreSQL libraries.")
-set(PostgreSQL_LIBRARY_DIR_MESSAGE "Set the PostgreSQL_LIBRARY_DIR cmake cache entry to the ${PostgreSQL_LIBRARY_PATH_DESCRIPTION}")
-set(PostgreSQL_ROOT_DIR_MESSAGE "Set the PostgreSQL_ROOT system variable to where PostgreSQL is found on the machine E.g C:/Program Files/PostgreSQL/8.4")
+# Add the postgresql and mysql include paths here
 
-# Only versions with extensions
-set(PostgreSQL_KNOWN_VERSIONS ${PostgreSQL_ADDITIONAL_VERSIONS}
-    "9.5" "9.4" "9.3" "9.2" "9.1")
+# A check condition to see if those variables are set
 
-set(PostgreSQL_ROOT_DIRECTORIES
-    ENV PostgreSQL_ROOT
-    ${PostgreSQL_ROOT}
-    )
+#POSTGRESQL_BIN ia an optional commandline argument to specify a non-standard path to the postgresql program executables
+SET(POSTGRESQL_BIN "" CACHE STRING "Some user-specified option")    
+
+if(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE AND POSTGRESQL_VERSION_STRING)
+    set(POSTGRESQL_FOUND TRUE)
+else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
+
+    if(NOT "${POSTGRESQL_BIN}" STREQUAL "")
+        # Checking POSTGRESQL_PG_CONFIG 
+        find_program(POSTGRESQL_PG_CONFIG NAMES pg_config
+            PATHS
+            ${POSTGRESQL_BIN}
+            NO_DEFAULT_PATH
+            )
+    else(NOT "${POSTGRESQL_BIN}" STREQUAL "")
+        # Checking POSTGRESQL_PG_CONFIG 
+        find_program(POSTGRESQL_PG_CONFIG NAMES pg_config
+            PATHS
+            /usr/lib/postgresql/*/bin/
+            )
+    endif(NOT "${POSTGRESQL_BIN}" STREQUAL "")
+
+    message(STATUS "POSTGRESQL_PG_CONFIG is " ${POSTGRESQL_PG_CONFIG})
+
+    if(POSTGRESQL_PG_CONFIG)
+        execute_process(
+            COMMAND ${POSTGRESQL_PG_CONFIG} --bindir
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+            OUTPUT_VARIABLE T_POSTGRESQL_BIN)
+    endif(POSTGRESQL_PG_CONFIG)
 
 
-# Define additional search paths for root directories.
-if ( WIN32 )
-    foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
-        set(ADDITIONAL_SEARCH_PATHS ${ADDITIONAL_SEARCH_PATHS} "C:/Program Files/PostgreSQL/${suffix}" )
-    endforeach(suffix)
-endif( WIN32 )
-
-set( PostgreSQL_ROOT_DIRECTORIES
-    ${ADDITIONAL_SEARCH_PATHS}
-    ${PostgreSQL_ROOT_DIRECTORIES}
-    ${PostgreSQL_ROOT}
-    )
-
-
-#
-# Look for an installation.
-#
-if (NOT EXISTS "${PostgreSQL_INCLUDE_DIR}")
-    find_path(PostgreSQL_INCLUDE_DIR
-        NAMES libpq-fe.h
+    # Checking POSTGRESQL_EXECUTABLE in all the dir (*) - implies that 
+    find_program(POSTGRESQL_EXECUTABLE NAMES postgres
         PATHS
-        # Look in other places.
-        ${PostgreSQL_ROOT_DIRECTORIES}
-        PATH_SUFFIXES
-        include
-        pgsql
-        postgresql
-        # Help the user find it if we cannot.
-        DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
+        ${T_POSTGRESQL_BIN}
+        )
+    message(STATUS "POSTGRESQL_EXECUTABLE is " ${POSTGRESQL_EXECUTABLE})
+
+
+#    find_program(POSTGRESQL_EXECUTABLE NAMES postgres
+#        PATHS
+#        /usr/lib/postgresql/*/bin/
+#        )
+#    message(STATUS "POSTGRESQL_EXECUTABLE is " ${POSTGRESQL_EXECUTABLE})
+
+#    find_program(POSTGRESQL_PG_CONFIG NAMES pg_config
+#        PATHS
+#        /usr/lib/postgresql/*/bin/
+#        )
+#    message(STATUS "POSTGRESQL_PG_CONFIG is " ${POSTGRESQL_PG_CONFIG})
+
+    if(POSTGRESQL_PG_CONFIG)
+        execute_process(
+            COMMAND ${POSTGRESQL_PG_CONFIG} --version
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+            OUTPUT_VARIABLE POSTGRESQL_VERSION_STRING)
+    endif(POSTGRESQL_PG_CONFIG)
+
+    message(STATUS "POSTGRESQL_VERSION_STRING in FindPostgreSQL.cmake is " ${POSTGRESQL_VERSION_STRING})
+
+    if(POSTGRESQL_PG_CONFIG)
+        execute_process(
+            COMMAND ${POSTGRESQL_PG_CONFIG} --includedir-server
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+            OUTPUT_VARIABLE T_POSTGRESQL_INCLUDE_DIR)
+    endif(POSTGRESQL_PG_CONFIG)
+
+    find_path(POSTGRESQL_INCLUDE_DIR postgres.h
+        ${T_POSTGRESQL_INCLUDE_DIR}
+
+        /usr/include/server
+        /usr/include/pgsql/server
+        /usr/local/include/pgsql/server
+        /usr/include/postgresql/server
+        /usr/include/postgresql/*/server
+        /usr/local/include/postgresql/server
+        /usr/local/include/postgresql/*/server
+        $ENV{ProgramFiles}/PostgreSQL/*/include/server
+        $ENV{SystemDrive}/PostgreSQL/*/include/server
         )
 
+    if(POSTGRESQL_PG_CONFIG)
+        execute_process(
+            COMMAND ${POSTGRESQL_PG_CONFIG} --libdir
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+            OUTPUT_VARIABLE POSTGRESQL_LIBRARIES)
+    endif(POSTGRESQL_PG_CONFIG)
 
-    if ( UNIX )
-        # find where the includes fliles are installed for the particular version os postgreSQL
-        foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
-            set(postgresql_additional_search_paths ${postgresql_additional_search_paths} "${PostgreSQL_INCLUDE_DIR}/${suffix}/server" )
-        endforeach()
-    endif()
+    if(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES)
+        set(POSTGRESQL_FOUND TRUE)
+        message(STATUS "POSTGRESQL_INCLUDE_DIR: ${POSTGRESQL_INCLUDE_DIR}")
+        message(STATUS "POSTGRESQL_LIBRARIES: ${POSTGRESQL_LIBRARIES}")
+        include_directories(${POSTGRESQL_INCLUDE_DIR})
+    else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES)
+        set(POSTGRESQL_FOUND FALSE)
+        message(STATUS "PostgreSQL not found.")
+    endif(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES)
 
-    #
-    # Look for THE installation.
-    #
-    find_path(PostgreSQL_TYPE_INCLUDE_DIR
-        NAMES catalog/pg_type.h
-        PATHS
-        # Look in other places.
-        ${postgresql_additional_search_paths}
-        ${PostgreSQL_ROOT_DIRECTORIES}
-        PATH_SUFFIXES
-        include
-        postgresql
-        pgsql/server
-        postgresql/server
-        include/server
-        # Help the user find it if we cannot.
-        DOC "The ${PostgreSQL_INCLUDE_DIR_MESSAGE}"
-        )
+    mark_as_advanced(POSTGRESQL_INCLUDE_DIR POSTGRESQL_LIBRARIES)
 
-    if (UNIX)
-        set (PostgreSQL_INCLUDE_DIR ${PostgreSQL_TYPE_INCLUDE_DIR})
-    endif()
-
-    # pgRouting does not use libpq-fe so we can ignore its directory
-    unset(postgresql_additional_search_paths)
-    #endif()
-
-endif()
-
-
-if (EXISTS ${PostgreSQL_INCLUDE_DIR} AND EXISTS "${PostgreSQL_INCLUDE_DIR}/pg_config.h")
-    file(STRINGS "${PostgreSQL_INCLUDE_DIR}/pg_config.h" pgsql_version_str
-        REGEX "^#define[\t ]+PG_VERSION[\t ]+\".*\"")
-
-    string(REGEX REPLACE "^#define[\t ]+PG_VERSION[\t ]+\"([^\"]*)\".*" "\\1"
-        PostgreSQL_VERSION_STRING "${pgsql_version_str}")
-    unset(pgsql_version_str)
-endif()
-string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1.\\2" PostgreSQL_VERSION ${PostgreSQL_VERSION_STRING})
-
-
-
-
-if ( APPLE )
-
-    # TODO Fill for APPLE
-
-endif()
-
-if ( WIN32 )
-
-    #need to remove the word include
-    string(REGEX REPLACE "/include" ""
-        striped_word_include "${PostgreSQL_INCLUDE_DIR}")
-
-    #-- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/share/extension/pgrouting.control
-    if (NOT EXISTS "${PostgreSQL_EXTENSION_DIR}")
-        set(PostgreSQL_EXTENSION_DIR "${striped_word_include}/share/extension")
-    endif()
-
-    #- Installing: e:/jenkins/postgresql/rel/pg9.5w64gcc48/lib/libpgrouting--2.2.0.dll.a
-    if (NOT EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}")
-        set(PostgreSQL_EXTENSION_LIBRARY_DIR "${striped_word_include}/lib")
-    endif()
-
-    #--   Where all library are: e:/jenkins/postgresql/rel/pg9.5w64gcc48/bin
-    if (NOT EXISTS "${PostgreSQL_LIBRARY_DIR}")
-        set(PostgreSQL_LIBRARY_DIR "${striped_word_include}/bin")
-    endif()
-
-    #--   Library: e:/jenkins/postgresql/rel/pg9.5w64gcc48/bin/libpq.dll
-    if (NOT EXISTS "${PostgreSQL_LIBRARY}")
-        set(PostgreSQL_LIBRARY "${striped_word_include}/bin/libpq.dll")
-    endif()
-
-    set(PostgreSQL_INCLUDE_DIR "${striped_word_include}/include")
-    unset(strip_word_include)
-endif()
-
-
-if ( UNIX )
-    if (NOT EXISTS "${PostgreSQL_LIBRARY}")
-        set(PostgreSQL_LIBRARY "/usr/lib/libpq.so")
-    endif()
-
-    if (NOT EXISTS PostgreSQL_LIBRARY_DIR)
-        set(PostgreSQL_LIBRARY_DIR "/usr/lib/postgresql")
-    endif()
-
-    if (NOT EXISTS PostgreSQL_EXTENSION_LIBRARY_DIR)
-        set(PostgreSQL_EXTENSION_LIBRARY_DIR "/usr/lib/postgresql/${PostgreSQL_VERSION}/lib")
-    endif()
-
-    if (NOT EXISTS PostgreSQL_EXTENSION_DIR)
-        set(PostgreSQL_EXTENSION_DIR "/usr/share/postgresql/${PostgreSQL_VERSION}/extension")
-    endif()
-
-endif()
-
-
-# Did we find the things needed for pgRouting?
-set( PostgreSQL_FOUND FALSE )
-if ( EXISTS "${PostgreSQL_INCLUDE_DIR}" AND
-        EXISTS "${PostgreSQL_TYPE_INCLUDE_DIR}" AND
-        EXISTS "${PostgreSQL_LIBRARY_DIR}" AND
-        EXISTS "${PostgreSQL_EXTENSION_LIBRARY_DIR}" AND
-        EXISTS "${PostgreSQL_EXTENSION_DIR}" )
-    set( PostgreSQL_FOUND TRUE )
-    if (WIN32)
-        set (PostgreSQL_INCLUDE_DIRS
-            "${PostgreSQL_TYPE_INCLUDE_DIR}" "${PostgreSQL_INCLUDE_DIR}"
-            "${PostgreSQL_TYPE_INCLUDE_DIR}/port/win32" "${PostgreSQL_INCLUDE_DIR}/port/win32")
-    else()
-        set( PostgreSQL_INCLUDE_DIRS ${PostgreSQL_TYPE_INCLUDE_DIR})
-    endif()
-    set( PostgreSQL_LIBRARY_DIRS ${PostgreSQL_LIBRARY_DIR})
-    set( PostgreSQL_LIBRARIES ${PostgreSQL_LIBRARY})
-    set( PostgreSQL_EXTENSION_LIBRARY_DIRS ${PostgreSQL_EXTENSION_LIBRARY_DIR})
-    set( PostgreSQL_EXTENSION_DIRS ${PostgreSQL_EXTENSION_DIR})
-
-    if(PostgreSQL_DEBUG)
-        message("
-        PostgreSQL_VERSION: ${PostgreSQL_VERSION}
-        PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
-        PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
-        PostgreSQL_TYPE_INCLUDE_DIR: ${PostgreSQL_TYPE_INCLUDE_DIR}
-        PostgreSQL_INCLUDE_DIRS: ${PostgreSQL_INCLUDE_DIRS}
-        PostgreSQL_LIBRARY_DIRS: ${PostgreSQL_LIBRARY_DIRS}
-        PostgreSQL_EXTENSION_LIBRARY_DIRS: ${PostgreSQL_EXTENSION_LIBRARY_DIRS}
-        PostgreSQL_EXTENSION_DIRS: ${PostgreSQL_EXTENSION_DIRS}
-        PostgreSQL_LIBRARIES: ${PostgreSQL_LIBRARIES}")
-    endif()
-
-else()
-    message(FATAL_ERROR "PostgreSQL was not found. ${PostgreSQL_DIR_MESSAGE}
-    PostgreSQL_VERSION_STRING: ${PostgreSQL_VERSION_STRING}
-    PostgreSQL_INCLUDE_DIR: ${PostgreSQL_INCLUDE_DIR}
-    PostgreSQL_TYPE_INCLUDE_DIR: ${PostgreSQL_TYPE_INCLUDE_DIR}
-    PostgreSQL_EXTENSION_LIBRARY_DIR: ${PostgreSQL_EXTENSION_LIBRARY_DIR}
-    PostgreSQL_LIBRARY_DIR: ${PostgreSQL_LIBRARY_DIR}
-    PostgreSQL_EXTENSION_DIR: ${PostgreSQL_EXTENSION_DIR}
-    PostgreSQL_LIBRARY: ${PostgreSQL_LIBRARY}")
-endif()
+endif(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE AND POSTGRESQL_VERSION_STRING)
 
