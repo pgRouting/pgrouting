@@ -1,6 +1,6 @@
 ADD_LIBRARY(contraction OBJECT 
 		connection.c
-		contraction.c 
+		contractGraph.c 
 		my_astar.c
 		dijkstra.c     
 
@@ -8,4 +8,5 @@ ADD_LIBRARY(contraction OBJECT
 		contract_function.cpp
 		my_astar_wrapper.cpp
 		dijkstra_function.cpp
+		contractGraph_driver.cpp
            )
