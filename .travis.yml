@@ -20,6 +20,7 @@ branches:
   only:
     - master
     - develop
+    - jenkins
 
 addons:
   postgresql: "9.2"
