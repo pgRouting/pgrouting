@@ -7,9 +7,9 @@
 extern "C" {
 #endif
 
-int fetch_contracted_graph(Edge *edges,int *initial_num_vertices,
-							int *final_num_vertices,int initial_num_edges,
-							int *final_num_edges,int level,char **graphName,
+int64_t fetch_contracted_graph(Edge *edges,int64_t *initial_num_vertices,
+							int64_t *final_num_vertices,int64_t initial_num_edges,
+							int64_t *final_num_edges,int64_t level,char **graphName,
 							char **edgeString,char **psuedoEString,
 							char **removedVString,char **removedEString);
 

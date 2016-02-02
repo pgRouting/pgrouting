@@ -50,7 +50,7 @@ public:
   std::vector<float> distances;
 
   //constructor for this class
-  explicit My_base_graph< G >(graphType gtype, const int initial_size)
+  explicit My_base_graph< G >(graphType gtype, const int64_t initial_size)
   : graph(initial_size),num_vertices(0),gType(gtype)
   {}
 
@@ -100,10 +100,10 @@ public:
       graph[e].type=0;
   	}
 
-  	if (edge.revcost > 0) {
+  	if (edge.reverse_cost > 0) {
   		boost::tie(e, inserted) =
   		boost::add_edge(vm_t->second, vm_s->second, graph);
-  		graph[e].cost = edge.revcost;
+  		graph[e].cost = edge.reverse_cost;
       graph[e].source=edge.target;
       graph[e].target=edge.source;
   		graph[e].id = edge.id;
@@ -126,7 +126,7 @@ public:
             d_edge.target = graph[target(*out, graph)].id;
             //cout << "Removing " << d_edge.source << " " << d_edge.target << endl;
             d_edge.cost = graph[*out].cost;
-            d_edge.revcost = -1;
+            d_edge.reverse_cost = -1;
             removed_edges.push_back(d_edge);
       }
 
@@ -138,7 +138,7 @@ public:
                 d_edge.source = graph[source(*in, graph)].id;
                 d_edge.target = graph[target(*in, graph)].id;
                 d_edge.cost = graph[*in].cost;
-                d_edge.revcost = -1;
+                d_edge.reverse_cost = -1;
                 removed_edges.push_back(d_edge);
           }
       }
@@ -200,7 +200,7 @@ public:
     {
       EO_i out, out_end;
         V_i vi;
-        int count;
+        int64_t count;
         for (vi = vertices(graph).first; vi != vertices(graph).second; ++vi) {
             count=0;
             for (boost::tie(out, out_end) = out_edges(*vi, graph);
@@ -239,7 +239,7 @@ public:
       }
     }
 
-    void get_degree(int64_t vid,int deg)
+    void get_degree(int64_t vid,int64_t deg)
     {
       V v;
       get_vertex_descriptor(vid,v);
@@ -262,7 +262,7 @@ public:
                 d_edge.source = graph[source(*out, graph)].id;
                 d_edge.target = graph[target(*out, graph)].id;
                 d_edge.cost = graph[*out].cost;
-                d_edge.revcost = -1;
+                d_edge.reverse_cost = -1;
                 removed_edges.push_back(d_edge);
             }
       }

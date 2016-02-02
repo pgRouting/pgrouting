@@ -11,7 +11,7 @@
 extern "C"
 {
 #endif
-  int compute_astar(int64_t source,int64_t target,Edge *edges,int64_t num_vertices,int64_t num_edges,Edge **path);
+  int64_t compute_astar(int64_t source,int64_t target,Edge *edges,int64_t num_vertices,int64_t num_edges,Edge **path);
 #ifdef __cplusplus
 }
 #endif

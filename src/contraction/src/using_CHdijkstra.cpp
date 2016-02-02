@@ -12,7 +12,7 @@ void print_path(Edge *data_edges,int count)
 	{
 		cout << "(" << data_edges[i].id << ", "<< data_edges[i].source << ", "
 			<< data_edges[i].target << ", "<< data_edges[i].cost 
-			<< ", "<< data_edges[i].revcost << ", "  << " )" << endl;
+			<< ", "<< data_edges[i].reverse_cost << ", "  << " )" << endl;
 }
 }
 int main(int argc, char const *argv[])
