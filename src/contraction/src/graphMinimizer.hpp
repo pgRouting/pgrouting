@@ -13,6 +13,7 @@ Edge types:
 #include <stack>
 #include <map>
 #include <iostream>
+#include <sstream>
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
@@ -375,36 +376,38 @@ public:
 		return count;
 	}
 
-	int getreducedGraph_string(char **estring)
+	int64_t getreducedGraph_string(ostringstream& estring)
 	{
 		//int reduced_size=(int)num_edges(reduced_graph->graph);
 		V_i vi;
 		EO_i out,out_end;
-		int count=0;
-		string restring="";
+		int64_t count=0;
 		for (vi = vertices(reduced_graph->graph).first; vi != vertices(reduced_graph->graph).second; ++vi) {
 			for (boost::tie(out, out_end) = out_edges(*vi, reduced_graph->graph);
 				out != out_end; ++out)
 			{
 				V source_desc=source(*out, reduced_graph->graph);
 				V target_desc=target(*out, reduced_graph->graph);
-				int source_id=reduced_graph->graph[source_desc].id;
-				int target_id=reduced_graph->graph[target_desc].id;
+				int64_t source_id=reduced_graph->graph[source_desc].id;
+				int64_t target_id=reduced_graph->graph[target_desc].id;
 				
 				if (target_desc>source_desc)
 				{
-					string id=patch::to_string(reduced_graph->graph[*out].id);
+					estring << reduced_graph->graph[*out].id << ","
+					<< source_id << "," << target_id << ","
+					<< reduced_graph->graph[*out].cost << ","
+					<< reduced_graph->graph[*out].reverse_cost << "$";
+					/*string id=patch::to_string(reduced_graph->graph[*out].id);
 					string source=patch::to_string(source_id);
 					string target=patch::to_string(target_id);
 					string cost=patch::to_string(reduced_graph->graph[*out].cost);
 					string reverse_cost=patch::to_string(reduced_graph->graph[*out].reverse_cost);
-					restring+=id+","+source+","+target+","+cost+","+reverse_cost+"$";
+					restring+=id+","+source+","+target+","+cost+","+reverse_cost+"$";*/
 					count++;
 				}
 				
 			}
 		}
-		(*estring)=strdup(restring.c_str());
 		return count;
 	}
 
@@ -537,40 +540,46 @@ public:
 	}
 
 
-	void getGraphName(char **name,int level)
+	void getGraphName(ostringstream& name,int level)
 	{
-		string gname="contracted_graph_"+patch::to_string(level);
-		(*name)=strdup(gname.c_str());
+		//string gname="contracted_graph_"+patch::to_string(level);
+		//(*name)=strdup(gname.c_str());
+		name << "contracted_graph_" << level;
 	}
-	void getRemovedE_string(char **estring)
+	void getRemovedE_string(ostringstream& estring)
 	{
-		string rmstring="";
+		//string rmstring="";
 		//cout<< "Printing removed_edges of size " << this->reduced_graph->removed_edges.size() << endl;
 		for (map<int64_t,Edge>::iterator iter = this->reduced_graph->removed_edges.begin(); iter != this->reduced_graph->removed_edges.end(); iter++)
 		{
 			//cout << "id: " << iter->first << endl;
 			Edge temp=iter->second ;
-			string id=patch::to_string(temp.id);
+			estring << temp.id << "," << temp.source << ","
+			<< temp.target << "," << temp.cost << ","
+			<< temp.reverse_cost << "$";
+			/*string id=patch::to_string(temp.id);
 			string source=patch::to_string(temp.source);
 			string target=patch::to_string(temp.target);
 			string cost=patch::to_string(temp.cost);
 			string reverse_cost=patch::to_string(temp.reverse_cost);
 			rmstring+=id+","+source+","+target+","+cost+","+reverse_cost+"$";
-			cout << endl;
+			cout << endl;*/
 		}
-		(*estring)=strdup(rmstring.c_str());
 	}
-	void getEdgeString(Edge **edges,int num_edges,char **estring)
+	void getEdgeString(Edge **edges,int num_edges,ostringstream& estring)
 	{
-		string edgestring="";
+		//string edgestring="";
 		for (Edge edge:*edges)
 		{
-			string id=patch::to_string(edge.id);
+			estring << edge.id << ","
+			<< edge.source << "," << edge.target << ","
+			<< edge.cost << "," << edge.reverse_cost << "$";
+			/*string id=patch::to_string(edge.id);
 			string source=patch::to_string(edge.source);
 			string target=patch::to_string(edge.target);
 			string cost=patch::to_string(edge.cost);
 			string reverse_cost=patch::to_string(edge.reverse_cost);
-			edgestring+=id+","+source+","+target+","+cost+","+reverse_cost+"$";
+			edgestring+=id+","+source+","+target+","+cost+","+reverse_cost+"$";*/
 		}
 		/*for (int i = 0; i < num_edges; ++i)
 		{
@@ -581,46 +590,51 @@ public:
 			string reverse_cost=patch::to_string((*edges)[i].reverse_cost);
 			edgestring+=id+","+source+","+target+","+cost+","+reverse_cost+"$";
 		}*/
-		(*estring)=strdup(edgestring.c_str());
+		//(*estring)=strdup(edgestring.c_str());
 	}
 
 
-	void getRemovedV_string(char **vstring)
+	void getRemovedV_string(ostringstream& vstring)
 	{
 		string vertex_string="";
 		for (removed_V_i iter = removedVertices.begin(); iter != removedVertices.end(); iter++)
 		{
-			cout << "id: " << iter->first << endl;
+			//cout << "id: " << iter->first << endl;
 			string vid=patch::to_string(iter->first);
 			for (removed_E_i edge_iter = iter->second.begin(); edge_iter != iter->second.end(); edge_iter++)
 			{
 				Edge temp=*edge_iter ;
+				vstring << vid <<","<< temp.id << ","
+				<< temp.source << "," << temp.target << ","
+				<< temp.cost << "," << temp.reverse_cost << "$";
 				//cout << "(" << temp.source<< ", " << temp.target << "), ";
-				string eid=patch::to_string(temp.id);
+				/*string eid=patch::to_string(temp.id);
 				string source=patch::to_string(temp.source);
 				string target=patch::to_string(temp.target);
 				string cost=patch::to_string(temp.cost);
 				string reverse_cost=patch::to_string(temp.reverse_cost);
-				vertex_string+=vid+","+eid+","+source+","+target+","+cost+","+reverse_cost+"$";
+				vertex_string+=vid+","+eid+","+source+","+target+","+cost+","+reverse_cost+"$";*/
 			}
 			cout << endl;
 		}		
-		(*vstring)=strdup(vertex_string.c_str());
+		//(*vstring)=strdup(vertex_string.c_str());
 
 	}
 
-	void getPsuedoE_string(char **pstring)
+	void getPsuedoE_string(ostringstream& pstring)
 	{
-		string ps_string="";
+		//string ps_string="";
 		for (psuedo_E_i iter = psuedoEdges.begin(); iter != psuedoEdges.end(); iter++)
 		{
+			pstring << iter->first << "," << iter->second.first << ","
+			<< iter->second.second << "$";
 			//cout << "e1: " << iter->second.first << ",e: "<< iter->first << ",e2: " << iter->second.second << endl;
-			string eid=patch::to_string(iter->first);
+			/*string eid=patch::to_string(iter->first);
 			string eid1=patch::to_string(iter->second.first);
 			string eid2=patch::to_string(iter->second.second);
-			ps_string+="$"+eid+","+eid1+","+eid2;
+			ps_string+="$"+eid+","+eid1+","+eid2;*/
 		}
-		(*pstring)=strdup(ps_string.c_str());
+		//(*pstring)=strdup(ps_string.c_str());
 	}
 };
 #endif
