@@ -1,5 +1,5 @@
 LIST(APPEND PACKAGE_SQL_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/contraction.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/contractGraph.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/myastar.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/mydijkstra.sql
 )
