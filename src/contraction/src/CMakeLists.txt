@@ -8,4 +8,5 @@ ADD_LIBRARY(contraction OBJECT
 		contract_function.cpp
 		my_astar_wrapper.cpp
 		dijkstra_function.cpp
+		contractGraph_driver.cpp
            )
