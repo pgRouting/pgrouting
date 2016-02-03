@@ -60,7 +60,7 @@ extern "C" {
 // directed BOOLEAN DEFAULT true
 
 
-int
+nt
 do_pgr_many_to_many_withPoints(
         pgr_edge_t  *edges,
         size_t total_edges,

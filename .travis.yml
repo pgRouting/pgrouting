@@ -51,7 +51,7 @@ addons:
   apt:
     sources:
       # For gcc >= 4.8
-      #- ubuntu-toolchain-r-test
+      - ubuntu-toolchain-r-test
       # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
       - kubuntu-backports
       - boost-latest
