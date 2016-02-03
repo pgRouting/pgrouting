@@ -80,6 +80,11 @@ addons:
     #- POSTGRESQL_VERSION=9.0 POSTGIS_VERSION=1.5
     #- POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=1.5
 
+before_install:
+  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+  - sudo apt-get update -q
+  - sudo apt-get install gcc-4.8 -y
+
 install:
   # - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
