@@ -76,12 +76,12 @@ SET client_min_messages = WARNING;
         newPoint geometry
     );
 
-    INSERT INTO pointsOfInterest (x,y) VALUES (1.7, 1.4);
-    INSERT INTO pointsOfInterest (x,y) VALUES (2.7, 1.4);
-    INSERT INTO pointsOfInterest (x,y) VALUES (2.7, 1.6);
-    INSERT INTO pointsOfInterest (x,y) VALUES (2.3, 1.6);
-    INSERT INTO pointsOfInterest (x,y) VALUES (2.5, 1.5);
-    INSERT INTO pointsOfInterest (x,y) VALUES (2, 1);
+    INSERT INTO pointsOfInterest (x,y,edge_id,side,fraction) VALUES (1.8, 0.4,1,'l',0.4);
+    INSERT INTO pointsOfInterest (x,y,edge_id,side,fraction) VALUES (4.2, 2.4,15,'r',0.4);
+    INSERT INTO pointsOfInterest (x,y,edge_id,side,fraction) VALUES (2.6, 3.2,12,'l',0.6);
+    INSERT INTO pointsOfInterest (x,y,edge_id,side,fraction) VALUES (0.3, 1.8,6,'r',0.3);
+    INSERT INTO pointsOfInterest (x,y,edge_id,side,fraction) VALUES (2.9, 1.8,5,'l',0.8);
+    INSERT INTO pointsOfInterest (x,y,edge_id,side,fraction) VALUES (2.2, 1.7,4,'r',0.7);
 
     update pointsOfInterest set the_geom = st_makePoint(x,y);
 
@@ -102,31 +102,24 @@ SET client_min_messages = WARNING;
         FROM fourth_q)
     UPDATE pointsOfInterest SET  --edge_id = id,
     newPoint = dump_values.newPoint
-    --fraction = dump_values.fraction,
-    --side = rightSide
     FROM dump_values WHERE pointsOfInterest.pid = dump_values.pid;
 
-
+/*
     UPDATE pointsOfInterest SET
     edge_id = a.edge_id,
     fraction = a.fraction,
     side = a.side
     FROM (SELECT pid, (pgr_findClosestEdge('SELECT id, the_geom FROM edge_table', the_geom, 1)).* FROM pointsOfInterest) a WHERE (a.pid = pointsOfInterest.pid);
-
+*/
     DROP TABLE IF EXISTS restrictions;
     CREATE TABLE restrictions (
         rid BIGINT NOT NULL,
         to_cost FLOAT,
         target_id BIGINT,
         from_edge BIGINT,
-        via TEXT
+        via_path TEXT
     );
-
-    COPY restrictions (rid, to_cost, target_id, from_edge, via) FROM stdin WITH NULL '__NULL__' DELIMITER ',';
-1,100,7,4,__NULL__
-1,100,11,8,__NULL__
-1,100,10,7,__NULL__
-2,4,8,3,5
-3,100,9,16,__NULL__
-\.
+    INSERT INTO restrictions VALUES (1,100,7,4,null);
+    INSERT INTO restrictions VALUES (2,100,1,2,null);
+    INSERT INTO restrictions VALUES (3,100,4,5,8);
 
