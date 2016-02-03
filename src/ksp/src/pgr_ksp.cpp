@@ -73,7 +73,7 @@ Pgr_ksp< G >::Yen(G &graph,
         m_ResultSet.erase(m_ResultSet.begin());
     }
     std::deque<Path> l_ResultList(m_Heap.begin(), m_Heap.end());
-    if (!heap_paths && l_ResultList.size() > K)
+    if (!heap_paths && l_ResultList.size() > (size_t) K)
         l_ResultList.resize(K);
     return l_ResultList;
 }
