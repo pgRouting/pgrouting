@@ -59,8 +59,7 @@ extern "C" {
 // end_pid BIGINT,
 // directed BOOLEAN DEFAULT true
 
-
-nt
+int
 do_pgr_many_to_many_withPoints(
         pgr_edge_t  *edges,
         size_t total_edges,
@@ -103,9 +102,11 @@ do_pgr_many_to_many_withPoints(
                 new_edges);
 
 
-        std::set< int64_t > start_points(start_pidsArr, start_pidsArr + size_start_pidsArr);
+        std::set< int64_t > start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);
+        std::set< int64_t > end_vertices(end_pidsArr, end_pidsArr + size_end_pidsArr);
+#if 0
+
         std::set< int64_t > start_vertices;
-        std::set< int64_t > end_points(end_pidsArr, end_pidsArr + size_end_pidsArr);
         std::set< int64_t > end_vertices;
 
         for (const auto &start_pid : start_points) {
@@ -124,7 +125,7 @@ do_pgr_many_to_many_withPoints(
                 }
             }
         }
-
+#endif
         graphType gType = directed? DIRECTED: UNDIRECTED;
         const int initial_size = total_edges;
 
@@ -145,11 +146,11 @@ do_pgr_many_to_many_withPoints(
             pgr_dijkstra(undigraph, paths, start_vertices, end_vertices, only_cost);
         }
 
-
+#if 0
         for (auto &path :paths) {
             adjust_pids(points, path);
         }
-
+#endif
         if (!details) {
             for (auto &path :paths) {
                 eliminate_details(path, edges_to_modify);
@@ -162,9 +163,9 @@ do_pgr_many_to_many_withPoints(
         std::sort(paths.begin(), paths.end(),
                 [](const Path &a,const  Path &b) {
                 if (b.start_id() != a.start_id()) {
-                return b.start_id() < a.start_id();
+                return a.start_id() < b.start_id();
                 }
-                return b.end_id() < a.end_id();  
+                return a.end_id() < b.end_id();  
                 });
 
         size_t count(0);

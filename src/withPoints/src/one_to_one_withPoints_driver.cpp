@@ -104,8 +104,9 @@ do_pgr_withPoints(
                 new_edges,
                 log);
 
-        int64_t start_vid = 0;
-        int64_t end_vid = 0;
+        int64_t start_vid(start_pid);
+        int64_t end_vid(end_pid);
+#if 0
         for (const auto point : points) {
             if (point.pid == start_pid) {
                 start_vid = point.vertex_id;
@@ -115,6 +116,7 @@ do_pgr_withPoints(
             }
 
         }
+#endif
         log << "start_vid" << start_vid << "\n";
         log << "end_vid" << end_vid << "\n";
         graphType gType = directed? DIRECTED: UNDIRECTED;
@@ -144,7 +146,7 @@ do_pgr_withPoints(
         }
 
         path.print_path(log);
-        adjust_pids(points, path);
+        //adjust_pids(points, path);
         path.print_path(log);
 
         size_t count(path.size());

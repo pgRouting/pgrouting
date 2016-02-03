@@ -67,7 +67,7 @@ do_pgr_many_to_one_withPoints(
         size_t total_edges_of_points,
         int64_t  *start_pidsArr,
         int size_start_pidsArr,
-        int64_t end_pid,
+        int64_t end_vid,
         char driving_side,
         bool details,
         bool directed,
@@ -98,9 +98,11 @@ do_pgr_many_to_one_withPoints(
                 driving_side,
                 new_edges);
 
-        int64_t end_vid = 0;
+        //int64_t end_vid = 0;
 
-        std::set< int64_t > start_points(start_pidsArr, start_pidsArr + size_start_pidsArr);
+        //std::set< int64_t > start_points(start_pidsArr, start_pidsArr + size_start_pidsArr);
+        std::set< int64_t > start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);
+#if 0
         std::set< int64_t > start_vertices;
 
         for (const auto point : points) {
@@ -118,7 +120,7 @@ do_pgr_many_to_one_withPoints(
                 }
             }
         }
-
+#endif
         graphType gType = directed? DIRECTED: UNDIRECTED;
         const int initial_size = total_edges;
 
@@ -139,11 +141,11 @@ do_pgr_many_to_one_withPoints(
             pgr_dijkstra(undigraph, paths, start_vertices, end_vid, only_cost);
         }
 
-
+#if 0
         for (auto &path :paths) {
             adjust_pids(points, path);
         }
-
+#endif
         if (!details) {
             for (auto &path :paths) {
                 eliminate_details(path, edges_to_modify);
@@ -154,7 +156,7 @@ do_pgr_many_to_one_withPoints(
          *  order paths based on the start_pid
          */
         std::sort(paths.begin(), paths.end(), [](const Path &a,const  Path &b) {
-                return b.start_id() < a.start_id();   
+                return a.start_id() < b.start_id();   
                 });
 
         size_t count(0);

@@ -68,7 +68,7 @@ do_pgr_one_to_many_withPoints(
         size_t total_points,
         pgr_edge_t  *edges_of_points,
         size_t total_edges_of_points,
-        int64_t start_pid,
+        int64_t start_vid,
         int64_t  *end_pidsArr,
         int size_end_pidsArr,
         char driving_side,
@@ -103,7 +103,7 @@ do_pgr_one_to_many_withPoints(
             edges_to_modify(edges_of_points, edges_of_points + total_edges_of_points);
 
         std::vector< pgr_edge_t > new_edges;
-        log << "start_pid" << start_pid << "\n";
+//        log << "start_pid" << start_pid << "\n";
 
         log << "driving_side" << driving_side << "\n";
         create_new_edges(
@@ -112,13 +112,15 @@ do_pgr_one_to_many_withPoints(
                 driving_side,
                 new_edges);
 
-        int64_t start_vid = 0;
+ //       int64_t start_vid = 0;
         log << "Inserting points into a c++ vector structure\n";
         /*
          * Eliminating duplicates
          * & ordering the points
          */
-        std::set< int64_t > end_points(end_pidsArr, end_pidsArr + size_end_pidsArr);
+        std::set< int64_t > end_vertices(end_pidsArr, end_pidsArr + size_end_pidsArr);
+//        std::set< int64_t > end_points(end_pidsArr, end_pidsArr + size_end_pidsArr);
+#if 0
         std::set< int64_t > end_vertices;
 
         for (const auto point : points) {
@@ -136,6 +138,7 @@ do_pgr_one_to_many_withPoints(
                 }
             }
         }
+#endif
         log << "start_vid" << start_vid << "\n";
         log << "end_vertices";
 
@@ -163,10 +166,11 @@ do_pgr_one_to_many_withPoints(
             pgr_dijkstra(undigraph, paths, start_vid, end_vertices, only_cost);
         }
 
+#if 0
         for (auto &path :paths) {
             adjust_pids(points, path);
         }
-
+#endif
         if (!details) {
             for (auto &path :paths) {
                 eliminate_details(path, edges_to_modify);
@@ -176,7 +180,7 @@ do_pgr_one_to_many_withPoints(
          *  order paths based on the end_pid
          */
         std::sort(paths.begin(), paths.end(), [](const Path &a,const  Path &b) {
-                return b.end_id() < a.end_id();   
+                return a.end_id() < b.end_id();   
                 });
 
         size_t count(0);
