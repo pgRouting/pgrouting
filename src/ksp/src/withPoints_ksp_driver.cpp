@@ -31,37 +31,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
-#ifdef unlink
-#undef unlink
-#endif
-#endif
-
-
-#if 0
-#ifdef __MINGW32__
-#include <winsock2.h>
-#include <windows.h>
-#endif
-
-
-#include <deque>
-#include <sstream>
-
-
-#include "./ksp_driver.h"
-#include "../../common/src/memory_func.hpp"
-#include "./pgr_ksp.hpp"
+//#ifdef unlink
+//#undef unlink
+//#endif
 #endif
 
 #define DEBUG
 
-#include "./withPoints_ksp_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
-
-
+#include "./withPoints_ksp_driver.h"
 #include "./../../withPoints/src/pgr_withPoints.hpp"
 #include "./../../common/src/memory_func.hpp"
 #include "./pgr_ksp.hpp"
@@ -80,11 +61,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 int
 do_pgr_withPointsKsp(
         pgr_edge_t  *edges,
-        size_t total_edges,
+        int64_t total_edges,
         Point_on_edge_t  *points_p,
-        size_t total_points,
+        int64_t total_points,
         pgr_edge_t  *edges_of_points,
-        size_t total_edges_of_points,
+        int64_t total_edges_of_points,
         int64_t start_pid,
         int64_t end_pid,
         int64_t k,

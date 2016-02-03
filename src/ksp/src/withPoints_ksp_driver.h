@@ -41,9 +41,9 @@ extern "C" {
     //  end_pid BIGINT,
     //  directed BOOLEAN DEFAULT true,
     int do_pgr_withPointsKsp(
-            pgr_edge_t  *edges,             size_t total_edges,
-            Point_on_edge_t  *points,       size_t total_points,
-            pgr_edge_t  *edges_of_points,   size_t total_edges_of_points,
+            pgr_edge_t  *edges,             int64_t total_edges,
+            Point_on_edge_t  *points,       int64_t total_points,
+            pgr_edge_t  *edges_of_points,   int64_t total_edges_of_points,
             int64_t start_pid,
             int64_t end_pid,
             int64_t k,

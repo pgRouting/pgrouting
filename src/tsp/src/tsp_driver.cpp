@@ -32,11 +32,11 @@
 #include <windows.h>
 #endif
 
-#include "./tsp_driver.h"
 
 #include <vector>
 #include <algorithm>
 
+#include "./tsp_driver.h"
 
 #include "./Dmatrix.hpp"
 #include "./pgr_tsp.hpp"
@@ -49,7 +49,7 @@ typedef std::vector< int64_t > Ids;
 int
 do_pgr_tsp(
         Matrix_cell_t *distances,
-        size_t total_distances,
+        int64_t total_distances,
         int64_t start_vid,
         int64_t end_vid,
         General_path_element_t **path,

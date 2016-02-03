@@ -247,13 +247,13 @@ Column           Type              Description
 Examples
 --------------------------------------------------------------------------------------
 
-:Example: Which path (if any) passes in front of point 4 or vertex 4 with **right** side driving topology.
+:Example: Which path (if any) passes in front of point 6 or vertex 6 with **right** side driving topology.
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --q2
    :end-before: --q3
 
-:Example: Which path (if any) passes in front of point 4 or vertex 4 with **left** side driving topology.
+:Example: Which path (if any) passes in front of point 6 or vertex 6 with **left** side driving topology.
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --q3

@@ -43,7 +43,7 @@ BEGIN;
             ARRAY[1,2,3,5], ARRAY[1,2,3,5],
             driving_side := 'r',
             details := true)
-        WHERE node IN (-4,4);
+        WHERE node IN (-6,6);
     \echo --q3
     SELECT ('(' || start_pid || ' => ' || end_pid ||') at ' || path_seq || 'th step:')::TEXT AS path_at,
             CASE WHEN edge = -1 THEN ' visits'
@@ -59,7 +59,7 @@ BEGIN;
             ARRAY[1,2,3,5], ARRAY[1,2,3,5],
             driving_side := 'l',
             details := true)
-        WHERE node IN (-4,4);
+        WHERE node IN (-6,6);
     \echo --q4
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',

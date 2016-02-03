@@ -37,16 +37,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
-#include <cassert>
 #include "./pgr_dijkstra.hpp"
 #include "./pgr_withPoints.hpp"
 #include "./one_to_one_withPoints_driver.h"
 
-// #define DEBUG
+#define DEBUG
 
-extern "C" {
-#include "./../../common/src/pgr_types.h"
-}
 
 #include "./../../common/src/memory_func.hpp"
 

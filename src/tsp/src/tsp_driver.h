@@ -39,7 +39,7 @@ extern "C" {
 int 
 do_pgr_tsp(
         Matrix_cell_t *distances,
-        size_t total_distances,
+        int64_t total_distances,
         int64_t start_vid,
         int64_t end_vid,
         General_path_element_t **results,
