@@ -25,15 +25,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  
 #define _ASTAR_H
 
-#include <unistd.h>
-#include "postgres.h"
-#include "../../common/src/pgr_types.h"
 
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
+#include "../../common/src/pgr_types.h"
   int boost_astar(edge_astar_t *edges, unsigned int count, 
                   int source_vertex_id, int target_vertex_id,
                   bool directed, bool has_reverse_cost,

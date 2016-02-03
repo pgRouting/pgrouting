@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-MIT*/
 
+#include "../../common/src/pgr_types.h"
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -40,7 +41,6 @@ Datum bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 #include "../../common/src/debug_macro.h"
-#include "../../common/src/pgr_types.h"
 #include "../../common/src/postgres_connection.h"
 
 #include "bdsp.h"
