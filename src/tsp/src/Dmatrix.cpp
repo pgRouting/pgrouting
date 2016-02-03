@@ -1,5 +1,4 @@
 
-
 #include <algorithm>
 #include <vector>
 #include "./Dmatrix.hpp"
