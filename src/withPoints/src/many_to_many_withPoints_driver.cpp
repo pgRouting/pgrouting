@@ -161,7 +161,8 @@ do_pgr_many_to_many_withPoints(
          *  order paths based on the start_pid, end_pid
          */
         std::sort(paths.begin(), paths.end(),
-                [](const Path &a,const  Path &b) {
+                [](const Path &a,const  Path &b)
+                -> bool {
                 if (b.start_id() != a.start_id()) {
                 return a.start_id() < b.start_id();
                 }
