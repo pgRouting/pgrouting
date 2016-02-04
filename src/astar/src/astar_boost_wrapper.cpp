@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #undef unlink
 #endif
 #endif
-
+#include <unistd.h>
 
 #include "postgres.h"
 #include <boost/config.hpp>
