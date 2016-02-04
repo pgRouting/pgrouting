@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./contractGraph_driver.h"
 #include "./contract_function.h"
+#include "./../../common/src/baseGraph.hpp"
 
 // #define DEBUG
 
@@ -64,7 +65,11 @@ do_pgr_contractGraph(
         size_t *return_count,
         char ** err_msg){
     std::ostringstream log;
-    std::ostringstream graphnameStream,edgeStream,removedEStream,removedVStream,psuedoEStream;
+    std::ostringstream contracted_graph_name;
+    std::ostringstream contracted_graph_blob;
+    std::ostringstream removedEdges;
+    std::ostringstream removedVertices;
+    std::ostringstream psuedoEdges;
     try {
 
         if (total_tuples == 1) {
@@ -78,7 +83,6 @@ do_pgr_contractGraph(
         graphType gType = directed? DIRECTED: UNDIRECTED;
         const int initial_size = total_tuples;
 
-        std::deque< Path >paths;
         log << "Level" << level << "\n";
         if (directed) {
             log << "Working with directed Graph\n";
@@ -87,7 +91,24 @@ do_pgr_contractGraph(
 #ifdef DEBUG
             digraph.print_graph(log);
 #endif
-            //pgr_dijkstra(digraph, paths, start_vid, end_vertices, false);
+            /*
+            Function call to get the contracted graph.
+
+            fetch_contracted_graph(digraph,level,
+              contracted_graph_name,contracted_graph_blob,removedEdges,
+              removedVertices,psuedoEdges
+            );
+        return_tuples = get_memory (1, pgr_contracted_blob);
+        return_tuples->contracted_graph_name=strdup(contracted_graph_name.str().c_str());
+        return_tuples->contracted_graph_blob=strdup(contracted_graph_blob.str().c_str());
+        return_tuples->removedVertices=strdup(removedVertices.str().c_str());
+        return_tuples->removedEdges=strdup(removedEdges.str().c_str());
+        return_tuples->psuedoEdges=strdup(psuedoEdges.str().c_str());
+
+
+            */
+
+        
         } else {
             log << "Working with Undirected Graph\n";
             Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
@@ -95,19 +116,26 @@ do_pgr_contractGraph(
 #ifdef DEBUG
             undigraph.print_graph(log);
 #endif
-            //pgr_dijkstra(undigraph, paths, start_vid, end_vertices, false);
+
+
+            /*
+            Function call to get the contracted graph.
+
+        return_tuples = get_memory (1, pgr_contracted_blob);
+            fetch_contracted_graph(undigraph,level,
+              contracted_graph_name,contracted_graph_blob,removedEdges,
+              removedVertices,psuedoEStream
+            );
+        (return_tuples)->contracted_graph_name=strdup(contracted_graph_name.str().c_str());
+        (return_tuples)->contracted_graph_blob=strdup(contracted_graph_blob.str().c_str());
+        (return_tuples)->removedVertices=strdup(removedVertices.str().c_str());
+        (return_tuples)->removedEdges=strdup(removedEdges.str().c_str());
+        (return_tuples)->psuedoEdges=strdup(psuedoEdges.str().c_str());
+            */
+
         }
 
-        size_t count(count_tuples(paths));
-
-        if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            log << 
-                "No paths found between Starting and any of the Ending vertices\n";
-            *err_msg = strdup(log.str().c_str());
-            return;
-        }
+      
 
         (*return_tuples) = NULL;
         (*return_count) = 0;
