@@ -368,7 +368,7 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, unsigned int edge_count, int ma
 #if 0
 		*path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
 #endif
-		*path = get_memory(sizeof(path_element_t) * (m_vecPath.size() + 1), path);
+		*path = get_memory(sizeof(path_element_t) * (m_vecPath.size() + 1), *path);
 		*path_count = m_vecPath.size();
         // DBG("BiDirDijkstra::bidir_dijkstra: allocated path\n");
 
