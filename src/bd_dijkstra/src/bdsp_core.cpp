@@ -77,6 +77,6 @@ int bidirsp_wrapper(
     if (res < 0)
         return res;
     else
-        return EXIT_SUCCESS;
+        return 0;
 }
 
