@@ -37,8 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
-#include "./pgr_dijkstra.hpp"
 #include "./contractGraph_driver.h"
+#include "./contract_function.h"
 
 // #define DEBUG
 
@@ -64,6 +64,7 @@ do_pgr_contractGraph(
         size_t *return_count,
         char ** err_msg){
     std::ostringstream log;
+    std::ostringstream graphnameStream,edgeStream,removedEStream,removedVStream,psuedoEStream;
     try {
 
         if (total_tuples == 1) {
