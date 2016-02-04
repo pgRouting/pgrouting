@@ -64,6 +64,7 @@ do_pgr_contractGraph(
         size_t *return_count,
         char ** err_msg){
     std::ostringstream log;
+    std::ostringstream graphnameStream,edgeStream,removedEStream,removedVStream,psuedoEStream;
     try {
 
         if (total_tuples == 1) {
