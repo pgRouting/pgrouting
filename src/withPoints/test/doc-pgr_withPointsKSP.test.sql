@@ -10,7 +10,7 @@ BEGIN;
     SELECT * FROM pgr_withPointsKSP(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        -1,-2, 2, details := true);
+        -1, 6, 2, details := true);
     \echo --q3
     SELECT * FROM pgr_withPointsKSP(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',

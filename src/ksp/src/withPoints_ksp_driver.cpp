@@ -66,8 +66,8 @@ do_pgr_withPointsKsp(
         int64_t total_points,
         pgr_edge_t  *edges_of_points,
         int64_t total_edges_of_points,
-        int64_t start_pid,
-        int64_t end_pid,
+        int64_t start_vid,
+        int64_t end_vid,
         int64_t k,
         bool directed,
         bool heap_paths,
@@ -105,6 +105,7 @@ do_pgr_withPointsKsp(
                 new_edges,
                 log);
 
+#if 0
         int64_t start_vid = 0;
         int64_t end_vid = 0;
         for (const auto point : points) {
@@ -115,6 +116,7 @@ do_pgr_withPointsKsp(
                 end_vid = point.vertex_id;
             }
         }
+#endif
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
         const int initial_size = total_edges;
@@ -137,12 +139,13 @@ do_pgr_withPointsKsp(
             paths = fn_yen.Yen(undigraph, start_vid, end_vid, k, heap_paths);
         }
 
-
+#if 0
         for (auto &path : paths) {
             path.print_path(log);
             adjust_pids(points, path);
             path.print_path(log);
         }
+#endif
 
         if (!details) {
             for (auto &path : paths) {
