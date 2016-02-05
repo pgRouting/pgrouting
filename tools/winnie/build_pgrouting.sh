@@ -80,16 +80,17 @@ rm ${PGPATH}/share/extension/pgrouting*
 make && make install
 
 #we need uninstall and reinstall copy to VC++ EDB instance if we want to test on standard Windows installed versions
-rm ${PGPATHEDB}/lib/librouting*
+rm -f ${PGPATHEDB}/lib/librouting*
 cp lib/*.dll ${PGPATHEDB}/lib/
-rm ${PGPATHEDB}/share/extension/pgrouting*
+rm -f ${PGPATHEDB}/share/extension/pgrouting*
 cp lib/*.sql ${PGPATHEDB}/share/extension/
 cp lib/*.control ${PGPATHEDB}/share/extension/
 
 cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
 
 #Normal tests
-perl tools/testers/algorithm-tester.pl -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -clean
+perl tools/testers/algorithm-tester.pl -pgver ${PG_VER}  -pgport "${PGPORT}"  -clean
+#perl tools/testers/algorithm-tester.pl -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -clean
 
 
 cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib
