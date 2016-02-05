@@ -20,6 +20,24 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-select seq, route_id, node_id, round(cost::numeric, 0) from pgr_gsoc_vrppdtw(
-    'select * from customer order by id'::text, 25,200
-)
+BEGIN;
+
+    WITH results AS
+    (SELECT seq, route_id, node_id, cost from pgr_gsoc_vrppdtw(
+        'select * from customer order by id'::text, 25,200)
+    )
+    SELECT cost < 4000 FROM results WHERE seq = 0;
+
+    WITH results AS
+    (SELECT seq, route_id, node_id, cost from pgr_gsoc_vrppdtw(
+        'select * from customer order by id'::text, 25,200)
+    )
+    SELECT count(*) FROM results;
+
+    WITH results AS
+    (SELECT seq, route_id, node_id, cost from pgr_gsoc_vrppdtw(
+        'select * from customer order by id'::text, 25,200)
+    )
+    SELECT route_id <= 14 FROM results WHERE seq = 136;
+
+    ROLLBACK;
