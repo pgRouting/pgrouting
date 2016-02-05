@@ -69,7 +69,9 @@ addons:
 before_script:
   # Stop whichever version of PG that travis started
   - sudo /etc/init.d/postgresql stop
-  - if test "$POSTGRESQL_VERSION" = "9.5" ; then sudo apt-get install -y postgresql-9.5 postgresql-9.5-postgis ; fi
+
+  - if test "$POSTGRESQL_VERSION" = "9.5" ; then sudo ./tools/travis/install-postgresql-9.5.sh ; fi
+
   # Stop whichever version of PG is running
   - sudo /etc/init.d/postgresql stop
   # Add our chosen PG version to the path
