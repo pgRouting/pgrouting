@@ -36,11 +36,11 @@ branches:
   #- postgresql: 9.3
 
 env:
-    - POSTGRESQL_VERSION=9.1
-    - POSTGRESQL_VERSION=9.2
-    - POSTGRESQL_VERSION=9.3
-    - POSTGRESQL_VERSION=9.4
-    - POSTGRESQL_VERSION=9.5
+  - POSTGRESQL_VERSION=9.1
+  #- POSTGRESQL_VERSION=9.2
+  #- POSTGRESQL_VERSION=9.3
+  #- POSTGRESQL_VERSION=9.4
+  - POSTGRESQL_VERSION=9.5
 
 # excecuted. So things have to be tested oe by one.
 addons:
@@ -69,7 +69,10 @@ addons:
 before_script:
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH # Add our chosen PG version to the path
   - sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
-  - sudo sh ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION
+  #- sudo sh ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION
+  - if test "$POSTGRESQL_VERSION" = "9.5" ; then sudo apt-get install -y postgresql-9.5 postgresql-9.5-postgis fi
+
+
     #- sudo apt-get install -y postgresql-9.5
     #- sudo apt-get install -y postgresql-9.5-postgis
     #- sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
