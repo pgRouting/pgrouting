@@ -240,14 +240,6 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
 
         /*******************************************************************************/
         /*                          MODIFY AS NEEDED                                   */
-        // OUT seq BIGINT,
-        // OUT path_seq,
-        // OUT node BIGINT,
-        // OUT edge BIGINT,
-        // OUT cost FLOAT,
-        // OUT agg_cost FLOAT)
-
-
         values = palloc(7 * sizeof(Datum));
         nulls = palloc(7 * sizeof(char));
 
@@ -265,7 +257,7 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[call_cntr].start_id + 1);
+        values[1] = Int32GetDatum((int)(result_tuples[call_cntr].start_id + 1));
         values[2] = Int32GetDatum(result_tuples[call_cntr].seq);
         values[3] = Int64GetDatum(result_tuples[call_cntr].node);
         values[4] = Int64GetDatum(result_tuples[call_cntr].edge);
