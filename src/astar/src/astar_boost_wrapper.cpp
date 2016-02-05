@@ -32,9 +32,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #undef unlink
 #endif
 #endif
-#include <unistd.h>
 
+
+#if 0
+extern "C" {
 #include "postgres.h"
+}
+#endif
+
 #include <boost/config.hpp>
 
 #include <boost/graph/graph_traits.hpp>
@@ -53,15 +58,15 @@ using namespace boost;
 struct Edge
 {
   int id;
-  float8 cost;
-  //float8 distance;
+  double cost;
+  //double distance;
 };
   
 struct Vertex
 {
   int id;
-  float8 x;
-  float8 y;
+  double x;
+  double y;
 };
 
 
@@ -114,7 +119,7 @@ class distance_heuristic : public astar_heuristic<Graph, CostType>
 template <class G, class E>
 static void
 graph_add_edge(G &graph, int id, int source, int target, 
-         float8 cost, float8 s_x, float8 s_y, float8 t_x, float8 t_y)
+         double cost, double s_x, double s_y, double t_x, double t_y)
 {
   E e;
   bool inserted;
@@ -171,7 +176,7 @@ try {
 
       if (!directed || (directed && has_reverse_cost))
       {
-        float8 cost;
+        double cost;
 
         if (has_reverse_cost)
         {
@@ -211,7 +216,7 @@ try {
       return -1;
   }
 
-  std::vector<float8> distances(num_vertices(graph));
+  std::vector<double> distances(num_vertices(graph));
 
   try {
     // Call A* named parameter interface
