@@ -60,22 +60,6 @@ addons:
       - postgresql-server-dev-all
       - postgresql-common
 
-#env:
-#  matrix:
-#    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.1
-#    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.1
-#    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.1
-#    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.1
-
-#    - POSTGRESQL_VERSION=9.4 POSTGIS_VERSION=2.0
-#    - POSTGRESQL_VERSION=9.3 POSTGIS_VERSION=2.0
-#    - POSTGRESQL_VERSION=9.2 POSTGIS_VERSION=2.0
-#    - POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=2.0
-
-    ## We are NOT supporting these for pgrouting 2.1.0
-    #- POSTGRESQL_VERSION=8.4 POSTGIS_VERSION=1.5
-    #- POSTGRESQL_VERSION=9.0 POSTGIS_VERSION=1.5
-    #- POSTGRESQL_VERSION=9.1 POSTGIS_VERSION=1.5
 
 #before_install:
 #  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
@@ -85,6 +69,7 @@ addons:
 before_script:
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH # Add our chosen PG version to the path
   - sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
+  - .tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION
     #- sudo apt-get install -y postgresql-9.5
     #- sudo apt-get install -y postgresql-9.5-postgis
     #- sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
