@@ -1,99 +1,71 @@
 
 \i setup.sql
 
-SELECT PLAN(6);
+SELECT PLAN(7);
+
 
 
 PREPARE q1 AS
-SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
+SELECT  path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    ARRAY[3], 1, 
+    ARRAY[-1], -5, 
     driving_side := 'r',
     directed := true,
     details := true);
 
 PREPARE q2 AS
-SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
+SELECT path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    ARRAY[3], 1, 
+    -1, -5, 
     driving_side := 'r',
     directed := true,
-    details := false);
+    details := true);
 
-SELECT set_eq('q1', 'q2', '1: Right: from point ARRAY[3] to 1 it does not pass in front of any other point');
-
+SELECT set_eq('q1', 'q2', '1: Right: from point ARRAY[-1] to -5 same as one to one');
 
 PREPARE q3 AS
-SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
+SELECT path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    ARRAY[3], 4, 
+    ARRAY[-4], -5, 
     driving_side := 'r',
     directed := true,
     details := true);
 
-SELECT set_has('q3','q2','2: Right: from 3 to 4 it passes in front of point 1');
-
 PREPARE q4 AS
-SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
+SELECT path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    ARRAY[3], 4,
-    driving_side := 'l',
+    -4, -5, 
+    driving_side := 'r',
     directed := true,
     details := true);
+
+SELECT set_eq('q3','q4','2: Right: from ARRAY[-4] to -5 same as one to one');
 
 PREPARE q5 AS
-SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
+SELECT path_seq, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    ARRAY[3], 4,
-    driving_side := 'l',
-    directed := true,
-    details := false);
-
-SELECT set_eq('q4', 'q5', '3: Left: from point 3 to 4 it does not pass in front of any other point');
-
-
-PREPARE q6 AS
-SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    ARRAY[3], 1, 
-    driving_side := 'l',
+    ARRAY[-1, -4], -5,
+    driving_side := 'r',
     directed := true,
     details := true);
 
-SELECT set_has('q6','q5','4: Left: from ARRAY[3] to 1 it passes in front of point 4');
+SELECT set_has('q5', 'q1', '3: Right: from point ARRAY[-1,-4] to -5 has results of from point -1 to -5');
+SELECT set_has('q5', 'q2', '4: Right: from point ARRAY[-1,-4] to -5 has results of from point -1 to -5');
+SELECT set_has('q5', 'q3', '5: Right: from point ARRAY[-1,-4] to -5 has results of from point -4 to -5');
+SELECT set_has('q5', 'q4', '6: Right: from point ARRAY[-1,-4] to -5 has results of from point -4 to -5');
 
 
-PREPARE q7 AS
-SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    ARRAY[3], 1,
-    driving_side := 'b',
-    directed := true,
-    details := true);
-
-PREPARE q8 AS
-SELECT seq, path_seq, node, agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    ARRAY[3], 4,
-    driving_side := 'b',
-    directed := true,
-    details := true);
-
-SELECT set_has('q7','q8','Both: from ARRAY[3] to 1 it passes in front of point 4');
 
 PREPARE q9 AS
-SELECT  -3 AS start_vid, -1 AS end_vid,  agg_cost FROM pgr_withPoints(
+SELECT  -1 AS start_vid, -5 AS end_vid,  agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    ARRAY[3], 1,
+    ARRAY[-1], -5,
     driving_side := 'r',
     directed := true,
     details := true) WHERE edge = -1;
@@ -103,12 +75,11 @@ PREPARE q10 AS
 SELECT *  FROM pgr_withPointsCost(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    ARRAY[3], 1,
+    -1, -5,
     driving_side := 'r',
     directed := true);
 
 SELECT set_eq('q10','q9','Right, directed: Cost is the last row');
-
 
 
 SELECT * FROM finish();

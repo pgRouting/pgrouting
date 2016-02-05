@@ -104,6 +104,7 @@ script:
 
 after_script: 
   - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION
+  - ./tools/travis/pg_prove_tests.sh postgres
   #- ./tools/travis/pgrouting_prepare.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
   #- ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 

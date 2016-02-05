@@ -6,18 +6,18 @@ SELECT PLAN(8);
 
 PREPARE q1 AS
 WITH the_union AS (
-    (SELECT path_seq, 1 AS end_pid, node, agg_cost FROM pgr_withPoints(
+    (SELECT path_seq, -2 AS end_pid, node, agg_cost FROM pgr_withPoints(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
             'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-            3, ARRAY[1], 
+            -1, ARRAY[-2], 
             driving_side := 'r',
             directed := true,
             details := true))
     UNION ALL
-    (SELECT path_seq, 5 AS end_pid, node, agg_cost FROM pgr_withPoints(
+    (SELECT path_seq, -5 AS end_pid, node, agg_cost FROM pgr_withPoints(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
             'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-            3, ARRAY[5], 
+            -1, ARRAY[-5], 
             driving_side := 'r',
             directed := true,
             details := true))
@@ -26,38 +26,38 @@ the_ordered AS (SELECT * FROM the_union ORDER BY end_pid, path_seq)
 select row_number() OVER() AS seq, * FROM the_ordered;
 
 PREPARE q2 AS
-SELECT seq, path_seq, -end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
+SELECT seq, path_seq, end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    3, ARRAY[1, 5], 
+    -1, ARRAY[-2, -5], 
     driving_side := 'r',
     directed := true,
     details := true);
 
 PREPARE q3 AS
-SELECT seq, path_seq, -end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
+SELECT seq, path_seq, end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    3, ARRAY[5, 1], 
+    -1, ARRAY[-5, -2], 
     driving_side := 'r',
     directed := true,
     details := true);
 
 PREPARE q4 AS
-SELECT seq, path_seq, -end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
+SELECT seq, path_seq, end_pid AS end_pid, node, agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    3, ARRAY[5, 1, 1, 5, 5, 1],
+    -1, ARRAY[-5, -2, -2, -2, -5, -5, -2],
     driving_side := 'r',
     directed := true,
     details := true);
 
 
-SELECT set_eq('q2', 'q1', '1: From point 3 to 1 and 5 the union vs 1,5 order');
-SELECT set_eq('q3', 'q1', '2: From point 3 to 1 and 5 the union vs 5,1 order');
-SELECT set_eq('q4', 'q1', '2: From point 3 to 1 and 5 the union vs 5,1 eliminate repetitions');
-SELECT set_eq('q2', 'q3', '2: From point 3 to 1 and 5 the 1,5 vs 5,1 order');
-SELECT set_eq('q2', 'q4', '2: From point 3 to 1 and 5 the 1,5 vs 5,1 eliminate repetitions');
+SELECT set_eq('q2', 'q1', '1: From point 1 to 2 and 5 the union vs 2,5 order');
+SELECT set_eq('q3', 'q1', '2: From point 1 to 2 and 5 the union vs 5,2 order');
+SELECT set_eq('q4', 'q1', '3: From point 1 to 2 and 5 the union vs 5,2 eliminate repetitions');
+SELECT set_eq('q2', 'q3', '4: From point 1 to 2 and 5 the 2,5 vs 5,2 order');
+SELECT set_eq('q2', 'q4', '5: From point 1 to 2 and 5 the 2,5 vs 5,2 eliminate repetitions');
 
 
 PREPARE q5 AS
