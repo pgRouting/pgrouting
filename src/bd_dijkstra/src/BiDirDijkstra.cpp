@@ -31,8 +31,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
+#include <stdlib.h>
 #include "BiDirDijkstra.h"
-#include "../../common/src/memory_func.hpp"
+// #include "../../common/src/memory_func.hpp"
 
 
 
@@ -365,10 +366,11 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, unsigned int edge_count, int ma
 		// Transfer data path to path_element_t format and allocate memory and populate the pointer
 
         // DBG("BiDirDijkstra::bidir_dijkstra: allocating path m_vecPath.size=%d\n", m_vecPath.size() + 1);
-#if 0
+#if 1
 		*path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
-#endif
+#else
 		*path = get_memory(sizeof(path_element_t) * (m_vecPath.size() + 1), *path);
+#endif
 		*path_count = m_vecPath.size();
         // DBG("BiDirDijkstra::bidir_dijkstra: allocated path\n");
 
