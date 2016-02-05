@@ -54,6 +54,7 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDD(
     equicost BOOLEAN DEFAULT FALSE, 
 
     OUT seq INTEGER,
+    OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
