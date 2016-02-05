@@ -248,11 +248,11 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
         // OUT agg_cost FLOAT)
 
 
-        values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(char));
+        values = palloc(7 * sizeof(Datum));
+        nulls = palloc(7 * sizeof(char));
 
         size_t i;
-        for(i = 0; i < 6; ++i) {
+        for(i = 0; i < 7; ++i) {
             nulls[i] = ' ';
         }
 
