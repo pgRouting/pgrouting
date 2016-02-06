@@ -98,31 +98,11 @@ do_pgr_many_to_one_withPoints(
                 driving_side,
                 new_edges);
 
-        //int64_t end_vid = 0;
 
-        //std::set< int64_t > start_points(start_pidsArr, start_pidsArr + size_start_pidsArr);
         std::set< int64_t > start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);
-#if 0
-        std::set< int64_t > start_vertices;
 
-        for (const auto point : points) {
-            if (point.pid == end_pid) {
-                end_vid = point.vertex_id;
-                break;
-            }
-        }
-
-        for (const auto &start_pid : start_points) {
-            for (const auto point : points) {
-                if (point.pid == start_pid) {
-                    start_vertices.insert(point.vertex_id);
-                    break;
-                }
-            }
-        }
-#endif
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const int initial_size = total_edges;
+        const auto initial_size = total_edges;
 
         std::deque< Path > paths;
 

@@ -228,7 +228,7 @@ class Pgr_base_graph {
        Prepares the _graph_ to be of type _gtype_ with the
        aproximate number of vertices its coing to have as *initial_size*
        */
-     explicit Pgr_base_graph< G >(graphType gtype, const int initial_size)
+     explicit Pgr_base_graph< G >(graphType gtype, const size_t initial_size)
          : graph(initial_size),
          m_num_vertices(0),
          m_gType(gtype)

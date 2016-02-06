@@ -42,10 +42,10 @@ THE SOFTWARE.
 #include "BiDirAStar.h"
 #include "bdastar.h"
 
-int bdastar_wrapper(edge_astar_t *edges, unsigned int edge_count, int maxnode,
+int bdastar_wrapper(edge_astar_t *edges, size_t edge_count, int maxnode,
                   int source_vertex_id, int target_vertex_id,
                   bool directed, bool has_reverse_cost,
-                  path_element_t **path, int *path_count, char **err_msg)
+                  path_element_t **path, size_t *path_count, char **err_msg)
 {
     int res;
 

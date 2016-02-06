@@ -18,7 +18,6 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
@@ -113,7 +112,7 @@ void Path::generate_postgres_data(
 /* used by driving distance */
 void Path::get_pg_dd_path(
         General_path_element_t **ret_path,
-        int &sequence) const {
+        size_t &sequence) const {
 
     for (unsigned int i = 0; i < path.size(); i++) {
         (*ret_path)[sequence].seq = i;
@@ -130,7 +129,7 @@ void Path::get_pg_dd_path(
 /* used by ksp */
 void Path::get_pg_ksp_path(
         General_path_element_t **ret_path,
-        int &sequence, int routeId) const {
+        size_t &sequence, int routeId) const {
 
     for (unsigned int i = 0; i < path.size(); i++) {
         (*ret_path)[sequence].seq = i + 1;

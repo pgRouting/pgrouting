@@ -152,12 +152,13 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
                 weight_map(get(&Vertex::cost, graph))
                 .distance_map(&distances[0]));
 
-    std::vector< std::vector<int> > path_vect(nb_targets);
+    std::vector< std::vector<uint64_t> > path_vect(nb_targets);
 
     int max;
 
     int index_of_last_path_vertex = 0;
-    int sum_path_sizes = 0, i = 0, j = 0;
+    size_t sum_path_sizes = 0;
+    int i = 0, j = 0;
     std::vector < bool > no_path(nb_targets);
     for (i = 0; i < nb_targets; i++)
     {
@@ -199,14 +200,14 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
     {
 
         (*dists)[numTarget].seq = numTarget;
-        (*dists)[numTarget].id1 = path_vect[numTarget].at(path_vect[numTarget].size() -1);
-        (*dists)[numTarget].id2 = path_vect[numTarget].at(0);
+        (*dists)[numTarget].id1 = static_cast<int>(path_vect[numTarget].at(path_vect[numTarget].size() -1));
+        (*dists)[numTarget].id2 = static_cast<int>(path_vect[numTarget].at(0));
         (*dists)[numTarget].cost = 0.0;
         if (no_path[numTarget]){
             (*dists)[numTarget].cost = -1.0;
         }
         else {
-            for(i = path_vect[numTarget].size() - 1, j = index_of_last_path_vertex; i >= 0; i--, j++)
+            for(i = static_cast<int>(path_vect[numTarget].size()) - 1, j = index_of_last_path_vertex; i >= 0; i--, j++)
             {
                 graph_traits < graph_t >::vertex_descriptor v_src;
                 graph_traits < graph_t >::vertex_descriptor v_targ;

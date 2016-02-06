@@ -52,7 +52,7 @@ do_pgr_one_to_many_dijkstra(
         size_t total_tuples,
         int64_t start_vid,
         int64_t  *end_vidsArr,
-        int size_end_vidsArr,
+        size_t size_end_vidsArr,
         bool directed,
         bool only_cost,
         General_path_element_t **return_tuples,
@@ -61,7 +61,7 @@ do_pgr_one_to_many_dijkstra(
   std::ostringstream log;
   try {
     graphType gType = directed? DIRECTED: UNDIRECTED;
-    const int initial_size = total_tuples;
+    const auto initial_size = total_tuples;
 
     std::deque< Path >paths;
     log << "Inserting vertices into a c++ vector structure\n";

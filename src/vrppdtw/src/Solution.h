@@ -33,9 +33,9 @@ class Solution {
          cost_total = 0, twv_total = 0, cv_total = 0, dis_total = 0;
      }
      // Variables
-     int twv_total;
-     int cv_total;
-     int dis_total;
+     int64_t twv_total;
+     int64_t cv_total;
+     double dis_total;
      double cost_total;
      std::vector<Route> routes;
      // Methods

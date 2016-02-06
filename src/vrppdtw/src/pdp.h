@@ -58,7 +58,7 @@ extern "C"
 int64_t Solver(Customer *c,
         size_t total_tuples,
         int64_t vehicle_count,
-        int64_t capacity ,
+        double capacity ,
         char **msg,
         path_element **results,
         size_t *length_results);

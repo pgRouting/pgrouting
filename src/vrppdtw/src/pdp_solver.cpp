@@ -61,7 +61,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 //forward declaration
 static
-int
+size_t
 TabuSearch(
         const std::vector<Customer> &customers,
         const std::vector<Pickup> &pickups,
@@ -80,7 +80,7 @@ get_result(
 int64_t Solver(Customer *c1,
         size_t total_tuples,
         int64_t VehicleLength,
-        int64_t capacity,
+        double capacity,
         char **msg,
         path_element **results,
         size_t *length_results_struct) {
@@ -224,7 +224,7 @@ int64_t Solver(Customer *c1,
 
 */
 static
-int
+size_t
 TabuSearch(const std::vector<Customer> &customers,
         const std::vector<Pickup> &pickups,
         int maxItr,
@@ -287,11 +287,11 @@ get_result(
     for (const auto &route : solution.routes) {
         double agg_cost = 0;
         double distance = 0;
-        int agg_load = 0;
+        double agg_load = 0;
         result.push_back({seq, route_id, depot.id, agg_cost});
         ++seq;
 
-        int prev_node = -1;
+        int64_t prev_node = -1;
         for (const auto &node : route.path) {
 
             if (node == route.path.front()) {

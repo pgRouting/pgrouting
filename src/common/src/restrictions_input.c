@@ -67,7 +67,7 @@ void
 pgr_get_restriction_data(
         char *restrictions_sql,
         Restrict_t **restrictions,
-        int64_t *total_restrictions) {
+        size_t *total_restrictions) {
     const int tuple_limit = 1000000;
 
     PGR_DBG("pgr_get_restriction_data");
@@ -78,7 +78,7 @@ pgr_get_restriction_data(
     int i;
     for (i = 0; i < 3; ++i) {
         info[i].colNumber = -1;
-        info[i].type = -1;
+        info[i].type = 0;
         info[i].strict = true;
         info[i].eType = ANY_INTEGER;
     }
@@ -90,8 +90,8 @@ pgr_get_restriction_data(
     info[2].eType = TEXT;
 
 
-    int64_t ntuples;
-    int64_t total_tuples;
+    size_t ntuples;
+    size_t total_tuples;
 
     void *SPIplan;
     SPIplan = pgr_SPI_prepare(restrictions_sql);
@@ -121,7 +121,7 @@ pgr_get_restriction_data(
                 elog(ERROR, "Out of memory");
             }
 
-            int64_t t;
+            size_t t;
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
             PGR_DBG("processing %ld", ntuples);

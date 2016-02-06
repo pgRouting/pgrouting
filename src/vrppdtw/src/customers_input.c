@@ -66,7 +66,7 @@ pgr_get_customers(
     int i;
     for (i = 0; i < 9; ++i) {
         info[i].colNumber = -1;
-        info[i].type = -1;
+        info[i].type = 0;
         info[i].strict = true;
         info[i].eType = ANY_NUMERICAL;
     }
@@ -126,7 +126,7 @@ pgr_get_customers(
                 elog(ERROR, "Out of memory");
             }
 
-            int t;
+            size_t t;
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
             PGR_DBG("processing %d customer tupĺes", ntuples);

@@ -187,8 +187,8 @@ alpha_edges( const Alpha_shape_2&  A,
 }
 
 
-int alpha_shape(vertex_t *vertices, unsigned int count, double alpha,
-                vertex_t **res, int *res_count, char **err_msg)
+int alpha_shape(vertex_t *vertices, size_t count, double alpha,
+                vertex_t **res, size_t *res_count, char **err_msg)
 {
   std::list<Point> points;
 
@@ -245,7 +245,7 @@ int alpha_shape(vertex_t *vertices, unsigned int count, double alpha,
     unusedIndexes.erase(0);
     find_next_edge(segments.at(0), segments, unusedIndexes, rings);
 
-    int result_count = 0;
+    size_t result_count = 0;
     for (unsigned int i = 0; i < rings.size(); i++)
     {
       Polygon_2 ring = rings.at(i);

@@ -394,7 +394,7 @@ Pgr_dijkstra< G >::get_path(
     // working from the last to the beginning
 
     // initialize the sequence
-    int seq = result_size;
+    auto seq = result_size;
     // the last stop is the target
     Path path(from, to);
     path.push_front(

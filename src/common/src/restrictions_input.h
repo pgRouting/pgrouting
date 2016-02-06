@@ -29,4 +29,4 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 void pgr_get_restriction_data(
         char *restrictions_sql,
         Restrict_t **restructions,
-        int64_t *total_restrictions);
+        size_t *total_restrictions);

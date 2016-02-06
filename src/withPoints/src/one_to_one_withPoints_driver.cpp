@@ -57,12 +57,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 int
 do_pgr_withPoints(
-        pgr_edge_t  *edges,
-        size_t total_edges,
-        Point_on_edge_t  *points_p,
-        size_t total_points,
-        pgr_edge_t  *edges_of_points,
-        size_t total_edges_of_points,
+        pgr_edge_t  *edges,           size_t total_edges,
+        Point_on_edge_t  *points_p,   size_t total_points,
+        pgr_edge_t  *edges_of_points, size_t total_edges_of_points,
         int64_t start_pid,
         int64_t end_pid,
         bool directed,
@@ -120,7 +117,7 @@ do_pgr_withPoints(
         log << "start_vid" << start_vid << "\n";
         log << "end_vid" << end_vid << "\n";
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const int initial_size = total_edges;
+        const auto initial_size = total_edges;
 
         Path path;
 

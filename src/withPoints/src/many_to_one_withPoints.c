@@ -79,7 +79,7 @@ process(
     pgr_SPI_connect();
 
     Point_on_edge_t *points = NULL;
-    int64_t total_points = 0;
+    size_t total_points = 0;
     pgr_get_points(points_sql, &points, &total_points);
 
 
@@ -92,12 +92,12 @@ process(
 
 
     pgr_edge_t *edges_of_points = NULL;
-    int64_t total_edges_of_points = 0;
+    size_t total_edges_of_points = 0;
     pgr_get_data_5_columns(edges_of_points_query, &edges_of_points, &total_edges_of_points);
 
 
     pgr_edge_t *edges = NULL;
-    int64_t total_edges = 0;
+    size_t total_edges = 0;
     pgr_get_data_5_columns(edges_no_points_query, &edges, &total_edges);
 
     free(edges_of_points_query);
@@ -148,8 +148,8 @@ PGDLLEXPORT Datum
 #endif
 many_to_one_withPoints(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    size_t              call_cntr;
-    size_t               max_calls;
+    uint32_t              call_cntr;
+    uint32_t               max_calls;
     TupleDesc            tuple_desc;
 
     /*******************************************************************************/
@@ -200,7 +200,7 @@ many_to_one_withPoints(PG_FUNCTION_ARGS) {
         /*                                                                             */
         /*******************************************************************************/
 
-        funcctx->max_calls = result_count;
+        funcctx->max_calls = (uint32_t)result_count;
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,

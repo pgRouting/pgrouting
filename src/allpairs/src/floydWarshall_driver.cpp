@@ -60,7 +60,7 @@ do_pgr_floydWarshall(
   std::ostringstream log;
   try {
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-    const int initial_size = total_tuples;
+    const size_t initial_size = total_tuples;
 
 
     if (directedFlag) {

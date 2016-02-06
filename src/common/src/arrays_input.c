@@ -42,7 +42,8 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     bool        i_typbyval;
     char        i_typalign;
     Datum      *i_data;
-    int         i, n;
+    int         i;
+    int         n;
     int64_t      *data;
 
     PGR_DBG("Geting integer array");
@@ -66,7 +67,7 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     /* get various pieces of data from the input array */
     ndims = ARR_NDIM(input);
     n = (*ARR_DIMS(input));
-    (*arrlen) = n;
+    (*arrlen) = (size_t)(n);
 
     if (ndims != 1) {
         elog(ERROR, "One dimension expected");

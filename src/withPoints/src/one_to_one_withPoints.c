@@ -83,11 +83,11 @@ process(
 
     PGR_DBG("load the points");
     Point_on_edge_t *points = NULL;
-    int64_t total_points = 0;
+    size_t total_points = 0;
     pgr_get_points(points_sql, &points, &total_points);
 
 #ifdef DEBUG
-    int i = 0;
+    size_t i = 0;
     for (i = 0; i < total_points; i ++) {
        PGR_DBG("%ld\t%ld\t%f\t%c",points[i].pid, points[i].edge_id, points[i].fraction, points[i].side);
     }
@@ -106,7 +106,7 @@ process(
 
     PGR_DBG("load the edges that match the points");
     pgr_edge_t *edges_of_points = NULL;
-    int64_t total_edges_of_points = 0;
+    size_t total_edges_of_points = 0;
     pgr_get_data_5_columns(edges_of_points_query, &edges_of_points, &total_edges_of_points);
 
     PGR_DBG("Total %ld edges in query:", total_edges_of_points);
@@ -125,7 +125,7 @@ process(
 
     PGR_DBG("load the edges that dont match the points");
     pgr_edge_t *edges = NULL;
-    int64_t total_edges = 0;
+    size_t total_edges = 0;
     pgr_get_data_5_columns(edges_no_points_query, &edges, &total_edges);
 
     PGR_DBG("Total %ld edges in query:", total_edges);
@@ -193,8 +193,8 @@ PGDLLEXPORT Datum
 #endif
 one_to_one_withPoints(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    size_t              call_cntr;
-    size_t               max_calls;
+    uint32_t              call_cntr;
+    uint32_t               max_calls;
     TupleDesc            tuple_desc;
 
     /*******************************************************************************/
@@ -239,7 +239,7 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
         /*                                                                             */
         /*******************************************************************************/
 
-        funcctx->max_calls = result_count;
+        funcctx->max_calls = (uint32_t)result_count;
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,

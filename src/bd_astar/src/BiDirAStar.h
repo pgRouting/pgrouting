@@ -59,14 +59,14 @@ typedef struct{
     double xpos;
     double ypos;
     std::vector<int> Connected_Nodes;
-    std::vector<int> Connected_Edges_Index;
+    std::vector<size_t> Connected_Edges_Index;
 }GraphNodeInfo;
 
 struct GraphEdgeInfo
 {
 public:
     int EdgeID;
-    int EdgeIndex;
+    size_t EdgeIndex;
     int Direction;
     double Cost;
     double ReverseCost;
@@ -86,12 +86,12 @@ public:
     BiDirAStar(void);
     ~BiDirAStar(void);
     
-    int bidir_astar(edge_astar_t *edges, unsigned int edge_count, int maxNode, int start_vertex, int end_vertex,
-        path_element_t **path, int *path_count, char **err_msg);
+    int bidir_astar(edge_astar_t *edges, size_t edge_count, int maxNode, int start_vertex, int end_vertex,
+        path_element_t **path, size_t *path_count, char **err_msg);
     
 
 private:
-    bool construct_graph(edge_astar_t *edges, int edge_count, int maxNode);
+    bool construct_graph(edge_astar_t *edges, size_t edge_count, int maxNode);
     void fconstruct_path(int node_id);
     void rconstruct_path(int node_id);
     bool addEdge(edge_astar_t edgeIn);

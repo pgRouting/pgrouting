@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 void pgr_get_data_4_columns(
         char *sql,
         pgr_edge_t **edges,
-        int64_t *total_tuples);
+        size_t *total_tuples);
 
 /*!
   Signature 1:
@@ -49,4 +49,4 @@ void pgr_get_data_4_columns(
 void pgr_get_data_5_columns(
         char *sql,
         pgr_edge_t **edges,
-        int64_t *total_tuples);
+        size_t *total_tuples);

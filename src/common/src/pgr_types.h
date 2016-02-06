@@ -43,8 +43,8 @@ typedef struct edge_astar
 
 
 typedef struct {
-    int vertex_id;
-    int edge_id;
+    int64_t vertex_id;
+    int64_t edge_id;
     double cost;
 } path_element_t;
 
@@ -139,7 +139,7 @@ enum {
 typedef
 struct {
     int colNumber;
-    int type;
+    uint64_t type;
     bool strict;
     char *name;
     expectType eType;

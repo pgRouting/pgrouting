@@ -127,7 +127,7 @@ do_pgr_many_to_many_withPoints(
         }
 #endif
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const int initial_size = total_edges;
+        const auto initial_size = total_edges;
 
         std::deque< Path > paths;
 

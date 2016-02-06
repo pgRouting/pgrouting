@@ -32,10 +32,10 @@ extern "C"
 {
 #endif
 #include "../../common/src/pgr_types.h"
-  int boost_astar(edge_astar_t *edges, unsigned int count, 
+  int boost_astar(edge_astar_t *edges, size_t count, 
                   int source_vertex_id, int target_vertex_id,
                   bool directed, bool has_reverse_cost,
-                  path_element_t **path, int *path_count, char **err_msg);
+                  path_element_t **path, size_t *path_count, char **err_msg);
 #ifdef __cplusplus
 }
 #endif

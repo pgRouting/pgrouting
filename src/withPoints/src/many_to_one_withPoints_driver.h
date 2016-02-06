@@ -51,7 +51,7 @@ extern "C" {
             size_t total_edges_of_points,
 
             int64_t  *start_pidsArr,
-            int size_start_pidsArr,
+            size_t size_start_pidsArr,
 
             int64_t end_pid,
 

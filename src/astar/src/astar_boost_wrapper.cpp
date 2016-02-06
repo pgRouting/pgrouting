@@ -142,10 +142,10 @@ graph_add_edge(G &graph, int id, int source, int target,
 }
 
 int 
-boost_astar(edge_astar_t *edges, unsigned int count, 
+boost_astar(edge_astar_t *edges, size_t count, 
       int source_vertex_id, int target_vertex_id,
       bool directed, bool has_reverse_cost,
-      path_element_t **path, int *path_count, char **err_msg)
+      path_element_t **path, size_t *path_count, char **err_msg)
 {
 try {
 
@@ -156,7 +156,7 @@ try {
   typedef graph_traits < graph_t >::edge_descriptor edge_descriptor;
 
   // FIXME: compute this value
-  const unsigned int num_nodes = ((directed && has_reverse_cost ? 2 : 1) * 
+  const  auto num_nodes = ((directed && has_reverse_cost ? 2 : 1) * 
           count) + 100;
 
   graph_t graph(num_nodes);
@@ -222,7 +222,7 @@ try {
     // Call A* named parameter interface
     astar_search
       (graph, source_vertex,
-       distance_heuristic<graph_t, float>(graph, target_vertex),
+       distance_heuristic<graph_t, double>(graph, target_vertex),
        predecessor_map(&predecessors[0]).
        weight_map(get(&Edge::cost, graph)).
        distance_map(&distances[0]).
@@ -231,7 +231,7 @@ try {
   } 
   catch(found_goal& fg) {
     // Target vertex found
-    vector<int> path_vect;
+    vector<vertex_descriptor> path_vect;
     int max = MAX_NODES;
     path_vect.push_back(target_vertex);
   
@@ -257,14 +257,14 @@ try {
               (path_vect.size() + 1));
     *path_count = path_vect.size();
 
-    for(int i = path_vect.size() - 1, j = 0; i >= 0; i--, j++)
+    for(int64_t i = static_cast<int64_t>(path_vect.size()) - 1, j = 0; i >= 0; i--, j++)
     {
         graph_traits < graph_t >::vertex_descriptor v_src;
         graph_traits < graph_t >::vertex_descriptor v_targ;
         graph_traits < graph_t >::edge_descriptor e;
         graph_traits < graph_t >::out_edge_iterator out_i, out_end;
 
-        (*path)[j].vertex_id = path_vect.at(i);
+        (*path)[j].vertex_id = static_cast<int>(path_vect.at(i));
 
         (*path)[j].edge_id = -1;
         (*path)[j].cost = distances[target_vertex];

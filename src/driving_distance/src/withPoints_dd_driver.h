@@ -40,7 +40,7 @@ extern "C" {
             Point_on_edge_t *points_p,          size_t total_points,
             pgr_edge_t      *edges_of_points,   size_t total_edges_of_points,
 
-            int64_t  *start_pids_arr,    int s_len,
+            int64_t  *start_pids_arr,    size_t s_len,
             float8 distance,
 
             char driving_side,

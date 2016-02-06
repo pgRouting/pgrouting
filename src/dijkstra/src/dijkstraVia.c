@@ -72,7 +72,7 @@ process( char* edges_sql,
   PGR_DBG("Load data");
   pgr_edge_t *edges;
   edges = NULL;
-  int64_t total_tuples;
+  size_t total_tuples;
   total_tuples = 0;
   pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
 
@@ -119,8 +119,8 @@ PGDLLEXPORT Datum
 #endif
 dijkstraVia(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
-  size_t               call_cntr;
-  size_t               max_calls;
+  uint32_t               call_cntr;
+  uint32_t               max_calls;
   TupleDesc            tuple_desc;
 
   /*******************************************************************************/
@@ -167,7 +167,7 @@ dijkstraVia(PG_FUNCTION_ARGS) {
   /*                                                                             */
   /*******************************************************************************/
 
-      funcctx->max_calls = result_count;
+      funcctx->max_calls = (uint32_t)result_count;
       funcctx->user_fctx = result_tuples;
       if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,

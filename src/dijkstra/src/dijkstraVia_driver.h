@@ -40,7 +40,7 @@ extern "C" {
                 pgr_edge_t  *data_edges,
                 size_t total_tuples,
                 int64_t  *via_vidsArr,
-                int size_via_vidsArr,
+                size_t size_via_vidsArr,
                 bool directed,
                 bool strict,
                 bool U_turn_on_edge,

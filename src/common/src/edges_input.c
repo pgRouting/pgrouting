@@ -39,7 +39,7 @@ void pgr_fetch_edge(
         int64_t *default_id,
         float8 default_rcost,
         pgr_edge_t *edge,
-        int64_t *valid_edges) {
+        size_t *valid_edges) {
     if (column_found(info[0].colNumber)) {
         edge->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     } else {
@@ -66,20 +66,20 @@ void
 get_data_5_columns(
         char *sql,
         pgr_edge_t **edges,
-        int64_t *totalTuples,
+        size_t *totalTuples,
         bool ignore_id) {
     const int tuple_limit = 1000000;
 
-    int ntuples;
-    int64_t total_tuples;
-    int64_t valid_edges;
+    size_t ntuples;
+    size_t total_tuples;
+    size_t valid_edges;
 
     Column_info_t info[5];
 
     int i;
     for (i = 0; i < 5; ++i) {
         info[i].colNumber = -1;
-        info[i].type = -1;
+        info[i].type = 0;
         info[i].strict = true;
         info[i].eType = ANY_INTEGER;
     }
@@ -126,7 +126,7 @@ get_data_5_columns(
                 elog(ERROR, "Out of memory");
             }
 
-            int t;
+            size_t t;
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
             PGR_DBG("processing %d edge tupĺes", ntuples);
@@ -160,7 +160,7 @@ void
 pgr_get_data_5_columns(
         char *sql,
         pgr_edge_t **edges,
-        int64_t *totalTuples) {
+        size_t *totalTuples) {
     bool ignore_id = false;
     get_data_5_columns(sql, edges, totalTuples, ignore_id);
 }
@@ -169,7 +169,7 @@ void
 pgr_get_data_4_columns(
         char *sql,
         pgr_edge_t **edges,
-        int64_t *totalTuples) {
+        size_t *totalTuples) {
     bool ignore_id = true;
     get_data_5_columns(sql, edges, totalTuples, ignore_id);
 }

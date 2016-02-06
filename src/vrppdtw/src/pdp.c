@@ -61,7 +61,7 @@ int compute_shortest_path(
 
     PGR_DBG("Calling Solver Instance\n");
 
-    int ret = Solver(customers, total_customers, vehicle_count,
+    int64_t ret = Solver(customers, total_customers, vehicle_count,
             capacity, &err_msg, results, length_results_struct);
 
     if (ret < -2) {
@@ -85,8 +85,8 @@ PG_FUNCTION_INFO_V1(vrppdtw);
 Datum
 vrppdtw(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    int                  call_cntr;
-    int                  max_calls;
+    size_t               call_cntr;
+    size_t               max_calls;
     TupleDesc            tuple_desc;
     path_element     *results = 0;
 
@@ -111,7 +111,7 @@ vrppdtw(PG_FUNCTION_ARGS) {
         PGR_DBG("Back from solve_vrp, length_results: %d", length_results_struct);
 
         /* total number of tuples to be returned */
-        funcctx->max_calls = length_results_struct;
+        funcctx->max_calls = (uint32_t)length_results_struct;
         funcctx->user_fctx = results;
 
         /* Build a tuple descriptor for our result type */

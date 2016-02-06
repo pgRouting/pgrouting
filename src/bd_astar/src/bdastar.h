@@ -34,10 +34,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C"
 #endif
 
-  int bdastar_wrapper(edge_astar_t *edges, unsigned int count, int maxnode,
+  int bdastar_wrapper(edge_astar_t *edges, size_t count, int maxnode,
                   int source_vertex_id, int target_vertex_id,
                   bool directed, bool has_reverse_cost,
-                  path_element_t **path, int *path_count, char **err_msg);
+                  path_element_t **path, size_t *path_count, char **err_msg);
 #ifdef __cplusplus
 extern "C"
 #endif

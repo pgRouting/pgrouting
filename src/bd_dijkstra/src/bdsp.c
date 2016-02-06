@@ -153,21 +153,21 @@ fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
   }
 }
 
-static int compute_bidirsp(char* sql, int start_vertex, 
-                                 int end_vertex, bool directed, 
+static int compute_bidirsp(char* sql, int64_t start_vertex, 
+                                 int64_t end_vertex, bool directed, 
                                  bool has_reverse_cost, 
-                                 path_element_t **path, int *path_count) 
+                                 path_element_t **path, size_t *path_count) 
 {
   void *SPIplan;
   Portal SPIportal;
   bool moredata = TRUE;
-  int ntuples;
+  size_t ntuples;
   edge_t *edges = NULL;
-  int total_tuples = 0;
+  size_t total_tuples = 0;
   edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
                                  .cost= -1, .reverse_cost= -1};
-  int v_max_id=0;
-  int v_min_id=INT_MAX;
+  int64_t v_max_id=0;
+  int64_t v_min_id=INT_MAX;
 
   int s_count = 0;
   int t_count = 0;
@@ -207,7 +207,7 @@ static int compute_bidirsp(char* sql, int start_vertex,
       }
 
       if (ntuples > 0) {
-          int t;
+          size_t t;
           SPITupleTable *tuptable = SPI_tuptable;
           TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
@@ -303,8 +303,8 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
 {
 
   FuncCallContext     *funcctx;
-  int                  call_cntr;
-  int                  max_calls;
+  uint32_t                  call_cntr;
+  uint32_t                  max_calls;
   TupleDesc            tuple_desc;
   path_element_t      *path;
   // char *               sql;
@@ -313,7 +313,7 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
   // stuff done only on the first call of the function 
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
-      int path_count = 0;
+      size_t path_count = 0;
 #ifdef DEBUG
       int ret = -1;
 #endif
@@ -358,7 +358,7 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
 #endif
 
       // total number of tuples to be returned 
-      funcctx->max_calls = path_count;
+      funcctx->max_calls = (uint32_t)path_count;
       funcctx->user_fctx = path;
 
       funcctx->tuple_desc = 

@@ -48,7 +48,7 @@ class Path {
     void start_id(int64_t value) {m_start_id = value;}
     int64_t end_id()  const {return m_end_id;}
     void end_id(int64_t value) {m_end_id = value;}
-    int64_t tot_cost()  const {return m_tot_cost;}
+    double tot_cost()  const {return m_tot_cost;}
 
     size_t size() const {return path.size();}
     bool empty() const {return path.empty();}
@@ -99,11 +99,11 @@ class Path {
 
     void get_pg_dd_path(
             General_path_element_t **ret_path,
-            int &sequence) const;
+            size_t &sequence) const;
 
     void get_pg_ksp_path(
             General_path_element_t **ret_path,
-            int &sequence, int routeId) const;
+            size_t &sequence, int routeId) const;
 
     void generate_postgres_data(
             General_path_element_t **postgres_data,
@@ -187,8 +187,8 @@ class Path {
 
     }
 
-    friend int count_tuples(const std::deque< Path > &paths) {
-        int count(0);
+    friend size_t count_tuples(const std::deque< Path > &paths) {
+        size_t count(0);
         for (const Path &e : paths) {
             count += e.path.size();
         }

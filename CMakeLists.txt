@@ -229,10 +229,10 @@ if(APPLE)
 
 elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGWIN)
     #set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -fPIC -O2 -g -Wall -pedantic -fmax-errors=10 -Werror -Wmissing-prototypes -frounding-math")
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -std=gnu99 -fPIC -O2 -g -Wall -pedantic -fmax-errors=10 -Werror -Wmissing-prototypes -frounding-math")
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -std=gnu99 -fPIC -O2 -g -Wall -Wconversion -pedantic -fmax-errors=10 -Werror -Wmissing-prototypes -frounding-math")
 
     #set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -fPIC -O2 -g -Wall -pedantic -fmax-errors=10 -Werror -Wmissing-prototypes -frounding-math")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC -O2 -g -Wall -pedantic -fmax-errors=10 -Wextra -Werror -frounding-math -Wno-deprecated")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC -O2 -g -Wconversion -Wall -pedantic -fmax-errors=10 -Wextra -Werror -frounding-math -Wno-deprecated")
 
     #set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -Wall -frounding-math")
     #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -Wall -std=c++0x -frounding-math -Wno-deprecated")
@@ -268,6 +268,10 @@ set(L_PACKAGE_SQL_FILES "")
 
 set(PgRouting_SOURCE_NAMES
     "common"
+
+    #to be deprecated
+    #"kdijkstra"
+
     "dijkstra"
     "driving_distance"
     "ksp"
@@ -280,11 +284,11 @@ set(PgRouting_SOURCE_NAMES
 
     "astar" "bd_astar"
     "bd_dijkstra"
-    "kdijkstra"
     "trsp" #2.0
     "tsp"
 
     "vrp_basic" "vrppdtw"
+
     )
 
 #-------------------

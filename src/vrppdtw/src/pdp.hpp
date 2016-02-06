@@ -57,7 +57,7 @@ typedef std::vector< Pickup > Pickups;
 typedef struct {
         int64_t twv;
         int64_t cv;
-        int64_t dis;
+        double dis;
         std::vector< int64_t > path;
 } State;
 

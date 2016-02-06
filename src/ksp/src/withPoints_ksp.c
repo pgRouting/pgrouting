@@ -64,7 +64,7 @@ process(
         char* points_sql,
         int64_t start_pid,
         int64_t end_pid,
-        int64_t k,
+        int k,
 
         bool directed,
         bool heap_paths,
@@ -84,7 +84,7 @@ process(
     pgr_SPI_connect();
 
     Point_on_edge_t *points = NULL;
-    int64_t total_points = 0;
+    size_t total_points = 0;
     pgr_get_points(points_sql, &points, &total_points);
 
     char *edges_of_points_query = NULL;
@@ -96,11 +96,11 @@ process(
 
 
     pgr_edge_t *edges_of_points = NULL;
-    int64_t total_edges_of_points = 0;
+    size_t total_edges_of_points = 0;
     pgr_get_data_5_columns(edges_of_points_query, &edges_of_points, &total_edges_of_points);
 
     pgr_edge_t *edges = NULL;
-    int64_t total_edges = 0;
+    size_t total_edges = 0;
     pgr_get_data_5_columns(edges_no_points_query, &edges, &total_edges);
 
     PGR_DBG("freeing allocated memory not used anymore");
@@ -164,8 +164,8 @@ PGDLLEXPORT Datum
 #endif
 withPoints_ksp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    size_t              call_cntr;
-    size_t               max_calls;
+    uint32_t             call_cntr;
+    uint32_t             max_calls;
     TupleDesc            tuple_desc;
 
     /*******************************************************************************/
@@ -187,7 +187,7 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
         // CREATE OR REPLACE FUNCTION pgr_withPoint(
         // edges_sql TEXT,
         // points_sql TEXT,
-        // start_pid BIGINT,
+        // start_pid INTEGER,
         // end_pid BIGINT,
         // k BIGINT,
         //
@@ -203,7 +203,7 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
                 pgr_text2char(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_INT64(2),
                 PG_GETARG_INT64(3),
-                PG_GETARG_INT64(4),
+                PG_GETARG_INT32(4),
                 PG_GETARG_BOOL(5),
                 PG_GETARG_BOOL(6),
                 pgr_text2char(PG_GETARG_TEXT_P(7)),
@@ -214,7 +214,7 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
         /*                                                                             */
         /*******************************************************************************/
 
-        funcctx->max_calls = result_count;
+        funcctx->max_calls = (uint32_t)result_count;
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,

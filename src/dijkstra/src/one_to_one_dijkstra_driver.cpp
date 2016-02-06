@@ -66,7 +66,7 @@ do_pgr_one_to_one_dijkstra(
   std::ostringstream log;
   try {
       graphType gType = directed? DIRECTED: UNDIRECTED;
-      const int initial_size = total_tuples;
+      const auto initial_size = total_tuples;
 
       Path path;
 

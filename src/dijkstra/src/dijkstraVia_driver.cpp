@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./pgr_dijkstra.hpp"
 #include "./dijkstraVia_driver.h"
+#include "./../../common/src/memory_func.hpp"
 
 #define DEBUG
 
@@ -139,12 +140,6 @@ get_path(
             i,
             path.start_id(),
             path.end_id(),
-#if 0
-            path[i].node,
-            path[i].edge,
-            path[i].cost,
-            path[i].agg_cost,
-#endif
             e.node,
             e.edge,
             e.cost,
@@ -163,8 +158,8 @@ get_route(
         Routes_t **ret_path,
         const std::deque< Path > &paths) {
     size_t sequence = 0;    //arrys index
-    int64_t path_id = 1;    // id's in posgresql start with 1
-    int64_t route_id = 1;   
+    int path_id = 1;    // id's in posgresql start with 1
+    int route_id = 1;   
     double route_cost = 0;  // routes_agg_cost
     for (const Path &path : paths) {
         if (path.size() > 0)
@@ -173,18 +168,6 @@ get_route(
     }
     return sequence;
 }
-
-static
-Routes_t *
-get_memory(int size, Routes_t *path){
-    if( path ==0  ) {
-        path = (Routes_t *) malloc(size * sizeof(Routes_t));
-    } else {
-        path = (Routes_t *)realloc(path,size * sizeof(Routes_t));
-    }
-    return path;
-}
-
 
 // CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertices(sql text, vertices anyarray, directed boolean default true,
 void
@@ -211,7 +194,7 @@ do_pgr_dijkstraViaVertex(
         }
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const int initial_size = total_tuples;
+        const auto initial_size = total_tuples;
 
         std::deque< Path >paths;
         log << "Inserting vertices into a c++ vector structure\n";

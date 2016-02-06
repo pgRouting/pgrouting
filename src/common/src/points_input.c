@@ -62,17 +62,17 @@ void
 pgr_get_points(
         char *points_sql,
         Point_on_edge_t **points,
-        int64_t *total_points) {
+        size_t *total_points) {
     const int tuple_limit = 1000;
 
-    int64_t ntuples;
-    int64_t total_tuples;
+    size_t ntuples;
+    size_t total_tuples;
     Column_info_t info[4];
 
     int i;
     for (i = 0; i < 4; ++i) {
         info[i].colNumber = -1;
-        info[i].type = -1;
+        info[i].type = 0;
         info[i].strict = true;
         info[i].eType = ANY_INTEGER;
     }
@@ -122,7 +122,7 @@ pgr_get_points(
 
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
-            int64_t t;
+            size_t t;
 
             PGR_DBG("processing %ld points tuples", ntuples);
             for (t = 0; t < ntuples; t++) {
