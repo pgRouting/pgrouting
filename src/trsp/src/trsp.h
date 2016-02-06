@@ -45,7 +45,7 @@ extern "C" {
 
 int trsp_node_wrapper(
 			edge_t *edges, 
-			unsigned int edge_count, 
+			size_t edge_count, 
 			restrict_t *restricts, 
 			int restrict_count,
 			int start_vertex, 

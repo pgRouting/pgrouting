@@ -53,12 +53,12 @@ static int compute_trsp(
         bool has_reverse_cost,
         char *restrict_sql,
         path_element_t **path,
-        int *path_count) {
+        uint32_t *path_count) {
     pgr_SPI_connect();
 
     PGR_DBG("Load edges");
     pgr_edge_t *edges = NULL;
-    int64_t total_tuples = 0;
+    size_t total_tuples = 0;
     pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
     PGR_DBG("Total %ld edges", total_tuples);
 
@@ -220,8 +220,8 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 {
 
     FuncCallContext     *funcctx;
-    int                  call_cntr;
-    int                  max_calls;
+    uint32_t                  call_cntr;
+    uint32_t                  max_calls;
     TupleDesc            tuple_desc;
     path_element_t      *path;
     char *               sql;
