@@ -26,36 +26,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef _BDSP_H
 #define _BDSP_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "../../common/src/pgr_types.h"
 #include "postgres.h"
 
-typedef struct edge {
-    int id;
-    int source;
-    int target;
-    float8 cost;
-    float8 reverse_cost;
-} edge_t;
+typedef pgr_edge_t edge_t;
 
-typedef struct {
-    int vertex_id;
-    int edge_id;
-    float8 cost;
-} path_element_t;
-
-#ifdef __cplusplus
-extern "C"
-#endif
 
 int bidirsp_wrapper( edge_t *edges, 
-        unsigned int edge_count,
-        int maxNode,
-        int start_vertex, 
-        int end_vertex,
-        bool directed, 
-        bool has_reverse_cost,
-        path_element_t **path, 
-        int *path_count, 
-        char **err_msg
-        );
+			unsigned int edge_count,
+			int maxNode,
+			int start_vertex, 
+			int end_vertex,
+		    bool directed, 
+		    bool has_reverse_cost,
+            path_element_t **path, 
+            int *path_count, 
+            char **err_msg
+            );
 
+#ifdef __cplusplus
+}
 #endif
+
+#endif  // _BDSP_H
+
+

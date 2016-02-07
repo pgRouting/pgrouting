@@ -25,8 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-MIT*/
 
-#include "bdsp.h"
-
+#include "../../common/src/pgr_types.h"
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -44,6 +43,7 @@ Datum bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS);
 #include "../../common/src/debug_macro.h"
 #include "../../common/src/postgres_connection.h"
 
+#include "bdsp.h"
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
@@ -124,7 +124,8 @@ fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns,
 
 static void
 fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc, 
-           edge_columns_t *edge_columns, edge_t *target_edge) {
+           edge_columns_t *edge_columns, edge_t *target_edge)
+{
   Datum binval;
   bool isnull;
 
@@ -192,12 +193,12 @@ static int compute_bidirsp(char* sql, int start_vertex,
           }
       }
 
-      ntuples = (int) SPI_processed;
+      ntuples = SPI_processed;
       total_tuples += ntuples;
       if (!edges)
-        edges = palloc((size_t)total_tuples * sizeof(edge_t));
+        edges = palloc(total_tuples * sizeof(edge_t));
       else
-        edges = repalloc(edges, (size_t)total_tuples * sizeof(edge_t));
+        edges = repalloc(edges, total_tuples * sizeof(edge_t));
 
       if (edges == NULL) {
           elog(ERROR, "Out of memory");
@@ -227,10 +228,10 @@ static int compute_bidirsp(char* sql, int start_vertex,
   PGR_DBG("Total %i tuples", total_tuples);
 
   for(z=0; z<total_tuples; z++) {
-    if(edges[z].source<v_min_id) v_min_id=(int)edges[z].source;
-    if(edges[z].source>v_max_id) v_max_id=(int)edges[z].source;
-    if(edges[z].target<v_min_id) v_min_id=(int)edges[z].target;
-    if(edges[z].target>v_max_id) v_max_id=(int)edges[z].target; 
+    if(edges[z].source<v_min_id) v_min_id=edges[z].source;
+    if(edges[z].source>v_max_id) v_max_id=edges[z].source;
+    if(edges[z].target<v_min_id) v_min_id=edges[z].target;
+    if(edges[z].target>v_max_id) v_max_id=edges[z].target; 
     //PGR_DBG("%i <-> %i", v_min_id, v_max_id);
   }
 
@@ -270,7 +271,7 @@ static int compute_bidirsp(char* sql, int start_vertex,
         total_tuples, v_max_id + 2, start_vertex, end_vertex,
         directed, has_reverse_cost);
 
-  ret = bidirsp_wrapper(edges, (unsigned int)total_tuples, v_max_id + 2, start_vertex, end_vertex,
+  ret = bidirsp_wrapper(edges, total_tuples, v_max_id + 2, start_vertex, end_vertex,
                        directed, has_reverse_cost,
                        path, path_count, &err_msg);
 
@@ -357,7 +358,7 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
 #endif
 
       // total number of tuples to be returned 
-      funcctx->max_calls = (uint32_t)path_count;
+      funcctx->max_calls = path_count;
       funcctx->user_fctx = path;
 
       funcctx->tuple_desc = 
@@ -369,8 +370,8 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
   // stuff done on every call of the function 
   funcctx = SRF_PERCALL_SETUP();
 
-  call_cntr = (int)funcctx->call_cntr;
-  max_calls = (int)funcctx->max_calls;
+  call_cntr = funcctx->call_cntr;
+  max_calls = funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
   path = (path_element_t*) funcctx->user_fctx;
 
