@@ -66,7 +66,9 @@ addons:
 #  - sudo apt-get update -q
 #  - sudo apt-get install gcc-4.8 -y
 
-install:
+#install:
+#
+before_script:
   # - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
   # Add our chosen PG version to the path
@@ -78,14 +80,13 @@ install:
   # Stop whichever version of PG is running
   #- sudo /etc/init.d/postgresql stop
   # Start the version of PG that we want to test
-  #- sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION
+  - sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION
   #- if test "$POSTGRESQL_VERSION" != "9.5" ; then sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION ; fi
 
   # Install pgtap and pg_prove
   - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION   # pgtap has to be installed after postgres has started
   - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
 
-before_script:
   # initialize databases
   - createdb  ___pgr___test___
   - createdb  pgr_test__db__test
