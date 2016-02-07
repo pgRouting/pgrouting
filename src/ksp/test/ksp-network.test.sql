@@ -94,7 +94,7 @@ update  network set reverse_cost = st_length(the_geom)*5;
 SET client_min_messages = WARNING;
 
 -- TESTS START
-
+/*
 SELECT seq, path_id, node, edge, round(cost::numeric, 4) from pgr_ksp(
     'SELECT id, source, target, cost from network order by id',
     4, 5::BIGINT,
@@ -104,17 +104,17 @@ SELECT path_id, round(sum(cost)::numeric,4) from pgr_ksp(
     'SELECT id, source, target, cost from network order by id',
     4, 5::BIGINT,
     15) group by path_id order by path_id;
-
+*/
 
 -- the equality conditions
-SELECT seq, path_id, node = network.source,  edge = network.id, round(network.cost::numeric,4) = round(result.cost::numeric, 4) from pgr_ksp(
+SELECT seq, node = network.source,  edge = network.id, round(network.cost::numeric,4) = round(result.cost::numeric, 4) from pgr_ksp(
     'SELECT id, source, target, cost from network order by id',
     4, 5::BIGINT,
     15) result, network where id = edge order by seq;
 
 
 --VERSION 2.0
-
+/*
 SELECT seq, path_id, node, edge, round(cost::numeric, 4), round(agg_cost::numeric,4) from pgr_ksp(
     'SELECT id, source, target, cost from network order by id',
     4, 5,
@@ -124,10 +124,10 @@ SELECT path_id, round(agg_cost::numeric,4) from pgr_ksp(
     'SELECT id, source, target, cost from network order by id',
     4, 5,
     15) WHERE edge = -1;
-
+*/
 
 -- the equality conditions
-SELECT seq, path_id, node = network.source,  edge = network.id, round(network.cost::numeric,4) = round(result.cost::numeric, 4) from pgr_ksp(
+SELECT seq, node = network.source,  edge = network.id, round(network.cost::numeric,4) = round(result.cost::numeric, 4) from pgr_ksp(
     'SELECT id, source, target, cost from network order by id',
     4, 5,
     15) AS result, network WHERE id = edge ORDER BY seq;
