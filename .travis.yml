@@ -66,7 +66,9 @@ addons:
 #  - sudo apt-get update -q
 #  - sudo apt-get install gcc-4.8 -y
 
-before_script:
+install:
+  # - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+
   # Add our chosen PG version to the path
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
   # Stop whichever version of PG that travis started
@@ -83,14 +85,13 @@ before_script:
   #- ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION   # pgtap has to be installed after postgres has started
   #- sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
 
+before_script:
   # initialize databases
   - createdb  ___pgr___test___
   - createdb  pgr_test__db__test
   - ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___
 
 
-install:
-  # - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 
 script: 
