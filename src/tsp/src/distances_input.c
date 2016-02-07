@@ -106,7 +106,8 @@ void pgr_get_distances(
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
             PGR_DBG("processing %d edge tupĺes", ntuples);
 
-            for (size_t t = 0; t < ntuples; t++) {
+            size_t t;
+            for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
                 pgr_fetch_distance(&tuple, &tupdesc, info,
                         &(*distances)[total_tuples - ntuples + t]);
