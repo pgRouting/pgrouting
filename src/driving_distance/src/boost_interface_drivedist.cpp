@@ -103,13 +103,11 @@ do_pgr_driving_many_to_dist(
 
 void
 do_pgr_driving_distance(
-        pgr_edge_t  *data_edges,
-        int64_t     total_edges,
+        pgr_edge_t  *data_edges, size_t total_edges,
         int64_t     start_vertex,
         float8      distance,
         bool        directedFlag,
-        General_path_element_t **ret_path,
-        size_t                  *path_count,
+        General_path_element_t **ret_path, size_t *path_count,
         char                   **err_msg) {
     std::ostringstream log;
     try {

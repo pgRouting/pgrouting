@@ -172,15 +172,12 @@ get_route(
 // CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertices(sql text, vertices anyarray, directed boolean default true,
 void
 do_pgr_dijkstraViaVertex(
-        pgr_edge_t  *data_edges,
-        size_t total_tuples,
-        int64_t  *via_vidsArr,
-        int size_via_vidsArr,
+        pgr_edge_t  *data_edges,    size_t total_tuples,
+        int64_t  *via_vidsArr,      size_t size_via_vidsArr,
         bool directed,
         bool strict,
         bool U_turn_on_edge,
-        Routes_t **return_tuples,
-        size_t *return_count,
+        Routes_t **return_tuples,   size_t *return_count,
         char ** err_msg){
     std::ostringstream log;
     try {

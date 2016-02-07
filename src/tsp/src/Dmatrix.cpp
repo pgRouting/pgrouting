@@ -11,7 +11,7 @@
 
 
 double
-Dmatrix::pathLength(const Ids &path) const {
+Dmatrix::pathCost(const Ids &path) const {
     double len = 0;
     if (path.empty()) return len;
     auto prev_id = path.front();

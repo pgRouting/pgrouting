@@ -62,21 +62,16 @@ extern "C" {
 
 int
 do_pgr_one_to_many_withPoints(
-        pgr_edge_t  *edges,
-        size_t total_edges,
-        Point_on_edge_t  *points_p,
-        size_t total_points,
-        pgr_edge_t  *edges_of_points,
-        size_t total_edges_of_points,
+        pgr_edge_t  *edges, size_t total_edges,
+        Point_on_edge_t  *points_p, size_t total_points,
+        pgr_edge_t  *edges_of_points, size_t total_edges_of_points,
         int64_t start_vid,
-        int64_t  *end_pidsArr,
-        int size_end_pidsArr,
+        int64_t  *end_pidsArr, size_t size_end_pidsArr,
         char driving_side,
         bool details,
         bool directed,
         bool only_cost,
-        General_path_element_t **return_tuples,
-        size_t *return_count,
+        General_path_element_t **return_tuples, size_t *return_count,
         char ** err_msg){
     std::ostringstream log;
     try {

@@ -39,11 +39,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 Datum bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS);
 
 
-#undef DEBUG
-#include "../../common/src/debug_macro.h"
+#include "../../common/src/pgr_types.h"
 #include "../../common/src/postgres_connection.h"
 
 #include "bdsp.h"
+
+#define DEBUG
+#include "../../common/src/debug_macro.h"
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
@@ -225,14 +227,14 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
 
   //defining min and max vertex id
 
-  PGR_DBG("Total %i tuples", total_tuples);
+  PGR_DBG("Total %ld tuples", total_tuples);
 
   for(z=0; z<total_tuples; z++) {
     if(edges[z].source<v_min_id) v_min_id=edges[z].source;
     if(edges[z].source>v_max_id) v_max_id=edges[z].source;
     if(edges[z].target<v_min_id) v_min_id=edges[z].target;
     if(edges[z].target>v_max_id) v_max_id=edges[z].target; 
-    //PGR_DBG("%i <-> %i", v_min_id, v_max_id);
+    PGR_DBG("%ld <-> %ld", v_min_id, v_max_id);
   }
 
   //::::::::::::::::::::::::::::::::::::  
@@ -250,7 +252,7 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
     //PGR_DBG("%i - %i", edges[z].source, edges[z].target);      
   }
 
-  PGR_DBG("Total %i tuples", total_tuples);
+  PGR_DBG("Total %ld tuples", total_tuples);
 
   if(s_count == 0) {
     elog(ERROR, "Start vertex was not found.");
@@ -267,7 +269,7 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
 
   //v_max_id -= v_min_id;
 
-  PGR_DBG("Calling bidirsp_wrapper(edges, %d, %d, %d, %d, %d, %d, ...)\n",
+  PGR_DBG("Calling bidirsp_wrapper(edges, %lu, %ld, %ld, %ld, %d, %d, ...)\n",
         total_tuples, v_max_id + 2, start_vertex, end_vertex,
         directed, has_reverse_cost);
 
@@ -275,12 +277,17 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
                        directed, has_reverse_cost,
                        path, path_count, &err_msg);
 
+  elog(NOTICE, "message: %s", err_msg);
+#if 1
+    pgr_SPI_finish();
+    return 0;
+#endif
   PGR_DBG("Back from bidirsp_wrapper() ret: %d", ret);
   if (ret < 0) {
       elog(ERROR, "Error computing path: %s", err_msg);
   } 
 
-  PGR_DBG("*path_count = %i\n", *path_count);
+  PGR_DBG("*path_count = %ld\n", *path_count);
 
   //::::::::::::::::::::::::::::::::
   //:: restoring original vertex id
@@ -306,7 +313,7 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
   uint32_t                  call_cntr;
   uint32_t                  max_calls;
   TupleDesc            tuple_desc;
-  path_element_t      *path;
+  path_element_t      *path = NULL;
   // char *               sql;
 
 
@@ -314,7 +321,7 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       size_t path_count = 0;
-#ifdef DEBUG
+#ifdef RDEBUG
       int ret = -1;
 #endif
       int i;
@@ -333,16 +340,17 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
 
       PGR_DBG("Calling compute_bidirsp");
 
-#ifdef DEBUG
+#ifdef RDEBUG
       ret =
 #endif
+
         compute_bidirsp(pgr_text2char(PG_GETARG_TEXT_P(0)),
                                    PG_GETARG_INT32(1),
                                    PG_GETARG_INT32(2),
                                    PG_GETARG_BOOL(3),
                                    PG_GETARG_BOOL(4), 
                                    &path, &path_count);
-#ifdef DEBUG
+#ifdef RDEBUG
     double total_cost = 0;
       PGR_DBG("Ret is %i", ret);
       if (ret >= 0) {

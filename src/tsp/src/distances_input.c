@@ -55,15 +55,15 @@ void pgr_get_distances(
 
     const int tuple_limit = 1000000;
 
-    int ntuples;
-    int64_t total_tuples = 0;
+    size_t ntuples;
+    size_t total_tuples = 0;
 
     Column_info_t info[3];
 
     int i;
     for (i = 0; i < 3; ++i) {
         info[i].colNumber = -1;
-        info[i].type = -1;
+        info[i].type = 0;
         info[i].strict = true;
         info[i].eType = ANY_INTEGER;
     }
@@ -102,12 +102,11 @@ void pgr_get_distances(
                 elog(ERROR, "Out of memory");
             }
 
-            int t;
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
             PGR_DBG("processing %d edge tupĺes", ntuples);
 
-            for (t = 0; t < ntuples; t++) {
+            for (size_t t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
                 pgr_fetch_distance(&tuple, &tupdesc, info,
                         &(*distances)[total_tuples - ntuples + t]);

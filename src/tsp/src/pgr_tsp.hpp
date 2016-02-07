@@ -45,7 +45,8 @@ typedef std::vector< int64_t > Ids;
      Dmatrix dist;
      size_t n;
      double maxd;
-     double bestlen;
+     size_t bestlen;
+     double bestCost;
      Ids iorder;
      /*
       * std::vector< bool > visited;
@@ -68,14 +69,17 @@ typedef std::vector< int64_t > Ids;
              /*
               * identity_permutations
               */
-             for (size_t i = 0; i < n; ++i) {
-                 iorder[i] = i;
+             std::iota(std::begin(iorder), std::end(iorder), 0);
+#if 0
+             for (auto &e : iorder) {
+                  e = i;
              }
+#endif
              /*
               * best order
               */
              border = iorder;
-             bestlen = dist.pathLength(border);
+             bestCost = dist.pathCost(border);
          }
      void update(Ids new_order);
      bool findEulerianPath();

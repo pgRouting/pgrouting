@@ -60,7 +60,7 @@ typedef struct {
 
 /*
  * This ones are for returning the info to postgres
- */
+     */
 
 typedef struct {
     int seq;

@@ -269,7 +269,7 @@ void BiDirDijkstra::explore(int cur_node, double cur_cost, int dir, std::priorit
 
 
 int BiDirDijkstra::bidir_dijkstra(edge_t *edges, size_t edge_count, int maxNode, int start_vertex, int end_vertex,
-				path_element_t **path, size_t *path_count, char **err_msg)
+				path_element_t **path, size_t *path_count, std::ostream &err_msg)
 {
 	max_node_id = maxNode;
 	max_edge_id = -1;
@@ -280,8 +280,12 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, size_t edge_count, int maxNode,
 
 	// construct the graph from the edge list, i.e. populate node and edge data structures
     // DBG("Calling construct_graph\n");
-	construct_graph(edges, edge_count, maxNode);
+	construct_graph(edges, edge_count, maxNode, err_msg);
 	
+#if 1
+    err_msg << "here\n";
+    return 0;
+#endif
 
 	//int nodeCount = m_vecNodeVector.size();
 	// DBG("Setting up std::priority_queue\n");
@@ -343,7 +347,7 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, size_t edge_count, int maxNode,
 */ 
 	if(m_MidNode == -1)
 	{
-		*err_msg = (char *)"Path Not Found";
+		err_msg << "Path Not Found";
 		deleteall();
 		return -1;
 	}
@@ -391,7 +395,7 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, size_t edge_count, int maxNode,
 	corresponding edge indices from edge list that connect this node with the adjacent nodes.
 */
 
-bool BiDirDijkstra::construct_graph(edge_t* edges, size_t edge_count, int maxNode)
+bool BiDirDijkstra::construct_graph(edge_t edges[], size_t edge_count, int maxNode, std::ostream &err_msg)
 {
 	int i;
 
@@ -423,10 +427,16 @@ bool BiDirDijkstra::construct_graph(edge_t* edges, size_t edge_count, int maxNod
     // DBG("reserving space for m_vecEdgeVector.reserve(%d)\n", edge_count);
     m_vecEdgeVector.reserve(edge_count);
     // DBG("calling addEdge in a loop\n");
-	for(size_t i = 0; i < edge_count; i++)
-	{
-		addEdge(edges[i]);
+	for(auto &e :  edges) {
+		if (!addEdge(e, err_msg)) {
+            err_msg << "could not add edge";
+            return false;
+        }
 	}
+#if 1
+    err_msg << "construct_graph\n";
+    return 0;
+#endif
 
 	return true;
 }
@@ -436,8 +446,8 @@ bool BiDirDijkstra::construct_graph(edge_t* edges, size_t edge_count, int maxNod
 	connectivity information needs to be updated.
 */
 
-bool BiDirDijkstra::addEdge(edge_t edgeIn)
-{
+bool BiDirDijkstra::addEdge(edge_t edgeIn, std::ostream &err_msg) {
+    try {
 	// long lTest;
 
 	// Check if the edge is already processed.
@@ -459,32 +469,25 @@ bool BiDirDijkstra::addEdge(edge_t edgeIn)
 	// negative then the edge is unidirectional with direction = 1 (goes from source to target) otherwise it is unidirectional with direction = -1 (goes from target
 	// to source). Another way of creating unidirectional edge is assigning big values in cost or reverse_cost. In that case the direction is still zero and this case
 	// is handled in the algorithm automatically.
-	if(newEdge.Cost >= 0.0 && newEdge.ReverseCost >= 0)
-	{
+	if(newEdge.Cost >= 0.0 && newEdge.ReverseCost >= 0) {
 		newEdge.Direction = 0;
-	}
-	else if(newEdge.Cost >= 0.0)
-	{
+	} else if(newEdge.Cost >= 0.0) {
 		newEdge.Direction = 1;
-	}
-	else
-	{
+	} else {
 		newEdge.Direction = -1;
 	}
 
 	// Update max_edge_id
-	if(edgeIn.id > max_edge_id)
-	{
+	if(edgeIn.id > max_edge_id) {
 		max_edge_id = edgeIn.id;
 	}
 
 	//Update max_node_id
-	if(newEdge.StartNode > max_node_id)
-	{
+	if(newEdge.StartNode > max_node_id) {
 		return false;//max_node_id = newEdge.StartNode;
 	}
-	if(newEdge.EndNode > max_node_id)
-	{
+
+	if(newEdge.EndNode > max_node_id) {
 		return false;//max_node_id = newEdge.EdgeIndex;
 	}
 
@@ -504,4 +507,11 @@ bool BiDirDijkstra::addEdge(edge_t edgeIn)
 
 	//
 	return true;
+    } catch (...) {
+
+#if 1
+    err_msg << "add_edge\n";
+    return false;
+#endif
+    }
 }

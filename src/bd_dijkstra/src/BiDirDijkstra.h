@@ -29,6 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef BIDIRDIJKSTRA_H
 #define BIDIRDIJKSTRA_H
 
+#include <sstream>
+
 #include <vector>
 #include <map>
 #include <queue>
@@ -82,14 +84,14 @@ public:
     ~BiDirDijkstra(void);
     
     int bidir_dijkstra(edge_t *edges, size_t edge_count, int maxNode, int start_vertex, int end_vertex,
-        path_element_t **path, size_t *path_count, char **err_msg);
+        path_element_t **path, size_t *path_count, std::ostream &err_msg);
     
 
 private:
-    bool construct_graph(edge_t *edges, size_t edge_count, int maxNode);
+    bool construct_graph(edge_t *edges, size_t edge_count, int maxNode, std::ostream &err_msg);
     void fconstruct_path(int64_t node_id);
     void rconstruct_path(int64_t node_id);
-    bool addEdge(edge_t edgeIn);
+    bool addEdge(edge_t edgeIn, std::ostream &err_msg);
     bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
     void init();
     void initall(int maxNode);

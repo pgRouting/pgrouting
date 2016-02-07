@@ -46,8 +46,8 @@ bool operator== (const CTourInfo& cur, const CTourInfo& that)
 		return false;
 	if(cur.m_viOrderIds.size() != that.m_viOrderIds.size())
 		return false;
-	int tot = cur.m_viOrderIds.size();
-	for(int i = 0; i < tot; i++)
+	auto tot = cur.m_viOrderIds.size();
+	for(size_t i = 0; i < tot; i++)
 	{
 		if(cur.m_viOrderIds[i] != that.m_viOrderIds[i])
 			return false;
@@ -191,7 +191,7 @@ bool CSolutionInfo::addTour(CTourInfo& tour)
 
 	std::vector<int> vecOrders = tour.getOrderVector();
 
-	m_iOrdersServed += vecOrders.size();
+	m_iOrdersServed += static_cast<int>(vecOrders.size());
 
 	for(unsigned int i = 0; i < vecOrders.size(); i++)
 	{
@@ -292,7 +292,7 @@ bool CVRPSolver::solveVRP(std::string& strError)
 		vecVehicles.push_back(m_vVehicleInfos[i].getId());
 	}
 	
-	m_solutionFinal.init(vecOrders, vecOrders.size(), vecVehicles);
+	m_solutionFinal.init(vecOrders, static_cast<int>(vecOrders.size()), vecVehicles);
 	PGR_LOG("After init solution");
 	int iAttemtCount = 0;
 	while(iAttemtCount < MAXIMUM_TRY)
@@ -331,10 +331,10 @@ CSolutionInfo CVRPSolver::generateInitialSolution()
 		vecVehicles.push_back(m_vVehicleInfos[i].getId());
 	}
 
-	initialSolution.init(vecOrders, vecOrders.size(), vecVehicles);
+	initialSolution.init(vecOrders, static_cast<int>(vecOrders.size()), vecVehicles);
 
-	int iUnusedVehicles = initialSolution.getUnusedVehicleCount();
-	int iUnservedOrders = initialSolution.getUnservedOrderCount();//m_viUnservedOrderIndex.size();
+	int iUnusedVehicles = static_cast<int>(initialSolution.getUnusedVehicleCount());
+	int iUnservedOrders = static_cast<int>(initialSolution.getUnservedOrderCount());//m_viUnservedOrderIndex.size();
 	PGR_LOG("before while");
 	while( iUnusedVehicles && iUnservedOrders )
 	{
@@ -509,7 +509,7 @@ void CVRPSolver::applyBestMoveInCurrentSolution(CSolutionInfo& curSolution, CMov
 
 	updateTabuCount(bestMove);
 
-	int totalTour = bestMove.getModifiedTourCount();
+	int totalTour = static_cast<int>(bestMove.getModifiedTourCount());
 	for(int i = 0;i<totalTour;++i)
 	{
 		CTourInfo tourInfo;
@@ -528,13 +528,13 @@ void CVRPSolver::insertUnservedOrders(CSolutionInfo& curSolution)
 	++m_iStepsSinceLastSolution;
 	bool insertAvailable = true;
 	CMoveInfo curMove;
-	int totalUnservedOrder = m_vOrderInfos.size() - curSolution.getOrderServed();
+	int totalUnservedOrder = static_cast<int>(m_vOrderInfos.size() - curSolution.getOrderServed());
 
 	while( insertAvailable && totalUnservedOrder > 0 )
 	{
 		int insertTourId = -1;
 		insertAvailable = false;
-		int totalTour = curSolution.getTourInfoVector().size();
+		int totalTour = static_cast<int>(curSolution.getTourInfoVector().size());
 		std::pair<int,int> PotentialInsert; // first = insert_index, second = removed_customer_index;
 		std::pair<int,double> bestInsert = std::make_pair(-1,DOUBLE_MAX);//first = customer_insert_index, second = cost;
 
@@ -603,7 +603,7 @@ bool CVRPSolver::addOrder(COrderInfo orderInfo)
 	{
 		return false;
 	}
-	int index = m_vOrderInfos.size();
+	int index = static_cast<int>(m_vOrderInfos.size());
 	m_mapOrderIdToIndex.insert(std::make_pair(id, index));
 	m_vOrderInfos.push_back(orderInfo);
 	m_viUnservedOrderIndex.push_back(index);
@@ -617,7 +617,7 @@ bool CVRPSolver::addVehicle(CVehicleInfo vehicleInfo)
 	{
 		return false;
 	}
-	int index = m_vVehicleInfos.size();
+	int index = static_cast<int>(m_vVehicleInfos.size());
 	m_mapVehicleIdToIndex.insert(std::make_pair(id, index));
 	m_vVehicleInfos.push_back(vehicleInfo);
 	m_viUnusedVehicleIndex.push_back(index);
@@ -756,7 +756,7 @@ bool CVRPSolver::updateTourCosts(CTourInfo& tourInfo)
 
 	dTravelTime = max(dTravelTime + cPack.traveltime + m_vOrderInfos[ind].getServiceTime(), 
 						m_vOrderInfos[ind].getOpenTime() + m_vOrderInfos[ind].getServiceTime());
-	vecStartTimes.push_back(ceil(dTravelTime));
+	vecStartTimes.push_back(static_cast<int>(ceil(dTravelTime)));
 
 	unsigned int i;
 	for(i = 1; i < vecOrderId.size(); i++)
@@ -773,7 +773,7 @@ bool CVRPSolver::updateTourCosts(CTourInfo& tourInfo)
 		dTravelTime = max(dTravelTime + cPack.traveltime + m_vOrderInfos[ind].getServiceTime(), 
 			m_vOrderInfos[ind].getOpenTime() + m_vOrderInfos[ind].getServiceTime());
 
-		vecStartTimes.push_back(ceil(dTravelTime));
+	    vecStartTimes.push_back(static_cast<int>(ceil(dTravelTime)));
 	
 	}
 	
@@ -783,7 +783,7 @@ bool CVRPSolver::updateTourCosts(CTourInfo& tourInfo)
 
 	dTravelTime += cPack.traveltime;
 
-	vecStartTimes.push_back(ceil(dTravelTime));
+	vecStartTimes.push_back(static_cast<int>(ceil(dTravelTime)));
 	ind = m_mapDepotIdToIndex[tourInfo.getEndDepot()];
 	if(dTravelTime > m_vDepotInfos[ind].getCloseTime())
 		return false;
@@ -869,7 +869,7 @@ void CVRPSolver::attempVehicleExchange(CSolutionInfo& solutionInfo)
 
 	int bestFreeCapacity = 0;
 	std::pair<int,int> bestSwapIndex;
-	int totalTour = solutionInfo.getTourCount();
+	int totalTour = static_cast<int>(solutionInfo.getTourCount());
 
 	for (int i = 0;i<totalTour;++i)
 	{
@@ -1025,7 +1025,7 @@ void CVRPSolver::updateTabuCount(CMoveInfo& bestMove)
 
 bool CVRPSolver::isTabuMove(CMoveInfo& curMove)
 {
-	int i, tot = m_veMoves.size();
+	size_t i, tot = m_veMoves.size();
 	for(i = 0; i < tot; i++)
 	{
 		if(curMove == m_veMoves[i])

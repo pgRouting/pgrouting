@@ -195,7 +195,7 @@ public:
 	int getEndDepot(){return m_iEndDepotId;}
 	void setEndDepot(int depotId){m_iEndDepotId = depotId;}
 
-	int getServedOrderCount(){return m_viOrderIds.size();}
+	size_t getServedOrderCount(){return m_viOrderIds.size();}
 
 	void updateCost(double cost, double distance, double travelTime);
 
@@ -258,10 +258,10 @@ public:
 	bool addTour(CTourInfo& tour);
 	CTourInfo& getTour(int pos){return m_vtourAll[pos];}
 
-	int getTourCount(){return (m_vtourAll.size());}
+	size_t getTourCount(){return (m_vtourAll.size());}
 
-	int getUnservedOrderCount(){return m_vUnservedOrderId.size();}
-	int getUnusedVehicleCount(){return m_vUnusedVehicles.size();}
+	size_t getUnservedOrderCount(){return m_vUnservedOrderId.size();}
+	size_t getUnusedVehicleCount(){return m_vUnusedVehicles.size();}
 
 	int getUnusedVehicleAt(int pos){return m_vUnusedVehicles[pos];}
 
@@ -312,7 +312,7 @@ public:
 	void setModifiedTour(CTourInfo pTourData1, CTourInfo pTourData2);
 
 	bool getModifiedTourAt(int index, CTourInfo& tourInfo);
-	int getModifiedTourCount() const { return m_vModifiedTour.size();}
+	size_t getModifiedTourCount() const { return m_vModifiedTour.size();}
 	double getModifiedTourCost() const;
 	void getInitialTour(CTourInfo &TourData);
 	void getInitialTour(CTourInfo &TourData1, CTourInfo &TourData2);

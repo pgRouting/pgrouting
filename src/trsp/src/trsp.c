@@ -53,7 +53,7 @@ static int compute_trsp(
         bool has_reverse_cost,
         char *restrict_sql,
         path_element_t **path,
-        uint32_t *path_count) {
+        size_t *path_count) {
     pgr_SPI_connect();
 
     PGR_DBG("Load edges");
@@ -64,7 +64,7 @@ static int compute_trsp(
 
     PGR_DBG("Load restrictions");
     restrict_t *restricts = NULL;
-    int64_t total_restrict_tuples = 0;
+    size_t total_restrict_tuples = 0;
     if (restrict_sql == NULL) {
         PGR_DBG("Sql for restrictions is null.");
     } else {
@@ -107,16 +107,16 @@ static int compute_trsp(
 
     for(z=0; z<total_tuples; z++) {
         if(edges[z].source<v_min_id)
-            v_min_id=edges[z].source;
+            v_min_id=(int)edges[z].source;
 
         if(edges[z].source>v_max_id)
-            v_max_id=edges[z].source;
+            v_max_id=(int)edges[z].source;
 
         if(edges[z].target<v_min_id)
-            v_min_id=edges[z].target;
+            v_min_id=(int)edges[z].target;
 
         if(edges[z].target>v_max_id)
-            v_max_id=edges[z].target;      
+            v_max_id=(int)edges[z].target;      
 
         //PGR_DBG("%i <-> %i", v_min_id, v_max_id);
 
@@ -230,7 +230,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
     // stuff done only on the first call of the function 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
-        int path_count = 0;
+        size_t path_count = 0;
 
         int ret = -1;
         if (ret == -1) {}; // to avoid warning set but not used
@@ -290,7 +290,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 #endif
 
         // total number of tuples to be returned 
-        funcctx->max_calls = path_count;
+        funcctx->max_calls = (uint32_t)path_count;
         funcctx->user_fctx = path;
 
         funcctx->tuple_desc = 
@@ -351,8 +351,8 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 {
 
     FuncCallContext     *funcctx;
-    int                  call_cntr;
-    int                  max_calls;
+    uint32_t                  call_cntr;
+    uint32_t                  max_calls;
     TupleDesc            tuple_desc;
     path_element_t      *path;
     char *               sql;
@@ -360,7 +360,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
     // stuff done only on the first call of the function 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
-        int path_count = 0;
+        size_t path_count = 0;
 #ifdef DEBUG
         int ret = -1;
 #endif
@@ -439,7 +439,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 #endif
 
         // total number of tuples to be returned 
-        funcctx->max_calls = path_count;
+        funcctx->max_calls = (uint32_t)path_count;
         funcctx->user_fctx = path;
 
         funcctx->tuple_desc = 

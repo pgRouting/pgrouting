@@ -31,6 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
+#include <string.h>
+#include <sstream>
 #include <exception>
 #include "BiDirDijkstra.h"
 #include "bdsp.h"
@@ -38,29 +40,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 int bidirsp_wrapper(
-    edge_t *edges,
-    size_t edge_count,
-    int maxNode,
-    int start_vertex,
-    int end_vertex,
+    edge_t *edges, size_t edge_count,
+    int64_t maxNode,
+    int64_t start_vertex,
+    int64_t end_vertex,
     bool directed,
     bool has_reverse_cost,
-    path_element_t **path,
-    size_t *path_count,
-    char **err_msg
-    )
-{
-    int res;
+    path_element_t **path, size_t *path_count,
+    char **err_msg) {
 
     try {
-        // DBG("Calling BiDirDijkstra initializer.\n");
+        std::ostringstream log;
+        log << "Calling BiDirDijkstra initializer.\n";
         BiDirDijkstra bddijkstra;
-        // DBG("BiDirDijkstra initialized\n");
-        res = bddijkstra.bidir_dijkstra(edges, edge_count, maxNode, start_vertex, end_vertex, path, path_count, err_msg);
+        log << "BiDirDijkstra initialized\n";
+        auto res = bddijkstra.bidir_dijkstra(edges, edge_count, static_cast<int>(maxNode), static_cast<int>(start_vertex), static_cast<int>(end_vertex), path, path_count, log);
+        *err_msg = strdup(log.str().c_str());
+        return 0;
         // TODO  this are an unused parameters have to be used
         if (has_reverse_cost) {};
         if (directed) {};
-
+        *err_msg = strdup(log.str().c_str());
+        return res;
     }
     catch(std::exception& e) {
         // DBG("catch(std::exception e.what: %s\n", e.what());
@@ -72,11 +73,15 @@ int bidirsp_wrapper(
         *err_msg = (char *) "Caught unknown exception!";
         return -1;
     }
+    *err_msg = (char *) "Should be here";
+    return -1;
 
+#if 0
     // DBG("Back from bddijkstra.bidir_dijkstra()\n");
     if (res < 0)
         return res;
     else
         return 0;
+#endif
 }
 
