@@ -35,16 +35,16 @@ typedef pgr_edge_t edge_t;
 extern "C"
 #endif
 
-int bidirsp_wrapper(
-        edge_t *edges, size_t edge_count,
-        int64_t maxNode,
-        int64_t start_vertex, 
-        int64_t end_vertex,
-        bool directed, 
-        bool has_reverse_cost,
-        path_element_t **path, 
-        size_t *path_count, 
-        char **err_msg
-        );
+int bidirsp_wrapper( edge_t *edges, 
+			unsigned int edge_count,
+			int maxNode,
+			int start_vertex, 
+			int end_vertex,
+		    bool directed, 
+		    bool has_reverse_cost,
+            path_element_t **path, 
+            int *path_count, 
+            char **err_msg
+            );
 
 #endif

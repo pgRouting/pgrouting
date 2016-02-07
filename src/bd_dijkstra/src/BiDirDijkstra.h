@@ -29,8 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef BIDIRDIJKSTRA_H
 #define BIDIRDIJKSTRA_H
 
-#include <sstream>
-
 #include <vector>
 #include <map>
 #include <queue>
@@ -50,25 +48,25 @@ typedef std::pair<double, int> PDI;
 
 typedef struct{
     int par_Node;
-    int64_t par_Edge;
+    int par_Edge;
 }PARENT_PATH;
 
 typedef struct{
     int NodeID;
-    std::vector<int64_t> Connected_Nodes;
-    std::vector<int64_t> Connected_Edges_Index;
+    std::vector<int> Connected_Nodes;
+    std::vector<int> Connected_Edges_Index;
 }GraphNodeInfo;
 
 struct GraphEdgeInfo
 {
 public:
-    int64_t EdgeID;
-    int64_t EdgeIndex;
+    int EdgeID;
+    int EdgeIndex;
     int Direction;
     double Cost;
     double ReverseCost;
-    int64_t StartNode;
-    int64_t EndNode;
+    int StartNode;
+    int EndNode;
 };
 
 typedef std::vector<GraphEdgeInfo> GraphEdgeVector;
@@ -83,23 +81,23 @@ public:
     BiDirDijkstra(void);
     ~BiDirDijkstra(void);
     
-    int bidir_dijkstra(edge_t *edges, size_t edge_count, int maxNode, int start_vertex, int end_vertex,
-        path_element_t **path, size_t *path_count, std::ostream &err_msg);
+    int bidir_dijkstra(edge_t *edges, unsigned int edge_count, int maxNode, int start_vertex, int end_vertex,
+        path_element_t **path, int *path_count, char **err_msg);
     
 
 private:
-    bool construct_graph(edge_t *edges, size_t edge_count, int maxNode, std::ostream &err_msg);
-    void fconstruct_path(int64_t node_id);
-    void rconstruct_path(int64_t node_id);
-    bool addEdge(edge_t edgeIn, std::ostream &err_msg);
+    bool construct_graph(edge_t *edges, int edge_count, int maxNode);
+    void fconstruct_path(int node_id);
+    void rconstruct_path(int node_id);
+    bool addEdge(edge_t edgeIn);
     bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
     void init();
     void initall(int maxNode);
     void deleteall();
     void explore(int cur_node, double cur_cost, int dir, std::priority_queue<PDI, std::vector<PDI>, std::greater<PDI> > &que);
-    double getcost(int64_t node_id, int dir);
-    void setcost(int64_t node_id, int dir, double c);
-    void setparent(int64_t node_id, int dir, int parnode, int64_t paredge);
+    double getcost(int node_id, int dir);
+    void setcost(int node_id, int dir, double c);
+    void setparent(int node_id, int dir, int parnode, int paredge);
 
 private:
     GraphEdgeVector m_vecEdgeVector;
@@ -107,12 +105,12 @@ private:
     Long2LongVectorMap m_mapNodeId2Edge;
     GraphNodeVector m_vecNodeVector;
     int max_node_id;
-    int64_t max_edge_id;
+    int max_edge_id;
     int m_lStartNodeId;
     int m_lEndNodeId;
 
     double m_MinCost;
-    int64_t m_MidNode;
+    int m_MidNode;
     std::vector <path_element_t> m_vecPath;
     PARENT_PATH *m_pFParent;
     PARENT_PATH *m_pRParent;
