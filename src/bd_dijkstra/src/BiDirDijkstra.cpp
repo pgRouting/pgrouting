@@ -444,10 +444,10 @@ bool BiDirDijkstra::addEdge(edge_t edgeIn)
 
 	// Create a GraphEdgeInfo using the information of the current edge
 	GraphEdgeInfo newEdge;
-	newEdge.EdgeID =  static_cast<int>(edgeIn.id);
+	newEdge.EdgeID =  edgeIn.id;
 	newEdge.EdgeIndex =  static_cast<int>(m_vecEdgeVector.size());	
-	newEdge.StartNode =  static_cast<int>(edgeIn.source);
-	newEdge.EndNode =  static_cast<int>(edgeIn.target);
+	newEdge.StartNode =  edgeIn.source;
+	newEdge.EndNode =  edgeIn.target;
 	newEdge.Cost = edgeIn.cost;
 	newEdge.ReverseCost = edgeIn.reverse_cost;
 
@@ -471,7 +471,7 @@ bool BiDirDijkstra::addEdge(edge_t edgeIn)
 	// Update max_edge_id
 	if(edgeIn.id > max_edge_id)
 	{
-		max_edge_id =  static_cast<int>(edgeIn.id);
+		max_edge_id =  edgeIn.id;
 	}
 
 	//Update max_node_id
