@@ -11,16 +11,18 @@ set -e
 POSTGRESQL_VERSION="$1"
 PGUSER="$2"
 
+echo "Postgres $POSTGRESQL_VERSION"
+echo "User $PGUSER"
 
 if test "$POSTGRESQL_VERSION" = "9.5" ; then
 
     echo "Installing postgresql 9.5 & postgis for 9.5 "
-    sudo apt-get install -y postgresql-9.5 postgresql-9.5-postgis
-    sudo /etc/init.d/postgresql stop 
+    sudo apt-get install -y postgresql-9.5 postgresql-9.5-postgis pgtap libtap-parser-sourcehandler-pgtap-perl
+    sudo cp /usr/lib/postgresql/$POSTGRESQL_VERSION/bin/pg_config /usr/bin/pg_config
 
-fi
+else
 
-echo "tarting server"
+echo "starting server"
 sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION
 
 
@@ -35,3 +37,6 @@ make installcheck
 sudo make install
 cd ..
 
+sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
+
+fi
