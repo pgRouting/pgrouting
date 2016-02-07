@@ -72,15 +72,15 @@ before_script:
   # Stop whichever version of PG that travis started
   - sudo /etc/init.d/postgresql stop
   # instal postgres 9.5 if needed
-  - if test "$POSTGRESQL_VERSION" = "9.5" ; then sudo ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION ; fi
+  - sudo ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION postgres
   # Stop whichever version of PG is running
-  - sudo /etc/init.d/postgresql stop
+  #- sudo /etc/init.d/postgresql stop
   # Start the version of PG that we want to test
-  - sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION
+  #- sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION
   #- if test "$POSTGRESQL_VERSION" != "9.5" ; then sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION ; fi
 
   # Install pgtap and pg_prove
-  - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION   # pgtap has to be installed after postgres has started
+  #- ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION   # pgtap has to be installed after postgres has started
   - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
 
   # initialize databases

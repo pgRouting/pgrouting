@@ -107,7 +107,7 @@ SELECT path_id, round(sum(cost)::numeric,4) from pgr_ksp(
 */
 
 -- the equality conditions
-SELECT seq, node = network.source,  edge = network.id, round(network.cost::numeric,4) = round(result.cost::numeric, 4) from pgr_ksp(
+SELECT node = network.source,  edge = network.id, round(network.cost::numeric,4) = round(result.cost::numeric, 4) from pgr_ksp(
     'SELECT id, source, target, cost from network order by id',
     4, 5::BIGINT,
     15) result, network where id = edge order by seq;
@@ -127,7 +127,7 @@ SELECT path_id, round(agg_cost::numeric,4) from pgr_ksp(
 */
 
 -- the equality conditions
-SELECT seq, node = network.source,  edge = network.id, round(network.cost::numeric,4) = round(result.cost::numeric, 4) from pgr_ksp(
+SELECT node = network.source,  edge = network.id, round(network.cost::numeric,4) = round(result.cost::numeric, 4) from pgr_ksp(
     'SELECT id, source, target, cost from network order by id',
     4, 5,
     15) AS result, network WHERE id = edge ORDER BY seq;
