@@ -108,7 +108,7 @@ vrppdtw(PG_FUNCTION_ARGS) {
         size_t length_results_struct = 0;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-        results = (path_element *)palloc(sizeof(path_element)*((length_results_struct) + 1));
+        //results = (path_element *)palloc(sizeof(path_element)*((length_results_struct) + 1));
 
         PGR_DBG("Calling compute_shortes_path");
 

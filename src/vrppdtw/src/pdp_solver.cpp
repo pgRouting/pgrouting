@@ -53,6 +53,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
+#include "./pdp_types.h"
 #include "./pdp_solver.h"
 #include "./pdp_types.hpp"
 #include "./Solution.h"
