@@ -239,8 +239,8 @@ elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGW
 
 elseif(WIN32)
     # currently, support MinGW only
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2  -Wall  -frounding-math")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2  -std=c++0x -Wall  -frounding-math -Wno-deprecated")
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2    -frounding-math")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2  -std=c++0x   -frounding-math -Wno-deprecated")
 endif()
 
 # List variable to collect module SQL file names

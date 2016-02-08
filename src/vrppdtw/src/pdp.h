@@ -44,7 +44,7 @@ typedef struct {
 } Customer;
 
 typedef struct  {
-         int64_t seq;
+         int seq;
          int64_t rid;
          int64_t nid;
          double cost;
