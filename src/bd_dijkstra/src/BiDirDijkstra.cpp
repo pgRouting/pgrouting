@@ -53,7 +53,7 @@ void BiDirDijkstra::init()
 /*
 	Initialization and allocation of memories.
 */
-void BiDirDijkstra::initall(int64_t maxNode)
+void BiDirDijkstra::initall(int maxNode)
 {
 	int i;
 	m_vecPath.clear();
@@ -129,7 +129,7 @@ void BiDirDijkstra::setcost(int node_id, int dir, double c)
 	}
 }
 
-void BiDirDijkstra::setparent(int node_id, int dir, int parnode, int64_t paredge)
+void BiDirDijkstra::setparent(int node_id, int dir, int parnode, int paredge)
 {
 	if(dir == 1)
 	{
@@ -188,17 +188,18 @@ void BiDirDijkstra::rconstruct_path(int node_id)
 
 void BiDirDijkstra::explore(int cur_node, double cur_cost, int dir, std::priority_queue<PDI, std::vector<PDI>, std::greater<PDI> > &que)
 {
+	int i;
 	// Number of connected edges
-	auto con_edge = m_vecNodeVector[cur_node]->Connected_Edges_Index.size();
+	int con_edge = m_vecNodeVector[cur_node]->Connected_Edges_Index.size();
 	double edge_cost;
 
-	for(size_t i = 0; i < con_edge; i++)
+	for(i = 0; i < con_edge; i++)
 	{
-		auto edge_index = m_vecNodeVector[cur_node]->Connected_Edges_Index[i];
+		int edge_index = m_vecNodeVector[cur_node]->Connected_Edges_Index[i];
 		// Get the edge from the edge list.
 		GraphEdgeInfo edge = m_vecEdgeVector[edge_index];
 		// Get the connected node
-		int new_node = static_cast<int>(m_vecNodeVector[cur_node]->Connected_Nodes[i]);
+		int new_node = m_vecNodeVector[cur_node]->Connected_Nodes[i];
 		
 		if(cur_node == edge.StartNode)
 		{
@@ -266,8 +267,8 @@ void BiDirDijkstra::explore(int cur_node, double cur_cost, int dir, std::priorit
 */
 
 
-int BiDirDijkstra::bidir_dijkstra(edge_t *edges, size_t edge_count, int64_t maxNode, int64_t start_vertex, int64_t end_vertex,
-				path_element_t **path, size_t *path_count, char **err_msg)
+int BiDirDijkstra::bidir_dijkstra(edge_t *edges, unsigned int edge_count, int maxNode, int start_vertex, int end_vertex,
+				path_element_t **path, int *path_count, char **err_msg)
 {
 	max_node_id = maxNode;
 	max_edge_id = -1;
@@ -301,6 +302,7 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, size_t edge_count, int64_t maxN
 	m_pRCost[end_vertex] = 0.0;
 	rque.push(std::make_pair(0.0, end_vertex));
 
+	int i;
 	// int new_node;
 	int cur_node;
 	// int dir;
@@ -366,7 +368,7 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, size_t edge_count, int64_t maxN
 		*path_count = m_vecPath.size();
         // DBG("BiDirDijkstra::bidir_dijkstra: allocated path\n");
 
-		for(size_t i = 0; i < *path_count; i++)
+		for(i = 0; i < *path_count; i++)
 		{
 			(*path)[i].vertex_id = m_vecPath[i].vertex_id;
 			(*path)[i].edge_id = m_vecPath[i].edge_id;
@@ -385,7 +387,7 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, size_t edge_count, int64_t maxN
 	corresponding edge indices from edge list that connect this node with the adjacent nodes.
 */
 
-bool BiDirDijkstra::construct_graph(edge_t* edges, size_t edge_count, int64_t maxNode)
+bool BiDirDijkstra::construct_graph(edge_t* edges, int edge_count, int maxNode)
 {
 	int i;
 
@@ -417,7 +419,7 @@ bool BiDirDijkstra::construct_graph(edge_t* edges, size_t edge_count, int64_t ma
     // DBG("reserving space for m_vecEdgeVector.reserve(%d)\n", edge_count);
     m_vecEdgeVector.reserve(edge_count);
     // DBG("calling addEdge in a loop\n");
-	for(size_t i = 0; i < edge_count; i++)
+	for(i = 0; i < edge_count; i++)
 	{
 		addEdge(edges[i]);
 	}
@@ -443,7 +445,7 @@ bool BiDirDijkstra::addEdge(edge_t edgeIn)
 	// Create a GraphEdgeInfo using the information of the current edge
 	GraphEdgeInfo newEdge;
 	newEdge.EdgeID = edgeIn.id;
-	newEdge.EdgeIndex = static_cast<int>(m_vecEdgeVector.size());	
+	newEdge.EdgeIndex = m_vecEdgeVector.size();	
 	newEdge.StartNode = edgeIn.source;
 	newEdge.EndNode = edgeIn.target;
 	newEdge.Cost = edgeIn.cost;
