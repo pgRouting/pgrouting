@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define _BDSP_H
 
 
+#include "postgres.h"
 #include "../../common/src/pgr_types.h"
 
 typedef pgr_edge_t edge_t;
