@@ -32,7 +32,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pdp.h"
 
 
-Datum vrppdtw(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(vrppdtw);
+#ifndef _MSC_VER
+Datum
+#else  // _MSC_VER
+PGDLLEXPORT Datum
+#endif
+vrppdtw(PG_FUNCTION_ARGS);
+
 
 
 // #define DEBUG 1
@@ -81,12 +88,15 @@ int compute_shortest_path(
 
 
 
-PG_FUNCTION_INFO_V1(vrppdtw);
+#ifndef _MSC_VER
 Datum
+#else  // _MSC_VER
+PGDLLEXPORT Datum
+#endif
 vrppdtw(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    size_t               call_cntr;
-    size_t               max_calls;
+    uint32_t               call_cntr;
+    uint32_t               max_calls;
     TupleDesc            tuple_desc;
     path_element     *results = 0;
 
