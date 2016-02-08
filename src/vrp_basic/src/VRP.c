@@ -550,8 +550,8 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 			TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
 			PGR_DBG("Got tuple desc\n");
-
-			for (size_t t = 0; t < ntuples; t++)
+            size_t t;
+			for (t = 0; t < ntuples; t++)
 			{
 				HeapTuple tuple = tuptable->vals[t];
 				//PGR_DBG("Before order fetched [%i]\n", order_num - ntuples + t);
@@ -629,7 +629,8 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 
 			PGR_DBG("Got tuple desc\n");
 
-			for (size_t t = 0; t < ntuples; t++)
+            size_t t;
+			for (t = 0; t < ntuples; t++)
 			{
 				HeapTuple tuple = tuptable->vals[t];
 				PGR_DBG("Before vehicle fetched\n");
@@ -693,8 +694,8 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 			TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
 			PGR_DBG("Got tuple desc\n");
-
-			for (size_t t = 0; t < ntuples; t++)
+            size_t t;
+			for (t = 0; t < ntuples; t++)
 			{
 				HeapTuple tuple = tuptable->vals[t];
 				PGR_DBG("Before distance fetched\n");
