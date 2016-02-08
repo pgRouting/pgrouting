@@ -82,19 +82,19 @@ make && make install
 #we need uninstall and reinstall copy to VC++ EDB instance if we want to test on standard Windows installed versions
 echo "PGPATHEDB ${PGPATHEDB}"
 
-ls ${PGPATHEDB}/lib/librouting*
+#ls ${PGPATHEDB}/lib/librouting*
 rm -f ${PGPATHEDB}/lib/librouting*
 
-ls ${PGPATHEDB}/lib/librouting*
+#ls ${PGPATHEDB}/lib/librouting*
 cp lib/*.dll ${PGPATHEDB}/lib/
-ls ${PGPATHEDB}/lib/librouting*
+#ls ${PGPATHEDB}/lib/librouting*
 
-ls ${PGPATHEDB}/share/extension/pgrouting*
+#ls ${PGPATHEDB}/share/extension/pgrouting*
 rm -f ${PGPATHEDB}/share/extension/pgrouting*
 
-ls ${PGPATHEDB}/share/extension/
+#ls ${PGPATHEDB}/share/extension/
 cp lib/*.sql ${PGPATHEDB}/share/extension/
-ls ${PGPATHEDB}/share/extension/
+#ls ${PGPATHEDB}/share/extension/
 cp lib/*.control ${PGPATHEDB}/share/extension/
 
 cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
