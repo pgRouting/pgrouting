@@ -109,18 +109,18 @@ Neighborhoods::BestSPI(const Solution S,
     for (const auto &order : OrderRequests) {
         // Order Find and Remove it!
         CurrSol = BestSol;
-        for (unsigned int route_remove = 0;
+        for (size_t route_remove = 0;
                 route_remove < CurrSol.routes.size();
                 route_remove++) {
 
-            int OK = CurrSol.routes[route_remove].RemoveOrder(customers,order);
+            auto OK = CurrSol.routes[route_remove].RemoveOrder(customers,order);
 
             if  (OK != 1) continue;
             TempSol = CurrSol;
             TempSol.UpdateSol(customers);
 
             for (auto &route : TempSol.routes) {
-                int OK = route.insertOrder(customers, order);
+                auto OK = route.insertOrder(customers, order);
                 if (!OK) continue;
                 TempSol.UpdateSol(customers);
                 if (TempSol.getCost() < BestSol.getCost()) {

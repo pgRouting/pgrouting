@@ -53,10 +53,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
-#include "./pdp.h"
-#include "./pdp.hpp"
+#include "./pdp_solver.h"
+#include "./pdp_types.hpp"
 #include "./Solution.h"
 #include "./Route.h"
+#include "../../common/src/memory_func.hpp"
 
 
 //forward declaration
@@ -94,10 +95,11 @@ int64_t Solver(Customer *c1,
             c1[0].Pindex, c1[0].Dindex
             });
 
+#if 0
     if (total_tuples != 107) {
         return 0;
     }
-
+#endif
 
     // Customer Data
     for (auto &c : customers) {
@@ -110,11 +112,13 @@ int64_t Solver(Customer *c1,
         }
     }
 
+#if 0
     if (pickups.size() != 53) {
         (*results) = NULL;
         (*length_results_struct) = 0;
         return 0;
     }
+#endif
 
     /* Sort Pickup's
      * The sequential construction inserts from largest distance to smallest
@@ -171,7 +175,10 @@ int64_t Solver(Customer *c1,
 
 
     // Getting memory to store results
-    *results = static_cast<path_element *>(malloc(sizeof(path_element) * (result.size())));
+    //*results = static_cast<path_element *>(malloc(sizeof(path_element) * (result.size())));
+    *results = NULL;
+    *results = get_memory(result.size(), (*results));
+
 
     //store the results
     int seq = 0;

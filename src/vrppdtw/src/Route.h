@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <algorithm>
-#include "pdp.hpp"
+#include "pdp_types.hpp"
 
 class Route  {
  public:

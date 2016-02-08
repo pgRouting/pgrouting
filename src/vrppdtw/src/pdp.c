@@ -29,7 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "fmgr.h"
-#include "./pdp.h"
 
 
 PG_FUNCTION_INFO_V1(vrppdtw);
@@ -41,6 +40,7 @@ PGDLLEXPORT Datum
 vrppdtw(PG_FUNCTION_ARGS);
 
 
+#include "./pdp_solver.h"
 
 // #define DEBUG 1
 #include "../../common/src/debug_macro.h"
@@ -98,7 +98,7 @@ vrppdtw(PG_FUNCTION_ARGS) {
     uint32_t               call_cntr;
     uint32_t               max_calls;
     TupleDesc            tuple_desc;
-    path_element     *results = 0;
+    path_element     *results = NULL;
 
 
     /* stuff done only on the first call of the function */
