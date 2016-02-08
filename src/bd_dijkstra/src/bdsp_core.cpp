@@ -39,14 +39,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 int bidirsp_wrapper(
     edge_t *edges,
-    unsigned int edge_count,
-    int maxNode,
-    int start_vertex,
-    int end_vertex,
+    size_t edge_count,
+    int64_t maxNode,
+    int64_t start_vertex,
+    int64_t end_vertex,
     bool directed,
     bool has_reverse_cost,
     path_element_t **path,
-    int *path_count,
+    size_t *path_count,
     char **err_msg
     )
 {
