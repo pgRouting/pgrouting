@@ -29,7 +29,7 @@ extern "C"
 #endif
 
 
-int64_t Solver(Customer *c,
+int64_t Solver(Customer *customers,
         size_t total_tuples,
         int64_t vehicle_count,
         double capacity ,

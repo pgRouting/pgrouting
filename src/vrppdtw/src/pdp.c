@@ -71,7 +71,7 @@ int compute_shortest_path(
     int64_t ret = Solver(customers, total_customers, vehicle_count,
             capacity, &err_msg, results, length_results_struct);
 
-    if (ret < -2) {
+    if (ret < 0) {
         ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
                     errmsg("Error computing path: %s", err_msg)));
     }
@@ -81,7 +81,7 @@ int compute_shortest_path(
     PGR_DBG("ret = %i\n", ret);
 
     pfree(customers);
-    free(err_msg);
+    if (err_msg) free(err_msg);
     pgr_SPI_finish();
     return 0;
 }
@@ -168,8 +168,8 @@ vrppdtw(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
 
         /* clean up (this is not really necessary) */
-        pfree(values);
-        pfree(nulls);
+        // pfree(values);
+        // pfree(nulls);
 
         SRF_RETURN_NEXT(funcctx, result);
     } else {
