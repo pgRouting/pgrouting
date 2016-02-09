@@ -22,12 +22,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 #pragma once
 
-#ifdef __cplusplus
-extern "C"
-#endif
-//
-// For C and C++ inclusion
-
 typedef struct {
     int64_t id;
     double x;
@@ -48,8 +42,4 @@ typedef struct  {
     double cost;
 } path_element;
 
-
-#ifdef __cplusplus
-extern "C"
-#endif
 
