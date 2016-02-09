@@ -162,3 +162,27 @@ struct boost_edge_t{
 
 enum graphType { UNDIRECTED= 0, DIRECTED};
 
+/**************************************************************************
+ * VRPPDTW types
+ * ***********************************************************************/
+typedef struct {
+    int64_t id;
+    double x;
+    double y;
+    double demand;
+    double Etime;
+    double Ltime;
+    double Stime;
+    int64_t Pindex;
+    int64_t Dindex;
+    double Ddist;
+} Customer;
+
+typedef struct  {
+    int seq;
+    int64_t rid;
+    int64_t nid;
+    double cost;
+} path_element;
+/*************************************************************************/
+
