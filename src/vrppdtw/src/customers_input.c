@@ -22,8 +22,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
+#include "./pdp_types.h"
+#include "./../../common/src/pgr_types.h"
 #include "./../../common/src/get_check_data.h"
 
 #include "./customers_input.h"
@@ -50,6 +51,18 @@ void pgr_fetch_customer(
     customer->Pindex = pgr_SPI_getBigInt(tuple, tupdesc, info[7]);
     customer->Dindex = pgr_SPI_getBigInt(tuple, tupdesc, info[8]);
     customer->Ddist = 0;
+    PGR_DBG("Reading:%ld\t %f\t%f\t%f\t %f\t%f\t%f\t %ld\t%ld\t  %f",
+            customer->id,
+            customer->x,
+            customer->y,
+            customer->demand,
+            customer->Etime,
+            customer->Ltime,
+            customer->Stime,
+            customer->Pindex,
+            customer->Dindex,
+            customer->Ddist
+           );
 }
 
 void
@@ -130,7 +143,7 @@ pgr_get_customers(
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
             size_t t;
-            PGR_DBG("processing %ld customer tupĺes", ntuples);
+            PGR_DBG("processing %zu customer tuples", ntuples);
 
             for (t = 0; t < ntuples; t++) {
                 size_t i = total_tuples - ntuples + t;
@@ -165,6 +178,6 @@ pgr_get_customers(
 
 
     (*total_customers) = total_tuples;
-    PGR_DBG("Finish reading %ld customers, %ld", total_tuples, (*total_customers));
+    PGR_DBG("Finish reading %zu customers, %zu", total_tuples, (*total_customers));
 }
 

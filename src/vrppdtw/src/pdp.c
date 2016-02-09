@@ -78,8 +78,8 @@ int compute_shortest_path(
                 customers[i].Etime,
                 customers[i].Ltime,
                 customers[i].Stime,
-                 customers[i].Pindex,
-                 customers[i].Dindex,
+                customers[i].Pindex,
+                customers[i].Dindex,
                 customers[i].Ddist
                );
     }
