@@ -50,6 +50,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
+#include <sstream>
+#include <string.h>
 #include <vector>
 #include <algorithm>
 
@@ -87,17 +89,27 @@ int64_t Solver(Customer *c1,
         char **msg,
         path_element **results,
         size_t *length_results_struct) {
+    std::ostringstream log;
     try {
-    std::vector<Customer> customers(c1, c1 + total_tuples);
+
     std::vector<Pickup> pickups;
     std::vector<Route> routes;
+    log << "creating structures done\n";
+    std::vector<Customer> customers(c1, c1 + total_tuples);
+    log << "Saving Customers done \n";
+    for (const auto c : customers) {
+        log << c.id << ", " << c.x << ", " << ", " << c.y << "\n";
+    }
 
     Depot depot({c1[0].id, c1[0].x, c1[0].y,
             c1[0].demand,
             c1[0].Etime, c1[0].Ltime, c1[0].Stime,
             c1[0].Pindex, c1[0].Dindex
             });
+#if 1
+    *msg = strdup(log.str().c_str());
     return 0;
+#endif
 
 #if 0
     if (total_tuples != 107) {

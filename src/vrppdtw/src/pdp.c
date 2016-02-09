@@ -64,17 +64,13 @@ int compute_shortest_path(
     size_t total_customers = 0;
     Customer *customers = NULL;
     pgr_get_customers(sql, &customers, &total_customers);
-#if 1
-    pfree(customers);
-    pgr_SPI_finish();
-    return 0;
-#endif
 
     PGR_DBG("Calling Solver Instance\n");
 
     int64_t ret = Solver(customers, total_customers, vehicle_count,
             capacity, &err_msg, results, length_results_struct);
 
+    if (err_msg) PGR_DBG("%s\n",err_msg);
 #if 0
     if (ret < 0) {
         ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
