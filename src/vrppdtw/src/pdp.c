@@ -42,7 +42,7 @@ vrppdtw(PG_FUNCTION_ARGS);
 
 #include "./pdp_solver.h"
 
-// #define DEBUG 1
+#define DEBUG 
 #include "../../common/src/debug_macro.h"
 #include "../../common/src/postgres_connection.h"
 #include "./customers_input.h"
@@ -64,7 +64,11 @@ int compute_shortest_path(
     size_t total_customers = 0;
     Customer *customers = NULL;
     pgr_get_customers(sql, &customers, &total_customers);
-
+#if 1
+    pfree(customers);
+    pgr_SPI_finish();
+    return 0;
+#endif
 
     PGR_DBG("Calling Solver Instance\n");
 
@@ -78,8 +82,8 @@ int compute_shortest_path(
     }
 #endif
 
-    PGR_DBG("*length_results_count  = %i\n", *length_results_struct);
-    PGR_DBG("ret = %i\n", ret);
+    PGR_DBG("*length_results_count  = %ld\n", *length_results_struct);
+    PGR_DBG("ret = %ld\n", ret);
 
     pfree(customers);
     if (err_msg) free(err_msg);
@@ -113,14 +117,13 @@ vrppdtw(PG_FUNCTION_ARGS) {
 
         PGR_DBG("Calling compute_shortes_path");
 
-#if 0
         compute_shortest_path(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),  // customers sql
                 PG_GETARG_INT64(1),  // vehicles  count
                 PG_GETARG_FLOAT8(2),  // capacity 
                 &results, &length_results_struct);
-#endif
-        PGR_DBG("Back from solve_vrp, length_results: %d", length_results_struct);
+
+        PGR_DBG("Back from solve_vrp, length_results: %ld", length_results_struct);
 
         /* total number of tuples to be returned */
         funcctx->max_calls = (uint32_t)length_results_struct;
@@ -152,7 +155,7 @@ vrppdtw(PG_FUNCTION_ARGS) {
         Datum *values;
         char* nulls;
 
-        PGR_DBG("Till hereee ", NULL);
+        PGR_DBG("Till hereee ");
         values = palloc(4 * sizeof(Datum));
         nulls = palloc(4 * sizeof(char));
 

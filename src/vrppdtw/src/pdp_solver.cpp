@@ -87,6 +87,7 @@ int64_t Solver(Customer *c1,
         char **msg,
         path_element **results,
         size_t *length_results_struct) {
+    try {
     std::vector<Customer> customers(c1, c1 + total_tuples);
     std::vector<Pickup> pickups;
     std::vector<Route> routes;
@@ -194,6 +195,11 @@ int64_t Solver(Customer *c1,
 
     (*msg) = NULL;
     return 0;
+    } catch (...) {
+        (*msg) = NULL;
+        return -1;
+    }
+
 }
 
 
