@@ -28,6 +28,7 @@ BEGIN;
     )
     SELECT cost < 4000 FROM results WHERE seq = 0;
 
+    /*
     WITH results AS
     (SELECT seq, route_id, node_id, cost from pgr_gsoc_vrppdtw(
         'select * from customer order by id'::text, 25,200)
@@ -39,5 +40,5 @@ BEGIN;
         'select * from customer order by id'::text, 25,200)
     )
     SELECT route_id <= 14 FROM results WHERE seq = 136;
-
+*/
     ROLLBACK;

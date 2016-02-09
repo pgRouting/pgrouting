@@ -22,12 +22,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-// #define DEBUG
-#include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/get_check_data.h"
+
 #include "./customers_input.h"
+#define DEBUG
+#include "./../../common/src/debug_macro.h"
 
 
 
@@ -126,15 +127,29 @@ pgr_get_customers(
                 elog(ERROR, "Out of memory");
             }
 
-            size_t t;
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
-            PGR_DBG("processing %d customer tupĺes", ntuples);
+            size_t t;
+            PGR_DBG("processing %ld customer tupĺes", ntuples);
 
             for (t = 0; t < ntuples; t++) {
+                size_t i = total_tuples - ntuples + t;
                 HeapTuple tuple = tuptable->vals[t];
                 pgr_fetch_customer(&tuple, &tupdesc, info,
                         &(*customers)[total_tuples - ntuples + t]);
+                PGR_DBG("%zu: %ld\t %f\t%f\t%f\t %f\t%f\t%f\t %ld\t%ld\t  %f", i,
+                        (*customers)[i].id,
+                        (*customers)[i].x,
+                        (*customers)[i].y,
+                        (*customers)[i].demand,
+                        (*customers)[i].Etime,
+                        (*customers)[i].Ltime,
+                        (*customers)[i].Stime,
+                        (*customers)[i].Pindex,
+                        (*customers)[i].Dindex,
+                        (*customers)[i].Ddist
+                       );
+
             }
             SPI_freetuptable(tuptable);
         } else {

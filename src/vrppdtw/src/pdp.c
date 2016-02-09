@@ -66,10 +66,23 @@ int compute_shortest_path(
     pgr_get_customers(sql, &customers, &total_customers);
 
     PGR_DBG("Calling Solver Instance\n");
-    for (size_t i = 0; i < total_customers ; ++i) {
-        PGR_DBG("%ld: %ld, %f, %f\n", i , customers[i].id, customers[i].x, customers[i].y);
+#if 0
+    size_t i;
+    for (i = 0; i < total_customers ; ++i) {
+        PGR_DBG("%zu: %ld\t %f\t%f\t%f\t %f\t%f\t%f\t %ld\t%ld\t  %f", i,
+                customers[i].id,
+                customers[i].x,
+                customers[i].y,
+                customers[i].demand,
+                customers[i].Etime,
+                customers[i].Ltime,
+                customers[i].Stime,
+                 customers[i].Pindex,
+                 customers[i].Dindex,
+                customers[i].Ddist
+               );
     }
-
+#endif
 
     int64_t ret = Solver(customers, total_customers, vehicle_count,
             capacity, &err_msg, results, length_results_struct);

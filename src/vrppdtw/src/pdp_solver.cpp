@@ -95,9 +95,9 @@ int64_t Solver(Customer c1[],
     std::vector<Pickup> pickups;
     std::vector<Route> routes;
     log << "creating structures done\n";
-    log << "Saving Customers done \n";
+    log << "total customers: " << total_tuples << "\n";
     for (size_t i = 0; i < total_tuples ; ++i) {
-        log << i << ":\t" << c1[i].id << ", " << c1[i].x << ", " << ", " << c1[i].y << "\n";
+        log << i << ":\t" << c1[i].id << ", " << c1[i].x << ", " << c1[i].y << "\n";
     }
 #if 1
     *msg = strdup(log.str().c_str());
