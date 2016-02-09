@@ -63,8 +63,9 @@ int compute_shortest_path(
     char *err_msg = NULL;
     size_t total_customers = 0;
     Customer *customers = NULL;
+    PGR_DBG("Calling pgr_get_customers\n");
     pgr_get_customers(sql, &customers, &total_customers);
-
+    return 0;
     PGR_DBG("Calling Solver Instance\n");
 #if 0
     size_t i;
