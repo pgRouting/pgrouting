@@ -63,7 +63,7 @@ do_pgr_contractGraph(
         bool directed,
         pgr_contracted_blob **return_tuples,
         size_t *return_count,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
     try {
         std::ostringstream contracted_graph_name;
@@ -99,37 +99,24 @@ do_pgr_contractGraph(
               removedVertices,psuedoEdges
             );
             */
-        
         } else {
             log << "Working with Undirected Graph\n";
             Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data(data_edges, total_tuples);
 #ifdef DEBUG
             undigraph.print_graph(log);
-#endif
-
-
-            /*
-            Function call to get the contracted graph.
-
-            fetch_contracted_graph(undigraph,level,
-              contracted_graph_name,contracted_graph_blob,removedEdges,
-              removedVertices,psuedoEStream
-            );
-            */
-
+            #endif
+           /* Function call to get the contracted graph. */
+            fetch_contracted_graph(undigraph, level,
+              contracted_graph_name, contracted_graph_blob, removedEdges,
+              removedVertices, psuedoEdges);
         }
-        
-        /*
         (*return_tuples) = get_memory(1, (*return_tuples));
-        (*return_tuples)->contracted_graph_name=strdup(contracted_graph_name.str().c_str());
-        (*return_tuples)->contracted_graph_blob=strdup(contracted_graph_blob.str().c_str());
-        (*return_tuples)->removedVertices=strdup(removedVertices.str().c_str());
-        (*return_tuples)->removedEdges=strdup(removedEdges.str().c_str());
-        (*return_tuples)->psuedoEdges=strdup(psuedoEdges.str().c_str());
-        */
-
-      
+        (*return_tuples)->contracted_graph_name = strdup(contracted_graph_name.str().c_str());
+        (*return_tuples)->contracted_graph_blob = strdup(contracted_graph_blob.str().c_str());
+        (*return_tuples)->removedVertices = strdup(removedVertices.str().c_str());
+        (*return_tuples)->removedEdges = strdup(removedEdges.str().c_str());
+        (*return_tuples)->psuedoEdges = strdup(psuedoEdges.str().c_str());
         (*return_count) = 1;
 #if 0
         // get the space required to store all the paths

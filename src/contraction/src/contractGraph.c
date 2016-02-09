@@ -35,14 +35,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
-// TODO remove if not needed
+// TODO(rohith) Check style.
 // #include "utils/lsyscache.h"
 // #include "utils/builtins.h"
 
 /*
   Uncomment when needed
 */
-//#define DEBUG
+// #define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
@@ -50,11 +50,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../contraction/src/structs.h"
-
-#include "./../../contraction/src/structs.h"
 #include "./contractGraph_driver.h"
-//#include "contract_function.h"
-//#include "./connection.h"
+// #include "contract_function.h"
+// #include "./connection.h"
 
 PG_FUNCTION_INFO_V1(contractGraph);
 #ifndef _MSC_VER
@@ -65,11 +63,11 @@ PGDLLEXPORT Datum
 contractGraph(PG_FUNCTION_ARGS);
 
 
-/*******************************************************************************/
-/*                          MODIFY AS NEEDED                                   */
+/********************************************************************/
+/*                          MODIFY AS NEEDED                        */
 static
 void
-process( char* edges_sql,
+process(char* edges_sql,
         int64_t level,
         bool directed,
         pgr_contracted_blob **result_tuples,
@@ -91,7 +89,7 @@ process( char* edges_sql,
     PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
-    char *err_msg = (char *)"";
+    char *err_msg = NULL;
     do_pgr_contractGraph(
             edges,
             total_tuples,
@@ -141,9 +139,7 @@ contractGraph(PG_FUNCTION_ARGS) {
            edges_sql TEXT,
     level BIGINT,
     directed BOOLEAN DEFAULT true
-         **********************************************************************/
-
-        
+         **********************************************************************/ 
 
         PGR_DBG("Calling process");
         process(
@@ -180,24 +176,24 @@ contractGraph(PG_FUNCTION_ARGS) {
         Datum       *values;
         char        *nulls;
 
-        /*******************************************************************************/
-        /*                          MODIFY!!!!!                                        */
-        /*  This has to match you ouput otherwise the server crashes                   */
+        /******************************************************************/
+        /*                          MODIFY!!!!!                           */
+        /*  This has to match you ouput otherwise the server crashes      */
         /*
            OUT contracted_graph_name TEXT,
-    OUT contracted_graph_blob TEXT,
-    OUT removedVertices TEXT,
-    OUT removedEdges TEXT,
-    OUT psuedoEdges TEXT
-        ********************************************************************************/
+    	   OUT contracted_graph_blob TEXT,
+    	   OUT removedVertices TEXT,
+    	   OUT removedEdges TEXT,
+           OUT psuedoEdges TEXT
+        *******************************************************************/
 
 
         values = palloc(5 * sizeof(Datum));
-        //values = (char **) palloc(5 * sizeof(char *));
+        // values = (char **) palloc(5 * sizeof(char *));
         nulls = palloc(5 * sizeof(char));
 
         size_t i;
-        for(i = 0; i < 5; ++i) {
+        for (i = 0; i < 5; ++i) {
             nulls[i] = ' ';
         }
 
@@ -208,7 +204,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         values[2] = CStringGetDatum(result_tuples->removedVertices);
         values[3] = CStringGetDatum(result_tuples->removedEdges);
         values[4] = CStringGetDatum(result_tuples->psuedoEdges);
-        /*******************************************************************************/
+        /*********************************************************************/
 
         tuple = heap_formtuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
@@ -216,15 +212,15 @@ contractGraph(PG_FUNCTION_ARGS) {
     } else {
         // cleanup
         if (result_tuples) {
-            if (result_tuples->contracted_graph_name) 
+            if (result_tuples->contracted_graph_name)
                 free(result_tuples->contracted_graph_name);
-            if (result_tuples->contracted_graph_blob) 
+            if (result_tuples->contracted_graph_blob)
                 free(result_tuples->contracted_graph_blob);
-            if (result_tuples->removedVertices) 
+            if (result_tuples->removedVertices)
                 free(result_tuples->removedVertices);
-            if (result_tuples->removedEdges) 
+            if (result_tuples->removedEdges)
                 free(result_tuples->removedEdges);
-            if (result_tuples->psuedoEdges) 
+            if (result_tuples->psuedoEdges)
                 free(result_tuples->psuedoEdges);
             free(result_tuples);
         }
