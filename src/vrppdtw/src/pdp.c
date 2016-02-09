@@ -71,11 +71,12 @@ int compute_shortest_path(
     int64_t ret = Solver(customers, total_customers, vehicle_count,
             capacity, &err_msg, results, length_results_struct);
 
+#if 0
     if (ret < 0) {
         ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),
                     errmsg("Error computing path: %s", err_msg)));
     }
-
+#endif
 
     PGR_DBG("*length_results_count  = %i\n", *length_results_struct);
     PGR_DBG("ret = %i\n", ret);
@@ -112,12 +113,13 @@ vrppdtw(PG_FUNCTION_ARGS) {
 
         PGR_DBG("Calling compute_shortes_path");
 
+#if 0
         compute_shortest_path(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),  // customers sql
                 PG_GETARG_INT64(1),  // vehicles  count
                 PG_GETARG_FLOAT8(2),  // capacity 
                 &results, &length_results_struct);
-
+#endif
         PGR_DBG("Back from solve_vrp, length_results: %d", length_results_struct);
 
         /* total number of tuples to be returned */
