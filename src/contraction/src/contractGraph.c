@@ -37,12 +37,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 // TODO(rohith) Check style.
 // #include "utils/lsyscache.h"
-// #include "utils/builtins.h"
+ #include "utils/builtins.h"
 
 /*
   Uncomment when needed
 */
-// #define DEBUG
+// #define DEBUG 1
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
@@ -188,7 +188,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         *******************************************************************/
 
 
-        values = palloc(5 * sizeof(Datum));
+        values =(Datum *)palloc(5 * sizeof(Datum));
         // values = (char **) palloc(5 * sizeof(char *));
         nulls = palloc(5 * sizeof(char));
 
@@ -197,20 +197,29 @@ contractGraph(PG_FUNCTION_ARGS) {
             nulls[i] = ' ';
         }
 
-
+       /* PGR_DBG("Storing graphname %s",result_tuples->contracted_graph_name);
+        PGR_DBG("Storing blob %s",result_tuples->contracted_graph_blob);
+        PGR_DBG("Storing rv %s",result_tuples->removedVertices);
+        PGR_DBG("Storing re %s",result_tuples->removedEdges);
+        PGR_DBG("Storing pe %s",result_tuples->psuedoEdges);*/
         // postgres starts counting from 1
-        values[0] =  CStringGetDatum(result_tuples->contracted_graph_name);
-        values[1] = CStringGetDatum(result_tuples->contracted_graph_blob);
-        values[2] = CStringGetDatum(result_tuples->removedVertices);
-        values[3] = CStringGetDatum(result_tuples->removedEdges);
-        values[4] = CStringGetDatum(result_tuples->psuedoEdges);
+        values[0] = CStringGetTextDatum(result_tuples->contracted_graph_name);
+        values[1] = CStringGetTextDatum(result_tuples->contracted_graph_blob);
+        values[2] = CStringGetTextDatum(result_tuples->removedVertices);
+        values[3] = CStringGetTextDatum(result_tuples->removedEdges);
+        values[4] = CStringGetTextDatum(result_tuples->psuedoEdges);
+        
         /*********************************************************************/
 
         tuple = heap_formtuple(tuple_desc, values, nulls);
+         PGR_DBG("heap_formtuple OK");
         result = HeapTupleGetDatum(tuple);
+         PGR_DBG("HeapTupleGetDatum OK");
         SRF_RETURN_NEXT(funcctx, result);
+        PGR_DBG("Returning values");
     } else {
         // cleanup
+         PGR_DBG("Freeing values");
         if (result_tuples) {
             if (result_tuples->contracted_graph_name)
                 free(result_tuples->contracted_graph_name);
@@ -227,5 +236,6 @@ contractGraph(PG_FUNCTION_ARGS) {
 
         SRF_RETURN_DONE(funcctx);
     }
+    PGR_DBG("End of Function");
 }
 

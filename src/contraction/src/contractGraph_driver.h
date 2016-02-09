@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#define DEBUG 1
 #ifndef SRC_CONTRACTION_SRC_CONTRACTGRAPH_DRIVER_H_
 #define SRC_CONTRACTION_SRC_CONTRACTGRAPH_DRIVER_H_
 

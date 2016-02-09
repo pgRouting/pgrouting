@@ -7,6 +7,7 @@ typedef struct
 	int64_t source,target,id,type;
 	float cost, reverse_cost;
 	float s_x,s_y,t_x,t_y;
+	bool first;
 } Edge;
 
 //represents an vertex
