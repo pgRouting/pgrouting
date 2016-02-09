@@ -158,44 +158,12 @@ Many to Many
 Description of the Signatures
 =============================
 
-Description of the Edges SQL query
--------------------------------------------------------------------------------
-
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
-
-================  ===================   =================================================
-Column            Type                  Description
-================  ===================   =================================================
-**id**            ``ANY-INTEGER``       Identifier of the edge.
-**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, If negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, If negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-================  ===================   =================================================
+..
+    description of the sql queries
 
 
-Description of the Points SQL query
--------------------------------------------------------------------------------
+.. include:: withPoints_queries.txt 
 
-:points_sql: an SQL query, which should return a set of rows with the following columns:
-
-============ ================= =================================================
-Column            Type              Description
-============ ================= =================================================
-**pid**      ``ANY-INTEGER``   (optional) Identifier of the point. Can not be NULL. If column not present, a sequential identifier will be given automatically.
-**eid**      ``ANY-INTEGER``   Identifier of the "closest" edge to the point.
-**fraction** ``ANY-NUMERICAL`` Value in [0,1] that indicates the relative postition from the first end point of the edge.
-**side**     ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the point is:
-                                 - In the right, left of the edge or
-                                 - If it doesn't matter with 'b' or NULL.
-                                 - If column not present 'b' is considered.
-============ ================= =================================================
-
-
-Where:
-
-:ANY-INTEGER: smallint, int, bigint
-:ANY-NUMERICAL: smallint, int, bigint, real, float
 
 Description of the parameters of the signatures
 -------------------------------------------------------------------------------
@@ -206,10 +174,10 @@ Parameter        Type                   Description
 ================ ====================== =================================================
 **edges_sql**    ``TEXT``               Edges SQL query as decribed above.
 **points_sql**   ``TEXT``               Points SQL query as decribed above.
-**start_pid**    ``ANY-INTEGER``        Starting point identifier.
-**end_pid**      ``ANY-INTEGER``        Ending point identifier.
-**start_pids**   ``ARRAY[ANY-INTEGER]`` Array of starting points identifiers.
-**end_pids**     ``ARRAY[ANY-INTEGER]`` Array of ending points identifiers.
+**start_vid**    ``ANY-INTEGER``        Starting vertex identifier. A negative value represents a point pid.
+**end_vid**      ``ANY-INTEGER``        Ending point identifier. A negative value represents a point pid.
+**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of starting points identifiers. Negative values represents points.
+**end_vids**     ``ARRAY[ANY-INTEGER]`` Array of ending points identifiers. Negative values represents  points.
 **directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
 **driving_side** ``CHAR``               (optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
                                           - In the right or left or
@@ -231,8 +199,8 @@ Column           Type              Description
 ============= =========== =================================================
 **seq**       ``INTEGER`` Row sequence.
 **path_seq**  ``INTEGER`` Path sequence that indicates the relative position on the path.
-**start_pid** ``BIGINT``  Identifier of the starting point. The negative value of the original point's pid is given.
-**end_pid**   ``BIGINT``  Identifier of the ending point. The negative value of the original point's pid is given.
+**start_vid** ``BIGINT``  Identifier of the starting vertex. When negative is a point's pid.
+**end_vid**   ``BIGINT``  Identifier of the ending point. The negative value of the original point's pid is given.
 **node**      ``BIGINT``  Identifier of the node:
                             - A positive value indicates the node is a vertex of edges_sql.
                             - A negative value indicates the node is a point  of points_sql.
