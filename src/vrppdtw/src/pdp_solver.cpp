@@ -54,8 +54,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 
 #include "./pdp_types.h"
-#include "./pdp_types.hpp"
 #include "./pdp_solver.h"
+#include "./pdp_types.hpp"
 
 #include "./Solution.h"
 #include "./Route.h"
@@ -96,7 +96,7 @@ int64_t Solver(Customer *c1,
             c1[0].Etime, c1[0].Ltime, c1[0].Stime,
             c1[0].Pindex, c1[0].Dindex
             });
-    return;
+    return 0;
 
 #if 0
     if (total_tuples != 107) {
