@@ -14,6 +14,8 @@ int64_t fetch_contracted_graph(Edge *edges,int64_t *initial_num_vertices,
 							const char **removedVString,const char **removedEString);
 
 
+
+
 #ifdef __cplusplus
 }
 #endif

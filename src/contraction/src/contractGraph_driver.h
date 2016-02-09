@@ -26,8 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_CONTRACTGRAPH_SRC_CONTRACTGRAPH_DRIVER_H_
-#define SRC_CONTRACTGRAPH_SRC_CONTRACTGRAPH_DRIVER_H_
+#define DEBUG 1
+#ifndef SRC_CONTRACTION_SRC_CONTRACTGRAPH_DRIVER_H_
+#define SRC_CONTRACTION_SRC_CONTRACTGRAPH_DRIVER_H_
 
 #include "./../../common/src/pgr_types.h"
 #include "./../../contraction/src/structs.h"
@@ -56,4 +57,4 @@ extern "C" {
 }
 #endif
 
-#endif  // SRC_CONTRACTGRAPH_SRC_CONTRACTGRAPH_DRIVER_H_
+#endif  // SRC_CONTRACTION_SRC_CONTRACTGRAPH_DRIVER_H_

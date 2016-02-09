@@ -38,17 +38,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include "./contractGraph_driver.h"
-#include "./contract_function.h"
-#include "./../../common/src/baseGraph.hpp"
+#include "./pgr_contract.hpp"
 
 // #define DEBUG
 
 extern "C" {
 #include "./../../common/src/pgr_types.h"
-#include "./../../contraction/src/structs.h"
+#include "./structs.h"
 }
 
 #include "./../../common/src/memory_func.hpp"
+#include "./../../common/src/debug_macro.h"
+
 
 /************************************************************
   edges_sql TEXT,
@@ -63,14 +64,14 @@ do_pgr_contractGraph(
         bool directed,
         pgr_contracted_blob **return_tuples,
         size_t *return_count,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
-    std::ostringstream contracted_graph_name;
-    std::ostringstream contracted_graph_blob;
-    std::ostringstream removedEdges;
-    std::ostringstream removedVertices;
-    std::ostringstream psuedoEdges;
     try {
+        std::ostringstream contracted_graph_name;
+        std::ostringstream contracted_graph_blob;
+        std::ostringstream removedEdges;
+        std::ostringstream removedVertices;
+        std::ostringstream psuedoEdges;
 
         if (total_tuples == 1) {
             log << "Requiered: more than one tuple\n";
@@ -86,59 +87,36 @@ do_pgr_contractGraph(
         log << "Level" << level << "\n";
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            Pgr_base_graph< CDirectedGraph > digraph(gType, initial_size);
             digraph.graph_insert_data(data_edges, total_tuples);
 #ifdef DEBUG
             digraph.print_graph(log);
 #endif
             /*
-            Function call to get the contracted graph.
-
-            fetch_contracted_graph(digraph,level,
-              contracted_graph_name,contracted_graph_blob,removedEdges,
-              removedVertices,psuedoEdges
-            );
-        return_tuples = get_memory (1, pgr_contracted_blob);
-        return_tuples->contracted_graph_name=strdup(contracted_graph_name.str().c_str());
-        return_tuples->contracted_graph_blob=strdup(contracted_graph_blob.str().c_str());
-        return_tuples->removedVertices=strdup(removedVertices.str().c_str());
-        return_tuples->removedEdges=strdup(removedEdges.str().c_str());
-        return_tuples->psuedoEdges=strdup(psuedoEdges.str().c_str());
-
-
+            Function call to get the contracted graph
             */
-
-        
+            pgr_contractGraph(digraph,level,
+              contracted_graph_name,contracted_graph_blob,removedEdges,
+              removedVertices,psuedoEdges);
         } else {
             log << "Working with Undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            Pgr_base_graph< CUndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data(data_edges, total_tuples);
 #ifdef DEBUG
             undigraph.print_graph(log);
-#endif
-
-
-            /*
-            Function call to get the contracted graph.
-
-        return_tuples = get_memory (1, pgr_contracted_blob);
-            fetch_contracted_graph(undigraph,level,
-              contracted_graph_name,contracted_graph_blob,removedEdges,
-              removedVertices,psuedoEStream
-            );
-        (return_tuples)->contracted_graph_name=strdup(contracted_graph_name.str().c_str());
-        (return_tuples)->contracted_graph_blob=strdup(contracted_graph_blob.str().c_str());
-        (return_tuples)->removedVertices=strdup(removedVertices.str().c_str());
-        (return_tuples)->removedEdges=strdup(removedEdges.str().c_str());
-        (return_tuples)->psuedoEdges=strdup(psuedoEdges.str().c_str());
-            */
-
+            #endif
+           /* Function call to get the contracted graph. */
+            pgr_contractGraph(undigraph, level,
+              contracted_graph_name, contracted_graph_blob, removedEdges,
+              removedVertices, psuedoEdges);
         }
-
-      
-
-        (*return_tuples) = NULL;
-        (*return_count) = 0;
+        (*return_tuples) = get_memory(1, (*return_tuples));
+        (*return_tuples)->contracted_graph_name = strdup(contracted_graph_name.str().c_str());
+        (*return_tuples)->contracted_graph_blob = strdup(contracted_graph_blob.str().c_str());
+        (*return_tuples)->removedVertices = strdup(removedVertices.str().c_str());
+        (*return_tuples)->removedEdges = strdup(removedEdges.str().c_str());
+        (*return_tuples)->psuedoEdges = strdup(psuedoEdges.str().c_str());
+        (*return_count) = 1;
 #if 0
         // get the space required to store all the paths
         (*return_tuples) = get_memory(count, (*return_tuples));

@@ -77,7 +77,6 @@ set(PgRouting_SOURCE_NAMES
     "allpairs"
     "withPoints"
     "contraction"
-    #"contractGraph"
     #"funnyDijkstra"
     
     "astar" "bd_astar"
