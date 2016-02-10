@@ -5,10 +5,11 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
-group: edge
-dist: trusty    
 
-# dist: precise
+#group: edge
+#dist: trusty    
+
+dist: precise
 
 sudo: required
 

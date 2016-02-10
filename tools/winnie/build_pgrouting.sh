@@ -100,7 +100,7 @@ cp lib/*.control ${PGPATHEDB}/share/extension/
 cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
 
 #Normal tests
-perl tools/testers/algorithm-tester.pl -pgver ${PG_VER}  -pgport "${PGPORT}"  -clean
+perl tools/testers/algorithm-tester.pl -pgver ${PG_VER}  -pgport "${PGPORT}"  -clean -alg vrppdtw
 #perl tools/testers/algorithm-tester.pl -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -clean
 
 
