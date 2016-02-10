@@ -90,7 +90,7 @@ do_pgr_contractGraph(
         }
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_contractionGraph< DirectedGraph > digraph(gType, initial_size);
+            Pgr_contractionGraph< CDirectedGraph > digraph(gType, initial_size);
             digraph.graph_insert_data(data_edges, total_tuples);
 #ifdef DEBUG
             digraph.print_graph(log);
@@ -104,7 +104,7 @@ do_pgr_contractGraph(
         } else {
             log << "Working with Undirected Graph\n";
  
-            Pgr_contractionGraph< UndirectedGraph > undigraph(gType, initial_size);
+            Pgr_contractionGraph< CUndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data(data_edges, total_tuples);
 #ifdef DEBUG
             undigraph.print_graph(log);
