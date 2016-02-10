@@ -47,8 +47,8 @@ extern "C" {
 #include "./structs.h"
 }
 
-
 #include "./../../common/src/memory_func.hpp"
+#define DEBUG
 #include "./../../common/src/debug_macro.h"
 
 
@@ -90,10 +90,14 @@ do_pgr_contractGraph(
         }
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_contractionGraph< DirectedGraph > digraph(gType, initial_size);
+            Pgr_contractionGraph< CDirectedGraph > digraph(gType, initial_size);
             digraph.graph_insert_data(data_edges, total_tuples);
 #ifdef DEBUG
             digraph.print_graph(log);
+#endif
+#if 0
+            *err_msg = strdup(log.str().c_str());
+            return;
 #endif
             /*
             Function call to get the contracted graph
@@ -102,19 +106,21 @@ do_pgr_contractGraph(
               contracted_graph_name,contracted_graph_blob,removedEdges,
               removedVertices,psuedoEdges);
         } else {
+#if 0
             log << "Working with Undirected Graph\n";
  
             Pgr_contractionGraph< UndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data(data_edges, total_tuples);
 #ifdef DEBUG
             undigraph.print_graph(log);
-            #endif
+#endif
 
-           /* Function call to get the contracted graph. */
+            /* Function call to get the contracted graph. */
             pgr_contractGraph(undigraph, level,
-              contracted_graph_name, contracted_graph_blob, removedEdges,
-              removedVertices, psuedoEdges);
-             
+                    contracted_graph_name, contracted_graph_blob, removedEdges,
+                    removedVertices, psuedoEdges);
+#endif
+
         }
         (*return_tuples) = get_memory(1, (*return_tuples));
         (*return_tuples)->contracted_graph_name = strdup(contracted_graph_name.str().c_str());

@@ -78,6 +78,7 @@ process(char* edges_sql,
     pgr_edge_t *edges = NULL;
     int64_t total_tuples = 0;
     pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+    PGR_DBG("finished Loading");
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -89,7 +90,7 @@ process(char* edges_sql,
     PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
-     PGR_DBG("Graphh is %d",directed);
+    PGR_DBG("Graphh is %d",directed);
     char *err_msg = NULL;
     do_pgr_contractGraph(
             edges,
@@ -138,8 +139,8 @@ contractGraph(PG_FUNCTION_ARGS) {
         /*                          MODIFY AS NEEDED                          */
         /*
            edges_sql TEXT,
-    level BIGINT,
-    directed BOOLEAN DEFAULT true
+           level BIGINT,
+           directed BOOLEAN DEFAULT true
          **********************************************************************/ 
 
         PGR_DBG("Calling process");
@@ -182,11 +183,11 @@ contractGraph(PG_FUNCTION_ARGS) {
         /*  This has to match you ouput otherwise the server crashes      */
         /*
            OUT contracted_graph_name TEXT,
-    	   OUT contracted_graph_blob TEXT,
-    	   OUT removedVertices TEXT,
-    	   OUT removedEdges TEXT,
+           OUT contracted_graph_blob TEXT,
+           OUT removedVertices TEXT,
+           OUT removedEdges TEXT,
            OUT psuedoEdges TEXT
-        *******************************************************************/
+         *******************************************************************/
 
 
         values =(Datum *)palloc(5 * sizeof(Datum));
@@ -209,18 +210,18 @@ contractGraph(PG_FUNCTION_ARGS) {
         values[2] = CStringGetTextDatum(result_tuples->removedVertices);
         values[3] = CStringGetTextDatum(result_tuples->removedEdges);
         values[4] = CStringGetTextDatum(result_tuples->psuedoEdges);
-        
+
         /*********************************************************************/
 
         tuple = heap_formtuple(tuple_desc, values, nulls);
-         PGR_DBG("heap_formtuple OK");
+        PGR_DBG("heap_formtuple OK");
         result = HeapTupleGetDatum(tuple);
-         PGR_DBG("HeapTupleGetDatum OK");
+        PGR_DBG("HeapTupleGetDatum OK");
         SRF_RETURN_NEXT(funcctx, result);
         PGR_DBG("Returning values");
     } else {
         // cleanup
-         PGR_DBG("Freeing values");
+        PGR_DBG("Freeing values");
         if (result_tuples) {
             if (result_tuples->contracted_graph_name)
                 free(result_tuples->contracted_graph_name);
