@@ -34,31 +34,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #include "postgres.h"
 }
-#include "./../../common/src/baseGraph.hpp"
-#include "./structs.h"
+#include "./pgr_contractionGraph.hpp"
 
 
 template < class G > class Pgr_contract;
 
-typedef typename boost::adjacency_list < boost::vecS, boost::vecS,
-boost::undirectedS,
-Vertex, Edge > CUndirectedGraph;
-
-typedef typename boost::adjacency_list < boost::vecS, boost::vecS,
-boost::bidirectionalS,
-Vertex, Edge > CDirectedGraph;
-
 template < class G >
 void pgr_contractGraph(
-	G &graph,int64_t level,
-	std::ostringstream& contracted_graph_name,
-	std::ostringstream& contracted_graph_blob,
-	std::ostringstream& removedEdges,
-	std::ostringstream& removedVertices,
-	std::ostringstream& psuedoEdges) {
-
+	G &graph, int64_t level,
+    std::ostringstream& contracted_graph_name,
+    std::ostringstream& contracted_graph_blob,
+    std::ostringstream& removedEdges,
+    std::ostringstream& removedVertices,
+    std::ostringstream& psuedoEdges) {
 	Pgr_contract< G > fn_contract;
-	fn_contract.calculateDegrees(graph);
+    fn_contract.calculateDegrees(graph);
 	fn_contract.contract_to_level(graph,level);
 	fn_contract.getGraphName(contracted_graph_name,level);
 	fn_contract.getGraph_string(graph,contracted_graph_blob);
@@ -76,7 +66,7 @@ public:
 	typedef typename G::V_i V_i;
 	typedef typename G::E_i E_i;
 	typedef typename G::EO_i EO_i;
-
+	typedef typename G::degree_to_V_i degree_to_V_i;
 
 	void contract_to_level(
 		G &graph,
@@ -103,8 +93,6 @@ public:
 	typedef typename std::map<int64_t , std::pair<int64_t,int64_t> > psuedo_E;
 	typedef typename std::map<int64_t , std::pair<int64_t,int64_t> >::iterator psuedo_E_i;
 	typedef typename std::map< int64_t, std::vector<V> > degree_to_V;
-	typedef typename std::map< int64_t, std::vector<V> >::iterator degree_to_V_i;
-	typedef typename std::deque<boost_edge_t>::iterator removed_E_i;
 	typedef typename std::vector<V>::iterator Q_i;
 private:
 	int64_t last_edge_id;
@@ -117,17 +105,24 @@ private:
 
  /******************** IMPLEMENTATION ******************/
 
+
+/*
+degree to vertices map is already calculated in pgr_contractionGraph
+
+*/
+
 template < class G >
 void
 Pgr_contract< G >::calculateDegrees(G &graph) {
 	EO_i out, out_end;
-	V_i vi;
-	for (vi = vertices(graph.graph).first; vi != vertices(graph.graph).second; ++vi) 
+	//V_i vi;
+	for (auto vi = vertices(graph.graph).first; vi != vertices(graph.graph).second; ++vi) 
 	{
-		graph.graph[(*vi)].degree=boost::out_degree(*vi,graph.graph);
+		//graph.graph[(*vi)].degree=boost::out_degree(*vi,graph.graph);
 		degree_to_V_map[graph.graph[(*vi)].degree].push_back(*vi);
 	}
 }
+
 
 template < class G >
 void
@@ -171,13 +166,13 @@ Pgr_contract< G >::remove_1_degree_vertices(G &graph) {
 		{
 			V s=source(*out, graph.graph);
 			V t=target(*out, graph.graph);
-			int source_id=graph.graph[s].id;
+			auto source_id=graph.graph[s].id;
 			graph.graph[t].contractions++;
 			int prev_target_degree=graph.graph[t].degree;
 			graph.graph[t].degree--;
-			int final_target_degree=prev_target_degree-1;
+			auto final_target_degree=prev_target_degree-1;
 			degree_to_V_map[final_target_degree].push_back(t);
-			Edge removed_edge=graph.graph[*out];
+			auto removed_edge=graph.graph[*out];
 			removedVertices[frontid].push_front(removed_edge);
 			graph.disconnect_vertex(source_id);
 			graph.m_num_vertices--;
@@ -190,8 +185,8 @@ Pgr_contract< G >::remove_1_degree_vertices(G &graph) {
 	}
 }
 
-
-/*template < class G >
+#if 0
+template < class G >
 void
 Pgr_contract< G >::remove_2_degree_vertices(G &graph) {
 
@@ -300,7 +295,8 @@ Pgr_contract< G >::remove_2_degree_vertices(G &graph) {
 			two_degree_vertices_0.begin()+1);
 
 	}
-}*/
+}
+#endif
 
 template < class G >
 int64_t
@@ -336,6 +332,8 @@ template < class G >
 void
 Pgr_contract< G >::getRemovedE_string(G &graph,std::ostringstream& estring)
 {
+	
+	#if 0
 	for (removed_E_i iter = graph.removed_edges.begin(); iter != graph.removed_edges.end(); iter++)
 	{
 		// Edge temp=*iter ;
@@ -343,6 +341,12 @@ Pgr_contract< G >::getRemovedE_string(G &graph,std::ostringstream& estring)
 		<< iter->target << "," << iter->cost << "$"; 
 		// << "," << iter->reverse_cost << "$";
 	}
+	#endif
+
+	for (const auto re : graph.removed_edges) 
+		estring << re.first << "," << re.second.source << ","
+		<< re.second.target << "," << re.second.cost << ","
+		<<re.second.reverse_cost<< "$";
 }
 
 template < class G >
@@ -369,10 +373,10 @@ template < class G >
 void
 Pgr_contract< G >::getPsuedoE_string(std::ostringstream& pstring)
 {
-	for (psuedo_E_i iter = psuedoEdges.begin(); iter != psuedoEdges.end(); iter++)
+	for (const auto pe : psuedoEdges)
 	{
-		pstring << iter->first << "," << iter->second.first << ","
-		<< iter->second.second << "$";
+		pstring << pe.first << "," << pe.second.first << ","
+		<< pe.second.second << "$";
 	}
 
 }

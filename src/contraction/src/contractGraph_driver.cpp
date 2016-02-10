@@ -40,12 +40,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./contractGraph_driver.h"
 #include "./pgr_contract.hpp"
 
-// #define DEBUG
+
 
 extern "C" {
 #include "./../../common/src/pgr_types.h"
 #include "./structs.h"
 }
+
 
 #include "./../../common/src/memory_func.hpp"
 #include "./../../common/src/debug_macro.h"
@@ -64,7 +65,7 @@ do_pgr_contractGraph(
         bool directed,
         pgr_contracted_blob **return_tuples,
         size_t *return_count,
-        char ** err_msg) {
+        char **err_msg) {
     std::ostringstream log;
     try {
         std::ostringstream contracted_graph_name;
@@ -73,6 +74,13 @@ do_pgr_contractGraph(
         std::ostringstream removedVertices;
         std::ostringstream psuedoEdges;
 
+        
+
+        graphType gType = directed? DIRECTED: UNDIRECTED;
+        const int initial_size = total_tuples;
+
+        log << "Level" << level << "\n";
+        log << "Directed" << directed << "\n";
         if (total_tuples == 1) {
             log << "Requiered: more than one tuple\n";
             (*return_tuples) = NULL;
@@ -80,14 +88,9 @@ do_pgr_contractGraph(
             *err_msg = strdup(log.str().c_str());
             return;
         }
-
-        graphType gType = directed? DIRECTED: UNDIRECTED;
-        const int initial_size = total_tuples;
-
-        log << "Level" << level << "\n";
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< CDirectedGraph > digraph(gType, initial_size);
+            Pgr_contractionGraph< DirectedGraph > digraph(gType, initial_size);
             digraph.graph_insert_data(data_edges, total_tuples);
 #ifdef DEBUG
             digraph.print_graph(log);
@@ -100,15 +103,18 @@ do_pgr_contractGraph(
               removedVertices,psuedoEdges);
         } else {
             log << "Working with Undirected Graph\n";
-            Pgr_base_graph< CUndirectedGraph > undigraph(gType, initial_size);
+ 
+            Pgr_contractionGraph< UndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data(data_edges, total_tuples);
 #ifdef DEBUG
             undigraph.print_graph(log);
             #endif
+
            /* Function call to get the contracted graph. */
             pgr_contractGraph(undigraph, level,
               contracted_graph_name, contracted_graph_blob, removedEdges,
               removedVertices, psuedoEdges);
+             
         }
         (*return_tuples) = get_memory(1, (*return_tuples));
         (*return_tuples)->contracted_graph_name = strdup(contracted_graph_name.str().c_str());

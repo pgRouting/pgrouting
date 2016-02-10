@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_CONTRACTION_SRC_CONTRACTGRAPH_DRIVER_H_
 
 #include "./../../common/src/pgr_types.h"
-#include "./../../contraction/src/structs.h"
+#include "./structs.h"
 
 #ifdef __cplusplus
 extern "C" {
