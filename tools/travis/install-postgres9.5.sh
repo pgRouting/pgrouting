@@ -21,9 +21,16 @@ if test "$POSTGRESQL_VERSION" = "9.5" ; then
     #sudo apt-get install -y pgtap libtap-parser-sourcehandler-pgtap-perl
     sudo cp /usr/lib/postgresql/$POSTGRESQL_VERSION/bin/pg_config /usr/bin/pg_config
     sudo /etc/init.d/postgresql stop
-    sudo sed -i -e 's/port = 5433/port = 5432/g' /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf
+    sudo /etc/init.d/postgresql stop
+    ps -fea | grep postgres
+    echo "making grep before change"
     grep port /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf
-    sudo /etc/init.d/postgresql restart $POSTGRESQL_VERSION
+    echo "finished grep"
+    sudo sed -i -e 's/port = 5433/port = 5432/g' /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf
+    echo "making grep after change"
+    grep port /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf
+    echo "finished grep"
+    sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION
     psql -U postgres -p 5432 -l
     psql -U postgres -p 5433 -l
 
