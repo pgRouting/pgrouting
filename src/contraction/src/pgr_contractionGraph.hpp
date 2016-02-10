@@ -540,6 +540,7 @@ class Pgr_contractionGraph {
                 graph[e].cost = edge.reverse_cost;
                 graph[e].id = edge.id;
                 graph[e].first = false;
+                graph[e].type=edge.type;
                 graph[e].type = edge.type;
             }
         }
@@ -571,6 +572,7 @@ class Pgr_contractionGraph {
                     graph[e].cost = edge.cost;
                     graph[e].id = edge.id;
                     graph[e].first = edge.first;
+                    graph[e].type=0;
                     graph[e].type = 0;
                 }
             }
@@ -601,6 +603,7 @@ class Pgr_contractionGraph {
                     graph[e].cost = edge.cost;
                     graph[e].id = edge.id;
                     graph[e].first = true;
+                    graph[e].type=0;
                     graph[e].type = 0;
                 }
 
@@ -610,6 +613,7 @@ class Pgr_contractionGraph {
                     graph[e].cost = edge.reverse_cost;
                     graph[e].id = edge.id;
                     graph[e].first = false;
+                    graph[e].type=0;
                     graph[e].type = 0;
                 }
             }
