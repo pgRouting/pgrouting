@@ -7,6 +7,10 @@
 #export PGROUTING_VER=2.0
 #export PGROUTING_MICRO_VER=0dev
 #export GIT_COMMIT=whatever
+
+#This line is commented out on build file
+#strip *.dll
+
 export PGUSER=postgres
 
 #this should be setup as a mapping in msys/etc/fstab to where you keep your projects

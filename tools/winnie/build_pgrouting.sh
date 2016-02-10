@@ -105,4 +105,4 @@ perl tools/testers/algorithm-tester.pl -pgver ${PG_VER}  -pgport "${PGPORT}"  -c
 
 
 cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib
-strip *.dll
+#strip *.dll
