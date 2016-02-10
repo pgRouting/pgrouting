@@ -22,6 +22,10 @@ if test "$POSTGRESQL_VERSION" = "9.5" ; then
     sudo cp /usr/lib/postgresql/$POSTGRESQL_VERSION/bin/pg_config /usr/bin/pg_config
     sudo /etc/init.d/postgresql stop
     sudo sed -i -e 's/port = 5433/port = 5432/g' /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf
+    grep port /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf
+    sudo /etc/init.d/postgresql restart $POSTGRESQL_VERSION
+    psql -U postgres -p 5432 -l
+    psql -U postgres -p 5433 -l
 
 #else
 

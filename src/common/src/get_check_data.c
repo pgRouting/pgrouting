@@ -60,7 +60,7 @@ fetch_column_info(
         if (SPI_result == SPI_ERROR_NOATTRIBUTE) {
             elog(ERROR, "Type of column '%s' not Found", info->name);
         }
-        PGR_DBG("Column %s found: %lu", info->name, info->type);
+        PGR_DBG("Column %s found: %llu", info->name, info->type);
         return true;
     }
     PGR_DBG("Column %s not found", info->name);
@@ -163,8 +163,7 @@ int64_t
 pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
     Datum binval;
     bool isnull;
-    int64_t value = 1111111111111111111;
-#if 0
+    int64_t value = 0;
     binval = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &isnull);
     if (isnull)
         elog(ERROR, "Unexpected Null value in column %s", info.name);
@@ -183,7 +182,6 @@ pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
                     "Unexpected Column type of %s. Expected ANY-INTEGER",
                     info.name);
     }
-#endif
     PGR_DBG("Variable: %s Value: %lld", info.name, value);
     return value;
 }
@@ -218,7 +216,7 @@ pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
                     "Unexpected Column type of %s. Expected ANY-NUMERICAL",
                     info.name);
     }
-    PGR_DBG("Variable: %s Value: %f", info.name, value);
+    PGR_DBG("Variable: %s Value: %lf", info.name, value);
     return value;
 }
 

@@ -97,7 +97,7 @@ int compute_shortest_path(
 #endif
 
     PGR_DBG("*length_results_count  = %zu\n", *length_results_struct);
-    PGR_DBG("ret = %ld\n", ret);
+    PGR_DBG("ret = %lld\n", ret);
 
     pfree(customers);
     if (err_msg) free(err_msg);
@@ -137,7 +137,7 @@ vrppdtw(PG_FUNCTION_ARGS) {
                 PG_GETARG_FLOAT8(2),  // capacity 
                 &results, &length_results_struct);
 
-        PGR_DBG("Back from solve_vrp, length_results: %ld", length_results_struct);
+        PGR_DBG("Back from solve_vrp, length_results: %zu", length_results_struct);
 
         /* total number of tuples to be returned */
         funcctx->max_calls = (uint32_t)length_results_struct;

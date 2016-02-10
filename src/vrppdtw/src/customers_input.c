@@ -52,7 +52,7 @@ void pgr_fetch_customer(
     customer.Pindex = pgr_SPI_getBigInt(tuple, tupdesc, info[7]);
     customer.Dindex = pgr_SPI_getBigInt(tuple, tupdesc, info[8]);
     customer.Ddist = 0;
-    PGR_DBG("Reading:%ld\t %f\t%f\t%f\t %f\t%f\t%f\t %ld\t%ld\t  %f",
+    PGR_DBG("Reading:%lld\t %f\t%f\t%f\t %f\t%f\t%f\t %lld\t%lld\t  %f",
             customer.id,
             customer.x,
             customer.y,
@@ -152,7 +152,7 @@ pgr_get_customers(
                 HeapTuple tuple = tuptable->vals[t];
                 pgr_fetch_customer(&tuple, &tupdesc, info,
                         &(*customers)[total_tuples - ntuples + t]);
-                PGR_DBG("%zu: %ld\t %f\t%f\t%f\t %f\t%f\t%f\t %ld\t%ld\t  %f", i,
+                PGR_DBG("%zu: %lld\t %f\t%f\t%f\t %f\t%f\t%f\t %lld\t%lld\t  %f", i,
                         (*customers)[i].id,
                         (*customers)[i].x,
                         (*customers)[i].y,
