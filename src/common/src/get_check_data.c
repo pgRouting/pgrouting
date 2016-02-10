@@ -163,7 +163,8 @@ int64_t
 pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
     Datum binval;
     bool isnull;
-    int64_t value = 0;
+    int64_t value = 1111111111111111111;
+#if 0
     binval = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &isnull);
     if (isnull)
         elog(ERROR, "Unexpected Null value in column %s", info.name);
@@ -182,6 +183,7 @@ pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
                     "Unexpected Column type of %s. Expected ANY-INTEGER",
                     info.name);
     }
+#endif
     PGR_DBG("Variable: %s Value: %ld", info.name, value);
     return value;
 }
