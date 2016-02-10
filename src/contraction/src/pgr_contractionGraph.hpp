@@ -1,25 +1,25 @@
 /*PGR-GNU*****************************************************************
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+  Copyright (c) 2015 Celia Virginia Vergara Castillo
+  vicky_vergara@hotmail.com
 
-------
+  ------
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
 #ifndef SRC_CONTRACTION_SRC_CONTRACTION_GRAPH_HPP_
 #define SRC_CONTRACTION_SRC_CONTRACTION_GRAPH_HPP_
@@ -155,8 +155,8 @@ class Pgr_contractionGraph {
         //! @name Graph Modification
         //@{
         //! Used for storing the removed_edges,along with its id as key
-        std::map<int64_t,Edge> removed_edges;
-        //std::deque<Edge> removed_edges;
+        std::map<int64_t, Edge> removed_edges;
+        // std::deque<Edge> removed_edges;
 
         //! Used for storing modified edges because of adding points
         // TODO
@@ -187,7 +187,7 @@ class Pgr_contractionGraph {
                 ++edge_to_modify;
             }
 
-            //was not there so look for it in the graph
+            // was not there so look for it in the graph
             if (!found) {
                 E_i edge_ptr, edges_end;
                 for (boost::tie(edge_ptr, edges_end) = edges(graph);
@@ -195,7 +195,7 @@ class Pgr_contractionGraph {
                     if (point.edge_id == edge_ptr->id) {
                         modified_edges.push_back(*edge_ptr);
                         boost::remove_edge(edge_ptr, graph);
-                        //delete the edge from the graph
+                        // delete the edge from the graph
                         found = true;
                         break;
                     }
@@ -221,7 +221,6 @@ class Pgr_contractionGraph {
                 // because the edge was not found
                 return;
             }
-
         }
 #endif
 
@@ -248,12 +247,11 @@ class Pgr_contractionGraph {
                 graph_add_edge(data_edges[i]);
             }
             adjust_vertices();
-            for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i )
-            {
+            for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i ) {
                 graph[i].id = gVertices_map.find(i)->second;
                 // initilializing the properties of a vertex
-                graph[i].contractions=0;
-                graph[i].degree=out_degree(graph[i].id);
+                graph[i].contractions = 0;
+                graph[i].degree = out_degree(graph[i].id);
             }
         }
 
@@ -262,12 +260,11 @@ class Pgr_contractionGraph {
                 graph_add_edge(edge);
             }
             adjust_vertices();
-            for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i )
-            {
+            for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i ) {
                 graph[i].id = gVertices_map.find(i)->second;
                 // initilializing the properties of a vertex
-                graph[i].contractions=0;
-                graph[i].degree=out_degree(graph[i].id);
+                graph[i].contractions = 0;
+                graph[i].degree = out_degree(graph[i].id);
             }
         }
 
@@ -299,9 +296,9 @@ class Pgr_contractionGraph {
                     d_edge.source = graph[source(*out, graph)].id;
                     d_edge.target = graph[target(*out, graph)].id;
                     d_edge.cost = graph[*out].cost;
-                    d_edge.type=graph[*out].type;
+                    d_edge.type = graph[*out].type;
                     //        d_edge.reverse_cost = -1;
-                    removed_edges[d_edge.id]=(d_edge);
+                    removed_edges[d_edge.id] = (d_edge);
                 }
             }
             // the actual removal
@@ -319,7 +316,7 @@ class Pgr_contractionGraph {
           */
 
 
-        degree_size_type out_degree(int64_t vertex_id) const{
+        degree_size_type out_degree(int64_t vertex_id) const {
             V v_from;
             if (!get_gVertex(vertex_id, v_from)) {
                 return 0;
@@ -363,16 +360,15 @@ class Pgr_contractionGraph {
                         d_edge.source = graph[source(*out, graph)].id;
                         d_edge.target = graph[target(*out, graph)].id;
                         d_edge.cost = graph[*out].cost;
-                        d_edge.type=graph[*out].type;
+                        d_edge.type = graph[*out].type;
                         //        d_edge.reverse_cost = -1;
-                        removed_edges[d_edge.id]=(d_edge);
+                        removed_edges[d_edge.id] = (d_edge);
                         boost::remove_edge((*out), graph);
                         change = true;
                         break;
                     }
                 }
             }
-
         }
 
 
@@ -403,9 +399,9 @@ class Pgr_contractionGraph {
                 d_edge.source = graph[source(*out, graph)].id;
                 d_edge.target = graph[target(*out, graph)].id;
                 d_edge.cost = graph[*out].cost;
-                d_edge.type= graph[*out].type;
+                d_edge.type = graph[*out].type;
                 //        d_edge.reverse_cost = -1;
-                removed_edges[d_edge.id]=(d_edge);
+                removed_edges[d_edge.id] = (d_edge);
             }
 
             // special case
@@ -417,12 +413,11 @@ class Pgr_contractionGraph {
                     d_edge.source = graph[source(*in, graph)].id;
                     d_edge.target = graph[target(*in, graph)].id;
                     d_edge.cost = graph[*in].cost;
-                    d_edge.type= graph[*out].type;
+                    d_edge.type = graph[*out].type;
                     //        d_edge.reverse_cost = -1;
                     removed_edges[d_edge.id]=(d_edge);
                 }
             }
-
             V d_vertex = boost::vertex(vertices_map.find(p_vertex)->second, graph);
             // delete incomming and outgoing edges from the vertex
             boost::clear_vertex(d_vertex, graph);
@@ -446,7 +441,6 @@ class Pgr_contractionGraph {
         void print_graph(std::ostream &log = std::cout) const {
             EO_i out, out_end;
             V_i vi;
-
             for (vi = vertices(graph).first; vi != vertices(graph).second; ++vi) {
                 if ((*vi) >= m_num_vertices) continue;
                 log << (*vi) << " out_edges(" << graph[(*vi)].id << "):";
@@ -464,10 +458,8 @@ class Pgr_contractionGraph {
 
         bool get_gVertex(int64_t vertex_id, V &gVertex) const {
             LI vertex_ptr = vertices_map.find(vertex_id);
-
             if (vertex_ptr == vertices_map.end())
                 return false;
-
             gVertex = vertex(vertex_ptr->second, graph);
             return true;
         }
@@ -539,7 +531,7 @@ class Pgr_contractionGraph {
                 graph[e].cost = edge.cost;
                 graph[e].id = edge.id;
                 graph[e].first = true;
-                graph[e].type=edge.type;
+                graph[e].type = edge.type;
             }
 
             if (edge.reverse_cost >= 0) {
@@ -549,12 +541,11 @@ class Pgr_contractionGraph {
                 graph[e].id = edge.id;
                 graph[e].first = false;
                 graph[e].type=edge.type;
+                graph[e].type = edge.type;
             }
         }
 
     private:
-
-
         void
             graph_add_edge(const boost_edge_t &edge ) {
                 bool inserted;
@@ -582,8 +573,8 @@ class Pgr_contractionGraph {
                     graph[e].id = edge.id;
                     graph[e].first = edge.first;
                     graph[e].type=0;
+                    graph[e].type = 0;
                 }
-
             }
 
         void
@@ -613,6 +604,7 @@ class Pgr_contractionGraph {
                     graph[e].id = edge.id;
                     graph[e].first = true;
                     graph[e].type=0;
+                    graph[e].type = 0;
                 }
 
                 if (edge.reverse_cost >= 0) {
@@ -622,9 +614,10 @@ class Pgr_contractionGraph {
                     graph[e].id = edge.id;
                     graph[e].first = false;
                     graph[e].type=0;
+                    graph[e].type = 0;
                 }
             }
 };
 
 
-#endif  // SRC_COMMON_SRC_BASE_GRAPH_HPP_
+#endif  // SRC_CONTRACTION_SRC_CONTRACTION_GRAPH_HPP_

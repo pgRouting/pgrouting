@@ -109,7 +109,7 @@ do_pgr_contractGraph(
 #if 0
             log << "Working with Undirected Graph\n";
  
-            Pgr_contractionGraph< UndirectedGraph > undigraph(gType, initial_size);
+            Pgr_contractionGraph< CUndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data(data_edges, total_tuples);
 #ifdef DEBUG
             undigraph.print_graph(log);
