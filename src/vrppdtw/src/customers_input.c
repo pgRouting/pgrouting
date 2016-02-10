@@ -64,7 +64,7 @@ void pgr_fetch_customer(
             customer.Dindex,
             customer.Ddist
            );
-    cust = customer;
+    *cust = customer;
 }
 
 void
