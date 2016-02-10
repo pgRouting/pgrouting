@@ -27,6 +27,366 @@ SELECT * FROM pgr_vidstodmatrix(
     ARRAY(select the_geom FROM edge_table_vertices_pgr WHERE id in (1,2,3,5)),
     'edge_table'
 );
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column reverse_cost not found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column reverse_cost not found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column reverse_cost not found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
                   dmatrix                  |    ids    
 -------------------------------------------+-----------
  {{0,1,4,2},{1,0,3,1},{4,3,0,2},{2,1,2,0}} | {1,2,3,5}
@@ -37,6 +397,366 @@ SELECT * FROM pgr_vidstodmatrix(
     pgr_pointstovids(pgr_texttopoints('2,0;2,1;3,1;2,2', 0), 'edge_table'),
     pgr_texttopoints('2,0;2,1;3,1;2,2', 0),
     'edge_table');
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column reverse_cost not found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column reverse_cost not found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column reverse_cost not found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
                   dmatrix                  |    ids    
 -------------------------------------------+-----------
  {{0,1,4,2},{1,0,3,1},{4,3,0,2},{2,1,2,0}} | {1,2,3,5}
@@ -51,6 +771,366 @@ SELECT * FROM pgr_tsp(
     ),
     1
 );
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column reverse_cost not found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column reverse_cost not found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Column reverse_cost not found
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstracost(text,bigint,anyarray,boolean) line 3 at RETURN QUERY
+PL/pgSQL function pgr_vidstodmatrix(integer[],geometry[],text,double precision) line 57 at FOR over EXECUTE statement
  seq | id 
 -----+----
    0 |  1

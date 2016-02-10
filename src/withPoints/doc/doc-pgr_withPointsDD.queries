@@ -5,6 +5,100 @@ SELECT * FROM pgr_withPointsDD(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
         -1, 3.8);
+NOTICE:  Fetching column info of pid
+NOTICE:  Column pid found
+NOTICE:  Fetching column info of edge_id
+NOTICE:  Column edge_id found
+NOTICE:  Fetching column info of fraction
+NOTICE:  Column fraction found
+NOTICE:  Fetching column info of side
+NOTICE:  Column side found
+NOTICE:  Variable: pid Value: 1
+NOTICE:  Variable: edge_id Value: 1
+NOTICE:  Variable: pid Value: 2
+NOTICE:  Variable: edge_id Value: 15
+NOTICE:  Variable: pid Value: 3
+NOTICE:  Variable: edge_id Value: 12
+NOTICE:  Variable: pid Value: 4
+NOTICE:  Variable: edge_id Value: 6
+NOTICE:  Variable: pid Value: 5
+NOTICE:  Variable: edge_id Value: 5
+NOTICE:  Variable: pid Value: 6
+NOTICE:  Variable: edge_id Value: 4
+NOTICE:  Fetching column info of id
+NOTICE:  Column id found
+NOTICE:  Fetching column info of source
+NOTICE:  Column source found
+NOTICE:  Fetching column info of target
+NOTICE:  Column target found
+NOTICE:  Fetching column info of cost
+NOTICE:  Column cost found
+NOTICE:  Fetching column info of reverse_cost
+NOTICE:  Column reverse_cost found
+NOTICE:  Variable: id Value: 1
+NOTICE:  Variable: source Value: 1
+NOTICE:  Variable: target Value: 2
+NOTICE:  Variable: id Value: 5
+NOTICE:  Variable: source Value: 3
+NOTICE:  Variable: target Value: 6
+NOTICE:  Variable: id Value: 6
+NOTICE:  Variable: source Value: 7
+NOTICE:  Variable: target Value: 8
+NOTICE:  Variable: id Value: 15
+NOTICE:  Variable: source Value: 9
+NOTICE:  Variable: target Value: 12
+NOTICE:  Variable: id Value: 12
+NOTICE:  Variable: source Value: 10
+NOTICE:  Variable: target Value: 11
+NOTICE:  Variable: id Value: 4
+NOTICE:  Variable: source Value: 2
+NOTICE:  Variable: target Value: 5
+NOTICE:  Fetching column info of id
+NOTICE:  Column id found
+NOTICE:  Fetching column info of source
+NOTICE:  Column source found
+NOTICE:  Fetching column info of target
+NOTICE:  Column target found
+NOTICE:  Fetching column info of cost
+NOTICE:  Column cost found
+NOTICE:  Fetching column info of reverse_cost
+NOTICE:  Column reverse_cost found
+NOTICE:  Variable: id Value: 2
+NOTICE:  Variable: source Value: 2
+NOTICE:  Variable: target Value: 3
+NOTICE:  Variable: id Value: 3
+NOTICE:  Variable: source Value: 3
+NOTICE:  Variable: target Value: 4
+NOTICE:  Variable: id Value: 7
+NOTICE:  Variable: source Value: 8
+NOTICE:  Variable: target Value: 5
+NOTICE:  Variable: id Value: 8
+NOTICE:  Variable: source Value: 5
+NOTICE:  Variable: target Value: 6
+NOTICE:  Variable: id Value: 9
+NOTICE:  Variable: source Value: 6
+NOTICE:  Variable: target Value: 9
+NOTICE:  Variable: id Value: 10
+NOTICE:  Variable: source Value: 5
+NOTICE:  Variable: target Value: 10
+NOTICE:  Variable: id Value: 11
+NOTICE:  Variable: source Value: 6
+NOTICE:  Variable: target Value: 11
+NOTICE:  Variable: id Value: 13
+NOTICE:  Variable: source Value: 11
+NOTICE:  Variable: target Value: 12
+NOTICE:  Variable: id Value: 14
+NOTICE:  Variable: source Value: 10
+NOTICE:  Variable: target Value: 13
+NOTICE:  Variable: id Value: 16
+NOTICE:  Variable: source Value: 4
+NOTICE:  Variable: target Value: 9
+NOTICE:  Variable: id Value: 17
+NOTICE:  Variable: source Value: 14
+NOTICE:  Variable: target Value: 15
+NOTICE:  Variable: id Value: 18
+NOTICE:  Variable: source Value: 16
+NOTICE:  Variable: target Value: 17
  seq | node | edge | cost | agg_cost 
 -----+------+------+------+----------
    1 |   -1 |   -1 |    0 |        0
@@ -27,6 +121,100 @@ SELECT * FROM pgr_withPointsDD(
         -1, 3.8,
         driving_side := 'r',
         details := true);
+NOTICE:  Fetching column info of pid
+NOTICE:  Column pid found
+NOTICE:  Fetching column info of edge_id
+NOTICE:  Column edge_id found
+NOTICE:  Fetching column info of fraction
+NOTICE:  Column fraction found
+NOTICE:  Fetching column info of side
+NOTICE:  Column side found
+NOTICE:  Variable: pid Value: 1
+NOTICE:  Variable: edge_id Value: 1
+NOTICE:  Variable: pid Value: 2
+NOTICE:  Variable: edge_id Value: 15
+NOTICE:  Variable: pid Value: 3
+NOTICE:  Variable: edge_id Value: 12
+NOTICE:  Variable: pid Value: 4
+NOTICE:  Variable: edge_id Value: 6
+NOTICE:  Variable: pid Value: 5
+NOTICE:  Variable: edge_id Value: 5
+NOTICE:  Variable: pid Value: 6
+NOTICE:  Variable: edge_id Value: 4
+NOTICE:  Fetching column info of id
+NOTICE:  Column id found
+NOTICE:  Fetching column info of source
+NOTICE:  Column source found
+NOTICE:  Fetching column info of target
+NOTICE:  Column target found
+NOTICE:  Fetching column info of cost
+NOTICE:  Column cost found
+NOTICE:  Fetching column info of reverse_cost
+NOTICE:  Column reverse_cost found
+NOTICE:  Variable: id Value: 1
+NOTICE:  Variable: source Value: 1
+NOTICE:  Variable: target Value: 2
+NOTICE:  Variable: id Value: 5
+NOTICE:  Variable: source Value: 3
+NOTICE:  Variable: target Value: 6
+NOTICE:  Variable: id Value: 6
+NOTICE:  Variable: source Value: 7
+NOTICE:  Variable: target Value: 8
+NOTICE:  Variable: id Value: 15
+NOTICE:  Variable: source Value: 9
+NOTICE:  Variable: target Value: 12
+NOTICE:  Variable: id Value: 12
+NOTICE:  Variable: source Value: 10
+NOTICE:  Variable: target Value: 11
+NOTICE:  Variable: id Value: 4
+NOTICE:  Variable: source Value: 2
+NOTICE:  Variable: target Value: 5
+NOTICE:  Fetching column info of id
+NOTICE:  Column id found
+NOTICE:  Fetching column info of source
+NOTICE:  Column source found
+NOTICE:  Fetching column info of target
+NOTICE:  Column target found
+NOTICE:  Fetching column info of cost
+NOTICE:  Column cost found
+NOTICE:  Fetching column info of reverse_cost
+NOTICE:  Column reverse_cost found
+NOTICE:  Variable: id Value: 2
+NOTICE:  Variable: source Value: 2
+NOTICE:  Variable: target Value: 3
+NOTICE:  Variable: id Value: 3
+NOTICE:  Variable: source Value: 3
+NOTICE:  Variable: target Value: 4
+NOTICE:  Variable: id Value: 7
+NOTICE:  Variable: source Value: 8
+NOTICE:  Variable: target Value: 5
+NOTICE:  Variable: id Value: 8
+NOTICE:  Variable: source Value: 5
+NOTICE:  Variable: target Value: 6
+NOTICE:  Variable: id Value: 9
+NOTICE:  Variable: source Value: 6
+NOTICE:  Variable: target Value: 9
+NOTICE:  Variable: id Value: 10
+NOTICE:  Variable: source Value: 5
+NOTICE:  Variable: target Value: 10
+NOTICE:  Variable: id Value: 11
+NOTICE:  Variable: source Value: 6
+NOTICE:  Variable: target Value: 11
+NOTICE:  Variable: id Value: 13
+NOTICE:  Variable: source Value: 11
+NOTICE:  Variable: target Value: 12
+NOTICE:  Variable: id Value: 14
+NOTICE:  Variable: source Value: 10
+NOTICE:  Variable: target Value: 13
+NOTICE:  Variable: id Value: 16
+NOTICE:  Variable: source Value: 4
+NOTICE:  Variable: target Value: 9
+NOTICE:  Variable: id Value: 17
+NOTICE:  Variable: source Value: 14
+NOTICE:  Variable: target Value: 15
+NOTICE:  Variable: id Value: 18
+NOTICE:  Variable: source Value: 16
+NOTICE:  Variable: target Value: 17
  seq | node | edge | cost | agg_cost 
 -----+------+------+------+----------
    1 |   -1 |   -1 |    0 |        0
@@ -46,6 +234,100 @@ SELECT * FROM pgr_withPointsDD(
         -1, 3.8,
         driving_side := 'l',
         details := true);
+NOTICE:  Fetching column info of pid
+NOTICE:  Column pid found
+NOTICE:  Fetching column info of edge_id
+NOTICE:  Column edge_id found
+NOTICE:  Fetching column info of fraction
+NOTICE:  Column fraction found
+NOTICE:  Fetching column info of side
+NOTICE:  Column side found
+NOTICE:  Variable: pid Value: 1
+NOTICE:  Variable: edge_id Value: 1
+NOTICE:  Variable: pid Value: 2
+NOTICE:  Variable: edge_id Value: 15
+NOTICE:  Variable: pid Value: 3
+NOTICE:  Variable: edge_id Value: 12
+NOTICE:  Variable: pid Value: 4
+NOTICE:  Variable: edge_id Value: 6
+NOTICE:  Variable: pid Value: 5
+NOTICE:  Variable: edge_id Value: 5
+NOTICE:  Variable: pid Value: 6
+NOTICE:  Variable: edge_id Value: 4
+NOTICE:  Fetching column info of id
+NOTICE:  Column id found
+NOTICE:  Fetching column info of source
+NOTICE:  Column source found
+NOTICE:  Fetching column info of target
+NOTICE:  Column target found
+NOTICE:  Fetching column info of cost
+NOTICE:  Column cost found
+NOTICE:  Fetching column info of reverse_cost
+NOTICE:  Column reverse_cost found
+NOTICE:  Variable: id Value: 1
+NOTICE:  Variable: source Value: 1
+NOTICE:  Variable: target Value: 2
+NOTICE:  Variable: id Value: 5
+NOTICE:  Variable: source Value: 3
+NOTICE:  Variable: target Value: 6
+NOTICE:  Variable: id Value: 6
+NOTICE:  Variable: source Value: 7
+NOTICE:  Variable: target Value: 8
+NOTICE:  Variable: id Value: 15
+NOTICE:  Variable: source Value: 9
+NOTICE:  Variable: target Value: 12
+NOTICE:  Variable: id Value: 12
+NOTICE:  Variable: source Value: 10
+NOTICE:  Variable: target Value: 11
+NOTICE:  Variable: id Value: 4
+NOTICE:  Variable: source Value: 2
+NOTICE:  Variable: target Value: 5
+NOTICE:  Fetching column info of id
+NOTICE:  Column id found
+NOTICE:  Fetching column info of source
+NOTICE:  Column source found
+NOTICE:  Fetching column info of target
+NOTICE:  Column target found
+NOTICE:  Fetching column info of cost
+NOTICE:  Column cost found
+NOTICE:  Fetching column info of reverse_cost
+NOTICE:  Column reverse_cost found
+NOTICE:  Variable: id Value: 2
+NOTICE:  Variable: source Value: 2
+NOTICE:  Variable: target Value: 3
+NOTICE:  Variable: id Value: 3
+NOTICE:  Variable: source Value: 3
+NOTICE:  Variable: target Value: 4
+NOTICE:  Variable: id Value: 7
+NOTICE:  Variable: source Value: 8
+NOTICE:  Variable: target Value: 5
+NOTICE:  Variable: id Value: 8
+NOTICE:  Variable: source Value: 5
+NOTICE:  Variable: target Value: 6
+NOTICE:  Variable: id Value: 9
+NOTICE:  Variable: source Value: 6
+NOTICE:  Variable: target Value: 9
+NOTICE:  Variable: id Value: 10
+NOTICE:  Variable: source Value: 5
+NOTICE:  Variable: target Value: 10
+NOTICE:  Variable: id Value: 11
+NOTICE:  Variable: source Value: 6
+NOTICE:  Variable: target Value: 11
+NOTICE:  Variable: id Value: 13
+NOTICE:  Variable: source Value: 11
+NOTICE:  Variable: target Value: 12
+NOTICE:  Variable: id Value: 14
+NOTICE:  Variable: source Value: 10
+NOTICE:  Variable: target Value: 13
+NOTICE:  Variable: id Value: 16
+NOTICE:  Variable: source Value: 4
+NOTICE:  Variable: target Value: 9
+NOTICE:  Variable: id Value: 17
+NOTICE:  Variable: source Value: 14
+NOTICE:  Variable: target Value: 15
+NOTICE:  Variable: id Value: 18
+NOTICE:  Variable: source Value: 16
+NOTICE:  Variable: target Value: 17
  seq | node | edge | cost | agg_cost 
 -----+------+------+------+----------
    1 |   -1 |   -1 |    0 |        0
@@ -71,6 +353,100 @@ SELECT * FROM pgr_withPointsDD(
         -1, 3.8,
         driving_side := 'b',
         details := true);
+NOTICE:  Fetching column info of pid
+NOTICE:  Column pid found
+NOTICE:  Fetching column info of edge_id
+NOTICE:  Column edge_id found
+NOTICE:  Fetching column info of fraction
+NOTICE:  Column fraction found
+NOTICE:  Fetching column info of side
+NOTICE:  Column side found
+NOTICE:  Variable: pid Value: 1
+NOTICE:  Variable: edge_id Value: 1
+NOTICE:  Variable: pid Value: 2
+NOTICE:  Variable: edge_id Value: 15
+NOTICE:  Variable: pid Value: 3
+NOTICE:  Variable: edge_id Value: 12
+NOTICE:  Variable: pid Value: 4
+NOTICE:  Variable: edge_id Value: 6
+NOTICE:  Variable: pid Value: 5
+NOTICE:  Variable: edge_id Value: 5
+NOTICE:  Variable: pid Value: 6
+NOTICE:  Variable: edge_id Value: 4
+NOTICE:  Fetching column info of id
+NOTICE:  Column id found
+NOTICE:  Fetching column info of source
+NOTICE:  Column source found
+NOTICE:  Fetching column info of target
+NOTICE:  Column target found
+NOTICE:  Fetching column info of cost
+NOTICE:  Column cost found
+NOTICE:  Fetching column info of reverse_cost
+NOTICE:  Column reverse_cost found
+NOTICE:  Variable: id Value: 1
+NOTICE:  Variable: source Value: 1
+NOTICE:  Variable: target Value: 2
+NOTICE:  Variable: id Value: 5
+NOTICE:  Variable: source Value: 3
+NOTICE:  Variable: target Value: 6
+NOTICE:  Variable: id Value: 6
+NOTICE:  Variable: source Value: 7
+NOTICE:  Variable: target Value: 8
+NOTICE:  Variable: id Value: 15
+NOTICE:  Variable: source Value: 9
+NOTICE:  Variable: target Value: 12
+NOTICE:  Variable: id Value: 12
+NOTICE:  Variable: source Value: 10
+NOTICE:  Variable: target Value: 11
+NOTICE:  Variable: id Value: 4
+NOTICE:  Variable: source Value: 2
+NOTICE:  Variable: target Value: 5
+NOTICE:  Fetching column info of id
+NOTICE:  Column id found
+NOTICE:  Fetching column info of source
+NOTICE:  Column source found
+NOTICE:  Fetching column info of target
+NOTICE:  Column target found
+NOTICE:  Fetching column info of cost
+NOTICE:  Column cost found
+NOTICE:  Fetching column info of reverse_cost
+NOTICE:  Column reverse_cost found
+NOTICE:  Variable: id Value: 2
+NOTICE:  Variable: source Value: 2
+NOTICE:  Variable: target Value: 3
+NOTICE:  Variable: id Value: 3
+NOTICE:  Variable: source Value: 3
+NOTICE:  Variable: target Value: 4
+NOTICE:  Variable: id Value: 7
+NOTICE:  Variable: source Value: 8
+NOTICE:  Variable: target Value: 5
+NOTICE:  Variable: id Value: 8
+NOTICE:  Variable: source Value: 5
+NOTICE:  Variable: target Value: 6
+NOTICE:  Variable: id Value: 9
+NOTICE:  Variable: source Value: 6
+NOTICE:  Variable: target Value: 9
+NOTICE:  Variable: id Value: 10
+NOTICE:  Variable: source Value: 5
+NOTICE:  Variable: target Value: 10
+NOTICE:  Variable: id Value: 11
+NOTICE:  Variable: source Value: 6
+NOTICE:  Variable: target Value: 11
+NOTICE:  Variable: id Value: 13
+NOTICE:  Variable: source Value: 11
+NOTICE:  Variable: target Value: 12
+NOTICE:  Variable: id Value: 14
+NOTICE:  Variable: source Value: 10
+NOTICE:  Variable: target Value: 13
+NOTICE:  Variable: id Value: 16
+NOTICE:  Variable: source Value: 4
+NOTICE:  Variable: target Value: 9
+NOTICE:  Variable: id Value: 17
+NOTICE:  Variable: source Value: 14
+NOTICE:  Variable: target Value: 15
+NOTICE:  Variable: id Value: 18
+NOTICE:  Variable: source Value: 16
+NOTICE:  Variable: target Value: 17
  seq | node | edge | cost | agg_cost 
 -----+------+------+------+----------
    1 |   -1 |   -1 |    0 |        0

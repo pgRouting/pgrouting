@@ -96,7 +96,7 @@ int compute_shortest_path(
     }
 #endif
 
-    PGR_DBG("*length_results_count  = %ld\n", *length_results_struct);
+    PGR_DBG("*length_results_count  = %zu\n", *length_results_struct);
     PGR_DBG("ret = %ld\n", ret);
 
     pfree(customers);

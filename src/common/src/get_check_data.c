@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "executor/spi.h"
 
 
-// #define DEBUG
+#define DEBUG
 #include "./debug_macro.h"
 #include "./get_check_data.h"
 
@@ -60,7 +60,7 @@ fetch_column_info(
         if (SPI_result == SPI_ERROR_NOATTRIBUTE) {
             elog(ERROR, "Type of column '%s' not Found", info->name);
         }
-        PGR_DBG("Column %s found", info->name);
+        PGR_DBG("Column %s found: %lu", info->name, info->type);
         return true;
     }
     PGR_DBG("Column %s not found", info->name);
@@ -182,10 +182,11 @@ pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
                     "Unexpected Column type of %s. Expected ANY-INTEGER",
                     info.name);
     }
+    PGR_DBG("Variable: %s Value: %ld", info.name, value);
     return value;
 }
 
-float8
+double
 pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
     Datum binval;
     bool isnull;
@@ -196,16 +197,16 @@ pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
 
     switch (info.type) {
         case INT2OID:
-            value = (float8) DatumGetInt16(binval);
+            value = (double) DatumGetInt16(binval);
             break;
         case INT4OID:
-            value = (float8) DatumGetInt32(binval);
+            value = (double) DatumGetInt32(binval);
             break;
         case INT8OID:
-            value = (float8) DatumGetInt64(binval);
+            value = (double) DatumGetInt64(binval);
             break;
         case FLOAT4OID:
-            value = (float8) DatumGetFloat4(binval);
+            value = (double) DatumGetFloat4(binval);
             break;
         case FLOAT8OID:
             value = DatumGetFloat8(binval);
@@ -215,6 +216,7 @@ pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
                     "Unexpected Column type of %s. Expected ANY-NUMERICAL",
                     info.name);
     }
+    PGR_DBG("Variable: %s Value: %f", info.name, value);
     return value;
 }
 

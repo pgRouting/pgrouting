@@ -5,9 +5,12 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
+group: edge
+dist: trusty    
+
+# dist: precise
 
 sudo: required
-dist: precise
 
 language: c
 

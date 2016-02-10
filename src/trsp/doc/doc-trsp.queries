@@ -5,6 +5,198 @@ SELECT * FROM pgr_trsp(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
         7, 12, false, false
     );
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Column reverse_cost not found
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,bigint,bigint,boolean) line 4 at RETURN QUERY
+PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RETURN QUERY
  seq | id1 | id2 | cost 
 -----+-----+-----+------
    0 |   7 |   6 |    1
@@ -24,6 +216,152 @@ SELECT * FROM pgr_trsp(
         from_edge || coalesce('','' || via_path, '''') AS via_path
         FROM restrictions'
     );
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Column reverse_cost not found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Fetching column info of target_id
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Column target_id found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Fetching column info of to_cost
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Column to_cost found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Fetching column info of via_path
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Column via_path found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target_id Value: 7
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
  seq | id1 | id2 | cost 
 -----+-----+-----+------
    0 |   2 |   4 |    1
@@ -43,6 +381,152 @@ SELECT * FROM pgr_trsp(
         from_edge || coalesce('','' || via_path, '''') AS via_path
         FROM restrictions'
     );
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Column reverse_cost not found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Fetching column info of target_id
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Column target_id found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Fetching column info of to_cost
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Column to_cost found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Fetching column info of via_path
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Column via_path found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target_id Value: 7
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+NOTICE:  Variable: target_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
  seq | id1 | id2 | cost 
 -----+-----+-----+------
    0 |   7 |   6 |    1
@@ -59,6 +543,590 @@ SELECT * FROM pgr_trspViaVertices(
         false,  false,  
         'SELECT to_cost, target_id, from_edge ||
         coalesce('',''||via_path,'''') AS via_path FROM restrictions');
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Column reverse_cost not found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Fetching column info of target_id
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Column target_id found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Fetching column info of to_cost
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Column to_cost found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Fetching column info of via_path
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Column via_path found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target_id Value: 7
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Column reverse_cost not found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Fetching column info of target_id
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Column target_id found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Fetching column info of to_cost
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Column to_cost found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Fetching column info of via_path
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Column via_path found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target_id Value: 7
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
+NOTICE:  Variable: target_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 36 at FOR over SELECT rows
+PL/pgSQL function pgr_trspviavertices(text,anyarray,boolean,boolean,text) line 30 at RETURN QUERY
  seq | id1 | id2 | id3 | cost 
 -----+-----+-----+-----+------
    1 |   1 |   2 |   4 |    1
@@ -85,6 +1153,298 @@ SELECT * FROM pgr_trspViaEdges(
         true,  
         'SELECT to_cost, target_id, FROM_edge ||
         coalesce('',''||via_path,'''') AS via_path FROM restrictions');
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Fetching column info of target_id
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Column target_id found
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Fetching column info of to_cost
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Column to_cost found
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Fetching column info of via_path
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Column via_path found
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target_id Value: 7
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Fetching column info of target_id
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Column target_id found
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Fetching column info of to_cost
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Column to_cost found
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Fetching column info of via_path
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Column via_path found
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target_id Value: 7
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
+NOTICE:  Variable: target_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 39 at FOR over SELECT rows
  seq | id1 | id2 | id3 | cost 
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   2 |  0.5

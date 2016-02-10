@@ -5,6 +5,194 @@ SELECT * FROM pgr_withPointsCost(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
         -1, -3);
+NOTICE:  Fetching column info of pid
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column pid found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of edge_id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column edge_id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of fraction
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column fraction found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of side
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column side found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
  start_pid | end_pid | agg_cost 
 -----------+---------+----------
         -1 |      -3 |      3.3
@@ -16,6 +204,194 @@ SELECT * FROM pgr_withPointsCost(
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
         -1, 3,
         directed := false);
+NOTICE:  Fetching column info of pid
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column pid found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of edge_id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column edge_id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of fraction
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column fraction found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of side
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column side found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,bigint,boolean,character) line 3 at RETURN QUERY
  start_pid | end_pid | agg_cost 
 -----------+---------+----------
         -1 |       3 |      1.6
@@ -26,6 +402,194 @@ SELECT * FROM pgr_withPointsCost(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
         -1, ARRAY[-3,5]);
+NOTICE:  Fetching column info of pid
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column pid found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of edge_id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column edge_id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of fraction
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column fraction found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of side
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column side found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,bigint,anyarray,boolean,character) line 3 at RETURN QUERY
  start_pid | end_pid | agg_cost 
 -----------+---------+----------
         -1 |      -3 |      3.3
@@ -37,6 +601,194 @@ SELECT * FROM pgr_withPointsCost(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
         ARRAY[-1,2], -3);
+NOTICE:  Fetching column info of pid
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column pid found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of edge_id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column edge_id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of fraction
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column fraction found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of side
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column side found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,bigint,boolean,character) line 3 at RETURN QUERY
  start_pid | end_pid | agg_cost 
 -----------+---------+----------
         -1 |      -3 |      3.3
@@ -48,6 +800,194 @@ SELECT * FROM pgr_withPointsCost(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
         ARRAY[-1,2], ARRAY[-3,7]);
+NOTICE:  Fetching column info of pid
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column pid found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of edge_id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column edge_id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of fraction
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column fraction found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of side
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column side found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
  start_pid | end_pid | agg_cost 
 -----------+---------+----------
         -1 |      -3 |      3.3
@@ -62,6 +1002,194 @@ SELECT * FROM pgr_withPointsCost(
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
         ARRAY[-1,2], ARRAY[-3,7],
         driving_side := 'l');
+NOTICE:  Fetching column info of pid
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column pid found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of edge_id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column edge_id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of fraction
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column fraction found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of side
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column side found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
  start_pid | end_pid | agg_cost 
 -----------+---------+----------
         -1 |      -3 |      3.3
@@ -76,6 +1204,194 @@ SELECT * FROM pgr_withPointsCost(
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
         ARRAY[-1,2], ARRAY[-3,7],
         driving_side := 'r');
+NOTICE:  Fetching column info of pid
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column pid found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of edge_id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column edge_id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of fraction
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column fraction found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of side
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column side found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
  start_pid | end_pid | agg_cost 
 -----------+---------+----------
         -1 |      -3 |      4.7
@@ -90,6 +1406,194 @@ SELECT * FROM pgr_withPointsCost(
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
         ARRAY[-1,2], ARRAY[-3,7],
         driving_side := 'b');
+NOTICE:  Fetching column info of pid
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column pid found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of edge_id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column edge_id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of fraction
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column fraction found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of side
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column side found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpointscost(text,text,anyarray,anyarray,boolean,character) line 3 at RETURN QUERY
  start_pid | end_pid | agg_cost 
 -----------+---------+----------
         -1 |      -3 |      3.3
