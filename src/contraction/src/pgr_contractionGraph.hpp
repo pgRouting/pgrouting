@@ -83,21 +83,12 @@ my_graph < UndirectedGraph > undigraph(gType, initial_size);
 
 typedef typename boost::adjacency_list < boost::vecS, boost::vecS,
         boost::undirectedS,
-        boost_vertex_t, boost_edge_t > UndirectedGraph;
+        Vertex, Edge > CUndirectedGraph;
 
 typedef typename boost::adjacency_list < boost::vecS, boost::vecS,
         boost::bidirectionalS,
-        boost_vertex_t, boost_edge_t > DirectedGraph;
+        Vertex, Edge > CDirectedGraph;
 
-
-
-        typedef typename boost::adjacency_list < boost::vecS, boost::vecS,
-                boost::undirectedS,
-                Vertex, Edge > CUndirectedGraph;
-
-        typedef typename boost::adjacency_list < boost::vecS, boost::vecS,
-                boost::bidirectionalS,
-                Vertex, Edge  > CDirectedGraph;
 template <class G>
 class Pgr_contractionGraph {
  public:
