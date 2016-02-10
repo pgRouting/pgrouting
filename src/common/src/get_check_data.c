@@ -184,7 +184,7 @@ pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
                     info.name);
     }
 #endif
-    PGR_DBG("Variable: %s Value: %ld", info.name, value);
+    PGR_DBG("Variable: %s Value: %lld", info.name, value);
     return value;
 }
 
