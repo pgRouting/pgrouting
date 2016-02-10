@@ -39,30 +39,32 @@ void pgr_fetch_customer(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info[9],
-        Customer *customer) {
+        Customer *cust) {
 
-    customer->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
-    customer->x = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
-    customer->y = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
-    customer->demand = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
-    customer->Etime = pgr_SPI_getFloat8(tuple, tupdesc, info[4]);
-    customer->Ltime = pgr_SPI_getFloat8(tuple, tupdesc, info[5]);
-    customer->Stime = pgr_SPI_getFloat8(tuple, tupdesc, info[6]);
-    customer->Pindex = pgr_SPI_getBigInt(tuple, tupdesc, info[7]);
-    customer->Dindex = pgr_SPI_getBigInt(tuple, tupdesc, info[8]);
-    customer->Ddist = 0;
+    Customer customer;
+    customer.id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
+    customer.x = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
+    customer.y = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
+    customer.demand = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
+    customer.Etime = pgr_SPI_getFloat8(tuple, tupdesc, info[4]);
+    customer.Ltime = pgr_SPI_getFloat8(tuple, tupdesc, info[5]);
+    customer.Stime = pgr_SPI_getFloat8(tuple, tupdesc, info[6]);
+    customer.Pindex = pgr_SPI_getBigInt(tuple, tupdesc, info[7]);
+    customer.Dindex = pgr_SPI_getBigInt(tuple, tupdesc, info[8]);
+    customer.Ddist = 0;
     PGR_DBG("Reading:%ld\t %f\t%f\t%f\t %f\t%f\t%f\t %ld\t%ld\t  %f",
-            customer->id,
-            customer->x,
-            customer->y,
-            customer->demand,
-            customer->Etime,
-            customer->Ltime,
-            customer->Stime,
-            customer->Pindex,
-            customer->Dindex,
-            customer->Ddist
+            customer.id,
+            customer.x,
+            customer.y,
+            customer.demand,
+            customer.Etime,
+            customer.Ltime,
+            customer.Stime,
+            customer.Pindex,
+            customer.Dindex,
+            customer.Ddist
            );
+    cust = customer;
 }
 
 void
