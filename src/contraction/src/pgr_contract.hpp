@@ -174,7 +174,7 @@ Pgr_contract< G >::remove_1_degree_vertices(G &graph) {
 			degree_to_V_map[final_target_degree].push_back(t);
 			auto removed_edge=graph.graph[*out];
 			removedVertices[frontid].push_front(removed_edge);
-			graph.disconnect_vertex(source_id);
+			graph.disconnect_vertex_c(source_id);
 			graph.m_num_vertices--;
 		}
 		degree_to_V_map[1].erase(degree_to_V_map[1].begin(),
@@ -343,7 +343,7 @@ Pgr_contract< G >::getRemovedE_string(G &graph,std::ostringstream& estring)
 	}
 	#endif
 
-	for (const auto re : graph.removed_edges) 
+	for (const auto re : graph.removed_edges_c) 
 		estring << re.first << "," << re.second.source << ","
 		<< re.second.target << "," << re.second.cost << ","
 		<<re.second.reverse_cost<< "$";
