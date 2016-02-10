@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
   Uncomment when needed
 */
-// #define DEBUG 1
+ #define DEBUG 1
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
@@ -89,6 +89,7 @@ process(char* edges_sql,
     PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
+     PGR_DBG("Graphh is %d",directed);
     char *err_msg = NULL;
     do_pgr_contractGraph(
             edges,
@@ -145,7 +146,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
-                PG_GETARG_BOOL(3),
+                PG_GETARG_BOOL(2),
                 &result_tuples,
                 &result_count);
 
@@ -197,11 +198,11 @@ contractGraph(PG_FUNCTION_ARGS) {
             nulls[i] = ' ';
         }
 
-       /* PGR_DBG("Storing graphname %s",result_tuples->contracted_graph_name);
+        PGR_DBG("Storing graphname %s",result_tuples->contracted_graph_name);
         PGR_DBG("Storing blob %s",result_tuples->contracted_graph_blob);
         PGR_DBG("Storing rv %s",result_tuples->removedVertices);
         PGR_DBG("Storing re %s",result_tuples->removedEdges);
-        PGR_DBG("Storing pe %s",result_tuples->psuedoEdges);*/
+        PGR_DBG("Storing pe %s",result_tuples->psuedoEdges);
         // postgres starts counting from 1
         values[0] = CStringGetTextDatum(result_tuples->contracted_graph_name);
         values[1] = CStringGetTextDatum(result_tuples->contracted_graph_blob);
