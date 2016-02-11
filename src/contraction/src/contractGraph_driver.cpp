@@ -41,7 +41,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_contract.hpp"
 
 
-
 extern "C" {
 #include "./../../common/src/pgr_types.h"
 #include "./structs.h"
@@ -91,7 +90,7 @@ do_pgr_contractGraph(
         if (directed) {
             log << "Working with directed Graph\n";
             Pgr_contractionGraph< CDirectedGraph > digraph(gType, initial_size);
-            digraph.graph_insert_data(data_edges, total_tuples);
+            digraph.graph_insert_data_c(data_edges, total_tuples);
 #ifdef DEBUG
             digraph.print_graph(log);
 #endif
@@ -106,11 +105,10 @@ do_pgr_contractGraph(
               contracted_graph_name,contracted_graph_blob,removedEdges,
               removedVertices,psuedoEdges);
         } else {
-#if 0
             log << "Working with Undirected Graph\n";
  
             Pgr_contractionGraph< CUndirectedGraph > undigraph(gType, initial_size);
-            undigraph.graph_insert_data(data_edges, total_tuples);
+            undigraph.graph_insert_data_c(data_edges, total_tuples);
 #ifdef DEBUG
             undigraph.print_graph(log);
 #endif
@@ -119,7 +117,6 @@ do_pgr_contractGraph(
             pgr_contractGraph(undigraph, level,
                     contracted_graph_name, contracted_graph_blob, removedEdges,
                     removedVertices, psuedoEdges);
-#endif
 
         }
         (*return_tuples) = get_memory(1, (*return_tuples));
