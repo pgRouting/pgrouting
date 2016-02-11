@@ -21,8 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_COMMON_SRC_BASE_GRAPH_HPP_
-#define SRC_COMMON_SRC_BASE_GRAPH_HPP_
+#ifndef SRC_CONTRACTION_SRC_CONTRACTION_GRAPH_HPP_
+#define SRC_CONTRACTION_SRC_CONTRACTION_GRAPH_HPP_
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
@@ -795,4 +795,4 @@ class Pgr_contractionGraph {
 };
 
 
-#endif  // SRC_COMMON_SRC_BASE_GRAPH_HPP_
+#endif // SRC_CONTRACTION_SRC_CONTRACTION_GRAPH_HPP_
