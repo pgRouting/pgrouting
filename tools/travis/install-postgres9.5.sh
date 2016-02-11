@@ -30,8 +30,10 @@ if test "$POSTGRESQL_VERSION" = "9.5" ; then
     echo "making grep after change"
     grep port /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf
     echo "finished grep"
+    cp sudo cp $TRAVIS_BUILD_DIR/tools/travis/pg_hba.conf /etc/postgresql/$POSTGRESQL_VERSION/main/pg_hba.conf
     sudo service postgres-$POSTGRESQL_VERSION start
     ps -fea | grep postgres
+    sudo -u $DBUSER psql -c "ALTER ROLE postgres WITH PASSWORD '';"
 
 #else
 
