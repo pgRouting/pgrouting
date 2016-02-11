@@ -6,5 +6,5 @@ SELECT * FROM pgr_contractGraph(
 
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table', 
-    0, false);
+    1, false);
 \echo --q3

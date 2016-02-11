@@ -58,6 +58,8 @@ void pgr_contractGraph(
 }
 
 
+
+
 template < class G >
 class Pgr_contract {
 public:
@@ -77,6 +79,8 @@ public:
 	void remove_2_degree_vertices(G &graph);
 
 	void calculateDegrees(G &graph);
+
+	void degreeMap(G &graph,std::ostringstream& dmap);
 
 	void getGraphName(std::ostringstream& name,int64_t level);
 
@@ -141,38 +145,62 @@ Pgr_contract< G >::contract_to_level(G &graph,int64_t level)
 		remove_1_degree_vertices(graph);
 		break;
 		case 1:
-		//remove_2_degree_vertices(graph);
+		remove_2_degree_vertices(graph);
 		default:
 		// do nothing
 		;
 	}
 }
 
+
+
+template < class G >
+void
+Pgr_contract< G >::degreeMap(G &graph,std::ostringstream& dmap)
+{
+	//cout << "Printing degree_V map" << endl;
+      degree_to_V_i it1;
+      dmap << "This is a degree map " ;
+      Q_i it2;
+      for ( it1=degree_to_V_map.begin(); it1!=degree_to_V_map.end(); ++it1)
+      {
+        dmap << it1->first << "-->" ;
+        for (it2=it1->second.begin(); it2 !=it1->second.end(); ++it2)
+        {
+           dmap << graph.graph[(*it2)].id << ", ";
+        }
+        dmap << "\n";
+      }
+}
+
 template < class G >
 void
 Pgr_contract< G >::remove_1_degree_vertices(G &graph) {
 	EO_i out,out_end;
-	V front=degree_to_V_map[1].front();
-	int64_t frontid=-1;
-	frontid=graph.graph[front].id;
+	V front;
+	//errors << "first vertex: " << front ;
 	std::vector<V> one_degree_vertices=degree_to_V_map[1];
 	degree_to_V_i it;
-	//cout << "1 degree vertices " << one_degree_vertices.size()  << endl;
+	std::cout << "1 degree vertices " << one_degree_vertices.size();
+	//std::cout << "Front id" << frontid;
+	graph.m_num_vertices--;	
 	while (degree_to_V_map[1].size()>0)
 	{
-		//cout << "Front " << graph[front].id << endl;
+		//std::cout << "Front " << graph.graph[front].id;
+		V front=degree_to_V_map[1].front();
+		int64_t frontid=graph.graph[front].id;	
 		for (boost::tie(out, out_end) = out_edges(front, graph.graph);
 			out != out_end; ++out) 
 		{
 			V s=source(*out, graph.graph);
 			V t=target(*out, graph.graph);
-			auto source_id=graph.graph[s].id;
+			int64_t source_id=graph.graph[s].id;
 			graph.graph[t].contractions++;
 			int prev_target_degree=graph.graph[t].degree;
 			graph.graph[t].degree--;
-			auto final_target_degree=prev_target_degree-1;
+			int64_t final_target_degree=prev_target_degree-1;
 			degree_to_V_map[final_target_degree].push_back(t);
-			auto removed_edge=graph.graph[*out];
+			Edge removed_edge=graph.graph[*out];
 			removedVertices[frontid].push_front(removed_edge);
 			graph.disconnect_vertex_c(source_id);
 			graph.m_num_vertices--;
@@ -182,10 +210,11 @@ Pgr_contract< G >::remove_1_degree_vertices(G &graph) {
 
 		front=degree_to_V_map[1].front();
 		frontid=graph.graph[front].id;
+		
 	}
 }
 
-#if 0
+#if 1
 template < class G >
 void
 Pgr_contract< G >::remove_2_degree_vertices(G &graph) {
@@ -206,7 +235,7 @@ Pgr_contract< G >::remove_2_degree_vertices(G &graph) {
 		}
 	}
 	degree_to_V_i it;
-	std::cout << "2 degree vertices " << two_degree_vertices_0.size()  << endl;
+	//std::cout << "2 degree vertices " << two_degree_vertices_0.size()  << endl;
 	if (two_degree_vertices_0.size()==0)
 	{
 		return;
@@ -217,7 +246,7 @@ Pgr_contract< G >::remove_2_degree_vertices(G &graph) {
 	{
 			//cout << "2 degree vertices " << two_degree_vertices_0.size()  << endl;
 			//cout << "Edge count" << num_edges(reduced_graph->graph) << endl;
-		std::cout << "Front " << graph.graph[front].id << endl;
+		std::cout << "Front " << graph.graph[front].id ;
 		neighbors_desc.clear();
 		front=two_degree_vertices_0.front();
 		front_id=graph.graph[front].id;
@@ -264,22 +293,22 @@ Pgr_contract< G >::remove_2_degree_vertices(G &graph) {
 					}
 					else
 					{
-						std::cout << "Updating shortcut " << "(" << eid1 << ", " << eid2 << ")" << " with " << min_distance << endl;
+						//std::cout << "Updating shortcut " << "(" << eid1 << ", " << eid2 << ")" << " with " << min_distance << endl;
 						graph.graph[edesc].cost=min_distance;
 						graph.graph[edesc].type=1;
 					}
 				}
 				else
 				{
-					shortcut.id=++last_edge_id;
+					shortcut.id=++graph.last_edge_id;
 					eid=shortcut.id;
 					shortcut.source=tid1;
 					shortcut.target=tid2; 
 					shortcut.cost=min_distance;
 					shortcut.type=2;
-					graph.graph_add_edge(shortcut);
+					graph.graph_add_shortcut(shortcut);
 				}
-				psuedoEdges[eid]=make_pair(eid1,eid2);
+				psuedoEdges[eid]=std::make_pair(eid1,eid2);
 				Edge removed_edge;
 				for (int i = 0; i < 2; ++i)
 				{
