@@ -78,7 +78,6 @@ addons:
 install:
   - sudo /etc/init.d/postgresql stop
   - sudo /etc/init.d/postgresql stop
-  - ps -fea | grep postgres
   - sudo ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION postgres
 
 before_script:
