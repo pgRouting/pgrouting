@@ -181,5 +181,21 @@ pgr_get_customers(
 
     (*total_customers) = total_tuples;
     PGR_DBG("Finish reading %zu customers, %zu", total_tuples, (*total_customers));
+    PGR_DBG("DATA before returnin");
+    size_t i;
+    for (i = 0; i < (*total_customers); i++) {
+        PGR_DBG("%zu: %lld\t %f\t%f\t%f\t %f\t%f\t%f\t %lld\t%lld\t  %f", i,
+                (*customers)[i].id,
+                (*customers)[i].x,
+                (*customers)[i].y,
+                (*customers)[i].demand,
+                (*customers)[i].Etime,
+                (*customers)[i].Ltime,
+                (*customers)[i].Stime,
+                (*customers)[i].Pindex,
+                (*customers)[i].Dindex,
+                (*customers)[i].Ddist
+               );
+    }
 }
 
