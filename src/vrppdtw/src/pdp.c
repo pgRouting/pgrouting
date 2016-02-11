@@ -84,6 +84,8 @@ int compute_shortest_path(
     }
 #endif
 
+    pfree(customers);
+    return 0;
     PGR_DBG("Calling Solver Instance\n");
     int64_t ret = Solver(
             customers, 
