@@ -47,7 +47,7 @@ extern "C" {
 }
 
 #include "./../../common/src/memory_func.hpp"
-#define DEBUG
+//#define DEBUG 1 
 #include "./../../common/src/debug_macro.h"
 
 
@@ -72,6 +72,8 @@ do_pgr_contractGraph(
         std::ostringstream removedEdges;
         std::ostringstream removedVertices;
         std::ostringstream psuedoEdges;
+        std::ostringstream dmap;
+        std::ostringstream errors;
 
         
 
@@ -105,20 +107,21 @@ do_pgr_contractGraph(
               contracted_graph_name,contracted_graph_blob,removedEdges,
               removedVertices,psuedoEdges);
         } else {
-#if 0
+
             log << "Working with Undirected Graph\n";
  
             Pgr_contractionGraph< CUndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data_c(data_edges, total_tuples);
 #ifdef DEBUG
-            undigraph.print_graph(log);
+            undigraph.print_graph_c(log);
 #endif
-
+#if 1
             /* Function call to get the contracted graph. */
             pgr_contractGraph(undigraph, level,
                     contracted_graph_name, contracted_graph_blob, removedEdges,
                     removedVertices, psuedoEdges);
 #endif
+
         }
         (*return_tuples) = get_memory(1, (*return_tuples));
         (*return_tuples)->contracted_graph_name = strdup(contracted_graph_name.str().c_str());

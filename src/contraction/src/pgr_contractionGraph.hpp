@@ -563,7 +563,9 @@ class Pgr_contractionGraph {
 
           /****************** CONTRACTION NEEDS *****************/
  public:
-        typedef typename std::map< int64_t, std::vector<V> > degree_to_V;
+        //typedef typename std::map< int64_t, std::vector<V> > degree_to_V;
+        //degree_to_V degree_to_V_map;
+        int64_t last_edge_id;
         typedef typename std::map< int64_t, std::vector<V> >::iterator degree_to_V_i;
 
         std::map<int64_t, Edge> removed_edges_c;
@@ -578,18 +580,22 @@ class Pgr_contractionGraph {
                 // initilializing the properties of a vertex
                 graph[i].contractions = 0;
                 graph[i].degree = out_degree(graph[i].id);
+                //degree_to_V_map[graph[i].degree].push_back(i);
             }
+            last_edge_id=count;
         }
         void graph_insert_data_c( const std::vector <pgr_edge_t > &data_edges) {
             for (const auto edge : data_edges) {
                 graph_add_edge(edge);
             }
+            last_edge_id=data_edges.size();
             adjust_vertices();
             for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i ) {
                 graph[i].id = gVertices_map.find(i)->second;
                 // initilializing the properties of a vertex
                 graph[i].contractions = 0;
                 graph[i].degree = out_degree(graph[i].id);
+                //degree_to_V_map[graph[i].degree].push_back(i);
             }
         }
         void
@@ -791,6 +797,20 @@ class Pgr_contractionGraph {
             // delete incomming and outgoing edges from the vertex
             boost::clear_vertex(d_vertex, graph);
         }
+
+        
+
+     void print_graph_c(std::ostream &log = std::cout) const {
+         EO_i out, out_end;
+         V_i vi;
+
+         for (vi = vertices(graph).first; vi != vertices(graph).second; ++vi) {
+             if ((*vi) >= m_num_vertices) continue;
+             log << (*vi) << "id: " << graph[(*vi)].id << " cont: " <<
+             graph[(*vi)].contractions << "degree: " << graph[(*vi)].degree;
+             log << std::endl;
+         }
+     }
 
 };
 
