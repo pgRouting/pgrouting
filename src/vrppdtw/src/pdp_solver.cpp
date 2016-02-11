@@ -82,7 +82,7 @@ get_result(
         int64_t VehicleLength,
         std::vector< path_element > &result);
 
-int64_t Solver(Customer c1[],
+int64_t Solver(Customer *c1,
         size_t total_tuples,
         int64_t VehicleLength,
         double capacity,
@@ -96,13 +96,13 @@ int64_t Solver(Customer c1[],
     std::vector<Route> routes;
     log << "creating structures done\n";
     log << "total customers: " << total_tuples << "\n";
-    for (size_t i = 0; i < total_tuples ; ++i) {
-        log << i << ":\t" << c1[i].id << ", " << c1[i].x << ", " << c1[i].y << "\n";
-    }
 #if 1
     *msg = strdup(log.str().c_str());
     return 0;
 #endif
+    for (size_t i = 0; i < total_tuples ; ++i) {
+        log << i << ":\t" << c1[i].id << ", " << c1[i].x << ", " << c1[i].y << "\n";
+    }
     std::vector<Customer> customers(c1, c1 + total_tuples);
     log << "Saving Customers done \n";
     for (const auto c : customers) {
