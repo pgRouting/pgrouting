@@ -182,9 +182,8 @@ pgr_get_customers(
     (*total_customers) = total_tuples;
     PGR_DBG("Finish reading %zu customers, %zu", total_tuples, (*total_customers));
     PGR_DBG("DATA before returnin");
-    size_t i;
     for (i = 0; i < (*total_customers); i++) {
-        PGR_DBG("%zu: %lld\t %f\t%f\t%f\t %f\t%f\t%f\t %lld\t%lld\t  %f", i,
+        PGR_DBG("%d: %lld\t %f\t%f\t%f\t %f\t%f\t%f\t %lld\t%lld\t  %f", i,
                 (*customers)[i].id,
                 (*customers)[i].x,
                 (*customers)[i].y,
