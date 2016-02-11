@@ -94,7 +94,7 @@ do_pgr_contractGraph(
 #ifdef DEBUG
             digraph.print_graph(log);
 #endif
-#if 0
+#if 1
             *err_msg = strdup(log.str().c_str());
             return;
 #endif
@@ -105,6 +105,7 @@ do_pgr_contractGraph(
               contracted_graph_name,contracted_graph_blob,removedEdges,
               removedVertices,psuedoEdges);
         } else {
+#if 0
             log << "Working with Undirected Graph\n";
  
             Pgr_contractionGraph< CUndirectedGraph > undigraph(gType, initial_size);
@@ -117,7 +118,7 @@ do_pgr_contractGraph(
             pgr_contractGraph(undigraph, level,
                     contracted_graph_name, contracted_graph_blob, removedEdges,
                     removedVertices, psuedoEdges);
-
+#endif
         }
         (*return_tuples) = get_memory(1, (*return_tuples));
         (*return_tuples)->contracted_graph_name = strdup(contracted_graph_name.str().c_str());
