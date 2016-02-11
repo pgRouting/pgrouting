@@ -49,6 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
+#include "./pdp_solver.h"
 
 #include <sstream>
 #include <string.h>
@@ -56,7 +57,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 
 //#include "./pdp_types.h"
-#include "./pdp_solver.h"
 #include "./pdp_types.hpp"
 
 #include "./Solution.h"
@@ -95,11 +95,11 @@ int64_t Solver(Customer *c1,
     std::vector<Pickup> pickups;
     std::vector<Route> routes;
     log << "creating structures done\n";
-    log << "total customers: " << total_tuples << "\n";
 #if 1
     *msg = strdup(log.str().c_str());
     return 0;
 #endif
+    log << "total customers: " << total_tuples << "\n";
     for (size_t i = 0; i < total_tuples ; ++i) {
         log << i << ":\t" << c1[i].id << ", " << c1[i].x << ", " << c1[i].y << "\n";
     }

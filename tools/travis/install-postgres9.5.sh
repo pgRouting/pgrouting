@@ -30,9 +30,8 @@ if test "$POSTGRESQL_VERSION" = "9.5" ; then
     echo "making grep after change"
     grep port /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf
     echo "finished grep"
-    sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION
-    psql -U postgres -p 5432 -l
-    psql -U postgres -p 5433 -l
+    sudo service postgres-$POSTGRESQL_VERSION start
+    ps -fea | grep postgres
 
 #else
 

@@ -57,7 +57,7 @@ addons:
       - kubuntu-backports
       - boost-latest
         #for postgres 9.5  
-      - precise-pgdg-9.5
+        #- precise-pgdg-9.5
     packages:
       - g++-4.8
       - cmake
@@ -66,8 +66,8 @@ addons:
       - libcgal-dev
       - postgresql-server-dev-all
       - postgresql-common
-      - postgresql-9.5
-      - postgresql-contrib-9.5
+        #- postgresql-9.5
+        #- postgresql-contrib-9.5
 
 
 #before_install:
