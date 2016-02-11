@@ -34,7 +34,7 @@ if test "$POSTGRESQL_VERSION" = "9.5" ; then
     sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION
     #sudo service postgres-$POSTGRESQL_VERSION start
     ps -fea | grep postgres
-    sudo -u $DBUSER psql -c "ALTER ROLE postgres WITH PASSWORD '';"
+    #sudo -u $DBUSER psql -c "ALTER ROLE postgres WITH PASSWORD '';"
 
 #else
 
