@@ -49,15 +49,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#include "./pdp_solver.h"
 
 #include <sstream>
 #include <string.h>
 #include <vector>
 #include <algorithm>
 
-//#include "./pdp_types.h"
+extern "C" {
+#include "./../../common/src/pgr_types.h"
+}
+
 #include "./pdp_types.hpp"
+#include "./pdp_solver.h"
 
 #include "./Solution.h"
 #include "./Route.h"
