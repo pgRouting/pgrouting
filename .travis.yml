@@ -100,8 +100,8 @@ before_script:
   - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
 
   # initialize databases
-  - createdb  ___pgr___test___
-  - createdb  pgr_test__db__test
+  - createdb  -U postgres ___pgr___test___
+  - createdb  -U postgres pgr_test__db__test
   - ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___
 
 
