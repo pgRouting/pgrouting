@@ -412,7 +412,9 @@ sub createTestDB {
     my $pgrv = `$psql $connopts -c "select pgr_version()" $databaseName`;
     die "ERROR: failed to install pgrouting into the database!\n"
     unless $pgrv;
-
+    print `$psql $connopts -c "select version();" postgres `, "\n";
+    print `$psql $connopts -c "select postgis_full_version();" $databaseName `, "\n";
+    print `$psql $connopts -c "select pgr_version();" $databaseName `, "\n";
 }
 
 sub dropTestDB {
