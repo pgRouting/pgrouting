@@ -46,6 +46,7 @@ env:
   #- POSTGRESQL_VERSION=9.4
   - POSTGRESQL_VERSION=9.5
 
+
 # excecuted. So things have to be tested oe by one.
 addons:
   apt:
@@ -55,6 +56,8 @@ addons:
       # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
       - kubuntu-backports
       - boost-latest
+        #for postgres 9.5  
+      - precise-pgdg-9.5
     packages:
       - g++-4.8
       - cmake
@@ -63,6 +66,8 @@ addons:
       - libcgal-dev
       - postgresql-server-dev-all
       - postgresql-common
+      - postgresql-9.5
+      - postgresql-contrib-9.5
 
 
 #before_install:
