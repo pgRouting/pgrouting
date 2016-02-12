@@ -6,10 +6,11 @@
 # Test pgRouting
 # ------------------------------------------------------------------------------
 
-PGUSER="postgres"
-PGDATABASE="pgrouting"
+PGDATABASE="pgr_test__db__test"
 
 POSTGRESQL_VERSION="$1"
+PGUSER="$2"
+
 #POSTGIS_VERSION="$2"
 
 POSTGRESQL_DIRECTORY="/usr/share/postgresql/$POSTGRESQL_VERSION"
@@ -21,7 +22,7 @@ ERROR=0
 
 # Define alias function for psql command
 run_psql () {
-    PGOPTIONS='--client-min-messages=warning' psql -U $PGUSER  -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
+    PGOPTIONS='--client-min-messages=warning' psql -U $PGUSER  -d $PGDATABASE -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
     if [ "$?" -ne 0 ]
     then 
         echo "Test query failed: $@"
@@ -40,15 +41,15 @@ run_psql () {
 # ------------------------------------------------------------------------------
 # CREATE EXTENSION
 # ------------------------------------------------------------------------------
-run_psql -d  pgr_test__db__test -c "CREATE EXTENSION postgis;"
-run_psql -d  pgr_test__db__test -c "CREATE EXTENSION pgrouting;"
+run_psql  -c "CREATE EXTENSION postgis;"
+run_psql  -c "CREATE EXTENSION pgrouting;"
 
 # ------------------------------------------------------------------------------
 # Get version information
 # ------------------------------------------------------------------------------
-run_psql -d  pgr_test__db__test -c "SELECT version();"    
-run_psql -d  pgr_test__db__test -c "SELECT postgis_full_version();"    
-run_psql -d  pgr_test__db__test -c "SELECT pgr_version();"
+run_psql -c "SELECT version();"    
+run_psql -c "SELECT postgis_full_version();"    
+run_psql -c "SELECT pgr_version();"
 
 #PGROUTING_VERSION=`run_psql -A -t -c "SELECT version FROM pgr_version();"`
 
@@ -66,7 +67,7 @@ run_psql -d  pgr_test__db__test -c "SELECT pgr_version();"
 #dropdb ___pgr___test___
 #cd ../../
 
-./tools/testers/algorithm-tester.pl  -pgver $POSTGRESQL_VERSION -ignorenotice
+./tools/testers/algorithm-tester.pl  -pgver $POSTGRESQL_VERSION -pguser $PGUSER -ignorenotice
 
 if [ "$?" -ne 0 ]
 then

@@ -94,7 +94,9 @@ get_result(
         int64_t VehicleLength,
         std::vector< path_element > &result);
 
-int Solver(Customer *c1,
+static
+int
+pdp_solver(Customer *c1,
         size_t total_tuples,
         int64_t VehicleLength,
         double capacity,
@@ -240,6 +242,16 @@ int Solver(Customer *c1,
 }
 
 
+int
+Solver(Customer *c1,
+        size_t total_tuples,
+        int64_t VehicleLength,
+        double capacity,
+        char **msg,
+        path_element **results,
+        size_t *length_results_struct) {
+    return 0;
+}
 
 
 

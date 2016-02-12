@@ -20,20 +20,26 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#pragma once
+#ifndef SRC_VRPPDTW_SRC_PDP_SOLVER_H_
+#define SRC_VRPPDTW_SRC_PDP_SOLVER_H_
 
 #include "./../../common/src/pgr_types.h"
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif
 
 
 int Solver(Customer *customers,
         size_t total_tuples,
         int64_t vehicle_count,
-        double capacity ,
+        double capacity,
         char **msg,
         path_element **results,
         size_t *length_results);
 
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // SRC_VRPPDTW_SRC_PDP_SOLVER_H_
