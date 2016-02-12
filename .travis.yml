@@ -26,7 +26,6 @@ branches:
   only:
     - master
     - develop
-    - jenkins
 #    - jenkins
 
 

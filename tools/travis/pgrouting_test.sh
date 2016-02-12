@@ -67,7 +67,7 @@ run_psql -c "SELECT pgr_version();"
 #dropdb ___pgr___test___
 #cd ../../
 
-./tools/testers/algorithm-tester.pl  -pgver $POSTGRESQL_VERSION -pguser $PGUSER -ignorenotice
+./tools/testers/algorithm-tester.pl -pgver $POSTGRESQL_VERSION -pguser $PGUSER -ignorenotice
 
 if [ "$?" -ne 0 ]
 then
