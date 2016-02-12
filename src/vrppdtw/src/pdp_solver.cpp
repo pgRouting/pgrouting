@@ -94,8 +94,9 @@ int Solver(Customer *c1,
         size_t *length_results_struct) {
     std::ostringstream log;
     try {
+      *msg = NULL;
 #if 1
-    *msg = strdup(log.str().c_str());
+    // *msg = strdup(log.str().c_str());
     return 0;
 #endif
 

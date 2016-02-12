@@ -84,6 +84,7 @@ int compute_shortest_path(
 #if 0
     PGR_DBG("Not Calling Solver Instance\n");
     pfree(customers);
+    pgr_SPI_finish();
     return 0;
 #endif
     PGR_DBG("Calling Solver Instance\n");
@@ -95,10 +96,17 @@ int compute_shortest_path(
             &err_msg, 
             results, 
             length_results_struct);
+#if 1
+    // if (err_msg) free(err_msg);
+    // pfree(customers);
+    pgr_SPI_finish();
+    return 0;
+#endif
 
     if (err_msg) PGR_DBG("%s\n",err_msg);
     if (err_msg) free(err_msg);
     pfree(customers);
+    pgr_SPI_finish();
     return 0;
 
 #if 0
