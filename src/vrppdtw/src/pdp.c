@@ -137,17 +137,17 @@ vrppdtw(PG_FUNCTION_ARGS) {
     uint32_t               call_cntr;
     uint32_t               max_calls;
     TupleDesc            tuple_desc;
-    path_element     *results = NULL;
+
+    path_element     *result_tuples = NULL;
+    size_t result_count = 0;
 
 
     /* stuff done only on the first call of the function */
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
-        size_t length_results_struct = 0;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-        //results = (path_element *)palloc(sizeof(path_element)*((length_results_struct) + 1));
 
         PGR_DBG("Calling compute_shortes_path");
 
@@ -155,13 +155,14 @@ vrppdtw(PG_FUNCTION_ARGS) {
                 pgr_text2char(PG_GETARG_TEXT_P(0)),  // customers sql
                 PG_GETARG_INT64(1),  // vehicles  count
                 PG_GETARG_FLOAT8(2),  // capacity 
-                &results, &length_results_struct);
+                &result_tuples,
+                &result_count);
 
-        PGR_DBG("Back from solve_vrp, length_results: %zu", length_results_struct);
+        PGR_DBG("Back from solve_vrp, length_results: %zu", result_count);
 
         /* total number of tuples to be returned */
-        funcctx->max_calls = (uint32_t)length_results_struct;
-        funcctx->user_fctx = results;
+        funcctx->max_calls = (uint32_t)result_count;
+        funcctx->user_fctx = result_tuples;
 
         /* Build a tuple descriptor for our result type */
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
@@ -170,7 +171,7 @@ vrppdtw(PG_FUNCTION_ARGS) {
                      errmsg("function returning record called in context "
                          "that cannot accept type record")));
 
-        funcctx->tuple_desc = BlessTupleDesc(tuple_desc);
+        funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
     }
 
@@ -180,14 +181,14 @@ vrppdtw(PG_FUNCTION_ARGS) {
     call_cntr = funcctx->call_cntr;
     max_calls = funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
-    results = (path_element *) funcctx->user_fctx;
+    result_tuples = (path_element *) funcctx->user_fctx;
 
     /* do when there is more left to send */
     if (call_cntr < max_calls) {
         HeapTuple    tuple;
         Datum        result;
-        Datum *values;
-        char* nulls;
+        Datum       *values;
+        char        *nulls;
 
         PGR_DBG("Till hereee ");
         values = palloc(4 * sizeof(Datum));
@@ -197,23 +198,17 @@ vrppdtw(PG_FUNCTION_ARGS) {
         nulls[1] = ' ';
         nulls[2] = ' ';
         nulls[3] = ' ';
-        values[0] = Int32GetDatum(results[call_cntr].seq);
-        values[1] = Int64GetDatum(results[call_cntr].rid);
-        values[2] = Int64GetDatum(results[call_cntr].nid);
-        values[3] = Float8GetDatum(results[call_cntr].cost);
+        values[0] = Int32GetDatum(result_tuples[call_cntr].seq);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].rid);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].nid);
+        values[3] = Float8GetDatum(result_tuples[call_cntr].cost);
+
         tuple = heap_formtuple(tuple_desc, values, nulls);
-
-        /* make the tuple into a datum */
         result = HeapTupleGetDatum(tuple);
-
-        /* clean up (this is not really necessary) */
-        // pfree(values);
-        // pfree(nulls);
-
         SRF_RETURN_NEXT(funcctx, result);
     } else {
         /* do when there is no more left */
-        free(results);
+        if (result_tuples) free(result_tuples);
         SRF_RETURN_DONE(funcctx);
     }
 }
