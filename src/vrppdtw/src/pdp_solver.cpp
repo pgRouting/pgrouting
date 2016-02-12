@@ -61,6 +61,7 @@ extern "C" {
 }
 #endif
 
+#if 0
 // First the standards
 #include <sstream>
 #include <string.h>
@@ -71,11 +72,12 @@ extern "C" {
 #include "./Solution.h"
 #include "./Route.h"
 #include "../../common/src/memory_func.hpp"
+#endif
 
 // the file header
 #include "./pdp_solver.h"
 
-
+#if 0
 // forward declaration
 static
 size_t
@@ -240,7 +242,7 @@ pdp_solver(Customer *c1,
     }
 
 }
-
+#endif
 
 int
 Solver(Customer *c1,
@@ -256,7 +258,7 @@ Solver(Customer *c1,
 
 
 
-
+#if 0
 /* TABU search helps us to store the solutions after every different move.
  * The overview of TABU search will be a list containing list of solutions
 
@@ -418,3 +420,4 @@ get_result(
     result.push_back({0, 0, 0, solution.getCost()});
 }
 
+#endif
