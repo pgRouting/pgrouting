@@ -81,9 +81,13 @@ int compute_shortest_path(
                );
     }
 #endif
-
+#if 1
+    PGR_DBG("Not Calling Solver Instance\n");
+    pfree(customers);
+    return 0;
+#endif
     PGR_DBG("Calling Solver Instance\n");
-    int64_t ret = Solver(
+    int ret = Solver(
             customers, 
             total_customers, 
             vehicle_count,
@@ -96,6 +100,7 @@ int compute_shortest_path(
     if (err_msg) free(err_msg);
     pfree(customers);
     return 0;
+
 #if 0
     if (ret < 0) {
         ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED),

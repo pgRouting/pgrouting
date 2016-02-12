@@ -85,7 +85,7 @@ get_result(
         int64_t VehicleLength,
         std::vector< path_element > &result);
 
-int64_t Solver(Customer *c1,
+int Solver(Customer *c1,
         size_t total_tuples,
         int64_t VehicleLength,
         double capacity,
