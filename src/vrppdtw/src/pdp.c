@@ -81,7 +81,7 @@ int compute_shortest_path(
                );
     }
 #endif
-#if 1
+#if 0
     PGR_DBG("Not Calling Solver Instance\n");
     pfree(customers);
     return 0;

@@ -94,6 +94,10 @@ int Solver(Customer *c1,
         size_t *length_results_struct) {
     std::ostringstream log;
     try {
+#if 1
+    *msg = strdup(log.str().c_str());
+    return 0;
+#endif
 
     std::vector<Pickup> pickups;
     std::vector<Route> routes;
