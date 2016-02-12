@@ -37,7 +37,3 @@ int Solver(Customer *customers,
         path_element **results,
         size_t *length_results);
 
-#ifdef __cplusplus
-extern "C"
-#endif
-

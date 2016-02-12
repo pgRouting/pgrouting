@@ -49,32 +49,41 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
+#if 0
+// this is in dijkstra:
+#include "./pgr_dijkstra.hpp"
+#include "./dijkstra_driver.h"
 
+extern "C" {
+#include "postgres.h"
+#include "./../../common/src/pgr_types.h"
+#include "./../../common/src/postgres_connection.h"
+}
+#endif
+
+// First the standards
 #include <sstream>
 #include <string.h>
 #include <vector>
 #include <algorithm>
 
-extern "C" {
-#include "./../../common/src/pgr_types.h"
-}
-
-#include "./pdp_types.hpp"
-#include "./pdp_solver.h"
-
+// second the c++
 #include "./Solution.h"
 #include "./Route.h"
 #include "../../common/src/memory_func.hpp"
 
+// the file header
+#include "./pdp_solver.h"
 
-//forward declaration
+
+// forward declaration
 static
 size_t
 TabuSearch(
         const std::vector<Customer> &customers,
         const std::vector<Pickup> &pickups,
         int maxIter,
-        std::vector<Solution> &T);
+        std::vector<Solution> &sol);
 
 static
 void
