@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "fmgr.h"
-#include "./pdp_solver.h"
+#include "./pdp.h"
 
 
 Datum vrppdtw(PG_FUNCTION_ARGS);

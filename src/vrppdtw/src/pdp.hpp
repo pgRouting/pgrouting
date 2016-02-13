@@ -20,26 +20,50 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+
 #pragma once
 
+#include <math.h>
+#include <vector>
+
+// Exclusive for c++ inclusion
+
 typedef struct {
-    int64_t id;
-    double x;
-    double y;
-    double demand;
-    double Etime;
-    double Ltime;
-    double Stime;
-    int64_t Pindex;
-    int64_t Dindex;
-    double Ddist;
-} Customer;
-
-typedef struct  {
-    int seq;
-    int64_t rid;
-    int64_t nid;
-    double cost;
-} path_element;
+        int64_t id;
+        double x;
+        double y;
+        double demand;
+        double Etime;
+        double Ltime;
+        double Stime;
+        int64_t Pindex;
+        int64_t Dindex;
+} Depot;
 
 
+typedef struct {
+        int64_t Pid;
+        double Ddist;
+        int64_t Did;
+} Pickup;
+
+typedef std::vector< Customer > Customers;
+typedef std::vector< Pickup > Pickups;
+
+
+// It is used to save some variables and helps if we need to revisit
+// previous state.
+
+typedef struct {
+        int64_t twv;
+        int64_t cv;
+        int64_t dis;
+        std::vector< int64_t > path;
+} State;
+
+template <class T1, class T2>
+double
+CalculateDistance(const T1 &from, const T2 &to) {
+        return sqrt((from.x - to.x) * (from.x - to.x)
+                + (from.y - to.y) * (from.y - to.y));
+}

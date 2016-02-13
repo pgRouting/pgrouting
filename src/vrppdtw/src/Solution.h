@@ -22,11 +22,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #pragma once
-#ifdef __MINGW32__
-#include <winsock2.h>
-#include <windows.h>
-#endif
-
 
 #include <vector>
 
@@ -38,9 +33,9 @@ class Solution {
          cost_total = 0, twv_total = 0, cv_total = 0, dis_total = 0;
      }
      // Variables
-     int64_t twv_total;
-     int64_t cv_total;
-     double dis_total;
+     int twv_total;
+     int cv_total;
+     int dis_total;
      double cost_total;
      std::vector<Route> routes;
      // Methods
@@ -114,18 +109,18 @@ Neighborhoods::BestSPI(const Solution S,
     for (const auto &order : OrderRequests) {
         // Order Find and Remove it!
         CurrSol = BestSol;
-        for (size_t route_remove = 0;
+        for (unsigned int route_remove = 0;
                 route_remove < CurrSol.routes.size();
                 route_remove++) {
 
-            auto OK = CurrSol.routes[route_remove].RemoveOrder(customers,order);
+            int OK = CurrSol.routes[route_remove].RemoveOrder(customers,order);
 
             if  (OK != 1) continue;
             TempSol = CurrSol;
             TempSol.UpdateSol(customers);
 
             for (auto &route : TempSol.routes) {
-                auto OK = route.insertOrder(customers, order);
+                int OK = route.insertOrder(customers, order);
                 if (!OK) continue;
                 TempSol.UpdateSol(customers);
                 if (TempSol.getCost() < BestSol.getCost()) {

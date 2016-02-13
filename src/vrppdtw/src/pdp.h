@@ -21,18 +21,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include "postgres.h"
+
 #pragma once
 
-#ifdef __MINGW32__
-#include <winsock2.h>
-#include <windows.h>
-#endif
-
-
-#include <math.h>
-#include <vector>
-
-// Exclusive for c++ inclusion
+// For C and C++ inclusion
 
 typedef struct {
         int64_t id;
@@ -44,32 +40,30 @@ typedef struct {
         double Stime;
         int64_t Pindex;
         int64_t Dindex;
-} Depot;
-
-
-typedef struct {
-        int64_t Pid;
         double Ddist;
-        int64_t Did;
-} Pickup;
+} Customer;
 
-typedef std::vector< Customer > Customers;
-typedef std::vector< Pickup > Pickups;
+typedef struct  {
+         int64_t seq;
+         int64_t rid;
+         int64_t nid;
+         double cost;
+} path_element;
 
 
-// It is used to save some variables and helps if we need to revisit
-// previous state.
 
-typedef struct {
-        int64_t twv;
-        int64_t cv;
-        double dis;
-        std::vector< int64_t > path;
-} State;
+#ifdef __cplusplus
+extern "C"
+#endif
+int64_t Solver(Customer *c,
+        size_t total_tuples,
+        int64_t vehicle_count,
+        int64_t capacity ,
+        char **msg,
+        path_element **results,
+        size_t *length_results);
 
-template <class T1, class T2>
-double
-CalculateDistance(const T1 &from, const T2 &to) {
-        return sqrt((from.x - to.x) * (from.x - to.x)
-                + (from.y - to.y) * (from.y - to.y));
-}
+#ifdef __cplusplus
+extern "C"
+#endif
+

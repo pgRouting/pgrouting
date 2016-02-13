@@ -23,27 +23,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #pragma once
-#ifdef __MINGW32__
-#include <winsock2.h>
-#include <windows.h>
-#endif
-
 
 #include <vector>
 #include <algorithm>
-#include "../../common/src/pgr_types.h"
-#include "pdp_types.hpp"
+#include "pdp.hpp"
 
 class Route  {
  public:
-     int64_t twv;
-     int64_t cv;
+     int twv;
+     int cv;
      double dis;
      std::vector < int64_t > path;
      double capacity;
      Depot depot;
 
-     Route(double _capacity, const Depot &_depot) :
+     Route(int _capacity, const Depot &_depot) :
          twv(0),
          cv(0),
          dis(0),
@@ -106,9 +100,9 @@ Route::update(const Customers &customers)  {
     dis = 0;
     twv = 0;
     cv = 0;
-    double load = 0;
+    int load = 0;
     double agg_cost = 0;
-    int64_t prev_node = 0;
+    int prev_node = 0;
     for (const auto &node : path) {
         /*
          * Between nodes
@@ -152,7 +146,7 @@ Route::update(const Customers &customers)  {
 
 double
 Route::cost() const  {
-    return (0.3 * dis) + (0.5 * static_cast<double>(twv)) + (0.2 * static_cast<double>(cv));
+    return (0.3*dis)+(0.5*twv)+(0.2*cv);
 }
 
 bool
@@ -180,9 +174,9 @@ Route::insertOrder(const Customers &customers, const Pickup &order) {
     /*
      * The pickup is in:
      */
-    size_t Ppos = 0;
-    size_t i;
-    for (i = 1; i < path.size(); i++)  {
+    int Ppos = 0;
+    int i;
+    for (i = 1; i < (int)path.size(); i++)  {
         /*
          * Inserting without creating violation
          */
@@ -195,9 +189,9 @@ Route::insertOrder(const Customers &customers, const Pickup &order) {
     /*
      * The delivery is in:
      */
-    auto Dpos = path.size() - 1;
+    int Dpos = path.size() - 1;
 
-    auto j = Dpos;
+    int j;
     for (j = Dpos; Ppos < j; --j)  {
         if (!has_violation(customers)) break;
         std::swap(path[j], path[Dpos]);

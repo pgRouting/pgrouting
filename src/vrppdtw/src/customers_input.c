@@ -22,13 +22,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-// #include "./pdp_types.h"
 // #define DEBUG
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/get_check_data.h"
-
 #include "./customers_input.h"
 
 
@@ -39,32 +37,18 @@ void pgr_fetch_customer(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info[9],
-        Customer *cust) {
+        Customer *customer) {
 
-    Customer customer;
-    customer.id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
-    customer.x = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
-    customer.y = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
-    customer.demand = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
-    customer.Etime = pgr_SPI_getFloat8(tuple, tupdesc, info[4]);
-    customer.Ltime = pgr_SPI_getFloat8(tuple, tupdesc, info[5]);
-    customer.Stime = pgr_SPI_getFloat8(tuple, tupdesc, info[6]);
-    customer.Pindex = pgr_SPI_getBigInt(tuple, tupdesc, info[7]);
-    customer.Dindex = pgr_SPI_getBigInt(tuple, tupdesc, info[8]);
-    customer.Ddist = 0;
-    PGR_DBG("Reading:%lld\t %f\t%f\t%f\t %f\t%f\t%f\t %lld\t%lld\t  %f",
-            customer.id,
-            customer.x,
-            customer.y,
-            customer.demand,
-            customer.Etime,
-            customer.Ltime,
-            customer.Stime,
-            customer.Pindex,
-            customer.Dindex,
-            customer.Ddist
-           );
-    *cust = customer;
+    customer->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
+    customer->x = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
+    customer->y = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
+    customer->demand = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
+    customer->Etime = pgr_SPI_getFloat8(tuple, tupdesc, info[4]);
+    customer->Ltime = pgr_SPI_getFloat8(tuple, tupdesc, info[5]);
+    customer->Stime = pgr_SPI_getFloat8(tuple, tupdesc, info[6]);
+    customer->Pindex = pgr_SPI_getBigInt(tuple, tupdesc, info[7]);
+    customer->Dindex = pgr_SPI_getBigInt(tuple, tupdesc, info[8]);
+    customer->Ddist = 0;
 }
 
 void
@@ -82,7 +66,7 @@ pgr_get_customers(
     int i;
     for (i = 0; i < 9; ++i) {
         info[i].colNumber = -1;
-        info[i].type = 0;
+        info[i].type = -1;
         info[i].strict = true;
         info[i].eType = ANY_NUMERICAL;
     }
@@ -142,29 +126,15 @@ pgr_get_customers(
                 elog(ERROR, "Out of memory");
             }
 
+            int t;
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
-            size_t t;
-            PGR_DBG("processing %zu customer tuples", ntuples);
+            PGR_DBG("processing %d customer tupĺes", ntuples);
 
             for (t = 0; t < ntuples; t++) {
-                size_t i = total_tuples - ntuples + t;
                 HeapTuple tuple = tuptable->vals[t];
                 pgr_fetch_customer(&tuple, &tupdesc, info,
                         &(*customers)[total_tuples - ntuples + t]);
-                PGR_DBG("%zu: %lld\t %f\t%f\t%f\t %f\t%f\t%f\t %lld\t%lld\t  %f", i,
-                        (*customers)[i].id,
-                        (*customers)[i].x,
-                        (*customers)[i].y,
-                        (*customers)[i].demand,
-                        (*customers)[i].Etime,
-                        (*customers)[i].Ltime,
-                        (*customers)[i].Stime,
-                        (*customers)[i].Pindex,
-                        (*customers)[i].Dindex,
-                        (*customers)[i].Ddist
-                       );
-
             }
             SPI_freetuptable(tuptable);
         } else {
@@ -180,21 +150,6 @@ pgr_get_customers(
 
 
     (*total_customers) = total_tuples;
-    PGR_DBG("Finish reading %zu customers, %zu", total_tuples, (*total_customers));
-    PGR_DBG("DATA before returnin");
-    for (i = 0; i < (*total_customers); i++) {
-        PGR_DBG("%d: %lld\t %f\t%f\t%f\t %f\t%f\t%f\t %lld\t%lld\t  %f", i,
-                (*customers)[i].id,
-                (*customers)[i].x,
-                (*customers)[i].y,
-                (*customers)[i].demand,
-                (*customers)[i].Etime,
-                (*customers)[i].Ltime,
-                (*customers)[i].Stime,
-                (*customers)[i].Pindex,
-                (*customers)[i].Dindex,
-                (*customers)[i].Ddist
-               );
-    }
+    PGR_DBG("Finish reading %ld customers, %ld", total_tuples, (*total_customers));
 }
 

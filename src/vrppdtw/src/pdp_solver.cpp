@@ -53,10 +53,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
-#include "./pdp_solver.h"
-#include "./pdp_types.hpp"
-#include "./Route.h"
+#include "./pdp.h"
+#include "./pdp.hpp"
 #include "./Solution.h"
+#include "./Route.h"
 
 
 //forward declaration
@@ -77,10 +77,10 @@ get_result(
         int64_t VehicleLength,
         std::vector< path_element > &result);
 
-int Solver(Customer *c1,
+int64_t Solver(Customer *c1,
         size_t total_tuples,
         int64_t VehicleLength,
-        double capacity,
+        int64_t capacity,
         char **msg,
         path_element **results,
         size_t *length_results_struct) {
