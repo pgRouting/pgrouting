@@ -49,43 +49,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#if 0
-// this is in dijkstra:
-#include "./pgr_dijkstra.hpp"
-#include "./dijkstra_driver.h"
 
-extern "C" {
-#include "postgres.h"
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
-}
-#endif
-
-#if 0
-// First the standards
-#include <sstream>
-#include <string.h>
 #include <vector>
 #include <algorithm>
 
-// second the c++
-#include "./Solution.h"
-#include "./Route.h"
-#include "../../common/src/memory_func.hpp"
-#endif
-
-// the file header
 #include "./pdp_solver.h"
+#include "./pdp_types.hpp"
+#include "./Route.h"
+#include "./Solution.h"
 
-#if 0
-// forward declaration
+
+//forward declaration
 static
-size_t
+int
 TabuSearch(
         const std::vector<Customer> &customers,
         const std::vector<Pickup> &pickups,
         int maxIter,
-        std::vector<Solution> &sol);
+        std::vector<Solution> &T);
 
 static
 void
@@ -96,55 +77,27 @@ get_result(
         int64_t VehicleLength,
         std::vector< path_element > &result);
 
-static
-int
-pdp_solver(Customer *c1,
+int Solver(Customer *c1,
         size_t total_tuples,
         int64_t VehicleLength,
         double capacity,
         char **msg,
         path_element **results,
         size_t *length_results_struct) {
-    std::ostringstream log;
-    try {
-      *msg = NULL;
-#if 1
-    // *msg = strdup(log.str().c_str());
-    return 0;
-#endif
-
+    std::vector<Customer> customers(c1, c1 + total_tuples);
     std::vector<Pickup> pickups;
     std::vector<Route> routes;
-    log << "creating structures done\n";
-#if 1
-    *msg = strdup(log.str().c_str());
-    return 0;
-#endif
-    log << "total customers: " << total_tuples << "\n";
-    for (size_t i = 0; i < total_tuples ; ++i) {
-        log << i << ":\t" << c1[i].id << ", " << c1[i].x << ", " << c1[i].y << "\n";
-    }
-    std::vector<Customer> customers(c1, c1 + total_tuples);
-    log << "Saving Customers done \n";
-    for (const auto c : customers) {
-        log << c.id << ", " << c.x << ", " << ", " << c.y << "\n";
-    }
 
     Depot depot({c1[0].id, c1[0].x, c1[0].y,
             c1[0].demand,
             c1[0].Etime, c1[0].Ltime, c1[0].Stime,
             c1[0].Pindex, c1[0].Dindex
             });
-#if 1
-    *msg = strdup(log.str().c_str());
-    return 0;
-#endif
 
-#if 0
     if (total_tuples != 107) {
         return 0;
     }
-#endif
+
 
     // Customer Data
     for (auto &c : customers) {
@@ -157,13 +110,11 @@ pdp_solver(Customer *c1,
         }
     }
 
-#if 0
     if (pickups.size() != 53) {
         (*results) = NULL;
         (*length_results_struct) = 0;
         return 0;
     }
-#endif
 
     /* Sort Pickup's
      * The sequential construction inserts from largest distance to smallest
@@ -220,10 +171,7 @@ pdp_solver(Customer *c1,
 
 
     // Getting memory to store results
-    //*results = static_cast<path_element *>(malloc(sizeof(path_element) * (result.size())));
-    *results = NULL;
-    *results = get_memory(result.size(), (*results));
-
+    *results = static_cast<path_element *>(malloc(sizeof(path_element) * (result.size())));
 
     //store the results
     int seq = 0;
@@ -236,29 +184,14 @@ pdp_solver(Customer *c1,
 
     (*msg) = NULL;
     return 0;
-    } catch (...) {
-        (*msg) = NULL;
-        return -1;
-    }
-
-}
-#endif
-
-int
-Solver(Customer *c1,
-        size_t total_tuples,
-        int64_t VehicleLength,
-        double capacity,
-        char **msg,
-        path_element **results,
-        size_t *length_results_struct) {
-    return 0;
 }
 
 
 
 
-#if 0
+
+
+
 /* TABU search helps us to store the solutions after every different move.
  * The overview of TABU search will be a list containing list of solutions
 
@@ -291,7 +224,7 @@ Solver(Customer *c1,
 
 */
 static
-size_t
+int
 TabuSearch(const std::vector<Customer> &customers,
         const std::vector<Pickup> &pickups,
         int maxItr,
@@ -354,11 +287,11 @@ get_result(
     for (const auto &route : solution.routes) {
         double agg_cost = 0;
         double distance = 0;
-        double agg_load = 0;
+        int agg_load = 0;
         result.push_back({seq, route_id, depot.id, agg_cost});
         ++seq;
 
-        int64_t prev_node = -1;
+        int prev_node = -1;
         for (const auto &node : route.path) {
 
             if (node == route.path.front()) {
@@ -420,4 +353,3 @@ get_result(
     result.push_back({0, 0, 0, solution.getCost()});
 }
 
-#endif
