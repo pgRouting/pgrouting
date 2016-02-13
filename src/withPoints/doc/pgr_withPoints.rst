@@ -174,10 +174,10 @@ Parameter        Type                   Description
 ================ ====================== =================================================
 **edges_sql**    ``TEXT``               Edges SQL query as decribed above.
 **points_sql**   ``TEXT``               Points SQL query as decribed above.
-**start_vid**    ``ANY-INTEGER``        Starting vertex identifier. A negative value represents a point pid.
-**end_vid**      ``ANY-INTEGER``        Ending point identifier. A negative value represents a point pid.
-**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of starting points identifiers. Negative values represents points.
-**end_vids**     ``ARRAY[ANY-INTEGER]`` Array of ending points identifiers. Negative values represents  points.
+**start_vid**    ``ANY-INTEGER``        Starting vertex identifier. When negative: is a point's pid.
+**end_vid**      ``ANY-INTEGER``        Ending point identifier. When negative: is a point's pid.
+**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of starting points identifiers. When negative: is a point's pid.
+**end_vids**     ``ARRAY[ANY-INTEGER]`` Array of ending points identifiers. When negative: is a point's pid.
 **directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
 **driving_side** ``CHAR``               (optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
                                           - In the right or left or
@@ -199,11 +199,11 @@ Column           Type              Description
 ============= =========== =================================================
 **seq**       ``INTEGER`` Row sequence.
 **path_seq**  ``INTEGER`` Path sequence that indicates the relative position on the path.
-**start_vid** ``BIGINT``  Identifier of the starting vertex. When negative is a point's pid.
-**end_vid**   ``BIGINT``  Identifier of the ending point. The negative value of the original point's pid is given.
+**start_vid** ``BIGINT``  Identifier of the starting vertex. When negative: is a point's pid.
+**end_vid**   ``BIGINT``  Identifier of the ending point. When negative: is a point's pid.
 **node**      ``BIGINT``  Identifier of the node:
                             - A positive value indicates the node is a vertex of edges_sql.
-                            - A negative value indicates the node is a point  of points_sql.
+                            - A negative value indicates the node is a point of points_sql.
 
 **edge**      ``BIGINT``  Identifier of the edge used to arrive to ``node``. ``0`` when the ``node`` is the ``start_vid``.
 **cost**      ``FLOAT``   Cost to traverse ``edge``.  from ``node`` to the next   node on the path sequence. -1 for the last row of the path sequence.

@@ -96,40 +96,12 @@ Finds the driving distance depending on the optional parameters setup.
 Description of the Signatures
 =============================
 
-Description of the Edges SQL query
--------------------------------------------------------------------------------
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
-
-================  ===================   =================================================
-Column            Type                  Description
-================  ===================   =================================================
-**id**            ``ANY-INTEGER``       Identifier of the edge.
-**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, If negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, If negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-================  ===================   =================================================
+..
+    description of the sql queries
 
 
-Description of the Points SQL query
--------------------------------------------------------------------------------
-
-:points_sql: an SQL query, which should return a set of rows with the following columns:
-
-============ ================= =================================================
-Column            Type              Description
-============ ================= =================================================
-**pid**      ``ANY-INTEGER``   (optional) Identifier of the point. Can not be NULL. If column not present, a sequential identifier will be given automatically.
-**eid**      ``ANY-INTEGER``   Identifier of the "closest" edge to the point.
-**fraction** ``ANY-NUMERICAL`` Value in [0,1] that indicates the relative postition from the first end point of the edge.
-**side**     ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the point is:
-                                 - In the right, left of the edge or
-                                 - If it doesn't matter with 'b' or NULL.
-                                 - If column not present 'b' is considered.
-
-                               Can be in upper or lower case.
-============ ================= =================================================
+.. include:: withPoints_queries.txt 
 
 
 Where:
