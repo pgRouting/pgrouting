@@ -65,7 +65,7 @@ do_pgr_johnson(
     }
 
     graphType gType = directed? DIRECTED: UNDIRECTED;
-    const int initial_size = total_tuples;
+    const auto initial_size = total_tuples;
 
     std::deque< Path >paths;
 
@@ -99,8 +99,3 @@ do_pgr_johnson(
     *err_msg = strdup(log.str().c_str());
   }
 }
-
-
-
-
-

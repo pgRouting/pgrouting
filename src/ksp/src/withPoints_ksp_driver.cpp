@@ -31,37 +31,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
-#ifdef unlink
-#undef unlink
-#endif
-#endif
-
-
-#if 0
-#ifdef __MINGW32__
-#include <winsock2.h>
-#include <windows.h>
-#endif
-
-
-#include <deque>
-#include <sstream>
-
-
-#include "./ksp_driver.h"
-#include "../../common/src/memory_func.hpp"
-#include "./pgr_ksp.hpp"
+//#ifdef unlink
+//#undef unlink
+//#endif
 #endif
 
 #define DEBUG
 
-#include "./withPoints_ksp_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
-
-
+#include "./withPoints_ksp_driver.h"
 #include "./../../withPoints/src/pgr_withPoints.hpp"
 #include "./../../common/src/memory_func.hpp"
 #include "./pgr_ksp.hpp"
@@ -79,15 +60,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 int
 do_pgr_withPointsKsp(
-        pgr_edge_t  *edges,
-        size_t total_edges,
-        Point_on_edge_t  *points_p,
-        size_t total_points,
-        pgr_edge_t  *edges_of_points,
-        size_t total_edges_of_points,
-        int64_t start_pid,
-        int64_t end_pid,
-        int64_t k,
+        pgr_edge_t  *edges,           size_t total_edges,
+        Point_on_edge_t  *points_p,   size_t total_points,
+        pgr_edge_t  *edges_of_points, size_t total_edges_of_points,
+        int64_t start_vid,
+        int64_t end_vid,
+        int k,
         bool directed,
         bool heap_paths,
         char driving_side,
@@ -124,19 +102,9 @@ do_pgr_withPointsKsp(
                 new_edges,
                 log);
 
-        int64_t start_vid = 0;
-        int64_t end_vid = 0;
-        for (const auto point : points) {
-            if (point.pid == start_pid) {
-                start_vid = point.vertex_id;
-            }
-            if (point.pid == end_pid) {
-                end_vid = point.vertex_id;
-            }
-        }
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const int initial_size = total_edges;
+        const auto initial_size = total_edges;
 
         std::deque< Path > paths;
 
@@ -156,12 +124,13 @@ do_pgr_withPointsKsp(
             paths = fn_yen.Yen(undigraph, start_vid, end_vid, k, heap_paths);
         }
 
-
+#if 0
         for (auto &path : paths) {
             path.print_path(log);
             adjust_pids(points, path);
             path.print_path(log);
         }
+#endif
 
         if (!details) {
             for (auto &path : paths) {
@@ -171,7 +140,7 @@ do_pgr_withPointsKsp(
             }
         }
 
-        int count(count_tuples(paths));
+        auto count(count_tuples(paths));
 
         if (count == 0) {
             return 0;
@@ -181,7 +150,7 @@ do_pgr_withPointsKsp(
         *return_tuples = NULL;
         *return_tuples = get_memory(count, (*return_tuples));
 
-        int sequence = 0;
+        size_t sequence = 0;
         int route_id = 0;
         for (const auto &path : paths) {
             if (path.size() > 0)

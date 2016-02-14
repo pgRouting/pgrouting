@@ -115,7 +115,7 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
 #endif
 
     /* construct a C array */
-    data = (DTYPE *) palloc(n * sizeof(DTYPE));
+    data = (DTYPE *) palloc((size_t)(n) * sizeof(DTYPE));
     if (!data) {
         elog(ERROR, "Error: Out of memory!");
     }
@@ -198,7 +198,7 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
 
     PGR_DBG("Alloc ids");
 
-    ids = (int *) malloc(num * sizeof(int));
+    ids = (int *) malloc((size_t)(num) * sizeof(int));
     if (!ids) {
         elog(ERROR, "Error: Out of memory (solve_tsp)");
     }
@@ -230,8 +230,8 @@ Datum
 tsp_matrix(PG_FUNCTION_ARGS)
 {
     FuncCallContext     *funcctx;
-    int                  call_cntr;
-    int                  max_calls;
+    uint32_t                  call_cntr;
+    uint32_t                  max_calls;
     TupleDesc            tuple_desc;
     // AttInMetadata       *attinmeta;
 
@@ -263,7 +263,7 @@ tsp_matrix(PG_FUNCTION_ARGS)
             elog(ERROR, "Error, failed to solve TSP.");
         }
 
-        funcctx->max_calls = num;
+        funcctx->max_calls = (uint32_t)num;
         funcctx->user_fctx = tsp_res;
 
         /* Build a tuple descriptor for our result type */

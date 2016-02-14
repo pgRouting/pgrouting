@@ -76,7 +76,6 @@ int bidirsp_wrapper(
     // DBG("Back from bddijkstra.bidir_dijkstra()\n");
     if (res < 0)
         return res;
-    else
-        return EXIT_SUCCESS;
+    return 0;
 }
 

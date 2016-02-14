@@ -57,7 +57,7 @@ void compute_driving_distance(
   pgr_SPI_connect();
 
   pgr_edge_t *edges = NULL;
-  int64_t total_edges = 0;
+  size_t total_edges = 0;
 
 
   char *err_msg = (char *)"";
@@ -96,8 +96,8 @@ PGDLLEXPORT Datum
 #endif
 driving_distance(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
-  size_t                  call_cntr;
-  size_t                  max_calls;
+  uint32_t             call_cntr;
+  uint32_t             max_calls;
   TupleDesc            tuple_desc;
   General_path_element_t  *ret_path = 0;
 
@@ -126,7 +126,7 @@ driving_distance(PG_FUNCTION_ARGS) {
                                   &ret_path, &path_count);
 
       /* total number of tuples to be returned */
-      funcctx->max_calls = path_count;
+      funcctx->max_calls = (uint32_t)path_count;
       funcctx->user_fctx = ret_path;
 
       if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)

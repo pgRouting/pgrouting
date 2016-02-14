@@ -109,8 +109,8 @@ PGDLLEXPORT Datum
 #endif
 xyd_tsp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    size_t              call_cntr;
-    size_t               max_calls;
+    uint32_t              call_cntr;
+    uint32_t               max_calls;
     TupleDesc            tuple_desc;
 
     /**************************************************************************/
@@ -146,7 +146,7 @@ xyd_tsp(PG_FUNCTION_ARGS) {
         /*                                                                    */
         /**********************************************************************/
 
-        funcctx->max_calls = result_count;
+        funcctx->max_calls = (uint32_t) result_count;
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {

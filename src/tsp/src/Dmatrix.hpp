@@ -1,8 +1,12 @@
 
 #pragma once
 
-#include <vector>
+
 #include "../../common/src/pgr_types.h"
+
+
+#include <vector>
+
 
 
 class Dmatrix {
@@ -26,7 +30,7 @@ class Dmatrix {
     int64_t get_id (size_t id) const;
     size_t size() const {return ids.size();};
     double max() const;
-    double pathLength(const Ids &path) const;
+    double pathCost(const Ids &path) const;
     std::vector< double >& operator[] (size_t i) {return costs[i];}
 
     Costs costs;

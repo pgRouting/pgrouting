@@ -5,16 +5,22 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
-group: edge
 
-dist: trusty
+#group: edge
+#dist: trusty    
+
+dist: precise
 
 sudo: required
 
+language: c
+
+compiler:
+    - gcc
 
 notifications:
   email:
-    on_failure: vicky_vergara@hotmail.com
+    on_failure: project@pgrouting.org
 
 branches:
   only:
@@ -23,72 +29,92 @@ branches:
     - dev-2.2
 
 #addons:
-#  postgresql: "9.2"
-#  postgresql: "9.3"
-#  postgresql: "9.4"
+  #postgresql: "9.2"
+  #postgresql: "9.3"
+  #postgresql: "9.4"
 
 #services:
   #- postgresql: 9.1
   #- postgresql: 9.2
   #- postgresql: 9.3
 
-    
-language: c
-
-compiler:
-  - gcc
-
 env:
-    - POSTGRESQL_VERSION=9.1
-    - POSTGRESQL_VERSION=9.2
-    - POSTGRESQL_VERSION=9.3
-    - POSTGRESQL_VERSION=9.4
-    #- POSTGRESQL_VERSION=9.5
+  - POSTGRESQL_VERSION=9.1
+  - POSTGRESQL_VERSION=9.2
+  - POSTGRESQL_VERSION=9.3
+  - POSTGRESQL_VERSION=9.4
+  - POSTGRESQL_VERSION=9.5
+
 
 # excecuted. So things have to be tested oe by one.
 addons:
   apt:
     sources:
       # For gcc >= 4.8
-      # - ubuntu-toolchain-r-test
+      - ubuntu-toolchain-r-test
       # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
-      #- kubuntu-backports
+      - kubuntu-backports
       - boost-latest
+        #for postgres 9.5  
+        #- precise-pgdg-9.5
     packages:
-      #- cmake
+      - g++-4.8
+      - cmake
       - libboost-thread-dev
       - libboost-graph-dev
       - libcgal-dev
       - postgresql-server-dev-all
       - postgresql-common
-
-
-before_script:
-  - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH # Add our chosen PG version to the path
-  - sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
-    #- sudo apt-get install -y postgresql-9.5
-    #- sudo apt-get install -y postgresql-9.5-postgis
-    #- sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
-  - sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION # Start the version of PG that we want to test
-  - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION   # pgtap has to be installed after postgres has started
-  - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
-  - createdb  ___pgr___test___
-  - createdb  pgr_test__db__test
-  - ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___
+        #- postgresql-9.5
+        #- postgresql-contrib-9.5
 
 
 #before_install:
+#  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+#  - sudo apt-get update -q
+#  - sudo apt-get install gcc-4.8 -y
 
-#before_script:
-  #-
+install:
+  - sudo /etc/init.d/postgresql stop
+  - sudo /etc/init.d/postgresql stop
+  - sudo ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION postgres
+
+before_script:
+  # - ./tools/travis/pgrouting_install.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+
+  # Add our chosen PG version to the path
+  - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
+  # Stop whichever version of PG that travis started
+  - sudo /etc/init.d/postgresql stop
+  # instal postgres 9.5 if needed
+  #- sudo ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION postgres
+  # Stop whichever version of PG is running
+  #- sudo /etc/init.d/postgresql stop
+  # Start the version of PG that we want to test
+  - sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION
+  #- if test "$POSTGRESQL_VERSION" != "9.5" ; then sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION ; fi
+
+  # Install pgtap and pg_prove
+  - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION   # pgtap has to be installed after postgres has started
+  - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
+
+  # initialize databases
+  - createdb  -U postgres ___pgr___test___
+  - createdb  -U postgres pgr_test__db__test
+  - ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___
+
+
+
 
 script: 
-    - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
-    - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION
+  - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 after_script: 
-    - ./tools/travis/pg_prove_tests.sh postgres
+  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION postgres
+  - ./tools/travis/pg_prove_tests.sh postgres
   #- ./tools/travis/pgrouting_prepare.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+  #- ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 after_success:
   #- ./tools/travis/pgrouting_deploy.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+

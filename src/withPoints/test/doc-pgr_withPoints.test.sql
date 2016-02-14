@@ -5,28 +5,28 @@ BEGIN;
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        1, 3);
+        -1, -3);
     \echo --e2
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        1, 3,
+        -1, 3,
         details := true);
     \echo --e3
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        1, ARRAY[3,5]);
+        -1, ARRAY[-3,5]);
     \echo --e4
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        ARRAY[1,2], 3);
+        ARRAY[-1,2], -3);
     \echo --e5
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        ARRAY[1,2], ARRAY[3,5]);
+        ARRAY[-1,2], ARRAY[-3,7]);
 
     \echo --q2
     SELECT ('(' || start_pid || ' => ' || end_pid ||') at ' || path_seq || 'th step:')::TEXT AS path_at,
@@ -40,10 +40,10 @@ BEGIN;
         FROM pgr_withPoints(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
             'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-            ARRAY[1,2,3,5], ARRAY[1,2,3,5],
+            ARRAY[1,-1], ARRAY[-2,-3,-6,3,6],
             driving_side := 'r',
             details := true)
-        WHERE node IN (-4,4);
+        WHERE node IN (-6,6);
     \echo --q3
     SELECT ('(' || start_pid || ' => ' || end_pid ||') at ' || path_seq || 'th step:')::TEXT AS path_at,
             CASE WHEN edge = -1 THEN ' visits'
@@ -56,15 +56,15 @@ BEGIN;
         FROM pgr_withPoints(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
             'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-            ARRAY[1,2,3,5], ARRAY[1,2,3,5],
+            ARRAY[1,-1], ARRAY[-2,-3,-6,3,6],
             driving_side := 'l',
             details := true)
-        WHERE node IN (-4,4);
+        WHERE node IN (-6,6);
     \echo --q4
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        ARRAY[1,2], ARRAY[3,5],
+        ARRAY[-1,2], ARRAY[-3,7],
         directed := false,
         details := true);
     \echo --q5

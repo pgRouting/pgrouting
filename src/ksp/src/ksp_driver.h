@@ -30,7 +30,7 @@ extern "C" {
 
 #include "./../../common/src/pgr_types.h"
 
-    int  do_pgr_ksp(pgr_edge_t  * edges, int64_t total_tuples,
+    int  do_pgr_ksp(pgr_edge_t  * edges, size_t total_tuples,
             int64_t  start_vertex, int64_t end_vertex,
             int no_paths, bool directed, bool heap_paths,
             General_path_element_t **ksp_path, size_t *path_count,

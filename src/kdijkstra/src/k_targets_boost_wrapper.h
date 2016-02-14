@@ -29,9 +29,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //#include "MyWrapper.h"
 
 #include "postgres.h"
-#include "../../common/src/pgr_types.h"
+// #include "../../common/src/pgr_types.h"
 
-typedef pgr_edge_t edge_t;
+typedef struct {
+    int id;
+    int source;
+    int target;
+    double cost;
+    double reverse_cost;
+} edge_t;
+
 
 typedef struct
 {
@@ -53,22 +60,22 @@ typedef struct
 
 typedef struct 
 {
-	int vertex_id_source;
-	int edge_id_source;
-	int vertex_id_target;
-	int edge_id_target;
-	float8 cost;
+    int vertex_id_source;
+    int edge_id_source;
+    int vertex_id_target;
+    int edge_id_target;
+    float8 cost;
 } dist_fromto_t;
 
 
 typedef struct 
 {
-	int vertex_id_source;
-	int edge_id_source;
-	int vertex_id_target;
-	int edge_id_target;
-	float8 cost;
-	char* the_way;
+    int vertex_id_source;
+    int edge_id_source;
+    int vertex_id_target;
+    int edge_id_target;
+    float8 cost;
+    char* the_way;
 } path_fromto_t;
 
 #ifdef __cplusplus
@@ -76,13 +83,13 @@ extern "C" {
 #endif
 
 
-int onetomany_dijkstra_boostdist(
-        edge_t *edges, unsigned int count, int start_vertex,
-        int *end_vertices, int nb_targets,
-	    bool directed, bool has_reverse_cost,
-	    pgr_cost_t **dists,
-        char **err_msg );
-    
+    int onetomany_dijkstra_boostdist(
+            edge_t *edges, unsigned int count, int start_vertex,
+            int *end_vertices, int nb_targets,
+            bool directed, bool has_reverse_cost,
+            pgr_cost_t **dists,
+            char **err_msg );
+
 
 #ifdef __cplusplus
 }

@@ -24,7 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
-#include "postgres.h"
+#include <stdint.h>
+#include <stdbool.h>
 
 typedef struct edge_astar
 {
@@ -42,8 +43,8 @@ typedef struct edge_astar
 
 
 typedef struct {
-    int vertex_id;
-    int edge_id;
+    int64_t vertex_id;
+    int64_t edge_id;
     double cost;
 } path_element_t;
 
@@ -59,7 +60,7 @@ typedef struct {
 
 /*
  * This ones are for returning the info to postgres
- */
+     */
 
 typedef struct {
     int seq;
@@ -138,7 +139,7 @@ enum {
 typedef
 struct {
     int colNumber;
-    int type;
+    uint64_t type;
     bool strict;
     char *name;
     expectType eType;
@@ -161,3 +162,29 @@ struct boost_edge_t{
 
 enum graphType { UNDIRECTED= 0, DIRECTED};
 
+#if 0
+/**************************************************************************
+ * VRPPDTW types
+ * ***********************************************************************/
+typedef struct {
+    int64_t id;
+    double x;
+    double y;
+    double demand;
+    double Etime;
+    double Ltime;
+    double Stime;
+    int64_t Pindex;
+    int64_t Dindex;
+    double Ddist;
+} Customer;
+
+typedef struct  {
+    int seq;
+    int64_t rid;
+    int64_t nid;
+    double cost;
+} path_element;
+
+/*************************************************************************/
+#endif

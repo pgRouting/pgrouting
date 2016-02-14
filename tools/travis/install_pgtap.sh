@@ -20,7 +20,7 @@ wget https://github.com/theory/pgtap/archive/master.zip
 unzip master.zip
 cd pgtap-master
 make
-make installcheck
+#make installcheck
 sudo make install
 
 #sh test_pgtap.sh

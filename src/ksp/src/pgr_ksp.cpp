@@ -24,9 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
-// #ifdef unlink
-// #undef unlink
-// #endif
+#ifdef unlink
+#undef unlink
+#endif
 #endif
 
 
@@ -73,7 +73,7 @@ Pgr_ksp< G >::Yen(G &graph,
         m_ResultSet.erase(m_ResultSet.begin());
     }
     std::deque<Path> l_ResultList(m_Heap.begin(), m_Heap.end());
-    if (!heap_paths && l_ResultList.size() > K)
+    if (!heap_paths && l_ResultList.size() > (size_t) K)
         l_ResultList.resize(K);
     return l_ResultList;
 }

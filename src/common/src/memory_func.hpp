@@ -21,10 +21,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+#include <stdlib.h>
 
 template <typename T>
 T*
-get_memory(size_t size, T *ptr){
+get_memory(std::size_t size, T *ptr){
     if( !ptr ){
         ptr = (T*) malloc(size * sizeof(T));
     } else {
@@ -35,7 +36,7 @@ get_memory(size_t size, T *ptr){
 
 template <typename T>
 T*
-noResult(size_t *count, T *ptr) {
+noResult(std::size_t *count, T *ptr) {
     (*count) = 0;
     if (ptr)
         free(ptr);

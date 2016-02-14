@@ -53,7 +53,7 @@ extern "C" {
             int64_t start_pid,
 
             int64_t  *end_pidsArr,
-            int size_end_pidsArr,
+            size_t size_end_pidsArr,
 
             char driving_side,
             bool details,

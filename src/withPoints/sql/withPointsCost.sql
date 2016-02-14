@@ -45,7 +45,7 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
 RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
-    RETURN query SELECT -$3, -$4, a.agg_cost
+    RETURN query SELECT $3, $4, a.agg_cost
         FROM _pgr_withPoints($1, $2, $3, $4, $5, $6, TRUE, TRUE) AS a;
 END
 $BODY$
@@ -71,7 +71,7 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
 RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
-    RETURN query SELECT -$3, a.end_pid, a.agg_cost
+    RETURN query SELECT $3, a.end_pid, a.agg_cost
         FROM _pgr_withPoints($1, $2, $3, $4, $5,  $6, TRUE, TRUE) AS a;
 END
 $BODY$
@@ -97,7 +97,7 @@ CREATE OR REPLACE FUNCTION pgr_withPointsCost(
 RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
-    RETURN query SELECT a.start_pid, -$4, a.agg_cost
+    RETURN query SELECT a.start_pid, $4, a.agg_cost
         FROM _pgr_withPoints($1, $2, $3, $4, $5,  $6, TRUE, TRUE) AS a;
 END
 $BODY$

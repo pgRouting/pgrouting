@@ -25,6 +25,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
+#ifdef unlink
+#undef unlink
+#endif
 #endif
 
 
@@ -38,16 +41,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
-                       int64_t  start_vertex, int64_t  end_vertex,
-                       int k, bool directedFlag, bool heap_paths,
-                       General_path_element_t **ksp_path, size_t *path_count,
-                       char ** err_msg) {
+int  do_pgr_ksp(
+        pgr_edge_t  *data_edges, size_t total_tuples,
+        int64_t  start_vertex, int64_t  end_vertex,
+        int k, bool directedFlag, bool heap_paths,
+        General_path_element_t **ksp_path, size_t *path_count,
+        char ** err_msg) {
     try {
         std::ostringstream log;
 
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const int initial_size = total_tuples;
+        const auto initial_size = total_tuples;
 
         std::deque< Path > paths;
 
@@ -64,7 +68,7 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
         }
 
 
-        int count(count_tuples(paths));
+        auto count(count_tuples(paths));
 
         if (count == 0) {
             *err_msg = strdup(
@@ -77,7 +81,7 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
         *ksp_path = NULL;
         *ksp_path = get_memory(count, (*ksp_path));
 
-        int sequence = 0;
+        size_t sequence = 0;
         int route_id = 0;
         for (const auto &path : paths) {
             if (path.size() > 0)

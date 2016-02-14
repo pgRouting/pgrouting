@@ -27,6 +27,12 @@
  *
  *  ********************************************************************PGR-GNU*/
 
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
+
 
 #include <vector>
 #include <algorithm>
@@ -66,10 +72,10 @@ TSP::D(size_t i, size_t j) {
 
 void
 TSP::update(Ids new_order) {
-    double blength = dist.pathLength(new_order);
-    if (bestlen < blength) {
+    auto blength = dist.pathCost(new_order);
+    if (bestCost < blength) {
         border = new_order;
-        bestlen = blength;
+        bestCost = blength;
     }
 }
 
@@ -280,12 +286,11 @@ TSP::doThreeWay(Path p) {
  */
 double
 TSP::getReverseCost(Path p) {
-    int a, b, c, d;
 
-    a = iorder[MOD(p[0] - 1, n)];
-    b = iorder[p[0]];
-    c = iorder[p[1]];
-    d = iorder[MOD(p[1] + 1, n)];
+    auto a = iorder[MOD(p[0] - 1, n)];
+    auto b = iorder[p[0]];
+    auto c = iorder[p[1]];
+    auto d = iorder[MOD(p[1] + 1, n)];
 
     return (D(d,b) + D(c,a) - D(a,b) - D(c,d));
     /* add cost between c and b if non symetric TSP */ 
@@ -312,15 +317,13 @@ TSP::doReverse(Path p) {
 void
 TSP::annealing() {
     Path   p;
-    int    numOnPath, numNotOnPath;
-    double    pathlen;
-    double energyChange;
+    size_t    numOnPath, numNotOnPath;
 
-    pathlen = dist.pathLength(iorder); 
+    double pathCost(dist.pathCost(iorder));
     const double T_INIT = 100.0;
     const double FINAL_T = 0.1;
     const double COOLING = 0.9; /* to lower down T (< 1) */
-    const size_t TRIES_PER_T = 500 * n;
+    const size_t TRIES_PER_T(500 * n);
     const size_t IMPROVED_PATH_PER_T = 60 * n;
 
     /* annealing schedule */
@@ -344,20 +347,20 @@ TSP::annealing() {
                     p[2] = MOD(rand(numNotOnPath) + p[1] + 1, n);
                 } while (p[0] == MOD(p[2] + 1, n)); /* avoids a non-change */
 
-                energyChange = getThreeWayCost(p);
+                auto energyChange = getThreeWayCost(p);
                 // if (energyChange < 0 || RREAL < exp(-energyChange / T) )
                 if (energyChange < 0 || std::rand() < exp(-energyChange / static_cast<double>(T)) ) {
                     pathchg++;
-                    pathlen += energyChange;
+                    pathCost += energyChange;
                     doThreeWay(p);
                 }
 
             } else {
                 /* path Reverse */
-                energyChange = getReverseCost(p);
+                auto energyChange = getReverseCost(p);
                 if (energyChange < 0 || std::rand() < exp(-energyChange / static_cast<double>(T)) ) {
                     pathchg++;
-                    pathlen += energyChange;
+                    pathCost += energyChange;
                     doReverse(p); 
                 }
             }

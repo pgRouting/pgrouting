@@ -3,6 +3,24 @@ SELECT * FROM pgr_johnson(
     'SELECT source, target, cost FROM edge_table WHERE id < 5
          ORDER BY id'
 );
+NOTICE:  Fetching column info of id
+NOTICE:  Column id not found
+NOTICE:  Fetching column info of source
+NOTICE:  Column source found
+NOTICE:  Fetching column info of target
+NOTICE:  Column target found
+NOTICE:  Fetching column info of cost
+NOTICE:  Column cost found
+NOTICE:  Fetching column info of reverse_cost
+NOTICE:  Column reverse_cost not found
+NOTICE:  Variable: source Value: 1
+NOTICE:  Variable: target Value: 2
+NOTICE:  Variable: source Value: 2
+NOTICE:  Variable: target Value: 3
+NOTICE:  Variable: source Value: 3
+NOTICE:  Variable: target Value: 4
+NOTICE:  Variable: source Value: 2
+NOTICE:  Variable: target Value: 5
  start_vid | end_vid | agg_cost 
 -----------+---------+----------
          1 |       2 |        1
@@ -16,6 +34,24 @@ SELECT * FROM pgr_johnson(
          ORDER BY id',
     false
 );
+NOTICE:  Fetching column info of id
+NOTICE:  Column id not found
+NOTICE:  Fetching column info of source
+NOTICE:  Column source found
+NOTICE:  Fetching column info of target
+NOTICE:  Column target found
+NOTICE:  Fetching column info of cost
+NOTICE:  Column cost found
+NOTICE:  Fetching column info of reverse_cost
+NOTICE:  Column reverse_cost not found
+NOTICE:  Variable: source Value: 1
+NOTICE:  Variable: target Value: 2
+NOTICE:  Variable: source Value: 2
+NOTICE:  Variable: target Value: 3
+NOTICE:  Variable: source Value: 3
+NOTICE:  Variable: target Value: 4
+NOTICE:  Variable: source Value: 2
+NOTICE:  Variable: target Value: 5
  start_vid | end_vid | agg_cost 
 -----------+---------+----------
          1 |       2 |        1

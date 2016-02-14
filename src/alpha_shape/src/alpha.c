@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#include "../../common/src/pgr_types.h"
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -165,16 +166,16 @@ fetch_vertex(HeapTuple *tuple, TupleDesc *tupdesc,
   target_vertex->y = DatumGetFloat8(binval);
 }
 
-static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, int *res_count)
+static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *res_count)
 {
 
   int SPIcode;
   void *SPIplan;
   Portal SPIportal;
   bool moredata = TRUE;
-  int ntuples;
+  uint32_t ntuples;
   vertex_t *vertices = NULL;
-  int total_tuples = 0;
+  uint32_t total_tuples = 0;
   vertex_columns_t vertex_columns = {.id= -1, .x= -1, .y= -1};
   char *err_msg;
   int ret = -1;
@@ -226,7 +227,7 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, int *res
 
       if (ntuples > 0) 
         {
-          int t;
+          uint32_t t;
           SPITupleTable *tuptable = SPI_tuptable;
           TupleDesc tupdesc = SPI_tuptable->tupdesc;
                 
@@ -288,8 +289,8 @@ PG_FUNCTION_INFO_V1(alphashape);
 Datum alphashape(PG_FUNCTION_ARGS)
 {
   FuncCallContext      *funcctx;
-  int                  call_cntr;
-  int                  max_calls;
+  uint32_t                  call_cntr;
+  uint32_t                  max_calls;
   TupleDesc            tuple_desc;
   vertex_t     *res = 0;
                     
@@ -297,7 +298,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
   if (SRF_IS_FIRSTCALL())
     {
       MemoryContext   oldcontext;
-      int res_count;
+      size_t res_count;
                             
       // XXX profiling messages are not thread safe
       profstart(prof_total);
@@ -314,7 +315,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
 
       /* total number of tuples to be returned */
       PGR_DBG("Conting tuples number\n");
-      funcctx->max_calls = res_count;
+      funcctx->max_calls = (uint32_t)res_count;
       funcctx->user_fctx = res;
 
       PGR_DBG("Total count %i", res_count);

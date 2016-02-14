@@ -24,8 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 // #define DEBUG 1
-#include <unistd.h>
+//#include <unistd.h>
 
+#include "./../../common/src/pgr_types.h"
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -36,7 +37,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "./../../common/src/debug_macro.h"
-#include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./ksp_driver.h"
@@ -59,7 +59,7 @@ void compute(char* sql, int64_t start_vertex,
          General_path_element_t **ksp_path, size_t *path_count) {
   pgr_SPI_connect();
   pgr_edge_t *edges = NULL;
-  int64_t total_tuples = 0;
+  size_t total_tuples = 0;
 
   char *err_msg = NULL;
 
@@ -104,8 +104,8 @@ PGDLLEXPORT Datum
 #endif  // _MSC_VER
 kshortest_path(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    size_t               call_cntr;
-    size_t               max_calls;
+    uint32_t               call_cntr;
+    uint32_t               max_calls;
     TupleDesc            tuple_desc;
     General_path_element_t      *path;
     //  void * toDel;
@@ -138,7 +138,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
         PGR_DBG("Total number of tuples to be returned %ld \n", path_count);
 
         /* total number of tuples to be returned */
-        funcctx->max_calls = path_count;
+        funcctx->max_calls = (uint32_t)path_count;
         funcctx->user_fctx = path;
 
         /* Build a tuple descriptor for our result type */

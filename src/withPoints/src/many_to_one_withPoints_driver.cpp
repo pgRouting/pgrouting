@@ -59,21 +59,16 @@ extern "C" {
 
 int
 do_pgr_many_to_one_withPoints(
-        pgr_edge_t  *edges,
-        size_t total_edges,
-        Point_on_edge_t  *points_p,
-        size_t total_points,
-        pgr_edge_t  *edges_of_points,
-        size_t total_edges_of_points,
-        int64_t  *start_pidsArr,
-        int size_start_pidsArr,
-        int64_t end_pid,
+        pgr_edge_t  *edges,                     size_t total_edges,
+        Point_on_edge_t  *points_p,             size_t total_points,
+        pgr_edge_t  *edges_of_points,           size_t total_edges_of_points,
+        int64_t  *start_pidsArr,                size_t size_start_pidsArr,
+        int64_t end_vid,
         char driving_side,
         bool details,
         bool directed,
         bool only_cost,
-        General_path_element_t **return_tuples,
-        size_t *return_count,
+        General_path_element_t **return_tuples, size_t *return_count,
         char ** err_msg){
     std::ostringstream log;
     try {
@@ -98,29 +93,11 @@ do_pgr_many_to_one_withPoints(
                 driving_side,
                 new_edges);
 
-        int64_t end_vid = 0;
 
-        std::set< int64_t > start_points(start_pidsArr, start_pidsArr + size_start_pidsArr);
-        std::set< int64_t > start_vertices;
-
-        for (const auto point : points) {
-            if (point.pid == end_pid) {
-                end_vid = point.vertex_id;
-                break;
-            }
-        }
-
-        for (const auto &start_pid : start_points) {
-            for (const auto point : points) {
-                if (point.pid == start_pid) {
-                    start_vertices.insert(point.vertex_id);
-                    break;
-                }
-            }
-        }
+        std::set< int64_t > start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const int initial_size = total_edges;
+        const auto initial_size = total_edges;
 
         std::deque< Path > paths;
 
@@ -139,11 +116,11 @@ do_pgr_many_to_one_withPoints(
             pgr_dijkstra(undigraph, paths, start_vertices, end_vid, only_cost);
         }
 
-
+#if 0
         for (auto &path :paths) {
             adjust_pids(points, path);
         }
-
+#endif
         if (!details) {
             for (auto &path :paths) {
                 eliminate_details(path, edges_to_modify);
@@ -154,7 +131,7 @@ do_pgr_many_to_one_withPoints(
          *  order paths based on the start_pid
          */
         std::sort(paths.begin(), paths.end(), [](const Path &a,const  Path &b) {
-                return b.start_id() < a.start_id();   
+                return a.start_id() < b.start_id();   
                 });
 
         size_t count(0);

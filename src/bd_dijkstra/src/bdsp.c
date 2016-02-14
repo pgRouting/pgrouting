@@ -25,6 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-MIT*/
 
+#include "bdsp.h"
+
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -35,7 +37,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 
-Datum bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(bidir_dijkstra_shortest_path);
+#ifndef _MSC_VER
+Datum
+#else  // _MSC_VER
+PGDLLEXPORT Datum
+#endif
+bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS);
+
+
 
 
 #undef DEBUG
@@ -43,7 +53,6 @@ Datum bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS);
 #include "../../common/src/pgr_types.h"
 #include "../../common/src/postgres_connection.h"
 
-#include "bdsp.h"
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
@@ -297,8 +306,11 @@ static int compute_bidirsp(char* sql, int start_vertex,
 }
 
 
-PG_FUNCTION_INFO_V1(bidir_dijkstra_shortest_path);
+#ifndef _MSC_VER
 Datum
+#else  // _MSC_VER
+PGDLLEXPORT Datum
+#endif
 bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
 {
 

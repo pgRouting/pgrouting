@@ -61,7 +61,8 @@ int check_points(std::vector< Point_on_edge_t > &points,
      * deleting duplicate points
      */
     std::sort(points.begin(), points.end(),
-            [](const Point_on_edge_t &a, const  Point_on_edge_t &b) {
+            [](const Point_on_edge_t &a, const  Point_on_edge_t &b)
+           -> bool {
             if (a.pid != b.pid) return a.pid < b.pid;
             if (a.edge_id != b.edge_id) return a.edge_id < b.edge_id;
             if (a.fraction != b.fraction) return a.fraction < b.fraction;

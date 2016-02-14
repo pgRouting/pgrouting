@@ -37,16 +37,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
-#include <cassert>
 #include "./pgr_dijkstra.hpp"
 #include "./pgr_withPoints.hpp"
 #include "./one_to_one_withPoints_driver.h"
 
-// #define DEBUG
+#define DEBUG
 
-extern "C" {
-#include "./../../common/src/pgr_types.h"
-}
 
 #include "./../../common/src/memory_func.hpp"
 
@@ -61,12 +57,9 @@ extern "C" {
 
 int
 do_pgr_withPoints(
-        pgr_edge_t  *edges,
-        size_t total_edges,
-        Point_on_edge_t  *points_p,
-        size_t total_points,
-        pgr_edge_t  *edges_of_points,
-        size_t total_edges_of_points,
+        pgr_edge_t  *edges,           size_t total_edges,
+        Point_on_edge_t  *points_p,   size_t total_points,
+        pgr_edge_t  *edges_of_points, size_t total_edges_of_points,
         int64_t start_pid,
         int64_t end_pid,
         bool directed,
@@ -108,8 +101,9 @@ do_pgr_withPoints(
                 new_edges,
                 log);
 
-        int64_t start_vid = 0;
-        int64_t end_vid = 0;
+        int64_t start_vid(start_pid);
+        int64_t end_vid(end_pid);
+#if 0
         for (const auto point : points) {
             if (point.pid == start_pid) {
                 start_vid = point.vertex_id;
@@ -119,10 +113,11 @@ do_pgr_withPoints(
             }
 
         }
+#endif
         log << "start_vid" << start_vid << "\n";
         log << "end_vid" << end_vid << "\n";
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const int initial_size = total_edges;
+        const auto initial_size = total_edges;
 
         Path path;
 
@@ -148,7 +143,7 @@ do_pgr_withPoints(
         }
 
         path.print_path(log);
-        adjust_pids(points, path);
+        //adjust_pids(points, path);
         path.print_path(log);
 
         size_t count(path.size());

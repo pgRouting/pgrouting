@@ -125,7 +125,6 @@ typedef struct distance_columns
 
 //float DISTANCE[MAX_TOWNS][MAX_TOWNS];
 //float x[MAX_TOWNS],y[MAX_TOWNS];
-int total_tuples;
 
 static char *
 text2char(text *in)
@@ -178,7 +177,7 @@ fetch_distance_columns(SPITupleTable *tuptable, distance_columns_t *distance_col
 
 static void
 fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc, 
-			   distance_columns_t *distance_columns, vrp_cost_element_t *dist, int t)
+			   distance_columns_t *distance_columns, vrp_cost_element_t *dist, size_t t)
 {
 	Datum binval;
 	bool isnull;
@@ -275,7 +274,7 @@ fetch_order_columns(SPITupleTable *tuptable, order_columns_t *order_columns)
 
 static void
 fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
-			order_columns_t *order_columns, vrp_orders_t *order, int t)
+			order_columns_t *order_columns, vrp_orders_t *order, size_t t)
 {
 	Datum binval;
 	bool isnull;
@@ -290,7 +289,7 @@ fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
 	//  elog(ERROR, "id contains a null value");
 	//
 	//order->id = DatumGetInt32(binval);
-	order->id = t+1;
+	order->id = (int)t + 1;
 
 	PGR_DBG("id = %i\n", order->id);
 
@@ -375,7 +374,7 @@ fetch_vehicle_columns(SPITupleTable *tuptable, vehicle_columns_t *vehicle_column
 
 static void
 fetch_vehicle(HeapTuple *tuple, TupleDesc *tupdesc,
-			  vehicle_columns_t *vehicle_columns, vrp_vehicles_t *vehicle, int t)
+			  vehicle_columns_t *vehicle_columns, vrp_vehicles_t *vehicle, size_t t)
 {
 	Datum binval;
 	bool isnull;
@@ -450,7 +449,7 @@ static int prepare_query(Portal *SPIportal, char* sql)
 static int solve_vrp(char* orders_sql, char* vehicles_sql,
 					  char* dist_sql,
 					  int depot,
-					  vrp_result_element_t** path, int *path_count)
+					  vrp_result_element_t** path, size_t *path_count)
 {
 	int SPIcode;
 
@@ -460,9 +459,11 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 	// Portal SPIportal_p;
 
 	bool moredata = TRUE;
-	int ntuples;
+	size_t ntuples;
 
-    int order_num, vehicle_num, dist_num;
+    size_t order_num;
+    size_t vehicle_num;
+    size_t dist_num;
 
 	vrp_vehicles_t *vehicles=NULL;
 	vehicle_columns_t vehicle_columns = {.vehicle_id = -1, .capacity = -1};
@@ -485,7 +486,6 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 	int prep = -1, con = -1;
 
 	//int total_tuples = 0;
-	total_tuples = 0;
 	order_num = 0;
 	vehicle_num = 0;
 
@@ -546,12 +546,11 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 
 		if (ntuples > 0)
 		{
-			int t;
 			SPITupleTable *tuptable = SPI_tuptable;
 			TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
 			PGR_DBG("Got tuple desc\n");
-
+            size_t t;
 			for (t = 0; t < ntuples; t++)
 			{
 				HeapTuple tuple = tuptable->vals[t];
@@ -625,12 +624,12 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 
 		if (ntuples > 0)
 		{
-			int t;
 			SPITupleTable *tuptable = SPI_tuptable;
 			TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
 			PGR_DBG("Got tuple desc\n");
 
+            size_t t;
 			for (t = 0; t < ntuples; t++)
 			{
 				HeapTuple tuple = tuptable->vals[t];
@@ -691,12 +690,11 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 
 		if (ntuples > 0)
 		{
-			int t;
 			SPITupleTable *tuptable = SPI_tuptable;
 			TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
 			PGR_DBG("Got tuple desc\n");
-
+            size_t t;
 			for (t = 0; t < ntuples; t++)
 			{
 				HeapTuple tuple = tuptable->vals[t];
@@ -749,7 +747,6 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 		path, path_count, &err_msg);
 
 	//ret = -1;
-	total_tuples = *path_count;
 	//elog(NOTICE, "vrp solved! ret: %d, path_count: %d", ret, *path_count);
 	// int pp;
 /*
@@ -782,8 +779,8 @@ Datum
 vrp(PG_FUNCTION_ARGS)
 {
 	FuncCallContext     *funcctx;
-	int                  call_cntr;
-	int                  max_calls;
+	uint32_t                  call_cntr;
+	uint32_t                  max_calls;
 	TupleDesc            tuple_desc;
 	vrp_result_element_t         *path;
 
@@ -793,7 +790,7 @@ vrp(PG_FUNCTION_ARGS)
 		MemoryContext   oldcontext;
 		//int path_count;
 		// int ret=-1;
-		int path_count = 0;
+		size_t path_count = 0;
 
 		// XXX profiling messages are not thread safe
 		profstart(prof_total);
@@ -825,7 +822,7 @@ vrp(PG_FUNCTION_ARGS)
         /* total number of tuples to be returned */
 		//PGR_DBG("Counting tuples number\n");
 
-		funcctx->max_calls = total_tuples;
+		funcctx->max_calls = (uint32_t)path_count;
 
 		funcctx->user_fctx = path;
 

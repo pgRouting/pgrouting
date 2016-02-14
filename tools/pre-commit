@@ -15,7 +15,6 @@
 # The VERSION file is always one commit behind HEAD
 # ------------------------------------------------------------------------------
 
-#VERSION=pgRouting-2.2-dev
-COMMIT=`git rev-parse --short HEAD`
+VERSION=`git describe --tags --long`
 BRANCH=`git branch | grep '*' | awk '{print $2}'`
-echo $VERSION $COMMIT $BRANCH > $GIT_DIR/../VERSION
+echo $VERSION $BRANCH > $GIT_DIR/../VERSION

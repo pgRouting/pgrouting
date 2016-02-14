@@ -31,21 +31,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-void
-do_pgr_driving_many_to_dist(pgr_edge_t  * edges, int64_t total_tuples,
-                      int64_t  *start_vertex, int s_len,
-                      float8 distance,
-                      bool directed,
-                      bool equicost,
-                      General_path_element_t **ret_path, size_t *path_count,
-                      char ** err_msg);
+    void do_pgr_driving_many_to_dist(
+            pgr_edge_t  * edges, size_t total_tuples,
+            int64_t  *start_vertex, size_t s_len,
+            float8 distance,
+            bool directed,
+            bool equicost,
+            General_path_element_t **ret_path, size_t *path_count,
+            char ** err_msg);
 
-void
-do_pgr_driving_distance(pgr_edge_t  * edges, int64_t total_tuples,
-                      int64_t  start_vertex, float8 distance,
-                      bool directed,
-                      General_path_element_t **ret_path, size_t *path_count,
-                      char ** err_msg);
+    void do_pgr_driving_distance(
+            pgr_edge_t  * edges, size_t total_tuples,
+            int64_t  start_vertex, double distance,
+            bool directed,
+            General_path_element_t **ret_path, size_t *path_count,
+            char ** err_msg);
 
 #ifdef __cplusplus
 }

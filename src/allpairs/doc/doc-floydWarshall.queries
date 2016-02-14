@@ -2,6 +2,28 @@
 SELECT * FROM pgr_floydWarshall(
     'SELECT id, source, target, cost FROM edge_table where id < 5'
 );
+NOTICE:  Fetching column info of id
+NOTICE:  Column id found
+NOTICE:  Fetching column info of source
+NOTICE:  Column source found
+NOTICE:  Fetching column info of target
+NOTICE:  Column target found
+NOTICE:  Fetching column info of cost
+NOTICE:  Column cost found
+NOTICE:  Fetching column info of reverse_cost
+NOTICE:  Column reverse_cost not found
+NOTICE:  Variable: id Value: 1
+NOTICE:  Variable: source Value: 1
+NOTICE:  Variable: target Value: 2
+NOTICE:  Variable: id Value: 2
+NOTICE:  Variable: source Value: 2
+NOTICE:  Variable: target Value: 3
+NOTICE:  Variable: id Value: 3
+NOTICE:  Variable: source Value: 3
+NOTICE:  Variable: target Value: 4
+NOTICE:  Variable: id Value: 4
+NOTICE:  Variable: source Value: 2
+NOTICE:  Variable: target Value: 5
  start_vid | end_vid | agg_cost 
 -----------+---------+----------
          1 |       2 |        1
@@ -14,6 +36,28 @@ SELECT * FROM pgr_floydWarshall(
     'SELECT id, source, target, cost FROM edge_table where id < 5',
     false
 );
+NOTICE:  Fetching column info of id
+NOTICE:  Column id found
+NOTICE:  Fetching column info of source
+NOTICE:  Column source found
+NOTICE:  Fetching column info of target
+NOTICE:  Column target found
+NOTICE:  Fetching column info of cost
+NOTICE:  Column cost found
+NOTICE:  Fetching column info of reverse_cost
+NOTICE:  Column reverse_cost not found
+NOTICE:  Variable: id Value: 1
+NOTICE:  Variable: source Value: 1
+NOTICE:  Variable: target Value: 2
+NOTICE:  Variable: id Value: 2
+NOTICE:  Variable: source Value: 2
+NOTICE:  Variable: target Value: 3
+NOTICE:  Variable: id Value: 3
+NOTICE:  Variable: source Value: 3
+NOTICE:  Variable: target Value: 4
+NOTICE:  Variable: id Value: 4
+NOTICE:  Variable: source Value: 2
+NOTICE:  Variable: target Value: 5
  start_vid | end_vid | agg_cost 
 -----------+---------+----------
          1 |       2 |        1

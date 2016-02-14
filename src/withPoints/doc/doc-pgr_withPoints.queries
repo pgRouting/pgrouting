@@ -4,108 +4,1035 @@ BEGIN
 SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        1, 3);
+        -1, -3);
+NOTICE:  Fetching column info of pid
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column pid found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of edge_id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column edge_id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of fraction
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column fraction found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of side
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column side found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
  seq | path_seq | node | edge | cost | agg_cost 
 -----+----------+------+------+------+----------
-   1 |        1 |   -1 |    4 |  0.6 |        0
-   2 |        2 |    5 |    8 |    1 |      0.6
-   3 |        3 |    6 |    9 |    1 |      1.6
-   4 |        4 |    9 |   16 |    1 |      2.6
-   5 |        5 |    4 |    3 |    1 |      3.6
-   6 |        6 |    3 |    5 |  0.6 |      4.6
-   7 |        7 |   -3 |   -1 |    0 |      5.2
-(7 rows)
+   1 |        1 |   -1 |    1 |  0.6 |        0
+   2 |        2 |    2 |    4 |    1 |      0.6
+   3 |        3 |    5 |    7 |    1 |      1.6
+   4 |        4 |    8 |    6 |  0.7 |      2.6
+   5 |        5 |   -3 |   -1 |    0 |      3.3
+(5 rows)
 
 --e2
 SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        1, 3,
+        -1, 3,
         details := true);
+NOTICE:  Fetching column info of pid
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column pid found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of edge_id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column edge_id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of fraction
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column fraction found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of side
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column side found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean) line 3 at RETURN QUERY
  seq | path_seq | node | edge | cost | agg_cost 
 -----+----------+------+------+------+----------
-   1 |        1 |   -1 |    4 |  0.2 |        0
-   2 |        2 |   -4 |    4 |  0.4 |      0.2
-   3 |        3 |    5 |    8 |    1 |      0.6
-   4 |        4 |    6 |    9 |    1 |      1.6
-   5 |        5 |    9 |   16 |    1 |      2.6
-   6 |        6 |    4 |    3 |    1 |      3.6
-   7 |        7 |    3 |    5 |  0.4 |      4.6
-   8 |        8 |   -2 |    5 |  0.2 |        5
-   9 |        9 |   -3 |   -1 |    0 |      5.2
-(9 rows)
+   1 |        1 |   -1 |    1 |  0.6 |        0
+   2 |        2 |    2 |    4 |  0.7 |      0.6
+   3 |        3 |   -6 |    4 |  0.3 |      1.3
+   4 |        4 |    5 |    8 |    1 |      1.6
+   5 |        5 |    6 |    9 |    1 |      2.6
+   6 |        6 |    9 |   16 |    1 |      3.6
+   7 |        7 |    4 |    3 |    1 |      4.6
+   8 |        8 |    3 |   -1 |    0 |      5.6
+(8 rows)
 
 --e3
 SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        1, ARRAY[3,5]);
+        -1, ARRAY[-3,5]);
+NOTICE:  Fetching column info of pid
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column pid found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of edge_id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column edge_id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of fraction
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column fraction found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of side
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column side found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
  seq | path_seq | end_pid | node | edge | cost | agg_cost 
 -----+----------+---------+------+------+------+----------
-   1 |        1 |      -3 |   -1 |    4 |  0.6 |        0
-   2 |        2 |      -3 |    5 |    8 |    1 |      0.6
-   3 |        3 |      -3 |    6 |    9 |    1 |      1.6
-   4 |        4 |      -3 |    9 |   16 |    1 |      2.6
-   5 |        5 |      -3 |    4 |    3 |    1 |      3.6
-   6 |        6 |      -3 |    3 |    5 |  0.6 |      4.6
-   7 |        7 |      -3 |   -3 |   -1 |    0 |      5.2
-   8 |        1 |      -5 |   -1 |    4 |  0.6 |        0
-   9 |        2 |      -5 |    5 |    8 |    1 |      0.6
-  10 |        3 |      -5 |    6 |    9 |    1 |      1.6
-  11 |        4 |      -5 |    9 |   16 |    1 |      2.6
-  12 |        5 |      -5 |    4 |    3 |    1 |      3.6
-  13 |        6 |      -5 |    3 |    2 |  0.5 |      4.6
-  14 |        7 |      -5 |   -5 |   -1 |    0 |      5.1
-(14 rows)
+   1 |        1 |      -3 |   -1 |    1 |  0.6 |        0
+   2 |        2 |      -3 |    2 |    4 |    1 |      0.6
+   3 |        3 |      -3 |    5 |    7 |    1 |      1.6
+   4 |        4 |      -3 |    8 |    6 |  0.7 |      2.6
+   5 |        5 |      -3 |   -3 |   -1 |    0 |      3.3
+   6 |        1 |       5 |   -1 |    1 |  0.6 |        0
+   7 |        2 |       5 |    2 |    4 |    1 |      0.6
+   8 |        3 |       5 |    5 |   -1 |    0 |      1.6
+(8 rows)
 
 --e4
 SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        ARRAY[1,2], 3);
+        ARRAY[-1,2], -3);
+NOTICE:  Fetching column info of pid
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column pid found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of edge_id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column edge_id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of fraction
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column fraction found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of side
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column side found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,bigint,boolean,character,boolean) line 3 at RETURN QUERY
  seq | path_seq | start_pid | node | edge | cost | agg_cost 
 -----+----------+-----------+------+------+------+----------
-   1 |        1 |        -1 |   -1 |    4 |  0.6 |        0
-   2 |        2 |        -1 |    5 |    8 |    1 |      0.6
-   3 |        3 |        -1 |    6 |    9 |    1 |      1.6
-   4 |        4 |        -1 |    9 |   16 |    1 |      2.6
-   5 |        5 |        -1 |    4 |    3 |    1 |      3.6
-   6 |        6 |        -1 |    3 |    5 |  0.6 |      4.6
-   7 |        7 |        -1 |   -3 |   -1 |    0 |      5.2
-   8 |        1 |        -2 |   -2 |    5 |  0.2 |        0
-   9 |        2 |        -2 |   -3 |   -1 |    0 |      0.2
+   1 |        1 |        -1 |   -1 |    1 |  0.6 |        0
+   2 |        2 |        -1 |    2 |    4 |    1 |      0.6
+   3 |        3 |        -1 |    5 |    7 |    1 |      1.6
+   4 |        4 |        -1 |    8 |    6 |  0.7 |      2.6
+   5 |        5 |        -1 |   -3 |   -1 |    0 |      3.3
+   6 |        1 |         2 |    2 |    4 |    1 |        0
+   7 |        2 |         2 |    5 |    7 |    1 |        1
+   8 |        3 |         2 |    8 |    6 |  0.7 |        2
+   9 |        4 |         2 |   -3 |   -1 |    0 |      2.7
 (9 rows)
 
 --e5
 SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        ARRAY[1,2], ARRAY[3,5]);
+        ARRAY[-1,2], ARRAY[-3,7]);
+NOTICE:  Fetching column info of pid
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column pid found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of edge_id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column edge_id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of fraction
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column fraction found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of side
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column side found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
  seq | path_seq | start_pid | end_pid | node | edge | cost | agg_cost 
 -----+----------+-----------+---------+------+------+------+----------
-   1 |        1 |        -1 |      -3 |   -1 |    4 |  0.6 |        0
-   2 |        2 |        -1 |      -3 |    5 |    8 |    1 |      0.6
-   3 |        3 |        -1 |      -3 |    6 |    9 |    1 |      1.6
-   4 |        4 |        -1 |      -3 |    9 |   16 |    1 |      2.6
-   5 |        5 |        -1 |      -3 |    4 |    3 |    1 |      3.6
-   6 |        6 |        -1 |      -3 |    3 |    5 |  0.6 |      4.6
-   7 |        7 |        -1 |      -3 |   -3 |   -1 |    0 |      5.2
-   8 |        1 |        -1 |      -5 |   -1 |    4 |  0.6 |        0
-   9 |        2 |        -1 |      -5 |    5 |    8 |    1 |      0.6
-  10 |        3 |        -1 |      -5 |    6 |    9 |    1 |      1.6
-  11 |        4 |        -1 |      -5 |    9 |   16 |    1 |      2.6
-  12 |        5 |        -1 |      -5 |    4 |    3 |    1 |      3.6
-  13 |        6 |        -1 |      -5 |    3 |    2 |  0.5 |      4.6
-  14 |        7 |        -1 |      -5 |   -5 |   -1 |    0 |      5.1
-  15 |        1 |        -2 |      -3 |   -2 |    5 |  0.2 |        0
-  16 |        2 |        -2 |      -3 |   -3 |   -1 |    0 |      0.2
-  17 |        1 |        -2 |      -5 |   -2 |    5 |  0.6 |        0
-  18 |        2 |        -2 |      -5 |    6 |    9 |    1 |      0.6
-  19 |        3 |        -2 |      -5 |    9 |   16 |    1 |      1.6
-  20 |        4 |        -2 |      -5 |    4 |    3 |    1 |      2.6
-  21 |        5 |        -2 |      -5 |    3 |    2 |  0.5 |      3.6
-  22 |        6 |        -2 |      -5 |   -5 |   -1 |    0 |      4.1
-(22 rows)
+   1 |        1 |        -1 |      -3 |   -1 |    1 |  0.6 |        0
+   2 |        2 |        -1 |      -3 |    2 |    4 |    1 |      0.6
+   3 |        3 |        -1 |      -3 |    5 |    7 |    1 |      1.6
+   4 |        4 |        -1 |      -3 |    8 |    6 |  0.7 |      2.6
+   5 |        5 |        -1 |      -3 |   -3 |   -1 |    0 |      3.3
+   6 |        1 |        -1 |       7 |   -1 |    1 |  0.6 |        0
+   7 |        2 |        -1 |       7 |    2 |    4 |    1 |      0.6
+   8 |        3 |        -1 |       7 |    5 |    7 |    1 |      1.6
+   9 |        4 |        -1 |       7 |    8 |    6 |    1 |      2.6
+  10 |        5 |        -1 |       7 |    7 |   -1 |    0 |      3.6
+  11 |        1 |         2 |      -3 |    2 |    4 |    1 |        0
+  12 |        2 |         2 |      -3 |    5 |    7 |    1 |        1
+  13 |        3 |         2 |      -3 |    8 |    6 |  0.7 |        2
+  14 |        4 |         2 |      -3 |   -3 |   -1 |    0 |      2.7
+  15 |        1 |         2 |       7 |    2 |    4 |    1 |        0
+  16 |        2 |         2 |       7 |    5 |    7 |    1 |        1
+  17 |        3 |         2 |       7 |    8 |    6 |    1 |        2
+  18 |        4 |         2 |       7 |    7 |   -1 |    0 |        3
+(18 rows)
 
 --q2
 SELECT ('(' || start_pid || ' => ' || end_pid ||') at ' || path_seq || 'th step:')::TEXT AS path_at,
@@ -119,27 +1046,217 @@ SELECT ('(' || start_pid || ' => ' || end_pid ||') at ' || path_seq || 'th step:
         FROM pgr_withPoints(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
             'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-            ARRAY[1,2,3,5], ARRAY[1,2,3,5],
+            ARRAY[1,-1], ARRAY[-2,-3,-6,3,6],
             driving_side := 'r',
             details := true)
-        WHERE node IN (-4,4);
+        WHERE node IN (-6,6);
+NOTICE:  Fetching column info of pid
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column pid found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of edge_id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column edge_id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of fraction
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column fraction found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of side
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column side found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
          path_at         |       status        |  is_a  | id 
 -------------------------+---------------------+--------+----
- (-1 => -2) at 3th step: |  passes in front of | Point  |  4
- (-1 => -2) at 7th step: |  passes in front of | Vertex |  4
- (-1 => -3) at 3th step: |  passes in front of | Point  |  4
- (-1 => -3) at 7th step: |  passes in front of | Vertex |  4
- (-1 => -5) at 3th step: |  passes in front of | Point  |  4
- (-1 => -5) at 7th step: |  passes in front of | Vertex |  4
- (-2 => -5) at 5th step: |  passes in front of | Vertex |  4
- (-3 => -2) at 4th step: |  passes in front of | Vertex |  4
- (-3 => -5) at 4th step: |  passes in front of | Vertex |  4
- (-5 => -1) at 3th step: |  passes in front of | Point  |  4
- (-5 => -2) at 3th step: |  passes in front of | Point  |  4
- (-5 => -2) at 7th step: |  passes in front of | Vertex |  4
- (-5 => -3) at 3th step: |  passes in front of | Point  |  4
- (-5 => -3) at 7th step: |  passes in front of | Vertex |  4
-(14 rows)
+ (-1 => -6) at 4th step: |  visits             | Point  |  6
+ (-1 => -3) at 4th step: |  passes in front of | Point  |  6
+ (-1 => -2) at 4th step: |  passes in front of | Point  |  6
+ (-1 => -2) at 6th step: |  passes in front of | Vertex |  6
+ (-1 => 3) at 4th step:  |  passes in front of | Point  |  6
+ (-1 => 3) at 6th step:  |  passes in front of | Vertex |  6
+ (-1 => 6) at 4th step:  |  passes in front of | Point  |  6
+ (-1 => 6) at 6th step:  |  visits             | Vertex |  6
+ (1 => -6) at 3th step:  |  visits             | Point  |  6
+ (1 => -3) at 3th step:  |  passes in front of | Point  |  6
+ (1 => -2) at 3th step:  |  passes in front of | Point  |  6
+ (1 => -2) at 5th step:  |  passes in front of | Vertex |  6
+ (1 => 3) at 3th step:   |  passes in front of | Point  |  6
+ (1 => 3) at 5th step:   |  passes in front of | Vertex |  6
+ (1 => 6) at 3th step:   |  passes in front of | Point  |  6
+ (1 => 6) at 5th step:   |  visits             | Vertex |  6
+(16 rows)
 
 --q3
 SELECT ('(' || start_pid || ' => ' || end_pid ||') at ' || path_seq || 'th step:')::TEXT AS path_at,
@@ -153,47 +1270,432 @@ SELECT ('(' || start_pid || ' => ' || end_pid ||') at ' || path_seq || 'th step:
         FROM pgr_withPoints(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
             'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-            ARRAY[1,2,3,5], ARRAY[1,2,3,5],
+            ARRAY[1,-1], ARRAY[-2,-3,-6,3,6],
             driving_side := 'l',
             details := true)
-        WHERE node IN (-4,4);
+        WHERE node IN (-6,6);
+NOTICE:  Fetching column info of pid
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column pid found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of edge_id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column edge_id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of fraction
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column fraction found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of side
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column side found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
          path_at         |       status        |  is_a  | id 
 -------------------------+---------------------+--------+----
- (-1 => -2) at 5th step: |  passes in front of | Vertex |  4
- (-1 => -3) at 5th step: |  passes in front of | Vertex |  4
- (-1 => -5) at 5th step: |  passes in front of | Vertex |  4
- (-2 => -1) at 5th step: |  passes in front of | Point  |  4
- (-2 => -5) at 5th step: |  passes in front of | Vertex |  4
- (-3 => -1) at 4th step: |  passes in front of | Point  |  4
- (-3 => -2) at 4th step: |  passes in front of | Vertex |  4
- (-3 => -5) at 4th step: |  passes in front of | Vertex |  4
- (-5 => -2) at 7th step: |  passes in front of | Vertex |  4
- (-5 => -3) at 7th step: |  passes in front of | Vertex |  4
-(10 rows)
+ (-1 => -6) at 4th step: |  visits             | Point  |  6
+ (-1 => -2) at 4th step: |  passes in front of | Vertex |  6
+ (-1 => 3) at 4th step:  |  passes in front of | Vertex |  6
+ (-1 => 6) at 4th step:  |  visits             | Vertex |  6
+ (1 => -6) at 5th step:  |  visits             | Point  |  6
+ (1 => -2) at 5th step:  |  passes in front of | Vertex |  6
+ (1 => 3) at 5th step:   |  passes in front of | Vertex |  6
+ (1 => 6) at 5th step:   |  visits             | Vertex |  6
+(8 rows)
 
 --q4
 SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-        ARRAY[1,2], ARRAY[3,5],
+        ARRAY[-1,2], ARRAY[-3,7],
         directed := false,
         details := true);
+NOTICE:  Fetching column info of pid
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column pid found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of edge_id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column edge_id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of fraction
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column fraction found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of side
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column side found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: pid Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: edge_id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 1
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of id
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column id found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of source
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column source found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of target
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column target found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Fetching column info of reverse_cost
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Column reverse_cost found
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 2
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 3
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 7
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 8
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 5
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 6
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 11
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 12
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 10
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 13
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 4
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 9
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 14
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 15
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: id Value: 18
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: source Value: 16
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
+NOTICE:  Variable: target Value: 17
+CONTEXT:  PL/pgSQL function pgr_withpoints(text,text,anyarray,anyarray,boolean,character,boolean) line 3 at RETURN QUERY
  seq | path_seq | start_pid | end_pid | node | edge | cost | agg_cost 
 -----+----------+-----------+---------+------+------+------+----------
-   1 |        1 |        -1 |      -3 |   -1 |    4 |  0.2 |        0
-   2 |        2 |        -1 |      -3 |   -4 |    4 |  0.4 |      0.2
-   3 |        3 |        -1 |      -3 |    5 |    8 |    1 |      0.6
-   4 |        4 |        -1 |      -3 |    6 |    5 |  0.4 |      1.6
-   5 |        5 |        -1 |      -3 |   -3 |   -1 |    0 |        2
-   6 |        1 |        -1 |      -5 |   -1 |    4 |  0.4 |        0
-   7 |        2 |        -1 |      -5 |   -6 |    2 |  0.5 |      0.4
-   8 |        3 |        -1 |      -5 |   -5 |   -1 |    0 |      0.9
-   9 |        1 |        -2 |      -3 |   -2 |    5 |  0.2 |        0
-  10 |        2 |        -2 |      -3 |   -3 |   -1 |    0 |      0.2
-  11 |        1 |        -2 |      -5 |   -2 |    5 |  0.4 |        0
-  12 |        2 |        -2 |      -5 |    3 |    2 |  0.5 |      0.4
-  13 |        3 |        -2 |      -5 |   -5 |   -1 |    0 |      0.9
-(13 rows)
+   1 |        1 |        -1 |      -3 |   -1 |    1 |  0.6 |        0
+   2 |        2 |        -1 |      -3 |    2 |    4 |  0.7 |      0.6
+   3 |        3 |        -1 |      -3 |   -6 |    4 |  0.3 |      1.3
+   4 |        4 |        -1 |      -3 |    5 |    7 |    1 |      1.6
+   5 |        5 |        -1 |      -3 |    8 |    6 |  0.7 |      2.6
+   6 |        6 |        -1 |      -3 |   -3 |   -1 |    0 |      3.3
+   7 |        1 |        -1 |       7 |   -1 |    1 |  0.6 |        0
+   8 |        2 |        -1 |       7 |    2 |    4 |  0.7 |      0.6
+   9 |        3 |        -1 |       7 |   -6 |    4 |  0.3 |      1.3
+  10 |        4 |        -1 |       7 |    5 |    7 |    1 |      1.6
+  11 |        5 |        -1 |       7 |    8 |    6 |  0.7 |      2.6
+  12 |        6 |        -1 |       7 |   -3 |    6 |  0.3 |      3.3
+  13 |        7 |        -1 |       7 |    7 |   -1 |    0 |      3.6
+  14 |        1 |         2 |      -3 |    2 |    4 |  0.7 |        0
+  15 |        2 |         2 |      -3 |   -6 |    4 |  0.3 |      0.7
+  16 |        3 |         2 |      -3 |    5 |    7 |    1 |        1
+  17 |        4 |         2 |      -3 |    8 |    6 |  0.7 |        2
+  18 |        5 |         2 |      -3 |   -3 |   -1 |    0 |      2.7
+  19 |        1 |         2 |       7 |    2 |    4 |  0.7 |        0
+  20 |        2 |         2 |       7 |   -6 |    4 |  0.3 |      0.7
+  21 |        3 |         2 |       7 |    5 |    7 |    1 |        1
+  22 |        4 |         2 |       7 |    8 |    6 |  0.7 |        2
+  23 |        5 |         2 |       7 |   -3 |    6 |  0.3 |      2.7
+  24 |        6 |         2 |       7 |    7 |   -1 |    0 |        3
+(24 rows)
 
 --q5
 ROLLBACK;

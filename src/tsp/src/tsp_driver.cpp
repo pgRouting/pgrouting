@@ -27,17 +27,19 @@
  *
  *  ******************************************************************** PGR-GNU*/
 
-#if 0
-#include <string.h>    /* memcpy */
-#include <math.h>      /* exp    */
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
 #endif
+
 
 #include <vector>
 #include <algorithm>
 
+#include "./tsp_driver.h"
+
 #include "./Dmatrix.hpp"
 #include "./pgr_tsp.hpp"
-#include "./tsp_driver.h"
 /*
  * Defs
  */

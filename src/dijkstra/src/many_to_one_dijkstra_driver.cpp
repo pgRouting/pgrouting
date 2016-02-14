@@ -68,7 +68,7 @@ do_pgr_many_to_one_dijkstra(
     std::ostringstream log;
     try {
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const int initial_size = total_tuples;
+        const auto initial_size = total_tuples;
 
         std::deque< Path >paths;
         log << "Inserting vertices into a c++ vector structure\n";

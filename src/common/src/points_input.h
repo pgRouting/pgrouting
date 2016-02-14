@@ -29,4 +29,4 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 void pgr_get_points(
         char *points_sql,
         Point_on_edge_t **points,
-        int64_t *total_points);
+        size_t *total_points);

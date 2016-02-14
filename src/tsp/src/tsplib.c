@@ -210,9 +210,9 @@ int findEulerianPath(TSP *tsp)
     maxd   = tsp->maxd;
     n      = tsp->n;
 
-    if (!(mst = (int*) palloc(n * sizeof(int))) ||
-        !(arc = (int*) palloc(n * sizeof(int))) ||
-        !(dis = (DTYPE*) palloc(n * sizeof(DTYPE))) )
+    if (!(mst = (int*) palloc((size_t) n * sizeof(int))) ||
+        !(arc = (int*) palloc((size_t) n * sizeof(int))) ||
+        !(dis = (DTYPE*) palloc((size_t) n * sizeof(DTYPE))) )
     {
         elog(ERROR, "Failed to allocate memory!");
         return -1;
@@ -504,7 +504,7 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
 
     PGR_DBG("sizeof(long)=%d", (int)sizeof(long));
 
-    initRand (seed);
+    initRand((int) seed);
 
 #ifdef DEBUG
     char bufff[2048];
@@ -527,9 +527,9 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     tsp.jorder = NULL;
     tsp.border = NULL;
 
-    if (!(tsp.iorder = (int*) palloc (tsp.n * sizeof(int)))   ||
-        !(tsp.jorder = (int*) palloc (tsp.n * sizeof(int)))   ||
-        !(tsp.border = (int*) palloc (tsp.n * sizeof(int)))   ) {
+    if (!(tsp.iorder = (int*) palloc ((size_t) tsp.n * sizeof(int)))   ||
+        !(tsp.jorder = (int*) palloc ((size_t) tsp.n * sizeof(int)))   ||
+        !(tsp.border = (int*) palloc ((size_t) tsp.n * sizeof(int)))   ) {
             elog(FATAL, "Memory allocation failed!");
             return -1;
         }
@@ -609,7 +609,7 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     }
 
     // copy ids to tsp.jorder so we can rewrite ids
-    memcpy(tsp.jorder, ids, tsp.n * sizeof(int));
+    memcpy(tsp.jorder, ids, (size_t) tsp.n * sizeof(int));
 
     // write reordered ids into ids[]
     // remember at this point jorder is our list if ids

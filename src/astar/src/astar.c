@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#include "../../common/src/pgr_types.h"
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -225,15 +226,15 @@ fetch_edge_astar(HeapTuple *tuple, TupleDesc *tupdesc,
 static int compute_shortest_path_astar(char* sql, int source_vertex_id, 
                        int target_vertex_id, bool directed, 
                        bool has_reverse_cost, 
-                       path_element_t **path, int *path_count) 
+                       path_element_t **path, size_t *path_count) 
 {
 
   void *SPIplan;
   Portal SPIportal;
   bool moredata = TRUE;
-  int ntuples;
+  size_t ntuples;
   edge_astar_t *edges = NULL;
-  int total_tuples = 0;
+  size_t total_tuples = 0;
 
   int v_max_id=0;
   int v_min_id=INT_MAX;  
@@ -286,7 +287,7 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
       }
 
       if (ntuples > 0) {
-          int t;
+          size_t t;
           SPITupleTable *tuptable = SPI_tuptable;
           TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
@@ -386,15 +387,15 @@ Datum
 shortest_path_astar(PG_FUNCTION_ARGS)
 {
   FuncCallContext     *funcctx;
-  int                  call_cntr;
-  int                  max_calls;
+  uint32_t                  call_cntr;
+  uint32_t                  max_calls;
   TupleDesc            tuple_desc;
   path_element_t      *path = 0;
 
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
-      int path_count = 0;
+      size_t path_count = 0;
 #ifdef DEBUG
       int ret;
 #endif
@@ -432,7 +433,7 @@ shortest_path_astar(PG_FUNCTION_ARGS)
 
       /* total number of tuples to be returned */
       PGR_DBG("Conting tuples number\n");
-      funcctx->max_calls = path_count;
+      funcctx->max_calls = (uint32_t)path_count;
       funcctx->user_fctx = path;
 
       PGR_DBG("Path count %i", path_count);

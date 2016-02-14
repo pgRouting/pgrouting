@@ -70,7 +70,7 @@ do_pgr_many_withPointsDD(
         Point_on_edge_t *points_p,          size_t total_points,
         pgr_edge_t      *edges_of_points,   size_t total_edges_of_points,
 
-        int64_t  *start_pids_arr,    int s_len,
+        int64_t  *start_pids_arr,    size_t s_len,
         float8 distance,
 
         char driving_side,
@@ -111,7 +111,8 @@ do_pgr_many_withPointsDD(
                 new_edges,
                 log);
 
-        std::vector< int64_t > start_pids(start_pids_arr, start_pids_arr + s_len);
+        std::set< int64_t > start_vids(start_pids_arr, start_pids_arr + s_len);
+#if 0
         std::set< int64_t > start_vids;
 
         for (const auto start_pid : start_pids) {
@@ -122,11 +123,11 @@ do_pgr_many_withPointsDD(
                 }
             }
         }
-
+#endif
 
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const int initial_size = total_edges;
+        const size_t initial_size = total_edges;
 
         std::deque< Path >paths;
 
@@ -143,9 +144,11 @@ do_pgr_many_withPointsDD(
         }
 
         for (auto &path : paths) {
+#if 0
             path.print_path(log);
 
             adjust_pids(points, path);
+#endif
             path.print_path(log);
 
             if (!details) {
@@ -203,7 +206,7 @@ do_pgr_withPointsDD(
         Point_on_edge_t  *points_p, size_t total_points,
         pgr_edge_t  *edges_of_points, size_t total_edges_of_points,
 
-        int64_t start_pid,
+        int64_t start_vid,
         float8      distance,
 
         char driving_side,
@@ -245,16 +248,17 @@ do_pgr_withPointsDD(
                 new_edges,
                 log);
 
+#if 0
         int64_t start_vid = 0;
         for (const auto point : points) {
             if (point.pid == start_pid) {
                 start_vid = point.vertex_id;
             }
         }
-
+#endif
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const int initial_size = total_edges;
+        const size_t initial_size = total_edges;
 
         Path path;
 
@@ -273,9 +277,11 @@ do_pgr_withPointsDD(
         }
 
 
+#if 0
         path.print_path(log);
         adjust_pids(points, path);
         path.print_path(log);
+#endif
 
         if (!details) {
             eliminate_details_dd(path);
@@ -288,7 +294,7 @@ do_pgr_withPointsDD(
                 {return l.agg_cost < r.agg_cost;});
 
 
-        int count(path.size());
+        auto count(path.size());
 
         if (count == 0) {
             return 0;
@@ -298,7 +304,7 @@ do_pgr_withPointsDD(
         *return_tuples = NULL;
         *return_tuples = get_memory(count, (*return_tuples));
 
-        int sequence = 0;
+        size_t sequence = 0;
         path.get_pg_dd_path(return_tuples, sequence);
 
         if (count != sequence) {

@@ -44,8 +44,8 @@ extern "C" {
 
 void
 do_pgr_driving_many_to_dist(
-        pgr_edge_t  *data_edges, int64_t total_tuples,
-        int64_t  *start_vertex, int s_len,
+        pgr_edge_t  *data_edges, size_t total_tuples,
+        int64_t  *start_vertex, size_t s_len,
         float8 distance,
         bool directedFlag,
         bool equiCostFlag,
@@ -53,7 +53,7 @@ do_pgr_driving_many_to_dist(
         char ** err_msg) {
     try {
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const int initial_size = total_tuples;
+        const auto initial_size = total_tuples;
 
         std::deque< Path >paths;
         std::set< int64_t > start_vertices(start_vertex, start_vertex + s_len);
@@ -77,7 +77,7 @@ do_pgr_driving_many_to_dist(
             return;
         }
         *ret_path = get_memory(count, (*ret_path));
-        int trueCount(collapse_paths(ret_path, paths));
+        auto trueCount(collapse_paths(ret_path, paths));
         *path_count = trueCount;
 
 
@@ -103,13 +103,11 @@ do_pgr_driving_many_to_dist(
 
 void
 do_pgr_driving_distance(
-        pgr_edge_t  *data_edges,
-        int64_t     total_edges,
+        pgr_edge_t  *data_edges, size_t total_edges,
         int64_t     start_vertex,
         float8      distance,
         bool        directedFlag,
-        General_path_element_t **ret_path,
-        size_t                  *path_count,
+        General_path_element_t **ret_path, size_t *path_count,
         char                   **err_msg) {
     std::ostringstream log;
     try {
@@ -122,7 +120,7 @@ do_pgr_driving_distance(
         //  1) start_vertex is in the data_edges  DONE
 
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const int initial_size = total_edges;
+        const auto initial_size = total_edges;
 
         Path path;
 
@@ -148,13 +146,13 @@ do_pgr_driving_distance(
         }
 
         log << "NOTICE: Calculating the number of tuples \n";
-        int count = path.size();
+        auto count = path.size();
 
         log << "NOTICE Count: " << count << " tuples\n";
 
         *ret_path = get_memory(count, (*ret_path));
 
-        int sequence = 0;
+        size_t sequence = 0;
         path.get_pg_dd_path(ret_path, sequence);
         *path_count = count;
 

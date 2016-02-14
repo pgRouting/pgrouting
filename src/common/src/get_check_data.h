@@ -47,7 +47,7 @@ int64_t pgr_SPI_getBigInt(
         TupleDesc *tupdesc,
         Column_info_t info);
 
-float8  pgr_SPI_getFloat8(
+double  pgr_SPI_getFloat8(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info);

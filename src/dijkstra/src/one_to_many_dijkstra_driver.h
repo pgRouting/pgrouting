@@ -47,12 +47,12 @@ extern "C" {
                 size_t total_tuples,
                 int64_t start_vid,
                 int64_t  *end_vidsArr,
-                int size_end_vidsArr,
+                size_t size_end_vidsArr,
                 bool directed,
                 bool only_cost,
                 General_path_element_t **return_tuples,
                 size_t *return_count,
-                char ** err_msg);
+                char **err_msg);
 
 
 #ifdef __cplusplus
