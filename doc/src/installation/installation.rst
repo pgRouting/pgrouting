@@ -57,10 +57,39 @@ Ubuntu packages are available in Launchpad repositories:
 Use `UbuntuGIS-unstable PPA <https://launchpad.net/~ubuntugis/+archive/ubuntugis-unstable>`_ to install PostGIS 2.0.
 
 
-RHEL/CentOS/Fedora
+RHEL/CentOS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Fedora RPM's: https://admin.fedoraproject.org/pkgdb/acls/name/pgRouting
+* Add repositories for dependencies:
+
+  .. code-block:: bash
+
+     wget http://repo.enetres.net/enetres.repo -O /etc/yum.repos.d/enetres.repo
+     wget http://nextgis.ru/programs/centos/nextgis.repo -O /etc/yum.repos.d/nextgis.repo
+     yum install epel-release
+
+* Install PostgreSQL and PostGIS according to `this <https://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS21CentOS6pgdg>`__ instructions.
+
+* Install CGAL:
+
+  .. code-block:: bash
+
+     yum install libCGAL10
+
+* Install pgRouting:
+
+  .. code-block:: bash
+
+     yum install pgrouting_94
+
+More info (and packages for CentOS) can be found `here <https://github.com/nextgis/gis_packages_centos/wiki/Using-this-repo>`__.
+
+
+
+Fedora
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Fedora RPM's: https://admin.fedoraproject.org/pkgdb/package/rpms/pgRouting/
 
 
 FreeBSD

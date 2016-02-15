@@ -42,19 +42,19 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_withPoints(edges_sql, points_sql, start_pid, end_pid)
-    pgr_withPoints(edges_sql, points_sql, start_pid, end_pid, directed, driving_side, details)
-    pgr_withPoints(edges_sql, points_sql, start_pid, end_pids, directed, driving_side, details)
-    pgr_withPoints(edges_sql, points_sql, start_pids, end_pid, directed, driving_side, details)
-    pgr_withPoints(edges_sql, points_sql, start_pids, end_pids, directed, driving_side, details)
-    RETURNS SET OF (seq, [path_seq,] [start_pid,] [end_pid,] node, edge, cost, agg_cost)
+    pgr_withPoints(edges_sql, points_sql, start_vid, end_vid)
+    pgr_withPoints(edges_sql, points_sql, start_vid, end_vid, directed, driving_side, details)
+    pgr_withPoints(edges_sql, points_sql, start_vid, end_vids, directed, driving_side, details)
+    pgr_withPoints(edges_sql, points_sql, start_vids, end_vid, directed, driving_side, details)
+    pgr_withPoints(edges_sql, points_sql, start_vids, end_vids, directed, driving_side, details)
+    RETURNS SET OF (seq, [path_seq,] [start_vid,] [end_vid,] node, edge, cost, agg_cost)
 
 
 Signatures
 ==========
 
 .. index::
-    single: withPoints(edges_sql, points_sql, start_pid, end_pid) -- proposed
+    single: withPoints(edges_sql, points_sql, start_vid, end_vid) -- proposed
 
 Minimal signature
 -----------------
@@ -66,18 +66,18 @@ The minimal signature:
 
 .. code-block:: none
 
-    pgr_withPoints(edges_sql, points_sql, start_pid, end_pid)
+    pgr_withPoints(edges_sql, points_sql, start_vid, end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
 
-:Example:
+:Example: From point 1 to point 3
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --e1
    :end-before: --e2
 
 .. index::
-    single: withPoints(edges_sql, points_sql, start_pid, end_pid, directed, driving_side, details) -- proposed
+    single: withPoints(edges_sql, points_sql, start_vid, end_vid, directed, driving_side, details) -- proposed
 
 One to One
 ----------
@@ -85,18 +85,18 @@ One to One
 
 .. code-block:: none
 
-    pgr_withPoints(edges_sql, points_sql, start_pid, end_pid, directed, driving_side, details)
+    pgr_withPoints(edges_sql, points_sql, start_vid, end_vid, directed, driving_side, details)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
-:Example:
+:Example: From point 1 to vertex 3
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --e2
    :end-before: --e3
 
 .. index::
-    single: withPoints(edges_sql, points_sql, start_pid, end_pids, directed, driving_side, details) -- proposed
+    single: withPoints(edges_sql, points_sql, start_vid, end_vids, directed, driving_side, details) -- proposed
 
 One to Many
 -----------
@@ -104,18 +104,18 @@ One to Many
 
 .. code-block:: none
 
-    pgr_withPoints(edges_sql, points_sql, start_pid, end_pid, directed, driving_side, details)
+    pgr_withPoints(edges_sql, points_sql, start_vid, end_vid, directed, driving_side, details)
     RETURNS SET OF (seq, path_seq, end_pid, node, edge, cost, agg_cost)
 
 
-:Example:
+:Example: From point 1 to point 3 and vertex 5
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --e3
    :end-before: --e4
 
 .. index::
-    single: withPoints(edges_sql, points_sql, start_pids, end_pid, directed, driving_side, details) -- proposed
+    single: withPoints(edges_sql, points_sql, start_vids, end_vid, directed, driving_side, details) -- proposed
 
 Many to One
 -----------
@@ -123,18 +123,18 @@ Many to One
 
 .. code-block:: none
 
-    pgr_withPoints(edges_sql, points_sql, start_pids, end_pid, directed, driving_side, details)
+    pgr_withPoints(edges_sql, points_sql, start_vids, end_vid, directed, driving_side, details)
     RETURNS SET OF (seq, path_seq, start_pid, node, edge, cost, agg_cost)
 
 
-:Example:
+:Example: From point 1 and vertex 2  to point 3
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --e4
    :end-before: --e5
 
 .. index::
-    single: withPoints(edges_sql, points_sql, start_pid, end_pid, directed, driving_side, details) -- proposed
+    single: withPoints(edges_sql, points_sql, start_vid, end_vid, directed, driving_side, details) -- proposed
 
 Many to Many
 ------------
@@ -142,11 +142,11 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_withPoints(edges_sql, points_sql, start_pids, end_pids, directed, driving_side, details)
-    RETURNS SET OF (seq, path_seq, start_pid, end_pid, node, edge, cost, agg_cost)
+    pgr_withPoints(edges_sql, points_sql, start_vids, end_vids, directed, driving_side, details)
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
 
-:Example:
+:Example: From point 1 and vertex 2  to point 3 and vertex 7
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --e5

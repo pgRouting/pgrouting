@@ -25,7 +25,7 @@ To be able to compile pgRouting make sure that the following dependencies are me
 * C and C++0x compilers
 * Postgresql version >= 9.1 
 * PostGIS version >= 2.0 
-* The Boost Graph Library (BGL). Version >= 1.55
+* The Boost Graph Library (BGL). Version >= 1.46
 * CMake >= 2.8.8
 * CGAL >=  4.2
 * (optional, for Documentation) Sphinx >= 1.1 
@@ -78,7 +78,7 @@ For example in trusty 2.1 is provided:
 
 
 
-The Boost Graph Library (BGL). Version >= 1.54
+The Boost Graph Library (BGL). Version >= 1.46
 ----------------------------------------------
 
 trusty provides: 1.54.0
@@ -119,18 +119,32 @@ trusty provides: 1.2.2
     sudo apt-get install texlive
 
 
-pgTap for tests 
----------------------
+pgTap & pg_prove & perl for tests 
+---------------------------------
+
+.. warning:: cmake does not test for this packages.
+
+Installing the tests dependencies:
 
 .. code-block:: none
 
+    sudo apt-get install -y perl
     wget https://github.com/theory/pgtap/archive/master.zip
     unzip master.zip
     cd pgtap-master
     make
     sudo make install
     sudo ldconfig
+    sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
 
+To run the tests:
+
+.. code-block:: none
+
+    tools/testers/algorithm-tester.pl
+    createdb  -U <user> ___pgr___test___
+    sh ./tools/testers/pg_prove_tests.sh <user>
+    dropdb  -U <user> ___pgr___test___
 
 See Also
 -------------------------------------------------------------------------------

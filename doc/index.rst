@@ -30,11 +30,9 @@ General
 .. toctree::
     :maxdepth: 2
 
-    src/introduction/index
     src/introduction/introduction
-    src/installation/index
+    src/installation/installation
     src/installation/build
-    src/installation/install-dependencies
     src/introduction/support
 
 
@@ -49,20 +47,31 @@ Tutorial
   - :ref:`analytics` for an overview of the analysis of a graph.
   - :ref:`custom_query` that is used in the routing algorithms.
   - :ref:`performance` to improve your performance.
-  - :ref:`sampledata` that is used in the examples of this manual.
   - :ref:`recipes`
+  - :ref:`developer`
 
+For a more complete introduction how to build a routing application read the `pgRouting Workshop <http://workshop.pgrouting.org>`_.
 
 
 .. toctree::
    :hidden:
 
    src/tutorial/index
-   src/developer/index
-   src/developer/sampledata
    src/recipes/index
+   src/developer/developer_guide
+   
+*******************************************************************************
+Sample Data
+*******************************************************************************
 
-For a more complete introduction how to build a routing application read the `pgRouting Workshop <http://workshop.pgrouting.org>`_.
+  - :ref:`sampledata` that is used in the examples of this manual.
+
+.. toctree::
+   :hidden:
+
+   src/developer/sampledata
+
+
 
 *******************************************************************************
 Functions

@@ -82,7 +82,7 @@ script:
 
 after_script: 
   - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION postgres
-  - ./tools/travis/pg_prove_tests.sh postgres
+  - ./tools/testers/pg_prove_tests.sh postgres
 
 after_success:
   # note: right now is only postgis 2.2

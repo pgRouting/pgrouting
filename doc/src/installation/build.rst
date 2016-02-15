@@ -21,7 +21,7 @@ To be able to compile pgRouting make sure that the following dependencies are me
 * C and C++0x compilers
 * Postgresql version >= 9.1 
 * PostGIS version >= 2.0 
-* The Boost Graph Library (BGL). Version >= 1.55
+* The Boost Graph Library (BGL). Version >= 1.46
 * CMake >= 2.8.8
 * CGAL >=  4.2
 * (optional, for Documentation) Sphinx >= 1.1 
@@ -112,5 +112,12 @@ The following instructions start from *path/to/pgrouting*
 	$ make
 	$ sudo make install
 
+Dependencies Installation
+===============================================================================
+
+.. toctree::
+    :maxdepth: 1
+
+    install-dependencies
 
 

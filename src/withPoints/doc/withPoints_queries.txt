@@ -34,7 +34,7 @@ Column            Type              Description
 ============ ================= =================================================
 **pid**      ``ANY-INTEGER``   (optional) Identifier of the point. Can not be NULL. If column not present, a sequential identifier will be given automatically.
 **eid**      ``ANY-INTEGER``   Identifier of the "closest" edge to the point.
-**fraction** ``ANY-NUMERICAL`` Value in [0,1] that indicates the relative postition from the first end point of the edge.
+**fraction** ``ANY-NUMERICAL`` Value in <0,1> that indicates the relative postition from the first end point of the edge.
 **side**     ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the point is:
                                  - In the right, left of the edge or
                                  - If it doesn't matter with 'b' or NULL.

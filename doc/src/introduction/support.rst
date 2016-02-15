@@ -12,7 +12,7 @@
 Support
 ===============================================================================
 
-pgRouting community support is available through `website <http://www.pgrouting.org>`_, `documentation <http://docs.pgrouting.org>`_, tutorials, mailing lists and others. If you’re looking for :ref:`commercial support <support_commercial>`, find below a list of companies providing pgRouting development and consulting services.
+pgRouting community support is available through the `pgRouting website <http://pgrouting.org/support.html>`_, `documentation <http://docs.pgrouting.org>`_, tutorials, mailing lists and others. If you’re looking for :ref:`commercial support <support_commercial>`, find below a list of companies providing pgRouting development and consulting services.
 
 
 Reporting Problems
@@ -67,6 +67,9 @@ For users who require professional support, development and consulting services,
    * - iMaptools
      - United States
      - http://imaptools.com
+   * - Paaragon Corporation
+     - United States
+     - http://www.paragoncorporation.com/
    * - Orkney Inc.
      - Japan
      - http://www.orkney.co.jp
