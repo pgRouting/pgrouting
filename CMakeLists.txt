@@ -228,12 +228,11 @@ if(APPLE)
   endif()
 
 elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGWIN)
-    #set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -std=gnu99 -fPIC -O2 -g -Wall -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes -frounding-math")
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -std=gnu99 -fPIC -O2 -g -Wall -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes -frounding-math")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC -O2 -g -Wall -Wconversion -pedantic -fmax-errors=10 -Wextra  -frounding-math -Wno-deprecated")
 
-    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC -O2 -g -Wconversion -Wall -pedantic -fmax-errors=10 -Wextra  -frounding-math -Wno-deprecated")
-
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -Wall -frounding-math")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -Wall -std=c++0x -frounding-math -Wno-deprecated")
+    #set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -Wall -frounding-math")
+    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -Wall -std=c++0x -frounding-math -Wno-deprecated")
 
 elseif(WIN32)
     # currently, support MinGW only
@@ -286,7 +285,7 @@ set(PgRouting_SOURCE_NAMES
     "tsp"
 
     "vrp_basic"
-    "vrppdtw"
+    #"vrppdtw"
 
     )
 
@@ -372,36 +371,7 @@ add_library(${PGROUTING_LIB_NAME}
     ${LIBRARY_MODE_TARGET}
     ${PGROUTING_OBJECTS})
 
-# libraries listed in alphabetical order.
-#add_library(routing-2.2
-#${LIBRARY_MODE_TARGET}
-#$<TARGET_OBJECTS:apsp_johnson>
-#$<TARGET_OBJECTS:apsp_warshall>
-#$<TARGET_OBJECTS:astar>
-#$<TARGET_OBJECTS:allpairs>
-#$<TARGET_OBJECTS:bd_astar>
-#$<TARGET_OBJECTS:bd_dijkstra>
-#$<TARGET_OBJECTS:common>
-#$<TARGET_OBJECTS:dijkstra>
-#$<TARGET_OBJECTS:driving_distance>
-#$<TARGET_OBJECTS:kdijkstra>
-#$<TARGET_OBJECTS:ksp>
-#$<TARGET_OBJECTS:trsp>
-#$<TARGET_OBJECTS:tsp>
-#$<TARGET_OBJECTS:vrp_basic>
-#$<TARGET_OBJECTS:vrppdtw>
-
-#not supported but directory exists
-#    $<TARGET_OBJECTS:shooting_star>
-#    )
-
 install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${LIBRARY_INSTALL_PATH})
-
-#add_library(routing_vrp
-#add_library(routing_bd
-#add_library(routing_dd
-#add_library(routing
-
 
 
 
@@ -420,10 +390,6 @@ file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.
 #file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
 #    "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
 
-
-#cat("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting-types.sql"
-#    "${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
-#cat("${PGROUTING_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 
 
 foreach(PACKAGE_SQL_FILE ${LIST_PACKAGE_SQL_FILES})
@@ -463,12 +429,6 @@ endif(UPDATE_RESULT)
 # make a list of the files we need to install for version updates
 file(GLOB VERSION_UPDATE_FILES "${CMAKE_BINARY_DIR}/lib/pgrouting--*--*.sql")
 
-# We will copy the pgrouting_legacy.sql, but not install it as part of 
-# the extension. TODO: we might want to also include a 
-# pgrouting_legacy_uninstall.sql file or add it to the extension
-#configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting_legacy.sql"
-#    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql" COPYONLY)
-
 # this will create the commands in the makefile under the install target
 if(UNIX)
     file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.so")
@@ -484,6 +444,5 @@ install(FILES
     "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
     ${VERSION_UPDATE_FILES}
-    #    "${CMAKE_BINARY_DIR}/lib/pgrouting_legacy.sql"
     DESTINATION "${SHARE_DIR}")
 
