@@ -36,8 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //#endif
 #endif
 
-#define DEBUG
-
 
 #include <sstream>
 #include <deque>
@@ -48,7 +46,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_ksp.hpp"
 
 
-// #define DEBUG
 
 // CREATE OR REPLACE FUNCTION pgr_withPointsKSP(
 // edges_sql TEXT,

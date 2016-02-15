@@ -4,50 +4,6 @@ SELECT * FROM pgr_apspWarshall(
         false, false
     );
 NOTICE:  Deprecated function: Use pgr_floydWarshall instead
-NOTICE:  Fetching column info of id
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Column id found
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Fetching column info of source
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Column source found
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Fetching column info of target
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Column target found
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Fetching column info of cost
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Column cost found
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Fetching column info of reverse_cost
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Column reverse_cost not found
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Variable: id Value: 1
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Variable: source Value: 1
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Variable: target Value: 2
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Variable: id Value: 2
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Variable: source Value: 2
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Variable: target Value: 3
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Variable: id Value: 3
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Variable: source Value: 3
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Variable: target Value: 4
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Variable: id Value: 4
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Variable: source Value: 2
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
-NOTICE:  Variable: target Value: 5
-CONTEXT:  PL/pgSQL function pgr_apspwarshall(text,boolean,boolean) line 16 at RETURN QUERY
  seq | id1 | id2 | cost 
 -----+-----+-----+------
    0 |   1 |   2 |    1
