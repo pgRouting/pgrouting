@@ -62,7 +62,6 @@ These are corporate entities that have contributed developer time, hosting, rele
  - `Georepublic <https://georepublic.info/en/>`__
  - `Google Summer of Code <https://developers.google.com/open-source/gsoc/>`_
  - `iMaptools <http://imaptools.com>`__
- - `NextGIS <http://nextgis.ru/en/>`_
  - `Paragon Corporation <http://www.paragoncorporation.com/>`_
 
 Contributors Past & Present:
@@ -83,7 +82,6 @@ These are corporate entities that have contributed developer time, hosting, or d
  - Georepublic
  - Google Summer of Code
  - iMaptools
- - NextGIS
  - Orkney
  - Paragon Corporation
 
