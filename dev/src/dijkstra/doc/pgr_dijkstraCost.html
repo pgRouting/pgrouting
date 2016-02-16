@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2)',
+        VERSION:     '2.2.0 (7948005 dev-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.2.0-dev)" href="../../../index.html" />
     <link rel="up" title="pgr_dijkstra - Shortest Path Dijkstra" href="dijkstra.html" />
-    <link rel="next" title="pgr_dijkstraVia" href="pgr_dijkstraVia.html" />
+    <link rel="next" title="Driving Distance" href="../../driving_distance/doc/drivingDistance.html" />
     <link rel="prev" title="pgr_dijkstra" href="pgr_dijkstra.html" /> 
   </head>
   <body>
@@ -42,7 +42,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_dijkstraVia.html">pgr_dijkstraVia</a>&#160;&#160;»
+        <a href="../../driving_distance/doc/drivingDistance.html">Driving Distance</a>&#160;&#160;»
         </p>
 
       </div>
@@ -74,15 +74,15 @@ We make use of the Boost&#8217;s implementation of dijkstra which runs in
 <li>Returns the sum of the costs of the shortest path for pair combination of nodes in the graph.</li>
 <li>Process is done only on edges with positive costs.</li>
 <li>Values are returned when there is a path.<ul>
+<li>The returned values are in the form of a set of <cite>(start_vid, end_vid, agg_cost)</cite>.</li>
 <li>When the starting vertex and ending vertex are the same, there is no path.<ul>
-<li>The <cite>agg_cost</cite> the non included values <cite>(v, v)</cite> is <cite>0</cite></li>
+<li>The <cite>agg_cost</cite> int the non included values <cite>(v, v)</cite> is <cite>0</cite></li>
 </ul>
 </li>
 <li>When the starting vertex and ending vertex are the different and there is no path.<ul>
-<li>The <cite>agg_cost</cite> the non included values <cite>(u, v)</cite> is <span class="math">\(\infty\)</span></li>
+<li>The <cite>agg_cost</cite> in the non included values <cite>(u, v)</cite> is <span class="math">\(\infty\)</span></li>
 </ul>
 </li>
-<li>The returned values are in the form of a set of <cite>(start_vid, end_vid, agg_cost)</cite>.</li>
 </ul>
 </li>
 <li>Let be the case the values returned are stored in a table, so the unique index would be the pair:
@@ -319,7 +319,7 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><strong>sql</strong></td>
+<tr class="row-even"><td><strong>edges_sql</strong></td>
 <td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
 <td>SQL query as decribed above.</td>
 </tr>
@@ -453,14 +453,14 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_dijkstraVia.html">pgr_dijkstraVia</a>&#160;&#160;»
+        <a href="../../driving_distance/doc/drivingDistance.html">Driving Distance</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).
-      Last updated on Jan 18, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (7948005 dev-2.2).
+      Last updated on Feb 15, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

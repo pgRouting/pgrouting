@@ -6,5 +6,6 @@ var searchData=
   ['dijkstra_5fone_5fgoal_5fvisitor',['dijkstra_one_goal_visitor',['../classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html',1,'Pgr_dijkstra']]],
   ['dist_5ffromto_5ft',['dist_fromto_t',['../structdist__fromto__t.html',1,'']]],
   ['distance_5fcolumns',['distance_columns',['../structdistance__columns.html',1,'']]],
-  ['distance_5fheuristic',['distance_heuristic',['../classdistance__heuristic.html',1,'']]]
+  ['distance_5fheuristic',['distance_heuristic',['../classdistance__heuristic.html',1,'']]],
+  ['dmatrix',['Dmatrix',['../classDmatrix.html',1,'']]]
 ];

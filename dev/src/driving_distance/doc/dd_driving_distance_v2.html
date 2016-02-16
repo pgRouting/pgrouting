@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2)',
+        VERSION:     '2.2.0 (7948005 dev-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -143,7 +143,7 @@ without the <tt class="docutils literal"><span class="pre">has_rcost</span></tt>
 <li>With <tt class="docutils literal"><span class="pre">reverse_cost</span></tt></li>
 </ul>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_drivingDistance(
-    &#39;SELECT id, source, target, cost FROM edge_table&#39;,
+    &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;,
     7, 1.5, false, false
 ) ;
 NOTICE:  Deprecated function
@@ -154,7 +154,7 @@ NOTICE:  Deprecated function
 (2 rows)
 
 SELECT * FROM pgr_drivingDistance(
-    &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
+    &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table&#39;,
     7, 1.5, true, true
 ) ;
 NOTICE:  Deprecated function
@@ -170,8 +170,8 @@ NOTICE:  Deprecated function
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="dd_alphashape.html#pgr-alphashape"><em>pgr_alphaShape</em></a> - Alpha shape computation</li>
-<li><a class="reference internal" href="dd_points_as_polygon.html#pgr-points-as-polygon"><em>pgr_pointsAsPolygon</em></a> - Polygon around set of points</li>
+<li><a class="reference internal" href="../../alpha_shape/doc/dd_alphashape.html#pgr-alphashape"><em>pgr_alphaShape</em></a> - Alpha shape computation</li>
+<li><a class="reference internal" href="../../alpha_shape/doc/dd_points_as_polygon.html#pgr-points-as-polygon"><em>pgr_pointsAsPolygon</em></a> - Polygon around set of points</li>
 </ul>
 </div>
 </div>
@@ -191,8 +191,8 @@ NOTICE:  Deprecated function
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).
-      Last updated on Jan 18, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (7948005 dev-2.2).
+      Last updated on Feb 15, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

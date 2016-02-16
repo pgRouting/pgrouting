@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2)',
+        VERSION:     '2.2.0 (7948005 dev-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.2.0-dev)" href="../../../index.html" />
-    <link rel="up" title="Convenience Functions" href="index.html" />
+    <link rel="up" title="Convenience Functions" href="convenience.html" />
     <link rel="next" title="pgr_vidsToDMatrix" href="vids_to_dmatrix.html" />
     <link rel="prev" title="pgr_pointsToVids" href="points_to_vids.html" /> 
   </head>
@@ -120,33 +120,31 @@
 </div>
 <p class="rubric">History</p>
 <ul class="simple">
-<li>New in version 2.1.0</li>
+<li>Proposed in version 2.1.0</li>
 </ul>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql"><div class="highlight"><pre>select unnest(dmatrix) from pgr_pointsToDMatrix(
-    pgr_texttopoints(&#39;2,0;2,1;3,1;2,2;4,1;4,2;2,3;3,2&#39;, 0)
-) limit 8;
-      unnest
-------------------
-                0
-                1
-  1.4142135623731
-                2
- 2.23606797749979
- 2.82842712474619
-                3
- 2.23606797749979
-(8 rows)
-
-select ids from pgr_pointstodmatrix(
-    pgr_texttopoints(&#39;2,0;2,1;3,1;2,2;4,1;4,2;2,3;3,2&#39;, 0)
-);
-        ids
--------------------
- {1,2,3,4,5,6,7,8}
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_pointstodmatrix(pgr_texttopoints(&#39;2,0;2,1;3,1;2,2&#39;, 0));
+                                              dmatrix                                              |    ids    
+---------------------------------------------------------------------------------------------------+-----------
+ {{0,1,1.4142135623731,2},{1,0,1,1},{1.4142135623731,1,0,1.4142135623731},{2,1,1.4142135623731,0}} | {1,2,3,4}
 (1 row)
+</pre></div>
+</div>
+<p>This example shows how this can be used in the context of feeding the results into pgr_tsp() function.</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * from pgr_tsp(
+    (SELECT dMatrix FROM pgr_pointstodmatrix(pgr_texttopoints(&#39;2,0;2,1;3,1;2,2&#39;, 0))
+    ),
+    1
+);
+ seq | id 
+-----+----
+   0 |  1
+   1 |  3
+   2 |  2
+   3 |  0
+(4 rows)
 </pre></div>
 </div>
 </div>
@@ -155,6 +153,11 @@ select ids from pgr_pointstodmatrix(
 <ul class="simple">
 <li><a class="reference internal" href="vids_to_dmatrix.html#pgr-vids-to-dmatrix"><em>pgr_vidsToDMatrix</em></a> - convert a point geometry to the closest vertex_id of an edge..</li>
 <li><a class="reference internal" href="../../tsp/doc/index.html#pgr-tsp"><em>pgr_tsp</em></a> - Traveling Sales Person</li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="../../../search.html"><em>Search Page</em></a></li>
 </ul>
 </div>
 </div>
@@ -174,8 +177,8 @@ select ids from pgr_pointstodmatrix(
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).
-      Last updated on Jan 18, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (7948005 dev-2.2).
+      Last updated on Feb 15, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

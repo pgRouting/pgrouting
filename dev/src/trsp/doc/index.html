@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2)',
+        VERSION:     '2.2.0 (7948005 dev-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -68,12 +68,12 @@
 </pre></div>
 </div>
 <div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult3</span><span class="p">[]</span> <span class="n">pgr_trspViaVertices</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">vids</span> <span class="nb">integer</span><span class="p">[],</span>
-                <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_reverse_cost</span> <span class="nb">boolean</span>
+                <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="nb">boolean</span>
                 <span class="p">[,</span> <span class="n">turn_restrict_sql</span> <span class="nb">text</span><span class="p">]);</span>
 </pre></div>
 </div>
 <div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult3</span><span class="p">[]</span> <span class="n">pgr_trspViaEdges</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">eids</span> <span class="nb">integer</span><span class="p">[],</span> <span class="n">pcts</span> <span class="n">float8</span><span class="p">[],</span>
-               <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_reverse_cost</span> <span class="nb">boolean</span>
+               <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="nb">boolean</span>
                <span class="p">[,</span> <span class="n">turn_restrict_sql</span> <span class="nb">text</span><span class="p">]);</span>
 </pre></div>
 </div>
@@ -273,68 +273,96 @@
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <p><strong>Without turn restrictions</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT seq, id1 AS node, id2 AS edge, cost
-    FROM pgr_trsp(
-        &#39;SELECT id, source, target, cost FROM edge_table&#39;,
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_trsp(
+        &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;,
         7, 12, false, false
     );
- seq | node | edge | cost 
------+------+------+------
-   0 |    7 |    6 |    1
-   1 |    8 |    7 |    1
-   2 |    5 |    8 |    1
-   3 |    6 |    9 |    1
-   4 |    9 |   15 |    1
-   5 |   12 |   -1 |    0
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   7 |   6 |    1
+   1 |   8 |   7 |    1
+   2 |   5 |   8 |    1
+   3 |   6 |   9 |    1
+   4 |   9 |  15 |    1
+   5 |  12 |  -1 |    0
 (6 rows)
 </pre></div>
 </div>
 <p><strong>With turn restrictions</strong></p>
-<p>Turn restrictions require additional information, which can be stored in a separate table:</p>
-<div class="highlight-python"><div class="highlight"><pre>CREATE TABLE restrictions (
-        rid serial,
-        to_cost double precision,
-        to_edge integer,
-        FROM_edge integer,
-        via text
-    );
-INSERT INTO restrictions VALUES (1,100,7,4,null);
-INSERT INTO restrictions VALUES (2,4,8,3,5);
-INSERT INTO restrictions VALUES (3,100,9,16,null);
-</pre></div>
-</div>
 <p>Then a query with turn restrictions is created as:</p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT seq, id1 AS node, id2 AS edge, cost
-    FROM pgr_trsp(
-        &#39;SELECT id, source, target, cost FROM edge_table&#39;,
-        7, 12, false, false,
-        &#39;SELECT to_cost, to_edge AS target_id,
-        FROM_edge || coalesce(&#39;&#39;,&#39;&#39; || via, &#39;&#39;&#39;&#39;) AS via_path
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_trsp(
+        &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;,
+        2, 7, false, false,
+        &#39;SELECT to_cost, target_id,
+        from_edge || coalesce(&#39;&#39;,&#39;&#39; || via_path, &#39;&#39;&#39;&#39;) AS via_path
         FROM restrictions&#39;
     );
- seq | node | edge | cost 
------+------+------+------
-   0 |    7 |    6 |    1
-   1 |    8 |    7 |    1
-   2 |    5 |    8 |    1
-   3 |    6 |   11 |    1
-   4 |   11 |   13 |    1
-   5 |   12 |   -1 |    0
-(6 rows)
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   2 |   4 |    1
+   1 |   5 |  10 |    1
+   2 |  10 |  12 |    1
+   3 |  11 |  11 |    1
+   4 |   6 |   8 |    1
+   5 |   5 |   7 |    1
+   6 |   8 |   6 |    1
+   7 |   7 |  -1 |    0
+(8 rows)
+
+SELECT * FROM pgr_trsp(
+        &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;,
+        7, 11, false, false,
+        &#39;SELECT to_cost, target_id,
+        from_edge || coalesce(&#39;&#39;,&#39;&#39; || via_path, &#39;&#39;&#39;&#39;) AS via_path
+        FROM restrictions&#39;
+    );
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   7 |   6 |    1
+   1 |   8 |   7 |    1
+   2 |   5 |   8 |    1
+   3 |   6 |  11 |    1
+   4 |  11 |  -1 |    0
+(5 rows)
 </pre></div>
 </div>
 <p>An example query using vertex ids and via points:</p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_trspViaVertices(
-        &#39;SELECT id, source::INTEGER, target::INTEGER, cost,
-        reverse_cost FROM edge_table&#39;,
-        ARRAY[1,8,13,5]::INTEGER[],     
-        true,  
-        true,  
-        &#39;SELECT to_cost, to_edge AS target_id, FROM_edge ||
-        coalesce(&#39;&#39;,&#39;&#39;||via,&#39;&#39;&#39;&#39;) AS via_path FROM restrictions&#39;);
+        &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;,
+        ARRAY[2,7,11]::INTEGER[],     
+        false,  false,  
+        &#39;SELECT to_cost, target_id, from_edge ||
+        coalesce(&#39;&#39;,&#39;&#39;||via_path,&#39;&#39;&#39;&#39;) AS via_path FROM restrictions&#39;);
  seq | id1 | id2 | id3 | cost 
 -----+-----+-----+-----+------
-   1 |   1 |   1 |   1 |    1
+   1 |   1 |   2 |   4 |    1
+   2 |   1 |   5 |  10 |    1
+   3 |   1 |  10 |  12 |    1
+   4 |   1 |  11 |  11 |    1
+   5 |   1 |   6 |   8 |    1
+   6 |   1 |   5 |   7 |    1
+   7 |   1 |   8 |   6 |    1
+   8 |   2 |   7 |   6 |    1
+   9 |   2 |   8 |   7 |    1
+  10 |   2 |   5 |   8 |    1
+  11 |   2 |   6 |  11 |    1
+  12 |   2 |  11 |  -1 |    0
+(12 rows)
+</pre></div>
+</div>
+<p>An example query using edge ids and vias:</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_trspViaEdges(
+        &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost,
+        reverse_cost FROM edge_table&#39;,
+        ARRAY[2,7,11]::INTEGER[],           
+        ARRAY[0.5, 0.5, 0.5]::FLOAT[],     
+        true,  
+        true,  
+        &#39;SELECT to_cost, target_id, FROM_edge ||
+        coalesce(&#39;&#39;,&#39;&#39;||via_path,&#39;&#39;&#39;&#39;) AS via_path FROM restrictions&#39;);
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   2 |  0.5
    2 |   1 |   2 |   4 |    1
    3 |   1 |   5 |   8 |    1
    4 |   1 |   6 |   9 |    1
@@ -343,38 +371,9 @@ INSERT INTO restrictions VALUES (3,100,9,16,null);
    7 |   1 |   3 |   5 |    1
    8 |   1 |   6 |   8 |    1
    9 |   1 |   5 |   7 |    1
-  10 |   2 |   8 |   7 |    1
-  11 |   2 |   5 |  10 |    1
-  12 |   2 |  10 |  14 |    1
-  13 |   3 |  13 |  14 |    1
-  14 |   3 |  10 |  10 |    1
-  15 |   3 |   5 |  -1 |    0
-(15 rows)
-</pre></div>
-</div>
-<p>An example query using edge ids and vias:</p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_trspViaEdges(
-        &#39;SELECT id, source::INTEGER, target::INTEGER,cost,
-        reverse_cost FROM edge_table&#39;,
-        ARRAY[1,11,6]::INTEGER[],           
-        ARRAY[0.5, 0.5, 0.5]::FLOAT8[],     
-        true,  
-        true,  
-        &#39;SELECT to_cost, to_edge AS target_id, FROM_edge ||
-        coalesce(&#39;&#39;,&#39;&#39;||via,&#39;&#39;&#39;&#39;) AS via_path FROM restrictions&#39;);
- seq | id1 | id2 | id3 | cost 
------+-----+-----+-----+------
-   1 |   1 |  -1 |   1 |  0.5
-   2 |   1 |   2 |   4 |    1
-   3 |   1 |   5 |   8 |    1
-   4 |   1 |   6 |  11 |    1
-   5 |   2 |  11 |  13 |    1
-   6 |   2 |  12 |  15 |    1
-   7 |   2 |   9 |   9 |    1
-   8 |   2 |   6 |   8 |    1
-   9 |   2 |   5 |   7 |    1
-  10 |   2 |   8 |   6 |  0.5
-(10 rows)
+  10 |   2 |   5 |   8 |    1
+  11 |   2 |   6 |  11 |  0.5
+(11 rows)
 </pre></div>
 </div>
 <p>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
@@ -402,8 +401,8 @@ INSERT INTO restrictions VALUES (3,100,9,16,null);
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).
-      Last updated on Jan 18, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (7948005 dev-2.2).
+      Last updated on Feb 15, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

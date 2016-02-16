@@ -10,7 +10,6 @@ var classPgr__ksp =
     [ "m_Heap", "classPgr__ksp.html#ac29356ebe96bd910808af028e0e508b6", null ],
     [ "m_ResultSet", "classPgr__ksp.html#a68c881a727ecb17f5e4db3b5d7f5fa34", null ],
     [ "m_start", "classPgr__ksp.html#abae118da08007fc1c69ff04b442ca5cf", null ],
-    [ "pIt", "classPgr__ksp.html#a323a36d1879d2c198af3650b444c332b", null ],
     [ "v_source", "classPgr__ksp.html#a2d6b6d396332500f0cbcba86bce9b480", null ],
     [ "v_target", "classPgr__ksp.html#a272c77dfb567322b855a83887339a979", null ]
 ];

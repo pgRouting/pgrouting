@@ -9,9 +9,9 @@ var indexSectionsWithContent =
 {
   0: "abcdefgimnoprstuv",
   1: "abcdefgimnoprstuv",
-  2: "degpr",
-  3: "cgmprsv",
-  4: "ip"
+  2: "degopr",
+  3: "cgmrsv",
+  4: "p"
 };
 
 var indexSectionNames =

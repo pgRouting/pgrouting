@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2)',
+        VERSION:     '2.2.0 (7948005 dev-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,6 +26,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.2.0-dev)" href="../../../index.html" />
+    <link rel="up" title="Build Guide" href="build.html" />
     <link rel="next" title="Support" href="../introduction/support.html" />
     <link rel="prev" title="Build Guide" href="build.html" /> 
   </head>
@@ -59,7 +60,7 @@ Make the neceszry adjustments to fit your operative system.</p>
 <li>C and C++0x compilers</li>
 <li>Postgresql version &gt;= 9.1</li>
 <li>PostGIS version &gt;= 2.0</li>
-<li>The Boost Graph Library (BGL). Version &gt;= 1.55</li>
+<li>The Boost Graph Library (BGL). Version &gt;= 1.46</li>
 <li>CMake &gt;= 2.8.8</li>
 <li>CGAL &gt;=  4.2</li>
 <li>(optional, for Documentation) Sphinx &gt;= 1.1</li>
@@ -96,8 +97,8 @@ sudo apt-get install postgresql-server-dev-9.3
 </pre></div>
 </div>
 </div>
-<div class="section" id="the-boost-graph-library-bgl-version-1-54">
-<h3>The Boost Graph Library (BGL). Version &gt;= 1.54<a class="headerlink" href="#the-boost-graph-library-bgl-version-1-54" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-boost-graph-library-bgl-version-1-46">
+<h3>The Boost Graph Library (BGL). Version &gt;= 1.46<a class="headerlink" href="#the-boost-graph-library-bgl-version-1-46" title="Permalink to this headline">¶</a></h3>
 <p>trusty provides: 1.54.0</p>
 <div class="highlight-none"><div class="highlight"><pre>sudo apt-get install libboost-graph-dev
 </pre></div>
@@ -125,14 +126,28 @@ sudo apt-get install postgresql-server-dev-9.3
 </pre></div>
 </div>
 </div>
-<div class="section" id="pgtap-for-tests">
-<h3>pgTap for tests<a class="headerlink" href="#pgtap-for-tests" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre>wget https://github.com/theory/pgtap/archive/master.zip
+<div class="section" id="pgtap-pg-prove-perl-for-tests">
+<h3>pgTap &amp; pg_prove &amp; perl for tests<a class="headerlink" href="#pgtap-pg-prove-perl-for-tests" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">cmake does not test for this packages.</p>
+</div>
+<p>Installing the tests dependencies:</p>
+<div class="highlight-none"><div class="highlight"><pre>sudo apt-get install -y perl
+wget https://github.com/theory/pgtap/archive/master.zip
 unzip master.zip
 cd pgtap-master
 make
 sudo make install
 sudo ldconfig
+sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
+</pre></div>
+</div>
+<p>To run the tests:</p>
+<div class="highlight-none"><div class="highlight"><pre>tools/testers/algorithm-tester.pl
+createdb  -U &lt;user&gt; ___pgr___test___
+sh ./tools/testers/pg_prove_tests.sh &lt;user&gt;
+dropdb  -U &lt;user&gt; ___pgr___test___
 </pre></div>
 </div>
 </div>
@@ -162,8 +177,8 @@ sudo ldconfig
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).
-      Last updated on Jan 18, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (7948005 dev-2.2).
+      Last updated on Feb 15, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

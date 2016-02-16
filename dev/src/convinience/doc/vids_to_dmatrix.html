@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2)',
+        VERSION:     '2.2.0 (7948005 dev-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.2.0-dev)" href="../../../index.html" />
-    <link rel="up" title="Convenience Functions" href="index.html" />
+    <link rel="up" title="Convenience Functions" href="convenience.html" />
     <link rel="next" title="pgr_vidsToDMatrix" href="vids_to_dmatrix2.html" />
     <link rel="prev" title="pgr_pointsToDMatrix" href="points_to_dmatrix.html" /> 
   </head>
@@ -54,8 +54,8 @@
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_vidsToDMatrix</span></tt> - Creates a distances matrix from an array of <tt class="docutils literal"><span class="pre">vertex_id</span></tt>.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
 <p>This is a proposed function</p>
 <ul class="last simple">
 <li>Is not officially in the release.</li>
@@ -129,34 +129,57 @@
 </div>
 <p class="rubric">History</p>
 <ul class="simple">
-<li>New in version 2.1.0</li>
+<li>Proposed in version 2.1.0</li>
 </ul>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<p>This example shows how this can be used in the context of feeding the results into pgr_tsp() function. We convert a text string of <tt class="docutils literal"><span class="pre">x,y;x,y;...</span></tt> into and array of points, then convert that into an array <tt class="docutils literal"><span class="pre">vertex_id</span></tt>, then create a distance matrix that gets feed into <tt class="docutils literal"><span class="pre">pgr_tsp()</span></tt> that returns the final result.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pgr_tsp</span><span class="p">(</span>
-    <span class="p">(</span><span class="k">select</span> <span class="n">dmatrix</span><span class="p">::</span><span class="n">float8</span><span class="p">[]</span>
-       <span class="k">from</span> <span class="n">pgr_vidstodmatrix</span><span class="p">(</span>
-                <span class="n">pgr_pointstovids</span><span class="p">(</span>
-                    <span class="n">pgr_texttopoints</span><span class="p">(</span><span class="s1">&#39;2,0;2,1;3,1;2,2;4,1;4,2;2,3;3,2&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-                    <span class="s1">&#39;edge_table&#39;</span><span class="p">),</span>
-                <span class="n">pgr_texttopoints</span><span class="p">(</span><span class="s1">&#39;2,0;2,1;3,1;2,2;4,1;4,2;2,3;3,2&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-                <span class="s1">&#39;edge_table&#39;</span><span class="p">)</span>
-    <span class="p">),</span>
-    <span class="mi">1</span>
-<span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">id</span>
-<span class="c1">-----+----</span>
-   <span class="mi">0</span> <span class="o">|</span>  <span class="mi">1</span>
-   <span class="mi">1</span> <span class="o">|</span>  <span class="mi">3</span>
-   <span class="mi">2</span> <span class="o">|</span>  <span class="mi">7</span>
-   <span class="mi">3</span> <span class="o">|</span>  <span class="mi">5</span>
-   <span class="mi">4</span> <span class="o">|</span>  <span class="mi">4</span>
-   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">2</span>
-   <span class="mi">6</span> <span class="o">|</span>  <span class="mi">6</span>
-   <span class="mi">7</span> <span class="o">|</span>  <span class="mi">0</span>
-<span class="p">(</span><span class="mi">8</span> <span class="k">rows</span><span class="p">)</span>
+<p>This example uses existing data of points.</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_vidstodmatrix(
+    ARRAY[1,2,3,5],
+    ARRAY(select the_geom FROM edge_table_vertices_pgr WHERE id in (1,2,3,5)),
+    &#39;edge_table&#39;
+);
+                  dmatrix                  |    ids    
+-------------------------------------------+-----------
+ {{0,1,4,2},{1,0,3,1},{4,3,0,2},{2,1,2,0}} | {1,2,3,5}
+(1 row)
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>This example uses points that are not part of the graph.</dt>
+<dd><ul class="first last simple">
+<li><a class="reference internal" href="text_to_points.html#pgr-text-to-points"><em>pgr_textToPoints</em></a> - is used to convert the locations into point geometries.</li>
+<li><a class="reference internal" href="points_to_vids.html#pgr-points-to-vids"><em>pgr_pointsToVids</em></a> - to convert the array of point geometries into vertex ids.</li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_vidstodmatrix(
+    pgr_pointstovids(pgr_texttopoints(&#39;2,0;2,1;3,1;2,2&#39;, 0), &#39;edge_table&#39;),
+    pgr_texttopoints(&#39;2,0;2,1;3,1;2,2&#39;, 0),
+    &#39;edge_table&#39;);
+                  dmatrix                  |    ids    
+-------------------------------------------+-----------
+ {{0,1,4,2},{1,0,3,1},{4,3,0,2},{2,1,2,0}} | {1,2,3,5}
+(1 row)
+</pre></div>
+</div>
+<p>This example shows how this can be used in the context of feeding the results into pgr_tsp() function.</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_tsp(
+    (SELECT dMatrix FROM pgr_vidstodmatrix(
+        pgr_pointstovids(pgr_texttopoints(&#39;2,0;2,1;3,1;2,2&#39;, 0), &#39;edge_table&#39;),
+        pgr_texttopoints(&#39;2,0;2,1;3,1;2,2&#39;, 0),
+        &#39;edge_table&#39;)
+    ),
+    1
+);
+ seq | id 
+-----+----
+   0 |  1
+   1 |  2
+   2 |  3
+   3 |  0
+(4 rows)
 </pre></div>
 </div>
 <p>This example uses the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
@@ -166,6 +189,11 @@
 <ul class="simple">
 <li><a class="reference internal" href="text_to_points.html#pgr-text-to-points"><em>pgr_textToPoints</em></a> - Create an array of points from a text string.</li>
 <li><a class="reference internal" href="../../tsp/doc/index.html#pgr-tsp"><em>pgr_tsp</em></a> - Traveling Sales Person</li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="../../../search.html"><em>Search Page</em></a></li>
 </ul>
 </div>
 </div>
@@ -185,8 +213,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).
-      Last updated on Jan 18, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (7948005 dev-2.2).
+      Last updated on Feb 15, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

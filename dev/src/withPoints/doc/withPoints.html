@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2)',
+        VERSION:     '2.2.0 (7948005 dev-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -51,16 +51,76 @@
         
   <div class="section" id="withpoints-family-of-functions">
 <span id="withpoints"></span><h1>withPoints - Family of functions<a class="headerlink" href="#withpoints-family-of-functions" title="Permalink to this headline">¶</a></h1>
-<p>When points are given as input:</p>
+<p>When points are also given as input:</p>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="pgr_withPoints.html#pgr-withpoints"><em>pgr_withPoints</em></a> - Route from/to points anywhere on the graph.</li>
 <li><a class="reference internal" href="pgr_withPointsCost.html#pgr-withpointscost"><em>pgr_withPointsCost</em></a> - Costs of the shortest paths.</li>
-<li><a class="reference internal" href="../../ksp/doc/pgr_withPointsKSP.html#pgr-withpointsksp"><em>pgr_withPointsKSP</em></a> - K shortest paths.</li>
-<li><a class="reference internal" href="../../driving_distance/doc/pgr_withPoints_dd.html#pgr-withpointsdd"><em>pgr_withPointsDD</em></a> - Driving distance.</li>
+<li><a class="reference internal" href="pgr_withPointsKSP.html#pgr-withpointsksp"><em>pgr_withPointsKSP</em></a> - K shortest paths.</li>
+<li><a class="reference internal" href="pgr_withPointsDD.html#pgr-withpointsdd"><em>pgr_withPointsDD</em></a> - Driving distance.</li>
 </ul>
 </div></blockquote>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Points are considered outside the graph topology.i
+The graph <span class="math">\(G(V,E)\)</span> where <span class="math">\(V\)</span> is the set of vertices and <span class="math">\(E\)</span> is the set of edges,
+for example, when representing a city topology, the vertices are intersections or dead ends,
+and the edges are the roads.
+Routing can be done when routing from <span class="math">\(v1 in V\)</span> to <span class="math">\(v2 in V\)</span>, but some applications might need
+a more precise routing like:</p>
+<blockquote>
+<div><ul class="simple">
+<li>from a point located in the middle of a segment and/or</li>
+<li>to a point located in the middle of another segment.</li>
+</ul>
+</div></blockquote>
+<p>This is when this family of functions can be used.</p>
+<p>To achive routing using points external to the <span class="math">\(V\)</span> the topology has to be modified in such a way
+that it includes the points, as part of <span class="math">\(V\)</span>, then a Dijkstra can be performed.</p>
+</div>
+<div class="section" id="general-characteristics">
+<h2>General Characteristics<a class="headerlink" href="#general-characteristics" title="Permalink to this headline">¶</a></h2>
+<p>This is the crucial part of this family of functions, and it has to take care of as many aspects as possible.</p>
+<ul>
+<li><p class="first">Must work for routing:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Cars (directed graph)</li>
+<li>Pedestrians (undirected graph)</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Arriving at the point:</p>
+<blockquote>
+<div><ul class="simple">
+<li>In either side of the street.</li>
+<li>Compulsory arrival on the side of the street where the point is located.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Countries with:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Right side driving</li>
+<li>Left side driving</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Some points are:</p>
+<ul class="simple">
+<li>permanent, for example the set of pints of clients</li>
+<li>temporal, for example points given thru a web application</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="point-definition">
+<h2>Point Definition<a class="headerlink" href="#point-definition" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="creating-temporary-vertices-in-the-graph">
+<h2>Creating Temporary Vertices in the Graph<a class="headerlink" href="#creating-temporary-vertices-in-the-graph" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
@@ -79,8 +139,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).
-      Last updated on Jan 18, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (7948005 dev-2.2).
+      Last updated on Feb 15, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

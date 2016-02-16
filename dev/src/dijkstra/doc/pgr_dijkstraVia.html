@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2)',
+        VERSION:     '2.2.0 (7948005 dev-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -53,7 +53,7 @@
 <span id="id1"></span><h1>pgr_dijkstraVia<a class="headerlink" href="#pgr-dijkstravia" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_dijkstraViaVertices</span></tt> — Using dijkstra algorithm, it finds the route that goes through
+<p><tt class="docutils literal"><span class="pre">pgr_dijkstraVia</span></tt> — Using dijkstra algorithm, it finds the route that goes through
 a list of vertices.</p>
 <div class="figure">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside2.jpeg" src="../../../_images/boost-inside2.jpeg" /></a>
@@ -65,30 +65,29 @@ a list of vertices.</p>
 <p>Given a list of vertices and a graph, this function is equivalent to finding the
 shortest path between <span class="math">\(vertex_i\)</span> and <span class="math">\(vertex_{i+1}\)</span> for all <span class="math">\(i &lt; size\_of(vertex_via)\)</span>.
 The paths represents the sections of the route.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is a proposed function for version 2.3</p>
+</div>
+</div>
+<div class="section" id="signatrue-summary">
+<h2>Signatrue Summary<a class="headerlink" href="#signatrue-summary" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraVia(edges_sql, via_vertices)
+pgr_dijkstraVia(edges_sql, via_vertices, directed:=true, strict:=false, U_turn_on_edge:=true)
+
+RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
+    node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="signatures">
 <h1>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h1>
-<p class="rubric">pgr_dijkstraVia Minimal signature</p>
-<p>The minimal signature is for a <strong>directed</strong> graph.</p>
-<div class="highlight-sql" id="index-0"><div class="highlight"><pre><span class="n">pgr_dijkstraVia</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">vertex_via</span><span class="p">)</span>
-   <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">path_pid</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">end_vid</span><span class="p">,</span>
-                   <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">,</span> <span class="n">route_agg_cost</span><span class="p">)</span> <span class="k">or</span> <span class="n">EMPTY</span> <span class="k">SET</span>
-</pre></div>
-</div>
-<p class="rubric">pgr_dijkstraVia complete signature</p>
-<dl class="docutils">
-<dt>This signature works:</dt>
-<dd><ul class="first last simple">
-<li>on a <strong>directed</strong> graph when <tt class="docutils literal"><span class="pre">directed</span></tt> flag is missing or is set to <tt class="docutils literal"><span class="pre">true</span></tt>.</li>
-<li>on an <strong>undirected</strong> graph when <tt class="docutils literal"><span class="pre">directed</span></tt> flag is set to <tt class="docutils literal"><span class="pre">false</span></tt>.</li>
-</ul>
-</dd>
-</dl>
-<div class="highlight-sql" id="index-1"><div class="highlight"><pre><span class="n">pgr_dijkstraVia</span><span class="p">(</span><span class="n">sql_q</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">array</span><span class="p">[</span><span class="n">ANY_INTEGER</span><span class="p">]</span> <span class="n">vertex_via</span>
-           <span class="nb">boolean</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="k">true</span><span class="p">);</span>
-   <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">path_pid</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">end_vid</span><span class="p">,</span>
-                   <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">,</span> <span class="n">route_agg_cost</span><span class="p">)</span> <span class="k">or</span> <span class="n">EMPTY</span> <span class="k">SET</span>
+<div class="section" id="minimal-signature">
+<span id="index-0"></span><h2>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraVia(edges_sql, via_vertices)
+RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
+    node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -99,24 +98,56 @@ The paths represents the sections of the route.</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraViaVertex(
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraVia(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;,
     ARRAY[1, 3, 9]
 );
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost 
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
-   1 |       1 |        0 |         1 |       3 |    1 |    1 |    1 |        0 |              0
-   2 |       1 |        1 |         1 |       3 |    2 |    4 |    1 |        1 |              1
-   3 |       1 |        2 |         1 |       3 |    5 |    8 |    1 |        2 |              2
-   4 |       1 |        3 |         1 |       3 |    6 |    9 |    1 |        3 |              3
-   5 |       1 |        4 |         1 |       3 |    9 |   16 |    1 |        4 |              4
-   6 |       1 |        5 |         1 |       3 |    4 |    3 |    1 |        5 |              5
-   7 |       1 |        6 |         1 |       3 |    3 |   -1 |    0 |        6 |              6
-   8 |       2 |        0 |         3 |       9 |    3 |    5 |    1 |        0 |              6
-   9 |       2 |        1 |         3 |       9 |    6 |    9 |    1 |        1 |              7
-  10 |       2 |        2 |         3 |       9 |    9 |   -2 |    0 |        2 |              8
+   1 |       1 |        1 |         1 |       3 |    1 |    1 |    1 |        0 |              0
+   2 |       1 |        2 |         1 |       3 |    2 |    4 |    1 |        1 |              1
+   3 |       1 |        3 |         1 |       3 |    5 |    8 |    1 |        2 |              2
+   4 |       1 |        4 |         1 |       3 |    6 |    9 |    1 |        3 |              3
+   5 |       1 |        5 |         1 |       3 |    9 |   16 |    1 |        4 |              4
+   6 |       1 |        6 |         1 |       3 |    4 |    3 |    1 |        5 |              5
+   7 |       1 |        7 |         1 |       3 |    3 |   -1 |    0 |        6 |              6
+   8 |       2 |        1 |         3 |       9 |    3 |    5 |    1 |        0 |              6
+   9 |       2 |        2 |         3 |       9 |    6 |    9 |    1 |        1 |              7
+  10 |       2 |        3 |         3 |       9 |    9 |   -2 |    0 |        2 |              8
 (10 rows)
 </pre></div>
+</div>
+</div>
+<div class="section" id="complete-signature">
+<span id="index-1"></span><h2>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraVia(edges_sql, via_vertices, directed:=true, strict:=false, U_turn_on_edge:=true)
+RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
+    node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Find the route that visits the vertices 1 3 9  in that order on an undirected graph, avoiding U-turns when possible</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraVia(
+    &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;,
+    ARRAY[1, 3, 9], false, strict:=true, U_turn_on_edge:=false
+);
+ seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost 
+-----+---------+----------+-----------+---------+------+------+------+----------+----------------
+   1 |       1 |        1 |         1 |       3 |    1 |    1 |    1 |        0 |              0
+   2 |       1 |        2 |         1 |       3 |    2 |    2 |    1 |        1 |              1
+   3 |       1 |        3 |         1 |       3 |    3 |   -1 |    0 |        2 |              2
+   4 |       2 |        1 |         3 |       9 |    3 |    3 |    1 |        0 |              2
+   5 |       2 |        2 |         3 |       9 |    4 |   16 |    1 |        1 |              3
+   6 |       2 |        3 |         3 |       9 |    9 |   -2 |    0 |        2 |              4
+(6 rows)
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="description-of-the-signature">
@@ -176,12 +207,12 @@ The paths represents the sections of the route.</p>
 </div>
 <div class="section" id="description-of-the-parameters-of-the-signatures">
 <h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
-<p>Recives  <tt class="docutils literal"><span class="pre">(edges_sql,</span> <span class="pre">via_vertex,</span> <span class="pre">directed)</span></tt></p>
+<p>Recives  <tt class="docutils literal"><span class="pre">(edges_sql,</span> <span class="pre">via_vertices,</span> <span class="pre">directed:=true,</span> <span class="pre">strict:=false,</span> <span class="pre">U_turn_on_edge:=true)</span></tt></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="11%" />
-<col width="17%" />
-<col width="73%" />
+<col width="9%" />
+<col width="10%" />
+<col width="81%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -194,11 +225,19 @@ The paths represents the sections of the route.</p>
 <td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
 <td>SQL query as decribed above.</td>
 </tr>
-<tr class="row-odd"><td><strong>vertex_via</strong></td>
+<tr class="row-odd"><td><strong>via_vertices</strong></td>
 <td><tt class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></tt></td>
 <td>Array of vertices identifiers</td>
 </tr>
 <tr class="row-even"><td><strong>directed</strong></td>
+<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td>(optional) Default is true (is directed). When set to false the graph is considered as Undirected</td>
+</tr>
+<tr class="row-odd"><td><strong>strict</strong></td>
+<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td>(optional) ignores if a subsection of the route is missing and returns everything it found Default is true (is directed). When set to false the graph is considered as Undirected</td>
+</tr>
+<tr class="row-even"><td><strong>U_turn_on_edge</strong></td>
 <td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
 <td>(optional) Default is true (is directed). When set to false the graph is considered as Undirected</td>
 </tr>
@@ -271,29 +310,29 @@ The paths represents the sections of the route.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Find the route that visits the vertices 1 5 3 9 4 in that order</td>
+<tr class="field-odd field"><th class="field-name">Example 1:</th><td class="field-body">Find the route that visits the vertices 1 5 3 9 4 in that order</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraViaVertex(
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraVia(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;,
     ARRAY[1, 5, 3, 9, 4]
 );
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost 
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
-   1 |       1 |        0 |         1 |       5 |    1 |    1 |    1 |        0 |              0
-   2 |       1 |        1 |         1 |       5 |    2 |    4 |    1 |        1 |              1
-   3 |       1 |        2 |         1 |       5 |    5 |   -1 |    0 |        2 |              2
-   4 |       2 |        0 |         5 |       3 |    5 |    8 |    1 |        0 |              2
-   5 |       2 |        1 |         5 |       3 |    6 |    9 |    1 |        1 |              3
-   6 |       2 |        2 |         5 |       3 |    9 |   16 |    1 |        2 |              4
-   7 |       2 |        3 |         5 |       3 |    4 |    3 |    1 |        3 |              5
-   8 |       2 |        4 |         5 |       3 |    3 |   -1 |    0 |        4 |              6
-   9 |       3 |        0 |         3 |       9 |    3 |    5 |    1 |        0 |              6
-  10 |       3 |        1 |         3 |       9 |    6 |    9 |    1 |        1 |              7
-  11 |       3 |        2 |         3 |       9 |    9 |   -1 |    0 |        2 |              8
-  12 |       4 |        0 |         9 |       4 |    9 |   16 |    1 |        0 |              8
-  13 |       4 |        1 |         9 |       4 |    4 |   -2 |    0 |        1 |              9
+   1 |       1 |        1 |         1 |       5 |    1 |    1 |    1 |        0 |              0
+   2 |       1 |        2 |         1 |       5 |    2 |    4 |    1 |        1 |              1
+   3 |       1 |        3 |         1 |       5 |    5 |   -1 |    0 |        2 |              2
+   4 |       2 |        1 |         5 |       3 |    5 |    8 |    1 |        0 |              2
+   5 |       2 |        2 |         5 |       3 |    6 |    9 |    1 |        1 |              3
+   6 |       2 |        3 |         5 |       3 |    9 |   16 |    1 |        2 |              4
+   7 |       2 |        4 |         5 |       3 |    4 |    3 |    1 |        3 |              5
+   8 |       2 |        5 |         5 |       3 |    3 |   -1 |    0 |        4 |              6
+   9 |       3 |        1 |         3 |       9 |    3 |    5 |    1 |        0 |              6
+  10 |       3 |        2 |         3 |       9 |    6 |    9 |    1 |        1 |              7
+  11 |       3 |        3 |         3 |       9 |    9 |   -1 |    0 |        2 |              8
+  12 |       4 |        1 |         9 |       4 |    9 |   16 |    1 |        0 |              8
+  13 |       4 |        2 |         9 |       4 |    4 |   -2 |    0 |        1 |              9
 (13 rows)
 </pre></div>
 </div>
@@ -301,11 +340,11 @@ The paths represents the sections of the route.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">1:</th><td class="field-body">What&#8217;s the aggregate cost of the third path?</td>
+<tr class="field-odd field"><th class="field-name">Example 2:</th><td class="field-body">What&#8217;s the aggregate cost of the third path?</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT agg_cost FROM  pgr_dijkstraViaVertex(
+<div class="highlight-python"><div class="highlight"><pre>SELECT agg_cost FROM  pgr_dijkstraVia(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;,
     ARRAY[1, 5, 3, 9, 4]
 ) 
@@ -320,43 +359,31 @@ WHERE path_id = 3 AND edge &lt;0;
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">2:</th><td class="field-body">What&#8217;s the aggregate cost of the route at the end of the third path?</td>
+<tr class="field-odd field"><th class="field-name">Example 3:</th><td class="field-body">What&#8217;s the route&#8217;s aggregate cost of the route at the end of the third path?</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT path_id, node, route_agg_cost FROM  pgr_dijkstraViaVertex(
-    &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;,
-    ARRAY[1, 5, 3, 9, 4]
-) 
-WHERE  edge &lt; 0;
- path_id | node | route_agg_cost 
----------+------+----------------
-       1 |    5 |              2
-       2 |    3 |              6
-       3 |    9 |              8
-       4 |    4 |              9
-(4 rows)
-
-SELECT route_agg_cost FROM  pgr_dijkstraViaVertex(
+<div class="highlight-python"><div class="highlight"><pre>SELECT route_agg_cost FROM  pgr_dijkstraVia(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;,
     ARRAY[1, 5, 3, 9, 4]
 )
-WHERE path_id = 3 AND edge &lt; -1;
+WHERE path_id = 3 AND edge &lt; 0;
  route_agg_cost 
 ----------------
-(0 rows)
+              8
+(1 row)
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">3:</th><td class="field-body">How are the nodes visited in the route?</td>
+<tr class="field-odd field"><th class="field-name">Example 4:</th><td class="field-body">How are the nodes visited in the route?</td>
 </tr>
 </tbody>
 </table>
 <div class="highlight-python"><div class="highlight"><pre>SELECT row_number() over () as node_seq, node 
-FROM  pgr_dijkstraViaVertex(
+FROM  pgr_dijkstraVia(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;,
     ARRAY[1, 5, 3, 9, 4]
 ) 
@@ -380,11 +407,11 @@ WHERE edge &lt;&gt; -1 ORDER BY seq;
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">4:</th><td class="field-body">What are the aggregate costs of the route when the visited vertices are reached?</td>
+<tr class="field-odd field"><th class="field-name">Example 5:</th><td class="field-body">What are the aggregate costs of the route when the visited vertices are reached?</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT path_id, route_agg_cost FROM  pgr_dijkstraViaVertex(
+<div class="highlight-python"><div class="highlight"><pre>SELECT path_id, route_agg_cost FROM  pgr_dijkstraVia(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;,
     ARRAY[1, 5, 3, 9, 4]
 ) 
@@ -402,7 +429,7 @@ WHERE edge &lt; 0;
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">5:</th><td class="field-body">show the route&#8217;s seq and aggregate cost and a status of if passes in front or visits node 9</td>
+<tr class="field-odd field"><th class="field-name">Example 6:</th><td class="field-body">show the route&#8217;s seq and aggregate cost and a status of &#8220;passes in front&#8221; or &#8220;visits&#8221; node 9</td>
 </tr>
 </tbody>
 </table>
@@ -410,7 +437,7 @@ WHERE edge &lt; 0;
 CASE WHEN edge = -1 THEN &#39;visits&#39;
 ELSE &#39;passes in front&#39;
 END as status
-FROM  pgr_dijkstraViaVertex(
+FROM  pgr_dijkstraVia(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;,
     ARRAY[1, 5, 3, 9, 4])
 WHERE node = 9 and (agg_cost  &lt;&gt; 0 or seq = 1);
@@ -454,8 +481,8 @@ WHERE node = 9 and (agg_cost  &lt;&gt; 0 or seq = 1);
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).
-      Last updated on Jan 18, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (7948005 dev-2.2).
+      Last updated on Feb 15, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

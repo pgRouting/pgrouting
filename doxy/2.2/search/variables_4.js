@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['removed_5fedges',['removed_edges',['../classPgr__base__graph.html#abc7bfda173271de75d21c43647b11af2',1,'Pgr_base_graph']]]
+  ['str',['str',['../classAssertFailedException.html#abdf19668da3d8b06089c003c424af37a',1,'AssertFailedException::str()'],['../classUserQuitException.html#a66969af1e0af3c8ae5e7c567ffbb4f36',1,'UserQuitException::str()']]]
 ];

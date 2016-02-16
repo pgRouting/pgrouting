@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pgr_5fbase_5fgraph',['Pgr_base_graph',['../classPgr__base__graph.html#ae0df1c7aa2aacbacc4e3ba2e27b3a0e8',1,'Pgr_base_graph']]]
+  ['out_5fdegree',['out_degree',['../classPgr__base__graph.html#a591dc9d08be474b3f1fb12f03492a657',1,'Pgr_base_graph']]]
 ];

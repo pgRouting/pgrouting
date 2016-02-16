@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2)',
+        VERSION:     '2.2.0 (7948005 dev-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,9 +26,9 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.2.0-dev)" href="../../../index.html" />
-    <link rel="up" title="Convenience Functions" href="index.html" />
-    <link rel="next" title="pgr_flipEdges" href="flip_edges.html" />
-    <link rel="prev" title="Convenience Functions" href="index.html" /> 
+    <link rel="up" title="Convenience Functions" href="convenience.html" />
+    <link rel="next" title="pgr_flipEdges" href="pgr_flipEdges.html" />
+    <link rel="prev" title="Convenience Functions" href="convenience.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
@@ -38,11 +38,11 @@
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="index.html">Convenience Functions</a>
+        «&#160;&#160;<a href="convenience.html">Convenience Functions</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="flip_edges.html">pgr_flipEdges</a>&#160;&#160;»
+        <a href="pgr_flipEdges.html">pgr_flipEdges</a>&#160;&#160;»
         </p>
 
       </div>
@@ -109,16 +109,22 @@
 </div></blockquote>
 <p class="rubric">History</p>
 <ul class="simple">
-<li>New in version 2.1.0</li>
+<li>Proposed in version 2.1.0</li>
 </ul>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_pointtoedgenode</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="s1">&#39;POINT(2 0)&#39;</span><span class="p">::</span><span class="n">geometry</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">02</span><span class="p">);</span>
-<span class="n">pgr_pointtoedgenode</span>
-<span class="c1">-------------------</span>
-                 <span class="mi">1</span>
-<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_pointtoedgenode(&#39;edge_table&#39;, &#39;POINT(2 0)&#39;::geometry, 0.02);
+ pgr_pointtoedgenode 
+---------------------
+                   1
+(1 row)
+
+SELECT * FROM pgr_pointtoedgenode(&#39;edge_table&#39;, &#39;POINT(3 2)&#39;::geometry, 0.02);
+ pgr_pointtoedgenode 
+---------------------
+                   6
+(1 row)
 </pre></div>
 </div>
 <p>The example uses the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
@@ -128,6 +134,11 @@
 <ul class="simple">
 <li><a class="reference internal" href="points_to_vids.html#pgr-points-to-vids"><em>pgr_pointsToVids</em></a> - convert an array of point geometries into vertex ids.</li>
 </ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="../../../search.html"><em>Search Page</em></a></li>
+</ul>
 </div>
 </div>
 
@@ -136,18 +147,18 @@
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="index.html">Convenience Functions</a>
+        «&#160;&#160;<a href="convenience.html">Convenience Functions</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="flip_edges.html">pgr_flipEdges</a>&#160;&#160;»
+        <a href="pgr_flipEdges.html">pgr_flipEdges</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).
-      Last updated on Jan 18, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (7948005 dev-2.2).
+      Last updated on Feb 15, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

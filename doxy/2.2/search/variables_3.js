@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pit',['pIt',['../classPgr__ksp.html#a323a36d1879d2c198af3650b444c332b',1,'Pgr_ksp']]]
+  ['removed_5fedges',['removed_edges',['../classPgr__base__graph.html#ae8691956fe835fc3c92c6345800499a5',1,'Pgr_base_graph']]]
 ];

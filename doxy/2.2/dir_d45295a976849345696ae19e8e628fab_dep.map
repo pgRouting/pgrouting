@@ -1,6 +1,5 @@
 <map id="bd_dijkstra" name="bd_dijkstra">
-<area shape="rect" id="node2" href="dir_0e0fe66032089d7666222c320889d144.html" title="src" alt="" coords="133,63,205,111"/>
-<area shape="rect" id="node3" href="dir_b3c961969d08e4f4b62549cc93aae7af.html" title="tester" alt="" coords="37,63,109,111"/>
-<area shape="rect" id="clust2" href="dir_d45295a976849345696ae19e8e628fab.html" alt="" coords="27,52,325,121"/>
-<area shape="rect" id="clust1" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html" title="src" alt="" coords="16,16,336,132"/>
+<area shape="rect" id="node2" href="dir_0e0fe66032089d7666222c320889d144.html" title="src" alt="" coords="37,63,109,111"/>
+<area shape="rect" id="clust2" href="dir_d45295a976849345696ae19e8e628fab.html" alt="" coords="27,52,229,121"/>
+<area shape="rect" id="clust1" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html" title="src" alt="" coords="16,16,240,132"/>
 </map>

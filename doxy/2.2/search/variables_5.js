@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['str',['str',['../classAssertFailedException.html#abdf19668da3d8b06089c003c424af37a',1,'AssertFailedException::str()'],['../classUserQuitException.html#a66969af1e0af3c8ae5e7c567ffbb4f36',1,'UserQuitException::str()']]]
+  ['v_5fsource',['v_source',['../classPgr__ksp.html#a2d6b6d396332500f0cbcba86bce9b480',1,'Pgr_ksp']]],
+  ['v_5ftarget',['v_target',['../classPgr__ksp.html#a272c77dfb567322b855a83887339a979',1,'Pgr_ksp']]],
+  ['vertices_5fmap',['vertices_map',['../classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb',1,'Pgr_base_graph']]]
 ];

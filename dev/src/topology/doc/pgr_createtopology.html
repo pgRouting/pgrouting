@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2)',
+        VERSION:     '2.2.0 (7948005 dev-2.2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -190,8 +190,14 @@ NOTICE:  PROCESSING:
 NOTICE:  pgr_createTopology(&#39;edge_table&#39;, 0.001, &#39;the_geom&#39;, &#39;id&#39;, &#39;source&#39;, &#39;target&#39;, rows_where := &#39;true&#39;, clean := f)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Creating Topology, Please wait...
-Cancel request sent
-ERROR:  canceling statement due to user request
+NOTICE:  -------------&gt; TOPOLOGY CREATED FOR  18 edges
+NOTICE:  Rows with NULL geometry or NULL id: 0
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -201,46 +207,91 @@ ERROR:  canceling statement due to user request
 <div class="line">In this example, the column <tt class="docutils literal"><span class="pre">id</span></tt> of the table <tt class="docutils literal"><span class="pre">ege_table</span></tt> is passed to the function as the geometry column,</div>
 <div class="line">and the geometry column <tt class="docutils literal"><span class="pre">the_geom</span></tt> is passed to the function as the id column.</div>
 </div>
-<div class="last highlight-python"><div class="highlight"><pre>
+<div class="last highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001,
+        &#39;id&#39;, &#39;the_geom&#39;);
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology(&#39;edge_table&#39;, 0.001, &#39;id&#39;, &#39;the_geom&#39;, &#39;source&#39;, &#39;target&#39;, rows_where := &#39;true&#39;, clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  ----&gt; PGR ERROR in pgr_createTopology: Wrong type of Column id:the_geom
+NOTICE:  Unexpected error raise_exception
+ pgr_createtopology 
+--------------------
+ FAIL
+(1 row)
 </pre></div>
 </div>
 </div>
 <p class="rubric">When using the named notation</p>
 <p>Parameters defined with a default value can be omited, as long as the value matches the default
 And The order of the parameters would not matter.</p>
-<div class="highlight-python"><div class="highlight"><pre>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001,
+        the_geom:=&#39;the_geom&#39;, id:=&#39;id&#39;, source:=&#39;source&#39;, target:=&#39;target&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001,
+        source:=&#39;source&#39;, id:=&#39;id&#39;, target:=&#39;target&#39;, the_geom:=&#39;the_geom&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001, source:=&#39;source&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
 </pre></div>
 </div>
 <p class="rubric">Selecting rows using rows_where parameter</p>
 <p>Selecting rows based on the id.</p>
-<div class="highlight-python"><div class="highlight"><pre>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001, rows_where:=&#39;id &lt; 10&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
 </pre></div>
 </div>
 <p>Selecting the rows where the geometry is near the geometry of row with <tt class="docutils literal"><span class="pre">id</span> <span class="pre">=</span> <span class="pre">5</span></tt>.</p>
-<div class="highlight-python"><div class="highlight"><pre>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001,
+        rows_where:=&#39;the_geom &amp;&amp; (SELECT st_buffer(the_geom, 0.05) FROM edge_table WHERE id=5)&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
 </pre></div>
 </div>
 <p>Selecting the rows where the geometry is near the geometry of the row with <tt class="docutils literal"><span class="pre">gid</span></tt> =100 of the table <tt class="docutils literal"><span class="pre">othertable</span></tt>.</p>
-<div class="highlight-python"><div class="highlight"><pre>
+<div class="highlight-python"><div class="highlight"><pre>CREATE TABLE otherTable AS  (SELECT 100 AS gid,  st_point(2.5, 2.5) AS other_geom);
+SELECT 1
+SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001,
+        rows_where:=&#39;the_geom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
 </pre></div>
 </div>
 </div>
 <div class="section" id="usage-when-the-edge-table-s-columns-do-not-match-the-default-values">
 <h2>Usage when the edge table&#8217;s columns DO NOT MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values" title="Permalink to this headline">¶</a></h2>
 <p>For the following table</p>
-<div class="highlight-python"><div class="highlight"><pre>
+<div class="highlight-python"><div class="highlight"><pre>CREATE TABLE mytable AS (SELECT id AS gid,  the_geom AS mygeom, source AS src , target AS tgt FROM edge_table) ;
+SELECT 18
 </pre></div>
 </div>
 <p class="rubric">Using positional notation:</p>
 <p>The arguments need to be given in the order described in the parameters.</p>
 <p>Note that this example uses clean flag. So it recreates the whole vertices table.</p>
-<div class="highlight-python"><div class="highlight"><pre>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, &#39;mygeom&#39;, &#39;gid&#39;, &#39;src&#39;, &#39;tgt&#39;, clean := TRUE);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -250,33 +301,112 @@ And The order of the parameters would not matter.</p>
 <div class="line">In this example, the column <tt class="docutils literal"><span class="pre">gid</span></tt> of the table <tt class="docutils literal"><span class="pre">mytable</span></tt> is passed to the function AS the geometry column,</div>
 <div class="line">and the geometry column <tt class="docutils literal"><span class="pre">mygeom</span></tt> is passed to the function AS the id column.</div>
 </div>
-<div class="last highlight-python"><div class="highlight"><pre>
+<div class="last highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, &#39;gid&#39;, &#39;mygeom&#39;, &#39;src&#39;, &#39;tgt&#39;);
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology(&#39;mytable&#39;, 0.001, &#39;gid&#39;, &#39;mygeom&#39;, &#39;src&#39;, &#39;tgt&#39;, rows_where := &#39;true&#39;, clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  ----&gt; PGR ERROR in pgr_createTopology: Wrong type of Column id:mygeom
+NOTICE:  Unexpected error raise_exception
+ pgr_createtopology 
+--------------------
+ FAIL
+(1 row)
 </pre></div>
 </div>
 </div>
 <p class="rubric">When using the named notation</p>
 <p>In this scenario omitting a parameter would create an error because the default values for the column names do not match the column names of the table.
 The order of the parameters do not matter:</p>
-<div class="highlight-python"><div class="highlight"><pre>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, the_geom:=&#39;mygeom&#39;, id:=&#39;gid&#39;, source:=&#39;src&#39;, target:=&#39;tgt&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, source:=&#39;src&#39;, id:=&#39;gid&#39;, target:=&#39;tgt&#39;, the_geom:=&#39;mygeom&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
 </pre></div>
 </div>
 <p class="rubric">Selecting rows using rows_where parameter</p>
 <p>Based on id:</p>
-<div class="highlight-python"><div class="highlight"><pre>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, &#39;mygeom&#39;, &#39;gid&#39;, &#39;src&#39;, &#39;tgt&#39;, rows_where:=&#39;gid &lt; 10&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+
+SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, source:=&#39;src&#39;, id:=&#39;gid&#39;, target:=&#39;tgt&#39;, the_geom:=&#39;mygeom&#39;, rows_where:=&#39;gid &lt; 10&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+
+SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, &#39;mygeom&#39;, &#39;gid&#39;, &#39;src&#39;, &#39;tgt&#39;, 
+        rows_where:=&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom, 1) FROM mytable WHERE gid=5)&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+
+SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, source:=&#39;src&#39;, id:=&#39;gid&#39;, target:=&#39;tgt&#39;, the_geom:=&#39;mygeom&#39;, 
+        rows_where:=&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom, 1) FROM mytable WHERE gid=5)&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
 </pre></div>
 </div>
 <p>Selecting the rows where the geometry is near the geometry of the row with <tt class="docutils literal"><span class="pre">gid</span></tt> =100 of the table <tt class="docutils literal"><span class="pre">othertable</span></tt>.</p>
-<div class="highlight-python"><div class="highlight"><pre>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, &#39;mygeom&#39;, &#39;gid&#39;, &#39;src&#39;, &#39;tgt&#39;, 
+        rows_where:=&#39;mygeom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+
+SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, source:=&#39;src&#39;, id:=&#39;gid&#39;, target:=&#39;tgt&#39;, the_geom:=&#39;mygeom&#39;, 
+        rows_where:=&#39;mygeom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
 </pre></div>
 </div>
 </div>
 <div class="section" id="examples-with-full-output">
 <h2>Examples with full output<a class="headerlink" href="#examples-with-full-output" title="Permalink to this headline">¶</a></h2>
 <p>This example start a clean topology, with 5 edges, and then its incremented to the rest of the edges.</p>
-<div class="highlight-python"><div class="highlight"><pre>
+<div class="highlight-python"><div class="highlight"><pre>SELECT pgr_createTopology(&#39;edge_table&#39;,  0.001, rows_where:=&#39;id &lt; 6&#39;, clean := true);
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology(&#39;edge_table&#39;, 0.001, &#39;the_geom&#39;, &#39;id&#39;, &#39;source&#39;, &#39;target&#39;, rows_where := &#39;id &lt; 6&#39;, clean := t)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Creating Topology, Please wait...
+NOTICE:  -------------&gt; TOPOLOGY CREATED FOR  5 edges
+NOTICE:  Rows with NULL geometry or NULL id: 0
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+
+SELECT pgr_createTopology(&#39;edge_table&#39;,  0.001);
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology(&#39;edge_table&#39;, 0.001, &#39;the_geom&#39;, &#39;id&#39;, &#39;source&#39;, &#39;target&#39;, rows_where := &#39;true&#39;, clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Creating Topology, Please wait...
+NOTICE:  -------------&gt; TOPOLOGY CREATED FOR  13 edges
+NOTICE:  Rows with NULL geometry or NULL id: 0
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
 </pre></div>
 </div>
 <p>The example uses the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
@@ -311,8 +441,8 @@ The order of the parameters do not matter:</p>
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (378ddcf dev-2.2 378ddcf dev-2.2).
-      Last updated on Jan 18, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (7948005 dev-2.2).
+      Last updated on Feb 15, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
