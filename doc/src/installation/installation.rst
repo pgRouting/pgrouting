@@ -14,9 +14,9 @@ Installation
 
 This is a basic guide to download and install pgRouting.
 
-.. note:: additional notes can be found in `Installation Notes`_
+Additional notes can be found in `Installation Notes <https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting>`__
 
-.. _Installation Notes: https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting
+Also PostGIS provides some information about installation in this `Install Guide <http://www.postgis.us/presentations/postgis_install_guide_22.html>`__
 
 Download
 --------
@@ -34,7 +34,7 @@ Winnie Bot Builds:
 Production Builds:
 
 * Production builds are part of the Spatial Extensions/PostGIS Bundle available via Application StackBuilder
-* `Can also get PostGIS Bundle from <http://download.osgeo.org/postgis/windows/>`_
+* Can also get PostGIS Bundle from http://download.osgeo.org/postgis/windows/
 
 
 Ubuntu/Debian
