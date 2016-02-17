@@ -68,10 +68,48 @@
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>Modify the graph to include points and
-using Dijkstra algorithm, extracts all the nodes and points that have costs less
-than or equal to the value <tt class="docutils literal"><span class="pre">distance</span></tt> from the starting point.
-The edges extracted will conform the corresponding spanning tree.</p>
+<p>Modify the graph to include points defined by points sql.
+Using Dijkstra algorithm, find the shortest path(s)</p>
+</div>
+<div class="section" id="characteristics">
+<h2>Characteristics:<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<p>The main Characteristics are:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Process is done only on edges with positive costs.</p>
+</li>
+<li><p class="first">Vertices of the graph are:</p>
+<ul class="simple">
+<li><strong>positive</strong> when it belongs to the edges_sql</li>
+<li><strong>negative</strong> when it belongs to the points_sql</li>
+</ul>
+</li>
+<li><p class="first">Values are returned when there is a path.</p>
+</li>
+<li><p class="first">When the starting vertex and ending vertex are the same, there is no path.</p>
+<ul class="simple">
+<li>The agg_cost the non included values (v, v) is 0</li>
+</ul>
+</li>
+<li><p class="first">When the starting vertex and ending vertex are the different and there is no path:</p>
+<ul class="simple">
+<li>The agg_cost the non included values (u, v) is ∞</li>
+</ul>
+</li>
+<li><p class="first">For optimization purposes, any duplicated value in the start_vids or end_vids are ignored.</p>
+</li>
+<li><p class="first">The returned values are ordered:</p>
+<blockquote>
+<div><ul class="simple">
+<li>start_vid ascending</li>
+<li>end_vid ascending</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Runing time: <span class="math">\(O(|start\_vids|∗(V \log V + E))\)</span></p>
+</li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
@@ -659,7 +697,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.2.0 (dev-2.2).
-      Last updated on Feb 15, 2016.
+      Last updated on Feb 17, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

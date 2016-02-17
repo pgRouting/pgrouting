@@ -68,9 +68,62 @@
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>For the combination of points given,
-modify the graph to include points and
-using Dijkstra algorithm, returns only the aggregate cost of the shortest path(s) found.</p>
+<p>Modify the graph to include points defined by points sql.
+Using Dijkstra algorithm, return only the aggregate cost of the shortest path(s) found.</p>
+</div>
+<div class="section" id="characteristics">
+<h2>Characteristics:<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>The main Characteristics are:</dt>
+<dd><ul class="first last">
+<li><p class="first">It does not return a path.</p>
+</li>
+<li><p class="first">Returns the sum of the costs of the shortest path for pair combination of nodes in the graph.</p>
+</li>
+<li><p class="first">Vertices of the graph are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>positive</strong> when it belongs to the edges_sql</li>
+<li><strong>negative</strong> when it belongs to the points_sql</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Process is done only on edges with positive costs.</p>
+</li>
+<li><p class="first">Values are returned when there is a path.</p>
+<ul class="simple">
+<li>The returned values are in the form of a set of <cite>(start_vid, end_vid, agg_cost)</cite>.</li>
+<li>When the starting vertex and ending vertex are the same, there is no path.<ul>
+<li>The <cite>agg_cost</cite> int the non included values <cite>(v, v)</cite> is <cite>0</cite></li>
+</ul>
+</li>
+<li>When the starting vertex and ending vertex are the different and there is no path.<ul>
+<li>The <cite>agg_cost</cite> in the non included values <cite>(u, v)</cite> is <span class="math">\(\infty\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p class="first">Let be the case the values returned are stored in a table, so the unique index would be the pair:
+<cite>(start_vid, end_vid)</cite>.</p>
+</li>
+<li><p class="first">For undirected graphs, the results are symetric.</p>
+<ul class="simple">
+<li>The  <cite>agg_cost</cite> of <cite>(u, v)</cite> is the same as for <cite>(v, u)</cite>.</li>
+</ul>
+</li>
+<li><p class="first">Any duplicated value in the <cite>start_vids</cite> or <cite>end_vids</cite> is ignored.</p>
+</li>
+<li><p class="first">The returned values are ordered:</p>
+<ul class="simple">
+<li><cite>start_vid</cite> ascending</li>
+<li><cite>end_vid</cite> ascending</li>
+</ul>
+</li>
+<li><p class="first">Runing time: <span class="math">\(O(| start\_vids | * (V \log V + E))\)</span></p>
+</li>
+</ul>
+</dd>
+</dl>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
@@ -81,6 +134,10 @@ pgr_withPointsCost(edges_sql, points_sql, start_pids, end_pid, directed, driving
 pgr_withPointsCost(edges_sql, points_sql, start_pids, end_pids, directed, driving_side)
 RETURNS SET OF (start_pid, end_pid, agg_cost)
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There is no <strong>details</strong> flag, unlike the other memebers of the family of functions,</p>
 </div>
 </div>
 </div>
@@ -433,7 +490,7 @@ RETURNS SET OF (start_pid, end_pid, agg_cost)
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Which path (if any) passes in front of point 4 or vertex 4 with <strong>right</strong> side driving topology.</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">With <strong>right</strong> side driving topology.</td>
 </tr>
 </tbody>
 </table>
@@ -455,7 +512,7 @@ RETURNS SET OF (start_pid, end_pid, agg_cost)
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Which path (if any) passes in front of point 4 or vertex 4 with <strong>left</strong> side driving topology.</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">With <strong>left</strong> side driving topology.</td>
 </tr>
 </tbody>
 </table>
@@ -477,7 +534,7 @@ RETURNS SET OF (start_pid, end_pid, agg_cost)
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Many to many example with a twist: on undirected graph.</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Does not matter driving side.</td>
 </tr>
 </tbody>
 </table>
@@ -530,7 +587,7 @@ RETURNS SET OF (start_pid, end_pid, agg_cost)
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.2.0 (dev-2.2).
-      Last updated on Feb 15, 2016.
+      Last updated on Feb 17, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
