@@ -31,10 +31,36 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Modify the graph to include points and 
-using Dijkstra algorithm, extracts all the nodes and points that have costs less
-than or equal to the value ``distance`` from the starting point.
-The edges extracted will conform the corresponding spanning tree.
+Modify the graph to include points defined by points sql. 
+Using Dijkstra algorithm, find the shortest path(s)
+
+Characteristics:
+-------------------------------------------------------------------------------
+
+The main Characteristics are:
+
+    - Process is done only on edges with positive costs.
+    - Vertices of the graph are:
+
+      - **positive** when it belongs to the edges_sql
+      - **negative** when it belongs to the points_sql
+
+    - Values are returned when there is a path.
+    - When the starting vertex and ending vertex are the same, there is no path.
+
+      - The agg_cost the non included values (v, v) is 0
+
+    - When the starting vertex and ending vertex are the different and there is no path:
+
+      - The agg_cost the non included values (u, v) is ∞
+
+    - For optimization purposes, any duplicated value in the start_vids or end_vids are ignored.
+    - The returned values are ordered:
+
+        - start_vid ascending
+        - end_vid ascending
+
+    - Runing time: :math:`O(|start\_vids|∗(V \log V + E))`
 
 
 Signature Summary
