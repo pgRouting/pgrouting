@@ -87,7 +87,7 @@ Signature Summary
     pgr_withPointsCost(edges_sql, points_sql, start_pids, end_pids, directed, driving_side)
     RETURNS SET OF (start_pid, end_pid, agg_cost)
 
-.. note:: There is no **details** flag, unlike the other memebers of the family of functions,  
+.. note:: There is no **details** flag, unlike the other members of the family of functions,  
 
 
 Signatures
