@@ -1,0 +1,449 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_createTopology &mdash; pgRouting Manual (2.2.0-dev)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0 (dev-2.2)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0-dev)" href="../../../index.html" />
+    <link rel="up" title="Topology Functions" href="topology.html" />
+    <link rel="next" title="pgr_createVerticesTable" href="pgr_createVerticesTable.html" />
+    <link rel="prev" title="Topology Functions" href="topology.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.2.0-dev)</span></a></h1>
+        <h2 class="heading"><span>pgr_createTopology</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="topology.html">Topology Functions</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_createVerticesTable.html">pgr_createVerticesTable</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-createtopology">
+<span id="pgr-create-topology"></span><h1>pgr_createTopology<a class="headerlink" href="#pgr-createtopology" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_createTopology</span></tt> — Builds a network topology based on the geometry information.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>The function returns:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">OK</span></tt> after the network topology has been built and the vertices table created.</li>
+<li><tt class="docutils literal"><span class="pre">FAIL</span></tt> when the network topology was not built due to an error.</li>
+</ul>
+</div></blockquote>
+<div class="highlight-none"><div class="highlight"><pre>varchar pgr_createTopology(text edge_table, double precision tolerance,
+                   text the_geom:=&#39;the_geom&#39;, text id:=&#39;id&#39;,
+                   text source:=&#39;source&#39;,text target:=&#39;target&#39;,
+                   text rows_where:=&#39;true&#39;, boolean clean:=false)
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Parameters</p>
+<p>The topology creation function accepts the following parameters:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edge_table:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> Network table name. (may contain the schema name AS well)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">tolerance:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> Snapping tolerance of disconnected edges. (in projection unit)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">the_geom:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt>  Geometry column name of the network table. Default value is <tt class="docutils literal"><span class="pre">the_geom</span></tt>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt>  Primary key column name of the network table. Default value is <tt class="docutils literal"><span class="pre">id</span></tt>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> Source column name of the network table. Default value is <tt class="docutils literal"><span class="pre">source</span></tt>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt>  Target column name of the network table.  Default value is <tt class="docutils literal"><span class="pre">target</span></tt>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">rows_where:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt>   Condition to SELECT a subset or rows.  Default value is <tt class="docutils literal"><span class="pre">true</span></tt> to indicate
+all rows that where <tt class="docutils literal"><span class="pre">source</span></tt> or <tt class="docutils literal"><span class="pre">target</span></tt> have a null value, otherwise the condition is used.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">clean:</th><td class="field-body"><tt class="docutils literal"><span class="pre">boolean</span></tt> Clean any previous topology.  Default value is <tt class="docutils literal"><span class="pre">false</span></tt>.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>The <tt class="docutils literal"><span class="pre">edge_table</span></tt> will be affected</p>
+<blockquote class="last">
+<div><ul>
+<li><p class="first">The <tt class="docutils literal"><span class="pre">source</span></tt> column values will change.</p>
+</li>
+<li><p class="first">The <tt class="docutils literal"><span class="pre">target</span></tt> column values will change.</p>
+</li>
+<li><p class="first">An index will be created, if it doesn&#8217;t exists, to speed up the process to the following columns:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">id</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">the_geom</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">source</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">target</span></tt></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<p>The function returns:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">OK</span></tt> after the network topology has been built.<ul>
+<li>Creates a vertices table: &lt;edge_table&gt;_vertices_pgr.</li>
+<li>Fills <tt class="docutils literal"><span class="pre">id</span></tt> and <tt class="docutils literal"><span class="pre">the_geom</span></tt> columns of the vertices table.</li>
+<li>Fills the source and target columns of the edge table referencing the <tt class="docutils literal"><span class="pre">id</span></tt> of the vertices table.</li>
+</ul>
+</li>
+<li><tt class="docutils literal"><span class="pre">FAIL</span></tt> when the network topology was not built due to an error:<ul>
+<li>A required column of the Network table is not found or is not of the appropriate type.</li>
+<li>The condition is not well formed.</li>
+<li>The names of source , target or id are the same.</li>
+<li>The SRID of the geometry could not be determined.</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<p class="rubric">The Vertices Table</p>
+<p>The vertices table is a requirment of the <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a> and the <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a> functions.</p>
+<p>The structure of the vertices table is:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">bigint</span></tt> Identifier of the vertex.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cnt:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Number of vertices in the edge_table that reference this vertex. See <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">chk:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt>  Indicator that the vertex might have a problem. See <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ein:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Number of vertices in the edge_table that reference this vertex AS incoming. See <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">eout:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Number of vertices in the edge_table that reference this vertex AS outgoing. See <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body"><tt class="docutils literal"><span class="pre">geometry</span></tt> Point geometry of the vertex.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>Renamed in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="usage-when-the-edge-table-s-columns-match-the-default-values">
+<h2>Usage when the edge table&#8217;s columns MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-match-the-default-values" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">The simplest way to use pgr_createTopology is:</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001);
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology(&#39;edge_table&#39;, 0.001, &#39;the_geom&#39;, &#39;id&#39;, &#39;source&#39;, &#39;target&#39;, rows_where := &#39;true&#39;, clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Creating Topology, Please wait...
+NOTICE:  -------------&gt; TOPOLOGY CREATED FOR  18 edges
+NOTICE:  Rows with NULL geometry or NULL id: 0
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+</pre></div>
+</div>
+<p class="rubric">When the arguments are given in the order described in the parameters:</p>
+<p>We get the same result AS the simplest way to use the function.</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001,
+        &#39;the_geom&#39;, &#39;id&#39;, &#39;source&#39;, &#39;target&#39;);
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology(&#39;edge_table&#39;, 0.001, &#39;the_geom&#39;, &#39;id&#39;, &#39;source&#39;, &#39;target&#39;, rows_where := &#39;true&#39;, clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Creating Topology, Please wait...
+NOTICE:  -------------&gt; TOPOLOGY CREATED FOR  18 edges
+NOTICE:  Rows with NULL geometry or NULL id: 0
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<div class="line-block">
+<div class="line">An error would occur when the arguments are not given in the appropriate order:</div>
+<div class="line">In this example, the column <tt class="docutils literal"><span class="pre">id</span></tt> of the table <tt class="docutils literal"><span class="pre">ege_table</span></tt> is passed to the function as the geometry column,</div>
+<div class="line">and the geometry column <tt class="docutils literal"><span class="pre">the_geom</span></tt> is passed to the function as the id column.</div>
+</div>
+<div class="last highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001,
+        &#39;id&#39;, &#39;the_geom&#39;);
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology(&#39;edge_table&#39;, 0.001, &#39;id&#39;, &#39;the_geom&#39;, &#39;source&#39;, &#39;target&#39;, rows_where := &#39;true&#39;, clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  ----&gt; PGR ERROR in pgr_createTopology: Wrong type of Column id:the_geom
+NOTICE:  Unexpected error raise_exception
+ pgr_createtopology 
+--------------------
+ FAIL
+(1 row)
+</pre></div>
+</div>
+</div>
+<p class="rubric">When using the named notation</p>
+<p>Parameters defined with a default value can be omited, as long as the value matches the default
+And The order of the parameters would not matter.</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001,
+        the_geom:=&#39;the_geom&#39;, id:=&#39;id&#39;, source:=&#39;source&#39;, target:=&#39;target&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001,
+        source:=&#39;source&#39;, id:=&#39;id&#39;, target:=&#39;target&#39;, the_geom:=&#39;the_geom&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001, source:=&#39;source&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+</pre></div>
+</div>
+<p class="rubric">Selecting rows using rows_where parameter</p>
+<p>Selecting rows based on the id.</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001, rows_where:=&#39;id &lt; 10&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+</pre></div>
+</div>
+<p>Selecting the rows where the geometry is near the geometry of row with <tt class="docutils literal"><span class="pre">id</span> <span class="pre">=</span> <span class="pre">5</span></tt>.</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001,
+        rows_where:=&#39;the_geom &amp;&amp; (SELECT st_buffer(the_geom, 0.05) FROM edge_table WHERE id=5)&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+</pre></div>
+</div>
+<p>Selecting the rows where the geometry is near the geometry of the row with <tt class="docutils literal"><span class="pre">gid</span></tt> =100 of the table <tt class="docutils literal"><span class="pre">othertable</span></tt>.</p>
+<div class="highlight-python"><div class="highlight"><pre>CREATE TABLE otherTable AS  (SELECT 100 AS gid,  st_point(2.5, 2.5) AS other_geom);
+SELECT 1
+SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001,
+        rows_where:=&#39;the_geom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage-when-the-edge-table-s-columns-do-not-match-the-default-values">
+<h2>Usage when the edge table&#8217;s columns DO NOT MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values" title="Permalink to this headline">¶</a></h2>
+<p>For the following table</p>
+<div class="highlight-python"><div class="highlight"><pre>CREATE TABLE mytable AS (SELECT id AS gid,  the_geom AS mygeom, source AS src , target AS tgt FROM edge_table) ;
+SELECT 18
+</pre></div>
+</div>
+<p class="rubric">Using positional notation:</p>
+<p>The arguments need to be given in the order described in the parameters.</p>
+<p>Note that this example uses clean flag. So it recreates the whole vertices table.</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, &#39;mygeom&#39;, &#39;gid&#39;, &#39;src&#39;, &#39;tgt&#39;, clean := TRUE);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<div class="line-block">
+<div class="line">An error would occur when the arguments are not given in the appropiriate order:</div>
+<div class="line">In this example, the column <tt class="docutils literal"><span class="pre">gid</span></tt> of the table <tt class="docutils literal"><span class="pre">mytable</span></tt> is passed to the function AS the geometry column,</div>
+<div class="line">and the geometry column <tt class="docutils literal"><span class="pre">mygeom</span></tt> is passed to the function AS the id column.</div>
+</div>
+<div class="last highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, &#39;gid&#39;, &#39;mygeom&#39;, &#39;src&#39;, &#39;tgt&#39;);
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology(&#39;mytable&#39;, 0.001, &#39;gid&#39;, &#39;mygeom&#39;, &#39;src&#39;, &#39;tgt&#39;, rows_where := &#39;true&#39;, clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  ----&gt; PGR ERROR in pgr_createTopology: Wrong type of Column id:mygeom
+NOTICE:  Unexpected error raise_exception
+ pgr_createtopology 
+--------------------
+ FAIL
+(1 row)
+</pre></div>
+</div>
+</div>
+<p class="rubric">When using the named notation</p>
+<p>In this scenario omitting a parameter would create an error because the default values for the column names do not match the column names of the table.
+The order of the parameters do not matter:</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, the_geom:=&#39;mygeom&#39;, id:=&#39;gid&#39;, source:=&#39;src&#39;, target:=&#39;tgt&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, source:=&#39;src&#39;, id:=&#39;gid&#39;, target:=&#39;tgt&#39;, the_geom:=&#39;mygeom&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+</pre></div>
+</div>
+<p class="rubric">Selecting rows using rows_where parameter</p>
+<p>Based on id:</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, &#39;mygeom&#39;, &#39;gid&#39;, &#39;src&#39;, &#39;tgt&#39;, rows_where:=&#39;gid &lt; 10&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+
+SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, source:=&#39;src&#39;, id:=&#39;gid&#39;, target:=&#39;tgt&#39;, the_geom:=&#39;mygeom&#39;, rows_where:=&#39;gid &lt; 10&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+
+SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, &#39;mygeom&#39;, &#39;gid&#39;, &#39;src&#39;, &#39;tgt&#39;, 
+        rows_where:=&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom, 1) FROM mytable WHERE gid=5)&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+
+SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, source:=&#39;src&#39;, id:=&#39;gid&#39;, target:=&#39;tgt&#39;, the_geom:=&#39;mygeom&#39;, 
+        rows_where:=&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom, 1) FROM mytable WHERE gid=5)&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+</pre></div>
+</div>
+<p>Selecting the rows where the geometry is near the geometry of the row with <tt class="docutils literal"><span class="pre">gid</span></tt> =100 of the table <tt class="docutils literal"><span class="pre">othertable</span></tt>.</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, &#39;mygeom&#39;, &#39;gid&#39;, &#39;src&#39;, &#39;tgt&#39;, 
+        rows_where:=&#39;mygeom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+
+SELECT  pgr_createTopology(&#39;mytable&#39;, 0.001, source:=&#39;src&#39;, id:=&#39;gid&#39;, target:=&#39;tgt&#39;, the_geom:=&#39;mygeom&#39;, 
+        rows_where:=&#39;mygeom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;);
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples-with-full-output">
+<h2>Examples with full output<a class="headerlink" href="#examples-with-full-output" title="Permalink to this headline">¶</a></h2>
+<p>This example start a clean topology, with 5 edges, and then its incremented to the rest of the edges.</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT pgr_createTopology(&#39;edge_table&#39;,  0.001, rows_where:=&#39;id &lt; 6&#39;, clean := true);
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology(&#39;edge_table&#39;, 0.001, &#39;the_geom&#39;, &#39;id&#39;, &#39;source&#39;, &#39;target&#39;, rows_where := &#39;id &lt; 6&#39;, clean := t)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Creating Topology, Please wait...
+NOTICE:  -------------&gt; TOPOLOGY CREATED FOR  5 edges
+NOTICE:  Rows with NULL geometry or NULL id: 0
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+
+SELECT pgr_createTopology(&#39;edge_table&#39;,  0.001);
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology(&#39;edge_table&#39;, 0.001, &#39;the_geom&#39;, &#39;id&#39;, &#39;source&#39;, &#39;target&#39;, rows_where := &#39;true&#39;, clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Creating Topology, Please wait...
+NOTICE:  -------------&gt; TOPOLOGY CREATED FOR  13 edges
+NOTICE:  Rows with NULL geometry or NULL id: 0
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createtopology 
+--------------------
+ OK
+(1 row)
+</pre></div>
+</div>
+<p>The example uses the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../../doc/src/tutorial/topology.html#topology"><em>Routing Topology</em></a> for an overview of a topology for routing algorithms.</li>
+<li><a class="reference internal" href="pgr_createVerticesTable.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> to reconstruct the vertices table based on the source and target information.</li>
+<li><a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a> to analyze the edges and vertices of the edge table.</li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="../../../search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="topology.html">Topology Functions</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_createVerticesTable.html">pgr_createVerticesTable</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (dev-2.2).
+      Last updated on Feb 18, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

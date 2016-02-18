@@ -75,23 +75,16 @@ Using Dijkstra algorithm, return only the aggregate cost of the shortest path(s)
 <h2>Characteristics:<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>The main Characteristics are:</dt>
-<dd><ul class="first last">
-<li><p class="first">It does not return a path.</p>
-</li>
-<li><p class="first">Returns the sum of the costs of the shortest path for pair combination of nodes in the graph.</p>
-</li>
-<li><p class="first">Vertices of the graph are:</p>
-<blockquote>
-<div><ul class="simple">
+<dd><ul class="first last simple">
+<li>It does not return a path.</li>
+<li>Returns the sum of the costs of the shortest path for pair combination of vertices in the mondified graph.</li>
+<li>Vertices of the graph are:<ul>
 <li><strong>positive</strong> when it belongs to the edges_sql</li>
 <li><strong>negative</strong> when it belongs to the points_sql</li>
 </ul>
-</div></blockquote>
 </li>
-<li><p class="first">Process is done only on edges with positive costs.</p>
-</li>
-<li><p class="first">Values are returned when there is a path.</p>
-<ul class="simple">
+<li>Process is done only on edges with positive costs.</li>
+<li>Values are returned when there is a path.<ul>
 <li>The returned values are in the form of a set of <cite>(start_vid, end_vid, agg_cost)</cite>.</li>
 <li>When the starting vertex and ending vertex are the same, there is no path.<ul>
 <li>The <cite>agg_cost</cite> int the non included values <cite>(v, v)</cite> is <cite>0</cite></li>
@@ -103,24 +96,19 @@ Using Dijkstra algorithm, return only the aggregate cost of the shortest path(s)
 </li>
 </ul>
 </li>
-<li><p class="first">Let be the case the values returned are stored in a table, so the unique index would be the pair:
-<cite>(start_vid, end_vid)</cite>.</p>
-</li>
-<li><p class="first">For undirected graphs, the results are symetric.</p>
-<ul class="simple">
+<li>Let be the case the values returned are stored in a table, so the unique index would be the pair:
+<cite>(start_vid, end_vid)</cite>.</li>
+<li>For undirected graphs, the results are symetric.<ul>
 <li>The  <cite>agg_cost</cite> of <cite>(u, v)</cite> is the same as for <cite>(v, u)</cite>.</li>
 </ul>
 </li>
-<li><p class="first">Any duplicated value in the <cite>start_vids</cite> or <cite>end_vids</cite> is ignored.</p>
-</li>
-<li><p class="first">The returned values are ordered:</p>
-<ul class="simple">
+<li>Any duplicated value in the <cite>start_vids</cite> or <cite>end_vids</cite> is ignored.</li>
+<li>The returned values are ordered:<ul>
 <li><cite>start_vid</cite> ascending</li>
 <li><cite>end_vid</cite> ascending</li>
 </ul>
 </li>
-<li><p class="first">Runing time: <span class="math">\(O(| start\_vids | * (V \log V + E))\)</span></p>
-</li>
+<li>Runing time: <span class="math">\(O(| start\_vids | * (V \log V + E))\)</span></li>
 </ul>
 </dd>
 </dl>
@@ -137,7 +125,7 @@ RETURNS SET OF (start_pid, end_pid, agg_cost)
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">There is no <strong>details</strong> flag, unlike the other memebers of the family of functions,</p>
+<p class="last">There is no <strong>details</strong> flag, unlike the other members of the family of functions,</p>
 </div>
 </div>
 </div>
@@ -587,7 +575,7 @@ RETURNS SET OF (start_pid, end_pid, agg_cost)
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.2.0 (dev-2.2).
-      Last updated on Feb 17, 2016.
+      Last updated on Feb 18, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

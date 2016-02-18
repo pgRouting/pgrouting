@@ -68,7 +68,7 @@
 </div>
 <div class="section" id="analyze-a-graph">
 <h2>Analyze a Graph<a class="headerlink" href="#analyze-a-graph" title="Permalink to this headline">¶</a></h2>
-<p>With <a class="reference internal" href="../../../src/topology/doc/analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a> the graph can be checked for errors. For example for table &#8220;mytab&#8221; that has &#8220;mytab_vertices_pgr&#8221; as the vertices table:</p>
+<p>With <a class="reference internal" href="../../../src/topology/doc/pgr_analyzeGraph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a> the graph can be checked for errors. For example for table &#8220;mytab&#8221; that has &#8220;mytab_vertices_pgr&#8221; as the vertices table:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000002</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">pelase</span> <span class="n">wait</span><span class="p">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="p">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="p">...</span>
@@ -118,7 +118,7 @@
 </div>
 <div class="section" id="analyze-one-way-streets">
 <h2>Analyze One Way Streets<a class="headerlink" href="#analyze-one-way-streets" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../../../src/topology/doc/analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a> analyzes one way streets in a graph and identifies any flipped segments. Basically if you count the edges coming into a node and the edges exiting a node the number has to be greater than one.</p>
+<p><a class="reference internal" href="../../../src/topology/doc/pgr_analyzeOneWay.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a> analyzes one way streets in a graph and identifies any flipped segments. Basically if you count the edges coming into a node and the edges exiting a node the number has to be greater than one.</p>
 <p>This query will add two columns to the vertices_tmp table <tt class="docutils literal"><span class="pre">ein</span> <span class="pre">int</span></tt> and <tt class="docutils literal"><span class="pre">eout</span> <span class="pre">int</span></tt> and populate it with the appropriate counts. After running this on a graph you can identify nodes with potential problems with the following query.</p>
 <p>The rules are defined as an array of text strings that if match the <tt class="docutils literal"><span class="pre">col</span></tt> value would be counted as true for the source or target in or out condition.</p>
 </div>
@@ -157,9 +157,9 @@
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="../../../src/topology/doc/analyze_graph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a></li>
-<li><a class="reference internal" href="../../../src/topology/doc/analyze_oneway.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a></li>
-<li><a class="reference internal" href="../../../src/topology/doc/node_network.html#pgr-node-network"><em>pgr_nodeNetwork</em></a></li>
+<li><a class="reference internal" href="../../../src/topology/doc/pgr_analyzeGraph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a></li>
+<li><a class="reference internal" href="../../../src/topology/doc/pgr_analyzeOneWay.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a></li>
+<li><a class="reference internal" href="../../../src/topology/doc/pgr_nodeNetwork.html#pgr-node-network"><em>pgr_nodeNetwork</em></a></li>
 </ul>
 </div>
 </div>
@@ -180,7 +180,7 @@
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.2.0 (dev-2.2).
-      Last updated on Feb 15, 2016.
+      Last updated on Feb 18, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

@@ -77,6 +77,7 @@ The edges extracted will conform the corresponding spanning tree.</p>
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none"><div class="highlight"><pre>    withPointsDD(edges_sql, points_sql, start_pid, distance)
     withPointsDD(edges_sql, points_sql, start_pid, distance, directed, driving_side, details)
+    withPointsDD(edges_sql, points_sql, start_pids, distance, directed, driving_side, details, equicost)
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
@@ -131,7 +132,7 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 <div class="section" id="driving-distance-from-a-single-point">
 <span id="index-1"></span><h2>Driving distance from a single point<a class="headerlink" href="#driving-distance-from-a-single-point" title="Permalink to this headline">¶</a></h2>
 <p>Finds the driving distance depending on the optional parameters setup.</p>
-<div class="highlight-none"><div class="highlight"><pre>    pgr_withPointsDD(edges_sql, points_sql, start_pid, distance,
+<div class="highlight-none"><div class="highlight"><pre>    pgr_withPointsDD(edges_sql, points_sql, start_pids, distance,
     directed := true, driving_side := &#39;b&#39;, details := false)
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
@@ -162,6 +163,19 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
    8 |   10 |   10 |    1 |      3.4
 (8 rows)
 </pre></div>
+</div>
+</div>
+<div class="section" id="driving-distance-from-many-staring-points">
+<span id="index-2"></span><h2>Driving distance from many staring points<a class="headerlink" href="#driving-distance-from-many-staring-points" title="Permalink to this headline">¶</a></h2>
+<p>Finds the driving distance depending on the optional parameters setup.</p>
+<div class="highlight-none"><div class="highlight"><pre>    pgr_withPointsDD(edges_sql, points_sql, start_pid, distance,
+    directed := true, driving_side := &#39;b&#39;, details := false, equicost := false)
+RETURNS SET OF (seq, node, edge, cost, agg_cost)
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Not coded yet</p>
 </div>
 </div>
 </div>
@@ -290,9 +304,9 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 <h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="10%" />
-<col width="11%" />
-<col width="79%" />
+<col width="7%" />
+<col width="7%" />
+<col width="86%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -324,7 +338,7 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 <tr class="row-odd"><td><strong>driving_side</strong></td>
 <td><tt class="docutils literal"><span class="pre">CHAR</span></tt></td>
 <td><dl class="first last docutils">
-<dt>(optional) Value in [&#8216;b&#8217;, &#8216;r&#8217;, &#8216;l&#8217;, NULL] indicating if the driving side is:</dt>
+<dt>(optional). Value in [&#8216;b&#8217;, &#8216;r&#8217;, &#8216;l&#8217;, NULL] indicating if the driving side is:</dt>
 <dd><ul class="first last simple">
 <li>In the right or left or</li>
 <li>If it doesn&#8217;t matter with &#8216;b&#8217; or NULL.</li>
@@ -338,6 +352,10 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 <td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
 <td>(optional). When <tt class="docutils literal"><span class="pre">true</span></tt> the results will include the driving distance to the points with in Distance.
 Default is <tt class="docutils literal"><span class="pre">false</span></tt> which ignores other points of the points_sql.</td>
+</tr>
+<tr class="row-odd"><td><strong>equicost</strong></td>
+<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td>(optional). When <tt class="docutils literal"><span class="pre">true</span></tt> the nodes will only appear in the closest start_v list. Default is <tt class="docutils literal"><span class="pre">false</span></tt> which resembles several calls using the single starting point signatures. Tie brakes are arbitrarely.</td>
 </tr>
 </tbody>
 </table>
@@ -460,8 +478,8 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference internal" href="../../driving_distance/doc/pgr_drivingDistance.html#pgr-drivingdistance"><em>pgr_drivingDistance</em></a> - Driving distance using dijkstra.</li>
-<li><a class="reference internal" href="../../alpha_shape/doc/dd_alphashape.html#pgr-alphashape"><em>pgr_alphaShape</em></a> - Alpha shape computation.</li>
-<li><a class="reference internal" href="../../alpha_shape/doc/dd_points_as_polygon.html#pgr-points-as-polygon"><em>pgr_pointsAsPolygon</em></a> - Polygon around set of points.</li>
+<li><a class="reference internal" href="../../alpha_shape/doc/pgr_alphaShape.html#pgr-alphashape"><em>pgr_alphaShape</em></a> - Alpha shape computation.</li>
+<li><a class="reference internal" href="../../alpha_shape/doc/pgr_pointsAsPolygon.html#pgr-points-as-polygon"><em>pgr_pointsAsPolygon</em></a> - Polygon around set of points.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -487,7 +505,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.2.0 (dev-2.2).
-      Last updated on Feb 17, 2016.
+      Last updated on Feb 18, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

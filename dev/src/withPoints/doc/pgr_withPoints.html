@@ -53,7 +53,7 @@
 <span id="id1"></span><h1>pgr_withPoints<a class="headerlink" href="#pgr-withpoints" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_withPoints</span></tt> - Returns the driving distance from a starting point.</p>
+<p><tt class="docutils literal"><span class="pre">pgr_withPoints</span></tt> - Returns the shortest path with a graph with additional temporary vertices.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>This is a proposed function for version 2.3.</p>
@@ -75,39 +75,29 @@ Using Dijkstra algorithm, find the shortest path(s)</p>
 <h2>Characteristics:<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
 <p>The main Characteristics are:</p>
 <blockquote>
-<div><ul>
-<li><p class="first">Process is done only on edges with positive costs.</p>
-</li>
-<li><p class="first">Vertices of the graph are:</p>
-<ul class="simple">
+<div><ul class="simple">
+<li>Process is done only on edges with positive costs.</li>
+<li>Vertices of the graph are:<ul>
 <li><strong>positive</strong> when it belongs to the edges_sql</li>
 <li><strong>negative</strong> when it belongs to the points_sql</li>
 </ul>
 </li>
-<li><p class="first">Values are returned when there is a path.</p>
-</li>
-<li><p class="first">When the starting vertex and ending vertex are the same, there is no path.</p>
-<ul class="simple">
+<li>Values are returned when there is a path.</li>
+<li>When the starting vertex and ending vertex are the same, there is no path.<ul>
 <li>The agg_cost the non included values (v, v) is 0</li>
 </ul>
 </li>
-<li><p class="first">When the starting vertex and ending vertex are the different and there is no path:</p>
-<ul class="simple">
+<li>When the starting vertex and ending vertex are the different and there is no path:<ul>
 <li>The agg_cost the non included values (u, v) is ∞</li>
 </ul>
 </li>
-<li><p class="first">For optimization purposes, any duplicated value in the start_vids or end_vids are ignored.</p>
-</li>
-<li><p class="first">The returned values are ordered:</p>
-<blockquote>
-<div><ul class="simple">
+<li>For optimization purposes, any duplicated value in the start_vids or end_vids are ignored.</li>
+<li>The returned values are ordered:<ul>
 <li>start_vid ascending</li>
 <li>end_vid ascending</li>
 </ul>
-</div></blockquote>
 </li>
-<li><p class="first">Runing time: <span class="math">\(O(|start\_vids|∗(V \log V + E))\)</span></p>
-</li>
+<li>Runing time: <span class="math">\(O(|start\_vids|∗(V \log V + E))\)</span></li>
 </ul>
 </div></blockquote>
 </div>
@@ -697,7 +687,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.2.0 (dev-2.2).
-      Last updated on Feb 17, 2016.
+      Last updated on Feb 18, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
