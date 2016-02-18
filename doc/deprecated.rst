@@ -55,7 +55,6 @@ Deprecated on version 2.1
   -  :ref:`pgr_get_table_name` - to retrieve the name of the table as is stored in the postgres administration tables.
   -  :ref:`pgr_is_column_indexed` - to check if the column is indexed.
   -  :ref:`pgr_is_column_in_table` - to check only for the existance of the column.
-  -  :ref:`pgr_point_to_id` -to insert/get the id of the inserted point in a vertices table.
   -  :ref:`pgr_quote_ident` - to quotes the input text to be used as an identifier in an SQL statement string.
   -  :ref:`pgr_versionless` - to compare two version numbers.
   -  :ref:`pgr_start_point` - to get the start point of a (multi)linestring.

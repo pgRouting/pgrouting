@@ -44,6 +44,7 @@ Signature Summary
 
 	withPointsDD(edges_sql, points_sql, start_pid, distance)
 	withPointsDD(edges_sql, points_sql, start_pid, distance, directed, driving_side, details)
+	withPointsDD(edges_sql, points_sql, start_pids, distance, directed, driving_side, details, equicost)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 Signatures
@@ -82,16 +83,33 @@ Finds the driving distance depending on the optional parameters setup.
 
 .. code-block:: none
 
-	pgr_withPointsDD(edges_sql, points_sql, start_pid, distance,
+	pgr_withPointsDD(edges_sql, points_sql, start_pids, distance,
         directed := true, driving_side := 'b', details := false)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
-
 
 :Example: Right side driving topology
 
 .. literalinclude:: doc-pgr_withPointsDD.queries
    :start-after: --q2
    :end-before: --q3
+
+.. index::
+	single: withPointsDD(edges_sql, points_sql, start_pid, distance, directed, driving_side, details, equicost) -- proposed
+
+Driving distance from many staring points
+------------------------------------------
+
+Finds the driving distance depending on the optional parameters setup.
+
+.. code-block:: none
+
+	pgr_withPointsDD(edges_sql, points_sql, start_pid, distance,
+        directed := true, driving_side := 'b', details := false, equicost := false)
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+
+
+.. note:: Not coded yet
+
 
 Description of the Signatures
 =============================
@@ -121,13 +139,14 @@ Parameter        Type              Description
 **start_pid**    ``ANY-INTEGER``   Starting point id
 **distance**     ``ANY_NUMERICAL`` Distance from the start_pid
 **directed**     ``BOOLEAN``       (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-**driving_side** ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
+**driving_side** ``CHAR``          (optional). Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
                                      - In the right or left or
                                      - If it doesn't matter with 'b' or NULL.
                                      - If column not present 'b' is considered.
 
 **details**      ``BOOLEAN``       (optional). When ``true`` the results will include the driving distance to the points with in Distance.
                                    Default is ``false`` which ignores other points of the points_sql.
+**equicost**     ``BOOLEAN``       (optional). When ``true`` the nodes will only appear in the closest start_v list. Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrarely.                                   
 ================ ================= =================================================
 
 

@@ -50,12 +50,12 @@ See also
 .. toctree::
   :hidden:
 
-  pgr_pointToEdgeNode - convert a point geometry to a ``vertex_id`` based on closest edge. <point_to_edgenode>
+  pgr_pointToEdgeNode
   pgr_flipEdges
-  pgr_textToPoints - convert a string of ``x,y;x,y;...`` locations into point geometries. <text_to_points>
-  pgr_pointsToVids - convert an array of point geometries into ``node_id``s. <points_to_vids>
+  pgr_textToPoints
+  pgr_pointsToVids
 
-  pgr_pointsToDMatrix - Create a distance matrix from an array of points. <points_to_dmatrix>
-  pgr_vidsToDMatrix - Create a distance matrix from an array of ``vertix_id``. <vids_to_dmatrix>
-  pgr_vidsToDMatrix - Create a distance matrix from an array of ``vertix_id``. <vids_to_dmatrix2>
+  pgr_pointsToDMatrix
+  pgr_vidsToDMatrix
+  pgr_vidsToDMatrix2
 

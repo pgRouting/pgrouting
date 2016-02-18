@@ -34,7 +34,7 @@ THE SOFTWARE.
 
 
 
-create or replace function pgr_makeDistanceMatrix(sqlin text, OUT dmatrix double precision[], OUT ids integer[])
+create or replace function _pgr_makeDistanceMatrix(sqlin text, OUT dmatrix double precision[], OUT ids integer[])
   as
 $body$
 declare
@@ -73,7 +73,7 @@ declare
 begin
 
     return query with dm  as (
-        select * from pgr_makeDistanceMatrix( sql )
+        select * from _pgr_makeDistanceMatrix( sql )
     ),
     ids as (
         select (row_number() over (order by id asc))-1 as rnum, id

@@ -31,6 +31,6 @@ Driving Distance post-processing
    :hidden:
 
    ./pgr_drivingDistance.rst
-   ./../../alpha_shape/doc/dd_alphashape.rst
-   ./../../alpha_shape/doc/dd_points_as_polygon.rst
+   ./../../alpha_shape/doc/pgr_alphaShape.rst
+   ./../../alpha_shape/doc/pgr_pointsAsPolygon.rst
 

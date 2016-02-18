@@ -39,11 +39,11 @@ Characteristics:
 
 The main Characteristics are:
   - It does not return a path.
-  - Returns the sum of the costs of the shortest path for pair combination of nodes in the graph.
+  - Returns the sum of the costs of the shortest path for pair combination of vertices in the mondified graph.
   - Vertices of the graph are:
 
-      - **positive** when it belongs to the edges_sql
-      - **negative** when it belongs to the points_sql
+    - **positive** when it belongs to the edges_sql
+    - **negative** when it belongs to the points_sql
 
   - Process is done only on edges with positive costs.
   - Values are returned when there is a path.

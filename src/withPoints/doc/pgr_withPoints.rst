@@ -16,7 +16,7 @@ pgr_withPoints
 Name
 -------------------------------------------------------------------------------
 
-``pgr_withPoints`` - Returns the driving distance from a starting point.
+``pgr_withPoints`` - Returns the shortest path with a graph with additional temporary vertices.
 
 .. note::  This is a proposed function for version 2.3.
 
@@ -39,28 +39,28 @@ Characteristics:
 
 The main Characteristics are:
 
-    - Process is done only on edges with positive costs.
-    - Vertices of the graph are:
+  - Process is done only on edges with positive costs.
+  - Vertices of the graph are:
 
-      - **positive** when it belongs to the edges_sql
-      - **negative** when it belongs to the points_sql
+    - **positive** when it belongs to the edges_sql
+    - **negative** when it belongs to the points_sql
 
-    - Values are returned when there is a path.
-    - When the starting vertex and ending vertex are the same, there is no path.
+  - Values are returned when there is a path.
+  - When the starting vertex and ending vertex are the same, there is no path.
 
-      - The agg_cost the non included values (v, v) is 0
+    - The agg_cost the non included values (v, v) is 0
 
-    - When the starting vertex and ending vertex are the different and there is no path:
+  - When the starting vertex and ending vertex are the different and there is no path:
 
-      - The agg_cost the non included values (u, v) is ∞
+    - The agg_cost the non included values (u, v) is ∞
 
-    - For optimization purposes, any duplicated value in the start_vids or end_vids are ignored.
-    - The returned values are ordered:
+  - For optimization purposes, any duplicated value in the start_vids or end_vids are ignored.
+  - The returned values are ordered:
 
-        - start_vid ascending
-        - end_vid ascending
+    - start_vid ascending
+    - end_vid ascending
 
-    - Runing time: :math:`O(|start\_vids|∗(V \log V + E))`
+  - Runing time: :math:`O(|start\_vids|∗(V \log V + E))`
 
 
 Signature Summary

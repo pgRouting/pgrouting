@@ -7,7 +7,7 @@ LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/utilities_pgr.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/noUnderUtilities.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/createIndex.sql
-    ${CMAKE_CURRENT_SOURCE_DIR}/findClosestEdge.sql
+    #${CMAKE_CURRENT_SOURCE_DIR}/findClosestEdge.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/_point_toId.sql
     
 )

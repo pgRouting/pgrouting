@@ -85,7 +85,7 @@ Version
 .. toctree::
    :hidden:
 
-   ../src/common/doc/version
+   ../src/common/doc/pgr_version
 
 
 
@@ -130,8 +130,13 @@ Topology functions
 
    ../src/routingFunctions
 
+Routing Functions
+=================
 
 .. include:: ../src/routingFunctions.rst
+   :start-after: from-here
+   :end-before: to-here
+
 
 
 *******************************************************************************

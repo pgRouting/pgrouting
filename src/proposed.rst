@@ -53,7 +53,7 @@ Proposed functions: Proposed by Zia Mohammed
 .. toctree::
   :hidden:
 
-  ../src/label_graph/doc/analyze_brokengraph.rst
+  ../src/label_graph/doc/pgr_labelGraph.rst
 
 .. toctree::
    :hidden:

@@ -42,6 +42,7 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDD(
      '$libdir/${PGROUTING_LIBRARY_NAME}', 'withPoints_dd'
  LANGUAGE c IMMUTABLE STRICT;
 
+/*
 CREATE OR REPLACE FUNCTION pgr_withPointsDD(
     edges_sql TEXT,
     points_sql TEXT,
@@ -62,4 +63,4 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDD(
   RETURNS SETOF RECORD AS
      '$libdir/${PGROUTING_LIBRARY_NAME}', 'many_withPointsDD'
  LANGUAGE c IMMUTABLE STRICT;
-
+*/

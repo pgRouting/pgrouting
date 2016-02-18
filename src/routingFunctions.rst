@@ -9,9 +9,12 @@
 
 .. _routing_functions:
 
+
 Routing Functions
 =================
 
+..
+    from-here
 
 :ref:`routing_functions`
 
@@ -41,6 +44,8 @@ Routing Functions
   - :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
   - :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
 
+..
+    to-here
 
 .. toctree::
 	:hidden: 
@@ -51,8 +56,8 @@ Routing Functions
 	bd_dijkstra/doc/pgr_bdDijkstra
 	dijkstra/doc/dijkstra
 	driving_distance/doc/drivingDistance
-	ksp/doc/ksp
-	tsp/doc/index
-	trsp/doc/index
+	ksp/doc/pgr_ksp
+	tsp/doc/pgr_tsp
+	trsp/doc/pgr_trsp
 
 
