@@ -27,7 +27,7 @@ This are proposed functions
     - Might need c/c++ coding.
     - May lack documentation,
     - Documentation if any might need to be rewritten.
-      - Documentation examples might need to be automatically generated.
+    - Documentation examples might need to be automatically generated.
     - Might need a lot of feedback from the comunity.
     - Might need a non official function of pgRouting
     - Might need a deprecated function of pgRouting
