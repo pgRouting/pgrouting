@@ -29,10 +29,10 @@ Deprecated on version 2.2
 .. toctree::
    :hidden: 
 
-   ../src/apsp_johnson/doc/index
-   ../src/apsp_warshall/doc/index
-   ../src/kdijkstra/doc/index
-   ../src/driving_distance/doc/dd_driving_distance_v2
+   ../src/apsp_johnson/doc/pgr_apspJohnson
+   ../src/apsp_warshall/doc/pgr_apspWarshall
+   ../src/kdijkstra/doc/pgr_kDijkstra
+   ../src/driving_distance/doc/pgr_drivingDistance_v2
 
 Deprecated on version 2.1
 
@@ -42,8 +42,8 @@ Deprecated on version 2.1
 .. toctree::
    :hidden: 
 
-   ../src/dijkstra/doc/dijkstra_v2
-   ../src/ksp/doc/ksp_v2
+   ../src/dijkstra/doc/pgr_dijkstra_v2
+   ../src/ksp/doc/pgr_ksp_v2
 
 Deprecated Developer's Auxiliary Functions
 ------------------------------------------
