@@ -74,7 +74,7 @@ Experimental functions: by GSoC Students
 .. toctree::
     :hidden:
 
-    ../src/vrp_basic/doc/index.rst
+    ../src/vrp_basic/doc/pgr_vrpOneDepot
 
 ..
     ../src/funnyDijkstra/doc/pgr_funnyDijkstra.rst
