@@ -4,10 +4,10 @@
 
 ## STATUS
 
-### Current Development is in the *develop* branch
+### Current Development is in the *dev-2.2* branch
 
 The *master* branch reflects our current 2.1.0 release.
-Post 2.1.0 development will happen in the *develop* branch.
+
 
 
 ## LINKS
@@ -32,11 +32,7 @@ Post 2.1.0 development will happen in the *develop* branch.
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=develop" alt="Build Status"/></td>
 		<td></td>
 	</tr>
-        <tr>
-                <td>develop_2_1_0</td>
-                <td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=develop_2_1_0" alt="Build Status"/></td>
-                <td></td>
-        </tr>
+
 	<tr>
 		<td>gh-pages</td>
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=gh-pages" alt="Build Status"/></td>
