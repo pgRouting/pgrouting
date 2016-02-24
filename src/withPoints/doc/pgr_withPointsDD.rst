@@ -42,10 +42,10 @@ Signature Summary
 
 .. code-block:: none
 
-	withPointsDD(edges_sql, points_sql, start_pid, distance)
-	withPointsDD(edges_sql, points_sql, start_pid, distance, directed, driving_side, details)
-	withPointsDD(edges_sql, points_sql, start_pids, distance, directed, driving_side, details, equicost)
-    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+	pgr_withPointsDD(edges_sql, points_sql, start_pid, distance)
+	pgr_withPointsDD(edges_sql, points_sql, start_pid, distance, directed, driving_side, details)
+	pgr_withPointsDD(edges_sql, points_sql, start_pids, distance, directed, driving_side, details, equicost)
+  RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 Signatures
 ==========
@@ -63,8 +63,8 @@ The minimal signature:
 
 .. code-block:: none
 
-	withPointsDD(edges_sql, points_sql, start_pid, distance)
-    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+	pgr_withPointsDD(TEXT edges_sql, TEXT points_sql, BIGINT start_pid, ANY_NUMERICAL distance)
+  RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
 :Example:
@@ -83,9 +83,8 @@ Finds the driving distance depending on the optional parameters setup.
 
 .. code-block:: none
 
-	pgr_withPointsDD(edges_sql, points_sql, start_pids, distance,
-        directed := true, driving_side := 'b', details := false)
-    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+	pgr_withPointsDD(TEXT edges_sql, TEXT points_sql, BIGINT start_pid, ANY_NUMERICAL distance, BOOLEAN directed := true, CHAR driving_side := 'b', BOOLEAN details := false)
+  RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 :Example: Right side driving topology
 
@@ -96,16 +95,15 @@ Finds the driving distance depending on the optional parameters setup.
 .. index::
 	single: withPointsDD(edges_sql, points_sql, start_pid, distance, directed, driving_side, details, equicost) -- proposed
 
-Driving distance from many staring points
+Driving distance from many starting points
 ------------------------------------------
 
 Finds the driving distance depending on the optional parameters setup.
 
 .. code-block:: none
 
-	pgr_withPointsDD(edges_sql, points_sql, start_pid, distance,
-        directed := true, driving_side := 'b', details := false, equicost := false)
-    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+	pgr_withPointsDD(TEXT edges_sql, TEXT points_sql, ARRAY[ANY_INTEGER] start_pids, distance, BOOLEAN directed := true, CHAR driving_side := 'b', BOOLEAN details := false, BOOLEAN equicost := false)
+  RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
 .. note:: Not coded yet
@@ -137,16 +135,16 @@ Parameter        Type              Description
 **edges_sql**    ``TEXT``          Edges SQL query as decribed above.
 **points_sql**   ``TEXT``          Points SQL query as decribed above.
 **start_pid**    ``ANY-INTEGER``   Starting point id
-**distance**     ``ANY_NUMERICAL`` Distance from the start_pid
+**distance**     ``ANY-NUMERICAL`` Distance from the start_pid
 **directed**     ``BOOLEAN``       (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
 **driving_side** ``CHAR``          (optional). Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
                                      - In the right or left or
                                      - If it doesn't matter with 'b' or NULL.
                                      - If column not present 'b' is considered.
 
-**details**      ``BOOLEAN``       (optional). When ``true`` the results will include the driving distance to the points with in Distance.
+**details**      ``BOOLEAN``       (optional). When ``true`` the results will include the driving distance to the points with in the ``distance``.
                                    Default is ``false`` which ignores other points of the points_sql.
-**equicost**     ``BOOLEAN``       (optional). When ``true`` the nodes will only appear in the closest start_v list. Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrarely.                                   
+**equicost**     ``BOOLEAN``       (optional). When ``true`` the nodes will only appear in the closest start_v list. Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrary.                                   
 ================ ================= =================================================
 
 
