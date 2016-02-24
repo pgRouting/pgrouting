@@ -232,9 +232,9 @@ Column           Type              Description
                             - A positive value indicates the node is a vertex of edges_sql.
                             - A negative value indicates the node is a point of points_sql.
 
-**edge**      ``BIGINT``  Identifier of the edge used to arrive to ``node``. ``0`` when the ``node`` is the ``start_vid``.
-**cost**      ``FLOAT``   Cost to traverse ``edge``.  from ``node`` to the next   node on the path sequence. -1 for the last row of the path sequence.
-**agg_cost**  ``FLOAT``   Aggregate cost from ``start_pid`` to ``node``.
+**edge**      ``BIGINT``  Identifier of the edge used to arrive to ``node``. ``-1`` for the last row of the path sequence.
+**cost**      ``FLOAT``   Cost to traverse ``edge``.  from ``node`` to the next   node on the path sequence. ``0`` for the last row of the path sequence.
+**agg_cost**  ``FLOAT``   Aggregate cost from ``start_vid`` to ``node``.
 ============= =========== =================================================
 
 
