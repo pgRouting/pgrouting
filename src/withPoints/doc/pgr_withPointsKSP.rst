@@ -64,7 +64,7 @@ The minimal signature:
 
 .. code-block:: none
 
-    pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K)
+    pgr_withPointsKSP(TEXT edges_sql, TEXT points_sql, BIGINT start_pid, BIGINT end_pid, INTEGER K)
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
 
@@ -84,8 +84,7 @@ Finds the K shortest paths depending on the optional parameters setup.
 
 .. code-block:: none
 
-    pgr_withPointsKSP(edges_sql, points_sql, start_pid, distance,
-        directed := true, heap_paths := false, driving_side := 'b', details := false)
+    pgr_withPointsKSP(TEXT edges_sql, TEXT points_sql, BIGINT start_pid, INTEGER distance, BOOLEAN directed := true, BOOLEAN heap_paths := false, CHAR driving_side := 'b', BOOLEAN details := false)
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
 
@@ -115,17 +114,17 @@ Parameter        Type              Description
 ================ ================= =================================================
 **edges_sql**    ``TEXT``          Edges SQL query as decribed above.
 **points_sql**   ``TEXT``          Points SQL query as decribed above.
-**start_pid**    ``ANY-INTEGER``   Starting point id
-**end_pid**      ``ANY-INTEGER``   Ending point id
+**start_pid**    ``ANY-INTEGER``   Starting point id.
+**end_pid**      ``ANY-INTEGER``   Ending point id.
 **K**            ``INTEGER``       Number of shortest paths.
 **directed**     ``BOOLEAN``       (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-**heap_paths**   ``BOOLEAN``       (optional). When ``true`` the pahts calculated to get the sortests paths will be returned also. Default is ``false`` only the K shortest paths are returned.
+**heap_paths**   ``BOOLEAN``       (optional). When ``true`` the paths calculated to get the shortests paths will be returned also. Default is ``false`` only the K shortest paths are returned.
 **driving_side** ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
                                      - In the right or left or
                                      - If it doesn't matter with 'b' or NULL.
                                      - If column not present 'b' is considered.
 
-**details**      ``BOOLEAN``       (optional). When ``true`` the results will include the driving distance to the points with in Distance.
+**details**      ``BOOLEAN``       (optional). When ``true`` the results will include the driving distance to the points with in the ``distance``.
                                    Default is ``false`` which ignores other points of the points_sql.
 ================ ================= =================================================
 
@@ -145,7 +144,7 @@ Column           Type              Description
 **edge**     ``BIGINT``  Identifier of the edge used to go from ``node`` to the next node in the path sequence. 
                            - ``-1`` for the last node of the path.
 
-**cost**     ``FLOAT``   Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
+**cost**     ``FLOAT``   Cost to traverse from ``node`` using ``edge`` to the next ``node`` in the path sequence.
 **agg_cost** ``FLOAT``   Aggregate cost from ``start_pid`` to ``node``.
                            - ``0`` when the ``node`` is the ``start_pid``.
 

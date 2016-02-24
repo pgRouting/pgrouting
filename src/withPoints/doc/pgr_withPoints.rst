@@ -16,7 +16,7 @@ pgr_withPoints
 Name
 -------------------------------------------------------------------------------
 
-``pgr_withPoints`` - Returns the shortest path with a graph with additional temporary vertices.
+``pgr_withPoints`` - Returns the shortest path in a graph with additional temporary vertices.
 
 .. note::  This is a proposed function for version 2.3.
 
@@ -31,7 +31,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Modify the graph to include points defined by points sql. 
+Modify the graph to include points defined by points_sql. 
 Using Dijkstra algorithm, find the shortest path(s)
 
 Characteristics:
@@ -46,11 +46,12 @@ The main Characteristics are:
     - **negative** when it belongs to the points_sql
 
   - Values are returned when there is a path.
-  - When the starting vertex and ending vertex are the same, there is no path.
+
+   - When the starting vertex and ending vertex are the same, there is no path.
 
     - The agg_cost the non included values (v, v) is 0
 
-  - When the starting vertex and ending vertex are the different and there is no path:
+   - When the starting vertex and ending vertex are the different and there is no path:
 
     - The agg_cost the non included values (u, v) is ∞
 
@@ -88,11 +89,11 @@ Minimal signature
 The minimal signature:
     - Is for a **directed** graph.
     - The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
-    - No **details** are given about distance of other points of the query.
+    - No **details** are given about distance of other points of points_sql query.
 
 .. code-block:: none
 
-    pgr_withPoints(edges_sql, points_sql, start_vid, end_vid)
+    pgr_withPoints(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, BIGINT end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
 
@@ -111,7 +112,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_withPoints(edges_sql, points_sql, start_vid, end_vid, directed, driving_side, details)
+    pgr_withPoints(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, BIGINT end_vid, BOOLEAN directed, CHAR driving_side, BOOLEAN details)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
@@ -130,8 +131,8 @@ One to Many
 
 .. code-block:: none
 
-    pgr_withPoints(edges_sql, points_sql, start_vid, end_vid, directed, driving_side, details)
-    RETURNS SET OF (seq, path_seq, end_pid, node, edge, cost, agg_cost)
+    pgr_withPoints(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids, BOOLEAN directed, CHAR driving_side, BOOLEAN details)
+    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 
 
 :Example: From point 1 to point 3 and vertex 5
@@ -149,8 +150,8 @@ Many to One
 
 .. code-block:: none
 
-    pgr_withPoints(edges_sql, points_sql, start_vids, end_vid, directed, driving_side, details)
-    RETURNS SET OF (seq, path_seq, start_pid, node, edge, cost, agg_cost)
+    pgr_withPoints(TEXT edges_sql, TEXT points_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid, BOOLEAN directed, CHAR driving_side, BOOLEAN details)
+    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 
 
 :Example: From point 1 and vertex 2  to point 3
@@ -168,7 +169,7 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_withPoints(edges_sql, points_sql, start_vids, end_vids, directed, driving_side, details)
+    pgr_withPoints(TEXT edges_sql, TEXT points_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids, BOOLEAN directed, CHAR driving_side, BOOLEAN details)
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
 
@@ -201,9 +202,9 @@ Parameter        Type                   Description
 **edges_sql**    ``TEXT``               Edges SQL query as decribed above.
 **points_sql**   ``TEXT``               Points SQL query as decribed above.
 **start_vid**    ``ANY-INTEGER``        Starting vertex identifier. When negative: is a point's pid.
-**end_vid**      ``ANY-INTEGER``        Ending point identifier. When negative: is a point's pid.
-**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of starting points identifiers. When negative: is a point's pid.
-**end_vids**     ``ARRAY[ANY-INTEGER]`` Array of ending points identifiers. When negative: is a point's pid.
+**end_vid**      ``ANY-INTEGER``        Ending vertex identifier. When negative: is a point's pid.
+**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices. When negative: is a point's pid.
+**end_vids**     ``ARRAY[ANY-INTEGER]`` Array of identifiers of ending vertices. When negative: is a point's pid.
 **directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
 **driving_side** ``CHAR``               (optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
                                           - In the right or left or
@@ -218,7 +219,7 @@ Parameter        Type                   Description
 Description of the return values
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, [path_seq,] [start_pid,] [end_pid,] node, edge, cost, agg_cost)``
+Returns set of ``(seq, [path_seq,] [start_vid,] [end_vid,] node, edge, cost, agg_cost)``
 
 ============= =========== =================================================
 Column           Type              Description
@@ -226,7 +227,7 @@ Column           Type              Description
 **seq**       ``INTEGER`` Row sequence.
 **path_seq**  ``INTEGER`` Path sequence that indicates the relative position on the path.
 **start_vid** ``BIGINT``  Identifier of the starting vertex. When negative: is a point's pid.
-**end_vid**   ``BIGINT``  Identifier of the ending point. When negative: is a point's pid.
+**end_vid**   ``BIGINT``  Identifier of the ending vertex. When negative: is a point's pid.
 **node**      ``BIGINT``  Identifier of the node:
                             - A positive value indicates the node is a vertex of edges_sql.
                             - A negative value indicates the node is a point of points_sql.
