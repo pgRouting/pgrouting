@@ -120,7 +120,7 @@ trusty provides: 1.2.2
 
 
 pgTap & pg_prove & perl for tests 
----------------------------------
+-----------------------------------
 
 .. warning:: cmake does not test for this packages.
 

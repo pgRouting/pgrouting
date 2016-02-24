@@ -124,7 +124,19 @@ Examples
 
 * Using SQL parameter (all points from the table, atarting from 6 and ending at 5). We have listed two queries in this example, the first might vary from system to system because there are multiple equivalent answers. The second query should be stable in that the length optimal route should be the same regardless of order.
 
+
+
 .. code-block:: sql
+
+    CREATE TABLE vertex_table (
+        id serial,
+        x double precision,
+        y double precision
+    );
+
+    INSERT INTO vertex_table VALUES
+    (1,2,0), (2,2,1), (3,3,1), (4,4,1), (5,0,2), (6,1,2), (7,2,2),
+    (8,3,2), (9,4,2), (10,2,3), (11,3,3), (12,4,3), (13,2,4);
 
     SELECT seq, id1, id2, round(cost::numeric, 2) AS cost
       FROM pgr_tsp('SELECT id, x, y FROM vertex_table ORDER BY id', 6, 5);

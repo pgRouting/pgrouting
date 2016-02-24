@@ -59,41 +59,14 @@ Returns a (multi)polygon geometry (with holes).
 
 Examples
 -------------------------------------------------------------------------------
-In the following query there is no way to control which point in the polygon is the first in the list, so you may get similar but different results than the following which are also correct. Each of the pgr_pointsAsPolygon queries below is followed by one the compute the area of the polygon. This area should remain constant regardles of the order of the points making up the polygon.
+In the following query there is no way to control which point in the polygon is the first in the list, so you may get similar but different results than the following which are also correct.
 
-.. code-block:: sql
-
-    SELECT ST_AsText(pgr_pointsAsPolygon('SELECT id, x, y FROM vertex_table'));
-
-                   st_astext                
-    ----------------------------------------
-     POLYGON((2 4,4 3,4 2,4 1,2 0,0 2,2 4))
-    (1 row)
-
-    SELECT round(ST_Area(pgr_pointsAsPolygon('SELECT id, x, y FROM vertex_table'))::numeric, 2) AS st_area;
-
-     st_area
-    ---------
-       10.00
-    (1 row)
-
-    
-    SELECT ST_AsText(pgr_pointsAsPolygon('SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y
-                                          FROM edge_table_vertices_pgr'));
-                        st_astext                         
-    ----------------------------------------------------------
-     POLYGON((2 4,3.5 4,4 3,4 2,4 1,2 0,0 2,0.5 3.5,2 4))
-    (1 row)
-
-    SELECT round(ST_Area(pgr_pointsAsPolygon('SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y
-         FROM edge_table_vertices_pgr'))::numeric, 2) AS st_area;
-
-     st_area
-    ---------
-       11.75
+.. literalinclude:: doc-pgr_pointsAsPolygon.queries
+   :start-after: --q1
+   :end-before: --q2
 
 
-The queries use the :ref:`sampledata` network.
+The query use the :ref:`sampledata` network.
 
 
 See Also
