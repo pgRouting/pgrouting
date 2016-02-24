@@ -31,7 +31,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Modify the graph to include points defined by points sql.
+Modify the graph to include points defined by points_sql.
 Using Dijkstra algorithm, return only the aggregate cost of the shortest path(s) found.
 
 Characteristics:
@@ -39,7 +39,7 @@ Characteristics:
 
 The main Characteristics are:
   - It does not return a path.
-  - Returns the sum of the costs of the shortest path for pair combination of vertices in the mondified graph.
+  - Returns the sum of the costs of the shortest path for pair combination of vertices in the modified graph.
   - Vertices of the graph are:
 
     - **positive** when it belongs to the edges_sql
@@ -52,27 +52,27 @@ The main Characteristics are:
 
     - When the starting vertex and ending vertex are the same, there is no path.
 
-      - The `agg_cost` int the non included values `(v, v)` is `0`
+      - The `agg_cost` in the non included values `(v, v)` is `0`
 
     - When the starting vertex and ending vertex are the different and there is no path.
 
       - The `agg_cost` in the non included values `(u, v)` is :math:`\infty`
 
-  - Let be the case the values returned are stored in a table, so the unique index would be the pair:
+  - If the values returned are stored in a table, the unique index would be the pair:
     `(start_vid, end_vid)`.
 
-  - For undirected graphs, the results are symetric.
+  - For undirected graphs, the results are symmetric.
 
     - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
 
-  - Any duplicated value in the `start_vids` or `end_vids` is ignored.
+  - For optimization purposes, any duplicated value in the `start_vids` or `end_vids` is ignored.
 
   - The returned values are ordered:
 
     - `start_vid` ascending
     - `end_vid` ascending
 
-  - Runing time: :math:`O(| start\_vids | * (V \log V + E))`
+  - Running time: :math:`O(| start\_vids | * (V \log V + E))`
 
 
 Signature Summary
@@ -80,14 +80,14 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pid)
-    pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pid, directed, driving_side)
-    pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pids, directed, driving_side)
-    pgr_withPointsCost(edges_sql, points_sql, start_pids, end_pid, directed, driving_side)
-    pgr_withPointsCost(edges_sql, points_sql, start_pids, end_pids, directed, driving_side)
-    RETURNS SET OF (start_pid, end_pid, agg_cost)
+    pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid)
+    pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid, directed, driving_side)
+    pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vids, directed, driving_side)
+    pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vid, directed, driving_side)
+    pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vids, directed, driving_side)
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-.. note:: There is no **details** flag, unlike the other members of the family of functions,  
+.. note:: There is no **details** flag, unlike the other members of the family of functions.  
 
 
 Signatures
@@ -102,12 +102,11 @@ Minimal signature
 The minimal signature:
     - Is for a **directed** graph.
     - The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
-    - No **details** are given about distance of other points of the query.
 
 .. code-block:: none
 
-    pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pid)
-    RETURNS SET OF (start_pid, end_pid, agg_cost)
+    pgr_withPointsCost(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, BIGINT end_vid)
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
 :Example:
@@ -125,7 +124,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pid, directed, driving_side)
+    pgr_withPointsCost(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, BIGINT end_vid, BOOLEAN directed, CHAR driving_side)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
@@ -144,8 +143,8 @@ One to Many
 
 .. code-block:: none
 
-    pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pid, directed, driving_side)
-    RETURNS SET OF (start_pid, end_pid, agg_cost)
+    pgr_withPointsCost(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids, BOOLEAN directed, CHAR driving_side)
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
 :Example:
@@ -163,8 +162,8 @@ Many to One
 
 .. code-block:: none
 
-    pgr_withPointsCost(edges_sql, points_sql, start_pids, end_pid, directed, driving_side)
-    RETURNS SET OF (start_pid, end_pid, agg_cost)
+    pgr_withPointsCost(TEXT edges_sql, TEXT points_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid, BOOLEAN directed, CHAR driving_side)
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
 :Example:
@@ -182,8 +181,8 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_withPointsCost(edges_sql, points_sql, start_pids, end_pids, directed, driving_side)
-    RETURNS SET OF (start_pid, end_pid, agg_cost)
+    pgr_withPointsCost(TEXT edges_sql, TEXT points_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids, BOOLEAN directed, CHAR driving_side)
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
 :Example:
@@ -215,9 +214,9 @@ Parameter        Type                   Description
 **edges_sql**    ``TEXT``               Edges SQL query as decribed above.
 **points_sql**   ``TEXT``               Points SQL query as decribed above.
 **start_vid**    ``ANY-INTEGER``        Starting vertex identifier. When negative: is a point's pid.
-**end_vid**      ``ANY-INTEGER``        Ending point identifier. When negative: is a point's pid.
-**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of starting points identifiers. When negative: is a point's pid.
-**end_vids**     ``ARRAY[ANY-INTEGER]`` Array of ending points identifiers. When negative: is a point's pid.
+**end_vid**      ``ANY-INTEGER``        Ending vertex identifier. When negative: is a point's pid.
+**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices. When negative: is a point's pid.
+**end_vids**     ``ARRAY[ANY-INTEGER]`` Array of identifiers of ending vertices. When negative: is a point's pid.
 **directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
 **driving_side** ``CHAR``               (optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
                                           - In the right or left or
@@ -230,14 +229,14 @@ Parameter        Type                   Description
 Description of the return values
 -------------------------------------------------------------------------------
 
-Returns set of ``(start_pid, end_pid, agg_cost)``
+Returns set of ``(start_vid, end_vid, agg_cost)``
 
 ============= =========== =================================================
 Column           Type              Description
 ============= =========== =================================================
 **start_vid** ``BIGINT``  Identifier of the starting vertex. When negative: is a point's pid.
 **end_vid**   ``BIGINT``  Identifier of the ending point. When negative: is a point's pid.
-**agg_cost**  ``FLOAT``   Aggregate cost from ``start_pid`` to ``node``.
+**agg_cost**  ``FLOAT``   Aggregate cost from ``start_vid`` to ``end_vid``.
 ============= =========== =================================================
 
 
