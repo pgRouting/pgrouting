@@ -53,7 +53,7 @@
 <span id="id1"></span><h1>pgr_withPoints<a class="headerlink" href="#pgr-withpoints" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_withPoints</span></tt> - Returns the shortest path with a graph with additional temporary vertices.</p>
+<p><tt class="docutils literal"><span class="pre">pgr_withPoints</span></tt> - Returns the shortest path in a graph with additional temporary vertices.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>This is a proposed function for version 2.3.</p>
@@ -68,7 +68,7 @@
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>Modify the graph to include points defined by points sql.
+<p>Modify the graph to include points defined by points_sql.
 Using Dijkstra algorithm, find the shortest path(s)</p>
 </div>
 <div class="section" id="characteristics">
@@ -83,14 +83,26 @@ Using Dijkstra algorithm, find the shortest path(s)</p>
 </ul>
 </li>
 <li>Values are returned when there is a path.</li>
-<li>When the starting vertex and ending vertex are the same, there is no path.<ul>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>When the starting vertex and ending vertex are the same, there is no path.</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
 <li>The agg_cost the non included values (v, v) is 0</li>
 </ul>
-</li>
-<li>When the starting vertex and ending vertex are the different and there is no path:<ul>
+</div></blockquote>
+<ul class="simple">
+<li>When the starting vertex and ending vertex are the different and there is no path:</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
 <li>The agg_cost the non included values (u, v) is ∞</li>
 </ul>
-</li>
+</div></blockquote>
+</div></blockquote>
+<ul class="simple">
 <li>For optimization purposes, any duplicated value in the start_vids or end_vids are ignored.</li>
 <li>The returned values are ordered:<ul>
 <li>start_vid ascending</li>
@@ -122,7 +134,7 @@ RETURNS SET OF (seq, [path_seq,] [start_vid,] [end_vid,] node, edge, cost, agg_c
 <dd><ul class="first last simple">
 <li>Is for a <strong>directed</strong> graph.</li>
 <li>The driving side is set as <strong>b</strong> both. So arriving/departing to/from the point(s) can be in any direction.</li>
-<li>No <strong>details</strong> are given about distance of other points of the query.</li>
+<li>No <strong>details</strong> are given about distance of other points of points_sql query.</li>
 </ul>
 </dd>
 </dl>
@@ -188,8 +200,8 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </div>
 <div class="section" id="one-to-many">
 <span id="index-2"></span><h2>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPoints(edges_sql, points_sql, start_vid, end_vid, directed, driving_side, details)
-RETURNS SET OF (seq, path_seq, end_pid, node, edge, cost, agg_cost)
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPoints(edges_sql, points_sql, start_vid, end_vids, directed, driving_side, details)
+RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -221,7 +233,7 @@ RETURNS SET OF (seq, path_seq, end_pid, node, edge, cost, agg_cost)
 <div class="section" id="many-to-one">
 <span id="index-3"></span><h2>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none"><div class="highlight"><pre>pgr_withPoints(edges_sql, points_sql, start_vids, end_vid, directed, driving_side, details)
-RETURNS SET OF (seq, path_seq, start_pid, node, edge, cost, agg_cost)
+RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -354,9 +366,9 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="8%" />
-<col width="11%" />
-<col width="82%" />
+<col width="10%" />
+<col width="14%" />
+<col width="76%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Column</th>
@@ -367,7 +379,15 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 <tbody valign="top">
 <tr class="row-even"><td><strong>pid</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
-<td>(optional) Identifier of the point. Can not be NULL. If column not present, a sequential identifier will be given automatically.</td>
+<td><dl class="first last docutils">
+<dt>(optional) Identifier of the point.</dt>
+<dd><ul class="first last simple">
+<li>Can not be NULL.</li>
+<li>If column not present, a sequential identifier will be given automatically.</li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="row-odd"><td><strong>eid</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
@@ -433,15 +453,15 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 </tr>
 <tr class="row-odd"><td><strong>end_vid</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
-<td>Ending point identifier. When negative: is a point&#8217;s pid.</td>
+<td>Ending vertex identifier. When negative: is a point&#8217;s pid.</td>
 </tr>
 <tr class="row-even"><td><strong>start_vids</strong></td>
 <td><tt class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></tt></td>
-<td>Array of starting points identifiers. When negative: is a point&#8217;s pid.</td>
+<td>Array of identifiers of starting vertices. When negative: is a point&#8217;s pid.</td>
 </tr>
 <tr class="row-odd"><td><strong>end_vids</strong></td>
 <td><tt class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></tt></td>
-<td>Array of ending points identifiers. When negative: is a point&#8217;s pid.</td>
+<td>Array of identifiers of ending vertices. When negative: is a point&#8217;s pid.</td>
 </tr>
 <tr class="row-even"><td><strong>directed</strong></td>
 <td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
@@ -470,12 +490,12 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 </div>
 <div class="section" id="description-of-the-return-values">
 <h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
-<p>Returns set of <tt class="docutils literal"><span class="pre">(seq,</span> <span class="pre">[path_seq,]</span> <span class="pre">[start_pid,]</span> <span class="pre">[end_pid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></tt></p>
+<p>Returns set of <tt class="docutils literal"><span class="pre">(seq,</span> <span class="pre">[path_seq,]</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></tt></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="9%" />
-<col width="7%" />
-<col width="84%" />
+<col width="12%" />
+<col width="10%" />
+<col width="79%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Column</th>
@@ -498,7 +518,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 </tr>
 <tr class="row-odd"><td><strong>end_vid</strong></td>
 <td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
-<td>Identifier of the ending point. When negative: is a point&#8217;s pid.</td>
+<td>Identifier of the ending vertex. When negative: is a point&#8217;s pid.</td>
 </tr>
 <tr class="row-even"><td><strong>node</strong></td>
 <td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
@@ -514,15 +534,36 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 </tr>
 <tr class="row-odd"><td><strong>edge</strong></td>
 <td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
-<td>Identifier of the edge used to arrive to <tt class="docutils literal"><span class="pre">node</span></tt>. <tt class="docutils literal"><span class="pre">0</span></tt> when the <tt class="docutils literal"><span class="pre">node</span></tt> is the <tt class="docutils literal"><span class="pre">start_vid</span></tt>.</td>
+<td><dl class="first last docutils">
+<dt>Identifier of the edge used to go from <tt class="docutils literal"><span class="pre">node</span></tt> to the next node in the path sequence.</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">-1</span></tt> for the last row in the path sequence.</li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="row-even"><td><strong>cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
-<td>Cost to traverse <tt class="docutils literal"><span class="pre">edge</span></tt>.  from <tt class="docutils literal"><span class="pre">node</span></tt> to the next   node on the path sequence. -1 for the last row of the path sequence.</td>
+<td><dl class="first last docutils">
+<dt>Cost to traverse from <tt class="docutils literal"><span class="pre">node</span></tt> using <tt class="docutils literal"><span class="pre">edge</span></tt> to the next <tt class="docutils literal"><span class="pre">node</span></tt> in the path sequence.</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">0</span></tt> for the last row in the path sequence.</li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="row-odd"><td><strong>agg_cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
-<td>Aggregate cost from <tt class="docutils literal"><span class="pre">start_pid</span></tt> to <tt class="docutils literal"><span class="pre">node</span></tt>.</td>
+<td><dl class="first last docutils">
+<dt>Aggregate cost from <tt class="docutils literal"><span class="pre">start_pid</span></tt> to <tt class="docutils literal"><span class="pre">node</span></tt>.</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">0</span></tt> for the first row in the path sequence.</li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 </tbody>
 </table>
@@ -598,15 +639,23 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
         WHERE node IN (-6,6);
          path_at         |       status        |  is_a  | id 
 -------------------------+---------------------+--------+----
- (-1 =&gt; -6) at 4th step: |  visits             | Point  |  6
- (-1 =&gt; -2) at 4th step: |  passes in front of | Vertex |  6
- (-1 =&gt; 3) at 4th step:  |  passes in front of | Vertex |  6
- (-1 =&gt; 6) at 4th step:  |  visits             | Vertex |  6
- (1 =&gt; -6) at 5th step:  |  visits             | Point  |  6
- (1 =&gt; -2) at 5th step:  |  passes in front of | Vertex |  6
- (1 =&gt; 3) at 5th step:   |  passes in front of | Vertex |  6
- (1 =&gt; 6) at 5th step:   |  visits             | Vertex |  6
-(8 rows)
+ (-1 =&gt; -6) at 3th step: |  visits             | Point  |  6
+ (-1 =&gt; -3) at 3th step: |  passes in front of | Point  |  6
+ (-1 =&gt; -2) at 3th step: |  passes in front of | Point  |  6
+ (-1 =&gt; -2) at 5th step: |  passes in front of | Vertex |  6
+ (-1 =&gt; 3) at 3th step:  |  passes in front of | Point  |  6
+ (-1 =&gt; 3) at 5th step:  |  passes in front of | Vertex |  6
+ (-1 =&gt; 6) at 3th step:  |  passes in front of | Point  |  6
+ (-1 =&gt; 6) at 5th step:  |  visits             | Vertex |  6
+ (1 =&gt; -6) at 4th step:  |  visits             | Point  |  6
+ (1 =&gt; -3) at 4th step:  |  passes in front of | Point  |  6
+ (1 =&gt; -2) at 4th step:  |  passes in front of | Point  |  6
+ (1 =&gt; -2) at 6th step:  |  passes in front of | Vertex |  6
+ (1 =&gt; 3) at 4th step:   |  passes in front of | Point  |  6
+ (1 =&gt; 3) at 6th step:   |  passes in front of | Vertex |  6
+ (1 =&gt; 6) at 4th step:   |  passes in front of | Point  |  6
+ (1 =&gt; 6) at 6th step:   |  visits             | Vertex |  6
+(16 rows)
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -687,7 +736,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.2.0 (dev-2.2).
-      Last updated on Feb 18, 2016.
+      Last updated on Feb 24, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

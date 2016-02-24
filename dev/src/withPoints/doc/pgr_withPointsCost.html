@@ -68,7 +68,7 @@
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>Modify the graph to include points defined by points sql.
+<p>Modify the graph to include points defined by points_sql.
 Using Dijkstra algorithm, return only the aggregate cost of the shortest path(s) found.</p>
 </div>
 <div class="section" id="characteristics">
@@ -77,7 +77,7 @@ Using Dijkstra algorithm, return only the aggregate cost of the shortest path(s)
 <dt>The main Characteristics are:</dt>
 <dd><ul class="first last simple">
 <li>It does not return a path.</li>
-<li>Returns the sum of the costs of the shortest path for pair combination of vertices in the mondified graph.</li>
+<li>Returns the sum of the costs of the shortest path for pair combination of vertices in the modified graph.</li>
 <li>Vertices of the graph are:<ul>
 <li><strong>positive</strong> when it belongs to the edges_sql</li>
 <li><strong>negative</strong> when it belongs to the points_sql</li>
@@ -87,7 +87,7 @@ Using Dijkstra algorithm, return only the aggregate cost of the shortest path(s)
 <li>Values are returned when there is a path.<ul>
 <li>The returned values are in the form of a set of <cite>(start_vid, end_vid, agg_cost)</cite>.</li>
 <li>When the starting vertex and ending vertex are the same, there is no path.<ul>
-<li>The <cite>agg_cost</cite> int the non included values <cite>(v, v)</cite> is <cite>0</cite></li>
+<li>The <cite>agg_cost</cite> in the non included values <cite>(v, v)</cite> is <cite>0</cite></li>
 </ul>
 </li>
 <li>When the starting vertex and ending vertex are the different and there is no path.<ul>
@@ -96,54 +96,52 @@ Using Dijkstra algorithm, return only the aggregate cost of the shortest path(s)
 </li>
 </ul>
 </li>
-<li>Let be the case the values returned are stored in a table, so the unique index would be the pair:
+<li>If the values returned are stored in a table, the unique index would be the pair:
 <cite>(start_vid, end_vid)</cite>.</li>
-<li>For undirected graphs, the results are symetric.<ul>
+<li>For undirected graphs, the results are symmetric.<ul>
 <li>The  <cite>agg_cost</cite> of <cite>(u, v)</cite> is the same as for <cite>(v, u)</cite>.</li>
 </ul>
 </li>
-<li>Any duplicated value in the <cite>start_vids</cite> or <cite>end_vids</cite> is ignored.</li>
+<li>For optimization purposes, any duplicated value in the <cite>start_vids</cite> or <cite>end_vids</cite> is ignored.</li>
 <li>The returned values are ordered:<ul>
 <li><cite>start_vid</cite> ascending</li>
 <li><cite>end_vid</cite> ascending</li>
 </ul>
 </li>
-<li>Runing time: <span class="math">\(O(| start\_vids | * (V \log V + E))\)</span></li>
+<li>Running time: <span class="math">\(O(| start\_vids | * (V \log V + E))\)</span></li>
 </ul>
 </dd>
 </dl>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pid)
-pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pid, directed, driving_side)
-pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pids, directed, driving_side)
-pgr_withPointsCost(edges_sql, points_sql, start_pids, end_pid, directed, driving_side)
-pgr_withPointsCost(edges_sql, points_sql, start_pids, end_pids, directed, driving_side)
-RETURNS SET OF (start_pid, end_pid, agg_cost)
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid, directed, driving_side)
+pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vids, directed, driving_side)
+pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vid, directed, driving_side)
+pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vids, directed, driving_side)
+RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">There is no <strong>details</strong> flag, unlike the other members of the family of functions,</p>
+<p class="last">There is no <strong>details</strong> flag, unlike the other members of the family of functions.</p>
 </div>
 </div>
 </div>
 <div class="section" id="signatures">
 <h1>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="minimal-signature">
-<span id="index-0"></span><h2>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="minimal-usage">
+<span id="index-0"></span><h2>Minimal Usage<a class="headerlink" href="#minimal-usage" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>The minimal signature:</dt>
 <dd><ul class="first last simple">
 <li>Is for a <strong>directed</strong> graph.</li>
 <li>The driving side is set as <strong>b</strong> both. So arriving/departing to/from the point(s) can be in any direction.</li>
-<li>No <strong>details</strong> are given about distance of other points of the query.</li>
 </ul>
 </dd>
 </dl>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pid)
-RETURNS SET OF (start_pid, end_pid, agg_cost)
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid)
+RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -167,7 +165,7 @@ RETURNS SET OF (start_pid, end_pid, agg_cost)
 </div>
 <div class="section" id="one-to-one">
 <span id="index-1"></span><h2>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pid, directed, driving_side)
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid, directed, driving_side)
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
@@ -193,8 +191,8 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </div>
 <div class="section" id="one-to-many">
 <span id="index-2"></span><h2>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_pid, end_pid, directed, driving_side)
-RETURNS SET OF (start_pid, end_pid, agg_cost)
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vids, directed, driving_side)
+RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -219,8 +217,8 @@ RETURNS SET OF (start_pid, end_pid, agg_cost)
 </div>
 <div class="section" id="many-to-one">
 <span id="index-3"></span><h2>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_pids, end_pid, directed, driving_side)
-RETURNS SET OF (start_pid, end_pid, agg_cost)
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vid, directed, driving_side)
+RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -245,8 +243,8 @@ RETURNS SET OF (start_pid, end_pid, agg_cost)
 </div>
 <div class="section" id="many-to-many">
 <span id="index-4"></span><h2>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_pids, end_pids, directed, driving_side)
-RETURNS SET OF (start_pid, end_pid, agg_cost)
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vids, directed, driving_side)
+RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -332,9 +330,9 @@ RETURNS SET OF (start_pid, end_pid, agg_cost)
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="8%" />
-<col width="11%" />
-<col width="82%" />
+<col width="10%" />
+<col width="14%" />
+<col width="76%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Column</th>
@@ -345,7 +343,15 @@ RETURNS SET OF (start_pid, end_pid, agg_cost)
 <tbody valign="top">
 <tr class="row-even"><td><strong>pid</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
-<td>(optional) Identifier of the point. Can not be NULL. If column not present, a sequential identifier will be given automatically.</td>
+<td><dl class="first last docutils">
+<dt>(optional) Identifier of the point.</dt>
+<dd><ul class="first last simple">
+<li>Can not be NULL.</li>
+<li>If column not present, a sequential identifier will be given automatically.</li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="row-odd"><td><strong>eid</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
@@ -411,15 +417,15 @@ RETURNS SET OF (start_pid, end_pid, agg_cost)
 </tr>
 <tr class="row-odd"><td><strong>end_vid</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
-<td>Ending point identifier. When negative: is a point&#8217;s pid.</td>
+<td>Ending vertex identifier. When negative: is a point&#8217;s pid.</td>
 </tr>
 <tr class="row-even"><td><strong>start_vids</strong></td>
 <td><tt class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></tt></td>
-<td>Array of starting points identifiers. When negative: is a point&#8217;s pid.</td>
+<td>Array of identifiers of starting vertices. When negative: is a point&#8217;s pid.</td>
 </tr>
 <tr class="row-odd"><td><strong>end_vids</strong></td>
 <td><tt class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></tt></td>
-<td>Array of ending points identifiers. When negative: is a point&#8217;s pid.</td>
+<td>Array of identifiers of ending vertices. When negative: is a point&#8217;s pid.</td>
 </tr>
 <tr class="row-even"><td><strong>directed</strong></td>
 <td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
@@ -443,7 +449,7 @@ RETURNS SET OF (start_pid, end_pid, agg_cost)
 </div>
 <div class="section" id="description-of-the-return-values">
 <h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
-<p>Returns set of <tt class="docutils literal"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></tt></p>
+<p>Returns set of <tt class="docutils literal"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></tt></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="14%" />
@@ -467,7 +473,7 @@ RETURNS SET OF (start_pid, end_pid, agg_cost)
 </tr>
 <tr class="row-even"><td><strong>agg_cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
-<td>Aggregate cost from <tt class="docutils literal"><span class="pre">start_pid</span></tt> to <tt class="docutils literal"><span class="pre">node</span></tt>.</td>
+<td>Aggregate cost from <tt class="docutils literal"><span class="pre">start_vid</span></tt> to <tt class="docutils literal"><span class="pre">end_vid</span></tt>.</td>
 </tr>
 </tbody>
 </table>
@@ -575,7 +581,7 @@ RETURNS SET OF (start_pid, end_pid, agg_cost)
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.2.0 (dev-2.2).
-      Last updated on Feb 18, 2016.
+      Last updated on Feb 24, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
