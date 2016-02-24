@@ -93,7 +93,7 @@ The minimal signature:
 
 .. code-block:: none
 
-    pgr_withPoints(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, BIGINT end_vid)
+    pgr_withPoints(edges_sql, points_sql, start_vid, end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
 
@@ -112,7 +112,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_withPoints(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, BIGINT end_vid, BOOLEAN directed, CHAR driving_side, BOOLEAN details)
+    pgr_withPoints(edges_sql, points_sql, start_vid, end_vid, directed, driving_side, details)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
@@ -131,7 +131,7 @@ One to Many
 
 .. code-block:: none
 
-    pgr_withPoints(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids, BOOLEAN directed, CHAR driving_side, BOOLEAN details)
+    pgr_withPoints(edges_sql, points_sql, start_vid, end_vids, directed, driving_side, details)
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 
 
@@ -150,7 +150,7 @@ Many to One
 
 .. code-block:: none
 
-    pgr_withPoints(TEXT edges_sql, TEXT points_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid, BOOLEAN directed, CHAR driving_side, BOOLEAN details)
+    pgr_withPoints(edges_sql, points_sql, start_vids, end_vid, directed, driving_side, details)
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 
 
@@ -161,7 +161,7 @@ Many to One
    :end-before: --e5
 
 .. index::
-    single: withPoints(edges_sql, points_sql, start_vid, end_vid, directed, driving_side, details) -- proposed
+    single: withPoints(edges_sql, points_sql, start_vids, end_vids, directed, driving_side, details) -- proposed
 
 Many to Many
 ------------
@@ -169,7 +169,7 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_withPoints(TEXT edges_sql, TEXT points_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids, BOOLEAN directed, CHAR driving_side, BOOLEAN details)
+    pgr_withPoints(edges_sql, points_sql, start_vids, end_vids, directed, driving_side, details)
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
 
@@ -232,9 +232,15 @@ Column           Type              Description
                             - A positive value indicates the node is a vertex of edges_sql.
                             - A negative value indicates the node is a point of points_sql.
 
-**edge**      ``BIGINT``  Identifier of the edge used to arrive to ``node``. ``-1`` for the last row of the path sequence.
-**cost**      ``FLOAT``   Cost to traverse ``edge``.  from ``node`` to the next   node on the path sequence. ``0`` for the last row of the path sequence.
-**agg_cost**  ``FLOAT``   Aggregate cost from ``start_vid`` to ``node``.
+**edge**      ``BIGINT``  Identifier of the edge used to go from ``node`` to the next node in the path sequence.
+                            - ``-1`` for the last row in the path sequence.
+
+**cost**      ``FLOAT``   Cost to traverse from ``node`` using ``edge`` to the next ``node`` in the path sequence.
+                            - ``0`` for the last row in the path sequence.
+
+**agg_cost**  ``FLOAT``   Aggregate cost from ``start_pid`` to ``node``.
+                            - ``0`` for the first row in the path sequence.
+
 ============= =========== =================================================
 
 

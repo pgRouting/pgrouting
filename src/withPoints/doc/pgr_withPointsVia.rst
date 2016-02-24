@@ -136,12 +136,16 @@ Column           Type              Description
 ============ =========== =================================================
 **seq**      ``INT``     row sequence.
 **node**     ``BIGINT``  Identifier of the node within the Distance from ``start_pid``. If ``details =: true`` a negative value is the identifier of a point.
-**edge**     ``BIGINT``  Identifier of the edge used to arrive to ``node``. ``0`` when the ``node`` is the ``start_vid``.
-**cost**     ``FLOAT``   Cost to traverse ``edge``.  If ``details =: true`` the corresponding fraction of the cost of the edge will be used.
+**edge**     ``BIGINT``  Identifier of the edge used to go from ``node`` to the next node in the path sequence.
+                           - ``-1`` for the last row in the path sequence.
+
+**cost**     ``FLOAT``   Cost to traverse from ``node`` using ``edge`` to the next ``node`` in the path sequence.
+                           - ``0`` for the last row in the path sequence.
+
 **agg_cost** ``FLOAT``   Aggregate cost from ``start_pid`` to ``node``.
+                           - ``0`` for the first row in the path sequence.
+
 ============ =========== =================================================
-
-
 
 Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
 --------------------------------------------------------------------------------------

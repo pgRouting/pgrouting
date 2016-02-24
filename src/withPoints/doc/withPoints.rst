@@ -20,6 +20,26 @@ When points are also given as input:
     - :ref:`pgr_withPointsKSP` - K shortest paths.
     - :ref:`pgr_withPointsDD` - Driving distance.
 
+Images
+--------------
+
+The squared vertices are the temporary vertices, you can visually see how depending on the driving side the data is interpreted.
+
+.. rubric:: Right driving side
+
+.. image:: images/rightDrivingSide.png
+    :scale: 50%
+
+.. rubric:: Left driving side
+
+.. image:: images/leftDrivingSide.png
+    :scale: 50%
+
+.. rubric:: doesn't matter the driving side
+
+.. image:: images/noMatterDrivingSide.png
+    :scale: 50%
+
 Introduction
 --------------
 

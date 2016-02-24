@@ -80,7 +80,6 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid)
     pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid, directed, driving_side)
     pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vids, directed, driving_side)
     pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vid, directed, driving_side)
@@ -96,7 +95,7 @@ Signatures
 .. index::
     single: withPointsCost(edges_sql, points_sql, start_pid, end_pid) -- proposed
 
-Minimal signature
+Minimal Usage
 -----------------
 
 The minimal signature:
@@ -105,7 +104,7 @@ The minimal signature:
 
 .. code-block:: none
 
-    pgr_withPointsCost(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, BIGINT end_vid)
+    pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
@@ -124,7 +123,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_withPointsCost(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, BIGINT end_vid, BOOLEAN directed, CHAR driving_side)
+    pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid, directed, driving_side)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
@@ -143,7 +142,7 @@ One to Many
 
 .. code-block:: none
 
-    pgr_withPointsCost(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids, BOOLEAN directed, CHAR driving_side)
+    pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vids, directed, driving_side)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
@@ -156,13 +155,13 @@ One to Many
 .. index::
     single: withPointsCost(edges_sql, points_sql, start_pids, end_pid, directed, driving_side) -- proposed
 
+
 Many to One
 -----------
 
-
 .. code-block:: none
 
-    pgr_withPointsCost(TEXT edges_sql, TEXT points_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid, BOOLEAN directed, CHAR driving_side)
+    pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vid, directed, driving_side)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
@@ -173,15 +172,15 @@ Many to One
    :end-before: --e5
 
 .. index::
-    single: withPointsCost(edges_sql, points_sql, start_pid, end_pid, directed, driving_side) -- proposed
+    single: withPointsCost(edges_sql, points_sql, start_vids, end_vids, directed, driving_side)
+
 
 Many to Many
 ------------
 
-
 .. code-block:: none
 
-    pgr_withPointsCost(TEXT edges_sql, TEXT points_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids, BOOLEAN directed, CHAR driving_side)
+    pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vids, directed, driving_side)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 

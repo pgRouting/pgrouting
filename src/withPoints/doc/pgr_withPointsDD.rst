@@ -42,16 +42,17 @@ Signature Summary
 
 .. code-block:: none
 
-	pgr_withPointsDD(edges_sql, points_sql, start_pid, distance)
-	pgr_withPointsDD(edges_sql, points_sql, start_pid, distance, directed, driving_side, details)
-	pgr_withPointsDD(edges_sql, points_sql, start_pids, distance, directed, driving_side, details, equicost)
-  RETURNS SET OF (seq, node, edge, cost, agg_cost)
+	pgr_withPointsDD(edges_sql, points_sql, start_vid, distance)
+	pgr_withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details)
+	pgr_withPointsDD(edges_sql, points_sql, start_vids, distance, directed, driving_side, details, equicost)
+
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 Signatures
 ==========
 
 .. index::
-	single: withPointsDD(edges_sql, points_sql, start_pid, distance) -- proposed
+	single: withPointsDD(edges_sql, points_sql, start_vid, distance) -- proposed
 
 Minimal signature
 -----------------
@@ -63,8 +64,8 @@ The minimal signature:
 
 .. code-block:: none
 
-	pgr_withPointsDD(TEXT edges_sql, TEXT points_sql, BIGINT start_pid, ANY_NUMERICAL distance)
-  RETURNS SET OF (seq, node, edge, cost, agg_cost)
+	pgr_withPointsDD(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, ANY_NUMERICAL distance)
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
 :Example:
@@ -74,7 +75,7 @@ The minimal signature:
    :end-before: --q2
 
 .. index::
-	single: withPointsDD(edges_sql, points_sql, start_pid, distance, directed, driving_side, details) -- proposed
+	single: withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details) -- proposed
 
 Driving distance from a single point
 ------------------------------------
@@ -83,8 +84,8 @@ Finds the driving distance depending on the optional parameters setup.
 
 .. code-block:: none
 
-	pgr_withPointsDD(TEXT edges_sql, TEXT points_sql, BIGINT start_pid, ANY_NUMERICAL distance, BOOLEAN directed := true, CHAR driving_side := 'b', BOOLEAN details := false)
-  RETURNS SET OF (seq, node, edge, cost, agg_cost)
+	pgr_withPointsDD(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, ANY_NUMERICAL distance, BOOLEAN directed := true, CHAR driving_side := 'b', BOOLEAN details := false)
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 :Example: Right side driving topology
 
@@ -93,7 +94,7 @@ Finds the driving distance depending on the optional parameters setup.
    :end-before: --q3
 
 .. index::
-	single: withPointsDD(edges_sql, points_sql, start_pid, distance, directed, driving_side, details, equicost) -- proposed
+	single: withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details, equicost) -- proposed
 
 Driving distance from many starting points
 ------------------------------------------
@@ -102,8 +103,8 @@ Finds the driving distance depending on the optional parameters setup.
 
 .. code-block:: none
 
-	pgr_withPointsDD(TEXT edges_sql, TEXT points_sql, ARRAY[ANY_INTEGER] start_pids, distance, BOOLEAN directed := true, CHAR driving_side := 'b', BOOLEAN details := false, BOOLEAN equicost := false)
-  RETURNS SET OF (seq, node, edge, cost, agg_cost)
+	pgr_withPointsDD(TEXT edges_sql, TEXT points_sql, ARRAY[ANY_INTEGER] start_vids, distance, BOOLEAN directed := true, CHAR driving_side := 'b', BOOLEAN details := false, BOOLEAN equicost := false)
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
 .. note:: Not coded yet
@@ -120,11 +121,6 @@ Description of the Signatures
 .. include:: withPoints_queries.txt 
 
 
-Where:
-
-:ANY-INTEGER: smallint, int, bigint
-:ANY-NUMERICAL: smallint, int, bigint, real, float
-
 Description of the parameters of the signatures
 -------------------------------------------------------------------------------
 
@@ -134,7 +130,7 @@ Parameter        Type              Description
 ================ ================= =================================================
 **edges_sql**    ``TEXT``          Edges SQL query as decribed above.
 **points_sql**   ``TEXT``          Points SQL query as decribed above.
-**start_pid**    ``ANY-INTEGER``   Starting point id
+**start_vid**    ``ANY-INTEGER``   Starting point id
 **distance**     ``ANY-NUMERICAL`` Distance from the start_pid
 **directed**     ``BOOLEAN``       (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
 **driving_side** ``CHAR``          (optional). Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
@@ -158,9 +154,15 @@ Column           Type              Description
 ============ =========== =================================================
 **seq**      ``INT``     row sequence.
 **node**     ``BIGINT``  Identifier of the node within the Distance from ``start_pid``. If ``details =: true`` a negative value is the identifier of a point.
-**edge**     ``BIGINT``  Identifier of the edge used to arrive to ``node``. ``0`` when the ``node`` is the ``start_vid``.
-**cost**     ``FLOAT``   Cost to traverse ``edge``.  If ``details =: true`` the corresponding fraction of the cost of the edge will be used.
-**agg_cost** ``FLOAT``   Aggregate cost from ``start_pid`` to ``node``.
+**edge**     ``BIGINT``  Identifier of the edge used to go from ``node`` to the next node in the path sequence.
+                           - ``-1`` when ``start_vid`` = ``node``.
+
+**cost**     ``FLOAT``   Cost to traverse ``edge``.
+                           - ``0`` when ``start_vid`` = ``node``.
+
+**agg_cost** ``FLOAT``   Aggregate cost from ``start_vid`` to ``node``.
+                           - ``0`` when ``start_vid`` = ``node``.
+
 ============ =========== =================================================
 
 

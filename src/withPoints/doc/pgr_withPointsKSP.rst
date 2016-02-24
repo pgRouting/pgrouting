@@ -16,7 +16,7 @@ pgr_withPointsKSP
 Name
 -------------------------------------------------------------------------------
 
-``pgr_withPointsKSP`` - Returns the driving distance from a starting point.
+``pgr_withPointsKSP`` - Find the K shortest paths using Yen's algorithm.
 
 .. note::  This is a proposed function for version 2.3.
 
@@ -31,10 +31,8 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Modify the graph to include points and 
-using Dijkstra algorithm, extracts all the nodes and points that have costs less
-than or equal to the value ``distance`` from the starting point.
-The edges extracted will conform the corresponding spanning tree.
+Modifies the graph to include the points defined in the ``points_sql`` and 
+using Yen algorithm, finds the K shortest paths.
 
 
 Signature Summary
@@ -42,10 +40,9 @@ Signature Summary
 
 .. code-block:: none
 
-   pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K)
-   pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K, directed, heap_paths, driving_side, details)
-
-   RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+    pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K)
+    pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K, directed, heap_paths, driving_side, details)
+    RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
 Signatures
 ==========
@@ -53,7 +50,7 @@ Signatures
 .. index::
     single: withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K) -- proposed
 
-Minimal signature
+Minimal Usage
 -----------------
 
 The minimal signature:
@@ -64,7 +61,7 @@ The minimal signature:
 
 .. code-block:: none
 
-    pgr_withPointsKSP(TEXT edges_sql, TEXT points_sql, BIGINT start_pid, BIGINT end_pid, INTEGER K)
+    pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K)
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
 
@@ -75,16 +72,16 @@ The minimal signature:
    :end-before: --q2
 
 .. index::
-    withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K, directed, heap_paths, driving_side, details) --proposed
+    single: withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K, directed, heap_paths, driving_side, details) -- proposed
 
-Complete signature
+Complete Signature
 ------------------------------------
 
 Finds the K shortest paths depending on the optional parameters setup.
 
 .. code-block:: none
 
-    pgr_withPointsKSP(TEXT edges_sql, TEXT points_sql, BIGINT start_pid, INTEGER distance, BOOLEAN directed := true, BOOLEAN heap_paths := false, CHAR driving_side := 'b', BOOLEAN details := false)
+    pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K, directed, heap_paths, driving_side, details)
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
 
@@ -142,11 +139,13 @@ Column           Type              Description
 **path_id**  ``INTEGER``  Path identifier. The ordering of the paths: For two paths i, j if i < j then agg_cost(i) <= agg_cost(j).
 **node**     ``BIGINT``  Identifier of the node in the path. Negative values are the identifiers of a point.
 **edge**     ``BIGINT``  Identifier of the edge used to go from ``node`` to the next node in the path sequence. 
-                           - ``-1`` for the last node of the path.
+                           - ``-1`` for the last row in the path sequence.
 
-**cost**     ``FLOAT``   Cost to traverse from ``node`` using ``edge`` to the next ``node`` in the path sequence.
+**cost**     ``FLOAT``   Cost to traverse from ``node`` using ``edge`` to the next ``node`` in the path sequence. 
+                           - ``0`` for the last row in the path sequence.
+
 **agg_cost** ``FLOAT``   Aggregate cost from ``start_pid`` to ``node``.
-                           - ``0`` when the ``node`` is the ``start_pid``.
+                           - ``0`` for the first row in the path sequence.
 
 ============ =========== =================================================
 
