@@ -3,6 +3,7 @@ BEGIN;
 --              PGR_pgr_tsp
 --------------------------------------------------------------------------------
 
+DROP TABLE IF EXISTS vertex_table;
 CREATE TABLE vertex_table (
     id serial,
     x double precision,
@@ -12,6 +13,8 @@ CREATE TABLE vertex_table (
 INSERT INTO vertex_table VALUES
 (1,2,0), (2,2,1), (3,3,1), (4,4,1), (5,0,2), (6,1,2), (7,2,2),
 (8,3,2), (9,4,2), (10,2,3), (11,3,3), (12,4,3), (13,2,4);
+
+
 
 
 SELECT round(sum(cost)::numeric, 4) as cost
