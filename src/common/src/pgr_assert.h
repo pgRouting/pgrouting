@@ -66,10 +66,14 @@
     }
 \endcode
  */
+#ifdef NDEBUG
+#define assert(expr) ((void)0)
+#else
 #define assert(expr) \
     ((expr) \
      ? static_cast<void>(0) \
      : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) ))
+#endif
 
 
 /*! \class AssertFailedException

@@ -29,9 +29,9 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDD(
     start_pid BIGINT,
     distance FLOAT,
 
+    directed BOOLEAN DEFAULT TRUE,
     driving_side CHAR DEFAULT 'b', 
     details BOOLEAN DEFAULT FALSE, 
-    directed BOOLEAN DEFAULT TRUE,
 
     OUT seq INTEGER,
     OUT node BIGINT,
@@ -40,18 +40,17 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDD(
     OUT agg_cost FLOAT)
   RETURNS SETOF RECORD AS
      '$libdir/${PGROUTING_LIBRARY_NAME}', 'withPoints_dd'
- LANGUAGE c IMMUTABLE STRICT;
+ LANGUAGE c VOLATILE STRICT;
 
-/*
 CREATE OR REPLACE FUNCTION pgr_withPointsDD(
     edges_sql TEXT,
     points_sql TEXT,
     start_pid ANYARRAY,
     distance FLOAT,
 
+    directed BOOLEAN DEFAULT TRUE,
     driving_side CHAR DEFAULT 'b', 
     details BOOLEAN DEFAULT FALSE, 
-    directed BOOLEAN DEFAULT TRUE,
     equicost BOOLEAN DEFAULT FALSE, 
 
     OUT seq INTEGER,
@@ -62,5 +61,4 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDD(
     OUT agg_cost FLOAT)
   RETURNS SETOF RECORD AS
      '$libdir/${PGROUTING_LIBRARY_NAME}', 'many_withPointsDD'
- LANGUAGE c IMMUTABLE STRICT;
-*/
+ LANGUAGE c VOLATILE STRICT;

@@ -43,9 +43,9 @@ extern "C" {
             int64_t  *start_pids_arr,    size_t s_len,
             float8 distance,
 
+            bool directed,
             char driving_side,
             bool details,
-            bool directed,
             bool equiCost,
 
             General_path_element_t **return_tuples, size_t *return_count,

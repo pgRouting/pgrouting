@@ -4,7 +4,7 @@ ADD_LIBRARY(driving_distance OBJECT
     boost_interface_drivedist.cpp
 
     withPoints_dd.c
-    #many_to_dist_withPointsDD.c
+    many_to_dist_withPointsDD.c
     withPoints_dd_driver.cpp
  )
 

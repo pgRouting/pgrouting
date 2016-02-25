@@ -58,10 +58,10 @@ void process(
         int64_t *start_pids_arr, size_t size_arr,
         double distance,
 
-        bool equicost, 
+        bool directed,
         char *driving_side,
         bool details,
-        bool directed,
+        bool equicost, 
 
         General_path_element_t **result_tuples,
         size_t *result_count  ){
@@ -116,10 +116,10 @@ void process(
             start_pids_arr,     size_arr,
             distance,
 
-            equicost, 
+            directed,
             driving_side[0],
             details,
-            directed,
+            equicost, 
 
             result_tuples,
             result_count,
@@ -177,10 +177,10 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
         // start_pids anyarray,
         // distance FLOAT,
         //
-        // equicost BOOLEAN -- DEFAULT false,
+        // directed BOOLEAN -- DEFAULT true,
         // driving_side CHAR -- DEFAULT 'b',
         // details BOOLEAN -- DEFAULT false,
-        // directed BOOLEAN -- DEFAULT true,
+        // equicost BOOLEAN -- DEFAULT false,
 
         int64_t *sourcesArr;
         size_t num;
@@ -195,10 +195,10 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
                 sourcesArr, num,                     // start_pids array
                 PG_GETARG_FLOAT8(3),                 // distance
 
-                PG_GETARG_BOOL(4),                   // equicost
+                PG_GETARG_BOOL(4),                   // directed
                 pgr_text2char(PG_GETARG_TEXT_P(5)),  // driving side
                 PG_GETARG_BOOL(6),                   // details
-                PG_GETARG_BOOL(7),                   // directed
+                PG_GETARG_BOOL(7),                   // equicost
                 &result_tuples, &result_count);
 
         free(sourcesArr);

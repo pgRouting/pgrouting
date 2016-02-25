@@ -212,7 +212,7 @@ if(WIN32)
   link_libraries(postgres)
 endif(WIN32)
 
-
+# TODO default compilation with -dNDEBUG 
 #compiler directives
 if(APPLE)
   # support GNU(Xcode<4) and Clang(Xcode>=4)
