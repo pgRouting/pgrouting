@@ -25,6 +25,9 @@ For simplicity all the edges in the examples have unit weight.
 
     *Graph 1: Directed, with two nodes and one edge*
 
+    G={V:{1,2},E:{(1,2)}}
+    removed_vertices={}
+
     level1_vertices={2}
     level2_vertices={0}
 
@@ -39,6 +42,7 @@ For simplicity all the edges in the examples have unit weight.
             After removal of vertex 2,vertex 1 loses an outgoing edge and the sets change as follows,
             level1_vertices={}
             level2_vertices={}
+            G={V:{1},E:{}}
 
             Since level1_vertices is empty we stop level1 contraction in Cycle 1.
 
@@ -50,18 +54,27 @@ For simplicity all the edges in the examples have unit weight.
 
         level1_vertices={}
         level2_vertices={}
+        G={V:{1},E:{}
 
         Since both of the above sets are empty, we cannot contract further and the contraction ends after Cycle 1.
+
+    So finally,
+        removed_vertices={(v,1):{2}}
+        G={V:{1},E:{}}        
 
 
 .. _fig2:
 
 .. figure:: images/threeNodestwoEdges.png
 
-    *Graph 1: Directed, with three nodes and two edges*
+    *Graph 2: Directed, with three nodes and two edges*
+
+    G={V:{1,2,3},E:{(1,2),(2,3)}}
+    removed_vertices={}
 
     level1_vertices={3}
     level2_vertices={2}
+
 
     Cycle 1:
 
@@ -74,6 +87,7 @@ For simplicity all the edges in the examples have unit weight.
             After removal of vertex 3,vertex 2 loses an outgoing edge and the sets change as follows,
             level1_vertices={2}
             level2_vertices={}
+            G={V:{1,2},E:{(1,2)}}
 
             level1_vertices is not empty,therefore on level1 contraction, vertex 2 gets deleted.
 
@@ -82,6 +96,7 @@ For simplicity all the edges in the examples have unit weight.
             After removal of vertex 2,vertex 1 loses an outgoing edge and the sets change as follows,
             level1_vertices={}
             level2_vertices={}
+            G={V:{1},E:{}}
 
             Since level1_vertices is empty we stop level1 contraction in Cycle 1.
 
@@ -93,17 +108,24 @@ For simplicity all the edges in the examples have unit weight.
 
         level1_vertices={}
         level2_vertices={}
+        G={V:{1},E:{}}
 
         Since both of the above sets are empty, we cannot contract further and the contraction ends after Cycle 1.
 
+    So finally,
+        removed_vertices={(v,1):{2,3}}
+        G={V:{1},E:{}}
 
 
 .. _fig3:
 
 .. figure:: images/threeNodesthreeEdges.png
 
-    *Graph 1: Directed, with three nodes and three edges*
+    *Graph 3: Directed, with three nodes and three edges*
 
+    G={V:{1,2,3},E:{(1,2),(2,3),(1,3)}}
+    removed_vertices={}
+    
     level1_vertices={}
     level2_vertices={2}
 
@@ -115,13 +137,14 @@ For simplicity all the edges in the examples have unit weight.
 
         Level 2:
 
-            level2_vertices is not empty,therefore on level2 contraction, vertex 2 gets deleted, and will add a new edge(shortcut) with and id=-1 and cost=2,between vertex 1 and vertex 3.
+            level2_vertices is not empty,therefore on level2 contraction, vertex 2 gets deleted, and will add a new edge(shortcut) with an id=-1 and cost=2,between vertex 1 and vertex 3.
 
             removed_vertices={(e,-1):{2}}
 
             After removal of vertex 2 the sets change as follows,
             level1_vertices={}
             level2_vertices={}
+            G={V:{1,3},E:{(1,3),-1}
 
             Since level2_vertices is empty we stop level2 contraction in Cycle 1.
 
@@ -129,9 +152,13 @@ For simplicity all the edges in the examples have unit weight.
 
         level1_vertices={}
         level2_vertices={}
+        G={V:{1,3},E:{(1,3),-1}
 
         Since both of the above sets are empty, we cannot contract further and the contraction ends after Cycle 1.
 
+    So finally,
+        removed_vertices={(e,-1):{2}}
+        G={V:{1,3},E:{(1,3),-1}
 
 
 
