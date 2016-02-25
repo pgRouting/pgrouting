@@ -65,8 +65,7 @@ This library contains following features:
 * Postgresql version >= 9.1
 * PostGIS version >= 2.0
 * The Boost Graph Library (BGL).
-  * Version >= 1.55 for linux
-  * Version >= 1.58 for MAC
+  * Version >= 1.46
 * CMake >= 2.8.8
 * CGAL >= 4.4
 * Sphinx >= 1.2
