@@ -53,7 +53,7 @@ Signatures
 Minimal Usage
 -----------------
 
-The minimal signature:
+The minimal usage:
     - Is for a **directed** graph.
     - The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
     - No **details** are given about distance of other points of the query.
@@ -81,7 +81,8 @@ Finds the K shortest paths depending on the optional parameters setup.
 
 .. code-block:: none
 
-    pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K, directed, heap_paths, driving_side, details)
+    pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K,
+        directed:=true, heap_paths:=false, driving_side:='b', details:=false)
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
 

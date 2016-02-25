@@ -42,17 +42,16 @@ Signature Summary
 
 .. code-block:: none
 
-	pgr_withPointsDD(edges_sql, points_sql, start_vid, distance)
-	pgr_withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details)
-	pgr_withPointsDD(edges_sql, points_sql, start_vids, distance, directed, driving_side, details, equicost)
-
+    pgr_withPointsDD(edges_sql, points_sql, start_vid, distance)
+    pgr_withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details)
+    pgr_withPointsDD(edges_sql, points_sql, start_vids, distance, directed, driving_side, details, equicost)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 Signatures
 ==========
 
 .. index::
-	single: withPointsDD(edges_sql, points_sql, start_vid, distance) -- proposed
+    single: withPointsDD(edges_sql, points_sql, start_vid, distance) -- proposed
 
 Minimal signature
 -----------------
@@ -64,7 +63,8 @@ The minimal signature:
 
 .. code-block:: none
 
-	pgr_withPointsDD(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, ANY_NUMERICAL distance)
+    pgr_withPointsDD(edges_sql, points_sql, start_vid, distance)
+        directed:=true, driving_side:='b', details:=false)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
@@ -75,7 +75,7 @@ The minimal signature:
    :end-before: --q2
 
 .. index::
-	single: withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details) -- proposed
+    single: withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details) -- proposed
 
 Driving distance from a single point
 ------------------------------------
@@ -84,7 +84,8 @@ Finds the driving distance depending on the optional parameters setup.
 
 .. code-block:: none
 
-	pgr_withPointsDD(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, ANY_NUMERICAL distance, BOOLEAN directed := true, CHAR driving_side := 'b', BOOLEAN details := false)
+    pgr_withPointsDD(edges_sql, points_sql, start_vids, distance,
+        directed:=true, driving_side:='b', details:=false)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 :Example: Right side driving topology
@@ -94,20 +95,22 @@ Finds the driving distance depending on the optional parameters setup.
    :end-before: --q3
 
 .. index::
-	single: withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details, equicost) -- proposed
+    single: withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details, equicost) -- proposed
 
 Driving distance from many starting points
 ------------------------------------------
+
+.. note:: Not coded yet
 
 Finds the driving distance depending on the optional parameters setup.
 
 .. code-block:: none
 
-	pgr_withPointsDD(TEXT edges_sql, TEXT points_sql, ARRAY[ANY_INTEGER] start_vids, distance, BOOLEAN directed := true, CHAR driving_side := 'b', BOOLEAN details := false, BOOLEAN equicost := false)
+    pgr_withPointsDD(edges_sql, points_sql, start_vids, distance,
+        directed:=true, driving_side:='b', details:=false, equicost:=false)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
-.. note:: Not coded yet
 
 
 Description of the Signatures

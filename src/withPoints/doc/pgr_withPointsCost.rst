@@ -123,7 +123,8 @@ One to One
 
 .. code-block:: none
 
-    pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid, directed, driving_side)
+    pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid,
+        directed:=true, driving_side:='b')
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
@@ -142,7 +143,8 @@ One to Many
 
 .. code-block:: none
 
-    pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vids, directed, driving_side)
+    pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vids,
+        directed:=true, driving_side:='b')
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
@@ -161,7 +163,8 @@ Many to One
 
 .. code-block:: none
 
-    pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vid, directed, driving_side)
+    pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vid,
+        directed:=true, driving_side:='b')
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
@@ -180,7 +183,8 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vids, directed, driving_side)
+    pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vids,
+        directed:=true, driving_side:='b')
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 

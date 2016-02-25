@@ -74,7 +74,7 @@ Signature Summary
     pgr_withPoints(edges_sql, points_sql, start_vid, end_vids, directed, driving_side, details)
     pgr_withPoints(edges_sql, points_sql, start_vids, end_vid, directed, driving_side, details)
     pgr_withPoints(edges_sql, points_sql, start_vids, end_vids, directed, driving_side, details)
-    RETURNS SET OF (seq, [path_seq,] [start_vid,] [end_vid,] node, edge, cost, agg_cost)
+    RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
 
 
 Signatures
@@ -112,8 +112,9 @@ One to One
 
 .. code-block:: none
 
-    pgr_withPoints(edges_sql, points_sql, start_vid, end_vid, directed, driving_side, details)
-    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+    pgr_withPoints(edges_sql, points_sql, start_vid, end_vid,
+        directed:=true, driving_side:='b', details:=false)
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
 
 :Example: From point 1 to vertex 3
@@ -131,7 +132,8 @@ One to Many
 
 .. code-block:: none
 
-    pgr_withPoints(edges_sql, points_sql, start_vid, end_vids, directed, driving_side, details)
+    pgr_withPoints(edges_sql, points_sql, start_vid, end_vids,
+        directed:=true, driving_side:='b', details:=false)
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 
 
@@ -150,7 +152,8 @@ Many to One
 
 .. code-block:: none
 
-    pgr_withPoints(edges_sql, points_sql, start_vids, end_vid, directed, driving_side, details)
+    pgr_withPoints(edges_sql, points_sql, start_vids, end_vid,
+        directed:=true, driving_side:='b', details:=false)
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 
 
@@ -169,7 +172,8 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_withPoints(edges_sql, points_sql, start_vids, end_vids, directed, driving_side, details)
+    pgr_withPoints(edges_sql, points_sql, start_vids, end_vids,
+        directed:=true, driving_side:='b', details:=false)
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
 

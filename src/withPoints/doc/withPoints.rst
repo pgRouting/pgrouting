@@ -20,10 +20,23 @@ When points are also given as input:
     - :ref:`pgr_withPointsKSP` - K shortest paths.
     - :ref:`pgr_withPointsDD` - Driving distance.
 
+.. note:: The numbering of the points are handled with negative sign.
+
+          - Original point identifiers are to be positive.
+          - Transformation to negative is done internally.
+          - For results for involving vertices identifiers 
+
+            - positive sign is a vertex of the original grpah
+            - negative sign is a point of the temporary points
+
+          The reason for doing this is to avoid confusion when there is a vertex with the same number as identifier as the points identifier.
+
+
 Images
 --------------
 
-The squared vertices are the temporary vertices, you can visually see how depending on the driving side the data is interpreted.
+The squared vertices are the temporary vertices, The temporary vertices are added acordng to the
+dirving side, The following images visualy show the diferences on how depending on the driving side the data is interpreted.
 
 .. rubric:: Right driving side
 
@@ -43,24 +56,6 @@ The squared vertices are the temporary vertices, you can visually see how depend
 Introduction
 --------------
 
-Points are considered outside the graph topology.i
-The graph :math:`G(V,E)` where :math:`V` is the set of vertices and :math:`E` is the set of edges,
-for example, when representing a city topology, the vertices are intersections or dead ends,
-and the edges are the roads.
-Routing can be done when routing from :math:`v1 in V` to :math:`v2 in V`, but some applications might need 
-a more precise routing like:
-
-    - from a point located in the middle of a segment and/or
-    - to a point located in the middle of another segment.
-
-This is when this family of functions can be used.
-
-To achive routing using points external to the :math:`V` the topology has to be modified in such a way
-that it includes the points, as part of :math:`V`, then a Dijkstra can be performed.
-
-
-General Characteristics
-----------------------------------------
 
 This is the crucial part of this family of functions, and it has to take care of as many aspects as possible.
 
@@ -84,27 +79,79 @@ This is the crucial part of this family of functions, and it has to take care of
   - permanent, for example the set of pints of clients
   - temporal, for example points given thru a web application
 
+Graph & edges
+----------------
 
- 
+- Let :math:`G_d(V,E)` where :math:`V` is the set of vertices and :math:`E` is the set of edges be the original directed graph.
+
+  - An edge of the original `edges_sql` is :math:`(id, source, target, cost, reverse\_cost)` will generate internally
+
+    - :math:`(id, source, target, cost)`
+    - :math:`(id, target, source, reverse\_cost)`
+
 Point Definition
 ----------------
 
+- A point is defined by the quadruplet: :math:`(pid, eid, fraction, side)` 
 
-
-
-
+  - :ped: is the point identifier
+  - :eid: is an edge id of the `edges_sql`
+  - :fraction: represents where the edge `eid` will be cut.
+  - :side: Indicates the side of the edge where the point is located.
+  
 
 Creating Temporary Vertices in the Graph
 ----------------------------------------
 
+For edge (15,  9,12  10, 20), & lets insert point (2, 12, 0.3, r)
+
+.. rubric:: On a right hand side driving network
+
+From first image above:
+
+  - We can arrive to the point only via vertex 9.
+  - It only afects the edge (15, 9,12, 10) so that edge is removed.
+  - Edge (15, 12,9, 20) is kept.
+  - Create new edges:
+
+    - (15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3
+    - (15, -1,12, 7) edge from point 1 to vertex 12 has cost 7
+
+.. rubric:: On a left hand side driving network
+
+From second image above:
+
+  - We can arrive to the point only via vertex 12.
+  - It only afects the edge (15, 12,9 20) so that edge is removed.
+  - Edge (15, 9,12, 10) is kept.
+  - Create new edges:
+
+    - (15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14
+    - (15, -1,9, 6) edge from point 1 to vertex 9 has cost 6
+
+:Remember: that fraction is from vertex 9 to vertex 12
 
 
+.. rubric:: When driving side does not matter
 
+From third image above:
+
+  - We can arrive to the point either via vertex 12 or via vertex 9
+  - Edge (15, 12,9 20) is removed.
+  - Edge (15, 9,12, 10) is removed.
+  - Create new edges:
+
+    - (15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14
+    - (15, -1,9, 6) edge from point 1 to vertex 9 has cost 6
+    - (15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3
+    - (15, -1,12, 7) edge from point 1 to vertex 12 has cost 7
 
 .. toctree::
-        :hidden: 
+    :hidden: 
 
-        ./pgr_withPoints
-        ./pgr_withPointsCost
-        ./pgr_withPointsKSP
-        ./pgr_withPointsDD
+    ./pgr_withPoints
+    ./pgr_withPointsCost
+    ./pgr_withPointsKSP
+    ./pgr_withPointsDD
+
+
