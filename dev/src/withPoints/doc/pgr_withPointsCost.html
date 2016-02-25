@@ -165,7 +165,8 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </div>
 <div class="section" id="one-to-one">
 <span id="index-1"></span><h2>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid, directed, driving_side)
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid,
+    directed:=true, driving_side:=&#39;b&#39;)
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
@@ -191,7 +192,8 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </div>
 <div class="section" id="one-to-many">
 <span id="index-2"></span><h2>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vids, directed, driving_side)
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vids,
+    directed:=true, driving_side:=&#39;b&#39;)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
@@ -217,7 +219,8 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </div>
 <div class="section" id="many-to-one">
 <span id="index-3"></span><h2>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vid, directed, driving_side)
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vid,
+    directed:=true, driving_side:=&#39;b&#39;)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
@@ -243,7 +246,8 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </div>
 <div class="section" id="many-to-many">
 <span id="index-4"></span><h2>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vids, directed, driving_side)
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vids,
+    directed:=true, driving_side:=&#39;b&#39;)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>

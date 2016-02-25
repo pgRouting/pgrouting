@@ -75,10 +75,9 @@ The edges extracted will conform the corresponding spanning tree.</p>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>    pgr_withPointsDD(edges_sql, points_sql, start_vid, distance)
-    pgr_withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details)
-    pgr_withPointsDD(edges_sql, points_sql, start_vids, distance, directed, driving_side, details, equicost)
-
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsDD(edges_sql, points_sql, start_vid, distance)
+pgr_withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details)
+pgr_withPointsDD(edges_sql, points_sql, start_vids, distance, directed, driving_side, details, equicost)
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
@@ -97,7 +96,8 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </ul>
 </dd>
 </dl>
-<div class="highlight-none"><div class="highlight"><pre>    pgr_withPointsDD(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, ANY_NUMERICAL distance)
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsDD(edges_sql, points_sql, start_vid, distance)
+    directed:=true, driving_side:=&#39;b&#39;, details:=false)
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
@@ -133,7 +133,8 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 <div class="section" id="driving-distance-from-a-single-point">
 <span id="index-1"></span><h2>Driving distance from a single point<a class="headerlink" href="#driving-distance-from-a-single-point" title="Permalink to this headline">¶</a></h2>
 <p>Finds the driving distance depending on the optional parameters setup.</p>
-<div class="highlight-none"><div class="highlight"><pre>    pgr_withPointsDD(TEXT edges_sql, TEXT points_sql, BIGINT start_vid, ANY_NUMERICAL distance, BOOLEAN directed := true, CHAR driving_side := &#39;b&#39;, BOOLEAN details := false)
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsDD(edges_sql, points_sql, start_vids, distance,
+    directed:=true, driving_side:=&#39;b&#39;, details:=false)
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
@@ -167,14 +168,15 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </div>
 <div class="section" id="driving-distance-from-many-starting-points">
 <span id="index-2"></span><h2>Driving distance from many starting points<a class="headerlink" href="#driving-distance-from-many-starting-points" title="Permalink to this headline">¶</a></h2>
-<p>Finds the driving distance depending on the optional parameters setup.</p>
-<div class="highlight-none"><div class="highlight"><pre>    pgr_withPointsDD(TEXT edges_sql, TEXT points_sql, ARRAY[ANY_INTEGER] start_vids, distance, BOOLEAN directed := true, CHAR driving_side := &#39;b&#39;, BOOLEAN details := false, BOOLEAN equicost := false)
-RETURNS SET OF (seq, node, edge, cost, agg_cost)
-</pre></div>
-</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Not coded yet</p>
+</div>
+<p>Finds the driving distance depending on the optional parameters setup.</p>
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsDD(edges_sql, points_sql, start_vids, distance,
+    directed:=true, driving_side:=&#39;b&#39;, details:=false, equicost:=false)
+RETURNS SET OF (seq, node, edge, cost, agg_cost)
+</pre></div>
 </div>
 </div>
 </div>
