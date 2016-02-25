@@ -26,13 +26,13 @@ CREATE OR REPLACE FUNCTION _pgr_drivingDistance(edges_sql text, start_vid bigint
        OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
      '$libdir/${PGROUTING_LIBRARY_NAME}', 'driving_distance'
- LANGUAGE c IMMUTABLE STRICT;
+ LANGUAGE c VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION _pgr_drivingDistance(edges_sql text, start_vids anyarray, distance float8, directed BOOLEAN, equicost BOOLEAN, 
        OUT seq integer, OUT start_v bigint, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
   RETURNS SETOF RECORD AS
      '$libdir/${PGROUTING_LIBRARY_NAME}', 'driving_many_to_dist'
- LANGUAGE c IMMUTABLE STRICT;
+ LANGUAGE c VOLATILE STRICT;
 
 
 -- OLD SIGNATURE

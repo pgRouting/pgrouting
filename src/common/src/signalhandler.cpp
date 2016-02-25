@@ -38,7 +38,7 @@ SignalHandler *
 SignalHandler::instance() {
   if (!instance_) instance_ = new SignalHandler;
 
-  assert(instance_ != NULL);
+  // assert(instance_ != NULL);
   return instance_;
 }
 

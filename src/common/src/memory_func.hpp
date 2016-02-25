@@ -23,16 +23,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 #include <stdlib.h>
 
+
 template <typename T>
 T*
 get_memory(std::size_t size, T *ptr){
     if( !ptr ){
         ptr = (T*) malloc(size * sizeof(T));
     } else {
-        ptr = (T*) realloc( ptr, size * sizeof(T));
+        ptr = (T*) realloc(ptr, size * sizeof(T));
     }
     return (T*) ptr;
 }
+
 
 template <typename T>
 T*

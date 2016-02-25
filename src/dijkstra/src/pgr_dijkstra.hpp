@@ -47,6 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../common/src/baseGraph.hpp"
+#include "./../../common/src/signalhandler.h"
 
 
 
@@ -60,9 +61,9 @@ void pgr_drivingDistance(
         std::deque< Path > &paths,
         std::set< int64_t > start_vids,
         double distance,
-        bool equiCostFlag) {
+        bool equicost) {
     Pgr_dijkstra< G > fn_dijkstra;
-    fn_dijkstra.drivingDistance(graph, paths, start_vids, distance, equiCostFlag);
+    fn_dijkstra.drivingDistance(graph, paths, start_vids, distance, equicost);
 }
 
 
@@ -260,6 +261,8 @@ class Pgr_dijkstra {
           explicit dijkstra_one_goal_visitor(V goal) : m_goal(goal) {}
           template <class B_G>
               void examine_vertex(V &u, B_G &g) {
+                  REG_SIGINT;
+                  THROW_ON_SIGINT;
                   if (u == m_goal) throw found_goals();
                   num_edges(g);
               }
@@ -274,6 +277,8 @@ class Pgr_dijkstra {
               :m_goals(goals) {}
           template <class B_G>
               void examine_vertex(V u, B_G &g) {
+                  REG_SIGINT;
+                  THROW_ON_SIGINT;
                   typename std::set< V >::iterator s_it;
                   s_it = m_goals.find(u);
                   if (s_it == m_goals.end()) return;
@@ -290,14 +295,18 @@ class Pgr_dijkstra {
      //! class for stopping when a distance/cost has being surpassed
      class dijkstra_distance_visitor : public boost::default_dijkstra_visitor {
       public:
-          explicit dijkstra_distance_visitor(double distance_goal,
+          explicit dijkstra_distance_visitor(
+                  double distance_goal,
                   std::deque< V > &nodesInDistance,
                   std::vector< double > &distances) :
               m_distance_goal(distance_goal),
               m_nodes(nodesInDistance),
-              m_dist(distances) {}
+              m_dist(distances) {
+              }
           template <class B_G>
               void examine_vertex(V u, B_G &g) {
+                  REG_SIGINT;
+                  THROW_ON_SIGINT;
                   m_nodes.push_back(u);
                   if (m_dist[u] >= m_distance_goal) throw found_goals();
                   num_edges(g);
@@ -463,7 +472,7 @@ void
 Pgr_dijkstra< G >::drivingDistance(G &graph, std::deque< Path > &paths,
         std::set< int64_t > start_vertex,
         double distance,
-        bool equiCostFlag) {
+        bool equicost) {
     clear();
 
     predecessors.resize(graph.num_vertices());
@@ -471,15 +480,14 @@ Pgr_dijkstra< G >::drivingDistance(G &graph, std::deque< Path > &paths,
 
 
     // perform the algorithm
-    for( const auto &vertex : start_vertex) {
+    for (const auto &vertex : start_vertex) {
         Path path;
         drivingDistance(graph, path, vertex, distance);
         paths.push_back(path);
     }
-    if (equiCostFlag) {
+    if (equicost) {
         equi_cost(paths);
     }
-    return;
 }
 
 template < class G >

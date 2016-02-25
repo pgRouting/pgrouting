@@ -76,7 +76,7 @@ This is the crucial part of this family of functions, and it has to take care of
 
 - Some points are:
 
-  - permanent, for example the set of pints of clients
+  - permanent, for example the set of points of clients
   - temporal, for example points given thru a web application
 
 Graph & edges

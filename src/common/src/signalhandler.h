@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <csignal>
 #include <exception>
 
-#include "./pgr_assert.h"
+// #include "./pgr_assert.h"
 
 class UserQuitException: public std::exception {
  private:
