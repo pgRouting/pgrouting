@@ -60,6 +60,22 @@ Proposed functions: Proposed by Zia Mohammed
 
    ../src/convinience/doc/convenience
 
+
+Proposed functions: Proposed by Rohith Reddy
+---------------------------------------------
+
+  -  :ref:`contraction` - Reduce network size using contraction techniques
+
+.. toctree::
+  :hidden:
+
+  ../src/contraction/doc/contraction.rst
+
+.. toctree::
+  :hidden:
+
+  ../src/contraction/doc/contraction
+
 Experimental functions: by GSoC Students
 ----------------------------------------
 
