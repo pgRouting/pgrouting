@@ -31,12 +31,6 @@ And with the additional characteristics:
 .. note:: Work on progress in contraction branch
 
 
-Refrences
-++++++++++++++++++++++++++
-
-* http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
-* http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf
-
 The contraction skeleton
 -------------------------------------------------------------------------------
 
@@ -152,8 +146,8 @@ For simplicity all the edges in the examples have unit weight.
 Dead End
 +++++++++++++++++
 
-Perform dead end contraction coperation first and then linear contraction
-1 cycle of contraction.
+* Perform dead end contraction coperation first and then linear contraction
+* 1 cycle of contraction.
 
 .. image:: images/twoNodesOneEdge.png
 
@@ -164,152 +158,111 @@ Perform dead end contraction coperation first and then linear contraction
 .. code-block:: none
 
     removed_vertices={}
-    L1 = {2}
+    V1 = {2}
+    V2 = {}
 
 
 :procedure:
 
 .. code-block:: none
 
-    L1 is not empty
+    V1 is not empty
 
-        :math:`L1_v` = {}
-        :math:`L2_v` = {}
+        V1 = {}
+        V2 = {}
         G = {V:{1}, E:{}}
         removed_vertices = {(v, 1):{2}}.
 
-    L1 is empty
+    V1 is empty
+
+Since L1 is empty we go on to the next contraction operation
     
-            Since :math:`L1_v` is empty we stop *level 1* contraction in Cycle 1.
+.. code-block:: none
 
-        Level 2:
+    V2 is empty
+    
 
-            :math:`L2_v` is empty, so we do not perform any *level 2* contraction in Cycle 1.
 
-        After Cycle 1, the sets change as follows,
+So we do not perform any linear contraction operation.
 
-        :math:`L1_v` = {}
-        :math:`L2_v` = {}
-        G = {V:{1}, E:{}}
-        removed_vertices = {(v, 1):{2}}
+:Results:
 
-        Since both :math:`L1_v` and :math:`L2_v` are empty, we cannot contract further and the contraction ends after Cycle 1.
+.. code-block:: none
 
-So finally,the contracted graph is represented as 
+    G = {V:{1}, E:{}}
     removed_vertices = {(v, 1):{2}}
-    G = {V:{1}, E:{}}        
+
+Visualy the results are
+    
+.. image:: images/twoNodesOneEdge.png
 
 
-.. _fig2:
+
+Linear contraction
+++++++++++++++++++++
+
+* Perform linear contraction coperation first and then dead end contraction
+* 1 cycle of contraction.
 
 .. image:: images/threeNodestwoEdges.png
 
-*Graph 2: Directed, with three nodes and two edges*
 
-G = {V:{1, 2, 3}, E:{(1, 2), (2, 3)}}
-
-Before we start we havent't removed any vertices so,
-removed_vertices={}
+:Input: G = {V:{1, 2, 3}, E:{(1, 2), (2, 3)}}
 
 
-A *level 1* vertex has one and only one incoming edge, for this example vertex 3 is a *level 1* vertex, so 
-:math:`L1_v` = {3}
+:initial set up:
 
-A *level 2* vertex is one that has one incoming edge and one outgoing edge, for this example vertex 2 is a *level 2* vertex, so :math:`L2_v` = {2}
+.. code-block:: none
 
-For this example we will cycle only once
+    removed_vertices={}
+    V1 = {3}
+    V2 = {2}
+
+:procedure:
+
+.. code-block:: none
+
+    L2 is not empty
+
+        V1 = {3}
+        removed_vertices = {(e, -1):{2}}
+        V2 = {}
+        G = {V:{1, 3}, E:{-1(1,3)}}
+
+    L2 is empty
+
+Since L2 is empty we go on to the next contraction operation
     
-    Cycle 1:
+.. code-block:: none
 
-        Level 1:
+    L1 is not empty
 
-            :math:`L1_v` is not empty,therefore on *level 1* contraction, vertex 3 gets deleted.
-
-            After removal of vertex 3, vertex 2 loses an outgoing edge and the sets change as follows,
-            :math:`L1_v` = {2}
-            :math:`L2_v` = {}
-            G = {V:{1, 2}, E:{(1, 2)}}
-            removed_vertices = {(v, 2):{3}}
-
-            :math:`L1_v` is not empty, therefore on *level 1* contraction, vertex 2 gets deleted.
-
-            After removal of vertex 2, vertex 1 loses an outgoing edge and the sets change as follows,
-            :math:`L1_v` = {}
-            :math:`L2_v` = {}
-            G = {V:{1}, E:{}}
-            removed_vertices = {(v, 1):{2, 3}}
-
-            Since :math:`L1_v` is empty we stop *level 1* contraction in Cycle 1.
-
-        Level 2:
-
-            :math:`L2_v` is empty, so we do not perform any *level 2* contraction in Cycle 1.
-
-        After Cycle 1, the sets change as follows,
-
-        :math:`L1_v` = {}
-        :math:`L2_v` = {}
+        V1 = {}
+        V2 = {}
+        removed_vertices = {(v, 1):{3, 2}}.
         G = {V:{1}, E:{}}
-        removed_vertices = {(v, 1):{2, 3}}
 
-        Since both of the above sets are empty, we cannot contract further and the contraction ends after Cycle 1.
+    L1 is empty
 
-So finally,the contracted graph is represented as 
-    removed_vertices = {(v, 1):{2, 3}}
+
+:Results:
+
+.. code-block:: none
+
+    removed_vertices = {(v, 1):{3, 2}}.
     G = {V:{1}, E:{}}
 
-
-.. _fig3:
-
-.. image:: images/threeNodesthreeEdges.png
-
-*Graph 3: Directed, with three nodes and three edges*
-
-G = {V:{1, 2, 3},E:{(1, 2), (2, 3), (1, 3)}}
-
-Before we start we havent't removed any vertices so,
-removed_vertices = {}
-
-A *level 1* vertex has one and only one incoming edge, for this example we don't have any *level 1* vertex, so 
-:math:`L1_v` = {}
-
-A *level 2* vertex is one that has one incoming edge and one outgoing edges, for this example vertex 2 is a *level 2* vertex, so :math:`L2_v` = {2}
-
-For this example we will cycle only once.
+Visualy the results are
     
-    Cycle 1:
-
-        Level 1:
-
-            :math:`L1_v` is empty, so we do not perform any *level 1* contraction in Cycle 1.
-
-        Level 2:
-
-            :math:`L2_v` is not empty, therefore on *level 2* contraction, vertex 2 gets deleted, and will add a new edge(shortcut) with an id = -1 and cost = 2, between vertex 1 and vertex 3.
-
-            After removal of vertex 2 the sets change as follows,
-            :math:`L1_v` = {}
-            :math:`L2_v` = {}
-            G = {V:{1, 3}, E:{(1, 3), -1}}
-            removed_vertices = {(e, -1):{2}}
-
-            Since :math:`L2_v` is empty we stop *level 2* contraction in Cycle 1.
-
-        After Cycle 1,the sets change as follows,
-
-        :math:`L1_v` = {}
-        :math:`L2_v` = {}
-        G = {V:{1, 3}, E:{(1, 3), -1}}
-        removed_vertices = {(e, -1):{2}}
-
-        Since both of the above sets are empty, we cannot contract further and the contraction ends after Cycle 1.
-
-So finally,the contracted graph is represented as 
-    removed_vertices = {(e, -1):{2}}
-    G = {V:{1, 3}, E:{(1, 3), -1}
+.. image:: images/twoNodesOneEdge.png
+ 
 
 
+Refrences
+++++++++++++++++++++++++++
 
+* http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
+* http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf
 
 
 
