@@ -34,22 +34,31 @@ For contracting, we are going to cycle as follows
 
 .. code-block:: none
 
+
 do N times {
+
 repeat {
+
 < work with level 1 vertices >
+
 until :math:`L1_v` is empty
+
 }
+
 repeat {
+
 < work with level 2 vertices >
+
 until :math:`L2_v` is empty
+
 }
+
 }
 
 For simplicity all the edges in the examples have unit weight.
 
 
-:Examples:
-
+Examples
 ===============================================================================
 
 .. _fig1:
@@ -95,9 +104,9 @@ For this example we will cycle only once
 
         Since both of the above sets are empty, we cannot contract further and the contraction ends after Cycle 1.
 
-    So finally,
-        removed_vertices = {(v, 1):{2}}
-        G = {V:{1}, E:{}}        
+So finally,
+    removed_vertices = {(v, 1):{2}}
+    G = {V:{1}, E:{}}        
 
 
 .. _fig2:
@@ -155,9 +164,9 @@ For this example we will cycle only once
 
         Since both of the above sets are empty, we cannot contract further and the contraction ends after Cycle 1.
 
-    So finally,
-        removed_vertices = {(v, 1):{2, 3}}
-        G = {V:{1}, E:{}}
+So finally,
+    removed_vertices = {(v, 1):{2, 3}}
+    G = {V:{1}, E:{}}
 
 
 .. _fig3:
@@ -186,7 +195,7 @@ For this example we will cycle only once
 
         Level 2:
 
-            :math:`L2_v` is not empty,therefore on *level 2* contraction, vertex 2 gets deleted, and will add a new edge(shortcut) with an id=-1 and cost=2,between vertex 1 and vertex 3.
+            :math:`L2_v` is not empty, therefore on *level 2* contraction, vertex 2 gets deleted, and will add a new edge(shortcut) with an id = -1 and cost=2, between vertex 1 and vertex 3.
 
             removed_vertices = {(e, -1):{2}}
 
@@ -205,9 +214,9 @@ For this example we will cycle only once
 
         Since both of the above sets are empty, we cannot contract further and the contraction ends after Cycle 1.
 
-    So finally,
-        removed_vertices = {(e, -1):{2}}
-        G = {V:{1, 3}, E:{(1, 3), -1}
+So finally,
+    removed_vertices = {(e, -1):{2}}
+    G = {V:{1, 3}, E:{(1, 3), -1}
 
 
 
