@@ -41,6 +41,11 @@ Adding a new operation then becomes an "easy" task; more things might be involve
 charachteristics of the graph change each time its contracted, so some interaction between contractions
 has to be implemented also.
 
+Procedure
+---------
+
+* For contracting, we are going to cycle as follows
+
 .. code-block:: none
 
     input: G(V,E);
@@ -72,12 +77,13 @@ Dead end contraction
 
 Characteristics:
 
-  - :math:`V_1`: set of vertices with 1 incoming edge in increasing order of id:
+  - :math:`V1`: set of vertices with 1 incoming edge in increasing order of id:
 
     - Edges with the same identifier are considered the same edge
       and if it has the `reverse_cost` valid the outgoing edge is ignored
 
 .. code-block:: none
+
 
     while ( V_1 is not empty ) {
 
@@ -86,7 +92,6 @@ Characteristics:
         vertex that leads to removed vertex, inherits the removed vertex
 
         <adjust any conditions that might affect other contraction operation>
-
     }
 
 
@@ -114,7 +119,7 @@ Characteristics:
 
 
 
-Notations
+Notation
 ++++++++++
 
 * V: is the set of vertices
@@ -132,10 +137,6 @@ removed_vertices = {(v,1):{2}, (e,-1):{3}}.
 The above notation indicates:
   - Vertex 2 is removed, and belongs to vertex 1 subgraph
   - Vertex 3 is removed, and belongs to edge -1 subgraph
-
-
-
-
 
 
 Examples
@@ -181,7 +182,6 @@ Since L1 is empty we go on to the next contraction operation
 
     V2 is empty
     
-
 
 So we do not perform any linear contraction operation.
 
@@ -254,8 +254,51 @@ Since L2 is empty we go on to the next contraction operation
 
 Visualy the results are
     
-.. image:: images/twoNodesOneEdge.png
+.. image:: images/oneNodesContracts2Vertices.png
  
+
+
+Sample Data
+++++++++++++++++++++++++
+
+.. image:: images/sampledataGraph2.png
+
+
+Before we start we havent't removed any vertices so, removed_vertices = {}
+
+:math:`V_1 = {1,7,13,14,15,16,17}`
+
+:math:`V_2 = {4,8,12}`
+
+
+For this example we will cycle only once
+    
+    Cycle 1:
+
+        Level 1:
+
+            :math:`V_1` is not empty,therefore on *dead end* contraction, vertices 1,7,8,13,14,16 gets deleted in the order.
+
+            After the *dead end* contraction the sets change as follows
+            :math:`V_1 = \{\}`
+            :math:`V_2 = \{2,4,10,12\}`
+            removed_vertices = {(v, 1):{2}, (v,5):{7,8}, (v,10):{13}, (v,15):{14}, (v,17):{16}}
+
+            Since :math:`V_1` is empty we stop *dead end* contraction in Cycle 1.
+
+        Level 2:
+
+            :math:`V_2` is not empty, therefore on *linear* contraction, vertices 2,4,10,12 gets deleted in the order, and adds edges(shortcut) with ids -1,-2,-3,-4 respectively with each of the added edge having a cost = 2
+
+            After the *linear* contraction the sets change as follows
+            :math:`V_1 = \{\}`
+            :math:`V_2 = \{\}`
+            removed_vertices = {(e, -1):{1,2}, (e,-2):{4}, (e,-3):{10,13}, (e,-4):{12}, (v,5):{7,8}, (v,15):{14}, (v,17):{16}}
+
+            Since :math:`V_2` is empty we stop *level 2* contraction in Cycle 1.
+
+    Since both of the above sets are empty, we cannot contract further and the contraction ends after Cycle 1.
+
 
 
 Refrences
@@ -263,6 +306,3 @@ Refrences
 
 * http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
 * http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf
-
-
-
