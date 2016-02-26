@@ -52,9 +52,9 @@ begin
 
         -- project the point onto the linestring
         execute 'show client_min_messages' into debuglevel;
-        SET client_min_messages='ERROR';
+        -- SET client_min_messages='ERROR';
         pct := st_line_locate_point(rr.the_geom, pnt);
-        execute 'set client_min_messages  to '|| debuglevel;
+        -- execute 'set client_min_messages  to '|| debuglevel;
 
         -- return the node we are closer to
         if pct < 0.5 then
