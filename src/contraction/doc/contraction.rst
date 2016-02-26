@@ -35,25 +35,25 @@ For contracting, we are going to cycle as follows
 .. code-block:: none
 
 
-do N times {
+    do N times {
 
-repeat {
+    repeat {
 
-< work with level 1 vertices >
+    < work with level 1 vertices >
 
-until :math:`L1_v` is empty
+    until L1_v is empty
 
-}
+    }
 
-repeat {
+    repeat {
 
-< work with level 2 vertices >
+    < work with level 2 vertices >
 
-until :math:`L2_v` is empty
+    until L2_v is empty
 
-}
+    }
 
-}
+    }
 
 For simplicity all the edges in the examples have unit weight.
 
