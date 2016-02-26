@@ -18,12 +18,15 @@ Notations
 * :math:`L2_v`: is the set of *level 2* vertices
 * removed_vertices: is the set of removed vertices
 
+The contracted graph will be represented with two parameters, the modified Graph, and the removed_vertices set.
+
+
 removed_vertices = {(v,1):{2}, (e,-1):{3}}.
 
 
-This notation indicates:
+The above notation indicates:
 vertex 2 is removed, and belongs to vertex 1 subgraph
-vertex 3 is removed, and belongs to edge -1
+vertex 3 is removed, and belongs to edge -1 subgraph
 
 
 
@@ -69,13 +72,13 @@ Examples
 
 G = {V:{1, 2}, E:{(1, 2)}}
 
-Before we start we did not remove any vertices so, removed_vertices={}.
+Before we start we havent't removed any vertices so, removed_vertices={}.
 
 A *level 1* vertex has one and only one incoming edge, for this example vertex 2 is a *level 1* vertex, so :math:`L1_v` = {2}
 
 A *level 2* vertex is one that has one incoming edge and one outgoing edge, for this example we don't have *level 2* vertices, so :math:`L2_v` = {}
 
-For this example we will cycle only once
+For this example we will cycle only once.
 
     Cycle 1:
 
@@ -83,12 +86,11 @@ For this example we will cycle only once
 
             :math:`L1_v` is not empty, therefore on *level 1* contraction, vertex 2 gets deleted.
 
-            removed_vertices = {(v, 1):{2}}.
-
             After removal of vertex 2, vertex 1 loses an outgoing edge and the sets change as follows,
             :math:`L1_v` = {}
             :math:`L2_v` = {}
             G = {V:{1}, E:{}}
+            removed_vertices = {(v, 1):{2}}.
 
             Since :math:`L1_v` is empty we stop *level 1* contraction in Cycle 1.
 
@@ -101,10 +103,11 @@ For this example we will cycle only once
         :math:`L1_v` = {}
         :math:`L2_v` = {}
         G = {V:{1}, E:{}}
+        removed_vertices = {(v, 1):{2}}
 
-        Since both of the above sets are empty, we cannot contract further and the contraction ends after Cycle 1.
+        Since both :math:`L1_v` and :math:`L2_v` are empty, we cannot contract further and the contraction ends after Cycle 1.
 
-So finally,
+So finally,the contracted graph is represented as 
     removed_vertices = {(v, 1):{2}}
     G = {V:{1}, E:{}}        
 
@@ -117,7 +120,7 @@ So finally,
 
 G = {V:{1, 2, 3}, E:{(1, 2), (2, 3)}}
 
-Before we start we did not remove any vertices so,
+Before we start we havent't removed any vertices so,
 removed_vertices={}
 
 
@@ -134,21 +137,19 @@ For this example we will cycle only once
 
             :math:`L1_v` is not empty,therefore on *level 1* contraction, vertex 3 gets deleted.
 
-            removed_vertices = {(v, 2):{3}}
-
             After removal of vertex 3, vertex 2 loses an outgoing edge and the sets change as follows,
             :math:`L1_v` = {2}
             :math:`L2_v` = {}
             G = {V:{1, 2}, E:{(1, 2)}}
+            removed_vertices = {(v, 2):{3}}
 
             :math:`L1_v` is not empty, therefore on *level 1* contraction, vertex 2 gets deleted.
-
-            removed_vertices = {(v, 1):{2, 3}}
 
             After removal of vertex 2, vertex 1 loses an outgoing edge and the sets change as follows,
             :math:`L1_v` = {}
             :math:`L2_v` = {}
             G = {V:{1}, E:{}}
+            removed_vertices = {(v, 1):{2, 3}}
 
             Since :math:`L1_v` is empty we stop *level 1* contraction in Cycle 1.
 
@@ -161,10 +162,11 @@ For this example we will cycle only once
         :math:`L1_v` = {}
         :math:`L2_v` = {}
         G = {V:{1}, E:{}}
+        removed_vertices = {(v, 1):{2, 3}}
 
         Since both of the above sets are empty, we cannot contract further and the contraction ends after Cycle 1.
 
-So finally,
+So finally,the contracted graph is represented as 
     removed_vertices = {(v, 1):{2, 3}}
     G = {V:{1}, E:{}}
 
@@ -177,7 +179,7 @@ So finally,
 
 G = {V:{1, 2, 3},E:{(1, 2), (2, 3), (1, 3)}}
 
-Before we start we did not remove any vertices so,
+Before we start we havent't removed any vertices so,
 removed_vertices = {}
 
 A *level 1* vertex has one and only one incoming edge, for this example we don't have any *level 1* vertex, so 
@@ -185,7 +187,7 @@ A *level 1* vertex has one and only one incoming edge, for this example we don't
 
 A *level 2* vertex is one that has one incoming edge and one outgoing edges, for this example vertex 2 is a *level 2* vertex, so :math:`L2_v` = {2}
 
-For this example we will cycle only once
+For this example we will cycle only once.
     
     Cycle 1:
 
@@ -195,14 +197,13 @@ For this example we will cycle only once
 
         Level 2:
 
-            :math:`L2_v` is not empty, therefore on *level 2* contraction, vertex 2 gets deleted, and will add a new edge(shortcut) with an id = -1 and cost=2, between vertex 1 and vertex 3.
-
-            removed_vertices = {(e, -1):{2}}
+            :math:`L2_v` is not empty, therefore on *level 2* contraction, vertex 2 gets deleted, and will add a new edge(shortcut) with an id = -1 and cost = 2, between vertex 1 and vertex 3.
 
             After removal of vertex 2 the sets change as follows,
             :math:`L1_v` = {}
             :math:`L2_v` = {}
             G = {V:{1, 3}, E:{(1, 3), -1}}
+            removed_vertices = {(e, -1):{2}}
 
             Since :math:`L2_v` is empty we stop *level 2* contraction in Cycle 1.
 
@@ -211,10 +212,11 @@ For this example we will cycle only once
         :math:`L1_v` = {}
         :math:`L2_v` = {}
         G = {V:{1, 3}, E:{(1, 3), -1}}
+        removed_vertices = {(e, -1):{2}}
 
         Since both of the above sets are empty, we cannot contract further and the contraction ends after Cycle 1.
 
-So finally,
+So finally,the contracted graph is represented as 
     removed_vertices = {(e, -1):{2}}
     G = {V:{1, 3}, E:{(1, 3), -1}
 
