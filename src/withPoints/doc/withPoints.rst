@@ -56,8 +56,26 @@ dirving side, The following images visualy show the diferences on how depending 
 Introduction
 --------------
 
+This famly of functions was thought for routing vehicles, but might as well work
+for some other application that we can not think of.
 
-This is the crucial part of this family of functions, and it has to take care of as many aspects as possible.
+The with points family of function give you the ability to route between
+arbitrary points located outside the original graph.
+
+When given a point identified with a `pid` that its being mapped to and edge with
+an identifier `edge_id`, with a `fraction` along
+that edge (from the source to the target of the edge) and some additional
+information about which `side` of the edge the point is on, then routing
+from arbitrary points more accurately reflect routing vehicles in road networks,
+
+
+I talk about a family of functios because it includes different functionalities.
+  - pgr_withPoints is pgr_dijkstra based
+  - pgr_withPointsCost is pgr_dijkstraCost based
+  - pgr_withPointsKSP is pgr_ksp based
+  - pgr_withPointsDD is pgr_drivingDistance based
+  
+In all this functions we have to take care of as many aspects as possible:
 
 - Must work for routing:
 
@@ -76,8 +94,8 @@ This is the crucial part of this family of functions, and it has to take care of
 
 - Some points are:
 
-  - permanent, for example the set of points of clients
-  - temporal, for example points given thru a web application
+  - Permanent, for example the set of points of clients stored in a table in the data base
+  - Temporal, for example points given thru a web application
 
 Graph & edges
 ----------------
