@@ -2,9 +2,20 @@
 Changes for 2.2.0
 -------------------------------------------------------------------------------
 
+  - Improved:
+    - pgr_nodeNetwork
+
   - New functions
     - pgr_floydWarshall
     - pgr_Johnson
+
+  - New Proposed functions
+    - pgr_withPoints
+    - pgr_withPointsCost
+    - pgr_withPointsDD
+    - pgr_withPointsKSP
+    - pgr_dijkstraVia
+
 
   - Deprecated functions:
     - pgr_apspWarshall  use pgr_floydWarshall instead
