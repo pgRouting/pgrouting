@@ -245,9 +245,9 @@ Example 4: Sample Data
 
 Before we start we havent't removed any vertices so, removed_vertices = {}
 
-V_1 = {1,7,13,14,15,16,17}
+:math:`V_1 = {1,7,13,14,15,16,17}`
 
-V_2 = {4,8,12}
+:math:`V_2 = {4,8,12}`
 
 
 For this example we will cycle only once
@@ -259,8 +259,8 @@ For this example we will cycle only once
             :math:`V_1` is not empty,therefore on *dead end* contraction, vertices 1,7,8,13,14,16 gets deleted in the order.
 
             After the *dead end* contraction the sets change as follows
-            :math:`L1_v = \{\}`
-            :math:`L2_v = \{2,4,10,12\}`
+            :math:`V_1 = \{\}`
+            :math:`V_2 = \{2,4,10,12\}`
             removed_vertices = {(v, 1):{2}, (v,5):{7,8}, (v,10):{13}, (v,15):{14}, (v,17):{16}}
 
             Since :math:`V_1` is empty we stop *dead end* contraction in Cycle 1.
@@ -270,8 +270,8 @@ For this example we will cycle only once
             :math:`V_2` is not empty, therefore on *linear* contraction, vertices 2,4,10,12 gets deleted in the order, and adds edges(shortcut) with ids -1,-2,-3,-4 respectively with each of the added edge having a cost = 2
 
             After the *linear* contraction the sets change as follows
-            :math:`L1_v = \{\}`
-            :math:`L2_v = \{\}`
+            :math:`V_1 = \{\}`
+            :math:`V_2 = \{\}`
             removed_vertices = {(e, -1):{1,2}, (e,-2):{4}, (e,-3):{10,13}, (e,-4):{12}, (v,5):{7,8}, (v,15):{14}, (v,17):{16}}
 
             Since :math:`V_2` is empty we stop *level 2* contraction in Cycle 1.
