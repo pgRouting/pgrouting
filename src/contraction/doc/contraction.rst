@@ -16,7 +16,7 @@ more contraction operations can be added in the future.
 We are not aiming with this work to implement all the possible contraction operations
 but to give a framework such that adding a contraction operation can be easily achieved
 
-For this contraaction proposal I am only making 2 operations:
+For this contraction proposal I am only making 2 operations:
 
  - 1) dead end contraction: vertices have one incoming edge
  - 2) linear contraction: vertices have one incomming and one outgoing edge
@@ -35,7 +35,7 @@ The contraction skeleton
 -------------------------------------------------------------------------------
 
 In general we have an initial set up that may involve analizing the graph given as input and setting the
-non contractionable nodes or edges. We have a cycle that will go and perform a contraction operation
+non contractable nodes or edges. We have a cycle that will go and perform a contraction operation
 until while possible, and then move to the next contraction operation.
 Adding a new operation then becomes an "easy" task; more things might be involved, because the
 charachteristics of the graph change each time its contracted, so some interaction between contractions
@@ -147,7 +147,7 @@ For simplicity all the edges in the examples have unit weight.
 Dead End
 +++++++++++++++++
 
-* Perform dead end contraction coperation first and then linear contraction
+* Perform dead end contraction cooperation first and then linear contraction
 * 1 cycle of contraction.
 
 .. image:: images/twoNodesOneEdge.png
