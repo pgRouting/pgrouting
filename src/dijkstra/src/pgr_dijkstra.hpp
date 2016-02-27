@@ -47,8 +47,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../common/src/baseGraph.hpp"
+#if 0
 #include "./../../common/src/signalhandler.h"
-
+#endif
 
 
 template < class G > class Pgr_dijkstra;
@@ -261,8 +262,10 @@ class Pgr_dijkstra {
           explicit dijkstra_one_goal_visitor(V goal) : m_goal(goal) {}
           template <class B_G>
               void examine_vertex(V &u, B_G &g) {
+#if 0
                   REG_SIGINT;
                   THROW_ON_SIGINT;
+#endif
                   if (u == m_goal) throw found_goals();
                   num_edges(g);
               }
@@ -277,8 +280,10 @@ class Pgr_dijkstra {
               :m_goals(goals) {}
           template <class B_G>
               void examine_vertex(V u, B_G &g) {
+#if 0
                   REG_SIGINT;
                   THROW_ON_SIGINT;
+#endif
                   typename std::set< V >::iterator s_it;
                   s_it = m_goals.find(u);
                   if (s_it == m_goals.end()) return;
@@ -305,8 +310,10 @@ class Pgr_dijkstra {
               }
           template <class B_G>
               void examine_vertex(V u, B_G &g) {
+#if 0
                   REG_SIGINT;
                   THROW_ON_SIGINT;
+#endif
                   m_nodes.push_back(u);
                   if (m_dist[u] >= m_distance_goal) throw found_goals();
                   num_edges(g);

@@ -1,7 +1,6 @@
 add_library(vrppdtw OBJECT
+    pdp.h
     pdp.c
-    customers_input.c
-    pdp_solver.cpp
-    )
-
-
+    Route.h
+    Solution.h
+    pdp_solver.cpp )
