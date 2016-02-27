@@ -263,44 +263,127 @@ Visualy the results are
 Sample Data
 ++++++++++++++++++++++++
 
-.. image:: images/sampledataGraph2.png
+* Perform dead end contraction operation first and then linear contraction
+* 1 cycle of contraction.
+
+.. image:: images/undirected_sampledata_a.png
+
+:Input:  G = {V:{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}, 
+E:{1(1, 2), 2(2,3), 3(3,4), 4(2,5), 5(3,6), 6(7,8), 7(8,5), 8(5,6), 9(6,9), 10(5,10), 11(6,11), 12(10,11), 13(11,12), 14(10,13), 15(9,12), 16(4,9), 17(14,15), 18(16,17)}}
+
+:initial set up:
+
+.. code-block:: none
+
+    removed_vertices={}
+    V1 = {1,7,13,14,15,16,17}
+    V2 = {4,8,12}
 
 
-Before we start we haven't removed any vertices so, removed_vertices = {}
+:procedure:
 
-:math:`V1 = {1,7,13,14,15,16,17}`
+.. code-block:: none
 
-:math:`V2 = {4,8,12}`
+    V1 = {1,7,13,14,15,16,17} is not empty
 
+        V1 = {7,13,14,15,16,17}
+        V2 = {2,4,8,12}
+        G = {V:{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}, 
+        E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 6(7,8), 7(8,5), 8(5,6), 9(6,9), 10(5,10), 11(6,11), 12(10,11), 13(11,12), 14(10,13), 15(9,12), 16(4,9), 17(14,15), 18(16,17)}}
+        removed_vertices = {(v, 2):{1}}.
 
-For this example we will cycle only once
     
-    Cycle 1:
+    V1 = {7,13,14,15,16,17} is not empty
 
-        Level 1:
+        V1 = {8,13,14,15,16,17}
+        V2 = {2,4,12}
+        G = {V:{2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}, 
+        E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 7(8,5), 8(5,6), 9(6,9), 10(5,10), 11(6,11), 12(10,11), 13(11,12), 14(10,13), 15(9,12), 16(4,9), 17(14,15), 18(16,17)}}
+        removed_vertices = {(v, 2):{1}, (v,8):{7}}.
 
-            :math:`V1` is not empty,therefore on *dead end* contraction, vertices 1,7,8,13,14,16 gets deleted in the order.
+    V1 = {8,13,14,15,16,17} is not empty
 
-            After the *dead end* contraction the sets change as follows
-            :math:`V1 = \{\}`
-            :math:`V2 = \{2,4,10,12\}`
-            removed_vertices = {(v, 1):{2}, (v,5):{7,8}, (v,10):{13}, (v,15):{14}, (v,17):{16}}
+        V1 = {13,14,15,16,17}
+        V2 = {2,4,12}
+        G = {V:{2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16, 17}, 
+        E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 8(5,6), 9(6,9), 10(5,10), 11(6,11), 12(10,11), 13(11,12), 14(10,13), 15(9,12), 16(4,9), 17(14,15), 18(16,17)}}
+        removed_vertices = {(v, 2):{1}, (v,5):{8,7}}.
 
-            Since :math:`V1` is empty we stop *dead end* contraction in Cycle 1.
+    V1 = {13,14,15,16,17} is not empty
 
-        Level 2:
+        V1 = {14,15,16,17}
+        V2 = {2,4,10,12}
+        G = {V:{2, 3, 4, 5, 6, 9, 10, 11, 12, 14, 15, 16, 17}, 
+        E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 8(5,6), 9(6,9), 10(5,10), 11(6,11), 12(10,11), 13(11,12), 15(9,12), 16(4,9), 17(14,15), 18(16,17)}}
+        removed_vertices = {(v, 2):{1}, (v,5):{8,7}, (v,10):{13}}.
 
-            :math:`V2` is not empty, therefore on *linear* contraction, vertices 2,4,10,12 gets deleted in the order, and adds edges(shortcut) with ids -1,-2,-3,-4 respectively with each of the added edge having a cost = 2
+    V1 = {14,15,16,17} is not empty
 
-            After the *linear* contraction the sets change as follows
-            :math:`V1 = \{\}`
-            :math:`V2 = \{\}`
-            removed_vertices = {(e, -1):{1,2}, (e,-2):{4}, (e,-3):{10,13}, (e,-4):{12}, (v,5):{7,8}, (v,15):{14}, (v,17):{16}}
+        V1 = {16,17}
+        V2 = {2,4,10,12}
+        G = {V:{2, 3, 4, 5, 6, 9, 10, 11, 12, 15, 16, 17}, 
+        E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 8(5,6), 9(6,9), 10(5,10), 11(6,11), 12(10,11), 13(11,12), 15(9,12), 16(4,9)}, 18(16,17)}
+        removed_vertices = {(v, 2):{1}, (v,5):{8,7}, (v,10):{13}, (v,15):{14}}.
 
-            Since :math:`V2` is empty we stop *level 2* contraction in Cycle 1.
+    V1 = {16,17} is not empty
 
-    Since both of the above sets are empty, we cannot contract further and the contraction ends after Cycle 1.
+        V1 = {}
+        V2 = {2,4,10,12}
+        G = {V:{2, 3, 4, 5, 6, 9, 10, 11, 12, 15, 17}, 
+        E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 8(5,6), 9(6,9), 10(5,10), 11(6,11), 12(10,11), 13(11,12), 15(9,12), 16(4,9)}}
+        removed_vertices = {(v, 2):{1}, (v,5):{8,7}, (v,10):{13}, (v,15):{14}, (v,17):{16}}.
 
+    Since V1 is empty we go on to the next contraction operation
+    
+.. image:: images/undirected_sampledata_b.png
+
+.. code-block:: none
+
+    V2 = {2,4,10,12} is not empty
+
+        V1 = {}
+        V2 = {4,10,12}
+        G = {V:{3, 4, 5, 6, 9, 10, 11, 12, 15, 17}, 
+        E:{-1(3,5), 3(3,4), 5(3,6), 8(5,6), 9(6,9), 10(5,10), 11(6,11), 12(10,11), 13(11,12), 15(9,12), 16(4,9)}}
+        removed_vertices = {(e, -1):{1,2}, (v, 2):{1}, (v,5):{8,7}, (v,10):{13}, (v,15):{14}, (v,17):{16}}.
+
+    V2 = {4,10,12} is not empty
+
+        V1 = {}
+        V2 = {10,12}
+        G = {V:{3, 5, 6, 9, 10, 11, 12, 15, 17}, 
+        E:{-1(3,5),-2(3,9), 5(3,6), 8(5,6), 9(6,9), 10(5,10), 11(6,11), 12(10,11), 13(11,12), 15(9,12)}}
+        removed_vertices = {(e, -1):{1,2}, (e, -2):{4}, (v, 2):{1}, (v,5):{8,7}, (v,10):{13}, (v,15):{14}, (v,17):{16}}.
+
+    V2 = {10,12} is not empty
+
+        V1 = {}
+        V2 = {12}
+        G = {V:{3, 5, 6, 9, 11, 12, 15, 17}, 
+        E:{-1(3,5),-2(3,9), -3(5,11), 5(3,6), 8(5,6), 9(6,9), 11(6,11), 13(11,12), 15(9,12)}}
+        removed_vertices = {(e, -1):{1,2}, (e, -2):{4}, (e,-3):{10,13}, (v, 2):{1}, (v,5):{8,7}, (v,15):{14}, (v,17):{16}}.
+
+    V2 = {12} is not empty
+
+        V1 = {}
+        V2 = {}
+        G = {V:{3, 5, 6, 9, 11, 15, 17}, 
+        E:{-1(3,5),-2(3,9), -3(5,11), -4(9,11), 5(3,6), 8(5,6), 9(6,9), 11(6,11)}}
+        removed_vertices = {(e, -1):{1,2}, (e, -2):{4}, (e,-3):{10,13}, (e, -4):{12}, (v, 2):{1}, (v,5):{8,7}, (v,15):{14}, (v,17):{16}}.
+
+     Since V1 and V2 are empty we stop our contraction here. 
+
+:Results:
+
+.. code-block:: none
+
+    G = {V:{3, 5, 6, 9, 11, 15, 17}, 
+        E:{-1(3,5),-2(3,9), -3(5,11), -4(9,11), 5(3,6), 8(5,6), 9(6,9), 11(6,11)}}
+    removed_vertices = {(e, -1):{1,2}, (e, -2):{4}, (e,-3):{10,13}, (e, -4):{12}, (v, 2):{1}, (v,5):{8,7}, (v,15):{14}, (v,17):{16}}.
+
+Visualy the results are
+    
+.. image:: images/undirected_sampledata_c.png
 
 
 References
