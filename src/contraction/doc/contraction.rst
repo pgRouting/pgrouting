@@ -147,7 +147,7 @@ For simplicity all the edges in the examples have unit weight.
 Dead End
 +++++++++++++++++
 
-* Perform dead end contraction coperation first and then linear contraction
+* Perform dead end contraction operation first and then linear contraction
 * 1 cycle of contraction.
 
 .. image:: images/twoNodesoneEdge_a.png
@@ -201,7 +201,7 @@ Visualy the results are
 Linear contraction
 ++++++++++++++++++++
 
-* Perform linear contraction coperation first and then dead end contraction
+* Perform linear contraction operation first and then dead end contraction
 * 1 cycle of contraction.
 
 .. image:: images/threeNodestwoEdges_a.png
@@ -303,7 +303,7 @@ For this example we will cycle only once
 
 
 
-Refrences
+References
 ++++++++++++++++++++++++++
 
 * http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
