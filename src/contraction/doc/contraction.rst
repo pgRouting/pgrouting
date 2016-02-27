@@ -264,7 +264,7 @@ Sample Data
 .. image:: images/sampledataGraph2.png
 
 
-Before we start we havent't removed any vertices so, removed_vertices = {}
+Before we start we haven't removed any vertices so, removed_vertices = {}
 
 :math:`V_1 = {1,7,13,14,15,16,17}`
 
