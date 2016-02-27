@@ -85,9 +85,9 @@ Characteristics:
 .. code-block:: none
 
 
-    while ( V_1 is not empty ) {
+    while ( V1 is not empty ) {
 
-        delete vertex of V_1
+        delete vertex of V1
         the deleted vertex add it to removed_vertices
         vertex that leads to removed vertex, inherits the removed vertex
 
@@ -101,15 +101,15 @@ Linear contraction
 
 Characteristics:
 
-  - :math:`V_2`: vertex with 1 incoming edge and 1 outgoing edge:
+  - :math:`V2`: vertex with 1 incoming edge and 1 outgoing edge:
 
     - The outgoing edge must have different identifier of the incomming edge
 
 .. code-block:: none
 
-    while ( V_2 is not empty ) {
+    while ( V2 is not empty ) {
 
-        delete vertex of V_2
+        delete vertex of V2
         create edge (shortcut)
         the deleted vertex add it to removed_vertices
         inewly created edge, inherits the removed vertex
@@ -167,7 +167,7 @@ Dead End
 
 .. code-block:: none
 
-    V1 is not empty
+    V1 = {2} is not empty
 
         V1 = {}
         V2 = {}
@@ -176,7 +176,7 @@ Dead End
 
     V1 is empty
 
-Since L1 is empty we go on to the next contraction operation
+Since V1 is empty we go on to the next contraction operation
     
 .. code-block:: none
 
@@ -222,29 +222,29 @@ Linear contraction
 
 .. code-block:: none
 
-    L2 is not empty
+    V2 = {2} is not empty
 
         V1 = {3}
         removed_vertices = {(e, -1):{2}}
         V2 = {}
-        G = {V:{1, 3}, E:{-1(1,3)}}
+        G = {V:{1, 3}, E:{-1(1,3,c=2)}}
 
-    L2 is empty
+    V2 is empty
 
 .. image:: images/threeNodestwoEdges_b.png
 
-Since L2 is empty we go on to the next contraction operation
+Since V2 is empty we go on to the next contraction operation
     
 .. code-block:: none
 
-    L1 is not empty
+    V1 = {3} is not empty
 
         V1 = {}
         V2 = {}
         removed_vertices = {(v, 1):{3, 2}}.
         G = {V:{1}, E:{}}
 
-    L1 is empty
+    V1 is empty
 
 
 :Results:
@@ -268,9 +268,9 @@ Sample Data
 
 Before we start we havent't removed any vertices so, removed_vertices = {}
 
-:math:`V_1 = {1,7,13,14,15,16,17}`
+:math:`V1 = {1,7,13,14,15,16,17}`
 
-:math:`V_2 = {4,8,12}`
+:math:`V2 = {4,8,12}`
 
 
 For this example we will cycle only once
@@ -279,25 +279,25 @@ For this example we will cycle only once
 
         Level 1:
 
-            :math:`V_1` is not empty,therefore on *dead end* contraction, vertices 1,7,8,13,14,16 gets deleted in the order.
+            :math:`V1` is not empty,therefore on *dead end* contraction, vertices 1,7,8,13,14,16 gets deleted in the order.
 
             After the *dead end* contraction the sets change as follows
-            :math:`V_1 = \{\}`
-            :math:`V_2 = \{2,4,10,12\}`
+            :math:`V1 = \{\}`
+            :math:`V2 = \{2,4,10,12\}`
             removed_vertices = {(v, 1):{2}, (v,5):{7,8}, (v,10):{13}, (v,15):{14}, (v,17):{16}}
 
-            Since :math:`V_1` is empty we stop *dead end* contraction in Cycle 1.
+            Since :math:`V1` is empty we stop *dead end* contraction in Cycle 1.
 
         Level 2:
 
-            :math:`V_2` is not empty, therefore on *linear* contraction, vertices 2,4,10,12 gets deleted in the order, and adds edges(shortcut) with ids -1,-2,-3,-4 respectively with each of the added edge having a cost = 2
+            :math:`V2` is not empty, therefore on *linear* contraction, vertices 2,4,10,12 gets deleted in the order, and adds edges(shortcut) with ids -1,-2,-3,-4 respectively with each of the added edge having a cost = 2
 
             After the *linear* contraction the sets change as follows
-            :math:`V_1 = \{\}`
-            :math:`V_2 = \{\}`
+            :math:`V1 = \{\}`
+            :math:`V2 = \{\}`
             removed_vertices = {(e, -1):{1,2}, (e,-2):{4}, (e,-3):{10,13}, (e,-4):{12}, (v,5):{7,8}, (v,15):{14}, (v,17):{16}}
 
-            Since :math:`V_2` is empty we stop *level 2* contraction in Cycle 1.
+            Since :math:`V2` is empty we stop *level 2* contraction in Cycle 1.
 
     Since both of the above sets are empty, we cannot contract further and the contraction ends after Cycle 1.
 
