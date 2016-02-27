@@ -57,7 +57,7 @@ And all the people that gives us a little of their time making comments, finding
 Corporate Sponsors (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-These are corporate entities that have contributed developer time, hosting, releasing, or direct monetary funding to the pgRouting project:
+These are corporate entities that have contributed developer time, hosting, or direct monetary funding to the pgRouting project:
 
  - `Georepublic <https://georepublic.info/en/>`__
  - `Google Summer of Code <https://developers.google.com/open-source/gsoc/>`_
