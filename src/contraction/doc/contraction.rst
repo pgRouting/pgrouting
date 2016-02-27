@@ -150,7 +150,7 @@ Dead End
 * Perform dead end contraction coperation first and then linear contraction
 * 1 cycle of contraction.
 
-.. image:: images/twoNodesOneEdge.png
+.. image:: images/twoNodesoneEdge_a.png
 
 :Input:  G = {V:{1, 2}, E:{(1, 2)}}
 
@@ -194,7 +194,7 @@ So we do not perform any linear contraction operation.
 
 Visualy the results are
     
-.. image:: images/twoNodesOneEdge.png
+.. image:: images/twoNodesoneEdge_b.png
 
 
 
@@ -204,7 +204,7 @@ Linear contraction
 * Perform linear contraction coperation first and then dead end contraction
 * 1 cycle of contraction.
 
-.. image:: images/threeNodestwoEdges.png
+.. image:: images/threeNodestwoEdges_a.png
 
 
 :Input: G = {V:{1, 2, 3}, E:{(1, 2), (2, 3)}}
@@ -231,6 +231,8 @@ Linear contraction
 
     L2 is empty
 
+.. image:: images/threeNodestwoEdges_b.png
+
 Since L2 is empty we go on to the next contraction operation
     
 .. code-block:: none
@@ -254,7 +256,7 @@ Since L2 is empty we go on to the next contraction operation
 
 Visualy the results are
     
-.. image:: images/oneNodesContracts2Vertices.png
+.. image:: images/threeNodestwoEdges_c.png
  
 
 
