@@ -187,7 +187,7 @@ set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/trsp/src
     ${PGROUTING_SOURCE_DIR}/src/tsp/src
     ${PGROUTING_SOURCE_DIR}/src/vrp_basic/src
-    #${PGROUTING_SOURCE_DIR}/src/vrppdtw/src
+    ${PGROUTING_SOURCE_DIR}/src/vrppdtw/src
 
 # not using C/C++
     ${PGROUTING_SOURCE_DIR}/src/label_graph/src
@@ -195,7 +195,6 @@ set(PGROUTING_INCLUDE_DIRECTORIES
 
 #not suported but directory exists
 #    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
-#    ${PGROUTING_SOURCE_DIR}/src/vrpdptw/src
     )
 
 include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
@@ -285,7 +284,7 @@ set(PgRouting_SOURCE_NAMES
     "tsp"
 
     "vrp_basic"
-    #"vrppdtw"
+    "vrppdtw"
 
     )
 
