@@ -1,7 +1,9 @@
-/*PGR
+/*PGR-GNU*****************************************************************
 
 Copyright (c) 2013 Khondoker Md. Razequl Islam
 ziboncsedu@gmail.com
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,7 +19,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
+********************************************************************PGR-GNU*/
 
 #ifndef _VRP_H
 #define _VRP_H
@@ -50,9 +52,9 @@ typedef struct vrp_cost_element
 {
 	int src_id;
 	int dest_id;
-	int cost;
-	int distance;
-	int traveltime;
+	double cost;
+	double distance;
+	double traveltime;
 
 }vrp_cost_element_t;
 
@@ -71,11 +73,11 @@ typedef struct vrp_result_element
 extern "C"
 #endif
 
-int find_vrp_solution(vrp_vehicles_t *vehicles, int vehicle_count, 
-					  vrp_orders_t *orders, int order_count,
-					  vrp_cost_element_t *costmatrix, int cost_count,
+int find_vrp_solution(vrp_vehicles_t *vehicles, size_t vehicle_count, 
+					  vrp_orders_t *orders, size_t order_count,
+					  vrp_cost_element_t *costmatrix, size_t cost_count,
 					  int depot_id,
-					  vrp_result_element_t **result, int *result_count, char **err_msg);
+					  vrp_result_element_t **result, size_t *result_count, char **err_msg);
 
 #ifdef __cplusplus
 extern "C"

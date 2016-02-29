@@ -89,7 +89,10 @@ cp lib/*.control ${PGPATHEDB}/share/extension/
 cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
 
 #perl tools/test-runner.pl   -pgver ${PG_VER} -pgport "${PGPORT}"  -clean
-perl tools/test-runner.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}" -ignorenotice -clean
+echo "PGVER ${PG_VER}"
+echo "PGVER ${POSTGIS_VER}"
+echo "PGVER ${PGPORT}"
+perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}" -ignorenotice -clean
 #perl tools/test-runner.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}" 
 #perl tools/test-runner.pl  -pgver "${PG_VER}" -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -clean -v -alg ksp
 

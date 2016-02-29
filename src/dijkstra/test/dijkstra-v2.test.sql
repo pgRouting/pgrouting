@@ -3,28 +3,25 @@
 --              PGR_dijkstra  V.2.0
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
+SET client_min_messages TO notice;
 
-SELECT seq, id1 AS node, id2 AS edge, cost
-        FROM pgr_dijkstra(
-                'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-                2,3, true, false
-        );
+\echo --q1
+SELECT * FROM pgr_dijkstra(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    2,3, true, false);
+\echo --q2
 
-SELECT seq, id1 AS node, id2 AS edge, cost
-        FROM pgr_dijkstra(
-                'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-                2,3, true, true
-        );
+SELECT * FROM pgr_dijkstra(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    2,3, true, true);
+\echo --q3
 
-SELECT seq, id1 AS node, id2 AS edge, cost
-         FROM pgr_dijkstra(
-                 'SELECT id, source, target, cost FROM edge_table',
-                 2, 3, false, false
-         );
+SELECT * FROM pgr_dijkstra(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
+     2, 3, false, false);
+\echo --q4
 
-SELECT seq, id1 AS node, id2 AS edge, cost
-         FROM pgr_dijkstra(
-                 'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-                 2, 3, false, true
-         );
-
+SELECT * FROM pgr_dijkstra(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+     2, 3, false, true);
+\echo --q5

@@ -32,11 +32,7 @@ Post 2.1.0 development will happen in the *develop* branch.
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=develop" alt="Build Status"/></td>
 		<td></td>
 	</tr>
-        <tr>
-                <td>develop_2_1_0</td>
-                <td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=develop_2_1_0" alt="Build Status"/></td>
-                <td></td>
-        </tr>
+
 	<tr>
 		<td>gh-pages</td>
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=gh-pages" alt="Build Status"/></td>
@@ -69,8 +65,7 @@ This library contains following features:
 * Postgresql version >= 9.1
 * PostGIS version >= 2.0
 * The Boost Graph Library (BGL).
-  * Version >= 1.55 for linux
-  * Version >= 1.58 for MAC
+  * Version >= 1.46
 * CMake >= 2.8.8
 * CGAL >= 4.4
 * Sphinx >= 1.2

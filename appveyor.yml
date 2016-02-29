@@ -1,0 +1,76 @@
+# ------------------------------------------------------------------------------
+# appVeyor script
+# Copyright(c) pgRouting Contributors
+#
+# Main configuration
+# ------------------------------------------------------------------------------
+
+
+
+
+
+notifications:
+  email:
+    on_failure: vicky_vergara@hotmail.com
+
+branches:
+  only:
+    - master
+    - develop
+    - dev-2.2
+
+    
+
+services:
+  - postgresql
+
+environment:
+  POSTGRESQL_VERSION: 9.4
+
+# excecuted. So things have to be tested oe by one.
+#addons:
+#  apt:
+#    sources:
+# For gcc >= 4.8
+# - ubuntu-toolchain-r-test
+# For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
+#- kubuntu-backports
+#      - boost-latest
+#    packages:
+#- cmake
+#      - libboost-thread-dev
+#- libboost-graph-dev
+#- libcgal-dev
+#- postgresql-server-dev-all
+#- postgresql-common
+
+
+#- export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH # Add our chosen PG version to the path
+#- sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
+#- sudo apt-get install -y postgresql-9.5
+#- sudo apt-get install -y postgresql-9.5-postgis
+#- sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
+#- sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION # Start the version of PG that we want to test
+#before_script:
+    
+# - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION   # pgtap has to be installed after postgres has started
+#- sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
+#- createdb  ___pgr___test___
+#- createdb  pgr_test__db__test
+#- ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___
+
+
+#before_install:
+
+#before_script:
+
+#script: 
+
+#- ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+#- ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION
+
+#after_script: 
+
+#- ./tools/travis/pg_prove_tests.sh postgres
+
+#after_success:

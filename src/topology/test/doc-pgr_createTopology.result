@@ -1,0 +1,97 @@
+--q1
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Creating Topology, Please wait...
+NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
+NOTICE:  Rows with NULL geometry or NULL id: 0
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+OK
+--q1.1
+--q2
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Creating Topology, Please wait...
+NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
+NOTICE:  Rows with NULL geometry or NULL id: 0
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+OK
+--q2.1
+--q3
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology('edge_table', 0.001, 'id', 'the_geom', 'source', 'target', rows_where := 'true', clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  ----> PGR ERROR in pgr_createTopology: Wrong type of Column id:the_geom
+NOTICE:  Unexpected error raise_exception
+FAIL
+--q3.1
+--q4
+OK
+--q4.1
+--q5
+OK
+--q5.1
+--q6
+OK
+--q6.1
+--q7
+OK
+--q7.1
+--q8
+OK
+--q8.1
+--q9
+OK
+--q9.1
+--q10
+--q10.1
+--q11
+OK
+--q11.1
+--q12
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology('mytable', 0.001, 'gid', 'mygeom', 'src', 'tgt', rows_where := 'true', clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  ----> PGR ERROR in pgr_createTopology: Wrong type of Column id:mygeom
+NOTICE:  Unexpected error raise_exception
+FAIL
+--q12.1
+--q13
+OK
+--q13.1
+--q14
+OK
+--q14.1
+--q15
+OK
+OK
+OK
+OK
+--q15.1
+--q16
+OK
+OK
+--q16.1
+--q17
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'id < 6', clean := t)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Creating Topology, Please wait...
+NOTICE:  -------------> TOPOLOGY CREATED FOR  5 edges
+NOTICE:  Rows with NULL geometry or NULL id: 0
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+OK
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Creating Topology, Please wait...
+NOTICE:  -------------> TOPOLOGY CREATED FOR  13 edges
+NOTICE:  Rows with NULL geometry or NULL id: 0
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+OK
+--q17.1

@@ -1,7 +1,9 @@
-/*PGR
+/*PGR-GNU*****************************************************************
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,7 +19,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
+********************************************************************PGR-GNU*/
 
 /************************************************************************/
 /* $Id: MainP.cpp 65 2010-09-08 06:48:36Z yan.qi.asu $                                                                 */
@@ -41,9 +43,12 @@ namespace po = boost::program_options;
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
+#include "./../../warshall/src/pgr_warshall.hpp"
 #include "./../../ksp/src/pgr_ksp.hpp"
 #include "./driving.cpp"
-#include "./dijkstra.cpp"
+#include "./dijkstra.hpp"
+#include "./ksp.cpp"
+#include "./warshall.hpp"
 
 
 
@@ -88,7 +93,7 @@ void import_from_file(const std::string &input_file_name, pgr_edge_t *edges, uns
 void get_options_description(po::options_description &od_desc) {
     od_desc.add_options()
         ("help", "Produce this help message.")
-        ("test,t",  po::value<bool>()->default_value(false),
+        ("test,t",  po::value<bool>()->default_value(true),
             "For testing purposes.")
         ("dbname,d", po::value<std::string>()->required(), 
             "Specifies the name of the database to connect to.")
@@ -164,7 +169,7 @@ exit_nicely(PGconn *conn)
 
 template <typename G> 
 void process(G graph, pgr_edge_t *data_edges, int row_count) {
-  graph.initialize_graph(data_edges, row_count);
+  graph.graph_insert_data(data_edges, row_count);
   std::vector<int64_t> targets;
   std::string::size_type sz;
 
@@ -175,13 +180,23 @@ void process(G graph, pgr_edge_t *data_edges, int row_count) {
   std::vector<std::string> tokens;
   while (true) {
     std::cout << "\n\n\n\n\t\t COMMANDS\n\n "
-     << "\tDIJKSTRA\n"
+     << "\tWARSHALL\n"
+     << "\twarshall\n"
+
+     << "\n\tKSP\n"
+     << "(Input the command separating with spaces)\n"
+     << "\tksp from  to \n"
+
+     << "\n\tDIJKSTRA\n"
      << "(Input the command separating with spaces)\n"
      << "\tdijkstra from  to \n"
      << "\tdijkstra from  to1 to2 to3\n\n"
-     << "\tDRIVING DISTANCE\n"
+
+     << "\n\tDRIVING DISTANCE\n"
      << "(Use kewywords)\n"
      << "\tdrivDist from <id> [<id> ...] dist <distance> [equi]\n"
+
+     << "\n\tFINISH\n"
      << "\tend\n\n"
      << ">>>";
     tokens.clear();
@@ -200,13 +215,9 @@ void process(G graph, pgr_edge_t *data_edges, int row_count) {
 
     if (tokens[0].compare("end")==0) return;
 
-    if (tokens.size() < 2 ) {
-      std::cout << "Missing parameters\n";
-      continue;
-    }
-
-  
     if (tokens[0].compare("dijkstra") != 0 
+       && tokens[0].compare("warshall") != 0 
+       && tokens[0].compare("ksp") != 0 
        && tokens[0].compare("drivDist") != 0 ) {
       std::cout << "Command: " << cmd << " not found\n";
       continue;
@@ -215,37 +226,11 @@ void process(G graph, pgr_edge_t *data_edges, int row_count) {
     
     if (tokens[0].compare("dijkstra") == 0) {
        process_dijkstra(graph, tokens);
+    } else if (tokens[0].compare("ksp") == 0) {
+       process_ksp(graph, tokens);
+    } else if (tokens[0].compare("warshall") == 0) {
+       process_warshall(graph, tokens);
     } else {
-#if 0
-      if (tokens[1].compare("from") == 0) {
-        std::cout << "missing 'from' kewyword";
-      }
-      start_vertex = stol(tokens[1], &sz);
-      if (tokens.size() == 2) {   
-        Path path;
-        end_vertex = stol(tokens[2], &sz);
-        graph.dijkstra(path, start_vertex, end_vertex);
-        std::cout << "THE OPUTPUT ---->  total cost: " << path.cost << "\n";
-        path.print_path();
-        path.clear();
-      } else {
-        std::deque<Path> paths;
-        for (unsigned int i = 2; i < tokens.size(); ++i) {
-          end_vertex = stol(tokens[i], &sz);
-          targets.push_back(end_vertex);
-        }
-
-        graph.dijkstra(paths, start_vertex, targets);
-
-        std::cout << "THE OPUTPUTS ---->  total outputs: " << paths.size() << "\n";
-        for (unsigned int i = 0; i < paths.size(); ++i) {
-           if (sizeof(paths[i]) == 0) continue; //no solution found
-           std::cout << "Path #" << i << " cost: " << paths[i].cost << "\n";
-           paths[i].print_path();
-        }
-      }
-    } else if (tokens[0].compare("drivDist") == 0) {
-    #endif
       process_drivingDistance(graph, tokens);
     }
   }
@@ -303,7 +288,8 @@ int main(int ac, char* av[]) {
 
    std::string data_sql;
    if (test) {
-     data_sql = "select id, source, target, cost, reverse_cost from edge_table order by id";
+     data_sql = "select id, source, target, cost, -1 as reverse_cost  from table1 order by id";
+     // data_sql = "select id, source, target, cost, reverse_cost from edge_table order by id";
    } else {
      std::cout << "Input data query: ";
      std::getline (std::cin,data_sql);
@@ -387,29 +373,24 @@ int main(int ac, char* av[]) {
 //////////////////////  END READING DATA FROM DATABASE ///////////////////
 
     std::string directed;
-    std::cout << "Is the graph directed? default[N] [Y,y]";
+    std::cout << "Is the graph directed [N,n]? default[Y]";
     std::getline(std::cin,directed);
-    graphType gType =  (directed.compare("Y")==0 || directed.compare("y")==0)? DIRECTED: UNDIRECTED;
-    bool directedFlag =  (directed.compare("Y")==0 || directed.compare("y")==0)? true: false;
+    graphType gType =  (directed.compare("N")==0 || directed.compare("n")==0)? UNDIRECTED: DIRECTED;
+    bool directedFlag =  (directed.compare("N")==0 || directed.compare("n")==0)? false: true;
 
 
-
-    typedef boost::adjacency_list < boost::vecS, boost::vecS, boost::undirectedS,
-        boost_vertex_t, boost_edge_t > UndirectedGraph;
-    typedef boost::adjacency_list < boost::vecS, boost::vecS, boost::bidirectionalS,
-        boost_vertex_t, boost_edge_t > DirectedGraph;
-
-    const int initial_size = 1;
+    const int initial_size = rec_count;
 
     
-    Pgr_dijkstra< DirectedGraph > digraph(gType, initial_size);
-    Pgr_dijkstra< UndirectedGraph > undigraph(gType, initial_size);
+    Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+    Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
     
     if (directedFlag) {
       process(digraph, data_edges, rec_count);
     } else {
       process(undigraph, data_edges, rec_count);
     }
+
 }
 
 

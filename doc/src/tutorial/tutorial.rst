@@ -23,7 +23,7 @@ with pgRouting. In this guide we will cover:
     * How to use other tools to view your graph and route
     * How to create a web app
 
-How to create a database to use for our project
+How to create a database
 -------------------------------------------------------------------------------
 
 The first thing we need to do is create a database and load pgrouting in 
@@ -41,36 +41,21 @@ For Postgresql 9.1 and later versions
 	psql mydatabase -c "create extension pgrouting"
 
 
-For older versions of postgresql
-
-.. code-block:: bash
-
-	createdb -T template1 template_postgis
-	psql template_postgis -c "create language plpgsql"
-	psql template_postgis -f /usr/share/postgresql/9.0/contrib/postgis-1.5/postgis.sql
-	psql template_postgis -f /usr/share/postgresql/9.0/contrib/postgis-1.5/spatial_ref_sys.sql
-	psql template_postgis -f /usr/share/postgresql/9.0/contrib/postgis_comments.sql
-
-	createdb -T template_postgis template_pgrouting
-	psql template_pgrouting -f /usr/share/postgresql/9.0/contrib/pgrouting-2.0/pgrouting.sql
-
-	createdb -T template_pgrouting mydatabase
-
-
 How to load some data
 -------------------------------------------------------------------------------
 
 How you load your data will depend in what form it comes it. There are
 various OpenSource tools that can help you, like:
 
+:osm2pgrouting-alpha: - this is a tool for loading OSM data into postgresql with pgRouting requirements
 :shp2pgsql: - this is the postgresql shapefile loader
 :ogr2ogr: - this is a vector data conversion utility
 :osm2pgsql: - this is a tool for loading OSM data into postgresql
 
-So these tools and probably others will allow you to read vector data and
-and can load that data into your database as a table of some kind. At this
+So these tools and probably others will allow you to read vector data so that 
+you may then load that data into your database as a table of some kind. At this
 point you need to know a little about your data structure and content. One easy
-way to browse you data table is with pgAdmin3 or phpPgAdmin.
+way to browse your new data table is with pgAdmin3 or phpPgAdmin.
 
 
 How to build a topology
@@ -80,7 +65,9 @@ Next we need to build a topology for our street data. What this means is that
 for any given edge in your street data the ends of that edge will be connected
 to a unique node and to other edges that are also connected to that same unique
 node. Once all the edges are connected to nodes we have a graph that can be
-used for routing with pgrouting. We provide a tools the will help with this:
+used for routing with pgrouting. We provide a tool that will help with this:
+
+.. note:: this step is not needed if data is loaded with `osm2pgrouting-alpha`
 
 .. code-block:: sql
 
@@ -93,9 +80,9 @@ How to check your graph for errors
 -------------------------------------------------------------------------------
 
 There are lots of possible sources for errors in a graph. The data that you
-started with may not have been designed with routing in mind. A graph as some
-very specific requirments. One it that it is *NODED*, this means that except
-for some very specific use cases, each road segments starts and ends at a node
+started with may not have been designed with routing in mind. A graph has some
+very specific requirments. One is that it is *NODED*, this means that except
+for some very specific use cases, each road segment starts and ends at a node
 and that in general is does not cross another road segment that it should be
 connected to.
 
@@ -120,32 +107,25 @@ See :ref:`pgr_node_network` for more information.
 How to compute a route
 -------------------------------------------------------------------------------
 
-Once you have all the prep work done above, computing a route is fairly easy.
-We have a lot of different algorithms but they can work with your prepared
-road network. The general form of a route query is:
+Once you have all the preparation work done above, computing a route is fairly easy.
+We have a lot of different algorithms that can work with your prepared road
+network. The general form of a route query is:
 
 .. code-block:: sql
 
     select pgr_<algorithm>(<SQL for edges>, start, end, <additonal options>)
 
 As you can see this is fairly straight forward and you can look and the 
-specific algorithms for the details on how to use them. What you get as a
-result from these queries will be a set of record of type :ref:`type_cost_result`
-or :ref:`type_geom_result`. These results have information like edge id and/or the
+specific algorithms for the details of the signatures and how to use them.
+These results have information like edge id and/or the
 node id along with the cost or geometry for the step in the path from *start*
 to *end*. Using the ids you can join these result back to your edge table
 to get more information about each step in the path.
 
- * See also :ref:`type_cost_result` and :ref:`type_geom_result`.
 
-.. How to use other tools to view your graph and route
-.. -------------------------------------------------------------------------------
 
-.. TBD
+.. rubric:: Indices and tables
 
-.. How to create a web app
-.. -------------------------------------------------------------------------------
-
-.. TBD
-
+* :ref:`genindex`
+* :ref:`search`
 
