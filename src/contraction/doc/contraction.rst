@@ -4,28 +4,28 @@
 Contraction
 ===============================================================================
 
-Contracting a graph becomes a crucial operation when taking about big graphs like
-the graphs involved in routing in cities, countries, continents or the whole world.
+Contracting a graph becomes a crucial operation when talking about big graphs like
+the graphs involved in routing across cities, countries, continents or the whole world.
 
-The contraction level, and contraction operations can become very complex, as the complexity
+The contraction level and contraction operations can become very complex, as the complexity
 of the graphs grows.
 
 For this proposal, we are making our contraction algorithm simple as possible so that
 more contraction operations can be added in the future.
 
 We are not aiming with this work to implement all the possible contraction operations
-but to give a framework such that adding a contraction operation can be easily achieved
+but to give a framework such that adding a contraction operation can be easily achieved.
 
 For this contraction proposal I am only making 2 operations:
 
- - 1) dead end contraction: vertices have one incoming edge
- - 2) linear contraction: vertices have one incomming and one outgoing edge
+ 1. dead end contraction: vertices have one incoming edge
+ 2. linear contraction: vertices have one incomming and one outgoing edge
    
 
 And with the additional characteristics:
 
-  - the user can forbid to contract a particular set of nodes or edges.
-  - the user can decide how many times the cycle can be done.
+  - The user can forbid to contract a particular set of nodes or edges.
+  - The user can decide how many times the cycle can be done.
   - If possible, the user can decide the order of the operations on a cycle.
 
 .. note:: Work on progress in contraction branch
@@ -116,7 +116,6 @@ Characteristics:
 
         <adjust any conditions that might affect other contraction operations>
     }
-
 
 
 Notation
