@@ -8,14 +8,14 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_brokenGraph:
+.. _pgr_labelGraph:
 
 
-pgr_brokenGraph
+pgr_labelGraph
 ===============================================================================
 
 .. index:: 
-	single: pgr_brokenGraph(text, text, text, text, text, text)
+	single: pgr_labelGraph(text, text, text, text, text, text)
 	module: common
 
 
@@ -23,7 +23,7 @@ pgr_brokenGraph
 Name
 -------------------------------------------------------------------------------
 
-``pgr_brokenGraph`` — Locates and labels sub-networks within a network which are not topologically connected. Must be run after ``pgr_createTopology()``. No use of ``geometry`` column. Only ``id``, ``source`` and  ``target`` columns are required.
+``pgr_labelGraph`` — Locates and labels sub-networks within a network which are not topologically connected. Must be run after ``pgr_createTopology()``. No use of ``geometry`` column. Only ``id``, ``source`` and  ``target`` columns are required.
 
 
 
@@ -38,7 +38,7 @@ The function returns:
 
 .. code-block:: sql
 
-	varchar pgr_brokenGraph(text, text, text, text, text, text)
+	varchar pgr_labelGraph(text, text, text, text, text, text)
 
 
 
@@ -52,7 +52,7 @@ A network behind any routing query may consist of sub-networks completely isolat
 - The data is not properly noded.
 - Topology creation failed to succeed. 
 
-pgr_brokenGraph() will create an integer column (with the name provided by the user) and will assign same integer values to all those edges in the network which are connected topologically. Thus better analysis regarding network structure is possible. In case of ``rows_where`` condition, non participating rows will have -1 integer values.
+pgr_labelGraph() will create an integer column (with the name provided by the user) and will assign same integer values to all those edges in the network which are connected topologically. Thus better analysis regarding network structure is possible. In case of ``rows_where`` condition, non participating rows will have -1 integer values.
 
 Prerequisites:
 Must run ``pgr_createTopology()`` in order to generate ``source`` and ``target`` columns. Primary key column ``id`` should also be there in the network table.
@@ -74,7 +74,7 @@ Example Usage
 
 .. code-block:: sql
 
-  select pgr_brokenGraph('ways', 'id', 'source', 'target', 'subgraph', 'id<100');
+  select pgr_labelGraph('ways', 'id', 'source', 'target', 'subgraph', 'id<100');
 
 
 Example Output pane Message
@@ -83,7 +83,7 @@ Example Output pane Message
 .. code-block:: sql
 
   NOTICE:  Processing:
-  NOTICE:  pgr_brokenGraph('ways','id','source','target','subgraph','true')
+  NOTICE:  pgr_labelGraph('ways','id','source','target','subgraph','true')
   NOTICE:  Performing initial checks, please hold on ...
   NOTICE:  Starting - Checking table ...
   NOTICE:  Ending - Checking table
@@ -98,7 +98,7 @@ Example Output pane Message
   Total query runtime: 5426 ms.
   1 row retrieved.
 
-  pgr_brokenGraph
+  pgr_labelGraph
   character varying
   --------------------
   OK
