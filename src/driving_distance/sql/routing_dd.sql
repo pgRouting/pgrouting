@@ -102,4 +102,77 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, start_v anyarray, dista
   ROWS 1000;
 
 
+/*
+
+-----------------------------------------------------------------------
+-- Core function for alpha shape computation.
+-- The sql should return vertex ids and x,y values. Return ordered
+-- vertex ids. 
+-----------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION pgr_alphashape(sql text, alpha float8 DEFAULT 0, OUT x float8, OUT y float8)
+    RETURNS SETOF record
+    AS '$libdir/librouting-2.2', 'alphashape'
+    LANGUAGE c IMMUTABLE STRICT;
+
+----------------------------------------------------------
+-- Draws an alpha shape around given set of points.
+-- ** This should be rewritten as an aggregate. **
+----------------------------------------------------------
+CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar, alpha float8 DEFAULT 0)
+	RETURNS geometry AS
+	$$
+	DECLARE
+		r record;
+		geoms geometry[];
+		vertex_result record;
+		i int;
+		n int;
+		spos int;
+		q text;
+		x float8[];
+		y float8[];
+
+	BEGIN
+		geoms := array[]::geometry[];
+		i := 1;
+
+		FOR vertex_result IN EXECUTE 'SELECT x, y FROM pgr_alphashape($1,$2) ' USING query, alpha
+		LOOP
+			x[i] = vertex_result.x;
+			y[i] = vertex_result.y;
+			i := i+1;
+		END LOOP;
+
+		n := i;
+		IF n = 1 THEN
+			RAISE NOTICE 'n = 1';
+			RETURN NULL;
+		END IF;
+
+		spos := 1;
+		q := 'SELECT ST_GeometryFromText(''POLYGON((';
+		FOR i IN 1..n LOOP
+			IF x[i] IS NULL AND y[i] IS NULL THEN
+				q := q || ', ' || x[spos] || ' ' || y[spos] || '))'',0) AS geom;';
+				EXECUTE q INTO r;
+				geoms := geoms || array[r.geom];
+				q := '';
+			ELSE
+				IF q = '' THEN
+					spos := i;
+					q := 'SELECT ST_GeometryFromText(''POLYGON((';
+				END IF;
+				IF i = spos THEN
+					q := q || x[spos] || ' ' || y[spos];
+				ELSE
+					q := q || ', ' || x[i] || ' ' || y[i];
+				END IF;
+			END IF;
+		END LOOP;
+
+		RETURN ST_BuildArea(ST_Collect(geoms));
+	END;
+	$$
+	LANGUAGE 'plpgsql' VOLATILE STRICT;
+    */
 
