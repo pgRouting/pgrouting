@@ -71,7 +71,7 @@ exclude_patterns = [
     'doc/build',
     'src/shooting_star/doc/index.rst',
     'src/withPoints/doc/pgr_withPointsVia.rst',
-    'src/vrppdtw/*',
+    'src/pickDeliver/*',
     'src/travelingSalesPerson',
     '*/notUsed',
     'tools/template'

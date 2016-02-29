@@ -80,6 +80,7 @@ Experimental functions: by GSoC Students
 ----------------------------------------
 
   -  :ref:`pgr_vrp_basic` - VRP One Depot
+  -  :ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery
 
 ..
     The template
@@ -91,6 +92,7 @@ Experimental functions: by GSoC Students
     :hidden:
 
     ../src/vrp_basic/doc/pgr_vrpOneDepot
+    ../src/vrppdtw/doc/index
 
 ..
     ../src/funnyDijkstra/doc/pgr_funnyDijkstra.rst
