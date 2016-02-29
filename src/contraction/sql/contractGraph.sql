@@ -29,7 +29,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION pgr_contractGraph(
     edges_sql TEXT,
-    level BIGINT,
+    vertices_sql TEXT,
+    contraction_order ANYARRAY,
+    num_cycles BIGINT,
     directed BOOLEAN DEFAULT true,
     OUT contracted_graph_name TEXT,
     OUT contracted_graph_blob TEXT,

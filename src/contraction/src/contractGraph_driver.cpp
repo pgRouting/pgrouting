@@ -47,7 +47,7 @@ extern "C" {
 }
 
 #include "./../../common/src/memory_func.hpp"
-//#define DEBUG 1 
+#define DEBUG 1 
 #include "./../../common/src/debug_macro.h"
 
 
@@ -60,11 +60,13 @@ void
 do_pgr_contractGraph(
         pgr_edge_t  *data_edges,
         size_t total_tuples,
-        int64_t level,
+        int64_t *contraction_order,
+        size_t size_contraction_order,
+        int64_t num_cycles,
         bool directed,
         pgr_contracted_blob **return_tuples,
         size_t *return_count,
-        char **err_msg) {
+        char ** err_msg) {
     std::ostringstream log;
     try {
         std::ostringstream contracted_graph_name;
@@ -73,15 +75,24 @@ do_pgr_contractGraph(
         std::ostringstream removedVertices;
         std::ostringstream psuedoEdges;
         std::ostringstream dmap;
-        std::ostringstream errors;
+        std::ostringstream debug;
 
         
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
         const int initial_size = total_tuples;
+        log << "size_contraction_order " << size_contraction_order << "\n";
+        log << "contraction_order  { ";
+        for (size_t i = 0; i < size_contraction_order; ++i)
+        {
+            log << contraction_order[i] << ", ";
+        }
+        log << " }\n";
+        log << "num_cycles " << num_cycles << "\n";
+        log << "directed " << directed << "\n";
 
-        log << "Level" << level << "\n";
-        log << "Directed" << directed << "\n";
+        log << "gType " << gType << "\n";
+        log << "total_tuples " << initial_size << "\n";
         if (total_tuples == 1) {
             log << "Requiered: more than one tuple\n";
             (*return_tuples) = NULL;
@@ -90,38 +101,47 @@ do_pgr_contractGraph(
             return;
         }
         if (directed) {
+           
             log << "Working with directed Graph\n";
+            #if 1
             Pgr_contractionGraph< CDirectedGraph > digraph(gType, initial_size);
             digraph.graph_insert_data_c(data_edges, total_tuples);
 #ifdef DEBUG
-            digraph.print_graph(log);
+           // digraph.print_graph(log);
 #endif
-#if 1
+#if 0
             *err_msg = strdup(log.str().c_str());
             return;
 #endif
             /*
             Function call to get the contracted graph
             */
-            pgr_contractGraph(digraph,level,
-              contracted_graph_name,contracted_graph_blob,removedEdges,
-              removedVertices,psuedoEdges);
+            
+            pgr_contractGraph(digraph,contraction_order,
+                size_contraction_order,num_cycles,
+                contracted_graph_name,contracted_graph_blob,removedEdges,
+                removedVertices,psuedoEdges,debug);
+            log << debug.str().c_str() << "\n";
+
+            #endif
         } else {
 
             log << "Working with Undirected Graph\n";
- 
+            #if 1
             Pgr_contractionGraph< CUndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data_c(data_edges, total_tuples);
 #ifdef DEBUG
-            undigraph.print_graph_c(log);
+            //undigraph.print_graph_c(log);
 #endif
 #if 1
             /* Function call to get the contracted graph. */
-            pgr_contractGraph(undigraph, level,
+            pgr_contractGraph(undigraph,contraction_order,
+                    size_contraction_order,num_cycles,
                     contracted_graph_name, contracted_graph_blob, removedEdges,
-                    removedVertices, psuedoEdges);
+                    removedVertices, psuedoEdges,debug);
+            log << debug.str().c_str() << "\n";
 #endif
-
+            #endif
         }
         (*return_tuples) = get_memory(1, (*return_tuples));
         (*return_tuples)->contracted_graph_name = strdup(contracted_graph_name.str().c_str());
