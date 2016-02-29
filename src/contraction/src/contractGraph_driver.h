@@ -45,7 +45,9 @@ extern "C" {
         do_pgr_contractGraph(
                 pgr_edge_t  *data_edges,
                 size_t total_tuples,
-                int64_t level,
+                int64_t *contraction_order,
+                size_t size_contraction_order,
+                int64_t num_cycles,
                 bool directed,
                 pgr_contracted_blob **return_tuples,
                 size_t *return_count,

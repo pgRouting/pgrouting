@@ -31,6 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stack>
 #include <iostream>
 #include <sstream>
+#include <deque>
+
 extern "C" {
 #include "postgres.h"
 }
@@ -41,13 +43,49 @@ template < class G > class Pgr_contract;
 
 template < class G >
 void pgr_contractGraph(
-	G &graph, int64_t level,
-    std::ostringstream& contracted_graph_name,
-    std::ostringstream& contracted_graph_blob,
-    std::ostringstream& removedEdges,
-    std::ostringstream& removedVertices,
-    std::ostringstream& psuedoEdges) {
+	G &graph, int64_t *contraction_order,
+	size_t size_contraction_order,
+	int64_t num_cycles,
+	std::ostringstream& contracted_graph_name,
+	std::ostringstream& contracted_graph_blob,
+	std::ostringstream& removedEdges,
+	std::ostringstream& removedVertices,
+	std::ostringstream& psuedoEdges,
+	std::ostringstream& debug) {
 	Pgr_contract< G > fn_contract;
+	std::deque<int64_t> contract_order;
+	contract_order.push_back(0);
+	for (size_t i = 0; i < size_contraction_order; ++i)
+	{
+		contract_order.push_back(contraction_order[i]);
+	}
+	for (int64_t i = 0; i < num_cycles; ++i)
+	{
+		int64_t front=contract_order.front();
+		debug << "Starting cycle " << i+1 << "\n";
+		contract_order.pop_front();
+		contract_order.push_back(front);	
+		front=contract_order.front();
+		while(front!=0)
+		{
+			switch(front)
+			{
+				case 0:
+				debug << "Finished cycle " << i+1 << "\n";
+				break;
+
+				default:
+				debug << "contraction "<< front << " asked" << "\n";
+				contract_order.pop_front();
+				contract_order.push_back(front);
+				front=contract_order.front();
+			}
+		}
+	}
+
+
+
+	#if 0
     fn_contract.calculateDegrees(graph);
 	fn_contract.contract_to_level(graph,level);
 	fn_contract.getGraphName(contracted_graph_name,level);
@@ -55,6 +93,9 @@ void pgr_contractGraph(
 	fn_contract.getRemovedE_string(graph,removedEdges);
 	fn_contract.getRemovedV_string(removedVertices);
 	fn_contract.getPsuedoE_string(psuedoEdges);
+	#endif
+
+
 }
 
 
@@ -159,18 +200,18 @@ void
 Pgr_contract< G >::degreeMap(G &graph,std::ostringstream& dmap)
 {
 	//cout << "Printing degree_V map" << endl;
-      degree_to_V_i it1;
-      dmap << "This is a degree map " ;
-      Q_i it2;
-      for ( it1=degree_to_V_map.begin(); it1!=degree_to_V_map.end(); ++it1)
-      {
-        dmap << it1->first << "-->" ;
-        for (it2=it1->second.begin(); it2 !=it1->second.end(); ++it2)
-        {
-           dmap << graph.graph[(*it2)].id << ", ";
-        }
-        dmap << "\n";
-      }
+	degree_to_V_i it1;
+	dmap << "This is a degree map " ;
+	Q_i it2;
+	for ( it1=degree_to_V_map.begin(); it1!=degree_to_V_map.end(); ++it1)
+	{
+		dmap << it1->first << "-->" ;
+		for (it2=it1->second.begin(); it2 !=it1->second.end(); ++it2)
+		{
+			dmap << graph.graph[(*it2)].id << ", ";
+		}
+		dmap << "\n";
+	}
 }
 
 template < class G >
@@ -252,7 +293,7 @@ Pgr_contract< G >::remove_2_degree_vertices(G &graph) {
 		front_id=graph.graph[front].id;
 		if (graph.graph[front].contractions==0)
 		{
-				
+
 
 			int count=0;
 			int64_t tid1=-1,tid2=-1;
@@ -374,8 +415,8 @@ Pgr_contract< G >::getRemovedE_string(G &graph,std::ostringstream& estring)
 
 	for (const auto re : graph.removed_edges_c) 
 		estring << re.first << "," << re.second.source << ","
-		<< re.second.target << "," << re.second.cost << ","
-		<<re.second.reverse_cost<< "$";
+	<< re.second.target << "," << re.second.cost << ","
+	<<re.second.reverse_cost<< "$";
 }
 
 template < class G >
