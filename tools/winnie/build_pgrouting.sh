@@ -51,8 +51,7 @@ if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	rm -rf build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 	mkdir build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 	cd build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
-	cmake -G "MSYS Makefiles"  -DBOOST_ROOT:PATH=${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE} -DCGAL_ROOT:PATH=${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE} -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include"  ../branches/${PGROUTING_VER}
-	#cmake -G "MSYS Makefiles"  -DCMAKE_VERBOSE_MAKEFILE=ON -DBOOST_ROOT:PATH=${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE} -DCGAL_ROOT:PATH=${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE} -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include"  ../branches/${PGROUTING_VER}
+	cmake -G "MSYS Makefiles"  -DCMAKE_VERBOSE_MAKEFILE=ON -DBOOST_ROOT:PATH=${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE} -DCGAL_ROOT:PATH=${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE} -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include"  ../branches/${PGROUTING_VER}
 else 
 	#alias cmake="/c/ming${OS_BUILD}/cmake-2.8.10.2-win32-x86/bin/cmake"
 	export PostgreSQL_ROOT=${PGPATH}
@@ -81,29 +80,22 @@ rm ${PGPATH}/share/extension/pgrouting*
 make && make install
 
 #we need uninstall and reinstall copy to VC++ EDB instance if we want to test on standard Windows installed versions
-echo "PGPATHEDB ${PGPATHEDB}"
-
-#ls ${PGPATHEDB}/lib/librouting*
-rm -f ${PGPATHEDB}/lib/librouting*
-
-#ls ${PGPATHEDB}/lib/librouting*
+rm ${PGPATHEDB}/lib/librouting*
 cp lib/*.dll ${PGPATHEDB}/lib/
-#ls ${PGPATHEDB}/lib/librouting*
-
-#ls ${PGPATHEDB}/share/extension/pgrouting*
-rm -f ${PGPATHEDB}/share/extension/pgrouting*
-
-#ls ${PGPATHEDB}/share/extension/
+rm ${PGPATHEDB}/share/extension/pgrouting*
 cp lib/*.sql ${PGPATHEDB}/share/extension/
-#ls ${PGPATHEDB}/share/extension/
 cp lib/*.control ${PGPATHEDB}/share/extension/
 
 cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
 
-#Normal tests
-#perl tools/testers/algorithm-tester.pl -pgver ${PG_VER}  -pgport "${PGPORT}"  -clean -alg vrppdtw
-perl tools/testers/algorithm-tester.pl -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -clean
+#perl tools/test-runner.pl   -pgver ${PG_VER} -pgport "${PGPORT}"  -clean
+echo "PGVER ${PG_VER}"
+echo "PGVER ${POSTGIS_VER}"
+echo "PGVER ${PGPORT}"
+perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}" -ignorenotice -clean
+#perl tools/test-runner.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}" 
+#perl tools/test-runner.pl  -pgver "${PG_VER}" -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -clean -v -alg ksp
 
 
-#cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib
-#strip *.dll
+cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib
+strip *.dll
