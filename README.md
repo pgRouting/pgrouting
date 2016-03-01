@@ -66,6 +66,8 @@ This library contains following features:
 * PostGIS version >= 2.0
 * The Boost Graph Library (BGL).
   * Version >= 1.46
+* Version >= 1.55 for linux
+* Version >= 1.58 for MAC
 * CMake >= 2.8.8
 * CGAL >= 4.4
 * Sphinx >= 1.2
@@ -106,7 +108,13 @@ Postgresql 9.1+
 
 ## USAGE
 
-See online documentation: http://docs.pgrouting.org/dev/doc/index.html
+
+This query gives the shortest path between two vertices in the OSM data.
+
+```sh
+$ psql > select my_dijkstra('SELECT * from ways', start_vid, end_vid);
+```
+See online documentation: http://docs.pgrouting.org
 
 
 ## LICENSE
@@ -114,3 +122,6 @@ See online documentation: http://docs.pgrouting.org/dev/doc/index.html
 * Most features are available under GPLv2.
 * Some Boost extensions are available under Boost license (see LICENSE_1_0.txt)
 * Some code contributed by iMaptools.com is available under MIT-X license.
+
+
+

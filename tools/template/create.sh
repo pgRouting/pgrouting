@@ -40,7 +40,6 @@ cp -r sql  "$MY_FUNCTION_NAME"
 cp -r doc  "$MY_FUNCTION_NAME"
 cp -r test  "$MY_FUNCTION_NAME"
 cp -r  src  "$MY_FUNCTION_NAME"
-cp CMakeLists.txt  "$MY_FUNCTION_NAME"
 
 
 
