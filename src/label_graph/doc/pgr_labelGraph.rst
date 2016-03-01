@@ -72,6 +72,7 @@ Function accepts the following parameters:
 Example Usage
 -------------------------------------------------------------------------------
 
+The sample data, has 3 subgraphs.
 
 .. literalinclude:: doc-pgr_labelGraph.queries
    :start-after: --q1
