@@ -45,11 +45,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "fmgr.h"
-//   #define DEBUG 1
+#define DEBUG 1
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
+#include "./../../common/src/arrays_input.h"
 #include "./../../contraction/src/structs.h"
 #include "./contractGraph_driver.h"
 // #include "contract_function.h"
@@ -69,7 +70,10 @@ contractGraph(PG_FUNCTION_ARGS);
 static
 void
 process(char* edges_sql,
-        int64_t level,
+        char* vertices_sql,
+        int64_t *contraction_order,
+        size_t size_contraction_order,
+        int64_t num_cycles,
         bool directed,
         pgr_contracted_blob **result_tuples,
         size_t *result_count) {
@@ -91,12 +95,13 @@ process(char* edges_sql,
     PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
-    PGR_DBG("Graphh is %d",directed);
     char *err_msg = NULL;
     do_pgr_contractGraph(
             edges,
             total_tuples,
-            level,
+            contraction_order,
+            size_contraction_order,
+            num_cycles,
             directed,
             result_tuples,
             result_count,
@@ -127,6 +132,8 @@ contractGraph(PG_FUNCTION_ARGS) {
     /*                                                                        */
     pgr_contracted_blob  *result_tuples = NULL;
     size_t result_count = 0;
+    int64_t* contraction_order;
+    size_t size_contraction_order;
     /*                                                                        */
     /**************************************************************************/
 
@@ -145,10 +152,24 @@ contractGraph(PG_FUNCTION_ARGS) {
          **********************************************************************/ 
 
         PGR_DBG("Calling process");
+        contraction_order = (int64_t*)
+            pgr_get_bigIntArray(&size_contraction_order, PG_GETARG_ARRAYTYPE_P(2));
+
+        PGR_DBG("edges_sql %s",pgr_text2char(PG_GETARG_TEXT_P(0)));
+        PGR_DBG("vertices_sql %s",pgr_text2char(PG_GETARG_TEXT_P(1)));
+        PGR_DBG("size_contraction_order %ld ", size_contraction_order);
+        PGR_DBG("num_cycles %ld ", PG_GETARG_INT64(3));
+        PGR_DBG("directed %d ", PG_GETARG_BOOL(4));
+
+
+
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_INT64(1),
-                PG_GETARG_BOOL(2),
+                pgr_text2char(PG_GETARG_TEXT_P(1)),
+                contraction_order,
+                size_contraction_order,
+                PG_GETARG_INT64(3),
+                PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
 
@@ -200,11 +221,13 @@ contractGraph(PG_FUNCTION_ARGS) {
             nulls[i] = ' ';
         }
 
+        #if 0
         PGR_DBG("Storing graphname %s",result_tuples->contracted_graph_name);
         PGR_DBG("Storing blob %s",result_tuples->contracted_graph_blob);
         PGR_DBG("Storing rv %s",result_tuples->removedVertices);
         PGR_DBG("Storing re %s",result_tuples->removedEdges);
         PGR_DBG("Storing pe %s",result_tuples->psuedoEdges);
+        #endif
         // postgres starts counting from 1
         values[0] = CStringGetTextDatum(result_tuples->contracted_graph_name);
         values[1] = CStringGetTextDatum(result_tuples->contracted_graph_blob);

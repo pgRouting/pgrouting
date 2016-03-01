@@ -180,6 +180,7 @@ set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/bd_astar/src
     ${PGROUTING_SOURCE_DIR}/src/bd_dijkstra/src
     ${PGROUTING_SOURCE_DIR}/src/common/src
+    ${PGROUTING_SOURCE_DIR}/src/contraction/src
     ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
     ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
     ${PGROUTING_SOURCE_DIR}/src/kdijkstra/src
@@ -285,6 +286,7 @@ set(PgRouting_SOURCE_NAMES
 
     "vrp_basic"
     "vrppdtw"
+    "contraction"
 
     )
 
