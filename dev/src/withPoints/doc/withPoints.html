@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (dev-2.2)',
+        VERSION:     '2.2.0 (pgrouting-2.2.0-beta)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -87,7 +87,26 @@ dirving side, The following images visualy show the diferences on how depending 
 </div>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>This is the crucial part of this family of functions, and it has to take care of as many aspects as possible.</p>
+<p>This famly of functions was thought for routing vehicles, but might as well work
+for some other application that we can not think of.</p>
+<p>The with points family of function give you the ability to route between
+arbitrary points located outside the original graph.</p>
+<p>When given a point identified with a <cite>pid</cite> that its being mapped to and edge with
+an identifier <cite>edge_id</cite>, with a <cite>fraction</cite> along
+that edge (from the source to the target of the edge) and some additional
+information about which <cite>side</cite> of the edge the point is on, then routing
+from arbitrary points more accurately reflect routing vehicles in road networks,</p>
+<dl class="docutils">
+<dt>I talk about a family of functios because it includes different functionalities.</dt>
+<dd><ul class="first last simple">
+<li>pgr_withPoints is pgr_dijkstra based</li>
+<li>pgr_withPointsCost is pgr_dijkstraCost based</li>
+<li>pgr_withPointsKSP is pgr_ksp based</li>
+<li>pgr_withPointsDD is pgr_drivingDistance based</li>
+</ul>
+</dd>
+</dl>
+<p>In all this functions we have to take care of as many aspects as possible:</p>
 <ul>
 <li><p class="first">Must work for routing:</p>
 <blockquote>
@@ -115,8 +134,8 @@ dirving side, The following images visualy show the diferences on how depending 
 </li>
 <li><p class="first">Some points are:</p>
 <ul class="simple">
-<li>permanent, for example the set of pints of clients</li>
-<li>temporal, for example points given thru a web application</li>
+<li>Permanent, for example the set of points of clients stored in a table in the data base</li>
+<li>Temporal, for example points given thru a web application</li>
 </ul>
 </li>
 </ul>
@@ -254,8 +273,8 @@ dirving side, The following images visualy show the diferences on how depending 
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (dev-2.2).
-      Last updated on Feb 24, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-beta).
+      Last updated on Feb 29, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
