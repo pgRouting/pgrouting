@@ -1,0 +1,563 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_withPointsKSP &mdash; pgRouting Manual (2.2.0-alpha)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0 (pgrouting-2.2.0-alpha)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0-alpha)" href="../../../index.html" />
+    <link rel="up" title="withPoints - Family of functions" href="withPoints.html" />
+    <link rel="next" title="pgr_withPointsDD" href="pgr_withPointsDD.html" />
+    <link rel="prev" title="pgr_withPointsCost" href="pgr_withPointsCost.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.2.0-alpha)</span></a></h1>
+        <h2 class="heading"><span>pgr_withPointsKSP</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="pgr_withPointsCost.html">pgr_withPointsCost</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_withPointsDD.html">pgr_withPointsDD</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-withpointsksp">
+<span id="id1"></span><h1>pgr_withPointsKSP<a class="headerlink" href="#pgr-withpointsksp" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_withPointsKSP</span></tt> - Find the K shortest paths using Yen&#8217;s algorithm.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This is a proposed function for version 2.3.</p>
+<ul class="last simple">
+<li>Is not officially in the version 2.2 release.</li>
+</ul>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside5.jpeg" src="../../../_images/boost-inside5.jpeg" /></a>
+<p class="caption">Boost Graph Inside</p>
+</div>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Modifies the graph to include the points defined in the <tt class="docutils literal"><span class="pre">points_sql</span></tt> and
+using Yen algorithm, finds the K shortest paths.</p>
+</div>
+<div class="section" id="signature-summary">
+<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K)
+pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K, directed, heap_paths, driving_side, details)
+RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="signatures">
+<h1>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="minimal-usage">
+<span id="index-0"></span><h2>Minimal Usage<a class="headerlink" href="#minimal-usage" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>The minimal usage:</dt>
+<dd><ul class="first last simple">
+<li>Is for a <strong>directed</strong> graph.</li>
+<li>The driving side is set as <strong>b</strong> both. So arriving/departing to/from the point(s) can be in any direction.</li>
+<li>No <strong>details</strong> are given about distance of other points of the query.</li>
+<li>No <strong>heap paths</strong> are returned.</li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K)
+RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_withPointsKSP(
+        &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;,
+        &#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;,
+        -1, -2, 2);
+ seq | path_id | path_seq | node | edge | cost | agg_cost 
+-----+---------+----------+------+------+------+----------
+   1 |       1 |        1 |   -1 |    1 |  0.6 |        0
+   2 |       1 |        2 |    2 |    4 |    1 |      0.6
+   3 |       1 |        3 |    5 |    8 |    1 |      1.6
+   4 |       1 |        4 |    6 |    9 |    1 |      2.6
+   5 |       1 |        5 |    9 |   16 |    1 |      3.6
+   6 |       1 |        6 |    4 |    3 |    1 |      4.6
+   7 |       1 |        7 |    3 |    5 |  0.8 |      5.6
+   8 |       1 |        8 |   -2 |   -1 |    0 |      6.4
+   9 |       2 |        1 |   -1 |    1 |  0.6 |        0
+  10 |       2 |        2 |    2 |    4 |    1 |      0.6
+  11 |       2 |        3 |    5 |    8 |    1 |      1.6
+  12 |       2 |        4 |    6 |   11 |    1 |      2.6
+  13 |       2 |        5 |   11 |   13 |    1 |      3.6
+  14 |       2 |        6 |   12 |   15 |    1 |      4.6
+  15 |       2 |        7 |    9 |   16 |    1 |      5.6
+  16 |       2 |        8 |    4 |    3 |    1 |      6.6
+  17 |       2 |        9 |    3 |    5 |  0.8 |      7.6
+  18 |       2 |       10 |   -2 |   -1 |    0 |      8.4
+(18 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="complete-signature">
+<span id="index-1"></span><h2>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h2>
+<p>Finds the K shortest paths depending on the optional parameters setup.</p>
+<div class="highlight-none"><div class="highlight"><pre>pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K,
+    directed:=true, heap_paths:=false, driving_side:=&#39;b&#39;, details:=false)
+RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">With details.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_withPointsKSP(
+        &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;,
+        &#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;,
+        -1, 6, 2, details := true);
+ seq | path_id | path_seq | node | edge | cost | agg_cost 
+-----+---------+----------+------+------+------+----------
+   1 |       1 |        1 |   -1 |    1 |  0.6 |        0
+   2 |       1 |        2 |    2 |    4 |  0.7 |      0.6
+   3 |       1 |        3 |   -6 |    4 |  0.3 |      1.3
+   4 |       1 |        4 |    5 |    8 |    1 |      1.6
+   5 |       1 |        5 |    6 |   -1 |    0 |      2.6
+   6 |       2 |        1 |   -1 |    1 |  0.6 |        0
+   7 |       2 |        2 |    2 |    4 |  0.7 |      0.6
+   8 |       2 |        3 |   -6 |    4 |  0.3 |      1.3
+   9 |       2 |        4 |    5 |   10 |    1 |      1.6
+  10 |       2 |        5 |   10 |   12 |  0.6 |      2.6
+  11 |       2 |        6 |   -5 |   12 |  0.4 |      3.2
+  12 |       2 |        7 |   11 |   13 |    1 |      3.6
+  13 |       2 |        8 |   12 |   15 |  0.6 |      4.6
+  14 |       2 |        9 |   -4 |   15 |  0.4 |      5.2
+  15 |       2 |       10 |    9 |    9 |    1 |      5.6
+  16 |       2 |       11 |    6 |   -1 |    0 |      6.6
+(16 rows)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="description-of-the-signatures">
+<h1>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description-of-the-edges-sql-query">
+<h2>Description of the Edges SQL query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="11%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Identifier of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>source</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Identifier of the first end point vertex of the edge.</td>
+</tr>
+<tr class="row-even"><td><strong>target</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Identifier of the second end point vertex of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>Weight of the edge <cite>(source, target)</cite>, If negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
+</tr>
+<tr class="row-even"><td><strong>reverse_cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>(optional) Weight of the edge <cite>(target, source)</cite>, If negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-points-sql-query">
+<h2>Description of the Points SQL query<a class="headerlink" href="#description-of-the-points-sql-query" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">points_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="14%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>pid</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><dl class="first last docutils">
+<dt>(optional) Identifier of the point.</dt>
+<dd><ul class="first last simple">
+<li>Can not be NULL.</li>
+<li>If column not present, a sequential identifier will be given automatically.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>eid</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Identifier of the &#8220;closest&#8221; edge to the point.</td>
+</tr>
+<tr class="row-even"><td><strong>fraction</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>Value in &lt;0,1&gt; that indicates the relative postition from the first end point of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>side</strong></td>
+<td><tt class="docutils literal"><span class="pre">CHAR</span></tt></td>
+<td><dl class="first last docutils">
+<dt>(optional) Value in [&#8216;b&#8217;, &#8216;r&#8217;, &#8216;l&#8217;, NULL] indicating if the point is:</dt>
+<dd><ul class="first last simple">
+<li>In the right, left of the edge or</li>
+<li>If it doesn&#8217;t matter with &#8216;b&#8217; or NULL.</li>
+<li>If column not present &#8216;b&#8217; is considered.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">smallint, int, bigint</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">smallint, int, bigint, real, float</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-parameters-of-the-signatures">
+<h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="9%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
+<td>Edges SQL query as decribed above.</td>
+</tr>
+<tr class="row-odd"><td><strong>points_sql</strong></td>
+<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
+<td>Points SQL query as decribed above.</td>
+</tr>
+<tr class="row-even"><td><strong>start_pid</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Starting point id.</td>
+</tr>
+<tr class="row-odd"><td><strong>end_pid</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Ending point id.</td>
+</tr>
+<tr class="row-even"><td><strong>K</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>Number of shortest paths.</td>
+</tr>
+<tr class="row-odd"><td><strong>directed</strong></td>
+<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td>(optional). When <tt class="docutils literal"><span class="pre">false</span></tt> the graph is considered as Undirected. Default is <tt class="docutils literal"><span class="pre">true</span></tt> which considers the graph as Directed.</td>
+</tr>
+<tr class="row-even"><td><strong>heap_paths</strong></td>
+<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td>(optional). When <tt class="docutils literal"><span class="pre">true</span></tt> the paths calculated to get the shortests paths will be returned also. Default is <tt class="docutils literal"><span class="pre">false</span></tt> only the K shortest paths are returned.</td>
+</tr>
+<tr class="row-odd"><td><strong>driving_side</strong></td>
+<td><tt class="docutils literal"><span class="pre">CHAR</span></tt></td>
+<td><dl class="first last docutils">
+<dt>(optional) Value in [&#8216;b&#8217;, &#8216;r&#8217;, &#8216;l&#8217;, NULL] indicating if the driving side is:</dt>
+<dd><ul class="first last simple">
+<li>In the right or left or</li>
+<li>If it doesn&#8217;t matter with &#8216;b&#8217; or NULL.</li>
+<li>If column not present &#8216;b&#8217; is considered.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><strong>details</strong></td>
+<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td>(optional). When <tt class="docutils literal"><span class="pre">true</span></tt> the results will include the driving distance to the points with in the <tt class="docutils literal"><span class="pre">distance</span></tt>.
+Default is <tt class="docutils literal"><span class="pre">false</span></tt> which ignores other points of the points_sql.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-return-values">
+<h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
+<p>Returns set of <tt class="docutils literal"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></tt></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>seq</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>Row sequence.</td>
+</tr>
+<tr class="row-odd"><td><strong>path_seq</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>Relative position in the path of node and edge. Has value 1 for the begining of a path.</td>
+</tr>
+<tr class="row-even"><td><strong>path_id</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>Path identifier. The ordering of the paths: For two paths i, j if i &lt; j then agg_cost(i) &lt;= agg_cost(j).</td>
+</tr>
+<tr class="row-odd"><td><strong>node</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the node in the path. Negative values are the identifiers of a point.</td>
+</tr>
+<tr class="row-even"><td><strong>edge</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><dl class="first last docutils">
+<dt>Identifier of the edge used to go from <tt class="docutils literal"><span class="pre">node</span></tt> to the next node in the path sequence.</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">-1</span></tt> for the last row in the path sequence.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><dl class="first last docutils">
+<dt>Cost to traverse from <tt class="docutils literal"><span class="pre">node</span></tt> using <tt class="docutils literal"><span class="pre">edge</span></tt> to the next <tt class="docutils literal"><span class="pre">node</span></tt> in the path sequence.</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">0</span></tt> for the last row in the path sequence.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><strong>agg_cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><dl class="first last docutils">
+<dt>Aggregate cost from <tt class="docutils literal"><span class="pre">start_pid</span></tt> to <tt class="docutils literal"><span class="pre">node</span></tt>.</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">0</span></tt> for the first row in the path sequence.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Left side driving topology with details.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_withPointsKSP(
+        &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;,
+        &#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;,
+        -1, -2, 2,
+        driving_side := &#39;l&#39;, details := true);
+ seq | path_id | path_seq | node | edge | cost | agg_cost 
+-----+---------+----------+------+------+------+----------
+   1 |       1 |        1 |   -1 |    1 |  0.6 |        0
+   2 |       1 |        2 |    2 |    4 |  0.7 |      0.6
+   3 |       1 |        3 |   -6 |    4 |  0.3 |      1.3
+   4 |       1 |        4 |    5 |    8 |    1 |      1.6
+   5 |       1 |        5 |    6 |    9 |    1 |      2.6
+   6 |       1 |        6 |    9 |   16 |    1 |      3.6
+   7 |       1 |        7 |    4 |    3 |    1 |      4.6
+   8 |       1 |        8 |    3 |    5 |  0.8 |      5.6
+   9 |       1 |        9 |   -2 |   -1 |    0 |      6.4
+  10 |       2 |        1 |   -1 |    1 |  0.6 |        0
+  11 |       2 |        2 |    2 |    4 |  0.7 |      0.6
+  12 |       2 |        3 |   -6 |    4 |  0.3 |      1.3
+  13 |       2 |        4 |    5 |    8 |    1 |      1.6
+  14 |       2 |        5 |    6 |   11 |    1 |      2.6
+  15 |       2 |        6 |   11 |   13 |    1 |      3.6
+  16 |       2 |        7 |   12 |   15 |  0.6 |      4.6
+  17 |       2 |        8 |   -4 |   15 |  0.4 |      5.2
+  18 |       2 |        9 |    9 |   16 |    1 |      5.6
+  19 |       2 |       10 |    4 |    3 |    1 |      6.6
+  20 |       2 |       11 |    3 |    5 |  0.8 |      7.6
+  21 |       2 |       12 |   -2 |   -1 |    0 |      8.4
+(21 rows)
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Right side driving topology with heap paths and details.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_withPointsKSP(
+        &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;,
+        &#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;,
+        -1, -2, 2,
+        heap_paths := true, driving_side := &#39;r&#39;, details := true);
+ seq | path_id | path_seq | node | edge | cost | agg_cost 
+-----+---------+----------+------+------+------+----------
+   1 |       1 |        1 |   -1 |    1 |  0.4 |        0
+   2 |       1 |        2 |    1 |    1 |    1 |      0.4
+   3 |       1 |        3 |    2 |    4 |  0.7 |      1.4
+   4 |       1 |        4 |   -6 |    4 |  0.3 |      2.1
+   5 |       1 |        5 |    5 |    8 |    1 |      2.4
+   6 |       1 |        6 |    6 |    9 |    1 |      3.4
+   7 |       1 |        7 |    9 |   16 |    1 |      4.4
+   8 |       1 |        8 |    4 |    3 |    1 |      5.4
+   9 |       1 |        9 |    3 |    5 |  0.8 |      6.4
+  10 |       1 |       10 |   -2 |   -1 |    0 |      7.2
+  11 |       2 |        1 |   -1 |    1 |  0.4 |        0
+  12 |       2 |        2 |    1 |    1 |    1 |      0.4
+  13 |       2 |        3 |    2 |    4 |  0.7 |      1.4
+  14 |       2 |        4 |   -6 |    4 |  0.3 |      2.1
+  15 |       2 |        5 |    5 |    8 |    1 |      2.4
+  16 |       2 |        6 |    6 |   11 |    1 |      3.4
+  17 |       2 |        7 |   11 |   13 |    1 |      4.4
+  18 |       2 |        8 |   12 |   15 |    1 |      5.4
+  19 |       2 |        9 |    9 |   16 |    1 |      6.4
+  20 |       2 |       10 |    4 |    3 |    1 |      7.4
+  21 |       2 |       11 |    3 |    5 |  0.8 |      8.4
+  22 |       2 |       12 |   -2 |   -1 |    0 |      9.2
+  23 |       3 |        1 |   -1 |    1 |  0.4 |        0
+  24 |       3 |        2 |    1 |    1 |    1 |      0.4
+  25 |       3 |        3 |    2 |    4 |  0.7 |      1.4
+  26 |       3 |        4 |   -6 |    4 |  0.3 |      2.1
+  27 |       3 |        5 |    5 |   10 |    1 |      2.4
+  28 |       3 |        6 |   10 |   12 |  0.6 |      3.4
+  29 |       3 |        7 |   -5 |   12 |  0.4 |        4
+  30 |       3 |        8 |   11 |   13 |    1 |      4.4
+  31 |       3 |        9 |   12 |   15 |    1 |      5.4
+  32 |       3 |       10 |    9 |   16 |    1 |      6.4
+  33 |       3 |       11 |    4 |    3 |    1 |      7.4
+  34 |       3 |       12 |    3 |    5 |  0.8 |      8.4
+  35 |       3 |       13 |   -2 |   -1 |    0 |      9.2
+(35 rows)
+</pre></div>
+</div>
+<p>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>Proposed in version 2.2</li>
+</ul>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="withPoints.html#withpoints"><em>withPoints - Family of functions</em></a></li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="../../../search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="pgr_withPointsCost.html">pgr_withPointsCost</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_withPointsDD.html">pgr_withPointsDD</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-alpha).
+      Last updated on Feb 29, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

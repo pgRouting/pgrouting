@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>withPoints - Family of functions &mdash; pgRouting Manual (2.2.0-alpha)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0 (pgrouting-2.2.0-alpha)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0-alpha)" href="../../../index.html" />
+    <link rel="up" title="Proposed Functions for version 2.3" href="../../proposedNext.html" />
+    <link rel="next" title="pgr_withPoints" href="pgr_withPoints.html" />
+    <link rel="prev" title="pgr_dijkstraVia" href="../../dijkstra/doc/pgr_dijkstraVia.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.2.0-alpha)</span></a></h1>
+        <h2 class="heading"><span>withPoints - Family of functions</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../dijkstra/doc/pgr_dijkstraVia.html">pgr_dijkstraVia</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_withPoints.html">pgr_withPoints</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="withpoints-family-of-functions">
+<span id="withpoints"></span><h1>withPoints - Family of functions<a class="headerlink" href="#withpoints-family-of-functions" title="Permalink to this headline">¶</a></h1>
+<p>When points are also given as input:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="pgr_withPoints.html#pgr-withpoints"><em>pgr_withPoints</em></a> - Route from/to points anywhere on the graph.</li>
+<li><a class="reference internal" href="pgr_withPointsCost.html#pgr-withpointscost"><em>pgr_withPointsCost</em></a> - Costs of the shortest paths.</li>
+<li><a class="reference internal" href="pgr_withPointsKSP.html#pgr-withpointsksp"><em>pgr_withPointsKSP</em></a> - K shortest paths.</li>
+<li><a class="reference internal" href="pgr_withPointsDD.html#pgr-withpointsdd"><em>pgr_withPointsDD</em></a> - Driving distance.</li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The numbering of the points are handled with negative sign.</p>
+<ul class="simple">
+<li>Original point identifiers are to be positive.</li>
+<li>Transformation to negative is done internally.</li>
+<li>For results for involving vertices identifiers<ul>
+<li>positive sign is a vertex of the original grpah</li>
+<li>negative sign is a point of the temporary points</li>
+</ul>
+</li>
+</ul>
+<p class="last">The reason for doing this is to avoid confusion when there is a vertex with the same number as identifier as the points identifier.</p>
+</div>
+<div class="section" id="images">
+<h2>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
+<p>The squared vertices are the temporary vertices, The temporary vertices are added acordng to the
+dirving side, The following images visualy show the diferences on how depending on the driving side the data is interpreted.</p>
+<p class="rubric">Right driving side</p>
+<a class="reference internal image-reference" href="../../../_images/rightDrivingSide.png"><img alt="../../../_images/rightDrivingSide.png" src="../../../_images/rightDrivingSide.png" style="width: 445.5px; height: 427.0px;" /></a>
+<p class="rubric">Left driving side</p>
+<a class="reference internal image-reference" href="../../../_images/leftDrivingSide.png"><img alt="../../../_images/leftDrivingSide.png" src="../../../_images/leftDrivingSide.png" style="width: 442.0px; height: 421.5px;" /></a>
+<p class="rubric">doesn&#8217;t matter the driving side</p>
+<a class="reference internal image-reference" href="../../../_images/noMatterDrivingSide.png"><img alt="../../../_images/noMatterDrivingSide.png" src="../../../_images/noMatterDrivingSide.png" style="width: 453.5px; height: 432.0px;" /></a>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This famly of functions was thought for routing vehicles, but might as well work
+for some other application that we can not think of.</p>
+<p>The with points family of function give you the ability to route between
+arbitrary points located outside the original graph.</p>
+<p>When given a point identified with a <cite>pid</cite> that its being mapped to and edge with
+an identifier <cite>edge_id</cite>, with a <cite>fraction</cite> along
+that edge (from the source to the target of the edge) and some additional
+information about which <cite>side</cite> of the edge the point is on, then routing
+from arbitrary points more accurately reflect routing vehicles in road networks,</p>
+<dl class="docutils">
+<dt>I talk about a family of functios because it includes different functionalities.</dt>
+<dd><ul class="first last simple">
+<li>pgr_withPoints is pgr_dijkstra based</li>
+<li>pgr_withPointsCost is pgr_dijkstraCost based</li>
+<li>pgr_withPointsKSP is pgr_ksp based</li>
+<li>pgr_withPointsDD is pgr_drivingDistance based</li>
+</ul>
+</dd>
+</dl>
+<p>In all this functions we have to take care of as many aspects as possible:</p>
+<ul>
+<li><p class="first">Must work for routing:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Cars (directed graph)</li>
+<li>Pedestrians (undirected graph)</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Arriving at the point:</p>
+<blockquote>
+<div><ul class="simple">
+<li>In either side of the street.</li>
+<li>Compulsory arrival on the side of the street where the point is located.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Countries with:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Right side driving</li>
+<li>Left side driving</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Some points are:</p>
+<ul class="simple">
+<li>Permanent, for example the set of points of clients stored in a table in the data base</li>
+<li>Temporal, for example points given thru a web application</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="graph-edges">
+<h2>Graph &amp; edges<a class="headerlink" href="#graph-edges" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Let <span class="math">\(G_d(V,E)\)</span> where <span class="math">\(V\)</span> is the set of vertices and <span class="math">\(E\)</span> is the set of edges be the original directed graph.<ul>
+<li>An edge of the original <cite>edges_sql</cite> is <span class="math">\((id, source, target, cost, reverse\_cost)\)</span> will generate internally<ul>
+<li><span class="math">\((id, source, target, cost)\)</span></li>
+<li><span class="math">\((id, target, source, reverse\_cost)\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="point-definition">
+<h2>Point Definition<a class="headerlink" href="#point-definition" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">A point is defined by the quadruplet: <span class="math">\((pid, eid, fraction, side)\)</span></p>
+<ul>
+<li><table class="first docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ped:</th><td class="field-body">is the point identifier</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><table class="first docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">eid:</th><td class="field-body">is an edge id of the <cite>edges_sql</cite></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><table class="first docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">fraction:</th><td class="field-body">represents where the edge <cite>eid</cite> will be cut.</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><table class="first docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">side:</th><td class="field-body">Indicates the side of the edge where the point is located.</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="creating-temporary-vertices-in-the-graph">
+<h2>Creating Temporary Vertices in the Graph<a class="headerlink" href="#creating-temporary-vertices-in-the-graph" title="Permalink to this headline">¶</a></h2>
+<p>For edge (15,  9,12  10, 20), &amp; lets insert point (2, 12, 0.3, r)</p>
+<p class="rubric">On a right hand side driving network</p>
+<p>From first image above:</p>
+<blockquote>
+<div><ul class="simple">
+<li>We can arrive to the point only via vertex 9.</li>
+<li>It only afects the edge (15, 9,12, 10) so that edge is removed.</li>
+<li>Edge (15, 12,9, 20) is kept.</li>
+<li>Create new edges:<ul>
+<li>(15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3</li>
+<li>(15, -1,12, 7) edge from point 1 to vertex 12 has cost 7</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<p class="rubric">On a left hand side driving network</p>
+<p>From second image above:</p>
+<blockquote>
+<div><ul class="simple">
+<li>We can arrive to the point only via vertex 12.</li>
+<li>It only afects the edge (15, 12,9 20) so that edge is removed.</li>
+<li>Edge (15, 9,12, 10) is kept.</li>
+<li>Create new edges:<ul>
+<li>(15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14</li>
+<li>(15, -1,9, 6) edge from point 1 to vertex 9 has cost 6</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Remember:</th><td class="field-body">that fraction is from vertex 9 to vertex 12</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">When driving side does not matter</p>
+<p>From third image above:</p>
+<blockquote>
+<div><ul class="simple">
+<li>We can arrive to the point either via vertex 12 or via vertex 9</li>
+<li>Edge (15, 12,9 20) is removed.</li>
+<li>Edge (15, 9,12, 10) is removed.</li>
+<li>Create new edges:<ul>
+<li>(15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14</li>
+<li>(15, -1,9, 6) edge from point 1 to vertex 9 has cost 6</li>
+<li>(15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3</li>
+<li>(15, -1,12, 7) edge from point 1 to vertex 12 has cost 7</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../dijkstra/doc/pgr_dijkstraVia.html">pgr_dijkstraVia</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_withPoints.html">pgr_withPoints</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-alpha).
+      Last updated on Feb 29, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

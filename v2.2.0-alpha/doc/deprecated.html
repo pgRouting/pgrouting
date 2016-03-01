@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Deprecated Functions &mdash; pgRouting Manual (2.2.0-alpha)</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.2.0 (pgrouting-2.2.0-alpha)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0-alpha)" href="../index.html" />
+    <link rel="next" title="pgr_apspJohnson" href="../src/apsp_johnson/doc/pgr_apspJohnson.html" />
+    <link rel="prev" title="Discontinued Functions" href="src/developer/discontinued.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
+          <span>pgRouting Manual (2.2.0-alpha)</span></a></h1>
+        <h2 class="heading"><span>Deprecated Functions</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="src/developer/discontinued.html">Discontinued Functions</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../src/apsp_johnson/doc/pgr_apspJohnson.html">pgr_apspJohnson</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="deprecated-functions">
+<span id="deprecated"></span><h1>Deprecated Functions<a class="headerlink" href="#deprecated-functions" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This functions have being deprecated</p>
+</div>
+<div class="section" id="deprecated-routing-functions">
+<h2>Deprecated Routing Functions<a class="headerlink" href="#deprecated-routing-functions" title="Permalink to this headline">¶</a></h2>
+<p>Deprecated on version 2.2</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../src/apsp_johnson/doc/pgr_apspJohnson.html#pgr-apsp-johnson"><em>pgr_apspJohnson</em></a> - Replaced with <a class="reference internal" href="../src/allpairs/doc/pgr_johnson.html#pgr-johnson"><em>pgr_johnson</em></a></li>
+<li><a class="reference internal" href="../src/apsp_warshall/doc/pgr_apspWarshall.html#pgr-apsp-warshall"><em>pgr_apspWarshall</em></a> - Replaced with <a class="reference internal" href="../src/allpairs/doc/pgr_floydWarshall.html#pgr-floydwarshall"><em>pgr_floydWarshall</em></a></li>
+<li><a class="reference internal" href="../src/kdijkstra/doc/pgr_kDijkstra.html#pgr-kdijkstra"><em>pgr_kDijkstra</em></a> - Replaced with <a class="reference internal" href="../src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost"><em>pgr_dijkstraCost</em></a></li>
+<li><a class="reference internal" href="../src/driving_distance/doc/pgr_drivingDistance_v2.html#pgr-driving-distance-v2"><em>pgr_drivingDistance</em></a> - Driving Distance (V2.0 signature). See new signature <a class="reference internal" href="../src/driving_distance/doc/pgr_drivingDistance.html#pgr-drivingdistance"><em>pgr_drivingDistance</em></a></li>
+</ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+<p>Deprecated on version 2.1</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../src/dijkstra/doc/pgr_dijkstra_v2.html#pgr-dijkstra-v2"><em>pgr_dijkstra</em></a> - Mutliple destination Shortest Path Dijkstra (V2.0 signature)</li>
+<li><a class="reference internal" href="../src/ksp/doc/pgr_ksp_v2.html#pgr-ksp-v2"><em>pgr_ksp</em></a> - K shortest paths (V2.0 signature)</li>
+</ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="deprecated-developer-s-auxiliary-functions">
+<h2>Deprecated Developer&#8217;s Auxiliary Functions<a class="headerlink" href="#deprecated-developer-s-auxiliary-functions" title="Permalink to this headline">¶</a></h2>
+<p>Deprecated on version 2.1</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../src/common/doc/utilities/get_column_name.html#pgr-get-column-name"><em>pgr_getColumnName</em></a> - to get the name of the column as is stored in the postgres administration tables.</li>
+<li><a class="reference internal" href="../src/common/doc/utilities/get_table_name.html#pgr-get-table-name"><em>pgr_getTableName</em></a> - to retrieve the name of the table as is stored in the postgres administration tables.</li>
+<li><a class="reference internal" href="../src/common/doc/utilities/is_column_indexed.html#pgr-is-column-indexed"><em>pgr_isColumnIndexed</em></a> - to check if the column is indexed.</li>
+<li><a class="reference internal" href="../src/common/doc/utilities/is_column_in_table.html#pgr-is-column-in-table"><em>pgr_isColumnInTable</em></a> - to check only for the existance of the column.</li>
+<li><a class="reference internal" href="../src/common/doc/utilities/quote_ident.html#pgr-quote-ident"><em>pgr_quote_ident</em></a> - to quotes the input text to be used as an identifier in an SQL statement string.</li>
+<li><a class="reference internal" href="../src/common/doc/utilities/versionless.html#pgr-versionless"><em>pgr_versionless</em></a> - to compare two version numbers.</li>
+<li><a class="reference internal" href="../src/common/doc/utilities/start_point.html#pgr-start-point"><em>pgr_startPoint</em></a> - to get the start point of a (multi)linestring.</li>
+<li><a class="reference internal" href="../src/common/doc/utilities/end_point.html#pgr-end-point"><em>pgr_endPoint</em></a> - to get the end point of a (multi)linestring.</li>
+</ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="src/developer/discontinued.html">Discontinued Functions</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../src/apsp_johnson/doc/pgr_apspJohnson.html">pgr_apspJohnson</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-alpha).
+      Last updated on Feb 29, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

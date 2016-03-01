@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_analyzeOneway &mdash; pgRouting Manual (2.2.0-alpha)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0 (pgrouting-2.2.0-alpha)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0-alpha)" href="../../../index.html" />
+    <link rel="up" title="Topology Functions" href="topology.html" />
+    <link rel="next" title="pgr_nodeNetwork" href="pgr_nodeNetwork.html" />
+    <link rel="prev" title="pgr_analyzeGraph" href="pgr_analyzeGraph.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.2.0-alpha)</span></a></h1>
+        <h2 class="heading"><span>pgr_analyzeOneway</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="pgr_analyzeGraph.html">pgr_analyzeGraph</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_nodeNetwork.html">pgr_nodeNetwork</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-analyzeoneway">
+<span id="pgr-analyze-oneway"></span><h1>pgr_analyzeOneway<a class="headerlink" href="#pgr-analyzeoneway" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_analyzeOneway</span></tt> — Analyzes oneway Sstreets and identifies flipped segments.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>This function analyzes oneway streets in a graph and identifies any flipped segments.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="nb">text</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="n">geom_table</span> <span class="nb">text</span><span class="p">,</span>
+                       <span class="nb">text</span><span class="p">[]</span> <span class="n">s_in_rules</span><span class="p">,</span> <span class="nb">text</span><span class="p">[]</span> <span class="n">s_out_rules</span><span class="p">,</span>
+                       <span class="nb">text</span><span class="p">[]</span> <span class="n">t_in_rules</span><span class="p">,</span> <span class="nb">text</span><span class="p">[]</span> <span class="n">t_out_rules</span><span class="p">,</span>
+                       <span class="nb">text</span> <span class="n">oneway</span><span class="o">=</span><span class="s1">&#39;oneway&#39;</span><span class="p">,</span> <span class="nb">text</span> <span class="k">source</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="nb">text</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span>
+                       <span class="nb">boolean</span> <span class="n">two_way_if_null</span><span class="o">=</span><span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>The analyses of one way segments is pretty simple but can be a powerful tools to identifying some the potential problems created by setting the direction of a segment the wrong way. A node is a <cite>source</cite> if it has edges the exit from that node and no edges enter that node. Conversely, a node is a <cite>sink</cite> if all edges enter the node but none exit that node. For a <cite>source</cite> type node it is logically impossible to exist because no vehicle can exit the node if no vehicle and enter the node. Likewise, if you had a <cite>sink</cite> node you would have an infinite number of vehicle piling up on this node because you can enter it but not leave it.</p>
+<p>So why do we care if the are not feasible? Well if the direction of an edge was reversed by mistake we could generate exactly these conditions. Think about a divided highway and on the north bound lane one segment got entered wrong or maybe a sequence of multiple segments got entered wrong or maybe this happened on a round-about. The result would be potentially a <cite>source</cite> and/or a <cite>sink</cite> node.</p>
+<p>So by counting the number of edges entering and exiting each node we can identify both <cite>source</cite> and <cite>sink</cite> nodes so that you can look at those areas of your network to make repairs and/or report the problem back to your data vendor.</p>
+<p class="rubric">Prerequisites</p>
+<p>The  edge table to be analyzed must contain a source column and a target column filled with id&#8217;s of the vertices of the segments and the corresponding vertices table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Use <a class="reference internal" href="pgr_createVerticesTable.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> to create the vertices table.</li>
+<li>Use <a class="reference internal" href="pgr_createTopology.html#pgr-create-topology"><em>pgr_createTopology</em></a> to create the topology and the vertices table.</li>
+</ul>
+</div></blockquote>
+<p class="rubric">Parameters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edge_table:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> Network table name. (may contain the schema name as well)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">s_in_rules:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text[]</span></tt> source node <strong>in</strong> rules</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">s_out_rules:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text[]</span></tt> source node <strong>out</strong> rules</td>
+</tr>
+<tr class="field-even field"><th class="field-name">t_in_rules:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text[]</span></tt> target node <strong>in</strong> rules</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">t_out_rules:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text[]</span></tt> target node <strong>out</strong> rules</td>
+</tr>
+<tr class="field-even field"><th class="field-name">oneway:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> oneway column name name of the network table. Default value is <tt class="docutils literal"><span class="pre">oneway</span></tt>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> Source column name of the network table. Default value is <tt class="docutils literal"><span class="pre">source</span></tt>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt>  Target column name of the network table.  Default value is <tt class="docutils literal"><span class="pre">target</span></tt>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">two_way_if_null:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><tt class="docutils literal"><span class="pre">boolean</span></tt> flag to treat oneway NULL values as bi-directional.  Default value is <tt class="docutils literal"><span class="pre">true</span></tt>.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is strongly recommended to use the named notation. See <a class="reference internal" href="pgr_createVerticesTable.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> or <a class="reference internal" href="pgr_createTopology.html#pgr-create-topology"><em>pgr_createTopology</em></a> for examples.</p>
+</div>
+<p>The function returns:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">OK</span></tt> after the analysis has finished.<ul>
+<li>Uses the vertices table: &lt;edge_table&gt;_vertices_pgr.</li>
+<li>Fills completely the <tt class="docutils literal"><span class="pre">ein</span></tt> and <tt class="docutils literal"><span class="pre">eout</span></tt> columns of the vertices table.</li>
+</ul>
+</li>
+<li><tt class="docutils literal"><span class="pre">FAIL</span></tt> when the analysis was not completed due to an error.<ul>
+<li>The vertices table is not found.</li>
+<li>A required column of the Network table is not found or is not of the appropriate type.</li>
+<li>The names of source , target or oneway are the same.</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<p>The rules are defined as an array of text strings that if match the <tt class="docutils literal"><span class="pre">oneway</span></tt> value would be counted as <tt class="docutils literal"><span class="pre">true</span></tt> for the source or target <strong>in</strong> or <strong>out</strong> condition.</p>
+<p class="rubric">The Vertices Table</p>
+<p>The vertices table can be created with <a class="reference internal" href="pgr_createVerticesTable.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> or <a class="reference internal" href="pgr_createTopology.html#pgr-create-topology"><em>pgr_createTopology</em></a></p>
+<p>The structure of the vertices table is:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">bigint</span></tt> Identifier of the vertex.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cnt:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Number of vertices in the edge_table that reference this vertex. See <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><em>pgr_analyzeGgraph</em></a>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">chk:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt>  Indicator that the vertex might have a problem. See <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ein:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Number of vertices in the edge_table that reference this vertex as incoming.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">eout:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> Number of vertices in the edge_table that reference this vertex as outgoing.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body"><tt class="docutils literal"><span class="pre">geometry</span></tt> Point geometry of the vertex.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>New in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span>
+<span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
+<span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
+<span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
+<span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
+<span class="n">oneway</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;dir&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;{&quot;&quot;,B,TF}&#39;</span><span class="p">,</span><span class="s1">&#39;{&quot;&quot;,B,FT}&#39;</span><span class="p">,</span><span class="s1">&#39;{&quot;&quot;,B,FT}&#39;</span><span class="p">,</span><span class="s1">&#39;{&quot;&quot;,B,TF}&#39;</span><span class="p">,</span><span class="s1">&#39;dir&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="n">graph</span> <span class="k">for</span> <span class="n">one</span> <span class="n">way</span> <span class="n">street</span> <span class="n">errors</span><span class="p">.</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analysis</span> <span class="mi">25</span><span class="o">%</span> <span class="n">complete</span> <span class="p">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analysis</span> <span class="mi">50</span><span class="o">%</span> <span class="n">complete</span> <span class="p">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analysis</span> <span class="mi">75</span><span class="o">%</span> <span class="n">complete</span> <span class="p">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analysis</span> <span class="mi">100</span><span class="o">%</span> <span class="n">complete</span> <span class="p">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="k">Found</span> <span class="mi">0</span> <span class="n">potential</span> <span class="n">problems</span> <span class="k">in</span> <span class="n">directionality</span>
+
+<span class="n">pgr_analyzeoneway</span>
+<span class="c1">-------------------</span>
+<span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../../doc/src/tutorial/topology.html#topology"><em>Routing Topology</em></a>  for an overview of a topology for routing algorithms.</li>
+<li><a class="reference internal" href="../../../doc/src/tutorial/analytics.html#analytics"><em>Graph Analytics</em></a> for an overview of the analysis of a graph.</li>
+<li><a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a> to analyze the edges and vertices of the edge table.</li>
+<li><a class="reference internal" href="pgr_createVerticesTable.html#pgr-create-vert-table"><em>pgr_createVerticesTable</em></a> to reconstruct the vertices table based on the source and target information.</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="pgr_analyzeGraph.html">pgr_analyzeGraph</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_nodeNetwork.html">pgr_nodeNetwork</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-alpha).
+      Last updated on Feb 29, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
