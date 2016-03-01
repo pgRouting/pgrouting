@@ -72,39 +72,10 @@ Function accepts the following parameters:
 Example Usage
 -------------------------------------------------------------------------------
 
-.. code-block:: sql
 
-  select pgr_labelGraph('ways', 'id', 'source', 'target', 'subgraph', 'id<100');
-
-
-Example Output pane Message
--------------------------------------------------------------------------------
-
-.. code-block:: sql
-
-  NOTICE:  Processing:
-  NOTICE:  pgr_labelGraph('ways','id','source','target','subgraph','true')
-  NOTICE:  Performing initial checks, please hold on ...
-  NOTICE:  Starting - Checking table ...
-  NOTICE:  Ending - Checking table
-  NOTICE:  Starting - Checking columns
-  NOTICE:  Ending - Checking columns
-  NOTICE:  Starting - Checking rows_where condition
-  NOTICE:  Ending - Checking rows_where condition
-  NOTICE:  Starting - Calculating subgraphs
-  NOTICE:  Successfully complicated calculating subgraphs
-  NOTICE:  Ending - Calculating subgraphs
-
-  Total query runtime: 5426 ms.
-  1 row retrieved.
-
-  pgr_labelGraph
-  character varying
-  --------------------
-  OK
-  (1 row)
-
-
+.. literalinclude:: doc-pgr_labelGraph.queries
+   :start-after: --q1
+   :end-before: --q2
 
 
 See Also
