@@ -162,9 +162,8 @@ struct boost_edge_t{
 
 enum graphType { UNDIRECTED= 0, DIRECTED};
 
-#if 0
 /**************************************************************************
- * VRPPDTW types
+ * pickDelivery types
  * ***********************************************************************/
 typedef struct {
     int64_t id;
@@ -177,14 +176,14 @@ typedef struct {
     int64_t Pindex;
     int64_t Dindex;
     double Ddist;
-} Customer;
+} Order_t;
 
 typedef struct  {
-    int seq;
-    int64_t rid;
-    int64_t nid;
+    int vehicle_seq;
+    int vehicle_id;
+    int order_id;
     double cost;
-} path_element;
+    double agg_cost;
+} General_vehicle_orders_t;
 
 /*************************************************************************/
-#endif
