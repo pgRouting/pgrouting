@@ -32,7 +32,9 @@ CREATE OR REPLACE FUNCTION pgr_pickDeliver(
     max_vehicles INTEGER,
     capacity FLOAT,
     max_cycles INTEGER, 
+
     OUT seq INTEGER,
+    OUT vehicle_seq INTEGER,
     OUT vehicle_id INTEGER,
     OUT order_id BIGINT,
     OUT cost FLOAT,

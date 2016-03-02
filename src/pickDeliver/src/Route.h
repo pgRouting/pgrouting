@@ -37,7 +37,7 @@ class Route  {
      double capacity;
      Depot depot;
 
-     Route(int _capacity, const Depot &_depot) :
+     Route(double _capacity, const Depot &_depot) :
          twv(0),
          cv(0),
          dis(0),
@@ -100,9 +100,9 @@ Route::update(const Customers &customers)  {
     dis = 0;
     twv = 0;
     cv = 0;
-    int load = 0;
+    double load = 0;
     double agg_cost = 0;
-    int prev_node = 0;
+    int64_t prev_node = 0;
     for (const auto &node : path) {
         /*
          * Between nodes
@@ -174,9 +174,8 @@ Route::insertOrder(const Customers &customers, const Pickup &order) {
     /*
      * The pickup is in:
      */
-    int Ppos = 0;
-    int i;
-    for (i = 1; i < (int)path.size(); i++)  {
+    size_t Ppos = 0;
+    for (size_t i = 1; i < path.size(); i++)  {
         /*
          * Inserting without creating violation
          */
@@ -189,10 +188,9 @@ Route::insertOrder(const Customers &customers, const Pickup &order) {
     /*
      * The delivery is in:
      */
-    int Dpos = path.size() - 1;
+    size_t Dpos = path.size() - 1;
 
-    int j;
-    for (j = Dpos; Ppos < j; --j)  {
+    for (size_t j = Dpos; Ppos < j; --j)  {
         if (!has_violation(customers)) break;
         std::swap(path[j], path[Dpos]);
         Dpos = j;
@@ -219,7 +217,7 @@ Route::insertOrder(const Customers &customers, const Pickup &order) {
     Route bestRoute = *this;
     Route currRoute = *this;
 
-    for (i = Ppos; i < Dpos; i++) {
+    for (size_t i = Ppos; i < Dpos; i++) {
         *this = currRoute;
         /* 
          * ....  Ppos a b c d Dpos ....
@@ -233,7 +231,7 @@ Route::insertOrder(const Customers &customers, const Pickup &order) {
          * - move the D
          * - keep track of the best
          */
-        for (j = Dpos; Ppos < j; j--) {
+        for (size_t j = Dpos; Ppos < j; j--) {
             std::swap(path[j], path[Dpos]);
             Dpos = j;
             if (!has_violation(customers)

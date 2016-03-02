@@ -35,14 +35,14 @@ class Solution {
      // Variables
      int twv_total;
      int cv_total;
-     int dis_total;
+     double dis_total;
      double cost_total;
      std::vector<Route> routes;
      // Methods
      void dump() const;
      double getCost() const;
      Solution getBestofNeighborhood(const Solution S,
-             const std::vector<Customer> &c,
+             const std::vector<Customer_t> &c,
              const std::vector<Pickup> &p) const;
      void UpdateSol(const Customers &customers);
 };
@@ -51,7 +51,7 @@ class Neighborhoods {
  public:
      Neighborhoods() {}
      Solution BestSPI(const Solution S,
-             const std::vector<Customer> &customers,
+             const std::vector<Customer_t> &customers,
              const std::vector<Pickup> &pickups) const;
 };
 
@@ -86,7 +86,7 @@ Solution::getCost() const {
 
 Solution
 Solution::getBestofNeighborhood(const Solution S,
-        const std::vector<Customer> &customers,
+        const std::vector<Customer_t> &customers,
         const std::vector<Pickup> &pickups) const {
     Neighborhoods N;
     Solution S1;

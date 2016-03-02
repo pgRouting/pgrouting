@@ -50,20 +50,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
+#include <sstream>
 #include <vector>
 #include <algorithm>
+extern "C" {
+#include "./../../common/src/pgr_types.h"
+}
 
-#include "./pdp.h"
-#include "./pdp.hpp"
+
 #include "./Solution.h"
-#include "./Route.h"
+#include "./pdp_solver.h"
 
 
 //forward declaration
 static
-int
+void
 TabuSearch(
-        const std::vector<Customer> &customers,
+        const std::vector<Customer_t> &customers,
         const std::vector<Pickup> &pickups,
         int maxIter,
         std::vector<Solution> &T);
@@ -72,19 +75,24 @@ static
 void
 get_result(
         Solution &solution,
-        const std::vector < Customer > &customers,
+        const std::vector < Customer_t > &customers,
         const Depot &depot,
         int64_t VehicleLength,
-        std::vector< path_element > &result);
+        std::vector< General_vehicle_orders_t > &result);
 
-int64_t Solver(Customer *c1,
-        size_t total_tuples,
-        int64_t VehicleLength,
-        int64_t capacity,
-        char **msg,
-        path_element **results,
-        size_t *length_results_struct) {
-    std::vector<Customer> customers(c1, c1 + total_tuples);
+
+int64_t Solver(
+        Customer_t *c1, size_t total_tuples,
+        int VehicleLength,
+        double capacity,
+        int max_cycles,
+        General_vehicle_orders_t **results,
+        size_t &length_results_struct,
+        std::ostringstream &log){
+    log << "START";
+
+
+    std::vector<Customer_t> customers(c1, c1 + total_tuples);
     std::vector<Pickup> pickups;
     std::vector<Route> routes;
 
@@ -112,7 +120,7 @@ int64_t Solver(Customer *c1,
 
     if (pickups.size() != 53) {
         (*results) = NULL;
-        (*length_results_struct) = 0;
+        length_results_struct = 0;
         return 0;
     }
 
@@ -155,10 +163,10 @@ int64_t Solver(Customer *c1,
 
     // Starting the TABU SEARCH
 
-    TabuSearch(customers, pickups, 30, T);
+    TabuSearch(customers, pickups, max_cycles, T);
 
 
-    std::vector< path_element > result;
+    std::vector< General_vehicle_orders_t > result;
 #ifdef DEBUG
     for (auto &solution: T) {
         get_result(solution, customers, depot, VehicleLength, result);
@@ -171,7 +179,7 @@ int64_t Solver(Customer *c1,
 
 
     // Getting memory to store results
-    *results = static_cast<path_element *>(malloc(sizeof(path_element) * (result.size())));
+    *results = static_cast<General_vehicle_orders_t *>(malloc(sizeof(General_vehicle_orders_t) * (result.size())));
 
     //store the results
     int seq = 0;
@@ -180,9 +188,9 @@ int64_t Solver(Customer *c1,
         ++seq;
     }
 
-    *length_results_struct = result.size();
+    length_results_struct = result.size();
 
-    (*msg) = NULL;
+    // log << "FINISH";;
     return 0;
 }
 
@@ -224,8 +232,8 @@ int64_t Solver(Customer *c1,
 
 */
 static
-int
-TabuSearch(const std::vector<Customer> &customers,
+void
+TabuSearch(const std::vector<Customer_t> &customers,
         const std::vector<Pickup> &pickups,
         int maxItr,
         std::vector<Solution> &T) {
@@ -255,7 +263,6 @@ TabuSearch(const std::vector<Customer> &customers,
         }
     }
     T.push_back(SBest);
-    return T.size()-1;
 }
 
 
@@ -275,7 +282,7 @@ get_result(
         const Customers &customers,
         const Depot &depot,
         int64_t VehicleLength,
-        std::vector< path_element > &result) {
+        std::vector< General_vehicle_orders_t > &result) {
 #if DEBUG
     double last_cost = 0;
     int twv = 0;
@@ -287,11 +294,11 @@ get_result(
     for (const auto &route : solution.routes) {
         double agg_cost = 0;
         double distance = 0;
-        int agg_load = 0;
-        result.push_back({seq, route_id, depot.id, agg_cost});
+        double agg_load = 0;
+        result.push_back({seq, route_id, depot.id, agg_cost, agg_cost});
         ++seq;
 
-        int prev_node = -1;
+        int64_t prev_node = -1;
         for (const auto &node : route.path) {
 
             if (node == route.path.front()) {
@@ -321,18 +328,18 @@ get_result(
                     seq,
                     route_id,
                     customers[node].id,
-                    agg_cost});
+                    agg_cost, agg_cost});
 #ifdef DEBUG
             result.push_back({
                     customers[node].id,
                     customers[node].Etime,
                     customers[node].Ltime,
-                    distance});
+                    distance, distance});
             result.push_back({
                     seq,
                     agg_cost > customers[node].Ltime? ++twv: twv,
                     agg_load > 200? ++cv: cv,
-                    0});
+                    0, 0});
             last_cost = agg_cost;
 #endif
             agg_cost +=  customers[node].Stime;
@@ -343,13 +350,13 @@ get_result(
          * Going back to the depot
          */
         agg_cost += CalculateDistance(customers[prev_node], depot);
-        result.push_back({seq, route_id, depot.id, agg_cost});
+        result.push_back({seq, route_id, depot.id, agg_cost, agg_cost});
         ++seq;
         ++route_id;
 #if 1
         if (VehicleLength < route_id) break;
 #endif
     }
-    result.push_back({0, 0, 0, solution.getCost()});
+    result.push_back({0, 0, 0, solution.getCost(), solution.getCost()});
 }
 

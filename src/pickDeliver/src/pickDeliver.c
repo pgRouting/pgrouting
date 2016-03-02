@@ -200,8 +200,8 @@ pickDeliver(PG_FUNCTION_ARGS) {
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
         values[2] = Int32GetDatum(result_tuples[call_cntr].vehicle_id);
-        values[3] = Int32GetDatum(result_tuples[call_cntr].order_id);
-        values[4] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].order_id);
+        values[4] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         values[5] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         /*******************************************************************************/
 

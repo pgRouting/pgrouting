@@ -35,10 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include <sstream>
+#include <string.h>
 #include <deque>
 #include <vector>
-#include "./pgr_dijkstra.hpp"
 #include "./pickDeliver_driver.h"
+#include "./pdp_solver.h"
 
 // #define DEBUG
 
@@ -74,6 +75,7 @@ do_pgr_pickDeliver(
         for (size_t i = 0; i < total_customers; i++) {
             log << customers_arr[i].id << "\t";
         }
+        Solver(customers_arr, total_customers, max_vehicles, capacity, max_cycles, return_tuples, *return_count, log);
 
         *err_msg = strdup(log.str().c_str());
     } catch ( ... ) {

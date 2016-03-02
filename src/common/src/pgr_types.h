@@ -181,7 +181,7 @@ typedef struct {
 typedef struct  {
     int vehicle_seq;
     int vehicle_id;
-    int order_id;
+    int64_t order_id;
     double cost;
     double agg_cost;
 } General_vehicle_orders_t;
