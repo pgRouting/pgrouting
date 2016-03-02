@@ -176,7 +176,7 @@ typedef struct {
     int64_t Pindex;
     int64_t Dindex;
     double Ddist;
-} Order_t;
+} Customer_t;
 
 typedef struct  {
     int vehicle_seq;

@@ -49,15 +49,15 @@ extern "C" {
 #include "./../../common/src/memory_func.hpp"
 
 /************************************************************
-  orders_sql TEXT,
+  customers_sql TEXT,
   max_vehicles INTEGER,
   capacity FLOAT,
   max_cycles INTEGER, 
  ***********************************************************/
 void
 do_pgr_pickDeliver(
-        Order_t  *orders_arr,
-        size_t total_orders,
+        Customer_t  *customers_arr,
+        size_t total_customers,
         int max_vehicles,
         double capacity,
         int max_cycles,
@@ -70,9 +70,9 @@ do_pgr_pickDeliver(
         log << "max_vehicles"  << max_vehicles << "\n";
         log << "capacity"  << capacity << "\n";
         log << "max_cycles"  << max_cycles << "\n";
-        log << "total_orders"  << total_orders << "\n";
-        for (size_t i = 0; i < total_orders; i++) {
-            log << orders_arr[i].id << "\t";
+        log << "total_customers"  << total_customers << "\n";
+        for (size_t i = 0; i < total_customers; i++) {
+            log << customers_arr[i].id << "\t";
         }
 
         *err_msg = strdup(log.str().c_str());

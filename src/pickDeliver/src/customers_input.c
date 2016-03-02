@@ -29,40 +29,40 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/get_check_data.h"
-#include "./orders_input.h"
+#include "./customers_input.h"
 
 
 static
-void fetch_order(
+void fetch_customer(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info[9],
-        Order_t *order) {
+        Customer_t *customer) {
 
 
-    order->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
-    order->x = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
-    order->y = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
-    order->demand = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
-    order->Etime = pgr_SPI_getFloat8(tuple, tupdesc, info[4]);
-    order->Ltime = pgr_SPI_getFloat8(tuple, tupdesc, info[5]);
-    order->Stime = pgr_SPI_getFloat8(tuple, tupdesc, info[6]);
-    order->Pindex = pgr_SPI_getBigInt(tuple, tupdesc, info[7]);
-    order->Dindex = pgr_SPI_getBigInt(tuple, tupdesc, info[8]);
-    order->Ddist = 0;
+    customer->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
+    customer->x = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
+    customer->y = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
+    customer->demand = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
+    customer->Etime = pgr_SPI_getFloat8(tuple, tupdesc, info[4]);
+    customer->Ltime = pgr_SPI_getFloat8(tuple, tupdesc, info[5]);
+    customer->Stime = pgr_SPI_getFloat8(tuple, tupdesc, info[6]);
+    customer->Pindex = pgr_SPI_getBigInt(tuple, tupdesc, info[7]);
+    customer->Dindex = pgr_SPI_getBigInt(tuple, tupdesc, info[8]);
+    customer->Ddist = 0;
 }
 
 
 
 void
-pgr_get_orders_data(
-        char *orders_sql,
-        Order_t **orders,
-        size_t *total_orders) {
+pgr_get_customers_data(
+        char *customers_sql,
+        Customer_t **customers,
+        size_t *total_customers) {
     const int tuple_limit = 1000000;
 
-    PGR_DBG("pgr_get_orders_data");
-    PGR_DBG("%s", orders_sql);
+    PGR_DBG("pgr_get_customers_data");
+    PGR_DBG("%s", customers_sql);
 
     Column_info_t info[9];
 
@@ -106,12 +106,12 @@ pgr_get_orders_data(
     size_t total_tuples;
 
     void *SPIplan;
-    SPIplan = pgr_SPI_prepare(orders_sql);
+    SPIplan = pgr_SPI_prepare(customers_sql);
     Portal SPIportal;
     SPIportal = pgr_SPI_cursor_open(SPIplan);
 
     bool moredata = TRUE;
-    (*total_orders) = total_tuples = 0;
+    (*total_customers) = total_tuples = 0;
 
     /*  on the first tuple get the column numbers */
 
@@ -124,12 +124,12 @@ pgr_get_orders_data(
         total_tuples += ntuples;
         PGR_DBG("SPI_processed %ld", ntuples);
         if (ntuples > 0) {
-            if ((*orders) == NULL)
-                (*orders) = (Order_t *)palloc0(total_tuples * sizeof(Order_t));
+            if ((*customers) == NULL)
+                (*customers) = (Customer_t *)palloc0(total_tuples * sizeof(Customer_t));
             else
-                (*orders) = (Order_t *)repalloc((*orders), total_tuples * sizeof(Order_t));
+                (*customers) = (Customer_t *)repalloc((*customers), total_tuples * sizeof(Customer_t));
 
-            if ((*orders) == NULL) {
+            if ((*customers) == NULL) {
                 elog(ERROR, "Out of memory");
             }
 
@@ -139,8 +139,8 @@ pgr_get_orders_data(
             PGR_DBG("processing %ld", ntuples);
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
-                fetch_order(&tuple, &tupdesc, info,
-                        &(*orders)[total_tuples - ntuples + t]);
+                fetch_customer(&tuple, &tupdesc, info,
+                        &(*customers)[total_tuples - ntuples + t]);
             }
             SPI_freetuptable(tuptable);
         } else {
@@ -149,11 +149,11 @@ pgr_get_orders_data(
     }
 
     if (total_tuples == 0) {
-        (*total_orders) = 0;
-        PGR_DBG("NO orders");
+        (*total_customers) = 0;
+        PGR_DBG("NO customers");
         return;
     }
 
-    (*total_orders) = total_tuples;
-    PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*total_orders));
+    (*total_customers) = total_tuples;
+    PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*total_customers));
 }

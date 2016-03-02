@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./pgr_types.h"
 
-void pgr_get_orders_data(
-        char *orders_sql,
-        Order_t **orders,
-        size_t *total_orders);
+void pgr_get_customers_data(
+        char *customers_sql,
+        Customer_t **customers,
+        size_t *total_customers);

@@ -45,7 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
-#include "./orders_input.h"
+#include "./customers_input.h"
 
 #include "./pickDeliver_driver.h"
 
@@ -62,7 +62,7 @@ pickDeliver(PG_FUNCTION_ARGS);
 /*                          MODIFY AS NEEDED                                   */
 static
 void
-process(char* orders_sql,
+process(char* customers_sql,
         int max_vehicles,
         double capacity,
         int max_cycles,
@@ -71,23 +71,23 @@ process(char* orders_sql,
     pgr_SPI_connect();
 
     PGR_DBG("Load data");
-    Order_t *orders_arr = NULL;
-    size_t total_orders = 0;
-    pgr_get_orders_data(orders_sql, &orders_arr, &total_orders);
+    Customer_t *customers_arr = NULL;
+    size_t total_customers = 0;
+    pgr_get_customers_data(customers_sql, &customers_arr, &total_customers);
 
-    if (total_orders == 0) {
-        PGR_DBG("No orders found");
+    if (total_customers == 0) {
+        PGR_DBG("No customers found");
         (*result_count) = 0;
         (*result_tuples) = NULL;
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld orders in query:", total_orders);
+    PGR_DBG("Total %ld customers in query:", total_customers);
 
     PGR_DBG("Starting processing");
     char *err_msg = (char *)"";
     do_pgr_pickDeliver(
-            orders_arr, total_orders,
+            customers_arr, total_customers,
             max_vehicles,
             capacity,
             max_cycles,
@@ -98,7 +98,7 @@ process(char* orders_sql,
     PGR_DBG("Returned message = %s\n", err_msg);
 
     free(err_msg);
-    pfree(orders_arr);
+    pfree(customers_arr);
     pgr_SPI_finish();
 }
 /*                                                                            */
