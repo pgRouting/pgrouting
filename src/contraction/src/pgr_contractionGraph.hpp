@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_types.h"
 #include "./structs.h"
 
+#include "./contraction_structs.hpp"
 /*! \brief boost::graph simplified to pgRouting needs
 
   This class gives the handling basics of a boost::graph of kind G

@@ -48,7 +48,7 @@ void Vertex_c::set_contraction_type (contractionType ctype) {
 
 std::ostringstream& operator <<(std::ostringstream& os,const Vertex_c& v)
 {
-	os << "{ id: " << v.id <<  ", type: " << static_cast<int64_t>(v.type) ;
+	os << "{ id: " << v.id <<  ", type: " << static_cast<int>(v.type) ;
 	os << " removed_vertices: {";
 	for (auto removed_vertex : v.removed_vertices )
 	{
@@ -72,7 +72,7 @@ void Edge_c::set_contraction_type (edgeType etype) {
 
 std::ostringstream& operator <<(std::ostringstream& os,const Edge_c& e)
 {
-	os << "{ id: " << e.id << ", type: " << static_cast<int64_t>(e.type) ;
+	os << "{ id: " << e.id << ", type: " << static_cast<int>(e.type) ;
 	os << " removed_vertices: {";
 	for (auto removed_vertex : e.removed_vertices )
 	{
