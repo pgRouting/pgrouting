@@ -50,7 +50,7 @@ $BODY$
 DECLARE
 
 BEGIN
-    RETURN QUERY SELECT '${PGROUTING_VERSION_STRING}'::varchar AS version, 
+    RETURN QUERY SELECT '${PGROUTING_GIT_TAG}'::varchar AS version, 
 --			  '${PGROUTING_GIT_TAG}'::varchar AS tag, 
 --                        '${PGROUTING_GIT_BUILD}'::varchar AS build, 
                         '${PGROUTING_GIT_HASH}'::varchar AS hash, 
