@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.1</span>
+   &#160;<span id="projectnumber">2.2</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -135,31 +135,35 @@ $(document).ready(function(){initNavTree('pgr__assert_8h_source.html','');});
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define __TOSTRING(x) __STRING(x)</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#define assert(expr) \</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">    ((expr) \</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">     ? static_cast&lt;void&gt;(0) \</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">     : throw AssertFailedException(&quot;AssertFailedException: &quot; __STRING(expr) &quot; at &quot; __FILE__ &quot;:&quot; __TOSTRING(__LINE__) ))</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classAssertFailedException.html">   78</a></span>&#160;<span class="keyword">class </span><a class="code" href="classAssertFailedException.html">AssertFailedException</a> : <span class="keyword">public</span> std::exception {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classAssertFailedException.html#abdf19668da3d8b06089c003c424af37a">   80</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classAssertFailedException.html#abdf19668da3d8b06089c003c424af37a">str</a>;    </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *what() <span class="keyword">const</span> throw();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  explicit <a class="code" href="classAssertFailedException.html">AssertFailedException</a>(const <span class="keywordtype">char</span> *_str);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;};</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#endif  //  SRC_COMMON_SRC_PGR_ASSERT_H_</span></div>
-<div class="ttc" id="classAssertFailedException_html_abdf19668da3d8b06089c003c424af37a"><div class="ttname"><a href="classAssertFailedException.html#abdf19668da3d8b06089c003c424af37a">AssertFailedException::str</a></div><div class="ttdeci">const char * str</div><div class="ttdoc">str Holds the what() string for the exception. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00080">pgr_assert.h:80</a></div></div>
-<div class="ttc" id="classAssertFailedException_html"><div class="ttname"><a href="classAssertFailedException.html">AssertFailedException</a></div><div class="ttdoc">Extends std::exception and is the exception that we throw if an assert fails. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00078">pgr_assert.h:78</a></div></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#ifdef NDEBUG</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define assert(expr) ((void)0)</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define assert(expr) \</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">    ((expr) \</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">     ? static_cast&lt;void&gt;(0) \</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">     : throw AssertFailedException(&quot;AssertFailedException: &quot; __STRING(expr) &quot; at &quot; __FILE__ &quot;:&quot; __TOSTRING(__LINE__) ))</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classAssertFailedException.html">   82</a></span>&#160;<span class="keyword">class </span><a class="code" href="classAssertFailedException.html">AssertFailedException</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classAssertFailedException.html#abdf19668da3d8b06089c003c424af37a">   84</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classAssertFailedException.html#abdf19668da3d8b06089c003c424af37a">str</a>;    </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *what() <span class="keyword">const</span> throw();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  explicit <a class="code" href="classAssertFailedException.html">AssertFailedException</a>(const <span class="keywordtype">char</span> *_str);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;};</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif  //  SRC_COMMON_SRC_PGR_ASSERT_H_</span></div>
+<div class="ttc" id="classAssertFailedException_html_abdf19668da3d8b06089c003c424af37a"><div class="ttname"><a href="classAssertFailedException.html#abdf19668da3d8b06089c003c424af37a">AssertFailedException::str</a></div><div class="ttdeci">const char * str</div><div class="ttdoc">str Holds the what() string for the exception. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00084">pgr_assert.h:84</a></div></div>
+<div class="ttc" id="classAssertFailedException_html"><div class="ttname"><a href="classAssertFailedException.html">AssertFailedException</a></div><div class="ttdoc">Extends std::exception and is the exception that we throw if an assert fails. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00082">pgr_assert.h:82</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><b>pgr_assert.h</b></li>
-    <li class="footer">Generated on Mon Feb 15 2016 19:36:35 for pgRouting by
+    <li class="footer">Generated on Thu Mar 3 2016 15:45:48 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.1</span>
+   &#160;<span id="projectnumber">2.2</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -556,7 +556,7 @@ $(document).ready(function(){initNavTree('VRP_8c_source.html','');});
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;</div>
 <div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> solve_vrp(<span class="keywordtype">char</span>* orders_sql, <span class="keywordtype">char</span>* vehicles_sql,</div>
 <div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                      <span class="keywordtype">char</span>* dist_sql,</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                      <span class="keywordtype">int</span> depot,</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                      <span class="keywordtype">int</span> <a class="code" href="structDepot.html">depot</a>,</div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;                      <a class="code" href="structvrp__result__element.html">vrp_result_element_t</a>** path, <span class="keywordtype">size_t</span> *path_count)</div>
 <div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;{</div>
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    <span class="keywordtype">int</span> SPIcode;</div>
@@ -1029,13 +1029,14 @@ $(document).ready(function(){initNavTree('VRP_8c_source.html','');});
 <div class="ttc" id="structvrp__result__element_html"><div class="ttname"><a href="structvrp__result__element.html">vrp_result_element</a></div><div class="ttdef"><b>Definition:</b> <a href="VRP_8h_source.html#l00062">VRP.h:62</a></div></div>
 <div class="ttc" id="structorder__columns_html"><div class="ttname"><a href="structorder__columns.html">order_columns</a></div><div class="ttdef"><b>Definition:</b> <a href="VRP_8c_source.html#l00104">VRP.c:104</a></div></div>
 <div class="ttc" id="structvrp__orders_html"><div class="ttname"><a href="structvrp__orders.html">vrp_orders</a></div><div class="ttdef"><b>Definition:</b> <a href="VRP_8h_source.html#l00038">VRP.h:38</a></div></div>
+<div class="ttc" id="structDepot_html"><div class="ttname"><a href="structDepot.html">Depot</a></div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00031">pdp.hpp:31</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e28fcb41c27d94935e6e1bded8372f10.html">vrp_basic</a></li><li class="navelem"><a class="el" href="dir_2c959b9bc6ee9cc8204048449dea20e7.html">src</a></li><li class="navelem"><b>VRP.c</b></li>
-    <li class="footer">Generated on Mon Feb 15 2016 19:36:35 for pgRouting by
+    <li class="footer">Generated on Thu Mar 3 2016 15:45:48 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -2,6 +2,7 @@ var searchData=
 [
   ['v_5fsource',['v_source',['../classPgr__ksp.html#a2d6b6d396332500f0cbcba86bce9b480',1,'Pgr_ksp']]],
   ['v_5ftarget',['v_target',['../classPgr__ksp.html#a272c77dfb567322b855a83887339a979',1,'Pgr_ksp']]],
+  ['vehicle',['Vehicle',['../structVehicle.html',1,'']]],
   ['vehicle_5fcolumns',['vehicle_columns',['../structvehicle__columns.html',1,'']]],
   ['vertex',['vertex',['../structvertex.html',1,'vertex'],['../structVertex.html',1,'Vertex']]],
   ['vertex_5fcolumns',['vertex_columns',['../structvertex__columns.html',1,'']]],

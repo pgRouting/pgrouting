@@ -33,6 +33,7 @@ var hierarchy =
     [ "CSolutionInfo", "classCSolutionInfo.html", null ],
     [ "CTourInfo", "classCTourInfo.html", null ],
     [ "Customer", "structCustomer.html", null ],
+    [ "Customer_type", "structCustomer__type.html", null ],
     [ "CVehicleInfo", "classCVehicleInfo.html", null ],
     [ "CVRPSolver", "classCVRPSolver.html", null ],
     [ "Depot", "structDepot.html", null ],
@@ -71,6 +72,7 @@ var hierarchy =
     [ "path_element_t", "structpath__element__t.html", null ],
     [ "path_fromto_t", "structpath__fromto__t.html", null ],
     [ "Path_t", "structPath__t.html", null ],
+    [ "PathElement", "structPathElement.html", null ],
     [ "Pgr_allpairs< G >", "classPgr__allpairs.html", null ],
     [ "Pgr_allpairs< G >::inf_plus< T >", "structPgr__allpairs_1_1inf__plus.html", null ],
     [ "Pgr_base_graph< G >", "classPgr__base__graph.html", null ],
@@ -94,6 +96,7 @@ var hierarchy =
     [ "SignalHandler", "classSignalHandler.html", null ],
     [ "Solution", "classSolution.html", null ],
     [ "State", "structState.html", null ],
+    [ "statesave", "structstatesave.html", null ],
     [ "std::exception", null, [
       [ "AssertFailedException", "classAssertFailedException.html", null ],
       [ "UserQuitException", "classUserQuitException.html", null ]
@@ -111,6 +114,7 @@ var hierarchy =
     [ "tokenizer", "classtokenizer.html", null ],
     [ "TSP", "classTSP.html", null ],
     [ "tspstruct", "structtspstruct.html", null ],
+    [ "Vehicle", "structVehicle.html", null ],
     [ "vehicle_columns", "structvehicle__columns.html", null ],
     [ "vertex", "structvertex.html", null ],
     [ "Vertex", "structVertex.html", null ],

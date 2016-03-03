@@ -8,6 +8,7 @@ var searchData=
   ['path_5felement_5ft',['path_element_t',['../structpath__element__t.html',1,'']]],
   ['path_5ffromto_5ft',['path_fromto_t',['../structpath__fromto__t.html',1,'']]],
   ['path_5ft',['Path_t',['../structPath__t.html',1,'']]],
+  ['pathelement',['PathElement',['../structPathElement.html',1,'']]],
   ['pgr_5fallpairs',['Pgr_allpairs',['../classPgr__allpairs.html',1,'']]],
   ['pgr_5fbase_5fgraph',['Pgr_base_graph',['../classPgr__base__graph.html',1,'Pgr_base_graph&lt; G &gt;'],['../classPgr__base__graph.html#a41fe11a50a99b89530545c9b52978132',1,'Pgr_base_graph::Pgr_base_graph()']]],
   ['pgr_5fcost3_5ft',['pgr_cost3_t',['../structpgr__cost3__t.html',1,'']]],

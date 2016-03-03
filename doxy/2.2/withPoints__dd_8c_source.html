@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.1</span>
+   &#160;<span id="projectnumber">2.2</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -174,9 +174,9 @@ $(document).ready(function(){initNavTree('withPoints__dd_8c_source.html','');});
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        int64_t start_pid,</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">double</span> distance,</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">char</span> *driving_side,</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">bool</span> details,</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordtype">bool</span> directed,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">bool</span> directed,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">char</span> *driving_side,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordtype">bool</span> details,</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **result_tuples,</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">size_t</span> *result_count) {</div>
@@ -293,9 +293,9 @@ $(document).ready(function(){initNavTree('withPoints__dd_8c_source.html','');});
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="comment">// start_pid BIGINT,</span></div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="comment">// distance FLOAT,</span></div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="comment">//</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="comment">// driving_side CHAR -- DEFAULT &#39;b&#39;,</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="comment">// details BOOLEAN -- DEFAULT false,</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="comment">// directed BOOLEAN -- DEFAULT true,</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="comment">// directed BOOLEAN -- DEFAULT true,</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="comment">// driving_side CHAR -- DEFAULT &#39;b&#39;,</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="comment">// details BOOLEAN -- DEFAULT false,</span></div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        PGR_DBG(<span class="stringliteral">&quot;Calling process&quot;</span>);</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        process(</div>
@@ -304,8 +304,8 @@ $(document).ready(function(){initNavTree('withPoints__dd_8c_source.html','');});
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                PG_GETARG_INT64(2),</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                PG_GETARG_FLOAT8(3),</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                pgr_text2char(PG_GETARG_TEXT_P(4)),</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                PG_GETARG_BOOL(5),</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                PG_GETARG_BOOL(4),</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                pgr_text2char(PG_GETARG_TEXT_P(5)),</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                PG_GETARG_BOOL(6),</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                &amp;result_tuples,</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                &amp;result_count);</div>
@@ -384,7 +384,7 @@ $(document).ready(function(){initNavTree('withPoints__dd_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9b3fa77b78162e3e9798b6b980f3e1a9.html">driving_distance</a></li><li class="navelem"><a class="el" href="dir_330b2fb77ec4b18692766894438b09ce.html">src</a></li><li class="navelem"><b>withPoints_dd.c</b></li>
-    <li class="footer">Generated on Mon Feb 15 2016 19:36:35 for pgRouting by
+    <li class="footer">Generated on Thu Mar 3 2016 15:45:48 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

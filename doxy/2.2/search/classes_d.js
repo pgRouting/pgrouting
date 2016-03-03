@@ -9,6 +9,7 @@ var searchData=
   ['sigquit_5fhandler',['SIGQUIT_Handler',['../classSIGQUIT__Handler.html',1,'']]],
   ['solution',['Solution',['../classSolution.html',1,'']]],
   ['state',['State',['../structState.html',1,'']]],
+  ['statesave',['statesave',['../structstatesave.html',1,'']]],
   ['stringoperation',['StringOperation',['../classStringOperation.html',1,'']]],
   ['stringtokenizer',['StringTokenizer',['../classStringTokenizer.html',1,'']]]
 ];

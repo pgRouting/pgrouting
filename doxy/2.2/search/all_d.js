@@ -9,6 +9,7 @@ var searchData=
   ['sigquit_5fhandler',['SIGQUIT_Handler',['../classSIGQUIT__Handler.html',1,'']]],
   ['solution',['Solution',['../classSolution.html',1,'']]],
   ['state',['State',['../structState.html',1,'']]],
+  ['statesave',['statesave',['../structstatesave.html',1,'']]],
   ['str',['str',['../classAssertFailedException.html#abdf19668da3d8b06089c003c424af37a',1,'AssertFailedException::str()'],['../classUserQuitException.html#a66969af1e0af3c8ae5e7c567ffbb4f36',1,'UserQuitException::str()']]],
   ['stringoperation',['StringOperation',['../classStringOperation.html',1,'']]],
   ['stringtokenizer',['StringTokenizer',['../classStringTokenizer.html',1,'']]]

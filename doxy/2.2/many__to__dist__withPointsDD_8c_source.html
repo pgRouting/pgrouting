@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.1</span>
+   &#160;<span id="projectnumber">2.2</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -166,10 +166,10 @@ $(document).ready(function(){initNavTree('many__to__dist__withPointsDD_8c_source
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        int64_t *start_pids_arr, <span class="keywordtype">size_t</span> size_arr,</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">double</span> distance,</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">bool</span> equicost, </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">bool</span> directed,</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">char</span> *driving_side,</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordtype">bool</span> details,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">bool</span> directed,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">bool</span> equicost, </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **result_tuples,</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">size_t</span> *result_count  ){</div>
@@ -224,10 +224,10 @@ $(document).ready(function(){initNavTree('many__to__dist__withPointsDD_8c_source
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            start_pids_arr,     size_arr,</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            distance,</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            equicost, </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            directed,</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            driving_side[0],</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            details,</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            directed,</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            equicost, </div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            result_tuples,</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            result_count,</div>
@@ -285,10 +285,10 @@ $(document).ready(function(){initNavTree('many__to__dist__withPointsDD_8c_source
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="comment">// start_pids anyarray,</span></div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="comment">// distance FLOAT,</span></div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="comment">//</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="comment">// equicost BOOLEAN -- DEFAULT false,</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="comment">// directed BOOLEAN -- DEFAULT true,</span></div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="comment">// driving_side CHAR -- DEFAULT &#39;b&#39;,</span></div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="comment">// details BOOLEAN -- DEFAULT false,</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="comment">// directed BOOLEAN -- DEFAULT true,</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="comment">// equicost BOOLEAN -- DEFAULT false,</span></div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        int64_t *sourcesArr;</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="keywordtype">size_t</span> num;</div>
@@ -303,10 +303,10 @@ $(document).ready(function(){initNavTree('many__to__dist__withPointsDD_8c_source
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                sourcesArr, num,                     <span class="comment">// start_pids array</span></div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                PG_GETARG_FLOAT8(3),                 <span class="comment">// distance</span></div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                PG_GETARG_BOOL(4),                   <span class="comment">// equicost</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                PG_GETARG_BOOL(4),                   <span class="comment">// directed</span></div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                pgr_text2char(PG_GETARG_TEXT_P(5)),  <span class="comment">// driving side</span></div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                PG_GETARG_BOOL(6),                   <span class="comment">// details</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                PG_GETARG_BOOL(7),                   <span class="comment">// directed</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                PG_GETARG_BOOL(7),                   <span class="comment">// equicost</span></div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                &amp;result_tuples, &amp;result_count);</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        free(sourcesArr);</div>
@@ -383,7 +383,7 @@ $(document).ready(function(){initNavTree('many__to__dist__withPointsDD_8c_source
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9b3fa77b78162e3e9798b6b980f3e1a9.html">driving_distance</a></li><li class="navelem"><a class="el" href="dir_330b2fb77ec4b18692766894438b09ce.html">src</a></li><li class="navelem"><b>many_to_dist_withPointsDD.c</b></li>
-    <li class="footer">Generated on Mon Feb 15 2016 19:36:35 for pgRouting by
+    <li class="footer">Generated on Thu Mar 3 2016 15:45:48 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.1</span>
+   &#160;<span id="projectnumber">2.2</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -145,7 +145,7 @@ $(document).ready(function(){initNavTree('customers__input_8c_source.html','');}
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        HeapTuple *tuple,</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        TupleDesc *tupdesc,</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="structColumn__info__t.html">Column_info_t</a> info[9],</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="structCustomer.html">Customer</a> *customer) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="structCustomer.html">Customer</a> *<a class="code" href="structCustomer.html">customer</a>) {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    customer-&gt;id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    customer-&gt;x = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);</div>
@@ -250,14 +250,14 @@ $(document).ready(function(){initNavTree('customers__input_8c_source.html','');}
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
 <div class="ttc" id="structColumn__info__t_html"><div class="ttname"><a href="structColumn__info__t.html">Column_info_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00139">pgr_types.h:139</a></div></div>
-<div class="ttc" id="structCustomer_html"><div class="ttname"><a href="structCustomer.html">Customer</a></div><div class="ttdef"><b>Definition:</b> <a href="pdp_8h_source.html#l00033">pdp.h:33</a></div></div>
+<div class="ttc" id="structCustomer_html"><div class="ttname"><a href="structCustomer.html">Customer</a></div><div class="ttdef"><b>Definition:</b> <a href="pickDeliver_2src_2pdp_8h_source.html#l00033">pickDeliver/src/pdp.h:33</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a5c8a92068c74ed493d903155fb7b6fb.html">vrppdtw</a></li><li class="navelem"><a class="el" href="dir_b57a4779a34e75dff4d4043c00e7e1ee.html">src</a></li><li class="navelem"><b>customers_input.c</b></li>
-    <li class="footer">Generated on Mon Feb 15 2016 19:36:34 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e1e5aebfba040cfbae1d1213d15e41c3.html">pickDeliver</a></li><li class="navelem"><a class="el" href="dir_24085d12740fb9ae479a2923b7dc06de.html">src</a></li><li class="navelem"><b>customers_input.c</b></li>
+    <li class="footer">Generated on Thu Mar 3 2016 15:45:47 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
