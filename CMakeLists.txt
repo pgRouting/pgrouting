@@ -35,15 +35,16 @@ set(PGROUTING_VERSION_MINOR "2")
 set(PGROUTING_VERSION_PATCH "0")
 
 set(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
+set(PGROUTING_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
 
 set(POSTGRESQL_MINIMUM_VERSION "9.1.0")
 set(POSTGIS_MINIMUM_VERSION "2.0.0")
 
 file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 
-set(PGROUTING_GIT_TAG "pgrouting-2.2.0-beta")
+set(PGROUTING_GIT_TAG "pgrouting-2.2.0-beta1")
 #string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
-string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
+string(REGEX REPLACE "^(.+)-([^-]+)-[0-9]+-g([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\4" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
 
@@ -244,24 +245,9 @@ endif()
 set(PACKAGE_SQL_FILES "")
 set(L_PACKAGE_SQL_FILES "")
 
-# Recurse into the subdirectories.
 #==========================
 #  PgRouting_SOURCE_NAMES
 #==========================
-#
-#
-#  Some ordering is here:
-#  First Group
-#    Line 1: V 2.1
-#    Line 2: V 2.2
-#
-#  Middle group: V 2.0
-#
-#  Last group: proposed functions
-#  That is directories that didnt exist on V 2.0 but do exist in V 2.1
-#  but classification is as proposed (so that bug fixes are not as urgent as
-#  for the Middle group
-#-----------------------------------------------------------------------------
 
 set(PgRouting_SOURCE_NAMES
     "common"
@@ -359,14 +345,14 @@ message("Building the library names")
 #----------------------
 # PGROUTING installation files names have the following name
 #----------------------
-set(PGROUTING_LIB_NAME "pgrouting--${PGROUTING_VERSION_STRING}")
+set(PGROUTING_LIB_NAME "pgrouting-${PGROUTING_VERSION}")
 
 
 #----------------------
 # PGROUTING library name used in the pgr_functions
 #  '$libdir/${PGROUTING_LIBRARY_NAME}'
 #----------------------
-set(PGROUTING_LIBRARY_NAME "libpgrouting--${PGROUTING_VERSION_STRING}")
+set(PGROUTING_LIBRARY_NAME "libpgrouting-${PGROUTING_VERSION}")
 
 add_library(${PGROUTING_LIB_NAME}
     ${LIBRARY_MODE_TARGET}
