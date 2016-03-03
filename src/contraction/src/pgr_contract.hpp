@@ -38,7 +38,6 @@ extern "C" {
 }
 
 #include "./pgr_contractionGraph.hpp"
-#include "./contraction_structs.hpp"
 
 
 template < class G > class Pgr_contract;
