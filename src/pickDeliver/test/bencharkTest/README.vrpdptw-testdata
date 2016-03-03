@@ -26,8 +26,8 @@ vehicles and vehicle capacity for each test cases.
 You might load these with commands like:
 
 ```
-createdb -U postgres -h localhost vrpdptw_tests
-zcat vrpdptw-testdata.sql.gz | psql -U postgres -h localhost vrpdptw_tests
+createdb -U postgres -h localhost pickdelivery_tests
+zcat vrpdptw-testdata.sql.gz | psql -U postgres -h localhost pickdelivery_tests
 ```
 
 
