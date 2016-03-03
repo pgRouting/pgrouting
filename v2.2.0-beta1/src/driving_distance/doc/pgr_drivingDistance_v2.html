@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_drivingDistance (V2.0) &mdash; pgRouting Manual (2.2.0-beta1)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0 (pgrouting-2.2.0-beta1)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0-beta1)" href="../../../index.html" />
+    <link rel="up" title="Deprecated Functions" href="../../../doc/deprecated.html" />
+    <link rel="next" title="pgr_dijkstra (V 2.0)- Shortest Path Dijkstra" href="../../dijkstra/doc/pgr_dijkstra_v2.html" />
+    <link rel="prev" title="pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra" href="../../kdijkstra/doc/pgr_kDijkstra.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.2.0-beta1)</span></a></h1>
+        <h2 class="heading"><span>pgr_drivingDistance (V2.0)</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../kdijkstra/doc/pgr_kDijkstra.html">pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../dijkstra/doc/pgr_dijkstra_v2.html">pgr_dijkstra (V 2.0)- Shortest Path Dijkstra</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-drivingdistance-v2-0">
+<span id="pgr-driving-distance-v2"></span><h1>pgr_drivingDistance (V2.0)<a class="headerlink" href="#pgr-drivingdistance-v2-0" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_drivingDistance</span></tt> - Returns the driving distance from a start node.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>This function computes a Dijkstra shortest path solution them extracts the cost to get to each node in the network from the starting node. Using these nodes and costs it is possible to compute constant drive time polygons. Returns a set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a> (seq, id1, id2, cost) rows, that make up a list of accessible points.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">,</span> <span class="nb">integer</span> <span class="k">source</span><span class="p">,</span> <span class="n">double</span> <span class="k">precision</span> <span class="n">distance</span><span class="p">,</span>
+                              <span class="nb">boolean</span> <span class="n">directed</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">has_rcost</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This signature is being deprecated on version 2.1, Please use it
+without the <tt class="docutils literal"><span class="pre">has_rcost</span></tt> flag instead:</p>
+<p><tt class="docutils literal"><span class="pre">pgr_drivingDistance(sql,</span> <span class="pre">start_v,</span> <span class="pre">distance,</span> <span class="pre">directed)</span></tt></p>
+<p class="last">See <a class="reference internal" href="pgr_drivingDistance.html#pgr-drivingdistance"><em>pgr_drivingDistance</em></a></p>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first">a SQL query, which should return a set of rows with the following columns:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="p">[,</span><span class="n">reverse_cost</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">edge_table</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the edge</td>
+</tr>
+<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the source vertex</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the target vertex</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">reverse_cost:</th><td class="field-body">(optional) the cost for the reverse traversal of the edge. This is only used when the <tt class="docutils literal"><span class="pre">directed</span></tt> and <tt class="docutils literal"><span class="pre">has_rcost</span></tt> parameters are <tt class="docutils literal"><span class="pre">true</span></tt> (see the above remark about negative costs).</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int4</span></tt> id of the start point</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">distance:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">float8</span></tt> value in edge cost units (not in projection units - they might be different).</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">directed:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">true</span></tt> if the graph is directed</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">has_rcost:</th><td class="field-body"><p class="first last">if <tt class="docutils literal"><span class="pre">true</span></tt>, the <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Returns set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a>:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body">row sequence</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id1:</th><td class="field-body">node ID</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">edge ID (this is probably not a useful item)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body">cost to get to this node ID</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You must reconnect to the database after <tt class="docutils literal"><span class="pre">CREATE</span> <span class="pre">EXTENSION</span> <span class="pre">pgrouting</span></tt>. Otherwise the function will return <tt class="docutils literal"><span class="pre">Error</span> <span class="pre">computing</span> <span class="pre">path:</span> <span class="pre">std::bad_alloc</span></tt>.</p>
+</div>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>Renamed in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Without <tt class="docutils literal"><span class="pre">reverse_cost</span></tt></li>
+<li>With <tt class="docutils literal"><span class="pre">reverse_cost</span></tt></li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_drivingDistance(
+    &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;,
+    7, 1.5, false, false
+) ;
+NOTICE:  Deprecated function
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   7 |  -1 |    0
+   1 |   8 |   6 |    1
+(2 rows)
+
+SELECT * FROM pgr_drivingDistance(
+    &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table&#39;,
+    7, 1.5, true, true
+) ;
+NOTICE:  Deprecated function
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   7 |  -1 |    0
+   1 |   8 |   6 |    1
+(2 rows)
+</pre></div>
+</div>
+<p>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../alpha_shape/doc/pgr_alphaShape.html#pgr-alphashape"><em>pgr_alphaShape</em></a> - Alpha shape computation</li>
+<li><a class="reference internal" href="../../alpha_shape/doc/pgr_pointsAsPolygon.html#pgr-points-as-polygon"><em>pgr_pointsAsPolygon</em></a> - Polygon around set of points</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../kdijkstra/doc/pgr_kDijkstra.html">pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../dijkstra/doc/pgr_dijkstra_v2.html">pgr_dijkstra (V 2.0)- Shortest Path Dijkstra</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-beta1).
+      Last updated on Mar 03, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

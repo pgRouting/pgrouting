@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_version &mdash; pgRouting Manual (2.2.0-beta1)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0 (pgrouting-2.2.0-beta1)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0-beta1)" href="../../../index.html" />
+    <link rel="next" title="pgRouting Data Types" href="types/index.html" />
+    <link rel="prev" title="Sample Data" href="../../../doc/src/developer/sampledata.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.2.0-beta1)</span></a></h1>
+        <h2 class="heading"><span>pgr_version</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../../doc/src/developer/sampledata.html">Sample Data</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="types/index.html">pgRouting Data Types</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-version">
+<span id="id1"></span><h1>pgr_version<a class="headerlink" href="#pgr-version" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_version</span></tt> — Query for pgRouting version information.</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Returns a table with pgRouting version information.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">table</span><span class="p">()</span> <span class="n">pgr_version</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Returns a table with:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">version:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> pgRouting version</td>
+</tr>
+<tr class="field-even field"><th class="field-name">tag:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> Git tag of pgRouting build</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">hash:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> Git hash of pgRouting build</td>
+</tr>
+<tr class="field-even field"><th class="field-name">branch:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> Git branch of pgRouting build</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">boost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">varchar</span></tt> Boost version</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>New in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Query for full version string</li>
+</ul>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_version</span><span class="p">();</span>
+
+                     <span class="n">pgr_version</span>
+<span class="c1">------------------------------------------------------</span>
+ <span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span><span class="p">,</span><span class="n">v2</span><span class="p">.</span><span class="mi">0</span><span class="n">dev</span><span class="p">,</span><span class="mi">290</span><span class="p">,</span><span class="n">c64bcb9</span><span class="p">,</span><span class="n">sew</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mi">2</span><span class="n">_0</span><span class="p">,</span><span class="mi">1</span><span class="p">.</span><span class="mi">49</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Query for <tt class="docutils literal"><span class="pre">version</span></tt> and <tt class="docutils literal"><span class="pre">boost</span></tt> attribute</li>
+</ul>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="k">version</span><span class="p">,</span> <span class="n">boost</span> <span class="k">FROM</span> <span class="n">pgr_version</span><span class="p">();</span>
+
+  <span class="k">version</span>  <span class="o">|</span> <span class="n">boost</span>
+<span class="c1">-----------+--------</span>
+ <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span> <span class="o">|</span> <span class="mi">1</span><span class="p">.</span><span class="mi">49</span><span class="p">.</span><span class="mi">0</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="utilities/versionless.html#pgr-versionless"><em>pgr_versionless</em></a> to compare two version numbers</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../../doc/src/developer/sampledata.html">Sample Data</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="types/index.html">pgRouting Data Types</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-beta1).
+      Last updated on Mar 03, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

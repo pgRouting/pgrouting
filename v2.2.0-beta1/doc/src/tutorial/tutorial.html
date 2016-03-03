@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Getting Started &mdash; pgRouting Manual (2.2.0-beta1)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0 (pgrouting-2.2.0-beta1)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0-beta1)" href="../../../index.html" />
+    <link rel="up" title="Tutorial" href="index.html" />
+    <link rel="next" title="Routing Topology" href="topology.html" />
+    <link rel="prev" title="Tutorial" href="index.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.2.0-beta1)</span></a></h1>
+        <h2 class="heading"><span>Getting Started</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Tutorial</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="topology.html">Routing Topology</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="getting-started">
+<span id="tutorial"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>This is a simple guide to walk you through the steps of getting started
+with pgRouting. In this guide we will cover:</p>
+<blockquote>
+<div><ul class="simple">
+<li>How to create a database to use for our project</li>
+<li>How to load some data</li>
+<li>How to build a topology</li>
+<li>How to check your graph for errors</li>
+<li>How to compute a route</li>
+<li>How to use other tools to view your graph and route</li>
+<li>How to create a web app</li>
+</ul>
+</div></blockquote>
+<div class="section" id="how-to-create-a-database">
+<h2>How to create a database<a class="headerlink" href="#how-to-create-a-database" title="Permalink to this headline">¶</a></h2>
+<p>The first thing we need to do is create a database and load pgrouting in
+the database. Typically you will create a database for each project. Once
+you have a database to work in, your can load your data and build your
+application in that database. This makes it easy to move your project
+later if you want to to say a production server.</p>
+<p>For Postgresql 9.1 and later versions</p>
+<div class="highlight-bash"><div class="highlight"><pre>createdb mydatabase
+psql mydatabase -c <span class="s2">&quot;create extension postgis&quot;</span>
+psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-load-some-data">
+<h2>How to load some data<a class="headerlink" href="#how-to-load-some-data" title="Permalink to this headline">¶</a></h2>
+<p>How you load your data will depend in what form it comes it. There are
+various OpenSource tools that can help you, like:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">osm2pgrouting-alpha:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
+<li>this is a tool for loading OSM data into postgresql with pgRouting requirements</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">shp2pgsql:</th><td class="field-body"><ul class="first simple">
+<li>this is the postgresql shapefile loader</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">ogr2ogr:</th><td class="field-body"><ul class="first simple">
+<li>this is a vector data conversion utility</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">osm2pgsql:</th><td class="field-body"><ul class="first last simple">
+<li>this is a tool for loading OSM data into postgresql</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>So these tools and probably others will allow you to read vector data so that
+you may then load that data into your database as a table of some kind. At this
+point you need to know a little about your data structure and content. One easy
+way to browse your new data table is with pgAdmin3 or phpPgAdmin.</p>
+</div>
+<div class="section" id="how-to-build-a-topology">
+<h2>How to build a topology<a class="headerlink" href="#how-to-build-a-topology" title="Permalink to this headline">¶</a></h2>
+<p>Next we need to build a topology for our street data. What this means is that
+for any given edge in your street data the ends of that edge will be connected
+to a unique node and to other edges that are also connected to that same unique
+node. Once all the edges are connected to nodes we have a graph that can be
+used for routing with pgrouting. We provide a tool that will help with this:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">this step is not needed if data is loaded with <cite>osm2pgrouting-alpha</cite></p>
+</div>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../../../src/topology/doc/pgr_createTopology.html#pgr-create-topology"><em>pgr_createTopology</em></a> for more information.</p>
+</div>
+<div class="section" id="how-to-check-your-graph-for-errors">
+<h2>How to check your graph for errors<a class="headerlink" href="#how-to-check-your-graph-for-errors" title="Permalink to this headline">¶</a></h2>
+<p>There are lots of possible sources for errors in a graph. The data that you
+started with may not have been designed with routing in mind. A graph has some
+very specific requirments. One is that it is <em>NODED</em>, this means that except
+for some very specific use cases, each road segment starts and ends at a node
+and that in general is does not cross another road segment that it should be
+connected to.</p>
+<p>There can be other errors like the direction of a one-way street being entered
+in the wrong direction. We do not have tools to search for all possible errors
+but we have some basic tools that might help.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">);</span>
+<span class="k">select</span> <span class="n">pgr_analyzeoneway</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span>  <span class="n">s_in_rules</span><span class="p">,</span> <span class="n">s_out_rules</span><span class="p">,</span>
+                                     <span class="n">t_in_rules</span><span class="p">,</span> <span class="n">t_out_rules</span>
+                                     <span class="n">direction</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="analytics.html#analytics"><em>Graph Analytics</em></a> for more information.</p>
+<p>If your data needs to be <em>NODED</em>, we have a tool that can help for that also.</p>
+<p>See <a class="reference internal" href="../../../src/topology/doc/pgr_nodeNetwork.html#pgr-node-network"><em>pgr_nodeNetwork</em></a> for more information.</p>
+</div>
+<div class="section" id="how-to-compute-a-route">
+<h2>How to compute a route<a class="headerlink" href="#how-to-compute-a-route" title="Permalink to this headline">¶</a></h2>
+<p>Once you have all the preparation work done above, computing a route is fairly easy.
+We have a lot of different algorithms that can work with your prepared road
+network. The general form of a route query is:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="n">pgr_</span><span class="o">&lt;</span><span class="n">algorithm</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="k">SQL</span> <span class="k">for</span> <span class="n">edges</span><span class="o">&gt;</span><span class="p">,</span> <span class="k">start</span><span class="p">,</span> <span class="k">end</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">additonal</span> <span class="k">options</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you can see this is fairly straight forward and you can look and the
+specific algorithms for the details of the signatures and how to use them.
+These results have information like edge id and/or the
+node id along with the cost or geometry for the step in the path from <em>start</em>
+to <em>end</em>. Using the ids you can join these result back to your edge table
+to get more information about each step in the path.</p>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="../../../search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Tutorial</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="topology.html">Routing Topology</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-beta1).
+      Last updated on Mar 03, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_textToPoints &mdash; pgRouting Manual (2.2.0-beta1)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0 (pgrouting-2.2.0-beta1)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0-beta1)" href="../../../index.html" />
+    <link rel="up" title="Convenience Functions" href="convenience.html" />
+    <link rel="next" title="pgr_pointsToVids" href="pgr_pointsToVids.html" />
+    <link rel="prev" title="pgr_flipEdges" href="pgr_flipEdges.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.2.0-beta1)</span></a></h1>
+        <h2 class="heading"><span>pgr_textToPoints</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="pgr_flipEdges.html">pgr_flipEdges</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_pointsToVids.html">pgr_pointsToVids</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-texttopoints">
+<span id="pgr-text-to-points"></span><h1>pgr_textToPoints<a class="headerlink" href="#pgr-texttopoints" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_textToPoints</span></tt> - Converts a text string of the format &#8220;x,y;x,y;x,y;...&#8221; into and array of point geometries.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This is a proposed function</p>
+<ul class="last simple">
+<li>Is not officially in the release.</li>
+<li>Name could change.</li>
+<li>Signature could change.</li>
+<li>Needs testing.</li>
+<li>Functionality could change.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Given a text string of the format &#8220;x,y;x,y;x,y;...&#8221; and the srid to use, split the string and create and array point geometries.</p>
+<p>The function returns:</p>
+<blockquote>
+<div><ul class="simple">
+<li></li>
+</ul>
+</div></blockquote>
+<div class="highlight-sql"><div class="highlight"><pre><span class="nb">integer</span> <span class="n">pgr_textToPoints</span><span class="p">(</span><span class="n">pnts</span> <span class="nb">text</span><span class="p">,</span> <span class="n">srid</span> <span class="nb">integer</span> <span class="k">DEFAULT</span><span class="p">(</span><span class="mi">4326</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Paramters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">pnts:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> A text string of the format &#8220;x,y;x,y;x,y;...&#8221; where x is longitude and y is latitude if use values in lat-lon.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">srid:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer</span></tt> The SRID to use when constructing the point geometry. If the paratmeter is absent it defaults to <tt class="docutils literal"><span class="pre">SRID:4326</span></tt>.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>Proposed in version 2.1.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>SELECT ST_AsText(g) FROM 
+    (SELECT unnest(pgr_texttopoints(&#39;2,0;2,1;3,1;2,2&#39;, 0)) AS g) AS foo;
+ st_astext  
+------------
+ POINT(2 0)
+ POINT(2 1)
+ POINT(3 1)
+ POINT(2 2)
+(4 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_pointToEdgeNode.html#pgr-point-to-edgenode"><em>pgr_pointToEdgeNode</em></a> - convert a point geometry to a <tt class="docutils literal"><span class="pre">node_id</span></tt> based on closest edge.</li>
+<li><a class="reference internal" href="pgr_pointsToVids.html#pgr-points-to-vids"><em>pgr_pointsToVids</em></a> - convert an array of point geometries into vertex ids.</li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="../../../search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="pgr_flipEdges.html">pgr_flipEdges</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_pointsToVids.html">pgr_pointsToVids</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-beta1).
+      Last updated on Mar 03, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
