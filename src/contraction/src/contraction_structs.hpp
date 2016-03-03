@@ -1,4 +1,7 @@
-
+/*****************************************************
+ *  ADD HERE CONTRACTION NAME & NUMBER 
+<enum>
+*****************************************************/
 enum class contractionType { 
      
      none = 0,

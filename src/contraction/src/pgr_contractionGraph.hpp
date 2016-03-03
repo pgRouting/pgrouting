@@ -666,6 +666,8 @@ class Pgr_contractionGraph {
                     graph[e].type = 0;
                 }
             }
+
+        #if 0
          void graph_add_shortcut(const Edge &edge ) {
             bool inserted;
             LI vm_s, vm_t;
@@ -703,7 +705,8 @@ class Pgr_contractionGraph {
                 graph[e].type = edge.type;
             }
         }
-
+        
+        #endif
 
         void disconnect_edge_c(int64_t p_from, int64_t p_to) {
             V g_from;

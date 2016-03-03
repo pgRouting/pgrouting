@@ -46,7 +46,7 @@ template < class G >
 void pgr_contractGraph(
 	G &graph, int64_t *contraction_order,
 	size_t size_contraction_order,
-	int64_t num_cycles,
+	int64_t max_cycles,
 	std::ostringstream& contracted_graph_name,
 	std::ostringstream& contracted_graph_blob,
 	std::ostringstream& removedEdges,
@@ -60,7 +60,7 @@ void pgr_contractGraph(
 	{
 		contract_order.push_back(contraction_order[i]);
 	}
-	for (int64_t i = 0; i < num_cycles; ++i)
+	for (int64_t i = 0; i < max_cycles; ++i)
 	{
 		int64_t front=contract_order.front();
 		debug << "Starting cycle " << i+1 << "\n";
@@ -256,7 +256,7 @@ Pgr_contract< G >::remove_1_degree_vertices(G &graph) {
 	}
 }
 
-#if 1
+#if 0
 template < class G >
 void
 Pgr_contract< G >::remove_2_degree_vertices(G &graph) {

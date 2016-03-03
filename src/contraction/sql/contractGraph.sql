@@ -31,7 +31,7 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
     edges_sql TEXT,
     vertices_sql TEXT,
     contraction_order ANYARRAY,
-    num_cycles BIGINT,
+    max_cycles BIGINT,
     directed BOOLEAN DEFAULT true,
     OUT contracted_graph_name TEXT,
     OUT contracted_graph_blob TEXT,
