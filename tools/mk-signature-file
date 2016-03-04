@@ -64,6 +64,13 @@ close(SIG);
 
 exit 0;
 
+sub writeout {
+    my ($file, $data) = @_;
+    open(TMPOUT, ">$file") || die "ERROR: Failed to create '$file' : $!\n";
+    print TMPOUT $data;
+    close(TMPOUT);
+}
+
 # open the input file
 # manipulate it with regular expression to extract what we need
 sub parse_signatures {
@@ -85,7 +92,13 @@ sub parse_signatures {
         \*/
     } []gsx;
     # delete sql comments
+    #writeout('aa', $data);
+    $data =~ s/^--[^\n]*\n//mgs;
+    #writeout('bb', $data);
+    $data =~ s/'[^']*'/''/gs;
+    #writeout('cc', $data);
     $data =~ s/--[^\n]*\n//gs;
+    #writeout('dd', $data);
 
     # extract TYPEs
 
