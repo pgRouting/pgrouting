@@ -1,5 +1,5 @@
 -- -------------------------------------------------------------------
--- pgrouting_utilities.sql
+-- pgrouting_version.sql
 -- AuthorL Stephen Woodbridge <woodbri@imaptools.com>
 -- Copyright 2013 Stephen Woodbridge
 -- This file is release unde an MIT-X license.

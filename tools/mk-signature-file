@@ -91,7 +91,7 @@ sub parse_signatures {
         .*?
         END;?\s*\$(BODY)?\$
     } []gsxi;
-    #writeout('a1', $data);
+    writeout('a1', $data) if $DEBUG;
     # delete C style comments
     $data =~ s{
         /\*
@@ -99,15 +99,17 @@ sub parse_signatures {
         \*/
     } []gsx;
     # delete sql comments
-    writeout('aa', $data)  if $DEBUG ;
+    writeout('aa', $data) if $DEBUG;
     $data =~ s/^--[^\n]*\n//mgs;
-    writeout('bb', $data)  if $DEBUG;
+    writeout('aa1', $data) if $DEBUG;
+    $data =~ s/^ +//mgs;
+    writeout('bb', $data) if $DEBUG;
     $data =~ s/'[^\']*'/''/gs;
     writeout('bb1', $data)  if $DEBUG;
     $data =~ s/\bdefault\s+''//gs;
-    writeout('cc', $data)  if $DEBUG;
+    writeout('cc', $data) if $DEBUG;
     $data =~ s/--[^\n]*\n//gs;
-    writeout('dd', $data)  if $DEBUG;
+    writeout('dd', $data) if $DEBUG;
 
     # extract TYPEs
 
@@ -132,7 +134,7 @@ sub parse_signatures {
 
     # extract all "create or replace function <name>(<args>) returns"
     # and sort them
-    my @funcs = $data =~ /create\s+or\s+replace\s+function\s+(\w+\s*\([^\)]+\))\s*RETURNS/igs;
+    my @funcs = $data =~ /create\s+or\s+replace\s+function\s+(\w+\s*\([^\)]+\))/igs;
     @funcs = sort @funcs;
 
     # clean up functions
