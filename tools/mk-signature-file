@@ -29,10 +29,12 @@ eval 'exec /usr/bin/perl -S $0 ${1+"$@"}'
 # ------------------------------------------------------------
 
 use strict;
+use warnings;
+
 use Data::Dumper;
 use Cwd qw(cwd chdir);
 
-my $DEBUG = 1;
+my $DEBUG = 0;
 
 sub Usage {
     die "Usage: mk-signature-file <version>\n";
@@ -104,9 +106,17 @@ sub parse_signatures {
     writeout('aa1', $data) if $DEBUG;
     $data =~ s/^ +//mgs;
     writeout('bb', $data) if $DEBUG;
+    # remove all text enclosed in single quotes(')
     $data =~ s/'[^\']*'/''/gs;
-    writeout('bb1', $data)  if $DEBUG;
-    $data =~ s/\bdefault\s+''//gs;
+    # remove the default clauses
+    {
+        # temporarily disable warnings for the next command
+        # because either $2 OR $3 will always be uninitialized
+        no warnings 'uninitialized';
+        $data =~ s/\bdefault\s*[^,)]+((,)|\)\s*(\)))/$2$3/igs;
+    }
+    # and now clean up the other cases
+    $data =~ s/\bdefault[^)]+\)/\)/igs;
     writeout('cc', $data) if $DEBUG;
     $data =~ s/--[^\n]*\n//gs;
     writeout('dd', $data) if $DEBUG;
@@ -141,8 +151,6 @@ sub parse_signatures {
     for (my $i=0; $i<@funcs; $i++) {
         # compress multiple white spaces into a single <space>
         $funcs[$i] =~ s/\s+/ /gs;
-        # remove DEFAULT clauses
-        $funcs[$i] =~ s/\sdefault\s*((?:\()[^\)]+\)|[^\(\),]+)//ig;
         # remove argument names and keep IN|OUT and type name
         $funcs[$i] =~ s/(IN|OUT)\s(\w+)\s([^,\)]+)/$1 $3/ig;
         # remove <space> following "("
