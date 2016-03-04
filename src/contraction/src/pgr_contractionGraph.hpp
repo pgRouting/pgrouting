@@ -568,7 +568,8 @@ class Pgr_contractionGraph {
         //degree_to_V degree_to_V_map;
         int64_t last_edge_id;
         typedef typename std::map< int64_t, std::vector<V> >::iterator degree_to_V_i;
-
+        template <class H>
+        friend std::ostringstream& operator <<(std::ostringstream& os,const Pgr_contractionGraph<H>& Graph_c);
         std::map<int64_t, Edge> removed_edges_c;
         //! \brief Inserts *count* edges of type *pgr_edge_t* into the graph,their degrees
         void graph_insert_data_c(const pgr_edge_t *data_edges, int64_t count) {
@@ -816,7 +817,29 @@ class Pgr_contractionGraph {
          }
      }
 
+
 };
 
+template <class G> 
+std::ostringstream& operator<<(std::ostringstream& debug, const Pgr_contractionGraph<G>& Graph_c)
+{
+    typedef typename boost::graph_traits < G >::vertex_iterator V_i;
+    typedef typename boost::graph_traits < G >::out_edge_iterator EO_i;
+    EO_i out, out_end;
+    V_i vi;
+
+    for (vi = vertices(Graph_c.graph).first; vi != vertices(Graph_c.graph).second; ++vi) {
+    if ((*vi) >= Graph_c.m_num_vertices) continue;
+        debug << (*vi) << " out_edges(" << Graph_c.graph[(*vi)].id << "):";
+        for (boost::tie(out, out_end) = out_edges(*vi, Graph_c.graph);
+            out != out_end; ++out) {
+                debug << ' ' << Graph_c.graph[*out].id << "=(" << Graph_c.graph[source(*out, Graph_c.graph)].id
+                << ", " << Graph_c.graph[target(*out, Graph_c.graph)].id << ") = "
+                <<  Graph_c.graph[*out].cost <<"\t";
+             }
+             debug << std::endl;
+         }
+         return debug;
+}
 
 #endif // SRC_CONTRACTION_SRC_CONTRACTION_GRAPH_HPP_

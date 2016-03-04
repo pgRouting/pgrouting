@@ -62,7 +62,7 @@ do_pgr_contractGraph(
         size_t total_tuples,
         int64_t *contraction_order,
         size_t size_contraction_order,
-        int64_t num_cycles,
+        int64_t max_cycles,
         bool directed,
         pgr_contracted_blob **return_tuples,
         size_t *return_count,
@@ -88,13 +88,21 @@ do_pgr_contractGraph(
             log << contraction_order[i] << ", ";
         }
         log << " }\n";
-        log << "num_cycles " << num_cycles << "\n";
+        log << "max_cycles " << max_cycles << "\n";
         log << "directed " << directed << "\n";
 
         log << "gType " << gType << "\n";
         log << "total_tuples " << initial_size << "\n";
         if (total_tuples == 1) {
             log << "Requiered: more than one tuple\n";
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            *err_msg = strdup(log.str().c_str());
+            return;
+        }
+        if (max_cycles<1)
+        {
+            log << "Required: atleast one cycle\n";
             (*return_tuples) = NULL;
             (*return_count) = 0;
             *err_msg = strdup(log.str().c_str());
@@ -107,6 +115,7 @@ do_pgr_contractGraph(
             Pgr_contractionGraph< CDirectedGraph > digraph(gType, initial_size);
             digraph.graph_insert_data_c(data_edges, total_tuples);
 #ifdef DEBUG
+            log << digraph;
            // digraph.print_graph(log);
 #endif
 #if 0
@@ -118,7 +127,7 @@ do_pgr_contractGraph(
             */
             
             pgr_contractGraph(digraph,contraction_order,
-                size_contraction_order,num_cycles,
+                size_contraction_order,max_cycles,
                 contracted_graph_name,contracted_graph_blob,removedEdges,
                 removedVertices,psuedoEdges,debug);
             log << debug.str().c_str() << "\n";
@@ -130,13 +139,15 @@ do_pgr_contractGraph(
             #if 1
             Pgr_contractionGraph< CUndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data_c(data_edges, total_tuples);
+
 #ifdef DEBUG
+            log << undigraph;
             //undigraph.print_graph_c(log);
 #endif
 #if 1
             /* Function call to get the contracted graph. */
             pgr_contractGraph(undigraph,contraction_order,
-                    size_contraction_order,num_cycles,
+                    size_contraction_order,max_cycles,
                     contracted_graph_name, contracted_graph_blob, removedEdges,
                     removedVertices, psuedoEdges,debug);
             log << debug.str().c_str() << "\n";
