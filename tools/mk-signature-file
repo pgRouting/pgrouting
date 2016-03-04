@@ -85,6 +85,13 @@ sub parse_signatures {
 
     # manipulate the data with regular expressions
 
+    # delete function bodies
+    $data =~ s{
+        AS\s*\$(BODY)?\$
+        .*?
+        END;?\s*\$(BODY)?\$
+    } []gsxi;
+    #writeout('a1', $data);
     # delete C style comments
     $data =~ s{
         /\*
@@ -92,10 +99,11 @@ sub parse_signatures {
         \*/
     } []gsx;
     # delete sql comments
-    #writeout('aa', $data);
+    writeout('aa', $data);
     $data =~ s/^--[^\n]*\n//mgs;
     #writeout('bb', $data);
-    $data =~ s/'[^']*'/''/gs;
+    $data =~ s/'[^\']*'/''/gs;
+    $data =~ s/\bdefault\s+''//gs;
     #writeout('cc', $data);
     $data =~ s/--[^\n]*\n//gs;
     #writeout('dd', $data);
