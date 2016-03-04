@@ -178,12 +178,27 @@ typedef struct {
     double Ddist;
 } Customer_t;
 
+/*
+    OUT seq INTEGER,        done in the .c code
+    OUT vehicle_seq INTEGER,
+    OUT vehicle_id INTEGER,
+    OUT order_id BIGINT,
+    OUT travelTime FLOAT,
+    OUT arrivalTime FLOAT,
+    OUT waitTime FLOAT,
+    OUT serviceTime FLOAT,
+    OUT departureTime FLOAT,
+*/
+
 typedef struct  {
     int vehicle_seq;
     int vehicle_id;
     int64_t order_id;
-    double cost;
-    double agg_cost;
+    double travelTime;
+    double arrivalTime;
+    double waitTime;
+    double serviceTime;
+    double departureTime;
 } General_vehicle_orders_t;
 
 /*************************************************************************/

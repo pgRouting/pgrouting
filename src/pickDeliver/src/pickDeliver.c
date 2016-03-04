@@ -187,11 +187,11 @@ pickDeliver(PG_FUNCTION_ARGS) {
          ********************************************************************************/
 
 
-        values = palloc(8 * sizeof(Datum));
-        nulls = palloc(8 * sizeof(char));
+        values = palloc(9 * sizeof(Datum));
+        nulls = palloc(9 * sizeof(char));
 
         size_t i;
-        for(i = 0; i < 8; ++i) {
+        for(i = 0; i < 9; ++i) {
             nulls[i] = ' ';
         }
 
@@ -201,8 +201,12 @@ pickDeliver(PG_FUNCTION_ARGS) {
         values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
         values[2] = Int32GetDatum(result_tuples[call_cntr].vehicle_id);
         values[3] = Int64GetDatum(result_tuples[call_cntr].order_id);
-        values[4] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
-        values[5] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+        values[4] = Float8GetDatum(result_tuples[call_cntr].travelTime);
+        values[5] = Float8GetDatum(result_tuples[call_cntr].arrivalTime);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].waitTime);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].serviceTime);
+        values[8] = Float8GetDatum(result_tuples[call_cntr].departureTime);
+
         /*******************************************************************************/
 
         tuple = heap_formtuple(tuple_desc, values, nulls);

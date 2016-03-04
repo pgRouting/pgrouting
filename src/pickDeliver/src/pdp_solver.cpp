@@ -101,6 +101,9 @@ int64_t Solver(
             c1[0].Etime, c1[0].Ltime, c1[0].Stime,
             c1[0].Pindex, c1[0].Dindex
             });
+    // TODO DEPOT: verify id, demand, Etime, Stime, Pindex, Dindex are all 0 
+
+
 
     if (total_tuples != 107) {
         return 0;
@@ -270,10 +273,10 @@ TabuSearch(const std::vector<Customer_t> &customers,
  * For each route in the solution:
  *    For each node in the route in the solution:
  *       this is the route.
- *       d, p0, p1 .... pn, d
- *       (rid, nid, cost) 
- *       (1, d, 0)
- *       (1, p0, 0 + dist(d, p0) OR etime)
+ *       example for 1 vehicle
+ *       1 1 1 id=0 deltaLoad=0 departingload = 0 travelTime= 0 arrivalTime=0   serviceTime=0 waitTime=0 departureTime=0 totalLoad
+ *       2 2 1 id=1 deltaLoad arrivalTime=d01 travelTime=d01 serviceTime=service(1) waitTime=(0 or waittime)  departureTime = arrivalTime + waitTime + service(1)  totalLoad
+ *
  */
 static
 void
@@ -288,47 +291,81 @@ get_result(
     int twv = 0;
     int cv = 0;
 #endif
-    int route_id = 0;
-    int seq = 1;
+    int vehicle_id = 1;
     solution.UpdateSol(customers);
+    double agg_cost = 0;
+
+    /* each route is a vehicle */
     for (const auto &route : solution.routes) {
-        double agg_cost = 0;
-        double distance = 0;
+        double departureTime = 0;
+        double travelTime = 0;
         double agg_load = 0;
-        result.push_back({seq, route_id, depot.id, agg_cost, agg_cost});
-        ++seq;
+
+        /* starting a new vehicle */
+        int vehicle_seq = 1;
+
+        /* first stop is the depot */
+        result.push_back({vehicle_seq, vehicle_id, depot.id, travelTime, 0, 0, 0, departureTime});
+
+        ++vehicle_seq;
 
         int64_t prev_node = -1;
         for (const auto &node : route.path) {
 
+            /****************
+             *  travelTime
+             * *********** */
             if (node == route.path.front()) {
                 /*
                  * Is the first node or last node in the path
                  */
-                distance = CalculateDistance(depot, customers[node]);
-                agg_cost += distance;
+                travelTime = CalculateDistance(depot, customers[node]);
             } else {
                 /*
                  * Between nodes
                  */
-                distance = CalculateDistance(customers[prev_node], customers[node]);
-                agg_cost += distance;
+                travelTime = CalculateDistance(customers[prev_node], customers[node]);
             }
 
-            if (agg_cost < customers[node].Etime) {
+            /****************
+             *  arrivalTime
+             * *********** */
+            double arrivalTime = departureTime + travelTime;
+
+
+
+            /****************
+             *  waitTime
+             * *********** */
+            double waitTime(0);
+            if (arrivalTime < customers[node].Etime) {
                 /*
-                 * Arrving before the opening time, adjust time, moving it to the opening time
+                 * Arrving before the opening time, wait until it opens
                  */
-                agg_cost = customers[node].Etime;
+                waitTime = customers[node].Etime - arrivalTime;
             }
+
+            /* *************
+             * serviceTime
+             * ********** */
+            double serviceTime = customers[node].Stime;
+
+            /* *************
+             * departureTime
+             * ********** */
+            departureTime = arrivalTime + waitTime + serviceTime;
 
             agg_load +=  customers[node].demand;
 
             result.push_back({
-                    seq,
-                    route_id,
+                    vehicle_seq,
+                    vehicle_id,
                     customers[node].id,
-                    agg_cost, agg_cost});
+                    travelTime,
+                    arrivalTime,
+                    waitTime,
+                    serviceTime,
+                    departureTime});
 #ifdef DEBUG
             result.push_back({
                     customers[node].id,
@@ -336,7 +373,7 @@ get_result(
                     customers[node].Ltime,
                     distance, distance});
             result.push_back({
-                    seq,
+                    vehicle_seq,
                     agg_cost > customers[node].Ltime? ++twv: twv,
                     agg_load > 200? ++cv: cv,
                     0, 0});
@@ -344,19 +381,21 @@ get_result(
 #endif
             agg_cost +=  customers[node].Stime;
             prev_node = node;
-            ++seq;
+            ++vehicle_seq;
         }
         /*
          * Going back to the depot
          */
-        agg_cost += CalculateDistance(customers[prev_node], depot);
-        result.push_back({seq, route_id, depot.id, agg_cost, agg_cost});
-        ++seq;
-        ++route_id;
+        travelTime = CalculateDistance(customers[prev_node], depot);
+        double arrivalTime = departureTime + travelTime;
+
+        result.push_back({vehicle_seq, vehicle_id, depot.id, travelTime, arrivalTime, 0, 0, 0});
+        ++vehicle_seq;
+        ++vehicle_id;
 #if 1
-        if (VehicleLength < route_id) break;
+        if (VehicleLength < vehicle_id) break;
 #endif
     }
-    result.push_back({0, 0, 0, solution.getCost(), solution.getCost()});
+    // result.push_back({0, 0, 0, solution.getCost(), solution.getCost()});
 }
 
