@@ -211,7 +211,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
   HISTORY
      Created: 2014/JUL/28 
 ************************************************************************/
-
+/*
 CREATE OR REPLACE FUNCTION _pgr_createIndex(
     sname text, tname text, colname text, indext text,
     IN reportErrs int default 1, IN fnName text default '_pgr_createIndex')
@@ -275,7 +275,7 @@ END;
 
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
-
+*/
 /************************************************************************
 .. function:: _pgr_get_statement( sql ) returns the original statement if its a prepared statement
 

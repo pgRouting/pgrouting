@@ -302,11 +302,11 @@ endforeach()
 
 list(APPEND LIST_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 
-if (CDEBUG)
+#if (CDEBUG)
     foreach (files ${LIST_PACKAGE_SQL_FILES})
         message("${files}")
     endforeach()
-endif()
+#endif()
 
 
 #add_subdirectory(src)

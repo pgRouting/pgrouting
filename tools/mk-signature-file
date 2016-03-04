@@ -32,7 +32,7 @@ use strict;
 use Data::Dumper;
 use Cwd qw(cwd chdir);
 
-my $DEBUG = 0;
+my $DEBUG = 1;
 
 sub Usage {
     die "Usage: mk-signature-file <version>\n";
@@ -99,14 +99,15 @@ sub parse_signatures {
         \*/
     } []gsx;
     # delete sql comments
-    writeout('aa', $data);
+    writeout('aa', $data)  if $DEBUG ;
     $data =~ s/^--[^\n]*\n//mgs;
-    #writeout('bb', $data);
+    writeout('bb', $data)  if $DEBUG;
     $data =~ s/'[^\']*'/''/gs;
+    writeout('bb1', $data)  if $DEBUG;
     $data =~ s/\bdefault\s+''//gs;
-    #writeout('cc', $data);
+    writeout('cc', $data)  if $DEBUG;
     $data =~ s/--[^\n]*\n//gs;
-    #writeout('dd', $data);
+    writeout('dd', $data)  if $DEBUG;
 
     # extract TYPEs
 
