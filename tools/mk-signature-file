@@ -134,7 +134,7 @@ sub parse_signatures {
 
     # extract all "create or replace function <name>(<args>) returns"
     # and sort them
-    my @funcs = $data =~ /create\s+or\s+replace\s+function\s+(\w+\s*\([^\)]+\))/igs;
+    my @funcs = $data =~ /create\s+or\s+replace\s+function\s+(\w+\s*\([^\)]*\))/igs;
     @funcs = sort @funcs;
 
     # clean up functions
