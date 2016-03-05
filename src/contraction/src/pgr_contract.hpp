@@ -116,9 +116,11 @@ public:
 		G &graph,
 		int64_t level);
 
-	void remove_1_degree_vertices(G &graph);
+	void dead_end_contraction(G &graph);
 
+	#if 0
 	void remove_2_degree_vertices(G &graph);
+	#endif
 
 	void calculateDegrees(G &graph);
 
@@ -152,11 +154,11 @@ private:
  /******************** IMPLEMENTATION ******************/
 
 
-/*
-degree to vertices map is already calculated in pgr_contractionGraph
-
-*/
-
+ //! \brief Calculates the degree of every vertex in the graph
+     /*!
+       - A map is generated which maps the degree to a vector of vertices of the particlaur degree 
+       - This map changes during the process of contraction 
+       */
 template < class G >
 void
 Pgr_contract< G >::calculateDegrees(G &graph) {
@@ -170,13 +172,16 @@ Pgr_contract< G >::calculateDegrees(G &graph) {
 }
 
 
+ //! \brief Generates the name of the contracted graph based upon the type of contraction
 template < class G >
 void
-Pgr_contract< G >::getGraphName(std::ostringstream& name,int64_t level)
+Pgr_contract< G >::getGraphName(std::ostringstream& name,contractionType ctype)
 {
-	name << "contracted_graph_" << level;
+	name << "contracted_graph_" << ctype;
 }
 
+
+#if 0
 template < class G >
 void
 Pgr_contract< G >::contract_to_level(G &graph,int64_t level)
@@ -193,9 +198,9 @@ Pgr_contract< G >::contract_to_level(G &graph,int64_t level)
 		;
 	}
 }
+#endif
 
-
-
+ //! \brief Returns the *degree_to_V_map* in string format
 template < class G >
 void
 Pgr_contract< G >::degreeMap(G &graph,std::ostringstream& dmap)
@@ -215,9 +220,18 @@ Pgr_contract< G >::degreeMap(G &graph,std::ostringstream& dmap)
 	}
 }
 
+//! \brief Performs dead-end contraction on the graph
+     /*!
+      
+       - Picks up vertices in the order of the vertex id
+       - Removes all those vertices with one incoming edge(directed)
+       - In case of undirected the vertices having one incoming and one outgoing edge(both of same id)
+       	 will be chosen.
+
+       */
 template < class G >
 void
-Pgr_contract< G >::remove_1_degree_vertices(G &graph) {
+Pgr_contract< G >::dead_end_contraction(G &graph) {
 	EO_i out,out_end;
 	V front;
 	//errors << "first vertex: " << front ;
@@ -369,6 +383,14 @@ Pgr_contract< G >::remove_2_degree_vertices(G &graph) {
 }
 #endif
 
+//! \brief Returns the information about the contracted graph in string format
+     /*!
+       
+       - Information about the outgoig edges of a particular vertex gets stored
+       - The information includes id,source,target,cost
+       - Edge information is delimited by "$" symbol  
+
+       */
 template < class G >
 int64_t
 Pgr_contract< G >::getGraph_string(G &graph,std::ostringstream& estring)
@@ -399,6 +421,14 @@ Pgr_contract< G >::getGraph_string(G &graph,std::ostringstream& estring)
 	return count;
 }
 
+
+//! \brief Returns the information about the removed edges after contraction in string format
+     /*!
+      
+       - The information of the removed edge includes id,source,target,cost
+       - Edge information is delimited by "$" symbol  
+
+       */
 template < class G >
 void
 Pgr_contract< G >::getRemovedE_string(G &graph,std::ostringstream& estring)
@@ -419,7 +449,13 @@ Pgr_contract< G >::getRemovedE_string(G &graph,std::ostringstream& estring)
 	<< re.second.target << "," << re.second.cost << ","
 	<<re.second.reverse_cost<< "$";
 }
+//! \brief Returns the information about the removed vertices after contraction in string format
+     /*!
+      
+       - The information of the removed vertex includes id
+       - Edge information is delimited by "$" symbol  
 
+       */
 template < class G >
 void
 Pgr_contract< G >::getRemovedV_string(std::ostringstream& vstring)
@@ -440,6 +476,13 @@ Pgr_contract< G >::getRemovedV_string(std::ostringstream& vstring)
 
 }
 
+//! \brief Returns the information about the new edges(shortcuts) after contraction in string format
+     /*!
+      
+       - The information of the shortcut includes id,source,target,cost
+       - Edge information is delimited by "$" symbol  
+
+       */
 template < class G >
 void
 Pgr_contract< G >::getPsuedoE_string(std::ostringstream& pstring)
