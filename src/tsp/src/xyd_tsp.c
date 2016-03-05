@@ -129,13 +129,14 @@ xyd_tsp(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
-        // CREATE OR REPLACE FUNCTION pgr_dijkstra(
-        // sql text,
-        // start_vid BIGINT,
-        // end_vid BIGINT,
-        // directed BOOLEAN default true,
-
-        PGR_DBG("Calling process");
+        /* distance_sql TEXT,
+         * start_id BIGINT,
+         * end_id BIGINT DEFAULT -1,
+         * OUT seq integer,
+         * OUT node integer,
+         * OUT cost FLOAT,
+         * OUT agg_cost FLOAT)
+         */
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
