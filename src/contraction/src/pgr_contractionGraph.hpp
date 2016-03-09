@@ -84,11 +84,11 @@ my_graph < UndirectedGraph > undigraph(gType, initial_size);
 
 typedef typename boost::adjacency_list < boost::vecS, boost::vecS,
         boost::undirectedS,
-        Vertex, Edge > CUndirectedGraph;
+        Vertex_c, Edge_c > CUndirectedGraph;
 
 typedef typename boost::adjacency_list < boost::vecS, boost::vecS,
         boost::bidirectionalS,
-        Vertex, Edge > CDirectedGraph;
+        Vertex_c, Edge_c > CDirectedGraph;
 
 template <class G>
 class Pgr_contractionGraph {
@@ -517,7 +517,7 @@ class Pgr_contractionGraph {
                      boost::add_edge(vm_s->second, vm_t->second, graph);
                  graph[e].cost = edge.cost;
                  graph[e].id = edge.id;
-                 graph[e].first = edge.first;
+                 //graph[e].first = edge.first;
              }
 
          }
@@ -547,7 +547,7 @@ class Pgr_contractionGraph {
                      boost::add_edge(vm_s->second, vm_t->second, graph);
                  graph[e].cost = edge.cost;
                  graph[e].id = edge.id;
-                 graph[e].first = true;
+                 //graph[e].first = true;
              }
 
              if (edge.reverse_cost >= 0) {
@@ -555,7 +555,7 @@ class Pgr_contractionGraph {
                      boost::add_edge(vm_t->second, vm_s->second, graph);
                  graph[e].cost = edge.reverse_cost;
                  graph[e].id = edge.id;
-                 graph[e].first = false;
+                 //graph[e].first = false;
              }
          }
 
@@ -571,6 +571,8 @@ class Pgr_contractionGraph {
         template <class H>
         friend std::ostringstream& operator <<(std::ostringstream& os,const Pgr_contractionGraph<H>& Graph_c);
         std::map<int64_t, Edge> removed_edges_c;
+
+
         //! \brief Inserts *count* edges of type *pgr_edge_t* into the graph,their degrees
         void graph_insert_data_c(const pgr_edge_t *data_edges, int64_t count) {
             for (unsigned int i = 0; i < count; ++i) {
@@ -580,12 +582,14 @@ class Pgr_contractionGraph {
             for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i ) {
                 graph[i].id = gVertices_map.find(i)->second;
                 // initilializing the properties of a vertex
-                graph[i].contractions = 0;
-                graph[i].degree = out_degree(graph[i].id);
+                //graph[i].contractions = 0;
+                //graph[i].degree = out_degree(graph[i].id);
                 //degree_to_V_map[graph[i].degree].push_back(i);
             }
             last_edge_id=count;
         }
+
+        //! \brief Inserts edges of type *pgr_edge_t* into the graph from a vector of edges
         void graph_insert_data_c( const std::vector <pgr_edge_t > &data_edges) {
             for (const auto edge : data_edges) {
                 graph_add_edge(edge);
@@ -595,13 +599,15 @@ class Pgr_contractionGraph {
             for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i ) {
                 graph[i].id = gVertices_map.find(i)->second;
                 // initilializing the properties of a vertex
-                graph[i].contractions = 0;
-                graph[i].degree = out_degree(graph[i].id);
+                //graph[i].contractions = 0;
+                //graph[i].degree = out_degree(graph[i].id);
                 //degree_to_V_map[graph[i].degree].push_back(i);
             }
         }
-        void
-            graph_add_edge_c(const boost_edge_t &edge ) {
+
+
+        //! \brief Insert a single edge of type *boost_edge_t* into the graph
+        void graph_add_edge_c(const boost_edge_t &edge ) {
                 bool inserted;
                 LI vm_s, vm_t;
                 E e;
@@ -625,12 +631,13 @@ class Pgr_contractionGraph {
                         boost::add_edge(vm_s->second, vm_t->second, graph);
                     graph[e].cost = edge.cost;
                     graph[e].id = edge.id;
-                    graph[e].first = edge.first;
+                    //graph[e].first = edge.first;
                     graph[e].type = 0;
                 }
             }
-            void
-            graph_add_edge_c(const pgr_edge_t &edge ) {
+
+            //! \brief Insert a single edge of type *pgr_edge_t* into the graph
+            void graph_add_edge_c(const pgr_edge_t &edge ) {
                 bool inserted;
                 LI vm_s, vm_t;
                 E e;
@@ -654,7 +661,7 @@ class Pgr_contractionGraph {
                         boost::add_edge(vm_s->second, vm_t->second, graph);
                     graph[e].cost = edge.cost;
                     graph[e].id = edge.id;
-                    graph[e].first = true;
+                    //graph[e].first = true;
                     graph[e].type = 0;
                 }
 
@@ -663,7 +670,7 @@ class Pgr_contractionGraph {
                         boost::add_edge(vm_t->second, vm_s->second, graph);
                     graph[e].cost = edge.reverse_cost;
                     graph[e].id = edge.id;
-                    graph[e].first = false;
+                    //graph[e].first = false;
                     graph[e].type = 0;
                 }
             }
@@ -709,6 +716,19 @@ class Pgr_contractionGraph {
         
         #endif
 
+
+        //! \brief Disconnects all edges from p_from to p_to
+       /*!
+       - No edge is disconnected if the vertices id's do not exist in the graph
+       - All removed edges are stored for future reinsertion
+       - All parallel edges are disconnected (automatically by boost)
+
+       ![disconnect_edge(2,3) on an UNDIRECTED graph](disconnectEdgeUndirected.png)
+       ![disconnect_edge(2,3) on a DIRECTED graph](disconnectEdgeDirected.png)
+
+       @param [IN] *p_from* original vertex id of the starting point of the edge
+       @param [IN] *p_to*   original vertex id of the ending point of the edge
+       */
         void disconnect_edge_c(int64_t p_from, int64_t p_to) {
             V g_from;
             V g_to;
@@ -734,6 +754,15 @@ class Pgr_contractionGraph {
             boost::remove_edge(g_from, g_to, graph);
         }
 
+        //! \brief Disconnects the outgoing edges with a particular original id from a vertex
+     /*!
+       - No edge is disconnected if it doesn't exist in the graph
+       - Removed edges are stored for future reinsertion
+       - all outgoing edges with the edge_id are removed if they exist
+
+       @param [IN] *vertex_id* original vertex
+       @param [IN] *edge_id* original edge_id
+       */
         void disconnect_out_going_edge_c(int64_t vertex_id, int64_t edge_id) {
             V v_from;
             Edge d_edge;
@@ -766,6 +795,20 @@ class Pgr_contractionGraph {
             }
         }
 
+        //! \brief Disconnects all incoming and outgoing edges from the vertex
+     /*!
+       boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
+       simulated by disconnecting the vertex from the graph
+
+       - No edge is disconnected if the vertices id's do not exist in the graph
+       - All removed edges are stored for future reinsertion
+       - All parallel edges are disconnected (automatically by boost)
+
+       ![disconnect_vertex(2) on an UNDIRECTED graph](disconnectVertexUndirected.png)
+       ![disconnect_vertex(2) on a DIRECTED graph](disconnectVertexDirected.png)
+
+       @param [IN] *p_vertex* original vertex id of the starting point of the edge
+       */
         void disconnect_vertex_c(int64_t p_vertex) {
             V g_vertex;
             Edge d_edge;
@@ -804,7 +847,7 @@ class Pgr_contractionGraph {
         }
 
         
-
+        #if 0
      void print_graph_c(std::ostream &log = std::cout) const {
          EO_i out, out_end;
          V_i vi;
@@ -816,10 +859,17 @@ class Pgr_contractionGraph {
              log << std::endl;
          }
      }
-
+     #endif
 
 };
+//! \brief Prints the information about the graph
+     /*!
+       
+       - Each vertex gets printed. 
+       - Information about the outgoig edges of a particular vertex gets printed
+       - The information includes id,source,target,cost 
 
+       */
 template <class G> 
 std::ostringstream& operator<<(std::ostringstream& debug, const Pgr_contractionGraph<G>& Graph_c)
 {
