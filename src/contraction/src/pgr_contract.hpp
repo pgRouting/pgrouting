@@ -32,7 +32,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <iostream>
 #include <sstream>
 #include <deque>
-#include <string> 
+#include <queue>
+#include <string>
+#include <functional>
 extern "C" {
 #include "postgres.h"
 }
@@ -112,9 +114,12 @@ public:
 	typedef typename G::EO_i EO_i;
 	typedef typename G::degree_to_V_i degree_to_V_i;
 
+
+	#if 0
 	void contract_to_level(
 		G &graph,
 		int64_t level);
+	#endif
 
 	void dead_end_contraction(G &graph);
 
@@ -126,7 +131,7 @@ public:
 
 	void degreeMap(G &graph,std::ostringstream& dmap);
 
-	void getGraphName(std::ostringstream& name,int64_t level);
+	void getGraphName(std::ostringstream& name,contractionType ctype);
 
 	int64_t getGraph_string(G &graph,std::ostringstream& estring);
 	
@@ -140,7 +145,7 @@ public:
 	typedef typename std::map<V,std::deque<Edge> >::iterator removed_V_i;
 	typedef typename std::map<int64_t , std::pair<int64_t,int64_t> > psuedo_E;
 	typedef typename std::map<int64_t , std::pair<int64_t,int64_t> >::iterator psuedo_E_i;
-	typedef typename std::map< int64_t, std::vector<V> > degree_to_V;
+	typedef std::map< int64_t, std::priority_queue<int64_t, std::vector<int64_t>, std::greater<int> > > degree_to_V;
 	typedef typename std::vector<V>::iterator Q_i;
 private:
 	int64_t last_edge_id;
@@ -167,7 +172,7 @@ Pgr_contract< G >::calculateDegrees(G &graph) {
 	for (auto vi = vertices(graph.graph).first; vi != vertices(graph.graph).second; ++vi) 
 	{
 		//graph.graph[(*vi)].degree=boost::out_degree(*vi,graph.graph);
-		degree_to_V_map[graph.graph[(*vi)].degree].push_back(*vi);
+		degree_to_V_map[graph.graph[(*vi)].degree].push((*vi).id);
 	}
 }
 
@@ -177,7 +182,7 @@ template < class G >
 void
 Pgr_contract< G >::getGraphName(std::ostringstream& name,contractionType ctype)
 {
-	name << "contracted_graph_" << ctype;
+	name << "contracted_graph_" << static_cast<int>(ctype);
 }
 
 
@@ -200,6 +205,8 @@ Pgr_contract< G >::contract_to_level(G &graph,int64_t level)
 }
 #endif
 
+
+#if 0
  //! \brief Returns the *degree_to_V_map* in string format
 template < class G >
 void
@@ -219,6 +226,7 @@ Pgr_contract< G >::degreeMap(G &graph,std::ostringstream& dmap)
 		dmap << "\n";
 	}
 }
+#endif
 
 //! \brief Performs dead-end contraction on the graph
      /*!
@@ -232,40 +240,34 @@ Pgr_contract< G >::degreeMap(G &graph,std::ostringstream& dmap)
 template < class G >
 void
 Pgr_contract< G >::dead_end_contraction(G &graph) {
-	EO_i out,out_end;
+	E_i in,in_end;
 	V front;
 	//errors << "first vertex: " << front ;
-	std::vector<V> one_degree_vertices=degree_to_V_map[1];
+	//std::vector<V> one_degree_vertices=degree_to_V_map[1];
 	degree_to_V_i it;
-	std::cout << "1 degree vertices " << one_degree_vertices.size();
+	//std::cout << "1 degree vertices " << one_degree_vertices.size();
 	//std::cout << "Front id" << frontid;
-	graph.m_num_vertices--;	
+	//graph.m_num_vertices--;	
 	while (degree_to_V_map[1].size()>0)
 	{
 		//std::cout << "Front " << graph.graph[front].id;
-		V front=degree_to_V_map[1].front();
-		int64_t frontid=graph.graph[front].id;	
-		for (boost::tie(out, out_end) = out_edges(front, graph.graph);
-			out != out_end; ++out) 
-		{
-			V s=source(*out, graph.graph);
-			V t=target(*out, graph.graph);
-			int64_t source_id=graph.graph[s].id;
-			graph.graph[t].contractions++;
-			int prev_target_degree=graph.graph[t].degree;
-			graph.graph[t].degree--;
-			int64_t final_target_degree=prev_target_degree-1;
-			degree_to_V_map[final_target_degree].push_back(t);
-			Edge removed_edge=graph.graph[*out];
-			removedVertices[frontid].push_front(removed_edge);
-			graph.disconnect_vertex_c(source_id);
-			graph.m_num_vertices--;
-		}
-		degree_to_V_map[1].erase(degree_to_V_map[1].begin(),
-			degree_to_V_map[1].begin()+1);
-
-		front=degree_to_V_map[1].front();
-		frontid=graph.graph[front].id;
+		V front=degree_to_V_map[1].top();
+		degree_to_V_map[1].pop();
+		int64_t frontid=graph.graph[front].id;
+		boost::tie(in, in_end) = in_edges(front, graph.graph);
+		V s=source(*in, graph.graph);
+		V t=target(*in, graph.graph);
+		int64_t source_id=graph.graph[s].id;
+		int64_t target_id=graph.graph[t].id;
+		graph.graph[t].type=1;
+		//degree_to_V_map[final_target_degree].push_back(t);
+		//Edge removed_edge=graph.graph[*in];
+		//graph.graph[s].removed_vertices.
+		//removedVertices[frontid].push_front(removed_edge);
+		graph.disconnect_vertex_c(target_id);
+		graph.m_num_vertices--;
+		int source_degree=boost::in_degree(s, graph.graph);
+		degree_to_V_map[source_degree].push(s);
 		
 	}
 }
