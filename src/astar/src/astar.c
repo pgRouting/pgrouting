@@ -1,24 +1,29 @@
-/*
+/*PGR-GNU*****************************************************************
+
  * A* Shortest path algorithm for PostgreSQL
  *
  * Copyright (c) 2006 Anton A. Patrushev, Orkney, Inc.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- */
+Mail: project@pgrouting.org
 
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-GNU*/
+
+#include "../../common/src/pgr_types.h"
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -73,39 +78,12 @@ Datum shortest_path_astar(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
-
-#ifdef DEBUG
-#define DBG(format, arg...)                     \
-    elog(NOTICE, format , ## arg)
-#else
-#define DBG(format, arg...) do { ; } while (0)
-#endif
+#include "../../common/src/debug_macro.h"
+#include "../../common/src/pgr_types.h"
+#include "../../common/src/postgres_connection.h"
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
-
-static char *
-text2char(text *in)
-{
-  char *out = palloc(VARSIZE(in));
-
-  memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
-  out[VARSIZE(in) - VARHDRSZ] = '\0';
-  return out;
-}
-
-static int 
-finish(int code, int ret)
-{
-  code = SPI_finish();
-  if (code  != SPI_OK_FINISH )
-    {
-      elog(ERROR,"couldn't disconnect from SPI");
-      return -1 ;
-    }
-
-  return ret;
-}
 
 typedef struct edge_astar_columns 
 {
@@ -151,7 +129,7 @@ fetch_edge_astar_columns(SPITupleTable *tuptable,
       return -1;
   }
 
-  DBG("columns: id %i source %i target %i cost %i", 
+  PGR_DBG("columns: id %i source %i target %i cost %i", 
       edge_columns->id, edge_columns->source, 
       edge_columns->target, edge_columns->cost);
 
@@ -171,7 +149,7 @@ fetch_edge_astar_columns(SPITupleTable *tuptable,
           return -1;
       }
 
-      DBG("columns: reverse_cost cost %i", edge_columns->reverse_cost);
+      PGR_DBG("columns: reverse_cost cost %i", edge_columns->reverse_cost);
   }
 
   edge_columns->s_x = SPI_fnumber(SPI_tuptable->tupdesc, "x1");
@@ -189,7 +167,7 @@ fetch_edge_astar_columns(SPITupleTable *tuptable,
       return -1;
   }
 
-  DBG("columns: x1 %i y1 %i x2 %i y2 %i", 
+  PGR_DBG("columns: x1 %i y1 %i x2 %i y2 %i", 
       edge_columns->s_x, edge_columns->s_y,
       edge_columns->t_x,edge_columns->t_y);
 
@@ -248,16 +226,15 @@ fetch_edge_astar(HeapTuple *tuple, TupleDesc *tupdesc,
 static int compute_shortest_path_astar(char* sql, int source_vertex_id, 
                        int target_vertex_id, bool directed, 
                        bool has_reverse_cost, 
-                       path_element_t **path, int *path_count) 
+                       path_element_t **path, size_t *path_count) 
 {
 
-  int SPIcode;
   void *SPIplan;
   Portal SPIportal;
   bool moredata = TRUE;
-  int ntuples;
+  size_t ntuples;
   edge_astar_t *edges = NULL;
-  int total_tuples = 0;
+  size_t total_tuples = 0;
 
   int v_max_id=0;
   int v_min_id=INT_MAX;  
@@ -278,33 +255,22 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
     int key;
   };
 
-  DBG("start shortest_path_astar\n");
+  PGR_DBG("start shortest_path_astar\n");
 
-  SPIcode = SPI_connect();
-  if (SPIcode  != SPI_OK_CONNECT) {
-      elog(ERROR, "shortest_path_astar: couldn't open a connection to SPI");
-      return -1;
-  }
+  pgr_SPI_connect();
+  SPIplan = pgr_SPI_prepare(sql);
+  SPIportal = pgr_SPI_cursor_open(SPIplan);
 
-  SPIplan = SPI_prepare(sql, 0, NULL);
-  if (SPIplan  == NULL) {
-      elog(ERROR, "shortest_path_astar: couldn't create query plan via SPI");
-      return -1;
-  }
-
-  if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
-      elog(ERROR, "shortest_path_astar: SPI_cursor_open('%s') returns NULL", 
-       sql);
-      return -1;
-  }
 
   while (moredata == TRUE) {
       SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
 
       if (edge_columns.id == -1) {
           if (fetch_edge_astar_columns(SPI_tuptable, &edge_columns, 
-                           has_reverse_cost) == -1)
-              return finish(SPIcode, ret);
+                           has_reverse_cost) == -1) {
+              pgr_SPI_finish();
+              return -1;
+          }
       }
 
       ntuples = SPI_processed;
@@ -316,11 +282,12 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
 
       if (edges == NULL) {
           elog(ERROR, "Out of memory");
-          return finish(SPIcode, ret);
+              pgr_SPI_finish();
+              return -1;
       }
 
       if (ntuples > 0) {
-          int t;
+          size_t t;
           SPITupleTable *tuptable = SPI_tuptable;
           TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
@@ -338,7 +305,7 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
 
   //defining min and max vertex id
 
-  DBG("Total %i tuples", total_tuples);
+  PGR_DBG("Total %i tuples", total_tuples);
 
   for(z=0; z<total_tuples; z++) {
     if(edges[z].source<v_min_id) v_min_id=edges[z].source;
@@ -346,7 +313,7 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
     if(edges[z].target<v_min_id) v_min_id=edges[z].target;
     if(edges[z].target>v_max_id) v_max_id=edges[z].target;      
 
-    DBG("%i <-> %i", v_min_id, v_max_id);
+    PGR_DBG("%i <-> %i", v_min_id, v_max_id);
   }
 
   //::::::::::::::::::::::::::::::::::::  
@@ -363,10 +330,10 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
 
     edges[z].source-=v_min_id;
     edges[z].target-=v_min_id;
-    DBG("%i - %i", edges[z].source, edges[z].target);
+    PGR_DBG("%i - %i", edges[z].source, edges[z].target);
   }
 
-  DBG("Total %i tuples", total_tuples);
+  PGR_DBG("Total %i tuples", total_tuples);
 
   if(s_count == 0) {
     elog(ERROR, "Start vertex was not found.");
@@ -378,12 +345,12 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
     return -1;
   }
 
-  DBG("Total %i tuples", total_tuples);
+  PGR_DBG("Total %i tuples", total_tuples);
 
   profstop("extract", prof_extract);
   profstart(prof_astar);
 
-  DBG("Calling boost_astar <%i>\n", total_tuples);
+  PGR_DBG("Calling boost_astar <%i>\n", total_tuples);
 
   // calling C++ A* function    
   ret = boost_astar(edges, total_tuples, source_vertex_id-v_min_id, 
@@ -395,21 +362,23 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
       elog(ERROR, "Error computing path: %s", err_msg);
   } 
 
-  DBG("SIZE %i\n",*path_count);
-  DBG("ret =  %i\n",ret);
+  PGR_DBG("SIZE %i\n",*path_count);
+  PGR_DBG("ret =  %i\n",ret);
 
   //::::::::::::::::::::::::::::::::
   //:: restoring original vertex id
   //::::::::::::::::::::::::::::::::
   for(z=0; z<*path_count; z++) {
-    //DBG("vetex %i\n",(*path)[z].vertex_id);
+    //PGR_DBG("vetex %i\n",(*path)[z].vertex_id);
     (*path)[z].vertex_id += v_min_id;
   }  
 
   profstop("astar", prof_astar);
   profstart(prof_store);
 
-  return finish(SPIcode, ret);
+  pgr_SPI_finish();
+  return 0;
+
 }
 
 
@@ -418,15 +387,15 @@ Datum
 shortest_path_astar(PG_FUNCTION_ARGS)
 {
   FuncCallContext     *funcctx;
-  int                  call_cntr;
-  int                  max_calls;
+  uint32_t                  call_cntr;
+  uint32_t                  max_calls;
   TupleDesc            tuple_desc;
   path_element_t      *path = 0;
 
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
-      int path_count = 0;
+      size_t path_count = 0;
 #ifdef DEBUG
       int ret;
 #endif
@@ -445,7 +414,7 @@ shortest_path_astar(PG_FUNCTION_ARGS)
 #ifdef DEBUG
       ret =
 #endif
- compute_shortest_path_astar(text2char(PG_GETARG_TEXT_P(0)),
+ compute_shortest_path_astar(pgr_text2char(PG_GETARG_TEXT_P(0)),
                     PG_GETARG_INT32(1),
                     PG_GETARG_INT32(2),
                     PG_GETARG_BOOL(3),
@@ -453,21 +422,21 @@ shortest_path_astar(PG_FUNCTION_ARGS)
                     &path, &path_count);
 
 #ifdef DEBUG
-      DBG("Ret is %i", ret);
+      PGR_DBG("Ret is %i", ret);
       int i;
       for (i = 0; i < path_count; i++) {
-          DBG("Step # %i vertex_id  %i ", i, path[i].vertex_id);
-          DBG("        edge_id    %i ", path[i].edge_id);
-          DBG("        cost       %f ", path[i].cost);
+          PGR_DBG("Step # %i vertex_id  %i ", i, path[i].vertex_id);
+          PGR_DBG("        edge_id    %i ", path[i].edge_id);
+          PGR_DBG("        cost       %f ", path[i].cost);
       }
 #endif
 
       /* total number of tuples to be returned */
-      DBG("Conting tuples number\n");
-      funcctx->max_calls = path_count;
+      PGR_DBG("Conting tuples number\n");
+      funcctx->max_calls = (uint32_t)path_count;
       funcctx->user_fctx = path;
 
-      DBG("Path count %i", path_count);
+      PGR_DBG("Path count %i", path_count);
 
       funcctx->tuple_desc = 
             BlessTupleDesc(RelationNameGetTupleDesc("pgr_costResult"));
@@ -476,7 +445,7 @@ shortest_path_astar(PG_FUNCTION_ARGS)
   }
 
   /* stuff done on every call of the function */
-  DBG("Strange stuff doing\n");
+  PGR_DBG("Strange stuff doing\n");
 
   funcctx = SRF_PERCALL_SETUP();
 
@@ -485,7 +454,7 @@ shortest_path_astar(PG_FUNCTION_ARGS)
   tuple_desc = funcctx->tuple_desc;
   path = (path_element_t*) funcctx->user_fctx;
 
-  DBG("Trying to allocate some memory\n");
+  PGR_DBG("Trying to allocate some memory\n");
 
   if (call_cntr < max_calls) {   /* do when there is more left to send */
         HeapTuple    tuple;
@@ -505,16 +474,16 @@ shortest_path_astar(PG_FUNCTION_ARGS)
         values[3] = Float8GetDatum(path[call_cntr].cost);
         nulls[3] = ' ';
 
-        DBG("Heap making\n");
+        PGR_DBG("Heap making\n");
 
         tuple = heap_formtuple(tuple_desc, values, nulls);
 
-        DBG("Datum making\n");
+        PGR_DBG("Datum making\n");
 
         /* make the tuple into a datum */
         result = HeapTupleGetDatum(tuple);
 
-        DBG("Trying to free some memory\n");
+        PGR_DBG("Trying to free some memory\n");
 
         /* clean up (this is not really necessary) */
         pfree(values);

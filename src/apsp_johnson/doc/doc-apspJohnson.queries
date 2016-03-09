@@ -1,0 +1,13 @@
+--q1
+SELECT * FROM pgr_apspJohnson(
+        'SELECT source::INTEGER, target::INTEGER, cost FROM edge_table WHERE id < 5'
+    );
+NOTICE:  Deprecated function: Use pgr_johnson instead
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   1 |   2 |    1
+   1 |   1 |   5 |    2
+   2 |   2 |   5 |    1
+(3 rows)
+
+--q2

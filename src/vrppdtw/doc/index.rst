@@ -9,12 +9,11 @@
 
 .. _pgr_gsocvrppdtw:
 
-pgr_vrppdtw - Pickup and Delivery problem 
+pgr_gsoc_vrppdtw
 ===============================================================================
 
 .. index:: 
-	single: pgr_gsocvrppdtw(text,integer,integer)
-	module: vrppdtw
+	single: pgr_gsoc_vrppdtw(text,integer,integer)
 
 Name
 -------------------------------------------------------------------------------

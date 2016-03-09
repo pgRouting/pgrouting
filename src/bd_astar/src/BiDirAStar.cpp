@@ -1,4 +1,5 @@
-/******************************************************************************
+/*PGR-MIT*****************************************************************
+
 * $Id$
 *
 * Project:  pgRouting bdsp and bdastar algorithms
@@ -6,46 +7,34 @@
 * Author:   Razequl Islam <ziboncsedu@gmail.com>
 *
 
-******************************************************************************
-* Permission is hereby granted, free of charge, to any person obtaining a
-* copy of this software and associated documentation files (the "Software"),
-* to deal in the Software without restriction, including without limitation
-* the rights to use, copy, modify, merge, publish, distribute, sublicense,
-* and/or sell copies of the Software, and to permit persons to whom the
-* Software is furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies of this Software or works derived from this Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-* OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-* THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-* DEALINGS IN THE SOFTWARE.
+------
+MIT/X license
 
-*****************************************************************************/
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-#undef DEBUG
-//#define DEBUG
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+********************************************************************PGR-MIT*/
+
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
-#endif
-
-
-#ifdef DEBUG
-#include <stdio.h>
-static FILE *dbg;
-#define DBG(format, arg...) \
-    dbg = fopen("/tmp/sew-debug", "a"); \
-    if (dbg) { \
-        fprintf(dbg, format,  ## arg); \
-        fclose(dbg); \
-    }
-#else
-#define DBG(format, arg...) do { ; } while (0)
 #endif
 
 
@@ -74,7 +63,7 @@ void BiDirAStar::initall(int maxNode)
 {
 	int i;
 
-    DBG("BiDirAStar::initall(%d) called\n", maxNode);
+    // DBG("BiDirAStar::initall(%d) called\n", maxNode);
 
 	m_pFParent = new PARENT_PATH[maxNode + 1];
 	m_pRParent = new PARENT_PATH[maxNode + 1];
@@ -96,7 +85,7 @@ void BiDirAStar::initall(int maxNode)
     // reserve space for nodes and edges
     m_vecNodeVector.reserve(maxNode + 1);
 
-    DBG("Leaving BiDirAStar::initall\n");
+    // DBG("Leaving BiDirAStar::initall\n");
 }
 
 /*
@@ -105,12 +94,12 @@ void BiDirAStar::initall(int maxNode)
 
 void BiDirAStar::deleteall()
 {
-    DBG("Calling BiDirAStar::deleteall\n");
+    // DBG("Calling BiDirAStar::deleteall\n");
 	delete [] m_pFParent;
 	delete [] m_pRParent;
 	delete [] m_pFCost;
 	delete [] m_pRCost;
-    DBG("Leaving BiDirAStar::deleteall\n");
+    // DBG("Leaving BiDirAStar::deleteall\n");
 }
 
 /*
@@ -230,13 +219,13 @@ void BiDirAStar::rconstruct_path(int node_id)
 //void BiDirAStar::explore(int cur_node, double cur_cost, int dir, std::priority_queue<PDI, std::vector<PDI>, std::greater<PDI> > &que)
 void BiDirAStar::explore(int cur_node, double cur_cost, int dir, MinHeap &que)
 {
-	int i;
+	size_t i;
 	// Number of connected edges
-	int con_edge = m_vecNodeVector[cur_node].Connected_Edges_Index.size();
+	auto con_edge = m_vecNodeVector[cur_node].Connected_Edges_Index.size();
 	double edge_cost;
 	for(i = 0; i < con_edge; i++)
 	{
-		int edge_index = m_vecNodeVector[cur_node].Connected_Edges_Index[i];
+		auto edge_index = m_vecNodeVector[cur_node].Connected_Edges_Index[i];
 		// Get the edge from the edge list.
 		GraphEdgeInfo edge = m_vecEdgeVector[edge_index];
 		// Get the connected node
@@ -315,8 +304,8 @@ void BiDirAStar::explore(int cur_node, double cur_cost, int dir, MinHeap &que)
 	node id. As we run node based exploration cost, parent etc will be based on maximam node id.
 */
 
-int BiDirAStar:: bidir_astar(edge_astar_t *edges, unsigned int edge_count, int maxNode, int start_vertex, int end_vertex,
-				path_element_t **path, int *path_count, char **err_msg)
+int BiDirAStar:: bidir_astar(edge_astar_t *edges, size_t edge_count, int maxNode, int start_vertex, int end_vertex,
+				path_element_t **path, size_t *path_count, char **err_msg)
 {
 	max_node_id = maxNode;
 	max_edge_id = -1;
@@ -351,7 +340,6 @@ int BiDirAStar:: bidir_astar(edge_astar_t *edges, unsigned int edge_count, int m
 	m_pRCost[end_vertex] = 0.0;
 	rque.push(std::make_pair(0.0, end_vertex));
 
-	int i;
 	// int new_node;
 	int cur_node;
 	// int dir;
@@ -418,7 +406,7 @@ int BiDirAStar:: bidir_astar(edge_astar_t *edges, unsigned int edge_count, int m
 		*path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
 		*path_count = m_vecPath.size();
 
-		for(i = 0; i < *path_count; i++)
+		for(size_t i = 0; i < *path_count; i++)
 		{
 			(*path)[i].vertex_id = m_vecPath[i].vertex_id;
 			(*path)[i].edge_id = m_vecPath[i].edge_id;
@@ -435,11 +423,11 @@ int BiDirAStar:: bidir_astar(edge_astar_t *edges, unsigned int edge_count, int m
 	corresponding edge indices from edge list that connect this node with the adjacent nodes.
 */
 
-bool BiDirAStar::construct_graph(edge_astar_t* edges, int edge_count, int maxNode)
+bool BiDirAStar::construct_graph(edge_astar_t* edges, size_t edge_count, int maxNode)
 {
 	int i;
 
-    DBG("Calling BiDirAStar::construct_graph(edges, ecnt:%d, maxNode:%d)\n", edge_count, maxNode);
+    // DBG("Calling BiDirAStar::construct_graph(edges, ecnt:%d, maxNode:%d)\n", edge_count, maxNode);
 
 	// Create a dummy node
 	GraphNodeInfo nodeInfo;
@@ -448,7 +436,7 @@ bool BiDirAStar::construct_graph(edge_astar_t* edges, int edge_count, int maxNod
 
 	// Insert the dummy node into the node list. This acts as place holder. Also change the nodeId so that nodeId and node index in the vector are same.
 	// There may be some nodes here that does not appear in the edge list. The size of the list is upto maxNode which is equal to maximum node id.
-    DBG("    Adding nodes to m_vecNodeVector\n");
+    // DBG("    Adding nodes to m_vecNodeVector\n");
 	for(i = 0; i <= maxNode; i++)
 	{
 		nodeInfo.NodeID = i;
@@ -456,15 +444,15 @@ bool BiDirAStar::construct_graph(edge_astar_t* edges, int edge_count, int maxNod
 	}
 
 	// Process each edge from the edge list and update the member data structures accordingly.
-    DBG("    Reserving edges for graph(%d)\n", edge_count);
+    // DBG("    Reserving edges for graph(%d)\n", edge_count);
     m_vecEdgeVector.reserve(edge_count);
-    DBG("    Adding edges to graph\n");
-	for(i = 0; i < edge_count; i++)
+    // DBG("    Adding edges to graph\n");
+	for(size_t i = 0; i < edge_count; i++)
 	{
 		addEdge(edges[i]);
 	}
 
-    DBG("Leaving BiDirAStar::construct_graph\n");
+    // DBG("Leaving BiDirAStar::construct_graph\n");
 	return true;
 }
 

@@ -1,11 +1,37 @@
-/*********************************************************************
-*
+/*PGR-MIT*****************************************************************
+
 *  $Id: tsplib.c,v 1.1 2006/05/13 23:39:56 woodbri Exp $
 *
 *  tsplib
 *  Copyright 2005,2013, Stephen Woodbridge, All rights Reserved
 *  This file is released under MIT-X license as part of pgRouting.
-*
+
+------
+MIT/X license
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+********************************************************************PGR-MIT*/
+
+/*
 **********************************************************************
 *
 *  tsplib.c
@@ -66,13 +92,8 @@
 
 #undef DEBUG
 //#define DEBUG 1
+#include "../../common/src/debug_macro.h"
 
-#ifdef DEBUG
-#define DBG(format, arg...)                     \
-    elog(NOTICE, format , ## arg)
-#else
-#define DBG(format, arg...) do { ; } while (0)
-#endif
 
 
 #define T_INIT                        100
@@ -91,8 +112,10 @@ static int a;
 static int b;
 static int arr[55];
 
-int Rand();
+static
+int Rand(void);
 
+static
 void initRand (int seed)
 {
     int i, ii;
@@ -117,6 +140,7 @@ void initRand (int seed)
         last = Rand ();
 }
 
+static
 int Rand (void)
 {
     int t;
@@ -169,6 +193,7 @@ typedef struct tspstruct {
  * Prim's approximated TSP tour
  * See also [Cristophides'92]
  */
+static
 int findEulerianPath(TSP *tsp)
 {
     int *mst, *arc;    
@@ -185,14 +210,14 @@ int findEulerianPath(TSP *tsp)
     maxd   = tsp->maxd;
     n      = tsp->n;
 
-    if (!(mst = (int*) palloc(n * sizeof(int))) ||
-        !(arc = (int*) palloc(n * sizeof(int))) ||
-        !(dis = (DTYPE*) palloc(n * sizeof(DTYPE))) )
+    if (!(mst = (int*) palloc((size_t) n * sizeof(int))) ||
+        !(arc = (int*) palloc((size_t) n * sizeof(int))) ||
+        !(dis = (DTYPE*) palloc((size_t) n * sizeof(DTYPE))) )
     {
         elog(ERROR, "Failed to allocate memory!");
         return -1;
     }
-    //DBG("findEulerianPath: 1");
+    //PGR_DBG("findEulerianPath: 1");
 
     k = -1;
     j = -1;
@@ -208,7 +233,7 @@ int findEulerianPath(TSP *tsp)
             j = i;
         }
     }
-    //DBG("findEulerianPath: j=%d", j);
+    //PGR_DBG("findEulerianPath: j=%d", j);
 
     if (j == -1)
         elog(ERROR, "Error TSP fail to findEulerianPath, check your distance matrix is valid.");
@@ -240,7 +265,7 @@ int findEulerianPath(TSP *tsp)
         }
         j = k;
     }
-    //DBG("findEulerianPath: 3");
+    //PGR_DBG("findEulerianPath: 3");
 
     /*
      * Preorder Tour of MST
@@ -265,11 +290,12 @@ int findEulerianPath(TSP *tsp)
             }    
         }
     }
-    //DBG("findEulerianPath: 4");
+    //PGR_DBG("findEulerianPath: 4");
 
     return 0;
 }
 
+static
 DTYPE pathLength (TSP *tsp)
 {
     unsigned int i;
@@ -295,6 +321,7 @@ DTYPE pathLength (TSP *tsp)
  *  ./     \.        .       .
  *  c       f        c-------f
  */
+static
 DTYPE getThreeWayCost (TSP *tsp, Path p)
 {
     int a, b, c, d, e, f;
@@ -313,6 +340,7 @@ DTYPE getThreeWayCost (TSP *tsp, Path p)
         /* add cost between d and e if non symetric TSP */ 
 }
 
+static
 void doThreeWay (TSP *tsp, Path p)
 {
     int i, count, m1, m2, m3, a, b, c, d, e, f;
@@ -351,6 +379,7 @@ void doThreeWay (TSP *tsp, Path p)
  *    /\        |  |
  *   a  d       a  d
  */
+static
 DTYPE getReverseCost (TSP *tsp, Path p)
 {
     int a, b, c, d;
@@ -366,7 +395,7 @@ DTYPE getReverseCost (TSP *tsp, Path p)
     return (D(d,b) + D(c,a) - D(a,b) - D(c,d));
     /* add cost between c and b if non symetric TSP */ 
 }
-
+static
 void doReverse(TSP *tsp, Path p)
 {
     int i, nswaps, first, last, tmp;
@@ -386,6 +415,7 @@ void doReverse(TSP *tsp, Path p)
     }
 }
 
+static
 void annealing(TSP *tsp)
 {
     Path   p;
@@ -442,12 +472,13 @@ void annealing(TSP *tsp)
             }
             if (pathchg > IMPROVED_PATH_PER_T) break; /* finish early */
         }   
-        DBG("T:%f L:%f B:%f C:%d", T, pathlen, tsp->bestlen, pathchg);
+        PGR_DBG("T:%f L:%f B:%f C:%d", T, pathlen, tsp->bestlen, pathchg);
         if (pathchg == 0) break;   /* if no change then quit */
     }
 }
 
 
+static
 void reverse(int num, int *ids)
 {
     int i, j, t;
@@ -471,21 +502,21 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     long  seed = -314159L;
     DTYPE blength;
 
-    DBG("sizeof(long)=%d", (int)sizeof(long));
+    PGR_DBG("sizeof(long)=%d", (int)sizeof(long));
 
-    initRand (seed);
+    initRand((int) seed);
 
 #ifdef DEBUG
     char bufff[2048];
     int nnn;
-    DBG("---------- Matrix[%d][%d] ---------------------\n", num, num);
+    PGR_DBG("---------- Matrix[%d][%d] ---------------------\n", num, num);
     for (i=0; i<num; i++) {
         sprintf(bufff, "%d:", i);
         nnn = 0;
         for (j=0; j<num; j++) {
             nnn += sprintf(bufff+nnn, "\t%.4f", cost[i*num+j]);
         }
-        DBG("%s", bufff);
+        PGR_DBG("%s", bufff);
     }
 #endif
 
@@ -496,9 +527,9 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     tsp.jorder = NULL;
     tsp.border = NULL;
 
-    if (!(tsp.iorder = (int*) palloc (tsp.n * sizeof(int)))   ||
-        !(tsp.jorder = (int*) palloc (tsp.n * sizeof(int)))   ||
-        !(tsp.border = (int*) palloc (tsp.n * sizeof(int)))   ) {
+    if (!(tsp.iorder = (int*) palloc ((size_t) tsp.n * sizeof(int)))   ||
+        !(tsp.jorder = (int*) palloc ((size_t) tsp.n * sizeof(int)))   ||
+        !(tsp.border = (int*) palloc ((size_t) tsp.n * sizeof(int)))   ) {
             elog(FATAL, "Memory allocation failed!");
             return -1;
         }
@@ -515,7 +546,7 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     tsp.bestlen = pathLength(&tsp);
     for (i = 0; i < tsp.n; i++) tsp.border[i] = tsp.iorder[i];
 
-    DBG("Initial Path Length: %.4f", tsp.bestlen);
+    PGR_DBG("Initial Path Length: %.4f", tsp.bestlen);
 
     /*
      * Set up first eulerian path iorder to be improved by
@@ -530,22 +561,22 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
         for (i = 0; i < tsp.n; i++) tsp.border[i] = tsp.iorder[i];
     }
 
-    DBG("Approximated Path Length: %.4f", blength);
+    PGR_DBG("Approximated Path Length: %.4f", blength);
 
     annealing(&tsp);
 
     *total_len = pathLength(&tsp);
-    DBG("Final Path Length: %.4f", *total_len);
+    PGR_DBG("Final Path Length: %.4f", *total_len);
 
     *total_len = tsp.bestlen;
     for (i=0; i<tsp.n; i++) tsp.iorder[i] = tsp.border[i];
-    DBG("Best Path Length: %.4f", *total_len);
+    PGR_DBG("Best Path Length: %.4f", *total_len);
 
     // reorder ids[] with start as first
 
 #ifdef DEBUG
     for (i=0; i<tsp.n; i++) {
-        DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d, jo[io[i]]: %d",
+        PGR_DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d, jo[io[i]]: %d",
             i, ids[i], tsp.iorder[i], tsp.jorder[i], tsp.jorder[tsp.iorder[i]]);
     }
 #endif
@@ -555,14 +586,14 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
         if (ids[i] == start) istart = i;
         if (ids[i] == end)   iend = i;
     }
-    DBG("istart: %d, iend: %d", istart, iend);
+    PGR_DBG("istart: %d, iend: %d", istart, iend);
 
     // get the idex of start in iorder
     for (i=0; i < tsp.n; i++) {
         if (tsp.iorder[i] == istart) jstart = i;
         if (tsp.iorder[i] == iend)   jend = i;
     }
-    DBG("jstart: %d, jend: %d", jstart, jend);
+    PGR_DBG("jstart: %d, jend: %d", jstart, jend);
 
     /*
      * If the end is specified and the end point and it follow start
@@ -574,11 +605,11 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
         jend = jstart;
         jstart = tmp;
         rev = 1;
-        DBG("reversed start and end: jstart: %d, jend: %d", jstart, jend);
+        PGR_DBG("reversed start and end: jstart: %d, jend: %d", jstart, jend);
     }
 
     // copy ids to tsp.jorder so we can rewrite ids
-    memcpy(tsp.jorder, ids, tsp.n * sizeof(int));
+    memcpy(tsp.jorder, ids, (size_t) tsp.n * sizeof(int));
 
     // write reordered ids into ids[]
     // remember at this point jorder is our list if ids
@@ -597,14 +628,14 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     }
 
 #ifdef DEBUG
-    DBG("ids getting returned!");
+    PGR_DBG("ids getting returned!");
     for (i=0; i<tsp.n; i++) {
-        DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d",
+        PGR_DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d",
             i, ids[i], tsp.iorder[i], tsp.jorder[i]);
     }
 #endif
 
-    DBG("tsplib: jstart=%d, jend=%d, n=%d, j=%d", jstart, jend, tsp.n, j);
+    PGR_DBG("tsplib: jstart=%d, jend=%d, n=%d, j=%d", jstart, jend, tsp.n, j);
 
     return 0;
 }

@@ -1,31 +1,44 @@
-/*
+/*PGR-GNU*****************************************************************
+
  * A* Shortest path algorithm for PostgreSQL
  *
  * Copyright (c) 2006 Anton A. Patrushev, Orkney, Inc.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- */
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-GNU*/
 
 // Include C header first for windows build issue
 
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
+#ifdef unlink
+#undef unlink
+#endif
 #endif
 
+
+#if 0
+extern "C" {
+#include "postgres.h"
+}
+#endif
 
 #include <boost/config.hpp>
 
@@ -45,15 +58,15 @@ using namespace boost;
 struct Edge
 {
   int id;
-  float8 cost;
-  //float8 distance;
+  double cost;
+  //double distance;
 };
   
 struct Vertex
 {
   int id;
-  float8 x;
-  float8 y;
+  double x;
+  double y;
 };
 
 
@@ -69,6 +82,7 @@ class astar_goal_visitor : public boost::default_astar_visitor
       void examine_vertex(Vertex u, Graph& g) {
         if(u == m_goal)
           throw found_goal();
+        num_vertices(g); 
       }
     private:
       Vertex m_goal;
@@ -105,7 +119,7 @@ class distance_heuristic : public astar_heuristic<Graph, CostType>
 template <class G, class E>
 static void
 graph_add_edge(G &graph, int id, int source, int target, 
-         float8 cost, float8 s_x, float8 s_y, float8 t_x, float8 t_y)
+         double cost, double s_x, double s_y, double t_x, double t_y)
 {
   E e;
   bool inserted;
@@ -128,10 +142,10 @@ graph_add_edge(G &graph, int id, int source, int target,
 }
 
 int 
-boost_astar(edge_astar_t *edges, unsigned int count, 
+boost_astar(edge_astar_t *edges, size_t count, 
       int source_vertex_id, int target_vertex_id,
       bool directed, bool has_reverse_cost,
-      path_element_t **path, int *path_count, char **err_msg)
+      path_element_t **path, size_t *path_count, char **err_msg)
 {
 try {
 
@@ -142,7 +156,7 @@ try {
   typedef graph_traits < graph_t >::edge_descriptor edge_descriptor;
 
   // FIXME: compute this value
-  const unsigned int num_nodes = ((directed && has_reverse_cost ? 2 : 1) * 
+  const  auto num_nodes = ((directed && has_reverse_cost ? 2 : 1) * 
           count) + 100;
 
   graph_t graph(num_nodes);
@@ -162,7 +176,7 @@ try {
 
       if (!directed || (directed && has_reverse_cost))
       {
-        float8 cost;
+        double cost;
 
         if (has_reverse_cost)
         {
@@ -202,13 +216,13 @@ try {
       return -1;
   }
 
-  std::vector<float8> distances(num_vertices(graph));
+  std::vector<double> distances(num_vertices(graph));
 
   try {
     // Call A* named parameter interface
     astar_search
       (graph, source_vertex,
-       distance_heuristic<graph_t, float>(graph, target_vertex),
+       distance_heuristic<graph_t, double>(graph, target_vertex),
        predecessor_map(&predecessors[0]).
        weight_map(get(&Edge::cost, graph)).
        distance_map(&distances[0]).
@@ -217,7 +231,7 @@ try {
   } 
   catch(found_goal& fg) {
     // Target vertex found
-    vector<int> path_vect;
+    vector<vertex_descriptor> path_vect;
     int max = MAX_NODES;
     path_vect.push_back(target_vertex);
   
@@ -243,14 +257,14 @@ try {
               (path_vect.size() + 1));
     *path_count = path_vect.size();
 
-    for(int i = path_vect.size() - 1, j = 0; i >= 0; i--, j++)
+    for(int64_t i = static_cast<int64_t>(path_vect.size()) - 1, j = 0; i >= 0; i--, j++)
     {
         graph_traits < graph_t >::vertex_descriptor v_src;
         graph_traits < graph_t >::vertex_descriptor v_targ;
         graph_traits < graph_t >::edge_descriptor e;
         graph_traits < graph_t >::out_edge_iterator out_i, out_end;
 
-        (*path)[j].vertex_id = path_vect.at(i);
+        (*path)[j].vertex_id = static_cast<int>(path_vect.at(i));
 
         (*path)[j].edge_id = -1;
         (*path)[j].cost = distances[target_vertex];

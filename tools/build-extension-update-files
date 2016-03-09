@@ -94,6 +94,7 @@ exit 0;
 
 sub wanted {
     /^.*\.sig\z/s &&
+    ! /^pgrouting--$version.sig\z/s &&
     push @old_files, $name;
 }
 
