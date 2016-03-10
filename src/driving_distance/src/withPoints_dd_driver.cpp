@@ -111,7 +111,8 @@ do_pgr_many_withPointsDD(
                 new_edges,
                 log);
 
-        std::set< int64_t > start_vids(start_pids_arr, start_pids_arr + s_len);
+        std::set< int64_t > s_start_vids(start_pids_arr, start_pids_arr + s_len);
+        std::vector< int64_t > start_vids(s_start_vids.begin(), s_start_vids.end());
 #if 0
         std::set< int64_t > start_vids;
 

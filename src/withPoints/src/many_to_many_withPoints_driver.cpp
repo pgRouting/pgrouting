@@ -102,8 +102,12 @@ do_pgr_many_to_many_withPoints(
                 new_edges);
 
 
-        std::set< int64_t > start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);
-        std::set< int64_t > end_vertices(end_pidsArr, end_pidsArr + size_end_pidsArr);
+        std::set< int64_t > s_start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);
+        std::set< int64_t > s_end_vertices(end_pidsArr, end_pidsArr + size_end_pidsArr);
+
+        std::vector< int64_t > start_vertices(s_start_vertices.begin(), s_start_vertices.end());
+        std::vector< int64_t > end_vertices(s_end_vertices.begin(), s_end_vertices.end());
+
 #if 0
 
         std::set< int64_t > start_vertices;
