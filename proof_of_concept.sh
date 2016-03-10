@@ -24,7 +24,7 @@ run_psql  -c 'CREATE EXTENSION pgrouting'
 
 run_psql -f  tools/testers/sampledata.sql
 
-run_psql -e -f src/contraction/test/proof_of_concept.test.sql > result.txt
+run_psql -e -f src/contraction/test/proof_of_concept.test.sql
 #run_psql -e -f src/contraction/test/proof_of_concept_1.test.sql > result_1.txt
 
 #tools/testers/algorithm-tester.pl -pguser postgres -alg contraction

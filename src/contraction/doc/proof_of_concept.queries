@@ -1,17 +1,22 @@
 Adding an additional column to store if its part of the contracted graph
 ALTER TABLE edge_table ADD is_contracted BOOLEAN DEFAULT false;
+ALTER TABLE
 Adding a new edges joining vertices 3 and 5 with cost=2 to the edge table
 INSERT INTO edge_table(source, target, cost, reverse_cost, is_contracted) 
 VALUES (3, 5, 2, 2, true);
+INSERT 0 1
 Adding a new edges joining vertices 3 and 9 with cost=2 to the edge table
 INSERT INTO edge_table(source, target, cost, reverse_cost, is_contracted) 
 VALUES (3, 9, 2, 2, true);
+INSERT 0 1
 Adding a new edges joining vertices 5 and 11 with cost=2 to the edge table
 INSERT INTO edge_table(source, target, cost, reverse_cost, is_contracted) 
 VALUES (5, 11, 2, 2, true);
+INSERT 0 1
 Adding a new edges joining vertices 9 and 11 with cost=2 to the edge table
 INSERT INTO edge_table(source, target, cost, reverse_cost, is_contracted) 
 VALUES (9, 11, 2, 2, true);
+INSERT 0 1
 Case 1: Both source and target belong to the contracted graph.
 We are going to route from 3 to 11
 Since 3 and 11 both are in the contracted graph we need not add any vertices.
