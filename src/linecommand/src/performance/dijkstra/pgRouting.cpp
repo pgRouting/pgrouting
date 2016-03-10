@@ -131,10 +131,16 @@ int process_command_line(
     else
         std::cout << "Parameter: username missing\n";
 
-    if (vm.count("dbname") & vm.count("username") & vm.count("host")) {
+    if (vm.count("password")) 
+        std::cout << "password = " << vm["password"].as<std::string>() << "\n";
+    else
+        std::cout << "Parameter: password missing\n";
+
+    if (vm.count("dbname") & vm.count("username") & vm.count("host") & vm.count("password")) {
         std::cout << "Parameters: \n"
             << vm["dbname"].as<std::string>() << "\n"
             << vm["username"].as<std::string>() << "\n"
+            << vm["password"].as<std::string>() << "\n"
             << vm["host"].as<std::string>() << ".\n";
         return 2;
     } else {
@@ -230,15 +236,19 @@ int main(int ac, char* av[]) {
 
 
     auto db_dbase(vm["dbname"].as<std::string>());
-    db_dbase = "dbname = " + db_dbase;
     auto db_host(vm["host"].as<std::string>());
     auto db_port(vm["port"].as<std::string>());
     auto db_username(vm["username"].as<std::string>());
     auto db_pwd(vm["password"].as<std::string>());
     auto test(vm["test"].as<bool>());
-    //auto db_no_pwd(vm["no-password"].as<std::string>());
+    auto db_conn = "host=" + db_host
+            + " user=" +  db_username
+            + " dbname=" + db_dbase
+            + " port=" + db_port;
+            + " password=" + db_pwd;
 
-    const char *conninfo = db_dbase.c_str();
+
+    const char *conninfo = db_conn.c_str();
     PGconn     *conn;
     PGresult   *res;
     int rec_count, col_count;
