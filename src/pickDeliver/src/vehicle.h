@@ -1,0 +1,147 @@
+
+#pragma once
+
+#include <deque>
+#include <iostream>
+#include <algorithm>
+
+
+#include "./vehicle_node.h"
+
+
+/*! \class Twpath
+ * \brief Twpath class members are auto evaluating.
+ * 
+ * The intention for this class is to have GENERAL functions that can
+ *   be used in different types of problems. Therefore is strongly
+ *   recommended that especific problem functions be coded in the
+ *   problems vehicle
+ *
+ * \warning prefix: e_ performs the operation and evaluates
+ * \warning prefix: ef_ performs the operation only if the resulting
+ *   path is feasable
+ * \warning prefix: e__ performs the operation on especific problems and
+ *   eventually shall be removed
+ * 
+ * \note All members return \b true when the operation is succesfull
+ * 
+ * Twpath also inherits all the non evaluating methods of \ref TwBucket.
+ *  
+ * A path is an ordered sequence of nodes from starting site to ending site.
+ * The problem will define which type of nodes belongs to the twpath and
+ * which shall be outside twpath.
+ *
+ * \sa \ref TwBucket a non evaluating container for nodes
+ */
+
+class Vehicle {
+ private:
+     std::deque< Vehicle_node > path;
+     double max_capacity;
+
+ public:
+     /*! @name deque like functions 
+
+       \returns True if the operation was performed
+       \warning Assertions are performed for out of range operations
+       \warning no feasability nor time window or capacity violations 
+       checks are performed
+       \todo TODO more deque like functions here 
+       */
+
+     /*! \brief Invariant
+      * The path must:
+      *   - have at least 2 nodes
+      *   - first node of the path must be Start node
+      *   - last node of the path must be End node
+      *
+      * path: S ..... E
+      */
+     void invariant() const;
+
+
+     ///@{
+     /*! \brief Evaluated: Insert a node into an existing path.
+      *
+      * \param[in] node The node to insert.
+      * \param[in] at The position that the node should be inserted.
+      * \param[in] maxcapacity The maximum capacity of vehicle for this path.
+      */
+     void insert(POS at, Vehicle_node node);
+
+
+
+
+
+     /*! \brief Evaluated: push_back a node to the path.
+      *
+      * \param[in] node to be push_back.
+      * \param[in] maxcapacity of vehicle for this path.
+      */
+     void push_back(Vehicle_node node);
+
+
+
+
+
+     /*!  * \brief Evaluated: erase a node from the path.
+      *
+      * \param[in] pos to be erased.
+      * \param[in] maxcapacity of vehicle for this path.
+      */
+     void erase(POS pos);
+
+
+     /*!
+      * \brief Evaluated: Swap two nodes in the path.
+      *
+      * This method exchanges two nodes without a given path for the other
+      * swapping them and then evaluating the resultant path.
+      *
+      * \param[in] i The position of the first node to swap.
+      * \param[in] j The position of the second node to swap.
+      */
+     void swap(POS i, POS j);
+
+
+     /*! @name Evaluation 
+      *
+      *
+      *
+      * Path evaluation is done incrementally: from a given position to the
+      * end of the path, and intermediate values are cached on each node.
+      * So, for example, changing the path at position 100:
+      * the evaluation function should be called as
+      *  \c evaluate(100,maxcapacity)
+      * and from that position to the end of the path will be evaluated.
+      * None of the "unaffected" positions get reevaluated
+      *
+      *
+      *
+      */
+
+     ///@{
+
+     /*! \brief Evaluate: Evaluate the whole path from the start.  */
+     void evaluate();
+
+     /*! \brief Evaluate: Evaluate a path from the given position.
+      *
+      * \param[in] from The starting position in the path for evaluation to
+      * the end of the path.
+      */
+     void evaluate(POS from);
+
+
+     ///@}
+
+
+     /*! @name operators */
+     ///@{
+
+
+     friend bool operator<(const Vehicle &lhs, const Vehicle &rhs);
+
+     ///@}
+
+};

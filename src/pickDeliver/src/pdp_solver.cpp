@@ -60,6 +60,8 @@ extern "C" {
 
 #include "./Solution.h"
 #include "./pdp_solver.h"
+#include "./tw_node.h"
+#include "./order.h"
 
 
 //forward declaration
@@ -81,34 +83,100 @@ get_result(
         std::vector< General_vehicle_orders_t > &result);
 
 
+
 int64_t Solver(
-        Customer_t *c1, size_t total_tuples,
+        Customer_t *customers_data, size_t total_customers,
         int VehicleLength,
         double capacity,
         int max_cycles,
         General_vehicle_orders_t **results,
         size_t &length_results_struct,
         std::ostringstream &log){
-    log << "START";
+    log << "\n *** Solver ***\n";
 
 
-    std::vector<Customer_t> customers(c1, c1 + total_tuples);
+    std::vector<Customer_t> customers(customers_data, customers_data + total_customers);
     std::vector<Pickup> pickups;
     std::vector<Route> routes;
 
-    Depot depot({c1[0].id, c1[0].x, c1[0].y,
-            c1[0].demand,
-            c1[0].Etime, c1[0].Ltime, c1[0].Stime,
-            c1[0].Pindex, c1[0].Dindex
+    /* sort customenrs by id */
+    std::sort(customers.begin(), customers.end(),
+            [] (const Customer_t &c1, const Customer_t &c2)
+            {return c1.id < c2.id;});
+
+    
+
+
+#if 1
+    for (const auto c : customers) {
+        log << c.id << "("
+            << c.x << ","
+            << c.y << ","
+            << c.demand << ","
+            << c.Etime << ","
+            << c.Ltime << ","
+            << c.Stime << ","
+            << c.Pindex << ","
+            << c.Dindex << "\n";
+    };
+#endif
+
+    /* starting node:
+     * id must be 0
+     */
+    if (customers[0].id != 0) {
+        log << "ERROR: Depot node not found\n";
+        return 400;
+    }
+
+
+    /* starting node:
+     * This are ignored
+     * Dindex must be 0
+     * Pindex must be 0
+     * demand must be 0 (truck starts empty)
+     */
+    Tw_node depot1({0, customers_data[0], Tw_node::NodeType::kStart});
+
+    log << "DEPOT: " << depot1;
+
+
+#ifndef OLDCODE
+    Depot depot({customers_data[0].id, customers_data[0].x, customers_data[0].y,
+            customers_data[0].demand,
+            customers_data[0].Etime, customers_data[0].Ltime, customers_data[0].Stime,
+            customers_data[0].Pindex, customers_data[0].Dindex
             });
-    // TODO DEPOT: verify id, demand, Etime, Stime, Pindex, Dindex are all 0 
+#endif
+
+    for (const auto p : customers) {
+        if (p.id == 0) continue; 
+        if (p.Dindex == 0) continue;
+        /* pickup is found */
+        Tw_node pickup({0, p, Tw_node::NodeType::kPickup});
+        auto deliver_ptr = std::lower_bound(customers.begin(), customers.end(), p,
+                [] (const Customer_t &delivery, const Customer_t &pick) -> bool
+                //[] (const Customer_t &c1, int64_t val) -> bool
+                {return delivery.id < pick.Dindex;}
+                );
+        if (deliver_ptr == customers.end()) {
+            log << "ERROR: NOT FOUND corresponding delivery of: " << p.id <<"\n";
+            return 0;
+        }
+        Tw_node delivery(0, (*deliver_ptr), Tw_node::NodeType::kDelivery);
+        Order order(1, pickup, delivery);
+        log << "ORDER: " << order.pickup() << "\n" << order.delivery();
+    }
 
 
 
+    return 0;
+
+#if 0
     if (total_tuples != 107) {
         return 0;
     }
-
+#endif
 
     // Customer Data
     for (auto &c : customers) {
