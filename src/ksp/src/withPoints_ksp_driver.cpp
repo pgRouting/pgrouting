@@ -131,9 +131,7 @@ do_pgr_withPointsKsp(
 
         if (!details) {
             for (auto &path : paths) {
-                path.print_path(log);
                 eliminate_details(path, edges_to_modify);
-                path.print_path(log);
             }
         }
 
