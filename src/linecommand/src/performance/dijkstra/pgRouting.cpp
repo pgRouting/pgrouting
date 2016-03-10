@@ -244,9 +244,10 @@ int main(int ac, char* av[]) {
     auto db_conn = "host=" + db_host
             + " user=" +  db_username
             + " dbname=" + db_dbase
-            + " port=" + db_port;
+            + " port=" + db_port
             + " password=" + db_pwd;
 
+    std::cout << "connection: " << db_conn <<"\n";
 
     const char *conninfo = db_conn.c_str();
     PGconn     *conn;
