@@ -170,7 +170,7 @@ typedef struct PathElement {
 #ifdef __cplusplus
 extern "C"
 #endif
-int Solver(customer *c, int total_tuples, int vehicle_count, int capacity , char **msg, path_element **results, int *length_results);
+int Solver(customer *c, int total_tuples, int vehicle_count, int capacity , int max_itr, char **msg, path_element **results, int *length_results);
 
 #ifdef __cplusplus
 extern "C"
