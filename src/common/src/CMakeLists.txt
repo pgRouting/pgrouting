@@ -6,4 +6,5 @@ ADD_LIBRARY(common OBJECT
     get_check_data.c
     edges_input.c
     arrays_input.c
+    time_msg.c
     )

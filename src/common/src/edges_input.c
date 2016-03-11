@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./postgres_connection.h"
 #include "./get_check_data.h"
 #include "./edges_input.h"
+#include "./time_msg.h"
 
 
 
@@ -68,6 +69,8 @@ get_data_5_columns(
         pgr_edge_t **edges,
         size_t *totalTuples,
         bool ignore_id) {
+    clock_t start_t = clock();
+
     const int tuple_limit = 1000000;
 
     size_t ntuples;
@@ -154,6 +157,7 @@ get_data_5_columns(
 
     (*totalTuples) = total_tuples;
     PGR_DBG("Finish reading %ld edges, %ld", total_tuples, (*totalTuples));
+    time_msg(" reading Edges", start_t, clock());
 }
 
 void
