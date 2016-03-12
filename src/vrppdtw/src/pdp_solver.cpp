@@ -51,18 +51,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <map>
 #include <queue>
-#include <string>
-#include <stdlib.h>
 #include <iostream>
 #include <algorithm>
-#include <math.h>
-#include <stdio.h>
 #include <string.h>
 #include <set>
 //Headers Include
 #include "./pdp.h"
 #include "./Solution.h"
-#include "./Route.h"
 
 
 int PickupLength=0;
@@ -82,14 +77,14 @@ std::vector<Solution> T;
 
 Route *r=NULL;
 //Definitions for a few functions 
-int TabuSearch();
+int TabuSearch(int max_itr);
 //Vector containing solutions
 
 //Initial Solution
 Solution S0;
 
 void result_struct();
-int Solver(customer *c1,int total_tuples, int VehicleLength, int capacity , char **msg, path_element **results, int *length_results_struct)
+int Solver(customer *c1,int total_tuples, int VehicleLength, int capacity , int max_itr, char **msg, path_element **results, int *length_results_struct)
 {
         CustomerLength= total_tuples-1;
 
@@ -243,7 +238,7 @@ VehicleInfo Vehicle;
  
        //Starting Neighborhoods
         // printf("\nNeighborhoods From now\n");
-        int sol_count=TabuSearch();
+        int sol_count=TabuSearch(max_itr);
 
  //Copying back the results 
  // path_element->results , path_length   {  we need to send (results, length_results) backk ; 
@@ -364,15 +359,16 @@ VehicleInfo Vehicle;
 
         return 0;
 }
-int n=0,maxItr=30;
 
 
 
 /* TABU search helps us to store the solutions after every different move. The overview of TABU search will be a list containing list of solutions*/
 
-int TabuSearch()
+int TabuSearch(int maxItr)
 {
         // printf("TABU Called\n");
+        int n=0;
+
         Solution S,SBest;
         double CBest;
         //Pseudo Code
