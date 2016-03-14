@@ -29,6 +29,7 @@ create or replace function pgr_gsoc_vrppdtw(
                 sql text,
                 vehicle_num integer,
                 capacity integer,
+                max_cycles integer DEFAULT 30,
                 OUT seq integer,
                 OUT rid integer,
                 OUT nid integer,
@@ -37,5 +38,4 @@ create or replace function pgr_gsoc_vrppdtw(
 returns setof record as
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'vrppdtw'
 LANGUAGE c VOLATILE STRICT;
-
 
