@@ -227,7 +227,8 @@ static void fetch_customer(HeapTuple *tuple, TupleDesc *tupdesc, customer_t *c_a
 
 //Note:: edge_colums = total , //ly customer_t = total ....
 
-static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , int max_itr, path_element **results, int *length_results_struct)
+static int compute_shortest_path(char *sql, int vehicle_count, int capacity, int max_cycles, path_element **results,
+                                 int *length_results_struct)
 {
 
         int SPIcode;
@@ -322,7 +323,8 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , i
         DBG("Calling Solver Instance\n");
 
 
-        ret = Solver(customer_single, total_tuples, vehicle_count, capacity, max_itr, &err_msg,results, length_results_struct);
+        ret = Solver(customer_single, total_tuples, vehicle_count, capacity, max_cycles, &err_msg, results,
+                     length_results_struct);
 
         if (ret < -2) {
                 //elog(ERROR, "Error computing path: %s", err_msg);
@@ -397,13 +399,13 @@ vrppdtw(PG_FUNCTION_ARGS)
                 // ret =
                 compute_shortest_path(
 
-                                text2char(PG_GETARG_TEXT_P(0)),  // customers sql
+                        text2char(PG_GETARG_TEXT_P(0)),  // customers sql
 
                                 PG_GETARG_INT32(1),  // vehicles  count
 
                                 PG_GETARG_INT32(2),  // capacity count
 
-                                PG_GETARG_INT32(3), // maxitr
+                        PG_GETARG_INT32(3), // max_cycles
 
                                 &results, &length_results_struct
                                 );

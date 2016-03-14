@@ -77,14 +77,16 @@ std::vector<Solution> T;
 
 Route *r=NULL;
 //Definitions for a few functions 
-int TabuSearch(int max_itr);
+int TabuSearch(int max_cycles);
 //Vector containing solutions
 
 //Initial Solution
 Solution S0;
 
 void result_struct();
-int Solver(customer *c1,int total_tuples, int VehicleLength, int capacity , int max_itr, char **msg, path_element **results, int *length_results_struct)
+
+int Solver(customer *c1, int total_tuples, int VehicleLength, int capacity, int max_cycles, char **msg,
+           path_element **results, int *length_results_struct)
 {
         CustomerLength= total_tuples-1;
 
@@ -238,7 +240,7 @@ VehicleInfo Vehicle;
  
        //Starting Neighborhoods
         // printf("\nNeighborhoods From now\n");
-        int sol_count=TabuSearch(max_itr);
+        int sol_count = TabuSearch(max_cycles);
 
  //Copying back the results 
  // path_element->results , path_length   {  we need to send (results, length_results) backk ; 
@@ -364,7 +366,7 @@ VehicleInfo Vehicle;
 
 /* TABU search helps us to store the solutions after every different move. The overview of TABU search will be a list containing list of solutions*/
 
-int TabuSearch(int maxItr)
+int TabuSearch(int max_cycles)
 {
         // printf("TABU Called\n");
         int n=0;
@@ -397,7 +399,7 @@ int TabuSearch(int maxItr)
          }
          T.push_back(S);
          n++;
-         if(n>maxItr)
+         if(n>max_cycles)
          break;
          }
 
@@ -421,16 +423,16 @@ int TabuSearch(int maxItr)
                 else if(S.getCost() == CBest )
                 {
                         // printf("\n****************Repeated Solution****************\n");
-                        int k= ((12)*maxItr)/100;
-                        maxItr = maxItr-k;
-                        // printf("Maxitr after repeating %d k =%d\n",maxItr,k);
+                        int k = ((12) * max_cycles) / 100;
+                        max_cycles = max_cycles - k;
+                        // printf("Maxitr after repeating %d k =%d\n",max_cycles,k);
                 }
                 n++;
-                if (n > maxItr)
+                if (n > max_cycles)
                         break;
         }
 #if 0
-        printf("Size of Tabu=%ld &&& n=%d  maxItr=%d\n",T.size(),n,maxItr);
+        printf("Size of Tabu=%ld &&& n=%d  max_cycles=%d\n",T.size(),n,max_cycles);
         for(unsigned int itr=0;itr<T.size();itr++)
         {
                 T[itr].dump();

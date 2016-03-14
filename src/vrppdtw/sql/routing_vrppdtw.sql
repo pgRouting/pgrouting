@@ -25,18 +25,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -----------------------------------------------------------------------
 --
 --
-CREATE OR REPLACE FUNCTION pgr_gsoc_vrppdtw(sql text, vehicle_num integer, capacity integer, max_itr integer,
-        OUT seq integer, OUT rid integer, OUT nid integer, OUT cost integer)
-RETURNS SETOF RECORD AS
+create or replace function pgr_gsoc_vrppdtw(
+                sql text,
+                vehicle_num integer,
+                capacity integer,
+                max_cycles integer DEFAULT 30,
+                OUT seq integer,
+                OUT rid integer,
+                OUT nid integer,
+                OUT cost integer
+                )
+returns setof record as
 '$libdir/${PGROUTING_LIBRARY_NAME}', 'vrppdtw'
 LANGUAGE c VOLATILE STRICT;
 
-CREATE OR REPLACE FUNCTION pgr_gsoc_vrppdtw(sql text, vehicle_num integer, capacity integer,
-        OUT seq integer, OUT rid integer, OUT nid integer, OUT cost integer)
-RETURNS SETOF RECORD AS
-$BODY$
-BEGIN
-    RETURN QUERY SELECT * FROM pgr_gsoc_vrppdtw(sql, vehicle_num, capacity, 30);
-END
-$BODY$
-LANGUAGE plpgsql
