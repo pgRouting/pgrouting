@@ -274,7 +274,7 @@ sub process_single_test{
             };
         }
         else {
-            open(PSQL, "|$psql $connopts -A -t -q $database > $TMP 2>\&1 ") || do {
+            open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
                 $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
                 $stats{z_fail}++;
                 next;
@@ -297,6 +297,12 @@ sub process_single_test{
             mysystem("grep -v NOTICE '$TMP' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile2");
             $dfile = $TMP3;
             mysystem("grep -v NOTICE '$dir/$x.result' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile");
+        }
+        elsif ($DEBUG1) { #to delete CONTEXT lines
+            $dfile2 = $TMP2;
+            mysystem("grep -v '^CONTEXT:' '$TMP' | grep -v '^PL/pgSQL function' > $dfile2");
+            $dfile = $TMP3;
+            mysystem("grep -v '^CONTEXT:' '$dir/$x.result' | grep -v '^PL/pgSQL function' > $dfile");
         }
         else {
             $dfile = "$dir/$x.result";
