@@ -264,8 +264,6 @@ sub process_single_test{
             $stats{z_fail}++;
             next;
         };
-        print PSQL "set client_min_messages to WARNING;\n" if $ignore;
-        print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
         #reason of opening conection is because the set client_min_messages to warning;
         if ($DOCUMENTATION) {
             mysystem("mkdir -p '$dir/../doc' "); # make sure the directory exists
@@ -274,6 +272,8 @@ sub process_single_test{
                 $stats{z_fail}++;
                 next;
             };
+            print PSQL "set client_min_messages to WARNING;\n" if $ignore;
+            print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
         }
         else {
             open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
