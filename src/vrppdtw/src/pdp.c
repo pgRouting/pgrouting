@@ -398,7 +398,6 @@ vrppdtw(PG_FUNCTION_ARGS)
 
                 // ret =
                 compute_shortest_path(
-
                         text2char(PG_GETARG_TEXT_P(0)),  // customers sql
 
                                 PG_GETARG_INT32(1),  // vehicles  count
