@@ -105,7 +105,7 @@ process(
             result_tuples,
             result_count,
             &err_msg);
-    time_msg(" processig Dijkstra many to many", start_t, clock());
+    time_msg(" processing Dijkstra many to many", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);
 

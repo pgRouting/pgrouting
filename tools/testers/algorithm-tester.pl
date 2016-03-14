@@ -264,8 +264,7 @@ sub process_single_test{
             $stats{z_fail}++;
             next;
         };
-        print PSQL "set client_min_messages to WARNING;\n" if $ignore;
-        print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
+
         #reason of opening conection is because the set client_min_messages to warning;
         if ($DOCUMENTATION) {
             mysystem("mkdir -p '$dir/../doc' "); # make sure the directory exists
@@ -282,6 +281,8 @@ sub process_single_test{
                 next;
             };
         }
+        print PSQL "set client_min_messages to WARNING;\n" if $ignore;
+        print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
         my @d = ();
         @d = <TIN>; #reads the whole file into the array @d 
         print PSQL @d; #prints the whole fle stored in @d
@@ -331,7 +332,7 @@ sub process_single_test{
         #if the diff has 0 length then everything was the same, so here we detect changes
         elsif (length($r)) {
             $res->{"$dir/$x.test.sql"} = "FAILED: $r";
-            $stats{z_fail}++;
+            $stats{z_fail}++ unless $DEBUG1;
         }
         else {
             $res->{"$dir/$x.test.sql"} = "Passed";
