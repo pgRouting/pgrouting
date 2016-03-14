@@ -273,6 +273,8 @@ sub process_single_test{
                 $stats{z_fail}++;
                 next;
             };
+            print PSQL "set client_min_messages to WARNING;\n" if $ignore;
+            print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
         }
         else {
             open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
