@@ -54,8 +54,8 @@ void Path::clear() {
     m_end_id = 0;
 }
 
-void Path::print_path(std::ostream& log) const {
-    log << "Path: " << start_id() << " -> " << end_id() << "\n"
+std::ostream& operator<<(std::ostream &log, const Path &path) {
+    log << "Path: " << path.start_id() << " -> " << path.end_id() << "\n"
         << "seq\tnode\tedge\tcost\tagg_cost\n";
     int64_t i = 0;
     for (const auto &e : path) {
@@ -66,6 +66,7 @@ void Path::print_path(std::ostream& log) const {
             << e.agg_cost << "\n";
         ++i;
     }
+    return log;
 }
 
 
@@ -103,7 +104,7 @@ void Path::generate_postgres_data(
     int i = 1;
     for (const auto e : path) {
         (*postgres_data)[sequence] = 
-            {i, start_id(), end_id(), e.node, e.edge, e.cost, e.agg_cost};
+        {i, start_id(), end_id(), e.node, e.edge, e.cost, e.agg_cost};
         ++i;
         ++sequence;
     }
