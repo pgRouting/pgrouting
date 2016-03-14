@@ -14,7 +14,7 @@ Experimental and Proposed functions
 
 :ref:`proposed`
 
-This are proposed functions
+These are proposed functions
 
   - They are not officially of the current release.
   - They likely will not be officialy be part of the version 2.3 release:

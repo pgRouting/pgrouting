@@ -19,6 +19,7 @@ my $DOCUMENTATION = 0;
 my $VERBOSE = 0;
 my $DRYRUN = 0;
 my $DEBUG = 0;
+my $DEBUG1 = 0;
 
 my $DBNAME = "pgr_test__db__test";
 my $DBUSER;
@@ -36,6 +37,7 @@ sub Usage {
         "       -psql /path/to/psql - optional path to psql\n" .
         "       -v                  - verbose messages for small debuging\n" .
         "       -debug              - verbose messages for debuging(enter twice for more)\n" .
+        "       -debug1             - DEBUG1 messages (for timing reports)\n" .
         "       -clean              - dropdb pgr_test__db__test\n" .
         "       -ignorenotice       - ignore NOTICE statements when reporting failures\n" .
         "       -alg 'dir'          - directory to select which algorithm subdirs to test\n" .
@@ -97,8 +99,11 @@ while (my $a = shift @ARGV) {
     elsif ($a =~ /^-ignoren/i) {
         $ignore = 1;;
     }
-    elsif ($a =~ /^-debug/i) {
-        $DEBUG = 1;
+    elsif ($a =~ /^-debug1$/i) {
+        $DEBUG1 = 1 unless $DOCUMENTATION;
+    }
+    elsif ($a =~ /^-debug$/i) {
+        $DEBUG++;
         $VERBOSE = 1;
     }
     elsif ($a =~ /^-v/i) {
@@ -106,6 +111,7 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a =~ /^-doc(umentation)?/i) {
         $DOCUMENTATION = 1;
+        $DEBUG1 = 0; # disbale timing reports during documentation generation
     }
     else {
         warn "Error: unknown option '$a'\n";
@@ -258,7 +264,9 @@ sub process_single_test{
             $stats{z_fail}++;
             next;
         };
-        #reason of opening conection is because the set client_mim_messages to warning;
+        print PSQL "set client_min_messages to WARNING;\n" if $ignore;
+        print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
+        #reason of opening conection is because the set client_min_messages to warning;
         if ($DOCUMENTATION) {
             mysystem("mkdir -p '$dir/../doc' "); # make sure the directory exists
             open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/../doc/$x.queries 2>\&1 ") || do {
@@ -268,13 +276,12 @@ sub process_single_test{
             };
         }
         else {
-            open(PSQL, "|$psql $connopts -A -t -q $database > $TMP 2>\&1 ") || do {
+            open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
                 $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
                 $stats{z_fail}++;
                 next;
             };
         }
-        print PSQL "set client_min_messages to WARNING;\n" if $ignore;
         my @d = ();
         @d = <TIN>; #reads the whole file into the array @d 
         print PSQL @d; #prints the whole fle stored in @d
@@ -290,6 +297,12 @@ sub process_single_test{
             mysystem("grep -v NOTICE '$TMP' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile2");
             $dfile = $TMP3;
             mysystem("grep -v NOTICE '$dir/$x.result' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile");
+        }
+        elsif ($DEBUG1) { #to delete CONTEXT lines
+            $dfile2 = $TMP2;
+            mysystem("grep -v '^CONTEXT:' '$TMP' | grep -v '^PL/pgSQL function' > $dfile2");
+            $dfile = $TMP3;
+            mysystem("grep -v '^CONTEXT:' '$dir/$x.result' | grep -v '^PL/pgSQL function' > $dfile");
         }
         else {
             $dfile = "$dir/$x.result";
