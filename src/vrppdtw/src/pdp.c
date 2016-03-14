@@ -398,13 +398,13 @@ vrppdtw(PG_FUNCTION_ARGS)
 
                 // ret =
                 compute_shortest_path(
-                        text2char(PG_GETARG_TEXT_P(0)),  // customers sql
+                                text2char(PG_GETARG_TEXT_P(0)),  // customers sql
 
                                 PG_GETARG_INT32(1),  // vehicles  count
 
                                 PG_GETARG_INT32(2),  // capacity count
 
-                        PG_GETARG_INT32(3), // max_cycles
+                                PG_GETARG_INT32(3), // max_cycles
 
                                 &results, &length_results_struct
                                 );
