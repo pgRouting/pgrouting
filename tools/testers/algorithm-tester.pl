@@ -264,6 +264,8 @@ sub process_single_test{
             $stats{z_fail}++;
             next;
         };
+        print PSQL "set client_min_messages to WARNING;\n" if $ignore;
+        print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
         #reason of opening conection is because the set client_min_messages to warning;
         if ($DOCUMENTATION) {
             mysystem("mkdir -p '$dir/../doc' "); # make sure the directory exists
@@ -280,8 +282,6 @@ sub process_single_test{
                 next;
             };
         }
-        print PSQL "set client_min_messages to WARNING;\n" if $ignore;
-        print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
         my @d = ();
         @d = <TIN>; #reads the whole file into the array @d 
         print PSQL @d; #prints the whole fle stored in @d
