@@ -229,7 +229,7 @@ class Pgr_base_graph {
        aproximate number of vertices its coing to have as *initial_size*
        */
      explicit Pgr_base_graph< G >(graphType gtype, const size_t initial_size)
-         : graph(initial_size),
+         : graph(1),
          m_num_vertices(0),
          m_gType(gtype)
     {}

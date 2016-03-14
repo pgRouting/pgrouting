@@ -75,6 +75,14 @@ process(
 
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
+
+    if (start_vid == end_vid) {
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        pgr_SPI_finish();
+        return;
+    }
+
     size_t total_tuples = 0;
     pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
 
