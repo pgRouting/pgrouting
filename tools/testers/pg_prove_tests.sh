@@ -36,6 +36,7 @@ pg_prove ../../src/ksp/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/topology/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/common/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/dijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+pg_prove ../../src/driving_distance/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/kdijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/withPoints/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/trsp/test/pgtap/* -d $PGDATABASE  -U $PGUSER
