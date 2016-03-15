@@ -512,7 +512,9 @@ Pgr_dijkstra< G >::drivingDistance(
     V v_source;
     if (!graph.get_gVertex(start_vertex, v_source)) {
         /* The node has to be in the path*/
-        path.push_back({start_vertex, -1, 0, 0});
+        Path p(start_vertex, start_vertex);
+        p.push_back({start_vertex, -1, 0, 0});
+        path = p;
         return;
     }
 
