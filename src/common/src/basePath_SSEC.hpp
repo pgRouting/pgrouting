@@ -83,8 +83,7 @@ class Path {
             float8 d_tot_cost);
     void clear();
 
-    void print_path(std::ostream &log) const;
-    void print_path() const;
+    friend std::ostream& operator<<(std::ostream &log, const Path &p);
 
 
     void fix_path(int64_t from, int64_t to);

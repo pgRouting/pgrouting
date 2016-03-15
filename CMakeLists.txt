@@ -12,7 +12,6 @@ project(PGROUTING)
 
 # Configure options
 
-
 option(WITH_DOC
     "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
 
@@ -213,6 +212,7 @@ if(WIN32)
 endif(WIN32)
 
 # TODO default compilation with -dNDEBUG 
+
 #compiler directives
 if(APPLE)
   # support GNU(Xcode<4) and Clang(Xcode>=4)
@@ -232,7 +232,7 @@ elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGW
     #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC -O2 -g -Wall -Wconversion -pedantic -fmax-errors=10 -Wextra  -frounding-math -Wno-deprecated")
 
     set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g  -frounding-math")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g  -std=c++0x -frounding-math -Wno-deprecated")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -std=c++0x -frounding-math -Wno-deprecated")
 
 elseif(WIN32)
     # currently, support MinGW only

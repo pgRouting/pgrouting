@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./debug_macro.h"
 #include "./pgr_types.h"
+#include "./time_msg.h"
 #include "./postgres_connection.h"
 #include "./get_check_data.h"
 #include "./restrictions_input.h"
@@ -69,6 +70,7 @@ pgr_get_restriction_data(
         Restrict_t **restrictions,
         size_t *total_restrictions) {
     const int tuple_limit = 1000000;
+    clock_t start_t = clock();
 
     PGR_DBG("pgr_get_restriction_data");
     PGR_DBG("%s", restrictions_sql);
@@ -144,4 +146,6 @@ pgr_get_restriction_data(
 
     (*total_restrictions) = total_tuples;
     PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*total_restrictions));
+    clock_t end_t = clock();
+    time_msg(" reading Restrictions", start_t, end_t);
 }
