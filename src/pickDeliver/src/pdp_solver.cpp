@@ -138,7 +138,7 @@ int64_t Solver(
      */
     Tw_node depot1({0, customers_data[0], Tw_node::NodeType::kStart});
 
-    log << "DEPOT: " << depot1;
+    log << "DEPOT: " << depot1 << "\n";
 
 
 #ifndef OLDCODE
@@ -165,7 +165,8 @@ int64_t Solver(
         }
         Tw_node delivery(0, (*deliver_ptr), Tw_node::NodeType::kDelivery);
         Order order(1, pickup, delivery);
-        log << "ORDER: " << order.pickup() << "\n" << order.delivery();
+        log << order << "\n";
+        // log << "ORDER: " << order.pickup() << "\n" << order.delivery();
     }
 
 

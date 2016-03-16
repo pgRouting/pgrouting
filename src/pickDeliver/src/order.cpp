@@ -10,6 +10,12 @@ Order::Order(ID p_id, const Tw_node &p_pickup, const Tw_node &p_delivery)
          m_delivery(p_delivery) { 
          }
 
+std::ostream& operator<<(std::ostream &log, const Order &order) {
+    log << "Order " << order.id << ":\n"
+        << order.m_pickup
+        << order.m_delivery;
+}
+
 
 
 Vehicle_node  Order::delivery() const {return m_pickup;}

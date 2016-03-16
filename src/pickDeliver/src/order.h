@@ -30,6 +30,8 @@ class Order {
      bool isOrderCompatibleStart(const Vehicle_node &node) const;
      bool isOrderCompatibleEnd(const Vehicle_node &node) const;
 
+     friend std::ostream& operator<<(std::ostream&, const Order &);
+
  //    void  moveOrder(const int toRoute);
  private:
 
@@ -37,6 +39,5 @@ class Order {
 
      Vehicle_node m_pickup;
      Vehicle_node m_delivery;
-
 
 };
