@@ -30,6 +30,8 @@ Changes for release 2.2.0
 
     - pgr_nodeNetwork
 
+     - Adding a row_where and outall optional parameters
+
   - Signature fix
 
     - pgr_dijkstra  -- to match what was documented
