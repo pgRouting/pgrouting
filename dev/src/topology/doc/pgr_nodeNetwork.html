@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_nodeNetwork &mdash; pgRouting Manual (2.2.0-dev)</title>
+    <title>pgr_nodeNetwork &mdash; pgRouting Manual (2.2.0-beta2)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (pgrouting-2.2.0-beta)',
+        VERSION:     '2.2.0 (pgrouting-2.2.0-beta2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0-dev)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.2.0-beta2)" href="../../../index.html" />
     <link rel="up" title="Topology Functions" href="topology.html" />
     <link rel="next" title="Routing Functions" href="../../routingFunctions.html" />
     <link rel="prev" title="pgr_analyzeOneway" href="pgr_analyzeOneWay.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.2.0-dev)</span></a></h1>
+          <span>pgRouting Manual (2.2.0-beta2)</span></a></h1>
         <h2 class="heading"><span>pgr_nodeNetwork</span></h2>
       </div>
       <div class="topnav">
@@ -69,7 +69,8 @@
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>The function reads edges from a not &#8220;noded&#8221; network table and writes the &#8220;noded&#8221; edges into a new table.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="nb">text</span> <span class="n">pgr_nodenetwork</span><span class="p">(</span><span class="nb">text</span> <span class="n">edge_table</span><span class="p">,</span> <span class="n">float8</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">,</span>
-                     <span class="nb">text</span>  <span class="n">id</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nb">text</span> <span class="n">the_geom</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="nb">text</span> <span class="n">table_ending</span><span class="o">=</span><span class="s1">&#39;noded&#39;</span><span class="p">)</span>
+                     <span class="nb">text</span>  <span class="n">id</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nb">text</span> <span class="n">the_geom</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="nb">text</span> <span class="n">table_ending</span><span class="o">=</span><span class="s1">&#39;noded&#39;</span>
+         <span class="nb">text</span> <span class="n">rows_where</span> <span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">outall</span><span class="o">=</span><span class="k">false</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -457,8 +458,8 @@ point there is a node and the following edges share it:
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-beta).
-      Last updated on Feb 29, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-beta2).
+      Last updated on Mar 18, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
