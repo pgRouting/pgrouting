@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_pointsToDMatrix &mdash; pgRouting Manual (2.2.0-beta2)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0 (pgrouting-2.2.0-beta2)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0-beta2)" href="../../../index.html" />
+    <link rel="up" title="Convenience Functions" href="convenience.html" />
+    <link rel="next" title="pgr_vidsToDMatrix" href="pgr_vidsToDMatrix.html" />
+    <link rel="prev" title="pgr_pointsToVids" href="pgr_pointsToVids.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.2.0-beta2)</span></a></h1>
+        <h2 class="heading"><span>pgr_pointsToDMatrix</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="pgr_pointsToVids.html">pgr_pointsToVids</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_vidsToDMatrix.html">pgr_vidsToDMatrix</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-pointstodmatrix">
+<span id="pgr-points-to-dmatrix"></span><h1>pgr_pointsToDMatrix<a class="headerlink" href="#pgr-pointstodmatrix" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_pointsToDMatrix</span></tt> - Creates a distance matrix from an array of points.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This is a proposed function</p>
+<ul class="last simple">
+<li>Is not officially in the release.</li>
+<li>Name could change.</li>
+<li>Signature could change.</li>
+<li>Needs testing.</li>
+<li>Functionality could change.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Create a distance symetric distance matrix suitable for TSP using Euclidean distances based on the st_distance(). You might want to create a variant of this the uses st_distance_sphere() or st_distance_spheriod() or some other function.</p>
+<p>The function returns:</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">record</span></tt> - with two fields as describe here</dt>
+<dd><ul class="first last">
+<li><table class="first docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">dmatrix:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8[]</span></tt> - the distance matrix suitable to pass to pgrTSP() function.</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><table class="first docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ids:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer[]</span></tt> - an array of ids for the distance matrix.</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">record</span> <span class="n">pgr_pointsToDMatrix</span><span class="p">(</span><span class="n">pnts</span> <span class="n">geometry</span><span class="p">[],</span> <span class="k">OUT</span> <span class="n">dmatrix</span> <span class="n">double</span> <span class="k">precision</span><span class="p">[],</span> <span class="k">OUT</span> <span class="n">ids</span> <span class="nb">integer</span><span class="p">[])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Paramters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">pnts:</th><td class="field-body"><tt class="docutils literal"><span class="pre">geometry[]</span></tt> - An array of point geometries.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The generated matrix will be symmetric as required for pgr_TSP.</p>
+</div>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>Proposed in version 2.1.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_pointstodmatrix(pgr_texttopoints(&#39;2,0;2,1;3,1;2,2&#39;, 0));
+                                              dmatrix                                              |    ids    
+---------------------------------------------------------------------------------------------------+-----------
+ {{0,1,1.4142135623731,2},{1,0,1,1},{1.4142135623731,1,0,1.4142135623731},{2,1,1.4142135623731,0}} | {1,2,3,4}
+(1 row)
+</pre></div>
+</div>
+<p>This example shows how this can be used in the context of feeding the results into pgr_tsp() function.</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * from pgr_tsp(
+    (SELECT dMatrix FROM pgr_pointstodmatrix(pgr_texttopoints(&#39;2,0;2,1;3,1;2,2&#39;, 0))
+    ),
+    1
+);
+ seq | id 
+-----+----
+   0 |  1
+   1 |  3
+   2 |  2
+   3 |  0
+(4 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_vidsToDMatrix.html#pgr-vids-to-dmatrix"><em>pgr_vidsToDMatrix</em></a> - convert a point geometry to the closest vertex_id of an edge..</li>
+<li><a class="reference internal" href="../../tsp/doc/pgr_tsp.html#pgr-tsp"><em>pgr_tsp</em></a> - Traveling Sales Person</li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="../../../search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="pgr_pointsToVids.html">pgr_pointsToVids</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_vidsToDMatrix.html">pgr_vidsToDMatrix</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-beta2).
+      Last updated on Mar 18, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

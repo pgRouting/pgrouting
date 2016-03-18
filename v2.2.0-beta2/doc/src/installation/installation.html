@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation &mdash; pgRouting Manual (2.2.0-beta2)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0 (pgrouting-2.2.0-beta2)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0-beta2)" href="../../../index.html" />
+    <link rel="next" title="Build Guide" href="build.html" />
+    <link rel="prev" title="Introduction" href="../introduction/introduction.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.2.0-beta2)</span></a></h1>
+        <h2 class="heading"><span>Installation</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../introduction/introduction.html">Introduction</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="build.html">Build Guide</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="installation">
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>This is a basic guide to download and install pgRouting.</p>
+<p>Additional notes can be found in <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting">Installation Notes</a></p>
+<p>Also PostGIS provides some information about installation in this <a class="reference external" href="http://www.postgis.us/presentations/postgis_install_guide_22.html">Install Guide</a></p>
+<div class="section" id="download">
+<h2>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h2>
+<p>Binary packages are provided for the current version on the following platforms:</p>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<p>Winnie Bot Builds:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://postgis.net/windows_downloads">Winnie PostgreSQL 9.2-9.5 32-bit/64-bit</a></li>
+</ul>
+<p>Production Builds:</p>
+<ul class="simple">
+<li>Production builds are part of the Spatial Extensions/PostGIS Bundle available via Application StackBuilder</li>
+<li>Can also get PostGIS Bundle from <a class="reference external" href="http://download.osgeo.org/postgis/windows/">http://download.osgeo.org/postgis/windows/</a></li>
+</ul>
+</div>
+<div class="section" id="ubuntu-debian">
+<h3>Ubuntu/Debian<a class="headerlink" href="#ubuntu-debian" title="Permalink to this headline">¶</a></h3>
+<p>Ubuntu packages are available in Launchpad repositories:</p>
+<ul class="simple">
+<li><em>stable</em> <a class="reference external" href="https://launchpad.net/~georepublic/+archive/pgrouting">https://launchpad.net/~georepublic/+archive/pgrouting</a></li>
+<li><em>unstable</em> <a class="reference external" href="https://launchpad.net/~georepublic/+archive/pgrouting-unstable">https://launchpad.net/~georepublic/+archive/pgrouting-unstable</a></li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Add pgRouting launchpad repository (&quot;stable&quot; or &quot;unstable&quot;)</span>
+sudo add-apt-repository ppa:georepublic/pgrouting<span class="o">[</span>-unstable<span class="o">]</span>
+sudo apt-get update
+
+<span class="c"># Install pgRouting packages</span>
+sudo apt-get install postgresql-9.1-pgrouting
+</pre></div>
+</div>
+<p>Use <a class="reference external" href="https://launchpad.net/~ubuntugis/+archive/ubuntugis-unstable">UbuntuGIS-unstable PPA</a> to install PostGIS 2.0.</p>
+</div>
+<div class="section" id="rhel-centos">
+<h3>RHEL/CentOS<a class="headerlink" href="#rhel-centos" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Add repositories for dependencies:</p>
+<div class="highlight-bash"><div class="highlight"><pre>wget http://repo.enetres.net/enetres.repo -O /etc/yum.repos.d/enetres.repo
+wget http://nextgis.ru/programs/centos/nextgis.repo -O /etc/yum.repos.d/nextgis.repo
+yum install epel-release
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install PostgreSQL and PostGIS according to <a class="reference external" href="https://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS21CentOS6pgdg">this</a> instructions.</p>
+</li>
+<li><p class="first">Install CGAL:</p>
+<div class="highlight-bash"><div class="highlight"><pre>yum install libCGAL10
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install pgRouting:</p>
+<div class="highlight-bash"><div class="highlight"><pre>yum install pgrouting_94
+</pre></div>
+</div>
+</li>
+</ul>
+<p>More info (and packages for CentOS) can be found <a class="reference external" href="https://github.com/nextgis/gis_packages_centos/wiki/Using-this-repo">here</a>.</p>
+</div>
+<div class="section" id="fedora">
+<h3>Fedora<a class="headerlink" href="#fedora" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Fedora RPM&#8217;s: <a class="reference external" href="https://admin.fedoraproject.org/pkgdb/package/rpms/pgRouting/">https://admin.fedoraproject.org/pkgdb/package/rpms/pgRouting/</a></li>
+</ul>
+</div>
+<div class="section" id="freebsd">
+<h3>FreeBSD<a class="headerlink" href="#freebsd" title="Permalink to this headline">¶</a></h3>
+<p>pgRouting can be installed via ports:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> /usr/ports/databases/pgRouting
+make install clean
+</pre></div>
+</div>
+</div>
+<div class="section" id="os-x">
+<h3>OS X<a class="headerlink" href="#os-x" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Homebrew</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>brew install pgrouting
+</pre></div>
+</div>
+</div>
+<div class="section" id="source-package">
+<h3>Source Package<a class="headerlink" href="#source-package" title="Permalink to this headline">¶</a></h3>
+<p>You can find all the pgRouting Releases:</p>
+<p><a class="reference external" href="https://github.com/pgRouting/pgrouting/releases">https://github.com/pgRouting/pgrouting/releases</a></p>
+<p>See <a class="reference internal" href="build.html#build"><em>Build Guide</em></a> to build the binaries from the source.</p>
+</div>
+<div class="section" id="using-git">
+<h3>Using Git<a class="headerlink" href="#using-git" title="Permalink to this headline">¶</a></h3>
+<p>Git protocol (read-only):</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone git://github.com/pgRouting/pgrouting.git
+</pre></div>
+</div>
+<p>HTTPS protocol (read-only):</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/pgRouting/pgrouting.git
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="build.html#build"><em>Build Guide</em></a> to build the binaries from the source.</p>
+</div>
+</div>
+<div class="section" id="installing-in-the-database">
+<h2>Installing in the database<a class="headerlink" href="#installing-in-the-database" title="Permalink to this headline">¶</a></h2>
+<p>pgRouting is an extension.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">postgis</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="upgrading-the-database">
+<h2>Upgrading the database<a class="headerlink" href="#upgrading-the-database" title="Permalink to this headline">¶</a></h2>
+<p>To upgrade pgRouting to version 2.1.0 use the following command:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="k">UPDATE</span> <span class="k">TO</span> <span class="ss">&quot;2.1.0&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../introduction/introduction.html">Introduction</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="build.html">Build Guide</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-beta2).
+      Last updated on Mar 18, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

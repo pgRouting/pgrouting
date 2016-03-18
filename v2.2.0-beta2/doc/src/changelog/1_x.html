@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgRouting 1.x Release Notes &mdash; pgRouting Manual (2.2.0-beta2)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0 (pgrouting-2.2.0-beta2)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0-beta2)" href="../../../index.html" />
+    <link rel="up" title="Release Notes" href="index.html" />
+    <link rel="prev" title="pgRouting 2.0 Release Notes" href="2_0.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.2.0-beta2)</span></a></h1>
+        <h2 class="heading"><span>pgRouting 1.x Release Notes</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="2_0.html">pgRouting 2.0 Release Notes</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgrouting-1-x-release-notes">
+<span id="changelog-1-x"></span><h1>pgRouting 1.x Release Notes<a class="headerlink" href="#pgrouting-1-x-release-notes" title="Permalink to this headline">¶</a></h1>
+<p>The following release notes have been copied from the previous <tt class="docutils literal"><span class="pre">RELEASE_NOTES</span></tt> file and are kept as a reference.
+Release notes starting with <a class="reference internal" href="2_0.html#changelog-2-0"><em>version 2.0.0</em></a> will follow a different schema.</p>
+<div class="section" id="changes-for-release-1-05">
+<h2>Changes for release 1.05<a class="headerlink" href="#changes-for-release-1-05" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Bugfixes</li>
+</ul>
+</div>
+<div class="section" id="changes-for-release-1-03">
+<h2>Changes for release 1.03<a class="headerlink" href="#changes-for-release-1-03" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Much faster topology creation</li>
+<li>Bugfixes</li>
+</ul>
+</div>
+<div class="section" id="changes-for-release-1-02">
+<h2>Changes for release 1.02<a class="headerlink" href="#changes-for-release-1-02" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Shooting* bugfixes</li>
+<li>Compilation problems solved</li>
+</ul>
+</div>
+<div class="section" id="changes-for-release-1-01">
+<h2>Changes for release 1.01<a class="headerlink" href="#changes-for-release-1-01" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Shooting* bugfixes</li>
+</ul>
+</div>
+<div class="section" id="changes-for-release-1-0">
+<h2>Changes for release 1.0<a class="headerlink" href="#changes-for-release-1-0" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Core and extra functions are separated</li>
+<li>Cmake build process</li>
+<li>Bugfixes</li>
+</ul>
+</div>
+<div class="section" id="changes-for-release-1-0-0b">
+<h2>Changes for release 1.0.0b<a class="headerlink" href="#changes-for-release-1-0-0b" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Additional SQL file with more simple names for wrapper functions</li>
+<li>Bugfixes</li>
+</ul>
+</div>
+<div class="section" id="changes-for-release-1-0-0a">
+<h2>Changes for release 1.0.0a<a class="headerlink" href="#changes-for-release-1-0-0a" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Shooting* shortest path algorithm for real road networks</li>
+<li>Several SQL bugs were fixed</li>
+</ul>
+</div>
+<div class="section" id="changes-for-release-0-9-9">
+<h2>Changes for release 0.9.9<a class="headerlink" href="#changes-for-release-0-9-9" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>PostgreSQL 8.2 support</li>
+<li>Shortest path functions return empty result if they couldn’t find any path</li>
+</ul>
+</div>
+<div class="section" id="changes-for-release-0-9-8">
+<h2>Changes for release 0.9.8<a class="headerlink" href="#changes-for-release-0-9-8" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Renumbering scheme was added to shortest path functions</li>
+<li>Directed shortest path functions were added</li>
+<li>routing_postgis.sql was modified to use dijkstra in TSP search</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="2_0.html">pgRouting 2.0 Release Notes</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-beta2).
+      Last updated on Mar 18, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

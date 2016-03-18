@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_dijkstra - Shortest Path Dijkstra &mdash; pgRouting Manual (2.2.0-beta2)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0 (pgrouting-2.2.0-beta2)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0-beta2)" href="../../../index.html" />
+    <link rel="up" title="Routing Functions" href="../../routingFunctions.html" />
+    <link rel="next" title="pgr_dijkstra" href="pgr_dijkstra.html" />
+    <link rel="prev" title="pgr_bdDijkstra - Bi-directional Dijkstra Shortest Path" href="../../bd_dijkstra/doc/pgr_bdDijkstra.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.2.0-beta2)</span></a></h1>
+        <h2 class="heading"><span>pgr_dijkstra - Shortest Path Dijkstra</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../bd_dijkstra/doc/pgr_bdDijkstra.html">pgr_bdDijkstra - Bi-directional Dijkstra Shortest Path</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_dijkstra.html">pgr_dijkstra</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-dijkstra-shortest-path-dijkstra">
+<span id="dijkstra"></span><h1>pgr_dijkstra - Shortest Path Dijkstra<a class="headerlink" href="#pgr-dijkstra-shortest-path-dijkstra" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="pgr_dijkstra.html#pgr-dijkstra"><em>pgr_dijkstra</em></a> - Dijkstra&#8217;s algorithm for the shortest paths.</li>
+<li><a class="reference internal" href="pgr_dijkstraCost.html#pgr-dijkstracost"><em>pgr_dijkstraCost</em></a> -Get the aggregate cost of the shortest paths.</li>
+</ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="the-problem-definition">
+<h1>The problem definition<a class="headerlink" href="#the-problem-definition" title="Permalink to this headline">¶</a></h1>
+<p>Given the following query:</p>
+<p>pgr_dijkstra(<span class="math">\(sql, start_{vid}, end_{vid}, directed\)</span>)</p>
+<p>where  <span class="math">\(sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}\)</span></p>
+<p>and</p>
+<blockquote>
+<div><ul class="simple">
+<li><span class="math">\(source = \bigcup source_i\)</span>,</li>
+<li><span class="math">\(target = \bigcup target_i\)</span>,</li>
+</ul>
+</div></blockquote>
+<p>The graphs are defined as follows:</p>
+<p class="rubric">Directed graph</p>
+<p>The weighted directed graph, <span class="math">\(G_d(V,E)\)</span>, is definied by:</p>
+<ul class="simple">
+<li>the set of vertices  <span class="math">\(V\)</span><ul>
+<li><span class="math">\(V = source \cup target \cup {start_{vid}} \cup  {end_{vid}}\)</span></li>
+</ul>
+</li>
+<li>the set of edges <span class="math">\(E\)</span><ul>
+<li><span class="math">\(E = \begin{cases} &amp;\{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp;\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &amp;\{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} \\ \cup &amp;\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp;\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}\)</span></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Undirected graph</p>
+<p>The weighted undirected graph, <span class="math">\(G_u(V,E)\)</span>, is definied by:</p>
+<ul class="simple">
+<li>the set of vertices  <span class="math">\(V\)</span><ul>
+<li><span class="math">\(V = source \cup target \cup {start_v{vid}} \cup  {end_{vid}}\)</span></li>
+</ul>
+</li>
+<li>the set of edges <span class="math">\(E\)</span><ul>
+<li><span class="math">\(E = \begin{cases} &amp;\{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} \\ \cup &amp;\{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \}  &amp;\quad  \text{ if } reverse\_cost = \varnothing \\ \\ &amp;\{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} \\ \cup &amp;\{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} \\ \cup &amp;\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} \\ \cup &amp;\{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp;\quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}\)</span></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">The problem</p>
+<p>Given:</p>
+<blockquote>
+<div><ul class="simple">
+<li><span class="math">\(start_{vid} \in V\)</span> a starting vertex</li>
+<li><span class="math">\(end_{vid} \in V\)</span> an ending vertex</li>
+<li><span class="math">\(G(V,E) = \begin{cases}  G_d(V,E) &amp;\quad \text{ if } directed = true \\ G_u(V,E) &amp;\quad \text{ if } directed = false \\ \end{cases}\)</span></li>
+</ul>
+</div></blockquote>
+<p>Then:</p>
+<div class="math">
+\[\begin{split}\text{pgr_dijkstra}(sql, start_{vid}, end_{vid}, directed) =
+\begin{cases}
+\text{shortest path } \boldsymbol{\pi} \text{ between } start_{vid} \text{and } end_{vid} &amp;\quad \text{if } \exists  \boldsymbol{\pi}  \\
+\varnothing &amp;\quad \text{otherwise} \\
+\end{cases}\end{split}\]</div>
+<p><span class="math">\(\boldsymbol{\pi} = \{(path_\seq_i, node_i, edge_i, cost_i, agg\_cost_i)\}\)</span></p>
+<dl class="docutils">
+<dt>where:</dt>
+<dd><ul class="first last simple">
+<li><span class="math">\(path_\seq_i = i\)</span></li>
+<li><span class="math">\(path_\seq_{| \pi |} = | \pi |\)</span></li>
+<li><span class="math">\(node_i \in V\)</span></li>
+<li><span class="math">\(node_1 = start_{vid}\)</span></li>
+<li><span class="math">\(node_{| \pi |}  = end_{vid}\)</span></li>
+<li><span class="math">\(\forall i \neq | \pi |, \quad (node_i, node_{i+1}, cost_i) \in E\)</span></li>
+<li><span class="math">\(edge_i  = \begin{cases}  id_{(node_i, node_{i+1},cost_i)}  &amp;\quad  \text{when } i \neq | \pi | \\ -1 &amp;\quad  \text{when } i = | \pi | \\ \end{cases}\)</span></li>
+<li><span class="math">\(cost_i = cost_{(node_i, node_{i+1})}\)</span></li>
+<li><span class="math">\(agg\_cost_i  = \begin{cases}  0   &amp;\quad  \text{when } i = 1  \\ \displaystyle\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &amp;\quad  \text{when } i \neq 1 \\ \end{cases}\)</span></li>
+</ul>
+</dd>
+<dt>In other words: The algorithm returns a the shortest path between <span class="math">\(start_{vid}\)</span> and <span class="math">\(end_{vid}\)</span> , if it exists, in terms of a sequence of nodes  and of edges,</dt>
+<dd><ul class="first last simple">
+<li><span class="math">\(path_\seq\)</span> indicates the relative position in the path of the <span class="math">\(node\)</span> or <span class="math">\(edge\)</span>.</li>
+<li><span class="math">\(cost\)</span> is the cost of the edge to be used to go to the next node.</li>
+<li><span class="math">\(agg\_cost\)</span> is the cost from the <span class="math">\(start_{vid}\)</span> up to the node.</li>
+</ul>
+</dd>
+</dl>
+<p>If there is no path, the resulting set is empty.</p>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../bd_dijkstra/doc/pgr_bdDijkstra.html">pgr_bdDijkstra - Bi-directional Dijkstra Shortest Path</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_dijkstra.html">pgr_dijkstra</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-beta2).
+      Last updated on Mar 18, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

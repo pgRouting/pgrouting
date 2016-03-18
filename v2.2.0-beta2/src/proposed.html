@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Experimental and Proposed functions &mdash; pgRouting Manual (2.2.0-beta2)</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.2.0 (pgrouting-2.2.0-beta2)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0-beta2)" href="../index.html" />
+    <link rel="next" title="pgr_labelGraph" href="label_graph/doc/pgr_labelGraph.html" />
+    <link rel="prev" title="pgr_withPointsDD" href="withPoints/doc/pgr_withPointsDD.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
+          <span>pgRouting Manual (2.2.0-beta2)</span></a></h1>
+        <h2 class="heading"><span>Experimental and Proposed functions</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="withPoints/doc/pgr_withPointsDD.html">pgr_withPointsDD</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="label_graph/doc/pgr_labelGraph.html">pgr_labelGraph</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="experimental-and-proposed-functions">
+<span id="proposed"></span><h1>Experimental and Proposed functions<a class="headerlink" href="#experimental-and-proposed-functions" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#proposed"><em>Experimental and Proposed functions</em></a></p>
+<p>These are proposed functions</p>
+<blockquote>
+<div><ul class="simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officialy be part of the version 2.3 release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might not being done.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation,</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might need a non official function of pgRouting</li>
+<li>Might need a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<div class="section" id="proposed-functions-proposed-by-steve-woodbridge">
+<h2>Proposed functions: Proposed by Steve Woodbridge<a class="headerlink" href="#proposed-functions-proposed-by-steve-woodbridge" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><a class="reference internal" href="convinience/doc/convenience.html#convenience-functions"><em>Convenience Functions</em></a></dt>
+<dd><ul class="first last simple">
+<li><a class="reference internal" href="convinience/doc/pgr_pointToEdgeNode.html#pgr-point-to-edgenode"><em>pgr_pointToEdgeNode</em></a> - convert a point geometry to a <tt class="docutils literal"><span class="pre">vertex_id</span></tt> based on closest edge.</li>
+<li><a class="reference internal" href="convinience/doc/pgr_flipEdges.html#pgr-flip-edges"><em>pgr_flipEdges</em></a> - flip the edges in an array of geometries so the connect end to end.</li>
+<li><a class="reference internal" href="convinience/doc/pgr_textToPoints.html#pgr-text-to-points"><em>pgr_textToPoints</em></a> - convert a string of <tt class="docutils literal"><span class="pre">x,y;x,y;...</span></tt> locations into point geometries.</li>
+<li><a class="reference internal" href="convinience/doc/pgr_pointsToVids.html#pgr-points-to-vids"><em>pgr_pointsToVids</em></a> - convert an array of point geometries into vertex ids.</li>
+<li><a class="reference internal" href="convinience/doc/pgr_pointsToDMatrix.html#pgr-points-to-dmatrix"><em>pgr_pointsToDMatrix</em></a> - Create a distance matrix from an array of points.</li>
+<li><a class="reference internal" href="convinience/doc/pgr_vidsToDMatrix.html#pgr-vids-to-dmatrix"><em>pgr_vidsToDMatrix</em></a> - Create a distance matrix from an array of <tt class="docutils literal"><span class="pre">vertix_id</span></tt>.</li>
+<li><a class="reference internal" href="convinience/doc/pgr_vidsToDMatrix2.html#pgr-vids-to-dmatrix2"><em>pgr_vidsToDMatrix</em></a> - Create a distance matrix from an array of <tt class="docutils literal"><span class="pre">vertix_id</span></tt>.</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="proposed-functions-proposed-by-zia-mohammed">
+<h2>Proposed functions: Proposed by Zia Mohammed<a class="headerlink" href="#proposed-functions-proposed-by-zia-mohammed" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="label_graph/doc/pgr_labelGraph.html#pgr-labelgraph"><em>pgr_labelGraph</em></a> - Analyze / label  subgraphs within a network</li>
+</ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="proposed-functions-proposed-by-rohith-reddy">
+<h2>Proposed functions: Proposed by Rohith Reddy<a class="headerlink" href="#proposed-functions-proposed-by-rohith-reddy" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="contraction/doc/contraction.html#contraction"><em>Contraction</em></a> - Reduce network size using contraction techniques</li>
+</ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="experimental-functions-by-gsoc-students">
+<h2>Experimental functions: by GSoC Students<a class="headerlink" href="#experimental-functions-by-gsoc-students" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="vrp_basic/doc/pgr_vrpOneDepot.html#pgr-vrp-basic"><em>pgr_vrpOneDepot</em></a> - VRP One Depot</li>
+<li><a class="reference internal" href="vrppdtw/doc/index.html#pgr-gsocvrppdtw"><em>pgr_gsoc_vrppdtw</em></a> - VRP Pickup &amp; Delivery</li>
+</ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="withPoints/doc/pgr_withPointsDD.html">pgr_withPointsDD</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="label_graph/doc/pgr_labelGraph.html">pgr_labelGraph</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-beta2).
+      Last updated on Mar 18, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
