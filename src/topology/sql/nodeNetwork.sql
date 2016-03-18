@@ -56,7 +56,8 @@ DECLARE
 
 BEGIN
   raise notice 'PROCESSING:'; 
-  raise notice 'pgr_nodeNetwork(''%'',%,''%'',''%'',''%'',''%'')',edge_table,tolerance,id,the_geom,table_ending,rows_where;
+  raise notice 'pgr_nodeNetwork(''%'', %, ''%'', ''%'', ''%'', ''%'',  %)',
+    edge_table, tolerance, id,  the_geom, table_ending, rows_where, outall;
   raise notice 'Performing checks, please wait .....';
   execute 'show client_min_messages' into debuglevel;
 
