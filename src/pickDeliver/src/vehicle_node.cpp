@@ -65,7 +65,8 @@ void Vehicle_node::evaluate(const Vehicle_node &pred, double cargoLimit) {
 
 
 std::ostream& operator<<(std::ostream &log, const Vehicle_node &v) {
-    log  << "twv=" << v.has_twv()
+    log << static_cast<Tw_node>(v)
+        << "  twv=" << v.has_twv()
         << ", twvTot=" << v.twvTot()
         << ", cvTot=" << v.cvTot()
         << ", cargo=" << v.cargo()

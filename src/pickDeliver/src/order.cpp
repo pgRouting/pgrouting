@@ -11,9 +11,10 @@ Order::Order(ID p_id, const Tw_node &p_pickup, const Tw_node &p_delivery)
          }
 
 std::ostream& operator<<(std::ostream &log, const Order &order) {
-    log << "Order " << order.id << ":\n"
-        << order.m_pickup
-        << order.m_delivery;
+    log << "Order " << order.m_id << ":\n"
+        << "\tPickup: " << order.m_pickup << "\n"
+        << "\tDelivery: " << order.m_delivery << "\n\n";
+    return log;
 }
 
 

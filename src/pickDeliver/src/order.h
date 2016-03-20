@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <iostream>
 #include "vehicle_node.h"
 
 class Order {
