@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include "./pickDeliver_driver.h"
-#include "./pdp_solver.h"
+#include "./pgr_pickDeliver.h"
 
 // #define DEBUG
 
@@ -67,15 +67,38 @@ do_pgr_pickDeliver(
         char ** err_msg) {
     std::ostringstream log;
     try {
+        *return_tuples = NULL;
+        *return_count = 0;
+
         log << "Starting do_pgr_pickDeliver\n";
-        log << "max_vehicles"  << max_vehicles << "\n";
-        log << "capacity"  << capacity << "\n";
-        log << "max_cycles"  << max_cycles << "\n";
-        log << "total_customers"  << total_customers << "\n";
+        log << "max_vehicles: "  << max_vehicles << "\n";
+        log << "capacity: "  << capacity << "\n";
+        log << "max_cycles: "  << max_cycles << "\n";
+        log << "total_customers: "  << total_customers << "\n";
         for (size_t i = 0; i < total_customers; i++) {
             log << customers_arr[i].id << "\t";
         }
-        Solver(customers_arr, total_customers, max_vehicles, capacity, max_cycles, return_tuples, *return_count, log);
+        log << "\n";
+
+        // Solver(customers_arr, total_customers, max_vehicles, capacity, max_cycles, return_tuples, *return_count, log);
+
+
+        log << "Read data\n";
+        std::string error("");
+        Pgr_pickDeliver pd_problem(customers_arr, total_customers, max_vehicles, capacity, max_cycles, error);
+        if (error.compare("")) {
+            *err_msg = strdup(error.c_str());
+            return;
+        }
+        pd_problem.get_log(log);
+        log << "Finish Reading data\n";
+
+        pd_problem.data_consistency();
+        pd_problem.get_log(log);
+
+        log << "Finish checking consistency\n";
+
+
 
         *err_msg = strdup(log.str().c_str());
     } catch ( ... ) {

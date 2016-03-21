@@ -90,6 +90,9 @@ class Tw_node: public Node {
 
      bool is_ok_after_visiting(const Tw_node &other) const;
 
+
+
+
      /** @name document functions */
      ///@{
      /*!

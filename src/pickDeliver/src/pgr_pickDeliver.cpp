@@ -53,156 +53,168 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <vector>
 #include <algorithm>
+
 extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
 
+#include "./../../common/src/pgr_assert.h"
 
-#include "./Solution.h"
-#include "./pdp_solver.h"
-#include "./tw_node.h"
+#include "./vehicle_node.h"
+#include "./vehicle.h"
 #include "./order.h"
-
-
-//forward declaration
-static
-void
-TabuSearch(
-        const std::vector<Customer_t> &customers,
-        const std::vector<Pickup> &pickups,
-        int maxIter,
-        std::vector<Solution> &T);
-
-static
-void
-get_result(
-        Solution &solution,
-        const std::vector < Customer_t > &customers,
-        const Depot &depot,
-        int64_t VehicleLength,
-        std::vector< General_vehicle_orders_t > &result);
+#include "./Solution.h"
+#include "./pgr_pickDeliver.h"
 
 
 
-int64_t Solver(
-        Customer_t *customers_data, size_t total_customers,
-        int VehicleLength,
-        double capacity,
-        int max_cycles,
-        General_vehicle_orders_t **results,
-        size_t &length_results_struct,
-        std::ostringstream &log){
-    log << "\n *** Solver ***\n";
 
 
-    std::vector<Customer_t> customers(customers_data, customers_data + total_customers);
-    std::vector<Pickup> pickups;
-    std::vector<Route> routes;
+Pgr_pickDeliver::Pgr_pickDeliver(
+        const Customer_t *customers_data, size_t total_customers,
+        int p_max_vehicles,
+        double p_capacity,
+        int p_max_cycles,
+        std::string &error) :
+    /* Set the depot to be the first ddata found */
+    max_capacity(p_capacity),
+    max_cycles(p_max_cycles),
+    max_vehicles(p_max_vehicles),
+    starting_site({0, customers_data[0], Tw_node::NodeType::kStart}),
+    ending_site({0, customers_data[0], Tw_node::NodeType::kEnd}),
+    original_data(customers_data, customers_data + total_customers)
+{
+    error = "";
 
-    /* sort customenrs by id */
-    std::sort(customers.begin(), customers.end(),
+    log << "\n *** Constructor of problem ***\n";
+
+    /* sort datai by id */
+    std::sort(original_data.begin(), original_data.end(),
             [] (const Customer_t &c1, const Customer_t &c2)
             {return c1.id < c2.id;});
 
-    
-
-
-#if 1
-    for (const auto c : customers) {
-        log << c.id << "("
-            << c.x << ","
-            << c.y << ","
-            << c.demand << ","
-            << c.Etime << ","
-            << c.Ltime << ","
-            << c.Stime << ","
-            << c.Pindex << ","
-            << c.Dindex << "\n";
-    };
-#endif
-
-    /* starting node:
+    /*
+     * starting node:
      * id must be 0
      */
-    if (customers[0].id != 0) {
-        log << "ERROR: Depot node not found\n";
-        return 400;
+    if (original_data[0].id != 0) {
+        error = "ERROR: Depot node not found\n";
+        return;
     }
 
+    starting_site = Vehicle_node({0, customers_data[0], Tw_node::NodeType::kStart});
+    ending_site = Vehicle_node({0, customers_data[0], Tw_node::NodeType::kEnd});
 
-    /* starting node:
-     * This are ignored
-     * Dindex must be 0
-     * Pindex must be 0
-     * demand must be 0 (truck starts empty)
-     */
-    Tw_node depot1({0, customers_data[0], Tw_node::NodeType::kStart});
-
-    log << "DEPOT: " << depot1 << "\n";
+    log << "DEPOT: " << starting_site << "\n";
 
 
-#ifndef OLDCODE
-    Depot depot({customers_data[0].id, customers_data[0].x, customers_data[0].y,
-            customers_data[0].demand,
-            customers_data[0].Etime, customers_data[0].Ltime, customers_data[0].Stime,
-            customers_data[0].Pindex, customers_data[0].Dindex
-            });
-#endif
 
-    for (const auto p : customers) {
+    ID order_id(0);
+    for (const auto p : original_data) {
         if (p.id == 0) continue; 
         if (p.Dindex == 0) continue;
+
         /* pickup is found */
         Tw_node pickup({0, p, Tw_node::NodeType::kPickup});
-        auto deliver_ptr = std::lower_bound(customers.begin(), customers.end(), p,
+
+        /* look for the delivery */
+        auto deliver_ptr = std::lower_bound(original_data.begin(), original_data.end(), p,
                 [] (const Customer_t &delivery, const Customer_t &pick) -> bool
-                //[] (const Customer_t &c1, int64_t val) -> bool
                 {return delivery.id < pick.Dindex;}
                 );
-        if (deliver_ptr == customers.end()) {
-            log << "ERROR: NOT FOUND corresponding delivery of: " << p.id <<"\n";
-            return 0;
+
+        if (deliver_ptr == original_data.end()) {
+            std::ostringstream tmplog;
+            tmplog << "ERROR: NOT FOUND corresponding delivery of: " <<  p.id << "\n";
+            error = tmplog.str();
+            return;
         }
+        /* delivery is found*/
         Tw_node delivery(0, (*deliver_ptr), Tw_node::NodeType::kDelivery);
-        Order order(1, pickup, delivery);
-        log << order << "\n";
-        // log << "ORDER: " << order.pickup() << "\n" << order.delivery();
-    }
 
+        /* add the order */
+        orders.push_back(Order(order_id, pickup, delivery));
 
-
-    return 0;
-
-#if 0
-    if (total_tuples != 107) {
-        return 0;
-    }
+#if 1
+        log << orders.back() << "\n";
 #endif
 
-    // Customer Data
-    for (auto &c : customers) {
-        if (c.id == 0) continue; 
-        c.Ddist = CalculateDistance(c, depot);
-        if (c.Pindex == 0) {
-            // From Customers put aside all the Pickup's;
-            Pickup pickup({c.id, c.Ddist, c.Dindex});
-            pickups.push_back(pickup);
-        }
+        ++order_id;
     }
 
-    if (pickups.size() != 53) {
-        (*results) = NULL;
-        length_results_struct = 0;
-        return 0;
+    /* double check we found all orders */
+    if (((orders.size() * 2 + 1) - original_data.size()) != 0 ) {
+        error =  "Something is wrong with the data, not all orders were found";
+    }
+}
+
+
+bool 
+Pgr_pickDeliver::data_consistency() const {
+    try {
+        /****************
+         * A vehicle with the order must be feasable
+         *  S P D E
+         **************/
+        //   for (const auto &o : orders) {
+        assert(false);
+        // Vehicle truck(starting_site, starting_site, max_capacity);
+        //Vehicle truck(starting_site, ending_site, max_capacity);
+        //truck.push_back(o.pickup());
+        //truck.push_back(o.delivery());
+        //log << truck;
+        //   }
+        return true;
+    } catch (AssertFailedException &exept) {
+        log << exept.what() << "\n";
+        return false;
+    } catch (std::exception& exept) {
+        log << exept.what() << "\n";
+        return false;
+    } catch(...) {
+        std::cout << "Caught unknown exception!\n";
+        return false;
     }
 
-    /* Sort Pickup's
-     * The sequential construction inserts from largest distance to smallest
-     * but he had it ordered from smallest to largest
-     */
-    std::sort(pickups.begin(), pickups.end(),
-            [] (const Pickup &p1, const Pickup &p2)
-            {return p2.Ddist < p1.Ddist;});
+
+
+}
+
+
+
+
+int64_t
+Pgr_pickDeliver::Solver() {
+
+    return 0;
+}
+
+#if 0
+
+// Customer Data
+for (auto &c : customers) {
+    if (c.id == 0) continue; 
+    c.Ddist = CalculateDistance(c, depot);
+    if (c.Pindex == 0) {
+        // From Customers put aside all the Pickup's;
+        Pickup pickup({c.id, c.Ddist, c.Dindex});
+        pickups.push_back(pickup);
+    }
+}
+
+if (pickups.size() != 53) {
+    (*results) = NULL;
+    length_results_struct = 0;
+    return 0;
+}
+
+/* Sort Pickup's
+ * The sequential construction inserts from largest distance to smallest
+ * but he had it ordered from smallest to largest
+ */
+std::sort(pickups.begin(), pickups.end(),
+        [] (const Pickup &p1, const Pickup &p2)
+        {return p2.Ddist < p1.Ddist;});
 
 
     // Sequential Construction
@@ -221,9 +233,9 @@ int64_t Solver(
     }
 
 
-    std::sort(pickups.begin(), pickups.end(),
-            [] (const Pickup &p1, const Pickup &p2)
-            {return p1.Ddist < p2.Ddist;});
+std::sort(pickups.begin(), pickups.end(),
+        [] (const Pickup &p1, const Pickup &p2)
+        {return p1.Ddist < p2.Ddist;});
 
     // Initial Solution
     Solution S0;
@@ -244,27 +256,28 @@ int64_t Solver(
         get_result(solution, customers, depot, VehicleLength, result);
     }
 #else
-    T.back().UpdateSol(customers);
-    get_result(T.back(), customers, depot, VehicleLength, result);
+T.back().UpdateSol(customers);
+get_result(T.back(), customers, depot, VehicleLength, result);
 #endif
 
 
 
-    // Getting memory to store results
-    *results = static_cast<General_vehicle_orders_t *>(malloc(sizeof(General_vehicle_orders_t) * (result.size())));
+// Getting memory to store results
+*results = static_cast<General_vehicle_orders_t *>(malloc(sizeof(General_vehicle_orders_t) * (result.size())));
 
-    //store the results
-    int seq = 0;
-    for (const auto &row : result) {
-        (*results)[seq] = row;
-        ++seq;
-    }
-
-    length_results_struct = result.size();
-
-    // log << "FINISH";;
-    return 0;
+//store the results
+int seq = 0;
+for (const auto &row : result) {
+    (*results)[seq] = row;
+    ++seq;
 }
+
+length_results_struct = result.size();
+
+// log << "FINISH";;
+return 0;
+}
+#endif
 
 
 
@@ -303,9 +316,11 @@ int64_t Solver(
  }
 
 */
-static
+
+
 void
-TabuSearch(const std::vector<Customer_t> &customers,
+Pgr_pickDeliver::TabuSearch(
+        const std::vector<Customer_t> &customers,
         const std::vector<Pickup> &pickups,
         int maxItr,
         std::vector<Solution> &T) {
@@ -347,9 +362,8 @@ TabuSearch(const std::vector<Customer_t> &customers,
  *       2 2 1 id=1 deltaLoad arrivalTime=d01 travelTime=d01 serviceTime=service(1) waitTime=(0 or waittime)  departureTime = arrivalTime + waitTime + service(1)  totalLoad
  *
  */
-static
 void
-get_result(
+Pgr_pickDeliver::get_result(
         Solution &solution,
         const Customers &customers,
         const Depot &depot,

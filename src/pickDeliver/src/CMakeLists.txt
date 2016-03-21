@@ -1,9 +1,11 @@
 ADD_LIBRARY(pickDeliver OBJECT 
     pickDeliver.c 
     customers_input.c  
-    pdp_solver.cpp 
+    Route.cpp
+    Solution.cpp
     pickDeliver_driver.cpp
     
+    pgr_pickDeliver.cpp 
     basictypes.cpp
     
     point.cpp

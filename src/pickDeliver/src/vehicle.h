@@ -36,10 +36,14 @@
 
 class Vehicle {
  private:
-     std::deque< Vehicle_node > path;
+     std::deque< Vehicle_node > m_path;
      double max_capacity;
 
  public:
+     Vehicle(const Vehicle_node &starting_site, const Vehicle_node &ending_site, double max_capacity); 
+
+
+
      /*! @name deque like functions 
 
        \returns True if the operation was performed
@@ -132,14 +136,23 @@ class Vehicle {
       */
      void evaluate(POS from);
 
-
      ///@}
 
+
+
+
+     /*! @name accessors */
+     ///@{
+      
+     std::deque< Vehicle_node > path() const;
+
+     ///@}
 
      /*! @name operators */
      ///@{
 
 
+     friend std::ostream& operator<<(std::ostream &log, const Vehicle &v);
      friend bool operator<(const Vehicle &lhs, const Vehicle &rhs);
 
      ///@}
