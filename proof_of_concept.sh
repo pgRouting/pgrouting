@@ -1,13 +1,30 @@
-dropdb -U postgres doc_data
+set -e 
 
-createdb -U postgres doc_data
+PGUSER=$1
+PGDATABASE="doc_data"
 
-psql -U postgres -d doc_data -c 'CREATE EXTENSION postgis'
+# Define alias function for psql command
+run_psql () {
+    PGOPTIONS='--client-min-messages=warning' psql -U $PGUSER  -d $PGDATABASE -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
+    if [ "$?" -ne 0 ]
+    then 
+        echo "Test query failed: $@"
+        ERROR=1
+    fi 
+}
 
-psql -U postgres -d doc_data -c 'CREATE EXTENSION pgrouting'
 
-psql -U postgres -d doc_data -f  tools/testers/sampledata.sql
+dropdb -U $PGUSER doc_data
 
-psql -U postgres -d doc_data -f src/contraction/test/proof_of_concept.test.sql
+createdb -U $PGUSER doc_data
 
-tools/testers/algorithm-tester.pl -pguser postgres -alg contraction
+run_psql  -c 'CREATE EXTENSION postgis'
+
+run_psql  -c 'CREATE EXTENSION pgrouting'
+
+run_psql -f  tools/testers/sampledata.sql
+
+run_psql -e -f src/contraction/test/proof_of_concept.test.sql
+#run_psql -e -f src/contraction/test/proof_of_concept_1.test.sql > result_1.txt
+
+#tools/testers/algorithm-tester.pl -pguser postgres -alg contraction
