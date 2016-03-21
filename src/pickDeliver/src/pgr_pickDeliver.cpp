@@ -152,18 +152,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 bool 
 Pgr_pickDeliver::data_consistency() const {
     try {
-        /****************
-         * A vehicle with the order must be feasable
-         *  S P D E
-         **************/
-        //   for (const auto &o : orders) {
-        assert(false);
-        // Vehicle truck(starting_site, starting_site, max_capacity);
-        //Vehicle truck(starting_site, ending_site, max_capacity);
-        //truck.push_back(o.pickup());
-        //truck.push_back(o.delivery());
-        //log << truck;
-        //   }
+        assert(true);
         return true;
     } catch (AssertFailedException &exept) {
         log << exept.what() << "\n";
@@ -175,12 +164,20 @@ Pgr_pickDeliver::data_consistency() const {
         std::cout << "Caught unknown exception!\n";
         return false;
     }
-
-
-
 }
 
-
+#if 0
+/****************
+ * A vehicle with the order must be feasable
+ *  S P D E
+ **************/
+for (const auto &o : orders) {
+    Vehicle truck(starting_site, ending_site, max_capacity);
+    truck.push_back(o.pickup());
+    truck.push_back(o.delivery());
+    log << truck;
+}
+#endif
 
 
 int64_t
