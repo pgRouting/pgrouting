@@ -45,7 +45,7 @@ class Tw_node: public Node {
      /*!  * \brief Returns the service time for this node.  */
      inline double service_time() const { return m_service_time;}
 
-     /*!  * \brief Returns the service time for this node.  */
+     /*!  * \brief Returns the type of this node.  */
      inline NodeType type() const { return m_type;}
 
      /*!  \brief Returns the length of time between the opening and closeing.  */
@@ -53,15 +53,78 @@ class Tw_node: public Node {
 
      ///@}
 
-     /** @name kind of node */
+     /** @name kind of node 
+      *
+      * A true value when;
+      *
+      *   - 0 < opens < closes
+      *   - the type is the requested type
+      *   - the demand are valid for the requested type
+      */
+
      ///@{
+
      
-     inline bool is_start() const {return m_type == kStart;}
-     inline bool is_pickup() const {return m_type == kPickup;}
-     inline bool is_delivery() const {return m_type == kDelivery;}
-     inline bool is_dump() const {return m_type == kDump;}
-     inline bool is_load() const {return m_type == kLoad;}
-     inline bool is_end() const {return m_type == kEnd;}
+     /*!  \brief is_start
+      *
+      * To be a start node:
+      *   - type is kStart
+      *   - demand == 0
+      *
+      **/
+     bool is_start() const;
+
+
+     /*!  \brief is_pickup
+      *
+      * To be a pickup node:
+      *   - type is kPickup
+      *   - demand > 0
+      *
+      **/
+     bool is_pickup() const;
+
+
+     /*!  \brief is_delivery
+      *
+      * To be a delivery node:
+      *   - type is kDelivery
+      *   - demand < 0
+      *
+      **/
+     bool is_delivery() const;
+
+
+     /*!  \brief is_dump
+      *
+      * To be a dump node:
+      *   - type is kDump
+      *   - demand <= 0
+      *
+      **/
+     bool is_dump() const;
+
+
+     /*!  \brief is_Load
+      *
+      * To be a Load node:
+      *   - type is kLoad
+      *   - demand >= 0
+      *
+      **/
+     bool is_load() const;
+
+
+     /*!  \brief is_end
+      *
+      * To be a End node:
+      *   - type is kEnd
+      *   - demand == 0
+      *
+      **/
+     bool is_end() const;
+
+
      std::string type_str() const;
 
      ///@}
@@ -159,6 +222,4 @@ class Tw_node: public Node {
      double m_service_time; ///< time it takes to be served
      double m_demand;       ///< The demand for the Node
      NodeType m_type;         ///< The demand for the Node
-
-
 };

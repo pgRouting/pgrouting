@@ -46,6 +46,62 @@ std::string Tw_node::type_str() const {
     }
 }
 
+bool
+Tw_node::is_start() const {
+    return 
+        m_type == kStart 
+        && (0 <= opens()) 
+        && (opens() < closes())
+        && (demand() == 0);
+}
+
+bool 
+Tw_node::is_pickup() const {
+    return m_type == kPickup
+        && (0 <= opens()) 
+        && (opens() < closes())
+        && (demand() > 0);
+}
+
+
+bool 
+Tw_node::is_delivery() const {
+    return m_type == kDelivery
+        && (0 <= opens()) 
+        && (opens() < closes())
+        && (demand() < 0);
+}
+
+
+bool 
+Tw_node::is_dump() const {
+    return m_type == kDump
+        && (0 <= opens()) 
+        && (opens() < closes())
+        && (demand() <= 0);
+}
+
+
+bool 
+Tw_node::is_load() const {
+    return m_type == kLoad
+        && (0 <= opens()) 
+        && (opens() < closes())
+        && (demand() >= 0);
+}
+
+
+bool 
+Tw_node::is_end() const {
+    return m_type == kEnd
+        && (0 <= opens()) 
+        && (opens() < closes())
+        && (demand() == 0);
+}
+
+
+
+
 bool Tw_node::is_valid() const {
 
     if (closes() < opens()) return false;

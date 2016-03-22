@@ -97,11 +97,11 @@ process(char* customers_sql,
             &log_msg,
             &err_msg);
     PGR_DBG("Returning %ld tuples\n", *result_count);
+    PGR_DBG("Returned log = %s\n", log_msg);
     if (err_msg) {
         elog(ERROR, "%s", err_msg);
     }
 
-    PGR_DBG("Returned log = %s\n", log_msg);
 
     free(err_msg);
     pfree(customers_arr);

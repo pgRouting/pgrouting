@@ -69,7 +69,6 @@ class Vehicle {
       *
       * \param[in] node The node to insert.
       * \param[in] at The position that the node should be inserted.
-      * \param[in] maxcapacity The maximum capacity of vehicle for this path.
       */
      void insert(POS at, Vehicle_node node);
 
@@ -80,7 +79,6 @@ class Vehicle {
      /*! \brief Evaluated: push_back a node to the path.
       *
       * \param[in] node to be push_back.
-      * \param[in] maxcapacity of vehicle for this path.
       */
      void push_back(Vehicle_node node);
 
@@ -88,7 +86,9 @@ class Vehicle {
 
 
 
-     /*!  * \brief Evaluated: erase a node from the path.
+     /*!  * \brief Evaluated: erase node at `pos` from the path.
+      *
+      * start and ending nodes cannot be erased
       *
       * \param[in] pos to be erased.
       */

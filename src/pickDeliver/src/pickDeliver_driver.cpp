@@ -89,6 +89,8 @@ do_pgr_pickDeliver(
         std::string error("");
         Pgr_pickDeliver pd_problem(customers_arr, total_customers, max_vehicles, capacity, max_cycles, error);
         if (error.compare("")) {
+            pd_problem.get_log(log);
+            *log_msg = strdup(log.str().c_str());
             *err_msg = strdup(error.c_str());
             return;
         }
