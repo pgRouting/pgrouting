@@ -91,9 +91,16 @@ class Vehicle {
      /*!  * \brief Evaluated: erase a node from the path.
       *
       * \param[in] pos to be erased.
-      * \param[in] maxcapacity of vehicle for this path.
       */
      void erase(POS pos);
+
+
+
+
+     bool has_twv() const {return m_path.back().twvTot() != 0;}
+     bool has_cv() const {return m_path.back().cvTot() != 0;}
+     bool is_feasable() const {return !(has_twv() || has_cv());}
+     bool empty() const;
 
 
      /*!

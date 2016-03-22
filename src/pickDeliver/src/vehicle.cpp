@@ -11,21 +11,21 @@
 
 void
 Vehicle::invariant() const{
-    assert(m_path.size() >= 2);
-    assert(m_path.front().is_start());
-    assert(m_path.back().is_end());
+    pgassert(m_path.size() >= 2);
+    pgassert(m_path.front().is_start());
+    pgassert(m_path.back().is_end());
 }
 
 void
 Vehicle::insert(POS at, Vehicle_node node) {
     invariant();
-    assert(at <= m_path.size());
+    pgassert(at <= m_path.size());
 
     m_path.insert(m_path.begin() + at, node); 
     evaluate(at);
 
-    assert(at < m_path.size());
-    assert(m_path[at].id() == node.id());
+    pgassert(at < m_path.size());
+    pgassert(m_path[at].id() == node.id());
     invariant();
 
 }
@@ -51,10 +51,10 @@ void
 Vehicle::erase(POS at) {
     invariant();
 
-    assert(m_path.size() > 2);
-    assert(at < m_path.size());
-    assert(!m_path[at].is_start());
-    assert(!m_path[at].is_end());
+    pgassert(m_path.size() > 2);
+    pgassert(at < m_path.size());
+    pgassert(!m_path[at].is_start());
+    pgassert(!m_path[at].is_end());
 
     m_path.erase(m_path.begin() + at);
     evaluate(at);
@@ -65,11 +65,11 @@ Vehicle::erase(POS at) {
 void
 Vehicle::swap(POS i, POS j) {
     invariant();
-    assert(m_path.size() > 3);
-    assert(!m_path[i].is_start());
-    assert(!m_path[i].is_end());
-    assert(!m_path[j].is_start());
-    assert(!m_path[j].is_end());
+    pgassert(m_path.size() > 3);
+    pgassert(!m_path[i].is_start());
+    pgassert(!m_path[i].is_end());
+    pgassert(!m_path[j].is_start());
+    pgassert(!m_path[j].is_end());
 
     std::swap(m_path[i], m_path[j]);
     i < j ? evaluate(i) : evaluate(j);
@@ -80,23 +80,26 @@ Vehicle::swap(POS i, POS j) {
 
 void
 Vehicle::evaluate() {
-    // preconditions
-    assert(m_path.size() >= 2);
-    assert(m_path.front().is_start());
-    assert(m_path.back().is_end());
+    invariant();
 
     evaluate(0);
+
+    invariant();
+}
+
+bool
+Vehicle::empty() const {
+    invariant();
+    return m_path.size() == 2;
 }
 
 void
 Vehicle::evaluate(POS from) {
+    invariant();
     // preconditions
-    assert(from < m_path.size());
-    assert(m_path.size() >= 2);
-    assert(m_path.front().is_start());
-    assert(m_path.back().is_end());
+    pgassert(from < m_path.size());
 
-    
+
     auto node = m_path.begin() + from;
 
     while (node != m_path.end()) {
@@ -105,11 +108,12 @@ Vehicle::evaluate(POS from) {
 
         ++node;
     }
-    
+    invariant();
 }
 
 std::deque< Vehicle_node > 
 Vehicle::path() const {
+    invariant();
     return m_path;
 }
 
@@ -123,6 +127,7 @@ Vehicle::Vehicle(
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);
         evaluate(0);
+        invariant();
     }
 
 
@@ -130,7 +135,10 @@ Vehicle::Vehicle(
 
 std::ostream&
 operator<<(std::ostream &log, const Vehicle &v){
+    v.invariant();
+    int i(0);
     for (const auto &path_stop : v.path()) {
+        log << "\nPath_stop" << ++i << "\n";
         log << path_stop;
     }
     return log;

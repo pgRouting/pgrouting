@@ -15,6 +15,9 @@
 
 #include <exception>
 
+#ifdef pgassert
+#undef pgassert
+#endif
 
 
 /*! \file vrp_assert.h
@@ -29,9 +32,6 @@
  *
  * **Do not crash the backend server.**
  */
-#ifdef assert
-#undef assert
-#endif
 
 #ifndef __STRING
 #define __STRING(x) #x
@@ -39,7 +39,7 @@
 
 #define __TOSTRING(x) __STRING(x)
 
-/*! \def assert(expr)
+/*! \def pgassert(expr)
  * \brief Uses the standard assert syntax.
  *
  * When an assertion fails it will throw \ref AssertFailedException and what()
@@ -53,8 +53,8 @@
     int main() {
 
         try {
-            assert(2+2 == 4);
-            assert(2+2 == 5);
+            pgassert(2+2 == 4);
+            pgassert(2+2 == 5);
         }
         catch (AssertFailedException &e) {
             std::cout << e.what() << "\n";
@@ -70,9 +70,9 @@
 \endcode
  */
 #ifdef NDEBUG
-#define assert(expr) ((void)0)
+#define pgassert(expr) ((void)0)
 #else
-#define assert(expr) \
+#define pgassert(expr) \
     ((expr) \
      ? static_cast<void>(0) \
      : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) ))

@@ -1,6 +1,7 @@
 
 
 
+#include "./../../common/src/pgr_assert.h"
 #include "order.h"
 
 
@@ -8,6 +9,8 @@ Order::Order(ID p_id, const Tw_node &p_pickup, const Tw_node &p_delivery)
          : m_id(p_id),
          m_pickup(p_pickup),
          m_delivery(p_delivery) { 
+             pgassert(m_pickup.is_pickup());
+             pgassert(m_delivery.is_delivery());
          }
 
 std::ostream& operator<<(std::ostream &log, const Order &order) {
@@ -19,9 +22,10 @@ std::ostream& operator<<(std::ostream &log, const Order &order) {
 
 
 
-Vehicle_node  Order::delivery() const {return m_pickup;}
+Vehicle_node  Order::delivery() const {return m_delivery;}
 
-Vehicle_node  Order::pickup() const {return m_delivery;}
+
+Vehicle_node  Order::pickup() const {return m_pickup;}
 
 
 bool

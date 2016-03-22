@@ -128,7 +128,7 @@ std::ostream& operator<<(std::ostream &log, const Tw_node &n) {
         << "\tcloses=" << n.m_closes
         << "\tservice=" << n.m_service_time
         << "\tdemand=" << n.m_demand
-        << "\ttype=" << n.type()
+        << "\ttype=" << n.type_str()
         << "]\n";
     return log;
 }

@@ -58,6 +58,7 @@ extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
 
+// #include <cassert>
 #include "./../../common/src/pgr_assert.h"
 
 #include "./vehicle_node.h"
@@ -98,7 +99,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
      * id must be 0
      */
     if (original_data[0].id != 0) {
-        error = "ERROR: Depot node not found\n";
+        error = "Depot node not found";
         return;
     }
 
@@ -112,30 +113,45 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     ID order_id(0);
     for (const auto p : original_data) {
         if (p.id == 0) continue; 
+/*
+ * The Pickup is 11 (pindex == 0)
+ * The Deliver is 1 (dindex == 0)
+ *
+ * id | x  | y  | demand | etime | Ltime | Stime | pindex | dindex
+ *  1 | 45 | 68 |    -10 |   912 |   967 |    90 |     11 |      0
+ * 11 | 35 | 69 |     10 |   448 |   505 |    90 |      0 |      1
+ */ 
+
+        /* skip deliveries */
         if (p.Dindex == 0) continue;
 
         /* pickup is found */
         Tw_node pickup({0, p, Tw_node::NodeType::kPickup});
+        pgassert(pickup.is_pickup());
 
-        /* look for the delivery */
+        /* look for corresponding the delivery of the pickup'*/
         auto deliver_ptr = std::lower_bound(original_data.begin(), original_data.end(), p,
                 [] (const Customer_t &delivery, const Customer_t &pick) -> bool
                 {return delivery.id < pick.Dindex;}
                 );
 
-        if (deliver_ptr == original_data.end()) {
+        if (deliver_ptr == original_data.end()
+                || deliver_ptr->id != p.Dindex) {
             std::ostringstream tmplog;
-            tmplog << "ERROR: NOT FOUND corresponding delivery of: " <<  p.id << "\n";
+            tmplog << "For pickup " <<  p.id << " the corresponding delivery was not found";
             error = tmplog.str();
             return;
         }
         /* delivery is found*/
         Tw_node delivery(0, (*deliver_ptr), Tw_node::NodeType::kDelivery);
+        pgassert(delivery.is_delivery());
 
         /* add the order */
         orders.push_back(Order(order_id, pickup, delivery));
+        pgassert(orders.back().pickup().is_pickup());
+        pgassert(orders.back().delivery().is_delivery());
 
-#if 1
+#if 0
         log << orders.back() << "\n";
 #endif
 
@@ -144,40 +160,39 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
     /* double check we found all orders */
     if (((orders.size() * 2 + 1) - original_data.size()) != 0 ) {
-        error =  "Something is wrong with the data, not all orders were found";
+        error =  "A pickup was not found";
+        return;
+    }
+
+    /****************
+     * A vehicle with the order must be feasable
+     *  S P D E
+     **************/
+    for (const auto &o : orders) {
+        Vehicle truck(starting_site, ending_site, max_capacity);
+        truck.push_back(o.pickup());
+        truck.push_back(o.delivery());
+        if (truck.has_twv()) {
+            std::ostringstream tmplog;
+            tmplog << "Found time window violation for truck with (pickup, delivery) = ("
+                << o.pickup().original_id() << ", "
+                << o.delivery().original_id() << ")";
+            error =  tmplog.str();
+            return;
+        }
     }
 }
 
 
 bool 
 Pgr_pickDeliver::data_consistency() const {
-    try {
-        assert(true);
-        return true;
-    } catch (AssertFailedException &exept) {
-        log << exept.what() << "\n";
-        return false;
-    } catch (std::exception& exept) {
-        log << exept.what() << "\n";
-        return false;
-    } catch(...) {
-        std::cout << "Caught unknown exception!\n";
-        return false;
-    }
+#if 0
+    log << "\n\n\n ************ TRUCK: formed with order " << o.id() << "********************\n";
+    log << truck;
+#endif 
+    return true;
 }
 
-#if 0
-/****************
- * A vehicle with the order must be feasable
- *  S P D E
- **************/
-for (const auto &o : orders) {
-    Vehicle truck(starting_site, ending_site, max_capacity);
-    truck.push_back(o.pickup());
-    truck.push_back(o.delivery());
-    log << truck;
-}
-#endif
 
 
 int64_t

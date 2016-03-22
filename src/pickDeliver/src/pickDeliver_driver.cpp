@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string.h>
 #include <deque>
 #include <vector>
+#include "./../../common/src/pgr_assert.h"
 #include "./pickDeliver_driver.h"
 #include "./pgr_pickDeliver.h"
 
@@ -64,6 +65,7 @@ do_pgr_pickDeliver(
         int max_cycles,
         General_vehicle_orders_t **return_tuples,
         size_t *return_count,
+        char ** log_msg,
         char ** err_msg) {
     std::ostringstream log;
     try {
@@ -100,9 +102,16 @@ do_pgr_pickDeliver(
 
 
 
+        *log_msg = strdup(log.str().c_str());
+
+    } catch (AssertFailedException &exept) {
+        log << exept.what() << "\n";
         *err_msg = strdup(log.str().c_str());
-    } catch ( ... ) {
-        log << "Caught unknown expection!\n";
+    } catch (std::exception& exept) {
+        log << exept.what() << "\n";
+        *err_msg = strdup(log.str().c_str());
+    } catch(...) {
+        std::cout << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
     }
 }

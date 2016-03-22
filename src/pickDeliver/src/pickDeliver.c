@@ -85,7 +85,8 @@ process(char* customers_sql,
     PGR_DBG("Total %ld customers in query:", total_customers);
 
     PGR_DBG("Starting processing");
-    char *err_msg = (char *)"";
+    char *log_msg = NULL;
+    char *err_msg = NULL;
     do_pgr_pickDeliver(
             customers_arr, total_customers,
             max_vehicles,
@@ -93,9 +94,14 @@ process(char* customers_sql,
             max_cycles,
             result_tuples,
             result_count,
+            &log_msg,
             &err_msg);
     PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+    if (err_msg) {
+        elog(ERROR, "%s", err_msg);
+    }
+
+    PGR_DBG("Returned log = %s\n", log_msg);
 
     free(err_msg);
     pfree(customers_arr);
