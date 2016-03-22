@@ -6,4 +6,6 @@ ADD_LIBRARY(common OBJECT
     get_check_data.c
     edges_input.c
     arrays_input.c
+
+    pgr_assert.cpp
     )
