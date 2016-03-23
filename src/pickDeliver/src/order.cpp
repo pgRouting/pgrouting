@@ -5,15 +5,20 @@
 #include "order.h"
 
 
-Order::Order(ID p_id, const Tw_node &p_pickup, const Tw_node &p_delivery)
-         : m_id(p_id),
-         m_pickup(p_pickup),
-         m_delivery(p_delivery) { 
-             pgassert(m_pickup.is_pickup());
-             pgassert(m_delivery.is_delivery());
-         }
+Order::Order(ID p_id,
+        const Vehicle_node &p_pickup,
+        const Vehicle_node &p_delivery,
+        const Pgr_pickDeliver &p_problem) :
+    m_id(p_id),
+    m_pickup(p_pickup),
+    m_delivery(p_delivery),
+    problem(p_problem) { 
+        pgassert(m_pickup.is_pickup());
+        pgassert(m_delivery.is_delivery());
+    }
 
-std::ostream& operator<<(std::ostream &log, const Order &order) {
+std::ostream&
+operator<<(std::ostream &log, const Order &order) {
     log << "Order " << order.m_id << ":\n"
         << "\tPickup: " << order.m_pickup << "\n"
         << "\tDelivery: " << order.m_delivery << "\n\n";
@@ -22,10 +27,12 @@ std::ostream& operator<<(std::ostream &log, const Order &order) {
 
 
 
-Vehicle_node  Order::delivery() const {return m_delivery;}
+const Vehicle_node&
+Order::delivery() const {return m_delivery;}
 
 
-Vehicle_node  Order::pickup() const {return m_pickup;}
+const Vehicle_node&
+Order::pickup() const {return m_pickup;}
 
 
 bool
@@ -33,13 +40,12 @@ Order::is_valid() const {
     return 
         m_pickup.is_pickup()
         && m_delivery.is_delivery()
-        && m_pickup.is_valid()
-        && m_delivery.is_valid()
         /* P -> D  */ 
         && m_delivery.is_ok_after_visiting(m_pickup);
 }
 
-bool Order::isOrderCompatibleIJ(const Order &other) const {
+bool
+Order::isOrderCompatibleIJ(const Order &other) const {
 
     /* this is true in all cases */
     auto all_cases(m_pickup.is_ok_after_visiting(other.m_pickup) 
@@ -63,10 +69,12 @@ bool Order::isOrderCompatibleIJ(const Order &other) const {
 }
 
 
-bool Order::isOrderCompatibleEnd(const Vehicle_node &node) const {
+bool
+Order::isOrderCompatibleEnd(const Vehicle_node &node) const {
     return false;
 }
 
-bool Order::isOrderCompatibleStart(const Vehicle_node &node) const {
+bool
+Order::isOrderCompatibleStart(const Vehicle_node &node) const {
     return false;
 }

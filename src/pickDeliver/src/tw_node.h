@@ -29,6 +29,28 @@ class Tw_node: public Node {
          kEnd        ///< ending site
      } NodeType;
 
+
+     inline void set_Pid(ID id) {
+         assert (is_delivery());
+         m_otherid = id;
+     }
+
+     inline void set_Did(ID id) {
+         assert (is_pickup());
+         m_otherid = id;
+     }
+
+     inline ID Did() const {
+         assert (is_pickup());
+         return m_otherid;
+     }
+
+     inline ID Pid() const {
+         assert (is_delivery());
+         return m_otherid;
+     }
+
+
      /** @name accessors */
      ///@{
 
@@ -134,7 +156,8 @@ class Tw_node: public Node {
      /*!  * \brief Print the contents of a Twnode object.  */
      friend std::ostream& operator<<(std::ostream &log, const Tw_node &node);
 
-     bool is_valid() const;
+     bool operator==(const Tw_node &rhs) const;
+
 
 
      /*! \brief True when \b arrivalTime  is before it \b opens */
@@ -217,9 +240,12 @@ class Tw_node: public Node {
             );
     
     protected:
+     bool is_valid() const;
+
      double m_opens;        ///< opening time of the node
      double m_closes;       ///< closing time of the node
      double m_service_time; ///< time it takes to be served
      double m_demand;       ///< The demand for the Node
-     NodeType m_type;         ///< The demand for the Node
+     ID m_otherid;          ///< the other's id
+     NodeType m_type;       ///< The demand for the Node
 };

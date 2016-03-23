@@ -35,6 +35,7 @@ class Node : public Point {
         bool isSamePos(const Node &other) const;
         double travel_time_to(const Node &node2) const;
         friend std::ostream& operator<<(std::ostream &log, const Node &node);
+        bool operator==(const Node &rhs) const;
     private: 
         ID m_id;                ///< internal node number
         int64_t m_original_id;  ///< user supplied node number

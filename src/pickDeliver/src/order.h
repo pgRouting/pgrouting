@@ -5,18 +5,25 @@
 #include <iostream>
 #include "vehicle_node.h"
 
+
+class Pgr_pickDeliver;
+
+
 class Order {
  public:
 
-     Order(ID p_id, const Tw_node &p_pickup, const Tw_node &p_deliver);
+     Order(ID p_id,
+             const Vehicle_node &p_pickup,
+             const Vehicle_node &p_deliver,
+             const Pgr_pickDeliver &p_problem);
 
 
 
      /*************accesosrs*/
 
      inline ID id() const {return m_id;};
-     Vehicle_node  delivery() const;
-     Vehicle_node  pickup() const;
+     const Vehicle_node&  delivery() const;
+     const Vehicle_node&  pickup() const;
 
      /*!
       * An order is valid when:
@@ -38,7 +45,10 @@ class Order {
 
      ID m_id;
 
-     Vehicle_node m_pickup;
-     Vehicle_node m_delivery;
+     const Vehicle_node &m_pickup;
+     const Vehicle_node &m_delivery;
+
+     /* order belongs to this problem */
+     const Pgr_pickDeliver &problem;
 
 };

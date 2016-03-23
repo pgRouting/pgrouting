@@ -52,6 +52,7 @@ Tw_node::is_start() const {
         m_type == kStart 
         && (0 <= opens()) 
         && (opens() < closes())
+        && (service_time() >= 0)
         && (demand() == 0);
 }
 
@@ -60,6 +61,7 @@ Tw_node::is_pickup() const {
     return m_type == kPickup
         && (0 <= opens()) 
         && (opens() < closes())
+        && (service_time() >= 0)
         && (demand() > 0);
 }
 
@@ -69,6 +71,7 @@ Tw_node::is_delivery() const {
     return m_type == kDelivery
         && (0 <= opens()) 
         && (opens() < closes())
+        && (service_time() >= 0)
         && (demand() < 0);
 }
 
@@ -78,6 +81,7 @@ Tw_node::is_dump() const {
     return m_type == kDump
         && (0 <= opens()) 
         && (opens() < closes())
+        && (service_time() >= 0)
         && (demand() <= 0);
 }
 
@@ -87,6 +91,7 @@ Tw_node::is_load() const {
     return m_type == kLoad
         && (0 <= opens()) 
         && (opens() < closes())
+        && (service_time() >= 0)
         && (demand() >= 0);
 }
 
@@ -96,41 +101,44 @@ Tw_node::is_end() const {
     return m_type == kEnd
         && (0 <= opens()) 
         && (opens() < closes())
+        && (service_time() >= 0)
         && (demand() == 0);
 }
 
+
+bool
+Tw_node::operator==(const Tw_node &rhs) const {
+    if (&rhs == this) return true;
+    return (static_cast<Node>(*this) == static_cast<Node>(rhs));
+}
 
 
 
 bool Tw_node::is_valid() const {
 
-    if (closes() < opens()) return false;
-    if (opens() < 0) return false;
-    if (service_time() < 0) return false;
-
     switch  (type()) {
         case kStart:
-            if (demand() == 0) return true;
+            return is_start();
             break;
 
         case kEnd:
-            if (demand() == 0) return true;
+            return is_end();
             break;
 
         case kDump:
-            if (demand() <= 0) return true;
+            return is_dump();
             break;
 
         case kDelivery:
-            if (demand() < 0) return true;
+            return is_delivery();
             break;
 
         case kPickup:
-            if (demand() > 0) return true;
+            return is_pickup();
             break;
 
         case kLoad:
-            if (demand() >= 0) return true;
+            return is_load();
             break;
 
         default:
@@ -185,7 +193,10 @@ std::ostream& operator<<(std::ostream &log, const Tw_node &n) {
         << "\tservice=" << n.m_service_time
         << "\tdemand=" << n.m_demand
         << "\ttype=" << n.type_str()
-        << "]\n";
+        << "]";
+    if (n.is_pickup() || n.is_delivery()) {
+        log << "->" << n.m_otherid << "\n";
+    }
     return log;
 }
 

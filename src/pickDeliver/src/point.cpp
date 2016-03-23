@@ -16,4 +16,10 @@ std::ostream& operator<<(std::ostream& log, const Point &p) {
     return log;
 }
 
+bool
+Point::operator==(const Point &rhs) const {
+    if (&rhs == this) return true;
+    return boost::geometry::equals(point, rhs.point);
+}
+
 

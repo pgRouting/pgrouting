@@ -4,6 +4,10 @@ ADD_LIBRARY(pickDeliver OBJECT
     Route.cpp
     Solution.cpp
     pickDeliver_driver.cpp
+
+
+    #pickDeliver_solution.h
+    #vehicle_pickDeliver.cpp
     
     pgr_pickDeliver.cpp 
     basictypes.cpp

@@ -8,7 +8,8 @@
 /*!
  * \param[in] cargoLimit of the vehicle
  */
-void Vehicle_node::evaluate(double cargoLimit) {
+void
+Vehicle_node::evaluate(double cargoLimit) {
     if (is_start()) {
         /* time */
         m_travel_time = 0;
@@ -35,7 +36,8 @@ void Vehicle_node::evaluate(double cargoLimit) {
   \param[in] pred The node preceeding this node (in the path).
   \param[in] cargoLimit The cargo limit of the vehicle.
   */
-void Vehicle_node::evaluate(const Vehicle_node &pred, double cargoLimit) {
+void
+Vehicle_node::evaluate(const Vehicle_node &pred, double cargoLimit) {
     /* time */
     m_travel_time    = pred.travel_time_to(*this);
     m_arrival_time   = pred.departure_time() + travel_time();
@@ -64,7 +66,8 @@ void Vehicle_node::evaluate(const Vehicle_node &pred, double cargoLimit) {
 
 
 
-std::ostream& operator<<(std::ostream &log, const Vehicle_node &v) {
+std::ostream&
+operator<<(std::ostream &log, const Vehicle_node &v) {
     log << static_cast<Tw_node>(v)
         << "  twv=" << v.has_twv()
         << ", twvTot=" << v.twvTot()
@@ -106,7 +109,8 @@ Vehicle_node::Vehicle_node(const Tw_node &node)
 
 
 
-bool Vehicle_node::deltaGeneratesTWV(double delta_time) const {
+bool
+Vehicle_node::deltaGeneratesTWV(double delta_time) const {
     return  is_late_arrival(m_arrival_time + delta_time) ;
 }
 
@@ -116,7 +120,8 @@ bool Vehicle_node::deltaGeneratesTWV(double delta_time) const {
   \b this node is visited directly after \b other node
   and that the actual arrival time at \b other node was arrival(other)
   */
-double Vehicle_node::arrival_i_arrives_j(const Vehicle_node &other) const {
+double
+Vehicle_node::arrival_i_arrives_j(const Vehicle_node &other) const {
     return  other.arrival_time() + other.service_time() + other.travel_time_to(*this);
 }
 

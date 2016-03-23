@@ -13,6 +13,8 @@ class Point {
       double x() const;
       double y() const;
 
+      bool operator==(const Point &rhs) const;
+
       friend
           std::ostream& operator<<(std::ostream& log, const Point &p);
 

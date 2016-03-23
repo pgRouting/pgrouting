@@ -101,7 +101,7 @@ class Pgr_pickDeliver {
         log.clear();
         return p_log;
     };
-    bool data_consistency() const;
+
 
  private:
     double max_capacity;
@@ -109,6 +109,7 @@ class Pgr_pickDeliver {
     int max_vehicles;
     Vehicle_node starting_site, ending_site;
     std::vector<Customer_t> original_data;
+    std::vector<Vehicle_node> nodes;
     std::vector<Order> orders;
     mutable std::ostringstream log;
 

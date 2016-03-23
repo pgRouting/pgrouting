@@ -97,10 +97,6 @@ do_pgr_pickDeliver(
         pd_problem.get_log(log);
         log << "Finish Reading data\n";
 
-        pd_problem.data_consistency();
-        pd_problem.get_log(log);
-
-        log << "Finish checking consistency\n";
 
 
 

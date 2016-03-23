@@ -68,8 +68,7 @@ extern "C" {
 #include "./pgr_pickDeliver.h"
 
 
-
-
+/***** Constructor *******/
 
 Pgr_pickDeliver::Pgr_pickDeliver(
         const Customer_t *customers_data, size_t total_customers,
@@ -83,124 +82,152 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     max_vehicles(p_max_vehicles),
     starting_site({0, customers_data[0], Tw_node::NodeType::kStart}),
     ending_site({0, customers_data[0], Tw_node::NodeType::kEnd}),
-    original_data(customers_data, customers_data + total_customers)
-{
-    std::ostringstream tmplog;
-    error = "";
+    original_data(customers_data, customers_data + total_customers) {
+        std::ostringstream tmplog;
+        error = "";
 
-    log << "\n *** Constructor of problem ***\n";
+        log << "\n *** Constructor of problem ***\n";
 
-    /* sort datai by id */
-    std::sort(original_data.begin(), original_data.end(),
-            [] (const Customer_t &c1, const Customer_t &c2)
-            {return c1.id < c2.id;});
+        /* sort data by id */
+        std::sort(original_data.begin(), original_data.end(),
+                [] (const Customer_t &c1, const Customer_t &c2)
+                {return c1.id < c2.id;});
 
-    /*
-     * starting node:
-     * id must be 0
-     */
-    if (original_data[0].id != 0) {
-        error = "Depot node not found";
-        return;
-    }
-
-    starting_site = Vehicle_node({0, customers_data[0], Tw_node::NodeType::kStart});
-    ending_site = Vehicle_node({0, customers_data[0], Tw_node::NodeType::kEnd});
-    if (!starting_site.is_start()) {
-        log << "DEPOT" << starting_site;
-        error = "Illegal values found on the starting site";
-        return;
-    }
-    pgassert(starting_site.is_start());
-    pgassert(ending_site.is_end());
-
-
-    ID order_id(0);
-    for (const auto p : original_data) {
-        if (p.id == 0) continue; 
-        /* SAMPLE CORRECT INFORMATION
-         * The Pickup is 11 (pindex == 0)
-         * The Deliver is 1 (dindex == 0)
-         *
-         * id | x  | y  | demand | etime | Ltime | Stime | pindex | dindex
-         *  1 | 45 | 68 |    -10 |   912 |   967 |    90 |     11 |      0
-         * 11 | 35 | 69 |     10 |   448 |   505 |    90 |      0 |      1
-         */ 
-
-        /* skip deliveries */
-        if (p.Dindex == 0) continue;
-
-        /* pickup is found */
-        Tw_node pickup({0, p, Tw_node::NodeType::kPickup});
-        if (!pickup.is_pickup()) {
-            log << "PICKUP" << pickup;
-            tmplog << "Illegal values found on Pickup " << p.id;
-            error = tmplog.str();
+        /*
+         * starting node:
+         * id must be 0
+         */
+        if (original_data[0].id != 0) {
+            error = "Depot node not found";
             return;
         }
-        pgassert(pickup.is_pickup());
 
-        /* look for corresponding the delivery of the pickup'*/
-        auto deliver_ptr = std::lower_bound(original_data.begin(), original_data.end(), p,
-                [] (const Customer_t &delivery, const Customer_t &pick) -> bool
-                {return delivery.id < pick.Dindex;}
-                );
-
-        if (deliver_ptr == original_data.end()
-                || deliver_ptr->id != p.Dindex) {
-            tmplog << "For Pickup " <<  p.id << " the corresponding Delivery was not found";
-            error = tmplog.str();
+        starting_site = Vehicle_node({0, customers_data[0], Tw_node::NodeType::kStart});
+        ending_site = Vehicle_node({1, customers_data[0], Tw_node::NodeType::kEnd});
+        if (!starting_site.is_start()) {
+            log << "DEPOT" << starting_site;
+            error = "Illegal values found on the starting site";
             return;
         }
-        /* delivery is found*/
-        Tw_node delivery(0, (*deliver_ptr), Tw_node::NodeType::kDelivery);
-        if (!delivery.is_delivery()) {
-            log << "DELIVERY" << delivery;
-            tmplog << "Illegal values found on Delivery " << deliver_ptr->id;
-            error = tmplog.str();
-            return;
-        }
-        pgassert(delivery.is_delivery());
+        pgassert(starting_site.is_start());
+        pgassert(ending_site.is_end());
+        nodes.push_back(starting_site);
+        nodes.push_back(starting_site);
 
-        /* add into an order & check the order */
-        orders.push_back(Order(order_id, pickup, delivery));
-        pgassert(orders.back().pickup().is_pickup());
-        pgassert(orders.back().delivery().is_delivery());
 
-        /* check the (P,D) order */
-        { 
-            Vehicle truck(starting_site, ending_site, max_capacity);
-            truck.push_back(orders.back().pickup());
-            truck.push_back(orders.back().delivery());
-            if (!truck.is_feasable()) {
-                log << truck << "\n";
-                tmplog << "The (pickup, delivery) = ("
-                    << orders.back().pickup().original_id() << ", "
-                    << orders.back().delivery().original_id() << ") is not feasable";
-                error =  tmplog.str();
+        ID order_id(0);
+        ID node_id(2);
+        for (const auto p : original_data) {
+            /*
+             * skip Starting site
+             */
+            if (p.id == 0) continue; 
+
+            /*
+             *  SAMPLE CORRECT INFORMATION
+             *
+             * The Pickup is 11 (pindex == 0)
+             * The Deliver is 1 (dindex == 0)
+             *
+             * id | x  | y  | demand | etime | Ltime | Stime | pindex | dindex
+             *  1 | 45 | 68 |    -10 |   912 |   967 |    90 |     11 |      0
+             * 11 | 35 | 69 |     10 |   448 |   505 |    90 |      0 |      1
+             *
+             */ 
+
+            /*
+             *  skip deliveries
+             */
+            if (p.Dindex == 0) continue;
+
+            /*
+             * pickup is found
+             */
+            Tw_node pickup({node_id++, p, Tw_node::NodeType::kPickup});
+            if (!pickup.is_pickup()) {
+                log << "PICKUP" << pickup;
+                tmplog << "Illegal values found on Pickup " << p.id;
+                error = tmplog.str();
                 return;
             }
+            pgassert(pickup.is_pickup());
+
+
+            /*
+             *  look for corresponding the delivery of the pickup
+             */
+            auto deliver_ptr = std::lower_bound(original_data.begin(), original_data.end(), p,
+                    [] (const Customer_t &delivery, const Customer_t &pick) -> bool
+                    {return delivery.id < pick.Dindex;}
+                    );
+
+            if (deliver_ptr == original_data.end()
+                    || deliver_ptr->id != p.Dindex) {
+                tmplog << "For Pickup " <<  p.id << " the corresponding Delivery was not found";
+                error = tmplog.str();
+                return;
+            }
+
+
+            /*
+             * delivery is found
+             */
+            Tw_node delivery(node_id++, (*deliver_ptr), Tw_node::NodeType::kDelivery);
+            if (!delivery.is_delivery()) {
+                log << "DELIVERY" << delivery;
+                tmplog << "Illegal values found on Delivery " << deliver_ptr->id;
+                error = tmplog.str();
+                return;
+            }
+            pgassert(delivery.is_delivery());
+
+
+            /*
+             *  add into an order & check the order
+             */
+            pickup.set_Did(delivery.id());
+            delivery.set_Pid(pickup.id());
+            nodes.push_back(pickup);
+            nodes.push_back(delivery);
+
+            orders.push_back( Order(order_id, nodes[node_id - 2], nodes [node_id - 1], (*this)) );
+            pgassert(orders.back().pickup().is_pickup());
+            pgassert(orders.back().delivery().is_delivery());
+            pgassert(static_cast<Tw_node> (orders.back().pickup()) == pickup);
+
+            /*
+             *  check the (S,P,D,E) order
+             */
+            { 
+                Vehicle truck(starting_site, ending_site, max_capacity);
+                truck.push_back(orders.back().pickup());
+                truck.push_back(orders.back().delivery());
+                if (!truck.is_feasable()) {
+                    log << truck << "\n";
+                    tmplog << "The (pickup, delivery) = ("
+                        << orders.back().pickup().original_id() << ", "
+                        << orders.back().delivery().original_id() << ") is not feasable";
+                    error =  tmplog.str();
+                    return;
+                };
+                pgassert(truck.is_feasable());
+            };  // check
+
+            log << orders.back();
+
+            ++order_id;
+        }  // for
+
+        /*
+         *  double check we found all orders
+         */
+        if (((orders.size() * 2 + 1) - original_data.size()) != 0 ) {
+            error =  "A pickup was not found";
+            return;
         }
-
-        ++order_id;
-    }
-
-    /* double check we found all orders */
-    if (((orders.size() * 2 + 1) - original_data.size()) != 0 ) {
-        error =  "A pickup was not found";
-        return;
-    }
-}
+    }  // constructor
 
 
-bool 
-Pgr_pickDeliver::data_consistency() const {
-#if 0
-    log << "\n\n\n ************ TRUCK: formed with order " << o.id() << "********************\n";
-    log << truck;
-#endif 
-    return true;
-}
 
 
 

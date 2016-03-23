@@ -21,6 +21,15 @@ Node::Node(ID id, int64_t original_id, double x, double y)
     m_original_id(original_id) {
     }
 
+bool
+Node::operator==(const Node &rhs) const {
+    if (&rhs == this) return true;
+    return 
+        (id() == rhs.id())
+        && (original_id() == rhs.original_id()) 
+        && (static_cast<Point>(*this) == static_cast<Point>(rhs));
+}
+
 
 #if 0
 /** @name operators */
