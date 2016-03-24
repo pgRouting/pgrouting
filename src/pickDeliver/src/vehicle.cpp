@@ -35,16 +35,57 @@ Vehicle::insert(POS at, Vehicle_node node) {
  * after:  S N E
  *
  * before: S n1 n2 ... n E
+ * after:  S N n1 n2 ... n E
+ */
+void
+Vehicle::push_front(const Vehicle_node &node) {
+    invariant();
+
+    /* insert evaluates */
+    insert(1, node);
+
+    invariant();
+}
+
+/*
+ * before: S E
+ * after:  S N E
+ *
+ * before: S n1 n2 ... n E
  * after:  S n1 n2 ... n N E
  */
 void
-Vehicle::push_back(Vehicle_node node) {
+Vehicle::push_back(const Vehicle_node &node) {
     invariant();
 
+    /* insert evaluates */
     insert(m_path.size() - 1, node);
 
     invariant();
 }
+
+void
+Vehicle::pop_back() {
+    invariant();
+    pgassert(m_path.size() > 2);
+
+    /* erase evaluates */
+    erase(m_path.size() - 2);
+
+    invariant();
+}
+
+void
+Vehicle::pop_front() {
+    invariant();
+    pgassert(m_path.size() > 2);
+
+    /* erase evaluates */
+    erase(1);
+
+    invariant();
+}
+
 
 
 void
@@ -90,7 +131,7 @@ Vehicle::evaluate() {
 bool
 Vehicle::empty() const {
     invariant();
-    return m_path.size() == 2;
+    return m_path.size() <= 2;
 }
 
 void
@@ -119,9 +160,11 @@ Vehicle::path() const {
 
 
 Vehicle::Vehicle(
+        ID p_id,
         const Vehicle_node &starting_site, 
         const Vehicle_node &ending_site, 
         double p_max_capacity) :
+    m_id(p_id),
     max_capacity(p_max_capacity) { 
         m_path.clear();
         m_path.push_back(starting_site);
@@ -131,12 +174,26 @@ Vehicle::Vehicle(
     }
 
 
+std::string
+Vehicle::tau() const {
+    std::ostringstream log;
+    log << "\nTruck " << id() << " (";
+    for (const auto p_stop : m_path) {
+        if (!(p_stop == m_path.front())) 
+            log << ", ";
+        log << p_stop.original_id();
+    }
+    log << ")";
+    return log.str();
+}
+
 /****** FRIENDS *******/
 
 std::ostream&
 operator<<(std::ostream &log, const Vehicle &v){
     v.invariant();
     int i(0);
+    log << "\n\n****************** TRUCK " << v.id() << "***************";
     for (const auto &path_stop : v.path()) {
         log << "\nPath_stop" << ++i << "\n";
         log << path_stop;

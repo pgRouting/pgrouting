@@ -94,9 +94,13 @@ class Vehicle_node: public Tw_node {
         bool has_twv() const {
             return is_late_arrival(m_arrival_time);
         }
-        /*! \brief True when the Truck at this node doesn not violate capacity */
+        /*! \brief True when not violation
+         *
+         * Ending's or start's cargo should be 0
+         **/
         bool has_cv(double cargoLimit) const {
-            return m_cargo > cargoLimit || m_cargo < 0;
+            return is_end() || is_start() ? m_cargo != 0
+                : m_cargo > cargoLimit || m_cargo < 0;
         }
         ///@}
 

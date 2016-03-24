@@ -62,7 +62,7 @@ extern "C" {
 #include "./../../common/src/pgr_assert.h"
 
 #include "./vehicle_node.h"
-#include "./vehicle.h"
+#include "./vehicle_pickDeliver.h"
 #include "./order.h"
 #include "./Solution.h"
 #include "./pgr_pickDeliver.h"
@@ -199,9 +199,9 @@ Pgr_pickDeliver::Pgr_pickDeliver(
              *  check the (S,P,D,E) order
              */
             { 
-                Vehicle truck(starting_site, ending_site, max_capacity);
-                truck.push_back(orders.back().pickup());
-                truck.push_back(orders.back().delivery());
+                Vehicle_pickDeliver truck(order_id, starting_site, ending_site, max_capacity, (*this));
+                truck.push_back(orders.back());
+
                 if (!truck.is_feasable()) {
                     log << truck << "\n";
                     tmplog << "The (pickup, delivery) = ("
@@ -211,9 +211,38 @@ Pgr_pickDeliver::Pgr_pickDeliver(
                     return;
                 };
                 pgassert(truck.is_feasable());
+                if (order_id == 15) {
+                    log << "testing truck functions" << truck;
+                    log << "\nis_feasable" << truck.is_feasable();
+                    log << "\nhas_twv" << truck.has_twv();
+                    log << "\nhas_cv" << truck.has_cv();
+                    log << "\nempty" << truck.empty();
+                    log << "\ntau" << truck.tau();
+                    truck.pop_back();
+                    log << "\nafter pop_back" << truck;
+                    log << "\nis_feasable" << truck.is_feasable();
+                    log << "\nhas_twv" << truck.has_twv();
+                    log << "\nhas_cv" << truck.has_cv();
+                    log << "\nempty" << truck.empty();
+                    log << "\ntau" << truck.tau();
+                    //truck.pop_front();
+                    log << "\nafter pop front" << truck;
+                    log << "\nis_feasable" << truck.is_feasable();
+                    log << "\nhas_twv" << truck.has_twv();
+                    log << "\nhas_cv" << truck.has_cv();
+                    log << "\nempty" << truck.empty();
+                    log << "\ntau" << truck.tau();
+                    //truck.push_back(orders.back());
+                    //truck.push_back(orders.back());
+                    log << "\nafter push order" << truck;
+                    log << "\nis_feasable" << truck.is_feasable();
+                    log << "\nhas_twv" << truck.has_twv();
+                    log << "\nhas_cv" << truck.has_cv();
+                    log << "\nempty" << truck.empty();
+                    log << "\ntau" << truck.tau();
+                }
             };  // check
 
-            log << orders.back();
 
             ++order_id;
         }  // for
@@ -227,6 +256,16 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         }
     }  // constructor
 
+
+ID
+Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
+    assert(node.is_pickup() || node.is_delivery());
+    if (node.is_pickup()) {
+
+    } else {
+    }
+
+}
 
 
 

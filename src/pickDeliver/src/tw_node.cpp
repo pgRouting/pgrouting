@@ -196,6 +196,8 @@ std::ostream& operator<<(std::ostream &log, const Tw_node &n) {
         << "]";
     if (n.is_pickup() || n.is_delivery()) {
         log << "->" << n.m_otherid << "\n";
+    } else {
+        log << "\n";
     }
     return log;
 }

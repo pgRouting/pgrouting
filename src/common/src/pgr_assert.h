@@ -13,6 +13,7 @@
 #ifndef  SRC_COMMON_SRC_PGR_ASSERT_H_
 #define  SRC_COMMON_SRC_PGR_ASSERT_H_
 
+#include <string>
 #include <exception>
 
 #ifdef pgassert
@@ -75,20 +76,21 @@
 #define pgassert(expr) \
     ((expr) \
      ? static_cast<void>(0) \
-     : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) ))
+     : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) + get_backtrace() ) )  
 #endif
 
+std::string get_backtrace();
 
 /*! \class AssertFailedException
  * \brief Extends std::exception and is the exception that we throw if an assert fails.
  */
 class AssertFailedException : public std::exception {
  private:
-  const char *str;    ///< str Holds the what() string for the exception.
+  const std::string str;   ///< str Holds what() we got as message from the #define
 
  public:
   virtual const char *what() const throw();
-  explicit AssertFailedException(const char *_str);
+  explicit AssertFailedException(std::string msg);
 };
 
 #endif  //  SRC_COMMON_SRC_PGR_ASSERT_H_

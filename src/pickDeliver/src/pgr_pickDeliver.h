@@ -71,6 +71,8 @@ extern "C" {
 
 
 class Pgr_pickDeliver {
+    friend class Order;
+    friend class Vehicle_pickDeliver;
  public:
     void
         TabuSearch(
@@ -95,6 +97,15 @@ class Pgr_pickDeliver {
             std::string &error);
 
     int64_t Solver();
+
+
+    ID order_of(const Vehicle_node &node) const;
+
+    /*! \brief get_log
+     *
+     * \returns the current contents of the log and clears the log
+     *
+     */
     std::ostream& get_log(std::ostream &p_log) const {
         p_log << log.str() << "\n";
         log.str("");

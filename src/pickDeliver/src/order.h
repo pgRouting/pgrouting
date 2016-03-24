@@ -45,8 +45,8 @@ class Order {
 
      ID m_id;
 
-     const Vehicle_node &m_pickup;
-     const Vehicle_node &m_delivery;
+     ID pickup_id;
+     ID delivery_id;
 
      /* order belongs to this problem */
      const Pgr_pickDeliver &problem;

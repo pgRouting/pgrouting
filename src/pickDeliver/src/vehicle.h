@@ -35,12 +35,13 @@
  */
 
 class Vehicle {
- private:
+ protected:
+     ID m_id;
      std::deque< Vehicle_node > m_path;
      double max_capacity;
 
  public:
-     Vehicle(const Vehicle_node &starting_site, const Vehicle_node &ending_site, double max_capacity); 
+     Vehicle(ID id, const Vehicle_node &starting_site, const Vehicle_node &ending_site, double max_capacity); 
 
 
 
@@ -80,8 +81,21 @@ class Vehicle {
       *
       * \param[in] node to be push_back.
       */
-     void push_back(Vehicle_node node);
+     void push_back(const Vehicle_node &node);
+     void push_front(const Vehicle_node &node);
 
+
+     /*! \brief Evaluated: pop_back a node to the path.
+      *
+      * \param[in] node to be pop_back.
+      */
+     void pop_back();
+
+     /*! \brief Evaluated: pop_front a node to the path.
+      *
+      * \param[in] node to be pop_front.
+      */
+     void pop_front();
 
 
 
@@ -94,13 +108,20 @@ class Vehicle {
       */
      void erase(POS pos);
 
-
-
-
-     bool has_twv() const {return m_path.back().twvTot() != 0;}
-     bool has_cv() const {return m_path.back().cvTot() != 0;}
-     bool is_feasable() const {return !(has_twv() || has_cv());}
      bool empty() const;
+
+
+
+     ID id() const {return m_id;}
+     double duration() const { return m_path.back().departure_time(); };
+     int  twvTot() const {return m_path.back().twvTot();}
+     int  cvTot() const {return m_path.back().cvTot();}
+     bool has_twv() const {return twvTot() != 0;}
+     bool has_cv() const {return cvTot() != 0;}
+     bool is_feasable() const {return !(has_twv() || has_cv());}
+
+     std::string tau() const;
+
 
 
      /*!
@@ -150,7 +171,7 @@ class Vehicle {
 
      /*! @name accessors */
      ///@{
-      
+
      std::deque< Vehicle_node > path() const;
 
      ///@}
