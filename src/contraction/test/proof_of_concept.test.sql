@@ -20,7 +20,7 @@ VALUES (9, 11, 2, 2, true);
 
 --\echo --q1
 --SELECT id, source, target, cost, reverse_cost, is_contracted FROM edge_table;
---select id, source, target, cost, reverse_cost  from edge_table where source in (3,5,6,9,11,15,17) and target in (3,5,6,9,11,15,17);
+--select id, source, target, cost, reverse_cost, is_contracted  from edge_table where source in (3,5,6,9,11,15,17) and target in (3,5,6,9,11,15,17);
 
 
 \echo Case 1: Both source and target belong to the contracted graph.
