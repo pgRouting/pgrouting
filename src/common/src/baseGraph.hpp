@@ -518,7 +518,6 @@ class Pgr_base_graph {
                  graph[e].id = edge.id;
                  graph[e].first = edge.first;
              }
-
          }
 
      void
@@ -526,6 +525,8 @@ class Pgr_base_graph {
              bool inserted;
              LI vm_s, vm_t;
              E e;
+             if ((edge.cost < 0) && (edge.reverse_cost < 0))
+                 return;
 
              vm_s = vertices_map.find(edge.source);
              if (vm_s == vertices_map.end()) {

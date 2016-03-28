@@ -606,6 +606,12 @@ Pgr_dijkstra< G >::dijkstra(
     } else {
         get_path(graph, paths, v_source, v_targets);
     }
+
+    std::stable_sort(paths.begin(), paths.end(),
+            [](const Path &e1, const Path &e2)->bool {
+            return e1.end_id() < e2.end_id();
+            });
+
     return;
 }
 
@@ -624,6 +630,11 @@ Pgr_dijkstra< G >::dijkstra(
         dijkstra(graph, path, start, end_vertex, only_cost);
         paths.push_back(path);
     }
+
+    std::stable_sort(paths.begin(), paths.end(),
+            [](const Path &e1, const Path &e2)->bool {
+            return e1.start_id() < e2.start_id();
+            });
     return;
 }
 
@@ -640,6 +651,15 @@ Pgr_dijkstra< G >::dijkstra(
     for (const auto &start : start_vertex) {
         dijkstra(graph, paths, start, end_vertex, only_cost);
     }
+
+    std::sort(paths.begin(), paths.end(),
+            [](const Path &e1, const Path &e2)->bool {
+            return e1.end_id() < e2.end_id();
+            });
+    std::stable_sort(paths.begin(), paths.end(),
+            [](const Path &e1, const Path &e2)->bool {
+            return e1.start_id() < e2.start_id();
+            });
     return;
 }
 
