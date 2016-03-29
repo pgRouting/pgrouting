@@ -20,20 +20,35 @@ Order::Order(ID p_id,
 
 std::ostream&
 operator<<(std::ostream &log, const Order &order) {
-    log << "Order " << order.m_id << ":\n"
+    log << "\n\nOrder " << order.m_id << ":\n"
         << "\tPickup: " << order.pickup() << "\n"
         << "\tDelivery: " << order.delivery() << "\n\n";
+    if (order.delivery().is_partially_compatible_IJ(order.pickup())) {
+        log << "\tis_partially_compatible_IJ: ";
+    } else if ( order.delivery().is_tight_compatible_IJ(order.pickup())) {
+        log << "\tis_tight_compatible_IJ: "; 
+    } else if ( order.delivery().is_waitTime_compatible_IJ(order.pickup())) {
+        log << "\tis_waitTime_compatible_IJ: ";
+    } else {
+        assert(false);
+    }
+    log << "\n\nThere are ** " <<  order.m_compatibleJ.size() << " ** compatible orders: ";
+    for (const auto o : order.m_compatibleJ) {
+        log << o << ",";
+    }
+
+
     return log;
 }
 
 
 
 const Vehicle_node&
-Order::delivery() const {return problem.nodes[delivery_id];}
+Order::delivery() const {return problem.node(delivery_id);}
 
 
 const Vehicle_node&
-Order::pickup() const {return problem.nodes[pickup_id];}
+Order::pickup() const {return problem.node(pickup_id);}
 
 
 bool
@@ -42,30 +57,61 @@ Order::is_valid() const {
         pickup().is_pickup()
         && delivery().is_delivery()
         /* P -> D  */ 
-        && delivery().is_ok_after_visiting(pickup());
+        && delivery().is_compatible_IJ(pickup());
 }
 
+
+/*
+ * Initializing the set of nodes that can be placed
+ * inmediately after \bthis node
+ *
+ * (*this) -> J
+ *
+ */
+
+void
+Order::setCompatibles() {
+    for (const auto J : problem.orders()) {
+        if (J.id() == id()) continue;
+        if (J.isCompatibleIJ(*this)) {
+            m_compatibleJ.insert(J.id());
+        }
+    }
+}
+
+/*
+ * True when
+ *
+ * I -> (*this)
+ *
+ */
+
 bool
-Order::isOrderCompatibleIJ(const Order &other) const {
+Order::isCompatibleIJ(const Order &I) const {
 
     /* this is true in all cases */
-    auto all_cases(pickup().is_ok_after_visiting(other.pickup()) 
-            && delivery().is_ok_after_visiting(other.pickup())
-            && other.delivery().is_ok_after_visiting(other.pickup()) 
-            &&delivery().is_ok_after_visiting(pickup()));
+    auto all_cases(
+            pickup().is_compatible_IJ(I.pickup()) 
+            && delivery().is_compatible_IJ(I.pickup())
+            );
+    /*
+       && I.delivery().is_compatible_IJ(I.pickup()) 
+       && delivery().is_compatible_IJ(pickup()));
+       */
 
 
     /* case other(P) other(D) this(P) this(D) */
-    auto case1( pickup().is_ok_after_visiting(other.delivery()) 
-            && delivery().is_ok_after_visiting(other.delivery()));
+    auto case1( pickup().is_compatible_IJ(I.delivery()) 
+            && delivery().is_compatible_IJ(I.delivery()));
 
     /* case other(P) this(P) other(D) this(D) */
-    auto case2(other.delivery().is_ok_after_visiting(pickup()) 
-            && delivery().is_ok_after_visiting(other.delivery()));
+    auto case2(I.delivery().is_compatible_IJ(pickup()) 
+            && delivery().is_compatible_IJ(I.delivery()));
 
     /* case other(P) this(P) this(D) other(D) */
-    auto case3(other.delivery().is_ok_after_visiting(pickup()) 
-            && other.delivery().is_ok_after_visiting(delivery()));
+    auto case3(I.delivery().is_compatible_IJ(pickup()) 
+            && I.delivery().is_compatible_IJ(delivery()));
+
     return all_cases && (case1 || case2 || case3);
 }
 

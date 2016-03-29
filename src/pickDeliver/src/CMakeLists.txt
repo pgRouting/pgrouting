@@ -2,11 +2,12 @@ ADD_LIBRARY(pickDeliver OBJECT
     pickDeliver.c 
     customers_input.c  
     Route.cpp
-    Solution.cpp
     pickDeliver_driver.cpp
 
 
-    #pickDeliver_solution.h
+    optimize.cpp
+    initial_solution.cpp
+    solution.cpp
     vehicle_pickDeliver.cpp
     
     pgr_pickDeliver.cpp 

@@ -74,18 +74,36 @@ class Vehicle {
      void insert(POS at, Vehicle_node node);
 
 
+     double deltaTime(const Vehicle_node &node, POS pos) const;
+     POS insert_less_travel_time(const Vehicle_node &node, POS after_pos = 0);
+
+
 
 
 
      /*! \brief Evaluated: push_back a node to the path.
       *
-      * \param[in] node to be push_back.
+      * before: S <nodes> E
+      * after:  S <nodes> n E
+      *
+      * @param[in] node to be push_back.
       */
      void push_back(const Vehicle_node &node);
+
+     /*! \brief Evaluated: push_back a node to the path.
+      *
+      * before: S <nodes> E
+      * after:  S n <nodes> E
+      *
+      * \param[in] node to be push_back.
+      */
      void push_front(const Vehicle_node &node);
 
 
      /*! \brief Evaluated: pop_back a node to the path.
+      *
+      * before:  S <nodes> n E
+      * after: S <nodes> E
       *
       * \param[in] node to be pop_back.
       */
@@ -93,27 +111,52 @@ class Vehicle {
 
      /*! \brief Evaluated: pop_front a node to the path.
       *
+      * before: S n <nodes> E
+      * after:  S <nodes> E
+      *
       * \param[in] node to be pop_front.
       */
      void pop_front();
 
-
-
-
-     /*!  * \brief Evaluated: erase node at `pos` from the path.
+     /*! @brief Erase node.id()
       *
-      * start and ending nodes cannot be erased
+      * @note start and ending nodes cannot be erased
       *
-      * \param[in] pos to be erased.
+      * Numbers are positions
+      * before: S .... node.id() .... E
+      * after: S ....  .... E
+      *
+      */
+     void erase(const Vehicle_node &node);
+
+
+
+     /*! @brief Erase node at `pos` from the path.
+      *
+      * @note start and ending nodes cannot be erased
+      *
+      * Numbers are positions
+      * before: S 1 2 3 4 5 6 pos 8 9 E
+      * after: S 1 2 3 4 5 6 8 9 E
+      *
+      * @param[in] pos to be erased.
       */
      void erase(POS pos);
 
+     /*! @brief Evaluated: erase node at `pos` from the path.
+      *
+      * @note start and ending nodes cannot be erased
+      *
+      *  True: S E
+      * False: S <nodes> E
+      */
      bool empty() const;
 
 
 
      ID id() const {return m_id;}
      double duration() const { return m_path.back().departure_time(); };
+     double total_wait_time() const { return m_path.back().total_wait_time(); };
      int  twvTot() const {return m_path.back().twvTot();}
      int  cvTot() const {return m_path.back().cvTot();}
      bool has_twv() const {return twvTot() != 0;}
@@ -125,10 +168,10 @@ class Vehicle {
 
 
      /*!
-      * \brief Evaluated: Swap two nodes in the path.
+      * \brief Swap two nodes in the path.
       *
-      * This method exchanges two nodes without a given path for the other
-      * swapping them and then evaluating the resultant path.
+      * Before: S <nodesA> I <nodesB> J <nodesC> E
+      * After: S <nodesA> J <nodesB> I <nodesC> E
       *
       * \param[in] i The position of the first node to swap.
       * \param[in] j The position of the second node to swap.
@@ -184,5 +227,13 @@ class Vehicle {
      friend bool operator<(const Vehicle &lhs, const Vehicle &rhs);
 
      ///@}
+
+
+
+    std::pair<POS, POS> position_limits(const Vehicle_node node) const;
+ private:
+    POS getPosLowLimit(const Vehicle_node &node) const;
+    POS getPosHighLimit(const Vehicle_node &node) const;
+         
 
 };

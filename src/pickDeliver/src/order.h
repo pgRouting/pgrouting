@@ -24,6 +24,7 @@ class Order {
      inline ID id() const {return m_id;};
      const Vehicle_node&  delivery() const;
      const Vehicle_node&  pickup() const;
+     void setCompatibles();
 
      /*!
       * An order is valid when:
@@ -34,7 +35,7 @@ class Order {
      bool is_valid() const;
 
 
-     bool isOrderCompatibleIJ(const Order &other) const;
+     bool isCompatibleIJ(const Order &other) const;
      bool isOrderCompatibleStart(const Vehicle_node &node) const;
      bool isOrderCompatibleEnd(const Vehicle_node &node) const;
 
@@ -47,6 +48,11 @@ class Order {
 
      ID pickup_id;
      ID delivery_id;
+
+     /*
+      * I -> {J}
+      */
+     std::set<ID> m_compatibleJ;
 
      /* order belongs to this problem */
      const Pgr_pickDeliver &problem;

@@ -39,8 +39,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include "./../../common/src/pgr_assert.h"
-#include "./pickDeliver_driver.h"
 #include "./pgr_pickDeliver.h"
+#include "./pickDeliver_driver.h"
 
 // #define DEBUG
 
@@ -72,6 +72,7 @@ do_pgr_pickDeliver(
         *return_tuples = NULL;
         *return_count = 0;
 
+#if 0
         log << "Starting do_pgr_pickDeliver\n";
         log << "max_vehicles: "  << max_vehicles << "\n";
         log << "capacity: "  << capacity << "\n";
@@ -81,9 +82,7 @@ do_pgr_pickDeliver(
             log << customers_arr[i].id << "\t";
         }
         log << "\n";
-
-        // Solver(customers_arr, total_customers, max_vehicles, capacity, max_cycles, return_tuples, *return_count, log);
-
+#endif
 
         log << "Read data\n";
         std::string error("");
@@ -97,6 +96,17 @@ do_pgr_pickDeliver(
         pd_problem.get_log(log);
         log << "Finish Reading data\n";
 
+        try {
+            pd_problem.solve();
+        } catch (AssertFailedException &exept) {
+            pd_problem.get_log(log);
+            throw exept;
+        }
+
+        pd_problem.get_log(log);
+        log << "Finish solve\n";
+
+
 
 
 
@@ -109,7 +119,7 @@ do_pgr_pickDeliver(
         log << exept.what() << "\n";
         *err_msg = strdup(log.str().c_str());
     } catch(...) {
-        std::cout << "Caught unknown exception!\n";
+        log << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
     }
 }

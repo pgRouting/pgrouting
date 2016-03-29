@@ -1,35 +1,66 @@
 
 #include "./tw_node.h"
 
-double Tw_node::arrival_i_opens_j(const Tw_node &other) const{
+/*
+ * I -> J=(*this)
+ */
+double
+Tw_node::arrival_j_opens_i(const Tw_node &I) const{
     if (m_type == kStart) return d_max();
-    return  other.opens() + other.service_time() + other.travel_time_to(*this);
+    return  I.opens() + I.service_time() + I.travel_time_to(*this);
 }
 
-
-
-double Tw_node::arrival_i_closes_j(const Tw_node &other) const {
+double
+Tw_node::arrival_j_closes_i(const Tw_node &I) const {
     if (m_type == kStart) return d_max();
-    return  other.closes() + other.service_time() + other.travel_time_to(*this);
-}
-
-bool Tw_node::is_ok_after_visiting(const Tw_node &other) const {
-    return isCompatibleIJ(other);
+    return  I.closes() + I.service_time() + I.travel_time_to(*this);
 }
 
 
-bool Tw_node::isCompatibleIJ(const Tw_node &other) const {
+
+
+bool
+Tw_node::is_compatible_IJ(const Tw_node &I) const {
+    /* 
+     * I  /->  kStart
+     */
     if (m_type == kStart) return false;
-    return  !is_late_arrival(arrival_i_opens_j(other));
+    /* 
+     * kEnd /-> (*this)
+     */
+    if (I.m_type == kEnd) return false;
+
+    return  !is_late_arrival(arrival_j_opens_i(I));
 }
 
-bool Tw_node::isFullyCompatibleIJ(const Tw_node &other) const {
-    return  !is_late_arrival(arrival_i_closes_j(other));
+bool
+Tw_node::is_partially_compatible_IJ(const Tw_node &I) const {
+    return  
+        is_compatible_IJ(I)
+        && !is_early_arrival(arrival_j_opens_i(I))
+        && is_late_arrival(arrival_j_closes_i(I));
 }
 
-bool Tw_node::isTightCompatibleIJ(const Tw_node &other) const {
-    return  isFullyCompatibleIJ(other)
-        && !is_early_arrival(arrival_i_opens_j(other));
+bool
+Tw_node::is_tight_compatible_IJ(const Tw_node &I) const {
+    return  
+        is_compatible_IJ(I)
+        && !is_early_arrival(arrival_j_opens_i(I))
+        && !is_late_arrival(arrival_j_closes_i(I));
+}
+
+bool
+Tw_node::is_partially_waitTime_compatible_IJ(const Tw_node &I) const {
+    return  
+        is_compatible_IJ(I)
+        && is_early_arrival(arrival_j_opens_i(I));
+}
+
+bool
+Tw_node::is_waitTime_compatible_IJ(const Tw_node &I) const {
+    return  
+        is_compatible_IJ(I)
+        && is_early_arrival(arrival_j_opens_i(I));
 }
 
 

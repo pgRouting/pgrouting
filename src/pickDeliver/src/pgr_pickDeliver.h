@@ -66,28 +66,32 @@ extern "C" {
 #include "./pdp.hpp"
 #include "./vehicle_node.h"
 #include "./order.h"
-#include "./Solution.h"
+#include "./solution.h"
 
 
+class Optimize;
+class Initial_solution;
 
 class Pgr_pickDeliver {
-    friend class Order;
-    friend class Vehicle_pickDeliver;
- public:
+#if 0
     void
         TabuSearch(
                 const std::vector<Customer_t> &customers,
                 const std::vector<Pickup> &pickups,
-                int maxIter,
-                std::vector<Solution> &T);
+                int maxIter);
     void
         get_result(
-                Solution &solution,
+                const Solution &solution,
                 const std::vector < Customer_t > &customers,
                 const Depot &depot,
                 int64_t VehicleLength,
                 std::vector< General_vehicle_orders_t > &result);
-
+#endif
+    friend Vehicle_pickDeliver;
+    friend Optimize;
+    friend Initial_solution;
+    friend Solution;
+ public:
 
     Pgr_pickDeliver(
             const Customer_t *c1, size_t total_customers,
@@ -96,10 +100,13 @@ class Pgr_pickDeliver {
             int max_cycles,
             std::string &error);
 
-    int64_t Solver();
+    void solve();
 
+   /*****************/ 
 
-    ID order_of(const Vehicle_node &node) const;
+    const Order order_of(const Vehicle_node &node) const;
+    const Vehicle_node& node(ID id) const;
+    const std::vector<Order>& orders() const {return m_orders;}
 
     /*! \brief get_log
      *
@@ -118,11 +125,11 @@ class Pgr_pickDeliver {
     double max_capacity;
     int max_cycles;
     int max_vehicles;
-    Vehicle_node starting_site, ending_site;
-    std::vector<Customer_t> original_data;
-    std::vector<Vehicle_node> nodes;
-    std::vector<Order> orders;
+    Vehicle_node m_starting_site, m_ending_site;
+    std::vector<Customer_t> m_original_data;
+    std::vector<Vehicle_node> m_nodes;
+    std::vector<Order> m_orders;
+    std::vector<Solution> solutions;
     mutable std::ostringstream log;
 
 };
-
