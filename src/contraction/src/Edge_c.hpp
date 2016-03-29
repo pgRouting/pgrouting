@@ -18,19 +18,29 @@ class Edge_c {
 private:
 	edgeType type;
 	RemovedVertices removed_vertices;
+	bool deleted;
 
 public:
 	Eid id;
-	int64_t source;
-	int64_t target;
 	double cost;
+	bool isDeleted() const;
 	void add_contracted_vertex (Vertex_c v);
 	void set_edge_type(edgeType etype);
+	void setDeleted();
 	int get_edge_type() const;
 	Vertex_set get_removedVertices() const;
 	friend std::ostringstream& operator <<(std::ostringstream& os,const Edge_c& e);
 
 };
+
+bool Edge_c::isDeleted()const {
+	return deleted;
+}
+
+void Edge_c::setDeleted()
+{
+	deleted = true;
+}
 
 void Edge_c::add_contracted_vertex (Vertex_c v) {
   
@@ -43,6 +53,7 @@ void Edge_c::set_edge_type (edgeType etype) {
 
 int Edge_c::get_edge_type()const {
 
+	return static_cast<int>(type);
 }
 
 Vertex_set Edge_c::get_removedVertices()const {

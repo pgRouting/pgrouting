@@ -10,6 +10,7 @@ enum class contractionType {
      
      none = 0,
      deadEnd, // C++11 allows the extra comma
+     last
 };
 
 enum class edgeType {

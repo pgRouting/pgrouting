@@ -16,22 +16,36 @@ class Vertex_c {
 private:
 	contractionType type;
 	RemovedVertices removed_vertices;
+	bool deleted;
 
 public:
 	Vid id;
-	void add_contracted_vertex(Vertex_c v);
-	void set_contraction_type(contractionType ctype);
+	bool isDeleted() const;
 	int get_contraction_type() const;
+	void setDeleted();
+	void set_contraction_type(contractionType ctype);
 	Vertex_set get_removedVertices() const;
-	friend std::ostringstream& operator <<(std::ostringstream& os,const Vertex_c& v);	
-
-
+	void add_contracted_vertex(Vertex_c v);
+	friend std::ostringstream& operator <<(std::ostringstream& os,const Vertex_c& v);
 };
 
+bool Vertex_c::isDeleted() const{
+	return deleted;
+}
 
-void Vertex_c::add_contracted_vertex(Vertex_c v) {
-  
+int Vertex_c::get_contraction_type()const {
 
+	return static_cast<int>(type);
+}
+
+void Vertex_c::setDeleted()
+{
+	deleted = true;
+}
+
+void Vertex_c::set_contraction_type(contractionType ctype) {
+
+	type = ctype;
 }
 
 Vertex_set Vertex_c::get_removedVertices()const {
@@ -39,14 +53,8 @@ Vertex_set Vertex_c::get_removedVertices()const {
 }
 
 
-
-void Vertex_c::set_contraction_type(contractionType ctype) {
-
-	type = ctype;
-}
-
-
-int Vertex_c::get_contraction_type()const {
+void Vertex_c::add_contracted_vertex(Vertex_c v) {
+  
 
 }
 
