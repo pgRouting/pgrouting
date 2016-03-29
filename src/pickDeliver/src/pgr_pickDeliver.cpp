@@ -77,19 +77,20 @@ Pgr_pickDeliver::solve() {
     solutions.push_back(Initial_solution(1, this));
     solutions.push_back(Initial_solution(2, this));
     solutions.push_back(Initial_solution(3, this));
-#endif
     solutions.push_back(Initial_solution(4, this));
-    
+#endif
+
+    solutions.push_back(Initial_solution(5, this));
+
     // solutions.push_back(Optimize(1,solutions[0]));
 
 
     std::sort(solutions.begin(), solutions.end(), []
             (const Solution &lhs, const Solution &rhs) -> bool {
             return rhs < lhs;
-            }
-            );
+            } );
 
-#if 1
+#if 0
     for (size_t i = 0; i < solutions.size(); i++) {
         log << solutions[i];
     }
@@ -223,7 +224,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             m_nodes.push_back(pickup);
             m_nodes.push_back(delivery);
 
-            m_orders.push_back( Order(order_id, node(node_id - 2), node(node_id - 1), (*this)) );
+            m_orders.push_back( Order(order_id, node(node_id - 2), node(node_id - 1), this) );
             pgassert(m_orders.back().pickup().is_pickup());
             pgassert(m_orders.back().delivery().is_delivery());
             pgassert(static_cast<Tw_node> (m_orders.back().pickup()) == pickup);
@@ -232,7 +233,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
              *  check the (S,P,D,E) order
              */
             { 
-                Vehicle_pickDeliver truck(order_id, m_starting_site, m_ending_site, max_capacity, (this));
+                Vehicle_pickDeliver truck(order_id, m_starting_site, m_ending_site, max_capacity, this);
                 truck.push_back(m_orders.back());
 
                 if (!truck.is_feasable()) {
@@ -257,8 +258,11 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             return;
         }
 
-        for (auto o : m_orders) {
+        for (auto &o : m_orders) {
             o.setCompatibles();
+        }
+
+        for (auto o : m_orders) {
             log << o;
         }
     }  // constructor

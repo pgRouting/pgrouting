@@ -7,7 +7,6 @@
 
 void
 Initial_solution::invariant() const {
-    problem->log << "\n %%%%%%%%%%%%%% invariant";
     std::set<ID> orders(assigned);
 
     orders.insert(unassigned.begin(), unassigned.end());
@@ -47,11 +46,80 @@ Initial_solution::Initial_solution(
             case 4:
                 insert_while_feasable();
                 break;
+            case 5:
+                insert_while_compatible();
+                break;
         }
 
     }
 
 
+
+
+void
+Initial_solution::insert_while_compatible() {
+    problem->log << "\nInitial_solution::insert_while_compatible\n";
+    invariant();
+
+    ID v_id(0);
+    Vehicle_pickDeliver truck(
+            v_id++,
+            problem->m_starting_site,
+            problem->m_ending_site,
+            problem->max_capacity,
+            problem);
+    /*
+     * orders: keep sorted based on the number of orders it is compatible with
+     */
+    std::deque<ID> orders(unassigned.begin(), unassigned.end());
+    for (const auto &o: orders) {
+        problem->log << problem->orders()[o];
+    };
+    const Pgr_pickDeliver *prob = problem;
+    std::sort(orders.begin(), orders.end(), [&prob]
+            (const ID &lhs, const ID &rhs) -> bool
+            {return prob->orders()[lhs].m_compatibleJ.size()
+            < prob->orders()[rhs].m_compatibleJ.size();
+            } ); 
+    std::stable_sort(orders.begin(), orders.end(), [&prob]
+            (const ID &lhs, const ID &rhs) -> bool
+            {return prob->orders()[lhs].m_compatibleI.size()
+            < prob->orders()[rhs].m_compatibleI.size();
+            } ); 
+
+
+    problem->log << "\n Sorted orders by compatibleI.size\n";
+    for (const auto &o: orders) {
+        problem->log << "\n|"<< o <<"| = " << problem->orders()[o].m_compatibleI.size();
+        problem->log << "\t|"<< o <<"| = " << problem->orders()[o].m_compatibleJ.size();
+    };
+
+#if 0
+    problem->log << "\nInitial_solution::insert_while_compatible\n";
+    while (!unassigned.empty()) {
+        auto order(problem->orders()[*unassigned.begin()]);
+
+        truck.insert(order);
+
+        if (!truck.is_feasable()) {
+            truck.erase(order); 
+            fleet.push_back(truck);
+            Vehicle_pickDeliver newtruck(
+                    v_id++,
+                    problem->m_starting_site,
+                    problem->m_ending_site,
+                    problem->max_capacity,
+                    problem);
+            truck = newtruck;
+        } else {
+            assigned.insert(*unassigned.begin());
+            unassigned.erase(unassigned.begin());
+        }
+
+        invariant();
+    };
+#endif
+}
 
 void
 Initial_solution::insert_while_feasable() {

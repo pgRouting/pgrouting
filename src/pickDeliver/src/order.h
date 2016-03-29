@@ -7,15 +7,20 @@
 
 
 class Pgr_pickDeliver;
+class Initial_solution;
 
 
 class Order {
  public:
+     friend Initial_solution;
+     friend Pgr_pickDeliver;
 
      Order(ID p_id,
              const Vehicle_node &p_pickup,
              const Vehicle_node &p_deliver,
-             const Pgr_pickDeliver &p_problem);
+             const Pgr_pickDeliver *p_problem);
+
+     Order(const Order &order) = default;
 
 
 
@@ -50,11 +55,19 @@ class Order {
      ID delivery_id;
 
      /*
+      * I = this
       * I -> {J}
       */
      std::set<ID> m_compatibleJ;
 
+     /*
+      * J = this
+      * {I} -> J
+      */
+     std::set<ID> m_compatibleI;
+
+
      /* order belongs to this problem */
-     const Pgr_pickDeliver &problem;
+     const Pgr_pickDeliver *problem;
 
 };

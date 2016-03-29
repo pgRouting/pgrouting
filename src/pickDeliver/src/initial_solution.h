@@ -19,6 +19,7 @@ class Initial_solution : public Solution {
      void one_truck_all_orders();
      void push_back_while_feasable();
      void push_front_while_feasable();
+     void insert_while_compatible();
      void insert_while_feasable();
      void invariant() const;
 

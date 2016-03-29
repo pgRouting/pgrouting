@@ -9,7 +9,7 @@
 Order::Order(ID p_id,
         const Vehicle_node &p_pickup,
         const Vehicle_node &p_delivery,
-        const Pgr_pickDeliver &p_problem) :
+        const Pgr_pickDeliver *p_problem) :
     m_id(p_id),
     pickup_id(p_pickup.id()),
     delivery_id(p_delivery.id()),
@@ -32,11 +32,17 @@ operator<<(std::ostream &log, const Order &order) {
     } else {
         assert(false);
     }
-    log << "\n\nThere are ** " <<  order.m_compatibleJ.size() << " ** compatible orders: ";
+    log << "\nThere are |{I}| = " <<  order.m_compatibleI.size() << " -> order(" << order.id();
+    log << ")  -> |{J}| = " <<  order.m_compatibleJ.size();
+    log << "\n\n{";
+    for (const auto o : order.m_compatibleI) {
+        log << o << ",";
+    }
+    log << "} -> " << order.id() << " -> {";
     for (const auto o : order.m_compatibleJ) {
         log << o << ",";
     }
-
+    log << "}";
 
     return log;
 }
@@ -44,11 +50,11 @@ operator<<(std::ostream &log, const Order &order) {
 
 
 const Vehicle_node&
-Order::delivery() const {return problem.node(delivery_id);}
+Order::delivery() const {return problem->node(delivery_id);}
 
 
 const Vehicle_node&
-Order::pickup() const {return problem.node(pickup_id);}
+Order::pickup() const {return problem->node(pickup_id);}
 
 
 bool
@@ -71,10 +77,19 @@ Order::is_valid() const {
 
 void
 Order::setCompatibles() {
-    for (const auto J : problem.orders()) {
+    for (const auto J : problem->orders()) {
         if (J.id() == id()) continue;
         if (J.isCompatibleIJ(*this)) {
+            /*
+             * this -> {J}
+             */
             m_compatibleJ.insert(J.id());
+        }
+        if (this->isCompatibleIJ(J)) {
+            /*
+             * {J} -> this
+             */
+            m_compatibleI.insert(J.id());
         }
     }
 }
