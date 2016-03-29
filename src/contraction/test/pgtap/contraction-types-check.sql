@@ -2,21 +2,21 @@
 
 SET client_min_messages TO WARNING;
 
-SELECT plan(4);
+SELECT plan(6);
 
-SELECT can(ARRAY['pgr_contractgraph']);
+SELECT can(ARRAY['pgr_contractGraph']);
 
 SELECT  todo_start('Remove the type pgr_contracted_blob');
 
-SELECT function_returns('pgr_contractgraph',  ARRAY['text','bigint','boolean'], 'setof record');
+SELECT function_returns('pgr_contractGraph',  ARRAY['text', 'text', 'anyarray', 'bigint','boolean'], 'setof record');
 
 SELECT todo_end();
 
 
 --V2.1+
-SELECT has_function('pgr_contractgraph', ARRAY['text','bigint','boolean']);
+SELECT has_function('pgr_contractGraph', ARRAY['text', 'text', 'anyarray', 'bigint','boolean']);
 
-SELECT function_returns('pgr_contractgraph', ARRAY['text','bigint','boolean'],'setof pgr_contracted_blob');
+SELECT function_returns('pgr_contractGraph', ARRAY['text', 'text', 'anyarray', 'bigint','boolean'],'setof pgr_contracted_blob');
 
 -- testing for the 2 signatures that they return the correct names & columns
 -- Preparing
@@ -27,9 +27,10 @@ SELECT pg_typeof(contracted_graph_name)::text AS t1,
        pg_typeof(removedEdges)::text AS t4,
        pg_typeof(psuedoEdges)::text AS t5 
     FROM ( 
-        SELECT * FROM pgr_contractgraph(
+        SELECT * FROM pgr_contractGraph(
             'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edge_table',
-            0,false) ) AS a
+            'SELECT id::INTEGER FROM vertex_table',
+            array[1,2], 2, false) ) AS a
     limit 1
 ;
 
@@ -45,9 +46,10 @@ SELECT pg_typeof(contracted_graph_name)::text AS t1,
        pg_typeof(removedEdges)::text AS t4,
        pg_typeof(psuedoEdges)::text AS t5
     FROM ( 
-        SELECT * FROM pgr_contractgraph(
+        SELECT * FROM pgr_contractGraph(
             'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edge_table',
-            1, false) ) AS a
+            'SELECT id::INTEGER FROM vertex_table',
+            array[1,2], 2, true) ) AS a
     limit 1
 ;
 
@@ -68,25 +70,25 @@ SELECT set_eq('v21q10', 'v21q11','Level 1: Expected returning, columns names & t
 
 /* TEST USES THE EDGES_INPUT FOR 5 PARAMETERS */
 
---id ANY-INTEGER
+/*--id ANY-INTEGER
 PREPARE v200id1 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::SMALLINT, source::INTEGER, target::INTEGER, cost::FLOAT FROM edge_table',
      0, false);
 PREPARE v200id2 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::BIGINT, source::INTEGER, target::INTEGER, cost::FLOAT FROM edge_table',
      0, false);
 PREPARE v200id3 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::FLOAT, source::INTEGER, target::INTEGER, cost::FLOAT FROM edge_table',
      0, false);
 PREPARE v200id4 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::REAL, source::INTEGER, target::INTEGER, cost::FLOAT FROM edge_table',
      0, false);
 PREPARE v200id5 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::TEXT, source::INTEGER, target::INTEGER, cost::FLOAT FROM edge_table',
      0, false);
 
@@ -106,23 +108,23 @@ SELECT throws_ok('v200id5',
 
 --source is only integer
 PREPARE v200s1 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::SMALLINT, target::INTEGER, cost::FLOAT FROM edge_table',
     0, false);
 PREPARE v200s2 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::BIGINT, target::INTEGER, cost::FLOAT FROM edge_table',
     0, false);
 PREPARE v200s3 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::REAL, target::INTEGER, cost::FLOAT FROM edge_table',
     0, false);
 PREPARE v200s4 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::FLOAT, target::INTEGER, cost::FLOAT FROM edge_table',
     0, false);
 PREPARE v200s5 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::TEXT, target::INTEGER, cost::FLOAT FROM edge_table',
     0, false);
 
@@ -143,23 +145,23 @@ SELECT throws_ok('v200s5',
 
 --target is only integer
 PREPARE v200t1 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::INTEGER, target::SMALLINT, cost::FLOAT FROM edge_table',
     0, false);
 PREPARE v200t2 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::INTEGER, target::BIGINT, cost::FLOAT FROM edge_table',
     0, false);
 PREPARE v200t3 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::INTEGER, target::FLOAT, cost::FLOAT FROM edge_table',
     0, false);
 PREPARE v200t4 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::INTEGER, target::REAL, cost::FLOAT FROM edge_table',
     0, false);
 PREPARE v200t5 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::INTEGER, target::TEXT, cost::FLOAT FROM edge_table',
     0, false);
 
@@ -179,23 +181,23 @@ SELECT throws_ok('v200t5',
 
 -- cost
 PREPARE v200c1 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::SMALLINT FROM edge_table',
     0, false);
 PREPARE v200c2 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER FROM edge_table',
     0, false);
 PREPARE v200c3 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::BIGINT FROM edge_table',
     0, false);
 PREPARE v200c4 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::REAL FROM edge_table',
     0, false);
 PREPARE v200c5 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::TEXT FROM edge_table',
     0, false);
 
@@ -213,23 +215,23 @@ SELECT throws_ok('v200c5',
 
 -- reverse_cost
 PREPARE v200r1 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER, reverse_cost::SMALLINT FROM edge_table',
     0, false);
 PREPARE v200r2 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER, reverse_cost::INTEGER FROM edge_table',
     0, false);
 PREPARE v200r3 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER, reverse_cost::BIGINT FROM edge_table',
     0, false);
 PREPARE v200r4 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER, reverse_cost::REAL FROM edge_table',
     0, false);
 PREPARE v200r5 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contractGraph(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER, reverse_cost::TEXT FROM edge_table',
     0, false);
 
@@ -246,7 +248,7 @@ SELECT throws_ok('v200r5',
     'throws because reverse_cost is TEXT');
 
 
-
+*/
 SELECT finish();
 ROLLBACK;
 

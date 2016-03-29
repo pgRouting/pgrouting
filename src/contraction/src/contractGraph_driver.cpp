@@ -81,11 +81,15 @@ do_pgr_contractGraph(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
         const int initial_size = total_tuples;
+        contractionType contraction_type_count = contractionType::last;
         log << "size_contraction_order " << size_contraction_order << "\n";
-        log << "contraction_order  { ";
+        //log << "greatest contraction type " << static_cast<int>(contraction_type_count) << "\n";
+        log << "contraction_order\n" <<   " { \n";
         for (size_t i = 0; i < size_contraction_order; ++i)
         {
             log << contraction_order[i] << ", ";
+            pgassert((contraction_order[i] >=0) && (contraction_order[i] < static_cast<int>(contraction_type_count)));
+            log << "\n";
         }
         log << " }\n";
         log << "max_cycles " << max_cycles << "\n";

@@ -40,7 +40,7 @@ extern "C" {
 }
 
 #include "./pgr_contractionGraph.hpp"
-
+#include "../../common/src/pgr_assert.h"
 
 template < class G > class Pgr_contract;
 
@@ -62,6 +62,7 @@ void pgr_contractGraph(
 	{
 		contract_order.push_back(contraction_order[i]);
 	}
+	
 	for (int64_t i = 0; i < max_cycles; ++i)
 	{
 		int64_t front=contract_order.front();
@@ -126,6 +127,8 @@ public:
 	#if 0
 	void remove_2_degree_vertices(G &graph);
 	#endif
+
+	
 
 	void calculateDegrees(G &graph);
 
