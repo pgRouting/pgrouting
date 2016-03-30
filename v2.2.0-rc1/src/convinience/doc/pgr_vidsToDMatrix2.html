@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_vidsToDMatrix &mdash; pgRouting Manual (2.2.0-RC1)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0 (pgrouting-2.2.0-RC1)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0-RC1)" href="../../../index.html" />
+    <link rel="up" title="Convenience Functions" href="convenience.html" />
+    <link rel="next" title="Contraction" href="../../contraction/doc/contraction.html" />
+    <link rel="prev" title="pgr_vidsToDMatrix" href="pgr_vidsToDMatrix.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.2.0-RC1)</span></a></h1>
+        <h2 class="heading"><span>pgr_vidsToDMatrix</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="pgr_vidsToDMatrix.html">pgr_vidsToDMatrix</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../contraction/doc/contraction.html">Contraction</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-vidstodmatrix">
+<span id="pgr-vids-to-dmatrix2"></span><h1>pgr_vidsToDMatrix<a class="headerlink" href="#pgr-vidstodmatrix" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_vidsToDMatrix</span></tt> - Creates a distances matrix from an array of <tt class="docutils literal"><span class="pre">vertex_id</span></tt>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This is a proposed function</p>
+<ul class="last simple">
+<li>Is not officially in the release.</li>
+<li>Name could change.</li>
+<li>Signature could change.</li>
+<li>Needs testing.</li>
+<li>Functionality could change.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>This function takes an array of <tt class="docutils literal"><span class="pre">vertex_id</span></tt>, a <tt class="docutils literal"><span class="pre">sql</span></tt> statement to select the edges, and some boolean arguments to control the behavior. It then computes kdijkstra() distances for each vertex to all the other vertices and creates a distance matrix suitable for TSP.</p>
+<p>The function returns:</p>
+<blockquote>
+<div><ul>
+<li><table class="first docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">dmatrix:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8[]</span></tt> - the distance matrix suitable to pass to pgr_TSP() function.</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div></blockquote>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_vidsToDMatrix</span><span class="p">(</span><span class="k">IN</span> <span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="k">IN</span> <span class="n">vids</span> <span class="nb">integer</span><span class="p">[],</span> <span class="k">IN</span> <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="k">IN</span> <span class="n">has_reverse_cost</span> <span class="nb">boolean</span><span class="p">,</span> <span class="k">IN</span> <span class="n">want_symmetric</span> <span class="nb">boolean</span><span class="p">,</span> <span class="k">OUT</span> <span class="n">dmatrix</span> <span class="n">double</span> <span class="k">precision</span><span class="p">[])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Paramters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> - A SQL statement to select the edges needed for the solution.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">vids:</th><td class="field-body"><tt class="docutils literal"><span class="pre">integer[]</span></tt> - An array of <tt class="docutils literal"><span class="pre">vertex_id</span></tt>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">directed:</th><td class="field-body"><tt class="docutils literal"><span class="pre">boolean</span></tt> - A flag to indicate if the graph is directed.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">has_reverse_cost:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><tt class="docutils literal"><span class="pre">boolean</span></tt> - A flag to indicate if the SQL has a column <tt class="docutils literal"><span class="pre">reverse_cost</span></tt>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">want_symmetric:</th><td class="field-body"><tt class="docutils literal"><span class="pre">boolean</span></tt> - A flag to indicate if you want a symmetric or asymmetric matrix. You will need a symmetric matrix for pgr_TSP(). If the matriix is asymmetric, the then the cell(i,j) and cell(j,i) will be set to the average of those two cells except if one or the other are -1.0 then it will take the value of the other cell. If both are negative they will be left alone.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<ul class="last simple">
+<li>kdijkstra() can fail to find a path between some of the vertex ids. We to not detect this other than the cost might get set to -1.0, so the dmatrix shoule be checked for this as it makes it invalid for TSP</li>
+</ul>
+</div>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>Proposed in version 2.1.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_vidsToDMatrix(
+    &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table&#39;,
+    array[1,2,3,5],
+    true, true, false);
+             pgr_vidstodmatrix             
+-------------------------------------------
+ {{0,1,6,2},{1,0,5,1},{2,1,0,2},{2,1,4,0}}
+(1 row)
+
+SELECT * FROM pgr_vidsToDMatrix(
+    &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table&#39;,
+    array[1,2,3,5],
+    true, true, true);
+             pgr_vidstodmatrix             
+-------------------------------------------
+ {{0,1,4,2},{1,0,3,1},{4,3,0,3},{2,1,3,0}}
+(1 row)
+</pre></div>
+</div>
+<p>This example shows how this can be used in the context of feeding the results into pgr_tsp() function.</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_tsp(
+    (SELECT pgr_vidsToDMatrix(
+        &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table&#39;,
+        array[1,2,3,5],
+        true, true, true)
+    ),
+    1
+);
+ seq | id 
+-----+----
+   0 |  1
+   1 |  2
+   2 |  3
+   3 |  0
+(4 rows)
+</pre></div>
+</div>
+<p>This example uses the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_vidsToDMatrix.html#pgr-vids-to-dmatrix"><em>pgr_vidsToDMatrix</em></a> -  - Creates a distances matrix from an array of <tt class="docutils literal"><span class="pre">vertex_id</span></tt>.</li>
+<li><a class="reference internal" href="pgr_textToPoints.html#pgr-text-to-points"><em>pgr_textToPoints</em></a> - Create an array of points from a text string.</li>
+<li><a class="reference internal" href="../../tsp/doc/pgr_tsp.html#pgr-tsp"><em>pgr_tsp</em></a> - Traveling Sales Person</li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="../../../search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="pgr_vidsToDMatrix.html">pgr_vidsToDMatrix</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../contraction/doc/contraction.html">Contraction</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0-RC1).
+      Last updated on Mar 29, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
