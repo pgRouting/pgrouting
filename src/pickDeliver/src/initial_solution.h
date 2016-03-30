@@ -12,6 +12,10 @@ class Initial_solution : public Solution {
      Initial_solution(
              int kind,
              const Pgr_pickDeliver *problem);
+
+     void invariant() const;
+
+ private:
      /*
       * one truck per order
       */
@@ -19,10 +23,19 @@ class Initial_solution : public Solution {
      void one_truck_all_orders();
      void push_back_while_feasable();
      void push_front_while_feasable();
-     void insert_while_compatible();
      void insert_while_feasable();
-     void invariant() const;
 
+     void insert_while_compatibleJ();
+     void fill_truck_while_compatibleJ(
+             Vehicle_pickDeliver &truck,
+             std::set<ID> &possible_orders);
+     std::deque<ID> first_ordersIJ() const;
+
+     void insert_while_compatibleI();
+     void fill_truck_while_compatibleI(
+             Vehicle_pickDeliver &truck,
+             std::set<ID> &possible_orders);
+     std::deque<ID> first_ordersJI() const;
 
 
  private:

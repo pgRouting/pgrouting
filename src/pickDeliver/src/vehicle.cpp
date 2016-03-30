@@ -2,9 +2,11 @@
 #include <deque>
 #include <iostream>
 #include <algorithm>
+#include <tuple>
 #include "../../common/src/pgr_assert.h"
 
 
+#include "./pgr_pickDeliver.h"
 #include "./vehicle.h"
 
 
@@ -15,6 +17,100 @@ Vehicle::invariant() const{
     pgassert(m_path.front().is_start());
     pgassert(m_path.back().is_end());
 }
+
+POS
+Vehicle::insert(std::pair<POS,POS> position_limits, const Vehicle_node &node) {
+    invariant();
+    pgassert(position_limits.first <= m_path.size());
+    pgassert(position_limits.second <= m_path.size());
+
+    auto low = position_limits.first;
+    auto high = position_limits.second;
+    auto best = low;
+    
+
+
+
+    insert(low, node); 
+
+
+    Vehicle::Cost best_cost(cost());
+
+
+    while (low < high) {
+        swap(low, low + 1);
+        ++low;
+        if (cost_compare(best_cost, cost())) {
+            best_cost = cost();
+            best = low;
+        }
+    }
+    return best;
+
+    pgassert(best < m_path.size());
+    pgassert(m_path[best].id() == node.id());
+    invariant();
+}
+
+bool
+Vehicle::cost_compare(const Cost &lhs, const Cost &rhs) const {
+
+    /*
+     * capacity violations
+     */
+    if (std::get<1>(lhs) < std::get<1>(rhs))
+        return true;
+    if (std::get<1>(lhs) > std::get<1>(rhs))
+        return false;
+
+    /*
+     * time window violations
+     */
+    if (std::get<0>(lhs) < std::get<0>(rhs))
+        return true;
+    if (std::get<0>(lhs) > std::get<0>(rhs))
+        return false;
+
+    /*
+     * waiting time
+     */
+    if (std::get<3>(lhs) < std::get<3>(rhs))
+        return true;
+    if (std::get<3>(lhs) > std::get<3>(rhs))
+        return false;
+
+    /*
+     * duration
+     */
+    if (std::get<4>(lhs) < std::get<4>(rhs))
+        return true;
+    if (std::get<4>(lhs) > std::get<4>(rhs))
+        return false;
+
+    /*
+     * truck size
+     */
+    if (std::get<2>(lhs) < std::get<2>(rhs))
+        return true;
+    if (std::get<2>(lhs) > std::get<2>(rhs))
+        return false;
+
+    return false;
+
+}
+
+
+
+
+
+
+Vehicle::Cost
+Vehicle::cost() const {
+    return std::make_tuple(
+            twvTot(), cvTot(), m_path.size(),
+            total_wait_time(), duration());
+}
+
 
 void
 Vehicle::insert(POS at, Vehicle_node node) {
@@ -91,7 +187,7 @@ Vehicle::erase(const Vehicle_node &node) {
         if (node.id() == m_path[pos].id()) 
             break;
     };
-    
+
     erase(pos);
     evaluate(pos);
 

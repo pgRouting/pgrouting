@@ -41,6 +41,8 @@ class Vehicle {
      double max_capacity;
 
  public:
+     typedef std::tuple< int, int, int, double, double > Cost;
+
      Vehicle(ID id, const Vehicle_node &starting_site, const Vehicle_node &ending_site, double max_capacity); 
 
 
@@ -65,17 +67,25 @@ class Vehicle {
      void invariant() const;
 
 
-     ///@{
-     /*! \brief Evaluated: Insert a node into an existing path.
+     /// @{
+
+     /*! \brief Insert \bnode at \pos position.
       *
-      * \param[in] node The node to insert.
       * \param[in] at The position that the node should be inserted.
+      * \param[in] node The node to insert.
+      *
       */
-     void insert(POS at, Vehicle_node node);
+     void insert(POS pos, Vehicle_node node);
 
 
-     double deltaTime(const Vehicle_node &node, POS pos) const;
-     POS insert_less_travel_time(const Vehicle_node &node, POS after_pos = 0);
+     /*! \brief Insert \bnode in bes position of the \position_limits.
+      *
+      * \param[in] position_limits.
+      * \param[in] node The node to insert.
+      *
+      * @returns position where it was inserted
+      */
+     POS insert(std::pair<POS, POS> position_limits, const Vehicle_node &node);
 
 
 
@@ -152,9 +162,13 @@ class Vehicle {
       */
      bool empty() const;
 
-
-
      ID id() const {return m_id;}
+
+
+     /// @{
+     Cost cost() const;
+     bool cost_compare(const Cost&, const Cost&) const;
+
      double duration() const { return m_path.back().departure_time(); };
      double total_wait_time() const { return m_path.back().total_wait_time(); };
      int  twvTot() const {return m_path.back().twvTot();}
@@ -162,8 +176,8 @@ class Vehicle {
      bool has_twv() const {return twvTot() != 0;}
      bool has_cv() const {return cvTot() != 0;}
      bool is_feasable() const {return !(has_twv() || has_cv());}
+     /// @}
 
-     std::string tau() const;
 
 
 
@@ -209,6 +223,8 @@ class Vehicle {
 
      ///@}
 
+     double deltaTime(const Vehicle_node &node, POS pos) const;
+     POS insert_less_travel_time(const Vehicle_node &node, POS after_pos = 0);
 
 
 
@@ -224,16 +240,19 @@ class Vehicle {
 
 
      friend std::ostream& operator<<(std::ostream &log, const Vehicle &v);
+
+     std::string tau() const;
+
      friend bool operator<(const Vehicle &lhs, const Vehicle &rhs);
 
      ///@}
 
 
 
-    std::pair<POS, POS> position_limits(const Vehicle_node node) const;
- private:
-    POS getPosLowLimit(const Vehicle_node &node) const;
-    POS getPosHighLimit(const Vehicle_node &node) const;
-         
+     std::pair<POS, POS> position_limits(const Vehicle_node node) const;
+    private:
+     POS getPosLowLimit(const Vehicle_node &node) const;
+     POS getPosHighLimit(const Vehicle_node &node) const;
+
 
 };

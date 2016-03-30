@@ -78,11 +78,11 @@ Pgr_pickDeliver::solve() {
     solutions.push_back(Initial_solution(2, this));
     solutions.push_back(Initial_solution(3, this));
     solutions.push_back(Initial_solution(4, this));
+    solutions.push_back(Initial_solution(5, this));
+    solutions.push_back(Initial_solution(6, this));
 #endif
 
-    solutions.push_back(Initial_solution(5, this));
 
-    // solutions.push_back(Optimize(1,solutions[0]));
 
 
     std::sort(solutions.begin(), solutions.end(), []

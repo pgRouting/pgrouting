@@ -43,6 +43,8 @@ class Order {
      bool isCompatibleIJ(const Order &other) const;
      bool isOrderCompatibleStart(const Vehicle_node &node) const;
      bool isOrderCompatibleEnd(const Vehicle_node &node) const;
+     std::set<ID> subsetJ(const std::set<ID> &J) const;
+     std::set<ID> subsetI(const std::set<ID> &I) const;
 
      friend std::ostream& operator<<(std::ostream&, const Order &);
 

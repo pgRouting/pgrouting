@@ -135,7 +135,6 @@ class Vehicle_pickDeliver : public Vehicle {
      */
     void erase(const Order &order);
 
-    void insert_less_travel_time(const Order&);
 
 
     /*!
@@ -150,6 +149,7 @@ class Vehicle_pickDeliver : public Vehicle {
 
 
 #if 0
+    void insert_less_travel_time(const Order&);
     void insertPickup(const Order &order, const int at);
     void insertDelivery(const Order &order, const int at);
 

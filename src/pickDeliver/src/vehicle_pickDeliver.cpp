@@ -39,7 +39,6 @@ Vehicle_pickDeliver::Vehicle_pickDeliver(
     invariant();
     }
 
-//TODO delete order
 
 
 bool
@@ -49,6 +48,7 @@ Vehicle_pickDeliver::has_order(const Order &order) const {
 
 /************ INSERTING ORDERS **************/
 
+#if 0
 void
 Vehicle_pickDeliver::insert_less_travel_time(const Order &order) {
     invariant();
@@ -71,24 +71,10 @@ Vehicle_pickDeliver::insert_less_travel_time(const Order &order) {
     pgassert(!has_cv());
     invariant();
 }
+#endif
 
-void
-Vehicle_pickDeliver::erase(const Order &order) {
-    invariant();
-    pgassert(has_order(order));
 
-    problem->log << "\n ----------------------------------before erasing";
-    problem->log << (*this);
 
-    Vehicle::erase(order.pickup());
-    Vehicle::erase(order.delivery());
-    orders_in_vehicle.erase(orders_in_vehicle.find(order.id()));
-
-    problem->log << "\n ----------------------------------after erasing";
-    problem->log << (*this);
-    invariant();
-    pgassert(!has_order(order));
-}
 void
 Vehicle_pickDeliver::insert(const Order &order) {
     invariant();
@@ -133,7 +119,8 @@ Vehicle_pickDeliver::insert(const Order &order) {
         << pick_pos.second << ") ";
 #endif
 
-    Vehicle::insert(pick_pos.first, order.pickup());
+    //Vehicle::insert(pick_pos.first, order.pickup());
+    Vehicle::insert(pick_pos, order.pickup());
 
     auto deliver_pos(position_limits(order.delivery()));
 
@@ -145,7 +132,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
     pgassert(pick_pos.first < deliver_pos.second);
 
 
-    Vehicle::insert(deliver_pos.second, order.delivery());
+    Vehicle::insert(deliver_pos, order.delivery());
 
 
 #if 1
@@ -192,6 +179,21 @@ Vehicle_pickDeliver::push_front(const Order &order) {
     pgassert(has_order(order));
     pgassert(!has_cv());
     invariant();
+}
+
+
+void
+Vehicle_pickDeliver::erase(const Order &order) {
+    invariant();
+    pgassert(has_order(order));
+
+
+    Vehicle::erase(order.pickup());
+    Vehicle::erase(order.delivery());
+    orders_in_vehicle.erase(orders_in_vehicle.find(order.id()));
+
+    invariant();
+    pgassert(!has_order(order));
 }
 
 

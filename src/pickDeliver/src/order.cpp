@@ -5,6 +5,24 @@
 #include "pgr_pickDeliver.h"
 #include "order.h"
 
+std::set<ID>
+Order::subsetI(const std::set<ID> &I) const {
+    std::set<ID> intersect;
+    std::set_intersection(m_compatibleI.begin(), m_compatibleI.end(),
+            I.begin(), I.end(),
+            std::inserter(intersect, intersect.begin()));
+    return intersect;
+}
+
+std::set<ID>
+Order::subsetJ(const std::set<ID> &J) const {
+    std::set<ID> intersect;
+    std::set_intersection(m_compatibleJ.begin(), m_compatibleJ.end(),
+            J.begin(), J.end(),
+            std::inserter(intersect, intersect.begin()));
+    return intersect;
+}
+
 
 Order::Order(ID p_id,
         const Vehicle_node &p_pickup,
