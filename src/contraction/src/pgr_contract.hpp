@@ -114,7 +114,7 @@ public:
 	typedef typename G::E_i E_i;
 	typedef typename G::EO_i EO_i;
 	typedef typename G::degree_to_V_i degree_to_V_i;
-
+	
 
 	#if 0
 	void contract_to_level(
@@ -134,7 +134,7 @@ public:
 
 	void degreeMap(G &graph,std::ostringstream& dmap);
 
-	void getGraphName(std::ostringstream& name,contractionType ctype);
+	void getGraphName(std::ostringstream& name,Contraction_type ctype);
 
 	int64_t getGraph_string(G &graph,std::ostringstream& estring);
 	
@@ -183,7 +183,7 @@ Pgr_contract< G >::calculateDegrees(G &graph) {
  //! \brief Generates the name of the contracted graph based upon the type of contraction
 template < class G >
 void
-Pgr_contract< G >::getGraphName(std::ostringstream& name,contractionType ctype)
+Pgr_contract< G >::getGraphName(std::ostringstream& name,Contraction_type ctype)
 {
 	name << "contracted_graph_" << static_cast<int>(ctype);
 }

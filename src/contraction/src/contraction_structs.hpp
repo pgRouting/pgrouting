@@ -6,29 +6,23 @@
 #pragma once
 
 #include <set>
-enum class contractionType { 
-     
+
+enum class Contraction_type { 
      none = 0,
-     deadEnd, // C++11 allows the extra comma
+     deadEnd,
      last
 };
 
-enum class edgeType {
-	
-	ordinary = 0,
-	shortcut,
-};
 
+typedef int64_t VID;
 
-typedef int64_t Vid;
-
-typedef int64_t Eid;
+typedef int64_t EID;
 
 
 //typedef std::set<Vid> RemovedVertices;
 
 
-typedef std::set<Vid> Vertex_set;
+typedef std::set<VID> Vertex_set;
 
 
 

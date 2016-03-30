@@ -38,8 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./structs.h"
 
 
-#include "./Vertex_c.hpp"
-#include "./Edge_c.hpp"
+#include "./Vertex_c.h"
+#include "./Edge_c.h"
 /*! \brief boost::graph simplified to pgRouting needs
 
   This class gives the handling basics of a boost::graph of kind G
