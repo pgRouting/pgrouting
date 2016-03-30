@@ -102,7 +102,23 @@ void pgr_contractGraph(
 
 }
 
-
+bool is_valid_contraction_number(int number)
+{
+	switch(number){
+		case -2:
+			return false;
+			break;
+		case -1:
+			return false;
+			break;
+		case 0:
+			return true;
+			break;
+		default:
+			return false;
+			break;
+	}
+}
 
 
 template < class G >

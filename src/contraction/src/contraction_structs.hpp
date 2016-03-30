@@ -8,9 +8,9 @@
 #include <set>
 
 enum class Contraction_type { 
-     none = 0,
-     deadEnd,
-     last
+     none = -2,
+     last,
+     deadEnd
 };
 
 
