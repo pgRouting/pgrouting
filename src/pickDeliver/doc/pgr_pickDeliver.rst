@@ -233,8 +233,8 @@ The examples of this section are based on the :ref:`sampledata` network.
 :Example:
 
 .. literalinclude:: doc-pickDeliver.queries
-   :start-after: --q2
-   :end-before: --q3
+   :start-after: --q1
+   :end-before: --q2
 
 ..
    If needed here are some subtitles  
@@ -247,28 +247,8 @@ The examples in this section use the following :ref:`fig1`
 :Example: This example is in a subtitle
 
 .. literalinclude:: doc-pickDeliver.queries
-   :start-after: --q2
-   :end-before: --q3
-
-
-Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
-----------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig2`
-
-
-
-Examples for queries marked as ``directed`` with ``cost`` column
-----------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig3`
-
-
-Examples for queries marked as ``undirected`` with ``cost`` column
-----------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig4`
-
+   :start-after: --q1
+   :end-before: --q2
 
 
 The queries use the :ref:`sampledata` network.

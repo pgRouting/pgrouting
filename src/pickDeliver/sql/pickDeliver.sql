@@ -34,14 +34,14 @@ CREATE OR REPLACE FUNCTION pgr_pickDeliver(
     max_cycles INTEGER, 
 
     OUT seq INTEGER,
-    OUT vehicle_seq INTEGER,
     OUT vehicle_id INTEGER,
-    OUT order_id BIGINT,
-    OUT travelTime FLOAT,
-    OUT arrivalTime FLOAT,
-    OUT waitTime FLOAT,
-    OUT serviceTime FLOAT,
-    OUT departureTime FLOAT
+    OUT vehicle_seq INTEGER,
+    OUT stop_id BIGINT,
+    OUT travel_time FLOAT,
+    OUT arrival_time FLOAT,
+    OUT wait_time FLOAT,
+    OUT service_time FLOAT,
+    OUT departure_time FLOAT
 )
 
   RETURNS SETOF RECORD AS

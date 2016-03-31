@@ -58,7 +58,6 @@ extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
 
-// #include <cassert>
 #include "./../../common/src/pgr_assert.h"
 
 #include "./vehicle_node.h"
@@ -71,8 +70,6 @@ extern "C" {
 
 void
 Pgr_pickDeliver::solve() {
-
-#if 0
     solutions.push_back(Initial_solution(0, this));
     solutions.push_back(Initial_solution(1, this));
     solutions.push_back(Initial_solution(2, this));
@@ -80,24 +77,47 @@ Pgr_pickDeliver::solve() {
     solutions.push_back(Initial_solution(4, this));
     solutions.push_back(Initial_solution(5, this));
     solutions.push_back(Initial_solution(6, this));
-#endif
 
 
-
-
+    /*
+     * make sure the best is at the back
+     */
     std::sort(solutions.begin(), solutions.end(), []
             (const Solution &lhs, const Solution &rhs) -> bool {
             return rhs < lhs;
             } );
+}
 
-#if 0
-    for (size_t i = 0; i < solutions.size(); i++) {
-        log << solutions[i];
+
+
+void
+Pgr_pickDeliver::get_postgres_result(std::vector< General_vehicle_orders_t > &result) const {
+
+    solutions.back().get_postgres_result(result);
+
+    Solution::Cost cost(solutions.back().cost());
+    
+    General_vehicle_orders_t aggregates({
+            /*
+             * Vehicle id = -1 indicates its an aggregate row
+             *
+             * (twv, cv, fleet, wait, duration)
+             */
+            -1, 
+            std::get<0>(cost),    // on vehicle seq tw violations
+            std::get<1>(cost), // on stop id: capacity violations
+            0,                      // TODO not accounting total_travel_time 
+            0,                      // not accounting arrival_travel_time 
+            std::get<3>(cost), // on wait time
+            0,                      // TODO not accounting service_time
+            std::get<4>(cost)  // on departure_time
+            });
+    result.push_back(aggregates);
+
+
+    for (const auto sol : solutions) {
+        log << sol.tau();
     }
-    for (size_t i = 0; i < solutions.size(); i++) {
-        log << solutions[i].tau();
-    }
-#endif 
 }
 
 

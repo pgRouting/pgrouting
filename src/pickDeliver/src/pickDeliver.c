@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
   Uncomment when needed
 */
-#define DEBUG
+// #define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
@@ -98,12 +98,16 @@ process(char* customers_sql,
             &err_msg);
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned log = %s\n", log_msg);
+    if (log_msg) {
+        elog(DEBUG1, "%s", log_msg);
+        free(log_msg);
+    }
     if (err_msg) {
         elog(ERROR, "%s", err_msg);
+        free(err_msg);
     }
 
 
-    free(err_msg);
     pfree(customers_arr);
     pgr_SPI_finish();
 }
@@ -204,8 +208,8 @@ pickDeliver(PG_FUNCTION_ARGS) {
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
-        values[2] = Int32GetDatum(result_tuples[call_cntr].vehicle_id);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_id);
+        values[2] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
         values[3] = Int64GetDatum(result_tuples[call_cntr].order_id);
         values[4] = Float8GetDatum(result_tuples[call_cntr].travelTime);
         values[5] = Float8GetDatum(result_tuples[call_cntr].arrivalTime);

@@ -82,7 +82,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
 
     auto pick_pos(position_limits(order.pickup()));
 
-#if 1
+#if 0
     problem->log << "\n\n\n\n/////////////////////BEFORE";
     if (id() == 2) {
         problem->log << (*this);
@@ -96,12 +96,12 @@ Vehicle_pickDeliver::insert(const Order &order) {
 
     if (pick_pos.first > pick_pos.second) {
 
-#if 1
+#if 0
         problem->log << "\ninsert by push_back";
 #endif
         push_back(order);
 
-#if 1
+#if 0
         problem->log << "\n/////////////////////AFTER";
         if (id() == 2) {
             problem->log << (*this);
@@ -113,7 +113,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
     };
 
 
-#if 1
+#if 0
     problem->log << "\n\tpickup limits (low, high) = ("
         << pick_pos.first << ", "
         << pick_pos.second << ") ";
@@ -124,7 +124,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
 
     auto deliver_pos(position_limits(order.delivery()));
 
-#if 1
+#if 0
     problem->log << "\n\tdeliver limits (low, high) = ("
         << deliver_pos.first << ", "
         << deliver_pos.second << ") ";
@@ -135,7 +135,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
     Vehicle::insert(deliver_pos, order.delivery());
 
 
-#if 1
+#if 0
     problem->log << "\n/////////////////////AFTER";
     if (id() == 2) {
         problem->log << (*this);

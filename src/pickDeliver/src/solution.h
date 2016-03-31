@@ -21,6 +21,10 @@ class Solution {
 
      typedef std::tuple< int, int, int, double, double > Cost;
 
+     void get_postgres_result(
+             std::vector< General_vehicle_orders_t > &result) const;
+
+
      /* @brief constructor
       *
       * @params [in] p_problem \t pointer to problem
@@ -35,7 +39,7 @@ class Solution {
      Solution(const Solution &&sol)  noexcept :
          fleet(std::move(sol.fleet)),
          problem(std::move(sol.problem))
-    {};
+         {};
 
      /* @brief copy constructor */
      Solution(const Solution &sol) :
@@ -45,14 +49,14 @@ class Solution {
 
      /* @brief move assigment */
      Solution& operator=(const Solution&& sol) {
-        fleet = sol.fleet;
-        return *this;
+         fleet = sol.fleet;
+         return *this;
      };
 
      /* @brief copy assigment */
      Solution& operator=(const Solution& sol) {
-        fleet = sol.fleet;
-        return *this;
+         fleet = sol.fleet;
+         return *this;
      };
 
      std::string cost_str() const;
@@ -64,6 +68,7 @@ class Solution {
      double wait_time() const;
      int twcTot() const;
      int cvTot() const;
+     size_t fleet_size() const {return fleet.size();};
 
      /*
       * Cost in terms of a tuple
@@ -76,30 +81,6 @@ class Solution {
      Cost cost() const;
 
 
-#if 0  // TODO
-     Solution& operator=(const Solution& rhs) {
-         if ( this != &rhs ) {
-             totalDistance = rhs.totalDistance;
-             totalCost = rhs.totalCost;
-             fleet = rhs.fleet;
-         }
-         return *this;
-     };
-
-     bool operator == (Solution &another) const {
-         return fleet.size() == another.fleet.size() &&
-             std::abs(totalCost - another.totalCost) < EPSILON;
-     };
-#endif
-
-#if 0
-     bool solutionEquivalent (Solution &another)  {
-         computeCosts();
-         another.computeCosts();
-         return fleet.size() == another.fleet.size() &&
-             std::abs(totalCost - another.totalCost) < EPSILON;
-     };
-#endif
 
 
 };

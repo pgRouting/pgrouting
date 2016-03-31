@@ -42,6 +42,9 @@ class Vehicle {
 
  public:
      typedef std::tuple< int, int, int, double, double > Cost;
+     void get_postgres_result(
+             int vid,
+             std::vector< General_vehicle_orders_t > &result) const;
 
      Vehicle(ID id, const Vehicle_node &starting_site, const Vehicle_node &ending_site, double max_capacity); 
 

@@ -191,8 +191,8 @@ typedef struct {
 */
 
 typedef struct  {
-    int vehicle_seq;
     int vehicle_id;
+    int vehicle_seq;
     int64_t order_id;
     double travelTime;
     double arrivalTime;

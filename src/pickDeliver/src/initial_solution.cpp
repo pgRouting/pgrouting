@@ -181,11 +181,13 @@ Initial_solution::first_ordersIJ() const {
             < prob->orders()[rhs].m_compatibleI.size();
             } ); 
 
+#if 0
     problem->log << "\n Sorted orders by compatibleI.size\n";
     for (const auto &o: orders) {
         problem->log << "\n|"<< o <<"| = " << problem->orders()[o].m_compatibleI.size();
         problem->log << "\t|"<< o <<"| = " << problem->orders()[o].m_compatibleJ.size();
     };
+#endif
     return orders;
 }
 
@@ -228,7 +230,6 @@ Initial_solution::insert_while_compatibleJ() {
 
             fill_truck_while_compatibleJ(truck, possible_orders);
             problem->log << truck;
-            return;
 
             fleet.push_back(truck);
 
@@ -369,11 +370,13 @@ Initial_solution::first_ordersJI() const {
             < prob->orders()[rhs].m_compatibleJ.size();
             } ); 
 
+#if 0
     problem->log << "\n Sorted orders by compatibleI.size\n";
     for (const auto &o: orders) {
         problem->log << "\n|"<< o <<"| = " << problem->orders()[o].m_compatibleI.size();
         problem->log << "\t|"<< o <<"| = " << problem->orders()[o].m_compatibleJ.size();
     };
+#endif
     return orders;
 }
 

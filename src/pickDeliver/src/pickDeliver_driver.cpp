@@ -63,26 +63,15 @@ do_pgr_pickDeliver(
         int max_vehicles,
         double capacity,
         int max_cycles,
-        General_vehicle_orders_t **return_tuples,
-        size_t *return_count,
+        General_vehicle_orders_t **result_tuples,
+        size_t *total_count,
         char ** log_msg,
         char ** err_msg) {
     std::ostringstream log;
     try {
-        *return_tuples = NULL;
-        *return_count = 0;
-
-#if 0
-        log << "Starting do_pgr_pickDeliver\n";
-        log << "max_vehicles: "  << max_vehicles << "\n";
-        log << "capacity: "  << capacity << "\n";
-        log << "max_cycles: "  << max_cycles << "\n";
-        log << "total_customers: "  << total_customers << "\n";
-        for (size_t i = 0; i < total_customers; i++) {
-            log << customers_arr[i].id << "\t";
-        }
-        log << "\n";
-#endif
+        std::ostringstream tmp_log;
+        *result_tuples = NULL;
+        *total_count = 0;
 
         log << "Read data\n";
         std::string error("");
@@ -93,7 +82,7 @@ do_pgr_pickDeliver(
             *err_msg = strdup(error.c_str());
             return;
         }
-        pd_problem.get_log(log);
+        pd_problem.get_log(tmp_log);
         log << "Finish Reading data\n";
 
         try {
@@ -103,12 +92,22 @@ do_pgr_pickDeliver(
             throw exept;
         }
 
-        pd_problem.get_log(log);
+        pd_problem.get_log(tmp_log);
         log << "Finish solve\n";
 
+        std::vector<General_vehicle_orders_t> solution;
+        pd_problem.get_postgres_result(solution);
+        pd_problem.get_log(log);
+        log << "solution size: " << solution.size() << "\n";
+        
 
-
-
+        (*result_tuples) = get_memory(solution.size(), (*result_tuples));
+        int seq = 0;
+        for (const auto &row : solution) {
+            (*result_tuples)[seq] = row;
+            ++seq;
+        }
+        (*total_count) = solution.size();
 
         *log_msg = strdup(log.str().c_str());
 

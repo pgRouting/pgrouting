@@ -5,6 +5,21 @@
 #include "./pgr_pickDeliver.h"
 
 
+void
+Solution::get_postgres_result(
+        std::vector< General_vehicle_orders_t > &result) const {
+    /* postgres numbering starts with 1 */
+    int i(1);
+    for (const auto truck : fleet) {
+        std::vector< General_vehicle_orders_t > data;
+        truck.get_postgres_result(i, data);
+        result.insert(result.end(), data.begin(), data.end());
+
+        ++i;
+    }
+}
+
+
 
 double
 Solution::duration() const {

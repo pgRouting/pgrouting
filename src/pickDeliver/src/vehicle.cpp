@@ -29,10 +29,7 @@ Vehicle::insert(std::pair<POS,POS> position_limits, const Vehicle_node &node) {
     auto best = low;
     
 
-
-
     insert(low, node); 
-
 
     Vehicle::Cost best_cost(cost());
 
@@ -51,6 +48,9 @@ Vehicle::insert(std::pair<POS,POS> position_limits, const Vehicle_node &node) {
     pgassert(m_path[best].id() == node.id());
     invariant();
 }
+
+
+
 
 bool
 Vehicle::cost_compare(const Cost &lhs, const Cost &rhs) const {
@@ -101,7 +101,26 @@ Vehicle::cost_compare(const Cost &lhs, const Cost &rhs) const {
 
 
 
+void
+Vehicle::get_postgres_result(
+        int vid,
+        std::vector< General_vehicle_orders_t > &result) const {
+    /* postgres numbering starts with 1 */
+    int i(1);
+    for (const auto p_stop : m_path) {
+        General_vehicle_orders_t data(
+                {vid, i,
+                p_stop.original_id(), 
+                p_stop.travel_time(), 
+                p_stop.arrival_time(), 
+                p_stop.wait_time(), 
+                p_stop.service_time(), 
+                p_stop.departure_time()});
+        result.push_back(data);
+        ++i;
+    }
 
+}
 
 
 Vehicle::Cost
@@ -123,7 +142,6 @@ Vehicle::insert(POS at, Vehicle_node node) {
     pgassert(at < m_path.size());
     pgassert(m_path[at].id() == node.id());
     invariant();
-
 }
 
 
