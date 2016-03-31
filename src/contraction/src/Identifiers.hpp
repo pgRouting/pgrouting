@@ -102,22 +102,16 @@ Identifiers<ID> Identifiers<ID>::operator +(const ID &other) const {
 template <class ID>
 Identifiers<ID> Identifiers<ID>::operator *(const ID &other) const {
     Identifiers<ID> intersect_ids;
-    Identifiers<ID> other_ids;
-    other_ids += other;
-    std::set_intersection(m_ids.begin(), m_ids.end(),
-                          other_ids.ids().begin(), other_ids.ids().end(),
-                          std::back_inserter(intersect_ids));
+    intersect_ids.insert(*this);
+    intersect_ids*=other;
     return intersect_ids;
 }
 
 template <class ID>
 Identifiers<ID> Identifiers<ID>::operator -(const ID &other) const {
     Identifiers<ID> diff_ids;
-    Identifiers<ID> other_ids;
-    other_ids += other;
-    std::set_difference(m_ids.begin(), m_ids.end(),
-                        other_ids.ids().begin(), other_ids.ids().end(),
-                        std::inserter(diff_ids, diff_ids.begin()));
+    diff_ids.insert(*this);
+    diff_ids-=other;
     return diff_ids;
 }
 
@@ -133,18 +127,16 @@ Identifiers<ID> Identifiers<ID>::operator +(const Identifiers<ID> &other) const 
 template <class ID>
 Identifiers<ID> Identifiers<ID>::operator *(const Identifiers<ID> &other) const {
     Identifiers<ID> intersect_ids;
-    std::set_intersection(m_ids.begin(), m_ids.end(),
-                          other.ids().begin(), other.ids().end(),
-                          std::back_inserter(intersect_ids));
+    intersect_ids.insert(*this);
+    intersect_ids*=other;
     return intersect_ids;
 }
 
 template <class ID>
 Identifiers<ID> Identifiers<ID>::operator -(const Identifiers<ID> &other) const {
     Identifiers<ID> diff_ids;
-    std::set_difference(m_ids.begin(), m_ids.end(),
-                        other.ids().begin(), other.ids().end(),
-                        std::inserter(diff_ids, diff_ids.begin()));
+    diff_ids.insert(*this);
+    diff_ids-=other;
     return diff_ids;
 }
 
@@ -154,6 +146,18 @@ Identifiers<ID>& Identifiers<ID>::operator +=(const ID &other) {
     return *this;
 }
 
+template <class ID>
+Identifiers<ID>& Identifiers<ID>::operator *=(const ID &other) {
+
+    if (m_ids.find(other)!=m_ids.end()) {
+        m_ids.clear();
+        m_ids.insert(other);
+    }
+    else {
+        m_ids.clear();
+    }
+    return *this;
+}
 
 template <class ID>
 Identifiers<ID>& Identifiers<ID>::operator -=(const ID &other) {
