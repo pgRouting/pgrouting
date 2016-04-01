@@ -21,9 +21,9 @@ void Vertex_c::add_contracted_vertex(Vertex_c v) {
 }
 
 std::ostringstream& operator <<(std::ostringstream& os, const Vertex_c& v) {
-    os << "{ id: " << v.id <<  ", type: " << v.get_contraction_type();
+    os << "{ id: " << v.id <<  ", type: " << v.type_str();
     os << " removed_vertices: {";
-    for (auto removed_vertex : v.removed_vertices.ids() {
+    for (auto removed_vertex : v.removed_vertices().ids() {
         os << removed_vertex << ", ";
     }
     os << "} }";

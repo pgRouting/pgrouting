@@ -1,14 +1,5 @@
 #include "./Edge_c.h"
 
-/*
-Indicates whether an edge is deleted or not.
-Returns:
-true : the edge is logically deleted
-false : otherwise
-*/
-bool Edge_c::isDeleted() const {
-    return deleted;
-}
 
 void Edge_c::setDeleted() {
     deleted = true;
@@ -32,9 +23,9 @@ std::string Edge_c::type_str() const {
 
 
 std::ostringstream& operator <<(std::ostringstream& os, const Edge_c& e) {
-    os << "{ id: " << e.id << ", type: " << e.get_edge_type();
+    os << "{ id: " << e.id << ", type: " << e.type_str();
     os << " removed_vertices: {";
-    for (auto removed_vertex : e.removed_vertices.ids()) {
+    for (auto removed_vertex : e.removed_vertices().ids()) {
         os << removed_vertex << ", ";
     }
     os << "} }";

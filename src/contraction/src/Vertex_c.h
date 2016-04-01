@@ -9,7 +9,7 @@
 class Vertex_c {
  public:
     VID id;
-    bool isDeleted() const { return m_deleted; }
+    inline bool isDeleted() const { return m_deleted; }
     inline Contraction_type type() const { return m_type; }
     inline std::string type_str() const;
     inline void setDeleted();
