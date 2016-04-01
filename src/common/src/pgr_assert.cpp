@@ -12,6 +12,7 @@
 #include "./pgr_assert.h"
 #include <exception>
 
+#if 0
 #ifdef assert
 #undef assert
 #endif
@@ -21,7 +22,7 @@
 #endif
 
 #define __TOSTRING(x) __STRING(x)
-
+#endif
 
 const char *AssertFailedException::what() const throw() {
   return str;

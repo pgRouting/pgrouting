@@ -10,25 +10,28 @@
  *  
  *****************************************************************PGR-MIT*/
 
-
-
-/*! \file vrp_assert.h
- * \brief An assert functionality that uses C++ throw().
- *
- * This file provides an alternative to assert functionality that will
- * convert all assert() into C++ throw using an AssertFailedException class.
- * This allows us to catch these errors and do appropriate clean up and
- * re-throw if needed so we can catch errors in the postgresql environment
- * so we do not crash the backend server.
- */
 #ifndef  SRC_COMMON_SRC_PGR_ASSERT_H_
 #define  SRC_COMMON_SRC_PGR_ASSERT_H_
 
 #include <exception>
 
-#ifdef assert
-#undef assert
+#ifdef pgassert
+#undef pgassert
 #endif
+
+
+/*! \file vrp_assert.h
+ * **Do not crash the backend server.**
+ *
+ * \brief An assert functionality that uses C++ throw().
+ *
+ * This file provides an alternative to assert functionality that will
+ * convert all assert() into C++ throw using an AssertFailedException class.
+ * This allows catching errors and do appropriate clean up 
+ * re-throw if needed to catch errors in the postgresql environment
+ *
+ * **Do not crash the backend server.**
+ */
 
 #ifndef __STRING
 #define __STRING(x) #x
@@ -36,7 +39,7 @@
 
 #define __TOSTRING(x) __STRING(x)
 
-/*! \def assert(expr)
+/*! \def pgassert(expr)
  * \brief Uses the standard assert syntax.
  *
  * When an assertion fails it will throw \ref AssertFailedException and what()
@@ -45,13 +48,13 @@
  * Here is an example of using it:
  * \code
     #include <iostream>
-    #include "vrp_assert.h"
+    #include "pgr_assert.h"
 
     int main() {
 
         try {
-            assert(2+2 == 4);
-            assert(2+2 == 5);
+            pgassert(2+2 == 4);
+            pgassert(2+2 == 5);
         }
         catch (AssertFailedException &e) {
             std::cout << e.what() << "\n";
@@ -67,9 +70,9 @@
 \endcode
  */
 #ifdef NDEBUG
-#define assert(expr) ((void)0)
+#define pgassert(expr) ((void)0)
 #else
-#define assert(expr) \
+#define pgassert(expr) \
     ((expr) \
      ? static_cast<void>(0) \
      : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) ))
