@@ -7,27 +7,26 @@
 #include <string>
 #include <functional>
 #include "./contraction_structs.hpp"
-#include "./removedVertices_c.h"
 
 
 class Edge_c {
  public:
-    enum class Edge_type{
+    enum class Edge_type {
         ordinary = 0,
         shortcut,
     };
     EID id;
     double cost;
-    bool isDeleted() const;
+    bool isDeleted() const { m_deleted; }
+    inline Edge_type type() const { return m_type; }
+    inline std::string type_str() const;
     inline void add_contracted_vertex(Vertex_c v);
     inline void set_edge_type(Edge_type etype);
     inline void setDeleted();
-    inline int get_edge_type() const;
-    inline Vertex_set get_removedVertices() const;
+    inline const Removed_vertices& removed_vertices() const { m_removed_vertices; }
     friend std::ostringstream& operator <<(std::ostringstream& os, const Edge_c& e);
  private:
-    Edge_type type;
-    Removed_vertices removed_vertices;
-    bool deleted;
-
+    Edge_type m_type;
+    Removed_vertices m_removed_vertices;
+    bool m_deleted;
 };

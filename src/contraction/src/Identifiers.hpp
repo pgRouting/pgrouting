@@ -15,21 +15,20 @@ class Identifiers {
     void insert(const ID &other);
     Identifiers<ID> operator +(const ID &other) const;
     Identifiers<ID> operator *(const ID &other) const;
-    Identifiers<ID> operator -(const ID &other) const; 
+    Identifiers<ID> operator -(const ID &other) const;
     Identifiers<ID> operator +(const Identifiers<ID> &other) const;
     Identifiers<ID> operator *(const Identifiers<ID> &other) const;
     Identifiers<ID> operator -(const Identifiers<ID> &other) const;
     Identifiers<ID>& operator +=(const ID &other);
     Identifiers<ID>& operator *=(const ID &other);
-    Identifiers<ID>& operator -=(const ID &other);     
+    Identifiers<ID>& operator -=(const ID &other);
     Identifiers<ID>& operator +=(const Identifiers<ID> &other);
     Identifiers<ID>& operator *=(const Identifiers<ID> &other);
     Identifiers<ID>& operator -=(const Identifiers<ID> &other);
-    template<ID> 
+    template<ID>
     friend std::ostringstream& operator << (std::ostringstream& os, const Identifiers<ID>& identifiers);
  private:
     std::set<ID> m_ids;
-
 };
 
 
@@ -71,7 +70,7 @@ void Identifiers<ID>::insert(const Identifiers<ID> &other) {
     std::cout << std::endl;
     #endif
 }
-    
+
 template <class ID>
 void Identifiers<ID>::insert(const ID &other) {
     #if 0
@@ -87,7 +86,7 @@ void Identifiers<ID>::insert(const ID &other) {
     for (auto identifier : m_ids) {
         std::cout << identifier << ", ";
     }
-    std::cout << std::endl;   
+    std::cout << std::endl;
     #endif
 }
 
@@ -103,7 +102,7 @@ template <class ID>
 Identifiers<ID> Identifiers<ID>::operator *(const ID &other) const {
     Identifiers<ID> intersect_ids;
     intersect_ids.insert(*this);
-    intersect_ids*=other;
+    intersect_ids *= other;
     return intersect_ids;
 }
 
@@ -111,7 +110,7 @@ template <class ID>
 Identifiers<ID> Identifiers<ID>::operator -(const ID &other) const {
     Identifiers<ID> diff_ids;
     diff_ids.insert(*this);
-    diff_ids-=other;
+    diff_ids -= other;
     return diff_ids;
 }
 
@@ -128,7 +127,7 @@ template <class ID>
 Identifiers<ID> Identifiers<ID>::operator *(const Identifiers<ID> &other) const {
     Identifiers<ID> intersect_ids;
     intersect_ids.insert(*this);
-    intersect_ids*=other;
+    intersect_ids *= other;
     return intersect_ids;
 }
 
@@ -136,7 +135,7 @@ template <class ID>
 Identifiers<ID> Identifiers<ID>::operator -(const Identifiers<ID> &other) const {
     Identifiers<ID> diff_ids;
     diff_ids.insert(*this);
-    diff_ids-=other;
+    diff_ids -= other;
     return diff_ids;
 }
 
@@ -148,12 +147,10 @@ Identifiers<ID>& Identifiers<ID>::operator +=(const ID &other) {
 
 template <class ID>
 Identifiers<ID>& Identifiers<ID>::operator *=(const ID &other) {
-
-    if (m_ids.find(other)!=m_ids.end()) {
+    if (m_ids.find(other) != m_ids.end()) {
         m_ids.clear();
         m_ids.insert(other);
-    }
-    else {
+    } else {
         m_ids.clear();
     }
     return *this;
@@ -161,7 +158,7 @@ Identifiers<ID>& Identifiers<ID>::operator *=(const ID &other) {
 
 template <class ID>
 Identifiers<ID>& Identifiers<ID>::operator -=(const ID &other) {
-    if (m_ids.find(other)!=m_ids.end()) {
+    if (m_ids.find(other) != m_ids.end()) {
         m_ids.erase(m_ids.find(other));
     }
     return *this;
@@ -176,7 +173,7 @@ Identifiers<ID>& Identifiers<ID>::operator +=(const Identifiers<ID> &other) {
 template <class ID>
 Identifiers<ID>& Identifiers<ID>::operator *=(const Identifiers<ID> &other) {
     for (auto identifier : m_ids) {
-        if (other.ids().find(identifier)==other.ids().end()) {
+        if (other.ids().find(identifier) == other.ids().end()) {
             m_ids.erase(m_ids.find(identifier));
         }
     }
@@ -186,7 +183,7 @@ Identifiers<ID>& Identifiers<ID>::operator *=(const Identifiers<ID> &other) {
 template <class ID>
 Identifiers<ID>& Identifiers<ID>::operator -=(const Identifiers<ID> &other) {
     for (auto identifier : m_ids) {
-        if (other.ids().find(identifier)!=other.ids().end()) {
+        if (other.ids().find(identifier) != other.ids().end()) {
             m_ids.erase(m_ids.find(identifier));
         }
     }

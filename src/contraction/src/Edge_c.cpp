@@ -1,6 +1,11 @@
 #include "./Edge_c.h"
 
-
+/*
+Indicates whether an edge is deleted or not.
+Returns:
+true : the edge is logically deleted
+false : otherwise
+*/
 bool Edge_c::isDeleted() const {
     return deleted;
 }
@@ -16,18 +21,20 @@ void Edge_c::set_edge_type(Edge_type etype) {
     type = etype;
 }
 
-int Edge_c::get_edge_type() const {
-    return static_cast<int>(type);
+std::string Edge_c::type_str() const {
+    switch (type()) {
+        case ordinary:
+            return "Ordinary Edge";
+        case shortcut:
+            return "Shortcut Edge";
+    }
 }
 
-Vertex_set Edge_c::get_removedVertices() const {
-    return removed_vertices.get_vertexSet();
-}
 
 std::ostringstream& operator <<(std::ostringstream& os, const Edge_c& e) {
-    os << "{ id: " << e.id << ", type: " << static_cast<int>(e.type);
+    os << "{ id: " << e.id << ", type: " << e.get_edge_type();
     os << " removed_vertices: {";
-    for (auto removed_vertex : e.get_removedVertices()) {
+    for (auto removed_vertex : e.removed_vertices.ids()) {
         os << removed_vertex << ", ";
     }
     os << "} }";

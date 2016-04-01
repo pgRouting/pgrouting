@@ -47,7 +47,7 @@ extern "C" {
 }
 
 #include "./../../common/src/memory_func.hpp"
-#define DEBUG 1 
+#define DEBUG 1
 #include "./../../common/src/debug_macro.h"
 
 
@@ -76,34 +76,27 @@ do_pgr_contractGraph(
         std::ostringstream psuedoEdges;
         std::ostringstream dmap;
         std::ostringstream debug;
-
-        
-
         graphType gType = directed? DIRECTED: UNDIRECTED;
         const int initial_size = total_tuples;
-        //Contraction_type contraction_type_count = Contraction_type::last;
+        // Contraction_type contraction_type_count = Contraction_type::last;
         log << "size_contraction_order " << size_contraction_order << "\n";
-        //log << "greatest contraction type " << static_cast<int>(contraction_type_count) << "\n";
+        // log << "greatest contraction type " << static_cast<int>(contraction_type_count) << "\n";
         log << "contraction_order\n" <<   " { \n";
-        for (size_t i = 0; i < size_contraction_order; ++i)
-        {
+        for (size_t i = 0; i < size_contraction_order; ++i) {
             log << contraction_order[i] << ", ";
-            //pgassert((contraction_order[i] >=0) && (contraction_order[i] < static_cast<int>(contraction_type_count)));
-            if (!is_valid_contraction_number(contraction_order[i]))
-            {
+            // pgassert((contraction_order[i] >=0) && (contraction_order[i] < static_cast<int>(contraction_type_count)));
+            if (!is_valid_contraction_number(contraction_order[i])) {
                 log << "Error: Enter a valid Contraction Type\n";
                 (*return_tuples) = NULL;
                 (*return_count) = 0;
                 *err_msg = strdup(log.str().c_str());
                 return;
             }
-
             log << "\n";
         }
         log << " }\n";
         log << "max_cycles " << max_cycles << "\n";
         log << "directed " << directed << "\n";
-
         log << "gType " << gType << "\n";
         log << "total_tuples " << initial_size << "\n";
         if (total_tuples == 1) {
@@ -113,8 +106,7 @@ do_pgr_contractGraph(
             *err_msg = strdup(log.str().c_str());
             return;
         }
-        if (max_cycles<1)
-        {
+        if (max_cycles < 1) {
             log << "Required: atleast one cycle\n";
             (*return_tuples) = NULL;
             (*return_count) = 0;
@@ -122,7 +114,6 @@ do_pgr_contractGraph(
             return;
         }
         if (directed) {
-           
             log << "Working with directed Graph\n";
             #if 1
             Pgr_contractionGraph< CDirectedGraph > digraph(gType, initial_size);
@@ -138,16 +129,13 @@ do_pgr_contractGraph(
             /*
             Function call to get the contracted graph
             */
-            
-            pgr_contractGraph(digraph,contraction_order,
-                size_contraction_order,max_cycles,
-                contracted_graph_name,contracted_graph_blob,removedEdges,
-                removedVertices,psuedoEdges,debug);
+            pgr_contractGraph(digraph, contraction_order,
+                size_contraction_order, max_cycles,
+                contracted_graph_name, contracted_graph_blob, removedEdges,
+                removedVertices, psuedoEdges, debug);
             log << debug.str().c_str() << "\n";
-
             #endif
         } else {
-
             log << "Working with Undirected Graph\n";
             #if 1
             Pgr_contractionGraph< CUndirectedGraph > undigraph(gType, initial_size);
@@ -155,14 +143,14 @@ do_pgr_contractGraph(
 
 #ifdef DEBUG
             log << undigraph;
-            //undigraph.print_graph_c(log);
+            // undigraph.print_graph_c(log);
 #endif
 #if 1
             /* Function call to get the contracted graph. */
-            pgr_contractGraph(undigraph,contraction_order,
-                    size_contraction_order,max_cycles,
+            pgr_contractGraph(undigraph, contraction_order,
+                    size_contraction_order, max_cycles,
                     contracted_graph_name, contracted_graph_blob, removedEdges,
-                    removedVertices, psuedoEdges,debug);
+                    removedVertices, psuedoEdges, debug);
             log << debug.str().c_str() << "\n";
 #endif
             #endif

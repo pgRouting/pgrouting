@@ -2,16 +2,12 @@
 
 
 bool Removed_vertices::isDisjoint(VID id) const {
-    return (removed_vertices.find(id) == removed_vertices.end());
+    return (removed_vertices.isDisjoint(id));
 }
 
 
 bool Removed_vertices::isDisjoint(Removed_vertices vertices) const {
-    for (auto vertex : removed_vertices) {
-        if (!isDisjoint(vertex)) {
-            return false;
-        }
-    }
+    return removed_vertices.isDisjoint(vertices.get_vertexSet());
 }
 
 void Removed_vertices::vertexUnion(VID id) {
@@ -19,11 +15,15 @@ void Removed_vertices::vertexUnion(VID id) {
 }
 
 void Removed_vertices::vertexUnion(Removed_vertices vertices) {
-    removed_vertices.insert(vertices.get_vertexSet().begin(), vertices.get_vertexSet().end());
+    removed_vertices.insert(vertices.get_identifiers());
 }
 
 
-Vertex_set Removed_vertices::get_vertexSet() const {
+const std::set<VID>& Removed_vertices::ids() const {
+    return removed_vertices.ids();
+}
+
+const Identifiers<VID>& get_identifiers() const {
     return removed_vertices;
 }
 

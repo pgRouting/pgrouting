@@ -2,14 +2,15 @@
 #include <iostream>
 #include <string>
 #include "./contraction_structs.hpp"
+#include "Identifiers.hpp"
 class Removed_vertices {
  private:
-    Vertex_set removed_vertices;
-
+    Identifiers<VID> removed_vertices;
  public:
     bool isDisjoint(VID id) const;
     bool isDisjoint(Removed_vertices vertices) const;
     void vertexUnion(VID id);
     void vertexUnion(Removed_vertices vertices);
-    Vertex_set get_vertexSet() const;
+    const Identifiers<VID>& get_identifiers() const;
+    const std::set<VID>& ids() const;
 };
