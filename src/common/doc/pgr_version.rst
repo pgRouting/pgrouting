@@ -57,10 +57,11 @@ Examples
 
     SELECT pgr_version();
 
-                         pgr_version                      
-    ------------------------------------------------------
-     (2.0.0-dev,v2.0dev,290,c64bcb9,sew-devel-2_0,1.49.0)
+                      pgr_version                  
+    -----------------------------------------------
+     (2.2.0,pgrouting-2.2.0,9fd33c5,master,1.54.0)
     (1 row)
+
 
 
 * Query for ``version`` and ``boost`` attribute
@@ -71,7 +72,7 @@ Examples
 
       version  | boost  
     -----------+--------
-     2.0.0-dev | 1.49.0
+     2.2.0-dev | 1.49.0
     (1 row)
 
 
