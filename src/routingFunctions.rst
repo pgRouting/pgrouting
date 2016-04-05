@@ -30,6 +30,7 @@ Routing Functions
 
     - :ref:`pgr_dijkstra` - Dijkstra's shortest path algorithm.
     - :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to calculate the costs of the shortest paths.
+    - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices.
         
   - :ref:`Driving Distance<drivingDistance>` - Driving Distance
 
@@ -43,6 +44,14 @@ Routing Functions
   - :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
   - :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
   - :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
+
+
+  - :ref:`pgr_withPoints<withPoints>` - withPoints family functions
+
+    - :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
+    - :ref:`pgr_withPointsCost` - Costs of the shortest paths.
+    - :ref:`pgr_withPointsKSP<pgr_withPointsKSP>` - K shortest paths with points.
+    - :ref:`pgr_withPointsDD<pgr_withPointsDD>` - Driving distance.
 
 ..
     to-here
@@ -59,5 +68,6 @@ Routing Functions
 	ksp/doc/pgr_ksp
 	tsp/doc/pgr_tsp
 	trsp/doc/pgr_trsp
+    withPoints/doc/withPoints
 
 
