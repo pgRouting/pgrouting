@@ -260,7 +260,7 @@ $(document).ready(function(){initNavTree('baseGraph_8hpp_source.html','');});
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
 <div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="classPgr__base__graph.html#a41fe11a50a99b89530545c9b52978132">  231</a></span>&#160;     <span class="keyword">explicit</span> <a class="code" href="classPgr__base__graph.html">Pgr_base_graph&lt; G &gt;</a>(graphType gtype, <span class="keyword">const</span> <span class="keywordtype">size_t</span> initial_size)</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;         : <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>(initial_size),</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;         : <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>(1),</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;         <a class="code" href="classPgr__base__graph.html#a1cafcc4815b079ae6cb30afe603a151b">m_num_vertices</a>(0),</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;         <a class="code" href="classPgr__base__graph.html#aa79ffcc8e5351b694a316a0ca0123841">m_gType</a>(gtype)</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    {}</div>
@@ -503,49 +503,50 @@ $(document).ready(function(){initNavTree('baseGraph_8hpp_source.html','');});
 <div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;                 <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>[e].id = edge.id;</div>
 <div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;                 <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>[e].first = edge.first;</div>
 <div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;             }</div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;         }</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;     <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;         graph_add_edge(<span class="keyword">const</span> <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> &amp;edge ) {</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;             <span class="keywordtype">bool</span> inserted;</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;             LI vm_s, vm_t;</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;             E e;</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;             vm_s = <a class="code" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">vertices_map</a>.find(edge.source);</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;             <span class="keywordflow">if</span> (vm_s == <a class="code" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">vertices_map</a>.end()) {</div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;                 <a class="code" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">vertices_map</a>[edge.source]=  <a class="code" href="classPgr__base__graph.html#a1cafcc4815b079ae6cb30afe603a151b">m_num_vertices</a>;</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;                 <a class="code" href="classPgr__base__graph.html#aac991732287b3fc12174efc31683c3f7">gVertices_map</a>[<a class="code" href="classPgr__base__graph.html#a1cafcc4815b079ae6cb30afe603a151b">m_num_vertices</a>++] = edge.source;</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;                 vm_s = <a class="code" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">vertices_map</a>.find(edge.source);</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;             }</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;</div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;             vm_t = <a class="code" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">vertices_map</a>.find(edge.target);</div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;             <span class="keywordflow">if</span> (vm_t == <a class="code" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">vertices_map</a>.end()) {</div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;                 <a class="code" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">vertices_map</a>[edge.target]=  <a class="code" href="classPgr__base__graph.html#a1cafcc4815b079ae6cb30afe603a151b">m_num_vertices</a>;</div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;                 <a class="code" href="classPgr__base__graph.html#aac991732287b3fc12174efc31683c3f7">gVertices_map</a>[<a class="code" href="classPgr__base__graph.html#a1cafcc4815b079ae6cb30afe603a151b">m_num_vertices</a>++] = edge.target;</div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;                 vm_t = <a class="code" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">vertices_map</a>.find(edge.target);</div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;             }</div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;</div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;             <span class="keywordflow">if</span> (edge.cost &gt;= 0) {</div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;                 boost::tie(e, inserted) =</div>
-<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;                     boost::add_edge(vm_s-&gt;second, vm_t-&gt;second, <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>);</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;                 <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>[e].cost = edge.cost;</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;                 <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>[e].id = edge.id;</div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;                 <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>[e].first = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;             }</div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;             <span class="keywordflow">if</span> (edge.reverse_cost &gt;= 0) {</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;                 boost::tie(e, inserted) =</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;                     boost::add_edge(vm_t-&gt;second, vm_s-&gt;second, <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>);</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;                 <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>[e].cost = edge.reverse_cost;</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;                 <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>[e].id = edge.id;</div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;                 <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>[e].first = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;             }</div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;         }</div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;};</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;         }</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;     <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;         graph_add_edge(<span class="keyword">const</span> <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> &amp;edge ) {</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;             <span class="keywordtype">bool</span> inserted;</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;             LI vm_s, vm_t;</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;             E e;</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;             <span class="keywordflow">if</span> ((edge.cost &lt; 0) &amp;&amp; (edge.reverse_cost &lt; 0))</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;                 <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;             vm_s = <a class="code" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">vertices_map</a>.find(edge.source);</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;             <span class="keywordflow">if</span> (vm_s == <a class="code" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">vertices_map</a>.end()) {</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;                 <a class="code" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">vertices_map</a>[edge.source]=  <a class="code" href="classPgr__base__graph.html#a1cafcc4815b079ae6cb30afe603a151b">m_num_vertices</a>;</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;                 <a class="code" href="classPgr__base__graph.html#aac991732287b3fc12174efc31683c3f7">gVertices_map</a>[<a class="code" href="classPgr__base__graph.html#a1cafcc4815b079ae6cb30afe603a151b">m_num_vertices</a>++] = edge.source;</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;                 vm_s = <a class="code" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">vertices_map</a>.find(edge.source);</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;             }</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;             vm_t = <a class="code" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">vertices_map</a>.find(edge.target);</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;             <span class="keywordflow">if</span> (vm_t == <a class="code" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">vertices_map</a>.end()) {</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;                 <a class="code" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">vertices_map</a>[edge.target]=  <a class="code" href="classPgr__base__graph.html#a1cafcc4815b079ae6cb30afe603a151b">m_num_vertices</a>;</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;                 <a class="code" href="classPgr__base__graph.html#aac991732287b3fc12174efc31683c3f7">gVertices_map</a>[<a class="code" href="classPgr__base__graph.html#a1cafcc4815b079ae6cb30afe603a151b">m_num_vertices</a>++] = edge.target;</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                 vm_t = <a class="code" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">vertices_map</a>.find(edge.target);</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;             }</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;             <span class="keywordflow">if</span> (edge.cost &gt;= 0) {</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;                 boost::tie(e, inserted) =</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;                     boost::add_edge(vm_s-&gt;second, vm_t-&gt;second, <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>);</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;                 <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>[e].cost = edge.cost;</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;                 <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>[e].id = edge.id;</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;                 <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>[e].first = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;             }</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;             <span class="keywordflow">if</span> (edge.reverse_cost &gt;= 0) {</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;                 boost::tie(e, inserted) =</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;                     boost::add_edge(vm_t-&gt;second, vm_s-&gt;second, <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>);</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;                 <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>[e].cost = edge.reverse_cost;</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;                 <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>[e].id = edge.id;</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;                 <a class="code" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">graph</a>[e].first = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;             }</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;         }</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;};</div>
 <div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;<span class="preprocessor">#endif  // SRC_COMMON_SRC_BASE_GRAPH_HPP_</span></div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;<span class="preprocessor">#endif  // SRC_COMMON_SRC_BASE_GRAPH_HPP_</span></div>
 <div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00090">pgr_types.h:90</a></div></div>
 <div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha_8h_source.html#l00033">alpha.h:33</a></div></div>
 <div class="ttc" id="classPgr__base__graph_html_a1cafcc4815b079ae6cb30afe603a151b"><div class="ttname"><a href="classPgr__base__graph.html#a1cafcc4815b079ae6cb30afe603a151b">Pgr_base_graph::m_num_vertices</a></div><div class="ttdeci">size_t m_num_vertices</div><div class="ttdoc">number of vertices </div><div class="ttdef"><b>Definition:</b> <a href="baseGraph_8hpp_source.html#l00138">baseGraph.hpp:138</a></div></div>
@@ -571,7 +572,7 @@ $(document).ready(function(){initNavTree('baseGraph_8hpp_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><b>baseGraph.hpp</b></li>
-    <li class="footer">Generated on Thu Mar 3 2016 15:45:47 for pgRouting by
+    <li class="footer">Generated on Tue Apr 5 2016 13:14:46 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

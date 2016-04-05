@@ -30,7 +30,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"structPickup.html"
+"structPgr__allpairs_1_1inf__plus.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

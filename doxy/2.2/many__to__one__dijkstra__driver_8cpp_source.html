@@ -180,57 +180,58 @@ $(document).ready(function(){initNavTree('many__to__one__dijkstra__driver_8cpp_s
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        std::deque&lt; Path &gt;paths;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Inserting vertices into a c++ vector structure\n&quot;</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        std::set&lt; int64_t &gt; start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">if</span> (directed) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Working with directed Graph\n&quot;</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <a class="code" href="classPgr__base__graph.html">Pgr_base_graph&lt; DirectedGraph &gt;</a> digraph(gType, initial_size);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            digraph.graph_insert_data(data_edges, total_tuples);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            pgr_dijkstra(digraph, paths, start_vertices, end_vid, only_cost);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Working with Undirected Graph\n&quot;</span>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <a class="code" href="classPgr__base__graph.html">Pgr_base_graph&lt; UndirectedGraph &gt;</a> undigraph(gType, initial_size);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            undigraph.graph_insert_data(data_edges, total_tuples);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            pgr_dijkstra(undigraph, paths, start_vertices, end_vid, only_cost);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        std::set&lt; int64_t &gt; s_start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        std::vector&lt; int64_t &gt; start_vertices(s_start_vertices.begin(), s_start_vertices.end());</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">if</span> (directed) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Working with directed Graph\n&quot;</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <a class="code" href="classPgr__base__graph.html">Pgr_base_graph&lt; DirectedGraph &gt;</a> digraph(gType, initial_size);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            digraph.graph_insert_data(data_edges, total_tuples);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            pgr_dijkstra(digraph, paths, start_vertices, end_vid, only_cost);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Working with Undirected Graph\n&quot;</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <a class="code" href="classPgr__base__graph.html">Pgr_base_graph&lt; UndirectedGraph &gt;</a> undigraph(gType, initial_size);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            undigraph.graph_insert_data(data_edges, total_tuples);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            pgr_dijkstra(undigraph, paths, start_vertices, end_vid, only_cost);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordtype">size_t</span> count(0);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        count = count_tuples(paths);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordtype">size_t</span> count(0);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        count = count_tuples(paths);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">if</span> (count == 0) {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            (*return_tuples) = NULL;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            (*return_count) = 0;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            log &lt;&lt;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <span class="stringliteral">&quot;No paths found between Starting and any of the Ending vertices\n&quot;</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            *err_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        (*return_tuples) = get_memory(count, (*return_tuples));</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Converting a set of paths into the tuples\n&quot;</span>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        (*return_count) = (collapse_paths(return_tuples, paths));</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">if</span> (count == 0) {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            (*return_tuples) = NULL;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            (*return_count) = 0;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            log &lt;&lt;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <span class="stringliteral">&quot;No paths found between Starting and any of the Ending vertices\n&quot;</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            *err_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        (*return_tuples) = get_memory(count, (*return_tuples));</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Converting a set of paths into the tuples\n&quot;</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        (*return_count) = (collapse_paths(return_tuples, paths));</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#ifndef DEBUG</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor"></span>        *err_msg = strdup(<span class="stringliteral">&quot;OK&quot;</span>);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor"></span>        *err_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    } <span class="keywordflow">catch</span> ( ... ) {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Caught unknown expection!\n&quot;</span>;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#ifndef DEBUG</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor"></span>        *err_msg = strdup(<span class="stringliteral">&quot;OK&quot;</span>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor"></span>        *err_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    } <span class="keywordflow">catch</span> ( ... ) {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Caught unknown expection!\n&quot;</span>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
 <div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00090">pgr_types.h:90</a></div></div>
 <div class="ttc" id="classPgr__base__graph_html"><div class="ttname"><a href="classPgr__base__graph.html">Pgr_base_graph</a></div><div class="ttdef"><b>Definition:</b> <a href="baseGraph_8hpp_source.html#l00093">baseGraph.hpp:93</a></div></div>
 <div class="ttc" id="structGeneral__path__element__t_html"><div class="ttname"><a href="structGeneral__path__element__t.html">General_path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00065">pgr_types.h:65</a></div></div>
@@ -240,7 +241,7 @@ $(document).ready(function(){initNavTree('many__to__one__dijkstra__driver_8cpp_s
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_082cc17fcca3afb2d43283795abba117.html">dijkstra</a></li><li class="navelem"><a class="el" href="dir_2a52a6a5123eeb3ef09f6d5b6e1e597e.html">src</a></li><li class="navelem"><b>many_to_one_dijkstra_driver.cpp</b></li>
-    <li class="footer">Generated on Thu Mar 3 2016 15:45:48 for pgRouting by
+    <li class="footer">Generated on Tue Apr 5 2016 13:14:47 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
