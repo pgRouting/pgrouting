@@ -27,7 +27,6 @@ branches:
   only:
     - master
     - develop
-    - dev-2.2
 
 env:
   - POSTGRESQL_VERSION=9.1

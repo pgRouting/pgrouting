@@ -4,9 +4,9 @@
 
 ## STATUS
 
-### Current Development is in the *dev-2.2* branch
+### Current Development is in the *develop* branch
 
-The *master* branch reflects our current 2.1.0 release.
+The *master* branch reflects the current 2.2.0 release.
 
 
 
@@ -25,7 +25,6 @@ The *master* branch reflects our current 2.1.0 release.
 	<tr>
 		<td>master</td>
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=master" alt="Build Status"/></td>
-		<td>not enabled</td>
 	</tr>
 	<tr>
 		<td>develop</td>
@@ -51,12 +50,27 @@ This library contains following features:
 * Shortest Path A*
 * Bi-directional Dijkstra Shortest Path
 * Bi-directional A* Shortest Path
-* Shortest Path Dijkstra
+* Shortest Path Dijkstra Family of functions
+* Shortest Path Dijkstra Cost Family of functions
 * Driving Distance
-* K-Shortest Path, Multiple Alternative Paths
-* K-Dijkstra, One to Many Shortest Path
+* K-Shortest Path, Multiple Alternative Paths (Yen's algorithm)
 * Traveling Sales Person
 * Turn Restriction Shortest Path (TRSP)
+
+Additionaly, ready for testing and to be part of 2.3 official version:
+
+* Shortest Path Dijkstra With Points Family of functions
+* Shortest Path Dijkstra Cost With Points Family of functions
+* Driving Distance With Points
+* K-Shortest Path With Points, Multiple Alternative Paths (Yen's algorithm)
+* Dijkstra Via vertices
+
+Family of functions include:
+
+* one to one
+* one to many
+* many to one
+* many to many
 
 
 ## REQUIREMENTS
@@ -101,12 +115,12 @@ Build with documentation (requires [Sphinx](http://sphinx-doc.org/))
 Postgresql 9.1+
 
 	createdb mydatabase
-	psql mydatabase -c "create extension postgis"
-	psql mydatabase -c "create extension pgrouting"
+	psql mydatabase -c "CREATE EXTENSION postgis"
+	psql mydatabase -c "CREATE EXTENSION pgrouting"
 
 ## USAGE
 
-See online documentation: http://docs.pgrouting.org/dev/doc/index.html
+See online documentation: http://docs.pgrouting.org/en/2.2/doc/index.html
 
 
 ## LICENSE
