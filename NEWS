@@ -1,4 +1,35 @@
 
+Changes for 2.2.0
+-------------------------------------------------------------------------------
+
+  - Improved:
+    - pgr_nodeNetwork
+      - Adding a row_where and outall optional parameters
+
+  - Signature fix
+    - pgr_dijkstra  -- to match what was documented (the pgr_dijkstra from V2.0)
+
+  - New functions
+    - pgr_floydWarshall
+    - pgr_Johnson
+    - pgr_DijkstraCost
+
+  - New Proposed functions
+    - pgr_withPoints
+    - pgr_withPointsCost
+    - pgr_withPointsDD
+    - pgr_withPointsKSP
+    - pgr_dijkstraVia
+
+
+  - Deprecated functions:
+    - pgr_apspWarshall  use pgr_floydWarshall instead
+    - pgr_apspJohnson   use pgr_Johnson instead
+    - pgr_kDijkstraCost use pgr_dijkstraCost instead
+    - pgr_kDijkstraPath use pgr_dijkstra instead
+
+
+
 Changes for 2.1.0
 -------------------------------------------------------------------------------
 

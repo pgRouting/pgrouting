@@ -18,98 +18,70 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 .. rubric:: Create table
 
-.. code-block:: sql
-
-	CREATE TABLE edge_table (
-	    id serial,
-	    dir character varying,
-	    source integer,
-	    target integer,
-	    cost double precision,
-	    reverse_cost double precision,
-	    x1 double precision,
-	    y1 double precision,
-	    x2 double precision,
-	    y2 double precision,
-	    the_geom geometry
-	);
+.. literalinclude:: ../../../tools/testers/sampledata.sql
+   :start-after: --EDGE TABLE CREATE
+   :end-before: --EDGE TABLE ADD DATA
 
 
+.. rubric:: Insert data
 
-.. rubric:: Insert network data
-
-.. code-block:: sql
-
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,0,   2,1);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES (-1, 1,  2,1,   3,1);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES (-1, 1,  3,1,   4,1);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,1,   2,2);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1,-1,  3,1,   3,2);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  0,2,   1,2);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  1,2,   2,2);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,2,   3,2);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  3,2,   4,2);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,2,   2,3);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1,-1,  3,2,   3,3);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1,-1,  2,3,   3,3);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1,-1,  3,3,   4,3);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,3,   2,4);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  4,2,   4,3);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  4,1,   4,2);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  0.5,3.5,  1.999999999999,3.5);
-        INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  3.5,2.3,  3.5,4);
-
-
-        UPDATE edge_table SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2)),
-                              dir = CASE WHEN (cost>0 and reverse_cost>0) THEN 'B'   -- both ways
-                                         WHEN (cost>0 and reverse_cost<0) THEN 'FT'  -- direction of the LINESSTRING
-                                         WHEN (cost<0 and reverse_cost>0) THEN 'TF'  -- reverse direction of the LINESTRING
-                                         ELSE '' END;                                -- unknown
+.. literalinclude:: ../../../tools/testers/sampledata.sql
+   :start-after: --EDGE TABLE ADD DATA
+   :end-before: --EDGE TABLE TOPOLOGY
 
 
 Before you test a routing function use this query to fill the source and target columns.
 
-.. code-block:: sql
+.. literalinclude:: ../../../tools/testers/sampledata.sql
+   :start-after: --EDGE TABLE TOPOLOGY
+   :end-before: --POINTS CREATE
 
-    SELECT pgr_createTopology('edge_table',0.001);
+.. rubric:: Points of interest
+
+When points outside of the graph
+
+.. literalinclude:: ../../../tools/testers/sampledata.sql
+   :start-after: --POINTS CREATE
+   :end-before: --RESTRICTIONS CREATE
+
+.. rubric:: Restrictions
+
+.. literalinclude:: ../../../tools/testers/sampledata.sql
+   :start-after: --RESTRICTIONS CREATE
+   :end-before: --RESTRICTIONS END
 
 
-This table is used in some of our examples
+Images
+------
 
-.. code-block:: sql
+* Red arrows correspond when ``cost`` > 0 in the edge table.
+* Blue arrows correspond when ``reverse_cost`` > 0 in the edge table.
+* Points are outside the graph.
+* Click on the graph to enlarge.
 
-	CREATE TABLE vertex_table (
-	    id serial,
-	    x double precision,
-	    y double precision
-	);
-
-.. code-block:: sql
-
-	INSERT INTO vertex_table VALUES
-		(1,2,0), (2,2,1), (3,3,1), (4,4,1), (5,0,2), (6,1,2), (7,2,2),
-		(8,3,2), (9,4,2), (10,2,3), (11,3,3), (12,4,3), (13,2,4);
-
+.. note:: On all graphs, 
 
 .. rubric:: Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost`` columns are used:
 
+When working with city networks, this is recommended for point of view of vehicles.
+
 .. _fig1:
 
-.. figure:: ../../../src/common/doc/functions/images/Fig1-originalData.png
+.. figure:: images/Fig1-originalData.png
 
-    *Graph 1: Directed, with cost and reverse cost*
-
-Blue colored lines with line arrows, represent the ``cost`` of the edge table.
-Green colored lines with filled arrows, represent the ``reverse_cost`` of the edge table.
+   **Graph 1: Directed, with cost and reverse cost**
 
 
 .. rubric:: Network for queries marked as ``undirected`` and ``cost`` and ``reverse_cost`` columns are used:
 
+When working with city networks, this is recommended for point of view of pedestrians.
+
 .. _fig2:
 
-.. figure:: ../../../src/common/doc/functions/images/Fig6-undirected.png
+.. figure:: images/Fig6-undirected.png
+   :scale: 50%
 
-    *Graph 2: Undirected, with cost and reverse cost*
+   **Graph 2: Undirected, with cost and reverse cost**
 
 
 .. rubric:: Network for queries marked as ``directed`` and only ``cost`` column is used:
@@ -117,17 +89,19 @@ Green colored lines with filled arrows, represent the ``reverse_cost`` of the ed
 .. _fig3:
 
 
-.. figure:: ../../../src/common/doc/functions/images/Fig2-cost.png
+.. figure:: images/Fig2-cost.png
+   :scale: 20%
 
-    *Graph 3: Directed, with cost*
+   **Graph 3: Directed, with cost**
 
 
 .. rubric:: Network for queries marked as ``undirected`` and only ``cost`` column is used:
 
 .. _fig4:
 
-.. figure:: ../../../src/common/doc/functions/images/Fig4-costUndirected.png
-
-    *Graph 4: Undirected, with cost*
+.. figure:: images/Fig4-costUndirected.png
+   :scale: 20%
+   
+   **Graph 4: Undirected, with cost**
 
 

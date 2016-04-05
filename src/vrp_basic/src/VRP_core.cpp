@@ -1,7 +1,9 @@
-/*PGR
+/*PGR-GNU*****************************************************************
 
 Copyright (c) 2013 Khondoker Md. Razequl Islam
 ziboncsedu@gmail.com
+
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,7 +19,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-*/
+********************************************************************PGR-GNU*/
 
 #ifdef __MINGW32__
 #include <winsock2.h>
@@ -142,22 +144,22 @@ void loadDistanceMatrix(vrp_cost_element_t *costmatrix, int cost_count, int depo
 }
 
 
-int find_vrp_solution(vrp_vehicles_t *vehicles, int vehicle_count,
-					  vrp_orders_t *orders, int order_count,
-					  vrp_cost_element_t *costmatrix, int cost_count,
+int find_vrp_solution(vrp_vehicles_t *vehicles, size_t vehicle_count,
+					  vrp_orders_t *orders, size_t order_count,
+					  vrp_cost_element_t *costmatrix, size_t cost_count,
 					  int depot_id,
-					  vrp_result_element_t **results, int *result_count, char **err_msg)
+					  vrp_result_element_t **results, size_t *result_count, char **err_msg)
 {
 	int res;
 	
 	std::string strError;
 	try {
 		PGR_LOG("Before load order");
-		loadOrders(orders, order_count, depot_id);
+		loadOrders(orders, static_cast<int>(order_count), depot_id);
 		PGR_LOG("After load order");
-		loadVehicles(vehicles, vehicle_count);
+		loadVehicles(vehicles, static_cast<int>(vehicle_count));
 		PGR_LOG("After load vehicles");
-		loadDistanceMatrix(costmatrix, cost_count, depot_id);
+		loadDistanceMatrix(costmatrix, static_cast<int>(cost_count), depot_id);
 		PGR_LOG("After load distance matrix");
 		res = solver.solveVRP(strError);
 		PGR_LOG("After VRP Solve");
@@ -182,21 +184,20 @@ int find_vrp_solution(vrp_vehicles_t *vehicles, int vehicle_count,
 		CTourInfo ctour;
 		// bool bOK =
                 solver.getSolution(solution, strError);
-		int totalRoute = solution.getTourInfoVector().size();
-		int totRows = 0;
-		int i;
-		for(i = 0; i < totalRoute; i++)
+		auto totalRoute = solution.getTourInfoVector().size();
+		size_t totRows = 0;
+		for(size_t i = 0; i < totalRoute; i++)
 		{
-			totRows += (solution.getTour(i).getServedOrderCount() + 2);
+			totRows += (solution.getTour(static_cast<int>(i)).getServedOrderCount() + 2);
 		}
 		*results = (vrp_result_element_t *) malloc(totRows * sizeof(vrp_result_element_t));
 		*result_count = totRows;
 		int cnt = 0;
-		for(int i = 0; i < totalRoute; i++)
+		for(size_t i = 0; i < totalRoute; i++)
 		{
-			ctour = solution.getTour(i);
+			ctour = solution.getTour(static_cast<int>(i));
 			std::vector<int> vecOrder = ctour.getOrderVector();
-			int totalOrder = vecOrder.size();
+			auto totalOrder = vecOrder.size();
 
 			// For start depot
 			(*results)[cnt].order_id = ctour.getStartDepot();
@@ -207,21 +208,21 @@ int find_vrp_solution(vrp_vehicles_t *vehicles, int vehicle_count,
 			cnt++;
 			
 			// For each order
-			for(int j = 0; j < totalOrder; j++)
+			for(size_t j = 0; j < totalOrder; j++)
 			{
 				(*results)[cnt].order_id = vecOrder[j];
-				(*results)[cnt].order_pos = j + 1;
+				(*results)[cnt].order_pos = static_cast<int>(j) + 1;
 				(*results)[cnt].vehicle_id = ctour.getVehicleId();
-				(*results)[cnt].depart_time = ctour.getStartTime(j + 1);
-				(*results)[cnt].arrival_time = ctour.getStartTime(j + 1) - solver.getServiceTime(vecOrder[j]);
+				(*results)[cnt].depart_time = ctour.getStartTime(static_cast<int>(j) + 1);
+				(*results)[cnt].arrival_time = ctour.getStartTime(static_cast<int>(j) + 1) - solver.getServiceTime(vecOrder[j]);
 				cnt++;
 			}
 			
 			// For return depot
 			(*results)[cnt].order_id = ctour.getEndDepot();
-			(*results)[cnt].order_pos = totalOrder + 1;
+			(*results)[cnt].order_pos = static_cast<int>(totalOrder) + 1;
 			(*results)[cnt].vehicle_id = ctour.getVehicleId();
-			(*results)[cnt].arrival_time = ctour.getStartTime(totalOrder + 1);
+			(*results)[cnt].arrival_time = ctour.getStartTime(static_cast<int>(totalOrder) + 1);
 			(*results)[cnt].depart_time = -1;
 			cnt++;
 		}
