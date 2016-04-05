@@ -57,7 +57,7 @@ Examples
 
     SELECT pgr_version();
 
-                      pgr_version                  
+                      pgr_version
     -----------------------------------------------
      (2.2.0,pgrouting-2.2.0,9fd33c5,master,1.54.0)
     (1 row)
