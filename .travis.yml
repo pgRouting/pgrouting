@@ -7,10 +7,10 @@
 
 #choose precise or trusty
 
-group: edge
-dist: trusty    
+#group: edge
+#3dist: trusty    
 
-#dist: precise
+dist: precise
 
 sudo: required
 
