@@ -38,8 +38,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./structs.h"
 
 
-#include "./Vertex_c.h"
-#include "./Edge_c.h"
+#include "./vertex.h"
+#include "./edge.h"
+#include "./contraction_type.hpp"
 /*! \brief boost::graph simplified to pgRouting needs
 
   This class gives the handling basics of a boost::graph of kind G
@@ -431,7 +432,7 @@ class Pgr_contractionGraph {
                      out != out_end; ++out) {
                  log << ' ' << graph[*out].id << "=(" << graph[source(*out, graph)].id
                      << ", " << graph[target(*out, graph)].id << ") = "
-                     <<  graph[*out].cost <<"\t";
+                     <<  graph[*out].cost <<'\t';
              }
              log << std::endl;
          }
@@ -634,7 +635,8 @@ class Pgr_contractionGraph {
                     graph[e].cost = edge.cost;
                     graph[e].id = edge.id;
                     //graph[e].first = edge.first;
-                    graph[e].type = 0;
+                    //graph[e].type = 0;
+                    //graph[e].set_edge_type(Edge_c::Edge_type::ordinary);
                 }
             }
 
@@ -664,16 +666,16 @@ class Pgr_contractionGraph {
                     graph[e].cost = edge.cost;
                     graph[e].id = edge.id;
                     //graph[e].first = true;
-                    graph[e].type = 0;
+                    //graph[e].set_edge_type(Edge_c::Edge_type::ordinary);
                 }
 
-                if (edge.reverse_cost >= 0) {
+                if (edge.reverse_cost > 0) {
                     boost::tie(e, inserted) =
                         boost::add_edge(vm_t->second, vm_s->second, graph);
                     graph[e].cost = edge.reverse_cost;
                     graph[e].id = edge.id;
                     //graph[e].first = false;
-                    graph[e].type = 0;
+                    //graph[e].set_edge_type(Edge_c::Edge_type::ordinary);
                 }
             }
 
@@ -734,7 +736,7 @@ class Pgr_contractionGraph {
         void disconnect_edge_c(int64_t p_from, int64_t p_to) {
             V g_from;
             V g_to;
-            Edge d_edge;
+            Edge_c d_edge;
             // nothing to do, the vertex doesnt exist
             if (!get_gVertex(p_from, g_from)) return;
             if (!get_gVertex(p_to, g_to)) return;
@@ -744,10 +746,10 @@ class Pgr_contractionGraph {
                     out != out_end; ++out) {
                 if (target(*out, graph) == g_to) {
                     d_edge.id = graph[*out].id;
-                    d_edge.source = graph[source(*out, graph)].id;
-                    d_edge.target = graph[target(*out, graph)].id;
+                    //d_edge.source = graph[source(*out, graph)].id;
+                    //d_edge.target = graph[target(*out, graph)].id;
                     d_edge.cost = graph[*out].cost;
-                    d_edge.type = graph[*out].type;
+                    d_edge.set_edge_type(graph[*out].type());
                     //        d_edge.reverse_cost = -1;
                     removed_edges_c[d_edge.id] = (d_edge);
                 }
@@ -767,7 +769,7 @@ class Pgr_contractionGraph {
        */
         void disconnect_out_going_edge_c(int64_t vertex_id, int64_t edge_id) {
             V v_from;
-            Edge d_edge;
+            Edge_c d_edge;
 
             // nothing to do, the vertex doesnt exist
             if (!get_gVertex(vertex_id, v_from)) {
@@ -783,10 +785,10 @@ class Pgr_contractionGraph {
                         out != out_end; ++out) {
                     if (graph[*out].id  == edge_id) {
                         d_edge.id = graph[*out].id;
-                        d_edge.source = graph[source(*out, graph)].id;
-                        d_edge.target = graph[target(*out, graph)].id;
+                        //d_edge.source = graph[source(*out, graph)].id;
+                        //d_edge.target = graph[target(*out, graph)].id;
                         d_edge.cost = graph[*out].cost;
-                        d_edge.type = graph[*out].type;
+                        d_edge.set_edge_type(graph[*out].type());
                         //        d_edge.reverse_cost = -1;
                         removed_edges_c[d_edge.id] = (d_edge);
                         boost::remove_edge((*out), graph);
@@ -813,7 +815,7 @@ class Pgr_contractionGraph {
        */
         void disconnect_vertex_c(int64_t p_vertex) {
             V g_vertex;
-            Edge d_edge;
+            Edge_c d_edge;
             // nothing to do, the vertex doesnt exist
             if (!get_gVertex(p_vertex, g_vertex)) return;
             EO_i out, out_end;
@@ -821,10 +823,10 @@ class Pgr_contractionGraph {
             for (boost::tie(out, out_end) = out_edges(g_vertex, graph);
                     out != out_end; ++out) {
                 d_edge.id = graph[*out].id;
-                d_edge.source = graph[source(*out, graph)].id;
-                d_edge.target = graph[target(*out, graph)].id;
+                //d_edge.source = graph[source(*out, graph)].id;
+                //d_edge.target = graph[target(*out, graph)].id;
                 d_edge.cost = graph[*out].cost;
-                d_edge.type = graph[*out].type;
+                d_edge.set_edge_type(graph[*out].type());
                 //        d_edge.reverse_cost = -1;
                 removed_edges_c[d_edge.id] = (d_edge);
             }
@@ -835,10 +837,10 @@ class Pgr_contractionGraph {
                 for (boost::tie(in, in_end) = in_edges(g_vertex, graph);
                         in != in_end; ++in) {
                     d_edge.id = graph[*in].id;
-                    d_edge.source = graph[source(*in, graph)].id;
-                    d_edge.target = graph[target(*in, graph)].id;
+                    //d_edge.source = graph[source(*in, graph)].id;
+                    //d_edge.target = graph[target(*in, graph)].id;
                     d_edge.cost = graph[*in].cost;
-                    d_edge.type = graph[*out].type;
+                    d_edge.set_edge_type(graph[*out].type());
                     //        d_edge.reverse_cost = -1;
                     removed_edges_c[d_edge.id]=(d_edge);
                 }
@@ -882,12 +884,14 @@ std::ostringstream& operator<<(std::ostringstream& debug, const Pgr_contractionG
 
     for (vi = vertices(Graph_c.graph).first; vi != vertices(Graph_c.graph).second; ++vi) {
     if ((*vi) >= Graph_c.m_num_vertices) continue;
-        debug << (*vi) << " out_edges(" << Graph_c.graph[(*vi)].id << "):";
+        debug << "vertex: " ;
+        debug << Graph_c.graph[(*vi) ];
+        debug << " out_edges(" << Graph_c.graph[(*vi)].id << "):";
         for (boost::tie(out, out_end) = out_edges(*vi, Graph_c.graph);
             out != out_end; ++out) {
                 debug << ' ' << Graph_c.graph[*out].id << "=(" << Graph_c.graph[source(*out, Graph_c.graph)].id
-                << ", " << Graph_c.graph[target(*out, Graph_c.graph)].id << ") = "
-                <<  Graph_c.graph[*out].cost <<"\t";
+                << ", " << Graph_c.graph[target(*out, Graph_c.graph)].id << ") = ";
+                debug <<  Graph_c.graph[*out];
              }
              debug << std::endl;
          }

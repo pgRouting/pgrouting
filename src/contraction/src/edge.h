@@ -1,13 +1,10 @@
 #pragma once
-#include <stack>
 #include <iostream>
 #include <sstream>
-#include <deque>
-#include <queue>
 #include <string>
 #include <functional>
 #include "./contraction_structs.hpp"
-
+#include "vertex.h"
 
 class Edge_c {
  public:
@@ -15,15 +12,17 @@ class Edge_c {
         ordinary = 0,
         shortcut,
     };
+    Edge_c() : m_deleted(false),m_type(Edge_type::ordinary) { }
     EID id;
     double cost;
     inline bool isDeleted() const { return m_deleted; }
     inline Edge_type type() const { return m_type; }
-    inline std::string type_str() const;
-    inline void add_contracted_vertex(Vertex_c v);
-    inline void set_edge_type(Edge_type etype);
-    inline void setDeleted();
-    inline const Removed_vertices& removed_vertices() const { m_removed_vertices; }
+    const std::string type_str() const;
+    void add_contracted_vertex(Vertex_c v);
+    inline void set_edge_type(Edge_type etype) { m_type = etype; }
+    inline void delete_edge() { m_deleted = true; }
+    inline void recover() { m_deleted = false; }
+    const Removed_vertices& removed_vertices() const;
     friend std::ostringstream& operator <<(std::ostringstream& os, const Edge_c& e);
  private:
     Edge_type m_type;

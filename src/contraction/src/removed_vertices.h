@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include "./contraction_structs.hpp"
-#include "Identifiers.hpp"
+#include "./identifiers.hpp"
 class Removed_vertices {
  private:
     Identifiers<VID> removed_vertices;

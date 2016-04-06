@@ -6,13 +6,14 @@
 #pragma once
 
 #include <set>
-#include "./Identifiers.hpp"
+#include "./identifiers.hpp"
 
-enum class Contraction_type { 
+
+/*enum class Contraction_type { 
      none = -2,
      last,
      deadEnd
-};
+};*/
 
 
 typedef int64_t VID;

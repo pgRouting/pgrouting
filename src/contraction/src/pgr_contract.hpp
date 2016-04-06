@@ -80,8 +80,9 @@ void pgr_contractGraph(
             }
         }
     }
-    #if 0
     fn_contract.calculateDegrees(graph);
+    //fn_contract.degreeMap(graph, debug);
+    #if 0
     fn_contract.contract_to_level(graph, level);
     fn_contract.getGraphName(contracted_graph_name, level);
     fn_contract.getGraph_string(graph, contracted_graph_blob);
@@ -123,7 +124,7 @@ class Pgr_contract {
         int64_t level);
     #endif
 
-void dead_end_contraction(G &graph);
+    void dead_end_contraction(G &graph);
     #if 0
     void remove_2_degree_vertices(G &graph);
     #endif
@@ -146,7 +147,8 @@ void dead_end_contraction(G &graph);
     typedef typename std::map<V, std::deque<Edge> >::iterator removed_V_i;
     typedef typename std::map<int64_t, std::pair<int64_t, int64_t> > psuedo_E;
     typedef typename std::map<int64_t, std::pair<int64_t, int64_t> >::iterator psuedo_E_i;
-    typedef std::map< int64_t, std::priority_queue<int64_t, std::vector<int64_t>, std::greater<int> > > degree_to_V;
+    typedef std::map< int, std::priority_queue<int64_t, std::vector<int64_t>, std::greater<int64_t> > > degree_to_V;
+    //typedef std::map< int, std::vector<int64_t> > degree_to_V;
     typedef typename std::vector<V>::iterator Q_i;
 private:
     int64_t last_edge_id;
@@ -172,7 +174,8 @@ template < class G >
     // V_i vi;
            for (auto vi = vertices(graph.graph).first; vi != vertices(graph.graph).second; ++vi) {
         // graph.graph[(*vi)].degree=boost::out_degree(*vi,graph.graph);
-              degree_to_V_map[graph.graph[(*vi)].degree].push((*vi).id);
+              int degree = boost::in_degree(*vi,graph.graph);
+              degree_to_V_map[degree].push(graph.graph[(*vi)].id);
           }
       }
 
@@ -205,7 +208,7 @@ Pgr_contract< G >::contract_to_level(G &graph,int64_t level)
 #endif
 
 
-#if 0
+#if 1
  //! \brief Returns the *degree_to_V_map* in string format
 template < class G >
 void
@@ -213,7 +216,7 @@ Pgr_contract< G >::degreeMap(G &graph,std::ostringstream& dmap)
 {
     // cout << "Printing degree_V map" << endl;
     degree_to_V_i it1;
-    dmap << "This is a degree map " ;
+    dmap << "Degree --> Vertices" ;
     Q_i it2;
     for ( it1=degree_to_V_map.begin(); it1!=degree_to_V_map.end(); ++it1)
     {

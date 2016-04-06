@@ -1,4 +1,4 @@
-#include "./removedVertices_c.h"
+#include "./removed_vertices.h"
 
 
 bool Removed_vertices::isDisjoint(VID id) const {
