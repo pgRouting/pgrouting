@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra &mdash; pgRouting Manual (2.2.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0 (pgrouting-2.2.0)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../index.html" />
+    <link rel="up" title="Deprecated Functions" href="../../../doc/deprecated.html" />
+    <link rel="next" title="pgr_drivingDistance (V2.0)" href="../../driving_distance/doc/pgr_drivingDistance_v2.html" />
+    <link rel="prev" title="pgr_apspWarshall" href="../../apsp_warshall/doc/pgr_apspWarshall.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.2.0)</span></a></h1>
+        <h2 class="heading"><span>pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../apsp_warshall/doc/pgr_apspWarshall.html">pgr_apspWarshall</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../driving_distance/doc/pgr_drivingDistance_v2.html">pgr_drivingDistance (V2.0)</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-kdijkstra-mutliple-destination-shortest-path-dijkstra">
+<span id="pgr-kdijkstra"></span><h1>pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra<a class="headerlink" href="#pgr-kdijkstra-mutliple-destination-shortest-path-dijkstra" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">pgr_kdijkstraCost</span></tt> - Returns the costs for K shortest paths using Dijkstra algorithm.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This functions is deprecated in 2.2.
+Use <a class="reference internal" href="../../dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost"><em>pgr_dijkstraCost</em></a> instead.</p>
+</div>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">pgr_kdijkstraPath</span></tt> - Returns the paths for K shortest paths using Dijkstra algorithm.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This function is deprecated in 2.2.
+Use <a class="reference internal" href="../../dijkstra/doc/pgr_dijkstra.html#pgr-dijkstra"><em>pgr_dijkstra</em></a> instead.</p>
+</div>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>These functions allow you to have a single start node and multiple destination nodes and will compute the routes to all the destinations from the source node. Returns a set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a> or <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result3"><em>pgr_costResult3</em></a>. <tt class="docutils literal"><span class="pre">pgr_kdijkstraCost</span></tt> returns one record for each destination node and the cost is the total code of the route to that node. <tt class="docutils literal"><span class="pre">pgr_kdijkstraPath</span></tt> returns one record for every edge in that path from source to destination and the cost is to traverse that edge.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_kdijkstraCost</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">,</span> <span class="nb">integer</span> <span class="k">source</span><span class="p">,</span>
+                 <span class="nb">integer</span><span class="p">[]</span> <span class="n">targets</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">directed</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">has_rcost</span><span class="p">);</span>
+
+<span class="n">pgr_costResult3</span><span class="p">[]</span> <span class="n">pgr_kdijkstraPath</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span><span class="p">,</span> <span class="nb">integer</span> <span class="k">source</span><span class="p">,</span>
+                  <span class="nb">integer</span><span class="p">[]</span> <span class="n">targets</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">directed</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">has_rcost</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first">a SQL query, which should return a set of rows with the following columns:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="p">[,</span><span class="n">reverse_cost</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">edge_table</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the edge</td>
+</tr>
+<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the source vertex</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">int4</span></tt> identifier of the target vertex</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">float8</span></tt> value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">reverse_cost:</th><td class="field-body">(optional) the cost for the reverse traversal of the edge. This is only used when the <tt class="docutils literal"><span class="pre">directed</span></tt> and <tt class="docutils literal"><span class="pre">has_rcost</span></tt> parameters are <tt class="docutils literal"><span class="pre">true</span></tt> (see the above remark about negative costs).</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int4</span></tt> id of the start point</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">targets:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int4[]</span></tt> an array of ids of the end points</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">directed:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">true</span></tt> if the graph is directed</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">has_rcost:</th><td class="field-body"><p class="first last">if <tt class="docutils literal"><span class="pre">true</span></tt>, the <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><tt class="docutils literal"><span class="pre">pgr_kdijkstraCost</span></tt> returns set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a>:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body">row sequence</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id1:</th><td class="field-body">path vertex source id (this will always be source start point in the query).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">path vertex target id</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body">cost to traverse the path from <tt class="docutils literal"><span class="pre">id1</span></tt> to <tt class="docutils literal"><span class="pre">id2</span></tt>. Cost will be -1.0 if there is no path to that target vertex id.</td>
+</tr>
+</tbody>
+</table>
+<p><tt class="docutils literal"><span class="pre">pgr_kdijkstraPath</span></tt> returns set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result3"><em>pgr_costResult3[] - Multiple Path Results with Cost</em></a>:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body">row sequence</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id1:</th><td class="field-body">path target id (identifies the target path).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">id2:</th><td class="field-body">path edge source node id</td>
+</tr>
+<tr class="field-even field"><th class="field-name">id3:</th><td class="field-body">path edge id (<tt class="docutils literal"><span class="pre">-1</span></tt> for the last row)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">cost:</th><td class="field-body">cost to traverse this edge or -1.0 if there is no path to this target</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>Deprecated in version 2.0.0</li>
+<li>New in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Returning a <tt class="docutils literal"><span class="pre">cost</span></tt> result</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_kdijkstraCost(
+    &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;,
+    10, array[4,12], false, false);
+NOTICE:  Deprecated function. Use pgr_dijkstraCost instead.
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |  10 |   4 |    4
+   1 |  10 |  12 |    2
+(2 rows)
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_kdijkstraPath(
+      &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;,
+      10, array[4,12], false, false);
+NOTICE:  Deprecated function: Use pgr_dijkstra instead.
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   0 |   4 |  10 |  12 |    1
+   1 |   4 |  11 |  13 |    1
+   2 |   4 |  12 |  15 |    1
+   3 |   4 |   9 |  16 |    1
+   4 |   4 |   4 |  -1 |    0
+   5 |  12 |  10 |  12 |    1
+   6 |  12 |  11 |  13 |    1
+   7 |  12 |  12 |  -1 |    0
+(8 rows)
+</pre></div>
+</div>
+<ul class="simple">
+<li>Returning a <tt class="docutils literal"><span class="pre">path</span></tt> result</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>SELECT id1 AS path, st_AStext(st_linemerge(st_union(b.the_geom))) AS the_geom
+  FROM pgr_kdijkstraPath(
+                  &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;,
+                  10, array[4,12], false, false
+            ) a,
+            edge_table b
+WHERE a.id3=b.id
+GROUP by id1
+ORDER by id1;
+NOTICE:  Deprecated function: Use pgr_dijkstra instead.
+ path |            the_geom             
+------+---------------------------------
+    4 | LINESTRING(2 3,3 3,4 3,4 2,4 1)
+   12 | LINESTRING(2 3,3 3,4 3)
+(2 rows)
+</pre></div>
+</div>
+<p>There is no assurance that the result above will be ordered in the direction
+of flow of the route, ie: it might be reversed. You will need to check if
+<tt class="docutils literal"><span class="pre">st_startPoint()</span></tt> of the route is the same as the start node location and
+if it is not then call <tt class="docutils literal"><span class="pre">st_reverse()</span></tt> to reverse the direction of the route.
+This behavior is a function of PostGIS functions <tt class="docutils literal"><span class="pre">st_linemerge()</span></tt> and
+<tt class="docutils literal"><span class="pre">st_union()</span></tt> and not pgRouting.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../apsp_warshall/doc/pgr_apspWarshall.html">pgr_apspWarshall</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../driving_distance/doc/pgr_drivingDistance_v2.html">pgr_drivingDistance (V2.0)</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0).
+      Last updated on Apr 05, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
