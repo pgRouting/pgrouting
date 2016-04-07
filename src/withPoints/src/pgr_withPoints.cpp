@@ -261,7 +261,7 @@ create_new_edges(
             }
         }
         if (points_on_edge.empty()) {
-            log << "For some reason we didnt find a point belonging to the edge, must be an error\n";
+            log << "For some reason we didn't find a point belonging to the edge, must be an error\n";
             return false;
         }
 #if 0
