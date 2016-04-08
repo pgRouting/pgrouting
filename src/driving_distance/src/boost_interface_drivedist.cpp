@@ -140,7 +140,7 @@ do_pgr_driving_distance(
 
         log << "Returning number of tuples" << path.size() << "\n";
         if (path.empty()) {
-            log << "NOTICE: it shoud have at least the one for it self";
+            log << "NOTICE: it should have at least the one for it self";
             *err_msg = strdup(log.str().c_str());
             *ret_path = noResult(path_count, (*ret_path));
             return;

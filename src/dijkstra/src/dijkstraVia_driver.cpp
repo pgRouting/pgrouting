@@ -183,7 +183,7 @@ do_pgr_dijkstraViaVertex(
     try {
 
         if (total_tuples == 1) {
-            log << "Requiered: more than one tuple\n";
+            log << "Required: more than one tuple\n";
             (*return_tuples) = NULL;
             (*return_count) = 0;
             *err_msg = strdup(log.str().c_str());
