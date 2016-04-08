@@ -9,10 +9,12 @@ template <class T>
 class Identifiers {
  public:
     const std::set<T>& ids() const;
+    inline bool empty() const { return m_ids.empty(); }
     bool isDisjoint(const T other) const;
     bool isDisjoint(const Identifiers<T> &other) const;
     void insert(const Identifiers<T> &other);
     void insert(const T &other);
+    bool operator ==(const Identifiers<T> &other) const;
     Identifiers<T> operator +(const T &other) const;
     Identifiers<T> operator *(const T &other) const;
     Identifiers<T> operator -(const T &other) const;
@@ -88,6 +90,12 @@ void Identifiers<T>::insert(const T &other) {
     }
     std::cout << std::endl;
     #endif
+}
+
+
+template <class T>
+bool Identifiers<T>::operator ==(const Identifiers<T> &other) const {
+    return std::equal(m_ids.begin(),m_ids.end(),other.ids().begin());
 }
 
 template <class T>
