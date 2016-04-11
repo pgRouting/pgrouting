@@ -573,7 +573,8 @@ class Pgr_contractionGraph {
         typedef typename std::map< int64_t, std::vector<V> >::iterator degree_to_V_i;
         template <class H>
         friend std::ostringstream& operator <<(std::ostringstream& os,const Pgr_contractionGraph<H>& Graph_c);
-        std::map<int64_t, Edge> removed_edges_c;
+        //std::map<int64_t, Edge> removed_edges_c;
+        std::deque<Edge> removed_edges_c;
 
 
         //! \brief Inserts *count* edges of type *pgr_edge_t* into the graph,their degrees
@@ -765,7 +766,8 @@ class Pgr_contractionGraph {
                     d_edge.cost = graph[*out].cost;
                     //d_edge.set_edge_type(graph[*out].type());
                     d_edge.reverse_cost = -1;
-                    removed_edges_c[d_edge.id] = (d_edge);
+                    //removed_edges_c[d_edge.id] = (d_edge);
+                    removed_edges_c.push_back(d_edge);
                 }
             }
             // the actual removal
@@ -804,7 +806,8 @@ class Pgr_contractionGraph {
                         d_edge.cost = graph[*out].cost;
                         //d_edge.set_edge_type(graph[*out].type());
                         d_edge.reverse_cost = -1;
-                        removed_edges_c[d_edge.id] = (d_edge);
+                        //removed_edges_c[d_edge.id] = (d_edge);
+                        removed_edges_c.push_back(d_edge);
                         boost::remove_edge((*out), graph);
                         change = true;
                         break;
@@ -842,7 +845,8 @@ class Pgr_contractionGraph {
                 d_edge.cost = graph[*out].cost;
                 //d_edge.set_edge_type(graph[*out].type());
                 d_edge.reverse_cost = -1;
-                removed_edges_c[d_edge.id] = (d_edge);
+                //removed_edges_c[d_edge.id] = (d_edge);
+                removed_edges_c.push_back(d_edge);
             }
 
             // special case
@@ -856,7 +860,8 @@ class Pgr_contractionGraph {
                     d_edge.cost = graph[*in].cost;
                     //d_edge.set_edge_type(graph[*out].type());
                     d_edge.reverse_cost = -1;
-                    removed_edges_c[d_edge.id]=(d_edge);
+                    //removed_edges_c[d_edge.id]=(d_edge);
+                    removed_edges_c.push_back(d_edge);
                 }
             }
             V d_vertex = boost::vertex(vertices_map.find(p_vertex)->second, graph);
@@ -876,7 +881,8 @@ class Pgr_contractionGraph {
                 d_edge.cost = graph[*out].cost;
                 //d_edge.set_edge_type(graph[*out].type());
                 d_edge.reverse_cost = -1;
-                removed_edges_c[d_edge.id] = (d_edge);
+                //removed_edges_c[d_edge.id] = (d_edge);
+                removed_edges_c.push_back(d_edge);
             }
 
             // special case
@@ -890,7 +896,8 @@ class Pgr_contractionGraph {
                     d_edge.cost = graph[*in].cost;
                     //d_edge.set_edge_type(graph[*out].type());
                     d_edge.reverse_cost = -1;
-                    removed_edges_c[d_edge.id]=(d_edge);
+                    //removed_edges_c[d_edge.id]=(d_edge);
+                    removed_edges_c.push_back(d_edge);
                 }
             }
             // delete incomming and outgoing edges from the vertex
