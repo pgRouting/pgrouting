@@ -80,9 +80,10 @@ void pgr_contractGraph(
             }
         }
     }
+    #if 0
     fn_contract.calculateDegrees(graph);
     //fn_contract.degreeMap(graph, debug);
-    #if 0
+    
     fn_contract.contract_to_level(graph, level);
     fn_contract.getGraphName(contracted_graph_name, level);
     fn_contract.getGraph_string(graph, contracted_graph_blob);
@@ -95,39 +96,46 @@ void pgr_contractGraph(
 bool is_valid_contraction_number(int number) {
     switch (number) {
         case -2:
-     return false;
-     break;
-     case -1:
-     return false;
-     break;
-     case 0:
-     return true;
-     break;
-     default:
-     return false;
-     break;
+        return false;
+        break;
+        case -1:
+        return false;
+        break;
+        case 0:
+        return true;
+        break;
+        default:
+        return false;
+        break;
     }
 }
 
 template < class G >
 class Pgr_contract {
- public:
+public:
     typedef typename G::V V;
     typedef typename G::E E;
     typedef typename G::V_i V_i;
     typedef typename G::E_i E_i;
     typedef typename G::EO_i EO_i;
     typedef typename G::degree_to_V_i degree_to_V_i;
+    typedef typename G::EI_i EI_i;
+
+    bool is_dead_end(G &graph, V v) const;
+    void disconnectVertex(G &graph, V v);
+    template <class T>
+    Identifiers<T>& getDeadEndSet(G &graph);
+    bool is_connected(G &graph, V v) const;
     #if 0
     void contract_to_level(
         G &graph,
         int64_t level);
     #endif
 
-    void dead_end_contraction(G &graph);
     #if 0
+    void dead_end_contraction(G &graph);
     void remove_2_degree_vertices(G &graph);
-    #endif
+    
 
     void calculateDegrees(G &graph);
 
@@ -150,11 +158,16 @@ class Pgr_contract {
     typedef std::map< int, std::priority_queue<int64_t, std::vector<int64_t>, std::greater<int64_t> > > degree_to_V;
     //typedef std::map< int, std::vector<int64_t> > degree_to_V;
     typedef typename std::vector<V>::iterator Q_i;
+    #endif
 private:
     int64_t last_edge_id;
+    #if 0
     removed_V removedVertices;
     psuedo_E psuedoEdges;
     degree_to_V degree_to_V_map;
+    #endif
+    //set of dead_end_vertices;
+    //Identifiers<V> dead_end_vertices;
 
 };
 
@@ -162,6 +175,63 @@ private:
  /******************** IMPLEMENTATION ******************/
 
 
+template < class G >
+void Pgr_contract< G >::disconnectVertex(G &graph, V v) {
+
+
+    pgassert(is_connected(graph, v));
+    pgassert(is_dead_end(v));
+    graph.disconnect_vertex_c(v);
+    pgassert(!is_connected(graph, v));
+
+}
+
+
+template < class G >
+bool  Pgr_contract< G >::is_connected(G &graph, V v) const {
+    if (graph.in_degree(v) == 0 && graph.out_degree(v) == 0) {
+        return false;
+    }
+    return true;
+}
+
+template < class G >
+bool  Pgr_contract< G >::is_dead_end(G &graph, V v) const {
+
+    if(graph.out_degree(v) == 1 && graph.in_degree(v) == 0) return true;
+    if(graph.out_degree(v) == 0 && graph.in_degree(v) == 1) return true;
+    if(graph.out_degree(v) == 1 && graph.in_degree(v) == 1) {
+        int incoming_edge_id, outgoing_edge_id;
+        EO_i out, out_end;
+        EI_i in, in_end;
+        for (boost::tie(out, out_end) = out_edges(v, graph);
+                        out != out_end; ++out) {
+            outgoing_edge_id = graph[*out].id;
+        }
+        for (boost::tie(in, in_end) = in_edges(v, graph);
+                        in != in_end; ++in) {
+            incoming_edge_id = graph[*in].id;
+        }
+        if(incoming_edge_id == outgoing_edge_id)
+            return true;
+        return false;
+    } 
+    return false;
+}
+
+template <class G>
+template <class T>
+Identifiers<T>& Pgr_contract< G >::getDeadEndSet(G &graph) {
+    Identifiers<T> dead_end_vertices;
+    V_i vi;
+    for (vi = vertices(graph).first; vi != vertices(graph).second; ++vi) {
+        if (is_dead_end(graph, (*vi))) {
+            dead_end_vertices += (*vi);
+        }
+    }
+    return dead_end_vertices;
+}
+#if 0
  //! \brief Calculates the degree of every vertex in the graph
      /*!
        - A map is generated which maps the degree to a vector of vertices of the particlaur degree 
@@ -179,7 +249,9 @@ template < class G >
           }
       }
 
+#endif
 
+#if 0
  //! \brief Generates the name of the contracted graph based upon the type of contraction
 template < class G >
       void
@@ -187,6 +259,8 @@ template < class G >
        name << "contracted_graph_" << static_cast<int>(ctype);
    }
 
+
+#endif
 
 #if 0
 template < class G >
@@ -208,7 +282,7 @@ Pgr_contract< G >::contract_to_level(G &graph,int64_t level)
 #endif
 
 
-#if 1
+#if 0
  //! \brief Returns the *degree_to_V_map* in string format
 template < class G >
 void
@@ -230,6 +304,8 @@ Pgr_contract< G >::degreeMap(G &graph,std::ostringstream& dmap)
 }
 #endif
 
+
+#if 0
 //! \brief Performs dead-end contraction on the graph
      /*!
       
@@ -272,6 +348,8 @@ template < class G >
 
           }
       }
+
+#endif
 
 #if 0
 template < class G >
@@ -368,6 +446,7 @@ Pgr_contract< G >::remove_2_degree_vertices(G &graph) {
 }
 #endif
 
+#if 0
 //! \brief Returns the information about the contracted graph in string format
      /*!
        
@@ -404,7 +483,9 @@ template < class G >
     return count;
 }
 
+#endif
 
+#if 0
 //! \brief Returns the information about the removed edges after contraction in string format
      /*!
       
@@ -431,6 +512,7 @@ template < class G >
     << re.second.target << "," << re.second.cost << ","
     <<re.second.reverse_cost<< "$";
 }
+#endif
 //! \brief Returns the information about the removed vertices after contraction in string format
      /*!
       
@@ -438,6 +520,9 @@ template < class G >
        - Edge information is delimited by "$" symbol  
 
        */
+
+#if 0
+
 template < class G >
        void
        Pgr_contract< G >::getRemovedV_string(std::ostringstream& vstring) {
@@ -455,6 +540,8 @@ template < class G >
 
      }
 
+#endif
+#if 0
 //! \brief Returns the information about the new edges(shortcuts) after contraction in string format
      /*!
       
@@ -471,3 +558,4 @@ template < class G >
           }
 
       }
+#endif

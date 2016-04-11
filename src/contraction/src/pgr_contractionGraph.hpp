@@ -679,6 +679,20 @@ class Pgr_contractionGraph {
                 }
             }
 
+
+
+
+        degree_size_type in_degree(int64_t vertex_id) const {
+            V v_from;
+            if (!get_gVertex(vertex_id, v_from)) {
+                return 0;
+            }
+            return in_degree(v_from);
+        }
+
+        degree_size_type in_degree(V &v) const {
+            return boost::in_degree(v, graph);
+        }
         #if 0
          void graph_add_shortcut(const Edge &edge ) {
             bool inserted;
@@ -736,7 +750,7 @@ class Pgr_contractionGraph {
         void disconnect_edge_c(int64_t p_from, int64_t p_to) {
             V g_from;
             V g_to;
-            Edge_c d_edge;
+            Edge d_edge;
             // nothing to do, the vertex doesnt exist
             if (!get_gVertex(p_from, g_from)) return;
             if (!get_gVertex(p_to, g_to)) return;
@@ -746,11 +760,11 @@ class Pgr_contractionGraph {
                     out != out_end; ++out) {
                 if (target(*out, graph) == g_to) {
                     d_edge.id = graph[*out].id;
-                    //d_edge.source = graph[source(*out, graph)].id;
-                    //d_edge.target = graph[target(*out, graph)].id;
+                    d_edge.source = graph[source(*out, graph)].id;
+                    d_edge.target = graph[target(*out, graph)].id;
                     d_edge.cost = graph[*out].cost;
-                    d_edge.set_edge_type(graph[*out].type());
-                    //        d_edge.reverse_cost = -1;
+                    //d_edge.set_edge_type(graph[*out].type());
+                    d_edge.reverse_cost = -1;
                     removed_edges_c[d_edge.id] = (d_edge);
                 }
             }
@@ -769,7 +783,7 @@ class Pgr_contractionGraph {
        */
         void disconnect_out_going_edge_c(int64_t vertex_id, int64_t edge_id) {
             V v_from;
-            Edge_c d_edge;
+            Edge d_edge;
 
             // nothing to do, the vertex doesnt exist
             if (!get_gVertex(vertex_id, v_from)) {
@@ -785,11 +799,11 @@ class Pgr_contractionGraph {
                         out != out_end; ++out) {
                     if (graph[*out].id  == edge_id) {
                         d_edge.id = graph[*out].id;
-                        //d_edge.source = graph[source(*out, graph)].id;
-                        //d_edge.target = graph[target(*out, graph)].id;
+                        d_edge.source = graph[source(*out, graph)].id;
+                        d_edge.target = graph[target(*out, graph)].id;
                         d_edge.cost = graph[*out].cost;
-                        d_edge.set_edge_type(graph[*out].type());
-                        //        d_edge.reverse_cost = -1;
+                        //d_edge.set_edge_type(graph[*out].type());
+                        d_edge.reverse_cost = -1;
                         removed_edges_c[d_edge.id] = (d_edge);
                         boost::remove_edge((*out), graph);
                         change = true;
@@ -815,7 +829,7 @@ class Pgr_contractionGraph {
        */
         void disconnect_vertex_c(int64_t p_vertex) {
             V g_vertex;
-            Edge_c d_edge;
+            Edge d_edge;
             // nothing to do, the vertex doesnt exist
             if (!get_gVertex(p_vertex, g_vertex)) return;
             EO_i out, out_end;
@@ -823,11 +837,11 @@ class Pgr_contractionGraph {
             for (boost::tie(out, out_end) = out_edges(g_vertex, graph);
                     out != out_end; ++out) {
                 d_edge.id = graph[*out].id;
-                //d_edge.source = graph[source(*out, graph)].id;
-                //d_edge.target = graph[target(*out, graph)].id;
+                d_edge.source = graph[source(*out, graph)].id;
+                d_edge.target = graph[target(*out, graph)].id;
                 d_edge.cost = graph[*out].cost;
-                d_edge.set_edge_type(graph[*out].type());
-                //        d_edge.reverse_cost = -1;
+                //d_edge.set_edge_type(graph[*out].type());
+                d_edge.reverse_cost = -1;
                 removed_edges_c[d_edge.id] = (d_edge);
             }
 
@@ -837,11 +851,11 @@ class Pgr_contractionGraph {
                 for (boost::tie(in, in_end) = in_edges(g_vertex, graph);
                         in != in_end; ++in) {
                     d_edge.id = graph[*in].id;
-                    //d_edge.source = graph[source(*in, graph)].id;
-                    //d_edge.target = graph[target(*in, graph)].id;
+                    d_edge.source = graph[source(*in, graph)].id;
+                    d_edge.target = graph[target(*in, graph)].id;
                     d_edge.cost = graph[*in].cost;
-                    d_edge.set_edge_type(graph[*out].type());
-                    //        d_edge.reverse_cost = -1;
+                    //d_edge.set_edge_type(graph[*out].type());
+                    d_edge.reverse_cost = -1;
                     removed_edges_c[d_edge.id]=(d_edge);
                 }
             }
@@ -850,7 +864,39 @@ class Pgr_contractionGraph {
             boost::clear_vertex(d_vertex, graph);
         }
 
-        
+         void disconnect_vertex_c(V g_vertex) {
+            Edge d_edge;
+            EO_i out, out_end;
+            // store the edges that are going to be removed
+            for (boost::tie(out, out_end) = out_edges(g_vertex, graph);
+                    out != out_end; ++out) {
+                d_edge.id = graph[*out].id;
+                d_edge.source = graph[source(*out, graph)].id;
+                d_edge.target = graph[target(*out, graph)].id;
+                d_edge.cost = graph[*out].cost;
+                //d_edge.set_edge_type(graph[*out].type());
+                d_edge.reverse_cost = -1;
+                removed_edges_c[d_edge.id] = (d_edge);
+            }
+
+            // special case
+            if (m_gType == DIRECTED) {
+                EI_i in, in_end;
+                for (boost::tie(in, in_end) = in_edges(g_vertex, graph);
+                        in != in_end; ++in) {
+                    d_edge.id = graph[*in].id;
+                    d_edge.source = graph[source(*in, graph)].id;
+                    d_edge.target = graph[target(*in, graph)].id;
+                    d_edge.cost = graph[*in].cost;
+                    //d_edge.set_edge_type(graph[*out].type());
+                    d_edge.reverse_cost = -1;
+                    removed_edges_c[d_edge.id]=(d_edge);
+                }
+            }
+            // delete incomming and outgoing edges from the vertex
+            boost::clear_vertex(g_vertex, graph);
+        }
+
         #if 0
      void print_graph_c(std::ostream &log = std::cout) const {
          EO_i out, out_end;
