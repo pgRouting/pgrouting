@@ -676,14 +676,14 @@ class Pgr_contractionGraph {
                     //graph[e].set_edge_type(Edge_c::Edge_type::ordinary);
                 }
 
-                /*if (edge.reverse_cost > 0) {
+                if (edge.reverse_cost > 0) {
                     boost::tie(e, inserted) =
                         boost::add_edge(vm_t->second, vm_s->second, graph);
                     graph[e].cost = edge.reverse_cost;
                     graph[e].id = edge.id;
                     //graph[e].first = false;
                     //graph[e].set_edge_type(Edge_c::Edge_type::ordinary);
-                }*/
+                }
             }
 
 
