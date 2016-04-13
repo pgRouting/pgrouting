@@ -70,8 +70,9 @@ contractGraph(PG_FUNCTION_ARGS);
 static
 void
 process(char* edges_sql,
-        char* vertices_sql,
+        int64_t *forbidden_vertices,
         int64_t *contraction_order,
+        size_t size_forbidden_vertices,
         size_t size_contraction_order,
         int64_t num_cycles,
         bool directed,
@@ -79,11 +80,11 @@ process(char* edges_sql,
         size_t *result_count) {
     pgr_SPI_connect();
 
-    PGR_DBG("Load data");
+    //PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     int64_t total_tuples = 0;
     pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
-    PGR_DBG("finished Loading");
+    //PGR_DBG("finished Loading");
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -92,13 +93,15 @@ process(char* edges_sql,
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld tuples in query:", total_tuples);
+    //PGR_DBG("Total %ld tuples in query:", total_tuples);
 
-    PGR_DBG("Starting processing");
+    //PGR_DBG("Starting processing");
     char *err_msg = NULL;
     do_pgr_contractGraph(
             edges,
             total_tuples,
+            forbidden_vertices,
+            size_forbidden_vertices,
             contraction_order,
             size_contraction_order,
             num_cycles,
@@ -133,7 +136,9 @@ contractGraph(PG_FUNCTION_ARGS) {
     pgr_contracted_blob  *result_tuples = NULL;
     size_t result_count = 0;
     int64_t* contraction_order;
+    int64_t* forbidden_vertices;
     size_t size_contraction_order;
+    size_t size_forbidden_vertices;
     /*                                                                        */
     /**************************************************************************/
 
@@ -151,22 +156,25 @@ contractGraph(PG_FUNCTION_ARGS) {
            directed BOOLEAN DEFAULT true
          **********************************************************************/ 
 
-        PGR_DBG("Calling process");
+        //PGR_DBG("Calling process");
         contraction_order = (int64_t*)
             pgr_get_bigIntArray(&size_contraction_order, PG_GETARG_ARRAYTYPE_P(2));
+        forbidden_vertices = (int64_t*)
+            pgr_get_bigIntArray(&size_forbidden_vertices , PG_GETARG_ARRAYTYPE_P(1));
 
-        PGR_DBG("edges_sql %s",pgr_text2char(PG_GETARG_TEXT_P(0)));
-        PGR_DBG("vertices_sql %s",pgr_text2char(PG_GETARG_TEXT_P(1)));
+        /*PGR_DBG("edges_sql %s",pgr_text2char(PG_GETARG_TEXT_P(0)));
+        PGR_DBG("size_forbidden_vertices %ld",size_forbidden_vertices);
         PGR_DBG("size_contraction_order %ld ", size_contraction_order);
         PGR_DBG("num_cycles %ld ", PG_GETARG_INT64(3));
-        PGR_DBG("directed %d ", PG_GETARG_BOOL(4));
+        PGR_DBG("directed %d ", PG_GETARG_BOOL(4));*/
 
 
 
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
-                pgr_text2char(PG_GETARG_TEXT_P(1)),
+                forbidden_vertices,
                 contraction_order,
+                size_forbidden_vertices,
                 size_contraction_order,
                 PG_GETARG_INT64(3),
                 PG_GETARG_BOOL(4),

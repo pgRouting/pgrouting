@@ -60,6 +60,8 @@ void
 do_pgr_contractGraph(
         pgr_edge_t  *data_edges,
         size_t total_tuples,
+        int64_t *forbidden_vertices,
+        size_t size_forbidden_vertices,
         int64_t *contraction_order,
         size_t size_contraction_order,
         int64_t max_cycles,
@@ -95,6 +97,16 @@ do_pgr_contractGraph(
             log << "\n";
         }
         log << " }\n";
+
+
+        log << "size_forbidden_vertices " << size_forbidden_vertices << "\n";
+        // log << "greatest contraction type " << static_cast<int>(contraction_type_count) << "\n";
+        log << "forbidden_vertices\n" <<   " { \n";
+        for (size_t i = 0; i < size_forbidden_vertices; ++i) {
+            log << forbidden_vertices[i] << ", ";
+            log << "\n";
+        }
+        log << " }\n";        
         log << "max_cycles " << max_cycles << "\n";
         log << "directed " << directed << "\n";
         log << "gType " << gType << "\n";
@@ -129,10 +141,11 @@ do_pgr_contractGraph(
             /*
             Function call to get the contracted graph
             */
-            pgr_contractGraph(digraph, contraction_order,
-                size_contraction_order, max_cycles,
-                contracted_graph_name, contracted_graph_blob, removedEdges,
-                removedVertices, psuedoEdges, debug);
+            pgr_contractGraph(digraph,
+                forbidden_vertices, size_forbidden_vertices, 
+                contraction_order, size_contraction_order,
+                max_cycles, contracted_graph_name, contracted_graph_blob,
+                removedEdges, removedVertices, psuedoEdges, debug);
             log << debug.str().c_str() << "\n";
             #endif
         } else {
@@ -147,10 +160,11 @@ do_pgr_contractGraph(
 #endif
 #if 1
             /* Function call to get the contracted graph. */
-            pgr_contractGraph(undigraph, contraction_order,
-                    size_contraction_order, max_cycles,
-                    contracted_graph_name, contracted_graph_blob, removedEdges,
-                    removedVertices, psuedoEdges, debug);
+            pgr_contractGraph(undigraph,
+                forbidden_vertices, size_forbidden_vertices, 
+                contraction_order, size_contraction_order,
+                max_cycles, contracted_graph_name, contracted_graph_blob,
+                removedEdges, removedVertices, psuedoEdges, debug);
             log << debug.str().c_str() << "\n";
 #endif
             #endif

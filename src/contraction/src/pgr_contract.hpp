@@ -46,7 +46,9 @@ template < class G > class Pgr_contract;
 
 template < class G >
 void pgr_contractGraph(
-    G &graph, int64_t *contraction_order,
+    G &graph, int64_t *forbidden_vertices,
+    size_t size_forbidden_vertices,
+    int64_t *contraction_order,
     size_t size_contraction_order,
     int64_t max_cycles,
     std::ostringstream& contracted_graph_name,
@@ -58,6 +60,15 @@ void pgr_contractGraph(
 
     typedef typename G::V V;
     Pgr_contract< G > fn_contract;
+
+   /* debug << "Forbidden vertices\n" <<   " { \n";
+        for (int64_t i = 0; i < size_forbidden_vertices; ++i) {
+            debug << forbidden_vertices[i] << ", ";
+            debug << "\n";
+        }
+        debug << " }\n";  */
+
+
     std::deque<int64_t> contract_order;
     contract_order.push_back(0);
     for (size_t i = 0; i < size_contraction_order; ++i) {
@@ -82,14 +93,16 @@ void pgr_contractGraph(
             }
         }
     }
-
-    debug << "Fetching all vertices" << "\n";
+    debug << "Forbidden vertices" << "\n";
+    fn_contract.setForbiddenVertices(forbidden_vertices,size_forbidden_vertices);
+    fn_contract.print_forbidden_vertices(debug);
+    debug << "All vertices" << "\n";
     fn_contract.getAllVertices(graph);
     fn_contract.print_all_vertices(debug);
-    debug << "Fetching dead end set" << "\n";
+    debug << "Dead end set" << "\n";
     fn_contract.getDeadEndSet(graph);
     fn_contract.print_dead_end_vertices(debug);
-    debug << "Fetching non contractible set" << "\n";
+    debug << "Non contractible set" << "\n";
     fn_contract.getNonContractibleVertices();
     fn_contract.print_non_contractible_vertices(debug);
     #if 0
@@ -137,6 +150,9 @@ public:
     bool is_dead_end(G &graph, int64_t vertex_id) const;
     void disconnectVertex(G &graph, int64_t vertex_id);
     //template <typename T>
+    void setForbiddenVertices(int64_t *forbidden_vertices,
+    size_t size_forbidden_vertices );
+    void print_forbidden_vertices(std::ostringstream& forbidden_stream);
     void getDeadEndSet(G &graph);
     void getAllVertices(G &graph);
     void getNonContractibleVertices();
@@ -182,6 +198,7 @@ private:
     Identifiers<int64_t> all;
     Identifiers<int64_t> dead_end;
     Identifiers<int64_t> non_contractible;
+    Identifiers<int64_t> forbidden;
     #if 0
     removed_V removedVertices;
     psuedo_E psuedoEdges;
@@ -195,6 +212,16 @@ private:
 
  /******************** IMPLEMENTATION ******************/
 
+template < class G >
+void Pgr_contract< G >::setForbiddenVertices(int64_t *forbidden_vertices,
+    size_t size_forbidden_vertices ) {
+
+
+    for (int64_t i = 0; i < size_forbidden_vertices; ++i) {
+            forbidden += forbidden_vertices[i];
+        }
+
+}
 
 template < class G >
 void Pgr_contract< G >::disconnectVertex(G &graph, int64_t vertex_id) {
@@ -281,6 +308,13 @@ template <class G>
 void Pgr_contract< G >::print_dead_end_vertices(std::ostringstream& dead_end_stream) {
     //std::ostringstream out;
     dead_end_stream << dead_end << '\n';
+    //return out;
+}
+
+template <class G>
+void Pgr_contract< G >::print_forbidden_vertices(std::ostringstream& forbidden_stream) {
+    //std::ostringstream out;
+    forbidden_stream << forbidden << '\n';
     //return out;
 }
 
