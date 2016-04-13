@@ -22,8 +22,8 @@ const std::string Edge_c::type_str() const {
 
 
 std::ostringstream& operator <<(std::ostringstream& os, const Edge_c& e) {
-    os << "{ id: " << e.id << ", type: " << e.type_str();
-    os << ", isDeleted: " << e.isDeleted();
+    os << "{ id: " << e.id; //<< ", type: " << e.type_str();
+    //os << ", isDeleted: " << e.isDeleted();
     os << ", removed_vertices: {";
     for (auto removed_vertex : e.removed_vertices().ids()) {
         os << removed_vertex << ", ";

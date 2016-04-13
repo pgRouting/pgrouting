@@ -119,7 +119,7 @@ do_pgr_contractGraph(
             Pgr_contractionGraph< CDirectedGraph > digraph(gType, initial_size);
             digraph.graph_insert_data_c(data_edges, total_tuples);
 #ifdef DEBUG
-            log << digraph;
+            //log << digraph;
            // digraph.print_graph(log);
 #endif
 #if 0
@@ -142,7 +142,7 @@ do_pgr_contractGraph(
             undigraph.graph_insert_data_c(data_edges, total_tuples);
 
 #ifdef DEBUG
-            log << undigraph;
+            //log << undigraph;
             // undigraph.print_graph_c(log);
 #endif
 #if 1

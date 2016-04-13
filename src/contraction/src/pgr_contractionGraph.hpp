@@ -580,7 +580,7 @@ class Pgr_contractionGraph {
         //! \brief Inserts *count* edges of type *pgr_edge_t* into the graph,their degrees
         void graph_insert_data_c(const pgr_edge_t *data_edges, int64_t count) {
             for (unsigned int i = 0; i < count; ++i) {
-                graph_add_edge(data_edges[i]);
+                graph_add_edge_c(data_edges[i]);
             }
             adjust_vertices();
             for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i ) {
@@ -596,7 +596,7 @@ class Pgr_contractionGraph {
         //! \brief Inserts edges of type *pgr_edge_t* into the graph from a vector of edges
         void graph_insert_data_c( const std::vector <pgr_edge_t > &data_edges) {
             for (const auto edge : data_edges) {
-                graph_add_edge(edge);
+                graph_add_edge_c(edge);
             }
             last_edge_id=data_edges.size();
             adjust_vertices();
@@ -609,6 +609,12 @@ class Pgr_contractionGraph {
             }
         }
 
+        bool is_connected(int64_t v) const {
+            if (graph.in_degree(v) == 0 && graph.out_degree(v) == 0) {
+                return false;
+            }
+            return true;
+        }
 
         //! \brief Insert a single edge of type *boost_edge_t* into the graph
         void graph_add_edge_c(const boost_edge_t &edge ) {
@@ -670,14 +676,14 @@ class Pgr_contractionGraph {
                     //graph[e].set_edge_type(Edge_c::Edge_type::ordinary);
                 }
 
-                if (edge.reverse_cost > 0) {
+                /*if (edge.reverse_cost > 0) {
                     boost::tie(e, inserted) =
                         boost::add_edge(vm_t->second, vm_s->second, graph);
                     graph[e].cost = edge.reverse_cost;
                     graph[e].id = edge.id;
                     //graph[e].first = false;
                     //graph[e].set_edge_type(Edge_c::Edge_type::ordinary);
-                }
+                }*/
             }
 
 
@@ -939,10 +945,11 @@ std::ostringstream& operator<<(std::ostringstream& debug, const Pgr_contractionG
     if ((*vi) >= Graph_c.m_num_vertices) continue;
         debug << "vertex: " ;
         debug << Graph_c.graph[(*vi) ];
-        debug << " out_edges(" << Graph_c.graph[(*vi)].id << "):";
+        debug << " out_edges(" << Graph_c.graph[(*vi)].id << "):" << '\n';
         for (boost::tie(out, out_end) = out_edges(*vi, Graph_c.graph);
             out != out_end; ++out) {
-                debug << ' ' << Graph_c.graph[*out].id << "=(" << Graph_c.graph[source(*out, Graph_c.graph)].id
+                //debug << ' ' << Graph_c.graph[*out].id ;
+                debug << "(" << Graph_c.graph[source(*out, Graph_c.graph)].id
                 << ", " << Graph_c.graph[target(*out, Graph_c.graph)].id << ") = ";
                 debug <<  Graph_c.graph[*out];
              }

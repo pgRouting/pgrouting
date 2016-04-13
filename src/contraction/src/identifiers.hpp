@@ -5,7 +5,7 @@
 #include <iterator>
 #include <iostream>
 
-template <class T>
+template <typename T>
 class Identifiers {
  public:
     const std::set<T>& ids() const;
@@ -36,7 +36,7 @@ class Identifiers {
 };
 
 //! \brief Returns a set of identifiers of type *set<T>*
-template <class T>
+template <typename T>
 const std::set<T>& Identifiers<T>::ids() const {
     return m_ids;
 }
@@ -48,7 +48,7 @@ const std::set<T>& Identifiers<T>::ids() const {
   true: If *other* is in this set
   false: Otherwise
   */
-template <class T>
+template <typename T>
 bool Identifiers<T>::has(const T other) const {
     return (m_ids.find(other) != m_ids.end());
 }
@@ -60,7 +60,7 @@ bool Identifiers<T>::has(const T other) const {
   true: If *other* is not in this set
   false: Otherwise
   */
-template <class T>
+template <typename T>
 bool Identifiers<T>::isDisjoint(const T other) const {
     return (m_ids.find(other) == m_ids.end());
 }
@@ -72,7 +72,7 @@ bool Identifiers<T>::isDisjoint(const T other) const {
   true: If *other* and this set are disjoint
   false: otherwise
   */
-template <class T>
+template <typename T>
 bool Identifiers<T>::isDisjoint(const Identifiers<T> &other) const {
     for (auto identifier : other.ids()) {
         if (!(m_ids.find(identifier) == m_ids.end())) {
@@ -86,7 +86,7 @@ bool Identifiers<T>::isDisjoint(const Identifiers<T> &other) const {
 /*!
   @param [IN] *other* is a set of identifiers
   */
-template <class T>
+template <typename T>
 void Identifiers<T>::insert(const Identifiers<T> &other) {
     #if 0
     std::cout << "Before Insertion" << std::endl;
@@ -109,7 +109,7 @@ void Identifiers<T>::insert(const Identifiers<T> &other) {
 /*!
   @param [IN] *other* is an identifier of type *T*
   */
-template <class T>
+template <typename T>
 void Identifiers<T>::insert(const T &other) {
     #if 0
     std::cout << "Before Insertion" << std::endl;
@@ -135,7 +135,7 @@ void Identifiers<T>::insert(const T &other) {
   true: If *other* and this set are equivalent
   false: Otherwise
   */
-template <class T>
+template <typename T>
 bool Identifiers<T>::operator ==(const Identifiers<T> &other) const {
     return std::equal(m_ids.begin(),m_ids.end(),other.ids().begin());
 }
@@ -146,7 +146,7 @@ bool Identifiers<T>::operator ==(const Identifiers<T> &other) const {
   @param [IN] *other* is an identifier of type *T*
   Returns the set union of *other* with this set
   */
-template <class T>
+template <typename T>
 Identifiers<T> Identifiers<T>::operator +(const T &other) const {
     Identifiers<T> union_ids;
     union_ids.insert(*this);
@@ -159,7 +159,7 @@ Identifiers<T> Identifiers<T>::operator +(const T &other) const {
   @param [IN] *other* is an identifier of type *T*
   Returns the set intersection of *other* with this set
   */
-template <class T>
+template <typename T>
 Identifiers<T> Identifiers<T>::operator *(const T &other) const {
     Identifiers<T> intersect_ids;
     intersect_ids.insert(*this);
@@ -172,7 +172,7 @@ Identifiers<T> Identifiers<T>::operator *(const T &other) const {
   @param [IN] *other* is an identifier of type *T*
   Returns the set difference between this set and *other*
   */
-template <class T>
+template <typename T>
 Identifiers<T> Identifiers<T>::operator -(const T &other) const {
     Identifiers<T> diff_ids;
     diff_ids.insert(*this);
@@ -185,7 +185,7 @@ Identifiers<T> Identifiers<T>::operator -(const T &other) const {
   @param [IN] *other* is a set of identifiers of type *Identifiers<T>*
   Returns the set union of *other* with this set
   */
-template <class T>
+template <typename T>
 Identifiers<T> Identifiers<T>::operator +(const Identifiers<T> &other) const {
     Identifiers<T> union_ids;
     union_ids.insert(*this);
@@ -198,7 +198,7 @@ Identifiers<T> Identifiers<T>::operator +(const Identifiers<T> &other) const {
   @param [IN] *other* is a set of identifiers of type *Identifiers<T>*
   Returns the set intersection of *other* with this set
   */
-template <class T>
+template <typename T>
 Identifiers<T> Identifiers<T>::operator *(const Identifiers<T> &other) const {
     Identifiers<T> intersect_ids;
     intersect_ids.insert(*this);
@@ -211,7 +211,7 @@ Identifiers<T> Identifiers<T>::operator *(const Identifiers<T> &other) const {
   @param [IN] *other* is a set of identifiers of type *Identifiers<T>*
   Returns the set difference between this set and *other*
   */
-template <class T>
+template <typename T>
 Identifiers<T> Identifiers<T>::operator -(const Identifiers<T> &other) const {
     Identifiers<T> diff_ids;
     diff_ids.insert(*this);
@@ -225,7 +225,7 @@ Identifiers<T> Identifiers<T>::operator -(const Identifiers<T> &other) const {
   @param [IN] *other* is an identifiers of type *T*
   Replaces this set with the set union of *other* with this set
   */
-template <class T>
+template <typename T>
 Identifiers<T>& Identifiers<T>::operator +=(const T &other) {
     this->insert(other);
     return *this;
@@ -236,7 +236,7 @@ Identifiers<T>& Identifiers<T>::operator +=(const T &other) {
   @param [IN] *other* is an identifiers of type *T*
   Replaces this set with the set intersection of *other* with this set
   */
-template <class T>
+template <typename T>
 Identifiers<T>& Identifiers<T>::operator *=(const T &other) {
     if (m_ids.find(other) != m_ids.end()) {
         m_ids.clear();
@@ -252,7 +252,7 @@ Identifiers<T>& Identifiers<T>::operator *=(const T &other) {
   @param [IN] *other* is a set of identifiers of type *T*
   Replaces this set with the set difference between this set and *other*
   */
-template <class T>
+template <typename T>
 Identifiers<T>& Identifiers<T>::operator -=(const T &other) {
     if (m_ids.find(other) != m_ids.end()) {
         m_ids.erase(m_ids.find(other));
@@ -266,7 +266,7 @@ Identifiers<T>& Identifiers<T>::operator -=(const T &other) {
   @param [IN] *other* is a set of identifiers of type *Identifiers<T>*
   Replaces this set with the set union of *other* with this set
   */
-template <class T>
+template <typename T>
 Identifiers<T>& Identifiers<T>::operator +=(const Identifiers<T> &other) {
     this->insert(other);
     return *this;
@@ -277,7 +277,7 @@ Identifiers<T>& Identifiers<T>::operator +=(const Identifiers<T> &other) {
   @param [IN] *other* is a set of identifiers of type *Identifiers<T>*
   Replaces this set with the set intersection of *other* with this set
   */
-template <class T>
+template <typename T>
 Identifiers<T>& Identifiers<T>::operator *=(const Identifiers<T> &other) {
     for (auto identifier : m_ids) {
         if (other.ids().find(identifier) == other.ids().end()) {
@@ -292,7 +292,7 @@ Identifiers<T>& Identifiers<T>::operator *=(const Identifiers<T> &other) {
   @param [IN] *other* is a set of identifiers of type *Identifiers<T>*
   Replaces this set with the set difference between this set and *other*
   */
-template <class T>
+template <typename T>
 Identifiers<T>& Identifiers<T>::operator -=(const Identifiers<T> &other) {
     for (auto identifier : m_ids) {
         if (other.ids().find(identifier) != other.ids().end()) {
@@ -303,9 +303,9 @@ Identifiers<T>& Identifiers<T>::operator -=(const Identifiers<T> &other) {
 }
 
 //! \brief Prints the set of identifiers
-template <class T>
+template <typename T>
 std::ostringstream& operator << (std::ostringstream& os, const Identifiers<T>& identifiers) {
-    os << "Set of TS : {";
+    os << "Set : {";
     for (auto identifier : identifiers.ids()) {
         os << identifier << ", ";
     }
