@@ -105,6 +105,8 @@ void pgr_contractGraph(
     debug << "Non contractible set" << "\n";
     fn_contract.getNonContractibleVertices();
     fn_contract.print_non_contractible_vertices(debug);
+    debug << "Adjacent vertices of vertex 6" << "\n";
+    fn_contract.print_identifiers(debug, fn_contract.getAdjacentVertices(graph, 6));
     #if 0
     fn_contract.calculateDegrees(graph);
     //fn_contract.degreeMap(graph, debug);
@@ -156,6 +158,8 @@ public:
     void getDeadEndSet(G &graph);
     void getAllVertices(G &graph);
     void getNonContractibleVertices();
+    Identifiers<int64_t> getAdjacentVertices(G &graph, int64_t vertex_id);
+    void print_identifiers(std::ostringstream& stream, Identifiers<int64_t> identifiers);
     void print_dead_end_vertices(std::ostringstream& dead_end_stream);
     void print_all_vertices(std::ostringstream& all_stream);
     void print_non_contractible_vertices(std::ostringstream& non_stream);
@@ -234,6 +238,26 @@ void Pgr_contract< G >::disconnectVertex(G &graph, int64_t vertex_id) {
 
 }
 
+template < class G >
+Identifiers<int64_t> Pgr_contract< G >::getAdjacentVertices(G &graph, int64_t vertex_id) {
+    EO_i out, out_end;
+    EI_i in, in_end;
+    V v;
+    Identifiers<int64_t> adjacent_vertices_set;
+    if (!graph.get_gVertex(vertex_id, v)) {
+            return adjacent_vertices_set;
+    }
+    for (boost::tie(out, out_end) = out_edges(v, graph.graph);
+            out != out_end; ++out) {
+            adjacent_vertices_set += graph.graph[target(*out, graph.graph)].id;
+        }
+    for (boost::tie(in, in_end) = in_edges(v, graph.graph);
+            in != in_end; ++in) {
+            adjacent_vertices_set += graph.graph[source(*in, graph.graph)].id;
+        }
+    return adjacent_vertices_set;
+}
+
 
 #if 0
 template < class G >
@@ -246,7 +270,7 @@ bool  Pgr_contract< G >::is_connected(G &graph, V v) const {
 #endif
 
 template < class G >
-bool  Pgr_contract< G >::is_dead_end(G &graph, int64_t vertex_id) const {
+bool Pgr_contract< G >::is_dead_end(G &graph, int64_t vertex_id) const {
 
     //debug << "in_degree: " << graph.in_degree(vertex_id) << '\n';
     //debug << "out_degree: " << graph.out_degree(vertex_id) << '\n';
@@ -302,6 +326,14 @@ void Pgr_contract< G >::getAllVertices(G &graph) {
 template <class G>
 void Pgr_contract< G >::getNonContractibleVertices() {
     non_contractible = all - dead_end;
+}
+
+
+template <class G>
+void Pgr_contract< G >::print_identifiers(std::ostringstream& stream, Identifiers<int64_t> identifiers) {
+    //std::ostringstream out;
+    stream << identifiers << '\n';
+    //return out;
 }
 
 template <class G>
