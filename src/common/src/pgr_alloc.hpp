@@ -21,8 +21,23 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+#pragma once
 #include <stdlib.h>
 
+/*! \fn pgr_alloc(std::size_t size, T *ptr)
+ 
+\brief allocates memory
+
+- Does a malloc or realloc depending on the ptr value
+- To be used only on C++ code
+- To be used when returning results to postgres
+- free must occur in the C code
+
+\param[in] size
+\param[in] ptr
+\returns pointer to the first byte of allocated space
+
+ */
 
 template <typename T>
 T*
