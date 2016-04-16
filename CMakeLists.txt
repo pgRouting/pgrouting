@@ -173,28 +173,8 @@ add_subdirectory(doc)
 
 #include directories: files in alphabetical order
 set(PGROUTING_INCLUDE_DIRECTORIES
-    ${PGROUTING_SOURCE_DIR}/src/apsp_johnson/src
-    ${PGROUTING_SOURCE_DIR}/src/apsp_warshall/src
-    ${PGROUTING_SOURCE_DIR}/src/allpairs/src
-    ${PGROUTING_SOURCE_DIR}/src/astar/src
-    ${PGROUTING_SOURCE_DIR}/src/bd_astar/src
-    ${PGROUTING_SOURCE_DIR}/src/bd_dijkstra/src
     ${PGROUTING_SOURCE_DIR}/src/common/src
     ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
-    ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
-    ${PGROUTING_SOURCE_DIR}/src/kdijkstra/src
-    ${PGROUTING_SOURCE_DIR}/src/ksp/src
-    ${PGROUTING_SOURCE_DIR}/src/trsp/src
-    ${PGROUTING_SOURCE_DIR}/src/tsp/src
-    ${PGROUTING_SOURCE_DIR}/src/vrp_basic/src
-    ${PGROUTING_SOURCE_DIR}/src/vrppdtw/src
-
-# not using C/C++
-    ${PGROUTING_SOURCE_DIR}/src/label_graph/src
-
-
-#not suported but directory exists
-#    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
     )
 
 include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
@@ -260,7 +240,7 @@ set(PgRouting_SOURCE_NAMES
     "allpairs"
     "withPoints"
 
-    "funnyDijkstra"
+    #"funnyDijkstra"
 
     "alpha_shape"
 
