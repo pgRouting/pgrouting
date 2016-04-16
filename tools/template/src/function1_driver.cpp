@@ -47,7 +47,7 @@ extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
 
-#include "./../../common/src/pgr_palloc.hpp"
+#include "./../../common/src/pgr_alloc.hpp"
 
 /************************************************************
   MY_QUERY_LINE1
@@ -115,7 +115,7 @@ do_pgr_MY_FUNCTION_NAME(
         }
 
         // get the space required to store all the paths
-        (*return_tuples) = pgr_palloc(count, (*return_tuples));
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 

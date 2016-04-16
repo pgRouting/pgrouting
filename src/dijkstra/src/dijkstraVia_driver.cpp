@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./pgr_dijkstra.hpp"
 #include "./dijkstraVia_driver.h"
-#include "./../../common/src/pgr_palloc.hpp"
+#include "./../../common/src/pgr_alloc.hpp"
 
 // #define DEBUG
 
@@ -221,7 +221,7 @@ do_pgr_dijkstraViaVertex(
         }
 
         // get the space required to store all the paths
-        (*return_tuples) = pgr_palloc(count, (*return_tuples));
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (get_route(return_tuples, paths));
         (*return_tuples)[count - 1].edge = -2;

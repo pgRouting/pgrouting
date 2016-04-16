@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "./ksp_driver.h"
-#include "../../common/src/pgr_palloc.hpp"
+#include "../../common/src/pgr_alloc.hpp"
 #include "./pgr_ksp.hpp"
 
 
@@ -80,7 +80,7 @@ int  do_pgr_ksp(
 
         // get the space required to store all the paths
         *ksp_path = NULL;
-        *ksp_path = pgr_palloc(count, (*ksp_path));
+        *ksp_path = pgr_alloc(count, (*ksp_path));
 
         size_t sequence = 0;
         int route_id = 0;

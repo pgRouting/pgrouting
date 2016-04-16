@@ -240,7 +240,7 @@ set(PgRouting_SOURCE_NAMES
     "allpairs"
     "withPoints"
 
-    #"funnyDijkstra"
+    "funnyDijkstra"
 
     "alpha_shape"
 

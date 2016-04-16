@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 template <typename T>
 T*
-pgr_palloc(std::size_t size, T *ptr){
+pgr_alloc(std::size_t size, T *ptr){
     if( !ptr ){
         ptr = (T*) malloc(size * sizeof(T));
     } else {

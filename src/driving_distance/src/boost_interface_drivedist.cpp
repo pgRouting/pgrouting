@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "../../common/src/pgr_palloc.hpp"
+#include "../../common/src/pgr_alloc.hpp"
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
 #include "./boost_interface_drivedist.h"
 
@@ -79,7 +79,7 @@ do_pgr_driving_many_to_dist(
             *err_msg = strdup("NOTICE: No return values was found");
             return;
         }
-        *ret_path = pgr_palloc(count, (*ret_path));
+        *ret_path = pgr_alloc(count, (*ret_path));
         auto trueCount(collapse_paths(ret_path, paths));
         *path_count = trueCount;
 
@@ -151,7 +151,7 @@ do_pgr_driving_distance(
 
         log << "NOTICE Count: " << count << " tuples\n";
 
-        *ret_path = pgr_palloc(count, (*ret_path));
+        *ret_path = pgr_alloc(count, (*ret_path));
 
         size_t sequence = 0;
         path.get_pg_dd_path(ret_path, sequence);

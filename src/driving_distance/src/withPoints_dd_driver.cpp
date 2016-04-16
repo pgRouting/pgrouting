@@ -48,7 +48,7 @@ extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
 
-#include "./../../common/src/pgr_palloc.hpp"
+#include "./../../common/src/pgr_alloc.hpp"
 
 
 /*******************************************************************************/
@@ -167,7 +167,7 @@ do_pgr_many_withPointsDD(
             *err_msg = strdup("NOTICE: No return values was found");
             return 0;
         }
-        *return_tuples = pgr_palloc(count, (*return_tuples));
+        *return_tuples = pgr_alloc(count, (*return_tuples));
         *return_count = collapse_paths(return_tuples, paths);
 
 #ifndef DEBUG
@@ -298,7 +298,7 @@ do_pgr_withPointsDD(
 
 
         *return_tuples = NULL;
-        *return_tuples = pgr_palloc(count, (*return_tuples));
+        *return_tuples = pgr_alloc(count, (*return_tuples));
 
         size_t sequence = 0;
         path.get_pg_dd_path(return_tuples, sequence);
