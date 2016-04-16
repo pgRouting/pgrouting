@@ -61,7 +61,6 @@ do_pgr_one_to_many_dijkstra(
   std::ostringstream log;
   try {
     graphType gType = directed? DIRECTED: UNDIRECTED;
-    const auto initial_size = total_tuples;
 
     std::deque< Path >paths;
     log << "Inserting vertices into a c++ vector structure\n";
@@ -71,12 +70,12 @@ do_pgr_one_to_many_dijkstra(
 
     if (directed) {
         log << "Working with directed Graph\n";
-        Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+        Pgr_base_graph< DirectedGraph > digraph(gType);
         digraph.graph_insert_data(data_edges, total_tuples);
         pgr_dijkstra(digraph, paths, start_vid, end_vertices, only_cost);
     } else {
         log << "Working with Undirected Graph\n";
-        Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+        Pgr_base_graph< UndirectedGraph > undigraph(gType);
         undigraph.graph_insert_data(data_edges, total_tuples);
         pgr_dijkstra(undigraph, paths, start_vid, end_vertices, only_cost);
     }

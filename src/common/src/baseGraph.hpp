@@ -228,7 +228,7 @@ class Pgr_base_graph {
        Prepares the _graph_ to be of type _gtype_ with the
        aproximate number of vertices its coing to have as *initial_size*
        */
-     explicit Pgr_base_graph< G >(graphType gtype, const size_t initial_size)
+     explicit Pgr_base_graph< G >(graphType gtype)
          : graph(1),
          m_num_vertices(0),
          m_gType(gtype)
@@ -281,7 +281,6 @@ class Pgr_base_graph {
                  d_edge.source = graph[source(*out, graph)].id;
                  d_edge.target = graph[target(*out, graph)].id;
                  d_edge.cost = graph[*out].cost;
-                 //        d_edge.reverse_cost = -1;
                  removed_edges.push_back(d_edge);
              }
          }
@@ -297,9 +296,7 @@ class Pgr_base_graph {
        \returns 0: The out degree of a vertex that its not in the graph
 
        @param [IN] *vertex_id* original vertex id
-       */
-
-
+     */
      degree_size_type out_degree(int64_t vertex_id) const{
          V v_from;
          if (!get_gVertex(vertex_id, v_from)) {
@@ -352,7 +349,6 @@ class Pgr_base_graph {
                  }
              }
          }
-
      }
 
 

@@ -75,7 +75,6 @@ do_pgr_MY_FUNCTION_NAME(
         }
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const size_t initial_size = total_tuples;
 
         std::deque< Path >paths;
         log << "Inserting vertices into a c++ vector structure\n";
@@ -87,7 +86,7 @@ do_pgr_MY_FUNCTION_NAME(
 #endif
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            Pgr_base_graph< DirectedGraph > digraph(gType);
             digraph.graph_insert_data(data_edges, total_tuples);
 #ifdef DEBUG
             digraph.print_graph(log);
@@ -95,7 +94,7 @@ do_pgr_MY_FUNCTION_NAME(
             pgr_dijkstra(digraph, paths, start_vid, end_vertices, false);
         } else {
             log << "Working with Undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            Pgr_base_graph< UndirectedGraph > undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_tuples);
 #ifdef DEBUG
             undigraph.print_graph(log);

@@ -53,19 +53,18 @@ int  do_pgr_ksp(
         std::ostringstream log;
 
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_tuples;
 
         std::deque< Path > paths;
 
         if (directedFlag) {
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            Pgr_base_graph< DirectedGraph > digraph(gType);
             Pgr_ksp< Pgr_base_graph< DirectedGraph > > fn_yen;
-            digraph.graph_insert_data(data_edges, initial_size);
+            digraph.graph_insert_data(data_edges, total_tuples);
             paths = fn_yen.Yen(digraph, start_vertex, end_vertex, k, heap_paths);
         } else {
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            Pgr_base_graph< UndirectedGraph > undigraph(gType);
             Pgr_ksp< Pgr_base_graph< UndirectedGraph > > fn_yen;
-            undigraph.graph_insert_data(data_edges, initial_size);
+            undigraph.graph_insert_data(data_edges, total_tuples);
             paths = fn_yen.Yen(undigraph, start_vertex, end_vertex, k, heap_paths);
         }
 

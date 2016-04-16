@@ -56,18 +56,17 @@ do_pgr_driving_many_to_dist(
         *path_count = 0;
 
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_tuples;
 
         std::deque< Path >paths;
         std::set< int64_t > s_start_vertices(start_vertex, start_vertex + s_len);
         std::vector< int64_t > start_vertices(s_start_vertices.begin(), s_start_vertices.end());
 
         if (directedFlag) {
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            Pgr_base_graph< DirectedGraph > digraph(gType);
             digraph.graph_insert_data(data_edges, total_tuples);
             pgr_drivingDistance(digraph, paths, start_vertices, distance, equiCostFlag);
         } else {
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            Pgr_base_graph< UndirectedGraph > undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_tuples);
             pgr_drivingDistance(undigraph, paths, start_vertices, distance, equiCostFlag);
         }
@@ -122,19 +121,18 @@ do_pgr_driving_distance(
         //  1) start_vertex is in the data_edges  DONE
 
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_edges;
 
         Path path;
 
 
         if (directedFlag) {
             log << "NOTICE: Processing Directed graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            Pgr_base_graph< DirectedGraph > digraph(gType);
             digraph.graph_insert_data(data_edges, total_edges);
             pgr_drivingDistance(digraph, path, start_vertex, distance);
         } else {
             log << "NOTICE: Processing Undirected graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            Pgr_base_graph< UndirectedGraph > undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_edges);
             pgr_drivingDistance(undigraph, path, start_vertex, distance);
         }

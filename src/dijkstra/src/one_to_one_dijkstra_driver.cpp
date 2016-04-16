@@ -66,18 +66,17 @@ do_pgr_one_to_one_dijkstra(
   std::ostringstream log;
   try {
       graphType gType = directed? DIRECTED: UNDIRECTED;
-      const auto initial_size = total_tuples;
 
       Path path;
 
       if (directed) {
           log << "Working with directed Graph\n";
-          Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+          Pgr_base_graph< DirectedGraph > digraph(gType);
           digraph.graph_insert_data(data_edges, total_tuples);
           pgr_dijkstra(digraph, path, start_vid, end_vid, only_cost);
       } else {
           log << "Working with Undirected Graph\n";
-          Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+          Pgr_base_graph< UndirectedGraph > undigraph(gType);
           undigraph.graph_insert_data(data_edges, total_tuples);
           pgr_dijkstra(undigraph, path, start_vid, end_vid, only_cost);
       }

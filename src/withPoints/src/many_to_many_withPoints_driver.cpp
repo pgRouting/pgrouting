@@ -131,20 +131,19 @@ do_pgr_many_to_many_withPoints(
         }
 #endif
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_edges;
 
         std::deque< Path > paths;
 
 
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            Pgr_base_graph< DirectedGraph > digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
             pgr_dijkstra(digraph, paths, start_vertices, end_vertices, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            Pgr_base_graph< UndirectedGraph > undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
             pgr_dijkstra(undigraph, paths, start_vertices, end_vertices, only_cost);

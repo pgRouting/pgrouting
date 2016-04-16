@@ -58,17 +58,16 @@ do_pgr_floydWarshall(
   std::ostringstream log;
   try {
     graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-    const size_t initial_size = total_tuples;
 
 
     if (directedFlag) {
       log << "Processing Directed graph\n";
-      Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+      Pgr_base_graph< DirectedGraph > digraph(gType);
       digraph.graph_insert_data(data_edges, total_tuples);
       pgr_floydWarshall(digraph, *result_tuple_count, postgres_rows);
     } else {
       log << "Processing Undirected graph\n";
-      Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+      Pgr_base_graph< UndirectedGraph > undigraph(gType);
       undigraph.graph_insert_data(data_edges, total_tuples);
       pgr_floydWarshall(undigraph, *result_tuple_count, postgres_rows);
     }
