@@ -45,7 +45,7 @@ extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
 
-#include "../../common/src/memory_func.hpp"
+#include "../../common/src/pgr_palloc.hpp"
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../common/src/baseGraph.hpp"
 
@@ -274,7 +274,7 @@ Pgr_allpairs< G >::make_result(
         size_t &result_tuple_count,
         Matrix_cell_t **postgres_rows) const {
     result_tuple_count = count_rows(graph, matrix);
-    *postgres_rows = get_memory(result_tuple_count, (*postgres_rows));
+    *postgres_rows = pgr_palloc(result_tuple_count, (*postgres_rows));
 
 
     size_t seq = 0;

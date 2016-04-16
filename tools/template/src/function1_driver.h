@@ -44,7 +44,7 @@ extern "C" {
                 size_t total_tuples,
                 int64_t start_vid,
                 int64_t  *end_vidsArr,
-                int size_end_vidsArr,
+                size_t size_end_vidsArr,
                 bool directed,
                 MY_RETURN_VALUE_TYPE **return_tuples,
                 size_t *return_count,

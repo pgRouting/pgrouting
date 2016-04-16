@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // #define DEBUG
 
 
-#include "./../../common/src/memory_func.hpp"
+#include "./../../common/src/pgr_palloc.hpp"
 
 
 // CREATE OR REPLACE FUNCTION pgr_withPoint(
@@ -151,7 +151,7 @@ do_pgr_withPoints(
             eliminate_details(path, edges_to_modify);
         }
 
-        (*return_tuples) = get_memory(count, (*return_tuples));
+        (*return_tuples) = pgr_palloc(count, (*return_tuples));
         size_t sequence = 0;
         path.generate_postgres_data(return_tuples, sequence);
         (*return_count) = sequence;

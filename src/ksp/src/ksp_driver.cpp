@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "./ksp_driver.h"
-#include "../../common/src/memory_func.hpp"
+#include "../../common/src/pgr_palloc.hpp"
 #include "./pgr_ksp.hpp"
 
 
@@ -48,6 +48,8 @@ int  do_pgr_ksp(
         General_path_element_t **ksp_path, size_t *path_count,
         char ** err_msg) {
     try {
+        *ksp_path = NULL;
+        *path_count = 0;
         std::ostringstream log;
 
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
@@ -73,13 +75,12 @@ int  do_pgr_ksp(
         if (count == 0) {
             *err_msg = strdup(
                     "NOTICE: No paths found between Starting and Ending vertices");
-            *ksp_path = noResult(path_count, (*ksp_path));
             return 0;
         }
 
         // get the space required to store all the paths
         *ksp_path = NULL;
-        *ksp_path = get_memory(count, (*ksp_path));
+        *ksp_path = pgr_palloc(count, (*ksp_path));
 
         size_t sequence = 0;
         int route_id = 0;
@@ -103,6 +104,8 @@ int  do_pgr_ksp(
         return EXIT_SUCCESS;
     } catch ( ... ) {
         *err_msg = strdup("Caught unknown expection!");
+        if (ksp_path) free(ksp_path);
+        *path_count = 0;
         return -1;
     }
 }

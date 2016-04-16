@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./withPoints_ksp_driver.h"
 #include "./../../withPoints/src/pgr_withPoints.hpp"
-#include "./../../common/src/memory_func.hpp"
+#include "./../../common/src/pgr_palloc.hpp"
 #include "./pgr_ksp.hpp"
 
 
@@ -143,7 +143,7 @@ do_pgr_withPointsKsp(
 
 
         *return_tuples = NULL;
-        *return_tuples = get_memory(count, (*return_tuples));
+        *return_tuples = pgr_palloc(count, (*return_tuples));
 
         size_t sequence = 0;
         int route_id = 0;

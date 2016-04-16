@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 // #define DEBUG
 
-#include "../../common/src/memory_func.hpp"
+#include "../../common/src/pgr_palloc.hpp"
 
 extern "C" {
 #include "./../../common/src/pgr_types.h"
@@ -106,7 +106,7 @@ do_pgr_many_to_many_dijkstra(
             return;
         }
 
-        (*return_tuples) = get_memory(count, (*return_tuples));
+        (*return_tuples) = pgr_palloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 

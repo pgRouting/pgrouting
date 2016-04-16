@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <sstream>
 #include <deque>
+#include <algorithm>
 #include <vector>
 #include "./pgr_dijkstra.hpp"
 #include "./MY_FUNCTION_NAME_driver.h"
@@ -46,7 +47,7 @@ extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
 
-#include "./../../common/src/memory_func.hpp"
+#include "./../../common/src/pgr_palloc.hpp"
 
 /************************************************************
   MY_QUERY_LINE1
@@ -57,7 +58,7 @@ do_pgr_MY_FUNCTION_NAME(
         size_t total_tuples,
         int64_t start_vid,
         int64_t  *end_vidsArr,
-        int size_end_vidsArr,
+        size_t size_end_vidsArr,
         bool directed,
         MY_RETURN_VALUE_TYPE **return_tuples,
         size_t *return_count,
@@ -65,7 +66,7 @@ do_pgr_MY_FUNCTION_NAME(
     std::ostringstream log;
     try {
 
-        if (total_tuples == 1) {
+        if (total_tuples <= 1) {
             log << "Required: more than one tuple\n";
             (*return_tuples) = NULL;
             (*return_count) = 0;
@@ -74,11 +75,12 @@ do_pgr_MY_FUNCTION_NAME(
         }
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const int initial_size = total_tuples;
+        const size_t initial_size = total_tuples;
 
         std::deque< Path >paths;
         log << "Inserting vertices into a c++ vector structure\n";
-        std::set< int64_t > end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+        std::vector< int64_t > end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+        std::sort(end_vertices.begin(),end_vertices.end());
 #ifdef DEBUG
         for (const auto &vid : end_vertices) log << vid <<"\n";
         log << "Destination" << start_vid;
@@ -113,7 +115,7 @@ do_pgr_MY_FUNCTION_NAME(
         }
 
         // get the space required to store all the paths
-        (*return_tuples) = get_memory(count, (*return_tuples));
+        (*return_tuples) = pgr_palloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
@@ -125,6 +127,8 @@ do_pgr_MY_FUNCTION_NAME(
     } catch ( ... ) {
         log << "Caught unknown expection!\n";
         *err_msg = strdup(log.str().c_str());
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
     }
 }
 

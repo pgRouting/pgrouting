@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: memory_func.hpp
+File: pgr_palloc.hpp
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 template <typename T>
 T*
-get_memory(std::size_t size, T *ptr){
+pgr_palloc(std::size_t size, T *ptr){
     if( !ptr ){
         ptr = (T*) malloc(size * sizeof(T));
     } else {
@@ -34,14 +34,3 @@ get_memory(std::size_t size, T *ptr){
     }
     return (T*) ptr;
 }
-
-
-template <typename T>
-T*
-noResult(std::size_t *count, T *ptr) {
-    (*count) = 0;
-    if (ptr)
-        free(ptr);
-    return NULL;
-}
-
