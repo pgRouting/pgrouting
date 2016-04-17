@@ -48,6 +48,7 @@ extern "C" {
                 bool directed,
                 MY_RETURN_VALUE_TYPE **return_tuples,
                 size_t *return_count,
+                char ** log_msg,
                 char ** err_msg);
 
 

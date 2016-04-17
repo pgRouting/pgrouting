@@ -32,7 +32,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "BiDirDijkstra.h"
-#include "../../common/src/pgr_alloc.hpp"
 
 
 
@@ -365,9 +364,9 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, unsigned int edge_count, int ma
 		// Transfer data path to path_element_t format and allocate memory and populate the pointer
 
         // DBG("BiDirDijkstra::bidir_dijkstra: allocating path m_vecPath.size=%d\n", m_vecPath.size() + 1);
-		//*path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
-        *path=NULL;
-		*path = pgr_alloc(m_vecPath.size(), (*path));
+		*path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
+        //*path=NULL;
+		//*path = get_memory(m_vecPath.size(), (*path));
 		*path_count = m_vecPath.size();
         // DBG("BiDirDijkstra::bidir_dijkstra: allocated path\n");
 

@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
   Uncomment when needed
 */
-//#define DEBUG
+#define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
@@ -87,7 +87,8 @@ process( char* edges_sql,
     PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
-    char *err_msg = (char *)"";
+    char *err_msg = NULL;
+    char *log_msg = NULL;
     do_pgr_MY_FUNCTION_NAME(
             edges,
             total_tuples,
@@ -97,11 +98,14 @@ process( char* edges_sql,
             directed,
             result_tuples,
             result_count,
+            &log_msg,
             &err_msg);
     PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+    PGR_DBG("Returned log message = %s\n", log_msg);
+    PGR_DBG("Returned error message = %s\n", err_msg);
 
-    free(err_msg);
+    if (err_msg) free(err_msg);
+    if (log_msg) free(log_msg);
     pfree(edges);
     pgr_SPI_finish();
 }

@@ -1,4 +1,5 @@
 /*PGR-GNU*****************************************************************
+ *
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
@@ -21,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_COMMON_SRC_BASE_GRAPH_HPP_
-#define SRC_COMMON_SRC_BASE_GRAPH_HPP_
+#pragma once
+
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
@@ -413,6 +414,27 @@ class Pgr_base_graph {
 
      //! @name only for stand by program
      //@{
+
+         friend std::ostream& operator<<(std::ostream &log, const Pgr_base_graph< G > &g) {
+
+             typename Pgr_base_graph< G >::EO_i out, out_end;
+             typename Pgr_base_graph< G >::V_i vi;
+
+             for (vi = vertices(g.graph).first; vi != vertices(g.graph).second; ++vi) {
+                 if ((*vi) >= g.m_num_vertices) continue;
+                 log << (*vi) << " out_edges(" << g.graph[(*vi)].id << "):";
+                 for (boost::tie(out, out_end) = out_edges(*vi, g.graph);
+                         out != out_end; ++out) {
+                     log << ' ' << g.graph[*out].id << "=(" << g.graph[source(*out, g.graph)].id
+                         << ", " << g.graph[target(*out, g.graph)].id << ") = "
+                         <<  g.graph[*out].cost <<"\t";
+                 }
+                 log << std::endl;
+             }
+             return log;
+         }
+
+
      void print_graph(std::ostream &log = std::cout) const {
          EO_i out, out_end;
          V_i vi;
@@ -442,7 +464,7 @@ class Pgr_base_graph {
          return true;
      }
 
- public:
+    public:
      int64_t
          get_edge_id(V from, V to, float8 &distance) const {
              E e;
@@ -468,7 +490,7 @@ class Pgr_base_graph {
              return minEdge;
          }
 
- public:
+    public:
      size_t num_vertices() const { return m_num_vertices; }
      void
          adjust_vertices() {
@@ -484,7 +506,7 @@ class Pgr_base_graph {
          return graph[v];
      }
 
- private:
+    private:
 
 
      void
@@ -557,4 +579,3 @@ class Pgr_base_graph {
 };
 
 
-#endif  // SRC_COMMON_SRC_BASE_GRAPH_HPP_

@@ -7,4 +7,5 @@ ADD_LIBRARY(common OBJECT
     edges_input.c
     arrays_input.c
     time_msg.c
+    pgr_assert.cpp
     )
