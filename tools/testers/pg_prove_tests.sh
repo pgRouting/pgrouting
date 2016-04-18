@@ -30,6 +30,7 @@ run_psql -f setup_db.sql
 #pg_prove ../../src/funnyDijkstra/test/pgtap/* -d $PGDATABASE
 
 pg_prove ../../src/allpairs/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+pg_prove ../../src/alpha_shape/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/apsp_johnson/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/apsp_warshall/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/ksp/test/pgtap/* -d $PGDATABASE  -U $PGUSER
