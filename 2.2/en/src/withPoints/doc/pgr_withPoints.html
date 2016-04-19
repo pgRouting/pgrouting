@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_withPoints &mdash; pgRouting Manual (2.2.0)</title>
+    <title>pgr_withPoints &mdash; pgRouting Manual (2.2)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.0 (pgrouting-2.2.0)',
+        VERSION:     '2.2.1 (pgrouting-2.2.1)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2.0)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.2)" href="../../../index.html" />
     <link rel="up" title="withPoints - Family of functions" href="withPoints.html" />
     <link rel="next" title="pgr_withPointsCost" href="pgr_withPointsCost.html" />
     <link rel="prev" title="withPoints - Family of functions" href="withPoints.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.2.0)</span></a></h1>
+          <span>pgRouting Manual (2.2)</span></a></h1>
         <h2 class="heading"><span>pgr_withPoints</span></h2>
       </div>
       <div class="topnav">
@@ -158,9 +158,9 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 -----+----------+------+------+------+----------
    1 |        1 |   -1 |    1 |  0.6 |        0
    2 |        2 |    2 |    4 |    1 |      0.6
-   3 |        3 |    5 |    7 |    1 |      1.6
-   4 |        4 |    8 |    6 |  0.7 |      2.6
-   5 |        5 |   -3 |   -1 |    0 |      3.3
+   3 |        3 |    5 |   10 |    1 |      1.6
+   4 |        4 |   10 |   12 |  0.6 |      2.6
+   5 |        5 |   -3 |   -1 |    0 |      3.2
 (5 rows)
 </pre></div>
 </div>
@@ -222,9 +222,9 @@ RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 -----+----------+---------+------+------+------+----------
    1 |        1 |      -3 |   -1 |    1 |  0.6 |        0
    2 |        2 |      -3 |    2 |    4 |    1 |      0.6
-   3 |        3 |      -3 |    5 |    7 |    1 |      1.6
-   4 |        4 |      -3 |    8 |    6 |  0.7 |      2.6
-   5 |        5 |      -3 |   -3 |   -1 |    0 |      3.3
+   3 |        3 |      -3 |    5 |   10 |    1 |      1.6
+   4 |        4 |      -3 |   10 |   12 |  0.6 |      2.6
+   5 |        5 |      -3 |   -3 |   -1 |    0 |      3.2
    6 |        1 |       5 |   -1 |    1 |  0.6 |        0
    7 |        2 |       5 |    2 |    4 |    1 |      0.6
    8 |        3 |       5 |    5 |   -1 |    0 |      1.6
@@ -255,13 +255,13 @@ RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 -----+----------+-----------+------+------+------+----------
    1 |        1 |        -1 |   -1 |    1 |  0.6 |        0
    2 |        2 |        -1 |    2 |    4 |    1 |      0.6
-   3 |        3 |        -1 |    5 |    7 |    1 |      1.6
-   4 |        4 |        -1 |    8 |    6 |  0.7 |      2.6
-   5 |        5 |        -1 |   -3 |   -1 |    0 |      3.3
+   3 |        3 |        -1 |    5 |   10 |    1 |      1.6
+   4 |        4 |        -1 |   10 |   12 |  0.6 |      2.6
+   5 |        5 |        -1 |   -3 |   -1 |    0 |      3.2
    6 |        1 |         2 |    2 |    4 |    1 |        0
-   7 |        2 |         2 |    5 |    7 |    1 |        1
-   8 |        3 |         2 |    8 |    6 |  0.7 |        2
-   9 |        4 |         2 |   -3 |   -1 |    0 |      2.7
+   7 |        2 |         2 |    5 |   10 |    1 |        1
+   8 |        3 |         2 |   10 |   12 |  0.6 |        2
+   9 |        4 |         2 |   -3 |   -1 |    0 |      2.6
 (9 rows)
 </pre></div>
 </div>
@@ -289,18 +289,18 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |        -1 |      -3 |   -1 |    1 |  0.6 |        0
    2 |        2 |        -1 |      -3 |    2 |    4 |    1 |      0.6
-   3 |        3 |        -1 |      -3 |    5 |    7 |    1 |      1.6
-   4 |        4 |        -1 |      -3 |    8 |    6 |  0.7 |      2.6
-   5 |        5 |        -1 |      -3 |   -3 |   -1 |    0 |      3.3
+   3 |        3 |        -1 |      -3 |    5 |   10 |    1 |      1.6
+   4 |        4 |        -1 |      -3 |   10 |   12 |  0.6 |      2.6
+   5 |        5 |        -1 |      -3 |   -3 |   -1 |    0 |      3.2
    6 |        1 |        -1 |       7 |   -1 |    1 |  0.6 |        0
    7 |        2 |        -1 |       7 |    2 |    4 |    1 |      0.6
    8 |        3 |        -1 |       7 |    5 |    7 |    1 |      1.6
    9 |        4 |        -1 |       7 |    8 |    6 |    1 |      2.6
   10 |        5 |        -1 |       7 |    7 |   -1 |    0 |      3.6
   11 |        1 |         2 |      -3 |    2 |    4 |    1 |        0
-  12 |        2 |         2 |      -3 |    5 |    7 |    1 |        1
-  13 |        3 |         2 |      -3 |    8 |    6 |  0.7 |        2
-  14 |        4 |         2 |      -3 |   -3 |   -1 |    0 |      2.7
+  12 |        2 |         2 |      -3 |    5 |   10 |    1 |        1
+  13 |        3 |         2 |      -3 |   10 |   12 |  0.6 |        2
+  14 |        4 |         2 |      -3 |   -3 |   -1 |    0 |      2.6
   15 |        1 |         2 |       7 |    2 |    4 |    1 |        0
   16 |        2 |         2 |       7 |    5 |    7 |    1 |        1
   17 |        3 |         2 |       7 |    8 |    6 |    1 |        2
@@ -681,26 +681,26 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
    1 |        1 |        -1 |      -3 |   -1 |    1 |  0.6 |        0
    2 |        2 |        -1 |      -3 |    2 |    4 |  0.7 |      0.6
    3 |        3 |        -1 |      -3 |   -6 |    4 |  0.3 |      1.3
-   4 |        4 |        -1 |      -3 |    5 |    7 |    1 |      1.6
-   5 |        5 |        -1 |      -3 |    8 |    6 |  0.7 |      2.6
-   6 |        6 |        -1 |      -3 |   -3 |   -1 |    0 |      3.3
+   4 |        4 |        -1 |      -3 |    5 |   10 |    1 |      1.6
+   5 |        5 |        -1 |      -3 |   10 |   12 |  0.6 |      2.6
+   6 |        6 |        -1 |      -3 |   -3 |   -1 |    0 |      3.2
    7 |        1 |        -1 |       7 |   -1 |    1 |  0.6 |        0
    8 |        2 |        -1 |       7 |    2 |    4 |  0.7 |      0.6
    9 |        3 |        -1 |       7 |   -6 |    4 |  0.3 |      1.3
   10 |        4 |        -1 |       7 |    5 |    7 |    1 |      1.6
   11 |        5 |        -1 |       7 |    8 |    6 |  0.7 |      2.6
-  12 |        6 |        -1 |       7 |   -3 |    6 |  0.3 |      3.3
+  12 |        6 |        -1 |       7 |   -4 |    6 |  0.3 |      3.3
   13 |        7 |        -1 |       7 |    7 |   -1 |    0 |      3.6
   14 |        1 |         2 |      -3 |    2 |    4 |  0.7 |        0
   15 |        2 |         2 |      -3 |   -6 |    4 |  0.3 |      0.7
-  16 |        3 |         2 |      -3 |    5 |    7 |    1 |        1
-  17 |        4 |         2 |      -3 |    8 |    6 |  0.7 |        2
-  18 |        5 |         2 |      -3 |   -3 |   -1 |    0 |      2.7
+  16 |        3 |         2 |      -3 |    5 |   10 |    1 |        1
+  17 |        4 |         2 |      -3 |   10 |   12 |  0.6 |        2
+  18 |        5 |         2 |      -3 |   -3 |   -1 |    0 |      2.6
   19 |        1 |         2 |       7 |    2 |    4 |  0.7 |        0
   20 |        2 |         2 |       7 |   -6 |    4 |  0.3 |      0.7
   21 |        3 |         2 |       7 |    5 |    7 |    1 |        1
   22 |        4 |         2 |       7 |    8 |    6 |  0.7 |        2
-  23 |        5 |         2 |       7 |   -3 |    6 |  0.3 |      2.7
+  23 |        5 |         2 |       7 |   -4 |    6 |  0.3 |      2.7
   24 |        6 |         2 |       7 |    7 |   -1 |    0 |        3
 (24 rows)
 </pre></div>
@@ -739,8 +739,8 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.0 (pgrouting-2.2.0).
-      Last updated on Apr 05, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.2.1 (pgrouting-2.2.1).
+      Last updated on Apr 19, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
