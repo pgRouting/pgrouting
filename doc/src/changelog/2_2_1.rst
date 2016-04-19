@@ -9,10 +9,10 @@
 
 .. _changelog_2_2_1:
 
-pgRouting 2.2.0 Release Notes
+pgRouting 2.2.1 Release Notes
 ===============================================================================
 
-With the release of pgRouting 2.2.0 fixes some bugs and issues.
+With the release of pgRouting 2.2.1 fixes some bugs and issues.
 
  - To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github.
  - To see the issues closed by this release see the `Git closed issues <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3A%22Release+2.2.1%22+is%3Aclosed>`_ on Github.
@@ -23,7 +23,7 @@ Release Notes
 -------------------------------------------------------------------------------
 
 
-Changes for release 2.2.0
+Changes for release 2.2.1
 
 * Server crash fix on pgr_alphaShape
 * Bug fix on With Points family of functions
