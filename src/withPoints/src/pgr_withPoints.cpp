@@ -290,7 +290,7 @@ create_new_edges(
              * vertex_id = -newnumber
              */
             log << "\npid" << point.pid << "\teid" << point.edge_id << "/t" << point.fraction << "\t" << point.side << "\n";
-            if (point.fraction < 0 || point.fraction > 1) {
+            if (point.fraction <= 0 || point.fraction >= 1) {
                 log << "For some reason an invalid fraction was accepted, must be an error\n";
                 return false;
             }
@@ -303,8 +303,8 @@ create_new_edges(
                 point.vertex_id = edge.target;
             }
             if (point.fraction > 0 && point.fraction < 1) {
-                log << "vertex_id of the point is " << - vertex_id << "\n";
-                point.vertex_id = -vertex_id;
+                log << "vertex_id of the point is " << -point.pid << "\n";
+                point.vertex_id = -point.pid;
                 ++vertex_id;
             }
             new_points.push_back(point);
