@@ -89,6 +89,8 @@ typedef typename boost::adjacency_list < boost::vecS, boost::vecS,
         boost::bidirectionalS,
         boost_vertex_t, boost_edge_t > DirectedGraph;
 
+namespace pgRouting {
+namespace graph{
 
 template <class G>
 class Pgr_base_graph {
@@ -613,4 +615,5 @@ void add_point(Point_on_edge &point, int driving) {
 #endif
 
 
-
+}  // namespace graph
+}  // namespace pgRouting

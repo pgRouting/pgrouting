@@ -198,12 +198,12 @@ do_pgr_dijkstraViaVertex(
 
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType);
+            pgRouting::graph::Pgr_base_graph< DirectedGraph > digraph(gType);
             digraph.graph_insert_data(data_edges, total_tuples);
             pgr_dijkstraViaVertex(digraph, via_vertices, paths, strict, U_turn_on_edge, log);
         } else {
             log << "Working with Undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType);
+            pgRouting::graph::Pgr_base_graph< UndirectedGraph > undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_tuples);
             pgr_dijkstraViaVertex(undigraph, via_vertices, paths, strict, U_turn_on_edge, log);
         }

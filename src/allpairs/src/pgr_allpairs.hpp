@@ -47,7 +47,7 @@ extern "C" {
 
 #include "../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/basePath_SSEC.hpp"
-#include "./../../common/src/baseGraph.hpp"
+#include "./../../common/src/pgr_base_graph.hpp"
 
 template < class G > class Pgr_allpairs;
 

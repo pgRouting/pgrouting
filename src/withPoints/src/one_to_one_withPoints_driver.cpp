@@ -124,13 +124,13 @@ do_pgr_withPoints(
 
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType);
+            pgRouting::graph::Pgr_base_graph< DirectedGraph > digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
             pgr_dijkstra(digraph, path, start_vid, end_vid, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType);
+            pgRouting::graph::Pgr_base_graph< UndirectedGraph > undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
             pgr_dijkstra(undigraph, path, start_vid, end_vid, only_cost);

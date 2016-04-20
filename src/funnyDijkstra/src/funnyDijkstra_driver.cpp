@@ -96,7 +96,7 @@ do_pgr_funnyDijkstra(
 #endif
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType);
+            pgRouting::graph::Pgr_base_graph< DirectedGraph > digraph(gType);
             log << "Working with directed Graph 1 \n";
             digraph.graph_insert_data(data_edges, total_tuples);
 #ifdef DEBUG
@@ -107,7 +107,7 @@ do_pgr_funnyDijkstra(
             log << "Working with directed Graph 3\n";
         } else {
             log << "Working with Undirected Graph 4\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType);
+            pgRouting::graph::Pgr_base_graph< UndirectedGraph > undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_tuples);
 #ifdef DEBUG
             log << undigraph;

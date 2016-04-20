@@ -62,12 +62,12 @@ do_pgr_floydWarshall(
 
     if (directedFlag) {
       log << "Processing Directed graph\n";
-      Pgr_base_graph< DirectedGraph > digraph(gType);
+      pgRouting::graph::Pgr_base_graph< DirectedGraph > digraph(gType);
       digraph.graph_insert_data(data_edges, total_tuples);
       pgr_floydWarshall(digraph, *result_tuple_count, postgres_rows);
     } else {
       log << "Processing Undirected graph\n";
-      Pgr_base_graph< UndirectedGraph > undigraph(gType);
+      pgRouting::graph::Pgr_base_graph< UndirectedGraph > undigraph(gType);
       undigraph.graph_insert_data(data_edges, total_tuples);
       pgr_floydWarshall(undigraph, *result_tuple_count, postgres_rows);
     }
