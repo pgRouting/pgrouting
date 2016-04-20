@@ -1,4 +1,10 @@
 
+Changes for 2.2.1
+-------------------------------------------------------------------------------
+
+- Server crash fix on pgr_alphaShape
+- Bug fix on With Points family of functions
+
 Changes for 2.2.0
 -------------------------------------------------------------------------------
 

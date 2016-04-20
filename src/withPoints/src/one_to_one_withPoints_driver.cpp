@@ -103,7 +103,8 @@ do_pgr_withPoints(
 
         int64_t start_vid(start_pid);
         int64_t end_vid(end_pid);
-#if 0
+
+#ifdef DEBUG
         for (const auto point : points) {
             if (point.pid == start_pid) {
                 start_vid = point.vertex_id;

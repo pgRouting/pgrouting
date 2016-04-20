@@ -190,16 +190,32 @@ alpha_edges( const Alpha_shape_2&  A,
 int alpha_shape(vertex_t *vertices, size_t count, double alpha,
                 vertex_t **res, size_t *res_count, char **err_msg)
 {
+    try {
   std::list<Point> points;
 
-  //std::copy(begin(vertices), end(vertices), std::back_inserter(points)); 
-  
-  for (std::size_t j = 0; j < count; ++j)
   {
-    Point p(vertices[j].x, vertices[j].y);
-    points.push_back(p);
+    std::vector<Point> pv;
+
+    for (std::size_t j = 0; j < count; ++j) {
+        Point p(vertices[j].x, vertices[j].y);
+        pv.push_back(p);
+    }
+
+    std::sort(pv.begin(), pv.end(),
+        [](const Point &e1, const Point &e2)->bool {
+        return e2.y() < e1.y();
+        });
+    std::stable_sort(pv.begin(), pv.end(),
+        [](const Point &e1, const Point &e2)->bool {
+        return e2.x() < e1.x();
+        });
+    pv.erase(std::unique(pv.begin(), pv.end()), pv.end());
+    if (pv.size() != count &&  pv.size() < 3) {
+        *err_msg = strdup("After eliminating duplicated points, less than 3 points remain!!. Alpha shape calculation needs at least 3 vertices.");
+        return -1;
+    }
+    points.insert(points.begin(), pv.begin(), pv.end());
   }
-  
 
   Alpha_shape_2 A(points.begin(), points.end(),
                   coord_type(10000),
@@ -277,4 +293,9 @@ int alpha_shape(vertex_t *vertices, size_t count, double alpha,
   *err_msg = NULL;
 
   return EXIT_SUCCESS;
+    } catch ( ... ) {
+        *err_msg = strdup("Caught unknown expection!");
+    }
+        return -1;
+
 }
