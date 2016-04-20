@@ -57,17 +57,17 @@ Routing Functions
     to-here
 
 .. toctree::
-	:hidden: 
+    :hidden: 
 
-	allpairs/doc/allpairs
-	astar/doc/pgr_astar
-	bd_astar/doc/pgr_bdAstar
-	bd_dijkstra/doc/pgr_bdDijkstra
-	dijkstra/doc/dijkstra
-	driving_distance/doc/drivingDistance
-	ksp/doc/pgr_ksp
-	tsp/doc/pgr_tsp
-	trsp/doc/pgr_trsp
+    allpairs/doc/allpairs
+    astar/doc/pgr_astar
+    bd_astar/doc/pgr_bdAstar
+    bd_dijkstra/doc/pgr_bdDijkstra
+    dijkstra/doc/dijkstra
+    driving_distance/doc/drivingDistance
+    ksp/doc/pgr_ksp
+    tsp/doc/pgr_tsp
+    trsp/doc/pgr_trsp
     withPoints/doc/withPoints
 
 
