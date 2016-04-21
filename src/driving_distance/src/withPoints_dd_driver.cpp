@@ -132,12 +132,12 @@ do_pgr_many_withPointsDD(
         std::deque< Path >paths;
 
         if (directed) {
-            pgRouting::graph::Pgr_base_graph< DirectedGraph > digraph(gType);
+            pgRouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
             pgr_drivingDistance(digraph, paths, start_vids, distance, equiCost);
         } else {
-            pgRouting::graph::Pgr_base_graph< UndirectedGraph > undigraph(gType);
+            pgRouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
             pgr_drivingDistance(undigraph, paths, start_vids, distance, equiCost);
@@ -258,13 +258,13 @@ do_pgr_withPointsDD(
 
         if (directed) {
             log << "Working with directed Graph\n";
-            pgRouting::graph::Pgr_base_graph< DirectedGraph > digraph(gType);
+            pgRouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
             pgr_drivingDistance(digraph, path, start_vid, distance);
         } else {
             log << "Working with undirected Graph\n";
-            pgRouting::graph::Pgr_base_graph< UndirectedGraph > undigraph(gType);
+            pgRouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
             pgr_drivingDistance(undigraph, path, start_vid, distance);

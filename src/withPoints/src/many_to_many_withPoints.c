@@ -116,6 +116,7 @@ process(
     }
 
     char *err_msg = NULL;
+    char *log_msg = NULL;
     clock_t start_t = clock();
     int  errcode = do_pgr_many_to_many_withPoints(
             edges,  total_edges,
@@ -130,21 +131,20 @@ process(
             result_tuples,
             result_count,
             &err_msg);
-    time_msg(" processing withPoints many to many", start_t, clock());
+    time_msg("Processing withPoints many to many", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+    PGR_DBG("LOG: %s\n", err_msg);
+    free(log_msg);
 
-    free(err_msg);
-    pfree(edges);
-
-    pgr_SPI_finish();
-
-    
-    if (errcode)  {
+    if (err_msg) {
         free(start_pidsArr);
         free(end_pidsArr);
-        pgr_send_error(errcode);
+        free(*result_tuples);
+        elog(ERROR, "%s", err_msg);
+        free(err_msg);
     }
+    pfree(edges);
+    pgr_SPI_finish();
 }
 
 /*                                                                             */

@@ -1,19 +1,79 @@
---q1
-1|1|2|3|2|4|1|0
-2|2|2|3|5|8|1|1
-3|3|2|3|6|9|1|2
-4|4|2|3|9|16|1|3
-5|5|2|3|4|3|1|4
-6|6|2|3|3|-1|0|5
-7|1|2|5|2|4|1|0
-8|2|2|5|5|-1|0|1
---q2
-1|1|2|3|2|4|1|0
-2|2|2|3|5|8|1|1
-3|3|2|3|6|9|1|2
-4|4|2|3|9|16|1|3
-5|5|2|3|4|3|1|4
-6|6|2|3|3|-1|0|5
-7|1|2|5|2|4|1|0
-8|2|2|5|5|-1|0|1
---q3
+NOTICE:  Initializing arrays
+NOTICE:  targetsArr size 2 
+NOTICE:  Calling process
+NOTICE:  Load data
+NOTICE:  Total 18 tuples in query:
+NOTICE:  Starting processing
+NOTICE:  Returning 8 tuples
+
+NOTICE:  Returned log message = Inserting vertices into a c++ vector structure
+end vids: 3,5,
+start vid:2
+Working with directed Graph
+Working with directed Graph 1 
+original_vids:1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 
+0:  out_edges_of(1): 1=(1, 2) = 1
+1:  out_edges_of(2): 1=(2, 1) = 1      4=(2, 5) = 1
+2:  out_edges_of(3): 2=(3, 2) = 1      5=(3, 6) = 1
+3:  out_edges_of(4): 3=(4, 3) = 1      16=(4, 9) = 1
+4:  out_edges_of(5): 4=(5, 2) = 1      7=(5, 8) = 1    8=(5, 6) = 1    10=(5, 10) = 1
+5:  out_edges_of(6): 8=(6, 5) = 1      9=(6, 9) = 1    11=(6, 11) = 1
+6:  out_edges_of(7): 6=(7, 8) = 1
+7:  out_edges_of(8): 6=(8, 7) = 1      7=(8, 5) = 1
+8:  out_edges_of(9): 9=(9, 6) = 1      15=(9, 12) = 1  16=(9, 4) = 1
+9:  out_edges_of(10): 10=(10, 5) = 1   12=(10, 11) = 1         14=(10, 13) = 1
+10:  out_edges_of(11): 13=(11, 12) = 1
+11:  out_edges_of(12): 15=(12, 9) = 1
+12:  out_edges_of(13): 14=(13, 10) = 1
+13:  out_edges_of(14): 17=(14, 15) = 1
+14:  out_edges_of(15): 17=(15, 14) = 1
+15:  out_edges_of(16): 18=(16, 17) = 1
+16:  out_edges_of(17): 18=(17, 16) = 1
+Working with directed Graph 2
+Working with directed Graph 3
+Converting a set of paths into the tuples
+
+
+NOTICE:  Returned error message = (null)
+
+NOTICE:  Cleaning arrays
+10a50,88
+NOTICE:  Initializing arrays
+NOTICE:  targetsArr size 2 
+NOTICE:  Calling process
+NOTICE:  Load data
+NOTICE:  Total 18 tuples in query:
+NOTICE:  Starting processing
+NOTICE:  Returning 8 tuples
+
+NOTICE:  Returned log message = Inserting vertices into a c++ vector structure
+end vids: 3,5,
+start vid:2
+Working with directed Graph
+Working with directed Graph 1 
+original_vids:1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 
+0:  out_edges_of(1): 1=(1, 2) = 1
+1:  out_edges_of(2): 1=(2, 1) = 1      4=(2, 5) = 1
+2:  out_edges_of(3): 2=(3, 2) = 1      5=(3, 6) = 1
+3:  out_edges_of(4): 3=(4, 3) = 1      16=(4, 9) = 1
+4:  out_edges_of(5): 4=(5, 2) = 1      7=(5, 8) = 1    8=(5, 6) = 1    10=(5, 10) = 1
+5:  out_edges_of(6): 8=(6, 5) = 1      9=(6, 9) = 1    11=(6, 11) = 1
+6:  out_edges_of(7): 6=(7, 8) = 1
+7:  out_edges_of(8): 6=(8, 7) = 1      7=(8, 5) = 1
+8:  out_edges_of(9): 9=(9, 6) = 1      15=(9, 12) = 1  16=(9, 4) = 1
+9:  out_edges_of(10): 10=(10, 5) = 1   12=(10, 11) = 1         14=(10, 13) = 1
+10:  out_edges_of(11): 13=(11, 12) = 1
+11:  out_edges_of(12): 15=(12, 9) = 1
+12:  out_edges_of(13): 14=(13, 10) = 1
+13:  out_edges_of(14): 17=(14, 15) = 1
+14:  out_edges_of(15): 17=(15, 14) = 1
+15:  out_edges_of(16): 18=(16, 17) = 1
+16:  out_edges_of(17): 18=(17, 16) = 1
+Working with directed Graph 2
+Working with directed Graph 3
+Converting a set of paths into the tuples
+
+
+NOTICE:  Returned error message = (null)
+
+NOTICE:  Cleaning arrays

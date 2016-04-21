@@ -45,6 +45,7 @@ do_pgr_floydWarshall(
     // return values
     Matrix_cell_t **ret_matrix,
     size_t *return_tuple_count,
+    char ** log_msg,
     char ** err_msg); 
 
 #ifdef __cplusplus

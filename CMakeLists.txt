@@ -271,7 +271,8 @@ set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES}
     "apsp_warshall" #V2.0
     "convinience"
     "topology"
-    "label_graph")
+    "label_graph"
+    )
 
 
 set(PACKAGE_SQL_FILES "")

@@ -145,7 +145,7 @@ struct {
     expectType eType;
 
 } Column_info_t;
-
+#if 0
 // used in boost
 struct boost_vertex_t {
     int64_t id;
@@ -158,7 +158,7 @@ struct boost_edge_t{
     int64_t target;
     bool first;  // originally was true (source, target) false (target, source)
 };
-
+#endif
 
 enum graphType { UNDIRECTED= 0, DIRECTED};
 

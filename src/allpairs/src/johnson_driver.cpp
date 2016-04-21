@@ -70,12 +70,12 @@ do_pgr_johnson(
 
     if (directed) {
       log << "Working with directed Graph\n";
-      pgRouting::graph::Pgr_base_graph< DirectedGraph > digraph(gType);
+      pgRouting::DirectedGraph digraph(gType);
       digraph.graph_insert_data(data_edges, total_tuples);
       pgr_johnson(digraph, *return_count, return_tuples);
     } else {
       log << "Working with Undirected Graph\n";
-      pgRouting::graph::Pgr_base_graph< UndirectedGraph > undigraph(gType);
+      pgRouting::UndirectedGraph undigraph(gType);
       undigraph.graph_insert_data(data_edges, total_tuples);
       pgr_johnson(undigraph, *return_count, return_tuples);
     }

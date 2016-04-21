@@ -93,7 +93,7 @@ do_pgr_MY_FUNCTION_NAME(
 #endif
         if (directed) {
             log << "Working with directed Graph\n";
-            pgRouting::graph::Pgr_base_graph< DirectedGraph > digraph(gType);
+            pgRouting::DirectedGraph digraph(gType);
             log << "Working with directed Graph 1 \n";
             digraph.graph_insert_data(data_edges, total_tuples);
 #ifdef DEBUG
@@ -104,7 +104,7 @@ do_pgr_MY_FUNCTION_NAME(
             log << "Working with directed Graph 3\n";
         } else {
             log << "Working with Undirected Graph 4\n";
-            pgRouting::graph::Pgr_base_graph< UndirectedGraph > undigraph(gType);
+            pgRouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_tuples);
 #ifdef DEBUG
             log << undigraph;

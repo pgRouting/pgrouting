@@ -78,18 +78,29 @@ process(
 
     clock_t start_t = clock();
     PGR_DBG("Starting processing");
-    char *err_msg = (char *)"";
+    char *err_msg = NULL; 
+    char *log_msg = NULL; 
     do_pgr_floydWarshall(
             edges,
             total_tuples,
             directed,
             result_tuples,
             result_count,
+            &log_msg,
             &err_msg);
     time_msg(" processing FloydWarshall", start_t, clock());
 
     PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+
+    if (log_msg) {
+        PGR_DBG("LOG = %s\n", log_msg);
+        free(log_msg);
+    }
+
+    if (err_msg) {
+       if (*result_tuples) free(*result_tuples);
+       elog(ERROR, " %s\n", err_msg);
+    }
 
     pfree(edges);
     pgr_SPI_finish();

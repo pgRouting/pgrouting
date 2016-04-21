@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./pgr_allpairs.hpp"
 #include "./floydWarshall_driver.h"
+#include "./../../common/src/pgr_assert.h"
 
 extern "C" {
 #include "./../../common/src/pgr_types.h"
@@ -46,53 +47,66 @@ extern "C" {
 
 void
 do_pgr_floydWarshall(
-    pgr_edge_t  *data_edges,
-    size_t total_tuples,
-    bool directedFlag,
+        pgr_edge_t  *data_edges,
+        size_t total_tuples,
+        bool directedFlag,
 
-    // return values
-    Matrix_cell_t **postgres_rows,
-    size_t *result_tuple_count,
-    char ** err_msg) {
-// function starts
-  std::ostringstream log;
-  try {
-    graphType gType = directedFlag? DIRECTED: UNDIRECTED;
+        // return values
+        Matrix_cell_t **return_tuples,
+        size_t *return_count,
+        char ** log_msg,
+        char ** err_msg) {
+    // function starts
+    std::ostringstream log;
+    try {
+        pgassert(!(*log_msg));
+        pgassert(!(*err_msg));
+        pgassert(!(*return_tuples));
+        pgassert(*return_count == 0);
+
+        graphType gType = directedFlag? DIRECTED: UNDIRECTED;
 
 
-    if (directedFlag) {
-      log << "Processing Directed graph\n";
-      pgRouting::graph::Pgr_base_graph< DirectedGraph > digraph(gType);
-      digraph.graph_insert_data(data_edges, total_tuples);
-      pgr_floydWarshall(digraph, *result_tuple_count, postgres_rows);
-    } else {
-      log << "Processing Undirected graph\n";
-      pgRouting::graph::Pgr_base_graph< UndirectedGraph > undigraph(gType);
-      undigraph.graph_insert_data(data_edges, total_tuples);
-      pgr_floydWarshall(undigraph, *result_tuple_count, postgres_rows);
+        if (directedFlag) {
+            log << "Processing Directed graph\n";
+            pgRouting::DirectedGraph digraph(gType);
+            digraph.graph_insert_data(data_edges, total_tuples);
+            log << digraph;
+            pgr_floydWarshall(digraph, *return_count, return_tuples);
+        } else {
+            log << "Processing Undirected graph\n";
+            pgRouting::UndirectedGraph undigraph(gType);
+            undigraph.graph_insert_data(data_edges, total_tuples);
+            log << undigraph;
+            pgr_floydWarshall(undigraph, *return_count, return_tuples);
+        }
+
+
+        if (*return_count == 0) {
+            log <<  "NOTICE: No Vertices found??? wiered error\n";
+            *err_msg = strdup(log.str().c_str());
+            *return_tuples = NULL;
+            *return_count = 0;
+            return;
+        }
+
+        *log_msg = strdup(log.str().c_str());
+        return;
+
+    } catch (AssertFailedException &exept) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        log << exept.what() << "\n";
+        *err_msg = strdup(log.str().c_str());
+    } catch (std::exception& exept) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        log << exept.what() << "\n";
+        *err_msg = strdup(log.str().c_str());
+    } catch(...) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        log << "Caught unknown exception!\n";
+        *err_msg = strdup(log.str().c_str());
     }
-
-
-    if (*result_tuple_count == 0) {
-      log <<  "NOTICE: No Vertices found??? wiered error\n";
-      *err_msg = strdup(log.str().c_str());
-      *postgres_rows = NULL;
-      *result_tuple_count = 0;
-      return;
-    }
-#ifndef DEBUG
-    *err_msg = strdup("OK");
-#else
-    *err_msg = strdup(log.str().c_str());
-#endif
-    return;
-  } catch ( ... ) {
-    log << "Caught unknown expection!\n";
-    *err_msg = strdup(log.str().c_str());
-    *postgres_rows = NULL;
-    *result_tuple_count = 0;
-    return;
-  }
 }
-
-
