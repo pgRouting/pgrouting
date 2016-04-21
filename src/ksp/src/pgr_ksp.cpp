@@ -57,12 +57,15 @@ Pgr_ksp< G >::Yen(G &graph,
   int64_t  start_vertex, int64_t end_vertex, int K, bool heap_paths) {
     m_ResultSet.clear();
     m_Heap.clear();
+
     if ((start_vertex != end_vertex) && (K > 0)) {
-        if   (!graph.get_gVertex(start_vertex, v_source)
-           || !graph.get_gVertex(end_vertex, v_target)) {
-             std::deque<Path> l_ResultList;
-             return l_ResultList;
+        if (!graph.has_vertex(start_vertex)
+                || !graph.has_vertex(end_vertex)) {
+            std::deque<Path> l_ResultList;
+            return l_ResultList;
         }
+        v_source = graph.get_V(start_vertex);
+        v_target = graph.get_V(end_vertex);
         m_start = start_vertex;
         m_end = end_vertex;
         executeYen(graph, K);

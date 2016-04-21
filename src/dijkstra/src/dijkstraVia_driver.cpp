@@ -64,7 +64,6 @@ pgr_dijkstraViaVertex(
     int64_t prev_vertex = via_vertices[0];
     Path path;
     
-    //for (size_t i = 0; i < via_vertices.size() - 1; ++i) {
     int64_t i = 0;
     for (const auto &vertex : via_vertices) {
         if (i == 0) {
@@ -81,7 +80,6 @@ pgr_dijkstraViaVertex(
                 // edge to be removed = second to last edge path[i].edge;
                 int64_t edge_to_be_removed = path[path.size() - 2].edge;
                 int64_t last_vertex_of_path = prev_vertex;
-               // path.path[path.path.size() - 1].vertex;
 
                 // and the current vertex is not a dead end
                 if (graph.out_degree(last_vertex_of_path) > 1) {
