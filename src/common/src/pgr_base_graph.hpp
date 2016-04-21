@@ -228,8 +228,6 @@ namespace pgRouting {
                     //! @name Id mapping handling
                     //@{
 
-                    // TODO (vicky) THINK is this necessary?
-                    // std::vector< T_V > original_vids; //!< ordered original ids
                     id_to_V  vertices_map;   //!< id -> graph id
 
                     //@}
@@ -237,7 +235,9 @@ namespace pgRouting {
                     //! @name Graph Modification
                     //@{
                     //! Used for storing the removed_edges
+
                     std::deque< T_E > removed_edges;
+
                     //@}
 
 
@@ -284,17 +284,6 @@ namespace pgRouting {
                         if (num_vertices()==0) {
                             auto vertices = pgRouting::extract_vertices(data_edges);
                             add_vertices(vertices);
-#if 0
-                            for (const auto vertex : vertices) {
-                                assert(vertices_map.find(vertex.id) == vertices_map.end());
-
-                                auto v =  add_vertex(graph);
-                                vertices_map[vertex.id] =  m_num_vertices++;
-                                graph[v].cp_members(vertex);
-
-                                pgassert(boost::num_vertices(graph) == num_vertices());
-                            }
-#endif
                         }
 
                         for (const auto edge : data_edges) {
@@ -303,11 +292,23 @@ namespace pgRouting {
                     }
 
                 private:
-                    // void extract_vertices(const pgr_edge_t *data_edges, int64_t count);
-#if 0
-                    void extract_vertices(const std::vector <pgr_edge_t > &data_edges);
-#endif
-                    void add_vertices(std::vector< T_V > vids);
+                    /*! @brief adds the vertices into the graph
+                     *
+                     * PRECONDITIONS:
+                     * ~~~~~{.c}
+                     * precondition(boost::num_vertices(graph) == 0);
+                     * for (vertex : vertices) 
+                     *    precondition(vertices_map.find(vertex.id) == vertices_map.end());
+                     * ~~~~~
+                     *
+                     * POSTCONDITIONS:
+                     * ~~~~~{.c}
+                     * postcondition(boost::num_vertices(graph) == vertices.size());
+                     * for (vertex : vertices) 
+                     *   postcondition(vertices_map.find(vertex.id) != vertices_map.end());
+                     * ~~~~~
+                     */
+                    void add_vertices(std::vector< T_V > vertices);
 
                 public:
 
@@ -396,15 +397,7 @@ namespace pgRouting {
                     friend std::ostream& operator<<(std::ostream &log, const Pgr_base_graph< G, T_V, T_E > &g) {
 
                         typename Pgr_base_graph< G, T_V, T_E >::EO_i out, out_end;
-                        // typename Pgr_base_graph< G, T_V, T_E >::V_i vi;
 
-#if 0
-                        log << "original_vids:";
-                        for (const auto vertex : g.original_vids) {
-                            log << vertex.id << ", ";
-                        }
-                        log << "\n";
-#endif
                         for (auto vi = vertices(g.graph).first; vi != vertices(g.graph).second; ++vi) {
                             if ((*vi) >= g.m_num_vertices) break;
                             log << (*vi) << ": "  << " out_edges_of(" << g.graph[(*vi)].id << "):";
@@ -661,30 +654,6 @@ namespace pgRouting {
 
             /******************  PRIVATE *******************/
 
-#if 0
-            template < class G, typename T_V, typename T_E >
-                void
-                Pgr_base_graph< G, T_V, T_E >::extract_vertices(
-                        const std::vector <pgr_edge_t > &data_edges) {
-                    if (data_edges.empty()) return;
-
-                    std::vector< T_V > vertices;
-                    vertices.reserve(data_edges.size() * 2);
-
-                    for (const auto edge : data_edges) {
-                        T_V vertex;
-
-                        vertex.id = edge.source;
-                        vertices.push_back(vertex);
-
-                        vertex.id = edge.target;
-                        vertices.push_back(vertex);
-
-                    }
-
-                    add_vertices(vertices);
-                }
-#endif
             template < class G, typename T_V, typename T_E >
                 void
                 Pgr_base_graph< G, T_V, T_E >::add_vertices(
@@ -701,67 +670,6 @@ namespace pgRouting {
                     }
                     return;
                 }
-#if 0
-                    // pgprecondition(is_sorted(original_ids));
-                    // pgprecondition(has_uniques(original_ids));
-
-                    /*
-                     *  sort and delete duplicates
-                     */
-                    std::stable_sort(vertices.begin(), vertices.end(),
-                            [](const T_V &lhs, const T_V &rhs)
-                            {return lhs.id < rhs.id;});
-
-
-                    vertices.erase(
-                            std::unique(vertices.begin(), vertices.end(),
-                                [](const T_V &lhs, const T_V &rhs)
-                                {return lhs.id == rhs.id;}), vertices.end()
-                            );
-
-                    // pgassert(is_sorted(vertices));
-                    // pgassert(has_uniques(vertices));
-
-                    /*
-                     * original_ids - vids = vids to be inserted
-                     */
-
-                    std::vector< T_V > diff;
-                    std::set_difference(
-                            vertices.begin(), vertices.end(), 
-                            original_vids.begin(), original_vids.end(),
-                            std::inserter(diff, diff.begin()),
-                            [](const T_V &lhs, const T_V &rhs)
-                            {return lhs.id == rhs.id;}
-                            );
-
-                    pgassert(boost::num_vertices(graph) == num_vertices());
-                    for (const auto vertex : diff) {
-                        assert(vertices_map.find(vertex.id) == vertices_map.end());
-                        /* not added yet */
-                        auto v =  add_vertex(graph);
-                        vertices_map[vertex.id] =  m_num_vertices++;
-                        graph[v].cp_members(vertex);
-
-                        pgassert(boost::num_vertices(graph) == num_vertices());
-                    }
-
-                    /*
-                     * insert the newly added vertices into original_vids and sort it.
-                     */
-
-                    original_vids.insert(original_vids.end(), diff.begin(), diff.end());
-
-
-                    std::stable_sort(original_vids.begin(), original_vids.end(),
-                            [](const T_V &lhs, const T_V &rhs)
-                            {return lhs.id < rhs.id;});
-
-                    for (const auto vertex : original_vids) {
-                        pgassert(vertices_map.find(vertex.id) != vertices_map.end());
-                    }
-                }
-#endif
 
             } // namespace graph
     }  // namespace pgRouting
