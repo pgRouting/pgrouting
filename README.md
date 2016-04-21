@@ -120,7 +120,7 @@ Postgresql 9.1+
 
 ## USAGE
 
-See online documentation: http://docs.pgrouting.org/en/2.2/doc/index.html
+See online documentation: http://docs.pgrouting.org/2.2/en/doc/index.html
 
 
 ## LICENSE
