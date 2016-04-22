@@ -25,12 +25,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
+#include <sstream>
 #include "./basic_vertex.h"  
 #include "./pgr_types.h"  
 #include "./pgr_assert.h"
 
 
 namespace pgRouting {
+
+    std::ostream& operator<<(std::ostream& log, const Basic_vertex &v) {
+        log << v.id ;
+        return log;
+    }
 
     std::vector < Basic_vertex > extract_vertices(
             std::vector < Basic_vertex > vertices,

@@ -68,7 +68,7 @@ void compute(char* sql, int64_t start_vertex,
   }
 
   PGR_DBG("Load data");
-  pgr_get_data_5_columns(sql, &edges, &total_tuples);
+  pgr_get_edges(sql, &edges, &total_tuples);
 
   PGR_DBG("Total %ld tuples in query:", total_tuples);
   PGR_DBG("Calling do_pgr_ksp\n");

@@ -114,7 +114,7 @@ process(
     PGR_DBG("load the edges that match the points");
     pgr_edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
-    pgr_get_data_5_columns(edges_of_points_query, &edges_of_points, &total_edges_of_points);
+    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points);
 
     PGR_DBG("Total %ld edges in query:", total_edges_of_points);
 #ifdef DEBUG
@@ -133,7 +133,7 @@ process(
     PGR_DBG("load the edges that dont match the points");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
-    pgr_get_data_5_columns(edges_no_points_query, &edges, &total_edges);
+    pgr_get_edges(edges_no_points_query, &edges, &total_edges);
 
     PGR_DBG("Total %ld edges in query:", total_edges);
 #ifdef DEBUG

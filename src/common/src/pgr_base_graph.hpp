@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 #include "./basic_vertex.h"
+#include "./xy_vertex.h"
 #include "./basic_edge.h"
 #include "./pgr_types.h" // for pgr_edge_t 
 #include "./pgr_assert.h"
@@ -188,12 +189,15 @@ namespace pgRouting {
     } // namespace graph
 
 
-     /** @name Grpah types 
+     /** @name Graph types 
       Type      |   pgRouting
       :---------: | :---------------------
       UndirectedGraph | Basic undirected graph
       DirectedGraph | Basic directed graph
+      xyUndirectedGraph | X & Y values stored on the vertex 
+      xyDirectedGraph | X & Y values stored on the vertex 
       */
+    //@{
     typedef typename graph::Pgr_base_graph <
         boost::adjacency_list < boost::vecS, boost::vecS,
         boost::undirectedS,
@@ -205,6 +209,19 @@ namespace pgRouting {
         boost::bidirectionalS,
         Basic_vertex, Basic_edge >,
         Basic_vertex, Basic_edge > DirectedGraph;
+
+    typedef typename graph::Pgr_base_graph <
+        boost::adjacency_list < boost::vecS, boost::vecS,
+        boost::undirectedS,
+        XY_vertex, Basic_edge >,
+        XY_vertex, Basic_edge > xyUndirectedGraph;
+
+    typedef typename graph::Pgr_base_graph <
+        boost::adjacency_list < boost::vecS, boost::vecS,
+        boost::bidirectionalS,
+        XY_vertex, Basic_edge >,
+        XY_vertex, Basic_edge > xyDirectedGraph;
+    //@}
 
     namespace graph{
 
@@ -493,7 +510,7 @@ namespace pgRouting {
 
                  for (auto vi = vertices(g.graph).first; vi != vertices(g.graph).second; ++vi) {
                      if ((*vi) >= g.m_num_vertices) break;
-                     log << (*vi) << ": "  << " out_edges_of(" << g.graph[(*vi)].id << "):";
+                     log << (*vi) << ": "  << " out_edges_of(" << g.graph[(*vi)] << "):";
                      for (boost::tie(out, out_end) = out_edges(*vi, g.graph);
                              out != out_end; ++out) {
                          log << ' ' << g.graph[*out].id << "=(" << g.graph[source(*out, g.graph)].id

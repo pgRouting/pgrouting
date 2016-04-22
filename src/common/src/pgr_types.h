@@ -40,6 +40,18 @@ typedef struct edge_astar
   double t_y;
 } edge_astar_t;
 
+typedef struct 
+{
+  int64_t id;
+  int64_t source;
+  int64_t target;
+  double cost;
+  double reverse_cost;
+  double x1;
+  double y1;
+  double x2;
+  double y2;
+} Pgr_edge_xy_t;
 
 
 typedef struct {
