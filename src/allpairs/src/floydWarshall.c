@@ -78,8 +78,8 @@ process(
 
     clock_t start_t = clock();
     PGR_DBG("Starting processing");
-    char *err_msg = NULL; 
-    char *log_msg = NULL; 
+    char *err_msg = NULL;
+    char *log_msg = NULL;
     do_pgr_floydWarshall(
             edges,
             total_tuples,
