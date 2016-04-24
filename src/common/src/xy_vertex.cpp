@@ -44,86 +44,78 @@ namespace pgRouting {
             return this->id == rhs.id && boost::geometry::equals(point, rhs.point);
         }
 
-#if 0
-    std::vector < Basic_vertex > extract_vertices(
-            std::vector < Basic_vertex > vertices,
-            const std::vector <pgr_edge_t > data_edges) {
-        if (data_edges.empty()) return vertices;
 
-        vertices.reserve(vertices.size() + data_edges.size() * 2);
+    std::vector < XY_vertex > extract_vertices(
+            const std::vector <Pgr_edge_xy_t > &data_edges) {
 
-        for (const auto edge : data_edges) {
-            Basic_vertex vertex;
-
-            vertex.id = edge.source;
-            vertices.push_back(vertex);
-
-            vertex.id = edge.target;
-            vertices.push_back(vertex);
-
-        }
-
-        /*
-         * sort and delete duplicates
-         */
-        std::stable_sort(vertices.begin(), vertices.end(),
-                [](const Basic_vertex &lhs, const Basic_vertex &rhs)
-                {return lhs.id < rhs.id;});
-
-        vertices.erase(
-                std::unique(vertices.begin(), vertices.end(),
-                    [](const Basic_vertex &lhs, const Basic_vertex &rhs)
-                    {return lhs.id == rhs.id;}), vertices.end()
-                );
-
-        return vertices;
-    }
-
-
-    std::vector < Basic_vertex > extract_vertices(
-            const std::vector <pgr_edge_t > data_edges) {
-
-        std::vector< Basic_vertex > vertices;
+        std::vector< XY_vertex > vertices;
         if (data_edges.empty()) return vertices;
 
         vertices.reserve(data_edges.size() * 2);
 
         for (const auto edge : data_edges) {
-            Basic_vertex vertex;
+            XY_vertex v_source(edge, true);
+            vertices.push_back(v_source);
 
-            vertex.id = edge.source;
-            vertices.push_back(vertex);
-
-            vertex.id = edge.target;
-            vertices.push_back(vertex);
-
+            XY_vertex v_target(edge, false);
+            vertices.push_back(v_target);
         }
 
         /*
          * sort and delete duplicates
          */
         std::stable_sort(vertices.begin(), vertices.end(),
-                [](const Basic_vertex &lhs, const Basic_vertex &rhs)
+                [](const XY_vertex &lhs, const XY_vertex &rhs)
                 {return lhs.id < rhs.id;});
 
         vertices.erase(
                 std::unique(vertices.begin(), vertices.end(),
-                    [](const Basic_vertex &lhs, const Basic_vertex &rhs)
-                    {return lhs.id == rhs.id;}), vertices.end()
+                    [](const XY_vertex &lhs, const XY_vertex &rhs)
+                    {return lhs == rhs;}), vertices.end()
                 );
 
         return vertices;
     }
 
-    std::vector < Basic_vertex > extract_vertices(
-            const pgr_edge_t *data_edges, int64_t count) {
-        return extract_vertices(std::vector < pgr_edge_t >(data_edges, data_edges + count));
+    std::vector < XY_vertex > extract_vertices(
+            const Pgr_edge_xy_t *data_edges, int64_t count) {
+        return extract_vertices(std::vector < Pgr_edge_xy_t >(data_edges, data_edges + count));
     }
 
-    std::vector < Basic_vertex > extract_vertices(
-            std::vector < Basic_vertex > vertices,
-            const pgr_edge_t *data_edges, int64_t count) {
-        return extract_vertices(vertices, std::vector < pgr_edge_t >(data_edges, data_edges + count));
+#if 0
+    std::vector < XY_vertex > extract_vertices(
+            std::vector < XY_vertex > vertices,
+            const std::vector < Pgr_edge_xy_t > data_edges) {
+        if (data_edges.empty()) return vertices;
+
+        vertices.reserve(vertices.size() + data_edges.size() * 2);
+
+        for (const auto edge : data_edges) {
+            vertices.push_back(XY_vertex(edge.source, edge.x1, edge.y1));
+            vertices.push_back(XY_vertex(edge.target, edge.x2, edge.y2));
+        }
+
+        /*
+         * sort and delete duplicates
+         */
+        std::stable_sort(vertices.begin(), vertices.end(),
+                [](const XY_vertex &lhs, const XY_vertex &rhs)
+                {return lhs.id < rhs.id;});
+
+        vertices.erase(
+                std::unique(vertices.begin(), vertices.end(),
+                    [](const XY_vertex &lhs, const XY_vertex &rhs)
+                    {return lhs.id == rhs.id;}), vertices.end()
+                );
+
+        return vertices;
+    }
+#endif
+#if 0
+    std::vector < XY_vertex > extract_vertices(
+            std::vector < XY_vertex > vertices,
+            const Pgr_edge_xy_t *data_edges, int64_t count) {
+        return extract_vertices(vertices, std::vector < Pgr_edge_xy_t >(data_edges, data_edges + count));
     }
 #endif
 

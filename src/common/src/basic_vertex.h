@@ -38,12 +38,17 @@ namespace pgRouting {
              id(0) {}
          Basic_vertex(const Basic_vertex &v) :
              id(v.id) {}
+
          explicit Basic_vertex(const int64_t _id) :
              id(_id) {}
 
-         inline void cp_members(const Basic_vertex &other){
+         Basic_vertex(const pgr_edge_t &other, bool is_source) :
+            id(is_source? other.source : other.target) {}
+
+         void cp_members(const Basic_vertex &other){
              this->id = other.id;
          };
+
 
          friend std::ostream& operator<<(std::ostream& log, const Basic_vertex &v);
      public:

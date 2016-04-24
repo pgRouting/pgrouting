@@ -59,20 +59,20 @@ namespace pgRouting {
          Point point;
     };
 
+    std::vector < XY_vertex > extract_vertices(
+            const Pgr_edge_xy_t *data_edges, int64_t count);
+
+    std::vector < XY_vertex > extract_vertices(
+            const std::vector < Pgr_edge_xy_t > &data_edges);
+
 #if 0
-    std::vector < Basic_vertex > extract_vertices(
-            std::vector < Basic_vertex > vertices,
-            const pgr_edge_t *data_edges, int64_t count);
+    std::vector < XY_vertex > extract_vertices(
+            std::vector < XY_vertex > vertices,
+            const Pgr_edge_xy_t *data_edges, int64_t count);
 
-    std::vector < Basic_vertex > extract_vertices(
-            std::vector < Basic_vertex > vertices,
-            const std::vector < pgr_edge_t > data_edges);
-
-    std::vector < Basic_vertex > extract_vertices(
-            const pgr_edge_t *data_edges, int64_t count);
-
-    std::vector < Basic_vertex > extract_vertices(
-            const std::vector < pgr_edge_t > data_edges);
+    std::vector < XY_vertex > extract_vertices(
+            std::vector < XY_vertex > vertices,
+            const std::vector < Pgr_edge_xy_t > data_edges);
 #endif
 
 } // namespace pgRouting
