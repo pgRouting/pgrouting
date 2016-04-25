@@ -31,8 +31,8 @@ if [ -d "$MY_FUNCTION_NAME" ]; then
 fi
 if [ -d ../../src/"$MY_FUNCTION_NAME" ]; then
         echo "directory exists please delete first"
-	#exit
-    rm -rf ../../src/"$MY_FUNCTION_NAME" 
+	exit
+    #rm -rf ../../src/"$MY_FUNCTION_NAME" 
 fi
 
 mkdir "$MY_FUNCTION_NAME"

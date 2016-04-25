@@ -73,25 +73,35 @@ process( char* edges_sql,
     pgr_SPI_connect();
 
     PGR_DBG("Load data");
+    /*
+     * pgr_edge_t
+     * Pgr_edge_xy_t
+     */
     pgr_edge_t *edges = NULL;
-    size_t total_tuples = 0;
-    pgr_get_edges(edges_sql, &edges, &total_tuples);
+    size_t total_edges = 0;
 
-    if (total_tuples == 0) {
+    /*
+     * pgr_get_edges
+     * pgr_get_edges_xy
+     * pgr_get_edges_no_id
+     */
+    pgr_get_edges(edges_sql, &edges, &total_edges);
+    PGR_DBG("Total %ld edges in query:", total_edges);
+
+    if (total_edges == 0) {
         PGR_DBG("No edges found");
         (*result_count) = 0;
         (*result_tuples) = NULL;
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
     char *err_msg = NULL;
     char *log_msg = NULL;
     do_pgr_MY_FUNCTION_NAME(
             edges,
-            total_tuples,
+            total_edges,
             start_vid,
             end_vidsArr,
             size_end_vidsArr,
@@ -101,11 +111,16 @@ process( char* edges_sql,
             &log_msg,
             &err_msg);
     PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned log message = %s\n", log_msg);
-    PGR_DBG("Returned error message = %s\n", err_msg);
-
-    if (err_msg) free(err_msg);
+    PGR_DBG("LOG: %s\n", log_msg);
     if (log_msg) free(log_msg);
+
+    if (err_msg) {
+        if (*result_tuples) free(*result_tuples);
+        if (end_vidsArr) free(end_vidsArr);
+        elog(ERROR, "%s", err_msg);
+        free(err_msg);
+    }
+
     pfree(edges);
     pgr_SPI_finish();
 }
@@ -192,7 +207,7 @@ MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
         /*  This has to match you ouput otherwise the server crashes                   */
         /*
            MY_QUERY_LINE2
-        ********************************************************************************/
+         ********************************************************************************/
 
 
         values = palloc(8 * sizeof(Datum));

@@ -241,7 +241,7 @@ set(PgRouting_SOURCE_NAMES
     "allpairs"
     "withPoints"
 
-    "testXYedges"
+    "test_XY_edge"
     "funnyDijkstra"
 
     "alpha_shape"

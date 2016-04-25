@@ -56,7 +56,7 @@ extern "C" {
 void
 do_pgr_MY_FUNCTION_NAME(
         pgr_edge_t  *data_edges,
-        size_t total_tuples,
+        size_t total_edges,
         int64_t start_vid,
         int64_t  *end_vidsArr,
         size_t size_end_vidsArr,
@@ -71,6 +71,7 @@ do_pgr_MY_FUNCTION_NAME(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
+        pgassert(total_edges != 0);
 
         if (total_tuples <= 1) {
             log << "Required: more than one tuple\n";
@@ -91,11 +92,12 @@ do_pgr_MY_FUNCTION_NAME(
         for (const auto &vid : end_vertices) log << vid << ",";
         log << "\nstart vid:" << start_vid << "\n";
 #endif
+
         if (directed) {
             log << "Working with directed Graph\n";
             pgRouting::DirectedGraph digraph(gType);
             log << "Working with directed Graph 1 \n";
-            digraph.graph_insert_data(data_edges, total_tuples);
+            digraph.graph_insert_data(data_edges, total_edges);
 #ifdef DEBUG
             log << digraph;
 #endif
@@ -103,9 +105,9 @@ do_pgr_MY_FUNCTION_NAME(
             pgr_dijkstra(digraph, paths, start_vid, end_vertices, false);
             log << "Working with directed Graph 3\n";
         } else {
-            log << "Working with Undirected Graph 4\n";
+            log << "Working with Undirected Graph\n";
             pgRouting::UndirectedGraph undigraph(gType);
-            undigraph.graph_insert_data(data_edges, total_tuples);
+            undigraph.graph_insert_data(data_edges, total_edges);
 #ifdef DEBUG
             log << undigraph;
 #endif
