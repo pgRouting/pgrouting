@@ -1,4 +1,4 @@
-#VERSION pgrouting 2.2.1
+#VERSION pgrouting 2.2.2
 #TYPES
 pgr_costResult(integer,integer,integer,float8)
 pgr_costResult3(integer,integer,integer,integer,float8)
