@@ -15,7 +15,7 @@ pgRouting 2.2.1 Release Notes
 With the release of pgRouting 2.2.1 fixes some bugs and issues.
 
  - To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github.
- - To see the issues closed by this release see the `Git closed issues <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ on Github.
+ - To see the issues closed by this release see the `Git closed issues <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed>`_ on Github.
  - For important changes see the following release notes.
 
 
