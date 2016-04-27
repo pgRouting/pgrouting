@@ -4,16 +4,17 @@
 
 ## STATUS
 
-### Current Development is in the *develop* branch
+### Branches
 
-The *master* branch reflects the current 2.2.0 release.
+The *master* branch reflects the current 2.2.2 release.
+The *develop* branch reflects the 2.3.0-dev
 
 
 
 ## LINKS
 
 * http://pgrouting.org/ 
-* http://docs.pgrouting.org/dev/doc/index.html
+* http://docs.pgrouting.org
 * https://github.com/pgRouting/pgrouting
 
 <table>
