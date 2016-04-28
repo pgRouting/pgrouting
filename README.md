@@ -13,7 +13,7 @@ The *master* branch reflects the current 2.2.0 release.
 ## LINKS
 
 * http://pgrouting.org/ 
-* http://docs.pgrouting.org/dev/doc/index.html
+* http://docs.pgrouting.org/
 * https://github.com/pgRouting/pgrouting
 
 <table>
