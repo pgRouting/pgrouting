@@ -162,7 +162,7 @@ class Path {
                             return l.node < r.node; 
                             });
                             
-                    if (pos != p1.end() && stop.agg_cost < pos->agg_cost) {
+                    if (pos != p1.end() && stop.node == pos->node && stop.agg_cost < pos->agg_cost) {
                         /* both share the same node &
                          * the second path has the smallest
                          *  So erasing from the first path */
