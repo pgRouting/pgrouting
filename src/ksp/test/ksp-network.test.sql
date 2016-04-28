@@ -8,6 +8,11 @@ BEGIN;
 -- Create a test data base
 --
 
+DO $$
+DECLARE debuglevel TEXT;
+BEGIN
+EXECUTE 'show client_min_messages' into debuglevel;
+
 SET client_min_messages = WARNING;
 CREATE table nodes (
         id serial NOT NULL,
@@ -15,7 +20,7 @@ CREATE table nodes (
         name text  not NULL
 );
 -- Add a geom column
-SELECT addgeometrycolumn('','nodes','the_geom',3857,'POINT',2);
+PERFORM addgeometrycolumn('','nodes','the_geom',3857,'POINT',2);
 
 CREATE table network (
         id serial NOT NULL,
@@ -25,7 +30,7 @@ CREATE table network (
         reverse_cost double precision 
 );
 -- Add a geom column
-SELECT addgeometrycolumn('','network','the_geom',3857,'MULTILINESTRING',2);
+PERFORM addgeometrycolumn('','network','the_geom',3857,'MULTILINESTRING',2);
 -- Make the vertexs, location is not important in this example
 INSERT INTO nodes (vertex,the_geom,name) values (0,st_SetSRID(st_makepoint(0,0),3857),'Zero');
 INSERT INTO nodes (vertex,the_geom,name) values (1,st_SetSRID(st_makepoint(1,1),3857),'One');
@@ -91,7 +96,9 @@ update  network set cost = st_length(the_geom);
 update  network set reverse_cost = st_length(the_geom)*5;
 
 
-SET client_min_messages = WARNING;
+EXECUTE 'set client_min_messages  to '|| debuglevel;
+END $$;
+
 
 -- TESTS START
 /*

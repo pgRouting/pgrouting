@@ -100,8 +100,6 @@ Finds the driving distance depending on the optional parameters setup.
 Driving distance from many starting points
 ------------------------------------------
 
-.. note:: Not coded yet
-
 Finds the driving distance depending on the optional parameters setup.
 
 .. code-block:: none

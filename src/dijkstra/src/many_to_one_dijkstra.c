@@ -45,6 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
@@ -89,6 +90,8 @@ process(
     PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
+    clock_t start_t = clock();
+
     char *err_msg = NULL;
     do_pgr_many_to_one_dijkstra(
             edges,
@@ -101,6 +104,7 @@ process(
             result_tuples,
             result_count,
             &err_msg);
+    time_msg(" processing Dijkstra many to one", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);
 

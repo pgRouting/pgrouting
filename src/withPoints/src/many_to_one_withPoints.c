@@ -40,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
@@ -111,6 +112,7 @@ process(
     }
 
     char *err_msg = NULL;
+    clock_t start_t = clock();
     int  errcode = do_pgr_many_to_one_withPoints(
             edges,  total_edges,
             points, total_points,
@@ -124,6 +126,7 @@ process(
             result_tuples,
             result_count,
             &err_msg);
+    time_msg(" processing withPoints many to one", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);
     if (!err_msg) free(err_msg);

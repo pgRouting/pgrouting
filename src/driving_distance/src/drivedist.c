@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
@@ -75,10 +76,12 @@ void compute_driving_distance(
   }
   PGR_DBG("total edges read %ld\n", total_edges);
 
+  clock_t start_t = clock();
   do_pgr_driving_distance(edges, total_edges,
                         start_vertex, distance,
                         directed, 
                         path, path_count, &err_msg);
+  time_msg(" processing Driving Distance one start", start_t, clock());
 
 
   PGR_DBG("total tuples found %ld\n", *path_count);

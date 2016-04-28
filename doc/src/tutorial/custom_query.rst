@@ -121,9 +121,9 @@ When the columns required have the default names this can be used (pgr_func is t
 
 .. code-block:: sql
 
-        pgr_func('edge_table')        -- when tolerance is not requiered
-	pgr_func('edge_table',0.001)  -- when tolerance is requiered
-        -- s_in_rule, s_out_rule, st_in_rules, t_out_rules are requiered
+        pgr_func('edge_table')        -- when tolerance is not required
+	pgr_func('edge_table',0.001)  -- when tolerance is required
+        -- s_in_rule, s_out_rule, st_in_rules, t_out_rules are required
 	SELECT pgr_analyzeOneway('edge_table', ARRAY['', 'B', 'TF'], ARRAY['', 'B', 'FT'], 
 					       ARRAY['', 'B', 'FT'], ARRAY['', 'B', 'TF']) 
 

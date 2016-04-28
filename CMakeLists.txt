@@ -12,7 +12,6 @@ project(PGROUTING)
 
 # Configure options
 
-
 option(WITH_DOC
     "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
 
@@ -31,7 +30,7 @@ SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries 
 #-----------------------------------------------------------------------------
 # PGROUTING version number.
 set(PGROUTING_VERSION_MAJOR "2")
-set(PGROUTING_VERSION_MINOR "2")
+set(PGROUTING_VERSION_MINOR "3")
 set(PGROUTING_VERSION_PATCH "0")
 
 set(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
@@ -42,7 +41,8 @@ set(POSTGIS_MINIMUM_VERSION "2.0.0")
 
 file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 
-set(PGROUTING_GIT_TAG "pgrouting-2.2.0-beta1")
+set(PGROUTING_GIT_TAG "pgrouting-2.3.0-dev")
+
 #string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([^-]+)-[0-9]+-g([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
@@ -213,6 +213,7 @@ if(WIN32)
 endif(WIN32)
 
 # TODO default compilation with -dNDEBUG 
+
 #compiler directives
 if(APPLE)
   # support GNU(Xcode<4) and Clang(Xcode>=4)
@@ -232,7 +233,7 @@ elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGW
     #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC -O2 -g -Wall -Wconversion -pedantic -fmax-errors=10 -Wextra  -frounding-math -Wno-deprecated")
 
     set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g  -frounding-math")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g  -std=c++0x -frounding-math -Wno-deprecated")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -std=c++0x -frounding-math -Wno-deprecated")
 
 elseif(WIN32)
     # currently, support MinGW only

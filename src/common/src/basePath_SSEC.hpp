@@ -83,8 +83,7 @@ class Path {
             float8 d_tot_cost);
     void clear();
 
-    void print_path(std::ostream &log) const;
-    void print_path() const;
+    friend std::ostream& operator<<(std::ostream &log, const Path &p);
 
 
     void fix_path(int64_t from, int64_t to);
@@ -163,7 +162,7 @@ class Path {
                             return l.node < r.node; 
                             });
                             
-                    if (pos != p1.end() && stop.agg_cost < pos->agg_cost) {
+                    if (pos != p1.end() && stop.node == pos->node && stop.agg_cost < pos->agg_cost) {
                         /* both share the same node &
                          * the second path has the smallest
                          *  So erasing from the first path */
