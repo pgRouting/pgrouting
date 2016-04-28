@@ -12,6 +12,7 @@
 Release Notes
 ===============================================================================
 
+   - :ref:`changelog_2_2_2`
    - :ref:`changelog_2_2_1`
    - :ref:`changelog_2_2_0`  
    - :ref:`changelog_2_1_0`  
@@ -21,6 +22,7 @@ Release Notes
 .. toctree::
    :hidden: 
 
+   2_2_2
    2_2_1
    2_2_0
    2_1_0
