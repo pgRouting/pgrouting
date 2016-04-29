@@ -95,13 +95,15 @@ process( char* edges_sql,
     (*result_bool) = do_pgr_testXYedges(
             edges,
             total_edges,
-            result_bool,
             &log_msg,
             &err_msg);
 
     pfree(edges);
     PGR_DBG("Returned log message = %s\n", log_msg);
-    if (log_msg) free(log_msg);
+    if (log_msg) {
+        elog(DEBUG1, "%s", log_msg);
+        free(log_msg);
+    }
     PGR_DBG("Returned error message = %s\n", err_msg);
 
     if (err_msg) {

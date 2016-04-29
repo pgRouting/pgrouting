@@ -318,6 +318,7 @@ class Pgr_base_graph {
      /*!
        - Prepares the graph to be of type gtype
        - inserts the vertices
+       - The vertices must be checked (if necessary)  before calling the constructor
        */
      Pgr_base_graph< G , T_V, T_E >(const std::vector< T_V > &vertices, graphType gtype)
          : graph(vertices.size()),
@@ -325,6 +326,7 @@ class Pgr_base_graph {
          m_gType(gtype) {
              pgassert(boost::num_vertices(graph) == num_vertices());
              pgassert(boost::num_vertices(graph) == vertices.size());
+             pgassert(pgRouting::check_vertices(vertices) == 0);
 
              size_t i = 0;
              for (auto vi = boost::vertices(graph).first; vi != boost::vertices(graph).second; ++vi) {
@@ -359,15 +361,28 @@ class Pgr_base_graph {
          }
 
      /*! @brief Inserts *count* edges of type *pgr_edge_t* into the graph
-      *  
-      *  Calls \bextract_vertices when the graph is empty
-      *
-      *  @param edges
+
+        The set of edges should not have an illegal vertex defined
+        
+        When the graph is empty calls:
+        - \bextract_vertices
+        and throws an exeption if there are illegal vertices.
+        
+        
+        When developing:
+          - if an illegal vertex is found an exeption is thrown
+          - That means that the set of vertices should be checked in the
+            code that is being developed
+        
+        No edge is inserted when there is an error on the vertices
+
+        @param edges
       */
      template < typename T >
          void graph_insert_data(const std::vector < T > &edges) {
              if (num_vertices()==0) {
                  auto vertices = pgRouting::extract_vertices(edges);
+                 pgassert(pgRouting::check_vertices(vertices) == 0);
                  add_vertices(vertices);
              }
 

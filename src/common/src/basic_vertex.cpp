@@ -38,6 +38,24 @@ namespace pgRouting {
         return log;
     }
 
+    size_t check_vertices(
+            std::vector < Basic_vertex > vertices) {
+        auto count(vertices.size());
+        std::stable_sort(
+                vertices.begin(), vertices.end(),
+                [](const Basic_vertex &lhs, const Basic_vertex &rhs)
+                {return lhs.id < rhs.id;});
+        vertices.erase(
+                std::unique(
+                    vertices.begin(), vertices.end(),
+                    [](const Basic_vertex &lhs, const Basic_vertex &rhs)
+                    {return lhs.id == rhs.id;}), vertices.end()
+                );
+
+        return vertices.size() - count;
+    }
+
+
     std::vector < Basic_vertex > extract_vertices(
             std::vector < Basic_vertex > vertices,
             const std::vector <pgr_edge_t > data_edges) {

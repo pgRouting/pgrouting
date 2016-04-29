@@ -65,8 +65,8 @@ class XY_vertex {
   Point point;
 };
 
-bool
-check_vertices(std::vector < XY_vertex > &vertices);
+size_t
+check_vertices(std::vector < XY_vertex > vertices);
 
 std::vector < XY_vertex >
 extract_vertices(

@@ -45,9 +45,9 @@ XY_vertex::operator==(const XY_vertex &rhs) const {
 }
 
 
-bool
+size_t
 check_vertices(
-    std::vector < XY_vertex > &vertices) {
+    std::vector < XY_vertex > vertices) {
     auto count(vertices.size());
     std::stable_sort(
         vertices.begin(), vertices.end(),
@@ -60,7 +60,7 @@ check_vertices(
             {return lhs.id == rhs.id;}), vertices.end()
         );
 
-    return vertices.size() == count;
+    return count - vertices.size();
 }
 
 std::vector < XY_vertex >
@@ -91,7 +91,7 @@ extract_vertices(
         std::unique(
             vertices.begin(), vertices.end(),
             [](const XY_vertex &lhs, const XY_vertex &rhs)
-            {return lhs == rhs;}), vertices.end()
+            {return lhs.id == rhs.id;}), vertices.end()
         );
     return vertices;
 }
@@ -105,6 +105,7 @@ extract_vertices(
 }
 
 #if 0
+/* the folowing might be needed when using withPoints */
 std::vector < XY_vertex > extract_vertices(
     std::vector < XY_vertex > vertices,
     const std::vector < Pgr_edge_xy_t > data_edges) {

@@ -41,7 +41,6 @@ extern "C" {
     bool do_pgr_testXYedges(
             Pgr_edge_xy_t *edges,
             size_t total_edges,
-            bool * return_bool,
             char ** log_msg,
             char ** err_msg);
 
