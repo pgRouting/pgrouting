@@ -71,13 +71,14 @@ do_pgr_withPoints(
         char ** log_msg,
         char ** err_msg){
     std::ostringstream log;
+    std::ostringstream err;
     try {
         pgassert(!(*return_tuples));
         pgassert((*return_count) == 0);
         pgassert(!(*log_msg));
         pgassert(!(*err_msg));
 
-        log << "Entering do_pgr_withPoints\n";
+        log << "ntering do_pgr_withPoints\n";
         std::vector< Point_on_edge_t >
             points(points_p, points_p + total_points);
         
@@ -88,8 +89,9 @@ do_pgr_withPoints(
          */
         int errcode = check_points(points, log);
         if (errcode) {
-            log << "Point(s) with same pid but different edge/fraction/side combination found";
-            *err_msg = strdup(log.str().c_str());
+            *log_msg = strdup(log.str().c_str());
+            err << "Unexpected point(s) with same pid but different edge/fraction/side combination found.";
+            *err_msg = strdup(err.str().c_str());
             return;
         }
 
@@ -149,9 +151,10 @@ do_pgr_withPoints(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            log <<
-                "No paths found between Starting and any of the Ending vertices\n";
             *log_msg = strdup(log.str().c_str());
+            err <<
+                "No paths found between Starting and any of the Ending vertices\n";
+            *log_msg = strdup(err.str().c_str());
             return;
         }
 
@@ -165,21 +168,25 @@ do_pgr_withPoints(
         (*return_count) = sequence;
 
         *log_msg = strdup(log.str().c_str());
+        pgassert(!*err_msg);
 
     } catch (AssertFailedException &exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        log << exept.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
+        *log_msg = strdup(log.str().c_str());
+        err << exept.what() << "\n";
+        *err_msg = strdup(err.str().c_str());
     } catch (std::exception& exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        log << exept.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
+        *log_msg = strdup(log.str().c_str());
+        err << exept.what() << "\n";
+        *err_msg = strdup(err.str().c_str());
     } catch(...) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        log << "Caught unknown exception!\n";
-        *err_msg = strdup(log.str().c_str());
+        *log_msg = strdup(log.str().c_str());
+        err << "Caught unknown exception!\n";
+        *err_msg = strdup(err.str().c_str());
     }
 }

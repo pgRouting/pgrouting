@@ -72,6 +72,7 @@ do_pgr_one_to_many_withPoints(
         char ** log_msg,
         char ** err_msg){
     std::ostringstream log;
+    std::ostringstream err;
     try {
         pgassert(!(*return_tuples));
         pgassert((*return_count) == 0);
@@ -89,8 +90,9 @@ do_pgr_one_to_many_withPoints(
 
         int errcode = check_points(points, log);
         if (errcode) {
-            log << "Point(s) with same pid but different edge/fraction/side combination found";
-            *err_msg = strdup(log.str().c_str());
+            *log_msg = strdup(log.str().c_str());
+            err << "Unexpected point(s) with same pid but different edge/fraction/side combination found.";
+            *err_msg = strdup(err.str().c_str());
             return;
         }
 
@@ -181,23 +183,26 @@ do_pgr_one_to_many_withPoints(
 
 
         *log_msg = strdup(log.str().c_str());
+        pgassert(!(*err_msg));
         return;
     } catch (AssertFailedException &exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        log << exept.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
+        *log_msg = strdup(log.str().c_str());
+        err << exept.what() << "\n";
+        *err_msg = strdup(err.str().c_str());
     } catch (std::exception& exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        log << exept.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
+        *log_msg = strdup(log.str().c_str());
+        err << exept.what() << "\n";
+        *err_msg = strdup(err.str().c_str());
     } catch(...) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        log << "Caught unknown exception!\n";
-        *err_msg = strdup(log.str().c_str());
+        *log_msg = strdup(log.str().c_str());
+        err << "Caught unknown exception!\n";
+        *err_msg = strdup(err.str().c_str());
     }
-
 }
 
