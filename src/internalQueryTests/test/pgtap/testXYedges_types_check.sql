@@ -1,6 +1,6 @@
 
--- \i setup.sql
-BEGIN;
+\i setup.sql
+--BEGIN;
 
 SELECT plan(87);
 

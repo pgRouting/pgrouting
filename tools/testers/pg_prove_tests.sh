@@ -30,6 +30,7 @@ run_psql -f setup_db.sql
 #pg_prove ../../src/funnyDijkstra/test/pgtap/* -d $PGDATABASE
 
 pg_prove ../../src/internalQueryTests/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+pg_prove ../../src/astar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
 pg_prove ../../src/allpairs/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/alpha_shape/test/pgtap/* -d $PGDATABASE  -U $PGUSER
@@ -44,7 +45,6 @@ pg_prove ../../src/kdijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/withPoints/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/trsp/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
-pg_prove ../../src/astar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/bd_astar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/bd_dijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/convinience/test/pgtap/* -d $PGDATABASE  -U $PGUSER
