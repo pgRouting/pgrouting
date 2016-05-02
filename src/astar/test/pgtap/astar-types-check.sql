@@ -24,7 +24,6 @@ SELECT lives_ok('q1', 'edges query accepts INTEGER & FLOAT');
 
 -- some test pass because the code is not checking
 
-SELECT todo_start();
 SELECT throws_ok(
     'SELECT * FROM pgr_astar(
         ''SELECT id::BIGINT, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT, x1::FLOAT, y1::FLOAT, x2::FLOAT, y2::FLOAT FROM edge_table'',
@@ -41,7 +40,6 @@ SELECT throws_ok(
     'SELECT * FROM pgr_astar(
         ''SELECT id::REAL, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT, x1::FLOAT, y1::FLOAT, x2::FLOAT, y2::FLOAT FROM edge_table'',
         2, 3, true, true)');
-SELECT todo_end();
 
 SELECT throws_ok(
     'SELECT * FROM pgr_astar(
@@ -96,7 +94,6 @@ SELECT throws_ok(
         ''SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::REAL, x1::FLOAT, y1::FLOAT, x2::FLOAT, y2::FLOAT FROM edge_table'',
         2, 3, true, true)');
 
-SELECT todo_start();
 -- x1
 SELECT throws_ok(
     'SELECT * FROM pgr_astar(
@@ -169,7 +166,6 @@ SELECT throws_ok(
     'SELECT * FROM pgr_astar(
         ''SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT, y2::REAL, x1::FLOAT, x2::FLOAT, y1::FLOAT FROM edge_table'',
         2, 3, true, true)');
-select todo_end();
 
 
 SELECT finish();

@@ -1,6 +1,5 @@
 
 \i setup.sql
---BEGIN;
 
 SELECT plan(87);
 
@@ -128,14 +127,6 @@ SELECT test_anyNumerical('pgr_testxyedges',
 SELECT test_anyNumerical('pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'y2');
-
-
-UPDATE edge_table SET x1 = -20 WHERE id = 8; 
-SELECT pgr_testxyedges('SELECT * from edge_table'); 
-UPDATE edge_table SET x1 = 20 WHERE id = 8; 
-
-
-
 
 
 SELECT finish();

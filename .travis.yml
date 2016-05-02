@@ -27,7 +27,7 @@ branches:
   only:
     - master
     - develop
-    - hotFix/issue552
+    - rewrite/astar 
 
 env:
   - POSTGRESQL_VERSION=9.1
