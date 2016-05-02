@@ -91,6 +91,7 @@ class AssertFailedException : public std::exception {
  public:
   virtual const char *what() const throw();
   explicit AssertFailedException(std::string msg);
+  virtual ~AssertFailedException() throw() {};
 };
 
 #endif  //  SRC_COMMON_SRC_PGR_ASSERT_H_
