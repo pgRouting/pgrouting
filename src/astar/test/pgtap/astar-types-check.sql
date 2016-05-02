@@ -3,7 +3,7 @@
 -- TESTING DOCUMNETATIONS INFORMATION
 
 set client_min_messages = ERROR;
-SELECT plan(33);
+SELECT plan(35);
 
 -- RECEIVES 5 PARAMETERS
 
@@ -32,6 +32,14 @@ SELECT throws_ok(
 SELECT throws_ok(
     'SELECT * FROM pgr_astar(
         ''SELECT id::SMALLINT, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT, x1::FLOAT, y1::FLOAT, x2::FLOAT, y2::FLOAT FROM edge_table'',
+        2, 3, true, true)');
+SELECT throws_ok(
+    'SELECT * FROM pgr_astar(
+        ''SELECT id::FLOAT8, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT, x1::FLOAT, y1::FLOAT, x2::FLOAT, y2::FLOAT FROM edge_table'',
+        2, 3, true, true)');
+SELECT throws_ok(
+    'SELECT * FROM pgr_astar(
+        ''SELECT id::REAL, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT, x1::FLOAT, y1::FLOAT, x2::FLOAT, y2::FLOAT FROM edge_table'',
         2, 3, true, true)');
 SELECT todo_end();
 

@@ -28,11 +28,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- Simillar to shortest_path in usage but uses the A* algorithm
 -- instead of Dijkstra's.
 -----------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION _pgr_astar(sql text, source_id integer, target_id integer, directed boolean, has_reverse_cost boolean)
+CREATE OR REPLACE FUNCTION pgr_astar(sql text, source_id integer, target_id integer, directed boolean, has_reverse_cost boolean)
     RETURNS SETOF pgr_costResult
     AS '$libdir/${PGROUTING_LIBRARY_NAME}', 'shortest_path_astar'
     LANGUAGE c IMMUTABLE STRICT; 
 
+/*    
 -- V2 signature
 CREATE OR REPLACE FUNCTION pgr_astar(edges_sql TEXT, source_id INTEGER, target_id INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
 RETURNS SETOF pgr_costresult AS
@@ -59,3 +60,4 @@ $BODY$
 LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
+*/
