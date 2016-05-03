@@ -63,8 +63,10 @@ install:
   - sudo ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION postgres
 
 before_script:
+  - locate geometry.hpp
   # Add our chosen PG version to the path
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
+
   # Stop whichever version of PG that travis started
   - sudo /etc/init.d/postgresql stop
   # Start the version of PG that we want to test
