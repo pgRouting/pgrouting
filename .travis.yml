@@ -51,7 +51,6 @@ addons:
       - cmake
       - libboost-thread-dev
       - libboost-graph-dev
-      - boost-build
       - libcgal-dev
       - postgresql-server-dev-all
       - postgresql-common
