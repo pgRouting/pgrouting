@@ -49,8 +49,8 @@ addons:
     packages:
       - g++-4.8
       - cmake
-      - libboost-thread1.54-dev
-      - libboost-graph1.54-dev
+      - libboost-thread-dev
+      - libboost-graph-dev
       - libcgal-dev
       - postgresql-server-dev-all
       - postgresql-common

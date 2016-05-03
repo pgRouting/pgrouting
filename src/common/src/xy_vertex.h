@@ -23,9 +23,13 @@
  ********************************************************************PGR-GNU*/
 
 #pragma once
-
-#include <boost/geometry.hpp>
-#include <boost/geometry/geometries/point_xy.hpp>
+#undef Min
+#undef Max
+#undef sgn
+#undef K
+#include <CGAL/Simple_cartesian.h>
+// #include <boost/geometry.hpp>
+// #include <boost/geometry/geometries/point_xy.hpp>
 #include <vector>
 
 #include "./pgr_types.h"  
@@ -33,7 +37,10 @@
 
 namespace pgRouting {
 
-typedef typename boost::geometry::model::d2::point_xy<double> Point;
+// typedef typename boost::geometry::model::d2::point_xy<double> Point;
+typedef typename CGAL::Simple_cartesian<double> Simple_cartasian;
+typedef typename Simple_cartasian::Point_2  Point;
+
 
 class XY_vertex {
  public:

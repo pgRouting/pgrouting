@@ -41,7 +41,7 @@ std::ostream& operator<<(std::ostream& log, const XY_vertex &v) {
 bool
 XY_vertex::operator==(const XY_vertex &rhs) const {
     if (&rhs == this) return true;
-    return this->id == rhs.id && boost::geometry::equals(point, rhs.point);
+    return this->id == rhs.id && point == rhs.point;
 }
 
 
