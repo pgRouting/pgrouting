@@ -120,7 +120,6 @@ if(Boost_INCLUDE_DIRS)
   message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIRS}")
   find_file(MYVAR geometry.hpp)
   message(STATUS "geometry.hpp  found here: ${MYVAR}")
-  include_directories( ${Boost_INCLUDE_DIRS} )
 else(Boost_INCLUDE_DIRS)
   message(FATAL_ERROR " Please check your Boost installation ") 
 endif(Boost_INCLUDE_DIRS)
@@ -182,6 +181,15 @@ set(PGROUTING_INCLUDE_DIRECTORIES
     )
 
 include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
+message(STATUS "PGROUTING_INCLUDE_DIRECTORIES = ${PGROUTING_INCLUDE_DIRECTORIES}")
+message(STATUS "POSTGRESQL_INCLUDE_DIR = ${POSTGRESQL_INCLUDE_DIR}")
+message(STATUS "Boost_INCLUDE_DIRS = ${Boost_INCLUDE_DIRS}")
+
+get_property(dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
+foreach(dir ${dirs})
+   message(STATUS "dir='${dir}'")
+endforeach()
+
 
 
 if(WIN32)
