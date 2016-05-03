@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
@@ -67,6 +68,7 @@ void driving_many_to_dist_driver(
         return;
     }
 
+    clock_t start_t = clock();
     do_pgr_driving_many_to_dist(
             edges, total_tuples,
             start_vertex, num,
@@ -74,6 +76,7 @@ void driving_many_to_dist_driver(
             directed,
             equicost,
             path, path_count, &err_msg);
+    time_msg(" processing DrivingDistance many starts", start_t, clock());
 
     pfree(edges);
     pgr_SPI_finish(); 

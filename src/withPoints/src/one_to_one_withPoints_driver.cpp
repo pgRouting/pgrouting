@@ -103,7 +103,8 @@ do_pgr_withPoints(
 
         int64_t start_vid(start_pid);
         int64_t end_vid(end_pid);
-#if 0
+
+#ifdef DEBUG
         for (const auto point : points) {
             if (point.pid == start_pid) {
                 start_vid = point.vertex_id;
@@ -127,24 +128,15 @@ do_pgr_withPoints(
             Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
-#ifdef DEBUG
-            digraph.print_graph(log);
-#endif
             pgr_dijkstra(digraph, path, start_vid, end_vid, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
-#ifdef DEBUG
-            undigraph.print_graph(log);
-#endif
             pgr_dijkstra(undigraph, path, start_vid, end_vid, only_cost);
         }
 
-        path.print_path(log);
-        //adjust_pids(points, path);
-        path.print_path(log);
 
         size_t count(path.size());
         if (count == 0) {

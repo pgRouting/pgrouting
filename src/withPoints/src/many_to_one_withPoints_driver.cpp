@@ -94,7 +94,8 @@ do_pgr_many_to_one_withPoints(
                 new_edges);
 
 
-        std::set< int64_t > start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);
+        std::set< int64_t > s_start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);
+        std::vector< int64_t > start_vertices(s_start_vertices.begin(), s_start_vertices.end());
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
         const auto initial_size = total_edges;

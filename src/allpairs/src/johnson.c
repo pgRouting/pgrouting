@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // #define DEBUG
 
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
@@ -78,6 +79,7 @@ void process(
 
     PGR_DBG("Starting processing");
     char *err_msg = (char *)"";
+    clock_t start_t = clock();
     do_pgr_johnson(
             edges,
             total_tuples,
@@ -85,6 +87,7 @@ void process(
             result_tuples,
             result_count,
             &err_msg);
+    time_msg(" processing Johnson", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);
 

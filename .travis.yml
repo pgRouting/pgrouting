@@ -8,7 +8,7 @@
 #choose precise or trusty
 
 group: edge
-dist: trusty    
+3dist: trusty    
 
 #dist: precise
 
@@ -27,7 +27,7 @@ branches:
   only:
     - master
     - develop
-    - dev-2.2
+    - hotFix/issue552
 
 env:
   - POSTGRESQL_VERSION=9.1

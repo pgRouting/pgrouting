@@ -1,9 +1,20 @@
+Changes for 2.2.2
+-------------------------------------------------------------------------------
+
+- Fixed regression error on pgr_drivingDistance
+
+Changes for 2.2.1
+-------------------------------------------------------------------------------
+
+- Server crash fix on pgr_alphaShape
+- Bug fix on With Points family of functions
 
 Changes for 2.2.0
 -------------------------------------------------------------------------------
 
   - Improved:
     - pgr_nodeNetwork
+      - Adding a row_where and outall optional parameters
 
   - Signature fix
     - pgr_dijkstra  -- to match what was documented (the pgr_dijkstra from V2.0)

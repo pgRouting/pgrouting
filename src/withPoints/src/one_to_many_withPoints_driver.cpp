@@ -98,7 +98,6 @@ do_pgr_one_to_many_withPoints(
             edges_to_modify(edges_of_points, edges_of_points + total_edges_of_points);
 
         std::vector< pgr_edge_t > new_edges;
-//        log << "start_pid" << start_pid << "\n";
 
         log << "driving_side" << driving_side << "\n";
         create_new_edges(
@@ -107,33 +106,15 @@ do_pgr_one_to_many_withPoints(
                 driving_side,
                 new_edges);
 
- //       int64_t start_vid = 0;
         log << "Inserting points into a c++ vector structure\n";
         /*
          * Eliminating duplicates
          * & ordering the points
          */
-        std::set< int64_t > end_vertices(end_pidsArr, end_pidsArr + size_end_pidsArr);
-//        std::set< int64_t > end_points(end_pidsArr, end_pidsArr + size_end_pidsArr);
-#if 0
-        std::set< int64_t > end_vertices;
+        std::set< int64_t > s_end_vertices(end_pidsArr, end_pidsArr + size_end_pidsArr);
 
-        for (const auto point : points) {
-            if (point.pid == start_pid) {
-                start_vid = point.vertex_id;
-                break;
-            }
-        }
+        std::vector< int64_t > end_vertices(s_end_vertices.begin(), s_end_vertices.end());
 
-        for (const auto &end_pid : end_points) {
-            for (const auto point : points) {
-                if (point.pid == end_pid) {
-                    end_vertices.insert(point.vertex_id);
-                    break;
-                }
-            }
-        }
-#endif
         log << "start_vid" << start_vid << "\n";
         log << "end_vertices";
 

@@ -46,6 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./one_to_one_withPoints_driver.h"
 // #define DEBUG
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 
 PG_FUNCTION_INFO_V1(one_to_one_withPoints);
 #ifndef _MSC_VER
@@ -154,6 +155,7 @@ process(
 
     PGR_DBG("Starting processing");
     char *err_msg = NULL;
+    clock_t start_t = clock();
     int errcode = do_pgr_withPoints(
             edges,
             total_edges,
@@ -170,6 +172,7 @@ process(
             result_tuples,
             result_count,
             &err_msg);
+    time_msg(" processing withPoints one to one", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);
 

@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 // #define DEBUG
+#include "./time_msg.h"
 #include "./debug_macro.h"
 #include "./arrays_input.h"
 
@@ -45,6 +46,7 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     int         i;
     int         n;
     int64_t      *data;
+    clock_t start_t = clock();
 
     PGR_DBG("Geting integer array");
     /* get input array element type */
@@ -108,5 +110,6 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     pfree(i_data);
 
     PGR_DBG("Finished processing array");
+    time_msg(" reading Array", start_t, clock());
     return (int64_t*)data;
 }

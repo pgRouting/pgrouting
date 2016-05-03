@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <set>
 #include "./pgr_dijkstra.hpp"
 #include "./many_to_many_dijkstra_driver.h"
 
@@ -73,10 +74,12 @@ do_pgr_many_to_many_dijkstra(
         std::deque< Path >paths;
         log << "Inserting vertices into a c++ vector structure\n";
         std::set< int64_t >
-            start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
+            s_start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::set< int64_t >
-            end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+            s_end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
 
+        std::vector< int64_t > start_vertices(s_start_vertices.begin(), s_start_vertices.end());
+        std::vector< int64_t > end_vertices(s_end_vertices.begin(), s_end_vertices.end());
         if (directed) {
             log << "Working with directed Graph\n";
             Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);

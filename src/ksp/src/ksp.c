@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./ksp_driver.h"
@@ -73,14 +74,17 @@ void compute(char* sql, int64_t start_vertex,
   PGR_DBG("Calling do_pgr_ksp\n");
   PGR_DBG("heap_paths = %i\n", heap_paths);
 
+  clock_t start_t = clock();
   int errcode = do_pgr_ksp(edges, total_tuples,
             start_vertex, end_vertex,
             k, directed, heap_paths,
             ksp_path, path_count, &err_msg);
+  time_msg(" processing KSP", start_t, clock());
 
   PGR_DBG("total tuples found %ld\n", *path_count);
   PGR_DBG("Exist Status = %i\n", ret);
   PGR_DBG("Returned message = %s\n", err_msg);
+
 
 
   if (err_msg) free(err_msg);
