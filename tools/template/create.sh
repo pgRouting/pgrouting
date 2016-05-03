@@ -2,7 +2,7 @@
 
 
 #dont put pgr_ on MY_FUNCTION_NAME that is done automatically
-MY_FUNCTION_NAME="funnyDijkstra"
+MY_FUNCTION_NAME="astarOneToOne"
 DEVELOPER_NAME="Celia Virginia Vergara Castillo"
 DEVELOPER_EMAIL="vicky_vergara@hotmail.com" 
 YEAR="2015"
@@ -10,8 +10,8 @@ YEAR="2015"
 # Notice the "\n     " (change line and four spaces) after each comma
 # first line are the inputs
 # second line are the outputs
-MY_QUERY_LINE1="edges_sql TEXT,\n    start_pid BIGINT,\n    end_pids ANYARRAY,\n    directed BOOLEAN DEFAULT true,"
-MY_QUERY_LINE2="OUT seq INTEGER,\n    OUT path_seq INTEGER,\n    OUT start_vid BIGINT,\n    OUT end_vid BIGINT,\n    OUT node BIGINT,\n    OUT edge BIGINT,\n    OUT cost FLOAT,\n    OUT agg_cost FLOAT"
+MY_QUERY_LINE1="edges_sql TEXT,\n    vertex_table TEXT,\n    start_vid BIGINT,\n  end_vid BIGINT  directed BOOLEAN DEFAULT true,"
+MY_QUERY_LINE2="OUT seq INTEGER,\n    OUT path_seq INTEGER,\n   OUT node BIGINT,\n    OUT edge BIGINT,\n    OUT cost FLOAT,\n    OUT agg_cost FLOAT"
 
 
 MY_RETURN_VALUE_TYPE="General_path_element_t" 
