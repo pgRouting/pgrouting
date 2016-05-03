@@ -23,6 +23,12 @@
  ********************************************************************PGR-GNU*/
 
 #pragma once
+
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
 #undef Min
 #undef Max
 #undef sgn
