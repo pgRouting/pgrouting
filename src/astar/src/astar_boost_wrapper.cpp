@@ -239,9 +239,10 @@ try {
     {
         if (target_vertex == predecessors[target_vertex]) 
         {
+#if 0
             *err_msg = (char *) "No path found";
+#endif 
             return 0;
-      
         }
         target_vertex = predecessors[target_vertex];
 
@@ -251,6 +252,9 @@ try {
             *err_msg = (char *) "Overflow";
             return -1;
         }
+    }
+    if (path_vect.size() <= 1) {
+        return 0;
     }
 
     *path = (path_element_t *) malloc(sizeof(path_element_t) * 

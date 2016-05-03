@@ -94,9 +94,9 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
         execute 'select pg_typeof(x1)::text as x1_type, pg_typeof(y1)::text as y1_type, pg_typeof(x2)::text as x2_type, pg_typeof(y2)::text as y2_type'
             || ' from ('||safesql||') AS __b__ ' into rec;
         -- Version 2.0.0 is more restrictive
-        IF NOT(   (rec.x1_type in ('double precision'::text))
-              AND (rec.y1_type in ('double precision'::text))
-              AND (rec.x2_type in ('double precision'::text))
+        IF NOT(   (rec.x1_type = 'double precision'::text)
+              AND (rec.y1_type = 'double precision'::text)
+              AND (rec.x2_type = 'double precision'::text)
               AND (rec.y2_type = 'double precision'::text)) THEN
             RAISE EXCEPTION 'Columns: x1, y1, x2, y2 must be of type float8'
             USING ERRCODE = 'XX000';
@@ -145,7 +145,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
            END IF;
         ELSE -- Version 2.0.0 is more restrictive
            IF (rec1.rev_type != 'double precision') then
-             RAISE EXCEPTION 'Illegal type in optional parameter reverse_cost, expected: double precision'
+             RAISE EXCEPTION 'Illegal type in optional parameter reverse_cost, must be of type float8'
              USING ERRCODE = 'XX000';
            END IF;
         END IF;

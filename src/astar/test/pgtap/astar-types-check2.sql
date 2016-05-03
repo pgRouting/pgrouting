@@ -2,7 +2,7 @@
 \i setup.sql
 
 SELECT plan(87);
-SET client_min_messages TO NOTICE;
+SET client_min_messages TO ERROR;
 
 
 SELECT has_function('pgr_astar', ARRAY['text', 'integer', 'integer', 'boolean', 'boolean']);
@@ -76,30 +76,26 @@ BEGIN
     end_sql = ' FROM edge_table $$, 2, 3, true, false)';
     
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
-    RETURN query SELECT throws_ok(query,
-        'XX000', 
-        'Error, columns ''source'', ''target'' must be of type int4, ''cost'' must be of type float8',
+    RETURN query SELECT throws_like(query,
+        '%must be of type float8',
         'SHOULD throw BECAUSE ' || parameter || ' is SMALLINT'
     );
     
     query := start_sql || parameter || '::INTEGER ' || end_sql;
-    RETURN query SELECT throws_ok(query,
-        'XX000', 
-        'Error, columns ''source'', ''target'' must be of type int4, ''cost'' must be of type float8',
+    RETURN query SELECT throws_like(query,
+        '%must be of type float8',
         'SHOULD throw BECAUSE ' || parameter || ' is INTEGER'
     );
     
     query := start_sql || parameter || '::BIGINT ' || end_sql;
-    RETURN query SELECT throws_ok(query,
-        'XX000', 
-        'Error, columns ''source'', ''target'' must be of type int4, ''cost'' must be of type float8',
+    RETURN query SELECT throws_like(query,
+        '%must be of type float8',
         'SHOULD throw BECAUSE ' || parameter || ' is BIGINT'
     );
 
     query := start_sql || parameter || '::REAL ' || end_sql;
-    RETURN query SELECT throws_ok(query,
-        'XX000', 
-        'Error, columns ''source'', ''target'' must be of type int4, ''cost'' must be of type float8',
+    RETURN query SELECT throws_like(query,
+        '%must be of type float8',
         'SHOULD throw BECAUSE ' || parameter || ' is REAL'
     );
 
