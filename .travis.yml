@@ -7,10 +7,10 @@
 
 #choose precise or trusty
 
-group: edge
-3dist: trusty    
+#group: edge
+#dist: trusty    
 
-#dist: precise
+dist: precise
 
 sudo: required
 
@@ -51,7 +51,7 @@ addons:
       - cmake
       - libboost-thread-dev
       - libboost-graph-dev
-      - boost-latest
+      - boost-build
       - libcgal-dev
       - postgresql-server-dev-all
       - postgresql-common
