@@ -51,7 +51,7 @@ addons:
       - cmake
       - libboost-thread-dev
       - libboost-graph-dev
-      - libboost-all-dev
+      - boost-latest
       - libcgal-dev
       - postgresql-server-dev-all
       - postgresql-common
@@ -63,8 +63,6 @@ install:
   - sudo ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION postgres
 
 before_script:
-  - sudo updatedb
-  - locate geometry.hpp
   # Add our chosen PG version to the path
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
 
