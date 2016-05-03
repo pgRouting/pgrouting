@@ -65,6 +65,7 @@ do_pgr_MY_FUNCTION_NAME(
         size_t *return_count,
         char ** log_msg,
         char ** err_msg){
+    std::ostringstream err;
     std::ostringstream log;
     try {
         pgassert(!(*log_msg));
@@ -73,11 +74,13 @@ do_pgr_MY_FUNCTION_NAME(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        if (total_tuples <= 1) {
-            log << "Required: more than one tuple\n";
+        /* depending on the functionality some tests can be done here
+         * For example */
+        if (total_edges <= 1) {
+            err << "Required: more than one edges\n";
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            *err_msg = strdup(log.str().c_str());
+            *err_msg = strdup(err.str().c_str());
             return;
         }
 
@@ -114,14 +117,14 @@ do_pgr_MY_FUNCTION_NAME(
             pgr_dijkstra(undigraph, paths, start_vid, end_vertices, false);
         }
 
-        size_t count(count_tuples(paths));
+        auto count(count_tuples(paths));
 
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
             log << 
                 "No paths found between Starting and any of the Ending vertices\n";
-            *err_msg = strdup(log.str().c_str());
+            *log_msg = strdup(log.str().c_str());
             return;
         }
 
@@ -136,17 +139,20 @@ do_pgr_MY_FUNCTION_NAME(
     } catch (AssertFailedException &exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        log << exept.what() << "\n";
+        err << exept.what() << "\n";
         *err_msg = strdup(log.str().c_str());
+        *log_msg = strdup(log.str().c_str());
     } catch (std::exception& exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        log << exept.what() << "\n";
+        err << exept.what() << "\n";
         *err_msg = strdup(log.str().c_str());
+        *log_msg = strdup(log.str().c_str());
     } catch(...) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        log << "Caught unknown exception!\n";
+        err << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
+        *log_msg = strdup(log.str().c_str());
     }
 }

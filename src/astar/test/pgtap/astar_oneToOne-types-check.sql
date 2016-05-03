@@ -2,12 +2,12 @@
 \i setup.sql
 
 SELECT plan(87);
-SET client_min_messages TO NOTICE;
+SET client_min_messages TO ERROR;
 
-SELECT todo_start('astar_oneToOne needs to be codded');
+-- SELECT todo_start('astar_oneToOne needs to be codded');
 
-SELECT has_function('pgr_astar', ARRAY['text', 'integer', 'integer', 'boolean']);
-SELECT function_returns('pgr_astar', ARRAY['text', 'integer', 'integer', 'boolean'],'setof pgr_costresult');
+SELECT has_function('pgr_astar', ARRAY['text', 'bigint', 'bigint', 'boolean']);
+SELECT function_returns('pgr_astar', ARRAY['text', 'bigint', 'bigint', 'boolean'],'setof record');
 
 CREATE OR REPLACE FUNCTION test_anyInteger(fn TEXT, params TEXT[], parameter TEXT) 
 RETURNS SETOF TEXT AS
@@ -132,10 +132,6 @@ SELECT test_anyNumerical('pgr_astar',
 SELECT test_anyNumerical('pgr_astar',
     ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'y2');
-
-SELECT todo_end();
-
-
 
 
 SELECT finish();

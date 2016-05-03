@@ -256,6 +256,7 @@ set(PgRouting_SOURCE_NAMES
     "funnyDijkstra"
 
     "alpha_shape"
+    "astarOneToOne"
 
     "astar" "bd_astar"
     "bd_dijkstra"

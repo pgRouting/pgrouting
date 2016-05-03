@@ -8,7 +8,9 @@ SELECT plan(35);
 -- RECEIVES 5 PARAMETERS
 
 SELECT has_function('pgr_astar',ARRAY['text', 'integer', 'integer', 'boolean', 'boolean']);
-SELECT function_returns('pgr_astar', 'setof pgr_costresult','Returns set of costResult[]');
+SELECT function_returns('pgr_astar',
+    ARRAY['text', 'integer', 'integer', 'boolean', 'boolean'],
+    'setof pgr_costresult');
 
 
 -- CHECKING THE INNER QUERY

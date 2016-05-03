@@ -40,6 +40,10 @@ extern "C" {
      ********************************************************/
     void
         do_pgr_MY_FUNCTION_NAME(
+                /* Available types:
+                   pgr_edge_t
+                   Pgr_edge_xy_t
+                   */
                 pgr_edge_t  *data_edges,
                 size_t total_edges,
                 int64_t start_vid,

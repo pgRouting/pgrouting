@@ -73,14 +73,14 @@ process( char* edges_sql,
     pgr_SPI_connect();
 
     PGR_DBG("Load data");
-    /*
+    /* Available types:
      * pgr_edge_t
      * Pgr_edge_xy_t
      */
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    /*
+    /* Available functions:
      * pgr_get_edges
      * pgr_get_edges_xy
      * pgr_get_edges_no_id
