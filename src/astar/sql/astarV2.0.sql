@@ -1,7 +1,5 @@
 
 
-
-
 -- V2 signature
 CREATE OR REPLACE FUNCTION pgr_astar(edges_sql TEXT, source_id INTEGER, target_id INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
 RETURNS SETOF pgr_costresult AS
@@ -21,8 +19,8 @@ BEGIN
         END IF;
     END IF;
 
-    RETURN query SELECT * 
-    FROM _pgr_astar(sql, source_id, target_id, directed, has_rcost);
+    RETURN query SELECT seq - 1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost 
+    FROM pgr_astar(sql, source_id, target_id, directed);
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE

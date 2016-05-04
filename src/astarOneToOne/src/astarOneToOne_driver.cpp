@@ -46,9 +46,23 @@ extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
 
-#include "./../../dijkstra/src/pgr_dijkstra.hpp"
+// #include "./../../dijkstra/src/pgr_dijkstra.hpp"
+#include "./pgr_astar.hpp"
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
+
+template < class G >
+void
+pgr_astar(
+        G &graph,
+        Path &path,
+        int64_t source,
+        int64_t target,
+        bool only_cost = false) {
+    Pgr_astar< G > fn_astar;
+    fn_astar.astar(graph, path, source, target, only_cost);
+}
+
 
 /************************************************************
   edges_sql TEXT,
@@ -97,7 +111,7 @@ void do_pgr_astarOneToOne(
             log << digraph;
 #endif
             log << "Working with directed Graph 2\n";
-            pgr_dijkstra(digraph, path, start_vid, end_vid, false);
+            pgr_astar(digraph, path, start_vid, end_vid, false);
             log << "Working with directed Graph 3\n";
         } else {
             log << "Working with Undirected Graph\n";
@@ -106,7 +120,7 @@ void do_pgr_astarOneToOne(
 #ifdef DEBUG
             log << undigraph;
 #endif
-            pgr_dijkstra(undigraph, path, start_vid, end_vid, false);
+            pgr_astar(undigraph, path, start_vid, end_vid, false);
         }
 
         auto count = path.size();

@@ -245,7 +245,7 @@ class Pgr_dijkstra {
              std::vector< V > &targets) const;
 
 
-     //! @name Variables
+     //! @name members;
      //@{
      struct found_goals{};  //!< exception for termination
      std::vector< V > predecessors;

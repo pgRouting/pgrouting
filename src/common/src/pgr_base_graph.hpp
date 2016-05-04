@@ -238,13 +238,13 @@ boost::adjacency_list < boost::vecS, boost::vecS,
     Basic_vertex, Basic_edge > DirectedGraph;
 
 typedef typename graph::Pgr_base_graph <
-boost::adjacency_list < boost::vecS, boost::vecS,
+boost::adjacency_list < boost::listS, boost::vecS,
     boost::undirectedS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge > xyUndirectedGraph;
 
 typedef typename graph::Pgr_base_graph <
-boost::adjacency_list < boost::vecS, boost::vecS,
+boost::adjacency_list < boost::listS, boost::vecS,
     boost::bidirectionalS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge > xyDirectedGraph;
@@ -267,6 +267,7 @@ class Pgr_base_graph {
        EI_i     | in_edge_iterator      |   To cycle the in coming edges of a vertex (only in bidirectional graphs)
        */
      //@{
+     typedef G B_G;
      typedef typename boost::graph_traits < G >::vertex_descriptor V;
      typedef typename boost::graph_traits < G >::edge_descriptor E;
      typedef typename boost::graph_traits < G >::vertex_iterator V_i;
