@@ -60,6 +60,9 @@ class Pgr_astar {
              Path &path,
              int64_t start_vertex,
              int64_t end_vertex,
+             int heuristic,
+             double factor,
+             double epsilon,
              bool only_cost = false);
 #if 0
      //! Many to one
@@ -93,7 +96,10 @@ class Pgr_astar {
      bool astar_1_to_1(
              G &graph,
              V source,
-             V target);
+             V target,
+             int heuristic,
+             double factor,
+             double epsilon);
 
 
      void clear() {
@@ -125,24 +131,28 @@ class Pgr_astar {
      // euclidean distance heuristic for one goal
      class distance_heuristic : public boost::astar_heuristic< B_G, double > {
       public:
-          distance_heuristic(B_G &g, V goal)
-              : m_g(g), m_goal(goal) {}
+          distance_heuristic(B_G &g, V goal, int heuristic, double factor)
+              : m_g(g),
+                m_goal(goal),
+                m_factor(factor),
+                m_heuristic(heuristic) {}
           double operator()(V u) {
-              int which = 0;
               double dx = m_g[m_goal].x() - m_g[u].x();
               double dy = m_g[m_goal].y() - m_g[u].y();
-              switch (which) {
+              switch (m_heuristic) {
                   case 0:
                       // == pgr_dijkstra ??
                       return 0;
                   case 1:
-                      return std::sqrt(dx * dx + dy * dy);
+                      return std::fabs(std::max(dx, dy)) * m_factor;
                   case 2:
-                      return std::max(dx, dy);
+                      return std::fabs(std::min(dx, dy)) * m_factor;
                   case 3:
-                      return std::sqrt(dx * dx + dy * dy)/4;
+                      return std::sqrt(dx * dx + dy * dy) * m_factor * m_factor;
                   case 4:
-                      return (std::fabs(dx)+std::fabs(dy))/2;
+                      return std::sqrt(dx * dx + dy * dy) * m_factor;
+                  case 5:
+                      return (std::fabs(dx) + std::fabs(dy)) * m_factor;
                   default:
                       return 0;
               }
@@ -151,6 +161,8 @@ class Pgr_astar {
       private:
           B_G &m_g;
           V m_goal;
+          double m_factor;
+          int m_heuristic;
      }; // class distance_heuristic
 
 
@@ -181,6 +193,9 @@ Pgr_astar< G >::astar(
         Path &path,
         int64_t start_vertex,
         int64_t end_vertex,
+        int heuristic,
+        double factor,
+        double epsilon,
         bool only_cost) {
     clear();
 
@@ -200,7 +215,7 @@ Pgr_astar< G >::astar(
     auto v_target(graph.get_V(end_vertex));
 
     // perform the algorithm
-    astar_1_to_1(graph, v_source, v_target);
+    astar_1_to_1(graph, v_source, v_target, heuristic, factor, epsilon);
 
     // get the results
     if (only_cost) {
@@ -218,13 +233,16 @@ bool
 Pgr_astar< G >::astar_1_to_1(
         G &graph,
         V source,
-        V target) {
+        V target,
+        int heuristic,
+        double factor,
+        double epsilon) {
     bool found = false;
     try {
         // Call A* named parameter interface
         boost::astar_search(
                 graph.graph, source,
-                distance_heuristic(graph.graph, target),
+                distance_heuristic(graph.graph, target, heuristic, factor * epsilon),
                 boost::predecessor_map(&predecessors[0])
                 .weight_map(get(&pgRouting::Basic_edge::cost, graph.graph))
                 .distance_map(&distances[0])

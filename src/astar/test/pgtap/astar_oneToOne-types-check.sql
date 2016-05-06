@@ -1,13 +1,17 @@
 
 \i setup.sql
 
-SELECT plan(87);
+SELECT plan(93);
 SET client_min_messages TO ERROR;
 
--- SELECT todo_start('astar_oneToOne needs to be codded');
 
-SELECT has_function('pgr_astar', ARRAY['text', 'bigint', 'bigint', 'boolean']);
-SELECT function_returns('pgr_astar', ARRAY['text', 'bigint', 'bigint', 'boolean'],'setof record');
+SELECT has_function('pgr_astar',
+    ARRAY['text', 'bigint', 'bigint', 'boolean',
+        'integer', 'double precision', 'double precision']);
+SELECT function_returns('pgr_astar',
+    ARRAY['text', 'bigint', 'bigint', 'boolean',
+        'integer', 'double precision', 'double precision'],
+    'setof record');
 
 CREATE OR REPLACE FUNCTION test_anyInteger(fn TEXT, params TEXT[], parameter TEXT) 
 RETURNS SETOF TEXT AS
@@ -133,6 +137,58 @@ SELECT test_anyNumerical('pgr_astar',
     ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'y2');
 
+SELECT throws_ok(
+    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table', 
+        2, 3,
+        true, 6, 1, 1)$$,
+    'XX000',
+    'Unknown heuristic',
+        'SHOULD THROW because heuristic > 5'
+);
+
+SELECT throws_ok(
+    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table', 
+        2, 3,
+        true, -1, 1, 1)$$,
+    'XX000',
+    'Unknown heuristic',
+    'SHOULD THROW because heuristic < 0'
+);
+
+SELECT throws_ok(
+    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table', 
+        2, 3,
+        true, 0, 0, 1)$$,
+    'XX000',
+    'Factor value out of range',
+    'SHOULD THROW because factor = 0'
+);
+
+SELECT throws_ok(
+    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table', 
+        2, 3,
+        true, 0, -1.4, 1)$$,
+    'XX000',
+    'Factor value out of range',
+    'SHOULD THROW because factor < 0'
+);
+
+SELECT throws_ok(
+    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table', 
+        2, 3,
+        true, 0, 1, -3)$$,
+    'XX000',
+    'Epsilon value out of range',
+    'SHOULD THROW because epsilon < 0'
+);
+SELECT throws_ok(
+    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table', 
+        2, 3,
+        true, 0, 1, 0.9)$$,
+    'XX000',
+    'Epsilon value out of range',
+    'SHOULD THROW because epsilon < 1'
+);
 
 SELECT finish();
 ROLLBACK;

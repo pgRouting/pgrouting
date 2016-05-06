@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
   Uncomment when needed
 */
-#define DEBUG
+// #define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
@@ -66,23 +66,36 @@ process(char* edges_sql,
         int64_t start_vid,
         int64_t end_vid,
         bool directed,
+        int heuristic,
+        double factor,
+        double epsilon,
         General_path_element_t **result_tuples,
         size_t *result_count) {
+    if (heuristic > 5 || heuristic < 0) {
+        ereport(ERROR,
+                (errmsg("Unknown heuristic"),
+                 errhint("Valid values: 0~5")));
+    }
+    if (factor <= 0) {
+        ereport(ERROR,
+                (errmsg("Factor value out of range"),
+                 errhint("Valid values: positive non zero")));
+    }
+    if (epsilon < 1) {
+        ereport(ERROR,
+                (errmsg("Epsilon value out of range"),
+                 errhint("Valid values: 1 or greater than 1")));
+        elog(ERROR, "epsilon value out of range, valid values: 1 or greater than 1");
+    }
+
+
+
     pgr_SPI_connect();
 
     PGR_DBG("Load data");
-    /*
-     * pgr_edge_t
-     * Pgr_edge_xy_t
-     */
     Pgr_edge_xy_t *edges = NULL;
     size_t total_edges = 0;
 
-    /*
-     * pgr_get_edges
-     * pgr_get_edges_xy
-     * pgr_get_edges_no_id
-     */
     pgr_get_edges_with_xy(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
@@ -103,6 +116,9 @@ process(char* edges_sql,
             start_vid,
             end_vid,
             directed,
+            heuristic,
+            factor,
+            epsilon,
             result_tuples,
             result_count,
             &log_msg,
@@ -155,6 +171,10 @@ astarOneToOne(PG_FUNCTION_ARGS) {
            start_vid BIGINT,
            end_vid BIGINT,
            directed BOOLEAN DEFAULT true,
+           heuristic INTEGER DEFAULT 0,
+           factor FLOAT DEFAULT 1.0,
+           epsilon FLOAT DEFAULT 1.0,
+
          **********************************************************************/
 
         PGR_DBG("Calling process");
@@ -163,6 +183,9 @@ astarOneToOne(PG_FUNCTION_ARGS) {
                 PG_GETARG_INT64(1),
                 PG_GETARG_INT64(2),
                 PG_GETARG_BOOL(3),
+                PG_GETARG_INT32(4),
+                PG_GETARG_FLOAT8(5),
+                PG_GETARG_FLOAT8(6),
                 &result_tuples,
                 &result_count);
 

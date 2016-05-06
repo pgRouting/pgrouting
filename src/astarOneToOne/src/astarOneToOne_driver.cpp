@@ -58,9 +58,12 @@ pgr_astar(
         Path &path,
         int64_t source,
         int64_t target,
+        int heuristic,
+        double factor,
+        double epsilon,
         bool only_cost = false) {
     Pgr_astar< G > fn_astar;
-    fn_astar.astar(graph, path, source, target, only_cost);
+    fn_astar.astar(graph, path, source, target, heuristic, factor, epsilon, only_cost);
 }
 
 
@@ -76,6 +79,9 @@ void do_pgr_astarOneToOne(
         int64_t start_vid,
         int64_t end_vid,
         bool directed,
+        int heuristic,
+        double factor,
+        double epsilon,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
@@ -111,7 +117,7 @@ void do_pgr_astarOneToOne(
             log << digraph;
 #endif
             log << "Working with directed Graph 2\n";
-            pgr_astar(digraph, path, start_vid, end_vid, false);
+            pgr_astar(digraph, path, start_vid, end_vid, heuristic, factor, epsilon, false);
             log << "Working with directed Graph 3\n";
         } else {
             log << "Working with Undirected Graph\n";
@@ -120,7 +126,7 @@ void do_pgr_astarOneToOne(
 #ifdef DEBUG
             log << undigraph;
 #endif
-            pgr_astar(undigraph, path, start_vid, end_vid, false);
+            pgr_astar(undigraph, path, start_vid, end_vid, heuristic, factor, epsilon, false);
         }
 
         auto count = path.size();
