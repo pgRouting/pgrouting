@@ -84,19 +84,26 @@
      : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) + get_backtrace() ) )  
 #endif
 
+/*! @brief returns the execution path of the trace
+ 
+  Does not work for windows, please read:
+  http://stackoverflow.com/questions/27639931/can-not-find-execinfo-h-when-setup-malpack
+ 
+  In case of a failed exception the backtrace cann be shoun in the error message
+ */
 std::string get_backtrace();
 
 /*! \class AssertFailedException
  * \brief Extends std::exception and is the exception that we throw if an assert fails.
  */
 class AssertFailedException : public std::exception {
- private:
-  const std::string str;   ///< str Holds what() we got as message from the #define
+    private:
+        const std::string str;   ///< str Holds what() we got as message from the #define
 
- public:
-  virtual const char *what() const throw();
-  explicit AssertFailedException(std::string msg);
-  virtual ~AssertFailedException() throw() {};
+    public:
+        virtual const char *what() const throw();
+        explicit AssertFailedException(std::string msg);
+        virtual ~AssertFailedException() throw() {};
 };
 
 #endif  //  SRC_COMMON_SRC_PGR_ASSERT_H_

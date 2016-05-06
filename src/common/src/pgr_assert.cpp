@@ -13,7 +13,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
+
+#ifdef __linux__ 
 #include <execinfo.h>
+#endif
 #include <string>
 #include <exception>
 
@@ -30,6 +33,7 @@
 #endif
 
 std::string get_backtrace() {
+#ifdef __linux__
         void *trace[16];
         int i, trace_size = 0;
 
@@ -44,6 +48,9 @@ std::string get_backtrace() {
 
         free( funcNames );
         return message;
+#else
+        return "";
+#endif
 }
 
 
