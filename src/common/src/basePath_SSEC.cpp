@@ -24,6 +24,9 @@ along with this program; if not, write to the Free Software
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
+#ifdef open
+#undef open
+#endif
 #endif
 
 
