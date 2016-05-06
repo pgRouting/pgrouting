@@ -59,7 +59,7 @@ extern "C" {
 void
 do_pgr_funnyDijkstra(
         pgr_edge_t  *data_edges,
-        size_t total_tuples,
+        size_t total_edges,
         int64_t start_vid,
         int64_t  *end_vidsArr,
         size_t size_end_vidsArr,
@@ -68,18 +68,22 @@ do_pgr_funnyDijkstra(
         size_t *return_count,
         char ** log_msg,
         char ** err_msg){
+    std::ostringstream err;
     std::ostringstream log;
     try {
         pgassert(!(*log_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
+        pgassert(total_edges != 0);
 
-        if (total_tuples <= 1) {
-            log << "Required: more than one tuple\n";
+        /* depending on the functionality some tests can be done here
+         * For example */
+        if (total_edges <= 1) {
+            err << "Required: more than one edges\n";
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            *err_msg = strdup(log.str().c_str());
+            *err_msg = strdup(err.str().c_str());
             return;
         }
 
@@ -94,11 +98,12 @@ do_pgr_funnyDijkstra(
         for (const auto &vid : end_vertices) log << vid << ",";
         log << "\nstart vid:" << start_vid << "\n";
 #endif
+
         if (directed) {
             log << "Working with directed Graph\n";
             pgRouting::DirectedGraph digraph(gType);
             log << "Working with directed Graph 1 \n";
-            digraph.graph_insert_data(data_edges, total_tuples);
+            digraph.graph_insert_data(data_edges, total_edges);
 #ifdef DEBUG
             log << digraph;
 #endif
@@ -106,23 +111,23 @@ do_pgr_funnyDijkstra(
             pgr_dijkstra(digraph, paths, start_vid, end_vertices, false);
             log << "Working with directed Graph 3\n";
         } else {
-            log << "Working with Undirected Graph 4\n";
+            log << "Working with Undirected Graph\n";
             pgRouting::UndirectedGraph undigraph(gType);
-            undigraph.graph_insert_data(data_edges, total_tuples);
+            undigraph.graph_insert_data(data_edges, total_edges);
 #ifdef DEBUG
             log << undigraph;
 #endif
             pgr_dijkstra(undigraph, paths, start_vid, end_vertices, false);
         }
 
-        size_t count(count_tuples(paths));
+        auto count(count_tuples(paths));
 
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
             log << 
                 "No paths found between Starting and any of the Ending vertices\n";
-            *err_msg = strdup(log.str().c_str());
+            *log_msg = strdup(log.str().c_str());
             return;
         }
 
@@ -137,17 +142,20 @@ do_pgr_funnyDijkstra(
     } catch (AssertFailedException &exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        log << exept.what() << "\n";
+        err << exept.what() << "\n";
         *err_msg = strdup(log.str().c_str());
+        *log_msg = strdup(log.str().c_str());
     } catch (std::exception& exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        log << exept.what() << "\n";
+        err << exept.what() << "\n";
         *err_msg = strdup(log.str().c_str());
+        *log_msg = strdup(log.str().c_str());
     } catch(...) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        log << "Caught unknown exception!\n";
+        err << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
+        *log_msg = strdup(log.str().c_str());
     }
 }

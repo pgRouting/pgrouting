@@ -43,8 +43,12 @@ extern "C" {
      ********************************************************/
     void
         do_pgr_funnyDijkstra(
+                /* Available types:
+                   pgr_edge_t
+                   Pgr_edge_xy_t
+                   */
                 pgr_edge_t  *data_edges,
-                size_t total_tuples,
+                size_t total_edges,
                 int64_t start_vid,
                 int64_t  *end_vidsArr,
                 size_t size_end_vidsArr,
