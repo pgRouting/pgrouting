@@ -253,7 +253,7 @@ set(PgRouting_SOURCE_NAMES
     "withPoints"
 
     "internalQueryTests"
-    "funnyDijkstra"
+    #"funnyDijkstra"
 
     "alpha_shape"
 
