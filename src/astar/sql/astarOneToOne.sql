@@ -32,7 +32,7 @@ CREATE OR REPLACE FUNCTION pgr_astar(
     start_vid BIGINT,
     end_vid BIGINT,
     directed BOOLEAN DEFAULT true,
-    heuristic INTEGER DEFAULT 0,
+    heuristic INTEGER DEFAULT 5,
     factor FLOAT DEFAULT 1.0,
     epsilon FLOAT DEFAULT 1.0,
     OUT seq INTEGER,

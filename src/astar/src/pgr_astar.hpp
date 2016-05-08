@@ -149,7 +149,7 @@ class Pgr_astar {
                   case 2:
                       return std::fabs(std::min(dx, dy)) * m_factor;
                   case 3:
-                      return std::sqrt(dx * dx + dy * dy) * m_factor * m_factor;
+                      return (dx * dx + dy * dy) * m_factor * m_factor;
                   case 4:
                       return std::sqrt(dx * dx + dy * dy) * m_factor;
                   case 5:
