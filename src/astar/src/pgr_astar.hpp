@@ -1,8 +1,9 @@
 /*PGR-GNU*****************************************************************
 
- * A* Shortest path algorithm for PostgreSQL
- *
- * Copyright (c) 2006 Anton A. Patrushev, Orkney, Inc.
+File: pgr_astar.hpp
+
+Copyright (c) 2015 Vicky Vergara
+Mail: vicky_vergara@hotmail.com
 Mail: project@pgrouting.org
 
 ------
@@ -31,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
-#include <cmath>    // for sqrt
+#include <cmath>
 #include <boost/config.hpp>
 
 #include <boost/graph/graph_traits.hpp>
@@ -52,7 +53,7 @@ class Pgr_astar {
      typedef typename G::B_G B_G;
 
 
-     //! @name Dijkstra
+     //! @name Astar
      //@{
      //! one to one
      void astar(
@@ -339,129 +340,3 @@ Pgr_astar< G >::get_path(
 }
 
 
-#if 0
-    int 
-boost_astar(edge_astar_t *edges, size_t count, 
-        int source_vertex_id, int target_vertex_id,
-        bool directed, bool has_reverse_cost,
-        path_element_t **path, size_t *path_count, char **err_msg)
-{
-    try {
-
-
-        std::vector<vertex_descriptor> predecessors(num_vertices(graph));
-
-        vertex_descriptor source_vertex = vertex(source_vertex_id, graph);
-
-        if ((long)source_vertex < 0) 
-        {
-            *err_msg = (char *) "Source vertex not found";
-            return -1;
-        }
-
-        vertex_descriptor target_vertex = vertex(target_vertex_id, graph);
-        if ((long)target_vertex < 0)
-        {
-            *err_msg = (char *) "Target vertex not found";
-            return -1;
-        }
-
-        std::vector<double> distances(num_vertices(graph));
-
-        try {
-            // Call A* named parameter interface
-            astar_search
-                (graph, source_vertex,
-                 distance_heuristic<graph_t, double>(graph, target_vertex),
-                 predecessor_map(&predecessors[0]).
-                 weight_map(get(&Edge::cost, graph)).
-                 distance_map(&distances[0]).
-                 visitor(astar_goal_visitor<vertex_descriptor>(target_vertex)));
-
-        } 
-        catch(found_goal& fg) {
-            // Target vertex found
-            vector<vertex_descriptor> path_vect;
-            int max = MAX_NODES;
-            path_vect.push_back(target_vertex);
-
-            while (target_vertex != source_vertex) 
-            {
-                if (target_vertex == predecessors[target_vertex]) 
-                {
-#if 0
-                    *err_msg = (char *) "No path found";
-#endif 
-                    return 0;
-                }
-                target_vertex = predecessors[target_vertex];
-
-                path_vect.push_back(target_vertex);
-                if (!max--) 
-                {
-                    *err_msg = (char *) "Overflow";
-                    return -1;
-                }
-            }
-            if (path_vect.size() <= 1) {
-                return 0;
-            }
-
-            *path = (path_element_t *) malloc(sizeof(path_element_t) * 
-                    (path_vect.size() + 1));
-            *path_count = path_vect.size();
-
-            for(int64_t i = static_cast<int64_t>(path_vect.size()) - 1, j = 0; i >= 0; i--, j++)
-            {
-                graph_traits < graph_t >::vertex_descriptor v_src;
-                graph_traits < graph_t >::vertex_descriptor v_targ;
-                graph_traits < graph_t >::edge_descriptor e;
-                graph_traits < graph_t >::out_edge_iterator out_i, out_end;
-
-                (*path)[j].vertex_id = static_cast<int>(path_vect.at(i));
-
-                (*path)[j].edge_id = -1;
-                (*path)[j].cost = distances[target_vertex];
-
-                if (i == 0) 
-                {
-                    continue;
-                }
-
-                v_src = path_vect.at(i);
-                v_targ = path_vect.at(i - 1);
-                double cost = 99999999.9;
-                int edge_id = 0;
-
-                for (tie(out_i, out_end) = out_edges(v_src, graph); 
-                        out_i != out_end; ++out_i)
-                {
-                    graph_traits < graph_t >::vertex_descriptor targ; // v   set but not used
-                    e = *out_i;
-                    // v = source(e, graph);
-                    targ = target(e, graph);
-
-                    if (targ == v_targ)
-                    {
-                        if (graph[*out_i].cost < cost)
-                        {
-                            edge_id = graph[*out_i].id;
-                            cost = graph[*out_i].cost;
-                        }
-                    }
-                }
-                (*path)[j].edge_id = edge_id;
-                (*path)[j].cost = cost;
-            }
-
-            return EXIT_SUCCESS;
-        }
-    }
-    catch(...) {
-        *err_msg = (char *) "Unknown exception caught!";
-        return -1;
-    }
-    *err_msg = (char *) "No path found";
-    return 0;
-}
-#endif
