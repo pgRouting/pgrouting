@@ -48,6 +48,23 @@ void Path::push_back(Path_t data) {
     m_tot_cost += data.cost;
 }
 
+void Path::reverse() {
+    // std::swap(m_start_id, m_end_id);
+    std::deque< Path_t > newpath;
+    for (size_t i = 0; i < path.size(); ++i) {
+        newpath.push_front({
+                path[i].node,
+                (i == 0? -1 : path[i - 1].edge),
+                (i == 0? 0 : path[i - 1].cost),
+                0
+                });
+    }  
+    for (size_t i = 0; i < newpath.size(); ++i) {
+        newpath[i].agg_cost = (i == 0)? 0 : newpath[i - 1].agg_cost +  newpath[i - 1].cost;
+    }
+    path = newpath;
+}
+
 
 
 void Path::clear() {

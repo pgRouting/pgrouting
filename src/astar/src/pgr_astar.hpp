@@ -72,6 +72,9 @@ class Pgr_astar {
              std::deque< Path > &paths,
              int64_t start_vertex,
              const std::vector< int64_t > &end_vertex,
+             int heuristic,
+             double factor,
+             double epsilon,
              bool only_cost = false);
 #if 0
      //! Many to one
@@ -130,7 +133,18 @@ class Pgr_astar {
              V target,
              Path &path) const;
 
+     // used when multiple goals
+     void get_path(
+             const G &graph,
+             std::deque< Path > &paths,
+             V source,
+             std::vector< V > &targets) const;
 
+     void get_cost(
+             const G &graph,
+             std::deque< Path > &paths,
+             V source,
+             std::vector< V > &targets) const;
 
      //! @name members;
      //@{
@@ -147,16 +161,17 @@ class Pgr_astar {
               : m_g(g),
                 m_factor(factor),
                 m_heuristic(heuristic) {
-                    m_goals.push_back(goal);
+                    m_goals.insert(goal);
             }
           distance_heuristic(B_G &g, std::vector< V > goals, int heuristic, double factor)
               : m_g(g),
+                m_goals(goals.begin(), goals.end()),
                 m_factor(factor),
-                m_goals(goals),
                 m_heuristic(heuristic) {}
 
           double operator()(V u) {
               if (m_heuristic == 0) return 0;
+              if (m_goals.empty()) return 0;
               double best_h(std::numeric_limits<double>::max());
               for (auto goal : m_goals) {
                   double current(std::numeric_limits<double>::max());
@@ -182,12 +197,19 @@ class Pgr_astar {
                       best_h = current;
                   };
               }
+              {
+                  auto s_it = m_goals.find(u);
+                  if (!(s_it == m_goals.end())) {
+                      // found one more goal
+                      m_goals.erase(s_it);
+                  }
+              }
               return best_h;
           };
 
       private:
           B_G &m_g;
-          std::vector< V > m_goals;
+          std::set< V > m_goals;
           double m_factor;
           int m_heuristic;
      }; // class distance_heuristic
@@ -209,9 +231,9 @@ class Pgr_astar {
      }; // class astar_one_goal_visitor
 
      //! class for stopping when all targets are found
-     class astar_many_goal_visitor : public boost::default_astar_visitor {
+     class astar_many_goals_visitor : public boost::default_astar_visitor {
          public:
-             explicit astar_many_goal_visitor(std::vector< V > goals)
+             explicit astar_many_goals_visitor(std::vector< V > goals)
                  :m_goals(goals.begin(), goals.end()) {}
              template <class B_G>
                  void examine_vertex(V u, B_G &g) {
@@ -280,6 +302,9 @@ Pgr_astar< G >::astar(
         std::deque< Path > &paths,
         int64_t start_vertex,
         const std::vector< int64_t > &end_vertex,
+        int heuristic,
+        double factor,
+        double epsilon,
         bool only_cost) {
     clear();
 
@@ -300,7 +325,7 @@ Pgr_astar< G >::astar(
 
     std::vector< V > v_targets(s_v_targets.begin(), s_v_targets.end());
     // perform the algorithm
-    astar_1_to_many(graph, v_source, v_targets);
+    astar_1_to_many(graph, v_source, v_targets, heuristic, factor, epsilon);
 
     // get the results // route id are the targets
     if (only_cost) {
@@ -373,6 +398,9 @@ Pgr_astar< G >::astar_1_to_many(
 }
 
 
+/*
+ * GET_COST
+ */
 
 
 
@@ -397,6 +425,43 @@ Pgr_astar< G >::get_cost(
         r_path = path;
     }
 }
+
+/*
+ * GET_PATH
+ */
+
+
+template < class G >
+void
+Pgr_astar< G >::get_path(
+        const G &graph,
+        std::deque< Path > &paths,
+        V source,
+        std::vector< V > &targets) const {
+    Path path;
+    typename std::vector< V >::iterator s_it;
+    for (s_it = targets.begin(); s_it != targets.end(); ++s_it) {
+        path.clear();
+        get_path(graph, source, *s_it, path);
+        paths.push_back(path);
+    }
+}
+
+template < class G >
+void
+Pgr_astar< G >::get_cost(
+        const G &graph,
+        std::deque< Path > &paths,
+        V source,
+        std::vector< V > &targets) const {
+    Path path;
+    for (auto s_it = targets.begin(); s_it != targets.end(); ++s_it) {
+        path.clear();
+        get_cost(graph, source, *s_it, path);
+        paths.push_back(path);
+    }
+}
+
 
 template < class G >
 void
@@ -458,5 +523,4 @@ Pgr_astar< G >::get_path(
     r_path = path;
     return;
 }
-
 

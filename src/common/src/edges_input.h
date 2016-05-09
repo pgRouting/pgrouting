@@ -73,7 +73,9 @@ void pgr_get_edges(
         pgr_edge_t **edges,
         size_t *total_edges);
 
-/*! @brief read edges with additional (x,y) for source & target
+/*! @name pgr_get_edges_xy
+ 
+  @brief read edges with additional (x,y) for source & target
 
   Edges with x, y vertices values:
 
@@ -84,12 +86,26 @@ void pgr_get_edges(
   float8 reverse_cost
   float8 x1, y1   -- source
   float8 x2, y2   -- target
+*/
+
+/*! @brief normal graph
 
 @param[IN] sql
 @param[OUT] edges
 @oaram[OUT] total_edges
 */
-void pgr_get_edges_with_xy(
+void pgr_get_edges_xy(
+        char *sql,
+        Pgr_edge_xy_t **edges,
+        size_t *total_edges);
+
+/*! @brief reversed graph (for many to 1)
+
+@param[IN] sql
+@param[OUT] edges
+@oaram[OUT] total_edges
+*/
+void pgr_get_edges_xy_reversed(
         char *sql,
         Pgr_edge_xy_t **edges,
         size_t *total_edges);

@@ -1,6 +1,7 @@
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/astarOneToOne.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/astarV3.0.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/astarV2.0.sql
 )
 
