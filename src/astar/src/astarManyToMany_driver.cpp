@@ -38,15 +38,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <algorithm>
 #include <vector>
-#include "./astarOneToOne_driver.h"
+#include "./astarManyToMany_driver.h"
 
-#define DEBUG
+// #define DEBUG
 
 extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
 
-// #include "./../../dijkstra/src/pgr_dijkstra.hpp"
 #include "./pgr_astar.hpp"
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
@@ -55,15 +54,15 @@ template < class G >
 void
 pgr_astar(
         G &graph,
-        Path &path,
-        int64_t source,
-        int64_t target,
+        std::deque< Path >  &paths,
+        std::vector < int64_t > sources,
+        std::vector < int64_t > targets,
         int heuristic,
         double factor,
         double epsilon,
         bool only_cost = false) {
     Pgr_astar< G > fn_astar;
-    fn_astar.astar(graph, path, source, target, heuristic, factor, epsilon, only_cost);
+    fn_astar.astar(graph, paths, sources, targets, heuristic, factor, epsilon, only_cost);
 }
 
 
@@ -73,11 +72,11 @@ pgr_astar(
   start_vid BIGINT,
   end_vid BIGINT  directed BOOLEAN DEFAULT true,
  ***********************************************************/
-void do_pgr_astarOneToOne(
-        Pgr_edge_xy_t  *data_edges,
+void do_pgr_astarManyToMany(
+        Pgr_edge_xy_t  *edges,
         size_t total_edges,
-        int64_t start_vid,
-        int64_t end_vid,
+        int64_t  *start_vidsArr, size_t size_start_vidsArr,
+        int64_t  *end_vidsArr, size_t size_end_vidsArr,
         bool directed,
         int heuristic,
         double factor,
@@ -96,55 +95,54 @@ void do_pgr_astarOneToOne(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
+
         if (total_edges <= 1) {
-            log << "Required: more than one edge\n";
+            err << "Required: more than one edge\n";
             (*return_tuples) = NULL;
             (*return_count) = 0;
             *err_msg = strdup(log.str().c_str());
             return;
         }
 
+        std::deque< Path >paths;
+        log << "Inserting target vertices into a c++ vector structure\n";
+        std::vector< int64_t > end_vids(end_vidsArr, end_vidsArr + size_end_vidsArr);
+        std::vector< int64_t > start_vids(start_vidsArr, start_vidsArr + size_start_vidsArr);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        Path path;
-
         if (directed) {
             log << "Working with directed Graph\n";
-            pgRouting::xyDirectedGraph digraph(gType);
-            log << "Working with directed Graph 1 \n";
-            digraph.graph_insert_data(data_edges, total_edges);
-#ifdef DEBUG
-            log << digraph;
-#endif
-            log << "Working with directed Graph 2\n";
-            pgr_astar(digraph, path, start_vid, end_vid, heuristic, factor, epsilon, only_cost);
-            log << "Working with directed Graph 3\n";
+            pgRouting::xyDirectedGraph digraph(
+                    pgRouting::extract_vertices(edges, total_edges),
+                    gType);
+            digraph.graph_insert_data(edges, total_edges);
+            pgr_astar(digraph, paths, start_vids, end_vids, heuristic, factor, epsilon, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
-            pgRouting::xyUndirectedGraph undigraph(gType);
-            undigraph.graph_insert_data(data_edges, total_edges);
-#ifdef DEBUG
-            log << undigraph;
-#endif
-            pgr_astar(undigraph, path, start_vid, end_vid, heuristic, factor, epsilon, only_cost);
+            pgRouting::xyUndirectedGraph undigraph(
+                    pgRouting::extract_vertices(edges, total_edges),
+                    gType);
+            undigraph.graph_insert_data(edges, total_edges);
+            pgr_astar(undigraph, paths, start_vids, end_vids, heuristic, factor, epsilon, only_cost);
         }
 
-        auto count = path.size();
+        size_t count(0);
+        count = count_tuples(paths);
+
 
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            log << 
+            log <<
                 "No paths found between Starting and any of the Ending vertices\n";
-            *log_msg = strdup(log.str().c_str());
+            *err_msg = strdup(log.str().c_str());
             return;
         }
 
-        size_t sequence = 0;
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        path.generate_postgres_data(return_tuples, sequence);
-        (*return_count) = sequence;
+        log << "Converting a set of paths into the tuples\n";
+        (*return_count) = (collapse_paths(return_tuples, paths));
 
         *err_msg = NULL;
         *log_msg = strdup(log.str().c_str());

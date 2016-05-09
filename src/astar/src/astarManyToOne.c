@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
   Uncomment when needed
 */
-#define DEBUG
+// #define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
@@ -70,6 +70,7 @@ process(char* edges_sql,
         int heuristic,
         double factor,
         double epsilon,
+        bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     if (heuristic > 5 || heuristic < 0) {
@@ -121,6 +122,7 @@ process(char* edges_sql,
             heuristic,
             factor,
             epsilon,
+            only_cost,
             result_tuples,
             result_count,
             &log_msg,
@@ -194,6 +196,7 @@ astarManyToOne(PG_FUNCTION_ARGS) {
                 PG_GETARG_INT32(4),
                 PG_GETARG_FLOAT8(5),
                 PG_GETARG_FLOAT8(6),
+                PG_GETARG_BOOL(7),
                 &result_tuples,
                 &result_count);
 

@@ -81,6 +81,7 @@ void do_pgr_astarOneToMany(
         int heuristic,
         double factor,
         double epsilon,
+        bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
@@ -116,14 +117,14 @@ void do_pgr_astarOneToMany(
                     pgRouting::extract_vertices(edges, total_edges),
                     gType);
             digraph.graph_insert_data(edges, total_edges);
-            pgr_astar(digraph, paths, start_vid, end_vids, heuristic, factor, epsilon, false);
+            pgr_astar(digraph, paths, start_vid, end_vids, heuristic, factor, epsilon, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             pgRouting::xyUndirectedGraph undigraph(
                     pgRouting::extract_vertices(edges, total_edges),
                     gType);
             undigraph.graph_insert_data(edges, total_edges);
-            pgr_astar(undigraph, paths, start_vid, end_vids, heuristic, factor, epsilon, false);
+            pgr_astar(undigraph, paths, start_vid, end_vids, heuristic, factor, epsilon, only_cost);
         }
         if (!normal) {
             for (auto &path : paths) {

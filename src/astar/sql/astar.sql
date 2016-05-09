@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: astarOneToOne.sql
+File: astar.sql
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -26,27 +26,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-
-CREATE OR REPLACE FUNCTION _pgr_astar(
-    edges_sql TEXT, -- XY edges sql
-    start_vid BIGINT,
-    end_vid BIGINT,
-    directed BOOLEAN DEFAULT true,
-    heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
-    only_cost BOOLEAN DEFAULT false,
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-
-RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'astarOneToOne'
-LANGUAGE c IMMUTABLE STRICT;
-
 CREATE OR REPLACE FUNCTION pgr_astar(
     edges_sql TEXT, -- XY edges sql
     start_vid BIGINT,
@@ -57,6 +36,88 @@ CREATE OR REPLACE FUNCTION pgr_astar(
     epsilon FLOAT DEFAULT 1.0,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+
+RETURNS SETOF RECORD AS
+$BODY$
+BEGIN
+    RETURN query SELECT *
+    FROM _pgr_astar(_pgr_get_statement($1), $2, $3, $4, $5, $6, $7);
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE
+COST 100
+ROWS 1000;
+
+CREATE OR REPLACE FUNCTION pgr_astar(
+    edges_sql TEXT, -- XY edges sql
+    start_vid BIGINT,
+    end_vids ANYARRAY,
+    directed BOOLEAN DEFAULT true,
+    heuristic INTEGER DEFAULT 5,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+
+RETURNS SETOF RECORD AS
+$BODY$
+BEGIN
+    RETURN query SELECT *
+    FROM _pgr_astar(_pgr_get_statement($1), $2, $3, $4, $5, $6, $7);
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE
+COST 100
+ROWS 1000;
+
+CREATE OR REPLACE FUNCTION pgr_astar(
+    edges_sql TEXT, -- XY edges sql
+    start_vids ANYARRAY,
+    end_vid BIGINT,
+    directed BOOLEAN DEFAULT true,
+    heuristic INTEGER DEFAULT 5,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+
+RETURNS SETOF RECORD AS
+$BODY$
+BEGIN
+    RETURN query SELECT *
+    FROM _pgr_astar(_pgr_get_statement($1), $2, $3, $4, $5, $6, $7);
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE
+COST 100
+ROWS 1000;
+
+CREATE OR REPLACE FUNCTION pgr_astar(
+    edges_sql TEXT, -- XY edges sql
+    start_vids ANYARRAY,
+    end_vids ANYARRAY,
+    directed BOOLEAN DEFAULT true,
+    heuristic INTEGER DEFAULT 5,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,

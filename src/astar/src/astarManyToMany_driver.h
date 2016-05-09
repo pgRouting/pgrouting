@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: astarOneToOne_driver.h
+File: astarOneToMany_driver.h
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -26,8 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_ASTARONETOONE_SRC_ASTARONETOONE_DRIVER_H_
-#define SRC_ASTARONETOONE_SRC_ASTARONETOONE_DRIVER_H_
+#pragma once
 
 #include "./../../common/src/pgr_types.h"
 
@@ -41,11 +40,11 @@ extern "C" {
       start_vid BIGINT,
       end_vid BIGINT  directed BOOLEAN DEFAULT true,
      ********************************************************/
-    void do_pgr_astarOneToOne(
+    void do_pgr_astarManyToMany(
             Pgr_edge_xy_t  *data_edges,
             size_t total_edges,
-            int64_t start_vid,
-            int64_t end_vid,
+            int64_t  *start_vidsArr, size_t size_start_vidsArr,
+            int64_t  *end_vidsArr, size_t size_end_vidsArr,
             bool directed,
             int heuristic,
             double factor,
@@ -61,4 +60,3 @@ extern "C" {
 }
 #endif
 
-#endif  // SRC_ASTARONETOONE_SRC_ASTARONETOONE_DRIVER_H_

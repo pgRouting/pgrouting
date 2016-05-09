@@ -76,23 +76,17 @@ class Pgr_astar {
              double factor,
              double epsilon,
              bool only_cost = false);
-#if 0
-     //! Many to one
-     void astar(
-             G &graph,
-             std::deque< Path > &paths,
-             const std::vector < int64_t > &start_vertex,
-             int64_t end_vertex,
-             bool only_cost = false);
 
      //! Many to Many
      void astar(
              G &graph,
              std::deque< Path > &paths,
-             const std::vector< int64_t > &start_vertex,
+             std::vector< int64_t > start_vertex,
              const std::vector< int64_t > &end_vertex,
+             int heuristic,
+             double factor,
+             double epsilon,
              bool only_cost = false);
-#endif
 
      //@}
 
@@ -342,6 +336,39 @@ Pgr_astar< G >::astar(
     return;
 }
 
+// preparation for many to many
+template < class G >
+void
+Pgr_astar< G >::astar(
+        G &graph, std::deque< Path > &paths,
+        std::vector< int64_t > start_vertex,
+        const std::vector< int64_t > &end_vertex,
+        int heuristic,
+        double factor,
+        double epsilon,
+        bool only_cost) {
+    std::stable_sort(start_vertex.begin(), start_vertex.end());
+    start_vertex.erase(
+            std::unique(start_vertex.begin(), start_vertex.end()),
+            start_vertex.end());
+
+    for (const auto &start : start_vertex) {
+        astar(graph, paths, start, end_vertex, heuristic, factor, epsilon, only_cost);
+    }
+
+    std::sort(paths.begin(), paths.end(),
+            [](const Path &e1, const Path &e2)->bool {
+            return e1.end_id() < e2.end_id();
+            });
+    std::stable_sort(paths.begin(), paths.end(),
+            [](const Path &e1, const Path &e2)->bool {
+            return e1.start_id() < e2.start_id();
+            });
+    return;
+}
+
+
+
 
 //! Call to Astar  1 source to 1 target
 template < class G >
@@ -426,6 +453,22 @@ Pgr_astar< G >::get_cost(
     }
 }
 
+template < class G >
+void
+Pgr_astar< G >::get_cost(
+        const G &graph,
+        std::deque< Path > &paths,
+        V source,
+        std::vector< V > &targets) const {
+    Path path;
+    for (auto s_it = targets.begin(); s_it != targets.end(); ++s_it) {
+        path.clear();
+        get_cost(graph, source, *s_it, path);
+        paths.push_back(path);
+    }
+}
+
+
 /*
  * GET_PATH
  */
@@ -446,22 +489,6 @@ Pgr_astar< G >::get_path(
         paths.push_back(path);
     }
 }
-
-template < class G >
-void
-Pgr_astar< G >::get_cost(
-        const G &graph,
-        std::deque< Path > &paths,
-        V source,
-        std::vector< V > &targets) const {
-    Path path;
-    for (auto s_it = targets.begin(); s_it != targets.end(); ++s_it) {
-        path.clear();
-        get_cost(graph, source, *s_it, path);
-        paths.push_back(path);
-    }
-}
-
 
 template < class G >
 void

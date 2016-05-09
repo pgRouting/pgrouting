@@ -46,16 +46,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
+#include "./../../common/src/arrays_input.h"
 
-#include "./astarOneToOne_driver.h"
+#include "./astarManyToMany_driver.h"
 
-PG_FUNCTION_INFO_V1(astarOneToOne);
+PG_FUNCTION_INFO_V1(astarManyToMany);
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-astarOneToOne(PG_FUNCTION_ARGS);
+astarManyToMany(PG_FUNCTION_ARGS);
 
 
 /*******************************************************************************/
@@ -63,8 +64,8 @@ astarOneToOne(PG_FUNCTION_ARGS);
 static
 void
 process(char* edges_sql,
-        int64_t start_vid,
-        int64_t end_vid,
+        int64_t *start_vidsArr, size_t size_start_vidsArr,
+        int64_t *end_vidsArr, size_t size_end_vidsArr,
         bool directed,
         int heuristic,
         double factor,
@@ -73,16 +74,22 @@ process(char* edges_sql,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     if (heuristic > 5 || heuristic < 0) {
+        free(start_vidsArr);
+        free(end_vidsArr);
         ereport(ERROR,
                 (errmsg("Unknown heuristic"),
                  errhint("Valid values: 0~5")));
     }
     if (factor <= 0) {
+        free(start_vidsArr);
+        free(end_vidsArr);
         ereport(ERROR,
                 (errmsg("Factor value out of range"),
                  errhint("Valid values: positive non zero")));
     }
     if (epsilon < 1) {
+        free(start_vidsArr);
+        free(end_vidsArr);
         ereport(ERROR,
                 (errmsg("Epsilon value out of range"),
                  errhint("Valid values: 1 or greater than 1")));
@@ -93,12 +100,10 @@ process(char* edges_sql,
 
     pgr_SPI_connect();
 
-    PGR_DBG("Load data");
     Pgr_edge_xy_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges_xy(edges_sql, &edges, &total_edges);
-    PGR_DBG("Total %ld edges in query:", total_edges);
 
     if (total_edges == 0) {
         PGR_DBG("No edges found");
@@ -111,11 +116,11 @@ process(char* edges_sql,
     PGR_DBG("Starting processing");
     char *err_msg = NULL;
     char *log_msg = NULL;
-    do_pgr_astarOneToOne(
+    do_pgr_astarManyToMany(
             edges,
             total_edges,
-            start_vid,
-            end_vid,
+            start_vidsArr, size_start_vidsArr,
+            end_vidsArr, size_end_vidsArr,
             directed,
             heuristic,
             factor,
@@ -146,7 +151,7 @@ Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-astarOneToOne(PG_FUNCTION_ARGS) {
+astarManyToMany(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t            call_cntr;
     uint32_t            max_calls;
@@ -170,8 +175,8 @@ astarOneToOne(PG_FUNCTION_ARGS) {
         /*                          MODIFY AS NEEDED                          */
         /*
            edges_sql TEXT,
-           start_vid BIGINT,
-           end_vid BIGINT,
+           start_vids ARRAY[ANY_INTEGER], -- anyarray
+           end_vids ARRAY[ANY_INTEGER], -- anyarray
            directed BOOLEAN DEFAULT true,
            heuristic INTEGER DEFAULT 0,
            factor FLOAT DEFAULT 1.0,
@@ -179,11 +184,20 @@ astarOneToOne(PG_FUNCTION_ARGS) {
 
          **********************************************************************/
 
-        PGR_DBG("Calling process");
+        int64_t* start_vidsArr;
+        size_t size_start_vidsArr;
+        start_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_start_vidsArr, PG_GETARG_ARRAYTYPE_P(1));
+
+        int64_t* end_vidsArr;
+        size_t size_end_vidsArr;
+        end_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_end_vidsArr, PG_GETARG_ARRAYTYPE_P(2));
+
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_INT64(1),
-                PG_GETARG_INT64(2),
+                start_vidsArr, size_start_vidsArr,
+                end_vidsArr, size_end_vidsArr,
                 PG_GETARG_BOOL(3),
                 PG_GETARG_INT32(4),
                 PG_GETARG_FLOAT8(5),
@@ -191,6 +205,9 @@ astarOneToOne(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(7),
                 &result_tuples,
                 &result_count);
+
+        free(end_vidsArr);
+        free(start_vidsArr);
 
         /*                                                                             */
         /*******************************************************************************/
@@ -225,6 +242,8 @@ astarOneToOne(PG_FUNCTION_ARGS) {
         /*
            OUT seq INTEGER,
            OUT path_seq INTEGER,
+           OUT start_vid BIGINT,
+           OUT end_vid BIGINT,
            OUT node BIGINT,
            OUT edge BIGINT,
            OUT cost FLOAT,
@@ -232,11 +251,11 @@ astarOneToOne(PG_FUNCTION_ARGS) {
          ********************************************************************************/
 
 
-        values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(char));
+        values = palloc(8 * sizeof(Datum));
+        nulls = palloc(8 * sizeof(char));
 
         size_t i;
-        for(i = 0; i < 6; ++i) {
+        for(i = 0; i < 8; ++i) {
             nulls[i] = ' ';
         }
 
@@ -244,10 +263,13 @@ astarOneToOne(PG_FUNCTION_ARGS) {
         // postgres starts counting from 1
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].node);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].edge);
-        values[4] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+
         /*******************************************************************************/
 
         tuple = heap_formtuple(tuple_desc, values, nulls);
