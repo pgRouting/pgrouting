@@ -57,14 +57,6 @@ The main Characteristics are:
 
   - Running time: :math:`O((E + V) * \log V)`
 
-TODO
-  - For optimization purposes, any duplicated value in the start_vids or end_vids are ignored.
-  - The returned values are ordered:
-
-    - start_vid ascending
-    - end_vid ascending
-
-
 
 
 Signature Summary
