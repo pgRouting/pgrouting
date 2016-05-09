@@ -79,7 +79,7 @@ process(
         General_path_element_t **result_tuples,
         size_t *result_count) {
 
-    driving_side[0] = tolower(driving_side[0]);
+    driving_side[0] = (char) tolower(driving_side[0]);
 
     pgr_SPI_connect();
 
@@ -118,7 +118,7 @@ process(
     char *err_msg = NULL;
     char *log_msg = NULL;
     clock_t start_t = clock();
-    int  errcode = do_pgr_many_to_many_withPoints(
+    do_pgr_many_to_many_withPoints(
             edges,  total_edges,
             points, total_points,
             edges_of_points, total_edges_of_points,

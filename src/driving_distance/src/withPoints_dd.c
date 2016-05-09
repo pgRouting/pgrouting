@@ -74,7 +74,7 @@ process(
         General_path_element_t **result_tuples,
         size_t *result_count) {
 
-    driving_side[0] = tolower(driving_side[0]);
+    driving_side[0] = (char) tolower(driving_side[0]);
     PGR_DBG("driving side:%c",driving_side[0]);
     if (! ((driving_side[0] == 'r')
                 || (driving_side[0] == 'l'))) {

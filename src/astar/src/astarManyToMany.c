@@ -43,6 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
@@ -116,6 +117,7 @@ process(char* edges_sql,
     PGR_DBG("Starting processing");
     char *err_msg = NULL;
     char *log_msg = NULL;
+    clock_t start_t = clock();
     do_pgr_astarManyToMany(
             edges,
             total_edges,
@@ -130,6 +132,7 @@ process(char* edges_sql,
             result_count,
             &log_msg,
             &err_msg);
+    time_msg(" processing pgr_astar(many to many)", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("LOG: %s\n", log_msg);
     if (log_msg) free(log_msg);

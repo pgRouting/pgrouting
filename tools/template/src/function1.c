@@ -83,6 +83,7 @@ process( char* edges_sql,
     /* Available functions:
      * pgr_get_edges
      * pgr_get_edges_xy
+     * pgr_get_edges_xy_reversed
      * pgr_get_edges_no_id
      */
     pgr_get_edges(edges_sql, &edges, &total_edges);
@@ -99,6 +100,8 @@ process( char* edges_sql,
     PGR_DBG("Starting processing");
     char *err_msg = NULL;
     char *log_msg = NULL;
+
+    clock_t start_t = clock();
     do_pgr_MY_FUNCTION_NAME(
             edges,
             total_edges,
@@ -110,6 +113,8 @@ process( char* edges_sql,
             result_count,
             &log_msg,
             &err_msg);
+    time_msg(" processing pgr_funnyDijkstra", start_t, clock());
+
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("LOG: %s\n", log_msg);
     if (log_msg) free(log_msg);
