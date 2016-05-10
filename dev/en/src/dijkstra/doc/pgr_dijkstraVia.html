@@ -25,7 +25,10 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev)" href="../../../index.html" /> 
+    <link rel="top" title="pgRouting Manual (2.3.0-dev)" href="../../../index.html" />
+    <link rel="up" title="pgr_dijkstra - Shortest Path Dijkstra" href="dijkstra.html" />
+    <link rel="next" title="Driving Distance" href="../../driving_distance/doc/drivingDistance.html" />
+    <link rel="prev" title="pgr_dijkstraCost" href="pgr_dijkstraCost.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
@@ -35,7 +38,11 @@
       <div class="topnav">
       
         <p>
+        «&#160;&#160;<a href="pgr_dijkstraCost.html">pgr_dijkstraCost</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../driving_distance/doc/drivingDistance.html">Driving Distance</a>&#160;&#160;»
         </p>
 
       </div>
@@ -49,7 +56,7 @@
 <p><tt class="docutils literal"><span class="pre">pgr_dijkstraVia</span></tt> — Using dijkstra algorithm, it finds the route that goes through
 a list of vertices.</p>
 <div class="figure">
-<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside2.jpeg" src="../../../_images/boost-inside2.jpeg" /></a>
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside3.jpeg" src="../../../_images/boost-inside3.jpeg" /></a>
 <p class="caption">Boost Graph Inside</p>
 </div>
 </div>
@@ -135,8 +142,8 @@ RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
    1 |       1 |        1 |         1 |       3 |    1 |    1 |    1 |        0 |              0
    2 |       1 |        2 |         1 |       3 |    2 |    2 |    1 |        1 |              1
    3 |       1 |        3 |         1 |       3 |    3 |   -1 |    0 |        2 |              2
-   4 |       2 |        1 |         3 |       9 |    3 |    3 |    1 |        0 |              2
-   5 |       2 |        2 |         3 |       9 |    4 |   16 |    1 |        1 |              3
+   4 |       2 |        1 |         3 |       9 |    3 |    5 |    1 |        0 |              2
+   5 |       2 |        2 |         3 |       9 |    6 |    9 |    1 |        1 |              3
    6 |       2 |        3 |         3 |       9 |    9 |   -2 |    0 |        2 |              4
 (6 rows)
 </pre></div>
@@ -464,14 +471,18 @@ WHERE node = 9 and (agg_cost  &lt;&gt; 0 or seq = 1);
       <div class="bottomnav">
       
         <p>
+        «&#160;&#160;<a href="pgr_dijkstraCost.html">pgr_dijkstraCost</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../driving_distance/doc/drivingDistance.html">Driving Distance</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Apr 05, 2016.
+      Last updated on May 09, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

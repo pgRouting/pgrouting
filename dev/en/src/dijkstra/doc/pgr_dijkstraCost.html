@@ -25,7 +25,10 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev)" href="../../../index.html" /> 
+    <link rel="top" title="pgRouting Manual (2.3.0-dev)" href="../../../index.html" />
+    <link rel="up" title="pgr_dijkstra - Shortest Path Dijkstra" href="dijkstra.html" />
+    <link rel="next" title="pgr_dijkstraVia" href="pgr_dijkstraVia.html" />
+    <link rel="prev" title="pgr_dijkstra" href="pgr_dijkstra.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
@@ -35,7 +38,11 @@
       <div class="topnav">
       
         <p>
+        «&#160;&#160;<a href="pgr_dijkstra.html">pgr_dijkstra</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_dijkstraVia.html">pgr_dijkstraVia</a>&#160;&#160;»
         </p>
 
       </div>
@@ -50,7 +57,7 @@
 <p>Using Dijkstra algorithm implemented by Boost.Graph, and extract only the
 aggregate cost of the shortest path(s) found, for the combination of vertices given.</p>
 <div class="figure">
-<a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="../../../_images/boost-inside2.jpeg" src="../../../_images/boost-inside2.jpeg" /></a>
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="../../../_images/boost-inside3.jpeg" src="../../../_images/boost-inside3.jpeg" /></a>
 <p class="caption">Boost Graph Inside</p>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">pgr_dijkstraCost</span></tt> algorithm, is a good choice to calculate the sum of the costs
@@ -442,14 +449,18 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
       <div class="bottomnav">
       
         <p>
+        «&#160;&#160;<a href="pgr_dijkstra.html">pgr_dijkstra</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_dijkstraVia.html">pgr_dijkstraVia</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Apr 05, 2016.
+      Last updated on May 09, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
