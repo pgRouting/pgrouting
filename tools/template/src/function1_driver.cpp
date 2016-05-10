@@ -31,22 +31,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
+#ifdef open
+#undef open
+#endif
 #endif
 
 
 #include <sstream>
 #include <deque>
+#include <algorithm>
 #include <vector>
 #include "./pgr_dijkstra.hpp"
 #include "./MY_FUNCTION_NAME_driver.h"
 
-// #define DEBUG
+#define DEBUG
 
 extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
 
-#include "./../../common/src/memory_func.hpp"
+#include "./../../common/src/pgr_assert.h"
+#include "./../../common/src/pgr_alloc.hpp"
 
 /************************************************************
   MY_QUERY_LINE1
@@ -54,81 +59,103 @@ extern "C" {
 void
 do_pgr_MY_FUNCTION_NAME(
         pgr_edge_t  *data_edges,
-        size_t total_tuples,
+        size_t total_edges,
         int64_t start_vid,
         int64_t  *end_vidsArr,
-        int size_end_vidsArr,
+        size_t size_end_vidsArr,
         bool directed,
         MY_RETURN_VALUE_TYPE **return_tuples,
         size_t *return_count,
+        char ** log_msg,
         char ** err_msg){
+    std::ostringstream err;
     std::ostringstream log;
     try {
+        pgassert(!(*log_msg));
+        pgassert(!(*err_msg));
+        pgassert(!(*return_tuples));
+        pgassert(*return_count == 0);
+        pgassert(total_edges != 0);
 
-        if (total_tuples == 1) {
-            log << "Required: more than one tuple\n";
+        /* depending on the functionality some tests can be done here
+         * For example */
+        if (total_edges <= 1) {
+            err << "Required: more than one edges\n";
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            *err_msg = strdup(log.str().c_str());
+            *err_msg = strdup(err.str().c_str());
             return;
         }
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const int initial_size = total_tuples;
 
         std::deque< Path >paths;
         log << "Inserting vertices into a c++ vector structure\n";
-        std::set< int64_t > end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+        std::vector< int64_t > end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+        std::sort(end_vertices.begin(),end_vertices.end());
 #ifdef DEBUG
-        for (const auto &vid : end_vertices) log << vid <<"\n";
-        log << "Destination" << start_vid;
+        log << "end vids: ";
+        for (const auto &vid : end_vertices) log << vid << ",";
+        log << "\nstart vid:" << start_vid << "\n";
 #endif
+
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
-            digraph.graph_insert_data(data_edges, total_tuples);
+            pgRouting::DirectedGraph digraph(gType);
+            log << "Working with directed Graph 1 \n";
+            digraph.graph_insert_data(data_edges, total_edges);
 #ifdef DEBUG
-            digraph.print_graph(log);
+            log << digraph;
 #endif
+            log << "Working with directed Graph 2\n";
             pgr_dijkstra(digraph, paths, start_vid, end_vertices, false);
+            log << "Working with directed Graph 3\n";
         } else {
             log << "Working with Undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
-            undigraph.graph_insert_data(data_edges, total_tuples);
+            pgRouting::UndirectedGraph undigraph(gType);
+            undigraph.graph_insert_data(data_edges, total_edges);
 #ifdef DEBUG
-            undigraph.print_graph(log);
+            log << undigraph;
 #endif
             pgr_dijkstra(undigraph, paths, start_vid, end_vertices, false);
         }
 
-        size_t count(count_tuples(paths));
+        auto count(count_tuples(paths));
 
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
             log << 
                 "No paths found between Starting and any of the Ending vertices\n";
-            *err_msg = strdup(log.str().c_str());
+            *log_msg = strdup(log.str().c_str());
             return;
         }
 
         // get the space required to store all the paths
-        (*return_tuples) = get_memory(count, (*return_tuples));
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
-#ifndef DEBUG
-        *err_msg = strdup("OK");
-#else
+        *err_msg = NULL;
+        *log_msg = strdup(log.str().c_str());
+
+    } catch (AssertFailedException &exept) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        err << exept.what() << "\n";
         *err_msg = strdup(log.str().c_str());
-#endif
-    } catch ( ... ) {
-        log << "Caught unknown expection!\n";
+        *log_msg = strdup(log.str().c_str());
+    } catch (std::exception& exept) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        err << exept.what() << "\n";
         *err_msg = strdup(log.str().c_str());
+        *log_msg = strdup(log.str().c_str());
+    } catch(...) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        err << "Caught unknown exception!\n";
+        *err_msg = strdup(log.str().c_str());
+        *log_msg = strdup(log.str().c_str());
     }
 }
-
-
-
-
-

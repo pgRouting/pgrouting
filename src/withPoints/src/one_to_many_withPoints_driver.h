@@ -34,13 +34,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-//  CREATE OR REPLACE FUNCTION pgr_withPoint(
-//  edges_sql TEXT,
-//  points_sql TEXT,
-//  start_pid BIGINT,
-//  end_pid BIGINT,
-//  directed BOOLEAN DEFAULT true,
-    int do_pgr_one_to_many_withPoints(
+    //  CREATE OR REPLACE FUNCTION pgr_withPoint(
+    //  edges_sql TEXT,
+    //  points_sql TEXT,
+    //  start_pid BIGINT,
+    //  end_pid BIGINT,
+    //  directed BOOLEAN DEFAULT true,
+    void do_pgr_one_to_many_withPoints(
             pgr_edge_t  *edges,
             size_t total_edges,
 
@@ -61,6 +61,7 @@ extern "C" {
             bool only_cost,
             General_path_element_t **return_tuples,
             size_t *return_count,
+            char ** log_msg,
             char ** err_msg);
 
 #ifdef __cplusplus

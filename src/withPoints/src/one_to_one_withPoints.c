@@ -72,7 +72,7 @@ process(
         General_path_element_t **result_tuples,
         size_t *result_count) {
 
-    driving_side[0] = tolower(driving_side[0]);
+    driving_side[0] = (char) tolower(driving_side[0]);
     PGR_DBG("driving side:%c",driving_side[0]);
     if (! ((driving_side[0] == 'r')
                 || (driving_side[0] == 'l'))) {
@@ -97,10 +97,10 @@ process(
     PGR_DBG("  -- change the query");
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
-        get_new_queries(
-                edges_sql, points_sql,
-                &edges_of_points_query,
-                &edges_no_points_query);
+    get_new_queries(
+            edges_sql, points_sql,
+            &edges_of_points_query,
+            &edges_no_points_query);
 
     PGR_DBG("edges_of_points_query:\n%s", edges_of_points_query);
     PGR_DBG("edges_no_points_query:\n%s", edges_no_points_query);
@@ -108,7 +108,7 @@ process(
     PGR_DBG("load the edges that match the points");
     pgr_edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
-    pgr_get_data_5_columns(edges_of_points_query, &edges_of_points, &total_edges_of_points);
+    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points);
 
     PGR_DBG("Total %ld edges in query:", total_edges_of_points);
 #ifdef DEBUG
@@ -127,7 +127,7 @@ process(
     PGR_DBG("load the edges that dont match the points");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
-    pgr_get_data_5_columns(edges_no_points_query, &edges, &total_edges);
+    pgr_get_edges(edges_no_points_query, &edges, &total_edges);
 
     PGR_DBG("Total %ld edges in query:", total_edges);
 #ifdef DEBUG
@@ -155,8 +155,9 @@ process(
 
     PGR_DBG("Starting processing");
     char *err_msg = NULL;
+    char *log_msg = NULL;
     clock_t start_t = clock();
-    int errcode = do_pgr_withPoints(
+    do_pgr_withPoints(
             edges,
             total_edges,
             points,
@@ -171,19 +172,20 @@ process(
             only_cost,
             result_tuples,
             result_count,
+            &log_msg,
             &err_msg);
     time_msg(" processing withPoints one to one", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+    PGR_DBG("LOG: %s\n", log_msg);
+    if (log_msg) free(log_msg);
 
-    if (!err_msg) free(err_msg);
+    if (err_msg) {
+        if (*result_tuples) free(*result_tuples);
+        elog(ERROR, "%s", err_msg);
+        free(err_msg);
+    }
     pfree(edges);
     pgr_SPI_finish();
-
-    if (errcode) {
-        pgr_send_error(errcode);
-    }
-
 }
 
 /*                                                                             */

@@ -7,10 +7,10 @@
 
 #choose precise or trusty
 
-group: edge
-3dist: trusty    
+#group: edge
+#dist: trusty    
 
-#dist: precise
+dist: precise
 
 sudo: required
 
@@ -27,7 +27,7 @@ branches:
   only:
     - master
     - develop
-    - hotFix/issue552
+    - rewrite/astar 
 
 env:
   - POSTGRESQL_VERSION=9.1
@@ -64,6 +64,7 @@ install:
 before_script:
   # Add our chosen PG version to the path
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
+
   # Stop whichever version of PG that travis started
   - sudo /etc/init.d/postgresql stop
   # Start the version of PG that we want to test

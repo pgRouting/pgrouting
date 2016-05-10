@@ -66,7 +66,7 @@ void process(
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_data_4_columns(edges_sql, &edges, &total_tuples);
+    pgr_get_edges_no_id(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
