@@ -32,6 +32,7 @@ run_psql -f setup_db.sql
 pg_prove ../../src/internalQueryTests/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/astar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
+
 pg_prove ../../src/allpairs/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/alpha_shape/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/apsp_johnson/test/pgtap/* -d $PGDATABASE  -U $PGUSER
